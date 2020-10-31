@@ -1,259 +1,257 @@
 {
    "mixintos": {
-      "stonehearth:trapper:trapping_grounds": "file(arctic_trapping_grounds.json)",	 		
-	  
       "/stonehearth/entities/rabbit/rabbit_statue/rabbit_statue.json": "file(rabbit/rabbit_statue/rabbit_statue.json)",
-	  
+
       "/stonehearth/entities/monsters/forest/entling/entling.json": "file(monsters/forest/entling/monster_log_replacer.json)",
       "/stonehearth/data/monster_tuning/forest/easy_entling.json": "file(monsters/forest/entling/monster_tuning_log_replacer.json)",
-	  
+
       "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.json": "file(monsters/forest/stone_golem/monster_stone_replacer.json)",
       "/stonehearth/data/monster_tuning/forest/little_stone_golem.json": "file(monsters/forest/stone_golem/monster_tuning_stone_replacer.json)",
       "/stonehearth/data/monster_tuning/forest/easy_stone_golem.json": "file(monsters/forest/stone_golem/monster_tuning_stone_replacer_2.json)",
       "/stonehearth/data/loot_bag/random_stone_ore.json": "file(monsters/forest/stone_golem/loot_bag_stone_replacer.json)",
-		
-		"/stonehearth/entities/decoration/firepit_hearth/firepit_hearth_ghost.json": "file(decoration/firepit_hearth/firepit_hearth_ghost.json)", 
-	  
-		"/stonehearth_ace/locales/en.json": "file(locales/en.json)",
-		"/stonehearth_ace/locales/de-DE.json": "file(locales/en.json)",
-		"/stonehearth_ace/locales/zh-CN.json": "file(locales/en.json)"
+
+      "/stonehearth/entities/decoration/firepit_hearth/firepit_hearth_ghost.json": "file(decoration/firepit_hearth/firepit_hearth_ghost.json)", 
+
+      "/stonehearth_ace/locales/en.json": "file(locales/en.json)",
+      "/stonehearth_ace/locales/de-DE.json": "file(locales/en.json)",
+      "/stonehearth_ace/locales/zh-CN.json": "file(locales/en.json)"
    },
-   "overrides": {		
+   "overrides": {
       "/stonehearth/entities/rabbit/rabbit_statue/rabbit_statue_01.qb": "file(rabbit/rabbit_statue/rabbit_statue_01.qb)",
-	  
+
       "/stonehearth/entities/critters/squirrel/squirrel.qb": "file(critters/squirrel/squirrel.qb)",
       "/stonehearth/entities/critters/squirrel/squirrel.png": "file(critters/squirrel/squirrel.png)",
-	  
+
       "/stonehearth/entities/critters/red_fox_wolf/red_fox_wolf.qb": "file(critters/red_fox_wolf/red_fox_wolf.qb)",
       "/stonehearth/entities/critters/red_fox_wolf/red_fox_wolf.png": "file(critters/red_fox_wolf/red_fox_wolf.png)",
-	  
+
       "/stonehearth/entities/critters/rabbit/rabbit.qb": "file(critters/rabbit/rabbit.qb)",
       "/stonehearth/entities/critters/rabbit/rabbit.png": "file(critters/rabbit/rabbit.png)",
-	  
+
       "/stonehearth/entities/critters/racoon/racoon.qb": "file(critters/racoon/racoon.qb)",
       "/stonehearth/entities/critters/racoon/racoon.png": "file(critters/racoon/racoon.png)",
-	  
+
       "/stonehearth/entities/monsters/avian/duckduck/duckduck.qb": "file(monsters/avian/duckduck/duckduck.qb)",
       "/stonehearth/entities/monsters/avian/duckduck/duckduck.png": "file(monsters/avian/duckduck/duckduck.png)",
-	  
+
       "/stonehearth/entities/monsters/avian/duckduck_young/duckduck_young.qb": "file(monsters/avian/duckduck/duckduck.qb)",
       "/stonehearth/entities/monsters/avian/duckduck_young/duckduck_young.png": "file(monsters/avian/duckduck/duckduck.png)",
-	  
+
       "/stonehearth/entities/monsters/avian/ostrich/ostrich.qb": "file(monsters/avian/ostrich/ostrich.qb)",
       "/stonehearth/entities/monsters/avian/ostrich/ostrich.png": "file(monsters/avian/ostrich/ostrich.png)",
-	  
+
       "/stonehearth/entities/monsters/avian/ostrich_young/ostrich_young.qb": "file(monsters/avian/ostrich/ostrich.qb)",
       "/stonehearth/entities/monsters/avian/ostrich_young/ostrich_young.png": "file(monsters/avian/ostrich/ostrich.png)",
-	  
+
       "/stonehearth/entities/critters/deer_horned/deer_horned.qb": "file(critters/deer_horned/deer_horned.qb)",
       "/stonehearth/entities/critters/deer_horned/deer_horned.png": "file(critters/deer_horned/deer_horned.png)",
-	  
+
       "/stonehearth/entities/critters/deer/deer.qb": "file(critters/deer/deer.qb)",
       "/stonehearth/entities/critters/deer/deer.png": "file(critters/deer/deer.png)",
-	  
-	  "/stonehearth_ace/entities/critters/deer_young/deer_young.qb": "file(critters/deer_young/deer_young.qb)",
+
+      "/stonehearth_ace/entities/critters/deer_young/deer_young.qb": "file(critters/deer_young/deer_young.qb)",
       "/stonehearth_ace/entities/critters/deer_young/deer_young.png": "file(critters/deer_young/deer_young.png)",
-	  
+
       "/stonehearth/entities/monsters/forest/boar/boar.qb": "file(monsters/forest/boar/boar.qb)",
       "/stonehearth/entities/monsters/forest/boar/boar.png": "file(monsters/forest/boar/boar.png)",
-	  
-	  "/stonehearth_ace/entities/monsters/forest/bear/bear.qb": "file(monsters/forest/bear/bear.qb)",
+
+      "/stonehearth_ace/entities/monsters/forest/bear/bear.qb": "file(monsters/forest/bear/bear.qb)",
       "/stonehearth_ace/entities/monsters/forest/bear/bear.png": "file(monsters/forest/bear/bear.png)",
-	  
+
       "/stonehearth/entities/critters/sheep/sheep.qb": "file(critters/sheep/sheep.qb)",
       "/stonehearth/entities/critters/sheep/sheep_shorn.qb": "file(critters/sheep/sheep_shorn.qb)",
-		"/stonehearth_ace/entities/critters/sheep/sheep_half_renewed.qb": "file(critters/sheep/sheep_half_renewed.qb)",
+      "/stonehearth_ace/entities/critters/sheep/sheep_half_renewed.qb": "file(critters/sheep/sheep_half_renewed.qb)",
       "/stonehearth/entities/critters/sheep/sheep_young.qb": "file(critters/sheep/sheep_young.qb)",
       "/stonehearth/entities/critters/sheep/sheep.png": "file(critters/sheep/sheep.png)",
-	   "/stonehearth_ace/entities/critters/sheep/sheep_wild_young.qb": "file(critters/sheep/sheep_wild_young.qb)",
+      "/stonehearth_ace/entities/critters/sheep/sheep_wild_young.qb": "file(critters/sheep/sheep_wild_young.qb)",
       "/stonehearth_ace/entities/critters/sheep/sheep_wild_young.png": "file(critters/sheep/sheep_wild_young.png)",
-	  
+
       "/stonehearth/entities/critters/poyo/poyo.qb": "file(critters/poyo/poyo_gray.qb)",
       "/stonehearth/entities/critters/poyo/poyo_red.qb": "file(critters/poyo/poyo_angola.qb)",
       "/stonehearth/entities/critters/poyo/poyo_brown.qb": "file(critters/poyo/poyo_dark.qb)",
       "/stonehearth/entities/critters/poyo/young/poyo_young.qb": "file(critters/poyo/poyo_young.qb)",
       "/stonehearth/entities/critters/poyo/poyo.png": "file(critters/poyo/poyo.png)",
       "/stonehearth/entities/critters/poyo/young/poyo_young.png": "file(critters/poyo/poyo_young.png)",
-	  
-	  "/stonehearth_ace/entities/critters/moomoo/moomoo.qb": "file(critters/moomoo/moomoo.qb)",
+
+      "/stonehearth_ace/entities/critters/moomoo/moomoo.qb": "file(critters/moomoo/moomoo.qb)",
       "/stonehearth_ace/entities/critters/moomoo/moomoo_2.qb": "file(critters/moomoo/moomoo_2.qb)",
       "/stonehearth_ace/entities/critters/moomoo/moomoo_3.qb": "file(critters/moomoo/moomoo_3.qb)",
-	  "/stonehearth_ace/entities/critters/moomoo/moomoo_4.qb": "file(critters/moomoo/moomoo_4.qb)",
+      "/stonehearth_ace/entities/critters/moomoo/moomoo_4.qb": "file(critters/moomoo/moomoo_4.qb)",
       "/stonehearth_ace/entities/critters/moomoo/moomoo_young.qb": "file(critters/moomoo/moomoo_young.qb)",
       "/stonehearth_ace/entities/critters/moomoo/moomoo.png": "file(critters/moomoo/moomoo.png)",
       "/stonehearth_ace/entities/critters/moomoo/moomoo_young.png": "file(critters/moomoo/moomoo_young.png)",
-	  
-	  "/stonehearth_ace/entities/critters/moomoo/wild_moomoo.qb": "file(critters/moomoo/wild_moomoo.qb)",
+
+      "/stonehearth_ace/entities/critters/moomoo/wild_moomoo.qb": "file(critters/moomoo/wild_moomoo.qb)",
       "/stonehearth_ace/entities/critters/moomoo/wild_moomoo_2.qb": "file(critters/moomoo/wild_moomoo_2.qb)",
       "/stonehearth_ace/entities/critters/moomoo/moomoo_wild_young.qb": "file(critters/moomoo/moomoo_wild_young.qb)",
       "/stonehearth_ace/entities/critters/moomoo/wild_moomoo.png": "file(critters/moomoo/wild_moomoo.png)",
       "/stonehearth_ace/entities/critters/moomoo/moomoo_wild_young.png": "file(critters/moomoo/moomoo_wild_young.png)",
-	  
+
       "/stonehearth/entities/monsters/forest/entling/entling.qb": "file(monsters/forest/entling/entling.qb)",
-	  "/stonehearth/entities/monsters/forest/entling/entling_2.qb": "file(monsters/forest/entling/entling_2.qb)",
-	  "/stonehearth/entities/monsters/forest/entling/entling_3.qb": "file(monsters/forest/entling/entling_3.qb)",
-	  "/stonehearth/entities/monsters/forest/entling/entling.png": "file(monsters/forest/entling/entling.png)",
-	  
-	  "/stonehearth/entities/monsters/forest/wolf/wolf.qb": "file(monsters/forest/wolf/wolf.qb)",
+      "/stonehearth/entities/monsters/forest/entling/entling_2.qb": "file(monsters/forest/entling/entling_2.qb)",
+      "/stonehearth/entities/monsters/forest/entling/entling_3.qb": "file(monsters/forest/entling/entling_3.qb)",
+      "/stonehearth/entities/monsters/forest/entling/entling.png": "file(monsters/forest/entling/entling.png)",
+
+      "/stonehearth/entities/monsters/forest/wolf/wolf.qb": "file(monsters/forest/wolf/wolf.qb)",
       "/stonehearth/entities/monsters/forest/wolf/wolf.png": "file(monsters/forest/wolf/wolf.png)",
-		
-		"/stonehearth/entities/resources/chitin/beetle_chitin/beetle_chitin.qb": "file(resources/beetle_chitin/beetle_chitin.qb)",
-	  "/stonehearth/entities/resources/chitin/beetle_chitin/beetle_chitin.png": "file(resources/beetle_chitin/beetle_chitin.png)",
-	  
-	  "/stonehearth/entities/monsters/forest/cougar/cougar.qb": "file(monsters/forest/cougar/cougar.qb)",
+
+      "/stonehearth/entities/resources/chitin/beetle_chitin/beetle_chitin.qb": "file(resources/beetle_chitin/beetle_chitin.qb)",
+      "/stonehearth/entities/resources/chitin/beetle_chitin/beetle_chitin.png": "file(resources/beetle_chitin/beetle_chitin.png)",
+
+      "/stonehearth/entities/monsters/forest/cougar/cougar.qb": "file(monsters/forest/cougar/cougar.qb)",
       "/stonehearth/entities/monsters/forest/cougar/cougar.png": "file(monsters/forest/cougar/cougar.png)",
-	  
-	  "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.qb": "file(monsters/forest/little_stone_golem/little_stone_golem.qb)",
-	  "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem_2.qb": "file(monsters/forest/little_stone_golem/little_stone_golem_2.qb)",
-	  "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem_3.qb": "file(monsters/forest/little_stone_golem/little_stone_golem_3.qb)",
-	  "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.png": "file(monsters/forest/little_stone_golem/little_stone_golem.png)",
-	  
-	  "/stonehearth/entities/monsters/forest/stone_golem/stone_golem.qb": "file(monsters/forest/stone_golem/stone_golem.qb)",
-	  "/stonehearth/entities/monsters/forest/stone_golem/stone_golem_2.qb": "file(monsters/forest/stone_golem/stone_golem_2.qb)",
-	  "/stonehearth/entities/monsters/forest/stone_golem/stone_golem_3.qb": "file(monsters/forest/stone_golem/stone_golem_3.qb)",
-	  "/stonehearth/entities/monsters/forest/stone_golem/stone_golem.png": "file(monsters/forest/stone_golem/stone_golem.png)",
-	  
-	  "/stonehearth/entities/monsters/goblins/goblin/goblin_body.qb": "file(monsters/goblins/goblin/goblin_body.qb)",
-	  "/stonehearth/entities/monsters/goblins/goblin/goblin.png": "file(monsters/goblins/goblin/goblin.png)",
-	  "/stonehearth/entities/monsters/goblins/goblin/goblin_head_1.qb": "file(monsters/goblins/goblin/goblin_head_1.qb)",
-	  "/stonehearth/entities/monsters/goblins/goblin/goblin_head_2.qb": "file(monsters/goblins/goblin/goblin_head_2.qb)",
-	  "/stonehearth/entities/monsters/goblins/goblin/goblin_head_3.qb": "file(monsters/goblins/goblin/goblin_head_3.qb)",
-	  "/stonehearth/entities/monsters/goblins/goblin/goblin_head_4.qb": "file(monsters/goblins/goblin/goblin_head_4.qb)",
-	  "/stonehearth/entities/monsters/goblins/goblin/goblin_head_5.qb": "file(monsters/goblins/goblin/goblin_head_5.qb)",
-	  "/stonehearth/entities/monsters/goblins/goblin/goblin_head_6.qb": "file(monsters/goblins/goblin/goblin_head_6.qb)",
-	  "/stonehearth/entities/monsters/goblins/goblin/goblin_armor_vest.qb": "file(monsters/goblins/goblin/goblin_armor_vest.qb)",
-	  "/stonehearth/entities/monsters/goblins/goblin/goblin_armor_breastplate.qb": "file(monsters/goblins/goblin/goblin_armor_breastplate.qb)",
-	  "/stonehearth/entities/monsters/goblins/goblin/goblin_armor_leather.qb": "file(monsters/goblins/goblin/goblin_armor_leather.qb)",
-	  "/stonehearth/entities/monsters/goblins/outfits/beast_trainer_outfit/beast_trainer_outfit.qb": "file(monsters/goblins/outfits/beast_trainer_outfit/beast_trainer_outfit.qb)",
-	  "/stonehearth/entities/monsters/goblins/outfits/beast_trainer_outfit/beast_trainer_outfit.png": "file(monsters/goblins/outfits/beast_trainer_outfit/beast_trainer_outfit.png)",
-	  "/stonehearth/entities/monsters/goblins/outfits/boss_outfit/boss_outfit.qb": "file(monsters/goblins/outfits/boss_outfit/boss_outfit.qb)",
-	  "/stonehearth/entities/monsters/goblins/outfits/boss_outfit/boss_outfit.png": "file(monsters/goblins/outfits/boss_outfit/boss_outfit.png)",
-	  "/stonehearth/entities/monsters/goblins/outfits/miniboss_outfit/miniboss_outfit.qb": "file(monsters/goblins/outfits/miniboss_outfit/miniboss_outfit.qb)",
-	  "/stonehearth/entities/monsters/goblins/outfits/miniboss_outfit/miniboss_outfit.png": "file(monsters/goblins/outfits/miniboss_outfit/miniboss_outfit.png)",
-	  "/stonehearth/entities/monsters/goblins/outfits/footman_outfit/footman_outfit.qb": "file(monsters/goblins/outfits/footman_outfit/footman_outfit.qb)",
-	  "/stonehearth/entities/monsters/goblins/outfits/footman_outfit/footman_outfit.png": "file(monsters/goblins/outfits/footman_outfit/footman_outfit.png)",
-	  "/stonehearth/entities/monsters/goblins/outfits/maurauder_outfit/maurauder_outfit.qb": "file(monsters/goblins/outfits/maurauder_outfit/maurauder_outfit.qb)",
-	  "/stonehearth/entities/monsters/goblins/outfits/maurauder_outfit/maurauder_outfit.png": "file(monsters/goblins/outfits/maurauder_outfit/maurauder_outfit.png)",
-	  "/stonehearth/entities/monsters/goblins/outfits/thief_outfit/thief_outfit.qb": "file(monsters/goblins/outfits/thief_outfit/thief_outfit.qb)",
-	  "/stonehearth/entities/monsters/goblins/outfits/thief_outfit/thief_outfit.png": "file(monsters/goblins/outfits/thief_outfit/thief_outfit.png)",
-	  "/stonehearth_ace/entities/monsters/goblins/outfits/archer_outfit/archer_outfit.qb": "file(monsters/goblins/outfits/archer_outfit/archer_outfit.qb)",
-	  "/stonehearth_ace/entities/monsters/goblins/outfits/archer_outfit/archer_outfit.png": "file(monsters/goblins/outfits/archer_outfit/archer_outfit.png)",
-	  "/stonehearth_ace/entities/monsters/goblins/outfits/piper_outfit/piper_outfit.qb": "file(monsters/goblins/outfits/piper_outfit/piper_outfit.qb)",
-	  "/stonehearth_ace/entities/monsters/goblins/outfits/piper_outfit/piper_outfit.png": "file(monsters/goblins/outfits/piper_outfit/piper_outfit.png)",
-	  "/stonehearth_ace/entities/monsters/goblins/outfits/sapper_outfit/sapper_outfit.qb": "file(monsters/goblins/outfits/sapper_outfit/sapper_outfit.qb)",
-	  "/stonehearth_ace/entities/monsters/goblins/outfits/sapper_outfit/sapper_outfit.png": "file(monsters/goblins/outfits/sapper_outfit/sapper_outfit.png)",
-	  "/stonehearth_ace/entities/monsters/goblins/outfits/soldier_outfit/soldier_outfit.qb": "file(monsters/goblins/outfits/soldier_outfit/soldier_outfit.qb)",
-	  "/stonehearth_ace/entities/monsters/goblins/outfits/soldier_outfit/soldier_outfit.png": "file(monsters/goblins/outfits/soldier_outfit/soldier_outfit.png)",
-	  
+
+      "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.qb": "file(monsters/forest/little_stone_golem/little_stone_golem.qb)",
+      "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem_2.qb": "file(monsters/forest/little_stone_golem/little_stone_golem_2.qb)",
+      "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem_3.qb": "file(monsters/forest/little_stone_golem/little_stone_golem_3.qb)",
+      "/stonehearth/entities/monsters/forest/little_stone_golem/little_stone_golem.png": "file(monsters/forest/little_stone_golem/little_stone_golem.png)",
+
+      "/stonehearth/entities/monsters/forest/stone_golem/stone_golem.qb": "file(monsters/forest/stone_golem/stone_golem.qb)",
+      "/stonehearth/entities/monsters/forest/stone_golem/stone_golem_2.qb": "file(monsters/forest/stone_golem/stone_golem_2.qb)",
+      "/stonehearth/entities/monsters/forest/stone_golem/stone_golem_3.qb": "file(monsters/forest/stone_golem/stone_golem_3.qb)",
+      "/stonehearth/entities/monsters/forest/stone_golem/stone_golem.png": "file(monsters/forest/stone_golem/stone_golem.png)",
+
+      "/stonehearth/entities/monsters/goblins/goblin/goblin_body.qb": "file(monsters/goblins/goblin/goblin_body.qb)",
+      "/stonehearth/entities/monsters/goblins/goblin/goblin.png": "file(monsters/goblins/goblin/goblin.png)",
+      "/stonehearth/entities/monsters/goblins/goblin/goblin_head_1.qb": "file(monsters/goblins/goblin/goblin_head_1.qb)",
+      "/stonehearth/entities/monsters/goblins/goblin/goblin_head_2.qb": "file(monsters/goblins/goblin/goblin_head_2.qb)",
+      "/stonehearth/entities/monsters/goblins/goblin/goblin_head_3.qb": "file(monsters/goblins/goblin/goblin_head_3.qb)",
+      "/stonehearth/entities/monsters/goblins/goblin/goblin_head_4.qb": "file(monsters/goblins/goblin/goblin_head_4.qb)",
+      "/stonehearth/entities/monsters/goblins/goblin/goblin_head_5.qb": "file(monsters/goblins/goblin/goblin_head_5.qb)",
+      "/stonehearth/entities/monsters/goblins/goblin/goblin_head_6.qb": "file(monsters/goblins/goblin/goblin_head_6.qb)",
+      "/stonehearth/entities/monsters/goblins/goblin/goblin_armor_vest.qb": "file(monsters/goblins/goblin/goblin_armor_vest.qb)",
+      "/stonehearth/entities/monsters/goblins/goblin/goblin_armor_breastplate.qb": "file(monsters/goblins/goblin/goblin_armor_breastplate.qb)",
+      "/stonehearth/entities/monsters/goblins/goblin/goblin_armor_leather.qb": "file(monsters/goblins/goblin/goblin_armor_leather.qb)",
+      "/stonehearth/entities/monsters/goblins/outfits/beast_trainer_outfit/beast_trainer_outfit.qb": "file(monsters/goblins/outfits/beast_trainer_outfit/beast_trainer_outfit.qb)",
+      "/stonehearth/entities/monsters/goblins/outfits/beast_trainer_outfit/beast_trainer_outfit.png": "file(monsters/goblins/outfits/beast_trainer_outfit/beast_trainer_outfit.png)",
+      "/stonehearth/entities/monsters/goblins/outfits/boss_outfit/boss_outfit.qb": "file(monsters/goblins/outfits/boss_outfit/boss_outfit.qb)",
+      "/stonehearth/entities/monsters/goblins/outfits/boss_outfit/boss_outfit.png": "file(monsters/goblins/outfits/boss_outfit/boss_outfit.png)",
+      "/stonehearth/entities/monsters/goblins/outfits/miniboss_outfit/miniboss_outfit.qb": "file(monsters/goblins/outfits/miniboss_outfit/miniboss_outfit.qb)",
+      "/stonehearth/entities/monsters/goblins/outfits/miniboss_outfit/miniboss_outfit.png": "file(monsters/goblins/outfits/miniboss_outfit/miniboss_outfit.png)",
+      "/stonehearth/entities/monsters/goblins/outfits/footman_outfit/footman_outfit.qb": "file(monsters/goblins/outfits/footman_outfit/footman_outfit.qb)",
+      "/stonehearth/entities/monsters/goblins/outfits/footman_outfit/footman_outfit.png": "file(monsters/goblins/outfits/footman_outfit/footman_outfit.png)",
+      "/stonehearth/entities/monsters/goblins/outfits/maurauder_outfit/maurauder_outfit.qb": "file(monsters/goblins/outfits/maurauder_outfit/maurauder_outfit.qb)",
+      "/stonehearth/entities/monsters/goblins/outfits/maurauder_outfit/maurauder_outfit.png": "file(monsters/goblins/outfits/maurauder_outfit/maurauder_outfit.png)",
+      "/stonehearth/entities/monsters/goblins/outfits/thief_outfit/thief_outfit.qb": "file(monsters/goblins/outfits/thief_outfit/thief_outfit.qb)",
+      "/stonehearth/entities/monsters/goblins/outfits/thief_outfit/thief_outfit.png": "file(monsters/goblins/outfits/thief_outfit/thief_outfit.png)",
+      "/stonehearth_ace/entities/monsters/goblins/outfits/archer_outfit/archer_outfit.qb": "file(monsters/goblins/outfits/archer_outfit/archer_outfit.qb)",
+      "/stonehearth_ace/entities/monsters/goblins/outfits/archer_outfit/archer_outfit.png": "file(monsters/goblins/outfits/archer_outfit/archer_outfit.png)",
+      "/stonehearth_ace/entities/monsters/goblins/outfits/piper_outfit/piper_outfit.qb": "file(monsters/goblins/outfits/piper_outfit/piper_outfit.qb)",
+      "/stonehearth_ace/entities/monsters/goblins/outfits/piper_outfit/piper_outfit.png": "file(monsters/goblins/outfits/piper_outfit/piper_outfit.png)",
+      "/stonehearth_ace/entities/monsters/goblins/outfits/sapper_outfit/sapper_outfit.qb": "file(monsters/goblins/outfits/sapper_outfit/sapper_outfit.qb)",
+      "/stonehearth_ace/entities/monsters/goblins/outfits/sapper_outfit/sapper_outfit.png": "file(monsters/goblins/outfits/sapper_outfit/sapper_outfit.png)",
+      "/stonehearth_ace/entities/monsters/goblins/outfits/soldier_outfit/soldier_outfit.qb": "file(monsters/goblins/outfits/soldier_outfit/soldier_outfit.qb)",
+      "/stonehearth_ace/entities/monsters/goblins/outfits/soldier_outfit/soldier_outfit.png": "file(monsters/goblins/outfits/soldier_outfit/soldier_outfit.png)",
+
       "/stonehearth/entities/resources/fiber/wool_bundle/wool_bundle.qb": "file(critters/sheep/wool/wool.qb)",
       "/stonehearth/entities/resources/fiber/wool_bundle/wool_bundle.png": "file(critters/sheep/wool/wool.png)",
-		
-		"/stonehearth_ace/entities/refined/yarn/yarn.qb": "file(refined/yarn/yarn.qb)",
-	   "/stonehearth_ace/entities/refined/yarn/yarn.png": "file(refined/yarn/yarn.png)",
-	  
+
+      "/stonehearth_ace/entities/refined/yarn/yarn.qb": "file(refined/yarn/yarn.qb)",
+      "/stonehearth_ace/entities/refined/yarn/yarn.png": "file(refined/yarn/yarn.png)",
+
       "/stonehearth/mixins/resources/fur_pelt/fur_pelt.qb": "file(critters/deer/pelt/pelt.qb)",
       "/stonehearth/mixins/resources/fur_pelt/fur_pelt.png": "file(critters/deer/pelt/pelt.png)",
-		
-		"/stonehearth/entities/resources/pelt/deer_pelt/deer_pelt.qb": "file(critters/deer/pelt/pelt.qb)",
-		"/stonehearth/entities/resources/pelt/deer_pelt/deer_pelt.png": "file(critters/deer/pelt/pelt.png)",
-	  
+
+      "/stonehearth/entities/resources/pelt/deer_pelt/deer_pelt.qb": "file(critters/deer/pelt/pelt.qb)",
+      "/stonehearth/entities/resources/pelt/deer_pelt/deer_pelt.png": "file(critters/deer/pelt/pelt.png)",
+
       "/stonehearth/entities/resources/pelt/deer_horn/deer_horn.qb": "file(critters/deer_horned/pelt/pelt.qb)",
       "/stonehearth/entities/resources/pelt/deer_horn/deer_horn.png": "file(critters/deer_horned/pelt/pelt.png)",
-	  
+
       "/stonehearth/entities/resources/pelt/boar_pelt/boar_pelt.qb": "file(monsters/forest/boar/pelt/pelt.qb)",
       "/stonehearth/entities/resources/pelt/boar_pelt/boar_pelt.png": "file(monsters/forest/boar/pelt/pelt.png)",
-	  
-	  "/stonehearth_ace/entities/resources/pelt/bear_pelt/bear_pelt.qb": "file(monsters/forest/bear/pelt/bear_pelt.qb)",
-	  "/stonehearth_ace/entities/resources/pelt/bear_pelt/bear_pelt.png": "file(monsters/forest/bear/pelt/bear_pelt.png)",
-	  
-	  "/stonehearth_ace/entities/resources/pelt/moomoo_pelt/moomoo_pelt.qb": "file(critters/moomoo/pelt/moomoo_pelt.qb)",
-	  "/stonehearth_ace/entities/resources/pelt/moomoo_pelt/moomoo_pelt.png": "file(critters/moomoo/pelt/moomoo_pelt.png)",
-	  
-	  "/stonehearth_ace/entities/resources/pelt/wild_cattle_pelt/wild_cattle_pelt.qb": "file(critters/moomoo/pelt/wild_cattle_pelt.qb)",
-	  "/stonehearth_ace/entities/resources/pelt/wild_cattle_pelt/wild_cattle_pelt.png": "file(critters/moomoo/pelt/wild_cattle_pelt.png)",
-	  
+
+      "/stonehearth_ace/entities/resources/pelt/bear_pelt/bear_pelt.qb": "file(monsters/forest/bear/pelt/bear_pelt.qb)",
+      "/stonehearth_ace/entities/resources/pelt/bear_pelt/bear_pelt.png": "file(monsters/forest/bear/pelt/bear_pelt.png)",
+
+      "/stonehearth_ace/entities/resources/pelt/moomoo_pelt/moomoo_pelt.qb": "file(critters/moomoo/pelt/moomoo_pelt.qb)",
+      "/stonehearth_ace/entities/resources/pelt/moomoo_pelt/moomoo_pelt.png": "file(critters/moomoo/pelt/moomoo_pelt.png)",
+
+      "/stonehearth_ace/entities/resources/pelt/wild_cattle_pelt/wild_cattle_pelt.qb": "file(critters/moomoo/pelt/wild_cattle_pelt.qb)",
+      "/stonehearth_ace/entities/resources/pelt/wild_cattle_pelt/wild_cattle_pelt.png": "file(critters/moomoo/pelt/wild_cattle_pelt.png)",
+
       "/stonehearth/entities/resources/pelt/rabbit_pelt/fur_pelt.qb": "file(critters/rabbit/pelt/pelt.qb)",
       "/stonehearth/entities/resources/pelt/rabbit_pelt/rabbit_pelt.png": "file(critters/rabbit/pelt/pelt.png)",
-	  
+
       "/stonehearth/entities/resources/pelt/racoon_pelt/racoon_pelt.qb": "file(critters/racoon/pelt/pelt.qb)",
       "/stonehearth/entities/resources/pelt/racoon_pelt/racoon_pelt.png": "file(critters/racoon/pelt/pelt.png)",
-	  
+
       "/stonehearth/entities/resources/pelt/red_fox_pelt/fur_pelt.qb": "file(critters/red_fox_wolf/pelt/pelt.qb)",
       "/stonehearth/entities/resources/pelt/red_fox_pelt/red_fox_pelt.png": "file(critters/red_fox_wolf/pelt/pelt.png)",
-	  
+
       "/stonehearth/entities/resources/pelt/squirrel_pelt/fur_pelt.qb": "file(critters/squirrel/pelt/pelt.qb)",
       "/stonehearth/entities/resources/pelt/squirrel_pelt/squirrel_pelt.png": "file(critters/squirrel/pelt/pelt.png)",
-	  
-	  "/stonehearth/entities/resources/pelt/cougar_pelt/cougar_pelt.qb": "file(monsters/forest/cougar/pelt/pelt.qb)",
-	  "/stonehearth/entities/resources/pelt/cougar_pelt/cougar_pelt.png": "file(monsters/forest/cougar/pelt/pelt.png)",
-	  
-	  "/stonehearth/entities/resources/pelt/wolf_pelt/wolf_pelt.qb": "file(monsters/forest/wolf/pelt/pelt.qb)",
-	  "/stonehearth/entities/resources/pelt/wolf_pelt/wolf_pelt.png": "file(monsters/forest/wolf/pelt/pelt.png)",
-	  
-	  "/northern_alliance/entities/decoration/rug_pelt_wolf/rug_pelt_wolf.qb": "file(decoration/rug_pelt_wolf/rug_pelt_wolf.qb)",
-	  "/northern_alliance/entities/decoration/rug_pelt_wolf/rug_pelt_wolf_iconic.qb": "file(decoration/rug_pelt_wolf/rug_pelt_wolf_iconic.qb)",
-	  "/northern_alliance/entities/decoration/rug_pelt_wolf/rug_pelt_wolf.png": "file(decoration/rug_pelt_wolf/rug_pelt_wolf.png)",
-	  
-	  "/stonehearth/entities/decoration/firepit_hearth/firepit_hearth.qb": "file(decoration/firepit_hearth/firepit_hearth.qb)",
-	  "/stonehearth/entities/decoration/firepit_hearth/firepit_hearth_iconic.qb": "file(decoration/firepit_hearth/firepit_hearth_iconic.qb)",
-	  "/stonehearth/entities/decoration/firepit_hearth/firepit_hearth.png": "file(decoration/firepit_hearth/firepit_hearth.png)",
-	  
-	  "/stonehearth_ace/entities/terrain/water_spring/water_spring.qb": "file(terrain/water_spring/water_spring.qb)",
+
+      "/stonehearth/entities/resources/pelt/cougar_pelt/cougar_pelt.qb": "file(monsters/forest/cougar/pelt/pelt.qb)",
+      "/stonehearth/entities/resources/pelt/cougar_pelt/cougar_pelt.png": "file(monsters/forest/cougar/pelt/pelt.png)",
+
+      "/stonehearth/entities/resources/pelt/wolf_pelt/wolf_pelt.qb": "file(monsters/forest/wolf/pelt/pelt.qb)",
+      "/stonehearth/entities/resources/pelt/wolf_pelt/wolf_pelt.png": "file(monsters/forest/wolf/pelt/pelt.png)",
+
+      "/northern_alliance/entities/decoration/rug_pelt_wolf/rug_pelt_wolf.qb": "file(decoration/rug_pelt_wolf/rug_pelt_wolf.qb)",
+      "/northern_alliance/entities/decoration/rug_pelt_wolf/rug_pelt_wolf_iconic.qb": "file(decoration/rug_pelt_wolf/rug_pelt_wolf_iconic.qb)",
+      "/northern_alliance/entities/decoration/rug_pelt_wolf/rug_pelt_wolf.png": "file(decoration/rug_pelt_wolf/rug_pelt_wolf.png)",
+
+      "/stonehearth/entities/decoration/firepit_hearth/firepit_hearth.qb": "file(decoration/firepit_hearth/firepit_hearth.qb)",
+      "/stonehearth/entities/decoration/firepit_hearth/firepit_hearth_iconic.qb": "file(decoration/firepit_hearth/firepit_hearth_iconic.qb)",
+      "/stonehearth/entities/decoration/firepit_hearth/firepit_hearth.png": "file(decoration/firepit_hearth/firepit_hearth.png)",
+
+      "/stonehearth_ace/entities/terrain/water_spring/water_spring.qb": "file(terrain/water_spring/water_spring.qb)",
       "/stonehearth_ace/entities/terrain/water_hole/water_hole.qb": "file(terrain/water_hole/water_hole.qb)",
-	  
-	  "/northern_alliance/entities/armor/helmet_wolf/helmet_wolf.qb": "file(armor/helmet_wolf/helmet_wolf.qb)",
-	  "/northern_alliance/entities/armor/helmet_wolf/helmet_wolf_female.qb": "file(armor/helmet_wolf/helmet_wolf_female.qb)",
-	  "/northern_alliance/entities/armor/helmet_wolf/helmet_wolf_iconic.qb": "file(armor/helmet_wolf/helmet_wolf_iconic.qb)",
-	  "/northern_alliance/entities/armor/helmet_wolf/helmet_wolf.png": "file(armor/helmet_wolf/helmet_wolf.png)",
-	  
-	  "/stonehearth_ace/entities/armor/chitin_armor/chitin_armor.qb": "file(armor/chitin_armor/chitin_armor.qb)",
-	  "/stonehearth_ace/entities/armor/chitin_armor/chitin_armor_female.qb": "file(armor/chitin_armor/chitin_armor_female.qb)",
-	  "/stonehearth_ace/entities/armor/chitin_armor/chitin_armor_iconic.qb": "file(armor/chitin_armor/chitin_armor_iconic.qb)",
-	  "/stonehearth_ace/entities/armor/chitin_armor/chitin_armor_orc_female.qb": "file(armor/chitin_armor/chitin_armor_orc_female.qb)",
-	  "/stonehearth_ace/entities/armor/chitin_armor/chitin_armor_orc_male.qb": "file(armor/chitin_armor/chitin_armor_orc_male.qb)",
-	  "/stonehearth_ace/entities/armor/chitin_armor/chitin_armor.png": "file(armor/chitin_armor/chitin_armor.png)",
-	  "/stonehearth_ace/entities/armor/chitin_helm/chitin_helm.qb": "file(armor/chitin_helm/chitin_helm.qb)",
-	  "/stonehearth_ace/entities/armor/chitin_helm/chitin_helm_female.qb": "file(armor/chitin_helm/chitin_helm_female.qb)",
-	  "/stonehearth_ace/entities/armor/chitin_helm/chitin_helm_iconic.qb": "file(armor/chitin_helm/chitin_helm_iconic.qb)",
-	  "/stonehearth_ace/entities/armor/chitin_helm/chitin_helm.png": "file(armor/chitin_helm/chitin_helm.png)",
-	  "/stonehearth_ace/entities/armor/chitin_shield/chitin_shield.qb": "file(armor/chitin_shield/chitin_shield.qb)",
-	  "/stonehearth_ace/entities/armor/chitin_shield/chitin_shield_iconic.qb": "file(armor/chitin_shield/chitin_shield_iconic.qb)",
-	  "/stonehearth_ace/entities/armor/chitin_shield/chitin_shield.png": "file(armor/chitin_shield/chitin_shield.png)",
-	  
-	  "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit.png": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit.png)",
-	  "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit.qb": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit.qb)",
-	  "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_female.qb": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_female.qb)",
-	  "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_iconic.qb": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_iconic.qb)",
-	  "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_orc_male.qb": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_orc_male.qb)",
-	  "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_orc_female.qb": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_orc_female.qb)",
-	  "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_rabbit.qb": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_rabbit.qb)",
-	  
-	  "/stonehearth/data/gm/campaigns/orc_war/arcs/trigger/old_khan/encounters/encounter_data/goblin_portrait.png": "file(images/goblin_portrait.png)",
-	  "/stonehearth/data/gm/campaigns/goblin_war/arcs/trigger/raidcamp/encounters/shakedown/boss_portrait.png": "file(images/boss_portrait.png)",
-	  "/stonehearth/data/gm/campaigns/goblin_war/arcs/climax/ogo_invasion/encounters/images/ogo_skullbonker.png": "file(images/ogo_skullbonker.png)",
-	  "/stonehearth/data/gm/campaigns/goblin_war/arcs/climax/ogo_invasion/encounters/images/ogo_bannerman.png": "file(images/boss_portrait.png)",
-	  "/stonehearth/data/gm/campaigns/goblin_war/arcs/climax/ogo_invasion/encounters/images/ogo_soothsayer.png": "file(images/boss_portrait.png)",
-	  
-	   "/stonehearth_ace/entities/resources/bough_bale/bough_bale.qb": "file(resources/bough_bale/bough_bale.qb)",
+
+      "/northern_alliance/entities/armor/helmet_wolf/helmet_wolf.qb": "file(armor/helmet_wolf/helmet_wolf.qb)",
+      "/northern_alliance/entities/armor/helmet_wolf/helmet_wolf_female.qb": "file(armor/helmet_wolf/helmet_wolf_female.qb)",
+      "/northern_alliance/entities/armor/helmet_wolf/helmet_wolf_iconic.qb": "file(armor/helmet_wolf/helmet_wolf_iconic.qb)",
+      "/northern_alliance/entities/armor/helmet_wolf/helmet_wolf.png": "file(armor/helmet_wolf/helmet_wolf.png)",
+
+      "/stonehearth_ace/entities/armor/chitin_armor/chitin_armor.qb": "file(armor/chitin_armor/chitin_armor.qb)",
+      "/stonehearth_ace/entities/armor/chitin_armor/chitin_armor_female.qb": "file(armor/chitin_armor/chitin_armor_female.qb)",
+      "/stonehearth_ace/entities/armor/chitin_armor/chitin_armor_iconic.qb": "file(armor/chitin_armor/chitin_armor_iconic.qb)",
+      "/stonehearth_ace/entities/armor/chitin_armor/chitin_armor_orc_female.qb": "file(armor/chitin_armor/chitin_armor_orc_female.qb)",
+      "/stonehearth_ace/entities/armor/chitin_armor/chitin_armor_orc_male.qb": "file(armor/chitin_armor/chitin_armor_orc_male.qb)",
+      "/stonehearth_ace/entities/armor/chitin_armor/chitin_armor.png": "file(armor/chitin_armor/chitin_armor.png)",
+      "/stonehearth_ace/entities/armor/chitin_helm/chitin_helm.qb": "file(armor/chitin_helm/chitin_helm.qb)",
+      "/stonehearth_ace/entities/armor/chitin_helm/chitin_helm_female.qb": "file(armor/chitin_helm/chitin_helm_female.qb)",
+      "/stonehearth_ace/entities/armor/chitin_helm/chitin_helm_iconic.qb": "file(armor/chitin_helm/chitin_helm_iconic.qb)",
+      "/stonehearth_ace/entities/armor/chitin_helm/chitin_helm.png": "file(armor/chitin_helm/chitin_helm.png)",
+      "/stonehearth_ace/entities/armor/chitin_shield/chitin_shield.qb": "file(armor/chitin_shield/chitin_shield.qb)",
+      "/stonehearth_ace/entities/armor/chitin_shield/chitin_shield_iconic.qb": "file(armor/chitin_shield/chitin_shield_iconic.qb)",
+      "/stonehearth_ace/entities/armor/chitin_shield/chitin_shield.png": "file(armor/chitin_shield/chitin_shield.png)",
+
+      "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit.png": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit.png)",
+      "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit.qb": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit.qb)",
+      "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_female.qb": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_female.qb)",
+      "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_iconic.qb": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_iconic.qb)",
+      "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_orc_male.qb": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_orc_male.qb)",
+      "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_orc_female.qb": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_orc_female.qb)",
+      "/stonehearth_ace/jobs/worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_rabbit.qb": "file(worker/freezing_simple_worker_outfit/freezing_simple_worker_outfit_rabbit.qb)",
+
+      "/stonehearth/data/gm/campaigns/orc_war/arcs/trigger/old_khan/encounters/encounter_data/goblin_portrait.png": "file(images/goblin_portrait.png)",
+      "/stonehearth/data/gm/campaigns/goblin_war/arcs/trigger/raidcamp/encounters/shakedown/boss_portrait.png": "file(images/boss_portrait.png)",
+      "/stonehearth/data/gm/campaigns/goblin_war/arcs/climax/ogo_invasion/encounters/images/ogo_skullbonker.png": "file(images/ogo_skullbonker.png)",
+      "/stonehearth/data/gm/campaigns/goblin_war/arcs/climax/ogo_invasion/encounters/images/ogo_bannerman.png": "file(images/boss_portrait.png)",
+      "/stonehearth/data/gm/campaigns/goblin_war/arcs/climax/ogo_invasion/encounters/images/ogo_soothsayer.png": "file(images/boss_portrait.png)",
+
+      "/stonehearth_ace/entities/resources/bough_bale/bough_bale.qb": "file(resources/bough_bale/bough_bale.qb)",
       "/stonehearth_ace/entities/resources/bough_bale/bough_bale_autumn.qb": "file(resources/bough_bale/bough_bale_autumn.qb)",
-		"/stonehearth_ace/entities/resources/bough_bale/bough_bale_spring.qb": "file(resources/bough_bale/bough_bale_spring.qb)",
-		"/stonehearth_ace/entities/resources/bough_bale/bough_bale.png": "file(resources/bough_bale/bough_bale.png)",
-		
-		"/stonehearth_ace/entities/resources/bough_bale_evergreen/bough_bale_evergreen.qb": "file(resources/bough_bale_evergreen/bough_bale_evergreen.qb)",
-		"/stonehearth_ace/entities/resources/bough_bale_evergreen/bough_bale_evergreen.png": "file(resources/bough_bale_evergreen/bough_bale_evergreen.png)",
-	  
+      "/stonehearth_ace/entities/resources/bough_bale/bough_bale_spring.qb": "file(resources/bough_bale/bough_bale_spring.qb)",
+      "/stonehearth_ace/entities/resources/bough_bale/bough_bale.png": "file(resources/bough_bale/bough_bale.png)",
+
+      "/stonehearth_ace/entities/resources/bough_bale_evergreen/bough_bale_evergreen.qb": "file(resources/bough_bale_evergreen/bough_bale_evergreen.qb)",
+      "/stonehearth_ace/entities/resources/bough_bale_evergreen/bough_bale_evergreen.png": "file(resources/bough_bale_evergreen/bough_bale_evergreen.png)",
+
       "/stonehearth/entities/resources/copper/copper_ore/copper_ore.qb": "/stonehearth_ace/entities/resources/copper/copper_ore/slate_copper_ore.qb",
       "/stonehearth/entities/resources/copper/copper_ore/copper_ore.png": "/stonehearth_ace/entities/resources/copper/copper_ore/slate_copper_ore.png",
-	  
+
       "/stonehearth/entities/resources/tin/tin_ore/tin_ore.qb": "/stonehearth_ace/entities/resources/tin/tin_ore/slate_tin_ore.qb",
       "/stonehearth/entities/resources/tin/tin_ore/tin_ore.png": "/stonehearth_ace/entities/resources/tin/tin_ore/slate_tin_ore.png",
-	  
+
       "/stonehearth/entities/resources/iron/iron_ore/iron_ore.qb": "/stonehearth_ace/entities/resources/iron/iron_ore/slate_iron_ore.qb",
       "/stonehearth/entities/resources/iron/iron_ore/iron_ore.png": "/stonehearth_ace/entities/resources/iron/iron_ore/slate_iron_ore.png",
-	  
+
       "/stonehearth/entities/resources/silver/silver_ore/silver_ore.qb": "/stonehearth_ace/entities/resources/silver/silver_ore/slate_silver_ore.qb",
       "/stonehearth/entities/resources/silver/silver_ore/silver_ore.png": "/stonehearth_ace/entities/resources/silver/silver_ore/slate_silver_ore.png",
-	  
+
       "/stonehearth/entities/resources/gold/gold_ore/gold_ore.qb": "/stonehearth_ace/entities/resources/gold/gold_ore/slate_gold_ore.qb",
       "/stonehearth/entities/resources/gold/gold_ore/gold_ore.png": "/stonehearth_ace/entities/resources/gold/gold_ore/slate_gold_ore.png"
    }

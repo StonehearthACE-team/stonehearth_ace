@@ -8,7 +8,14 @@ local MIN_STARTING_ITEM_CONTAINER_RADIUS = 6
 local MAX_STARTING_ITEM_RADIUS = 5
 local MAX_STARTING_ITEM_CONTAINER_RADIUS = 8
 
+local GameCreationService = require 'stonehearth.services.server.game_creation.game_creation_service'
 local AceGameCreationService = class()
+
+AceGameCreationService._ace_old_embark_command = GameCreationService.embark_command
+function AceGameCreationService:embark_command(session, response)
+   radiant.events.trigger(radiant, 'stonehearth_ace:player_embarked', {player_id = session.player_id})
+   return self:_ace_old_embark_command(session, response)
+end
 
 -- ACE: moved starting the game master for this player to the end of the function instead of the middle
 function AceGameCreationService:create_camp_command(session, response, pt)

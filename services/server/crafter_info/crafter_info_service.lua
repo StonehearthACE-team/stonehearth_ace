@@ -19,14 +19,13 @@ function CrafterInfoService:initialize()
       self._init_listener = nil
       self:_on_init()
    end)
-   self._init_listener_2 = radiant.events.listen_once(stonehearth, 'radiant:new_game', function()
-      self._init_listener_2 = nil
-      self:_on_init()
+   self._init_listener_2 = radiant.events.listen(radiant, 'stonehearth_ace:player_embarked', function(args)
+      self:get_crafter_info(args.player_id)
    end)
 
-   radiant.events.listen(radiant, 'radiant:client_joined', function(e)
-      self:_create_kingdom_listener(e.player_id)
-   end)
+   -- radiant.events.listen(radiant, 'radiant:client_joined', function(e)
+   --    self:_create_kingdom_listener(e.player_id)
+   -- end)
 end
 
 function CrafterInfoService:destroy()
