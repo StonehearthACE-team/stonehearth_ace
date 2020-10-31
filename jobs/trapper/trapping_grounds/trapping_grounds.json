@@ -2,6 +2,9 @@
    "type": "entity",
    "components": {
       "stonehearth:trapping_grounds": {
+         "max_traps": 4,
+         "min_distance_between_traps": 12,
+         "check_traps_interval": "6h",
          "trappable_animals": {
             "critters": {
                "name": "i18n(stonehearth_ace:data.trapping.all_trappable_animals.trappable_animals.critters.name)",
@@ -162,5 +165,14 @@
          }
       },
       "stonehearth_ace:output": {}
+   },
+   "entity_data": {
+      "stonehearth:designation": {
+         "allow_placed_items": true
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:jobs.trapper.trapping_grounds.display_name)",
+         "description": "i18n(stonehearth:jobs.trapper.trapping_grounds.description)"
+      }
    }
 }

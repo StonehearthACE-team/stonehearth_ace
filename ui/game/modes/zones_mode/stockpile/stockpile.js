@@ -1,4 +1,26 @@
 App.StonehearthStockpileView.reopen({
+   ace_components: {
+      'stonehearth:expendable_resources' : {},
+      'stonehearth:workshop': {},
+      "stonehearth:storage" : {
+         "item_tracker" : {
+            "tracking_data" : {
+               "*" : {
+                  "uri" : {},
+                  "canonical_uri" : {}
+               }
+            }
+         }
+      },
+   },
+
+   init: function() {
+      var self = this;
+      stonehearth_ace.mergeInto(self.components, self.ace_components)
+
+      self._super();
+   },
+
    destroy: function() {
       if (self._townTrace) {
          self._townTrace.destroy();
@@ -137,6 +159,66 @@ App.StonehearthStockpileView.reopen({
          defaultStorage.prop('checked', false);
       }
    }.observes('model.uri'),
+
+   _updateTotalFuel: function() {
+      var self = this;
+      var perCraft = self.get('fuelPerCraft');
+      var level = self.get('fuelLevel');
+      var potential = self.get('potentialFuel');
+
+      if (!perCraft || level == null || potential == null) {
+         return;
+      }
+
+      var total = level + potential;
+
+      self.set('totalFuel', total);
+      self.set('totalCrafts', Math.floor(total / perCraft));
+   }.observes('fuelPerCraft', 'fuelLevel', 'potentialFuel'),
+
+   _updateIsWorkshop: function() {
+      var self = this;
+      var ws = self.get('model.stonehearth:workshop');
+      self.set('isWorkshop', ws != null);
+      self.set('fuelPerCraft', ws && ws.fuel_per_craft || null);
+   }.observes('model.stonehearth:workshop'),
+
+   _updateFuelLevel: function() {
+      var self = this;
+      var fuelLevel = self.get('model.stonehearth:expendable_resources.resources.fuel_level');
+      self.set('fuelLevel', fuelLevel);
+   }.observes('model.stonehearth:expendable_resources.resources.fuel_level'),
+
+   _updateItemsFuel : function() {
+      var self = this;
+      var tracker = self.get('model.stonehearth:storage.item_tracker');
+      var fuelLevel = 0;
+      // count up fuel amount in stored items
+      radiant.each(tracker.tracking_data, function (uri, uri_entry) {
+         var entity_data = self._getEntityData(uri_entry);
+         var fuelData = entity_data && entity_data['stonehearth_ace:fuel'];
+         if (fuelData) {
+            var fuelAmount = fuelData.fuel_amount || 1;
+            radiant.each(uri_entry.item_qualities, function (item_quality_key, item) {
+               fuelLevel += fuelAmount * item.count;
+            });
+         }
+      });
+
+      self.set('potentialFuel', fuelLevel);
+   }.observes('model.uri', 'model.stonehearth:storage.item_tracker'),
+
+   _getEntityData: function(item) {
+      if (item.canonical_uri && item.canonical_uri.entity_data) {
+         return item.canonical_uri.entity_data;
+      }
+
+      if (item.uri.entity_data) {
+         return item.uri.entity_data;
+      }
+
+      return null;
+   },
 
    isSingleFilter: function() {
       return this.get('model.stonehearth:storage.is_single_filter');

@@ -26,6 +26,10 @@ function AceWorkshopComponent:activate()
       end
    end
 
+   -- remote to client for fuel display in stockpile window
+   self._sv.fuel_per_craft = self:get_fuel_per_craft()
+   self.__saved_variables:mark_changed()
+
    if self._ace_old_activate then
       self:_ace_old_activate()
    end

@@ -2,11 +2,24 @@ local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
 local rng = _radiant.math.get_default_rng()
-local log = radiant.log.create_logger('trapping')
+local log = radiant.log.create_logger('trapping_grounds')
 local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 local TrappingGroundsComponent = require 'stonehearth.components.trapping.trapping_grounds_component'
 
 local AceTrappingGroundsComponent = class()
+
+local _reloaded_trapping_grounds_json
+
+AceTrappingGroundsComponent._ace_old_activate = TrappingGroundsComponent.activate
+function AceTrappingGroundsComponent:activate()
+   if not _reloaded_trapping_grounds_json then
+      log:debug('reloading trapping grounds json')
+      _reloaded_trapping_grounds_json = true
+      radiant.resources.load_json(self._entity:get_uri(), false, false, true)  -- we need to clear/reload the cache
+   end
+
+   self:_ace_old_activate()
+end
 
 AceTrappingGroundsComponent._ace_old_load_tuning = TrappingGroundsComponent.load_tuning
 function AceTrappingGroundsComponent:load_tuning(json)
@@ -34,6 +47,10 @@ function AceTrappingGroundsComponent:destroy()
    if self._wilderness_listener then
       self._wilderness_listener:destroy()
       self._wilderness_listener = nil
+   end
+   if self._biome_set_listener then
+      self._biome_set_listener:destroy()
+      self._biome_set_listener = nil
    end
 
    self:_ace_old_destroy()
