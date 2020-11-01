@@ -9,12 +9,8 @@
          }
       },
       "mob": {
-         "align_to_grid": [
-            "x",
-            "z"
-         ],
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": 0, "y": 0, "z": 0 }
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       },
       "render_info": {
          "scale": 0.14,
@@ -30,7 +26,13 @@
          "description": "i18n(stonehearth_ace:entities.furniture.porcelain_display_cabinet.porcelain_display_cabinet_ghost.description)",
          "icon": "file(porcelain_display_cabinet.png)",
          "category": "furniture",
-         "material_tags":["clay", "porcelain", "furniture", "crafted", "stockpile_furniture"]
+         "material_tags": [
+            "clay",
+            "porcelain",
+            "furniture",
+            "crafted",
+            "stockpile_furniture"
+         ]
       }
    }
 }

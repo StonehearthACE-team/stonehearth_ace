@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_fermenting_vat:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
    "components": {
       "model_variants": {
          "default": {
@@ -7,27 +10,13 @@
                "file(brewer_fermenting_vat_ale.qb)"
             ]
          }
-      },
-      "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
-      },
-      "render_info": {
-         "color_map": "stonehearth_ace:color_map:ace",
-         "material_maps": [
-            "/stonehearth/data/materials/material_maps/mob_material_map.json"
-         ]
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:jobs.brewer.brewer_fermenting_vat_ale.display_name)",
          "description": "i18n(stonehearth_ace:jobs.brewer.brewer_fermenting_vat_ale.description)",
-         "icon": "file(brewer_fermenting_vat_ale.png)",
-         "category": "workshops",
-         "material_tags": [
-            "stockpile_tool"
-         ]
+         "icon": "file(brewer_fermenting_vat_ale.png)"
       }
    }
 }

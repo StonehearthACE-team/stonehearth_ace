@@ -1,6 +1,9 @@
 {
    "type": "entity",
-   "mixins": "file(brewer_wine_cask_empty_ghost.json)",
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_wine_cask",
+      "file(brewer_wine_cask_empty_ghost.json)"
+   ],
    "components": {
       "stonehearth:entity_forms": {
          "ghost_form": "file(brewer_wine_cask_empty_ghost.json)",

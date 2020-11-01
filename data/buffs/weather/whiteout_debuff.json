@@ -29,10 +29,12 @@
    },
    "script": "stonehearth_ace:buff_scripts:periodic_buff_chance",
    "script_info": {
-      "immunity_uri": ["stonehearth_ace:buffs:weather:freezing_resist"],
+      "immunity_uri": [
+         "stonehearth_ace:buffs:weather:freezing_resist"
+      ],
       "periodic_chance_buff": {
-			"stonehearth_ace:buffs:wounds:frostbite": 0.005
-		},
+         "stonehearth_ace:buffs:wounds:frostbite": 0.003
+      },
       "tick": "25m"
    },
    "set_posture": "stonehearth:cover_face"

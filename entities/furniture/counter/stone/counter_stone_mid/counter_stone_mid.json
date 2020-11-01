@@ -1,29 +1,14 @@
 {
    "type": "entity",
-   "mixins": "file(counter_stone_mid_ghost.json)",
+   "mixins": [
+      "stonehearth_ace:mixins:furniture:counter",
+      "file(counter_stone_mid_ghost.json)"
+   ],
    "components": {
       "stonehearth:entity_forms": {
          "iconic_form": "file(counter_stone_mid_iconic.json)",
          "ghost_form": "file(counter_stone_mid_ghost.json)",
          "placeable_on_ground": true
-      },
-      "region_collision_shape": {
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 2, "z": 1 }
-            }
-         ]
-      },
-      "movement_modifier_shape": {
-         "modifier": -0.5,
-         "nav_preference_modifier": -0.5,
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 3, "z": 1 }
-            }
-         ]
       }
    },
    "entity_data": {

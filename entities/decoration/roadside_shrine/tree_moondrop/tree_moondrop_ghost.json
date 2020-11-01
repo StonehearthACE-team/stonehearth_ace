@@ -1,21 +1,20 @@
 {
    "components": {
+	   "mixintypes": {
+			"mob": "override"
+		},
       "mob": {
-			"align_to_grid": [
-				"x",
-				"z"
-			],
-			"model_origin": {
-				"x": 0.075,
-				"y": 0,
-				"z": -0.075
-			},
-			"region_origin": {
-				"x": 0,
-				"y": 0,
-				"z": 0
-			}
-		}
+         "model_origin": {
+            "x": -0.425,
+            "y": 0,
+            "z": -0.575
+         },
+         "region_origin": {
+            "x": -0.5,
+            "y": 0,
+            "z": -0.5
+         }
+      }
    },
    "entity_data": {
       "stonehearth:catalog": {
