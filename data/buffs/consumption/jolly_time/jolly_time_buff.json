@@ -1,0 +1,15 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "consumption_jolly_time",
+   "unique_in_category": true,
+   "rank": 3,
+   "display_name": "i18n(stonehearth_ace:data.buffs.jolly_time.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.jolly_time.description)",
+   "icon": "file(jolly_time_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "thought": "stonehearth_ace:thoughts:drinking:jolly_time",
+   "modifiers": {},
+   "disallowed_buffs": []
+}

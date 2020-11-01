@@ -9,12 +9,8 @@
          }
       },
       "mob": {
-         "align_to_grid": [
-            "x",
-            "z"
-         ],
-         "model_origin": { "x": -0.075, "y": 0, "z": -0.075 },
-         "region_origin": { "x": 0, "y": 0, "z": 0 }
+         "model_origin": { "x": 0.425, "y": 0, "z": -0.575 },
+         "region_origin": { "x": 0.5, "y": 0, "z": -0.5 }
       },
       "render_info": {
          "scale": 0.15
@@ -26,7 +22,11 @@
          "description": "i18n(stonehearth_ace:entities.decoration.statue.statue_sir_onep_and_gary.statue_sir_onep_and_gary_ghost.description)",
          "icon": "file(statue_sir_onep_and_gary.png)",
          "category": "decoration",
-         "material_tags":["stone", "crafted", "stockpile_decoration"]
+         "material_tags": [
+            "stone",
+            "crafted",
+            "stockpile_decoration"
+         ]
       }
    }
 }

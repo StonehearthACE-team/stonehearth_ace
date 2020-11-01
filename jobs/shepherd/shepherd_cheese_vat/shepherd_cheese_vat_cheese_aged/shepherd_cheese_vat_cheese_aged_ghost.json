@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": [
+      "stonehearth_ace:mixins:shepherd_cheese_vat:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
    "components": {
       "model_variants": {
          "default": {
@@ -7,25 +10,13 @@
                "file(shepherd_cheese_vat_cheese_aged.qb)"
             ]
          }
-      },
-      "mob": {
-         "align_to_grid": [
-            "x",
-            "z"
-         ],
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": 0, "y": 0, "z": 0 }
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_aged.display_name)",
          "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_aged.description)",
-         "icon": "file(shepherd_cheese_vat_cheese_aged.png)",
-         "category": "workshops",
-         "material_tags": [
-            "stockpile_tool"
-         ]
+         "icon": "file(shepherd_cheese_vat_cheese_aged.png)"
       }
    }
 }

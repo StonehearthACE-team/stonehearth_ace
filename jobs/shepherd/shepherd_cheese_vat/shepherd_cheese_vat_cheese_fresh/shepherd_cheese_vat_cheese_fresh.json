@@ -1,28 +1,15 @@
 {
    "type": "entity",
-   "mixins": "file(shepherd_cheese_vat_cheese_fresh_ghost.json)",
+   "mixins": [
+      "stonehearth_ace:mixins:shepherd_cheese_vat",
+      "file(shepherd_cheese_vat_cheese_fresh_ghost.json)"
+   ],
    "components": {
       "stonehearth:entity_forms": {
          "ghost_form": "file(shepherd_cheese_vat_cheese_fresh_ghost.json)",
          "iconic_form": "file(shepherd_cheese_vat_cheese_fresh_iconic.json)",
          "placeable_on_ground": true,
          "hide_undeploy_ui": true
-      },
-      "destination": {
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 1, "z": 1 }
-            }
-         ]
-      },
-      "region_collision_shape": {
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 2, "z": 1 }
-            }
-         ]
       },
       "stonehearth:evolve": {},
       "stonehearth_ace:stump": {},

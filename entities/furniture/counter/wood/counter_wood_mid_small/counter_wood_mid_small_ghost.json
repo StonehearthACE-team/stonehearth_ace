@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": [
+      "stonehearth_ace:mixins:furniture:counter:slim:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -8,14 +11,6 @@
                "file(counter_wood_mid_small.qb)"
             ]
          }
-      },
-      "mob": {
-         "align_to_grid": [
-            "z"
-         ],
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0 },
-         "allow_vertical_adjacent": true
       }
    },
    "entity_data": {
@@ -23,13 +18,9 @@
          "display_name": "i18n(stonehearth_ace:entities.furniture.counter.wood.counter_wood_mid_small.display_name)",
          "description": "i18n(stonehearth_ace:entities.furniture.counter.wood.counter_wood_mid_small.description)",
          "icon": "file(counter_wood_mid_small.png)",
-         "category": "furniture",
          "material_tags": [
             "wood",
-            "counter",
-            "furniture",
-            "crafted",
-            "stockpile_furniture"
+            "crafted"
          ]
       }
    }

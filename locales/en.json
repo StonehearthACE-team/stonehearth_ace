@@ -3035,8 +3035,8 @@
             "display_name": "Relaxing Time",
             "description": "The hearthling's mood is increased for a good time."
          },
-         "joyful_time": {
-            "display_name": "Joyful Time",
+         "jolly_time": {
+            "display_name": "Jolly Time",
             "description": "The hearthling's mood is extremely increased for a shorter time."
          },
          "recuperating": {
@@ -3052,19 +3052,19 @@
          "darkness": {
             "dark_debuff": {
                "display_name": "Complete Darkness",
-               "description": "This hearthling can't really see much past the reach of their own hands."
+               "description": "This hearthling can't really see much past the reach of their own hands.<ul><li>Diligence and Crafting Speed are severely reduced</li><li>Movement speed is greatly limited</li></ul>"
             },
             "shade_debuff": {
                "display_name": "In the Shade",
-               "description": "This hearthlings can barely see their immediate surroundings."
+               "description": "This hearthlings can barely see their immediate surroundings.<ul><li>Diligence and Crafting Speed are reduced</li><li>Movement speed is somewhat limited</li></ul>"
             },
             "dim_light_debuff": {
                "display_name": "Dim Light",
-               "description": "This hearthling can see mostly alright under this low light level."
+               "description": "This hearthling can see mostly alright under this low light level.<ul><li>Diligence and Crafting Speed are very slightly reduced</li></ul>"
             },
             "bright_buff": {
                "display_name": "Brightness",
-               "description": "This area radiates with brightness, keeping this hearthling alert and with a good visibility!"
+               "description": "This area radiates with brightness, keeping this hearthling alert and with a good visibility!<ul><li>Diligence, Willpower and Crafting Speed are slightly increased</li></ul>"
             }
          }
       },
@@ -5670,7 +5670,7 @@
             },
             "broth_recipe": {
                "recipe_name": "Broth",
-               "description": "A very nutritious and filling simmer, broth is both an ingredient or a meal on its own.",
+               "description": "A very nutritious and filling simmer, broth is either an ingredient or a meal on its own.",
                "flavor": "It isn't exactly tasty, though..."
             },
             "bone_marrow_recipe": {

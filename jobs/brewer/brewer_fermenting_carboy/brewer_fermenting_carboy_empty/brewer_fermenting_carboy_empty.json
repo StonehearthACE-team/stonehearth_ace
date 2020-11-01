@@ -1,27 +1,14 @@
 {
    "type": "entity",
-   "mixins": "file(brewer_fermenting_carboy_empty_ghost.json)",
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_fermenting_carboy",
+      "file(brewer_fermenting_carboy_empty_ghost.json)"
+   ],
    "components": {
       "stonehearth:entity_forms": {
          "ghost_form": "file(brewer_fermenting_carboy_empty_ghost.json)",
          "iconic_form": "file(brewer_fermenting_carboy_empty_iconic.json)",
          "placeable_on_ground": true
-      },
-      "destination": {
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 1, "z": 1 }
-            }
-         ]
-      },
-      "region_collision_shape": {
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 3, "z": 1 }
-            }
-         ]
       },
       "stonehearth_ace:transform": {}
    },
