@@ -569,6 +569,13 @@ function AceTown:_suspend_citizen(citizen_id, citizen)
       crafter_component:clean_up_order()
    end
 
+   -- if they're currently in bed or some other mount, remove them from that
+   local parent = radiant.entities.get_parent(citizen)
+   local mount_component = parent and parent:get_component('stonehearth:mount')
+   if mount_component and mount_component:is_in_use() and mount_component:get_user() == citizen then
+      mount_component:dismount(false)  -- false to not put them back in the world
+   end
+
    self:_ace_old__suspend_citizen(citizen_id, citizen)
 end
 
