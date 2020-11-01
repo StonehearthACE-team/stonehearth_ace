@@ -21,9 +21,9 @@ radiant.mixin(AceShepherdClass, CraftingJob)
 
 AceShepherdClass._ace_old_promote_craft = AceShepherdClass.promote
 AceShepherdClass._ace_old_promote_shep = ShepherdClass.promote
-function AceShepherdClass:promote()
-   self:_ace_old_promote_craft()
-   self:_ace_old_promote_shep()
+function AceShepherdClass:promote(json_path)
+   self:_ace_old_promote_craft(json_path)
+   self:_ace_old_promote_shep(json_path)
 end
 
 AceShepherdClass._ace_old_demote_craft = AceShepherdClass.demote

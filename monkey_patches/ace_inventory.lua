@@ -1,6 +1,9 @@
 -- patching this only to automatically add our own item trackers
 local Material = require 'stonehearth.components.material.material'
 local Inventory = require 'stonehearth.services.server.inventory.inventory'
+local RestockDirector = require 'stonehearth.services.server.inventory.restock_director'
+local constants = require 'stonehearth.constants'
+
 local AceInventory = class()
 local log = radiant.log.create_logger('inventory')
 
@@ -20,6 +23,41 @@ function AceInventory:_add_more_trackers()
          self:add_item_tracker(tracker)
       end
    end
+end
+
+-- ACE: patched to add ignore_restock storage property
+function AceInventory:_create_restock_directors()
+   local RESTOCK_DIRECTOR_INTERVAL = '30m'
+   local RESTOCK_DIRECTOR_MAX_IDLE_TIME = stonehearth.calendar:parse_duration('3h')
+
+   local make_restock_director = function(type, allow_stored, predicate)
+      local director = RestockDirector(self, allow_stored, predicate)
+      self._restock_directors[type] = director
+
+      -- Desperate times require desperate measure. For unclear reasons sometimes after a while the restock director gets stuck.
+      -- So if it does, we reboot the whole thing.
+      -- No, I'm not proud of this.
+      self._restock_director_watchdogs[type] = stonehearth.calendar:set_interval('restock director watchdog', RESTOCK_DIRECTOR_INTERVAL, function()
+            if director:has_items_in_queue() and stonehearth.calendar:get_elapsed_time() - director:get_last_success_time() > RESTOCK_DIRECTOR_MAX_IDLE_TIME then
+               -- Hasn't suceessfully restocked in a while despite having items in the queue. Reboot the whole darn thing.
+               log:error('Restock director stuck. Rebooting it...')
+               director:destroy()
+               director = RestockDirector(self, allow_stored, predicate)
+               self._restock_directors[type] = director
+            end
+         end)
+   end
+
+   make_restock_director(constants.inventory.restock_director.types.RESTOCK, false, function(storage)
+         if not storage:get_ignore_restock() and storage:is_public() then
+            local type = storage:get_type()
+            return type ~= 'output_crate' and type ~= 'input_crate'
+         end
+         return false
+      end)
+   make_restock_director(constants.inventory.restock_director.types.INPUT_BIN, true, function(storage)
+         return not storage:get_ignore_restock() and storage:is_public() and storage:get_type() == 'input_crate'
+      end)
 end
 
 -- TODO: Kill this once we're sure about the restock director.
