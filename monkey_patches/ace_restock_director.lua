@@ -5,6 +5,27 @@ local get_world_location = radiant.entities.get_world_location
 local MAX_EXTRA_ITEMS = constants.inventory.restock_director.MAX_EXTRA_ITEMS
 local AceRestockDirector = radiant.class()
 
+-- if the item is in a storage that ignores restocking, don't add it to the queue
+function AceRestockDirector:_on_item_added(item)
+   if not item or not item:is_valid() then
+      return
+   end
+
+   local current_storage = self._inventory:container_for(item)
+   local current_storage_comp = current_storage and current_storage:get_component('stonehearth:storage')
+   if current_storage_comp and current_storage_comp:get_ignore_restock() then
+      return
+   end
+
+   local item_id = item:get_id()
+
+   if not self._covered_items[item_id] and not self._failed_items[item_id] then
+      self._restockable_items_queue:push(self:_rate_item(item), item)
+      -- If any new errands are now possible, generate them.
+      self:_mark_ready_to_generate_new_errands()
+   end
+end
+
 function AceRestockDirector:_generate_next_errand()
    if not next(self._storages_by_filter) then
       return  -- We have nowhere to restock things to.
@@ -31,7 +52,7 @@ function AceRestockDirector:_generate_next_errand()
       if item:is_valid() then
          local item_id = item:get_id()
 
-         if stonehearth.ai:fast_call_filter_fn(self._is_restockable_predicate, item) and not self._failed_items[item_id] and not self._covered_items[item_id] then
+         if not self._failed_items[item_id] and not self._covered_items[item_id] and stonehearth.ai:fast_call_filter_fn(self._is_restockable_predicate, item) then
             -- Select the best storage for this item.
             for _, storage_entry in pairs(self._storages_by_filter) do
                if stonehearth.ai:fast_call_filter_fn(storage_entry.filter_fn, item) then
@@ -141,13 +162,18 @@ function AceRestockDirector:_generate_next_errand()
       end)
 end
 
+-- if the item is currently in a storage, either it doesn't match the filter or this is the input_bin restock director
+-- do a quick check on whether it's properly stored to see if input bin priority checks are needed
 function AceRestockDirector:_is_storage_higher_priority_for_item(item, new_storage_comp)
    local current_storage = self._inventory:container_for(item)
-   if not current_storage or current_storage:get_component('stonehearth:storage'):get_type() ~= 'input_crate' then
+   local current_storage_comp = current_storage and current_storage:get_component('stonehearth:storage')
+   -- not in storage, or not supposed to be in this storage
+   if not current_storage or not current_storage_comp:get_passed_items()[item:get_id()] then
       return true
    end
 
-   if new_storage_comp:get_type() ~= 'input_crate' then
+   -- in an input crate, and destination isn't an input crate
+   if current_storage_comp:get_type() == 'input_crate' and new_storage_comp:get_type() ~= 'input_crate' then
       return false
    end
 

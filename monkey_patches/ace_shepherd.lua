@@ -16,6 +16,37 @@ radiant.mixin(AceShepherdClass, CraftingJob)
 --    CraftingJob.__user_destroy(self)
 -- end
 
+-- the crafting job has promote, demote, _create_listeners, and _remove_listeners
+-- we need to also call the shepherd job version of them and not let it get completely overridden
+
+AceShepherdClass._ace_old_promote_craft = AceShepherdClass.promote
+AceShepherdClass._ace_old_promote_shep = ShepherdClass.promote
+function AceShepherdClass:promote(json_path)
+   self:_ace_old_promote_craft(json_path)
+   self:_ace_old_promote_shep(json_path)
+end
+
+AceShepherdClass._ace_old_demote_craft = AceShepherdClass.demote
+AceShepherdClass._ace_old_demote_shep = ShepherdClass.demote
+function AceShepherdClass:demote()
+   self:_ace_old_demote_craft()
+   self:_ace_old_demote_shep()
+end
+
+AceShepherdClass._ace_old__create_listeners_craft = AceShepherdClass._create_listeners
+AceShepherdClass._ace_old__create_listeners_shep = ShepherdClass._create_listeners
+function AceShepherdClass:_create_listeners()
+   self:_ace_old__create_listeners_craft()
+   self:_ace_old__create_listeners_shep()
+end
+
+AceShepherdClass._ace_old__remove_listeners_craft = AceShepherdClass._remove_listeners
+AceShepherdClass._ace_old__remove_listeners_shep = ShepherdClass._remove_listeners
+function AceShepherdClass:_remove_listeners()
+   self:_ace_old__remove_listeners_craft()
+   self:_ace_old__remove_listeners_shep()
+end
+
 AceShepherdClass._ace_old_can_find_animal_in_world = ShepherdClass.can_find_animal_in_world
 function AceShepherdClass:can_find_animal_in_world()
    if radiant.entities.has_buff(self._sv._entity, 'stonehearth_ace:buffs:shepherd:stenched_minor') then

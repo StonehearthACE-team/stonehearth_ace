@@ -138,7 +138,7 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
 
    _updateTendQuality: function() {
       var self = this;
-      var tendQuality = Math.min(4, Math.floor(self.get('model.stonehearth:expendable_resources.resources.tend_quality')));
+      var tendQuality = Math.max(1, Math.min(4, Math.floor(self.get('model.stonehearth:expendable_resources.resources.tend_quality'))));
       self.set('tendQuality', tendQuality);
       self.set('tendQualityClass', 'quality' + tendQuality);
    }.observes('model.stonehearth:expendable_resources.resources.tend_quality'),

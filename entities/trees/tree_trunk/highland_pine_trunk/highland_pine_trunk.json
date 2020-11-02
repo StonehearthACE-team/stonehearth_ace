@@ -25,17 +25,14 @@
          "description": "chop_tree"
       },
       "mob": {
-         "align_to_grid": [
-            "x"
-         ],
-         "model_origin": { "x": 0, "y": 0, "z": 0.5 },
-         "region_origin": { "x": 0, "y": 0, "z": 0.5 }
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       },
       "destination": {
          "region": [
             {
                "min": { "x": -4, "y": 0, "z": -1 },
-               "max": { "x": 4, "y": 1, "z": 1 }
+               "max": { "x": 5, "y": 1, "z": 1 }
             }
          ]
       },
@@ -43,7 +40,7 @@
          "region": [
             {
                "min": { "x": -4, "y": 0, "z": -1 },
-               "max": { "x": 4, "y": 2, "z": 1 }
+               "max": { "x": 5, "y": 2, "z": 1 }
             }
          ]
       },

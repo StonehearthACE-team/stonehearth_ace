@@ -45,6 +45,8 @@ function AceStorageComponent:activate()
       self._limited_all_filter = filter
    end
 
+   self._ignore_restock = json.ignore_restock
+
    local bounds = stonehearth.constants.inventory.input_bins
    local priority_range = bounds.MAX_PRIORITY - bounds.MIN_PRIORITY
    local priority = math.min(math.max(json.priority or 1, bounds.MIN_PRIORITY), bounds.MAX_PRIORITY)
@@ -95,6 +97,10 @@ end
 
 function AceStorageComponent:get_input_bin_priority()
    return self._input_bin_priority
+end
+
+function AceStorageComponent:get_ignore_restock()
+   return self._ignore_restock
 end
 
 return AceStorageComponent
