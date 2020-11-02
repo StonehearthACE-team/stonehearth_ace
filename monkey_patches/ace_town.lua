@@ -1,3 +1,4 @@
+local Entity = _radiant.om.Entity
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local healing_lib = require 'stonehearth_ace.ai.lib.healing_lib'
@@ -577,6 +578,71 @@ function AceTown:_suspend_citizen(citizen_id, citizen)
    end
 
    self:_ace_old__suspend_citizen(citizen_id, citizen)
+end
+
+function AceTown:request_placement_task(iconic_uri, quality, require_exact)
+   local quality_str = quality and tostring(quality) or 'any'
+   local require_exact_str = require_exact and '_exact' or ''
+   local key = iconic_uri .. stonehearth.constants.item_quality.KEY_SEPARATOR .. quality_str .. require_exact_str
+   if not self._placement_tasks[key] then
+      self._placement_tasks[key] = {
+         count = 1,
+         iconic_uri = iconic_uri, 
+         quality = quality ~= nil and quality or -1,
+         require_exact = require_exact,
+      }
+   else
+      self._placement_tasks[key].count = self._placement_tasks[key].count + 1
+   end
+
+   radiant.events.trigger_async(self, 'stonehearth:town:place_item_types_changed')
+end
+
+function AceTown:unrequest_placement_task(iconic_uri, quality, require_exact)
+   local quality_str = quality and tostring(quality) or 'any'
+   local require_exact_str = require_exact and '_exact' or ''
+   local key = iconic_uri .. stonehearth.constants.item_quality.KEY_SEPARATOR .. quality_str .. require_exact_str
+   local task = self._placement_tasks[key]
+   if not task then
+      return
+   end
+
+   task.count = task.count - 1
+   if task.count <= 0 then
+      self._placement_tasks[key] = nil
+   end
+end
+
+--Tell the harvesters to remove an item permanently from the world
+--If there was already an outstanding task on the object, make sure to cancel it first.
+-- ACE: only require a task if it's not an "item" (otherwise just destroy it)
+function AceTown:clear_item(item)
+   if not radiant.util.is_a(item, Entity) then
+      return
+   end
+
+   -- Dont't clear items that aren't yours
+   if radiant.entities.is_owned_by_another_player(item, self._sv.player_id) then
+      return
+   end
+
+   self:remove_previous_task_on_item(item)
+
+   if stonehearth.catalog:is_item(item:get_uri()) then
+      radiant.entities.kill_entity(item, { source_id = self._sv.player_id })
+      return
+   end
+
+   local clear_action = 'stonehearth:clear_item'
+   local task_tracker_component = item:add_component('stonehearth:task_tracker')
+   if task_tracker_component:is_activity_requested(clear_action) then
+      return -- If someone has requested to clear this item already
+   end
+
+   task_tracker_component:cancel_current_task(false) -- false for don't trigger reconsider because we'll do so with the request task
+
+   task_tracker_component:request_task(self._sv.player_id, nil, clear_action, "stonehearth:effects:clear_effect")
+   task_tracker_component:cancel_task_if_entity_moves()
 end
 
 return AceTown

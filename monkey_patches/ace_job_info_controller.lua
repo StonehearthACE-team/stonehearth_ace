@@ -13,11 +13,32 @@ function AceJobInfoController:foreach_available_recipes(fn)
    end
 end
 
-function AceJobInfoController:job_can_craft(product_uri, require_unlocked)
+function AceJobInfoController:job_can_craft(product_uri, require_unlocked, require_exact)
    if not self._sv.order_list then
       return false
    end
 
+   local can_craft = self:_job_can_craft_exact(product_uri, require_unlocked)
+   if can_craft or require_exact then
+      return can_craft and product_uri
+   end
+
+   -- if we're not requiring an exact uri match, lookup any alternates
+   local alternates = radiant.entities.get_alternate_uris(product_uri)
+   if alternates then
+      for uri, _ in pairs(alternates) do
+         if uri ~= product_uri then
+            if self:_job_can_craft_exact(uri, require_unlocked) then
+               return uri
+            end
+         end
+      end
+   end
+
+   return false
+end
+
+function AceJobInfoController:_job_can_craft_exact(product_uri, require_unlocked)
    local recipes = self._craftable_recipes[product_uri]
    if not recipes or not next(recipes) then
       return false
@@ -39,13 +60,15 @@ function AceJobInfoController:job_can_craft(product_uri, require_unlocked)
    return true
 end
 
-function AceJobInfoController:queue_order_if_possible(product_uri, amount, building)
+function AceJobInfoController:queue_order_if_possible(product_uri, amount, building, require_exact)
    -- if we can craft this product, queue it up and return true
-   if not self:job_can_craft(product_uri, true) then
+   local craft_uri = self:job_can_craft(product_uri, true, require_exact)
+   if not craft_uri then
       return false
    end
 
-   return self._sv.order_list:request_order_of(self._sv.player_id, product_uri, amount, building)
+   -- queue up the appropriate uri (could be an alternate)
+   return self._sv.order_list:request_order_of(self._sv.player_id, craft_uri, amount, building)
 end
 
 function AceJobInfoController:remove_craft_orders_for_building(bid)

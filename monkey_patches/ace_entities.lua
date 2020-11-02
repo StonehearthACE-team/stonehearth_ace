@@ -407,4 +407,14 @@ function ace_entities.is_entity_protected_from_targeting(entity)
    return radiant.entities.is_material(entity, 'protected_from_targeting')
 end
 
+function ace_entities.get_alternate_uris(uri)
+   local catalog_data = stonehearth.catalog:get_catalog_data(uri)
+   return catalog_data and catalog_data.alternate_uris
+end
+
+function ace_entities.get_alternate_iconic_uris(uri)
+   local catalog_data = stonehearth.catalog:get_catalog_data(uri)
+   return catalog_data and (catalog_data.iconic_uri and catalog_data.alternate_uris or catalog_data.alternate_iconic_uris)
+end
+
 return ace_entities

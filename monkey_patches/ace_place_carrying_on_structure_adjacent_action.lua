@@ -2,23 +2,23 @@ local AcePlaceItemOnStructureAdjacent = radiant.class()
 
 function AcePlaceItemOnStructureAdjacent:run(ai, entity, args)
    local ghost = args.ghost
-   local options = ghost:get_component('stonehearth:ghost_form')
-                           :get_placement_info()
+   local ghost_comp = ghost:get_component('stonehearth:ghost_form')
+   local options = ghost_comp:get_placement_info()
    if not options then
       ai:abort('placement cancelled before arriving?')
    end
 
-   local iconic_uri = options.iconic_uri
    local carrying = radiant.entities.get_carrying(entity)
    if not carrying then
       ai:abort('Not actually carrying anything.')  -- Observed in the wild, but no clear repro
    end
-   if carrying:get_uri() ~= iconic_uri then
+   if not ghost_comp:can_iconic_be_used(carrying:get_uri()) then
+      -- check if it's an alternate (if that's allowed)
       ai:abort('carrying wrong item to place on structure adjacent.')
    end
    local iconic_component = carrying:get_component('stonehearth:iconic_form')
    local root_entity = iconic_component:get_root_entity()
-   local requested_quality = ghost:get_component('stonehearth:ghost_form'):get_requested_quality()
+   local requested_quality = ghost_comp:get_requested_quality()
    if requested_quality and radiant.entities.get_item_quality(root_entity) ~= requested_quality then
       ai:abort('carrying wrong item quality to place on structure adjacent.')
    end
@@ -82,14 +82,14 @@ function AcePlaceItemOnStructureAdjacent:run(ai, entity, args)
                         :move_to_grid_aligned(position)
                         :turn_to(options.rotation)
 
-   local destination_comp = root_entity:get_component('destination')
-   if destination_comp then
-      destination_comp:set_region(destination_comp:get_region())
-   end
-   local rcs_comp = root_entity:get_component('region_collision_shape')
-   if rcs_comp then
-      rcs_comp:set_region(rcs_comp:get_region())
-   end
+   -- local destination_comp = root_entity:get_component('destination')
+   -- if destination_comp then
+   --    destination_comp:set_region(destination_comp:get_region())
+   -- end
+   -- local rcs_comp = root_entity:get_component('region_collision_shape')
+   -- if rcs_comp then
+   --    rcs_comp:set_region(rcs_comp:get_region())
+   -- end
 
    if options.ignore_gravity then
       root_entity:get_component('mob'):set_ignore_gravity(true)

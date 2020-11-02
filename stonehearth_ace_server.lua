@@ -10,7 +10,6 @@ local service_creation_order = {
 }
 
 local monkey_patches = {
-   --ace_place_carrying_on_structure_adjacent_action = 'stonehearth.ai.actions.place_carrying_on_structure_adjacent_action',
    ace_aggro_observer = 'stonehearth.ai.observers.aggro_observer',
    ace_ai_component = 'stonehearth.components.ai.ai_component',
    ace_animal_companion_script = 'stonehearth.data.traits.animal_companion.animal_companion_script',
@@ -78,6 +77,7 @@ local monkey_patches = {
    ace_geomancer = 'stonehearth.jobs.geomancer.geomancer',
    ace_get_food_from_container_adjacent = 'stonehearth.ai.actions.get_food_from_container_adjacent',
    ace_get_patrol_route_action = 'stonehearth.ai.actions.get_patrol_route_action',
+   ace_ghost_form_component = 'stonehearth.components.ghost_form.ghost_form_component',
    ace_growing_component = 'stonehearth.components.growing.growing_component',
    ace_guildmaster_town_bonus = 'stonehearth.data.town_bonuses.guildmaster_town_bonus',
    ace_harvest_crop_adjacent = 'stonehearth.ai.actions.harvest_crop_adjacent',
@@ -105,6 +105,7 @@ local monkey_patches = {
    ace_personality_component = 'stonehearth.components.personality.personality_component',
    ace_pet_component = 'stonehearth.components.pet.pet_component',
    ace_pillage_mission = 'stonehearth.services.server.game_master.controllers.missions.pillage_mission',
+   ace_place_carrying_on_structure_adjacent_action = 'stonehearth.ai.actions.place_carrying_on_structure_adjacent_action',
    ace_plant_field_adjacent_action = 'stonehearth.ai.actions.plant_field_adjacent_action',
    ace_player_jobs_controller = 'stonehearth.services.server.job.player_jobs_controller',
    ace_player_service = 'stonehearth.services.server.player.player_service',

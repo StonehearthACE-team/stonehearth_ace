@@ -4,6 +4,7 @@ local Material = require 'components.material.material'
 local log = radiant.log.create_logger('catalog')
 
 local catalog_lib = {}
+local _all_alternate_uris = {}
 
 local DEFAULT_CATALOG_DATA = {
    display_name = '',
@@ -51,6 +52,8 @@ function catalog_lib.load_catalog(catalog, added_cb)
       end
    end
 
+   _all_alternate_uris = {}
+
    -- for each mod
    for i, mod in ipairs(mods) do
       local manifest = radiant.resources.load_manifest(mod)
@@ -85,6 +88,30 @@ function catalog_lib.load_catalog(catalog, added_cb)
          if type_scripts then
             for _, script in ipairs(type_scripts) do
                script(catalog, full_alias, json, json_type, DEFAULT_CATALOG_DATA)
+            end
+         end
+      end
+   end
+
+   -- post-processing
+   -- go through the alternate uris and make sure their iconics are also associated with one another
+   local checked = {}
+   for _, alternates in pairs(_all_alternate_uris) do
+      if not checked[alternates] then
+         checked[alternates] = true
+
+         local alternate_iconic_uris = {}
+         for uri, _ in pairs(alternates) do
+            local catalog_data = catalog[uri]
+            if catalog_data then
+               catalog_data.alternate_iconic_uris = alternate_iconic_uris
+               local iconic_uri = catalog_data.iconic_uri
+               local iconic_data = iconic_uri and catalog[iconic_uri]
+               if iconic_data then
+                  _all_alternate_uris[iconic_uri] = alternate_iconic_uris
+                  alternate_iconic_uris[iconic_uri] = true
+                  iconic_data.alternate_uris = alternate_iconic_uris
+               end
             end
          end
       end
@@ -189,6 +216,20 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          end
          if catalog.subject_override ~= nil then
             catalog_data.subject_override = catalog.subject_override
+         end
+         if catalog.alternate_uri_for ~= nil then
+            local alternate_uri = catalog.alternate_uri_for
+            catalog_data.alternate_uris = catalog_lib._get_alternate_uris(alternate_uri, full_alias)
+            local alternate_catalog_data = catalog[alternate_uri]
+            if alternate_catalog_data then
+               alternate_catalog_data.alternate_uris = catalog_data.alternate_uris
+            end
+         else
+            local alternates = _all_alternate_uris[full_alias]
+            if alternates then
+               -- this is the original; the alternates already have their catalog_data.alternate_uris assigned
+               catalog_data.alternate_uris = alternates
+            end
          end
       end
    end
@@ -317,6 +358,20 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
    catalog[full_alias] = catalog_data
    result.catalog_data = catalog_data
    return result
+end
+
+function catalog_lib._get_alternate_uris(uri1, uri2)
+   local alternates = _all_alternate_uris[uri1] or _all_alternate_uris[uri2]
+   if not alternates then
+      alternates = {}
+   end
+
+   alternates[uri1] = true
+   alternates[uri2] = true
+   _all_alternate_uris[uri1] = alternates
+   _all_alternate_uris[uri2] = alternates
+
+   return alternates
 end
 
 function catalog_lib.get_equipment_types(json)

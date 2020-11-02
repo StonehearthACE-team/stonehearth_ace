@@ -141,6 +141,17 @@ function transform_lib.transform(entity, transformer, into_uri, options)
 
          resources_lib.request_auto_harvest(transformed_form, options.auto_harvest)
       end
+
+      -- check if the current entity is the town's banner or hearth; if so, change it to this one
+      local town = stonehearth.town:get_town(entity)
+      if town then
+         if town:get_banner() == entity then
+            town:set_banner(transformed_form)
+         end
+         if town:get_hearth() == entity then
+            town:set_hearth(transformed_form)
+         end
+      end
    end
 
    local transform_effect = options.transform_effect
