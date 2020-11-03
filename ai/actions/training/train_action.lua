@@ -29,6 +29,13 @@ function Train:start_thinking(ai, entity, args)
       return
    end
 
+   local weapon = stonehearth.combat:get_main_weapon(entity)
+   local weapon_data = weapon and radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data')
+   if not weapon_data then
+      ai:reject('entity has no weapon equipped for training')
+      return
+   end
+
    ai:set_think_output({entity = entity})
 end
 

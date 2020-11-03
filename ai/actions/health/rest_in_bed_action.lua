@@ -139,6 +139,12 @@ end
 function RestInBed:destroy()
    self:_clear_listener()
    if self._town then
+      -- don't unrequest the medic if they're incapacitated
+      local incapacitation = self._entity:get_component('stonehearth:incapacitation')
+      if incapacitation and incapacitation:is_incapacitated() then
+         return
+      end
+
       self._town:unrequest_medic(self._entity_id)
    end
 end
