@@ -217,19 +217,11 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          if catalog.subject_override ~= nil then
             catalog_data.subject_override = catalog.subject_override
          end
-         if catalog.alternate_uri_for ~= nil then
-            local alternate_uri = catalog.alternate_uri_for
-            catalog_data.alternate_uris = catalog_lib._get_alternate_uris(alternate_uri, full_alias)
-            local alternate_catalog_data = catalog[alternate_uri]
-            if alternate_catalog_data then
-               alternate_catalog_data.alternate_uris = catalog_data.alternate_uris
-            end
+         if catalog.alternate_builder_uri ~= nil then
+            catalog_data.alternate_uris = catalog_lib.set_alternate_uris(catalog, catalog.alternate_builder_uri, full_alias)
          else
-            local alternates = _all_alternate_uris[full_alias]
-            if alternates then
-               -- this is the original; the alternates already have their catalog_data.alternate_uris assigned
-               catalog_data.alternate_uris = alternates
-            end
+            -- this is the original; the alternates already have their catalog_data.alternate_uris assigned
+            catalog_data.alternate_uris = catalog_lib.get_alternate_uris(full_alias)
          end
       end
    end
@@ -360,18 +352,39 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
    return result
 end
 
-function catalog_lib._get_alternate_uris(uri1, uri2)
-   local alternates = _all_alternate_uris[uri1] or _all_alternate_uris[uri2]
-   if not alternates then
-      alternates = {}
+function catalog_lib.get_alternate_uris(uri)
+   return _all_alternate_uris[uri]
+end
+
+function catalog_lib.set_alternate_uris(catalog, uri1, uri2)
+   local alternates
+   local alternates1, alternates2 = _all_alternate_uris[uri1], _all_alternate_uris[uri2]
+   if alternates1 and alternates2 then
+      -- go through each in the alternates2 list and, if their catalog data exists, set them to the first one
+      for uri, _ in pairs(alternates2) do
+         catalog_lib._set_alternate_uris(catalog, uri, alternates1)
+      end
+      return alternates1
+   else
+      alternates = alternates1 or alternates2
+      if not alternates then
+         alternates = {}
+      end
    end
 
-   alternates[uri1] = true
-   alternates[uri2] = true
-   _all_alternate_uris[uri1] = alternates
-   _all_alternate_uris[uri2] = alternates
+   catalog_lib._set_alternate_uris(catalog, uri1, alternates)
+   catalog_lib._set_alternate_uris(catalog, uri2, alternates)
 
    return alternates
+end
+
+function catalog_lib._set_alternate_uris(catalog, uri, alternates)
+   alternates[uri] = true
+   _all_alternate_uris[uri] = alternates
+   local catalog_data = catalog[uri]
+   if catalog_data then
+      catalog_data.alternate_uris = alternates
+   end
 end
 
 function catalog_lib.get_equipment_types(json)

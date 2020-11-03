@@ -17,8 +17,10 @@ local function find_training_dummy(entity)
 		function(target)
 			if player_id == target:get_player_id() then
             local training_dummy = target:get_component('stonehearth_ace:training_dummy')
-            local level = training_dummy and training_dummy:can_train_entity_level(job_uri)
-            return level and level >= job_level
+            if training_dummy and training_dummy:get_enabled() and target:get_component('stonehearth:expendable_resources'):get_value('health') > 0 then
+               local level = training_dummy:can_train_entity_level(job_uri)
+               return level and level >= job_level
+            end
 			end
 			return false
 		end)
