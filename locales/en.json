@@ -8394,6 +8394,15 @@
             "oinker_pelt": {
                "display_name": "Oinker Pelt",
                "description": "A thin and leathery hide with a very short fur."
+            },
+            "red_fox_pelt": {
+               "display_name": "Fox Pelt"
+            },
+            "squirrel_pelt": {
+               "display_name": "Squirrel Pelt"
+            },
+            "wolf_pelt": {
+               "display_name": "Wolf Pelt"
             }
          },
          "bone_material": {
@@ -8502,10 +8511,10 @@
             }
          },
          "skins": {
-            "display_name": "Skins"
+            "display_name": "Any Skin"
          },
          "chitin": {
-            "display_name": "Chitin"
+            "display_name": "Any Chitin"
          },
          "bone_big": {
             "display_name": "Big Bone Material",
@@ -8530,7 +8539,22 @@
             "duck_feathers": {
                "display_name": "Duck Feathers",
                "description": "Shiny and curly feathers from wild, aquatic fowl."
+            },
+            "display_name": "Any Feathers"
+         },
+         "resources": {
+            "wood": {
+               "display_name": "Any Wood"
+            },
+            "stone": {
+               "display_name": "Any Stone"
+            },
+            "clay": {
+               "display_name": "Any Clay"
             }
+         },
+         "fur_pelt": {
+            "display_name": "Any Fur Pelt"
          }
       },
       "refined": {
@@ -14752,7 +14776,27 @@
                      "landscaping": "Landscaping (Default)",
                      "brewer": "Brewer Storage (Default)",
                      "raw_food": "Default Preset: Raw Food",
-                     "crafting": "Basic Crafting Storage (Default)"
+                     "crafting": "Basic Crafting Storage (Default)",
+							"supply_low_fuel": "Lower Grade Fuel Supply (Default)",
+							"supply_common_fuel": "Common Fuel Supply (Default)",
+							"supply_good_fuel": "Good Grade Fuel Supply (Default)",
+							"supply_carpenter": "Carpentry Supplies (Default)",
+							"supply_potter": "Pottery Supplies (Default)",
+							"supply_mason": "Masonry Supplies(Default)",
+							"supply_fiber_thatch": "Fiber & Thatch Supply (Default)",
+							"supply_weaver": "Weaving Supplies (Default)",
+							"supply_metalworker": "Metalworking Supplies (Default)",
+							"supply_baking": "Baking Supplies (Default)",
+							"supply_veggie_fruit": "Veggie & Fruit Supply (Default)",
+							"supply_meat": "Meat Supply (Default)",
+							"decayables_vegetables": "Preservable Vegetables (Default)",
+							"decayables_fruits": "Preservable Fruits (Default)",
+							"decayables_nuts": "Preservable Nuts (Default)",
+							"decayables_fungi": "Preservable Fungi (Default)",
+							"decayables_dairy": "Preservable Dairy Products (Default)",
+							"decayables_meat": "Preservable Game Meat (Default)",
+							"decayables_poultry": "Preservable Poultry Products (Default)",
+							"decayables_fish": "Preservable Fishing Products (Default)"
                   },
                   "preset_filter": {
                      "save_mode": {
@@ -14850,7 +14894,8 @@
                   "tooltip_backpack": "Worker Backpacks",
                   "tooltip_magic_weapon": "Magic Artifacts",
                   "tooltip_combat_cape": "Capes & Cloaks",
-                  "tooltip_combat_consumable": "Combat Potions"
+                  "tooltip_combat_consumable": "Combat Potions",
+                  "healing_items": "Healing Items"
                }
             },
             "pasture": {
@@ -15322,7 +15367,8 @@
             "egg_small_resource_name": "Any Small Egg",
             "stuffing_resource_name": "Any Feathers, Wool or Cotton",
             "raw_meat_piece_resource_name": "Any Whole Meat Piece",
-            "seasoning_resource_name": "Any Seasoning"
+            "seasoning_resource_name": "Any Seasoning",
+            "prepared_food_festival_resource_name": "Festive Food"
          }
       }
    },
