@@ -34,13 +34,13 @@
          ]
       },
       "stonehearth:workshop": {
-         "job_alias": "stonehearth:jobs:mason",
-         "equivalents": [
-            "stonehearth:mountain_folk:mason:pedestal:amberstone"
-         ]
+         "job_alias": "stonehearth:jobs:mason"
       }
    },
    "entity_data": {
+      "stonehearth:catalog": {
+         "alternate_uri_for": "stonehearth:mason:pedestal"
+      },
       "stonehearth:table": {
          "drop_effect": "carry_putdown_on_table",
          "drop_offset": { "x": 0, "y": 1, "z": 0 }

@@ -27,15 +27,13 @@
          ]
       },
       "stonehearth:workshop": {
-         "job_alias": "stonehearth:jobs:mason",
-         "equivalents": [
-            "stonehearth_ace:northern_alliance:mountain_folk:mason:workbench_bone",
-            "stonehearth_ace:rayyas_children:mountain_folk:mason:workbench_bone",
-            "stonehearth_ace:mountain_folk:mountain_folk:mason:workbench_bone"
-         ]
+         "job_alias": "stonehearth:jobs:mason"
       }
    },
    "entity_data": {
+      "stonehearth:catalog": {
+         "alternate_uri_for": "stonehearth_ace:mason:workbench_bone"
+      },
       "stonehearth:table": {
          "drop_effect": "carry_putdown_on_table",
          "drop_offset": { "x": 0, "y": 1, "z": 0 }
