@@ -714,6 +714,9 @@ App.StonehearthUnitFrameView.reopen({
       self.set('maxHealth', maxHealth);
       self.set('maxHealableHealth', hasDiffMaxHealth ? maxHealableHealth : null);
 
+      if (self.$('#bubble').hasClass('tooltipstered')) {
+         self.$('#bubble').tooltipster('destroy');
+      }
       if (hasDiffMaxHealth) {
          Ember.run.scheduleOnce('afterRender', self, function() {
             var tooltipString = i18n.t('stonehearth_ace:ui.game.unit_frame.max_healable_health.tooltip_description', {max_health: maxHealableHealth});
@@ -724,9 +727,6 @@ App.StonehearthUnitFrameView.reopen({
                content: $(maxHealthTooltip)
             });
          });
-      }
-      else if (self.$('#bubble').hasClass('tooltipstered')) {
-         self.$('#bubble').tooltipster('destroy');
       }
    }.observes('model.stonehearth:expendable_resources', 'model.stonehearth:attributes.attributes.max_health'),
 

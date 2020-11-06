@@ -11,7 +11,7 @@ function ace_shared_filters.make_is_unowned_available_bed_filter(entity)
          if radiant.entities.get_entity_data(target, 'stonehearth:bed') then
             local ownable_component = target:get_component('stonehearth:ownable_object')
             -- ACE: added check for ownable component not being there
-         	if ownable_component and ownable_component:get_owner() == nil and not target:add_component('stonehearth:mount'):is_in_use() then
+         	if (not ownable_component or ownable_component:get_owner() == nil) and not target:add_component('stonehearth:mount'):is_in_use() then
                return true
             end
          end
@@ -28,7 +28,8 @@ function ace_shared_filters.make_is_priority_care_available_bed_filter(entity)
          end
 
          local bed_data = radiant.entities.get_entity_data(target, 'stonehearth:bed')
-         if bed_data and bed_data.priority_care and not target:get_component('stonehearth:ownable_object') then
+         if bed_data and bed_data.priority_care and not target:get_component('stonehearth:ownable_object') and
+               not target:add_component('stonehearth:mount'):is_in_use() then
             return true
          end
          return false
