@@ -90,48 +90,215 @@
 				"stockpile_fish"
 			]
       },
+		"stonehearth:ui:input_box:filters": {
+			"supply_low_fuel" : [
+				"brown_coal",
+				"firewood refined",
+				"peat resource"
+			],
+			"supply_common_fuel" : [
+				"brown_coal",
+				"charcoal refined",
+				"firewood refined",
+				"lump_of_coal",
+				"peat resource",
+				"slab_of_coke refined"
+			],
+			"supply_good_fuel" : [
+				"charcoal refined",
+				"hard_coal",
+				"lump_of_coal",
+				"slab_of_coke refined"
+			],
+			"supply_carpenter" : [
+				"fine_stuffing refined",
+				"gold_flakes resource",
+				"resource refined_cloth cloth",
+				"resource refined_leather leather",
+				"thatch_bale resource",
+				"wood resource"
+			],
+			"supply_potter" : [
+				"ball_clay resource",
+				"bone_clay resource",
+				"clay resource",
+				"feldspar_stone resource",
+				"fine_stuffing refined",
+				"resource refined_cloth cloth",
+				"resource refined_cloth thread",
+				"thatch_bale resource",
+				"yarn resource"
+			],			
+			"supply_mason" : [
+				"bedrock_stone resource",
+				"bone resource big",
+				"bone resource skull",
+				"bone resource standard",
+				"fine_stuffing refined",
+				"marble_stone resource",
+				"resource animal_part pelt",
+				"stone resource",
+				"thatch_bale resource"
+			],
+			"supply_fiber_thatch" : [
+				"bough_bale evergreen resource",
+				"bough_bale standard resource",
+				"fiber resource plant cotton",
+				"fiber resource plant dwarfsbeard",
+				"fiber resource plant heirbloom",
+				"fiber resource plant silkweed",
+				"fiber resource plant tumbleweed",
+				"fiber resource plant wintermoss",
+				"resource fiber highland_vine",
+				"thatch_bale resource"
+			],			
+			"supply_weaver" : [
+				"fine_stuffing refined",
+				"resource animal_part chitin",
+				"resource animal_part feather",
+				"resource animal_part pelt",
+				"resource animal_part skin",
+				"resource refined_cloth cloth",
+				"resource refined_cloth thread",
+				"resource refined_leather leather",
+				"yarn resource"
+			],
+			"supply_metalworker" : [
+				"bronze gear resource",
+				"bronze ingot resource",
+				"copper ingot resource",
+				"iron gear resource",
+				"iron ingot resource",
+				"lock resource",
+				"resource refined_leather leather",
+				"steel ingot resource",
+				"tin ingot resource"
+			],
+			"supply_baking" : [
+				"butter standard cooking_ingredient",
+				"cooking_ingredient batter",
+				"cooking_ingredient batter_sweet",
+				"cooking_ingredient corn_meal",
+				"cooking_ingredient dough",
+				"cooking_ingredient dough_sweet",
+				"cooking_ingredient egg duck",
+				"cooking_ingredient egg poyo",
+				"cooking_ingredient flour",
+				"cooking_ingredient grain_sugar",
+				"cooking_ingredient honey standard",
+				"cooking_ingredient nut_flour",
+				"cooking_ingredient rice_flour"
+			],
+			"supply_veggie_fruit" : [
+				"cooking_ingredient sugarbell",
+				"raw_food apple",
+				"raw_food berry",
+				"raw_food carrot",
+				"raw_food cherry",
+				"raw_food corn",
+				"raw_food date",
+				"raw_food gourd",
+				"raw_food pear",
+				"raw_food plum",
+				"raw_food prickly_pear",
+				"raw_food pumpkin",
+				"raw_food sweet_potato",
+				"raw_food turnip",
+				"raw_food vegetable heirbloom",
+				"raw_food watermelon"
+			],
+			"supply_meat" : [
+				"cooking_ingredient bug_meat",
+				"cooking_ingredient duck_meat",
+				"cooking_ingredient jerky",
+				"cooking_ingredient mutton",
+				"cooking_ingredient pork",
+				"cooking_ingredient poultry_large",
+				"cooking_ingredient poyo_meat",
+				"cooking_ingredient steak",
+				"cooking_ingredient varanus_meat",
+				"cooking_ingredient venison",
+				"raw fish_carp_meat",
+				"raw fish_catfish_meat",
+				"raw fish_meat_fish_meat",
+				"raw fish_salmon_meat",
+				"raw fish_trout_meat",
+				"sausage cooking_ingredient"
+			]
+		},
       "stonehearth_ace:ui:decayables:filters": {
-         "raw_food": [
-            "raw_food turnip",
-            "raw_food carrot",
-            "raw_food pumpkin",
-            "raw_food corn",
-            "raw_food gourd",
-            "raw_food pear",
-            "raw_food watermelon",
-            "raw_food berry",
-            "raw_food sweet_potato",
-            "raw_food vegetable heirbloom",
-            "raw_food cherry",
-            "food_container chanterelle",
-            "food_container bolete",
-            "food_container desert_truffle",
-            "food_container winter_morel",
-            "food_container parasol",
-            "food_container sweet_tooth",
-            "food_container chestnut",
-            "food_container almond",
-            "food_container walnut",
-            "food_container hazelnut",
-            "food_container fish_roe_fish_roe",
-            "food_container fish_big_roe",
-            "cooking_ingredient sugarbell",
-            "cooking_ingredient bug_meat",
-            "cooking_ingredient jerky",
-            "cooking_ingredient poyo_meat",
-            "cooking_ingredient mutton",
-            "cooking_ingredient varanus_meat",
-            "cooking_ingredient pork",
-            "cooking_ingredient venison",
-            "cooking_ingredient poultry_large",
-            "cooking_ingredient steak",
-            "cooking_ingredient duck_meat",
-            "raw fish_meat_fish_meat",
-            "raw fish_carp_meat",
-            "raw fish_catfish_meat",
-            "raw fish_salmon_meat",
-            "raw fish_trout_meat"
-         ]
+			"decayables_vegetables" : [
+				"cooking_ingredient sugarbell",
+				"paddy_basket",
+				"raw_food carrot",
+				"raw_food corn",
+				"raw_food gourd",
+				"raw_food pumpkin",
+				"raw_food sweet_potato",
+				"raw_food turnip",
+				"raw_food vegetable heirbloom"
+			],
+			"decayables_fruits" : [
+				"raw_food apple",
+				"raw_food berry",
+				"raw_food cherry",
+				"raw_food date",
+				"raw_food pear",
+				"raw_food plum",
+				"raw_food prickly_pear",
+				"raw_food watermelon"
+			],
+			"decayables_nuts" : [
+				"cooking_ingredient nut_basket",
+				"food_container almond",
+				"food_container chestnut",
+				"food_container hazelnut",
+				"food_container walnut"
+			],
+			"decayables_fungi" : [
+				"food_container bolete",
+				"food_container chanterelle",
+				"food_container desert_truffle",
+				"food_container parasol",
+				"food_container rare_truffle",
+				"food_container sweet_tooth",
+				"food_container winter_morel"
+			],
+			"decayables_dairy" : [
+				"cream sour cooking_ingredient",
+				"cream standard cooking_ingredient",
+				"curdling_mixture cooking_ingredient",
+				"drink_container moomoo_milk",
+				"drink_container sheep_milk",
+				"drink_container wild_cattle_milk"
+			],
+			"decayables_meat" : [
+				"cooking_ingredient jerky",
+				"cooking_ingredient mutton",
+				"cooking_ingredient pork",
+				"cooking_ingredient steak",
+				"cooking_ingredient varanus_meat",
+				"cooking_ingredient venison",
+				"sausage cooking_ingredient"
+			],
+			"decayables_poultry" : [
+				"cooking_ingredient duck_meat",
+				"cooking_ingredient egg duck",
+				"cooking_ingredient egg poyo",
+				"cooking_ingredient egg_large",
+				"cooking_ingredient poultry_large",
+				"cooking_ingredient poyo_meat",
+				"mayonnaise cooking_ingredient"
+			],
+			"decayables_fish": [
+				"raw fish_carp_meat",
+				"raw fish_catfish_meat",
+				"raw fish_meat_fish_meat",
+				"raw fish_salmon_meat",
+				"raw fish_trout_meat",
+				"food_container fish_big_roe",
+				"food_container fish_roe_fish_roe"
+			]
       }
    }
 }
