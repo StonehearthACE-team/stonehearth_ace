@@ -1,6 +1,11 @@
 {
+   "type": "ai_pack",
    "actions": [
       "stonehearth_ace:actions:health:heal_entity_adjacent_with_magic",
       "stonehearth_ace:actions:health:heal_entity_with_magic"
+   ],
+   "ai_packs": [
+      "stonehearth:ai_pack:core",
+      "stonehearth:ai_pack:movement"
    ]
 }

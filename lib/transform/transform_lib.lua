@@ -42,6 +42,8 @@ function transform_lib.transform(entity, transformer, into_uri, options)
    if into_uri and into_uri ~= '' then
       --Create the transformed entity and put it on the ground
       transformed_form = radiant.entities.create_entity(into_uri, { owner = entity})
+      -- set the facing so that is_standable properly considers a rotated collision region
+      radiant.entities.turn_to(transformed_form, facing)
       
       item_quality_lib.copy_quality(entity, transformed_form)
 
