@@ -18,6 +18,8 @@ function BaseJob:initialize()
    -- ADDED FOR ACE
    self._sv.max_num_training = {}
    self._sv._lookup_values = {}
+   self._sv._can_repair_as_jobs = {}
+   self._sv._can_repair_as_any_job = false
 
    -- These are for the UI only
    self._sv.is_max_level = false
@@ -495,6 +497,38 @@ end
 function BaseJob:remove_medic_capabilities(args)
    self._sv._medic_capabilities = nil
    radiant.events.trigger_async(self._sv._entity, 'stonehearth_ace:medic_capabilities_changed')
+end
+
+function BaseJob:add_can_repair_as_jobs(args)
+   self._sv._can_repair_as_jobs = radiant.util.merge_into_table(self._sv._can_repair_as_jobs, args.can_repair_as_jobs)
+   radiant.events.trigger_async(self._sv._entity, 'stonehearth_ace:repair_capabilities_changed')
+end
+
+function BaseJob:remove_can_repair_as_jobs(args)
+   self._sv._can_repair_as_jobs = {}
+   radiant.events.trigger_async(self._sv._entity, 'stonehearth_ace:repair_capabilities_changed')
+end
+
+function BaseJob:set_can_repair_as_any_job(args)
+   self._sv._can_repair_as_any_job = true
+   radiant.events.trigger_async(self._sv._entity, 'stonehearth_ace:repair_capabilities_changed')
+end
+
+function BaseJob:remove_can_repair_as_any_job(args)
+   self._sv._can_repair_as_any_job = false
+   radiant.events.trigger_async(self._sv._entity, 'stonehearth_ace:repair_capabilities_changed')
+end
+
+function BaseJob:get_can_repair_as_jobs()
+   return self._sv._can_repair_as_jobs
+end
+
+function BaseJob:can_repair_as_job(job_uri)
+   return job_uri == self._sv._alias or self._sv._can_repair_as_jobs[job_uri]
+end
+
+function BaseJob:can_repair_as_any_job()
+   return self._sv._can_repair_as_any_job
 end
 
 function BaseJob:is_trapper()

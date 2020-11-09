@@ -2,5 +2,45 @@
    "description": "i18n(stonehearth_ace:jobs.engineer.engineer_description.description)",
 	"task_groups": [
       "stonehearth_ace:task_groups:transform"
-   ]
+   ],
+   "level_data": {
+      "2": {
+         "perks": [
+            {
+               "id": "can_repair_as_some_jobs",
+               "type": "add_can_repair_as_jobs",
+               "can_repair_as_jobs": {
+                  "stonehearth:jobs:blacksmith": true
+               },
+               "level": 2,
+               "demote_fn": "remove_can_repair_as_jobs"
+            }
+         ]
+      },
+      "3": {
+         "perks": [
+            {
+               "id": "can_repair_as_more_jobs",
+               "type": "add_can_repair_as_jobs",
+               "can_repair_as_jobs": {
+                  "stonehearth:jobs:carpenter": true,
+                  "stonehearth:jobs:potter": true,
+                  "stonehearth:jobs:mason": true
+               },
+               "level": 3,
+               "demote_fn": "remove_can_repair_as_jobs"
+            }
+         ]
+      },
+      "4": {
+         "perks": [
+            {
+               "id": "can_repair_as_any_job",
+               "type": "set_can_repair_as_any_job",
+               "level": 4,
+               "demote_fn": "remove_can_repair_as_any_job"
+            }
+         ]
+      }
+   }
 }
