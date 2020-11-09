@@ -326,6 +326,7 @@ function ConnectionService:_start_entity_traces(entity, player_connections, all_
             local connections = entity:get_component('stonehearth_ace:connection'):get_connections()
             result = self:get_player_connections(new_player_id):register_entity(entity, connections, true)  -- separated by player
             self:_communicate_update(new_player_id, result)
+            player_id = new_player_id
          end
       end)
       

@@ -1,3 +1,5 @@
+local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
+
 local StorageComponent = require 'stonehearth.components.storage.storage_component'
 AceStorageComponent = class()
 
@@ -7,6 +9,20 @@ function AceStorageComponent:create()
    self._is_create = true
    self:_ace_old_create()
 
+end
+
+AceStorageComponent._ace_old_restore = StorageComponent.restore
+function AceStorageComponent:restore()
+   if self._entity:get_component('stonehearth_ace:universal_storage') then
+      -- move all entities out of this storage and queue them up to be transferred in the proper universal_storage entity
+      stonehearth_ace.universal_storage:queue_items_for_transfer_on_registration(self._entity, self._sv.items)
+      self._sv.items = {}
+      self._sv.num_items = 0
+      self._entity:remove_component('stonehearth:storage')
+      return
+   end
+
+   self:_ace_old_restore()
 end
 
 AceStorageComponent._ace_old_activate = StorageComponent.activate
@@ -101,6 +117,40 @@ end
 
 function AceStorageComponent:get_ignore_restock()
    return self._ignore_restock
+end
+
+-- allow for specifying a priority_location for universal_storage, and try to send to default storage instead of landing location
+-- if priority_location is false (not nil), *this* entity's location will be ignored
+function AceStorageComponent:drop_all(fallback_location, priority_location)
+   if self:is_empty() then
+      return {} -- Nothing to drop
+   end
+
+   local items = {}
+   for id, item in pairs(self._sv.items) do
+      if item and item:is_valid() then
+         table.insert(items, item)
+      end
+   end
+
+   local get_player_id = radiant.entities.get_player_id
+   for _, item in ipairs(items) do
+      self:remove_item(item:get_id(), nil, get_player_id(item))
+   end
+
+   local player_id = get_player_id(self._entity)
+   local town = stonehearth.town:get_town(player_id)
+   local default_storage = town and town:get_default_storage()
+   local entity = entity_forms_lib.get_in_world_form(self._entity)
+   local location = priority_location or
+         (priority_location == nil and (radiant.entities.get_world_grid_location(entity or self._entity) or fallback_location)) or
+         (town and town:get_landing_location())
+
+   radiant.entities.output_spawned_items(items, location, 1, 4, { owner = player_id }, nil, default_storage, true)
+
+   stonehearth.ai:reconsider_entity(self._entity, 'removed all items from storage')
+
+   return items
 end
 
 return AceStorageComponent

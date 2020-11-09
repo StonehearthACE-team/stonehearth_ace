@@ -45,7 +45,7 @@
                      <div id='infoIcon'></div>
                   </div>
                   {{#if view.model.stonehearth:expendable_resources.resources.health}}
-                     <div id="bubble">
+                     <div id="healthBubble" class="bubble">
                         {{#if view.maxHealableHealth}}
                            <div id="maxHealableHeart"></div>
                            <div class="value">{{view.currentHealth}} / <span class="maxHealableHealth">{{view.maxHealableHealth}}</span></div>
@@ -65,13 +65,13 @@
                      {{/if}}
                   {{/if}}
 						  {{#if view.model.stonehearth:expendable_resources.resources.energy}}
-                     <div id="bubble">
+                     <div class="bubble">
                         <div id="energy"></div>
                         <div class="value">{{view.currentEnergy}} / {{view.maxEnergy}}</div>
                      </div>
                   {{/if}}
                   {{#if view.appeal}}
-                     <div id="bubble">
+                     <div class="bubble">
                         <div id="sparkles"></div>
                         <div class="value">{{view.appeal}}</div>
                      </div>
