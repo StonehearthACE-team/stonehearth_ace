@@ -97,7 +97,7 @@ function transform_lib.transform(entity, transformer, into_uri, options)
       if custom_name then
          local transformed_unit_info = transformed_form:get_component('stonehearth:unit_info')
          if transformed_unit_info then
-            transformed_unit_info:set_custom_name(custom_name)
+            transformed_unit_info:set_custom_name(custom_name, unit_info:get_custom_data())
          end
       end
 

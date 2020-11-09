@@ -186,7 +186,43 @@
             }
          }
 			
-			#bubble {
+			.bubble {
+            display: inline-flex;
+            height: 20px;
+            padding: 5px;
+            border: 3px #383230 solid;
+            border-radius: 8px;
+            align-items: center;
+            background-clip: padding-box;
+            background-color: #ebebeb;
+            margin-left: 3px;
+
+            .value {
+               font-family: "groboldregular";
+               font-size: 15px;
+               text-shadow: none;
+               color: #545454;
+               margin-right: 5px;
+               white-space: nowrap;
+            }
+
+            #heart {
+               background-image: url('/stonehearth/ui/game/unit_frame/images/health-heart.png');
+               background-repeat: no-repeat;
+               width: 19px;
+               height: 17px;
+               margin: 5px;
+            }
+
+            #sparkles {
+               background-image: url('/stonehearth/ui/common/images/appeal.png');
+               background-repeat: no-repeat;
+               background-size: 22px 23px;
+               width: 22px;
+               height: 23px;
+               margin: 5px;
+            }
+
             #energy {
                background-image: url(images/energy.png);
                background-repeat: no-repeat;
@@ -392,6 +428,28 @@
          float: left;
          padding-left: 5px;
       }
+   }
+
+   #siegePane {
+      z-index: 5;
+      top: initial;
+      left: initial;
+      bottom: -10px;
+      right: -10px;
+   }
+
+   #itemLimitPane {
+      z-index: 5;
+      top: initial;
+      bottom: -10px;
+      left: 20px;
+   }
+
+   #doorPane {
+      z-index: 5;
+      top: initial;
+      bottom: 0px;
+      left: 10px;
    }
 
    .clickable{

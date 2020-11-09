@@ -383,6 +383,15 @@ function ace_entities.get_grid_in_front(entity)
    return location + offset
 end
 
+function ace_entities.get_region_world_to_local(region, entity)
+   local mob = entity:add_component('mob')
+   local location = mob:get_world_grid_location()
+   if location then
+      local region_origin = mob:get_region_origin()
+      return region:translated(-location - region_origin):rotated(-mob:get_facing()):translated(region_origin)
+   end
+end
+
 function ace_entities.is_entity_town_suspended(entity)
    local town = stonehearth.town:get_town(entity)
    if town then
