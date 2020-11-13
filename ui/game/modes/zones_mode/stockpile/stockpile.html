@@ -86,7 +86,7 @@
 <script type="text/x-handlebars" data-template-name="_contentsTab">
    <div id="contentsTab" class="tabPage">
       <div id="inventoryPalette"></div>
-      {{#if view.isWorkshop}}
+      {{#if view.isConsumer}}
          <div id="fuelLevel">
             {{view.totalFuel}} ({{view.fuelLevel}} | {{view.potentialFuel}}): {{view.totalCrafts}} crafts ({{view.fuelPerCraft}} per craft)
          </div>

@@ -1,9 +1,10 @@
 {
    "components": {
       "stonehearth:workshop": {
-         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge_advanced/effects/work.json",
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge_advanced/effects/work.json"
+      },
+      "stonehearth_ace:consumer": {
          "fuel_settings": {
-            "uses_fuel": true,
             "fuel_per_craft": 4,
             "fueled_buff": "stonehearth_ace:buffs:weather:warmth_source",
             "fuel_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge_advanced/effects/idle.json",

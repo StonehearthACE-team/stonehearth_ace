@@ -1,209 +1,364 @@
 --[[
-   primary usage is consuming fuel for workbenches:
-   tracks how much fuel it has; fuel can be set to passively decay over time, with limits
-
-   different fuel types add different capacity, and there's a minimum useful fuel level at which all crafting can take place, 
-   but different recipes will then reduce the current fuel level by different amounts, in addition to the slow, passive reduction over time
-   fuel consumers would have a fuel interface with several options: 
-      by default it prioritizes the most efficient acceptable fuel available, but you can use only a specific fuel, or no fuel (disabled)
-   if it's below the minimum fuel level (outside of after crafting has already started) then the consumer is considered disabled
-      (for workshops, this means it can't be used for crafting)
-   when fuel level drops below a certain threshold above the minimum useful level, a refueling task will automatically be generated (or not) based on its selected fuel type
-      e.g., min level of 100, reduced by 10 every ~hour, firewood gives 40, wood gives 60, charcoal gives 120, coal gives 130
-      copper/tin smelting cost 20, bronze is 40, iron is 60, steel is 80, silver/gold are 100
-      cook / other food recipes would only cost ~10; potter's would cost somewhere on the lower end as well, maybe 20-50
-   and the min restock level threshold would be something like the same as the minimum useful level, so forge would be 100
-      (starts being usable at 100, stops being auto-refueled once it hits 200)
-      while the cook's oven might have a min level of 30 and stop getting auto-refueled once it hits 60
-   auto-refueling would also only happen as long as recipes are queued beyond what's currently being crafted
-   can specify what specific fuels (or what material "types") are allowed for a consumer
+   primary usage is consuming fuel for workbenches
+   will eventually also be used for fuel-powered producers of mechanical power
 ]]
+
+local constants = require 'stonehearth.constants'
+local FUEL_LEASE_NAME = constants.ai.RESERVATION_LEASE_NAME
+local log = radiant.log.create_logger('consumer')
 
 local ConsumerComponent = class()
 
-function ConsumerComponent:initialize()
-   self._json = radiant.entities.get_json(self) or {}
-
-   -- this gets set to the required level for crafting an item when the forge is fueled for it
-   self._sv.min_decay_fuel_level = 0
-end
-
-function ConsumerComponent:create()
-   self._is_create = true
-end
-
 function ConsumerComponent:activate()
-   self:_initialize_fuel_settings()
-   
-   if self._is_create then
-      self:_set_fuel_level(self._json.start_level or 0)
-   else
-      self:_renew_effects()
+   local json = radiant.entities.get_json(self) or {}
+
+   self._fuel_settings = json.fuel_settings or {}
+   self._reserved_fuel = {}
+   self._reserved_fuel_items = {}
+
+   -- remote to client for fuel display in stockpile window
+   self._sv.fuel_per_use = self:get_fuel_per_use()
+   self.__saved_variables:mark_changed()
+end
+
+function ConsumerComponent:post_activate()
+   local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
+   if expendable_resources then
+      local fuel_level = expendable_resources:get_value('fuel_level')
+      local reserved_fuel_level = expendable_resources:get_value('reserved_fuel_level')
+      if fuel_level and reserved_fuel_level then
+         expendable_resources:modify_value('fuel_level', reserved_fuel_level)
+         expendable_resources:set_value('reserved_fuel_level', 0)
+      end
    end
+
+   -- should we also listen for expendable resources changes?
+   self._storage_filter_changed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:filter_changed', function(args)
+         self:_reconsider_all_item_leases()
+      end)
+   self._storage_item_added_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_added', function(args)
+         self:_reconsider_item_lease(args.item)
+         self:_update_fueled()
+      end)
+   self._storage_item_removed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_removed', function(args)
+         if args.item then
+            self:_release_item_lease(args.item)
+         end
+         if self._entity:get_component('stonehearth:storage'):is_empty() then
+            self:_update_fueled()
+         end
+      end)
+
+   self:_reconsider_all_item_leases()
+   self:_update_fueled()
 end
 
 function ConsumerComponent:destroy()
-   if self._fuel_decay_timer then
-      self._fuel_decay_timer:destroy()
-      self._fuel_decay_timer = nil
+   self:_unreserve_all_fuel()
+   self:_destroy_fuel_effect()
+   self:_destroy_no_fuel_effect()
+end
+
+function ConsumerComponent:_destroy_listeners()
+   if self._storage_filter_changed_listener then
+      self._storage_filter_changed_listener:destroy()
+      self._storage_filter_changed_listener = nil
+   end
+   if self._storage_item_added_listener then
+      self._storage_item_added_listener:destroy()
+      self._storage_item_added_listener = nil
+   end
+   if self._storage_item_removed_listener then
+      self._storage_item_removed_listener:destroy()
+      self._storage_item_removed_listener = nil
    end
 end
 
-function ConsumerComponent:_initialize_fuel_settings()
-   if self._json.time_decay and self._json.time_decay.interval then
-      self._fuel_decay_timer = stonehearth.calendar:set_interval('workshop fuel decay', self._json.time_decay.interval, function()
-         self:_on_fuel_decay()
-      end)
-   end
-
-   -- fuels are specified with a uri or material
-   -- they contain fields like amount, max_level
-   self._fuels = self._json.fuels or {}
-end
-
-function ConsumerComponent:_on_fuel_decay()
-   local decay_settings = self._json.time_decay
-   local min_level = math.max(decay_settings.min_level or 0, self._sv.min_decay_fuel_level)
-   local cur_level = self._sv.fuel_level
-   local change = decay_settings.amount or (decay_settings.relative_amount and math.ceil(decay_settings.relative_amount * cur_level)) or 0
-   local new_level = math.max(min_level, cur_level - change)
-
-   if new_level < cur_level then
-      self:_set_fuel_level(new_level)
+function ConsumerComponent:_reconsider_all_item_leases()
+   -- refresh (acquire or release) leases on all items based on the new filter (unless they're already reserved)
+   local storage = self._entity:get_component('stonehearth:storage')
+   if storage then
+      for _, item in pairs(storage:get_items()) do
+         self:_reconsider_item_lease(item)
+      end
    end
 end
 
--- TODO? maybe add max_level setting to the component as a whole
-local function _calc_new_fuel_level(level, fuel_data)
-   local new_level = level + (fuel_data.amount or (fuel_data.relative_amount and fuel_data.relative_amount * math.max(1, level))) or 0
-   if fuel_data.max_level then
-      new_level = math.min(new_level, fuel_data.max_level)
+function ConsumerComponent:_reconsider_item_lease(item)
+   local storage = self._entity:get_component('stonehearth:storage')
+   if storage then
+      if item:is_valid() and radiant.entities.get_entity_data(item, 'stonehearth_ace:fuel') and (self._reserved_fuel_items[item:get_id()] or storage:passes(item)) then
+         self:_acquire_item_lease(item)
+      else
+         self:_release_item_lease(item)
+      end
    end
-   return new_level
 end
 
-function ConsumerComponent:get_fuel_level()
-   return self._sv.fuel_level
+function ConsumerComponent:_acquire_item_lease(item)
+   local success = radiant.entities.acquire_lease(item, FUEL_LEASE_NAME, self._entity, true) -- , false)
+   --log:debug('%s %s acquiring lease for %s', self._entity, success and 'SUCCEEDED' or 'FAILED', item)
 end
 
-function ConsumerComponent:get_current_variant_tier()
-   return self._sv._variant_tier
+function ConsumerComponent:_release_item_lease(item)
+   local success = radiant.entities.release_lease(item, FUEL_LEASE_NAME, self._entity)
+   --log:debug('%s %s releasing lease for %s', self._entity, success and 'SUCCEEDED' or 'FAILED', item)
 end
 
--- figure out how much fuel is needed to get it to the right level
--- set the min decay level to the required level minus that fuel level
-function ConsumerComponent:request_fuel_level(level)
-
+function ConsumerComponent:get_fuel_per_use()
+   return self._fuel_settings.fuel_per_use or 1
 end
 
-function ConsumerComponent:add_fuel(fuel)
-   -- first check if the uri is specified
-   local fuel_data = self._fuels[fuel:get_uri()]
-   local cur_level = self._sv.fuel_level
-   local new_level
-   if fuel_data then
-      new_level = _calc_new_fuel_level(cur_level, fuel_data)
-   else
-      -- if not, check fuel data materials and get the highest match
-      for materials, fd in pairs(self._fuels) do
-         if radiant.entities.is_material(fuel, materials) then
-            local newer_level = _calc_new_fuel_level(cur_level, fd)
-            if not new_level or newer_level > new_level then
-               fuel_data = fd
-               new_level = newer_level
-            end
+function ConsumerComponent:get_fuel_effect()
+   return self._fuel_settings.fuel_effect
+end
+
+function ConsumerComponent:get_no_fuel_effect()
+   return self._fuel_settings.no_fuel_effect
+end
+
+function ConsumerComponent:get_fueled_buff()
+   return self._fuel_settings.fueled_buff
+end
+
+function ConsumerComponent:get_no_fuel_model_variant()
+   return self._fuel_settings.no_fuel_model_variant
+end
+
+function ConsumerComponent:is_fueled()
+   local storage = self._entity:get_component('stonehearth:storage')
+   if storage and storage:get_num_items() > 0 then
+      return true
+   end
+
+   local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
+   if expendable_resources then
+      return (expendable_resources:get_value('fuel_level') or 0) + (expendable_resources:get_value('reserved_fuel_level') or 0) >= self:get_fuel_per_use()
+   end
+
+   return false
+end
+
+function ConsumerComponent:reserve_fuel(user)
+   local reserved = self._reserved_fuel
+   local reserved_items = self._reserved_fuel_items
+
+   local user_id = user:get_id()
+   if reserved[user_id] then
+      return true
+   end
+
+   local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
+   if not expendable_resources then
+      return false
+   end
+   if not expendable_resources:get_value('fuel_level') or not expendable_resources:get_value('reserved_fuel_level') then
+      return false
+   end
+
+   local fuel_per_use = self:get_fuel_per_use()
+
+   -- first check if we can simply reserve any current fuel
+   if expendable_resources:get_value('fuel_level') >= fuel_per_use then
+      expendable_resources:modify_value('fuel_level', -fuel_per_use)
+      expendable_resources:modify_value('reserved_fuel_level', fuel_per_use)
+      
+      self:_reserve_user_fuel_consumer(user)
+      reserved[user_id] = fuel_per_use
+
+      return true
+   end
+
+   -- if that fails, check if there's fuel in storage that can be reserved (just grab the first item; assume the filter works)
+   local storage = self._entity:get_component('stonehearth:storage')
+   local items = storage and storage:get_items()
+   if items then
+      for _, item in pairs(items) do
+         local item_id = item:get_id()
+         if not reserved_items[item_id] and radiant.entities.get_entity_data(item, 'stonehearth_ace:fuel') then
+            self:_reserve_user_fuel_consumer(user)
+            reserved[user_id] = item
+            reserved_items[item_id] = user_id
+            
+            return true
          end
       end
-      -- cache it so we don't have to do this again for the same fuel material
-      self._fuels[fuel:get_uri()] = fuel_data
-   end
-
-   if new_level and new_level > cur_level then
-      self:_set_fuel_level(new_level)
    end
 end
 
-function ConsumerComponent:reduce_fuel_level(amount, keep_min_decay_level)
-   local cur_level = self._sv.fuel_level
-   local min_level = self._json.time_decay.min_level or 0
-   local new_level = math.max(min_level, cur_level - amount)
-   if new_level < cur_level then
-      if not keep_min_decay_level then
-         self._sv.min_decay_fuel_level = min_level
+-- if the crafter pre-reserved fuel in a different consumer, free up that fuel before finalizing this fuel reservation
+function ConsumerComponent:_reserve_user_fuel_consumer(user)
+   local crafter_comp = user and user:get_component('stonehearth:crafter')
+   if crafter_comp then
+      local consumer = crafter_comp:get_fuel_reserved_consumer()
+      local consumer_comp = consumer and consumer:is_valid() and consumer:get_component('stonehearth_ace:consumer')
+      if consumer_comp then
+         consumer_comp:unreserve_fuel(user)
       end
-      self:_set_fuel_level(new_level)
+
+      crafter_comp:set_fuel_reserved_consumer(self._entity)
    end
 end
 
-function ConsumerComponent:set_min_decay_fuel_level(level)
-   self._sv.min_decay_fuel_level = level
-   self.__saved_variables:mark_changed()
+function ConsumerComponent:_clear_user_fuel_consumer(user_id)
+   local user = radiant.entities.get_entity(user_id)
+   local crafter_comp = user and user:is_valid() and user:get_component('stonehearth:crafter')
+   if crafter_comp then
+      crafter_comp:set_fuel_reserved_consumer()
+   end
 end
 
-function ConsumerComponent:_set_fuel_level(level)
-   self._sv.fuel_level = level
-   self.__saved_variables:mark_changed()
+function ConsumerComponent:unreserve_fuel(user_id)
+   local fuel = self._reserved_fuel[user_id]
+   if fuel then
+      if type(fuel) == 'number' then
+         local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
+         expendable_resources:modify_value('reserved_fuel_level', -fuel)
+         expendable_resources:modify_value('fuel_level', fuel)
+      elseif fuel:is_valid() then
+         -- it's a fuel entity
+         self._reserved_fuel_items[fuel:get_id()] = nil
+         self:_reconsider_item_lease(fuel)
+      end
 
-   if self._json.variant_tiers then
-      -- each variant tier can specify a model_variant, an effect, a transition_from_lower_effect, and a transition_from_higher_effect
-      -- variant tiers are sticky: min/max values can overlap, and when you're in one, you stay in it until you go past one of the bounds
-      -- this prevents bouncing back and forth between models/effects when right on the edge (you can still specify strict edges if you want)
-      local current_tier = self._sv._variant_tier
-      if current_tier then
-         -- if we're already in a variant tier, check to see if we're still in the bounds
-         if (not current_tier.min_level or level >= current_tier.min_level) and (not current_tier.max_level or level <= current_tier.max_level) then
-            return
+      self:_clear_user_fuel_consumer(user_id)
+      
+      self._reserved_fuel[user_id] = nil
+   end
+end
+
+function ConsumerComponent:_unreserve_all_fuel()
+   for user_id, _ in pairs(self._reserved_fuel) do
+      self:unreserve_fuel(user_id)
+   end
+end
+
+function ConsumerComponent:consume_fuel(user)
+   -- get whatever fuel the user has reserved and consume it
+   local user_id = user:get_id()
+   local fuel = self._reserved_fuel[user_id]
+   if fuel then
+      local expendable_resources = self._entity:get_component('stonehearth:expendable_resources')
+      if type(fuel) == 'number' then
+         if expendable_resources then
+            expendable_resources:modify_value('reserved_fuel_level', -fuel)
          end
+      elseif fuel:is_valid() then
+         -- first check if there's now a high enough fuel level that we can just take from that
+         -- instead of consuming the fuel entity
+         local fuel_per_use = self:get_fuel_per_use()
+         local fuel_level = expendable_resources and expendable_resources:get_value('fuel_level') or 0
+         if fuel_level >= fuel_per_use then
+            self:unreserve_fuel(user_id)
+            expendable_resources:modify_value('fuel_level', -fuel_per_use)
+         else
+            local fuel_data = radiant.entities.get_entity_data(fuel, 'stonehearth_ace:fuel') or {}
+            -- assume that any individual fuel entity provides at least the amount necessary for one craft
 
-         for _, tier in ipairs(self._json.variant_tiers) do
-            if (not tier.min_level or level >= tier.min_level) and (not tier.max_level or level <= tier.max_level) then
-               self._sv._variant_tier = tier
-               self.__saved_variables:mark_changed()
-               
-               local transition
-               if current_tier.min_level and level < current_tier.min_level then
-                  transition = tier.transition_from_higher_effect
-               elseif current_tier.max_level and level > current_tier.max_level then
-                  transition = tier.transition_from_lower_effect
+            if expendable_resources then
+               local fuel_amount = math.max(fuel_per_use, fuel_data.fuel_amount or 1) - fuel_per_use
+               if fuel_amount > 0 then
+                  expendable_resources:modify_value('fuel_level', fuel_amount)
                end
-
-               self:_renew_effects(transition)
-
-               radiant.events.trigger(self._entity, 'stonehearth_ace:consumer:fuel_level_changed', {level = level, old_tier = current_tier, new_tier = tier})
-
-               return
             end
+
+            self._reserved_fuel_items[fuel:get_id()] = nil
+            -- probably don't need to release the lease since the entity is just getting destroyed
+            -- do we even need to remove it from storage?
+            -- radiant.entities.release_lease(fuel, FUEL_LEASE_NAME, self._entity)
+            self._entity:get_component('stonehearth:storage'):remove_item(fuel:get_id())
+            radiant.entities.destroy_entity(fuel)
          end
       end
-   end
 
-   radiant.events.trigger(self._entity, 'stonehearth_ace:consumer:fuel_level_changed', {level = level})
-end
+      self:_update_fueled()
+      self:_clear_user_fuel_consumer(user_id)
 
-function ConsumerComponent:_renew_effects(transition)
-   local variant_tier = self._sv._variant_tier
-   if variant_tier then
-      self:_run_effect(variant_tier.effect, variant_tier.model_variant, transition)
+      self._reserved_fuel[user_id] = nil
    end
 end
 
-function ConsumerComponent:_run_effect(effect, model_variant, transition)
-   if self._effect then
-      self._effect:destroy()
-      self._effect = nil
-   end
+function ConsumerComponent:set_currently_consuming(consuming)
+   self._currently_consuming = consuming
+   self:_update_fueled()
+end
 
-   if transition then
-      self._effect = radiant.effects.run_effect(self._entity, transition):set_finished_cb(function()
-         self:_run_effect(effect, model_variant)
-      end)
+function ConsumerComponent:_update_fueled()
+   self:_update_fueled_buff()
+   self:_update_fuel_effect()
+end
+
+function ConsumerComponent:_update_fueled_buff()
+   local buff = self:get_fueled_buff()
+   if buff then
+      if self._currently_consuming or self:is_fueled() then
+         if not radiant.entities.has_buff(self._entity, buff) then
+            radiant.entities.add_buff(self._entity, buff)
+         end
+      else
+         radiant.entities.remove_buff(self._entity, buff)
+      end
+   end
+end
+
+function ConsumerComponent:_update_fuel_effect()
+   local is_fueled = self:is_fueled()
+
+   if is_fueled then
+      self:_destroy_no_fuel_effect()
+      self:_reset_fuel_model_variant()
+
+      local effect = self:get_fuel_effect()
+      if effect and not self._fuel_effect then
+         self._fuel_effect = radiant.effects.run_effect(self._entity, effect)
+         self._fuel_effect:set_finished_cb(function()
+               self:_destroy_fuel_effect()
+               self:_update_fuel_effect()
+            end)
+      end
    else
-      if model_variant then
-         self._entity:add_component('stonehearth_ace:entity_modification'):set_model_variant(model_variant)
+      self:_destroy_fuel_effect()
+      self:_set_fuel_model_variant()
+      
+      local effect = self:get_no_fuel_effect()
+      if effect and not self._no_fuel_effect then
+         self._no_fuel_effect = radiant.effects.run_effect(self._entity, effect)
+         self._no_fuel_effect:set_finished_cb(function()
+               self:_destroy_no_fuel_effect()
+               self:_update_fuel_effect()
+            end)
       end
-      if effect then
-         self._effect = radiant.effects.run_effect(self._entity, effect)
-      end
+   end
+end
+
+function ConsumerComponent:_destroy_fuel_effect()
+   if self._fuel_effect then
+      self._fuel_effect:set_finished_cb(nil)
+                  :stop()
+      self._fuel_effect = nil
+   end
+end
+
+function ConsumerComponent:_destroy_no_fuel_effect()
+   if self._no_fuel_effect then
+      self._no_fuel_effect:set_finished_cb(nil)
+                  :stop()
+      self._no_fuel_effect = nil
+   end
+end
+
+function ConsumerComponent:_reset_fuel_model_variant()
+   -- nothing to reset if there is no model variant for no fuel
+   local model_variant = self:get_no_fuel_model_variant()
+   if model_variant then
+      self._entity:add_component('stonehearth_ace:entity_modification'):reset_model_variant()
+   end
+end
+
+function ConsumerComponent:_set_fuel_model_variant()
+   local model_variant = self:get_no_fuel_model_variant()
+   if model_variant then
+      self._entity:add_component('stonehearth_ace:entity_modification'):set_model_variant(model_variant)
    end
 end
 

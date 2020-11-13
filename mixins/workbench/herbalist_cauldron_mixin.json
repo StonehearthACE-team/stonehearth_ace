@@ -1,9 +1,10 @@
 {
    "components": {
       "stonehearth:workshop": {
-         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/herbalist/herbalist_cauldron/effects/work.json",
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/herbalist/herbalist_cauldron/effects/work.json"
+      },
+      "stonehearth_ace:consumer": {
          "fuel_settings": {
-            "uses_fuel": true,
             "fuel_per_craft": 1,
             "fueled_buff": "stonehearth_ace:buffs:weather:warmth_source",
             "fuel_effect": "/stonehearth_ace/data/rigs/jobs/herbalist/herbalist_cauldron/effects/idle.json",

@@ -2,6 +2,8 @@
    manages universal storage entities, handling changes to destination regions
 ]]
 
+local Entity = _radiant.om.Entity
+local validator = radiant.validator
 local DEFAULT_CATEGORY = '_DEFAULT_CATEGORY_'
 
 local UniversalStorageService = class()
@@ -37,6 +39,14 @@ function UniversalStorageService:_destroy_player_trace(entity_id)
       self._player_traces[entity_id]:destroy()
       self._player_traces[entity_id] = nil
    end
+end
+
+function UniversalStorageService:get_storage_from_access_node_command(session, response, entity)
+   validator.expect_argument_types({Entity}, entity)
+
+   local player_storage = self._sv.player_storages[entity:get_player_id()]
+   local storage = player_storage and player_storage:get_storage_from_access_node(entity)
+   return { storage = storage }
 end
 
 function UniversalStorageService:get_new_group_id()
@@ -93,6 +103,13 @@ function UniversalStorageService:unregister_storage(entity)
       player_storage:unregister_storage(entity)
    end
    self:_destroy_player_trace(entity:get_id())
+end
+
+function UniversalStorageService:storage_contents_changed(storage, is_empty)
+   local player_storage = self._sv.player_storages[storage:get_player_id()]
+   if player_storage then
+      player_storage:storage_contents_changed(storage, is_empty)
+   end
 end
 
 return UniversalStorageService

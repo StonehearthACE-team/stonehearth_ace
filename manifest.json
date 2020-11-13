@@ -4849,10 +4849,10 @@
       "auto_replace": "file(components/auto_replace/auto_replace_component.lua)",
       "component_info": "file(components/component_info/component_info_component.lua)",
       "connection": "file(components/connection/connection_component.lua)",
-      "dynamic_connection": "file(components/connection/dynamic_connection_component.lua)",
       "consumer": "file(components/consumer/consumer_component.lua)",
       "container": "file(components/container/container_component.lua)",
       "critter_colony": "file(components/critter_colony/critter_colony_component.lua)",
+      "dynamic_connection": "file(components/connection/dynamic_connection_component.lua)",
       "entity_kingdom": "file(components/entity_modification/entity_kingdom_component.lua)",
       "entity_modification": "file(components/entity_modification/entity_modification_component.lua)",
       "entity_mover": "file(components/entity_mover/entity_mover_component.lua)",
@@ -5228,6 +5228,9 @@
       "herbalist_planter": [
          "set_current_crop_command",
          "set_harvest_enabled_command"
+      ],
+      "universal_storage": [
+         "get_storage_from_access_node_command"
       ]
    },
    "ui": {

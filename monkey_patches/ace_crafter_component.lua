@@ -166,18 +166,18 @@ function AceCrafterComponent:get_work_rate()
    return multiplier * tiredness_multiplier * mood_multiplier -- * job_multiplier
 end
 
-function AceCrafterComponent:get_fuel_reserved_workshop()
-   return self._fuel_reserved_workshop
+function AceCrafterComponent:get_fuel_reserved_consumer()
+   return self._fuel_reserved_consumer
 end
 
-function AceCrafterComponent:set_fuel_reserved_workshop(workshop)
-   self._fuel_reserved_workshop = workshop
+function AceCrafterComponent:set_fuel_reserved_consumer(consumer)
+   self._fuel_reserved_consumer = consumer
 end
 
 function AceCrafterComponent:unreserve_fuel()
-   local workshop_component = self._fuel_reserved_workshop and self._fuel_reserved_workshop:get_component('stonehearth:workshop')
-   if workshop_component then
-      workshop_component:unreserve_fuel(self._entity:get_id())
+   local consumer_component = self._fuel_reserved_consumer and self._fuel_reserved_consumer:get_component('stonehearth_ace:consumer')
+   if consumer_component then
+      consumer_component:unreserve_fuel(self._entity:get_id())
    end
 end
 

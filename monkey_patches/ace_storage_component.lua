@@ -89,6 +89,7 @@ function AceStorageComponent:_on_contents_changed()
 		end
 	end
 
+   stonehearth_ace.universal_storage:storage_contents_changed(self._entity, self:is_empty())
 end
 
 function AceStorageComponent:get_limited_all_filter()

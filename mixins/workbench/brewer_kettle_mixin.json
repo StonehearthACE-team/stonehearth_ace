@@ -1,9 +1,10 @@
 {
    "components": {
       "stonehearth:workshop": {
-         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/brewer/brewer_kettle/effects/work.json",
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/brewer/brewer_kettle/effects/work.json"
+      },
+      "stonehearth_ace:consumer": {
          "fuel_settings": {
-            "uses_fuel": true,
             "fuel_per_craft": 2,
             "fueled_buff": "stonehearth_ace:buffs:weather:warmth_source",
             "no_fuel_effect": "stonehearth_ace:effects:requires_fuel_overlay_effect",

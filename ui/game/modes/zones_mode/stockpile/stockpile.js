@@ -1,7 +1,7 @@
 App.StonehearthStockpileView.reopen({
    ace_components: {
       'stonehearth:expendable_resources' : {},
-      'stonehearth:workshop': {},
+      'stonehearth_ace:consumer': {},
       "stonehearth:storage" : {
          "item_tracker" : {
             "tracking_data" : {
@@ -176,12 +176,12 @@ App.StonehearthStockpileView.reopen({
       self.set('totalCrafts', Math.floor(total / perCraft));
    }.observes('fuelPerCraft', 'fuelLevel', 'potentialFuel'),
 
-   _updateIsWorkshop: function() {
+   _updateIsConsumer: function() {
       var self = this;
-      var ws = self.get('model.stonehearth:workshop');
-      self.set('isWorkshop', ws != null);
-      self.set('fuelPerCraft', ws && ws.fuel_per_craft || null);
-   }.observes('model.stonehearth:workshop'),
+      var ws = self.get('model.stonehearth_ace:consumer');
+      self.set('isConsumer', ws != null);
+      self.set('fuelPerCraft', ws && ws.fuel_per_use || null);
+   }.observes('model.stonehearth_ace:consumer'),
 
    _updateFuelLevel: function() {
       var self = this;
