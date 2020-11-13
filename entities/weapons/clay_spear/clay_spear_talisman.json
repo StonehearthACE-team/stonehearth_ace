@@ -1,0 +1,45 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(clay_spear.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "stonehearth:effects:talisman_glow"
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 10,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.footman.footman_clay_spear.footman_clay_spear_talisman.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.footman.footman_clay_spear.footman_clay_spear_talisman.description)",
+         "icon": "file(clay_spear.png)",
+         "is_item": true,
+         "category": "tools",
+         "material_tags": [
+            "stockpile_tool"
+         ]
+      },
+      "stonehearth_ace:promotion_talisman": {
+         "equipment_overrides": {
+            "mainhand": "stonehearth_ace:weapons:clay_spear"
+         }
+      }
+   }
+}

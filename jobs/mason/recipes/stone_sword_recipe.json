@@ -1,16 +1,24 @@
 {
+	"recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.stone_sword_recipe.recipe_name)",
    "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.stone_sword_recipe.flavor)",
+	"portrait": "/stonehearth_ace/entities/weapons/stone_axe/stone_axe.png",
    "mixintypes": {
-	  "ingredients": "override"
+	  "ingredients": "override",
+	  "produces": "override"
    },
    "ingredients": [
       {
          "material": "stone resource",
-         "count": 2
-      },
-      {
-         "material": "fiber resource",
          "count": 1
+      },
+		{
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:footman:talisman:stone"
       }
    ]
 }

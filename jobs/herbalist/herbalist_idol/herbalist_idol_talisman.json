@@ -1,0 +1,41 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(herbalist_idol.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "stonehearth:effects:talisman_glow"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 10,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_idol.herbalist_idol_talisman.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_idol.herbalist_idol_talisman.description)",
+         "icon": "file(herbalist_idol.png)",
+         "is_item": true,
+         "category": "tools",
+         "material_tags": [
+            "stockpile_tool"
+         ]
+      },
+      "stonehearth_ace:promotion_talisman": {
+         "equipment_overrides": {
+            "mainhand": "stonehearth_ace:herbalist:idol"
+         }
+      }
+   }
+}

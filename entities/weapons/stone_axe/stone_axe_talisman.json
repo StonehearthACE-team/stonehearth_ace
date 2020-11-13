@@ -1,0 +1,41 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(stone_axe.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "stonehearth:effects:talisman_glow"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 10,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.footman.footman_stone_axe.footman_stone_axe_talisman.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.footman.footman_stone_axe.footman_stone_axe_talisman.description)",
+         "icon": "file(stone_axe.png)",
+         "is_item": true,
+         "category": "tools",
+         "material_tags": [
+            "stockpile_tool"
+         ]
+      },
+      "stonehearth_ace:promotion_talisman": {
+         "equipment_overrides": {
+            "mainhand": "stonehearth_ace:weapons:stone_axe"
+         }
+      }
+   }
+}

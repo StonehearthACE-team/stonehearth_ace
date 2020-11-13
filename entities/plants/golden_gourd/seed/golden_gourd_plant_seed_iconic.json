@@ -1,0 +1,29 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(golden_gourd_plant_seed_iconic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": 0.05 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "is_item": true,
+         "category": "seed",
+         "material_tags": ["stockpile_plant", "plant", "resource", "seed", "seed_hard"]
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 168,
+            "max": 168
+         }
+      }
+   }
+}

@@ -1,0 +1,33 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(../golden_gourd.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.plants.golden_gourd.seed.golden_gourd_plant_seed_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.golden_gourd.seed.golden_gourd_plant_seed_ghost.description)",
+         "icon": "file(golden_gourd_plant_seed.png)",
+         "category": "seed"
+      }
+   }
+}

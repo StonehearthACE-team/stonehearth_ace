@@ -3272,6 +3272,22 @@
                "training_complete_name": "Academy Graduate",
                "training_complete_description": "The footman has finished their combat training and can now seek new opportunities like trying to become a Knight!"
             }
+         },
+         "footman_stone_axe": {
+            "footman_stone_axe_talisman": {
+               "description": "Required to promote a hearthling into a Footman.",
+               "display_name": "Stone Axe"
+            },
+            "display_name": "Stone Axe",
+            "description": "A large and robust stone weapon to crush your foes!"
+         },
+         "footman_clay_spear": {
+            "footman_clay_spear_talisman": {
+               "description": "Required to promote a hearthling into a Footman.",
+               "display_name": "Ceramic Short Spear"
+            },
+            "display_name": "Ceramic Short Spear",
+            "description": "Efficient for poking your enemies, but poke them carefully!"
          }
       },
       "archer": {
@@ -3571,6 +3587,11 @@
             "carrot_transmute_recipe": {
                "recipe_name": "Carrot Seeds (x2)",
                "description": "Separate seeds from the youngest leaves",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the vegetable is destroyed in the process."
+            },
+            "golden_gourd_transmute_recipe": {
+               "recipe_name": "Golden Gourd Seeds (x2)",
+               "description": "Separate seeds from the vegetables",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the vegetable is destroyed in the process."
             },
             "sunflower_transmute_recipe": {
@@ -3922,6 +3943,11 @@
             },
             "carrot_seeds_recipe": {
                "recipe_name": "Carrot Seeds",
+               "description": "Domesticate Carrots and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "carrot_seeds_2_recipe": {
+               "recipe_name": "Carrot Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate carrots!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
@@ -3947,6 +3973,11 @@
             },
             "golden_gourd_seeds_recipe": {
                "recipe_name": "Golden Gourd Seeds",
+               "description": "Domesticate Golden Gourds and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "golden_gourd_seeds_2_recipe": {
+               "recipe_name": "Golden Gourd Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate golden gourds!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
@@ -3956,6 +3987,11 @@
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "sweet_potato_seeds_recipe": {
+               "recipe_name": "Sweet Potato Seeds",
+               "description": "Domesticate Sweet Potatoes and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "sweet_potato_seeds_2_recipe": {
                "recipe_name": "Sweet Potato Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate sweet taters!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -4268,6 +4304,22 @@
          },
          "herbalist_bee_skep_regrowing": {
             "description": "This bee skep needs a few days to regrow a productive colony."
+         },
+         "herbalist_idol": {
+            "herbalist_idol_talisman": {
+               "display_name": "Herbalist's Idol",
+               "description": "Required to promote a hearthling into an Herbalist"
+            },
+            "display_name": "Herbalist Idol",
+            "description": "A small staff used for rituals and ceremonies."
+         },
+         "herbalist_staff_bone": {
+            "herbalist_staff_bone_talisman": {
+               "description": "Required to promote a hearthling into an Herbalist",
+               "display_name": "Herbalist's Bone Staff"
+            },
+            "display_name": "Herbalist Bone Staff",
+            "description": "The power of Firnn provides healing and focus."
          }
       },
       "engineer": {
@@ -4352,7 +4404,17 @@
       "potter": {
          "recipes": {
             "rc_shepherds_crook_recipe": {
+               "recipe_name": "Shepherd's Ceramic Crook",
                "flavor": "The herding of animals in the desert is a tradition coming for as long as the children of Rayya have been walking these dunes"
+            },
+            "na_shepherds_crook_recipe": {
+               "recipe_name": "Shepherd's Ceramic Crook",
+               "flavor": "Shepherds are highly praised in the north not only for the meat or bones but especially because of the furs and wool"
+            },
+            "herbalist_clay_staff_recipe": {
+               "recipe_name": "Herbalist's Idol",
+               "description": "Required to promote a hearthling to an Herbalist, who creates healing tonics and bandages.",
+               "flavor": "Earthly idols have healing powers, they say"
             },
             "present_small_recipe": {
                "recipe_name": "Small Frostfeast Present",
@@ -4412,8 +4474,8 @@
                "description": "Ranged fighters can gain experience from practicing with this target.",
                "flavor": "Requires an engineer for repairs."
             },
-            "clay_sword_recipe": {
-               "recipe_name": "Clay Practice Sword",
+            "clay_spear_recipe": {
+               "recipe_name": "Ceramic Practice Spear",
                "description": "Required to promote a hearthling into a Footman.",
                "flavor": "Might break easily but ideally they won't use it for long... right?"
             },
@@ -4775,8 +4837,14 @@
             "bone_weapons_armor_name": "Weapons & Armor, Bone Carving",
             "bone_furniture_name": "Furniture & Decoration, Bone Carving",
             "bone_building_parts_name": "Building Parts, Bone Carving",
-            "na_shepherds_crook_recipe": {
-               "flavor": "Sooner or later winter will come - and you'll need wool and hides..."
+            "na_weaver_spindle_recipe": {
+               "recipe_name": "Weaver's Bone Spindle",
+               "flavor": "Winter may be late but always arrives, you better thread your wool and your hides! -Northern folk saying"
+            },
+            "na_herbalist_staff_bone_recipe": {
+               "recipe_name": "Herbalist's Bone Staff",
+               "description": "Required to promote a hearthling to an Herbalist, who creates healing tonics and bandages.",
+               "flavor": "The healing powers of Firnn shall provide"
             },
             "present_small_recipe": {
                "recipe_name": "Small Frostfeast Present",
@@ -4986,7 +5054,8 @@
                "flavor": ""
             },
             "stone_sword_recipe": {
-               "flavor": "Training with stone swords is a cruel but efficient joke."
+               "recipe_name": "Stone Practice Axe",
+               "flavor": "Training with stone weapons is a cruel but efficient joke"
             },
             "simple_bed_pet_2_recipe": {
                "recipe_name": "Dry Thatch Animal Bed",
@@ -6655,6 +6724,14 @@
          "shepherd_workbench": {
             "display_name": "Shepherd Bin & Grinder",
             "description": "Used by the Shepherd for assembling materials or milling feed."
+         },
+         "shepherd_crook_clay": {
+            "shepherd_crook_clay_talisman": {
+               "display_name": "Shepherd's Ceramic Crook",
+               "description": "Required to promote a hearthling into a Shepherd."
+            },
+            "display_name": "Shepherd's Ceramic Crook",
+            "description": "Comes in a nice color."
          }
       },
       "farmer": {
@@ -10267,6 +10344,46 @@
                   "description": "A cute little arid plant. Can be planted."
                }
             }
+         },
+         "golden_gourd": {
+            "golden_gourd_ghost": {
+               "display_name": "Golden Gourd",
+               "description": "A resilient vegetable."
+            },
+            "bud": {
+               "golden_gourd_plant_bud": {
+                  "display_name": "Budding Golden Gourd",
+                  "description": "It's almost full grown!"
+               }
+            },
+            "rotten": {
+               "golden_gourd_rotten": {
+                  "display_name": "Rotten Golden Gourd",
+                  "description": "Not good for eating anymore, but a great source of seeds."
+               }
+            },
+            "seed": {
+               "golden_gourd_plant_seed": {
+                  "display_name": "Golden Gourd Seed",
+                  "description": "Can be planted to grow a hearty desert vegetable."
+               },
+               "golden_gourd_plant_seed_ghost": {
+                  "display_name": "Golden Gourd Seed",
+                  "description": "Can be planted to grow a hearty desert vegetable."
+               }
+            },
+            "sprout": {
+               "golden_gourd_plant_sprout": {
+                  "description": "Just needs some time and care.",
+                  "display_name": "Golden Gourd Sproutling"
+               }
+            },
+            "stem": {
+               "golden_gourd_plant_stem": {
+                  "display_name": "Stemming Golden Gourd",
+                  "description": "Still growing!"
+               }
+            }
          }
       },
       "decoration": {
@@ -12812,6 +12929,12 @@
          "poison_arrow": {
             "display_name": "Poisonous Arrow",
             "description": "Can poison the target upon hitting."
+         },
+         "spear_horn": {
+            "spear_horn_iconic": {
+               "description": "Imbues the wearer with the power of Firnn so they heal faster."
+            },
+            "description": "Increased Willpower and healing speed due to Firnn's boon."
          }
       },
       "gizmos": {
@@ -14777,26 +14900,26 @@
                      "brewer": "Brewer Storage (Default)",
                      "raw_food": "Default Preset: Raw Food",
                      "crafting": "Basic Crafting Storage (Default)",
-							"supply_low_fuel": "Lower Grade Fuel Supply (Default)",
-							"supply_common_fuel": "Common Fuel Supply (Default)",
-							"supply_good_fuel": "Good Grade Fuel Supply (Default)",
-							"supply_carpenter": "Carpentry Supplies (Default)",
-							"supply_potter": "Pottery Supplies (Default)",
-							"supply_mason": "Masonry Supplies(Default)",
-							"supply_fiber_thatch": "Fiber & Thatch Supply (Default)",
-							"supply_weaver": "Weaving Supplies (Default)",
-							"supply_metalworker": "Metalworking Supplies (Default)",
-							"supply_baking": "Baking Supplies (Default)",
-							"supply_veggie_fruit": "Veggie & Fruit Supply (Default)",
-							"supply_meat": "Meat Supply (Default)",
-							"decayables_vegetables": "Preservable Vegetables (Default)",
-							"decayables_fruits": "Preservable Fruits (Default)",
-							"decayables_nuts": "Preservable Nuts (Default)",
-							"decayables_fungi": "Preservable Fungi (Default)",
-							"decayables_dairy": "Preservable Dairy Products (Default)",
-							"decayables_meat": "Preservable Game Meat (Default)",
-							"decayables_poultry": "Preservable Poultry Products (Default)",
-							"decayables_fish": "Preservable Fishing Products (Default)"
+                     "supply_low_fuel": "Lower Grade Fuel Supply (Default)",
+                     "supply_common_fuel": "Common Fuel Supply (Default)",
+                     "supply_good_fuel": "Good Grade Fuel Supply (Default)",
+                     "supply_carpenter": "Carpentry Supplies (Default)",
+                     "supply_potter": "Pottery Supplies (Default)",
+                     "supply_mason": "Masonry Supplies(Default)",
+                     "supply_fiber_thatch": "Fiber & Thatch Supply (Default)",
+                     "supply_weaver": "Weaving Supplies (Default)",
+                     "supply_metalworker": "Metalworking Supplies (Default)",
+                     "supply_baking": "Baking Supplies (Default)",
+                     "supply_veggie_fruit": "Veggie & Fruit Supply (Default)",
+                     "supply_meat": "Meat Supply (Default)",
+                     "decayables_vegetables": "Preservable Vegetables (Default)",
+                     "decayables_fruits": "Preservable Fruits (Default)",
+                     "decayables_nuts": "Preservable Nuts (Default)",
+                     "decayables_fungi": "Preservable Fungi (Default)",
+                     "decayables_dairy": "Preservable Dairy Products (Default)",
+                     "decayables_meat": "Preservable Game Meat (Default)",
+                     "decayables_poultry": "Preservable Poultry Products (Default)",
+                     "decayables_fish": "Preservable Fishing Products (Default)"
                   },
                   "preset_filter": {
                      "save_mode": {

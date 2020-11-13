@@ -1,0 +1,62 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.05 },
+         "mob_collision_type": "clutter",
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(golden_gourd_rotten.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "description": "harvest_plant",
+         "resource_loot_table": {
+            "entries": {
+               "mandatory": {
+                  "num_rolls": {
+                     "min": 3,
+                     "max": 5
+                  },
+                  "items": {
+                     "pelt": {
+                        "uri": "stonehearth_ace:plants:golden_gourd:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:plants:golden_gourd:seed",
+         "evolve_time": "1h+12h"
+      },
+      "stonehearth:catalog": {
+         "category": "plants",
+         "display_name": "i18n(stonehearth_ace:entities.plants.golden_gourd.rotten.golden_gourd_rotten.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.golden_gourd.rotten.golden_gourd_rotten.description)",
+         "icon": "file(golden_gourd_rotten.png)"
+      },
+      "stonehearth:appeal": {
+         "appeal": -30
+      }
+   }
+}

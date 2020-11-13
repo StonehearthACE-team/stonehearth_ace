@@ -7,11 +7,12 @@
    "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.sweet_potato_seeds_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/consumables/seeds/sweet_potato_seeds/sweet_potato_seeds.png",
    "workshop": "stonehearth:herbalist:workbench",
-   "level_requirement": 1,
+   "level_requirement": 2,
+	"manual_unlock": true,
    "ingredients": [
       {
-         "uri": "stonehearth:food:sweet_potato:sweet_potato_basket",
-         "count": 8
+         "uri": "stonehearth:plants:sweet_potato:seed",
+         "count": 10
       }
    ],
    "produces": [

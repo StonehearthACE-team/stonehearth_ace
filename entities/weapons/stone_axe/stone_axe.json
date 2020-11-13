@@ -1,0 +1,53 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:twohanded"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(stone_axe_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 10,
+         "reach": 1.8
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_2h_attack",
+            "effect": "combat_2h_attack",
+            "active_frame": 21,
+            "cooldown": 0,
+            "priority": 2
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "Wooden Sword",
+         "description": "Thacks thine enemies with oaken might",
+         "icon": "file(stone_axe.png)",
+         "category": "weapons",
+         "material_tags": [
+            "stone"
+         ]
+      }
+   }
+}
