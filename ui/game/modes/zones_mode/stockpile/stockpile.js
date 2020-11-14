@@ -171,9 +171,39 @@ App.StonehearthStockpileView.reopen({
       }
 
       var total = level + potential;
+      var totalCrafts = Math.floor(total / perCraft);
+      
+      var fuelClass;
+      if (totalCrafts < 1) {
+         fuelClass = 'noFuel';
+      }
+      else if (potential < 1) {
+         fuelClass = 'someFuel';
+      }
+      else {
+         fuelClass = 'plentyFuel';
+      }
 
-      self.set('totalFuel', total);
-      self.set('totalCrafts', Math.floor(total / perCraft));
+      var fuelBars = '';
+      for (var i = 0; i < Math.max(1, Math.min(16, totalCrafts)); i++) {
+         fuelBars += `<img class="${fuelClass}">`;
+      }
+      if (totalCrafts > 16) {
+         fuelBars += '<img class="extraFuel">';
+      }
+      
+      self.set('fuelBars', fuelBars);
+
+      if (self.$('#fuelLevel').hasClass('tooltipstered')) {
+         self.$('#fuelLevel').tooltipster('destroy');
+      }
+      Ember.run.scheduleOnce('afterRender', self, function() {
+         var tooltipStr = i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.fuel_level.num_uses_available', {num_uses: totalCrafts, num_uses_class: fuelClass});
+         var tooltip = App.tooltipHelper.createTooltip('', tooltipStr);
+         self.$('#fuelLevel').tooltipster({
+            content: $(tooltip)
+         });
+      });
    }.observes('fuelPerCraft', 'fuelLevel', 'potentialFuel'),
 
    _updateIsConsumer: function() {
@@ -185,9 +215,9 @@ App.StonehearthStockpileView.reopen({
 
    _updateFuelLevel: function() {
       var self = this;
-      var fuelLevel = self.get('model.stonehearth:expendable_resources.resources.fuel_level');
+      var fuelLevel = self.get('model.stonehearth:expendable_resources.resources.fuel_level') + self.get('model.stonehearth:expendable_resources.resources.reserved_fuel_level');
       self.set('fuelLevel', fuelLevel);
-   }.observes('model.stonehearth:expendable_resources.resources.fuel_level'),
+   }.observes('model.stonehearth:expendable_resources.resources.fuel_level', 'model.stonehearth:expendable_resources.resources.reserved_fuel_level'),
 
    _updateItemsFuel : function() {
       var self = this;
