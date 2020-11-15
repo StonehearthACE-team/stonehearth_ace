@@ -33,46 +33,5 @@
       "stonehearth:table": {
          "drop_offset": { "x": 0, "y": 0, "z": 0 }
       }
-   },
-   "__not_using": {
-      "stonehearth_ace:consumer": {
-         "time_decay": {
-            "interval": "10m",
-            "min_level": 0,
-            "relative_amount": "0.05"
-         },
-         "fuels": {
-            "low_fuel": {
-               "amount": 100,
-               "max_level": 150
-            },
-            "common_fuel": {
-               "amount": 150,
-               "max_level": 250
-            },
-            "high_fuel": {
-               "amount": 300,
-               "max_level": 500
-            }
-         },
-         "variant_tiers": [
-            {
-               "max_level": 150,
-               "model_variant": "default",
-               "__comment": "effect and transition_from_higher_effect can also be specified"
-            },
-            {
-               "min_level": 100,
-               "max_level": 250,
-               "model_variant": "default",
-               "__comment": "effect, transition_from_lower_effect, and transition_from_higher_effect can also be specified"
-            },
-            {
-               "min_level": 150,
-               "model_variant": "default",
-               "__comment": "effect and transition_from_lower_effect can also be specified"
-            }
-         ]
-      }
    }
 }

@@ -599,11 +599,12 @@ App.StonehearthPromotionTree.reopen({
          if (talisman_uris.length > 1) {
             // if there are alternate talismans that could be used, indicate that in a tooltip
             App.tooltipHelper.createDynamicTooltip(self.$('#requiredTalisman'), function () {
-               var t = '';
+               var t = '<div class="tooltipJobTalisman">';
                for (var i = 1; i < talismans.length; i++) {
                   var talisman = talismans[i];
-                  t += `<p class="tooltipJobTalisman"><img src="${talisman.icon}">${i18n.t(talisman.display_name)}</p>`;
+                  t += `<div class="tooltipJobTalismanEntry"><img src="${talisman.icon}"><div>${i18n.t(talisman.display_name)}</div></div>`;
                }
+               t += '</div>';
                return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.promotion_tree.alternate_talismans'), t));
             });
          }

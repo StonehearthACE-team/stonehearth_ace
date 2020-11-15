@@ -139,13 +139,57 @@
 
    #contentsTab {
       #fuelLevel {
-         position: absolute;
-         bottom: 200px;
-         left: 20px;
+         padding-bottom: 20px;
+         width: 100%;
+
+         .label {
+            padding-right: 4px;
+            font-size: 16px;
+         }
+
+         img {
+            display: inline-block;
+            margin-bottom: -13px;
+            height: 40px;
+
+            &.noFuel {
+               content: url(images/fuel_level_none.png);
+               width: 44px;
+            }
+
+            &.someFuel {
+               content: url(images/fuel_level_some.png);
+               width: 40px;
+            }
+
+            &.plentyFuel {
+               content: url(images/fuel_level_plenty.png);
+               width: 25px;
+            }
+
+            &.extraFuel {
+               content: url(images/fuel_level_extra.png);
+               width: 25px;
+            }
+         }
       }
    }
 }
 
 .tooltipInvalidMaterials {
    color: #cc3333;
+}
+
+.tooltipNumFuelUses {
+   font-weight: bolder;
+
+   &.noFuel {
+      color: #BF1F00;
+   }
+   &.someFuel {
+      color: #E57600;
+   }
+   &.plentyFuel {
+      color: #66BF00;
+   }
 }

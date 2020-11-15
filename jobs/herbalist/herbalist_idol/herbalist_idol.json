@@ -1,0 +1,52 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(herbalist_idol_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 4,
+         "reach": 1.5
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_idol.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_idol.description)",
+         "icon": "file(herbalist_idol.png)",
+         "category": "tools",
+         "material_tags": [
+            "tool"
+         ]
+      }
+   }
+}

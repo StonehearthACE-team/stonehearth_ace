@@ -7,11 +7,12 @@
    "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.golden_gourd_seeds_recipe.flavor)",
    "portrait": "/stonehearth/entities/consumables/seeds/golden_gourd_seeds/golden_gourd_seeds.png",
    "workshop": "stonehearth:herbalist:workbench",
-   "level_requirement": 1,
+   "level_requirement": 2,
+	"manual_unlock": true,
    "ingredients": [
       {
-         "uri": "stonehearth:food:golden_gourd:golden_gourd_basket",
-         "count": 8
+         "uri": "stonehearth_ace:plants:golden_gourd:seed",
+         "count": 10
       }
    ],
    "produces": [

@@ -1,25 +1,26 @@
 {
    "type": "recipe",
-   "effort": 35,
-   "recipe_name": "i18n(stonehearth:jobs.carpenter.recipes.shepherds_crook_recipe.recipe_name)",
+   "effort": 40,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.rc_shepherds_crook_recipe.recipe_name)",
    "description": "i18n(stonehearth:jobs.carpenter.recipes.shepherds_crook_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.rc_shepherds_crook_recipe.flavor)",
-   "portrait": "/stonehearth/jobs/shepherd/shepherd_crook/shepherd_crook.png",
-   "workshop": "stonehearth:potter:workbench",
+   "portrait": "/stonehearth_ace/jobs/shepherd/shepherd_crook_clay/shepherd_crook_clay.png",
+   "workshop": "stonehearth:potter:kiln",
+	"work_effect": "work_wait",
    "level_requirement": 2,
    "ingredients": [
       {
          "material": "wood resource",
-         "count": 2
+         "count": 1
       },
       {
-         "material": "pelt resource",
-         "count": 1
+         "material": "clay resource",
+         "count": 2
       }
    ],
    "produces": [
       {
-         "item": "stonehearth:shepherd:talisman"
+         "item": "stonehearth_ace:shepherd:talisman:clay"
       }
    ]
 }

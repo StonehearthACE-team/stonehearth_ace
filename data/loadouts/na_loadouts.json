@@ -41,6 +41,10 @@
       "merchant_caravan": {
          "content": {
             "mixintypes": {},
+            "herbalist": {
+               "uri": "stonehearth_ace:herbalist:talisman:bone",
+               "icon": "file(images/items/herbalist_staff_bone.png)"
+            },
             "archer": {},
             "sweet_potatoes": {}
          }
@@ -48,7 +52,10 @@
       "military_expedition": {
          "ordinal": 3,
          "content": {
-            "footman": {},
+            "footman": {
+               "uri": "stonehearth_ace:footman:talisman:stone",
+               "icon": "file(images/items/stone_axe.png)"
+            },
             "archer": {},
             "training_dummy": {
                "display_name": "i18n(stonehearth_ace:data.loadouts.items.training_target)",

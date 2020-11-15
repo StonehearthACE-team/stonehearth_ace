@@ -240,7 +240,7 @@ function AceCraftOrder:_has_multiple_qualities_material_ingredient(ingredient, t
    return false
 end
 
--- override this to consider stacks for items and also make sure items aren't inside of workshops (because that's fuel/reserved)
+-- override this to consider stacks for items and also make sure items aren't inside of consumers (because that's fuel/reserved)
 function AceCraftOrder:_has_uri_ingredients_for_item(ingredient, tracking_data)
    local data = radiant.entities.get_component_data(ingredient.uri , 'stonehearth:entity_forms')
    local lookup_key
@@ -260,7 +260,7 @@ function AceCraftOrder:_has_uri_ingredients_for_item(ingredient, tracking_data)
    local count = 0
    for id, item in pairs(tracking_data_for_key.items) do
       local container = self._inventory and self._inventory:container_for(item)
-      if not container or not container:get_component('stonehearth:workshop') then
+      if not container or not container:get_component('stonehearth_ace:consumer') then
          if ingredient.min_stacks then
             local stacks_comp = item:get_component('stonehearth:stacks')
             if stacks_comp then
@@ -377,14 +377,12 @@ function AceCraftOrder:_has_valid_workshop(crafter, workshop_uri)
    local workshop_data = self._inventory:get_items_of_type(workshop_uri)
 
    if workshop_data and workshop_data.count > 0 then
-      local comp_data = radiant.entities.get_component_data(workshop_uri, 'stonehearth:workshop')
-      if comp_data and comp_data.fuel_settings and comp_data.fuel_settings.uses_fuel then
+      local consumer_data = radiant.entities.get_component_data(workshop_uri, 'stonehearth_ace:consumer')
+      if consumer_data then
          for _, workshop in pairs(workshop_data.items) do
-            local workshop_comp = workshop:get_component('stonehearth:workshop')
-            if workshop_comp then
-               if workshop_comp:reserve_fuel(crafter) then
-                  return true
-               end
+            local consumer_comp = workshop:get_component('stonehearth_ace:consumer')
+            if consumer_comp and consumer_comp:reserve_fuel(crafter) then
+               return true
             end
          end
       else

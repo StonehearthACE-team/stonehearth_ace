@@ -7,6 +7,14 @@
             "mixintypes": {
                "berries": "remove"
             },
+            "herbalist": {
+               "uri": "stonehearth_ace:herbalist:talisman:clay",
+               "icon": "file(images/items/herbalist_idol.png)"
+            },
+            "footman": {
+               "uri": "stonehearth_ace:footman:talisman:clay",
+               "icon": "file(images/items/clay_spear.png)"
+            },
             "prickly_pear": {
                "ordinal": 4,
                "display_name": "i18n(stonehearth_ace:data.loadouts.items.prickly_pear)",
@@ -32,8 +40,8 @@
                "ordinal": 1,
                "display_name": "i18n(stonehearth:jobs.shepherd.shepherd_description.display_name)",
                "type": "entity",
-               "uri": "stonehearth:shepherd:talisman",
-               "icon": "file(images/items/shepherd_crook.png)",
+               "uri": "stonehearth_ace:shepherd:talisman:clay",
+               "icon": "file(images/items/shepherd_crook_clay.png)",
                "amount": 1
             },
             "prickly_pear": {
@@ -64,7 +72,10 @@
             "mixintypes": {
                "mead": "remove"
             },
-            "footman": {},
+            "footman": {
+               "uri": "stonehearth_ace:footman:talisman:clay",
+               "icon": "file(images/items/clay_spear.png)"
+            },
             "archer": {},
             "training_dummy": {
                "uri": "stonehearth_ace:gizmos:clay_training_dummy",

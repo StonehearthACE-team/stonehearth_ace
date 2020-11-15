@@ -5,7 +5,7 @@ local AceRepairEntityAdjacent = radiant.class()
 -- finally, the crafter component work effect (specified in job description file), or 'wrench' if still nothing has been specified
 function AceRepairEntityAdjacent:run(ai, entity, args)
    local target = args.entity
-   ai:set_status_text_key('stonehearth:ai.actions.status_text.healing_target', { target = target })
+   ai:set_status_text_key('stonehearth:ai.actions.status_text.repair_entity', { target = target })
 
    -- get work units from siege weaon entity data
    local siege_data = radiant.entities.get_entity_data(target, 'stonehearth:siege_object')

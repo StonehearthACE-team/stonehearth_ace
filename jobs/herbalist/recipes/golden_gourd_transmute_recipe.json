@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "effort": 22,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.golden_gourd_transmute_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.golden_gourd_transmute_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.golden_gourd_transmute_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/plants/golden_gourd/seed/golden_gourd_plant_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:golden_gourd:golden_gourd_basket",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:plants:golden_gourd:seed"
+      },
+      {
+         "item": "stonehearth_ace:plants:golden_gourd:seed"
+      }
+   ]
+}

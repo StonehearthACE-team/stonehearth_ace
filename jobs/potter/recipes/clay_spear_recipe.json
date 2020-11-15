@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.clay_spear_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.clay_spear_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.clay_spear_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/weapons/clay_spear/clay_spear.png",
+   "workshop": "stonehearth:potter:kiln",
+	"work_effect": "work_wait",
+   "level_requirement": 4,
+   "ingredients": [
+		{
+         "material": "wood resource",
+         "count": 1
+      },
+      {
+         "material": "clay resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:footman:talisman:clay"
+      }
+   ]
+}

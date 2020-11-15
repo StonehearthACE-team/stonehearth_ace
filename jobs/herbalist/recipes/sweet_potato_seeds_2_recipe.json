@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.sweet_potato_seeds_2_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.sweet_potato_seeds_2_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.sweet_potato_seeds_2_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/seeds/sweet_potato_seeds/sweet_potato_seeds.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:sweet_potato:sweet_potato_basket",
+         "count": 8
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:seeds:sweet_potato_seeds"
+      }
+   ]
+}

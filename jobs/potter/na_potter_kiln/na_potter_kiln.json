@@ -38,7 +38,9 @@
       },
       "stonehearth:workshop": {
          "job_alias": "stonehearth:jobs:potter",
-         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/potter/potter_kiln/effects/na_work.json",
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/potter/potter_kiln/effects/na_work.json"
+      },
+      "stonehearth_ace:consumer": {
          "fuel_settings": {
             "fuel_effect": "/stonehearth_ace/data/rigs/jobs/potter/potter_kiln/effects/na_idle.json"
          }
@@ -46,7 +48,7 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "alternate_uri_for": "stonehearth:potter:kiln"
+         "alternate_builder_uri": "stonehearth:potter:kiln"
       },
       "stonehearth:table": {
          "drop_effect": "carry_putdown_on_table",

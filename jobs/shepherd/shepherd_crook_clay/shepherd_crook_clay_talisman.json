@@ -1,0 +1,41 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(shepherd_crook_clay.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "stonehearth:effects:talisman_glow"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 15,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_crook_clay.shepherd_crook_clay_talisman.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_crook_clay.shepherd_crook_clay_talisman.description)",
+         "icon": "file(shepherd_crook_clay.png)",
+         "is_item": true,
+         "category": "tools",
+         "material_tags": [
+            "stockpile_tool"
+         ]
+      },
+      "stonehearth_ace:promotion_talisman": {
+         "equipment_overrides": {
+            "mainhand": "stonehearth_ace:shepherd:crook_clay"
+         }
+      }
+   }
+}

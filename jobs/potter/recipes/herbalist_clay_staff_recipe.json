@@ -1,0 +1,20 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 4,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.herbalist_clay_staff_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.herbalist_clay_staff_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.herbalist_clay_staff_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/herbalist/herbalist_idol/herbalist_idol.png",
+   "workshop": "stonehearth:potter:kiln",
+	"work_effect": "work_wait",
+   "level_requirement": 1,
+   "mixintypes": {
+		"produces": "override"
+	},
+   "produces": [
+      {
+         "item": "stonehearth_ace:herbalist:talisman:clay"
+      }
+   ]
+}

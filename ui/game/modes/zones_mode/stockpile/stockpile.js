@@ -1,7 +1,7 @@
 App.StonehearthStockpileView.reopen({
    ace_components: {
       'stonehearth:expendable_resources' : {},
-      'stonehearth:workshop': {},
+      'stonehearth_ace:consumer': {},
       "stonehearth:storage" : {
          "item_tracker" : {
             "tracking_data" : {
@@ -171,23 +171,53 @@ App.StonehearthStockpileView.reopen({
       }
 
       var total = level + potential;
+      var totalCrafts = Math.floor(total / perCraft);
+      
+      var fuelClass;
+      if (totalCrafts < 1) {
+         fuelClass = 'noFuel';
+      }
+      else if (potential < 1) {
+         fuelClass = 'someFuel';
+      }
+      else {
+         fuelClass = 'plentyFuel';
+      }
 
-      self.set('totalFuel', total);
-      self.set('totalCrafts', Math.floor(total / perCraft));
+      var fuelBars = '';
+      for (var i = 0; i < Math.max(1, Math.min(16, totalCrafts)); i++) {
+         fuelBars += `<img class="${fuelClass}">`;
+      }
+      if (totalCrafts > 16) {
+         fuelBars += '<img class="extraFuel">';
+      }
+      
+      self.set('fuelBars', fuelBars);
+
+      if (self.$('#fuelLevel').hasClass('tooltipstered')) {
+         self.$('#fuelLevel').tooltipster('destroy');
+      }
+      Ember.run.scheduleOnce('afterRender', self, function() {
+         var tooltipStr = i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.fuel_level.num_uses_available', {num_uses: totalCrafts, num_uses_class: fuelClass});
+         var tooltip = App.tooltipHelper.createTooltip('', tooltipStr);
+         self.$('#fuelLevel').tooltipster({
+            content: $(tooltip)
+         });
+      });
    }.observes('fuelPerCraft', 'fuelLevel', 'potentialFuel'),
 
-   _updateIsWorkshop: function() {
+   _updateIsConsumer: function() {
       var self = this;
-      var ws = self.get('model.stonehearth:workshop');
-      self.set('isWorkshop', ws != null);
-      self.set('fuelPerCraft', ws && ws.fuel_per_craft || null);
-   }.observes('model.stonehearth:workshop'),
+      var ws = self.get('model.stonehearth_ace:consumer');
+      self.set('isConsumer', ws != null);
+      self.set('fuelPerCraft', ws && ws.fuel_per_use || null);
+   }.observes('model.stonehearth_ace:consumer'),
 
    _updateFuelLevel: function() {
       var self = this;
-      var fuelLevel = self.get('model.stonehearth:expendable_resources.resources.fuel_level');
+      var fuelLevel = self.get('model.stonehearth:expendable_resources.resources.fuel_level') + self.get('model.stonehearth:expendable_resources.resources.reserved_fuel_level');
       self.set('fuelLevel', fuelLevel);
-   }.observes('model.stonehearth:expendable_resources.resources.fuel_level'),
+   }.observes('model.stonehearth:expendable_resources.resources.fuel_level', 'model.stonehearth:expendable_resources.resources.reserved_fuel_level'),
 
    _updateItemsFuel : function() {
       var self = this;

@@ -7,7 +7,9 @@
    "components": {
       "stonehearth:workshop": {
          "job_alias": "stonehearth:jobs:blacksmith",
-         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/mf_blacksmith_forge/effects/work.json",
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/mf_blacksmith_forge/effects/work.json"
+      },
+      "stonehearth_ace:consumer": {
          "fuel_settings": {
             "fuel_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/mf_blacksmith_forge/effects/idle.json",
             "no_fuel_model_variant": "no_fuel"
@@ -46,7 +48,7 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "alternate_uri_for": "stonehearth:blacksmith:forge"
+         "alternate_builder_uri": "stonehearth:blacksmith:forge"
       },
       "stonehearth:table": {
          "drop_effect": "carry_putdown_on_table",

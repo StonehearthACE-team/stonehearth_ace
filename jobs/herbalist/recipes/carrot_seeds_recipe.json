@@ -7,11 +7,12 @@
    "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.carrot_seeds_recipe.flavor)",
    "portrait": "/stonehearth/entities/consumables/seeds/carrot_seeds/carrot_seeds.png",
    "workshop": "stonehearth:herbalist:workbench",
-   "level_requirement": 1,
+   "level_requirement": 2,
+	"manual_unlock": true,
    "ingredients": [
       {
-         "uri": "stonehearth:food:carrot:carrot_basket",
-         "count": 8
+         "uri": "stonehearth:plants:carrot:seed",
+         "count": 10
       }
    ],
    "produces": [

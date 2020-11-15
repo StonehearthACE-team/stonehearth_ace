@@ -1,6 +1,9 @@
 {
    "type": "job",
    "mixins": "northern_alliance:jobs:footman",
+	"equipment_preferences": {
+      "default_role": "two_handed_footman"
+   },
    "equipment": {
       "torso": "file(na_footman_outfit)"
    }

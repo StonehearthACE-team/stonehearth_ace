@@ -2,16 +2,16 @@ local Point3 = _radiant.csg.Point3
 
 local AceProduceCraftedItems = radiant.class()
 
--- Paul: only changed two lines to pass the crafter along to the order when getting/setting progress
+-- Paul: pass the crafter along to the order when getting/setting progress, added fuel consumption
 function AceProduceCraftedItems:run(ai, entity, args)
    self._outputs = {}
    local order_progress = args.order:get_progress(entity)   -- Paul: changed this line
 
    if order_progress == stonehearth.constants.crafting_status.CRAFTING then
       -- if fuel was involved, consume it
-      local workshop_comp = args.workshop:get_component('stonehearth:workshop')
-      if workshop_comp and workshop_comp:uses_fuel() then
-         workshop_comp:consume_fuel(entity)
+      local consumer_comp = args.workshop:get_component('stonehearth_ace:consumer')
+      if consumer_comp then
+         consumer_comp:consume_fuel(entity)
       end
 
       -- don't fully destroy the ingredients yet, we want to be able to pass them to other scripts

@@ -1,0 +1,83 @@
+{
+   "type": "entity",
+   "mixins": "file(golden_gourd_ghost.json)",
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.05 },
+         "mob_collision_type": "clutter"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(golden_gourd.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "resource": "stonehearth:food:golden_gourd:golden_gourd_basket",
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_veggie_overlay_effect",
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "description": "harvest_plant",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 4
+                     },
+                     "pelt": {
+                        "uri": "stonehearth_ace:plants:golden_gourd:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(golden_gourd_iconic.json)",
+         "ghost_form": "file(golden_gourd_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": false
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:replant_data": {
+         "seed_alias": "stonehearth_ace:plants:golden_gourd:seed"
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:plants:golden_gourd:rotten",
+         "evolve_time": "6d+24h"
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "stockpile_plant"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": -1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      }
+   }
+}

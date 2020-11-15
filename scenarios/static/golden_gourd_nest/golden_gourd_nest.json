@@ -1,0 +1,26 @@
+{
+   "mixins": "/stonehearth_ace/scenarios/static/plantlife_nest/plantlife_nest.json",
+   "name": "golden_gourd_nest",
+   "mixintypes": {
+      "habitat_types": "override"
+   },
+   "habitat_types": [
+      "forest"
+   ],
+   "size": {
+      "width": 16,
+      "length": 16
+   },
+   "biomes": [
+      "stonehearth:biome:desert"
+   ],
+   "data": {
+      "entity_type": [
+         "stonehearth_ace:plants:golden_gourd"
+      ],
+      "quantity": {
+         "min": 1,
+         "max": 3
+      }
+   }
+}

@@ -85,12 +85,13 @@
 
 <script type="text/x-handlebars" data-template-name="_contentsTab">
    <div id="contentsTab" class="tabPage">
-      <div id="inventoryPalette"></div>
-      {{#if view.isWorkshop}}
+      {{#if view.isConsumer}}
          <div id="fuelLevel">
-            {{view.totalFuel}} ({{view.fuelLevel}} | {{view.potentialFuel}}): {{view.totalCrafts}} crafts ({{view.fuelPerCraft}} per craft)
+            <span class="label">{{i18n stonehearth_ace:ui.game.zones_mode.stockpile.fuel_level.label}}</span>
+            {{{view.fuelBars}}}
          </div>
       {{/if}}
+      <div id="inventoryPalette"></div>
    </div>
 </script>
 

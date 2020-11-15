@@ -6,10 +6,10 @@ local Point3 = _radiant.csg.Point3
 local Region3 = _radiant.csg.Region3
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
-local UniversalStorageService = class()
+local UniversalStorage = class()
 local log = radiant.log.create_logger('universal_storage')
 
-function UniversalStorageService:initialize()
+function UniversalStorage:initialize()
    self._sv.storages = {}
    self._sv.categories = {}
 
@@ -18,21 +18,21 @@ function UniversalStorageService:initialize()
    self._queued_items = {} -- items queued up for transfer to a universal storage entity as soon as it's registered
 end
 
-function UniversalStorageService:create(player_id)
+function UniversalStorage:create(player_id)
    self._sv.player_id = player_id
 end
 
-function UniversalStorageService:destroy()
+function UniversalStorage:destroy()
    self:_destroy_all_node_traces()
 end
 
-function UniversalStorageService:_destroy_all_node_traces()
+function UniversalStorage:_destroy_all_node_traces()
    for _, node in pairs(self._access_nodes) do
       self:_destroy_node_traces(node)
    end
 end
 
-function UniversalStorageService:_destroy_node_traces(node)
+function UniversalStorage:_destroy_node_traces(node)
    if node.parent_trace then
       node.parent_trace:destroy()
       node.parent_trace = nil
@@ -43,21 +43,21 @@ function UniversalStorageService:_destroy_node_traces(node)
    end
 end
 
-function UniversalStorageService:queue_items_for_transfer_on_registration(entity, items)
+function UniversalStorage:queue_items_for_transfer_on_registration(entity, items)
    self._queued_items[entity:get_id()] = items
 end
 
 -- TODO: if this entity is already registered, it needs to be removed from its current group
 -- if it's the last entity in its group, its storage should be merged with its new group storage
 -- (or old group simply transformed into new group if new group doesn't already exist)
-function UniversalStorageService:register_storage(entity, category, group_id)
+function UniversalStorage:register_storage(entity, category, group_id)
    local storage = self:_add_storage(entity, category, group_id)
 
    -- add any queued items for transfer
    self:_transfer_queued_items(entity, storage)
 end
 
-function UniversalStorageService:unregister_storage(entity)
+function UniversalStorage:unregister_storage(entity)
    local entity_id = entity:get_id()
    local node = self._access_nodes[entity_id]
    if node then
@@ -82,7 +82,26 @@ function UniversalStorageService:unregister_storage(entity)
    end
 end
 
-function UniversalStorageService:_add_storage(entity, category, group_id)
+function UniversalStorage:storage_contents_changed(storage, is_empty)
+   local storage_id = storage:get_id()
+   local access_nodes = self._access_nodes_by_storage[storage_id]
+   if access_nodes then
+      for id, node in pairs(access_nodes) do
+         local commands_component = node.entity:get_component('stonehearth:commands')
+         if commands_component then
+            commands_component:set_command_enabled('stonehearth:commands:undeploy_item', is_empty)
+         end
+      end
+   end
+end
+
+function UniversalStorage:get_storage_from_access_node(entity)
+   local access_node = self._access_nodes[entity:get_id()]
+   local storage_id = access_node and access_node.storage_id
+   return storage_id and self._sv.storages[storage_id]
+end
+
+function UniversalStorage:_add_storage(entity, category, group_id)
    local category_storages = self._sv.categories[category]
    if not category_storages then
       category_storages = {}
@@ -132,7 +151,7 @@ function UniversalStorageService:_add_storage(entity, category, group_id)
    return group_storage
 end
 
-function UniversalStorageService:_update_access_node_destination_region(access_node)
+function UniversalStorage:_update_access_node_destination_region(access_node)
    local entity = access_node.entity
    local destination = entity:get_component('destination')
    if not destination then
@@ -154,7 +173,7 @@ function UniversalStorageService:_update_access_node_destination_region(access_n
    self:_update_storage_destination_region(access_node.storage_id)
 end
 
-function UniversalStorageService:_update_storage_destination_region(storage_id)
+function UniversalStorage:_update_storage_destination_region(storage_id)
    local storage = self._sv.storages[storage_id]
    if storage then
       local destination_region = Region3()
@@ -198,7 +217,7 @@ function UniversalStorageService:_update_storage_destination_region(storage_id)
    end
 end
 
-function UniversalStorageService:_transfer_queued_items(entity, storage)
+function UniversalStorage:_transfer_queued_items(entity, storage)
    local id = entity:get_id()
    local queued = self._queued_items[id]
    if queued then
@@ -211,7 +230,7 @@ function UniversalStorageService:_transfer_queued_items(entity, storage)
    end
 end
 
-function UniversalStorageService:_destroy_universal_storage(storage, last_entity)
+function UniversalStorage:_destroy_universal_storage(storage, last_entity)
    local entity = entity_forms_lib.get_in_world_form(last_entity)
    local location = radiant.entities.get_world_grid_location(entity or last_entity) or false
    local storage_comp = storage:get_component('stonehearth:storage')
@@ -222,4 +241,4 @@ function UniversalStorageService:_destroy_universal_storage(storage, last_entity
    radiant.entities.destroy_entity(storage)
 end
 
-return UniversalStorageService
+return UniversalStorage

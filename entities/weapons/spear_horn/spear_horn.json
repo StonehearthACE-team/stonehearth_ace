@@ -3,9 +3,26 @@
       "stonehearth_ace:mixins:weapons:twohanded_shaken_major"
    ],
    "type": "entity",
-   "components": {},
+   "components": {
+		"render_info": {
+         "color_map": "northern_alliance:color_map:tier_progression",
+         "material_maps": [
+            "/northern_alliance/data/materials/material_maps/tier_progression_material_map.json"
+         ]
+      }
+	},
    "entity_data": {
+		"stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_thrust",
+            "effect": "combat_1h_thrust",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 2
+         }
+      ],
       "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.weapons.spear_horn.description)",
 			"mixintypes": {
 				"material_tags": "override"
 			},
