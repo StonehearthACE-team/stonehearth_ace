@@ -222,6 +222,7 @@ end
 AceBuilding._ace_old__on_plan_complete = Building._on_plan_complete
 function AceBuilding:_on_plan_complete()
    self:_destroy_resource_collection_tasks()
+   self:_ace_old__on_plan_complete()
 end
 
 function AceBuilding:_create_resource_collection_tasks()
