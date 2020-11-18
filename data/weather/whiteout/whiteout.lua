@@ -57,12 +57,12 @@ function WhiteoutWeather:_update()
       radiant.entities.add_buff(entity, buff)
    end
 
-   self:_for_each_player_character(function(citizen, 'stonehearth_ace:buffs:weather:whiteout')
-       add_buff(citizen)
+   self:_for_each_player_character(function(citizen)
+       add_buff(citizen, 'stonehearth_ace:buffs:weather:whiteout')
    end)
 
-	self:_for_common_npc_character(function(npc, 'stonehearth_ace:buffs:weather:whiteout:npc')
-      add_buff(npc)
+	self:_for_common_npc_character(function(npc)
+      add_buff(npc, 'stonehearth_ace:buffs:weather:whiteout:npc')
    end)
 end
 
