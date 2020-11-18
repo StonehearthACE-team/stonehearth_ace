@@ -25,19 +25,7 @@ function CropComponent:_load_json()
 end
 
 function CropComponent:restore()
-   local growing_component = self._entity:get_component('stonehearth:growing')
-   if growing_component then
-      local stage = growing_component:get_current_stage_name()
-      if stage ~= self._sv.stage then
-         -- If stages are mismatched somehow, fix it up.
-         -- There was a carrot crop whose stage got mixed up somehow
-         -- Likely due to a growing component listener firing when listener was not yet registered -yshan 3/2/2016
-         local e = {}
-         e.stage = stage
-         e.finished = growing_component:is_finished()
-         self:_on_grow_period(e)
-      end
-   end
+   self._is_restore = true
 
    if self._sv.megacrop_chance then
       self._sv._megacrop_chance = self._sv.megacrop_chance
@@ -73,7 +61,27 @@ function CropComponent:activate()
 end
 
 function CropComponent:post_activate()
-   if self._sv.harvestable and self._sv._field then
+   -- put this in post_activate so everything else has a chance to get up to speed
+   -- also, if this _on_grow_period happens and makes it harvestable, it will trigger _notify_harvestable so we don't need to do that
+   local did_restore_grow_event = false
+   if self._is_restore then
+      local growing_component = self._entity:get_component('stonehearth:growing')
+      if growing_component then
+         local stage = growing_component:get_current_stage_name()
+         if stage ~= self._sv.stage then
+            -- If stages are mismatched somehow, fix it up.
+            -- There was a carrot crop whose stage got mixed up somehow
+            -- Likely due to a growing component listener firing when listener was not yet registered -yshan 3/2/2016
+            local e = {}
+            e.stage = stage
+            e.finished = growing_component:is_finished()
+            self:_on_grow_period(e)
+            did_restore_grow_event = true
+         end
+      end
+   end
+
+   if not did_restore_grow_event and self._sv.harvestable and self._sv._field then
       self:_notify_harvestable()
    end
 end
