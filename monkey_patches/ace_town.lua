@@ -2,6 +2,7 @@ local Entity = _radiant.om.Entity
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local healing_lib = require 'stonehearth_ace.ai.lib.healing_lib'
+local build_util = require 'stonehearth.lib.build_util'
 local rng = _radiant.math.get_default_rng()
 
 local Town = require 'stonehearth.services.server.town.town'
@@ -10,6 +11,7 @@ local AceTown = class()
 AceTown._ace_old__pre_activate = Town._pre_activate
 function AceTown:_pre_activate()
    self._suspendable_entities = {}
+   self._building_material_collection_tasks = {}
 
    self:_ace_old__pre_activate()
 
@@ -24,9 +26,10 @@ function AceTown:activate(loading)
    self:_create_default_storage_listeners()
 end
 
-AceTown._ace_old_destroy = Town.destroy
+AceTown._ace_old_destroy = Town.__user_destroy
 function AceTown:destroy()
    self:_destroy_default_storage_listeners()
+   self:_destroy_all_building_material_collection_tasks()
    self:_ace_old_destroy()
 end
 
@@ -34,6 +37,15 @@ function AceTown:_destroy_default_storage_listeners()
    for id, storage in pairs(self._sv.default_storage) do
       self:_destroy_default_storage_listener(id)
    end
+end
+
+function AceTown:_destroy_all_building_material_collection_tasks()
+   for _, tasks in pairs(self._building_material_collection_tasks) do
+      for _, task in ipairs(tasks) do
+         task:destroy()
+      end
+   end
+   self._building_material_collection_tasks = {}
 end
 
 function AceTown:_destroy_default_storage_listener(storage_id)
@@ -643,6 +655,33 @@ function AceTown:clear_item(item)
 
    task_tracker_component:request_task(self._sv.player_id, nil, clear_action, "stonehearth:effects:clear_effect")
    task_tracker_component:cancel_task_if_entity_moves()
+end
+
+-- create a material collection task for each building/material
+function AceTown:create_resource_collection_tasks(building_entity, resource_cost)
+   local entity_id = building_entity:get_id()
+   if entity_id and not self._building_material_collection_tasks[entity_id] then
+      local tasks = {}
+      for material, _ in pairs(resource_cost) do
+         local task = self:create_task_for_group('stonehearth:task_groups:build',
+                                                 'stonehearth_ace:collect_building_material',
+                                                 { building = building_entity, material = material }):start()
+         table.insert(tasks, task)
+      end
+
+      self._building_material_collection_tasks[entity_id] = tasks
+   end
+end
+
+function AceTown:destroy_resource_collection_tasks(building_entity)
+   local entity_id = building_entity:get_id()
+   local tasks = self._building_material_collection_tasks[entity_id]
+   if tasks then
+      for _, task in ipairs(tasks) do
+         task:destroy()
+      end
+      self._building_material_collection_tasks[entity_id] = {}
+   end
 end
 
 return AceTown

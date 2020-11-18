@@ -3,6 +3,7 @@ local Material = require 'stonehearth.components.material.material'
 local Inventory = require 'stonehearth.services.server.inventory.inventory'
 local RestockDirector = require 'stonehearth.services.server.inventory.restock_director'
 local constants = require 'stonehearth.constants'
+local GOLD_URI = 'stonehearth:loot:gold'
 
 local AceInventory = class()
 local log = radiant.log.create_logger('inventory')
@@ -225,6 +226,72 @@ function AceInventory:set_storage_filter(storage_entity, filter)
    stonehearth.ai:reconsider_entity(storage_entity, 'storage filter changed')
    radiant.events.trigger_async(self, 'stonehearth:inventory:storage_filter_changed', { storage = storage_entity })
    return filter_fn
+end
+
+function AceInventory:add_gold(amount)
+   local gold_items = self:get_items_of_type(GOLD_URI)
+   local stacks_to_add = amount
+
+   -- First try to add fold to existing gold items
+   if gold_items ~= nil then
+      for id, item in pairs(gold_items.items) do
+         -- get stacks for the item
+         local stacks_component = item:get_component('stonehearth:stacks')
+         local item_stacks = stacks_component:get_stacks()
+
+         -- nuke some stacks
+         local new_stacks = item_stacks + stacks_to_add
+         local max_stacks = stacks_component:get_max_stacks()
+         if new_stacks <= max_stacks then
+            -- this item can hold the stacks we need. Add to stacks and we're done
+            stacks_component:set_stacks(item_stacks + stacks_to_add)
+            stacks_to_add = 0
+            break
+         else
+            local subtracted_stacks = max_stacks - item_stacks
+            stacks_component:set_stacks(max_stacks)
+            stacks_to_add = stacks_to_add - subtracted_stacks
+         end
+
+         if stacks_to_add <= 0 then
+            break
+         end
+      end
+   end
+
+   if stacks_to_add > 0 then
+      -- If we got here, then we need to add gold to the town
+      local town = stonehearth.town:get_town(self._sv.player_id)
+      local default_storage = town:get_default_storage()
+      local location = town:get_landing_location()
+      radiant.assert(location, "Unable to add %s gold because the town doesn't have a location to put the gold!", stacks_to_add)
+
+      local gold_entities_added = false
+      while stacks_to_add > 0 do
+         local gold = radiant.entities.create_entity(GOLD_URI, { owner = self._sv.player_id })
+         local stacks_component = gold:get_component('stonehearth:stacks')
+         local stacks = stacks_to_add
+         if stacks > stacks_component:get_max_stacks() then
+            stacks = stacks_component:get_max_stacks()
+         end
+         gold:get_component('stonehearth:stacks')
+                  :set_stacks(stacks)
+
+         local gold_id = gold:get_id()
+         radiant.entities.output_spawned_items({[gold_id] = gold}, location, 1, 3, nil, nil, default_storage, true)
+         
+         -- if it gets put in default storage, it doesn't need to be added
+         if not self._container_for[gold_id] then
+            self:_add_item_internal(gold)
+         end
+         stacks_to_add = stacks_to_add - stacks
+         gold_entities_added = true
+      end
+   else
+      -- if we didn't need to add gold items, just update the inventory tracker so that the gold count updates.
+      self:get_item_tracker('stonehearth:basic_inventory_tracker')
+            :mark_changed()
+   end
 end
 
 return AceInventory

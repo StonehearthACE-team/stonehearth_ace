@@ -424,10 +424,16 @@ function AceCraftOrder:conditions_fulfilled(crafter)
       local data = self._inventory:get_items_of_type(uri)
       if data and data.items then
          for _, item in pairs(data.items) do
-            we_have = we_have + 1
-            if we_have >= condition.at_least then
-               --log:detail('craft_order: We are maintaining recipe %s and now have enough of it. Stopping.', self._recipe.recipe_name)
-               return false
+            -- check if the item is contained in a consumer that wants it; if so, disregard
+            local container = self._inventory:public_container_for(item)
+            local consumer = container and container:get_component('stonehearth_ace:consumer')
+            local consumer_storage = consumer and container:get_component('stonehearth:storage')
+            if not consumer_storage or not consumer_storage:passes(item) then -- is this faster than checking for a lease? should consumer have a check?
+               we_have = we_have + 1
+               if we_have >= condition.at_least then
+                  --log:detail('craft_order: We are maintaining recipe %s and now have enough of it. Stopping.', self._recipe.recipe_name)
+                  return false
+               end
             end
          end
       end

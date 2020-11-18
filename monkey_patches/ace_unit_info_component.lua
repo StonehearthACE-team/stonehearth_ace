@@ -66,7 +66,7 @@ function AceUnitInfoComponent:set_custom_name(custom_name, custom_data, propogat
    local name = self:_select_custom_name(custom_name)
    self:_ace_old_set_custom_name(name, self:_process_custom_data(custom_data))
    if propogate_to_forms ~= false then
-      self:_propogate_custom_name(name, custom_data, nil, is_creating)
+      self:_propogate_custom_name(name, custom_data, is_creating)
    end
    return true
 end
@@ -93,7 +93,7 @@ function AceUnitInfoComponent:_select_custom_name(custom_name)
    return custom_name
 end
 
-function AceUnitInfoComponent:_propogate_custom_name(custom_name, custom_data)
+function AceUnitInfoComponent:_propogate_custom_name(custom_name, custom_data, is_creating)
    local root, iconic = entity_forms.get_forms(self._entity)
    for _, form in ipairs({root, iconic}) do
       if form and form ~= self._entity then

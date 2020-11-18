@@ -95,16 +95,6 @@ function AceGameCreationService:create_camp_command(session, response, pt)
    inventory:add_item(hearth)
    town:set_hearth(hearth)
 
-   local starting_resource = stonehearth.player:get_kingdom_starting_resource(player_id) or 'stonehearth:resources:wood:oak_log'
-   for i=1,2 do
-      local item = pop:create_entity(starting_resource)
-      self:try_place_entity_on_terrain(item, camp_x, camp_z, { min_y = min_y })
-      inventory:add_item(item)
-      if i <= NUM_STARTING_CITIZENS then
-         radiant.entities.pickup_item(final_citizens[i], item)
-      end
-   end
-
    local game_options = pop:get_game_options()
 
    if validator.is_host_player(session) then
@@ -141,15 +131,22 @@ function AceGameCreationService:create_camp_command(session, response, pt)
    local default_storage = town:get_default_storage()
 
    -- Spawn initial items
+   local starting_item_uris = radiant.shallow_copy(game_options.starting_items)  -- probably don't need to actually copy this
+   local starting_resource = stonehearth.player:get_kingdom_starting_resource(player_id) or 'stonehearth:resources:wood:oak_log'
+   starting_item_uris[starting_resource] = (starting_item_uris[starting_resource] or 0) + 2
+
    local starting_items = radiant.entities.output_items(game_options.starting_items, location,
       MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS, { owner = player_id }, nil, default_storage, true).spilled
 
-   -- add all the spawned items to the inventory, have citizens pick up items
-   local i = 3
+   -- add all the spawned items to the inventory, have citizens pick up any spilled items
+   local i = 1
    for id, item in pairs(starting_items) do
       inventory:add_item(item)
       if i <= NUM_STARTING_CITIZENS then
          radiant.entities.pickup_item(final_citizens[i], item)
+         i = i + 1
+      else
+         break
       end
    end
 
