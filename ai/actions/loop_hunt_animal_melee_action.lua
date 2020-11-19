@@ -9,22 +9,28 @@ LoopHuntAnimalMelee.args = {
 }
 LoopHuntAnimalMelee.priority = 0.5
 
-local ai = stonehearth.ai
-return ai:create_compound_action(LoopHuntAnimalMelee)
-      :execute('stonehearth:combat:get_melee_range', {
-         target = ai.ARGS.target,
+function LoopHuntAnimalMelee:start_thinking(ai, entity, args)
+   local weapon = stonehearth.combat:get_main_weapon(entity)
+   if weapon == nil or not weapon:is_valid() then
+      log:warning('%s has no weapon', entity)
+      return
+   end
+   local weapon_data = radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data')
+   radiant.verify(weapon_data, "entity %s has no stonehearth:combat:weapon_data but is equipped as a melee weapon", weapon:get_uri())
+
+   self._melee_range_ideal = stonehearth.combat:get_melee_range(entity, weapon_data, args.target)
+   ai:set_think_output({})
+end
+
+function LoopHuntAnimalMelee:run(ai, entity, args)
+   while radiant.entities.exists(args.target) do
+      ai:execute('stonehearth:chase_entity', {
+         target = args.target,
+         stop_distance = self._melee_range_ideal,
       })
-      :loop({
-         name = 'hunt animal',
-         break_timeout = 2000,
-         break_condition = function(ai, entity, args)
-            return not radiant.entities.exists(args.target)
-         end
-      })
-         :execute('stonehearth:chase_entity', {
-            target = ai.UP.ARGS.target,
-            stop_distance = ai.UP.BACK(1).melee_range_ideal,
-         })
-         :execute('stonehearth:combat:attack_melee_adjacent', { target = ai.UP.ARGS.target })
-         :execute('stonehearth:combat:set_global_attack_cooldown')
-      :end_loop()
+      ai:execute('stonehearth:combat:attack_melee_adjacent', { target = args.target })
+      ai:execute('stonehearth:combat:set_global_attack_cooldown')
+   end
+end
+
+return LoopHuntAnimalMelee

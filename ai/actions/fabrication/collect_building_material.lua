@@ -72,12 +72,15 @@ return ai:create_compound_action(CollectBuildingMaterial)
                source = ai.ARGS.building,
                event_name = 'stonehearth_ace:building_paused',
             })
+         :execute('stonehearth:maybe_drop_carrying_now', {
+               material = ai.ARGS.material
+            })
          :execute('stonehearth:pickup_item_made_of', {
                material = ai.ARGS.material,
-               owner_player_id = ai.BACK(3).owner_player_id,
+               owner_player_id = ai.BACK(4).owner_player_id,
             })
          :execute('stonehearth:find_path_to_reachable_entity', {
-               destination = ai.BACK(4).envelope_entity,
+               destination = ai.BACK(5).envelope_entity,
             })
          :execute('stonehearth_ace:register_building_material_drop_off', {
                building = ai.ARGS.building,

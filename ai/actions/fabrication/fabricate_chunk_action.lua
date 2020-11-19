@@ -210,7 +210,7 @@ return ai:create_compound_action(FabricateChunk)
                method = 'remember_permit',
                args = {ai.BACK(7).chunk, ai.BACK(2).path:get_path_length(), 0, ai.BACK(2).path:get_finish_point()}
             })
-         :execute('stonehearth:drop_carrying_now')
+         :execute('stonehearth:clear_carrying_now')
          :execute('stonehearth:follow_path', {
                path = ai.BACK(4).path,
             })
