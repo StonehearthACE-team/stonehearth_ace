@@ -9,7 +9,12 @@ function AceBuildingDestructionJob:start()
 
    -- figure out what banked resource entities need to be dropped and create them
    local building_comp = self._building_entity:get_component('stonehearth:build2:building')
-   local region = building_comp:get_envelope_entity():get_component('destination'):get_region():get()
+   local envelope_entity = building_comp:get_envelope_entity()
+   if not envelope_entity then
+      return
+   end
+   
+   local region = envelope_entity:get_component('destination'):get_region():get()
    local bounds = region:get_bounds()
    local location = radiant.terrain.get_standable_point(bounds:get_centroid())
    local radius = math.ceil(math.min(bounds.max.x - bounds.min.x, bounds.max.z - bounds.min.z) / 3)
