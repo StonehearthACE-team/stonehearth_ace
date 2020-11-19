@@ -42,19 +42,15 @@ local function can_attack_now(entity, target)
    return stonehearth.combat:in_range_and_has_line_of_sight(entity, target, weapon)
 end
 
-local ai = stonehearth.ai
-return ai:create_compound_action(LoopHuntAnimalRanged)
-      :loop({
-         name = 'hunt animal',
-         break_timeout = 2000,
-         break_condition = function(ai, entity, args)
-            return not radiant.entities.exists(args.target)
-         end
+function LoopHuntAnimalRanged:run(ai, entity, args)
+   while radiant.entities.exists(args.target) do
+      ai:execute('stonehearth:chase_entity', {
+         target = args.target,
+         grid_location_changed_cb = can_attack_now,
       })
-         :execute('stonehearth:chase_entity', {
-            target = ai.UP.ARGS.target,
-            grid_location_changed_cb = can_attack_now,
-         })
-         :execute('stonehearth:combat:attack_ranged', { target = ai.UP.ARGS.target })
-         :execute('stonehearth:combat:set_global_attack_cooldown')
-      :end_loop()
+      ai:execute('stonehearth:combat:attack_ranged', { target = args.target })
+      ai:execute('stonehearth:combat:set_global_attack_cooldown')
+   end
+end
+
+return LoopHuntAnimalRanged

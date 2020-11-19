@@ -4,6 +4,7 @@ local FixtureData = require 'lib.building.fixture_data'
 local BlueprintsToBuildingPiecesJob = require 'stonehearth.components.building2.plan.jobs.blueprints_to_building_pieces_job'
 local BuildingCompletionJob = require 'stonehearth.components.building2.building_completion_job'
 
+local rng = _radiant.math.get_default_rng()
 local Point3 = _radiant.csg.Point3
 local Region3 = _radiant.csg.Region3
 local Cube3   = _radiant.csg.Cube3
@@ -64,6 +65,14 @@ end
 
 function AceBuilding:get_envelope_entity()
    return self._sv._envelope_entity
+end
+
+function AceBuilding:destroy_banked_resources()
+   self._sv._banked_resources = {}
+end
+
+function AceBuilding:get_banked_resources()
+   return self._sv._banked_resources
 end
 
 function AceBuilding:has_banked_resource(material)
@@ -181,6 +190,10 @@ function AceBuilding:spend_banked_resource(material, amount)
 end
 
 function AceBuilding:get_building_quality()
+   if self._sv.quality then
+      return self._sv.quality
+   end
+
    local quality, count = 0, 0
    for _, resource in pairs(self._sv._banked_resources) do
       quality = quality + resource.quality
@@ -192,7 +205,9 @@ function AceBuilding:get_building_quality()
    else
       quality = 1
    end
-   log:debug('%s current building quality: %s', self._entity, quality)
+   log:debug('%s building quality changed to: %s', self._entity, quality)
+
+   return quality
 end
 
 AceBuilding._ace_old__calculate_remaining_resource_cost = Building._calculate_remaining_resource_cost
@@ -222,6 +237,10 @@ end
 AceBuilding._ace_old__on_plan_complete = Building._on_plan_complete
 function AceBuilding:_on_plan_complete()
    self:_destroy_resource_collection_tasks()
+   -- we also no longer care about banked resources, but let's keep the overall quality value around
+   self._sv.quality = self:get_building_quality()
+   self._sv._banked_resources = {}
+
    self:_ace_old__on_plan_complete()
 end
 
