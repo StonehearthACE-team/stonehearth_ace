@@ -54,13 +54,14 @@
    "entity_data": {
       "stonehearth:stump_data": {
          "stump_alias": "stonehearth_ace:shepherd:cheese_vat:empty",
-         "apply_quality": false
+         "apply_quality": false,
+         "transform_option_key": "curdling_mixture"
       },
       "stonehearth_ace:transform_data": {
          "transform_uri": "stonehearth_ace:shepherd:cheese_vat:cheese_fresh",
          "command": "stonehearth_ace:commands:transform:cheese_vat_drain",
          "request_action": "stonehearth_ace:transform",
-         "request_action_overlay_effect": "stonehearth_ace:effects:transform_cook_overlay_effect",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_shepherd_overlay_effect",
          "transforming_worker_effect": "fiddle",
          "transforming_worker_effect_times": 4,
          "transform_effect": "stonehearth:effects:item_created",
