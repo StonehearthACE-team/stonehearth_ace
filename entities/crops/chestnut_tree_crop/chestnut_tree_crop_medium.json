@@ -1,0 +1,33 @@
+{
+  "type": "entity",
+  "mixins": [
+    "stonehearth_ace:trees:chestnut:medium"
+  ],
+  "components": {
+    "mixintypes": {
+      "stonehearth:commands": "remove",
+      "stonehearth:entity_forms": "remove",
+      "stonehearth:evolve": "remove"
+    },
+    "mob": {
+      "mixintypes": {
+        "align_to_grid": "remove"
+      },
+      "model_origin": {
+        "x": -0.5,
+        "y": 0,
+        "z": -0.5
+      },
+      "region_origin": {
+        "x": 0.5,
+        "y": 0,
+        "z": 0.5
+      }
+    }
+  },
+  "entity_data": {
+    "mixintypes": {
+      "stonehearth:evolve_data": "remove"
+    }
+  }
+}
