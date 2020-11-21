@@ -175,9 +175,6 @@ App.StonehearthStockpileView.reopen({
       if (!perCraft || level == null || potential == null) {
          return;
       }
-
-      var residualCrafts = Math.floor(level / perCraft);
-      var potentialCrafts = Math.floor(potential / perCraft);
       var totalCrafts = Math.floor((level + potential) / perCraft);
 
       var fuelBars = '';
@@ -200,6 +197,11 @@ App.StonehearthStockpileView.reopen({
          self.$('#fuelLevel').tooltipster('destroy');
       }
       Ember.run.scheduleOnce('afterRender', self, function() {
+         // verify that we actually have the correct values for these as they may have been updated
+         var residualCrafts = Math.floor(self.get('fuelLevel') / perCraft);
+         var potentialCrafts = Math.floor(self.get('potentialFuel') / perCraft);
+         var totalCrafts = residualCrafts + potentialCrafts;
+
          var tooltipStr = i18n.t(tooltip, {num_residual: residualCrafts, num_potential: potentialCrafts, num_total: totalCrafts});
          var tt = App.tooltipHelper.createTooltip('', tooltipStr);
          self.$('#fuelLevel').tooltipster({
