@@ -136,32 +136,38 @@
 			"water_well_roof_wood": {
 				"recipe": "file(water_well_roof_wood_recipe.json)"
 			},
-			"present_small": {
-				"recipe": "file(present_small_recipe.json)"
-			},
-			"present": {
-				"recipe": "file(present_recipe.json)"
-			},
-			"present_large": {
-				"recipe": "file(present_large_recipe.json)"
-			},
 			"serving_keg_wood": {
 				"recipe": "file(serving_keg_wood_recipe.json)"
 			}
 		}
-	},
-    "armor": {
-      "recipes": {
-        "long_bow": {
-          "recipe": "file(long_bow_recipe.json)"
-        },
-		"crossbow": {
-          "recipe": "file(crossbow_recipe.json)"
-        },
-		"composite_bow": {
-          "recipe": "file(composite_bow_recipe.json)"
-        }
+		},
+		"armor": {
+			"recipes": {
+				"long_bow": {
+					"recipe": "file(long_bow_recipe.json)"
+				},
+				"crossbow": {
+					"recipe": "file(crossbow_recipe.json)"
+				},
+				"composite_bow": {
+					"recipe": "file(composite_bow_recipe.json)"
+				}
+			}
+		},
+		"frostfeast": {
+         "ordinal": 2,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
+         "recipes": {
+				"present_small": {
+					"recipe": "file(present_small_recipe.json)"
+				},
+				"present": {
+					"recipe": "file(present_recipe.json)"
+				},
+				"present_large": {
+					"recipe": "file(present_large_recipe.json)"
+				}
+         }
       }
-    }
    }
 }

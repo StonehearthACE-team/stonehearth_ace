@@ -147,15 +147,6 @@
 				"water_well_roof_clay": {
 					"recipe": "file(water_well_roof_clay_recipe.json)"
 				},
-				"present_small": {
-					"recipe": "file(present_small_recipe.json)"
-				},
-				"present": {
-					"recipe": "file(present_recipe.json)"
-				},
-				"present_large": {
-					"recipe": "file(present_large_recipe.json)"
-				},
 				"serving_keg_clay": {
 					"recipe": "file(serving_keg_clay_recipe.json)"
 				}
@@ -339,6 +330,21 @@
 					"recipe": "file(bone_clay_mound_x3_recipe.json)"
 				}
 			}
-		}
+		},
+		"frostfeast": {
+         "ordinal": 2,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
+         "recipes": {
+				"present_small": {
+					"recipe": "file(present_small_recipe.json)"
+				},
+				"present": {
+					"recipe": "file(present_recipe.json)"
+				},
+				"present_large": {
+					"recipe": "file(present_large_recipe.json)"
+				}
+         }
+      }
 	}
 }

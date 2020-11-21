@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.tea_pine_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.tea_pine_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.tea_pine_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/tea_pine/tea_pine.png",
+   "level_requirement": 3,
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:bough_bale:evergreen",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:decoration:pewter_teapot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:tea_pine"
+      }
+   ]
+}

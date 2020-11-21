@@ -3,10 +3,12 @@
       "mob": {
          "model_origin": { "x": 0, "y": -0.1, "z": 0 }
       },
-      "stonehearth:growing": {
-         "mixintypes": {
+		"stonehearth:crop": {
+			"mixintypes": {
             "harvest_threshhold": "remove"
-         },
+         }
+		},
+      "stonehearth:growing": {        
 			"growth_period": "24h",
 			"preferred_climate": "temperate_easy"
       }
