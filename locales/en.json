@@ -15220,7 +15220,7 @@
                },
                "fuel_level": {
                   "label": "Fuel Level:",
-                  "num_uses_available": "<span class='tooltipNumFuelUses [str(num_uses_class)]'>[str(num_uses)]</span> available uses from current fuel"
+                  "tooltip": "<span class='tooltipNumFuelUses'>[str(num_total)]</span> Total Available Uses:<ul><li><span class='tooltipNumFuelUses'>[str(num_residual)]</span> from residual fuel</li><li><span class='tooltipNumFuelUses'>[str(num_potential)]</span> from fuel items in storage</li></ul>"
                }
             },
             "pasture": {

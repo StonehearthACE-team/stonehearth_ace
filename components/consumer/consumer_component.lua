@@ -18,6 +18,15 @@ function ConsumerComponent:activate()
 
    -- remote to client for fuel display in stockpile window
    self._sv.fuel_per_use = self:get_fuel_per_use()
+   local ui_settings = json.ui_settings
+   if ui_settings then
+      self._sv.fuel_label = ui_settings.fuel_label
+      self._sv.fuel_tooltip = ui_settings.fuel_tooltip
+      self._sv.fuel_use_icon = ui_settings.fuel_use_icon
+      self._sv.no_fuel_use_icon = ui_settings.no_fuel_use_icon
+      self._sv.extra_fuel_use_icon = ui_settings.extra_fuel_use_icon
+      self._sv.max_fuel_icons = ui_settings.max_fuel_icons
+   end
    self.__saved_variables:mark_changed()
 end
 

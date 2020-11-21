@@ -166,30 +166,32 @@ App.StonehearthStockpileView.reopen({
       var level = self.get('fuelLevel');
       var potential = self.get('potentialFuel');
 
+      var tooltip = self.get('fuelTooltip');
+      var useIcon = self.get('fuelUseIcon');
+      var noUseIcon = self.get('noFuelUseIcon');
+      var extraUseIcon = self.get('extraFuelUseIcon');
+      var maxIcons = self.get('maxFuelIcons');
+
       if (!perCraft || level == null || potential == null) {
          return;
       }
 
-      var total = level + potential;
-      var totalCrafts = Math.floor(total / perCraft);
-      
-      var fuelClass;
-      if (totalCrafts < 1) {
-         fuelClass = 'noFuel';
-      }
-      else if (potential < 1) {
-         fuelClass = 'someFuel';
-      }
-      else {
-         fuelClass = 'plentyFuel';
-      }
+      var residualCrafts = Math.floor(level / perCraft);
+      var potentialCrafts = Math.floor(potential / perCraft);
+      var totalCrafts = Math.floor((level + potential) / perCraft);
 
       var fuelBars = '';
-      for (var i = 0; i < Math.max(1, Math.min(16, totalCrafts)); i++) {
-         fuelBars += `<img class="${fuelClass}">`;
+      if (totalCrafts < 1) {
+         fuelBars = `<img class="noFuelUse" src="${noUseIcon}">`
       }
-      if (totalCrafts > 16) {
-         fuelBars += '<img class="extraFuel">';
+      else {
+         var numIcons = totalCrafts > maxIcons ? maxIcons - 1 : totalCrafts;
+         for(var i = 0; i < numIcons; i++) {
+            fuelBars += `<img class="fuelUse" src="${useIcon}">`;
+         }
+         if (totalCrafts > maxIcons) {
+            fuelBars += `<img class="extraFuelUse" src="${extraUseIcon}">`;
+         }
       }
       
       self.set('fuelBars', fuelBars);
@@ -198,19 +200,27 @@ App.StonehearthStockpileView.reopen({
          self.$('#fuelLevel').tooltipster('destroy');
       }
       Ember.run.scheduleOnce('afterRender', self, function() {
-         var tooltipStr = i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.fuel_level.num_uses_available', {num_uses: totalCrafts, num_uses_class: fuelClass});
-         var tooltip = App.tooltipHelper.createTooltip('', tooltipStr);
+         var tooltipStr = i18n.t(tooltip, {num_residual: residualCrafts, num_potential: potentialCrafts, num_total: totalCrafts});
+         var tt = App.tooltipHelper.createTooltip('', tooltipStr);
          self.$('#fuelLevel').tooltipster({
-            content: $(tooltip)
+            content: $(tt)
          });
       });
    }.observes('fuelPerCraft', 'fuelLevel', 'potentialFuel'),
 
    _updateIsConsumer: function() {
       var self = this;
-      var ws = self.get('model.stonehearth_ace:consumer');
-      self.set('isConsumer', ws != null);
-      self.set('fuelPerCraft', ws && ws.fuel_per_use || null);
+      var consumer = self.get('model.stonehearth_ace:consumer');
+      self.set('isConsumer', consumer != null);
+      if (consumer) {
+         self.set('fuelLabel', consumer.fuel_label || 'stonehearth_ace:ui.game.zones_mode.stockpile.fuel_level.label');
+         self.set('fuelTooltip', consumer.fuel_tooltip || 'stonehearth_ace:ui.game.zones_mode.stockpile.fuel_level.tooltip');
+         self.set('fuelUseIcon', consumer.fuel_use_icon || '/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/fuel_use.png');
+         self.set('noFuelUseIcon', consumer.no_fuel_use_icon || '/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/no_fuel_use.png');
+         self.set('extraFuelUseIcon', consumer.extra_fuel_use_icon || '/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/extra_fuel_use.png');
+         self.set('maxFuelIcons', consumer.max_fuel_icons || 14);
+         self.set('fuelPerCraft', consumer.fuel_per_use || null);
+      }
    }.observes('model.stonehearth_ace:consumer'),
 
    _updateFuelLevel: function() {
