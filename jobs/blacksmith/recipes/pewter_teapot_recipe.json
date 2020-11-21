@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 24,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.pewter_teapot_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.pewter_teapot_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.pewter_teapot_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/pewter_teapot/pewter_teapot.png",
+   "workshop": "stonehearth_ace:blacksmith:crucible",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:tin_ingot",
+         "count": 2
+      },
+		{
+         "uri": "stonehearth:refined:copper_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:pewter_teapot"
+      }
+   ]
+}

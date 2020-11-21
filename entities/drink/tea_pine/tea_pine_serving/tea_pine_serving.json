@@ -1,0 +1,55 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.11,
+         "material": "materials/shiny.material.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tea_pine_serving.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:drink:tea:serving"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 85
+         },
+         "default": {
+            "satisfaction": 70
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:harmony_minor",
+            "stonehearth_ace:buffs:consumption:warm_belly",
+            "stonehearth_ace:buffs:consumption:regeneration:minor"
+         ],
+         "quality": 5,
+         "effect_loops": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.tea_pine.tea_pine_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.tea_pine.tea_pine_serving.description)",
+         "material_tags": [
+            "drink",
+            "tea_pine_serving",
+            "tea",
+            "afternoon_time",
+            "warming"
+         ],
+         "subject_override": "stonehearth_ace:drink:tea_pine"
+      }
+   }
+}

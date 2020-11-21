@@ -1,0 +1,20 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "potion_healing",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.potion.healing_small.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.potion.healing_small.description)",
+   "icon": "file(potion_healing_small_buff.png)",
+   "duration": "1h",
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": 0.02,
+      "pulse": "5m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true,
+      "is_percentage": true
+   }
+}

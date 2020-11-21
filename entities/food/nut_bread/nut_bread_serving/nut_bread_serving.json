@@ -18,12 +18,15 @@
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
             "satisfaction": 50,
-				"drink_satisfaction": -10
+            "drink_satisfaction": -10
          },
          "default": {
             "satisfaction": 40,
-				"drink_satisfaction": -15
+            "drink_satisfaction": -15
          },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:regeneration:minor"
+         ],
          "quality": 6
       },
       "stonehearth:catalog": {

@@ -5,7 +5,7 @@
             "legendary_hood": {
                "recipe": "file(legendary_hood_recipe.json)"
             },
-			"legendary_cape": {
+				"legendary_cape": {
                "recipe": "file(legendary_cape_recipe.json)"
             },
 				"rc_legendary_circlet": {
@@ -104,10 +104,7 @@
 				},
             "outfit_worker_goldthread": {
                "recipe": "/rayyas_children/jobs/weaver/recipes/outfit_worker_goldthread_recipe.json"
-            },
-				"worker_holiday_hat": {
-					"recipe": "file(worker_holiday_hat_recipe.json)"
-				}
+            }				
          }
 	  },
 	  "furniture": {
@@ -216,6 +213,15 @@
             "rug_gilded_sage": {
                "recipe": "/rayyas_children/jobs/weaver/recipes/rug_gilded_sage_recipe.json"
             }
+         }
+      },
+		"frostfeast": {
+         "ordinal": 2,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
+         "recipes": {
+				"worker_holiday_hat": {
+					"recipe": "file(worker_holiday_hat_recipe.json)"
+				}
          }
       }
    }

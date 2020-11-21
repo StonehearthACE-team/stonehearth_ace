@@ -3022,6 +3022,18 @@
             "anti_toxin_strong": {
                "display_name": "Strong Anti-Toxin Protection",
                "description": "The effects of an anti-toxin potion are protecting this hearthling from all toxins for a while."
+            },
+            "healing_hearth": {
+               "display_name": "Hearthbud Healing Potion",
+               "description": "Healing 8% health every 5 minutes for one hour"
+            },
+            "healing_small": {
+               "description": "Healing 2% health every 5 minutes for one hour",
+               "display_name": "Small Healing Potion"
+            },
+            "healing_large": {
+               "display_name": "Large Healing Potion",
+               "description": "Healing 5% health every 5 minutes for one hour"
             }
          },
          "kibble_hearth": {
@@ -3067,6 +3079,18 @@
                "display_name": "Brightness",
                "description": "This area radiates with brightness, keeping this hearthling alert and with a good visibility!<ul><li>Diligence, Willpower and Crafting Speed are slightly increased</li></ul>"
             }
+         },
+         "regeneration_minor": {
+            "display_name": "Minor Health Regeneration",
+            "description": "Recovering 2% of the maximum health every 20 minutes for 4 hours"
+         },
+         "regeneration": {
+            "description": "Recovering 5% of the maximum health every 20 minutes for 4 hours",
+            "display_name": "Health Regeneration"
+         },
+         "regeneration_major": {
+            "display_name": "Major Health Regeneration",
+            "description": "Recovering 9% of the maximum health every 20 minutes for 4 hours"
          }
       },
       "loadouts": {
@@ -5244,6 +5268,11 @@
                "description": "Craft a fancy holder that can store up to 4 Bundles O' Firewood.",
                "flavor": ""
             },
+            "pewter_teapot_recipe": {
+               "recipe_name": "Pewter Teapot",
+               "description": "A very refined and exquisite piece of decoration.",
+               "flavor": "Can also be used to make tea"
+            },
             "iron_brazier_recipe": {
                "recipe_name": "Cast Iron Brazier",
                "description": "Create a fine piece that provides light and some warmth.",
@@ -6912,6 +6941,11 @@
                "description": "An aromatic and warm beverage very appreciated by many! Provides multiple bonuses to hearthlings.",
                "flavor": "Prepared tea must be placed somewhere in order to be consumed"
             },
+            "tea_pine_recipe": {
+               "recipe_name": "Pine Needle Tea",
+               "description": "Smells good and tastes better, a real forest treasure. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
             "tea_desert_recipe": {
                "recipe_name": "Desert Sun Tea",
                "description": "An unique recipe to the children of Rayya, a flower tea from Pal'Mum. Provides multiple bonuses to hearthlings.",
@@ -7105,6 +7139,11 @@
       "warrior": {
          "warrior_description": {
             "display_name": "Warrior"
+         }
+      },
+      "common": {
+         "recipes": {
+            "frostfeast_name": "Frostfeast"
          }
       }
    },
@@ -10777,6 +10816,10 @@
          "wooden_sign_shepherd": {
             "display_name": "Shepherd's Sign",
             "description": "A sign with the mark of the Shepherd"
+         },
+         "pewter_teapot": {
+            "display_name": "Pewter Teapot",
+            "description": "Refined. Elegant. All the untarnished values of society."
          }
       },
       "pets": {
@@ -13974,6 +14017,16 @@
             "serving_keg": {
                "display_name": "Serving Keg of Buttered Beer",
                "description": "An Ascendancy favorite! Sweet, flavorful and with little alcohol content."
+            }
+         },
+         "tea_pine": {
+            "tea_pine": {
+               "display_name": "Pine Needle Tea",
+               "description": "Smells good, tastes better and has gentle healing powers from the forest."
+            },
+            "tea_pine_serving": {
+               "display_name": "Cup of Pine Needle Tea",
+               "description": "Hmmm... The flavors of the woods..."
             }
          }
       },

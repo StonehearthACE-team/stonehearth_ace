@@ -519,11 +519,17 @@
 			"recipes" : {
 				"plant_glass_herbalist" : {
 					"recipe" : "file(plant_glass_recipe.json)"
-				},
+				}			
+			}
+		},
+		"frostfeast": {
+         "ordinal": 2,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
+         "recipes": {
 				"decorated_frostfeast_tree" : {
 					"recipe" : "file(decorated_frostfeast_tree_recipe.json)"
 				}
-			}
-		}
+         }
+      }
 	}
 }

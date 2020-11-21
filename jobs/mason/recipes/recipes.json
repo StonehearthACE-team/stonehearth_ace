@@ -144,16 +144,7 @@
 				},
 				"water_well_roof_stone": {
 					"recipe": "file(water_well_roof_stone_recipe.json)"
-				},
-				"present_small": {
-					"recipe": "file(present_small_recipe.json)"
-				},
-				"present": {
-					"recipe": "file(present_recipe.json)"
-				},
-				"present_large": {
-					"recipe": "file(present_large_recipe.json)"
-				},
+				},			
 				"serving_keg_stone": {
 					"recipe": "file(serving_keg_stone_recipe.json)"
 				}
@@ -316,6 +307,21 @@
                "recipe": "file(pet_food_bowl_bone_recipe.json)"
             }
 			}
+      },
+		"frostfeast": {
+         "ordinal": 2,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
+         "recipes": {
+				"present_small": {
+					"recipe": "file(present_small_recipe.json)"
+				},
+				"present": {
+					"recipe": "file(present_recipe.json)"
+				},
+				"present_large": {
+					"recipe": "file(present_large_recipe.json)"
+				}
+         }
       }
    }
 }

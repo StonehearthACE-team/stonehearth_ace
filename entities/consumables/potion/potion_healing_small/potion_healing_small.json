@@ -22,6 +22,9 @@
       },
       "stonehearth:consumable": {
          "script": "stonehearth:consumables:scripts:heal_target",
+         "applies_effects": {
+            "stonehearth_ace:buffs:potion:healing:small": 1
+         },
          "consumable_qualities": [
             {
                "health_healed": 45,
