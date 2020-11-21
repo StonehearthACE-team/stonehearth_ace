@@ -1,0 +1,23 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:trees:hazelnut:sapling"
+   ],
+   "components": {
+      "mixintypes": {
+         "stonehearth:commands": "remove",
+         "stonehearth:entity_forms": "remove"
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:crops:hazelnut_tree_crop:small"
+      },
+      "stonehearth:net_worth": {
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      }
+   }
+}

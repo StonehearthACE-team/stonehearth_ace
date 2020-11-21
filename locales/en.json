@@ -3891,9 +3891,29 @@
                "description": "Domesticate Wintermoss bushes and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
+            "almond_tree_seeds_recipe": {
+               "recipe_name": "Overripe Almonds",
+               "description": "Domesticate Almond trees and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
             "birch_tree_seeds_recipe": {
                "recipe_name": "Birch Catkins",
                "description": "Domesticate Birch trees and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "chestnut_tree_seeds_recipe": {
+               "recipe_name": "Overripe Chestnuts",
+               "description": "Domesticate Chestnut trees and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "hazelnut_tree_seeds_recipe": {
+               "recipe_name": "Overripe Hazelnuts",
+               "description": "Domesticate Hazelnut trees and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "walnut_tree_seeds_recipe": {
+               "recipe_name": "Overripe Walnuts",
+               "description": "Domesticate Walnut trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "yew_tree_seeds_recipe": {
@@ -7218,13 +7238,29 @@
                "display_name": "Wintermoss Seeds",
                "description": "Learn to grow wintermoss bushes."
             },
+            "almond_tree_seeds": {
+               "display_name": "Overripe Almonds",
+               "description": "Learn to grow almond trees."
+            },
             "birch_tree_seeds": {
                "display_name": "Birch Catkins",
                "description": "Learn to grow birch trees."
             },
+            "chestnut_tree_seeds": {
+               "display_name": "Overripe Chestnuts",
+               "description": "Learn to grow chestnut trees."
+            },
             "corn_seeds": {
                "display_name": "Corn Seeds",
                "description": "Learn to grow corn."
+            },
+            "hazelnut_tree_seeds": {
+               "display_name": "Overripe Hazelnuts",
+               "description": "Learn to grow hazelnut trees."
+            },
+            "walnut_tree_seeds": {
+               "display_name": "Overripe Walnuts",
+               "description": "Learn to grow walnut trees."
             },
             "paddy_seeds": {
                "display_name": "Paddy Seeds",
@@ -7798,6 +7834,76 @@
                }
             }
          },
+         "acacia_tree_crop": {
+            "display_name": "Acacia Tree",
+            "description": "Provides logs of wood and occasional tree seeds and bough."
+         },
+         "almond_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Almond Tree Seed",
+                  "description": "Even a beautiful almond tree has humble beginnings."
+               },
+               "001": {
+                  "name": "Almond Seedling",
+                  "description": "A delicate stage of growth."
+               },
+               "002": {
+                  "name": "Almond Sprout",
+                  "description": "Up, up, up it goes!"
+               },
+               "003": {
+                  "name": "Almond Sapling",
+                  "description": "Ready to be transferred to a bigger plot."
+               }
+            },
+            "display_name": "Almond Tree",
+            "description": "Provides almonds and occasional tree seeds."
+         },
+         "arctic_juniper_tree_crop": {
+            "display_name": "Arctic Juniper Tree",
+            "description": "Provides logs of wood and occasional tree seeds and bough.",
+            "growth_stage": {
+               "000": {
+                  "name": "Arctic Juniper Berry",
+                  "description": "Even a mighty juniper has humble beginnings."
+               },
+               "001": {
+                  "name": "Arctic Juniper Seedling",
+                  "description": "It's just getting started."
+               },
+               "002": {
+                  "name": "Arctic Juniper Sprout",
+                  "description": "Perfect size for a rabbit to hide in."
+               },
+               "003": {
+                  "name": "Arctic Juniper Sapling",
+                  "description": "Ready to be transferred to a bigger plot."
+               }
+            }
+         },
+         "arctic_pine_tree_crop": {
+            "display_name": "Arctic Pine Tree",
+            "description": "Provides logs of wood and occasional tree seeds and bough.",
+            "growth_stage": {
+               "000": {
+                  "name": "Arctic Pine Berry",
+                  "description": "A new pine tree taking root."
+               },
+               "001": {
+                  "name": "Arctic Pine Seedling",
+                  "description": "A delicate stage of growth."
+               },
+               "002": {
+                  "name": "Arctic Pine Sprout",
+                  "description": "A perfect tiny pine. Still growing!"
+               },
+               "003": {
+                  "name": "Arctic Pine Sapling",
+                  "description": "Ready to be transferred to a bigger plot."
+               }
+            }
+         },
          "birch_tree_crop": {
             "growth_stage": {
                "000": {
@@ -7817,8 +7923,112 @@
                   "description": "Ready to be transferred to a bigger plot."
                }
             },
-            "display_name": "Birch Sapling",
-            "description": "Out of trees? Get ready to participate in reforestation."
+            "display_name": "Birch Tree",
+            "description": "Provides logs of wood and occasional tree seeds and bough."
+         },
+         "cactus_tree_crop": {
+            "display_name": "Tree Cactus",
+            "description": "Provides logs of wood and occasional tree seeds and bough."
+         },
+         "chestnut_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Chestnut Tree Seed",
+                  "description": "Even a beautiful chestnut tree has humble beginnings."
+               },
+               "001": {
+                  "name": "Chestnut Seedling",
+                  "description": "A delicate stage of growth."
+               },
+               "002": {
+                  "name": "Chestnut Sprout",
+                  "description": "Up, up, up it goes!"
+               },
+               "003": {
+                  "name": "Chestnut Sapling",
+                  "description": "Ready to be transferred to a bigger plot."
+               }
+            },
+            "display_name": "Chestnut Tree",
+            "description": "Provides chestnuts and occasional tree seeds."
+         },
+         "hazelnut_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Hazelnut Tree Seed",
+                  "description": "Even a beautiful hazelnut tree has humble beginnings."
+               },
+               "001": {
+                  "name": "Hazelnut Seedling",
+                  "description": "A delicate stage of growth."
+               },
+               "002": {
+                  "name": "Hazelnut Sprout",
+                  "description": "Up, up, up it goes!"
+               },
+               "003": {
+                  "name": "Hazelnut Sapling",
+                  "description": "Ready to be transferred to a bigger plot."
+               }
+            },
+            "display_name": "Hazelnut Tree",
+            "description": "Provides hazelnuts and occasional tree seeds."
+         },
+         "highland_pine_tree_crop": {
+            "display_name": "Highland Pine Tree",
+            "description": "Provides logs of wood and occasional tree seeds and bough.",
+            "growth_stage": {
+               "000": {
+                  "name": "Highland Pine Seed",
+                  "description": "How can something so small become so big?"
+               },
+               "001": {
+                  "name": "Highland Pine Seedling",
+                  "description": "You'd be surprised with how much it grows every day!"
+               },
+               "002": {
+                  "name": "Highland Pine Sprout",
+                  "description": "It's almost ready to be moved!"
+               },
+               "003": {
+                  "name": "Highland Pine Sapling",
+                  "description": "Ready to be transferred to a bigger plot."
+               }
+            }
+         },
+         "juniper_tree_crop": {
+            "display_name": "Juniper Tree",
+            "description": "Provides logs of wood and occasional tree seeds and bough."
+         },
+         "oak_tree_crop": {
+            "display_name": "Oak Tree",
+            "description": "Provides logs of wood and occasional tree seeds and bough."
+         },
+         "pine_tree_crop": {
+            "display_name": "Pine Tree",
+            "description": "Provides logs of wood and occasional tree seeds and bough."
+         },
+         "walnut_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Walnut Tree Seed",
+                  "description": "Even a beautiful walnut tree has humble beginnings."
+               },
+               "001": {
+                  "name": "Walnut Seedling",
+                  "description": "A delicate stage of growth."
+               },
+               "002": {
+                  "name": "Walnut Sprout",
+                  "description": "Up, up, up it goes!"
+               },
+               "003": {
+                  "name": "Walnut Sapling",
+                  "description": "Ready to be transferred to a bigger plot."
+               }
+            },
+            "display_name": "Walnut Tree",
+            "description": "Provides walnuts and occasional tree seeds."
          },
          "yew_tree_crop": {
             "growth_stage": {
@@ -7839,8 +8049,8 @@
                   "name": "Yew Sapling"
                }
             },
-            "description": "Need more Yew wood? Prepare your plots for reforestation!",
-            "display_name": "Yew Tree Sapling"
+            "display_name": "Yew Tree",
+            "description": "Provides logs of wood and occasional tree seeds and bough."
          },
          "berry_bush_crop": {
             "growth_stage": {
@@ -8000,72 +8210,6 @@
                },
                "019": {
                   "name": "Rotten Paddy"
-               }
-            }
-         },
-         "highland_pine_tree_crop": {
-            "description": "Go big or go home with these huge highland pine trees.",
-            "display_name": "Highland Pine Sapling",
-            "growth_stage": {
-               "000": {
-                  "name": "Highland Pine Seed",
-                  "description": "How can something so small become so big?"
-               },
-               "001": {
-                  "name": "Highland Pine Seedling",
-                  "description": "You'd be surprised with how much it grows every day!"
-               },
-               "002": {
-                  "name": "Highland Pine Sprout",
-                  "description": "It's almost ready to be moved!"
-               },
-               "003": {
-                  "name": "Highland Pine Sapling",
-                  "description": "Ready to be transferred to a bigger plot."
-               }
-            }
-         },
-         "arctic_juniper_tree_crop": {
-            "display_name": "Arctic Juniper Sapling",
-            "description": "Need more trees? These saplings can grow into any arctic juniper type!",
-            "growth_stage": {
-               "000": {
-                  "name": "Arctic Juniper Berry",
-                  "description": "Even a mighty juniper has humble beginnings."
-               },
-               "001": {
-                  "name": "Arctic Juniper Seedling",
-                  "description": "It's just getting started."
-               },
-               "002": {
-                  "name": "Arctic Juniper Sprout",
-                  "description": "Perfect size for a rabbit to hide in."
-               },
-               "003": {
-                  "name": "Arctic Juniper Sapling",
-                  "description": "Ready to be transferred to a bigger plot."
-               }
-            }
-         },
-         "arctic_pine_tree_crop": {
-            "display_name": "Arctic Pine Sapling",
-            "description": "Out of wood? These saplings can grow into any arctic pine type!",
-            "growth_stage": {
-               "000": {
-                  "name": "Arctic Pine Berry",
-                  "description": "A new pine tree taking root."
-               },
-               "001": {
-                  "name": "Arctic Pine Seedling",
-                  "description": "A delicate stage of growth."
-               },
-               "002": {
-                  "name": "Arctic Pine Sprout",
-                  "description": "A perfect tiny pine. Still growing!"
-               },
-               "003": {
-                  "name": "Arctic Pine Sapling",
-                  "description": "Ready to be transferred to a bigger plot."
                }
             }
          },
