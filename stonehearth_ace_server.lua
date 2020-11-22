@@ -19,6 +19,7 @@ local monkey_patches = {
    ace_buff = 'stonehearth.components.buffs.buff',
    ace_buffs_component = 'stonehearth.components.buffs.buffs_component',
    ace_build_task_group = 'stonehearth.ai.task_groups.build_task_group',
+   ace_build_util = 'stonehearth.lib.build_util',
    ace_building = 'stonehearth.components.building2.building',
    ace_building_destruction_job = 'stonehearth.components.building2.building_destruction_job',
    ace_building_service = 'stonehearth.services.server.building.building_service',

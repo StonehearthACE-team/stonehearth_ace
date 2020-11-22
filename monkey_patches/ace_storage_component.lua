@@ -9,6 +9,9 @@ function AceStorageComponent:create()
    self._is_create = true
    self:_ace_old_create()
 
+   if self._type == 'input_crate' then
+      self:_set_filter_to_none()
+   end
 end
 
 AceStorageComponent._ace_old_restore = StorageComponent.restore
