@@ -143,8 +143,14 @@ function AceStorageComponent:drop_all(fallback_location, priority_location)
    end
 
    local player_id = get_player_id(self._entity)
+   local default_storage
    local town = stonehearth.town:get_town(player_id)
-   local default_storage = town and town:get_default_storage()
+   if town then
+      -- unregister this storage from default; if we're dropping all the items, even if it's not getting destroyed, we probably don't want more stuff in here
+      -- especially the items we're trying to drop!
+      town:remove_default_storage(self._entity:get_id())
+      default_storage = town:get_default_storage()
+   end
    local entity = entity_forms_lib.get_in_world_form(self._entity)
    local location = priority_location or
          (priority_location == nil and (radiant.entities.get_world_grid_location(entity or self._entity) or fallback_location)) or
