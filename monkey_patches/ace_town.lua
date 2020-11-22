@@ -575,18 +575,27 @@ function AceTown:_continue_suspendable_entities()
    end
 end
 
+function AceTown:dispatch_citizen(citizen)
+   local citizen_id = citizen:get_id()
+   self:_suspend_citizen(citizen_id, citizen, true)
+   self._dispatched_citizens[citizen_id] = true
+end
+
 AceTown._ace_old__suspend_citizen = Town._suspend_citizen
-function AceTown:_suspend_citizen(citizen_id, citizen)
+function AceTown:_suspend_citizen(citizen_id, citizen, dispatching)
    local crafter_component = citizen:get_component('stonehearth:crafter')
    if crafter_component then
       crafter_component:clean_up_order()
    end
 
    -- if they're currently in bed or some other mount, remove them from that
-   local parent = radiant.entities.get_parent(citizen)
-   local mount_component = parent and parent:get_component('stonehearth:mount')
-   if mount_component and mount_component:is_in_use() and mount_component:get_user() == citizen then
-      mount_component:dismount(false)  -- false to not put them back in the world
+   -- this should only be done if specified (by dispatching, not by suspending the whole town in multiplayer)
+   if dispatching then
+      local parent = radiant.entities.get_parent(citizen)
+      local mount_component = parent and parent:get_component('stonehearth:mount')
+      if mount_component and mount_component:is_in_use() and mount_component:get_user() == citizen then
+         mount_component:dismount(false)  -- false to not put them back in the world
+      end
    end
 
    self:_ace_old__suspend_citizen(citizen_id, citizen)
