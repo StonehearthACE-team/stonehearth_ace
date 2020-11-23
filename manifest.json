@@ -5166,6 +5166,10 @@
          "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
          "endpoint": "server"
       },
+      "has_guildmaster_town_bonus": {
+         "controller": "file(call_handlers/town_call_handler.lua)",
+         "endpoint": "server"
+      },
       "get_item_container": {
          "controller": "file(call_handlers/town_inventory_call_handler.lua)",
          "endpoint": "server"

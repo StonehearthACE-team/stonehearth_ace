@@ -138,10 +138,33 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
 
    _updateTendQuality: function() {
       var self = this;
-      var tendQuality = Math.max(1, Math.min(4, Math.floor(self.get('model.stonehearth:expendable_resources.resources.tend_quality'))));
-      self.set('tendQuality', tendQuality);
-      self.set('tendQualityClass', 'quality' + tendQuality);
-   }.observes('model.stonehearth:expendable_resources.resources.tend_quality'),
+      var tendQuality = self.get('model.stonehearth:expendable_resources.resources.tend_quality');
+      var maxTendQuality = self.get('maxTendQuality');
+
+      if (tendQuality != null && maxTendQuality != null) {
+         tendQuality = Math.max(1, Math.min(maxTendQuality, Math.floor(tendQuality)));
+         self.set('tendQuality', tendQuality);
+         self.set('tendQualityClass', 'quality' + tendQuality);
+      }
+      else {
+         self.set('tendQuality', null);
+         self.set('tendQualityClass', null);
+      }
+   }.observes('model.stonehearth:expendable_resources.resources.tend_quality', 'maxTendQuality'),
+
+   _updateMaxTendQuality: function() {
+      var self = this;
+      var playerId = self.get('model.player_id');
+      if (playerId) {
+         radiant.call('stonehearth_ace:has_guildmaster_town_bonus', playerId)
+            .done(function(response) {
+               self.set('maxTendQuality', response.has_guildmaster ? 4 : 3);
+            });
+      }
+      else {
+         self.set('maxTendQuality', null);
+      }
+   }.observes('model.uri'),
 
    _harvestEnabledChanged: function() {
       var self = this;
