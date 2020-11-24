@@ -1,3 +1,4 @@
+local Point3 = _radiant.csg.Point3
 local rng = _radiant.math.get_default_rng()
 local CombatService = require 'stonehearth.services.server.combat.combat_service'
 local AceCombatService = class()
@@ -234,6 +235,29 @@ function AceCombatService:try_inflict_debuffs(target, debuff_list)
          end
       end
    end
+end
+
+-- changed to take elevation into account
+function AceCombatService:in_range(attacker, target, weapon)
+   if not (target and target:is_valid()) then
+      return false
+   end
+
+   local attacker_location = attacker:add_component('mob'):get_world_grid_location()
+   local target_location = target:add_component('mob'):get_world_grid_location()
+   if not (attacker_location and target_location) then
+      return false
+   end
+
+   -- weapon range is at same elevation
+   -- gain/lose 0.5/1.5 range per unit of height advantage/disadvantage
+   local distance = Point3(attacker_location.x, 0, attacker_location.z):distance_to(Point3(target_location.x, 0, target_location.z))
+   local elevation_factor = attacker_location.y - target_location.y
+   elevation_factor = elevation_factor * (elevation_factor > 0 and 0.5 or 1.5)
+
+   local range = self:get_weapon_range(attacker, weapon) + elevation_factor
+   local result = distance <= range
+   return result
 end
 
 return AceCombatService
