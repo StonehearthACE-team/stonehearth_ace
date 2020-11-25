@@ -12,7 +12,7 @@ function AceCombatIdleShuffle:start_thinking(ai, entity, args)
    -- don't shuffle if we're in combat with someone at a lower elevation
    local location = radiant.entities.get_world_location(entity)
    local target_location = radiant.entities.get_world_location(target)
-   if location.y > target_location + 3 then
+   if location.y > target_location.y + 3 then
       return
    end
 
