@@ -13,9 +13,13 @@
          "resource_loot_table": {
             "entries": {
                "optional": {
-                  "num_rolls": {
-                     "min": 0,
-                     "max": 0
+                  "mixintypes": {
+                     "items": "override"
+                  },
+                  "items": {
+                     "none": {
+                        "weight": 1
+                     }
                   }
                }
             }
