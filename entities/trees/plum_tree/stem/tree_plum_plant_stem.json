@@ -1,0 +1,61 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.6
+      },
+      "stonehearth:evolve": {},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tree_plum_stem.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.3, "y": 0, "z": -0.3 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:plum:bud",
+         "evolve_time": "1d+8h",
+         "biomes": {
+            "stonehearth_ace:biome:highlands": {
+               "evolve_time_multiplier": 1.1
+            },
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 1.3
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 1.5
+            }
+         },
+         "seasons": {
+            "summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "stockpile_plant"
+         ],
+         "display_name": "i18n(stonehearth_ace:entities.trees.plum_tree.stem.tree_plum_plant_stem.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.plum_tree.stem.tree_plum_plant_stem.description)",
+         "category": "plants"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

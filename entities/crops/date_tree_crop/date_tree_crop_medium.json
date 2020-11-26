@@ -1,0 +1,49 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:trees:apple:medium"
+   ],
+   "components": {
+      "mixintypes": {
+         "stonehearth:commands": "remove",
+         "stonehearth:entity_forms": "remove",
+         "stonehearth:evolve": "remove"
+      },
+      "stonehearth:resource_node": {
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 0
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:renewable_resource_node": {
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 0
+                  }
+               }
+            }
+         }
+      },
+      "mob": {
+         "mixintypes": {
+            "align_to_grid": "remove"
+         },
+         "model_origin": { "x": -0.5, "y": 0, "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "mixintypes": {
+         "stonehearth:evolve_data": "remove"
+      }
+   }
+}

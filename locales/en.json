@@ -945,19 +945,19 @@
             "seasons": {
                "spring": {
                   "display_name": "Spring",
-                  "description": "Spring in the Arctic is a season of change, only lasting one month. While the highlands retain some cold year-round, the lowlands around the lakes start to thaw out and young grass begins to sprout.<ul><li>Daytime sunlight levels are average.</li><li>Humidity is alright.</li></ul>"
+                  "description": "Spring in the Arctic is a season of change, only lasting a bit more than one month. While the highlands retain some cold year-round, the lowlands around the lakes start to thaw out and young grass begins to sprout.<ul><li>Daytime sunlight levels are average.</li><li>Humidity is alright.</li></ul>"
                },
                "summer": {
                   "display_name": "Summer",
-                  "description": "Summer in the Arctic is a season of rest, lasting three months. The weather is mild, and the lowlands are green with grass. It is a reprieve from the cold, and a time to regather strength for the long winter to come.<ul><li>Daytime sunlight levels are good.</li><li>Humidity is mostly scarce.</li></ul>"
+                  "description": "Summer in the Arctic is a season of rest, lasting around three months. The weather is mild, and the lowlands are green with grass. It is a reprieve from the cold, and a time to regather strength for the long winter to come.<ul><li>Daytime sunlight levels are good.</li><li>Humidity is mostly scarce.</li></ul>"
                },
                "autumn": {
                   "display_name": "Autumn",
-                  "description": "Autumn in the Arctic is a season of freeze, only lasting one month. Although blizzards are rare, snow can be a daily occurrence. It is the last chance to build shelter before the unforgiving winter arrives.<ul><li>Daytime sunlight levels are poor.</li><li>Humidity is high.</li></ul>"
+                  "description": "Autumn in the Arctic is a season of freeze, only lasting a bit more than one month. Although blizzards are rare, snow can be a daily occurrence. It is the last chance to build shelter before the unforgiving winter arrives.<ul><li>Daytime sunlight levels are poor.</li><li>Humidity is high.</li></ul>"
                },
                "winter": {
                   "display_name": "Winter",
-                  "description": "Winter in the Arctic is a season of hardship, lasting seven months. Weather is severe, with biting winds and unforgiving blizzards making farming exceedingly difficult. Even venturing outside without a winter outfit can end tragically.<ul><li>Daytime sunlight levels are inadequate.</li><li>Very dry season.</li></ul>"
+                  "description": "Winter in the Arctic is a season of hardship, lasting six months. Weather is severe, with biting winds and unforgiving blizzards making farming exceedingly difficult. Even venturing outside without a winter outfit can end tragically.<ul><li>Daytime sunlight levels are inadequate.</li><li>Very dry season.</li></ul>"
                }
             },
             "random_location_names": {
@@ -3494,6 +3494,26 @@
                "description": "Provides protection when hauling and passing by bee skeps or nests.",
                "flavor": "A simpler and lighter variant for all the field workers out there!"
             },
+            "apple_transmute_recipe": {
+               "recipe_name": "Apple Tree Seeds (x2)",
+               "description": "Select the best fruits from the basket",
+               "flavor": "Only a skilled hand can choose the best fruits, but the rest are destroyed in the process."
+            },
+            "date_transmute_recipe": {
+               "recipe_name": "Date Palm Seeds (x2)",
+               "description": "Select the best fruits from the basket",
+               "flavor": "Only a skilled hand can choose the best fruits, but the rest are destroyed in the process."
+            },
+            "pear_transmute_recipe": {
+               "recipe_name": "Pear Tree Seeds (x2)",
+               "description": "Select the best fruits from the basket",
+               "flavor": "Only a skilled hand can choose the best fruits, but the rest are destroyed in the process."
+            },
+            "plum_transmute_recipe": {
+               "recipe_name": "Plum Tree Seeds (x2)",
+               "description": "Select the best fruits from the basket",
+               "flavor": "Only a skilled hand can choose the best fruits, but the rest are destroyed in the process."
+            },
             "almond_transmute_recipe": {
                "recipe_name": "Almond Tree Seeds (x2)",
                "description": "Select the best nuts from the basket",
@@ -3891,31 +3911,91 @@
                "description": "Domesticate Wintermoss bushes and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
+            "apple_tree_seeds_recipe": {
+               "recipe_name": "Apple Cores",
+               "description": "Domesticate Apple trees and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+				"apple_tree_seeds_2_recipe": {
+               "recipe_name": "Apple Cores",
+               "description": "Trade or gift it to allow other cultures to cultivate apple trees!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "date_tree_seeds_recipe": {
+               "recipe_name": "Dried Dates",
+               "description": "Domesticate Date palms and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+				"date_tree_seeds_2_recipe": {
+               "recipe_name": "Dried Dates",
+               "description": "Trade or gift it to allow other cultures to cultivate date palms!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "pear_tree_seeds_recipe": {
+               "recipe_name": "Pear Cores",
+               "description": "Domesticate Pear trees and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+				"pear_tree_seeds_2_recipe": {
+               "recipe_name": "Pear Cores",
+               "description": "Trade or gift it to allow other cultures to cultivate pear trees!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "plum_tree_seeds_recipe": {
+               "recipe_name": "Plum Cores",
+               "description": "Domesticate Plum trees and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+				"plum_tree_seeds_2_recipe": {
+               "recipe_name": "Plum Cores",
+               "description": "Trade or gift it to allow other cultures to cultivate plum trees!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "almond_tree_seeds_recipe": {
                "recipe_name": "Overripe Almonds",
                "description": "Domesticate Almond trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
-            "birch_tree_seeds_recipe": {
-               "recipe_name": "Birch Catkins",
-               "description": "Domesticate Birch trees and learn how to farm them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+				"almond_tree_seeds_2_recipe": {
+               "recipe_name": "Overripe Almonds",
+               "description": "Trade or gift it to allow other cultures to cultivate almond trees!",
+               "flavor": "This farming crop is already known to your farmers by default"
             },
             "chestnut_tree_seeds_recipe": {
                "recipe_name": "Overripe Chestnuts",
                "description": "Domesticate Chestnut trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
+				"chestnut_tree_seeds_2_recipe": {
+               "recipe_name": "Overripe Chestnuts",
+               "description": "Trade or gift it to allow other cultures to cultivate chestnuts!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "hazelnut_tree_seeds_recipe": {
                "recipe_name": "Overripe Hazelnuts",
                "description": "Domesticate Hazelnut trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+				"hazelnut_tree_seeds_2_recipe": {
+               "recipe_name": "Overripe Hazelnuts",
+               "description": "Trade or gift it to allow other cultures to cultivate hazel trees!",
+               "flavor": "This farming crop is already known to your farmers by default"
             },
             "walnut_tree_seeds_recipe": {
                "recipe_name": "Overripe Walnuts",
                "description": "Domesticate Walnut trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
+            "walnut_tree_seeds_2_recipe": {
+               "recipe_name": "Overripe Walnuts",
+               "description": "Trade or gift it to allow other cultures to cultivate walnuts!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "birch_tree_seeds_recipe": {
+               "recipe_name": "Birch Catkins",
+               "description": "Domesticate Birch trees and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },				
             "yew_tree_seeds_recipe": {
                "recipe_name": "Dried Yew Berries",
                "description": "Domesticate Yew trees and learn how to farm them.",
@@ -4869,8 +4949,15 @@
                "description": "Merge a lot of chunks of marble into one large polished block.",
                "flavor": "Harvest it for marble stone or let a Mason sculpt it"
             },
-            "decoration_name": "Decorations",
-            "hearth_enhancements_name": "Hearth-Enhanced Consumables"
+            "summon_stone_vein_marble_recipe": {
+               "recipe_name": "Marble Vein Stone",
+               "description": "Grows into a vein of marble stone"
+            },
+            "summon_stone_vein_feldspar_recipe": {
+               "recipe_name": "Feldspar Vein Stone",
+               "description": "Grows into a vein of feldspar stone"
+            },
+            "decoration_name": "Decorations"
          },
          "geomancer_description": {
             "description": "Mastery of the Earth Magic provides the power to shape the terrain, create ores, stunning landscapes and even breathe life into rocks to raise golems that will work for the town."
@@ -5630,6 +5717,9 @@
             "blacksmith_workbench_recipe": {
                "recipe_name": "Blacksmith Anvil",
                "description": "Used by the Blacksmith to create most of their goods."
+            },
+            "bronze_shield_recipe": {
+               "description": "Increases armor and blocks attacks!"
             }
          },
          "blacksmith_fuel_oven": {
@@ -5896,6 +5986,11 @@
                "recipe_name": "Catfish Tagine",
                "description": "Catfish meat and vegetables simmered in a clay pot.",
                "flavor": "A Rayya's Children oasis specialty"
+            },
+            "bug_meat_tagine_recipe": {
+               "recipe_name": "Bug Stew Tagine",
+               "description": "Chonky insects and veggies simmered in a clay pot.",
+               "flavor": "Slimy... Yet satisfying"
             },
             "sushi_recipe": {
                "recipe_name": "Sushi",
@@ -7242,6 +7337,22 @@
                "display_name": "Overripe Almonds",
                "description": "Learn to grow almond trees."
             },
+            "apple_tree_seeds": {
+               "display_name": "Apple Cores",
+               "description": "Learn to grow apple trees."
+            },
+            "date_tree_seeds": {
+               "display_name": "Dried Dates",
+               "description": "Learn to grow date palms."
+            },
+            "pear_tree_seeds": {
+               "display_name": "Pear Cores",
+               "description": "Learn to grow pear trees."
+            },
+            "plum_tree_seeds": {
+               "display_name": "Plum Cores",
+               "description": "Learn to grow plum trees."
+            },
             "birch_tree_seeds": {
                "display_name": "Birch Catkins",
                "description": "Learn to grow birch trees."
@@ -7733,7 +7844,7 @@
          },
          "marblesprout_crop": {
             "display_name": "Marblesprout Flower",
-            "description": "Its flower pretty much defies gravity.",
+            "description": "Its flower pretty much defies gravity",
             "growth_stage": {
                "000": {
                   "name": "Marblesprout Seedling",
@@ -7836,7 +7947,7 @@
          },
          "acacia_tree_crop": {
             "display_name": "Acacia Tree",
-            "description": "Provides logs of wood and occasional tree seeds and bough."
+            "description": "Can be grown and harvested for wood logs, boughs and a seed when cut"
          },
          "almond_tree_crop": {
             "growth_stage": {
@@ -7858,11 +7969,99 @@
                }
             },
             "display_name": "Almond Tree",
-            "description": "Provides almonds and occasional tree seeds."
+            "description": "Can be grown for its nuts and harvested for wood logs and boughs"
+         },
+			"apple_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Apple Tree Seed",
+                  "description": "Even a prolific apple tree has humble beginnings."
+               },
+               "001": {
+                  "name": "Apple Tree Seedling",
+                  "description": "A delicate stage of growth."
+               },
+               "002": {
+                  "name": "Apple Tree Sprout",
+                  "description": "Up, up, up it goes!"
+               },
+               "003": {
+                  "name": "Budding Apple Tree",
+                  "description": "Soon it will be a real apple tree!"
+               }
+            },
+            "display_name": "Apple Tree",
+            "description": "Can be grown for its fruits and harvested for wood logs and boughs"
+         },
+			"date_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Date Palm Seed",
+                  "description": "Even an exotic date palm has humble beginnings."
+               },
+               "001": {
+                  "name": "Date Palm Seedling",
+                  "description": "A delicate stage of growth."
+               },
+               "002": {
+                  "name": "Date Palm Sprout",
+                  "description": "Up, up, up it goes!"
+               },
+               "003": {
+                  "name": "Budding Date Palm",
+                  "description": "Soon it will be a real date palm!"
+               }
+            },
+            "display_name": "Date Palm",
+            "description": "Can be grown for its fruits and harvested for wood logs"
+         },
+			"pear_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Pear Tree Seed",
+                  "description": "Even a flowery pear tree has humble beginnings."
+               },
+               "001": {
+                  "name": "Pear Tree Seedling",
+                  "description": "A delicate stage of growth."
+               },
+               "002": {
+                  "name": "Pear Tree Sprout",
+                  "description": "Up, up, up it goes!"
+               },
+               "003": {
+                  "name": "Budding Pear Tree",
+                  "description": "Soon it will be a real pear tree!"
+               }
+            },
+            "display_name": "Pear Tree",
+            "description": "Can be grown for its fruits and harvested for wood logs and boughs"
+         },
+			"plum_tree_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Plum Tree Seed",
+                  "description": "Even a colorful plum tree has humble beginnings."
+               },
+               "001": {
+                  "name": "Plum Tree Seedling",
+                  "description": "A delicate stage of growth."
+               },
+               "002": {
+                  "name": "Plum Tree Sprout",
+                  "description": "Up, up, up it goes!"
+               },
+               "003": {
+                  "name": "Budding Plum Tree",
+                  "description": "Soon it will be a real plum tree!"
+               }
+            },
+            "display_name": "Plum Tree",
+            "description": "Can be grown for its fruits and harvested for wood logs and boughs"
          },
          "arctic_juniper_tree_crop": {
             "display_name": "Arctic Juniper Tree",
-            "description": "Provides logs of wood and occasional tree seeds and bough.",
+            "description": "Can be grown and harvested for wood logs, evergreen boughs and a seed when cut",
             "growth_stage": {
                "000": {
                   "name": "Arctic Juniper Berry",
@@ -7884,7 +8083,7 @@
          },
          "arctic_pine_tree_crop": {
             "display_name": "Arctic Pine Tree",
-            "description": "Provides logs of wood and occasional tree seeds and bough.",
+            "description": "Can be grown and harvested for wood logs, evergreen boughs and a seed when cut",
             "growth_stage": {
                "000": {
                   "name": "Arctic Pine Berry",
@@ -7924,11 +8123,11 @@
                }
             },
             "display_name": "Birch Tree",
-            "description": "Provides logs of wood and occasional tree seeds and bough."
+            "description": "Can be grown and harvested for wood logs, boughs and a seed when cut"
          },
          "cactus_tree_crop": {
             "display_name": "Tree Cactus",
-            "description": "Provides logs of wood and occasional tree seeds and bough."
+            "description": "Can be grown and harvested for wood logs and a seed when cut"
          },
          "chestnut_tree_crop": {
             "growth_stage": {
@@ -7950,7 +8149,7 @@
                }
             },
             "display_name": "Chestnut Tree",
-            "description": "Provides chestnuts and occasional tree seeds."
+            "description": "Can be grown for its nuts and harvested for wood logs and boughs"
          },
          "hazelnut_tree_crop": {
             "growth_stage": {
@@ -7972,11 +8171,11 @@
                }
             },
             "display_name": "Hazelnut Tree",
-            "description": "Provides hazelnuts and occasional tree seeds."
+            "description": "Can be grown for its nuts and harvested for wood logs and boughs"
          },
          "highland_pine_tree_crop": {
             "display_name": "Highland Pine Tree",
-            "description": "Provides logs of wood and occasional tree seeds and bough.",
+            "description": "Can be grown and harvested for wood logs, evergreen boughs and a seed when cut",
             "growth_stage": {
                "000": {
                   "name": "Highland Pine Seed",
@@ -7998,15 +8197,15 @@
          },
          "juniper_tree_crop": {
             "display_name": "Juniper Tree",
-            "description": "Provides logs of wood and occasional tree seeds and bough."
+            "description": "Can be grown and harvested for wood logs, evergreen boughs and a seed when cut"
          },
          "oak_tree_crop": {
             "display_name": "Oak Tree",
-            "description": "Provides logs of wood and occasional tree seeds and bough."
+            "description": "Can be grown and harvested for wood logs, boughs and a seed when cut"
          },
          "pine_tree_crop": {
             "display_name": "Pine Tree",
-            "description": "Provides logs of wood and occasional tree seeds and bough."
+            "description": "Can be grown and harvested for wood logs, evergreen boughs and a seed when cut"
          },
          "walnut_tree_crop": {
             "growth_stage": {
@@ -8028,7 +8227,7 @@
                }
             },
             "display_name": "Walnut Tree",
-            "description": "Provides walnuts and occasional tree seeds."
+            "description": "Can be grown for its nuts and harvested for wood logs and boughs"
          },
          "yew_tree_crop": {
             "growth_stage": {
@@ -8050,7 +8249,7 @@
                }
             },
             "display_name": "Yew Tree",
-            "description": "Provides logs of wood and occasional tree seeds and bough."
+            "description": "Can be grown and harvested for wood logs, evergreen boughs and a seed when cut"
          },
          "berry_bush_crop": {
             "growth_stage": {
@@ -8071,7 +8270,7 @@
                   "name": "Budding Berry Bush"
                }
             },
-            "description": "Harvestable for a meager food supply.",
+            "description": "Can be harvested for a small supply of fruits",
             "display_name": "Berry Bush"
          },
          "cherry_bush_crop": {
@@ -8093,7 +8292,7 @@
                   "name": "Budding Cherry Bush"
                }
             },
-            "description": "Harvestable for a meager food supply.",
+            "description": "Can be harvested for a small supply of fruits",
             "display_name": "Cherry Bush"
          },
          "pear_cactus_crop": {
@@ -8115,7 +8314,7 @@
                   "name": "Budding Pear Cactus"
                }
             },
-            "description": "Harvest carefully for prickly pears.",
+            "description": "Can be carefully harvested for a small supply of fruits",
             "display_name": "Pear Cactus"
          },
          "tumbleweed_crop": {
@@ -8137,7 +8336,7 @@
                   "name": "Budding Tumbleweed"
                }
             },
-            "description": "After drying out can be harvested for fiber of scratchy quality.",
+            "description": "After drying out can be harvested for its scratchy fiber",
             "display_name": "Tumbleweed"
          },
          "wintermoss_crop": {
@@ -8159,7 +8358,7 @@
                   "name": "Budding Wintermoss"
                }
             },
-            "description": "Can be harvested for fiber of scratchy quality.",
+            "description": "Can be harvested for its itchy fiber",
             "display_name": "Wintermoss"
          },
          "dwarfsbeard_crop": {
@@ -8181,7 +8380,7 @@
                   "name": "Budding Dwarfsbeard"
                }
             },
-            "description": "Can be harvested for fiber of scratchy quality.",
+            "description": "Can be harvested for its greasy fiber",
             "display_name": "Dwarfsbeard"
          },
          "paddy_crop": {
@@ -8451,6 +8650,22 @@
             },
             "walnut_log": {
                "display_name": "Walnut Wood Log",
+               "description": "A log. Made of wood."
+            },
+            "apple_log": {
+               "display_name": "Apple Wood Log",
+               "description": "A log. Made of wood."
+            },
+            "date_log": {
+               "display_name": "Date Palm Log",
+               "description": "A log. Made of wood."
+            },
+            "plum_log": {
+               "display_name": "Plum Wood Log",
+               "description": "A log. Made of wood."
+            },
+            "pear_log": {
+               "display_name": "Pear Wood Log",
                "description": "A log. Made of wood."
             }
          },
@@ -9413,6 +9628,214 @@
             "small_almond_tree": {
                "display_name": "Small Almond Tree",
                "description": "A younger, smaller tree. Will bear nuts throughout the Autumn."
+            }
+         },
+         "apple_tree": {
+            "seed": {
+               "tree_apple_seed": {
+                  "description": "A chonky, nice apple. Can be planted or used as a fruit in cooking.",
+                  "display_name": "Apple Tree Seed"
+               },
+               "tree_apple_seed_ghost": {
+                  "display_name": "Apple Tree Seed",
+                  "description": "Can be planted to grow a tree that bears fruits from Summer to Autumn."
+               }
+            },
+            "medium_apple_tree": {
+               "display_name": "Apple Tree",
+               "description": "A lively, sturdy tree. Will bear fruits throughout Summer and Autumn."
+            },
+            "large_apple_tree": {
+               "display_name": "Large Apple Tree",
+               "description": "An old and robust tree. Will bear fruits throughout Summer and Autumn."
+            },
+            "bud": {
+               "tree_apple_plant_bud": {
+                  "description": "It will soon start bearing fruits.",
+                  "display_name": "Budding Apple Tree"
+               }
+            },
+            "sapling_apple_tree": {
+               "description": "Baby Apple Tree.",
+               "sapling_apple_tree_iconic": {
+                  "description": "Takes quite some time to grow. Apple trees will bear fruits from Summer to Autumn."
+               },
+               "sapling_apple_tree_ghost": {
+                  "description": "Baby Apple Tree.",
+                  "display_name": "Apple Tree Sapling"
+               }
+            },
+            "sprout": {
+               "tree_apple_sprout": {
+                  "description": "Will bear a lot of fruits one day!",
+                  "display_name": "Apple Tree Sproutling"
+               }
+            },
+            "stem": {
+               "tree_apple_plant_stem": {
+                  "display_name": "Stemming Apple Tree",
+                  "description": "Up, up, up it goes!"
+               }
+            },
+            "small_apple_tree": {
+               "display_name": "Small Apple Tree",
+               "description": "Young and green. Will bear fruits throughout Summer and Autumn."
+            }
+         },
+         "date_tree": {
+            "seed": {
+               "tree_date_seed": {
+                  "description": "A single date can be planted or used as a fruit in cooking.",
+                  "display_name": "Date Palm Seed"
+               },
+               "tree_date_seed_ghost": {
+                  "display_name": "Date Palm Seed",
+                  "description": "Can be planted to grow a tree that bears fruits most of the year."
+               }
+            },
+            "medium_date_tree": {
+               "display_name": "Date Palm",
+               "description": "Exotic and ruffled. Will bear fruits throughout Spring, Summer and Autumn."
+            },
+            "large_date_tree": {
+               "display_name": "Large Date Palm",
+               "description": "Tall and wavy! Will bear fruits throughout Spring, Summer and Autumn."
+            },
+            "bud": {
+               "tree_date_plant_bud": {
+                  "description": "It will soon start bearing fruits.",
+                  "display_name": "Budding Date Palm"
+               }
+            },
+            "sapling_date_tree": {
+               "description": "Baby Date Palm.",
+               "sapling_date_tree_iconic": {
+                  "description": "Takes quite some time to grow. Date trees will bear fruits from Spring to Autumn."
+               },
+               "sapling_date_tree_ghost": {
+                  "description": "Baby Date Palm.",
+                  "display_name": "Date Palm Sapling"
+               }
+            },
+            "sprout": {
+               "tree_date_sprout": {
+                  "description": "Will bear a lot of fruits one day!",
+                  "display_name": "Date Palm Sproutling"
+               }
+            },
+            "stem": {
+               "tree_date_plant_stem": {
+                  "display_name": "Stemming Date Palm",
+                  "description": "Up, up, up it goes!"
+               }
+            },
+            "small_date_tree": {
+               "display_name": "Small Date Palm",
+               "description": "Quite young and stubby. Will bear fruits throughout Spring, Summer and Autumn."
+            }
+         },
+         "plum_tree": {
+            "seed": {
+               "tree_plum_seed": {
+                  "description": "Plums can be planted or used as either a fruit for cooking.",
+                  "display_name": "Plum Tree Seed"
+               },
+               "tree_plum_seed_ghost": {
+                  "display_name": "Plum Tree Seed",
+                  "description": "Can be planted to grow a tree that bears fruits from Summer to Autumn."
+               }
+            },
+            "medium_plum_tree": {
+               "display_name": "Plum Tree",
+               "description": "Robust and with wonderful colors. Will bear fruits throughout Summer and Autumn."
+            },
+            "large_plum_tree": {
+               "display_name": "Large plum Tree",
+               "description": "All grown and lush! Will bear fruits throughout Summer and Autumn."
+            },
+            "bud": {
+               "tree_plum_plant_bud": {
+                  "description": "It will soon start bearing fruits.",
+                  "display_name": "Budding Plum Tree"
+               }
+            },
+            "sapling_plum_tree": {
+               "description": "Baby Plum Tree.",
+               "sapling_plum_tree_iconic": {
+                  "description": "Takes quite some time to grow. Plum trees will bear fruits from Summer to Autumn."
+               },
+               "sapling_plum_tree_ghost": {
+                  "description": "Baby Plum Tree.",
+                  "display_name": "Plum Tree Sapling"
+               }
+            },
+            "sprout": {
+               "tree_plum_sprout": {
+                  "description": "Will bear a lot of fruits one day!",
+                  "display_name": "Plum Tree Sproutling"
+               }
+            },
+            "stem": {
+               "tree_plum_plant_stem": {
+                  "display_name": "Stemming Plum Tree",
+                  "description": "Up, up, up it goes!"
+               }
+            },
+            "small_plum_tree": {
+               "display_name": "Small Plum Tree",
+               "description": "Small and colorful. Will bear fruits throughout Summer and Autumn."
+            }
+         },
+         "pear_tree": {
+            "seed": {
+               "tree_pear_seed": {
+                  "description": "Delicious pears can be planted or used as a fruit in cooking.",
+                  "display_name": "Pear Tree Seed"
+               },
+               "tree_pear_seed_ghost": {
+                  "display_name": "Pear Tree Seed",
+                  "description": "Can be planted to grow a tree that bears fruits from Summer to Autumn."
+               }
+            },
+            "medium_pear_tree": {
+               "display_name": "Pear Tree",
+               "description": "Flowers beautifully on Spring. Will bear fruits throughout Summer and Autumn."
+            },
+            "large_pear_tree": {
+               "display_name": "Large Pear Tree",
+               "description": "A fine tree. Will bear fruits throughout Summer and Autumn."
+            },
+            "bud": {
+               "tree_pear_plant_bud": {
+                  "description": "It will soon start bearing fruits.",
+                  "display_name": "Budding Pear Tree"
+               }
+            },
+            "sapling_pear_tree": {
+               "description": "Baby Pear Tree.",
+               "sapling_pear_tree_iconic": {
+                  "description": "Takes quite some time to grow. Pear trees will bear fruits from Summer to Autumn."
+               },
+               "sapling_pear_tree_ghost": {
+                  "description": "Baby Pear Tree.",
+                  "display_name": "Pear Tree Sapling"
+               }
+            },
+            "sprout": {
+               "tree_pear_sprout": {
+                  "description": "Will bear a lot of fruits one day!",
+                  "display_name": "Pear Tree Sproutling"
+               }
+            },
+            "stem": {
+               "tree_pear_plant_stem": {
+                  "display_name": "Stemming Pear Tree",
+                  "description": "Up, up, up it goes!"
+               }
+            },
+            "small_pear_tree": {
+               "display_name": "Small Pear Tree",
+               "description": "A cute little tree. Will bear fruits throughout Summer and Autumn."
             }
          },
          "arctic_pine_tree": {
@@ -11480,6 +11903,15 @@
                "display_name": "Serving of Salmon Dumpling"
             }
          },
+         "bug_meat_tagine": {
+            "bug_meat_tagine": {
+               "display_name": "Bug Stew Tagine",
+               "description": "Chonky insects and veggies simmered in a clay pot."
+            },
+            "bug_meat_tagine_serving": {
+               "display_name": "Serving of Bug Stew Tagine"
+            }
+         },
          "catfish_tagine": {
             "catfish_tagine": {
                "display_name": "Catfish Tagine",
@@ -12002,7 +12434,8 @@
          },
          "apples": {
             "apple_basket": {
-               "display_name": "Basket of Apples"
+               "display_name": "Basket of Apples",
+               "description": "Sweet, flavorful apples! Can be eaten raw, used in cooking or offered by a witch."
             },
             "apple_serving": {
                "display_name": "Apple"
@@ -12010,7 +12443,8 @@
          },
          "dates": {
             "date_basket": {
-               "display_name": "Basket of Dates"
+               "display_name": "Basket of Dates",
+               "description": "Fresh, ripe desert dates. Can be eaten raw or used in cooking and brewing."
             },
             "date_serving": {
                "display_name": "Date"
@@ -12018,7 +12452,8 @@
          },
          "pears": {
             "pear_basket": {
-               "display_name": "Basket of Pears"
+               "display_name": "Basket of Pears",
+               "description": "Delicious fruits. Can be eaten raw or used in cooking and brewing."
             },
             "pear_serving": {
                "display_name": "Pear"
@@ -12026,7 +12461,8 @@
          },
          "plums": {
             "plum_basket": {
-               "display_name": "Basket of Plums"
+               "display_name": "Basket of Plums",
+               "description": "Tender, soft small fruits. Can be eaten raw or used in cooking and brewing."
             },
             "plum_serving": {
                "display_name": "Plum"
@@ -12228,11 +12664,29 @@
             },
             "marble_block": {
                "display_name": "Marble Vein",
-               "description": "Provides hunks o' marble when mined."
+               "description": "Provides Hunks o' Marble when mined."
             },
             "feldspar_block": {
                "display_name": "Feldspar Vein",
-               "description": "Provides hunks o' feldspar and sometimes mounds o' ball clay when mined."
+               "description": "Provides Hunks o' Feldspar and sometimes Ball Clay when mined."
+            },
+            "coal_block": {
+               "description": "Provides Lumps o' Coal and Hunks o' Hard Coal when mined."
+            },
+            "copper_block": {
+               "description": "Provides Copper Ore, sometimes Feldspar and rarely Marble when mined."
+            },
+            "gold_block": {
+               "description": "Provides Gold Ore and some Feldspar when mined."
+            },
+            "iron_block": {
+               "description": "Provides Iron Ore, sometimes Feldspar and rarely Marble when mined."
+            },
+            "tin_block": {
+               "description": "Provides Tin Ore, sometimes Feldspar and rarely Marble when mined."
+            },
+            "silver_block": {
+               "description": "Provides Silver Ore and some Marble when mined."
             }
          },
          "foraging_spot": {
@@ -13123,6 +13577,10 @@
                "description": "Imbues the wearer with the power of Firnn so they heal faster."
             },
             "description": "Increased Willpower and healing speed due to Firnn's boon."
+         },
+         "giant_bone_short_spear": {
+            "display_name": "Giant Bone Scythe",
+            "description": "A long and dangerous weapons for reaping at your foes!"
          }
       },
       "gizmos": {
@@ -14273,6 +14731,20 @@
          "rabbit_statue": {
             "display_name": "Ancient Monument"
          }
+      },
+      "landmark": {
+         "summon_stone_vein_feldspar": {
+            "summon_stone_vein_feldspar_ghost": {
+               "display_name": "Feldspar Vein Stone",
+               "description": "Grows into a vein of feldspar stone."
+            }
+         },
+         "summon_stone_vein_marble": {
+            "summon_stone_vein_marble_ghost": {
+               "display_name": "Marble Vein Stone",
+               "description": "Grows into a vein of marble stone."
+            }
+         }
       }
    },
    "mountain_folk": {
@@ -14792,6 +15264,26 @@
          "display_name": "Glowshroom",
          "description": "A small mushroom with a peculiar glow, almost magical! Needs a day or two to grow.",
          "harvest_text": "harvesting glowshroom"
+      },
+      "pear_sapling": {
+         "display_name": "Pear Tree Sapling",
+         "description": "A common fruit-bearing, highland tree. Needs some days before it has grown enough to be replanted somewhere else.",
+         "harvest_text": "harvesting pear tree sapling"
+      },
+      "plum_sapling": {
+         "display_name": "Plum Tree Sapling",
+         "harvest_text": "harvesting plum tree sapling",
+         "description": "A common fruit-bearing tree from the colder woodlands. Needs some days before it has grown enough to be replanted somewhere else."
+      },
+      "date_sapling": {
+         "harvest_text": "harvesting date palm sapling",
+         "display_name": "Date Palm Sapling",
+         "description": "An exotic fruit-bearing palm from arid lands. Needs some days before it has grown enough to be replanted somewhere else."
+      },
+      "apple_sapling": {
+         "display_name": "Apple Tree Sapling",
+         "harvest_text": "harvesting apple tree sapling",
+         "description": "A common fruit-bearing woodland tree. Needs some days before it has grown enough to be replanted somewhere else."
       }
    },
    "plants": {

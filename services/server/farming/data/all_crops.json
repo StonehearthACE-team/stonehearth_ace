@@ -314,7 +314,7 @@
       },
       "almond_tree": {
          "crop_type": "stonehearth_ace:crops:almond_tree_crop",
-         "ordinal": 1,
+         "ordinal": 2,
          "level_requirement": 4,
          "field_types": {
             "orchard": true
@@ -330,7 +330,7 @@
       },
       "hazelnut_tree": {
          "crop_type": "stonehearth_ace:crops:hazelnut_tree_crop",
-         "ordinal": 1,
+         "ordinal": 4,
          "level_requirement": 4,
          "field_types": {
             "orchard": true
@@ -338,8 +338,40 @@
       },
       "walnut_tree": {
          "crop_type": "stonehearth_ace:crops:walnut_tree_crop",
-         "ordinal": 1,
+         "ordinal": 3,
          "level_requirement": 4,
+         "field_types": {
+            "orchard": true
+         }
+      },
+      "apple_tree": {
+         "crop_type": "stonehearth_ace:crops:apple_tree_crop",
+         "ordinal": 5,
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
+      },
+      "date_tree": {
+         "crop_type": "stonehearth_ace:crops:date_tree_crop",
+         "ordinal": 6,
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
+      },
+      "pear_tree": {
+         "crop_type": "stonehearth_ace:crops:pear_tree_crop",
+         "ordinal": 7,
+         "level_requirement": 5,
+         "field_types": {
+            "orchard": true
+         }
+      },
+      "plum_tree": {
+         "crop_type": "stonehearth_ace:crops:plum_tree_crop",
+         "ordinal": 8,
+         "level_requirement": 5,
          "field_types": {
             "orchard": true
          }
@@ -780,7 +812,7 @@
       },
       "decorative_flowers": {
          "allow_fertilizing": false,
-			"sample_crop": "stonehearth:plants:frostsnap",
+         "sample_crop": "stonehearth:plants:frostsnap",
          "color": [
             229,
             145,

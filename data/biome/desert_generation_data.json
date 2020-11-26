@@ -73,6 +73,27 @@
                "exclusion_radius": 3
             }
          },
+			"stonehearth_ace:trees:date:small" : {
+				"placement_type" : "single",
+				"parameters" : {
+					"ground_radius" : 3,
+					"exclusion_radius" : 4
+				}
+			},
+			"stonehearth_ace:trees:date:medium" : {
+				"placement_type" : "single",
+				"parameters" : {
+					"ground_radius" : 3,
+					"exclusion_radius" : 4
+				}
+			},
+			"stonehearth_ace:trees:date:large" : {
+				"placement_type" : "single",
+				"parameters" : {
+					"ground_radius" : 3,
+					"exclusion_radius" : 4
+				}
+			},
          "stonehearth_ace:fungi:desert_truffle": {
             "placement_type": "dense",
             "parameters": {
@@ -136,20 +157,26 @@
                "small": 0,
                "medium": 6,
 					"large": 10
-            }
+            },
+				"stonehearth_ace:trees:date" : {
+					"small" : 0,
+					"medium" : 2,
+					"large" : 4
+				}
          },
          "weights": {
             "plains": {
                "1": {
-                  "stonehearth_ace:trees:almond": 0.4
+                  "stonehearth_ace:trees:almond": 0.16,
+						"stonehearth_ace:trees:date": 0.2
                }
             },
             "foothills": {
                "1": {
-                  "stonehearth_ace:trees:almond": 0.2
+                  "stonehearth_ace:trees:almond": 0.1
                },
                "2": {
-                  "stonehearth_ace:trees:almond": 0.1
+                  "stonehearth_ace:trees:almond": 0.05
                }
             },
             "mountains": {
@@ -169,8 +196,10 @@
 							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
 							"stonehearth_ace:terrain:pasture_grass": 0.3,
 							"stonehearth_ace:terrain:pasture_grass:short": 0.1,
-							"stonehearth_ace:trees:almond:small": 0.8,
-							"stonehearth_ace:trees:almond:medium": 0.2
+							"stonehearth_ace:trees:almond:small": 0.3,
+							"stonehearth_ace:trees:almond:medium": 0.15,
+							"stonehearth_ace:trees:date:medium": 0.2,
+							"stonehearth_ace:trees:date:small": 0.12
                   }
                },
                "foothills": {

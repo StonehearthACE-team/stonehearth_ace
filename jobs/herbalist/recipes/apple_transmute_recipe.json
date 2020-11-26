@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "effort": 28,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.apple_transmute_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.apple_transmute_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.apple_transmute_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/trees/apple_tree/seed/tree_apple_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:apples:apple_basket",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:trees:apple:seed"
+      },
+      {
+         "item": "stonehearth_ace:trees:apple:seed"
+      }
+   ]
+}

@@ -1,18 +1,41 @@
 {
-  "type": "entity",
-  "mixins": [
-    "stonehearth_ace:trees:birch:medium"
-  ],
-  "components": {
-    "mixintypes": {
-      "stonehearth:commands": "remove",
-      "stonehearth:entity_forms": "remove",
-      "stonehearth:evolve": "remove"
-    }
-  },
-  "entity_data": {
-    "mixintypes": {
-      "stonehearth:evolve_data": "remove"
-    }
-  }
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:trees:birch:medium"
+   ],
+   "components": {
+      "mixintypes": {
+         "stonehearth:commands": "remove",
+         "stonehearth:entity_forms": "remove",
+         "stonehearth:evolve": "remove"
+      },
+      "stonehearth:resource_node": {
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 0
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "seed": {
+               "items": {
+                  "seed": {
+                     "uri": "stonehearth_ace:trees:birch:seed"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "mixintypes": {
+         "stonehearth:evolve_data": "remove"
+      }
+   }
 }

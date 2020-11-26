@@ -1,0 +1,79 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:mainhand_flanked"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(giant_bone_short_spear_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(giant_bone_short_spear_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 17,
+         "roles": [
+            "footman_job"
+         ],
+         "required_job_level": 3,
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 16,
+         "reach": 2.3
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_thrust",
+            "effect": "combat_1h_thrust",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 2
+         },
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 1
+         },
+         {
+            "name": "combat_2h_attack",
+            "effect": "combat_2h_attack",
+            "active_frame": 21,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 41,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.giant_bone_short_spear.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.giant_bone_short_spear.description)",
+         "icon": "file(giant_bone_short_spear.png)",
+         "category": "weapons",
+         "material_tags": [
+            "bone",
+            "crafted",
+            "short_spear"
+         ]
+      }
+   }
+}

@@ -25,13 +25,20 @@
       },
      "stonehearth:growing": {
          "growth_period": "36h",
-         "preferred_climate": "temperate_complex"
+         "preferred_climate": "temperate_easy"
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.crops.oak_tree_crop.display_name)",
-         "description": "i18n(stonehearth_ace:entities.crops.oak_tree_crop.description)"
+         "description": "i18n(stonehearth_ace:entities.crops.oak_tree_crop.description)",
+			"mixintypes": {
+				"material_tags": "override"
+			},
+			"material_tags": [
+            "crop",
+            "oak_tree"
+         ]
       }
    }
 }

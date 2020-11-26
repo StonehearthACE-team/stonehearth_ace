@@ -1,71 +1,70 @@
 {
-  "type": "entity",
-  "mixins": [
-    "stonehearth:trees:acacia:large"
-  ],
-  "components": {
-    "mixintypes": {
-      "stonehearth:commands": "remove",
-      "stonehearth:entity_forms": "remove",
-      "stonehearth:evolve": "remove"
-    },
-    "mob": {
+   "type": "entity",
+   "mixins": [
+      "stonehearth:trees:acacia:large"
+   ],
+   "components": {
       "mixintypes": {
-        "align_to_grid": "remove"
+         "stonehearth:commands": "remove",
+         "stonehearth:entity_forms": "remove",
+         "stonehearth:evolve": "remove"
       },
-      "model_origin": {
-        "x": -1,
-        "y": 0,
-        "z": 0
+      "stonehearth:resource_node": {
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 0
+                  }
+               }
+            }
+         }
       },
-      "region_origin": {
-        "x": 0.5,
-        "y": 0,
-        "z": 0.5
+      "stonehearth:loot_drops": {
+         "entries": {
+            "seed": {
+               "items": {
+                  "seed": {
+                     "uri": "stonehearth:trees:acacia:seed"
+                  }
+               }
+            }
+         }
+      },
+      "mob": {
+         "mixintypes": {
+            "align_to_grid": "remove"
+         },
+         "model_origin": { "x": -1, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "destination": {
+         "mixintypes": {
+            "region": "override"
+         },
+         "region": [
+            {
+               "min": { "x": -1.5, "y": 0, "z": -1.5 },
+               "max": { "x": 2.5, "y": 1, "z": 2.5 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "mixintypes": {
+            "region": "override"
+         },
+         "region": [
+            {
+               "min": { "x": -1.5, "y": 0, "z": -1.5 },
+               "max": { "x": 2.5, "y": 16, "z": 2.5 }
+            }
+         ]
       }
-    },
-    "destination": {
+   },
+   "entity_data": {
       "mixintypes": {
-        "region": "override"
-      },
-      "region": [
-        {
-          "min": {
-            "x": -1.5,
-            "y": 0,
-            "z": -1.5
-          },
-          "max": {
-            "x": 2.5,
-            "y": 1,
-            "z": 2.5
-          }
-        }
-      ]
-    },
-    "region_collision_shape": {
-      "mixintypes": {
-        "region": "override"
-      },
-      "region": [
-        {
-          "min": {
-            "x": -1.5,
-            "y": 0,
-            "z": -1.5
-          },
-          "max": {
-            "x": 2.5,
-            "y": 16,
-            "z": 2.5
-          }
-        }
-      ]
-    }
-  },
-  "entity_data": {
-    "mixintypes": {
-      "stonehearth:evolve_data": "remove"
-    }
-  }
+         "stonehearth:evolve_data": "remove"
+      }
+   }
 }

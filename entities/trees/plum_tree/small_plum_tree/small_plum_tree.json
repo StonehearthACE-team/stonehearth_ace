@@ -1,0 +1,175 @@
+{
+   "mixins": "stonehearth:mixins:tree",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_plum_tree.qb)",
+                     "file(small_plum_tree_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "spring": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_plum_tree_spring.qb)",
+                     "file(small_plum_tree_spring_2.qb)",
+                     "file(small_plum_tree_spring_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_plum_tree_autumn.qb)",
+                     "file(small_plum_tree_autumn_2.qb)",
+                     "file(small_plum_tree_autumn_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_plum_tree_winter.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "*": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:temperate": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "winter"
+         }
+      },
+      "stonehearth:resource_node": {
+         "durability": 5,
+         "resource": "stonehearth_ace:resources:wood:plum_log"
+      },
+      "mob": {
+         "model_origin": { "x": -0.5, "y": 0, "z": -0.5 },
+         "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 0, "y": 7, "z": 0 }
+            }
+         ]
+      },
+      "stonehearth:renewable_resource_node": {
+         "resource": "stonehearth_ace:food:plums:plum_basket",
+         "category": "harvest",
+         "renewal_time": "48h+12h",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_fruit_overlay_effect",
+         "half_renewed_model": {
+            "model": "/stonehearth_ace/entities/trees/plum_tree/small_plum_tree/small_plum_tree_half_renewed.qb",
+            "matrix": "plums",
+            "scale": 0.2,
+            "offset": { "x": 21, "y": -16, "z": 16 }
+         },
+         "renewed_model": {
+            "model": "/stonehearth_ace/entities/trees/plum_tree/small_plum_tree/small_plum_tree_renewed.qb",
+            "matrix": "plums",
+            "scale": 0.2,
+            "offset": { "x": 21, "y": -16, "z": 16 }
+         },
+         "seasons": {
+            "spring": {
+               "disable_renewal": true,
+               "destroy_resource": true
+            },
+            "summer": {
+               "renewal_time_multiplier": 6
+            },
+            "winter": {
+               "disable_renewal": true,
+               "destroy_resource": true
+            }
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "beehive": {
+               "items": {
+                  "none": {
+                     "weight": 20
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:plum:medium",
+         "evolve_time": "18d+10d",
+         "biomes": {
+            "stonehearth_ace:biome:highlands": {
+               "evolve_time_multiplier": 1.1
+            },
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 1.3
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 1.5
+            }
+         },
+         "seasons": {
+            "summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.plum_tree.small_plum_tree.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.plum_tree.small_plum_tree.description)"
+      },
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:trees:plum:stump"
+      },
+      "stonehearth_ace:replant_data": {
+         "seed_alias": "stonehearth_ace:trees:plum:seed",
+         "sapling_alias": "stonehearth_ace:trees:plum:sapling"
+      },
+      "stonehearth:appeal": {
+         "appeal": 7
+      }
+   }
+}

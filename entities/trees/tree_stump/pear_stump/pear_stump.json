@@ -1,0 +1,48 @@
+{
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(pear_stump.qb)"
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:wood:pear_log",
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "harvester_effect": "hoe",
+         "description": "chop_tree"
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.stump)",
+         "description": "i18n(stonehearth_ace:entities.trees.stump_description)",
+         "category": "plants"
+      }
+   }
+}

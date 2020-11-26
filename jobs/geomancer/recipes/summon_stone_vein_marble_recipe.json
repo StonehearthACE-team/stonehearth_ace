@@ -1,0 +1,29 @@
+{
+   "type": "recipe",
+   "work_units": 40,
+   "recipe_name": "i18n(stonehearth_ace:jobs.geomancer.recipes.summon_stone_vein_marble_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.geomancer.recipes.summon_stone_vein_marble_recipe.description)",
+   "flavor": "",
+   "portrait": "/stonehearth_ace/entities/landmark/summon_stone_vein_marble/summon_stone_vein_marble.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth:geomancer:workbench",
+   "ingredients": [
+      {
+         "material": "earth_essence resource",
+         "count": 2
+      },
+      {
+         "material": "stone resource",
+         "count": 6
+      },
+      {
+         "material": "herb white resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:landmark:summon_stone:vein:marble"
+      }
+   ]
+}

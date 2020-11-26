@@ -1,17 +1,40 @@
 {
-  "type": "entity",
-  "mixins": [
-    "stonehearth:trees:juniper:small"
-  ],
-  "components": {
-    "mixintypes": {
-      "stonehearth:commands": "remove",
-      "stonehearth:entity_forms": "remove"
-    }
-  },
-  "entity_data": {
-    "stonehearth:evolve_data": {
-      "next_stage": "stonehearth_ace:crops:juniper_tree_crop:medium"
-    }
-  }
+   "type": "entity",
+   "mixins": [
+      "stonehearth:trees:juniper:small"
+   ],
+   "components": {
+      "mixintypes": {
+         "stonehearth:commands": "remove",
+         "stonehearth:entity_forms": "remove"
+      },
+      "stonehearth:resource_node": {
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 0
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "seed": {
+               "items": {
+                  "seed": {
+                     "uri": "stonehearth:trees:juniper:seed"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:crops:juniper_tree_crop:medium"
+      }
+   }
 }

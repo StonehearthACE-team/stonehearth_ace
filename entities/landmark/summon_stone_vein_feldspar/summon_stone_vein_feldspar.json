@@ -1,0 +1,39 @@
+{
+   "type": "entity",
+   "mixins": "file(summon_stone_vein_feldspar_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(summon_stone_vein_feldspar_iconic.json)",
+         "ghost_form": "file(summon_stone_vein_feldspar_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true,
+         "hide_move_ui": true
+      },
+      "stonehearth:ore_placement": {
+         "kind": "feldspar",
+         "vein_options": {
+            "num_veins_min": 1,
+            "num_veins_max": 2,
+            "vein_length_min": 20,
+            "vein_length_max": 40,
+            "vein_radius": 1,
+            "mother_lode_radius_min": 0,
+            "mother_lode_radius_max": 0
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 40,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:placement": {
+         "effect": "cast_geomancer",
+         "tag": "summon_stone"
+      }
+   }
+}

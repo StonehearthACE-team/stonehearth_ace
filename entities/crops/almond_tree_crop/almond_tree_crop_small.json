@@ -1,32 +1,48 @@
 {
-  "type": "entity",
-  "mixins": [
-    "stonehearth_ace:trees:almond:small"
-  ],
-  "components": {
-    "mixintypes": {
-      "stonehearth:commands": "remove",
-      "stonehearth:entity_forms": "remove"
-    },
-    "mob": {
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:trees:almond:small"
+   ],
+   "components": {
       "mixintypes": {
-        "align_to_grid": "remove"
+         "stonehearth:commands": "remove",
+         "stonehearth:entity_forms": "remove"
       },
-      "model_origin": {
-        "x": -0.5,
-        "y": 0,
-        "z": -0.5
+      "stonehearth:resource_node": {
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 0
+                  }
+               }
+            }
+         }
       },
-      "region_origin": {
-        "x": 0.5,
-        "y": 0,
-        "z": 0.5
+      "stonehearth:renewable_resource_node": {
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 0
+                  }
+               }
+            }
+         }
+      },
+      "mob": {
+         "mixintypes": {
+            "align_to_grid": "remove"
+         },
+         "model_origin": { "x": -0.5, "y": 0, "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       }
-    }
-  },
-  "entity_data": {
-    "stonehearth:evolve_data": {
-      "next_stage": "stonehearth_ace:crops:almond_tree_crop:medium"
-    }
-  }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:crops:almond_tree_crop:medium"
+      }
+   }
 }

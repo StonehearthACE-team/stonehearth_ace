@@ -1,0 +1,18 @@
+{
+   "mixins": [
+      "stonehearth:mixins:placed_object",
+      "file(../large_date_tree/large_date_tree_shell.json)"
+   ],
+   "type": "entity",
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.date_tree.seed.tree_date_seed_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.date_tree.seed.tree_date_seed_ghost.description)",
+         "icon": "file(tree_date_seed.png)",
+         "material_tags": [
+            "plant"
+         ],
+         "category": "seed"
+      }
+   }
+}

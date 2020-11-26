@@ -1,0 +1,61 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.6
+      },
+      "stonehearth:evolve": {},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tree_pear_stem.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.3, "y": 0, "z": -0.3 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:pear:bud",
+         "evolve_time": "1d+8h",
+         "biomes": {
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 1.1
+            },
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 1.2
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 2.5
+            }
+         },
+         "seasons": {
+            "summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "stockpile_plant"
+         ],
+         "display_name": "i18n(stonehearth_ace:entities.trees.pear_tree.stem.tree_pear_plant_stem.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.pear_tree.stem.tree_pear_plant_stem.description)",
+         "category": "plants"
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

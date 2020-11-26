@@ -29,13 +29,20 @@
       },
      "stonehearth:growing": {
          "growth_period": "36h",
-         "preferred_climate": "desert_complex"
+         "preferred_climate": "desert_easy"
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.crops.cactus_tree_crop.display_name)",
-         "description": "i18n(stonehearth_ace:entities.crops.cactus_tree_crop.description)"
+         "description": "i18n(stonehearth_ace:entities.crops.cactus_tree_crop.description)",
+			"mixintypes": {
+				"material_tags": "override"
+			},
+			"material_tags": [
+            "crop",
+            "cactus_tree"
+         ]
       }
    }
 }

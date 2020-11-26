@@ -32,6 +32,11 @@
       "stonehearth:workshop": {
          "job_alias": "stonehearth_ace:jobs:brewer",
          "workshop_effect": "file(/data/rigs/jobs/brewer/brewer_distillery/effects/work.json)"
+      },
+      "stonehearth:storage": {
+         "default_filter": [
+            "wood low_fuel"
+         ]
       }
    },
    "entity_data": {

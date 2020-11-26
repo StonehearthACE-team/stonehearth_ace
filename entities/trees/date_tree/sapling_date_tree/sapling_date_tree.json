@@ -1,0 +1,115 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:tree",
+      "file(sapling_date_tree_ghost.json)"
+   ],
+   "components": {
+      "render_info": {
+         "scale": 0.4
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(sapling_date_tree_iconic.json)",
+         "ghost_form": "file(sapling_date_tree_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_placement_ui": true
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:resources:wood:date_log",
+         "durability": 2
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 0 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 5, "z": 0 }
+            }
+         ]
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "beehive": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "bough_bale": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
+            "maybe_bough_bale": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 0
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "mixintypes": {
+         "stonehearth:stump_data": "remove"
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:date:small",
+         "evolve_time": "1d+12h",
+         "biomes": {
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 1.6
+            },
+            "stonehearth_ace:biome:highlands": {
+               "evolve_time_multiplier": 3
+            },
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 4
+            }
+         },
+         "seasons": {
+            "summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.8
+            },
+            "winter": {
+               "evolve_time_multiplier": 3
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 27,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_type": "caravan",
+            "shopkeeper_level": 2
+         }
+      },
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.trees.date_tree.sapling_date_tree.description)",
+         "category": "plants",
+         "material_tags": [
+            "plant",
+            "tree",
+            "stockpile_plant"
+         ],
+         "subject_override": "stonehearth_ace:trees:date:large"
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}

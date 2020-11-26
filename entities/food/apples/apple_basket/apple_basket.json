@@ -15,7 +15,7 @@
          }
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
       },
       "stonehearth:stacks": {
          "max_stacks": 5
@@ -32,7 +32,7 @@
          "shop_info": {
             "buyable": true,
             "sellable": true,
-            "shopkeeper_level": 3,
+            "shopkeeper_level": 2,
             "shopkeeper_type": "caravan"
          }
       },
@@ -51,10 +51,10 @@
             "stockpile_raw_food",
             "breakfast_time"
          ],
-         "subject_override": "stonehearth_ace:plants:cherry_bush"
+         "subject_override": "stonehearth_ace:trees:apple:medium"
       },
       "stonehearth:appeal": {
-         "appeal": 0
+         "appeal": 2
       }
    }
 }

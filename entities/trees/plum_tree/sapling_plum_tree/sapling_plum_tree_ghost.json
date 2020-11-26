@@ -1,0 +1,77 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(sapling_plum_tree.qb)"
+                  ]
+               }
+            ]
+         },
+         "spring": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(sapling_plum_tree_spring.qb)"
+                  ]
+               }
+            ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(sapling_plum_tree_autumn.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(sapling_plum_tree_winter.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "*": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth:biome:arctic": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "winter"
+         }
+      },
+      "render_info": {
+         "scale": 0.9
+      },
+      "mob": {
+         "model_origin": { "x": -0.45, "y": 0, "z": -0.45 },
+         "region_origin": { "x": 0.5, "y": 0, "z": -0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.plum_tree.sapling_plum_tree.sapling_plum_tree_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.plum_tree.sapling_plum_tree.sapling_plum_tree_ghost.description)",
+         "icon": "file(sapling_plum_tree.png)",
+         "category": "plants"
+      }
+   }
+}

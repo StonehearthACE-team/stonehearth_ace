@@ -1,0 +1,87 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(sapling_date_tree.qb)"
+                  ]
+               }
+            ]
+         },
+         "spring": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(sapling_date_tree_spring.qb)"
+                  ]
+               }
+            ]
+         },
+         "summer": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(sapling_date_tree_summer.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(sapling_date_tree_winter.qb)"
+                  ]
+               }
+            ]
+         },
+         "oasis": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(sapling_date_tree_oasis.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "*": {
+            "spring": "summer",
+            "summer": "oasis",
+            "autumn": "summer",
+            "winter": "winter"
+         },
+         "stonehearth:biome:desert": {
+            "spring": "spring",
+            "summer": "summer",
+            "autumn": "default",
+            "winter": "winter"
+         }
+      },
+      "render_info": {
+         "scale": 0.4
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": -0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.date_tree.sapling_date_tree.sapling_date_tree_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.date_tree.sapling_date_tree.sapling_date_tree_ghost.description)",
+         "icon": "file(sapling_date_tree.png)",
+         "category": "plants"
+      }
+   }
+}

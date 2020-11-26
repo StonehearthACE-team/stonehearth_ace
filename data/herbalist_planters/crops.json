@@ -1688,6 +1688,130 @@
          "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.walnut_sapling.harvest_text)",
          "icon": "file(crops/sapling_planter/walnut_sapling/walnut_sapling.png)"
       },
+      "apple_sapling": {
+         "seed_uri": "stonehearth_ace:trees:apple:seed",
+         "product_uri": "stonehearth_ace:trees:apple:sapling",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.1,
+         "tending_multiplier": 0.05,
+         "level": 4,
+         "growth_time": "18h+6h",
+         "growth_levels": [
+            {
+               "model": "file(crops/sapling_planter/apple_sapling/apple_sapling_1.qb)",
+               "offset": { "x": 5.5, "y": 0, "z": 5.5 }
+            },
+            {
+               "model": "file(crops/sapling_planter/apple_sapling/apple_sapling_2.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/sapling_planter/apple_sapling/apple_sapling_3.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/sapling_planter/apple_sapling/apple_sapling_4.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.apple_sapling.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.apple_sapling.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.apple_sapling.harvest_text)",
+         "icon": "file(crops/sapling_planter/apple_sapling/apple_sapling.png)"
+      },
+      "date_sapling": {
+         "seed_uri": "stonehearth_ace:trees:date:seed",
+         "product_uri": "stonehearth_ace:trees:date:sapling",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.1,
+         "tending_multiplier": 0.05,
+         "level": 4,
+         "growth_time": "18h+6h",
+         "growth_levels": [
+            {
+               "model": "file(crops/sapling_planter/date_sapling/date_sapling_1.qb)",
+               "offset": { "x": 5.5, "y": 0, "z": 5.5 }
+            },
+            {
+               "model": "file(crops/sapling_planter/date_sapling/date_sapling_2.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/sapling_planter/date_sapling/date_sapling_3.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/sapling_planter/date_sapling/date_sapling_4.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.date_sapling.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.date_sapling.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.date_sapling.harvest_text)",
+         "icon": "file(crops/sapling_planter/date_sapling/date_sapling.png)"
+      },
+      "plum_sapling": {
+         "seed_uri": "stonehearth_ace:trees:plum:seed",
+         "product_uri": "stonehearth_ace:trees:plum:sapling",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.1,
+         "tending_multiplier": 0.05,
+         "level": 4,
+         "growth_time": "18h+6h",
+         "growth_levels": [
+            {
+               "model": "file(crops/sapling_planter/plum_sapling/plum_sapling_1.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/sapling_planter/plum_sapling/plum_sapling_2.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/sapling_planter/plum_sapling/plum_sapling_3.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/sapling_planter/plum_sapling/plum_sapling_4.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.plum_sapling.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.plum_sapling.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.plum_sapling.harvest_text)",
+         "icon": "file(crops/sapling_planter/plum_sapling/plum_sapling.png)"
+      },
+      "pear_sapling": {
+         "seed_uri": "stonehearth_ace:trees:pear:seed",
+         "product_uri": "stonehearth_ace:trees:pear:sapling",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.1,
+         "tending_multiplier": 0.05,
+         "level": 4,
+         "growth_time": "18h+6h",
+         "growth_levels": [
+            {
+               "model": "file(crops/sapling_planter/pear_sapling/pear_sapling_1.qb)",
+               "offset": { "x": 5.5, "y": 0, "z": 5.5 }
+            },
+            {
+               "model": "file(crops/sapling_planter/pear_sapling/pear_sapling_2.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/sapling_planter/pear_sapling/pear_sapling_3.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            },
+            {
+               "model": "file(crops/sapling_planter/pear_sapling/pear_sapling_4.qb)",
+               "offset": { "x": 5, "y": 0, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.pear_sapling.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.pear_sapling.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.pear_sapling.harvest_text)",
+         "icon": "file(crops/sapling_planter/pear_sapling/pear_sapling.png)"
+      },
       "arctic_juniper_sapling": {
          "seed_uri": "stonehearth_ace:trees:arctic_juniper:seed",
          "product_uri": "stonehearth_ace:trees:arctic_juniper:sapling",

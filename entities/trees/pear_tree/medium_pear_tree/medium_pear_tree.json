@@ -1,0 +1,192 @@
+{
+   "mixins": "stonehearth:mixins:tree",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(medium_pear_tree.qb)",
+                     "file(medium_pear_tree_2.qb)",
+                     "file(medium_pear_tree_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(medium_pear_tree_autumn.qb)",
+                     "file(medium_pear_tree_autumn_2.qb)",
+                     "file(medium_pear_tree_autumn_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "summer": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(medium_pear_tree_summer.qb)",
+                     "file(medium_pear_tree_summer_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(medium_pear_tree_winter.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "*": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
+         "stonehearth_ace:biome:highlands": {
+            "spring": "default",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         }
+      },
+      "stonehearth:resource_node": {
+         "durability": 7,
+         "resource": "stonehearth_ace:resources:wood:pear_log"
+      },
+      "mob": {
+         "model_origin": { "x": -0.5, "y": 0, "z": -0.5 },
+         "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 0, "y": 9, "z": 0 }
+            }
+         ]
+      },
+      "stonehearth:renewable_resource_node": {
+         "resource": "stonehearth_ace:food:pears:pear_basket",
+         "category": "harvest",
+         "renewal_time": "48h+6h",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_fruit_overlay_effect",
+         "resource_loot_table": {
+            "entries": {
+               "extra_nuts": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "nuts": {
+                        "uri": "stonehearth_ace:food:pears:pear_basket",
+                        "weight": 1
+                     }
+                  }
+               },
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "seed": {
+                        "uri": "stonehearth_ace:trees:pear:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         },
+         "half_renewed_model": {
+            "model": "/stonehearth_ace/entities/trees/pear_tree/medium_pear_tree/medium_pear_tree_half_renewed.qb",
+            "matrix": "pears",
+            "scale": 0.2,
+            "offset": { "x": 16, "y": -16, "z": 16 }
+         },
+         "renewed_model": {
+            "model": "/stonehearth_ace/entities/trees/pear_tree/medium_pear_tree/medium_pear_tree_renewed.qb",
+            "matrix": "pears",
+            "scale": 0.2,
+            "offset": { "x": 16, "y": -16, "z": 16 }
+         },
+         "seasons": {
+            "spring": {
+               "disable_renewal": true,
+               "destroy_resource": true
+            },
+            "summer": {
+               "renewal_time_multiplier": 4
+            },
+            "winter": {
+               "disable_renewal": true,
+               "destroy_resource": true
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:trees:pear:large",
+         "evolve_time": "36d+18d",
+         "biomes": {
+            "stonehearth:biome:temperate": {
+               "evolve_time_multiplier": 1.1
+            },
+            "stonehearth:biome:arctic": {
+               "evolve_time_multiplier": 1.2
+            },
+            "stonehearth:biome:desert": {
+               "evolve_time_multiplier": 2.5
+            }
+         },
+         "seasons": {
+            "summer": {
+               "evolve_time_multiplier": 1.2
+            },
+            "autumn": {
+               "evolve_time_multiplier": 1.5
+            },
+            "winter": {
+               "evolve_time_multiplier": 2
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.trees.pear_tree.medium_pear_tree.display_name)",
+         "description": "i18n(stonehearth_ace:entities.trees.pear_tree.medium_pear_tree.description)"
+      },
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:trees:pear:stump"
+      },
+      "stonehearth_ace:replant_data": {
+         "seed_alias": "stonehearth_ace:trees:pear:seed",
+         "sapling_alias": "stonehearth_ace:trees:pear:sapling"
+      },
+      "stonehearth:appeal": {
+         "appeal": 7
+      }
+   }
+}
