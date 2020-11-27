@@ -1,10 +1,12 @@
 -- not sure if/how to monkey-patch a compound action, so we're just overriding the whole thing :-\
 
-local FollowPath = require 'ai.lib.follow_path'
 local Entity = _radiant.om.Entity
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
+local Region3 = _radiant.csg.Region3
 local MoveToTargetableLocation = radiant.class()
+
+local log = radiant.log.create_logger('move_to_targetable_location')
 
 MoveToTargetableLocation.name = 'move to targetable location'
 MoveToTargetableLocation.does = 'stonehearth:combat:move_to_targetable_location'
@@ -127,70 +129,51 @@ function MoveToTargetableLocation:_find_location(entity, target)
    end
 
    local range = stonehearth.combat:get_weapon_range(entity, weapon)
-   local entity_location = radiant.entities.get_world_grid_location(entity)
-   local target_location = radiant.entities.get_world_grid_location(target)
+   local entity_location = radiant.entities.get_world_location(entity)
+   local target_location = radiant.entities.get_world_location(target)
 
    local leash = stonehearth.combat:get_leash_data(entity) or {}
 
-   local center, max_range = leash.center, leash.range
+   local center, movement_range = leash.center, leash.range
    if not center then
-      center = radiant.entities.get_world_grid_location(entity)
-      max_range = stonehearth.terrain:get_sight_radius()
+      center = entity_location
+      movement_range = stonehearth.terrain:get_sight_radius()
    end
 
    local checked = {}
-   local search_cube = self:_get_search_cube(entity, center, max_range)
-   local slice = search_cube:get_face(Point3.unit_y):extruded('y', 4, 0)
-   for y = 0, max_range - 1, 5 do
-      local search_point = slice:translated(Point3(0, -y, 0)):get_closest_point(target_location)
-      local key = search_point:to_int()
-      if not checked[key] then
-         checked[key] = true
-         local end_point = radiant.terrain.get_direct_path_end_point(entity_location, search_point, entity, true)
-         local candidate_location = _physics:get_standable_point(entity, end_point)
-         radiant.log.write('stonehearth_ace', 5, tostring(entity)..' checking end_point '..tostring(end_point)..' candidate_location '..tostring(candidate_location))
-         if candidate_location.y < end_point.y then
-            candidate_location = end_point
-         end
-
-         if self:_in_range_and_has_line_of_sight(entity, target, candidate_location, target_location, max_range) then
-            radiant.log.write('stonehearth_ace', 5, 'found good attack point '..tostring(candidate_location)..' to attack enemy '..tostring(target)..' at '..tostring(target_location))
-            return candidate_location
+   local max_height = 20
+   local search_cube = self:_get_search_cube(entity, center, movement_range, max_height)
+   --log:debug('%s search cube %s', entity, search_cube)
+   local supported_region = _physics:get_supported_region(Region3(search_cube:extruded('y', 1, 0)), 0):translated(Point3.unit_y)
+   local bounds = supported_region:get_bounds()
+   --log:debug('%s supported region bounds %s area %s', entity, bounds, supported_region:get_area())
+   local slice = Cube3(bounds.min, Point3(bounds.max.x, bounds.min.y + 1, bounds.max.z))
+   for y = max_height, 0, -1 do
+      local check_region = supported_region:intersect_region(Region3(slice:translated(Point3(0, y, 0))))
+      if not check_region:empty() then
+         --log:debug('%s check region for y %s: %s', entity, y, check_region:get_bounds())
+         local end_point = check_region:get_closest_point(target_location)
+         local key = tostring(end_point:to_int())
+         if not checked[key] then
+            checked[key] = true
+            --log:debug('%s trying to get from %s to %s', entity, entity_location, end_point)
+            local candidate_location = radiant.terrain.get_direct_path_end_point(entity_location, end_point, entity, true)
+            --log:debug('%s considering candidate_location %s', entity, candidate_location)
+            if stonehearth.combat:location_in_range(candidate_location, target_location, range) and
+                  stonehearth.combat:has_potential_line_of_sight(entity, target, candidate_location, target_location) then
+               log:debug('found good attack point %s to attack enemy %s at %s', candidate_location, target, target_location)
+               return candidate_location
+            end
          end
       end
    end
 
    return nil
---[[
-   local end_point = radiant.terrain.get_direct_path_end_point(entity_location, target_location, entity, true)
-   local search_cube = self:_get_search_cube(entity, center, max_range)
-   local search_point = search_cube:get_closest_point(end_point)
-   local candidate_location = _physics:get_standable_point(entity, search_point)
-
-   if self:_in_range_and_has_line_of_sight(entity, target, candidate_location, target_location, max_range) then
-      radiant.log.write('stonehearth_ace', 5, 'settling for bad attack point '..tostring(candidate_location)..' to attack enemy at '..tostring(target_location))
-      return candidate_location
-   end
-
-   return nil
-   ]]
 end
 
-function MoveToTargetableLocation:_get_search_cube(entity, center, range)
-   local search_cube = Cube3(center):inflated(Point3(range, 0, range)):extruded('y', 0, range)
+function MoveToTargetableLocation:_get_search_cube(entity, center, range, height)
+   local search_cube = Cube3(center):inflated(Point3(range, 0, range)):extruded('y', 0, height)
    return search_cube
-end
-
--- This code must match the implementation of combat_service:in_range_and_has_line_of_sight()
--- or we risk having ai spins.
-function MoveToTargetableLocation:_in_range_and_has_line_of_sight(attacker, target, attacker_location, target_location, range)
-   if attacker_location:distance_to(target_location) <= range then
-      if _physics:has_line_of_sight(attacker, target, attacker_location, target_location) then
-         return true
-      end
-   end
-
-   return false
 end
 
 local ai = stonehearth.ai

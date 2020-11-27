@@ -237,26 +237,40 @@ function AceCombatService:try_inflict_debuffs(target, debuff_list)
    end
 end
 
--- changed to take elevation into account
-function AceCombatService:in_range(attacker, target, weapon)
+-- allow specifying locations for attack and target
+function AceCombatService:has_potential_line_of_sight(attacker, target, attacker_location, target_location)
+   local result = _physics:has_line_of_sight(attacker, target, attacker_location, target_location)
+   return result
+end
+
+-- changed to take elevation into account, and allow specifying locations for attack and target
+function AceCombatService:in_range(attacker, target, weapon, attacker_location, target_location)
    if not (target and target:is_valid()) then
       return false
    end
 
-   local attacker_location = attacker:add_component('mob'):get_world_grid_location()
-   local target_location = target:add_component('mob'):get_world_grid_location()
+   attacker_location = attacker_location or attacker:add_component('mob'):get_world_grid_location()
+   target_location = target_location or target:add_component('mob'):get_world_grid_location()
    if not (attacker_location and target_location) then
       return false
    end
 
-   -- weapon range is at same elevation
-   -- gain/lose 0.5/1.5 range per unit of height advantage/disadvantage
-   local distance = Point3(attacker_location.x, 0, attacker_location.z):distance_to(Point3(target_location.x, 0, target_location.z))
-   local elevation_factor = attacker_location.y - target_location.y
-   elevation_factor = elevation_factor * (elevation_factor > 0 and 0.5 or 1.5)
+   local range = self:get_weapon_range(attacker, weapon)
+   return self:location_in_range(attacker_location, target_location, range)
+end
 
-   local range = self:get_weapon_range(attacker, weapon) + elevation_factor
-   local result = distance <= range
+function AceCombatService:location_in_range(attacker_location, target_location, range)
+   -- weapon range is at same elevation
+   -- R*sqrt(1+2*h/R), where R is normal weapon range and h is height difference
+   local elevation_factor = attacker_location.y - target_location.y
+   if elevation_factor >= 0.5 * range then
+      return false
+   end
+
+   local adjusted_range = range * math.sqrt(1 + 2 * elevation_factor / range)
+
+   local distance = Point3(attacker_location.x, 0, attacker_location.z):distance_to(Point3(target_location.x, 0, target_location.z))
+   local result = distance <= adjusted_range
    return result
 end
 

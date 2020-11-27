@@ -68,8 +68,8 @@ function AceResourceNodeComponent:get_durability()
 end
 
 function AceResourceNodeComponent:auto_request_harvest()
-   -- only consider auto harvesting if it's done growing
-   if self._entity:get_component('stonehearth:evolve') then
+   -- only consider auto harvesting if it's done growing and doesn't have an RRN component
+   if self._entity:get_component('stonehearth:evolve') or self._entity:get_component('stonehearth:renewable_resource_node') then
       return
    end
 
