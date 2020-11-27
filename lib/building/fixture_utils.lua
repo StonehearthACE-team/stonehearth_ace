@@ -219,6 +219,7 @@ fixture_utils.filter._ignored_uris = {
    ['stonehearth:ui:entities:dragger_anchor'] = true,
    ['stonehearth:debug_shapes:box'] = true,
    ['stonehearth:build2:entities:fixture_widget'] = true,
+   ['stonehearth:terrain:water'] = true,
 }
 
 fixture_utils.filter.STOP = 0
@@ -327,10 +328,12 @@ function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fi
          end
          local bounds_w = fixture_utils.rotate_region(fixture_bounds, rot or 0, region_origin):translated(r.brick)
          local support_bounds = Region3(bounds_w:duplicate():get_bounds())
+         --log:debug('%s bounds = %s', entity, support_bounds:get_bounds())
 
          if not is_hatch and (not is_portal or (allow_ground and r.normal.y == 1)) then
-            bounds_w = bounds_w:translated(r.normal)
+            bounds_w:translate(r.normal)
             support_bounds = support_bounds - support_bounds:translated(r.normal)
+            --log:debug('%s bounds changed to %s, support bounds to %s', entity, bounds_w:get_bounds(), support_bounds:get_bounds())
          end
 
          -- The cursor position seems good; now check the support bounds against the world.
