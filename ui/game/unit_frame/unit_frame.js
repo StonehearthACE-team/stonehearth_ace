@@ -81,6 +81,9 @@ App.StonehearthUnitFrameView.reopen({
 
       radiant.call('stonehearth_ace:get_game_mode_json')
          .done(function(response) {
+            if (self.isDestroyed || self.isDestroying) {
+               return;
+            }
             self._game_mode_json = response.game_mode_json;
             if (self._game_mode_json) {
                self._updateHealth();

@@ -17,6 +17,10 @@ App.SaveView.reopen({
       var self = this;
       radiant.call("radiant:client:get_save_games")
          .done(function(json) {
+            if (self.isDestroyed || self.isDestroying) {
+               return;
+            }
+            
             if (!changed) {
                if (self.cachedSaves) {
                   // Check if any new saves were added

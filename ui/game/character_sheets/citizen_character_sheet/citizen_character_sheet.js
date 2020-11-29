@@ -439,6 +439,9 @@ App.StonehearthCitizenCharacterSheetView.reopen({
       // trace the properties so we can tell if we need to popup the properties window for the object
       self.selectedEntityTrace = new StonehearthDataTrace(entity)
          .progress(function(result) {
+            if (self.isDestroyed || self.isDestroying) {
+               return;
+            }
             self._examineEntity(result);
          })
          .fail(function(e) {

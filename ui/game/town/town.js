@@ -55,6 +55,9 @@ App.StonehearthTownView.reopen({
 
                   radiant.call('stonehearth_ace:get_item_container', self.lastClickedItem)
                      .done(function(response) {
+                        if (self.isDestroyed || self.isDestroying) {
+                           return;
+                        }
                         var camera_focus = self.lastClickedItem;
                         if (response.container && response.container != '') {
                            camera_focus = response.container;

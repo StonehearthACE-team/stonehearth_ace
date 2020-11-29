@@ -46,6 +46,9 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
 
             self._playerInventoryTrace = new StonehearthDataTrace(response.tracker, {})
                .progress(function (response) {
+                  if (self.isDestroyed || self.isDestroying) {
+                     return;
+                  }
                   self._inventoryTrackingData = response.tracking_data;
                   self._updateAvailableSeeds();
                });
@@ -157,7 +160,11 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       var playerId = self.get('model.player_id');
       if (playerId) {
          radiant.call('stonehearth_ace:has_guildmaster_town_bonus', playerId)
-            .done(function(response) {
+            .done(function(response) {      
+               if (self.isDestroying || self.isDestroyed) {
+                  return;
+               }
+
                self.set('maxTendQuality', response.has_guildmaster ? 4 : 3);
             });
       }

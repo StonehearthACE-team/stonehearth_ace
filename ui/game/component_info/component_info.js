@@ -74,6 +74,9 @@ App.ComponentInfoView = App.View.extend({
 
       radiant.call_obj('stonehearth.selection', 'get_selected_command')
          .done(function(data) {
+            if (self.isDestroyed || self.isDestroying) {
+               return;
+            }
             self._onEntitySelected(data);
          });
    },

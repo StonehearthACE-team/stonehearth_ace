@@ -112,6 +112,9 @@ App.StonehearthPromotionTree.reopen({
             };
             self._jobsTrace = new StonehearthDataTrace(jobIndex, components);
             self._jobsTrace.progress(function(eobj) {
+               if (self.isDestroyed || self.isDestroying) {
+                  return;
+               }
                self._jobsTrace.destroy();
 					_cachedJobIndexes[jobIndex] = eobj;
                finishedGettingJobs(eobj);
@@ -126,6 +129,9 @@ App.StonehearthPromotionTree.reopen({
       else {
          radiant.call_obj('stonehearth.player', 'get_job_index', citizen)
             .done(function(response){
+               if (self.isDestroyed || self.isDestroying) {
+                  return;
+               }
                finishedGettingJobIndex(response.job_index);
             })
             .fail(function(response) {
@@ -153,6 +159,9 @@ App.StonehearthPromotionTree.reopen({
 
       // Finally, build the tree.
       self._citizenTrace.progress(function(o) {
+         if (self.isDestroyed || self.isDestroying) {
+            return;
+         }
          var props = o['stonehearth:properties'];
          var jobLocked = props && props.properties['job_locked'] || false;
          self.set('jobLocked', jobLocked);

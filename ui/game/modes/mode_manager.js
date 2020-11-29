@@ -192,6 +192,9 @@ $(document).ready(function() {
          self._selectedEntityTraceDone = false;
          self.selectedEntityTrace = new RadiantTrace(entity, self._trace_components)
             .progress(function(result) {
+               if (self.isDestroyed || self.isDestroying) {
+                  return;
+               }
                if (this._selectedEntityTraceDone) {
                   return;
                }

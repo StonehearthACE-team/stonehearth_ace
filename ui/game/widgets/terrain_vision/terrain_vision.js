@@ -96,6 +96,9 @@ App.StonehearthTerrainVisionWidget.reopen({
          self._currentTip = App.stonehearthClient.showTip(heatmapData.name, heatmapData.description, { i18n: true });
          self._heatmapValueTrace = new RadiantTrace();
          self._heatmapValueTrace.traceUri(self._heatmapServiceAddress, {}).progress(function (response) {
+            if (self.isDestroyed || self.isDestroying) {
+               return;
+            }
             var heat_value = response.current_probe_value;
             self.set('currentHeatValue', response.current_probe_value);
             if (heatmapData.constants_key) {
