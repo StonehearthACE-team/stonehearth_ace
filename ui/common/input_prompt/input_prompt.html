@@ -1,0 +1,11 @@
+<script type="text/x-handlebars" data-template-name="inputPromptView">
+   <div id="inputPromptView" class="gui">
+      <div class="window">
+         <div class="title">{{i18n_key view.title}}</div>
+         <p>{{{formatted_i18n_key view.message}}}</p>
+         <input id="inputText" type="text" {{bind-attr value=view.inputText}} />
+         <div id="buttons"></div>
+      </div>
+
+   </div>
+</script>

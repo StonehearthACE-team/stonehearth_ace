@@ -42,4 +42,32 @@ ace_constants.drink_item_quality_thoughts[constants.item_quality.FINE] = 					co
 ace_constants.drink_item_quality_thoughts[constants.item_quality.EXCELLENT] = 			constants.thoughts.drink_item_quality.EXCELLENT 
 ace_constants.drink_item_quality_thoughts[constants.item_quality.MASTERWORK] = 			constants.thoughts.drink_item_quality.MASTERWORK 
 
+constants.conversation.MEDIUM_STAGES = {
+   order = {
+      constants.conversation.stages.GREETING,
+      constants.conversation.stages.MOVE,
+      constants.conversation.stages.SUBJECT,
+      constants.conversation.stages.REACTION,
+      constants.conversation.stages.CONCLUSION
+   },
+   steps = {
+      [constants.conversation.stages.GREETING] = "num_participants",
+      [constants.conversation.stages.MOVE] = 0,
+      [constants.conversation.stages.SUBJECT] = 1,
+      [constants.conversation.stages.REACTION] = 1,
+      [constants.conversation.stages.CONCLUSION] = "num_participants",
+   },
+}
+
+constants.conversation.SHORT_STAGES = {
+   order = {
+      constants.conversation.stages.GREETING,
+      constants.conversation.stages.CONCLUSION
+   },
+   steps = {
+      [constants.conversation.stages.GREETING] = "num_participants",
+      [constants.conversation.stages.CONCLUSION] = "num_participants",
+   },
+}
+
 return ace_constants

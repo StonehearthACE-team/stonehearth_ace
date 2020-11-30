@@ -16362,6 +16362,8 @@
                "show_new_title_notification_description": "When one of your citizens (or other items) achieves a title, display an in-game notification about it.",
                "auto_select_new_titles": "Auto Select Newly-Achieved Titles",
                "auto_select_new_titles_description": "When one of your citizens (or other items) achieves a title, automatically select it as their active title.",
+               "issue_party_commands_when_job_disabled": "Always Issue Party Commands",
+               "issue_party_commands_when_job_disabled_description": "Even if a hearthling with a combat job has their job disabled, issue combat party commands to them.",
                "terrain_slice_buildings": "Terrain Slice Buildings",
                "terrain_slice_buildings_description": "In Terrain Slice mode, don't render entities supported by visible, non-terrain entities.",
                "highlight_entire_vine_on_select": "Highlight Entire Selected Vines",
@@ -16456,6 +16458,23 @@
                   "description": "Enemies will be stronger and the progression of challenges will be quicker and less merciful. Always be on your guard! Wounds and other effects can be very dangerous - or even lethal!"
                }
             }
+         },
+         "select_roster": {
+            "load_citizens": "Load",
+            "save_citizens": "Save",
+            "roster_title": "Saved Starting Rosters",
+            "delete_roster": "Delete",
+            "cancel_roster": "Cancel",
+            "select_roster": "Select",
+            "delete_roster_confirm_title": "Delete Starting Roster?",
+            "delete_roster_confirm_message": "Are you sure you want to delete the selected starting roster?",
+            "delete_roster_confirm_yes": "Yes",
+            "delete_roster_confirm_no": "Cancel",
+            "save_roster_confirm_title": "Save Starting Roster",
+            "save_roster_confirm_message": "Choose a name for your starting roster so it's easy to load on future expeditions.",
+            "save_roster_confirm_yes": "Save",
+            "save_roster_confirm_no": "Cancel",
+            "save_roster_default_name": "Expedition #[str(number)]"
          }
       },
       "data": {

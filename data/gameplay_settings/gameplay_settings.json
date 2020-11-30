@@ -137,6 +137,16 @@
          "default": true,
          "ordinal": 16
       },
+      "issue_party_commands_when_job_disabled": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.issue_party_commands_when_job_disabled)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.issue_party_commands_when_job_disabled_description)",
+         "default": true,
+         "on_change": {
+            "call": "issue_party_commands_when_job_disabled_setting_changed"
+         },
+         "ordinal": 18
+      },
       "terrain_slice_buildings": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.terrain_slice_buildings)",
