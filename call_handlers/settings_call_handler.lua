@@ -18,6 +18,14 @@ function SettingsCallHandler:set_client_gameplay_setting_command(session, respon
    stonehearth.client_state:set_client_gameplay_setting(session.player_id, mod, field, value)
 end
 
+function SettingsCallHandler:issue_party_commands_when_job_disabled_setting_changed(session, response)
+   -- go through all parties for that player and apply/cancel party commands for any members with job disabled
+   local pop = stonehearth.population:get_population(session.player_id)
+   if pop then
+      pop:reconsider_all_individual_party_commands()
+   end
+end
+
 function SettingsCallHandler:terrain_slice_buildings_setting_changed(session, response)
    stonehearth.subterranean_view:terrain_slice_buildings_setting_changed()
 end

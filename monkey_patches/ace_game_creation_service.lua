@@ -267,16 +267,20 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
    end
    -- set population override if it's a different population than this kingdom (use ascendancy as failsafe for old reembark files)
    local population_override = citizen_spec.population_override or 'stonehearth:kingdoms:ascendancy'
-   if population_override ~= kingdom then
+   if population_override ~= '' and population_override ~= kingdom then
       job:set_population_override(population_override)
    end
-   for job_uri, level in pairs(citizen_spec.job_levels) do
-      job:promote_to(job_uri, { skip_visual_effects = true, dont_drop_talisman = true })
-      for _ = 1, level - 1 do
-         job:level_up(true)
+   if citizen_spec.job_levels then
+      for job_uri, level in pairs(citizen_spec.job_levels) do
+         job:promote_to(job_uri, { skip_visual_effects = true, dont_drop_talisman = true })
+         for _ = 1, level - 1 do
+            job:level_up(true)
+         end
       end
    end
-   job:promote_to(citizen_spec.current_job, { skip_visual_effects = true, dont_drop_talisman = true })
+   if citizen_spec.current_job then
+      job:promote_to(citizen_spec.current_job, { skip_visual_effects = true, dont_drop_talisman = true })
+   end
 
    -- Set customization.
    local customization = citizen:get_component('stonehearth:customization')
@@ -285,14 +289,18 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
    end
 
    -- Set item preferences.
-   local appeal = citizen:get_component('stonehearth:appeal')
-   appeal:set_item_preferences(citizen_spec.item_preferences, citizen_spec.item_preference_discovered_flags)
+   if citizen_spec.item_preferences then
+      local appeal = citizen:get_component('stonehearth:appeal')
+      appeal:set_item_preferences(citizen_spec.item_preferences, citizen_spec.item_preference_discovered_flags)
+   end
 
    -- Set equipment.
-   local equipment = citizen:get_component('stonehearth:equipment')
-   for _, equipment_uri in ipairs(citizen_spec.equipment) do
-      local equipment_entity = radiant.entities.create_entity(equipment_uri, { owner = session.player_id })
-      equipment:equip_item(equipment_entity, true)
+   if citizen_spec.equipment then
+      local equipment = citizen:get_component('stonehearth:equipment')
+      for _, equipment_uri in ipairs(citizen_spec.equipment) do
+         local equipment_entity = radiant.entities.create_entity(equipment_uri, { owner = session.player_id })
+         equipment:equip_item(equipment_entity, true)
+      end
    end
 
 	-- Set Statistics

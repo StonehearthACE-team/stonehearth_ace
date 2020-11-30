@@ -4922,6 +4922,7 @@
       "stonehearth/jobs/blacksmith/blacksmith_outfit/blacksmith_outfit.qb": "file(jobs/blacksmith/blacksmith_outfit/blacksmith_outfit.qb)",
       "stonehearth/jobs/blacksmith/blacksmith_outfit/blacksmith_outfit_female.qb": "file(jobs/blacksmith/blacksmith_outfit/blacksmith_outfit_female.qb)",
       "stonehearth/jobs/blacksmith/skin/hammer.png": "file(jobs/blacksmith/skin/hammer.png)",
+      "stonehearth/jobs/combat_job.lua": "stonehearth_ace/jobs/combat_job.lua",
       "stonehearth/jobs/cook/cook_mill/cook_mill.png": "file(jobs/cook/cook_mill/cook_mill.png)",
       "stonehearth/jobs/cook/cook_mill/cook_mill.qb": "file(jobs/cook/cook_mill/cook_mill.qb)",
       "stonehearth/jobs/cook/cook_mill/cook_mill_iconic.qb": "file(jobs/cook/cook_mill/cook_mill_iconic.qb)",
@@ -4979,6 +4980,8 @@
       "stonehearth/ui/game/unit_frame/images/cancel_order.png": "file(ui/game/unit_frame/images/cancel_order.png)",
       "stonehearth/ui/game/unit_frame/unit_frame.html": "file(ui/game/unit_frame/unit_frame.html)",
       "stonehearth/ui/game/widgets/terrain_vision/terrain_vision.html": "stonehearth_ace/ui/game/widgets/terrain_vision/terrain_vision.html",
+      "stonehearth/ui/shell/select_roster/select_roster.html": "file(ui/shell/select_roster/select_roster.html)",
+      "stonehearth/ui/shell/select_roster/select_roster.js": "file(ui/shell/select_roster/select_roster.js)",
       "stonehearth/ui/shell/title/images/foreground.png": "file(ui/shell/title/images/stonehearth_ace_foreground.png)",
       "stonehearth/ui/shell/title/images/stonehearth_ace_foreground.png": "file(ui/shell/title/images/stonehearth_ace_foreground.png)",
       "stonehearth:actions:light_firepit": "stonehearth_ace:actions:light_firepit"
@@ -5106,6 +5109,18 @@
       },
       "change_job_equipment_role": {
          "controller": "file(call_handlers/job_equipment_roles_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "get_starting_rosters_command": {
+         "controller": "file(call_handlers/new_game_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "delete_starting_roster_command": {
+         "controller": "file(call_handlers/new_game_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "save_starting_roster_command": {
+         "controller": "file(call_handlers/new_game_call_handler.lua)",
          "endpoint": "server"
       },
       "box_move": {
@@ -5260,6 +5275,10 @@
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
       },
+      "issue_party_commands_when_job_disabled_setting_changed": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "server"
+      },
       "set_client_gameplay_settings_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
@@ -5386,6 +5405,7 @@
    },
    "ui": {
       "html": [
+         "file(ui/common/input_prompt/input_prompt.html)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.html)",
          "file(ui/game/modes/military_mode/military_mode.html)",
          "file(ui/game/modes/fence_mode/fence_mode.html)",
@@ -5395,6 +5415,7 @@
          "file(ui/game/bulletin/bulletin_dialog/achievement_acquired_bulletin_dialog/achievement_acquired_bulletin_dialog.html)"
       ],
       "js": [
+         "file(ui/common/input_prompt/input_prompt.js)",
          "file(ui/debug/console/console_commands.js)",
          "file(ui/root/js/root_view.js)",
          "file(ui/root/js/root_controller.js)",
@@ -5436,6 +5457,7 @@
          "file(ui/game/save_view/save_view.js)"
       ],
       "less": [
+         "file(ui/common/input_prompt/input_prompt.less)",
          "file(ui/game/widgets/terrain_vision/terrain_vision.less)",
          "file(ui/game/task_manager/task_manager.less)",
          "file(jobs/brewer/skin/workshop.less)",

@@ -1,0 +1,260 @@
+<script type="text/x-handlebars" data-template-name="stonehearthSelectRoster">
+   <div id="selectRoster">
+
+      <a href="#" {{action "quitToMainMenu" target="view"}}>
+         <button class="quitButton">{{i18n stonehearth:ui.game.esc_menu.quit_to_menu}}</button>
+      </a>
+
+      <div id="loading">
+         <div id="loadingBaseText">{{i18n stonehearth:ui.shell.select_settlement.loading}}</div>
+         <div id="loadingPeriods">...</div>
+      </div>
+
+      <div class="gui">
+         <div id="title">{{i18n stonehearth:ui.shell.select_roster.citizen_info}}</div>
+
+         <div id="rerollCitizensButton" {{action "regenerateCitizens" target="view"}}>
+            <div id="rerollCitizensText">{{i18n stonehearth:ui.shell.select_roster.reroll_citizens}}</div>
+            <div id="rerollCitizensDice" />
+         </div>
+         
+         {{#if view.hasReembarkSpecs}}
+            <div id="reembarkButton" {{action "showReembarkDialog" target="view"}}>
+               <div id="reembarkButtonText">{{i18n stonehearth:ui.shell.select_roster.reembark_button}}</div>
+               <div id="reembarkButtonIcon" />
+            </div>
+         {{/if}}
+
+         <div id="loadCitizensButton" {{action "showLoadRosterDialog" target="view"}}>
+            <div id="loadCitizensText">{{i18n stonehearth_ace:ui.shell.select_roster.load_citizens}}</div>
+            <div id="loadCitizensIcon" />
+         </div>
+
+         <div id="saveCitizensButton" {{action "showSaveRosterDialog" target="view"}}>
+            <div id="saveCitizensText">{{i18n stonehearth_ace:ui.shell.select_roster.save_citizens}}</div>
+            <div id="saveCitizensIcon" />
+         </div>
+
+         <div id="citizens">
+            <div id="citizensRoster" class="roster">
+               {{#each citizen in view.citizensArray}}
+                  {{view "stonehearthCitizenRosterEntry" rosterView=view uriBinding="citizen" index=_view.contentIndex}}
+               {{/each}}
+            </div>
+         </div>
+
+         <div id="customizePanel" {{bind-attr class="view.selectedView.isFrozen:frozen"}}>
+            <div class="lockAllButton" title="{{i18n stonehearth:ui.data.tooltips.customization_lock_all.description}}" {{action "lockAllOptions" target=view.selectedView}} {{bind-attr class="view.selectedView.allOptionsLocked:hidden"}}>
+               <div class="lockAllImg" />
+            </div>
+
+            <img class="selectedPortrait" {{bind-attr src=view.selectedView.portrait}} />
+            <input class="name" onClick="this.select();" type="text" {{bind-attr value=view.selected.unit_name}} {{bind-attr disabled=view.selectedView.isFrozen}}>
+            <a href="#" {{action "toggleLock" "name" target="view.selectedView"}}>
+               <div {{bind-attr class=":nameLock :lockImg view.selectedView.nameLocked:locked"}} />
+            </a>
+
+            <div id="genderButtons">
+               <div id="female" {{action "setGender" "female" target=view.selectedView}} {{bind-attr class=view.selectedView.female}} />
+               <div id="male" {{action "setGender" "male" target=view.selectedView}} {{bind-attr class=view.selectedView.male}} />
+            </div>
+
+            <div id="randomize" {{action "regenerateCitizenAppearance" target=view.selectedView}}>
+               <div id="rerollAppearanceDice" />
+               <div id="randomizeText">{{i18n stonehearth:ui.shell.select_roster.randomize}}</div>
+            </div>
+
+            <div id="customizeButtons">
+               <div id="hairStyle" class="indexButton" {{bind-attr locked=view.selectedView.hairStyleLocked}}>
+                  <a href="#" {{action "toggleLock" "customization" "head_hair" target="view.selectedView"}}>
+                     <div {{bind-attr class=":customizationLock :lockImg view.selectedView.hairStyleLocked"}} />
+                  </a>
+                  {{view.selectedView.head_hair_index}}
+                  <div class="decrement arrowButton" {{action "changeIndex" "decrement" "head_hair" target=view.selectedView}}></div>
+                  <div class="increment arrowButton" {{action "changeIndex" "increment" "head_hair" target=view.selectedView}}></div>
+                  <div class="customizeLabel">{{i18n stonehearth:ui.shell.select_roster.hair_style}}</div>
+               </div>
+
+               <div id="faceHair" class="indexButton" {{bind-attr locked=view.selectedView.faceHairLocked}}>
+                  <a href="#" {{action "toggleLock" "customization" "face_hair" target="view.selectedView"}}>
+                     <div {{bind-attr class=":customizationLock :lockImg view.selectedView.faceHairLocked"}} />
+                  </a>
+                  {{view.selectedView.face_hair_index}}
+                  <div class="decrement arrowButton" {{action "changeIndex" "decrement" "face_hair" target=view.selectedView}}></div>
+                  <div class="increment arrowButton" {{action "changeIndex" "increment" "face_hair" target=view.selectedView}}></div><div class="customizeLabel">{{i18n stonehearth:ui.shell.select_roster.facial_hair}}</div>
+               </div>
+
+               <div id="skinColor" class="indexButton" {{bind-attr locked=view.selectedView.skinColorLocked}}>
+                  <a href="#" {{action "toggleLock" "customization" "skin_color" target="view.selectedView"}}>
+                     <div {{bind-attr class=":customizationLock :lockImg view.selectedView.skinColorLocked"}} />
+                  </a>
+                  {{view.selectedView.skin_color_index}}
+                  <div class="decrement arrowButton" {{action "changeIndex" "decrement" "skin_color" target=view.selectedView}}></div>
+                  <div class="increment arrowButton" {{action "changeIndex" "increment" "skin_color" target=view.selectedView}}></div><div class="customizeLabel">{{i18n stonehearth:ui.shell.select_roster.skin_color}}</div>
+               </div>
+
+               <div id="hairColor" class="indexButton" {{bind-attr locked=view.selectedView.hairColorLocked}}>
+                  <a href="#" {{action "toggleLock" "customization" "hair_color" target="view.selectedView"}}>
+                     <div {{bind-attr class=":customizationLock :lockImg view.selectedView.hairColorLocked"}} />
+                  </a>
+                  {{view.selectedView.hair_color_index}}
+                  <div class="decrement arrowButton" {{action "changeIndex" "decrement" "hair_color" target=view.selectedView}}></div>
+                  <div class="increment arrowButton" {{action "changeIndex" "increment" "hair_color" target=view.selectedView}}></div><div class="customizeLabel">{{i18n stonehearth:ui.shell.select_roster.hair_color}}</div>
+               </div>
+            </div>
+         </div>
+
+         <div id="traitDescriptions">
+            {{#each view.selectedView.traits itemView="stonehearthTraitItem"}}
+               <div class="traitDescription" {{bind-attr uri=this.uri}}>
+                  <img {{bind-attr src=this.icon}} />
+                  <div class="displayName" />
+                  <div class="description" />
+               </div>
+            {{/each}}
+         </div>
+      </div>
+
+      <button id="acceptRosterButton" class="flat">{{i18n stonehearth:ui.shell.select_roster.accept_roster}}</button>
+   </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="citizenRosterEntry">
+   <div class="selectedBorder" />
+   <img class="portrait" {{bind-attr src=view.portrait}} />
+   <input class="name" onClick="this.select();" type="text" {{bind-attr value=view.model.unit_name}} {{bind-attr disabled=view.isFrozen}}>
+   <a href="#" {{action "unlockAllOptions" target="view"}}>
+      <div {{bind-attr class=":lockImg view.anyOptionLocked:locked:hidden"}} />
+   </a>
+   {{#if view.isFrozen}}
+   {{else}}
+      <div class="rerollCitizenDice" {{action "regenerateCitizenStatsAndAppearance" target="view"}} />
+   {{/if}}
+   <div class="stats">
+      <div class="statsImage" />
+      <div class="statsLabels">
+         <div id="mind" class="stat">
+            <div class="statValue">{{view.model.stonehearth:attributes.attributes.mind.user_visible_value}}</div>
+            <div class="whiteBlackOutline label">{{i18n stonehearth:ui.data.tooltips.mind.display_name}}</div>
+         </div>
+         <div id="body" class="stat">
+            <div class="statValue">{{view.model.stonehearth:attributes.attributes.body.user_visible_value}}</div>
+            <div class="whiteBlackOutline label">{{i18n stonehearth:ui.data.tooltips.body.display_name}}</div>
+         </div>
+         <div id="spirit" class="stat">
+            <div class="statValue">{{view.model.stonehearth:attributes.attributes.spirit.user_visible_value}}</div>
+            <div class="whiteBlackOutline label">{{i18n stonehearth:ui.data.tooltips.spirit.display_name}}</div>
+         </div>
+      </div>
+      <div class="lineSeparator" />
+   </div>
+
+   <div id="traits">
+      {{#each view.traits itemView="stonehearthTraitItem"}}
+         <div class="item" {{bind-attr uri=this.uri}}>
+            <img {{bind-attr src=this.icon}} />
+         </div>
+      {{/each}}
+   </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthReembarkChoice">
+   <div id="stonehearthReembarkChoice" class="gui">
+      <div class="window">
+         <div class="title">
+            {{i18n stonehearth:ui.shell.select_roster.reembark_title}}
+            <div class="closeButton"></div>
+         </div>
+
+         <div class="downSection">
+            {{#each spec in view.reembarkSpecsArray}}
+               <div class="row" {{bind-attr data-id="spec.id"}}>
+                  <div class="townName">{{spec.name}}</div>
+                  <ul class="citizens">
+                     {{#each citizen in spec.citizens}}
+                        <li>
+                           <img class="jobIcon" {{bind-attr src="citizen.job_icon"}} />
+                           <span class="citizenName">{{citizen.name}}</span>
+                        </li>
+                     {{/each}}
+                  </ul>
+                  <div class="items">
+                     {{#each icon in spec.item_icons}}
+                        <img class="itemIcon" {{bind-attr src="icon"}} />
+                     {{/each}}
+                  </div>
+                  {{#if spec.recipeCount}}
+                     <div class="recipes">{{spec.recipeCount}} {{i18n stonehearth:ui.shell.select_roster.recipes_label}}</div>
+                  {{/if}}
+               </div>
+            {{/each}}
+         </div>
+
+         <div id="buttons">
+             <a href="#" {{action "delete" target="view"}} class="left">
+                <button class="red">
+                  {{i18n stonehearth:ui.shell.select_roster.delete_crew}}
+                </button>
+             </a>
+             <a href="#" {{action "cancel" target="view"}} class="right">
+               <button>
+                  {{i18n stonehearth:ui.shell.select_roster.cancel_crew}}
+               </button>
+             </a>
+             <a href="#" {{action "select" target="view"}} class="right">
+                <button>
+                  {{i18n stonehearth:ui.shell.select_roster.select_crew}}
+                </button>
+             </a>
+          </div>
+      </div>
+   </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthStartingRosterChoice">
+   <div id="stonehearthStartingRosterChoice" class="gui">
+      <div class="window">
+         <div class="title">
+            {{i18n stonehearth_ace:ui.shell.select_roster.roster_title}}
+            <div class="closeButton"></div>
+         </div>
+
+         <div class="downSection">
+            {{#each roster in view.startingRostersArray}}
+               <div class="row" {{bind-attr data-id="roster.id"}}>
+                  <div class="rosterName">{{roster.name}}</div>
+                  <ul class="citizens">
+                     {{#each citizen in roster.citizens}}
+                        <li>
+                           <span class="citizenStats">(<span class="mind">{{citizen.attributes.mind}}</span>/<span class="body">{{citizen.attributes.body}}</span>/<span class="spirit">{{citizen.attributes.spirit}}</span>)</span>
+                           {{#each trait_icon in citizen.trait_icons}}
+                              <img class="traitIcon" {{bind-attr src="trait_icon"}} />
+                           {{/each}}
+                           <span class="citizenName">{{citizen.name}}</span>
+                        </li>
+                     {{/each}}
+                  </ul>
+               </div>
+            {{/each}}
+         </div>
+
+         <div id="buttons">
+             <a href="#" {{action "delete" target="view"}} class="left">
+                <button class="red">
+                  {{i18n stonehearth_ace:ui.shell.select_roster.delete_roster}}
+                </button>
+             </a>
+             <a href="#" {{action "cancel" target="view"}} class="right">
+               <button>
+                  {{i18n stonehearth_ace:ui.shell.select_roster.cancel_roster}}
+               </button>
+             </a>
+             <a href="#" {{action "select" target="view"}} class="right">
+                <button>
+                  {{i18n stonehearth_ace:ui.shell.select_roster.select_roster}}
+                </button>
+             </a>
+          </div>
+      </div>
+   </div>
+</script>

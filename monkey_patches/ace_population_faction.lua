@@ -334,4 +334,10 @@ function AcePopulationFaction:get_parties()
    return self._sv.parties
 end
 
+function AcePopulationFaction:reconsider_all_individual_party_commands()
+   for _, party in pairs(self._sv.parties) do
+      stonehearth.combat_server_commands:reconsider_all_individual_party_commands(party)
+   end
+end
+
 return AcePopulationFaction
