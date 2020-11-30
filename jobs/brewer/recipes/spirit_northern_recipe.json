@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.spirit_northern_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.spirit_northern_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.spirit_northern_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/spirit_northern/spirit_northern/spirit_northern.png",
+   "level_requirement": 5,
+   "workshop": "stonehearth_ace:brewer:distillery",
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:sweet_potato:sweet_potato_basket",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:spirit_northern"
+      }
+   ]
+}

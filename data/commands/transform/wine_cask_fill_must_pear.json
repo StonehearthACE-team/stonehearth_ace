@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "wine_cask_fill_must_pear",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.wine_cask_fill_must_pear.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.wine_cask_fill_must_pear.description)",
+   "default_enabled": true,
+   "ordinal": 92,
+   "icon": "file(wine_cask_fill_must_pear.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "wine_pear"
+   ]
+}

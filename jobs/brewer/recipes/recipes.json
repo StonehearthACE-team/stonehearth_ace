@@ -57,6 +57,24 @@
             },
             "must_berry": {
                "recipe": "file(must_berry_recipe.json)"
+            },
+            "must_date": {
+               "recipe": "file(must_date_recipe.json)"
+            },
+            "must_apple": {
+               "recipe": "file(must_apple_recipe.json)"
+            },
+            "must_plum": {
+               "recipe": "file(must_plum_recipe.json)"
+            },
+            "must_prickly_pear": {
+               "recipe": "file(must_prickly_pear_recipe.json)"
+            },
+            "must_pear": {
+               "recipe": "file(must_pear_recipe.json)"
+            },
+            "must_cherry": {
+               "recipe": "file(must_cherry_recipe.json)"
             }
          }
       },
@@ -73,6 +91,18 @@
             "juice_prickly_pear": {
                "recipe": "file(juice_prickly_pear_recipe.json)"
             },
+            "juice_apple": {
+               "recipe": "file(juice_apple_recipe.json)"
+            },
+            "juice_date": {
+               "recipe": "file(juice_date_recipe.json)"
+            },
+            "juice_pear": {
+               "recipe": "file(juice_pear_recipe.json)"
+            },
+            "juice_plum": {
+               "recipe": "file(juice_plum_recipe.json)"
+            },
             "juice_watermelon": {
                "recipe": "file(juice_watermelon_recipe.json)"
             },
@@ -81,6 +111,15 @@
             },
             "juice_heirbloom": {
                "recipe": "file(juice_heirbloom_recipe.json)"
+            },
+            "almond_milk": {
+               "recipe": "file(almond_milk_recipe.json)"
+            },
+            "clarea_water": {
+               "recipe": "file(clarea_water_recipe.json)"
+            },
+            "sage_water": {
+               "recipe": "file(sage_water_recipe.json)"
             }
          }
       },
@@ -105,14 +144,8 @@
             },
             "smoothie": {
                "recipe": "file(smoothie_recipe.json)"
-            }
-         }
-      },
-      "alcoholic_drinks": {
-         "ordinal": 50,
-         "name": "i18n(stonehearth_ace:jobs.brewer.recipes.alcoholic_drinks_name)",
-         "recipes": {
-            "spirit": {
+            },
+				"spirit": {
                "recipe": "file(spirit_recipe.json)"
             },
             "spirit_fruit": {
@@ -124,13 +157,22 @@
             "spirit_hearth": {
                "recipe": "file(spirit_hearth_recipe.json)"
             },
+            "spirit_sugar": {
+               "recipe": "file(spirit_sugar_recipe.json)"
+            }
+         }
+      },
+      "serving_vessels": {
+         "ordinal": 50,
+         "name": "i18n(stonehearth_ace:jobs.brewer.recipes.serving_vessels_name)",
+         "recipes": {         
             "beer_serving_keg": {
                "recipe": "file(beer_serving_keg_recipe.json)"
             },
 				"ale_serving_keg": {
                "recipe": "file(ale_serving_keg_recipe.json)"
             },
-				"unique_alcoholic_drink": {
+				"beer_buttered": {
                "recipe": "file(beer_buttered_serving_keg_recipe.json)"
             }
          }

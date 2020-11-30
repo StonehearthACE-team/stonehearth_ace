@@ -1,0 +1,60 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(spirit_sugar.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.09
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 10
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "fiddle",
+         "drink": "stonehearth_ace:drink:spirit_sugar:spirit_sugar_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 10,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.spirit_sugar.spirit_sugar.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.spirit_sugar.spirit_sugar.description)",
+         "icon": "file(spirit_sugar.png)",
+         "is_item": true,
+         "category": "drink",
+         "material_tags": [
+            "drink_container",
+            "prepared_drink",
+            "spirit_sugar",
+            "alcoholic",
+            "stockpile_prepared_drink",
+            "night_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

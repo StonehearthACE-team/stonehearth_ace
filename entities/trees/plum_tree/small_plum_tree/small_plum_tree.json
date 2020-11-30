@@ -9,19 +9,19 @@
                   "type": "one_of",
                   "items": [
                      "file(small_plum_tree.qb)",
-                     "file(small_plum_tree_2.qb)"
+                     "file(small_plum_tree_2.qb)",
+                     "file(small_plum_tree_3.qb)"
                   ]
                }
             ]
          },
-         "spring": {
+         "summer": {
             "models": [
                {
                   "type": "one_of",
                   "items": [
-                     "file(small_plum_tree_spring.qb)",
-                     "file(small_plum_tree_spring_2.qb)",
-                     "file(small_plum_tree_spring_3.qb)"
+                     "file(small_plum_tree_summer.qb)",
+                     "file(small_plum_tree_summer_2.qb)"
                   ]
                }
             ]
@@ -51,16 +51,16 @@
       },
       "stonehearth:seasonal_model_switcher": {
          "*": {
-            "spring": "spring",
-            "summer": "default",
+            "spring": "default",
+            "summer": "summer",
             "autumn": "autumn",
             "winter": "winter"
          },
-         "stonehearth:biome:temperate": {
-            "spring": "spring",
-            "summer": "default",
+         "stonehearth:biome:desert": {
+            "spring": "default",
+            "summer": "summer",
             "autumn": "autumn",
-            "winter": "winter"
+            "winter": "autumn"
          }
       },
       "stonehearth:resource_node": {

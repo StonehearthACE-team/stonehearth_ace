@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.spirit_sugar_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.spirit_sugar_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.spirit_sugar_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/spirit_sugar/spirit_sugar/spirit_sugar.png",
+   "level_requirement": 5,
+   "workshop": "stonehearth_ace:brewer:distillery",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:malted_grains",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:food:sugar:sugarbell_basket",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:spirit_sugar"
+      }
+   ]
+}

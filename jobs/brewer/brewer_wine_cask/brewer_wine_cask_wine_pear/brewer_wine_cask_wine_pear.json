@@ -1,0 +1,49 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_wine_cask",
+      "file(brewer_wine_cask_wine_pear_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(brewer_wine_cask_wine_pear_ghost.json)",
+         "iconic_form": "file(brewer_wine_cask_wine_pear_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "destination": {
+         "adjacency_flags": [
+            "front"
+         ]
+      },
+      "stonehearth_ace:stump": {},
+      "stonehearth:resource_node": {
+         "category": "brewing",
+         "resource": "stonehearth_ace:drink:wine_pear",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_prepared_drink_overlay_effect",
+         "harvester_effect": "fiddle",
+         "durability": 2
+      }
+   },
+   "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:brewer:wine_cask:empty",
+         "apply_quality": false,
+         "transform_option_key": "wine_pear"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 63,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 10
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}

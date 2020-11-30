@@ -1,0 +1,38 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "consumption_serenity",
+   "unique_in_category": true,
+   "rank": 2,
+   "display_name": "i18n(stonehearth_ace:data.buffs.serenity.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.serenity.description)",
+   "icon": "file(serenity_buff.png)",
+   "duration": "6h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "curiosity": {
+         "add": 7
+      },
+      "courage": {
+         "add": 7
+      },
+      "compassion": {
+         "add": 7
+      },
+      "inspiration": {
+         "add": 5
+      },
+      "multiplicative_work_rate_modifier": {
+         "add": 0.2
+      }
+   },
+   "script": "stonehearth_ace:buff_scripts:buff_combination",
+   "script_info": {
+      "check_for": [
+         "stonehearth_ace:buffs:consumption:cheese_flavors"
+      ],
+      "combines_into": [
+         "stonehearth_ace:buffs:consumption:elevated_character"
+      ]
+   }
+}

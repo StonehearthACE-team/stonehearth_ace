@@ -20,6 +20,30 @@
 					"recipe" : "file(rc_gruit_recipe.json)"
 				}
 			}
-      }
+      },
+      "simple_drinks": {
+         "recipes": {
+				"mixintypes": {
+					"sage_water": "remove"
+				},
+            "juice_golden_gourd": {
+               "recipe": "file(juice_golden_gourd_recipe.json)"
+            }
+         }
+      },
+      "prepared_drinks": {
+         "recipes": {
+            "liqueur_almond": {
+               "recipe": "file(liqueur_almond_recipe.json)"
+            }
+         }
+      },
+      "serving_vessels": {
+         "recipes": {
+				"mixintypes": {
+					"beer_buttered": "remove"
+				}
+			}
+		}
    }
 }

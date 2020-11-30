@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.liqueur_almond_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.liqueur_almond_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.liqueur_almond_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/liqueur_almond/liqueur_almond/liqueur_almond.png",
+   "level_requirement": 5,
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:spirit",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth_ace:food:almond:almond_basket",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:liqueur_almond"
+      }
+   ]
+}

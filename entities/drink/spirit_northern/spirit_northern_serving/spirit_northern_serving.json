@@ -1,0 +1,45 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(spirit_northern_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 95
+         },
+         "default": {
+            "satisfaction": 80
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:jolly_time",
+            "stonehearth_ace:buffs:consumption:light_headed",
+            "stonehearth_ace:buffs:consumption:light_headed"
+         ],
+         "quality": 6,
+         "effect_loops": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.spirit_northern.spirit_northern_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "drink",
+            "spirit_northern_serving",
+            "alcoholic",
+            "night_time"
+         ],
+         "subject_override": "stonehearth_ace:drink:spirit_northern"
+      }
+   }
+}

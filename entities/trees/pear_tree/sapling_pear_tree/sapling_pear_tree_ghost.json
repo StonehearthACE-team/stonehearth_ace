@@ -13,22 +13,22 @@
                }
             ]
          },
+         "spring": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(sapling_pear_tree_spring.qb)"
+                  ]
+               }
+            ]
+         },
          "autumn": {
             "models": [
                {
                   "type": "one_of",
                   "items": [
                      "file(sapling_pear_tree_autumn.qb)"
-                  ]
-               }
-            ]
-         },
-         "summer": {
-            "models": [
-               {
-                  "type": "one_of",
-                  "items": [
-                     "file(sapling_pear_tree_summer.qb)"
                   ]
                }
             ]
@@ -46,16 +46,16 @@
       },
       "stonehearth:seasonal_model_switcher": {
          "*": {
-            "spring": "default",
-            "summer": "summer",
+            "spring": "spring",
+            "summer": "default",
             "autumn": "autumn",
             "winter": "winter"
          },
-         "stonehearth_ace:biome:highlands": {
-            "spring": "default",
-            "summer": "summer",
-            "autumn": "autumn",
-            "winter": "winter"
+         "stonehearth:biome:desert": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "default",
+            "winter": "autumn"
          }
       },
       "render_info": {

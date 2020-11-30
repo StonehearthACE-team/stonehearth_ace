@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(juice_golden_gourd_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 65
+         },
+         "default": {
+            "satisfaction": 50
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:refreshed_belly"
+         ],
+         "quality": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.juice_golden_gourd.juice_golden_gourd_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "drink",
+            "juice_golden_gourd_serving",
+            "juice",
+            "morning_time",
+            "afternoon_time",
+            "refreshing"
+         ],
+         "subject_override": "stonehearth_ace:drink:juice_golden_gourd"
+      }
+   }
+}

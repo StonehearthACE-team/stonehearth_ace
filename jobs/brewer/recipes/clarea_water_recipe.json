@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 22,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.clarea_water_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.clarea_water_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.clarea_water_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/clarea_water/clarea_water/clarea_water.png",
+   "level_requirement": 3,
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ingredients": [
+		{
+         "material": "honey cooking_ingredient",
+         "count": 1
+      },
+		{
+         "material": "herb aromatic resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:clarea_water"
+      }
+   ]
+}

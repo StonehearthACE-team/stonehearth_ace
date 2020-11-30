@@ -1,0 +1,60 @@
+{
+   "mixins": "stonehearth_ace:mixins:drink_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(almond_milk.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(almond_milk_spoiling.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "fiddle",
+         "drink": "stonehearth_ace:drink:almond_milk:almond_milk_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 6,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.almond_milk.almond_milk.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.almond_milk.almond_milk.description)",
+         "icon": "file(almond_milk.png)",
+         "is_item": true,
+         "category": "drink",
+         "material_tags": [
+            "drink_container",
+            "raw_drink",
+            "almond_milk",
+            "milk",
+            "stockpile_drink",
+            "morning_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

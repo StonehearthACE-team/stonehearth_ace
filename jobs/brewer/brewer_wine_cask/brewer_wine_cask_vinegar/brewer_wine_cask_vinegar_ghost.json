@@ -1,0 +1,22 @@
+{
+   "mixins": [
+      "stonehearth:mixins:placed_object",
+      "stonehearth_ace:mixins:brewer_wine_cask:ghost"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(brewer_wine_cask_vinegar.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.brewer.brewer_wine_cask_vinegar.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.brewer.brewer_wine_cask_vinegar.description)",
+         "icon": "file(brewer_wine_cask_vinegar.png)"
+      }
+   }
+}
