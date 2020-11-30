@@ -20,7 +20,7 @@
                {{#if view.plantedCropData}}
                <div class="cropDescription">
                   <div class="name">{{i18n_key view.plantedCropData.display_name}}</div>
-                  <p>{{i18n_key view.plantedCropData.description}}</p>
+                  <p>{{{i18n_key view.plantedCropData.description}}}</p>
                </div>
                {{/if}}
             </td></tr>
@@ -66,7 +66,7 @@
                         <div class="info"}}>
                            <div class="qualityDiv"></div>
                            <div class="name">{{this.display_name}}</div>
-                           <div class="description">{{this.description}}</div>
+                           <div class="description">{{{this.description}}}</div>
                         </div>
                      </td>
                   </tr>
