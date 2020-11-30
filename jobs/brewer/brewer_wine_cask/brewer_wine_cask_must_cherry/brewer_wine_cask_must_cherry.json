@@ -1,0 +1,43 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_wine_cask",
+      "file(brewer_wine_cask_must_cherry_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(brewer_wine_cask_must_cherry_ghost.json)",
+         "iconic_form": "file(brewer_wine_cask_must_cherry_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "stonehearth:evolve": {},
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:wine_cask_bubbles"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:brewer:wine_cask:wine_cherry",
+         "evolve_effect": "stonehearth:effects:item_created",
+         "evolve_time": "5d+12h",
+         "auto_harvest": true
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 24,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}

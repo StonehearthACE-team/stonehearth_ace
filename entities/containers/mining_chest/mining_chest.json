@@ -38,10 +38,7 @@
             "connectors": {
                "mining_region": {
                   "region_component": "region_collision_shape",
-                  "extrusions": {
-                     "x": [1, 1],
-                     "z": [1, 1]
-                  },
+                  "extrusions": { "x": [ 1, 1 ], "z": [ 1, 1 ] },
                   "max_connections": 1
                }
             },
@@ -54,10 +51,8 @@
          "value_in_gold": 4,
          "rarity": "common",
          "shop_info": {
-            "buyable": true,
-            "sellable": true,
-            "shopkeeper_level": 2,
-            "shopkeeper_type": "caravan"
+            "buyable": false,
+            "sellable": true
          }
       },
       "stonehearth:appeal": {

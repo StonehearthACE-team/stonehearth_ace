@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 27,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.juice_golden_gourd_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.juice_golden_gourd_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.juice_golden_gourd_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/juice_golden_gourd/juice_golden_gourd/juice_golden_gourd.png",
+   "level_requirement": 2,
+   "workshop": "stonehearth_ace:brewer:workbench",
+   "ingredients": [
+		{
+         "uri": "stonehearth:food:golden_gourd:golden_gourd_basket",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:juice_golden_gourd"
+      }
+   ]
+}

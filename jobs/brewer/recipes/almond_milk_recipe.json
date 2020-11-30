@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.almond_milk_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.almond_milk_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.almond_milk_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/almond_milk/almond_milk/almond_milk.png",
+   "level_requirement": 3,
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ingredients": [
+		{
+         "uri": "stonehearth_ace:food:almond:almond_basket",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth_ace:trees:date:seed",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:almond_milk"
+      }
+   ]
+}

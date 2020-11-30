@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(clarea_water_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 70
+         },
+         "default": {
+            "satisfaction": 55
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:refreshed_belly",
+            "stonehearth_ace:buffs:consumption:regeneration:minor"
+         ],
+         "quality": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.clarea_water.clarea_water_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "drink",
+            "clarea_water_serving",
+            "afternoon_time",
+            "refreshing"
+         ],
+         "subject_override": "stonehearth_ace:drink:clarea_water"
+      }
+   }
+}

@@ -13,12 +13,12 @@
                }
             ]
          },
-         "spring": {
+         "summer": {
             "models": [
                {
                   "type": "one_of",
                   "items": [
-                     "file(sapling_plum_tree_spring.qb)"
+                     "file(sapling_plum_tree_summer.qb)"
                   ]
                }
             ]
@@ -46,16 +46,16 @@
       },
       "stonehearth:seasonal_model_switcher": {
          "*": {
-            "spring": "spring",
-            "summer": "default",
+            "spring": "default",
+            "summer": "summer",
             "autumn": "autumn",
             "winter": "winter"
          },
-         "stonehearth:biome:arctic": {
-            "spring": "spring",
-            "summer": "default",
+         "stonehearth:biome:desert": {
+            "spring": "default",
+            "summer": "summer",
             "autumn": "autumn",
-            "winter": "winter"
+            "winter": "autumn"
          }
       },
       "render_info": {

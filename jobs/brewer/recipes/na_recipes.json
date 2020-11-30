@@ -20,6 +20,30 @@
 					"recipe" : "file(na_gruit_recipe.json)"
 				}
 			}
-      }
+      },
+      "simple_drinks": {
+         "recipes": {
+				"mixintypes": {
+					"sage_water": "remove"
+				},
+            "juice_sweet_potato": {
+               "recipe": "file(juice_sweet_potato_recipe.json)"
+            }
+         }
+      },
+      "prepared_drinks": {
+         "recipes": {
+            "spirit_northern": {
+               "recipe": "file(spirit_northern_recipe.json)"
+            }
+         }
+      },
+      "serving_vessels": {
+         "recipes": {
+				"mixintypes": {
+					"beer_buttered": "remove"
+				}
+			}
+		}
    }
 }

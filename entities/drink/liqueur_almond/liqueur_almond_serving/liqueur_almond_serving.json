@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(liqueur_almond_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 85,
+            "food_satisfaction": 15
+         },
+         "default": {
+            "satisfaction": 70,
+            "food_satisfaction": 10
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time",
+            "stonehearth_ace:buffs:consumption:light_headed",
+            "stonehearth_ace:buffs:consumption:light_headed"
+         ],
+         "quality": 6,
+         "effect_loops": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.liqueur_almond.liqueur_almond_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "drink",
+            "liqueur_almond_serving",
+            "alcoholic",
+            "night_time"
+         ],
+         "subject_override": "stonehearth_ace:drink:liqueur_almond"
+      }
+   }
+}

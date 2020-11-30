@@ -1278,6 +1278,10 @@
                "merry_time_frostfeast": {
                   "display_name": "Frostfeasting",
                   "tooltip": "Ahh! What a joyous time of the year! Nothing like decorating your home, gathering around delicious food and enjoying it with your loved ones..."
+               },
+               "elevated_character": {
+                  "display_name": "Elevated character",
+                  "tooltip": "There's something really special about the taste of wine and the taste of cheese when experienced together... I feel... Greater."
                }
             },
             "traits": {
@@ -2207,6 +2211,34 @@
             "cheese_vat_fill_cream": {
                "display_name": "Make Sour Cream",
                "description": "Order the Shepherd to pour a bowl of cream in this cheese vat to let it ferment into sour cream after a day or two."
+            },
+            "wine_cask_fill_must_berry": {
+               "display_name": "Produce Berry Wine",
+               "description": "Order the Brewer to fill this fermenting vessel with berry must! This Wine Cask will continue producing Berry Wine unless a new command is given."
+            },
+            "wine_cask_fill_must_apple": {
+               "display_name": "Produce Cider",
+               "description": "Order the Brewer to fill this fermenting vessel with apple must! This Wine Cask will continue producing Cider unless a new command is given."
+            },
+            "wine_cask_fill_must_cherry": {
+               "display_name": "Produce Cherry Wine",
+               "description": "Order the Brewer to fill this fermenting vessel with cherry must! This Wine Cask will continue producing Cherry Wine unless a new command is given."
+            },
+            "wine_cask_fill_must_date": {
+               "display_name": "Produce Date Wine",
+               "description": "Order the Brewer to fill this fermenting vessel with date must! This Wine Cask will continue producing Date Wine unless a new command is given."
+            },
+            "wine_cask_fill_must_pear": {
+               "display_name": "Produce Perry",
+               "description": "Order the Brewer to fill this fermenting vessel with pear must! This Wine Cask will continue producing Perry unless a new command is given."
+            },
+            "wine_cask_fill_must_plum": {
+               "display_name": "Produce Plum Wine",
+               "description": "Order the Brewer to fill this fermenting vessel with plum must! This Wine Cask will continue producing Plum Wine unless a new command is given."
+            },
+            "wine_cask_fill_must_prickly_pear": {
+               "display_name": "Produce Prickly Pear Wine",
+               "description": "Order the Brewer to fill this fermenting vessel with prickly pear must! This Wine Cask will continue producing Prickly Pear Wine unless a new command is given."
             }
          },
          "slaughter": {
@@ -3091,6 +3123,22 @@
          "regeneration_major": {
             "display_name": "Major Health Regeneration",
             "description": "Recovering 9% of the maximum health every 20 minutes for 4 hours"
+         },
+         "serenity_minor": {
+            "display_name": "Minor Serenity",
+            "description": "A good wine can help you focus and feel good. Curiosity, Courage and Compassion are slightly increased.<ul><li>Crafting speed is increased by 12%</li><li>Crafting has a very slightly increased quality chance</li><li>This buff can be enhanced by consuming cheese, turning into a new buff, \"Elevated Character\"</li></ul>"
+         },
+         "cheese_flavors": {
+            "display_name": "Cheese Flavors",
+            "description": "Cheese is amazing, cheese is life. Willpower, Stamina and Muscle are increased.<ul><li>Healing received is increased by 50%</li><li>This buff can be enhanced by consuming wine, turning into a new buff, \"Elevated Character\"</li></ul>"
+         },
+         "serenity": {
+            "display_name": "Serenity",
+            "description": "Wine is really good and special, bringing me to a point of joy and balance. Curiosity, Courage and Compassion are increased.<ul><li>Crafting speed is increased by 20%</li><li>Crafting has a slightly increased quality chance</li><li>This buff can be enhanced by consuming cheese, turning into a new buff, \"Elevated Character\"</li></ul>"
+         },
+         "elevated_character": {
+            "display_name": "Elevated Character",
+            "description": "The sublime experience and indescribable flavors of having both cheese and wine has elevated me beyond my own limits! Mind, Spirit and Body are all increased by one.<ul><li>Crafting speed is increased by 35%</li><li>Healing received is increased by 80%</li></ul>"
          }
       },
       "loadouts": {
@@ -3916,7 +3964,7 @@
                "description": "Domesticate Apple trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
-				"apple_tree_seeds_2_recipe": {
+            "apple_tree_seeds_2_recipe": {
                "recipe_name": "Apple Cores",
                "description": "Trade or gift it to allow other cultures to cultivate apple trees!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -3926,7 +3974,7 @@
                "description": "Domesticate Date palms and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
-				"date_tree_seeds_2_recipe": {
+            "date_tree_seeds_2_recipe": {
                "recipe_name": "Dried Dates",
                "description": "Trade or gift it to allow other cultures to cultivate date palms!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -3936,7 +3984,7 @@
                "description": "Domesticate Pear trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
-				"pear_tree_seeds_2_recipe": {
+            "pear_tree_seeds_2_recipe": {
                "recipe_name": "Pear Cores",
                "description": "Trade or gift it to allow other cultures to cultivate pear trees!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -3946,7 +3994,7 @@
                "description": "Domesticate Plum trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
-				"plum_tree_seeds_2_recipe": {
+            "plum_tree_seeds_2_recipe": {
                "recipe_name": "Plum Cores",
                "description": "Trade or gift it to allow other cultures to cultivate plum trees!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -3956,7 +4004,7 @@
                "description": "Domesticate Almond trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
-				"almond_tree_seeds_2_recipe": {
+            "almond_tree_seeds_2_recipe": {
                "recipe_name": "Overripe Almonds",
                "description": "Trade or gift it to allow other cultures to cultivate almond trees!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -3966,7 +4014,7 @@
                "description": "Domesticate Chestnut trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
-				"chestnut_tree_seeds_2_recipe": {
+            "chestnut_tree_seeds_2_recipe": {
                "recipe_name": "Overripe Chestnuts",
                "description": "Trade or gift it to allow other cultures to cultivate chestnuts!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -3976,7 +4024,7 @@
                "description": "Domesticate Hazelnut trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
-				"hazelnut_tree_seeds_2_recipe": {
+            "hazelnut_tree_seeds_2_recipe": {
                "recipe_name": "Overripe Hazelnuts",
                "description": "Trade or gift it to allow other cultures to cultivate hazel trees!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -3995,7 +4043,7 @@
                "recipe_name": "Birch Catkins",
                "description": "Domesticate Birch trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },				
+            },
             "yew_tree_seeds_recipe": {
                "recipe_name": "Dried Yew Berries",
                "description": "Domesticate Yew trees and learn how to farm them.",
@@ -6971,7 +7019,7 @@
             "brewing_name": "Preparation",
             "simple_drinks_name": "Simple Drinks",
             "prepared_drinks_name": "Prepared Drinks",
-            "alcoholic_drinks_name": "Alcoholic Beverages",
+            "serving_vessels_name": "Serving Vessels",
             "enhancements_name": "Special Brews",
             "decoration_name": "Decorations",
             "wooden_sign_brewer_recipe": {
@@ -6996,8 +7044,8 @@
             },
             "brewer_wine_cask_recipe": {
                "recipe_name": "Wine Cask",
-               "description": "Using this vessel, the Brewer is able to ferment and age different wines from fruit must.",
-               "flavor": "Aged wines are both valuable commodities and exquisite beverages"
+               "description": "Using this vessel, the Brewer is able to ferment different wines from fruit must.",
+               "flavor": "Wines are both valuable commodities and exquisite beverages"
             },
             "brewer_treading_vat_recipe": {
                "recipe_name": "Treading Vat",
@@ -7036,15 +7084,60 @@
                "description": "Crushed berries with skins and juice. Within a Wine Cask it can be turned into berry wine!",
                "flavor": ""
             },
+            "must_cherry_recipe": {
+               "recipe_name": "Bucket of Cherry Must",
+               "description": "A fragrant mash of cherry juice and skins. Within a Wine Cask it can be turned into cherry wine!",
+               "flavor": ""
+            },
+            "must_prickly_pear_recipe": {
+               "recipe_name": "Bucket of Prickly Pear Must",
+               "description": "A surprisingly sweet and tasty mash. Within a Wine Cask it can be turned into prickly pear wine!",
+               "flavor": "You might want to keep your shoes on for these..."
+            },
+            "must_apple_recipe": {
+               "recipe_name": "Bucket of Apple Must",
+               "description": "Squishy, solid bits of apples and juice. Within a Wine Cask it can be turned into cider!",
+               "flavor": ""
+            },
+            "must_date_recipe": {
+               "recipe_name": "Bucket of Date Must",
+               "description": "Sweet and sticky mash of crushed date fruits. Within a Wine Cask it can be turned into date wine!",
+               "flavor": ""
+            },
+            "must_pear_recipe": {
+               "recipe_name": "Bucket of Pear Must",
+               "description": "A juicy and sweet puree of pears. Within a Wine Cask it can be turned into perry!",
+               "flavor": ""
+            },
+            "must_plum_recipe": {
+               "recipe_name": "Bucket of Plum Must",
+               "description": "Flavorful juice and floating bits of plums. Within a Wine Cask it can be turned into plum wine!",
+               "flavor": ""
+            },
             "spirit_recipe": {
                "recipe_name": "Keg of Malt Spirit",
                "description": "A distilled, moderately strong alcoholic beverage from grains.",
                "flavor": "A bit too dry..."
             },
+            "spirit_sugar_recipe": {
+               "recipe_name": "Keg of Sugar Bomb",
+               "description": "A special, very sweet and strong distilled beverage from malt and sugarbells.",
+               "flavor": "It also somewhat satisfies hunger"
+            },
+            "spirit_northern_recipe": {
+               "recipe_name": "Keg of Northern Spirit",
+               "description": "An unique and appreciated brew from the Northern Alliance that uses sweet potatoes instead of grain.",
+               "flavor": "The land provides everything"
+            },
             "spirit_fruit_recipe": {
                "recipe_name": "Keg of Fruit Spirit",
                "description": "A distilled, moderately strong alcoholic beverage from fruits.",
                "flavor": "Fruity and sweet, a festival favorite!"
+            },
+            "liqueur_almond_recipe": {
+               "recipe_name": "Keg of Almond Liqueuer",
+               "description": "A very refined and traditional Rayya's Children recipe for a luxury beverage.",
+               "flavor": "Particularly good after a great meal"
             },
             "liquor_recipe": {
                "recipe_name": "Keg of Liquor (x3)",
@@ -7096,6 +7189,41 @@
                "description": "A nutritious and refreshing drink recipe that uses fruits and carrots.",
                "flavor": "The best of two worlds"
             },
+            "juice_apple_recipe": {
+               "recipe_name": "Bucket of Apple Juice",
+               "description": "Sweet, red apples turned into a refreshing beverage.",
+               "flavor": ""
+            },
+            "juice_date_recipe": {
+               "recipe_name": "Bucket of Date Juice",
+               "description": "Sweet like caramel and with an exotice flavor. This is a refreshing drink.",
+               "flavor": "Very popular on arid climates"
+            },
+            "juice_pear_recipe": {
+               "recipe_name": "Bucket of Pear Juice",
+               "description": "Not so sweet and not so sour, a perfect match. Definitely refreshing!",
+               "flavor": ""
+            },
+            "juice_plum_recipe": {
+               "recipe_name": "Bucket of Plum Juice",
+               "description": "Sweet with an acidic spark. It's a quite refreshing juice.",
+               "flavor": ""
+            },
+            "juice_golden_gourd_recipe": {
+               "recipe_name": "Bucket of Golden Gourd Juice",
+               "description": "Not the best flavor, but a traditional refreshment in the desert - also quite efficient.",
+               "flavor": "An unique recipe from the Rayya's Children"
+            },
+            "juice_sweet_potato_recipe": {
+               "recipe_name": "Bucket of Sweet Potato Juice",
+               "description": "Hearty and with a mild taste - can definitely keep you up and healthy, though.",
+               "flavor": "An unique recipe from the Northern Alliance"
+            },
+            "sage_water_recipe": {
+               "recipe_name": "Bucket of Sage Water",
+               "description": "Slightly sweet with a hint of spices, this refreshing drink can also help with focus and concentration.",
+               "flavor": "An unique recipe from the Ascendancy"
+            },
             "juice_watermelon_recipe": {
                "recipe_name": "Bucket of Watermelon Juice",
                "description": "Deliciously refreshing juice straight from hearty, ripe watermelons.",
@@ -7105,6 +7233,16 @@
                "recipe_name": "Bucket of Heirbloom Juice",
                "description": "A tasty juice with the peculiar, strong taste of heirbloom fruits.",
                "flavor": ""
+            },
+            "almond_milk_recipe": {
+               "recipe_name": "Bucket of Almond Milk",
+               "description": "Almond Milk is a flavorful yet thinner alternative for dairy milk. Can be drank raw or used as 'Any Milk' in recipes!",
+               "flavor": "Dates are a great sweetener for almond milk"
+            },
+            "clarea_water_recipe": {
+               "recipe_name": "Bucket of Clarea of Water",
+               "description": "Simply spiced honey water, first boiled and then cooled down. Refreshing and reinvigorating!",
+               "flavor": "Goes well with any meal"
             },
             "smoothie_recipe": {
                "recipe_name": "Bucket of Smoothie",
@@ -7175,19 +7313,19 @@
             "description": "Used by the Brewer for fermenting ale and beer."
          },
          "brewer_fermenting_vat_wort": {
-            "display_name": "Fermentation Vat",
+            "display_name": "Fermenting Ale Wort Vat",
             "description": "The pure malt wort is fermenting and will then turn into ale!"
          },
          "brewer_fermenting_vat_beer": {
-            "display_name": "Fermentation Vat",
+            "display_name": "Beer Vat",
             "description": "The beer is ready! It can now be filtered and collected!"
          },
          "brewer_fermenting_vat_ale": {
-            "display_name": "Fermentation Vat",
+            "display_name": "Ale Vat",
             "description": "The ale is ready! It can now be filtered and collected!"
          },
          "brewer_fermenting_vat_wort_gruit": {
-            "display_name": "Fermentation Vat",
+            "display_name": "Fermenting Beer Wort Vat",
             "description": "The bitter and flavorful wort is fermenting. Soon it shall become beer!"
          },
          "brewer_fermenting_carboy_empty": {
@@ -7195,27 +7333,27 @@
             "description": "A ceramic vessel used by the Brewer for producing mead or vinegar."
          },
          "brewer_fermenting_carboy_mead": {
-            "display_name": "Fermentation Carboy",
+            "display_name": "Mead Carboy",
             "description": "The mead is ready and can now be racked into jugs!"
          },
          "brewer_fermenting_carboy_mead_fruit": {
-            "display_name": "Fermentation Carboy",
+            "display_name": "Fruity Mead Carboy",
             "description": "The fruity mead is ready and can now be racked into jugs!"
          },
          "brewer_fermenting_carboy_vinegar": {
-            "display_name": "Fermentation Carboy",
+            "display_name": "Vinegar Carboy",
             "description": "The vinegar is ready and can now be racked into jugs!"
          },
          "brewer_fermenting_carboy_unfermented_mead": {
-            "display_name": "Fermentation Carboy",
+            "display_name": "Fermenting Mead Carboy",
             "description": "The mead is bubbling and warm! It is not ready yet..."
          },
          "brewer_fermenting_carboy_unfermented_mead_fruit": {
-            "display_name": "Fermentation Carboy",
+            "display_name": "Fermenting Fruity Mead Carboy",
             "description": "The fruits are fermenting with all their flavors! It is not ready yet..."
          },
          "brewer_fermenting_carboy_unfermented_vinegar": {
-            "display_name": "Fermentation Carboy",
+            "display_name": "Fermenting Vinegar Carboy",
             "description": "The beverage is undergoing another fermentation! It is not ready yet..."
          },
          "brewer_kettle": {
@@ -7232,15 +7370,79 @@
          },
          "brewer_wine_cask_empty": {
             "display_name": "Empty Wine Cask",
-            "description": "A special cask used by the Brewer for aging wines."
+            "description": "A special cask used by the Brewer for fermenting wines."
          },
          "brewer_fermenting_vat_unfermented_vinegar": {
-            "display_name": "Fermentation Vat",
+            "display_name": "Fermenting Vinegar Vat",
             "description": "The beverage is fermenting once again and will soon turn into vinegar!"
          },
          "brewer_fermenting_vat_vinegar": {
-            "display_name": "Fermentation Vat",
+            "display_name": "Vinegar Vat",
             "description": "The vinegar is ready! It can now be racked into a jug!"
+         },
+         "brewer_wine_cask_unfermented_vinegar": {
+            "description": "The beverage is fermenting once again and will soon turn into vinegar!",
+            "display_name": "Fermenting Vinegar Cask"
+         },
+         "brewer_wine_cask_vinegar": {
+            "display_name": "Vinegar Cask",
+            "description": "The vinegar is ready! It can now be racked into jugs!"
+         },
+         "brewer_wine_cask_must_berry": {
+            "display_name": "Berry Must Cask",
+            "description": "The must is fermenting and the berry wine should be ready in few days..."
+         },
+         "brewer_wine_cask_must_apple": {
+            "display_name": "Apple Must Cask",
+            "description": "The must is fermenting and the cider should be ready in some days..."
+         },
+         "brewer_wine_cask_must_cherry": {
+            "display_name": "Cherry Must Cask",
+            "description": "The must is fermenting and the cherry wine should be ready in few days..."
+         },
+         "brewer_wine_cask_must_date": {
+            "display_name": "Date Must Cask",
+            "description": "The must is fermenting and the date wine should be ready in some days..."
+         },
+         "brewer_wine_cask_must_pear": {
+            "display_name": "Pear Must Cask",
+            "description": "The must is fermenting and the perry should be ready in some days..."
+         },
+         "brewer_wine_cask_must_plum": {
+            "display_name": "Plum Must Cask",
+            "description": "The must is fermenting and the plum wine should be ready in some days..."
+         },
+         "brewer_wine_cask_must_prickly_pear": {
+            "display_name": "Prickly Pear Must Cask",
+            "description": "The must is fermenting and the prickly pear wine should be ready in few days..."
+         },
+         "brewer_wine_cask_wine_apple": {
+            "display_name": "Cider Cask",
+            "description": "The wine is finally ready! It can now be racked into jugs!"
+         },
+         "brewer_wine_cask_wine_berry": {
+            "display_name": "Berry Wine Cask",
+            "description": "The wine is finally ready! It can now be racked into jugs!"
+         },
+         "brewer_wine_cask_wine_cherry": {
+            "display_name": "Cherry Wine Cask",
+            "description": "The wine is finally ready! It can now be racked into jugs!"
+         },
+         "brewer_wine_cask_wine_date": {
+            "display_name": "Date Wine Cask",
+            "description": "The wine is finally ready! It can now be racked into jugs!"
+         },
+         "brewer_wine_cask_wine_pear": {
+            "display_name": "Perry Cask",
+            "description": "The wine is finally ready! It can now be racked into jugs!"
+         },
+         "brewer_wine_cask_wine_plum": {
+            "display_name": "Plum Wine Cask",
+            "description": "The wine is finally ready! It can now be racked into jugs!"
+         },
+         "brewer_wine_cask_wine_prickly_pear": {
+            "display_name": "Prickly Pear Wine Cask",
+            "description": "The wine is finally ready! It can now be racked into jugs!"
          }
       },
       "professional_beekeeping_hat": {
@@ -7971,7 +8173,7 @@
             "display_name": "Almond Tree",
             "description": "Can be grown for its nuts and harvested for wood logs and boughs"
          },
-			"apple_tree_crop": {
+         "apple_tree_crop": {
             "growth_stage": {
                "000": {
                   "name": "Apple Tree Seed",
@@ -7993,7 +8195,7 @@
             "display_name": "Apple Tree",
             "description": "Can be grown for its fruits and harvested for wood logs and boughs"
          },
-			"date_tree_crop": {
+         "date_tree_crop": {
             "growth_stage": {
                "000": {
                   "name": "Date Palm Seed",
@@ -8015,7 +8217,7 @@
             "display_name": "Date Palm",
             "description": "Can be grown for its fruits and harvested for wood logs"
          },
-			"pear_tree_crop": {
+         "pear_tree_crop": {
             "growth_stage": {
                "000": {
                   "name": "Pear Tree Seed",
@@ -8037,7 +8239,7 @@
             "display_name": "Pear Tree",
             "description": "Can be grown for its fruits and harvested for wood logs and boughs"
          },
-			"plum_tree_crop": {
+         "plum_tree_crop": {
             "growth_stage": {
                "000": {
                   "name": "Plum Tree Seed",
@@ -14630,6 +14832,177 @@
                "display_name": "Cup of Pine Needle Tea",
                "description": "Hmmm... The flavors of the woods..."
             }
+         },
+         "juice_apple": {
+            "juice_apple": {
+               "display_name": "Apple Juice",
+               "description": "A refreshing and sweet beverage made from apples."
+            },
+            "juice_apple_serving": {
+               "display_name": "Cup of Apple Juice"
+            }
+         },
+         "juice_date": {
+            "juice_date": {
+               "display_name": "Date Juice",
+               "description": "A sweet, caramelly juice that is also very refreshing."
+            },
+            "juice_date_serving": {
+               "display_name": "Cup of Date Juice"
+            }
+         },
+         "juice_golden_gourd": {
+            "juice_golden_gourd": {
+               "display_name": "Golden Gourd Juice",
+               "description": "Slightly bitter, somewhat tangy... But a refreshment nonetheless!"
+            },
+            "juice_golden_gourd_serving": {
+               "display_name": "Cup of Golden Gourd Juice"
+            }
+         },
+         "juice_pear": {
+            "juice_pear": {
+               "display_name": "Pear Juice",
+               "description": "Slightly sweet with a hint of acid, a very refreshing beverage."
+            },
+            "juice_pear_serving": {
+               "display_name": "Cup of Pear Juice"
+            }
+         },
+         "juice_plum": {
+            "juice_plum": {
+               "display_name": "Plum Juice",
+               "description": "Slightly bittersweet but quite flavorful and refreshing."
+            },
+            "juice_plum_serving": {
+               "display_name": "Cup of Plum Juice"
+            }
+         },
+         "juice_sweet_potato": {
+            "juice_sweet_potato": {
+               "display_name": "Sweet Potato Juice",
+               "description": "Not as sweet as its name suggests, however it can be quite refreshing."
+            },
+            "juice_sweet_potato_serving": {
+               "display_name": "Cup of Sweet Potato Juice"
+            }
+         },
+         "sage_water": {
+            "sage_water": {
+               "display_name": "Sage Water",
+               "description": "Very refreshing and inspiring, with a hint of minty flavors."
+            },
+            "sage_water_serving": {
+               "display_name": "Goblet of Sage Water"
+            }
+         },
+         "clarea_water": {
+            "clarea_water": {
+               "display_name": "Clarea of Water",
+               "description": "Spiced honey water, better served cold. Refreshing and reinvigorating!"
+            },
+            "clarea_water_serving": {
+               "display_name": "Cup of Clarea of Water"
+            }
+         },
+         "almond_milk": {
+            "almond_milk": {
+               "display_name": "Almond Milk",
+               "description": "A flavorful but thinner alternative to dairy milk. Can be drank or used in recipes!"
+            },
+            "almond_milk_serving": {
+               "display_name": "Cup of Almond Milk"
+            }
+         },
+         "spirit_sugar": {
+            "spirit_sugar": {
+               "display_name": "Sugar Bomb",
+               "description": "A sweet brew extracted from sugarbells. Very satisfying but makes them tipsy!"
+            },
+            "spirit_sugar_serving": {
+               "display_name": "Cup of Sugar Bomb"
+            }
+         },
+         "liqueur_almond": {
+            "liqueur_almond": {
+               "display_name": "Almond Liqueur",
+               "description": "Very refined, a truly luxurious drink that will make hearthlings a bit tipsy."
+            },
+            "liqueur_almond_serving": {
+               "display_name": "Cup of Almond Liqueur"
+            }
+         },
+         "spirit_northern": {
+            "spirit_northern_serving": {
+               "display_name": "Cup of Northern Spirit"
+            },
+            "spirit_northern": {
+               "display_name": "Northern Spirit",
+               "description": "The unique and strong flavors of the sweet potatoes make a stout alcoholic drink."
+            }
+         },
+         "wine_berry": {
+            "wine_berry": {
+               "display_name": "Berry Wine",
+               "description": "Simple, yet sweet and relaxing drink. Makes hearthlings happy but also tipsy!"
+            },
+            "wine_berry_serving": {
+               "display_name": "Goblet of Berry Wine"
+            }
+         },
+         "wine_apple": {
+            "wine_apple": {
+               "display_name": "Cider",
+               "description": "An appreciated wine made from apples. Makes hearthlings happy but also tipsy!"
+            },
+            "wine_apple_serving": {
+               "display_name": "Goblet of Cider"
+            }
+         },
+         "wine_cherry": {
+            "wine_cherry": {
+               "display_name": "Cherry Wine",
+               "description": "An exotic, slightly sour flavor for a wine. Makes hearthlings happy but also tipsy!"
+            },
+            "wine_cherry_serving": {
+               "display_name": "Goblet of Cherry Wine"
+            }
+         },
+         "wine_date": {
+            "wine_date": {
+               "display_name": "Date Wine",
+               "description": "Amazingly sweet and with a smooth finish. Makes hearthlings happy but also tipsy!"
+            },
+            "wine_date_serving": {
+               "display_name": "Goblet of Date Wine"
+            }
+         },
+         "wine_pear": {
+            "wine_pear": {
+               "display_name": "Perry",
+               "description": "A popular drink from colder climates. Makes hearthlings happy but also tipsy!"
+            },
+            "wine_pear_serving": {
+               "display_name": "Goblet of Perry"
+            }
+         },
+         "wine_plum": {
+            "wine_plum": {
+               "display_name": "Plum Wine",
+               "description": "A sweet and velvety fruit made into wine. Makes hearthlings happy but also tipsy!"
+            },
+            "wine_plum_serving": {
+               "display_name": "Goblet of Plum Wine"
+            }
+         },
+         "wine_prickly_pear": {
+            "wine_prickly_pear": {
+               "display_name": "Prickly Pear Wine",
+               "description": "It doesn't have any pointy bits anymore! Makes hearthlings happy but also tipsy!"
+            },
+            "wine_prickly_pear_serving": {
+               "display_name": "Goblet of Prickly Pear Wine"
+            }
          }
       },
       "npc": {
@@ -15267,13 +15640,13 @@
       },
       "pear_sapling": {
          "display_name": "Pear Tree Sapling",
-         "description": "A common fruit-bearing, highland tree. Needs some days before it has grown enough to be replanted somewhere else.",
+         "description": "A fruit-bearing tree that survives colder climates. Needs some days before it has grown enough to be replanted somewhere else.",
          "harvest_text": "harvesting pear tree sapling"
       },
       "plum_sapling": {
          "display_name": "Plum Tree Sapling",
          "harvest_text": "harvesting plum tree sapling",
-         "description": "A common fruit-bearing tree from the colder woodlands. Needs some days before it has grown enough to be replanted somewhere else."
+         "description": "A fruit-bearing tree that thrives on milder climates. Needs some days before it has grown enough to be replanted somewhere else."
       },
       "date_sapling": {
          "harvest_text": "harvesting date palm sapling",

@@ -1,0 +1,66 @@
+{
+   "mixins": "stonehearth_ace:mixins:drink_decay:jug",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(wine_berry.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      },
+      "render_info": {
+         "scale": 0.09,
+         "color_map": "stonehearth_ace:color_map:brewing",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "fiddle",
+         "drink": "stonehearth_ace:drink:wine_berry:wine_berry_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 11,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.wine_berry.wine_berry.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.wine_berry.wine_berry.description)",
+         "icon": "file(wine_berry.png)",
+         "is_item": true,
+         "category": "drink",
+         "material_tags": [
+            "drink_container",
+            "prepared_drink",
+            "wine_berry",
+            "wine",
+            "becomes_vinegar",
+            "alcoholic",
+            "stockpile_prepared_drink",
+            "night_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 5
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

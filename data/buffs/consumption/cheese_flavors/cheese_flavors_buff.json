@@ -1,0 +1,33 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.cheese_flavors.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.cheese_flavors.description)",
+   "icon": "file(cheese_flavors_buff.png)",
+   "duration": "8h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "multiplicative_heal_received_modifier": {
+         "add": 0.5
+      },
+      "willpower": {
+         "add": 8
+      },
+      "stamina": {
+         "add": 8
+      },
+      "muscle": {
+         "add": 8
+      }
+   },
+   "script": "stonehearth_ace:buff_scripts:buff_combination",
+   "script_info": {
+      "check_for": [
+         "stonehearth_ace:buffs:consumption:serenity",
+         "stonehearth_ace:buffs:consumption:serenity_minor"
+      ],
+      "combines_into": [
+         "stonehearth_ace:buffs:consumption:elevated_character"
+      ]
+   }
+}

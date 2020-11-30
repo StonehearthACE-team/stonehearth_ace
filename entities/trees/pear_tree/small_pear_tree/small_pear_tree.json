@@ -9,8 +9,19 @@
                   "type": "one_of",
                   "items": [
                      "file(small_pear_tree.qb)",
-                     "file(small_pear_tree_2.qb)",
-                     "file(small_pear_tree_3.qb)"
+                     "file(small_pear_tree_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "spring": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_pear_tree_spring.qb)",
+                     "file(small_pear_tree_spring_2.qb)",
+                     "file(small_pear_tree_spring_3.qb)"
                   ]
                }
             ]
@@ -23,17 +34,6 @@
                      "file(small_pear_tree_autumn.qb)",
                      "file(small_pear_tree_autumn_2.qb)",
                      "file(small_pear_tree_autumn_3.qb)"
-                  ]
-               }
-            ]
-         },
-         "summer": {
-            "models": [
-               {
-                  "type": "one_of",
-                  "items": [
-                     "file(small_pear_tree_summer.qb)",
-                     "file(small_pear_tree_summer_2.qb)"
                   ]
                }
             ]
@@ -51,16 +51,16 @@
       },
       "stonehearth:seasonal_model_switcher": {
          "*": {
-            "spring": "default",
-            "summer": "summer",
+            "spring": "spring",
+            "summer": "default",
             "autumn": "autumn",
             "winter": "winter"
          },
-         "stonehearth_ace:biome:highlands": {
-            "spring": "default",
-            "summer": "summer",
-            "autumn": "autumn",
-            "winter": "winter"
+         "stonehearth:biome:desert": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "default",
+            "winter": "autumn"
          }
       },
       "stonehearth:resource_node": {

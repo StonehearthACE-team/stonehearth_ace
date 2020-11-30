@@ -1,0 +1,34 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.elevated_character.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.elevated_character.description)",
+   "icon": "file(elevated_character_buff.png)",
+   "duration": "12h",
+   "repeat_add_action": "renew_duration",
+   "thought": "stonehearth_ace:thoughts:eating:elevated_character",
+   "modifiers": {
+      "multiplicative_heal_received_modifier": {
+         "add": 0.8
+      },
+      "spirit": {
+         "add": 1
+      },
+      "body": {
+         "add": 1
+      },
+      "mind": {
+         "add": 1
+      },
+      "multiplicative_work_rate_modifier": {
+         "add": 0.35
+      }
+   },
+   "disallowed_categories": [
+      "consumption_harmony",
+      "consumption_serenity"
+   ],
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:consumption:cheese_flavors"
+   ]
+}

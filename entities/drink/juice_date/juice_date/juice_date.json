@@ -1,0 +1,63 @@
+{
+   "mixins": "stonehearth_ace:mixins:drink_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(juice_date.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(juice_date_spoiling.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "fiddle",
+         "drink": "stonehearth_ace:drink:juice_date:juice_date_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 5,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.juice_date.juice_date.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.juice_date.juice_date.description)",
+         "icon": "file(juice_date.png)",
+         "is_item": true,
+         "category": "drink",
+         "material_tags": [
+            "drink_container",
+            "raw_drink",
+            "juice_date",
+            "juice",
+            "stockpile_drink",
+            "morning_time",
+            "refreshing"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

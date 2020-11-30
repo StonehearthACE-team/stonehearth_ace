@@ -9,8 +9,48 @@
                   "type": "one_of",
                   "items": [
                      "file(small_almond_tree.qb)",
-                     "file(small_almond_tree_2.qb)",
-                     "file(small_almond_tree_3.qb)"
+                     "file(small_almond_tree_arid_1.qb)",
+                     "file(small_almond_tree_arid_1.qb)",
+                     "file(small_almond_tree_arid_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "spring_temperate": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_almond_tree.qb)",
+                     "file(small_almond_tree_arid_2.qb)",
+                     "file(small_almond_tree_mild_1.qb)",
+                     "file(small_almond_tree_mild_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "spring_highlands": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_almond_tree.qb)",
+                     "file(small_almond_tree_mild_1.qb)",
+                     "file(small_almond_tree_mild_2.qb)",
+                     "file(small_almond_tree_cold_1.qb)"
+                  ]
+               }
+            ]
+         },
+         "spring_arctic": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(small_almond_tree.qb)",
+                     "file(small_almond_tree_cold_1.qb)",
+                     "file(small_almond_tree_cold_1.qb)",
+                     "file(small_almond_tree_cold_2.qb)"
                   ]
                }
             ]
@@ -60,20 +100,26 @@
          }
       },
       "stonehearth:seasonal_model_switcher": {
+         "*": {
+            "spring": "spring_temperate",
+            "summer": "summer",
+            "autumn": "autumn",
+            "winter": "winter"
+         },
          "stonehearth:biome:desert": {
             "spring": "default",
             "summer": "summer",
             "autumn": "desert",
             "winter": "winter"
          },
-         "*": {
-            "spring": "default",
+         "stonehearth_ace:biome:highlands": {
+            "spring": "spring_highlands",
             "summer": "summer",
             "autumn": "autumn",
             "winter": "winter"
          },
          "stonehearth:biome:arctic": {
-            "spring": "default",
+            "spring": "spring_arctic",
             "summer": "autumn",
             "autumn": "autumn",
             "winter": "winter"
@@ -187,7 +233,7 @@
       },
       "stonehearth_ace:replant_data": {
          "seed_alias": "stonehearth_ace:trees:almond:seed",
-			"sapling_alias": "stonehearth_ace:trees:almond:sapling"
+         "sapling_alias": "stonehearth_ace:trees:almond:sapling"
       },
       "stonehearth:appeal": {
          "appeal": 3

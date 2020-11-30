@@ -1,0 +1,26 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "render_info": {
+         "scale": 0.11,
+         "material": "materials/shiny.material.json"
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0.1, "z": 0 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(brewer_treading_vat_must_plum.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.brewer.brewer_treading_vat.must.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.brewer.brewer_treading_vat.must.description)"
+      }
+   }
+}

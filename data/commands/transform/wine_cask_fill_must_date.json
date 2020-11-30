@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "wine_cask_fill_must_date",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.wine_cask_fill_must_date.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.wine_cask_fill_must_date.description)",
+   "default_enabled": true,
+   "ordinal": 91,
+   "icon": "file(wine_cask_fill_must_date.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "wine_date"
+   ]
+}

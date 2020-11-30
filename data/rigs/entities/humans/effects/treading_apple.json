@@ -1,0 +1,43 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+				"speed": 0.8,
+            "animation": "happy_patrol_walk.json",
+            "loop": true
+      },
+      "must_layer" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth_ace:brewer:treading_vat:must_apple",
+         "bone": "carry"
+      },
+		"must_bubbles": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/brewer/treading_white_bubbles.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": {
+            "x":0,
+            "y":0.5,
+            "z":0,
+            "rx":-90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "carry"
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop" : true,
+         "start_time":  0,
+         "min_distance": 35,
+         "falloff" : 5,
+         "volume": 60,
+         "track": "stonehearth_ace:sounds:brewer:treading_vat"
+      }      
+   }
+}

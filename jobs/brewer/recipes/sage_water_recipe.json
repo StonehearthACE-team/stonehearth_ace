@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.sage_water_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.sage_water_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.sage_water_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/sage_water/sage_water/sage_water.png",
+   "level_requirement": 2,
+   "workshop": "stonehearth_ace:brewer:workbench",
+   "ingredients": [
+		{
+         "material": "honey cooking_ingredient",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth_ace:resources:herb:sage",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:sage_water"
+      }
+   ]
+}
