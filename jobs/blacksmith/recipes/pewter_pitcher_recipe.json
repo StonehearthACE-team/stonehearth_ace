@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 36,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.pewter_pitcher_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.pewter_pitcher_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.pewter_pitcher_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/pewter_pitcher/pewter_pitcher.png",
+   "workshop": "stonehearth_ace:blacksmith:crucible",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:tin_ingot",
+         "count": 2
+      },
+		{
+         "uri": "stonehearth:refined:copper_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:pewter_pitcher"
+      }
+   ]
+}

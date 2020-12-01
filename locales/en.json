@@ -5428,6 +5428,11 @@
                "description": "A very refined and exquisite piece of decoration.",
                "flavor": "Can also be used to make tea"
             },
+            "pewter_pitcher_recipe": {
+               "recipe_name": "Pewter Pitcher",
+               "description": "Suitable for the best households.",
+               "flavor": ""
+            },
             "iron_brazier_recipe": {
                "recipe_name": "Cast Iron Brazier",
                "description": "Create a fine piece that provides light and some warmth.",
@@ -7274,10 +7279,45 @@
                "description": "Provides 16 tankards of ale. It needs to be placed down before being used.",
                "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
             },
+            "spirit_serving_keg_recipe": {
+               "recipe_name": "Fill Serving Keg with Malt Spirit",
+               "description": "Provides 24 cups of malt spirit. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+            "spirit_fruit_serving_keg_recipe": {
+               "recipe_name": "Fill Serving Keg with Fruit Spirit",
+               "description": "Provides 24 cups of fruit spirit. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+            "spirit_sugar_serving_keg_recipe": {
+               "recipe_name": "Fill Serving Keg with Sugar Bomb",
+               "description": "Provides 24 cups of sugar bomb. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+            "spirit_hearth_serving_keg_recipe": {
+               "recipe_name": "Fill Serving Keg with Hearthbud Spirit",
+               "description": "Provides 24 cups of hearthbud spirit. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+            "liquor_serving_keg_recipe": {
+               "recipe_name": "Fill Serving Keg with Liquor",
+               "description": "Provides 24 cups of liquor. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
             "beer_buttered_serving_keg_recipe": {
                "recipe_name": "Serving Keg of Buttered Beer",
                "description": "A special brew of the Ascendancy. Sweet, flavorful and with little alcohol content.",
                "flavor": "Requires placement before it can be used"
+            },
+            "liqueur_almond_serving_keg_recipe": {
+               "recipe_name": "Fill Serving Keg with Almond Liqueur",
+               "description": "Provides 28 cups the special Rayya's Children brew. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+            "spirit_northern_serving_keg_recipe": {
+               "recipe_name": "Fill Serving Keg with Northern Spirit",
+               "description": "Provides 28 cups of the special Northern Alliance's brew. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
             }
          },
          "brewer_outfit": {
@@ -10454,7 +10494,7 @@
       "plants": {
          "moonbell_plant": {
             "display_name": "Moonbell",
-            "description": "Can be harvested for healing herbs",
+            "description": "Can be harvested for blue bitter herbs.",
             "unripe_description": "This plant has been harvested and has not grown back yet",
             "seed": {
                "moonbell_plant_seed_ghost": {
@@ -10481,8 +10521,8 @@
             }
          },
          "marblesprout_plant": {
-            "display_name": "Wild Marblesprout",
-            "description": "This plant can be harvested and dried for marble stones!",
+            "display_name": "Marblesprout",
+            "description": "Can be harvested for white bitter herbs. They can be dried into marble stones.",
             "unripe_description": "This plant has been harvested and has not grown back yet",
             "seed": {
                "marblesprout_plant_seed_ghost": {
@@ -11589,6 +11629,10 @@
          "pewter_teapot": {
             "display_name": "Pewter Teapot",
             "description": "Refined. Elegant. All the untarnished values of society."
+         },
+         "pewter_pitcher": {
+            "display_name": "Pewter Pitcher",
+            "description": "Fancy and good looking."
          }
       },
       "pets": {
@@ -14145,10 +14189,10 @@
       "vines": {
          "highland_vine": {
             "display_name": "Highland Vine",
-            "description": "This climbable vine grows and spreads across walls and buildings.",
+            "description": "Climbable and spreading. Can be harvested for green bitter herbs.",
             "seed": {
                "display_name": "Highland Vine Seed",
-               "description": "Can be planted to grow a vine that will grow up and down walls."
+               "description": "Can be planted to grow a vine that can be climbed. Provides green bitter herbs."
             },
             "bud": {
                "display_name": "Budding Highland Vine",
@@ -14527,10 +14571,16 @@
          "spirit": {
             "spirit": {
                "display_name": "Malt Spirit",
-               "description": "A dry, complex and moderate brew. Makes hearthlings happy but also tipsy! "
+               "description": "A dry, complex and moderate brew. Makes hearthlings happy but also tipsy!"
             },
             "spirit_serving": {
                "display_name": "Cup of Malt Spirit"
+            },
+            "serving_keg_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Malt Spirit"
             }
          },
          "spirit_fruit": {
@@ -14540,6 +14590,12 @@
             },
             "spirit_fruit_serving": {
                "display_name": "Cup of Fruit Spirit"
+            },
+            "serving_keg_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Fruit Spirit"
             }
          },
          "liquor": {
@@ -14549,6 +14605,12 @@
             },
             "liquor_serving": {
                "display_name": "Cup of Liquor"
+            },
+            "serving_keg_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Liquor"
             }
          },
          "tea_iconic": {
@@ -14735,6 +14797,12 @@
             "spirit_hearth_serving": {
                "display_name": "Cup of Hearthbud Spirit",
                "description": ""
+            },
+            "serving_keg_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Hearthbud Spirit"
             }
          },
          "frostfeast": {
@@ -14921,6 +14989,12 @@
             },
             "spirit_sugar_serving": {
                "display_name": "Cup of Sugar Bomb"
+            },
+            "serving_keg_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Sugar Bomb"
             }
          },
          "liqueur_almond": {
@@ -14930,6 +15004,12 @@
             },
             "liqueur_almond_serving": {
                "display_name": "Cup of Almond Liqueur"
+            },
+            "serving_keg_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Almond Liqueur"
             }
          },
          "spirit_northern": {
@@ -14939,6 +15019,12 @@
             "spirit_northern": {
                "display_name": "Northern Spirit",
                "description": "The unique and strong flavors of the sweet potatoes make a stout alcoholic drink."
+            },
+            "serving_keg_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Northern Spirit"
             }
          },
          "wine_berry": {

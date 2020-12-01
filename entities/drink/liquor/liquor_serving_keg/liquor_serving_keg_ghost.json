@@ -1,0 +1,38 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:drink:serving_keg_ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(liquor_serving_keg.qb)"
+            ]
+         },
+         "stone": {
+            "models": [
+               "file(liquor_serving_keg_stone.qb)"
+            ]
+         },
+         "clay": {
+            "models": [
+               "file(liquor_serving_keg_clay.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.liquor.serving_keg.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.liquor.liquor.description)",
+         "icon": "file(liquor_serving_keg.png)",
+         "material_tags": [
+            "prepared_drink",
+            "liquor",
+            "alcoholic",
+            "night_time"
+         ]
+      }
+   }
+}

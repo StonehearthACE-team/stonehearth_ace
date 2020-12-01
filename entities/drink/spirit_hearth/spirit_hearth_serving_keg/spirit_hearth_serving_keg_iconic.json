@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(spirit_hearth_serving_keg_iconic.qb)"
+            ]
+         },
+         "stone": {
+            "models": [
+               "file(spirit_hearth_serving_keg_stone_iconic.qb)"
+            ]
+         },
+         "clay": {
+            "models": [
+               "file(spirit_hearth_serving_keg_clay_iconic.qb)"
+            ]
+         }
+      },
+      "stonehearth_ace:entity_modification": {
+         "model_variants": {
+            "stonehearth_ace:refined:serving_keg:wood": "default",
+            "stonehearth_ace:refined:serving_keg:stone": "stone",
+            "stonehearth_ace:refined:serving_keg:clay": "clay"
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.drink.spirit_hearth.serving_keg_iconic.description)",
+         "is_item": true,
+         "category": "drink"
+      }
+   }
+}

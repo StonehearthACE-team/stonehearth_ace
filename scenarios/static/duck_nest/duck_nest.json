@@ -1,0 +1,30 @@
+{
+   "mixins": "/stonehearth/scenarios/static/critter_nest/critter_nest.json",
+   "name": "duck_nest",
+   "mixintypes": {
+      "habitat_types": "override"
+   },
+   "habitat_types": [
+      "water"
+   ],
+   "size": {
+      "width": 8,
+      "length": 8
+   },
+   "biomes": [
+      "stonehearth_ace:biome:highlands",
+      "stonehearth:biome:temperate",
+      "stonehearth:biome:arctic"
+   ],
+   "data": {
+      "num_critters": {
+         "min": 3,
+         "max": 7
+      },
+      "critter_type": [
+         "stonehearth_ace:duck:wild",
+         "stonehearth_ace:duck:wild",
+         "stonehearth_ace:duck:wild:young"
+      ]
+   }
+}

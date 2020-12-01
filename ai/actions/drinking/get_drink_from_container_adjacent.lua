@@ -49,6 +49,10 @@ function GetDrinkFromContainerAdjacent:run(ai, entity, args)
       drink:add_component('stonehearth:item_quality'):initialize_quality(container_quality, nil, nil, {override_allow_variable_quality=true})
    end
 
+	if container_data.serving_model then
+		drink:add_component('stonehearth_ace:entity_modification'):set_model_variant(container_data.serving_model)
+	end
+
    stonehearth.ai:pickup_item(ai, entity, drink)
 end
 

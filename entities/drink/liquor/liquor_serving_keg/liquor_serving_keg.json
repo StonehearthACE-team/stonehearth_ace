@@ -1,0 +1,28 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:drink:serving_keg",
+      "file(liquor_serving_keg_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(liquor_serving_keg_iconic.json)",
+         "ghost_form": "file(liquor_serving_keg_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 24
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "drink": "stonehearth_ace:drink:liquor:liquor_serving"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 35
+      },
+      "stonehearth:appeal": {
+         "appeal": 12
+      }
+   }
+}

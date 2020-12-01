@@ -1,0 +1,39 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:drink:serving_keg_ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mead_serving_pitcher.qb)"
+            ]
+         },
+         "stone": {
+            "models": [
+               "file(mead_serving_pitcher_stone.qb)"
+            ]
+         },
+         "clay": {
+            "models": [
+               "file(mead_serving_pitcher_clay.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Serving Keg of Beer",
+         "description": "A flavorful brew. Makes hearthlings happy but also a little tipsy! ",
+         "icon": "file(mead_serving_pitcher.png)",
+         "material_tags": [
+            "prepared_drink",
+            "mead",
+            "mead_or_ale",
+            "alcoholic",
+            "night_time"
+         ]
+      }
+   }
+}

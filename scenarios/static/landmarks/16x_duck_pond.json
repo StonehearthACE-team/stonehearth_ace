@@ -1,0 +1,17 @@
+{
+   "mixins": "/stonehearth/scenarios/static/landmarks/qb_to_terrain.json",
+   "biomes": ["stonehearth:biome:temperate","stonehearth:biome:arctic","stonehearth:biome:desert", "stonehearth_ace:biome:highlands"],
+   "name": "16x_duck_pond",
+   "category": "terrain_feature_rare",
+   "unique" : true,
+   "size": {
+      "width": 16,
+      "length": 16
+   },
+   "habitat_types": ["plains", "foothills"],
+   "weight" : 0.15,
+   "data": {
+      "brush" : "/stonehearth_ace/data/models/landmark/16x_duck_pond.qb",
+      "landmark_block_types": "stonehearth:landmark_blocks"
+   }
+}
