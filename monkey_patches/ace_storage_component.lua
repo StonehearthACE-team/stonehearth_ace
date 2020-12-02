@@ -3,6 +3,8 @@ local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local StorageComponent = require 'stonehearth.components.storage.storage_component'
 AceStorageComponent = class()
 
+local GOLD_URI = 'stonehearth:loot:gold'
+
 AceStorageComponent._ace_old_create = StorageComponent.create
 function AceStorageComponent:create()
    
@@ -161,6 +163,20 @@ function AceStorageComponent:drop_all(fallback_location, priority_location)
    stonehearth.ai:reconsider_entity(self._entity, 'removed all items from storage')
 
    return items
+end
+
+function AceStorageComponent:add_gold_item(item)
+   if item:get_uri() == GOLD_URI then
+      local stacks = item:add_component('stonehearth:stacks'):get_stacks()
+      radiant.entities.destroy_entity(item)
+      return self:add_gold(stacks)
+   end
+
+   return false
+end
+
+function AceStorageComponent:add_gold(amount)
+   return self._inventory:add_gold(amount, self._entity)
 end
 
 return AceStorageComponent

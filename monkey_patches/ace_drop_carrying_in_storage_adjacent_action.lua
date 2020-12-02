@@ -1,5 +1,6 @@
 local AceDropCarryingInStorageAdjacent = radiant.class()
 
+local GOLD_URI = 'stonehearth:loot:gold'
 local log = radiant.log.create_logger('drop_carrying_in_storage_adjacent')
 
 function AceDropCarryingInStorageAdjacent:run(ai, entity, args)
@@ -34,7 +35,12 @@ function AceDropCarryingInStorageAdjacent:run(ai, entity, args)
    if item then
       -- remove our lease on this item, if we have one
       stonehearth.ai:release_ai_lease(item, entity)
-      sc:add_item(item)
+      ai:unprotect_argument(item)
+
+      -- if it's gold, add the amount of stacks to the inventory (and specify this storage entity) and destroy the original item
+      if sc:add_gold_item(item) == false then
+         sc:add_item(item)
+      end
    end
 end
 

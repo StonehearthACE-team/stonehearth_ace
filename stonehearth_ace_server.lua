@@ -152,6 +152,7 @@ local monkey_patches = {
    ace_sleepiness_observer = 'stonehearth.ai.observers.sleepiness_observer',
    ace_spawn_enemies_mission = 'stonehearth.services.server.game_master.controllers.missions.spawn_enemies_mission',
    ace_stacks_component = 'stonehearth.components.stacks.stacks_component',
+   ace_stockpile_component = 'stonehearth.components.stockpile.stockpile_component',
    ace_storage_component = 'stonehearth.components.storage.storage_component',
    ace_structure = 'stonehearth.components.building2.structure',
    ace_swimming_service = 'stonehearth.services.server.swimming.swimming_service',

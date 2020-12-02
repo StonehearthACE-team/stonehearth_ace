@@ -293,7 +293,7 @@ function AceCraftOrder:_has_material_ingredients_for_item(ingredient, tracking_d
             local data = tracking_data:get(uri)
             for id, item in pairs(data.items) do
                local container = self._inventory and self._inventory:container_for(item)
-               if not container or not container:get_component('stonehearth:workshop') then
+               if not container or not container:get_component('stonehearth_ace:consumer') then
                   if ingredient.min_stacks then
                      local stacks_comp = item:get_component('stonehearth:stacks')
                      if stacks_comp then
