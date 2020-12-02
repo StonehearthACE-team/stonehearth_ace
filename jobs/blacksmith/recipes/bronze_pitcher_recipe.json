@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bronze_pitcher_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bronze_pitcher_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bronze_pitcher_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/bronze_pitcher/bronze_pitcher.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:bronze_ingot",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:bronze_pitcher"
+      }
+   ]
+}

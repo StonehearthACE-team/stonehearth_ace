@@ -52,6 +52,11 @@ function GetDrinkFromContainerAdjacent:run(ai, entity, args)
 	if container_data.serving_model then
 		drink:add_component('stonehearth_ace:entity_modification'):set_model_variant(container_data.serving_model)
 	end
+	
+	if container_data.dynamic_serving_model then
+		local model_variant = container:add_component('render_info'):get_model_variant()
+		drink:add_component('stonehearth_ace:entity_modification'):set_model_variant(model_variant)
+	end
 
    stonehearth.ai:pickup_item(ai, entity, drink)
 end

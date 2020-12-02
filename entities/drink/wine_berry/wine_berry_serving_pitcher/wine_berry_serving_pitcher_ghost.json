@@ -1,0 +1,44 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:drink:serving_pitcher_ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(wine_berry_serving_pitcher.qb)"
+            ]
+         },
+         "pewter": {
+            "models": [
+               "file(wine_berry_serving_pitcher.qb)"
+            ]
+         },
+         "bronze": {
+            "models": [
+               "file(wine_berry_serving_pitcher_bronze.qb)"
+            ]
+         },
+         "silver": {
+            "models": [
+               "file(wine_berry_serving_pitcher_silver.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.wine_berry.serving_pitcher.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.wine_berry.wine_berry.description)",
+         "icon": "file(wine_berry_serving_pitcher.png)",
+         "material_tags": [
+            "prepared_drink",
+            "wine_berry",
+            "wine",
+            "alcoholic",
+            "night_time"
+         ]
+      }
+   }
+}

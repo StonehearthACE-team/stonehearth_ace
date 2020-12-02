@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.silver_pitcher_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.silver_pitcher_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.silver_pitcher_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/silver_pitcher/silver_pitcher.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:silver_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:silver_pitcher"
+      }
+   ]
+}

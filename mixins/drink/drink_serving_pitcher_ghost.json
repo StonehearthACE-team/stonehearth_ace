@@ -1,0 +1,31 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "stonehearth_ace:entity_modification": {
+         "model_variants": {
+            "stonehearth_ace:decoration:pewter_pitcher": "pewter",
+            "stonehearth_ace:decoration:bronze_pitcher": "bronze",
+            "stonehearth_ace:decoration:silver_pitcher": "silver"
+         }
+      },
+      "render_info": {
+         "scale": 0.09,
+         "material": "materials/shiny.material.json"
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "category": "drink",
+         "material_tags": [
+            "drink_container",
+            "stockpile_serving_vessel",
+            "serving_vessel"
+         ]
+      }
+   }
+}

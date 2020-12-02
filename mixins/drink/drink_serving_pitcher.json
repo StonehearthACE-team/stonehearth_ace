@@ -1,0 +1,92 @@
+{
+   "components": {
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": -2, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:traveler_attraction": {},
+      "stonehearth_ace:auto_replace": {
+         "on_kill": false,
+         "on_destroy": true
+      },
+      "stonehearth:loot_drops": {
+         "force_auto_loot": true,
+         "entries": {
+            "default": {
+               "items": {
+                  "keg": {
+                     "uri": "stonehearth_ace:decoration:pewter_pitcher"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:variant_loot_data": {
+         "stonehearth_ace:decoration:pewter_pitcher": {
+            "force_auto_loot": true,
+            "entries": {
+               "default": {
+                  "items": {
+                     "keg": {
+                        "uri": "stonehearth_ace:decoration:pewter_pitcher"
+                     }
+                  }
+               }
+            }
+         },
+         "stonehearth_ace:decoration:bronze_pitcher": {
+            "force_auto_loot": true,
+            "entries": {
+               "default": {
+                  "items": {
+                     "keg": {
+                        "uri": "stonehearth_ace:decoration:bronze_pitcher"
+                     }
+                  }
+               }
+            }
+         },
+         "stonehearth_ace:decoration:silver_pitcher": {
+            "force_auto_loot": true,
+            "entries": {
+               "default": {
+                  "items": {
+                     "keg": {
+                        "uri": "stonehearth_ace:decoration:silver_pitcher"
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth_ace:drink_container": {
+         "effect": "fiddle",
+         "stacks_per_serving": 1,
+         "dynamic_serving_model": true
+      },
+      "stonehearth:net_worth": {
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

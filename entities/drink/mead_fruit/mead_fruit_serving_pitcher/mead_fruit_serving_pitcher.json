@@ -1,0 +1,28 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:drink:serving_pitcher",
+      "file(mead_fruit_serving_pitcher_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(mead_fruit_serving_pitcher_iconic.json)",
+         "ghost_form": "file(mead_fruit_serving_pitcher_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 10
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "drink": "stonehearth_ace:drink:mead_fruit:mead_fruit_serving"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 50
+      },
+      "stonehearth:appeal": {
+         "appeal": 17
+      }
+   }
+}

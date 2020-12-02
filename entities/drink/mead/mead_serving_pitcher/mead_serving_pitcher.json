@@ -1,7 +1,7 @@
 {
    "type": "entity",
    "mixins": [
-      "stonehearth_ace:mixins:drink:serving_keg",
+      "stonehearth_ace:mixins:drink:serving_pitcher",
       "file(mead_serving_pitcher_ghost.json)"
    ],
    "components": {
@@ -11,7 +11,7 @@
          "placeable_on_ground": true
       },
       "stonehearth:stacks": {
-         "max_stacks": 16
+         "max_stacks": 10
       }
    },
    "entity_data": {
@@ -19,10 +19,10 @@
          "drink": "stonehearth_ace:drink:mead:mead_serving"
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 35
+         "value_in_gold": 47
       },
       "stonehearth:appeal": {
-         "appeal": 12
+         "appeal": 16
       }
    }
 }

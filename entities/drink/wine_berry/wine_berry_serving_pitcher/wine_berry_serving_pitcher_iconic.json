@@ -1,0 +1,48 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(wine_berry_serving_pitcher_iconic.qb)"
+            ]
+         },
+         "pewter": {
+            "models": [
+               "file(wine_berry_serving_pitcher_iconic.qb)"
+            ]
+         },
+         "bronze": {
+            "models": [
+               "file(wine_berry_serving_pitcher_bronze_iconic.qb)"
+            ]
+         },
+         "silver": {
+            "models": [
+               "file(wine_berry_serving_pitcher_silver_iconic.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "material": "materials/shiny.material.json"
+      },
+      "stonehearth_ace:entity_modification": {
+         "model_variants": {
+            "stonehearth_ace:decoration:pewter_pitcher": "pewter",
+            "stonehearth_ace:decoration:bronze_pitcher": "bronze",
+            "stonehearth_ace:decoration:silver_pitcher": "silver"
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.drink.wine_berry.serving_pitcher_iconic.description)",
+         "is_item": true,
+         "category": "drink"
+      }
+   }
+}

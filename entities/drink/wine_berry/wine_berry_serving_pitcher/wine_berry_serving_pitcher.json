@@ -1,0 +1,28 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:drink:serving_pitcher",
+      "file(wine_berry_serving_pitcher_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(wine_berry_serving_pitcher_iconic.json)",
+         "ghost_form": "file(wine_berry_serving_pitcher_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 14
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "drink": "stonehearth_ace:drink:wine_berry:wine_berry_serving"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 48
+      },
+      "stonehearth:appeal": {
+         "appeal": 16
+      }
+   }
+}

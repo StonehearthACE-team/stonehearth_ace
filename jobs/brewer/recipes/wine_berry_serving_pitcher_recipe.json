@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 2,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.wine_berry_serving_pitcher_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.wine_berry_serving_pitcher_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.wine_berry_serving_pitcher_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/wine_berry/wine_berry_serving_pitcher/wine_berry_serving_pitcher.png",
+   "level_requirement": 1,
+	"work_effect": "fiddle",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:wine_berry",
+         "count": 2
+      },
+		{
+			"material": "refined serving_pitcher",
+			"count": 1
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:wine_berry:serving_pitcher",
+         "produce_scripts": [
+				"stonehearth_ace:craft_script:material_model_variant"
+			],
+         "model_variant_material": "refined serving_pitcher"
+      }
+   ]
+}

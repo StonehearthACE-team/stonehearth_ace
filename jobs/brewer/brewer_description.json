@@ -61,8 +61,86 @@
    },
    "max_level": 6,
    "level_data": {
+      "1": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_1_data.perk_000_name)",
+               "id": "crafter_recipe_unlock_1",
+               "icon": "/stonehearth/jobs/common/images/standard_catalog.png",
+               "description": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_1_data.perk_000_description)",
+               "level": 1
+            }
+         ]
+      },
+      "2": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_2_data.perk_000_name)",
+               "id": "crafter_recipe_unlock_2",
+               "icon": "file(images/wines.png)",
+               "description": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_2_data.perk_000_description)",
+               "level": 2
+            }
+         ]
+      },
+      "3": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_3_data.perk_000_name)",
+               "id": "crafter_fine_items_unlock",
+               "icon": "/stonehearth/jobs/common/images/unlock_quality_fine.png",
+               "description": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_3_data.perk_000_description)",
+               "level": 3
+            }
+         ]
+      },
+      "4": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_4_data.perk_000_name)",
+               "id": "crafter_recipe_unlock_3",
+               "icon": "file(images/ale_beer.png)",
+               "description": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_4_data.perk_000_description)",
+               "level": 4
+            },
+            {
+               "name": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_4_data.perk_001_name)",
+               "id": "ornate_perk",
+               "icon": "file(../common/images/ornate_perk.png)",
+               "description": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_4_data.perk_001_description)",
+               "level": 4
+            }
+         ]
+      },
+      "5": {
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_5_data.perk_000_name)",
+               "id": "crafter_recipe_unlock_4",
+               "icon": "file(images/distillery.png)",
+               "description": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_5_data.perk_000_description)",
+               "level": 5
+            },
+            {
+               "name": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_5_data.perk_001_name)",
+               "id": "crafter_excellent_items_unlock",
+               "icon": "/stonehearth/jobs/common/images/unlock_quality_excellent.png",
+               "description": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_5_data.perk_001_description)",
+               "level": 5
+            }
+         ]
+      },
       "6": {
-         "title": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_6_data.title)"
+         "title": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_6_data.title)",
+         "perks": [
+            {
+               "name": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_6_data.mastery_name)",
+               "id": "crafter_recipe_unlock_5",
+               "icon": "/stonehearth/jobs/common/images/master.png",
+               "description": "i18n(stonehearth_ace:jobs.brewer.brewer_description.level_6_data.mastery_description)",
+               "level": 6
+            }
+         ]
       }
    }
 }
