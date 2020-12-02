@@ -26,8 +26,9 @@ end
 function material_model_variant.majority_material_uri(ingredients, material)
    local uri_count = {}
    for _, ingredient in pairs(ingredients) do
-      if radiant.entities.is_material(ingredient, material) then
-         local uri = ingredient:get_uri()
+      local entity = entity_forms_lib.get_root_entity(ingredient) or ingredient
+      if radiant.entities.is_material(entity, material) then
+         local uri = entity:get_uri()
          uri_count[uri] = (uri_count[uri] or 0) + 1
       end
    end
