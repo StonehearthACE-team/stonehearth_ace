@@ -265,8 +265,8 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
    if citizen_spec.allowed_jobs then
       job:set_allowed_jobs(citizen_spec.allowed_jobs)
    end
-   -- set population override if it's a different population than this kingdom (use ascendancy as failsafe for old reembark files)
-   local population_override = citizen_spec.population_override or 'stonehearth:kingdoms:ascendancy'
+   -- set population override if it's a different population than this kingdom
+   local population_override = citizen_spec.population_override
    if population_override ~= '' and population_override ~= kingdom then
       job:set_population_override(population_override)
    end

@@ -232,7 +232,7 @@ function AceInventory:add_gold(amount, storage)
    local gold_items = self:get_items_of_type(GOLD_URI)
    local stacks_to_add = amount
 
-   -- First try to add fold to existing gold items
+   -- First try to add stacks to existing gold items
    if gold_items ~= nil then
       for id, item in pairs(gold_items.items) do
          -- only consider a gold item that's not currently in use
@@ -268,10 +268,11 @@ function AceInventory:add_gold(amount, storage)
       local items_added = {}
       -- If we got here, then we need to add gold to the town
       -- if a storage entity was specified, use that instead of default storage
+      local storage_comp = storage and storage:get_component('stonehearth:storage')
       local town = stonehearth.town:get_town(self._sv.player_id)
-      local default_storage = storage and {[storage:get_id()] = storage} or town:get_default_storage()
+      local default_storage = town:get_default_storage()
       local location = town:get_landing_location()
-      radiant.assert(location, "Unable to add %s gold because the town doesn't have a location to put the gold!", stacks_to_add)
+      radiant.assert(storage_comp or location, "Unable to add %s gold because the town doesn't have a location to put the gold!", stacks_to_add)
 
       local gold_entities_added = false
       while stacks_to_add > 0 do
@@ -283,9 +284,13 @@ function AceInventory:add_gold(amount, storage)
          end
          gold:get_component('stonehearth:stacks')
                   :set_stacks(stacks)
-
          local gold_id = gold:get_id()
-         radiant.entities.output_spawned_items({[gold_id] = gold}, location, 1, 3, nil, nil, default_storage, true)
+
+         if storage_comp then
+            storage_comp:add_item(gold)
+         else
+            radiant.entities.output_spawned_items({[gold_id] = gold}, location, 1, 3, nil, nil, default_storage, true)
+         end
          
          -- if it gets put in default storage, it doesn't need to be added
          if not self._container_for[gold_id] then
