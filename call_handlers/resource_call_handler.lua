@@ -529,9 +529,10 @@ function ResourceCallHandler:server_box_forage(session, response, box)
          -- try to create a foraging entity at this location
          log:debug('trying to find placement point near %s', location)
          local spot = radiant.terrain.find_placement_point(location, 0, 1)
-         if spot then
+         -- don't find a spot on top of a tree or something!
+         if spot and spot.y == y then
             local entity = radiant.entities.create_entity(foraging_spot_uri)
-            radiant.terrain.place_entity(entity, spot, { force_iconic = false })
+            radiant.terrain.place_entity_at_exact_location(entity, spot, { force_iconic = false })
             radiant.entities.turn_to(entity, rng:get_int(0, 3) * 90)
             entity:add_component('stonehearth:resource_node'):request_harvest(session.player_id)
          end
