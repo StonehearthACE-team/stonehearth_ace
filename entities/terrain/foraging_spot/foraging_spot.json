@@ -1,18 +1,8 @@
 {
    "type": "entity",
    "components": {
-      "model_variants": {
-         "default": {
-            "models": [
-               "file(foraging_spot.qb)"
-            ]
-         }
-      },
-      "effect_list": {
-         "default": "stonehearth:effects:treasure_glow"
-      },
       "stonehearth:resource_node": {
-         "harvester_effect": "fiddle",
+         "harvester_effect": "work_forage",
          "harvest_overlay_effect": "stonehearth_ace:effects:harvest_foraging_spot_overlay_effect",
          "description": "harvest_plant",
          "resource_loot_table": {
@@ -21,23 +11,35 @@
                   "items": {
                      "nothing": {
                         "uri": "",
-                        "weight": 5
-                     },
-                     "bolete": {
-                        "uri": "stonehearth_ace:food:bolete:bolete_basket",
-                        "weight": 2
-                     },
-                     "brightbell": {
-                        "uri": "stonehearth:resources:herb:brightbell",
-                        "weight": 2
+                        "weight": 20
                      },
                      "thatch": {
                         "uri": "stonehearth_ace:resources:thatch_bale",
+                        "weight": 2.5
+                     },
+                     "bough": {
+                        "uri": "stonehearth_ace:resources:bough_bale",
+                        "weight": 3.5
+                     },
+                     "bough_evergreen": {
+                        "uri": "stonehearth_ace:resources:bough_bale:evergreen",
                         "weight": 3
                      },
                      "duck_feathers": {
                         "uri": "stonehearth_ace:resources:feathers:duck_feathers",
-                        "weight": 1
+                        "weight": 0.6
+                     },
+                     "poyo_feathers": {
+                        "uri": "stonehearth:resources:feathers:poyo_feathers",
+                        "weight": 0.6
+                     },
+                     "duckduck_feathers": {
+                        "uri": "stonehearth:resources:feathers:duckduck_feathers",
+                        "weight": 0.3
+                     },
+                     "ostrich_feathers": {
+                        "uri": "stonehearth:resources:feathers:ostrich_feathers",
+                        "weight": 0.3
                      }
                   }
                }
@@ -46,9 +48,6 @@
       },
       "stonehearth:task_tracker": {
          "destroy_if_task_canceled": "stonehearth:harvest_resource"
-      },
-      "render_info": {
-         "scale": 0.1
       },
       "mob": {
          "model_origin": { "x": 0, "y": 0, "z": 0 },
@@ -71,7 +70,7 @@
          "category": "foraging_spot"
       },
       "stonehearth:appeal": {
-         "appeal": 1
+         "appeal": 0
       }
    }
 }

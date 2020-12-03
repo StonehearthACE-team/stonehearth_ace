@@ -1,0 +1,58 @@
+{
+   "mixins": "stonehearth_ace:terrain:foraging_spot",
+   "components": {
+      "stonehearth:resource_node": {
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "nothing": {
+                        "weight": 55
+                     },
+                     "bough": {
+                        "weight": 4
+                     },
+                     "bough_evergreen": {
+                        "uri": "",
+                        "weight": 0
+                     },
+                     "thatch": {
+                        "weight": 0.4
+                     },
+                     "fiber": {
+                        "uri": "stonehearth:resources:fiber:coarse_fiber_bundle",
+                        "weight": 1
+                     },
+                     "random_herb": {
+                        "type": "bag",
+                        "uri": "stonehearth_ace:loot_bag:foraging:desert:herbs",
+                        "weight": 9
+                     },
+                     "random_fungus": {
+                        "type": "bag",
+                        "uri": "stonehearth_ace:loot_bag:foraging:desert:fungi",
+                        "weight": 3
+                     },
+                     "random_seed_tree": {
+                        "type": "bag",
+                        "uri": "stonehearth_ace:loot_bag:foraging:desert:seeds:trees",
+                        "weight": 5
+                     },
+                     "random_seed": {
+                        "type": "bag",
+                        "uri": "stonehearth_ace:loot_bag:foraging:desert:seeds",
+                        "weight": 4
+                     },
+                     "random_seasonal": {
+                        "type": "bag",
+                        "uri": "stonehearth_ace:loot_bag:foraging:desert:seasonal",
+                        "weight": 0
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {}
+}

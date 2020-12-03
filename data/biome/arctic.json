@@ -9,6 +9,8 @@
 	"random_location_names": [
       "i18n(stonehearth_ace:data.biome.arctic.random_location_names.000)"
    ],
+	"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:arctic",
+	"foraging_spot_frequency": "0.0016",
    "climate": "arctic_medium",
    "default_starting_season": "summer",
    "seasons": {
@@ -131,6 +133,8 @@
 			"humidity": 0.3,
 			"sunlight": 0.7,
 			"start_day": 32,
+			"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:arctic:autumn",
+			"foraging_spot_frequency": "0.0025",
 			"mixintypes": {
 				"weather": "override"
 			},
@@ -193,6 +197,8 @@
 			"humidity": -0.3,
 			"sunlight": 0.5,
 			"start_day": 42,
+			"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:arctic:winter",
+			"foraging_spot_frequency": "0.0003",
 			"mixintypes": {
 				"weather": "override"
 			},

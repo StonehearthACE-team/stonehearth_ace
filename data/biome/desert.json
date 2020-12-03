@@ -5,6 +5,8 @@
 	"game_mode_images": {
       "stonehearth_ace:game_mode:gentle": "/stonehearth/data/biome/images/desert_story_normal.png"
    },
+	"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:desert",
+	"foraging_spot_frequency": "0.0018",
    "climate": "desert_medium",
    "seasons": {
 	   "spring": {
@@ -108,6 +110,8 @@
       "autumn": {
 			"humidity": -0.2,
 			"sunlight": 0.9,
+			"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:desert:autumn",
+			"foraging_spot_frequency": "0.0025",
 			"mixintypes": {
 				"weather": "override"
 			},
@@ -145,6 +149,8 @@
       "winter": {
 			"humidity": -0.4,
 			"sunlight": 0.8,
+			"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:desert:winter",
+			"foraging_spot_frequency": "0.0006",
 			"mixintypes": {
 				"weather": "override"
 			},

@@ -8,6 +8,8 @@
 	"mixintypes": {
 		"growth_duration_multiplier": "remove"
 	},
+	"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:temperate",
+	"foraging_spot_frequency": "0.0015",
    "climate": "temperate_medium",
    "seasons": {
       "spring": {
@@ -119,6 +121,8 @@
       "autumn": {
 			"humidity": 0.4,
 			"sunlight": 0.8,
+			"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:temperate:autumn",
+			"foraging_spot_frequency": "0.0025",
 			"mixintypes": {
 				"weather": "override"
 			},
@@ -176,6 +180,8 @@
 		"winter": {
 			"humidity": 0.3,
 			"sunlight": 0.7,
+			"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:temperate:winter",
+			"foraging_spot_frequency": "0.0005",
 			"mixintypes": {
 				"weather": "override"
 			},

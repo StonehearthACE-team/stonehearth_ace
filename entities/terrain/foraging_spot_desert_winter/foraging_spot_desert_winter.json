@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth_ace:terrain:foraging_spot:desert",
+   "components": {
+      "stonehearth:resource_node": {
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "nothing": {
+                        "weight": 85
+                     },
+                     "bough": {
+                        "weight": 0
+                     },
+                     "random_herb": {
+                        "weight": 0
+                     },
+                     "random_fungus": {
+                        "weight": 1
+                     },
+                     "random_seed_tree": {
+                        "weight": 4
+                     },
+                     "random_seed": {
+                        "weight": 7
+                     },
+                     "random_seasonal": {
+                        "weight": 0
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {}
+}

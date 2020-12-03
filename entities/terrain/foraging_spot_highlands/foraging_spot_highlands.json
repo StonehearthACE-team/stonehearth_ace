@@ -1,0 +1,54 @@
+{
+   "mixins": "stonehearth_ace:terrain:foraging_spot",
+   "components": {
+      "stonehearth:resource_node": {
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "nothing": {
+                        "weight": 55
+                     },
+                     "bough": {
+                        "weight": 4
+                     },
+                     "bough_evergreen": {
+                        "weight": 2
+                     },
+                     "fiber": {
+                        "uri": "stonehearth_ace:resources:fiber:dwarfsbeard_bundle",
+                        "weight": 2
+                     },
+                     "random_herb": {
+                        "type": "bag",
+                        "uri": "stonehearth_ace:loot_bag:foraging:highlands:herbs",
+                        "weight": 9
+                     },
+                     "random_fungus": {
+                        "type": "bag",
+                        "uri": "stonehearth_ace:loot_bag:foraging:highlands:fungi",
+                        "weight": 7
+                     },
+                     "random_seed_tree": {
+                        "type": "bag",
+                        "uri": "stonehearth_ace:loot_bag:foraging:highlands:seeds:trees",
+                        "weight": 5
+                     },
+                     "random_seed": {
+                        "type": "bag",
+                        "uri": "stonehearth_ace:loot_bag:foraging:highlands:seeds",
+                        "weight": 4
+                     },
+                     "random_seasonal": {
+                        "type": "bag",
+                        "uri": "stonehearth_ace:loot_bag:foraging:highlands:seasonal",
+                        "weight": 0
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {}
+}
