@@ -19,8 +19,8 @@
             </td><td>
                {{#if view.plantedCropData}}
                <div class="cropDescription">
-                  <div class="name">{{i18n_key view.plantedCropData.display_name}}</div>
-                  <p>{{{i18n_key view.plantedCropData.description}}}</p>
+                  <div class="name">{{view.plantedCropData.display_name}}</div>
+                  <p>{{{view.plantedCropData.description}}}</p>
                </div>
                {{/if}}
             </td></tr>
@@ -30,7 +30,7 @@
             <a {{action "chooseCropTypeLinkClicked" target="view"}}>
                <span class="queuedTitle">{{i18n stonehearth_ace:ui.game.herbalist_planter.queued_crop}}</span>
                <img class="currentCropTypeImage" {{bind-attr src="view.currentCropData.icon"}} />
-               <span>{{i18n_key view.currentCropData.display_name}}</span>
+               <span>{{view.currentCropData.display_name}}</span>
             </a>
          </div>
          {{/if}}

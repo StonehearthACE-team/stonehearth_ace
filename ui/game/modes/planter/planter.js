@@ -22,12 +22,18 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
             }
             var data = response.data;
             // also index all the crops by seed
+            // and go ahead and get all the localization done ahead of time
             var seed_index = {};
             radiant.each(data.crops, function(crop, cropData) {
                if (cropData.seed_uri) {
                   seed_index[cropData.seed_uri] = crop;
                }
+               cropData.description = i18n.t(cropData.description);
+               cropData.display_name = i18n.t(cropData.display_name);
             });
+            data.no_crop.description = i18n.t(data.no_crop.description);
+            data.no_crop.display_name = i18n.t(data.no_crop.display_name);
+
             data.seed_index = seed_index;
             self.set('allCropData', data);
             self._updateAvailableSeeds();
@@ -228,8 +234,8 @@ App.AcePlanterTypePaletteView = App.View.extend({
                type: key,
                icon: data.icon,
                level: Math.max(0, data.level || 0),
-               display_name: i18n.t(data.display_name),
-               description: i18n.t(data.description)
+               display_name: data.display_name,
+               description: data.description
             }
             if (self.available_seeds) {
                var bestQuality = self._getAvailableSeedQuality(self.available_seeds, key);
@@ -247,8 +253,8 @@ App.AcePlanterTypePaletteView = App.View.extend({
             type: 'no_crop',
             icon: no_crop.icon,
             level: -1,
-            display_name: i18n.t(no_crop.display_name),
-            description: i18n.t(no_crop.description)
+            display_name: no_crop.display_name,
+            description: no_crop.description,
          });
       }
 
