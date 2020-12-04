@@ -18,6 +18,7 @@ function AceStorageRenderer:_update()
    local data = self._datastore:get_data()
    local items = data.items
    local reposition_items = data.reposition_items
+   self._render_root_items = data.render_root_items
    
    -- Remove any items that no longer exist.
    for bone, item_id in pairs(self._bone_to_item) do
@@ -83,6 +84,21 @@ function AceStorageRenderer:_update()
          end
       end
    end
+end
+
+function AceStorageRenderer:_render_item(item, bone)
+   local item_id = item:get_id()
+   local render_item
+   if self._render_root_items then
+      local iconic = item:get('stonehearth:iconic_form')
+      render_item = iconic and iconic._sv.root_entity
+   end
+
+   local parent_bone = self._render_entity:get_skeleton():get_bone_node(bone)
+   local item_render_entity = _radiant.client.create_unmanaged_render_entity(parent_bone, render_item or item)
+
+   self._bone_to_item[bone] = item_id
+   self._item_render_entities[item_id] = item_render_entity
 end
 
 return AceStorageRenderer

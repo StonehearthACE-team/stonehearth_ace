@@ -75,6 +75,7 @@ function AceStorageComponent:activate()
    self._input_bin_priority = (priority - bounds.MIN_PRIORITY) / (priority_range + 1)
 
    -- communicate this setting to the renderer
+   self._sv.render_root_items = json.render_root_items
 	self._sv.render_filter_model = json.render_filter_model
 	self._sv.render_filter_model_threshold = json.render_filter_model_threshold or 0.5
    self._sv.reposition_items = json.reposition_items
