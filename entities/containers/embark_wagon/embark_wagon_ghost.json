@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/containers/embark_wagon/embark_wagon.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(embark_wagon.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/containers/embark_wagon/effects/idle.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.embark_wagon.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.embark_wagon.description)",
+         "icon": "file(embark_wagon.png)",
+         "category": "storage",
+         "material_tags": [
+            "wood"
+         ]
+      }
+   }
+}

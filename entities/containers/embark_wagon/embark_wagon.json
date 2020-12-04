@@ -1,21 +1,12 @@
 {
    "type": "entity",
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": "file(embark_wagon_ghost.json)",
    "components": {
-      "render_info": {
-         "scale": 0.1,
-         "animation_table": "/stonehearth_ace/data/rigs/entities/containers/embark_wagon/embark_wagon.json"
-      },
-      "model_variants": {
-         "default": {
-            "models": [
-               "file(embark_wagon.qb)"
-            ]
-         }
-      },
-      "mob": {
-         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(embark_wagon_iconic.json)",
+         "ghost_form": "file(embark_wagon_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
       },
       "stonehearth:resource_node": {
          "durability": 8,
@@ -48,9 +39,6 @@
                "max": { "x": 2, "y": 2, "z": 3 }
             }
          ]
-      },
-      "effect_list": {
-         "default": "/stonehearth_ace/data/rigs/entities/containers/embark_wagon/effects/idle.json"
       }
    },
    "entity_data": {
@@ -66,17 +54,8 @@
             "sellable": false
          }
       },
-      "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.containers.embark_wagon.display_name)",
-         "description": "i18n(stonehearth_ace:entities.containers.embark_wagon.description)",
-         "icon": "file(embark_wagon.png)",
-         "category": "storage",
-         "material_tags": [
-            "wood"
-         ]
-      },
       "stonehearth:appeal": {
-         "appeal": -1
+         "appeal": 5
       }
    }
 }
