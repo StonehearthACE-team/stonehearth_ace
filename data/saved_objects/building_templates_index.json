@@ -8,49 +8,66 @@
                "templates": {
 						"mixintypes": {
 							"blacksmith_house_new": "remove",
-							"herbalist_house_new": "remove"
+							"herbalist_house_new": "remove",
+							"tiny_cottage_new": "remove",
+							"dining_hall_new": "remove",
+							"cottage_for_two_new": "remove",
+							"shared_sleeping_quarters_new": "remove",
+							"carpenter_house_new": "remove",
+							"weaver_house": "remove"
 						},
-						"blacksmith_house_ace": {
-							"unlock_requirement": {
+						"tiny_cottage_t1_ace": "file(building_templates/tiny_cottage_t1_ace.json)",
+						"dining_hall_t1_ace": "file(building_templates/dining_hall_t1_ace.json)",
+						"cottage_for_two_t1_ace": "file(building_templates/cottage_for_two_t1_ace.json)",
+						"shared_sleeping_quarters_t1_ace": "file(building_templates/shared_sleeping_quarters_t1_ace.json)",
+						"carpenter_house_t1_ace": {
+                     "unlock_requirement": {
                         "type": "has_job",
-                        "value": "stonehearth:jobs:blacksmith"
+                        "value": "stonehearth:jobs:carpenter"
                      },
-                     "file": "file(building_templates/blacksmith_house_ace.json)"
+                     "file": "file(building_templates/carpenter_house_t1_ace.json)"
                   },
-						"mason_house_ace": {
+                  "weaver_house_t1_ace": {
+                     "unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:weaver"
+                     },
+                     "file": "file(building_templates/weaver_house_t1_ace.json)"
+                  },
+						"mason_house_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:mason"
                      },
-                     "file": "file(building_templates/mason_house_ace.json)"
+                     "file": "file(building_templates/mason_house_t1_ace.json)"
                   },
-                  "potter_house_ace": {
+                  "potter_house_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:potter"
                      },
-                     "file": "file(building_templates/potter_house_ace.json)"
+                     "file": "file(building_templates/potter_house_t1_ace.json)"
                   },
-						"herbalist_house_ace": {
+						"herbalist_house_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:herbalist"
                      },
-                     "file": "file(building_templates/herbalist_house_ace.json)"
+                     "file": "file(building_templates/herbalist_house_t1_ace.json)"
                   },
-                  "shepherd_barn_ace": {
+                  "shepherd_barn_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:shepherd"
                      },
-                     "file": "file(building_templates/shepherd_barn_ace.json)"
+                     "file": "file(building_templates/shepherd_barn_t1_ace.json)"
                   },
-                  "shepherd_coop_ace": {
+                  "shepherd_coop_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:shepherd"
                      },
-                     "file": "file(building_templates/shepherd_coop_ace.json)"
+                     "file": "file(building_templates/shepherd_coop_t1_ace.json)"
                   },
                   "shepherd_home_t1_ace": {
                      "unlock_requirement": {
@@ -63,7 +80,25 @@
             },
 				"town": {
                "templates": {
-                  "tavern_new": "file(building_templates/tier2/tavern_new.json)"
+						"mixintypes": {
+							"black_forest_inn_new": "remove",
+							"corner_house_new":"remove",
+							"cozy_townhouse_new": "remove",
+							"tall_townhouse_new": "remove",
+							"tavern_new": "remove"
+						},
+						"black_forest_inn_t2_ace": "file(building_templates/tier2/black_forest_inn_t2_ace.json)",
+                  "corner_house_t2_ace": "file(building_templates/tier2/corner_house_t2_ace.json)",
+                  "cozy_townhouse_t2_ace": "file(building_templates/tier2/cozy_townhouse_t2_ace.json)",
+                  "tall_townhouse_t2_ace": "file(building_templates/tier2/tall_townhouse_t2_ace.json)",
+                  "tavern_t2_ace": "file(building_templates/tier2/tavern_t2_ace.json)",
+						"blacksmith_house_t2_ace": {
+							"unlock_requirement": {
+                        "type": "has_job",
+                        "value": "stonehearth:jobs:blacksmith"
+                     },
+                     "file": "file(building_templates/tier2/blacksmith_house_t2_ace.json)"
+                  }
                }
             }
          }

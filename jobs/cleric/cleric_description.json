@@ -44,10 +44,10 @@
          "perks": [
             {
                "type": "add_equipment_role_buffs",
-               "name": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_1_data.perk_001_name)",
+               "name": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_2_data.perk_000_name)",
                "id": "cleric_courage_aura",
-               "icon": "/stonehearth/jobs/cleric/images/cleric_perk_raise_muscle.png",
-               "description": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_1_data.perk_001_description)",
+               "icon": "file(images/cleric_perk_raise_muscle.png)",
+               "description": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_2_data.perk_000_description)",
                "level": 2,
 					"equipment_role_buffs": {
                   "healing_cleric": [
@@ -61,7 +61,10 @@
             },
             {
                "type": "set_medic_capabilities",
+					"name": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_2_data.perk_001_name)",
                "id": "novice_medic_capabilities",
+					"icon": "file(images/medic_abilities.png)",
+               "description": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_2_data.perk_001_description)",
                "level": 2,
                "medic_capabilities": {
                   "num_conditions_to_cure": 1,
@@ -80,7 +83,21 @@
          ]
       },
       "4": {
+			"mixintypes": {
+				"perks": "override"
+		   },
          "perks": [
+				{
+               "type": "apply_chained_buff",
+               "name": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_4_data.perk_000_name)",
+               "id": "cleric_heal_aura_2",
+               "icon": "/stonehearth/jobs/cleric/images/cleric_perk_healing_aura_2.png",
+               "buff_name": "stonehearth:buffs:cleric:heal_aura_2",
+               "last_buff": "stonehearth:buffs:cleric:heal_aura_1",
+               "description": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_4_data.perk_000_description)",
+               "level": 4,
+               "demote_fn": "remove_buff"
+            },
             {
                "type": "set_medic_capabilities",
                "id": "adept_medic_capabilities",
@@ -97,7 +114,7 @@
                   },
                   "health_healed": 100,
                   "guts_healed": 10,
-                  "cooldown": "4h"
+                  "cooldown": "6h"
                },
                "demote_fn": "remove_medic_capabilities"
             }
@@ -112,7 +129,7 @@
                "type": "add_equipment_role_buffs",
                "name": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_5_data.perk_000_name)",
                "id": "cleric_courage_aura_2",
-               "icon": "/stonehearth/jobs/cleric/images/cleric_perk_raise_muscle_2.png",
+               "icon": "file(images/cleric_perk_raise_muscle_2.png)",
                "description": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_5_data.perk_000_description)",
                "level": 5,
 					"equipment_role_buffs": {
@@ -128,7 +145,21 @@
          ]
       },
       "6": {
+			"mixintypes": {
+				"perks": "override"
+		   },
          "perks": [
+				{
+               "type": "apply_chained_buff",
+               "name": "i18n(stonehearth:jobs.cleric.cleric_description.level_6_data.perk_000_name)",
+               "id": "cleric_compassion_buff_2",
+               "icon": "/stonehearth/jobs/cleric/images/healing_master.png",
+               "buff_name": "stonehearth:buffs:cleric:compassion_2",
+               "last_buff": "stonehearth:buffs:cleric:compassion_1",
+               "description": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_6_data.perk_000_description)",
+               "level": 6,
+               "demote_fn": "remove_buff"
+            },
             {
                "type": "set_medic_capabilities",
                "id": "master_medic_capabilities",
@@ -148,7 +179,7 @@
                   },
                   "health_healed": 200,
                   "guts_healed": 20,
-                  "cooldown": "2h"
+                  "cooldown": "4h"
                },
                "demote_fn": "remove_medic_capabilities"
             }

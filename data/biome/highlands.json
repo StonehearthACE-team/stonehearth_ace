@@ -20,7 +20,8 @@
    "generation_file": "file(highlands_generation_data.json)",
    "decay_multiplier": 0.9,
 	"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:highlands",
-	"foraging_spot_frequency": "0.0014",
+	"foraging_spot_frequency": 0.0014,
+	"wilderness_score_multiplier": 0.032,
    "climate": "highlands_medium",
    "default_starting_season": "spring",
    "seasons": {
@@ -129,7 +130,7 @@
          "humidity": 0.3,
          "sunlight": 0.8,
 			"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:highlands:autumn",
-			"foraging_spot_frequency": "0.0025",
+			"foraging_spot_frequency": 0.0025,
          "weather": [
             {
                "uri": "stonehearth:weather:windy",
@@ -192,7 +193,7 @@
          "humidity": 0.4,
          "sunlight": 0.6,
 			"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:highlands:winter",
-			"foraging_spot_frequency": "0.0004",
+			"foraging_spot_frequency": 0.0004,
          "weather": [
             {
                "uri": "stonehearth_ace:weather:sunny:chilly",

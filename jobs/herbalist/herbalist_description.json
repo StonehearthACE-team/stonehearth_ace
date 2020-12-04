@@ -36,7 +36,10 @@
             },
             {
                "type": "apply_buff",
+					"name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_1_data.perk_001_name)",
                "id": "herbalist_willpower_up_1",
+					"icon": "file(images/natural_affinity.png)",
+               "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_description.level_1_data.perk_001_description)",
                "buff_name": "stonehearth:buffs:herbalist:willpower_1",
                "level": 1,
                "demote_fn": "remove_buff"

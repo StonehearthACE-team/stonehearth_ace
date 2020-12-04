@@ -1,0 +1,67 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(statue_lil_babis_monument.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.55, "y": 0, "z": 0.1 },
+         "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
+      },
+      "render_info": {
+         "scale": 0.15
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -3, "y": 0, "z": -5 },
+               "max": { "x": 3, "y": 6, "z": 4 }
+            }
+         ]
+      },
+      "stonehearth:traveler_attraction": {},
+      "sensor_list": {
+         "sensors": {
+            "everlasting_summer": {
+               "radius": 30
+            }
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:everlasting_summer": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.statue.statue_lil_babis_monument.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.statue.statue_lil_babis_monument.description)",
+         "icon": "file(statue_lil_babis_monument.png)",
+         "category": "decoration",
+         "material_tags": [
+            "stone",
+            "stockpile_decoration"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 2020,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 312
+      },
+      "stonehearth:item": {
+         "clearable": false
+      }
+   }
+}

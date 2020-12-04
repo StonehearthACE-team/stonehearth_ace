@@ -4,10 +4,39 @@
       "stonehearth_ace:task_groups:transform"
    ],
    "level_data": {
+		"1": {
+			"mixintypes": {
+				"perks": "override"
+		   },
+			"perks": [
+				{
+               "name": "i18n(stonehearth:jobs.engineer.engineer_description.level_1_data.perk_000_name)",
+               "id": "crafter_recipe_unlock_1",
+               "icon": "/stonehearth/jobs/common/images/standard_catalog.png",
+               "description": "i18n(stonehearth:jobs.engineer.engineer_description.level_1_data.perk_000_description)",
+               "level": 1
+            },
+            {
+               "type": "increase_max_placeable_siege",
+               "name": "i18n(stonehearth:jobs.engineer.engineer_description.level_1_data.perk_001_name)",
+               "id": "engineer_increase_siege",
+               "icon": "/stonehearth/jobs/engineer/images/level_1.png",
+               "description": "i18n(stonehearth:jobs.engineer.engineer_description.level_1_data.perk_001_description)",
+               "max_num_siege_weapons": {
+                  "trap": 4,
+                  "turret": 2
+               },
+               "level": 1
+            }
+			]
+		},
       "2": {
          "perks": [
             {
                "id": "can_repair_as_some_jobs",
+					"name": "i18n(stonehearth_ace:jobs.engineer.engineer_description.level_2_data.perk_000_name)",
+					"icon": "/stonehearth/jobs/engineer/images/level_0.png",
+               "description": "i18n(stonehearth_ace:jobs.engineer.engineer_description.level_2_data.perk_000_description)",
                "type": "add_can_repair_as_jobs",
                "can_repair_as_jobs": {
                   "stonehearth:jobs:blacksmith": true
@@ -18,7 +47,29 @@
          ]
       },
       "3": {
+			"mixintypes": {
+				"perks": "override"
+		   },
          "perks": [
+				{
+               "type": "increase_max_placeable_siege",
+               "name": "i18n(stonehearth_ace:jobs.engineer.engineer_description.level_3_data.perk_000_name)",
+               "id": "engineer_increase_siege",
+               "icon": "/stonehearth/jobs/engineer/images/level_3.png",
+               "description": "i18n(stonehearth_ace:jobs.engineer.engineer_description.level_3_data.perk_000_description)",
+               "max_num_siege_weapons": {
+                  "trap": 8,
+                  "turret": 4
+               },
+               "level": 3
+            },
+            {
+               "name": "i18n(stonehearth:jobs.engineer.engineer_description.level_3_data.perk_001_name)",
+               "id": "crafter_fine_items_unlock",
+               "icon": "/stonehearth/jobs/common/images/unlock_quality_fine.png",
+               "description": "i18n(stonehearth:jobs.engineer.engineer_description.level_3_data.perk_001_description)",
+               "level": 3
+            },
             {
                "id": "can_repair_as_more_jobs",
                "type": "add_can_repair_as_jobs",
@@ -36,7 +87,10 @@
          "perks": [
             {
                "id": "can_repair_as_any_job",
+					"name": "i18n(stonehearth_ace:jobs.engineer.engineer_description.level_4_data.perk_001_name)",
                "type": "set_can_repair_as_any_job",
+					"icon": "file(images/handyman_2.png)",
+					"description": "i18n(stonehearth_ace:jobs.engineer.engineer_description.level_4_data.perk_001_description)",
                "level": 4,
                "demote_fn": "remove_can_repair_as_any_job"
             }

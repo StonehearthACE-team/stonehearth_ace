@@ -1,0 +1,26 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "speed" : 1.0,
+            "animation": "fiddle.json",
+            "loop": true
+      },
+      "dirt": {
+         "type": "cubemitter",
+         "start_time" : 3900,
+         "end_time" : 4500,
+         "cubemitter": "particles/dirt_poof/dirt_poof.cubemitter.json",
+         "transforms": {
+            "x":0.5,
+            "y":0,
+            "z":-1.6,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      }            
+   }
+}

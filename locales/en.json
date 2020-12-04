@@ -98,15 +98,99 @@
                }
             },
             "rayyas_children": {
-               "desert_pub_ace": {
-                  "display_name": "Desert Pub"
+					"weavers_hut_t1_ace": {
+                  "display_name": "⛺ Weaver's Clay Hut"
+               },
+					"blacksmiths_workshop_t1_ace": {
+                  "display_name": "⛺ Blacksmith's Clay Hut"
+               },
+					"clay_dining_hall_t1_ace": {
+                  "display_name": "⛺ Clay Dining Hall"
+               },
+					"clay_dormitory_t1_ace": {
+                  "display_name": "⛺ Clay Dormitory"
+               },
+					"clay_house_for_two_t1_ace": {
+                  "display_name": "⛺ Clay House for Two"
+               },
+					"communal_kitchen_t1_ace": {
+                  "display_name": "⛺ Clay Communal Kitchen"
+               },
+					"herbalists_workshop_t1_ace": {
+                  "display_name": "⛺ Herbalist's Clay Hut"
+               },
+					"little_clay_house_t1_ace": {
+                  "display_name": "⛺ Little Clay House"
+               },
+					"masons_workshop_t1_ace": {
+                  "display_name": "⛺ Mason's Clay Hut"
+               },
+					"pottery_studio_t1_ace": {
+                  "display_name": "⛺ Pottery Clay Studio"
+               },
+               "desert_pub_t2_ace": {
+                  "display_name": " 🏘️ Desert Pub"
+               },
+               "desert_lodge_t2_ace": {
+                  "display_name": " 🏘️ Desert Lodge"
+               },
+               "red_clay_homes_t2_ace": {
+                  "display_name": " 🏘️ Red Desert Homes"
+               },
+               "engineers_workshop_t2_ace": {
+                  "display_name": " 🏘️ Engineer's Desert Shop"
+               },
+               "little_red_hut_t2_ace": {
+                  "display_name": " 🏘️ Little Red Desert Home"
+               },
+               "rayyas_shadow_t2_ace": {
+                  "display_name": " 🏘️ Rayya's Shadow"
                }
             },
-            "potter_house": {
-               "display_name": "Potter House"
+				"herbalist_house_t1_ace": {
+               "display_name": "⛺ Herbalist House"
             },
-            "mason_house": {
-               "display_name": "Mason House"
+				"mason_house_t1_ace": {
+               "display_name": "⛺ Mason House"
+            },
+				"potter_house_t1_ace": {
+               "display_name": "⛺ Potter House"
+            },
+				"shared_sleeping_quarters_t1_ace": {
+               "display_name": "⛺ Shared Sleeping Quarters"
+            },
+				"tiny_cottage_t1_ace": {
+               "display_name": "⛺ Tiny Cottage"
+            },
+				"weaver_house_t1_ace": {
+               "display_name": "⛺ Weaver House"
+            },
+				"carpenter_house_t1_ace": {
+               "display_name": "⛺ Carpenter House"
+            },
+            "cottage_for_two_t1_ace": {
+               "display_name": "⛺ Cottage for Two"
+            },
+            "dining_hall_t1_ace": {
+               "display_name": "⛺ Dining Hall"
+            },
+            "tavern_t2_ace": {
+               "display_name": " 🏘️ Town Tavern"
+            },
+				"tall_townhouse_t2_ace": {
+               "display_name": " 🏘️ Tall Townhouse"
+            },
+				"black_forest_inn_t2_ace": {
+               "display_name": " 🏘️ Town Inn"
+            },
+				"blacksmith_house_t2_ace": {
+               "display_name": " 🏘️ Blacksmith Townhouse"
+            },
+				"corner_house_t2_ace": {
+               "display_name": " 🏘️ Corner Townhouse"
+            },
+				"cozy_townhouse_t2_ace": {
+               "display_name": " 🏘️ Cozy Townhouse"
             },
             "shepherd_home_t1_ace": {
                "display_name": "⛺ Shepherd's Homestead"
@@ -1235,6 +1319,10 @@
                   },
                   "snow_sunny_negative": {
                      "display_name": "Shiny snow annoyance"
+                  },
+                  "everlasting_summer": {
+                     "display_name": "A dream of summer",
+                     "tooltip": "I feel touched by an everlasting summer, a place where we'd all find harmony and peace..."
                   }
                }
             },
@@ -3139,6 +3227,17 @@
          "elevated_character": {
             "display_name": "Elevated Character",
             "description": "The sublime experience and indescribable flavors of having both cheese and wine has elevated me beyond my own limits! Mind, Spirit and Body are all increased by one.<ul><li>Crafting speed is increased by 35%</li><li>Healing received is increased by 80%</li></ul>"
+         },
+         "everlasting_summer_buff": {
+            "display_name": "Everlasting Summer",
+            "description": "This monument emanates an aura of warmth, healing and intense joy."
+         },
+         "everlasting_summer_touched_buff": {
+            "description": "Being radiated with feelings of a dream world where it's always summer... <ul><li>This hearthling is protected from cold and wetness</li><li>This hearthling is recovering 6 health points every 10 minutes</li><li>This hearthling received a happy, positive thought</li></ul>"
+         },
+         "satisfied_belly": {
+            "display_name": "Satisfied Belly",
+            "description": "Hmm... This was very filling! Willpower is increased.<ul><li>This hearthling will grow hungry more slowly while this effect lasts</li></ul>"
          }
       },
       "loadouts": {
@@ -3388,14 +3487,25 @@
          "cleric_description": {
             "level_1_data": {
                "training_perk_name": "Healer Training",
-               "training_perk_description": "A cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Job Level 3",
-               "perk_001_name": "Minor Strength & Weakness",
-               "perk_001_description": "The cleric's presence improves the muscle of those around them when preferring a healing tome - but hinders and weakens enemies when using a scepter and shield."
+               "training_perk_description": "A Cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Job Level 3"
+            },
+            "level_2_data": {
+               "perk_000_name": "Minor Strength & Weakness",
+               "perk_000_description": "The Cleric's presence improves the muscle of those around them when preferring a healing tome - but hinders and weakens enemies when using a scepter and shield.",
+               "perk_001_name": "Magical Medicine",
+               "perk_001_description": "The Cleric can utilize their divine magic to heal wounded hearthlings outside of battle. They are able to do so every eight hours, treating a wound of low severity and recovering a small amount of health."
             },
             "description": "A combat healer that channels holy magic to not only mend wounds but also boost their allies through auras and effects.",
+            "level_4_data": {
+               "perk_000_name": "Heal Aura (Rank 2)",
+               "perk_000_description": "The healing aura power and radius are increased.<br><br>The Cleric is now able to practice magical healing every six hours, treating two wounds of medium severity and recovering some health."
+            },
             "level_5_data": {
                "perk_000_name": "Major Strength & Weakness",
-               "perk_000_description": "The cleric's presence greatly improves the muscle of those around them when preferring a healing tome - but hinders and weakens enemies even more when using a scepter and shield."
+               "perk_000_description": "The Cleric's presence greatly improves the muscle of those around them when preferring a healing tome - but hinders and weakens enemies even more when using a scepter and shield."
+            },
+            "level_6_data": {
+               "perk_000_description": "The Cleric has mastered the art of healing. Compassion is greatly increased.<br><br>They are now able to practice magical healing every four hours, treating three wounds of high severity and recovering quite some health."
             }
          },
          "cleric_buffs": {
@@ -4424,7 +4534,7 @@
          },
          "herbalist_description": {
             "level_2_data": {
-               "taming_local_flora_name": "Botanical & Collaborative Insight",
+               "taming_local_flora_name": "Botany & Collaborative Insight",
                "taming_local_flora_description": "The Herbalist has acquired sufficient knowledge of the area to learn how to cultivate the local flora. They are also now skillful enough to use materials created by the other crafters, become a Cleric or follow a career as a Brewer.",
                "collaborative_insight_description": "The Herbalist is now skillful enough to use materials created by the other crafters and is also able to become a Cleric"
             },
@@ -4444,10 +4554,12 @@
                "power_medic_3_name": "Great Physician",
                "power_medic_3_description": "The Herbalist can now attend to up to 6 hearthlings at a time. They will also be able to improve the qualities of their plants faster."
             },
-            "description": "A performer of healing practices, the Herbalist can craft and use tonics, medications and potions but also work with plants, seeds and other foraging goods.",
+            "description": "A performer of healing practices, the Herbalist can craft and use tonics, medications and potions but also work with plants, seeds and other goods.",
             "level_1_data": {
-               "perk_000_name": "Junior Practitioner & Natural Regeneration",
-               "perk_000_description": "The Herbalist can attend to up to two hurt hearthlings at a time. Additionally, the Herbalist channels the spirits of the forest and gains natural regeneration. Willpower and Diligence increased."
+               "perk_000_name": "Junior Practitioner",
+               "perk_000_description": "The Herbalist is able to craft medicine and use it on hearthlings that are wounded, poisoned or suffering from a negative effect. They can attend to up to two hurt hearthlings at a time.",
+               "perk_001_name": "Natural Affinity",
+               "perk_001_description": "The Herbalist channels the spirits of the forest and gains natural regeneration, increasing their Willpower and Diligence. They are also proficient in gathering and handling various planters that can provide the town with a steady supply of herbs and other rarer resources."
             }
          },
          "herbalist_mortar_pewter": {
@@ -4571,7 +4683,19 @@
             "storage_name": "Storage"
          },
          "engineer_description": {
-            "description": "The Engineer is a master of creating contraptions and defenses, repairing facilities and designing mechanisms that can improve other professions."
+            "description": "The Engineer is a master of creating contraptions and defenses, repairing facilities and designing mechanisms that can improve other professions.",
+            "level_2_data": {
+               "perk_000_name": "Handyman (Rank 1)",
+               "perk_000_description": "The Engineer can repair structures created by the Blacksmith other than their own."
+            },
+            "level_3_data": {
+               "perk_000_name": "Defender & Handyman (Rank 2)",
+               "perk_000_description": "The Engineer can place up to eight traps and four turrets.<br><br>Additionally, the Engineer can now repair structures created by the Mason, Carpenter and Potter as well."
+            },
+            "level_4_data": {
+               "perk_001_name": "Handyman (Rank 3)",
+               "perk_001_description": "The Engineer is now able to repair anything that belongs to your town, regardless of who crafted it or where it came from!"
+            }
          }
       },
       "potter": {
@@ -11365,6 +11489,10 @@
                   "display_name": "Wolf & Kitten Statue",
                   "description": "It is said that this beautiful piece celebrates the most unlikely love."
                }
+            },
+            "statue_lil_babis_monument": {
+               "display_name": "Shrine of Lilla Babis",
+               "description": "Legend has it that she was the best kitty ever. It radiates a pleasing aura."
             }
          },
          "wall_axe": {

@@ -132,6 +132,17 @@ function AceShepherdPastureComponent:set_pasture_type_command(session, response,
    return result
 end
 
+function AceShepherdPastureComponent:set_size(x, z)
+   self._sv.size = { x = x, z = z}
+   local ten_square_units = x * z / 100
+   self._sv.max_population_data = {}
+   for animal, data in pairs(self._pasture_data) do
+      self._sv.max_population_data[animal] = math.min(math.max(radiant.math.round(data.max_num_per_10_square_unit * ten_square_units), data.min_population), (data.max_population or 100))
+   end
+
+   self.__saved_variables:mark_changed()
+end
+
 function AceShepherdPastureComponent:_claim_animals_in_pasture()
    -- reclaim any animals matching the new animal type (and any of its younger stages)
    local uri = self._pasture_data[self._sv.pasture_type].reproduction_uri or self._sv.pasture_type

@@ -1,13 +1,14 @@
 {
-   "components": {
-      "mob": {
+   "components": {     
+	   "mixintypes": {
+		   "render_info": "override",
+		   "model_variants": "override",
+		   "mob": "override"
+	   },
+		"mob": {
          "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       },
-	  "mixintypes": {
-		 "render_info": "override",
-		 "model_variants": "override"
-	  },
       "render_info": {
          "scale": 0.13
       },

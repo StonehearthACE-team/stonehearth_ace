@@ -5,69 +5,77 @@
          "categories": {
             "outpost": {
                "templates": {
-				  "mixintypes": {
-					 "pottery_studio_new": "remove",
-					 "weavers_hut_new": "remove",
-					 "masons_workshop_new": "remove",
-					 "herbalists_workshop_new": "remove",
-					 "communal_kitchen_new": "remove",
-					 "blacksmiths_workshop_new": "remove"
-				  },
-                  "pottery_studio_ace": {
+						"mixintypes": {
+							"pottery_studio_new": "remove",
+							"weavers_hut_new": "remove",
+							"masons_workshop_new": "remove",
+							"herbalists_workshop_new": "remove",
+							"communal_kitchen_new": "remove",
+							"blacksmiths_workshop_new": "remove",
+							"clay_dormitory_new": "remove",
+							"clay_house_for_two_new": "remove",
+							"little_clay_house_new": "remove",
+							"clay_dining_hall_new": "remove"
+				      },
+						"clay_dormitory_t1_ace": "file(building_templates/rayyas_children/clay_dormitory_t1_ace.json)",
+                  "clay_house_for_two_t1_ace": "file(building_templates/rayyas_children/clay_house_for_two_t1_ace.json)",
+                  "little_clay_house_t1_ace": "file(building_templates/rayyas_children/little_clay_house_t1_ace.json)",
+                  "clay_dining_hall_t1_ace": "file(building_templates/rayyas_children/clay_dining_hall_t1_ace.json)",
+                  "pottery_studio_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:potter"
                      },
-                     "file": "file(building_templates/rayyas_children/pottery_studio_ace.json)"
+                     "file": "file(building_templates/rayyas_children/pottery_studio_t1_ace.json)"
                   },
-                  "weavers_hut_ace": {
+                  "weavers_hut_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:weaver"
                      },
-                     "file": "file(building_templates/rayyas_children/weavers_hut_ace.json)"
+                     "file": "file(building_templates/rayyas_children/weavers_hut_t1_ace.json)"
                   },
-                  "masons_workshop_ace": {
+                  "masons_workshop_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:mason"
                      },
-                     "file": "file(building_templates/rayyas_children/masons_workshop_ace.json)"
+                     "file": "file(building_templates/rayyas_children/masons_workshop_t1_ace.json)"
                   },
-                   "herbalists_workshop_ace": {
+                   "herbalists_workshop_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:herbalist"
                      },
-                     "file": "file(building_templates/rayyas_children/herbalists_workshop_ace.json)"
+                     "file": "file(building_templates/rayyas_children/herbalists_workshop_t1_ace.json)"
                   },
-                   "communal_kitchen_ace": {
+                   "communal_kitchen_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:cook"
                      },
-                     "file": "file(building_templates/rayyas_children/communal_kitchen_ace.json)"
+                     "file": "file(building_templates/rayyas_children/communal_kitchen_t1_ace.json)"
                   },
-                   "blacksmiths_workshop_ace": {
+                   "blacksmiths_workshop_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:blacksmith"
                      },
-                     "file": "file(building_templates/rayyas_children/blacksmiths_workshop_ace.json)"
+                     "file": "file(building_templates/rayyas_children/blacksmiths_workshop_t1_ace.json)"
                   },
-                  "rc_shepherd_barn_ace": {
+                  "rc_shepherd_barn_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:shepherd"
                      },
-                     "file": "file(building_templates/rayyas_children/rc_shepherd_barn_ace.json)"
+                     "file": "file(building_templates/rayyas_children/rc_shepherd_barn_t1_ace.json)"
                   },
-                  "rc_shepherd_coop_ace": {
+                  "rc_shepherd_coop_t1_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:shepherd"
                      },
-                     "file": "file(building_templates/rayyas_children/rc_shepherd_coop_ace.json)"
+                     "file": "file(building_templates/rayyas_children/rc_shepherd_coop_t1_ace.json)"
                   },
                   "rc_shepherd_home_t1_ace": {
                      "unlock_requirement": {
@@ -80,17 +88,25 @@
             },
             "settlement": {
                "templates": {
-				   "mixintypes": {
-					 "engineers_workshop_new": "remove"
-				   },
-                   "engineers_workshop_ace": {
+						"mixintypes": {
+							"engineers_workshop_new": "remove",
+							"little_red_hut_new": "remove",
+							"rayyas_shadow_new": "remove",
+							"red_clay_homes_new": "remove",
+							"desert_lodge_new": "remove"
+						},
+						"little_red_hut_t2_ace": "file(building_templates/rayyas_children/tier2/little_red_hut_t2_ace.json)",
+                  "rayyas_shadow_t2_ace": "file(building_templates/rayyas_children/tier2/rayyas_shadow_t2_ace.json)",
+                  "red_clay_homes_t2_ace": "file(building_templates/rayyas_children/tier2/red_clay_homes_t2_ace.json)",
+                  "desert_lodge_t2_ace": "file(building_templates/rayyas_children/tier2/desert_lodge_t2_ace.json)",
+                  "engineers_workshop_t2_ace": {
                      "unlock_requirement": {
                         "type": "has_job",
                         "value": "stonehearth:jobs:engineer"
                      },
-                     "file": "file(building_templates/rayyas_children/tier2/engineers_workshop_ace.json)"
+                     "file": "file(building_templates/rayyas_children/tier2/engineers_workshop_t2_ace.json)"
                   },
-						"desert_pub_ace": "file(building_templates/rayyas_children/tier2/desert_pub_ace.json)"
+						"desert_pub_t2_ace": "file(building_templates/rayyas_children/tier2/desert_pub_t2_ace.json)"
                }
             }
          }

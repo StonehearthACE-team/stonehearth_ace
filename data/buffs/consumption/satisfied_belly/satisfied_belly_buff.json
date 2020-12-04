@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.satisfied_belly.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.satisfied_belly.description)",
+   "icon": "file(satisfied_belly_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "willpower": {
+         "add": 10
+      },
+      "calorie_burn_multiplier": {
+         "multiply": 0.5
+      }
+   }
+}
