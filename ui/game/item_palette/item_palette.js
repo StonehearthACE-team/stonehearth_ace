@@ -21,7 +21,8 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
          var uri = self._getUri(v);
          if (uri) {
             var catalogData = App.catalog.getCatalogData(uri);
-            if (catalogData) {
+            // only include an item that has an icon
+            if (catalogData && catalogData.icon) {
                v.display_name = catalogData.display_name;
                v.description = catalogData.description;
                v.category = v.category || catalogData.category;   // don't override a manually supplied category

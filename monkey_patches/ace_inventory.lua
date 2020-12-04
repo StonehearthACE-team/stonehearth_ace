@@ -26,6 +26,26 @@ function AceInventory:_add_more_trackers()
    end
 end
 
+-- override to also pass in the inventory object to the tracker controllers
+-- so they can easily check the container of an item being added
+function AceInventory:add_item_tracker(controller_name)
+   local tracker = self._trackers[controller_name]
+   if not tracker then
+      --log:debug('creating "%s" tracking controller for %s', controller_name, self._sv.player_id)
+      local controller = radiant.create_controller(controller_name, self)
+      assert(controller)
+
+      local container_for = self._container_for
+      tracker = radiant.create_controller('stonehearth:inventory_tracker', controller)
+      for id, item in pairs(self._sv._items) do
+         tracker:add_item(item, container_for[id])
+      end
+      self._trackers[controller_name] = tracker
+      self.__saved_variables:mark_changed()
+   end
+   return tracker
+end
+
 -- ACE: patched to add ignore_restock storage property
 function AceInventory:_create_restock_directors()
    local RESTOCK_DIRECTOR_INTERVAL = '30m'

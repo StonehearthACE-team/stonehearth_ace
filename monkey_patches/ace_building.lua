@@ -156,6 +156,8 @@ function AceBuilding:try_bank_resource(item, material)
          self._sv._banked_resources[material] = banked
       end
 
+      local prev_count = banked.count
+
       local stacks_comp = item:get_component('stonehearth:stacks')
       local stacks = stacks_comp and stacks_comp:get_stacks() or 1
       banked.count = banked.count + stacks
@@ -172,7 +174,8 @@ function AceBuilding:try_bank_resource(item, material)
       self.__saved_variables:mark_changed()
 
       -- technically possible for a slightly negative banked count to then have only 1-2 stacks of a resource banked
-      if banked.count > 0 then
+      -- and we only want to alert people if we didn't have any banked already
+      if banked.count > 0 and prev_count <= 0 then
          radiant.events.trigger_async(self._entity, 'stonehearth_ace:material_resource_banked', material)
       end
 

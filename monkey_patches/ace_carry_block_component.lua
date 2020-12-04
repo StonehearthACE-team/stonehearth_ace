@@ -36,6 +36,11 @@ function AceCarryBlock:set_carrying(new_item, opt_relative_orientation)
                      :add_child_to_bone(new_item, 'carry')
    radiant.entities.move_to_grid_aligned(new_item, Point3.zero)
 
+   -- ACE: update the basic inventory tracker to properly display in the town inventory
+   -- maybe this should reconsider all trackers? with inventory:update_item_container(new_item:get_id(), nil, true)
+   local inventory = stonehearth.inventory:get_inventory(new_item:get_player_id())
+   inventory:get_item_tracker('stonehearth:basic_inventory_tracker'):reevaluate_item(new_item)
+
    if opt_relative_orientation then
       radiant.entities.turn_to(new_item, opt_relative_orientation)
    end
