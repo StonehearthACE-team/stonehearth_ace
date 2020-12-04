@@ -2440,7 +2440,7 @@
          },
          "place_fish_trap": {
             "display_name": "Place Fish Trap",
-            "description": "Order the placement of fish traps",
+            "description": "Order the placement of fish traps. A Fish Trap can only be placed on water edges and will work more efficiently when distant from other Fish Traps and with lots of water available around or underneath it.",
             "tip_title": "Click to place a fish trap at that location",
             "tip_description": "Traps will automatically rotate to face the water, but you can also switch between valid rotations with [str(left_binding)] and [str(right_binding)] keys"
          },
@@ -4557,9 +4557,9 @@
             "description": "A performer of healing practices, the Herbalist can craft and use tonics, medications and potions but also work with plants, seeds and other goods.",
             "level_1_data": {
                "perk_000_name": "Junior Practitioner",
-               "perk_000_description": "The Herbalist is able to craft medicine and use it on hearthlings that are wounded, poisoned or suffering from a negative effect. They can attend to up to two hurt hearthlings at a time.",
+               "perk_000_description": "The Herbalist is able to craft medicine and use it on up to two injured hearthlings at a time.",
                "perk_001_name": "Natural Affinity",
-               "perk_001_description": "The Herbalist channels the spirits of the forest and gains natural regeneration, increasing their Willpower and Diligence. They are also proficient in gathering and handling various planters that can provide the town with a steady supply of herbs and other rarer resources."
+               "perk_001_description": "The Herbalist channels the spirits of the forest and gains natural regeneration, increasing their Willpower and Diligence. They are also proficient in gathering and handling herb planters."
             }
          },
          "herbalist_mortar_pewter": {
@@ -6870,7 +6870,7 @@
          "trapper_description": {
             "level_1_data": {
                "perk_001_name": "Fish Trapping",
-               "perk_001_description": "The Trapper is capable of placing and utilizing fish traps for providing your town with fish meat and, sometimes, fish roe.<br>To place a Fish Trap use the button found on the Trapper itself.<br>Fish Traps can only be placed on water edges and will work more efficiently when distant from each other and with lots of water available around or underneath it."
+               "perk_001_description": "The Trapper is capable of placing and utilizing fish traps for providing your town with fish meat and, sometimes, fish roe."
             },
             "level_3_data": {
                "trapper_level_3_description": "Long practice helps the trapper salvage more from each animal. The added agility allows the Trapper to occupy themselves with 3 additional fish traps."
