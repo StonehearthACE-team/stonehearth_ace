@@ -122,7 +122,7 @@ function AceGameCreationService:create_camp_command(session, response, pt)
       -- if it hasn't already been placed, find a place for it
       if not radiant.entities.get_world_grid_location(starting_items_container) then
 			local placement_location = Point3(camp_x, pt.y, camp_z-6)
-			radiant.terrain.place_entity(starting_items_container, placement_location, { facing = 90 })
+			radiant.terrain.place_entity(starting_items_container, placement_location, { force_iconic = false, facing = 90 })
       end
       starting_items_container:add_component('stonehearth_ace:input')
       town:add_default_storage(starting_items_container)
