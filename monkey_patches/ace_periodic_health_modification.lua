@@ -4,7 +4,7 @@ local AcePeriodicHealthModificationBuff = class()
 
 function AcePeriodicHealthModificationBuff:_on_pulse()
    local resources = self._entity:is_valid() and self._entity:get_component('stonehearth:expendable_resources')
-   if not resources then
+   if not resources or resources.__destroyed then
       return
    end
 

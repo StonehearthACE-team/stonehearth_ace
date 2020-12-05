@@ -5128,6 +5128,7 @@
       "stonehearth:actions:light_firepit": "stonehearth_ace:actions:light_firepit"
    },
    "client_controllers": {
+      "transition_to_look_from_controller": "file(services/client/camera/transition_to_look_from_controller.lua)",
       "weather_renderers:windy_chilly": "file(data/weather/windy_chilly/windy_chilly_renderer.lua)",
       "weather_renderers:windy_springtime": "file(data/weather/windy_springtime/windy_springtime_renderer.lua)",
       "weather_renderers:snow_drifts": "file(data/weather/snow/snow_drifts_renderer.lua)",
