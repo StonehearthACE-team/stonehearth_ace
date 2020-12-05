@@ -166,18 +166,24 @@ function AceStorageComponent:drop_all(fallback_location, priority_location)
    return items
 end
 
-function AceStorageComponent:add_gold_item(item)
+function AceStorageComponent:add_gold_item(item, combine_only)
    if item:get_uri() == GOLD_URI then
-      local stacks = item:add_component('stonehearth:stacks'):get_stacks()
-      radiant.entities.destroy_entity(item)
-      return self:add_gold(stacks)
+      local stacks_comp = item:add_component('stonehearth:stacks')
+      local stacks = stacks_comp:get_stacks()
+      local result = self:add_gold(stacks, combine_only)
+      if radiant.util.is_number(result) then
+         stacks_comp:set_stacks(result)
+      else
+         radiant.entities.destroy_entity(item)
+         return result
+      end
    end
 
    return false
 end
 
-function AceStorageComponent:add_gold(amount)
-   return self._inventory:add_gold(amount, self._entity)
+function AceStorageComponent:add_gold(amount, combine_only)
+   return self._inventory:add_gold(amount, self._entity, combine_only)
 end
 
 return AceStorageComponent

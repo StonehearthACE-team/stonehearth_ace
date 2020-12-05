@@ -248,7 +248,9 @@ function AceInventory:set_storage_filter(storage_entity, filter)
    return filter_fn
 end
 
-function AceInventory:add_gold(amount, storage)
+-- if storage is specified and combine_only, the number of remaining stacks that were unable to be added is returned (nil if none)
+-- otherwise, if any gold items were created, those are returned in a table (nil if none)
+function AceInventory:add_gold(amount, storage, combine_only)
    local gold_items = self:get_items_of_type(GOLD_URI)
    local stacks_to_add = amount
 
@@ -256,7 +258,7 @@ function AceInventory:add_gold(amount, storage)
    if gold_items ~= nil then
       for id, item in pairs(gold_items.items) do
          -- only consider a gold item that's not currently in use
-         if not stonehearth.ai:get_ai_lease_owner(item) then
+         if not stonehearth.ai:get_ai_lease_owner(item) and (not storage or radiant.entities.get_parent(item) == storage) then
             -- get stacks for the item
             local stacks_component = item:get_component('stonehearth:stacks')
             local item_stacks = stacks_component:get_stacks()
@@ -285,6 +287,10 @@ function AceInventory:add_gold(amount, storage)
    end
 
    if stacks_to_add > 0 then
+      if combine_only then
+         return stacks_to_add
+      end
+
       local items_added = {}
       -- If we got here, then we need to add gold to the town
       -- if a storage entity was specified, use that instead of default storage

@@ -13,7 +13,7 @@ function AceStockpileComponent:_add_item_to_stock(entity)
 
    -- hold onto the item...
    -- Paul: if we're adding gold, do it in a gold adding way
-   local gold_items = self._storage:add_gold_item(entity)
+   local gold_items = self._storage:add_gold_item(entity, true)
    if gold_items == false then
       self._storage:add_item(entity)
    elseif gold_items then
