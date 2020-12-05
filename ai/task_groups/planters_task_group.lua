@@ -1,7 +1,7 @@
 local PlantersTaskGroup = class()
 PlantersTaskGroup.name = 'planters'
 PlantersTaskGroup.does = 'stonehearth:work'
-PlantersTaskGroup.priority = { 0, 0.82 }
+PlantersTaskGroup.priority = { 0, 0.84 }
 
 return stonehearth.ai:create_task_group(PlantersTaskGroup)
          :work_order_tag("job")

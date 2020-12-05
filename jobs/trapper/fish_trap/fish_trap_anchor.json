@@ -39,10 +39,11 @@
          ]
       },
       "stonehearth_ace:fish_trap": {
-         "trap_timer": "2h+4h",
-         "min_effective_water_volume": 100,
-         "low_water_volume": 180,
-         "high_water_volume": 300,
+         "trap_timer": "6h+8h",
+         "square_radius": 9,
+         "min_effective_water_volume": 280,
+         "low_water_volume": 580,
+         "high_water_volume": 1080,
          "trip_effect": "trap_tripped",
          "trap_tripped_effect": "trap_tripped",
          "raise_trap_effect": "pull_back",
