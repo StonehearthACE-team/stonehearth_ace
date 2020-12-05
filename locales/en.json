@@ -98,34 +98,34 @@
                }
             },
             "rayyas_children": {
-					"weavers_hut_t1_ace": {
+               "weavers_hut_t1_ace": {
                   "display_name": "⛺ Weaver's Clay Hut"
                },
-					"blacksmiths_workshop_t1_ace": {
+               "blacksmiths_workshop_t1_ace": {
                   "display_name": "⛺ Blacksmith's Clay Hut"
                },
-					"clay_dining_hall_t1_ace": {
+               "clay_dining_hall_t1_ace": {
                   "display_name": "⛺ Clay Dining Hall"
                },
-					"clay_dormitory_t1_ace": {
+               "clay_dormitory_t1_ace": {
                   "display_name": "⛺ Clay Dormitory"
                },
-					"clay_house_for_two_t1_ace": {
+               "clay_house_for_two_t1_ace": {
                   "display_name": "⛺ Clay House for Two"
                },
-					"communal_kitchen_t1_ace": {
+               "communal_kitchen_t1_ace": {
                   "display_name": "⛺ Clay Communal Kitchen"
                },
-					"herbalists_workshop_t1_ace": {
+               "herbalists_workshop_t1_ace": {
                   "display_name": "⛺ Herbalist's Clay Hut"
                },
-					"little_clay_house_t1_ace": {
+               "little_clay_house_t1_ace": {
                   "display_name": "⛺ Little Clay House"
                },
-					"masons_workshop_t1_ace": {
+               "masons_workshop_t1_ace": {
                   "display_name": "⛺ Mason's Clay Hut"
                },
-					"pottery_studio_t1_ace": {
+               "pottery_studio_t1_ace": {
                   "display_name": "⛺ Pottery Clay Studio"
                },
                "desert_pub_t2_ace": {
@@ -147,25 +147,25 @@
                   "display_name": " 🏘️ Rayya's Shadow"
                }
             },
-				"herbalist_house_t1_ace": {
+            "herbalist_house_t1_ace": {
                "display_name": "⛺ Herbalist House"
             },
-				"mason_house_t1_ace": {
+            "mason_house_t1_ace": {
                "display_name": "⛺ Mason House"
             },
-				"potter_house_t1_ace": {
+            "potter_house_t1_ace": {
                "display_name": "⛺ Potter House"
             },
-				"shared_sleeping_quarters_t1_ace": {
+            "shared_sleeping_quarters_t1_ace": {
                "display_name": "⛺ Shared Sleeping Quarters"
             },
-				"tiny_cottage_t1_ace": {
+            "tiny_cottage_t1_ace": {
                "display_name": "⛺ Tiny Cottage"
             },
-				"weaver_house_t1_ace": {
+            "weaver_house_t1_ace": {
                "display_name": "⛺ Weaver House"
             },
-				"carpenter_house_t1_ace": {
+            "carpenter_house_t1_ace": {
                "display_name": "⛺ Carpenter House"
             },
             "cottage_for_two_t1_ace": {
@@ -177,19 +177,19 @@
             "tavern_t2_ace": {
                "display_name": " 🏘️ Town Tavern"
             },
-				"tall_townhouse_t2_ace": {
+            "tall_townhouse_t2_ace": {
                "display_name": " 🏘️ Tall Townhouse"
             },
-				"black_forest_inn_t2_ace": {
+            "black_forest_inn_t2_ace": {
                "display_name": " 🏘️ Town Inn"
             },
-				"blacksmith_house_t2_ace": {
+            "blacksmith_house_t2_ace": {
                "display_name": " 🏘️ Blacksmith Townhouse"
             },
-				"corner_house_t2_ace": {
+            "corner_house_t2_ace": {
                "display_name": " 🏘️ Corner Townhouse"
             },
-				"cozy_townhouse_t2_ace": {
+            "cozy_townhouse_t2_ace": {
                "display_name": " 🏘️ Cozy Townhouse"
             },
             "shepherd_home_t1_ace": {
@@ -4100,12 +4100,12 @@
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "plum_tree_seeds_recipe": {
-               "recipe_name": "Plum Cores",
+               "recipe_name": "Plum Seeds",
                "description": "Domesticate Plum trees and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "plum_tree_seeds_2_recipe": {
-               "recipe_name": "Plum Cores",
+               "recipe_name": "Plum Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate plum trees!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
@@ -5346,6 +5346,11 @@
                "recipe_name": "Giant Bone Short Sword",
                "description": "Craft a knight's sidearm with the bones of a mythical creature.",
                "flavor": ""
+            },
+            "giant_bone_short_spear_recipe": {
+               "recipe_name": "Giant Bone Scythe",
+               "description": "Create a dangerous weapons for reaping your foes like wheat!",
+               "flavor": "It's almost harvesting season!"
             },
             "carpenter_saw_bone_recipe": {
                "recipe_name": "Carpenter's Bone Saw",
@@ -7797,7 +7802,7 @@
                "description": "Learn to grow pear trees."
             },
             "plum_tree_seeds": {
-               "display_name": "Plum Cores",
+               "display_name": "Plum Seeds",
                "description": "Learn to grow plum trees."
             },
             "birch_tree_seeds": {
@@ -13153,7 +13158,7 @@
             }
          },
          "foraging_spot": {
-            "display_name": "Foraging Spot",
+            "display_name": "forageables",
             "description": "A spot for foraging."
          }
       },
@@ -14043,7 +14048,7 @@
          },
          "giant_bone_short_spear": {
             "display_name": "Giant Bone Scythe",
-            "description": "A long and dangerous weapons for reaping at your foes!"
+            "description": "A long and dangerous weapons for reaping your foes!"
          }
       },
       "gizmos": {
@@ -16188,7 +16193,7 @@
                      },
                      "create_field_decorative_flowers": {
                         "display_name": "Decorative Flower Field",
-                        "description": "Place a farm on grass or dirt that can grow beautiful flowers. These will not be automatically harvested.",
+                        "description": "Place a farm on grass or dirt that can grow beautiful flowers. These can NOT be harvested.",
                         "required_ability_text": "Your town has not yet unlocked this farm type."
                      }
                   }
