@@ -257,6 +257,11 @@ function stonehearth_ace:_run_scripts(category)
    end
 end
 
+function stonehearth_ace:load_version_info()
+   self.version_info = radiant.resources.load_json('stonehearth_ace/version.json') or {}
+end
+
+stonehearth_ace:load_version_info()
 radiant.events.listen(stonehearth_ace, 'radiant:init', stonehearth_ace, stonehearth_ace._on_init)
 radiant.events.listen(radiant, 'radiant:required_loaded', stonehearth_ace, stonehearth_ace._on_required_loaded)
 

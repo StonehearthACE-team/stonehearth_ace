@@ -1,0 +1,106 @@
+<script type="text/x-handlebars" data-template-name="stonehearthTitleScreen">
+   <div id="radiant">
+   </div>
+   <div id="titlescreen" class="_dev_build">
+      <div id="splashContainer">
+         <div id="lastSplash" {{bind-attr class="view.aceBranchClass"}}></div>
+         <div id="currentSplash" {{bind-attr class="view.aceBranchClass"}}></div>
+      </div>
+
+      <img id="logo">
+      <div id="controls">
+         <div id="continue">
+            <div class="gameInfo">
+               <div class="nameHeader">{{i18n stonehearth:ui.shell.title_screen.kingdom_of}}</div>
+               <div class="name">{{view.lastSave.gameinfo.town_name}}</div>
+               <div class="gameTime">{{i18n_key "stonehearth:ui.game.calendar.date_time_long_format" date=view.lastSave.gameinfo.game_date}}</div>
+               {{#if view.lastSave.gameinfo.differentVersions}}
+                  <div class="differentVersionText">{{i18n stonehearth:ui.game.save_view.game_different_version}}</div>
+               {{/if}}
+               <img class="banner" />
+               {{#if view.lastSave.gameinfo.jobs}}
+                  <div id="jobs">
+                     <div id="soldiers" class="counter">
+                        <div>{{view.lastSave.gameinfo.jobs.soldiers}}</div>
+                     </div>
+                     <div id="crafters" class="counter">
+                        <div>{{view.lastSave.gameinfo.jobs.crafters}}</div>
+                     </div>
+                     <div id="workers" class="counter">
+                        <div>{{view.lastSave.gameinfo.jobs.workers}}</div>
+                     </div>
+                  </div>
+               {{/if}}
+            </div>
+         </div>
+
+         <a href="#" {{action 'continueGame' target="view"}}>
+            <button id="continueGameButton" class="flat" title="{{i18n stonehearth:ui.game.save_view.game_different_version}}" {{bind-attr class="view.lastSave.gameinfo.differentVersions:disabled"}}>{{i18n stonehearth:ui.shell.title_screen.continue_game}}</button>
+         </a>
+
+         <a href="#" {{action 'showSaveMenu' 'hideSaveButtons' target="view"}}>
+            <button id="loadGameButton" class="flat last">{{i18n stonehearth:ui.shell.title_screen.load_game}}</button>
+         </a>
+
+         <div id="newGame">
+            <div class="name">{{i18n stonehearth:ui.shell.title_screen.new_game}}</div>
+         </div>
+
+         <a href="#" {{action 'newGame' target="view"}}>
+            <button id="singleplayerGameButton" class="flat">{{i18n stonehearth:ui.shell.title_screen.singleplayer_game}}</button>
+         </a>
+
+         <a href="#" {{action 'openMultiplayerSettings' target="view"}}>
+            <button id="multiplayerGameButton" class="flat last">{{i18n stonehearth:ui.shell.title_screen.multiplayer_game}}</button>
+         </a>
+
+         <div id="modsDiv">
+            <a href="#" {{action 'openMods' target="view"}}>
+               <button id="modsButton" class="flat last">{{i18n stonehearth:ui.shell.title_screen.mods}}</button>
+            </a>
+
+            <a href="#" {{action 'toggleAce' target="view"}}>
+               <button id="aceButton" class="flat last" style="display: none;">
+                  <div id="aceCheck"></div>
+                  {{i18n stonehearth:ui.shell.title_screen.ace}}
+               </button>
+            </a>
+         </div>
+         
+         <div>
+            <a href="#" {{action 'openModal' 'about'}}>
+               <button id="aboutButton" class="flat last">{{i18n stonehearth:ui.shell.title_screen.about}}</button>
+            </a>
+            <a href="#" {{action 'settings' target=view}}>
+               <button id="settingsButton" class="flat last" clicksound="stonehearth:sounds:ui:start_menu:small_click">{{i18n stonehearth:ui.shell.title_screen.settings}}</button>
+            </a>
+            <a href="#" {{action 'exit' target="view"}}>
+               <button id="exitButton" class="flat last">{{i18n stonehearth:ui.shell.title_screen.exit}}</button>
+            </a>
+         </div>
+
+      </div>
+
+      <div id="blog">
+         <div class="body">
+            <h1>{{view.productName}}</h1>
+            <br><br>
+            {{{view.releaseNotes}}}
+         </div>
+      </div>
+
+      <div id="about">
+         <br>
+         {{view.productName}}
+      </div>
+
+      <div id="aboutDetails">
+      </div>
+
+      <div id="aceVersionInfo">
+         <div id="version" {{bind-attr class="view.aceBranchClass"}}>{{{view.aceVersion}}}</div>
+         <div id="title">{{{view.aceVersionInfo.title}}}</div>
+         <div id="info">{{{view.aceVersionInfo.info}}}</div>
+      </div>
+   </div>
+</script>

@@ -79,6 +79,9 @@ end
 local player_service_trace = nil
 
 function stonehearth_ace:_on_init()
+   local vi = self.version_info
+   radiant.log.write_('stonehearth_ace', 0, 'Initializing ACE ' .. tostring(vi.branch) .. ' branch version ' .. tostring(vi.version) .. '...')
+
    local function check_override_ui(players, player_id)
       -- Load ui mod
       if not player_id then
@@ -153,6 +156,11 @@ function stonehearth_ace:_run_scripts(category)
    end
 end
 
+function stonehearth_ace:load_version_info()
+   self.version_info = radiant.resources.load_json('stonehearth_ace/version.json') or {}
+end
+
+stonehearth_ace:load_version_info()
 radiant.events.listen(stonehearth_ace, 'radiant:init', stonehearth_ace, stonehearth_ace._on_init)
 radiant.events.listen(radiant, 'radiant:required_loaded', stonehearth_ace, stonehearth_ace._on_required_loaded)
 

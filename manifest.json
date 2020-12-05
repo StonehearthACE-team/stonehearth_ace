@@ -5123,8 +5123,7 @@
       "stonehearth/ui/game/widgets/terrain_vision/terrain_vision.html": "stonehearth_ace/ui/game/widgets/terrain_vision/terrain_vision.html",
       "stonehearth/ui/shell/select_roster/select_roster.html": "file(ui/shell/select_roster/select_roster.html)",
       "stonehearth/ui/shell/select_roster/select_roster.js": "file(ui/shell/select_roster/select_roster.js)",
-      "stonehearth/ui/shell/title/images/foreground.png": "file(ui/shell/title/images/stonehearth_ace_foreground.png)",
-      "stonehearth/ui/shell/title/images/stonehearth_ace_foreground.png": "file(ui/shell/title/images/stonehearth_ace_foreground.png)",
+      "stonehearth/ui/shell/title/title.html": "file(ui/shell/title/title.html)",
       "stonehearth:actions:light_firepit": "stonehearth_ace:actions:light_firepit"
    },
    "client_controllers": {
@@ -5524,6 +5523,10 @@
       "set_water_sponge_flow_enabled": {
          "controller": "file(call_handlers/water_tools_call_handler.lua)",
          "endpoint": "server"
+      },
+      "get_version_info_command": {
+         "controller": "file(call_handlers/version_call_handler.lua)",
+         "endpoint": "client"
       }
    },
    "object_commands": {
@@ -5596,6 +5599,7 @@
          "file(ui/game/bulletin/bulletin_dialog/reembarkation_dialog/reembarkation_dialog.js)",
          "file(ui/game/bulletin/bulletin_list/bulletin_list.js)",
          "file(ui/shell/loadout_screen/loadout_screen.js)",
+         "file(ui/shell/title/title.js)",
          "file(ui/game/save_view/save_view.js)"
       ],
       "less": [

@@ -1,13 +1,49 @@
 #titlescreen {
-   #currentSplash, #lastSpash {
-      background-size: contain !important;
-      background-position: bottom left !important;
+   #currentSplash, #lastSplash {
+      &.aceStableBranch {
+         background-image: url(/stonehearth/ui/shell/title/images/stonehearth_ace_foreground.png) !important;
+         background-size: inherit;
+         background-position: inherit;
+      }
+
+      &.aceUnstableBranch {
+         background-image: url(./images/stonehearth_ace_foreground_unstable.png) !important;
+         background-size: inherit;
+         background-position: inherit;
+      }
    }
 
-   &.ace_enabled {
-      #currentSplash, #lastSplash {
-         background-size: contain !important;
-         background-position: bottom left !important;
+   #aceVersionInfo {
+      .outlined;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      text-align: left;
+
+      #version {
+         font-family: @controlFontFamily;
+         font-size: 32px;
+
+         &.aceStableBranch {
+            color: rgb(148, 212, 255);
+         }
+
+         &.aceUnstableBranch {
+            color: rgb(255, 72, 47);
+         }
+      }
+
+      #title {
+         font-family: @baseFontFamily;
+         font-size: 24px;
+         color: #fff;
+      }
+
+      #info {
+         font-family: @baseFontFamily;
+         font-size: 14px;
+         color: #fff;
+         max-width: 600px;
       }
    }
 }
