@@ -10,7 +10,7 @@ App.StonehearthTitleScreenView.reopen({
                   return;
                }
 
-               var branchClass = response.branch.toLocaleLowerCase() == 'unstable' ? 'aceUnstableBranch' : 'aceStableBranch';
+               var branchClass = response.branch.toLocaleLowerCase() == 'unstable' ? 'aceUnstableBranch' : 'acePre-ReleaseBranch';
                self.set('aceBranchClass', branchClass);
                self.set('aceVersionInfo', response);
                self.set('aceVersion', i18n.t('stonehearth_ace:ui.shell.title_screen.ace_version', response));
