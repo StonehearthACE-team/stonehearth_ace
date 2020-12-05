@@ -55,7 +55,7 @@ end
 function water_lib.get_contiguous_subregion(region, origin, square_radius)
    local bounds = region:get_bounds()
    local clipper = Region3(Cube3(Point3(origin.x - square_radius, bounds.min.y, origin.z - square_radius),
-                                 Point3(origin.x + square_radius, bounds.max.y, origin.z + square_radius)))
+                                 Point3(origin.x + square_radius + 1, bounds.max.y, origin.z + square_radius + 1)))
    local intersection = region:intersect_region(clipper)
 
    -- we only want a single contiguous region from the origin point
