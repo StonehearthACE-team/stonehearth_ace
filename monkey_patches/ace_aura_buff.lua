@@ -18,24 +18,27 @@ function AceAuraBuff:_on_pulse()
       for id, target in sensor:each_contents() do
          if id ~= self._entity:get_id() or self._tuning.affect_self then
             local target_player_id = radiant.entities.get_player_id(target)
-               if (not self._tuning.target_enemies and stonehearth.player:are_player_ids_friendly(player_id, target_player_id)) or
-                     (self._tuning.target_enemies and stonehearth.player:are_player_ids_hostile(player_id, target_player_id)) then
-                  local can_target = true
-                  -- If we can only target specific type of entity, make sure the entity's target_type matches
-                  if self._tuning.target_type then
-                     if radiant.entities.get_target_type(target) ~= self._tuning.target_type then
-                        can_target = false
-                     end
-                  end
-                  if not self:_is_within_range(target) then
+            if self._tuning.target_any_player or
+                  (not self._tuning.target_enemies and stonehearth.player:are_player_ids_friendly(player_id, target_player_id)) or
+                  (self._tuning.target_enemies and stonehearth.player:are_player_ids_hostile(player_id, target_player_id)) then
+               local can_target = true
+               -- If we can only target specific type of entity, make sure the entity's target_type matches
+               if self._tuning.target_type then
+                  if radiant.entities.get_target_type(target) ~= self._tuning.target_type then
                      can_target = false
                   end
-      
-                  if can_target then
-                     table.insert(target_entities, target)
-                  end
-               elseif self._tuning.emit_if_enemies_nearby and not enemies_within_range and stonehearth.player:are_player_ids_hostile(player_id, target_player_id) then
-                  if self:_is_within_range(target) then
+               end
+               if not self:_is_within_range(target) then
+                  can_target = false
+               end
+
+               if can_target then
+                  table.insert(target_entities, target)
+               end
+            end
+
+            if self._tuning.emit_if_enemies_nearby and not enemies_within_range and stonehearth.player:are_player_ids_hostile(player_id, target_player_id) then
+               if self:_is_within_range(target) then
                   enemies_within_range = true
                end
             end
