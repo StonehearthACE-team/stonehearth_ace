@@ -305,7 +305,7 @@ end
 
 -- paulthegreat: this function was actually changed
 function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fixture_bounds, region_origin, allow_ground, rotation, allow_wall)
-   entity = entity:is_valid() and entity
+   entity = entity and entity:is_valid() and entity
    local results = _radiant.client.query_scene(p.x, p.y)
    local widget_id = entity and entity:get_id() or nil
    local bid = entity and entity:get('stonehearth:build2:fixture_widget'):get_bid() or nil
