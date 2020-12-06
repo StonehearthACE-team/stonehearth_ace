@@ -18,9 +18,16 @@
       "stonehearth:traveler_attraction": {},
       "effect_list": {
          "default": "stonehearth_ace:effects:treasure_glow:frostfeast:large"
-      }
+      },
+      "stonehearth_ace:transform": {}
    },
    "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:decoration:frostfeast:wreath:large",
+         "command": "stonehearth_ace:commands:transform:frostfeast:swap_model_variant",
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "auto_request": false
+      },
       "stonehearth:net_worth": {
          "value_in_gold": 68,
          "rarity": "common",

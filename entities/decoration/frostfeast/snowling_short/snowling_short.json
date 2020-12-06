@@ -14,9 +14,16 @@
                "max": { "x": 1, "y": 3, "z": 1 }
             }
          ]
-      }
+      },
+      "stonehearth_ace:transform": {}
    },
    "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:decoration:frostfeast:snowling:short",
+         "command": "stonehearth_ace:commands:transform:frostfeast:swap_model_variant",
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "auto_request": false
+      },
       "stonehearth:net_worth": {
          "value_in_gold": 80,
          "rarity": "common",

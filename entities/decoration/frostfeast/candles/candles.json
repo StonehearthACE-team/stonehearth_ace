@@ -20,9 +20,16 @@
          "placeable_on_ground": true,
          "placeable_on_walls": true
       },
-      "stonehearth:traveler_attraction": {}
+      "stonehearth:traveler_attraction": {},
+      "stonehearth_ace:transform": {}
    },
    "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:decoration:frostfeast:candles",
+         "command": "stonehearth_ace:commands:transform:frostfeast:swap_model_variant",
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "auto_request": false
+      },
       "stonehearth:net_worth": {
          "value_in_gold": 18,
          "rarity": "common",
