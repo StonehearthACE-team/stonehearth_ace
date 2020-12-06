@@ -3,7 +3,6 @@ var stonehearth_ace = {
    _allTitles: {},
    _fence_mode: {},
    _storageFilterPresets: {},
-   _uiHotkeys: {},
 
    mergeInto: function(to_obj, from_obj) {
       radiant.each(from_obj, function(name, data) {
@@ -271,10 +270,6 @@ var stonehearth_ace = {
       var settingData = modSettings && modSettings[setting];
       return settingData && settingData.default;
    },
-
-   getUIHotkeys: function() {
-      return stonehearth_ace._uiHotkeys;
-   }
 }
 
 $.getJSON('/stonehearth_ace/ui/data/equipment_types.json', function(data) {
@@ -321,19 +316,6 @@ $.getJSON('/stonehearth_ace/ui/data/command_groups.json', function(data) {
 
 $.getJSON('/stonehearth_ace/data/gameplay_settings/gameplay_settings.json', function(data) {
    stonehearth_ace._gameplay_settings = data;
-});
-
-$.getJSON('/stonehearth_ace/ui/data/ui_hotkeys.json', function(data) {
-   radiant.each(data, function(category, categoryData) {
-      var hotkeys = [];
-      radiant.each(categoryData, function(k, v) {
-         if (v) {
-            v.key = k;
-            hotkeys.push(v);
-         }
-      });
-      stonehearth_ace._uiHotkeys[category] = hotkeys;
-   });
 });
 
 $(top).trigger('stonehearth_ace:initialized');
