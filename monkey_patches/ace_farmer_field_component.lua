@@ -194,6 +194,10 @@ function AceFarmerFieldComponent:get_current_crop_alias()
    end
 end
 
+function AceFarmerFieldComponent:get_current_field_type()
+	return self._sv.field_type
+end
+
 function AceFarmerFieldComponent:_load_field_type()
    self._field_type_data = stonehearth.farming:get_field_type(self._sv.field_type or 'farm') or {}
    self._field_pattern = self._field_type_data.pattern or farming_lib.DEFAULT_PATTERN
