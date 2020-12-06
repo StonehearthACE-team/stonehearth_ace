@@ -29,10 +29,14 @@ function AceLootDropsComponent:_on_kill_event(kill_data)
    if loot_table then
       local location = radiant.entities.get_world_grid_location(self._entity)
       if location then
+         local player_id = radiant.entities.get_player_id(self._entity)
+         local loot_player_id = kill_data.source or self._sv.auto_loot_player_id or player_id
          local auto_loot, force_auto_loot
          if self._sv.auto_loot_player_id then
             auto_loot = stonehearth.client_state:get_client_gameplay_setting(self._sv.auto_loot_player_id, 'stonehearth', 'auto_loot', false)
-				force_auto_loot = loot_table.force_auto_loot or self._entity:get_player_id() == self._sv.auto_loot_player_id
+            force_auto_loot = loot_table.force_auto_loot or self._entity:get_player_id() == self._sv.auto_loot_player_id
+         elseif loot_player_id == player_id then
+            force_auto_loot = true
          end
          local town = stonehearth.town:get_town(self._sv.auto_loot_player_id)
 
@@ -47,7 +51,7 @@ function AceLootDropsComponent:_on_kill_event(kill_data)
          local items = LootTable(loot_table, quality, filter_script, filter_args)
                            :roll_loot()
          local spawned_entities = radiant.entities.output_items(items, location, 1, 3,
-               { owner = force_auto_loot and (kill_data.source or self._sv.auto_loot_player_id) or self._entity }, self._entity, kill_data.source, true).spilled
+               { owner = loot_player_id, add_spilled_to_inventory = force_auto_loot }, self._entity, kill_data.source, true).spilled
 
          --Add a loot command to each of the spawned items, or claim them automatically
          for id, entity in pairs(spawned_entities) do
@@ -56,10 +60,7 @@ function AceLootDropsComponent:_on_kill_event(kill_data)
             if entity_forms then
                target = entity_forms:get_iconic_entity()
             end
-            if force_auto_loot then
-               stonehearth.inventory:get_inventory(self._sv.auto_loot_player_id)
-                                       :add_item_if_not_full(entity)
-            else
+            if not force_auto_loot then
                local command_component = target:add_component('stonehearth:commands')
                command_component:add_command('stonehearth:commands:loot_item')
                if auto_loot and town then

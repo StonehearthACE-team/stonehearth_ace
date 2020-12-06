@@ -196,7 +196,7 @@ function transform_lib.transform(entity, transformer, into_uri, options)
       end
    end
 	
-	if options.model_variant then
+	if transformed_form and options.model_variant then
       local render_info = transformed_form:add_component('render_info')
 		render_info:set_model_variant(options.model_variant)
    end

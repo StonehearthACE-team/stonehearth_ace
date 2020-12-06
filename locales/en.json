@@ -15698,7 +15698,7 @@
    "herbalist_crops": {
       "no_crop": {
          "display_name": "Empty",
-         "description": "Just a planter full of potential."
+         "description": "Just a planter full of potential. Changing a planter with a plant growing in it to empty will immediately pop out a seed for that plant."
       },
       "brightbell": {
          "display_name": "Brightbell",
@@ -16582,7 +16582,11 @@
             "injected_buff": "Grants Status: ",
             "inflictable_debuff": "Inflicts Status: ",
             "transform": {
-               "progress": "Building... "
+               "progress": {
+                  "building": "Building... ",
+                  "opening": "Opening...",
+                  "transforming": "Transforming..."
+               }
             },
             "attack_with_all_parties": {
                "display_name": "Attack With All Parties",
@@ -16770,6 +16774,9 @@
             },
             "controls_tab": {
                "key_binding_names": {
+                  "build_well": "Build Well",
+                  "build_fence": "Build Fence",
+                  "build_fish_trap": "Place Fish Trap",
                   "cam_previous": "Move Camera Back",
                   "vision_wilderness_toggle": "Toggle Wilderness Vision",
                   "vision_ore_detector_toggle": "Toggle Ore Detector",

@@ -27,6 +27,7 @@ function item_io_lib.try_output(items, inputs, options)
    local fails = {}
    options = options or {}
    local location = options.location
+   local add_spilled_to_inventory = options.options and options.options.add_spilled_to_inventory
 
    local ranked_inputs = item_io_lib._rank_inputs(inputs)
    item_io_lib._output_to_inputs(items, ranked_inputs, successes, fails)
@@ -68,6 +69,13 @@ function item_io_lib.try_output(items, inputs, options)
          radiant.terrain.place_entity(item, location)
          spills[id] = item
          fails[id] = nil
+         
+         if add_spilled_to_inventory then
+            local inventory = stonehearth.inventory:get_inventory(item)
+            if inventory then
+               inventory:add_item(item)
+            end
+         end
       end
    elseif options.delete_fail_items ~= false then  -- do this unless otherwise specified so we don't have entities in the void
       for id, item in pairs(fails) do

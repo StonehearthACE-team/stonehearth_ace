@@ -1,3 +1,5 @@
+-- DEPRECATED
+
 local Entity = _radiant.om.Entity
 
 local ClearHerbalistPlanterAdjacent = radiant.class()
