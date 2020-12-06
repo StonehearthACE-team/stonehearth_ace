@@ -1,0 +1,24 @@
+{	
+   "components": {
+      "render_info": {
+         "scale": 0.13
+      },		
+      "model_variants": {
+			"mixintypes": {
+				"default": "override"
+			},
+         "default": {
+            "models": [
+               "file(woodchuck.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 90
+         }
+      }
+   },
+   "entity_data": {}
+}

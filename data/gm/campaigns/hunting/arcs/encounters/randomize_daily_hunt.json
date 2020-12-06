@@ -42,5 +42,14 @@
             "value": "stonehearth_ace:weather:sunny:sweltering"
          }
       }
+   },
+	"out_edge": {
+      "out_edges": [
+         {
+            "out_edge": "validate_hungry_woodchucks",
+            "type": "weighted_edge",
+            "weight": 4
+         }
+      ]
    }
 }

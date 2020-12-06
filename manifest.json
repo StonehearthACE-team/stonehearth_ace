@@ -1738,6 +1738,7 @@
       "jobs:index": "file(jobs/index.json)",
       "jobs:npc:poacher": "file(jobs/npc_jobs/npc_poacher/npc_poacher_description.json)",
       "jobs:npc:warrior": "file(jobs/npc_jobs/npc_warrior/npc_warrior_description.json)",
+		"kingdoms:animals": "file(services/server/population/data/animal_population.json)",
       "kingdoms:aquatic_animals": "file(services/server/population/data/aquatic_animal_population.json)",
       "kingdoms:forest": "file(services/server/population/data/forest_population.json)",
       "kingdoms:goblin": "file(services/server/population/data/goblin_population.json)",
@@ -3128,6 +3129,7 @@
       "northern_alliance/data/gm/campaigns/hunting/arcs/encounters/validate_hungry_deer.json": "file(data/gm/campaigns/hunting/arcs/encounters/validate_hungry_deer.json)",
       "northern_alliance/data/gm/campaigns/hunting/arcs/encounters/validate_hungry_rabbits.json": "file(data/gm/campaigns/hunting/arcs/encounters/validate_hungry_rabbits.json)",
       "northern_alliance/data/gm/campaigns/hunting/arcs/encounters/validate_hungry_racoon.json": "file(data/gm/campaigns/hunting/arcs/encounters/validate_hungry_racoon.json)",
+		"northern_alliance/data/gm/campaigns/hunting/arcs/migratory_animals_arc.json": "file(data/gm/campaigns/hunting/arcs/migratory_animals_arc.json)",
       "northern_alliance/data/gm/campaigns/town_progression/arcs/trigger/town_progression/encounters/delay_before_shrine_choice.json": "file(data/gm/campaigns/town_progression/arcs/trigger/town_progression/na_encounters/delay_before_shrine_choice.json)",
       "northern_alliance/data/gm/campaigns/town_progression/arcs/trigger/town_progression/encounters/delay_before_shrine_foreshadow.json": "file(data/gm/campaigns/town_progression/arcs/trigger/town_progression/na_encounters/delay_before_shrine_foreshadow.json)",
       "northern_alliance/data/gm/campaigns/town_progression/arcs/trigger/town_progression/encounters/shrine_quest_deity.json": "file(data/gm/campaigns/town_progression/arcs/trigger/town_progression/na_encounters/shrine_quest_deity.json)",
@@ -4374,6 +4376,7 @@
       "stonehearth:humans:female:customizations": "stonehearth_ace:humans:female:customizations",
       "stonehearth:humans:male:customizations": "stonehearth_ace:humans:male:customizations",
       "stonehearth:jobs:index": "file(jobs/index.json)",
+		"stonehearth:kingdoms:animals": "stonehearth_ace:kingdoms:animals",
       "stonehearth:kingdoms:ascendancy": "file(data/ascendancy_population.json)",
       "stonehearth:kingdoms:forest": "stonehearth_ace:kingdoms:forest",
       "stonehearth:kingdoms:goblin": "stonehearth_ace:kingdoms:goblin",
@@ -4733,6 +4736,10 @@
       "stonehearth:weather:thunderstorm": "file(data/weather/thunderstorm/thunderstorm.json)",
       "stonehearth:weather:titanstorm": "file(data/weather/titanstorm/titanstorm.json)",
       "stonehearth:weather:windy": "file(data/weather/windy/windy.json)",
+		"stonehearth:woodchuck": [		
+			"stonehearth:mixins:critter",
+			"file(entities/critters/woodchuck/woodchuck.json)"
+		],
       "stonehearth:worker:outfit": "file(jobs/worker/worker_outfit/worker_outfit_dwarf.json)"
    },
    "overrides": {
