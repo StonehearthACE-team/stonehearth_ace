@@ -213,8 +213,12 @@ function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options,
    local items = {}
 
    local owner_id = options and options.owner
-   owner_id = owner_id and type(owner_id) ~= 'string' and owner_id:get_player_id()
+   owner_id = owner_id and type(owner_id) ~= 'string' and owner_id:get_player_id() or owner_id
    local quality_options = quality and owner_id and {max_quality = item_quality_lib.get_max_random_quality(owner_id)}
+   local inventory
+   if owner_id and options.add_spilled_to_inventory then
+      inventory = stonehearth.inventory:get_inventory(owner_id)
+   end
 
    for uri, detail in pairs(uris) do
       local qualities
@@ -234,6 +238,10 @@ function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options,
             if place_items ~= false then
                local location = radiant.terrain.find_placement_point(origin, min_radius, max_radius)
                radiant.terrain.place_entity(item, location)
+
+               if inventory then
+                  inventory:add_item(item)
+               end
             end
          end
       end
@@ -275,7 +283,7 @@ function ace_entities.output_spawned_items(items, origin, min_radius, max_radius
       spill_max_radius = max_radius,
       output = output,
       delete_fail_items = delete_fail_items,
-      options = options
+      options = options,
    }
 
    return item_io_lib.try_output(items, inputs, options)

@@ -791,6 +791,11 @@ App.StonehearthUnitFrameView.reopen({
       }
    }.observes('model.stonehearth_ace:transform.progress'),
 
+   _updateTransformProgressText: function() {
+      var self = this;
+      self.set('transformProgressText', self.get('model.stonehearth_ace:transform.progress_text') || 'stonehearth_ace:ui.game.unit_frame.transform.progress.transforming');
+   }.observes('model.stonehearth_ace:transform'),
+
    // override the base to just hide the combatButtonDiv instead of all the combatControls
    _updateCombatTools: function() {
       var isCombatClass = this.get('model.stonehearth:job.curr_job_controller.is_combat_class');

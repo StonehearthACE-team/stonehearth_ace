@@ -21,7 +21,7 @@ local all_plant_data = radiant.resources.load_json('stonehearth_ace:data:herbali
 local allowed_plants_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter:allowed_crops')
 
 local PLANT_ACTION = 'stonehearth_ace:plant_herbalist_planter'
-local CLEAR_ACTION = 'stonehearth_ace:clear_herbalist_planter'
+--local CLEAR_ACTION = 'stonehearth_ace:clear_herbalist_planter'
 
 function HerbalistPlanterComponent:initialize()
    self._json = radiant.entities.get_json(self) or {}
@@ -120,11 +120,24 @@ function HerbalistPlanterComponent:_create_planter_tasks()
          planter = self._entity,
          seed_uri = self:get_seed_uri()
       }
-      local action = args.seed_uri and PLANT_ACTION or CLEAR_ACTION
+
+      -- if we're clearing it, just pop out a seed for the existing plant (bonus products in storage are already dumped out automatically)
+      if not args.seed_uri then
+         local seed_uri = self._planted_crop_stats.seed_uri
+         self:plant_crop()
+         if seed_uri then
+            local player_id = radiant.entities.get_player_id(self._entity)
+            local default_storage = town:get_default_storage()
+            radiant.entities.output_items({[seed_uri] = 1}, radiant.entities.get_world_grid_location(self._entity), 1, 2,
+                                          { owner = player_id, add_spilled_to_inventory = true }, nil, default_storage, true)
+         end
+         return
+      end
+      --local action = args.seed_uri and PLANT_ACTION or CLEAR_ACTION
       
       local planter_task = town:create_task_for_group(
          'stonehearth_ace:task_groups:planters',
-         action,
+         PLANT_ACTION,
          args)
             :set_source(self._entity)
             :start()

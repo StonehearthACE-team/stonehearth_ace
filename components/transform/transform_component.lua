@@ -119,11 +119,12 @@ function TransformComponent:_destroy_placement_listener()
 end
 
 function TransformComponent:_destroy_progress()
+   self._sv.progress_text = nil
    if self._sv.progress then
       self._sv.progress:destroy()
       self._sv.progress = nil
-      self.__saved_variables:mark_changed()
    end
+   self.__saved_variables:mark_changed()
 end
 
 function TransformComponent:_create_transform_tasks()
@@ -294,12 +295,14 @@ function TransformComponent:transform()
       end
    }
    self._transforming = true
+
    local transformed = transform_lib.transform(self._entity, 'stonehearth_ace:transform', transform_data.transform_uri, options)
    self._transforming = false
 
    -- specifically check for false; nil means it happened but no new entity was created to replace this one
    -- actually, all the more reason to cancel; otherwise it'll just keep going!
-   if not transformed then
+   -- if the entity is destroyed but no transformed entity is created (e.g., killed for loot bag), we don't need to cancel things
+   if not transformed and self._entity:is_valid() then
       -- if we failed, cancel the requested transform action, if there was one, and destroy the progress
       self:_set_transformable()
       self:_destroy_progress()
@@ -381,6 +384,7 @@ function TransformComponent:perform_transform(use_finish_cb)
    
    if not self._sv.progress then
       self._sv.progress = radiant.create_controller('stonehearth_ace:progress_tracker', self._entity)
+      self._sv.progress_text = data.progress_text
       self.__saved_variables:mark_changed()
    end
 
