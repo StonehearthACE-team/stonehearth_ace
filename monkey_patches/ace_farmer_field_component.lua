@@ -188,14 +188,14 @@ function AceFarmerFieldComponent:get_rotation()
    return self._sv.rotation
 end
 
+function AceFarmerFieldComponent:get_field_type()
+	return self._sv.field_type
+end
+
 function AceFarmerFieldComponent:get_current_crop_alias()
    if not self:_is_fallow() then
       return self._sv.current_crop_alias
    end
-end
-
-function AceFarmerFieldComponent:get_current_field_type()
-	return self._sv.field_type
 end
 
 function AceFarmerFieldComponent:_load_field_type()
