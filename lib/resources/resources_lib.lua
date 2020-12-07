@@ -9,7 +9,7 @@ function resources_lib.request_auto_harvest(entity, should_auto_harvest)
 
       if renewable_resource_node and renewable_resource_node:is_harvestable() then
          renewable_resource_node:request_harvest(entity:get_player_id())
-      elseif resource_node then
+      elseif resource_node and not crop_comp or not renewable_resource_node then
          resource_node:request_harvest(entity:get_player_id())
       end
    end

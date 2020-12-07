@@ -46,8 +46,8 @@ function AceGameCreationService:create_camp_command(session, response, pt)
    end
 
    local banner_entity = radiant.entities.create_entity(standard, { owner = player_id })
-   inventory:add_item(banner_entity)
    radiant.terrain.place_entity(banner_entity, location, { facing = facing, force_iconic = false })
+   inventory:add_item(banner_entity)
    town:set_banner(banner_entity)
 
    -- build the camp
