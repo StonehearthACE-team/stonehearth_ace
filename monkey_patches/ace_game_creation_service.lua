@@ -299,6 +299,9 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
          local equipment_data = radiant.util.is_string(equipment_uri) and {uri = equipment_uri} or equipment_uri
          local equipment_entity = radiant.entities.create_entity(equipment_data.uri, { owner = session.player_id })
          self:_set_customizable_entity_data(equipment_entity, equipment_data)
+         if equipment_data.item_quality and equipment_data.item_quality > 1 then
+            equipment_entity:add_component('stonehearth:item_quality'):initialize_quality(equipment_data.item_quality)
+         end
 
          equipment:equip_item(equipment_entity, true)
       end
