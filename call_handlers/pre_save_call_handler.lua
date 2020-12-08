@@ -2,6 +2,9 @@
    Instead of immediately calling 'radiant:client:save_game', save functions point here first so that any pre-save
    actions necessary can be performed. This is a way to use _sv for storing large amounts of data and only perform
    mark_changed() right before saving.
+
+   DEPRECATED: this functionality is not actively in use as pre-save calls were causing instability
+   persistence data saving is now handled through regular scheduling
 ]]
 local log = radiant.log.create_logger('pre_save')
 

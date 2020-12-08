@@ -71,7 +71,10 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
 
    local equipment = {}
    for _, obj in pairs(citizen:get('stonehearth:equipment'):get_all_dropable_items()) do
-      table.insert(equipment, obj:get_uri())
+      local item_data = self:_get_customizable_entity_data(obj)
+      item_data.item_quality = radiant.entities.get_item_quality(obj)
+
+      table.insert(equipment, item_data)
    end
 
    -- if it doesn't have a population override, set it to this player's population
@@ -81,19 +84,15 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
       population_override = stonehearth.population:get_population(self._sv.ctx.player_id):get_kingdom()
    end
 
-   local statistics_comp = citizen:get_component('stonehearth_ace:statistics')
-   local statistics = statistics_comp and statistics_comp:get_statistics()
-
-   local titles_comp = citizen:get_component('stonehearth_ace:titles')
-   local titles = titles_comp and titles_comp:get_titles()
-	
-	local buffs_comp = citizen:get_component('stonehearth:buffs')
-	local reembarkable_buffs = buffs_comp:get_reembarkable_buffs() or {}
+   local data = self:_get_customizable_entity_data(citizen)
 
    return {
-      name = citizen:get_component('stonehearth:unit_info'):get_custom_name(),
-      custom_data = citizen:get_component('stonehearth:unit_info'):get_custom_data(),
-      uri = citizen:get_uri(),
+      name = data.name,
+      custom_data = data.custom_data,
+      uri = data.uri,
+      statistics = data.statistics,
+      titles = data.titles,
+		buffs = data.reembarkable_buffs,
       model_variant = model_variant,
       customization = customization_styles,
       job_levels = job_levels,
@@ -105,10 +104,29 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
       item_preferences = citizen:get_component('stonehearth:appeal'):get_item_preferences(),
       item_preference_discovered_flags = citizen:get_component('stonehearth:appeal'):get_item_preference_discovered_flags(),
       equipment = equipment,
+      -- TODO: Pets?
+   }
+end
+
+function AceReembarkationEncounter:_get_customizable_entity_data(entity)
+   local unit_info_comp = entity:get_component('stonehearth:unit_info')
+
+   local statistics_comp = entity:get_component('stonehearth_ace:statistics')
+   local statistics = statistics_comp and statistics_comp:get_statistics()
+
+   local titles_comp = entity:get_component('stonehearth_ace:titles')
+   local titles = titles_comp and titles_comp:get_titles()
+	
+	local buffs_comp = entity:get_component('stonehearth:buffs')
+	local reembarkable_buffs = buffs_comp:get_reembarkable_buffs()
+   
+   return {
+      uri = entity:get_uri(),
+      name = unit_info_comp:get_custom_name(),
+      custom_data = unit_info_comp:get_custom_data(),
       statistics = statistics,
       titles = titles,
-		buffs = reembarkable_buffs,
-      -- TODO: Pets?
+      buffs = reembarkable_buffs,
    }
 end
 

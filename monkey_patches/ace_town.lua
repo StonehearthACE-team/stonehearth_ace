@@ -384,7 +384,8 @@ function AceTown:get_persistence_data()
       farm_crops = self:_get_farm_crops_data(),
       scores = self:_get_scores_data(),
       jobs = self:_get_jobs_data(),
-      elapsed_days = stonehearth.calendar:get_elapsed_days()
+      unlocked_recipes = self:_get_unlocked_recipes_data(),
+      elapsed_days = stonehearth.calendar:get_elapsed_days(),
    }
 
    self:_add_citizen_persistence_data(data, pop)
@@ -454,6 +455,26 @@ function AceTown:_get_jobs_data()
    counts.job_member_counts = jobs_controller:get_job_member_counts()
 
    return counts
+end
+
+function AceTown:_get_unlocked_recipes_data()
+   local recipes = {}
+
+   local player_job_controller = stonehearth.job:get_player_job_controller(self._sv.player_id)
+   for job_uri, job_info in pairs(player_job_controller:get_jobs()) do
+      local unlocked_recipes = job_info:get_manually_unlocked()
+      if unlocked_recipes then
+         local recipe_keys = {}
+         for recipe_id in pairs(unlocked_recipes) do
+            table.insert(recipe_keys, recipe_id)
+         end
+         if next(recipe_keys) then
+            recipes[job_uri] = recipe_keys
+         end
+      end
+   end
+
+   return recipes
 end
 
 function AceTown:_add_citizen_persistence_data(data, pop)
