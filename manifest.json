@@ -1583,7 +1583,10 @@
       "food:sweet_tooth:sweet_tooth_serving": "file(entities/food/sweet_tooth/sweet_tooth_serving/sweet_tooth_serving.json)",
       "food:truffled_risotto": "file(entities/food/truffled_risotto/truffled_risotto/truffled_risotto.json)",
       "food:truffled_risotto:truffled_risotto_serving": "file(entities/food/truffled_risotto/truffled_risotto_serving/truffled_risotto_serving.json)",
-      "food:vinegar": "file(entities/food/vinegar/vinegar.json)",
+      "food:vinegar": "file(entities/food/vinegar/vinegar/vinegar.json)",
+      "food:vinegar:unfermented:brew": "file(entities/food/vinegar/unfermented_vinegar_brew/unfermented_vinegar_brew.json)",
+      "food:vinegar:unfermented:mead": "file(entities/food/vinegar/unfermented_vinegar_mead/unfermented_vinegar_mead.json)",
+      "food:vinegar:unfermented:wine": "file(entities/food/vinegar/unfermented_vinegar_wine/unfermented_vinegar_wine.json)",
       "food:walnut:walnut_basket": "file(entities/food/walnut/walnut_basket/walnut_basket.json)",
       "food:walnut:walnut_serving": "file(entities/food/walnut/walnut_serving/walnut_serving.json)",
       "food:winter_morel:winter_morel_basket": "file(entities/food/winter_morel/winter_morel_basket/winter_morel_basket.json)",
@@ -2192,9 +2195,11 @@
       "ostrich:young": "file(entities/critters/ostrich_young/ostrich_young.json)",
       "outfits:trader_outfit": "file(entities/outfits/trader_outfit/trader_outfit.json)",
       "outfits:trader_outfit:hat": "file(entities/outfits/trader_outfit/hat/trader_outfit_hat.json)",
+      "pets:duck": "file(entities/pets/duck/duck.json)",
       "pets:kitten:mila": "file(entities/pets/mila/mila.json)",
       "pets:kitten:teddy": "file(entities/pets/teddy/teddy.json)",
       "pets:monkey": "file(entities/pets/monkey/monkey_pet.json)",
+      "pets:oinker_mini": "file(entities/pets/oinker_mini/oinker_mini.json)",
       "pets:panda": "file(entities/pets/panda/panda.json)",
       "pets:wombat": "file(entities/pets/wombat/wombat.json)",
       "planters:fungi": "file(entities/planters/planter_fungi/planter_fungi.json)",
@@ -2462,6 +2467,7 @@
       "resources:fiber:cotton_bundle": "file(entities/resources/fiber/cotton_bundle/cotton_bundle.json)",
       "resources:fiber:dwarfsbeard_bundle": "file(entities/resources/fiber/dwarfsbeard_bundle/dwarfsbeard_bundle.json)",
       "resources:fiber:highland_vine_bundle": "file(entities/resources/fiber/highland_vine_bundle/highland_vine_bundle.json)",
+      "resources:fiber:thatch_twine_bundle": "file(entities/resources/fiber/thatch_twine_bundle/thatch_twine_bundle.json)",
       "resources:fluid:water": "file(entities/resources/fluid/water/water.json)",
       "resources:fuel:bit_of_peat": "file(entities/resources/fuel/bit_of_peat/bit_of_peat.json)",
       "resources:fuel:bundle_of_firewood": "file(entities/resources/fuel/bundle_of_firewood/bundle_of_firewood.json)",
@@ -3130,7 +3136,7 @@
       "northern_alliance/data/gm/campaigns/hunting/arcs/encounters/validate_hungry_deer.json": "file(data/gm/campaigns/hunting/arcs/encounters/validate_hungry_deer.json)",
       "northern_alliance/data/gm/campaigns/hunting/arcs/encounters/validate_hungry_rabbits.json": "file(data/gm/campaigns/hunting/arcs/encounters/validate_hungry_rabbits.json)",
       "northern_alliance/data/gm/campaigns/hunting/arcs/encounters/validate_hungry_racoon.json": "file(data/gm/campaigns/hunting/arcs/encounters/validate_hungry_racoon.json)",
-		"northern_alliance/data/gm/campaigns/hunting/arcs/migratory_animals_arc.json": "file(data/gm/campaigns/hunting/arcs/migratory_animals_arc.json)",
+      "northern_alliance/data/gm/campaigns/hunting/arcs/migratory_animals_arc.json": "file(data/gm/campaigns/hunting/arcs/migratory_animals_arc.json)",
       "northern_alliance/data/gm/campaigns/town_progression/arcs/trigger/town_progression/encounters/delay_before_shrine_choice.json": "file(data/gm/campaigns/town_progression/arcs/trigger/town_progression/na_encounters/delay_before_shrine_choice.json)",
       "northern_alliance/data/gm/campaigns/town_progression/arcs/trigger/town_progression/encounters/delay_before_shrine_foreshadow.json": "file(data/gm/campaigns/town_progression/arcs/trigger/town_progression/na_encounters/delay_before_shrine_foreshadow.json)",
       "northern_alliance/data/gm/campaigns/town_progression/arcs/trigger/town_progression/encounters/shrine_quest_deity.json": "file(data/gm/campaigns/town_progression/arcs/trigger/town_progression/na_encounters/shrine_quest_deity.json)",
@@ -4737,10 +4743,10 @@
       "stonehearth:weather:thunderstorm": "file(data/weather/thunderstorm/thunderstorm.json)",
       "stonehearth:weather:titanstorm": "file(data/weather/titanstorm/titanstorm.json)",
       "stonehearth:weather:windy": "file(data/weather/windy/windy.json)",
-		"stonehearth:woodchuck": [		
-			"stonehearth:mixins:critter",
-			"file(entities/critters/woodchuck/woodchuck.json)"
-		],
+      "stonehearth:woodchuck": [
+         "stonehearth:mixins:critter",
+         "file(entities/critters/woodchuck/woodchuck.json)"
+      ],
       "stonehearth:worker:outfit": "file(jobs/worker/worker_outfit/worker_outfit_dwarf.json)"
    },
    "overrides": {

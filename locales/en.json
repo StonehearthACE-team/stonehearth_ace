@@ -959,19 +959,19 @@
                            },
                            "choice_000": "I feel there is a 'But'"
                         },
-								"msg8": {
+                        "msg8": {
                            "bulletin_message": {
                               "00": "\"Well, yes. The caveat is that a<font color='#3399ff'> high severity wound</font> <font color='#b3d9ff'>will need more than one of the simpler items to heal it</font>, so having better medications is a way to get your people up again faster, because once treated, <font color='#b3d9ff'>the patient must rest for hours before another application</font>. While you can technically cover all your needs with basic stuff, like rough salves or coarse bandages, <font color='#b3d9ff'>you'll probably want the best ones</font> to keep your kin safer.\" He coughs.<br><br>\"You'll need to deal with poisons, infections, and burns, too, all of which have their own requirements, so <font color='#3399ff'>carefully read</font> <font color='#b3d9ff'>the information provided on each recipe</font>! Medications can be automatically requested when someone gets wounded, but your best bet is to maintain a small stock.\""
                            },
                            "choice_000": "We'll provide"
                         },
-								"msg9": {
+                        "msg9": {
                            "bulletin_message": {
                               "00": "\"And you must. While the beginning of a warrior's life can be easy, with no more than some scrapes and bruises,<font color='#3399ff'> wounds can get worse much faster than you might think.</font> Being prepared is the best way to manage them. If you have a <font color='#3399ff'>Cleric</font>, <font color='#b3d9ff'>they can provide support on the battlefield</font> - like I did many years ago. But there is only so much you can do out there.\"<br><br>\"The healing spells of clerics will keep your soldiers up and fighting, but <font color='#3399ff'>only proper healing techniques</font> <font color='#b3d9ff'>like medications and rest will take away their wounds.</font> A proficient cleric can <font color='#b3d9ff'>learn how to help with these using their magic</font>, but it's something very taxing and we can't do it all the time.\" He makes a humble face. \"You'll have to prepare and provide indeed.\""
                            },
                            "choice_000": "Understood!"
                         },
-								"msg10": {
+                        "msg10": {
                            "bulletin_message": {
                               "00": "\"So remember, my fellow: tend to herb<font color='#3399ff'> planters</font> for herbs; Provide shelter and <font color='#3399ff'>beds</font> for the wounded; Have a stock of <font color='#3399ff'>medications and healing items</font>; And that's it.<br><br>Even if you don't have everything you need, <font color='#b3d9ff'>someone that is resting in bed and being treated with small tonics will already have a much better prognosis. They won't develop further infections or other negative effects if recently treated.</font> Wounds reduce their maximum health, making them lesser fighters. <font color='#b3d9ff'>Don't underestimate even minor wounds, because if they're stacked enough, the effects will be considerable.</font> Healing is not impossible, it just needs <font color='#3399ff'>preparation and dedication</font>.<br>Do not disappoint your kin, my fellow. Do not leave your brothers and sisters without support...\"<br>He stares off into nothing once more."
                            },
@@ -2378,20 +2378,20 @@
                },
                "swap_model_variant": {
                   "display_name": "Randomize Appearance",
-                  "description": "The decorations must be perfect!<br><br>Click to roll a new, random appearance for this object!"
+                  "description": "The decorations must be perfect!<br><br>Click to roll a new, random appearance for this object!<br>If placed on a wall, the object must be moved to the ground level first."
                }
             },
             "fermenting_carboy_fill_vinegar": {
-               "display_name": "Produce Vinegar from Mead",
-               "description": "Order the Brewer to fill this fermenting vessel with any mead. The existing drink will then turn into two jugs of vinegar! This Carboy will continue producing Vinegar unless a new command is given."
+               "display_name": "Produce Vinegar from Unfermented Mead Vinegar",
+               "description": "Order the Brewer to fill this fermenting vessel with unfermented mead vinegar. The ingredient will then turn into two jugs of vinegar! This Carboy will continue producing Vinegar unless a new command is given."
             },
             "fermenting_vat_fill_vinegar": {
-               "display_name": "Produce Vinegar from Ale & Beer",
-               "description": "Order the Brewer to fill this fermenting vat with ale or beer. The existing drink will then turn into one jug of vinegar! It will continue producing Vinegar unless a new command is given."
+               "display_name": "Produce Vinegar from Unfermented Brew Vinegar",
+               "description": "Order the Brewer to fill this fermenting vat with unfermented brew vinegar. The ingredient will then turn into one jug of vinegar! It will continue producing Vinegar unless a new command is given."
             },
             "wine_cask_fill_vinegar": {
-               "display_name": "Produce Vinegar from Wine",
-               "description": "Order the Brewer to fill this fermenting cask with any wine. The existing drink will then turn into three jugs of vinegar! The Cask will continue producing Vinegar unless a new command is given."
+               "display_name": "Produce Vinegar from Unfermented Wine Vinegar",
+               "description": "Order the Brewer to fill this fermenting cask with unfermented wine vinegar. The ingredient will then turn into three jugs of vinegar! The Cask will continue producing Vinegar unless a new command is given."
             },
             "cheese_vat_fill_cream": {
                "display_name": "Make Sour Cream",
@@ -6728,6 +6728,11 @@
       },
       "weaver": {
          "recipes": {
+				"thatch_twine_bundle_recipe": {
+               "recipe_name": "Thatch Twine Bundle",
+               "description": "Coil strains of thatch together into a neat cordage that can be used as fiber.",
+               "flavor": ""
+            },
             "yarn_recipe": {
                "recipe_name": "Ball of Yarn (x2)",
                "description": "Spin animal wool into a versatile resource that can be used as both fiber or thread.",
@@ -7300,7 +7305,7 @@
             },
             "brewer_fermenting_carboy_recipe": {
                "recipe_name": "Fermentation Carboy",
-               "description": "The Brewer can use this to make mead or fruity mead with unfermented mead and vinegar with finished mead or wine.",
+               "description": "The Brewer can use this to make mead or fruity mead with unfermented mead and vinegar with finished mead.",
                "flavor": "Mead is appreciated by many but will make hearthlings tipsy"
             },
             "gruit_recipe": {
@@ -7314,6 +7319,21 @@
                "recipe_name": "Bucket of Wort",
                "description": "An extract of mashed malted grains and herbs. Within a Fermentation Vat it can be turned into ale!",
                "flavor": "Pure malt wort can also be further distilled into other drinks"
+            },
+            "unfermented_vinegar_brew_recipe": {
+               "recipe_name": "Unfermented Brew Vinegar",
+               "description": "Prepare any beer or ale to be fermented again. Within a Fermentation Vat it can be turned into one jug of vinegar.",
+               "flavor": ""
+            },
+            "unfermented_vinegar_mead_recipe": {
+               "recipe_name": "Unfermented Mead Vinegar",
+               "description": "Prepare any mead to be fermented again. Within a Fermentation Carboy it can be turned into two jugs of vinegar.",
+               "flavor": ""
+            },
+            "unfermented_vinegar_wine_recipe": {
+               "recipe_name": "Unfermented Wine Vinegar",
+               "description": "Prepare any wine to be fermented again. Within a Wine Cask it can be turned into three jugs of vinegar.",
+               "flavor": "Wine is most efficient vinegar ingredient"
             },
             "wort_gruit_recipe": {
                "recipe_name": "Bucket of Gruit Wort",
@@ -9463,6 +9483,10 @@
             },
             "silkweed_bundle": {
                "display_name": "Silkweed Fiber Bundle"
+            },
+            "thatch_twine_bundle": {
+               "display_name": "Thatch Twine Bundle",
+               "description": "Rough and dry, but strong. Spinnable into thread"
             }
          },
          "coal": {
@@ -11976,6 +12000,14 @@
                "display_name": "Spirit of Mila",
                "description": "Feisty and brave!"
             }
+         },
+         "duck": {
+            "display_name": "Mallard",
+            "description": "It will honk everywhere, your new best friend. It eats a little bit of everything."
+         },
+         "oinker_mini": {
+            "display_name": "Mini Oinker",
+            "description": "Oink! It eats a little bit of everything."
          }
       },
       "critters": {
@@ -12149,7 +12181,8 @@
             "nest": {
                "display_name": "Duck Nest",
                "description": "Duck eggs are very nutritious. Just saying."
-            }
+            },
+            "species": "duck"
          },
          "oinker": {
             "species": "oinker",
@@ -13040,8 +13073,22 @@
             }
          },
          "vinegar": {
-            "display_name": "Jug of Vinegar",
-            "description": "Smells strong and tastes very acid. Useful for cooking and even for certain medicine."
+            "vinegar": {
+               "display_name": "Jug of Vinegar",
+               "description": "Smells strong and tastes very acid. Useful for cooking and even for certain medicine."
+            },
+            "unfermented_vinegar_brew": {
+               "display_name": "Unfermented Brew Vinegar",
+               "description": "A Brewer can use this to make vinegar within a fermentation vat."
+            },
+            "unfermented_vinegar_mead": {
+               "display_name": "Unfermented Mead Vinegar",
+               "description": "A Brewer can use this to make vinegar within a fermentation carboy."
+            },
+            "unfermented_vinegar_wine": {
+               "display_name": "Unfermented Wine Vinegar",
+               "description": "A Brewer can use this to make vinegar within a wine cask."
+            }
          },
          "egg": {
             "display_name": "Poyo Egg"
@@ -17053,7 +17100,10 @@
             "raw_meat_piece_resource_name": "Any Whole Meat Piece",
             "seasoning_resource_name": "Any Seasoning",
             "prepared_food_festival_resource_name": "Festive Food",
-            "refined_serving_pitcher_resource_name": "Any Serving Pitcher"
+            "refined_serving_pitcher_resource_name": "Any Serving Pitcher",
+            "becomes_vinegar_wine_resource_name": "Any Wine",
+            "becomes_vinegar_mead_resource_name": "Any Mead",
+            "becomes_vinegar_beer_or_ale_resource_name": "Any Beer or Ale"
          }
       }
    },

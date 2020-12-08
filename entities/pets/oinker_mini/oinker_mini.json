@@ -1,0 +1,68 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:pet",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/critters/oinker",
+         "scale": 0.09
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(oinker_mini.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "speed": {
+            "type": "basic",
+            "value": 38
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0.15, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.4,
+      "stonehearth:species": {
+         "id": "oinker",
+         "display_name": "i18n(stonehearth_ace:entities.critters.oinker.species)"
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     24,
+                     1.2,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     1.0,
+                     0
+                  ],
+                  "fov": 65
+               }
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.pets.oinker_mini.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.oinker_mini.description)",
+         "icon": "file(oinker_mini.png)",
+         "category": "pets"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 300,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": false,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "pet"
+         }
+      }
+   }
+}

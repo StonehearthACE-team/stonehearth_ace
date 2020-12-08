@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(thatch_twine_bundle.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 5
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.fiber.thatch_twine_bundle.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.fiber.thatch_twine_bundle.description)",
+         "icon": "file(thatch_twine_bundle.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": [
+            "fiber",
+            "resource",
+            "plant",
+            "thatch_twine",
+            "stockpile_plant"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      }
+   }
+}

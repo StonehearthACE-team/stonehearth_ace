@@ -374,8 +374,8 @@
             },
             "vinegar": {
                "ordinal": 1.1,
-               "display_name": "i18n(stonehearth_ace:entities.food.vinegar.display_name)",
-               "icon": "/stonehearth_ace/entities/food/vinegar/vinegar.png",
+               "display_name": "i18n(stonehearth_ace:entities.food.vinegar.vinegar.display_name)",
+               "icon": "/stonehearth_ace/entities/food/vinegar/vinegar/vinegar.png",
                "filter": "vinegar cooking_ingredient"
             },
             "butter": {
@@ -491,6 +491,24 @@
                "display_name": "i18n(stonehearth_ace:entities.drink.wort_gruit.display_name)",
                "icon": "/stonehearth_ace/entities/drink/wort_gruit/wort_gruit.png",
                "filter": "brewing_ingredient wort gruit"
+            },
+            "unfermented_vinegar_wine": {
+               "ordinal": 14,
+               "display_name": "i18n(stonehearth_ace:entities.food.vinegar.unfermented_vinegar_wine.display_name)",
+               "icon": "/stonehearth_ace/entities/food/vinegar/unfermented_vinegar_wine/unfermented_vinegar_wine.png",
+               "filter": "brewing_ingredient unfermented_vinegar wine"
+            },
+            "unfermented_vinegar_mead": {
+               "ordinal": 14.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.vinegar.unfermented_vinegar_mead.display_name)",
+               "icon": "/stonehearth_ace/entities/food/vinegar/unfermented_vinegar_mead/unfermented_vinegar_mead.png",
+               "filter": "brewing_ingredient unfermented_vinegar mead"
+            },
+            "unfermented_vinegar_brew": {
+               "ordinal": 14.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.vinegar.unfermented_vinegar_brew.display_name)",
+               "icon": "/stonehearth_ace/entities/food/vinegar/unfermented_vinegar_brew/unfermented_vinegar_brew.png",
+               "filter": "brewing_ingredient unfermented_vinegar beer_or_ale"
             },
             "curdling_mixture": {
                "ordinal": 15,
