@@ -913,6 +913,84 @@
                      }
                   }
                },
+               "healer_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "dialog_title": "Sir Edmund",
+                        "msg1": {
+                           "bulletin_message": {
+                              "00": "A grizzled warrior approaches wearing an old and dented platemail beneath a beautiful cloth tabard. \"I extend you my greetings, fellows.\" He bows his head with a hand to his heart. \"I am Sir Edmund, acclaimed battle-cleric of the old Order of the Knights of Cid, and I've come to offer my services to your growing settlement.\"<p>He looks around with peaceful eyes. His face and hair tells you of all the experiences he must bear, however.<br>\"Oh, do I arise suspicion? I apologize.\" He carries no more than a healing staff. \"I wield no arms anymore and have sworn an oath to wander the lands, offering my services to all who need it, regardless of kin or faith.\""
+                           },
+                           "choice_000": "You are most welcome"
+                        },
+                        "msg2": {
+                           "bulletin_message": {
+                              "00": "\"I appreciate the hospitality, friend.\" He bows once more. \"Anyway,<font color='#3399ff'>herbology and healing</font> are arts that have been lost in these troubled times, few can perform as well as they could a while ago...\" You hear a slight disappointment on his tone. \"Times of peace can be deceiving, fellows, for no one can truly tell how long they will last. And even if long, age and sickness will not wait for our inaction.\"<p>He points to his own satchel, you can see it is full of herbs and small, colorful vials.<br>\"I wander, looking for towns that can benefit from my knowledge... I have a lot to say about <font color='#3399ff'>herbology and healing</font>. And it can save your life - as I saved many myself. Would your healer be interested?\""
+                           },
+                           "choice_000": "Yes, please!"
+                        },
+                        "msg3": {
+                           "bulletin_message": {
+                              "00": "\"It warms my heart to know it.\" He begins to speak more confidently. \"These are difficult and complex arts - but they can be mastered.<font color='#b3d9ff'>It simply requires the correct knowledge and the right materials,</font> and if it can be done in the middle of a battlefield, as orc arrows fly over our heads while we try to bring back our friends and brothers in arms from the cold grasp of...\"<br><br>He's now staring into the horizon.<br><br>\"Forgive me, I derail. We have peace, but I fear your town might still be found by trouble. Be grateful that you have a capable <font color='#3399ff'>healer</font> that is also able to <font color='#b3d9ff'>grow and tend to herbs of multiple types and colors</font>, for these are your most important materials.\""
+                           },
+                           "choice_000": "Ooookay?"
+                        },
+                        "msg4": {
+                           "bulletin_message": {
+                              "00": "\"There are basically<font color='#b3d9ff'>six colors of herbs.</font> <font color='#3399ff'>Red, green and blue, </font>known as the common ones, represent the most <font color='#b3d9ff'>common values like our Body, our Mind and our Spirit.</font> <font color='#3399ff'>Yellow, White and Purple, </font>known as uncommon herbs, represent amplifications or reductions of these values.<br>Every herb can be either <font color='#b3d9ff'>Aromatic, which means they're good for us </font>- usually even edible! While <font color='#b3d9ff'>Bitter herbs represent the ones that we must be careful with </font>as they can be harmful or cause reactions. It is important to have as many herbs you can since they're useful for many things... But when talking about healing,<font color='#3399ff'> Red Aromatic</font> herbs are your best friend and the most common for healing tonics.\""
+                           },
+                           "choice_000": "Useful!"
+                        },
+                        "msg5": {
+                           "bulletin_message": {
+                              "00": "\"A Farmer can grow beautiful gardens, but only someone specialized on herbs like an<font color='#3399ff'> Herbalist</font> <font color='#b3d9ff'>can truly unlock their potential by utilizing planters</font>. There are many types of them, big and small, some for algae or water lilies, some for tree saplings... I'm sure you have your own by now, or at least wants to! You should, indeed - a <font color='#b3d9ff'>single seed</font> of the type of plant you want will already provide you with a <font color='#b3d9ff'>lifetime production</font> of that herb!\"<br>He smiles. \"But it is how you'll use them that truly matters. And no better use than dealing with wounds or recovering the health of those that did battle to defend their homeland. It is quite possible that after battling, a hearthling will be <font color='#3399ff'>wounded.</font>\""
+                           },
+                           "choice_000": "Oh no!"
+                        },
+                        "msg6": {
+                           "bulletin_message": {
+                              "00": "\"There are<font color='#b3d9ff'> many types of wounds</font>, the most common ones being <font color='#3399ff'>cuts, pierces and impacts.</font> Each wound has a <font color='#b3d9ff'>severity</font>, some of them can heal over time, on their own... And clearly, the tougher the enemies are, the more likely you're to be seriously wounded, unless you wear a lot of armor, of course.\" He shakes his platemail.<br>\"Wearing <font color='#b3d9ff'>armor will reduce the odds of being wounded in combat</font>. And there are wounds that can come from other sources, like <font color='#b3d9ff'>fires or extreme cold weather,</font> which causes frostbites.<br><font color='#3399ff'>Each wound is unique</font>, some being worse than others, <font color='#b3d9ff'>causing infections and other nasty side effects</font>. But you can check on them when in doubt!\"<br><font size=-4>Hovering the mouse over wound debuffs will provide you with a lot of information!</font>"
+                           },
+                           "choice_000": "Then what!?"
+                        },
+                        "msg7": {
+                           "bulletin_message": {
+                              "00": "\"That is when your healer and their herbs will come in. When a hearthling is wounded and they know they can be treated - that is,<font color='#b3d9ff'> there is proper medicine available</font> - <font color='#3399ff'>they'll head to a bed and wait</font> for it. If you have comfortable beds made specifically for healing, these work even better, and I'm sure a <font color='#b3d9ff'>Carpenter, Mason or Potter</font> can come up with something.<br><br>Your herbalist will know what medication to use as long as it is available, and <font color='#b3d9ff'>if no specific medicine is present, they can at least recover some of their health with healing tonics</font> that are cheaper to make. The specific items, while <font color='#3399ff'>craftable</font> on improved versions, will <font color='#b3d9ff'>always work for their type of wound</font>. For example, any bandage will work for any cut.\""
+                           },
+                           "choice_000": "I feel there is a 'But'"
+                        },
+								"msg8": {
+                           "bulletin_message": {
+                              "00": "\"Well, yes. The caveat is that a<font color='#3399ff'> high severity wound</font> <font color='#b3d9ff'>will need more than one of the simpler items to heal it</font>, so having better medications is a way to get your people up again faster because once treated, <font color='#b3d9ff'>the patient must rest for hours before another application</font>. While you can technically cover all your needs with basic stuff, rough salves or coarse bandages, <font color='#b3d9ff'>you will probably want the best ones</font> if you want your kin to be safer.\" He coughs.<br><br>\"You'll need to deal with poison, infections and burns too. All of which have their own requirements, so <font color='#3399ff'>carefully read</font> <font color='#b3d9ff'>the information provided on each of these recipes</font>! Medications can be automatically requested when someone gets wounded, but the best bet is to keep a small stock.\""
+                           },
+                           "choice_000": "We'll provide"
+                        },
+								"msg9": {
+                           "bulletin_message": {
+                              "00": "\"And you must. While the beginning of a warrior's life can be easy, with no more than some scraps and bruises,<font color='#3399ff'> wounds can get worse much faster than you think.</font> Being prepared is the best way to do it. If you have a <font color='#3399ff'>Cleric</font>, <font color='#b3d9ff'>they shall provide support on the battlefield</font> - like I did many years ago. But there is only so much you can do out there.\"<br><br>\"The healing spells of clerics will keep your soldiers up and fighting, but <font color='#3399ff'>only proper healing techniques</font> <font color='#b3d9ff'>like medications and rest will take away their wounds.</font> A proficient cleric can <font color='#b3d9ff'>learn how to help with these using their magic</font>, but it's something very taxing and we can't do it all the time.\" He makes a humble face. \"You'll have to prepare and provide indeed.\""
+                           },
+                           "choice_000": "Understood!"
+                        },
+								"msg10": {
+                           "bulletin_message": {
+                              "00": "\"So remember, my fellow: tend to herb<font color='#3399ff'> planters</font> for herbs; Provide shelter and <font color='#3399ff'>beds</font> for the wounded; Have a stock of <font color='#3399ff'>medications and healing items</font>; And that's it.<br><br>Even if you don't have everything you need, <font color='#b3d9ff'>someone that is resting in bed and being treated with small tonics will already have much greater chances. They won't develop further infections or other negative effects if recently treated.</font> Wounds reduce their maximum health, making them lesser fighters. <font color='#b3d9ff'>Don't underestimate them because if they're stacked enough, the effects will be considerable.</font> Healing is not impossible, it just needs <font color='#3399ff'>preparation and dedication</font>.<br>Do not disappoint your kin, my fellow. Do not let your brothers and sisters without support...\"<br>He starts staring into nothing once more."
+                           },
+                           "choice_000": "Uh... Yes"
+                        },
+                        "msg_cancel": {
+                           "bulletin_message": {
+                              "00": "\"It is possible. I've been wandering since the last wars, and I've been to many places and towns. Forgive me if I do not recall your face, I tend to focus on the needs of my kin - not their looks.\" He bows his head, slightly ashamed.<br>\"Regardless of that, knowledge is knowledge - and I'm more than willing to share mine about <font color='#3399ff'>herbology and healing</font> again, if you wish. It is my life's purpose.\""
+                           }
+                        },
+                        "msg_farewell": {
+                           "bulletin_message": {
+                              "00": "\"So be it. And thus another moment of enlightment has come to pass, hopefully for the improvement of the fair [str(i18n_data.town_name)]!\"<br><br>He puts his hand to his heart and signals towards everyone.<br><br>\"I hope our meeting has been as fruitful to you all as it has been to me. I thank you for the opportunity to share knowledge, and humbly ask for only a day of shelter and a night of warmth by the fire, so I can regain my strength to continue wandering tomorrow.\""
+                           },
+                           "choice_000": "Of course, be welcome!"
+                        }
+                     }
+                  }
+               },
                "common": {
                   "dialog_nodes": {
                      "bulletin_title": "A friendly stranger approaches",
@@ -951,6 +1029,18 @@
                            "dialog_title": "From: Bruno the Fisher",
                            "message": {
                               "00": "<i>\"Hey, friends!<p>As I write this, I'm about to leave on my boat. One must always follow the currents. I had a good time here and actually managed to fish a little during the evening!<br>I feel that the first fish from your town should stay where they belong, though. Hopefully we'll meet again and I'll bring lots of goods!<br>Stay safe!\"</i><p>The gift package contains:"
+                           }
+                        }
+                     }
+                  }
+               },
+               "healer_gift": {
+                  "donation_dialog_info": {
+                     "dialog_nodes": {
+                        "letter": {
+                           "dialog_title": "From: Sir Edmund",
+                           "message": {
+                              "00": "<i>\"Many greetings, fellows.<p>The time has come for me to continue wandering across the hearthlands, looking for the ones that need my gifts.<br>These are trying times, so take this. It is only a simple set of curatives but should be enough to keep your kin in good shape. Be well!<br>And may Cid grant you all safety!\"</i><p>The gift package contains:"
                            }
                         }
                      }
@@ -7367,7 +7457,7 @@
             },
             "juice_sweet_potato_recipe": {
                "recipe_name": "Bucket of Sweet Potato Juice",
-               "description": "Hearty and with a mild taste - can definitely keep you up and healthy, though.",
+               "description": "Hearty and with a mild taste - can definitely keep you up and healthy as it also includes some food nutrition.",
                "flavor": "An unique recipe from the Northern Alliance"
             },
             "sage_water_recipe": {
@@ -15190,7 +15280,7 @@
          "juice_sweet_potato": {
             "juice_sweet_potato": {
                "display_name": "Sweet Potato Juice",
-               "description": "Not as sweet as its name suggests, however it can be quite refreshing."
+               "description": "Not as sweet as its name suggests, however it can be quite filling."
             },
             "juice_sweet_potato_serving": {
                "display_name": "Cup of Sweet Potato Juice"
@@ -15398,6 +15488,10 @@
                "smith": {
                   "display_name": "Fernand the Great",
                   "description": "Prestigious blacksmith from the southern lands"
+               },
+               "healer": {
+                  "display_name": "Sir Edmund",
+                  "description": "Accomplished battle-cleric"
                }
             }
          },

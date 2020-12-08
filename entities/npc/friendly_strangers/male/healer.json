@@ -1,0 +1,26 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:mixins:base_friendly_stranger_npc:human",
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(healer.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment": {
+         "mainhand": "stonehearth:herbalist:staff"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.friendly_strangers.male.healer.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.friendly_strangers.male.healer.description)",
+         "icon": "file(healer.png)"
+      }
+   }
+}

@@ -1,0 +1,16 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "healer_wait",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "healer_gift",
+         "healer_destroy",
+			"friendly_strangers_subtract_counter"
+      ]
+   },
+   "wait_info": {
+      "duration": "24h"
+   }
+}

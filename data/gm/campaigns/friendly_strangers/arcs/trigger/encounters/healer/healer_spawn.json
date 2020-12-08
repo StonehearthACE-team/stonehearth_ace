@@ -1,0 +1,15 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "healer_spawn",
+   "out_edge": "healer_dialog",
+   "script_info": {
+      "script": "file(../spawn_friendly_stranger.lua)",
+      "data": {
+         "npc_player_id": "human_npcs",
+         "citizens": {
+            "friendly_strangers_healer": "male"
+         }
+      }
+   }
+}
