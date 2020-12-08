@@ -244,8 +244,6 @@ function AceGameCreationService:generate_citizens_for_reembark_command(session, 
 end
 
 function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kingdom, citizen, citizen_spec)
-   -- Set name.
-   citizen:add_component('stonehearth:unit_info'):set_custom_name(citizen_spec.name, citizen_spec.custom_data, true)
    citizen:set_debug_text(citizen_spec.name)
 
    -- Set attributes.
@@ -298,25 +296,37 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
    if citizen_spec.equipment then
       local equipment = citizen:get_component('stonehearth:equipment')
       for _, equipment_uri in ipairs(citizen_spec.equipment) do
-         local equipment_entity = radiant.entities.create_entity(equipment_uri, { owner = session.player_id })
+         local equipment_data = radiant.util.is_string(equipment_uri) and {uri = equipment_uri} or equipment_uri
+         local equipment_entity = radiant.entities.create_entity(equipment_data.uri, { owner = session.player_id })
+         self:_set_customizable_entity_data(equipment_entity, equipment_data)
+
          equipment:equip_item(equipment_entity, true)
       end
    end
 
-	-- Set Statistics
-   if citizen_spec.statistics then
-      citizen:add_component('stonehearth_ace:statistics'):set_statistics(citizen_spec.statistics)
+	self:_set_customizable_entity_data(citizen, citizen_spec)
+end
+
+function AceGameCreationService:_set_customizable_entity_data(entity, data)
+   -- Set name.
+   if data.name then
+      entity:add_component('stonehearth:unit_info'):set_custom_name(data.name, data.custom_data, true)
    end
 
-	-- Set Titles
-   if citizen_spec.titles then
-      citizen:add_component('stonehearth_ace:titles'):set_titles(citizen_spec.titles)
+   -- Set Statistics
+   if data.statistics then
+      entity:add_component('stonehearth_ace:statistics'):set_statistics(data.statistics)
    end
-	
-	-- Set Buffs
-	if citizen_spec.buffs then
-      local buffs = citizen:add_component('stonehearth:buffs')
-      for buff_uri, options in pairs(citizen_spec.buffs) do
+
+   -- Set Titles
+   if data.titles then
+      entity:add_component('stonehearth_ace:titles'):set_titles(data.titles)
+   end
+
+   -- Set Buffs
+   if data.buffs then
+      local buffs = entity:add_component('stonehearth:buffs')
+      for buff_uri, options in pairs(data.buffs) do
          buffs:add_buff(buff_uri, options)
       end
    end

@@ -1,6 +1,8 @@
 --[[
    tracks and updates data for all tier 3 towns outside of saved games, whenever those towns are saved
    also importantly maintains an id that's set when a game is created to prevent duplication
+
+   TODO: create persistence town controllers (not saved, always created on load) to more easily handle town-based data with access functions
 ]]
 
 local rng = _radiant.math.get_default_rng()
