@@ -1,0 +1,65 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:pet",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/critters/duck",
+         "scale": 0.11
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(duck.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "speed": {
+            "type": "basic",
+            "value": 30
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.5,
+      "stonehearth:species": {
+         "id": "duck",
+         "display_name": "i18n(stonehearth_ace:entities.critters.duck.species)"
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     24,
+                     1.2,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     1.0,
+                     0
+                  ],
+                  "fov": 65
+               }
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.pets.duck.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.duck.description)",
+         "icon": "file(duck.png)",
+         "category": "pets"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 300,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": false,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "pet"
+         }
+      }
+   }
+}

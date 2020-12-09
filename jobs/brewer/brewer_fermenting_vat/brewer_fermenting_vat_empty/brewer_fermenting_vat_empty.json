@@ -56,7 +56,7 @@
                "command": "stonehearth_ace:commands:transform:fermenting_vat_fill:vinegar",
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
-               "transform_ingredient_material": "becomes_vinegar beer_or_ale",
+               "transform_ingredient_uri": "stonehearth_ace:food:vinegar:unfermented:brew",
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true

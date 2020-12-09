@@ -6,7 +6,8 @@
    "components": {
       "mixintypes": {
          "stonehearth:commands": "remove",
-         "stonehearth:entity_forms": "remove"
+         "stonehearth:entity_forms": "remove",
+         "stonehearth_ace:transform": "remove"
       },
       "stonehearth:resource_node": {
          "resource_loot_table": {
@@ -26,6 +27,12 @@
       },
       "stonehearth:loot_drops": {
          "entries": {
+            "beehive": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 0
+               }
+            },
             "seed": {
                "items": {
                   "seed": {
@@ -37,6 +44,13 @@
       }
    },
    "entity_data": {
+      "stonehearth_ace:evolve_modifiers": {
+         "allow_manual_stunting": false
+      },
+      "mixintypes": {
+         "stonehearth_ace:transform_data": "remove",
+         "stonehearth_ace:replant_data": "remove"
+      },
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:crops:juniper_tree_crop:medium"
       }

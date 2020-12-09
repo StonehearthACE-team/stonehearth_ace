@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 12,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.unfermented_vinegar_brew_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.unfermented_vinegar_brew_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.unfermented_vinegar_brew_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/vinegar/unfermented_vinegar_brew/unfermented_vinegar_brew.png",
+   "workshop": "stonehearth_ace:brewer:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "becomes_vinegar beer_or_ale",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:vinegar:unfermented:brew"
+      }
+   ]
+}

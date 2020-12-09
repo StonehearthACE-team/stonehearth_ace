@@ -1,0 +1,60 @@
+{
+   "mixins": "stonehearth_ace:mixins:drink_decay:jug",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(unfermented_vinegar_mead.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:brewing",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 480,
+            "max": 528
+         },
+         "decay_stages": {
+            "decay_1": {
+               "description": "i18n(stonehearth_ace:drink.decay.decay_brewing_ingredient.description)"
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 12,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.vinegar.unfermented_vinegar_mead.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.vinegar.unfermented_vinegar_mead.description)",
+         "icon": "file(unfermented_vinegar_mead.png)",
+         "is_item": true,
+         "category": "brewing_ingredient",
+         "material_tags": [
+            "stockpile_brewing_ingredient",
+            "brewing_ingredient",
+            "other_fluid",
+            "unfermented_vinegar",
+            "mead"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": -1
+      }
+   }
+}

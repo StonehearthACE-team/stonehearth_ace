@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 8,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.thatch_twine_bundle_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.thatch_twine_bundle_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.thatch_twine_bundle_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/resources/fiber/thatch_twine_bundle/thatch_twine_bundle.png",
+   "workshop": "stonehearth:weaver:spinning_wheel",
+   "level_requirement": 0,
+	"ace_smart_crafter_ignore": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:thatch_bale",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:resources:fiber:thatch_twine_bundle"
+      }
+   ]
+}
