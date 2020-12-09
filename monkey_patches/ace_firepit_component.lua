@@ -231,4 +231,31 @@ function AceFirepitComponent:_retrieve_charcoal()
    end
 end
 
+function AceFirepitComponent:get_seats()
+   return self._sv.seats
+end
+
+function AceFirepitComponent:has_active_conversation()
+   return self._conversation ~= nil
+end
+
+function AceFirepitComponent:try_start_conversation(initiator)
+   if self:has_active_conversation() then
+      return false
+   end
+
+   local seats = self._sv.seats
+   if not seats then
+      return false
+   end
+
+   -- check each seat to see if it has someone seated in it (need to patch center_of_attention_spot_component and admire_fire_adjacent for that)
+   -- add any non-initiators to the list; if there's more than one, start a conversation
+   -- have to add sitting conversation animations to hearthlings before we can do this
+   local participants = {initiator}
+   for _, seat in pairs(seats) do
+
+   end
+end
+
 return AceFirepitComponent
