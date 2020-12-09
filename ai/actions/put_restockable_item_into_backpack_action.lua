@@ -27,7 +27,7 @@ return ai:create_compound_action(PutRestockableItemIntoBackpack)
             rating_fn = stonehearth.inventory.rate_item,
             description = ai.ARGS.filter_key,
             owner_player_id = ai.ARGS.owner_player_id,
-            ignore_workbenches = false,
+            ignore_consumers = false,
          })
          :execute('stonehearth:put_carrying_in_backpack', {
             owner_player_id = ai.ARGS.owner_player_id,

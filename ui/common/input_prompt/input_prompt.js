@@ -23,7 +23,7 @@ App.StonehearthInputPromptView = App.View.extend({
 
          if (button.click) {
             element.click(function() {
-               button.click(self.get('inputText'));
+               button.click(self.$('#inputText').val());
                self.destroy();
             })
          } else {

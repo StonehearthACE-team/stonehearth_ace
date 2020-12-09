@@ -123,14 +123,18 @@ function HerbalistPlanterComponent:_create_planter_tasks()
 
       -- if we're clearing it, just pop out a seed for the existing plant (bonus products in storage are already dumped out automatically)
       if not args.seed_uri then
-         local seed_uri = self._planted_crop_stats.seed_uri
-         self:plant_crop()
-         if seed_uri then
-            local player_id = radiant.entities.get_player_id(self._entity)
-            local default_storage = town:get_default_storage()
-            radiant.entities.output_items({[seed_uri] = 1}, radiant.entities.get_world_grid_location(self._entity), 1, 2,
-                                          { owner = player_id, add_spilled_to_inventory = true }, nil, default_storage, true)
+         if self._planted_crop_stats then
+            local seed_uri = self._planted_crop_stats.seed_uri
+            self:plant_crop()
+            
+            if seed_uri then
+               local player_id = radiant.entities.get_player_id(self._entity)
+               local default_storage = town:get_default_storage()
+               radiant.entities.output_items({[seed_uri] = 1}, radiant.entities.get_world_grid_location(self._entity), 1, 2,
+                                             { owner = player_id, add_spilled_to_inventory = true }, nil, default_storage, true)
+            end
          end
+
          return
       end
       --local action = args.seed_uri and PLANT_ACTION or CLEAR_ACTION
@@ -277,6 +281,12 @@ function HerbalistPlanterComponent:get_seed_uri()
    end
 end
 
+function HerbalistPlanterComponent:get_planted_seed_uri()
+   if self._planted_crop_stats then
+      return self._planted_crop_stats.seed_uri
+   end
+end
+
 function HerbalistPlanterComponent:get_product_uri()
    if self._planted_crop_stats then
       return self._planted_crop_stats.product_uri
@@ -316,8 +326,8 @@ function HerbalistPlanterComponent:stop_active_effect()
    self:_stop_active_effect()
 end
 
-function HerbalistPlanterComponent:_reset_growth()
-   self._sv.crop_growth_level = 0
+function HerbalistPlanterComponent:_reset_growth(reset_growth_level)
+   self._sv.crop_growth_level = reset_growth_level or 0
    self._sv.harvestable = false
    self.__saved_variables:mark_changed()
    self:_grow()
@@ -456,10 +466,12 @@ end
 function HerbalistPlanterComponent:create_products(harvester)
    if self:is_harvestable() then
       local items
+      local reset_growth_level
       if self._planted_crop_stats then
          items = self:_create_products(harvester, self._planted_crop_stats.product_uri, self._sv.num_products, self._planted_crop_stats.additional_products)
+         reset_growth_level = self._planted_crop_stats.post_harvest_growth_level
       end
-      self:_reset_growth()
+      self:_reset_growth(reset_growth_level)
       self:_reset_tend_quality(0.5)
 
       return items
@@ -508,6 +520,15 @@ function HerbalistPlanterComponent:plant_crop(planter, seed)
    self:_reset_tend_quality()
    self:tend_to_crop(planter, 0)
    self:_destroy_planter_tasks()
+   
+   self:_update_undeploy_command()
+end
+
+function HerbalistPlanterComponent:_update_undeploy_command()
+   local commands = self._entity:get_component('stonehearth:commands')
+   if commands then
+      commands:set_command_enabled('stonehearth:commands:undeploy_item', self._sv.planted_crop == nil)
+   end
 end
 
 -- used by ai to determine how in need of tending this planter is

@@ -15,7 +15,7 @@ FindReachableStorageContainingBestEntityType.args = {
       type = 'string',
       default = stonehearth.ai.NIL,
    },
-   ignore_workbenches = {
+   ignore_consumers = {
       type = 'boolean',
       default = true,
    },
@@ -29,7 +29,7 @@ FindReachableStorageContainingBestEntityType.priority = {0, 1}
 local log = radiant.log.create_logger('find_reachable_storage_containing_best_entity_type')
 
 -- TODO: Reuse the copy of this in find_path_to_storage_containing_entity_type.
-local function make_storage_filter_fn(entity, args_filter_fn, owner_player_id, ignore_workbenches)
+local function make_storage_filter_fn(entity, args_filter_fn, owner_player_id, ignore_consumers)
    return function(storage)
          local storage_comp = storage:get_component('stonehearth:storage')
          if not storage_comp then
@@ -43,8 +43,8 @@ local function make_storage_filter_fn(entity, args_filter_fn, owner_player_id, i
             return false
          end
 
-         -- don't look in workbenches normally (restocking is an exception)
-         if ignore_workbenches and storage:get_component('stonehearth:workshop') then
+         -- don't look in consumers normally (restocking is an exception)
+         if ignore_consumers and storage:get_component('stonehearth_ace:consumer') then
             return false
          end
 
@@ -101,9 +101,9 @@ local function make_storage_rating_fn(item_filter_fn, item_rating_fn)
 end
 
 function FindReachableStorageContainingBestEntityType:start_thinking(ai, entity, args)
-   local key = tostring(args.filter_fn) .. '|' .. tostring(args.owner_player_id) .. '|' .. tostring(args.ignore_workbenches)
+   local key = tostring(args.filter_fn) .. '|' .. tostring(args.owner_player_id) .. '|' .. tostring(args.ignore_consumers)
    local storage_filter_fn = stonehearth.ai:filter_from_key('stonehearth:find_reachable_storage_containing_best_entity_type', key,
-                                                            make_storage_filter_fn(entity, args.filter_fn, args.owner_player_id, args.ignore_workbenches))
+                                                            make_storage_filter_fn(entity, args.filter_fn, args.owner_player_id, args.ignore_consumers))
    ai:set_think_output({
       storage_filter_fn = storage_filter_fn,
       storage_rating_fn = make_storage_rating_fn(args.filter_fn, args.rating_fn),

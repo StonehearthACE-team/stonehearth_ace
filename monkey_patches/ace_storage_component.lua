@@ -186,4 +186,8 @@ function AceStorageComponent:add_gold(amount, combine_only)
    return self._inventory:add_gold(amount, self._entity, combine_only)
 end
 
+function AceStorageComponent:get_items_of_type(uri)
+   return self._sv.item_tracker:get_items_of_type(uri)
+end
+
 return AceStorageComponent

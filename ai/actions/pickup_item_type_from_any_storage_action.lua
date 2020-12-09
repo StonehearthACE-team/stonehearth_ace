@@ -18,7 +18,7 @@ PickupItemTypeFromAnyStorage.args = {
       type = 'string',
       default = stonehearth.ai.NIL,
    },
-   ignore_workbenches = {
+   ignore_consumers = {
       type = 'boolean',
       default = true,
    },
@@ -55,7 +55,7 @@ return ai:create_compound_action(PickupItemTypeFromAnyStorage)
             rating_fn = ai.ARGS.rating_fn,
             description = ai.PREV.description,
             owner_player_id = ai.ARGS.owner_player_id,
-            ignore_workbenches = ai.ARGS.ignore_workbenches,
+            ignore_consumers = ai.ARGS.ignore_consumers,
          })
          :execute('stonehearth:pickup_item_type_from_storage', {
             filter_fn = ai.ARGS.filter_fn,

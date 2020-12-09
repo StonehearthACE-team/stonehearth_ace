@@ -118,7 +118,7 @@ function AceReembarkationEncounter:_get_customizable_entity_data(entity)
    local titles = titles_comp and titles_comp:get_titles()
 	
 	local buffs_comp = entity:get_component('stonehearth:buffs')
-	local reembarkable_buffs = buffs_comp:get_reembarkable_buffs()
+	local buffs = buffs_comp and buffs_comp:get_reembarkable_buffs()
    
    return {
       uri = entity:get_uri(),
@@ -126,7 +126,7 @@ function AceReembarkationEncounter:_get_customizable_entity_data(entity)
       custom_data = unit_info_comp:get_custom_data(),
       statistics = statistics,
       titles = titles,
-      buffs = reembarkable_buffs,
+      buffs = buffs,
    }
 end
 

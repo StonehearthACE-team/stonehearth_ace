@@ -270,7 +270,6 @@ function AceInventory:add_gold(amount, storage, combine_only)
                -- this item can hold the stacks we need. Add to stacks and we're done
                stacks_component:set_stacks(item_stacks + stacks_to_add)
                stacks_to_add = 0
-               break
             else
                local subtracted_stacks = max_stacks - item_stacks
                stacks_component:set_stacks(max_stacks)
@@ -332,7 +331,72 @@ function AceInventory:add_gold(amount, storage, combine_only)
       -- if we didn't need to add gold items, just update the inventory tracker so that the gold count updates.
       self:get_item_tracker('stonehearth:basic_inventory_tracker')
             :mark_changed()
+      self:get_item_tracker('stonehearth:usable_item_tracker')
+            :mark_changed()
    end
+end
+
+function AceInventory:subtract_gold(amount, from_entity)
+   local stacks_to_remove = amount
+   local only_stacks_dirty = true
+
+   if from_entity then
+      local items
+      local from_storage = from_entity:get_component('stonehearth:storage')
+      if from_storage then
+         items = from_storage:get_items_of_type(GOLD_URI)
+      else
+         items = {[from_entity:get_id()] = from_entity}
+      end
+
+      stacks_to_remove, only_stacks_dirty = self:_subtract_gold_from(stacks_to_remove, items)
+   end
+
+   local gold_items = self:get_items_of_type(GOLD_URI)
+   if gold_items ~= nil then
+      local still_dirty = true
+      if stacks_to_remove > 0 then
+         stacks_to_remove, still_dirty = self:_subtract_gold_from(stacks_to_remove, gold_items.items)
+      end
+      -- it is annoying that we have to do this, but the inventory tracker
+      -- doesn't trace the stacks of all the items.  sigh.
+      if only_stacks_dirty and still_dirty then
+         self:get_item_tracker('stonehearth:basic_inventory_tracker')
+                  :mark_changed()
+         self:get_item_tracker('stonehearth:usable_item_tracker')
+                  :mark_changed()
+      end
+   end
+end
+
+function AceInventory:_subtract_gold_from(stacks_to_remove, items)
+   local only_stacks_dirty = true
+   for id, item in pairs(items) do
+      -- get stacks for the item
+      local stacks_component = item:add_component('stonehearth:stacks')
+      local item_stacks = stacks_component:get_stacks()
+
+      -- nuke some stacks
+      if item_stacks > stacks_to_remove then
+         -- this item has more stacks than we need to remove, reduce the stacks and we're done
+         stacks_component:set_stacks(item_stacks - stacks_to_remove)
+         stacks_to_remove = 0
+         radiant.events.trigger(self, 'stonehearth:inventory:item_updated', { item = item })
+      else
+         -- consume the whole item and run through the loop again
+         radiant.entities.destroy_entity(item)
+         stacks_to_remove = stacks_to_remove - item_stacks
+         only_stacks_dirty = false
+      end
+
+      assert(stacks_to_remove >= 0)
+
+      if stacks_to_remove == 0 then
+         break
+      end
+   end
+
+   return stacks_to_remove, only_stacks_dirty
 end
 
 return AceInventory

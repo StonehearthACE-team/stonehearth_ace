@@ -4,6 +4,7 @@ local FixtureData = require 'lib.building.fixture_data'
 local BlueprintsToBuildingPiecesJob = require 'stonehearth.components.building2.plan.jobs.blueprints_to_building_pieces_job'
 local BuildingCompletionJob = require 'stonehearth.components.building2.building_completion_job'
 
+local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local rng = _radiant.math.get_default_rng()
 local Point3 = _radiant.csg.Point3
 local Region3 = _radiant.csg.Region3
@@ -35,6 +36,10 @@ function AceBuilding:activate(loading)
       self._sv._banked_resources = {}
    end
 
+   if not self._sv._resource_delivery_entity then
+      self:_create_resource_delivery_entity()
+   end
+
    self._registered_materials_to_be_banked = {}
    self._registered_materials_by_entity = {}
 
@@ -42,6 +47,20 @@ function AceBuilding:activate(loading)
 
    if self._sv.plan_job_status == stonehearth.constants.building.plan_job_status.COMPLETE then
       self:_create_resource_collection_tasks()
+   end
+end
+
+AceBuilding._ace_old_destroy = Building.__user_destroy
+function AceBuilding:destroy()
+   self:_destroy_resource_delivery_entity()
+
+   self:_ace_old_destroy()
+end
+
+function AceBuilding:_destroy_resource_delivery_entity()
+   if self._sv._resource_delivery_entity then
+      radiant.entities.destroy_entity(self._sv._resource_delivery_entity)
+      self._sv._resource_delivery_entity = nil
    end
 end
 
@@ -65,6 +84,10 @@ end
 
 function AceBuilding:get_envelope_entity()
    return self._sv._envelope_entity
+end
+
+function AceBuilding:get_resource_delivery_entity()
+   return self._sv._resource_delivery_entity
 end
 
 function AceBuilding:destroy_banked_resources()
@@ -233,8 +256,31 @@ AceBuilding._ace_old__on_building_start = Building._on_building_start
 function AceBuilding:_on_building_start(plan, envelope_w, root_point, terrain_region_w)
    self:_ace_old__on_building_start(plan, envelope_w, root_point, terrain_region_w)
 
-   self._sv._envelope_entity:get_component('destination'):set_auto_update_adjacent(true)
+   self:_create_resource_delivery_entity()
    self:_create_resource_collection_tasks()
+end
+
+function AceBuilding:_create_resource_delivery_entity()
+   local envelope_entity = self._sv._envelope_entity
+   if not envelope_entity then
+      return
+   end
+   
+   -- make a resource delivery destination entity with a simplified region
+   local region = envelope_entity:get_component('destination'):get_region():get()
+   if not region:empty() then
+      local bounds = region:get_bounds()
+      region = csg_lib.get_region_footprint(region):extruded('y', 0, bounds.max.y - bounds.min.y - 1)
+   end
+
+   self._sv._resource_delivery_entity = radiant.entities.create_entity('stonehearth_ace:build2:entities:resource_delivery')
+   local destination = self._sv._resource_delivery_entity:get('destination')
+   destination:set_region(radiant.alloc_region3())
+   destination:get_region():modify(function(cursor)
+         cursor:copy_region(region)
+      end)
+   destination:set_auto_update_adjacent(true)
+   radiant.terrain.place_entity_at_exact_location(self._sv._resource_delivery_entity, Point3.zero)
 end
 
 AceBuilding._ace_old__on_plan_complete = Building._on_plan_complete
@@ -243,6 +289,8 @@ function AceBuilding:_on_plan_complete()
    -- we also no longer care about banked resources, but let's keep the overall quality value around
    self._sv.quality = self:get_building_quality()
    self._sv._banked_resources = {}
+
+   self:_destroy_resource_delivery_entity()
 
    self:_ace_old__on_plan_complete()
 end
@@ -254,6 +302,13 @@ end
 
 function AceBuilding:_destroy_resource_collection_tasks()
    stonehearth.town:get_town(self._entity:get_player_id()):destroy_resource_collection_tasks(self._entity)
+end
+
+AceBuilding._ace_old_instabuild = Building.instabuild
+function AceBuilding:instabuild()
+   self:_destroy_resource_delivery_entity()
+
+   self:_ace_old_instabuild()
 end
 
 return AceBuilding

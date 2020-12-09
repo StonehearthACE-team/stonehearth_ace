@@ -30,7 +30,7 @@ function CollectBuildingMaterial:start_thinking(ai, entity, args)
          if ready then
             ai:set_think_output({
                owner_player_id = work_player_id,
-               envelope_entity = building_comp:get_envelope_entity(),   -- the envelope entity has the destination region for the building
+               resource_delivery_entity = building_comp:get_resource_delivery_entity(),   -- the resource delivery entity has the destination region for the building
             })
          else
             ai:clear_think_output()
@@ -80,7 +80,7 @@ return ai:create_compound_action(CollectBuildingMaterial)
                owner_player_id = ai.BACK(4).owner_player_id,
             })
          :execute('stonehearth:find_path_to_reachable_entity', {
-               destination = ai.BACK(5).envelope_entity,
+               destination = ai.BACK(5).resource_delivery_entity,
             })
          :execute('stonehearth_ace:register_building_material_drop_off', {
                building = ai.ARGS.building,

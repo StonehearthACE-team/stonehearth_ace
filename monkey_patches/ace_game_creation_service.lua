@@ -168,16 +168,42 @@ function AceGameCreationService:create_camp_command(session, response, pt)
    -- Handle re-embarkation
    if game_options.reembark_spec then
       -- Add items.
+
+      -- if we already have any kind of herbalist planter, then we don't need to worry about a past reembark file with hearthbud and no planter for it
+      local made_amberstone_planter
+      for _, item_spec in ipairs(game_options.reembark_spec.items) do
+         local data = radiant.entities.get_component_data(item_spec.uri, 'stonehearth_ace:herbalist_planter')
+         if data then
+            made_amberstone_planter = true
+         end
+      end
+
       for _, item_spec in ipairs(game_options.reembark_spec.items) do
          if item_spec.uri == 'stonehearth:loot:gold' then
             inventory:add_gold(stonehearth.constants.reembarkation.gold_per_bag * item_spec.count)
          else
             local uri_exists = radiant.resources.load_json(item_spec.uri, true, false) ~= nil
             if uri_exists then
-               local spawned_items = radiant.entities.output_items({ [item_spec.uri] = {[item_spec.item_quality or 1] = item_spec.count } }, location,
-                  MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS, { owner = player_id }, nil, default_storage, true).spilled
-               for _, item in pairs(spawned_items) do
-                  inventory:add_item(item)
+               local items = {}
+               local count = item_spec.count
+
+               -- if they brought hearthbud but no planter for it, swap out a seed or plant for a pre-planted amberstone planter
+               if not made_amberstone_planter and (item_spec.uri == 'stonehearth:plants:earthbud' or item_spec.uri == 'stonehearth:plants:earthbud:seed') then
+                  made_amberstone_planter = true
+                  count = count - 1
+                  items['stonehearth_ace:planters:pot:amberstone:hearthbud'] = {[1] = 1 }
+               end
+
+               if count > 0 then
+                  items[item_spec.uri] = {[item_spec.item_quality or 1] = count }
+               end
+
+               if next(items) then
+                  local spawned_items = radiant.entities.output_items(items, location, MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS,
+                        { owner = player_id }, nil, default_storage, true).spilled
+                  for _, item in pairs(spawned_items) do
+                     inventory:add_item(item)
+                  end
                end
             end
          end
@@ -252,6 +278,8 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
    attributes:set_attribute('spirit', citizen_spec.attributes.spirit)
    attributes:set_attribute('mind', citizen_spec.attributes.mind)
 
+	self:_set_customizable_entity_data(citizen, citizen_spec)
+
    -- Set traits.
    local traits = citizen:add_component('stonehearth:traits')
    for _, trait_uri in ipairs(citizen_spec.traits) do
@@ -306,8 +334,6 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
          equipment:equip_item(equipment_entity, true)
       end
    end
-
-	self:_set_customizable_entity_data(citizen, citizen_spec)
 end
 
 function AceGameCreationService:_set_customizable_entity_data(entity, data)

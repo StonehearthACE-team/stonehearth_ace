@@ -11,8 +11,10 @@ PickupIngredientWithUri.args = {
 }
 PickupIngredientWithUri.priority = 0
 
+local GOLD_URI = 'stonehearth:loot:gold'
+
 function PickupIngredientWithUri:start_thinking(ai, entity, args)
-   if args.ingredient.uri ~= nil then
+   if args.ingredient.uri ~= nil and args.ingredient.uri ~= GOLD_URI then
       ai:set_think_output({
          min_stacks = args.ingredient.min_stacks or 0
       })
