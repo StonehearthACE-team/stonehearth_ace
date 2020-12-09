@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.frostfeast.wreath_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.frostfeast.wreath_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.frostfeast.wreath_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/wreath/wreath.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "manual_unlock": true,
+   "ingredients": [
+		{
+			"uri": "stonehearth_ace:resources:bough_bale:evergreen",
+			"count": 2
+		},
+      {
+         "uri": "stonehearth:trees:pine:seed",
+         "count": 2
+      },
+		{
+         "material": "cloth resource",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:wreath"
+      }
+   ]
+}

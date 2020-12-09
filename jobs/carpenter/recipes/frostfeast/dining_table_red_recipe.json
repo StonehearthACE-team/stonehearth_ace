@@ -1,0 +1,32 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.dining_table_red_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.dining_table_red_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.dining_table_red_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/dining_table_red/dining_table_red.png",
+   "workshop": "stonehearth:carpenter:workbench",
+   "work_effect": "fiddle",
+	"manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:furniture:dining_table",
+         "count": 1
+      },
+		{
+         "material": "cloth resource",
+         "count": 2
+      },
+		{
+         "material": "herb red resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:dining_table:red"
+      }
+   ]
+}

@@ -222,8 +222,20 @@
          "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
-				"worker_holiday_hat": {
-					"recipe": "file(worker_holiday_hat_recipe.json)"
+				"frostfeast_worker_holiday_hat": {
+					"recipe": "file(frostfeast/worker_holiday_hat_recipe.json)"
+				},
+				"frostfeast_stocking_small": {
+					"recipe": "file(frostfeast/stocking_small_recipe.json)"
+				},
+				"frostfeast_stocking": {
+					"recipe": "file(frostfeast/stocking_recipe.json)"
+				},
+				"frostfeast_plushie_toy_deer": {
+					"recipe": "file(frostfeast/plushie_toy_deer_recipe.json)"
+				},
+				"frostfeast_worker_holiday_outfit": {
+					"recipe": "file(frostfeast/worker_holiday_outfit_recipe.json)"
 				}
          }
       }

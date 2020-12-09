@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 80,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.frostfeast.decorated_frostfeast_tree_silver_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.frostfeast.decorated_frostfeast_tree_silver_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.frostfeast.decorated_frostfeast_tree_silver_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/decorated_tree_silver/decorated_tree_silver.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 3,
+   "manual_unlock": true,
+   "ingredients": [
+		{
+			"uri": "stonehearth_ace:trees:arctic_pine:sapling",
+			"count": 1
+		},
+      {
+         "uri": "stonehearth:trees:pine:seed",
+         "count": 4
+      },
+		{
+         "uri": "stonehearth_ace:resources:herb:daisy",
+         "count": 3
+      },
+		{
+         "material": "cloth resource",
+         "count": 2
+      },
+		{
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:decorated_tree:silver"
+      }
+   ]
+}

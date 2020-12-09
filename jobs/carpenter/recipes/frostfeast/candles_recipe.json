@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 12,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.candles_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.candles_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.candles_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/candles/candles.png",
+   "workshop": "stonehearth:carpenter:workbench",
+   "work_effect": "fiddle",
+	"manual_unlock": true,
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      },
+		{
+         "material": "fiber resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:candles"
+      }
+   ]
+}

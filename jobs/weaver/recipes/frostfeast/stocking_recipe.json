@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 19,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.frostfeast.stocking_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.frostfeast.stocking_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.frostfeast.stocking_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/stocking/stocking.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 4,
+	"manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "cloth resource",
+         "count": 2
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:resources:fiber:wool_bundle",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:stocking"
+      }
+   ]
+}

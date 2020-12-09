@@ -1,0 +1,32 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.end_table_green_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.end_table_green_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.end_table_green_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/end_table_green/end_table_green.png",
+   "workshop": "stonehearth:carpenter:workbench",
+   "work_effect": "fiddle",
+	"manual_unlock": true,
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:furniture:table_for_one",
+         "count": 1
+      },
+		{
+         "material": "cloth resource",
+         "count": 1
+      },
+		{
+         "material": "herb green resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:end_table:green"
+      }
+   ]
+}

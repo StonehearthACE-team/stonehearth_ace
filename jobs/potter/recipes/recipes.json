@@ -335,14 +335,23 @@
          "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
-				"present_small": {
-					"recipe": "file(present_small_recipe.json)"
+				"frostfeast_present_small": {
+					"recipe": "file(frostfeast/present_small_recipe.json)"
 				},
-				"present": {
-					"recipe": "file(present_recipe.json)"
+				"frostfeast_present": {
+					"recipe": "file(frostfeast/present_recipe.json)"
 				},
-				"present_large": {
-					"recipe": "file(present_large_recipe.json)"
+				"frostfeast_present_large": {
+					"recipe": "file(frostfeast/present_large_recipe.json)"
+				},
+				"frostfeast_snowling_short": {
+					"recipe": "file(frostfeast/snowling_short_recipe.json)"
+				},
+				"frostfeast_snowling": {
+					"recipe": "file(frostfeast/snowling_recipe.json)"
+				},
+				"frostfeast_clay_door_wreath": {
+					"recipe": "file(frostfeast/clay_door_wreath_recipe.json)"
 				}
          }
       }

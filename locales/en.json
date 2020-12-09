@@ -2586,6 +2586,10 @@
          "toggle_fish_trap_harvest": {
             "display_name": "Capturing Fish",
             "description": "This trap is currently set to capture the animal in a small box so it can be moved elsewhere. Click here to change!"
+         },
+         "use_recipe": {
+            "display_name": "Learn",
+            "description": "Use this to learn a new crafting recipe. This will destroy the item."
          }
       },
       "buffs": {
@@ -3669,11 +3673,6 @@
             "bandages_name": "Healing Items",
             "potions_name": "Equippable Potions",
             "brewing_name": "Brewing Ingredients",
-            "decorated_frostfeast_tree_recipe": {
-               "recipe_name": "Decorated Frostfeast Pine",
-               "description": "Get your town ready for the holidays with this traditional and beautiful decorated tree.",
-               "flavor": "A symbol of hope, gratitude and warmth!"
-            },
             "brewer_tumbler_recipe": {
                "recipe_name": "Brewer's Tumbler",
                "description": "Required to promote a hearthling into a Brewer.",
@@ -4623,7 +4622,39 @@
                "recipe_name": "Wrap of Gruit",
                "description": "A bundle of bitter herbs and seasonings. The northerners use pine cones for its flavor.",
                "flavor": "The Brewer needs gruit for making beer"
-            }
+            },
+				"frostfeast": {
+				   "decorated_frostfeast_tree_recipe": {
+                  "recipe_name": "Decorated Frostfeast Pine",
+                  "description": "Get your town ready for the holidays with this traditional and beautiful decorated tree.",
+                  "flavor": "A symbol of hope, gratitude and warmth!"
+               },
+					"decorated_frostfeast_tree_gold_recipe": {
+                  "recipe_name": "Frostfeast Golden Pine",
+                  "description": "Prepare a special decorated Frostfeast tree with golden themes.",
+                  "flavor": "Perfect for snuggling presents underneath."
+               },
+					"decorated_frostfeast_tree_silver_recipe": {
+                  "recipe_name": "Frostfeast Silver Pine",
+                  "description": "Prepare a special decorated Frostfeast tree with silver themes.",
+                  "flavor": "A symbol of hope, gratitude and warmth!"
+               },
+					"decorated_frostfeast_tree_snowy_recipe": {
+                  "recipe_name": "Frostfeast Snowy Pine",
+                  "description": "Prepare a special decorated Frostfeast tree with snowy themes.",
+                  "flavor": "A symbol of hope, gratitude and warmth!"
+               },
+					"wreath_recipe": {
+                  "recipe_name": "Frostfeast Pine Wreath",
+                  "description": "A very appreciated decoration for the holidays.",
+                  "flavor": ""
+               },
+					"wreath_large_recipe": {
+                  "recipe_name": "Big Frostfeast Pine Wreath",
+                  "description": "For when you're feeling really festive.",
+                  "flavor": ""
+               }
+				}
          },
          "herbalist_hood": {
             "display_name": "Herbalist's Hood",
@@ -4809,21 +4840,6 @@
                "recipe_name": "Herbalist's Idol",
                "description": "Required to promote a hearthling to an Herbalist, who creates healing tonics and bandages.",
                "flavor": "Earthly idols have healing powers, they say"
-            },
-            "present_small_recipe": {
-               "recipe_name": "Small Frostfeast Present",
-               "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
-               "flavor": "Small presents contain two random items"
-            },
-            "present_recipe": {
-               "recipe_name": "Frostfeast Present",
-               "description": "Buy a beautiful present for your town. Can be used as decoration or unwrapped.",
-               "flavor": "Presents contain up to four random items. One is guaranteed to be a special Frostfeast item!"
-            },
-            "present_large_recipe": {
-               "recipe_name": "Big Frostfeast Present",
-               "description": "Buy an amazing and big present for your town. Can be used as decoration or unwrapped.",
-               "flavor": "Big presents contain up to six random items. Two are guaranteed to be special Frostfeast items!"
             },
             "bone_clay_recipe": {
                "recipe_name": "Mound of Bone Clay",
@@ -5155,7 +5171,39 @@
             "potted_cactus_recipe": {
                "recipe_name": "Window Planter with Cacti",
                "description": "A decorative planter to be placed under window frames. Comes with Cacti but a different herb can be chosen and planted by the Herbalist."
-            }
+            },
+				"frostfeast": {
+               "present_small_recipe": {
+                  "recipe_name": "Small Frostfeast Present",
+                  "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
+                  "flavor": "Small presents contain two random items"
+               },
+               "present_recipe": {
+                  "recipe_name": "Frostfeast Present",
+                  "description": "Buy a beautiful present for your town. Can be used as decoration or unwrapped.",
+                  "flavor": "Presents contain up to four random items. One is guaranteed to be a special Frostfeast item!"
+               },
+               "present_large_recipe": {
+                  "recipe_name": "Big Frostfeast Present",
+                  "description": "Buy an amazing and big present for your town. Can be used as decoration or unwrapped.",
+                  "flavor": "Big presents contain up to six random items. Two are guaranteed to be special Frostfeast items!"
+               },
+               "clay_door_wreath_recipe": {
+                  "recipe_name": "Frostfeast Clay Door",
+                  "description": "A very warm and fancy way to welcome your neighbors.",
+                  "flavor": "Welcome to our feast!"
+               },
+               "snowling_short_recipe": {
+                  "recipe_name": "Short Frostfeast Snowling",
+                  "description": "Let your crafter express their creativity on a short snowling!",
+                  "flavor": "Is it a goblin? Is it a child? Wait!-- Children exist?"
+               },
+               "snowling_recipe": {
+                  "recipe_name": "Frostfeast Snowling",
+                  "description": "Let your crafter express their creativity on a nice snowling!",
+                  "flavor": "The holidays are magical so it will never melt! Hopefully..."
+               }					
+				}
          },
          "potter_description": {
             "level_1_data": {
@@ -5246,21 +5294,6 @@
                "recipe_name": "Herbalist's Bone Staff",
                "description": "Required to promote a hearthling to an Herbalist, who creates healing tonics and bandages.",
                "flavor": "The healing powers of Firnn shall provide"
-            },
-            "present_small_recipe": {
-               "recipe_name": "Small Frostfeast Present",
-               "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
-               "flavor": "Small presents contain two random items"
-            },
-            "present_recipe": {
-               "recipe_name": "Frostfeast Present",
-               "description": "Buy a beautiful present for your town. Can be used as decoration or unwrapped.",
-               "flavor": "Presents contain up to four random items. One is guaranteed to be a special Frostfeast item!"
-            },
-            "present_large_recipe": {
-               "recipe_name": "Big Frostfeast Present",
-               "description": "Buy an amazing and big present for your town. Can be used as decoration or unwrapped.",
-               "flavor": "Big presents contain up to six random items. Two are guaranteed to be special Frostfeast items!"
             },
             "mason_workbench_bone_recipe": {
                "recipe_name": "Bone Carving Studio",
@@ -5614,7 +5647,29 @@
             "stone_bench_recipe": {
                "recipe_name": "Stone Wide Chair",
                "description": "Perfect for sitting by the hearth at night or somewhere outside."
-            }
+            },
+				"frostfeast": {
+               "present_small_recipe": {
+                  "recipe_name": "Small Frostfeast Present",
+                  "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
+                  "flavor": "Small presents contain two random items"
+               },
+               "present_recipe": {
+                  "recipe_name": "Frostfeast Present",
+                  "description": "Buy a beautiful present for your town. Can be used as decoration or unwrapped.",
+                  "flavor": "Presents contain up to four random items. One is guaranteed to be a special Frostfeast item!"
+               },
+               "present_large_recipe": {
+                  "recipe_name": "Big Frostfeast Present",
+                  "description": "Buy an amazing and big present for your town. Can be used as decoration or unwrapped.",
+                  "flavor": "Big presents contain up to six random items. Two are guaranteed to be special Frostfeast items!"
+               },
+               "stone_door_wreath_recipe": {
+                  "recipe_name": "Frostfeast Stone Door",
+                  "description": "A very warm and fancy way to welcome your neighbors.",
+                  "flavor": "Welcome to our feast!"
+               }				
+				}
          },
          "mason_workbench_bone": {
             "display_name": "Bone Carving Studio",
@@ -6483,21 +6538,6 @@
       },
       "carpenter": {
          "recipes": {
-            "present_small_recipe": {
-               "recipe_name": "Small Frostfeast Present",
-               "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
-               "flavor": "Small presents contain two random items"
-            },
-            "present_recipe": {
-               "recipe_name": "Frostfeast Present",
-               "description": "Buy a beautiful present for your town. Can be used as decoration or unwrapped.",
-               "flavor": "Presents contain up to four random items. One is guaranteed to be a special Frostfeast item!"
-            },
-            "present_large_recipe": {
-               "recipe_name": "Big Frostfeast Present",
-               "description": "Buy an amazing and big present for your town. Can be used as decoration or unwrapped.",
-               "flavor": "Big presents contain up to six random items. Two are guaranteed to be special Frostfeast items!"
-            },
             "wooden_animal_door_recipe": {
                "recipe_name": "Wooden Animal Door",
                "description": "A large door for animal shelters, it can be closed by a shepherd. When closed, only hearthlings may go through!",
@@ -6701,7 +6741,74 @@
             },
             "shepherds_crook_recipe": {
                "flavor": "Can you tell me another story about The Shepherd?"
-            }
+            },
+				"frostfeast": {
+				   "present_small_recipe": {
+                  "recipe_name": "Small Frostfeast Present",
+                  "description": "Buy a delicate present for your town. Can be used as decoration or unwrapped.",
+                  "flavor": "Small presents contain two random items"
+               },
+               "present_recipe": {
+                  "recipe_name": "Frostfeast Present",
+                  "description": "Buy a beautiful present for your town. Can be used as decoration or unwrapped.",
+                  "flavor": "Presents contain up to four random items. One is guaranteed to be a special Frostfeast item!"
+               },
+               "present_large_recipe": {
+                  "recipe_name": "Big Frostfeast Present",
+                  "description": "Buy an amazing and big present for your town. Can be used as decoration or unwrapped.",
+                  "flavor": "Big presents contain up to six random items. Two are guaranteed to be special Frostfeast items!"
+               },
+               "candles_recipe": {
+                  "recipe_name": "Decorative Frostfeast Candles",
+                  "description": "A nice and seasonal set of candles that can be placed on surfaces or hanging from the wall.",
+                  "flavor": "'The fire flickers on a winter's night, hope is renewed under Frostfeast's light'"
+               },
+               "wooden_door_wreath_recipe": {
+                  "recipe_name": "Frostfeast Wooden Door",
+                  "description": "A very warm and fancy way to welcome your neighbors.",
+                  "flavor": "Welcome to our feast!"
+               },
+               "dining_table_blue_recipe": {
+                  "recipe_name": "Blue Frostfeast Table",
+                  "description": "Create some fancy tablecloth for a regular dining table!",
+                  "flavor": "Perfect for supporting food and gathering around in a cold night"
+               },
+               "dining_table_red_recipe": {
+                  "recipe_name": "Red Frostfeast Table",
+                  "description": "Create some fancy tablecloth for a regular dining table!",
+                  "flavor": "Perfect for supporting food and gathering around in a cold night"
+               },
+               "dining_table_green_recipe": {
+                  "recipe_name": "Green Frostfeast Table",
+                  "description": "Create some fancy tablecloth for a regular dining table!",
+                  "flavor": "Perfect for supporting food and gathering around in a cold night"
+               },
+               "dining_table_white_recipe": {
+                  "recipe_name": "White Frostfeast Table",
+                  "description": "Create some fancy tablecloth for a regular dining table!",
+                  "flavor": "Perfect for supporting food and gathering around in a cold night"
+               },
+               "end_table_blue_recipe": {
+                  "recipe_name": "Blue Frostfeast End Table",
+                  "description": "A nice and cozy small table with a pretty tablecloth!",
+                  "flavor": "Really good for putting up the frostfeast tree..."
+               },
+               "end_table_red_recipe": {
+                  "recipe_name": "Red Frostfeast End Table",
+                  "description": "A nice and cozy small table with a pretty tablecloth!",
+                  "flavor": "Really good for putting up the frostfeast tree..."
+               },
+               "end_table_green_recipe": {
+                  "recipe_name": "Green Frostfeast End Table",
+                  "description": "A nice and cozy small table with a pretty tablecloth!",
+                  "flavor": "Really good for putting up the frostfeast tree..."
+               },
+               "end_table_white_recipe": {
+                  "recipe_name": "White Frostfeast End Table",
+                  "description": "A nice and cozy small table with a pretty tablecloth!",
+                  "flavor": "Really good for putting up the frostfeast tree..."
+               }
+				}
          },
          "carpenter_description": {
             "level_1_data": {
@@ -6728,7 +6835,7 @@
       },
       "weaver": {
          "recipes": {
-				"thatch_twine_bundle_recipe": {
+            "thatch_twine_bundle_recipe": {
                "recipe_name": "Thatch Twine Bundle",
                "description": "Coil strains of thatch together into a neat cordage that can be used as fiber.",
                "flavor": ""
@@ -6742,11 +6849,6 @@
                "recipe_name": "Fine Stuffing",
                "description": "Craft a neat and useful wadding that can be used as a filling in several objects or pieces of clothing.",
                "flavor": "Warm and comfy!"
-            },
-            "worker_holiday_hat_recipe": {
-               "recipe_name": "Holiday Cheer Cap",
-               "description": "A traditional hat for enjoying the frostfeast holidays that will also protect from chilly weather.",
-               "flavor": "The ACE team wishes you very happy holidays!"
             },
             "sunstroke_field_work_outfit_recipe": {
                "recipe_name": "Summer Work Hat",
@@ -6936,7 +7038,34 @@
             },
             "clothing_armor_name": "Clothing & Accessories",
             "weapons_name": "Combat Equipment",
-            "furniture_name": "Building Parts & Furniture"
+            "furniture_name": "Building Parts & Furniture",
+				"frostfeast": {
+					"worker_holiday_hat_recipe": {
+                  "recipe_name": "Holiday Cheer Cap",
+                  "description": "A traditional hat for enjoying the frostfeast holidays that will also protect from chilly weather.",
+                  "flavor": "The ACE team wishes you very happy holidays!"
+               },
+					"stocking_small_recipe": {
+                  "recipe_name": "Frostfeast Stocking",
+                  "description": "A fancy seasonal decoration to hang on walls or by the hearth.",
+                  "flavor": "Not for wearing"
+               },
+					"stocking_recipe": {
+                  "recipe_name": "Big Frostfeast Stocking",
+                  "description": "An even bigger stocking for decorating your walls or hearth.",
+                  "flavor": "The more space you have, the more presents you get... right?"
+               },
+					"plushie_toy_deer_recipe": {
+                  "recipe_name": "Frostfeast Plushie Reindeer",
+                  "description": "Craft an adorable plushie to decorate your home.",
+                  "flavor": "You may call it 'Rudolph' if you want"
+               },
+					"worker_holiday_outfit_recipe": {
+                  "recipe_name": "Holiday Cheer Cap",
+                  "description": "A traditional hat for enjoying the frostfeast holidays that will also protect from chilly weather.",
+                  "flavor": "The ACE team wishes you very happy holidays!"
+               }
+			   }
          },
          "weaver_description": {
             "level_2_data": {
@@ -8169,6 +8298,12 @@
                   "description": "Provides protection against strong toxins but only recovers some health.",
                   "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
                }
+            }
+         },
+         "frostfeast": {
+            "frostfeast_recipe": {
+               "display_name": "Frostfeast Crafting Recipe",
+               "description": "Read this to learn how to craft special Frostfeast stuff!"
             }
          }
       },

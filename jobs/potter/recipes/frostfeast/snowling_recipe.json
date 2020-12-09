@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.frostfeast.snowling_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.frostfeast.snowling_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.frostfeast.snowling_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/snowling/snowling.png",
+   "workshop": "stonehearth:potter:workbench",
+	"manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+		{
+         "uri": "stonehearth:plants:carrot",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood",
+         "count": 1
+      },
+		{
+         "material": "fiber resource",
+         "count": 4
+      },
+		{
+         "uri": "stonehearth:resources:coal:lump_of_coal",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:snowling"
+      }
+   ]
+}

@@ -569,7 +569,22 @@
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
 				"decorated_frostfeast_tree" : {
-					"recipe" : "file(decorated_frostfeast_tree_recipe.json)"
+					"recipe" : "file(frostfeast/decorated_frostfeast_tree_recipe.json)"
+				},
+				"decorated_frostfeast_tree_gold" : {
+					"recipe" : "file(frostfeast/decorated_frostfeast_tree_gold_recipe.json)"
+				},
+				"decorated_frostfeast_tree_silver" : {
+					"recipe" : "file(frostfeast/decorated_frostfeast_tree_silver_recipe.json)"
+				},
+				"decorated_frostfeast_tree_snowy" : {
+					"recipe" : "file(frostfeast/decorated_frostfeast_tree_snowy_recipe.json)"
+				},
+				"frostfeast_wreath" : {
+					"recipe" : "file(frostfeast/wreath_recipe.json)"
+				},
+				"frostfeast_wreath_large" : {
+					"recipe" : "file(frostfeast/wreath_large_recipe.json)"
 				}
          }
       }

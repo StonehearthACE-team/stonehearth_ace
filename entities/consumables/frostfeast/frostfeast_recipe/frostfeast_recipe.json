@@ -1,0 +1,53 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.07
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(frostfeast_recipe.qb)"
+            ]
+         }
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth_ace:commands:use_recipe"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -0.2, "z": 0 }
+      },
+      "effect_list": {
+         "default": "stonehearth:effects:treasure_glow"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 50,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth_ace:consumables:scripts:unlock_random_recipes",
+         "recipe_list": "stonehearth_ace:data:frostfeast:recipes"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.frostfeast.frostfeast_recipe.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.frostfeast.frostfeast_recipe.description)",
+         "icon": "file(frostfeast_recipe.png)",
+         "is_item": true,
+         "category": "consumable",
+         "material_tags": [
+            "frostfeast_recipe",
+            "stockpile_consumable",
+            "consumable"
+         ]
+      }
+   }
+}
