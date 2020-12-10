@@ -3,6 +3,10 @@
 
 local AceJobInfoController = class()
 
+function AceJobInfoController:get_class_name()
+   return self._sv.class_name
+end
+
 function AceJobInfoController:foreach_available_recipes(fn)
    for _, recipe_data_tbl in pairs(self._craftable_recipes) do
       for _, recipe_data in ipairs(recipe_data_tbl) do

@@ -54,13 +54,28 @@ function UnlockRandomRecipes.use(consumable, consumable_data, player_id, target_
       return false
    end
 
+   local jobs = {}
+
    while next(possible_recipes) and num_to_unlock > 0 do
       num_to_unlock = num_to_unlock - 1
       local index = rng:get_int(1, #possible_recipes)
       local selection = table.remove(possible_recipes, index)
+      local job_info = selection.job_info
+      jobs[job_info] = (jobs[job_info] or 0) + 1
 
-      selection.job_info:manually_unlock_recipe(selection.recipe)
-      log:debug('unlocking %s recipe "%s"', selection.job_info:get_alias(), selection.recipe)
+      job_info:manually_unlock_recipe(selection.recipe)
+      log:debug('unlocking %s recipe "%s"', job_info:get_alias(), selection.recipe)
+   end
+
+   if consumable_data.show_bulletin ~= false then
+      local bulletin_title = consumable_data.bulletin_title or 'stonehearth_ace:data.commands.use_recipe.bulletin_title'
+      for job_info, count in pairs(jobs) do
+         stonehearth.bulletin_board:post_bulletin(player_id)
+               :set_sticky(true)
+               :set_data({title = consumable_data.bulletin_title})
+               :add_i18n_data('job_name', job_info:get_class_name())
+               :add_i18n_data('recipe_count', count)
+      end
    end
 
    return true

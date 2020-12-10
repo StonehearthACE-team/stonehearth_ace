@@ -2589,7 +2589,9 @@
          },
          "use_recipe": {
             "display_name": "Learn",
-            "description": "Use this to learn a new crafting recipe. This will destroy the item."
+            "description": "Use this to learn a new crafting recipe. This will destroy the item.",
+            "bulletin_title": "The [str(i18n_data.job_name)] has unlocked [str(i18n_data.recipe_count)] new recipe(s)!",
+            "bulletin_title_single": "The [str(i18n_data.job_name)] has unlocked a new recipe!"
          }
       },
       "buffs": {

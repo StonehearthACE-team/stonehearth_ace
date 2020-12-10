@@ -14,12 +14,12 @@ function AceUnlockRecipeEncounter:start(ctx, info)
 
    --create a bulletin about it!
    if info.bulletin_title then
-	  local bulletin_data = {
-		 title = info.bulletin_title,
-		 notification_closed_callback = '_on_closed'
-	  }
+      local bulletin_data = {
+         title = info.bulletin_title,
+         notification_closed_callback = '_on_closed'
+      }
 
-	  self._sv.recipe_bulletin = stonehearth.bulletin_board:post_bulletin(ctx.player_id)
+      self._sv.recipe_bulletin = stonehearth.bulletin_board:post_bulletin(ctx.player_id)
             :set_callback_instance(self)
             :set_sticky(true)
             :set_data(bulletin_data)
