@@ -162,7 +162,7 @@ function Node:_get_requirement_value(ctx, item, rule)
    elseif item == 'reached_citizen_cap' then
           --Don't spawn if we have more than tuned max people
       local num_citizens = stonehearth.population:get_population_size(ctx.player_id)
-      local max_citizens = radiant.util.get_config('max_citizens', 30)
+      local max_citizens = radiant.util.get_global_config('mods.stonehearth.max_citizens', 30)
       lhs = num_citizens >= max_citizens
    elseif item == 'biome' then
       lhs = stonehearth.world_generation:get_biome_alias()
@@ -243,7 +243,7 @@ function Node:_get_requirement_value(ctx, item, rule)
          self._log:error('missing key field with string value for config check')
          return true
       end
-      local value = radiant.util.get_config(rule.key)
+      local value = radiant.util.get_global_config(rule.key)
       lhs = value
    elseif item == 'counter' then
       if not type(rule.key) == 'string' then

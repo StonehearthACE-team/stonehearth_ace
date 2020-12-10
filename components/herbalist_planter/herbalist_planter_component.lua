@@ -327,7 +327,8 @@ function HerbalistPlanterComponent:stop_active_effect()
 end
 
 function HerbalistPlanterComponent:_reset_growth(reset_growth_level)
-   self._sv.crop_growth_level = reset_growth_level or 0
+   -- subtract 1 from the growth level because it will grow immediately, and we want to refer to the resulting stage
+   self._sv.crop_growth_level = (reset_growth_level or 1) - 1
    self._sv.harvestable = false
    self.__saved_variables:mark_changed()
    self:_grow()
@@ -469,7 +470,7 @@ function HerbalistPlanterComponent:create_products(harvester)
       local reset_growth_level
       if self._planted_crop_stats then
          items = self:_create_products(harvester, self._planted_crop_stats.product_uri, self._sv.num_products, self._planted_crop_stats.additional_products)
-         reset_growth_level = self._planted_crop_stats.post_harvest_growth_level - 1   -- -1 because it will grow immediately, and we want to refer to the resulting stage
+         reset_growth_level = self._planted_crop_stats.post_harvest_growth_level
       end
       self:_reset_growth(reset_growth_level)
       self:_reset_tend_quality(0.5)

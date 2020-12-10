@@ -1,7 +1,7 @@
 local AceRenderer = class()
 local log = radiant.log.create_logger('renderer')
 
-local SHOW_GRIDLINES = radiant.util.get_config('show_gridlines', false)
+local SHOW_GRIDLINES = radiant.util.get_global_config('mods.stonehearth.show_gridlines', false)
 
 function AceRenderer:set_ui_mode(ui_mode)
    if self._ui_mode ~= ui_mode then
