@@ -1,0 +1,40 @@
+{
+   "type": "recipe",
+   "effort": 90,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.ham_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.ham_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.ham_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/frostfeast/ham/ham.png",
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+	"manual_unlock": true,
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:pork",
+         "count": 1
+      },
+	   {
+         "material": "butter cooking_ingredient",
+         "count": 1
+      },
+		{
+         "material": "honey cooking_ingredient",
+         "count": 1
+      },
+	   {
+         "material": "herb aromatic resource",
+         "count": 4
+      },
+		{
+			"material": "raw_food fruit",
+			"count": 4
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:frostfeast:ham"
+      }
+   ]
+}

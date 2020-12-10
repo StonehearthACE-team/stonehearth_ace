@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.seasonal_fruits_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.seasonal_fruits_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.seasonal_fruits_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/frostfeast/seasonal_fruits/seasonal_fruits.png",
+   "workshop": "stonehearth:cook:workbench",
+	"manual_unlock": true,
+   "level_requirement": 2,
+   "ingredients": [
+		{
+			"material": "raw_food fruit",
+			"count": 6
+		},
+      {
+         "material": "herb aromatic resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:frostfeast:seasonal_fruits"
+      }
+   ]
+}

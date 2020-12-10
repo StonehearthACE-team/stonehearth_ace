@@ -246,6 +246,15 @@
          "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
+				"frostfeast_egg_milk_punch": {
+               "recipe": "file(frostfeast/egg_milk_punch_recipe.json)"
+            },
+				"frostfeast_mulled_wine": {
+               "recipe": "file(frostfeast/mulled_wine_recipe.json)"
+            },
+				"frostfeast_hot_coco": {
+               "recipe": "file(frostfeast/hot_coco_recipe.json)"
+            }
          }
       }
    }

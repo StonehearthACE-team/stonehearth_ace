@@ -1,0 +1,19 @@
+{
+   "type": "encounter",
+   "encounter_type": "delivery_quest",
+   "in_edge": "quest_frostfeast_presents_1",
+   "out_edge": "quest_cleanup",
+   "delivery_quest_info": {
+      "title": "i18n(stonehearth:data.gm.campaigns.amberstone.arcs.trigger.discovery.encounters.01_strange_trading.01_strange_trading_quest.title)",
+      "dialog_title": "i18n(stonehearth:data.gm.campaigns.amberstone.arcs.trigger.discovery.encounters.01_strange_trading.01_strange_trading_quest.dialog_title)",
+      "text": "i18n(stonehearth:data.gm.campaigns.amberstone.arcs.trigger.discovery.encounters.01_strange_trading.01_strange_trading_quest.text)",
+      "requirements": [
+         {
+            "type": "give_material",
+            "material": "food_container raw_food vegetable",
+            "count": 5
+         }
+      ],
+      "abandon_out_edge": "quest_cleanup"
+   }
+}

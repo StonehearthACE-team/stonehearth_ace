@@ -1,0 +1,15 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "delay_before_tomtee_arrival",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "tomtee_arrival",
+         "tomtee_arrival_geomancer"
+      ]
+   },
+   "wait_info": {
+      "duration": "12h+24h"
+   }
+}

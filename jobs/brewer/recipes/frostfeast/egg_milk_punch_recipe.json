@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.egg_milk_punch_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.egg_milk_punch_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.egg_milk_punch_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/frostfeast/egg_milk_punch/egg_milk_punch.png",
+   "level_requirement": 2,
+	"manual_unlock": true,
+   "workshop": "stonehearth_ace:brewer:workbench",
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:egg_large",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+		{
+         "material": "drink_container milk",
+         "count": 2
+      },
+		{
+         "uri": "stonehearth_ace:food:dairy:cream",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth_ace:drink:spirit",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:frostfeast:egg_milk_punch"
+      }
+   ]
+}

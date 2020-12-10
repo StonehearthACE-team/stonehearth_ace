@@ -1,0 +1,42 @@
+{
+   "type": "encounter",
+   "encounter_type": "create_camp",
+   "rarity": "common",
+   "in_edge": "setting_camp",
+   "out_edge": "quest_explanation_dialogue",
+   "create_camp_info": {
+      "npc_player_id": "human_npcs",
+      "ctx_entity_registration_path": "tomtee_camp",
+      "radius": 4,
+      "keep_grass": true,
+      "searcher_delay": "1h",
+      "on_searcher_failure": {
+         "retry": true
+      },
+      "spawn_range": {
+         "min": 80,
+         "max": 120
+      },
+      "boss": {
+         "from_population": {
+            "role": "frostfeast_ace_tomtee",
+            "location": { "x": 2, "y": 0 },
+            "gender": "female"
+         },
+         "combat_leash_range": 15
+      },
+      "pieces": {
+         "firepit": {
+            "entity_uri": "stonehearth_ace:decoration:firepit_small",
+            "position": { "x": 0, "y": 0 },
+            "rotation": 0,
+            "npc_player_id": "human_npcs"
+         },
+         "stockpile": {
+            "position": { "x": -2, "y": 2 },
+            "info": "file(tomtee_camp/stockpile.json)",
+            "npc_player_id": "human_npcs"
+         }
+      }
+   }
+}

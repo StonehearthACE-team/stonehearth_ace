@@ -1,0 +1,36 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.hot_coco_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.hot_coco_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.hot_coco_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/frostfeast/hot_coco/hot_coco.png",
+   "level_requirement": 5,
+	"manual_unlock": true,
+   "workshop": "stonehearth_ace:brewer:kettle",
+	"work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "material": "seed_hard",
+         "count": 4
+      },
+		{
+         "material": "drink_container milk",
+         "count": 3
+      },
+		{
+         "uri": "stonehearth_ace:food:dairy:cream",
+         "count": 2
+      },
+		{
+         "material": "sweetener cooking_ingredient",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:frostfeast:hot_coco"
+      }
+   ]
+}

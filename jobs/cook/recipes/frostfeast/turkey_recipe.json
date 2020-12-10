@@ -1,0 +1,40 @@
+{
+   "type": "recipe",
+   "effort": 80,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.turkey_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.turkey_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.turkey_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/frostfeast/turkey/turkey.png",
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+	"manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:poyo_meat",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:consumables:stamina_tonic",
+         "count": 1
+      },		
+	   {
+         "material": "raw_food fruit",
+         "count": 3
+      },
+	   {
+         "material": "seasoning",
+         "count": 6
+      },
+		{
+			"material": "nut_basket cooking_ingredient",
+			"count": 3
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:frostfeast:turkey"
+      }
+   ]
+}

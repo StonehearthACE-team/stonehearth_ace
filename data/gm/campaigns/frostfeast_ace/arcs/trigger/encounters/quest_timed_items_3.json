@@ -1,0 +1,97 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "quest_timed_items_3",
+   "out_edge": "quest_cleanup",
+   "script_info": {
+      "script": "stonehearth:game_master:script_encounter:returning_trader",
+      "data": {
+         "expiration_timeout": "6h",
+         "score_threshold": 1000,
+         "title": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.title)",
+         "trade_details": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.trade_details)",
+         "waiting_title": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.waiting_title)",
+         "waiting_text": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.waiting_text)",
+         "return_title": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.return_title)",
+         "return_greetings_positive": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.return_greetings_positive)",
+         "return_greetings_negative": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.return_greetings_negative)",
+         "max_days_before_return": 3,
+         "wants": {
+            "stonehearth:farmer:talisman": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth:footman:wooden_sword_talisman": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth:furniture:simple_wooden_chair": {
+               "min": 5,
+               "max": 12
+            },
+            "stonehearth:construction:picket_fence_gate": {
+               "min": 1,
+               "max": 4
+            },
+            "stonehearth:furniture:table_for_one": {
+               "min": 3,
+               "max": 8
+            },
+            "stonehearth:furniture:not_much_of_a_bed": {
+               "min": 3,
+               "max": 10
+            },
+            "stonehearth:portals:wooden_door": {
+               "min": 2,
+               "max": 10
+            },
+            "stonehearth:portals:wooden_window_frame": {
+               "min": 4,
+               "max": 10
+            }
+         },
+         "rewards": {
+            "stonehearth:decoration:wooden_garden_lantern": {
+               "type": "object",
+               "min": 2,
+               "max": 6
+            },
+            "stonehearth:refined:cloth_bolt": {
+               "type": "object",
+               "min": 2,
+               "max": 10
+            },
+            "stonehearth:furniture:comfy_bed": {
+               "type": "object",
+               "min": 1,
+               "max": 3
+            },
+            "stonehearth:decoration:curtains": {
+               "type": "object",
+               "min": 2,
+               "max": 5
+            },
+            "stonehearth:weapons:stone_maul": {
+               "type": "object",
+               "min": 1,
+               "max": 3
+            },
+            "stonehearth:containers:large_crate": {
+               "type": "object",
+               "min": 1,
+               "max": 3
+            },
+            "stonehearth:armor:bronze_breastplate": {
+               "type": "object",
+               "min": 1,
+               "max": 2
+            },
+            "stonehearth:toys:plushie_toy_rabbit": {
+               "type": "object",
+               "min": 1,
+               "max": 2
+            }
+         }
+      }
+   }
+}

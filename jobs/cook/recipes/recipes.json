@@ -238,6 +238,18 @@
          "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
+				"frostfeast_seasonal_fruits": {
+               "recipe": "file(frostfeast/seasonal_fruits_recipe.json)"
+            },
+				"frostfeast_ginger_cookies": {
+               "recipe": "file(frostfeast/ginger_cookies_recipe.json)"
+            },
+				"frostfeast_turkey": {
+               "recipe": "file(frostfeast/turkey_recipe.json)"
+            },
+				"frostfeast_ham": {
+               "recipe": "file(frostfeast/ham_recipe.json)"
+            }
          }
       }
    }

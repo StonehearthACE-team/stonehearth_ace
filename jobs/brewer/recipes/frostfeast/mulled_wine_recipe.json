@@ -1,0 +1,36 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.mulled_wine_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.mulled_wine_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.mulled_wine_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/frostfeast/mulled_wine/mulled_wine.png",
+   "level_requirement": 4,
+	"manual_unlock": true,
+   "workshop": "stonehearth_ace:brewer:kettle",
+	"work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "material": "becomes_vinegar wine",
+         "count": 2
+      },
+      {
+         "material": "sweetener cooking_ingredient",
+         "count": 1
+      },
+      {
+         "material": "raw_food fruit",
+         "count": 3
+      },
+      {
+         "material": "seasoning",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:frostfeast:mulled_wine"
+      }
+   ]
+}

@@ -1,0 +1,47 @@
+{
+   "mixins": "file(tomtee_arrival.json)",
+   "in_edge": "tomtee_arrival_geomancer",
+	"mixintypes": {
+		"can_start": "override"
+	},
+	"can_start": {
+      "all_tests": {
+         "script_check": {
+            "item": "highest_job_level",
+            "type": "deny_if_less_than",
+            "value": 1,
+            "job_alias": "stonehearth:jobs:geomancer"
+         }
+      }
+   },
+   "dialog_tree_info": {
+		"nodes": {
+		   "msg3b": {
+            "bulletin": {
+               "mixintypes": {
+						"choices": "override"
+					},
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.tomtee_arrival.dialog_tree_info.dialog_nodes.msg3b.choice_001)": {
+                     "next_node": "msg3c"
+                  }
+               }
+            }
+         },
+			"msg3c": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.tomtee_arrival.dialog_tree_info.dialog_nodes.msg3c.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.tomtee_arrival.dialog_tree_info.dialog_nodes.msg3c.dialog_title)",
+               "portrait": "file(images/tomtee.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.tomtee_arrival.dialog_tree_info.dialog_nodes.msg3c.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.tomtee_arrival.dialog_tree_info.dialog_nodes.msg3c.choice_000)": {
+                     "next_node": "msg4"
+                  }
+               }
+            }
+         }
+		}
+	}      
+}

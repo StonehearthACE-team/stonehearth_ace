@@ -1,0 +1,36 @@
+{
+   "type": "recipe",
+   "effort": 44,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.ginger_cookies_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.ginger_cookies_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.ginger_cookies_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/frostfeast/ginger_cookies/ginger_cookies.png",
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+   "manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:dough_sweet",
+         "count": 1
+      },
+	   {
+         "material": "egg small cooking_ingredient",
+         "count": 1
+      },
+	   {
+         "material": "butter cooking_ingredient",
+         "count": 1
+      },
+	   {
+         "material": "seasoning",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:frostfeast:ginger_cookies"
+      }
+   ]
+}
