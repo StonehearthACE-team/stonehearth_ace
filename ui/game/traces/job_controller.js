@@ -90,6 +90,14 @@ var StonehearthJobController;
          return this._unlockedJobRoles;
       },
 
+      jobIsCombat: function(jobAlias) {
+         return this._combatJobs && this._combatJobs[jobAlias];
+      },
+
+      jobIsCrafter: function(jobAlias) {
+         return this._crafterJobs && this._crafterJobs[jobAlias];
+      },
+
       onJobControllerDataChanged: function() {
          var self = this;
 
