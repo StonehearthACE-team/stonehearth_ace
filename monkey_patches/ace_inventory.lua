@@ -344,7 +344,7 @@ function AceInventory:subtract_gold(amount, from_entity)
       local items
       local from_storage = from_entity:get_component('stonehearth:storage')
       if from_storage then
-         items = from_storage:get_items_of_type(GOLD_URI)
+         items = from_storage:get_items_of_type(GOLD_URI).items
       else
          items = {[from_entity:get_id()] = from_entity}
       end

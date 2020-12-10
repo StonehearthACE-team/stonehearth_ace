@@ -187,7 +187,11 @@ function AceStorageComponent:add_gold(amount, combine_only)
 end
 
 function AceStorageComponent:get_items_of_type(uri)
-   return self._sv.item_tracker:get_items_of_type(uri)
+   local tracking_data = self._sv.item_tracker:get_tracking_data()
+   if tracking_data:contains(uri) then
+      return tracking_data:get(uri)
+   end
+   return nil
 end
 
 return AceStorageComponent
