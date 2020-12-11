@@ -122,8 +122,8 @@ function AceReembarkationEncounter:_get_customizable_entity_data(entity)
    
    return {
       uri = entity:get_uri(),
-      name = unit_info_comp:get_custom_name(),
-      custom_data = unit_info_comp:get_custom_data(),
+      name = unit_info_comp and unit_info_comp:get_custom_name(),
+      custom_data = unit_info_comp and unit_info_comp:get_custom_data(),
       statistics = statistics,
       titles = titles,
       buffs = buffs,
