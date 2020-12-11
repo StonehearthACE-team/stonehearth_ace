@@ -15,7 +15,7 @@
          "number_active_check": {
             "item": "number_active",
             "type": "deny_if_greater_than",
-            "value": 1,
+            "value": 0,
             "start_node": "last_delivery_dialogue",
             "end_node": "campaign_end_dialogue"
          },
