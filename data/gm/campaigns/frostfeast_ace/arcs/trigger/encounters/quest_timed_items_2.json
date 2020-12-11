@@ -8,88 +8,165 @@
       "data": {
          "expiration_timeout": "6h",
          "score_threshold": 1000,
-         "title": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.title)",
-         "trade_details": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.trade_details)",
-         "waiting_title": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.waiting_title)",
-         "waiting_text": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.waiting_text)",
-         "return_title": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.return_title)",
-         "return_greetings_positive": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.return_greetings_positive)",
-         "return_greetings_negative": "i18n(stonehearth:data.gm.campaigns.trader.returning_trader_encounter.return_greetings_negative)",
-         "max_days_before_return": 3,
+         "title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.title)",
+         "trade_details": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.quest_2.trade_details)",
+         "waiting_title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.waiting_title)",
+         "waiting_text": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.waiting_text)",
+         "return_title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.return_title)",
+         "return_greetings_positive": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.return_greetings_positive)",
+         "return_greetings_negative": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.return_greetings_negative)",
+         "max_days_before_return": 2,
          "wants": {
-            "stonehearth:farmer:talisman": {
-               "min": 3,
+            "stonehearth_ace:tools:backpack_leather": {
+               "min": 4,
                "max": 8
             },
-            "stonehearth:footman:wooden_sword_talisman": {
-               "min": 3,
-               "max": 8
+            "stonehearth_ace:tools:blacksmith_hammer_steel": {
+               "min": 2,
+               "max": 3
             },
-            "stonehearth:furniture:simple_wooden_chair": {
-               "min": 5,
-               "max": 12
-            },
-            "stonehearth:construction:picket_fence_gate": {
-               "min": 1,
+            "stonehearth_ace:tools:carpenter_saw_steel": {
+               "min": 2,
                "max": 4
             },
-            "stonehearth:furniture:table_for_one": {
+            "stonehearth_ace:tools:cook_spoon_copper": {
                "min": 3,
-               "max": 8
+               "max": 5
             },
-            "stonehearth:furniture:not_much_of_a_bed": {
-               "min": 3,
-               "max": 10
-            },
-            "stonehearth:portals:wooden_door": {
+            "stonehearth_ace:tools:farmer_hoe_iron": {
                "min": 2,
-               "max": 10
+               "max": 4
             },
-            "stonehearth:portals:wooden_window_frame": {
-               "min": 4,
-               "max": 10
-            }
-         },
-         "rewards": {
-            "stonehearth:decoration:wooden_garden_lantern": {
-               "type": "object",
+            "stonehearth_ace:tools:mason_chisel_iron": {
+               "min": 1,
+               "max": 3
+            },
+            "stonehearth_ace:tools:trapper_knife_steel": {
+               "min": 3,
+               "max": 5
+            },
+            "stonehearth_ace:tools:weaver_spindle_steel": {
+               "min": 1,
+               "max": 3
+            },
+            "stonehearth_ace:tools:worker_tools_steel": {
+               "min": 5,
+               "max": 7
+            },
+            "stonehearth_ace:decoration:ornate_curtains": {
                "min": 2,
                "max": 6
             },
-            "stonehearth:refined:cloth_bolt": {
-               "type": "object",
-               "min": 2,
-               "max": 10
+            "stonehearth_ace:decoration:ornate_throw_rug": {
+               "min": 3,
+               "max": 5
             },
-            "stonehearth:furniture:comfy_bed": {
-               "type": "object",
-               "min": 1,
-               "max": 3
-            },
-            "stonehearth:decoration:curtains": {
-               "type": "object",
+            "stonehearth:furniture:ornate_comfy_bed": {
                "min": 2,
                "max": 5
             },
-            "stonehearth:weapons:stone_maul": {
-               "type": "object",
+            "stonehearth_ace:decoration:porcelain_teapot": {
+               "min": 3,
+               "max": 4
+            },
+            "stonehearth_ace:furniture:porcelain_comfy_bed": {
                "min": 1,
                "max": 3
             },
-            "stonehearth:containers:large_crate": {
-               "type": "object",
-               "min": 1,
-               "max": 3
+            "stonehearth_ace:furniture:porcelain_bed_pet": {
+               "min": 2,
+               "max": 4
             },
-            "stonehearth:armor:bronze_breastplate": {
-               "type": "object",
+            "stonehearth_ace:decoration:statue:marble:dog": {
                "min": 1,
                "max": 2
+            },
+            "stonehearth_ace:decoration:statue:marble:cat": {
+               "min": 1,
+               "max": 2
+            },
+            "stonehearth_ace:decoration:statue:marble:poyo": {
+               "min": 1,
+               "max": 5
+            },
+            "stonehearth_ace:decoration:statue:marble:rabbit": {
+               "min": 1,
+               "max": 2
+            },
+            "stonehearth:food:flour": {
+               "min": 15,
+               "max": 25
+            },
+            "stonehearth_ace:food:rice:raw_rice": {
+               "min": 15,
+               "max": 25
+            },
+            "stonehearth_ace:brewer:wine_cask:empty": {
+               "min": 6,
+               "max": 8
+            },
+            "stonehearth:cook:oven": {
+               "min": 2,
+               "max": 10
+            },
+            "stonehearth_ace:herbalist:metal_cauldron": {
+               "min": 2,
+               "max": 4
+            },
+            "stonehearth_ace:weapons:cleric_tome_3": {
+               "min": 1,
+               "max": 3
+            },
+            "stonehearth:consumables:seeds:wheat_seeds": {
+               "min": 1,
+               "max": 2
+            },
+            "stonehearth_ace:consumables:seeds:apple_tree_seeds": {
+               "min": 1,
+               "max": 2
+            },
+            "stonehearth_ace:beekeeping_hat:professional": {
+               "min": 3,
+               "max": 5
+            },
+            "stonehearth_ace:beekeeping_hat:simple": {
+               "min": 4,
+               "max": 10
+            },
+            "stonehearth_ace:blacksmith:forge_advanced": {
+               "min": 1,
+               "max": 2
+            },
+            "stonehearth_ace:food:dairy:cheese_mild": {
+               "min": 5,
+               "max": 7
+            },
+            "stonehearth_ace:food:dairy:cheese_aged": {
+               "min": 3,
+               "max": 5
+            },
+            "stonehearth_ace:drink:wine_apple:serving_pitcher": {
+               "min": 2,
+               "max": 3
+            },
+            "stonehearth_ace:drink:wine_plum:serving_pitcher": {
+               "min": 2,
+               "max": 3
+            },
+            "stonehearth_ace:drink:beer:serving_keg": {
+               "min": 3,
+               "max": 5
             },
             "stonehearth:toys:plushie_toy_rabbit": {
+               "min": 6,
+               "max": 16
+            }
+         },
+         "rewards": {
+            "stonehearth_ace:consumables:frostfeast:recipe": {
                "type": "object",
                "min": 1,
-               "max": 2
+               "max": 1
             }
          }
       }

@@ -1181,7 +1181,7 @@
                            "bulletin_title": "Tomtee returns, and she looks more excited than ever!",
                            "dialog_title": "She's really happy!",
                            "bulletin_message": {
-                              "00": "\"Us make it! Us smash problems! Me just checked and us complete all deliveries needed! All but one, actually...\" She grabs one last piece of paper. The writing on it looks like a very long list... \"Well, uhm... This one bit complicated, but Tomtee supposes it possible for problem smashers! Nothing too hard, right?\" Before she finishes, she looks even more worried. \"Oh, actually missing last page, Tomtee misplaced it on sled... Wait here, Tomtee come right back!\""
+                              "00": "\"Us make it! Us solve problems! Me just checked and us complete all deliveries needed! All but one, actually...\" She grabs one last piece of paper. The writing on it looks like a very long list... \"Well, uhm... This one bit complicated, but Tomtee supposes it possible for problem smashers! Nothing too hard, right?\" Before she finishes, she looks even more worried. \"Oh, actually missing last page, Tomtee misplaced it on sled... Wait here, Tomtee come right back!\""
                            },
                            "choice_000": "Will do!"
                         }
@@ -1279,6 +1279,58 @@
                         }
                      }
                   }
+               },
+               "quest_timed_items": {
+                  "title": "Tomtee brings a gift request!",
+                  "waiting_title": "Tomtee will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
+                  "waiting_text": "Tomtee will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to retrieve <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> as stated in the gift list!",
+                  "return_greetings_positive": "Tomtee returns and is ready to collect the [str(i18n_data.want_number)] [str(i18n_data.want_item)] as requested. She'll give us [str(i18n_data.reward_number)] [str(i18n_data.reward_item)] for the help!",
+                  "return_title": "Tomtee is back!",
+                  "return_greetings_negative": "Tomtee is back but you didn't manage to acquire the [str(i18n_data.want_number)] [str(i18n_data.want_item)] in time. Let's move on...",
+                  "quest_1": {
+                     "trade_details": "'Greetings, Frostfather! We never asked anything, but things have been better... This has been a complicated year and we're struggling a bit. But everything would be better if we had <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>! Thank you and Merry Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And, as usual, she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
+                  },
+                  "quest_2": {
+                     "trade_details": "'Hey there, Frostfather! Things this year have been so-so. I hope this letter reaches you well! I know we asked a lot last year, but I'd really appreciate if we could have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> this year! Merry Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And, as usual, she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
+                  },
+                  "quest_3": {
+                     "trade_details": "'Hey, Frostfather... I know I don't write every year but I hope you're in good health! This has been another one of those years and I'm not sure if we'll last much longer... If only we could have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>! This would help a lot... Merry Frostfeast.'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And, as usual, she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
+                  },
+                  "quest_4": {
+                     "trade_details": "'Greetings, Frostfather! You know who I am, and I won't hide that I've not been very kind this year... But things are rough! Those are troubled times, and we do what we can to go on... I could really use <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>, by the way! See you next year and Merry Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And, as usual, she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
+                  },
+                  "quest_5": {
+                     "trade_details": "'Hello, Frostfather! I'm writing with a clear conscience to receive your blessing this Frostfeast. We really need <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>, and it would be amazing if you could help with that... I appreciate it! Merry Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And, as usual, she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
+                  }
+               },
+               "quest_frostfeast_presents": {
+                  "title": "Tomtee brings a list of presents!",
+                  "quest_1": {
+                     "dialog_title": "Presents for a Town",
+                     "text": "Let's give a better Frostfeast time to those people!"
+                  },
+                  "quest_2": {
+                     "dialog_title": "Presents for a Small Village",
+                     "text": "Everyone deserves presents, especially the ones that can't afford them!"
+                  },
+                  "quest_3": {
+                     "dialog_title": "Presents for a Goblin Village",
+                     "text": "We'll spread happiness across the swamps too!"
+                  },
+                  "quest_4": {
+                     "dialog_title": "Presents for a Big City",
+                     "text": "Ohhh, that's a lot of wishes... But we can do this!"
+                  },
+                  "quest_5": {
+                     "dialog_title": "Presents for a Fishing Hamlet",
+                     "text": "This will be their best catch this year!"
+                  }
+               },
+               "quest_reward": {
+                  "title": "Tomtee received the presents!",
+                  "dialog_title": "Assignment completed!",
+                  "message": "Tomtee shall deliver these presents as soon as possible.<br><br>Meanwhile, you receive:",
+                  "choice_000": "Good work!"
                }
             }
          }
@@ -1878,6 +1930,14 @@
                "dim_light": {
                   "display_name": "Dim Light",
                   "tooltip": "The light level here is just fine... If you squint the eyes a little!"
+               }
+            },
+            "frostfeast": {
+               "values": {
+                  "celebration": {
+                     "display_name": "Frostfeast Celebration!",
+                     "tooltip": "The Frostfather is here and we've helped in making this Frostfeast special! Hooray!"
+                  }
                }
             }
          }
