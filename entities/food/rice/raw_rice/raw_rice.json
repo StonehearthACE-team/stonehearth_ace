@@ -11,17 +11,16 @@
       },
       "mob": {
          "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 8
       }
    },
    "entity_data": {
-      "stonehearth:food": {
-         "stonehearth:sitting_on_chair": {
-            "satisfaction": 20
-         },
-         "default": {
-            "satisfaction": 15
-         },
-         "quality": 1
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:rice:raw_rice:raw_rice_serving",
+         "stacks_per_serving": 1
       },
       "stonehearth:net_worth": {
          "value_in_gold": 4,

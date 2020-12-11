@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(raw_rice_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 15
+         },
+         "default": {
+            "satisfaction": 11
+         },
+         "quality": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.raw_rice.raw_rice_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "vegetable",
+            "vegetarian",
+            "lunch_time"
+         ],
+         "subject_override": "stonehearth_ace:food:rice:raw_rice"
+      }
+   }
+}
