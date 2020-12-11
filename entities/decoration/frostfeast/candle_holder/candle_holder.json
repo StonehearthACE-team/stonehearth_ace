@@ -1,0 +1,41 @@
+{
+   "type": "entity",
+   "mixins": "file(candle_holder_ghost.json)",
+   "components": {
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:lamp": {
+         "light_policy": "always_on",
+         "light_effect": "stonehearth_ace:effects:candle_holder:frostfeast",
+         "light_origin": { "x": 0, "y": 0.7, "z": 0 }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(candle_holder_iconic.json)",
+         "ghost_form": "file(candle_holder_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:traveler_attraction": {}
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 55,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 37
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

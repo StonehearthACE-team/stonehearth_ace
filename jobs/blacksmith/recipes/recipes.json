@@ -272,6 +272,18 @@
                "recipe": "/rayyas_children/jobs/blacksmith/recipes/lamp_wall_gold_recipe.json"
             }
          }
+      },
+		"frostfeast": {
+         "ordinal": 2,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
+         "recipes": {
+				"frostfeast_candlestick": {
+					"recipe": "file(frostfeast/candlestick_recipe.json)"
+				},
+				"frostfeast_candle_holder": {
+					"recipe": "file(frostfeast/candle_holder_recipe.json)"
+				}
+         }
       }
 	}
 }

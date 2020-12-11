@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 21,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.frostfeast.candlestick_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.frostfeast.candlestick_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.frostfeast.candlestick_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/candlestick/candlestick.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+	"manual_unlock": true,
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      },
+      {
+         "material": "fiber resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:candlestick"
+      }
+   ]
+}

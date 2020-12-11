@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 33,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.frostfeast.candle_holder_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.frostfeast.candle_holder_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.frostfeast.candle_holder_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/candle_holder/candle_holder.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+	"manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:gold_ingot",
+         "count": 1
+      },
+      {
+         "material": "fiber resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:candle_holder"
+      }
+   ]
+}

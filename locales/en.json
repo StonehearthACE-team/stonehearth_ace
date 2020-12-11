@@ -1291,16 +1291,16 @@
                      "trade_details": "'Greetings, Frostfather! We never asked anything, but things have been better... This has been a complicated year and we're struggling a bit. But everything would be better if we had <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>! Thank you and Merry Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And, as usual, she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
                   },
                   "quest_2": {
-                     "trade_details": "'Hey there, Frostfather! Things this year have been so-so. I hope this letter reaches you well! I know we asked a lot last year, but I'd really appreciate if we could have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> this year! Merry Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And, as usual, she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
+                     "trade_details": "'Hey there, Frostfather! Things this year have been so-so. I hope this letter reaches you well! I know we asked a lot last year, but I'd really appreciate if we could have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> this year! Merry Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
                   },
                   "quest_3": {
-                     "trade_details": "'Hey, Frostfather... I know I don't write every year but I hope you're in good health! This has been another one of those years and I'm not sure if we'll last much longer... If only we could have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>! This would help a lot... Merry Frostfeast.'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And, as usual, she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
+                     "trade_details": "'Hey, Frostfather... I know I don't write every year but I hope you're in good health! This has been another one of those years and I'm not sure if we'll last much longer... If only we could have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>! This would help a lot... Merry Frostfeast.'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
                   },
                   "quest_4": {
-                     "trade_details": "'Greetings, Frostfather! You know who I am, and I won't hide that I've not been very kind this year... But things are rough! Those are troubled times, and we do what we can to go on... I could really use <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>, by the way! See you next year and Merry Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And, as usual, she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
+                     "trade_details": "'Greetings, Frostfather! You know who I am, and I won't hide that I've not been very kind this year... But things are rough! Those are troubled times, and we do what we can to go on... I could really use <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>, by the way! See you next year and Merry Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
                   },
                   "quest_5": {
-                     "trade_details": "'Hello, Frostfather! I'm writing with a clear conscience to receive your blessing this Frostfeast. We really need <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>, and it would be amazing if you could help with that... I appreciate it! Merry Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And, as usual, she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
+                     "trade_details": "'Hello, Frostfather! I'm writing with a clear conscience to receive your blessing this Frostfeast. We really need <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>, and it would be amazing if you could help with that... I appreciate it! Merry Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
                   }
                },
                "quest_frostfeast_presents": {
@@ -1329,7 +1329,7 @@
                "quest_reward": {
                   "title": "Tomtee received the presents!",
                   "dialog_title": "Assignment completed!",
-                  "message": "Tomtee shall deliver these presents to their destinations as soon as possible.<br><br>For your help, you're rewarded with a crafting recipe. You must click it and use the 'Learn!' command to unlock the recipe. If inside a container, use the town inventory screen to interact with it!<br><br>You receive:",
+                  "message": "Tomtee shall deliver these presents to their destinations as soon as possible.<br><br>For our help, we're rewarded with some crafting recipes. You must click it and use the 'Learn!' command to unlock the recipe. If inside a container, use the town inventory screen to interact with it!<br><br>You receive:",
                   "choice_000": "Good work!"
                }
             }
@@ -6362,6 +6362,18 @@
             },
             "bronze_shield_recipe": {
                "description": "Increases armor and blocks attacks!"
+            },
+            "frostfeast": {
+               "candlestick_recipe": {
+                  "recipe_name": "Frostfeast Gold Candlestick",
+                  "description": "Slowly burns throughout the entire season to keep alive the warmth of Frostfeast.",
+                  "flavor": ""
+               },
+               "candle_holder_recipe": {
+                  "recipe_name": "Frostfeast Gold Candle-Holder",
+                  "description": "Keep it lit during the entire season to be reminded of Frostfeast's light!",
+                  "flavor": "It is tradition"
+               }
             }
          },
          "blacksmith_fuel_oven": {
@@ -7538,6 +7550,13 @@
                "recipe_name": "Hearthbud Animal Fodder",
                "description": "Animal fodder imbued with the essence of the hearth.",
                "flavor": "Hearthbud Animal Fodder is appreciated by all animals and will greatly increase the quality of their products!"
+            },
+            "frostfeast": {
+               "goat_recipe": {
+                  "recipe_name": "Frostfeast Goat",
+                  "description": "A traditional Frostfeast decoration for humble abodes and peasant houses.",
+                  "flavor": ""
+               }
             }
          },
          "shepherd_cheese_vat_empty": {
@@ -12422,6 +12441,18 @@
             },
             "candles_iconic": {
                "description": "Can be placed down or hanged on a wall. Beautiful!"
+            },
+            "candle_holder": {
+               "display_name": "Frostfeast Gold Candle-Holder",
+               "description": "Keep it lit during the entire season to be reminded of Frostfeast's light!"
+            },
+            "candlestick": {
+               "display_name": "Frostfeast Candlestick",
+               "description": "Slowly burns throughout the entire season to keep alive the warmth of Frostfeast."
+            },
+            "goat": {
+               "display_name": "Frostfeast Goat",
+               "description": "A traditional Frostfeast decoration for humble abodes and peasant houses."
             }
          },
          "hearth_wolf": {

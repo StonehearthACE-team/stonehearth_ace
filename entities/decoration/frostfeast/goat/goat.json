@@ -1,0 +1,42 @@
+{
+   "type": "entity",
+   "mixins": "file(goat_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(goat_iconic.json)",
+         "ghost_form": "file(goat_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 3, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:decoration:frostfeast:goat",
+         "command": "stonehearth_ace:commands:transform:frostfeast:swap_model_variant",
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "auto_request": false
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 29,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 24
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

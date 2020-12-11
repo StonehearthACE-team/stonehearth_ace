@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 36,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.frostfeast.goat_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.frostfeast.goat_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.shepherd.recipes.frostfeast.goat_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/goat/goat.png",
+	"manual_unlock": true,
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:containers:thatch_pile",
+         "count": 1
+      },
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:goat"
+      }
+   ]
+}
