@@ -5,6 +5,9 @@
    "script_info": {
       "script": "stonehearth:game_master:script_encounter:returning_trader",
       "data": {
+         "abandon_out_edge": "quest_cleanup",
+         "timeout_out_edge": "quest_cleanup",
+         "success_out_edge": "quest_reward",
          "expiration_timeout": "6h",
          "score_threshold": 1000,
          "title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.title)",

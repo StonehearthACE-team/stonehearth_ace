@@ -1,4 +1,49 @@
+local game_master_lib = require 'stonehearth.lib.game_master.game_master_lib'
+local ReturningTrader = require 'stonehearth.services.server.game_master.controllers.script_encounters.returning_trader_script'
 local AceReturningTrader = class()
+
+local log = radiant.log.create_logger('returning_trader_script')
+
+function AceReturningTrader:get_out_edge()
+   log:debug('getting out_edge (%s)', tostring(self._sv.resolved_out_edge))
+   return self._sv.resolved_out_edge
+end
+
+AceReturningTrader._ace_old__on_declined = ReturningTrader._on_declined
+function AceReturningTrader:_on_declined()
+   self._encounter_abandoned = true
+   self:_ace_old__on_declined()
+end
+
+AceReturningTrader._ace_old__on_success_accepted = ReturningTrader._on_success_accepted
+function AceReturningTrader:_on_success_accepted()
+   self._encounter_succeeded = true
+   self:_ace_old__on_success_accepted()
+end
+
+function AceReturningTrader:_destroy_node()
+   local out_edge
+   if self._encounter_abandoned then
+      out_edge = self._sv._trade_info.abandon_out_edge
+   elseif self._encounter_succeeded then
+      out_edge = self._sv._trade_info.success_out_edge
+      --out_edge = self._sv.ctx.encounter:get_info().out_edge
+   else
+      out_edge = self._sv._trade_info.timeout_out_edge
+   end
+
+   log:debug('destroying node, progressing to out_edge: %s', tostring(out_edge))
+
+   if out_edge then
+      self._sv.resolved_out_edge = out_edge
+      self._sv.ctx.arc:trigger_next_encounter(self._sv.ctx)
+      self.__saved_variables:mark_changed()
+   else
+      self:destroy()
+      assert(self._sv.ctx, 'No ctx saved in returning trader ecnounter script!')
+      game_master_lib.destroy_node(self._sv.ctx.encounter, self._sv.ctx.parent_node)
+   end
+end
 
 function AceReturningTrader:_accept_trade()
    --TODO: go through the reserved items and nuke them all
