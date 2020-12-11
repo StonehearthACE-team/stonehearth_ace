@@ -1181,7 +1181,7 @@
                            "bulletin_title": "Tomtee returns, and she looks more excited than ever!",
                            "dialog_title": "She's really happy!",
                            "bulletin_message": {
-                              "00": "\"Us make it! Us solve problems! Me just checked and us complete all deliveries needed! All but one, actually...\" She grabs one last piece of paper. The writing on it looks like a very long list... \"Well, uhm... This one bit complicated, but Tomtee supposes it possible for problem smashers! Nothing too hard, right?\" Before she finishes, she looks even more worried. \"Oh, actually missing last page, Tomtee misplaced it on sled... Wait here, Tomtee come right back!\""
+                              "00": "\"Us make it! Us solve problems! Me just checked and us complete all deliveries needed! All but one, actually...\" She grabs one last piece of paper. The writing on it looks like a very long list... \"Well, uhm... This one bit complicated, but Tomtee supposes it possible for problem solvers! Nothing too hard, right?\" Before she finishes, she looks even more worried. \"Oh, actually missing last page, Tomtee misplaced it on sled... Wait here, Tomtee come right back!\""
                            },
                            "choice_000": "Will do!"
                         }
@@ -4799,6 +4799,11 @@
                "description": "Increases the Courage and the Armor value of all citizens for a while.",
                "flavor": "Referred as 'Bearskin Philter' by the alchemical textbooks of Lady Marie Gem"
             },
+				"fever_cordial_simple_recipe": {
+               "recipe_name": "Simple Fever Cordial",
+               "description": "A smelly and simple extract that can be used for efficiently treating infections up to medium severity.",
+               "flavor": "Slightly better than 'Leeches' - but these can be found for free on water plants like algae or lilies!"
+            },
             "fever_cordial_recipe": {
                "recipe_name": "Fever Cordial",
                "description": "This foul-smelling extract can be used for treating infections of any severity.",
@@ -5170,12 +5175,12 @@
             "clay_training_dummy_recipe": {
                "recipe_name": "Clay Training Dummy",
                "description": "Melee fighters can gain experience from practicing with this friendly guy.",
-               "flavor": "Requires an engineer for repairs."
+               "flavor": "Can be repaired before it's completely broken"
             },
             "clay_training_target_recipe": {
                "recipe_name": "Clay Archery Target",
                "description": "Ranged fighters can gain experience from practicing with this target.",
-               "flavor": "Requires an engineer for repairs."
+               "flavor": "Can be repaired before it's completely broken"
             },
             "clay_spear_recipe": {
                "recipe_name": "Ceramic Practice Spear",
@@ -5633,12 +5638,12 @@
             "stone_training_dummy_recipe": {
                "recipe_name": "Stone Training Dummy",
                "description": "Melee fighters can gain experience from practicing with this friendly guy.",
-               "flavor": "Requires an engineer for repairs."
+               "flavor": "Can be repaired before it's completely broken"
             },
             "stone_training_target_recipe": {
                "recipe_name": "Stone Archery Target",
                "description": "Ranged fighters can gain experience from practicing with this target.",
-               "flavor": "Requires an engineer for repairs."
+               "flavor": "Can be repaired before it's completely broken"
             },
             "stone_hatchet_recipe": {
                "recipe_name": "Off-hand Stone Hatchet",
@@ -6883,12 +6888,12 @@
             "training_dummy_recipe": {
                "recipe_name": "Training Dummy",
                "description": "Melee fighters can gain experience from practicing with this friendly guy.",
-               "flavor": "Requires an engineer for repairs."
+               "flavor": "Can be repaired before it's completely broken"
             },
             "training_target_recipe": {
                "recipe_name": "Archery Target",
                "description": "Ranged fighters can gain experience from practicing with this target.",
-               "flavor": "Requires an engineer for repairs."
+               "flavor": "Can be repaired before it's completely broken"
             },
             "legendary_handle_recipe": {
                "recipe_name": "Sturdy Handle",
@@ -8551,9 +8556,13 @@
             "display_name": "Common Salve",
             "description": "Used by the Herbalist for treating piercing wounds up to high severity."
          },
+         "fever_cordial_simple": {
+            "display_name": "Simple Fever Cordial",
+            "description": "Used by the Herbalist for treating infections up to medium severity."
+         },
          "fever_cordial": {
             "display_name": "Fever Cordial",
-            "description": "Used by the Herbalist for treating infections of any severity."
+            "description": "Used by the Herbalist for efficiently treating infections of any severity."
          },
          "fine_ointment": {
             "display_name": "Fine Ointment",
@@ -14669,7 +14678,7 @@
          },
          "dummy_training": {
             "dummy_training_ghost": {
-               "description": "It's best to practice with this friendly guy. Requires an engineer for repairs.",
+               "description": "It's best to practice with this friendly guy. Can be repaired before it's destroyed.",
                "display_name": "Training Dummy",
                "training_limit_tag": "Training Equipment"
             }
@@ -14681,7 +14690,7 @@
          },
          "target_training": {
             "display_name": "Archery Target",
-            "description": "Less dangerous than apples on someone's head. Requires an engineer for repairs."
+            "description": "Less dangerous than apples on someone's head. Can be repaired before it's destroyed."
          },
          "axle_vertical": {
             "description": "A rotating shaft that can take mechanical power vertically.",
@@ -14717,32 +14726,32 @@
             "description": "Combat party members will prioritize patrolling between these banners."
          },
          "stone_target_training": {
-            "description": "Less dangerous than apples on someone's head. Requires an engineer for repairs.",
+            "description": "Less dangerous than apples on someone's head. Can be repaired before it's destroyed.",
             "display_name": "Stone Archery Target"
          },
          "clay_target_training": {
-            "description": "Less dangerous than apples on someone's head. Requires an engineer for repairs.",
+            "description": "Less dangerous than apples on someone's head. Can be repaired before it's destroyed.",
             "display_name": "Clay Archery Target"
          },
          "brass_target_training": {
-            "description": "Less dangerous than apples on someone's head. Requires an engineer for repairs.",
+            "description": "Less dangerous than apples on someone's head. Can be repaired before it's destroyed.",
             "display_name": "Brass Archery Target"
          },
          "stone_dummy_training": {
             "stone_dummy_training_ghost": {
-               "description": "It's best to practice with this friendly guy. Requires an engineer for repairs.",
+               "description": "It's best to practice with this friendly guy. Can be repaired before it's destroyed.",
                "display_name": "Stone Training Dummy"
             }
          },
          "clay_dummy_training": {
             "clay_dummy_training_ghost": {
-               "description": "It's best to practice with this friendly guy. Requires an engineer for repairs.",
+               "description": "It's best to practice with this friendly guy. Can be repaired before it's destroyed.",
                "display_name": "Clay Training Dummy"
             }
          },
          "brass_dummy_training": {
             "brass_dummy_training_ghost": {
-               "description": "It's best to practice with this friendly guy. Requires an artficer for repairs.",
+               "description": "It's best to practice with this friendly guy. Can be repaired before it's destroyed.",
                "display_name": "Brass Training Dummy"
             }
          },

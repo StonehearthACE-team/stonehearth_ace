@@ -23,10 +23,13 @@
    },
    "script": "stonehearth_ace:buff_scripts:periodic_buff_chance",
    "script_info": {
-      "immunity_uri": ["stonehearth:buffs:recently_treated", "stonehearth_ace:buffs:recently_magically_treated"],
+      "immunity_uri": [
+         "stonehearth:buffs:recently_treated",
+         "stonehearth_ace:buffs:recently_magically_treated"
+      ],
       "periodic_chance_buff": {
-			"stonehearth_ace:buffs:infection:infection": 0.5
-		},
+         "stonehearth_ace:buffs:infection:infection": 0.4
+      },
       "tick": "12h"
    }
 }
