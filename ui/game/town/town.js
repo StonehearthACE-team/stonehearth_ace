@@ -62,8 +62,8 @@ App.StonehearthTownView.reopen({
                         if (response.container && response.container != '') {
                            camera_focus = response.container;
                         }
-                        // select and focus on the container if the item is in one (otherwise select and focus the item)
-                        radiant.call('stonehearth:select_entity', camera_focus);
+                        // select and focus on the item, but if the item is in a container, focus on the container
+                        radiant.call('stonehearth:select_entity', self.lastClickedItem);
                         radiant.call('stonehearth:camera_look_at_entity', camera_focus);
                      });
                }
