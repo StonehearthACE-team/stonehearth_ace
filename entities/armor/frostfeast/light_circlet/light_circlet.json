@@ -1,0 +1,70 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:armor:light_armor_circlet",
+      "stonehearth_ace:mixins:armor:resistance:helmet:high"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "hat",
+            "transparent": "true",
+            "models": [
+               "file(light_circlet.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "true",
+            "models": [
+               "file(light_circlet_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(light_circlet_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "helmet",
+         "ilevel": 4,
+         "roles": [
+            "cleric_job"
+         ],
+         "required_job_level": 5,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:holiday_cheer",
+            "stonehearth_ace:buffs:frostfeast:light_circlet"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 3
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 37,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.frostfeast.light_circlet.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.frostfeast.light_circlet.description)",
+         "icon": "file(light_circlet.png)",
+         "category": "armor",
+         "material_tags": [
+            "silver",
+            "armor",
+            "circlet",
+            "frostfeast",
+            "festival",
+            "light_armor",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}
