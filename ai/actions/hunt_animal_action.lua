@@ -48,13 +48,17 @@ return ai:create_compound_action(HuntAnimalAction)
             source = ai.ENTITY,
             event_name = 'stonehearth:work_order:job:work_player_id_changed',
          })
+         :execute('stonehearth:abort_on_event_triggered', {
+            source = ai.ENTITY,
+            event_name = 'stonehearth_ace:avoid_hunting_changed',
+         })
          :execute('stonehearth:find_best_reachable_entity_by_type', {
-            filter_fn = ai.BACK(2).hunt_filter_fn,
+            filter_fn = ai.BACK(3).hunt_filter_fn,
             description = 'finding huntable animal',
-            owner_player_id = ai.BACK(2).owner_player_id,
+            owner_player_id = ai.BACK(3).owner_player_id,
          })
          :execute('stonehearth:abort_on_reconsider_rejected', {
-            filter_fn = ai.BACK(3).hunt_filter_fn,
+            filter_fn = ai.BACK(4).hunt_filter_fn,
             item = ai.BACK(1).item,
          })
          :execute('stonehearth:set_posture', { posture = 'stonehearth:combat' })

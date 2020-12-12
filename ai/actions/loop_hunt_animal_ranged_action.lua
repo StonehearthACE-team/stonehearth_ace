@@ -43,7 +43,7 @@ local function can_attack_now(entity, target)
 end
 
 function LoopHuntAnimalRanged:run(ai, entity, args)
-   while radiant.entities.exists(args.target) do
+   while radiant.entities.exists(args.target) and stonehearth.player:are_entities_hostile(args.target, entity) do
       ai:execute('stonehearth:chase_entity', {
          target = args.target,
          grid_location_changed_cb = can_attack_now,
