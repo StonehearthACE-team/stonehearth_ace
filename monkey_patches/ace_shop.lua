@@ -29,6 +29,9 @@ function AceShop:dump_escrow_at_location(location)
             
             -- If the purchased "item" has AI, it's a pet. Remove it from the inventory and let it befriend a random townsperson.
             if item:get_component('stonehearth:ai') then
+               local nearby_location = radiant.terrain.find_placement_point(location, 1, 7)
+               radiant.terrain.place_entity(item, nearby_location)
+               
                items[id] = nil
                inventory:remove_item(id)
                local pet_component = item:add_component('stonehearth:pet')
