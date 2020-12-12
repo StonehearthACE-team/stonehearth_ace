@@ -31,11 +31,33 @@ function HuntAnimalAction:start_thinking(ai, entity, args)
    local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:hunt_animal', work_player_id .. ':' .. category, function(item)
          return _hunt_filter_fn(work_player_id, category, item)
       end)
-      
-   ai:set_think_output({
-      hunt_filter_fn = filter_fn,
-      owner_player_id = work_player_id,
-   })
+
+   local set_think_output = function()
+      ai:set_think_output({
+         hunt_filter_fn = filter_fn,
+         owner_player_id = work_player_id,
+      })
+   end
+
+   -- if the entity has hunting disabled, don't set the output; wait for hunting to be enabled to do so
+   local properties_comp = entity:get_component('stonehearth:properties')
+   local avoid_hunting = properties_comp and properties_comp:has_property('avoid_hunting')
+   if avoid_hunting then
+      self._allow_hunting_listener = radiant.events.listen(entity, 'stonehearth_ace:avoid_hunting_changed', function()
+            if properties_comp:has_property('avoid_hunting') then
+               set_think_output()
+            end
+         end)
+   else
+      set_think_output()
+   end
+end
+
+function HuntAnimalAction:stop_thinking(ai, entity, args)
+   if self._allow_hunting_listener then
+      self._allow_hunting_listener:destroy()
+      self._allow_hunting_listener = nil
+   end
 end
 
 function HuntAnimalAction:compose_utility(entity, self_utility, child_utilities, current_activity)
