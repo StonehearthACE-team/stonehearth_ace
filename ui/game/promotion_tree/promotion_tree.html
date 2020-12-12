@@ -67,7 +67,7 @@
             <h2 id="requires">{{i18n stonehearth:ui.game.promotion_tree.requires}}</h2>
             <div id="requiredTalisman" {{bind-attr class=view.selectedJobTalisman::hidden}}>
                <img {{bind-attr src=view.selectedJobTalisman.icon}}></image>
-               <div id="talismanName" {{bind-attr class=view.requirementsMet:requirementsMet:requirementsUnmet}}>
+               <div id="talismanName" {{bind-attr class=view.requiredTalismanAvailable:requirementsMet:requirementsUnmet}}>
                      {{i18n_key view.selectedJobTalisman.display_name}}
                </div>
                <div id="talismanDescription" >{{i18n_key view.selectedJob.requirements}}</div>

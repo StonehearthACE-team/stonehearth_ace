@@ -533,11 +533,14 @@ App.StonehearthPromotionTree.reopen({
             jobData.available = false;
             if (jobData.description) {
                var talismanUri = jobData.description.talisman_uri;
+               jobData.talismanAvailable = null;
                if (talismanUri) {
                   var uris = typeof talismanUri == 'string' ? [talismanUri] : talismanUri;
                   for (var i = 0; i < uris.length; i++) {
                      var uri = uris[i];
+                     jobData.talismanAvailable = jobData.talismanAvailable || false;
                      if (inventory_data[uri] && inventory_data[uri].first_item) {
+                        jobData.talismanAvailable = true;
                         var requirementsMet = self._calculateRequirementsMet(jobAlias);
                         if (requirementsMet) {
                            jobData.available = true;
@@ -688,6 +691,7 @@ App.StonehearthPromotionTree.reopen({
       //self.set('parentRequiredLevel', parentRequiredLevel);
       self.set('parentJobs', parentJobs);
       self.set('oneOfJobs', oneOfJobs);
+      self.set('requiredTalismanAvailable', self._jobData[jobAlias].talismanAvailable !== false);
       self.set('requirementsMet', requirementsMet);
       self.set('promoteOk', promoteOk);
 
