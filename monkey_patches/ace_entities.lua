@@ -434,4 +434,57 @@ function ace_entities.get_alternate_iconic_uris(uri)
    return catalog_data and (catalog_data.iconic_uri and catalog_data.alternate_uris or catalog_data.alternate_iconic_uris)
 end
 
+ace_entities.get_appeal_optimized = (function()
+   local get_entity_data = radiant.entities.get_entity_data
+   local apply_item_quality_bonus = radiant.entities.apply_item_quality_bonus
+   local item_quality_bonuses = stonehearth.constants.item_quality.bonuses.appeal
+   local floor = math.floor
+   local min = math.min
+   local abs = math.abs
+   local VITALITY_PLANT_APPEAL_MULTIPLIER = stonehearth.constants.town_progression.bonuses.VITALITY_PLANT_APPEAL_MULTIPLIER
+   local catalog, get_catalog_data
+
+   return function(entity, uri, player_id, has_town_vitality_bonus)
+      if not catalog then
+         catalog = stonehearth.catalog
+         get_catalog_data = catalog.get_catalog_data
+      end
+
+      local catalog_data = get_catalog_data(catalog, uri)
+      local appeal = catalog_data and catalog_data.appeal
+
+      if appeal == nil then
+         return nil
+      end
+
+      if entity then
+         local item_quality = entity:get_component('stonehearth:item_quality')
+         if item_quality then
+            local quality = item_quality:get_quality()
+            local bonus = item_quality_bonuses[quality]
+            if bonus ~= nil then
+               if appeal < 0 then
+                  -- If value is negative, tend the value towards 0 instead of applying the multiplier on top
+                  appeal = min(appeal + (abs(appeal) * bonus), 0)
+               else
+                  appeal = appeal + (appeal * bonus)
+               end
+               appeal = floor(appeal + 0.5)
+            end
+         end
+      end
+
+      -- Apply the "vitality" town bonus if it's applicable. If we ever have more of these,
+      -- we'll need a generic hook, but for now, let's keep it light.
+      if has_town_vitality_bonus then
+         local catalog_data = get_catalog_data(catalog, uri)
+         if catalog_data and (catalog_data.category == 'plants' or catalog_data.category == 'herbalist_planter') then
+            appeal = floor(appeal * VITALITY_PLANT_APPEAL_MULTIPLIER + 0.5)
+         end
+      end
+
+      return appeal
+   end
+end)()
+
 return ace_entities

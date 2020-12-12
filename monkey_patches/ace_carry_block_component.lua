@@ -39,7 +39,7 @@ function AceCarryBlock:set_carrying(new_item, opt_relative_orientation)
    -- ACE: update the basic inventory tracker to properly display in the town inventory
    -- maybe this should reconsider all trackers? with inventory:update_item_container(new_item:get_id(), nil, true)
    local inventory = stonehearth.inventory:get_inventory(new_item:get_player_id())
-   if inventory then
+   if inventory and inventory:contains_item(new_item) then
       local tracker = inventory:get_item_tracker('stonehearth:basic_inventory_tracker')
       if tracker then
          tracker:reevaluate_item(new_item)
@@ -55,7 +55,7 @@ function AceCarryBlock:set_carrying(new_item, opt_relative_orientation)
 end
 
 AceCarryBlock._ace_old__remove_carrying = CarryBlock._remove_carrying
-function CarryBlock:_remove_carrying()
+function AceCarryBlock:_remove_carrying()
    if self._sv._carried_item and self._sv._carried_item:get_component('stonehearth:incapacitation') then
 		radiant.entities.unset_posture(self._entity, 'stonehearth:carrying')
    end

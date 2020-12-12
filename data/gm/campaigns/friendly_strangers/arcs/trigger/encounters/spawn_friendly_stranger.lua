@@ -20,13 +20,20 @@ function SpawnFriendlyStranger:start(ctx, data)
    self._sv.despawn_timer = stonehearth.calendar:set_persistent_timer('despawn friendly stranger', '1d', radiant.bind(self, '_despawn'))
 end
 
+function SpawnFriendlyStranger:restore()
+   if self._sv.is_leaving then
+      self:_despawn()
+   end
+end
+
 function SpawnFriendlyStranger:_despawn()
 	for _, stranger in ipairs(self._sv.friendly_strangers) do
 		if radiant.entities.exists(stranger) then
 			stranger:get_component('stonehearth:ai')
 					:get_task_group('stonehearth:task_groups:solo:unit_control')
 						:create_task('stonehearth:depart_visible_area', { give_up_after = '2h' })
-							:start()
+                     :start()
+         self._sv.is_leaving = true
 		end
 	end
 	

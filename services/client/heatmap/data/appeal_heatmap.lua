@@ -96,7 +96,7 @@ function AppealHeatmap:fn_get_entity_heat_value(entity)
    if self._town and self._town:get_data().town_bonuses['stonehearth:town_bonus:vitality'] then
       local uri = type(entity) == 'string' and entity or entity:get_uri()
       local catalog_data = self._catalog_data[uri]
-      if catalog_data and catalog_data.category == 'plants' then
+      if catalog_data and (catalog_data.category == 'plants' or catalog_data.category == 'herbalist_planter') then
          appeal = radiant.math.round(appeal * self._vitality_multiplier)
       end
    end
