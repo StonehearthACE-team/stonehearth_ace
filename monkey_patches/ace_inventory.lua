@@ -372,27 +372,29 @@ end
 function AceInventory:_subtract_gold_from(stacks_to_remove, items)
    local only_stacks_dirty = true
    for id, item in pairs(items) do
-      -- get stacks for the item
-      local stacks_component = item:add_component('stonehearth:stacks')
-      local item_stacks = stacks_component:get_stacks()
+      if item:is_valid() then
+         -- get stacks for the item
+         local stacks_component = item:add_component('stonehearth:stacks')
+         local item_stacks = stacks_component:get_stacks()
 
-      -- nuke some stacks
-      if item_stacks > stacks_to_remove then
-         -- this item has more stacks than we need to remove, reduce the stacks and we're done
-         stacks_component:set_stacks(item_stacks - stacks_to_remove)
-         stacks_to_remove = 0
-         radiant.events.trigger(self, 'stonehearth:inventory:item_updated', { item = item })
-      else
-         -- consume the whole item and run through the loop again
-         radiant.entities.destroy_entity(item)
-         stacks_to_remove = stacks_to_remove - item_stacks
-         only_stacks_dirty = false
-      end
+         -- nuke some stacks
+         if item_stacks > stacks_to_remove then
+            -- this item has more stacks than we need to remove, reduce the stacks and we're done
+            stacks_component:set_stacks(item_stacks - stacks_to_remove)
+            stacks_to_remove = 0
+            radiant.events.trigger(self, 'stonehearth:inventory:item_updated', { item = item })
+         else
+            -- consume the whole item and run through the loop again
+            radiant.entities.destroy_entity(item)
+            stacks_to_remove = stacks_to_remove - item_stacks
+            only_stacks_dirty = false
+         end
 
-      assert(stacks_to_remove >= 0)
+         assert(stacks_to_remove >= 0)
 
-      if stacks_to_remove == 0 then
-         break
+         if stacks_to_remove == 0 then
+            break
+         end
       end
    end
 

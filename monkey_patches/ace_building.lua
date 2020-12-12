@@ -114,7 +114,7 @@ function AceBuilding:get_remaining_resource_cost(entity)
    local resources = {}
    for material, cost in pairs(remaining) do
       local amount = cost
-      local registered = self._registered_materials_to_be_banked[material]
+      local registered = self._registered_materials_to_be_banked and self._registered_materials_to_be_banked[material]
       if registered then
          for id, reg_amt in pairs(registered) do
             if id ~= entity_id then
