@@ -16,17 +16,17 @@ function NewGameCallHandler:delete_starting_roster_command(session, response, ro
 end
 
 function NewGameCallHandler:save_starting_roster_command(session, response, roster_name, citizens)
-   local roster_id, roster = self:_construct_starting_roster_record(roster_name, citizens)
-
-   if roster_id and roster then
-      radiant.mods.write_object('starting_rosters/' .. roster_id, roster)
-      response:resolve({})
-   else
-      response:reject({})
-   end
+   _radiant.call('stonehearth_ace:server_construct_starting_roster', roster_name, citizens)
+      :done(function(result)
+            radiant.mods.write_object('starting_rosters/' .. result.roster_id, result.roster)
+            response:resolve({})
+         end)
+      :fail(function(result)
+            response:reject(result)
+         end)
 end
 
-function NewGameCallHandler:_construct_starting_roster_record(roster_name, citizens)
+function NewGameCallHandler:server_construct_starting_roster(session, response, roster_name, citizens)
    local roster = { citizens = {}, name = roster_name }
 
    for _, citizen in pairs(citizens) do
@@ -67,7 +67,10 @@ function NewGameCallHandler:_construct_starting_roster_record(roster_name, citiz
    end
 
    if #roster.citizens > 0 then
-      return _radiant.sim.generate_uuid(), roster
+      local roster_id = _radiant.sim.generate_uuid()
+      response:resolve({roster = roster, roster_id = roster_id})
+   else
+      response:reject('no valid citizens')
    end
 end
 

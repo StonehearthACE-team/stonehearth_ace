@@ -5299,17 +5299,21 @@
          "controller": "file(call_handlers/job_equipment_roles_call_handler.lua)",
          "endpoint": "server"
       },
-      "get_starting_rosters_command": {
+      "server_construct_starting_roster": {
          "controller": "file(call_handlers/new_game_call_handler.lua)",
          "endpoint": "server"
       },
       "delete_starting_roster_command": {
          "controller": "file(call_handlers/new_game_call_handler.lua)",
-         "endpoint": "server"
+         "endpoint": "client"
+      },
+      "get_starting_rosters_command": {
+         "controller": "file(call_handlers/new_game_call_handler.lua)",
+         "endpoint": "client"
       },
       "save_starting_roster_command": {
          "controller": "file(call_handlers/new_game_call_handler.lua)",
-         "endpoint": "server"
+         "endpoint": "client"
       },
       "box_move": {
          "controller": "file(call_handlers/resource_call_handler.lua)",
