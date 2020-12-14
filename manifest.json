@@ -5575,9 +5575,13 @@
          "controller": "file(call_handlers/water_tools_call_handler.lua)",
          "endpoint": "server"
       },
-      "get_version_info_command": {
+      "get_version_info": {
          "controller": "file(call_handlers/version_call_handler.lua)",
          "endpoint": "client"
+      },
+      "get_game_creation_version_info": {
+         "controller": "file(call_handlers/version_call_handler.lua)",
+         "endpoint": "server"
       }
    },
    "object_commands": {

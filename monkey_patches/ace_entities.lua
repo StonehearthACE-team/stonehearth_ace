@@ -240,7 +240,7 @@ function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options,
                radiant.terrain.place_entity(item, location)
 
                if inventory then
-                  inventory:add_item(item)
+                  inventory:add_item_if_not_full(item)
                end
             end
          end

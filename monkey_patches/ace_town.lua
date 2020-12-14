@@ -596,6 +596,40 @@ function AceTown:_continue_suspendable_entities()
    end
 end
 
+-- change placement to be within pasture area
+function AceTown:_continue_animals(animals)
+   for animal_id, animal in pairs(animals) do
+      -- if it's an egg, it's already there, just resume its evolution
+      if animal:get_component('stonehearth:ai') then
+         local shepherded = stonehearth.shepherd:get_shepherded_animal_component(animal)
+         local pasture = shepherded and shepherded:get_pasture()
+         local pasture_component = pasture and pasture:get_component('stonehearth:shepherd_pasture')
+         if pasture_component then
+            local pasture_location = pasture_component:get_center_point()
+            local pasture_size = pasture_component:get_size()
+            local half_width = math.floor(pasture_size.x / 2)
+            local half_length = math.floor(pasture_size.z / 2)
+            local location = radiant.terrain.find_placement_point(pasture_location, 1, math.min(half_width, half_length))
+            radiant.terrain.place_entity(animal, location)
+         else
+            self:_place_at_banner(animal)
+         end
+
+         local renewable_resource_component = animal:get_component('stonehearth:renewable_resource_node')
+         if renewable_resource_component then
+            renewable_resource_component:resume_resource_timer()
+         end
+
+         if self._injected_ai[animal_id] then
+            self._injected_ai[animal_id]:destroy()
+            self._injected_ai[animal_id] = nil
+         end
+      end
+
+      radiant.entities.remove_buff(animal, SUSPENDED_BUFF)
+   end
+end
+
 function AceTown:dispatch_citizen(citizen)
    local citizen_id = citizen:get_id()
    self:_prepare_citizen_for_dispatch(citizen_id, citizen)

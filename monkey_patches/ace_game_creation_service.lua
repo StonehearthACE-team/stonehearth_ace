@@ -11,6 +11,17 @@ local MAX_STARTING_ITEM_CONTAINER_RADIUS = 8
 local GameCreationService = require 'stonehearth.services.server.game_creation.game_creation_service'
 local AceGameCreationService = class()
 
+AceGameCreationService._ace_old_on_world_generation_complete = GameCreationService.on_world_generation_complete
+function AceGameCreationService:on_world_generation_complete()
+   -- when a game is created, save the version of ace that was used to create it
+   self._sv.ace_version_info = stonehearth_ace.version_info
+   self:_ace_old_on_world_generation_complete()
+end
+
+function AceGameCreationService:get_game_creation_ace_version_info()
+   return self._sv.ace_version_info
+end
+
 AceGameCreationService._ace_old_embark_command = GameCreationService.embark_command
 function AceGameCreationService:embark_command(session, response)
    radiant.events.trigger(radiant, 'stonehearth_ace:player_embarked', {player_id = session.player_id})

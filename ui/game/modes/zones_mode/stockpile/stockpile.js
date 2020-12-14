@@ -13,6 +13,8 @@ App.StonehearthStockpileView.reopen({
          }
       },
    },
+   lastClickedUri: null,
+   lastClickedItem: null,
 
    init: function() {
       var self = this;
@@ -32,6 +34,30 @@ App.StonehearthStockpileView.reopen({
    didInsertElement: function() {
       this._super();
       var self = this;
+
+      self._inventoryPalette = self.$('#inventoryPalette').stonehearthItemPalette({
+         cssClass: 'inventoryItem',
+         click: function (item) {
+               // when the player clicks an inventory item, we want to try to select and go to that item
+               // check if this was the last clicked item; if so, and it has count > 1, lookup "next" actual item for it
+               var uri = item.attr('uri');
+               var item_quality = item.attr('item_quality');
+               var items = self.getItemsFromUri(uri, item_quality);
+               if (items.length > 0) {
+                  if (uri != self.lastClickedUri) {
+                     self.lastClickedUri = uri;
+                     self.lastClickedItem = null;
+                  }
+                  var nextItem = 0;
+                  if (self.lastClickedItem) {
+                     nextItem = (items.indexOf(self.lastClickedItem) + 1) % items.length;
+                  }
+                  self.lastClickedItem = items[nextItem];
+
+                  radiant.call('stonehearth:select_entity', self.lastClickedItem);
+               }
+         }
+      });
 
       radiant.call('stonehearth:get_town')
          .done(function (response) {
@@ -139,6 +165,34 @@ App.StonehearthStockpileView.reopen({
       this.$('#presetSearch').off('keydown').off('keyup');
       this.$().off('click', '.presetRow');
       this._super();
+   },
+
+   getItemsFromUri: function (this_uri, this_quality) {
+      var self = this;
+      var items = [];
+
+      if (this_uri) {
+         var tracking_data = self.get('model.stonehearth:storage.item_tracker.tracking_data');
+         this_uri = this_uri.replace('.', '&#46;');
+         // var canonical_uri = tracking_data[this_uri].canonical_uri;
+         // if (!canonical_uri) {
+         //    canonical_uri = this_uri;
+         // }
+         radiant.each(tracking_data, function (_, uri_entry) {
+            var uri = uri_entry.__self || (uri_entry.uri && uri_entry.uri.__self);
+            if (this_uri == uri) {
+               radiant.each(uri_entry.item_qualities, function (item_quality_key, item_of_quality) {
+                  if (item_quality_key == this_quality) {
+                     radiant.each(item_of_quality.items, function (_, item) {
+                        items.push(item);
+                     });
+                  }
+               });
+            }
+         });
+      }
+
+      return items;
    },
 
    _updateDefaultStorage: function() {

@@ -33,18 +33,11 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
    local mining_zone_component = mining_zone:get_component('stonehearth:mining_zone')
    local loot = mining_zone_component:mine_point(block)
    local work_player_id = radiant.entities.get_work_player_id(entity)
-   local items = radiant.entities.output_items(loot, worker_location, 1, 3,
-         { owner = work_player_id }, mining_zone, entity, true, self:_get_quality_chances(entity, mining_zone, block)).spilled
+   radiant.entities.output_items(loot, worker_location, 1, 3,
+         { owner = work_player_id, add_spilled_to_inventory = true }, mining_zone, entity, true, self:_get_quality_chances(entity, mining_zone, block))
 
    -- apply quality to mined items if relevant
    --self:_apply_quality(entity, work_player_id, items, mining_zone, block)
-
-   local inventory = stonehearth.inventory:get_inventory(work_player_id)
-   if inventory then
-      for _, item in pairs(items) do
-         inventory:add_item_if_not_full(item)
-      end
-   end
    -- for the autotest
    radiant.events.trigger(entity, 'stonehearth:mined_location', { location = block })
 

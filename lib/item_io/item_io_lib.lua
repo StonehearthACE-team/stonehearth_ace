@@ -73,7 +73,7 @@ function item_io_lib.try_output(items, inputs, options)
          if add_spilled_to_inventory then
             local inventory = stonehearth.inventory:get_inventory(item)
             if inventory then
-               inventory:add_item(item)
+               inventory:add_item_if_not_full(item)
             end
          end
       end

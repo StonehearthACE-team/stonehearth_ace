@@ -4,7 +4,7 @@ App.StonehearthTitleScreenView.reopen({
       self._super();
 
       App.waitForGameLoad().then(() => {
-         radiant.call('stonehearth_ace:get_version_info_command')
+         radiant.call('stonehearth_ace:get_version_info')
             .done(function(response) {
                if (self.isDestroyed || self.isDestroying) {
                   return;

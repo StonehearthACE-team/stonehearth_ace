@@ -53,7 +53,7 @@ function AceCheckBaitTrapAdjacent:_spawn_loot(target, trapping_grounds)
    end
    local loot_table = LootTable(json)
    local uris = loot_table:roll_loot()
-   radiant.entities.output_items(uris, location, 1, 3, { owner = self._entity }, trapping_grounds, nil, true)
+   radiant.entities.output_items(uris, location, 1, 3, { owner = self._entity, add_spilled_to_inventory = true }, trapping_grounds, nil, true)
 end
 
 return AceCheckBaitTrapAdjacent
