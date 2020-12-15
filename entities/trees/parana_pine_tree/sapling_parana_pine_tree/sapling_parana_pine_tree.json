@@ -2,6 +2,7 @@
    "type": "entity",
    "mixins": [
       "stonehearth:mixins:tree",
+      "stonehearth_ace:mixins:tree:sapling",
       "file(sapling_parana_pine_tree_ghost.json)"
    ],
    "components": {
@@ -31,28 +32,6 @@
                "max": { "x": 1, "y": 10, "z": 1 }
             }
          ]
-      },
-      "stonehearth:loot_drops": {
-         "entries": {
-            "beehive": {
-               "num_rolls": {
-                  "min": 0,
-                  "max": 0
-               }
-            },
-				"bough_bale": {
-               "num_rolls": {
-						"min": 0,
-						"max": 0
-					}
-            },
-            "maybe_bough_bale": {
-					"num_rolls": {
-						"min": 0,
-						"max": 0
-					}
-            }
-         }
       }
    },
    "entity_data": {

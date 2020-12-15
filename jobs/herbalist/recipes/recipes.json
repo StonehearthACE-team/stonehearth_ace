@@ -14,21 +14,9 @@
          }
       },
 		"tools": {
-         "recipes": {
-            "professional_beekeeping_hat": {
-               "recipe": "file(professional_beekeeping_hat_recipe.json)"
-            },
-				"simple_beekeeping_hat": {
-               "recipe": "file(simple_beekeeping_hat_recipe.json)"
-            },
+         "recipes": {          
 				"brewer_tumbler": {
                "recipe": "file(brewer_tumbler_recipe.json)"
-            },
-				"cleric_tome_2": {
-               "recipe": "file(cleric_tome_2_recipe.json)"
-            },
-				"cleric_tome_3": {
-               "recipe": "file(cleric_tome_3_recipe.json)"
             }
          }
       },
@@ -87,6 +75,24 @@
 				}
 			}
 		},
+		"clothing_accessories": {
+			"ordinal": 26,
+         "name": "i18n(stonehearth_ace:jobs.herbalist.recipes.clothing_accessories_name)",
+			"recipes": {
+				"professional_beekeeping_hat": {
+               "recipe": "file(professional_beekeeping_hat_recipe.json)"
+            },
+				"simple_beekeeping_hat": {
+               "recipe": "file(simple_beekeeping_hat_recipe.json)"
+            },
+				"cleric_tome_2": {
+               "recipe": "file(cleric_tome_2_recipe.json)"
+            },
+				"cleric_tome_3": {
+               "recipe": "file(cleric_tome_3_recipe.json)"
+            }
+         }
+	  },
 		"refinement" : {
 			"name": "i18n(stonehearth_ace:jobs.herbalist.recipes.refinement_name)",
 			"recipes" : {

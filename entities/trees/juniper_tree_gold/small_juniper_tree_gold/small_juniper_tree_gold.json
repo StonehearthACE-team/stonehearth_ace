@@ -1,4 +1,7 @@
 {
+	"mixins": [
+      "stonehearth_ace:mixins:tree:evergreen"
+   ],
 	"components": {
 		"model_variants": {
          "autumn": {
@@ -76,26 +79,6 @@
                "items": {
                   "none": {
                      "weight": 22
-                  }
-               }
-            },
-				"bough_bale": {
-               "mixintypes": {
-                  "season": "remove"
-               },
-               "items": {
-                  "bough_bale": {
-                     "uri": "stonehearth_ace:resources:bough_bale:evergreen"
-                  }
-               }
-            },
-            "maybe_bough_bale": {
-               "mixintypes": {
-                  "season": "remove"
-               },
-               "items": {
-                  "bough_bale": {
-                     "uri": "stonehearth_ace:resources:bough_bale:evergreen"
                   }
                }
             }

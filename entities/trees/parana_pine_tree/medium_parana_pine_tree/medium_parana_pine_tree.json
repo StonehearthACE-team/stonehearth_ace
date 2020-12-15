@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:tree",
+   "mixins": [
+      "stonehearth:mixins:tree",
+      "stonehearth_ace:mixins:tree:evergreen"
+   ],
    "type": "entity",
    "components": {
       "model_variants": {
@@ -113,28 +116,10 @@
                   }
                }
             },
-            "bough_bale": {
-               "mixintypes": {
-                  "season": "remove"
-               },
-               "items": {
-                  "bough_bale": {
-                     "uri": "stonehearth_ace:resources:bough_bale:evergreen"
-                  }
-               }
-            },
             "maybe_bough_bale": {
-               "mixintypes": {
-                  "season": "remove"
-               },
                "num_rolls": {
                   "min": 0,
                   "max": 2
-               },
-               "items": {
-                  "bough_bale": {
-                     "uri": "stonehearth_ace:resources:bough_bale:evergreen"
-                  }
                }
             }
          }
