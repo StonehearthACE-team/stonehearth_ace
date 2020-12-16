@@ -417,9 +417,6 @@ end
 function AceJobComponent:_drop_talisman(old_job_json)
    if old_job_json and not stonehearth.player:is_npc(self._entity) then
       local talisman_uri = self._sv.current_talisman_uri or old_job_json.talisman_uri
-      if radiant.util.is_table(talisman_uri) then
-         talisman_uri = talisman_uri[1]
-      end
       if talisman_uri then
          self._sv.current_talisman_uri = nil
          local location = radiant.entities.get_world_grid_location(self._entity)

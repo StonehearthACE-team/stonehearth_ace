@@ -532,22 +532,25 @@ App.StonehearthPromotionTree.reopen({
          radiant.each(self._jobData, function(jobAlias, jobData) {
             jobData.available = false;
             if (jobData.description) {
-               var talismanUri = jobData.description.talisman_uri;
+               var talismanUris = jobData.description.talisman_uris || {[jobData.description.talisman_uri] : true};
                jobData.talismanAvailable = null;
-               if (talismanUri) {
-                  var uris = typeof talismanUri == 'string' ? [talismanUri] : talismanUri;
-                  for (var i = 0; i < uris.length; i++) {
-                     var uri = uris[i];
-                     jobData.talismanAvailable = jobData.talismanAvailable || false;
-                     if (inventory_data[uri] && inventory_data[uri].first_item) {
-                        jobData.talismanAvailable = true;
-                        var requirementsMet = self._calculateRequirementsMet(jobAlias);
-                        if (requirementsMet) {
-                           jobData.available = true;
-                        }
-                        break;
+               if (talismanUris) {
+                  radiant.each(talismanUris, (uri, enabled) => {
+                     if (jobData.talismanAvailable) {
+                        return;
                      }
-                  }
+                     if (enabled) {
+                        jobData.talismanAvailable = jobData.talismanAvailable || false;
+                        if (inventory_data[uri] && inventory_data[uri].first_item) {
+                           jobData.talismanAvailable = true;
+                           var requirementsMet = self._calculateRequirementsMet(jobAlias);
+                           if (requirementsMet) {
+                              jobData.available = true;
+                           }
+                           return;
+                        }
+                     }
+                  });
                }
             }
          });
@@ -600,22 +603,26 @@ App.StonehearthPromotionTree.reopen({
       }
 
       var job = self._jobData[jobAlias].description;
-      var talismans = [];
+      var defTalisman = App.catalog.getCatalogData(job.talisman_uri);
 
-      var talisman_uris = typeof job.talisman_uri == 'string' ? [job.talisman_uri] : job.talisman_uri;
+      var talisman_uris = job.talisman_uris || {[job.talisman_uri] : true};
       if (talisman_uris) {
-         talisman_uris.forEach(uri => {
-            talismans.push(App.catalog.getCatalogData(uri));
+         var talismans = [];
+         radiant.each(talisman_uris, (uri, enabled) => {
+            if (enabled && uri != job.talisman_uri) {
+               talismans.push(App.catalog.getCatalogData(uri));
+            }
          });
 
-         if (talisman_uris.length > 1) {
+         if (talismans.length > 0) {
             // if there are alternate talismans that could be used, indicate that in a tooltip
             App.tooltipHelper.createDynamicTooltip(self.$('#requiredTalisman'), function () {
                var t = '<div class="tooltipJobTalisman">';
-               for (var i = 1; i < talismans.length; i++) {
-                  var talisman = talismans[i];
-                  t += `<div class="tooltipJobTalismanEntry"><img src="${talisman.icon}"><div>${i18n.t(talisman.display_name)}</div></div>`;
-               }
+               talismans.forEach(talisman => {
+                  if (talisman != defTalisman) {
+                     t += `<div class="tooltipJobTalismanEntry"><img src="${talisman.icon}"><div>${i18n.t(talisman.display_name)}</div></div>`;
+                  }
+               })
                t += '</div>';
                return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.promotion_tree.alternate_talismans'), t));
             });
@@ -686,7 +693,7 @@ App.StonehearthPromotionTree.reopen({
       // Tell Handlebars about changes.
       self.set('selectedJobAlias', jobAlias);
       self.set('selectedJob', job);
-      self.set('selectedJobTalisman', talismans[0]);
+      self.set('selectedJobTalisman', defTalisman);
       //self.set('parentJob', parentJob);
       //self.set('parentRequiredLevel', parentRequiredLevel);
       self.set('parentJobs', parentJobs);

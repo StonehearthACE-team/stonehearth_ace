@@ -36,12 +36,12 @@ App.StonehearthReembarkationBulletinDialog.reopen({
             }
          } else {
             var catalogData = App.catalog.getCatalogData(uriEntry.uri);
-            if (catalogData.reembark_version) {
+            if (catalogData && catalogData.reembark_version) { // added nil check; should only matter if your inventory tracker is messed up
                radiant.each(uriEntry.item_qualities, function (itemQualityKey, item) {
                   var key = catalogData.reembark_version + App.constants.item_quality.KEY_SEPARATOR + itemQualityKey;
                   srcItems[key] = radiant.shallow_copy(uriEntry);
                   srcItems[key].uri = catalogData.reembark_version;
-                  // ACE only changed this line:
+                  // ACE changed this line:
                   srcItems[key].count = catalogData.reembark_max_count ? Math.min(item.count, catalogData.reembark_max_count) : 1;
                   srcItems[key].item_quality = itemQualityKey;
                });

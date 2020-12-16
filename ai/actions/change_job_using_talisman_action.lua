@@ -11,15 +11,15 @@ ChangeJobUsingTalismanAction.args = {
 ChangeJobUsingTalismanAction.priority = 0
 
 local make_talisman_filter_fn = function(player_id, uri)
+   local uris = uri
    if radiant.util.is_string(uri) then
-      uri = { uri }
+      uris = { [uri] = true }
    end
-   table.sort(uri)
-   local uris = {}
    local key = player_id
-   for _, each_uri in ipairs(uri) do
-      uris[each_uri] = true
-      key = key .. ':' .. each_uri
+   for each_uri, enabled in pairs(uris) do
+      if enabled then
+         key = key .. ':' .. each_uri
+      end
    end
    local is_owned_by_another_player = radiant.entities.is_owned_by_another_player
 
@@ -59,7 +59,7 @@ function ChangeJobUsingTalismanAction:start_thinking(ai, entity, args)
    local job_controller = stonehearth.job:get_jobs_controller(player_id)
    local kingdom_job_data = job_controller:get_job_description(args.job_uri)
    local json = radiant.resources.load_json(kingdom_job_data, true)
-   local talisman_uri = json.talisman_uri
+   local talisman_uri = json.talisman_uris or json.talisman_uri
 
    if talisman_uri then
       ai:set_think_output({
