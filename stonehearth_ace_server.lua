@@ -11,7 +11,6 @@ local service_creation_order = {
 }
 
 local monkey_patches = {
-   ace_aggro_observer = 'stonehearth.ai.observers.aggro_observer',
    ace_ai_component = 'stonehearth.components.ai.ai_component',
    ace_animal_companion_script = 'stonehearth.data.traits.animal_companion.animal_companion_script',
    ace_aura_buff = 'stonehearth.data.buffs.scripts.aura_buff',
@@ -79,6 +78,7 @@ local monkey_patches = {
    ace_find_entity_type_in_storage_action = 'stonehearth.ai.actions.find_entity_type_in_storage_action',
    ace_find_equipment_upgrade_action = 'stonehearth.ai.actions.upgrade_equipment.find_equipment_upgrade_action',
    ace_find_healable_target_observer = 'stonehearth.ai.observers.find_healable_target_observer',
+   ace_find_target_observer = 'stonehearth.ai.observers.find_target_observer',
    ace_firepit_component = 'stonehearth.components.firepit.firepit_component',
    ace_fixture = 'stonehearth.components.building2.fixture',
    ace_food_decay_service = 'stonehearth.services.server.food_decay.food_decay_service',
@@ -130,7 +130,6 @@ local monkey_patches = {
    ace_raid_crops_mission = 'stonehearth.services.server.game_master.controllers.missions.raid_crops_mission',
    ace_raid_stockpiles_mission = 'stonehearth.services.server.game_master.controllers.missions.raid_stockpiles_mission',
    ace_reembarkation_encounter = 'stonehearth.services.server.game_master.controllers.encounters.reembarkation_encounter',
-   ace_relations = 'stonehearth.lib.player.relations',
    ace_renewable_resource_node_component = 'stonehearth.components.renewable_resource_node.renewable_resource_node_component',
    ace_repair_entity_adjacent_action = 'stonehearth.ai.actions.repair_entity_adjacent_action',
    ace_resource_call_handler = 'stonehearth.call_handlers.resource_call_handler',

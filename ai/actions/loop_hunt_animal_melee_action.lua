@@ -18,18 +18,14 @@ function LoopHuntAnimalMelee:start_thinking(ai, entity, args)
    local weapon_data = radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data')
    radiant.verify(weapon_data, "entity %s has no stonehearth:combat:weapon_data but is equipped as a melee weapon", weapon:get_uri())
 
-   self._melee_range_ideal = stonehearth.combat:get_melee_range(entity, weapon_data, args.target)
    ai:set_think_output({})
 end
 
 function LoopHuntAnimalMelee:run(ai, entity, args)
    while radiant.entities.exists(args.target) do
-      ai:execute('stonehearth:chase_entity', {
+      ai:execute('stonehearth:combat:attack', {
          target = args.target,
-         stop_distance = self._melee_range_ideal,
       })
-      ai:execute('stonehearth:combat:attack_melee_adjacent', { target = args.target })
-      ai:execute('stonehearth:combat:set_global_attack_cooldown')
    end
 end
 

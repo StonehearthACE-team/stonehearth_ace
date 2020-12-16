@@ -20,10 +20,6 @@ function HuntingCallHandler:allow_hunting_for_entity(session, response, entity, 
 
    -- this forces the entity to reconsider finding a target
    radiant.events.trigger_async(entity, 'stonehearth_ace:avoid_hunting_changed')
-   local aggro_observer = entity:add_component('stonehearth:observers'):get_observer('stonehearth:observers:aggro')
-   if aggro_observer then
-      aggro_observer:reconsider_all_targets()
-   end
 end
 
 return HuntingCallHandler

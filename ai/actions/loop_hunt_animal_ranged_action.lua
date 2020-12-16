@@ -28,14 +28,13 @@ function LoopHuntAnimalRanged:start_thinking(ai, entity, args)
 end
 
 local function can_attack_now(entity, target)
-   local state = stonehearth.combat:get_combat_state(entity)
-   if state:in_cooldown('global_attack_recovery') then
-      return false
-   end
-
    local weapon = stonehearth.combat:get_main_weapon(entity)
 
    if not weapon or not weapon:is_valid() then
+      return false
+   end
+
+   if radiant.entities.is_standing_on_ladder(entity) then
       return false
    end
 
@@ -43,13 +42,16 @@ local function can_attack_now(entity, target)
 end
 
 function LoopHuntAnimalRanged:run(ai, entity, args)
-   while radiant.entities.exists(args.target) and stonehearth.player:are_entities_hostile(args.target, entity) do
-      ai:execute('stonehearth:chase_entity', {
+   while radiant.entities.exists(args.target) do
+      ai:execute('stonehearth:combat:wait_for_global_attack_cooldown')
+      ai:execute('stonehearth:chase_entity_until_targetable', {
          target = args.target,
          grid_location_changed_cb = can_attack_now,
       })
-      ai:execute('stonehearth:combat:attack_ranged', { target = args.target })
-      ai:execute('stonehearth:combat:set_global_attack_cooldown')
+      if radiant.entities.exists(args.target) then
+         ai:execute('stonehearth:combat:attack_ranged', { target = args.target })
+         ai:execute('stonehearth:combat:set_global_attack_cooldown')
+      end
    end
 end
 
