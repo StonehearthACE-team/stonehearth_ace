@@ -29,7 +29,8 @@
       "stonehearth:storage": {
          "type": "output_crate",
          "capacity": 6,
-         "render_contents": true
+         "render_contents": true,
+			"filter_list": "stonehearth_ace:ui:output_box:filters"
       },
       "effect_list": {
          "default": "/stonehearth/data/rigs/entities/containers/output_box/effects/idle.json"

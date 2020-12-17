@@ -11,6 +11,36 @@
 	"foraging_spot_uri": "stonehearth_ace:terrain:foraging_spot:temperate",
 	"foraging_spot_frequency": 0.0015,
    "climate": "temperate_medium",
+	"farm_elevation_modifiers": {
+      "humidity": [
+         {
+            "elevation": 74,
+            "multiplier": 0.9
+         },
+         {
+            "elevation": 89,
+            "multiplier": 0.8
+         }
+      ],
+      "sunlight": [
+         {
+            "elevation": 49,
+            "multiplier": 1.05
+         },
+         {
+            "elevation": 59,
+            "multiplier": 1.1
+         },
+         {
+            "elevation": 74,
+            "multiplier": 1.2
+         },
+         {
+            "elevation": 104,
+            "multiplier": 1.3
+         }
+      ]
+   },
    "seasons": {
       "spring": {
 			"humidity": 0.5,

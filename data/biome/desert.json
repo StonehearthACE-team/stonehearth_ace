@@ -9,6 +9,36 @@
 	"foraging_spot_frequency": 0.0018,
 	"wilderness_score_multiplier": 0.04,
    "climate": "desert_medium",
+   "farm_elevation_modifiers": {
+      "humidity": [
+         {
+            "elevation": 69,
+            "multiplier": 0.9
+         },
+         {
+            "elevation": 89,
+            "multiplier": 0.8
+         }
+      ],
+      "sunlight": [
+         {
+            "elevation": 44,
+            "multiplier": 1.05
+         },
+         {
+            "elevation": 49,
+            "multiplier": 1.1
+         },
+         {
+            "elevation": 69,
+            "multiplier": 1.2
+         },
+         {
+            "elevation": 89,
+            "multiplier": 1.3
+         }
+      ]
+   },
    "seasons": {
 	   "spring": {
 			"humidity": -0.1,
