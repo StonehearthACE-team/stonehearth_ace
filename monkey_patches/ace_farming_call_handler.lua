@@ -15,6 +15,11 @@ local rotation = 0
 function AceFarmingCallHandler:choose_new_field_location(session, response, field_type)
    local bindings = _radiant.client.get_binding_system()
    local orig_rotation = rotation
+
+   local biome = stonehearth.world_generation:get_biome_alias()
+   local biome_data = radiant.resources.load_json(biome)
+   local max_elevation = biome_data.max_farm_elevation
+   local min_elevation = biome_data.min_farm_elevation
    
    field_type = field_type or 'farm'
    local data = radiant.resources.load_json('stonehearth:farmer:all_crops').field_types or {}
@@ -124,6 +129,15 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
       :set_cursor(field_data.cursor or 'stonehearth:cursors:zone_farm')
       :set_find_support_filter(function(result)
          local entity = result.entity
+         local brick = result.brick
+
+         if min_elevation and brick.y < min_elevation then
+            return false
+         end
+
+         if max_elevation and brick.y > max_elevation then
+            return false
+         end
    
          local rcs = entity:get_component('region_collision_shape')
          local region_collision_type = rcs and rcs:get_region_collision_type()
@@ -135,7 +149,6 @@ function AceFarmingCallHandler:choose_new_field_location(session, response, fiel
             return false
          end
    
-         local brick = result.brick
          local tag = radiant.terrain.get_block_tag_at(brick)
          local kind = radiant.terrain.get_block_kind_from_tag(tag)
          local name = radiant.terrain.get_block_name_from_tag(tag)

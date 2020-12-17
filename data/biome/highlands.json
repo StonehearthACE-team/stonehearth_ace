@@ -23,6 +23,38 @@
 	"foraging_spot_frequency": 0.0014,
 	"wilderness_score_multiplier": 0.032,
    "climate": "highlands_medium",
+   "min_farm_elevation": 0,
+   "max_farm_elevation": 100,
+   "farm_elevation_modifiers": {
+      "humidity": [
+         {
+            "elevation": 0,
+            "multiplier": 0
+         },
+         {
+            "elevation": 10,
+            "multiplier": 1
+         },
+         {
+            "elevation": 50,
+            "multiplier": 0.5
+         }
+      ],
+      "sunlight": [
+         {
+            "elevation": 0,
+            "multiplier": 0.5
+         },
+         {
+            "elevation": 10,
+            "multiplier": 1
+         },
+         {
+            "elevation": 50,
+            "multiplier": 1.5
+         }
+      ]
+   },
    "default_starting_season": "spring",
    "seasons": {
       "spring": {

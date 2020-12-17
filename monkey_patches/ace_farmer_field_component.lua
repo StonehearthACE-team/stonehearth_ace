@@ -44,6 +44,7 @@ function AceFarmerFieldComponent:post_activate()
    local biome = stonehearth.world_generation:get_biome()
    self._biome_sunlight = biome.sunlight or 1
    self._biome_humidity = biome.humidity or 0
+   self._biome_elevation_modifiers = biome.farm_elevation_modifiers or {}
    
    if not self._sv.sunlight_level then
       self._sv.sunlight_level = 1
@@ -772,8 +773,11 @@ function AceFarmerFieldComponent:_update_climate()
    end
    
    local changed = false
-   local sunlight = math.floor(100 * self._sky_visibility * self._biome_sunlight * self._season_sunlight * self._weather_sunlight) / 100
-   local humidity = math.floor(100 * (self._sv._water_level + self._biome_humidity + self._sky_visibility * (self._season_humidity + self._weather_humidity))) / 100
+   local raw_sunlight = self._sky_visibility * self._biome_sunlight * self._season_sunlight * self._weather_sunlight
+   local sunlight = math.floor(100 * raw_sunlight * self._light_elevation_modifier) / 100
+
+   local raw_humidity = self._sv._water_level + self._biome_humidity + self._sky_visibility * (self._season_humidity + self._weather_humidity)
+   local humidity = math.floor(100 * raw_humidity * self._humidity_elevation_modifier) / 100
    local frozen = self._weather_frozen
 
    if sunlight ~= self._sv.sunlight_level then
@@ -931,9 +935,35 @@ function AceFarmerFieldComponent:get_best_light_level()
 	return stonehearth.town:get_best_light_level_from_climate(not self:_is_fallow() and self._sv.current_crop_details.preferred_climate)
 end
 
+function AceFarmerFieldComponent:get_elevation_modifiers()
+   if self._location then
+      local y = self._location.y
+      log:debug('%s caching elevation modifiers for %s', self._entity, y)
+      return self:_get_elevation_modifier('humidity', y), self:_get_elevation_modifier('sunlight', y)
+   end
+
+   return 1, 1
+end
+
+function AceFarmerFieldComponent:_get_elevation_modifier(mod_type, elevation)
+   local best = 1
+   local modifiers = self._biome_elevation_modifiers[mod_type]
+   if modifiers then
+      for _, data in ipairs(modifiers) do
+         if elevation > data.elevation then
+            break
+         end
+         best = data.multiplier
+      end
+   end
+
+   return best
+end
+
 function AceFarmerFieldComponent:_cache_best_levels()
    self._best_water_level, self._next_water_level = self:get_best_water_level()
    self._best_light_level, self._next_light_level = self:get_best_light_level()
+   self._humidity_elevation_modifier, self._light_elevation_modifier = self:get_elevation_modifiers()
 end
 
 function AceFarmerFieldComponent:_update_effective_humidity_level()
