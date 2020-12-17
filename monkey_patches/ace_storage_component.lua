@@ -126,6 +126,25 @@ function AceStorageComponent:get_ignore_restock()
    return self._ignore_restock
 end
 
+function AceStorageComponent:is_hidden()
+   return self._sv.is_hidden
+end
+
+function AceStorageComponent:is_output_bin_for_crafter(job_id)
+   if job_id and self._type == 'output_crate' then
+      if not self._sv.filter then
+         return true
+      end
+      if not self._sv.filter.is_exact_filter then
+         for _, mat in ipairs(self._sv.filter) do
+            if mat == job_id then
+               return true
+            end
+         end
+      end
+   end
+end
+
 -- allow for specifying a priority_location for universal_storage, and try to send to default storage instead of landing location
 -- if priority_location is false (not nil), *this* entity's location will be ignored
 function AceStorageComponent:drop_all(fallback_location, priority_location)

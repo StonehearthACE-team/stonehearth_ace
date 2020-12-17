@@ -6,31 +6,38 @@ local log = radiant.log.create_logger('wait_for_closest_storage_space')
 
 function AceWaitForClosestStorageSpace:start_thinking(ai, entity, args)
    self._ai = ai
+   local job = entity:get_component('stonehearth:job')
+   local job_data = job and radiant.resources.load_json(job:get_job_description_path())
+   local job_id = job_data and job_data.job_id
 
    local num_checked = 0
    local check_storage = function(storage_entity)
          num_checked = num_checked + 1   
          local storage_component = storage_entity:get_component('stonehearth:storage')
-         return storage_component and storage_component:is_public() and not storage_component:is_full() and storage_component:passes(args.item) and storage_component
+         -- check if it's an output crate that's set up for this crafter's output, or if it can just generally accept the item
+         if storage_component and storage_component:is_public() and not storage_component:is_hidden() and not storage_component:is_full() and
+               (storage_component:is_output_bin_for_crafter(job_id) or storage_component:passes(args.item)) then
+            return storage_component
+         end
       end
 
-   local priority_distance = stonehearth.constants.inventory.CRAFTER_PRIORITY_STORAGE_RADIUS
-   local checked_storage = {}
+   -- local priority_distance = stonehearth.constants.inventory.CRAFTER_PRIORITY_STORAGE_RADIUS
+   -- local checked_storage = {}
 
-   -- do a very nearby check of storage entities to prioritize
-   local location = radiant.entities.get_world_grid_location(entity)
-   local cube = Cube3(location):inflated(Point3(priority_distance, 1, priority_distance))
-   local nearby_entities = radiant.terrain.get_entities_in_cube(cube)
-   for id, nearby_entity in pairs(nearby_entities) do
-      if check_storage(nearby_entity) then
-         log:debug('%s found priority storage %s after %s entities checked', entity, nearby_entity, num_checked)
-         self._ai:set_think_output({
-            storage = nearby_entity
-         })
-         return
-      end
-      checked_storage[id] = true
-   end
+   -- -- do a very nearby check of storage entities to prioritize
+   -- local location = radiant.entities.get_world_grid_location(entity)
+   -- local cube = Cube3(location):inflated(Point3(priority_distance, 1, priority_distance))
+   -- local nearby_entities = radiant.terrain.get_entities_in_cube(cube)
+   -- for id, nearby_entity in pairs(nearby_entities) do
+   --    if check_storage(nearby_entity) then
+   --       log:debug('%s found priority storage %s after %s entities checked', entity, nearby_entity, num_checked)
+   --       self._ai:set_think_output({
+   --          storage = nearby_entity
+   --       })
+   --       return
+   --    end
+   --    checked_storage[id] = true
+   -- end
 
 
    local shortest_distance
@@ -42,24 +49,22 @@ function AceWaitForClosestStorageSpace:start_thinking(ai, entity, args)
    --Iterate through the stockpiles. If we match the stockpile criteria AND there is room
    --check if the stockpile is the closest such stockpile to the entity
    for id, storage_entity in pairs(storage) do
-      if not checked_storage[id] then
-         local storage_component = check_storage(storage_entity)
-         if storage_component then
-            local distance_between = radiant.entities.distance_between(entity, storage_entity)
-            
-            -- HACK: This action is only used for crafter output, so prefer output crates.
-            if storage_component:get_type() == 'output_crate' then
-               distance_between = distance_between / 2
-            end
+      local storage_component = check_storage(storage_entity)
+      if storage_component then
+         local distance_between = radiant.entities.distance_between(entity, storage_entity)
+         
+         -- HACK: This action is only used for crafter output, so prefer output crates.
+         if storage_component:get_type() == 'output_crate' then
+            distance_between = distance_between / 2
+         end
 
-            if not closest_storage or distance_between < shortest_distance then
-               closest_storage = storage_entity
-               shortest_distance = distance_between
-               
-               -- ACE: add short-circuit if it's a very short distance
-               if shortest_distance <= short_circuit_distance then
-                  break
-               end
+         if not closest_storage or distance_between < shortest_distance then
+            closest_storage = storage_entity
+            shortest_distance = distance_between
+            
+            -- ACE: add short-circuit if it's a very short distance
+            if shortest_distance <= short_circuit_distance then
+               break
             end
          end
       end
