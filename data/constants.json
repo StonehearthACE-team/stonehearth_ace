@@ -18,6 +18,14 @@
             "plant_water_affinity": "HIGH",
             "plant_light_affinity": "HIGH"
          },
+         "temperate_tree_easy": {
+            "plant_water_affinity": "VERY_LOW",
+            "plant_light_affinity": "HIGH"
+         },
+         "temperate_tree_complex": {
+            "plant_water_affinity": "LOW",
+            "plant_light_affinity": "HIGH"
+         },
          "desert_staple": {
             "plant_water_affinity": "IRRELEVANT",
             "plant_light_affinity": "HIGH"
@@ -34,6 +42,14 @@
             "plant_water_affinity": "MEDIUM",
             "plant_light_affinity": "EXTREME"
          },
+			"desert_tree_easy": {
+            "plant_water_affinity": "VERY_LOW",
+            "plant_light_affinity": "VERY_HIGH"
+         },
+         "desert_tree_complex": {
+            "plant_water_affinity": "LOW",
+            "plant_light_affinity": "VERY_HIGH"
+         },
          "arctic_staple": {
             "plant_water_affinity": "IRRELEVANT",
             "plant_light_affinity": "VERY_LOW"
@@ -48,6 +64,14 @@
          },
          "arctic_complex": {
             "plant_water_affinity": "HIGH",
+            "plant_light_affinity": "MEDIUM"
+         },
+			"arctic_tree_easy": {
+            "plant_water_affinity": "VERY_LOW",
+            "plant_light_affinity": "MEDIUM"
+         },
+         "arctic_tree_complex": {
+            "plant_water_affinity": "LOW",
             "plant_light_affinity": "MEDIUM"
          },
          "highlands_staple": {
@@ -66,6 +90,14 @@
             "plant_water_affinity": "VERY_HIGH",
             "plant_light_affinity": "HIGH"
          },
+			"highlands_tree_easy": {
+            "plant_water_affinity": "LOW",
+            "plant_light_affinity": "HIGH"
+         },
+         "highlands_tree_complex": {
+            "plant_water_affinity": "SIMPLE",
+            "plant_light_affinity": "HIGH"
+         },
          "tropical_staple": {
             "plant_water_affinity": "IRRELEVANT",
             "plant_light_affinity": "HIGH"
@@ -82,8 +114,32 @@
             "plant_water_affinity": "EXTREME",
             "plant_light_affinity": "VERY_HIGH"
          },
-         "underground": {
+			"tropical_tree_easy": {
+            "plant_water_affinity": "MEDIUM",
+            "plant_light_affinity": "VERY_HIGH"
+         },
+         "tropical_tree_complex": {
+            "plant_water_affinity": "HIGH",
+            "plant_light_affinity": "VERY_HIGH"
+         },
+         "underground_dry": {
             "plant_water_affinity": "UNDESIRABLE",
+            "plant_light_affinity": "UNDESIRABLE"
+         },
+         "underground": {
+            "plant_water_affinity": "IRRELEVANT",
+            "plant_light_affinity": "UNDESIRABLE"
+         },
+         "underground_low_water": {
+            "plant_water_affinity": "LOW",
+            "plant_light_affinity": "UNDESIRABLE"
+         },
+         "underground_medium_water": {
+            "plant_water_affinity": "MEDIUM",
+            "plant_light_affinity": "UNDESIRABLE"
+         },
+         "underground_high_water": {
+            "plant_water_affinity": "HIGH",
             "plant_light_affinity": "UNDESIRABLE"
          }
       },
@@ -146,15 +202,15 @@
                "period_multiplier": 1
             },
             {
-               "min_level": 1.2,
+               "min_level": 2.8,
                "period_multiplier": 1.2
             },
             {
-               "min_level": 1.6,
+               "min_level": 3.6,
                "period_multiplier": 1.5
             },
             {
-               "min_level": 2.8,
+               "min_level": 5,
                "period_multiplier": 10
             }
          ],
@@ -180,11 +236,11 @@
                "period_multiplier": 0.95
             },
             {
-               "min_level": 1.6,
+               "min_level": 2.4,
                "period_multiplier": 1.1
             },
             {
-               "min_level": 3,
+               "min_level": 5,
                "period_multiplier": 10
             }
          ],
@@ -206,11 +262,11 @@
                "period_multiplier": 0.9
             },
             {
-               "min_level": 2.5,
+               "min_level": 2.8,
                "period_multiplier": 1
             },
             {
-               "min_level": 3.2,
+               "min_level": 6,
                "period_multiplier": 6
             }
          ],
@@ -236,11 +292,11 @@
                "period_multiplier": 0.95
             },
             {
-               "min_level": 2,
+               "min_level": 3.2,
                "period_multiplier": 1.1
             },
             {
-               "min_level": 3.2,
+               "min_level": 6,
                "period_multiplier": 10
             }
          ],
@@ -270,7 +326,11 @@
                "period_multiplier": 0.9
             },
             {
-               "min_level": 3.5,
+               "min_level": 4.5,
+               "period_multiplier": 1
+            },
+            {
+               "min_level": 6,
                "period_multiplier": 10
             }
          ],
@@ -300,7 +360,11 @@
                "period_multiplier": 0.9
             },
             {
-               "min_level": 3.8,
+               "min_level": 4.8,
+               "period_multiplier": 1.1
+            },
+            {
+               "min_level": 6,
                "period_multiplier": 10
             }
          ],
