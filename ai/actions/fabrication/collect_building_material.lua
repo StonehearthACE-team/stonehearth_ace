@@ -13,7 +13,11 @@ CollectBuildingMaterial.args = {
    building = Entity,
    material = 'string'
 }
-CollectBuildingMaterial.priority = 1
+CollectBuildingMaterial.priority = {0, 1}
+
+-- TODO: should these be in constants somewhere?
+local MIN_BANKED = 50
+local MAX_BANKED = 250
 
 function CollectBuildingMaterial:start_thinking(ai, entity, args)
    local material = args.material
@@ -22,12 +26,18 @@ function CollectBuildingMaterial:start_thinking(ai, entity, args)
    local building_comp = building:get_component('stonehearth:build2:building')
    local ready = false
 
+   local bank_range = MAX_BANKED - MIN_BANKED
+
    local check_fn = function()
       local resources = building_comp:currently_building() and building_comp:get_remaining_resource_cost(entity)
       local now_ready = resources and resources[material] ~= nil
       if now_ready ~= ready then
          ready = now_ready
          if ready then
+            -- also set the priority based on how many resources of that type are already banked
+            local banked, prebanked = building_comp:get_banked_resource_count(material)
+            local banked_pos = math.min(MAX_BANKED, math.max(MIN_BANKED, banked + prebanked)) - MIN_BANKED
+            ai:set_utility(1 - (banked_pos / bank_range))
             ai:set_think_output({
                owner_player_id = work_player_id,
                resource_delivery_entity = building_comp:get_resource_delivery_entity(),   -- the resource delivery entity has the destination region for the building

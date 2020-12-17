@@ -98,6 +98,20 @@ function AceBuilding:get_banked_resources()
    return self._sv._banked_resources
 end
 
+function AceBuilding:get_banked_resource_count(material)
+   local registered_count = 0
+   local registered = self._registered_materials_to_be_banked[material]
+   if registered then
+      for id, reg_amt in pairs(registered) do
+         registered_count = registered_count + reg_amt
+      end
+   end
+
+   local banked = self._sv._banked_resources[material]
+
+   return (banked and banked.count or 0), registered_count
+end
+
 function AceBuilding:has_banked_resource(material)
    local banked = self._sv._banked_resources[material]
    return banked and banked.count > 0
