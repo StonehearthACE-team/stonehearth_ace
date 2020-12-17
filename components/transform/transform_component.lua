@@ -279,7 +279,7 @@ function TransformComponent:add_option_overrides(overrides)
    self.__saved_variables:mark_changed()
 end
 
-function TransformComponent:transform()
+function TransformComponent:transform(transformer)
    local transform_data = self:get_transform_options()
    local options = {
       check_script = transform_data.transform_check_script,
@@ -290,6 +290,7 @@ function TransformComponent:transform()
 		model_variant = transform_data.model_variant,
       destroy_entity = transform_data.destroy_entity,
       remove_components = transform_data.remove_components,
+      transformer_entity = transformer,
       transform_event = function(transformed_form)
          radiant.events.trigger(self._entity, 'stonehearth_ace:on_transformed', {entity = self._entity, transformed_form = transformed_form})
       end
@@ -376,7 +377,7 @@ end
 
 -- this function gets called directly by request_transform unless a request_action is specified
 -- if such an action is specified, this function should be called as part of that AI action
-function TransformComponent:perform_transform(use_finish_cb)
+function TransformComponent:perform_transform(use_finish_cb, transformer)
    local data = self:get_transform_options()
    if not data then
       return false
@@ -393,16 +394,16 @@ function TransformComponent:perform_transform(use_finish_cb)
    end
 
    if data.transforming_effect then
-      self:_run_effect(data.transforming_effect, use_finish_cb)
+      self:_run_effect(data.transforming_effect, use_finish_cb, transformer)
    elseif data.start_transforming_script then
       local script = radiant.mods.load_script(data.start_transforming_script)
       script.start_transforming(self._entity, data, function()
             if use_finish_cb then
-               self:transform()
+               self:transform(transformer)
             end
          end)
    elseif not data.transforming_worker_effect then
-      self:transform()
+      self:transform(transformer)
    end
 end
 
@@ -419,13 +420,13 @@ function TransformComponent:_set_transformable(player_id, is_transformable)
    return self:is_transformable()
 end
 
-function TransformComponent:_run_effect(effect, use_finish_cb)
+function TransformComponent:_run_effect(effect, use_finish_cb, transformer)
    if not self._effect then
       self._effect = radiant.effects.run_effect(self._entity, effect)
       if use_finish_cb then
          self._effect:set_finished_cb(function()
                self:_destroy_effect()
-               self:transform()
+               self:transform(transformer)
             end)
       end
    end

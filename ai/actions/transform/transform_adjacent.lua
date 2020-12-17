@@ -107,11 +107,11 @@ function TransformItemAdjacent:run(ai, entity, args)
          end
          self._completed_work = true
          ai:unprotect_argument(item)
-         transformed_form = transform_comp:transform()
+         transformed_form = transform_comp:transform(entity)
       else
          self._completed_work = true
          ai:unprotect_argument(item)
-         transformed_form = transform_comp:perform_transform(true)
+         transformed_form = transform_comp:perform_transform(true, entity)
       end
 
       if ing_item and ing_item:is_valid() then

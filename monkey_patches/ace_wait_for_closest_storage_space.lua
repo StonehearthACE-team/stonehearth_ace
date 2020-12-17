@@ -7,7 +7,8 @@ local log = radiant.log.create_logger('wait_for_closest_storage_space')
 function AceWaitForClosestStorageSpace:start_thinking(ai, entity, args)
    self._ai = ai
    local job = entity:get_component('stonehearth:job')
-   local job_data = job and radiant.resources.load_json(job:get_job_description_path())
+   local job_desc_path = job and job:get_current_job_description_path()
+   local job_data = job_desc_path and radiant.resources.load_json(job_desc_path)
    local job_id = job_data and job_data.job_id
 
    local num_checked = 0

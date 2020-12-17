@@ -137,6 +137,10 @@ function AceJobComponent:get_job_description_path(job_uri)
    return job_controller:get_job_description(job_uri, self._sv.population_override)
 end
 
+function AceJobComponent:get_current_job_description_path()
+   return self._sv.job_uri and self:get_job_description_path(self._sv.job_uri)
+end
+
 -- Called by add_exp. Calls the profession-specific job controller to tell it to level up
 -- have to override the whole thing to add title data to the bulletin ><
 function AceJobComponent:level_up(skip_visual_effects)

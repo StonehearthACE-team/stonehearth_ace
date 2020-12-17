@@ -8,7 +8,7 @@ local transform_lib = {}
 local log = radiant.log.create_logger('transform_lib')
 
 -- largely constructed from the original evolve_component:evolve() function
-function transform_lib.transform(entity, transformer, into_uri, options)
+function transform_lib.transform(entity, transform_source, into_uri, options)
    if type(into_uri) == 'table' then
       -- allow for tables that are just lists of uris, and also for uri properties with weight values
       if type(into_uri[1]) == 'string' then
@@ -25,7 +25,7 @@ function transform_lib.transform(entity, transformer, into_uri, options)
    options = options or {}
    if options.check_script then
       local script = radiant.mods.load_script(options.check_script)
-      if script and not script.should_transform(entity, transformer, into_uri, options) then
+      if script and not script.should_transform(entity, transform_source, into_uri, options) then
          return false
       end
    end
@@ -102,7 +102,7 @@ function transform_lib.transform(entity, transformer, into_uri, options)
       end
 
       local transformed_form_data = radiant.entities.get_entity_data(transformed_form, 'stonehearth:evolve_data')
-      if transformed_form_data and transformer == 'stonehearth:evolve' then
+      if transformed_form_data and transform_source == 'stonehearth:evolve' then
          -- Ensure the transformed form also has the evolve component if it will evolve
          -- but first check if it should get "stunted"
          if not transformed_form_data.stunted_chance or rng:get_real(0, 1) > transformed_form_data.stunted_chance then
@@ -174,7 +174,7 @@ function transform_lib.transform(entity, transformer, into_uri, options)
 
    if options.transform_script then
       local script = radiant.mods.load_script(options.transform_script)
-      script.transform(entity, transformed_form, transformer, options)
+      script.transform(entity, transformed_form, transform_source, options)
    end
 
    if options.transform_event then
@@ -183,6 +183,11 @@ function transform_lib.transform(entity, transformer, into_uri, options)
 
    -- option to kill on transform instead of destroying (e.g., if you need to have it drop loot or trigger the killed event)
    if options.kill_entity then
+      local loot_drops_component = entity:get_component('stonehearth:loot_drops')
+      if loot_drops_component and options.transformer_entity then
+         local player_id = radiant.entities.get_player_id(options.transformer_entity)
+         loot_drops_component:set_auto_loot_player_id(player_id)
+      end
       radiant.entities.kill_entity(entity)
    elseif options.destroy_entity ~= false then
       radiant.entities.destroy_entity(entity)
