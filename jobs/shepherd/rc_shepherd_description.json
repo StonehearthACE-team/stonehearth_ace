@@ -2,6 +2,8 @@
    "type": "job",
    "mixins": "stonehearth:jobs:shepherd",
 	"display_order": 6,
+	"talisman_uri": "stonehearth_ace:shepherd:talisman:clay",
+	"requirements": "i18n(stonehearth_ace:jobs.rc_shepherd.rc_shepherd_description.requirements)",
    "equipment": {
       "helmet": "file(rc_shepherd_outfit/rc_shepherd_hood)",
       "torso": "file(rc_shepherd_outfit)"

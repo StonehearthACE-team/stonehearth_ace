@@ -1,6 +1,8 @@
 {
    "type": "job",
    "mixins": "northern_alliance:jobs:carpenter",
+	"talisman_uri": "stonehearth_ace:carpenter:talisman:bone",
+	"requirements": "i18n(stonehearth_ace:jobs.na_carpenter.na_carpenter_description.requirements)",
    "crafter": {
       "recipe_list": "file(recipes/na_recipes.json)"
    },

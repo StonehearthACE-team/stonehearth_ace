@@ -1,6 +1,8 @@
 {
    "type": "job",
    "mixins": "stonehearth:jobs:herbalist",
+	"talisman_uri": "stonehearth_ace:herbalist:talisman:bone",
+	"requirements": "i18n(stonehearth_ace:jobs.na_herbalist.na_herbalist_description.requirements)",
    "crafter": {
       "recipe_list": "file(recipes/na_recipes.json)"
    },

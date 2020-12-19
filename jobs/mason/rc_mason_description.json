@@ -1,6 +1,7 @@
 {
    "type": "job",
    "mixins": "rayyas_children:jobs:mason",
+	"requirements": "i18n(stonehearth_ace:jobs.rc_mason.rc_mason_description.requirements)",
    "crafter": {
       "recipe_list": "file(recipes/rc_recipes.json)"
    },

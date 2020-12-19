@@ -1,6 +1,8 @@
 {
    "type": "job",
    "mixins": "rayyas_children:jobs:herbalist",
+	"talisman_uri": "stonehearth_ace:herbalist:talisman:clay",
+	"requirements": "i18n(stonehearth_ace:jobs.rc_herbalist.rc_herbalist_description.requirements)",
    "crafter": {
       "recipe_list": "file(recipes/rc_recipes.json)"
    },

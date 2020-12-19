@@ -1,6 +1,8 @@
 {
    "type": "job",
    "mixins": "stonehearth:jobs:footman",
+	"talisman_uri": "stonehearth_ace:footman:talisman:clay",
+	"requirements": "i18n(stonehearth_ace:jobs.rc_footman.rc_footman_description.requirements)",
    "equipment": {
       "torso": "file(rc_footman_outfit)"
    }
