@@ -221,7 +221,8 @@ end
 
 -- Adds resistance to wounds
 function AceCombatService:try_inflict_debuffs(target, debuff_list)
-	local debuff_resistance = target:get_component('stonehearth:attributes'):get_attribute('debuff_resistance', 0)
+   local attributes = target:get_component('stonehearth:attributes')
+	local debuff_resistance = attributes and attributes:get_attribute('debuff_resistance') or 0
    for i, debuff_data in ipairs(debuff_list) do
       for name, debuff in pairs(debuff_data) do
          local infliction_chance = debuff.chance or 1

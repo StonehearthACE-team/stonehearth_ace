@@ -103,6 +103,8 @@ function PastureItemComponent:_register_with_town(register)
       else
          town:unregister_pasture_item(self._entity)
       end
+      -- unnecessary? may be necessary if pasture-based animal filters are implemented
+      -- stonehearth.ai:reconsider_entity(self._entity, '(un)registered with pasture/town')
    end
 
    self:_create_restock_tasks()

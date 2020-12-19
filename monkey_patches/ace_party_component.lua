@@ -95,18 +95,18 @@ function AcePartyComponent:register_patroller(new_patroller)
 
    log:debug('inserting patroller %s; current patrollers: %s', id, radiant.util.table_tostring(self._registered_patrollers))
 
-   local index = table.remove(self._next_position_to_fill, 1) or (#self._registered_patrollers + 1)
+   local index = table.remove(self._next_position_to_fill) or (#self._registered_patrollers + 1)
    table.insert(self._registered_patrollers, index, id)
    radiant.events.trigger_async(self._entity, 'stonehearth_ace:patroller_registered')
 end
 
--- give a grace period before unregistering a patroller in case they need to catch up, or a patrol point is reached and they want to continue patrolling
+-- give a grace period before unregistering a patroller in case a patrol point is reached and they want to continue patrolling
 function AcePartyComponent:stop_patrolling(id)
    if self._stop_patrolling_timers[id] then
       return
    end
 
-   self._stop_patrolling_timers[id] = stonehearth.calendar:set_timer('entity stopped patrolling, unregister', '10m', function()
+   self._stop_patrolling_timers[id] = stonehearth.calendar:set_timer('entity stopped patrolling, unregister', '5m', function()
          self:unregister_patroller(id)
       end)
 end
@@ -119,8 +119,12 @@ function AcePartyComponent:unregister_patroller(id)
 
    for index, patroller_id in ipairs(self._registered_patrollers) do
       if patroller_id == id then
-         table.insert(self._next_position_to_fill, index)
          table.remove(self._registered_patrollers, index)
+         if #self._registered_patrollers < 1 then
+            self._next_position_to_fill = {}
+         else
+            table.insert(self._next_position_to_fill, index)
+         end
          radiant.events.trigger_async(self._entity, 'stonehearth_ace:patroller_unregistered')
          break
       end

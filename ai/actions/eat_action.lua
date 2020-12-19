@@ -16,6 +16,8 @@ function Eat:start_thinking(ai, entity, args)
       return
    end
 
+   log:debug('%s start_thinking', entity)
+
    -- Constant state
    self._ai = ai
    self._entity = entity
@@ -37,6 +39,7 @@ function Eat:start_thinking(ai, entity, args)
 end
 
 function Eat:stop_thinking(ai, entity, args)
+   log:debug('%s stop_thinking', entity)
    if self._calorie_listener then
       self._calorie_listener:destroy()
       self._calorie_listener = nil
@@ -64,7 +67,7 @@ function Eat:_reconsider_filter(force_rethink)
    local weather_type = stonehearth.weather:get_current_weather_type()
 
    if hour_type ~= self._hour_type or weather_type ~= self._weather_type then
-      log:debug('%s reconsidering filter at hour %s and weather %s', self._entity, tostring(hour_type), tostring(weather_type))
+      --log:debug('%s reconsidering filter at hour %s and weather %s', self._entity, tostring(hour_type), tostring(weather_type))
       self._hour_type = hour_type
       self._weather_type = weather_type
 

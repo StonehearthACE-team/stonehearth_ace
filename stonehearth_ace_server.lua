@@ -146,6 +146,7 @@ local monkey_patches = {
    ace_shared_filters = 'stonehearth.ai.filters.shared_filters',
    ace_shepherd = 'stonehearth.jobs.shepherd.shepherd',
    ace_shepherd_pasture_component = 'stonehearth.components.shepherd_pasture.shepherd_pasture_component',
+   ace_shepherded_animal_component = 'stonehearth.components.shepherd_pasture.shepherded_animal_component',
    ace_shepherd_service = 'stonehearth.services.server.shepherd.shepherd_service',
    ace_shop = 'stonehearth.services.server.shop.shop',
    ace_simple_caravan_script = 'stonehearth.services.server.game_master.controllers.script_encounters.simple_caravan_script',

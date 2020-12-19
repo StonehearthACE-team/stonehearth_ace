@@ -13,6 +13,18 @@ function animal_filters.make_available_pet_bed_filter(entity)
       
       local bed_data = radiant.entities.get_entity_data(target, 'stonehearth_ace:pasture_bed')
       if bed_data then
+         -- if it's a pasture bed in a pasture, make sure the animal belongs to the same pasture
+         -- EDIT: not doing this because it would require including the pasture id in the filter key and making/updating different filters
+         -- local pasture_item = target:get_component('stonehearth_ace:pasture_item')
+         -- if pasture_item then
+         --    local equipment_component = entity:get_component('stonehearth:equipment')
+         --    local pasture_tag = equipment_component and equipment_component:has_item_type('stonehearth:pasture_equipment:tag')
+         --    local shepherded_animal_component = pasture_tag and pasture_tag:get_component('stonehearth:shepherded_animal')
+         --    if not shepherded_animal_component or shepherded_animal_component:get_pasture() ~= pasture_item:get_pasture() then
+         --       return false
+         --    end
+         -- end
+
          -- check if the bed size is the same as the animal size
          if not animal_size or animal_size == bed_data.size then
             return true
