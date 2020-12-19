@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.frostfeast.goat_small_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.frostfeast.goat_small_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.shepherd.recipes.frostfeast.goat_small_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/goat_small/goat_small.png",
+	"manual_unlock": true,
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:thatch_bale",
+         "count": 4
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:goat_small"
+      }
+   ]
+}

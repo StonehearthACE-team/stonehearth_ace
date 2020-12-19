@@ -1,0 +1,25 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(goat_small_iconic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.05 }
+      },
+      "render_info": {
+         "scale": 0.11
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "is_item": true,
+         "category": "decoration"
+      }
+   }
+}
