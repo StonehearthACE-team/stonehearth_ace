@@ -14,6 +14,9 @@ function Patrol:start_thinking(ai, entity, args)
       self._lease_listener = radiant.events.listen(self._party, 'stonehearth:party_leader_changed', function()
             self:_rethink(ai, entity)
          end)
+      self._patrol_count_listener = radiant.events.listen(self._party, 'stonehearth_ace:patroller_unregistered', function()
+            self:_rethink(ai, entity)
+         end)
       self:_rethink(ai, entity)
    else
       ai:set_think_output()
@@ -23,10 +26,16 @@ end
 
 function Patrol:_rethink(ai, entity)
    if self._party then
+      local party_component = self._party:get_component('stonehearth:party')
+      if not party_component:can_register_patroller(entity) then
+         ai:set_debug_progress('waiting for patroller count to decrease')
+         return
+      end
+
       local lease_component = self._party:add_component('stonehearth:lease')
       self._temp_lease = lease_component:acquire('stonehearth:patrol_lead_lease', entity, false, 1000)
       if not self._temp_lease then
-         local leader = self._party:get_component('stonehearth:party'):get_patrol_lead()
+         local leader = party_component:get_patrol_lead()
          if leader then
             ai:set_debug_progress(string.format('waiting for patrol_lead_lease to be released (owner: %s)', tostring(leader) or 'nil'))
          else
@@ -36,22 +45,27 @@ function Patrol:_rethink(ai, entity)
       end
    end
    
-   if self._lease_listener then
-      self._lease_listener:destroy()
-      self._lease_listener = nil
-   end
+   self:_destroy_listeners()
    ai:set_think_output()
    ai:set_debug_progress('taking the lead')
 end
 
 function Patrol:stop_thinking(ai, entity, args)
+   self:_destroy_listeners()
+   if self._temp_lease then
+      self._temp_lease:destroy()
+      self._temp_lease = nil
+   end
+end
+
+function Patrol:_destroy_listeners()
    if self._lease_listener then
       self._lease_listener:destroy()
       self._lease_listener = nil
    end
-   if self._temp_lease then
-      self._temp_lease:destroy()
-      self._temp_lease = nil
+   if self._patrol_count_listener then
+      self._patrol_count_listener:destroy()
+      self._patrol_count_listener = nil
    end
 end
 
@@ -61,7 +75,7 @@ function Patrol:start(ai, entity, args)
       if not party then
          ai:abort('lost party')
       end
-      local success = party:try_set_patrol_lead(entity)
+      local success = party:can_register_patroller(entity) and party:try_set_patrol_lead(entity)
       if not success then
          ai:abort('could not obtain patrol_lead_lease')
       end
@@ -78,6 +92,7 @@ function Patrol:stop(ai, entity, args)
    if self._party then
       local party = self._party:get_component('stonehearth:party')
       if party then
+         party:stop_patrolling(entity:get_id())
          local success = party:try_set_patrol_lead(nil)
          radiant.verify(success, '%s could not release lease on %s', entity, self._party)
       end
@@ -93,6 +108,10 @@ return ai:create_compound_action(Patrol)
          :execute('stonehearth:abort_on_event_triggered', {
             source = ai.ENTITY,
             event_name = 'stonehearth:work_order:job:work_player_id_changed',
+         })
+         :execute('stonehearth:abort_on_event_triggered', {
+            source = ai.ENTITY,
+            event_name = 'stonehearth:party:party_changed',
          })
          :execute('stonehearth:abort_on_event_triggered', {
             source = ai.ENTITY,
