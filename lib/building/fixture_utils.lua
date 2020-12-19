@@ -354,6 +354,12 @@ function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fi
                   end
                end
 
+               -- ignore designations that allow templates
+               local designation = radiant.entities.get_entity_data(e, 'stonehearth:designation')
+               if designation and designation.allow_templates then
+                  return false
+               end
+
                if (is_portal or is_hatch) and not is_fence then
                   -- Portals cannot intersect other portals, or solid fixtures,
                   -- but can intersect structures.
@@ -404,6 +410,8 @@ function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fi
 			   
                return brick, e, r.normal
             end
+         -- else
+         --    log:debug('cannot find placement location for %s because of %s', entity, radiant.util.table_tostring(es))
          end
          return nil, nil, nil
       end
