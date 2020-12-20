@@ -43,12 +43,16 @@
       },
       "stonehearth:storage": {
          "type": "input_crate",
+         "allow_default": false,
          "priority": 2,
          "capacity": 6,
          "filter_list": "stonehearth_ace:ui:workbench_fuel:common:filters",
          "default_filter": [
             "firewood common_fuel"
          ]
+      },
+      "mob": {
+         "allow_vertical_adjacent": false
       }
    },
    "entity_data": {}

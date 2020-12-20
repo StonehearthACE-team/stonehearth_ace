@@ -43,12 +43,16 @@
       },
       "stonehearth:storage": {
          "type": "input_crate",
+         "allow_default": false,
          "priority": 3,
          "capacity": 2,
          "filter_list": "stonehearth_ace:ui:workbench_fuel:low_grade:filters",
          "default_filter": [
             "firewood low_fuel"
          ]
+      },
+      "mob": {
+         "allow_vertical_adjacent": false
       }
    },
    "entity_data": {}

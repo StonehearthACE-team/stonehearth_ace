@@ -259,8 +259,8 @@ function AceCraftOrder:_has_uri_ingredients_for_item(ingredient, tracking_data)
 
    local count = 0
    for id, item in pairs(tracking_data_for_key.items) do
-      local container = self._inventory and self._inventory:container_for(item)
-      if not container or not container:get_component('stonehearth_ace:consumer') then
+      -- local container = self._inventory and self._inventory:container_for(item)
+      -- if not container or not container:get_component('stonehearth_ace:consumer') then
          if ingredient.min_stacks then
             local stacks_comp = item:get_component('stonehearth:stacks')
             if stacks_comp then
@@ -273,7 +273,7 @@ function AceCraftOrder:_has_uri_ingredients_for_item(ingredient, tracking_data)
          if count >= (ingredient.min_stacks or ingredient.count) then
             return true
          end
-      end
+      -- end
    end
 
    return false
@@ -292,8 +292,8 @@ function AceCraftOrder:_has_material_ingredients_for_item(ingredient, tracking_d
          if tracking_data:contains(uri) then
             local data = tracking_data:get(uri)
             for id, item in pairs(data.items) do
-               local container = self._inventory and self._inventory:container_for(item)
-               if not container or not container:get_component('stonehearth_ace:consumer') then
+               -- local container = self._inventory and self._inventory:container_for(item)
+               -- if not container or not container:get_component('stonehearth_ace:consumer') then
                   if ingredient.min_stacks then
                      local stacks_comp = item:get_component('stonehearth:stacks')
                      if stacks_comp then
@@ -306,7 +306,7 @@ function AceCraftOrder:_has_material_ingredients_for_item(ingredient, tracking_d
                   if ingredient_count >= (ingredient.min_stacks or ingredient.count) then
                      return true
                   end
-               end
+               -- end
             end
          end
       end

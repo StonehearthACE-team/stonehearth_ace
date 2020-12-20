@@ -164,24 +164,21 @@ function AceCraftItemsOrchestrator:_show_unreachable_ingredients_notification(ev
 
       -- Use the material or uri of the ingredient to keep track of which notifications have been posted
       local ingredient_name = ''
-      local material_in_inventory = nil
-      local uri_in_inventory = nil
       if missing_ingredient.material ~= nil then
          ingredient_name = missing_ingredient.material
-         if self._usable_item_tracker then
-            material_in_inventory = self._usable_item_tracker:contains_item_with_material(ingredient_name)
-         end
       elseif missing_ingredient.uri ~= nil then
          ingredient_name = missing_ingredient.uri
-         uri_in_inventory = self._inventory:get_items_of_type(ingredient_name)
       end
 
       --Only post the bulletin if:
       -- * It's the first time that we can't reach the ingredient or
       -- * If a day has passed and we are trying to craft any recipe that uses it and we still can't reach it
       if self._bulletins[ingredient_name] == nil then
+         local crafter_component = self._crafter:get_component('stonehearth:crafter')
+         local order = crafter_component:get_current_order()
+
          -- Don't notify if we just ran out of that ingredient
-         if material_in_inventory or uri_in_inventory then
+         if order and order:is_missing_ingredient({missing_ingredient}) then
             self._bulletins[ingredient_name] = true
             stonehearth.bulletin_board:post_bulletin(player_id)
                                        :set_callback_instance(stonehearth.town:get_town(player_id))

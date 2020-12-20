@@ -87,19 +87,42 @@ function ConsumerComponent:_reconsider_all_item_leases()
    -- refresh (acquire or release) leases on all items based on the new filter (unless they're already reserved)
    local storage = self._entity:get_component('stonehearth:storage')
    if storage then
+      local output_items = {}
       for _, item in pairs(storage:get_items()) do
-         self:_reconsider_item_lease(item)
+         if self:_reconsider_item_lease(item) then
+            -- remove any item whose lease we successfully released
+            local id = item:get_id()
+            output_items[id] = item
+            storage:remove_item(id)
+         end
+      end
+
+      -- pop out any removed items (whose leases were released)
+      if next(output_items) then
+         log:debug('dumping items from %s: %s', self._entity, radiant.util.table_tostring(output_items))
+         
+         -- try to place the items right in front of the entity
+         local destination = self._entity:get_component('destination')
+         local adjacent_region = destination and destination:get_adjacent()
+         local adjacent_min = adjacent_region and adjacent_region:get() and not adjacent_region:get():empty() and adjacent_region:get():get_bounds().min
+         local location = adjacent_min and radiant.entities.local_to_world(adjacent_min, self._entity) or radiant.entities.get_world_grid_location(self._entity)
+
+         local town = stonehearth.town:get_town(self._entity)
+         local default_storage = town and town:get_default_storage()
+
+         radiant.entities.output_spawned_items(output_items, location, 1, 2, nil, nil, default_storage, true)
       end
    end
 end
 
+-- returns true if an item lease was released
 function ConsumerComponent:_reconsider_item_lease(item)
    local storage = self._entity:get_component('stonehearth:storage')
    if storage then
       if item:is_valid() and radiant.entities.get_entity_data(item, 'stonehearth_ace:fuel') and (self._reserved_fuel_items[item:get_id()] or storage:passes(item)) then
          self:_acquire_item_lease(item)
       else
-         self:_release_item_lease(item)
+         return self:_release_item_lease(item)
       end
    end
 end
@@ -111,6 +134,7 @@ end
 
 function ConsumerComponent:_release_item_lease(item)
    local success = radiant.entities.release_lease(item, FUEL_LEASE_NAME, self._entity)
+   return success
    --log:debug('%s %s releasing lease for %s', self._entity, success and 'SUCCEEDED' or 'FAILED', item)
 end
 

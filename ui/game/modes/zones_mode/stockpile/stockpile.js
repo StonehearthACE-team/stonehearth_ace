@@ -195,6 +195,10 @@ App.StonehearthStockpileView.reopen({
       return items;
    },
 
+   allowDefaultStorage: function() {
+      return this.get('model.stonehearth:storage.allow_default')
+   }.property('model.stonehearth:storage.allow_default'),
+
    _updateDefaultStorage: function() {
       var self = this;
       var isDefault = false;

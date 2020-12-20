@@ -16,7 +16,7 @@ function Eat:start_thinking(ai, entity, args)
       return
    end
 
-   log:debug('%s start_thinking', entity)
+   --log:debug('%s start_thinking', entity)
 
    -- Constant state
    self._ai = ai
@@ -39,7 +39,7 @@ function Eat:start_thinking(ai, entity, args)
 end
 
 function Eat:stop_thinking(ai, entity, args)
-   log:debug('%s stop_thinking', entity)
+   --log:debug('%s stop_thinking', entity)
    if self._calorie_listener then
       self._calorie_listener:destroy()
       self._calorie_listener = nil

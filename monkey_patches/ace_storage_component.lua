@@ -40,12 +40,14 @@ function AceStorageComponent:activate()
       if json.default_filter then
          self:set_filter(json.default_filter)
       end
-      self._sv.is_hidden = json.is_hidden or false -- public inventory that's accessible, but hidden from UI
       -- also set the filter to none if it's hidden storage
       -- if self._sv.is_hidden then
       --    self:_set_filter_to_none()
       -- end
    end
+
+   self._sv.is_hidden = json.is_hidden or false -- public inventory that's accessible, but hidden from UI
+   self._sv.allow_default = json.allow_default ~= false  -- can be set to town default storage
 
    if json.limit_all_filter ~= false then
       local filter = {}
@@ -128,6 +130,10 @@ end
 
 function AceStorageComponent:is_hidden()
    return self._sv.is_hidden
+end
+
+function AceStorageComponent:allow_default()
+   return self._sv.allow_default
 end
 
 function AceStorageComponent:is_output_bin_for_crafter(job_id)

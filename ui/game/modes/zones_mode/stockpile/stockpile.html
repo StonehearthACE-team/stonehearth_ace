@@ -120,7 +120,7 @@
             <input type="checkbox" id="none">
             <label for="none">{{i18n stonehearth:ui.game.zones_mode.stockpile.filters.none}}</label>
          {{/if}}
-         <div id="defaultStorageDiv" {{bind-attr class="view.isSingleFilter:hidden"}}>
+         <div id="defaultStorageDiv" {{bind-attr class="view.isSingleFilter:hidden view.allowDefaultStorage::hidden"}}>
             <input type="checkbox" id="defaultStorage">
             <label id="defaultStorageLabel" for="defaultStorage">{{i18n stonehearth_ace:ui.game.zones_mode.stockpile.default_storage.display_name}}</label>
          </div>

@@ -172,6 +172,7 @@ local monkey_patches = {
    ace_trapping_service = 'stonehearth.services.server.trapping.trapping_service',
    ace_unit_info_component = 'stonehearth.components.unit_info.unit_info_component',
    ace_unlock_recipe_encounter = 'stonehearth.services.server.game_master.controllers.encounters.unlock_recipe_encounter',
+   ace_useable_item_tracker = 'stonehearth.services.server.inventory.useable_item_tracker',
    ace_util = 'radiant.lib.util',
    ace_wander_mission = 'stonehearth.services.server.game_master.controllers.missions.wander_mission',
    ace_wait_for_closest_storage_space = 'stonehearth.ai.actions.wait_for_closest_storage_space',
