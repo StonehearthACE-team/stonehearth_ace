@@ -13,11 +13,19 @@ local AceFarmingCallHandler = class()
 local rotation = 0
 
 function AceFarmingCallHandler:choose_new_field_location(session, response, field_type)
+   _radiant.call('stonehearth_ace:get_biome_data')
+      :done(function(result)
+            self:_choose_new_field_location(session, response, field_type, result.biome_data)
+         end)
+      :fail(function()
+            response:reject('failed to get biome data')
+         end)
+end
+
+function AceFarmingCallHandler:_choose_new_field_location(session, response, field_type, biome_data)
    local bindings = _radiant.client.get_binding_system()
    local orig_rotation = rotation
-
-   local biome = stonehearth.world_generation:get_biome_alias()
-   local biome_data = radiant.resources.load_json(biome)
+   
    local max_elevation = biome_data.max_farm_elevation
    local min_elevation = biome_data.min_farm_elevation
    

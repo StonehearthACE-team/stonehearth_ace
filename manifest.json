@@ -5306,6 +5306,10 @@
          "controller": "file(call_handlers/services_call_handler.lua)",
          "endpoint": "client"
       },
+      "get_biome_data": {
+         "controller": "file(call_handlers/game_mode_call_handler.lua)",
+         "endpoint": "server"
+      },
       "get_game_mode_json": {
          "controller": "file(call_handlers/game_mode_call_handler.lua)",
          "endpoint": "server"

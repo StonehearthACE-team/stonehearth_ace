@@ -32,6 +32,7 @@ function AceFarmerFieldComponent:restore()
    end
 
    self:_cache_best_levels()
+   self:_cache_biome_elevation_levels()
 end
 
 AceFarmerFieldComponent._ace_old_activate = FarmerFieldComponent.activate
@@ -241,6 +242,7 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotati
       end
    end)
 
+   self:_cache_biome_elevation_levels()
    self:_create_water_listener()
    self:_create_climate_listeners()
    self:_check_sky_visibility()
@@ -963,6 +965,9 @@ end
 function AceFarmerFieldComponent:_cache_best_levels()
    self._best_water_level, self._next_water_level = self:get_best_water_level()
    self._best_light_level, self._next_light_level = self:get_best_light_level()
+end
+
+function AceFarmerFieldComponent:_cache_biome_elevation_levels()
    self._humidity_elevation_modifier, self._light_elevation_modifier = self:get_elevation_modifiers()
 end
 

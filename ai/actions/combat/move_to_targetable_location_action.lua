@@ -141,7 +141,7 @@ function MoveToTargetableLocation:_find_location(entity, target)
    end
 
    local checked = {}
-   local max_height = 20
+   local max_height = 5
    local search_cube = self:_get_search_cube(entity, center, movement_range, max_height)
    --log:debug('%s search cube %s', entity, search_cube)
    local supported_region = _physics:get_supported_region(Region3(search_cube:extruded('y', 1, 0)), 0):translated(Point3.unit_y)
