@@ -11,6 +11,10 @@ local function _harvest_filter_fn(player_id, item)
       return false
    end
 
+   if radiant.entities.get_player_id(item) ~= player_id then
+      return false
+   end
+
    local planter = item:get_component('stonehearth_ace:herbalist_planter')
    return planter and planter:is_harvestable()
 end
