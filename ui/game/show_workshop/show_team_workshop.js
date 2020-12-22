@@ -799,6 +799,40 @@ $(top).on('stonehearthReady', function() {
             return displayValue;
          },
 
+         //Sort the recipies first by their level requirement, *then by ordinal*, and finally by their user visible name
+         _compareByLevelAndAlphabetical: function(a, b) {
+            if (a.level_requirement < b.level_requirement) {
+               return -1;
+            }
+            if (a.level_requirement > b.level_requirement) {
+               return 1;
+            }
+
+            // also list any with ordinals specified before any without
+            if (a.ordinal != null) {
+               if (b.ordinal == null) {
+                  return -1;
+               }
+               else if (a.ordinal < b.ordinal) {
+                  return -1;
+               }
+               else if (a.ordinal > b.ordinal) {
+                  return 1;
+               }
+            }
+            else if (b.ordinal != null) {
+               return 1;
+            }
+
+            if (a.display_name < b.display_name) {
+               return -1;
+            }
+            if (a.display_name > b.display_name) {
+               return 1;
+            }
+            return 0;
+         },
+
          actions: {
             craft: function () {
                var self = this;
