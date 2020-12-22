@@ -5,7 +5,7 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(cherry_tart_serving.qb)"
+               "file(lamb_tagine_serving.qb)"
             ]
          }
       }
@@ -17,28 +17,28 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 76,
-            "drink_satisfaction": 8
+            "satisfaction": 105
          },
          "default": {
-            "satisfaction": 55,
-            "drink_satisfaction": 5
+            "satisfaction": 80
          },
          "applied_buffs": [
-            "stonehearth_ace:buffs:consumption:sweet_energy"
+            "stonehearth_ace:buffs:consumption:warm_belly",
+            "stonehearth_ace:buffs:consumption:regeneration:minor"
          ],
          "quality": 6
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.cherry_tart.cherry_tart_serving.display_name)",
-         "description": "i18n(stonehearth_ace:entities.food.cherry_tart.cherry_tart_serving.description)",
+         "display_name": "i18n(stonehearth_ace:entities.food.lamb_tagine.lamb_tagine_serving.display_name)",
+         "description": "",
          "material_tags": [
             "food",
-            "prepared_dessert",
-            "vegetarian",
-            "breakfast_time"
+            "meat",
+            "nuts",
+            "dinner_time",
+            "warming"
          ],
-         "subject_override": "stonehearth_ace:food:cherry_tart"
+         "subject_override": "stonehearth_ace:food:lamb_tagine"
       }
    }
 }

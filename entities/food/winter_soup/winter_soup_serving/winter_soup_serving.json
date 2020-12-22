@@ -1,0 +1,45 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(winter_soup_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 80,
+            "drink_satisfaction": 25
+         },
+         "default": {
+            "satisfaction": 65,
+            "drink_satisfaction": 20
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:warm_belly",
+            "stonehearth_ace:buffs:consumption:regeneration:minor"
+         ],
+         "quality": 5
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.winter_soup.winter_soup_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.winter_soup.winter_soup_serving.description)",
+         "material_tags": [
+            "food",
+            "vegetarian",
+            "warming",
+            "dinner_time"
+         ],
+         "subject_override": "stonehearth_ace:food:winter_soup"
+      }
+   }
+}

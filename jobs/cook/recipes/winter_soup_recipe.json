@@ -1,0 +1,38 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.winter_soup_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.winter_soup_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.winter_soup_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/winter_soup/winter_soup/winter_soup.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:broth",
+         "count": 1
+      },
+      {
+         "material": "butter cooking_ingredient",
+         "count": 1
+      },
+		{
+			"uri": "stonehearth:food:turnip:turnip_basket",
+			"count": 2
+		},
+      {
+         "uri": "stonehearth_ace:food:pears:pear_basket",
+         "count": 2
+      },
+      {
+         "material": "seasoning",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:winter_soup"
+      }
+   ]
+}

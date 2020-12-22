@@ -5,54 +5,54 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(fisherman_soup.qb)"
+               "file(autumn_tart.qb)"
             ]
          }
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 }
+         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
       },
       "stonehearth:stacks": {
-         "max_stacks": 12
+         "max_stacks": 8
       }
    },
    "entity_data": {
       "stonehearth:food_container": {
          "effect": "fiddle",
-         "food": "stonehearth_ace:food:fisherman_soup:fisherman_soup_serving",
-         "stacks_per_serving": 2
+         "food": "stonehearth_ace:food:autumn_tart:autumn_tart_serving",
+         "stacks_per_serving": 1
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 33,
+         "value_in_gold": 39,
          "rarity": "uncommon",
          "shop_info": {
             "buyable": true,
             "sellable": true,
-            "shopkeeper_level": 2,
+            "shopkeeper_level": 3,
             "shopkeeper_type": "caravan"
          }
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.fisherman_soup.fisherman_soup.display_name)",
-         "description": "i18n(stonehearth_ace:entities.food.fisherman_soup.fisherman_soup.description)",
-         "icon": "file(fisherman_soup.png)",
+         "display_name": "i18n(stonehearth_ace:entities.food.autumn_tart.autumn_tart.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.autumn_tart.autumn_tart.description)",
+         "icon": "file(autumn_tart.png)",
          "is_item": true,
          "category": "food",
          "material_tags": [
             "food_container",
+            "prepared_dessert",
             "prepared_food",
-            "fisherman_soup",
-            "stew",
-            "meat",
-            "fish",
+            "autumn_tart",
+            "nuts",
+            "baked",
             "refined",
             "stockpile_prepared_food",
-            "warming",
-            "dinner_time"
+            "vegetarian",
+            "breakfast_time"
          ]
       },
       "stonehearth:appeal": {
-         "appeal": 1
+         "appeal": 6
       },
       "stonehearth:item_quality": {
          "variable_quality": true

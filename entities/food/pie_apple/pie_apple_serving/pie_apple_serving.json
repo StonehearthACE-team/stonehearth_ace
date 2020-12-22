@@ -5,7 +5,7 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(cherry_tart_serving.qb)"
+               "file(pie_apple_serving.qb)"
             ]
          }
       }
@@ -17,28 +17,29 @@
       },
       "stonehearth:food": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 76,
-            "drink_satisfaction": 8
+            "satisfaction": 100,
+            "drink_satisfaction": 15
          },
          "default": {
-            "satisfaction": 55,
-            "drink_satisfaction": 5
+            "satisfaction": 80,
+            "drink_satisfaction": 10
          },
          "applied_buffs": [
-            "stonehearth_ace:buffs:consumption:sweet_energy"
+            "stonehearth_ace:buffs:consumption:sweet_energy",
+            "stonehearth_ace:buffs:consumption:regeneration:minor"
          ],
          "quality": 6
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.cherry_tart.cherry_tart_serving.display_name)",
-         "description": "i18n(stonehearth_ace:entities.food.cherry_tart.cherry_tart_serving.description)",
+         "display_name": "i18n(stonehearth_ace:entities.food.pie_apple.pie_apple_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.pie_apple.pie_apple_serving.description)",
          "material_tags": [
             "food",
             "prepared_dessert",
             "vegetarian",
             "breakfast_time"
          ],
-         "subject_override": "stonehearth_ace:food:cherry_tart"
+         "subject_override": "stonehearth_ace:food:pie_apple"
       }
    }
 }

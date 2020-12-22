@@ -1,0 +1,38 @@
+{
+   "type": "recipe",
+   "effort": 17,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.lamb_tagine_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.lamb_tagine_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.lamb_tagine_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/lamb_tagine/lamb_tagine/lamb_tagine.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "food_container raw_food vegetable",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:mutton",
+         "count": 1
+      },
+		{
+         "material": "sweetener cooking_ingredient",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:dates:date_basket",
+         "count": 1
+      },
+      {
+         "material": "seasoning",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:lamb_tagine"
+      }
+   ]
+}

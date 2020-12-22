@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.pie_apple_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.pie_apple_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.pie_apple_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/pie_apple/pie_apple/pie_apple.png",
+   "level_requirement": 6,
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "work_wait",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:batter_sweet",
+         "count": 1
+      },
+      {
+         "material": "sweetener cooking_ingredient",
+         "count": 1
+      },
+      {
+         "material": "butter cooking_ingredient",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:apples:apple_basket",
+         "count": 2
+      },
+      {
+         "material": "seasoning",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:pie_apple"
+      }
+   ]
+}
