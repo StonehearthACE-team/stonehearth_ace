@@ -32,7 +32,6 @@ function AceFarmerFieldComponent:restore()
    end
 
    self:_cache_best_levels()
-   self:_cache_biome_elevation_levels()
 end
 
 AceFarmerFieldComponent._ace_old_activate = FarmerFieldComponent.activate
@@ -71,6 +70,7 @@ function AceFarmerFieldComponent:post_activate()
    self._post_harvest_crop_listeners = {}
    if self._is_restore then
       self:_load_field_type()
+      self:_cache_biome_elevation_levels()
       self:_create_listeners()
    end
 end

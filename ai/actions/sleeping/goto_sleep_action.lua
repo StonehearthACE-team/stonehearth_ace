@@ -17,7 +17,7 @@ function GoToSleep:start_thinking(ai, entity, args)
       return
    end
 
-   log:debug('%s start_thinking', entity)
+   --log:debug('%s start_thinking', entity)
 
    self._ai = ai
    self._entity = entity
@@ -42,7 +42,7 @@ function GoToSleep:start_thinking(ai, entity, args)
 end
 
 function GoToSleep:stop_thinking(ai, entity, args)
-   log:debug('%s stop_thinking', entity)
+   --log:debug('%s stop_thinking', entity)
    self._bedtime_start = nil
    self._bedtime_end = nil
    self._ready = false
