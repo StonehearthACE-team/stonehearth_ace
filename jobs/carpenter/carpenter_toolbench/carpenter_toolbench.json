@@ -1,5 +1,10 @@
 {	
    "type": "entity",
+	"components": {
+      "mob": {
+         "allow_vertical_adjacent": false
+      }
+	},
    "entity_data": {
 		"stonehearth:table": {
          "drop_offset": { "x": 0, "y": 1, "z": -0.4 }

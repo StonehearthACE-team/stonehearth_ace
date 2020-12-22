@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 31,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.brewer_tumbler_copper_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.brewer_tumbler_copper_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.brewer_tumbler_copper_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/tools/brewer_tumbler_copper/brewer_tumbler_copper.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:copper_ingot",
+         "count": 2
+      },
+		{
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:tools:brewer_tumbler_copper"
+      }
+   ]
+}

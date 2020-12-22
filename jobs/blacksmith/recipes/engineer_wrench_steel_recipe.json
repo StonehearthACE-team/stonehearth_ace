@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 52,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.engineer_wrench_steel_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.engineer_wrench_steel_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.engineer_wrench_steel_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/tools/engineer_wrench_steel/engineer_wrench_steel.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:tools:engineer_wrench_steel"
+      }
+   ]
+}

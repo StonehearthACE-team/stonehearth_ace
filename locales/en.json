@@ -4296,7 +4296,7 @@
             },
             "algae_drying_recipe": {
                "recipe_name": "Dried Algae",
-               "description": "Dry and press thin sheets of algae that can be used as an herb.",
+               "description": "Dry and press thin sheets of algae that can be used as a yellow bitter herb.",
                "flavor": "It is also used in cooking!"
             },
             "parasol_colony_recipe": {
@@ -6038,12 +6038,12 @@
             "mason_chisel_iron_recipe": {
                "recipe_name": "Mason's Iron Chisel",
                "description": "Craft a set of hammer and chisel out of iron to improve the Mason's crafting speed.",
-               "flavor": ""
+               "flavor": "This tool will also improve their repair efficiency!"
             },
             "potter_cutter_iron_recipe": {
                "recipe_name": "Potter's Iron Cutter",
                "description": "Create an improved, sharper cutter for the Potter so they can craft faster.",
-               "flavor": ""
+               "flavor": "This tool will also improve their repair efficiency!"
             },
             "blacksmith_hammer_steel_recipe": {
                "recipe_name": "Blacksmith's Steel Hammer",
@@ -6053,6 +6053,16 @@
             "carpenter_saw_steel_recipe": {
                "recipe_name": "Carpenter's Steel Saw",
                "description": "Make an enhanced steel saw that will allow the Carpenter to be faster when crafting.",
+               "flavor": "This tool will also improve their repair efficiency!"
+            },
+            "engineer_wrench_steel_recipe": {
+               "recipe_name": "Engineer's Steel Wrench",
+               "description": "Make an enhanced steel wrench that will allow the Engineer to be faster when crafting.",
+               "flavor": "This tool will also improve their repair efficiency!"
+            },
+            "brewer_tumbler_copper_recipe": {
+               "recipe_name": "Brewer's Copper Tumbler",
+               "description": "Make an enhanced copper tumbler that will allow the Brewer to be faster when crafting.",
                "flavor": ""
             },
             "trapper_knife_steel_recipe": {
@@ -6063,7 +6073,7 @@
             "weaver_spindle_steel_recipe": {
                "recipe_name": "Weaver's Spindle & Steel Needle",
                "description": "Create a set of elegant, silver coated needles to improve the Weaver's crafting speed.",
-               "flavor": ""
+               "flavor": "This tool will also improve their repair efficiency!"
             },
             "farmer_hoe_iron_recipe": {
                "recipe_name": "Farmer's Iron Hoe",
@@ -15425,6 +15435,14 @@
          "mason_hammer_iron": {
             "display_name": "Mason's Iron Hammer",
             "description": "Hammers more nicely."
+         },
+         "brewer_tumbler_copper": {
+            "display_name": "Brewer's Copper Tumbler",
+            "description": "Improves the brewer's efficiency allowing them to craft faster."
+         },
+         "engineer_wrench_steel": {
+            "display_name": "Engineer's Steel Wrench",
+            "description": "Improves the engineer's efficiency allowing them to craft faster."
          }
       },
       "tile": {
@@ -17147,7 +17165,7 @@
                   "tooltip_fluids": "Other Fluids",
                   "tooltip_water": "Water",
                   "tooltip_animal_food": "Animal Food",
-                  "tooltip_edible_nuts": "Edible Nuts",
+                  "tooltip_edible_nuts": "Edible Nut Seeds",
                   "tooltip_brewing_ingredient": "Brewing Ingredients",
                   "tooltip_raw_food_fruits_veggies": "Raw Fruits & Veggies",
                   "tooltip_raw_food_meat": "Raw Meats",
@@ -17176,7 +17194,8 @@
                   "tooltip_combat_cape": "Capes & Cloaks",
                   "tooltip_combat_consumable": "Combat Potions",
                   "healing_items": "Healing Items",
-                  "tooltip_crafter": "Crafter"
+                  "tooltip_crafter": "Crafter",
+                  "tooltip_edible_fruit": "Edible Fruit Seeds"
                },
                "fuel_level": {
                   "label": "Fuel Level:",

@@ -2,6 +2,9 @@
    "type": "entity",
    "mixins": "file(na_carpenter_toolbench_ghost.json)",
    "components": {
+      "mob": {
+         "allow_vertical_adjacent": false
+      },
       "stonehearth:entity_forms": {
          "ghost_form": "file(na_carpenter_toolbench_ghost.json)",
          "iconic_form": "file(na_carpenter_toolbench_iconic.json)",

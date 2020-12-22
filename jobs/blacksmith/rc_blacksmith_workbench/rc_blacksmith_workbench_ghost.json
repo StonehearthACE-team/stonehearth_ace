@@ -6,7 +6,8 @@
       },
       "mob": {
          "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": false
       },
       "model_variants": {
          "default": {
@@ -23,7 +24,9 @@
          "description": "i18n(stonehearth:jobs.blacksmith.blacksmith_workbench.blacksmith_workbench_ghost.description)",
          "icon": "file(rc_blacksmith_workbench.png)",
          "category": "workshops",
-         "material_tags":["stockpile_tool"]
+         "material_tags": [
+            "stockpile_tool"
+         ]
       }
    }
 }
