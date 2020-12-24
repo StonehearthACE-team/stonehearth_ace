@@ -166,6 +166,7 @@ local monkey_patches = {
    ace_town = 'stonehearth.services.server.town.town',
    ace_town_patrol_service = 'stonehearth.services.server.town_patrol.town_patrol_service',
    ace_town_service = 'stonehearth.services.server.town.town_service',
+   ace_town_upgrade_encounter = 'stonehearth.services.server.game_master.controllers.encounters.town_upgrade_encounter',
    ace_trait = 'stonehearth.components.traits.trait',
    ace_trapper = 'stonehearth.jobs.trapper.trapper',
    ace_trapping_grounds_component = 'stonehearth.components.trapping.trapping_grounds_component',
