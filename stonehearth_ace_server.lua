@@ -77,7 +77,6 @@ local monkey_patches = {
    ace_find_entity_type_in_storage_action = 'stonehearth.ai.actions.find_entity_type_in_storage_action',
    ace_find_equipment_upgrade_action = 'stonehearth.ai.actions.upgrade_equipment.find_equipment_upgrade_action',
    ace_find_healable_target_observer = 'stonehearth.ai.observers.find_healable_target_observer',
-   ace_find_target_observer = 'stonehearth.ai.observers.find_target_observer',
    ace_firepit_component = 'stonehearth.components.firepit.firepit_component',
    ace_fixture = 'stonehearth.components.building2.fixture',
    ace_food_decay_service = 'stonehearth.services.server.food_decay.food_decay_service',
