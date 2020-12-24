@@ -19,6 +19,7 @@ function AceItemPlacer:go(session, response, item_to_place, quality, transaction
    self.placement_structure_normal = nil
    self.location_selector = stonehearth.selection:select_location()
    self.region_shape = nil
+   self.ignorable_uris = self:_get_ignorable_uris()
 
    if type(item_to_place) == 'string' then
       -- used for place item type
@@ -121,11 +122,26 @@ function AceItemPlacer:_perform_additional_initialization()
    return true
 end
 
+function AceItemPlacer:_get_ignorable_uris()
+   return {
+      ['stonehearth:terrain:water'] = true,
+   }
+end
+
 function AceItemPlacer:_location_filter(result, selector)
    local entity = result.entity
 
+   log:spam('considering placement at %s on %s', tostring(result.brick), tostring(result.entity))
+
    if not entity then
+      log:spam('FAIL: no entity at to place on')
       return false
+   end
+
+   local uri = entity:get_uri()
+   if self.ignorable_uris[uri] then
+      log:spam('IGNORING WATER ENTITY %s', entity)
+      return stonehearth.selection.FILTER_IGNORE
    end
 
    -- if the entity is any of the forms of the thing we want to place, ignore it
@@ -137,6 +153,7 @@ function AceItemPlacer:_location_filter(result, selector)
    local location = result.brick:to_int()
 
    if not self:_is_placeable_orientation(self.entity_forms, normal) then
+      log:spam('FAIL: bad placeable orientation')
       return false
    end
 
@@ -158,12 +175,14 @@ function AceItemPlacer:_location_filter(result, selector)
          if self.specific_item_to_place and not self.specific_item_to_place:get_component('stonehearth:iconic_form') then
             -- Right now, lets say that you cannot move a _specific_ (placed) item onto a
             -- in-design structure.
+            log:spam('FAIL: construction progress wrong item to place')
             return false
          end
 
          local building = build_util.get_building_for(e)
          if building:get_component('stonehearth:building'):is_started() and not building:get_component('stonehearth:construction_progress'):get_finished() then
             -- Cannot (yet) place on buildings that are in the middle of building.
+            log:spam('FAIL: construction progress active')
             return false
          end
 
@@ -207,6 +226,7 @@ function AceItemPlacer:_location_filter(result, selector)
       local ignore = self.forms_to_ignore[blocking_entity:get_id()]
       ignore = ignore or blocking_entity:get('stonehearth:build2:fixture_widget')
       if not ignore then
+         log:spam('FAIL: terrain blocking entity %s', blocking_entity)
          return false
       end
    end
@@ -218,11 +238,13 @@ function AceItemPlacer:_location_filter(result, selector)
             return designation and not designation.allow_placed_items
          end)
       if not radiant.empty(designations) then
+         log:spam('FAIL: region shape in unallowed designation')
          return false
       end
    else
       local designation = radiant.entities.get_entity_data(entity, 'stonehearth:designation')
       if designation and not designation.allow_placed_items then
+         log:spam('FAIL: target is unallowed designation')
          return false
       end
    end
@@ -233,6 +255,7 @@ function AceItemPlacer:_location_filter(result, selector)
             return e:get_uri() == 'stonehearth:build2:entities:envelope'
          end)
       if not radiant.empty(envelopes) then
+         log:spam('FAIL: region shape in building envelope')
          return false
       end
    end
@@ -240,6 +263,7 @@ function AceItemPlacer:_location_filter(result, selector)
    -- ACE other conditions
    local return_val = self:_compute_additional_required_placement_conditions(result, selector)
    if return_val ~= true then
+      log:spam('FAIL: ACE additional required placement conditions')
       return return_val
    end
 
@@ -255,6 +279,7 @@ function AceItemPlacer:_location_filter(result, selector)
       local kind = radiant.terrain.get_block_kind_from_tag(tag)
       local name = radiant.terrain.get_block_name_from_tag(tag)
       if not (self._required_terrain[kind] or self._required_terrain[name]) then
+         log:spam('FAIL: invalid required terrain %s (%s)', tostring(kind), tostring(name))
          return false
       end
    end

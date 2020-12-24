@@ -146,7 +146,7 @@ function AceGameCreationService:create_camp_command(session, response, pt)
    local starting_resource = stonehearth.player:get_kingdom_starting_resource(player_id) or 'stonehearth:resources:wood:oak_log'
    starting_item_uris[starting_resource] = (starting_item_uris[starting_resource] or 0) + 2
 
-   local starting_items = radiant.entities.output_items(game_options.starting_items, location,
+   local starting_items = radiant.entities.output_items(starting_item_uris, location,
       MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS, { owner = player_id }, nil, default_storage, true).spilled
 
    -- add all the spawned items to the inventory, have citizens pick up any spilled items
