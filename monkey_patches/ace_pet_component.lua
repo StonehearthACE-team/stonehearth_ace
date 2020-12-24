@@ -1,4 +1,30 @@
+local PetComponent = require 'stonehearth.components.pet.pet_component'
 local AcePetComponent = class()
+
+AcePetComponent._ace_old_restore = PetComponent.restore
+function AcePetComponent:restore()
+   self._is_restore = true
+
+   if self._ace_old_restore then
+      self:_ace_old_restore()
+   end
+end
+
+AcePetComponent._ace_old_activate = PetComponent.activate
+function AcePetComponent:activate()
+   -- if restoring, find a location near the town center and move there so we don't get loaded into a stuck position
+   if self._is_restore then
+      if radiant.entities.exists(self._sv.owner) and radiant.entities.get_world_location(self._entity) then
+         local town = stonehearth.town:get_town(self._sv.owner)
+         local location = town and radiant.terrain.find_placement_point(town:get_landing_location(), 0, 10)
+         if location then
+            radiant.terrain.place_entity(self._entity, location)
+         end
+      end
+   end
+   
+   self:_ace_old_activate()
+end
 
 function AcePetComponent:_update_owner_description()
    local owner = self._sv.owner
