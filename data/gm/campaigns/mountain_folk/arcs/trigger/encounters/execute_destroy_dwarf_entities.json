@@ -1,0 +1,16 @@
+{
+   "type": "encounter",
+   "encounter_type": "destroy_entity",
+   "in_edge": "execute_destroy_dwarf_entities",
+   "destroy_entity_info": {
+      "target_entities": [
+         "spawn_dwarf_entities"
+      ],
+      "effect": "stonehearth:effects:poof_effect:grey",
+      "random_delay": {
+         "min": 60,
+         "max": 150
+      },
+      "continue_always": true
+   }
+}

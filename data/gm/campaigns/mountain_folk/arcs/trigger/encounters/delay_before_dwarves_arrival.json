@@ -1,0 +1,16 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "delay_before_dwarves_arrival",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "dwarves_arrival",
+         "spawn_dwarf_entities",
+         "add_dwarf_counter"
+      ]
+   },
+   "wait_info": {
+      "duration": "12h+48h"
+   }
+}

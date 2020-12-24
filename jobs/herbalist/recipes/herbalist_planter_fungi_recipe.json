@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 36,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_planter_fungi_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_planter_fungi_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_planter_fungi_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/planters/planter_fungi/planter_fungi.png",
+   "workshop": "stonehearth:herbalist:workbench",
+	"work_effect": "fiddle",
+	"manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+		{
+         "uri": "stonehearth_ace:refined:brass_plate",
+         "count": 2
+      },
+		{
+         "material": "clay resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:planters:fungi"
+      }
+   ]
+}

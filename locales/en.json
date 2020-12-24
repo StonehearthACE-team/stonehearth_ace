@@ -1332,6 +1332,309 @@
                   "message": "Tomtee shall deliver these presents to their destinations as soon as possible.<br><br>For our help, we're rewarded with some crafting recipes. You must click it and use the 'Learn!' command to unlock the recipe. If inside a container, use the town inventory screen to interact with it!<br><br>You receive:",
                   "choice_000": "Good work!"
                }
+            },
+            "mountain_folk": {
+               "dwarves_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "A couple of dwarves approach!",
+                           "dialog_title": "They bow down...",
+                           "bulletin_message": {
+                              "00": "\"Many greetings, town! I'm Dwalek Cinderheart!\" The other dwarf immediately follows her companion. \"Karuna Steelfist!\" And then they continue in unison. \"At yer service!\"<br><br>Everyone that is close by stops for the rare sight. Other than the occasional trading journey, very few things will draw dwarves away from their lands and underground cities...<br><br>\"Please forgive us if this is an untimely arrival, but we have a... Uh...\" He hesitates while trying to keep his composture. \"Let's call it an urgent trade offer!\""
+                           },
+                           "choice_000": "Urgent? Huh?",
+                           "choice_001": "Not interested! [Skip Quest] "
+                        },
+                        "rejection": {
+                           "choice_001": "[forfeit Dwarven Questline] Sorry, but no.",
+                           "choice_000": "I see, tell us!",
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "They seem worried...",
+                           "bulletin_message": {
+                              "00": "\"Nae, please! I understand our sudden arrival can be... Sudden.\" He coughs, uncertain of his words. \"Or maybe we ain't welcome I'm afraid... But ya must at least hear what we have to say, it is very important!\"<br><br>Karuna seems rather disappointed, but interrupts him. \"Look, listen to him. Please! There are lives in danger!\""
+                           }
+                        },
+                        "msg2": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "They look a bit more relieved...",
+                           "bulletin_message": {
+                              "00": "\"Ah, yes! I knew we could count with the support of our not-so-distant surface cousins, eh?\"<br>Karuna rolls her eyes.<br>\"Well, ye see... We are from a nearby settlement, it's mostly a family business, not really a city. Lots of good ore and precious gems to be found in this region...\" He gestures the ground all around him, and then the mountains far away. \"But we're quite far from any of the Underhomes and, well... We've unfortunately ran into a... Mining accident.\"<br><br>He looks down, shaking his head."
+                           },
+                           "choice_000": "Oh no!",
+                           "choice_001": "The Underhomes...?"
+                        },
+                        "msg2b": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "Karuna steps in...",
+                           "bulletin_message": {
+                              "00": "\"The Underhomes, yes. That's how we, the Mountain Folk, refer to the main settlements of each of their major clans.\" She explains with some sort of glow on her eyes.<br><br>\"Our folk is formed by the allegiance and conformity of several clans under a single banner, ruled by a leader that is elected by members of all the underhomes. Our power comes from every single one of us, and if our leadership is not strong enough we replace it at will!\" Dwalek asserts her words with his head.<br><br>\"An Underhome will usually provide help on situations like this, but we're too far to rely on them now...\""
+                           },
+                           "choice_000": "Bummer!"
+                        },
+                        "msg3": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "Dwalek continues...",
+                           "bulletin_message": {
+                              "00": "\"Dinna worry about the details or anything, though!\" He laughs, trying to cheer up the conversation again. \"It's nothing serious, we just need a bit of help in... Helpin'! Ye can trust a Cinderheart, we've always been great investors!\"<br><br>He smiles, gesturing for Karuna to come forward. \"Here, me loyal guard will give ya more information.\""
+                           },
+                           "choice_000": "Please!"
+                        },
+                        "msg4": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "She comes forward...",
+                           "bulletin_message": {
+                              "00": "\"We are in need of certain medications and the healin' items contained in this list...\" She grabs a piece of paper, offering it forward. \"And we're willin' to give a valuable assortment of ore and coal from our own mines, quality stuff, I guarantee!\"<br><br>She now holds a small rock she took from her backpack, it glints like gold."
+                           },
+                           "choice_000": "Shiny!"
+                        },
+								"msg5": {
+                           "choice_001": "[forfeit Dwarven Questline] Sorry, but no.",
+                           "choice_000": "We'll help!",
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "They look relieved...",
+                           "bulletin_message": {
+                              "00": "\"Indeed! Shiny indeed! Hah!\" He laughs out loud, holding his own belly. \"Ya'll never find better ore yeself, I can assure you of that!\"<br><br>He smiles and walks around for a bit \"Folk always tell me <i>'Dwalek, dinna waste your time with surface dwellers, it ain't worth it'.</i> Nah, I say! I always knew we could count on this fine town!\"<br><br>He turns to you and offers a handshake.<br>\"Do we have a deal?\""
+                           }
+                        }
+                     }
+                  }
+               },
+               "healing_items_delivery_quest": {
+                  "title": "Healing Items for the Dwarves",
+                  "dialog_title": "Healing Items for the Dwarves",
+                  "text": "Dwalek Cinderheart and his guard, Karuna Steelfist, really need those items to help their people!"
+               },
+               "ore_reward": {
+                  "title": "Karuna brings the Ore!",
+                  "dialog_title": "She still seems worried...",
+                  "message": "\"Thank ya very much, surface dweller... I just hope...\" She stops for a moment, looking very concerned before shrugging it off. \"I hope it will be enough. Mr. Dwalek sent his regards...\"<br><br>She departs, leaving a big sack.<br>It contains:",
+                  "choice_000": "Good!"
+               },
+               "dwarves_return": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "The Dwarves are back!",
+                           "dialog_title": "Dwalek & Karuna approach...",
+                           "bulletin_message": {
+                              "00": "\"Greetings again, surface dwellers!\" They approach, but the excitement isn't really convincing this time. They look really tired. \"We return with another proposition! Or a request, rather...\""
+                           },
+                           "choice_000": "Welcome back...?"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "He seems quite uninspired...",
+                           "bulletin_message": {
+                              "00": "\"We bring sad news... Unfortunately the medicine ye provided was not enough. It helped a lot, however...\" He measures his own words before continuing. Karuna is completely silent. \"Well, the issue is that our Grower was wounded on the accident so we can't really use the tonics properly... And we need some other things, some very specific things for the next round of... Uh...\"<br><br>He stops and scratches his beard for a moment.<br><br>\"I mean, for the ones affected...\""
+                           },
+                           "choice_000": "Another accident?",
+                           "choice_001": "'Grower', you say?"
+                        },
+                        "msg2b": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "Karuna speaks!",
+                           "bulletin_message": {
+                              "00": "\"Yes, Growers.\" She asserts, looking at Dwalek. \"They're our physicians and healers, the ones that tend to our plants and mushrooms, trees and all other forms of natural life and magic.\"<br><br>She discretly smiles with everyone's reactions.<br><br>\"I know a little bit of it, runs in me kin, although I followed another vein. It's a very old tradition, something like ye 'herbalists', I suppose.\""
+                           },
+                           "choice_000": "Interesting!"
+                        },
+                        "msg3": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "Dwalek continues...",
+                           "bulletin_message": {
+                              "00": "\"Yes, well...\" He briefly pauses. \"Anyway, another accident, and there might be more! We found a very unstable tunnel, it's provin' itself difficult even for us, heh!\"<br><br>He points backwards and you can see that this time the've brought a large pack with them. \"We need something slightly different this time... How can I explain it?\"<br><br>He looks to Karuna."
+                           },
+                           "choice_000": "Huh?"
+                        },
+                        "msg4": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "Karuna sighs heavily...",
+                           "bulletin_message": {
+                              "00": "\"I've got this, Mr. Dwalek.\" She points to the pack as well. \"This time around we've brought some mushroom planters with a very special product of ours, the Glowshroom. We need it for... Complex concoctions.\" She looks away.<br><br>\"We need some of these, but our Grower can't really tend to them right now and I'm quite... busy.\"<br><br>Karuna seems really sad, but Dwalek gently nudges her to continue. \"I've brought some notes for ye herbalist on how to take care of them and what to do, I'm sure they can be useful.\""
+                           },
+                           "choice_000": "I see!"
+                        },
+                        "msg5": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "Dwalek steps in again...",
+                           "bulletin_message": {
+                              "00": "\"Allow me to apologize. We're very tired and stressed with all that is happenin'! I mean, happened!\" He smiles. \"We just need some Glowshroom, and I'm sure ye herbalist is capable of growin' them, Karuna's notes will help with that! We'll be back when they're ready and bring ya some extra ore and riches for ye help, of course!\"<br><br>He offers another handshake. \"Deal?\""
+                           },
+                           "choice_000": "Sure!"
+                        }
+                     }
+                  }
+               },
+               "glowshroom_planters": {
+                  "title": "Karuna brings the Planters",
+                  "dialog_title": "She's very tired...",
+                  "message": "\"Here they are, and here are me notes...\" She says, dropping the pack and handling some papers. \"It should be enough to take care of them. Just place them somewhere and ye herbalist will know what to do... I must go now, we'll be back soon! I hope...\"<br><br>She departs. The pack contains:",
+                  "choice_000": "Let's place them down!"
+               },
+               "glowshroom_delivery_quest": {
+                  "title": "Glowshroom for the Dwarves",
+                  "dialog_title": "Glowshroom for the Dwarves",
+                  "text": "We need to provide them with some exotic, glowing mushrooms... And make sure to undeploy and return the planters, of course!"
+               },
+               "ore_reward_2": {
+                  "title": "Dwalek returns!",
+                  "dialog_title": "He brings a bag of ore!",
+                  "message": "\"We meet again, surface dwellers!\" He says, genuinely happy to see that we've harvested their Glowshrooms. \"Very good, very good indeed. This will be very helpful! Now let me drop this unecessarily heavy sack...\"<br><br>With an effort, he releases it on the ground.<br><br>\"Phew... Karuna couldn't come today, unfortunately. I must return with these now. Thank ya very much - for everything!\"<br><br>He leaves in a hurry. The sack contains:",
+                  "choice_000": "Stay safe!"
+               },
+               "dwarves_return_2": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "The Dwarves return once more!",
+                           "dialog_title": "They look exhausted, really...",
+                           "bulletin_message": {
+                              "00": "\"Greetings again!\" He recovers his breath a little.<br><br>Karuna stands next to him, even her armor looks more rugged than before.<br><br>\"I understand that by now ya did not expect us to return... However...\""
+                           },
+                           "choice_000": "Another accident, right?"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "He nods, disappointed...",
+                           "bulletin_message": {
+                              "00": "\"Yes, I'm afraid there was another accident. But this was probably the... Last one.\"<br><br>Karuna turns around, watching the surroundings. He notices her with a glimpse, but looks back to you.<br><br>\"We really appreciate the help ye provided us with those items, and the mushrooms...\""
+                           },
+                           "choice_000": "But...?"
+                        },
+                        "msg2b": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "He continues...",
+                           "bulletin_message": {
+                              "00": "\"Well, I think that... Perhaps it would be best if we could take ye herbalist with us for a couple of days. It will be quick, I promise!\"<br><br>Karuna immediately turns around and stares at him. He acknowledges her but gestures something.<br><br>\"I... I'm afraid it would be the best way to go, that way they can help us with everything we need!\""
+                           },
+                           "choice_000": "Huh..."
+                        },
+                        "msg3": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "Karuna is visibly annoyed...",
+                           "bulletin_message": {
+                              "00": "\"Look, it's all good.\" Dwalek says, trying to smile. \"We'll come back some other time, I'm sure ya all need to talk and decide first...\" He nods.<br><br>\"But it would be really appreciated! I'm sure ye understand... Healers are very important and we need all the help we can get now!\""
+                           },
+                           "choice_000": "We'll consider."
+                        },
+                        "msg4": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "He seems relieved!",
+                           "bulletin_message": {
+                              "00": "\"Brilliant! We'll return tomorrow, then.\" He scratches the back of his head, thinking for a moment.<br><br>\"We will be goin' now, thank ya for the support! We'll bring you some payment upfront this time!\"<br><br>They leave, but not before Karuna stares at our town banner for a long time before running behind him."
+                           },
+                           "choice_000": "Until tomorrow!"
+                        }
+                     }
+                  }
+               },
+               "karuna_returns": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "Karuna returns alone!",
+                           "dialog_title": "She's very distressed!",
+                           "bulletin_message": {
+                              "00": "\"Hey there...\" She keeps looking over her shoulder, clearly worried. \"I'm here to ask something of ya. I know it is not me place to ask anything, but... I must!\"<br><br>She looks around, taken by an intense emotion.<br><br>\"I must warn ye!\""
+                           },
+                           "choice_000": "Oh!?"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Karuna Steelfist",
+                           "dialog_title": "She continues...",
+                           "bulletin_message": {
+                              "00": "\"No matter what Mr. Dwalek says... Do not send anyone with us tomorrow!\" She breathes heavily. \"I'm serious, do not send anyone! Ye will be sendin' them to their doom if ya do!\"<br><br>Everyone around reacts with surprise and shock."
+                           },
+                           "choice_000": "What do you mean?"
+                        },
+                        "msg2b": {
+                           "bulletin_title": "Karuna Steelfist",
+                           "dialog_title": "She looks away...",
+                           "bulletin_message": {
+                              "00": "\"There... There was no mining accident. He's been lyin' all along, the... Ugh!\" She clenches her fists.<br><br>\"We dug into a monster burrow... A big one. They have been beatin' us day after day, we even... Lost some of our best, already.\" A single tear rolls down her face, but she quickly wipes it.<br><br>\"There's no way we can hold them back, we're just... delayin' the inevitable! And now he wants ya to risk one of ye own as well - without knowin'!\""
+                           },
+                           "choice_000": "How rude!"
+                        },
+                        "msg3": {
+                           "bulletin_title": "Karuna Steelfist",
+                           "dialog_title": "She recomposes herself...",
+                           "bulletin_message": {
+                              "00": "\"The truth is that we should've asked the Underhomes for help. We could've. But...\"<br><br>She seems guilty of the words she's about to profess.<br><br>\"He has no rights over those lands, he has no permits for runnin' such an operation. He's afraid, he's afraid of what would happen to him and to the Cinderheart family name if our settlement is exposed.\" She gets angry again.<br><br>\"But it doesn't matter anymore! We need help, real help! We need our folk!\""
+                           },
+                           "choice_000": "Confront him, Karuna!"
+                        },
+                        "msg4": {
+                           "bulletin_title": "Karuna Steelfist",
+                           "dialog_title": "She's surprised!",
+                           "bulletin_message": {
+                              "00": "\"Nah! I mean... Really?\" She hesitates. \"I want to, but I'm afraid... I'm just a member of his retinue, I... Dunno if I can.\"<br><br>She looks around. \"Not alone... Would ya help me?\" For the first time in days, she looks hopeful again.<br><br>\"Yes, ye right. It must be done! We'll do it tomorrow!\""
+                           },
+                           "choice_000": "We'll stand with you!"
+                        }
+                     }
+                  }
+               },
+               "dwarves_return_3": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "The Dwarves are back for the Herbalist!",
+                           "dialog_title": "Dwalek walks in...",
+                           "bulletin_message": {
+                              "00": "\"Hello, town! Well, we are short on time... So I'll go straight to the point! Did ya consider our offer? I've brought a nice amount of ores this time...\"<br><br>He looks back but Karuna is just standing there, empty-handed.<br><br>\"Wait, where is the sack?\""
+                           },
+                           "choice_000": "Karuna, we are here."
+                        },
+                        "msg2": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "She crosses her arms!",
+                           "bulletin_message": {
+                              "00": "\"Enough, Mr. Dwalek! They...\" She looks up to all the people that are gathered around.<br><br>\"They know it all. I told them yesterday, after we went back to our camp.\" She walks closer and looks into his eyes, almost begging for him to see reason.<br><br>\"No more lies, sir... These people have helped us with so much already, this is not fair to them. This is not fair to any of us!\""
+                           },
+                           "choice_000": "Mhm!"
+                        },
+                        "msg2b": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "He just looks at her...",
+                           "bulletin_message": {
+                              "00": "Dwalek is suddenly very upset. One of his hands go up to his head, almost panicking. \"Ye did what? Karuna, ye did what?!\" He looks all around, realizing that everyone knows. \"I can't believe this! Karuna, how could ya?\" He's desperate now.<br><br>\"If the clan leaders find out, if the King finds out... Me family, our name, our mines...\" He looks back to us. \"Nae, we must find a solution for this, we must gather more people and...\""
+                           },
+                           "choice_000": "..."
+                        },
+                        "msg3": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "She pats his back...",
+                           "bulletin_message": {
+                              "00": "\"Mr. Dwalek... Dwalek. Stop.\" He calms down for a moment, listening. \"I've served ya for many years, I know ya have a good heart. Ye father is a great dwarf and while this will hurt him deeply...\" She looks back, pointing to the mountains.<br><br>\"Lettin' our folk suffer and perish out of pride and profits? This would break his heart much more.\" She smiles. \"Do the right thing, Dwalek. It's enough, too many have suffered already. I've come this far with ya, I've agreed with all of this and I'll respond to justice with ya.\""
+                           },
+                           "choice_000": "Well said!"
+                        },
+                        "msg4": {
+                           "bulletin_title": "Dwalek & Karuna",
+                           "dialog_title": "He is ashamed...",
+                           "bulletin_message": {
+                              "00": "\"Ye be right. We owe them this much.\" He looks up again. \"I'm a Cinderheart, I'm a son of me father. I won't be carved onto the granite walls of the Halls of Memory as a liar and a greedy fool!\" He looks down. \"Thank ye, Karuna, for helpin' me see this... I know it is far too late, but we shall seek help from the Underhomes immediately.\"<br><br>He then looks up to us again. \"And I'm sorry to all of ya. I'll make sure to express how helfpul and friendly ye been, and that no grudge will be held against ye town.\""
+                           },
+                           "choice_000": "You did what you believed was right."
+                        },
+                        "msg5": {
+                           "bulletin_title": "Karuna Steelfist",
+                           "dialog_title": "Dwalek prepares to leave...",
+                           "bulletin_message": {
+                              "00": "Karuna watches as Dwalek apologizes and starts walking away. \"I'll make sure he'll be honest and that our people will get the support they deserve. Please, do not hate him. I know he is a good dwarf... He just thinks he needs so much to prove all the wrong things.\" She smiles.<br><br>\"We'll go now, but I wanted to leave these with ya.\" She gives you all the notes and instructions on mushroom planters. \"If ya have a Blacksmith, they can provide the brass plates. Ye'll need them for these plans!\"<br><br>She starts walking away. \"Thank ye, surface dwellers... Friends. Wish us good fortune!\" "
+                           },
+                           "choice_000": "Farewell and thank you!"
+                        }
+                     }
+                  }
+               },
+               "planters_recipe_unlock": {
+                  "bulletin_title": "Mushroom Planter recipes unlocked for the Herbalist!"
+               },
+               "brass_plates_recipe_unlock": {
+                  "bulletin_title": "Brass Plates recipe unlocked for the Blacksmith!"
+               }
             }
          }
       },
@@ -6365,6 +6668,11 @@
             },
             "bronze_shield_recipe": {
                "description": "Increases armor and blocks attacks!"
+            },
+            "brass_plate_recipe": {
+               "recipe_name": "Brass Plate (x4)",
+               "description": "Create sheets of cheap but durable metal as learned from the dwarves.",
+               "flavor": "The trick is to melt anything alongside copper"
             },
             "frostfeast": {
                "candlestick_recipe": {

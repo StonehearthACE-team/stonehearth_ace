@@ -1,0 +1,39 @@
+{
+   "type": "encounter",
+   "encounter_type": "create_camp",
+   "rarity": "common",
+   "in_edge": "spawn_dwarf_entities",
+   "out_edge": "wait_for_destroy_dwarf_entities",
+   "create_camp_info": {
+      "npc_player_id": "human_npcs",
+      "ctx_entity_registration_path": "spawn_dwarf_entities",
+      "on_searcher_failure": {
+         "destroy_root_node": "spawn_dwarf_entities"
+      },
+      "keep_grass": true,
+      "radius": 5,
+      "spawn_range": {
+         "min": 10,
+         "max": 40
+      },
+      "citizens": {
+         "dwalek": {
+            "from_population": {
+               "role": "mountain_folk_dwalek",
+               "gender": "male",
+               "location": { "x": -3, "z": 0 }
+            },
+            "combat_leash_range": 0
+         },
+         "karuna": {
+            "from_population": {
+               "role": "mountain_folk_karuna",
+               "gender": "female",
+               "location": { "x": 0, "z": 0 }
+            },
+            "combat_leash_range": 0
+         }
+      },
+      "pieces": {}
+   }
+}

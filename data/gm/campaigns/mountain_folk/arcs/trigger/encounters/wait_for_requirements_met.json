@@ -1,0 +1,21 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_requirements_met",
+   "in_edge": "start",
+   "out_edge": "delay_before_dwarves_arrival",
+   "wait_for_requirements_met_info": {
+      "requirements": {
+         "herbalist_level_4": {
+            "item": "highest_job_level",
+            "type": "deny_if_less_than",
+            "value": 4,
+            "job_alias": "stonehearth:jobs:herbalist"
+         },
+         "city_tier": {
+            "type": "deny_if_less_than",
+            "item": "city_tier",
+            "value": 2
+         }
+      }
+   }
+}

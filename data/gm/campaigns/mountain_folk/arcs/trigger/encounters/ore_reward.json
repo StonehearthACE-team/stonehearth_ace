@@ -1,0 +1,61 @@
+{
+   "type": "encounter",
+   "encounter_type": "donation_dialog",
+   "in_edge": "ore_reward",
+   "out_edge": "wait_some_days",
+   "donation_dialog_info": {
+      "nodes": {
+         "simple_message": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.mountain_folk.ore_reward.title)",
+               "portrait": "file(images/karuna.png)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.mountain_folk.ore_reward.dialog_title)",
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.mountain_folk.ore_reward.message)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.mountain_folk.ore_reward.choice_000)": {
+                     "result": "accept"
+                  }
+               }
+            }
+         }
+      },
+      "loot_table": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 12,
+                  "max": 18
+               },
+               "items": {
+                  "copper_ore": {
+                     "uri": "stonehearth:resources:copper:ore"
+                  },
+                  "tin_ore": {
+                     "uri": "stonehearth:resources:tin:ore"
+                  },
+                  "iron_ore": {
+                     "uri": "stonehearth:resources:iron:ore"
+                  },
+                  "silver_ore": {
+                     "uri": "stonehearth:resources:silver:ore"
+                  },
+                  "gold_ore": {
+                     "uri": "stonehearth:resources:gold:ore"
+                  }
+               }
+            },
+            "coal": {
+               "num_rolls": {
+                  "min": 6,
+                  "max": 10
+               },
+               "items": {
+                  "coal": {
+                     "uri": "stonehearth:resources:coal:lump_of_coal"
+                  }
+               }
+            }
+         }
+      }
+   }
+}

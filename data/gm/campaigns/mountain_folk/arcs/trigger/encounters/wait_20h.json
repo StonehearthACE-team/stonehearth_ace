@@ -1,0 +1,16 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "wait_20h",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "dwarves_return_3",
+         "spawn_dwarf_entities",
+         "add_dwarf_counter"
+      ]
+   },
+   "wait_info": {
+      "duration": "20h+2h"
+   }
+}
