@@ -1,36 +1,14 @@
 {
-	"components": {
-		"stonehearth_ace:transform": {}
-   },
+   "mixins": [
+      "stonehearth_ace:mixins:tree:stunt_growth"
+   ],
    "entity_data": {
-      "stonehearth_ace:evolve_modifiers": {
-         "allow_manual_stunting": true
-      },
-      "stonehearth_ace:transform_data": {
-         "command": "stonehearth_ace:commands:transform:stunt_growth",
-         "command_requirements": {
-            "all_of_components": {
-               "stonehearth:evolve": true
-            }
-         },
-         "request_action": "stonehearth_ace:transform",
-         "request_action_overlay_effect": "stonehearth_ace:effects:transform_stunt_growth_overlay_effect",
-         "transforming_worker_effect": "fiddle",
-         "transforming_worker_effect_times": 2,
-         "worker_required_job": {
-            "stonehearth:jobs:worker": true,
-            "stonehearth:jobs:farmer": true,
-            "stonehearth:jobs:herbalist": true
-         },
-         "destroy_entity": false,
-         "remove_components": ["stonehearth:evolve"]
-      },
-		"stonehearth:evolve_data": {
+      "stonehearth:evolve_data": {
          "biomes": {
-				"stonehearth_ace:biome:highlands": {
+            "stonehearth_ace:biome:highlands": {
                "evolve_time_multiplier": 1.5
             },
-				"stonehearth:biome:temperate": {
+            "stonehearth:biome:temperate": {
                "evolve_time_multiplier": 2
             },
             "stonehearth:biome:desert": {
@@ -38,10 +16,10 @@
             }
          },
          "seasons": {
-				"spring": {
+            "spring": {
                "evolve_time_multiplier": 1.5
             },
-				"summer": {
+            "summer": {
                "evolve_time_multiplier": 2
             },
             "winter": {
@@ -49,8 +27,8 @@
             }
          }
       },
-		"stonehearth:catalog": {
+      "stonehearth:catalog": {
          "icon": "file(tree_pine_plant_bud.png)"
       }
-	}
+   }
 }

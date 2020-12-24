@@ -1,6 +1,9 @@
 {
    "type": "entity",
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": [
+      "stonehearth_ace:mixins:tree:stunt_growth",
+      "stonehearth:mixins:placed_object"
+   ],
    "components": {
       "render_info": {
          "scale": 0.75
@@ -32,34 +35,9 @@
       "mob": {
          "model_origin": { "x": -0.37, "y": 0, "z": -0.37 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
-      },
-      "stonehearth_ace:transform": {}
+      }
    },
    "entity_data": {
-      "stonehearth_ace:evolve_modifiers": {
-         "allow_manual_stunting": true
-      },
-      "stonehearth_ace:transform_data": {
-         "command": "stonehearth_ace:commands:transform:stunt_growth",
-         "command_requirements": {
-            "all_of_components": {
-               "stonehearth:evolve": true
-            }
-         },
-         "request_action": "stonehearth_ace:transform",
-         "request_action_overlay_effect": "stonehearth_ace:effects:transform_stunt_growth_overlay_effect",
-         "transforming_worker_effect": "fiddle",
-         "transforming_worker_effect_times": 2,
-         "worker_required_job": {
-            "stonehearth:jobs:worker": true,
-            "stonehearth:jobs:farmer": true,
-            "stonehearth:jobs:herbalist": true
-         },
-         "destroy_entity": false,
-         "remove_components": [
-            "stonehearth:evolve"
-         ]
-      },
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:trees:apple:small",
          "evolve_time": "2d+6h",
