@@ -5,6 +5,14 @@ local constants = radiant.mods.require('stonehearth.constants')
 
 local log = radiant.log.create_logger('craft_order_list')
 
+-- AceCraftOrder._ace_old_post_activate = CraftOrder.post_activate
+-- function AceCraftOrder:post_activate()
+--    self._inventory = stonehearth.inventory:get_inventory(self._sv._player_id)
+--    self._crafter_info = stonehearth_ace.crafter_info:get_crafter_info(self._sv._player_id)
+
+--    self:_ace_old_post_activate()
+-- end
+
 AceCraftOrderList._ace_old_destroy = CraftOrderList.__user_destroy
 function AceCraftOrderList:destroy()
    if self._stuck_timer then
@@ -325,7 +333,39 @@ function AceCraftOrderList:_can_craft_recipe(player_id, recipe_info)
    -- check max crafter level of the specified job in the specified player's town
    -- to see if this recipe is currently craftable
    local job_info = stonehearth.job:get_job_info(player_id, recipe_info.job_key)
-   return job_info and job_info:get_highest_level() >= (recipe_info.recipe.level_requirement or 1)
+   if job_info and job_info:get_highest_level() >= (recipe_info.recipe.level_requirement or 1) then
+      -- check if it requires a workshop and that workshop exists
+      if recipe_info.recipe.workshop then
+         local workshop_uri = recipe_info.recipe.workshop.uri
+         local inventory = stonehearth.inventory:get_inventory(player_id)
+   
+         if self:_has_valid_workshop(inventory, workshop_uri) then
+            return true
+         else
+            -- Not an exact match. Maybe a valid equivalent?
+            local workshop_entity_data = radiant.entities.get_entity_data(workshop_uri, 'stonehearth:workshop')
+            if workshop_entity_data then
+               local equivalents = workshop_entity_data.equivalents
+               if equivalents then
+                  for _, equivalent in ipairs(equivalents) do
+                     if self:_has_valid_workshop(inventory, equivalent) then
+                        return true
+                     end
+                  end
+               end
+            end
+         end
+
+         return false
+      end
+
+      return true
+   end
+end
+
+function AceCraftOrderList:_has_valid_workshop(inventory, workshop_uri)
+   local workshop_data = inventory:get_items_of_type(workshop_uri)
+   return workshop_data and workshop_data.count > 0
 end
 
 -- Checking `inventory` to see how much of `ingredient` is available.

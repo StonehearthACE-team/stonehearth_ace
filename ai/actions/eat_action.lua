@@ -35,7 +35,7 @@ function Eat:start_thinking(ai, entity, args)
    self._calorie_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:calories', self, self._rethink)
    self._marked_unready_listener = radiant.events.listen(self._entity, 'stonehearth_ace:entity:looking_for_food:marked_unready', self, self._rethink)
    self._timer = stonehearth.calendar:set_interval("eat_action hourly", '25m+5m', function() self:_reconsider_filter() end)
-   self:_reconsider_filter(true)
+   self:_reconsider_filter()
 end
 
 function Eat:stop_thinking(ai, entity, args)
@@ -62,7 +62,7 @@ function Eat:stop(ai, entity, args)
    radiant.events.trigger_async(self._entity, 'stonehearth:entity:stopped_looking_for_food')
 end
 
-function Eat:_reconsider_filter(force_rethink)
+function Eat:_reconsider_filter()
    local hour_type = EatingLib.get_current_hour_type()
    local weather_type = stonehearth.weather:get_current_weather_type()
 
@@ -79,7 +79,7 @@ function Eat:_reconsider_filter(force_rethink)
          self._food_rating_fn = nil
       end
 
-      if force_rethink then
+      if not self._ready then
          self:_rethink()
       else
          self:_mark_unready(true)
