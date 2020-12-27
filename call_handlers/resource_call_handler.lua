@@ -523,14 +523,15 @@ function ResourceCallHandler:server_box_forage(session, response, box)
       local x_min, x_max = box.min.x, box.max.x - 1
       local z_min, z_max = box.min.z, box.max.z - 1
       local y = box.min.y
-      local locations = {}
+
       for i = 1, num_to_spawn do
          local location = Point3(rng:get_int(x_min, x_max), y, rng:get_int(z_min, z_max))
          -- try to create a foraging entity at this location
          log:debug('trying to find placement point near %s', location)
-         local spot = radiant.terrain.find_placement_point(location, 0, 1)
+         local spot, found = radiant.terrain.find_placement_point(location, 0, 1)
          -- don't find a spot on top of a tree or something!
-         if spot and spot.y == y then
+         if found and spot.y == y then
+            log:debug('found placement point: %s', spot)
             local entity = radiant.entities.create_entity(foraging_spot_uri)
             radiant.terrain.place_entity_at_exact_location(entity, spot, { force_iconic = false })
             radiant.entities.turn_to(entity, rng:get_int(0, 3) * 90)

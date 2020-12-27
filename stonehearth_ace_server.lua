@@ -11,6 +11,7 @@ local service_creation_order = {
 }
 
 local monkey_patches = {
+   ace_aggro_observer = 'stonehearth.ai.observers.aggro_observer',
    ace_ai_component = 'stonehearth.components.ai.ai_component',
    ace_animal_companion_script = 'stonehearth.data.traits.animal_companion.animal_companion_script',
    ace_aura_buff = 'stonehearth.data.buffs.scripts.aura_buff',

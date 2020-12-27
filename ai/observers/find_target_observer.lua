@@ -215,7 +215,7 @@ function FindTargetObserver:_remove_target(id, target)
    end
 end
 
--- ACE: also take into consideration the whether the entity is set to avoid hunting
+-- ACE: also take into consideration whether the entity is set to avoid hunting
 function FindTargetObserver:_update_highest_scored_target()
    local highest_scored_target = nil
    local is_hunting = false
