@@ -8,6 +8,8 @@ local rng = _radiant.math.get_default_rng()
 local Town = require 'stonehearth.services.server.town.town'
 local AceTown = class()
 
+local SUSPENDED_BUFF = 'stonehearth:buffs:hidden:suspended'
+
 AceTown._ace_old__pre_activate = Town._pre_activate
 function AceTown:_pre_activate()
    self._suspendable_entities = {}
