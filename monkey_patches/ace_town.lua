@@ -36,8 +36,11 @@ function AceTown:destroy()
 end
 
 function AceTown:_destroy_default_storage_listeners()
-   for id, storage in pairs(self._sv.default_storage) do
-      self:_destroy_default_storage_listener(id)
+   if self._default_storage_listener then
+      for _, listener in pairs(self._default_storage_listener) do
+         listener:destroy()
+      end
+      self._default_storage_listener = {}
    end
 end
 
