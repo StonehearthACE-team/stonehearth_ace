@@ -25,6 +25,7 @@ local monkey_patches = {
    ace_csg_lib = 'stonehearth.lib.csg.csg_lib',
    ace_entity_forms_lib = 'stonehearth.lib.entity_forms.entity_forms_lib',
    ace_entity_or_location_selector = 'stonehearth.services.client.selection.entity_or_location_selector',
+   ace_expendable_resources_renderer = 'stonehearth.renderers.expendable_resources.expendable_resources_renderer',
    ace_farmer_field_renderer = 'stonehearth.renderers.farmer_field.farmer_field_renderer',
    ace_farming_call_handler = 'stonehearth.call_handlers.farming_call_handler',
    ace_item_placer = 'stonehearth.services.client.build_editor.item_placer',
