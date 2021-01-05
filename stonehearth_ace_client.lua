@@ -94,7 +94,7 @@ function stonehearth_ace:_on_init()
          if client_player.kingdom == "stonehearth_ace:kingdoms:mountain_folk" then
             -- hot load stonehearth_ace ui mod
             _radiant.res.apply_manifest("/stonehearth_ace/mountain_folk/manifest.json")
-            radiant.events.trigger_async(radiant, 'stonehearth_ace:client:client_manifest_applied')
+            radiant.events.trigger(radiant, 'stonehearth_ace:client:client_manifest_applied')
          end
       end
    end
@@ -126,14 +126,14 @@ function stonehearth_ace:_on_init()
       end
    end)
 
-   radiant.events.trigger_async(radiant, 'stonehearth_ace:client:init')
+   radiant.events.trigger(radiant, 'stonehearth_ace:client:init')
    radiant.log.write_('stonehearth_ace', 0, 'ACE client initialized')
 end
 
 function stonehearth_ace:_on_required_loaded()
    monkey_patching()
    
-   radiant.events.trigger_async(radiant, 'stonehearth_ace:client:required_loaded')
+   radiant.events.trigger(radiant, 'stonehearth_ace:client:required_loaded')
 end
 
 function stonehearth_ace:_get_scripts_to_load()

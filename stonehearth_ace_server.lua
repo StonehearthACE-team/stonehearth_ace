@@ -228,7 +228,7 @@ function stonehearth_ace:_on_init()
       create_service(name)
    end
 
-   radiant.events.trigger_async(radiant, 'stonehearth_ace:server:init')
+   radiant.events.trigger(radiant, 'stonehearth_ace:server:init')
    radiant.log.write_('stonehearth_ace', 0, 'ACE server initialized')
 end
 
@@ -237,7 +237,7 @@ function stonehearth_ace:_on_required_loaded()
 
    self:_run_scripts('post_monkey_patching')
    
-   radiant.events.trigger_async(radiant, 'stonehearth_ace:server:required_loaded')
+   radiant.events.trigger(radiant, 'stonehearth_ace:server:required_loaded')
 end
 
 function stonehearth_ace:_get_scripts_to_load()
