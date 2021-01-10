@@ -176,12 +176,43 @@ function AceCombatService:_get_nearby_non_max_level_combat_units(target, attacke
    return combat_units, count
 end
 
+-- ACE: also include support for shared cooldowns
+function CombatService:start_cooldown(entity, action_info)
+   local combat_state = self:get_combat_state(entity)
+   if not combat_state then
+      return
+   end
+   combat_state:start_cooldown(action_info.name, action_info.cooldown)
+
+   if action_info.shared_cooldown_name then
+      combat_state:start_cooldown(action_info.shared_cooldown_name, action_info.shared_cooldown)
+   end
+end
+
+function CombatService:in_cooldown(entity, action_name, shared_cooldown_name)
+   local combat_state = self:get_combat_state(entity)
+   if not combat_state then
+      return false
+   end
+
+   return combat_state:in_cooldown(action_name, shared_cooldown_name)
+end
+
+function CombatService:get_cooldown_end_time(entity, action_name, shared_cooldown_name)
+   local combat_state = self:get_combat_state(entity)
+   if not combat_state then
+      return nil
+   end
+
+   return combat_state:get_cooldown_end_time(action_name, shared_cooldown_name)
+end
+
 -- get the highest priority action that is ready now
 -- assumes actions are sorted by descending priority
 -- ACE: modifies filter_fn to consider any required equipment types
 function AceCombatService:choose_attack_action(entity, actions)
    local filter_fn = function(combat_state, action_info)
-      if not combat_state:in_cooldown(action_info.name) then
+      if not combat_state:in_cooldown(action_info.name, action_info.shared_cooldown_name) then
          -- check any equipment requirements
          if action_info.required_equipment then
             for slot, types in pairs(action_info.required_equipment) do
@@ -215,6 +246,18 @@ function AceCombatService:choose_attack_action(entity, actions)
 
          return true
       end
+   end
+   return self:_choose_combat_action(entity, actions, filter_fn)
+end
+
+-- get the highest priority action that can take effect before the impact_time
+-- assumes actions are sorted by descending priority
+-- ACE: add support for shared cooldowns
+function CombatService:choose_defense_action(entity, actions, attack_impact_time)
+   local filter_fn = function(combat_state, action_info)
+      local ready_time = combat_state:get_cooldown_end_time(action_info.name, action_info.shared_cooldown_name) or radiant.gamestate.now()
+      local defense_impact_time = ready_time + action_info.time_to_impact
+      return defense_impact_time <= attack_impact_time
    end
    return self:_choose_combat_action(entity, actions, filter_fn)
 end

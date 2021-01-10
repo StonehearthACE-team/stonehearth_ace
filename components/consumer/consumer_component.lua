@@ -3,8 +3,6 @@
    will eventually also be used for fuel-powered producers of mechanical power
 ]]
 
-local constants = require 'stonehearth.constants'
-local FUEL_LEASE_NAME = constants.ai.RESERVATION_LEASE_NAME
 local log = radiant.log.create_logger('consumer')
 
 local ConsumerComponent = class()
@@ -43,22 +41,18 @@ function ConsumerComponent:post_activate()
 
    -- should we also listen for expendable resources changes?
    self._storage_filter_changed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:filter_changed', function(args)
-         self:_reconsider_all_item_leases()
+         self:_reconsider_all_items()
       end)
    self._storage_item_added_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_added', function(args)
-         self:_reconsider_item_lease(args.item)
          self:_update_fueled()
       end)
    self._storage_item_removed_listener = radiant.events.listen(self._entity, 'stonehearth:storage:item_removed', function(args)
-         if args.item then
-            self:_release_item_lease(args.item)
-         end
          if self._entity:get_component('stonehearth:storage'):is_empty() then
             self:_update_fueled()
          end
       end)
 
-   self:_reconsider_all_item_leases()
+   self:_reconsider_all_items()
    self:_update_fueled()
 end
 
@@ -83,21 +77,23 @@ function ConsumerComponent:_destroy_listeners()
    end
 end
 
-function ConsumerComponent:_reconsider_all_item_leases()
-   -- refresh (acquire or release) leases on all items based on the new filter (unless they're already reserved)
+function ConsumerComponent:_reconsider_all_items()
+   -- reconsider all items based on the new filter (unless they're already reserved)
    local storage = self._entity:get_component('stonehearth:storage')
    if storage then
       local output_items = {}
       for _, item in pairs(storage:get_items()) do
-         if self:_reconsider_item_lease(item) then
-            -- remove any item whose lease we successfully released
+         if item:is_valid() and
+               (not radiant.entities.get_entity_data(item, 'stonehearth_ace:fuel') or
+               (not self._reserved_fuel_items[item:get_id()] and not storage:passes(item))) then
+            -- remove any item that doesn't belong
             local id = item:get_id()
             output_items[id] = item
             storage:remove_item(id)
          end
       end
 
-      -- pop out any removed items (whose leases were released)
+      -- pop out any removed items
       if next(output_items) then
          log:debug('dumping items from %s: %s', self._entity, radiant.util.table_tostring(output_items))
          
@@ -113,29 +109,6 @@ function ConsumerComponent:_reconsider_all_item_leases()
          radiant.entities.output_spawned_items(output_items, location, 1, 2, nil, nil, default_storage, true)
       end
    end
-end
-
--- returns true if an item lease was released
-function ConsumerComponent:_reconsider_item_lease(item)
-   local storage = self._entity:get_component('stonehearth:storage')
-   if storage then
-      if item:is_valid() and radiant.entities.get_entity_data(item, 'stonehearth_ace:fuel') and (self._reserved_fuel_items[item:get_id()] or storage:passes(item)) then
-         self:_acquire_item_lease(item)
-      else
-         return self:_release_item_lease(item)
-      end
-   end
-end
-
-function ConsumerComponent:_acquire_item_lease(item)
-   local success = radiant.entities.acquire_lease(item, FUEL_LEASE_NAME, self._entity, true) -- , false)
-   --log:debug('%s %s acquiring lease for %s', self._entity, success and 'SUCCEEDED' or 'FAILED', item)
-end
-
-function ConsumerComponent:_release_item_lease(item)
-   local success = radiant.entities.release_lease(item, FUEL_LEASE_NAME, self._entity)
-   return success
-   --log:debug('%s %s releasing lease for %s', self._entity, success and 'SUCCEEDED' or 'FAILED', item)
 end
 
 function ConsumerComponent:get_fuel_per_use()
@@ -251,7 +224,6 @@ function ConsumerComponent:unreserve_fuel(user_id)
       elseif fuel:is_valid() then
          -- it's a fuel entity
          self._reserved_fuel_items[fuel:get_id()] = nil
-         self:_reconsider_item_lease(fuel)
       end
 
       self:_clear_user_fuel_consumer(user_id)
@@ -296,9 +268,7 @@ function ConsumerComponent:consume_fuel(user)
             end
 
             self._reserved_fuel_items[fuel:get_id()] = nil
-            -- probably don't need to release the lease since the entity is just getting destroyed
             -- do we even need to remove it from storage?
-            -- radiant.entities.release_lease(fuel, FUEL_LEASE_NAME, self._entity)
             self._entity:get_component('stonehearth:storage'):remove_item(fuel:get_id())
             radiant.entities.destroy_entity(fuel)
          end

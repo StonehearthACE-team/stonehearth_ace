@@ -25,6 +25,7 @@ local monkey_patches = {
    ace_csg_lib = 'stonehearth.lib.csg.csg_lib',
    ace_entity_forms_lib = 'stonehearth.lib.entity_forms.entity_forms_lib',
    ace_entity_or_location_selector = 'stonehearth.services.client.selection.entity_or_location_selector',
+   ace_expendable_resources_renderer = 'stonehearth.renderers.expendable_resources.expendable_resources_renderer',
    ace_farmer_field_renderer = 'stonehearth.renderers.farmer_field.farmer_field_renderer',
    ace_farming_call_handler = 'stonehearth.call_handlers.farming_call_handler',
    ace_item_placer = 'stonehearth.services.client.build_editor.item_placer',
@@ -93,7 +94,7 @@ function stonehearth_ace:_on_init()
          if client_player.kingdom == "stonehearth_ace:kingdoms:mountain_folk" then
             -- hot load stonehearth_ace ui mod
             _radiant.res.apply_manifest("/stonehearth_ace/mountain_folk/manifest.json")
-            radiant.events.trigger_async(radiant, 'stonehearth_ace:client:client_manifest_applied')
+            radiant.events.trigger(radiant, 'stonehearth_ace:client:client_manifest_applied')
          end
       end
    end
@@ -125,14 +126,14 @@ function stonehearth_ace:_on_init()
       end
    end)
 
-   radiant.events.trigger_async(radiant, 'stonehearth_ace:client:init')
+   radiant.events.trigger(radiant, 'stonehearth_ace:client:init')
    radiant.log.write_('stonehearth_ace', 0, 'ACE client initialized')
 end
 
 function stonehearth_ace:_on_required_loaded()
    monkey_patching()
    
-   radiant.events.trigger_async(radiant, 'stonehearth_ace:client:required_loaded')
+   radiant.events.trigger(radiant, 'stonehearth_ace:client:required_loaded')
 end
 
 function stonehearth_ace:_get_scripts_to_load()

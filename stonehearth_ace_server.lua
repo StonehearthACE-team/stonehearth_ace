@@ -37,6 +37,7 @@ local monkey_patches = {
    ace_collection_quest_shakedown = 'stonehearth.services.server.game_master.controllers.scripts.collection_quest_shakedown',
    ace_combat_server_commands_service = 'stonehearth.services.server.combat_server_commands.combat_server_commands_service',
    ace_combat_service = 'stonehearth.services.server.combat.combat_service',
+   ace_combat_state_component = 'stonehearth.components.combat_state.combat_state_component',
    ace_commands_component = 'stonehearth.components.commands.commands_component',
    ace_constants = 'stonehearth.constants',
    ace_consumption_component = 'stonehearth.components.consumption.consumption_component',
@@ -227,7 +228,7 @@ function stonehearth_ace:_on_init()
       create_service(name)
    end
 
-   radiant.events.trigger_async(radiant, 'stonehearth_ace:server:init')
+   radiant.events.trigger(radiant, 'stonehearth_ace:server:init')
    radiant.log.write_('stonehearth_ace', 0, 'ACE server initialized')
 end
 
@@ -236,7 +237,7 @@ function stonehearth_ace:_on_required_loaded()
 
    self:_run_scripts('post_monkey_patching')
    
-   radiant.events.trigger_async(radiant, 'stonehearth_ace:server:required_loaded')
+   radiant.events.trigger(radiant, 'stonehearth_ace:server:required_loaded')
 end
 
 function stonehearth_ace:_get_scripts_to_load()
