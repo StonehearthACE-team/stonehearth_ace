@@ -1261,8 +1261,26 @@
                "icon": "/stonehearth_ace/entities/food/prepared_food_refreshing.png",
                "filter": "prepared_food refreshing"
             },
-            "festival": {
+            "breakfast": {
                "ordinal": 10,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.prepared_food_breakfast_resource_name)",
+               "icon": "/stonehearth_ace/entities/food/prepared_food_breakfast.png",
+               "filter": "prepared_food breakfast_time"
+            },
+            "lunch": {
+               "ordinal": 11,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.prepared_food_lunch_resource_name)",
+               "icon": "/stonehearth_ace/entities/food/prepared_food_lunch.png",
+               "filter": "prepared_food lunch_time"
+            },
+            "dinner": {
+               "ordinal": 12,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.prepared_food_dinner_resource_name)",
+               "icon": "/stonehearth_ace/entities/food/prepared_food_dinner.png",
+               "filter": "prepared_food dinner_time"
+            },
+            "festival": {
+               "ordinal": 99,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.prepared_food_festival_resource_name)",
                "icon": "/stonehearth_ace/entities/food/prepared_food_festival.png",
                "filter": "prepared_food festival"

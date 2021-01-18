@@ -1368,7 +1368,7 @@
                            "bulletin_title": "Dwalek & Karuna",
                            "dialog_title": "Karuna steps in...",
                            "bulletin_message": {
-                              "00": "\"The Underhomes, aye. That's how we Mountain Folk refer to the main settlements of each of our major clans,\" she explains with a glow in her eyes.<br><br>\"Our Folk is formed by the allegiance and conformity o' several clans under a single banner, ruled by a leader elected by members of all the Underhomes. Our power comes from every single one of us, and if our leadership i' nae strong enough, we replace it at will!\" Dwalek nods vigorously in agreement.<br><br>\"An Underhome will usually 'elp out with this manner o' trouble, but we're too far to rely on 'em now...\""
+                              "00": "\"The Underhomes, aye. That's how we Mountain Folk refer to the main settlements of each of our major clans.\" she explains with a glow in her eyes.<br><br>\"Our Folk is formed by the allegiance and conformity o' several clans under a single banner, ruled by a leader elected by members of all the Underhomes. Our power comes from every single one of us, and if our leadership i' nae strong enough, we replace it at will!\" Dwalek nods vigorously in agreement.<br><br>\"An Underhome will usually 'elp out with this manner o' trouble, but we're too far to rely on 'em now...\""
                            },
                            "choice_000": "Bummer!"
                         },
@@ -1435,7 +1435,7 @@
                            "bulletin_title": "Dwalek & Karuna",
                            "dialog_title": "Karuna speaks!",
                            "bulletin_message": {
-                              "00": "\"Aye, Growers,\" she asserts, looking at Dwalek. \"They be our physicians and healers, the ones that tend t' our plants an' mushrooms an' trees, and all other forms o' natural life an' magic.\"<br><br>She discreetly smiles at everyone's reactions.<br><br>\"I know a wee bit of it meself, runs in me kin, although I followed another vein. It's a very old tradition, something like yer 'herbalists', I reckon.\""
+                              "00": "\"Aye, Growers.\" she asserts, looking at Dwalek. \"They be our physicians and healers, the ones that tend t' our plants an' mushrooms an' trees, and all other forms o' natural life an' magic.\"<br><br>She discreetly smiles at everyone's reactions.<br><br>\"I know a wee bit of it meself, runs in me kin, although I followed another vein. It's a very old tradition, something like yer 'herbalists', I reckon.\""
                            },
                            "choice_000": "Interesting!"
                         },
@@ -4466,6 +4466,11 @@
                "recipe_name": "Sage Seeds (x2)",
                "description": "Separate seeds from the herbs",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
+            },
+            "highland_vine_transmute_recipe": {
+               "recipe_name": "Highland Vine Seeds (x2)",
+               "description": "Separate seeds from the leaves",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the leaves are lost in the process."
             },
             "silkweed_transmute_recipe": {
                "recipe_name": "Silkweed Seeds (x2)",
@@ -8189,7 +8194,7 @@
             },
             "spirit_northern_recipe": {
                "recipe_name": "Keg of Northern Spirit",
-               "description": "An unique and appreciated brew from the Northern Alliance that uses sweet potatoes instead of grain.",
+               "description": "A unique and appreciated brew from the Northern Alliance that uses sweet potatoes instead of grain.",
                "flavor": "The land provides everything"
             },
             "spirit_fruit_recipe": {
@@ -8219,7 +8224,7 @@
             },
             "tea_desert_recipe": {
                "recipe_name": "Desert Sun Tea",
-               "description": "An unique recipe to the children of Rayya, a flower tea from Pal'Mum. Provides multiple bonuses to hearthlings.",
+               "description": "A unique recipe to the children of Rayya, a flower tea from Pal'Mum. Provides multiple bonuses to hearthlings.",
                "flavor": "Prepared tea must be placed somewhere in order to be consumed"
             },
             "tea_amberstone_recipe": {
@@ -8275,17 +8280,17 @@
             "juice_golden_gourd_recipe": {
                "recipe_name": "Bucket of Golden Gourd Juice",
                "description": "Not the best flavor, but a traditional refreshment in the desert - also quite efficient.",
-               "flavor": "An unique recipe from the Rayya's Children"
+               "flavor": "A unique recipe from the Rayya's Children"
             },
             "juice_sweet_potato_recipe": {
                "recipe_name": "Bucket of Sweet Potato Juice",
                "description": "Hearty and with a mild taste - can definitely keep you up and healthy as it also includes some food nutrition.",
-               "flavor": "An unique recipe from the Northern Alliance"
+               "flavor": "A unique recipe from the Northern Alliance"
             },
             "sage_water_recipe": {
                "recipe_name": "Bucket of Sage Water",
                "description": "Slightly sweet with a hint of spices, this refreshing drink can also help with focus and concentration.",
-               "flavor": "An unique recipe from the Ascendancy"
+               "flavor": "A unique recipe from the Ascendancy"
             },
             "juice_watermelon_recipe": {
                "recipe_name": "Bucket of Watermelon Juice",
@@ -10628,7 +10633,7 @@
             "seed": {
                "tree_parana_pine_seed_ghost": {
                   "display_name": "Parana Pine Seed",
-                  "description": "Can be planted to grow an unique, beautiful tree."
+                  "description": "Can be planted to grow a unique, beautiful tree."
                }
             },
             "sprout": {
@@ -15583,7 +15588,7 @@
          },
          "bog_butter_keg": {
             "display_name": "Bog Butter Keg",
-            "description": "Someone buried this a long time ago... Peat lands give butter an unique flavor!"
+            "description": "Someone buried this a long time ago... Peat lands give butter a unique flavor!"
          },
          "bone_chest": {
             "display_name": "Bone Chest",
@@ -15951,7 +15956,7 @@
          "tea_desert": {
             "tea_desert": {
                "display_name": "Desert Sun Tea",
-               "description": "An unique recipe to the children of Rayya, a flower tea from Pal'Mum."
+               "description": "A unique recipe to the children of Rayya, a flower tea from Pal'Mum."
             },
             "tea_desert_serving": {
                "display_name": "Cup of Desert Sun Tea"
@@ -18066,7 +18071,10 @@
             "refined_serving_pitcher_resource_name": "Any Serving Pitcher",
             "becomes_vinegar_wine_resource_name": "Any Wine",
             "becomes_vinegar_mead_resource_name": "Any Mead",
-            "becomes_vinegar_beer_or_ale_resource_name": "Any Beer or Ale"
+            "becomes_vinegar_beer_or_ale_resource_name": "Any Beer or Ale",
+            "prepared_food_breakfast_resource_name": "Breakfast Food",
+            "prepared_food_lunch_resource_name": "Lunch Food",
+            "prepared_food_dinner_resource_name": "Dinner Food"
          }
       }
    },

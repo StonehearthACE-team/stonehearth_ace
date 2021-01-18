@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.highland_vine_transmute_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.highland_vine_transmute_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.highland_vine_transmute_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/vines/highland_vine/seed/highland_vine_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:herb:highland_vine",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:vines:highland_vine:seed"
+      },
+      {
+         "item": "stonehearth_ace:vines:highland_vine:seed"
+      }
+   ]
+}
