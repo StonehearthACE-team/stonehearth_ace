@@ -13,6 +13,8 @@ function AceStorageComponent:create()
 
    if self._type == 'input_crate' then
       self:_set_filter_to_none()
+   elseif self._type == 'output_crate' and self._sv.filter_list == 'stonehearth:ui:stockpile:filters' then
+      self._sv.filter_list = 'stonehearth_ace:ui:output_box:filters'
    end
 end
 
@@ -48,6 +50,9 @@ function AceStorageComponent:activate()
 
    self._sv.is_hidden = json.is_hidden or false -- public inventory that's accessible, but hidden from UI
    self._sv.allow_default = json.allow_default ~= false  -- can be set to town default storage
+   if self._type == 'output_crate' then
+      self._sv.allow_default = false
+   end
 
    if json.limit_all_filter ~= false then
       local filter = {}
