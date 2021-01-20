@@ -174,17 +174,21 @@ function AceFirepitComponent:_extinguish()
          local buff = self._buff
          radiant.entities.remove_buff(self._entity, buff)
       end
-      if is_wood then
-         if self._allow_charcoal then
-            self:_create_residue(self._ember_charcoal_uri, true)
-            self._log:debug('creating a charcoal ember...')
-         else
+      
+      -- only create residue if the firepit is still in the world
+      if radiant.entities.get_world_location(self._entity) then
+         if is_wood then
+            if self._allow_charcoal then
+               self:_create_residue(self._ember_charcoal_uri, true)
+               self._log:debug('creating a charcoal ember...')
+            else
+               self:_create_residue(self._ember_uri, true)
+               self._log:debug('charcoal not allowed, creating common embers...')
+            end
+         elseif is_fuel then
             self:_create_residue(self._ember_uri, true)
-            self._log:debug('charcoal not allowed, creating common embers...')
+            self._log:debug('creating common embers...')
          end
-      elseif is_fuel then
-         self:_create_residue(self._ember_uri, true)
-         self._log:debug('creating common embers...')
       end
    end
 end
