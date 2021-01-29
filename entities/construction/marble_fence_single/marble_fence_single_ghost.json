@@ -1,6 +1,7 @@
 {
    "mixins": [
-      "stonehearth:mixins:placed_object"
+      "stonehearth:mixins:placed_object",
+      "stonehearth_ace:mixins:fence:bar:single"
    ],
    "components": {
       "model_variants": {
@@ -29,10 +30,6 @@
       }
    },
    "entity_data": {
-      "stonehearth_ace:fence_data": {
-         "type": "bar",
-         "length": 1
-      },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.construction.marble_fence_single.marble_fence_single_ghost.display_name)",
          "description": "i18n(stonehearth_ace:entities.construction.marble_fence_single.marble_fence_single_ghost.description)",
