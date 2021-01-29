@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.marble_fencepost_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.marble_fencepost_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.marble_fencepost_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/marble_fencepost/marble_fencepost.png",
+   "level_requirement": 5,
+   "workshop": "stonehearth:mason:pedestal",
+   "ingredients": [
+	   {
+         "uri": "stonehearth_ace:resources:stone:marble_stone",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:marble_fence:end"
+      }
+   ]
+}

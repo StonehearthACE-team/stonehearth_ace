@@ -1,0 +1,48 @@
+{
+   "mixins": [
+      "stonehearth:mixins:placed_object",
+      "stonehearth_ace:mixins:fence:end"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(marble_fencepost.qb)",
+                     "file(marble_fencepost_2.qb)",
+                     "file(marble_fencepost_3.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:marble",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.marble_fencepost.marble_fencepost_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.marble_fencepost.marble_fencepost_ghost.description)",
+         "icon": "file(marble_fencepost.png)",
+         "category": "construction",
+         "material_tags": [
+            "stone",
+            "marble",
+            "defense",
+            "crafted",
+            "fence",
+            "stockpile_defense"
+         ]
+      }
+   }
+}

@@ -1,0 +1,33 @@
+{
+   "delivery_quest_info": {
+      "requirements": [
+         {
+            "type": "give_item",
+            "uri": "stonehearth:consumables:healing_tonic:small",
+            "count": 20,
+            "keep_items": true
+         },
+         {
+            "type": "give_item",
+            "uri": "stonehearth:consumables:light_bandage",
+            "count": 5,
+            "keep_items": true
+         },
+         {
+            "type": "job_level",
+            "uri": "stonehearth:jobs:footman",
+            "level": 3
+         },
+         {
+            "type": "job_level",
+            "uri": "stonehearth:jobs:knight",
+            "level": 3
+         },
+         {
+            "type": "job_level",
+            "uri": "stonehearth:jobs:archer",
+            "level": 3
+         }
+      ]
+   }
+}

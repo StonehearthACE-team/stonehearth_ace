@@ -1,0 +1,41 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(firepit_marble.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:marble",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "portrait": "file(firepit_marble.png)",
+         "display_name": "i18n(stonehearth_ace:entities.decoration.firepit_marble.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.firepit_marble.description)",
+         "icon": "file(firepit_marble.png)",
+         "category": "decoration",
+         "material_tags": [
+            "firepit_marble",
+            "light",
+            "stone",
+            "marble",
+            "light_source",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.marble_table_for_one_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.marble_table_for_one_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.marble_table_for_one_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/marble_table_for_one/marble_table_for_one.png",
+   "level_requirement": 5,
+   "workshop": "stonehearth:mason:pedestal",
+   "ingredients": [
+	   {
+         "uri": "stonehearth_ace:resources:stone:marble_stone",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:marble_table_for_one"
+      }
+   ]
+}

@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.firepit_marble_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.firepit_marble_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.firepit_marble_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/firepit_marble/firepit_marble.png",
+   "level_requirement": 6,
+   "workshop": "stonehearth:mason:pedestal",
+   "ingredients": [
+	   {
+         "uri": "stonehearth_ace:resources:stone:marble_stone",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:firepit_marble"
+      }
+   ]
+}

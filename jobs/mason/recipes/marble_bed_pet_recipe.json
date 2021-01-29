@@ -1,23 +1,22 @@
 {
    "type": "recipe",
-   "effort": 21,
+   "effort": 16,
    "work_units": 3,
    "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.marble_bed_pet_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.mason.recipes.marble_bed_pet_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.marble_bed_pet_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/furniture/marble_bed_pet/marble_bed_pet.png",
-   "workshop": "stonehearth:mason:pedestal",
    "level_requirement": 5,
+   "workshop": "stonehearth:mason:pedestal",
    "ingredients": [
       {
          "uri": "stonehearth_ace:resources:stone:marble_stone",
          "count": 1
       },
-	  {
-         "material": "pelt resource",
+	   {
+         "material": "cloth resource",
          "count": 1
       }
-	  
    ],
    "produces": [
       {

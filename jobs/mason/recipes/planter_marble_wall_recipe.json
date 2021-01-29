@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.planter_marble_wall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.planter_marble_wall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.planter_marble_wall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/planters/planter_marble_wall/planter_marble_wall.png",
+   "level_requirement": 6,
+   "workshop": "stonehearth:mason:pedestal",
+   "ingredients": [
+		{
+         "uri": "stonehearth_ace:resources:stone:marble_stone",
+         "count": 1
+      },
+	   {
+         "material": "clay resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:planters:marble:wall"
+      }
+   ]
+}

@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.marble_dining_table_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.marble_dining_table_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.marble_dining_table_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/marble_dining_table/marble_dining_table.png",
+   "level_requirement": 6,
+   "workshop": "stonehearth:mason:pedestal",
+   "ingredients": [
+	   {
+         "uri": "stonehearth_ace:resources:stone:marble_stone",
+         "count": 2
+      },
+		{
+         "material": "cloth resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:marble_dining_table"
+      }
+   ]
+}

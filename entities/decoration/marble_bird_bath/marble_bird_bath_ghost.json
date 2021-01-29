@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(marble_bird_bath.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:marble",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ],
+         "scale": 0.14
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.marble_bird_bath.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.marble_bird_bath.description)",
+         "icon": "file(marble_bird_bath.png)",
+         "category": "furniture",
+         "material_tags": [
+            "stone",
+            "marble",
+            "decoration",
+            "crafted",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

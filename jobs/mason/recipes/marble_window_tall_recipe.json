@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.marble_window_tall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.marble_window_tall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.marble_window_tall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/marble_window_tall/marble_window_tall.png",
+   "level_requirement": 5,
+   "workshop": "stonehearth:mason:pedestal",
+   "ingredients": [
+	   {
+         "material": "stone resource",
+         "count": 1
+      },
+	   {
+         "uri": "stonehearth_ace:resources:stone:marble_stone",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:marble_window_tall"
+      }
+   ]
+}

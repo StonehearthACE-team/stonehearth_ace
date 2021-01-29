@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.marble_curtains_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.marble_curtains_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.marble_curtains_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/marble_curtains/marble_curtains.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "cloth resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:resources:stone:marble_stone",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:marble_curtains"
+      }
+   ]
+}

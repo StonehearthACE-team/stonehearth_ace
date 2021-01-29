@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(planter_marble_wall.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": -0.55, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": false
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:marble",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ],
+         "scale": 0.105
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.herbalist_planters.planter_marble_wall.display_name)",
+         "description": "i18n(stonehearth_ace:entities.herbalist_planters.planter_marble_wall.description)",
+         "icon": "file(planter_marble_wall.png)",
+         "category": "herbalist_planter",
+         "material_tags": [
+            "crafted",
+            "stone",
+            "marble",
+            "herbalist_planter",
+            "tool",
+            "stockpile_tool"
+         ]
+      }
+   }
+}

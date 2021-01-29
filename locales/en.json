@@ -4469,12 +4469,12 @@
             },
             "highland_vine_transmute_recipe": {
                "recipe_name": "Highland Vine Seeds (x2)",
-               "description": "Separate seeds from the leaves",
-               "flavor": "Only a skilled hand can harvest the weaker seeds, but the leaves are lost in the process."
+               "description": "Separate seeds from the leaves, not the fiber",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
             },
             "silkweed_transmute_recipe": {
                "recipe_name": "Silkweed Seeds (x2)",
-               "description": "Separate seeds from the herbs",
+               "description": "Separate seeds from the leaves, not the fiber",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
             },
             "carrot_transmute_recipe": {
@@ -4531,10 +4531,14 @@
                "recipe_name": "Violet Seeds (x2)"
             },
             "wax_plant_green_transmute_recipe": {
-               "recipe_name": "Green Wax Plant Seeds (x2)"
+               "recipe_name": "Green Wax Plant Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
             },
             "wax_plant_purple_transmute_recipe": {
-               "recipe_name": "Purple Wax Plant Seeds (x2)"
+               "recipe_name": "Purple Wax Plant Seeds (x2)",
+               "description": "Separate seeds from the herbs",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the herbs are lost in the process."
             },
             "wintermoss_transmute_recipe": {
                "recipe_name": "Wintermoss Seeds (x2)"
@@ -5881,6 +5885,8 @@
             "bone_weapons_armor_name": "Weapons & Armor, Bone Carving",
             "bone_furniture_name": "Furniture & Decoration, Bone Carving",
             "bone_building_parts_name": "Building Parts, Bone Carving",
+            "marble_furniture_name": "Furniture & Decoration, Marble",
+            "marble_building_parts_name": "Building Parts, Marble",
             "na_weaver_spindle_recipe": {
                "recipe_name": "Weaver's Bone Spindle",
                "flavor": "Winter may be late but always arrives, you better thread your wool and your hides! -Northern folk saying"
@@ -6097,11 +6103,6 @@
                "description": "Allows animals to have a more comfortable sleep.",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
-            "marble_bed_pet_recipe": {
-               "recipe_name": "Marble Animal Comfy Bed",
-               "description": "Animals will have a wonderful time sleeping in this bed!",
-               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
-            },
             "fuel_holder_large_stone_recipe": {
                "recipe_name": "Stone Firewood Shed",
                "description": "Build a reliable storage shed that will keep up to 18 Bundles O' Firewood ready to be used.",
@@ -6238,6 +6239,121 @@
             "stone_bench_recipe": {
                "recipe_name": "Stone Wide Chair",
                "description": "Perfect for sitting by the hearth at night or somewhere outside."
+            },
+            "marble_chair_recipe": {
+               "recipe_name": "Marble Comfy Chair",
+               "description": "A fancy and very elaborate stone chair.",
+               "flavor": "Become the emperor of the dining room"
+            },
+            "marble_table_for_one_recipe": {
+               "recipe_name": "Marble Table for One",
+               "description": "Contemplate your loneliness in luxury.",
+               "flavor": ""
+            },
+            "marble_dining_table_recipe": {
+               "recipe_name": "Marble Dining Table",
+               "description": "An exquisite stone table for having grand meals.",
+               "flavor": "Fancy tablecloth included"
+            },
+            "marble_bird_bath_recipe": {
+               "recipe_name": "Marble Bird Bath",
+               "description": "It's like a tiny swimming pool.",
+               "flavor": ""
+            },
+            "marble_brazier_recipe": {
+               "recipe_name": "Marble Brazier",
+               "description": "A beautiful and ornate stone brazier.",
+               "flavor": "Lights the way"
+            },
+            "marble_comfy_bed_recipe": {
+               "recipe_name": "Marble Comfy Bed",
+               "description": "One of the most comfortable and fancy beds we can imagine.",
+               "flavor": "For a good night of sleep"
+            },
+            "marble_bed_pet_recipe": {
+               "recipe_name": "Marble Animal Comfy Bed",
+               "description": "Animals will have a wonderful time sleeping in this bed!",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
+            "marble_chest_recipe": {
+               "recipe_name": "Marble Chest",
+               "description": "Hiding the stuff isn't enough? Hide the stuff with style!",
+               "flavor": ""
+            },
+            "marble_garden_lantern_recipe": {
+               "recipe_name": "Marble Garden Lantern",
+               "description": "Provides light when placed on the floor.",
+               "flavor": ""
+            },
+            "marble_wall_lantern_recipe": {
+               "recipe_name": "Marble Wall Lantern",
+               "description": "Provides light when placed against walls.",
+               "flavor": "A bit too much, maybe?"
+            },
+            "marble_double_door_recipe": {
+               "recipe_name": "Marble Double Door",
+               "description": "A strong, reliable and beautiful door.",
+               "flavor": ""
+            },
+            "marble_door_recipe": {
+               "recipe_name": "Marble Door",
+               "description": "The perfect door for your beautiful manor.",
+               "flavor": "Are you even worth it?"
+            },
+            "marble_fencepost_recipe": {
+               "recipe_name": "Marble Fence Post",
+               "description": "Provides a corner to your land.",
+               "flavor": "No, I'm sorry, your land doesn't stretch forever"
+            },
+            "marble_fence_double_recipe": {
+               "recipe_name": "Marble Fence Long",
+               "description": "A long segment of wall.",
+               "flavor": ""
+            },
+            "marble_fence_single_recipe": {
+               "recipe_name": "Marble Fence Short",
+               "description": "A short segment of wall.",
+               "flavor": "Quite heavy, though!"
+            },
+            "marble_fence_gate_recipe": {
+               "recipe_name": "Marble Fence Gate",
+               "description": "An incredible invention that allows you to transit between two sides of a wall.",
+               "flavor": "It's magic!"
+            },
+            "marble_fountain_recipe": {
+               "recipe_name": "Marble Fountain",
+               "description": "No garden is complete without a marble fountain.",
+               "flavor": "Except most gardens"
+            },
+            "marble_window_recipe": {
+               "recipe_name": "Marble Window",
+               "description": "Look from inside... But don't go there!",
+               "flavor": ""
+            },
+            "marble_window_tall_recipe": {
+               "recipe_name": "Tall Marble Window",
+               "description": "Fancier than the average tall window.",
+               "flavor": ""
+            },
+            "marble_window_wide_recipe": {
+               "recipe_name": "Wide Marble Window",
+               "description": "For more than one person to look outside at once.",
+               "flavor": ""
+            },
+            "marble_window_large_recipe": {
+               "recipe_name": "Large Marble Window",
+               "description": "An elaborate, amazing piece of stonework.",
+               "flavor": ""
+            },
+            "firepit_marble_recipe": {
+               "recipe_name": "Marble Firepit",
+               "description": "Bringing light and warmth everywhere.",
+               "flavor": "Everywhere they can afford marble, that is"
+            },
+            "planter_marble_wall_recipe": {
+               "recipe_name": "Marble Wall Planter",
+               "description": "Your plants deserve this, don't they?",
+               "flavor": "Yes, they do!"
             },
             "frostfeast": {
                "present_small_recipe": {
@@ -7643,9 +7759,19 @@
                "flavor": "Light has never been so beautifully blocked"
             },
             "ornate_curtains_wide_recipe": {
-               "recipe_name": "Ornate Curtains Wide",
+               "recipe_name": "Ornate Wide Curtains",
                "description": "Create curtains for a very special household.",
                "flavor": ""
+            },
+            "marble_curtains_recipe": {
+               "recipe_name": "Marble Curtains",
+               "description": "Create a very regal set of long curtains.",
+               "flavor": ""
+            },
+            "marble_curtains_wide_recipe": {
+               "recipe_name": "Marble Wide Curtains",
+               "description": "Create a very regal set of long and wide curtains.",
+               "flavor": "So many windows!"
             },
             "ornate_throw_rug_recipe": {
                "recipe_name": "Ornate Throw Rug",
@@ -9260,6 +9386,34 @@
          "ornate_double_curtain_door": {
             "display_name": "Ornate Curtain Double Door",
             "description": "You feel like you need to be well dressed to go through these."
+         },
+         "marble_window_wide": {
+            "display_name": "Wide Marble Window",
+            "description": "There are sizes for everyone!"
+         },
+         "marble_fence_double": {
+            "marble_fence_double_ghost": {
+               "display_name": "Marble Fence Long",
+               "description": "The prettiest protection."
+            }
+         },
+         "marble_fence_single": {
+            "marble_fence_single_ghost": {
+               "display_name": "Marble Fence Short",
+               "description": "Heavier than it looks like."
+            }
+         },
+         "marble_fencepost": {
+            "marble_fencepost_ghost": {
+               "display_name": "Marble Fence Post",
+               "description": "A strong cornerstone."
+            }
+         },
+         "marble_fence_gate": {
+            "marble_fence_gate_ghost": {
+               "display_name": "Marble Fence Gate",
+               "description": "Must have some really strong hinges..."
+            }
          }
       },
       "crops": {
@@ -10051,6 +10205,10 @@
          "planter_glowshroom": {
             "display_name": "Glowshroom Planter",
             "description": "Your town has accepted to temporarily take care of these glowshroom."
+         },
+         "planter_marble_wall": {
+            "display_name": "Wall-Mounted Marble Planter",
+            "description": "The Herbalist can cultivate renewable herbs in it."
          }
       },
       "resources": {
@@ -11671,6 +11829,30 @@
                "display_name": "Stone Wide Chair",
                "description": "Sit by the fire with plenty of room."
             }
+         },
+         "marble_chair": {
+            "marble_chair_ghost": {
+               "display_name": "Marble Comfy Chair",
+               "description": "Become the emperor of the dining room."
+            }
+         },
+         "marble_comfy_bed": {
+            "marble_comfy_bed_ghost": {
+               "display_name": "Marble Comfy Bed",
+               "description": "For dreaming about conquest and glory."
+            }
+         },
+         "marble_dining_table": {
+            "marble_dining_table_ghost": {
+               "display_name": "Marble Dining Table",
+               "description": "Fancy tablecloth included."
+            }
+         },
+         "marble_table_for_one": {
+            "marble_table_for_one_ghost": {
+               "display_name": "Marble Table for One",
+               "description": "Contemplate your loneliness in luxury."
+            }
          }
       },
       "recipes": {
@@ -12870,6 +13052,42 @@
          "silver_pitcher": {
             "display_name": "Silver Pitcher",
             "description": "So reflective that you'll make funny faces!"
+         },
+         "firepit_marble": {
+            "display_name": "Marble Firepit",
+            "description": "Will bring warmth to your fancy household."
+         },
+         "marble_bird_bath": {
+            "display_name": "Marble Bird Bath",
+            "description": "It's like a tiny swimming pool."
+         },
+         "marble_brazier": {
+            "display_name": "Marble Brazier"
+         },
+         "marble_brazir": {
+            "description": "Lights the way."
+         },
+         "marble_curtains": {
+            "display_name": "Marble Curtains",
+            "description": "Ensure the privacy of your estate."
+         },
+         "marble_curtains_wide": {
+            "display_name": "Marble Wide Curtains",
+            "description": "Bigger windows require extreme measures."
+         },
+         "marble_fountain": {
+            "display_name": "Marble Fountain",
+            "description": "Your garden will never be the same anymore."
+         },
+         "marble_garden_lantern": {
+            "display_name": "Marble Garden Lantern",
+            "description": "No path goes downhill when lit by this one."
+         },
+         "marble_wall_lantern": {
+            "display_name": "Marble Wall Lantern"
+         },
+         "marlbe_wall_lantern": {
+            "description": "As if having marble everywhere else wasn't enough."
          }
       },
       "pets": {
@@ -15713,6 +15931,10 @@
          "embark_wagon": {
             "display_name": "Wooden Wagon",
             "description": "Provides initial storage. Harvest it to let go of road trip memories and get some wood."
+         },
+         "marble_chest": {
+            "display_name": "Marble Chest",
+            "description": "Perfect hiding place for all your riches."
          }
       },
       "tools": {
