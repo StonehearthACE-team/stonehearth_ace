@@ -1,15 +1,15 @@
 local Entity = _radiant.om.Entity
 
-local LoopHuntAnimalMelee = radiant.class()
+local HuntAnimalMelee = radiant.class()
 
-LoopHuntAnimalMelee.name = 'keep hunting this animal'
-LoopHuntAnimalMelee.does = 'stonehearth_ace:loop_hunt_animal'
-LoopHuntAnimalMelee.args = {
+HuntAnimalMelee.name = 'keep hunting this animal'
+HuntAnimalMelee.does = 'stonehearth_ace:hunt_animal'
+HuntAnimalMelee.args = {
    target = Entity,                  -- the animal to hunt
 }
-LoopHuntAnimalMelee.priority = 0.5
+HuntAnimalMelee.priority = 0.5
 
-function LoopHuntAnimalMelee:start_thinking(ai, entity, args)
+function HuntAnimalMelee:start_thinking(ai, entity, args)
    local weapon = stonehearth.combat:get_main_weapon(entity)
    if weapon == nil or not weapon:is_valid() then
       log:warning('%s has no weapon', entity)
@@ -21,12 +21,8 @@ function LoopHuntAnimalMelee:start_thinking(ai, entity, args)
    ai:set_think_output({})
 end
 
-function LoopHuntAnimalMelee:run(ai, entity, args)
-   while radiant.entities.exists(args.target) do
-      ai:execute('stonehearth:combat:attack', {
-         target = args.target,
-      })
-   end
-end
-
-return LoopHuntAnimalMelee
+local ai = stonehearth.ai
+return ai:create_compound_action(HuntAnimalMelee)
+         :execute('stonehearth:combat:attack', {
+            target = ai.ARGS.target,
+         })

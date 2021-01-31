@@ -1,7 +1,7 @@
 local HuntAnimalAction = radiant.class()
 
 HuntAnimalAction.name = 'hunt animal'
-HuntAnimalAction.does = 'stonehearth_ace:hunt_animal'
+HuntAnimalAction.does = 'stonehearth_ace:hunt'
 HuntAnimalAction.args = {
    category = 'string',  -- The category for hunting
 }
@@ -28,7 +28,7 @@ function HuntAnimalAction:start_thinking(ai, entity, args)
    local work_player_id = radiant.entities.get_work_player_id(entity)
    local category = args.category
 
-   local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:hunt_animal', work_player_id .. ':' .. category, function(item)
+   local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:hunt', work_player_id .. ':' .. category, function(item)
          return _hunt_filter_fn(work_player_id, category, item)
       end)
 
@@ -61,7 +61,7 @@ function HuntAnimalAction:stop_thinking(ai, entity, args)
 end
 
 function HuntAnimalAction:compose_utility(entity, self_utility, child_utilities, current_activity)
-   return self_utility * 0.9 + child_utilities:get('stonehearth_ace:loop_hunt_animal') * 0.1
+   return self_utility * 0.9 + child_utilities:get('stonehearth_ace:hunt_animal') * 0.1
 end
 
 local ai = stonehearth.ai
@@ -84,6 +84,6 @@ return ai:create_compound_action(HuntAnimalAction)
             item = ai.BACK(1).item,
          })
          :execute('stonehearth:set_posture', { posture = 'stonehearth:combat' })
-         :execute('stonehearth_ace:loop_hunt_animal', {
+         :execute('stonehearth_ace:hunt_animal', {
             target = ai.BACK(3).item,
          })

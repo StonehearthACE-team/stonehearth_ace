@@ -5,4 +5,4 @@ HuntingTaskGroup.priority = 0.58
 
 return stonehearth.ai:create_task_group(HuntingTaskGroup)
          :work_order_tag("job")
-         :declare_permanent_task('stonehearth_ace:hunt_animal', {category = 'hunt'}, 1.0)
+         :declare_permanent_task('stonehearth_ace:hunt', {category = 'hunt'}, 1.0)

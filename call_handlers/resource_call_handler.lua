@@ -296,7 +296,7 @@ function ResourceCallHandler:server_box_hunt(session, response, box)
    end
 end
 
-local HUNT_ACTION = 'stonehearth_ace:hunt_animal'
+local HUNT_ACTION = 'stonehearth_ace:hunt'
 function ResourceCallHandler:hunt_entity(session, response, entity, from_harvest_tool)
    validator.expect_argument_types({'Entity', validator.optional('boolean')}, entity, from_harvest_tool)   
 
@@ -352,6 +352,7 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
    stonehearth.selection:select_location()
       :set_recheck_filter_on_rotation(buildable_data.recheck_filter_on_rotation)
       :set_cursor_entity(entity)
+      --:create_footprint()
       :set_filter_fn(function (result, selector)
             local this_entity = result.entity   
             local normal = result.normal:to_int()

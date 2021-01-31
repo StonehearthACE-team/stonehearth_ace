@@ -18,9 +18,9 @@
    "client_init_script": "file(stonehearth_ace_client)",
    "server_init_script": "file(stonehearth_ace_server)",
    "aliases": {
-      "actions:combat:hunt_animal": "file(ai/actions/hunt_animal_action.lua)",
-      "actions:combat:loop_hunt_animal_melee": "file(ai/actions/loop_hunt_animal_melee_action.lua)",
-      "actions:combat:loop_hunt_animal_ranged": "file(ai/actions/loop_hunt_animal_ranged_action.lua)",
+      "actions:combat:hunt": "file(ai/actions/hunt_action.lua)",
+      "actions:combat:hunt_animal_melee": "file(ai/actions/hunt_animal_melee_action.lua)",
+      "actions:combat:hunt_animal_ranged": "file(ai/actions/hunt_animal_ranged_action.lua)",
       "actions:compelled_behaviors:compelled_sleep": "file(ai/actions/compelled_behaviors/compelled_sleep_action.lua)",
       "actions:compelled_behaviors:cower": "file(ai/actions/compelled_cower.lua)",
       "actions:compelled_behaviors:wander": "file(ai/actions/compelled_wander.lua)",
