@@ -3,8 +3,18 @@ local AceWorkshopComponent = class()
 
 local log = radiant.log.create_logger('workshop')
 
+AceWorkshopComponent._ace_old_restore = WorkshopComponent.restore -- this should be getting run in activate
+function AceWorkshopComponent:restore()
+   self._is_restore = true
+end
+
 AceWorkshopComponent._ace_old_activate = WorkshopComponent.activate -- doesn't exist!
 function AceWorkshopComponent:activate()
+   -- this needs to get done after inventory controllers have their restore run; so do it now
+   if self._is_restore then
+      self:_ace_old_restore()
+   end
+   
    local json = radiant.entities.get_json(self) or {}
    if not self._sv.crafting_time_modifier then
       self._sv.crafting_time_modifier = json.crafting_time_modifier
