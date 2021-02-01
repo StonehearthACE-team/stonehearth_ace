@@ -3010,6 +3010,10 @@
             "wine_cask_fill_must_prickly_pear": {
                "display_name": "Produce Prickly Pear Wine",
                "description": "Order the Brewer to fill this fermenting vessel with prickly pear must! This Wine Cask will continue producing Prickly Pear Wine unless a new command is given."
+            },
+            "wine_cask_fill_vinegar_2": {
+               "display_name": "Produce Vinegar from Unfermented Juice Vinegar",
+               "description": "Order the Brewer to fill this fermenting cask with unfermented juice vinegar. The ingredient will then turn into one jug of vinegar! The Cask will continue producing Vinegar unless a new command is given."
             }
          },
          "slaughter": {
@@ -8268,6 +8272,11 @@
                "description": "Prepare any wine to be fermented again. Within a Wine Cask it can be turned into three jugs of vinegar.",
                "flavor": "Wine is most efficient vinegar ingredient"
             },
+            "unfermented_vinegar_juice_recipe": {
+               "recipe_name": "Unfermented Juice Vinegar",
+               "description": "Prepare an appropriate fruit juice to be fermented. Within a Wine Cask it can be turned into one jug of vinegar.",
+               "flavor": "Juice is the least efficient vinegar ingredient - but also the cheapest!"
+            },
             "wort_gruit_recipe": {
                "recipe_name": "Bucket of Gruit Wort",
                "description": "A bitter and strong mash of grains and gruit. Within a Fermentation Vat it can be turned into beer!",
@@ -8760,6 +8769,14 @@
          "brewer_wine_cask_wine_prickly_pear": {
             "display_name": "Prickly Pear Wine Cask",
             "description": "The wine is finally ready! It can now be racked into jugs!"
+         },
+         "brewer_wine_cask_unfermented_vinegar_2": {
+            "display_name": "Fermenting Vinegar Cask",
+            "description": "The juice is fermenting and will soon turn into vinegar!"
+         },
+         "brewer_wine_cask_vinegar_2": {
+            "description": "The vinegar is ready! It can now be racked into a jug!",
+            "display_name": "Vinegar Cask"
          }
       },
       "professional_beekeeping_hat": {
@@ -14200,6 +14217,10 @@
             "unfermented_vinegar_wine": {
                "display_name": "Unfermented Wine Vinegar",
                "description": "A Brewer can use this to make vinegar within a wine cask."
+            },
+            "unfermented_vinegar_juice": {
+               "display_name": "Unfermented Juice Vinegar",
+               "description": "A Brewer can use this to make vinegar within a wine cask."
             }
          },
          "egg": {
@@ -18296,7 +18317,8 @@
             "becomes_vinegar_beer_or_ale_resource_name": "Any Beer or Ale",
             "prepared_food_breakfast_resource_name": "Breakfast Food",
             "prepared_food_lunch_resource_name": "Lunch Food",
-            "prepared_food_dinner_resource_name": "Dinner Food"
+            "prepared_food_dinner_resource_name": "Dinner Food",
+            "becomes_vinegar_juice_resource_name": "Any Juice"
          }
       }
    },

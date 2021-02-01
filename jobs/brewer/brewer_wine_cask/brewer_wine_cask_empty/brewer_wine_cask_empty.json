@@ -110,6 +110,18 @@
                   "stonehearth_ace:jobs:brewer": true
                },
                "apply_ingredient_quality": true
+            },
+            "vinegar_juice": {
+               "transform_uri": "stonehearth_ace:brewer:wine_cask:unfermented_vinegar_2",
+               "command": "stonehearth_ace:commands:transform:wine_cask_fill:vinegar_2",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:food:vinegar:unfermented:juice",
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth_ace:jobs:brewer": true
+               },
+               "apply_ingredient_quality": true
             }
          }
       },
