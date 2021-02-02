@@ -1,0 +1,13 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth_ace/jobs/cook/recipes/cook_table_recipe.json",
+   "portrait": "/stonehearth_ace/jobs/cook/rc_cook_table/rc_cook_table.png",
+   "mixintypes": {
+	  "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth_ace:rayyas_children:cook:table"
+      }
+   ]
+}

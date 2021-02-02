@@ -6914,6 +6914,11 @@
             "food_preparation_name": "Preparation",
             "brewing_name": "Brewing Ingredients",
             "animal_feed_name": "Pet Kibble",
+            "cook_table_recipe": {
+               "recipe_name": "Cook's Table",
+               "description": "A good flat surface for kneading and preparing stuff.",
+               "flavor": "Get those hands dirty!"
+            },
             "cereals_corn_recipe": {
                "recipe_name": "Bowl of Corn Cereal",
                "description": "Pour milk on top of delicious baked flakes of corn.",
@@ -7318,6 +7323,12 @@
          "cook_oven": {
             "cook_oven_ghost": {
                "description": "Great for roasting things. Requires lower grade fuel."
+            }
+         },
+         "cook_table": {
+            "cook_table_ghost": {
+               "display_name": "Cooking Table",
+               "description": "Used by the Cook for all sorts of kneading and preparing."
             }
          }
       },

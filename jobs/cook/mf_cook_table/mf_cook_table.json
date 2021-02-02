@@ -1,0 +1,58 @@
+{
+   "type": "entity",
+   "mixins": "file(mf_cook_table_ghost.json)",
+   "components": {
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:workshop": {
+         "job_alias": "stonehearth:jobs:cook",
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/cook/cook_table/effects/work.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/jobs/cook/cook_table/effects/idle.json"
+      },
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(mf_cook_table_ghost.json)",
+         "iconic_form": "file(mf_cook_table_iconic.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "alternate_builder_uri": "stonehearth_ace:cook:table"
+      },
+      "stonehearth:table": {
+         "drop_effect": "carry_putdown_on_table",
+         "drop_offset": { "x": -0.5, "y": -100, "z": -0.5 }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 5,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
