@@ -14,6 +14,7 @@
    },
    "entity_data": {
       "stonehearth_ace:transform_data": {
+         "progress_text": "stonehearth_ace:ui.game.unit_frame.transform.progress.filling",
          "transform_options": {
             "wine_berry": {
                "transform_uri": "stonehearth_ace:brewer:wine_cask:must_berry",
@@ -21,6 +22,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:drink:must_berry",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true
@@ -33,6 +35,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:drink:must_cherry",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true
@@ -45,6 +48,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:drink:must_prickly_pear",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true
@@ -57,6 +61,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:drink:must_apple",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true
@@ -69,6 +74,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:drink:must_pear",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true
@@ -81,6 +87,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:drink:must_plum",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true
@@ -93,6 +100,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:drink:must_date",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true
@@ -105,6 +113,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:food:vinegar:unfermented:wine",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true
@@ -117,6 +126,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:food:vinegar:unfermented:juice",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true

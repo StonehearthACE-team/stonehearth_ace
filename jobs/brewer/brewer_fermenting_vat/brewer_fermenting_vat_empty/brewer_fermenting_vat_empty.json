@@ -26,6 +26,7 @@
    },
    "entity_data": {
       "stonehearth_ace:transform_data": {
+         "progress_text": "stonehearth_ace:ui.game.unit_frame.transform.progress.filling",
          "transform_options": {
             "ale": {
                "transform_uri": "stonehearth_ace:brewer:fermenting_vat:wort",
@@ -33,6 +34,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:drink:wort",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true
@@ -45,6 +47,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:drink:wort_gruit",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true
@@ -57,6 +60,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:food:vinegar:unfermented:brew",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true

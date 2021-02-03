@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "upgrade_clay_comfy_bed",
+   "group": "construction_choice",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.upgrade_clay_comfy_bed.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.upgrade_clay_comfy_bed.description)",
+   "default_enabled": true,
+   "ordinal": 99,
+   "icon": "file(upgrade_clay_comfy_bed.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "clay_comfy_bed"
+   ]
+}

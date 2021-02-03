@@ -3014,6 +3014,30 @@
             "wine_cask_fill_vinegar_2": {
                "display_name": "Produce Vinegar from Unfermented Juice Vinegar",
                "description": "Order the Brewer to fill this fermenting cask with unfermented juice vinegar. The ingredient will then turn into one jug of vinegar! The Cask will continue producing Vinegar unless a new command is given."
+            },
+            "upgrade_comfy_bed": {
+               "description": "Order a worker to replace this bed with a Comfy Bed created by the Carpenter. A craft order will be given if no Comfy Bed is found in the town's inventory. The bed owner will remain the same.",
+               "display_name": "Replace with Comfy Bed"
+            },
+            "upgrade_stone_comfy_bed": {
+               "description": "Order a worker to replace this bed with a Stone Comfy Bed created by the Mason. A craft order will be given if no Stone Comfy Bed is found in the town's inventory. The bed owner will remain the same.",
+               "display_name": "Replace with Stone Comfy Bed"
+            },
+            "upgrade_clay_comfy_bed": {
+               "description": "Order a worker to replace this bed with a Clay Comfy Bed created by the Potter. A craft order will be given if no Clay Comfy Bed is found in the town's inventory. The bed owner will remain the same.",
+               "display_name": "Replace with Clay Comfy Bed"
+            },
+            "upgrade_marble_comfy_bed": {
+               "display_name": "Replace with Marble Comfy Bed",
+               "description": "Order a worker to replace this bed with a Marble Comfy Bed created by the Mason. A craft order will be given if no Marble Comfy Bed is found in the town's inventory. The bed owner will remain the same."
+            },
+            "upgrade_ornate_comfy_bed": {
+               "display_name": "Replace with Ornate Comfy Bed",
+               "description": "Order a worker to replace this bed with an Ornate Comfy Bed created by the Carpenter. A craft order will be given if no Ornate Comfy Bed is found in the town's inventory. The bed owner will remain the same."
+            },
+            "upgrade_porcelain_comfy_bed": {
+               "display_name": "Replace with Porcelain Comfy Bed",
+               "description": "Order a worker to replace this bed with a Porcelain Comfy Bed created by the Potter. A craft order will be given if no Porcelain Comfy Bed is found in the town's inventory. The bed owner will remain the same."
             }
          },
          "slaughter": {
@@ -12848,7 +12872,7 @@
          "megacrop": {
             "mega_pumpkin": {
                "display_name": "Mega Pumpkin",
-               "description": "Woah, look at the size! Harvest it for special oinker food or prepare a hearty soup!"
+               "description": "So big! Harvest it for special oinker food or prepare a hearty soup!"
             },
             "mega_pumpkin_soup": {
                "display_name": "Mega Pumpkin Soup",
@@ -17954,8 +17978,11 @@
             "transform": {
                "progress": {
                   "building": "Building... ",
+                  "upgrading": "Upgrading... ",
                   "opening": "Opening...",
-                  "transforming": "Transforming..."
+                  "transforming": "Transforming...",
+                  "filling": "Filling...",
+                  "draining": "Draining..."
                }
             },
             "attack_with_all_parties": {

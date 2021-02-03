@@ -14,6 +14,7 @@
    },
    "entity_data": {
       "stonehearth_ace:transform_data": {
+         "progress_text": "stonehearth_ace:ui.game.unit_frame.transform.progress.filling",
          "transform_options": {
             "mead": {
                "transform_uri": "stonehearth_ace:brewer:fermenting_carboy:unfermented_mead",
@@ -21,6 +22,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:drink:unfermented_mead",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true
@@ -33,6 +35,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:drink:unfermented_mead_fruit",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true
@@ -45,6 +48,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:food:vinegar:unfermented:mead",
+               "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
                   "stonehearth_ace:jobs:brewer": true

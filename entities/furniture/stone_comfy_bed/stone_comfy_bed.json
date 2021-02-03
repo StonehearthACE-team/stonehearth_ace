@@ -1,6 +1,9 @@
 {
    "type": "entity",
-   "mixins": "file(stone_comfy_bed_ghost.json)",
+   "mixins": [
+      "file(stone_comfy_bed_ghost.json)",
+      "stonehearth_ace:mixins:bed:tier_2"
+   ],
    "components": {
       "stonehearth:entity_forms": {
          "iconic_form": "file(stone_comfy_bed_iconic.json)",
@@ -37,6 +40,18 @@
       },
       "stonehearth:ownable_object": {
          "ownership_type": "bed"
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "roll_type": "each_of",
+               "items": {
+                  "bed": {
+                     "uri": "stonehearth_ace:furniture:stone_comfy_bed"
+                  }
+               }
+            }
+         }
       }
    },
    "entity_data": {

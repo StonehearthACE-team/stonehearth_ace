@@ -1,6 +1,6 @@
 {
    "mixins": [
-      "stonehearth_ace:mixins:bed:tier_2"
+      "stonehearth_ace:mixins:bed:tier_1"
    ],
    "components": {
       "stonehearth:loot_drops": {
@@ -9,18 +9,10 @@
                "roll_type": "each_of",
                "items": {
                   "bed": {
-                     "uri": "stonehearth:furniture:comfy_bed"
+                     "uri": "stonehearth:furniture:clay_bed"
                   }
                }
             }
-         }
-      }
-   },
-   "entity_data": {
-      "stonehearth:bed": {
-         "shelter": {
-            "contribution_threshold": 80,
-            "score": 9
          }
       }
    }
