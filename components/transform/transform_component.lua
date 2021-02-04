@@ -287,6 +287,7 @@ function TransformComponent:transform(transformer)
       auto_harvest = transform_data.auto_harvest,
       transform_script = transform_data.transform_script,
       kill_entity = transform_data.kill_entity,
+      undeploy_entity = transform_data.undeploy_entity,
 		model_variant = transform_data.model_variant,
       destroy_entity = transform_data.destroy_entity,
       remove_components = transform_data.remove_components,
@@ -303,7 +304,8 @@ function TransformComponent:transform(transformer)
    -- specifically check for false; nil means it happened but no new entity was created to replace this one
    -- actually, all the more reason to cancel; otherwise it'll just keep going!
    -- if the entity is destroyed but no transformed entity is created (e.g., killed for loot bag), we don't need to cancel things
-   if not transformed and self._entity:is_valid() then
+   -- in fact, if the entity is still around at all (failed / undeployed / not destroyed), cancel its transform
+   if self._entity:is_valid() then
       -- if we failed, cancel the requested transform action, if there was one, and destroy the progress
       self:_set_transformable()
       self:_destroy_progress()

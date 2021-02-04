@@ -1,6 +1,7 @@
 local rng = _radiant.math.get_default_rng()
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local resources_lib = require 'stonehearth_ace.lib.resources.resources_lib'
+local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 
 local transform_lib = {}
@@ -37,6 +38,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
    local location = radiant.entities.get_world_grid_location(entity)
    local facing = radiant.entities.get_facing(entity)
 
+   local root_form, iconic_form = entity_forms_lib.get_forms(entity)
    local transformed_form
 
    if into_uri and into_uri ~= '' then
@@ -189,6 +191,9 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          loot_drops_component:set_auto_loot_player_id(player_id)
       end
       radiant.entities.kill_entity(entity)
+   elseif options.undeploy_entity and iconic_form and location then
+      -- option to undeploy, but only use it if there's an iconic form
+      radiant.entities.output_spawned_items({[iconic_form:get_id()] = iconic_form}, location, 1, 3, nil, options.transformer_entity, nil, true)
    elseif options.destroy_entity ~= false then
       radiant.entities.destroy_entity(entity)
    elseif options.remove_components then
