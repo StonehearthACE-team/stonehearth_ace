@@ -52,7 +52,10 @@ function AceExpendableResourcesRenderer:initialize(render_entity, datastore)
          update_is_non_npc(e.new_value)
       end)
 
-   update_is_non_npc(stonehearth.presence_client:is_non_npc(self._entity:get_player_id()))
+   local player_id = self._entity:get_player_id()
+   if stonehearth.presence_client:has_player(player_id) then
+      update_is_non_npc(stonehearth.presence_client:is_non_npc(player_id))
+   end
 end
 
 --AceExpendableResourcesRenderer._ace_old__update = ExpendableResourcesRenderer._update
