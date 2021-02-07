@@ -111,6 +111,7 @@ local monkey_patches = {
    ace_loot_table = 'stonehearth.lib.loot_table.loot_table',
    ace_memorialize_death_action = 'stonehearth.ai.actions.memorialize_death_action',
    ace_mining_zone_component = 'stonehearth.components.mining_zone.mining_zone_component',
+   ace_ownable_object_component = 'stonehearth.components.ownership.ownable_object_component',
    ace_party_component = 'stonehearth.components.party.party_component',
    ace_patrollable_object = 'stonehearth.services.server.town_patrol.patrollable_object',
    ace_periodic_health_modification = 'stonehearth.data.buffs.scripts.periodic_health_modification',

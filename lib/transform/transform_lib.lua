@@ -68,8 +68,27 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          local transformed_owner_component = transformed_form:get_component('stonehearth:ownable_object')
          if transformed_owner_component then
             -- need to remove the original's owner so that destroying it later doesn't mess things up with the new entity's ownership
+            -- but if it's a medic patient bed (or some other proxy owner), we want to transfer (duplicate) the proxy owner
+            -- likewise if it's reserved for travelers
+            local owner_proxy = owner:get_component('stonehearth_ace:owner_proxy')
+            local new_owner_proxy
+            local reserve_for_travelers = owner:get_component('stonehearth:traveler_reservation') and true
+
+            if owner_proxy then
+               local new_owner = radiant.entities.create_entity(owner:get_uri())
+               new_owner_proxy = new_owner:add_component('stonehearth_ace:owner_proxy')
+               new_owner_proxy:set_type(owner_proxy:get_type())
+            end
+
             owner_component:set_owner(nil)
-            transformed_owner_component:set_owner(owner)
+
+            if new_owner_proxy then
+               new_owner_proxy:track_reservation(transformed_form)
+            elseif reserve_for_travelers then
+               stonehearth.traveler:reserve_for_travelers(transformed_form)
+            else
+               transformed_owner_component:set_owner(owner)
+            end
          end
       end
 		

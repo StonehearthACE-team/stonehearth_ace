@@ -2267,6 +2267,7 @@
       "ostrich:young": "file(entities/critters/ostrich_young/ostrich_young.json)",
       "outfits:trader_outfit": "file(entities/outfits/trader_outfit/trader_outfit.json)",
       "outfits:trader_outfit:hat": "file(entities/outfits/trader_outfit/hat/trader_outfit_hat.json)",
+      "owner_proxy:bed_owner": "file(entities/owner_proxy/bed_owner.json)",
       "pets:duck": "file(entities/pets/duck/duck.json)",
       "pets:kitten:mila": "file(entities/pets/mila/mila.json)",
       "pets:kitten:teddy": "file(entities/pets/teddy/teddy.json)",
@@ -5237,6 +5238,8 @@
       "stonehearth/ui/game/modes/zones_mode/pasture/pasture.html": "file(ui/game/modes/zones_mode/pasture/pasture.html)",
       "stonehearth/ui/game/modes/zones_mode/stockpile/stockpile.html": "file(ui/game/modes/zones_mode/stockpile/stockpile.html)",
       "stonehearth/ui/game/promotion_tree/promotion_tree.html": "stonehearth_ace/ui/game/promotion_tree/promotion_tree.html",
+      "stonehearth/ui/game/people_picker/bed_ownership_picker.js": "stonehearth_ace/ui/game/people_picker/bed_ownership_picker.js",
+      "stonehearth/ui/game/people_picker/people_picker.html": "stonehearth_ace/ui/game/people_picker/people_picker.html",
       "stonehearth/ui/game/show_workshop/show_team_workshop.html": "file(ui/game/show_workshop/show_team_workshop.html)",
       "stonehearth/ui/game/town/town.html": "file(ui/game/town/town.html)",
       "stonehearth/ui/game/traces/catalog.js": "file(ui/game/traces/catalog.js)",
@@ -5278,6 +5281,7 @@
       "mechanical": "file(components/mechanical/mechanical_component.lua)",
       "models": "file(components/models/models_component.lua)",
       "output": "file(components/output/output_component.lua)",
+      "owner_proxy": "file(components/owner_proxy/owner_proxy_component.lua)",
       "pasture_item": "file(components/pasture_item/pasture_item_component.lua)",
       "patrol_banner": "file(components/patrol_banner/patrol_banner_component.lua)",
       "pile": "file(components/pile/pile_component.lua)",
@@ -5531,6 +5535,10 @@
          "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
          "endpoint": "server"
       },
+      "assign_ownership_proxy": {
+         "controller": "file(call_handlers/town_call_handler.lua)",
+         "endpoint": "server"
+      },
       "has_guildmaster_town_bonus": {
          "controller": "file(call_handlers/town_call_handler.lua)",
          "endpoint": "server"
@@ -5720,6 +5728,7 @@
          "file(ui/game/modes/military_mode/military_mode.js)",
          "file(ui/game/modes/fence_mode/fence_mode.js)",
          "file(ui/game/modes/planter/planter.js)",
+         "file(ui/game/people_picker/people_picker.js)",
          "file(ui/game/town/town.js)",
          "file(ui/game/task_manager/task_manager.js)",
          "file(ui/game/component_info/component_info.js)",

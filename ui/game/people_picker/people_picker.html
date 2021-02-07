@@ -1,0 +1,86 @@
+<script type="text/x-handlebars" data-template-name="stonehearthPeoplePicker">
+   <div id="peoplePicker" class="gui citizenTable">
+      <div class="window">
+         <div class="title">{{i18n stonehearth:ui.game.people_picker.title}}<div class="closeButton"></div></div>
+         <div class="list">
+            <table>
+               <tbody>
+               {{#each citizen in view.pickerRows}}
+                  {{#if citizen.isMedicPatient}}
+                     <tr>
+                        <td class="selectable_citizen_row">
+                           <div class="banner">
+                              <img class="jobIcon" src="/stonehearth_ace/ui/images/medic_patient.png">
+                           </div>
+                           <div class="name">
+                              {{i18n stonehearth_ace:ui.game.people_picker.reserve_for_medic_patients}}
+                              <div class="additionalText">
+                                 {{i18n_key view.medicPatientReservedText view.model}}
+                              </div>
+                           </div>
+                        </td>
+                        <td>
+                           <a {{bind-attr id=command.name}} href="#" {{action "selectMedicPatient" view.model target="view"}} class='uisounds'>
+                              <button class="brown" {{bind-attr class="buttonEnabled" }}>
+                                 {{i18n stonehearth:ui.game.people_picker.select_person}}
+                              </button>
+                           </a>
+                        </td>
+                     </tr>
+                  {{else}}
+                     {{#if citizen.isTraveler}}
+                        {{#if view.shouldShowTravelerReserve}}
+                           <tr>
+                              <td class="selectable_citizen_row">
+                                 <div class="banner">
+                                    <img class="jobIcon" src="/stonehearth/data/images/backpack.png">
+                                 </div>
+                                 <div class="name">
+                                    {{i18n stonehearth:ui.game.people_picker.reserve_for_travelers}}
+                                    <div class="additionalText">
+                                       {{i18n_key view.travelerReservedText view.model}}
+                                    </div>
+                                 </div>
+                              </td>
+                              <td>
+                                 <a {{bind-attr id=command.name}} href="#" {{action "selectTraveler" view.model target="view"}} class='uisounds'>
+                                    <button class="brown" {{bind-attr class="buttonEnabled" }}>
+                                       {{i18n stonehearth:ui.game.people_picker.select_person}}
+                                    </button>
+                                 </a>
+                              </td>
+                           </tr>
+                        {{/if}}
+                     {{else}}
+                        {{ view "stonehearthPeoplePickerRow" pickerView=view uriBinding="citizen" }}
+                     {{/if}}
+                  {{/if}}
+               {{/each}}
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthPeoplePickerRow">
+   {{#if view.shouldShow}}
+      <td class="selectable_citizen_row">
+         <div class="banner"><img class="jobIcon" {{bind-attr src=view.model.stonehearth:job.class_icon}}/></div>
+         <div class="name">
+            {{i18n_key view.model.stonehearth:unit_info.display_name self=view.model}}
+            <div class="additionalText">
+               {{i18n_key view.additionalText}}
+            </div>
+         </div>
+
+      </td>
+      <td>
+         <a {{bind-attr id=command.name}} href="#" {{action "selectPerson" view.model target="view"}} class='uisounds'>
+            <button class="brown" {{bind-attr class="buttonEnabled" }}>
+               {{i18n stonehearth:ui.game.people_picker.select_person}}
+            </button>
+         </a>
+      </td>
+   {{/if}}
+</script>

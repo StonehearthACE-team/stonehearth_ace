@@ -21,6 +21,8 @@ local function make_bed_filter()
 end
 
 local function make_bed_rater(entity_id)
+   local ownership_type = stonehearth.constants.healing.PRIORITY_CARE_OWNERSHIP_TYPE
+
    return function(target)
          -- rate priority care beds highest, then owned beds, then unowned beds, then anything else
          local bed_data = radiant.entities.get_entity_data(target, 'stonehearth:bed')
@@ -28,6 +30,10 @@ local function make_bed_rater(entity_id)
             return 1
          else
             local ownable_component = target:get_component('stonehearth:ownable_object')
+            if ownable_component:get_reservation_type() == ownership_type then
+               return 1
+            end
+
             local owner = ownable_component and ownable_component:get_owner()
             if not ownable_component or not owner or not owner:is_valid() then
                return 0.5

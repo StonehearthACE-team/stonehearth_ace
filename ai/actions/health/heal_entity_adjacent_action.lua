@@ -41,6 +41,7 @@ function HealEntityAdjacent:run(ai, entity, args)
       return
    end
 
+   radiant.entities.turn_to_face(entity, injured_entity)
    ai:execute('stonehearth:run_effect', { effect = 'fiddle', times=consumable_data.work_units or 1, facing_entity = consumable })
 
    if ConsumablesLib.use_consumable(consumable, entity, injured_entity) then

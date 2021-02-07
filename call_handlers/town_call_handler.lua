@@ -1,6 +1,15 @@
 local validator = radiant.validator
 local TownCallHandler = class()
 
+function TownCallHandler:assign_ownership_proxy(session, response, entity, ownership_type)
+   validator.expect_argument_types({'Entity', 'string'}, entity, ownership_type)
+   
+   local reservation = radiant.entities.create_entity('stonehearth_ace:owner_proxy:bed_owner')
+   local owner_proxy = reservation:get_component('stonehearth_ace:owner_proxy')
+   owner_proxy:set_type(ownership_type)
+   owner_proxy:track_reservation(entity)
+end
+
 function TownCallHandler:has_guildmaster_town_bonus(session, response, player_id)
    validator.expect_argument_types({'string'}, player_id)
    local town = stonehearth.town:get_town(player_id)
