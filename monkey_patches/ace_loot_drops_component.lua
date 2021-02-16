@@ -18,7 +18,7 @@ function AceLootDropsComponent:set_filter_script(filter_script, filter_args)
 end
 
 -- changed the "auto_loot = " line, also changed to use output system instead of just raw spawning items
-function AceLootDropsComponent:_on_kill_event(kill_data)
+function AceLootDropsComponent:_on_kill_event(e)
    local loot_table, filter_script, filter_args = self._sv.loot_table, self._sv._filter_script, self._sv._filter_args
    if not loot_table then
       loot_table = radiant.entities.get_json(self)
@@ -32,7 +32,11 @@ function AceLootDropsComponent:_on_kill_event(kill_data)
       local location = radiant.entities.get_world_grid_location(self._entity)
       if location then
          local player_id = radiant.entities.get_player_id(self._entity)
+         local kill_data = e.kill_data or {}
          local loot_player_id = kill_data.source or self._sv.auto_loot_player_id
+         if radiant.entities.is_entity(loot_player_id) then
+            loot_player_id = radiant.entities.get_player_id(loot_player_id)
+         end
          local auto_loot, force_auto_loot
          if self._sv.auto_loot_player_id then
             auto_loot = stonehearth.client_state:get_client_gameplay_setting(self._sv.auto_loot_player_id, 'stonehearth', 'auto_loot', false)
@@ -40,7 +44,7 @@ function AceLootDropsComponent:_on_kill_event(kill_data)
          elseif loot_player_id == player_id then
             force_auto_loot = true
          end
-         --log:debug('%s dropping loot: %s, %s, %s, %s', self._entity, player_id, tostring(loot_player_id), tostring(auto_loot), tostring(force_auto_loot))
+         log:debug('%s dropping loot: %s, %s, %s, %s', self._entity, player_id, tostring(loot_player_id), tostring(auto_loot), tostring(force_auto_loot))
          local town = stonehearth.town:get_town(self._sv.auto_loot_player_id)
 
          local quality
