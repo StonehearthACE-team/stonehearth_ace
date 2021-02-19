@@ -14,6 +14,7 @@ AceTown._ace_old__pre_activate = Town._pre_activate
 function AceTown:_pre_activate()
    self._suspendable_entities = {}
    self._building_material_collection_tasks = {}
+   self._default_storage_listener = {}
 
    self:_ace_old__pre_activate()
 
@@ -36,12 +37,10 @@ function AceTown:destroy()
 end
 
 function AceTown:_destroy_default_storage_listeners()
-   if self._default_storage_listener then
-      for _, listener in pairs(self._default_storage_listener) do
-         listener:destroy()
-      end
-      self._default_storage_listener = {}
+   for _, listener in pairs(self._default_storage_listener) do
+      listener:destroy()
    end
+   self._default_storage_listener = {}
 end
 
 function AceTown:_destroy_all_building_material_collection_tasks()
@@ -61,7 +60,6 @@ function AceTown:_destroy_default_storage_listener(storage_id)
 end
 
 function AceTown:_create_default_storage_listeners()
-   self._default_storage_listener = {}
    if not self._sv.default_storage then
       self._sv.default_storage = {}
       self.__saved_variables:mark_changed()
