@@ -242,14 +242,22 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          local iconic_path = entity_forms.iconic_form
          if iconic_path then
             local iconic_json = catalog_lib._load_json(iconic_path)
-            catalog_lib._add_catalog_description(catalog, iconic_path, iconic_json, catalog_data)
-            catalog_data.iconic_uri = iconic_path
+            if iconic_json then
+               catalog_lib._add_catalog_description(catalog, iconic_path, iconic_json, catalog_data)
+               catalog_data.iconic_uri = iconic_path
+            else
+               log:error('%s has invalid iconic path specified: %s', full_alias, tostring(iconic_path))
+            end
          end
 
          local ghost_path = entity_forms.ghost_form
          if ghost_path then
             local ghost_json = catalog_lib._load_json(ghost_path)
-            catalog_lib._add_catalog_description(catalog, ghost_path, ghost_json, catalog_data)
+            if ghost_json then
+               catalog_lib._add_catalog_description(catalog, ghost_path, ghost_json, catalog_data)
+            else
+               log:error('%s has invalid ghost path specified: %s', full_alias, tostring(iconic_path))
+            end
          end
       end
       
