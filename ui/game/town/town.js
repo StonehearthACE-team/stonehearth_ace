@@ -96,14 +96,17 @@ App.StonehearthTownView.reopen({
       self.set('hasDefaultStorage', items.length > 0);
 
       Ember.run.scheduleOnce('afterRender', this, function() {
-         self.$('.defaultStorageItem').each(function() {
-            var $el = $(this);
-            var entity = self._getDefaultStorageEntity($el.attr('storage-id'));
-            var catalogData = App.catalog.getCatalogData(entity.uri);
-            App.tooltipHelper.createDynamicTooltip($el, function () {
-               return $(App.tooltipHelper.createTooltip(i18n.t(catalogData.display_name), i18n.t(catalogData.description)));
+         var elements = self.$('.defaultStorageItem');
+         if (elements) {
+            elements.each(function() {
+               var $el = $(this);
+               var entity = self._getDefaultStorageEntity($el.attr('storage-id'));
+               var catalogData = App.catalog.getCatalogData(entity.uri);
+               App.tooltipHelper.createDynamicTooltip($el, function () {
+                  return $(App.tooltipHelper.createTooltip(i18n.t(catalogData.display_name), i18n.t(catalogData.description)));
+               });
             });
-         });
+         }
       });
    }),
 
