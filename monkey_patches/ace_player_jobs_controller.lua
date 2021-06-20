@@ -150,4 +150,13 @@ function AcePlayerJobsController:get_job_description(job_uri, population_overrid
    end
 end
 
+function AcePlayerJobsController:unlock_all_recipes_and_crops()
+   for _, job_info in pairs(self._sv.jobs) do
+      job_info:manually_unlock_all_recipes()
+      job_info:manually_unlock_all_crops()
+   end
+
+   return true
+end
+
 return AcePlayerJobsController

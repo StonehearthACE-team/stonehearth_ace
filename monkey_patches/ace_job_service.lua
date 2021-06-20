@@ -38,4 +38,12 @@ function AceJobService:get_job_info(player_id, job_id, population_override)
    return player:get_job(job_id, population_override)
 end
 
+function AceJobService:unlock_all_recipes_and_crops(player_id)
+   local player = self._sv.players[player_id]
+   if not player then
+      return
+   end
+   return player:unlock_all_recipes_and_crops()
+end
+
 return AceJobService

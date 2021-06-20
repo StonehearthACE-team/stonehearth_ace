@@ -3,6 +3,8 @@
 
 local AceJobInfoController = class()
 
+local log = radiant.log.create_logger('job_info')
+
 function AceJobInfoController:get_class_name()
    return self._sv.class_name
 end
@@ -141,6 +143,70 @@ function AceJobInfoController:manually_lock_recipe_category(category_key, ignore
       return false
    end
 
+   return true
+end
+
+function AceJobInfoController:manually_unlock_all_recipes()
+   if not self._sv.recipe_list then
+      --radiant.verify(false, "Attempting to manually unlock recipes when job %s does not have any recipes!", self._sv.alias)
+      return false
+   end
+   for category, category_data in pairs(self._sv.recipe_list) do
+      if category_data.recipes then
+         for recipe_short_key, recipe_data in pairs(category_data.recipes) do
+            local recipe_key = recipe_data.recipe and recipe_data.recipe.recipe_key
+            if recipe_key then
+               if not self._sv.manually_unlocked[recipe_key] then
+                  self._sv.manually_unlocked[recipe_key] = true
+                  radiant.events.trigger(radiant, 'radiant:crafting:recipe_revealed', {recipe_data = recipe_data.recipe})
+               end
+            end
+         end
+      end
+   end
+
+   self.__saved_variables:mark_changed()
+   return true
+end
+
+function AceJobInfoController:manually_unlock_crop(crop_key, ignore_missing) -- TODO: remove hardcoded 'stonehearth:jobs:farmer' and 'stonehearth:farmer:all_crops' to allow for mods
+   if self._sv.alias ~= 'stonehearth:jobs:farmer' then
+      radiant.verify(false, "Attempting to manually unlock crop %s when job %s does not have crops!", crop_key, self._sv.alias)
+      return false
+   end
+   local found_crop = false
+
+   local crop_list = radiant.resources.load_json('stonehearth:farmer:all_crops').crops
+   if not crop_list[crop_key] then
+      if not ignore_missing then
+         radiant.verify(false, "Attempting to manually unlock crop %s when job %s does not have such a crop!", crop_key, self._sv.alias)
+      end
+      return false
+   end
+
+   local already_unlocked = self._sv.manually_unlocked[crop_key]
+   if already_unlocked then
+      return false
+   end
+
+   self._sv.manually_unlocked[crop_key] = true
+   self.__saved_variables:mark_changed()
+   return true
+end
+
+-- TODO: remove hardcoded alias for farmer job (and override manually_unlock_crop function to do the same)
+function AceJobInfoController:manually_unlock_all_crops()
+   if self._sv.alias ~= 'stonehearth:jobs:farmer' then
+      --radiant.verify(false, "Attempting to manually unlock crops when job %s does not have crops!", self._sv.alias)
+      return false
+   end
+
+   local crop_list = radiant.resources.load_json('stonehearth:farmer:all_crops').crops
+   for crop_key, crop_data in pairs(crop_list) do
+      self._sv.manually_unlocked[crop_key] = true
+   end
+
+   self.__saved_variables:mark_changed()
    return true
 end
 

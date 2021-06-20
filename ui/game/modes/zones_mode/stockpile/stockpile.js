@@ -256,6 +256,7 @@ App.StonehearthStockpileView.reopen({
       }
       Ember.run.scheduleOnce('afterRender', self, function() {
          // verify that we actually have the correct values for these as they may have been updated
+         perCraft = self.get('fuelPerCraft');
          var residualCrafts = Math.floor(self.get('fuelLevel') / perCraft);
          var potentialCrafts = Math.floor(self.get('potentialFuel') / perCraft);
          var totalCrafts = residualCrafts + potentialCrafts;
