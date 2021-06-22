@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 9,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.molded_porcelain_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.molded_porcelain_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.molded_porcelain_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/molded_porcelain/molded_porcelain.png",
+   "workshop": "stonehearth_ace:potter:mold_bench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri":  "stonehearth_ace:resources:clay:bone_clay_mound",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:molded_porcelain"
+      }
+   ]
+}

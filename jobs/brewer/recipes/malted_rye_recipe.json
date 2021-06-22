@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 24,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.malted_rye_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.malted_rye_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.malted_rye_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/malted_rye/malted_rye.png",
+   "level_requirement": 5,
+	"work_effect": "work_wait",
+   "workshop": "stonehearth_ace:cook:oven_advanced",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:rye:rye_bale",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:malted_rye"
+      }
+   ]
+}

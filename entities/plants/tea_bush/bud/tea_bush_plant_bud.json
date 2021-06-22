@@ -1,0 +1,55 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "stonehearth:evolve": {},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tea_bush_bud.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.12
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -0.5, "y": 0, "z": -0.5 },
+               "max": { "x": 1.5, "y": 1, "z": 1.5 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -0.5, "y": 0, "z": -0.5 },
+               "max": { "x": 1.5, "y": 2, "z": 1.5 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:plants:tea_bush",
+         "evolve_time": "24h+12h"
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "stockpile_plant"
+         ],
+         "display_name": "i18n(stonehearth_ace:entities.plants.tea_bush.bud.tea_bush_plant_bud.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.tea_bush.bud.tea_bush_plant_bud.description)",
+         "category": "plants"
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      }
+   }
+}

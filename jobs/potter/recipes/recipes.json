@@ -2,6 +2,9 @@
 	"craftable_recipes": {
 		"workbenches": {
 			"recipes": {
+				"potter_mold_bench": {
+					"recipe": "file(potter_mold_bench_recipe.json)"
+				},
 				"kiln_upgrade": {
 					"recipe": "/rayyas_children/jobs/potter/recipes/kiln_upgrade_recipe.json"
 				},
@@ -22,6 +25,9 @@
 		},
 		"building_parts": {
 			"recipes": {
+				"mixintypes": {
+					"clay_bricks": "remove"
+				},
 				"simple_hatch_clay": {
 					"recipe": "file(simple_hatch_clay_recipe.json)"
 				},
@@ -319,12 +325,31 @@
 			}
 		},
 		"refined": {
+			"ordinal": 15,
 			"recipes": {
 				"bone_clay_mound": {
 					"recipe": "file(bone_clay_mound_recipe.json)"
 				},
 				"bone_clay_mound_x3": {
 					"recipe": "file(bone_clay_mound_x3_recipe.json)"
+				},
+				"fire_bricks": {
+					"recipe": "file(fire_bricks_recipe.json)"
+				},
+				"clay_bricks": {
+					"recipe": "/stonehearth/jobs/potter/recipes/clay_bricks_recipe.json"
+				},
+				"molded_clay": {
+					"recipe": "file(molded_clay_recipe.json)"
+				},
+				"molded_porcelain": {
+					"recipe": "file(molded_porcelain_recipe.json)"
+				},
+				"unfired_clay": {
+					"recipe": "file(unfired_clay_recipe.json)"
+				},
+				"unfired_porcelain": {
+					"recipe": "file(unfired_porcelain_recipe.json)"
 				}
 			}
 		},

@@ -170,9 +170,33 @@
             "farm": true
          }
       },
+      "millet": {
+         "crop_type": "stonehearth_ace:crops:millet_crop",
+         "ordinal": 17,
+         "level_requirement": 5,
+         "field_types": {
+            "farm": true
+         }
+      },
+      "barley": {
+         "crop_type": "stonehearth_ace:crops:barley_crop",
+         "ordinal": 18,
+         "level_requirement": 4,
+         "field_types": {
+            "farm": true
+         }
+      },
+      "rye": {
+         "crop_type": "stonehearth_ace:crops:rye_crop",
+         "ordinal": 19,
+         "level_requirement": 5,
+         "field_types": {
+            "farm": true
+         }
+      },
       "paddy": {
          "crop_type": "stonehearth_ace:crops:paddy_crop",
-         "ordinal": 17,
+         "ordinal": 20,
          "level_requirement": 5,
          "field_types": {
             "farm": true
@@ -180,42 +204,42 @@
       },
       "marblesprout": {
          "crop_type": "stonehearth_ace:crops:marblesprout_crop",
-         "ordinal": 18,
+         "ordinal": 21,
          "level_requirement": 5,
          "field_types": {
             "decorative_flowers": true
          }
       },
       "oak_tree": {
-         "ordinal": 19,
-         "level_requirement": 5,
-         "field_types": {
-            "treefarm": true
-         }
-      },
-      "acacia_tree": {
-         "ordinal": 20,
-         "level_requirement": 5,
-         "field_types": {
-            "treefarm": true
-         }
-      },
-      "juniper_tree": {
-         "ordinal": 21,
-         "level_requirement": 5,
-         "field_types": {
-            "treefarm": true
-         }
-      },
-      "cactus_tree": {
          "ordinal": 22,
          "level_requirement": 5,
          "field_types": {
             "treefarm": true
          }
       },
-      "pine_tree": {
+      "acacia_tree": {
          "ordinal": 23,
+         "level_requirement": 5,
+         "field_types": {
+            "treefarm": true
+         }
+      },
+      "juniper_tree": {
+         "ordinal": 24,
+         "level_requirement": 5,
+         "field_types": {
+            "treefarm": true
+         }
+      },
+      "cactus_tree": {
+         "ordinal": 25,
+         "level_requirement": 5,
+         "field_types": {
+            "treefarm": true
+         }
+      },
+      "pine_tree": {
+         "ordinal": 26,
          "level_requirement": 5,
          "field_types": {
             "treefarm": true
@@ -223,7 +247,7 @@
       },
       "arctic_pine_tree": {
          "crop_type": "stonehearth_ace:crops:arctic_pine_tree_crop",
-         "ordinal": 24,
+         "ordinal": 27,
          "level_requirement": 5,
          "field_types": {
             "treefarm": true
@@ -231,7 +255,7 @@
       },
       "arctic_juniper_tree": {
          "crop_type": "stonehearth_ace:crops:arctic_juniper_tree_crop",
-         "ordinal": 25,
+         "ordinal": 28,
          "level_requirement": 5,
          "field_types": {
             "treefarm": true
@@ -239,7 +263,7 @@
       },
       "highland_pine_tree": {
          "crop_type": "stonehearth_ace:crops:highland_pine_crop",
-         "ordinal": 26,
+         "ordinal": 29,
          "level_requirement": 5,
          "field_types": {
             "treefarm": true
@@ -247,7 +271,7 @@
       },
       "birch_tree": {
          "crop_type": "stonehearth_ace:crops:birch_tree_crop",
-         "ordinal": 27,
+         "ordinal": 30,
          "level_requirement": 5,
          "field_types": {
             "treefarm": true
@@ -255,7 +279,7 @@
       },
       "yew_tree": {
          "crop_type": "stonehearth_ace:crops:yew_tree_crop",
-         "ordinal": 28,
+         "ordinal": 31,
          "level_requirement": 5,
          "field_types": {
             "treefarm": true
@@ -281,6 +305,15 @@
       },
       "cherry_bush": {
          "crop_type": "stonehearth_ace:crops:cherry_bush_crop",
+         "ordinal": 1,
+         "level_requirement": 1,
+         "destroy_on_crop_change": true,
+         "field_types": {
+            "bush_farm": true
+         }
+      },
+      "tea_bush": {
+         "crop_type": "stonehearth_ace:crops:tea_bush_crop",
          "ordinal": 1,
          "level_requirement": 1,
          "destroy_on_crop_change": true,

@@ -1,0 +1,29 @@
+{
+   "type": "recipe",
+   "effort": 6,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.molded_clay_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.molded_clay_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.molded_clay_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/molded_clay/molded_clay.png",
+   "workshop": "stonehearth_ace:potter:mold_bench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:molded_clay",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "clay resource"
+      },
+      {
+         "item": "stonehearth_ace:refined:molded_clay",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "clay resource"
+      }
+   ]
+}

@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.09
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(molded_porcelain.qb)",
+                     "file(molded_porcelain_2.qb)"
+                  ]
+               }
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 19,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.refined.molded_porcelain.display_name)",
+         "description": "i18n(stonehearth_ace:entities.refined.molded_porcelain.description)",
+         "icon": "file(molded_porcelain.png)",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": [
+            "molded_porcelain",
+            "refined",
+            "stockpile_refined_weaver"
+         ]
+      }
+   }
+}

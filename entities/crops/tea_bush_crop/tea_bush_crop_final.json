@@ -1,0 +1,18 @@
+{
+   "type": "entity",
+   "mixins": [
+      "/stonehearth_ace/entities/plants/tea_bush/tea_bush.json"
+   ],
+   "components": {
+      "mixintypes": {
+         "stonehearth:commands": "remove",
+         "stonehearth:entity_forms": "remove"
+      },
+      "stonehearth:renewable_resource_node": {
+         "category": "farming",
+         "mixintypes": {
+            "harvest_overlay_effect": "remove"
+         }
+      }
+   }
+}

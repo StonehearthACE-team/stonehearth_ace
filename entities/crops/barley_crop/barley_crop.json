@@ -1,0 +1,169 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(barley_4.qb)"
+            ]
+         },
+         "barley_1": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(barley_1.qb)",
+                     "file(barley_1_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "barley_2": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(barley_2.qb)",
+                     "file(barley_2_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "barley_3": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(barley_3.qb)",
+                     "file(barley_3_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "barley_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(barley_4.qb)",
+                     "file(barley_4_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "barley_12": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(barley_12.qb)",
+                     "file(barley_12_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "barley_4": "stonehearth_ace:food:barley:barley_bale",
+            "barley_12": ""
+         },
+         "harvest_threshhold": "barley_4",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
+         "stacks_per_harvest": 16
+      },
+      "stonehearth:growing": {
+         "growth_period": "28h",
+         "preferred_climate": "arctic_complex",
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": [
+               "spring",
+               "winter"
+            ],
+            "stonehearth:biome:desert": [
+               "winter"
+            ],
+            "stonehearth:biome:arctic": [
+               "autumn",
+               "winter"
+            ],
+            "stonehearth_ace:biome:highlands": [
+               "autumn",
+               "spring"
+            ]
+         },
+         "growth_stages": [
+            {
+               "model_name": "barley_1",
+               "name": "i18n(stonehearth_ace:entities.crops.barley_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.barley_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "barley_2",
+               "name": "i18n(stonehearth_ace:entities.crops.barley_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.barley_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "barley_3",
+               "name": "i18n(stonehearth_ace:entities.crops.barley_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.barley_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "barley_4",
+               "name": "i18n(stonehearth_ace:entities.crops.barley_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.barley_crop.growth_stage.003.description)"
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+               "model_name": "barley_12",
+               "name": "i18n(stonehearth_ace:entities.crops.barley_crop.growth_stage.011.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.barley_crop.growth_stage.011.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:megacrop": {
+         "num_to_spawn": 0,
+         "other_items": {
+            "stonehearth_ace:food:megacrop:sheep_feed": 2
+         },
+         "pickup_new": true,
+         "effect": "promote"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.barley_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.barley_crop.description)",
+         "icon": "file(icon.png)",
+         "material_tags": [
+            "crop",
+            "barley",
+            "grain"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

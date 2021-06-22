@@ -1,0 +1,32 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.105
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(potter_mold_bench.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.potter.potter_mold_bench.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.potter.potter_mold_bench.description)",
+         "icon": "file(potter_mold_bench.png)",
+         "category": "workshops",
+         "material_tags": [
+            "tool",
+            "stockpile_tool"
+         ]
+      }
+   }
+}

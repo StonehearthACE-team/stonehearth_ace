@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "cheese_vat_fill_mild",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.cheese_vat_fill_mild.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.cheese_vat_fill_mild.description)",
+   "default_enabled": true,
+   "ordinal": 97,
+   "icon": "file(cheese_vat_fill_mild.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "cheese_mild"
+   ]
+}

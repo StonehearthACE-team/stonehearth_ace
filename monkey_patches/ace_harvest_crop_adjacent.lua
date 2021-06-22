@@ -8,12 +8,12 @@ local AceHarvestCropAdjacent = class()
 function AceHarvestCropAdjacent:start_thinking(ai, entity, args)
    self._log = ai:get_log()
    self._entity = entity
-   self._spawn_count = self:_get_num_to_increment(entity)
 
    self._farmer_field = args.field_layer:get_component('stonehearth:farmer_field_layer')
                                     :get_farmer_field()
 
    self._crop = self._farmer_field:crop_at(args.location)
+   self._spawn_count = self:_get_num_to_increment(entity)
    self._origin = radiant.entities.get_world_grid_location(args.field_layer)
 
    if not self._crop or not self._crop:is_valid() then
@@ -128,15 +128,15 @@ function AceHarvestCropAdjacent:_harvest_one_time(ai, entity)
    -- return true
 end
 
-AceHarvestCropAdjacent._ace_old__get_num_to_increment = HarvestCropAdjacent._get_num_to_increment
 function AceHarvestCropAdjacent:_get_num_to_increment(entity)
-   local num_to_spawn = self:_ace_old__get_num_to_increment(entity)
+   local crop_uri = self._crop:get_uri()
+   local num_to_spawn = self._crop:get_component('stonehearth:crop'):get_stacks_per_harvest()
 
    local job_component = entity:get_component('stonehearth:job')
    if job_component then
       local harvest_increase_amount = job_component:get_curr_job_controller():get_lookup_value('harvest_increase_amount')
       if harvest_increase_amount then
-         num_to_spawn = 1 + math.ceil(harvest_increase_amount)
+         num_to_spawn = math.ceil(num_to_spawn*(1 + (harvest_increase_amount)))
       end
    end
 
@@ -144,16 +144,17 @@ function AceHarvestCropAdjacent:_get_num_to_increment(entity)
 end
 
 function AceHarvestCropAdjacent:_get_actual_spawn_count(entity)
-   local num_to_spawn = 1
+   local crop_uri = self._crop:get_uri()
+   local num_to_spawn = self._crop:get_component('stonehearth:crop'):get_stacks_per_harvest()
    
    local job_component = entity:get_component('stonehearth:job')
    if job_component then
       if job_component:curr_job_has_perk('farmer_harvest_increase') then
-         num_to_spawn = 2
+         num_to_spawn = num_to_spawn * 2
       else
          local harvest_increase_amount = job_component:get_curr_job_controller():get_lookup_value('harvest_increase_amount')
          if harvest_increase_amount then
-            num_to_spawn = math.ceil(rng:get_real(0.0001 + harvest_increase_amount, 1 + harvest_increase_amount))
+            num_to_spawn = math.ceil(rng:get_real((num_to_spawn - 0.999), num_to_spawn*(1 + harvest_increase_amount)))
          end
       end
    end

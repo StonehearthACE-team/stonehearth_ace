@@ -1,0 +1,49 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "skills",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 28,
+         "reach": 1.5
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "claw_slash",
+            "effect": "combat_1h_backhand",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 0
+         },
+         {
+            "name": "claw_slash_2",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         },
+         {
+            "name": "bite",
+            "effect": "bite",
+            "active_frame": 16,
+            "cooldown": 8000,
+            "priority": 2,
+            "damage_multiplier": 1.4
+         }
+      ],
+      "stonehearth:combat:melee_defenses": [
+         {
+            "name": "block",
+            "effect": "combat_1h_parry",
+            "active_frame": 5,
+            "cooldown": 5000,
+            "priority": 1,
+            "chance_of_success": 0.2
+         }
+      ]
+   }
+}

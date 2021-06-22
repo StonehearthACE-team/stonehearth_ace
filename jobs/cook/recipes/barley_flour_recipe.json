@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 15,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.barley_flour_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.barley_flour_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.barley_flour_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/barley_flour/barley_flour.png",
+   "workshop": "stonehearth:cook:mill",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:barley:barley_bale",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:barley_flour"
+      }
+   ]
+}

@@ -32,6 +32,7 @@ function AceWeatherState:_load_ace_values()
    self._sv.humidity = self._sv._base_humidity
    self._sv.frozen = json.frozen or false
 	self._sv.unsheltered_npc_debuff = json.unsheltered_npc_debuff or nil
+   self._sv.music_sound_key = json.music_sound_key or nil
    
    if type(self._sv.unsheltered_debuff) == 'string' then
       self._sv.unsheltered_debuff = { self._sv.unsheltered_debuff }

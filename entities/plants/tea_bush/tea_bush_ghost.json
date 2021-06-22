@@ -1,0 +1,108 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.1428571428571429
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "spring": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(tea_bush_spring.qb)",
+                     "file(tea_bush_spring_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(tea_bush.qb)",
+                     "file(tea_bush_2.qb)",
+                     "file(tea_bush_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "autumn": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(tea_bush_autumn_1.qb)",
+                     "file(tea_bush_autumn_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "winter": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(tea_bush_winter.qb)",
+                     "file(tea_bush_winter_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "half_renewed": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(tea_bush_half_renewed.qb)",
+                     "file(tea_bush_half_renewed_2.qb)",
+                     "file(tea_bush_half_renewed_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "depleted": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(tea_bush_depleted.qb)",
+                     "file(tea_bush_depleted_2.qb)",
+                     "file(tea_bush_depleted_3.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "*": {
+            "spring": "spring",
+            "summer": "default",
+            "autumn": "autumn",
+            "winter": "winter"
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.plants.tea_bush.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.tea_bush.description)",
+         "icon": "file(tea_bush.png)",
+         "category": "plants",
+         "material_tags": [
+            "plant",
+            "decoration",
+            "stockpile_plant"
+         ],
+         "subjects": [
+            "plants"
+         ]
+      }
+   }
+}

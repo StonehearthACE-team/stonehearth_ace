@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 17,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.rye_flour_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.rye_flour_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.rye_flour_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/rye_flour/rye_flour.png",
+   "workshop": "stonehearth:cook:mill",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:rye:rye_bale",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:rye_flour"
+      }
+   ]
+}

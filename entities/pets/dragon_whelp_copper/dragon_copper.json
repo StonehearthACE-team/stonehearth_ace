@@ -1,0 +1,88 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:pet:fighter"
+   ],
+   "components": {
+      "render_info": {
+         "scale": 0.23,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/monster/dragon",
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dragon_copper.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 3200
+         },
+         "speed": {
+            "type": "basic",
+            "value": 102
+         },
+         "courage": {
+            "type": "basic",
+            "value": 650
+         },
+         "menace": {
+            "type": "basic",
+            "value": 250
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 56
+         },
+         "additive_armor_modifier": {
+            "type": "basic",
+            "value": 12
+         },
+         "debuff_resistance": {
+            "type": "basic",
+            "value": 0.8
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:weapons:animals:dragon_metallic",
+            "stonehearth_ace:weapons:animals:dragon_melee"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 2,
+      "stonehearth:species": {
+         "id": "dragon",
+         "display_name": "i18n(stonehearth:entities.pets.dragon_whelp_fire.species)"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.pets.dragon_copper.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.dragon_copper.description)",
+         "icon": "file(dragon_copper.png)",
+         "category": "pets"
+      },
+      "stonehearth:diet": {
+         "food_material": "meat"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 7000,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:ranged_combat:no_kiting"
+         ]
+      }
+   }
+}

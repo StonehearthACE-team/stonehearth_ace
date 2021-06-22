@@ -1,0 +1,104 @@
+{
+   "type": "mixin",
+   "mixins": "stonehearth:mixins:critter",
+   "components": {
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 64
+            }
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 150
+         },
+         "max_calories": {
+            "type": "basic",
+            "value": 80
+         },
+         "speed": {
+            "type": "basic",
+            "value": 40
+         },
+         "additive_dmg_modifier": {
+            "type": "basic",
+            "value": 0
+         },
+         "multiplicative_dmg_modifier": {
+            "type": "basic",
+            "value": 0
+         },
+         "additive_armor_modifier": {
+            "type": "basic",
+            "value": 0
+         },
+         "multiplicative_armor_modifier": {
+            "type": "basic",
+            "value": 1
+         },
+         "multiplicative_target_armor_modifier": {
+            "type": "basic",
+            "value": 1
+         },
+         "additive_target_armor_modifier": {
+            "type": "basic",
+            "value": 0
+         },
+         "additive_weapon_range_modifier": {
+            "type": "basic",
+            "value": 0
+         }
+      },
+      "stonehearth:animal_social": {}
+   },
+   "entity_data": {
+      "stonehearth:idle_effects": {
+         "effects": [
+            {
+               "name": "idle_breathe",
+               "weight": 5
+            },
+            {
+               "name": "idle_look_around",
+               "weight": 2
+            },
+            {
+               "name": "idle_sway",
+               "weight": 2
+            },
+            {
+               "name": "idle_make_noise",
+               "weight": 1
+            }
+         ]
+      },
+      "stonehearth:calories": {
+         "hungry_threshold": 0,
+         "famished_threshold": 0,
+         "malnourished_threshold": -10,
+         "hourly_calorie_loss": 0.8
+      },
+      "stonehearth:ai_packs": {
+         "mixintypes": {
+            "packs": "override"
+         },
+         "packs": [
+            "stonehearth:ai_pack:critter",
+            "stonehearth:ai_pack:humanoid",
+            "stonehearth:ai_pack:combat",
+            "stonehearth:ai_pack:upgrade_equipment",
+            "stonehearth:ai_pack:death",
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects",
+            "stonehearth:ai_pack:idle:bored:wander",
+            "stonehearth:ai_pack:conversation"
+         ],
+         "actions": [
+            "stonehearth:actions:depart_visible_area",
+            "stonehearth:actions:depart_visible_area_in_place"
+         ]
+      }
+   }
+}

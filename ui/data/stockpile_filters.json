@@ -27,17 +27,23 @@
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_plant)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/plant.png"
             },
-            "herbs": {
+            "alchemical_herbs": {
                "ordinal": 6.1,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_herbs)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/herbs.png",
-               "filter": "herb aromatic resource"
+               "filter": "herb resource"
             },
-            "bitter_herbs": {
+            "culinary_herbs": {
                "ordinal": 6.11,
-               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_bitter_herbs)",
-               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/bitter_herbs.png",
-               "filter": "herb bitter resource"
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_culinary_herbs)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/culinary_herbs.png",
+               "filter": "herb zesty resource"
+            },
+            "brewing_herbs": {
+               "ordinal": 6.12,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_brewing_herbs)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/brewing_herbs.png",
+               "filter": "herb pungent resource"
             },
             "fungi": {
                "ordinal": 6.2,
@@ -56,12 +62,6 @@
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_algae)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/algae.png",
                "filter": "stockpile_plant algae"
-            },
-            "essences": {
-               "ordinal": 20,
-               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_essences)",
-               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/essences.png",
-               "filter": "stockpile_essence resource"
             }
          }
       },
@@ -302,6 +302,12 @@
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_gems)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/gem.png",
                "filter": "stockpile_gem"
+            },
+            "essences": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_essences)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/essences.png",
+               "filter": "stockpile_essence resource"
             }
          }
       }

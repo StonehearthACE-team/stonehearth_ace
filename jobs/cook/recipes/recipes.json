@@ -1,12 +1,18 @@
 {
    "craftable_recipes": {
-	  "workbenches": {
-		 "recipes": {
-         "cook_table": {
-            "recipe": "file(cook_table_recipe.json)"
+	   "workbenches": {
+		  "recipes": {
+            "cook_table": {
+               "recipe": "file(cook_table_recipe.json)"
+            },
+            "cook_oven_advanced": {
+               "recipe": "file(cook_oven_advanced_recipe.json)"
+            },
+            "cook_workbench_advanced": {
+               "recipe": "file(cook_workbench_advanced_recipe.json)"
+            }
          }
-       }
-	  },
+	   },
       "legendary": {
          "ordinal": 2,
          "name": "i18n(stonehearth:jobs.common.recipes.legendary_name)",
@@ -17,42 +23,25 @@
          }
       },
       "ingredients": {
+         "name": "i18n(stonehearth_ace:jobs.cook.recipes.food_preparation_name)",
          "recipes": {
+            "flour": {
+					"recipe": ""
+				},
+            "corn_meal": {
+					"recipe": ""
+				},
 				"raw_rice": {
                "recipe": "file(raw_rice_recipe.json)"
-            },
-				"rice_flour": {
-               "recipe": "file(rice_flour_recipe.json)"
-            },
-				"nut_flour": {
-               "recipe": "file(nut_flour_recipe.json)"
             },
 				"cooking_oil": {
 					"recipe": "file(cooking_oil_recipe.json)"
 				},
 				"malted_grains": {
 					"recipe": "file(malted_grains_recipe.json)"
-				}	
-         }
-      },
-	  "food_preparation": {
-         "ordinal": 31,
-         "name": "i18n(stonehearth_ace:jobs.cook.recipes.food_preparation_name)",
-			"recipes": {
-				"broth": {
+				},
+            "broth": {
                "recipe": "file(broth_recipe.json)"
-            },
-				"dough": {
-               "recipe": "file(dough_recipe.json)"
-            },
-				"batter": {
-               "recipe": "file(batter_recipe.json)"
-            },
-				"batter_sweet": {
-               "recipe": "file(batter_sweet_recipe.json)"
-            },
-				"dough_sweet": {
-               "recipe": "file(dough_sweet_recipe.json)"
             },
 				"sausage": {
 					"recipe": "/stonehearth/jobs/cook/recipes/sausage_recipe.json"
@@ -61,7 +50,49 @@
 					"recipe": "file(nuts_basket_recipe.json)"
 				}
          }
-	  },
+      },
+      "baking": {
+         "ordinal": 31,
+         "name": "i18n(stonehearth_ace:jobs.cook.recipes.baking_name)",
+         "recipes": {
+            "flour": {
+					"recipe": "/stonehearth/jobs/cook/recipes/flour_recipe.json"
+				},
+            "corn_meal": {
+					"recipe": "/stonehearth/jobs/cook/recipes/corn_meal_recipe.json"
+				},
+            "rice_flour": {
+               "recipe": "file(rice_flour_recipe.json)"
+            },
+				"nut_flour": {
+               "recipe": "file(nut_flour_recipe.json)"
+            },
+				"barley_flour": {
+               "recipe": "file(barley_flour_recipe.json)"
+            },
+				"millet_flour": {
+               "recipe": "file(millet_flour_recipe.json)"
+            },
+				"rye_flour": {
+               "recipe": "file(rye_flour_recipe.json)"
+            },
+            "dough": {
+               "recipe": "file(dough_recipe.json)"
+            },
+            "dough_sweet": {
+               "recipe": "file(dough_sweet_recipe.json)"
+            },
+            "dough_pie": {
+               "recipe": "file(dough_pie_recipe.json)"
+            },
+            "batter": {
+               "recipe": "file(batter_recipe.json)"
+            },
+            "batter_sweet": {
+               "recipe": "file(batter_sweet_recipe.json)"
+            }
+         }
+      },
       "food": {
          "recipes": {
 				"sausage": {

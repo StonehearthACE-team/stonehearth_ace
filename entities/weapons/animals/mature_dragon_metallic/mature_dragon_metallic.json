@@ -1,0 +1,42 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 40,
+         "reach": 4,
+         "base_ranged_damage": 24,
+         "range": 28,
+         "projectile_speed": 11,
+         "projectile_uri": "stonehearth_ace:weapons:chromatic_burst",
+         "projectile_start_offset": { "x": 0, "y": 2, "z": -3 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "chromatic_burst",
+            "effect": "chromatic_burst",
+            "active_frame": 32,
+            "cooldown": 30000,
+            "priority": 2
+         }
+      ],
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "chromatic_breath",
+            "effect": "chromatic_breath",
+            "active_frame": 16,
+            "cooldown": 22000,
+            "priority": 3,
+            "damage_multiplier": 3,
+            "aoe_effect": {
+               "aoe_target_limit": 6
+            }
+         }
+      ]
+   }
+}

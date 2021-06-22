@@ -25,6 +25,7 @@ local monkey_patches = {
    ace_building_monitor = 'stonehearth.components.building2.building_monitor',
    ace_building_service = 'stonehearth.services.server.building.building_service',
    ace_bulletin = 'stonehearth.services.server.bulletin_board.bulletin',
+   ace_calendar_service = 'stonehearth.services.server.calendar.calendar_service',
    ace_carry_block_component = 'stonehearth.components.carry_block.carry_block_component',
    ace_charging_pedestal_component = 'stonehearth.entities.gizmos.charging_pedestal.charging_pedestal_component',
    ace_check_bait_trap_adjacent_action = 'stonehearth.ai.actions.trapping.check_bait_trap_adjacent_action',

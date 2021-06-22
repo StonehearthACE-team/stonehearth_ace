@@ -60,20 +60,60 @@
       "herb resource": {
          "name": "i18n(stonehearth_ace:ui.data.constants.herb_resource_name)"
       },
-      "herb aromatic resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.aromatic_herb_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_aromatic_icon.png",
+      "herb healing resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.healing_herb_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/herb/herb_healing_icon.png",
          "default_resource": "stonehearth:resources:herb:brightbell"
       },
-      "herb bitter resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.bitter_herb_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_bitter_icon.png",
+      "herb soothing resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.soothing_herb_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/herb/herb_soothing_icon.png",
          "default_resource": "stonehearth:resources:herb:frostsnap"
+      },
+      "herb noxious resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.noxious_herb_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/herb/herb_noxious_icon.png",
+         "default_resource": "stonehearth_ace:resources:herb:nightshade"
+      },
+      "herb mild resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.mild_herb_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/herb/herb_mild_icon.png",
+         "default_resource": "stonehearth_ace:resources:herb:daisy"
+      },
+      "herb robust resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.robust_herb_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/herb/herb_robust_icon.png",
+         "default_resource": "stonehearth_ace:resources:herb:water_lily:yellow"
+      },
+      "herb peculiar resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.peculiar_herb_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/herb/herb_peculiar_icon.png",
+         "default_resource": "stonehearth_ace:resources:herb:moonbell"
+      },
+      "herb pungent resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.pungent_herb_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/herb/herb_pungent_icon.png",
+         "default_resource": "stonehearth_ace:resources:herb:silkweed"
+      },
+      "herb zesty resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.zesty_herb_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/herb/herb_zesty_icon.png",
+         "default_resource": "stonehearth_ace:resources:herb:sage"
       },
       "herb red resource": {
          "name": "i18n(stonehearth_ace:ui.data.constants.herb_red_resource_name)",
          "icon": "/stonehearth_ace/entities/resources/herb/herb_red_icon.png",
          "default_resource": "stonehearth_ace:resources:herb:rose"
+      },
+      "herb pink resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.herb_pink_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/herb/herb_pink_icon.png",
+         "default_resource": "stonehearth:resources:herb:brightbell"
+      },
+      "herb orange resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.herb_orange_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/herb/herb_orange_icon.png",
+         "default_resource": "stonehearth_ace:resources:herb:foxlily"
       },
       "herb green resource": {
          "name": "i18n(stonehearth_ace:ui.data.constants.herb_green_resource_name)",
@@ -98,66 +138,6 @@
       "herb purple resource": {
          "name": "i18n(stonehearth_ace:ui.data.constants.herb_purple_resource_name)",
          "icon": "/stonehearth_ace/entities/resources/herb/herb_purple_icon.png",
-         "default_resource": "stonehearth_ace:resources:herb:nightshade"
-      },
-      "herb red aromatic resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.herb_red_aromatic_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_red_aromatic_icon.png",
-         "default_resource": "stonehearth_ace:resources:herb:rose"
-      },
-      "herb green aromatic resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.herb_green_aromatic_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_green_aromatic_icon.png",
-         "default_resource": "stonehearth_ace:resources:herb:water_lily:lily_pad"
-      },
-      "herb blue aromatic resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.herb_blue_aromatic_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_blue_aromatic_icon.png",
-         "default_resource": "stonehearth:resources:herb:cactus:tulip:blue"
-      },
-      "herb yellow aromatic resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.herb_yellow_aromatic_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_yellow_aromatic_icon.png",
-         "default_resource": "stonehearth_ace:resources:herb:daylily"
-      },
-      "herb white aromatic resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.herb_white_aromatic_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_white_aromatic_icon.png",
-         "default_resource": "stonehearth_ace:resources:herb:daisy"
-      },
-      "herb purple aromatic resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.herb_purple_aromatic_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_purple_aromatic_icon.png",
-         "default_resource": "stonehearth:resources:herb:violet"
-      },
-      "herb red bitter resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.herb_red_bitter_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_red_bitter_icon.png",
-         "default_resource": "stonehearth_ace:resources:herb:poppy"
-      },
-      "herb green bitter resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.herb_green_bitter_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_green_bitter_icon.png",
-         "default_resource": "stonehearth_ace:resources:herb:highland_vine"
-      },
-      "herb blue bitter resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.herb_blue_bitter_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_blue_bitter_icon.png",
-         "default_resource": "stonehearth:resources:herb:frostsnap"
-      },
-      "herb yellow bitter resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.herb_yellow_bitter_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_yellow_bitter_icon.png",
-         "default_resource": "stonehearth_ace:resources:herb:water_lily:yellow"
-      },
-      "herb white bitter resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.herb_white_bitter_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_white_bitter_icon.png",
-         "default_resource": "stonehearth_ace:resources:herb:marblesprout"
-      },
-      "herb purple bitter resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.herb_purple_bitter_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/herb/herb_purple_bitter_icon.png",
          "default_resource": "stonehearth_ace:resources:herb:nightshade"
       },
       "seed_hard cooking_ingredient": {
@@ -200,9 +180,19 @@
          "icon": "/stonehearth_ace/entities/food/grain_icon.png",
          "default_resource": "stonehearth_ace:food:rice:paddy_basket"
       },
-      "grain_flour cooking_ingredient": {
+      "flour cooking_ingredient": {
          "name": "i18n(stonehearth_ace:ui.data.constants.grain_flour_resource_name)",
          "icon": "/stonehearth_ace/entities/food/grain_flour_icon.png",
+         "default_resource": "stonehearth_ace:food:millet_flour"
+      },
+      "flour hard cooking_ingredient": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.hard_flour_resource_name)",
+         "icon": "/stonehearth_ace/entities/food/hard_flour_icon.png",
+         "default_resource": "stonehearth:food:flour"
+      },
+      "flour soft cooking_ingredient": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.soft_flour_resource_name)",
+         "icon": "/stonehearth_ace/entities/food/soft_flour_icon.png",
          "default_resource": "stonehearth:food:corn_meal"
       },
       "butter cooking_ingredient": {
@@ -342,6 +332,11 @@
          "name": "i18n(stonehearth_ace:ui.data.constants.milk_resource_name)",
          "icon": "/stonehearth_ace/entities/drink/milk_resource.png",
          "default_resource": "stonehearth_ace:drink:dairy:moomoo_milk"
+      },
+      "malt brewing_ingredient": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.malt_resource_name)",
+         "icon": "/stonehearth_ace/entities/drink/malt_icon.png",
+         "default_resource": "stonehearth_ace:drink:malted_grains"
       },
       "becomes_vinegar juice": {
          "name": "i18n(stonehearth_ace:ui.data.constants.becomes_vinegar_juice_resource_name)",

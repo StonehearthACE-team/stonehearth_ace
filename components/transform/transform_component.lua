@@ -285,6 +285,7 @@ function TransformComponent:transform(transformer)
       check_script = transform_data.transform_check_script,
       transform_effect = transform_data.transform_effect,
       auto_harvest = transform_data.auto_harvest,
+      auto_harvest_key = transform_data.auto_harvest_key,
       transform_script = transform_data.transform_script,
       kill_entity = transform_data.kill_entity,
       undeploy_entity = transform_data.undeploy_entity,

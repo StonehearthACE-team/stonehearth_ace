@@ -22,7 +22,6 @@
          ],
          "region_collision_type": "none"
       },
-      "stonehearth_ace:transform": {},
       "stonehearth:door": {
          "allow_larger": false,
          "allow_critters": true,
@@ -39,16 +38,6 @@
       }
    },
    "entity_data": {
-      "stonehearth:entity_radius": 0.5,
-      "stonehearth_ace:transform_data": {
-         "command": "stonehearth_ace:commands:transform:close_door",
-         "request_action": "stonehearth_ace:transform",
-         "request_action_overlay_effect": "stonehearth_ace:effects:transform_shepherd_overlay_effect",
-         "transforming_worker_effect": "fiddle",
-         "transforming_worker_effect_times": 1,
-         "worker_required_job": {
-            "stonehearth:jobs:shepherd": true
-         }
-      }
+      "stonehearth:entity_radius": 0.5
    }
 }

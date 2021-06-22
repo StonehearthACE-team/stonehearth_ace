@@ -1,0 +1,46 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "speed": 2,
+         "animation": "combat_breath.json",
+         "loop": false
+          },
+       "attack_trigger" : {
+         "type": "trigger_effect",
+         "start_frame": 18,
+         "end_time": 20
+      },
+       "chromatic_breath_base": {
+        "type": "cubemitter",
+       "cubemitter": "/stonehearth_ace/data/horde/particles/dragon/chromatic_burp_base.cubemitter.json",
+       "start_time": 800,
+       "end_time": 1400,
+       "loop": false,
+       "transforms": { "x": 0, "y": -1.1, "z": 0,
+         "rx": 0,
+         "ry": 0,
+         "rz": 0
+       },
+         "bone": "head"
+   },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 600,
+         "min_distance": 30,
+         "falloff": 12,
+         "volume": 40,
+         "track": [
+            "stonehearth:sounds:corruption_attack_beam_04",
+            "stonehearth:sounds:corruption_attack_beam_05",
+            "stonehearth:sounds:corruption_attack_beam_06",
+            "stonehearth:sounds:corruption_attack_beam_07",
+            "stonehearth:sounds:corruption_attack_beam_08"
+         ]
+      }       
+   }
+}      
+

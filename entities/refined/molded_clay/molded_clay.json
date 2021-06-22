@@ -1,0 +1,73 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.09
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(molded_clay.qb)",
+                     "file(molded_clay_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "ball_clay": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(molded_ball_clay.qb)",
+                     "file(molded_ball_clay_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "shale_clay": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(molded_shale_clay.qb)",
+                     "file(molded_shale_clay_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth_ace:entity_modification": {
+         "model_variants": {
+            "stonehearth:resources:clay:clay_mound": "default",
+            "stonehearth_ace:resources:clay:shale_clay_mound": "shale_clay",
+            "stonehearth_ace:resources:clay:ball_clay_mound": "ball_clay"
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 3,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.refined.molded_clay.display_name)",
+         "description": "i18n(stonehearth_ace:entities.refined.molded_clay.description)",
+         "icon": "file(molded_clay.png)",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": [
+            "molded_clay",
+            "refined",
+            "stockpile_refined_weaver"
+         ]
+      }
+   }
+}

@@ -3,12 +3,14 @@
    "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.potted_cactus_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.potter.recipes.potted_cactus_recipe.description)",
    "portrait": "/stonehearth_ace/entities/decoration/potted_cactus/potted_cactus.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
 	"mixintypes": {
 		"ingredients": "override"
 	},
    "ingredients": [
       {
-         "material": "clay resource",
+         "uri": "stonehearth_ace:refined:unfired_clay",
          "count": 1
       },
       {

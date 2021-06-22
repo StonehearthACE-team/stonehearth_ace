@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "cheese_vat_fill_fresh",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.cheese_vat_fill_fresh.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.cheese_vat_fill_fresh.description)",
+   "default_enabled": true,
+   "ordinal": 96,
+   "icon": "file(cheese_vat_fill_fresh.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "cheese_fresh"
+   ]
+}

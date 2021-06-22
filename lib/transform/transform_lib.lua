@@ -167,7 +167,15 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       if location then
          transform_lib.place_entity_at_location(transformed_form, parent, local_location, facing)
 
-         resources_lib.request_auto_harvest(transformed_form, options.auto_harvest)
+         if options.auto_harvest_key then
+            local stage_data = radiant.entities.get_entity_data(transformed_form, 'stonehearth_ace:stage_data') or nil
+            local stage = (stage_data and stage_data.current_stage) or ""
+            if options.auto_harvest_key == stage then
+               resources_lib.request_auto_harvest(transformed_form)
+            end
+         else
+            resources_lib.request_auto_harvest(transformed_form, options.auto_harvest)
+         end
       end
 
       -- check if the current entity is the town's banner or hearth; if so, change it to this one
