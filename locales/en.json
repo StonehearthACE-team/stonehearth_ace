@@ -8379,6 +8379,11 @@
                "description": "The Brewer can use this to make either ale or beer using different types of wort.",
                "flavor": "Ale & Beer makes hearthlings happy and only slightly tipsy"
             },
+            "brewer_drying_bed_recipe": {
+               "recipe_name": "Drying Bed",
+               "description": "The Brewer may use this frame to let certain products dry before they can be used.",
+               "flavor": "Both Tea & Coffee require drying during their production"
+            },
             "brewer_wine_cask_recipe": {
                "recipe_name": "Wine Cask",
                "description": "Using this vessel, the Brewer is able to ferment different wines from fruit must.",
@@ -8426,6 +8431,21 @@
                "recipe_name": "Sack of Malted Rye",
                "description": "Toast some rye grains until they're perfectly brassy. An ingredient necessary for brewing Pale Ale.",
                "flavor": "The Brewer can use the Cook's brick oven for this recipe!"
+            },
+            "tea_leaves_steamed_recipe": {
+               "recipe_name": "Crate of Steamed Tea Leaves",
+               "description": "Let the vapors cleanse these leaves so that they can be properly dried into green or black tea leaves.",
+               "flavor": "Tea leaves are dried on a drying bed"
+            },
+            "ground_tea_green_recipe": {
+               "recipe_name": "Sack of Green Tea (x2)",
+               "description": "Delicately ground tea leaves, this ingredient is required for all the green tea recipes.",
+               "flavor": "The Brewer can use the Cook's mill grinder for this recipe!"
+            },
+            "ground_tea_black_recipe": {
+               "recipe_name": "Sack of Black Tea (x2)",
+               "description": "Exhales a smell that can't be mistaken with anything else. Required by all the black tea recipes.",
+               "flavor": "The Brewer can use the Cook's mill grinder for this recipe!"
             },
             "wort_recipe": {
                "recipe_name": "Bucket of Wort",
@@ -8534,7 +8554,7 @@
             },
             "tea_desert_recipe": {
                "recipe_name": "Desert Sun Tea",
-               "description": "A unique recipe to the children of Rayya, a flower tea from Pal'Mum. Provides multiple bonuses to hearthlings.",
+               "description": "A unique recipe to the children of Rayya, a flowery black tea from Pal'Mum. Provides multiple bonuses to hearthlings.",
                "flavor": "Prepared tea must be placed somewhere in order to be consumed"
             },
             "tea_amberstone_recipe": {
@@ -8544,7 +8564,7 @@
             },
             "tea_fancy_recipe": {
                "recipe_name": "Lavish Tea",
-               "description": "The elegant and heartwarming flavor of dried daisies and fruits. Provides multiple bonuses to hearthlings.",
+               "description": "The elegant and heartwarming flavor of dried daisies and green tea. Provides multiple bonuses to hearthlings.",
                "flavor": "Prepared tea must be placed somewhere in order to be consumed"
             },
             "juice_berry_recipe": {

@@ -6,14 +6,18 @@
    "description": "i18n(stonehearth_ace:jobs.brewer.recipes.tea_amberstone_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.tea_amberstone_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/drink/tea/tea_amberstone/tea_amberstone.png",
-   "level_requirement": 4,
+   "level_requirement": 5,
    "workshop": "stonehearth_ace:brewer:kettle",
    "work_effect": "brewer_stirring",
    "manual_unlock": true,
    "ingredients": [
       {
+         "uri": "stonehearth_ace:drink:ground_tea:black",
+         "count": 1
+      },
+      {
          "uri": "stonehearth:resources:fiber:heirbloom_bundle",
-         "count": 2
+         "count": 1
       },
       {
          "uri": "stonehearth:decoration:amberstone_teapot",
