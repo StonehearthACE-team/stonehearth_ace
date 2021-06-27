@@ -145,6 +145,7 @@ local monkey_patches = {
    ace_safety_observer = 'stonehearth.ai.observers.safety_observer',
    ace_scenario_modder_services = 'stonehearth.services.server.static_scenario.scenario_modder_services',
    ace_script_encounter = 'stonehearth.services.server.game_master.controllers.encounters.script_encounter',
+   ace_seasonal_model_switcher_component = 'stonehearth.components.seasonal_model_switcher.seasonal_model_switcher_component',
    ace_seasons_service = 'stonehearth.services.server.seasons.seasons_service',
    ace_shared_filters = 'stonehearth.ai.filters.shared_filters',
    ace_shepherd = 'stonehearth.jobs.shepherd.shepherd',

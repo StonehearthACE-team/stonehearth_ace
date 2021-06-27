@@ -20,7 +20,7 @@ end
 AceRenewableResourceNodeComponent._ace_old_activate = RenewableResourceNodeComponent.activate
 function AceRenewableResourceNodeComponent:activate()
    self._renewal_time_multipliers = {}
-
+   log:debug('%s RRN:activate() current model: %s', self._entity, self._entity:get_component('render_info'):get_model_variant())
    self:_ace_old_activate()
    if self._sv.half_renew_timer and self._sv.half_renew_timer.bind then
       self._sv.half_renew_timer:bind(function()
@@ -28,9 +28,9 @@ function AceRenewableResourceNodeComponent:activate()
          end)
    end
 
-   if self._sv.harvestable then
-      self:_reset_model()
-   end
+   -- if self._sv.harvestable then
+   --    self:_reset_model()
+   -- end
 end
 
 --AceRenewableResourceNodeComponent._ace_old_post_activate = RenewableResourceNodeComponent.post_activate
@@ -65,6 +65,8 @@ function AceRenewableResourceNodeComponent:post_activate()
       self._loot_table_filter_script = loot_table_filter_script
       self._loot_table_filter_args = self._json.loot_table_filter_args
    end
+
+   log:debug('%s RRN:post_activate() current model: %s', self._entity, self._entity:get_component('render_info'):get_model_variant())
 end
 
 AceRenewableResourceNodeComponent._ace_old_destroy = RenewableResourceNodeComponent.__user_destroy
@@ -142,15 +144,18 @@ end
 function AceRenewableResourceNodeComponent:_apply_modifiers(key, modifiers)
    self._renewal_time_multipliers[key] = modifiers and modifiers.renewal_time_multiplier or 1
    self._disabled = modifiers and modifiers.disable_renewal
+   local is_harvestable = self:is_harvestable()
    if modifiers then
-      if modifiers.drop_resource and self:is_harvestable() then
+      if modifiers.drop_resource and is_harvestable then
          local x_offset = rng:get_int(0, 1) * 2
          local z_offset = (x_offset == 0 and 2) or (rng:get_int(0, 1) * 2)
          local offset = Point3(x_offset * (rng:get_int(0, 1) == 0 and -1 or 1), 0, z_offset * (rng:get_int(0, 1) == 0 and -1 or 1))
          self:spawn_resource(self._entity, radiant.entities.get_world_grid_location(self._entity) + offset, self._entity:get_player_id(), true)
       elseif modifiers.destroy_resource then
          self:_stop_renew_timer()
-         self:_deplete()
+         if is_harvestable then
+            self:_deplete()
+         end
       end
    end
 
@@ -306,7 +311,8 @@ function AceRenewableResourceNodeComponent:_reset_model()
       self._entity:add_component('stonehearth_ace:models'):add_model(RENEWED_MODEL_NAME, self._json.renewed_model)
    else
       local render_info = self._entity:add_component('render_info')
-      render_info:set_model_variant('')
+      local seasonal_model_switcher = self._entity:get_component('stonehearth:seasonal_model_switcher')
+      render_info:set_model_variant(seasonal_model_switcher and seasonal_model_switcher:get_last_applied_variant() or '')
    end
 
    if self._renew_effect then
