@@ -28,9 +28,9 @@ function AceRenewableResourceNodeComponent:activate()
          end)
    end
 
-   -- if self._sv.harvestable then
-   --    self:_reset_model()
-   -- end
+   if self._is_create and self._sv.harvestable then
+      self:_reset_model()
+   end
 end
 
 --AceRenewableResourceNodeComponent._ace_old_post_activate = RenewableResourceNodeComponent.post_activate
