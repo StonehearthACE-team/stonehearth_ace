@@ -1,0 +1,29 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(decorative_coffeepot.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.14
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.08 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(joto:entities.decoration.decorative_coffeepot.decorative_coffeepot_ghost.display_name)",
+         "description": "i18n(joto:entities.decoration.decorative_coffeepot.decorative_coffeepot_ghost.description)",
+         "icon": "file(decorative_coffeepot.png)",
+         "category": "decoration",
+         "material_tags": ["decoration", "crafted", "clay", "stockpile_decoration"]
+      }
+   }
+}

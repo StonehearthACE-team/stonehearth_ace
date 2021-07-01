@@ -520,6 +520,15 @@
                      }
                   }
                },
+               "returning_silk_road_trader_encounter": {
+                  "title": "A caravaneer from the far east is passing through!",
+                  "trade_details": "Warm greetings, [str(i18n_data.town_name)]! You may call me Don Vandon - yes, yes, the famous merchant! Our last and fruitful crossing of the perilous Silk Road has brought us many wonderful goods, most of which are already reserved for the mightiest lords and royal...iest kings and queens, I'm afraid! We do have some cancelled orders, however... Like these <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>. They're not my finest products so you can keep them. For a fair price, of course! The eastern kingdoms are very interested in orders of our exotic goods like, let's say, <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>. We shall camp nearby for [str(i18n_data.num_days)] days, do you think your fair town can manage this exchange, yes?",
+                  "waiting_title": "Don Vandon's caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
+                  "waiting_text": "Don Vandon's caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> ready for them!",
+                  "return_title": "The caravaneer from the far east returns!",
+                  "return_greetings_positive": "Greetings again! It seems your [str(i18n_data.want_number)] [str(i18n_data.want_item)] are ready to be traded for my [str(i18n_data.reward_number)] [str(i18n_data.reward_item)]! We should proceed with the deal, yes?",
+                  "return_greetings_negative": "We're about to proceed back into the Silk Road and it seems you've not procured us [str(i18n_data.want_number)] [str(i18n_data.want_item)]. Understandable. Look for our caravan again in the future, yes, yes. Safe passage under the moonlight, friend!"
+               },
                "returning_collector_encounter": {
                   "title": "An explorer approaches your town."
                }
@@ -2171,6 +2180,10 @@
                "jolly_time": {
                   "display_name": "Having a jolly time!",
                   "tooltip": "Enjoying a lot of good company and delicious beverages! This is so good!"
+               },
+               "coffee_lover_had_coffee": {
+                  "display_name": "Coffee Lover",
+                  "tooltip": "YES! I just enjoyed a [str(drinkname)] and it was FANTASTIC! I NEED MORE!"
                }
             },
             "thirst": {
@@ -2734,6 +2747,18 @@
                   "3_description": "They have been swarmed by bees 15 times. Do they look like a flower or something? Bees really love them!",
                   "4_display_name": ", Honorary Queen",
                   "4_description": "They have been swarmed by bees 30 times! This is crazy, maybe bees just really want to follow them. Or maybe you should make them a beekeeper's hat..."
+               },
+               "caffeinated": {
+                  "display_name": "Caffeinated",
+                  "description": "Gained by drinking coffee.",
+                  "1_display_name": ", Disgusted",
+                  "1_description": "They say the best things in life are acquired tastes. Maybe? Either way, this first cup of coffee was certainly a bit too bitter... Or was it?",
+                  "2_display_name": " the Unfiltered",
+                  "2_description": "Not bad! Seven cups of coffee means they've had coffee at least every day in a month. I bet it tastes much better now!",
+                  "3_display_name": " the Energized",
+                  "3_description": "Twenty-one cups of coffee will place them at the great mark of one cup per day for a whole season. Maybe a bit addicting?",
+                  "4_display_name": ", Developer",
+                  "4_description": "After eighty-four cups of coffee one can safely say they developed a good taste for it. Especially if it was all in a single night of work..."
                }
             }
          }
@@ -2955,11 +2980,11 @@
             },
             "fermenting_vat_fill_wort": {
                "display_name": "Produce Ale",
-               "description": "Order the Brewer to fill this fermenting vat with wort to start brewing! It will continue producing Ale unless a new command is given."
+               "description": "Order the Brewer to fill this fermenting vat with ale wort to start brewing! It will continue producing Ale unless a new command is given."
             },
             "fermenting_vat_fill_wort_gruit": {
                "display_name": "Produce Beer",
-               "description": "Order the Brewer to fill this fermenting vat with gruit wort to start brewing! It will continue producing Beer unless a new command is given."
+               "description": "Order the Brewer to fill this fermenting vat with beer wort to start brewing! It will continue producing Beer unless a new command is given."
             },
             "frostfeast": {
                "open_present": {
@@ -3058,6 +3083,18 @@
             "cheese_vat_fill_aged": {
                "display_name": "Make Aged Cheese",
                "description": "Order the Shepherd to pour a curdling mixture in this cheese vat to start the production of cheese! When using this option, the vat will automatically request to be harvested only when the product reaches the last stage, Aged Cheese."
+            },
+            "drying_bed_fill_coffee": {
+               "display_name": "Dry Coffee Cherries",
+               "description": "Order the Brewer to rest a crate of sorted coffee cherries on this drying bed! After a week or so, the Brewer will be able to hull the dried cherries and collect Green Coffee Beans!"
+            },
+            "drying_bed_fill_green_tea": {
+               "display_name": "Dry Green Tea Leaves",
+               "description": "Order the Brewer to rest a crate of steamed tea leaves on this drying bed! When using this option, the bed will automatically request to be harvested once the product reaches the Green Tea Leaves stage."
+            },
+            "drying_bed_fill_black_tea": {
+               "display_name": "Dry Black Tea Leaves",
+               "description": "Order the Brewer to rest a crate of steamed tea leaves on this drying bed! When using this option, the bed will automatically request to be harvested once the product reaches the Black Tea Leaves stage."
             }
          },
          "slaughter": {
@@ -3975,6 +4012,20 @@
          "satisfied_belly": {
             "display_name": "Satisfied Belly",
             "description": "Hmm... This was very filling! Willpower is increased.<ul><li>This hearthling will grow hungry more slowly while this effect lasts</li></ul>"
+         },
+         "consumption": {
+            "coffee_energy": {
+               "display_name": "Mildly Caffeinated",
+               "description": "Ah! Nothing like a good cup of coffee! Or two... Speed is quite increased, Inspiration is slightly increased. The need for sleep is greatly decreased.<ul><li>The hearthling might feel a bit more thirst</li><li>Being Mildly Caffeinated will remove any negative status from alcohol consumption</li></ul>"
+            },
+            "coffee_energy_minor": {
+               "display_name": "Tiny Sparks",
+               "description": "This coffee cherry thing... It's good. IT'S GOOD. Speed is slightly increased, Inspiration is very slightly increased. The need for sleep is slightly decreased."
+            },
+            "coffee_energy_major": {
+               "display_name": "Caffeinated",
+               "description": "Woo! BRING. IT. ON! Speed is greatly increased, Inspiration is quite increased. The need for sleep is almost completely removed.<ul><li>The hearthling might feel a bit more thirst</li><li>Being Caffeinated will remove any negative status from alcohol consumption</li></ul>"
+            }
          }
       },
       "loadouts": {
@@ -4134,6 +4185,10 @@
          "sleepyhead_trait": {
             "display_name": "Sleepyhead",
             "description": "Waking up [name(i18n_data.entity)] can be a challenge. They love sleeping so much that they'll probably sleep a bit more than they should..."
+         },
+         "coffee_love_trait": {
+            "display_name": "Coffee Lover",
+            "description": "One can easily tell how much [name(i18n_data.entity)] loves coffee just by looking how grumpy they are without it (and how happy they are when they get it). They always appreciate drinking them more than anything else, if possible."
          }
       },
       "build": {
@@ -4601,6 +4656,11 @@
                "description": "Separate seeds from the fruit",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the fruit is lost in the process."
             },
+            "tea_bush_transmute_recipe": {
+               "recipe_name": "Tea Shrub Seed",
+               "description": "Separate a seed from the flower",
+               "flavor": "Only a skilled hand can harvest the weaker seed, but the herb is lost in the process."
+            },
             "moonbell_transmute_recipe": {
                "recipe_name": "Moonbell Seeds (x2)",
                "description": "Separate seeds from the herbs",
@@ -4789,6 +4849,11 @@
             "cherry_bush_seeds_recipe": {
                "recipe_name": "Dried Cherries",
                "description": "Domesticate Cherry Bushes and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "tea_bush_seeds_recipe": {
+               "recipe_name": "Tea Seedpods",
+               "description": "Domesticate Tea Shrubs and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "pear_cactus_seeds_recipe": {
@@ -8010,6 +8075,18 @@
                   "description": "A fuzzy and warm coat, excellent for partaking in seasonal celebrations.",
                   "flavor": "'Look, the Frostfather has come to visit us!'"
                }
+            },
+            "rug_gilded_blue_recipe": {
+               "flavor": "Some used to believe that a blue like this could only be milled from precious blue stone found deep within mountains far, far to the frozen north"
+            },
+            "rug_gilded_coral_recipe": {
+               "flavor": "It was rumored that earth from a long-dried seabed to the south was baked and ground to produce this lively red-orange"
+            },
+            "rug_gilded_red_recipe": {
+               "flavor": "The color is reminiscent of the flesh on the luscious, almost-purple berries grown in the foothills surrounding a faraway kingdom"
+            },
+            "rug_gilded_sage_recipe": {
+               "flavor": "Achieving a delicate green requires skill; this stain made from a pulp of potent herbs will rapidly turn anything sour"
             }
          },
          "weaver_description": {
@@ -8432,6 +8509,21 @@
                "description": "Toast some rye grains until they're perfectly brassy. An ingredient necessary for brewing Pale Ale.",
                "flavor": "The Brewer can use the Cook's brick oven for this recipe!"
             },
+            "coffee_sorted_recipe": {
+               "recipe_name": "Crate of Sorted Coffee Cherries",
+               "description": "Sort out only the best and perfectly ripe cherries from a bunch of baskets and get them ready to be dried!",
+               "flavor": "Coffee Cherries are dried on a drying bed"
+            },
+            "coffee_roasted_recipe": {
+               "recipe_name": "Sack of Roasted Coffee",
+               "description": "Coffee Beans are perfectly roasted when they reach a deep, dark brown color and become slightly brittle.",
+               "flavor": "The Brewer can use the Cook's oven for this recipe!"
+            },
+            "coffee_ground_recipe": {
+               "recipe_name": "Sack of Ground Coffee (x2)",
+               "description": "After grinding this coffee will be ready to be brewed into delicious and energetic beverages!",
+               "flavor": "The Brewer can use the Cook's mill grinder for this recipe!"
+            },
             "tea_leaves_steamed_recipe": {
                "recipe_name": "Crate of Steamed Tea Leaves",
                "description": "Let the vapors cleanse these leaves so that they can be properly dried into green or black tea leaves.",
@@ -8448,8 +8540,8 @@
                "flavor": "The Brewer can use the Cook's mill grinder for this recipe!"
             },
             "wort_recipe": {
-               "recipe_name": "Bucket of Wort",
-               "description": "An extract of mashed malted grains and herbs. Within a Fermentation Vat it can be turned into Ale!",
+               "recipe_name": "Bucket of Ale Wort",
+               "description": "An extract of mashed malted grains and herbs. Within a Fermentation Vat it can be turned into ale!",
                "flavor": "Pure malt wort can also be further distilled into other drinks"
             },
             "unfermented_vinegar_brew_recipe": {
@@ -8473,7 +8565,7 @@
                "flavor": "Juice is the least efficient vinegar ingredient - but also the cheapest!"
             },
             "wort_gruit_recipe": {
-               "recipe_name": "Bucket of Gruit Wort",
+               "recipe_name": "Bucket of Beer Wort",
                "description": "A bitter and strong mash of grains and gruit. Within a Fermentation Vat it can be turned into beer!",
                "flavor": "Beer is ready quicker than Ale and makes hearthlings slightly happier"
             },
@@ -8976,6 +9068,30 @@
          "brewer_drying_bed_empty": {
             "display_name": "Empty Drying Bed",
             "description": "A frame for the Brewer to dry products like tea leaves or coffee cherries."
+         },
+         "brewer_drying_bed_tea_leaves_fresh": {
+            "display_name": "Drying Tea Leaves",
+            "description": "These leaves are drying and should be ready in a day or so."
+         },
+         "brewer_drying_bed_tea_leaves_green": {
+            "display_name": "Drying Green Tea Leaves",
+            "description": "These green tea leaves are ready to be collected or left alone for further drying."
+         },
+         "brewer_drying_bed_tea_leaves_black": {
+            "display_name": "Dried Black Tea Leaves",
+            "description": "These black tea leaves are ready to be collected!"
+         },
+         "brewer_drying_bed_coffee_sorted": {
+            "display_name": "Fresh Coffee Cherries",
+            "description": "The coffee cherries are now drying and should be ready after a week or so."
+         },
+         "brewer_drying_bed_coffee_drying": {
+            "display_name": "Drying Coffee Cherries",
+            "description": "They're yellowed and not as juicy anymore. Still some days to go!"
+         },
+         "brewer_drying_bed_coffee_dry": {
+            "display_name": "Dry Coffee Cherries",
+            "description": "The green coffee beans are ready to be hulled from the dried, dead cherries!"
          }
       },
       "professional_beekeeping_hat": {
@@ -9187,6 +9303,10 @@
             "tea_bush_seeds": {
                "display_name": "Tea Shrub Seedpods",
                "description": "Learn to grow tea shrubs."
+            },
+            "coffee_bush_seeds": {
+               "display_name": "Green Coffee Beans",
+               "description": "Learn to grow coffee plants."
             }
          },
          "fertilizer": {
@@ -10491,6 +10611,28 @@
                   "description": "It's almost there! Look, lots of leaves are growing!"
                }
             }
+         },
+         "coffee_bush_crop": {
+            "display_name": "Coffee Plant",
+            "description": "Can be harvested for energetic coffee cherries",
+            "growth_stage": {
+               "000": {
+                  "name": "Coffee Plant Seed",
+                  "description": "Planted to provide coffee cherries when it grows."
+               },
+               "001": {
+                  "name": "Coffee Plant Sproutling",
+                  "description": "Just needs some time and care."
+               },
+               "002": {
+                  "name": "Stemming Coffee Plant",
+                  "description": "Still growing!"
+               },
+               "003": {
+                  "name": "Budding Coffee Plant",
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            }
          }
       },
       "decorations": {
@@ -10768,6 +10910,10 @@
             "sage": {
                "display_name": "Sheaf of Sage",
                "description": "Sweet and rustic, smells of pine. Useful as a mild or zesty herb."
+            },
+            "camellia_rare": {
+               "display_name": "Rare Camellia",
+               "description": "This exotic herb holds tea shrub seeds! It's also a peculiar and healing herb."
             }
          },
          "stone": {
@@ -13033,7 +13179,7 @@
                },
                "tea_bush_plant_seed": {
                   "display_name": "Tea Shrub Seed",
-                  "description": "Can be planted to grow a lush and fragrant bush."
+                  "description": "Can be planted to grow a lush and fragrant bush or milled for cooking oil."
                }
             },
             "sprout": {
@@ -13045,6 +13191,41 @@
             "stem": {
                "tea_bush_plant_stem": {
                   "display_name": "Stemming Tea Shrub",
+                  "description": "Still growing!"
+               }
+            }
+         },
+         "coffee_bush": {
+            "unripe_description": "Not yet ripe for harvest.",
+            "display_name": "Coffee Plant",
+            "description": "Harvest for energizing coffee cherries!",
+            "bud": {
+               "coffee_bush_plant_bud": {
+                  "display_name": "Budding Coffee Plant"
+               },
+               "coffee_bushplant_bud": {
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            },
+            "seed": {
+               "coffee_bush_plant_seed_ghost": {
+                  "display_name": "Coffee Plant Seed",
+                  "description": "Will provide energizing fruits when it grows."
+               },
+               "coffee_bush_plant_seed": {
+                  "display_name": "Coffee Plant Seed",
+                  "description": "Can be planted to grow a small tree that provides energizing coffee!"
+               }
+            },
+            "sprout": {
+               "coffee_bush_plant_sprout": {
+                  "display_name": "Coffee Plant Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "stem": {
+               "coffee_bush_plant_stem": {
+                  "display_name": "Stemming Coffee Plant",
                   "description": "Still growing!"
                }
             }
@@ -14872,6 +15053,16 @@
          "dough_pie": {
             "display_name": "Pie Crust",
             "description": "A crunchy, spread open dough ready to be filled and baked!"
+         },
+         "coffee": {
+            "coffee_basket": {
+               "display_name": "Basket of Coffee Cherries",
+               "description": "Tasty but meager fruits, much better when dried for coffee beans!"
+            },
+            "coffee_serving": {
+               "display_name": "Serving of Coffee Cherries",
+               "description": "Not so bad but goes in one bite!"
+            }
          }
       },
       "terrain": {
@@ -16612,7 +16803,7 @@
             }
          },
          "wort": {
-            "display_name": "Bucket of Wort",
+            "display_name": "Bucket of Ale Wort",
             "description": "An extract from grains. The Brewer needs it to make ale."
          },
          "spirit": {
@@ -16910,7 +17101,7 @@
             "description": "Crushed berries, juice and solids. A Brewer needs it to fill a wine cask!"
          },
          "wort_gruit": {
-            "display_name": "Bucket of Gruit Wort",
+            "display_name": "Bucket of Beer Wort",
             "description": "A mash of malted grains and spices. The Brewer needs it to make beer."
          },
          "must_apple": {
@@ -17210,9 +17401,21 @@
             }
          },
          "coffee": {
-            "washed": {
-               "display_name": "Crate of Washed Coffee",
+            "sorted": {
+               "display_name": "Crate of Sorted Coffee",
                "description": "These cherries are ready to be placed on a drying bed."
+            },
+            "green": {
+               "display_name": "Sack of Green Coffee Beans",
+               "description": "Fresh out of their dried husks and ready to be roasted!"
+            },
+            "roasted": {
+               "display_name": "Sack of Roasted Coffee Beans",
+               "description": "Precisely roasted to a perfect dark brown. Needs grinding before brewing!"
+            },
+            "ground": {
+               "display_name": "Sack of Ground Coffee",
+               "description": "The aroma is irresistible! This coffee is ready to be brewed."
             }
          },
          "ground_tea_green": {
@@ -18839,7 +19042,8 @@
             "prepared_food_dinner_resource_name": "Dinner Food",
             "becomes_vinegar_juice_resource_name": "Any Juice",
             "hard_flour_resource_name": "Any Hard Flour",
-            "soft_flour_resource_name": "Any Soft Flour"
+            "soft_flour_resource_name": "Any Soft Flour",
+            "malt_resource_name": "Any Malted Grains"
          }
       }
    },

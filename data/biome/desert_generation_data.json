@@ -149,7 +149,15 @@
                "item_density": 0.15,
                "exclusion_radius": 0
             }
-         }
+         },
+         "stonehearth_ace:plants:coffee_bush": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 3.5,
+               "item_density": 0.2,
+               "exclusion_radius": 2
+            }
+         } 
       },
 		"trees": {
          "sizes": {
@@ -210,14 +218,24 @@
 							"stonehearth_ace:terrain:pasture_grass": 0.4,
 							"stonehearth_ace:terrain:pasture_grass:short": 0.2,
 							"stonehearth_ace:trees:almond:small": 0.5,
-							"stonehearth_ace:plants:golden_gourd": 0.4
+							"stonehearth_ace:plants:golden_gourd": 0.4,
+                     "stonehearth_ace:plants:coffee_bush": 0.4
                   },
                   "2": {
                      "stonehearth_ace:fungi:desert_truffle": 1,
 							"stonehearth_ace:plants:oleander": 0.3,
 							"stonehearth_ace:terrain:pasture_grass:short": 0.3,
 							"stonehearth_ace:trees:almond:small": 0.4,
-							"stonehearth_ace:plants:golden_gourd": 0.2
+							"stonehearth_ace:plants:golden_gourd": 0.2,
+                     "stonehearth_ace:plants:coffee_bush": 0.6
+                  }
+               },
+               "mountains": {
+                  "1": {
+				         "stonehearth_ace:plants:coffee_bush": 0.8
+                  },
+                  "2": {
+                     "stonehearth_ace:plants:coffee_bush": 0.9
                   }
                }
             }

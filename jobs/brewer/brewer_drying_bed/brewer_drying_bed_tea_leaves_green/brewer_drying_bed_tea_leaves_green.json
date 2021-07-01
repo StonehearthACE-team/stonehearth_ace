@@ -10,55 +10,47 @@
          "iconic_form": "file(brewer_drying_bed_tea_leaves_green_iconic.json)",
          "placeable_on_ground": true
       },
-      "stonehearth_ace:transform": {}
-   },
-   "entity_data": {
-      "stonehearth_ace:transform_data": {
-         "progress_text": "stonehearth_ace:ui.game.unit_frame.transform.progress.filling",
-         "transform_options": {
-            "green_tea": {
-               "transform_uri": "stonehearth_ace:brewer:drying_bed:tea_leaves_fresh",
-               "command": "stonehearth_ace:commands:transform:drying_bed_fill:green_tea",
-               "request_action": "stonehearth_ace:transform",
-               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
-               "transform_ingredient_uri": "stonehearth_ace:drink:tea_leaves:steamed",
-               "transform_ingredient_auto_craft": true,
-               "auto_request": true,
-               "worker_required_job": {
-                  "stonehearth_ace:jobs:brewer": true
-               },
-               "apply_ingredient_quality": true
-            },
-            "black_tea": {
-               "transform_uri": "stonehearth_ace:brewer:drying_bed:tea_leaves_fresh",
-               "command": "stonehearth_ace:commands:transform:drying_bed_fill:black_tea",
-               "request_action": "stonehearth_ace:transform",
-               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
-               "transform_ingredient_uri": "stonehearth_ace:drink:tea_leaves:steamed",
-               "transform_ingredient_auto_craft": true,
-               "auto_request": true,
-               "worker_required_job": {
-                  "stonehearth_ace:jobs:brewer": true
-               },
-               "apply_ingredient_quality": true
-            },
-            "coffee": {
-               "transform_uri": "stonehearth_ace:brewer:drying_bed:coffee_washed",
-               "command": "stonehearth_ace:commands:transform:drying_bed_fill:coffee",
-               "request_action": "stonehearth_ace:transform",
-               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
-               "transform_ingredient_uri": "stonehearth_ace:drink:coffee:washed",
-               "transform_ingredient_auto_craft": true,
-               "auto_request": true,
-               "worker_required_job": {
-                  "stonehearth_ace:jobs:brewer": true
-               },
-               "apply_ingredient_quality": true
+      "stonehearth_ace:stump": {},
+      "stonehearth:resource_node": {
+         "category": "brewing",
+         "resource": "stonehearth_ace:drink:tea_leaves:green",
+         "harvest_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+         "harvester_effect": "fiddle",
+         "durability": 1,
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 4,
+                     "max": 5
+                  },
+                  "items": {
+                     "tea_leaves": {
+                        "uri": "stonehearth_ace:drink:tea_leaves:green"
+                     }
+                  }
+               }
             }
          }
       },
+      "stonehearth:evolve": {}
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:brewer:drying_bed:tea_leaves_black",
+         "evolve_time": "2d+12h",
+         "auto_harvest": true
+      },
+      "stonehearth_ace:stage_data": {
+         "current_stage": "green_tea"
+      },
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:brewer:drying_bed:empty",
+         "apply_quality": false,
+         "transform_option_key": "green_tea"
+      },
       "stonehearth:net_worth": {
-         "value_in_gold": 3,
+         "value_in_gold": 36,
          "rarity": "common",
          "shop_info": {
             "buyable": false,

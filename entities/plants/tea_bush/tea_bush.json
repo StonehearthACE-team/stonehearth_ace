@@ -10,6 +10,26 @@
          "harvest_status_text": "i18n(stonehearth_ace:entities.plants.tea_bush.renewable_harvest_status_text)",
          "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
          "half_renewed_model_variant": true,
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 10
+                     },
+                     "flower": {
+                        "uri": "stonehearth_ace:resources:herb:camellia_rare",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         },
          "biomes": {
             "stonehearth:biome:arctic": {
                "renewal_time_multiplier": 2
@@ -50,6 +70,17 @@
          "iconic_form": "file(tea_bush_iconic.json)",
          "ghost_form": "file(tea_bush_ghost.json)",
          "placeable_on_ground": true
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "firewood": {
+                     "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood"
+                  }
+               }
+            }
+         }
       }
    },
    "entity_data": {

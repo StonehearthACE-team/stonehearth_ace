@@ -1,0 +1,54 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(camellia_rare.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 5,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.herb.camellia_rare.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.herb.camellia_rare.description)",
+         "icon": "file(camellia_rare.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": [
+            "plant",
+            "herb",
+            "white",
+            "peculiar",
+            "healing",
+            "resource",
+            "camellia_rare",
+            "flower",
+            "stockpile_plant",
+            "undesirable_ingredient"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 5
+      }
+   }
+}

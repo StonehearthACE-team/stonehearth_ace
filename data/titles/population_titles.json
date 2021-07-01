@@ -951,8 +951,45 @@
          }
       ]
    },
-   "bee_swarmed": {
+   "caffeinated": {
       "ordinal": 26,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.caffeinated.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.caffeinated.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "coffee_energy"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.caffeinated.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.caffeinated.1_description)",
+            "required_value": 1
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.caffeinated.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.caffeinated.2_description)",
+            "required_value": 7
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.caffeinated.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.caffeinated.3_description)",
+            "required_value": 21
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.caffeinated.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.caffeinated.4_description)",
+            "required_value": 84
+         }
+      ]
+   },
+   "bee_swarmed": {
+      "ordinal": 27,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.bee_swarmed.display_name)",
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.bee_swarmed.description)",
       "requirement": {

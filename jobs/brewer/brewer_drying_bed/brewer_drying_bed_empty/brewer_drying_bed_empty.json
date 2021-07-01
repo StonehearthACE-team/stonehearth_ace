@@ -45,11 +45,11 @@
                "apply_ingredient_quality": true
             },
             "coffee": {
-               "transform_uri": "stonehearth_ace:brewer:drying_bed:coffee_washed",
+               "transform_uri": "stonehearth_ace:brewer:drying_bed:coffee_sorted",
                "command": "stonehearth_ace:commands:transform:drying_bed_fill:coffee",
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
-               "transform_ingredient_uri": "stonehearth_ace:drink:coffee:washed",
+               "transform_ingredient_uri": "stonehearth_ace:drink:coffee:sorted",
                "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
@@ -60,7 +60,7 @@
          }
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 3,
+         "value_in_gold": 12,
          "rarity": "common",
          "shop_info": {
             "buyable": false,

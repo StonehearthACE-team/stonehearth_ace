@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_sorted_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_sorted_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_sorted_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/coffee/coffee_sorted/coffee_sorted.png",
+   "level_requirement": 4,
+   "ordinal": 1,
+	"work_effect": "fiddle",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:coffee:coffee_basket",
+         "count": 5
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:coffee:sorted"
+      }
+   ]
+}

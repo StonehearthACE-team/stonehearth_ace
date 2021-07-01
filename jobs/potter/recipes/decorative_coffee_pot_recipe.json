@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.decorative_coffee_pot_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.decorative_coffee_pot_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.decorative_coffee_pot_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/decorative_coffee_pot/decorative_coffee_pot.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:decorative_coffee_pot"
+      }
+   ]
+}

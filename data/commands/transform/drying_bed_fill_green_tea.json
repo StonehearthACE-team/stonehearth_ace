@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "drying_bed_fill_green_tea",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.drying_bed_fill_green_tea.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.drying_bed_fill_green_tea.description)",
+   "default_enabled": true,
+   "ordinal": 99,
+   "icon": "file(drying_bed_fill_green_tea.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "green_tea"
+   ]
+}

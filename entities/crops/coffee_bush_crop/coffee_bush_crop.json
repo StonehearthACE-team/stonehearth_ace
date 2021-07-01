@@ -1,0 +1,116 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth_ace/entities/plants/coffee_bush/coffee_bush.qb"
+            ]
+         },
+         "coffee_bush_1": {
+            "models": [
+               "file(coffee_bush_1.qb)"
+            ]
+         },
+         "coffee_bush_2": {
+            "models": [
+               "/stonehearth_ace/entities/plants/coffee_bush/sprout/coffee_bush_sprout.qb"
+            ]
+         },
+         "coffee_bush_3": {
+            "models": [
+               "/stonehearth_ace/entities/plants/coffee_bush/stem/coffee_bush_stem.qb"
+            ]
+         },
+         "coffee_bush_4": {
+            "models": [
+               "/stonehearth_ace/entities/plants/coffee_bush/bud/coffee_bush_bud.qb"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.09
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -0.1, "z": 0 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "default": "stonehearth_ace:crops:coffee_bush_crop:final"
+         },
+         "harvest_threshhold": "default",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
+         "megacrop_chance": 0,
+         "auto_harvest": "place"
+      },
+      "stonehearth:growing": {
+         "growth_period": "24h+12h",
+         "preferred_climate": "desert_easy",
+         "growth_stages": [
+            {
+               "model_name": "coffee_bush_1",
+               "name": "i18n(stonehearth_ace:entities.crops.coffee_bush_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.coffee_bush_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "coffee_bush_2",
+               "name": "i18n(stonehearth_ace:entities.crops.coffee_bush_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.coffee_bush_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "coffee_bush_3",
+               "name": "i18n(stonehearth_ace:entities.crops.coffee_bush_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.coffee_bush_crop.growth_stage.002.description)",
+               "component_changes": {
+                  "render_info": {
+                     "set_scale": 0.1
+                  }
+               }
+            },
+            {
+               "model_name": "coffee_bush_4",
+               "name": "i18n(stonehearth_ace:entities.crops.coffee_bush_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.coffee_bush_crop.growth_stage.003.description)",
+               "component_changes": {
+                  "render_info": {
+                     "set_scale": 0.12
+                  }
+               }
+            },
+            {
+               "model_name": "default",
+               "name": "i18n(stonehearth_ace:entities.crops.coffee_bush_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.coffee_bush_crop.growth_stage.003.description)",
+               "component_changes": {
+                  "render_info": {
+                     "set_scale": 0.12
+                  }
+               }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.coffee_bush_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.coffee_bush_crop.description)",
+         "icon": "/stonehearth_ace/entities/plants/coffee_bush/coffee_bush.png",
+         "material_tags": [
+            "crop",
+            "coffee_bush_sapling"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      }
+   }
+}

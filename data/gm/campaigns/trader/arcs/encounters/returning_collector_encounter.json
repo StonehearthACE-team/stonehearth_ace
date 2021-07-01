@@ -5,10 +5,21 @@
             "type": "deny_if_not",
             "item": "kingdom",
             "value": "stonehearth:kingdoms:ascendancy"
+         },
+         "golem_auto_check": {
+            "item": "script",
+            "type": "deny_if_not",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:inventory_check"
          }
       }
    },
    "script_info": {
+      "threshold": 5,
+      "check": "less_than",
+      "uris": [
+         "stonehearth:monsters:golems:golem_restocking:auto"
+      ],
       "data": {
 			"expiration_timeout": "18h",
          "max_days_before_return": 5,

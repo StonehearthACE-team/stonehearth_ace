@@ -315,7 +315,16 @@
       "tea_bush": {
          "crop_type": "stonehearth_ace:crops:tea_bush_crop",
          "ordinal": 1,
-         "level_requirement": 1,
+         "level_requirement": 4,
+         "destroy_on_crop_change": true,
+         "field_types": {
+            "bush_farm": true
+         }
+      },
+      "coffee_bush": {
+         "crop_type": "stonehearth_ace:crops:coffee_bush_crop",
+         "ordinal": 1,
+         "level_requirement": 4,
          "destroy_on_crop_change": true,
          "field_types": {
             "bush_farm": true

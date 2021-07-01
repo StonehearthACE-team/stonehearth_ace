@@ -1,0 +1,24 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_roasted_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_roasted_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_roasted_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/coffee/coffee_roasted/coffee_roasted.png",
+   "level_requirement": 4,
+   "ordinal": 2,
+	"work_effect": "work_wait",
+   "workshop": "stonehearth:cook:oven",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:coffee:green",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:coffee:roasted"
+      }
+   ]
+}
