@@ -89,6 +89,11 @@ function TransformComponent:_create_request_listeners()
       self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
          :on_changed(function(parent)
             if parent then
+               -- if we already have a task for this entity, don't override it with a transform request
+               local task_tracker_component = self._entity:get_component('stonehearth:task_tracker')
+               if task_tracker_component and task_tracker_component:has_any_task() then
+                  return
+               end
                self:request_transform(self._entity:get_player_id())
             end
          end)

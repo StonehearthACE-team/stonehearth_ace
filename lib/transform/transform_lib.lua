@@ -168,7 +168,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          transform_lib.place_entity_at_location(transformed_form, parent, local_location, facing)
 
          if options.auto_harvest_key then
-            local stage_data = radiant.entities.get_entity_data(transformed_form, 'stonehearth_ace:stage_data') or nil
+            local stage_data = radiant.entities.get_entity_data(transformed_form, 'stonehearth_ace:stage_data')
             local stage = stage_data and stage_data.current_stage
             if options.auto_harvest_key == stage then
                resources_lib.request_auto_harvest(transformed_form, true)
