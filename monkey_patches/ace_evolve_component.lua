@@ -134,9 +134,15 @@ function AceEvolveComponent:_stop_evolve_timer()
    --self.__saved_variables:mark_changed()
 end
 
+function AceEvolveComponent:_get_transform_options()
+   local transform_comp = self._entity:get_component('stonehearth_ace:transform')
+   return transform_comp and transform_comp:get_option_overrides() or {}
+end
+
 function AceEvolveComponent:evolve()
    self:_stop_evolve_timer()
 
+   local transform_options = self:_get_transform_options()
    local options = {
       check_script = self._evolve_data.evolve_check_script,
       transform_effect = self._evolve_data.evolve_effect,
@@ -148,7 +154,8 @@ function AceEvolveComponent:evolve()
          radiant.events.trigger(self._entity, 'stonehearth:on_evolved', {entity = self._entity, evolved_form = evolved_form})
       end
    }
-   local transformed = transform_lib.transform(self._entity, 'stonehearth:evolve', self._evolve_data.next_stage, options)
+   radiant.util.merge_into_table(transform_options, options)
+   local transformed = transform_lib.transform(self._entity, 'stonehearth:evolve', self._evolve_data.next_stage, transform_options)
 
    if transformed == false then
       self:_start_evolve_timer()

@@ -273,6 +273,10 @@ function TransformComponent:_set_up_commands()
    end
 end
 
+function TransformComponent:get_option_overrides()
+   return self._sv.option_overrides
+end
+
 function TransformComponent:add_option_overrides(overrides)
    self._compiled_options = nil
    radiant.util.merge_into_table(self._sv.option_overrides, overrides)
