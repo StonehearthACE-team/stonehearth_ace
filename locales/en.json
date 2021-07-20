@@ -4188,7 +4188,7 @@
          },
          "coffee_love_trait": {
             "display_name": "Coffee Lover",
-            "description": "One can easily tell how much [name(i18n_data.entity)] loves coffee just by looking how grumpy they are without it (and how happy they are when they get it). They always appreciate drinking them more than anything else, if possible."
+            "description": "One can easily tell how much [name(i18n_data.entity)] loves coffee just by looking how grumpy they are without it (and how happy they are when they get it). They always appreciate drinking it more than anything else, if possible."
          }
       },
       "build": {
@@ -5341,18 +5341,18 @@
             },
             "gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
-               "description": "A bundle of pungent herbs and seasonings. This traditional recipe uses juniper berries.",
-               "flavor": "The Brewer needs gruit for making beer"
+               "description": "A bundle of pungent herbs and seasonings needed for beer brewing. This traditional recipe uses juniper berries.",
+               "flavor": "'I am gruit'"
             },
             "rc_gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
-               "description": "A bundle of pungent herbs and seasonings. Gruit is often made with wax plants in the desert.",
-               "flavor": "The Brewer needs gruit for making beer"
+               "description": "A bundle of pungent herbs and seasonings needed for beer brewing. Gruit is often made with wax plants in the desert.",
+               "flavor": "'I am gruit'"
             },
             "na_gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
-               "description": "A bundle of pungent herbs and seasonings. The northerners use pine cones for its flavor.",
-               "flavor": "The Brewer needs gruit for making beer"
+               "description": "A bundle of pungent herbs and seasonings needed for beer brewing. The northerners use pine cones for its flavor.",
+               "flavor": "'I am gruit'"
             },
             "frostfeast": {
                "decorated_frostfeast_tree_recipe": {
@@ -5645,6 +5645,11 @@
                "description": "Required to promote a hearthling into a Footman.",
                "flavor": "Might break easily but ideally they won't use it for long... right?"
             },
+            "decorative_coffee_pot_recipe": {
+               "recipe_name": "Decorative Coffee Pot",
+               "description": "Reminder of long nights",
+               "flavor": "'As the coffee is boiled and poured within, care not for the foam at the top nor the residue at the bottom. It is the tincture that must be like an ink which we write our destiny with.'"
+            },
             "porcelain_fence_bar_double_recipe": {
                "recipe_name": "Porcelain Fence Large",
                "description": "Craft a double section of porcelain short wall.",
@@ -5754,6 +5759,11 @@
                "recipe_name": "Porcelain Teapot",
                "description": "A cute little teapot.",
                "flavor": "The volume barely fits one cup of beverage."
+            },
+            "porcelain_coffee_pot_recipe": {
+               "recipe_name": "Porcelain Coffee Pot",
+               "description": "An exquisite design for holding a precious beverage.",
+               "flavor": "Be very careful when handling it!"
             },
             "porcelain_urn_short_recipe": {
                "recipe_name": "Small Porcelain Urn",
@@ -8658,6 +8668,11 @@
                "recipe_name": "Lavish Tea",
                "description": "The elegant and heartwarming flavor of dried daisies and green tea. Provides multiple bonuses to hearthlings.",
                "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
+            "coffee_recipe": {
+               "recipe_name": "Coffee",
+               "description": "A filtered, warm and energizing beverage held dear to many late-night workers! Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared coffee must be placed somewhere in order to be consumed"
             },
             "juice_berry_recipe": {
                "recipe_name": "Bucket of Berry Juice",
@@ -13702,6 +13717,14 @@
             "unfired_clay_vase_ghost": {
                "display_name": "Rough Clay Vase"
             }
+         },
+         "decorative_coffee_pot": {
+            "display_name": "Decorative Coffee Pot",
+            "description": "A reminder of long nights"
+         },
+         "porcelain_coffee_pot": {
+            "display_name": "Porcelain Coffee Pot",
+            "description": "Beautiful and ornate, perfect for a high quality beverage."
          }
       },
       "pets": {
@@ -17416,6 +17439,9 @@
             "ground": {
                "display_name": "Sack of Ground Coffee",
                "description": "The aroma is irresistible! This coffee is ready to be brewed."
+            },
+            "coffee_serving": {
+               "display_name": "Cup of Coffee"
             }
          },
          "ground_tea_green": {
@@ -17425,6 +17451,15 @@
          "ground_tea_black": {
             "display_name": "Sack of Black Tea",
             "description": "Exhales a smell that can't be mistaken. Ready to be used by a brewer."
+         },
+         "coffee_iconic": {
+            "description": "Place it somewhere so hearthlings can serve themselves!"
+         },
+         "coffee_desert": {
+            "coffee_desert": {
+               "display_name": "Coffee",
+               "description": "A crafter-favorite for late night working! Warm and energizing!"
+            }
          }
       },
       "npc": {
@@ -17625,8 +17660,8 @@
                },
                "gruit_recipe": {
                   "recipe_name": "Wrap of Gruit",
-                  "description": "A bundle of pungent herbs and seasonings. Birch catkins are often used in the highlands.",
-                  "flavor": "The Brewer needs gruit to make beer"
+                  "description": "A bundle of pungent herbs and seasonings needed for brewing beer. Birch catkins are often used in the highlands.",
+                  "flavor": "'I am gruit'"
                },
                "oleander_seeds_2_recipe": {
                   "recipe_name": "Oleander Seeds",

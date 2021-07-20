@@ -1,10 +1,10 @@
 {
    "type": "entity",
-   "mixins": "file(coffee_desert_ghost.json)",
+   "mixins": "file(coffee_ghost.json)",
    "components": {
       "stonehearth:entity_forms": {
-         "iconic_form": "file(coffee_desert_iconic.json)",
-         "ghost_form": "file(coffee_desert_ghost.json)",
+         "iconic_form": "file(coffee_iconic.json)",
+         "ghost_form": "file(coffee_ghost.json)",
          "placeable_on_ground": true,
          "hide_undeploy_ui": true
       },
@@ -30,14 +30,14 @@
          "on_destroy": true
       },
       "stonehearth:stacks": {
-         "max_stacks": 12
+         "max_stacks": 10
       },
       "stonehearth:loot_drops": {
          "force_auto_loot": true,
          "entries": {
             "default": {
                "items": {
-                  "cauldron": {
+                  "coffee_pot": {
                      "uri": "stonehearth_ace:decoration:decorative_coffee_pot"
                   }
                }
@@ -46,26 +46,28 @@
       },
       "effect_list": {
          "effects": [
-            "stonehearth_ace:effects:drink:coffee_desert"
+            "stonehearth_ace:effects:drink:coffee"
          ]
       }
    },
    "entity_data": {
       "stonehearth_ace:drink_container": {
          "effect": "fiddle",
-         "drink": "stonehearth_ace:drink:coffee_desert:coffee_desert_serving",
+         "drink": "stonehearth_ace:drink:coffee:coffee_serving",
          "stacks_per_serving": 1
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 58,
-         "rarity": "common",
+         "value_in_gold": 31,
+         "rarity": "uncommon",
          "shop_info": {
-            "buyable": false,
-            "sellable": true
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
          }
       },
       "stonehearth:appeal": {
-         "appeal": 45
+         "appeal": 16
       },
       "stonehearth:item_quality": {
          "variable_quality": true

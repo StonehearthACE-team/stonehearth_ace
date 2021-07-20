@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 53,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_coffee_pot_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_coffee_pot_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_coffee_pot_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/porcelain_coffee_pot/porcelain_coffee_pot.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:unfired_porcelain",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:porcelain_coffee_pot"
+      }
+   ]
+}

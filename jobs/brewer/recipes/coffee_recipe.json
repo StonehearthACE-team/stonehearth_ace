@@ -1,17 +1,17 @@
 {
    "type": "recipe",
-   "effort": 15,
+   "effort": 18,
    "work_units": 3,
-   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.coffee_recipe.recipe_name)",
-   "description": "i18n(stonehearth_ace:jobs.cook.recipes.coffee_recipe.description)",
-   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.coffee_recipe.flavor)",
-   "portrait": "/stonehearth_ace/entities/drink/coffee_desert/coffee_desert.png",
-   "level_requirement": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/decorative_coffee_pot/decorative_coffee_pot.png",
+   "level_requirement": 4,
    "workshop": "stonehearth_ace:brewer:kettle",
    "work_effect": "brewer_stirring",
    "ingredients": [
       {
-         "uri": "stonehearth_ace:food:coffee:coffee_basket",
+         "uri": "stonehearth_ace:drink:coffee:ground",
          "count": 1
       },
       {
@@ -21,7 +21,7 @@
    ],
    "produces": [
       {
-         "item": "stonehearth_ace:drink:coffee_desert"
+         "item": "stonehearth_ace:drink:coffee"
       }
    ]
 }

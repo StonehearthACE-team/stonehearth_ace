@@ -5,13 +5,13 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(coffee_desert_serving.qb)"
+               "file(coffee_serving.qb)"
             ]
          }
       },
       "effect_list": {
          "effects": [
-            "stonehearth_ace:effects:drink:tea:serving"
+            "stonehearth_ace:effects:drink:coffee:serving"
          ]
       }
    },
@@ -22,29 +22,30 @@
       },
       "stonehearth_ace:drink": {
          "stonehearth:sitting_on_chair": {
-            "satisfaction": 100
+            "satisfaction": 85
          },
          "default": {
-            "satisfaction": 85
+            "satisfaction": 70
          },
          "applied_buffs": [
             "stonehearth_ace:buffs:consumption:coffee_energy",
             "stonehearth_ace:buffs:consumption:warm_belly"
          ],
-         "quality": 6,
-         "effect_loops": 3
+         "quality": 5,
+         "effect_loops": 2
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.drink.coffee_desert.coffee_desert_serving.display_name)",
+         "display_name": "i18n(stonehearth_ace:entities.drink.coffee.coffee_serving.display_name)",
          "description": "",
          "material_tags": [
             "drink",
-            "coffee_desert_serving",
+            "coffee_serving",
             "coffee",
-            "breakfast_time",
+            "morning_time",
+            "night_time",
             "warming"
          ],
-         "subject_override": "stonehearth_ace:drink:coffee_desert"
+         "subject_override": "stonehearth_ace:drink:coffee"
       }
    }
 }
