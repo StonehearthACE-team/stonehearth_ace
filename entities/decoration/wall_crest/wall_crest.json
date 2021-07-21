@@ -4,10 +4,25 @@
          "region_collision_type": "none",
          "region": [
             {
-               "min": { "x": -2, "y": -1.5, "z": 0 },
-               "max": { "x": 3, "y": 1.5, "z": 1 }
+               "min": { "x": -1, "y": -1, "z": 0 },
+               "max": { "x": 2, "y": 2, "z": 1 }
             }
          ]
       }
-   }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 65,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 23
+      }
+   }  
 }

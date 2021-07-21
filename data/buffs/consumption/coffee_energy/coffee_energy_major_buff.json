@@ -10,6 +10,9 @@
    "duration": "8h",
    "repeat_add_action": "renew_duration",
    "gained_statistics_key": "coffee_energy",
+   "leftover_buffs": {
+      "stonehearth_ace:buffs:consumption:coffee_energy:worn_off": 0.6
+   },
    "modifiers": {
       "speed": {
          "add": 20
@@ -23,6 +26,9 @@
    },
    "disallowed_categories": [
       "consumption_alcohol"
+   ],
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:consumption:coffee_energy:worn_off"
    ],
    "script": "stonehearth:buff_scripts:periodic_attribute_modification",
    "script_info": {
