@@ -2,6 +2,8 @@ local PopulationFaction = require 'stonehearth.services.server.population.popula
 local AcePopulationFaction = class()
 
 local rng = _radiant.math.get_default_rng()
+local IntegerGaussianRandom = require 'stonehearth.lib.math.integer_gaussian_random'
+local gaussian_rng = IntegerGaussianRandom(rng)
 
 AcePopulationFaction._ace_old_activate = PopulationFaction.activate
 function AcePopulationFaction:activate()
@@ -167,7 +169,7 @@ end
 --Will show a simple notification that zooms to a citizen when clicked.
 --will expire if the citizen isn't around anymore
 -- override to add custom_data for current title
-function PopulationFaction:show_notification_for_citizen(citizen, title, options)
+function AcePopulationFaction:show_notification_for_citizen(citizen, title, options)
    local citizen_id = citizen:get_id()
    if not self._sv.bulletins[citizen_id] then
       self._sv.bulletins[citizen_id] = {}
@@ -198,6 +200,63 @@ function PopulationFaction:show_notification_for_citizen(citizen, title, options
             :add_i18n_data('town_name', town_name)
 
    self.__saved_variables:mark_changed()
+end
+
+function AcePopulationFaction:_assign_citizen_traits(citizen, options)
+   local tc = citizen:get_component('stonehearth:traits')
+   if options.suppress_traits or not tc then
+      return
+   end
+
+   local num_traits = gaussian_rng:get_int(1, 3, 0.25)
+   self._log:info('assigning %d traits', num_traits)
+
+   local traits = {}
+   local all_traits = radiant.deep_copy(self._flat_trait_index)
+   local start = 1
+
+   -- When doing embarkation trait assignment, make sure every hearthling
+   -- gets a 'prime' trait (i.e. ensure we use at least K traits from the
+   -- complete list of traits for K hearthlings).
+   if options.embarking then
+      local available_prime_traits = radiant.deep_copy(all_traits)
+
+      -- Remove all the previously-assigned prime traits from our copy.
+      for trait_uri, group_name in pairs(self._prime_traits) do
+         if group_name and available_prime_traits[group_name] then
+            available_prime_traits[group_name][trait_uri] = nil
+            if not next(available_prime_traits[group_name]) then
+               available_prime_traits[group_name] = nil
+            end
+         elseif available_prime_traits[trait_uri] then
+            available_prime_traits[trait_uri] = nil
+         end
+      end
+
+      local trait_uri, group_name = self:_pick_random_trait(citizen, traits, available_prime_traits, options)
+      if not trait_uri then
+         self._log:info('ran out of prime traits!')
+         self._prime_traits = {}
+         trait_uri, group_name = self:_pick_random_trait(citizen, traits, all_traits, options)
+         assert(trait_uri)
+      end
+      self:_add_trait(traits, trait_uri, group_name, all_traits, tc)
+      self._prime_traits[trait_uri] = group_name or false
+
+      self._log:info('  prime trait %s', trait_uri)
+      start = 2
+   end
+
+   for i = start, num_traits do
+      local trait_uri, group_name = self:_pick_random_trait(citizen, traits, all_traits, options)
+      if not trait_uri then
+         self._log:info('ran out of traits!')
+         break
+      end
+
+      self._log:info('  picked %s', trait_uri)
+      self:_add_trait(traits, trait_uri, group_name, all_traits, tc)
+   end
 end
 
 function AcePopulationFaction:_load_titles()

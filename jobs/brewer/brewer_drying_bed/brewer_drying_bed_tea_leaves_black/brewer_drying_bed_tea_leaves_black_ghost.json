@@ -1,0 +1,22 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_drying_bed:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(brewer_drying_bed_tea_leaves_black.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.brewer.brewer_drying_bed_tea_leaves_black.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.brewer.brewer_drying_bed_tea_leaves_black.description)",
+         "icon": "file(brewer_drying_bed_tea_leaves_black.png)"
+      }
+   }
+}

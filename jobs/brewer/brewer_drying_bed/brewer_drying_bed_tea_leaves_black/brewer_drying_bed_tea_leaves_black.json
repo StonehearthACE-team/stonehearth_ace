@@ -1,0 +1,61 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_drying_bed",
+      "file(brewer_drying_bed_tea_leaves_black_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(brewer_drying_bed_tea_leaves_black_ghost.json)",
+         "iconic_form": "file(brewer_drying_bed_tea_leaves_black_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:stump": {},
+      "stonehearth:resource_node": {
+         "category": "brewing",
+         "resource": "stonehearth_ace:drink:tea_leaves:black",
+         "harvest_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+         "harvester_effect": "fiddle",
+         "durability": 1,
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 3,
+                     "max": 5
+                  },
+                  "items": {
+                     "tea_leaves": {
+                        "uri": "stonehearth_ace:drink:tea_leaves:black"
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:stage_data": {
+         "current_stage": "black_tea"
+      },
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:brewer:drying_bed:empty",
+         "apply_quality": false,
+         "transform_option_key": "black_tea"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 48,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}

@@ -4,9 +4,24 @@
       "spawn_edge": {
          "out_edges": [
             {
+               "out_edge": "na_returning_silk_road_trader_encounter",
+               "type": "weighted_edge",
+               "weight": 1
+            },
+            {
+               "out_edge": "returning_silk_road_trader_encounter",
+               "type": "weighted_edge",
+               "weight": 1
+            },
+            {
                "out_edge": "na_returning_collector_encounter",
                "type": "weighted_edge",
-               "weight": 0.25
+               "weight": 1
+            },
+            {
+               "out_edge": "returning_collector_encounter",
+               "type": "weighted_edge",
+               "weight": 0.75
             },
 				{
                "out_edge": "na_returning_crop_trader_encounter",

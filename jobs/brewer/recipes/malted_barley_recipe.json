@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 24,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.malted_barley_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.malted_barley_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.malted_barley_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/malted_barley/malted_barley.png",
+   "level_requirement": 5,
+	"work_effect": "work_wait",
+   "workshop": "stonehearth_ace:cook:oven_advanced",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:barley:barley_bale",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:malted_barley"
+      }
+   ]
+}

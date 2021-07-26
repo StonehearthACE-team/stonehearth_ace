@@ -22,6 +22,7 @@ function CropComponent:_load_json()
    self._json = radiant.entities.get_json(self) or {}
    self._resource_pairings = self._json.resource_pairings
    self._harvest_threshhold = self._json.harvest_threshhold
+   self._stacks_per_harvest = self._json.stacks_per_harvest or 1
 end
 
 function CropComponent:restore()
@@ -122,6 +123,10 @@ end
 
 function CropComponent:get_post_harvest_stage()
    return self._post_harvest_stage
+end
+
+function CropComponent:get_stacks_per_harvest()
+   return self._stacks_per_harvest
 end
 
 function CropComponent:update_post_harvest_crop()

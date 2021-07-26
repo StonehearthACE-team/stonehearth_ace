@@ -1,0 +1,42 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "consumption_coffee_energy",
+   "unique_in_category": true,
+   "rank": 2,
+   "display_name": "i18n(stonehearth_ace:data.buffs.consumption.coffee_energy.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.consumption.coffee_energy.description)",
+   "icon": "file(coffee_energy_buff.png)",
+   "duration": "6h",
+   "repeat_add_action": "renew_duration",
+   "gained_statistics_key": "coffee_energy",
+   "leftover_buffs": {
+      "stonehearth_ace:buffs:consumption:coffee_energy:worn_off": 0.3
+   },
+   "modifiers": {
+      "speed": {
+         "add": 12
+      },
+      "inspiration": {
+         "add": 4
+      },
+      "drink_satiety_loss_multiplier": {
+         "multiply": 1.2
+      }
+   },
+   "disallowed_categories": [
+      "consumption_alcohol"
+   ],
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:consumption:coffee_energy:worn_off"
+   ],
+   "script": "stonehearth:buff_scripts:periodic_attribute_modification",
+   "script_info": {
+      "attribute": "sleepiness",
+      "value_change": -3,
+      "cannot_reach_zero": false,
+      "pulse": "1h",
+      "pulse_immediately": true,
+      "pulse_on_destroy": true
+   }
+}

@@ -6,12 +6,12 @@
    "description": "i18n(stonehearth_ace:jobs.potter.recipes.clay_water_well_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.clay_water_well_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/construction/clay_water_well/clay_water_well.png",
-   "workshop": "stonehearth:potter:workbench",
+   "work_effect": "work",
    "level_requirement": 2,
    "ingredients": [
 		{
-         "material": "clay resource",
-         "count": 4
+         "uri": "stonehearth_ace:refined:molded_clay",
+         "count": 6
       },
 		{
          "material": "wood resource",

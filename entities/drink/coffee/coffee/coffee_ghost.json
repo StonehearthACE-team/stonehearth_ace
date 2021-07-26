@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth_ace/entities/decoration/decorative_coffee_pot/decorative_coffee_pot.qb"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.13
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.coffee_desert.coffee_desert.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.coffee_desert.coffee_desert.description)",
+         "icon": "/stonehearth_ace/entities/decoration/decorative_coffee_pot/decorative_coffee_pot.png",
+         "category": "drink",
+         "material_tags": [
+            "drink_container",
+            "prepared_drink",
+            "coffee",
+            "standard",
+            "stockpile_prepared_drink",
+            "morning_time",
+            "night_time",
+            "warming"
+         ]
+      }
+   }
+}

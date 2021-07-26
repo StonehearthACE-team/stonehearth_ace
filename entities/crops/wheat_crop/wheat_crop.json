@@ -65,34 +65,70 @@
             ]
          }
       },
-		"stonehearth:loot_drops": {
-         "entries": {
-            "default": {
-               "items": {
-                  "none": {
-                     "weight": 2
-                  },
-                  "thatch": {
-                     "uri": "stonehearth_ace:resources:thatch_bale",
-                     "weight": 1
-                  }
-               }
-            }
-         }
-      },
 	   "stonehearth:growing": {
 			"growth_period": "32h",
-			"preferred_climate": "arctic_complex"
+			"preferred_climate": "temperate_complex",
+         "preferred_seasons": {
+            "mixintypes": {
+               "stonehearth:biome:temperate": "override",
+               "stonehearth:biome:arctic": "override"
+            },
+            "stonehearth:biome:temperate": ["summer", "autumn"],
+            "stonehearth:biome:arctic": ["spring"]
+         },
+         "mixintypes": {
+            "growth_stages": "override"
+         },
+         "growth_stages": [
+            {
+               "model_name": "wheat_1",
+               "name": "i18n(stonehearth:entities.crops.wheat_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth:entities.crops.wheat_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "wheat_2",
+               "name": "i18n(stonehearth:entities.crops.wheat_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth:entities.crops.wheat_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "wheat_3",
+               "name": "i18n(stonehearth_ace:entities.crops.wheat_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth:entities.crops.wheat_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "wheat_4",
+               "name": "i18n(stonehearth_ace:entities.crops.wheat_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth:entities.crops.wheat_crop.growth_stage.003.description)"
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+               "model_name": "wheat_12",
+               "name": "i18n(stonehearth:entities.crops.wheat_crop.growth_stage.011.name)",
+               "description": "i18n(stonehearth:entities.crops.wheat_crop.growth_stage.011.description)"
+            }
+         ]
+      },
+      "stonehearth:crop": {
+         "stacks_per_harvest": 20
       }
    },
    "entity_data": {
       "stonehearth_ace:megacrop": {
-         "num_to_spawn": 0,
-         "other_items": {
-			"stonehearth_ace:food:megacrop:sheep_feed": 2
-		 },
+            "num_to_spawn": 0,
+            "other_items": {
+			   "stonehearth_ace:food:megacrop:sheep_feed": 2
+		   },
          "pickup_new": true,
          "effect": "promote"
-     }
+      },
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.crops.wheat_crop.description)"
+      }
    }
 }

@@ -19,6 +19,9 @@ function material_model_variant.on_craft(ai, crafter, workshop, recipe, ingredie
          if iconic then
             iconic:add_component('stonehearth_ace:entity_modification'):set_model_variant(uri)
          end
+         if not root and not iconic then
+            item:add_component('stonehearth_ace:entity_modification'):set_model_variant(uri)
+         end 
       end
    end
 end

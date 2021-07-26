@@ -26,6 +26,10 @@
          }
       },
       "stonehearth:renewable_resource_node": {
+         "category": "farming",
+         "mixintypes": {
+            "harvest_overlay_effect": "remove"
+         },
          "renewal_time": "4d+2h",
          "resource_loot_table": {
             "entries": {

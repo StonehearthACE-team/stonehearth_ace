@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.1428571428571429
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(../tea_bush.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.plants.tea_bush.seed.tea_bush_plant_seed_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.plants.tea_bush.seed.tea_bush_plant_seed_ghost.description)",
+         "icon": "file(tea_bush_plant_seed.png)",
+         "material_tags": [
+            "plant"
+         ],
+         "category": "seed"
+      }
+   }
+}

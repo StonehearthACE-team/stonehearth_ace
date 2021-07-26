@@ -2,6 +2,33 @@
    "entries": {
       "drop_1": {
          "items": {
+            "none": {
+               "weight": 2
+            },
+            "ore": {
+               "weight": 4
+            },
+            "ore2": {
+               "weight": 4
+            },
+            "ore3": {
+               "weight": 3
+            },
+            "copper_ingot": {
+               "weight": 2
+            },
+            "gold_ingot": {
+               "weight": 1
+            },
+            "silver_ingot": {
+               "weight": 1
+            },
+            "steel_ingot": {
+               "weight": 1.5
+            },
+            "bronze_ingot": {
+               "weight": 3
+            },
             "bone": {
                "uri": "stonehearth_ace:resources:bone:bone_material",
                "weight": 3
@@ -20,15 +47,15 @@
             },
             "steel_mace": {
                "uri": "stonehearth_ace:weapons:steel_mace",
-               "weight": 1
+               "weight": 0.8
             },
             "steel_axe": {
                "uri": "stonehearth_ace:weapons:steel_axe",
-               "weight": 2
+               "weight": 1
             },
             "steel_dagger": {
                "uri": "stonehearth_ace:weapons:steel_dagger",
-               "weight": 2
+               "weight": 1.1
             },
             "light_steel_shield": {
                "uri": "stonehearth_ace:armor:light_steel_shield",
@@ -38,13 +65,25 @@
       },
       "drop_2": {
          "items": {
+            "armor": {
+               "uri": "stonehearth:armor:silver_mail",
+               "weight": 0.3
+            },
+            "helm": {
+               "uri": "stonehearth:armor:silver_helmet",
+               "weight": 0.3
+            },
+            "sword": {
+               "uri": "stonehearth:weapons:two_handed_sword",
+               "weight": 0.5
+            },
             "steel_helm": {
                "uri": "stonehearth_ace:armor:steel_helm",
-               "weight": 1
+               "weight": 0.7
             },
             "steel_chainmail": {
                "uri": "stonehearth_ace:armor:steel_chainmail",
-               "weight": 1
+               "weight": 0.6
             },
             "nutty_poultry": {
                "uri": "stonehearth_ace:food:nutty_poultry",
@@ -56,7 +95,7 @@
             },
             "bronze_crossbow": {
                "uri": "stonehearth_ace:weapons:bronze_crossbow",
-               "weight": 1
+               "weight": 1.1
             },
             "lock": {
                "uri": "stonehearth_ace:refined:lock",
@@ -64,7 +103,7 @@
             },
 				"ogre_bone": {
                "uri": "stonehearth:resources:ogre_bone",
-               "weight": 1
+               "weight": 0.8
             },
 				"honor_token": {
                "uri": "stonehearth:monsters:goblins:skull_trophy",

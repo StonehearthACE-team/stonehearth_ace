@@ -232,6 +232,7 @@
          }
       },
       "plants": {
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/plant.png",
          "filter": "stockpile_plant",
          "categories": {
             "mixintypes": {
@@ -241,77 +242,59 @@
                "seed_hard": "remove",
                "seed_fruit": "remove"
             },
-            "aromatic_herbs": {
+            "healing_herbs": {
                "ordinal": 1.01,
-               "display_name": "i18n(stonehearth_ace:ui.data.constants.aromatic_herb_resource_name)",
-               "icon": "/stonehearth_ace/entities/resources/herb/herb_aromatic_icon.png",
-               "filter": "resource herb aromatic"
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.healing_herb_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_healing_icon.png",
+               "filter": "resource herb healing"
             },
-            "bitter_herbs": {
+            "soothing_herbs": {
                "ordinal": 1.02,
-               "display_name": "i18n(stonehearth_ace:ui.data.constants.bitter_herb_resource_name)",
-               "icon": "/stonehearth_ace/entities/resources/herb/herb_bitter_icon.png",
-               "filter": "resource herb bitter"
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.soothing_herb_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_soothing_icon.png",
+               "filter": "resource herb soothing"
             },
-            "red_herbs": {
+            "noxious_herbs": {
                "ordinal": 1.03,
-               "display_name": "i18n(stonehearth_ace:ui.data.constants.red_herb_resource_name)",
-               "icon": "/stonehearth_ace/entities/resources/herb/herb_red_icon.png",
-               "filter": "resource herb red"
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.noxious_herb_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_noxious_icon.png",
+               "filter": "resource herb noxious"
             },
-            "green_herbs": {
-               "ordinal": 1.04,
-               "display_name": "i18n(stonehearth_ace:ui.data.constants.green_herb_resource_name)",
-               "icon": "/stonehearth_ace/entities/resources/herb/herb_green_icon.png",
-               "filter": "resource herb green"
+            "mild_herbs": {
+               "ordinal": 1.11,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.mild_herb_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_mild_icon.png",
+               "filter": "resource herb mild"
             },
-            "blue_herbs": {
-               "ordinal": 1.05,
-               "display_name": "i18n(stonehearth_ace:ui.data.constants.blue_herb_resource_name)",
-               "icon": "/stonehearth_ace/entities/resources/herb/herb_blue_icon.png",
-               "filter": "resource herb blue"
+            "robust_herbs": {
+               "ordinal": 1.12,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.robust_herb_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_robust_icon.png",
+               "filter": "resource herb robust"
             },
-            "yellow_herbs": {
-               "ordinal": 1.06,
-               "display_name": "i18n(stonehearth_ace:ui.data.constants.yellow_herb_resource_name)",
-               "icon": "/stonehearth_ace/entities/resources/herb/herb_yellow_icon.png",
-               "filter": "resource herb yellow"
+            "peculiar_herbs": {
+               "ordinal": 1.13,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.peculiar_herb_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_peculiar_icon.png",
+               "filter": "resource herb peculiar"
             },
-            "white_herbs": {
-               "ordinal": 1.07,
-               "display_name": "i18n(stonehearth_ace:ui.data.constants.white_herb_resource_name)",
-               "icon": "/stonehearth_ace/entities/resources/herb/herb_white_icon.png",
-               "filter": "resource herb white"
+            "zesty_herbs": {
+               "ordinal": 1.21,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.zesty_herb_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_zesty_icon.png",
+               "filter": "resource herb zesty"
             },
-            "purple_herbs": {
-               "ordinal": 1.08,
-               "display_name": "i18n(stonehearth_ace:ui.data.constants.purple_herb_resource_name)",
-               "icon": "/stonehearth_ace/entities/resources/herb/herb_purple_icon.png",
-               "filter": "resource herb purple"
+            "pungent_herbs": {
+               "ordinal": 1.22,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.pungent_herb_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_pungent_icon.png",
+               "filter": "resource herb pungent"
             },
             "seed_earthbud": {
                "ordinal": 1.5,
                "display_name": "i18n(stonehearth:entities.plants.earthbud.seed.earthbud_plant_seed.display_name)",
                "icon": "/stonehearth/entities/plants/earthbud/seed/earthbud_plant_seed.png",
                "filter": "seed earthbud"
-            },
-            "thatch": {
-               "ordinal": 1.11,
-               "display_name": "i18n(stonehearth_ace:entities.resources.thatch_bale.display_name)",
-               "icon": "/stonehearth_ace/entities/resources/thatch_bale/thatch_bale.png",
-               "filter": "thatch_bale resource"
-            },
-            "bough_bale": {
-               "ordinal": 1.12,
-               "display_name": "i18n(stonehearth_ace:entities.resources.bough_bale.display_name)",
-               "icon": "/stonehearth_ace/entities/resources/bough_bale/bough_bale.png",
-               "filter": "bough_bale standard resource"
-            },
-            "bough_bale_evergreen": {
-               "ordinal": 1.13,
-               "display_name": "i18n(stonehearth_ace:entities.resources.bough_bale_evergreen.display_name)",
-               "icon": "/stonehearth_ace/entities/resources/bough_bale_evergreen/bough_bale_evergreen.png",
-               "filter": "bough_bale evergreen resource"
             },
             "cactus_flower": {
                "display_name": "i18n(stonehearth_ace:entities.resources.herb.cactus_flower.display_name)"
@@ -390,6 +373,12 @@
                "display_name": "i18n(stonehearth_ace:entities.resources.herb.dill.display_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/dill/dill.png",
                "filter": "resource herb dill"
+            },
+            "camellia_rare": {
+               "ordinal": 2.811,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.camellia_rare.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/camellia_rare/camellia_rare.png",
+               "filter": "resource herb camellia_rare"
             },
             "foxlily": {
                "ordinal": 2.815,
@@ -473,8 +462,32 @@
                "display_name": "i18n(stonehearth_ace:entities.resources.fiber.silkweed_bundle.display_name)",
                "filter": "fiber resource plant silkweed"
             },
-            "thatch_twine": {
+            "millet_straw_bundle": {
                "ordinal": 4.01,
+               "display_name": "i18n(stonehearth_ace:entities.resources.fiber.millet_straw_bundle.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/fiber/millet_straw_bundle/millet_straw_bundle.png",
+               "filter": "resource fiber millet"
+            },
+            "thatch": {
+               "ordinal": 4.06,
+               "display_name": "i18n(stonehearth_ace:entities.resources.thatch_bale.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/thatch_bale/thatch_bale.png",
+               "filter": "thatch_bale resource"
+            },
+            "bough_bale": {
+               "ordinal": 4.07,
+               "display_name": "i18n(stonehearth_ace:entities.resources.bough_bale.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/bough_bale/bough_bale.png",
+               "filter": "bough_bale standard resource"
+            },
+            "bough_bale_evergreen": {
+               "ordinal": 4.08,
+               "display_name": "i18n(stonehearth_ace:entities.resources.bough_bale_evergreen.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/bough_bale_evergreen/bough_bale_evergreen.png",
+               "filter": "bough_bale evergreen resource"
+            },
+            "thatch_twine": {
+               "ordinal": 4.09,
                "display_name": "i18n(stonehearth_ace:entities.resources.fiber.thatch_twine_bundle.display_name)",
                "icon": "/stonehearth_ace/entities/resources/fiber/thatch_twine_bundle/thatch_twine_bundle.png",
                "filter": "fiber resource plant thatch_twine"
@@ -517,7 +530,64 @@
             }
          }
       },
+      "dyes": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_dyes)",
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/dyes.png",
+         "ordinal": 5.1,
+         "filter": "stockpile_plant dye",
+         "categories": {
+            "white_herbs": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_white_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_white_icon.png",
+               "filter": "resource herb white"
+            },
+            "pink_herbs": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_pink_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_pink_icon.png",
+               "filter": "resource herb pink"
+            },
+            "red_herbs": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_red_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_red_icon.png",
+               "filter": "resource herb red"
+            },
+            "orange_herbs": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_orange_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_orange_icon.png",
+               "filter": "resource herb orange"
+            },
+            "yellow_herbs": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_yellow_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_yellow_icon.png",
+               "filter": "resource herb yellow"
+            },
+            "green_herbs": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_green_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_green_icon.png",
+               "filter": "resource herb green"
+            },
+            "blue_herbs": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_blue_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_blue_icon.png",
+               "filter": "resource herb blue"
+            },
+            "purple_herbs": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.herb_purple_resource_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/herb_purple_icon.png",
+               "filter": "resource herb purple"
+            }
+         }
+      },
       "cloth": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_refined_weaver)",
          "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/refined_cloth.png",
          "filter": "refined",
          "categories": {
@@ -542,8 +612,38 @@
                "icon": "/stonehearth_ace/entities/resources/herb/dried_algae/dried_algae.png",
                "filter": "dried_algae resource"
             },
-            "golem_parts": {
+            "unfired_clay": {
                "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:entities.refined.unfired_clay.display_name)",
+               "icon": "/stonehearth_ace/entities/refined/unfired_clay/unfired_clay.png",
+               "filter": "unfired_clay refined"
+            },
+            "molded_clay": {
+               "ordinal": 5.1,
+               "display_name": "i18n(stonehearth_ace:entities.refined.molded_clay.display_name)",
+               "icon": "/stonehearth_ace/entities/refined/molded_clay/molded_clay.png",
+               "filter": "molded_clay refined"
+            },
+            "unfired_porcelain": {
+               "ordinal": 5.2,
+               "display_name": "i18n(stonehearth_ace:entities.refined.unfired_porcelain.display_name)",
+               "icon": "/stonehearth_ace/entities/refined/unfired_porcelain/unfired_porcelain.png",
+               "filter": "unfired_porcelain refined"
+            },
+            "molded_porcelain": {
+               "ordinal": 5.3,
+               "display_name": "i18n(stonehearth_ace:entities.refined.molded_porcelain.display_name)",
+               "icon": "/stonehearth_ace/entities/refined/molded_porcelain/molded_porcelain.png",
+               "filter": "molded_porcelain refined"
+            },
+            "fire_bricks": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:entities.refined.fire_bricks.display_name)",
+               "icon": "/stonehearth_ace/entities/refined/fire_bricks/fire_bricks.png",
+               "filter": "fire_brick refined"
+            },
+            "golem_parts": {
+               "ordinal": 7,
                "display_name": "i18n(stonehearth:entities.refined.golem_parts.display_name)",
                "icon": "/stonehearth/entities/refined/golem_parts/golem_parts.png",
                "filter": "golem_parts resource"
@@ -863,30 +963,122 @@
             }
          }
       },
+      "baking": {
+         "filter": "cooking_ingredient baking",
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_baking)",
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/baked.png",
+         "ordinal": 7.1,
+         "categories": {
+            "wheat": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:entities.food.wheat_bale.display_name)",
+               "icon": "/stonehearth/entities/food/wheat_bale/wheat_bale.png",
+               "filter": "cooking_ingredient grain flour"
+            },
+            "millet": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.millet_bale.display_name)",
+               "icon": "/stonehearth_ace/entities/food/millet_bale/millet_bale.png",
+               "filter": "cooking_ingredient grain millet"
+            },
+            "barley": {
+               "ordinal": 1.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.barley_bale.display_name)",
+               "icon": "/stonehearth_ace/entities/food/barley_bale/barley_bale.png",
+               "filter": "cooking_ingredient grain barley"
+            },
+            "rye": {
+               "ordinal": 1.3,
+               "display_name": "i18n(stonehearth_ace:entities.food.rye_bale.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rye_bale/rye_bale.png",
+               "filter": "cooking_ingredient grain rye"
+            },
+            "flour": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:entities.food.flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/flour/flour.png",
+               "filter": "cooking_ingredient wheat flour"
+            },
+            "millet_flour": {
+               "ordinal": 2.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.millet_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/millet_flour/millet_flour.png",
+               "filter": "cooking_ingredient millet flour"
+            },
+            "barley_flour": {
+               "ordinal": 2.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.barley_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/barley_flour/barley_flour.png",
+               "filter": "cooking_ingredient barley flour"
+            },
+            "rye_flour": {
+               "ordinal": 2.3,
+               "display_name": "i18n(stonehearth_ace:entities.food.rye_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rye_flour/rye_flour.png",
+               "filter": "cooking_ingredient rye flour"
+            },
+            "corn_meal": {
+               "ordinal": 3,
+               "icon": "/stonehearth_ace/entities/food/corn_meal/corn_meal.png",
+               "display_name": "i18n(stonehearth_ace:entities.food.corn_meal.display_name)",
+               "filter": "cooking_ingredient corn flour"
+            },
+            "rice_flour": {
+               "ordinal": 3.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.rice.rice_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/rice/rice_flour/rice_flour.png",
+               "filter": "cooking_ingredient rice flour"
+            },
+            "nut_flour": {
+               "ordinal": 3.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.nut_flour.display_name)",
+               "icon": "/stonehearth_ace/entities/food/nut_flour/nut_flour.png",
+               "filter": "cooking_ingredient nut flour"
+            },
+            "dough": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:entities.food.dough.display_name)",
+               "icon": "/stonehearth_ace/entities/food/dough/dough.png",
+               "filter": "cooking_ingredient dough"
+            },
+            "dough_sweet": {
+               "ordinal": 4.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.dough_sweet.display_name)",
+               "icon": "/stonehearth_ace/entities/food/dough_sweet/dough_sweet.png",
+               "filter": "cooking_ingredient dough_sweet"
+            },
+            "batter": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:entities.food.batter.display_name)",
+               "icon": "/stonehearth_ace/entities/food/batter/batter.png",
+               "filter": "cooking_ingredient batter"
+            },
+            "batter_sweet": {
+               "ordinal": 5.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.batter_sweet.display_name)",
+               "icon": "/stonehearth_ace/entities/food/batter_sweet/batter_sweet.png",
+               "filter": "cooking_ingredient batter_sweet"
+            }
+         }
+      },
       "cooking_ingredients": {
          "filter": "cooking_ingredient",
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_cooking)",
          "categories": {
             "mixintypes": {
-               "cooking_ingredients": "remove"
+               "cooking_ingredients": "remove",
+               "wheat": "remove",
+               "flour": "remove",
+               "corn_meal": "remove"
             },
-            "corn_meal": {
-               "display_name": "i18n(stonehearth_ace:entities.food.corn_meal.display_name)"
-            },
-            "flour": {
-               "display_name": "i18n(stonehearth_ace:entities.food.flour.display_name)"
+            "sugar": {
+               "icon": "/stonehearth_ace/entities/food/sugar/sugar.png"
             },
             "paddy": {
                "ordinal": 2.001,
                "display_name": "i18n(stonehearth_ace:entities.food.rice.paddy_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/rice/paddy_basket/paddy_basket.png",
                "filter": "paddy_basket"
-            },
-            "rice_flour": {
-               "ordinal": 2.002,
-               "display_name": "i18n(stonehearth_ace:entities.food.rice.rice_flour.display_name)",
-               "icon": "/stonehearth_ace/entities/food/rice/rice_flour/rice_flour.png",
-               "filter": "cooking_ingredient rice_flour"
             },
             "raw_rice": {
                "ordinal": 2.003,
@@ -899,12 +1091,6 @@
                "display_name": "i18n(stonehearth_ace:entities.food.nuts_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/nuts_basket/nuts_basket.png",
                "filter": "cooking_ingredient nut_basket"
-            },
-            "nut_flour": {
-               "ordinal": 2.31,
-               "display_name": "i18n(stonehearth_ace:entities.food.nut_flour.display_name)",
-               "icon": "/stonehearth_ace/entities/food/nut_flour/nut_flour.png",
-               "filter": "cooking_ingredient nut_flour"
             },
             "parasol": {
                "ordinal": 2.5,
@@ -924,21 +1110,6 @@
                "icon": "/stonehearth_ace/entities/food/duck_meat/duck_meat.png",
                "filter": "cooking_ingredient duck_meat"
             },
-            "wheat": {
-               "ordinal": 1.999
-            },
-            "dough": {
-               "ordinal": 2.01,
-               "display_name": "i18n(stonehearth_ace:entities.food.dough.display_name)",
-               "icon": "/stonehearth_ace/entities/food/dough/dough.png",
-               "filter": "cooking_ingredient dough"
-            },
-            "batter": {
-               "ordinal": 2.02,
-               "display_name": "i18n(stonehearth_ace:entities.food.batter.display_name)",
-               "icon": "/stonehearth_ace/entities/food/batter/batter.png",
-               "filter": "cooking_ingredient batter"
-            },
             "sugarbell": {
                "ordinal": 2.199
             },
@@ -953,18 +1124,6 @@
                "display_name": "i18n(stonehearth_ace:entities.food.honey.honey.display_name)",
                "icon": "/stonehearth_ace/entities/food/honey/honey/honey.png",
                "filter": "cooking_ingredient honey standard"
-            },
-            "dough_sweet": {
-               "ordinal": 2.21,
-               "display_name": "i18n(stonehearth_ace:entities.food.dough_sweet.display_name)",
-               "icon": "/stonehearth_ace/entities/food/dough_sweet/dough_sweet.png",
-               "filter": "cooking_ingredient dough_sweet"
-            },
-            "batter_sweet": {
-               "ordinal": 2.22,
-               "display_name": "i18n(stonehearth_ace:entities.food.batter_sweet.display_name)",
-               "icon": "/stonehearth_ace/entities/food/batter_sweet/batter_sweet.png",
-               "filter": "cooking_ingredient batter_sweet"
             },
             "egg": {
                "ordinal": 2.4,
@@ -1084,9 +1243,33 @@
          "categories": {
             "malted_grains": {
                "ordinal": 1,
-               "display_name": "i18n(stonehearth_ace:entities.food.malted_grains.display_name)",
-               "icon": "/stonehearth_ace/entities/food/malted_grains/malted_grains.png",
-               "filter": "brewing_ingredient malt"
+               "display_name": "i18n(stonehearth_ace:entities.drink.malted_grains.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/malted_grains/malted_grains.png",
+               "filter": "brewing_ingredient malt standard"
+            },
+            "malted_wheat": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:entities.drink.malted_wheat.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/malted_wheat/malted_wheat.png",
+               "filter": "brewing_ingredient malt wheat"
+            },
+            "malted_millet": {
+               "ordinal": 1.2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.malted_millet.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/malted_millet/malted_millet.png",
+               "filter": "brewing_ingredient malt millet"
+            },
+            "malted_barley": {
+               "ordinal": 1.3,
+               "display_name": "i18n(stonehearth_ace:entities.drink.malted_barley.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/malted_barley/malted_barley.png",
+               "filter": "brewing_ingredient malt barley"
+            },
+            "malted_rye": {
+               "ordinal": 1.4,
+               "display_name": "i18n(stonehearth_ace:entities.drink.malted_rye.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/malted_rye/malted_rye.png",
+               "filter": "brewing_ingredient malt rye"
             },
             "juniper_berries": {
                "ordinal": 2,
@@ -1094,20 +1277,26 @@
                "icon": "/stonehearth/entities/trees/juniper_tree/seed/tree_juniper_seed.png",
                "filter": "seed juniper"
             },
+            "wax_plant_purple_leaves": {
+               "ordinal": 2.1,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.wax_plant_purple.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/wax_plant_purple/wax_plant_purple.png",
+               "filter": "resource herb wax_plant_purple"
+            },
             "pine_cones": {
-               "ordinal": 3,
+               "ordinal": 2.2,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.seed_pine_resource_name)",
                "icon": "/stonehearth/entities/trees/pine_tree/seed/tree_pine_seed.png",
                "filter": "seed pine"
             },
             "birch_seed": {
-               "ordinal": 5,
+               "ordinal": 2.3,
                "display_name": "i18n(stonehearth_ace:entities.trees.birch_tree.seed.tree_birch_seed_ghost.display_name)",
                "icon": "/stonehearth_ace/entities/trees/birch_tree/seed/tree_birch_seed.png",
                "filter": "seed birch"
             },
             "gruit": {
-               "ordinal": 6,
+               "ordinal": 3,
                "display_name": "i18n(stonehearth_ace:entities.drink.gruit.display_name)",
                "icon": "/stonehearth_ace/entities/drink/gruit/gruit.png",
                "filter": "brewing_ingredient gruit"

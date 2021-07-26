@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 12,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.fire_bricks_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.fire_bricks_recipe.description)",
+   "flavor": "i18n(stonehearth:jobs.potter.recipes.clay_bricks_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/fire_bricks/fire_bricks.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:construction:clay_bricks",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:resources:coal:slab_of_coke",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:fire_bricks"
+      }
+   ]
+}

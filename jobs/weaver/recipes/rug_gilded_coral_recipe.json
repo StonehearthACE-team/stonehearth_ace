@@ -1,3 +1,26 @@
 {
-   "workshop": "stonehearth:weaver:workbench"
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.rug_gilded_coral_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/exotic_trade_monument/rug_gilded_coral/rug_gilded_coral.png",
+   "workshop": "stonehearth:weaver:loom",
+   "mixintypes": {
+      "ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "material": "thread resource",
+         "count": 5
+      },
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      },
+      {
+         "material": "herb red resource",
+         "count": 1
+      },
+      {
+         "material": "herb orange resource",
+         "count": 1
+      }
+   ]
 }

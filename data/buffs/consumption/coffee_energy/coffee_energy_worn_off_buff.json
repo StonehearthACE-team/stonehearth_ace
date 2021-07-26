@@ -1,0 +1,26 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.consumption.coffee_energy_worn_off.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.consumption.coffee_energy_worn_off.description)",
+   "icon": "file(coffee_energy_worn_off_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "diligence": {
+         "add": -15
+      }
+   },
+   "script": "stonehearth:buff_scripts:periodic_attribute_modification",
+   "script_info": {
+      "attribute": "sleepiness",
+      "value_change": 3,
+      "cannot_reach_zero": false,
+      "pulse": "1h",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:consumption:coffee_energy:minor"
+   ]
+}

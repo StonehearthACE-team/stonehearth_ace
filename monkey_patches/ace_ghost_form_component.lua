@@ -8,7 +8,7 @@ function AceGhostFormComponent:can_iconic_be_used(uri)
       end
       if not placement_info.require_exact then
          local alternates = radiant.entities.get_alternate_uris(placement_info.iconic_uri)
-         return alternates[uri]
+         return alternates and alternates[uri]
       end
    end
 

@@ -1,0 +1,41 @@
+{
+   "type" : "effect",
+   "tracks": {
+		"coals": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/cook_workbench_advanced_coals.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0,
+            "y":0.15,
+            "z": 0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+	   "embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/cook_workbench_advanced_embers.cubemitter.json",
+         "loop": true,
+         "transforms": {
+            "x":0,
+            "y":0.2,
+            "z": 0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+		"ignite_sound": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 0,
+         "duration": 2000,
+         "min_distance": 40,
+         "falloff": 3,
+         "volume": 60,
+         "track": "stonehearth:sounds:firepit_ignite_sound"
+      }        
+   }
+}

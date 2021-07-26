@@ -1,5 +1,14 @@
 {
 	"components": {
+      "stonehearth:loot_drops": {
+         "entries": {
+            "bough_bale": {
+               "num_rolls": {
+                  "max": 2
+               }
+            }
+         }
+      },
 		"stonehearth:seasonal_model_switcher": {
          "*": {
             "spring": "spring",
@@ -7,6 +16,9 @@
             "autumn": "autumn",
             "winter": "winter"
          }
+      },
+      "stonehearth:resource_node": {
+         "durability": 4
       }
 	},
    "entity_data": {

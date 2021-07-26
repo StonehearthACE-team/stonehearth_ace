@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.ground_tea_green_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.ground_tea_green_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.ground_tea_green_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/tea/ground_tea_green/ground_tea_green.png",
+   "level_requirement": 3,
+	"work_effect": "fiddle",
+   "workshop": "stonehearth:cook:mill",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:tea_leaves:green",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:ground_tea:green"
+      },
+      {
+         "item": "stonehearth_ace:drink:ground_tea:green"
+      }
+   ]
+}

@@ -302,6 +302,13 @@
                         "title": "Undead Goblins Approaching!"
                      }
                   }
+               },
+               "undergrowth_raid": {
+                  "mission": {
+                     "sighted_bulletin": {
+                        "title": "The ground rumbles!"
+                     }
+                  }
                }
             },
             "trader": {
@@ -513,6 +520,15 @@
                      }
                   }
                },
+               "returning_silk_road_trader_encounter": {
+                  "title": "A caravaneer from the far east is passing through!",
+                  "trade_details": "Warm greetings, [str(i18n_data.town_name)]! You may call me Don Vandon - yes, yes, the famous merchant! Our last and fruitful crossing of the perilous Silk Road has brought us many wonderful goods, most of which are already reserved for the mightiest lords and royal...iest kings and queens, I'm afraid! We do have some cancelled orders, however... Like these <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>. They're not my finest products so you can keep them. For a fair price, of course! The eastern kingdoms are very interested in orders of our exotic goods like, let's say, <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>. We shall camp nearby for [str(i18n_data.num_days)] days, do you think your fair town can manage this exchange, yes?",
+                  "waiting_title": "Don Vandon's caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
+                  "waiting_text": "Don Vandon's caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> ready for them!",
+                  "return_title": "The caravaneer from the far east returns!",
+                  "return_greetings_positive": "Greetings again! It seems your [str(i18n_data.want_number)] [str(i18n_data.want_item)] are ready to be traded for my [str(i18n_data.reward_number)] [str(i18n_data.reward_item)]! We should proceed with the deal, yes?",
+                  "return_greetings_negative": "We're about to proceed back into the Silk Road and it seems you've not procured us [str(i18n_data.want_number)] [str(i18n_data.want_item)]. Understandable. Look for our caravan again in the future, yes, yes. Safe passage under the moonlight, friend!"
+               },
                "returning_collector_encounter": {
                   "title": "An explorer approaches your town."
                }
@@ -534,10 +550,11 @@
             "rc_town_progression": {
                "ace_guildmaster_reached": {
                   "recipe_unlock_coins": "The Blacksmith can now mint gold coins!",
-                  "recipe_unlock_brewer": "The Cook can now make Desert Sun Tea!"
+                  "recipe_unlock_brewer": "The Brewer can now make Desert Sun Tea!",
+                  "recipe_unlock_potter": "The Potter can now make a Finely Crafted Tea set!"
                },
                "ace_deity_reached": {
-                  "recipe_unlock_brewer": "The Cook can now make Desert Sun Tea!"
+                  "recipe_unlock_brewer": "The Brewer can now make Desert Sun Tea!"
                },
                "ace_valor_reached": {
                   "recipe_unlock_blacksmith": "New Legendary Mail recipe - Weaver, Engineer, and Blacksmith collaboration!",
@@ -2163,6 +2180,10 @@
                "jolly_time": {
                   "display_name": "Having a jolly time!",
                   "tooltip": "Enjoying a lot of good company and delicious beverages! This is so good!"
+               },
+               "coffee_lover_had_coffee": {
+                  "display_name": "Coffee Lover",
+                  "tooltip": "YES! I just enjoyed a [str(drinkname)] and it was FANTASTIC! I NEED MORE!"
                }
             },
             "thirst": {
@@ -2726,6 +2747,18 @@
                   "3_description": "They have been swarmed by bees 15 times. Do they look like a flower or something? Bees really love them!",
                   "4_display_name": ", Honorary Queen",
                   "4_description": "They have been swarmed by bees 30 times! This is crazy, maybe bees just really want to follow them. Or maybe you should make them a beekeeper's hat..."
+               },
+               "caffeinated": {
+                  "display_name": "Caffeinated",
+                  "description": "Gained by drinking coffee.",
+                  "1_display_name": ", Disgusted",
+                  "1_description": "They say the best things in life are acquired tastes. Maybe? Either way, this first cup of coffee was certainly a bit too bitter... Or was it?",
+                  "2_display_name": " the Unfiltered",
+                  "2_description": "Not bad! Seven cups of coffee means they've had coffee at least every day in a month. I bet it tastes much better now!",
+                  "3_display_name": " the Energized",
+                  "3_description": "Twenty-one cups of coffee will place them at the great mark of one cup per day for a whole season. Maybe a bit addicting?",
+                  "4_display_name": ", Developer",
+                  "4_description": "After eighty-four cups of coffee one can safely say they developed a good taste for it. Especially if it was all in a single night of work..."
                }
             }
          }
@@ -2877,10 +2910,6 @@
                "display_name": "Add Thatch",
                "description": "Make this bed a little more comfortable by adding some thatch to it!"
             },
-            "cheese_vat_fill": {
-               "display_name": "Make Cheese",
-               "description": "Order the Shepherd to pour a curdling mixture in this cheese vat to start the production of cheese!"
-            },
             "cheese_vat_drain": {
                "display_name": "Drain Cheese Vat",
                "description": "Order the Shepherd to remove the leftover whey and treat the curds, forming fresh cheese!"
@@ -2951,11 +2980,11 @@
             },
             "fermenting_vat_fill_wort": {
                "display_name": "Produce Ale",
-               "description": "Order the Brewer to fill this fermenting vat with wort to start brewing! It will continue producing Ale unless a new command is given."
+               "description": "Order the Brewer to fill this fermenting vat with ale wort to start brewing! It will continue producing Ale unless a new command is given."
             },
             "fermenting_vat_fill_wort_gruit": {
                "display_name": "Produce Beer",
-               "description": "Order the Brewer to fill this fermenting vat with gruit wort to start brewing! It will continue producing Beer unless a new command is given."
+               "description": "Order the Brewer to fill this fermenting vat with beer wort to start brewing! It will continue producing Beer unless a new command is given."
             },
             "frostfeast": {
                "open_present": {
@@ -3038,6 +3067,34 @@
             "upgrade_porcelain_comfy_bed": {
                "display_name": "Replace with Porcelain Comfy Bed",
                "description": "Order a worker to replace this bed with a Porcelain Comfy Bed created by the Potter. A craft order will be given if no Porcelain Comfy Bed is found in the town's inventory. The bed owner will remain the same."
+            },
+            "cheese_vat_fill_cottage": {
+               "display_name": "Make Cottage Cheese",
+               "description": "Order the Shepherd to pour a curdling mixture in this cheese vat to start the production of cheese! When using this option, the vat will automatically request to be harvested once the product reaches the Cottage Cheese stage."
+            },
+            "cheese_vat_fill_fresh": {
+               "display_name": "Make Fresh Cheese",
+               "description": "Order the Shepherd to pour a curdling mixture in this cheese vat to start the production of cheese! When using this option, the vat will automatically request to be harvested once the product reaches the Fresh Cheese stage."
+            },
+            "cheese_vat_fill_mild": {
+               "display_name": "Make Mild Cheese",
+               "description": "Order the Shepherd to pour a curdling mixture in this cheese vat to start the production of cheese! When using this option, the vat will automatically request to be harvested once the product reaches the Mild Cheese stage."
+            },
+            "cheese_vat_fill_aged": {
+               "display_name": "Make Aged Cheese",
+               "description": "Order the Shepherd to pour a curdling mixture in this cheese vat to start the production of cheese! When using this option, the vat will automatically request to be harvested only when the product reaches the last stage, Aged Cheese."
+            },
+            "drying_bed_fill_coffee": {
+               "display_name": "Dry Coffee Cherries",
+               "description": "Order the Brewer to rest a crate of sorted coffee cherries on this drying bed! After a week or so, the Brewer will be able to hull the dried cherries and collect Green Coffee Beans!"
+            },
+            "drying_bed_fill_green_tea": {
+               "display_name": "Dry Green Tea Leaves",
+               "description": "Order the Brewer to rest a crate of steamed tea leaves on this drying bed! When using this option, the bed will automatically request to be harvested once the product reaches the Green Tea Leaves stage."
+            },
+            "drying_bed_fill_black_tea": {
+               "display_name": "Dry Black Tea Leaves",
+               "description": "Order the Brewer to rest a crate of steamed tea leaves on this drying bed! When using this option, the bed will automatically request to be harvested once the product reaches the Black Tea Leaves stage."
             }
          },
          "slaughter": {
@@ -3518,7 +3575,7 @@
             },
             "major_poison": {
                "display_name": "Strong Poison",
-               "description": "A tough, lethal poison. Can last a couple of days. Muscle and Willpower are greatly reduced.<ul><li>💬 Type & Severity: Poison (High)</li><li>💊 This poison needs to be treated with at least a Strong Antidote to be completely removed with a single treatment</li><li>💢 Losing 5% of their health points every 10 minutes</li><li>❗ This poison can damage them until they are knocked unconscious and require constant assistance or treatment</li></ul>"
+               "description": "A tough, lethal poison. Can last a couple of days. Muscle and Willpower are greatly reduced.<ul><li>💬 Type & Severity: Poison (High)</li><li>💊 This poison needs to be treated with at least a Strong Antidote to be completely removed with a single treatment</li><li>💢 Losing 5% of their health points every 15 minutes</li><li>❗ This poison can damage them until they are knocked unconscious and require constant assistance or treatment</li></ul>"
             }
          },
          "toxin": {
@@ -3955,6 +4012,24 @@
          "satisfied_belly": {
             "display_name": "Satisfied Belly",
             "description": "Hmm... This was very filling! Willpower is increased.<ul><li>This hearthling will grow hungry more slowly while this effect lasts</li></ul>"
+         },
+         "consumption": {
+            "coffee_energy": {
+               "display_name": "Mildly Caffeinated",
+               "description": "Ah! Nothing like a good cup of coffee! Or two... Speed is quite increased, Inspiration is slightly increased. The need for sleep is greatly decreased.<ul><li>The hearthling might feel a bit more thirst</li><li>Being Mildly Caffeinated will remove any negative status from alcohol consumption</li></ul>"
+            },
+            "coffee_energy_minor": {
+               "display_name": "Tiny Sparks",
+               "description": "This coffee cherry thing... It's good. IT'S GOOD. Speed is slightly increased, Inspiration is very slightly increased. The need for sleep is slightly decreased."
+            },
+            "coffee_energy_major": {
+               "display_name": "Caffeinated",
+               "description": "Woo! BRING. IT. ON! Speed is greatly increased, Inspiration is quite increased. The need for sleep is almost completely removed.<ul><li>The hearthling might feel a bit more thirst</li><li>Being Caffeinated will remove any negative status from alcohol consumption</li></ul>"
+            },
+            "coffee_energy_worn_off": {
+               "display_name": "Caffeine Crash",
+               "description": "Uhm... I don't feel so focused anymore. And I'm getting tired quick... I suppose I need more coffee? Diligence is reduced. The need for sleep increases faster."
+            }
          }
       },
       "loadouts": {
@@ -4114,6 +4189,10 @@
          "sleepyhead_trait": {
             "display_name": "Sleepyhead",
             "description": "Waking up [name(i18n_data.entity)] can be a challenge. They love sleeping so much that they'll probably sleep a bit more than they should..."
+         },
+         "coffee_love_trait": {
+            "display_name": "Coffee Lover",
+            "description": "One can easily tell how much [name(i18n_data.entity)] loves coffee just by looking how grumpy they are without it (and how happy they are when they get it). They always appreciate drinking it more than anything else, if possible."
          }
       },
       "build": {
@@ -4581,6 +4660,11 @@
                "description": "Separate seeds from the fruit",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the fruit is lost in the process."
             },
+            "tea_bush_transmute_recipe": {
+               "recipe_name": "Tea Shrub Seed",
+               "description": "Separate a seed from the flower",
+               "flavor": "Only a skilled hand can harvest the weaker seed, but the herb is lost in the process."
+            },
             "moonbell_transmute_recipe": {
                "recipe_name": "Moonbell Seeds (x2)",
                "description": "Separate seeds from the herbs",
@@ -4628,8 +4712,8 @@
             },
             "algae_drying_recipe": {
                "recipe_name": "Dried Algae",
-               "description": "Dry and press thin sheets of algae that can be used as a yellow bitter herb.",
-               "flavor": "It is also used in cooking!"
+               "description": "Dry and press thin sheets of algae that can be used as a robust herb.",
+               "flavor": "It can also be used in cooking!"
             },
             "parasol_colony_recipe": {
                "recipe_name": "Parasol Colony (x3)",
@@ -4769,6 +4853,11 @@
             "cherry_bush_seeds_recipe": {
                "recipe_name": "Dried Cherries",
                "description": "Domesticate Cherry Bushes and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "tea_bush_seeds_recipe": {
+               "recipe_name": "Tea Seedpods",
+               "description": "Domesticate Tea Shrubs and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "pear_cactus_seeds_recipe": {
@@ -4969,6 +5058,21 @@
             "wheat_seeds_recipe": {
                "recipe_name": "Wheat Grain",
                "description": "Trade or gift it to allow other cultures to cultivate wheat!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "barley_seeds_recipe": {
+               "recipe_name": "Barley Grain",
+               "description": "Trade or gift it to allow other cultures to cultivate barley!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "millet_seeds_recipe": {
+               "recipe_name": "Millet Grain",
+               "description": "Trade or gift it to allow other cultures to cultivate millet!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "rye_seeds_recipe": {
+               "recipe_name": "Rye Grain",
+               "description": "Trade or gift it to allow other cultures to cultivate rye!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "paddy_seeds_recipe": {
@@ -5241,18 +5345,18 @@
             },
             "gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
-               "description": "A bundle of bitter herbs and seasonings. This traditional recipe uses juniper berries.",
-               "flavor": "The Brewer needs gruit for making beer"
+               "description": "A bundle of pungent herbs and seasonings needed for beer brewing. This traditional recipe uses juniper berries.",
+               "flavor": "'I am gruit'"
             },
             "rc_gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
-               "description": "A bundle of bitter herbs and seasonings. Gruit is often made with wax plants in the desert.",
-               "flavor": "The Brewer needs gruit for making beer"
+               "description": "A bundle of pungent herbs and seasonings needed for beer brewing. Gruit is often made with wax plants in the desert.",
+               "flavor": "'I am gruit'"
             },
             "na_gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
-               "description": "A bundle of bitter herbs and seasonings. The northerners use pine cones for its flavor.",
-               "flavor": "The Brewer needs gruit for making beer"
+               "description": "A bundle of pungent herbs and seasonings needed for beer brewing. The northerners use pine cones for its flavor.",
+               "flavor": "'I am gruit'"
             },
             "frostfeast": {
                "decorated_frostfeast_tree_recipe": {
@@ -5472,6 +5576,35 @@
                "description": "Required to promote a hearthling to an Herbalist, who creates healing tonics and bandages.",
                "flavor": "Earthy idols have healing powers, they say"
             },
+            "potter_mold_bench_recipe": {
+               "recipe_name": "Potter's Molding Bench",
+               "description": "For molding clay into useful building parts that do not require a more personal touch.",
+               "flavor": "'We all came from the same mold. It is the clay we're made of that defines us.'"
+            },
+            "fire_bricks_recipe": {
+               "recipe_name": "Fire Bricks",
+               "description": "Vitrified bricks resistant to the heat of advanced furnaces and ovens."
+            },
+            "unfired_clay_recipe": {
+               "recipe_name": "Unfired Pottery (x2)",
+               "description": "Used in crafting recipes like urns, amphorae and other symmetrical clay objects.",
+               "flavor": "The wonders of the Pottery Wheel"
+            },
+            "molded_clay_recipe": {
+               "recipe_name": "Molded Clay (x2)",
+               "description": "Used by recipes for clay furniture or buildings parts like windows and doors.",
+               "flavor": ""
+            },
+            "unfired_porcelain_recipe": {
+               "recipe_name": "Unfired Porcelain",
+               "description": "Required for creating all the beautiful and symmetrical porcelain objects like urns and jars.",
+               "flavor": ""
+            },
+            "molded_porcelain_recipe": {
+               "recipe_name": "Molded Porcelain",
+               "description": "Neccessary for crafting extravagant porcelain furniture and building parts like tall fences.",
+               "flavor": ""
+            },
             "bone_clay_recipe": {
                "recipe_name": "Mound of Bone Clay",
                "description": "Required for creating porcelain and beautiful ornate ceramics.",
@@ -5489,7 +5622,7 @@
             },
             "clay_animal_door_small_recipe": {
                "recipe_name": "Clay Small Animal Door",
-               "description": "A small door for animal shelters, it can be closed by a shepherd.",
+               "description": "A small door for animal shelters.",
                "flavor": "When placed on ground level, the two tiles of dirt underneath it must be dug out for it to work!"
             },
             "clay_comfy_bed_recipe": {
@@ -5515,6 +5648,11 @@
                "recipe_name": "Ceramic Practice Spear",
                "description": "Required to promote a hearthling into a Footman.",
                "flavor": "Might break easily but ideally they won't use it for long... right?"
+            },
+            "decorative_coffee_pot_recipe": {
+               "recipe_name": "Decorative Coffee Pot",
+               "description": "Reminder of long nights",
+               "flavor": "'As the coffee is boiled and poured within, care not for the foam at the top nor the residue at the bottom. It is the tincture that must be like an ink which we write our destiny with.'"
             },
             "porcelain_fence_bar_double_recipe": {
                "recipe_name": "Porcelain Fence Large",
@@ -5625,6 +5763,11 @@
                "recipe_name": "Porcelain Teapot",
                "description": "A cute little teapot.",
                "flavor": "The volume barely fits one cup of beverage."
+            },
+            "porcelain_coffee_pot_recipe": {
+               "recipe_name": "Porcelain Coffee Pot",
+               "description": "An exquisite design for holding a precious beverage.",
+               "flavor": "Be very careful when handling it!"
             },
             "porcelain_urn_short_recipe": {
                "recipe_name": "Small Porcelain Urn",
@@ -5830,6 +5973,12 @@
                   "description": "Let your crafter express their creativity on a nice snowling!",
                   "flavor": "The holidays are magical so it will never melt! Hopefully..."
                }
+            },
+            "clay_bricks_recipe": {
+               "flavor": "Mud bricks will dry and harden into reliable abodes"
+            },
+            "unfired_clay_vase_recipe": {
+               "recipe_name": "Rough Clay Vase"
             }
          },
          "potter_description": {
@@ -5856,6 +6005,10 @@
             "potter_kiln_upgrade_ghost": {
                "description": "Allows the Potters of your town to work in style. Requires lower or good grade fuel."
             }
+         },
+         "potter_mold_bench": {
+            "display_name": "Potter's Molding Bench",
+            "description": "A collection of molds for clay structures and objects."
          }
       },
       "geomancer": {
@@ -5936,7 +6089,7 @@
             },
             "stone_animal_door_small_recipe": {
                "recipe_name": "Stone Small Animal Door",
-               "description": "A small door for animal shelters, it can be closed by a shepherd.",
+               "description": "A small door for animal shelters.",
                "flavor": "When placed on ground level, the two tiles of dirt underneath it must be dug out for it to work!"
             },
             "legendary_headpiece_recipe": {
@@ -6935,13 +7088,24 @@
       },
       "cook": {
          "recipes": {
-            "food_preparation_name": "Preparation",
+            "food_preparation_name": "Ingredients & Preparation",
+            "baking_name": "Baking Goods",
             "brewing_name": "Brewing Ingredients",
             "animal_feed_name": "Pet Kibble",
             "cook_table_recipe": {
                "recipe_name": "Cook's Table",
                "description": "A good flat surface for kneading and preparing stuff.",
                "flavor": "Get those hands dirty!"
+            },
+            "cook_workbench_advanced_recipe": {
+               "recipe_name": "Metal Cooking Pot",
+               "description": "Replaces the Stone Cooking Pot and is needed for the finest meals. Requires lower or good grade fuel.",
+               "flavor": "Prepare delicious meals!"
+            },
+            "cook_oven_advanced_recipe": {
+               "recipe_name": "Brick Oven",
+               "description": "Replaces the Stone Oven and is needed for advanced roasts and desserts. Requires lower or good grade fuel.",
+               "flavor": "Higher temperatures for a higher palate"
             },
             "cereals_corn_recipe": {
                "recipe_name": "Bowl of Corn Cereal",
@@ -7063,20 +7227,46 @@
                "description": "Delicious grains ready to be used in other recipes. Raw Rice can also be used as a vegetable.",
                "flavor": "Who knew grass could be so tasty?"
             },
+            "corn_meal_recipe": {
+               "description": "Corn ground into a fine powder that can be used as a soft flour."
+            },
+            "flour_recipe": {
+               "description": "Very commonly used for most kinds of baked goods. Wheat flour is a hard flour."
+            },
             "rice_flour_recipe": {
                "recipe_name": "Sack of Rice Flour",
-               "description": "A formidable alternative for wheat flour, can be used as any flour.",
+               "description": "A formidable and versatile alternative for common flours, can be used as both a soft or hard flour.",
                "flavor": ""
             },
             "nut_flour_recipe": {
                "recipe_name": "Sack of Nut Flour",
-               "description": "Finely ground nuts. Can be used as a flour.",
+               "description": "Finely ground nuts. Can be used as a soft flour.",
                "flavor": "Baking with it is nuts!"
             },
+            "barley_flour_recipe": {
+               "recipe_name": "Sack of Barley Flour",
+               "description": "Ground barley seeds forming a rough, hard flour. Ideal for sourdoughs.",
+               "flavor": ""
+            },
+            "millet_flour_recipe": {
+               "recipe_name": "Sack of Millet Flour",
+               "description": "A fine, slightly silvery powder made from millet grains that can be used as a soft flour.",
+               "flavor": ""
+            },
+            "rye_flour_recipe": {
+               "recipe_name": "Sack of Rye Flour",
+               "description": "Flowy golden grains, almost like sand. Can be used as a hard flour.",
+               "flavor": ""
+            },
             "dough_recipe": {
-               "recipe_name": "Portion of Wheat Dough",
+               "recipe_name": "Portion of Dough",
                "description": "Mix and knead a malleable dough to be used on baking meals like bread.",
-               "flavor": "Watch it grow!"
+               "flavor": "Watch it grow! Requires some leavening before it can be used"
+            },
+            "dough_pie_recipe": {
+               "recipe_name": "Pie Crust (x2)",
+               "description": "Prepare and roll out a couple of pie crusts that will be baked into flaky, buttery pies!",
+               "flavor": "A recipe passed down generations"
             },
             "cooking_oil_recipe": {
                "recipe_name": "Cooking Oil",
@@ -7084,9 +7274,9 @@
                "flavor": "Pumpkin seeds, Sunflower seeds, Corn or even Paddy are examples of oil sources"
             },
             "dough_sweet_recipe": {
-               "recipe_name": "Portion of Sweet Wheat Dough",
+               "recipe_name": "Portion of Sweet Dough",
                "description": "Prepare and knead an elastic and sweet dough for baking sugared goods.",
-               "flavor": "It is like cake-bread!"
+               "flavor": "It is like cake-bread! Requires some leavening before it can be used"
             },
             "batter_recipe": {
                "recipe_name": "Bowl of Batter",
@@ -7274,8 +7464,7 @@
                "flavor": "Our pets deserve all the love"
             },
             "malted_grains_recipe": {
-               "recipe_name": "Sack of Malted Grains",
-               "description": "Toast some grains until they're perfectly golden. An ingredient necessary for brewing.",
+               "description": "Toast some mixed, starchy grains. An ingredient necessary for brewing.",
                "flavor": "Malted Grains can also be milled for cooking oil"
             },
             "hearth_ambrosia_recipe": {
@@ -7331,8 +7520,8 @@
          },
          "cook_workbench_pumpkin": {
             "cook_workbench_pumpkin_ghost": {
-               "display_name": "Pumpkin Cauldron",
-               "description": "An exotic cauldron used for delicious recipes. Requires lower grade fuel."
+               "display_name": "Pumpkin Cooking Pot",
+               "description": "Exotic! Can serve as a Metal Cooking Pot but only requires lower grade fuel."
             }
          },
          "cook_spoon_copper": {
@@ -7341,7 +7530,8 @@
          },
          "cook_workbench": {
             "cook_workbench_ghost": {
-               "description": "Used for basic provisions and delicious recipes! Requires lower grade fuel."
+               "description": "Used for basic provisions and delicious recipes! Requires lower grade fuel.",
+               "display_name": "Stone Cooking Pot"
             }
          },
          "cook_oven": {
@@ -7354,6 +7544,14 @@
                "display_name": "Cooking Table",
                "description": "Used by the Cook for all sorts of kneading and preparing."
             }
+         },
+         "cook_oven_advanced": {
+            "display_name": "Brick Oven",
+            "description": "Reaching higher temperatures for higher palates. Requires lower or good grade fuel."
+         },
+         "cook_workbench_advanced": {
+            "display_name": "Metal Cooking Pot",
+            "description": "Used by the finest Cooks for delicious meals. Requires lower or good grade fuel."
          }
       },
       "carpenter": {
@@ -7365,7 +7563,7 @@
             },
             "wooden_animal_door_small_recipe": {
                "recipe_name": "Wooden Small Animal Door",
-               "description": "A small door for animal shelters, it can be closed by a shepherd.",
+               "description": "A small door for animal shelters.",
                "flavor": "When placed on ground level, the two tiles of dirt underneath it must be dug out for it to work!"
             },
             "wooden_sign_tavern_recipe": {
@@ -7891,6 +8089,18 @@
                   "description": "A fuzzy and warm coat, excellent for partaking in seasonal celebrations.",
                   "flavor": "'Look, the Frostfather has come to visit us!'"
                }
+            },
+            "rug_gilded_blue_recipe": {
+               "flavor": "Some used to believe that a blue like this could only be milled from precious blue stone found deep within mountains far, far to the frozen north"
+            },
+            "rug_gilded_coral_recipe": {
+               "flavor": "It was rumored that earth from a long-dried seabed to the south was baked and ground to produce this lively red-orange"
+            },
+            "rug_gilded_red_recipe": {
+               "flavor": "The color is reminiscent of the flesh on the luscious, almost-purple berries grown in the foothills surrounding a faraway kingdom"
+            },
+            "rug_gilded_sage_recipe": {
+               "flavor": "Achieving a delicate green requires skill; this stain made from a pulp of potent herbs will rapidly turn anything sour"
             }
          },
          "weaver_description": {
@@ -8166,7 +8376,7 @@
             },
             "level_6_data": {
                "perk_000_name": "Bountiful Harvest (Max)",
-               "perk_000_description": "The farmer coaxes 100% more yield from each plant.",
+               "perk_000_description": "The farmer coaxes up to 100% more yield from each plant.",
                "perk_001_name": "Mega Crops",
                "perk_001_description": "The farmer's masterful skills can now occasionally cause a crop to grow much larger and become a mega crop. These rare giant plants will provide extra resources or unique rewards."
             },
@@ -8260,6 +8470,11 @@
                "description": "The Brewer can use this to make either ale or beer using different types of wort.",
                "flavor": "Ale & Beer makes hearthlings happy and only slightly tipsy"
             },
+            "brewer_drying_bed_recipe": {
+               "recipe_name": "Drying Bed",
+               "description": "The Brewer may use this frame to let certain products dry before they can be used.",
+               "flavor": "Both Tea & Coffee require drying during their production"
+            },
             "brewer_wine_cask_recipe": {
                "recipe_name": "Wine Cask",
                "description": "Using this vessel, the Brewer is able to ferment different wines from fruit must.",
@@ -8284,11 +8499,62 @@
                "flavor": "The Brewer can use the Herbalist's lab for this recipe!"
             },
             "malted_grains_recipe": {
+               "recipe_name": "Sack of Malted Grains",
                "description": "Toast some grains until they're perfectly golden. An ingredient for brewing but can also be milled for cooking oil.",
                "flavor": "The Brewer can use the Cook's oven for this recipe!"
             },
+            "malted_wheat_recipe": {
+               "recipe_name": "Sack of Malted Wheat",
+               "description": "Toast some wheat grains until they're perfectly golden. An ingredient necessary for brewing White Beer.",
+               "flavor": "The Brewer can use the Cook's brick oven for this recipe!"
+            },
+            "malted_barley_recipe": {
+               "recipe_name": "Sack of Malted Barley",
+               "description": "Toast some barley grains until they're perfectly bronze. An ingredient necessary for brewing common Beer.",
+               "flavor": "The Brewer can use the Cook's brick oven for this recipe!"
+            },
+            "malted_millet_recipe": {
+               "recipe_name": "Sack of Malted Millet",
+               "description": "Toast some millet kernels until they're perfectly brown. An ingredient necessary for brewing Opaque Beer.",
+               "flavor": "The Brewer can use the Cook's brick oven for this recipe!"
+            },
+            "malted_rye_recipe": {
+               "recipe_name": "Sack of Malted Rye",
+               "description": "Toast some rye grains until they're perfectly brassy. An ingredient necessary for brewing Pale Ale.",
+               "flavor": "The Brewer can use the Cook's brick oven for this recipe!"
+            },
+            "coffee_sorted_recipe": {
+               "recipe_name": "Crate of Sorted Coffee Cherries",
+               "description": "Sort out only the best and perfectly ripe cherries from a bunch of baskets and get them ready to be dried!",
+               "flavor": "Coffee Cherries are dried on a drying bed"
+            },
+            "coffee_roasted_recipe": {
+               "recipe_name": "Sack of Roasted Coffee",
+               "description": "Coffee Beans are perfectly roasted when they reach a deep, dark brown color and become slightly brittle.",
+               "flavor": "The Brewer can use the Cook's oven for this recipe!"
+            },
+            "coffee_ground_recipe": {
+               "recipe_name": "Sack of Ground Coffee (x2)",
+               "description": "After grinding this coffee will be ready to be brewed into delicious and energetic beverages!",
+               "flavor": "The Brewer can use the Cook's mill grinder for this recipe!"
+            },
+            "tea_leaves_steamed_recipe": {
+               "recipe_name": "Crate of Steamed Tea Leaves",
+               "description": "Let the vapors cleanse these leaves so that they can be properly dried into green or black tea leaves.",
+               "flavor": "Tea leaves are dried on a drying bed"
+            },
+            "ground_tea_green_recipe": {
+               "recipe_name": "Sack of Green Tea (x2)",
+               "description": "Delicately ground tea leaves, this ingredient is required for all the green tea recipes.",
+               "flavor": "The Brewer can use the Cook's mill grinder for this recipe!"
+            },
+            "ground_tea_black_recipe": {
+               "recipe_name": "Sack of Black Tea (x2)",
+               "description": "Exhales a smell that can't be mistaken with anything else. Required by all the black tea recipes.",
+               "flavor": "The Brewer can use the Cook's mill grinder for this recipe!"
+            },
             "wort_recipe": {
-               "recipe_name": "Bucket of Wort",
+               "recipe_name": "Bucket of Ale Wort",
                "description": "An extract of mashed malted grains and herbs. Within a Fermentation Vat it can be turned into ale!",
                "flavor": "Pure malt wort can also be further distilled into other drinks"
             },
@@ -8313,7 +8579,7 @@
                "flavor": "Juice is the least efficient vinegar ingredient - but also the cheapest!"
             },
             "wort_gruit_recipe": {
-               "recipe_name": "Bucket of Gruit Wort",
+               "recipe_name": "Bucket of Beer Wort",
                "description": "A bitter and strong mash of grains and gruit. Within a Fermentation Vat it can be turned into beer!",
                "flavor": "Beer is ready quicker than Ale and makes hearthlings slightly happier"
             },
@@ -8384,7 +8650,7 @@
             },
             "tea_recipe": {
                "recipe_name": "Herbal Tea",
-               "description": "An aromatic and warm beverage very appreciated by many! Provides multiple bonuses to hearthlings.",
+               "description": "A fragrant and warm beverage very appreciated by many! Provides multiple bonuses to hearthlings.",
                "flavor": "Prepared tea must be placed somewhere in order to be consumed"
             },
             "tea_pine_recipe": {
@@ -8394,7 +8660,7 @@
             },
             "tea_desert_recipe": {
                "recipe_name": "Desert Sun Tea",
-               "description": "A unique recipe to the children of Rayya, a flower tea from Pal'Mum. Provides multiple bonuses to hearthlings.",
+               "description": "A unique recipe to the children of Rayya, a flowery black tea from Pal'Mum. Provides multiple bonuses to hearthlings.",
                "flavor": "Prepared tea must be placed somewhere in order to be consumed"
             },
             "tea_amberstone_recipe": {
@@ -8404,8 +8670,13 @@
             },
             "tea_fancy_recipe": {
                "recipe_name": "Lavish Tea",
-               "description": "The elegant and heartwarming flavor of dried daisies and fruits. Provides multiple bonuses to hearthlings.",
+               "description": "The elegant and heartwarming flavor of dried daisies and green tea. Provides multiple bonuses to hearthlings.",
                "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
+            "coffee_recipe": {
+               "recipe_name": "Coffee",
+               "description": "A filtered, warm and energizing beverage held dear to many late-night workers! Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared coffee must be placed somewhere in order to be consumed"
             },
             "juice_berry_recipe": {
                "recipe_name": "Bucket of Berry Juice",
@@ -8812,6 +9083,34 @@
          "brewer_wine_cask_vinegar_2": {
             "description": "The vinegar is ready! It can now be racked into a jug!",
             "display_name": "Vinegar Cask"
+         },
+         "brewer_drying_bed_empty": {
+            "display_name": "Empty Drying Bed",
+            "description": "A frame for the Brewer to dry products like tea leaves or coffee cherries."
+         },
+         "brewer_drying_bed_tea_leaves_fresh": {
+            "display_name": "Drying Tea Leaves",
+            "description": "These leaves are drying and should be ready in a day or so."
+         },
+         "brewer_drying_bed_tea_leaves_green": {
+            "display_name": "Drying Green Tea Leaves",
+            "description": "These green tea leaves are ready to be collected or left alone for further drying."
+         },
+         "brewer_drying_bed_tea_leaves_black": {
+            "display_name": "Dried Black Tea Leaves",
+            "description": "These black tea leaves are ready to be collected!"
+         },
+         "brewer_drying_bed_coffee_sorted": {
+            "display_name": "Fresh Coffee Cherries",
+            "description": "The coffee cherries are now drying and should be ready after a week or so."
+         },
+         "brewer_drying_bed_coffee_drying": {
+            "display_name": "Drying Coffee Cherries",
+            "description": "They're yellowed and not as juicy anymore. Still some days to go!"
+         },
+         "brewer_drying_bed_coffee_dry": {
+            "display_name": "Dry Coffee Cherries",
+            "description": "The green coffee beans are ready to be hulled from the dried, dead cherries!"
          }
       },
       "professional_beekeeping_hat": {
@@ -9007,6 +9306,26 @@
             "oleander_seeds": {
                "display_name": "Oleander Seeds",
                "description": "Learn to grow decorative oleander flowers."
+            },
+            "barley_seeds": {
+               "display_name": "Barley Grain",
+               "description": "Learn to grow barley."
+            },
+            "millet_seeds": {
+               "display_name": "Millet Grain",
+               "description": "Learn to grow millet."
+            },
+            "rye_seeds": {
+               "display_name": "Rye Grain",
+               "description": "Learn to grow rye."
+            },
+            "tea_bush_seeds": {
+               "display_name": "Tea Shrub Seedpods",
+               "description": "Learn to grow tea shrubs."
+            },
+            "coffee_bush_seeds": {
+               "display_name": "Green Coffee Beans",
+               "description": "Learn to grow coffee plants."
             }
          },
          "fertilizer": {
@@ -9343,7 +9662,7 @@
          },
          "wooden_animal_door_small": {
             "display_name": "Wooden Small Animal Door",
-            "description": "A small door for animal shelters. Can be opened or closed by a shepherd."
+            "description": "A small door for animal shelters."
          },
          "animal_door_closed": {
             "description": "This door is closed for animals and requires a Shepherd to unlock it."
@@ -9361,11 +9680,11 @@
             "display_name": "Clay Animal Door"
          },
          "clay_animal_door_small": {
-            "description": "A small door for animal shelters. Can be opened or closed by a shepherd.",
+            "description": "A small door for animal shelters.",
             "display_name": "Clay Small Animal Door"
          },
          "stone_animal_door_small": {
-            "description": "A small door for animal shelters. Can be opened or closed by a shepherd.",
+            "description": "A small door for animal shelters.",
             "display_name": "Stone Small Animal Door"
          },
          "simple_water_well": {
@@ -9471,7 +9790,7 @@
       "crops": {
          "moonbell_crop": {
             "display_name": "Moonbell Flower",
-            "description": "If grown by an Herbalist can be used as a blue aromatic herb",
+            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide peculiar herbs.",
             "growth_stage": {
                "000": {
                   "name": "Moonbell Seedling",
@@ -9487,13 +9806,13 @@
                },
                "003": {
                   "name": "Moonbell",
-                  "description": "Beauty is its own reward. (So shiny!)"
+                  "description": "Decorative, will not be harvested."
                }
             }
          },
          "marblesprout_crop": {
             "display_name": "Marblesprout Flower",
-            "description": "Its flower pretty much defies gravity",
+            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide noxious herbs.",
             "growth_stage": {
                "000": {
                   "name": "Marblesprout Seedling",
@@ -9509,7 +9828,7 @@
                },
                "003": {
                   "name": "Marblesprout",
-                  "description": "Beauty is its own reward (Rock solid)"
+                  "description": "Decorative, will not be harvested."
                }
             }
          },
@@ -9552,7 +9871,7 @@
          },
          "violet_crop": {
             "display_name": "Violet Flower",
-            "description": "If grown by an Herbalist can be used as a purple aromatic herb",
+            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide soothing herbs.",
             "growth_stage": {
                "000": {
                   "name": "Violet Seedlings",
@@ -9568,13 +9887,13 @@
                },
                "003": {
                   "name": "Violets",
-                  "description": "If grown by an Herbalist can be harvested for purple aromatic herbs"
+                  "description": "Decorative, will not be harvested."
                }
             }
          },
          "snow_poppy_crop": {
             "display_name": "Snow Poppy Flower",
-            "description": "If grown by an Herbalist can be used as a red aromatic herb",
+            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide noxious herbs.",
             "growth_stage": {
                "000": {
                   "name": "Snow Poppy Seedlings",
@@ -9590,7 +9909,7 @@
                },
                "003": {
                   "name": "Snow Poppies",
-                  "description": "If grown by an Herbalist can be harvested for red aromatic herbs"
+                  "description": "Decorative, will not be harvested."
                }
             }
          },
@@ -10032,9 +10351,12 @@
             "description": "Can be harvested for its greasy fiber",
             "display_name": "Dwarfsbeard"
          },
+         "corn_crop": {
+            "description": "Slow-growing, but super nutritious crop. Provides soft flour."
+         },
          "paddy_crop": {
             "display_name": "Paddy Field",
-            "description": "Rice grows slowly and requires water but works both as a grain and a vegetable!",
+            "description": "Rice grows slowly and requires water but works both as a grain and a vegetable! Provides hard and soft flour.",
             "growth_stage": {
                "000": {
                   "name": "Paddy Stub",
@@ -10066,7 +10388,7 @@
          },
          "poppy_crop": {
             "display_name": "Poppy Flower",
-            "description": "If grown by an Herbalist can be used as a red bitter herb",
+            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide noxious herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -10082,13 +10404,13 @@
                },
                "003": {
                   "name": "Poppies",
-                  "description": "If grown by an Herbalist can be harvested for red bitter herbs."
+                  "description": "Decorative, will not be harvested."
                }
             }
          },
          "rose_crop": {
             "display_name": "Rose Flower",
-            "description": "If grown by an Herbalist can be used as a healing herb",
+            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide healing herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -10104,13 +10426,13 @@
                },
                "003": {
                   "name": "Roses",
-                  "description": "If grown by an Herbalist can be harvested for healing herbs."
+                  "description": "Decorative, will not be harvested."
                }
             }
          },
          "oleander_crop": {
             "display_name": "Oleander Flower",
-            "description": "If grown by an Herbalist can be used as a red bitter herb",
+            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide noxious herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -10126,13 +10448,13 @@
                },
                "003": {
                   "name": "Oleanders",
-                  "description": "If grown by an Herbalist can be harvested for red bitter herbs."
+                  "description": "Decorative, will not be harvested."
                }
             }
          },
          "daylily_crop": {
             "display_name": "Daylily Flower",
-            "description": "If grown by an Herbalist can be used as a yellow aromatic herb",
+            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide mild herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -10148,13 +10470,13 @@
                },
                "003": {
                   "name": "Daylilies",
-                  "description": "If grown by an Herbalist can be harvested for yellow aromatic herbs."
+                  "description": "Decorative, will not be harvested."
                }
             }
          },
          "nightshade_crop": {
             "display_name": "Nightshade Flower",
-            "description": "If grown by an Herbalist can be used as a purple bitter herb",
+            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide noxious herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -10170,7 +10492,164 @@
                },
                "003": {
                   "name": "Nightshades",
-                  "description": "If grown by an Herbalist can be harvested for purple bitter herbs."
+                  "description": "Decorative, will not be harvested."
+               }
+            }
+         },
+         "brightbell_crop": {
+            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide healing herbs.",
+            "growth_stage": {
+               "003": {
+                  "description": "Decorative, will not be harvested."
+               }
+            }
+         },
+         "cactus_flower_crop": {
+            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide healing herbs.",
+            "growth_stage": {
+               "003": {
+                  "description": "Decorative, will not be harvested."
+               }
+            }
+         },
+         "frostsnap_crop": {
+            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide soothing herbs.",
+            "growth_stage": {
+               "003": {
+                  "description": "Decorative, will not be harvested."
+               }
+            }
+         },
+         "barley_crop": {
+            "display_name": "Barley",
+            "description": "Sturdy and rough grain, endures colder weather. Provides hard flour.",
+            "growth_stage": {
+               "011": {
+                  "name": "Barley Husk",
+                  "description": "It's dead."
+               },
+               "000": {
+                  "name": "Barley Seedling",
+                  "description": "Not ready for harvest"
+               },
+               "001": {
+                  "name": "Barley Sprout",
+                  "description": "Not ready for harvest"
+               },
+               "002": {
+                  "name": "Immature Barley",
+                  "description": "Not ready for harvest"
+               },
+               "003": {
+                  "name": "Ripe Barley",
+                  "description": "Ready for harvest!"
+               }
+            }
+         },
+         "millet_crop": {
+            "display_name": "Millet",
+            "description": "Less efficient but fast-growing grain and fiber. Provides soft flour.",
+            "growth_stage": {
+               "011": {
+                  "name": "Millet Husk",
+                  "description": "It's dead."
+               },
+               "000": {
+                  "name": "Millet Seedling",
+                  "description": "Not ready for harvest"
+               },
+               "001": {
+                  "name": "Millet Sprout",
+                  "description": "Not ready for harvest"
+               },
+               "002": {
+                  "name": "Immature Millet",
+                  "description": "Not ready for harvest"
+               },
+               "003": {
+                  "name": "Ripe Millet",
+                  "description": "Ready for harvest!"
+               }
+            }
+         },
+         "rye_crop": {
+            "display_name": "Rye",
+            "description": "Pale and shiny grain, takes long to grow but handles any season. Provides hard flour.",
+            "growth_stage": {
+               "011": {
+                  "name": "Rye Husk",
+                  "description": "It's dead."
+               },
+               "000": {
+                  "name": "Rye Seedling",
+                  "description": "Not ready for harvest"
+               },
+               "001": {
+                  "name": "Rye Sprout",
+                  "description": "Not ready for harvest"
+               },
+               "002": {
+                  "name": "Immature Rye",
+                  "description": "Not ready for harvest"
+               },
+               "003": {
+                  "name": "Ripe Rye",
+                  "description": "Ready for harvest!"
+               }
+            }
+         },
+         "wheat_crop": {
+            "description": "Amber wave of grain, very versatile. Provides hard flour.",
+            "growth_stage": {
+               "002": {
+                  "name": "Immature Wheat"
+               },
+               "003": {
+                  "name": "Ripe Wheat"
+               }
+            }
+         },
+         "tea_bush_crop": {
+            "display_name": "Tea Shrub",
+            "description": "Can be harvested for fresh tea leaves ",
+            "growth_stage": {
+               "000": {
+                  "name": "Tea Shrub Seed",
+                  "description": "Planted to provide tea leaves when it grows."
+               },
+               "001": {
+                  "name": "Tea Shrub Sproutling",
+                  "description": "Just needs some time and care."
+               },
+               "002": {
+                  "name": "Stemming Tea Shrub",
+                  "description": "Still growing!"
+               },
+               "003": {
+                  "name": "Budding Tea Shrub",
+                  "description": "It's almost there! Look, lots of leaves are growing!"
+               }
+            }
+         },
+         "coffee_bush_crop": {
+            "display_name": "Coffee Plant",
+            "description": "Can be harvested for energetic coffee cherries",
+            "growth_stage": {
+               "000": {
+                  "name": "Coffee Plant Seed",
+                  "description": "Planted to provide coffee cherries when it grows."
+               },
+               "001": {
+                  "name": "Coffee Plant Sproutling",
+                  "description": "Just needs some time and care."
+               },
+               "002": {
+                  "name": "Stemming Coffee Plant",
+                  "description": "Still growing!"
+               },
+               "003": {
+                  "name": "Budding Coffee Plant",
+                  "description": "It's almost there! Look, it has buds!"
                }
             }
          }
@@ -10325,131 +10804,135 @@
          "herb": {
             "moonbell": {
                "display_name": "Moonbell Flowers",
-               "description": "Glowy! Useful as a blue bitter herb."
+               "description": "Glowy! Useful as a peculiar herb."
             },
             "marblesprout": {
                "display_name": "Marblesprout Flower",
-               "description": "Hardens into marble when dried! Also useful as a white bitter herb."
+               "description": "Hardens into marble when dried! Also useful as a noxious herb."
             },
             "dried_algae": {
                "display_name": "Dried Algae",
-               "description": "Useful in culinary but also as a yellow bitter herb."
+               "description": "Useful in culinary but also as a robust herb."
             },
             "water_lily_white": {
                "display_name": "White Water Lily",
-               "description": "Serene and quaint. Useful as a white bitter herb."
+               "description": "Serene and quaint. Useful as a soothing herb."
             },
             "water_lily_yellow": {
-               "description": "Wonderful! Useful as a yellow bitter herb.",
+               "description": "Wonderful! Useful as a robust herb.",
                "display_name": "Yellow Water Lily"
             },
             "water_lily_purple": {
                "display_name": "Purple Water Lily",
-               "description": "Stupendous! Useful as a purple bitter herb."
+               "description": "Stupendous! Useful as a peculiar herb."
             },
             "water_lily_pink": {
                "display_name": "Pink Water Lily",
-               "description": "Magnificent! Useful as a red bitter herb."
+               "description": "Magnificent! Useful as a peculiar herb."
             },
             "daisy": {
                "display_name": "Daisy Flowers",
-               "description": "Common and pretty. Useful as a white aromatic herb."
+               "description": "Common and pretty. Useful as a mild herb."
             },
             "foxlily": {
                "display_name": "Fox Lily Flower",
-               "description": "Rare and beautiful. Useful as a red or yellow aromatic herb."
+               "description": "Rare and beautiful. Useful as a peculiar herb."
             },
             "sunflower": {
                "display_name": "Sunflower",
-               "description": "A lovely, merry flower. Useful as a yellow or white aromatic herb."
+               "description": "A lovely, merry flower. Useful as a peculiar herb."
             },
             "highland_vine": {
                "display_name": "Highland Vine Leaves",
-               "description": "Rough and supple. Useful as a green bitter herb."
+               "description": "Rough and supple. Useful as a robust or pungent herb."
             },
             "silkweed": {
                "display_name": "Silkweed Leaves",
-               "description": "Broad and velvety. Useful as a green bitter herb."
+               "description": "Broad and velvety. Useful as a robust or pungent herb."
             },
             "wax_plant_green": {
                "display_name": "Green Wax Plant Leaves",
-               "description": "Keeps the moisture in. Useful as a green bitter herb."
+               "description": "Keeps the moisture in. Useful as a mild or pungent herb."
             },
             "wax_plant_purple": {
                "display_name": "Purple Wax Plant Leaves",
-               "description": "Keeps the moisture in. Useful as a purple aromatic herb."
+               "description": "Keeps the moisture in. Useful as a mild or zesty herb."
             },
             "brightbell": {
-               "description": "A common medicinal herb. Useful as a red aromatic herb."
+               "description": "A common, sweet flower. Useful as a healing herb."
             },
             "cactus_tulip_blue": {
-               "description": "A bright desert flower. Useful as a blue aromatic herb.",
+               "description": "A bright desert flower. Useful as a soothing herb.",
                "display_name": "Blue Tulip Cactus Flower"
             },
             "cactus_tulip_red": {
-               "description": "An intense desert flower. Useful as a red aromatic herb.",
+               "description": "An intense desert flower. Useful as a healing herb.",
                "display_name": "Red Tulip Cactus Flower"
             },
             "cactus_tulip_yellow": {
-               "description": "A radiant desert flower. Useful as a yellow aromatic herb.",
+               "description": "A radiant desert flower. Useful as a mild herb.",
                "display_name": "Yellow Tulip Cactus Flower"
             },
             "cactus_flower": {
                "display_name": "Cactus Flowers",
-               "description": "Simple, pretty desert blossoms. Useful as a red aromatic herb."
+               "description": "Simple, pretty desert blossoms. Useful as a healing herb."
             },
             "frostsnap": {
-               "description": "Chill to the touch! Useful as a blue bitter herb."
+               "description": "Chill to the touch! Useful as a soothing herb."
             },
             "snow_poppy": {
-               "description": "A vibrant arctic flower. Useful as a red bitter herb."
+               "description": "A vibrant arctic flower. Useful as a noxious herb."
             },
             "violet": {
-               "description": "An exquisite arctic blossom. Useful as a purple aromatic herb."
+               "description": "An exquisite arctic blossom. Useful as a soothing herb."
             },
             "water_lily_pad": {
                "display_name": "Lily Pad",
-               "description": "Floaty leaf, a frog's favorite. Useful as a green aromatic herb."
+               "description": "Floaty leaf, a frog's favorite. Useful as a robust or pungent herb."
             },
             "poppy": {
                "display_name": "Poppy Flowers",
-               "description": "Vibrant, contrasting petals. Useful as a red bitter herb."
+               "description": "Vibrant, contrasting petals. Useful as a noxious herb."
             },
             "bog_myrtle": {
                "display_name": "Bog Myrtle Leaves",
-               "description": "Supple leaves with a strong smell. Useful as a green bitter herb."
+               "description": "Supple leaves with a strong smell. Useful as a mild or pungent herb."
             },
             "chives": {
                "display_name": "Sheaf of Chives",
-               "description": "Delicate flavors! Useful as a green or purple aromatic herb."
+               "description": "Delicate flavors! Useful as a healing or zesty herb."
             },
             "daylily": {
                "display_name": "Daylily Flower",
-               "description": "Like little golden trumpets. Useful as a yellow aromatic herb."
+               "description": "Like little golden trumpets. Useful as mild herb."
             },
             "dill": {
                "display_name": "Sheaf of Dill",
-               "description": "Slightly bittersweet. Useful as a green or yellow aromatic herb."
+               "description": "Slightly bittersweet. Useful as a soothing or zesty herb."
             },
             "nightshade": {
                "display_name": "Nightshade Flower",
-               "description": "As dangerous as they are pretty. Useful as a purple bitter herb."
+               "description": "As dangerous as they are pretty. Useful as a noxious herb."
             },
             "oleander": {
                "display_name": "Oleander Flowers",
-               "description": "Stunning petals. Literally. Useful as a red bitter herb."
+               "description": "Stunning petals. Literally. Useful as a noxious herb."
             },
             "parsley": {
                "display_name": "Sheaf of Parsley",
-               "description": "Enhances flavors, smells like dew. Useful as a green or white aromatic herb."
+               "description": "Enhances flavors, smells like dew. Useful as a robust or zesty herb."
             },
             "rose": {
                "display_name": "Rose Flowers",
-               "description": "A powerful romance ingredient. Useful as a red aromatic herb."
+               "description": "A powerful romance ingredient. Useful as a healing herb."
             },
             "sage": {
                "display_name": "Sheaf of Sage",
-               "description": "Sweet and rustic, smells of pine. Useful as a green or blue aromatic herb."
+               "description": "Sweet and rustic, smells of pine. Useful as a mild or zesty herb."
+            },
+            "camellia_rare": {
+               "display_name": "Rare Camellia",
+               "description": "This exotic herb holds tea shrub seeds! It's also a peculiar and healing herb."
             }
          },
          "stone": {
@@ -10571,6 +11054,10 @@
             "thatch_twine_bundle": {
                "display_name": "Thatch Twine Bundle",
                "description": "Rough and dry, but strong. Spinnable into thread"
+            },
+            "millet_straw_bundle": {
+               "display_name": "Millet Straw Bundle",
+               "description": "Long and dry straw rich in fiber. Spinnable into thread."
             }
          },
          "coal": {
@@ -10782,6 +11269,26 @@
          "fine_stuffing": {
             "display_name": "Fine Stuffing",
             "description": "A neatly made, comfortable and warm bit of wadding."
+         },
+         "fire_bricks": {
+            "display_name": "Fire Bricks",
+            "description": "Glazed bricks that can endure the highest temperatures!"
+         },
+         "molded_clay": {
+            "display_name": "Molded Clay",
+            "description": "Modelled clay parts required for crafting building parts and furniture."
+         },
+         "molded_porcelain": {
+            "display_name": "Molded Porcelain",
+            "description": "Modelled bone clay parts required for crafting building parts and furniture."
+         },
+         "unfired_clay": {
+            "display_name": "Unfired Pottery",
+            "description": "Thrown pottery worked to perfection. Must be fired into decorations and vessels."
+         },
+         "unfired_porcelain": {
+            "display_name": "Unfired Porcelain",
+            "description": "Thrown porcelain pottery ready to be fired into decorations and vessels."
          }
       },
       "trees": {
@@ -11933,19 +12440,19 @@
       "plants": {
          "moonbell_plant": {
             "display_name": "Moonbell",
-            "description": "Can be harvested for blue bitter herbs.",
+            "description": "Can be harvested for peculiar herbs.",
             "unripe_description": "This plant has been harvested and has not grown back yet",
             "seed": {
                "moonbell_plant_seed_ghost": {
                   "display_name": "Moonbell Seed",
-                  "description": "It shall grow until it starts glowing, providing blue bitter herbs."
+                  "description": "It shall grow until it starts glowing, providing peculiar herbs."
                },
                "moonbell_plant_sprout": {
                   "display_name": "Moonbell Sproutling",
                   "description": "Just need some time and care."
                },
                "moonbell_plant_seed": {
-                  "description": "Once planted, it will provide blue bitter herbs."
+                  "description": "Once planted, it will provide peculiar herbs."
                }
             },
             "stem": {
@@ -11961,19 +12468,19 @@
          },
          "marblesprout_plant": {
             "display_name": "Marblesprout",
-            "description": "Can be harvested for white bitter herbs. They can be dried into marble stones.",
+            "description": "Can be harvested for noxious herbs. They can be dried into marble stones.",
             "unripe_description": "This plant has been harvested and has not grown back yet",
             "seed": {
                "marblesprout_plant_seed_ghost": {
                   "display_name": "Marblesprout Seed",
-                  "description": "Once it grows, it will provide a white bitter herb."
+                  "description": "Once it grows, it will provide a noxious herb."
                },
                "marblesprout_plant_sprout": {
                   "display_name": "Wild Marblesprout Sproutling",
                   "description": "Just need some time and care."
                },
                "marblesprout_plant_seed": {
-                  "description": "Once planted, it will provide a white bitter herb.",
+                  "description": "Once planted, it will provide a noxious herb.",
                   "display_name": "Marblesprout Seed"
                }
             },
@@ -12132,7 +12639,7 @@
          },
          "poppy_plant": {
             "display_name": "Poppy",
-            "description": "Can be harvested for red bitter herbs.",
+            "description": "Can be harvested for noxious herbs.",
             "bud": {
                "poppy_plant_bud": {
                   "display_name": "Poppy Budding Plant",
@@ -12142,7 +12649,7 @@
             "seed": {
                "poppy_plant_seed_ghost": {
                   "display_name": "Poppy Seed",
-                  "description": "Will provide red bitter herbs when it grows."
+                  "description": "Will provide noxious herbs when it grows."
                },
                "poppy_plant_seed": {
                   "display_name": "Poppy Seed",
@@ -12164,7 +12671,7 @@
          },
          "rose_plant": {
             "display_name": "Rose",
-            "description": "Can be harvested for red aromatic herbs.",
+            "description": "Can be harvested for healing herbs.",
             "bud": {
                "rose_plant_bud": {
                   "display_name": "Rose Budding Plant",
@@ -12190,13 +12697,13 @@
                },
                "rose_plant_seed_ghost": {
                   "display_name": "Rose Seed",
-                  "description": "Will provide red aromatic herbs when it grows."
+                  "description": "Will provide healing herbs when it grows."
                }
             }
          },
          "dill_plant": {
             "display_name": "Dill",
-            "description": "Can be harvested for green and yellow aromatic herbs.",
+            "description": "Can be harvested for soothing or zesty herbs.",
             "bud": {
                "dill_plant_bud": {
                   "display_name": "Dill Budding Plant",
@@ -12222,13 +12729,13 @@
                },
                "dill_plant_seed_ghost": {
                   "display_name": "Dill Seed",
-                  "description": "Will provide green and yellow aromatic herbs when it grows."
+                  "description": "Will provide soothing or zesty herbs when it grows."
                }
             }
          },
          "chives_plant": {
             "display_name": "Chives",
-            "description": "Can be harvested for green and purple aromatic herbs.",
+            "description": "Can be harvested for healing or zesty herbs.",
             "bud": {
                "chives_plant_bud": {
                   "display_name": "Chives Budding Plant",
@@ -12249,7 +12756,7 @@
             },
             "seed": {
                "chives_plant_seed_ghost": {
-                  "description": "Will provide green and purple aromatic herbs when it grows.",
+                  "description": "Will provide healing or zesty herbs when it grows.",
                   "display_name": "Chives Seed"
                },
                "chives_plant_seed": {
@@ -12260,7 +12767,7 @@
          },
          "bog_myrtle_plant": {
             "display_name": "Bog Myrtle",
-            "description": "Can be harvested for green bitter herbs.",
+            "description": "Can be harvested for mild or pungent herbs.",
             "bud": {
                "bog_myrtle_plant_bud": {
                   "display_name": "Bog Myrtle Budding Plant",
@@ -12282,7 +12789,7 @@
             "seed": {
                "bog_myrtle_plant_seed_ghost": {
                   "display_name": "Bog Myrtle Seed",
-                  "description": "Will provide green bitter herbs when it grows."
+                  "description": "Will provide mild or pungent herbs when it grows."
                },
                "bog_myrtle_plant_seed": {
                   "display_name": "Bog Myrtle Seed",
@@ -12292,7 +12799,7 @@
          },
          "nightshade_plant": {
             "display_name": "Nightshade",
-            "description": "Can be harvested for purple bitter herbs.",
+            "description": "Can be harvested for noxious herbs.",
             "bud": {
                "nightshade_plant_bud": {
                   "display_name": "Nightshade Budding Plant",
@@ -12314,7 +12821,7 @@
             "seed": {
                "nightshade_plant_seed_ghost": {
                   "display_name": "Nightshade Seed",
-                  "description": "Will provide purple bitter herbs when it grows."
+                  "description": "Will provide noxious herbs when it grows."
                },
                "nightshade_plant_seed": {
                   "display_name": "Nightshade Seed",
@@ -12324,7 +12831,7 @@
          },
          "daylily_plant": {
             "display_name": "Daylily",
-            "description": "Can be harvested for yellow aromatic herbs.",
+            "description": "Can be harvested for mild herbs.",
             "bud": {
                "daylily_plant_bud": {
                   "display_name": "Daylily Budding Plant",
@@ -12346,7 +12853,7 @@
             "seed": {
                "daylily_plant_seed_ghost": {
                   "display_name": "Daylily Seed",
-                  "description": "Will provide yellow aromatic herbs when it grows."
+                  "description": "Will provide mild herbs when it grows."
                },
                "daylily_plant_seed": {
                   "display_name": "Daylily Seed",
@@ -12356,7 +12863,7 @@
          },
          "oleander_plant": {
             "display_name": "Oleander",
-            "description": "Can be harvested for red bitter herbs.",
+            "description": "Can be harvested for noxious herbs.",
             "bud": {
                "oleander_plant_bud": {
                   "display_name": "Oleander Budding Plant",
@@ -12377,7 +12884,7 @@
             },
             "seed": {
                "oleander_plant_seed_ghost": {
-                  "description": "Will provide red bitter herbs when it grows.",
+                  "description": "Will provide noxious herbs when it grows.",
                   "display_name": "Oleander Seed"
                },
                "oleander_plant_seed": {
@@ -12388,7 +12895,7 @@
          },
          "parsley_plant": {
             "display_name": "Parsley",
-            "description": "Can be harvested for green and white aromatic herbs.",
+            "description": "Can be harvested for robust or zesty herbs.",
             "bud": {
                "parsley_plant_bud": {
                   "display_name": "Parsley Budding Plant",
@@ -12410,7 +12917,7 @@
             "seed": {
                "parsley_plant_seed_ghost": {
                   "display_name": "Parsley Seed",
-                  "description": "Will provide green and white aromatic herbs when it grows."
+                  "description": "Will provide robust or zesty herbs when it grows."
                },
                "parsley_plant_seed": {
                   "display_name": "Parsley Seed",
@@ -12420,7 +12927,7 @@
          },
          "sage_plant": {
             "display_name": "Sage",
-            "description": "Can be harvested for green and blue aromatic herbs.",
+            "description": "Can be harvested for mild or zesty herbs.",
             "bud": {
                "sage_plant_bud": {
                   "display_name": "Sage Budding Plant",
@@ -12442,7 +12949,7 @@
             "seed": {
                "sage_plant_seed_ghost": {
                   "display_name": "Sage Seed",
-                  "description": "Will provide green and blue aromatic herbs when it grows."
+                  "description": "Will provide mild or zesty herbs when it grows."
                },
                "sage_plant_seed": {
                   "display_name": "Sage Seed",
@@ -12456,11 +12963,11 @@
          },
          "brightbell_plant": {
             "display_name": "Brightbell",
-            "description": "Can be harvested for red aromatic herbs.",
+            "description": "Can be harvested for healing herbs.",
             "seed": {
                "brightbell_plant_seed_ghost": {
                   "display_name": "Brightbell Seed",
-                  "description": "Will provide red aromatic herbs when it grows."
+                  "description": "Will provide healing herbs when it grows."
                },
                "brightbell_plant_seed": {
                   "display_name": "Brightbell Seed",
@@ -12470,11 +12977,11 @@
          },
          "cactus_plant": {
             "display_name": "Cactus",
-            "description": "Can be harvested for red aromatic herbs.",
+            "description": "Can be harvested for healing herbs.",
             "seed": {
                "cactus_plant_seed_ghost": {
                   "display_name": "Cactus Seed",
-                  "description": "Will provide red aromatic herbs when it grows."
+                  "description": "Will provide healing herbs when it grows."
                },
                "cactus_plant_seed": {
                   "display_name": "Cactus Seed",
@@ -12484,11 +12991,11 @@
          },
          "frostsnap_plant": {
             "display_name": "Frostsnap",
-            "description": "Can be harvested for blue bitter herbs.",
+            "description": "Can be harvested for soothing herbs.",
             "seed": {
                "frostsnap_plant_seed_ghost": {
                   "display_name": "Frostsnap Seed",
-                  "description": "Will provide blue bitter herbs when it grows."
+                  "description": "Will provide soothing herbs when it grows."
                },
                "frostsnap_plant_seed": {
                   "display_name": "Frostsnap Seed",
@@ -12498,11 +13005,11 @@
          },
          "silkweed_plant": {
             "display_name": "Silkweed",
-            "description": "Can be harvested for fibers and green bitter herbs.",
+            "description": "Can be harvested for fibers and robust or pungent herbs.",
             "seed": {
                "silkweed_plant_seed_ghost": {
                   "display_name": "Silkweed Seed",
-                  "description": "Will provide fiber and green bitter herbs when it grows."
+                  "description": "Will provide fiber and robust or pungent herbs when it grows."
                },
                "silkweed_plant_seed": {
                   "display_name": "Silkweed Seed",
@@ -12511,10 +13018,10 @@
             }
          },
          "cactus_tulip_blue_plant": {
-            "description": "Can be harvested for blue aromatic herbs.",
+            "description": "Can be harvested for soothing herbs.",
             "seed": {
                "cactus_tulip_blue_plant_seed_ghost": {
-                  "description": "Will provide blue aromatic herbs when it grows."
+                  "description": "Will provide soothing herbs when it grows."
                },
                "cactus_tulip_blue_plant_seed": {
                   "description": "A pretty desert blossom. Can be planted."
@@ -12522,10 +13029,10 @@
             }
          },
          "cactus_tulip_red_plant": {
-            "description": "Can be harvested for red aromatic herbs.",
+            "description": "Can be harvested for healing herbs.",
             "seed": {
                "cactus_tulip_red_plant_seed_ghost": {
-                  "description": "Will provide red aromatic herbs when it grows."
+                  "description": "Will provide healing herbs when it grows."
                },
                "cactus_tulip_red_plant_seed": {
                   "description": "A pretty desert blossom. Can be planted."
@@ -12533,10 +13040,10 @@
             }
          },
          "cactus_tulip_yellow_plant": {
-            "description": "Can be harvested for yellow aromatic herbs.",
+            "description": "Can be harvested for mild herbs.",
             "seed": {
                "cactus_tulip_yellow_plant_seed_ghost": {
-                  "description": "Will provide yellow aromatic herbs when it grows."
+                  "description": "Will provide mild herbs when it grows."
                },
                "cactus_tulip_yellow_plant_seed": {
                   "description": "A pretty desert blossom. Can be planted."
@@ -12555,11 +13062,11 @@
             }
          },
          "foxlily_plant": {
-            "description": "Can be harvested for red and yellow aromatic herbs.",
+            "description": "Can be harvested for peculiar herbs.",
             "seed": {
                "foxlily_plant_seed_ghost": {
                   "display_name": "Fox Lily Seed",
-                  "description": "Will provide red and yellow aromatic herbs when it grows."
+                  "description": "Will provide peculiar herbs when it grows."
                },
                "foxlily_plant_seed": {
                   "display_name": "Fox Lily Seed",
@@ -12568,10 +13075,10 @@
             }
          },
          "snow_poppy_plant": {
-            "description": "Can be harvested for red bitter herbs.",
+            "description": "Can be harvested for noxious herbs.",
             "seed": {
                "snow_poppy_plant_seed_ghost": {
-                  "description": "Will provide red bitter herbs when it grows."
+                  "description": "Will provide noxious herbs when it grows."
                },
                "snow_poppy_plant_seed": {
                   "description": "A typical flower from the north. Can be planted."
@@ -12590,10 +13097,10 @@
             }
          },
          "sunflower_plant": {
-            "description": "Can be harvested for yellow and white aromatic herbs.",
+            "description": "Can be harvested for peculiar herbs.",
             "seed": {
                "sunflower_plant_seed_ghost": {
-                  "description": "Will provide yellow and white aromatic herbs when it grows."
+                  "description": "Will provide peculiar herbs when it grows."
                },
                "sunflower_plant_seed": {
                   "description": "Bright and happy like the sun. Can be planted or used as an oil source."
@@ -12601,10 +13108,10 @@
             }
          },
          "violet_plant": {
-            "description": "Can be harvested for purple aromatic herbs.",
+            "description": "Can be harvested for soothing herbs.",
             "seed": {
                "violet_plant_seed_ghost": {
-                  "description": "Will provide purple aromatic herbs when it grows."
+                  "description": "Will provide soothing herbs when it grows."
                },
                "violet_plant_seed": {
                   "description": "A neat arctic purple flower. Can be planted."
@@ -12612,10 +13119,10 @@
             }
          },
          "wax_plant_green": {
-            "description": "Can be harvested for green bitter herbs.",
+            "description": "Can be harvested for mild or pungent herbs.",
             "seed": {
                "wax_plant_green_seed_ghost": {
-                  "description": "Will provide green bitter herbs when it grows."
+                  "description": "Will provide mild or pungent herbs when it grows."
                },
                "wax_plant_green_seed": {
                   "description": "A cute little arid plant. Can be planted."
@@ -12623,10 +13130,10 @@
             }
          },
          "wax_plant_purple": {
-            "description": "Can be harvested for purple aromatic herbs.",
+            "description": "Can be harvested for mild or zesty herbs.",
             "seed": {
                "wax_plant_purple_seed_ghost": {
-                  "description": "Will provide purple aromatic herbs when it grows."
+                  "description": "Will provide mild or zesty herbs when it grows."
                },
                "wax_plant_purple_seed": {
                   "description": "A cute little arid plant. Can be planted."
@@ -12669,6 +13176,75 @@
             "stem": {
                "golden_gourd_plant_stem": {
                   "display_name": "Stemming Golden Gourd",
+                  "description": "Still growing!"
+               }
+            }
+         },
+         "tea_bush": {
+            "unripe_description": "Needs more leaves before trimming.",
+            "renewable_harvest_status_text": "picking tea leaves",
+            "display_name": "Tea Shrub",
+            "description": "Harvest for fresh tea leaves that can be further processed.",
+            "bud": {
+               "tea_bush_plant_bud": {
+                  "display_name": "Budding Tea Shrub",
+                  "description": "It's almost there! Look, lots of leaves are growing!"
+               }
+            },
+            "seed": {
+               "tea_bush_plant_seed_ghost": {
+                  "display_name": "Tea Shrub Seed",
+                  "description": "Will provide tea leaves when it grows."
+               },
+               "tea_bush_plant_seed": {
+                  "display_name": "Tea Shrub Seed",
+                  "description": "Can be planted to grow a lush and fragrant bush or milled for cooking oil."
+               }
+            },
+            "sprout": {
+               "tea_bush_plant_sprout": {
+                  "display_name": "Tea Shrub Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "stem": {
+               "tea_bush_plant_stem": {
+                  "display_name": "Stemming Tea Shrub",
+                  "description": "Still growing!"
+               }
+            }
+         },
+         "coffee_bush": {
+            "unripe_description": "Not yet ripe for harvest.",
+            "display_name": "Coffee Plant",
+            "description": "Harvest for energizing coffee cherries!",
+            "bud": {
+               "coffee_bush_plant_bud": {
+                  "display_name": "Budding Coffee Plant"
+               },
+               "coffee_bushplant_bud": {
+                  "description": "It's almost there! Look, it has buds!"
+               }
+            },
+            "seed": {
+               "coffee_bush_plant_seed_ghost": {
+                  "display_name": "Coffee Plant Seed",
+                  "description": "Will provide energizing fruits when it grows."
+               },
+               "coffee_bush_plant_seed": {
+                  "display_name": "Coffee Plant Seed",
+                  "description": "Can be planted to grow a small tree that provides energizing coffee!"
+               }
+            },
+            "sprout": {
+               "coffee_bush_plant_sprout": {
+                  "display_name": "Coffee Plant Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "stem": {
+               "coffee_bush_plant_stem": {
+                  "display_name": "Stemming Coffee Plant",
                   "description": "Still growing!"
                }
             }
@@ -13140,6 +13716,19 @@
          },
          "marlbe_wall_lantern": {
             "description": "As if having marble everywhere else wasn't enough."
+         },
+         "unfired_clay_vase": {
+            "unfired_clay_vase_ghost": {
+               "display_name": "Rough Clay Vase"
+            }
+         },
+         "decorative_coffee_pot": {
+            "display_name": "Decorative Coffee Pot",
+            "description": "A reminder of long nights"
+         },
+         "porcelain_coffee_pot": {
+            "display_name": "Porcelain Coffee Pot",
+            "description": "Beautiful and ornate, perfect for a high quality beverage."
          }
       },
       "pets": {
@@ -13172,6 +13761,22 @@
          "oinker_mini": {
             "display_name": "Mini Oinker",
             "description": "Oink! It eats a little bit of everything."
+         },
+         "dragon_young_copper": {
+            "display_name": "Copper Dragon Youngling",
+            "description": "Not a whelp anymore! Is it... still growing? "
+         },
+         "dragon_juvenile_copper": {
+            "display_name": "Juvenile Copper Dragon",
+            "description": "So heavy yet agile! It's still growing - will it ever stop?"
+         },
+         "dragon_mature_copper": {
+            "display_name": "Mature Copper Dragon",
+            "description": "It's stronger, faster and can even fight! Is it still growing, though?"
+         },
+         "dragon_copper": {
+            "display_name": "Copper Dragon",
+            "description": "A strong friend and protector. Glorious!"
          }
       },
       "critters": {
@@ -13575,7 +14180,7 @@
          "rice": {
             "paddy_basket": {
                "display_name": "Basket of Paddy",
-               "description": "Unmilled grass seeds. Can be turned into raw rice or flour."
+               "description": "Unmilled grass seeds. Grind into raw rice or versatile flour."
             },
             "raw_rice": {
                "display_name": "Sack of Raw Rice",
@@ -13583,7 +14188,7 @@
             },
             "rice_flour": {
                "display_name": "Sack of Rice Flour",
-               "description": "A formidable alternative for wheat flour."
+               "description": "A formidable alternative for both hard or soft flours."
             }
          },
          "roast_fish": {
@@ -13700,7 +14305,7 @@
             }
          },
          "dough_sweet": {
-            "display_name": "Portion of Sweet Wheat Dough",
+            "display_name": "Portion of Sweet Dough",
             "description": "Sweet Dough is the base for many delicacies like sweet loaf"
          },
          "batter_sweet": {
@@ -13708,7 +14313,7 @@
             "description": "Sweet Batter is a holy creation that can provide us CAKE."
          },
          "dough": {
-            "display_name": "Portion of Wheat Dough",
+            "display_name": "Portion of Dough",
             "description": "Dough is a base ingredient for several meals like breads"
          },
          "batter": {
@@ -13766,10 +14371,11 @@
          },
          "corn_meal": {
             "display_name": "Sack of Corn Meal",
-            "description": "Corn ground into a fine powder. Corn Meal can be used as flour."
+            "description": "Corn ground into a fine powder. Can be used as soft flour."
          },
          "flour": {
-            "display_name": "Sack of Wheat Flour"
+            "display_name": "Sack of Wheat Flour",
+            "description": "The most popular type of flour, perfect for making bread or pastry."
          },
          "kibble": {
             "display_name": "Kibble",
@@ -13825,11 +14431,11 @@
          },
          "megacrop_sheep_feed": {
             "megacrop_sheep_feed": {
-               "display_name": "Mega Wheat Feed",
+               "display_name": "Mega Grain Feed",
                "description": "So golden and shiny! Can be used as a lovely feed for sheep."
             },
             "megacrop_sheep_feed_ground": {
-               "display_name": "Mega Wheat Feed",
+               "display_name": "Mega Grain Feed",
                "description": "Sheep must love this. This meal will last a good while!"
             }
          },
@@ -14006,10 +14612,6 @@
                "description": "Nom nom nom"
             }
          },
-         "malted_grains": {
-            "display_name": "Sack of Malted Grains",
-            "description": "Golden, toasted grains for producing wort. Can also be milled for cooking oil."
-         },
          "nuts_basket": {
             "display_name": "Basket of Nuts",
             "description": "An assortment of edible nuts ready to be used in cooking."
@@ -14052,7 +14654,7 @@
          },
          "nut_flour": {
             "display_name": "Sack of Nut Flour",
-            "description": "Finely ground nuts. Can be used as a flour."
+            "description": "Finely ground nuts. Can be used as a soft flour."
          },
          "nut_bread": {
             "display_name": "Nut Bread",
@@ -14450,6 +15052,44 @@
                "display_name": "Bowl of Winter Soup",
                "description": "Warm, hearty and sweet - all at once!"
             }
+         },
+         "barley_bale": {
+            "display_name": "Bale of Barley",
+            "description": "Ready for use"
+         },
+         "millet_bale": {
+            "display_name": "Bale of Millet",
+            "description": "Ready for use"
+         },
+         "rye_bale": {
+            "display_name": "Bale of Rye",
+            "description": "Ready for use"
+         },
+         "barley_flour": {
+            "display_name": "Sack of Barley Flour",
+            "description": "A hard flour, delicious for rustic baking."
+         },
+         "rye_flour": {
+            "display_name": "Sack of Rye Flour",
+            "description": "A hard flour that is great for yummy, dense doughs."
+         },
+         "millet_flour": {
+            "display_name": "Sack of Millet Flour",
+            "description": "A flour excellent for soft, light and fibrous breads."
+         },
+         "dough_pie": {
+            "display_name": "Pie Crust",
+            "description": "A crunchy, spread open dough ready to be filled and baked!"
+         },
+         "coffee": {
+            "coffee_basket": {
+               "display_name": "Basket of Coffee Cherries",
+               "description": "Tasty but meager fruits, much better when dried for coffee beans!"
+            },
+            "coffee_serving": {
+               "display_name": "Serving of Coffee Cherries",
+               "description": "Not so bad but goes in one bite!"
+            }
          }
       },
       "terrain": {
@@ -14760,6 +15400,15 @@
             "ogre": {
                "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
                "description": "That's a big skeleton."
+            }
+         },
+         "undergrowth": {
+            "ant": {
+               "species": "ant"
+            },
+            "drone": {
+               "display_name": "Undergrowth Drone",
+               "description": "An aggressive, giant worker insect. Dangerous in numbers!"
             }
          }
       },
@@ -15773,10 +16422,10 @@
       "vines": {
          "highland_vine": {
             "display_name": "Highland Vine",
-            "description": "Climbable and spreading. Can be harvested for green bitter herbs.",
+            "description": "Climbable and spreading. Can be harvested for robust or pungent herbs.",
             "seed": {
                "display_name": "Highland Vine Seed",
-               "description": "Can be planted to grow a vine that can be climbed. Provides green bitter herbs."
+               "description": "Can be planted for a climbable vine. Provides robust or pungent herbs."
             },
             "bud": {
                "display_name": "Budding Highland Vine",
@@ -16102,6 +16751,26 @@
          }
       },
       "drink": {
+         "malted_grains": {
+            "display_name": "Sack of Malted Grains",
+            "description": "Mixed and toasted grains for producing wort. Can also be milled for cooking oil."
+         },
+         "malted_wheat": {
+            "display_name": "Sack of Malted Wheat",
+            "description": "Golden, toasted grains for producing wort for white beer."
+         },
+         "malted_barley": {
+            "display_name": "Sack of Malted Barley",
+            "description": "Bronze, toasted grains for producing wort for beer."
+         },
+         "malted_rye": {
+            "display_name": "Sack of Malted Rye",
+            "description": "Brassy, toasted grains for producing wort for pale ale."
+         },
+         "malted_millet": {
+            "display_name": "Sack of Malted Millet",
+            "description": "Brown, toasted grains for producing wort for opaque beer."
+         },
          "unfermented_mead": {
             "display_name": "Unfermented Mead",
             "description": "Water, honey, yeast. The Brewer needs it to fill a fermentation carboy!"
@@ -16161,7 +16830,7 @@
             }
          },
          "wort": {
-            "display_name": "Bucket of Wort",
+            "display_name": "Bucket of Ale Wort",
             "description": "An extract from grains. The Brewer needs it to make ale."
          },
          "spirit": {
@@ -16215,7 +16884,7 @@
          "tea": {
             "tea": {
                "display_name": "Herbal Tea",
-               "description": "An aromatic and warm beverage. Very appreciated by many!"
+               "description": "A fragrant and warm beverage. Very appreciated by many!"
             },
             "tea_serving": {
                "display_name": "Mug of Herbal Tea"
@@ -16321,7 +16990,7 @@
          },
          "gruit": {
             "display_name": "Wrap of Gruit",
-            "description": "A bundle of bitter, dried herbs. Brewers can use it to make beer."
+            "description": "A bundle of pungent, dried herbs. Brewers can use it to make beer."
          },
          "ale": {
             "ale_serving": {
@@ -16459,7 +17128,7 @@
             "description": "Crushed berries, juice and solids. A Brewer needs it to fill a wine cask!"
          },
          "wort_gruit": {
-            "display_name": "Bucket of Gruit Wort",
+            "display_name": "Bucket of Beer Wort",
             "description": "A mash of malted grains and spices. The Brewer needs it to make beer."
          },
          "must_apple": {
@@ -16739,6 +17408,62 @@
             "serving_pitcher": {
                "display_name": "Serving Pitcher of Prickly Pear Wine"
             }
+         },
+         "tea_leaves": {
+            "fresh": {
+               "display_name": "Basket of Fresh Tea Leaves",
+               "description": "Fresh and velvety leaves full of potential. Must be steamed and dried."
+            },
+            "green": {
+               "display_name": "Basket of Green Tea Leaves",
+               "description": "A timeless tradition. Used by the brewer for making green tea."
+            },
+            "black": {
+               "display_name": "Basket of Black Tea Leaves",
+               "description": "Stronger and more flavorful! Used by the brewer for making black tea."
+            },
+            "steamed": {
+               "display_name": "Crate of Steamed Tea Leaves",
+               "description": "These leaves are ready to be placed on a drying bed."
+            }
+         },
+         "coffee": {
+            "sorted": {
+               "display_name": "Crate of Sorted Coffee",
+               "description": "These cherries are ready to be placed on a drying bed."
+            },
+            "green": {
+               "display_name": "Sack of Green Coffee Beans",
+               "description": "Fresh out of their dried husks and ready to be roasted!"
+            },
+            "roasted": {
+               "display_name": "Sack of Roasted Coffee Beans",
+               "description": "Precisely roasted to a perfect dark brown. Needs grinding before brewing!"
+            },
+            "ground": {
+               "display_name": "Sack of Ground Coffee",
+               "description": "The aroma is irresistible! This coffee is ready to be brewed."
+            },
+            "coffee_serving": {
+               "display_name": "Cup of Coffee"
+            }
+         },
+         "ground_tea_green": {
+            "display_name": "Sack of Green Tea",
+            "description": "Delicately ground leaves. Ready to be used by a brewer."
+         },
+         "ground_tea_black": {
+            "display_name": "Sack of Black Tea",
+            "description": "Exhales a smell that can't be mistaken. Ready to be used by a brewer."
+         },
+         "coffee_iconic": {
+            "description": "Place it somewhere so hearthlings can serve themselves!"
+         },
+         "coffee_desert": {
+            "coffee_desert": {
+               "display_name": "Coffee",
+               "description": "A crafter-favorite for late night working! Warm and energizing!"
+            }
          }
       },
       "npc": {
@@ -16939,8 +17664,8 @@
                },
                "gruit_recipe": {
                   "recipe_name": "Wrap of Gruit",
-                  "description": "A bundle of bitter herbs and seasonings. Birch catkins are often used in the highlands.",
-                  "flavor": "The Brewer needs gruit to make beer"
+                  "description": "A bundle of pungent herbs and seasonings needed for brewing beer. Birch catkins are often used in the highlands.",
+                  "flavor": "'I am gruit'"
                },
                "oleander_seeds_2_recipe": {
                   "recipe_name": "Oleander Seeds",
@@ -17094,187 +17819,187 @@
       },
       "brightbell": {
          "display_name": "Brightbell",
-         "description": "A homely, common flower from the woodlands. Needs a couple of days to be fully grown and will provide <span class='redHerb'>red</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "A homely, common flower from the woodlands. Needs a couple of days to be fully grown and will provide <span class='healingHerb'>healing</span> herbs when harvested.",
          "harvest_text": "harvesting brightbells"
       },
       "cactus_flower": {
          "display_name": "Cactus Flower",
-         "description": "Small and highly adapted desert plants with a delicate flower. Needs a couple of days to be fully grown and will provide <span class='redHerb'>red</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "Small and highly adapted desert plants with a delicate flower. Needs a couple of days to be fully grown and will provide <span class='healingHerb'>healing</span> herbs when harvested.",
          "harvest_text": "harvesting cactus flowers"
       },
       "frostsnap": {
          "display_name": "Frostsnap",
-         "description": "A tiny mountain flower that is chill to the touch. Needs a few days to be fully grown and will provide <span class='blueHerb'>blue</span> <span class='bitterHerb'>bitter</span> herbs when harvested.",
+         "description": "A tiny mountain flower that is chill to the touch. Needs a few days to be fully grown and will provide <span class='soothingHerb'>soothing</span> herbs when harvested.",
          "harvest_text": "harvesting frostsnaps"
       },
       "violet": {
          "display_name": "Violet",
-         "description": "A pretty and valuable northern blossom. Needs a couple of days to be fully grown and will provide <span class='purpleHerb'>purple</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "A pretty and valuable northern blossom. Needs a couple of days to be fully grown and will provide <span class='soothingHerb'>soothing</span> herbs when harvested.",
          "harvest_text": "harvesting violets"
       },
       "cactus_tulip_blue": {
          "display_name": "Blue Tulip Cactus",
-         "description": "An exotic and colorful desert tulip. Needs some days to be fully grown and will provide <span class='blueHerb'>blue</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "An exotic and colorful desert tulip. Needs some days to be fully grown and will provide <span class='soothingHerb'>soothing</span> herbs when harvested.",
          "harvest_text": "harvesting blue tulip cactus"
       },
       "cactus_tulip_red": {
          "display_name": "Red Tulip Cactus",
-         "description": "An exotic and colorful desert tulip. Needs some days to be fully grown and will provide <span class='redHerb'>red</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "An exotic and colorful desert tulip. Needs some days to be fully grown and will provide <span class='healingHerb'>healing</span> herbs when harvested.",
          "harvest_text": "harvesting red tulip cactus"
       },
       "cactus_tulip_yellow": {
          "display_name": "Yellow Tulip Cactus",
-         "description": "An exotic and colorful desert tulip. Needs some days to be fully grown and will provide <span class='yellowHerb'>yellow</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "An exotic and colorful desert tulip. Needs some days to be fully grown and will provide <span class='mildHerb'>mild</span> herbs when harvested.",
          "harvest_text": "harvesting yellow tulip cactus"
       },
       "snow_poppy": {
          "display_name": "Snow Poppy",
-         "description": "A typical and toxic small northern flower. Needs a few days to be fully grown and will provide <span class='redHerb'>red</span> <span class='bitterHerb'>bitter</span> herbs when harvested.",
+         "description": "A typical and toxic small northern flower. Needs a few days to be fully grown and will provide <span class='noxiousHerb'>noxious</span> herbs when harvested.",
          "harvest_text": "harvesting snow poppy"
       },
       "daisy": {
          "display_name": "Daisy",
-         "description": "A simple and adorable flower. Needs a bunch of days to be fully grown and will provide <span class='whiteHerb'>white</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "A simple and adorable flower. Needs a bunch of days to be fully grown and will provide <span class='mildHerb'>mild</span> herbs when harvested.",
          "harvest_text": "harvesting daisy"
       },
       "foxlily": {
          "display_name": "Fox Lily",
-         "description": "A rare and valuable flower that resembles a furry tail. Needs a bunch of days to be fully grown and will provide <span class='redHerb'>red</span> and <span class='yellowHerb'>yellow</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "A rare and valuable flower that resembles a furry tail. Needs a bunch of days to be fully grown and will provide <span class='peculiarHerb'>peculiar</span> herbs when harvested.",
          "harvest_text": "harvesting foxlily"
       },
       "highland_vine": {
          "display_name": "Highland Vine",
-         "description": "A thick and resistant ivy that spreads to all directions. Needs a bunch of days to be fully grown and will provide <span class='greenHerb'>green</span> <span class='bitterHerb'>bitter</span> herbs and sometimes fiber when harvested.",
+         "description": "A thick and resistant ivy that spreads to all directions. Needs a bunch of days to be fully grown and will provide <span class='robustHerb'>robust</span> or <span class='pungentHerb'>pungent</span> herbs and sometimes <span class='extraHerb'>fiber</span> when harvested.",
          "harvest_text": "harvesting highland vine"
       },
       "marblesprout": {
          "display_name": "Marblesprout",
-         "description": "A curious bloom from the highlands, can be dried into marble stone. Needs some days to be fully grown and will provide <span class='whiteHerb'>white</span> <span class='bitterHerb'>bitter</span> herbs when harvested.",
+         "description": "A curious bloom from the highlands, can be dried into <span class='extraHerb'>marble stone</span>. Needs some days to be fully grown and will provide <span class='noxiousHerb'>noxious</span> herbs when harvested.",
          "harvest_text": "harvesting marblesprout"
       },
       "moonbell": {
          "display_name": "Moonbell",
-         "description": "A glowy and pale highland bloom. Needs a few days to be fully grown and will provide <span class='blueHerb'>blue</span> <span class='bitterHerb'>bitter</span> herbs when harvested.",
+         "description": "A glowy and pale highland bloom. Needs a few days to be fully grown and will provide <span class='peculiarHerb'>peculiar</span> herbs when harvested.",
          "harvest_text": "harvesting moonbell"
       },
       "sunflower": {
          "display_name": "Sunflower",
-         "description": "A bright and joyful flower loved by all. Needs a bunch of days to be fully grown and will provide <span class='yellowHerb'>yellow</span> and <span class='whiteHerb'>white</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "A bright and joyful flower loved by all. Needs a bunch of days to be fully grown and will provide <span class='peculiarHerb'>peculiar</span> herbs when harvested.",
          "harvest_text": "harvesting sunflower"
       },
       "silkweed": {
          "display_name": "Silkweed",
-         "description": "A fibrous and resilient weed quite common in bogs. Needs a couple of days to be fully grown and will provide <span class='greenHerb'>green</span> <span class='bitterHerb'>bitter</span> herbs and sometimes fiber when harvested.",
+         "description": "A fibrous and resilient weed quite common in bogs. Needs a couple of days to be fully grown and will provide <span class='robustHerb'>robust</span> or <span class='pungentHerb'>pungent</span> herbs and sometimes <span class='extraHerb'>fiber</span> when harvested.",
          "harvest_text": "harvesting silkweed"
       },
       "earthbud": {
          "display_name": "Hearthbud",
-         "description": "A mysterious bloom able to condensate hearth magic. Needs a long time to be fully grown and will provide hearth essences when harvested.",
+         "description": "A mysterious bloom able to condensate hearth magic. Needs a long time to be fully grown and will provide <span class='extraHerb'>hearth essence</span> when harvested.",
          "harvest_text": "harvesting hearthbud"
       },
       "sugarbell": {
          "display_name": "Sugarbell",
-         "description": "A hearty vegetable that glows with sweetness. Needs a bunch of days to be fully grown and will provide resources to be refined into sugar.",
+         "description": "A hearty vegetable that glows with sweetness. Needs a bunch of days to be fully grown and will provide resources to be refined into <span class='extraHerb'>sugar</span>.",
          "harvest_text": "harvesting sugarbell"
       },
       "wax_plant_green": {
          "display_name": "Green Wax Plant",
-         "description": "A chunky, cute desert plant. Needs some days to be fully grown and will provide <span class='greenHerb'>green</span> <span class='bitterHerb'>bitter</span> herbs when harvested.",
+         "description": "A chunky, cute desert plant. Needs some days to be fully grown and will provide <span class='mildHerb'>mild</span> or <span class='pungentHerb'>pungent</span> herbs when harvested.",
          "harvest_text": "harvesting green wax plant"
       },
       "wax_plant_purple": {
          "display_name": "Purple Wax Plant",
-         "description": "A chunky, cute desert plant. Needs some days to be fully grown and will provide <span class='purpleHerb'>purple</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "A chunky, cute desert plant. Needs some days to be fully grown and will provide <span class='mildHerb'>mild</span> or <span class='zestyHerb'>zesty</span> herbs when harvested.",
          "harvest_text": "harvesting purple wax plant"
       },
       "poppy": {
          "display_name": "Poppy",
-         "description": "A common sight among the rolling hills of the highlands. Needs a few days to be fully grown and will provide <span class='redHerb'>red</span> <span class='bitterHerb'>bitter</span> herbs when harvested.",
+         "description": "A common sight among the rolling hills of the highlands. Needs a few days to be fully grown and will provide <span class='noxiousHerb'>noxious</span> herbs when harvested.",
          "harvest_text": "harvesting poppy"
       },
       "rose": {
          "display_name": "Rose",
-         "description": "A beautiful layered flower. Needs a couple of days to be fully grown and will provide <span class='redHerb'>red</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "A beautiful layered flower. Needs a couple of days to be fully grown and will provide <span class='healingHerb'>healing</span> herbs when harvested.",
          "harvest_text": "harvesting rose"
       },
       "dill": {
          "display_name": "Dill",
-         "description": "A delicious seasoning traditional to the highlanders. Grows very quickly and will provide <span class='greenHerb'>green</span> and <span class='yellowHerb'>yellow</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "A delicious seasoning traditional to the highlanders. Grows very quickly and will provide <span class='soothingHerb'>soothing</span> or <span class='zestyHerb'>zesty</span> herbs when harvested.",
          "harvest_text": "harvesting dill"
       },
       "chives": {
          "display_name": "Chives",
-         "description": "Flavorful favorite of the northern cooks. Grows very quickly and will provide <span class='greenHerb'>green</span> and <span class='purpleHerb'>purple</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "Flavorful favorite of the northern cooks. Grows very quickly and will provide <span class='healingHerb'>healing</span> or <span class='zestyHerb'>zesty</span> herbs when harvested.",
          "harvest_text": "harvesting chives"
       },
       "bog_myrtle": {
          "display_name": "Bog Myrtle",
-         "description": "A small and velvety bush that grows by the wetlands. Needs a few days to be fully grown and will provide <span class='greenHerb'>green</span> <span class='bitterHerb'>bitter</span> herbs when harvested.",
+         "description": "A small and velvety bush that grows by the wetlands. Needs a few days to be fully grown and will provide <span class='mildHerb'>mild</span> or <span class='pungentHerb'>pungent</span> herbs when harvested.",
          "harvest_text": "harvesting bog myrtle"
       },
       "nightshade": {
          "display_name": "Nightshade",
-         "description": "A highly poisonous and mesmerizingly beautiful blossom. Needs some days to be fully grown and will provide <span class='purpleHerb'>purple</span> <span class='bitterHerb'>bitter</span> herbs when harvested.",
+         "description": "A highly poisonous and mesmerizingly beautiful blossom. Needs some days to be fully grown and will provide <span class='noxiousHerb'>noxious</span> herbs when harvested.",
          "harvest_text": "harvesting nightshade"
       },
       "daylily": {
          "display_name": "Daylily",
-         "description": "A happy and delicate summer flower. Needs a couple of days to be fully grown and will provide <span class='yellowHerb'>yellow</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "A happy and delicate summer flower. Needs a couple of days to be fully grown and will provide <span class='mildHerb'>mild</span> herbs when harvested.",
          "harvest_text": "harvesting daylily"
       },
       "oleander": {
          "display_name": "Oleander",
-         "description": "Bushy and slightly toxic flowers common in warmer climates. Needs a few days to be fully grown and will provide <span class='redHerb'>red</span> <span class='bitterHerb'>bitter</span> herbs when harvested.",
+         "description": "Bushy and slightly toxic flowers common in warmer climates. Needs a few days to be fully grown and will provide <span class='noxiousHerb'>noxious</span> herbs when harvested.",
          "harvest_text": "harvesting oleander"
       },
       "parsley": {
          "display_name": "Parsley",
-         "description": "A tasty seasoning that can grow on most climates. Grows very quickly and will provide <span class='greenHerb'>green</span> and <span class='whiteHerb'>white</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "A tasty seasoning that can grow on most climates. Grows very quickly and will provide <span class='robustHerb'>robust</span> or <span class='zestyHerb'>zesty</span> herbs when harvested.",
          "harvest_text": "harvesting parsley"
       },
       "sage": {
          "display_name": "Sage",
-         "description": "Fresh with a pinch of mint, popular across the woodlands. Grows very quickly and will provide <span class='greenHerb'>green</span> and <span class='blueHerb'>blue</span> <span class='aromaticHerb'>aromatic</span> herbs when harvested.",
+         "description": "Fresh with a pinch of mint, popular across the woodlands. Grows very quickly and will provide <span class='mildHerb'>mild</span> or <span class='zestyHerb'>zesty</span> herbs when harvested.",
          "harvest_text": "harvesting sage"
       },
       "water_lily_pad": {
          "display_name": "Lily Pad",
-         "description": "Neat and leafy water plants. Takes a long time to be fully grown. Provides <span class='greenHerb'>green</span> <span class='aromaticHerb'>aromatic</span> herbs and sometimes leeches when harvested.",
+         "description": "Neat and leafy water plants. Takes a long time to be fully grown. Provides <span class='robustHerb'>robust</span> or <span class='pungentHerb'>pungent</span> herbs and sometimes <span class='extraHerb'>leeches</span> when harvested.",
          "harvest_text": "harvesting lily pad"
       },
       "water_lily_pink": {
          "display_name": "Pink Water Lily",
-         "description": "Pleasant and valuable water flowers. Takes a long time to be fully grown. Provides <span class='redHerb'>red</span> <span class='bitterHerb'>bitter</span> herbs and sometimes <span class='greenHerb'>green</span> <span class='aromaticHerb'>aromatic</span> ones or leeches.",
+         "description": "Pleasant and valuable water flowers. Takes a long time to be fully grown. Provides <span class='peculiarHerb'>peculiar</span> herbs and sometimes <span class='robustHerb'>robust</span> or <span class='pungentHerb'>pungent</span> ones or <span class='extraHerb'>leeches</span>.",
          "harvest_text": "harvesting pink water lily"
       },
       "water_lily_purple": {
          "display_name": "Purple Water Lily",
-         "description": "Pleasant and valuable water flowers. Takes a long time to be fully grown. Provides <span class='purpleHerb'>purple</span> <span class='bitterHerb'>bitter</span> herbs and sometimes <span class='greenHerb'>green</span> <span class='aromaticHerb'>aromatic</span> ones or leeches.",
+         "description": "Pleasant and valuable water flowers. Takes a long time to be fully grown. Provides <span class='peculiarHerb'>peculiar</span> herbs and sometimes <span class='robustHerb'>robust</span> or <span class='pungentHerb'>pungent</span> ones or <span class='extraHerb'>leeches</span>.",
          "harvest_text": "harvesting purple water lily"
       },
       "water_lily_white": {
          "display_name": "White Water Lily",
-         "description": "Pleasant and valuable water flowers. Takes a long time to be fully grown. Provides <span class='whiteHerb'>white</span> <span class='bitterHerb'>bitter</span> herbs and sometimes <span class='greenHerb'>green</span> <span class='aromaticHerb'>aromatic</span> ones or leeches.",
+         "description": "Pleasant and valuable water flowers. Takes a long time to be fully grown. Provides <span class='soothingHerb'>soothing</span> herbs and sometimes <span class='robustHerb'>robust</span> or <span class='pungentHerb'>pungent</span> ones or <span class='extraHerb'>leeches</span>.",
          "harvest_text": "harvesting white water lily"
       },
       "water_lily_yellow": {
          "display_name": "Yellow Water Lily",
-         "description": "Pleasant and valuable water flowers. Takes a long time to be fully grown. Provides <span class='yellowHerb'>yellow</span> <span class='bitterHerb'>bitter</span> herbs and sometimes <span class='greenHerb'>green</span> <span class='aromaticHerb'>aromatic</span> ones or leeches.",
+         "description": "Pleasant and valuable water flowers. Takes a long time to be fully grown. Provides <span class='robustHerb'>robust</span> herbs and sometimes <span class='robustHerb'>robust</span> or <span class='pungentHerb'>pungent</span> ones or <span class='extraHerb'>leeches</span>.",
          "harvest_text": "harvesting yellow water lily"
       },
       "algae_brown": {
          "display_name": "Brown Alga",
-         "description": "An useful water weed. Takes some days to be fully grown. Provides brown algae and sometimes leeches when harvested.",
+         "description": "An useful water weed. Takes some days to be fully grown. Provides <span class='extraHerb'>brown algae</span> and sometimes <span class='extraHerb'>leeches</span> when harvested.",
          "harvest_text": "harvesting brown alga"
       },
       "algae_green": {
          "display_name": "Green Alga",
-         "description": "An useful water weed. Takes some days to be fully grown. Provides green algae and sometimes leeches when harvested.",
+         "description": "An useful water weed. Takes some days to be fully grown. Provides <span class='extraHerb'>green algae</span> and sometimes <span class='extraHerb'>leeches</span> when harvested.",
          "harvest_text": "harvesting green alga"
       },
       "algae_red": {
          "display_name": "Red Alga",
-         "description": "An useful water weed. Takes some days to be fully grown. Provides red algae and sometimes leeches when harvested.",
+         "description": "An useful water weed. Takes some days to be fully grown. Provides <span class='extraHerb'>red algae</span> and sometimes <span class='extraHerb'>leeches</span> when harvested.",
          "harvest_text": "harvesting red alga"
       },
       "oak_sapling": {
@@ -17800,7 +18525,7 @@
                   "tooltip_other_plants": "Other Plants",
                   "tooltip_seeds": "Seeds",
                   "tooltip_fish": "Captive Fish",
-                  "tooltip_herbs": "Aromatic Herbs",
+                  "tooltip_herbs": "Alchemical Herbs",
                   "tooltip_fiber": "Fiber",
                   "tooltip_algae": "Algae",
                   "tooltip_essences": "Essences",
@@ -17828,7 +18553,8 @@
                   "tooltip_raw_food_animal_goods": "Raw Animal Goods",
                   "tooltip_raw_food_nuts": "Raw Nuts",
                   "tooltip_serving_vessels": "Drink Serving Vessels",
-                  "tooltip_bitter_herbs": "Bitter Herbs",
+                  "tooltip_culinary_herbs": "Culinary Herbs",
+                  "tooltip_brewing_herbs": "Brewing Herbs",
                   "dresser": "Misc",
                   "tooltip_field_work_outfit": "Field Worker Outfits & Hats",
                   "tooltip_crafter_outfit": "Crafter Outfits & Hats",
@@ -17841,7 +18567,10 @@
                   "tooltip_combat_consumable": "Combat Potions",
                   "healing_items": "Healing Items",
                   "tooltip_crafter": "Crafter",
-                  "tooltip_edible_fruit": "Edible Fruit Seeds"
+                  "tooltip_edible_fruit": "Edible Fruit Seeds",
+                  "tooltip_refined_weaver": "Refined Stuff",
+                  "tooltip_dyes": "Dyes",
+                  "tooltip_baking": "Baking"
                },
                "fuel_level": {
                   "label": "Fuel Level:",
@@ -18322,32 +19051,22 @@
             "seed_resource_name": "Any Seed",
             "seed_hard_resource_name": "Any Hard Seed",
             "seed_fruit_resource_name": "Any Fruit Seed",
-            "aromatic_herb_resource_name": "Any Aromatic Herb",
-            "bitter_herb_resource_name": "Any Bitter Herb",
-            "red_herb_resource_name": "Red Herbs",
-            "green_herb_resource_name": "Green Herbs",
-            "blue_herb_resource_name": "Blue Herbs",
-            "yellow_herb_resource_name": "Yellow Herbs",
-            "white_herb_resource_name": "White Herbs",
-            "purple_herb_resource_name": "Purple Herbs",
+            "healing_herb_resource_name": "Healing Herb",
+            "soothing_herb_resource_name": "Soothing Herb",
+            "noxious_herb_resource_name": "Noxious Herb",
+            "mild_herb_resource_name": "Mild Herb",
+            "robust_herb_resource_name": "Robust Herb",
+            "peculiar_herb_resource_name": "Peculiar Herb",
+            "pungent_herb_resource_name": "Pungent Herb",
+            "zesty_herb_resource_name": "Zesty Herb",
             "herb_red_resource_name": "Any Red Herb",
             "herb_green_resource_name": "Any Green Herb",
             "herb_blue_resource_name": "Any Blue Herb",
             "herb_yellow_resource_name": "Any Yellow Herb",
             "herb_white_resource_name": "Any White Herb",
             "herb_purple_resource_name": "Any Purple Herb",
-            "herb_red_aromatic_resource_name": "Any Red Aromatic Herb",
-            "herb_green_aromatic_resource_name": "Any Green Aromatic Herb",
-            "herb_blue_aromatic_resource_name": "Any Blue Aromatic Herb",
-            "herb_yellow_aromatic_resource_name": "Any Yellow Aromatic Herb",
-            "herb_white_aromatic_resource_name": "Any White Aromatic Herb",
-            "herb_purple_aromatic_resource_name": "Any Purple Aromatic Herb",
-            "herb_red_bitter_resource_name": "Any Red Bitter Herb",
-            "herb_green_bitter_resource_name": "Any Green Bitter Herb",
-            "herb_blue_bitter_resource_name": "Any Blue Bitter Herb",
-            "herb_yellow_bitter_resource_name": "Any Yellow Bitter Herb",
-            "herb_white_bitter_resource_name": "Any White Bitter Herb",
-            "herb_purple_bitter_resource_name": "Any Purple Bitter Herb",
+            "herb_pink_resource_name": "Any Pink Herb",
+            "herb_orange_resource_name": "Any Orange Herb",
             "egg_small_resource_name": "Any Small Egg",
             "stuffing_resource_name": "Any Feathers, Wool or Cotton",
             "raw_meat_piece_resource_name": "Any Whole Meat Piece",
@@ -18360,7 +19079,10 @@
             "prepared_food_breakfast_resource_name": "Breakfast Food",
             "prepared_food_lunch_resource_name": "Lunch Food",
             "prepared_food_dinner_resource_name": "Dinner Food",
-            "becomes_vinegar_juice_resource_name": "Any Juice"
+            "becomes_vinegar_juice_resource_name": "Any Juice",
+            "hard_flour_resource_name": "Any Hard Flour",
+            "soft_flour_resource_name": "Any Soft Flour",
+            "malt_resource_name": "Any Malted Grains"
          }
       }
    },

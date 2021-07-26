@@ -1,0 +1,22 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_drying_bed:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(brewer_drying_bed_coffee_sorted.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.brewer.brewer_drying_bed_coffee_sorted.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.brewer.brewer_drying_bed_coffee_sorted.description)",
+         "icon": "file(brewer_drying_bed_coffee_sorted.png)"
+      }
+   }
+}

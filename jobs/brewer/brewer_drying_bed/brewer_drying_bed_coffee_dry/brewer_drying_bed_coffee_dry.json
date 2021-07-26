@@ -1,0 +1,58 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_drying_bed",
+      "file(brewer_drying_bed_coffee_dry_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(brewer_drying_bed_coffee_dry_ghost.json)",
+         "iconic_form": "file(brewer_drying_bed_coffee_dry_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:stump": {},
+      "stonehearth:resource_node": {
+         "category": "brewing",
+         "resource": "stonehearth_ace:drink:coffee:green",
+         "harvest_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+         "harvester_effect": "fiddle",
+         "durability": 1,
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 4,
+                     "max": 5
+                  },
+                  "items": {
+                     "cheese_slice": {
+                        "uri": "stonehearth_ace:drink:coffee:green"
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:brewer:drying_bed:empty",
+         "apply_quality": false,
+         "transform_option_key": "coffee"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 30,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}

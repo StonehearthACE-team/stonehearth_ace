@@ -1,0 +1,100 @@
+{
+   "type": "entity",
+   "mixins": "file(tea_bush_ghost.json)",
+   "components": {
+      "stonehearth:renewable_resource_node": {
+         "resource": "stonehearth_ace:drink:tea_leaves:fresh",
+         "category": "harvest",
+         "renewal_time": "3d+24h",
+         "unripe_description": "i18n(stonehearth_ace:entities.plants.tea_bush.unripe_description)",
+         "harvest_status_text": "i18n(stonehearth_ace:entities.plants.tea_bush.renewable_harvest_status_text)",
+         "harvest_overlay_effect": "stonehearth:effects:harvest_plant_overlay_effect",
+         "half_renewed_model_variant": true,
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 10
+                     },
+                     "flower": {
+                        "uri": "stonehearth_ace:resources:herb:camellia_rare",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         },
+         "biomes": {
+            "stonehearth:biome:arctic": {
+               "renewal_time_multiplier": 2
+            },
+            "stonehearth_ace:biome:highlands": {
+               "renewal_time_multiplier": 1.5
+            }
+         },
+         "seasons": {
+            "spring": {
+               "renewal_time_multiplier": 3
+            },
+            "autumn": {
+               "renewal_time_multiplier": 2
+            },
+            "winter": {
+               "disable_renewal": true
+            }
+         }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -0.5, "y": 0, "z": -0.5 },
+               "max": { "x": 1.5, "y": 1, "z": 1.5 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -0.5, "y": 0, "z": -0.5 },
+               "max": { "x": 1.5, "y": 2, "z": 1.5 }
+            }
+         ]
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(tea_bush_iconic.json)",
+         "ghost_form": "file(tea_bush_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "firewood": {
+                     "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      }
+   }
+}

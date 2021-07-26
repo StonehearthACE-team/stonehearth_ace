@@ -1,24 +1,8 @@
 {
-   "type": "recipe",
+   "mixins": ["/stonehearth_ace/jobs/brewer/recipes/malted_grains_recipe.json"],
    "effort": 30,
-   "work_units": 3,
-   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.malted_grains_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.cook.recipes.malted_grains_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.malted_grains_recipe.flavor)",
-   "portrait": "/stonehearth_ace/entities/food/malted_grains/malted_grains.png",
-   "level_requirement": 6,
-	"ace_smart_crafter_ignore": true,
-	"work_effect": "work_wait",
-   "workshop": "stonehearth:cook:oven",
-   "ingredients": [
-      {
-         "material": "grain",
-         "count": 2
-      }
-   ],
-   "produces": [
-      {
-         "item": "stonehearth_ace:food:malted_grains"
-      }
-   ]
+	"level_requirement": 6,
+	"ace_smart_crafter_ignore": false
 }

@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(malted_barley.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 6,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.malted_barley.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.malted_barley.description)",
+         "icon": "file(malted_barley.png)",
+         "is_item": true,
+         "category": "brewing_ingredient",
+         "material_tags": [
+            "stockpile_brewing_ingredient",
+            "brewing_ingredient",
+            "malt",
+            "barley",
+            "dry_good",
+            "other_ingredient"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}

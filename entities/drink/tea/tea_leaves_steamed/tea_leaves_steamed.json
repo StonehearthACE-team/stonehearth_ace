@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tea_leaves_steamed.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 12,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.tea_leaves.steamed.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.tea_leaves.steamed.description)",
+         "icon": "file(tea_leaves_steamed.png)",
+         "is_item": true,
+         "category": "brewing_ingredient",
+         "material_tags": [
+            "stockpile_brewing_ingredient",
+            "brewing_ingredient",
+            "dry_good",
+            "tea_leaves",
+            "steamed"
+         ],
+         "subject_override": "stonehearth_ace:plants:tea_bush"
+      },
+      "stonehearth:appeal": {
+         "appeal": 5
+      }
+   }
+}

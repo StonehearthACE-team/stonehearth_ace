@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tea_leaves_green.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.095
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.tea_leaves.green.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.tea_leaves.green.description)",
+         "icon": "file(tea_leaves_green.png)",
+         "is_item": true,
+         "category": "brewing_ingredient",
+         "material_tags": [
+            "stockpile_brewing_ingredient",
+            "brewing_ingredient",
+            "dry_good",
+            "tea_leaves",
+            "green"
+         ],
+         "subject_override": "stonehearth_ace:plants:tea_bush"
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      }
+   }
+}

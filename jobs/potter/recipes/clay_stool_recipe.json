@@ -6,11 +6,12 @@
    "description": "i18n(stonehearth_ace:jobs.potter.recipes.clay_stool_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.clay_stool_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/furniture/clay_stool/clay_stool.png",
-   "workshop": "stonehearth:potter:workbench",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
    "level_requirement": 2,
    "ingredients": [
       {
-         "material": "clay resource",
+         "uri": "stonehearth_ace:refined:molded_clay",
          "count": 1
       }
    ],

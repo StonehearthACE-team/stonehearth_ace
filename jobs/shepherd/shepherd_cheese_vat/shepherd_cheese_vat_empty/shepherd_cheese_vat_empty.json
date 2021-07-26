@@ -16,9 +16,9 @@
       "stonehearth_ace:transform_data": {
          "progress_text": "stonehearth_ace:ui.game.unit_frame.transform.progress.filling",
          "transform_options": {
-            "curdling_mixture": {
+            "cheese_cottage": {
                "transform_uri": "stonehearth_ace:shepherd:cheese_vat:filled",
-               "command": "stonehearth_ace:commands:transform:cheese_vat_fill",
+               "command": "stonehearth_ace:commands:transform:cheese_vat_fill_cottage",
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_shepherd_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:food:dairy:curdling_mixture",
@@ -26,6 +26,55 @@
                "transforming_worker_effect": "fiddle",
                "transforming_worker_effect_times": 1,
                "auto_request": true,
+               "auto_harvest_key": "cheese_cottage",
+               "worker_required_job": {
+                  "stonehearth:jobs:shepherd": true
+               },
+               "apply_ingredient_quality": true
+            },
+            "cheese_fresh": {
+               "transform_uri": "stonehearth_ace:shepherd:cheese_vat:filled",
+               "command": "stonehearth_ace:commands:transform:cheese_vat_fill_fresh",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_shepherd_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:food:dairy:curdling_mixture",
+               "transform_ingredient_auto_craft": true,
+               "transforming_worker_effect": "fiddle",
+               "transforming_worker_effect_times": 1,
+               "auto_request": true,
+               "auto_harvest_key": "cheese_fresh",
+               "worker_required_job": {
+                  "stonehearth:jobs:shepherd": true
+               },
+               "apply_ingredient_quality": true
+            },
+            "cheese_mild": {
+               "transform_uri": "stonehearth_ace:shepherd:cheese_vat:filled",
+               "command": "stonehearth_ace:commands:transform:cheese_vat_fill_mild",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_shepherd_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:food:dairy:curdling_mixture",
+               "transform_ingredient_auto_craft": true,
+               "transforming_worker_effect": "fiddle",
+               "transforming_worker_effect_times": 1,
+               "auto_request": true,
+               "auto_harvest_key": "cheese_mild",
+               "worker_required_job": {
+                  "stonehearth:jobs:shepherd": true
+               },
+               "apply_ingredient_quality": true
+            },
+            "cheese_aged": {
+               "transform_uri": "stonehearth_ace:shepherd:cheese_vat:filled",
+               "command": "stonehearth_ace:commands:transform:cheese_vat_fill_aged",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_shepherd_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:food:dairy:curdling_mixture",
+               "transform_ingredient_auto_craft": true,
+               "transforming_worker_effect": "fiddle",
+               "transforming_worker_effect_times": 1,
+               "auto_request": true,
+               "auto_harvest_key": "cheese_aged",
                "worker_required_job": {
                   "stonehearth:jobs:shepherd": true
                },

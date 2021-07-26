@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 32,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.cook_workbench_advanced_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.cook_workbench_advanced_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.cook_workbench_advanced_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/cook/cook_workbench_advanced/cook_workbench_advanced.png",
+   "work_effect": "work",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:fire_bricks",
+         "count": 1
+      },
+      {
+         "material": "stone resource",
+         "count": 1
+      },
+      {
+         "material": "ingot hard_metal",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:cook:workbench_advanced"
+      }
+   ]
+}

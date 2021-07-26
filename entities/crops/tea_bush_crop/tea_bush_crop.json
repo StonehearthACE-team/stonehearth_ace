@@ -1,0 +1,111 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth_ace/entities/plants/tea_bush/tea_bush.qb"
+            ]
+         },
+         "tea_bush_1": {
+            "models": [
+               "file(tea_bush_1.qb)"
+            ]
+         },
+         "tea_bush_2": {
+            "models": [
+               "file(tea_bush_2.qb)"
+            ]
+         },
+         "tea_bush_3": {
+            "models": [
+               "/stonehearth_ace/entities/plants/tea_bush/stem/tea_bush_stem.qb"
+            ]
+         },
+         "tea_bush_4": {
+            "models": [
+               "/stonehearth_ace/entities/plants/tea_bush/bud/tea_bush_bud.qb"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -0.1, "z": 0 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "default": "stonehearth_ace:crops:tea_bush_crop:final"
+         },
+         "harvest_threshhold": "default",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
+         "megacrop_chance": 0,
+         "auto_harvest": "place"
+      },
+      "stonehearth:growing": {
+         "growth_period": "28h+16h",
+         "preferred_climate": "tropical_easy",
+         "growth_stages": [
+            {
+               "model_name": "tea_bush_1",
+               "name": "i18n(stonehearth_ace:entities.crops.tea_bush_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.tea_bush_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "tea_bush_2",
+               "name": "i18n(stonehearth_ace:entities.crops.tea_bush_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.tea_bush_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "tea_bush_3",
+               "name": "i18n(stonehearth_ace:entities.crops.tea_bush_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.tea_bush_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "tea_bush_4",
+               "name": "i18n(stonehearth_ace:entities.crops.tea_bush_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.tea_bush_crop.growth_stage.003.description)",
+               "component_changes": {
+                  "render_info": {
+                     "set_scale": 0.09
+                  }
+               }
+            },
+            {
+               "model_name": "default",
+               "name": "i18n(stonehearth_ace:entities.crops.tea_bush_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.tea_bush_crop.growth_stage.003.description)",
+               "component_changes": {
+                  "render_info": {
+                     "set_scale": 0.09
+                  }
+               }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.tea_bush_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.tea_bush_crop.description)",
+         "icon": "/stonehearth_ace/entities/plants/tea_bush/tea_bush.png",
+         "material_tags": [
+            "crop",
+            "tea_bush_sapling"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

@@ -1,0 +1,35 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_drying_bed",
+      "file(brewer_drying_bed_tea_leaves_fresh_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(brewer_drying_bed_tea_leaves_fresh_ghost.json)",
+         "iconic_form": "file(brewer_drying_bed_tea_leaves_fresh_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:evolve": {}
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:brewer:drying_bed:tea_leaves_green",
+         "evolve_time": "32h+6h"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 24,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}

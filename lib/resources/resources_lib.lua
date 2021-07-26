@@ -8,9 +8,9 @@ function resources_lib.request_auto_harvest(entity, should_auto_harvest)
       local resource_node = entity:get_component('stonehearth:resource_node')
 
       if renewable_resource_node and renewable_resource_node:is_harvestable() then
-         renewable_resource_node:request_harvest(entity:get_player_id())
+         return renewable_resource_node:request_harvest(entity:get_player_id())
       elseif resource_node and not crop_comp or not renewable_resource_node then
-         resource_node:request_harvest(entity:get_player_id())
+         return resource_node:request_harvest(entity:get_player_id())
       end
    end
 end

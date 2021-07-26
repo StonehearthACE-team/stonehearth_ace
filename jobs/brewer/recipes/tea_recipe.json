@@ -5,14 +5,18 @@
    "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.tea_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.brewer.recipes.tea_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.tea_recipe.flavor)",
-   "portrait": "/stonehearth_ace/entities/drink/tea/tea.png",
+   "portrait": "/stonehearth_ace/entities/drink/tea/tea/tea.png",
    "level_requirement": 3,
    "workshop": "stonehearth_ace:brewer:kettle",
    "work_effect": "brewer_stirring",
    "ingredients": [
       {
-         "material": "herb aromatic resource",
+         "material": "herb soothing resource",
          "count": 2
+      },
+      {
+         "material": "herb mild resource",
+         "count": 1
       },
       {
          "uri": "stonehearth:decoration:decorative_teapot",

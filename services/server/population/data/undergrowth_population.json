@@ -1,0 +1,112 @@
+{
+   "type": "kingdom",
+   "kingdom_name": "The Undergrowth",
+   "kingdom_id": "undergrowth",
+   "amenity_to_strangers": "hostile",
+   "amenity_to": {
+      "forest": "neutral",
+      "human_npcs": "neutral",
+      "orc_npcs": "neutral",
+      "rabbit_biped_npcs": "neutral"
+   },
+   "roles": {
+      "drone": {
+         "male": {
+            "uri": [
+               "stonehearth_ace:monsters:undergrowth:drone"
+            ]
+         }
+      },
+      "default": {
+         "male": {
+            "uri": [
+               "stonehearth:monsters:goblins:goblin"
+            ],
+            "uri_pc": [
+               "stonehearth:monsters:goblins:goblin:pc"
+            ],
+            "given_names": [
+               "Zug",
+               "Baa",
+               "Ulan",
+               "Ikh",
+               "Baatar",
+               "Zun",
+               "Muud",
+               "Govi",
+               "Omno",
+               "Hod",
+               "Veek",
+               "Gom",
+               "Morun",
+               "Ky",
+               "Ragnash"
+            ]
+         },
+         "female": {
+            "uri": [
+               "stonehearth:monsters:goblins:goblin"
+            ],
+            "uri_pc": [
+               "stonehearth:monsters:goblins:goblin:pc"
+            ],
+            "given_names": [
+               "Khru",
+               "Sel",
+               "Anji",
+               "Maa",
+               "Ree",
+               "Dini",
+               "Olgi",
+               "Alsa",
+               "Haaki",
+               "Erde",
+               "Arvee",
+               "Bayan"
+            ]
+         },
+         "surnames": [
+            "the Magnificent",
+            "the Puce",
+            "the Sagacious",
+            "Skull Crusher",
+            "Nail Biter",
+            "the Extemporaneous",
+            "the Orange",
+            "the Olive",
+            "Oliveskinner",
+            "the Horrendous",
+            "the Mighty",
+            "Brillaintmind",
+            "the Earnest",
+            "the Awesome",
+            "the Magnanimous",
+            "Kingmaker",
+            "the Ripped",
+            "Scarletfang",
+            "Skaleladder",
+            "the Blatant",
+            "Armguard",
+            "the Flange",
+            "Leathermail",
+            "the Expiditer",
+            "Dragonslayer",
+            "Thornpants",
+            "Deathfist",
+            "Bloodpainter",
+            "the Grandiose"
+         ]
+      }
+   },
+   "town_pieces": {
+      "optional_prefix": [
+         "The "
+      ],
+      "town_name": [
+         "Under"
+      ],
+      "suffix": [
+         "growth"
+      ]
+   }
+}

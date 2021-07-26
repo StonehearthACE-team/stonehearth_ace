@@ -1,0 +1,152 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(rye_4.qb)"
+            ]
+         },
+         "rye_1": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(rye_1.qb)",
+                     "file(rye_1_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "rye_2": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(rye_2.qb)",
+                     "file(rye_2_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "rye_3": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(rye_3.qb)",
+                     "file(rye_3_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "rye_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(rye_4.qb)",
+                     "file(rye_4_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "rye_12": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(rye_12.qb)",
+                     "file(rye_12_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "rye_4": "stonehearth_ace:food:rye:rye_bale",
+            "rye_12": ""
+         },
+         "harvest_threshhold": "rye_4",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
+         "stacks_per_harvest": 20
+      },
+      "stonehearth:growing": {
+         "growth_period": "36h",
+         "preferred_climate": "highlands_complex",
+         "growth_stages": [
+            {
+               "model_name": "rye_1",
+               "name": "i18n(stonehearth_ace:entities.crops.rye_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.rye_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "rye_2",
+               "name": "i18n(stonehearth_ace:entities.crops.rye_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.rye_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "rye_3",
+               "name": "i18n(stonehearth_ace:entities.crops.rye_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.rye_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "rye_4",
+               "name": "i18n(stonehearth_ace:entities.crops.rye_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.rye_crop.growth_stage.003.description)"
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+               "model_name": "rye_12",
+               "name": "i18n(stonehearth_ace:entities.crops.rye_crop.growth_stage.011.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.rye_crop.growth_stage.011.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:megacrop": {
+         "num_to_spawn": 0,
+         "other_items": {
+            "stonehearth_ace:food:megacrop:sheep_feed": 2
+         },
+         "pickup_new": true,
+         "effect": "promote"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.rye_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.rye_crop.description)",
+         "icon": "file(icon.png)",
+         "material_tags": [
+            "crop",
+            "rye",
+            "grain"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}

@@ -7,7 +7,42 @@
 		},
       "stonehearth:growing": {
 			"growth_period": "30h",
-			"preferred_climate": "desert_easy"
+			"preferred_climate": "desert_easy",
+         "preferred_seasons": {
+            "stonehearth_ace:biome:highlands": [
+               "summer"
+            ]
+         },
+         "mixintypes": {
+            "growth_stages": "override"
+         },
+         "growth_stages": [
+            {
+               "model_name": "cactus_flower_1",
+               "name": "i18n(stonehearth:entities.crops.cactus_flower_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth:entities.crops.cactus_flower_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "cactus_flower_2",
+               "name": "i18n(stonehearth:entities.crops.cactus_flower_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth:entities.crops.cactus_flower_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "cactus_flower_3",
+               "name": "i18n(stonehearth:entities.crops.cactus_flower_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth:entities.crops.cactus_flower_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "cactus_flower_4",
+               "name": "i18n(stonehearth:entities.crops.cactus_flower_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.cactus_flower_crop.growth_stage.003.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.crops.cactus_flower_crop.description)"
       }
    }
 }

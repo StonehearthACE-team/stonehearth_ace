@@ -16,6 +16,10 @@
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       },
       "stonehearth:renewable_resource_node": {
+         "category": "farming",
+         "mixintypes": {
+            "harvest_overlay_effect": "remove"
+         },
          "half_renewed_model": {
             "scale": 0.099
          },
@@ -24,7 +28,9 @@
          }
       },
       "destination": {
-         "mixintypes": {"region": "override"},
+         "mixintypes": {
+            "region": "override"
+         },
          "region": [
             {
                "min": { "x": 0, "y": 0, "z": 0 },
@@ -33,7 +39,9 @@
          ]
       },
       "region_collision_shape": {
-         "mixintypes": {"region": "override"},
+         "mixintypes": {
+            "region": "override"
+         },
          "region": [
             {
                "min": { "x": 0, "y": 0, "z": 0 },

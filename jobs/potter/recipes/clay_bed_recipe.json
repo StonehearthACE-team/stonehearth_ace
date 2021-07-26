@@ -1,7 +1,14 @@
 {
-   "workshop": "stonehearth:potter:workbench",
+   "workshop": "stonehearth:potter:kiln",
+   "mixintypes": {
+      "ingredients": "override"
+    },
    "ingredients": [
-	  {
+      {
+         "uri": "stonehearth_ace:refined:molded_clay",
+         "count": 1
+      },
+	   {
          "material": "thatch resource",
          "count": 1
       }

@@ -1,3 +1,4 @@
+local Point3 = _radiant.csg.Point3
 local rng = _radiant.math.get_default_rng()
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local resources_lib = require 'stonehearth_ace.lib.resources.resources_lib'
@@ -36,6 +37,8 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
    end
 
    local location = radiant.entities.get_world_grid_location(entity)
+   local local_location = radiant.entities.get_location_aligned(entity)
+   local parent = radiant.entities.get_parent(entity)
    local facing = radiant.entities.get_facing(entity)
 
    local root_form, iconic_form = entity_forms_lib.get_forms(entity)
@@ -52,12 +55,14 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       radiant.entities.set_player_id(transformed_form, entity)
 
       -- Have to remove entity because it can collide with transformed form
-      radiant.terrain.remove_entity(entity)
+      -- If its parent is a structure, we want to remove it from that structure and place the new one on that structure
+      radiant.entities.remove_child(parent, entity)
+      radiant.entities.move_to_grid_aligned(entity, Point3.zero)
 		
 		local aquatic_object = entity:get_component('stonehearth_ace:aquatic_object')
       if location and not radiant.terrain.is_standable(transformed_form, location) and not aquatic_object then
          -- If cannot transform because the transformed form will not fit in the current location, just return (evolve will try again after a new timer)
-         radiant.terrain.place_entity_at_exact_location(entity, location, { force_iconic = false, facing = facing })
+         transform_lib.place_entity_at_location(entity, parent, local_location, facing)
          radiant.entities.destroy_entity(transformed_form)
          return false
       end
@@ -160,9 +165,19 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       end
 
       if location then
-         radiant.terrain.place_entity_at_exact_location(transformed_form, location, { force_iconic = false, facing = facing } )
+         transform_lib.place_entity_at_location(transformed_form, parent, local_location, facing)
 
-         resources_lib.request_auto_harvest(transformed_form, options.auto_harvest)
+         if options.auto_harvest_key then
+            local stage_data = radiant.entities.get_entity_data(transformed_form, 'stonehearth_ace:stage_data')
+            local stage = stage_data and stage_data.current_stage
+            if options.auto_harvest_key == stage then
+               resources_lib.request_auto_harvest(transformed_form, true)
+            else
+               local transform_comp = transformed_form:add_component('stonehearth_ace:transform'):add_option_overrides({auto_harvest_key = options.auto_harvest_key})
+            end
+         else
+            resources_lib.request_auto_harvest(transformed_form, options.auto_harvest)
+         end
       end
 
       -- check if the current entity is the town's banner or hearth; if so, change it to this one
@@ -212,7 +227,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       radiant.entities.kill_entity(entity)
    elseif options.undeploy_entity and iconic_form and location then
       -- option to undeploy, but only use it if there's an iconic form
-      radiant.entities.output_spawned_items({[iconic_form:get_id()] = iconic_form}, location, 1, 3, nil, options.transformer_entity, nil, true)
+      radiant.entities.output_spawned_items({[iconic_form:get_id()] = iconic_form}, location, 1, 2, nil, options.transformer_entity, nil, true)
    elseif options.destroy_entity ~= false then
       radiant.entities.destroy_entity(entity)
    elseif options.remove_components then
@@ -231,6 +246,13 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
    end
 
    return transformed_form
+end
+
+function transform_lib.place_entity_at_location(entity, parent, location, facing)
+   if facing then
+      entity:add_component('mob'):turn_to(facing)
+   end
+   radiant.entities.add_child(parent, entity, location)
 end
 
 return transform_lib

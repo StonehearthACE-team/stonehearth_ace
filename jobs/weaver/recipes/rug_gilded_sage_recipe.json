@@ -1,3 +1,22 @@
 {
-   "workshop": "stonehearth:weaver:workbench"
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.rug_gilded_sage_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/exotic_trade_monument/rug_gilded_sage/rug_gilded_sage.png",
+   "workshop": "stonehearth:weaver:loom",
+   "mixintypes": {
+      "ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "material": "thread resource",
+         "count": 5
+      },
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      },
+      {
+         "material": "herb green resource",
+         "count": 2
+      }
+   ]
 }

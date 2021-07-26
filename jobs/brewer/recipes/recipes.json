@@ -24,6 +24,9 @@
             },
             "brewer_wine_cask": {
                "recipe": "file(brewer_wine_cask_recipe.json)"
+            },
+            "brewer_drying_bed": {
+               "recipe": "file(brewer_drying_bed_recipe.json)"
             }
          }
       },
@@ -36,6 +39,36 @@
 				},
 				"malted_grains": {
 					"recipe": "file(malted_grains_recipe.json)"
+				},
+				"malted_wheat": {
+					"recipe": "file(malted_wheat_recipe.json)"
+				},
+				"malted_millet": {
+					"recipe": "file(malted_millet_recipe.json)"
+				},
+				"malted_barley": {
+					"recipe": "file(malted_barley_recipe.json)"
+				},
+				"malted_rye": {
+					"recipe": "file(malted_rye_recipe.json)"
+				},
+				"ground_tea_green": {
+					"recipe": "file(ground_tea_green_recipe.json)"
+				},
+				"ground_tea_black": {
+					"recipe": "file(ground_tea_black_recipe.json)"
+				},
+				"tea_leaves_steamed": {
+					"recipe": "file(tea_leaves_steamed_recipe.json)"
+				},
+				"coffee_sorted": {
+					"recipe": "file(coffee_sorted_recipe.json)"
+				},
+				"coffee_roasted": {
+					"recipe": "file(coffee_roasted_recipe.json)"
+				},
+				"coffee_ground": {
+					"recipe": "file(coffee_ground_recipe.json)"
 				},
 			   "unfermented_vinegar_juice_recipe": {
 					"recipe": "file(unfermented_vinegar_juice_recipe.json)"
@@ -171,6 +204,9 @@
             },
             "spirit_sugar": {
                "recipe": "file(spirit_sugar_recipe.json)"
+            },
+            "coffee": {
+               "recipe": "file(coffee_recipe.json)"
             }
          }
       },

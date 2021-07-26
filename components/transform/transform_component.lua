@@ -89,6 +89,11 @@ function TransformComponent:_create_request_listeners()
       self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
          :on_changed(function(parent)
             if parent then
+               -- if we already have a task for this entity, don't override it with a transform request
+               local task_tracker_component = self._entity:get_component('stonehearth:task_tracker')
+               if task_tracker_component and task_tracker_component:has_any_task() then
+                  return
+               end
                self:request_transform(self._entity:get_player_id())
             end
          end)
@@ -273,6 +278,10 @@ function TransformComponent:_set_up_commands()
    end
 end
 
+function TransformComponent:get_option_overrides()
+   return self._sv.option_overrides
+end
+
 function TransformComponent:add_option_overrides(overrides)
    self._compiled_options = nil
    radiant.util.merge_into_table(self._sv.option_overrides, overrides)
@@ -285,6 +294,7 @@ function TransformComponent:transform(transformer)
       check_script = transform_data.transform_check_script,
       transform_effect = transform_data.transform_effect,
       auto_harvest = transform_data.auto_harvest,
+      auto_harvest_key = transform_data.auto_harvest_key,
       transform_script = transform_data.transform_script,
       kill_entity = transform_data.kill_entity,
       undeploy_entity = transform_data.undeploy_entity,

@@ -6,12 +6,13 @@
    "description": "i18n(stonehearth_ace:jobs.potter.recipes.fuel_holder_large_clay_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.fuel_holder_large_clay_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/containers/fuel_holder_large_clay/fuel_holder_large_clay.png",
-   "workshop": "stonehearth:potter:workbench",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
    "level_requirement": 2,
    "ingredients": [
       {
-         "material": "clay resource",
-         "count": 3
+         "uri": "stonehearth_ace:refined:molded_clay",
+         "count": 4
       }
    ],
    "produces": [

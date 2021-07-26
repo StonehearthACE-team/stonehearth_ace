@@ -207,6 +207,24 @@
             "volume": 85
          }
       },
+      "rain_sunny": {
+         "day": {
+            "track"    :  [
+                        "stonehearth:ambient:rain"
+                           ],
+            "loop"     : true,
+            "fade_in"  : 2000,
+            "volume"   : 32
+         },
+         "night": {
+            "track"    :  [
+                        "stonehearth:ambient:rain"
+                           ],
+            "loop"     : true,
+            "fade_in"  : 2000,
+            "volume"   : 38
+         }
+      },
       "rain_winter": {
          "day": {
             "track": [
@@ -445,5 +463,143 @@
             "volume": 54
          }
       }
+   },
+   "music": {
+      "festival": {
+         "track": [
+            "stonehearth:music:lvlmusic_asc_festival_01",
+            "stonehearth:music:lvlmusic_asc_festival_02"
+         ],
+         "loop": true,
+         "priority": 20
+      },
+      "dungeon": {
+         "track": [
+            "stonehearth_ace:music:ace_rajmann_dungeon"
+         ],
+         "loop": true,
+         "priority": 95       
+      },
+      "under_siege": {
+         "track": [
+            "stonehearth_ace:music:ace_rajmann_under_siege"
+         ],
+         "loop": true,
+         "priority": 90
+      },
+      "lucky": {
+         "day": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_lucky_day",
+               "stonehearth_ace:music:ace_rajmann_lucky_day",
+               "stonehearth_ace:music:ace_rajmann_lucky_day"
+            ]
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_lucky_night",
+               "stonehearth_ace:music:ace_rajmann_lucky_night",
+               "stonehearth_ace:music:ace_rajmann_lucky_night"
+            ]
+         }
+      },
+      "lucky_desert": {
+         "day": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_lucky_day",
+               "stonehearth_ace:music:ace_rajmann_lucky_day",
+               "stonehearth_ace:music:ace_rajmann_lucky_day"
+            ]
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_lucky_night",
+               "stonehearth_ace:music:ace_rajmann_lucky_night",
+               "stonehearth_ace:music:ace_rajmann_lucky_night"
+            ]  
+         }
+      },      
+      "cloudy": {},
+      "cloudy_desert": {},
+      "cloudy_winter": {},      
+      "foggy": {},
+      "foggy_winter": {},      
+      "distant_storm": {},      
+      "rain_sunny": {
+         "day": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_rain_1",
+               "stonehearth_ace:music:ace_rajmann_rain_1",
+               "stonehearth_ace:music:ace_rajmann_rain_1"
+            ]
+         }
+      },      
+      "rain": {},
+      "rain_winter": {
+         "day": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_rain_2",
+               "stonehearth_ace:music:ace_rajmann_rain_2",
+               "stonehearth_ace:music:ace_rajmann_rain_2"
+            ]
+         }
+      },      
+      "thunderstorm": {},  
+      "hailstorm": {},    
+      "snow_early": {
+         "day": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_snow_1",
+               "stonehearth_ace:music:ace_rajmann_snow_1",
+               "stonehearth_ace:music:ace_rajmann_snow_1"
+            ]
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_snow_2",
+               "stonehearth_ace:music:ace_rajmann_snow_2",
+               "stonehearth_ace:music:ace_rajmann_snow_2"
+            ]
+         }
+      },               
+      "snow": {
+         "day": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_snow_1",
+               "stonehearth_ace:music:ace_rajmann_snow_1",
+               "stonehearth_ace:music:ace_rajmann_snow_1"
+            ]
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_snow_2",
+               "stonehearth_ace:music:ace_rajmann_snow_2",
+               "stonehearth_ace:music:ace_rajmann_snow_2"
+            ]
+         }
+      },
+      "snow_drifts": {},   
+      "blizzard": {},      
+      "whiteout": {},      
+      "titanstorm": {},
+      "windy": {},
+      "sunny_chilly": {},      
+      "sunny_autumn": {
+         "day": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_sunny_autumn",
+               "stonehearth_ace:music:ace_rajmann_sunny_autumn",
+               "stonehearth_ace:music:ace_rajmann_sunny_autumn"
+            ]
+         }
+      },
+      "sunny": {},
+      "sunny_desert": {},      
+      "sunny_hot": {},
+      "sunny_sweltering": {},
+      "sunny_stagnant": {},
+      "sandstorm": {},            
+      "windy_chilly": {},
+      "windy_springtime": {}
    }
 }
