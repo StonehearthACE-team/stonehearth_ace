@@ -21,6 +21,8 @@ function AceDigAdjacent:start_thinking(ai, entity, args)
       local mining_zone_component = mining_zone:get_component('stonehearth:mining_zone')
       if not mining_zone_component:get_ladders_region() and mining_zone_component:should_have_ladders() then
          self._build_ladder = true
+      else
+         self._build_ladder = nil
       end
       ai:set_think_output()
    end
@@ -73,12 +75,9 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
 
    -- if we should build a ladder here, set that up now
    if self._build_ladder then
-      -- make sure this block is at the same level as the miner
-      if block.y == worker_location.y then
-         self._build_ladder = nil
-         local normal = build_util.rotation_to_normal(radiant.entities.get_facing(entity) + 180)
-         mining_zone_component:add_ladder_handle(stonehearth.build:request_ladder_to(mining_zone, block, normal))
-      end
+      self._build_ladder = nil
+      local normal = build_util.rotation_to_normal(radiant.entities.get_facing(entity) + 180)
+      mining_zone_component:create_ladder_handle(block, normal)
    end
 
    return true

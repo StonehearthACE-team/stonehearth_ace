@@ -108,6 +108,21 @@ function AceMiningZoneComponent:get_ladders_region()
    return self._sv._ladders_region
 end
 
+function AceMiningZoneComponent:create_ladder_handle(block, normal)
+   -- create it at the bottom of the mining region in this spot
+   local zone_region = self._sv.region:get()
+   local bounds = zone_region:get_bounds()
+   local col = Cube3(block)
+   col.min.y = bounds.min.y
+   col.max.y = bounds.max.y
+   local intersection = zone_region:intersect_region(Region3(col))
+   if not intersection:empty() then
+      local point = intersection:get_bounds().min
+      local handle = stonehearth.build:request_ladder_to(self._entity, point, normal)
+      self:add_ladder_handle(handle)
+   end
+end
+
 function AceMiningZoneComponent:add_ladder_handle(handle, updating)
    if not self._sv._ladder_handles then
       self._sv._ladder_handles = {}

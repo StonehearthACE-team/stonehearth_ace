@@ -56,7 +56,6 @@ function AceCheckBaitTrapAdjacent:_spawn_loot(target, trapping_grounds)
    local options = {
       owner = self._entity,
       add_spilled_to_inventory = true,
-      add_spilled_to_inventory = force_auto_loot,
       output = trapping_grounds,
       spill_fail_items = true,
    }
