@@ -1,0 +1,26 @@
+{
+   "effort": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.ornate_picket_fence_bar_double_recipe.recipe_name)",
+   "mixintypes": {
+      "ingredients": "override",
+      "produces": "override"
+   },
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:construction:ornate_picket_fence:bar:double"
+      },
+      {
+         "item": "stonehearth:construction:ornate_picket_fence:bar:double"
+      }
+   ]
+}

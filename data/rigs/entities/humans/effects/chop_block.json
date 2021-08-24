@@ -4,7 +4,7 @@
       "animation": {
          "type": "animation_effect",
          "start_time": 0,
-		 "speed": 1.5,
+		   "speed": 1,
          "animation": "chop_block.json",
          "loop": true
       },
@@ -17,12 +17,29 @@
       },
       "sound": {
          "type": "sound_effect",
-         "duration": 700,
-         "start_time": 150,
-		 "loop": true,
+         "duration": 200,
+         "start_time": 1000,
+		   "loop": false,
          "min_distance": 50,
          "falloff" : 3,
-         "volume": 25,
+         "volume": 32,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:axe_chopping_sound_01",
+               "stonehearth:sounds:axe_chopping_sound_02",
+               "stonehearth:sounds:axe_chopping_sound_03"
+            ]    
+         }
+      },
+      "sound2": {
+         "type": "sound_effect",
+         "duration": 200,
+         "start_time": 2650,
+		   "loop": false,
+         "min_distance": 50,
+         "falloff" : 3,
+         "volume": 32,
          "track" : {
             "type": "one_of",
             "items": [

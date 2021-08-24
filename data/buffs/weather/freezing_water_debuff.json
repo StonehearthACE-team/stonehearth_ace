@@ -29,6 +29,14 @@
       "pulse_on_destroy": false,
       "is_percentage": true,
       "buff_modifiers": {
+         "stonehearth_ace:buffs:weather:freezing_resist": {
+            "min_health": {
+               "multiply": 7.5
+            },
+            "health_change": {
+               "multiply": 0.6
+            }
+         },
          "stonehearth_ace:buffs:weather:cold_resist": {
             "min_health": {
                "multiply": 5
