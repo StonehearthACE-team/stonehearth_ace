@@ -16,12 +16,12 @@ function AceHealTarget.use(consumable, consumable_data, user, target_entity)
    healing_lib.cure_conditions(target_entity, consumable_data.cures_conditions)
 	
 	-- then treat the basic, level 1 wounds defined in the constants if any is left
-   local buffs_component = target_entity:get_component('stonehearth:buffs')
-	if buffs_component then
-      for basic_condition, _ in pairs(stonehearth.constants.healing.BASIC_CONDITIONS) do
-         buffs_component:remove_category_buffs(basic_condition, 1)
-      end
-   end
+   -- local buffs_component = target_entity:get_component('stonehearth:buffs')
+	-- if buffs_component then
+   --    for basic_condition, _ in pairs(stonehearth.constants.healing.BASIC_CONDITIONS) do
+   --       buffs_component:remove_category_buffs(basic_condition, 1)
+   --    end
+   -- end
 	
 	-- finally, apply any buffs that the consumable might apply
 	if consumable_data.applies_effects then
