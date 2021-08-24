@@ -12,13 +12,16 @@ end
 
 AcePetComponent._ace_old_activate = PetComponent.activate
 function AcePetComponent:activate()
-   -- if restoring, find a location near the town center and move there so we don't get loaded into a stuck position
+   -- if restoring, and we're not mounted somewhere, find a location near the town center and move there so we don't get loaded into a stuck position
    if self._is_restore then
       if radiant.entities.exists(self._sv.owner) and radiant.entities.get_world_location(self._entity) then
-         local town = stonehearth.town:get_town(self._sv.owner)
-         local location = town and radiant.terrain.find_placement_point(town:get_landing_location(), 0, 10)
-         if location then
-            radiant.terrain.place_entity(self._entity, location)
+         local parent = radiant.entities.get_parent(self._entity)
+         if not parent or not parent:get_component('stonehearth:mount') then
+            local town = stonehearth.town:get_town(self._sv.owner)
+            local location = town and radiant.terrain.find_placement_point(town:get_landing_location(), 0, 10)
+            if location then
+               radiant.terrain.place_entity(self._entity, location)
+            end
          end
       end
    end

@@ -99,12 +99,15 @@ end
 --If we're done distributing, go back to unstarted
 function AceCraftOrder:progress_to_next_stage(crafter)
    local id = crafter:get_id()
-   self._sv.order_progress_by_crafter[id] = self._sv.order_progress_by_crafter[id] + 1
-   if self._sv.order_progress_by_crafter[id] > stonehearth.constants.crafting_status.CLEANUP then
-      self._sv.order_progress_by_crafter[id] = stonehearth.constants.crafting_status.UNSTARTED
+   -- how does this happen? if the crafter has been removed, don't try to start/progress them
+   if self._sv.order_progress_by_crafter[id] then
+      self._sv.order_progress_by_crafter[id] = self._sv.order_progress_by_crafter[id] + 1
+      if self._sv.order_progress_by_crafter[id] > stonehearth.constants.crafting_status.CLEANUP then
+         self._sv.order_progress_by_crafter[id] = stonehearth.constants.crafting_status.UNSTARTED
+      end
+      -- notify order_list that something has changed, so anyone listening on order_list can have updated information on the order
+      self:_on_changed()
    end
-   -- notify order_list that something has changed, so anyone listening on order_list can have updated information on the order
-   self:_on_changed()
 end
 
 --Return the progress for the current order

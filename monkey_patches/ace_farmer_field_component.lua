@@ -460,7 +460,12 @@ function AceFarmerFieldComponent:try_harvest_crop(harvester, x, z, num_stacks, a
       end
       local items
       if next(other_items) then
-         items = radiant.entities.output_spawned_items(other_items, origin, 0, 2, nil, crop, harvester, harvester or auto_harvest_type)
+         local options = {
+            inputs = harvester,
+            output = crop,
+            spill_fail_items = harvester or auto_harvest_type,
+         }
+         items = radiant.entities.output_spawned_items(other_items, origin, 0, 2, options)
          --log:debug('output result: %s', radiant.util.table_tostring(items))
       end
 

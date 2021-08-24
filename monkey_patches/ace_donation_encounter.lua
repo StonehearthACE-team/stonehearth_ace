@@ -23,8 +23,14 @@ function AceDonationEncounter:start(ctx, info)
    else
       local town = stonehearth.town:get_town(ctx.player_id)
       local default_storage = town and town:get_default_storage()
-      local spawned = radiant.entities.output_items(LootTable(info.loot_table):roll_loot(), drop_origin, 1, 3,
-            { owner = ctx.player_id, add_spilled_to_inventory = true }, nil, default_storage, true)
+      local options = {
+         owner = ctx.player_id,
+         add_spilled_to_inventory = true,
+         inputs = default_storage,
+         spill_fail_items = true,
+         require_matching_filter_override = true,
+      }
+      local spawned = radiant.entities.output_items(LootTable(info.loot_table):roll_loot(), drop_origin, 1, 3, options)
 
       spawned_entities = radiant.entities.get_successfully_output_items(spawned)
    end

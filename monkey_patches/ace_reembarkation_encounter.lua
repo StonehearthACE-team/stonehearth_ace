@@ -92,7 +92,7 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
       uri = data.uri,
       statistics = data.statistics,
       titles = data.titles,
-		buffs = data.reembarkable_buffs,
+		buffs = data.buffs,
       model_variant = model_variant,
       customization = customization_styles,
       job_levels = job_levels,

@@ -14,6 +14,12 @@ local function _available_pet_bed_filter(entity)
          return false
       end
       if radiant.entities.get_entity_data(target, 'stonehearth_ace:pet_bed') then
+         -- make sure it's not currently being targeted for a task
+         local task_tracker = target:get_component('stonehearth:task_tracker')
+         if task_tracker and task_tracker:get_task_player_id() == player_id then
+            return false
+         end
+
          return true
       end
       return false

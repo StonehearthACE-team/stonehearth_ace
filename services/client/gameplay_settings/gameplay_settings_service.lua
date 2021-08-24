@@ -12,7 +12,8 @@ function GameplaySettingsService:initialize()
    self._settings_are_up_to_date = false
    self:_load_modded_settings()
    
-   self._server_ready_listener = radiant.events.listen(radiant, 'radiant:client:server_ready', self, self._on_server_ready)
+   -- have to wait until monkey-patching is done, otherwise it's a potential race condition
+   self._server_ready_listener = radiant.events.listen(radiant, 'stonehearth_ace:client:required_loaded', self, self._on_server_ready)
 end
 
 function GameplaySettingsService:destroy()

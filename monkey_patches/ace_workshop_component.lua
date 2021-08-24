@@ -87,7 +87,12 @@ function AceWorkshopComponent:_redistribute_ingredients()
                location = town:get_landing_location()
             end
          end
-         radiant.entities.output_spawned_items(ec_children, location, 1, 4, nil, nil, default_storage, true)
+         local options = {
+            inputs = default_storage,
+            spill_fail_items = true,
+            require_matching_filter_override = true,
+         }
+         radiant.entities.output_spawned_items(ec_children, location, 1, 4, options)
       end
    end
 end

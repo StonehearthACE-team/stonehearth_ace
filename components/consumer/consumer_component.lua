@@ -106,7 +106,12 @@ function ConsumerComponent:_reconsider_all_items()
          local town = stonehearth.town:get_town(self._entity)
          local default_storage = town and town:get_default_storage()
 
-         radiant.entities.output_spawned_items(output_items, location, 1, 2, nil, nil, default_storage, true)
+         local options = {
+            inputs = default_storage,
+            spill_fail_items = true,
+            require_matching_filter_override = true,
+         }
+         radiant.entities.output_spawned_items(output_items, location, 1, 2, options)
       end
    end
 end

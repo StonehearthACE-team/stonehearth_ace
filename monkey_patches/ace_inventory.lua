@@ -314,7 +314,12 @@ function AceInventory:add_gold(amount, storage, combine_only)
          if storage_comp then
             storage_comp:add_item(gold)
          else
-            radiant.entities.output_spawned_items({[gold_id] = gold}, location, 1, 3, nil, nil, default_storage, true)
+            local options = {
+               inputs = default_storage,
+               spill_fail_items = true,
+               require_matching_filter_override = true,
+            }
+            radiant.entities.output_spawned_items({[gold_id] = gold}, location, 1, 3, options)
          end
          
          -- if it gets put in default storage, it doesn't need to be added

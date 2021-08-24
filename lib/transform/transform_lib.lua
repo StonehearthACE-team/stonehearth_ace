@@ -38,7 +38,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
 
    local location = radiant.entities.get_world_grid_location(entity)
    local local_location = radiant.entities.get_location_aligned(entity)
-   local parent = radiant.entities.get_parent(entity)
+   local parent = radiant.entities.get_parent(entity) or radiant.entities.get_root_entity()
    local facing = radiant.entities.get_facing(entity)
 
    local root_form, iconic_form = entity_forms_lib.get_forms(entity)
@@ -227,7 +227,11 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       radiant.entities.kill_entity(entity)
    elseif options.undeploy_entity and iconic_form and location then
       -- option to undeploy, but only use it if there's an iconic form
-      radiant.entities.output_spawned_items({[iconic_form:get_id()] = iconic_form}, location, 1, 2, nil, options.transformer_entity, nil, true)
+      local output_options = {
+         output = options.transformer_entity,
+         spill_fail_items = true,
+      }
+      radiant.entities.output_spawned_items({[iconic_form:get_id()] = iconic_form}, location, 1, 2, output_options)
    elseif options.destroy_entity ~= false then
       radiant.entities.destroy_entity(entity)
    elseif options.remove_components then

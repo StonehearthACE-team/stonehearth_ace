@@ -11,6 +11,12 @@ function ace_shared_filters.make_is_unowned_available_bed_filter(entity)
          end
 
          if radiant.entities.get_entity_data(target, 'stonehearth:bed') then
+            -- make sure it's not currently being targeted for a task
+            local task_tracker = target:get_component('stonehearth:task_tracker')
+            if task_tracker and task_tracker:get_task_player_id() == player_id then
+               return false
+            end
+
             local ownable_component = target:get_component('stonehearth:ownable_object')
             -- ACE: added check for ownable component not being there
          	if ownable_component and ownable_component:get_owner() == nil and not target:add_component('stonehearth:mount'):is_in_use() then
@@ -32,6 +38,12 @@ function ace_shared_filters.make_is_priority_care_available_bed_filter(entity)
 
          local bed_data = radiant.entities.get_entity_data(target, 'stonehearth:bed')
          if bed_data then
+            -- make sure it's not currently being targeted for a task
+            local task_tracker = target:get_component('stonehearth:task_tracker')
+            if task_tracker and task_tracker:get_task_player_id() == player_id then
+               return false
+            end
+            
             local ownable_component = target:get_component('stonehearth:ownable_object')
             if bed_data.priority_care and not ownable_component and
                   not target:add_component('stonehearth:mount'):is_in_use() then
