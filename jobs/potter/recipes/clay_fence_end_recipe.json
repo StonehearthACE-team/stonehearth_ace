@@ -1,13 +1,30 @@
 {
+   "effort": 12,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.clay_fence_end_recipe.recipe_name)",
    "workshop": "stonehearth:potter:kiln",
    "work_effect": "work_wait",
    "mixintypes": {
-      "ingredients": "override"
+      "ingredients": "override",
+      "produces": "override"
    },
    "ingredients": [
       {
          "uri": "stonehearth_ace:refined:molded_clay",
-         "count": 1
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:construction:clay_fence:end"
+      },
+      {
+         "item": "stonehearth:construction:clay_fence:end"
+      },
+      {
+         "item": "stonehearth:construction:clay_fence:end"
+      },
+      {
+         "item": "stonehearth:construction:clay_fence:end"
       }
    ]
 }

@@ -1,6 +1,6 @@
 {
    "type": "recipe",
-   "effort": 16,
+   "effort": 12,
    "work_units": 3,
    "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.marble_fence_single_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.mason.recipes.marble_fence_single_recipe.description)",
@@ -15,6 +15,9 @@
       }
    ],
    "produces": [
+      {
+         "item": "stonehearth_ace:construction:marble_fence:bar:single"
+      },
       {
          "item": "stonehearth_ace:construction:marble_fence:bar:single"
       }
