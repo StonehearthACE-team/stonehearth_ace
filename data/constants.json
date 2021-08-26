@@ -769,11 +769,12 @@
             "wound_cold": 0.5,
             "toxin": 0.4
          },
-         "__comment": "Basic conditions are conditions that will always be healed by any treatment if rank 1",
-         "BASIC_CONDITIONS": {
-            "wound_pierce": true,
-            "wound_impact": true,
-            "wound_cut": true
+         "healing_item_factors": {
+            "CONDITION": 0.4,
+            "AVOIDS_RECENTLY_TREATED": 0.3,
+            "SPECIAL_PRIORITY": 0.15,
+            "FULL_HEAL": 0.05,
+            "PERCENT_HEAL": 0.1
          },
          "PRIORITY_CARE_OWNERSHIP_TYPE": "medic_patient",
          "FILTER_GUTS_DIVISOR": 3,

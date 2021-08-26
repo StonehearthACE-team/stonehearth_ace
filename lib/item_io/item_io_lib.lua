@@ -27,7 +27,7 @@ function item_io_lib.try_output(items, inputs, options)
    local fails = {}
    options = options or {}
    local location = options.location
-   local add_spilled_to_inventory = options.options and options.options.add_spilled_to_inventory
+   local add_spilled_to_inventory = options.add_spilled_to_inventory
 
    local ranked_inputs = item_io_lib._rank_inputs(inputs)
    item_io_lib._output_to_inputs(items, ranked_inputs, successes, fails)
@@ -53,7 +53,7 @@ function item_io_lib.try_output(items, inputs, options)
       if #ranked_inputs > 0 then
          items = fails
          fails = {}
-         item_io_lib._output_to_inputs(items, ranked_inputs, successes, fails, location)
+         item_io_lib._output_to_inputs(items, ranked_inputs, successes, fails, location, options.force_add, options.require_matching_filter_override)
       end
       
       output = output_comp:get_parent_output()
@@ -91,10 +91,10 @@ function item_io_lib.try_output(items, inputs, options)
    }
 end
 
-function item_io_lib._output_to_inputs(items, inputs, successes, fails, location)
+function item_io_lib._output_to_inputs(items, inputs, successes, fails, location, force_add, require_matching_filter_override)
    for id, item in pairs(items) do
       for _, input in ipairs(inputs) do
-         if input:try_input(item, location) then
+         if input:try_input(item, location, force_add, require_matching_filter_override) then
             successes[id] = item
             break
          end
@@ -117,7 +117,7 @@ function item_io_lib.can_output(items, inputs, options)
    local location = options.location
 
    local ranked_inputs = item_io_lib._rank_inputs(inputs)
-   item_io_lib._can_output_to_inputs(items, ranked_inputs, successes, fails, location)
+   item_io_lib._can_output_to_inputs(items, ranked_inputs, successes, fails, location, options.require_matching_filter_override)
    
    local prev_outputs = {}
    local output = options.output
@@ -140,7 +140,7 @@ function item_io_lib.can_output(items, inputs, options)
       if #ranked_inputs > 0 then
          items = fails
          fails = {}
-         item_io_lib._can_output_to_inputs(items, ranked_inputs, successes, fails, location)
+         item_io_lib._can_output_to_inputs(items, ranked_inputs, successes, fails, location, options.require_matching_filter_override)
       end
       
       output = output_comp:get_parent_output()
@@ -162,7 +162,7 @@ function item_io_lib.can_output(items, inputs, options)
    end
 end
 
-function item_io_lib._can_output_to_inputs(items, inputs, successes, fails, location)
+function item_io_lib._can_output_to_inputs(items, inputs, successes, fails, location, require_matching_filter_override)
    for id, item in pairs(items) do
       for _, input in ipairs(inputs) do
          local result = input:can_input(item, location)
@@ -173,7 +173,7 @@ function item_io_lib._can_output_to_inputs(items, inputs, successes, fails, loca
                   -- first destroy the space reservation
                   result.destroy()
                   -- then force input the item
-                  input:try_input(item, location, true)
+                  input:try_input(item, location, true, require_matching_filter_override)
                end
             }
             break

@@ -42,7 +42,8 @@ function healing_lib.get_conditions_needing_cure(entity)
    local conditions = {}
    local buffs = entity and entity:is_valid() and entity:get_component('stonehearth:buffs')
    if buffs then
-      for condition, rest_priority in pairs(stonehearth.constants.healing.SPECIAL_ATTENTION_CONDITIONS) do
+      local special_conditions = stonehearth.constants.healing.SPECIAL_ATTENTION_CONDITIONS
+      for condition, rest_priority in pairs(special_conditions) do
          local category_buffs = buffs:get_buffs_by_category(condition)
          if category_buffs then
             local condition_ranks = {}
@@ -53,7 +54,7 @@ function healing_lib.get_conditions_needing_cure(entity)
             table.sort(condition_ranks, function(a, b) return a > b end)
             local entry = {
                condition = condition,
-               priority = stonehearth.constants.healing.SPECIAL_ATTENTION_CONDITIONS[condition],
+               priority = special_conditions[condition],
                highest_rank = condition_ranks[1],
                ranks = condition_ranks
             }
@@ -166,43 +167,41 @@ function healing_lib.filter_healing_item(item, conditions, level)
    end
 
    local consumable_data = ConsumablesLib.get_consumable_data(item)
-   if consumable_data then
-		-- then if it requires a level to use, check that second
-      if level and level < (consumable_data.required_level or level) then
-         return false
-      end
-
-      conditions = conditions or {}
-      -- we want to prioritize using cures *for* curing; if they don't require a cure, ideally don't use a cure consumable
-      -- but this will be done in the rater so that we can still use items that also cure if they're the only items
-      -- if #conditions == 0 and consumable_data.cures_conditions and next(consumable_data.cures_conditions) then
-      --    return false
-      -- end
-
-      if #conditions > 0 then
-         if not consumable_data.cures_conditions then
-            -- if this item doesn't cure anything, we can use it for anything (even if it isn't very good at it)
-            return true
-         end
-
-         for _, condition in ipairs(conditions) do
-            local cures_rank = consumable_data.cures_conditions[condition.condition]
-            if cures_rank then
-               return true
-               -- we're now partially treating buffs of higher ranks, so we don't care what rank it can fully cure
-               -- for i = #condition.ranks, 1, -1 do
-               --    if cures_rank >= condition.ranks[i] then
-               --       return true
-               --    end
-               -- end
-            end
-         end
-
-         return false
-      end
-
-      return true
+   -- if it requires a level to use, check that
+   if level and level < (consumable_data.required_level or level) then
+      return false
    end
+
+   conditions = conditions or {}
+   -- we want to prioritize using cures *for* curing; if they don't require a cure, ideally don't use a cure consumable
+   -- but this will be done in the rater so that we can still use items that also cure if they're the only items
+   -- if #conditions == 0 and consumable_data.cures_conditions and next(consumable_data.cures_conditions) then
+   --    return false
+   -- end
+
+   if #conditions > 0 then
+      if not consumable_data.cures_conditions then
+         -- if this item doesn't cure anything, we can use it for anything (it probably heals or applies a beneficial effect)
+         return true
+      end
+
+      for _, condition in ipairs(conditions) do
+         local cures_rank = consumable_data.cures_conditions[condition.condition]
+         if cures_rank then
+            return true
+            -- we're now partially treating buffs of higher ranks, so we don't care what rank it can fully cure
+            -- for i = #condition.ranks, 1, -1 do
+            --    if cures_rank >= condition.ranks[i] then
+            --       return true
+            --    end
+            -- end
+         end
+      end
+
+      return false
+   end
+
+   return true
 end
 
 function healing_lib.rate_healing_item(item, conditions, missing_guts, missing_health, healing_multiplier)
@@ -214,6 +213,11 @@ function healing_lib.rate_healing_item(item, conditions, missing_guts, missing_h
       local healing_constants = stonehearth.constants.healing
       local guts_healed = math.floor((consumable_data.guts_healed or 0) / healing_constants.FILTER_GUTS_DIVISOR)
       local health_healed = math.floor((consumable_data.health_healed or 0) * (healing_multiplier or 1) / healing_constants.FILTER_HEALTH_DIVISOR)
+      local avoids_recently_treated_factor = healing_constants.healing_item_factors.AVOIDS_RECENTLY_TREATED
+      local condition_factor = healing_constants.healing_item_factors.CONDITION
+      local special_priority_factor = healing_constants.healing_item_factors.SPECIAL_PRIORITY
+      local full_heal_factor = healing_constants.healing_item_factors.FULL_HEAL
+      local percent_heal_factor = healing_constants.healing_item_factors.PERCENT_HEAL
       
       -- if curing a condition, or no condition but it fully restores their guts, it's fulfilling the primary purpose
       if conditions and #conditions > 0 and consumable_data.cures_conditions then
@@ -244,9 +248,9 @@ function healing_lib.rate_healing_item(item, conditions, missing_guts, missing_h
 
          if highest_priority_cure > 0 then
             if highest_priority_condition > 0 then
-               value = 0.6 * highest_priority_cure / highest_priority_condition
+               value = condition_factor * highest_priority_cure / highest_priority_condition
             else
-               value = 0.6
+               value = condition_factor
             end
          end
       elseif guts_healed >= missing_guts then
@@ -254,7 +258,7 @@ function healing_lib.rate_healing_item(item, conditions, missing_guts, missing_h
          if (not conditions or #conditions == 0) then
             -- no conditions and it doesn't cure anything: give it the full value
             if not consumable_data.cures_conditions then
-               value = 0.6
+               value = condition_factor
             else
                -- if it cures something but we have no conditions, that's bad!
                local cures_something = false
@@ -265,21 +269,33 @@ function healing_lib.rate_healing_item(item, conditions, missing_guts, missing_h
                   end
                end
                if not cures_something then
-                  value = 0.6
+                  value = condition_factor
                end
             end
          end
       end
 
-      -- an extra 0.1 if it fully heals health
+      -- an extra bit if it fully heals health
       if health_healed >= missing_health then
-         value = value + 0.1
+         value = value + full_heal_factor
       end
 
-      -- the remaining potential 0.3 is for efficiency (if guts are missing, that's all we care about; otherwise we only care about health)
-      value = value + 0.3 - 0.3 * 
+      -- healing efficiency (if guts are missing, that's all we care about; otherwise we only care about health)
+      value = value + percent_heal_factor - percent_heal_factor * 
             ((missing_guts > 0 and math.min(math.abs(guts_healed - missing_guts), healing_constants.FILTER_GUTS_MAX_DIFF) / healing_constants.FILTER_GUTS_MAX_DIFF) or
             (math.min(math.abs(health_healed - missing_health), healing_constants.FILTER_HEALTH_MAX_DIFF) / healing_constants.FILTER_HEALTH_MAX_DIFF))
+
+      -- whether it applies the buff that removes the recently treated debuff (allowing subsequent healing items to be applied)
+      local avoids_recently_treated = consumable_data.applies_effects and consumable_data.applies_effects['stonehearth_ace:buffs:recently_treated:remover']
+      if avoids_recently_treated then
+         -- based on the percent chance that it applies the effect
+         value = value + avoids_recently_treated_factor * math.min(1, math.max(0, avoids_recently_treated))
+      end
+
+      local special_priority = consumable_data.special_priority
+      if special_priority then
+         value = value + special_priority_factor * (1 + math.min(1, math.max(-1, special_priority))) * 0.5
+      end
    end
 
    return value

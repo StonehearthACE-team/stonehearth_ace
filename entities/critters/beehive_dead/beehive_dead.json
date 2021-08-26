@@ -24,19 +24,12 @@
             }
          ]
       },
-      "region_collision_shape": {
-         "region": [
-            {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 1, "z": 1 }
-            }
-         ]
-      },
       "stonehearth:resource_node": {
          "harvest_overlay_effect": "stonehearth_ace:effects:harvest_honey_overlay_effect",
          "harvester_effect": "work",
          "durability": 1,
          "resource": "stonehearth_ace:food:honey:wild",
+         "auto_harvest": true,
          "resource_loot_table": {
             "entries": {
                "extra_honey": {

@@ -44,7 +44,12 @@ function AceShop:dump_escrow_at_location(location)
          end
       end
 
-      radiant.entities.output_spawned_items(items, location, 1, 7, nil, nil, default_storage, true)
+      local options = {
+         inputs = default_storage,
+         spill_fail_items = true,
+         require_matching_filter_override = true,
+      }
+      radiant.entities.output_spawned_items(items, location, 1, 7, options)
    end
 end
 

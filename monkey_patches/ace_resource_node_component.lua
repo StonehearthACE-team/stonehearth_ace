@@ -118,7 +118,12 @@ end
 
 function AceResourceNodeComponent:_place_reclaimed_items(pile_comp, owner, location, spill_items)
    local spawned_items, item_count = pile_comp:harvest_once(owner)
-   spawned_items = radiant.entities.output_spawned_items(spawned_items, location, 0, 3, {}, self._entity, owner, spill_items).spilled
+   local options = {
+      inputs = owner,
+      output = self._entity,
+      spill_fail_items = spill_items,
+   }
+   spawned_items = radiant.entities.output_spawned_items(spawned_items, location, 0, 3, options).spilled
 
    return spawned_items, item_count
 end
@@ -210,12 +215,18 @@ function AceResourceNodeComponent:_place_spawned_items(harvester, location, owne
    end
    
    local quality = radiant.entities.get_item_quality(self._entity)
+   local options = {
+      owner = owner,
+      inputs = harvester,
+      output = self._entity,
+      spill_fail_items = spill_items,
+   }
 
    local spawned_items
    if json.resource_loot_table then
       local filter_args = self._loot_table_filter_args or (self._loot_table_filter_script and util.get_current_conditions_loot_table_filter_args())
       local uris = LootTable(json.resource_loot_table, quality, self._loot_table_filter_script, filter_args):roll_loot()
-      spawned_items = radiant.entities.output_items(uris, location, 1, 3, { owner = owner }, self._entity, harvester, spill_items).spilled
+      spawned_items = radiant.entities.output_items(uris, location, 1, 3, options).spilled
    else
       spawned_items = {}
    end
@@ -223,7 +234,7 @@ function AceResourceNodeComponent:_place_spawned_items(harvester, location, owne
    local resource = json.resource
    if resource then
       local uris = {[json.resource] = {[quality] = 1}}
-      local items = radiant.entities.output_items(uris, location, 0, 4, { owner = owner }, self._entity, harvester, spill_items)
+      local items = radiant.entities.output_items(uris, location, 0, 4, options)
       --Create the harvested entity and put it on the ground
       local item = (next(items.spilled) and items.spilled[next(items.spilled)]) -- or (next(items.succeeded) and items.succeeded[next(items.succeeded)])
       spawned_items[item:get_id()] = item

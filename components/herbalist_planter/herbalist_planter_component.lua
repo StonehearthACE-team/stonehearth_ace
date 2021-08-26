@@ -130,8 +130,14 @@ function HerbalistPlanterComponent:_create_planter_tasks()
             if seed_uri then
                local player_id = radiant.entities.get_player_id(self._entity)
                local default_storage = town:get_default_storage()
-               radiant.entities.output_items({[seed_uri] = 1}, radiant.entities.get_world_grid_location(self._entity), 1, 2,
-                                             { owner = player_id, add_spilled_to_inventory = true }, nil, default_storage, true)
+               local options = {
+                  owner = player_id,
+                  add_spilled_to_inventory = true,
+                  inputs = default_storage,
+                  spill_fail_items = true,
+                  require_matching_filter_override = true,
+               }
+               radiant.entities.output_items({[seed_uri] = 1}, radiant.entities.get_world_grid_location(self._entity), 1, 2, options)
             end
          end
 
@@ -429,32 +435,39 @@ function HerbalistPlanterComponent:_bonus_grow()
    self:_restart_timers()
 end
 
-function HerbalistPlanterComponent:_create_product(items, quality, input, spill_failed, owner, location)
-   return radiant.entities.output_items(items, location, 0, 1, { owner = owner }, self._entity, input, spill_failed, quality)
+function HerbalistPlanterComponent:_create_product(items, options, location)
+   return radiant.entities.output_items(items, location, 0, 1, options)
 end
 
 function HerbalistPlanterComponent:_create_products(harvester, product_uri, quantity, loot_table_data)
-   local quality = self:_get_quality()
    local input = harvester or self._entity
-   local spill_failed = harvester ~= nil
-   local owner = self._entity:get_player_id()
    local location = radiant.entities.get_world_grid_location(input)
    
+   local output_options = {
+      owner = self._entity:get_player_id(),
+      inputs = input,
+      output = self._entity,
+      spill_fail_items = harvester ~= nil,
+      quality = self:_get_quality(),
+   }
    local items
    if product_uri and quantity > 0 then
-      items = self:_create_product({[product_uri] = quantity}, quality, input, spill_failed, owner, location)
+      items = self:_create_product({[product_uri] = quantity}, output_options, location)
    end
 
    local loot_table_items
-   local loot_table = loot_table_data and LootTable(loot_table_data)
-   if loot_table then
-      for i = 1, quantity do
-         local these_loot_table_items = self:_create_product(loot_table:roll_loot(), quality, input, spill_failed, owner, location)
-         if these_loot_table_items then
-            if loot_table_items then
-               loot_table_items = radiant.entities.combine_output_tables(these_loot_table_items, loot_table_items)
-            else
-               loot_table_items = these_loot_table_items
+   local loot_table_quantity = math.min(quantity, self._storage:get_capacity() - self._storage:get_num_items())
+   if loot_table_data and loot_table_quantity > 0 then
+      local loot_table = loot_table_data and LootTable(loot_table_data)
+      if loot_table then
+         for i = 1, loot_table_quantity do
+            local these_loot_table_items = self:_create_product(loot_table:roll_loot(), output_options, location)
+            if these_loot_table_items then
+               if loot_table_items then
+                  loot_table_items = radiant.entities.combine_output_tables(these_loot_table_items, loot_table_items)
+               else
+                  loot_table_items = these_loot_table_items
+               end
             end
          end
       end

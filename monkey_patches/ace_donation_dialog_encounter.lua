@@ -98,7 +98,14 @@ function AceDonationDialogEncounter:_acknowledge()
    local inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
    local town = stonehearth.town:get_town(self._sv.player_id)
    local default_storage = town and town:get_default_storage()
-   local items = radiant.entities.output_items(self._sv.items, drop_origin, 1, 3, { owner = self._sv.player_id }, nil, default_storage, true).spilled
+   local options = {
+      owner = self._sv.player_id,
+      add_spilled_to_inventory = true,
+      inputs = default_storage,
+      spill_fail_items = true,
+      require_matching_filter_override = true,
+   }
+   local items = radiant.entities.output_items(self._sv.items, drop_origin, 1, 3, options).spilled
    for _, item in pairs(items) do
       inventory:add_item_if_not_full(item)
    end

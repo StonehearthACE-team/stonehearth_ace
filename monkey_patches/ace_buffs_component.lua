@@ -206,7 +206,7 @@ function AceBuffsComponent:add_buff(uri, options)
          -- if this buff should be unique in this category, check if there are any buffs of a higher or equal rank already in it
          -- if there are, cancel out; otherwise, remove all lower rank buffs and continue
          for buff_id, _ in pairs(buffs_by_category) do
-            local rank = self._sv.buffs[buff_id]:get_rank()
+            local rank = self._sv.buffs[buff_id]:get_rank() or nil
             if rank and rank >= json.rank then
                return
             end

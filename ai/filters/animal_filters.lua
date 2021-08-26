@@ -15,6 +15,7 @@ function animal_filters.make_available_pet_bed_filter(entity)
       if bed_data then
          -- if it's a pasture bed in a pasture, make sure the animal belongs to the same pasture
          -- EDIT: not doing this because it would require including the pasture id in the filter key and making/updating different filters
+         -- maybe it would be worth it to have a separate filter per pasture though? only a few pastures per player
          -- local pasture_item = target:get_component('stonehearth_ace:pasture_item')
          -- if pasture_item then
          --    local equipment_component = entity:get_component('stonehearth:equipment')
@@ -27,6 +28,11 @@ function animal_filters.make_available_pet_bed_filter(entity)
 
          -- check if the bed size is the same as the animal size
          if not animal_size or animal_size == bed_data.size then
+            -- make sure it's not currently being targeted for a task
+            local task_tracker = target:get_component('stonehearth:task_tracker')
+            if task_tracker and task_tracker:get_task_player_id() == player_id then
+               return false
+            end
             return true
          end
       end

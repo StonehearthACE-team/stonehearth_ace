@@ -109,6 +109,16 @@ function stonehearth_ace:_on_init()
                      end)
                   :push_object_state()
             end)
+
+      for _, name in ipairs(service_creation_order) do
+         if stonehearth_ace[name].on_server_ready then
+            stonehearth_ace[name]:on_server_ready()
+         end
+      end
+
+      stonehearth_ace.initialized = true
+      radiant.events.trigger(radiant, 'stonehearth_ace:client:init')
+      radiant.log.write_('stonehearth_ace', 0, 'ACE client initialized')
    end)
 
    stonehearth_ace._sv = stonehearth_ace.__saved_variables:get_data()
@@ -118,22 +128,12 @@ function stonehearth_ace:_on_init()
    for _, name in ipairs(service_creation_order) do
       create_service(name)
    end
-
-   radiant.events.listen(radiant, 'radiant:client:server_ready', function()
-      for _, name in ipairs(service_creation_order) do
-         if stonehearth_ace[name].on_server_ready then
-            stonehearth_ace[name]:on_server_ready()
-         end
-      end
-   end)
-
-   radiant.events.trigger(radiant, 'stonehearth_ace:client:init')
-   radiant.log.write_('stonehearth_ace', 0, 'ACE client initialized')
 end
 
 function stonehearth_ace:_on_required_loaded()
    monkey_patching()
    
+   stonehearth_ace.monkey_patched = true
    radiant.events.trigger(radiant, 'stonehearth_ace:client:required_loaded')
 end
 

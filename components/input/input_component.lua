@@ -74,12 +74,16 @@ end
 
 -- source can be a location (point), an entity, or nil/false
 -- force_add only bypasses the storage space limits (and the filter, if that setting is enabled), not explicit distance/type limits (should it?)
-function InputComponent:try_input(item, source, force_add)
+function InputComponent:try_input(item, source, force_add, require_matching_filter_override)
    local storage = self._entity:get_component('stonehearth:storage')
    if storage then
       local inputable_item = self:_get_inputable_item(item, source)
 
-      if inputable_item and (not self._sv.require_matching_filter or storage:passes(inputable_item)) and (force_add or not storage:is_full()) then
+      local require_matching_filter = require_matching_filter_override
+      if require_matching_filter == nil then
+         require_matching_filter = self._sv.require_matching_filter
+      end
+      if inputable_item and (not require_matching_filter or storage:passes(inputable_item)) and (force_add or not storage:is_full()) then
          -- if this storage is also a stockpile, we need to place it on the ground within its bounds instead, and let *that* put it into storage
          local stockpile = self._entity:get_component('stonehearth:stockpile')
          if stockpile then
@@ -89,7 +93,7 @@ function InputComponent:try_input(item, source, force_add)
                return true
             end
          else
-            local forcing = not self._sv.require_matching_filter or force_add
+            local forcing = not require_matching_filter or force_add
             local result = storage:add_item(inputable_item, forcing, radiant.entities.get_player_id(self._entity))
             if forcing and result then
                stonehearth.ai:reconsider_entity(inputable_item, 'added item to storage')
@@ -102,12 +106,16 @@ end
 
 -- source can be a location (point), an entity, or nil/false
 -- either returns nil for a failed attempt, or returns a "lease" on a storage space
-function InputComponent:can_input(item, source)
+function InputComponent:can_input(item, source, require_matching_filter_override)
    local storage = self._entity:get_component('stonehearth:storage')
    if storage then
       local inputable_item = self:_get_inputable_item(item, source)
 
-      if inputable_item and (not self._sv.require_matching_filter or storage:passes(inputable_item)) then
+      local require_matching_filter = require_matching_filter_override
+      if require_matching_filter == nil then
+         require_matching_filter = self._sv.require_matching_filter
+      end
+      if inputable_item and (not require_matching_filter or storage:passes(inputable_item)) then
          return storage:reserve_space(nil, nil, 1)
       end
    end

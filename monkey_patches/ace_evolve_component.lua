@@ -6,6 +6,13 @@ local AceEvolveComponent = class()
 
 AceEvolveComponent._ace_old_restore = EvolveComponent.restore
 function AceEvolveComponent:restore()
+   -- if we're restoring an entity that should be stunted, remove this component immediately
+   local properties = self._entity:get_component('stonehearth:properties')
+   if properties and properties:has_property('stonehearth_ace:stunted') then
+      self._entity:remove_component(self.__saved_variables:get_controller_name())
+      return
+   end
+
    if self._sv.evolve_timer then
       self._sv._evolve_timer = self._sv.evolve_timer
       self._sv.evolve_timer = nil

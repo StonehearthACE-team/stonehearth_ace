@@ -189,7 +189,13 @@ function AceStorageComponent:drop_all(fallback_location, priority_location)
          (priority_location == nil and (radiant.entities.get_world_grid_location(entity or self._entity) or fallback_location)) or
          (town and town:get_landing_location())
 
-   radiant.entities.output_spawned_items(items, location, 1, 4, { owner = player_id }, nil, default_storage, true)
+   local options = {
+      owner = player_id,
+      inputs = default_storage,
+      spill_fail_items = true,
+      require_matching_filter_override = true,
+   }
+   radiant.entities.output_spawned_items(items, location, 1, 4, options)
 
    stonehearth.ai:reconsider_entity(self._entity, 'removed all items from storage')
 

@@ -57,8 +57,14 @@ function AceLootDropsComponent:_on_kill_event(e)
          end
          local items = LootTable(loot_table, quality, filter_script, filter_args)
                            :roll_loot()
-         local spawned_entities = radiant.entities.output_items(items, location, 1, 3,
-               { owner = force_auto_loot and loot_player_id or player_id, add_spilled_to_inventory = force_auto_loot }, self._entity, kill_data.source, true).spilled
+         local options = {
+            owner = force_auto_loot and loot_player_id or player_id,
+            add_spilled_to_inventory = force_auto_loot,
+            inputs = kill_data.source,
+            output = self._entity,
+            spill_fail_items = true,
+         }
+         local spawned_entities = radiant.entities.output_items(items, location, 1, 3, options).spilled
 
          --Add a loot command to each of the spawned items, or claim them automatically
          for id, entity in pairs(spawned_entities) do

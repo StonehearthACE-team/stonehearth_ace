@@ -1,13 +1,30 @@
 {
+   "effort": 15,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.clay_fence_bar_double_recipe.recipe_name)",
    "workshop": "stonehearth:potter:kiln",
    "work_effect": "work_wait",
    "mixintypes": {
-      "ingredients": "override"
+      "ingredients": "override",
+      "produces": "override"
    },
    "ingredients": [
       {
          "uri": "stonehearth_ace:refined:molded_clay",
          "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:construction:clay_fence:bar:double"
+      },
+      {
+         "item": "stonehearth:construction:clay_fence:bar:double"
+      },
+      {
+         "item": "stonehearth:construction:clay_fence:bar:double"
+      },
+      {
+         "item": "stonehearth:construction:clay_fence:bar:double"
       }
    ]
 }

@@ -22,7 +22,7 @@ function AceBuildingDestructionJob:start()
 
    local items = self:_create_banked_resource_entities(building_comp:get_banked_resources())
    building_comp:destroy_banked_resources()
-   radiant.entities.output_spawned_items(items, location, 0, radius, nil, nil, nil, true)
+   radiant.entities.output_spawned_items(items, location, 0, radius, {spill_fail_items = true})
 end
 
 function AceBuildingDestructionJob:_create_banked_resource_entities(banked_resources)

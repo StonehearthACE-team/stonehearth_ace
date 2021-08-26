@@ -209,11 +209,12 @@ end
 
 -- uris are key, value pairs of uri, quantity
 -- quantity can also be a table of quality/quantity pairs
-function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, place_items, quality)
+function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, place_items)
    local items = {}
-
-   local owner_id = options and options.owner
+   options = options or {}
+   local owner_id = options.owner
    owner_id = owner_id and type(owner_id) ~= 'string' and owner_id:get_player_id() or owner_id
+   local quality = options.quality
    local quality_options = quality and owner_id and {max_quality = item_quality_lib.get_max_random_quality(owner_id)}
    local inventory
    if owner_id and options.add_spilled_to_inventory then
@@ -251,51 +252,55 @@ function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options,
 end
 
 -- if no valid output is specified
-function ace_entities.output_items(uris, origin, min_radius, max_radius, options, output, inputs, spill_fail_items, quality)
+function ace_entities.output_items(uris, origin, min_radius, max_radius, options) --, output, inputs, spill_fail_items, quality)
+   options = options or {}
+   local inputs = options.inputs
+   local output = options.output
+
    local output_comp = output and output:is_valid() and output:get_component('stonehearth_ace:output')
    if inputs and type(inputs) ~= 'table' then
       inputs = {[inputs:get_id()] = inputs}
+      options.inputs = inputs
    end
    if not output_comp and (not inputs or not next(inputs)) then
-      if spill_fail_items then
+      if options.spill_fail_items then
          local result = ace_entities.get_empty_output_table()
-         result.spilled = ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, true, quality)
+         result.spilled = ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, true)
          return result
       else
          return ace_entities.get_empty_output_table()
       end
    end
 
-   local items = ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, false, quality)
-   return ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options, output, inputs, spill_fail_items)
+   local items = ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, false)
+   return ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options)
 end
 
-function ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options, output, inputs, spill_fail_items, delete_fail_items)
+function ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options) --, output, inputs, spill_fail_items, delete_fail_items)
    --local output_comp = output and output:is_valid() and output:get_component('stonehearth_ace:output')
+   options = options or {}
+   local inputs = options.inputs
+   
    if inputs and type(inputs) ~= 'table' then
       inputs = {[inputs:get_id()] = inputs}
+      options.inputs = inputs
    end
 
-   options = {
-      spill_fail_items = spill_fail_items,
-      spill_origin = origin,
-      spill_min_radius = min_radius,
-      spill_max_radius = max_radius,
-      output = output,
-      delete_fail_items = delete_fail_items,
-      options = options,
-   }
+   options.spill_origin = origin
+   options.spill_min_radius = min_radius
+   options.spill_max_radius = max_radius
 
    return item_io_lib.try_output(items, inputs, options)
 end
 
-function ace_entities.can_output_spawned_items(items, output, inputs)
+function ace_entities.can_output_spawned_items(items, output, inputs, require_matching_filter_override)
    if inputs and type(inputs) ~= 'table' then
       inputs = {[inputs:get_id()] = inputs}
    end
 
    local options = {
-      output = output
+      output = output,
+      require_matching_filter_override = require_matching_filter_override,
    }
 
    return item_io_lib.can_output(items, inputs, options)

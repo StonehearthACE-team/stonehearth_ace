@@ -147,6 +147,9 @@
       },
       "chefs_specials": {
          "recipes": {
+            "mixintypes": {
+               "donation_box": "remove"
+            },
             "huntsman_banquet": {
                "recipe": "file(huntsman_banquet_recipe.json)"
             },
@@ -275,6 +278,9 @@
          "recipes": {
             "thatch_pile": {
                "recipe": "file(thatch_pile_recipe.json)"
+            },
+            "donation_box": {
+               "recipe": "/stonehearth/jobs/cook/recipes/donation_box_recipe.json"
             }
          }
       },
