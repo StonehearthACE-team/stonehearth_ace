@@ -19,7 +19,7 @@ function AceDigAdjacent:start_thinking(ai, entity, args)
    if self._block then
       -- ACE: determine if we should build a ladder (there aren't already ladders, but they're needed for this zone)
       local mining_zone_component = mining_zone:get_component('stonehearth:mining_zone')
-      if not mining_zone_component:get_ladders_region() and mining_zone_component:should_have_ladders() then
+      if not mining_zone_component:has_ladders() and mining_zone_component:should_have_ladders() then
          self._build_ladder = true
       else
          self._build_ladder = nil

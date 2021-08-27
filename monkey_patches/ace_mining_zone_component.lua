@@ -5,6 +5,7 @@ local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region2 = _radiant.csg.Region2
 local Region3 = _radiant.csg.Region3
+local build_util = require 'stonehearth.lib.build_util'
 local log = radiant.log.create_logger('mining')
 
 local MiningZoneComponent = require 'stonehearth.components.mining_zone.mining_zone_component'
@@ -50,6 +51,81 @@ function AceMiningZoneComponent:_on_region_changed()
 
    self:_update_destination()
    self:_update_designation()
+end
+
+function AceMiningZoneComponent:set_enabled(enabled)
+   if self._sv.enabled == enabled then
+      return
+   end
+
+   self._sv.enabled = enabled
+   self.__saved_variables:mark_changed()
+
+   -- ACE: if no ladders, check if there's a path to the town banner
+   -- if not, and there's space underneath the mining zone, add a ladder under the closest spot
+   -- TODO: need to figure out what happens when one ladder isn't enough
+   if enabled and not self:has_ladders() then
+      log:debug('%s enabling and checking if a ladder needs to be built...', self._entity)
+      local town = stonehearth.town:get_town(self._entity:get_player_id())
+      if town then
+         local town_entity = town:get_hearth() or town:get_banner()
+         if town_entity and town_entity:is_valid() then
+            local location = radiant.entities.get_world_grid_location(town_entity)
+            -- try for a complete path first; if one exists, we don't need any ladders
+            local direct_path_finder = _radiant.sim.create_direct_path_finder(town_entity)
+                                       :set_start_location(location)
+                                       :set_destination_entity(self._entity)
+                                       :set_allow_incomplete_path(false)
+                                       :set_reversible_path(false)
+
+            local path = direct_path_finder:get_path()
+            if not path then
+               direct_path_finder = _radiant.sim.create_direct_path_finder(town_entity)
+                                       :set_start_location(location)
+                                       :set_destination_entity(self._entity)
+                                       :set_allow_incomplete_path(true)
+                                       :set_reversible_path(false)
+
+               path = direct_path_finder:get_path()
+               -- if we found an incomplete path
+               if path then
+                  local zone_location = radiant.entities.get_world_grid_location(self._entity)
+                  local destination = self._destination_component:get_region():get():translated(zone_location)
+                  local finish = path:get_finish_point()
+                  local closest = destination:get_closest_point(finish)
+
+                  -- we expect the finish point to be at a lower y than the closest point
+                  -- and for there to be emptiness underneath the closest point
+                  log:debug('%s checking if %s is lower than %s, and there\'s emptiness under the latter...', self._entity, finish, closest)
+                  if finish.y < closest.y and not radiant.terrain.is_blocked(closest - Point3.unit_y) then
+                     location.y = finish.y
+                     local facing = location - finish
+                     facing:normalize()
+                     facing = facing:to_closest_int()
+                     -- if it's diagonal, we end up with a bad normal; need to 0 out the x or z, so just pick one
+                     if facing.x ~= 0 and facing.z ~= 0 then
+                        facing.x = 0
+                     end
+                     self:create_ladder_handle(closest, facing)
+                  end
+               else
+                  log:debug('%s no incomplete path found; cannot build helping ladder', self._entity)
+               end
+            else
+               log:debug('%s complete path found; no ladder needed', self._entity)
+            end
+         end
+      end
+   end
+
+   -- let the pathfinders know that the suitability of the mining zone has
+   -- changed
+   stonehearth.ai:reconsider_entity(self._entity, 'mining zone enable changed')
+
+   -- let anyone who's interested know that our enable bit has changed (e.g. the mining action)
+   radiant.events.trigger_async(self._entity, 'stonehearth:mining:enable_changed')
+
+   self:update_requested_task()
 end
 
 -- point is in world space
@@ -104,20 +180,39 @@ function AceMiningZoneComponent:should_have_ladders()
    return self._sv._should_have_ladders
 end
 
+function AceMiningZoneComponent:has_ladders()
+   return self._sv._ladder_handles and #self._sv._ladder_handles > 0
+end
+
 function AceMiningZoneComponent:get_ladders_region()
    return self._sv._ladders_region
 end
 
-function AceMiningZoneComponent:create_ladder_handle(block, normal)
-   -- create it at the bottom of the mining region in this spot
-   local zone_region = self._sv.region:get()
-   local bounds = zone_region:get_bounds()
-   local col = Cube3(block)
-   col.min.y = bounds.min.y
-   col.max.y = bounds.max.y
-   local intersection = zone_region:intersect_region(Region3(col))
-   if not intersection:empty() then
-      local point = intersection:get_bounds().min
+function AceMiningZoneComponent:create_ladder_handle(block, normal, force_location)
+   log:debug('%s create_ladder_handle(%s, %s, %s)', self._entity, block, normal, tostring(force_location))
+   local point
+   if force_location then
+      point = block
+   else
+      -- create it at the bottom of the mining region in this spot
+      local location = radiant.entities.get_world_grid_location(self._entity)
+      local zone_region = self._sv.region:get():translated(location)
+      local bounds = zone_region:get_bounds()
+      local col = Cube3(block)
+      col.min.y = bounds.min.y
+      col.max.y = bounds.max.y
+      local intersection = zone_region:intersect_region(Region3(col))
+      if not intersection:empty() then
+         point = intersection:get_bounds().min
+         local below = point - Point3.unit_y
+         if not radiant.terrain.is_blocked(below) then
+            point = radiant.terrain.get_standable_point(below)
+         end
+      end
+   end
+
+   if point then
+      log:debug('%s creating ladder handle at %s (normal %s)', self._entity, point, normal)
       local handle = stonehearth.build:request_ladder_to(self._entity, point, normal)
       self:add_ladder_handle(handle)
    end
@@ -245,7 +340,7 @@ function AceMiningZoneComponent:_get_working_region(zone_region, zone_location)
          local ladders_region = self:get_ladders_region()
          if ladders_region and not ladders_region:empty() then
             local top = bounds.max.y
-            local clip_region = Region3(Cube3(Point3(bounds.min.x, top - self._max_reach_up, bounds.min.z), bounds.max))
+            local clip_region = Region3(Cube3(Point3(bounds.min.x, top - self._max_reach_up + 1, bounds.min.z), bounds.max))
             -- add the ladders
             for p in ladders_region:translated(Point2(zone_location.x, zone_location.z)):each_cube() do
                local col = Cube3(Point3(p.min.x, bounds.min.y, p.min.y), Point3(p.max.x + 1, top, p.max.y + 1))
