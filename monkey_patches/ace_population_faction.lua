@@ -223,6 +223,14 @@ end
 
 -- index is either a uri, nil to indicate we should load the kingdom json and get the index there, or false to indicate skipping to default
 function AcePopulationFaction:_load_kingdom_traits(kingdom_uri, index)
+   if not kingdom_uri then
+      kingdom_uri = 'default'
+      -- if we're not specifying a real kingdom, don't try to load its traits_index
+      if index == nil then
+         index = false
+      end
+   end
+   
    if not self._traits[kingdom_uri] then
       local traits
       if index == nil then
