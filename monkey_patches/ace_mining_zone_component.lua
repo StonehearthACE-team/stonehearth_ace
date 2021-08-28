@@ -65,6 +65,10 @@ function AceMiningZoneComponent:_update_unsupported()
    -- we don't have to worry about terrain being mined out from under them or other modifications,
    -- because such a mining zone would automatically be merged with this one
    local location = radiant.entities.get_world_grid_location(self._entity)
+   if not location then
+      return
+   end
+   
    local terrain = radiant.terrain.intersect_region(self._sv.region:get():translated(location))
    local bottom = Region3()
    for cube in terrain:each_cube() do

@@ -245,10 +245,10 @@ function AcePopulationFaction:_load_kingdom_traits(kingdom_uri, index)
 
       local flat_traits = {}
       for group_name, group in pairs(traits.groups) do
-         self._flat_trait_index[group_name] = group
+         flat_traits[group_name] = group
       end
       for trait_name, trait in pairs(traits.traits) do
-         self._flat_trait_index[trait_name] = trait
+         flat_traits[trait_name] = trait
       end
 
       self._traits[kingdom_uri] = traits
