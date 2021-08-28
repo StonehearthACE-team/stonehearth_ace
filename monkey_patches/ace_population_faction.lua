@@ -256,6 +256,16 @@ function AcePopulationFaction:_load_kingdom_traits(kingdom_uri, index)
    end
 end
 
+function AcePopulationFaction:_get_traits(kingdom_uri)
+   self:_load_kingdom_traits(kingdom_uri)
+   return self._traits[kingdom_uri or self._sv.kingdom or 'default']
+end
+
+function AcePopulationFaction:_get_flat_traits(kingdom_uri)
+   self:_load_kingdom_traits(kingdom_uri)
+   return self._flat_trait_index[kingdom_uri or self._sv.kingdom or 'default']
+end
+
 -- ACE: have to override this to change the reference to self._traits
 -- Picks a trait at (uniformly) random from the list of available traits; if the
 -- picked trait is incompatible with the list of current traits, that trait is
@@ -285,8 +295,7 @@ function AcePopulationFaction:_pick_random_trait(citizen, current_traits, availa
       return true
    end
 
-   self:_load_kingdom_traits(options.foreign_population_uri)
-   local trait_groups = self._traits[options.foreign_population_uri or self._sv.kingdom].groups
+   local trait_groups = self:_get_traits(options.foreign_population_uri).groups
    local n = radiant.size(available_traits)
    while n > 0 do
       local trait_uri = radiant.get_random_map_key(available_traits, rng)
@@ -339,8 +348,7 @@ function AcePopulationFaction:_assign_citizen_traits(citizen, options)
    local num_traits = gaussian_rng:get_int(1, 3, 0.25)
    self._log:info('assigning %d traits', num_traits)
 
-   self:_load_kingdom_traits(options.foreign_population_uri)
-   local all_traits = radiant.deep_copy(self._flat_trait_index[options.foreign_population_uri or self._sv.kingdom])
+   local all_traits = radiant.deep_copy(self:_get_flat_traits(options.foreign_population_uri))
    local traits = {}
    local start = 1
 
