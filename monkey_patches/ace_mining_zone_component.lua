@@ -2,6 +2,7 @@ local landmark_lib = require 'stonehearth.lib.landmark.landmark_lib'
 
 local Point2 = _radiant.csg.Point2
 local Point3 = _radiant.csg.Point3
+local Rect2 = _radiant.csg.Rect2
 local Cube3 = _radiant.csg.Cube3
 local Region2 = _radiant.csg.Region2
 local Region3 = _radiant.csg.Region3
@@ -22,7 +23,11 @@ function AceMiningZoneComponent:_destroy_ladders()
    if self._sv._ladder_handles then
       for _, lh in ipairs(self._sv._ladder_handles) do
          if lh:is_last_handle() then
-            lh:get_builder():destroy_immediately()
+            --lh:get_builder():destroy_immediately()
+            local builder = lh:get_builder()
+            -- hack to turn this into a user-teardown ladder handle
+            builder._sv.user_extension_handle = lh
+            stonehearth.build:remove_ladder_command({player_id = self._entity:get_player_id()}, nil, builder:get_ladder())
          else
             lh:destroy()
          end
@@ -49,8 +54,155 @@ function AceMiningZoneComponent:_on_region_changed()
    end
    self:_update_ladder_regions()
 
+   self:_update_unsupported()
    self:_update_destination()
    self:_update_designation()
+end
+
+function AceMiningZoneComponent:_update_unsupported()
+   -- determine the bottom-most block at each x-z point
+   -- keep track of all of those points that are unsupported
+   -- we don't have to worry about terrain being mined out from under them or other modifications,
+   -- because such a mining zone would automatically be merged with this one
+   local location = radiant.entities.get_world_grid_location(self._entity)
+   local terrain = radiant.terrain.intersect_region(self._sv.region:get():translated(location))
+   local bottom = Region3()
+   for cube in terrain:each_cube() do
+      bottom:add_cube(cube:get_face(-Point3.unit_y))
+   end
+   local unsupported = radiant.terrain.clip_region(bottom:translated(-Point3.unit_y)):translated(Point3.unit_y - location)
+   -- ladder regions can be mined directly, so remove those from the unsupported region
+   local ladders_region = self:get_ladders_region()
+   if ladders_region then
+      local bounds = unsupported:get_bounds()
+      local ladders_r3 = Region3()
+      for rect in ladders_region:each_cube() do
+         ladders_r3:add_cube(Cube3(Point3(rect.min.x, bounds.min.y, rect.min.y), Point3(rect.max.x, bounds.max.y, rect.max.y)))
+      end
+      unsupported:subtract_region(ladders_r3)
+   end
+
+   self._sv._unsupported_region = unsupported
+   self._sv._unsupported_buckets = nil
+end
+
+function AceMiningZoneComponent:get_unsupported()
+   if not self._sv._unsupported_region then
+      self:_update_unsupported()
+   end
+   return self._sv._unsupported_region
+end
+
+function AceMiningZoneComponent:get_next_unsupported_bucket()
+   local buckets = self:get_unsupported_buckets()
+   if buckets then
+      local unsupported_region = self:get_unsupported()
+      local bucket = buckets[#buckets]
+      while bucket do
+         -- over time, these get mined out, so intersect with our updated region
+         -- no need to update all of these every time something gets mined
+         bucket.region = bucket.region:intersect_region(unsupported_region)
+
+         if bucket.region:empty() then
+            log:debug('%s removing empty unsupported bucket %s for distance %s', self._entity, #buckets, bucket.distance)
+            table.remove(buckets, #buckets)
+            bucket = buckets[#buckets]
+         else
+            break
+         end
+      end
+
+      if bucket then
+         return bucket.region, bucket.distance
+      end
+   end
+
+   return nil, nil
+end
+
+function AceMiningZoneComponent:get_unsupported_buckets()
+   if not self._sv._unsupported_buckets and self._sv._unsupported_region and not self._sv._unsupported_region:empty() then
+      local location = radiant.entities.get_world_grid_location(self._entity)
+      local unsupported = self._sv._unsupported_region
+
+      -- put all the unsupported blocks into buckets based on their distance from any of the foci: ladders (or if no ladders, closest-to-town/arbitrary edge point)
+      -- since we're dealing with only the bottom-most unsupported blocks, treat it as a 2-dimensional problem and just use ladder regions
+      local focus_region
+      local ladders_region = self:get_ladders_region()
+
+      if ladders_region and not ladders_region:empty() then
+         ladders_region:optimize('bucketing unsupported blocks')
+         focus_region = ladders_region
+      else
+         -- from closest-to-town point, try to find an adjacent supported block to use as focus
+         local town = stonehearth.town:get_town(self._entity:get_player_id())
+         local town_entity = town and (town:get_hearth() or town:get_banner())
+         local town_entity_location = town_entity and town_entity:is_valid() and radiant.entities.get_world_grid_location(town_entity)
+         local closest
+
+         if town_entity_location then
+            closest = unsupported:get_closest_point(town_entity_location - location)
+         else
+            -- no town to use so pick an arbitrary (corner) point on the edge
+            local bounds = unsupported:get_bounds()
+            closest = unsupported:get_closest_point(bounds.min)
+         end
+
+         focus_region = Region2()
+         focus_region:add_point(Point2(closest.x, closest.z))
+      end
+
+      local by_distance = {}
+      local min_distance, max_distance
+      for point in unsupported:each_point() do
+         local pt2 = Point2(point.x, point.z)
+         local distance
+         for rect in focus_region:each_cube() do
+            -- we need to be careful that we don't mine out two edges, leaving ourselves stuck on a corner
+            -- so we can't do a radial distance, we have to do x + z (y in 2d classes)
+            -- we end up with a lot of buckets this way, which means hearthlings will be running around a lot
+            -- one way to improve could be grouping blocks that don't neighbor one another
+            --local rect_dist = rect:distance_to(Point2(point.x, point.z)))
+            local closest_focus = rect:get_closest_point(pt2)
+            local rect_dist = math.abs(pt2.x - closest_focus.x) + math.abs(pt2.y - closest_focus.y)
+            if not distance or rect_dist < distance then
+               distance = rect_dist
+            end
+         end
+         
+         if not min_distance or min_distance > distance then
+            min_distance = distance
+         end
+         if not max_distance or max_distance < distance then
+            max_distance = distance
+         end
+
+         local bucket = by_distance[distance]
+         if not bucket then
+            bucket = Region3()
+            by_distance[distance] = bucket
+         end
+         bucket:add_point(point)
+      end
+      
+      local buckets = {}
+      -- set this up from closest to furthest so it's easy to remove buckets from the end of the table
+      for d = min_distance, max_distance do
+         local bucket = by_distance[d]
+         if bucket then
+            bucket:optimize('distance bucket')
+            table.insert(buckets,
+               {
+                  distance = d,
+                  region = bucket,
+               })
+         end
+      end
+      
+      self._sv._unsupported_buckets = buckets
+   end
+
+   return self._sv._unsupported_buckets
 end
 
 function AceMiningZoneComponent:set_enabled(enabled)
@@ -102,7 +254,7 @@ function AceMiningZoneComponent:set_enabled(enabled)
                      local facing = location - finish
                      facing:normalize()
                      facing = facing:to_closest_int()
-                     -- if it's diagonal, we end up with a bad normal; need to 0 out the x or z, so just pick one
+                     -- if it's diagonal, we end up with a bad normal; need to 0 out the x or z, so pick one
                      if facing.x ~= 0 and facing.z ~= 0 then
                         facing.x = 0
                      end
@@ -162,10 +314,12 @@ function AceMiningZoneComponent:mine_point(point)
 
    stonehearth.mining:mine_point(point)
 
+   local location = radiant.entities.get_world_grid_location(self._entity)
+   local unsupported_region = self:get_unsupported()
+   unsupported_region:subtract_point(point - location)
    self:_update_destination()
 
    if self._destination_component:get_region():get():empty() then
-      local location = radiant.entities.get_world_grid_location(self._entity)
       local zone_region = self._sv.region:get()
       local unmined_region = self:_get_working_region(zone_region, location)
       if unmined_region:empty() then
@@ -240,6 +394,7 @@ function AceMiningZoneComponent:add_ladder_handle(handle, updating)
                self:_update_ladder(handle, mine_location)
                location = location - mine_location
                self._sv._ladders_region:add_point(Point2(location.x, location.z))
+               self:_update_unsupported()
                self:_update_destination()
             end
          end
@@ -325,6 +480,16 @@ end
 --    while no ladders, allow mining anywhere
 --    once ladder(s) added, only allow mining in top 4 and column(s) of ladder(s)
 
+function AceMiningZoneComponent:_add_destination_blocks(destination_region, zone_region, zone_location)
+   local working_region = self:_get_working_region(zone_region, zone_location)
+   working_region:translate(-zone_location)
+   destination_region:add_region(working_region)
+
+   -- make sure all reserved blocks are part of the destination region
+   local reserved_region = self._destination_component:get_reserved():get()
+   destination_region:add_region(reserved_region)
+end
+
 -- get the unreserved terrain region that lies inside the zone_region
 -- ACE: if ladders are specified, only look at the top 4 blocks of the working region, plus any columns of ladders
 function AceMiningZoneComponent:_get_working_region(zone_region, zone_location)
@@ -340,7 +505,7 @@ function AceMiningZoneComponent:_get_working_region(zone_region, zone_location)
          local ladders_region = self:get_ladders_region()
          if ladders_region and not ladders_region:empty() then
             local top = bounds.max.y
-            local clip_region = Region3(Cube3(Point3(bounds.min.x, top - self._max_reach_up + 1, bounds.min.z), bounds.max))
+            local clip_region = Region3(Cube3(Point3(bounds.min.x, top - self._max_reach_up, bounds.min.z), bounds.max))
             -- add the ladders
             for p in ladders_region:translated(Point2(zone_location.x, zone_location.z)):each_cube() do
                local col = Cube3(Point3(p.min.x, bounds.min.y, p.min.y), Point3(p.max.x + 1, top, p.max.y + 1))
@@ -352,6 +517,19 @@ function AceMiningZoneComponent:_get_working_region(zone_region, zone_location)
             end
 
             working_region = working_region:intersect_region(clip_region)
+         end
+      end
+   end
+
+   -- if there's something to mine other than unsupported blocks, restrict the destination to those
+   -- otherwise, restrict it to the next bucket of unsupported blocks
+   local unsupported_region = self:get_unsupported():translated(zone_location)
+   if not unsupported_region:empty() then
+      working_region:subtract_region(unsupported_region)
+      if working_region:empty() then
+         local unsupported_bucket_region, distance = self:get_next_unsupported_bucket()
+         if unsupported_bucket_region then
+            working_region = unsupported_bucket_region:translated(zone_location)
          end
       end
    end

@@ -76,6 +76,10 @@ AcePopulationFaction._ace_old_create_new_citizen_from_role_data = PopulationFact
 function AcePopulationFaction:create_new_citizen_from_role_data(role, role_data, gender, options)
    local citizen = self:_ace_old_create_new_citizen_from_role_data(role, role_data, gender, options)
 
+   if options and options.foreign_population_uri then
+      citizen:add_component('stonehearth:job'):set_population_override(foreign_population_uri)
+   end
+
    -- the citizen has now been added, so update their titles json if necessary
    local titles = citizen:get_component('stonehearth_ace:titles')
    if titles then
@@ -136,11 +140,17 @@ function AcePopulationFaction:_update_citizen_town_name(citizen)
    end
 end
 
-AcePopulationFaction._ace_old_create_new_foreign_citizen = PopulationFaction.create_new_foreign_citizen
 function AcePopulationFaction:create_new_foreign_citizen(foreign_population_uri, role, gender, options)
-   local citizen = self:_ace_old_create_new_foreign_citizen(foreign_population_uri, role, gender, options)
-   citizen:add_component('stonehearth:job'):set_population_override(foreign_population_uri)
-   return citizen
+   role = role or 'default'
+   local foreign_pop_json = radiant.resources.load_json(foreign_population_uri)
+   local role_data = foreign_pop_json.roles[role]
+   if not role_data then
+      error(string.format('unknown role %s in population %s', role, foreign_population_uri))
+   end
+   options = options or {}
+   options.foreign_population_uri = foreign_population_uri
+   
+   return self:create_new_citizen_from_role_data(role, role_data, gender, options)
 end
 
 function AcePopulationFaction:generate_random_name(gender, role_data)
@@ -202,6 +212,116 @@ function AcePopulationFaction:show_notification_for_citizen(citizen, title, opti
    self.__saved_variables:mark_changed()
 end
 
+-- instead of just having our kingdom's traits stored, we need to have a table indexed by kindom uri
+function AcePopulationFaction:_load_traits()
+   self._traits = {}
+   self._flat_trait_index = {}
+
+   -- Load traits from kingdom data if specified, otherwise use default
+   self:_load_kingdom_traits(self._sv.kingdom, self._data.traits_index or false)
+end
+
+-- index is either a uri, nil to indicate we should load the kingdom json and get the index there, or false to indicate skipping to default
+function AcePopulationFaction:_load_kingdom_traits(kingdom_uri, index)
+   if not self._traits[kingdom_uri] then
+      local traits
+      if index == nil then
+         index = radiant.resources.load_json(kingdom_uri).traits_index
+      end
+      if index then
+         traits = radiant.resources.load_json(index)
+      end
+      if not traits then
+         traits = radiant.resources.load_json('stonehearth:traits_index')
+      end
+
+      local flat_traits = {}
+      for group_name, group in pairs(traits.groups) do
+         self._flat_trait_index[group_name] = group
+      end
+      for trait_name, trait in pairs(traits.traits) do
+         self._flat_trait_index[trait_name] = trait
+      end
+
+      self._traits[kingdom_uri] = traits
+      self._flat_trait_index[kingdom_uri] = flat_traits
+   end
+end
+
+-- ACE: have to override this to change the reference to self._traits
+-- Picks a trait at (uniformly) random from the list of available traits; if the
+-- picked trait is incompatible with the list of current traits, that trait is
+-- removed from the supplied list of available traits.  Otherwise, the set of available
+-- traits is not affected; it is up to the caller to remove the successfully-returned
+-- trait.
+function AcePopulationFaction:_pick_random_trait(citizen, current_traits, available_traits, options)
+   local function valid_trait(trait_uri, trait)
+      for current_trait_uri, current_trait in pairs(current_traits) do
+         -- Check for excluded traits.
+         if current_trait.excludes and current_trait.excludes[trait_uri] then
+            return false
+         end
+         if trait.excludes and trait.excludes[current_trait_uri] then
+            return false
+         end
+         -- TODO(?) check for excluded groups?  Tags?
+      end
+
+      if trait.immigration_only and options.embarking then
+         return false
+      end
+      if trait.gender and trait.gender ~= self:get_gender(citizen) then
+         return false
+      end
+
+      return true
+   end
+
+   self:_load_kingdom_traits(options.foreign_population_uri)
+   local trait_groups = self._traits[options.foreign_population_uri or self._sv.kingdom].groups
+   local n = radiant.size(available_traits)
+   while n > 0 do
+      local trait_uri = radiant.get_random_map_key(available_traits, rng)
+      local group_name = nil
+
+      if trait_groups[trait_uri] then
+         group_name = trait_uri
+
+         local group = available_traits[group_name]
+
+         trait_uri = radiant.get_random_map_key(group, rng)
+
+         if valid_trait(trait_uri, group[trait_uri]) then
+            return trait_uri, group_name
+         end
+      else
+         if valid_trait(trait_uri, available_traits[trait_uri]) then
+            return trait_uri, nil
+         end
+      end
+
+      -- No dice--the trait is in conflict.
+      local group = nil
+      if group_name then
+         group = available_traits[group_name]
+         group[trait_uri] = nil
+
+         -- We cleaned up the group; now, overwrite trait_uri to possibly
+         -- clean up the group's entry.
+         trait_uri = group_name
+      end
+
+      if not group_name or not next(group) then
+         available_traits[trait_uri] = nil
+         -- We removed a top-level entry from the list of available traits,
+         -- so, decrement the total we can look through.
+         n = n - 1
+      end
+   end
+
+   return nil, nil
+end
+
 function AcePopulationFaction:_assign_citizen_traits(citizen, options)
    local tc = citizen:get_component('stonehearth:traits')
    if options.suppress_traits or not tc then
@@ -211,8 +331,9 @@ function AcePopulationFaction:_assign_citizen_traits(citizen, options)
    local num_traits = gaussian_rng:get_int(1, 3, 0.25)
    self._log:info('assigning %d traits', num_traits)
 
+   self:_load_kingdom_traits(options.foreign_population_uri)
+   local all_traits = radiant.deep_copy(self._flat_trait_index[options.foreign_population_uri or self._sv.kingdom])
    local traits = {}
-   local all_traits = radiant.deep_copy(self._flat_trait_index)
    local start = 1
 
    -- When doing embarkation trait assignment, make sure every hearthling
