@@ -27,7 +27,12 @@ function AceMiningZoneComponent:_destroy_ladders()
             local builder = lh:get_builder()
             -- hack to turn this into a user-teardown ladder handle
             builder._sv.user_extension_handle = lh
-            stonehearth.build:remove_ladder_command({player_id = self._entity:get_player_id()}, nil, builder:get_ladder())
+            local player_id = self._entity:get_player_id()
+            if stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_remove_mining_zone_ladders', true) then
+               stonehearth.build:remove_ladder_command({player_id = player_id}, nil, builder:get_ladder())
+            else
+               builder:get_ladder():add_component('stonehearth:commands'):add_command('stonehearth:commands:remove_ladder')
+            end
          else
             lh:destroy()
          end
@@ -217,61 +222,9 @@ function AceMiningZoneComponent:set_enabled(enabled)
    self._sv.enabled = enabled
    self.__saved_variables:mark_changed()
 
-   -- ACE: if no ladders, check if there's a path to the town banner
-   -- if not, and there's space underneath the mining zone, add a ladder under the closest spot
-   -- TODO: need to figure out what happens when one ladder isn't enough
-   if enabled and not self:has_ladders() then
-      log:debug('%s enabling and checking if a ladder needs to be built...', self._entity)
-      local town = stonehearth.town:get_town(self._entity:get_player_id())
-      if town then
-         local town_entity = town:get_hearth() or town:get_banner()
-         if town_entity and town_entity:is_valid() then
-            local location = radiant.entities.get_world_grid_location(town_entity)
-            -- try for a complete path first; if one exists, we don't need any ladders
-            local direct_path_finder = _radiant.sim.create_direct_path_finder(town_entity)
-                                       :set_start_location(location)
-                                       :set_destination_entity(self._entity)
-                                       :set_allow_incomplete_path(false)
-                                       :set_reversible_path(false)
-
-            local path = direct_path_finder:get_path()
-            if not path then
-               direct_path_finder = _radiant.sim.create_direct_path_finder(town_entity)
-                                       :set_start_location(location)
-                                       :set_destination_entity(self._entity)
-                                       :set_allow_incomplete_path(true)
-                                       :set_reversible_path(false)
-
-               path = direct_path_finder:get_path()
-               -- if we found an incomplete path
-               if path then
-                  local zone_location = radiant.entities.get_world_grid_location(self._entity)
-                  local destination = self._destination_component:get_region():get():translated(zone_location)
-                  local finish = path:get_finish_point()
-                  local closest = destination:get_closest_point(finish)
-
-                  -- we expect the finish point to be at a lower y than the closest point
-                  -- and for there to be emptiness underneath the closest point
-                  log:debug('%s checking if %s is lower than %s, and there\'s emptiness under the latter...', self._entity, finish, closest)
-                  if finish.y < closest.y and not radiant.terrain.is_blocked(closest - Point3.unit_y) then
-                     location.y = finish.y
-                     local facing = location - finish
-                     facing:normalize()
-                     facing = facing:to_closest_int()
-                     -- if it's diagonal, we end up with a bad normal; need to 0 out the x or z, so pick one
-                     if facing.x ~= 0 and facing.z ~= 0 then
-                        facing.x = 0
-                     end
-                     self:create_ladder_handle(closest, facing)
-                  end
-               else
-                  log:debug('%s no incomplete path found; cannot build helping ladder', self._entity)
-               end
-            else
-               log:debug('%s complete path found; no ladder needed', self._entity)
-            end
-         end
-      end
+   -- ACE: check if there's a path to the town banner
+   if enabled then
+      self:_add_ladder_if_needed()
    end
 
    -- let the pathfinders know that the suitability of the mining zone has
@@ -282,6 +235,71 @@ function AceMiningZoneComponent:set_enabled(enabled)
    radiant.events.trigger_async(self._entity, 'stonehearth:mining:enable_changed')
 
    self:update_requested_task()
+end
+
+function AceMiningZoneComponent:_add_ladder_if_needed()
+   -- first check if there are any unfinished ladders; if so, let them get built before adding more
+   if self._sv._ladder_handles then
+      for _, handle in ipairs(self._sv._ladder_handles) do
+         local builder = handle:get_builder()
+         if builder and not builder:is_ladder_finished('build') then
+            return
+         end
+      end
+   end
+
+   -- if there's space underneath the mining zone, add a ladder under the closest spot
+   log:debug('%s enabling and checking if a ladder needs to be built...', self._entity)
+   local town = stonehearth.town:get_town(self._entity:get_player_id())
+   if town then
+      local town_entity = town:get_hearth() or town:get_banner()
+      if town_entity and town_entity:is_valid() then
+         local location = radiant.entities.get_world_grid_location(town_entity)
+         -- try for a complete path first; if one exists, we don't need any ladders
+         local direct_path_finder = _radiant.sim.create_direct_path_finder(town_entity)
+                                    :set_start_location(location)
+                                    :set_destination_entity(self._entity)
+                                    :set_allow_incomplete_path(false)
+                                    :set_reversible_path(false)
+
+         local path = direct_path_finder:get_path()
+         if not path then
+            direct_path_finder = _radiant.sim.create_direct_path_finder(town_entity)
+                                    :set_start_location(location)
+                                    :set_destination_entity(self._entity)
+                                    :set_allow_incomplete_path(true)
+                                    :set_reversible_path(false)
+
+            path = direct_path_finder:get_path()
+            -- if we found an incomplete path
+            if path then
+               local zone_location = radiant.entities.get_world_grid_location(self._entity)
+               local destination = self._destination_component:get_region():get():translated(zone_location)
+               local finish = path:get_finish_point()
+               local closest = destination:get_closest_point(finish)
+
+               -- we expect the finish point to be at a lower y than the closest point
+               -- and for there to be emptiness underneath the closest point
+               log:debug('%s checking if %s is lower than %s, and there\'s emptiness under the latter...', self._entity, finish, closest)
+               if finish.y < closest.y and not radiant.terrain.is_blocked(closest - Point3.unit_y) then
+                  location.y = finish.y
+                  local facing = location - finish
+                  facing:normalize()
+                  facing = facing:to_closest_int()
+                  -- if it's diagonal, we end up with a bad normal; need to 0 out the x or z, so pick one
+                  if facing.x ~= 0 and facing.z ~= 0 then
+                     facing.x = 0
+                  end
+                  self:create_ladder_handle(closest, facing)
+               end
+            else
+               log:debug('%s no incomplete path found; cannot build helping ladder', self._entity)
+            end
+         else
+            log:debug('%s complete path found; no ladder needed', self._entity)
+         end
+      end
+   end
 end
 
 -- point is in world space
@@ -346,33 +364,74 @@ function AceMiningZoneComponent:get_ladders_region()
    return self._sv._ladders_region
 end
 
+function AceMiningZoneComponent:get_highest_ladder_y()
+   return self._sv._highest_ladder_y
+end
+
+function AceMiningZoneComponent:get_highest_y_at(block)
+   local location = radiant.entities.get_world_grid_location(self._entity)
+   if location then
+      local zone_region = self._sv.region:get()
+      local bounds = zone_region:get_bounds()
+      local col = Cube3(block - location)
+      col.min.y = bounds.min.y
+      col.max.y = bounds.max.y
+
+      local intersection = zone_region:intersect_region(Region3(col))
+      if not intersection:empty() then
+         return intersection:get_bounds().max.y + location.y
+      end
+   end
+end
+
+function AceMiningZoneComponent:should_build_ladder_at(block, facing)
+   local highest_reach = self._sv._highest_ladder_y or block.y + self._max_reach_up
+   local highest_y = self:get_highest_y_at(block)
+   log:debug('%s comparing highest ladder/reach %s to highest y %s at %s', self._entity, highest_reach, tostring(highest_y), block)
+   return highest_y and highest_y > highest_reach
+end
+
 function AceMiningZoneComponent:create_ladder_handle(block, normal, force_location)
    log:debug('%s create_ladder_handle(%s, %s, %s)', self._entity, block, normal, tostring(force_location))
    local point
    if force_location then
       point = block
    else
-      -- create it at the bottom of the mining region in this spot
+      -- try to create it at the bottom of the mining region in this spot
       local location = radiant.entities.get_world_grid_location(self._entity)
       local zone_region = self._sv.region:get():translated(location)
       local bounds = zone_region:get_bounds()
       local col = Cube3(block)
       col.min.y = bounds.min.y
       col.max.y = bounds.max.y
+
       local intersection = zone_region:intersect_region(Region3(col))
       if not intersection:empty() then
-         point = intersection:get_bounds().min
+         local intersection_bounds = intersection:get_bounds()
+         if intersection_bounds.min.y < block.y then
+            point = intersection_bounds.min
+         else
+            point = block
+         end
+
          local below = point - Point3.unit_y
          if not radiant.terrain.is_blocked(below) then
             point = radiant.terrain.get_standable_point(below)
+         end
+
+         -- check if it even makes sense to build a ladder here (i.e., top of the zone here is higher from point than reach)
+         if intersection_bounds.max.y - point.y <= self._max_reach_up then
+            log:debug('%s point %s is <= %s distance from top in this col %s', self._entity, point, self._max_reach_up, intersection_bounds.max.y)
+            point = nil
          end
       end
    end
 
    if point then
       log:debug('%s creating ladder handle at %s (normal %s)', self._entity, point, normal)
-      local handle = stonehearth.build:request_ladder_to(self._entity, point, normal)
+      local handle = stonehearth.build:request_ladder_to(self._entity, point, normal, {force_build = true})
       self:add_ladder_handle(handle)
+      return true
    end
 end
 
@@ -403,6 +462,8 @@ function AceMiningZoneComponent:add_ladder_handle(handle, updating)
             end
          end
       end
+   else
+      log:debug('%s no builder for handle!', self._entity)
    end
 end
 
@@ -451,8 +512,11 @@ function AceMiningZoneComponent:_update_ladder(handle, mine_location)
             -- if it's higher than the ladder's top point, request the ladder get extended
             local req_point = self:get_ladder_request_point(location, mine_location)
             local ladder_component = ladder:get_component('stonehearth:ladder')
+
             if req_point and req_point.y > ladder_component:get_top().y then
                self:add_ladder_handle(builder:add_point(req_point, {user_removable = false}), true)
+               local top = ladder_component:get_top().y
+               self._sv._highest_ladder_y = math.max(self._sv._highest_ladder_y or top, top)
                self._sv._adjacent_needs_ladder_update = true
             end
          end
@@ -508,8 +572,11 @@ function AceMiningZoneComponent:_get_working_region(zone_region, zone_location)
       if bounds.max.y - bounds.min.y > self._max_reach_up then
          local ladders_region = self:get_ladders_region()
          if ladders_region and not ladders_region:empty() then
-            local top = bounds.max.y
+            -- clip to the max reach below the min of the top of the highest ladder and the highest terrain
+            -- ladder might not be in the highest spot, and terrain may have been mined down from the highest spot
+            local top = math.min(self._sv._highest_ladder_y, bounds.max.y)
             local clip_region = Region3(Cube3(Point3(bounds.min.x, top - self._max_reach_up, bounds.min.z), bounds.max))
+
             -- add the ladders
             for p in ladders_region:translated(Point2(zone_location.x, zone_location.z)):each_cube() do
                local col = Cube3(Point3(p.min.x, bounds.min.y, p.min.y), Point3(p.max.x + 1, top, p.max.y + 1))

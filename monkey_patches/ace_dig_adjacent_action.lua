@@ -6,27 +6,27 @@ local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_
 local AceDigAdjacent = class()
 local log = radiant.log.create_logger('mining')
 
-function AceDigAdjacent:start_thinking(ai, entity, args)
-   if ai.CURRENT.carrying then
-      return
-   end
+-- function AceDigAdjacent:start_thinking(ai, entity, args)
+--    if ai.CURRENT.carrying then
+--       return
+--    end
 
-   local mining_zone = args.mining_zone
-   local adjacent_location = args.adjacent_location
+--    local mining_zone = args.mining_zone
+--    local adjacent_location = args.adjacent_location
 
-   -- resolve which block we are going to mine first
-   self._block, self._reserved_region_for_block = stonehearth.mining:get_block_to_mine(adjacent_location, mining_zone)
-   if self._block then
-      -- ACE: determine if we should build a ladder (there aren't already ladders, but they're needed for this zone)
-      local mining_zone_component = mining_zone:get_component('stonehearth:mining_zone')
-      if not mining_zone_component:has_ladders() and mining_zone_component:should_have_ladders() then
-         self._build_ladder = true
-      else
-         self._build_ladder = nil
-      end
-      ai:set_think_output()
-   end
-end
+--    -- resolve which block we are going to mine first
+--    self._block, self._reserved_region_for_block = stonehearth.mining:get_block_to_mine(adjacent_location, mining_zone)
+--    if self._block then
+--       -- ACE: determine if we should build a ladder (there aren't already ladders, but they're needed for this zone)
+--       local mining_zone_component = mining_zone:get_component('stonehearth:mining_zone')
+--       if not mining_zone_component:has_ladders() and mining_zone_component:should_have_ladders() then
+--          self._build_ladder = true
+--       else
+--          self._build_ladder = nil
+--       end
+--       ai:set_think_output()
+--    end
+-- end
 
 function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
    if not mining_zone:is_valid() then
@@ -71,12 +71,9 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
    -- for the autotest
    radiant.events.trigger(entity, 'stonehearth:mined_location', { location = block })
 
-   -- TODO: do another check here for whether we need a ladder based on overall height at this point
-
-   -- if we should build a ladder here, set that up now
-   if self._build_ladder then
-      self._build_ladder = nil
-      local normal = build_util.rotation_to_normal(radiant.entities.get_facing(entity) + 180)
+   -- do a check here for whether we need a ladder based on overall height at this point
+   if mining_zone_component:should_have_ladders() and mining_zone_component:should_build_ladder_at(block) then
+      local normal = build_util.rotation_to_normal(radiant.math.quantize(radiant.entities.get_facing(entity), 90) + 180)
       mining_zone_component:create_ladder_handle(block, normal)
    end
 

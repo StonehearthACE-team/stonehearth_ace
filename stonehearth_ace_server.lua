@@ -107,6 +107,7 @@ local monkey_patches = {
    ace_job_service = 'stonehearth.services.server.job.job_service',
    ace_kill_at_zero_health_observer = 'stonehearth.ai.observers.kill_at_zero_health_observer',
    ace_ladder_builder = 'stonehearth.services.server.build.ladder_builder',
+   ace_ladder_manager = 'stonehearth.services.server.build.ladder_manager',
    ace_lamp_component = 'stonehearth.components.lamp.lamp_component',
    ace_landmark_lib = 'stonehearth.lib.landmark.landmark_lib',
    ace_loot_drops_component = 'stonehearth.components.loot_drops.loot_drops_component',
