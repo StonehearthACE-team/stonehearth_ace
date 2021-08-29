@@ -976,7 +976,7 @@
          "render_scale": 0.1,
          "tending_multiplier": 0.1,
          "level": 6,
-         "growth_time": "24h+4h",
+         "growth_time": "24h+12h",
          "bonus_product_growth_time": "48h",
          "post_harvest_growth_level": 2,
          "growth_levels": [
@@ -992,13 +992,17 @@
                "model": "file(crops/planter/earthbud/earthbud_3.qb)",
                "offset": { "x": 3.5, "y": 0, "z": 3.5 }
             },
+            {
+               "model": "file(crops/planter/earthbud/earthbud_4.qb)",
+               "offset": { "x": 3.5, "y": 0, "z": 3.5 }
+            },
             [
                {
-                  "model": "file(crops/planter/earthbud/earthbud_4.qb)",
+                  "model": "file(crops/planter/earthbud/earthbud_5.qb)",
                   "offset": { "x": 3.5, "y": 0, "z": 3.5 }
                },
                {
-                  "model": "file(crops/planter/earthbud/earthbud_4_2.qb)",
+                  "model": "file(crops/planter/earthbud/earthbud_5_2.qb)",
                   "material": "materials/glowy_voxel.material.json",
                   "offset": { "x": 3.5, "y": 0, "z": 3.5 }
                }

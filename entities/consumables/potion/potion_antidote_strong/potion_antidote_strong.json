@@ -1,0 +1,49 @@
+{
+   "mixins": "stonehearth_ace:mixins:equippable_consumable:combat_potion",
+   "type": "entity",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(potion_antidote_strong_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 7
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 15,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:heal_target",
+         "applies_effects": {
+            "stonehearth_ace:buffs:potion:antidote:strong": 1
+         },
+         "use_condition": {
+            "conditions": [
+               {
+                  "type": "stonehearth:buffs",
+                  "buff_category": "poison",
+                  "has_buff": true
+               }
+            ]
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.potion.antidote.strong.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.potion.antidote.strong.description)",
+         "icon": "file(potion_antidote_strong.png)",
+         "category": "consumable",
+         "material_tags": [
+            "antidote",
+            "strong"
+         ]
+      }
+   }
+}

@@ -1,0 +1,16 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "potion_antidote",
+   "rank": 3,
+   "unique_in_category": true,
+   "duration": "8h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth:effects:item_created",
+   "display_name": "i18n(stonehearth_ace:data.buffs.potion.antidote_strong.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.potion.antidote_strong.description)",
+   "icon": "file(antidote_strong.png)",
+   "disallowed_categories": [
+      "poison"
+   ]
+}

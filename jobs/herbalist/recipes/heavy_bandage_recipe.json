@@ -1,8 +1,9 @@
 {
-	"effort": 45,
+	"effort": 23,
 	"description": "i18n(stonehearth_ace:jobs.herbalist.recipes.heavy_bandage_recipe.description)",
 	"flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.heavy_bandage_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/consumables/heavy_bandage/heavy_bandage.png",
+   "ordinal": 3,
 	"work_effect": "fiddle",
    "level_requirement": 5,
 	"mixintypes": {
@@ -13,13 +14,13 @@
          "material": "cloth resource",
          "count": 1
       },
-      {
-         "material": "herb peculiar resource",
-         "count": 3
-      },
 		{
          "uri": "stonehearth_ace:food:vinegar",
          "count": 1
+      },
+      {
+         "material": "herb peculiar resource",
+         "count": 3
       }
    ]
 }
