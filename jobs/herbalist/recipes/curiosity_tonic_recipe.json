@@ -1,6 +1,6 @@
 {
    "type": "recipe",
-   "effort": 40,
+   "effort": 44,
    "work_units": 5,
    "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.curiosity_tonic_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.curiosity_tonic_recipe.description)",
@@ -14,13 +14,13 @@
          "material": "egg small cooking_ingredient",
          "count": 2
       },
-		{
-         "material": "herb robust resource",
-         "count": 3
+      {
+         "uri": "stonehearth_ace:resources:bone:bone_skull",
+         "count": 2
       },
 		{
          "material": "herb peculiar resource",
-         "count": 2
+         "count": 4
       }
    ],
    "produces": [

@@ -22,7 +22,7 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 3,
+         "value_in_gold": 2,
          "rarity": "common",
          "shop_info": {
             "buyable": true,
@@ -35,6 +35,7 @@
          "script": "stonehearth:consumables:scripts:heal_target",
          "work_units": 2,
          "health_healed": 0,
+         "special_priority": 0.4,
          "guts_healed": 1,
          "applies_effects": {
             "stonehearth_ace:buffs:recently_treated:remover": 1

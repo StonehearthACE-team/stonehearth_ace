@@ -1,6 +1,6 @@
 {
    "type": "recipe",
-   "effort": 55,
+   "effort": 36,
    "work_units": 5,
    "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.hearthbud_ointment_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.hearthbud_ointment_recipe.description)",
@@ -12,8 +12,8 @@
    "level_requirement": 6,
    "ingredients": [
       {
-			"uri": "stonehearth:plants:earthbud:seed",
-         "count": 1
+         "material": "earth_essence resource",
+         "count": 2         
       },
 		{
          "material": "herb healing resource",
@@ -24,8 +24,8 @@
          "count": 2
       },
 		{
-         "material": "earth_essence resource",
-         "count": 2         
+         "material": "herb peculiar resource",
+         "count": 2
       }
    ],
    "produces": [

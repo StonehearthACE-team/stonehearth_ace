@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "potion_antidote",
+   "rank": 2,
+   "unique_in_category": true,
+   "duration": "6h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth:effects:item_created",
+   "display_name": "i18n(stonehearth_ace:data.buffs.potion.antidote_large.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.potion.antidote_large.description)",
+   "icon": "file(antidote_large.png)",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:poison:minor_poison",
+      "stonehearth_ace:buffs:poison:poison"
+   ]
+}

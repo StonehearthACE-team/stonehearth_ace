@@ -1,6 +1,6 @@
 {
    "type": "recipe",
-   "effort": 40,
+   "effort": 38,
    "work_units": 5,
    "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.warmth_tonic_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.warmth_tonic_recipe.description)",
@@ -10,17 +10,17 @@
    "workshop": "stonehearth_ace:herbalist:metal_cauldron",
    "level_requirement": 4,
    "ingredients": [
+      {
+         "material": "oil cooking_ingredient",
+         "count": 2
+      },
 		{
          "uri": "stonehearth_ace:resources:coal:hunk_of_hard_coal",
          "count": 1
       },
       {
          "material": "herb robust resource",
-         "count": 2
-      },
-		{
-         "material": "herb peculiar resource",
-         "count": 1
+         "count": 3
       }
    ],
    "produces": [

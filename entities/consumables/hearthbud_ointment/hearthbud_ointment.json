@@ -24,7 +24,7 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 30,
+         "value_in_gold": 72,
          "rarity": "rare",
          "shop_info": {
             "buyable": false,
@@ -34,6 +34,7 @@
       "stonehearth:consumable": {
          "script": "stonehearth:consumables:scripts:heal_target",
          "work_units": 4,
+         "special_priority": 0.5,
          "cures_conditions": {
             "wound_corrupt": 3,
             "wound_impact": 3,
