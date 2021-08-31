@@ -1028,9 +1028,21 @@ App.StonehearthStartingRosterChoiceView = App.View.extend({
             roster.id = id;
             rosters.push(roster);
          });
-         rosters.sort((a, b) => a.name < b.name);
+         rosters.sort(function(a, b) {
+            if (a.invalid_traits === b.invalid_traits) {
+               return a.name.localeCompare(b.name);
+            }
+            else if (a.invalid_traits) {
+               return 1;
+            }
+            else {
+               return -1;
+            }
+         });
          self.set('startingRosters', e.result);
          self.set('startingRostersArray', rosters);
+
+         Ember.run.scheduleOnce('afterRender', self, '_updateInvalidTraitTooltips');
       });
    },
 
@@ -1040,10 +1052,33 @@ App.StonehearthStartingRosterChoiceView = App.View.extend({
       self.$().on('click', '.row', function () {
          if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
+            self.$('#deleteStartingRosterButton > button').addClass('disabled');
+            self.$('#selectStartingRosterButton > button').addClass('disabled');
          } else {
             self.$('.row').removeClass('selected');
             $(this).addClass('selected');
+            self.$('#deleteStartingRosterButton > button').removeClass('disabled');
          }
+
+         // if the newly selected row is invalid, disable the select button, and vice-versa
+         if ($(this).hasClass('hasInvalidTraits'))
+         {
+            self.$('#selectStartingRosterButton > button').addClass('disabled');
+         } else {
+            self.$('#selectStartingRosterButton > button').removeClass('disabled');
+         }
+      });
+   },
+
+   _updateInvalidTraitTooltips: function() {
+      var self = this;
+
+      self.$('.row.hasInvalidTraits').each(function(){
+         var tooltipString = App.tooltipHelper.createTooltip(
+            i18n.t('stonehearth_ace:ui.shell.select_roster.invalid_traits_title'),
+            i18n.t('stonehearth_ace:ui.shell.select_roster.invalid_traits_description')
+         );
+         $(this).tooltipster({content: $(tooltipString)});
       });
    },
 
@@ -1057,7 +1092,10 @@ App.StonehearthStartingRosterChoiceView = App.View.extend({
       delete: function () {
          var self = this;
          var rosterId = this._getSelectedRoster();
-         
+         if (!rosterId) {
+            return;
+         }
+
          App.shellView.addView(App.StonehearthConfirmView,
             {
                title: i18n.t('stonehearth_ace:ui.shell.select_roster.delete_roster_confirm_title'),
@@ -1081,7 +1119,9 @@ App.StonehearthStartingRosterChoiceView = App.View.extend({
             });
       },
       select: function () {
-         if (this.selectedCb) {
+         var rosterId = this._getSelectedRoster();
+
+         if (rosterId && this.selectedCb) {
             this.selectedCb(this._getSelectedRoster());
             this.destroy();
          }

@@ -580,11 +580,18 @@ function AceMiningZoneComponent:_get_working_region(zone_region, zone_location)
             -- add the ladders
             for p in ladders_region:translated(Point2(zone_location.x, zone_location.z)):each_cube() do
                local col = Cube3(Point3(p.min.x, bounds.min.y, p.min.y), Point3(p.max.x + 1, top, p.max.y + 1))
+               -- only allow mining blocks with the bottom or top exposed
                local intersection = working_region:intersect_region(Region3(col))
-               local bottom = not intersection:empty() and math.max(bounds.min.y, intersection:get_bounds().min.y - self._max_reach_up + 1)
-               if bottom then
-                  clip_region:add_cube(Cube3(Point3(p.min.x, bottom, p.min.y), Point3(p.max.x, top, p.max.y)))
+               for ip in intersection:each_point() do
+                  if radiant.terrain.is_terrain(ip + Point3.unit_y) and radiant.terrain.is_terrain(ip - Point3.unit_y) then
+                     intersection:remove_point(ip)
+                  end
                end
+               clip_region:add_region(intersection)
+               -- local bottom = not intersection:empty() and math.max(bounds.min.y, intersection:get_bounds().min.y - self._max_reach_up + 1)
+               -- if bottom then
+               --    clip_region:add_cube(Cube3(Point3(p.min.x, bottom, p.min.y), Point3(p.max.x, top, p.max.y)))
+               -- end
             end
 
             working_region = working_region:intersect_region(clip_region)

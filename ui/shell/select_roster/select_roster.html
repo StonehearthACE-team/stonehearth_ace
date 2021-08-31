@@ -221,11 +221,11 @@
 
          <div class="downSection">
             {{#each roster in view.startingRostersArray}}
-               <div class="row" {{bind-attr data-id="roster.id"}}>
+               <div {{bind-attr data-id="roster.id" class=":row roster.invalid_traits:hasInvalidTraits:"}}>
                   <div class="rosterName">{{roster.name}}</div>
                   <ul class="citizens">
                      {{#each citizen in roster.citizens}}
-                        <li>
+                        <li {{bind-attr class="citizen.invalid_traits:hasInvalidTraits:"}}>
                            <span class="citizenStats">(<span class="mind">{{citizen.attributes.mind}}</span>/<span class="body">{{citizen.attributes.body}}</span>/<span class="spirit">{{citizen.attributes.spirit}}</span>)</span>
                            {{#each trait_icon in citizen.trait_icons}}
                               <img class="traitIcon" {{bind-attr src="trait_icon"}} />
@@ -239,8 +239,8 @@
          </div>
 
          <div id="buttons">
-             <a href="#" {{action "delete" target="view"}} class="left">
-                <button class="red">
+             <a href="#" {{action "delete" target="view"}} class="left" id="deleteStartingRosterButton">
+                <button class="red disabled">
                   {{i18n stonehearth_ace:ui.shell.select_roster.delete_roster}}
                 </button>
              </a>
@@ -249,8 +249,8 @@
                   {{i18n stonehearth_ace:ui.shell.select_roster.cancel_roster}}
                </button>
              </a>
-             <a href="#" {{action "select" target="view"}} class="right">
-                <button>
+             <a href="#" {{action "select" target="view"}} class="right" id="selectStartingRosterButton">
+                <button class="disabled">
                   {{i18n stonehearth_ace:ui.shell.select_roster.select_roster}}
                 </button>
              </a>

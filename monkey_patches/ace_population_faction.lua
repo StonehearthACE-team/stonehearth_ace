@@ -212,30 +212,45 @@ function AcePopulationFaction:show_notification_for_citizen(citizen, title, opti
    self.__saved_variables:mark_changed()
 end
 
+function AcePopulationFaction:are_traits_valid(traits, population_override_uri)
+   local check_traits = self:_get_flat_traits(population_override_uri)
+   
+   for _, trait in ipairs(traits) do
+      if not check_traits[trait] then
+         return false
+      end
+   end
+
+   return true
+end
+
 -- instead of just having our kingdom's traits stored, we need to have a table indexed by kindom uri
 function AcePopulationFaction:_load_traits()
-   self._traits = {}
-   self._flat_trait_index = {}
+   if self._data.traits_index then
+      self._traits = radiant.resources.load_json(self._data.traits_index)
+   end
 
-   -- Load traits from kingdom data if specified, otherwise use default
-   self:_load_kingdom_traits(self._sv.kingdom, self._data.traits_index or false)
+   if not self._traits then
+      self._traits = radiant.resources.load_json('stonehearth:traits_index')
+   end
+   
+   self._flat_trait_index = self:_load_flat_trait_index(self._traits)
 end
 
 -- index is either a uri, nil to indicate we should load the kingdom json and get the index there, or false to indicate skipping to default
-function AcePopulationFaction:_load_kingdom_traits(kingdom_uri, index)
-   if not kingdom_uri then
-      kingdom_uri = 'default'
-      -- if we're not specifying a real kingdom, don't try to load its traits_index
-      if index == nil then
-         index = false
-      end
+function AcePopulationFaction:_load_kingdom_traits(kingdom_uri)
+   if not kingdom_uri or kingdom_uri == self._sv.kingdom then
+      return
+   end
+
+   if not self._foreign_traits then
+      self._foreign_traits = {}
+      self._flat_foreign_traits = {}
    end
    
-   if not self._traits[kingdom_uri] then
+   if not self._foreign_traits[kingdom_uri] then
       local traits
-      if index == nil then
-         index = radiant.resources.load_json(kingdom_uri).traits_index
-      end
+      local index = radiant.resources.load_json(kingdom_uri).traits_index
       if index then
          traits = radiant.resources.load_json(index)
       end
@@ -243,27 +258,43 @@ function AcePopulationFaction:_load_kingdom_traits(kingdom_uri, index)
          traits = radiant.resources.load_json('stonehearth:traits_index')
       end
 
-      local flat_traits = {}
-      for group_name, group in pairs(traits.groups) do
-         flat_traits[group_name] = group
-      end
-      for trait_name, trait in pairs(traits.traits) do
-         flat_traits[trait_name] = trait
-      end
+      local flat_traits = self:_load_flat_trait_index(traits)
 
-      self._traits[kingdom_uri] = traits
-      self._flat_trait_index[kingdom_uri] = flat_traits
+      self._foreign_traits[kingdom_uri] = traits
+      self._flat_foreign_traits[kingdom_uri] = flat_traits
    end
+end
+
+function AcePopulationFaction:_load_flat_trait_index(traits)
+   local flat_traits = {}
+   for group_name, group in pairs(traits.groups) do
+      flat_traits[group_name] = group
+   end
+   for trait_name, trait in pairs(traits.traits) do
+      flat_traits[trait_name] = trait
+   end
+
+   return flat_traits
 end
 
 function AcePopulationFaction:_get_traits(kingdom_uri)
    self:_load_kingdom_traits(kingdom_uri)
-   return self._traits[kingdom_uri or self._sv.kingdom or 'default']
+
+   if not kingdom_uri or kingdom_uri == self._sv.kingdom then
+      return self._traits
+   else
+      return self._foreign_traits[kingdom_uri]
+   end
 end
 
 function AcePopulationFaction:_get_flat_traits(kingdom_uri)
    self:_load_kingdom_traits(kingdom_uri)
-   return self._flat_trait_index[kingdom_uri or self._sv.kingdom or 'default']
+
+   if not kingdom_uri or kingdom_uri == self._sv.kingdom then
+      return self._flat_trait_index
+   else
+      return self._flat_foreign_traits[kingdom_uri]
+   end
 end
 
 -- ACE: have to override this to change the reference to self._traits

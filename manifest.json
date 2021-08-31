@@ -5597,6 +5597,10 @@
          "controller": "file(call_handlers/new_game_call_handler.lua)",
          "endpoint": "client"
       },
+      "get_valid_traits_command": {
+         "controller": "file(call_handlers/new_game_call_handler.lua)",
+         "endpoint": "server"
+      },
       "get_starting_rosters_command": {
          "controller": "file(call_handlers/new_game_call_handler.lua)",
          "endpoint": "client"
