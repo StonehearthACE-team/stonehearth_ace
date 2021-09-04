@@ -567,4 +567,26 @@ function AcePopulationFaction:reconsider_all_individual_party_commands()
    end
 end
 
+-- ACE: if it's a pet (e.g., combat pet that can patrol), it won't be a citizen
+-- the entry point in the ui when someone clicks a check box to opt into or out of a job
+-- we need to update our work_order map and notify the town
+function AcePopulationFaction:change_work_order_command(session, response, work_order, citizen_id, checked)
+   local citizen
+   if self._sv.citizens:contains(citizen_id) then
+      citizen = self._sv.citizens:get(citizen_id)
+   else
+      citizen = radiant.entities.get_entity(citizen_id)
+   end
+
+   if citizen and citizen:is_valid() then
+      if checked == true then
+         citizen:add_component('stonehearth:work_order'):enable_work_order(work_order)
+      elseif checked == false then
+         citizen:add_component('stonehearth:work_order'):disable_work_order(work_order)
+      end
+   end
+
+   return true
+end
+
 return AcePopulationFaction
