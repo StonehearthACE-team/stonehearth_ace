@@ -72,6 +72,7 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
    radiant.events.trigger(entity, 'stonehearth:mined_location', { location = block })
 
    -- do a check here for whether we need a ladder based on overall height at this point
+   --log:debug('%s checking if mining ladder should be built at %s', entity, block)
    if mining_zone_component:should_have_ladders() and mining_zone_component:should_build_ladder_at(block) then
       local normal = build_util.rotation_to_normal(radiant.math.quantize(radiant.entities.get_facing(entity), 90) + 180)
       mining_zone_component:create_ladder_handle(block, normal)
