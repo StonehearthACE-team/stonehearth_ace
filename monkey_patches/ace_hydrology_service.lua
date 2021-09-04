@@ -12,6 +12,35 @@ function AceHydrologyService:_create_tick_timer()
    stonehearth_ace.water_signal:start()
 end
 
+-- ACE: remove max y cap on terrain bounds
+function HydrologyService:_link_channels_for_block(point, entity)
+   local channel_manager = self:get_channel_manager()
+   local world_bounds = radiant.terrain.get_terrain_component():get_bounds()
+   world_bounds.max.y = stonehearth.constants.terrain.MAX_Y_OVERRIDE
+
+   for _, direction in ipairs(csg_lib.XYZ_DIRECTIONS) do
+      local adjacent_point = point + direction
+      if world_bounds:contains(adjacent_point) then
+         local adjacent_is_solid = self._water_tight_region:contains(adjacent_point)
+         if not adjacent_is_solid then
+            local adjacent_entity = self:get_water_body_at(adjacent_point)
+            if adjacent_entity then
+               if adjacent_entity ~= entity then
+                  channel_manager:add_pressure_channel_bidirectional(point, adjacent_point, entity, adjacent_entity)
+               end
+            else
+               if direction.y ~= 1 then
+                  channel_manager:add_waterfall_channel(point, adjacent_point, entity, nil)
+               elseif entity:add_component('stonehearth:water'):get_water_level() > adjacent_point.y then
+                  -- upwards waterfalls not supported
+                  --channel_manager:add_waterfall_channel(point, adjacent_point, entity, nil)
+               end
+            end
+         end
+      end
+   end
+end
+
 -- Optimized path to create a water body that is already filled.
 -- Does not check that region is contained by a watertight boundary.
 -- Know what you are doing before calling this.

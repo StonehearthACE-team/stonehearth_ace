@@ -296,6 +296,7 @@ function AceMiningCallHandler:designate_mining_zone(session, response, tool_mode
             if is_ctrl_held() then
                mode = 'remove'
             end
+            -- this is the client, so we can just get the gameplay setting directly from the config
             local start_suspended = radiant.util.get_global_config('mods.stonehearth.default_mining_zones_suspended', false)
             _radiant.call('stonehearth:add_mining_zone', region, mode, { start_suspended = start_suspended })
                :done(function(r)
