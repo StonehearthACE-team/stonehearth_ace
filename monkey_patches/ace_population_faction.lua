@@ -77,7 +77,7 @@ function AcePopulationFaction:create_new_citizen_from_role_data(role, role_data,
    local citizen = self:_ace_old_create_new_citizen_from_role_data(role, role_data, gender, options)
 
    if options and options.foreign_population_uri then
-      citizen:add_component('stonehearth:job'):set_population_override(foreign_population_uri)
+      citizen:add_component('stonehearth:job'):set_population_override(options.foreign_population_uri)
    end
 
    -- the citizen has now been added, so update their titles json if necessary
