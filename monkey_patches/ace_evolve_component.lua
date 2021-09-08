@@ -6,12 +6,7 @@ local AceEvolveComponent = class()
 
 AceEvolveComponent._ace_old_restore = EvolveComponent.restore
 function AceEvolveComponent:restore()
-   -- if we're restoring an entity that should be stunted, remove this component immediately
-   local properties = self._entity:get_component('stonehearth:properties')
-   if properties and properties:has_property('stonehearth_ace:stunted') then
-      self._entity:remove_component(self.__saved_variables:get_controller_name())
-      return
-   end
+   self._is_restore = true
 
    if self._sv.evolve_timer then
       self._sv._evolve_timer = self._sv.evolve_timer
@@ -29,6 +24,16 @@ end
 
 --AceEvolveComponent._ace_old_activate = EvolveComponent.activate
 function AceEvolveComponent:activate()
+   -- if we had an evolve water signal for this entity, destroy it
+   -- if that was the only water signal for it, get rid of the component
+   local water_signal_comp = self._entity:get_component('stonehearth_ace:water_signal')
+   if water_signal_comp then
+      water_signal_comp:remove_signal('evolve')
+      if not water_signal_comp:has_signal() then
+         self._entity:remove_component('stonehearth_ace:water_signal')
+      end
+   end
+
    if not self._sv._current_growth_recalculate_progress then
       self._sv._current_growth_recalculate_progress = 0
    end
@@ -36,6 +41,16 @@ function AceEvolveComponent:activate()
    self._evolve_time_multipliers = {}
    
    self._evolve_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:evolve_data')
+
+   -- if it doesn't have any evolve_data, or if we're restoring an entity that should be stunted, remove this component immediately
+   -- this needs to happen in activate, after the properties component has restored and before the transform component has post_activated
+   local properties = self._entity:get_component('stonehearth:properties')
+   if not self._evolve_data or (properties and properties:has_property('stonehearth_ace:stunted')) then
+      self._entity:remove_component(self.__saved_variables:get_controller_name())
+      return
+   else
+      self:_create_listeners()
+   end
 
    -- had to insert this section, so can't just call _ace_old_activate
    if self._evolve_data then
@@ -64,25 +79,6 @@ function AceEvolveComponent:activate()
    self._growth_rate_listener = radiant.events.listen(radiant, 'stonehearth:growth_rate_may_have_changed', function()
          self:_recalculate_duration()
       end)
-end
-
-function AceEvolveComponent:post_activate()
-   -- if it doesn't have any evolve_data, try to remove the component because it should no longer be active
-   if not self._evolve_data then
-      self._entity:remove_component('stonehearth:evolve')
-   else
-      self:_create_listeners()
-   end
-
-   -- if we had an evolve water signal for this entity, destroy it
-   -- if that was the only water signal for it, get rid of the component
-   local water_signal_comp = self._entity:get_component('stonehearth_ace:water_signal')
-   if water_signal_comp then
-      water_signal_comp:remove_signal('evolve')
-      if not water_signal_comp:has_signal() then
-         self._entity:remove_component('stonehearth_ace:water_signal')
-      end
-   end
 end
 
 AceEvolveComponent._ace_old_destroy = EvolveComponent.__user_destroy
