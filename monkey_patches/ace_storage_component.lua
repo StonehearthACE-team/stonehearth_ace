@@ -19,7 +19,7 @@ end
 
 AceStorageComponent._ace_old_restore = StorageComponent.restore
 function AceStorageComponent:restore()
-   if self._entity:get_component('stonehearth_ace:universal_storage') then
+   if self._entity:get_component('stonehearth_ace:universal_storage') and radiant.entities.get_world_grid_location(self._entity) then
       -- move all entities out of this storage and queue them up to be transferred in the proper universal_storage entity
       stonehearth_ace.universal_storage:queue_items_for_transfer_on_registration(self._entity, self._sv.items)
       self._sv.items = {}
@@ -55,6 +55,13 @@ function AceStorageComponent:activate()
    self._sv.allow_default = json.allow_default ~= false  -- can be set to town default storage
    if self._type == 'output_crate' then
       self._sv.allow_default = false
+   end
+   -- starting default can override allow_default (that way you can create default storage that can't be toggled by the user)
+   if self._is_create and json.start_default then
+      local town = stonehearth.town:get_town(self._entity)
+      if town then
+         town:add_default_storage(self._entity)
+      end
    end
 
    if json.limit_all_filter ~= false then
