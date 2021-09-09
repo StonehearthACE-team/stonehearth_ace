@@ -7,7 +7,6 @@ local GOLD_URI = 'stonehearth:loot:gold'
 
 AceStorageComponent._ace_old_create = StorageComponent.create
 function AceStorageComponent:create()
-   
    self._is_create = true
    self:_ace_old_create()
 
@@ -33,8 +32,12 @@ function AceStorageComponent:restore()
 end
 
 AceStorageComponent._ace_old_activate = StorageComponent.activate
-function AceStorageComponent:activate()   
-   
+function AceStorageComponent:activate()
+   -- if it's already been destroyed, don't activate it
+   if self.__destroying then
+      return
+   end
+
    self:_ace_old_activate()
    
    local json = radiant.entities.get_json(self) or {}
@@ -87,6 +90,22 @@ function AceStorageComponent:activate()
 	self._sv.render_filter_model_threshold = json.render_filter_model_threshold or 0.5
    self._sv.reposition_items = json.reposition_items
    self.__saved_variables:mark_changed()
+end
+
+AceStorageComponent._ace_old_post_activate = StorageComponent.post_activate
+function AceStorageComponent:post_activate()
+   -- if it's already been destroyed, don't activate it
+   if self.__destroying then
+      return
+   end
+
+   self:_ace_old_post_activate()
+end
+
+AceStorageComponent._ace_old_destroy = StorageComponent.__user_destroy
+function AceStorageComponent:destroy()
+   self.__destroying = true
+   self:_ace_old_destroy()
 end
 
 AceStorageComponent._ace_old__on_contents_changed = StorageComponent._on_contents_changed
