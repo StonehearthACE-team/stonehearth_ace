@@ -177,6 +177,11 @@ function AceRestockDirector:_is_storage_higher_priority_for_item(item, new_stora
       return false
    end
 
+   -- not in an input crate, and destination is an input crate
+   if current_storage_comp:get_type() ~= 'input_crate' and new_storage_comp:get_type() == 'input_crate' then
+      return true
+   end
+
    return new_storage_comp:get_input_bin_priority() > current_storage:get_component('stonehearth:storage'):get_input_bin_priority()
 end
 

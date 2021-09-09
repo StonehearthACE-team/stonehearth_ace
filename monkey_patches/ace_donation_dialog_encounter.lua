@@ -105,10 +105,7 @@ function AceDonationDialogEncounter:_acknowledge()
       spill_fail_items = true,
       require_matching_filter_override = true,
    }
-   local items = radiant.entities.output_items(self._sv.items, drop_origin, 1, 3, options).spilled
-   for _, item in pairs(items) do
-      inventory:add_item_if_not_full(item)
-   end
+   radiant.entities.output_items(self._sv.items, drop_origin, 1, 3, options)
 
    if self._sv.gold then
       inventory:add_gold(self._sv.gold)

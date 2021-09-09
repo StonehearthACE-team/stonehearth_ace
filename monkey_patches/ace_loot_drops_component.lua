@@ -67,17 +67,21 @@ function AceLootDropsComponent:_on_kill_event(e)
          local spawned_entities = radiant.entities.output_items(items, location, 1, 3, options).spilled
 
          --Add a loot command to each of the spawned items, or claim them automatically
+         if not force_auto_loot then
          for id, entity in pairs(spawned_entities) do
-            local target = entity
-            local entity_forms = entity:get_component('stonehearth:entity_forms')
-            if entity_forms then
-               target = entity_forms:get_iconic_entity()
-            end
-            if not force_auto_loot then
-               local command_component = target:add_component('stonehearth:commands')
-               command_component:add_command('stonehearth:commands:loot_item')
-               if auto_loot and town then
-                  town:loot_item(target)
+               local target = entity
+               local entity_forms = entity:get_component('stonehearth:entity_forms')
+               if entity_forms then
+                  target = entity_forms:get_iconic_entity()
+               end
+
+               -- make sure the item is in the world and hasn't been scooped up by something
+               if radiant.entities.get_world_grid_location(target) then
+                  local command_component = target:add_component('stonehearth:commands')
+                  command_component:add_command('stonehearth:commands:loot_item')
+                  if auto_loot and town then
+                     town:loot_item(target)
+                  end
                end
             end
          end

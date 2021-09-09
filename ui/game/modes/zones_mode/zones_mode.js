@@ -31,15 +31,22 @@ App.StonehearthZonesModeView.reopen({
          viewType = App.StonehearthMiningZoneView;
       } else if (entity['stonehearth:shepherd_pasture']) {
          viewType = App.StonehearthPastureView;
-      }
-
-      if (!viewType) {
+      } else if (entity['stonehearth_ace:universal_storage']) {
+         viewType = false;
+         radiant.call_obj('stonehearth_ace.universal_storage', 'get_storage_from_access_node_command', entity.__self)
+            .done(function (response) {
+               if (self.isDestroyed || self.isDestroying) {
+                  return;
+               }
+               self._showZoneUi(response.storage, App.StonehearthStockpileView);
+            });
+      } else {
          viewType = self._getCustomZoneView(entity);
       }
 
       if (viewType) {
          self._showZoneUi(entity, viewType);
-      } else {
+      } else if (viewType === null) {
          if (self._propertyView) {
             self._propertyView.destroyWithoutDeselect();
             self._propertyView = null;

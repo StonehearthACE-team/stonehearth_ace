@@ -79,10 +79,14 @@ function AceStorageComponent:activate()
    self._ignore_restock = json.ignore_restock
 
    local bounds = stonehearth.constants.inventory.input_bins
-   local priority_range = bounds.MAX_PRIORITY - bounds.MIN_PRIORITY
-   local priority = math.min(math.max(json.priority or 1, bounds.MIN_PRIORITY), bounds.MAX_PRIORITY)
-   self._is_input_bin_highest_priority = (priority == bounds.MAX_PRIORITY)
-   self._input_bin_priority = (priority - bounds.MIN_PRIORITY) / (priority_range + 1)
+   if self._type == 'input_crate' then
+      local priority_range = bounds.MAX_PRIORITY - bounds.MIN_PRIORITY
+      local priority = math.min(math.max(json.priority or 1, bounds.MIN_PRIORITY), bounds.MAX_PRIORITY)
+      self._is_input_bin_highest_priority = (priority == bounds.MAX_PRIORITY)
+      self._input_bin_priority = (priority - bounds.MIN_PRIORITY) / (priority_range + 1)
+   else
+      self._input_bin_priority = bounds.MIN_PRIORITY
+   end
 
    -- communicate this setting to the renderer
    self._sv.render_root_items = json.render_root_items

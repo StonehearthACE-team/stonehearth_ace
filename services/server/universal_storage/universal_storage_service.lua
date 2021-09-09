@@ -57,7 +57,7 @@ function UniversalStorageService:get_universal_storage(player_id, category, grou
 end
 
 function UniversalStorageService:get_storage_from_access_node_command(session, response, entity)
-   validator.expect_argument_types({Entity}, entity)
+   validator.expect_argument_types({'Entity'}, entity)
 
    local player_storage = self._sv.player_storages[entity:get_player_id()]
    local storage = player_storage and player_storage:get_storage_from_access_node(entity)
