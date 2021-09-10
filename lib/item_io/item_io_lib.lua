@@ -72,7 +72,7 @@ function item_io_lib.try_output(items, inputs, options)
          
          -- in case something else "catches" these items and does something with them,
          -- check that they're actually in the world
-         if radiant.entities.get_world_grid_location(item) and add_spilled_to_inventory then
+         if add_spilled_to_inventory then
             local inventory = stonehearth.inventory:get_inventory(item)
             if inventory then
                inventory:add_item_if_not_full(item)

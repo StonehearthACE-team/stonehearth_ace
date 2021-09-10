@@ -3,6 +3,7 @@ local Material = require 'stonehearth.components.material.material'
 local Inventory = require 'stonehearth.services.server.inventory.inventory'
 local RestockDirector = require 'stonehearth.services.server.inventory.restock_director'
 local constants = require 'stonehearth.constants'
+local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local GOLD_URI = 'stonehearth:loot:gold'
 
 local AceInventory = class()
@@ -44,6 +45,42 @@ function AceInventory:add_item_tracker(controller_name)
       self.__saved_variables:mark_changed()
    end
    return tracker
+end
+
+-- ACE: if add_item is called with nil storage for an item already in inventory, ignore it
+-- Call to tell the inventory that we're adding an item. Can be called even if the item is already in
+-- the inventory for storage changes.
+-- storage, check_full, and update_trackers are optional parameters
+function Inventory:add_item(item, storage, check_full, update_trackers)
+   local in_world_item = entity_forms_lib.get_in_world_form(item)
+   if in_world_item then
+      item = in_world_item
+   end
+
+   if not radiant.entities.exists(item) then
+      return false
+   end
+
+   local id = item:get_id()
+
+   -- If the item already exists in the inventory, then just update its info
+   if self._sv._items[id] then
+      -- ACE: this can get called if the item was immediately added to a storage, and then is added to the inventory generally
+      -- we don't want to clear out its storage reference; when removing an item from storage, update_item_container is
+      -- called directly instead of calling add_item with a nil storage
+      if storage then
+         self:update_item_container(id, storage, update_trackers)
+         radiant.events.trigger(self, 'stonehearth:inventory:item_updated', { item = item })
+      end
+      return
+   end
+
+   if check_full and self:is_full() then
+      return false
+   end
+
+   self:_add_item_internal(item, storage)
+   return true
 end
 
 -- ACE: patched to add ignore_restock storage property
