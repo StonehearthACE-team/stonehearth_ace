@@ -15,18 +15,19 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 23,
+         "value_in_gold": 29,
          "rarity": "rare",
          "shop_info": {
             "buyable": true,
             "sellable": true,
-            "shopkeeper_level": 3,
+            "shopkeeper_level": 2,
             "shopkeeper_type": "caravan"
          }
       },
       "stonehearth:consumable": {
          "script": "stonehearth:consumables:scripts:heal_target",
          "work_units": 4,
+         "special_priority": 0.3,
          "cures_conditions": {
             "wound_impact": 2,
             "wound_cut": 2,

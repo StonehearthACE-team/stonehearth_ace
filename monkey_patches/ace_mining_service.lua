@@ -8,13 +8,88 @@ local log = radiant.log.create_logger('mining')
 local MiningService = require 'stonehearth.services.server.mining.mining_service'
 local AceMiningService = class()
 
--- also include reachable blocks directly above; this is important for building a ladder to reach the top of the mining region
+-- ACE: vertically optimize mining region
+function AceMiningService:_bounding_box_merge(region, ordered_zones)
+   local largest_merged_zone = nil
+
+   for _, zone in ipairs(ordered_zones) do
+      local location = radiant.entities.get_world_grid_location(zone)
+      local boxed_region = zone:add_component('stonehearth:mining_zone'):get_region()
+      local bounding_box = boxed_region:get():get_bounds():translated(location)
+      local intersection = region:intersect_cube(bounding_box)
+
+      if not intersection:empty() then
+         region:subtract_cube(bounding_box)
+
+         intersection:translate(-location)
+         boxed_region:modify(function(cursor)
+               cursor:copy_region(csg_lib.get_vertically_optimized_region(cursor, intersection))
+               -- unnecessary optimize
+               --cursor:optimize('mining service:_bounding_box_merge')
+            end)
+
+         if not largest_merged_zone then
+            largest_merged_zone = zone
+         end
+      end
+   end
+
+   return largest_merged_zone
+end
+
+-- ACE: vertically optimize mining region
+-- Explicitly add a region to a mining zone.
+function AceMiningService:add_region_to_zone(mining_zone, region)
+   if not region or region:empty() then
+      return
+   end
+
+   local mining_zone_component = mining_zone:add_component('stonehearth:mining_zone')
+   local boxed_region = mining_zone_component:get_region()
+   local location
+
+   if boxed_region:get():empty() then
+      location = region:get_bounds().min
+      radiant.terrain.place_entity_at_exact_location(mining_zone, location)
+   else
+      location = radiant.entities.get_world_grid_location(mining_zone)
+   end
+
+   boxed_region:modify(function(cursor)
+         -- could avoid a region copy if we're willing to modify the input region
+         local local_region = region:translated(-location)
+         cursor:copy_region(csg_lib.get_vertically_optimized_region(cursor, local_region))
+      end)
+end
+
+-- ACE: vertically optimize mining region
+-- Merges zone2 into zone1, and destroys zone2.
+function AceMiningService:merge_zones(zone1, zone2)
+   local boxed_region1 = zone1:add_component('stonehearth:mining_zone'):get_region()
+   local boxed_region2 = zone2:add_component('stonehearth:mining_zone'):get_region()
+   local location1 = radiant.entities.get_world_grid_location(zone1)
+   local location2 = radiant.entities.get_world_grid_location(zone2)
+
+   boxed_region1:modify(function(region1)
+         -- move region2 into the local space of region1
+         local translation = location2 - location1
+         local region2 = boxed_region2:get():translated(translation)
+         region1:copy_region(csg_lib.get_vertically_optimized_region(region1, region2))
+      end)
+
+   radiant.entities.destroy_entity(zone2)
+end
+
 AceMiningService._ace_old_get_reachable_region = MiningService.get_reachable_region
 function AceMiningService:get_reachable_region(location)
    local region = self:_ace_old_get_reachable_region(location)
+   
+   -- also include reachable blocks directly above; this is important for building a ladder to reach the top of the mining region
    local cube = Cube3(location)
    cube.max.y = region:get_bounds().max.y
    region:add_cube(cube)
+
+   -- TODO: also include diagonal blocks below (this gets clipped if terrain is on either side)?
    return region
 end
 
@@ -25,34 +100,44 @@ function AceMiningService:get_block_to_mine(from, mining_zone, log_debug)
    local destination_region = destination_component:get_region():get()
    local reserved_region = destination_component:get_reserved():get()
 
+   -- local mining_zone_component = mining_zone:get_component('stonehearth:mining_zone')
+   -- local unsupported_region = mining_zone_component:get_unsupported()
+   -- local supported_destination_region = unsupported_region:empty() and destination_region or (destination_region - unsupported_region)
+   -- if supported_destination_region:empty() then
+   --    -- unsupported is non-empty if supported destination is empty, because otherwise the mining zone would no longer exist
+   --    local unsupported_region, distance = mining_zone_component:get_next_unsupported_bucket()
+   --    if unsupported_region then
+   --       log:debug('only considering mining unsupported blocks %s from support', distance)
+   --       supported_destination_region = unsupported_region
+   --    else
+   --       return nil, nil
+   --    end
+   -- end
+
    -- get the reachable region in local coordinates to the zone
    local reachable_region = self:get_reachable_region(from - location)
    local eligible_region = reachable_region - reserved_region
    local eligible_destination_region = eligible_region:intersect_region(destination_region)
    local block = nil
 
-   if log_debug then
-      log:debug('considering mining in %s eligible_destination_region from %s with bounds %s and area %s...',
-               mining_zone,
-               from,
-               eligible_destination_region:get_bounds(),
-               eligible_destination_region:get_area())
-   end
-
    while not eligible_destination_region:empty() do
-      local max = eligible_destination_region:get_rect(0).min
+      local distance
+      local closest
 
-      -- pick any highest point in the region
+      -- pick any closest point in the region
       for cube in eligible_destination_region:each_cube() do
-         if cube.max.y > max.y then
-            max = cube.max
+         local point = cube:get_closest_point(from)
+         local dist = point:distance_to(from)
+         if not distance or dist < distance then
+            closest = point
+            distance = dist
          end
       end
 
-      -- subtract one to get terrain coordinates from max and convert to world coordinates
-      block = max - Point3.one + location
+      -- subtract one to get terrain coordinates from closest and convert to world coordinates
+      block = closest + location
       if log_debug then
-         log:debug('considering mining block %s...', block)
+         log:debug('considering mining block %s from %s distance...', block, distance)
       end
 
       -- double check that we're not mining a block directly *below us only*
@@ -74,10 +159,39 @@ function AceMiningService:get_block_to_mine(from, mining_zone, log_debug)
       end
 
       -- look for another block
-      eligible_destination_region:subtract_point(block - location)
+      eligible_destination_region:subtract_point(closest)
    end
 
    return nil, nil
+end
+
+-- Returns a region containing the block and all blocks that support it.
+-- Currently just the blocks below the block, but could be useful when trying to
+-- clear out unsupported floors.
+function AceMiningService:get_reserved_region_for_block(block, from, mining_zone)
+   local location = radiant.entities.get_world_grid_location(mining_zone)
+   local mining_zone_component = mining_zone:add_component('stonehearth:mining_zone')
+   local zone_region = mining_zone_component:get_region():get()
+   -- moving these to local coordinates
+   local block = block - location
+
+   local cube = Cube3(block, block + Point3.one)
+   -- reserve the column to the bottom of the zone
+   cube.min.y = zone_region:get_bounds().min.y
+
+   local proposed_region = Region3(cube)
+   local reserved_region = zone_region:intersect_region(proposed_region)
+
+   -- ACE: exclude unsupported blocks (except for the selected block)
+   local unsupported_region = mining_zone_component:get_unsupported()
+   if not unsupported_region then
+      reserved_region:subtract_region(unsupported_region)
+      reserved_region:add_point(block)
+   end
+
+   -- by convention, all input and output values in the mining service are in world coordiantes
+   reserved_region:translate(location)
+   return reserved_region
 end
 
 -- ACE: update to allow mining blocks directly above

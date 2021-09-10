@@ -109,6 +109,21 @@
          margin-top: 10px;
          overflow-y: auto;
 
+         .row.hasInvalidTraits {
+            background-color: rgba(0, 0, 0, 0.5);
+
+            &:hover {
+               background-color: rgba(77, 25, 13, 0.3);
+            }
+            &.selected {
+               background-color: rgb(77, 25, 13);
+            }
+
+            .rosterName {
+               color: rgb(233, 136, 112);
+            }
+         }
+
          .row {
             .handCursor;
             padding: 7px 10px 20px 15px;
@@ -117,7 +132,7 @@
                background-color: rgba(143, 120, 70, 0.3);
             }
             &.selected {
-               background-color: #8f7846;
+               background-color: rgb(143, 120, 70);
             }
 
             .rosterName {
@@ -145,7 +160,7 @@
                   .citizenStats {
                      font-family: @baseFontFamily;
                      font-weight: bold;
-                  
+
                      .mind {
                         color: #4bf600;
                      }
@@ -161,6 +176,12 @@
                   }
                   span {
                      vertical-align: middle;
+                  }
+                  
+                  &.hasInvalidTraits {
+                     .citizenName {
+                        color: rgb(233, 136, 112);
+                     }
                   }
                }
             }

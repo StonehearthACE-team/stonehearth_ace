@@ -70,6 +70,8 @@ function item_io_lib.try_output(items, inputs, options)
          spills[id] = item
          fails[id] = nil
          
+         -- in case something else "catches" these items and does something with them,
+         -- check that they're actually in the world
          if add_spilled_to_inventory then
             local inventory = stonehearth.inventory:get_inventory(item)
             if inventory then

@@ -33,6 +33,7 @@ local monkey_patches = {
    ace_mining_zone_renderer = 'stonehearth.renderers.mining_zone.mining_zone_renderer',
    ace_new_game_call_handler = 'stonehearth.call_handlers.new_game_call_handler',
    ace_portal_component = 'stonehearth.components.portal.portal_component',
+   ace_portrait_renderer_service = 'stonehearth.services.client.portrait_renderer.portrait_renderer_service',
    ace_renderer_service = 'stonehearth.services.client.renderer.renderer_service',
    ace_selection_service = 'stonehearth.services.client.selection.selection_service',
    ace_settings_call_handler = 'stonehearth.call_handlers.settings_call_handler',

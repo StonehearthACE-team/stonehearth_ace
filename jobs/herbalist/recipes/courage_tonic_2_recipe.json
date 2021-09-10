@@ -1,6 +1,6 @@
 {
    "type": "recipe",
-   "effort": 40,
+   "effort": 52,
    "work_units": 5,
    "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.courage_tonic_2_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.courage_tonic_2_recipe.description)",
@@ -11,16 +11,16 @@
    "level_requirement": 6,
    "ingredients": [
       {
-         "uri": "stonehearth_ace:resources:bone:bone_skull",
+         "material": "bone resource",
+         "count": 4
+      },
+      {
+         "material": "strong_bone resource",
          "count": 1
       },
 		{
-         "material": "herb robust resource",
-         "count": 3
-      },
-		{
          "material": "herb peculiar resource",
-         "count": 2
+         "count": 4
       }
    ],
    "produces": [

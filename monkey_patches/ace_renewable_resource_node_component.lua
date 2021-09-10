@@ -233,15 +233,15 @@ function AceRenewableResourceNodeComponent:_do_spawn_resource(harvester_entity, 
       return
    end
 
-   for id, item in pairs(spawned_resources) do
-      if not json.skip_owner_inventory then
-         -- add it to the inventory of the owner
-         local inventory = stonehearth.inventory:get_inventory(player_id)
-         if inventory then
-            inventory:add_item_if_not_full(item)
-         end
-      end
-   end
+   -- for id, item in pairs(spawned_resources) do
+   --    if not json.skip_owner_inventory then
+   --       -- add it to the inventory of the owner
+   --       local inventory = stonehearth.inventory:get_inventory(player_id)
+   --       if inventory then
+   --          inventory:add_item_if_not_full(item)
+   --       end
+   --    end
+   -- end
 
    if json.resource_spawn_effect then
       local proxy = radiant.entities.create_entity('stonehearth:object:transient', { debug_text = 'spawn effect effect anchor' })
@@ -455,6 +455,7 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester,
       inputs = harvester,
       output = self._entity,
       spill_fail_items = spill_items,
+      add_spilled_to_inventory = not json.skip_owner_inventory,
    }
 
    if json.resource_loot_table then
@@ -481,7 +482,7 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester,
 
       if item then
          -- only place it in a specific place if it wasn't pushed into an input
-         if will_destroy_entity then
+         if will_destroy_entity and radiant.entities.get_world_grid_location(item) then
             radiant.terrain.place_entity_at_exact_location(item, location)
          end
 

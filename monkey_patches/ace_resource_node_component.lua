@@ -174,12 +174,6 @@ function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_locat
    end
 
    if harvester_entity then
-      for id, item in pairs(spawned_resources) do
-         -- add it to the inventory of the owner
-         stonehearth.inventory:get_inventory(player_id)
-                                 :add_item_if_not_full(item)
-      end
-
       -- Paul: only trigger this once; we don't care about the spawned item, and we don't want exp/buffs being applied multiple times to the shepherd
 
       --trigger an event on the entity that they've harvested something, and what they're harvesting
@@ -220,13 +214,14 @@ function AceResourceNodeComponent:_place_spawned_items(harvester, location, owne
       inputs = harvester,
       output = self._entity,
       spill_fail_items = spill_items,
+      add_spilled_to_inventory = not json.skip_owner_inventory,
    }
 
    local spawned_items
    if json.resource_loot_table then
       local filter_args = self._loot_table_filter_args or (self._loot_table_filter_script and util.get_current_conditions_loot_table_filter_args())
       local uris = LootTable(json.resource_loot_table, quality, self._loot_table_filter_script, filter_args):roll_loot()
-      spawned_items = radiant.entities.output_items(uris, location, 1, 3, options).spilled
+      spawned_items = radiant.entities.get_successfully_output_items(radiant.entities.output_items(uris, location, 1, 3, options))
    else
       spawned_items = {}
    end
@@ -234,10 +229,10 @@ function AceResourceNodeComponent:_place_spawned_items(harvester, location, owne
    local resource = json.resource
    if resource then
       local uris = {[json.resource] = {[quality] = 1}}
-      local items = radiant.entities.output_items(uris, location, 0, 4, options)
-      --Create the harvested entity and put it on the ground
-      local item = (next(items.spilled) and items.spilled[next(items.spilled)]) -- or (next(items.succeeded) and items.succeeded[next(items.succeeded)])
-      spawned_items[item:get_id()] = item
+      local items = radiant.entities.get_successfully_output_items(radiant.entities.output_items(uris, location, 0, 4, options))
+      for id, item in pairs(items) do
+         spawned_items[id] = item
+      end
    end
 
    return spawned_items

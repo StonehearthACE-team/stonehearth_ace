@@ -151,6 +151,7 @@ function AceGameCreationService:create_camp_command(session, response, pt)
       inputs = default_storage,
       spill_fail_items = true,
       require_matching_filter_override = true,
+      add_spilled_to_inventory = true,
    }
    local starting_items = radiant.entities.output_items(starting_item_uris, location,
       MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS, output_options).spilled
@@ -158,7 +159,6 @@ function AceGameCreationService:create_camp_command(session, response, pt)
    -- add all the spawned items to the inventory, have citizens pick up any spilled items
    local i = 1
    for id, item in pairs(starting_items) do
-      inventory:add_item(item)
       if i <= NUM_STARTING_CITIZENS then
          radiant.entities.pickup_item(final_citizens[i], item)
          i = i + 1
@@ -216,10 +216,7 @@ function AceGameCreationService:create_camp_command(session, response, pt)
                end
 
                if next(items) then
-                  local spawned_items = radiant.entities.output_items(items, location, MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS, output_options).spilled
-                  for _, item in pairs(spawned_items) do
-                     inventory:add_item(item)
-                  end
+                  radiant.entities.output_items(items, location, MIN_STARTING_ITEM_RADIUS, MAX_STARTING_ITEM_RADIUS, output_options)
                end
             end
          end

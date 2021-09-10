@@ -7,7 +7,6 @@ local GOLD_URI = 'stonehearth:loot:gold'
 
 AceStorageComponent._ace_old_create = StorageComponent.create
 function AceStorageComponent:create()
-   
    self._is_create = true
    self:_ace_old_create()
 
@@ -20,7 +19,7 @@ end
 
 AceStorageComponent._ace_old_restore = StorageComponent.restore
 function AceStorageComponent:restore()
-   if self._entity:get_component('stonehearth_ace:universal_storage') then
+   if self._entity:get_component('stonehearth_ace:universal_storage') and radiant.entities.get_world_grid_location(self._entity) then
       -- move all entities out of this storage and queue them up to be transferred in the proper universal_storage entity
       stonehearth_ace.universal_storage:queue_items_for_transfer_on_registration(self._entity, self._sv.items)
       self._sv.items = {}
@@ -33,8 +32,12 @@ function AceStorageComponent:restore()
 end
 
 AceStorageComponent._ace_old_activate = StorageComponent.activate
-function AceStorageComponent:activate()   
-   
+function AceStorageComponent:activate()
+   -- if it's already been destroyed, don't activate it
+   if self.__destroying then
+      return
+   end
+
    self:_ace_old_activate()
    
    local json = radiant.entities.get_json(self) or {}
@@ -52,6 +55,13 @@ function AceStorageComponent:activate()
    self._sv.allow_default = json.allow_default ~= false  -- can be set to town default storage
    if self._type == 'output_crate' then
       self._sv.allow_default = false
+   end
+   -- starting default can override allow_default (that way you can create default storage that can't be toggled by the user)
+   if self._is_create and json.start_default then
+      local town = stonehearth.town:get_town(self._entity)
+      if town then
+         town:add_default_storage(self._entity)
+      end
    end
 
    if json.limit_all_filter ~= false then
@@ -76,10 +86,14 @@ function AceStorageComponent:activate()
    self._ignore_restock = json.ignore_restock
 
    local bounds = stonehearth.constants.inventory.input_bins
-   local priority_range = bounds.MAX_PRIORITY - bounds.MIN_PRIORITY
-   local priority = math.min(math.max(json.priority or 1, bounds.MIN_PRIORITY), bounds.MAX_PRIORITY)
-   self._is_input_bin_highest_priority = (priority == bounds.MAX_PRIORITY)
-   self._input_bin_priority = (priority - bounds.MIN_PRIORITY) / (priority_range + 1)
+   if self._type == 'input_crate' then
+      local priority_range = bounds.MAX_PRIORITY - bounds.MIN_PRIORITY
+      local priority = math.min(math.max(json.priority or 1, bounds.MIN_PRIORITY), bounds.MAX_PRIORITY)
+      self._is_input_bin_highest_priority = (priority == bounds.MAX_PRIORITY)
+      self._input_bin_priority = (priority - bounds.MIN_PRIORITY) / (priority_range + 1)
+   else
+      self._input_bin_priority = bounds.MIN_PRIORITY
+   end
 
    -- communicate this setting to the renderer
    self._sv.render_root_items = json.render_root_items
@@ -87,6 +101,22 @@ function AceStorageComponent:activate()
 	self._sv.render_filter_model_threshold = json.render_filter_model_threshold or 0.5
    self._sv.reposition_items = json.reposition_items
    self.__saved_variables:mark_changed()
+end
+
+AceStorageComponent._ace_old_post_activate = StorageComponent.post_activate
+function AceStorageComponent:post_activate()
+   -- if it's already been destroyed, don't activate it
+   if self.__destroying then
+      return
+   end
+
+   self:_ace_old_post_activate()
+end
+
+AceStorageComponent._ace_old_destroy = StorageComponent.__user_destroy
+function AceStorageComponent:destroy()
+   self.__destroying = true
+   self:_ace_old_destroy()
 end
 
 AceStorageComponent._ace_old__on_contents_changed = StorageComponent._on_contents_changed

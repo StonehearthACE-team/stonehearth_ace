@@ -173,7 +173,7 @@ App.StonehearthStockpileView.reopen({
 
       if (this_uri) {
          var tracking_data = self.get('model.stonehearth:storage.item_tracker.tracking_data');
-         this_uri = this_uri.replace('.', '&#46;');
+         //this_uri = this_uri.replace('.', '&#46;');
          // var canonical_uri = tracking_data[this_uri].canonical_uri;
          // if (!canonical_uri) {
          //    canonical_uri = this_uri;

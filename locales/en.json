@@ -522,7 +522,7 @@
                },
                "returning_silk_road_trader_encounter": {
                   "title": "A caravaneer from the far east is passing through!",
-                  "trade_details": "Warm greetings, [str(i18n_data.town_name)]! You may call me Don Vandon - yes, yes, the famous merchant! Our last and fruitful crossing of the perilous Silk Road has brought us many wonderful goods, most of which are already reserved for the mightiest lords and royal...iest kings and queens, I'm afraid! We do have some cancelled orders, however... Like these <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>. They're not my finest products so you can keep them. For a fair price, of course! The eastern kingdoms are very interested in orders of our exotic goods like, let's say, <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>. We shall camp nearby for [str(i18n_data.num_days)] days, do you think your fair town can manage this exchange, yes?",
+                  "trade_details": "Warm greetings, [str(i18n_data.town_name)]! Don Vandon, at your service. Yes, that is right: the famous merchant! Our latest fruitful crossing of the perilous Silk Road has brought us many wonderful goods, most of which are already reserved for the mightiest lords, kings and queens, I'm afraid! We do have some cancelled orders, however... Like these <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>. Not my finest products, no no, so you can have them. For a fair price, of course! The eastern kingdoms are interested in our exotic goods, let's say... <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>! We'll be around for [str(i18n_data.num_days)] days, think your fair town can manage this exchange, yes?",
                   "waiting_title": "Don Vandon's caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
                   "waiting_text": "Don Vandon's caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> ready for them!",
                   "return_title": "The caravaneer from the far east returns!",
@@ -561,6 +561,17 @@
                   "recipe_unlock_geomancer": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
                   "recipe_unlock_engineer": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
                   "recipe_unlock_weaver": "New Legendary Hood recipe - Blacksmith, Geomancer, and Weaver collaboration!"
+               },
+               "town_founding_food_donation": {
+                  "donation_dialog_info": {
+                     "dialog_nodes": {
+                        "simple_message": {
+                           "bulletin_message": {
+                              "00": "Apparently, in addition to the letter, Arke's satchel contains some building materials and a small pouch full of coins, labeled <i>\"Outpost Founding Incentive\"</i>."
+                           }
+                        }
+                     }
+                  }
                }
             },
             "na_town_progression": {
@@ -2900,7 +2911,7 @@
             },
             "stomp_mega_cotton_pet_bed": {
                "display_name": "Stomp it!",
-               "description": "Send a Worker to hammer this fluffy mega cotton until it becomes a suitable animal bed."
+               "description": "Send a Worker to hammer this fluffy mega cotton until it becomes a suitable pet bed."
             },
             "prepare_mega_watermelon_juice": {
                "display_name": "Prepare Watermelon Juice",
@@ -3561,8 +3572,8 @@
             "description": "Nothing more revigorating than having your favorite drink! Stamina and Compassion fairly increased."
          },
          "toxin_resist": {
-            "display_name": "Toxin Resistance",
-            "description": "This hearthling is protected against weak poisons, toxins and infections."
+            "display_name": "Contaminant Resistance",
+            "description": "This hearthling is protected against weak poisons, weak toxins (negative effects) and minor infections."
          },
          "poison": {
             "minor_poison": {
@@ -3581,27 +3592,27 @@
          "toxin": {
             "toxin_sleeping": {
                "display_name": "Sleeping Toxin",
-               "description": "This is a weak toxin. It sticks for longer the more it is applied and will rapidly reduce its target's consciousness, putting them to sleep."
+               "description": "This is a weak toxin. This negative effect sticks for longer the more it is applied and will rapidly reduce its target's consciousness, putting them to sleep."
             },
             "toxin_panic": {
                "display_name": "Disheartening Toxin",
-               "description": "This is a weak toxin. It reduces courage, induces panic, and can be stacked."
+               "description": "This is a weak toxin. This negative effect reduces courage, induces panic, and can be stacked."
             },
             "toxin_starvation": {
                "display_name": "Denutrition Toxin",
-               "description": "This is a moderate toxin. The longer it affects someone, the more hungry they will be! Watch out for starvation!"
+               "description": "This is a moderate toxin. The longer this negative effect affects someone, the more hungry they will be! Watch out for starvation!"
             },
             "toxin_weakness": {
                "display_name": "Weakening Toxin",
-               "description": "This is a moderate toxin. The more it stacks, the lower the muscle and damage output of the intoxicated hearthling will be."
+               "description": "This is a moderate toxin. The more this negative effect stacks, the lower the muscle and damage output of the intoxicated hearthling will be."
             },
             "toxin_healing_received": {
                "display_name": "Healing Mitigation Toxin",
-               "description": "This is a strong toxin. The higher it is stacked, the less effective healing spells and abilities will be when used on this hearthling."
+               "description": "This is a strong toxin. The higher this negative effect is stacked, the less effective healing spells and abilities will be when used on this hearthling."
             },
             "toxin_paralysis": {
                "display_name": "Paralyzing Toxin",
-               "description": "This is a strong toxin. The intoxicated hearthling will remain paralyzed in place while affected by it."
+               "description": "This is a strong toxin. The intoxicated hearthling will remain paralyzed in place while affected by this negative effect."
             }
          },
          "infection": {
@@ -3906,16 +3917,28 @@
          },
          "potion": {
             "anti_toxin_small": {
-               "display_name": "Weak Anti-Toxin Protection",
-               "description": "The effects of an anti-toxin potion are protecting this hearthling from weak toxins for a while."
+               "display_name": "Weak Toxin Protection",
+               "description": "The effects of a cleansing potion are protecting this hearthling from weak toxins for a while."
             },
             "anti_toxin_large": {
-               "display_name": "Moderate Anti-Toxin Protection",
-               "description": "The effects of an anti-toxin potion are protecting this hearthling from weak and moderate toxins for a while."
+               "display_name": "Moderate Toxin Protection",
+               "description": "The effects of a cleansing potion are protecting this hearthling from weak and moderate toxins for a while."
             },
             "anti_toxin_strong": {
-               "display_name": "Strong Anti-Toxin Protection",
-               "description": "The effects of an anti-toxin potion are protecting this hearthling from all toxins for a while."
+               "display_name": "Strong Toxin Protection",
+               "description": "The effects of a cleansing potion are protecting this hearthling from all toxins for a while."
+            },
+            "antidote_small": {
+               "display_name": "Weak Poison Protection",
+               "description": "The effects of a combat antidote are protecting this hearthling from weak poisons for a while."
+            },
+            "antidote_large": {
+               "display_name": "Moderate Poison Protection",
+               "description": "The effects of a combat antidote are protecting this hearthling from weak and medium poisons for a while."
+            },
+            "antidote_strong": {
+               "display_name": "Strong Poison Protection",
+               "description": "The effects of a combat antidote are protecting this hearthling from all poisons for a while."
             },
             "healing_hearth": {
                "display_name": "Hearthbud Healing Potion",
@@ -5152,7 +5175,7 @@
             },
             "hearth_tonic_recipe": {
                "recipe_name": "Hearthbud Light Tonic",
-               "description": "A powerful potion that will boost courage, muscle, menace and slowly heal your entire town over time.",
+               "description": "A powerful philter that will boost courage, muscle, menace and slowly heal your entire town over time.",
                "flavor": "May it be a light to you in dark places, when all other lights go out! -Sasha of Clan Amberstone"
             },
             "small_healing_tonic_recipe": {
@@ -5238,28 +5261,28 @@
             },
             "fever_cordial_simple_recipe": {
                "recipe_name": "Simple Fever Cordial",
-               "description": "A smelly and simple extract that can be used for efficiently treating infections up to medium severity.",
-               "flavor": "Slightly better than 'Leeches' - but these can be found for free on water plants like algae or lilies!"
+               "description": "A smelly extract for efficiently treating infections up to medium severity. Will not apply the 'Recently Treated' effect, allowing further treatment without delay.",
+               "flavor": "Better than 'Leeches', but these are found freely on water plants!"
             },
             "fever_cordial_recipe": {
                "recipe_name": "Fever Cordial",
-               "description": "This foul-smelling extract can be used for treating infections of any severity.",
+               "description": "This foul-smelling extract can be used for treating infections of any severity. Will not apply the 'Recently Treated' effect, allowing further treatment without delay.",
                "flavor": "Old Nanny used to say that rubbing moldy bread on infected wounds can be helpful..."
             },
             "weak_antidote_recipe": {
                "recipe_name": "Weak Antidote",
-               "description": "This simple potion can be used against poisons and will efficiently treat any poison of low severity.",
-               "flavor": ""
+               "description": "This simple mixture can be used against poisons and will efficiently treat any poison of low severity.",
+               "flavor": "Antidotes will not apply the 'Recently Treated' effect when used, allowing further treatment without delay"
             },
             "antidote_recipe": {
                "recipe_name": "Antidote",
                "description": "This mixture can be used against poisons and will efficiently treat any poison of low or medium severity.",
-               "flavor": ""
+               "flavor": "Antidotes will not apply the 'Recently Treated' effect when used, allowing further treatment without delay"
             },
             "strong_antidote_recipe": {
                "recipe_name": "Strong Antidote",
                "description": "This delicate concoction can be used against poisons and will efficiently treat any poison up to high severity.",
-               "flavor": ""
+               "flavor": "Antidotes will not apply the 'Recently Treated' effect when used, allowing further treatment without delay"
             },
             "rough_salve_recipe": {
                "recipe_name": "Rough Salve",
@@ -5303,10 +5326,15 @@
                "description": "A hard strap with curative herbs for healing any impact wound. Efficiently treats wounds up to extreme severity.",
                "flavor": "People will want to sign up your leather compress..."
             },
+            "simple_ointment_recipe": {
+               "recipe_name": "Simple Ointment",
+               "description": "A dense paste that can be used for healing many types of basic wounds.",
+               "flavor": "Ointments can be used for impact, cut, piercing, cold, and fire wounds"
+            },
             "fine_ointment_recipe": {
                "recipe_name": "Fine Ointment",
                "description": "This complex cream can be used for healing many types of wounds, although not very efficiently.",
-               "flavor": "Ointments can be used for impact, cut, piercing, cold, and fire wounds"
+               "flavor": "Better than the Simple Ointment, this medication can treat multiple wounds of medium severity"
             },
             "hearthbud_ointment_recipe": {
                "recipe_name": "Hearthbud Ointment",
@@ -5321,27 +5349,42 @@
             "potion_healing_large_recipe": {
                "recipe_name": "Large Healing Potion",
                "description": "This large vial of potion will be carried by combatants and used when they're hurt, restoring a bunch of health.",
-               "flavor": ""
+               "flavor": "A hearthling can only carry one potion"
             },
             "potion_healing_hearth_recipe": {
                "recipe_name": "Hearth Healing Potion",
                "description": "This magical vial of potion will be carried by combatants and used when they're hurt, restoring a lot of health.",
-               "flavor": ""
+               "flavor": "A hearthling can only carry one potion"
             },
             "potion_anti_toxin_small_recipe": {
-               "recipe_name": "Weak Anti-Toxin Potion",
+               "recipe_name": "Weak Cleansing Potion",
                "description": "This small draught will be carried by combatants and used when they are affected by a toxin, protecting them from weak toxins for a while and restoring some health.",
-               "flavor": ""
+               "flavor": "A hearthling can only carry one potion"
             },
             "potion_anti_toxin_large_recipe": {
-               "recipe_name": "Anti-Toxin Potion",
+               "recipe_name": "Cleansing Potion",
                "description": "This draught will be carried by combatants and used when they are affected by a toxin, protecting them from weak and moderate toxins for a while and restoring a bunch of health.",
-               "flavor": ""
+               "flavor": "A hearthling can only carry one potion"
             },
             "potion_anti_toxin_strong_recipe": {
-               "recipe_name": "Strong Anti-Toxin Potion",
+               "recipe_name": "Strong Cleansing Potion",
                "description": "This large draught will be carried by combatants and used when they are affected by a toxin, protecting them from all toxins for a while but restore only a bit of health.",
-               "flavor": ""
+               "flavor": "A hearthling can only carry one potion"
+            },
+            "potion_antidote_small_recipe": {
+               "recipe_name": "Weak Anti-Poison Potion",
+               "description": "This bit of antidote will be carried by combatants and used when fighting against venomous foes, protecting them from weak poisons for a while.",
+               "flavor": "A hearthling can only carry one potion"
+            },
+            "potion_antidote_large_recipe": {
+               "recipe_name": "Anti-Poison Potion",
+               "description": "This vial of antidote will be carried by combatants and used when fighting against venomous foes, protecting them from weak and medium poisons for a while.",
+               "flavor": "A hearthling can only carry one potion"
+            },
+            "potion_antidote_strong_recipe": {
+               "recipe_name": "Strong Anti-Poison Potion",
+               "description": "This draught of antidote will be carried by combatants and used when fighting against venomous foes, protecting them from all poisons for a while.",
+               "flavor": "A hearthling can only carry one potion"
             },
             "gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
@@ -5802,17 +5845,17 @@
                "flavor": "Reflects light so well it's almost blinding"
             },
             "simple_bed_pet_recipe": {
-               "recipe_name": "Thatch Animal Bed",
+               "recipe_name": "Thatch Pet Bed",
                "description": "A slightly better place for hearthlings' pets to sleep.",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
             "clay_comfy_bed_pet_recipe": {
-               "recipe_name": "Clay Animal Comfy Bed",
+               "recipe_name": "Clay Comfy Pet Bed",
                "description": "Allows animals to have a more comfortable sleep.",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
             "porcelain_bed_pet_recipe": {
-               "recipe_name": "Porcelain Animal Comfy Bed",
+               "recipe_name": "Porcelain Comfy Pet Bed",
                "description": "Animals will have a wonderful time sleeping in this bed!",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
@@ -6218,7 +6261,7 @@
                "flavor": ""
             },
             "bone_comfy_bed_pet_recipe": {
-               "recipe_name": "Bone Animal Comfy Bed",
+               "recipe_name": "Bone Comfy Pet Bed",
                "description": "Allows animals to have a more comfortable sleep.",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
@@ -6287,12 +6330,12 @@
                "flavor": "Training with stone weapons is a cruel but efficient joke"
             },
             "simple_bed_pet_2_recipe": {
-               "recipe_name": "Dry Thatch Animal Bed",
+               "recipe_name": "Dry Thatch Pet Bed",
                "description": "A slightly better place for hearthlings' pets to sleep.",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
             "stone_comfy_bed_pet_recipe": {
-               "recipe_name": "Stone Animal Comfy Bed",
+               "recipe_name": "Stone Comfy Pet Bed",
                "description": "Allows animals to have a more comfortable sleep.",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
@@ -6464,7 +6507,7 @@
                "flavor": "For a good night of sleep"
             },
             "marble_bed_pet_recipe": {
-               "recipe_name": "Marble Animal Comfy Bed",
+               "recipe_name": "Marble Comfy Pet Bed",
                "description": "Animals will have a wonderful time sleeping in this bed!",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
@@ -7647,17 +7690,17 @@
                "description": "Literally sleeping on a board."
             },
             "simple_bed_pet_recipe": {
-               "recipe_name": "Thatch Animal Bed",
+               "recipe_name": "Thatch Pet Bed",
                "description": "A slightly better place for hearthlings' pets to sleep.",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
             "comfy_bed_pet_recipe": {
-               "recipe_name": "Animal Comfy Bed",
+               "recipe_name": "Comfy Pet Bed",
                "description": "Allows animals to have a more comfortable sleep.",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
             "ornate_bed_pet_recipe": {
-               "recipe_name": "Ornate Animal Comfy Bed",
+               "recipe_name": "Ornate Comfy Pet Bed",
                "description": "Animals will have a wonderful time sleeping in this bed!",
                "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
@@ -8088,12 +8131,12 @@
             "chitin_armor_recipe": {
                "recipe_name": "Chitin Armor",
                "description": "Protective body gear.",
-               "flavor": "Fares particularly well against toxins"
+               "flavor": "Fares particularly well against external contaminants"
             },
             "chitin_helm_recipe": {
                "recipe_name": "Chitin Helm",
                "description": "A good defense for one's head.",
-               "flavor": "Fares particularly well against toxins"
+               "flavor": "Fares particularly well against external contaminants"
             },
             "chitin_shield_recipe": {
                "recipe_name": "Chitin Shield",
@@ -9504,6 +9547,10 @@
             "display_name": "Fever Cordial",
             "description": "Used by the Herbalist for efficiently treating infections of any severity."
          },
+         "simple_ointment": {
+            "display_name": "Simple Ointment",
+            "description": "Used by the Herbalist for treating the most basic wounds."
+         },
          "fine_ointment": {
             "display_name": "Fine Ointment",
             "description": "Used by the Herbalist for treating most wounds up to medium severity."
@@ -9565,18 +9612,35 @@
             },
             "anti_toxin": {
                "small": {
-                  "display_name": "Weak Anti-Toxin Potion",
-                  "description": "Provides protection against weak toxins and recover some health.",
+                  "display_name": "Weak Cleansing Potion",
+                  "description": "Provides protection against weak toxins (negative effects) and recover some health.",
                   "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
                },
                "large": {
-                  "display_name": "Anti-Toxin Potion",
-                  "description": "Provides protection against moderate toxins and recover health.",
+                  "display_name": "Cleansing Potion",
+                  "description": "Provides protection against moderate toxins (negative effects) and recover health.",
                   "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
                },
                "strong": {
-                  "display_name": "Strong Anti-Toxin Potion",
-                  "description": "Provides protection against strong toxins but only recovers some health.",
+                  "display_name": "Strong Cleansing Potion",
+                  "description": "Provides protection against strong toxins (negative effects) but only recovers some health.",
+                  "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
+               }
+            },
+            "antidote": {
+               "small": {
+                  "display_name": "Weak Anti-Poison Potion",
+                  "description": "Provides temporary protection against weak poisons.",
+                  "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
+               },
+               "large": {
+                  "display_name": "Anti-Poison Potion",
+                  "description": "Provides temporary protection against weak and medium poisons.",
+                  "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
+               },
+               "strong": {
+                  "display_name": "Strong Anti-Poison Potion",
+                  "description": "Provides temporary protection against all poisons.",
                   "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
                }
             }
@@ -12206,35 +12270,35 @@
             "description": "Better than the ground, bedrolls are good for their portability."
          },
          "simple_bed_pet": {
-            "display_name": "Thatch Animal Bed",
+            "display_name": "Thatch Pet Bed",
             "description": "A slightly better place for pets to sleep. Place it close to their owner's bed!"
          },
          "ornate_bed_pet": {
-            "display_name": "Ornate Animal Comfy Bed",
+            "display_name": "Ornate Comfy Pet Bed",
             "description": "Pets will have a wonderful sleep here! Place it close to their owner's bed!"
          },
          "comfy_bed_pet": {
-            "display_name": "Animal Comfy Bed",
+            "display_name": "Comfy Pet Bed",
             "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!"
          },
          "simple_bed_pet_2": {
-            "display_name": "Dry Thatch Animal Bed",
+            "display_name": "Dry Thatch Pet Bed",
             "description": "A slightly better place for pets to sleep. Place it close to their owner's bed!"
          },
          "stone_comfy_bed_pet": {
-            "display_name": "Stone Animal Comfy Bed",
+            "display_name": "Stone Comfy Pet Bed",
             "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!"
          },
          "porcelain_bed_pet": {
-            "display_name": "Porcelain Animal Comfy Bed",
+            "display_name": "Porcelain Comfy Pet Bed",
             "description": "Pets will have a wonderful sleep here! Place it close to their owner's bed!"
          },
          "marble_bed_pet": {
-            "display_name": "Marble Animal Comfy Bed",
+            "display_name": "Marble Comfy Pet Bed",
             "description": "Pets will have a wonderful sleep here! Place it close to their owner's bed!"
          },
          "clay_comfy_bed_pet": {
-            "display_name": "Clay Animal Comfy Bed",
+            "display_name": "Clay Comfy Pet Bed",
             "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!"
          },
          "blue_market_stall": {
@@ -12244,7 +12308,7 @@
          },
          "megacrop": {
             "cotton_bed_pet": {
-               "display_name": "Cotton Animal Bed",
+               "display_name": "Cotton Pet Bed",
                "description": "Who wouldn't love to sleep in a comfy and fluffy cotton bed?"
             }
          },
@@ -12310,7 +12374,7 @@
          },
          "bone_comfy_bed_pet": {
             "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!",
-            "display_name": "Bone Animal Comfy Bed"
+            "display_name": "Bone Comfy Pet Bed"
          },
          "counter": {
             "wood": {
@@ -15665,11 +15729,11 @@
          },
          "chitin_armor": {
             "display_name": "Chitin Breastplate",
-            "description": "Protective gear for footmen. Fares particularly well against toxins."
+            "description": "Protective gear for footmen. Fares particularly well against contaminants."
          },
          "chitin_helm": {
             "display_name": "Chitin Helm",
-            "description": "A good defense for one's head. Fares particularly well against toxins."
+            "description": "A good defense for one's head. Fares particularly well against contaminants."
          },
          "chitin_shield": {
             "display_name": "Chitin Shield",
@@ -16685,6 +16749,10 @@
          "marble_chest": {
             "display_name": "Marble Chest",
             "description": "Perfect hiding place for all your riches."
+         },
+         "universal_storage": {
+            "display_name": "Universal Storage",
+            "description": "Practically unlimited storage accessible from multiple access points."
          }
       },
       "tools": {
@@ -18891,6 +18959,8 @@
                "auto_harvest_enabled_description": "When a renewable resource you own becomes harvestable, automatically issue a harvest command on that resource.",
                "auto_harvest_tree_stumps": "Auto-Harvest Tree Stumps",
                "auto_harvest_tree_stumps_description": "When trees are cut down, harvestable stumps remain. Enabling this option will automatically queue stumps to be harvested.",
+               "auto_remove_mining_zone_ladders": "Auto Remove Mining Zone Ladders",
+               "auto_remove_mining_zone_ladders_description": "When a mining zone is completed or destroyed, queue up removal of any automatically created ladders.",
                "default_to_worst_fertilizer": "Default to Worst Fertilizer",
                "default_to_worst_fertilizer_description": "When farmers fertilize crops, they use the best fertilizer available unless directed to use a specific type. Select this to have them use the worst available instead.",
                "default_fertilizer": "Default Fertilizer:",
@@ -19012,6 +19082,8 @@
             "delete_roster": "Delete",
             "cancel_roster": "Cancel",
             "select_roster": "Select",
+            "invalid_traits_title": "Invalid Traits",
+            "invalid_traits_description": "One or more citizens in this roster have one or more traits that can't be loaded for the active kingdom.",
             "delete_roster_confirm_title": "Delete Starting Roster?",
             "delete_roster_confirm_message": "Are you sure you want to delete the selected starting roster?",
             "delete_roster_confirm_yes": "Yes",
@@ -19036,7 +19108,7 @@
          },
          "constants": {
             "edible_nuts_resource_name": "Any Edible Nut",
-            "fruits_resource_name": "Any Fruit",
+            "fruits_resource_name": "Any Basket of Fruits",
             "thatch_resource_name": "Any Thatch",
             "bone_resource_name": "Bone",
             "fungi_resource_name": "Any Undeployed Fungi",

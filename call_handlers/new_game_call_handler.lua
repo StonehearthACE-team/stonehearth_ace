@@ -1,13 +1,51 @@
 local validator = radiant.validator
 local NewGameCallHandler = class()
+local log = radiant.log.create_logger('new_game_call_handler')
+
+function NewGameCallHandler:get_valid_traits_command(session, response)
+   local pop_traits = stonehearth.population:get_population(session.player_id):_get_traits()
+   local traits = {}
+   for trait, _ in pairs(pop_traits.traits) do
+      traits[trait] = true
+   end
+   for _, group in pairs(pop_traits.groups) do
+      for trait, _ in pairs(group) do
+         traits[trait] = true
+      end
+   end
+   
+   response:resolve({traits = traits})
+end
 
 function NewGameCallHandler:get_starting_rosters_command(session, response)
-   local rosters = radiant.mods.enum_objects('starting_rosters')
-   local result = {}
-   for _, name in ipairs(rosters) do
-      result[name] = radiant.mods.read_object('starting_rosters/' .. name)
-   end
-   response:resolve({ result = result })
+   _radiant.call('stonehearth_ace:get_valid_traits_command')
+      :done(function(result)
+            --log:debug('valid traits: %s', radiant.util.table_tostring(result))
+            local rosters = radiant.mods.enum_objects('starting_rosters')
+            local data = {}
+            for _, name in ipairs(rosters) do
+               local roster = radiant.mods.read_object('starting_rosters/' .. name)
+               -- TODO: check traits against selected kingdom's traits; if any aren't valid, the roster isn't valid
+               local traits_valid = true
+               for _, citizen in ipairs(roster.citizens) do
+                  if citizen.traits then
+                     for _, trait in ipairs(citizen.traits) do
+                        if not result.traits[trait] then
+                           citizen.invalid_traits = true
+                           traits_valid = false
+                           break
+                        end
+                     end
+                  end
+               end
+
+               if not traits_valid then
+                  roster.invalid_traits = true
+               end
+               data[name] = roster
+            end
+            response:resolve({ result = data })
+         end)
 end
 
 function NewGameCallHandler:delete_starting_roster_command(session, response, roster_id)

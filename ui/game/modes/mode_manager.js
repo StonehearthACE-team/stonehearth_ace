@@ -247,7 +247,8 @@ $(document).ready(function() {
                entity['stonehearth:trapping_grounds'] ||
                entity['stonehearth:shepherd_pasture'] ||
                entity['stonehearth:mining_zone'] ||
-               entity['stonehearth:defense_zone']) {
+               entity['stonehearth:defense_zone'] ||
+               entity['stonehearth_ace:universal_storage']) {
             return this.modes.ZONES;
          }
    

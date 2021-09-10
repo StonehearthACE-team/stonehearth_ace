@@ -503,6 +503,9 @@
       "buffs:potion:anti_toxin:large": "file(data/buffs/potion/potion_anti_toxin_large/potion_anti_toxin_large_buff.json)",
       "buffs:potion:anti_toxin:small": "file(data/buffs/potion/potion_anti_toxin_small/potion_anti_toxin_small_buff.json)",
       "buffs:potion:anti_toxin:strong": "file(data/buffs/potion/potion_anti_toxin_strong/potion_anti_toxin_strong_buff.json)",
+      "buffs:potion:antidote:large": "file(data/buffs/potion/potion_antidote_large/potion_antidote_large_buff.json)",
+      "buffs:potion:antidote:small": "file(data/buffs/potion/potion_antidote_small/potion_antidote_small_buff.json)",
+      "buffs:potion:antidote:strong": "file(data/buffs/potion/potion_antidote_strong/potion_antidote_strong_buff.json)",
       "buffs:potion:cooldown": "file(data/buffs/potion/potion_cooldown/potion_cooldown_buff.json)",
       "buffs:potion:healing:hearth": "file(data/buffs/potion/potion_healing_hearth/potion_healing_hearth_buff.json)",
       "buffs:potion:healing:large": "file(data/buffs/potion/potion_healing_large/potion_healing_large_buff.json)",
@@ -843,6 +846,9 @@
       "consumables:potion:anti_toxin:large": "file(entities/consumables/potion/potion_anti_toxin_large/potion_anti_toxin_large.json)",
       "consumables:potion:anti_toxin:small": "file(entities/consumables/potion/potion_anti_toxin_small/potion_anti_toxin_small.json)",
       "consumables:potion:anti_toxin:strong": "file(entities/consumables/potion/potion_anti_toxin_strong/potion_anti_toxin_strong.json)",
+      "consumables:potion:antidote:large": "file(entities/consumables/potion/potion_antidote_large/potion_antidote_large.json)",
+      "consumables:potion:antidote:small": "file(entities/consumables/potion/potion_antidote_small/potion_antidote_small.json)",
+      "consumables:potion:antidote:strong": "file(entities/consumables/potion/potion_antidote_strong/potion_antidote_strong.json)",
       "consumables:potion:healing:hearth": "file(entities/consumables/potion/potion_healing_hearth/potion_healing_hearth.json)",
       "consumables:potion:healing:large": "file(entities/consumables/potion/potion_healing_large/potion_healing_large.json)",
       "consumables:potion:healing:small": "file(entities/consumables/potion/potion_healing_small/potion_healing_small.json)",
@@ -888,6 +894,7 @@
       "consumables:seeds:wintermoss_seeds": "file(entities/consumables/seeds/wintermoss_seeds/wintermoss_seeds.json)",
       "consumables:seeds:yew_tree_seeds": "file(entities/consumables/seeds/yew_tree_seeds/yew_tree_seeds.json)",
       "consumables:simple_compress": "file(entities/consumables/simple_compress/simple_compress.json)",
+      "consumables:simple_ointment": "file(entities/consumables/simple_ointment/simple_ointment.json)",
       "consumables:stamina_tonic_2": "file(entities/consumables/stamina_tonic_2/stamina_tonic_2.json)",
       "consumables:strength_tonic_2": "file(entities/consumables/strength_tonic_2/strength_tonic_2.json)",
       "consumables:strong_antidote": "file(entities/consumables/strong_antidote/strong_antidote.json)",
@@ -3402,6 +3409,7 @@
       "rayyas_children/data/gm/campaigns/town_progression/arcs/trigger/town_progression/encounters/shrine_upgrade_deity.json": "file(data/gm/campaigns/town_progression/arcs/trigger/town_progression/rc_encounters/shrine_upgrade_deity.json)",
       "rayyas_children/data/gm/campaigns/town_progression/arcs/trigger/town_progression/encounters/shrine_upgrade_guildmaster.json": "file(data/gm/campaigns/town_progression/arcs/trigger/town_progression/rc_encounters/shrine_upgrade_guildmaster.json)",
       "rayyas_children/data/gm/campaigns/town_progression/arcs/trigger/town_progression/encounters/shrine_upgrade_valor.json": "file(data/gm/campaigns/town_progression/arcs/trigger/town_progression/rc_encounters/shrine_upgrade_valor.json)",
+      "rayyas_children/data/gm/campaigns/town_progression/arcs/trigger/town_progression/encounters/town_founding_food_donation.json": "file(data/gm/campaigns/town_progression/arcs/trigger/town_progression/rc_encounters/town_founding_food_donation.json)",
       "rayyas_children/data/gm/campaigns/town_progression/arcs/trigger/town_progression/town_progression_arc.json": "file(data/gm/campaigns/town_progression/arcs/trigger/town_progression/rc_town_progression_arc.json)",
       "rayyas_children/data/gm/campaigns/trader/arcs/caravan_shops_arc.json": "file(data/gm/campaigns/trader/arcs/rc_caravan_shops_arc.json)",
       "rayyas_children/data/gm/campaigns/trader/arcs/encounters/iskender_caravan.json": "file(data/gm/campaigns/trader/arcs/rc_encounters/iskender_caravan.json)",
@@ -5122,6 +5130,10 @@
       "stonehearth/data/models/landmark/64x_geyser_arctic.qb": "file(data/models/landmark/64x_geyser_arctic.qb)",
       "stonehearth/data/models/landmark/64x_geyser_desert.qb": "file(data/models/landmark/64x_geyser_desert.qb)",
       "stonehearth/data/models/landmark/64x_geyser_temperate.qb": "file(data/models/landmark/64x_geyser_temperate.qb)",
+      "stonehearth/data/rigs/entities/containers/input_bin/animations/idle.json": "file(data/rigs/entities/containers/input_bin/animations/idle.json)",
+      "stonehearth/data/rigs/entities/containers/input_corner/animations/idle.json": "file(data/rigs/entities/containers/input_corner/animations/idle.json)",
+      "stonehearth/data/rigs/entities/containers/input_shelf/animations/idle.json": "file(data/rigs/entities/containers/input_shelf/animations/idle.json)",
+      "stonehearth/data/rigs/entities/containers/input_table/animations/idle.json": "file(data/rigs/entities/containers/input_table/animations/idle.json)",
       "stonehearth/data/rigs/entities/critters/poyo/animations/idle_goto_sleep.json": "file(data/rigs/entities/critters/poyo/animations/idle_goto_sleep.json)",
       "stonehearth/data/rigs/entities/critters/poyo/animations/sleep.json": "file(data/rigs/entities/critters/poyo/animations/sleep.json)",
       "stonehearth/data/rigs/entities/critters/poyo/animations/sleep_goto_idle.json": "file(data/rigs/entities/critters/poyo/animations/sleep_goto_idle.json)",
@@ -5596,6 +5608,10 @@
       "delete_starting_roster_command": {
          "controller": "file(call_handlers/new_game_call_handler.lua)",
          "endpoint": "client"
+      },
+      "get_valid_traits_command": {
+         "controller": "file(call_handlers/new_game_call_handler.lua)",
+         "endpoint": "server"
       },
       "get_starting_rosters_command": {
          "controller": "file(call_handlers/new_game_call_handler.lua)",

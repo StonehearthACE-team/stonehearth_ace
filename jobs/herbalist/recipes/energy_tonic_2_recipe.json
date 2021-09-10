@@ -1,6 +1,6 @@
 {
    "type": "recipe",
-   "effort": 40,
+   "effort": 38,
    "work_units": 5,
    "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.energy_tonic_2_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.energy_tonic_2_recipe.description)",
@@ -10,21 +10,17 @@
 	"work_effect": "fiddle",
    "level_requirement": 4,
    "ingredients": [
+      {
+         "material": "feather resource",
+         "count": 2
+      },
 		{
          "uri": "stonehearth:food:sugar",
          "count": 1
       },
-		{
-         "material": "feather resource",
-         "count": 3
-      },
       {
          "material": "herb robust resource",
-         "count": 4
-      },
-      {
-         "material": "herb peculiar resource",
-         "count": 2
+         "count": 3
       }
    ],
    "produces": [
