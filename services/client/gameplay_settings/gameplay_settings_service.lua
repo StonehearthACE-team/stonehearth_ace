@@ -50,4 +50,15 @@ function GameplaySettingsService:_update_gameplay_settings_from_config()
    _radiant.call('stonehearth_ace:set_client_gameplay_settings_command', self._settings)
 end
 
+-- returns the proper default value if no value set
+function GameplaySettingsService:get_gameplay_setting(mod, name)
+   local mod_settings = self._settings[mod]
+   if mod_settings then
+      local setting = mod_settings[name]
+      if setting then
+         return radiant.util.get_global_config('mods.'..mod..'.'..name, setting.default)
+      end
+   end
+end
+
 return GameplaySettingsService

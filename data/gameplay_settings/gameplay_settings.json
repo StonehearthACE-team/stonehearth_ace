@@ -5,6 +5,17 @@
       "auto_rescue": {}
    },
    "stonehearth_ace": {
+      "building_grid_size": {
+         "type": "number",
+         "number_settings": {
+            "min": 2,
+            "max": 16
+         },
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.building_grid_size)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.building_grid_size_description)",
+         "default": 16,
+         "ordinal": 0.5
+      },
       "auto_craft_recipe_dependencies": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_craft_recipe_dependencies)",

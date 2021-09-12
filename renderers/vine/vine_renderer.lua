@@ -83,7 +83,7 @@ function VineRenderer:_update_group_highlight_trace(group)
 end
 
 function VineRenderer:_on_gameplay_setting_changed()
-   self._highlight_vine_group = radiant.util.get_global_config('mods.stonehearth_ace.highlight_entire_vine_on_select', false)
+   self._highlight_vine_group = stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'highlight_entire_vine_on_select')
    self:_update_group_highlights()
 end
 
