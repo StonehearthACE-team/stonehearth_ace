@@ -348,8 +348,10 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
 
    -- could this be loaded once instead of tracing? not sure, but this is how item_placer does it
    local collision_entity
+   local collision_needs_translation
    if buildable_data.collision_entity then
       collision_entity = radiant.entities.create_entity(buildable_data.collision_entity)
+      collision_needs_translation = true
    else
       collision_entity = entity
    end
@@ -384,13 +386,36 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
                return stonehearth.selection.FILTER_IGNORE
             end
 
-            -- if designation_filter_fn then
-            --    -- treat true as ignore; false is still false
-            --    local designation_data = radiant.entities.get_entity_data(this_entity, 'stonehearth:designation')
-            --    if designation_filter_fn(selector, entity, this_entity, brick, normal, designation_data) == false then
-            --       return false
-            --    end
-            -- end
+            local region_w
+            if region_shape then
+               region_w = radiant.entities.local_to_world(region_shape, collision_entity)
+               if collision_needs_translation then
+                  region_w = region_w:translated(brick)
+               end
+            end
+
+            local designation_data = {}
+            if region_w then
+               for id, e in pairs(radiant.terrain.get_entities_in_region(region_w)) do
+                  designation_data[id] = radiant.entities.get_entity_data(e, 'stonehearth:designation')
+               end
+            else
+               designation_data[this_entity:get_id()] = radiant.entities.get_entity_data(this_entity, 'stonehearth:designation')
+            end
+            
+            if designation_filter_fn then
+               -- treat true as ignore; false is still false
+               if designation_filter_fn(selector, entity, this_entity, brick, normal, designation_data) == false then
+                  return false
+               end
+            else
+               for _, designation in pairs(designation_data) do
+                  if not designation.allow_placed_items then
+                     log:spam('FAIL: target / region shape in unallowed designation')
+                     return false
+                  end
+               end
+            end
 
             if normal.y ~= 1 then
                return stonehearth.selection.FILTER_IGNORE
@@ -422,27 +447,8 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
                   return false
                end
             end
-            
-            if region_shape then
-               local region_w = radiant.entities.local_to_world(region_shape, collision_entity):translated(brick)
-               local designations = radiant.terrain.get_entities_in_region(region_w, function(e)
-                     local designation = radiant.entities.get_entity_data(e, 'stonehearth:designation')
-                     return designation and not designation.allow_placed_items
-                  end)
-               if not radiant.empty(designations) then
-                  log:spam('FAIL: region shape in unallowed designation')
-                  return false
-               end
-            else
-               local designation = radiant.entities.get_entity_data(collision_entity, 'stonehearth:designation')
-               if designation and not designation.allow_placed_items then
-                  log:spam('FAIL: target is unallowed designation')
-                  return false
-               end
-            end
 
-            if region_shape then
-               local region_w = radiant.entities.local_to_world(region_shape, collision_entity):translated(brick)
+            if region_w then
                local envelopes = radiant.terrain.get_entities_in_region(region_w, function(e)
                      return e:get_uri() == 'stonehearth:build2:entities:envelope'
                   end)

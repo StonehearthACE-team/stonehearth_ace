@@ -118,13 +118,22 @@ function UniversalStorage:_add_storage(entity, category, group_id)
    local storage_id = category_storages[group_id]
    local group_storage = storage_id and self._sv.storages[storage_id] and self._sv.storages[storage_id]:is_valid()
    if not group_storage then
-      group_storage = radiant.entities.create_entity(stonehearth_ace.universal_storage:get_universal_storage_uri(), {owner = self._sv.player_id})
+      local storage_uri = stonehearth_ace.universal_storage:get_universal_storage_uri(category)
+      log:debug('get_universal_storage_uri(%s) = %s', tostring(category), tostring(storage_uri))
+      group_storage = radiant.entities.create_entity(storage_uri, {owner = self._sv.player_id})
+      log:debug('created %s from registering %s', group_storage, entity)
       radiant.terrain.place_entity_at_exact_location(group_storage, Point3.zero)
 
       storage_id = group_storage:get_id()
       category_storages[group_id] = storage_id
       self._sv.storages[storage_id] = group_storage
       self.__saved_variables:mark_changed()
+
+      radiant.events.trigger(stonehearth_ace.universal_storage, 'stonehearth_ace:universal_storage:entity_created', {
+         entity = group_storage,
+         category = category,
+         group_id = group_id,
+      })
    end
 
    local entity_id = entity:get_id()

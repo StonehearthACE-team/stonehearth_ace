@@ -29,4 +29,15 @@ function AceStockpileComponent:_add_item_to_stock(entity)
    end
 end
 
+function AceStockpileComponent:bounds_contain(item_entity)
+   local location = radiant.entities.get_world_grid_location(item_entity)
+   local world_bounds = self:get_bounds()
+
+   -- ACE: added location check also in case the item was immediately swallowed up by another listener
+   if not location or not world_bounds then
+      return false
+   end
+   return world_bounds:contains(location)
+end
+
 return AceStockpileComponent

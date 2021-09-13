@@ -14,8 +14,15 @@ function UniversalStorageComponent:initialize()
    self._sv.group_id = nil
 end
 
+function UniversalStorageComponent:create()
+   self._is_create = true
+end
+
+-- allow for manual registration, e.g., after setting group_id so it groups properly on registration
 function UniversalStorageComponent:activate()
-   self:_register()
+   if not self._is_create or self._json.register_on_create ~= false then
+      self:_register()
+   end
 end
 
 function UniversalStorageComponent:destroy()

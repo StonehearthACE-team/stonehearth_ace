@@ -27,6 +27,7 @@ local monkey_patches = {
    ace_bulletin = 'stonehearth.services.server.bulletin_board.bulletin',
    ace_calendar_service = 'stonehearth.services.server.calendar.calendar_service',
    ace_carry_block_component = 'stonehearth.components.carry_block.carry_block_component',
+   ace_catalog_service = 'stonehearth.services.server.catalog.catalog_service',
    ace_charging_pedestal_component = 'stonehearth.entities.gizmos.charging_pedestal.charging_pedestal_component',
    ace_check_bait_trap_adjacent_action = 'stonehearth.ai.actions.trapping.check_bait_trap_adjacent_action',
    ace_chunk = 'stonehearth.components.building2.plan.chunk',
@@ -224,6 +225,7 @@ local function create_service(name)
    saved_variables:set_controller_name('stonehearth_ace:' .. name)
    service:initialize()
    stonehearth_ace[name] = service
+   radiant.log.write_('stonehearth_ace', 0, 'ACE server service initialized: %s', name)
 end
 
 function stonehearth_ace:_on_init()

@@ -113,14 +113,14 @@ function AceTemplatePlacementTool:_get_snap_grid_position(pos)
    -- set up shift based on size and rotation
    local center_shift = size:rotated(360 - self._rotation)
    center_shift = Point3(math.abs(math.floor(center_shift.x / 2 + 0.5)), 0, math.abs(math.floor(center_shift.z / 2 + 0.5))) + delta_fixup
-   log:debug('from bounds size %s rotated %s shifted by %s to %s', size, self._rotation, delta_fixup, center_shift)
+   log:spam('from bounds size %s rotated %s shifted by %s to %s', size, self._rotation, delta_fixup, center_shift)
 
    -- round to nearest grid dimensions
    local dest = pos - center_shift
    dest.x = math.floor(dest.x / grid + 0.5) * grid
    dest.z = math.floor(dest.z / grid + 0.5) * grid
 
-   log:debug('converting %s to grid point %s', pos, dest + center_shift)
+   log:spam('converting %s to grid point %s', pos, dest + center_shift)
 
    return dest + center_shift
 end

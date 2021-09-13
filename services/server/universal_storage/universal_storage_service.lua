@@ -4,7 +4,7 @@
 
 local Entity = _radiant.om.Entity
 local validator = radiant.validator
-local DEFAULT_CATEGORY = '_DEFAULT_CATEGORY_'
+local DEFAULT_CATEGORY = 'default'
 local UNIVERSAL_STORAGE_URI = 'stonehearth_ace:containers:universal_storage'
 
 local UniversalStorageService = class()
@@ -20,6 +20,9 @@ function UniversalStorageService:initialize()
    end
 
    self._player_traces = {}
+   self._queued_items = {}
+
+   self._storage_type_data = radiant.resources.load_json('stonehearth_ace:data:universal_storage')
 end
 
 function UniversalStorageService:destroy()
@@ -42,8 +45,18 @@ function UniversalStorageService:_destroy_player_trace(entity_id)
    end
 end
 
-function UniversalStorageService:get_universal_storage_uri()
-   return UNIVERSAL_STORAGE_URI
+function UniversalStorageService:get_default_category()
+   return DEFAULT_CATEGORY
+end
+
+function UniversalStorageService:get_universal_storage_uri(category)
+   category = category or DEFAULT_CATEGORY
+   local data = self._storage_type_data.categories[category]
+   if data and data.storage_uri then
+      return data.storage_uri
+   else
+      return self._storage_type_data.categories[DEFAULT_CATEGORY].storage_uri
+   end
 end
 
 function UniversalStorageService:get_universal_storage(player_id, category, group_id)

@@ -107,14 +107,14 @@ function AceInventory:_create_restock_directors()
    end
 
    make_restock_director(constants.inventory.restock_director.types.RESTOCK, false, function(storage)
-         if not storage:get_ignore_restock() and storage:is_public() then
+         if storage and not storage:get_ignore_restock() and storage:is_public() then
             local type = storage:get_type()
             return type ~= 'output_crate' and type ~= 'input_crate'
          end
          return false
       end)
    make_restock_director(constants.inventory.restock_director.types.INPUT_BIN, true, function(storage)
-         return not storage:get_ignore_restock() and storage:is_public() and storage:get_type() == 'input_crate'
+         return storage and not storage:get_ignore_restock() and storage:is_public() and storage:get_type() == 'input_crate'
       end)
 end
 

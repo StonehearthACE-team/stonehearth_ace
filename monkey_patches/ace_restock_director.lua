@@ -217,18 +217,22 @@ function AceRestockDirector:_make_is_restockable_predicate(allow_stored)
       local storage = inventory:container_for(entity)
       if storage then
          local sc = storage:get_component('stonehearth:storage')
-         local sc_type = sc:get_type()
-         if sc_type ~= 'output_crate' then  -- We can always take things from output crates.
-            if not sc:is_public() then
-               return false  -- Don't touch my private property.
-            end
-            if sc:get_passed_items()[entity:get_id()] then
-               if not allow_stored then
-                  return false  -- Already in a storage that accepts it.
-               elseif sc_type == 'input_crate' and sc:is_input_bin_highest_priority() then
-                  return false  -- We don't restock from *highest priority* input crates even if we allow stored.
+         if sc then
+            local sc_type = sc:get_type()
+            if sc_type ~= 'output_crate' then  -- We can always take things from output crates.
+               if not sc:is_public() then
+                  return false  -- Don't touch my private property.
+               end
+               if sc:get_passed_items()[entity:get_id()] then
+                  if not allow_stored then
+                     return false  -- Already in a storage that accepts it.
+                  elseif sc_type == 'input_crate' and sc:is_input_bin_highest_priority() then
+                     return false  -- We don't restock from *highest priority* input crates even if we allow stored.
+                  end
                end
             end
+         else
+            return false
          end
       else
          if not allow_out_of_world_entities and not exists_in_world(entity) then

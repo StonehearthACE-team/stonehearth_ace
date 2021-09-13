@@ -23,6 +23,11 @@ App.StonehearthStockpileView.reopen({
       self._super();
    },
 
+   // override this to give an empty object if storage component is removed (e.g., universal storage component added)
+   _loadFilters: function () {
+      return this.set('stockpileFiltersUnsorted', this.get('model.stonehearth:storage.filter_list') || {});
+   }.observes('model.stonehearth:storage.filter_list'),
+
    destroy: function() {
       if (self._townTrace) {
          self._townTrace.destroy();
@@ -218,6 +223,38 @@ App.StonehearthStockpileView.reopen({
       }
    }.observes('model.uri'),
 
+   _updateStockedItems : function() {
+      var self = this;
+      Ember.run.scheduleOnce('afterRender', this, function() {
+         if (!self._inventoryPalette) {
+            // When moving a crate, this function will fire, but no UI will be present.  For now, be lazy
+            // and just ignore this case.
+            return;
+         }
+         var tracker = self.get('model.stonehearth:storage.item_tracker');
+         var inventoryItems = {}
+         if (tracker != null) {
+            // Extract quality entries.
+            radiant.each(tracker.tracking_data, function (uri, uri_entry) {
+               radiant.each(uri_entry.item_qualities, function (item_quality_key, item) {
+                  var key = uri + App.constants.item_quality.KEY_SEPARATOR + item_quality_key;
+                  inventoryItems[key] = radiant.shallow_copy(uri_entry);
+                  inventoryItems[key].count = item.count;
+                  inventoryItems[key].item_quality = item_quality_key;
+               });
+            });
+         }
+         self._inventoryPalette.stonehearthItemPalette('updateItems', inventoryItems);
+
+         var backpackCapacity = self.get('model.stonehearth:storage.capacity');
+
+         if (backpackCapacity) {
+            self.set('used_spaces', self.get('model.stonehearth:storage.num_items'));
+            self.set('capacity', backpackCapacity);
+         }
+      });
+   }.observes('model.stonehearth:storage.item_tracker'),
+
    _updateTotalFuel: function() {
       var self = this;
       var perCraft = self.get('fuelPerCraft');
@@ -293,6 +330,10 @@ App.StonehearthStockpileView.reopen({
    _updateItemsFuel : function() {
       var self = this;
       var tracker = self.get('model.stonehearth:storage.item_tracker');
+      if (tracker == null) {
+         return;
+      }
+
       var fuelLevel = 0;
       // count up fuel amount in stored items
       radiant.each(tracker.tracking_data, function (uri, uri_entry) {
