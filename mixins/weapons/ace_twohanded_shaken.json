@@ -1,5 +1,9 @@
 {
-   "mixins": "stonehearth_ace:mixins:weapons:twohanded",
+   "mixins": [
+      "stonehearth_ace:mixins:weapons:twohanded",
+      "stonehearth_ace:mixins:inflicted_wounds:pierce:medium",
+      "stonehearth_ace:mixins:inflicted_wounds:impact:very_easy"
+   ],
    "entity_data": {
       "stonehearth:buffs": {
          "inflictable_debuffs": {

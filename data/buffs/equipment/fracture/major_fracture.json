@@ -1,4 +1,5 @@
 {
+   "mixins": "stonehearth_ace:mixins:buffs:npc_only_buff",
    "type": "buff",
    "axis": "debuff",
    "category": "debuff_fracture",
@@ -9,10 +10,6 @@
    "icon": "file(fracture.png)",
    "duration": "1h",
    "cant_affect_siege": true,
-   "cant_affect": [
-      "hearthling",
-      "dwarf"
-   ],
    "repeat_add_action": "renew_duration",
    "modifiers": {
       "multiplicative_armor_modifier": {

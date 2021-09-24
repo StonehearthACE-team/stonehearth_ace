@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth_ace:mixins:weapons:mainhand",
+   "mixins": [
+      "stonehearth_ace:mixins:weapons:mainhand",
+      "stonehearth_ace:mixins:inflicted_wounds:pierce:medium"
+   ],
    "entity_data": {
       "stonehearth:buffs": {
          "inflictable_debuffs": {

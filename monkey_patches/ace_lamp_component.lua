@@ -13,6 +13,21 @@ function AceLampComponent:_load_json()
 	self:_ace_old__load_json()
 end
 
+function AceLampComponent:_create_nighttime_alarms()
+   local calendar_constants = stonehearth.calendar:get_constants()
+   local event_times = calendar_constants.event_times
+   local jitter = '+20m'
+   local sunrise_alarm_time = stonehearth.calendar:format_time(event_times.sunrise_start) .. jitter
+   local sunset_alarm_time = stonehearth.calendar:format_time(event_times.sunset_end) .. jitter
+
+   self._sunrise_listener = stonehearth.calendar:set_alarm(sunrise_alarm_time, function()
+         self:light_off()
+      end)
+   self._sunset_listener = stonehearth.calendar:set_alarm(sunset_alarm_time, function()
+         self:light_on()
+      end)
+end
+
 function AceLampComponent:light_on()
    self._sv.is_lit = true
 

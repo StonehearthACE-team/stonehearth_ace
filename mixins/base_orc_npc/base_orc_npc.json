@@ -1,0 +1,19 @@
+{
+   "mixins": "stonehearth:mixins:base_human_npc",
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "npc_orc",
+         "display_name": "i18n(stonehearth_ace:entities.peoples.orc.species)"
+      },
+      "stonehearth:catalog": {
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "meat",
+            "orc",
+            "npc"
+         ]
+      }
+   }
+}

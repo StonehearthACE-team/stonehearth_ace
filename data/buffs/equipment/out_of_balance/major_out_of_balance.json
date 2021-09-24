@@ -1,4 +1,5 @@
 {
+   "mixins": "stonehearth_ace:mixins:buffs:npc_only_buff",
    "type": "buff",
    "axis": "debuff",
    "category": "debuff_out_of_balance",
@@ -9,10 +10,6 @@
    "icon": "file(out_of_balance.png)",
    "duration": "15m",
    "cant_affect_siege": true,
-   "cant_affect": [
-      "hearthling",
-      "dwarf"
-   ],
    "repeat_add_action": "renew_duration",
    "modifiers": {
       "multiplicative_dmg_modifier": {
