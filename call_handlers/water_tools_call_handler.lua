@@ -18,13 +18,28 @@ function WaterToolsCallHandler:select_water_pump_pipe_command(session, response,
       return
    end
 
+   local can_contain_uris = {
+      ['stonehearth:terrain:water'] = true,
+      ['stonehearth:terrain:waterfall'] = true,
+   }
+
    stonehearth.selection:select_xyz_range('water_pump_pipe_range_selector')
       --:set_cursor('stonehearth:cursors:fence')
       :set_relative_entity(pump)
       :set_rotations(rotations)
+      :require_unblocked(true)
+      :set_can_pass_through_terrain(true)
+      :set_can_pass_through_buildings(true)
+      :set_ignore_middle_collision(false) -- we still want to block on other entities with collision
+      :set_can_contain_entity_filter(
+         function(entity, selector)
+            return can_contain_uris[entity:get_uri()]
+         end
+      )
       :done(
          function(selector, rotation_index, length, region, output_point)
-            _radiant.call('stonehearth_ace:set_water_pump_pipe_command', pump, rotation_index, length, region, output_point)
+            local output_origin = selector:get_point_in_current_direction(length - 1)
+            _radiant.call('stonehearth_ace:set_water_pump_pipe_command', pump, rotation_index, length, region, output_point, output_origin)
                :done(
                   function(r)
                      response:resolve({})
@@ -46,9 +61,9 @@ function WaterToolsCallHandler:select_water_pump_pipe_command(session, response,
       :go()
 end
 
-function WaterToolsCallHandler:set_water_pump_pipe_command(session, response, pump, rotation_index, length, region_table, output_point)
+function WaterToolsCallHandler:set_water_pump_pipe_command(session, response, pump, rotation_index, length, region_table, output_point, output_origin)
    -- apparently Region3 parameters get turned into tables and have to be loaded
-   validator.expect_argument_types({'Entity', 'number', 'number', 'table', 'Point3'}, pump, rotation_index, length, region_table, output_point)
+   validator.expect_argument_types({'Entity', 'number', 'number', 'table', 'Point3', 'Point3'}, pump, rotation_index, length, region_table, output_point, output_origin)
 
    local region = Region3()
    region:load(region_table)
@@ -62,7 +77,7 @@ function WaterToolsCallHandler:set_water_pump_pipe_command(session, response, pu
 
    if sponge_comp then
       -- also apparently a Point3 isn't actually a Point3
-      sponge_comp:set_output_location(radiant.util.to_point3(output_point))
+      sponge_comp:set_output_location(radiant.util.to_point3(output_point), radiant.util.to_point3(output_origin))
    end
 
    response:resolve({})

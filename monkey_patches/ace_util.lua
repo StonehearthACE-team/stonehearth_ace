@@ -56,7 +56,6 @@ function ace_util.get_rotations_table(json)
             material = material,
             scale = scale,
             offset = offset,
-            support_last_block = rotation.support_last_block,
             connection_type = connection_type,
             connector_id = rotation.connector_id,
             connector_region = connector_region,

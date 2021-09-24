@@ -87,6 +87,7 @@ function WaterPumpComponent:set_pipe_extension(rotation_index, length, collision
    local models_comp = self._entity:add_component('stonehearth_ace:models')
 
    if rotation and length > 0 then
+      self._sv.extended = true
       region:modify(function(cursor)
          -- copy_region also clears the existing region
          cursor:copy_region(collision_region)
@@ -96,6 +97,7 @@ function WaterPumpComponent:set_pipe_extension(rotation_index, length, collision
       data.length = length
       models_comp:set_model_options(RENDER_MODEL, data)
    else
+      self._sv.extended = false
       region:modify(function(cursor)
          cursor:clear()
       end)
@@ -104,12 +106,13 @@ function WaterPumpComponent:set_pipe_extension(rotation_index, length, collision
    end
 
    self:_update_commands()
+   self.__saved_variables:mark_changed()
 end
 
 function WaterPumpComponent:_update_commands()
    -- if the pipe is currently extended, give it the remove command; otherwise give it the place command
    local commands = self._entity:add_component('stonehearth:commands')
-   if self._sv.pipe_render_data then
+   if self._sv.extended then
       commands:remove_command('stonehearth_ace:commands:water_pipe:place')
       commands:add_command('stonehearth_ace:commands:water_pipe:remove')
 

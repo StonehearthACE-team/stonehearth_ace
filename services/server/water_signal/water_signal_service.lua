@@ -291,7 +291,7 @@ function WaterSignalService:_on_tick()
 
    -- first check the volume only changes to see if they should be upgraded to real changes (i.e., volume change was significant)
    for water_id, water in pairs(self._changed_water_volumes) do
-      if not self._changed_waters[water_id] and water:was_changed_on_tick() then
+      if not self._changed_waters[water_id] and water:was_changed_since_signal() then
          self._changed_waters[water_id] = water
       --    log:debug('water %s had significant volume changed', water_id)
       -- else
@@ -300,7 +300,7 @@ function WaterSignalService:_on_tick()
       self._changed_water_volumes[water_id] = nil
    end
    for waterfall_id, waterfall in pairs(self._changed_waterfall_volumes) do
-      if not self._changed_waterfalls[waterfall_id] and waterfall:was_changed_on_tick() then
+      if not self._changed_waterfalls[waterfall_id] and waterfall:was_changed_since_signal() then
          self._changed_waterfalls[waterfall_id] = waterfall
       --    log:debug('waterfall %s had significant volume changed', waterfall_id)
       -- else
@@ -436,7 +436,7 @@ function WaterSignalService:_on_tick()
    end
 
    for water_id, water in pairs(self._changed_waters) do
-      water:reset_changed_on_tick()
+      water:reset_changed_since_signal()
       self._changed_waters[water_id] = nil
       local listeners = self._water_change_listeners[water_id]
       if listeners then
@@ -455,7 +455,7 @@ function WaterSignalService:_on_tick()
    end
 
    for waterfall_id, waterfall in pairs(self._changed_waterfalls) do
-      waterfall:reset_changed_on_tick()
+      waterfall:reset_changed_since_signal()
       self._changed_waterfalls[waterfall_id] = nil
       local listeners = self._waterfall_change_listeners[waterfall_id]
       if listeners then

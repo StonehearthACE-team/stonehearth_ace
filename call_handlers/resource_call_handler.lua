@@ -340,11 +340,11 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
       local script = radiant.mods.load_script(buildable_data.placement_filter_script)
       placement_filter_fn = script and script.placement_filter_fn
    end
-   -- local designation_filter_fn
-   -- if buildable_data.designation_filter_script then
-   --    local script = radiant.mods.load_script(buildable_data.designation_filter_script)
-   --    designation_filter_fn = script and script.designation_filter_fn
-   -- end
+   local designation_filter_fn
+   if buildable_data.designation_filter_script then
+      local script = radiant.mods.load_script(buildable_data.designation_filter_script)
+      designation_filter_fn = script and script.designation_filter_fn
+   end
 
    -- could this be loaded once instead of tracing? not sure, but this is how item_placer does it
    local collision_entity

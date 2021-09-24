@@ -13,8 +13,8 @@ local WaterSpongeComponent = class()
 function WaterSpongeComponent:initialize()
    self._json = radiant.entities.get_json(self)
 
-   self._input_rate = self._json.input_rate or 1
-   self._output_rate = self._json.output_rate or 1
+   self._input_rate = self._json.input_rate or 0
+   self._output_rate = self._json.output_rate or 0
    self._input_depth = self._json.input_depth or 0
    self._create_water = self._json.create_water
    self._destroy_water = self._json.destroy_water
@@ -34,8 +34,8 @@ function WaterSpongeComponent:create()
       self._sv._output_location = radiant.util.to_point3(self._json.output_location)
    end
 
-   self._sv.input_enabled = self._json.input_enabled
-   self._sv.output_enabled = self._json.output_enabled
+   self._sv.input_enabled = self._json.input_enabled ~= false
+   self._sv.output_enabled = self._json.output_enabled ~= false
 end
 
 function WaterSpongeComponent:post_activate()
@@ -53,9 +53,9 @@ function WaterSpongeComponent:post_activate()
             end
          end)
 
-   if not self._is_create then
-      self._parent_trace:push_object_state()
-   end
+   self._entity:remove_component('stonehearth:wet_stone')
+
+   self:_startup()
 end
 
 function WaterSpongeComponent:destroy()
@@ -114,13 +114,14 @@ function WaterSpongeComponent:_startup()
 		return
 	end
 
-   stonehearth_ace.water_processor:register_water_processor(self._entity:get_id(), self, location.y)
+   stonehearth.hydrology:unregister_water_processor(self._entity:get_id(), self)
+   stonehearth.hydrology:register_water_processor(self._entity:get_id(), self, location.y)
    self:_update_commands()
    self:_update_effects()
 end
 
 function WaterSpongeComponent:_shutdown()
-   stonehearth_ace.water_processor:unregister_water_processor(self._entity:get_id(), self)
+   stonehearth.hydrology:unregister_water_processor(self._entity:get_id(), self)
    self:_update_effects()
 end
 
@@ -149,11 +150,12 @@ function WaterSpongeComponent:set_input_location(location)
 end
 
 function WaterSpongeComponent:get_output_location()
-   return self._sv._output_location
+   return self._sv._output_location, self._sv._output_origin
 end
 
-function WaterSpongeComponent:set_output_location(location)
+function WaterSpongeComponent:set_output_location(location, origin)
    self._sv._output_location = location
+   self._sv._output_origin = origin
 end
 
 function WaterSpongeComponent:set_enabled(input, output)
@@ -227,10 +229,31 @@ function WaterSpongeComponent:on_tick_water_processor()
             if destination_container then
                destination_container:add_volume('stonehearth:water', output_rate)
             else
-               local volume_not_added = stonehearth.hydrology:add_water(output_rate, output_location)
-               if volume_not_added > 0 and self._container then
-                  -- if we couldn't add it all, put it back in our container if we have one
-                  self._container:add_volume('stonehearth:water', volume_not_added)
+               -- check if there's a water entity at the output location to add it to
+               -- if not, check where we might want to make a waterfall
+               -- if it makes sense to make a waterfall, do that, otherwise just output water
+               local output_origin = self._sv._output_origin
+               if output_origin then
+                  output_origin = location + output_origin:rotated(radiant.entities.get_facing(self._entity))
+                  local water = stonehearth.hydrology:get_water_body_at(output_location)
+                  if not water then
+                     local bottom = stonehearth.hydrology:get_terrain_below(output_location)
+                     if output_location ~= bottom then
+                        water = stonehearth.hydrology:get_or_create_water_body_at(bottom)
+                        local channel_manager = stonehearth.hydrology:get_channel_manager()
+                        local channel = channel_manager:add_waterfall_channel(output_origin, bottom, self._entity, water)
+                        channel_manager:add_water_to_waterfall_channel(channel, output_rate)
+                        output_rate = 0
+                     end
+                  end
+               end
+
+               if output_rate > 0 then
+                  local volume_not_added = stonehearth.hydrology:add_water(output_rate, output_location, nil, true)
+                  if volume_not_added > 0 and self._container then
+                     -- if we couldn't add it all, put it back in our container if we have one
+                     self._container:add_volume('stonehearth:water', volume_not_added)
+                  end
                end
             end
 
@@ -264,7 +287,7 @@ function WaterSpongeComponent:on_tick_water_processor()
 
                if water_body then
                   -- try removing water from this depth
-                  volume_not_removed = stonehearth.hydrology:remove_water(volume_not_removed, source_location, water_body)
+                  volume_not_removed = stonehearth.hydrology:remove_water(volume_not_removed, source_location, water_body, true)
                end
 
                if volume_not_removed <= 0 then

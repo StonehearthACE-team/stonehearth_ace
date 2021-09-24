@@ -51,6 +51,9 @@ function XYZRangeSelector:__init(reason)
    self._validation_offset = Point3(0, 0, 0)
    self._allow_select_cursor = false
    self._allow_unselectable_support_entities = false
+   self._ignore_middle_collision = false
+   self._can_pass_through_terrain = false
+   self._can_pass_through_buildings = false
    self._invalid_cursor = INVALID_CURSOR
    self._remove_cursor = REMOVE_CURSOR
    self._valid_region_cache = Region3()
@@ -199,6 +202,22 @@ end
 -- this filter returns false
 function XYZRangeSelector:set_can_contain_entity_filter(filter_fn)
    self._can_contain_entity_filter_fn = filter_fn
+   return self
+end
+
+function XYZRangeSelector:set_ignore_middle_collision(value)
+   self._ignore_middle_collision = value
+   return self
+end
+
+-- "pass_through" refers to the middle section
+function XYZRangeSelector:set_can_pass_through_terrain(value)
+   self._can_pass_through_terrain = value
+   return self
+end
+
+function XYZRangeSelector:set_can_pass_through_buildings(value)
+   self._can_pass_through_buildings = value
    return self
 end
 
@@ -367,15 +386,15 @@ function XYZRangeSelector:_get_brick_at(x, y)
 
          --log:debug('getting brick at %s, %s: %s "%s"', x, y, tostring(entity), tostring(result.node_name))
 
-         -- if self._relative_entity and (self._relative_entity ~= entity) then
-         --    return stonehearth.selection.FILTER_IGNORE
-         -- end
+         if self._can_contain_entity_filter_fn and self._can_contain_entity_filter_fn(entity, self) then
+            return stonehearth.selection.FILTER_IGNORE
+         end
 
          for _, node in ipairs(self._intersection_nodes) do
             if result.node_name == node.name then
-               -- we hit an intersection node created by the user to catch points floating
-               -- in air.  use this brick
-               return true
+               -- we hit an intersection node created by the user to catch points floating in air
+               -- check to see if it's a valid location otherwise
+               return self:_is_valid_location(result.brick)
             end
          end
 
@@ -409,11 +428,11 @@ function XYZRangeSelector:_update()
       local region, point, in_use
       in_use = self:is_current_rotation_in_use()
       if not in_use then
-         region, point = self:get_final_region_and_point(length)
+         region, point = self:get_region_and_point(length)
       end
       self:notify(true, self._rotation, in_use and 0 or length, region, point)
    elseif self._action == 'resolve' then
-      local region, point = self:get_final_region_and_point(length)
+      local region, point = self:get_region_and_point(length, true)
       self:resolve(self._rotation, length, region, point)
    else
       log:error('uknown action: %s', self._action)
@@ -493,6 +512,9 @@ function XYZRangeSelector:_on_mouse_event(event)
    return event_consumed
 end
 
+-- TODO: validate new location using _is_valid_location before actually setting rotation/length
+-- still need to be able to cycle through rotations if one is invalid (immediately cycle to next valid one?)
+-- should a rotation be valid if only a shorter length works for it and auto-shorten? or just block?
 -- handles keyboard events from the input service
 function XYZRangeSelector:_on_keyboard_event(e)
    local event_consumed = false
@@ -627,24 +649,23 @@ end
 
 function XYZRangeSelector:get_point_in_current_direction(distance)
    local rotation = self:get_rotation()
-   local distance_mod = rotation.support_last_block and 1 or 0
-   return rotation and (rotation.origin + rotation.direction * math.max(0, distance - distance_mod))
+   return rotation and (rotation.origin + rotation.direction * math.max(0, distance))
 end
 
-function XYZRangeSelector:_recalc_current_region(final_point)
+function XYZRangeSelector:_recalc_current_region(final_point, is_final)
    local rotation = self:get_rotation()
    local length = self:_get_length()
    local node = self._intersection_nodes[self._rotation]
    local region
 
    if length and rotation and node and length > 0 then
-      local support_last_block = final_point and rotation.support_last_block
       local cube
-      if support_last_block then
-         length = length - 1
-      end
       if length > 0 then
-         cube = csg_lib.create_cube(rotation.origin, rotation.origin + rotation.direction * (length - 1))
+         local origin = rotation.origin
+         if self._ignore_middle_collision and is_final then
+            origin = origin + rotation.direction * (length - 1)
+         end
+         cube = csg_lib.create_cube(origin, rotation.origin + rotation.direction * (length - 1))
       end
 
       -- make sure there are no entities with collision in this cube (or check custom filter)
@@ -652,8 +673,14 @@ function XYZRangeSelector:_recalc_current_region(final_point)
       if cube then
          local world_cube = self._relative_entity and radiant.entities.local_to_world(cube, self._relative_entity) or cube
          local entities = radiant.terrain.get_entities_in_cube(world_cube)
+         local terrain_entity_id = radiant._root_entity_id
          for _, entity in pairs(entities) do
-            if self._relative_entity and self._ignore_children and radiant.entities.is_child_of(entity, self._relative_entity) then
+            -- prioritize the simplest checks
+            if self._can_pass_through_terrain and entity:get_id() == terrain_entity_id then
+               -- ignore
+            elseif self._can_pass_through_buildings and entity:get_component('stonehearth:build2:structure') then
+               -- ignore
+            elseif self._relative_entity and self._ignore_children and radiant.entities.is_child_of(entity, self._relative_entity) then
                -- ignore
             elseif self._can_contain_entity_filter_fn and not self._can_contain_entity_filter_fn(entity, self) then
                cube_is_good = false
@@ -673,21 +700,6 @@ function XYZRangeSelector:_recalc_current_region(final_point)
          region = Region3()
          if cube then
             region:add_cube(cube)
-         end
-
-         if support_last_block then
-            -- determine if the block at the end point needs support, and if so, add the necessary block under it and on the normal sides
-            local local_point = final_point - Point3.unit_y
-            self:_add_point_if_not_solid(region, local_point)
-
-            -- this is a hack for now, just to see if it's at all reasonable
-            local normal = Point3.unit_x
-            if rotation.direction.x ~= 0 then
-               normal = Point3.unit_z
-            end
-
-            self:_add_point_if_not_solid(region, final_point + normal)
-            self:_add_point_if_not_solid(region, final_point - normal)
          end
       end
    end
@@ -712,9 +724,9 @@ function XYZRangeSelector:get_current_region()
    return self._current_region
 end
 
-function XYZRangeSelector:get_final_region_and_point(length)
+function XYZRangeSelector:get_region_and_point(length, is_final)
    local point = self:get_point_in_current_direction(length)
-   return self:_recalc_current_region(point), point
+   return self:_recalc_current_region(point, is_final), point
 end
 
 function XYZRangeSelector:get_current_connector_region()

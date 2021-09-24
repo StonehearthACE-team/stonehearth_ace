@@ -20,6 +20,24 @@ end
 
 function UniversalStorage:create(player_id)
    self._sv.player_id = player_id
+
+   self._is_create = true
+end
+
+function UniversalStorage:post_activate()
+   -- if we weren't just created, check for any storages with no access nodes and expel all their items and destroy them
+   if not self._is_create then
+      local town = stonehearth.town:get_town(self._sv.player_id)
+      local town_entity = town and (town:get_banner() or town:get_hearth())
+      local location = town and town:get_landing_location()
+
+      for id, storage in pairs(self._sv.storages) do
+         local access_nodes = self._access_nodes_by_storage[id]
+         if not access_nodes or not next(access_nodes) then
+            self:_destroy_universal_storage(storage, town_entity, location)
+         end
+      end
+   end
 end
 
 function UniversalStorage:destroy()
@@ -247,9 +265,19 @@ function UniversalStorage:_transfer_queued_items(entity, storage)
    end
 end
 
-function UniversalStorage:_destroy_universal_storage(storage, last_entity)
-   local entity = entity_forms_lib.get_in_world_form(last_entity)
-   local location = radiant.entities.get_world_grid_location(entity or last_entity) or false
+function UniversalStorage:_destroy_universal_storage(storage, last_entity, location_fallback)
+   local entity = last_entity and entity_forms_lib.get_in_world_form(last_entity) or last_entity
+   local location = entity and radiant.entities.get_world_grid_location(entity) or location_fallback
+   -- if there's no location, try to use a point from the destination region
+   if not location then
+      local destination = storage:get_component('destination')
+      local region = destination and destination:get_region():get()
+      if region and not region:empty() then
+         -- we don't have to translate/rotate anywhere because universal storages are placed at (0,0,0) with 0 rotation
+         location = region:get_rect(0).min
+      end
+   end
+
    local storage_comp = storage:get_component('stonehearth:storage')
    if storage_comp then
       storage_comp:drop_all(nil, location)
