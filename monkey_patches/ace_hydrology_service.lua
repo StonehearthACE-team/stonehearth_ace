@@ -1,3 +1,5 @@
+local Cube3 = _radiant.csg.Cube3
+local Region3 = _radiant.csg.Region3
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local HydrologyService = require 'stonehearth.services.server.hydrology.hydrology_service'
 local AceHydrologyService = class()
@@ -188,8 +190,16 @@ function AceHydrologyService:create_water_body_with_region(region, height, merge
    local boxed_region = _radiant.sim.alloc_region3()
    local location = self:select_origin_for_region(region)
 
+   -- water regions shouldn't have tags!
+   local tagless_region = Region3()
+   for cube in region:each_cube() do
+      tagless_region:add_cube(Cube3(cube.min, cube.max, 0))
+   end
+
+   tagless_region:optimize('create_water_body_with_region')
+
    boxed_region:modify(function(cursor)
-         cursor:copy_region(region)
+         cursor:copy_region(tagless_region)
          cursor:translate(-location)
       end)
 
@@ -200,6 +210,10 @@ function AceHydrologyService:create_water_body_with_region(region, height, merge
       for _, adjacent_water in ipairs(water_entities) do
          water_entity = self:merge_water_bodies(water_entity, adjacent_water, true)
       end
+      
+      -- make sure that after any merges it updates the region
+      -- this function is usually not called during a tick, and if it is, it should only be once for that entity
+      water_entity:get_component('stonehearth:water'):check_changed(true)
    end
 
    return water_entity

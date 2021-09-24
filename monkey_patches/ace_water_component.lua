@@ -39,7 +39,7 @@ end
 function AceWaterComponent:_was_changed_on_tick()
    if self._prev_height ~= self._sv.height or
       self._prev_location ~= self._location or
-      not self._prev_region or not csg_lib.are_equivalent_regions(self._prev_region, self._sv.region:get()) then
+      not csg_lib.are_same_shape_regions(self._prev_region, self._sv.region:get()) then
          log:debug('%s was changed on tick', self._entity)
          return true
    end
