@@ -287,7 +287,13 @@ function WaterSpongeComponent:on_tick_water_processor()
 
                if water_body then
                   -- try removing water from this depth
-                  volume_not_removed = stonehearth.hydrology:remove_water(volume_not_removed, source_location, water_body, true)
+                  local water_component = water_body:get_component('stonehearth:water')
+                  if water_component:get_height() > 0 then
+                     volume_not_removed = stonehearth.hydrology:remove_water(volume_not_removed, source_location, water_body, true)
+                  else
+                     water_component:evaporate()
+                     volume_not_removed = math.max(0, volume_not_removed - stonehearth.constants.hydrology.WETTING_VOLUME)
+                  end
                end
 
                if volume_not_removed <= 0 then
