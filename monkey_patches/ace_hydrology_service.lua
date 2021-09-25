@@ -205,12 +205,12 @@ function AceHydrologyService:create_water_body_with_region(region, height, merge
 
    local water_entity = self:_create_water_body_internal(location, boxed_region, height)
 
-   if merge_adjacent then
+   if merge_adjacent and next(water_entities) then
       log:debug('debug: merging water bodies %s with %s', radiant.util.table_tostring(water_entities), water_entity)
       for _, adjacent_water in ipairs(water_entities) do
          water_entity = self:merge_water_bodies(water_entity, adjacent_water, true)
       end
-      
+
       -- make sure that after any merges it updates the region
       -- this function is usually not called during a tick, and if it is, it should only be once for that entity
       water_entity:get_component('stonehearth:water'):check_changed(true)

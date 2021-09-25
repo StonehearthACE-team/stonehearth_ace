@@ -90,12 +90,35 @@ function AceLandmarkLib.create_qb_as_terrain(location, options)
          radiant.terrain.add_cube(cube)
       end
    else
+      -- ACE: is there a better way? pre-processing to remove water rather than allow terrain change triggers
+      for cube in region:each_cube() do
+         cube = cube:to_int()
+
+         local hex_color = LandmarkLib.convert_decimal_to_hexadecimal(cube.tag)
+         local terrain_tag = LandmarkLib.get_tag_from_color(hex_color, landmark_block_types)
+
+         if terrain_tag then
+            remove_water_region:add_cube(cube)
+         else
+            local block_properties = landmark_block_types[hex_color]
+            if block_properties and block_properties.fill_voxel_with_water == false then
+               -- ACE: specifically if it's false, make sure water is removed from this region
+               remove_water_region:add_cube(cube)
+            end
+         end
+      end
+
+      if not remove_water_region:empty() then
+         AceLandmarkLib._remove_water_region(remove_water_region)
+      end
+
       for cube in region:each_cube() do
          -- Need to ensure that all cubes are in the right place after all the adjustments above, so we floor them.
          cube = cube:to_int()
 
          local hex_color = LandmarkLib.convert_decimal_to_hexadecimal(cube.tag)
          local terrain_tag = LandmarkLib.get_tag_from_color(hex_color, landmark_block_types)
+         local block_properties = landmark_block_types[hex_color]
 
          if terrain_tag then
             cube.tag = terrain_tag
@@ -124,8 +147,7 @@ function AceLandmarkLib.create_qb_as_terrain(location, options)
             -- Check if it is a color representing an entity in the list which is passed in, if so: delete the cube and place the entity.
             -- TODO: Maybe some entities (if users specifies) could attach and face away from the normal of the surface they are being placed on (like wall decorations).
             else
-               if landmark_block_types[hex_color] then
-                  local block_properties = landmark_block_types[hex_color]
+               if block_properties then
                   local items = LandmarkLib.convert_uri_or_lootbag_to_loottable(block_properties.loot_bag)
                   local entity = nil
                   if block_properties.placement_chance then
@@ -154,9 +176,6 @@ function AceLandmarkLib.create_qb_as_terrain(location, options)
                   region_mask:subtract_cube(cube)
                   if block_properties.fill_voxel_with_water then
                      table.insert(water_bucket, cube)
-                  elseif block_properties.fill_voxel_with_water == false then
-                     -- ACE: specifically if it's false, make sure water is removed from this region
-                     remove_water_region:add_cube(cube)
                   elseif block_properties.fill_voxel_with_low_water then
                      table.insert(water_bucket_lowered, cube)
                   end
@@ -171,11 +190,6 @@ function AceLandmarkLib.create_qb_as_terrain(location, options)
                end
             end
          end
-      end
-
-      -- before adding water, first remove water from appropriate regions
-      if not remove_water_region:empty() then
-         AceLandmarkLib._remove_water_region(remove_water_region)
       end
 
       -- Need to merge all water cubes, then separate them: csg.lib get contiguous regions (returns list), then create those water volumes.
@@ -245,7 +259,9 @@ function AceLandmarkLib._remove_water_region(region)
       end)
 
    for id, water_entity in pairs(water_entities) do
-      water_entity:add_component('stonehearth:water'):remove_from_region(region)
+      local water_component = water_entity:add_component('stonehearth:water')
+      water_component:remove_from_region(region)
+      water_component:check_changed(true)
    end
 end
 
