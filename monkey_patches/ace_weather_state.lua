@@ -28,8 +28,8 @@ function AceWeatherState:start(instigating_player_id)
    end
 
    if self._sv.unsheltered_debuff or self._sv.unsheltered_animal_debuff or self._sv.unsheltered_npc_debuff then
-      self._sv._unsheltered_debuff_timer = stonehearth.calendar:set_persistent_interval('weather buff', self._sv.buff_application_interval, radiant.bind(self, '_apply_buff'))
-      self:_apply_buff()
+      self._sv._unsheltered_debuff_timer = stonehearth.calendar:set_persistent_interval('weather buff', self._sv.buff_application_interval, radiant.bind(self, '_apply_buffs'))
+      self:_apply_buffs()
    end
 
    if self._sv.subject_matter then
@@ -79,7 +79,7 @@ function AceWeatherState:_load_ace_values()
    self.__saved_variables:mark_changed()
 end
 
-function AceWeatherState:_apply_buff()
+function AceWeatherState:_apply_buffs()
    local add_buff = function(entity, buff)
       local location = radiant.entities.get_world_grid_location(entity)
       if not location then
@@ -95,103 +95,54 @@ function AceWeatherState:_apply_buff()
       radiant.entities.add_buff(entity, buff)
    end
 
-   -- Citizen debuff
-   if self._sv.unsheltered_debuff then
-		for _, unsheltered_debuff in ipairs(self._sv.unsheltered_debuff) do
-         if type(unsheltered_debuff) == 'string' then
-			   self:_for_each_player_character(function(citizen)
-               add_buff(citizen, unsheltered_debuff)
-            end)
-         else
-            if unsheltered_debuff.time == 'day' and stonehearth.calendar:is_daytime() then
-               self:_for_each_player_character(function(citizen)
-                  add_buff(citizen, unsheltered_debuff.debuff)
-               end)
-            elseif unsheltered_debuff.time == 'night' and not stonehearth.calendar:is_daytime() then
-               self:_for_each_player_character(function(citizen)
-                  add_buff(citizen, unsheltered_debuff.debuff)
-               end)
+   local try_apply_buffs = function(debuffs, fn_apply)
+      if debuffs then
+         for _, debuff in ipairs(debuffs) do
+            if type(debuff) == 'string' then
+               fn_apply(debuff)
             else
-               if type(unsheltered_debuff.time) == 'number' and unsheltered_debuff.end_time and type(unsheltered_debuff.end_time) == 'number' then
-                  local now = stonehearth.calendar:get_time_and_date()
-                  if unsheltered_debuff.time < now.hour and now.hour < unsheltered_debuff.end_time then
-                     self:_for_each_player_character(function(citizen)
-                        add_buff(citizen, unsheltered_debuff.debuff)
-                     end)
-                  end
-               end
-            end
-         end
-		end
-   end
-
-   -- Pasture animal debuff
-   if self._sv.unsheltered_animal_debuff then
-		for _, unsheltered_animal_debuff in ipairs(self._sv.unsheltered_animal_debuff) do
-         if type(unsheltered_animal_debuff) == 'string' then
-			   for player_id, _ in pairs(stonehearth.player:get_non_npc_players()) do
-				   for _, animal in pairs(stonehearth.town:get_town(player_id):get_pasture_animals()) do
-					   add_buff(animal, unsheltered_animal_debuff)
-				   end
-			   end
-         else
-            if unsheltered_animal_debuff.time == 'day' and stonehearth.calendar:is_daytime() then
-               for player_id, _ in pairs(stonehearth.player:get_non_npc_players()) do
-                  for _, animal in pairs(stonehearth.town:get_town(player_id):get_pasture_animals()) do
-                     add_buff(animal, unsheltered_animal_debuff.debuff)
-                  end
-               end
-            elseif unsheltered_animal_debuff.time == 'night' and not stonehearth.calendar:is_daytime() then
-               for player_id, _ in pairs(stonehearth.player:get_non_npc_players()) do
-                  for _, animal in pairs(stonehearth.town:get_town(player_id):get_pasture_animals()) do
-                     add_buff(animal, unsheltered_animal_debuff.debuff)
-                  end
-               end
-            else
-               if type(unsheltered_animal_debuff.time) == 'number' and unsheltered_animal_debuff.end_time and type(unsheltered_animal_debuff.end_time) == 'number' then
-                  local now = stonehearth.calendar:get_time_and_date()
-                  if unsheltered_animal_debuff.time < now.hour and now.hour < unsheltered_animal_debuff.end_time then
-                     for player_id, _ in pairs(stonehearth.player:get_non_npc_players()) do
-                        for _, animal in pairs(stonehearth.town:get_town(player_id):get_pasture_animals()) do
-                           add_buff(animal, unsheltered_animal_debuff.debuff)
-                        end
+               if debuff.time == 'day' and stonehearth.calendar:is_daytime() then
+                  fn_apply(debuff.debuff)
+               elseif debuff.time == 'night' and not stonehearth.calendar:is_daytime() then
+                  fn_apply(debuff.debuff)
+               else
+                  if type(debuff.time) == 'number' and debuff.end_time and type(debuff.end_time) == 'number' then
+                     local now = stonehearth.calendar:get_time_and_date()
+                     if debuff.time < now.hour and now.hour < debuff.end_time then
+                        fn_apply(debuff.debuff)
                      end
                   end
                end
             end
          end
-		end
+      end
    end
+
+   -- Citizen debuff
+   try_apply_buffs(self._sv.unsheltered_debuff,
+      function(debuff)
+         self:_for_each_player_character(function(citizen)
+            add_buff(citizen, debuff)
+         end)
+      end)
+
+   -- Pasture animal debuff
+   try_apply_buffs(self._sv.unsheltered_animal_debuff,
+      function(debuff)
+         for player_id, _ in pairs(stonehearth.player:get_non_npc_players()) do
+            for _, animal in pairs(stonehearth.town:get_town(player_id):get_pasture_animals()) do
+               add_buff(animal, debuff)
+            end
+         end
+      end)
 	
 	-- NPC debuff
-   if self._sv.unsheltered_npc_debuff then
-		for _, unsheltered_npc_debuff in ipairs(self._sv.unsheltered_npc_debuff) do
-         if type(unsheltered_npc_debuff) == 'string' then
-			   self:_for_common_npc_character(function(npc)
-               add_buff(npc, unsheltered_npc_debuff)
-            end)
-         else
-            if unsheltered_npc_debuff.time == 'day' and stonehearth.calendar:is_daytime() then
-               self:_for_common_npc_character(function(npc)
-                  add_buff(npc, unsheltered_npc_debuff.debuff)
-               end)
-            elseif unsheltered_npc_debuff.time == 'night' and not stonehearth.calendar:is_daytime() then
-               self:_for_common_npc_character(function(npc)
-                  add_buff(npc, unsheltered_npc_debuff.debuff)
-               end)
-            else
-               if type(unsheltered_npc_debuff.time) == 'number' and unsheltered_npc_debuff.end_time and type(unsheltered_npc_debuff.end_time) == 'number' then
-                  local now = stonehearth.calendar:get_time_and_date()
-                  if unsheltered_npc_debuff.time < now.hour and now.hour < unsheltered_npc_debuff.end_time then
-                     self:_for_common_npc_character(function(npc)
-                        add_buff(npc, unsheltered_npc_debuff.debuff)
-                     end)
-                  end
-               end
-            end
-         end   
-		end
-   end
+   try_apply_buffs(self._sv.unsheltered_npc_debuff,
+   function(debuff)
+      self:_for_common_npc_character(function(npc)
+         add_buff(npc, debuff)
+      end)
+   end)
 end
 
 function AceWeatherState:_for_common_npc_character(fn)
