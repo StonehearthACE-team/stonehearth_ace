@@ -13,17 +13,34 @@
    ],
    "camera_attached_effect": "stonehearth_ace:effects:hailstorm_effect",
    "subject_matter": "stonehearth_ace:subjects:weather:hailstorm",
+   "buff_application_interval": "25m",
    "unsheltered_debuff": [
       "stonehearth_ace:buffs:weather:soaked",
       "stonehearth_ace:buffs:weather:hailstorm",
-      "stonehearth_ace:buffs:weather:cover_face"
+      "stonehearth_ace:buffs:weather:cover_face",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:chilly",
+         "time": "night"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold_breath",
+         "time": "night"
+      }
    ],
    "unsheltered_animal_debuff": [
       "stonehearth_ace:buffs:weather:soaked:animal"
    ],
    "unsheltered_npc_debuff": [
       "stonehearth_ace:buffs:weather:soaked",
-      "stonehearth_ace:buffs:weather:hailstorm"
+      "stonehearth_ace:buffs:weather:hailstorm",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:chilly:npc",
+         "time": "night"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold_breath",
+         "time": "night"
+      }
    ],
    "is_bad_weather": true,
    "humidity": 2.7,

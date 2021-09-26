@@ -17,18 +17,36 @@
    "snow_accumulation_per_minute": 0.0002,
    "is_dark_during_daytime": true,
    "unsheltered_debuff": [
-      "stonehearth_ace:buffs:weather:chilly",
       "stonehearth_ace:buffs:weather:cold_breath",
-      "stonehearth_ace:buffs:weather:soaked"
+      "stonehearth_ace:buffs:weather:soaked",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:chilly",
+         "time": "day"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold",
+         "time": "night"
+      }
    ],
    "unsheltered_animal_debuff": [
       "stonehearth_ace:buffs:weather:soaked:animal",
-      "stonehearth_ace:buffs:weather:cold_breath"
+      "stonehearth_ace:buffs:weather:cold_breath",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold:animal",
+         "time": "night"
+      }
    ],
    "unsheltered_npc_debuff": [
       "stonehearth_ace:buffs:weather:cold_breath",
-      "stonehearth_ace:buffs:weather:chilly:npc",
-      "stonehearth_ace:buffs:weather:soaked"
+      "stonehearth_ace:buffs:weather:soaked",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:chilly:npc",
+         "time": "day"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold:npc",
+         "time": "night"
+      }
    ],
    "is_bad_weather": true,
    "humidity": 1,

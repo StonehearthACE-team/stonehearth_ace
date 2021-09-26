@@ -1,7 +1,37 @@
 {
+   "components": {
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 70
+         }
+      }
+   },
    "entity_data": {
-	  "stonehearth:catalog": {
-        "display_name": "i18n(stonehearth_ace:entities.monsters.avian.ostrich.display_name)"
-	  }  
+	   "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.avian.ostrich.display_name)"
+	   },
+     "stonehearth:portrait": {
+        "portrait_types": {
+           "headshot": {
+              "mixintypes": {
+                 "camera": "override"
+              },
+              "camera": {
+                 "pos": [
+                    18,
+                    2.6,
+                    -20
+                 ],
+                 "look_at": [
+                    -0.4,
+                    2.25,
+                    0
+                 ],
+                 "ace_fov": 48
+               }
+            }
+         }
+      }
    }
 }

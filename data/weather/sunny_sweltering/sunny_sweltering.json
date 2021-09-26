@@ -3,14 +3,32 @@
    "description": "i18n(stonehearth_ace:data.weather.sunny.sunny_sweltering.description)",
    "icon": "file(sunny_sweltering.png)",
    "sky_settings": "stonehearth_ace:sky_settings:sunny:sweltering",
+   "buff_application_interval": "25m",
    "unsheltered_debuff": [
-      "stonehearth_ace:buffs:weather:sweltering"
+      {
+         "debuff": "stonehearth_ace:buffs:weather:sweltering",
+         "time": "day"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:hot",
+         "time": "night"
+      }
    ],
    "unsheltered_animal_debuff": [
-      "stonehearth_ace:buffs:weather:sweltering:animal"
+      {
+         "debuff": "stonehearth_ace:buffs:weather:sweltering:animal",
+         "time": "day"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:hot:animal",
+         "time": "night"
+      }
    ],
    "unsheltered_npc_debuff": [
-      "stonehearth_ace:buffs:weather:hot:npc"
+      {
+         "debuff": "stonehearth_ace:buffs:weather:hot:npc",
+         "time": "day"
+      }
    ],
    "ambient_sound_key": "sunny_sweltering",
    "thoughts": [

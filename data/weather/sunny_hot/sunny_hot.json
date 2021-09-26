@@ -3,11 +3,24 @@
    "description": "i18n(stonehearth_ace:data.weather.sunny.sunny_hot.description)",
    "icon": "file(sunny_hot.png)",
    "sky_settings": "stonehearth_ace:sky_settings:sunny:hot",
+   "buff_application_interval": "35m",
    "unsheltered_debuff": [
-      "stonehearth_ace:buffs:weather:hot"
+      {
+         "debuff": "stonehearth_ace:buffs:weather:hot",
+         "time": "day"
+      }
    ],
    "unsheltered_animal_debuff": [
-      "stonehearth_ace:buffs:weather:hot:animal"
+      {
+         "debuff": "stonehearth_ace:buffs:weather:hot:animal",
+         "time": "day"
+      }
+   ],
+   "unsheltered_npc_debuff": [
+      {
+         "debuff": "stonehearth_ace:buffs:weather:hot:npc",
+         "time": "day"
+      }
    ],
    "ambient_sound_key": "sunny_hot",
    "thoughts": [

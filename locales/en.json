@@ -1765,7 +1765,7 @@
             },
             "windy_springtime": {
                "display_name": "Springtime Winds",
-               "description": "A soft breeze flows past saying good bye to the winter and carrying new blossoms with it!<ul><li>Normal sunlight levels.</li><li>Slightly increased humidity.</li></ul>"
+               "description": "A soft breeze flows past saying good bye to the winter and carrying new blossoms with it!<ul><li>Normal sunlight levels.</li><li>Slightly increased humidity.</li></li><li>Unsheltered hearthlings are too chilly to work as effectively during the night.</li></ul>"
             }
          },
          "thunderstorm": {
@@ -1782,41 +1782,41 @@
             },
             "sunny_hot": {
                "display_name": "Hot & Sunny",
-               "description": "A nice and warm sunny day! Maybe too sunny, the heat is not good...<ul><li>Normal sunlight levels.</li><li>Fairly reduced humidity.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are affected by the heat.</li></ul>"
+               "description": "A nice and warm sunny day! Maybe too sunny, the heat is not good...<ul><li>Normal sunlight levels.</li><li>Fairly reduced humidity.</li><li>Unsheltered hearthlings are too hot to work as effectively during the day.</li><li>Unsheltered pasture animals are affected by the heat during the day.</li></ul>"
             },
             "sunny_sweltering": {
                "display_name": "Heat Wave",
-               "description": "An unbearably hot wind blows upon the town this day.<ul><li>Normal sunlight levels.</li><li>Reduced humidity.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
+               "description": "An unbearably hot wind blows upon the town this day and even the night will be hot and dry...<ul><li>Normal sunlight levels.</li><li>Reduced humidity.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun during the day and are too hot to work as effectively during the night.</li><li>Unsheltered pasture animals are hurt by the heat during the day but just affected by it during the night.</li></ul>"
             },
             "sunny_autumn": {
                "display_name": "Autumn Breeze",
-               "description": "A typical autumn day with a gentle breeze and a beautiful sky.<ul><li>Normal sunlight levels.</li><li>Regular humidity levels.</li></ul>"
+               "description": "A typical autumn day with a gentle breeze and a beautiful sky.<ul><li>Normal sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too chilly to work as effectively during the night.</li></ul>"
             },
             "sunny_stagnant": {
                "display_name": "Stagnant Air",
-               "description": "Not a single cloud, not a single breeze... Just the stale, sweltering sun above.<ul><li>Excessive sunlight levels.</li><li>Quite reduced humidity levels.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>"
+               "description": "Not a single cloud, not a single breeze... Just the stale, sweltering sun above.<ul><li>Excessive sunlight levels.</li><li>Quite reduced humidity levels.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun during the day.</li><li>Unsheltered pasture animals are hurt by the heat during the day.</li></ul>"
             }
          },
          "snow": {
             "description": "Cold, frost, and the sun decided to hide. Can we just stay inside?<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>",
             "snow_sunny": {
-               "description": "What a beautiful winter wonderland it is today!<ul><li>Slightly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+               "description": "What a beautiful winter wonderland it is today!<ul><li>Slightly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively during the day and feel cold during the night.</li><li>Unsheltered pasture animals get hurt by the cold during the night.</li></ul>"
             },
             "snow_early": {
                "display_name": "Early Snow",
-               "description": "Snow has come earlier this year...<ul><li>Reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+               "description": "Snow has come earlier this year...<ul><li>Reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too chilly to work as effectively during the day and feel cold during the night.</li><li>Unsheltered pasture animals are hurt by the cold during the night.</li></ul>"
             },
             "snow_late": {
                "display_name": "Late Snow",
-               "description": "There's still snow to fall this year...<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+               "description": "There's still snow to fall this year...<ul><li>Fairly reduced sunlight levels.</li><li>Regular humidity levels.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
             },
             "snow_drifts": {
                "display_name": "Snow Drifts",
-               "description": "The winds are blowing gusts of snow!<ul><li>Normal sunlight levels.</li><li>Quite reduced humidity levels.</li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
+               "description": "The winds are blowing gusts of snow!<ul><li>Normal sunlight levels.</li><li>Quite reduced humidity levels.</li><li>Unsheltered hearthlings are too cold to work as effectively during the day and will be hurt by freezing temperatures at night.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>"
             }
          },
          "sandstorm": {
-            "description": "Cover your eyes. Cover your ears. In fact, just stay inside.<ul><li>Clouds of sand pass across the landscape, destroying crops and hurting everyone.</li><li>Extremely reduced sunlight levels.</li><li>Extremely reduced humidity.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if exposed to the storm's heat too much.</li><li>Unsheltered pasture animals are hurt by the heat.</li></ul>",
+            "description": "Cover your eyes. Cover your ears. In fact, just stay inside.<ul><li>Clouds of sand pass across the landscape, destroying crops and hurting everyone.</li><li>Extremely reduced sunlight levels.</li><li>Extremely reduced humidity.</li><li>Vision radius is slightly reduced.</li><li>Unsheltered hearthlings are sweltering and might get a heatstroke if exposed to the storm's heat during the day and are too hot to work as effectively during the night.</li><li>Unsheltered pasture animals are hurt by the heat during the day but just affected by it during the night.</li></ul>",
             "sandy_day": {
                "description": "There is sand and dust... everywhere!<ul><li>Fairly reduced sunlight levels.</li><li>Greatly reduced humidity.</li><li>Vision radius is only slightly reduced.</li><li>Unsheltered hearthlings are too hot to work as effectively.</li><li>Unsheltered pasture animals are affected by the heat.</li></ul>"
             },
@@ -1832,7 +1832,7 @@
             },
             "rain_chilly": {
                "display_name": "Freezing Rain",
-               "description": "It's like an endless shower of really thin ice needles!<ul><li>Fairly reduced sunlight levels.</li><li>Severely increased humidity.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li><li>Unsheltered pasture animals get soaked wet.</li></ul>"
+               "description": "It's like an endless shower of really thin ice needles!<ul><li>Fairly reduced sunlight levels.</li><li>Severely increased humidity.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings are too chilly to work as effectively during the day and feel cold during the night.</li><li>Unsheltered pasture animals get soaked wet and hurt by the cold during the night.</li></ul>"
             }
          },
          "lucky": {
@@ -1861,12 +1861,12 @@
          },
          "hailstorm": {
             "display_name": "Hailstorm",
-            "description": "A strong storm and chilly winds! Take shelter!<ul><li>Extremely reduced sunlight levels.</li><li>Disastrously increased humidity.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li><li>Unsheltered hearthlings can get bruised by the hail.</li><li>Unsheltered hearthlings are too chilly to work as effectively.</li></ul>"
+            "description": "A strong storm and chilly winds! Take shelter!<ul><li>Extremely reduced sunlight levels.</li><li>Disastrously increased humidity.</li><li>Vision radius is reduced.</li><li>Unsheltered hearthlings and pasture animals get soaked wet.</li><li>Unsheltered hearthlings can get bruised by the hail.</li><li>Unsheltered hearthlings are too chilly to work as effectively during the night.</li></ul>"
          },
          "whiteout": {
             "display_name": "Whiteout",
-            "description": "There is a storm coming... And it's unlike anything we've ever seen.<ul><li>Slightly reduced sunlight levels.</li><li>Quite reduced humidity.</li><li>During the whiteout, vision radius is greatly reduced and hearthlings caught in it will have severely reduced capabilities and speed.</li><li>The whiteout happens near the middle of the day.</li><li>Unsheltered hearthlings are hurt by the cold.</li><li>Unsheltered pasture animals are hurt by the cold.</li></ul>",
-            "bulletin_name": "The whiteout has started! Everyone should go inside!"
+            "description": "There is a storm coming... And it's unlike anything we've ever seen.<ul><li>Slightly reduced sunlight levels.</li><li>Quite reduced humidity.</li></li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li><li>During the whiteout, vision radius is greatly reduced and hearthlings caught in it will have severely reduced capabilities and speed - and start getting hurt after a while.</li><li>The whiteout happens near the middle of the day and lasts until the night.</li></ul>",
+            "bulletin_name": "The whiteout has started! Everyone should go inside NOW!"
          }
       },
       "happiness": {
@@ -3618,7 +3618,7 @@
          "infection": {
             "minor_infection": {
                "display_name": "High Fever",
-               "description": "Feels dizzy and faint... I think one of my wounds is slightly infected. Stamina and Willpower are slightly lowered.<ul><li>💬 Type & Severity: Infection (Medium)</li><li>💊 This infection can be treated with Leeches or Fever Cordial</li><li>❗ High Fever may pass on its own but can also turn into an infection if stacked enough</li><ul>"
+               "description": "Feels dizzy and faint... I think one of my wounds is slightly infected. Stamina and Willpower are slightly lowered.<ul><li>💬 Type & Severity: Infection (Medium)</li><li>💊 This infection can be treated with Leeches or a Simple Fever Cordial</li><li>❗ High Fever may pass on its own but can also turn into an infection if stacked enough</li><ul>"
             },
             "infection": {
                "display_name": "Infection",
@@ -3676,7 +3676,7 @@
          "wounds": {
             "scratch": {
                "display_name": "Wound: Scratch",
-               "description": "Owie! It hurts a little but it's just a nick...<ul><li>💬 Type & Severity: Cut (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>🌿 This wound will be removed with any medical treatment</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
+               "description": "Owie! It hurts a little but it's just a nick...<ul><li>💬 Type & Severity: Cut (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>💊 This wound will be removed by treatment with any ointment or any bandage</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
             },
             "small_cut": {
                "display_name": "Wound: Small Cut",
@@ -3692,7 +3692,7 @@
             },
             "bruise": {
                "display_name": "Wound: Bruise",
-               "description": "It's all purple, bumpy and aching... Could be worse, I guess.<ul><li>💬 Type & Severity: Impact (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>🌿 This wound will be removed with any medical treatment</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
+               "description": "It's all purple, bumpy and aching... Could be worse, I guess.<ul><li>💬 Type & Severity: Impact (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>💊 This wound will be removed by treatment with any ointment or any compress</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
             },
             "severe_concussion": {
                "display_name": "Wound: Severe Concussion",
@@ -3708,7 +3708,7 @@
             },
             "minor_sting": {
                "display_name": "Wound: Minor Sting",
-               "description": "Ouch! Pointy, but luckily a superficial wound...<ul><li>💬 Type & Severity: Piercing (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>🌿 This wound will be removed with any medical treatment</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
+               "description": "Ouch! Pointy, but luckily a superficial wound...<ul><li>💬 Type & Severity: Piercing (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>💊 This wound will be removed by treatment with any ointment or any salve</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
             },
             "prick": {
                "display_name": "Wound: Prick",
@@ -3728,11 +3728,11 @@
             },
             "light_burn": {
                "display_name": "Wound: Light Burn",
-               "description": "That was way too hot!<ul><li>💬 Type & Severity: Fire (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>💊 This wound requires any bandage or ointment to be treated and will be completely removed</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
+               "description": "That was way too hot!<ul><li>💬 Type & Severity: Fire (Low)</li><li>💚🔻 Effective maximum health is very slightly lowered</li><li>💊 This wound will be removed by treatment with any ointment or any bandage</li><li>⏳ This wound will also heal on its own, but it will take some time</li></ul>"
             },
             "bad_burn": {
                "display_name": "Wound: Bad Burn",
-               "description": "That was way too hot!<ul><li>💬 Type & Severity: Fire (High)</li><li>💜🔻 Effective maximum health is somewhat lowered</li><li>💊 This wound requires any bandage or ointment to be treated but might require multiple treatments before being removed</li><li>❌ This wound will never heal on its own</li><li>💫 Treating this wound has a small chance of permanently adding the condition Scary Scar</li></ul>"
+               "description": "That was way too hot!<ul><li>💬 Type & Severity: Fire (High)</li><li>💜🔻 Effective maximum health is somewhat lowered</li><li>💊 This wound will be removed by treatment with any ointment or any bandage but might require multiple applications before being removed</li><li>❌ This wound will never heal on its own</li><li>💫 Treating this wound has a small chance of permanently adding the condition Scary Scar</li></ul>"
             },
             "corrupted_laceration": {
                "display_name": "Wound: Corrupted Laceration",
@@ -3760,9 +3760,9 @@
                "display_name": "Refreshing Tonic",
                "description": "An aura of cold involves this hearthling, protecting them from hot weather."
             },
-            "cold_tonic_worn_off_buff": {
-               "display_name": "Refreshing Tonic (After-effect)",
-               "description": "This hearthling's body is tired after being magically enveloped for too long. Body is reduced."
+            "cold_tonic_side_effect_buff": {
+               "display_name": "Refreshing Tonic (Side Effect)",
+               "description": "This hearthling's body is tired of magically deflecting so much heat to keep them cool.<ul><li>Body is reduced.</li></ul>"
             }
          },
          "courage_tonic": {
@@ -3846,9 +3846,9 @@
                "display_name": "Warmth Tonic",
                "description": "An aura of heat involves this hearthling, protecting them from cold weather."
             },
-            "warmth_tonic_worn_off_buff": {
-               "display_name": "Warmth Tonic (After-effect)",
-               "description": "This hearthling's body is tired after being magically enveloped for too long. Body is reduced."
+            "warmth_tonic_side_effect_buff": {
+               "display_name": "Warmth Tonic (Side Effect)",
+               "description": "Too much heat being contained within this hearthling's body causes their head to feel heavier and hot.<ul><li>Mind is reduced.</li></ul>"
             }
          },
          "water_resist_tonic": {
@@ -4415,22 +4415,22 @@
             "herbalist_planter_pot_recipe": {
                "recipe_name": "Simple Herbalist Pot",
                "description": "The Herbalist can use this pot to cultivate a single renewable herb.",
-               "flavor": "Changing the cultivated herb requires the respective seed"
+               "flavor": ""
             },
             "herbalist_planter_small_recipe": {
                "recipe_name": "Herbalist Planter",
                "description": "The Herbalist can use this container to cultivate two renewable herbs.",
-               "flavor": "Changing the cultivated herb requires the respective seed"
+               "flavor": ""
             },
             "herbalist_planter_large_recipe": {
                "recipe_name": "Large Herbalist Planter",
                "description": "The Herbalist can use this nice planter to cultivate four renewable herbs.",
-               "flavor": "Changing the cultivated herb requires the respective seed"
+               "flavor": ""
             },
             "herbalist_planter_water_recipe": {
                "recipe_name": "Herbalist Water Planter",
                "description": "The Herbalist can create a special planter to cultivate aquatic resources and get leeches, useful for treating infections.",
-               "flavor": "Algae can be replanted from their own resources"
+               "flavor": ""
             },
             "herbalist_planter_pot_sapling_recipe": {
                "recipe_name": "Herbalist Tree-Planting Pot",
@@ -5153,6 +5153,11 @@
                "description": "A little thing to make a home feel more cosy.",
                "flavor": "Literally handpicked flowers are going to be placed in this vase. Some blossoms might be more striking than others *wink, wink*."
             },
+            "herbalist_exploration_garden_recipe": {
+               "recipe_name": "Herbalist Exploration Garden",
+               "description": "Used by the Herbalist for discovering new types of plants to be cultivated in herbalist planters by trying out wild seeds.",
+               "flavor": "To boldly go where no Herbalist has gone before"
+            },
             "herbalist_cauldron_recipe": {
                "recipe_name": "Herbalist Stone Cauldron",
                "description": "Used by the Herbalist for brewing & concocting simple potions.",
@@ -5189,7 +5194,7 @@
             },
             "cold_tonic_recipe": {
                "recipe_name": "Refreshing Tonic",
-               "description": "This tonic will protect your entire town from hot weather. Causes after-effects when the quality isn't excellent or higher.",
+               "description": "This tonic will protect your entire town from hot weather. However, it reduces their Body as a side effect.",
                "flavor": "Known as 'Frost Embrace' in the famous Illustrated Alchemical Catalogue by Zokumos of Panaples"
             },
             "nightsight_tonic_recipe": {
@@ -5328,7 +5333,7 @@
             },
             "simple_ointment_recipe": {
                "recipe_name": "Simple Ointment",
-               "description": "A dense paste that can be used for healing many types of basic wounds.",
+               "description": "A dense paste that can be used for healing many types of basic wounds of low severity.",
                "flavor": "Ointments can be used for impact, cut, piercing, cold, and fire wounds"
             },
             "fine_ointment_recipe": {
@@ -5511,6 +5516,10 @@
             },
             "display_name": "Herbalist Bone Staff",
             "description": "The power of Firnn provides healing and focus."
+         },
+         "herbalist_exploration_garden": {
+            "display_name": "Herbalist Exploration Garden",
+            "description": "Used for discovering new types of plants for cultivation in herbalist planters."
          }
       },
       "engineer": {
@@ -9461,7 +9470,7 @@
          },
          "cold_tonic": {
             "display_name": "Refreshing Tonic",
-            "description": "Temporarily protects from hot weather."
+            "description": "Temporarily protects from hot weather but Body is reduced as a side effect."
          },
          "nightsight_tonic": {
             "display_name": "Nightsight Tonic",
@@ -9549,7 +9558,7 @@
          },
          "simple_ointment": {
             "display_name": "Simple Ointment",
-            "description": "Used by the Herbalist for treating the most basic wounds."
+            "description": "Used by the Herbalist for treating the most basic wounds of low severity."
          },
          "fine_ointment": {
             "display_name": "Fine Ointment",
@@ -13838,6 +13847,10 @@
          "porcelain_coffee_pot": {
             "display_name": "Porcelain Coffee Pot",
             "description": "Beautiful and ornate, perfect for a high quality beverage."
+         },
+         "market_stall_farmer": {
+            "display_name": "Farmer's Market Stall",
+            "description": "Unlocks the town ability to attract farming merchants. Can call upon seed merchants."
          }
       },
       "pets": {
@@ -17928,7 +17941,7 @@
    "herbalist_crops": {
       "no_crop": {
          "display_name": "Empty",
-         "description": "Just a planter full of potential. Changing a planter with a plant growing in it to empty will immediately pop out a seed for that plant."
+         "description": "Just a planter full of potential."
       },
       "brightbell": {
          "display_name": "Brightbell",

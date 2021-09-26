@@ -3,6 +3,32 @@
    "description": "i18n(stonehearth_ace:data.weather.windy.windy_springtime.description)",
    "icon": "file(windy_springtime.png)",
    "sky_settings": "stonehearth_ace:sky_settings:windy:springtime",
+   "unsheltered_debuff": [
+      {
+         "debuff": "stonehearth_ace:buffs:weather:chilly",
+         "time": "night"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold_breath",
+         "time": "night"
+      }
+   ],
+   "unsheltered_animal_debuff": [
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold_breath",
+         "time": "night"
+      }
+   ],
+   "unsheltered_npc_debuff": [
+      {
+         "debuff": "stonehearth_ace:buffs:weather:chilly:npc",
+         "time": "night"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold_breath",
+         "time": "night"
+      }
+   ],
    "renderer": "stonehearth_ace:weather_renderers:windy_springtime",
    "ambient_sound_key": "windy_springtime",
    "thoughts": [
