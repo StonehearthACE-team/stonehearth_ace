@@ -69,6 +69,13 @@ function AceHydrologyService:unregister_water_processor(entity_id, water_process
 	end
 end
 
+-- TODO: if there's a way we can handle this in a more integrated way
+-- and hold off on actually adding/removing water from both water processors
+-- and natural water flow channels, instead creating a list of net changes
+-- (or storing pre-changes in water/waterfall/water_sponge components),
+-- and then perform only the net changes at the end of the tick (in the appropriate order)
+-- it could greatly improve performance for static/closed systems
+-- the flexibility of water processors makes that a lot trickier though
 function AceHydrologyService:_process_water_processors()
 	if not (self._min_elevation and self._max_elevation) then
 		return

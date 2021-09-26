@@ -161,6 +161,7 @@ function AceWaterComponent:_raise_layer()
 end
 
 function AceWaterComponent:_remove_from_wetting_layer(num_blocks)
+   local changed = false
    while num_blocks > 0 do
       local wetting_layer = self._sv._wetting_layer:get()
       if wetting_layer:empty() then
@@ -182,7 +183,7 @@ function AceWaterComponent:_remove_from_wetting_layer(num_blocks)
    self:_update_destination()
    --self.__saved_variables:mark_changed()
 
-   if num_blocks > 0 then
+   if changed then
       stonehearth_ace.water_signal:water_component_modified(self._entity)
    end
 
@@ -251,14 +252,14 @@ function AceWaterComponent:_mark_water_added()
    --self.__saved_variables:mark_changed()
 end
 
-function AceWaterComponent:evaporate()
+function AceWaterComponent:evaporate(amount)
    self._sv._last_evaporation_time = stonehearth.calendar:get_elapsed_time()
 
    if not self:top_layer_in_wetting_mode() then
-      return
+      return amount
    end
 
-   self:_remove_from_wetting_layer(1)
+   return self:_remove_from_wetting_layer(amount or 1)
 
    --self.__saved_variables:mark_changed()
 end

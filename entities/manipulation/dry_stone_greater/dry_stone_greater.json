@@ -5,6 +5,12 @@
       },
       "stonehearth_ace:water_sponge": {
          "input_location": { "x": 0, "y": 0, "z": 0 },
+         "input_region": [
+            {
+               "min": { "x": -4, "y": -1, "z": -4 },
+               "max": { "x": 5, "y": 1, "z": 5 }
+            }
+         ],
          "input_rate": 2.0,
          "destroy_water": true
       }

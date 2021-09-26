@@ -61,6 +61,9 @@ function AceChannelManager:add_water_to_waterfall_channel(channel, volume)
    local waterfall_component = channel.entity:add_component('stonehearth:waterfall')
    waterfall_component:set_volume(channel.volume)
    waterfall_component:set_source_water_level(water_level)
+
+   -- at some point we might want to limit how much water can be put into a waterfall
+   return 0
 end
 
 -- from_point is a point inside the source water body
