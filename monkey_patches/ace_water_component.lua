@@ -34,12 +34,14 @@ function AceWaterComponent:_reset_changed_on_tick()
    self._prev_height = self._sv.height
    self._prev_region = Region3(self._sv.region:get())
    self._prev_location = self._location
+   self._region_changed = nil
 end
 
 function AceWaterComponent:_was_changed_on_tick()
-   if self._prev_height ~= self._sv.height or
-      self._prev_location ~= self._location or
-      not csg_lib.are_same_shape_regions(self._prev_region, self._sv.region:get()) then
+   if self._region_changed or
+      self._prev_height ~= self._sv.height or
+      self._prev_location ~= self._location then
+      -- not csg_lib.are_same_shape_regions(self._prev_region, self._sv.region:get()) then
          log:debug('%s was changed on tick', self._entity)
          return true
    end
@@ -154,6 +156,7 @@ function AceWaterComponent:_raise_layer()
    self:_update_wetting_layer()
 
    --self.__saved_variables:mark_changed()
+   self._region_changed = true
 
    self:_update_destination()
 
@@ -178,12 +181,14 @@ function AceWaterComponent:_remove_from_wetting_layer(num_blocks)
       -- this call will update self._sv._wetting_layer
       self:_remove_point_from_region(point)
       num_blocks = num_blocks - 1
+      changed = true
    end
 
    self:_update_destination()
    --self.__saved_variables:mark_changed()
 
    if changed then
+      self._region_changed = true
       stonehearth_ace.water_signal:water_component_modified(self._entity)
    end
 
@@ -243,6 +248,7 @@ function AceWaterComponent:_lower_layer()
    self:_remove_from_region(top_layer, { force_top_layer_changed = true })
 
    --self.__saved_variables:mark_changed()
+   self._region_changed = true
 
    return true
 end
@@ -350,6 +356,7 @@ function WaterComponent:_merge_regions(master, mergee, allow_uneven_top_layers)
    end
 
    --master_component.__saved_variables:mark_changed()
+   master_component._region_changed = true
 end
 
 -- region must exist within the current y bounds of the existing water region
@@ -379,6 +386,7 @@ function AceWaterComponent:add_to_region(region)
    end
 
    --self.__saved_variables:mark_changed()
+   self._region_changed = true
 end
 
 -- region in local coordinates
@@ -401,6 +409,7 @@ function AceWaterComponent:_add_to_top_layer(region)
    self:_update_destination()
 
    --self.__saved_variables:mark_changed()
+   self._region_changed = true
 end
 
 -- region is in local coordinates
@@ -453,6 +462,7 @@ function AceWaterComponent:_remove_from_region_impl(region_to_remove, destroy_or
    end
 
    --self.__saved_variables:mark_changed()
+   self._region_changed = true
 end
 
 function AceWaterComponent:_move_to_new_origin()
