@@ -232,7 +232,7 @@ var stonehearth_ace = {
    updateFenceModeSettings: function(selected_segments, custom_presets) {
       stonehearth_ace._fence_mode.selected_segments = selected_segments || stonehearth_ace._fence_mode.selected_segments;
       stonehearth_ace._fence_mode.custom_presets = custom_presets || stonehearth_ace._fence_mode.custom_presets;
-      return radiant.call('radiant:set_config', 'mods.stonehearth_ace.fence_mode', {
+      return radiant.call('stonehearth_ace:set_fence_settings_command', {
          selected_segments: stonehearth_ace._fence_mode.selected_segments,
          custom_presets: stonehearth_ace._fence_mode.custom_presets
       });
@@ -244,7 +244,7 @@ var stonehearth_ace = {
 
    updateStorageFilterPresets: function(custom_presets) {
       stonehearth_ace._storageFilterPresets.custom_presets = custom_presets;
-      return radiant.call('radiant:set_config', 'mods.stonehearth_ace.storage_filter_custom_presets', stonehearth_ace._storageFilterPresets.custom_presets);
+      return radiant.call('stonehearth_ace:set_storage_filter_custom_presets_command', stonehearth_ace._storageFilterPresets.custom_presets);
    },
 
    getCommandGroup: function(name) {
@@ -290,9 +290,9 @@ $.getJSON('/stonehearth_ace/ui/data/job_roles.json', function(data) {
 $.getJSON('/stonehearth_ace/ui/data/fence_types.json', function(data) {
    stonehearth_ace._fence_mode.default_presets = data.default_presets;
 
-   radiant.call('radiant:get_config', 'mods.stonehearth_ace.fence_mode')
+   radiant.call('stonehearth_ace:get_fence_settings_command')
       .done(function(response) {
-         var settings = response['mods.stonehearth_ace.fence_mode'] || {};
+         var settings = response || {};
          stonehearth_ace._fence_mode.selected_segments = settings.selected_segments;
          stonehearth_ace._fence_mode.custom_presets = settings.custom_presets || {};
       });
@@ -304,9 +304,9 @@ $.getJSON('/stonehearth_ace/ui/data/storage_filter_presets.json', function(data)
       'default_preset_list': data.default_preset_list,
    };
 
-   radiant.call('radiant:get_config', 'mods.stonehearth_ace.storage_filter_custom_presets')
+   radiant.call('stonehearth_ace:get_storage_filter_custom_presets_command')
       .done(function(response) {
-         stonehearth_ace._storageFilterPresets.custom_presets = response['mods.stonehearth_ace.storage_filter_custom_presets'] || {};
+         stonehearth_ace._storageFilterPresets.custom_presets = response || {};
       });
 });
 

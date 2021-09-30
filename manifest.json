@@ -5719,6 +5719,14 @@
          "controller": "file(call_handlers/fence_call_handler.lua)",
          "endpoint": "server"
       },
+      "get_fence_settings_command": {
+         "controller": "file(call_handlers/fence_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "set_fence_settings_command": {
+         "controller": "file(call_handlers/fence_call_handler.lua)",
+         "endpoint": "client"
+      },
       "update_client_connections_command": {
          "controller": "file(call_handlers/advanced_placement_call_handler.lua)",
          "endpoint": "client"
@@ -5795,6 +5803,10 @@
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
       },
+      "get_storage_filter_custom_presets_command": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "client"
+      },
       "issue_party_commands_when_job_disabled_setting_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
@@ -5806,6 +5818,10 @@
       "set_client_gameplay_setting_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
+      },
+      "set_storage_filter_custom_presets_command": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "client"
       },
       "show_connector_regions_setting_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
