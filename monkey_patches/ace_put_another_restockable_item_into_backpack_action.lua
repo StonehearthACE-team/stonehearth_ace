@@ -9,6 +9,60 @@ PutAnotherRestockableItemIntoBackpack.args.filter_fn = {            -- an option
       default = stonehearth.ai.NIL,
    }
 
+local function _should_restock(item)
+   local entity_forms_component = item:get_component('stonehearth:entity_forms')
+   if entity_forms_component and not entity_forms_component:get_should_restock() then
+      return false
+   end
+   return true
+end
+
+-- ACE: only pick up the item if it should be restocked
+function AcePutAnotherRestockableItemIntoBackpack:run(ai, entity, args)
+   if radiant.entities.get_carrying(entity) then
+      -- we didn't check ai.CURRENT.carrying before entering here, so we
+      -- may need to clear what we've got to pick up something else
+      ai:execute('stonehearth:clear_carrying_now', { owner_player_id = args.owner_player_id })
+   end
+
+   if self._path then
+      if radiant.entities.exists(self._item) then
+         -- Only follow path if item is valid.
+         -- It is possible for the item to become invalid between thinking and start
+         -- However, we want to keep going with the loop so we can finish restocking the other times we picked up.
+         ai:execute('stonehearth:follow_path', { path = self._path })
+         if _should_restock(self._item) then
+            local storage = stonehearth.inventory:get_inventory(entity:get_player_id()):container_for(self._item)
+            if storage then
+               ai:execute('stonehearth:pickup_item_from_storage_adjacent', {
+                  storage = storage,
+                  item = self._item,
+                  owner_player_id = args.owner_player_id,
+               })
+            else
+               ai:execute('stonehearth:pickup_item_adjacent', {
+                  item = self._item,
+                  owner_player_id = args.owner_player_id,
+                  is_restocking = true,
+               })
+            end
+
+            -- Perform the same checks as put_carrying_in_backpack does before calling it,
+            -- as otherwise it fails its think and blows up the AI state.
+            local carrying = radiant.entities.get_carrying(entity)
+            if (radiant.entities.exists(entity)
+                  and not entity:get_component('stonehearth:storage'):is_full()
+                  and carrying
+                  and stonehearth.catalog:is_item(carrying:get_uri())) then
+               ai:execute('stonehearth:put_carrying_in_backpack', {
+                  owner_player_id = args.owner_player_id,
+               })
+            end
+         end
+      end
+   end
+end
+
 function AcePutAnotherRestockableItemIntoBackpack:_find_path_to_item(ai, entity, args)
    if not ai.CURRENT.storage then
       self._log:debug('have no backpack')
@@ -43,6 +97,12 @@ function AcePutAnotherRestockableItemIntoBackpack:_find_path_to_item(ai, entity,
          return false
       end
 
+      -- if it has entity_forms and is not set as should_restock, cancel
+      if not _should_restock(item) then
+         return false
+      end
+
+      -- ACE: check filter if provided
       if args.filter_fn then
          return args.filter_fn(item)
       end
@@ -53,6 +113,7 @@ function AcePutAnotherRestockableItemIntoBackpack:_find_path_to_item(ai, entity,
    local count = 0
    local candidate_scores = {}
    local container_to_item = {}
+   local interaction_proxy_to_item = {}
    local inventory = stonehearth.inventory:get_inventory(entity:get_player_id())
    for _, entry in ipairs(args.candidates) do
       -- TODO: Stop supporting these fallbacks.
@@ -60,7 +121,18 @@ function AcePutAnotherRestockableItemIntoBackpack:_find_path_to_item(ai, entity,
       if ok_to_pickup(item) then
          if radiant.entities.exists_in_world(item) then
             self._log:debug('adding %s to pathfinder', item)
-            pathfinder:add_destination(item)
+            -- ACE: if it has an interaction proxy, use that instead
+            local use_item = item
+            local entity_forms_component = item:get_component('stonehearth:entity_forms')
+            if entity_forms_component then
+               local interaction_proxy = entity_forms_component:get_interaction_proxy()
+               if interaction_proxy then
+                  interaction_proxy_to_item[interaction_proxy:get_id()] = item
+                  use_item = interaction_proxy
+               end
+            end
+
+            pathfinder:add_destination(use_item)
             count = count + 1
          else
             local container = inventory:container_for(item)
@@ -113,9 +185,20 @@ function AcePutAnotherRestockableItemIntoBackpack:_find_path_to_item(ai, entity,
    self._item = path:get_destination()
    if container_to_item[self._item:get_id()] then
       self._item = container_to_item[self._item:get_id()]
+   elseif interaction_proxy_to_item[self._item:get_id()] then
+      self._item = interaction_proxy_to_item[self._item:get_id()]
    end
    ai.CURRENT.location = path:get_finish_point()
-   ai.CURRENT.storage:add_item(self._item)
+   
+   -- if we want to be able to remove the item from our backpack later, it needs to be the actual item
+   -- i.e., if it has entity forms, then it will put the iconic into the backpack, not the root
+   local backpack_item = self._item
+   local entity_forms_component = self._item:get_component('stonehearth:entity_forms')
+   if entity_forms_component then
+      backpack_item = entity_forms_component:get_iconic_entity() or backpack_item
+   end
+   ai.CURRENT.storage:add_item(backpack_item)
+
    ai.CURRENT.self_reserved[self._item:get_id()] = self._item
    self._lease = stonehearth.ai:acquire_ai_lease(self._item, entity, 1000, args.owner_player_id)
    self._item_score = candidate_scores[self._item:get_id()]

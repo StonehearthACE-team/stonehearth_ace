@@ -184,6 +184,7 @@ return ai:create_compound_action(ExecuteRestockErrand)
          :execute('stonehearth:pickup_item_into_backpack', {
             item = ai.BACK(4).main_item,
             owner_player_id = ai.BACK(4).owner_player_id,
+            is_restocking = true,
          })
          :execute('stonehearth:fill_backpack_from_items', {
             candidates = ai.BACK(5).extra_items,
@@ -192,11 +193,13 @@ return ai:create_compound_action(ExecuteRestockErrand)
             owner_player_id = ai.BACK(5).owner_player_id,
             reserve_space = false,
             filter_fn = ai.BACK(5).fill_backpack_filter_fn,
+            is_restocking = true,
          })
          :execute('stonehearth:fill_storage_from_backpack', {
             filter_fn = ai.BACK(6).filter_fn,
             storage = ai.BACK(6).storage,
             owner_player_id = ai.BACK(6).owner_player_id,
+            ignore_missing = true,
          })
          :execute('stonehearth:call_method', {
             obj = ai.BACK(7).restock_director,
