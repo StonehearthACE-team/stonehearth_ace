@@ -50,6 +50,9 @@ function PetSleepInBedInBadWeather:_rethink()
    local debuffs = weather:get_unsheltered_animal_debuffs()
    if debuffs then
       for _, debuff in ipairs(debuffs) do
+         if type(debuff) == 'table' then
+            debuff = debuff.debuff
+         end
          local json = radiant.resources.load_json(debuff)
          if json and json.axis == 'debuff' then
             -- set a timer to keep retrying in case they get up to eat or something else
