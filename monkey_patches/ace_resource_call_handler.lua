@@ -3,9 +3,50 @@
    we also have our own resource_call_handler.lua file that must be separate in order to be in the stonehearth_ace namespace for our own functions
 ]]
 
+local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local validator = radiant.validator
 
 local AceResourceCallHandler = class()
+
+--Return true for entities that are clearable: resource nodes, materials,
+--any furniture that is iconic, tools, and placed items.
+function AceResourceCallHandler:_is_clearable(entity, player_id)
+   if radiant.entities.is_owned_by_another_player(entity, player_id) then
+      -- don't delete stuff you don't own
+      return false
+   end
+
+   if entity:get_component('terrain') then
+      -- don't delete terrain
+      return false
+   end
+
+   if entity:get_component('stonehearth:ghost_form') then
+      -- don't delete ghost
+      return false
+   end
+
+   if entity:get_component('stonehearth_ace:interaction_proxy') then
+      -- don't delete interaction proxies
+      return false
+   end
+
+   local entity_data = radiant.entities.get_entity_data(entity, 'stonehearth:item')
+
+   if entity_data and entity_data.clearable == false then
+      return false
+   end
+
+   local root, iconic = entity_forms_lib.get_forms(entity)
+   if iconic then
+      entity_data = radiant.entities.get_entity_data(iconic, 'stonehearth:item')
+      if entity_data and entity_data.clearable == false then
+         return false
+      end
+   end
+
+   return true
+end
 
 -- added setting auto-loot player id
 function AceResourceCallHandler:harvest_entity(session, response, entity, from_harvest_tool)

@@ -10,16 +10,21 @@ local log = radiant.log.create_logger('water_sponge')
 
 local WaterSpongeComponent = class()
 
+local FAIL_IGNORE_COUNT = 10
+
 function WaterSpongeComponent:initialize()
    self._json = radiant.entities.get_json(self)
 
-   self._input_rate = self._json.input_rate or 1
-   self._output_rate = self._json.output_rate or 1
-   self._input_depth = self._json.input_depth or 0
+   self._input_rate = self._json.input_rate or 0
+   self._output_rate = self._json.output_rate or 0
    self._create_water = self._json.create_water
    self._destroy_water = self._json.destroy_water
    -- if the sponge is in absorb mode, disable once it's at full capacity; if in release mode, disable once it's empty
    self._auto_disable_on_full_or_empty = self._json.auto_disable_on_full_or_empty
+   self._input_fail_ignores = 0
+   self._output_fail_ignores = 0
+   self._prev_input_water_entity = nil
+   self._prev_output_water_entity = nil
 
    self._effects = {}
 end
@@ -30,15 +35,19 @@ function WaterSpongeComponent:create()
    if self._json.input_location then
       self._sv._input_location = radiant.util.to_point3(self._json.input_location)
    end
+   if self._json.input_region then
+      self._sv._input_region = radiant.util.to_region3(self._json.input_region)
+   end
    if self._json.output_location then
       self._sv._output_location = radiant.util.to_point3(self._json.output_location)
    end
 
-   self._sv.input_enabled = self._json.input_enabled
-   self._sv.output_enabled = self._json.output_enabled
+   self._sv.input_enabled = self._json.input_enabled ~= false
+   self._sv.output_enabled = self._json.output_enabled ~= false
 end
 
 function WaterSpongeComponent:post_activate()
+   self._wetting_volume = stonehearth.constants.hydrology.WETTING_VOLUME
    self._container = self._entity:get_component('stonehearth_ace:container')
 
    --Trace the parent to figure out if it's added or not:
@@ -53,9 +62,9 @@ function WaterSpongeComponent:post_activate()
             end
          end)
 
-   if not self._is_create then
-      self._parent_trace:push_object_state()
-   end
+   self._entity:remove_component('stonehearth:wet_stone')
+
+   self:_startup()
 end
 
 function WaterSpongeComponent:destroy()
@@ -114,13 +123,14 @@ function WaterSpongeComponent:_startup()
 		return
 	end
 
-   stonehearth_ace.water_processor:register_water_processor(self._entity:get_id(), self, location.y)
+   stonehearth.hydrology:unregister_water_processor(self._entity:get_id(), self)
+   stonehearth.hydrology:register_water_processor(self._entity:get_id(), self, location.y)
    self:_update_commands()
    self:_update_effects()
 end
 
 function WaterSpongeComponent:_shutdown()
-   stonehearth_ace.water_processor:unregister_water_processor(self._entity:get_id(), self)
+   stonehearth.hydrology:unregister_water_processor(self._entity:get_id(), self)
    self:_update_effects()
 end
 
@@ -148,12 +158,21 @@ function WaterSpongeComponent:set_input_location(location)
    self._sv._input_location = location
 end
 
-function WaterSpongeComponent:get_output_location()
-   return self._sv._output_location
+function WaterSpongeComponent:get_input_region()
+   return self._sv._input_region
 end
 
-function WaterSpongeComponent:set_output_location(location)
+function WaterSpongeComponent:set_input_region(region)
+   self._sv._input_region = region
+end
+
+function WaterSpongeComponent:get_output_location()
+   return self._sv._output_location, self._sv._output_origin
+end
+
+function WaterSpongeComponent:set_output_location(location, origin)
    self._sv._output_location = location
+   self._sv._output_origin = origin
 end
 
 function WaterSpongeComponent:set_enabled(input, output)
@@ -193,113 +212,228 @@ function WaterSpongeComponent:on_tick_water_processor()
    end
 
    -- first try outputting what we have
-   -- a pipe/pump/sponge will output from its container; a well will simply create water and not have a container
+   -- a pipe/pump/sponge will output from its container; a well/wet-stone will simply create water and not have a container
 
-   local output_rate = self:get_output_rate()
-   if self._sv.output_enabled and output_rate > 0 then
-      local output_location = self._sv._output_location
-      if output_location then
-         output_location = location + output_location:rotated(radiant.entities.get_facing(self._entity))
+   if self._output_fail_ignores > 0 then
+      self._output_fail_ignores = self._output_fail_ignores - 1
+   elseif self._sv.output_enabled then
+      local output_rate = self:get_output_rate()
+      if output_rate > 0 then
+         local output_location = self._sv._output_location
+         if output_location then
+            output_location = radiant.entities.local_to_world(output_location, self._entity)
 
-         local destination_container, destination_sponge, is_solid = self:_get_destination_container(output_location)
-         if destination_container then
-            -- since we're outputting first, we want to process from the end of the line first
-            -- that way our destination container will have as much space as it can before we try to output
-            if destination_sponge then
-               destination_sponge:on_tick_water_processor()
-            end
-            output_rate = math.min(output_rate, destination_container:get_available_capacity('stonehearth:water'))
-         elseif is_solid then
-            output_rate = 0
-         end
-
-         if not self._create_water then
-            if self._container then
-               -- if we're not creating water, it has to come from our container (which can get fed by input or by others' output)
-               -- update the output_rate based on how much we actually have in the container
-               output_rate = output_rate - self._container:remove_volume('stonehearth:water', output_rate)
-            else
+            local destination_container, destination_sponge, is_solid = self:_get_destination_container(output_location)
+            if destination_container then
+               -- since we're outputting first, we want to process from the end of the line first
+               -- that way our destination container will have as much space as it can before we try to output
+               if destination_sponge then
+                  destination_sponge:on_tick_water_processor()
+               end
+               output_rate = math.min(output_rate, destination_container:get_available_capacity('stonehearth:water'))
+            elseif is_solid then
                output_rate = 0
             end
-         end
 
-         if output_rate > 0 then
-            if destination_container then
-               destination_container:add_volume('stonehearth:water', output_rate)
-            else
-               local volume_not_added = stonehearth.hydrology:add_water(output_rate, output_location)
-               if volume_not_added > 0 and self._container then
-                  -- if we couldn't add it all, put it back in our container if we have one
-                  self._container:add_volume('stonehearth:water', volume_not_added)
+            if not self._create_water then
+               if self._container then
+                  -- if we're not creating water, it has to come from our container (which can get fed by input or by others' output)
+                  -- update the output_rate based on how much we actually have in the container
+                  output_rate = output_rate - self._container:remove_volume('stonehearth:water', output_rate)
+               else
+                  output_rate = 0
                end
             end
 
-            if self._auto_disable_on_full_or_empty and not self._sv.input_enabled and self._container and self._container:is_empty() then
-               self:set_enabled(self._sv.input_enabled, false)
+            if output_rate > 0 then
+               local volume_not_added = output_rate
+               if destination_container then
+                  volume_not_added = destination_container:add_volume('stonehearth:water', volume_not_added)
+               else
+                  -- check if there's a water entity at the output location to add it to
+                  -- if not, check where we might want to make a waterfall
+                  -- if it makes sense to make a waterfall, do that, otherwise just output water
+                  local water_entity
+                  if self._prev_output_water_entity and self._prev_output_water_entity:is_valid() then
+                     water_entity = self._prev_output_water_entity
+                  end
+                  
+                  if not water_entity then
+                     local output_origin = self._sv._output_origin
+                     if output_origin then
+                        output_origin = radiant.entities.local_to_world(output_origin, self._entity)
+                        water_entity = stonehearth.hydrology:get_water_body_at(output_location)
+                        if not water_entity then
+                           local channel = self._prev_waterfall_channel
+
+                           if not channel then
+                              local bottom = stonehearth.hydrology:get_terrain_below(output_location)
+                              if output_location ~= bottom then
+                                 water_entity = stonehearth.hydrology:get_or_create_water_body_at(bottom)
+                                 local channel_manager = stonehearth.hydrology:get_channel_manager()
+                                 channel = channel_manager:add_waterfall_channel(output_origin, bottom, self._entity, water_entity)
+                                 self._prev_waterfall_channel = channel
+                              end
+                           end
+
+                           if channel then
+                              volume_not_added = channel_manager:add_water_to_waterfall_channel(channel, volume_not_added)
+                           end
+                        else
+                           self._prev_output_water_entity = water_entity
+                        end
+                     end
+                  end
+
+                  if volume_not_added > 0 then
+                     local result, info = stonehearth.hydrology:add_water(volume_not_added, output_location, water_entity, true)
+                     volume_not_added = result
+                     if info then
+                        self._prev_output_water_entity = info.water_entity
+                        self._prev_waterfall_channel = nil
+                     end
+                  end
+               end
+
+               if volume_not_added > 0 then
+                  if self._container then
+                     -- if we couldn't add it all, put it back in our container if we have one
+                     self._container:add_volume('stonehearth:water', volume_not_added)
+                  end
+
+                  self._prev_output_water_entity = nil
+                  self._prev_waterfall_channel = nil
+
+                  if volume_not_added == output_rate then
+                     self._output_fail_ignores = FAIL_IGNORE_COUNT
+                  end
+               elseif self._auto_disable_on_full_or_empty and not self._sv.input_enabled and self._container and self._container:is_empty() then
+                  self:set_enabled(self._sv.input_enabled, false)
+               end
             end
+         else
+            self._prev_output_water_entity = nil
+            self._prev_waterfall_channel = nil
          end
+      else
+         self._prev_output_water_entity = nil
+         self._prev_waterfall_channel = nil
       end
+   else
+      self._prev_output_water_entity = nil
+      self._prev_waterfall_channel = nil
    end
 
    -- then input water into our container (or destroy water if we don't have one and are set to destroy)
 
-   local input_rate = self:get_input_rate()
-   if self._sv.input_enabled and input_rate > 0 then
-      if self._container then
-         input_rate = math.min(input_rate, self._container:get_available_capacity('stonehearth:water'))
-      elseif not self._destroy_water then
-         input_rate = 0
-      end
-
+   if self._input_fail_ignores > 0 then
+      self._input_fail_ignores = self._input_fail_ignores - 1
+   elseif self._sv.input_enabled then
+      local input_rate = self:get_input_rate()
       if input_rate > 0 then
-         local input_location = self._sv._input_location
-         if input_location then
-            input_location = location + input_location:rotated(radiant.entities.get_facing(self._entity))
-            local volume_not_removed = input_rate
+         if self._container then
+            input_rate = math.min(input_rate, self._container:get_available_capacity('stonehearth:water'))
+         elseif not self._destroy_water then
+            input_rate = 0
+         end
 
-            -- pull water up from the lowest depth first
-            for depth = self._input_depth, 0, -1 do
-               local source_location = input_location + Point3(0, -depth, 0)
-               local water_body = self:_get_water_body(source_location)
+         if input_rate > 0 then
+            local input_location = self._sv._input_location
+            if input_location then
+               input_location = radiant.entities.local_to_world(input_location, self._entity)
+               local volume_not_removed = input_rate
 
-               if water_body then
-                  -- try removing water from this depth
-                  volume_not_removed = stonehearth.hydrology:remove_water(volume_not_removed, source_location, water_body)
+               -- the vast majority of the time, we'll be modifying a single water entity
+               if self._prev_input_water_entity and self._prev_input_water_entity:is_valid() then
+                  volume_not_removed = self:_try_remove_water(self._prev_input_water_entity, input_location, volume_not_removed)
                end
 
-               if volume_not_removed <= 0 then
-                  break
-               end
-            end
+               if volume_not_removed > 0 then
+                  local input_region = self._sv._input_region and radiant.entities.local_to_world(self._sv._input_region, self._entity)
+                  local water_bodies = self:_get_water_bodies(input_location, input_region)
 
-            input_rate = input_rate - volume_not_removed
-            if self._container then
-               if input_rate > 0 then
-                  self._container:add_volume('stonehearth:water', input_rate)
-                  
-                  if self._auto_disable_on_full_or_empty and not self._sv.output_enabled and self._container:is_full() then
-                     self:set_enabled(false, self._sv.output_enabled)
+                  if water_bodies then
+                     for _, water_body in ipairs(water_bodies) do
+                        -- try removing water from this water body
+                        volume_not_removed = self:_try_remove_water(water_body, input_location, volume_not_removed)
+
+                        if volume_not_removed <= 0 then
+                           self._prev_input_water_entity = water_body
+                           break
+                        end
+                     end
                   end
                end
+
+               if input_rate > volume_not_removed then
+                  if self._container then
+                     self._container:add_volume('stonehearth:water', input_rate - volume_not_removed)
+                     
+                     if self._auto_disable_on_full_or_empty and not self._sv.output_enabled and self._container:is_full() then
+                        self:set_enabled(false, self._sv.output_enabled)
+                     end
+                  end
+
+                  if volume_not_removed > 0 then
+                     self._prev_input_water_entity = nil
+                  end
+               else
+                  self._input_fail_ignores = FAIL_IGNORE_COUNT
+               end
             end
+         else
+            self._prev_input_water_entity = nil
          end
+      else
+         self._prev_input_water_entity = nil
       end
+   else
+      self._prev_input_water_entity = nil
    end
 end
 
-function WaterSpongeComponent:_get_water_body(location)
+function WaterSpongeComponent:_try_remove_water(water_body, location, volume)
+   local water_component = water_body:get_component('stonehearth:water')
+   if water_component:get_height() > 0 then
+      volume = stonehearth.hydrology:remove_water(volume, location, water_body, true)
+   else
+      volume = math.max(0, water_component:evaporate(volume / self._wetting_volume) * self._wetting_volume)
+   end
+
+   return volume
+end
+
+function WaterSpongeComponent:_get_water_bodies(location, region)
 	if not location then
 		return nil
 	end
 
-	local entities = radiant.terrain.get_entities_at_point(location)
+   if region and region:contains(location) then
+      local entities = radiant.terrain.get_entities_in_region(region,
+         function(entity)
+            return entity:get_component('stonehearth:water') ~= nil
+         end)
 
-	for id, entity in pairs(entities) do
-		local water_component = entity:get_component('stonehearth:water')
-		if water_component then
-			return entity
-		end
-	end
+      if next(entities) then
+         local result = {}
+         for id, entity in pairs(entities) do
+            if entity:get_component('stonehearth:water'):get_region():get():contains(location) then
+               table.insert(result, 1, entity)
+            else
+               table.insert(result, entity)
+            end
+         end
+         return result
+      end
+   else
+      local entities = radiant.terrain.get_entities_at_point(location)
+      for id, entity in pairs(entities) do
+         local water_component = entity:get_component('stonehearth:water')
+         if water_component then
+            return { entity }
+         end
+      end
+   end
 
 	return nil
 end

@@ -27,6 +27,28 @@
       "mixintypes": {
 		"stonehearth:harvest_beast_loot_table": "remove"
 	  },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "mixintypes": {
+                  "camera": "override"
+               },
+               "camera": {
+                  "pos": [
+                     1.5,
+                     2.6,
+                     -5
+                  ],
+                  "look_at": [
+                     0,
+                     2.3,
+                     0
+                  ],
+                  "ace_fov": 50
+               }
+            }
+         }
+      },
 	  "stonehearth:catalog": {
         "display_name": "i18n(stonehearth_ace:entities.critters.deer.display_name)"
 	  }

@@ -1080,6 +1080,7 @@
       "data:start_menu": "file(data/ui/start_menu.json)",
       "data:thoughts": "file(data/happiness/thoughts.json)",
       "data:trough_feed": "file(data/trough_feed/trough_feed.json)",
+      "data:universal_storage": "file(data/universal_storage/universal_storage_data.json)",
       "decoration:bone_candle_holder": "file(entities/decoration/bone_candle_holder/bone_candle_holder.json)",
       "decoration:bone_floor_candle_holder": "file(entities/decoration/bone_floor_candle_holder/bone_floor_candle_holder.json)",
       "decoration:brass_sign_blacksmith": "file(entities/decoration/brass_sign_blacksmith/brass_sign_blacksmith.json)",
@@ -1951,6 +1952,7 @@
       "material_map:ace": "file(data/materials/material_maps/stonehearth_ace_material_map.json)",
       "mechanical:scripts:cook_mill_powered": "file(data/mechanical/cook_mill_powered_script.lua)",
       "mf_splitting_block": "file(entities/construction/mf_splitting_block/mf_splitting_block.json)",
+      "manipulation:interaction_proxy": "file(entities/manipulation/interaction_proxy/interaction_proxy.json)",
       "mining:arctic_loot_table": "file(data/biome/arctic_mining_loot_table.json)",
       "mining:base_loot_table": "file(services/server/mining/mining_loot_tables.json)",
       "mining:desert_loot_table": "file(data/biome/desert_mining_loot_table.json)",
@@ -1981,7 +1983,9 @@
       "mixins:base_friendly_stranger_npc:human": "file(mixins/base_human_npc/base_friendly_stranger_npc.json)",
       "mixins:base_human": "file(mixins/base_human)",
       "mixins:base_orc_pc": "file(mixins/base_orc_pc/base_orc_pc.json)",
+      "mixins:base_orc_npc": "file(mixins/base_orc_npc/base_orc_npc.json)",
       "mixins:base_rabbit_biped": "file(mixins/base_rabbit_biped/base_rabbit_biped.json)",
+      "mixins:base_rabbit_biped_npc": "file(mixins/base_rabbit_biped_npc/base_rabbit_biped_npc.json)",
       "mixins:bed:tier_1": "file(mixins/beds/tier_1_bed_mixin.json)",
       "mixins:bed:tier_2": "file(mixins/beds/tier_2_bed_mixin.json)",
       "mixins:brewer_drying_bed": "file(mixins/brewer_drying_bed/brewer_drying_bed.json)",
@@ -1992,6 +1996,8 @@
       "mixins:brewer_fermenting_vat:ghost": "file(mixins/brewer_fermenting_vat/brewer_fermenting_vat_ghost.json)",
       "mixins:brewer_wine_cask": "file(mixins/brewer_wine_cask/brewer_wine_cask.json)",
       "mixins:brewer_wine_cask:ghost": "file(mixins/brewer_wine_cask/brewer_wine_cask_ghost.json)",
+      "mixins:buffs:npc_only_buff": "file(mixins/buffs/npc_only_buff_mixin.json)",
+      "mixins:buffs:pc_only_buff": "file(mixins/buffs/pc_only_buff_mixin.json)",
       "mixins:double_destructable_door": "file(mixins/destructable_doors/double_destructable_door.json)",
       "mixins:double_stone_destructable_door": "file(mixins/destructable_doors/double_stone_destructable_door.json)",
       "mixins:drink:serving_keg": "file(mixins/drink/drink_serving_keg.json)",
@@ -3818,6 +3824,14 @@
       "stonehearth/entities/furniture/stone_bench/stone_bench_ghost.json": "file(entities/furniture/stone_bench/stone_bench_ghost.json)",
       "stonehearth/entities/gizmos/titan_slayer/titan_slayer_ghost.json": "file(entities/gizmos/titan_slayer/titan_slayer_ghost.json)",
       "stonehearth/entities/gizmos/titan_slayer/titan_slayer_monument.json": "file(entities/gizmos/titan_slayer/titan_slayer_monument.json)",
+      "stonehearth/entities/manipulation/dry_stone/dry_stone_ghost.json": "file(entities/manipulation/dry_stone/dry_stone_ghost.json)",
+      "stonehearth/entities/manipulation/dry_stone/dry_stone_iconic.json": "file(entities/manipulation/dry_stone/dry_stone_iconic.json)",
+      "stonehearth/entities/manipulation/dry_stone_greater/dry_stone_greater_ghost.json": "file(entities/manipulation/dry_stone_greater/dry_stone_greater_ghost.json)",
+      "stonehearth/entities/manipulation/dry_stone_greater/dry_stone_greater_iconic.json": "file(entities/manipulation/dry_stone_greater/dry_stone_greater_iconic.json)",
+      "stonehearth/entities/manipulation/wet_stone/wet_stone_ghost.json": "file(entities/manipulation/wet_stone/wet_stone_ghost.json)",
+      "stonehearth/entities/manipulation/wet_stone/wet_stone_iconic.json": "file(entities/manipulation/wet_stone/wet_stone_iconic.json)",
+      "stonehearth/entities/manipulation/wet_stone_greater/wet_stone_greater_ghost.json": "file(entities/manipulation/wet_stone_greater/wet_stone_greater_ghost.json)",
+      "stonehearth/entities/manipulation/wet_stone_greater/wet_stone_greater_iconic.json": "file(entities/manipulation/wet_stone_greater/wet_stone_greater_iconic.json)",
       "stonehearth/entities/monsters/goblins/goblin_barricade/goblin_barricade.json": "file(entities/monsters/goblins/goblin_barricade/goblin_barricade.json)",
       "stonehearth/entities/monsters/goblins/goblin_barricade_single/goblin_barricade_single.json": "file(entities/monsters/goblins/goblin_barricade_single/goblin_barricade_single.json)",
       "stonehearth/entities/monsters/goblins/goblin_flute/broken_flute.json": "file(entities/monsters/goblins/goblin_flute/broken_flute.json)",
@@ -4704,6 +4718,10 @@
       "stonehearth:loot_bag:varanus_default": "file(data/loot_bag/varanus_default.json)",
       "stonehearth:loot_bag:wolf_default": "file(data/loot_bag/wolf_default.json)",
       "stonehearth:loot_bag:zilla_default": "file(data/loot_bag/zilla_default.json)",
+      "stonehearth:manipulation:dry_stone": "file(entities/manipulation/dry_stone/dry_stone.json)",
+      "stonehearth:manipulation:dry_stone:greater": "file(entities/manipulation/dry_stone_greater/dry_stone_greater.json)",
+      "stonehearth:manipulation:wet_stone": "file(entities/manipulation/wet_stone/wet_stone.json)",
+      "stonehearth:manipulation:wet_stone:greater": "file(entities/manipulation/wet_stone_greater/wet_stone_greater.json)",
       "stonehearth:mining:base_loot_table": "stonehearth_ace:mining:base_loot_table",
       "stonehearth:mining_zone": "file(entities/terrain/mining_zone/mining_zone.json)",
       "stonehearth:mixins:align_to_grid": "file(mixins/align_to_grid)",
@@ -5065,6 +5083,7 @@
       "stonehearth/ai/actions/admire_fire_action.lua": "file(ai/actions/admire_fire_action.lua)",
       "stonehearth/ai/actions/chase_patrol_party_action.lua": "file(ai/actions/chase_patrol_party_action.lua)",
       "stonehearth/ai/actions/change_job_using_talisman_action.lua": "file(ai/actions/change_job_using_talisman_action.lua)",
+      "stonehearth/ai/actions/clear_item_action.lua": "file(ai/actions/clear_item_action.lua)",
       "stonehearth/ai/actions/collect_ingredient.lua": "file(ai/actions/collect_ingredient.lua)",
       "stonehearth/ai/actions/combat/execute_heal_action.lua": "stonehearth_ace/ai/actions/combat/execute_heal_action.lua",
       "stonehearth/ai/actions/combat/combat_idle_kite_action.lua": "stonehearth_ace/ai/actions/combat/combat_idle_kite_action.lua",
@@ -5072,12 +5091,16 @@
       "stonehearth/ai/actions/destroy_items_in_stockpile_action.lua": "file(ai/actions/destroy_items_in_stockpile_action.lua)",
       "stonehearth/ai/actions/dispatchers/free_time_dispatcher_action.lua": "file(ai/actions/dispatchers/free_time_dispatcher_action.lua)",
       "stonehearth/ai/actions/dispatchers/human_work_dispatcher_action.lua": "file(ai/actions/dispatchers/human_work_dispatcher_action.lua)",
+      "stonehearth/ai/actions/drop_carrying_adjacent_action.lua": "file(ai/actions/drop_carrying_adjacent_action.lua)",
+      "stonehearth/ai/actions/drop_carrying_in_stockpile_action.lua": "file(ai/actions/drop_carrying_in_stockpile_action.lua)",
+      "stonehearth/ai/actions/drop_carrying_in_storage_action.lua": "file(ai/actions/drop_carrying_in_storage_action.lua)",
       "stonehearth/ai/actions/eat_action.lua": "file(ai/actions/eat_action.lua)",
       "stonehearth/ai/actions/execute_restock_errand_action.lua": "stonehearth_ace/ai/actions/execute_restock_errand_action.lua",
       "stonehearth/ai/actions/fabrication/fabricate_chunk_action.lua": "stonehearth_ace/ai/actions/fabrication/fabricate_chunk_action.lua",
       "stonehearth/ai/actions/feed_pasture_adjacent_action.lua": "stonehearth_ace/ai/actions/feed_pasture_adjacent_action.lua",
       "stonehearth/ai/actions/fill_backpack_from_items_action.lua": "stonehearth_ace/ai/actions/fill_backpack_from_items_action.lua",
       "stonehearth/ai/actions/fill_input_bin_action.lua": "stonehearth_ace/ai/actions/fill_input_bin_action.lua",
+      "stonehearth/ai/actions/fill_storage_from_backpack_action.lua": "stonehearth_ace/ai/actions/fill_storage_from_backpack_action.lua",
       "stonehearth/ai/actions/find_path_to_location_action.lua": "stonehearth_ace/ai/actions/find_path_to_location_action.lua",
       "stonehearth/ai/actions/find_reachable_storage_containing_best_entity_type_action.lua": "stonehearth_ace/ai/actions/find_reachable_storage_containing_best_entity_type_action.lua",
       "stonehearth/ai/actions/get_food_container_from_storage.lua": "stonehearth_ace/ai/actions/get_food_container_from_storage.lua",
@@ -5099,9 +5122,13 @@
       "stonehearth/ai/actions/pet/pet_eat_from_ground_action.lua": "file(ai/actions/pet/pet_eat_from_ground_action.lua)",
       "stonehearth/ai/actions/pickup_ingredient_with_material_action.lua": "file(ai/actions/pickup_ingredient_with_material_action.lua)",
       "stonehearth/ai/actions/pickup_ingredient_with_uri_action.lua": "file(ai/actions/pickup_ingredient_with_uri_action.lua)",
+      "stonehearth/ai/actions/pickup_item_action.lua": "file(ai/actions/pickup_item_action.lua)",
+      "stonehearth/ai/actions/pickup_item_into_backpack_action.lua": "file(ai/actions/pickup_item_into_backpack_action.lua)",
       "stonehearth/ai/actions/pickup_item_made_of.lua": "file(ai/actions/pickup_item_made_of.lua)",
+      "stonehearth/ai/actions/pickup_item_type_action.lua": "file(ai/actions/pickup_item_type_action.lua)",
       "stonehearth/ai/actions/pickup_item_type_from_any_storage_action.lua": "file(ai/actions/pickup_item_type_from_any_storage_action.lua)",
       "stonehearth/ai/actions/pickup_item_with_uri_action.lua": "file(ai/actions/pickup_item_with_uri_action.lua)",
+      "stonehearth/ai/actions/place_item_on_structure_action.lua": "file(ai/actions/place_item_on_structure_action.lua)",
       "stonehearth/ai/actions/place_item_type_on_structure_2.lua": "file(ai/actions/place_item_type_on_structure_2.lua)",
       "stonehearth/ai/actions/place_summon_stone_type_action.lua": "file(ai/actions/place_summon_stone_type_action.lua)",
       "stonehearth/ai/actions/put_restockable_item_into_backpack_action.lua": "file(ai/actions/put_restockable_item_into_backpack_action.lua)",
@@ -5496,6 +5523,7 @@
       "gearbox": "file(components/mechanical/gearbox_component.lua)",
       "herbalist_planter": "file(components/herbalist_planter/herbalist_planter_component.lua)",
       "input": "file(components/input/input_component.lua)",
+      "interaction_proxy": "file(components/interaction_proxy/interaction_proxy_component.lua)",
       "mechanical": "file(components/mechanical/mechanical_component.lua)",
       "models": "file(components/models/models_component.lua)",
       "output": "file(components/output/output_component.lua)",
@@ -5521,8 +5549,9 @@
       "vine": "file(components/vine/vine_component.lua)",
       "water_gate": "file(components/water_tools/water_gate_component.lua)",
       "water_pump": "file(components/water_tools/water_pump_component.lua)",
-      "water_sponge": "file(components/water_tools/water_sponge_component.lua)",
       "water_signal": "file(components/signals/water_signal_component.lua)",
+      "water_source": "file(components/water_tools/water_source_component.lua)",
+      "water_sponge": "file(components/water_tools/water_sponge_component.lua)",
       "water_wheel": "file(components/mechanical/water_wheel_component.lua)",
       "wilderness": "file(components/wilderness/wilderness_component.lua)",
       "wilderness_signal": "file(components/signals/wilderness_signal_component.lua)"
@@ -5701,6 +5730,14 @@
          "controller": "file(call_handlers/fence_call_handler.lua)",
          "endpoint": "server"
       },
+      "get_fence_settings_command": {
+         "controller": "file(call_handlers/fence_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "set_fence_settings_command": {
+         "controller": "file(call_handlers/fence_call_handler.lua)",
+         "endpoint": "client"
+      },
       "update_client_connections_command": {
          "controller": "file(call_handlers/advanced_placement_call_handler.lua)",
          "endpoint": "client"
@@ -5777,6 +5814,10 @@
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
       },
+      "get_storage_filter_custom_presets_command": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "client"
+      },
       "issue_party_commands_when_job_disabled_setting_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
@@ -5788,6 +5829,10 @@
       "set_client_gameplay_setting_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
+      },
+      "set_storage_filter_custom_presets_command": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "client"
       },
       "show_connector_regions_setting_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",

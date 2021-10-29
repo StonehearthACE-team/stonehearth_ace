@@ -1,9 +1,125 @@
 local NearbyItemSearch = require 'stonehearth.services.server.inventory.nearby_item_search'
 local constants = require 'stonehearth.constants'
+local exists = radiant.entities.exists
 local get_world_location = radiant.entities.get_world_location
+local are_connected = _radiant.sim.topology.are_connected
+local is_supported = radiant.terrain.is_supported
 
 local MAX_EXTRA_ITEMS = constants.inventory.restock_director.MAX_EXTRA_ITEMS
+local RestockDirector = require 'stonehearth.services.server.inventory.restock_director'
 local AceRestockDirector = radiant.class()
+
+-- ACE: track the items in the errand for whether they should no longer be restocked
+function AceRestockDirector:try_start_errand(entity, errand_id)
+   local errand = self._errands[errand_id]
+
+   if not errand or (errand.executor and errand.executor ~= entity and not errand.lease_expiry) then
+      -- Someone else has grabbed it already.
+      return false
+   else
+      errand.executor = entity
+      errand.lease_expiry = nil
+
+      self:_track_should_restock_status(errand)
+
+      radiant.events.trigger_async(self, 'stonehearth:restock:errand_started', errand_id, entity)
+      return true
+   end
+end
+
+function AceRestockDirector:_track_should_restock_status(errand)
+   local items = { errand.main_item }
+   for _, item in ipairs(errand.extra_items) do
+      table.insert(items, item)
+   end
+
+   local entity_forms = {}
+   for _, item in ipairs(items) do
+      local entity_forms_component = item:get_component('stonehearth:entity_forms')
+      if entity_forms_component then
+         entity_forms[item:get_id()] = entity_forms_component
+      else
+         -- if any of them don't have entity forms, then we don't need listeners because that one can't be canceled
+         return
+      end
+   end
+
+   errand.should_restock = {}
+   errand.should_restock_listeners = {}
+
+   for _, item in ipairs(items) do
+      local item_id = item:get_id()
+      local entity_forms_component = entity_forms[item_id]
+
+      errand.should_restock[item_id] = entity_forms_component:get_should_restock()
+      errand.should_restock_listeners[item_id] = radiant.events.listen(item, 'stonehearth_ace:reconsider_restock', function()
+            if radiant.entities.get_world_grid_location(item) == nil then
+               -- if it's no longer in the world, don't bother listening on this errand anymore
+               self:_destroy_should_restock_status_trackers(errand)
+            else
+               -- if it should be restocked and wasn't just picked up
+               errand.should_restock[item_id] = entity_forms_component:get_should_restock() or nil
+               if not next(errand.should_restock) then
+                  -- if none are left, cancel the errand
+                  self:mark_errand_failed(errand.id)
+               end
+            end
+         end)
+   end
+end
+
+function AceRestockDirector:_destroy_should_restock_status_trackers(errand)
+   if errand and errand.should_restock_listeners then
+      for _, listener in pairs(errand.should_restock_listeners) do
+         listener:destroy()
+      end
+      errand.should_restock_listeners = nil
+   end
+end
+
+-- ACE: also consider the main item as maybe not picked up
+function AceRestockDirector:finish_errand(entity, errand_id)
+   local errand = self._errands[errand_id]
+
+   if not errand then
+      -- Unclear how this happens, but seen in the wild.
+      return
+   end
+
+   self._errands[errand_id] = nil
+   self._errand_last_validated[errand_id] = nil
+
+   self:_destroy_should_restock_status_trackers(errand)
+
+   errand.storage_space_lease:destroy()
+
+   -- Mark items no longer covered.
+   if exists(errand.main_item) then
+      -- We could keep IDs in the errand block so we can clean the covered set even if the item is destroyed, but that doesn't affect correctness.
+      local main_item_id = errand.main_item:get_id()
+      self._covered_items[main_item_id] = nil
+      self:_on_item_added(errand.main_item)
+   end
+   for _, item in ipairs(errand.extra_items) do
+      if exists(item) then
+         local item_id = item:get_id()
+         self._covered_items[item_id] = nil
+         self:_on_item_added(item)  -- In case some of the extra items weren't picked up.
+      end
+   end
+
+   self:_mark_ready_to_generate_new_errands()
+   
+   self._last_success_time = stonehearth.calendar:get_elapsed_time()
+end
+
+AceRestockDirector._ace_old__on_errand_failed = RestockDirector._on_errand_failed
+function AceRestockDirector:_on_errand_failed(errand_id)
+   local errand = self._errands[errand_id]
+
+   self:_destroy_should_restock_status_trackers(errand)
+   self:_ace_old__on_errand_failed(errand_id)
+end
 
 -- if the item is in a storage that ignores restocking, don't add it to the queue
 function AceRestockDirector:_on_item_added(item)
@@ -24,6 +140,34 @@ function AceRestockDirector:_on_item_added(item)
       -- If any new errands are now possible, generate them.
       self:_mark_ready_to_generate_new_errands()
    end
+end
+
+function AceRestockDirector:_are_reachable(item, storage_or_executor)
+   local is_valid = item.is_valid  -- Avoid doing the lookup twice.
+   if not (is_valid(item) and is_valid(storage_or_executor)) then
+      return false
+   end
+   
+   local location = item:get('mob'):get_world_location()
+   if not location then
+      item = self._inventory:container_for(item)
+      if not item or not item:is_valid() then
+         return false
+      end
+   end
+
+   local entity_forms = item:get('stonehearth:entity_forms')
+   if entity_forms then
+      item = entity_forms:get_interaction_proxy() or item
+   end
+
+   local connected = are_connected(item, storage_or_executor)
+   if connected then
+      return true
+   end
+
+   -- Items hanging from walls aren't topology-reachable, but can usually still be accessed, so try them.
+   return location and not is_supported(location)
 end
 
 function AceRestockDirector:_generate_next_errand()
@@ -130,6 +274,7 @@ function AceRestockDirector:_generate_next_errand()
                if storage_space_lease then
                   -- Create the errand.
                   self._errands[errand_id] = {
+                     id = errand_id,
                      filter_fn = filter_fn,
                      filter_key = self._storage_filters[best_storage:get_id()],
                      main_item = target_item,
@@ -217,18 +362,22 @@ function AceRestockDirector:_make_is_restockable_predicate(allow_stored)
       local storage = inventory:container_for(entity)
       if storage then
          local sc = storage:get_component('stonehearth:storage')
-         local sc_type = sc:get_type()
-         if sc_type ~= 'output_crate' then  -- We can always take things from output crates.
-            if not sc:is_public() then
-               return false  -- Don't touch my private property.
-            end
-            if sc:get_passed_items()[entity:get_id()] then
-               if not allow_stored then
-                  return false  -- Already in a storage that accepts it.
-               elseif sc_type == 'input_crate' and sc:is_input_bin_highest_priority() then
-                  return false  -- We don't restock from *highest priority* input crates even if we allow stored.
+         if sc then
+            local sc_type = sc:get_type()
+            if sc_type ~= 'output_crate' then  -- We can always take things from output crates.
+               if not sc:is_public() then
+                  return false  -- Don't touch my private property.
+               end
+               if sc:get_passed_items()[entity:get_id()] then
+                  if not allow_stored then
+                     return false  -- Already in a storage that accepts it.
+                  elseif sc_type == 'input_crate' and sc:is_input_bin_highest_priority() then
+                     return false  -- We don't restock from *highest priority* input crates even if we allow stored.
+                  end
                end
             end
+         else
+            return false
          end
       else
          if not allow_out_of_world_entities and not exists_in_world(entity) then

@@ -1,13 +1,21 @@
+local DropCarryingInStorageAdjacent = require 'stonehearth.ai.actions.drop_carrying_in_storage_adjacent_action'
 local AceDropCarryingInStorageAdjacent = radiant.class()
 
 local GOLD_URI = 'stonehearth:loot:gold'
 local log = radiant.log.create_logger('drop_carrying_in_storage_adjacent')
 
+DropCarryingInStorageAdjacent.args.ignore_missing = {
+   type = 'boolean',
+   default = false,
+}
+
 function AceDropCarryingInStorageAdjacent:run(ai, entity, args)
    radiant.check.is_entity(entity)
 
    if not radiant.entities.get_carrying(entity) then
-      ai:abort('cannot put carrying in storage if you are not carrying anything')
+      if not args.ignore_missing then
+         ai:abort('cannot put carrying in storage if you are not carrying anything')
+      end
       return
    end
 

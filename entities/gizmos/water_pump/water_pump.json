@@ -48,8 +48,7 @@
                "scale": 0.095,
                "offset": { "x": 5, "y": 0, "z": 5 },
                "origin": { "x": 0, "y": 0, "z": -1 },
-               "rotation": 0,
-               "__support_last_block": true
+               "rotation": 0
             },
             {
                "dimension": "x",
@@ -58,8 +57,7 @@
                "scale": 0.095,
                "offset": { "x": 5, "y": 0, "z": 5 },
                "origin": { "x": -1, "y": 0, "z": 0 },
-               "rotation": 90,
-               "__support_last_block": true
+               "rotation": 90
             },
             {
                "dimension": "z",
@@ -68,8 +66,7 @@
                "scale": 0.095,
                "offset": { "x": 5, "y": 0, "z": 5 },
                "origin": { "x": 0, "y": 0, "z": 1 },
-               "rotation": 180,
-               "__support_last_block": true
+               "rotation": 180
             },
             {
                "dimension": "x",
@@ -78,12 +75,13 @@
                "scale": 0.095,
                "offset": { "x": 5, "y": 0, "z": 5 },
                "origin": { "x": 1, "y": 0, "z": 0 },
-               "rotation": 270,
-               "__support_last_block": true
+               "rotation": 270
             }
          ]
       },
       "stonehearth_ace:water_sponge": {
+         "input_enabled": false,
+         "output_enabled": false,
          "input_location": { "x": 0, "y": 0, "z": 0 },
          "output_location": { "x": 0, "y": 1, "z": 0 },
          "input_rate": 2,

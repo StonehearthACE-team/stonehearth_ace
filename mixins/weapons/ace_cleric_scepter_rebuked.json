@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth_ace:mixins:weapons:cleric_scepter",
+   "mixins": [
+      "stonehearth_ace:mixins:weapons:cleric_scepter",
+      "stonehearth_ace:mixins:inflicted_wounds:impact:medium"
+   ],
    "entity_data": {
       "stonehearth:buffs": {
          "inflictable_debuffs": {

@@ -301,4 +301,39 @@ function FenceCallHandler:build_fence_command(session, response, pattern, start_
    response:resolve({})
 end
 
+function FenceCallHandler:get_fence_settings_command(session, response)
+   local settings_folder = radiant.mods.enum_objects('settings')
+   local settings = {}
+   if settings_folder.fence_mode then
+      settings = radiant.mods.read_object('settings/fence_mode') or {}
+   end
+
+   -- check if we still have fence settings saved to user_settings.json
+   local config = radiant.util.get_config('fence_mode')
+   if config then
+      -- if so, merge them into the current settings, update the saved_objects version, and clear out the user_settings.json version
+      if config.selected_segments then
+         settings.selected_segments = config.selected_segments
+      end
+      if config.custom_presets then
+         if not settings.custom_presets then
+            settings.custom_presets = {}
+         end
+         for id, preset in pairs(config.custom_presets) do
+            settings.custom_presets[id] = preset
+         end
+      end
+
+      self:set_fence_settings_command(session, response, settings)
+      -- have to do this because radiant.util.set_config asserts a non-nil setting
+      radiant.util.set_global_config('mods.stonehearth_ace.fence_mode', nil)
+   end
+
+   response:resolve({ result = settings })
+end
+
+function FenceCallHandler:set_fence_settings_command(session, response, settings)
+   radiant.mods.write_object('settings/fence_mode', settings or {})
+end
+
 return FenceCallHandler

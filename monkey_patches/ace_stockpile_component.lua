@@ -1,5 +1,19 @@
 local AceStockpileComponent = class()
 
+function AceStockpileComponent:notify_restock_finished(location)
+   if self._entity:is_valid() then
+      -- when restocking, check for an item actually being there before occupying that spot
+      -- since we may be gracefully skipping a missing item
+      local entities = radiant.terrain.get_entities_at_point(location, function(item)
+            return stonehearth.catalog:is_item(item:get_uri())
+         end)
+
+      if next(entities) then
+         self:_add_to_region(location)
+      end
+   end
+end
+
 function AceStockpileComponent:_add_item_to_stock(entity)
    -- THIS IS SO EXPENSIVE. Do we need to do this? -yshan assert(self:can_stock_entity(entity) and self:bounds_contain(entity))
 
@@ -27,6 +41,17 @@ function AceStockpileComponent:_add_item_to_stock(entity)
    if entity then
       self:_trigger_item_added_events(entity)
    end
+end
+
+function AceStockpileComponent:bounds_contain(item_entity)
+   local location = radiant.entities.get_world_grid_location(item_entity)
+   local world_bounds = self:get_bounds()
+
+   -- ACE: added location check also in case the item was immediately swallowed up by another listener
+   if not location or not world_bounds then
+      return false
+   end
+   return world_bounds:contains(location)
 end
 
 return AceStockpileComponent

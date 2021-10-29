@@ -13,7 +13,7 @@ function ConnectionRenderer:initialize(render_entity, datastore)
    self._entity = self._render_entity:get_entity()
    self._outline_nodes = {}
    self._connections = radiant.entities.get_component_data(self._entity, 'stonehearth_ace:connection')
-   self._show_connectors = radiant.util.get_config('show_connector_regions', true)
+   self._show_connectors = stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'show_connector_regions')
 
    local mob_data = radiant.entities.get_component_data(self._entity, 'mob')
    local align_to_grid = radiant.array_to_map(mob_data and mob_data.align_to_grid or {})

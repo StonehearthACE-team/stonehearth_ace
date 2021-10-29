@@ -77,6 +77,7 @@ local function create_service(name)
    saved_variables:set_controller_name('stonehearth_ace:' .. name)
    service:initialize()
    stonehearth_ace[name] = service
+   radiant.log.write_('stonehearth_ace', 0, 'ACE client service initialized: %s', name)
 end
 
 local player_service_trace = nil

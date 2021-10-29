@@ -1,4 +1,5 @@
 {
+   "mixins": "stonehearth_ace:mixins:buffs:pc_only_buff",
    "type": "buff",
    "axis": "debuff",
    "category": "wound_cut",
@@ -10,10 +11,6 @@
    "queue_crafting_order": "stonehearth:consumables:heavy_bandage",
    "reembarkable": true,
    "cant_affect_siege": true,
-   "can_only_affect": [
-      "hearthling",
-      "dwarf"
-   ],
    "repeat_add_action": "stack_and_refresh",
    "max_stacks": 2,
    "leftover_buffs": {

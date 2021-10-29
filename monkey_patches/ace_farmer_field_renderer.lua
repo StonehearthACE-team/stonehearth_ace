@@ -14,7 +14,7 @@ local log = radiant.log.create_logger('farmer_field.renderer')
 AceFarmerFieldRenderer._ace_old_initialize = FarmerFieldRenderer.initialize
 function AceFarmerFieldRenderer:initialize(render_entity, datastore)
    self._water_color = Color4(constants.hydrology.DEFAULT_WATER_COLOR)
-   self._show_water_region = radiant.util.get_config('show_farm_water_regions', true)
+   self._show_water_region = stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'show_farm_water_regions')
 
    self._farmer_field_data = radiant.entities.get_component_data(render_entity:get_entity(), 'stonehearth:farmer_field')
    self._field_types = radiant.resources.load_json('stonehearth:farmer:all_crops').field_types or {}

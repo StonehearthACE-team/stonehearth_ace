@@ -14,16 +14,41 @@
       "stonehearth:thoughts:weather:whiteout_positive"
    ],
    "unsheltered_debuff": [
-      "stonehearth_ace:buffs:weather:freezing",
-      "stonehearth_ace:buffs:weather:cold_breath"
+      "stonehearth_ace:buffs:weather:cold",
+      "stonehearth_ace:buffs:weather:cold_breath",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:whiteout",
+         "time": 10,
+         "end_time": 20
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:freezing",
+         "time": 12,
+         "end_time": 18
+      }
    ],
    "unsheltered_animal_debuff": [
-      "stonehearth_ace:buffs:weather:freezing",
-      "stonehearth_ace:buffs:weather:cold_breath"
+      "stonehearth_ace:buffs:weather:cold:animal",
+      "stonehearth_ace:buffs:weather:cold_breath",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:freezing:animal",
+         "time": 12,
+         "end_time": 18
+      }
    ],
    "unsheltered_npc_debuff": [
-      "stonehearth_ace:buffs:weather:freezing:npc",
-      "stonehearth_ace:buffs:weather:cold_breath"
+      "stonehearth_ace:buffs:weather:cold:npc",
+      "stonehearth_ace:buffs:weather:cold_breath",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:whiteout:npc",
+         "time": 10,
+         "end_time": 20
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:freezing:npc",
+         "time": 12,
+         "end_time": 18
+      }
    ],
    "is_bad_weather": true,
    "sunlight": 0.8,

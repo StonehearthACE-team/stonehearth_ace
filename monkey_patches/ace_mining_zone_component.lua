@@ -261,15 +261,7 @@ function AceMiningZoneComponent:_add_ladder_if_needed()
       local town_entity = town:get_hearth() or town:get_banner()
       if town_entity and town_entity:is_valid() then
          local location = radiant.entities.get_world_grid_location(town_entity)
-         -- try for a complete path first; if one exists, we don't need any ladders
-         local direct_path_finder = _radiant.sim.create_direct_path_finder(town_entity)
-                                    :set_start_location(location)
-                                    :set_destination_entity(self._entity)
-                                    :set_allow_incomplete_path(false)
-                                    :set_reversible_path(false)
-
-         local path = direct_path_finder:get_path()
-         if not path then
+         if not _radiant.sim.topology.are_connected(town_entity, location) then
             direct_path_finder = _radiant.sim.create_direct_path_finder(town_entity)
                                     :set_start_location(location)
                                     :set_destination_entity(self._entity)

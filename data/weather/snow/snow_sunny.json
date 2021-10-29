@@ -7,16 +7,35 @@
 		"plant_growth_time_multiplier": "remove"
 	},
    "unsheltered_debuff": [
-		"stonehearth_ace:buffs:weather:chilly",
-		"stonehearth_ace:buffs:weather:cold_breath"
-	],
-	"unsheltered_animal_debuff": [
-		"stonehearth_ace:buffs:weather:cold_breath"
-	],
-   "unsheltered_npc_debuff": [
-      "stonehearth_ace:buffs:weather:chilly:npc",
-      "stonehearth_ace:buffs:weather:cold_breath"
+      "stonehearth_ace:buffs:weather:cold_breath",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:chilly",
+         "time": "day"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold",
+         "time": "night"
+      }
    ],
+   "unsheltered_animal_debuff": [
+      "stonehearth_ace:buffs:weather:soaked:animal",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold:animal",
+         "time": "night"
+      }
+   ],
+   "unsheltered_npc_debuff": [
+      "stonehearth_ace:buffs:weather:cold_breath",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:chilly:npc",
+         "time": "day"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold:npc",
+         "time": "night"
+      }
+   ],
+	"is_bad_weather": "true",
    "sunlight": 0.9,
 	"frozen": true,
    "cold_weather": true

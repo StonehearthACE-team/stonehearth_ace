@@ -77,7 +77,8 @@
       },
       "stonehearth_ace:buildable_data": {
          "requires_terrain": true,
-         "initialize_script": "stonehearth_ace:scripts:buildable:build_well"
+         "initialize_script": "stonehearth_ace:scripts:buildable:build_well",
+         "collision_entity": "stonehearth_ace:construction:simple:water_well"
       }
    }
 }

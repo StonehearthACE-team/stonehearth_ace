@@ -7,6 +7,30 @@ local ace_csg_lib = {}
 
 local DIMENSIONS = { 'x', 'y', 'z' }
 
+-- same as are_equivalent_regions except ignores tags
+function ace_csg_lib.are_same_shape_regions(region_a, region_b)
+   if not region_a then
+      if not region_b then
+         return true
+      else
+         return false
+      end
+   elseif not region_b then
+      return false
+   end
+   
+   local area_a = region_a:get_area()
+   local area_b = region_b:get_area()
+
+   if area_a ~= area_b then
+      return false
+   end
+
+   local intersection = region_a:intersect_region(region_b)
+
+   return intersection:get_area() == area_a
+end
+
 function ace_csg_lib.create_directional_cube(p0, p1, direction, tag)
    -- if a direction is specified, use its x/y/z signs for adjusting the min/max
    assert(p0 and p1)

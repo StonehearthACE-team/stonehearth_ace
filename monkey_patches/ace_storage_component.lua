@@ -19,7 +19,7 @@ end
 
 AceStorageComponent._ace_old_restore = StorageComponent.restore
 function AceStorageComponent:restore()
-   if self._entity:get_component('stonehearth_ace:universal_storage') and radiant.entities.get_world_grid_location(self._entity) then
+   if self._entity:get_component('stonehearth_ace:universal_storage') then
       -- move all entities out of this storage and queue them up to be transferred in the proper universal_storage entity
       stonehearth_ace.universal_storage:queue_items_for_transfer_on_registration(self._entity, self._sv.items)
       self._sv.items = {}

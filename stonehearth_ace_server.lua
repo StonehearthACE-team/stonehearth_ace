@@ -6,7 +6,7 @@ local service_creation_order = {
    'mechanical',
    'persistence',
    'universal_storage',
-   'water_processor',
+   --'water_processor',
    'water_signal',
 }
 
@@ -27,6 +27,8 @@ local monkey_patches = {
    ace_bulletin = 'stonehearth.services.server.bulletin_board.bulletin',
    ace_calendar_service = 'stonehearth.services.server.calendar.calendar_service',
    ace_carry_block_component = 'stonehearth.components.carry_block.carry_block_component',
+   ace_catalog_service = 'stonehearth.services.server.catalog.catalog_service',
+   ace_channel_manager = 'stonehearth.services.server.hydrology.channel_manager',
    ace_charging_pedestal_component = 'stonehearth.entities.gizmos.charging_pedestal.charging_pedestal_component',
    ace_check_bait_trap_adjacent_action = 'stonehearth.ai.actions.trapping.check_bait_trap_adjacent_action',
    ace_chunk = 'stonehearth.components.building2.plan.chunk',
@@ -65,6 +67,7 @@ local monkey_patches = {
    ace_encounter = 'stonehearth.services.server.game_master.controllers.encounter',
    ace_entities = 'radiant.modules.entities',
    ace_entities_call_handler = 'stonehearth.call_handlers.entities_call_handler',
+   ace_entity_forms_component = 'stonehearth.components.entity_forms.entity_forms_component',
    ace_entity_forms_lib = 'stonehearth.lib.entity_forms.entity_forms_lib',
    ace_equipment_component = 'stonehearth.components.equipment.equipment_component',
    ace_equipment_piece_component = 'stonehearth.components.equipment_piece.equipment_piece_component',
@@ -122,6 +125,9 @@ local monkey_patches = {
    ace_periodic_health_modification = 'stonehearth.data.buffs.scripts.periodic_health_modification',
    ace_personality_component = 'stonehearth.components.personality.personality_component',
    ace_pet_component = 'stonehearth.components.pet.pet_component',
+   --ace_pickup_item_adjacent_action = 'stonehearth.ai.actions.pickup_item_adjacent_action',
+   ace_pickup_item_type_from_backpack_action = 'stonehearth.ai.actions.pickup_item_type_from_backpack_action',
+   ace_pickup_placed_item_adjacent_action = 'stonehearth.ai.actions.pickup_placed_item_adjacent_action',
    ace_pillage_mission = 'stonehearth.services.server.game_master.controllers.missions.pillage_mission',
    ace_place_carrying_on_structure_adjacent_action = 'stonehearth.ai.actions.place_carrying_on_structure_adjacent_action',
    ace_plant_field_adjacent_action = 'stonehearth.ai.actions.plant_field_adjacent_action',
@@ -224,6 +230,7 @@ local function create_service(name)
    saved_variables:set_controller_name('stonehearth_ace:' .. name)
    service:initialize()
    stonehearth_ace[name] = service
+   radiant.log.write_('stonehearth_ace', 0, 'ACE server service initialized: %s', name)
 end
 
 function stonehearth_ace:_on_init()

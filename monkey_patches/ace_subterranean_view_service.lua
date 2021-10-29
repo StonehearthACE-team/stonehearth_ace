@@ -24,7 +24,7 @@ function AceSubterraneanViewService:_calculate_visible(entity, ignore_entities, 
    if ignore_entities then
       call_old = true
    else
-      terrain_slice_buildings = terrain_slice_buildings or radiant.util.get_global_config('mods.stonehearth_ace.terrain_slice_buildings', false)
+      terrain_slice_buildings = terrain_slice_buildings or stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'terrain_slice_buildings')
       if not terrain_slice_buildings then
          call_old = true
       end

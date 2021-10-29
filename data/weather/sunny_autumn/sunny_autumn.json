@@ -4,13 +4,21 @@
    "icon": "file(sunny_autumn.png)",
    "sky_settings": "stonehearth_ace:sky_settings:sunny:autumn",
    "unsheltered_debuff": [
-      "stonehearth_ace:buffs:weather:cold_breath"
+      "stonehearth_ace:buffs:weather:cold_breath",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:chilly",
+         "time": "night"
+      }
    ],
    "unsheltered_animal_debuff": [
       "stonehearth_ace:buffs:weather:cold_breath"
    ],
    "unsheltered_npc_debuff": [
-      "stonehearth_ace:buffs:weather:cold_breath"
+      "stonehearth_ace:buffs:weather:cold_breath",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:chilly:npc",
+         "time": "night"
+      }
    ],
    "ambient_sound_key": "sunny_autumn",
    "music_sound_key": "sunny_autumn",

@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth_ace:mixins:weapon",
+   "mixins": [
+      "stonehearth_ace:mixins:weapon",
+      "stonehearth_ace:mixins:inflicted_wounds:pierce:easy"
+   ],
    "components": {
       "stonehearth:equipment_piece": {
          "slot": "mainhand",

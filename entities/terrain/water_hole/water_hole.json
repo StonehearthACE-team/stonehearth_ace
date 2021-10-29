@@ -29,8 +29,16 @@
          ],
          "region_collision_type": "none"
       },
-      "stonehearth:wet_stone": {
-         "rate": -8.0
+      "stonehearth_ace:water_sponge": {
+         "input_location": { "x": 0, "y": 0, "z": 0 },
+         "input_region": [
+            {
+               "min": { "x": -8, "y": -1, "z": -8 },
+               "max": { "x": 8, "y": 1, "z": 8 }
+            }
+         ],
+         "input_rate": 8.0,
+         "destroy_water": true
       }
    },
    "entity_data": {

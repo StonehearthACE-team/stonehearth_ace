@@ -1,7 +1,34 @@
 {
+   "components": {
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 70
+         }
+      }
+   },
    "entity_data": {
 	  "stonehearth:catalog": {
         "display_name": "i18n(stonehearth_ace:entities.monsters.avian.duckduck.display_name)"
-	  }  
+	  },
+     "stonehearth:portrait": {
+      "portrait_types": {
+         "headshot": {
+            "camera": {
+               "pos": [
+                  24,
+                  1.5,
+                  -27
+               ],
+               "look_at": [
+                  0,
+                  1.1,
+                  0
+               ],
+               "ace_fov": 65
+            }
+         }
+      }
+   }  
    }
 }

@@ -346,6 +346,30 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
       designation_filter_fn = script and script.designation_filter_fn
    end
 
+   -- could this be loaded once instead of tracing? not sure, but this is how item_placer does it
+   local collision_entity
+   local collision_needs_translation
+   if buildable_data.collision_entity then
+      collision_entity = radiant.entities.create_entity(buildable_data.collision_entity)
+      collision_needs_translation = true
+   else
+      collision_entity = entity
+   end
+   local rcs = collision_entity:get_component('region_collision_shape')
+   local region_shape
+   local region_shape_trace
+   if rcs then
+      region_shape_trace = rcs
+            :trace_region('item placer placement entity', _radiant.dm.TraceCategories.ASYNC_TRACE)
+            :on_changed(function()
+                  local region = rcs:get_region()
+                  if region then
+                     region_shape = region:get()
+                  end
+               end)
+            :push_object_state()
+   end
+
    stonehearth.selection:deactivate_all_tools()
    
    -- TODO: limit selector to valid building locations
@@ -356,24 +380,41 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
       :set_filter_fn(function (result, selector)
             local this_entity = result.entity   
             local normal = result.normal:to_int()
-            local brick = result.brick
+            local brick = result.brick:to_int()
 
             if not this_entity then
                return stonehearth.selection.FILTER_IGNORE
             end
 
-            if designation_filter_fn then
-               -- treat true as ignore; false is still false
-               local designation_data = radiant.entities.get_entity_data(this_entity, 'stonehearth:designation')
-               if designation_filter_fn(selector, entity, this_entity, brick, normal, designation_data) == false then
-                  return false
+            local region_w
+            if region_shape then
+               region_w = radiant.entities.local_to_world(region_shape, collision_entity)
+               if collision_needs_translation then
+                  region_w = region_w:translated(brick)
                end
             end
 
-            local rcs = this_entity:get_component('region_collision_shape')
-            local region_collision_type = rcs and rcs:get_region_collision_type()
-            if region_collision_type == _radiant.om.RegionCollisionShape.NONE then
-               return stonehearth.selection.FILTER_IGNORE
+            local designation_data = {}
+            if region_w then
+               for id, e in pairs(radiant.terrain.get_entities_in_region(region_w)) do
+                  designation_data[id] = radiant.entities.get_entity_data(e, 'stonehearth:designation')
+               end
+            else
+               designation_data[this_entity:get_id()] = radiant.entities.get_entity_data(this_entity, 'stonehearth:designation')
+            end
+            
+            if designation_filter_fn then
+               -- treat true as ignore; false is still false
+               if designation_filter_fn(selector, entity, this_entity, brick, normal, designation_data) == false then
+                  return false
+               end
+            else
+               for _, designation in pairs(designation_data) do
+                  if not designation.allow_placed_items then
+                     log:spam('FAIL: target / region shape in unallowed designation')
+                     return false
+                  end
+               end
             end
 
             if normal.y ~= 1 then
@@ -394,6 +435,29 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
                return stonehearth.selection.FILTER_IGNORE
             end
 
+            -- copied blocking/RCS check from item_placer
+            -- if the space occupied by the cursor is blocked, we can't place the item there
+            -- TODO: prohibit placement when placing over other ghost entities'f
+            -- root form's solid collision region
+            local blocking_entities = radiant.terrain.get_blocking_entities(collision_entity, brick)
+            for _, blocking_entity in pairs(blocking_entities) do
+               local ignore = blocking_entity == entity or blocking_entity:get('stonehearth:build2:fixture_widget')
+               if not ignore then
+                  log:spam('FAIL: terrain blocking entity %s', blocking_entity)
+                  return false
+               end
+            end
+
+            if region_w then
+               local envelopes = radiant.terrain.get_entities_in_region(region_w, function(e)
+                     return e:get_uri() == 'stonehearth:build2:entities:envelope'
+                  end)
+               if not radiant.empty(envelopes) then
+                  log:spam('FAIL: region shape in building envelope')
+                  return false
+               end
+            end
+
             if placement_filter_fn then
                return placement_filter_fn(selector, entity, this_entity, brick, normal, kind)
             else
@@ -402,7 +466,6 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
          end)
       :done(function(selector, location, rotation)
             _radiant.call('stonehearth_ace:create_buildable_entity', uri, location, rotation)
-            radiant.entities.destroy_entity(entity)
             response:resolve(true)
          end)
       :fail(function(selector)
@@ -410,6 +473,13 @@ function ResourceCallHandler:place_buildable_entity(session, response, uri)
             response:reject('no location')
          end)
       :always(function()
+            if region_shape_trace then
+               region_shape_trace:destroy()
+            end
+            radiant.entities.destroy_entity(entity)
+            if entity ~= collision_entity then
+               radiant.entities.destroy_entity(collision_entity)
+            end
          end)
       :go()
 end

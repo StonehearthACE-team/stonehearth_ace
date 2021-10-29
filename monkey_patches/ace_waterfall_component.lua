@@ -18,15 +18,34 @@ function AceWaterfallComponent:activate()
       self:_cache_location()
    end
 
-   self:reset_changed_on_tick()
+   self:reset_changed_since_signal()
 end
 
-function AceWaterfallComponent:reset_changed_on_tick()
+function AceWaterfallComponent:reset_changed_since_signal()
+   self._volume_changed_since_signal = 0
+end
+
+function AceWaterfallComponent:was_changed_since_signal()
+   return math.abs(self._volume_changed_since_signal) > 0.0001
+end
+
+function AceWaterfallComponent:_reset_changed_on_tick()
    self._volume_changed_on_tick = 0
+   self._prev_waterfall_top = self._sv.waterfall_top
+   self._prev_waterfall_bottom = self._sv.waterfall_bottom
 end
 
-function AceWaterfallComponent:was_changed_on_tick()
-   return math.abs(self._volume_changed_on_tick) > 0.0001
+function AceWaterfallComponent:_was_changed_on_tick()
+   return math.abs(self._volume_changed_on_tick) > 0.0001 or
+      self._prev_waterfall_top ~= self._sv.waterfall_top or
+      self._prev_waterfall_bottom ~= self._sv.waterfall_bottom
+end
+
+function AceWaterfallComponent:check_changed(override_check)
+   if override_check or self:_was_changed_on_tick() then
+      self:_reset_changed_on_tick()
+      self.__saved_variables:mark_changed()
+   end
 end
 
 function AceWaterfallComponent:get_location()
@@ -38,7 +57,7 @@ function AceWaterfallComponent:set_volume(volume)
       return
    end
 
-   self._volume_changed_on_tick = self._volume_changed_on_tick + (self._sv.volume or 0) - volume
+   self._volume_changed_since_signal = self._volume_changed_since_signal + (self._sv.volume or 0) - volume
 
    self._sv.volume = volume
    self.__saved_variables:mark_changed()

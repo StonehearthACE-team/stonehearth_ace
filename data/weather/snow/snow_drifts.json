@@ -3,17 +3,32 @@
    "description": "i18n(stonehearth_ace:data.weather.snow.snow_drifts.description)",
    "icon": "file(snow_drifts.png)",
    "sky_settings": "stonehearth_ace:sky_settings:snow:drifts",
+   "buff_application_interval": "30m",
    "unsheltered_debuff": [
-      "stonehearth_ace:buffs:weather:cold",
-      "stonehearth_ace:buffs:weather:cold_breath"
+      "stonehearth_ace:buffs:weather:cold_breath",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold",
+         "time": "day"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:freezing",
+         "time": "night"
+      }
    ],
    "unsheltered_animal_debuff": [
       "stonehearth_ace:buffs:weather:cold:animal",
       "stonehearth_ace:buffs:weather:cold_breath"
    ],
    "unsheltered_npc_debuff": [
-      "stonehearth_ace:buffs:weather:cold:npc",
-      "stonehearth_ace:buffs:weather:cold_breath"
+      "stonehearth_ace:buffs:weather:cold_breath",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold:npc",
+         "time": "day"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:freezing:npc",
+         "time": "night"
+      }
    ],
    "renderer": "stonehearth_ace:weather_renderers:snow_drifts",
    "ambient_sound_key": "snow_drifts",
