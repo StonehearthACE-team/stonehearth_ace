@@ -262,13 +262,13 @@ function AceMiningZoneComponent:_add_ladder_if_needed()
       if town_entity and town_entity:is_valid() then
          local location = radiant.entities.get_world_grid_location(town_entity)
          if not _radiant.sim.topology.are_connected(town_entity, location) then
-            direct_path_finder = _radiant.sim.create_direct_path_finder(town_entity)
+            local direct_path_finder = _radiant.sim.create_direct_path_finder(town_entity)
                                     :set_start_location(location)
                                     :set_destination_entity(self._entity)
                                     :set_allow_incomplete_path(true)
                                     :set_reversible_path(false)
 
-            path = direct_path_finder:get_path()
+            local path = direct_path_finder:get_path()
             -- if we found an incomplete path
             if path then
                local zone_location = radiant.entities.get_world_grid_location(self._entity)
