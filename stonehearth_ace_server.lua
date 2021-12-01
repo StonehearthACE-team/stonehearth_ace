@@ -163,6 +163,7 @@ local monkey_patches = {
    ace_shepherded_animal_component = 'stonehearth.components.shepherd_pasture.shepherded_animal_component',
    ace_shepherd_service = 'stonehearth.services.server.shepherd.shepherd_service',
    ace_shop = 'stonehearth.services.server.shop.shop',
+   ace_shop_service = 'stonehearth.services.server.shop.shop_service',
    ace_simple_caravan_script = 'stonehearth.services.server.game_master.controllers.script_encounters.simple_caravan_script',
    ace_sleep_in_bed_adjacent_action = 'stonehearth.ai.actions.sleeping.sleep_in_bed_adjacent_action',
    ace_sleep_in_current_bed_action = 'stonehearth.ai.actions.sleeping.sleep_in_current_bed_action',

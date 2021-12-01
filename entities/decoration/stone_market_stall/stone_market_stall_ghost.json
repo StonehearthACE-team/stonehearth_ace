@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": [
+      "stonehearth_ace:mixins:market_stall:ghost:shops",
+      "stonehearth:mixins:placed_object"
+   ],
    "components": {
       "model_variants": {
          "default": {
@@ -11,18 +14,13 @@
                      "file(stone_market_stall_2.qb)",
                      "file(stone_market_stall_3.qb)",
                      "file(stone_market_stall_4.qb)",
-                     "file(stone_market_stall_5.qb)"
+                     "file(stone_market_stall_5.qb)",
+                     "file(stone_market_stall_6.qb)",
+                     "file(stone_market_stall_7.qb)"
                   ]
                }
             ]
          }
-      },
-      "render_info": {
-         "scale": 0.26
-      },
-      "mob": {
-         "model_origin": { "x": 0.5, "y": 0, "z": 0.13 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       }
    },
    "entity_data": {
@@ -30,13 +28,8 @@
          "display_name": "i18n(stonehearth_ace:entities.decoration.stone_market_stall.stone_market_stall_ghost.display_name)",
          "description": "i18n(stonehearth_ace:entities.decoration.stone_market_stall.stone_market_stall_ghost.description)",
          "icon": "file(stone_market_stall.png)",
-         "category": "construction",
          "material_tags": [
-            "decoration",
-            "crafted",
-            "stone",
-            "utility",
-            "stockpile_decoration"
+            "stone"
          ]
       }
    }
