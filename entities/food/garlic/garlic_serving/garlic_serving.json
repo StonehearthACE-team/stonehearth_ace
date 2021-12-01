@@ -1,0 +1,42 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(garlic_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 10
+         },
+         "default": {
+            "satisfaction": 8
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:garlic_breath"
+         ],
+         "quality": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.garlic.garlic_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.garlic.garlic_serving.description)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food",
+            "vegetarian"
+         ],
+         "subject_override": "stonehearth_ace:crops:garlic_crop"
+      }
+   }
+}

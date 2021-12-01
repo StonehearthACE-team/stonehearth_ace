@@ -1,0 +1,21 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.hearth_tonic.hearth_tonic_worn_off_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.hearth_tonic.hearth_tonic_worn_off_buff.description)",
+   "icon": "file(hearth_tonic_after_effect_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "spirit": {
+         "min": 1,
+         "add": -2
+      },
+      "multiplicative_heal_received_modifier": {
+         "add": -0.4
+      }
+   },
+   "disallowed_categories": [
+      "hearth_tonic"
+   ]
+}

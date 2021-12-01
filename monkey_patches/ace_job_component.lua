@@ -151,6 +151,12 @@ function AceJobComponent:level_up(skip_visual_effects)
    self._sv.total_level = curr_level + 1
    attributes_component:set_attribute('total_level', self._sv.total_level)
 
+   --Add to the total job levels statistics
+   local stats_comp = self._entity:get_component('stonehearth_ace:statistics')
+   if stats_comp then
+      stats_comp:set_stat('totals', 'levels', self._sv.total_level)
+   end
+
    --Add all the universal level dependent buffs/bonuses, etc
 
    self:_call_job('level_up')

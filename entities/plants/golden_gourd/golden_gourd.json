@@ -2,25 +2,6 @@
    "type": "entity",
    "mixins": "file(golden_gourd_ghost.json)",
    "components": {
-      "render_info": {
-         "scale": 0.1
-      },
-      "mob": {
-         "model_origin": { "x": -0.05, "y": 0, "z": -0.05 },
-         "mob_collision_type": "clutter"
-      },
-      "model_variants": {
-         "default": {
-            "models": [
-               {
-                  "type": "one_of",
-                  "items": [
-                     "file(golden_gourd.qb)"
-                  ]
-               }
-            ]
-         }
-      },
       "stonehearth:resource_node": {
          "resource": "stonehearth:food:golden_gourd:golden_gourd_basket",
          "category": "harvest",

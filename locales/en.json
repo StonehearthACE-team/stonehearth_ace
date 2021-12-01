@@ -2077,6 +2077,10 @@
                "elevated_character": {
                   "display_name": "Elevated character",
                   "tooltip": "There's something really special about the taste of wine and the taste of cheese when experienced together... I feel... Greater."
+               },
+               "garlic_breath": {
+                  "display_name": "Garlic breath",
+                  "tooltip": "Oh no... I better avoid people. My breath smells very... Strong!"
                }
             },
             "traits": {
@@ -2289,15 +2293,15 @@
                   "6_display_name": ", Master",
                   "6_description": "They have six job levels! They have walked the path of a master!",
                   "12_display_name": ", Grandmaster",
-                  "12_description": "They now have twelve job levels! More than a master, a grand master!",
+                  "12_description": "They now have eleven job levels! More than a master, a grand master!",
                   "18_display_name": ", Jack-of-All-Trades",
-                  "18_description": "They have eighteen job levels! What? That's amazing!",
-                  "30_display_name": ", Blessed",
-                  "30_description": "They've reached thirty job levels, only few and dedicated souls can achieve that...",
+                  "18_description": "They have sixteen job levels! What? That's amazing!",
+                  "30_display_name": ", Blessed One",
+                  "30_description": "They've reached thirty-one job levels, only few and dedicated souls can achieve that...",
                   "60_display_name": ", Living Legend",
-                  "60_description": "They've reached the impressive mark of sixty job levels! That's more experience than many hearthlings combined... Such wisdom!",
-                  "90_display_name": ", Heir of Cid",
-                  "90_description": "They have ninety job levels - this is unbelievable! No hearthling could ever dream of such a feat... Their soul must've been touched by Cid himself!"
+                  "60_description": "They've reached the impressive mark of sixty-one job levels! That's more experience than many hearthlings combined... Such wisdom!",
+                  "90_display_name": ", Scion of Cid",
+                  "90_description": "They have ninety-one job levels - this is unbelievable! No hearthling could ever dream of such a feat... Their soul must've been touched by Cid himself!"
                },
                "slayer": {
                   "display_name": "Slayer",
@@ -2770,6 +2774,18 @@
                   "3_description": "Twenty-one cups of coffee will place them at the great mark of one cup per day for a whole season. Maybe a bit addicting?",
                   "4_display_name": ", Developer",
                   "4_description": "After eighty-four cups of coffee one can safely say they developed a good taste for it. Especially if it was all in a single night of work..."
+               },
+               "garlic_breath": {
+                  "display_name": "Garlic Breath",
+                  "description": "Gained by eating raw garlic and going around with a bad breath!",
+                  "4_display_name": ", Dragon",
+                  "4_description": "Their breath can kill! Like a dragon! Or perhaps just figuratively... Either way, they have earned some reputation for having a garlic breath for fifteen times!",
+                  "3_display_name": " the Foul",
+                  "3_description": "They really, really enjoy eating things that give them a bad breath, it seems... They've done it eight times!",
+                  "2_display_name": " the Unbrushed",
+                  "2_description": "For the third time they've been with a garlic bread... They could at least go brush their teeth afterwards!",
+                  "1_display_name": ", Garlic Breather",
+                  "1_description": "Ouch! They've eaten raw garlic and now have a bad breath... It happens to everyone, don't feel so bad!"
                }
             }
          }
@@ -3653,6 +3669,10 @@
             "hearth_tonic_buff": {
                "display_name": "Hearthbud Light Tonic",
                "description": "Courage, Menace and Muscle are increased. A radiant aura of light encompasses the hearthling, slowly healing them over time."
+            },
+            "hearth_tonic_worn_off_buff": {
+               "description": "The Hearth magic is a pathway to many abilities some consider to be unnatural... And they are not without a cost.<ul><li>Spirit is reduced.</li><li>Healing received is reduced.</li></ul>",
+               "display_name": "Hearthbud Light Tonic (Expiration Effect)"
             }
          },
          "harmony_transcendental": {
@@ -3768,24 +3788,40 @@
          "courage_tonic": {
             "courage_tonic_buff": {
                "description": "Courage is slightly increased for a while."
+            },
+            "courage_tonic_worn_off_buff": {
+               "display_name": "Courage Tonic (Expiration Effect)",
+               "description": "The illusory courage has left some doubts in this hearthling's heart.<ul><li>Diligence and Menace are reduced.</li></ul>"
             }
          },
          "courage_tonic_2": {
             "courage_tonic_2_buff": {
                "display_name": "Enhanced Courage Tonic",
                "description": "Courage and Armor are increased for a while."
+            },
+            "courage_tonic_2_worn_off_buff": {
+               "display_name": "Enhanced Courage Tonic (Expiration Effect)",
+               "description": "The illusory courage and toughness has left lots of doubts in this hearthling's heart.<ul><li>Diligence, Stamina and Menace are reduced.</li></ul>"
             }
          },
          "creativity_tonic": {
             "creativity_tonic_buff": {
                "display_name": "Creativity Tonic",
                "description": "Crafting Speed is slightly increased for a while."
+            },
+            "creativity_tonic_worn_off_buff": {
+               "display_name": "Creativity Tonic (Expiration Effect)",
+               "description": "The exhausting pace has caused this hearthling to feel a bit less diligent for a while.<ul><li>Diligence is reduced.</li></ul>"
             }
          },
          "creativity_tonic_2": {
             "creativity_tonic_2_buff": {
                "display_name": "Enhanced Creativity Tonic",
                "description": "Crafting Speed and Inspiration are increased for a while."
+            },
+            "creativity_tonic_2_worn_off_buff": {
+               "display_name": "Enhanced Creativity Tonic (Expiration Effect)",
+               "description": "The creative boom is fruitful but very exhaustive on the soul.<ul><li>Spirit and Diligence are reduced.</li></ul>"
             }
          },
          "curiosity_tonic": {
@@ -3794,19 +3830,27 @@
                "description": "Curiosity and Experience Gain are slightly increased for a while."
             },
             "curiosity_tonic_worn_off_buff": {
-               "display_name": "Curiosity Tonic (After-effect)",
-               "description": "This hearthlings' intellect is exhausted after forced enlightment. Mind is reduced."
+               "display_name": "Curiosity Tonic (Expiration Effect)",
+               "description": "This hearthlings' intellect is exhausted after forced enlightment.<ul><li>Mind and Speed are reduced.</li></ul>"
             }
          },
          "energy_tonic": {
             "energy_tonic_buff": {
                "description": "Speed and Diligence are slightly increased for a while. Sleepiness is reduced."
+            },
+            "energy_tonic_worn_off_buff": {
+               "display_name": "Energy Tonic (Expiration Effect)",
+               "description": "The energy boost from the tonic has its own price on the body after a while...<ul><li>Speed is reduced.</li></ul>"
             }
          },
          "energy_tonic_2": {
             "energy_tonic_2_buff": {
                "display_name": "Enhanced Energy Tonic",
                "description": "Speed and Diligence are increased for a while. Sleepiness is reduced. This hearthling will focus more on working and engage in less conversations with others."
+            },
+            "energy_tonic_2_worn_off_buff": {
+               "display_name": "Enhanced Energy Tonic (Expiration Effect)",
+               "description": "Working and running around with an unnatural pace forced this hearthling to their limit.<ul><li>Body is reduced.</li><li>Sleepiness is increased.</li></ul>"
             }
          },
          "nightsight_tonic": {
@@ -3814,31 +3858,47 @@
                "display_name": "Nightsight Tonic",
                "description": "The eyes of this hearthling are magically enhanced, allowing them to see in the dark without penalties for a while."
             },
-            "nightsight_tonic_worn_off_buff": {
-               "display_name": "Nightsight Tonic (After-effect)",
-               "description": "Sudden changes to how light and darkness are perceived has confused this hearthling's body clock. They'll feel more sleepy."
+            "nightsight_tonic_side_effect_buff": {
+               "display_name": "Nightsight Tonic (Side Effect)",
+               "description": "Sudden changes to how light and darkness are perceived has confused this hearthling's body clock. They'll feel more sleepy than usual."
             }
          },
          "stamina_tonic": {
             "stamina_tonic_buff": {
                "description": "Stamina is slightly increased for a while, boosting their health."
+            },
+            "stamina_tonic_worn_off_buff": {
+               "display_name": "Stamina Tonic (Expiration Effect)",
+               "description": "After the toughening effect passes, this tonic leaves a feeling of emptiness inside...<ul><li>Diligence and Courage are reduced.</li></ul>"
             }
          },
          "stamina_tonic_2": {
             "stamina_tonic_2_buff": {
                "display_name": "Enhanced Stamina Tonic",
                "description": "Stamina is increased for a while, greatly boosting their health. Healing received is also increased."
+            },
+            "stamina_tonic_2_worn_off_buff": {
+               "display_name": "Enhanced Stamina Tonic (Expiration Effect)",
+               "description": "There's a certain numbness creeping over this hearthling as their body returns to normal.<ul><li>Diligence, Speed and Spirit are reduced.</li></ul>"
             }
          },
          "strength_tonic": {
             "strength_tonic_buff": {
                "description": "Muscle is slightly increased for a while, boosting their combat damage."
+            },
+            "strength_tonic_worn_off_buff": {
+               "display_name": "Strength Tonic (Expiration Effect)",
+               "description": "This hearthlings muscles are sore and tired! <ul><li>Muscle and Menace are reduced.</li></ul>"
             }
          },
          "strength_tonic_2": {
             "strength_tonic_2_buff": {
                "display_name": "Enhanced Strength Tonic",
                "description": "Muscle is increased for a while, greatly boosting their combat damage. Passive resistance to some inflictable conditions is also increased."
+            },
+            "strength_tonic_2_worn_off_buff": {
+               "display_name": "Enhanced Strength Tonic (Expiration Effect)",
+               "description": "This hearthling feels weaker and more tired than normal after the enhancements of a strong strength tonic.<ul><li>Body and Menace are reduced.</li><li>Sleepiness is increased.</li></ul>"
             }
          },
          "warmth_tonic": {
@@ -3855,6 +3915,10 @@
             "water_resist_tonic_buff": {
                "display_name": "Hydrophobic Tonic",
                "description": "This hearthling is surrounded by a thin magical layer that will prevent them from getting soaked."
+            },
+            "water_resist_tonic_side_effect_buff": {
+               "display_name": "Hydrophobic Tonic (Side Effect)",
+               "description": "The added impermeability has caused this hearthling to feel thirstier a slightly more often."
             }
          },
          "water_resist_tonic_2": {
@@ -3862,9 +3926,9 @@
                "display_name": "Enhanced Hydrophobic Tonic",
                "description": "This hearthling is protected by a much stronger magical layer that will entirely avoid water, allowing them to even run underwater!"
             },
-            "water_resist_tonic_2_worn_off_buff": {
-               "display_name": "Hydrophobic Tonic (After-effect)",
-               "description": "Excessive impermeability has caused this hearthling to feel thirstier more quickly."
+            "water_resist_tonic_2_side_effect_buff": {
+               "display_name": "Enhanced Hydrophobic Tonic (Side Effect)",
+               "description": "Excessive impermeability has caused this hearthling to feel thirstier a lot more quickly."
             }
          },
          "minor_flanked": {
@@ -4053,6 +4117,10 @@
                "display_name": "Caffeine Crash",
                "description": "Uhm... I don't feel so focused anymore. And I'm getting tired quick... I suppose I need more coffee? Diligence is reduced. The need for sleep increases faster."
             }
+         },
+         "garlic_breath": {
+            "display_name": "Garlic Breath",
+            "description": "Maybe eating a whole garlic wasn't a good idea... Courage is reduced.<ul><li>This hearthling will not be willing to start conversations as much</li></ul>"
          }
       },
       "loadouts": {
@@ -7248,6 +7316,11 @@
                "description": "A very nutritious and filling simmer, broth is either an ingredient or a meal on its own.",
                "flavor": "It isn't exactly tasty, though..."
             },
+            "condiment_recipe": {
+               "recipe_name": "Bowl of Condiment (x4)",
+               "description": "Slice, dice & mix four bowls of a fine and flavorful relish to be used by the Cook as a Seasoning.",
+               "flavor": "Cooking Oil or Mayonnaise are examples of bases. Savory vegetables are the strong or spicy ones, like Garlic or Heirbloom fruit"
+            },
             "winter_soup_recipe": {
                "recipe_name": "Winter Soup",
                "description": "Hearty and sweet in equal measure, provides a nice and warm feeling!",
@@ -9423,6 +9496,10 @@
             "coffee_bush_seeds": {
                "display_name": "Green Coffee Beans",
                "description": "Learn to grow coffee plants."
+            },
+            "garlic_seeds": {
+               "display_name": "Garlic Cloves",
+               "description": "Learn to grow garlic."
             }
          },
          "fertilizer": {
@@ -10770,6 +10847,40 @@
                   "description": "It's almost there! Look, it has buds!"
                }
             }
+         },
+         "garlic_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Garlic Seedling",
+                  "description": "A long way to go..."
+               },
+               "001": {
+                  "name": "Garlic Sprout",
+                  "description": "It's peeking through!"
+               },
+               "004": {
+                  "name": "Flowering Garlic",
+                  "description": "Just a little bit more..."
+               },
+               "003": {
+                  "name": "Baby Garlic",
+                  "description": "It should flower soon!"
+               },
+               "002": {
+                  "name": "Garlic Stem",
+                  "description": "It's growing nicely!"
+               },
+               "005": {
+                  "name": "Ripe Garlic",
+                  "description": "The bulbs are large enough!"
+               },
+               "012": {
+                  "name": "Rotten Garlic",
+                  "description": "What a waste..."
+               }
+            },
+            "display_name": "Garlic",
+            "description": "A strong flavored bulb that can be used as a savory vegetable."
          }
       },
       "decorations": {
@@ -13366,6 +13477,18 @@
                   "description": "Still growing!"
                }
             }
+         },
+         "garlic": {
+            "garlic_ghost": {
+               "display_name": "Garlic",
+               "description": "A very delicate flower for a much less delicate flavor."
+            },
+            "rotten": {
+               "garlic_rotten": {
+                  "description": "Not good for eating anymore, but a great source of seeds.",
+                  "display_name": "Rotten Garlic"
+               }
+            }
          }
       },
       "decoration": {
@@ -15211,6 +15334,26 @@
             "coffee_serving": {
                "display_name": "Serving of Coffee Cherries",
                "description": "Not so bad but goes in one bite!"
+            }
+         },
+         "condiment": {
+            "display_name": "Bowl of Condiment",
+            "description": "A fine relish made to complement savoury dishes. Can be used as a seasoning in cooking recipes."
+         },
+         "garlic": {
+            "garlic_basket": {
+               "display_name": "Basket of Garlic",
+               "description": "Sharp flavored bulbs ready to be eaten or used in cooking as a savory vegetable."
+            },
+            "garlic_serving": {
+               "display_name": "Serving of Garlic",
+               "description": "Very strong taste... And smell."
+            }
+         },
+         "heirbloom": {
+            "heirbloom_basket": {
+               "display_name": "Basket of Heirbloom Fruit",
+               "description": "Its stalks are an Amberstone delicacy but the fruit serves as a savory vegetable."
             }
          }
       },
@@ -18803,7 +18946,8 @@
                "backpack": "Backpack",
                "quiver_arrows": "Arrow Quiver",
                "quiver_bolts": "Bolt Quiver",
-               "cleric_tome": "Healing Tome"
+               "cleric_tome": "Healing Tome",
+               "cleric_scepter": "Holy Scepter"
             },
             "job_roles": {
                "crafter": {
@@ -19214,7 +19358,12 @@
             "becomes_vinegar_juice_resource_name": "Any Juice",
             "hard_flour_resource_name": "Any Hard Flour",
             "soft_flour_resource_name": "Any Soft Flour",
-            "malt_resource_name": "Any Malted Grains"
+            "malt_resource_name": "Any Malted Grains",
+            "food_veggie_raw_name": "Any Vegetable",
+            "food_veggie_raw_leafy_name": "Any Leafy Greens",
+            "food_veggie_raw_hearty_name": "Any Hearty Vegetable",
+            "food_veggie_raw_savory_name": "Any Savory Vegetable",
+            "condiment_base_resource_name": "Any Condiment Base"
          }
       }
    },

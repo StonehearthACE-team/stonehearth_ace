@@ -853,7 +853,14 @@
                "ordinal": 6
             },
             "heirbloom": {
+               "icon": "/stonehearth_ace/entities/food/heirbloom/heirbloom_basket/heirbloom_basket.png",
                "ordinal": 10
+            },
+            "garlic": {
+               "ordinal": 10.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.garlic.garlic_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/garlic/garlic_basket/garlic_basket.png",
+               "filter": "raw_food garlic"
             },
             "berries": {
                "ordinal": 15
@@ -1196,6 +1203,12 @@
                "display_name": "i18n(stonehearth_ace:entities.food.vinegar.vinegar.display_name)",
                "icon": "/stonehearth_ace/entities/food/vinegar/vinegar/vinegar.png",
                "filter": "vinegar cooking_ingredient"
+            },
+            "condiment": {
+               "ordinal": 2.493,
+               "display_name": "i18n(stonehearth_ace:entities.food.condiment.display_name)",
+               "icon": "/stonehearth_ace/entities/food/condiment/condiment.png",
+               "filter": "condiment standard cooking_ingredient"
             },
             "sausage": {
                "ordinal": 3.1,

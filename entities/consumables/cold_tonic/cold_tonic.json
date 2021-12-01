@@ -29,16 +29,28 @@
          "script": "stonehearth:consumables:scripts:buff_town",
          "consumable_qualities": [
             {
-               "buff": "stonehearth_ace:buffs:tonic:cold_tonic"
+               "buff": [
+                  "stonehearth_ace:buffs:tonic:cold_tonic",
+                  "stonehearth_ace:buffs:tonic:cold_tonic:side_effect"
+               ]
             },
             {
-               "buff": "stonehearth_ace:buffs:tonic:cold_tonic:fine"
+               "buff": [
+                  "stonehearth_ace:buffs:tonic:cold_tonic:fine",
+                  "stonehearth_ace:buffs:tonic:cold_tonic:side_effect:fine"
+               ]
             },
             {
-               "buff": "stonehearth_ace:buffs:tonic:cold_tonic:excellent"
+               "buff": [
+                  "stonehearth_ace:buffs:tonic:cold_tonic:excellent",
+                  "stonehearth_ace:buffs:tonic:cold_tonic:side_effect:excellent"
+               ]
             },
             {
-               "buff": "stonehearth_ace:buffs:tonic:cold_tonic:masterwork"
+               "buff": [
+                  "stonehearth_ace:buffs:tonic:cold_tonic:masterwork",
+                  "stonehearth_ace:buffs:tonic:cold_tonic:side_effect:masterwork"
+               ]
             }
          ]
       },

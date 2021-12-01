@@ -1,0 +1,21 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.energy_tonic_2.energy_tonic_2_worn_off_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.energy_tonic_2.energy_tonic_2_worn_off_buff.description)",
+   "icon": "file(energy_tonic_2_after_effect_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "body": {
+         "min": 1,
+         "add": -1
+      },
+      "sleepiness": {
+         "multiply": 2
+      }
+   },
+   "disallowed_categories": [
+      "energy_tonic"
+   ]
+}

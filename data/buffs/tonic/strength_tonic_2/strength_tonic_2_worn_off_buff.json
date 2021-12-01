@@ -1,0 +1,24 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.strength_tonic_2.strength_tonic_2_worn_off_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.strength_tonic_2.strength_tonic_2_worn_off_buff.description)",
+   "icon": "file(strength_tonic_2_after_effect_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "body": {
+         "min": 1,
+         "add": -1
+      },
+      "menace": {
+         "multiply": 0.8
+      },
+      "sleepiness": {
+         "multiply": 2
+      }
+   },
+   "disallowed_categories": [
+      "strength_tonic"
+   ]
+}

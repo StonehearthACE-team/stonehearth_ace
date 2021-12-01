@@ -1,0 +1,40 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.condiment_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.condiment_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.condiment_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/condiment/condiment.png",
+   "workshop": "stonehearth_ace:cook:table",
+   "ace_smart_crafter_ignore": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "condiment_base",
+         "count": 1
+      },
+	   {
+         "material": "raw_food vegetable savory",
+         "count": 1
+      },
+      {
+         "material": "herb zesty resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:condiment"
+      },
+      {
+         "item": "stonehearth_ace:food:condiment"
+      },
+      {
+         "item": "stonehearth_ace:food:condiment"
+      },
+      {
+         "item": "stonehearth_ace:food:condiment"
+      }
+   ]
+}

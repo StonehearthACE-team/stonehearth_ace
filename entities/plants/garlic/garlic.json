@@ -1,0 +1,64 @@
+{
+   "type": "entity",
+   "mixins": "file(garlic_ghost.json)",
+   "components": {
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:food:garlic:garlic_basket",
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_veggie_overlay_effect",
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "description": "harvest_plant",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 4
+                     },
+                     "pelt": {
+                        "uri": "stonehearth_ace:plants:garlic:seed",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(garlic_iconic.json)",
+         "ghost_form": "file(garlic_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": false
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:replant_data": {
+         "seed_alias": "stonehearth_ace:plants:garlic:seed"
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:plants:garlic:rotten",
+         "evolve_time": "6d+24h"
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "stockpile_plant"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 3,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      }
+   }
+}

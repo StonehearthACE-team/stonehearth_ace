@@ -29,16 +29,28 @@
          "script": "stonehearth:consumables:scripts:buff_town",
          "consumable_qualities": [
             {
-               "buff": "stonehearth_ace:buffs:tonic:water_resist_tonic_2"
+               "buff": [
+                  "stonehearth_ace:buffs:tonic:water_resist_tonic_2",
+                  "stonehearth_ace:buffs:tonic:water_resist_tonic_2:side_effect"
+               ]
             },
             {
-               "buff": "stonehearth_ace:buffs:tonic:water_resist_tonic_2:fine"
+               "buff": [
+                  "stonehearth_ace:buffs:tonic:water_resist_tonic_2:fine",
+                  "stonehearth_ace:buffs:tonic:water_resist_tonic_2:side_effect:fine"
+               ]
             },
             {
-               "buff": "stonehearth_ace:buffs:tonic:water_resist_tonic_2:excellent"
+               "buff": [
+                  "stonehearth_ace:buffs:tonic:water_resist_tonic_2:excellent",
+                  "stonehearth_ace:buffs:tonic:water_resist_tonic_2:side_effect:excellent"
+               ]
             },
             {
-               "buff": "stonehearth_ace:buffs:tonic:water_resist_tonic_2:masterwork"
+               "buff": [
+                  "stonehearth_ace:buffs:tonic:water_resist_tonic_2:masterwork",
+                  "stonehearth_ace:buffs:tonic:water_resist_tonic_2:side_effect:masterwork"
+               ]
             }
          ]
       },

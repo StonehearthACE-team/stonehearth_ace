@@ -1,7 +1,38 @@
 {
+   "mixins": "stonehearth_ace:mixins:food_decay:savory",
    "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "decay_1": "override"
+         },
+         "default": {
+            "models": [
+               "file(heirbloom_basket.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(heirbloom_basket_rotting.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      },
       "stonehearth:stacks": {
          "max_stacks": 14
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.heirbloom.heirbloom_basket.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.heirbloom.heirbloom_basket.description)",
+         "icon": "file(heirbloom_basket.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": ["food_container", "raw_food", "vegetable", "savory", "heirbloom", "vegetarian", "stockpile_raw_food"]
       }
    }
 }
