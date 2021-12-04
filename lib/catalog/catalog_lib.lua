@@ -316,6 +316,37 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
 
       local stacks = catalog_data.max_stacks or 1
 
+      --[[if entity_data['stonehearth:consumable'] and entity_data['stonehearth:consumable'].script == 'stonehearth:consumables:scripts:buff_town' then
+         local base_buffs = entity_data['stonehearth:consumable'].buff or nil
+         local quality_buffs, total_buffs
+         if type(base_buffs) == 'string' then
+            base_buffs = { base_buffs }
+         end
+         if entity_data['stonehearth:consumable'].consumable_qualities then
+            quality_buffs = entity_data['stonehearth:consumable'].consumable_qualities[1].buff or nil
+            if type(quality_buffs) == 'string' then
+               quality_buffs = { quality_buffs }
+            end
+         end
+         if base_buffs and quality_buffs then
+            total_buffs = table.concat({base_buffs, quality_buffs}, ',')
+         elseif not base_buffs and quality_buffs then
+            base_buffs = {}
+            total_buffs = table.concat({base_buffs, quality_buffs}, ',')
+         end
+         catalog_data.consumable_effects = catalog_lib.get_buffs(total_buffs)
+         local after_effects = {}
+         if catalog_data.consumable_effects then
+            for _, buff_data in ipairs(catalog_data.consumable_effects) do
+               local buff_after_effect = buff_data.cooldown_buff or nil
+               if buff_after_effect then
+                  table.insert(after_effects, buff_after_effect)
+               end
+            end
+         end
+         catalog_data.consumable_after_effects = catalog_lib.get_buffs(after_effects)
+      end]]
+
       if entity_data['stonehearth:food_container'] and entity_data['stonehearth:food_container'].food then
          local stacks_per_serving = entity_data['stonehearth:food_container'].stacks_per_serving or 1
          catalog_data.food_servings = math.ceil(stacks / math.max(1, stacks_per_serving))
@@ -447,6 +478,7 @@ function catalog_lib.get_buffs(buff_data)
                   description = json.description,
                   icon = json.icon,
                   stacks = stacks,
+                  cooldown_buff = json.cooldown_buff,
                   invisible_to_player = json.invisible_to_player,
                   invisible_on_crafting = json.invisible_on_crafting
                }

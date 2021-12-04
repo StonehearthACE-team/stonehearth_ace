@@ -163,6 +163,30 @@
                {{/if}}
             {{/each}}
          </div>
+         <div id="consumableEffects">
+            {{#each view.consumableEffects}}
+               {{#if icon}}
+               <div {{bind-attr data-id="uri"}} {{bind-attr class="axis"}}>
+                  <img class="buffImg" {{bind-attr src="icon"}}>
+                  {{#if this.hasStacks}}
+                  <div class="stacks">{{this.stacks}}</div>
+                  {{/if}} </br>
+               </div>
+               {{/if}}
+            {{/each}}
+         </div>
+         <div id="consumableAfterEffects">
+            {{#each view.consumableAfterEffects}}
+               {{#if icon}}
+               <div {{bind-attr data-id="uri"}} {{bind-attr class="axis"}}>
+                  <img class="buffImg" {{bind-attr src="icon"}}>
+                  {{#if this.hasStacks}}
+                  <div class="stacks">{{this.stacks}}</div>
+                  {{/if}} </br>
+               </div>
+               {{/if}}
+            {{/each}}
+         </div>
       </div>
 
       <div id="stats"></div>

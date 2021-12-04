@@ -284,7 +284,7 @@ $(top).on('stonehearthReady', function() {
             var self = this;
             var productCatalogData = App.catalog.getCatalogData(recipe.product_uri);
       
-            if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles || productCatalogData.consumable_buffs)) {
+            if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles || productCatalogData.consumable_buffs || productCatalogData.consumable_effects || productCatalogData.consumable_after_effects)) {
                self.$('.detailsView').find('.tooltipstered').tooltipster('destroy');
                if (productCatalogData.equipment_roles) {
                   var classArray = stonehearth_ace.findRelevantClassesArray(productCatalogData.equipment_roles);
@@ -340,6 +340,32 @@ $(top).on('stonehearthReady', function() {
                   }
                });
                self.set('inflictableDebuffs', inflictableDebuffs);
+
+               var consumableEffects = [];
+               radiant.each(productCatalogData.consumable_effects, function (_, buff) {
+                  if (!buff.invisible_to_player && !buff.invisible_on_crafting) {
+                     // only show stacks if greater than 1
+                     if (buff.stacks > 1) {
+                        buff = radiant.shallow_copy(buff);
+                        buff.hasStacks = true;
+                     }
+                     consumableEffects.push(buff);
+                  }
+               });
+               self.set('consumableEffects', consumableEffects);
+
+               var consumableAfterEffects = [];
+               radiant.each(productCatalogData.consumable_after_effects, function (_, buff) {
+                  if (!buff.invisible_to_player && !buff.invisible_on_crafting) {
+                     // only show stacks if greater than 1
+                     if (buff.stacks > 1) {
+                        buff = radiant.shallow_copy(buff);
+                        buff.hasStacks = true;
+                     }
+                     consumableAfterEffects.push(buff);
+                  }
+               });
+               self.set('consumableAfterEffects', consumableAfterEffects);
       
                App.tooltipHelper.createDynamicTooltip(self.$('#equipmentRequirements'), function () {
                   var tooltipString = i18n.t('stonehearth:ui.game.unit_frame.no_requirements');
@@ -392,6 +418,22 @@ $(top).on('stonehearthReady', function() {
                var div = self.$('[data-id="' + debuff.uri + '"]');
                if (div.length > 0) {
                   App.guiHelper.addTooltip(div, debuff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.inflictable_debuff') + i18n.t(debuff.display_name));
+               }
+            });
+
+            var consumableEffects = self.get('consumableEffects');
+            radiant.each(consumableEffects, function(_, buff) {
+               var div = self.$('[data-id="' + buff.uri + '"]');
+               if (div.length > 0) {
+                  App.guiHelper.addTooltip(div, buff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.consumable_effect') + i18n.t(buff.display_name));
+               }
+            });
+
+            var consumableAfterEffects = self.get('consumableAfterEffects');
+            radiant.each(consumableAfterEffects, function(_, buff) {
+               var div = self.$('[data-id="' + buff.uri + '"]');
+               if (div.length > 0) {
+                  App.guiHelper.addTooltip(div, buff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.consumable_after_effect') + i18n.t(buff.display_name));
                }
             });
          },
