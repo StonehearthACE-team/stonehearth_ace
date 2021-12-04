@@ -336,6 +336,7 @@ $(top).on('stonehearthReady', function() {
          },
 
          _setBuffsByType: function (data, buffType, propertyName) {
+            var self = this;
             var buffs = [];
             radiant.each(data[buffType], function (_, buff) {
                if (!buff.invisible_to_player && !buff.invisible_on_crafting) {
@@ -362,6 +363,7 @@ $(top).on('stonehearthReady', function() {
 
          _createBuffTooltipsByType: function(propertyName, tooltipName)
          {
+            var self = this;
             var buffs = self.get(propertyName);
             radiant.each(buffs, function(_, buff) {
                var div = self.$('[data-id="' + buff.uri + '"]');
