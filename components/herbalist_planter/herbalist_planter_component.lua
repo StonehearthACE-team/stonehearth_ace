@@ -85,6 +85,9 @@ function HerbalistPlanterComponent:post_activate()
    if self._is_create then
       self:set_harvest_enabled(self._json.harvest_enabled ~= false)
    end
+   
+   local render_info = self._entity:get_component('render_info')
+   render_info:set_model_variant("ace_planter")
 end
 
 function HerbalistPlanterComponent:destroy()
