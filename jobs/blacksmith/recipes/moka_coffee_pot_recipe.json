@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 42,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.moka_coffee_pot_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.moka_coffee_pot_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.moka_coffee_pot_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/moka_coffee_pot/moka_coffee_pot.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 2
+      },
+      {
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:moka_coffee_pot"
+      }
+   ]
+}

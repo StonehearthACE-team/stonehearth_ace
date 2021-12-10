@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 28,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_teapot_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_teapot_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.iron_teapot_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/iron_teapot/iron_teapot.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:iron_teapot"
+      }
+   ]
+}

@@ -127,137 +127,173 @@
             "tea": {
                "ordinal": 2,
                "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea.display_name)",
-               "icon": "/stonehearth_ace/entities/drink/tea/tea/tea.png",
-               "filter": "drink_container tea_tea"
+               "icon": "/stonehearth/entities/decoration/decorative_teapot/decorative_teapot.png",
+               "filter": "drink_container tea standard"
             },
             "tea_pine": {
                "ordinal": 2.1,
-               "display_name": "i18n(stonehearth_ace:entities.drink.tea_pine.tea_pine.display_name)",
-               "icon": "/stonehearth_ace/entities/drink/tea/tea_pine/tea_pine.png",
-               "filter": "drink_container tea_pine"
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea_pine.display_name)",
+               "icon": "/stonehearth_ace/entities/decoration/pewter_teapot/pewter_teapot.png",
+               "filter": "drink_container tea pine"
+            },
+            "tea_green": {
+               "ordinal": 2.2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea_green.display_name)",
+               "icon": "/stonehearth_ace/entities/decoration/stone_teapot/stone_teapot.png",
+               "filter": "drink_container tea pine"
             },
             "tea_fancy": {
-               "ordinal": 2.2,
-               "display_name": "i18n(stonehearth_ace:entities.drink.tea_fancy.tea_fancy.display_name)",
-               "icon": "/stonehearth_ace/entities/drink/tea/tea_fancy/tea_fancy.png",
-               "filter": "drink_container tea_fancy"
+               "ordinal": 2.3,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea_fancy.display_name)",
+               "icon": "/stonehearth_ace/entities/decoration/porcelain_teapot/porcelain_teapot.png",
+               "filter": "drink_container tea fancy"
+            },
+            "tea_black": {
+               "ordinal": 2.4,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea_black.display_name)",
+               "icon": "/stonehearth_ace/entities/decoration/iron_teapot/iron_teapot.png",
+               "filter": "drink_container tea fancy"
             },
             "tea_amberstone": {
-               "ordinal": 2.3,
-               "display_name": "i18n(stonehearth_ace:entities.drink.tea_amberstone.tea_amberstone.display_name)",
-               "icon": "/stonehearth_ace/entities/drink/tea/tea_amberstone/tea_amberstone.png",
-               "filter": "drink_container tea_amberstone"
+               "ordinal": 2.5,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea_amberstone.display_name)",
+               "icon": "/stonehearth/entities/decoration/amberstone_teapot/amberstone_teapot.png",
+               "filter": "drink_container tea amberstone"
             },
             "tea_desert": {
-               "ordinal": 2.4,
-               "display_name": "i18n(stonehearth_ace:entities.drink.tea_desert.tea_desert.display_name)",
+               "ordinal": 2.6,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea_desert.display_name)",
                "icon": "/stonehearth_ace/entities/drink/tea/tea_desert/tea_desert.png",
-               "filter": "drink_container tea_desert"
+               "filter": "drink_container tea desert"
+            },
+            "coffee": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:entities.drink.coffee.coffee.display_name)",
+               "icon": "/stonehearth_ace/entities/decoration/decorative_coffee_pot/decorative_coffee_pot.png",
+               "filter": "drink_container coffee standard"
+            },
+            "coffee_milk": {
+               "ordinal": 3.1,
+               "display_name": "i18n(stonehearth_ace:entities.drink.coffee.coffee_milk.display_name)",
+               "icon": "/stonehearth_ace/entities/decoration/copper_coffee_pot/copper_coffee_pot.png",
+               "filter": "drink_container coffee milk"
+            },
+            "coffee_bold": {
+               "ordinal": 3.2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.coffee.coffee_bold.display_name)",
+               "icon": "/stonehearth_ace/entities/decoration/moka_coffee_pot/moka_coffee_pot.png",
+               "filter": "drink_container coffee bold"
+            },
+            "coffee_lavish": {
+               "ordinal": 3.3,
+               "display_name": "i18n(stonehearth_ace:entities.drink.coffee.coffee_lavish.display_name)",
+               "icon": "/stonehearth_ace/entities/decoration/porcelain_coffee_pot/porcelain_coffee_pot.png",
+               "filter": "drink_container coffee lavish"
             },
             "mead": {
-               "ordinal": 3,
+               "ordinal": 4,
                "display_name": "i18n(stonehearth_ace:entities.drink.mead.mead.display_name)",
                "icon": "/stonehearth_ace/entities/drink/mead/mead/mead.png",
                "filter": "drink_container mead standard"
             },
             "mead_fruit": {
-               "ordinal": 3.1,
+               "ordinal": 4.1,
                "display_name": "i18n(stonehearth_ace:entities.drink.mead_fruit.mead_fruit.display_name)",
                "icon": "/stonehearth_ace/entities/drink/mead_fruit/mead_fruit/mead_fruit.png",
                "filter": "drink_container mead_fruit"
             },
             "wine_berry": {
-               "ordinal": 4,
+               "ordinal": 5,
                "display_name": "i18n(stonehearth_ace:entities.drink.wine_berry.wine_berry.display_name)",
                "icon": "/stonehearth_ace/entities/drink/wine_berry/wine_berry/wine_berry.png",
                "filter": "drink_container wine_berry"
             },
             "wine_prickly_pear": {
-               "ordinal": 4.1,
+               "ordinal": 5.1,
                "display_name": "i18n(stonehearth_ace:entities.drink.wine_prickly_pear.wine_prickly_pear.display_name)",
                "icon": "/stonehearth_ace/entities/drink/wine_prickly_pear/wine_prickly_pear/wine_prickly_pear.png",
                "filter": "drink_container wine_prickly_pear"
             },
             "wine_cherry": {
-               "ordinal": 4.2,
+               "ordinal": 5.2,
                "display_name": "i18n(stonehearth_ace:entities.drink.wine_cherry.wine_cherry.display_name)",
                "icon": "/stonehearth_ace/entities/drink/wine_cherry/wine_cherry/wine_cherry.png",
                "filter": "drink_container wine_cherry"
             },
             "wine_apple": {
-               "ordinal": 4.3,
+               "ordinal": 5.3,
                "display_name": "i18n(stonehearth_ace:entities.drink.wine_apple.wine_apple.display_name)",
                "icon": "/stonehearth_ace/entities/drink/wine_apple/wine_apple/wine_apple.png",
                "filter": "drink_container wine_apple"
             },
             "wine_date": {
-               "ordinal": 4.4,
+               "ordinal": 5.4,
                "display_name": "i18n(stonehearth_ace:entities.drink.wine_date.wine_date.display_name)",
                "icon": "/stonehearth_ace/entities/drink/wine_date/wine_date/wine_date.png",
                "filter": "drink_container wine_date"
             },
             "wine_pear": {
-               "ordinal": 4.5,
+               "ordinal": 5.5,
                "display_name": "i18n(stonehearth_ace:entities.drink.wine_pear.wine_pear.display_name)",
                "icon": "/stonehearth_ace/entities/drink/wine_pear/wine_pear/wine_pear.png",
                "filter": "drink_container wine_pear"
             },
             "wine_plum": {
-               "ordinal": 4.6,
+               "ordinal": 5.6,
                "display_name": "i18n(stonehearth_ace:entities.drink.wine_plum.wine_plum.display_name)",
                "icon": "/stonehearth_ace/entities/drink/wine_plum/wine_plum/wine_plum.png",
                "filter": "drink_container wine_plum"
             },
             "ale": {
-               "ordinal": 5,
+               "ordinal": 7,
                "display_name": "i18n(stonehearth_ace:entities.drink.ale.ale.display_name)",
                "icon": "/stonehearth_ace/entities/drink/ale/ale/ale.png",
                "filter": "drink_container ale"
             },
             "beer": {
-               "ordinal": 5.1,
+               "ordinal": 8,
                "display_name": "i18n(stonehearth_ace:entities.drink.beer.beer.display_name)",
                "icon": "/stonehearth_ace/entities/drink/beer/beer/beer.png",
                "filter": "drink_container beer"
             },
             "spirit": {
-               "ordinal": 6,
+               "ordinal": 10,
                "display_name": "i18n(stonehearth_ace:entities.drink.spirit.spirit.display_name)",
                "icon": "/stonehearth_ace/entities/drink/spirit/spirit/spirit.png",
                "filter": "drink_container spirit"
             },
             "spirit_northern": {
-               "ordinal": 6.1,
+               "ordinal": 10.1,
                "display_name": "i18n(stonehearth_ace:entities.drink.spirit_northern.spirit_northern.display_name)",
                "icon": "/stonehearth_ace/entities/drink/spirit_northern/spirit_northern/spirit_northern.png",
                "filter": "drink_container spirit_northern"
             },
             "spirit_fruit": {
-               "ordinal": 6.2,
+               "ordinal": 10.2,
                "display_name": "i18n(stonehearth_ace:entities.drink.spirit_fruit.spirit_fruit.display_name)",
                "icon": "/stonehearth_ace/entities/drink/spirit_fruit/spirit_fruit/spirit_fruit.png",
                "filter": "drink_container spirit_fruit"
             },
             "spirit_sugar": {
-               "ordinal": 6.3,
+               "ordinal": 10.3,
                "display_name": "i18n(stonehearth_ace:entities.drink.spirit_sugar.spirit_sugar.display_name)",
                "icon": "/stonehearth_ace/entities/drink/spirit_sugar/spirit_sugar/spirit_sugar.png",
                "filter": "drink_container spirit_sugar"
             },
             "spirit_hearth": {
-               "ordinal": 6.4,
+               "ordinal": 10.4,
                "display_name": "i18n(stonehearth_ace:entities.drink.spirit_hearth.spirit_hearth.display_name)",
                "icon": "/stonehearth_ace/entities/drink/spirit_hearth/spirit_hearth/spirit_hearth.png",
                "filter": "drink_container spirit_hearth"
             },
             "liquor": {
-               "ordinal": 7,
+               "ordinal": 11,
                "display_name": "i18n(stonehearth_ace:entities.drink.liquor.liquor.display_name)",
                "icon": "/stonehearth_ace/entities/drink/liquor/liquor/liquor.png",
                "filter": "drink_container liquor"
             },
             "liqueur_almond": {
-               "ordinal": 8,
+               "ordinal": 12,
                "display_name": "i18n(stonehearth_ace:entities.drink.liqueur_almond.liqueur_almond.display_name)",
                "icon": "/stonehearth_ace/entities/drink/liqueur_almond/liqueur_almond/liqueur_almond.png",
                "filter": "drink_container liqueur_almond"
@@ -423,6 +459,54 @@
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_edible_fruit)",
                "icon": "/stonehearth_ace/entities/trees/apple_tree/seed/edible_fruits_icon.png",
                "filter": "seed_fruit cooking_ingredient"
+            },
+            "coffee_green": {
+               "ordinal": 11,
+               "display_name": "i18n(stonehearth_ace:entities.drink.coffee.green.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/coffee/coffee_green/coffee_green.png",
+               "filter": "brewing_ingredient coffee green"
+            },
+            "coffee_roasted": {
+               "ordinal": 11.1,
+               "display_name": "i18n(stonehearth_ace:entities.drink.coffee.roasted.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/coffee/coffee_roasted/coffee_roasted.png",
+               "filter": "brewing_ingredient coffee roasted"
+            },
+            "coffee_ground": {
+               "ordinal": 11.2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.coffee.ground.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/coffee/coffee_ground/coffee_ground.png",
+               "filter": "brewing_ingredient coffee ground"
+            },
+            "tea_leaves_fresh": {
+               "ordinal": 12,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea_leaves.fresh.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/tea/tea_leaves_fresh/tea_leaves_fresh.png",
+               "filter": "brewing_ingredient tea_leaves fresh"
+            },
+            "tea_leaves_green": {
+               "ordinal": 12.1,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea_leaves.green.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/tea/tea_leaves_green/tea_leaves_green.png",
+               "filter": "brewing_ingredient tea_leaves green"
+            },
+            "tea_ground_green": {
+               "ordinal": 12.2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea.ground_tea_green.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/tea/ground_tea_green/ground_tea_green.png",
+               "filter": "brewing_ingredient tea green"
+            },
+            "tea_leaves_black": {
+               "ordinal": 12.3,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea.tea_leaves.black.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/tea/tea_leaves_black/tea_leaves_black.png",
+               "filter": "brewing_ingredient tea_leaves black"
+            },
+            "tea_ground_black": {
+               "ordinal": 12.4,
+               "display_name": "i18n(stonehearth_ace:entities.drink.tea.ground_tea_black.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/tea/ground_tea_black/ground_tea_black.png",
+               "filter": "brewing_ingredient tea black"
             }
          }
       },

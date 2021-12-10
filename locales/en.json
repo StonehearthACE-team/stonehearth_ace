@@ -13,7 +13,14 @@
             "consume_drink": "drinking [name(data.target)]",
             "drink": "getting a drink",
             "build": "building [name(data.target)]",
-            "collect_building_material": "collecting building materials"
+            "collect_building_material": "collecting building materials",
+            "upgrading": "upgrading [name(data.target)]",
+            "opening": "opening [name(data.target)]",
+            "filling": "filling [name(data.target)]",
+            "draining": "draining [name(data.target)]",
+            "capturing_bees": "capturing bees",
+            "sculpting": "sculpting [name(data.target)]",
+            "carving": "carving [name(data.target)]"
          }
       }
    },
@@ -4756,6 +4763,11 @@
                "description": "Separate a seed from the flower",
                "flavor": "Only a skilled hand can harvest the weaker seed, but the herb is lost in the process."
             },
+            "coffee_bush_transmute_recipe": {
+               "recipe_name": "Coffee Plant Seed",
+               "description": "Separate seeds from the fruits",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the fruits are lost in the process."
+            },
             "moonbell_transmute_recipe": {
                "recipe_name": "Moonbell Seeds (x2)",
                "description": "Separate seeds from the herbs",
@@ -4765,6 +4777,11 @@
                "recipe_name": "Sugarbell Seeds (x2)",
                "description": "Separate seeds from the harvest",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the sugarbells are lost in the process."
+            },
+            "garlic_transmute_recipe": {
+               "recipe_name": "Garlic Seeds (x2)",
+               "description": "Separate seeds from the harvest",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the garlic is lost in the process."
             },
             "water_lily_pad_transmute_recipe": {
                "recipe_name": "Lily Pad Seed Pods (x2)",
@@ -4949,6 +4966,11 @@
             "tea_bush_seeds_recipe": {
                "recipe_name": "Tea Seedpods",
                "description": "Domesticate Tea Shrubs and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "coffee_bush_seeds_recipe": {
+               "recipe_name": "Green Coffee Beans",
+               "description": "Domesticate Coffee Plants and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "pear_cactus_seeds_recipe": {
@@ -5196,6 +5218,16 @@
                "description": "Trade or gift it to allow other cultures to cultivate sweet taters!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
+            "garlic_seeds_recipe": {
+               "recipe_name": "Garlic Cloves",
+               "description": "Domesticate Garlic and learn how to grow them like the friendly people of Honeywood!",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "garlic_seeds_2_recipe": {
+               "recipe_name": "Garlic Cloves",
+               "description": "Trade or gift it to allow other cultures to cultivate garlic!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "fertilizer_recipe": {
                "recipe_name": "Simple Fertilizer",
                "description": "Usable by skilled farmers for slightly improving the quality of their produce.",
@@ -5341,6 +5373,11 @@
                "recipe_name": "Fever Cordial",
                "description": "This foul-smelling extract can be used for treating infections of any severity. Will not apply the 'Recently Treated' effect, allowing further treatment without delay.",
                "flavor": "Old Nanny used to say that rubbing moldy bread on infected wounds can be helpful..."
+            },
+            "undead_cordial_recipe": {
+               "recipe_name": "Undead Cordial",
+               "description": "A repulsive extract able to remove the infections applied by the undead. Will not apply the 'Recently Treated' effect, allowing further treatment without delay.",
+               "flavor": "A circle of salt around the patient might help as well..."
             },
             "weak_antidote_recipe": {
                "recipe_name": "Weak Antidote",
@@ -6680,6 +6717,11 @@
                "description": "Your plants deserve this, don't they?",
                "flavor": "Yes, they do!"
             },
+            "stone_teapot_recipe": {
+               "recipe_name": "Stone Teapot",
+               "description": "Simple yet efficient in keeping things warm.",
+               "flavor": "A Brewer can use these to make tea"
+            },
             "frostfeast": {
                "present_small_recipe": {
                   "recipe_name": "Small Frostfeast Present",
@@ -6736,10 +6778,25 @@
                "description": "Craft a fancy holder that can store up to 4 Bundles O' Firewood.",
                "flavor": ""
             },
+            "copper_coffee_pot_recipe": {
+               "recipe_name": "Copper Coffee Pot",
+               "description": "Very sleek and lightweight, can keep a beverage hot for a good time!",
+               "flavor": "A Brewer can use these to make coffee"
+            },
+            "moka_coffee_pot_recipe": {
+               "recipe_name": "Moka Coffee Pot",
+               "description": "A special pot for extracting the deepest flavors of coffee, very traditional around the southern coast.",
+               "flavor": "A Brewer can use these to make coffee"
+            },
             "pewter_teapot_recipe": {
                "recipe_name": "Pewter Teapot",
                "description": "A very refined and exquisite piece of decoration.",
-               "flavor": "Can also be used to make tea"
+               "flavor": "A Brewer can use these to make tea"
+            },
+            "iron_teapot_recipe": {
+               "recipe_name": "Cast Iron Teapot",
+               "description": "Very sturdy and heavy but should warm its contents evenly and keep them hot for a while.",
+               "flavor": "A Brewer can use these to make tea"
             },
             "pewter_pitcher_recipe": {
                "recipe_name": "Pewter Pitcher",
@@ -8699,7 +8756,7 @@
                "flavor": "Coffee Cherries are dried on a drying bed"
             },
             "coffee_roasted_recipe": {
-               "recipe_name": "Sack of Roasted Coffee",
+               "recipe_name": "Sack of Roasted Coffee Beans",
                "description": "Coffee Beans are perfectly roasted when they reach a deep, dark brown color and become slightly brittle.",
                "flavor": "The Brewer can use the Cook's oven for this recipe!"
             },
@@ -8828,6 +8885,16 @@
                "description": "Smells good and tastes better, a real forest treasure. Provides multiple bonuses to hearthlings.",
                "flavor": "Prepared tea must be placed somewhere in order to be consumed"
             },
+            "tea_green_recipe": {
+               "recipe_name": "Green Tea",
+               "description": "Deep and soft all at once, a beverage for the mind. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
+            "tea_black_recipe": {
+               "recipe_name": "Black Tea",
+               "description": "The unique and unmistakable fragrance will enlight all the senses. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
             "tea_desert_recipe": {
                "recipe_name": "Desert Sun Tea",
                "description": "A unique recipe to the children of Rayya, a flowery black tea from Pal'Mum. Provides multiple bonuses to hearthlings.",
@@ -8846,6 +8913,21 @@
             "coffee_recipe": {
                "recipe_name": "Coffee",
                "description": "A filtered, warm and energizing beverage held dear to many late-night workers! Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared coffee must be placed somewhere in order to be consumed"
+            },
+            "coffee_milk_recipe": {
+               "recipe_name": "White Coffee",
+               "description": "The deep flavor of coffee perfectly balanced with the softness of milk. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared coffee must be placed somewhere in order to be consumed"
+            },
+            "coffee_bold_recipe": {
+               "recipe_name": "Bold Coffee",
+               "description": "A much stronger and deeper preparing of coffee using a special pot to steam it through the grains. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared coffee must be placed somewhere in order to be consumed"
+            },
+            "coffee_lavish_recipe": {
+               "recipe_name": "Lavish Coffee",
+               "description": "A refined, sweet and flavorful recipe with all the elegance that coffee lovers deserve! Provides multiple bonuses to hearthlings.",
                "flavor": "Prepared coffee must be placed somewhere in order to be consumed"
             },
             "juice_berry_recipe": {
@@ -9632,6 +9714,10 @@
          "fever_cordial": {
             "display_name": "Fever Cordial",
             "description": "Used by the Herbalist for efficiently treating infections of any severity."
+         },
+         "undead_cordial": {
+            "display_name": "Undead Cordial",
+            "description": "Used by the Herbalist for efficiently treating undead infections."
          },
          "simple_ointment": {
             "display_name": "Simple Ointment",
@@ -13488,6 +13574,34 @@
                   "description": "Not good for eating anymore, but a great source of seeds.",
                   "display_name": "Rotten Garlic"
                }
+            },
+            "stem": {
+               "garlic_plant_stem": {
+                  "display_name": "Stemming Garlic Plant",
+                  "description": "Still growing!"
+               }
+            },
+            "sprout": {
+               "garlic_plant_sprout": {
+                  "display_name": "Garlic Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "seed": {
+               "garlic_plant_seed_ghost": {
+                  "display_name": "Garlic Seed",
+                  "description": "Will grow into a bulby, savory vegetable!"
+               },
+               "garlic_plant_seed": {
+                  "display_name": "Garlic Seed",
+                  "description": "Can be planted to grow a savory vegetable."
+               }
+            },
+            "bud": {
+               "garlic_plant_bud": {
+                  "display_name": "Flowering Garlic",
+                  "description": "It's almost there! Look, it's about to bloom!"
+               }
             }
          }
       },
@@ -13910,6 +14024,14 @@
             "display_name": "Pewter Teapot",
             "description": "Refined. Elegant. All the untarnished values of society."
          },
+         "stone_teapot": {
+            "display_name": "Stone Teapot",
+            "description": "Here to prove that tea is a brittle-ish thing."
+         },
+         "iron_teapot": {
+            "display_name": "Cast Iron Teapot",
+            "description": "Careful when moving it around... It's quite heavy!"
+         },
          "pewter_pitcher": {
             "display_name": "Pewter Pitcher",
             "description": "Fancy and good looking."
@@ -13970,6 +14092,14 @@
          "porcelain_coffee_pot": {
             "display_name": "Porcelain Coffee Pot",
             "description": "Beautiful and ornate, perfect for a high quality beverage."
+         },
+         "copper_coffee_pot": {
+            "display_name": "Copper Coffee Pot",
+            "description": "Easy to clean and keeps the beverage warm!"
+         },
+         "moka_coffee_pot": {
+            "display_name": "Moka Coffee Pot",
+            "description": "A unique and special pot for extracting the boldest flavors from the roast."
          },
          "market_stall_farmer": {
             "display_name": "Farmer's Market Stall",
@@ -17147,46 +17277,6 @@
                "display_name": "Serving Keg of Liquor"
             }
          },
-         "tea_iconic": {
-            "description": "Place it somewhere so hearthlings can serve themselves!"
-         },
-         "tea": {
-            "tea": {
-               "display_name": "Herbal Tea",
-               "description": "A fragrant and warm beverage. Very appreciated by many!"
-            },
-            "tea_serving": {
-               "display_name": "Mug of Herbal Tea"
-            }
-         },
-         "tea_fancy": {
-            "tea_fancy": {
-               "display_name": "Lavish Tea",
-               "description": "The elegant and heartwarming flavor of dried daisies and fruits."
-            },
-            "tea_fancy_serving": {
-               "display_name": "Cup of Lavish Tea",
-               "description": "A civilized drink for a civilized age."
-            }
-         },
-         "tea_desert": {
-            "tea_desert": {
-               "display_name": "Desert Sun Tea",
-               "description": "A unique recipe to the children of Rayya, a flower tea from Pal'Mum."
-            },
-            "tea_desert_serving": {
-               "display_name": "Cup of Desert Sun Tea"
-            }
-         },
-         "tea_amberstone": {
-            "tea_amberstone": {
-               "display_name": "Amberstone Tea",
-               "description": "A traditional recipe from the clan, delighting palates for centuries."
-            },
-            "tea_amberstone_serving": {
-               "display_name": "Mug of Amberstone Tea"
-            }
-         },
          "juice_berry": {
             "juice_berry": {
                "display_name": "Berry Juice",
@@ -17437,16 +17527,6 @@
                "description": "An Ascendancy favorite! Sweet, flavorful and with little alcohol content."
             }
          },
-         "tea_pine": {
-            "tea_pine": {
-               "display_name": "Pine Needle Tea",
-               "description": "Smells good, tastes better and has gentle healing powers from the forest."
-            },
-            "tea_pine_serving": {
-               "display_name": "Cup of Pine Needle Tea",
-               "description": "Hmmm... The flavors of the woods..."
-            }
-         },
          "juice_apple": {
             "juice_apple": {
                "display_name": "Apple Juice",
@@ -17678,22 +17758,88 @@
                "display_name": "Serving Pitcher of Prickly Pear Wine"
             }
          },
-         "tea_leaves": {
-            "fresh": {
-               "display_name": "Basket of Fresh Tea Leaves",
-               "description": "Fresh and velvety leaves full of potential. Must be steamed and dried."
+         "tea": {
+            "tea_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
             },
-            "green": {
-               "display_name": "Basket of Green Tea Leaves",
-               "description": "A timeless tradition. Used by the brewer for making green tea."
+            "tea_leaves": {
+               "fresh": {
+                  "display_name": "Basket of Fresh Tea Leaves",
+                  "description": "Fresh and velvety leaves full of potential. Must be steamed and dried."
+               },
+               "green": {
+                  "display_name": "Basket of Green Tea Leaves",
+                  "description": "A timeless tradition. Used by the brewer for making green tea."
+               },
+               "black": {
+                  "display_name": "Basket of Black Tea Leaves",
+                  "description": "Stronger and more flavorful! Used by the brewer for making black tea."
+               },
+               "steamed": {
+                  "display_name": "Crate of Steamed Tea Leaves",
+                  "description": "These leaves are ready to be placed on a drying bed."
+               }
             },
-            "black": {
-               "display_name": "Basket of Black Tea Leaves",
-               "description": "Stronger and more flavorful! Used by the brewer for making black tea."
+            "ground_tea_green": {
+               "display_name": "Sack of Green Tea",
+               "description": "Delicately ground leaves. Ready to be used by a brewer."
             },
-            "steamed": {
-               "display_name": "Crate of Steamed Tea Leaves",
-               "description": "These leaves are ready to be placed on a drying bed."
+            "ground_tea_black": {
+               "display_name": "Sack of Black Tea",
+               "description": "Exhales a smell that can't be mistaken. Ready to be used by a brewer."
+            },         
+            "tea_pine": {
+               "display_name": "Pine Needle Tea",
+               "description": "Smells good, tastes better and has gentle healing powers from the forest.",
+               "tea_pine_serving": {
+                  "display_name": "Cup of Pine Needle Tea",
+                  "description": "Hmmm... The flavors of the woods..."
+               }
+            },
+            "tea": {
+               "display_name": "Herbal Tea",
+               "description": "A fragrant and warm beverage. Very appreciated by many!",
+               "tea_serving": {
+                  "display_name": "Mug of Herbal Tea"
+               }
+            },
+            "tea_fancy": {
+               "display_name": "Lavish Tea",
+               "description": "The elegant and heartwarming flavor of dried daisies and fruits.",
+               "tea_fancy_serving": {
+                  "display_name": "Cup of Lavish Tea",
+                  "description": "A civilized drink for a civilized age."
+               }
+            },
+            "tea_desert": {
+               "display_name": "Desert Sun Tea",
+               "description": "A unique recipe to the children of Rayya, a flower tea from Pal'Mum.",
+               "tea_desert_serving": {
+                  "display_name": "Cup of Desert Sun Tea"
+               }
+            },
+            "tea_amberstone": {
+               "display_name": "Amberstone Tea",
+               "description": "A traditional recipe from the clan, delighting palates for centuries.",
+               "tea_amberstone_serving": {
+                  "display_name": "Mug of Amberstone Tea"
+               }
+            },
+            "tea_green": {
+               "display_name": "Green Tea",
+               "description": "A very traditional and ancient preparation that soothes the mind.",
+               "tea_green_serving": {
+                  "display_name": "Cup of Green Tea",
+                  "description": "History in your hands."
+               }
+            },
+            "tea_black": {
+               "display_name": "Black Tea",
+               "description": "An exclusive beverage made with time, tradition and skill.",
+               "tea_black_serving": {
+                  "display_name": "Cup of Black Tea",
+                  "description": "Now we need some biscuits!"
+               }
             }
          },
          "coffee": {
@@ -17713,25 +17859,39 @@
                "display_name": "Sack of Ground Coffee",
                "description": "The aroma is irresistible! This coffee is ready to be brewed."
             },
-            "coffee_serving": {
-               "display_name": "Cup of Coffee"
-            }
-         },
-         "ground_tea_green": {
-            "display_name": "Sack of Green Tea",
-            "description": "Delicately ground leaves. Ready to be used by a brewer."
-         },
-         "ground_tea_black": {
-            "display_name": "Sack of Black Tea",
-            "description": "Exhales a smell that can't be mistaken. Ready to be used by a brewer."
-         },
-         "coffee_iconic": {
-            "description": "Place it somewhere so hearthlings can serve themselves!"
-         },
-         "coffee_desert": {
-            "coffee_desert": {
+            "coffee_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "coffee": {
                "display_name": "Coffee",
-               "description": "A crafter-favorite for late night working! Warm and energizing!"
+               "description": "A crafter-favorite for late night working! Warm and energizing!",
+               "coffee_serving": {
+                  "display_name": "Cup of Coffee"
+               }
+            },
+            "coffee_milk": {
+               "display_name": "White Coffee",
+               "description": "Deep coffee note perfectly balanced with soft, sweet milk.",
+               "coffee_milk_serving": {
+                  "display_name": "Mug of White Coffee",
+                  "description": "Creamy!"
+               }
+            },
+            "coffee_bold": {
+               "display_name": "Bold Coffee",
+               "description": "Hits like a punch, this one is bound to keep anyone awake for a good while!",
+               "coffee_bold_serving": {
+                  "display_name": "Cup of Bold Coffee",
+                  "description": "YES!"
+               }
+            },
+            "coffee_lavish": {
+               "display_name": "Lavish Coffee",
+               "description": "Piping hot with delicious cream and the flavors of the finest roast!",
+               "coffee_lavish_serving": {
+                  "display_name": "Mug of Lavish Coffee",
+                  "description": "Higher standards"
+               }
             }
          }
       },
@@ -18986,8 +19146,8 @@
                   "upgrading": "Upgrading... ",
                   "opening": "Opening...",
                   "transforming": "Transforming...",
-                  "filling": "Filling...",
-                  "draining": "Draining..."
+                  "filling": "Being Filled...",
+                  "draining": "Being Drained..."
                }
             },
             "attack_with_all_parties": {

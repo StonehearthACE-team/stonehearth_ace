@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 15,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.undead_cordial_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.undead_cordial_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.undead_cordial_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/undead_cordial/undead_cordial.png",
+   "workshop": "stonehearth_ace:herbalist:cauldron",
+	"work_effect": "fiddle",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:garlic:garlic_basket",
+         "count": 1
+      },
+		{
+			"material": "herb robust resource",
+			"count": 2
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:undead_cordial"
+      }
+   ]
+}

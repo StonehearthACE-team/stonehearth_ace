@@ -1,0 +1,56 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(coffee_lavish_serving.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:drink:coffee:serving"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 120,
+            "food_satisfaction": 20
+         },
+         "default": {
+            "satisfaction": 95,
+            "food_satisfaction": 15
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:coffee_energy:major",
+            "stonehearth_ace:buffs:consumption:sweet_energy",
+            "stonehearth_ace:buffs:consumption:warm_belly"
+         ],
+         "quality": 6,
+         "effect_loops": 2
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.coffee.coffee_lavish.coffee_lavish_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.coffee.coffee_lavish.coffee_lavish_serving.description)",
+         "material_tags": [
+            "drink",
+            "coffee_lavish_serving",
+            "coffee",
+            "lavish",
+            "dairy",
+            "morning_time",
+            "night_time",
+            "warming"
+         ],
+         "subject_override": "stonehearth_ace:drink:coffee_lavish"
+      }
+   }
+}

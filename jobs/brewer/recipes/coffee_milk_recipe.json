@@ -1,0 +1,32 @@
+{
+   "type": "recipe",
+   "effort": 21,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_milk_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_milk_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_milk_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/copper_coffee_pot/copper_coffee_pot.png",
+   "level_requirement": 5,
+   "ordinal": 1,
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:coffee:ground",
+         "count": 1
+      },
+      {
+         "material": "drink_container milk",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:decoration:copper_coffee_pot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:coffee_milk"
+      }
+   ]
+}

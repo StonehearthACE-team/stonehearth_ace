@@ -83,6 +83,14 @@
    },
    "landscape": {
       "placement_table": {
+			"stonehearth_ace:plants:garlic": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 2.5,
+               "item_density": 0.4,
+               "exclusion_radius": 0
+            }
+         },
 			"stonehearth:trees:snowy:juniper:small": {
             "placement_type": "dense",
             "parameters": {
@@ -259,6 +267,7 @@
             "weights": {
                "plains": {
                   "1": {
+							"stonehearth_ace:plants:garlic": 0.5,
 							"stonehearth_ace:plants:bog_myrtle" : 1.1,
 							"stonehearth_ace:plants:daylily" : 1.0,
 							"stonehearth:plants:frostsnap" : 0.1,
@@ -274,6 +283,7 @@
                },
                "foothills": {
                   "1": {
+							"stonehearth_ace:plants:garlic": 0.2,
                      "stonehearth_ace:fungi:winter_morel": 0.3,
 							"stonehearth_ace:plants:rose": 0.4,
 							"stonehearth_ace:plants:chives": 0.5,
