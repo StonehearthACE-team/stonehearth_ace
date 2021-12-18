@@ -34,6 +34,14 @@ function AceFarmingService:create_new_field(session, location, size, field_type,
    return entity
 end
 
+AceFarmingService._ace_old__load_initial_crops = FarmingService._load_initial_crops
+function AceFarmingService:_load_initial_crops()
+   self:_ace_old__load_initial_crops()
+
+   local herbalist_crops_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter:crops')
+   self._herbalist_crops = herbalist_crops_data.crops
+end
+
 function AceFarmingService:_get_crop_list(session)
    local player_id = session.player_id
    local crop_list = self._data.player_crops[player_id]
@@ -45,6 +53,7 @@ function AceFarmingService:_get_crop_list(session)
       -- start out with the default crops for this player's kingdom.
       crop_list = {}
       local all_crops = self._all_crops
+      local herbalist_crops = self._herbalist_crops
       local kingdom_crops = self._initial_crops[kingdom]
       if kingdom_crops and all_crops then
          for key, crop in pairs(all_crops) do
@@ -58,10 +67,42 @@ function AceFarmingService:_get_crop_list(session)
                field_types = crop.field_types or {farm = true}
             }
          end
+
+         -- then also add any herbalist crops
+         if herbalist_crops then
+            for key, crop in pairs(herbalist_crops) do
+               if not crop_list[key] then
+                  crop_list[key] = {}
+               end
+               crop_list[key].herbalist_crop_info = {
+                  crop_key = key,
+                  crop_type = crop.product_uri,
+                  crop_info = self:get_herbalist_crop_details(crop),
+                  crop_level_requirement = crop.level,
+                  ordinal = crop.ordinal,
+                  initial_crop = kingdom_crops[key],
+                  --planter_types = {}   -- do we want/need to include this here?
+               }
+            end
+         end
       end
       self._data.player_crops[player_id] = crop_list
    end
    return crop_list
+end
+
+function AceFarmingService:get_herbalist_crop_details(crop_data)
+   local uri = crop_data.product_uri
+   local details = self._crop_details[uri]
+   if not details then
+      details = {}
+      details.uri = uri
+      details.name = crop_data.display_name
+      details.description = crop_data.description
+      details.icon = crop_data.icon
+      self._crop_details[uri] = details
+   end
+   return details
 end
 
 --- Given a new crop type, record some important things about it

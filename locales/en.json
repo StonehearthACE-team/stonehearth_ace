@@ -20,7 +20,14 @@
             "draining": "draining [name(data.target)]",
             "capturing_bees": "capturing bees",
             "sculpting": "sculpting [name(data.target)]",
-            "carving": "carving [name(data.target)]"
+            "carving": "carving [name(data.target)]",
+            "periodic_interaction": {
+               "default": "interacting with [name(data.target)]",
+               "find_normal_seed": {
+                  "default": "fiddling with [name(data.target)]",
+                  "specific_1": "searching [name(data.target)]"
+               }
+            }
          }
       }
    },
@@ -5625,6 +5632,12 @@
          "herbalist_exploration_garden": {
             "display_name": "Herbalist Exploration Garden",
             "description": "Used for discovering new types of plants for cultivation in herbalist planters."
+         },
+         "unlock_crop": {
+            "bulletin_title": "The [str(i18n_data.job_name)] has unlocked [str(i18n_data.crop_name)]!"
+         },
+         "unlock_last_crop": {
+            "bulletin_title": "The [str(i18n_data.job_name)] has unlocked the last crop possible in this garden: [str(i18n_data.crop_name)]!"
          }
       },
       "engineer": {

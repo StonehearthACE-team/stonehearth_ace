@@ -38,12 +38,24 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
             self.set('allCropData', data);
             self._updateAvailableSeeds();
          });
+         
+      // farmer job info has list of unlocked crops for both farmer and herbalist
+      radiant.call_obj('stonehearth.job', 'get_job_call', 'stonehearth:jobs:farmer')
+         .done(function (response) {
+            if (self.isDestroying || self.isDestroyed) {
+               return;
+            }
+            if (response.job_info_object) {
+               self.set('farmer_job_info', response.job_info_object);
+            }
+         });
    },
 
    didInsertElement: function() {
       this._super();
       var self = this;
 
+      /*
       radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:usable_item_tracker')
          .done(function(response) {
             if (self.isDestroying || self.isDestroyed) {
@@ -59,6 +71,7 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
                   self._updateAvailableSeeds();
                });
          });
+      */
 
       self.$('#enableHarvestCheckbox').change(function() {
          var planter = self.get('model.stonehearth_ace:herbalist_planter');
@@ -83,6 +96,7 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       this._super();
    },
 
+   /*
    _updateAvailableSeeds: $.throttle(250, function() {
       var self = this;
       var allCropData = self.get('allCropData');
@@ -110,6 +124,7 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
          self.palette.updateAvailableSeeds(availableSeeds);
       }
    }),
+   */
 
    _planterCropTypeChange: function() {
       var self = this;
@@ -193,7 +208,8 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
             planter_view: this,
             planter_data: this.get('allCropData'),
             allowed_crops: planterComponent.allowed_crops,
-            available_seeds: this._availableSeeds
+            uri: this.get('farmer_job_info')
+            //available_seeds: this._availableSeeds
          });
       }
    },
@@ -220,58 +236,91 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
 App.AcePlanterTypePaletteView = App.View.extend({
    templateName: 'acePlanterTypePalette',
    modal: true,
+   uriProperty: 'model',
+   components: {},
 
    didInsertElement: function() {
       this._super();
       var self = this;
 
-      var cropDataArray = [];
-
       var allowed_crops = self.allowed_crops;
-      radiant.each(self.planter_data.crops, function(key, data) {
-         if (allowed_crops[key]) {
-            var planterData = {
-               type: key,
-               icon: data.icon,
-               level: Math.max(0, data.level || 0),
-               display_name: data.display_name,
-               description: data.description
-            }
-            if (self.available_seeds) {
-               var bestQuality = self._getAvailableSeedQuality(self.available_seeds, key);
-               planterData.bestQuality = bestQuality;
-               planterData.bestQualityClass = 'quality' + bestQuality;
-            }
-            cropDataArray.push(planterData);
-         }
-      });
+      radiant.call('stonehearth:get_all_crops')
+         .done(function (o) {
+            if (self.isDestroyed || self.isDestroying) return;
+            var cropDataArray = radiant.map_to_array(o.all_crops, function (k, v) {
+               var info = v.herbalist_crop_info;
+               if (info && allowed_crops[k])
+               {
+                  return {
+                     type: k,
+                     icon: info.icon,
+                     level: Math.max(0, info.level || 0),
+                     display_name: info.name,
+                     description: info.description,
+                     initial_crop: info.initial_crop,
+                  }
+               }
+               return false;
+            });
 
-      // add no_crop only if it's not explicitly disallowed or there are no crops allowed for the planter
-      if (allowed_crops.no_crop !== false || cropDataArray.length < 1) {
-         var no_crop = self.planter_data.no_crop;
-         cropDataArray.push({
-            type: 'no_crop',
-            icon: no_crop.icon,
-            level: -1,
-            display_name: no_crop.display_name,
-            description: no_crop.description,
+            // add no_crop only if it's not explicitly disallowed or there are no crops allowed for the planter
+            if (allowed_crops.no_crop !== false || cropDataArray.length < 1) {
+               var no_crop = self.planter_data.no_crop;
+               cropDataArray.push({
+                  type: 'no_crop',
+                  icon: no_crop.icon,
+                  level: -1,
+                  display_name: no_crop.display_name,
+                  description: no_crop.description,
+                  initial_crop: true,
+               });
+            }
+
+            cropDataArray.sort(self._sortWithoutQuality);
+            self.set('cropTypes', cropDataArray);
+            //self.updateAvailableSeeds(self.available_seeds);
+
+            self.$().on( 'click', '[cropType]', function() {
+               var cropType = $(this).attr('cropType');
+               if (cropType) {
+                  if (cropType == 'no_crop') {
+                     cropType = null;
+                  }
+                  radiant.call_obj(self.planter, 'set_current_crop_command', cropType);
+               }
+               self.destroy();
+            });
+
+            self._updateLockedCrops();
          });
+   },
+
+   _isCropLocked: function(crop) {
+      var highest_level = this.get('model.highest_level');
+      if (!highest_level) {
+         highest_level = 0;
       }
+      return crop.crop_level_requirement > highest_level;
+   },
 
-      cropDataArray.sort(self.available_seeds ? self._sortWithQuality : self._sortWithoutQuality);
-      self.set('cropTypes', cropDataArray);
-      //self.updateAvailableSeeds(self.available_seeds);
+   _isCropHidden: function (crop) {
+      if (!this.get('model') || !crop.type) return false; // Too early. We'll recheck later.
+      var manually_unlocked = this.get('model.manually_unlocked');
+      return !crop.initial_crop && !manually_unlocked[crop.type];
+   },
 
-      self.$().on( 'click', '[cropType]', function() {
-         var cropType = $(this).attr('cropType');
-         if (cropType) {
-            if (cropType == 'no_crop') {
-               cropType = null;
-            }
-            radiant.call_obj(self.planter, 'set_current_crop_command', cropType);
+   _updateLockedCrops: function() {
+      var crops = this.get('cropTypes');
+      if (crops) {
+         radiant.sortByOrdinal(crops);
+         for (var crop_id = 0; crop_id < crops.length; crop_id++) {
+            var crop = crops[crop_id];
+            var is_locked = this._isCropLocked(crop);
+            var is_hidden = this._isCropHidden(crop);
+            Ember.set(crop, 'is_locked', is_locked);
+            Ember.set(crop, 'is_hidden', is_hidden)
          }
-         self.destroy();
-      });
+      }
    },
 
    updateAvailableSeeds: function(availableSeeds) {

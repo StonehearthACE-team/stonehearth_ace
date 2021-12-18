@@ -2860,6 +2860,7 @@
       "scripts:buildable:build_well": "file(data/buildable/build_well.lua)",
       "scripts:buildable:place_fish_trap": "file(data/buildable/place_fish_trap.lua)",
       "scripts:entity_mover:bezier_spline": "file(data/entity_mover/bezier_spline_mover.lua)",
+      "scripts:periodic_interaction:herbalist_exploration_garden:rewards": "file(data/periodic_interaction/herbalist_exploration_garden/rewards_script.lua)",
       "scripts:transform:fish_trap": "file(data/transform/fish_trap/transform_fish_trap.lua)",
       "scripts:transform:stunted": "file(data/transform/stunted/transform_stunted.lua)",
       "sheep:wild": "file(entities/critters/sheep/wild_sheep.json)",
@@ -5602,6 +5603,7 @@
       "owner_proxy": "file(components/owner_proxy/owner_proxy_component.lua)",
       "pasture_item": "file(components/pasture_item/pasture_item_component.lua)",
       "patrol_banner": "file(components/patrol_banner/patrol_banner_component.lua)",
+      "periodic_interaction": "file(components/periodic_interaction/periodic_interaction_component.lua)",
       "pile": "file(components/pile/pile_component.lua)",
       "place_terrain": "file(components/place_terrain/place_terrain_component.lua)",
       "property_values": "file(components/property_values/property_values_component.lua)",
@@ -5721,6 +5723,14 @@
       "save_starting_roster_command": {
          "controller": "file(call_handlers/new_game_call_handler.lua)",
          "endpoint": "client"
+      },
+      "set_periodic_interaction_enabled": {
+         "controller": "file(call_handlers/periodic_interaction_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "set_periodic_interaction_mode": {
+         "controller": "file(call_handlers/periodic_interaction_call_handler.lua)",
+         "endpoint": "server"
       },
       "box_move": {
          "controller": "file(call_handlers/resource_call_handler.lua)",

@@ -153,6 +153,7 @@ local monkey_patches = {
    ace_run_in_circles_action = 'stonehearth.ai.actions.pet.run_in_circles_action',
    ace_run_rest_effect_action = 'stonehearth.ai.actions.health.run_rest_effect_action',
    ace_safety_observer = 'stonehearth.ai.observers.safety_observer',
+   ace_sandstorm = 'stonehearth.data.weather.sandstorm.sandstorm',
    ace_scenario_modder_services = 'stonehearth.services.server.static_scenario.scenario_modder_services',
    ace_script_encounter = 'stonehearth.services.server.game_master.controllers.encounters.script_encounter',
    ace_seasonal_model_switcher_component = 'stonehearth.components.seasonal_model_switcher.seasonal_model_switcher_component',

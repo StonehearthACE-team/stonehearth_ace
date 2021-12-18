@@ -169,15 +169,26 @@ function AceJobInfoController:manually_unlock_all_recipes()
    return true
 end
 
-function AceJobInfoController:manually_unlock_crop(crop_key, ignore_missing) -- TODO: remove hardcoded 'stonehearth:jobs:farmer' and 'stonehearth:farmer:all_crops' to allow for mods
+function AceJobInfoController:get_all_farmer_crops()
+   return radiant.resources.load_json('stonehearth:farmer:all_crops').crops
+end
+
+function AceJobInfoController:get_all_herbalist_crops()
+   return radiant.resources.load_json('stonehearth_ace:data:herbalist_planter:crops').crops
+end
+
+function AceJobInfoController:manually_unlock_crop(crop_key, ignore_missing)
+   -- only farmers maintain a crop list, though it's used by other jobs (they all reference the farmer job info controller though)
    if self._sv.alias ~= 'stonehearth:jobs:farmer' then
       radiant.verify(false, "Attempting to manually unlock crop %s when job %s does not have crops!", crop_key, self._sv.alias)
       return false
    end
+   
    local found_crop = false
+   local farmer_crop_list = self:get_all_farmer_crops()
+   local herbalist_crop_list = self:get_all_herbalist_crops()
 
-   local crop_list = radiant.resources.load_json('stonehearth:farmer:all_crops').crops
-   if not crop_list[crop_key] then
+   if not farmer_crop_list[crop_key] and not herbalist_crop_list[crop_key] then
       if not ignore_missing then
          radiant.verify(false, "Attempting to manually unlock crop %s when job %s does not have such a crop!", crop_key, self._sv.alias)
       end
@@ -194,15 +205,21 @@ function AceJobInfoController:manually_unlock_crop(crop_key, ignore_missing) -- 
    return true
 end
 
--- TODO: remove hardcoded alias for farmer job (and override manually_unlock_crop function to do the same)
 function AceJobInfoController:manually_unlock_all_crops()
+   -- only farmers maintain a crop list, though it's used by other jobs (they all reference the farmer job info controller though)
    if self._sv.alias ~= 'stonehearth:jobs:farmer' then
-      --radiant.verify(false, "Attempting to manually unlock crops when job %s does not have crops!", self._sv.alias)
+      radiant.verify(false, "Attempting to manually unlock crop %s when job %s does not have crops!", crop_key, self._sv.alias)
       return false
    end
+   
+   local farmer_crop_list = self:get_all_farmer_crops()
+   local herbalist_crop_list = self:get_all_herbalist_crops()
 
-   local crop_list = radiant.resources.load_json('stonehearth:farmer:all_crops').crops
-   for crop_key, crop_data in pairs(crop_list) do
+   for crop_key, crop_data in pairs(farmer_crop_list) do
+      self._sv.manually_unlocked[crop_key] = true
+   end
+   
+   for crop_key, crop_data in pairs(herbalist_crop_list) do
       self._sv.manually_unlocked[crop_key] = true
    end
 
