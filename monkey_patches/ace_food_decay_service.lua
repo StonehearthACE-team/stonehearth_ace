@@ -2,8 +2,15 @@
 local FoodDecayService = require 'stonehearth.services.server.food_decay.food_decay_service'
 local AceFoodDecayService = class()
 
+function AceFoodDecayService:activate()
+   local existence_check = radiant.events.listen(radiant, 'radiant:entity:post_create', function(e)
+      local entity = e.entity
+      self:_on_entity_added_to_world(entity)
+   end)
+end
+
 function AceFoodDecayService:_get_decay_rate(entity, tuning, rate)
-   if tuning.storage_modifiers or tuning.any_storage_modifier then
+   if tuning.storage_modifiers or tuning.any_storage_modifier or tuning.ground_modifier then
       local player_id = entity:get_player_id()
       if player_id and player_id ~= '' then
          local inventory = stonehearth.inventory:get_inventory(player_id)
@@ -14,18 +21,22 @@ function AceFoodDecayService:_get_decay_rate(entity, tuning, rate)
          if storage then
             local best_rate = 1
             -- check if the storage matches any materials in the decay modifiers
+            if tuning.any_storage_modifier then
+               best_rate = best_rate * tuning.any_storage_modifier
+            end
             if tuning.storage_modifiers then
                for material, modified_rate in pairs(tuning.storage_modifiers) do
-                  if modified_rate < best_rate and radiant.entities.is_material(storage, material) then
+                  if radiant.entities.is_material(storage, material) then
                      best_rate = modified_rate
                   end
                end
             end
-            if tuning.any_storage_modifier then
-               best_rate = best_rate * tuning.any_storage_modifier
-            end
 
             rate = rate * best_rate
+         else
+            if tuning.ground_modifier then
+               rate = rate * tuning.ground_modifier
+            end
          end
       end
    end

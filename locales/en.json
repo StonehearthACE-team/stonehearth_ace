@@ -3012,11 +3012,11 @@
                "display_name": "Produce Fruity Mead",
                "description": "Order the Brewer to fill this fermenting vessel with unfermented fruity mead! This Carboy will continue producing Fruity Mead unless a new command is given."
             },
-            "fermenting_vat_fill_wort": {
+            "fermenting_vat_fill_wort_ale": {
                "display_name": "Produce Ale",
                "description": "Order the Brewer to fill this fermenting vat with ale wort to start brewing! It will continue producing Ale unless a new command is given."
             },
-            "fermenting_vat_fill_wort_gruit": {
+            "fermenting_vat_fill_wort_beer": {
                "display_name": "Produce Beer",
                "description": "Order the Brewer to fill this fermenting vat with beer wort to start brewing! It will continue producing Beer unless a new command is given."
             },
@@ -4123,6 +4123,10 @@
             "coffee_energy_worn_off": {
                "display_name": "Caffeine Crash",
                "description": "Uhm... I don't feel so focused anymore. And I'm getting tired quick... I suppose I need more coffee? Diligence is reduced. The need for sleep increases faster."
+            },
+            "baked_goodness": {
+               "display_name": "Baked Goodness",
+               "description": "There's something encouraging and inspiring about a meal that requires so much time and dedication...<ul><li>Spirit is increased by 1</li></ul>"
             }
          },
          "garlic_breath": {
@@ -7298,6 +7302,11 @@
                "description": "A good flat surface for kneading and preparing stuff.",
                "flavor": "Get those hands dirty!"
             },
+            "cook_leavening_table_recipe": {
+               "recipe_name": "Cook's Leavening Table",
+               "description": "This large and powdered surface is the perfect resting place for doughs to rise!",
+               "flavor": "Many baking recipes require leavened doughs"
+            },
             "cook_workbench_advanced_recipe": {
                "recipe_name": "Metal Cooking Pot",
                "description": "Replaces the Stone Cooking Pot and is needed for the finest meals. Requires lower or good grade fuel.",
@@ -7469,15 +7478,30 @@
                "description": "Mix and knead a malleable dough to be used on baking meals like bread.",
                "flavor": "Watch it grow! Requires some leavening before it can be used"
             },
+            "dough_flat_recipe": {
+               "recipe_name": "Portion of Flat Dough",
+               "description": "Knead and roll a flat dough with soft flour for unleavened breads.",
+               "flavor": ""
+            },
+            "dough_brown_recipe": {
+               "recipe_name": "Portion of Brown Dough",
+               "description": "Mix and knead a sticker, heavier dough out of flour and the whole grain.",
+               "flavor": "Watch it grow! Requires some leavening before it can be used"
+            },
+            "dough_fluffy_recipe": {
+               "recipe_name": "Portion of Fluffy Dough",
+               "description": "Mix and knead a very malleable and lightweight dough with very thin rye flour.",
+               "flavor": "Watch it grow! Requires some leavening before it can be used"
+            },
+            "dough_sour_recipe": {
+               "recipe_name": "Portion of Sourdough",
+               "description": "Knead and prepare a rustic portion of barley dough to be naturally fermented.",
+               "flavor": "Watch it grow! Requires some leavening before it can be used"
+            },
             "dough_pie_recipe": {
                "recipe_name": "Pie Crust (x2)",
                "description": "Prepare and roll out a couple of pie crusts that will be baked into flaky, buttery pies!",
                "flavor": "A recipe passed down generations"
-            },
-            "cooking_oil_recipe": {
-               "recipe_name": "Cooking Oil",
-               "description": "Extract the oil from any oleaginous seeds or grains to be used as an ingredient.",
-               "flavor": "Pumpkin seeds, Sunflower seeds, Corn or even Paddy are examples of oil sources"
             },
             "dough_sweet_recipe": {
                "recipe_name": "Portion of Sweet Dough",
@@ -7493,6 +7517,11 @@
                "recipe_name": "Bowl of Sweet Batter",
                "description": "Prepare a sweet and wonderful mix that can be turned into things like CAKE!",
                "flavor": "The cake is not a lie!"
+            },
+            "cooking_oil_recipe": {
+               "recipe_name": "Cooking Oil",
+               "description": "Extract the oil from any oleaginous seeds or grains to be used as an ingredient.",
+               "flavor": "Pumpkin seeds, Sunflower seeds, Corn or even Paddy are examples of oil sources"
             },
             "cooked_rice_recipe": {
                "recipe_name": "Cooked Rice",
@@ -7584,10 +7613,54 @@
                "description": "An appetizing combination of cheese and greens.",
                "flavor": "It is said that the old emperors of the Phoenix Empire loved eating veggies like this"
             },
+            "flat_bread_recipe": {
+               "description": "Unleavened bread made from soft flour.",
+               "flavor": "A Rayya's Children favorite for using up less grain than loafy breads"
+            },
             "nut_bread_recipe": {
                "recipe_name": "Nut Bread",
                "description": "Spicy and soft.",
                "flavor": "An Autumn favorite!"
+            },
+            "horsebread_recipe": {
+               "recipe_name": "Horsebread",
+               "description": "A commoner's whole-grain loaf filled with minced veggies.",
+               "flavor": "A typical meal around The Ascendancy's countryside"
+            },
+            "barley_bun_recipe": {
+               "recipe_name": "Barley Bun",
+               "description": "Crispy crust, incredibly soft inside and with a buttery taste!",
+               "flavor": "The pride of every Northern Alliance baker"
+            },
+            "crispbread_recipe": {
+               "recipe_name": "Crispbread",
+               "description": "Somewhat short but fluffy and flavorful spiced bread.",
+               "flavor": "A favorite snack among the Mountain Folk"
+            },
+            "hardtack_recipe": {
+               "recipe_name": "Hardtack Crackers",
+               "description": "They're hard and they're crunchy... But they'll keep people fed.",
+               "flavor": "Not a popular choice, but they take a very long time to spoil!"
+            },
+            "tortilla_recipe": {
+               "recipe_name": "Tortillas",
+               "description": "Maleable and thin discs of deliciousness!",
+               "flavor": "Perhaps we should wrap them around other food?!"
+            },
+            "brown_loaf_recipe": {
+               "recipe_name": "Brown Loaf",
+               "description": "Ordinary whole-grain bread.",
+               "flavor": ""
+            },
+            "sourdough_bread_recipe": {
+               "recipe_name": "Sourdough Bread",
+               "description": "The taste of natural fermentation is palpable on this rustic bread.",
+               "flavor": "Powdered with flour makes it extra rustic!"
+            },
+            "garlic_bread_recipe": {
+               "recipe_name": "Garlic Bread",
+               "description": "Deliciously roasted with a savory touch and buttery texture.",
+               "flavor": "Everyone loves garlic bread! Garlic breath... Not so much"
             },
             "nutty_meatballs_recipe": {
                "recipe_name": "Nutty Meatballs",
@@ -7758,6 +7831,10 @@
          "cook_workbench_advanced": {
             "display_name": "Metal Cooking Pot",
             "description": "Used by the finest Cooks for delicious meals. Requires lower or good grade fuel."
+         },
+         "cook_leavening_table": {
+            "display_name": "Leavening Table",
+            "description": "Used by the Cook to let doughs rise."
          }
       },
       "carpenter": {
@@ -8780,7 +8857,7 @@
                "description": "Exhales a smell that can't be mistaken with anything else. Required by all the black tea recipes.",
                "flavor": "The Brewer can use the Cook's mill grinder for this recipe!"
             },
-            "wort_recipe": {
+            "wort_ale_recipe": {
                "recipe_name": "Bucket of Ale Wort",
                "description": "An extract of mashed malted grains and herbs. Within a Fermentation Vat it can be turned into ale!",
                "flavor": "Pure malt wort can also be further distilled into other drinks"
@@ -8805,7 +8882,7 @@
                "description": "Prepare an appropriate fruit juice to be fermented. Within a Wine Cask it can be turned into one jug of vinegar.",
                "flavor": "Juice is the least efficient vinegar ingredient - but also the cheapest!"
             },
-            "wort_gruit_recipe": {
+            "wort_beer_recipe": {
                "recipe_name": "Bucket of Beer Wort",
                "description": "A bitter and strong mash of grains and gruit. Within a Fermentation Vat it can be turned into beer!",
                "flavor": "Beer is ready quicker than Ale and makes hearthlings slightly happier"
@@ -9196,7 +9273,7 @@
             "display_name": "Empty Fermentation Vat",
             "description": "Used by the Brewer for fermenting ale and beer."
          },
-         "brewer_fermenting_vat_wort": {
+         "brewer_fermenting_vat_wort_ale": {
             "display_name": "Fermenting Ale Wort Vat",
             "description": "The pure malt wort is fermenting and will then turn into ale!"
          },
@@ -9208,7 +9285,7 @@
             "display_name": "Ale Vat",
             "description": "The ale is ready! It can now be filtered and collected!"
          },
-         "brewer_fermenting_vat_wort_gruit": {
+         "brewer_fermenting_vat_wort_beer": {
             "display_name": "Fermenting Beer Wort Vat",
             "description": "The bitter and flavorful wort is fermenting. Soon it shall become beer!"
          },
@@ -14681,7 +14758,11 @@
          },
          "dough_sweet": {
             "display_name": "Portion of Sweet Dough",
-            "description": "Sweet Dough is the base for many delicacies like sweet loaf"
+            "description": "Sweet Dough is the base for many delicacies like sweet loaf",
+            "unleavened": {
+               "display_name": "Unleavened Sweet Dough",
+               "description": "Will rise into a Portion of Sweet Dough if left on a Leavening Table!"
+            }
          },
          "batter_sweet": {
             "display_name": "Bowl of Sweet Batter",
@@ -14689,7 +14770,11 @@
          },
          "dough": {
             "display_name": "Portion of Dough",
-            "description": "Dough is a base ingredient for several meals like breads"
+            "description": "Dough is a base ingredient for several baked goods like bread.",
+            "unleavened": {
+               "display_name": "Unleavened Dough",
+               "description": "Will rise into a Portion of Dough if left on a Leavening Table!"
+            }
          },
          "batter": {
             "display_name": "Bowl of Batter",
@@ -15484,6 +15569,94 @@
             "heirbloom_basket": {
                "display_name": "Basket of Heirbloom Fruit",
                "description": "Its stalks are an Amberstone delicacy but the fruit serves as a savory vegetable."
+            }
+         },
+         "dough_brown": {
+            "display_name": "Portion of Brown Dough",
+            "description": "This whole-grain dough is great for rich and fibrous baked goods.",
+            "unleavened": {
+               "display_name": "Unleavened Brown Dough",
+               "description": "Will rise into a Portion of Brown Dough if left on a Leavening Table!"
+            }
+         },
+         "dough_flat": {
+            "display_name": "Portion of Flat Dough",
+            "description": "This flattened dough is excellent for preparing unleavened breads."
+         },
+         "dough_fluffy": {
+            "display_name": "Portion of Fluffy Dough",
+            "description": "An extremely soft and light dough, perfect for some baking recipes.",
+            "unleavened": {
+               "display_name": "Unleavened Fluffy Dough",
+               "description": "Will rise into a Portion of Fluffy Dough if left on a Leavening Table!"
+            }
+         },
+         "dough_sour": {
+            "display_name": "Portion of Sourdough",
+            "description": "A more rustic and naturally fermented dough made from barley grain.",
+            "unleavened": {
+               "display_name": "Unleavened Sourdough",
+               "description": "Will rise into a Portion of Sourdough if left on a Leavening Table!"
+            }
+         },
+         "unleavened_doughs": {
+            "rising_description": "It's starting to rise...",
+            "rising_2_description": "Hmmmm! This dough is rising nicely!"
+         },
+         "garlic_bread": {
+            "display_name": "Garlic Bread",
+            "description": "Roasted with a savory touch and a buttery texture.",
+            "garlic_bread_serving": {
+               "display_name": "Slice of Garlic Bread"
+            }
+         },
+         "barley_bun": {
+            "barley_bun_serving": {
+               "display_name": "Slice of Barley Bun"
+            },
+            "display_name": "Barley Bun",
+            "description": "A soft bread with a crispy crust."
+         },
+         "brown_loaf": {
+            "brown_loaf_serving": {
+               "display_name": "Slice of Brown Loaf"
+            },
+            "display_name": "Brown Loaf",
+            "description": "An ordinary whole-grain piece of bread."
+         },
+         "crispbread": {
+            "crispbread_serving": {
+               "display_name": "Piece of Crispbread"
+            },
+            "display_name": "Crispbread",
+            "description": "A flattened and fluffy spiced bread."
+         },
+         "hardtack": {
+            "display_name": "Hardtack Crackers",
+            "description": "A meager meal... But lasts a very long time!",
+            "hardtack_serving": {
+               "display_name": "Hardtack Cracker"
+            }
+         },
+         "horsebread": {
+            "display_name": "Horsebread",
+            "description": "A farmer's bread with minced veggies in it.",
+            "horsebread_serving": {
+               "display_name": "Slice of Horsebread"
+            }
+         },
+         "sourdough_bread": {
+            "sourdough_bread_serving": {
+               "display_name": "Piece of Sourdough Bread"
+            },
+            "display_name": "Sourdough Bread",
+            "description": "A very rustic and crunchy bread with a soft and light filling."
+         },
+         "tortilla": {
+            "display_name": "Tortillas",
+            "description": "A maleable, thin and tasty bread with tiny corn flakes!",
+            "tortilla_serving": {
+               "display_name": "Tortilla"
             }
          }
       },
@@ -17228,7 +17401,7 @@
                "display_name": "Serving Keg of Beer"
             }
          },
-         "wort": {
+         "wort_ale": {
             "display_name": "Bucket of Ale Wort",
             "description": "An extract from grains. The Brewer needs it to make ale."
          },
@@ -17486,7 +17659,7 @@
             "display_name": "Bucket of Berry Must",
             "description": "Crushed berries, juice and solids. A Brewer needs it to fill a wine cask!"
          },
-         "wort_gruit": {
+         "wort_beer": {
             "display_name": "Bucket of Beer Wort",
             "description": "A mash of malted grains and spices. The Brewer needs it to make beer."
          },
@@ -17787,7 +17960,7 @@
             "ground_tea_black": {
                "display_name": "Sack of Black Tea",
                "description": "Exhales a smell that can't be mistaken. Ready to be used by a brewer."
-            },         
+            },
             "tea_pine": {
                "display_name": "Pine Needle Tea",
                "description": "Smells good, tastes better and has gentle healing powers from the forest.",

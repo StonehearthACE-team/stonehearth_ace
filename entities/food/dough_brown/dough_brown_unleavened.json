@@ -1,0 +1,81 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.075
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dough_brown_unleavened.qb)"
+            ]
+         },
+         "rising": {
+            "models": [
+               "file(dough_brown_unleavened_rising.qb)"
+            ]
+         },
+         "rising_2": {
+            "models": [
+               "file(dough_brown_unleavened_rising_2.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 6,
+            "max": 8
+         },
+         "decay_stages": {
+            "rising": {
+               "trigger_decay_value": 5,
+               "model_variant": "rising",
+               "description": "i18n(stonehearth_ace:entities.food.unleavened_doughs.rising_description)"
+            },
+            "rising_2": {
+               "trigger_decay_value": 2,
+               "model_variant": "rising_2",
+               "description": "i18n(stonehearth_ace:entities.food.unleavened_doughs.rising_2_description)"
+            }
+         },
+         "rotten_entity_alias": "stonehearth_ace:food:dough_brown",
+         "any_storage_modifier": 0,
+         "ground_modifier": 0,
+         "storage_modifiers": {
+            "leavening_table": 1.1
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 9,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.dough_brown.unleavened.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.dough_brown.unleavened.description)",
+         "icon": "file(dough_brown_unleavened.png)",
+         "is_item": true,
+         "category": "cooking_ingredient",
+         "material_tags": [
+            "stockpile_cooking_ingredient",
+            "cooking_ingredient",
+            "dough",
+            "unleavened",
+            "brown",
+            "other_ingredient"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      }
+   }
+}

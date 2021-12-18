@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 26,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.garlic_bread_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.garlic_bread_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.garlic_bread_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/garlic_bread/garlic_bread/garlic_bread.png",
+   "workshop": "stonehearth:cook:oven",
+	"work_effect": "work_wait",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:peasant_bread",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth_ace:food:garlic:garlic_basket",
+         "count": 1
+      },
+		{
+         "material": "oil cooking_ingredient",
+         "count": 1
+      },
+		{
+         "material": "seasoning",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:garlic_bread"
+      }
+   ]
+}

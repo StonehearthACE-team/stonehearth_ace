@@ -15,11 +15,21 @@
             "cook_table": {
                "recipe": "file(rc_cook_table_recipe.json)"
             },
+            "cook_leavening_table": {
+               "recipe": "file(rc_cook_leavening_table_recipe.json)"
+            },
             "cook_oven_advanced": {
                "recipe": "file(rc_cook_oven_advanced_recipe.json)"
             },
             "cook_workbench_advanced": {
                "recipe": "file(rc_cook_workbench_advanced_recipe.json)"
+            }
+         }
+      },
+      "baking": {
+         "recipes": {
+            "dough_brown": {
+               "recipe": "file(rc_dough_brown_recipe.json)"
             }
          }
       },

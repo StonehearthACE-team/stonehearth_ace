@@ -1,0 +1,42 @@
+{
+   "stockpile": {
+      "baking": {
+         "filter": "cooking_ingredient unleavened",
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_baking)",
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/baked.png",
+         "ordinal": 1,
+         "categories": {
+            "dough": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:entities.food.dough.unleavened.display_name)",
+               "icon": "/stonehearth_ace/entities/food/dough/dough.png",
+               "filter": "cooking_ingredient dough standard unleavened"
+            },
+            "dough_sweet": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:entities.food.dough_sweet.unleavened.display_name)",
+               "icon": "/stonehearth_ace/entities/food/dough_sweet/dough_sweet.png",
+               "filter": "cooking_ingredient dough sweet unleavened"
+            },
+            "dough_brown": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:entities.food.dough_brown.unleavened.display_name)",
+               "icon": "/stonehearth_ace/entities/food/dough_brown/dough_brown.png",
+               "filter": "cooking_ingredient dough brown unleavened"
+            },
+            "dough_sour": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:entities.food.dough_sour.unleavened.display_name)",
+               "icon": "/stonehearth_ace/entities/food/dough_sour/dough_sour.png",
+               "filter": "cooking_ingredient dough sour unleavened"
+            },
+            "dough_fluffy": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:entities.food.dough_fluffy.unleavened.display_name)",
+               "icon": "/stonehearth_ace/entities/food/dough_fluffy/dough_fluffy.png",
+               "filter": "cooking_ingredient dough fluffy unleavened"
+            }
+         }
+      }
+   }
+}

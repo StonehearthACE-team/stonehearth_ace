@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(hardtack_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 32
+         },
+         "default": {
+            "satisfaction": 20
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:baked_goodness"
+         ],
+         "quality": 4
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.hardtack.hardtack_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "bread",
+            "baked",
+            "vegetarian",
+            "breakfast_time"
+         ],
+         "subject_override": "stonehearth_ace:food:hardtack"
+      }
+   }
+}

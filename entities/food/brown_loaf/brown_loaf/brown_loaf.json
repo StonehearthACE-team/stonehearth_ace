@@ -1,0 +1,59 @@
+{
+   "mixins": "stonehearth:mixins:prepared_food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(brown_loaf.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 4
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:brown_loaf:brown_loaf_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 10,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.brown_loaf.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.brown_loaf.description)",
+         "icon": "file(brown_loaf.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "brown_loaf",
+            "bread",
+            "baked",
+            "stockpile_prepared_food",
+            "vegetarian",
+            "breakfast_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

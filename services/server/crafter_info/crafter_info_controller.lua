@@ -177,6 +177,16 @@ function CrafterInfoController:_format_recipe(name, recipe)
       end
    end
 
+   if recipe.ace_smart_crafter_consider_as then
+      for _, product in ipairs(recipe.ace_smart_crafter_consider_as) do
+         if not products[product.item] then
+            products[product.item] = 1
+         else
+            products[product.item] = products[product.item] + 1
+         end
+      end
+   end
+
    local all_products = {}
    formatted_recipe.product_materials = {}
    for product, count in pairs(products) do

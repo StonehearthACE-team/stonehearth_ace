@@ -1,0 +1,60 @@
+{
+   "type": "entity",
+   "mixins": "file(mf_cook_leavening_table_ghost.json)",
+   "components": {
+      "stonehearth:storage": {
+         "type": "input_crate",
+         "render_contents": true,
+         "priority": 3,
+         "capacity": 10,
+         "filter_list": "stonehearth_ace:ui:leavening_table:filters",
+         "default_filter": [
+            "cooking_ingredient unleavened"
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/jobs/cook/cook_leavening_table/effects/idle.json"
+      },
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(mf_cook_leavening_table_ghost.json)",
+         "iconic_form": "file(mf_cook_leavening_table_iconic.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "alternate_builder_uri": "stonehearth_ace:cook:leavening_table"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 7,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 10
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

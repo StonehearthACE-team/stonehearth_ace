@@ -1,6 +1,20 @@
 {
    "mixins": "/stonehearth/jobs/cook/recipes/recipes.json",
    "craftable_recipes": {
+      "baking": {
+         "recipes": {
+            "dough_brown": {
+               "recipe": "/stonehearth_ace/jobs/cook/recipes/mf_dough_brown_recipe.json"
+            }
+         }
+      },
+      "food": {
+         "recipes": {
+             "faction_bread_dish": {
+                "recipe": "/stonehearth_ace/jobs/cook/recipes/crispbread_recipe.json"
+             }  
+         }
+      },
       "chefs_specials": {
          "recipes": {
             "sweet_varanus": {
