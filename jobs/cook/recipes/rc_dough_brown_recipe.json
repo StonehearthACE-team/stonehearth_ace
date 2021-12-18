@@ -1,0 +1,17 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth_ace/jobs/cook/recipes/dough_brown_recipe.json",
+   "mixintypes": {
+      "ingredients": "override"
+   },
+   "ingredients": [
+	   {
+         "uri": "stonehearth_ace:food:millet_flour",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:millet:millet_bale",
+         "count": 1
+      }
+   ]
+}

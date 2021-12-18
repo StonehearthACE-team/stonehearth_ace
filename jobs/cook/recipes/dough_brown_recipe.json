@@ -1,0 +1,32 @@
+{
+   "type": "recipe",
+   "effort": 21,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.dough_brown_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.dough_brown_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.dough_brown_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/dough_brown/dough_brown.png",
+   "workshop": "stonehearth_ace:cook:table",
+   "work_effect": "work_cook_dough",
+   "level_requirement": 2,
+   "ingredients": [
+	   {
+         "uri": "stonehearth:food:flour",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:wheat:wheat_bale",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:dough_brown:unleavened"
+      }
+   ],
+   "ace_smart_crafter_consider_as": [
+      {
+         "item": "stonehearth_ace:food:dough_brown"
+      }
+   ]
+}

@@ -1,0 +1,17 @@
+{
+   "type": "recipe",
+   "mixins": "/stonehearth_ace/jobs/cook/recipes/dough_brown_recipe.json",
+   "mixintypes": {
+      "ingredients": "override"
+   },
+   "ingredients": [
+	   {
+         "uri": "stonehearth_ace:food:rye_flour",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:rye:rye_bale",
+         "count": 1
+      }
+   ]
+}

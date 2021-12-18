@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.brown_loaf_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.brown_loaf_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.brown_loaf_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/brown_loaf/brown_loaf/brown_loaf.png",
+   "workshop": "stonehearth:cook:oven",
+	"work_effect": "work_wait",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:dough_brown",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:brown_loaf"
+      }
+   ]
+}

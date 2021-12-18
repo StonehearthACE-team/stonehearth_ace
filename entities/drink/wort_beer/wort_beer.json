@@ -1,0 +1,63 @@
+{
+   "mixins": "stonehearth_ace:mixins:drink_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(wort_beer.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:brewing",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 480,
+            "max": 528
+         },
+         "decay_stages": {
+            "decay_1": {
+               "description": "i18n(stonehearth_ace:drink.decay.decay_brewing_ingredient.description)"
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 25,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.wort_beer.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.wort_beer.description)",
+         "icon": "file(wort_beer.png)",
+         "is_item": true,
+         "category": "brewing_ingredient",
+         "material_tags": [
+            "stockpile_brewing_ingredient",
+            "brewing_ingredient",
+            "other_fluid",
+            "wort",
+            "beer",
+            "standard"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": -2
+      }
+   }
+}

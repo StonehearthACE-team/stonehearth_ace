@@ -30,11 +30,11 @@
          "status_key": "stonehearth_ace:ai.actions.status_text.filling",
          "transform_options": {
             "ale": {
-               "transform_uri": "stonehearth_ace:brewer:fermenting_vat:wort",
-               "command": "stonehearth_ace:commands:transform:fermenting_vat_fill:wort",
+               "transform_uri": "stonehearth_ace:brewer:fermenting_vat:wort_ale",
+               "command": "stonehearth_ace:commands:transform:fermenting_vat_fill:wort_ale",
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
-               "transform_ingredient_uri": "stonehearth_ace:drink:wort",
+               "transform_ingredient_uri": "stonehearth_ace:drink:wort_ale",
                "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {
@@ -43,11 +43,11 @@
                "apply_ingredient_quality": true
             },
             "beer": {
-               "transform_uri": "stonehearth_ace:brewer:fermenting_vat:wort_gruit",
-               "command": "stonehearth_ace:commands:transform:fermenting_vat_fill:wort_gruit",
+               "transform_uri": "stonehearth_ace:brewer:fermenting_vat:wort_beer",
+               "command": "stonehearth_ace:commands:transform:fermenting_vat_fill:wort_beer",
+               "transform_ingredient_uri": "stonehearth_ace:drink:wort_beer",
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
-               "transform_ingredient_uri": "stonehearth_ace:drink:wort_gruit",
                "transform_ingredient_auto_craft": true,
                "auto_request": true,
                "worker_required_job": {

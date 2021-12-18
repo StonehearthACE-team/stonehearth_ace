@@ -2,6 +2,9 @@
    "mixins": "stonehearth:mixins:item_properties",
    "type": "entity",
    "components": {
+      "render_info": {
+         "scale": 0.09
+      },
       "model_variants": {
          "default": {
             "models": [
@@ -15,7 +18,7 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 5,
+         "value_in_gold": 7,
          "rarity": "common",
          "shop_info": {
             "buyable": false,
@@ -31,8 +34,8 @@
          "material_tags": [
             "stockpile_cooking_ingredient",
             "cooking_ingredient",
-            "dough_ingredient",
-            "dough_brown",
+            "dough",
+            "brown",
             "other_ingredient"
          ]
       },

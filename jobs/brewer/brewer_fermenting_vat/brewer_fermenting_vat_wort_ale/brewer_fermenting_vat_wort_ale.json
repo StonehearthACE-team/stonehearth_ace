@@ -1,0 +1,51 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_fermenting_vat",
+      "file(brewer_fermenting_vat_wort_ale_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(brewer_fermenting_vat_wort_ale_ghost.json)",
+         "iconic_form": "file(brewer_fermenting_vat_wort_ale_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:evolve": {},
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:fermenting_vat_bubbles"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:brewer:fermenting_vat:ale",
+         "evolve_effect": "stonehearth:effects:item_created",
+         "evolve_time": "3d+12h",
+         "auto_harvest": true
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 36,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -3
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

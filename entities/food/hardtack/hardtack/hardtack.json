@@ -1,0 +1,65 @@
+{
+   "mixins": "stonehearth:mixins:prepared_food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(hardtack.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 8
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:hardtack:hardtack_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 9,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.hardtack.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.hardtack.description)",
+         "icon": "file(hardtack.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "hardtack",
+            "baked",
+            "stockpile_prepared_food",
+            "vegetarian",
+            "breakfast_time",
+            "dinner_time"
+         ]
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 2400,
+            "max": 2600
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -1
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

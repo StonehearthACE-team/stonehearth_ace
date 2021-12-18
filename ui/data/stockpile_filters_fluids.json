@@ -244,17 +244,41 @@
                "icon": "/stonehearth_ace/entities/drink/wine_plum/wine_plum/wine_plum.png",
                "filter": "drink_container wine_plum"
             },
-            "ale": {
+            "ale_table": {
                "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:entities.drink.ale_table.ale_table.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/ale_table/ale_table/ale_table.png",
+               "filter": "drink_container ale table"
+            },
+            "ale": {
+               "ordinal": 7.1,
                "display_name": "i18n(stonehearth_ace:entities.drink.ale.ale.display_name)",
                "icon": "/stonehearth_ace/entities/drink/ale/ale/ale.png",
-               "filter": "drink_container ale"
+               "filter": "drink_container ale standard"
+            },
+            "ale_pale": {
+               "ordinal": 7.2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.ale_pale.ale_pale.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/ale_pale/ale_pale/ale_pale.png",
+               "filter": "drink_container ale pale"
+            },
+            "beer_white": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:entities.drink.beer_white.beer_white.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/beer_white/beer_white/beer_white.png",
+               "filter": "drink_container beer white"
             },
             "beer": {
-               "ordinal": 8,
+               "ordinal": 8.1,
                "display_name": "i18n(stonehearth_ace:entities.drink.beer.beer.display_name)",
                "icon": "/stonehearth_ace/entities/drink/beer/beer/beer.png",
-               "filter": "drink_container beer"
+               "filter": "drink_container beer standard"
+            },
+            "beer_opaque": {
+               "ordinal": 8.2,
+               "display_name": "i18n(stonehearth_ace:entities.drink.beer_opaque.beer_opaque.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/beer_opaque/beer_opaque/beer_opaque.png",
+               "filter": "drink_container beer opaque"
             },
             "spirit": {
                "ordinal": 10,
@@ -676,17 +700,35 @@
                "icon": "/stonehearth_ace/entities/drink/unfermented_mead_fruit/unfermented_mead_fruit.png",
                "filter": "brewing_ingredient unfermented_mead fruit"
             },
-            "wort": {
+            "wort_ale": {
                "ordinal": 8,
-               "display_name": "i18n(stonehearth_ace:entities.drink.wort.display_name)",
-               "icon": "/stonehearth_ace/entities/drink/wort/wort.png",
-               "filter": "brewing_ingredient wort standard"
+               "display_name": "i18n(stonehearth_ace:entities.drink.wort_ale.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/wort_ale/wort_ale.png",
+               "filter": "brewing_ingredient wort ale standard"
             },
-            "wort_gruit": {
+            "wort_ale_pale": {
                "ordinal": 8.1,
-               "display_name": "i18n(stonehearth_ace:entities.drink.wort_gruit.display_name)",
-               "icon": "/stonehearth_ace/entities/drink/wort_gruit/wort_gruit.png",
-               "filter": "brewing_ingredient wort gruit"
+               "display_name": "i18n(stonehearth_ace:entities.drink.wort_ale_pale.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/wort_ale_pale/wort_ale_pale.png",
+               "filter": "brewing_ingredient wort ale pale"
+            },
+            "wort_beer_white": {
+               "ordinal": 8.5,
+               "display_name": "i18n(stonehearth_ace:entities.drink.wort_beer_white.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/wort_beer_white/wort_beer_white.png",
+               "filter": "brewing_ingredient wort beer white"
+            },
+            "wort_beer": {
+               "ordinal": 8.6,
+               "display_name": "i18n(stonehearth_ace:entities.drink.wort_beer.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/wort_beer/wort_beer.png",
+               "filter": "brewing_ingredient wort beer standard"
+            },
+            "wort_beer_opaque": {
+               "ordinal": 8.7,
+               "display_name": "i18n(stonehearth_ace:entities.drink.wort_beer_opaque.display_name)",
+               "icon": "/stonehearth_ace/entities/drink/wort_beer_opaque/wort_beer_opaque.png",
+               "filter": "brewing_ingredient wort beer opaque"
             },
             "must_berry": {
                "ordinal": 9,

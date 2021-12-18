@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.dough_flat_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.dough_flat_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.dough_flat_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/dough_flat/dough_flat.png",
+   "workshop": "stonehearth_ace:cook:table",
+   "work_effect": "work_cook_dough",
+   "level_requirement": 2,
+   "ingredients": [
+	   {
+         "material": "flour soft cooking_ingredient",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:dough_flat"
+      }
+   ]
+}
