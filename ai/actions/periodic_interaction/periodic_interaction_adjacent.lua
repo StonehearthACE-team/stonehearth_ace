@@ -1,5 +1,8 @@
 local Point3 = _radiant.csg.Point3
 local Entity = _radiant.om.Entity
+local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
+local rng = _radiant.math.get_default_rng()
+
 local InteractWithItemAdjacent = radiant.class()
 
 local log = radiant.log.create_logger('periodic_interaction_adjacent')
@@ -13,6 +16,7 @@ InteractWithItemAdjacent.priority = 0
 
 function InteractWithItemAdjacent:start(ai, entity, args)
    local pi_comp = args.item:get_component('stonehearth_ace:periodic_interaction')
+   pi_comp:start_using(entity)
    ai:set_status_text_key(pi_comp:get_current_mode_ai_status())
 
    self._completed_work = false
@@ -80,12 +84,12 @@ function InteractWithItemAdjacent:run(ai, entity, args)
          local interaction_data = points[i]
          ai:set_status_text_key(interaction_data.ai_status_key or pi_comp:get_current_mode_ai_status())
          local pt = interaction_data.point and (radiant.util.to_point3(interaction_data.point) or Point3(unpack(interaction_data.point))) or Point3.zero
-         ai:execute('stonehearth:go_toward_location', { destination = location + pt) })
+         ai:execute('stonehearth:go_toward_location', { destination = location + pt })
          ai:execute('stonehearth:run_effect', { effect = interaction_data.worker_effect or 'fiddle' })
       end
       
       self._completed_work = true
-      pi_comp:set_current_interaction_completed()
+      pi_comp:set_current_interaction_completed(entity)
    end
 end
 

@@ -36,7 +36,7 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
 
             data.seed_index = seed_index;
             self.set('allCropData', data);
-            self._updateAvailableSeeds();
+            //self._updateAvailableSeeds();
          });
          
       // farmer job info has list of unlocked crops for both farmer and herbalist
@@ -253,11 +253,12 @@ App.AcePlanterTypePaletteView = App.View.extend({
                {
                   return {
                      type: k,
-                     icon: info.icon,
-                     level: Math.max(0, info.level || 0),
-                     display_name: info.name,
-                     description: info.description,
+                     icon: info.crop_info.icon,
+                     level: Math.max(0, info.crop_level_requirement || 0),
+                     display_name: i18n.t(info.crop_info.name),
+                     description: i18n.t(info.crop_info.description),
                      initial_crop: info.initial_crop,
+                     hidden: info.hidden,
                   }
                }
                return false;
@@ -273,14 +274,18 @@ App.AcePlanterTypePaletteView = App.View.extend({
                   display_name: no_crop.display_name,
                   description: no_crop.description,
                   initial_crop: true,
+                  hidden: false,
                });
             }
 
-            cropDataArray.sort(self._sortWithoutQuality);
             self.set('cropTypes', cropDataArray);
             //self.updateAvailableSeeds(self.available_seeds);
 
             self.$().on( 'click', '[cropType]', function() {
+               if ($(this).attr('locked')) {
+                  return;
+               }
+
                var cropType = $(this).attr('cropType');
                if (cropType) {
                   if (cropType == 'no_crop') {
@@ -292,27 +297,26 @@ App.AcePlanterTypePaletteView = App.View.extend({
             });
 
             self._updateLockedCrops();
+            cropDataArray.sort(self._sortWithoutQuality);
          });
    },
 
    _isCropLocked: function(crop) {
-      var highest_level = this.get('model.highest_level');
-      if (!highest_level) {
-         highest_level = 0;
-      }
-      return crop.crop_level_requirement > highest_level;
-   },
-
-   _isCropHidden: function (crop) {
       if (!this.get('model') || !crop.type) return false; // Too early. We'll recheck later.
       var manually_unlocked = this.get('model.manually_unlocked');
       return !crop.initial_crop && !manually_unlocked[crop.type];
    },
 
+   _isCropHidden: function (crop) {
+      if (!this.get('model') || !crop.type) return false; // Too early. We'll recheck later.
+      var manually_unlocked = this.get('model.manually_unlocked');
+      return crop.hidden && !manually_unlocked[crop.type];
+   },
+
    _updateLockedCrops: function() {
       var crops = this.get('cropTypes');
       if (crops) {
-         radiant.sortByOrdinal(crops);
+         //radiant.sortByOrdinal(crops);
          for (var crop_id = 0; crop_id < crops.length; crop_id++) {
             var crop = crops[crop_id];
             var is_locked = this._isCropLocked(crop);
@@ -341,7 +345,13 @@ App.AcePlanterTypePaletteView = App.View.extend({
    },
 
    _sortWithoutQuality: function(a, b) {
-      if (a.level < b.level) {
+      if (!a.is_locked && b.is_locked) {
+         return -1;
+      }
+      else if (a.is_locked && !b.is_locked) {
+         return 1;
+      }
+      else if (a.level < b.level) {
          return -1;
       }
       else if (a.level > b.level) {

@@ -23,7 +23,7 @@
             "carving": "carving [name(data.target)]",
             "periodic_interaction": {
                "default": "interacting with [name(data.target)]",
-               "find_normal_seed": {
+               "find_native_seed": {
                   "default": "fiddling with [name(data.target)]",
                   "specific_1": "searching [name(data.target)]"
                }
@@ -5635,7 +5635,15 @@
          },
          "herbalist_exploration_garden": {
             "display_name": "Herbalist Exploration Garden",
-            "description": "Used for discovering new types of plants for cultivation in herbalist planters."
+            "description": "Used for discovering new types of plants for cultivation in herbalist planters.",
+            "periodic_interaction": {
+               "modes": {
+                  "find_native_seed": {
+                     "name": "Find Native Seed",
+                     "description": "Prioritize finding a seed for a native plant. This process is faster and more reliable than searching for exotic seeds."
+                  }
+               }
+            }
          },
          "unlock_crop": {
             "bulletin_title": "The [str(i18n_data.job_name)] has unlocked [str(i18n_data.crop_name)]!"

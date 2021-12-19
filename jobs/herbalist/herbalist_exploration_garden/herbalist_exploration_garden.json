@@ -9,6 +9,38 @@
          "iconic_form": "file(herbalist_exploration_garden_iconic.json)",
          "placeable_on_ground": true
       },
+      "model_variants": {
+         "stage_01": {
+            "models": [
+               "file(exploration_default/stage_01.qb)"
+            ]
+         },
+         "stage_02": {
+            "models": [
+               "file(exploration_default/stage_02.qb)"
+            ]
+         },
+         "stage_03": {
+            "models": [
+               "file(exploration_default/stage_03.qb)"
+            ]
+         },
+         "stage_04": {
+            "models": [
+               "file(exploration_default/stage_04.qb)"
+            ]
+         },
+         "stage_05": {
+            "models": [
+               "file(exploration_default/stage_05.qb)"
+            ]
+         },
+         "stage_06": {
+            "models": [
+               "file(exploration_default/stage_06.qb)"
+            ]
+         }
+      },
       "destination": {
          "region": [
             {
@@ -35,9 +67,168 @@
                "max": { "x": 1, "y": 2, "z": 1 }
             }
          ]
+      },
+      "stonehearth_ace:periodic_interaction": {
+         "default_model": "model_name",
+         "reset_effect": "stonehearth:effects:poof_effect",
+         "transform_after_using_key": "disable_after_use",
+         "transform_after_num_uses": 5,
+         "show_mode_selection": true,
+         "modes": {
+             "find_native_seed": {
+                 "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.default",
+                 "ui_data": {
+                     "name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_native_seed.name)",
+                     "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_native_seed.description)"
+                 },
+                 "cooldown": "12m",
+                 "requirements": {
+                     "job": "stonehearth:jobs:herbalist",
+                     "level": 2
+                 },
+                 "completion": {
+                     "rewards": [
+                        {
+                           "type": "experience",
+                           "value": 25
+                        }
+                     ]
+                 },
+                 "sequences": {  "__comment": "keys here are just for the designer's convenience",
+                     "quick": [
+                        {
+                           "effect": "stonehearth:effects:poof_effect",
+                           "interaction_effect": "stonehearth:effects:poof_effect",
+                           "cooldown": "4m",
+                           "model": "stage_01",
+                           "num_interactions": 5,
+                           "interaction_points": [
+                              {
+                                 "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.specific_1",
+                                 "worker_effect": "fiddle",
+                                 "weight": 3,
+                                 "point": [2, 0, 3]
+                              },
+                              {
+                                 "worker_effect": "fiddle",
+                                 "weight": 1,
+                                 "point": [1, 0, 1]
+                              },
+                              {
+                                 "worker_effect": "fiddle",
+                                 "weight": 1,
+                                 "point": [3, 0, 2]
+                              }
+                           ],
+                           "rewards": [
+                              {
+                                 "type": "experience",
+                                 "value": 10
+                              },
+                              {
+                                 "type": "script",
+                                 "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                                 "script_data": {
+                                    "crop_category": "herb",
+                                    "none": 90,
+                                    "native": 10
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           "effect": "stonehearth:effects:poof_effect",
+                           "interaction_effect": "stonehearth:effects:poof_effect",
+                           "cooldown": "4m",
+                           "model": "stage_2",
+                           "num_interactions": 5,
+                           "interaction_points": [
+                              {
+                                 "worker_effect": "fiddle",
+                                 "weight": 1,
+                                 "point": [2, 0, 3]
+                              },
+                              {
+                                 "worker_effect": "fiddle",
+                                 "weight": 3,
+                                 "point": [1, 0, 1]
+                              },
+                              {
+                                 "worker_effect": "fiddle",
+                                 "weight": 1,
+                                 "point": [3, 0, 2]
+                              }
+                           ],
+                           "rewards": [
+                              {
+                                 "type": "experience",
+                                 "value": 10
+                              },
+                              {
+                                 "type": "script",
+                                 "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                                 "script_data": {
+                                    "crop_category": "herb",
+                                    "none": 69,
+                                    "native": 30,
+                                    "exotic": 1
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           "effect": "stonehearth:effects:poof_effect",
+                           "interaction_effect": "stonehearth:effects:poof_effect",
+                           "model": "stage_3",
+                           "num_interactions": 5,
+                           "interaction_points": [
+                              {
+                                 "worker_effect": "fiddle",
+                                 "weight": 1,
+                                 "point": [2, 0, 3]
+                              },
+                              {
+                                 "worker_effect": "fiddle",
+                                 "weight": 1,
+                                 "point": [1, 0, 1]
+                              },
+                              {
+                                 "worker_effect": "fiddle",
+                                 "weight": 3,
+                                 "point": [3, 0, 2]
+                              }
+                           ],
+                           "rewards": [
+                              {
+                                 "type": "experience",
+                                 "value": 10
+                              },
+                              {
+                                 "type": "script",
+                                 "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                                 "script_data": {
+                                    "crop_category": "herb",
+                                    "native": 95,
+                                    "exotic": 5
+                                 }
+                              }
+                           ]
+                        }
+                     ]
+                 }
+             }
+         }
       }
    },
    "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "disable_after_use": {
+               "transform_uri": "stonehearth_ace:herbalist:exploration_garden",
+               "transform_effect": "stonehearth:effects:poof_effect"
+            }
+         }
+      },
       "stonehearth:net_worth": {
          "value_in_gold": 21,
          "rarity": "common",

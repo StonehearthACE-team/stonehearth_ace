@@ -5,6 +5,8 @@ local Region3 = _radiant.csg.Region3
 local FarmingService = require 'stonehearth.services.server.farming.farming_service'
 AceFarmingService = class()
 
+local log = radiant.log.create_logger('farming_service')
+
 function AceFarmingService:_load_field_types()
    local data = radiant.resources.load_json('stonehearth:farmer:all_crops')
    self._field_types = data.field_types
@@ -34,12 +36,13 @@ function AceFarmingService:create_new_field(session, location, size, field_type,
    return entity
 end
 
-AceFarmingService._ace_old__load_initial_crops = FarmingService._load_initial_crops
-function AceFarmingService:_load_initial_crops()
-   self:_ace_old__load_initial_crops()
+function AceFarmingService:_ensure_herbalist_crops_loaded()
+   if not self._herbalist_crops then
+      local herbalist_crops_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter:crops')
+      self._herbalist_crops = herbalist_crops_data.crops
+   end
 
-   local herbalist_crops_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter:crops')
-   self._herbalist_crops = herbalist_crops_data.crops
+   return self._herbalist_crops
 end
 
 function AceFarmingService:_get_crop_list(session)
@@ -53,7 +56,6 @@ function AceFarmingService:_get_crop_list(session)
       -- start out with the default crops for this player's kingdom.
       crop_list = {}
       local all_crops = self._all_crops
-      local herbalist_crops = self._herbalist_crops
       local kingdom_crops = self._initial_crops[kingdom]
       if kingdom_crops and all_crops then
          for key, crop in pairs(all_crops) do
@@ -69,8 +71,10 @@ function AceFarmingService:_get_crop_list(session)
          end
 
          -- then also add any herbalist crops
+         local herbalist_crops = self:_ensure_herbalist_crops_loaded()
          if herbalist_crops then
             for key, crop in pairs(herbalist_crops) do
+               log:debug('adding herbalist crop %s to crop list...', key)
                if not crop_list[key] then
                   crop_list[key] = {}
                end
@@ -81,6 +85,7 @@ function AceFarmingService:_get_crop_list(session)
                   crop_level_requirement = crop.level,
                   ordinal = crop.ordinal,
                   initial_crop = kingdom_crops[key],
+                  hidden = crop.hidden,
                   --planter_types = {}   -- do we want/need to include this here?
                }
             end
