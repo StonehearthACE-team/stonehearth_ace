@@ -30,12 +30,15 @@ function PlantHerbalistPlanterAdjacent:run(ai, entity, args)
       return
    end
    
-   local seed = radiant.entities.remove_carrying(entity)
-   seed = seed and entity_forms.get_root_entity(seed) or seed  -- why doesn't get_root_entity just return the entity if no forms specified?
+   local seed
    local req_seed = planter_comp:get_seed_uri()
-   if not seed or not seed:is_valid() or seed:get_uri() ~= req_seed then
-      ai:abort('not carrying the right seed!')
-      return
+   if req_seed then
+      seed = radiant.entities.remove_carrying(entity)
+      seed = seed and entity_forms.get_root_entity(seed) or seed  -- why doesn't get_root_entity just return the entity if no forms specified?
+      if not seed or not seed:is_valid() or seed:get_uri() ~= req_seed then
+         ai:abort('not carrying the right seed!')
+         return
+      end
    end
 
    radiant.entities.turn_to_face(entity, planter)
@@ -44,7 +47,10 @@ function PlantHerbalistPlanterAdjacent:run(ai, entity, args)
    ai:execute('stonehearth:run_effect', { effect = effect })
 
    planter_comp:plant_crop(entity, seed)
-   radiant.entities.destroy_entity(seed)
+
+   if seed then
+      radiant.entities.destroy_entity(seed)
+   end
 
    radiant.events.trigger(entity, 'stonehearth_ace:interact_herbalist_planter', {type = 'plant_planter', planter = planter})
 end

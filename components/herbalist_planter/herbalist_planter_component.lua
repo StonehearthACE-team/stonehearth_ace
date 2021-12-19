@@ -125,7 +125,7 @@ function HerbalistPlanterComponent:_create_planter_tasks()
       }
 
       -- if we're clearing it, just pop out a seed for the existing plant (bonus products in storage are already dumped out automatically)
-      if not args.seed_uri then
+      if not self._sv.current_crop then
          if self._planted_crop_stats then
             local seed_uri = self._planted_crop_stats.seed_uri
             self:plant_crop()
