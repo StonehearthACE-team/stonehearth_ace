@@ -195,18 +195,29 @@ function PeriodicInteractionComponent:activate()
 end
 
 function PeriodicInteractionComponent:post_activate()
-   self:select_mode(self._sv.current_mode)
-   self:_setup_consider_usability_timer()
+   --Trace the parent to figure out if it's added or not:
+   self._parent_trace = self._entity:add_component('mob'):trace_parent('periodic_interaction added or removed from world')
+      :on_changed(function(parent_entity)
+            if not parent_entity then
+               --we were just removed from the world
+               self:_shutdown()
+            else
+               --we were just added to the world
+               self:_startup()
+            end
+         end)
 
-   radiant.on_game_loop_once('consider periodic_interaction usability on load', function()
-      self:_consider_usability()
-   end)
+   self:_startup()
 end
 
 function PeriodicInteractionComponent:destroy()
    if self._consider_usability_timer then
       self._consider_usability_timer:destroy()
       self._consider_usability_timer = nil
+   end
+   if self._parent_trace then
+      self._parent_trace:destroy()
+      self._parent_trace = nil
    end
    if self._interaction_stage_effect then
       self._interaction_stage_effect:stop()
@@ -218,6 +229,21 @@ function PeriodicInteractionComponent:destroy()
    end
 end
 
+function PeriodicInteractionComponent:_startup()
+   local location = radiant.entities.get_world_grid_location(self._entity)
+   if not location then
+      return
+   end
+
+   self:select_mode(self._sv.current_mode)
+   self:_setup_consider_usability_timer()
+   self:_consider_usability()
+end
+
+function PeriodicInteractionComponent:_shutdown()
+   self:cancel_using(self._sv.current_user)
+end
+
 function PeriodicInteractionComponent:is_enabled()
    return self._sv.enabled
 end
@@ -225,6 +251,10 @@ end
 function PeriodicInteractionComponent:set_enabled(enabled)
    self._sv.enabled = enabled
    self.__saved_variables:mark_changed()
+end
+
+function PeriodicInteractionComponent:get_current_mode()
+   return self._sv.current_mode
 end
 
 function PeriodicInteractionComponent:get_current_user()
@@ -290,6 +320,7 @@ function PeriodicInteractionComponent:_reset(completed)
 
    self._entity:add_component('render_info'):set_model_variant(self._json.default_model or 'default')
 
+   radiant.events.trigger_async(self._entity, 'stonehearth_ace:periodic_interaction:cancel_usage')
    self:select_mode(self._sv.current_mode)
 end
 
@@ -422,6 +453,7 @@ function PeriodicInteractionComponent:set_current_interaction_completed(user)
          -- if there's no interaction for this stage, we must've completed it
          self:_reset(true)
       else
+         self:_apply_current_stage_settings()
          self:_start_interaction_cooldown_timer(current_interaction.cooldown)
       end
    end
@@ -478,11 +510,16 @@ function PeriodicInteractionComponent:_apply_rewards(rewards, is_completed)
    return completed
 end
 
+-- different types of rewards: user_buff, self_buff, experience, permanent_attribute, expendable_resource, script
 function PeriodicInteractionComponent:_apply_reward(reward, is_completed)
    local user = self._sv.current_user
-   local job_component = user:get_component('stonehearth:job')
    
-   if reward.type == 'experience' then
+   if reward.type == 'user_buff' then
+      user:add_component('stonehearth:buffs'):add_buff(reward.buff)
+   elseif reward.type == 'self_buff' then
+      self._entity:add_component('stonehearth:buffs'):add_buff(reward.buff)
+   elseif reward.type == 'experience' then
+      local job_component = user:get_component('stonehearth:job')
       if job_component then
          local level = job_component:get_current_job_level()
          job_component:add_exp(reward.value)
@@ -491,11 +528,11 @@ function PeriodicInteractionComponent:_apply_reward(reward, is_completed)
          end
       end
    elseif reward.type == 'permanent_attribute' then
-      local attributes_component = user:get_component('stonehearth:attributes')
+      local attributes_component = user:add_component('stonehearth:attributes')
       local cur_value = attributes_component:get_attribute(reward.attribute)
       attributes_component:set_attribute(reward.attribute, cur_value + reward.amount or 1)
    elseif reward.type == 'expendable_resource' then
-      local expendable_resources_component = user:get_component('stonehearth:expendable_resources')
+      local expendable_resources_component = user:add_component('stonehearth:expendable_resources')
       if reward.maximize then
          expendable_resources_component:set_value(reward.resource, expendable_resources_component:get_max_value(reward.resource))
       elseif reward.minimize then
@@ -554,6 +591,12 @@ function PeriodicInteractionComponent:_consider_usability()
       return
    end
 
+   -- if it's not in the world, it's not actually usable, so don't inform anyone
+   local location = radiant.entities.get_world_grid_location(self._entity)
+   if not location then
+      return
+   end
+
    -- if we already have a user assigned, only inform that user
    if self._sv.current_user and self._sv.current_user:is_valid() then
       self:_inform_potential_user(self._sv.current_user)
@@ -575,8 +618,8 @@ function PeriodicInteractionComponent:_consider_usability()
 end
 
 function PeriodicInteractionComponent:_inform_potential_user(entity)
-   log:debug('%s informing potential user %s of usability...', self._entity, entity)
-   radiant.events.trigger_async(entity, 'stonehearth_ace:periodic_interaction:usability_changed', self._entity)
+   --log:debug('%s informing potential user %s of usability...', self._entity, entity)
+   radiant.events.trigger_async(entity, 'stonehearth_ace:periodic_interaction:became_usable', self._entity, self._sv.current_mode)
 end
 
 return PeriodicInteractionComponent
