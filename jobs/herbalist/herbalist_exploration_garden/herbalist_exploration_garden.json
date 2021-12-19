@@ -99,25 +99,25 @@
                         {
                            "effect": "stonehearth:effects:poof_effect",
                            "interaction_effect": "stonehearth:effects:poof_effect",
-                           "cooldown": "4m",
+                           "cooldown": "25m",
                            "model": "stage_01",
                            "num_interactions": 5,
                            "interaction_points": [
                               {
                                  "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.specific_1",
-                                 "worker_effect": "fiddle",
+                                 "worker_effect": "hoe",
                                  "weight": 3,
-                                 "point": [2, 0, 3]
+                                 "point": [-1, 0, 0.5]
                               },
                               {
                                  "worker_effect": "fiddle",
                                  "weight": 1,
-                                 "point": [1, 0, 1]
+                                 "point": [0.5, 0, -1.5]
                               },
                               {
                                  "worker_effect": "fiddle",
                                  "weight": 1,
-                                 "point": [3, 0, 2]
+                                 "point": [-1.5, 0, -1]
                               }
                            ],
                            "rewards": [
@@ -139,24 +139,24 @@
                         {
                            "effect": "stonehearth:effects:poof_effect",
                            "interaction_effect": "stonehearth:effects:poof_effect",
-                           "cooldown": "4m",
-                           "model": "stage_2",
+                           "cooldown": "25m",
+                           "model": "stage_02",
                            "num_interactions": 5,
                            "interaction_points": [
                               {
                                  "worker_effect": "fiddle",
                                  "weight": 1,
-                                 "point": [2, 0, 3]
+                                 "point": [-1, 0, -1]
                               },
                               {
                                  "worker_effect": "fiddle",
                                  "weight": 3,
-                                 "point": [1, 0, 1]
+                                 "point": [-1.5, 0, 0.5]
                               },
                               {
                                  "worker_effect": "fiddle",
                                  "weight": 1,
-                                 "point": [3, 0, 2]
+                                 "point": [0.5, 0, -0.5]
                               }
                            ],
                            "rewards": [
@@ -179,23 +179,23 @@
                         {
                            "effect": "stonehearth:effects:poof_effect",
                            "interaction_effect": "stonehearth:effects:poof_effect",
-                           "model": "stage_3",
+                           "model": "stage_03",
                            "num_interactions": 5,
                            "interaction_points": [
                               {
                                  "worker_effect": "fiddle",
                                  "weight": 1,
-                                 "point": [2, 0, 3]
+                                 "point": [-1.5, 0, 0]
                               },
                               {
                                  "worker_effect": "fiddle",
                                  "weight": 1,
-                                 "point": [1, 0, 1]
+                                 "point": [0.5, 0, -1]
                               },
                               {
                                  "worker_effect": "fiddle",
                                  "weight": 3,
-                                 "point": [3, 0, 2]
+                                 "point": [0, 0, 0]
                               }
                            ],
                            "rewards": [
