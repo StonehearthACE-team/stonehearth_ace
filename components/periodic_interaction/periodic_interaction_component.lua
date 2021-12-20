@@ -15,12 +15,12 @@
       "reset_effect": "stonehearth_ace:effects:reset_effect",
       "transform_after_using_key": "disable_after_use",
       "transform_after_num_uses": 5,
-      "show_mode_selection": true,
+      "allow_mode_selection": true,
       "modes": {
          "find_native_seed": {
             "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.default",
             "ui_data": {
-               "name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_native_seed.name)",
+               "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_native_seed.name)",
                "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_native_seed.description)"
             },
             "cooldown": "12h",

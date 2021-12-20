@@ -5639,7 +5639,7 @@
             "periodic_interaction": {
                "modes": {
                   "find_native_seed": {
-                     "name": "Find Native Seed",
+                     "display_name": "Find Native Seed",
                      "description": "Prioritize finding a seed for a native plant. This process is faster and more reliable than searching for exotic seeds."
                   }
                }
@@ -19254,6 +19254,12 @@
                "clear_banners": "Remove All",
                "clear_banners_description": "Remove all banners for this party. To remove the selected banner, use the command on the selected entity window."
             }
+         },
+         "periodic_interaction": {
+            "enabled": "Enabled",
+            "enabled_description": "Whether hearthlings should try to interact with this entity.",
+            "select_mode": "Mode:",
+            "select_mode_description": "Choose how hearthlings should try to interact with this entity."
          },
          "unit_frame": {
             "max_healable_health": {
