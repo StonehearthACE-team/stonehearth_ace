@@ -19226,6 +19226,8 @@
             "queued_crop": "Queued for Planting: ",
             "harvest_crop": "Enable Harvesting",
             "harvest_crop_description": "If enabled, whenever the resource is fully grown, the herbalist or grower will harvest it. Disabling this can be useful when a plus sign (+) is displayed next to the amount harvested - it means this planter will also provide resources over time without having to harvest and wait for it to grow again.",
+            "harvest_plant": "Harvest Plantable Crop",
+            "harvest_plant_description": "If enabled, when harvesting, the herbalist or grower will harvest a plantable crop that can be planted in the ground.",
             "produces": "Produces per Harvest: ",
             "quality": {
                "quality-1": "This crop is normal quality and will most likely produce normal quality products.",
@@ -19257,9 +19259,9 @@
          },
          "periodic_interaction": {
             "enabled": "Enabled",
-            "enabled_description": "Whether hearthlings should try to interact with this entity.",
+            "enabled_description": "Whether hearthlings should try to interact with this object.",
             "select_mode": "Mode:",
-            "select_mode_description": "Choose how hearthlings should try to interact with this entity."
+            "select_mode_description": "Choose how hearthlings should try to interact with this object."
          },
          "unit_frame": {
             "max_healable_health": {

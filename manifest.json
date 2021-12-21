@@ -5756,14 +5756,6 @@
          "controller": "file(call_handlers/new_game_call_handler.lua)",
          "endpoint": "client"
       },
-      "set_periodic_interaction_enabled": {
-         "controller": "file(call_handlers/periodic_interaction_call_handler.lua)",
-         "endpoint": "server"
-      },
-      "set_periodic_interaction_mode": {
-         "controller": "file(call_handlers/periodic_interaction_call_handler.lua)",
-         "endpoint": "server"
-      },
       "box_move": {
          "controller": "file(call_handlers/resource_call_handler.lua)",
          "endpoint": "client"
@@ -6066,7 +6058,14 @@
       ],
       "herbalist_planter": [
          "set_current_crop_command",
-         "set_harvest_enabled_command"
+         "set_harvest_enabled_command",
+         "set_harvest_plant_command"
+      ],
+      "periodic_interaction": [
+         "get_valid_users_command",
+         "select_mode_command",
+         "set_enabled_command",
+         "set_owner_command"
       ],
       "universal_storage": [
          "get_storage_from_access_node_command"

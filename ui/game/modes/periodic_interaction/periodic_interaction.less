@@ -4,18 +4,10 @@
    top: 500px;
    width: 450px;
 
-   .setting {
-      padding-top: 8px;
-   }
-
    .list-setting {
       display: flex;
       justify-content: space-between;
       align-items: center;
-   }
-
-   .custom-select {
-      width: 300px;
    }
 
    .name {
@@ -33,5 +25,31 @@
 
    .custom-select {
       display: inline-block;
+      width: 300px;
+   }
+
+   #bottomStrip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 8px;
+   }
+
+   #assignOwner {
+      position: relative;
+      width: 54px;
+      height: 54px;
+      background: url(/stonehearth/ui/game/unit_frame/images/command-button-bg.png);
+      background-size: cover;
+      border: 2px solid #000;
+      margin-left: 4px;
+
+      img {
+         position: relative;
+         max-width: 60px;
+         top: -8px;
+         left: -2px;
+         content: url(/stonehearth/data/commands/change_owner/change_owner.png);
+      }
    }
 }

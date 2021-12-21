@@ -78,8 +78,14 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
          radiant.call_obj(planter && planter.__self, 'set_harvest_enabled_command', this.checked);
       });
 
+      self.$('#enablePlantHarvestCheckbox').change(function() {
+         var planter = self.get('model.stonehearth_ace:herbalist_planter');
+         radiant.call_obj(planter && planter.__self, 'set_harvest_plant_command', this.checked);
+      });
+
       // tooltips
       App.guiHelper.addTooltip(self.$('#enableHarvest'), 'stonehearth_ace:ui.game.herbalist_planter.harvest_crop_description');
+      App.guiHelper.addTooltip(self.$('#enablePlantHarvest'), 'stonehearth_ace:ui.game.herbalist_planter.harvest_plant_description');
 
       App.tooltipHelper.createDynamicTooltip(self.$('#produces'), function () {
          var quality = self.get('tendQuality');
@@ -199,6 +205,19 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       var harvestCrop = self.get('model.stonehearth_ace:herbalist_planter.harvest_enabled');
       self.$('#enableHarvestCheckbox').prop('checked', harvestCrop);
    }.observes('model.stonehearth_ace:herbalist_planter.harvest_enabled'),
+
+   _harvestEnabledChanged: function() {
+      var self = this;
+      var harvestPlant = self.get('model.stonehearth_ace:herbalist_planter.harvest_plant');
+      self.$('#enablePlantHarvestCheckbox').prop('checked', harvestPlant);
+   }.observes('model.stonehearth_ace:herbalist_planter.harvest_plant'),
+
+   _updateShowEnablePlantHarvest: function() {
+      var self = this;
+      var plantData = self.get('plantedCropData');
+      var showEnablePlantHarvest = plantData && plantData.plant_uri;
+      self.set('showEnablePlantHarvest', showEnablePlantHarvest != null);
+   }.observes('plantedCropData'),
 
    _showPlanterTypePalette: function() {
       if (!this.palette) {
