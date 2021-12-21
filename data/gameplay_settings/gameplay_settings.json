@@ -182,6 +182,13 @@
          "default": false,
          "ordinal": 25
       },
+      "disable_weather_effect_rendering": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.disable_weather_effect_rendering)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.disable_weather_effect_rendering_description)",
+         "default": false,
+         "ordinal": 27
+      },
       "water_signal_update_frequency": {
          "type": "number",
          "number_settings": {
@@ -197,6 +204,7 @@
          },
          "ordinal": 30
       },
+      
       "show_processing_meter": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_processing_meter)",
