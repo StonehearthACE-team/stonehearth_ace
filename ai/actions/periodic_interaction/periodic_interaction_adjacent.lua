@@ -84,7 +84,11 @@ function InteractWithItemAdjacent:run(ai, entity, args)
          local interaction_data = points[i]
          ai:set_status_text_key(interaction_data.ai_status_key or pi_comp:get_current_mode_ai_status())
          local pt = interaction_data.point and (radiant.util.to_point3(interaction_data.point) or Point3(unpack(interaction_data.point))) or Point3.zero
+         local face_pt = interaction_data.face_point and (radiant.util.to_point3(interaction_data.face_point) or Point3(unpack(interaction_data.face_point)))
          ai:execute('stonehearth:go_toward_location', { destination = location + pt })
+         if face_pt then
+            radiant.entities.turn_to_face(entity, face_pt)
+         end
          ai:execute('stonehearth:run_effect', { effect = interaction_data.worker_effect or 'fiddle' })
       end
       

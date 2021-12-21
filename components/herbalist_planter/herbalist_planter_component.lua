@@ -255,6 +255,7 @@ function HerbalistPlanterComponent:set_harvest_plant(harvest_plant)
    if harvest_plant ~= self._sv.harvest_plant then
       self._sv.harvest_plant = harvest_plant
       self.__saved_variables:mark_changed()
+      self:_reconsider()
    end
 end
 
@@ -513,7 +514,7 @@ function HerbalistPlanterComponent:set_harvest_enabled_command(session, response
 end
 
 function HerbalistPlanterComponent:set_harvest_plant_command(session, response, harvest_plant)
-   self:set_harvest_enabled(enabled)
+   self:set_harvest_plant(harvest_plant)
    return true
 end
 

@@ -54,7 +54,7 @@ App.StonehearthPeoplePickerView.reopen({
                rows.splice(1, 0, { isMedicPatient: true }, { isTraveler: true });
             }
             this.set('travelerChanged', false);
-            //this.set('medicPatientChanged', false);
+            this.set('medicPatientChanged', false);
          }
          return rows;
       }

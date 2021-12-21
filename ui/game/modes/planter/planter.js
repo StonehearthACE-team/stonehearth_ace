@@ -164,7 +164,7 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       var bonus_items = self.get('model.stonehearth:storage.num_items') || 0;
       
       self.set('produces', produces + (produces && bonus_items ? ' (+)' : ''));
-   }.observes('model.stonehearth:storage.num_items'),
+   }.observes('model.uri', 'model.stonehearth:storage.num_items'),
 
    _updateTendQuality: function() {
       var self = this;
@@ -180,7 +180,7 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
          self.set('tendQuality', null);
          self.set('tendQualityClass', null);
       }
-   }.observes('model.stonehearth:expendable_resources.resources.tend_quality', 'maxTendQuality'),
+   }.observes('model.uri', 'model.stonehearth:expendable_resources.resources.tend_quality', 'maxTendQuality'),
 
    _updateMaxTendQuality: function() {
       var self = this;
@@ -206,7 +206,7 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       self.$('#enableHarvestCheckbox').prop('checked', harvestCrop);
    }.observes('model.stonehearth_ace:herbalist_planter.harvest_enabled'),
 
-   _harvestEnabledChanged: function() {
+   _harvestPlantChanged: function() {
       var self = this;
       var harvestPlant = self.get('model.stonehearth_ace:herbalist_planter.harvest_plant');
       self.$('#enablePlantHarvestCheckbox').prop('checked', harvestPlant);
