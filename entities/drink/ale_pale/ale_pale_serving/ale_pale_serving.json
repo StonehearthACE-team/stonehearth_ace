@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ale_pale_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 80,
+            "food_satisfaction": 6
+         },
+         "default": {
+            "satisfaction": 65,
+            "food_satisfaction": 3
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time",
+            "stonehearth_ace:buffs:consumption:light_headed",
+            "stonehearth_ace:buffs:consumption:light_headed"
+         ],
+         "quality": 5,
+         "effect_loops": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.ale_pale.ale_pale_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.ale_pale.ale_pale_serving.description)",
+         "material_tags": [
+            "drink",
+            "ale_pale_serving",
+            "alcoholic",
+            "night_time"
+         ],
+         "subject_override": "stonehearth_ace:drink:ale_pale"
+      }
+   }
+}

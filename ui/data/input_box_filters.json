@@ -290,12 +290,6 @@
                "icon": "/stonehearth_ace/entities/resources/herb/herb_pungent_icon.png",
                "filter": "resource herb pungent"
             },
-            "seed_earthbud": {
-               "ordinal": 1.5,
-               "display_name": "i18n(stonehearth:entities.plants.earthbud.seed.earthbud_plant_seed.display_name)",
-               "icon": "/stonehearth/entities/plants/earthbud/seed/earthbud_plant_seed.png",
-               "filter": "seed earthbud"
-            },
             "cactus_flower": {
                "display_name": "i18n(stonehearth_ace:entities.resources.herb.cactus_flower.display_name)"
             },
@@ -527,6 +521,16 @@
                "display_name": "i18n(stonehearth_ace:entities.resources.algae.green_algae.display_name)",
                "icon": "/stonehearth_ace/entities/resources/algae/green_algae/green_algae.png",
                "filter": "green_algae resource"
+            },
+            "earth_essence": {
+               "ordinal": 10,
+               "icon": "/stonehearth_ace/entities/resources/earth_essence/earth_essence.png"
+            },
+            "hearthbud": {
+               "ordinal": 10.1,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.hearthbud.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/hearthbud/hearthbud.png",
+               "filter": "resource herb hearthbud"
             }
          }
       },
@@ -647,6 +651,12 @@
                "display_name": "i18n(stonehearth:entities.refined.golem_parts.display_name)",
                "icon": "/stonehearth/entities/refined/golem_parts/golem_parts.png",
                "filter": "golem_parts resource"
+            },
+            "hearthbud_flakes": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:entities.resources.refined.hearthbud_flakes.display_name)",
+               "icon": "/stonehearth_ace/entities/refined/hearthbud_flakes/hearthbud_flakes.png",
+               "filter": "hearthbud flakes"
             }
          }
       },

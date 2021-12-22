@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "fermenting_vat_fill_wort_ale_pale",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.fermenting_vat_fill_wort_ale_pale.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.fermenting_vat_fill_wort_ale_pale.description)",
+   "default_enabled": true,
+   "ordinal": 91,
+   "icon": "file(fermenting_vat_fill_wort_ale_pale.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "ale_pale"
+   ]
+}

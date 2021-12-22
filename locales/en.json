@@ -239,6 +239,19 @@
                   "trigger": {
                      "discovery": {
                         "encounters": {
+                           "01_strange_trading": {
+                              "01_strange_trading_outro_f": {
+                                 "donation_dialog_info": {
+                                    "dialog_nodes": {
+                                       "simple_message": {
+                                          "bulletin_message": {
+                                             "00": "The visitor nods and takes their leave.<br><br>Shortly after, you discover a basket brimming with soft petals and potted flowers by your banner.<br><br><i><font size=-1>[The visitors seem to trust you more]</font></i>"
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           },
                            "30_geomancy": {
                               "30_geomancy_outro": {
                                  "donation_dialog_info": {
@@ -559,6 +572,15 @@
                   "recipe_unlock_geomancer": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
                   "recipe_unlock_engineer": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
                   "recipe_unlock_weaver": "New Legendary Hood recipe - Blacksmith, Geomancer, and Weaver collaboration!"
+               },
+               "hearth_foreshadow_dialog": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg4": {
+                           "choice_000": "Frostsnap flowers! Thanks!"
+                        }
+                     }
+                  }
                }
             },
             "rc_town_progression": {
@@ -589,6 +611,15 @@
                }
             },
             "na_town_progression": {
+               "hearth_foreshadow_dialog": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg4": {
+                           "choice_000": "Brightbell flowers! Thanks!"
+                        }
+                     }
+                  }
+               },
                "ace_guildmaster_reached": {
                   "recipe_unlock_coins": "The Blacksmith can now mint gold coins!"
                },
@@ -3136,6 +3167,18 @@
             "drying_bed_fill_black_tea": {
                "display_name": "Dry Black Tea Leaves",
                "description": "Order the Brewer to rest a crate of steamed tea leaves on this drying bed! When using this option, the bed will automatically request to be harvested once the product reaches the Black Tea Leaves stage."
+            },
+            "fermenting_vat_fill_wort_beer_opaque": {
+               "display_name": "Produce Opaque Beer",
+               "description": "Order the Brewer to fill this fermenting vat with opaque beer wort to start brewing! It will continue producing Opaque Beer unless a new command is given."
+            },
+            "fermenting_vat_fill_wort_beer_white": {
+               "display_name": "Produce White Beer",
+               "description": "Order the Brewer to fill this fermenting vat with white beer wort to start brewing! It will continue producing White Beer unless a new command is given."
+            },
+            "fermenting_vat_fill_wort_ale_pale": {
+               "display_name": "Produce Pale Ale",
+               "description": "Order the Brewer to fill this fermenting vat with pale ale wort to start brewing! It will continue producing Pale Ale unless a new command is given."
             }
          },
          "slaughter": {
@@ -4469,8 +4512,8 @@
       "herbalist": {
          "recipes": {
             "clothing_accessories_name": "Clothing & Accessories",
-            "refinement_name": "Seed Extraction: Plants",
-            "refinement_large_name": "Seed Extraction: Shrubs & Trees",
+            "refinement_name": "Seed Extraction: Plants & Shrubs",
+            "refinement_large_name": "Seed Extraction: Trees",
             "refined_fungi_name": "Fungal Refinement",
             "refined_seeds_name": "Farming: Regional Seeds",
             "planters_name": "Planters & Pots",
@@ -4886,30 +4929,15 @@
             },
             "brightbell_seeds_recipe": {
                "recipe_name": "Brightbell Seeds",
-               "description": "Domesticate Brightbell flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "brightbell_seeds_2_recipe": {
-               "recipe_name": "Brightbell Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate brightbell flowers!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "silkweed_seeds_recipe": {
                "recipe_name": "Silkweed Seeds",
-               "description": "Domesticate Silkweed plants and learn how to farm them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "silkweed_seeds_2_recipe": {
-               "recipe_name": "Silkweed Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate silkweed!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "frostsnap_seeds_recipe": {
-               "recipe_name": "Frostsnap Seeds",
-               "description": "Domesticate Frostsnap flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "frostsnap_seeds_2_recipe": {
                "recipe_name": "Frostsnap Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate frostsnap flowers!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -4926,11 +4954,6 @@
             },
             "cactus_flower_seeds_recipe": {
                "recipe_name": "Cactus Flower Seeds",
-               "description": "Domesticate Cactus flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "cactus_flower_seeds_2_recipe": {
-               "recipe_name": "Cactus Flower Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate cactus flowers!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
@@ -4946,20 +4969,10 @@
             },
             "violet_seeds_recipe": {
                "recipe_name": "Violet Seeds",
-               "description": "Domesticate Violet flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "violet_seeds_2_recipe": {
-               "recipe_name": "Violet Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate violets!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "snow_poppy_seeds_recipe": {
-               "recipe_name": "Snow Poppy Seeds",
-               "description": "Domesticate Snow Poppy flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "snow_poppy_seeds_2_recipe": {
                "recipe_name": "Snow Poppy Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate snow poppies!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -5101,36 +5114,6 @@
             },
             "moonbell_seeds_recipe": {
                "recipe_name": "Moonbell Seeds",
-               "description": "Domesticate Moonbell flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "poppy_seeds_recipe": {
-               "recipe_name": "Poppy Seeds",
-               "description": "Domesticate Poppy flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "rose_seeds_recipe": {
-               "recipe_name": "Rose Seeds",
-               "description": "Domesticate Rose flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "nightshade_seeds_recipe": {
-               "recipe_name": "Nightshade Seeds",
-               "description": "Domesticate Nightshade flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "daylily_seeds_recipe": {
-               "recipe_name": "Daylily Seeds",
-               "description": "Domesticate Daylily flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "oleander_seeds_recipe": {
-               "recipe_name": "Oleander Seeds",
-               "description": "Domesticate Oleander flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "moonbell_seeds_2_recipe": {
-               "recipe_name": "Moonbell Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate moonbell flowers!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
@@ -5145,11 +5128,6 @@
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "marblesprout_seeds_recipe": {
-               "recipe_name": "Marblesprout Seeds",
-               "description": "Domesticate Marblesprout flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "marblesprout_seeds_2_recipe": {
                "recipe_name": "Marblesprout Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate marble flowers!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -5581,7 +5559,7 @@
                "power_medic_3_name": "Great Physician",
                "power_medic_3_description": "The Herbalist can now attend to up to 6 hearthlings at a time. They will also be able to improve the qualities of their plants faster."
             },
-            "description": "A performer of healing practices, the Herbalist can craft and use tonics, medications and potions but also work with plants, seeds and other goods.",
+            "description": "A performer of healing practices, the Herbalist can craft and use tonics, medications and potions but also work with plants, mushrooms and other goods.",
             "level_1_data": {
                "perk_000_name": "Junior Practitioner",
                "perk_000_description": "The Herbalist is able to craft medicine and use it on up to two injured hearthlings at a time.",
@@ -5745,6 +5723,8 @@
       },
       "potter": {
          "recipes": {
+            "porcelain_furniture_name": "Furniture & Decoration, Porcelain",
+            "porcelain_building_parts_name": "Building Parts, Porcelain",
             "rc_shepherds_crook_recipe": {
                "recipe_name": "Shepherd's Ceramic Crook",
                "flavor": "The herding of animals in the desert is a tradition coming for as long as the children of Rayya have been walking these dunes"
@@ -6209,6 +6189,11 @@
          "recipes": {
             "earthbud_seeds_recipe": {
                "recipe_name": "Hearthbud Seeds (x2)"
+            },
+            "hearthbud_flakes_recipe": {
+               "recipe_name": "Hearthbud Flakes",
+               "description": "Dry and grind the very special blossom of a hearthbud flower into an edible powder with interesting properties.",
+               "flavor": "Sometimes you just need a pinch of magic!"
             },
             "legendary_silk_recipe": {
                "recipe_name": "Woodland Silk",
@@ -7541,8 +7526,8 @@
             },
             "cooking_oil_recipe": {
                "recipe_name": "Cooking Oil",
-               "description": "Extract the oil from any oleaginous seeds or grains to be used as an ingredient.",
-               "flavor": "Pumpkin seeds, Sunflower seeds, Corn or even Paddy are examples of oil sources"
+               "description": "Extract the oil from any oleaginous grains or herbs to be used as an ingredient.",
+               "flavor": "Pumpkin seeds, Sunflowers, Corn or even Paddy are examples of oil sources"
             },
             "cooked_rice_recipe": {
                "recipe_name": "Cooked Rice",
@@ -7860,6 +7845,8 @@
       },
       "carpenter": {
          "recipes": {
+            "ornate_furniture_name": "Furniture & Decoration, Ornate",
+            "ornate_building_parts_name": "Building Parts, Ornate",
             "wooden_animal_door_recipe": {
                "recipe_name": "Wooden Animal Door",
                "description": "A large door for animal shelters, it can be closed by a shepherd. When closed, only hearthlings may go through!",
@@ -8883,6 +8870,26 @@
                "description": "An extract of mashed malted grains and herbs. Within a Fermentation Vat it can be turned into ale!",
                "flavor": "Pure malt wort can also be further distilled into other drinks"
             },
+            "wort_ale_pale_recipe": {
+               "recipe_name": "Bucket of Pale Ale Wort",
+               "description": "Boiled malted rye with juniper berries. Within a Fermentation Vat it can be turned into pale ale!",
+               "flavor": "This refined northern recipe makes ale that are as appreciated as the best beers"
+            },
+            "wort_beer_white_recipe": {
+               "recipe_name": "Bucket of White Beer Wort",
+               "description": "A lightweight and bitter mixture of malted wheat and gruit. Within a Fermentation Vat it can be turned into white beer!",
+               "flavor": "White Beer has a very unique quality and appreciated flavor, providing some nutrition"
+            },
+            "wort_beer_recipe": {
+               "recipe_name": "Bucket of Beer Wort",
+               "description": "A bitter and strong mash of grains and gruit. Within a Fermentation Vat it can be turned into beer!",
+               "flavor": "Beers are ready quicker than common Ale and makes hearthlings slightly happier"
+            },
+            "wort_beer_opaque_recipe": {
+               "recipe_name": "Bucket of Opaque Beer Wort",
+               "description": "A thicker, stronger mixture of millet malt and sugary fruits. Within a Fermentation Vat it can be turned into beer!",
+               "flavor": "Opaque Beer is a very traditional beverage towards the east with a lot of nutrition to it"
+            },
             "unfermented_vinegar_brew_recipe": {
                "recipe_name": "Unfermented Brew Vinegar",
                "description": "Prepare any beer or ale to be fermented again. Within a Fermentation Vat it can be turned into one jug of vinegar.",
@@ -8902,11 +8909,6 @@
                "recipe_name": "Unfermented Juice Vinegar",
                "description": "Prepare an appropriate fruit juice to be fermented. Within a Wine Cask it can be turned into one jug of vinegar.",
                "flavor": "Juice is the least efficient vinegar ingredient - but also the cheapest!"
-            },
-            "wort_beer_recipe": {
-               "recipe_name": "Bucket of Beer Wort",
-               "description": "A bitter and strong mash of grains and gruit. Within a Fermentation Vat it can be turned into beer!",
-               "flavor": "Beer is ready quicker than Ale and makes hearthlings slightly happier"
             },
             "must_berry_recipe": {
                "recipe_name": "Bucket of Berry Must",
@@ -9208,6 +9210,11 @@
                "description": "A special brew of the Ascendancy. Sweet, flavorful and with little alcohol content.",
                "flavor": "Requires placement before it can be used"
             },
+            "ale_table_recipe": {
+               "recipe_name": "Jug of Small Ale",
+               "description": "A simple brew with very little alcohol content and quite a bunch of nutritional content. Ideal for thirsty workers!",
+               "flavor": "It's better than water! Promise!"
+            },
             "liqueur_almond_serving_keg_recipe": {
                "recipe_name": "Serving Keg of Almond Liqueur",
                "description": "Provides 28 cups the special Rayya's Children brew. It needs to be placed down before being used.",
@@ -9461,6 +9468,30 @@
          "brewer_drying_bed_coffee_dry": {
             "display_name": "Dry Coffee Cherries",
             "description": "The green coffee beans are ready to be hulled from the dried, dead cherries!"
+         },
+         "brewer_fermenting_vat_wort_beer_opaque": {
+            "display_name": "Fermenting Opaque Beer Wort Vat",
+            "description": "The thick and strong mash is fermenting. Soon it shall become opaque beer!"
+         },
+         "brewer_fermenting_vat_wort_beer_white": {
+            "display_name": "Fermenting White Beer Wort Vat",
+            "description": "The golden and light mix is fermenting. Soon it shall become white beer!"
+         },
+         "brewer_fermenting_vat_wort_ale_pale": {
+            "display_name": "Fermenting Pale Ale Wort Vat",
+            "description": "The unique flavors of malt and juniper berries. Soon it shall become pale ale!"
+         },
+         "brewer_fermenting_vat_ale_pale": {
+            "display_name": "Pale Ale Vat",
+            "description": "The pale ale is ready! It can now be filtered and collected!"
+         },
+         "brewer_fermenting_vat_beer_opaque": {
+            "display_name": "Opaque Beer Vat",
+            "description": "The opaque beer is ready! It can now be filtered and collected!"
+         },
+         "brewer_fermenting_vat_beer_white": {
+            "display_name": "White Beer Vat",
+            "description": "The white beer is ready! It can now be filtered and collected!"
          }
       },
       "professional_beekeeping_hat": {
@@ -11346,6 +11377,10 @@
             "camellia_rare": {
                "display_name": "Rare Camellia",
                "description": "This exotic herb holds tea shrub seeds! It's also a peculiar and healing herb."
+            },
+            "hearthbud": {
+               "display_name": "Hearthbud Blossom",
+               "description": "The bulby petals of a Hearthbud flower. Useful as a peculiar or zesty herb."
             }
          },
          "stone": {
@@ -11588,6 +11623,12 @@
          },
          "fur_pelt": {
             "display_name": "Any Fur Pelt"
+         },
+         "refined": {
+            "hearthbud_flakes": {
+               "display_name": "Hearthbud Flakes",
+               "description": "Dried and ground magical blossoms!"
+            }
          }
       },
       "refined": {
@@ -13464,10 +13505,10 @@
             }
          },
          "earthbud_plant": {
-            "description": "Can be harvested for concentrated hearth essence.",
+            "description": "Can be harvested for concentrated hearth essence and peculiar or zesty herbs.",
             "seed": {
                "earthbud_plant_seed_ghost": {
-                  "description": "Will provide hearth essence when it grows."
+                  "description": "Will provide hearth essence and peculiar or zesty herbs when it grows."
                },
                "earthbud_plant_seed": {
                   "description": "A mysterious, magical flower. Can be planted."
@@ -17682,7 +17723,7 @@
          },
          "wort_beer": {
             "display_name": "Bucket of Beer Wort",
-            "description": "A mash of malted grains and spices. The Brewer needs it to make beer."
+            "description": "A mash of malted barley and spices. The Brewer needs it to make beer."
          },
          "must_apple": {
             "display_name": "Bucket of Apple Must",
@@ -18086,6 +18127,57 @@
                   "display_name": "Mug of Lavish Coffee",
                   "description": "Higher standards"
                }
+            }
+         },
+         "ale_table": {
+            "ale_table": {
+               "display_name": "Small Ale",
+               "description": "A simple and barely fermented grain brew for a casual afternoon drink."
+            },
+            "ale_table_serving": {
+               "display_name": "Pint of Small Ale"
+            }
+         },
+         "wort_beer_opaque": {
+            "display_name": "Bucket of Opaque Beer Wort",
+            "description": "Boiled millet malt and sugary dates ready for fermentation. The Brewer needs it to make opaque beer."
+         },
+         "wort_beer_white": {
+            "display_name": "Bucket of White Beer Wort",
+            "description": "There's an uniqueness to how light wheat malt is. The Brewer needs it to make white beer."
+         },
+         "wort_ale_pale": {
+            "display_name": "Bucket of Pale Ale Wort",
+            "description": "The softness of rye and the smell of juniper berries. The Brewer needs it to make pale ale."
+         },
+         "ale_pale": {
+            "ale_pale": {
+               "display_name": "Pale Ale",
+               "description": "A spicy variant of ale. Makes hearthlings happy but also a little tipsy! "
+            },
+            "ale_pale_serving": {
+               "display_name": "Pale Ale Tankard",
+               "description": "You can smell the berries!"
+            }
+         },
+         "beer_opaque": {
+            "beer_opaque": {
+               "display_name": "Opaque Beer",
+               "description": "A dense and sweet brew. Makes hearthlings happy but also a little tipsy! "
+            },
+            "beer_opaque_serving": {
+               "display_name": "Opaque Beer Cup",
+               "description": "Very nutritious!"
+            }
+         },
+         "beer_white": {
+            "beer_white": {
+               "display_name": "White Beer",
+               "description": "A delicious beer made out of wheat. Makes hearthlings happy but also a little tipsy! "
+            },
+            "beer_white_serving": {
+               "display_name": "White Beer Tankard",
+               "description": "This beer feels very special!"
             }
          }
       },
@@ -18517,7 +18609,7 @@
       },
       "earthbud": {
          "display_name": "Hearthbud",
-         "description": "A mysterious bloom able to condensate hearth magic. Needs a long time to be fully grown and will provide <span class='extraHerb'>hearth essence</span> when harvested.",
+         "description": "A mysterious bloom able to condensate hearth magic. Needs a long time to be fully grown and will provide <span class='extraHerb'>hearth essence</span> and often <span class='peculiarHerb'>peculiar</span> or <span class='zestyHerb'>zesty</span> herbs when harvested.",
          "harvest_text": "harvesting hearthbud"
       },
       "sugarbell": {
@@ -19226,14 +19318,14 @@
             "queued_crop": "Queued for Planting: ",
             "harvest_crop": "Enable Harvesting",
             "harvest_crop_description": "If enabled, whenever the resource is fully grown, the herbalist or grower will harvest it. Disabling this can be useful when a plus sign (+) is displayed next to the amount harvested - it means this planter will also provide resources over time without having to harvest and wait for it to grow again.",
-            "harvest_plant": "Harvest Plantable Crop",
-            "harvest_plant_description": "If enabled, when harvesting, the herbalist or grower will harvest a plantable crop that can be planted in the ground.",
+            "harvest_plant": "Uproot on Harvest",
+            "harvest_plant_description": "If enabled, when harvesting, the herbalist or grower will uproot the grown crop for it to be planted elsewhere. Very useful for decoration and gardening!",
             "produces": "Produces per Harvest: ",
             "quality": {
-               "quality-1": "This crop is normal quality and will most likely produce normal quality products.",
-               "quality-2": "This crop is Fine quality and has a chance of producing higher quality products.",
-               "quality-3": "This crop is Excellent quality and has a higher chance of producing higher quality products.",
-               "quality-4": "This crop is Masterwork quality and has a very high chance of producing higher quality products."
+               "quality-1": "This crop is of normal quality and will most likely produce normal quality products.",
+               "quality-2": "This crop is of Fine quality and has a chance of producing higher quality products.",
+               "quality-3": "This crop is of Excellent quality and has a higher chance of producing higher quality products.",
+               "quality-4": "This crop is of Masterwork quality and has a very high chance of producing higher quality products."
             }
          },
          "military_mode": {
@@ -19632,7 +19724,7 @@
             }
          },
          "constants": {
-            "edible_nuts_resource_name": "Any Edible Nut",
+            "edible_nuts_resource_name": "Any Edible Hard Seed",
             "fruits_resource_name": "Any Basket of Fruits",
             "thatch_resource_name": "Any Thatch",
             "bone_resource_name": "Bone",
@@ -19659,7 +19751,7 @@
             "strong_bone_resource_name": "Strong Bone",
             "grease_resource_name": "Any Cooking Grease",
             "oil_resource_name": "Any Cooking Oil",
-            "oil_source_name": "Any Oily Seeds or Grain",
+            "oil_source_name": "Any Oily Grain or Herbs",
             "ingot_resource_name": "Any Metal Ingot",
             "ore_resource_name": "Any Ore",
             "fiber_resource_name": "Any Bundle of Fiber",

@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.ale_table_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.ale_table_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.ale_table_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/ale_table/ale_table/ale_table.png",
+   "level_requirement": 3,
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "material": "malt brewing_ingredient",
+         "count": 1
+      },
+      {
+         "material": "grain",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:ale_table"
+      }
+   ]
+}

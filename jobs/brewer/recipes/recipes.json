@@ -97,8 +97,17 @@
             "wort_ale": {
                "recipe": "file(wort_ale_recipe.json)"
             },
+            "wort_ale_pale": {
+               "recipe": "file(wort_ale_pale_recipe.json)"
+            },
             "wort_beer": {
                "recipe": "file(wort_beer_recipe.json)"
+            },
+            "wort_beer_white": {
+               "recipe": "file(wort_beer_white_recipe.json)"
+            },
+            "wort_beer_opaque": {
+               "recipe": "file(wort_beer_opaque_recipe.json)"
             },
             "must_berry": {
                "recipe": "file(must_berry_recipe.json)"
@@ -222,6 +231,12 @@
             },
             "coffee_lavish": {
                "recipe": "file(coffee_lavish_recipe.json)"
+            },
+            "ale_table": {
+               "recipe": "file(ale_table_recipe.json)"
+            },
+				"beer_buttered": {
+               "recipe": "file(beer_buttered_serving_keg_recipe.json)"
             }
          }
       },
@@ -234,9 +249,6 @@
             },
 				"ale_serving_keg": {
                "recipe": "file(ale_serving_keg_recipe.json)"
-            },
-				"beer_buttered": {
-               "recipe": "file(beer_buttered_serving_keg_recipe.json)"
             },
 				"spirit_serving_keg": {
                "recipe": "file(spirit_serving_keg_recipe.json)"

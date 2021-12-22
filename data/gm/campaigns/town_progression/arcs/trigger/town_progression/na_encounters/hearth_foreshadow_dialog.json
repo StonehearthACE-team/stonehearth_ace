@@ -1,0 +1,24 @@
+{
+   "dialog_tree_info": {
+      "nodes": {
+         "msg4": {
+            "bulletin": {
+               "mixintypes": {
+                  "choices": "override"
+               },
+               "choices": {
+                  "stonehearth_ace:data.gm.campaigns.na_town_progression.hearth_foreshadow_dialog.dialog_tree_info.dialog_nodes.msg4.choice_000": {
+                     "out_edge": {
+                        "type": "trigger_many",
+                        "out_edges": [
+                           "hearth_foreshadow_gift",
+                           "delay_before_hearth_choice"
+                        ]
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

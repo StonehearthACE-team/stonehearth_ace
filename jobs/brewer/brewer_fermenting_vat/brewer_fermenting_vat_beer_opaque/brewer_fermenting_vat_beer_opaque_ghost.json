@@ -1,0 +1,22 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_fermenting_vat:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(brewer_fermenting_vat_beer_opaque.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.brewer.brewer_fermenting_vat_beer_opaque.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.brewer.brewer_fermenting_vat_beer_opaque.description)",
+         "icon": "file(brewer_fermenting_vat_beer_opaque.png)"
+      }
+   }
+}

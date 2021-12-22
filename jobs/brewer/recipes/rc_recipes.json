@@ -33,16 +33,16 @@
       },
       "prepared_drinks": {
          "recipes": {
+            "mixintypes": {
+					"beer_buttered": "remove"
+				},
             "liqueur_almond": {
                "recipe": "file(liqueur_almond_recipe.json)"
-            }
+            }         
          }
       },
       "serving_vessels": {
-         "recipes": {
-				"mixintypes": {
-					"beer_buttered": "remove"
-				},
+         "recipes": {			
 				"liqueur_almond_serving_keg": {
                "recipe": "file(liqueur_almond_serving_keg_recipe.json)"
             }

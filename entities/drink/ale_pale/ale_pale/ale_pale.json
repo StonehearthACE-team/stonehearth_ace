@@ -1,0 +1,68 @@
+{
+   "mixins": "stonehearth_ace:mixins:drink_decay:keg",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ale_pale.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(ale_pale_spoiling.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.09
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "fiddle",
+         "drink": "stonehearth_ace:drink:ale_pale:ale_pale_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 11,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.ale_pale.ale_pale.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.ale_pale.ale_pale.description)",
+         "icon": "file(ale_pale.png)",
+         "is_item": true,
+         "category": "drink",
+         "material_tags": [
+            "drink_container",
+            "prepared_drink",
+            "ale",
+            "pale",
+            "beer_or_ale",
+            "becomes_vinegar",
+            "alcoholic",
+            "stockpile_prepared_drink",
+            "night_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

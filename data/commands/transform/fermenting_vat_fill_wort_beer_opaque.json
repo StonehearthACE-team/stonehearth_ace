@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "fermenting_vat_fill_wort_beer_opaque",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.fermenting_vat_fill_wort_beer_opaque.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.fermenting_vat_fill_wort_beer_opaque.description)",
+   "default_enabled": true,
+   "ordinal": 94,
+   "icon": "file(fermenting_vat_fill_wort_beer_opaque.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "beer_opaque"
+   ]
+}

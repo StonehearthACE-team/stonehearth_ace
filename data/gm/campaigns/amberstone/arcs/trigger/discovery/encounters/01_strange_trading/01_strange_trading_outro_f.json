@@ -1,0 +1,29 @@
+{
+   "donation_dialog_info": {
+      "nodes": {
+         "simple_message": {
+            "bulletin": {
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.amberstone.arcs.trigger.discovery.encounters.01_strange_trading.01_strange_trading_outro_f.donation_dialog_info.dialog_nodes.simple_message.bulletin_message.00)"
+            }
+         }
+      },
+      "loot_table": {
+         "entries": {
+            "seeds": {
+               "num_rolls": {
+                  "min": 7,
+                  "max": 12
+               },
+               "items": {
+                  "frostsnap": {
+                     "uri": "stonehearth:plants:frostsnap"
+                  },
+                  "brightbell": {
+                     "uri": "stonehearth:plants:brightbell"
+                  }
+               }
+            }
+         }
+      }
+   }
+}

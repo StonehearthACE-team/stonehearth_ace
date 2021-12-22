@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.geomancer.recipes.hearthbud_flakes_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.geomancer.recipes.hearthbud_flakes_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.geomancer.recipes.hearthbud_flakes_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/hearthbud_flakes/hearthbud_flakes.png",
+   "workshop": "stonehearth:geomancer:workbench",
+   "work_effect": "herbalist_grind",
+   "level_requirement": 1,
+   "ingredients": [
+		{
+         "uri": "stonehearth_ace:resources:herb:hearthbud",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:hearthbud_flakes"
+      }
+   ]
+}

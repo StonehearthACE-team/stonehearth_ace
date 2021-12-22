@@ -19,6 +19,9 @@
 	},
 	"storage": {
 	  "recipes": {
+		  "mixintypes": {
+				"ornate_leather_bound_chest": "remove"
+		  },
 			"fuel_holder_large_wood": {
 				"recipe": "file(fuel_holder_large_wood_recipe.json)"
 			},
@@ -41,6 +44,16 @@
 	},
 	"furniture": {
 		"recipes": {
+			"mixintypes": {
+				"ornate_bench": "remove",
+				"ornate_comfy_bed": "remove",
+				"ornate_dining_table": "remove",
+				"ornate_table_for_one": "remove",
+				"ornate_dresser": "remove",
+				"ornate_writing_desk": "remove",
+				"ornate_comfy_chair": "remove",
+				"ornate_wooden_chair": "remove"
+			},
 			"wood_bed_crude": {
 				"recipe": "file(wood_bed_crude_recipe.json)"
 			},
@@ -49,9 +62,6 @@
 			},
 			"comfy_bed_pet": {
 				"recipe": "file(comfy_bed_pet_recipe.json)"
-			},
-			"ornate_bed_pet": {
-				"recipe": "file(ornate_bed_pet_recipe.json)"
 			},
 			"pet_food_bowl_wood": {
 				"recipe": "file(pet_food_bowl_wood_recipe.json)"
@@ -87,6 +97,18 @@
 	},
     "building_parts": {
       "recipes": {
+			"mixintypes": {
+				"ornate_wooden_tunnel_door": "remove",
+				"ornate_picket_fence_gate": "remove",
+				"ornate_wooden_garden_lantern": "remove",
+				"ornate_wooden_wall_lantern": "remove",
+				"ornate_wooden_double_door": "remove",
+				"ornate_wooden_door": "remove",
+				"ornate_picket_fence_bar_double": "remove",
+				"ornate_picket_fence_bar_single": "remove",
+				"ornate_picket_fence_end": "remove",
+				"ornate_picket_fence_combo": "remove"
+			},
 			"diagonal_hatch_wooden": {
 				"recipe": "file(diagonal_hatch_wooden_recipe.json)"
 			},
@@ -154,6 +176,78 @@
 				}
 			}
 		},
+		"ornate_building_parts": {
+         "ordinal": 72,
+         "name": "i18n(stonehearth_ace:jobs.carpenter.recipes.ornate_building_parts_name)",
+         "recipes": {
+				"ornate_wooden_tunnel_door": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_wooden_tunnel_door_recipe.json"
+            },
+            "ornate_picket_fence_gate": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_picket_fence_gate_recipe.json"
+            },
+            "ornate_wooden_garden_lantern": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_wooden_garden_lantern_recipe.json"
+            },
+            "ornate_wooden_wall_lantern": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_wooden_wall_lantern_recipe.json"
+            },
+            "ornate_wooden_double_door": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_wooden_double_door_recipe.json"
+            },
+            "ornate_wooden_door": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_wooden_door_recipe.json"
+            },
+				"ornate_picket_fence_bar_double": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_picket_fence_bar_double_recipe.json"
+            },
+            "ornate_picket_fence_bar_single": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_picket_fence_bar_single_recipe.json"
+            },
+            "ornate_picket_fence_end": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_picket_fence_end_recipe.json"
+            },
+            "ornate_picket_fence_combo": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_picket_fence_combo_recipe.json"
+            }
+         }
+      },
+	   "ornate_furniture": {
+         "ordinal": 87,
+         "name": "i18n(stonehearth_ace:jobs.carpenter.recipes.ornate_furniture_name)",
+         "recipes": {
+				"ornate_bed_pet": {
+					"recipe": "file(ornate_bed_pet_recipe.json)"
+				},
+				"ornate_leather_bound_chest": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_leather_bound_chest_recipe.json"
+            },
+				"ornate_bench": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_bench_recipe.json"
+            },
+            "ornate_comfy_bed": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_comfy_bed_recipe.json"
+            },
+            "ornate_dining_table": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_dining_table_recipe.json"
+            },
+            "ornate_table_for_one": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_table_for_one_recipe.json"
+            },
+            "ornate_dresser": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_dresser_recipe.json"
+            },
+            "ornate_writing_desk": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_writing_desk_recipe.json"
+            },
+            "ornate_comfy_chair": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_comfy_chair_recipe.json"
+            },
+            "ornate_wooden_chair": {
+               "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_wooden_chair_recipe.json"
+            }
+         }
+      },
 		"frostfeast": {
          "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
