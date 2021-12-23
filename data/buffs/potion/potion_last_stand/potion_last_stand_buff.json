@@ -1,0 +1,43 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.potion.last_stand.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.potion.last_stand.description)",
+   "icon": "file(potion_last_stand_buff.png)",
+   "duration": "125m",
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "modifiers": {
+      "courage": {
+         "multiply": 6
+      },
+      "speed": {
+         "multiply": 1.5
+      },
+      "muscle": {
+         "multiply": 4
+      },
+      "stamina": {
+         "multiply": 4
+      },
+      "debuff_resistance": {
+         "add": 0.6
+      },
+      "multiplicative_damage_modifier": {
+         "add": 3
+      },
+      "multiplicative_armor_modifier": {
+         "add": 4
+      },
+      "multiplicative_heal_received_modifier": {
+         "max": 0
+      }
+   },
+   "script_info": {
+      "health_change": -1,
+      "pulse": "120m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true,
+      "is_percentage": true
+   }
+}

@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(beer_opaque_gourd.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0.0, "y": 0, "z": 0.0 },
+         "region_origin": { "x": -0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.beer_opaque.gourd.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.beer_opaque.beer_opaque.description)",
+         "icon": "file(beer_opaque_gourd.png)",
+         "category": "drink",
+         "material_tags": [
+            "prepared_drink",
+            "beer",
+            "opaque",
+            "beer_or_ale",
+            "alcoholic",
+            "night_time",
+            "drink_container",
+            "stockpile_serving_vessel",
+            "serving_vessel"
+         ]
+      }
+   }
+}

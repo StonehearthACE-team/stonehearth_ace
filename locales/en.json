@@ -4072,6 +4072,10 @@
             "healing_large": {
                "display_name": "Large Healing Potion",
                "description": "Healing 5% health every 5 minutes for one hour"
+            },
+            "last_stand": {
+               "display_name": "Potion of Last Stand",
+               "description": "This hearthling is under the incredibly and taxing power of a Potion of Last Stand. Their combat prowess is incredibly boosted but they will be knocked out and require rescue at the end of this effect.<ul><li>Courage is absurdly increased</li><li>Speed is increased</li><li>Muscle and Stamina are greatly increased</li><li>Resistance to negative effects increased</li><li>Damage dealt is greatly increased</li><li>Armor is greatly increased</li><li>This hearthling will not receive any healing effects anymore</li><li>This hearthling will be incapacitated when this effect expires</li></ul>"
             }
          },
          "kibble_hearth": {
@@ -5484,6 +5488,11 @@
                "recipe_name": "Strong Anti-Poison Potion",
                "description": "This draught of antidote will be carried by combatants and used when fighting against venomous foes, protecting them from all poisons for a while.",
                "flavor": "A hearthling can only carry one potion"
+            },
+            "potion_last_stand_recipe": {
+               "recipe_name": "Potion of Last Stand",
+               "description": "Used when very low on health, it will greatly boost their combat prowess... However it will incapacitate them when the effect expires. Be ready for a rescue!",
+               "flavor": "A desperate measure for desperate times..."
             },
             "gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
@@ -9175,9 +9184,29 @@
                "description": "Provides 16 tankards of beer. It needs to be placed down before being used.",
                "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
             },
+            "beer_white_serving_keg_recipe": {
+               "recipe_name": "Serving Keg of White Beer",
+               "description": "Provides 16 tankards of white beer. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+            "beer_opaque_serving_keg_recipe": {
+               "recipe_name": "Serving Keg of Opaque Beer",
+               "description": "Provides 16 tankards of opaque beer. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+            "beer_opaque_gourd_recipe": {
+               "recipe_name": "Opaque Beer in a Gourd",
+               "description": "Provides 18 tankards of beer. It needs to be placed down before being used.",
+               "flavor": "The traditional way to serve this beverage. Requires a really large golden gourd!"
+            },
             "ale_serving_keg_recipe": {
                "recipe_name": "Serving Keg of Ale",
                "description": "Provides 16 tankards of ale. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+            "ale_pale_serving_keg_recipe": {
+               "recipe_name": "Serving Keg of Pale Ale",
+               "description": "Provides 16 tankards of pale ale. It needs to be placed down before being used.",
                "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
             },
             "spirit_serving_keg_recipe": {
@@ -9944,6 +9973,11 @@
                   "description": "Provides temporary protection against all poisons.",
                   "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
                }
+            },
+            "last_stand": {
+               "display_name": "Potion of Last Stand",
+               "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion.",
+               "description": "Allows the user to glow the brightest before their fall... Only used when under 15% of their health!"
             }
          },
          "frostfeast": {
@@ -16699,7 +16733,7 @@
          },
          "dummy_training": {
             "dummy_training_ghost": {
-               "description": "It's best to practice with this friendly guy. Can be repaired before it's destroyed.",
+               "description": "It's best to practice with this friendly guy. Can be repaired before it breaks.",
                "display_name": "Training Dummy",
                "training_limit_tag": "Training Equipment"
             }
@@ -16711,7 +16745,7 @@
          },
          "target_training": {
             "display_name": "Archery Target",
-            "description": "Less dangerous than apples on someone's head. Can be repaired before it's destroyed."
+            "description": "Less dangerous than apples on heads. Can be repaired before it breaks."
          },
          "axle_vertical": {
             "description": "A rotating shaft that can take mechanical power vertically.",
@@ -16747,32 +16781,32 @@
             "description": "Combat party members will prioritize patrolling between these banners."
          },
          "stone_target_training": {
-            "description": "Less dangerous than apples on someone's head. Can be repaired before it's destroyed.",
+            "description": "Less dangerous than apples on heads. Can be repaired before it breaks.",
             "display_name": "Stone Archery Target"
          },
          "clay_target_training": {
-            "description": "Less dangerous than apples on someone's head. Can be repaired before it's destroyed.",
+            "description": "Less dangerous than apples on heads. Can be repaired before it breaks.",
             "display_name": "Clay Archery Target"
          },
          "brass_target_training": {
-            "description": "Less dangerous than apples on someone's head. Can be repaired before it's destroyed.",
+            "description": "Less dangerous than apples on heads. Can be repaired before it breaks.",
             "display_name": "Brass Archery Target"
          },
          "stone_dummy_training": {
             "stone_dummy_training_ghost": {
-               "description": "It's best to practice with this friendly guy. Can be repaired before it's destroyed.",
+               "description": "It's best to practice with this friendly guy. Can be repaired before it breaks.",
                "display_name": "Stone Training Dummy"
             }
          },
          "clay_dummy_training": {
             "clay_dummy_training_ghost": {
-               "description": "It's best to practice with this friendly guy. Can be repaired before it's destroyed.",
+               "description": "It's best to practice with this friendly guy. Can be repaired before it breaks.",
                "display_name": "Clay Training Dummy"
             }
          },
          "brass_dummy_training": {
             "brass_dummy_training_ghost": {
-               "description": "It's best to practice with this friendly guy. Can be repaired before it's destroyed.",
+               "description": "It's best to practice with this friendly guy. Can be repaired before it breaks.",
                "display_name": "Brass Training Dummy"
             }
          },
@@ -18158,6 +18192,9 @@
             "ale_pale_serving": {
                "display_name": "Pale Ale Tankard",
                "description": "You can smell the berries!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Pale Ale"
             }
          },
          "beer_opaque": {
@@ -18168,6 +18205,12 @@
             "beer_opaque_serving": {
                "display_name": "Opaque Beer Cup",
                "description": "Very nutritious!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Opaque Beer"
+            },
+            "gourd": {
+               "display_name": "Opaque Beer in a Gourd"
             }
          },
          "beer_white": {
@@ -18178,6 +18221,9 @@
             "beer_white_serving": {
                "display_name": "White Beer Tankard",
                "description": "This beer feels very special!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of White Beer"
             }
          }
       },

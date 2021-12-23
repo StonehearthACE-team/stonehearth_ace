@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.potion_last_stand_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.potion_last_stand_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.potion_last_stand_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/potion/potion_last_stand/potion_last_stand.png",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
+	"work_effect": "fiddle",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:consumables:potion:healing:large",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:consumables:courage_tonic",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:consumables:strength_tonic",
+         "count": 1
+      },
+		{
+         "uri": "stonehearth:consumables:stamina_tonic",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:potion:last_stand"
+      }
+   ]
+}
