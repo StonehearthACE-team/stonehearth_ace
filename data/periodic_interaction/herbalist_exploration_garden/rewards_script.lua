@@ -14,9 +14,12 @@ function unlock_seed_rewards.process_reward(entity, user, stage, script_data, is
    end
    
    local player_id = user:get_player_id()
+   local kingdom = stonehearth.population:get_population(player_id)
+                                          :get_kingdom()
    local farmer_job_info = stonehearth.job:get_job_info(player_id, 'stonehearth:jobs:farmer')
    local all_herbalist_crops = farmer_job_info:get_all_herbalist_crops()
    local unlocked_crops = farmer_job_info:get_manually_unlocked()
+   local initial_crops = radiant.resources.load_json('stonehearth:farmer:initial_crops').crops_by_kingdom[kingdom]
 
    -- based on script_data settings and user job level, create a list of eligible native/exotic crops
    -- roll X to unlock, then unlock them
@@ -34,9 +37,9 @@ function unlock_seed_rewards.process_reward(entity, user, stage, script_data, is
    local total_possible = 0
 
    for crop, crop_data in pairs(all_herbalist_crops) do
-      if crop_data.category == script_data.crop_category and not unlocked_crops[crop] then
-         total_possible = total_possible + 1
+      if crop_data.category == script_data.crop_category and not unlocked_crops[crop] and not initial_crops[crop] then
          if not crop_data.hidden then
+            total_possible = total_possible + 1
             local crop_level = crop_data.level or 1
             if level + 1 >= crop_level then
                local diff = (level + 1 - crop_level)

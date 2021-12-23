@@ -294,7 +294,7 @@ end
 
 function PeriodicInteractionComponent:cancel_using(user)
    if self._sv.current_user == user then
-      self:_reset(false)
+      self:_reset(false, true)
       self:_cancel_usage()
    end
 end
@@ -306,7 +306,7 @@ function PeriodicInteractionComponent:_setup_consider_usability_timer()
       end)
 end
 
-function PeriodicInteractionComponent:_reset(completed)
+function PeriodicInteractionComponent:_reset(completed, canceled)
    self._sv.interaction_stage = 1
    self._in_use = false
 
@@ -319,17 +319,27 @@ function PeriodicInteractionComponent:_reset(completed)
          end
       end
 
+      if self._json.reset_effect then
+         radiant.effects.run_effect(self._entity, self._json.reset_effect)
+      end
+
       self._sv._mode_sequences[self._sv.current_mode] = nil
-      self._sv.num_uses = self._sv.num_uses + 1
+      self._sv.num_uses = self._sv.num_uses + 1     
 
       if self._json.transform_after_using_key and self._json.transform_after_num_uses and self._sv.num_uses >= self._json.transform_after_num_uses then
          -- instead of doing any other resetting at this point, transform the entity
          local transform_comp = self._entity:add_component('stonehearth_ace:transform')
          if transform_comp then
+            if self._consider_usability_timer then
+               self._consider_usability_timer:destroy()
+               self._consider_usability_timer = nil
+            end
             transform_comp:set_transform_option(self._json.transform_after_using_key)
             transform_comp:request_transform(self._entity:get_player_id())
             return
          end
+      else
+         self._entity:add_component('render_info'):set_model_variant(self._json.default_model or 'default')
       end
 
       self:_select_mode_sequences()
@@ -337,13 +347,9 @@ function PeriodicInteractionComponent:_reset(completed)
 
    self._sv.current_user = nil
 
-   if self._json.reset_effect then
-      radiant.effects.run_effect(self._entity, self._json.reset_effect)
+   if not canceled then   
+      self:select_mode(self._sv.current_mode)
    end
-
-   self._entity:add_component('render_info'):set_model_variant(self._json.default_model or 'default')
-
-   self:select_mode(self._sv.current_mode)
 end
 
 function PeriodicInteractionComponent:_cancel_usage()
