@@ -1,12 +1,15 @@
 {
-	"components": {
-		"model_variants": {
-			"ace_planter": {
-				"models": [
-					"file(window_box.qb)"
-				]
-			}
+   "components": {
+		"mixintypes": {
+			"model_variants": "override"
 		},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(window_box.qb)"
+            ]
+         }
+      },
 		"mob": {
 			"model_origin": {
 				"x": 0.45,
@@ -22,12 +25,13 @@
 		}
 	},
 	"entity_data": {
-		"stonehearth:catalog": {
-			"display_name": "i18n(stonehearth_ace:entities.herbalist_planters.potted_cactus.display_name)",
-			"description": "i18n(stonehearth_ace:entities.herbalist_planters.potted_cactus.description)",
-			"icon": "file(potted_cactus.png)",
-			"category": "herbalist_planter",
-			"material_tags": ["herbalist_planter"]
-		}
-	}
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.herbalist_planters.potted_cactus.display_name)",
+         "description": "i18n(stonehearth_ace:entities.herbalist_planters.potted_cactus.description)",
+         "icon": "file(potted_cactus.png)",
+         "category": "herbalist_planter",
+         "material_tags": ["herbalist_planter"]
+      }
+   }
 }
+

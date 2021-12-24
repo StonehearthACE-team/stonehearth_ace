@@ -1,12 +1,15 @@
 {
-	"components": {
-		"model_variants": {
-			"ace_planter": {
-				"models": [
-					"file(window_box.qb)"
-				]
-			}
+   "components": {
+		"mixintypes": {
+			"model_variants": "override"
 		},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(window_box.qb)"
+            ]
+         }
+      },
 		"mob": {
 			"model_origin": {
 				"x": 0.45,
@@ -22,12 +25,13 @@
 		}
 	},
 	"entity_data": {
-		"stonehearth:catalog": {
-			"display_name": "i18n(stonehearth_ace:entities.herbalist_planters.golden_clay_wall_planter.display_name)",
-			"description": "i18n(stonehearth_ace:entities.herbalist_planters.golden_clay_wall_planter.description)",
-			"icon": "file(golden_clay_wall_planter.png)",
-			"category": "herbalist_planter",
-			"material_tags": ["herbalist_planter"]
-		}
-	}
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.herbalist_planters.golden_clay_wall_planter.display_name)",
+         "description": "i18n(stonehearth_ace:entities.herbalist_planters.golden_clay_wall_planter.description)",
+         "icon": "file(golden_clay_wall_planter.png)",
+         "category": "herbalist_planter",
+         "material_tags": ["herbalist_planter"]
+      }
+   }
 }
+

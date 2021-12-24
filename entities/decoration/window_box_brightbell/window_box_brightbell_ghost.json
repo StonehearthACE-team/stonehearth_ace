@@ -1,23 +1,26 @@
 {
-	"components": {
-		"model_variants": {
-			"ace_planter": {
-				"models": [
-					"file(window_box.qb)"
-				]
-			}
+   "components": {
+		"mixintypes": {
+			"model_variants": "override"
 		},
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(window_box.qb)"
+            ]
+         }
+      },
 		"mob": {
-			"model_origin": { "x": 0.5, "y": -0.55 }
-		}
-	},
-	"entity_data": {
-		"stonehearth:catalog": {
-			"display_name": "i18n(stonehearth_ace:entities.herbalist_planters.window_box_brightbell.display_name)",
-			"description": "i18n(stonehearth_ace:entities.herbalist_planters.window_box_brightbell.description)",
-			"icon": "file(window_box_brightbell.png)",
-			"category": "herbalist_planter",
-			"material_tags": ["herbalist_planter"]
-		}
-	}
+         "model_origin": { "x": 0.5, "y": -0.55 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.herbalist_planters.window_box_brightbell.display_name)",
+         "description": "i18n(stonehearth_ace:entities.herbalist_planters.window_box_brightbell.description)",
+         "icon": "file(window_box_brightbell.png)",
+         "category": "herbalist_planter",
+         "material_tags": ["herbalist_planter"]
+      }
+   }
 }
