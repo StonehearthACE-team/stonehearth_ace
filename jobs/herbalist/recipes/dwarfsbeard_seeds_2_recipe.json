@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.dwarfsbeard_seeds_2_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.dwarfsbeard_seeds_2_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.dwarfsbeard_seeds_2_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/seeds/dwarfsbeard_seeds/dwarfsbeard_seeds.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:fiber:dwarfsbeard_bundle",
+         "count": 8
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:seeds:dwarfsbeard_seeds"
+      }
+   ]
+}

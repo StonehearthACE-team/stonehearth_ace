@@ -125,12 +125,19 @@
 				"resource refined_cloth cloth",
 				"resource refined_cloth thread",
 				"thatch_bale resource",
-				"yarn resource"
+				"yarn resource",
+				"unfired_clay refined",
+				"molded_clay refined",
+				"unfired_porcelain refined",
+				"molded_porcelain refined"
 			],			
 			"supply_mason" : [
 				"bedrock_stone resource",
 				"bone resource big",
 				"bone resource skull",
+				"bone resource ancient",
+				"bone resource horn",
+				"bone resource ogre_bone",
 				"bone resource standard",
 				"fine_stuffing refined",
 				"marble_stone resource",
@@ -147,6 +154,8 @@
 				"fiber resource plant silkweed",
 				"fiber resource plant tumbleweed",
 				"fiber resource plant wintermoss",
+				"fiber resource plant thatch_twine",
+				"resource fiber millet",
 				"resource fiber highland_vine",
 				"thatch_bale resource"
 			],			
@@ -159,7 +168,10 @@
 				"resource refined_cloth cloth",
 				"resource refined_cloth thread",
 				"resource refined_leather leather",
-				"yarn resource"
+				"yarn resource",
+				"pelt bear",
+				"pelt wolf",
+				"pelt rabbit"
 			],
 			"supply_metalworker" : [
 				"bronze gear resource",
@@ -170,22 +182,9 @@
 				"lock resource",
 				"resource refined_leather leather",
 				"steel ingot resource",
-				"tin ingot resource"
-			],
-			"supply_baking" : [
-				"butter standard cooking_ingredient",
-				"cooking_ingredient batter",
-				"cooking_ingredient batter_sweet",
-				"cooking_ingredient corn_meal",
-				"cooking_ingredient dough",
-				"cooking_ingredient dough_sweet",
-				"cooking_ingredient egg duck",
-				"cooking_ingredient egg poyo",
-				"cooking_ingredient flour",
-				"cooking_ingredient grain_sugar",
-				"cooking_ingredient honey standard",
-				"cooking_ingredient nut_flour",
-				"cooking_ingredient rice_flour"
+				"tin ingot resource",
+				"brass plate resource",
+				"steel plate resource"
 			],
 			"supply_veggie_fruit" : [
 				"cooking_ingredient sugarbell",
@@ -203,7 +202,9 @@
 				"raw_food sweet_potato",
 				"raw_food turnip",
 				"raw_food vegetable heirbloom",
-				"raw_food watermelon"
+				"raw_food watermelon",
+				"raw_food garlic",
+				"raw_food coffee"
 			],
 			"supply_meat" : [
 				"cooking_ingredient bug_meat",
@@ -234,7 +235,8 @@
 				"raw_food pumpkin",
 				"raw_food sweet_potato",
 				"raw_food turnip",
-				"raw_food vegetable heirbloom"
+				"raw_food vegetable heirbloom",
+				"raw_food garlic"
 			],
 			"decayables_fruits" : [
 				"raw_food apple",
@@ -244,7 +246,8 @@
 				"raw_food pear",
 				"raw_food plum",
 				"raw_food prickly_pear",
-				"raw_food watermelon"
+				"raw_food watermelon",
+				"raw_food coffee"
 			],
 			"decayables_nuts" : [
 				"cooking_ingredient nut_basket",
@@ -268,7 +271,8 @@
 				"curdling_mixture cooking_ingredient",
 				"drink_container moomoo_milk",
 				"drink_container sheep_milk",
-				"drink_container wild_cattle_milk"
+				"drink_container wild_cattle_milk",
+				"drink_container almond_milk"
 			],
 			"decayables_meat" : [
 				"cooking_ingredient jerky",

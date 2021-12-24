@@ -8,19 +8,67 @@
 		"file_name" : "\/r\/mods\/stonehearth_ace\/data\/saved_objects\/building_templates\/northern_alliance\/workshop_herbalist_t1_ace"
 	},
 	"data" : {
-		"633" : {
+		"192" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 0,
+				"x" : 0,
+				"z" : 1
+			},
+			"adjacent" : {},
+			"fixtures" : {},
+			"cutter" : {},
+			"placement_walls" : true,
+			"masks" : {},
+			"uri" : "stonehearth:decoration:stone_lantern_simple",
+			"quality" : -1,
+			"total_mask" : {},
+			"rotation" : 180,
+			"sub_data_bid" : 127,
+			"hole_region" : {},
+			"flushed" : false,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : 0,
+						"z" : 0
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 1
+					}
+				}
+			],
+			"masked" : {},
+			"placement_ground" : false,
+			"owner_bid" : 125,
+			"color_region" : {},
+			"origin" : {
+				"y" : 4,
+				"x" : 2,
+				"z" : 4
+			},
+			"bid" : 192
+		},
+		"136" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
 				"y" : 45,
-				"x" : -1170,
-				"z" : -75
+				"x" : 769,
+				"z" : -433
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
 			"supported" : {
-				"608" : true
+				"111" : true
 			},
 			"fixtures" : {},
 			"invalid_placement" : false,
@@ -157,31 +205,31 @@
 				}
 			],
 			"adjacent" : {
-				"622" : true,
-				"650" : true,
-				"608" : true
+				"125" : true,
+				"111" : true,
+				"153" : true
 			},
 			"supports" : {
-				"651" : true
+				"154" : true
 			},
-			"bid" : 633,
+			"bid" : 136,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"673" : {
+		"176" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
 				"y" : 44,
-				"x" : -1153,
-				"z" : -66
+				"x" : 786,
+				"z" : -424
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
 			"supported" : {
-				"622" : true
+				"125" : true
 			},
 			"fixtures" : {},
 			"invalid_placement" : false,
@@ -201,27 +249,175 @@
 				}
 			],
 			"adjacent" : {
-				"622" : true
+				"125" : true
 			},
 			"supports" : {},
-			"bid" : 673,
+			"bid" : 176,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"637" : {
+		"152" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
-				"y" : 45,
-				"x" : -1170,
-				"z" : -71
+				"y" : 47,
+				"x" : 770,
+				"z" : -432
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
 			"supported" : {
-				"608" : true
+				"137" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : 6
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 19,
+						"z" : 5
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"138" : true
+			},
+			"supports" : {},
+			"bid" : 152,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"133" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 42,
+				"x" : 768,
+				"z" : -426
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"209" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 21,
+						"z" : -6
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 20,
+						"z" : -7
+					},
+					"tag" : 3760482
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 19,
+						"z" : -6
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 18,
+						"z" : -7
+					},
+					"tag" : 3760482
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : -6
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 19,
+						"z" : -7
+					},
+					"tag" : 3361870
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 18,
+						"z" : -6
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 17,
+						"z" : -7
+					},
+					"tag" : 3361870
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 24,
+						"z" : -6
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 22,
+						"z" : -7
+					},
+					"tag" : 3760482
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 22,
+						"z" : -6
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 21,
+						"z" : -7
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true,
+				"111" : true
+			},
+			"supports" : {
+				"150" : true
+			},
+			"bid" : 133,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"137" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 46,
+				"x" : 769,
+				"z" : -432
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"111" : true
 			},
 			"fixtures" : {},
 			"invalid_placement" : false,
@@ -230,25 +426,38 @@
 					"max" : {
 						"y" : 1,
 						"x" : 22,
-						"z" : 0
+						"z" : 6
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 21,
-						"z" : -1
+						"z" : 5
 					},
 					"tag" : 3822420
 				},
 				{
 					"max" : {
 						"y" : 1,
+						"x" : 13,
+						"z" : 6
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 12,
+						"z" : 5
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
 						"x" : 14,
-						"z" : 0
+						"z" : 6
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 13,
-						"z" : -1
+						"z" : 5
 					},
 					"tag" : 3822420
 				},
@@ -256,12 +465,12 @@
 					"max" : {
 						"y" : 1,
 						"x" : 15,
-						"z" : 0
+						"z" : 6
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 14,
-						"z" : -1
+						"z" : 5
 					},
 					"tag" : 3163462
 				},
@@ -269,12 +478,12 @@
 					"max" : {
 						"y" : 1,
 						"x" : 16,
-						"z" : 0
+						"z" : 6
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 15,
-						"z" : -1
+						"z" : 5
 					},
 					"tag" : 3822420
 				},
@@ -282,12 +491,12 @@
 					"max" : {
 						"y" : 1,
 						"x" : 17,
-						"z" : 0
+						"z" : 6
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 16,
-						"z" : -1
+						"z" : 5
 					},
 					"tag" : 3163462
 				},
@@ -295,12 +504,12 @@
 					"max" : {
 						"y" : 1,
 						"x" : 18,
-						"z" : 0
+						"z" : 6
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 17,
-						"z" : -1
+						"z" : 5
 					},
 					"tag" : 3822420
 				},
@@ -308,12 +517,12 @@
 					"max" : {
 						"y" : 1,
 						"x" : 19,
-						"z" : 0
+						"z" : 6
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 18,
-						"z" : -1
+						"z" : 5
 					},
 					"tag" : 3163462
 				},
@@ -321,12 +530,12 @@
 					"max" : {
 						"y" : 1,
 						"x" : 20,
-						"z" : 0
+						"z" : 6
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 19,
-						"z" : -1
+						"z" : 5
 					},
 					"tag" : 3822420
 				},
@@ -334,12 +543,12 @@
 					"max" : {
 						"y" : 1,
 						"x" : 21,
-						"z" : 0
+						"z" : 6
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 20,
-						"z" : -1
+						"z" : 5
 					},
 					"tag" : 3163462
 				},
@@ -347,30 +556,154 @@
 					"max" : {
 						"y" : 1,
 						"x" : 23,
-						"z" : 0
+						"z" : 6
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 22,
-						"z" : -1
+						"z" : 5
 					},
 					"tag" : 3760482
 				}
 			],
 			"adjacent" : {
-				"622" : true,
-				"645" : true,
-				"608" : true
+				"125" : true,
+				"154" : true,
+				"111" : true,
+				"143" : true
 			},
 			"supports" : {
-				"644" : true
+				"152" : true
 			},
-			"bid" : 637,
+			"bid" : 137,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"700" : {
+		"177" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 43,
+				"x" : 787,
+				"z" : -424
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : -14,
+						"z" : -10
+					},
+					"min" : {
+						"y" : 0,
+						"x" : -15,
+						"z" : -11
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 177,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"159" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 47,
+				"x" : 779,
+				"z" : -438
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 2,
+						"z" : 18
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 1,
+						"z" : 17
+					},
+					"tag" : 5459270
+				}
+			],
+			"adjacent" : {
+				"125" : true,
+				"196" : true
+			},
+			"supports" : {
+				"196" : true
+			},
+			"bid" : 159,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"154" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 46,
+				"x" : 770,
+				"z" : -433
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"136" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : 8
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 19,
+						"z" : 7
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"137" : true
+			},
+			"supports" : {},
+			"bid" : 154,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"194" : {
 			"removed" : false,
 			"direction" : {
 				"y" : 1,
@@ -379,19 +712,19 @@
 			},
 			"origin" : {
 				"y" : 1,
-				"x" : 3,
-				"z" : 1
+				"x" : 6,
+				"z" : 8
 			},
 			"fixtures" : {},
 			"placement_walls" : false,
 			"masks" : {},
-			"uri" : "stonehearth:containers:input_shelf:ground:stone",
+			"uri" : "stonehearth:furniture:stone_chair",
 			"quality" : -1,
 			"cutter" : {},
 			"adjacent" : {},
 			"total_mask" : {},
 			"hole_region" : {},
-			"owner_bid" : 608,
+			"owner_bid" : 111,
 			"__classname" : "stonehearth:FixtureData",
 			"supported" : {},
 			"supports" : {},
@@ -401,79 +734,104 @@
 					"min" : {
 						"y" : 0,
 						"x" : 0,
-						"z" : -1
+						"z" : 0
 					},
 					"max" : {
 						"y" : 2,
 						"x" : 1,
-						"z" : 2
+						"z" : 1
 					}
 				}
 			],
 			"masked" : {},
 			"placement_ground" : true,
-			"rotation" : 270,
+			"rotation" : 90,
 			"color_region" : {},
 			"flushed" : false,
-			"bid" : 700
+			"bid" : 194
 		},
-		"640" : {
+		"170" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
-				"y" : 46,
-				"x" : -1171,
-				"z" : -73
+				"y" : 43,
+				"x" : 787,
+				"z" : -438
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
-			"supported" : {},
+			"supported" : {
+				"125" : true
+			},
 			"fixtures" : {},
 			"invalid_placement" : false,
 			"blocks" : [
 				{
 					"max" : {
 						"y" : 1,
-						"x" : 25,
-						"z" : 4
+						"x" : -14,
+						"z" : 18
 					},
 					"min" : {
 						"y" : 0,
-						"x" : 23,
-						"z" : 3
-					},
-					"tag" : 2176320
-				},
-				{
-					"max" : {
-						"y" : 2,
-						"x" : 25,
-						"z" : 4
-					},
-					"min" : {
-						"y" : 1,
-						"x" : 24,
-						"z" : 3
+						"x" : -15,
+						"z" : 17
 					},
 					"tag" : 2176320
 				}
 			],
 			"adjacent" : {
-				"608" : true,
-				"636" : true,
-				"634" : true,
-				"635" : true
+				"125" : true
 			},
-			"supports" : {
-				"635" : true
-			},
-			"bid" : 640,
+			"supports" : {},
+			"bid" : 170,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"608" : {
+		"211" : {
+			"removed" : false,
+			"origin" : {
+				"y" : 40,
+				"x" : 784,
+				"z" : -435
+			},
+			"fixtures" : {},
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 1
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 0,
+						"z" : 0
+					},
+					"tag" : 2176320
+				}
+			],
+			"bid" : 211,
+			"masks" : {},
+			"masked" : {},
+			"hole_region" : {},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {},
+			"supports" : {
+				"125" : true
+			},
+			"invalid_placement" : false,
+			"brush" : "\"userdata\"",
+			"color_region" : {},
+			"kind" : 0,
+			"adjacent" : {
+				"111" : true
+			}
+		},
+		"111" : {
 			"floor_shape" : [
 				{
 					"min" : {
@@ -620,25 +978,13 @@
 			],
 			"origin" : {
 				"y" : 40,
-				"x" : -1168,
-				"z" : -77
+				"x" : 771,
+				"z" : -435
 			},
 			"wall_map" : {
-				"room_id" : 608,
+				"room_id" : 111,
 				"__classname" : "stonehearth:WallMap",
 				"total_mask" : [
-					{
-						"min" : {
-							"y" : 1,
-							"x" : 6,
-							"z" : -1
-						},
-						"max" : {
-							"y" : 2,
-							"x" : 9,
-							"z" : 0
-						}
-					},
 					{
 						"min" : {
 							"y" : 3,
@@ -649,6 +995,18 @@
 							"y" : 5,
 							"x" : 20,
 							"z" : 9
+						}
+					},
+					{
+						"min" : {
+							"y" : 1,
+							"x" : 6,
+							"z" : -1
+						},
+						"max" : {
+							"y" : 2,
+							"x" : 9,
+							"z" : 0
 						}
 					}
 				],
@@ -662,7 +1020,7 @@
 								"z" : 0
 							},
 							"adjacent" : {},
-							"wall_id" : 615,
+							"wall_id" : 118,
 							"fixtures" : {},
 							"supports" : {},
 							"brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -672,9 +1030,9 @@
 								"z" : 11
 							},
 							"invalid_placement" : false,
-							"bid" : 608,
+							"bid" : 111,
 							"masks" : {},
-							"room_id" : 608,
+							"room_id" : 111,
 							"masked" : {},
 							"offset" : 1,
 							"height" : 2,
@@ -709,7 +1067,7 @@
 							"max" : 19,
 							"__classname" : "stonehearth:PerimeterWallData",
 							"supported" : {},
-							"building_id" : 446950,
+							"building_id" : 353493,
 							"min" : 12,
 							"flushed" : false,
 							"column_brush" : "#464d53",
@@ -752,7 +1110,7 @@
 								"z" : 0
 							},
 							"adjacent" : {},
-							"wall_id" : 612,
+							"wall_id" : 115,
 							"fixtures" : {},
 							"supports" : {},
 							"brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -762,9 +1120,9 @@
 								"z" : 15
 							},
 							"invalid_placement" : false,
-							"bid" : 608,
+							"bid" : 111,
 							"masks" : {},
-							"room_id" : 608,
+							"room_id" : 111,
 							"masked" : {},
 							"offset" : 1,
 							"height" : 2,
@@ -799,7 +1157,7 @@
 							"max" : 12,
 							"__classname" : "stonehearth:PerimeterWallData",
 							"supported" : {},
-							"building_id" : 446950,
+							"building_id" : 353493,
 							"min" : 2,
 							"flushed" : false,
 							"column_brush" : "#464d53",
@@ -842,9 +1200,9 @@
 								"z" : 0
 							},
 							"adjacent" : {},
-							"wall_id" : 613,
+							"wall_id" : 116,
 							"fixtures" : {
-								"686" : true
+								"189" : true
 							},
 							"supports" : {},
 							"brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -854,9 +1212,9 @@
 								"z" : 19
 							},
 							"invalid_placement" : false,
-							"bid" : 608,
+							"bid" : 111,
 							"masks" : {},
-							"room_id" : 608,
+							"room_id" : 111,
 							"masked" : {},
 							"offset" : 1,
 							"height" : 7,
@@ -1011,7 +1369,7 @@
 							"max" : 11,
 							"__classname" : "stonehearth:PerimeterWallData",
 							"supported" : {},
-							"building_id" : 446950,
+							"building_id" : 353493,
 							"min" : 3,
 							"flushed" : false,
 							"column_brush" : "#464d53",
@@ -1054,7 +1412,7 @@
 								"z" : 0
 							},
 							"adjacent" : {},
-							"wall_id" : 616,
+							"wall_id" : 119,
 							"fixtures" : {},
 							"supports" : {},
 							"brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -1064,9 +1422,9 @@
 								"z" : 3
 							},
 							"invalid_placement" : false,
-							"bid" : 608,
+							"bid" : 111,
 							"masks" : {},
-							"room_id" : 608,
+							"room_id" : 111,
 							"masked" : {},
 							"offset" : 1,
 							"height" : 2,
@@ -1101,7 +1459,7 @@
 							"max" : 19,
 							"__classname" : "stonehearth:PerimeterWallData",
 							"supported" : {},
-							"building_id" : 446950,
+							"building_id" : 353493,
 							"min" : 12,
 							"flushed" : false,
 							"column_brush" : "#464d53",
@@ -1144,7 +1502,7 @@
 								"z" : 0
 							},
 							"adjacent" : {},
-							"wall_id" : 614,
+							"wall_id" : 117,
 							"fixtures" : {},
 							"supports" : {},
 							"brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -1154,9 +1512,9 @@
 								"z" : 12
 							},
 							"invalid_placement" : false,
-							"bid" : 608,
+							"bid" : 111,
 							"masks" : {},
-							"room_id" : 608,
+							"room_id" : 111,
 							"masked" : {},
 							"offset" : 1,
 							"height" : 2,
@@ -1191,7 +1549,7 @@
 							"max" : 3,
 							"__classname" : "stonehearth:PerimeterWallData",
 							"supported" : {},
-							"building_id" : 446950,
+							"building_id" : 353493,
 							"min" : -1,
 							"flushed" : false,
 							"column_brush" : "#464d53",
@@ -1232,7 +1590,7 @@
 								"z" : 0
 							},
 							"adjacent" : {},
-							"wall_id" : 609,
+							"wall_id" : 112,
 							"fixtures" : {},
 							"supports" : {},
 							"brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -1242,9 +1600,9 @@
 								"z" : 12
 							},
 							"invalid_placement" : false,
-							"bid" : 608,
+							"bid" : 111,
 							"masks" : {},
-							"room_id" : 608,
+							"room_id" : 111,
 							"masked" : {},
 							"offset" : 1,
 							"height" : 2,
@@ -1279,7 +1637,7 @@
 							"max" : 15,
 							"__classname" : "stonehearth:PerimeterWallData",
 							"supported" : {},
-							"building_id" : 446950,
+							"building_id" : 353493,
 							"min" : 11,
 							"flushed" : false,
 							"column_brush" : "#464d53",
@@ -1322,7 +1680,7 @@
 								"z" : 0
 							},
 							"adjacent" : {},
-							"wall_id" : 611,
+							"wall_id" : 114,
 							"fixtures" : {},
 							"supports" : {},
 							"brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -1332,9 +1690,9 @@
 								"z" : 2
 							},
 							"invalid_placement" : false,
-							"bid" : 608,
+							"bid" : 111,
 							"masks" : {},
-							"room_id" : 608,
+							"room_id" : 111,
 							"masked" : {},
 							"offset" : 1,
 							"height" : 2,
@@ -1369,7 +1727,7 @@
 							"max" : 15,
 							"__classname" : "stonehearth:PerimeterWallData",
 							"supported" : {},
-							"building_id" : 446950,
+							"building_id" : 353493,
 							"min" : -1,
 							"flushed" : false,
 							"column_brush" : "#464d53",
@@ -1412,9 +1770,9 @@
 								"z" : 0
 							},
 							"adjacent" : {},
-							"wall_id" : 610,
+							"wall_id" : 113,
 							"fixtures" : {
-								"683" : true
+								"186" : true
 							},
 							"supports" : {},
 							"brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -1424,9 +1782,9 @@
 								"z" : -1
 							},
 							"invalid_placement" : false,
-							"bid" : 608,
+							"bid" : 111,
 							"masks" : {},
-							"room_id" : 608,
+							"room_id" : 111,
 							"masked" : {},
 							"offset" : 1,
 							"height" : 2,
@@ -1473,7 +1831,7 @@
 							"max" : 12,
 							"__classname" : "stonehearth:PerimeterWallData",
 							"supported" : {},
-							"building_id" : 446950,
+							"building_id" : 353493,
 							"min" : 2,
 							"flushed" : false,
 							"column_brush" : "#464d53",
@@ -1511,23 +1869,23 @@
 				}
 			},
 			"fixtures" : {
-				"695" : true,
-				"697" : true,
-				"621" : true,
-				"619" : true,
-				"691" : true,
-				"700" : true,
-				"620" : true,
-				"698" : true,
-				"696" : true,
-				"618" : true,
-				"699" : true,
-				"690" : true
+				"194" : true,
+				"123" : true,
+				"201" : true,
+				"121" : true,
+				"199" : true,
+				"124" : true,
+				"193" : true,
+				"203" : true,
+				"200" : true,
+				"122" : true,
+				"198" : true,
+				"202" : true
 			},
-			"bid" : 608,
+			"bid" : 111,
 			"masks" : {
-				"686" : true,
-				"683" : true
+				"189" : true,
+				"186" : true
 			},
 			"masked" : {},
 			"hole_region" : [
@@ -1551,20 +1909,22 @@
 			"invalid_placement" : false,
 			"fusing" : false,
 			"adjacent" : {
-				"633" : true,
-				"631" : true,
-				"629" : true,
-				"637" : true,
-				"617" : true,
-				"636" : true,
-				"639" : true,
-				"632" : true,
-				"630" : true,
-				"640" : true,
-				"638" : true,
-				"628" : true,
-				"634" : true,
-				"627" : true
+				"140" : true,
+				"136" : true,
+				"139" : true,
+				"134" : true,
+				"211" : true,
+				"133" : true,
+				"209" : true,
+				"131" : true,
+				"137" : true,
+				"141" : true,
+				"135" : true,
+				"143" : true,
+				"132" : true,
+				"142" : true,
+				"130" : true,
+				"120" : true
 			},
 			"color_region" : [
 				{
@@ -1920,102 +2280,22 @@
 				}
 			],
 			"supports" : {
-				"633" : true,
-				"631" : true,
-				"637" : true,
-				"635" : true,
-				"622" : true,
-				"632" : true,
-				"636" : true,
-				"639" : true,
-				"638" : true,
-				"628" : true,
-				"634" : true,
-				"627" : true
+				"140" : true,
+				"136" : true,
+				"142" : true,
+				"134" : true,
+				"131" : true,
+				"137" : true,
+				"141" : true,
+				"135" : true,
+				"138" : true,
+				"125" : true,
+				"130" : true,
+				"139" : true
 			},
 			"removed" : false
 		},
-		"664" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 46,
-				"x" : -1155,
-				"z" : -80
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : -8,
-						"z" : 18
-					},
-					"min" : {
-						"y" : 0,
-						"x" : -9,
-						"z" : 17
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 664,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"680" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 44,
-				"x" : -1163,
-				"z" : -66
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 8,
-						"z" : -10
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 7,
-						"z" : -11
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 680,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"695" : {
+		"199" : {
 			"removed" : false,
 			"direction" : {
 				"y" : 1,
@@ -2024,241 +2304,19 @@
 			},
 			"origin" : {
 				"y" : 1,
-				"x" : 13,
-				"z" : 9
-			},
-			"fixtures" : {},
-			"placement_walls" : false,
-			"masks" : {},
-			"uri" : "stonehearth_ace:northern_alliance:herbalist:workbench",
-			"quality" : -1,
-			"cutter" : {},
-			"adjacent" : {},
-			"total_mask" : {},
-			"hole_region" : {},
-			"owner_bid" : 608,
-			"__classname" : "stonehearth:FixtureData",
-			"supported" : {},
-			"supports" : {},
-			"invalid_placement" : false,
-			"bounds" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : -1,
-						"z" : -1
-					},
-					"max" : {
-						"y" : 1.2,
-						"x" : 1,
-						"z" : 2
-					}
-				}
-			],
-			"masked" : {},
-			"placement_ground" : true,
-			"rotation" : 270,
-			"color_region" : {},
-			"flushed" : false,
-			"bid" : 695
-		},
-		"699" : {
-			"removed" : false,
-			"direction" : {
-				"y" : 1,
-				"x" : 0,
-				"z" : 0
-			},
-			"origin" : {
-				"y" : 1,
-				"x" : 3,
+				"x" : 14,
 				"z" : 4
 			},
 			"fixtures" : {},
 			"placement_walls" : false,
 			"masks" : {},
-			"uri" : "stonehearth:containers:input_shelf:ground:stone",
+			"uri" : "stonehearth_ace:northern_alliance:herbalist:cauldron",
 			"quality" : -1,
 			"cutter" : {},
 			"adjacent" : {},
 			"total_mask" : {},
 			"hole_region" : {},
-			"owner_bid" : 608,
-			"__classname" : "stonehearth:FixtureData",
-			"supported" : {},
-			"supports" : {},
-			"invalid_placement" : false,
-			"bounds" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : 0,
-						"z" : -1
-					},
-					"max" : {
-						"y" : 2,
-						"x" : 1,
-						"z" : 2
-					}
-				}
-			],
-			"masked" : {},
-			"placement_ground" : true,
-			"rotation" : 270,
-			"color_region" : {},
-			"flushed" : false,
-			"bid" : 699
-		},
-		"651" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 46,
-				"x" : -1169,
-				"z" : -75
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"633" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 20,
-						"z" : 8
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : 7
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"634" : true
-			},
-			"supports" : {},
-			"bid" : 651,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"619" : {
-			"removed" : false,
-			"direction" : {
-				"y" : 1,
-				"x" : 0,
-				"z" : 0
-			},
-			"origin" : {
-				"y" : 1,
-				"x" : 13,
-				"z" : 4
-			},
-			"fixtures" : {},
-			"placement_walls" : false,
-			"masks" : {},
-			"uri" : "stonehearth:containers:input_table:ground:stone",
-			"quality" : -1,
-			"cutter" : {},
-			"adjacent" : {},
-			"total_mask" : {},
-			"hole_region" : {},
-			"owner_bid" : 608,
-			"__classname" : "stonehearth:FixtureData",
-			"supported" : {},
-			"supports" : {},
-			"invalid_placement" : false,
-			"bounds" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : -1,
-						"z" : 0
-					},
-					"max" : {
-						"y" : 2,
-						"x" : 1,
-						"z" : 2
-					}
-				}
-			],
-			"masked" : {},
-			"placement_ground" : true,
-			"rotation" : 270,
-			"color_region" : {},
-			"flushed" : false,
-			"bid" : 619
-		},
-		"655" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 48,
-				"x" : -1159,
-				"z" : -80
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 0,
-						"z" : 18
-					},
-					"min" : {
-						"y" : 0,
-						"x" : -1,
-						"z" : 17
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true,
-				"693" : true
-			},
-			"supports" : {},
-			"bid" : 655,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"691" : {
-			"removed" : false,
-			"direction" : {
-				"y" : 1,
-				"x" : 0,
-				"z" : 0
-			},
-			"origin" : {
-				"y" : 1,
-				"x" : 6,
-				"z" : 8
-			},
-			"fixtures" : {},
-			"placement_walls" : false,
-			"masks" : {},
-			"uri" : "stonehearth:furniture:stone_chair",
-			"quality" : -1,
-			"cutter" : {},
-			"adjacent" : {},
-			"total_mask" : {},
-			"hole_region" : {},
-			"owner_bid" : 608,
+			"owner_bid" : 111,
 			"__classname" : "stonehearth:FixtureData",
 			"supported" : {},
 			"supports" : {},
@@ -2272,395 +2330,41 @@
 					},
 					"max" : {
 						"y" : 2,
-						"x" : 1,
-						"z" : 1
+						"x" : 2,
+						"z" : 2
 					}
 				}
 			],
 			"masked" : {},
 			"placement_ground" : true,
-			"rotation" : 90,
+			"rotation" : 180,
 			"color_region" : {},
 			"flushed" : false,
-			"bid" : 691
+			"bid" : 199
 		},
-		"659" : {
+		"151" : {
 			"removed" : false,
-			"kind" : 1,
+			"kind" : 2,
 			"color_region" : {},
 			"origin" : {
-				"y" : 44,
-				"x" : -1163,
-				"z" : -80
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 8,
-						"z" : 18
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 7,
-						"z" : 17
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 659,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"652" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 44,
-				"x" : -1169,
-				"z" : -77
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"631" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 20,
-						"z" : 12
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : 11
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"632" : true
-			},
-			"supports" : {},
-			"bid" : 652,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"676" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 48,
-				"x" : -1159,
-				"z" : -66
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 0,
-						"z" : -10
-					},
-					"min" : {
-						"y" : 0,
-						"x" : -1,
-						"z" : -11
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 676,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"630" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 42,
-				"x" : -1171,
-				"z" : -68
+				"y" : 40,
+				"x" : 770,
+				"z" : -424
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
 			"supported" : {},
 			"fixtures" : {},
 			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 24,
-						"z" : -6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 20,
-						"z" : -7
-					},
-					"tag" : 3760482
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 19,
-						"z" : -6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 18,
-						"z" : -7
-					},
-					"tag" : 3760482
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 20,
-						"z" : -6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : -7
-					},
-					"tag" : 3361870
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 18,
-						"z" : -6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 17,
-						"z" : -7
-					},
-					"tag" : 3361870
-				}
-			],
-			"adjacent" : {
-				"622" : true,
-				"608" : true,
-				"648" : true
-			},
-			"supports" : {
-				"647" : true
-			},
-			"bid" : 630,
+			"blocks" : {},
+			"adjacent" : {},
+			"supports" : {},
+			"bid" : 151,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"636" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 46,
-				"x" : -1170,
-				"z" : -72
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"608" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 22,
-						"z" : 2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 21,
-						"z" : 1
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 13,
-						"z" : 2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 12,
-						"z" : 1
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 14,
-						"z" : 2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 13,
-						"z" : 1
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 15,
-						"z" : 2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 14,
-						"z" : 1
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 16,
-						"z" : 2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 15,
-						"z" : 1
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 17,
-						"z" : 2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 16,
-						"z" : 1
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 18,
-						"z" : 2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 17,
-						"z" : 1
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 19,
-						"z" : 2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 18,
-						"z" : 1
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 20,
-						"z" : 2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : 1
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 21,
-						"z" : 2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 20,
-						"z" : 1
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 23,
-						"z" : 2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 22,
-						"z" : 1
-					},
-					"tag" : 3760482
-				}
-			],
-			"adjacent" : {
-				"622" : true,
-				"644" : true,
-				"608" : true,
-				"640" : true
-			},
-			"supports" : {
-				"643" : true
-			},
-			"bid" : 636,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"692" : {
+		"214" : {
 			"removed" : false,
 			"direction" : {
 				"y" : 1,
@@ -2669,13 +2373,13 @@
 			},
 			"origin" : {
 				"y" : 40,
-				"x" : -1158,
-				"z" : -64
+				"x" : 788,
+				"z" : -437
 			},
 			"fixtures" : {},
 			"placement_walls" : false,
 			"masks" : {},
-			"uri" : "stonehearth:decoration:stone_brazier",
+			"uri" : "stonehearth_ace:herbalist:exploration_garden",
 			"quality" : -1,
 			"cutter" : {},
 			"adjacent" : {},
@@ -2690,36 +2394,143 @@
 				{
 					"min" : {
 						"y" : 0,
-						"x" : 0,
-						"z" : 0
+						"x" : -2,
+						"z" : -2
 					},
 					"max" : {
-						"y" : 2,
-						"x" : 1,
-						"z" : 1
+						"y" : 1,
+						"x" : 3,
+						"z" : 3
 					}
 				}
 			],
 			"masked" : {},
 			"placement_ground" : true,
-			"rotation" : 90,
+			"rotation" : 0,
 			"color_region" : {},
 			"flushed" : false,
-			"bid" : 692
+			"bid" : 214
 		},
-		"643" : {
+		"178" : {
+			"removed" : false,
+			"kind" : 3,
+			"color_region" : {},
+			"origin" : {
+				"y" : 42,
+				"x" : 788,
+				"z" : -424
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : -16,
+						"z" : -10
+					},
+					"min" : {
+						"y" : -1,
+						"x" : -17,
+						"z" : -11
+					},
+					"tag" : 2176320
+				},
+				{
+					"max" : {
+						"y" : 0,
+						"x" : -17,
+						"z" : -10
+					},
+					"min" : {
+						"y" : -2,
+						"x" : -18,
+						"z" : -11
+					},
+					"tag" : 2176320
+				},
+				{
+					"max" : {
+						"y" : -1,
+						"x" : -18,
+						"z" : -10
+					},
+					"min" : {
+						"y" : -2,
+						"x" : -19,
+						"z" : -11
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 178,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"130" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 42,
+				"x" : 775,
+				"z" : -435
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"111" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 10,
+						"z" : 12
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 9,
+						"z" : 11
+					},
+					"tag" : 5459270
+				}
+			],
+			"adjacent" : {
+				"125" : true,
+				"111" : true
+			},
+			"supports" : {
+				"134" : true
+			},
+			"bid" : 130,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"146" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
 				"y" : 47,
-				"x" : -1169,
-				"z" : -72
+				"x" : 770,
+				"z" : -430
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
 			"supported" : {
-				"636" : true
+				"139" : true
 			},
 			"fixtures" : {},
 			"invalid_placement" : false,
@@ -2739,103 +2550,15 @@
 				}
 			],
 			"adjacent" : {
-				"635" : true
+				"138" : true
 			},
 			"supports" : {},
-			"bid" : 643,
+			"bid" : 146,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"687" : {
-			"removed" : false,
-			"direction" : {
-				"y" : 0,
-				"x" : 0,
-				"z" : -1
-			},
-			"adjacent" : {},
-			"fixtures" : {},
-			"cutter" : {},
-			"placement_walls" : true,
-			"masks" : {},
-			"uri" : "stonehearth:decoration:stone_lantern_simple",
-			"quality" : -1,
-			"total_mask" : {},
-			"rotation" : 0,
-			"sub_data_bid" : 624,
-			"hole_region" : {},
-			"flushed" : false,
-			"__classname" : "stonehearth:FixtureData",
-			"supported" : {},
-			"supports" : {},
-			"invalid_placement" : false,
-			"bounds" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : 0,
-						"z" : 0
-					},
-					"max" : {
-						"y" : 2,
-						"x" : 1,
-						"z" : 1
-					}
-				}
-			],
-			"masked" : {},
-			"placement_ground" : false,
-			"owner_bid" : 622,
-			"color_region" : {},
-			"origin" : {
-				"y" : 1,
-				"x" : 5,
-				"z" : 2
-			},
-			"bid" : 687
-		},
-		"647" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 43,
-				"x" : -1169,
-				"z" : -68
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"630" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 20,
-						"z" : -6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : -7
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"639" : true
-			},
-			"supports" : {},
-			"bid" : 647,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"683" : {
+		"186" : {
 			"removed" : false,
 			"direction" : {
 				"y" : 0,
@@ -2864,7 +2587,7 @@
 			"quality" : -1,
 			"total_mask" : {},
 			"rotation" : 0,
-			"sub_data_bid" : 610,
+			"sub_data_bid" : 113,
 			"hole_region" : {},
 			"flushed" : false,
 			"__classname" : "stonehearth:FixtureData",
@@ -2886,20 +2609,272 @@
 				}
 			],
 			"masked" : {
-				"622" : true,
-				"608" : true
+				"125" : true,
+				"111" : true
 			},
 			"placement_ground" : true,
-			"owner_bid" : 608,
+			"owner_bid" : 111,
 			"color_region" : {},
 			"origin" : {
 				"y" : 1,
 				"x" : 7,
 				"z" : -1
 			},
-			"bid" : 683
+			"bid" : 186
 		},
-		"622" : {
+		"203" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 1,
+				"x" : 0,
+				"z" : 0
+			},
+			"origin" : {
+				"y" : 1,
+				"x" : 3,
+				"z" : 1
+			},
+			"fixtures" : {},
+			"placement_walls" : false,
+			"masks" : {},
+			"uri" : "stonehearth:containers:input_shelf:ground:stone",
+			"quality" : -1,
+			"cutter" : {},
+			"adjacent" : {},
+			"total_mask" : {},
+			"hole_region" : {},
+			"owner_bid" : 111,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : 0,
+						"z" : -1
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 2
+					}
+				}
+			],
+			"masked" : {},
+			"placement_ground" : true,
+			"rotation" : 270,
+			"color_region" : {},
+			"flushed" : false,
+			"bid" : 203
+		},
+		"183" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 44,
+				"x" : 776,
+				"z" : -424
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 8,
+						"z" : -10
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 7,
+						"z" : -11
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 183,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"147" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 46,
+				"x" : 770,
+				"z" : -429
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"140" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : 0
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 19,
+						"z" : -1
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"139" : true
+			},
+			"supports" : {},
+			"bid" : 147,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"206" : {
+			"removed" : false,
+			"kind" : 0,
+			"color_region" : {},
+			"origin" : {
+				"y" : 41,
+				"x" : 789,
+				"z" : -434
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : {},
+			"adjacent" : {},
+			"supports" : {},
+			"bid" : 206,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"143" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 46,
+				"x" : 768,
+				"z" : -431
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 25,
+						"z" : 4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 23,
+						"z" : 3
+					},
+					"tag" : 2176320
+				},
+				{
+					"max" : {
+						"y" : 2,
+						"x" : 25,
+						"z" : 4
+					},
+					"min" : {
+						"y" : 1,
+						"x" : 24,
+						"z" : 3
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"137" : true,
+				"111" : true,
+				"139" : true,
+				"138" : true
+			},
+			"supports" : {
+				"138" : true
+			},
+			"bid" : 143,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"122" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 1,
+				"x" : 0,
+				"z" : 0
+			},
+			"origin" : {
+				"y" : 1,
+				"x" : 13,
+				"z" : 4
+			},
+			"fixtures" : {},
+			"placement_walls" : false,
+			"masks" : {},
+			"uri" : "stonehearth:containers:input_table:ground:stone",
+			"quality" : -1,
+			"cutter" : {},
+			"adjacent" : {},
+			"total_mask" : {},
+			"hole_region" : {},
+			"owner_bid" : 111,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : -1,
+						"z" : 0
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 2
+					}
+				}
+			],
+			"masked" : {},
+			"placement_ground" : true,
+			"rotation" : 270,
+			"color_region" : {},
+			"flushed" : false,
+			"bid" : 122
+		},
+		"125" : {
 			"removed" : false,
 			"perimeter" : [
 				{
@@ -2921,11 +2896,11 @@
 			],
 			"origin" : {
 				"y" : 42,
-				"x" : -1163,
-				"z" : -81
+				"x" : 776,
+				"z" : -439
 			},
 			"wall_map" : {
-				"room_id" : 622,
+				"room_id" : 125,
 				"__classname" : "stonehearth:WallMap",
 				"total_mask" : [
 					{
@@ -5682,7 +5657,7 @@
 								"z" : 0
 							},
 							"adjacent" : {},
-							"wall_id" : 623,
+							"wall_id" : 126,
 							"fixtures" : {},
 							"supports" : {},
 							"brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -5692,9 +5667,9 @@
 								"z" : 7
 							},
 							"invalid_placement" : false,
-							"bid" : 622,
+							"bid" : 125,
 							"masks" : {},
-							"room_id" : 622,
+							"room_id" : 125,
 							"masked" : {},
 							"offset" : 0,
 							"height" : 6,
@@ -5993,7 +5968,7 @@
 							"max" : 19,
 							"__classname" : "stonehearth:PerimeterWallData",
 							"supported" : {},
-							"building_id" : 446950,
+							"building_id" : 353493,
 							"min" : 3,
 							"flushed" : false,
 							"column_brush" : "#464d53",
@@ -6050,10 +6025,10 @@
 								"z" : 0
 							},
 							"adjacent" : {},
-							"wall_id" : 626,
+							"wall_id" : 129,
 							"fixtures" : {
-								"684" : true,
-								"685" : true
+								"187" : true,
+								"188" : true
 							},
 							"supports" : {},
 							"brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -6063,9 +6038,9 @@
 								"z" : 19
 							},
 							"invalid_placement" : false,
-							"bid" : 622,
+							"bid" : 125,
 							"masks" : {},
-							"room_id" : 622,
+							"room_id" : 125,
 							"masked" : {},
 							"offset" : 0,
 							"height" : 6,
@@ -6195,7 +6170,7 @@
 							"max" : 7,
 							"__classname" : "stonehearth:PerimeterWallData",
 							"supported" : {},
-							"building_id" : 446950,
+							"building_id" : 353493,
 							"min" : -3,
 							"flushed" : false,
 							"column_brush" : "#464d53",
@@ -6238,12 +6213,12 @@
 								"z" : 0
 							},
 							"adjacent" : {},
-							"wall_id" : 624,
+							"wall_id" : 127,
 							"fixtures" : {
-								"687" : true,
-								"694" : true,
-								"688" : true,
-								"689" : true
+								"192" : true,
+								"197" : true,
+								"190" : true,
+								"191" : true
 							},
 							"supports" : {},
 							"brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -6253,9 +6228,9 @@
 								"z" : 3
 							},
 							"invalid_placement" : false,
-							"bid" : 622,
+							"bid" : 125,
 							"masks" : {},
-							"room_id" : 622,
+							"room_id" : 125,
 							"masked" : {},
 							"offset" : 0,
 							"height" : 6,
@@ -6385,7 +6360,7 @@
 							"max" : 7,
 							"__classname" : "stonehearth:PerimeterWallData",
 							"supported" : {},
-							"building_id" : 446950,
+							"building_id" : 353493,
 							"min" : -3,
 							"flushed" : false,
 							"column_brush" : "#464d53",
@@ -6428,7 +6403,7 @@
 								"z" : 0
 							},
 							"adjacent" : {},
-							"wall_id" : 625,
+							"wall_id" : 128,
 							"fixtures" : {},
 							"supports" : {},
 							"brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -6438,9 +6413,9 @@
 								"z" : -3
 							},
 							"invalid_placement" : false,
-							"bid" : 622,
+							"bid" : 125,
 							"masks" : {},
-							"room_id" : 622,
+							"room_id" : 125,
 							"masked" : {},
 							"offset" : 0,
 							"height" : 6,
@@ -6654,7 +6629,7 @@
 							"max" : 19,
 							"__classname" : "stonehearth:PerimeterWallData",
 							"supported" : {},
-							"building_id" : 446950,
+							"building_id" : 353493,
 							"min" : 3,
 							"flushed" : false,
 							"column_brush" : "#464d53",
@@ -6693,11 +6668,11 @@
 			},
 			"fixtures" : {},
 			"roof_brush" : "stonehearth_ace:build:brushes:roof:dry_turf_peaked_roof",
-			"bid" : 622,
+			"bid" : 125,
 			"masks" : {
-				"683" : true,
-				"684" : true,
-				"685" : true
+				"188" : true,
+				"187" : true,
+				"186" : true
 			},
 			"masked" : {},
 			"wall_brush" : "stonehearth:build:brushes:wall:cobblestone_wall",
@@ -6710,9 +6685,9 @@
 					"right" : true
 				},
 				"margin" : {
-					"front" : 1,
-					"right" : 1,
 					"left" : 1,
+					"right" : 1,
+					"front" : 1,
 					"back" : 1
 				},
 				"y_offset" : 0
@@ -6914,36 +6889,37 @@
 			"flushed" : false,
 			"__classname" : "stonehearth:RoofData",
 			"supported" : {
-				"608" : true,
-				"642" : true,
-				"641" : true
+				"211" : true,
+				"111" : true,
+				"144" : true,
+				"145" : true
 			},
 			"supports" : {
-				"677" : true,
-				"663" : true,
-				"673" : true,
-				"693" : true,
-				"667" : true,
-				"657" : true,
-				"670" : true,
-				"660" : true,
-				"674" : true,
-				"664" : true,
-				"680" : true,
-				"679" : true,
-				"671" : true,
-				"665" : true,
-				"655" : true,
-				"659" : true,
-				"681" : true,
-				"676" : true,
-				"678" : true,
-				"672" : true,
-				"662" : true,
-				"658" : true,
-				"669" : true,
-				"656" : true,
-				"666" : true
+				"162" : true,
+				"172" : true,
+				"176" : true,
+				"183" : true,
+				"163" : true,
+				"167" : true,
+				"165" : true,
+				"158" : true,
+				"182" : true,
+				"159" : true,
+				"184" : true,
+				"160" : true,
+				"180" : true,
+				"169" : true,
+				"179" : true,
+				"177" : true,
+				"173" : true,
+				"196" : true,
+				"175" : true,
+				"181" : true,
+				"161" : true,
+				"166" : true,
+				"168" : true,
+				"170" : true,
+				"174" : true
 			},
 			"invalid_placement" : false,
 			"fusing" : false,
@@ -7403,109 +7379,81 @@
 						"z" : 16
 					},
 					"tag" : 6774359
-				}
-			],
-			"invisible" : false,
-			"adjacent" : {
-				"677" : true,
-				"673" : true,
-				"693" : true,
-				"637" : true,
-				"657" : true,
-				"660" : true,
-				"664" : true,
-				"680" : true,
-				"679" : true,
-				"671" : true,
-				"675" : true,
-				"655" : true,
-				"659" : true,
-				"676" : true,
-				"672" : true,
-				"630" : true,
-				"636" : true,
-				"656" : true,
-				"663" : true,
-				"627" : true,
-				"667" : true,
-				"670" : true,
-				"633" : true,
-				"674" : true,
-				"631" : true,
-				"629" : true,
-				"634" : true,
-				"639" : true,
-				"661" : true,
-				"669" : true,
-				"641" : true,
-				"678" : true,
-				"665" : true,
-				"635" : true,
-				"632" : true,
-				"681" : true,
-				"668" : true,
-				"642" : true,
-				"658" : true,
-				"662" : true,
-				"682" : true,
-				"628" : true,
-				"638" : true,
-				"666" : true
-			}
-		},
-		"650" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 45,
-				"x" : -1169,
-				"z" : -76
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"632" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
+				},
 				{
 					"max" : {
 						"y" : 1,
-						"x" : 20,
-						"z" : 10
+						"x" : 9,
+						"z" : 5
 					},
 					"min" : {
 						"y" : 0,
-						"x" : 19,
-						"z" : 9
+						"x" : 8,
+						"z" : 4
 					},
 					"tag" : 2176320
 				}
 			],
+			"invisible" : false,
 			"adjacent" : {
-				"633" : true
-			},
-			"supports" : {},
-			"bid" : 650,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
+				"196" : true,
+				"136" : true,
+				"176" : true,
+				"133" : true,
+				"137" : true,
+				"177" : true,
+				"132" : true,
+				"159" : true,
+				"139" : true,
+				"134" : true,
+				"179" : true,
+				"131" : true,
+				"158" : true,
+				"135" : true,
+				"138" : true,
+				"178" : true,
+				"130" : true,
+				"162" : true,
+				"182" : true,
+				"166" : true,
+				"183" : true,
+				"163" : true,
+				"167" : true,
+				"145" : true,
+				"144" : true,
+				"175" : true,
+				"174" : true,
+				"164" : true,
+				"184" : true,
+				"160" : true,
+				"180" : true,
+				"169" : true,
+				"142" : true,
+				"173" : true,
+				"141" : true,
+				"172" : true,
+				"165" : true,
+				"181" : true,
+				"161" : true,
+				"140" : true,
+				"168" : true,
+				"171" : true,
+				"170" : true
+			}
 		},
-		"674" : {
+		"180" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
-				"y" : 43,
-				"x" : -1152,
-				"z" : -66
+				"y" : 47,
+				"x" : 779,
+				"z" : -424
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
 			"supported" : {
-				"622" : true
+				"125" : true
 			},
 			"fixtures" : {},
 			"invalid_placement" : false,
@@ -7513,27 +7461,67 @@
 				{
 					"max" : {
 						"y" : 1,
-						"x" : -14,
+						"x" : 2,
 						"z" : -10
 					},
 					"min" : {
 						"y" : 0,
-						"x" : -15,
+						"x" : 1,
 						"z" : -11
 					},
 					"tag" : 2176320
 				}
 			],
 			"adjacent" : {
-				"622" : true
+				"125" : true
 			},
 			"supports" : {},
-			"bid" : 674,
+			"bid" : 180,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"618" : {
+		"169" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 44,
+				"x" : 786,
+				"z" : -438
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : -12,
+						"z" : 18
+					},
+					"min" : {
+						"y" : 0,
+						"x" : -13,
+						"z" : 17
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 169,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"121" : {
 			"removed" : false,
 			"direction" : {
 				"y" : 1,
@@ -7554,7 +7542,7 @@
 			"adjacent" : {},
 			"total_mask" : {},
 			"hole_region" : {},
-			"owner_bid" : 608,
+			"owner_bid" : 111,
 			"__classname" : "stonehearth:FixtureData",
 			"supported" : {},
 			"supports" : {},
@@ -7578,335 +7566,49 @@
 			"rotation" : 90,
 			"color_region" : {},
 			"flushed" : false,
-			"bid" : 618
+			"bid" : 121
 		},
-		"634" : {
+		"148" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
-				"y" : 46,
-				"x" : -1170,
-				"z" : -74
+				"y" : 45,
+				"x" : 770,
+				"z" : -428
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
 			"supported" : {
-				"608" : true
+				"141" : true
 			},
 			"fixtures" : {},
 			"invalid_placement" : false,
 			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 22,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 21,
-						"z" : 5
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 13,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 12,
-						"z" : 5
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 14,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 13,
-						"z" : 5
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 15,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 14,
-						"z" : 5
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 16,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 15,
-						"z" : 5
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 17,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 16,
-						"z" : 5
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 18,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 17,
-						"z" : 5
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 19,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 18,
-						"z" : 5
-					},
-					"tag" : 3163462
-				},
 				{
 					"max" : {
 						"y" : 1,
 						"x" : 20,
-						"z" : 6
+						"z" : -2
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 19,
-						"z" : 5
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 21,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 20,
-						"z" : 5
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 23,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 22,
-						"z" : 5
-					},
-					"tag" : 3760482
-				}
-			],
-			"adjacent" : {
-				"622" : true,
-				"640" : true,
-				"608" : true,
-				"651" : true
-			},
-			"supports" : {
-				"649" : true
-			},
-			"bid" : 634,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"690" : {
-			"removed" : false,
-			"direction" : {
-				"y" : 1,
-				"x" : 0,
-				"z" : 0
-			},
-			"origin" : {
-				"y" : 1,
-				"x" : 18,
-				"z" : 9
-			},
-			"fixtures" : {},
-			"placement_walls" : false,
-			"masks" : {},
-			"uri" : "stonehearth_ace:containers:large_stone_coffer",
-			"quality" : -1,
-			"cutter" : {},
-			"adjacent" : {},
-			"total_mask" : {},
-			"hole_region" : {},
-			"owner_bid" : 608,
-			"__classname" : "stonehearth:FixtureData",
-			"supported" : {},
-			"supports" : {},
-			"invalid_placement" : false,
-			"bounds" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : -1,
-						"z" : 0
-					},
-					"max" : {
-						"y" : 2,
-						"x" : 1,
-						"z" : 2
-					}
-				}
-			],
-			"masked" : {},
-			"placement_ground" : true,
-			"rotation" : 90,
-			"color_region" : {},
-			"flushed" : false,
-			"bid" : 690
-		},
-		"661" : {
-			"removed" : false,
-			"kind" : 5,
-			"color_region" : {},
-			"origin" : {
-				"y" : 42,
-				"x" : -1165,
-				"z" : -80
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 12,
-						"z" : 18
-					},
-					"min" : {
-						"y" : -1,
-						"x" : 11,
-						"z" : 17
-					},
-					"tag" : 2176320
-				},
-				{
-					"max" : {
-						"y" : 0,
-						"x" : 13,
-						"z" : 18
-					},
-					"min" : {
-						"y" : -2,
-						"x" : 12,
-						"z" : 17
-					},
-					"tag" : 2176320
-				},
-				{
-					"max" : {
-						"y" : -1,
-						"x" : 14,
-						"z" : 18
-					},
-					"min" : {
-						"y" : -2,
-						"x" : 13,
-						"z" : 17
+						"z" : -3
 					},
 					"tag" : 2176320
 				}
 			],
 			"adjacent" : {
-				"622" : true
+				"140" : true
 			},
 			"supports" : {},
-			"bid" : 661,
+			"bid" : 148,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"669" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 48,
-				"x" : -1157,
-				"z" : -66
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : -4,
-						"z" : -10
-					},
-					"min" : {
-						"y" : 0,
-						"x" : -5,
-						"z" : -11
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 669,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"621" : {
+		"124" : {
 			"removed" : false,
 			"direction" : {
 				"y" : 1,
@@ -7927,7 +7629,7 @@
 			"adjacent" : {},
 			"total_mask" : {},
 			"hole_region" : {},
-			"owner_bid" : 608,
+			"owner_bid" : 111,
 			"__classname" : "stonehearth:FixtureData",
 			"supported" : {},
 			"supports" : {},
@@ -7951,21 +7653,21 @@
 			"rotation" : 270,
 			"color_region" : {},
 			"flushed" : false,
-			"bid" : 621
+			"bid" : 124
 		},
-		"665" : {
+		"161" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
 				"y" : 45,
-				"x" : -1154,
-				"z" : -80
+				"x" : 777,
+				"z" : -438
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
 			"supported" : {
-				"622" : true
+				"125" : true
 			},
 			"fixtures" : {},
 			"invalid_placement" : false,
@@ -7973,322 +7675,30 @@
 				{
 					"max" : {
 						"y" : 1,
-						"x" : -10,
+						"x" : 6,
 						"z" : 18
 					},
 					"min" : {
 						"y" : 0,
-						"x" : -11,
+						"x" : 5,
 						"z" : 17
 					},
-					"tag" : 2176320
+					"tag" : 5459270
 				}
 			],
 			"adjacent" : {
-				"622" : true
+				"125" : true,
+				"196" : true
 			},
-			"supports" : {},
-			"bid" : 665,
+			"supports" : {
+				"196" : true
+			},
+			"bid" : 161,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"686" : {
-			"removed" : false,
-			"direction" : {
-				"y" : 0,
-				"x" : 1,
-				"z" : 0
-			},
-			"adjacent" : {},
-			"fixtures" : {},
-			"cutter" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : 0,
-						"z" : -1
-					},
-					"max" : {
-						"y" : 2,
-						"x" : 1,
-						"z" : 2
-					}
-				}
-			],
-			"placement_walls" : true,
-			"masks" : {},
-			"uri" : "stonehearth:portals:stone_window_frame_wide",
-			"quality" : -1,
-			"total_mask" : {},
-			"rotation" : 270,
-			"sub_data_bid" : 613,
-			"hole_region" : {},
-			"flushed" : false,
-			"__classname" : "stonehearth:FixtureData",
-			"supported" : {},
-			"supports" : {},
-			"invalid_placement" : false,
-			"bounds" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : 0,
-						"z" : -1
-					},
-					"max" : {
-						"y" : 2,
-						"x" : 1,
-						"z" : 2
-					}
-				}
-			],
-			"masked" : {
-				"608" : true
-			},
-			"placement_ground" : true,
-			"owner_bid" : 608,
-			"color_region" : {},
-			"origin" : {
-				"y" : 3,
-				"x" : 19,
-				"z" : 7
-			},
-			"bid" : 686
-		},
-		"688" : {
-			"removed" : false,
-			"direction" : {
-				"y" : 0,
-				"x" : 0,
-				"z" : -1
-			},
-			"adjacent" : {},
-			"fixtures" : {},
-			"cutter" : {},
-			"placement_walls" : true,
-			"masks" : {},
-			"uri" : "stonehearth:decoration:stone_lantern_simple",
-			"quality" : -1,
-			"total_mask" : {},
-			"rotation" : 0,
-			"sub_data_bid" : 624,
-			"hole_region" : {},
-			"flushed" : false,
-			"__classname" : "stonehearth:FixtureData",
-			"supported" : {},
-			"supports" : {},
-			"invalid_placement" : false,
-			"bounds" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : 0,
-						"z" : 0
-					},
-					"max" : {
-						"y" : 2,
-						"x" : 1,
-						"z" : 1
-					}
-				}
-			],
-			"masked" : {},
-			"placement_ground" : false,
-			"owner_bid" : 622,
-			"color_region" : {},
-			"origin" : {
-				"y" : 1,
-				"x" : -1,
-				"z" : 2
-			},
-			"bid" : 688
-		},
-		"662" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 48,
-				"x" : -1157,
-				"z" : -80
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : -4,
-						"z" : 18
-					},
-					"min" : {
-						"y" : 0,
-						"x" : -5,
-						"z" : 17
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 662,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"646" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 44,
-				"x" : -1169,
-				"z" : -69
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"639" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 20,
-						"z" : -4
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : -5
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"638" : true
-			},
-			"supports" : {},
-			"bid" : 646,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"648" : {
-			"removed" : false,
-			"kind" : 2,
-			"color_region" : {},
-			"origin" : {
-				"y" : 40,
-				"x" : -1169,
-				"z" : -66
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 2,
-						"x" : 20,
-						"z" : -10
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : -11
-					},
-					"tag" : 2176320
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 20,
-						"z" : -11
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : -12
-					},
-					"tag" : 2176320
-				},
-				{
-					"max" : {
-						"y" : 3,
-						"x" : 20,
-						"z" : -9
-					},
-					"min" : {
-						"y" : 1,
-						"x" : 19,
-						"z" : -10
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"630" : true
-			},
-			"supports" : {},
-			"bid" : 648,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"653" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 43,
-				"x" : -1169,
-				"z" : -78
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"629" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 20,
-						"z" : 14
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : 13
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"631" : true
-			},
-			"supports" : {},
-			"bid" : 653,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"697" : {
+		"200" : {
 			"removed" : false,
 			"direction" : {
 				"y" : 1,
@@ -8309,7 +7719,7 @@
 			"adjacent" : {},
 			"total_mask" : {},
 			"hole_region" : {},
-			"owner_bid" : 608,
+			"owner_bid" : 111,
 			"__classname" : "stonehearth:FixtureData",
 			"supported" : {},
 			"supports" : {},
@@ -8333,131 +7743,9 @@
 			"rotation" : 90,
 			"color_region" : {},
 			"flushed" : false,
-			"bid" : 697
+			"bid" : 200
 		},
-		"617" : {
-			"removed" : false,
-			"origin" : {
-				"y" : 40,
-				"x" : -1170,
-				"z" : -76
-			},
-			"fixtures" : {},
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 13,
-						"z" : -2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 6,
-						"z" : -3
-					},
-					"tag" : 5459270
-				}
-			],
-			"bid" : 617,
-			"masks" : {},
-			"masked" : {},
-			"hole_region" : {},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {},
-			"supports" : {},
-			"invalid_placement" : false,
-			"brush" : "\"userdata\"",
-			"color_region" : {},
-			"kind" : 0,
-			"adjacent" : {
-				"608" : true
-			}
-		},
-		"657" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 46,
-				"x" : -1161,
-				"z" : -80
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 4,
-						"z" : 18
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 3,
-						"z" : 17
-					},
-					"tag" : 6774359
-				}
-			],
-			"adjacent" : {
-				"622" : true,
-				"693" : true
-			},
-			"supports" : {
-				"693" : true
-			},
-			"bid" : 657,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"660" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 43,
-				"x" : -1164,
-				"z" : -80
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 10,
-						"z" : 18
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 9,
-						"z" : 17
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 660,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"684" : {
+		"188" : {
 			"removed" : false,
 			"direction" : {
 				"y" : 0,
@@ -8486,7 +7774,7 @@
 			"quality" : -1,
 			"total_mask" : {},
 			"rotation" : 180,
-			"sub_data_bid" : 626,
+			"sub_data_bid" : 129,
 			"hole_region" : {},
 			"flushed" : false,
 			"__classname" : "stonehearth:FixtureData",
@@ -8508,216 +7796,340 @@
 				}
 			],
 			"masked" : {
-				"622" : true
+				"125" : true
 			},
 			"placement_ground" : true,
-			"owner_bid" : 622,
+			"owner_bid" : 125,
 			"color_region" : {},
 			"origin" : {
 				"y" : 1,
-				"x" : 1,
+				"x" : 4,
 				"z" : 19
 			},
-			"bid" : 684
+			"bid" : 188
 		},
-		"644" : {
+		"196" : {
 			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
 			"origin" : {
 				"y" : 46,
-				"x" : -1169,
-				"z" : -71
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"637" : true
+				"x" : 771,
+				"z" : -428
 			},
 			"fixtures" : {},
-			"invalid_placement" : false,
 			"blocks" : [
 				{
 					"max" : {
 						"y" : 1,
-						"x" : 20,
-						"z" : 0
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : -1
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"636" : true
-			},
-			"supports" : {},
-			"bid" : 644,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"679" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 45,
-				"x" : -1162,
-				"z" : -66
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 6,
-						"z" : -10
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 5,
-						"z" : -11
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 679,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"671" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 46,
-				"x" : -1155,
-				"z" : -66
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : -8,
-						"z" : -10
-					},
-					"min" : {
-						"y" : 0,
-						"x" : -9,
-						"z" : -11
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 671,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"675" : {
-			"removed" : false,
-			"kind" : 3,
-			"color_region" : {},
-			"origin" : {
-				"y" : 42,
-				"x" : -1151,
-				"z" : -66
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : -16,
-						"z" : -10
+						"x" : 12,
+						"z" : 7
 					},
 					"min" : {
 						"y" : -1,
-						"x" : -17,
-						"z" : -11
+						"x" : 11,
+						"z" : 6
 					},
-					"tag" : 2176320
+					"tag" : 6051150
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 12,
+						"z" : 6
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 10,
+						"z" : 5
+					},
+					"tag" : 6051150
+				},
+				{
+					"max" : {
+						"y" : 2,
+						"x" : 12,
+						"z" : 7
+					},
+					"min" : {
+						"y" : 1,
+						"x" : 11,
+						"z" : 6
+					},
+					"tag" : 6051150
+				},
+				{
+					"max" : {
+						"y" : 2,
+						"x" : 12,
+						"z" : 8
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 11,
+						"z" : 7
+					},
+					"tag" : 6774359
+				},
+				{
+					"max" : {
+						"y" : 2,
+						"x" : 11,
+						"z" : 6
+					},
+					"min" : {
+						"y" : 1,
+						"x" : 10,
+						"z" : 5
+					},
+					"tag" : 6051150
+				},
+				{
+					"max" : {
+						"y" : 2,
+						"x" : 10,
+						"z" : 7
+					},
+					"min" : {
+						"y" : 1,
+						"x" : 9,
+						"z" : 6
+					},
+					"tag" : 6051150
+				},
+				{
+					"max" : {
+						"y" : 3,
+						"x" : 10,
+						"z" : 8
+					},
+					"min" : {
+						"y" : 2,
+						"x" : 9,
+						"z" : 5
+					},
+					"tag" : 6051150
+				},
+				{
+					"max" : {
+						"y" : 3,
+						"x" : 12,
+						"z" : 8
+					},
+					"min" : {
+						"y" : 2,
+						"x" : 10,
+						"z" : 7
+					},
+					"tag" : 6051150
+				},
+				{
+					"max" : {
+						"y" : 3,
+						"x" : 12,
+						"z" : 7
+					},
+					"min" : {
+						"y" : 2,
+						"x" : 11,
+						"z" : 5
+					},
+					"tag" : 6051150
+				},
+				{
+					"max" : {
+						"y" : 3,
+						"x" : 11,
+						"z" : 6
+					},
+					"min" : {
+						"y" : 2,
+						"x" : 10,
+						"z" : 5
+					},
+					"tag" : 6051150
+				},
+				{
+					"max" : {
+						"y" : 4,
+						"x" : 12,
+						"z" : 7
+					},
+					"min" : {
+						"y" : 3,
+						"x" : 11,
+						"z" : 5
+					},
+					"tag" : 5459270
+				},
+				{
+					"max" : {
+						"y" : 4,
+						"x" : 11,
+						"z" : 6
+					},
+					"min" : {
+						"y" : 3,
+						"x" : 9,
+						"z" : 5
+					},
+					"tag" : 5459270
+				},
+				{
+					"max" : {
+						"y" : 4,
+						"x" : 12,
+						"z" : 8
+					},
+					"min" : {
+						"y" : 3,
+						"x" : 9,
+						"z" : 7
+					},
+					"tag" : 5459270
+				},
+				{
+					"max" : {
+						"y" : 4,
+						"x" : 10,
+						"z" : 7
+					},
+					"min" : {
+						"y" : 3,
+						"x" : 9,
+						"z" : 6
+					},
+					"tag" : 5459270
+				},
+				{
+					"max" : {
+						"y" : 2,
+						"x" : 11,
+						"z" : 8
+					},
+					"min" : {
+						"y" : 1,
+						"x" : 10,
+						"z" : 7
+					},
+					"tag" : 6774359
 				},
 				{
 					"max" : {
 						"y" : 0,
-						"x" : -17,
-						"z" : -10
+						"x" : 12,
+						"z" : 6
 					},
 					"min" : {
-						"y" : -2,
-						"x" : -18,
-						"z" : -11
+						"y" : -1,
+						"x" : 11,
+						"z" : 5
 					},
-					"tag" : 2176320
+					"tag" : 6774359
 				},
 				{
 					"max" : {
-						"y" : -1,
-						"x" : -18,
+						"y" : 2,
+						"x" : 10,
+						"z" : 6
+					},
+					"min" : {
+						"y" : 1,
+						"x" : 9,
+						"z" : 5
+					},
+					"tag" : 6774359
+				},
+				{
+					"max" : {
+						"y" : 2,
+						"x" : 12,
+						"z" : 6
+					},
+					"min" : {
+						"y" : 1,
+						"x" : 11,
+						"z" : 5
+					},
+					"tag" : 5459270
+				}
+			],
+			"bid" : 196,
+			"masks" : {},
+			"masked" : {},
+			"hole_region" : {},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"159" : true,
+				"125" : true,
+				"160" : true,
+				"161" : true
+			},
+			"supports" : {},
+			"invalid_placement" : false,
+			"brush" : "\"userdata\"",
+			"color_region" : {},
+			"kind" : 1,
+			"adjacent" : {
+				"159" : true,
+				"158" : true,
+				"160" : true,
+				"161" : true,
+				"125" : true
+			}
+		},
+		"172" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 48,
+				"x" : 782,
+				"z" : -424
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : -4,
 						"z" : -10
 					},
 					"min" : {
-						"y" : -2,
-						"x" : -19,
+						"y" : 0,
+						"x" : -5,
 						"z" : -11
 					},
 					"tag" : 2176320
 				}
 			],
 			"adjacent" : {
-				"622" : true
+				"125" : true
 			},
 			"supports" : {},
-			"bid" : 675,
+			"bid" : 172,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"639" : {
+		"156" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
 				"y" : 43,
-				"x" : -1170,
-				"z" : -69
+				"x" : 770,
+				"z" : -436
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
 			"supported" : {
-				"608" : true,
-				"628" : true
+				"132" : true
 			},
 			"fixtures" : {},
 			"invalid_placement" : false,
@@ -8725,232 +8137,27 @@
 				{
 					"max" : {
 						"y" : 1,
-						"x" : 22,
-						"z" : -4
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 21,
-						"z" : -5
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 16,
-						"z" : -4
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 15,
-						"z" : -5
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 17,
-						"z" : -4
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 16,
-						"z" : -5
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 18,
-						"z" : -4
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 17,
-						"z" : -5
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 19,
-						"z" : -4
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 18,
-						"z" : -5
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
 						"x" : 20,
-						"z" : -4
+						"z" : 14
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 19,
-						"z" : -5
+						"z" : 13
 					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 21,
-						"z" : -4
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 20,
-						"z" : -5
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 23,
-						"z" : -4
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 22,
-						"z" : -5
-					},
-					"tag" : 3760482
+					"tag" : 2176320
 				}
 			],
 			"adjacent" : {
-				"622" : true,
-				"647" : true,
-				"608" : true
-			},
-			"supports" : {
-				"646" : true
-			},
-			"bid" : 639,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"635" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 47,
-				"x" : -1170,
-				"z" : -73
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"608" : true,
-				"640" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 23,
-						"z" : 4
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 21,
-						"z" : 3
-					},
-					"tag" : 2176320
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 20,
-						"z" : 4
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 11,
-						"z" : 3
-					},
-					"tag" : 2176320
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 21,
-						"z" : 4
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 20,
-						"z" : 3
-					},
-					"tag" : 3097678
-				}
-			],
-			"adjacent" : {
-				"643" : true,
-				"622" : true,
-				"649" : true,
-				"640" : true
+				"134" : true
 			},
 			"supports" : {},
-			"bid" : 635,
+			"bid" : 156,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"672" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 45,
-				"x" : -1154,
-				"z" : -66
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : -10,
-						"z" : -10
-					},
-					"min" : {
-						"y" : 0,
-						"x" : -11,
-						"z" : -11
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 672,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"698" : {
+		"193" : {
 			"removed" : false,
 			"direction" : {
 				"y" : 1,
@@ -8959,19 +8166,19 @@
 			},
 			"origin" : {
 				"y" : 1,
-				"x" : 11,
-				"z" : 1
+				"x" : 18,
+				"z" : 9
 			},
 			"fixtures" : {},
 			"placement_walls" : false,
 			"masks" : {},
-			"uri" : "stonehearth:containers:input_shelf:ground:stone",
+			"uri" : "stonehearth_ace:containers:large_stone_coffer",
 			"quality" : -1,
 			"cutter" : {},
 			"adjacent" : {},
 			"total_mask" : {},
 			"hole_region" : {},
-			"owner_bid" : 608,
+			"owner_bid" : 111,
 			"__classname" : "stonehearth:FixtureData",
 			"supported" : {},
 			"supports" : {},
@@ -8980,8 +8187,8 @@
 				{
 					"min" : {
 						"y" : 0,
-						"x" : 0,
-						"z" : -1
+						"x" : -1,
+						"z" : 0
 					},
 					"max" : {
 						"y" : 2,
@@ -8995,458 +8202,16 @@
 			"rotation" : 90,
 			"color_region" : {},
 			"flushed" : false,
-			"bid" : 698
+			"bid" : 193
 		},
-		"658" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 45,
-				"x" : -1162,
-				"z" : -80
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 6,
-						"z" : 18
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 5,
-						"z" : 17
-					},
-					"tag" : 5459270
-				}
-			],
-			"adjacent" : {
-				"622" : true,
-				"693" : true
-			},
-			"supports" : {
-				"693" : true
-			},
-			"bid" : 658,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"663" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 47,
-				"x" : -1156,
-				"z" : -80
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : -6,
-						"z" : 18
-					},
-					"min" : {
-						"y" : 0,
-						"x" : -7,
-						"z" : 17
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 663,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"627" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 42,
-				"x" : -1164,
-				"z" : -77
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"608" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 10,
-						"z" : 12
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 9,
-						"z" : 11
-					},
-					"tag" : 5459270
-				}
-			],
-			"adjacent" : {
-				"622" : true,
-				"608" : true
-			},
-			"supports" : {
-				"631" : true
-			},
-			"bid" : 627,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"667" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 43,
-				"x" : -1152,
-				"z" : -80
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : -14,
-						"z" : 18
-					},
-					"min" : {
-						"y" : 0,
-						"x" : -15,
-						"z" : 17
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 667,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"670" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 47,
-				"x" : -1156,
-				"z" : -66
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : -6,
-						"z" : -10
-					},
-					"min" : {
-						"y" : 0,
-						"x" : -7,
-						"z" : -11
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 670,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"694" : {
-			"removed" : false,
-			"direction" : {
-				"y" : 0,
-				"x" : 0,
-				"z" : -1
-			},
-			"adjacent" : {},
-			"fixtures" : {},
-			"cutter" : {},
-			"placement_walls" : true,
-			"masks" : {},
-			"uri" : "stonehearth:decoration:wooden_sign_herbalist",
-			"quality" : -1,
-			"total_mask" : {},
-			"rotation" : 0,
-			"sub_data_bid" : 624,
-			"hole_region" : {},
-			"flushed" : false,
-			"__classname" : "stonehearth:FixtureData",
-			"supported" : {},
-			"supports" : {},
-			"invalid_placement" : false,
-			"bounds" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : 0,
-						"z" : 0
-					},
-					"max" : {
-						"y" : 1,
-						"x" : 1,
-						"z" : 1
-					}
-				}
-			],
-			"masked" : {},
-			"placement_ground" : false,
-			"owner_bid" : 622,
-			"color_region" : {},
-			"origin" : {
-				"y" : 4,
-				"x" : 2,
-				"z" : 2
-			},
-			"bid" : 694
-		},
-		"678" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 46,
-				"x" : -1161,
-				"z" : -66
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 4,
-						"z" : -10
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 3,
-						"z" : -11
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 678,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"638" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 44,
-				"x" : -1170,
-				"z" : -70
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"608" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 22,
-						"z" : -2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 21,
-						"z" : -3
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 15,
-						"z" : -2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 14,
-						"z" : -3
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 16,
-						"z" : -2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 15,
-						"z" : -3
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 17,
-						"z" : -2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 16,
-						"z" : -3
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 18,
-						"z" : -2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 17,
-						"z" : -3
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 19,
-						"z" : -2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 18,
-						"z" : -3
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 20,
-						"z" : -2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : -3
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 21,
-						"z" : -2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 20,
-						"z" : -3
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 23,
-						"z" : -2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 22,
-						"z" : -3
-					},
-					"tag" : 3760482
-				}
-			],
-			"adjacent" : {
-				"622" : true,
-				"646" : true,
-				"608" : true
-			},
-			"supports" : {
-				"645" : true
-			},
-			"bid" : 638,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"654" : {
+		"157" : {
 			"removed" : false,
 			"kind" : 4,
 			"color_region" : {},
 			"origin" : {
 				"y" : 42,
-				"x" : -1169,
-				"z" : -79
+				"x" : 770,
+				"z" : -437
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
@@ -9495,434 +8260,22 @@
 				}
 			],
 			"adjacent" : {
-				"629" : true
+				"132" : true
 			},
 			"supports" : {},
-			"bid" : 654,
+			"bid" : 157,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"693" : {
-			"removed" : false,
-			"origin" : {
-				"y" : 46,
-				"x" : -1168,
-				"z" : -70
-			},
-			"fixtures" : {},
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 12,
-						"z" : 7
-					},
-					"min" : {
-						"y" : -1,
-						"x" : 11,
-						"z" : 6
-					},
-					"tag" : 6051150
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 12,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 10,
-						"z" : 5
-					},
-					"tag" : 6051150
-				},
-				{
-					"max" : {
-						"y" : 2,
-						"x" : 12,
-						"z" : 7
-					},
-					"min" : {
-						"y" : 1,
-						"x" : 11,
-						"z" : 6
-					},
-					"tag" : 6051150
-				},
-				{
-					"max" : {
-						"y" : 2,
-						"x" : 12,
-						"z" : 8
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 11,
-						"z" : 7
-					},
-					"tag" : 6774359
-				},
-				{
-					"max" : {
-						"y" : 2,
-						"x" : 11,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 1,
-						"x" : 10,
-						"z" : 5
-					},
-					"tag" : 6051150
-				},
-				{
-					"max" : {
-						"y" : 2,
-						"x" : 10,
-						"z" : 7
-					},
-					"min" : {
-						"y" : 1,
-						"x" : 9,
-						"z" : 6
-					},
-					"tag" : 6051150
-				},
-				{
-					"max" : {
-						"y" : 3,
-						"x" : 10,
-						"z" : 8
-					},
-					"min" : {
-						"y" : 2,
-						"x" : 9,
-						"z" : 5
-					},
-					"tag" : 6051150
-				},
-				{
-					"max" : {
-						"y" : 3,
-						"x" : 12,
-						"z" : 8
-					},
-					"min" : {
-						"y" : 2,
-						"x" : 10,
-						"z" : 7
-					},
-					"tag" : 6051150
-				},
-				{
-					"max" : {
-						"y" : 3,
-						"x" : 12,
-						"z" : 7
-					},
-					"min" : {
-						"y" : 2,
-						"x" : 11,
-						"z" : 5
-					},
-					"tag" : 6051150
-				},
-				{
-					"max" : {
-						"y" : 3,
-						"x" : 11,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 2,
-						"x" : 10,
-						"z" : 5
-					},
-					"tag" : 6051150
-				},
-				{
-					"max" : {
-						"y" : 4,
-						"x" : 12,
-						"z" : 7
-					},
-					"min" : {
-						"y" : 3,
-						"x" : 11,
-						"z" : 5
-					},
-					"tag" : 5459270
-				},
-				{
-					"max" : {
-						"y" : 4,
-						"x" : 11,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 3,
-						"x" : 9,
-						"z" : 5
-					},
-					"tag" : 5459270
-				},
-				{
-					"max" : {
-						"y" : 4,
-						"x" : 12,
-						"z" : 8
-					},
-					"min" : {
-						"y" : 3,
-						"x" : 9,
-						"z" : 7
-					},
-					"tag" : 5459270
-				},
-				{
-					"max" : {
-						"y" : 4,
-						"x" : 10,
-						"z" : 7
-					},
-					"min" : {
-						"y" : 3,
-						"x" : 9,
-						"z" : 6
-					},
-					"tag" : 5459270
-				},
-				{
-					"max" : {
-						"y" : 2,
-						"x" : 11,
-						"z" : 8
-					},
-					"min" : {
-						"y" : 1,
-						"x" : 10,
-						"z" : 7
-					},
-					"tag" : 6774359
-				},
-				{
-					"max" : {
-						"y" : 0,
-						"x" : 12,
-						"z" : 6
-					},
-					"min" : {
-						"y" : -1,
-						"x" : 11,
-						"z" : 5
-					},
-					"tag" : 6774359
-				},
-				{
-					"max" : {
-						"y" : 2,
-						"x" : 10,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 1,
-						"x" : 9,
-						"z" : 5
-					},
-					"tag" : 6774359
-				},
-				{
-					"max" : {
-						"y" : 2,
-						"x" : 12,
-						"z" : 6
-					},
-					"min" : {
-						"y" : 1,
-						"x" : 11,
-						"z" : 5
-					},
-					"tag" : 5459270
-				}
-			],
-			"bid" : 693,
-			"masks" : {},
-			"masked" : {},
-			"hole_region" : {},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true,
-				"656" : true,
-				"658" : true,
-				"657" : true
-			},
-			"supports" : {},
-			"invalid_placement" : false,
-			"brush" : "\"userdata\"",
-			"color_region" : {},
-			"kind" : 1,
-			"adjacent" : {
-				"622" : true,
-				"656" : true,
-				"655" : true,
-				"658" : true,
-				"657" : true
-			}
-		},
-		"685" : {
-			"removed" : false,
-			"direction" : {
-				"y" : 0,
-				"x" : 0,
-				"z" : 1
-			},
-			"adjacent" : {},
-			"fixtures" : {},
-			"cutter" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : -1,
-						"z" : 0
-					},
-					"max" : {
-						"y" : 2,
-						"x" : 1,
-						"z" : 1
-					}
-				}
-			],
-			"placement_walls" : true,
-			"masks" : {},
-			"uri" : "stonehearth:portals:stone_window_frame",
-			"quality" : -1,
-			"total_mask" : {},
-			"rotation" : 180,
-			"sub_data_bid" : 626,
-			"hole_region" : {},
-			"flushed" : false,
-			"__classname" : "stonehearth:FixtureData",
-			"supported" : {},
-			"supports" : {},
-			"invalid_placement" : false,
-			"bounds" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : -1,
-						"z" : 0
-					},
-					"max" : {
-						"y" : 2,
-						"x" : 1,
-						"z" : 1
-					}
-				}
-			],
-			"masked" : {
-				"622" : true
-			},
-			"placement_ground" : true,
-			"owner_bid" : 622,
-			"color_region" : {},
-			"origin" : {
-				"y" : 1,
-				"x" : 4,
-				"z" : 19
-			},
-			"bid" : 685
-		},
-		"677" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 47,
-				"x" : -1160,
-				"z" : -66
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 2,
-						"z" : -10
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 1,
-						"z" : -11
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 677,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"645" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 45,
-				"x" : -1169,
-				"z" : -70
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"638" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 20,
-						"z" : -2
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : -3
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"637" : true
-			},
-			"supports" : {},
-			"bid" : 645,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"629" : {
+		"132" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
 				"y" : 42,
-				"x" : -1171,
-				"z" : -78
+				"x" : 768,
+				"z" : -436
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
@@ -9984,145 +8337,589 @@
 				}
 			],
 			"adjacent" : {
-				"622" : true,
-				"654" : true,
-				"608" : true
+				"125" : true,
+				"111" : true,
+				"157" : true
 			},
 			"supports" : {
-				"653" : true
+				"156" : true
 			},
-			"bid" : 629,
+			"bid" : 132,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"641" : {
+		"174" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
-				"y" : 49,
-				"x" : -1158,
-				"z" : -64
+				"y" : 46,
+				"x" : 784,
+				"z" : -424
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
-			"supported" : {},
+			"supported" : {
+				"125" : true
+			},
 			"fixtures" : {},
 			"invalid_placement" : false,
 			"blocks" : [
 				{
 					"max" : {
 						"y" : 1,
-						"x" : -2,
-						"z" : -14
+						"x" : -8,
+						"z" : -10
 					},
 					"min" : {
 						"y" : 0,
-						"x" : -3,
-						"z" : -16
-					},
-					"tag" : 2176320
-				},
-				{
-					"max" : {
-						"y" : -1,
-						"x" : -2,
-						"z" : -14
-					},
-					"min" : {
-						"y" : -2,
-						"x" : -3,
-						"z" : -16
-					},
-					"tag" : 2176320
-				},
-				{
-					"max" : {
-						"y" : 0,
-						"x" : -2,
-						"z" : -15
-					},
-					"min" : {
-						"y" : -1,
-						"x" : -3,
-						"z" : -16
+						"x" : -9,
+						"z" : -11
 					},
 					"tag" : 2176320
 				}
 			],
 			"adjacent" : {
-				"622" : true
+				"125" : true
 			},
-			"supports" : {
-				"622" : true
-			},
-			"bid" : 641,
+			"supports" : {},
+			"bid" : 174,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"689" : {
+		"150" : {
 			"removed" : false,
-			"direction" : {
-				"y" : 0,
-				"x" : 0,
-				"z" : 1
-			},
-			"adjacent" : {},
-			"fixtures" : {},
-			"cutter" : {},
-			"placement_walls" : true,
-			"masks" : {},
-			"uri" : "stonehearth:decoration:stone_lantern_simple",
-			"quality" : -1,
-			"total_mask" : {},
-			"rotation" : 180,
-			"sub_data_bid" : 624,
-			"hole_region" : {},
-			"flushed" : false,
-			"__classname" : "stonehearth:FixtureData",
-			"supported" : {},
-			"supports" : {},
-			"invalid_placement" : false,
-			"bounds" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : 0,
-						"z" : 0
-					},
-					"max" : {
-						"y" : 2,
-						"x" : 1,
-						"z" : 1
-					}
-				}
-			],
-			"masked" : {},
-			"placement_ground" : false,
-			"owner_bid" : 622,
+			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
-				"y" : 4,
-				"x" : 2,
-				"z" : 4
+				"y" : 43,
+				"x" : 770,
+				"z" : -426
 			},
-			"bid" : 689
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"133" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : -6
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 19,
+						"z" : -7
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"142" : true
+			},
+			"supports" : {},
+			"bid" : 150,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
 		},
-		"632" : {
+		"139" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 46,
+				"x" : 769,
+				"z" : -430
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"111" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 22,
+						"z" : 2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 21,
+						"z" : 1
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 13,
+						"z" : 2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 12,
+						"z" : 1
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 14,
+						"z" : 2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 13,
+						"z" : 1
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 15,
+						"z" : 2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 14,
+						"z" : 1
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 16,
+						"z" : 2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 15,
+						"z" : 1
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 17,
+						"z" : 2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 16,
+						"z" : 1
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 18,
+						"z" : 2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 17,
+						"z" : 1
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 19,
+						"z" : 2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 18,
+						"z" : 1
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : 2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 19,
+						"z" : 1
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 21,
+						"z" : 2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 20,
+						"z" : 1
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 23,
+						"z" : 2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 22,
+						"z" : 1
+					},
+					"tag" : 3760482
+				}
+			],
+			"adjacent" : {
+				"125" : true,
+				"147" : true,
+				"111" : true,
+				"143" : true
+			},
+			"supports" : {
+				"146" : true
+			},
+			"bid" : 139,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"134" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 43,
+				"x" : 768,
+				"z" : -435
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"130" : true,
+				"111" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 23,
+						"z" : 12
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 22,
+						"z" : 11
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 17,
+						"z" : 12
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 16,
+						"z" : 11
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 18,
+						"z" : 12
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 17,
+						"z" : 11
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 19,
+						"z" : 12
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 18,
+						"z" : 11
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : 12
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 19,
+						"z" : 11
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 21,
+						"z" : 12
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 20,
+						"z" : 11
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 22,
+						"z" : 12
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 21,
+						"z" : 11
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 24,
+						"z" : 12
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 23,
+						"z" : 11
+					},
+					"tag" : 3760482
+				}
+			],
+			"adjacent" : {
+				"125" : true,
+				"111" : true,
+				"156" : true
+			},
+			"supports" : {
+				"155" : true
+			},
+			"bid" : 134,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"179" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 48,
+				"x" : 780,
+				"z" : -424
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 0,
+						"z" : -10
+					},
+					"min" : {
+						"y" : 0,
+						"x" : -1,
+						"z" : -11
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 179,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"131" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 42,
+				"x" : 775,
+				"z" : -427
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"111" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 10,
+						"z" : -4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 9,
+						"z" : -5
+					},
+					"tag" : 5459270
+				}
+			],
+			"adjacent" : {
+				"125" : true,
+				"111" : true
+			},
+			"supports" : {
+				"142" : true
+			},
+			"bid" : 131,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"160" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 46,
+				"x" : 778,
+				"z" : -438
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 4,
+						"z" : 18
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 3,
+						"z" : 17
+					},
+					"tag" : 6774359
+				}
+			],
+			"adjacent" : {
+				"125" : true,
+				"196" : true
+			},
+			"supports" : {
+				"196" : true
+			},
+			"bid" : 160,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"158" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 48,
+				"x" : 780,
+				"z" : -438
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 0,
+						"z" : 18
+					},
+					"min" : {
+						"y" : 0,
+						"x" : -1,
+						"z" : 17
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true,
+				"196" : true
+			},
+			"supports" : {},
+			"bid" : 158,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"135" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
 				"y" : 44,
-				"x" : -1170,
-				"z" : -76
+				"x" : 769,
+				"z" : -434
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
 			"supported" : {
-				"608" : true
+				"111" : true
 			},
 			"fixtures" : {},
 			"invalid_placement" : false,
@@ -10246,167 +9043,108 @@
 				}
 			],
 			"adjacent" : {
-				"622" : true,
-				"652" : true,
-				"608" : true
+				"155" : true,
+				"111" : true,
+				"125" : true
 			},
 			"supports" : {
-				"650" : true
+				"153" : true
 			},
-			"bid" : 632,
+			"bid" : 135,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"631" : {
+		"215" : {
 			"removed" : false,
-			"kind" : 1,
+			"brush" : "\"userdata\"",
 			"color_region" : {},
 			"origin" : {
-				"y" : 43,
-				"x" : -1171,
-				"z" : -77
+				"y" : 39,
+				"x" : 785,
+				"z" : -440
 			},
 			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"608" : true,
-				"627" : true
-			},
+			"__classname" : "stonehearth:RoadData",
+			"supported" : {},
 			"fixtures" : {},
 			"invalid_placement" : false,
 			"blocks" : [
 				{
 					"max" : {
 						"y" : 1,
-						"x" : 23,
-						"z" : 12
+						"x" : 7,
+						"z" : 7
 					},
 					"min" : {
 						"y" : 0,
-						"x" : 22,
-						"z" : 11
+						"x" : 0,
+						"z" : 0
 					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 17,
-						"z" : 12
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 16,
-						"z" : 11
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 18,
-						"z" : 12
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 17,
-						"z" : 11
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 19,
-						"z" : 12
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 18,
-						"z" : 11
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 20,
-						"z" : 12
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 19,
-						"z" : 11
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 21,
-						"z" : 12
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 20,
-						"z" : 11
-					},
-					"tag" : 3822420
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 22,
-						"z" : 12
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 21,
-						"z" : 11
-					},
-					"tag" : 3163462
-				},
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 24,
-						"z" : 12
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 23,
-						"z" : 11
-					},
-					"tag" : 3760482
+					"tag" : 4880006
 				}
 			],
-			"adjacent" : {
-				"622" : true,
-				"653" : true,
-				"608" : true
-			},
-			"supports" : {
-				"652" : true
-			},
-			"bid" : 631,
+			"adjacent" : {},
+			"supports" : {},
+			"bid" : 215,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"649" : {
+		"209" : {
+			"removed" : false,
+			"origin" : {
+				"y" : 40,
+				"x" : 789,
+				"z" : -433
+			},
+			"fixtures" : {},
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 1
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 0,
+						"z" : 0
+					},
+					"tag" : 2176320
+				}
+			],
+			"bid" : 209,
+			"masks" : {},
+			"masked" : {},
+			"hole_region" : {},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {},
+			"supports" : {
+				"133" : true
+			},
+			"invalid_placement" : false,
+			"brush" : "\"userdata\"",
+			"color_region" : {},
+			"kind" : 0,
+			"adjacent" : {
+				"111" : true
+			}
+		},
+		"149" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
-				"y" : 47,
-				"x" : -1169,
-				"z" : -74
+				"y" : 44,
+				"x" : 770,
+				"z" : -427
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
 			"supported" : {
-				"634" : true
+				"142" : true
 			},
 			"fixtures" : {},
 			"invalid_placement" : false,
@@ -10415,38 +9153,767 @@
 					"max" : {
 						"y" : 1,
 						"x" : 20,
-						"z" : 6
+						"z" : -4
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 19,
-						"z" : 5
+						"z" : -5
 					},
 					"tag" : 2176320
 				}
 			],
 			"adjacent" : {
-				"635" : true
+				"141" : true
 			},
 			"supports" : {},
-			"bid" : 649,
+			"bid" : 149,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"681" : {
+		"198" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 1,
+				"x" : 0,
+				"z" : 0
+			},
+			"origin" : {
+				"y" : 1,
+				"x" : 13,
+				"z" : 9
+			},
+			"fixtures" : {},
+			"placement_walls" : false,
+			"masks" : {},
+			"uri" : "stonehearth_ace:northern_alliance:herbalist:workbench",
+			"quality" : -1,
+			"cutter" : {},
+			"adjacent" : {},
+			"total_mask" : {},
+			"hole_region" : {},
+			"owner_bid" : 111,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : -1,
+						"z" : -1
+					},
+					"max" : {
+						"y" : 1.2,
+						"x" : 1,
+						"z" : 2
+					}
+				}
+			],
+			"masked" : {},
+			"placement_ground" : true,
+			"rotation" : 270,
+			"color_region" : {},
+			"flushed" : false,
+			"bid" : 198
+		},
+		"197" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 0,
+				"x" : 0,
+				"z" : -1
+			},
+			"adjacent" : {},
+			"fixtures" : {},
+			"cutter" : {},
+			"placement_walls" : true,
+			"masks" : {},
+			"uri" : "stonehearth:decoration:wooden_sign_herbalist",
+			"quality" : -1,
+			"total_mask" : {},
+			"rotation" : 0,
+			"sub_data_bid" : 127,
+			"hole_region" : {},
+			"flushed" : false,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : 0,
+						"z" : 0
+					},
+					"max" : {
+						"y" : 1,
+						"x" : 1,
+						"z" : 1
+					}
+				}
+			],
+			"masked" : {},
+			"placement_ground" : false,
+			"owner_bid" : 125,
+			"color_region" : {},
+			"origin" : {
+				"y" : 4,
+				"x" : 2,
+				"z" : 2
+			},
+			"bid" : 197
+		},
+		"195" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 1,
+				"x" : 0,
+				"z" : 0
+			},
+			"origin" : {
+				"y" : 40,
+				"x" : 781,
+				"z" : -422
+			},
+			"fixtures" : {},
+			"placement_walls" : false,
+			"masks" : {},
+			"uri" : "stonehearth:decoration:stone_brazier",
+			"quality" : -1,
+			"cutter" : {},
+			"adjacent" : {},
+			"total_mask" : {},
+			"hole_region" : {},
+			"owner_bid" : -1,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : 0,
+						"z" : 0
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 1
+					}
+				}
+			],
+			"masked" : {},
+			"placement_ground" : true,
+			"rotation" : 90,
+			"color_region" : {},
+			"flushed" : false,
+			"bid" : 195
+		},
+		"182" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 45,
+				"x" : 777,
+				"z" : -424
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 6,
+						"z" : -10
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 5,
+						"z" : -11
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 182,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"142" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
 				"y" : 43,
-				"x" : -1164,
-				"z" : -66
+				"x" : 769,
+				"z" : -427
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
 			"supported" : {
-				"622" : true
+				"131" : true,
+				"111" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 22,
+						"z" : -4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 21,
+						"z" : -5
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 16,
+						"z" : -4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 15,
+						"z" : -5
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 17,
+						"z" : -4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 16,
+						"z" : -5
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 18,
+						"z" : -4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 17,
+						"z" : -5
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 19,
+						"z" : -4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 18,
+						"z" : -5
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : -4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 19,
+						"z" : -5
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 21,
+						"z" : -4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 20,
+						"z" : -5
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 23,
+						"z" : -4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 22,
+						"z" : -5
+					},
+					"tag" : 3760482
+				}
+			],
+			"adjacent" : {
+				"125" : true,
+				"150" : true,
+				"111" : true
+			},
+			"supports" : {
+				"149" : true
+			},
+			"bid" : 142,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"191" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 0,
+				"x" : 0,
+				"z" : -1
+			},
+			"adjacent" : {},
+			"fixtures" : {},
+			"cutter" : {},
+			"placement_walls" : true,
+			"masks" : {},
+			"uri" : "stonehearth:decoration:stone_lantern_simple",
+			"quality" : -1,
+			"total_mask" : {},
+			"rotation" : 0,
+			"sub_data_bid" : 127,
+			"hole_region" : {},
+			"flushed" : false,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : 0,
+						"z" : 0
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 1
+					}
+				}
+			],
+			"masked" : {},
+			"placement_ground" : false,
+			"owner_bid" : 125,
+			"color_region" : {},
+			"origin" : {
+				"y" : 1,
+				"x" : -1,
+				"z" : 2
+			},
+			"bid" : 191
+		},
+		"123" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 1,
+				"x" : 0,
+				"z" : 0
+			},
+			"origin" : {
+				"y" : 1,
+				"x" : 4,
+				"z" : 12
+			},
+			"fixtures" : {},
+			"placement_walls" : false,
+			"masks" : {},
+			"uri" : "stonehearth:furniture:stone_bed",
+			"quality" : -1,
+			"cutter" : {},
+			"adjacent" : {},
+			"total_mask" : {},
+			"hole_region" : {},
+			"owner_bid" : 111,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : -1,
+						"z" : -2
+					},
+					"max" : {
+						"y" : 1,
+						"x" : 2,
+						"z" : 2
+					}
+				},
+				{
+					"min" : {
+						"y" : 0,
+						"x" : -1,
+						"z" : 2
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 2,
+						"z" : 3
+					}
+				}
+			],
+			"masked" : {},
+			"placement_ground" : true,
+			"rotation" : 0,
+			"color_region" : {},
+			"flushed" : false,
+			"bid" : 123
+		},
+		"140" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 45,
+				"x" : 769,
+				"z" : -429
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"111" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 22,
+						"z" : 0
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 21,
+						"z" : -1
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 14,
+						"z" : 0
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 13,
+						"z" : -1
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 15,
+						"z" : 0
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 14,
+						"z" : -1
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 16,
+						"z" : 0
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 15,
+						"z" : -1
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 17,
+						"z" : 0
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 16,
+						"z" : -1
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 18,
+						"z" : 0
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 17,
+						"z" : -1
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 19,
+						"z" : 0
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 18,
+						"z" : -1
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : 0
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 19,
+						"z" : -1
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 21,
+						"z" : 0
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 20,
+						"z" : -1
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 23,
+						"z" : 0
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 22,
+						"z" : -1
+					},
+					"tag" : 3760482
+				}
+			],
+			"adjacent" : {
+				"148" : true,
+				"111" : true,
+				"125" : true
+			},
+			"supports" : {
+				"147" : true
+			},
+			"bid" : 140,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"187" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 0,
+				"x" : 0,
+				"z" : 1
+			},
+			"adjacent" : {},
+			"fixtures" : {},
+			"cutter" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : -1,
+						"z" : 0
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 1
+					}
+				}
+			],
+			"placement_walls" : true,
+			"masks" : {},
+			"uri" : "stonehearth:portals:stone_window_frame",
+			"quality" : -1,
+			"total_mask" : {},
+			"rotation" : 180,
+			"sub_data_bid" : 129,
+			"hole_region" : {},
+			"flushed" : false,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : -1,
+						"z" : 0
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 1
+					}
+				}
+			],
+			"masked" : {
+				"125" : true
+			},
+			"placement_ground" : true,
+			"owner_bid" : 125,
+			"color_region" : {},
+			"origin" : {
+				"y" : 1,
+				"x" : 1,
+				"z" : 19
+			},
+			"bid" : 187
+		},
+		"162" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 44,
+				"x" : 776,
+				"z" : -438
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 8,
+						"z" : 18
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 7,
+						"z" : 17
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 162,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"166" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 47,
+				"x" : 783,
+				"z" : -438
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : -6,
+						"z" : 18
+					},
+					"min" : {
+						"y" : 0,
+						"x" : -7,
+						"z" : 17
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 166,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"163" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 43,
+				"x" : 775,
+				"z" : -438
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
 			},
 			"fixtures" : {},
 			"invalid_placement" : false,
@@ -10455,33 +9922,153 @@
 					"max" : {
 						"y" : 1,
 						"x" : 10,
-						"z" : -10
+						"z" : 18
 					},
 					"min" : {
 						"y" : 0,
 						"x" : 9,
+						"z" : 17
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 163,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"175" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 45,
+				"x" : 785,
+				"z" : -424
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : -10,
+						"z" : -10
+					},
+					"min" : {
+						"y" : 0,
+						"x" : -11,
 						"z" : -11
 					},
 					"tag" : 2176320
 				}
 			],
 			"adjacent" : {
-				"622" : true
+				"125" : true
 			},
 			"supports" : {},
-			"bid" : 681,
+			"bid" : 175,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"668" : {
+		"167" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 46,
+				"x" : 784,
+				"z" : -438
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : -8,
+						"z" : 18
+					},
+					"min" : {
+						"y" : 0,
+						"x" : -9,
+						"z" : 17
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 167,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"173" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 47,
+				"x" : 783,
+				"z" : -424
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : -6,
+						"z" : -10
+					},
+					"min" : {
+						"y" : 0,
+						"x" : -7,
+						"z" : -11
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 173,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"171" : {
 			"removed" : false,
 			"kind" : 3,
 			"color_region" : {},
 			"origin" : {
 				"y" : 42,
-				"x" : -1151,
-				"z" : -80
+				"x" : 788,
+				"z" : -438
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
@@ -10530,22 +10117,733 @@
 				}
 			],
 			"adjacent" : {
-				"622" : true
+				"125" : true
 			},
 			"supports" : {},
-			"bid" : 668,
+			"bid" : 171,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"642" : {
+		"202" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 1,
+				"x" : 0,
+				"z" : 0
+			},
+			"origin" : {
+				"y" : 1,
+				"x" : 3,
+				"z" : 4
+			},
+			"fixtures" : {},
+			"placement_walls" : false,
+			"masks" : {},
+			"uri" : "stonehearth:containers:input_shelf:ground:stone",
+			"quality" : -1,
+			"cutter" : {},
+			"adjacent" : {},
+			"total_mask" : {},
+			"hole_region" : {},
+			"owner_bid" : 111,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : 0,
+						"z" : -1
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 2
+					}
+				}
+			],
+			"masked" : {},
+			"placement_ground" : true,
+			"rotation" : 270,
+			"color_region" : {},
+			"flushed" : false,
+			"bid" : 202
+		},
+		"165" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 48,
+				"x" : 782,
+				"z" : -438
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : -4,
+						"z" : 18
+					},
+					"min" : {
+						"y" : 0,
+						"x" : -5,
+						"z" : 17
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 165,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"153" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 45,
+				"x" : 770,
+				"z" : -434
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"135" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : 10
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 19,
+						"z" : 9
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"136" : true
+			},
+			"supports" : {},
+			"bid" : 153,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"184" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 43,
+				"x" : 775,
+				"z" : -424
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 10,
+						"z" : -10
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 9,
+						"z" : -11
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 184,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"144" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 49,
+				"x" : 781,
+				"z" : -422
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : -2,
+						"z" : -14
+					},
+					"min" : {
+						"y" : 0,
+						"x" : -3,
+						"z" : -16
+					},
+					"tag" : 2176320
+				},
+				{
+					"max" : {
+						"y" : -1,
+						"x" : -2,
+						"z" : -14
+					},
+					"min" : {
+						"y" : -2,
+						"x" : -3,
+						"z" : -16
+					},
+					"tag" : 2176320
+				},
+				{
+					"max" : {
+						"y" : 0,
+						"x" : -2,
+						"z" : -15
+					},
+					"min" : {
+						"y" : -1,
+						"x" : -3,
+						"z" : -16
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {
+				"125" : true
+			},
+			"bid" : 144,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"155" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 44,
+				"x" : 770,
+				"z" : -435
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"134" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : 12
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 19,
+						"z" : 11
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"135" : true
+			},
+			"supports" : {},
+			"bid" : 155,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"190" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 0,
+				"x" : 0,
+				"z" : -1
+			},
+			"adjacent" : {},
+			"fixtures" : {},
+			"cutter" : {},
+			"placement_walls" : true,
+			"masks" : {},
+			"uri" : "stonehearth:decoration:stone_lantern_simple",
+			"quality" : -1,
+			"total_mask" : {},
+			"rotation" : 0,
+			"sub_data_bid" : 127,
+			"hole_region" : {},
+			"flushed" : false,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : 0,
+						"z" : 0
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 1
+					}
+				}
+			],
+			"masked" : {},
+			"placement_ground" : false,
+			"owner_bid" : 125,
+			"color_region" : {},
+			"origin" : {
+				"y" : 1,
+				"x" : 5,
+				"z" : 2
+			},
+			"bid" : 190
+		},
+		"201" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 1,
+				"x" : 0,
+				"z" : 0
+			},
+			"origin" : {
+				"y" : 1,
+				"x" : 11,
+				"z" : 1
+			},
+			"fixtures" : {},
+			"placement_walls" : false,
+			"masks" : {},
+			"uri" : "stonehearth:containers:input_shelf:ground:stone",
+			"quality" : -1,
+			"cutter" : {},
+			"adjacent" : {},
+			"total_mask" : {},
+			"hole_region" : {},
+			"owner_bid" : 111,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : 0,
+						"z" : -1
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 2
+					}
+				}
+			],
+			"masked" : {},
+			"placement_ground" : true,
+			"rotation" : 90,
+			"color_region" : {},
+			"flushed" : false,
+			"bid" : 201
+		},
+		"189" : {
+			"removed" : false,
+			"direction" : {
+				"y" : 0,
+				"x" : 1,
+				"z" : 0
+			},
+			"adjacent" : {},
+			"fixtures" : {},
+			"cutter" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : 0,
+						"z" : -1
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 2
+					}
+				}
+			],
+			"placement_walls" : true,
+			"masks" : {},
+			"uri" : "stonehearth:portals:stone_window_frame_wide",
+			"quality" : -1,
+			"total_mask" : {},
+			"rotation" : 270,
+			"sub_data_bid" : 116,
+			"hole_region" : {},
+			"flushed" : false,
+			"__classname" : "stonehearth:FixtureData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"bounds" : [
+				{
+					"min" : {
+						"y" : 0,
+						"x" : 0,
+						"z" : -1
+					},
+					"max" : {
+						"y" : 2,
+						"x" : 1,
+						"z" : 2
+					}
+				}
+			],
+			"masked" : {
+				"111" : true
+			},
+			"placement_ground" : true,
+			"owner_bid" : 111,
+			"color_region" : {},
+			"origin" : {
+				"y" : 3,
+				"x" : 19,
+				"z" : 7
+			},
+			"bid" : 189
+		},
+		"138" : {
 			"removed" : false,
 			"kind" : 1,
 			"color_region" : {},
 			"origin" : {
 				"y" : 47,
-				"x" : -1158,
-				"z" : -82
+				"x" : 769,
+				"z" : -431
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"143" : true,
+				"111" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 23,
+						"z" : 4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 21,
+						"z" : 3
+					},
+					"tag" : 2176320
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : 4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 11,
+						"z" : 3
+					},
+					"tag" : 2176320
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 21,
+						"z" : 4
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 20,
+						"z" : 3
+					},
+					"tag" : 3097678
+				}
+			],
+			"adjacent" : {
+				"146" : true,
+				"125" : true,
+				"152" : true,
+				"143" : true
+			},
+			"supports" : {},
+			"bid" : 138,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"185" : {
+			"removed" : false,
+			"kind" : 5,
+			"color_region" : {},
+			"origin" : {
+				"y" : 42,
+				"x" : 774,
+				"z" : -424
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : {},
+			"adjacent" : {},
+			"supports" : {},
+			"bid" : 185,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"141" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 44,
+				"x" : 769,
+				"z" : -428
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"111" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 22,
+						"z" : -2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 21,
+						"z" : -3
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 15,
+						"z" : -2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 14,
+						"z" : -3
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 16,
+						"z" : -2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 15,
+						"z" : -3
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 17,
+						"z" : -2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 16,
+						"z" : -3
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 18,
+						"z" : -2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 17,
+						"z" : -3
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 19,
+						"z" : -2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 18,
+						"z" : -3
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 20,
+						"z" : -2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 19,
+						"z" : -3
+					},
+					"tag" : 3822420
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 21,
+						"z" : -2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 20,
+						"z" : -3
+					},
+					"tag" : 3163462
+				},
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 23,
+						"z" : -2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 22,
+						"z" : -3
+					},
+					"tag" : 3760482
+				}
+			],
+			"adjacent" : {
+				"125" : true,
+				"149" : true,
+				"111" : true
+			},
+			"supports" : {
+				"148" : true
+			},
+			"bid" : 141,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"181" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 46,
+				"x" : 778,
+				"z" : -424
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
+			},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 4,
+						"z" : -10
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 3,
+						"z" : -11
+					},
+					"tag" : 2176320
+				}
+			],
+			"adjacent" : {
+				"125" : true
+			},
+			"supports" : {},
+			"bid" : 181,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"145" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 47,
+				"x" : 781,
+				"z" : -440
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
@@ -10581,130 +10879,86 @@
 				}
 			],
 			"adjacent" : {
-				"622" : true
+				"125" : true
 			},
 			"supports" : {
-				"622" : true
+				"125" : true
 			},
-			"bid" : 642,
+			"bid" : 145,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
 		},
-		"620" : {
+		"208" : {
 			"removed" : false,
-			"direction" : {
-				"y" : 1,
-				"x" : 0,
-				"z" : 0
-			},
+			"kind" : 0,
+			"color_region" : {},
 			"origin" : {
-				"y" : 1,
-				"x" : 4,
-				"z" : 12
+				"y" : 40,
+				"x" : 786,
+				"z" : -435
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {},
+			"fixtures" : {},
+			"invalid_placement" : false,
+			"blocks" : {},
+			"adjacent" : {},
+			"supports" : {},
+			"bid" : 208,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
+		},
+		"168" : {
+			"removed" : false,
+			"kind" : 1,
+			"color_region" : {},
+			"origin" : {
+				"y" : 45,
+				"x" : 785,
+				"z" : -438
+			},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {
+				"125" : true
 			},
 			"fixtures" : {},
-			"placement_walls" : false,
-			"masks" : {},
-			"uri" : "stonehearth:furniture:stone_bed",
-			"quality" : -1,
-			"cutter" : {},
-			"adjacent" : {},
-			"total_mask" : {},
-			"hole_region" : {},
-			"owner_bid" : 608,
-			"__classname" : "stonehearth:FixtureData",
-			"supported" : {},
-			"supports" : {},
 			"invalid_placement" : false,
-			"bounds" : [
+			"blocks" : [
 				{
-					"min" : {
-						"y" : 0,
-						"x" : -1,
-						"z" : -2
-					},
 					"max" : {
 						"y" : 1,
-						"x" : 2,
-						"z" : 2
-					}
-				},
-				{
+						"x" : -10,
+						"z" : 18
+					},
 					"min" : {
 						"y" : 0,
-						"x" : -1,
-						"z" : 2
+						"x" : -11,
+						"z" : 17
 					},
-					"max" : {
-						"y" : 2,
-						"x" : 2,
-						"z" : 3
-					}
+					"tag" : 2176320
 				}
 			],
-			"masked" : {},
-			"placement_ground" : true,
-			"rotation" : 0,
-			"color_region" : {},
-			"flushed" : false,
-			"bid" : 620
-		},
-		"696" : {
-			"removed" : false,
-			"direction" : {
-				"y" : 1,
-				"x" : 0,
-				"z" : 0
+			"adjacent" : {
+				"125" : true
 			},
-			"origin" : {
-				"y" : 1,
-				"x" : 14,
-				"z" : 4
-			},
-			"fixtures" : {},
-			"placement_walls" : false,
-			"masks" : {},
-			"uri" : "stonehearth_ace:northern_alliance:herbalist:cauldron",
-			"quality" : -1,
-			"cutter" : {},
-			"adjacent" : {},
-			"total_mask" : {},
-			"hole_region" : {},
-			"owner_bid" : 608,
-			"__classname" : "stonehearth:FixtureData",
-			"supported" : {},
 			"supports" : {},
-			"invalid_placement" : false,
-			"bounds" : [
-				{
-					"min" : {
-						"y" : 0,
-						"x" : 0,
-						"z" : 0
-					},
-					"max" : {
-						"y" : 2,
-						"x" : 2,
-						"z" : 2
-					}
-				}
-			],
-			"masked" : {},
-			"placement_ground" : true,
-			"rotation" : 180,
-			"color_region" : {},
-			"flushed" : false,
-			"bid" : 696
+			"bid" : 168,
+			"masks" : {},
+			"hole_region" : {},
+			"masked" : {}
 		},
-		"682" : {
+		"164" : {
 			"removed" : false,
 			"kind" : 5,
 			"color_region" : {},
 			"origin" : {
 				"y" : 42,
-				"x" : -1165,
-				"z" : -66
+				"x" : 774,
+				"z" : -438
 			},
 			"flushed" : false,
 			"__classname" : "stonehearth:BlocksData",
@@ -10716,12 +10970,12 @@
 					"max" : {
 						"y" : 1,
 						"x" : 12,
-						"z" : -10
+						"z" : 18
 					},
 					"min" : {
 						"y" : -1,
 						"x" : 11,
-						"z" : -11
+						"z" : 17
 					},
 					"tag" : 2176320
 				},
@@ -10729,12 +10983,12 @@
 					"max" : {
 						"y" : 0,
 						"x" : 13,
-						"z" : -10
+						"z" : 18
 					},
 					"min" : {
 						"y" : -2,
 						"x" : 12,
-						"z" : -11
+						"z" : 17
 					},
 					"tag" : 2176320
 				},
@@ -10742,150 +10996,63 @@
 					"max" : {
 						"y" : -1,
 						"x" : 14,
-						"z" : -10
+						"z" : 18
 					},
 					"min" : {
 						"y" : -2,
 						"x" : 13,
-						"z" : -11
-					},
-					"tag" : 2176320
-				}
-			],
-			"adjacent" : {
-				"622" : true
-			},
-			"supports" : {},
-			"bid" : 682,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"628" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 42,
-				"x" : -1164,
-				"z" : -69
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"608" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 10,
-						"z" : -4
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 9,
-						"z" : -5
-					},
-					"tag" : 5459270
-				}
-			],
-			"adjacent" : {
-				"622" : true,
-				"608" : true
-			},
-			"supports" : {
-				"639" : true
-			},
-			"bid" : 628,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"656" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 47,
-				"x" : -1160,
-				"z" : -80
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : 2,
-						"z" : 18
-					},
-					"min" : {
-						"y" : 0,
-						"x" : 1,
-						"z" : 17
-					},
-					"tag" : 5459270
-				}
-			],
-			"adjacent" : {
-				"622" : true,
-				"693" : true
-			},
-			"supports" : {
-				"693" : true
-			},
-			"bid" : 656,
-			"masks" : {},
-			"hole_region" : {},
-			"masked" : {}
-		},
-		"666" : {
-			"removed" : false,
-			"kind" : 1,
-			"color_region" : {},
-			"origin" : {
-				"y" : 44,
-				"x" : -1153,
-				"z" : -80
-			},
-			"flushed" : false,
-			"__classname" : "stonehearth:BlocksData",
-			"supported" : {
-				"622" : true
-			},
-			"fixtures" : {},
-			"invalid_placement" : false,
-			"blocks" : [
-				{
-					"max" : {
-						"y" : 1,
-						"x" : -12,
-						"z" : 18
-					},
-					"min" : {
-						"y" : 0,
-						"x" : -13,
 						"z" : 17
 					},
 					"tag" : 2176320
 				}
 			],
 			"adjacent" : {
-				"622" : true
+				"125" : true
 			},
 			"supports" : {},
-			"bid" : 666,
+			"bid" : 164,
 			"masks" : {},
 			"hole_region" : {},
 			"masked" : {}
+		},
+		"120" : {
+			"removed" : false,
+			"origin" : {
+				"y" : 40,
+				"x" : 769,
+				"z" : -434
+			},
+			"fixtures" : {},
+			"blocks" : [
+				{
+					"max" : {
+						"y" : 1,
+						"x" : 13,
+						"z" : -2
+					},
+					"min" : {
+						"y" : 0,
+						"x" : 6,
+						"z" : -3
+					},
+					"tag" : 5459270
+				}
+			],
+			"bid" : 120,
+			"masks" : {},
+			"masked" : {},
+			"hole_region" : {},
+			"flushed" : false,
+			"__classname" : "stonehearth:BlocksData",
+			"supported" : {},
+			"supports" : {},
+			"invalid_placement" : false,
+			"brush" : "\"userdata\"",
+			"color_region" : {},
+			"kind" : 0,
+			"adjacent" : {
+				"111" : true
+			}
 		}
 	}
 }

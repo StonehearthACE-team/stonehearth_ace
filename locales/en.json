@@ -23,9 +23,18 @@
             "carving": "carving [name(data.target)]",
             "periodic_interaction": {
                "default": "interacting with [name(data.target)]",
+               "discovery": "making a discovery",
                "find_native_seed": {
-                  "default": "fiddling with [name(data.target)]",
-                  "specific_1": "searching [name(data.target)]"
+                  "preparing": "preparing to explore wild seeds",
+                  "herb": "fiddling with native herbs",
+                  "water": "studying native water plants",
+                  "fungi": "searching for native fungi"
+               },
+               "find_exotic_seed": {
+                  "preparing": "preparing to explore exotic seeds",
+                  "herb": "searching for exotic herbs",
+                  "water": "looking for exotic water plants",
+                  "fungi": "observing exotic fungi"
                }
             }
          }
@@ -1004,19 +1013,19 @@
                         },
                         "msg3": {
                            "bulletin_message": {
-                              "00": "\"It warms my heart to hear that.\" He begins to speak more confidently. \"These are difficult and complex arts - but they can be mastered.<span class='minor'>It simply requires the correct knowledge and the right materials,</span> and if it can be done in the middle of a battlefield, as orc arrows fly over our heads, while we try to bring back our friends and brothers-in-arms from the cold grasp of...\"<br><br>He's now staring off into the horizon.<br><br>\"Forgive me, I digress. We have peace, but I fear your town might still be found by trouble. Be grateful that you have a capable <span class='major'>healer</span> that is also able to <span class='minor'>grow and tend to herbs of multiple types and colors</span>, for these are your most important resources.\""
+                              "00": "\"It warms my heart to hear that.\" He begins to speak more confidently. \"These are difficult and complex arts - but they can be mastered.<span class='minor'>It simply requires the correct knowledge and the right materials,</span> and if it can be done in the middle of a battlefield, as orc arrows fly over our heads, while we try to bring back our friends and brothers-in-arms from the cold grasp of...\"<br><br>He's now staring off into the horizon.<br><br>\"Forgive me, I digress. We have peace, but I fear your town might still be found by trouble. Be grateful that you have a capable <span class='major'>healer</span> that is also able to <span class='minor'>find, grow and tend to herbs of multiple types</span>, for these are your most important resources.\""
                            },
                            "choice_000": "Ooookay?"
                         },
                         "msg4": {
                            "bulletin_message": {
-                              "00": "\"There are basically<span class='minor'>six colors of herbs.</span> <span class='major'>Red, green, and blue, </span>known as the common ones, represent the most <span class='minor'>common values like our Body, our Mind, and our Spirit.</span> <span class='major'>Yellow, White, and Purple, </span>known as uncommon herbs, represent amplifications or reductions of these values.<br>Every herb can be either <span class='minor'>Aromatic - which means they're good for us</span>, usually even edible! - or <span class='minor'>Bitter, which are the ones we must be careful with, </span>as they can be harmful or cause reactions. It is important to have as many herbs as you can since they're useful for many things... But when talking about healing,<span class='major'> Red Aromatic</span> herbs are your best friend and the most common for healing tonics.\""
+                              "00": "\"There are basically<span class='minor'> eight types of herbs.</span> <span class='major'>Healing, soothing and noxious </span>are their main types and represent their most <span class='minor'>important property for use.</span> <span class='major'>Mild, robust and peculiar </span>are quality enhancers and represent the complexity level of a product or recipe they're used for.<br>And there are also two other properties, <span class='minor'>Zesty - which means they're tasty and fragrant</span>, popular in cooking! - or <span class='minor'>Pungent, which are usually bitter or very strong in flavor or smell, </span>commonly used in brewing. It is important to have as many herbs as you can since they're useful for many things... But when talking about saving lives,<span class='major'> healing and soothing</span> herbs are your best friends.\""
                            },
                            "choice_000": "Useful!"
                         },
                         "msg5": {
                            "bulletin_message": {
-                              "00": "\"A Farmer can grow beautiful gardens, but only someone specialized with herbs like an<span class='major'> Herbalist</span> <span class='minor'>can truly unlock their potential by utilizing planters</span>. There are many types of them, big and small, some for algae or water lilies, some for tree saplings... I'm sure you have your own by now, or at least want to! You should, indeed: just a <span class='minor'>single seed</span> of the type of plant you want will provide you with a <span class='minor'>lifelong production</span> of that herb!\"<br>He smiles. \"But it is how you'll use them that truly matters. And there's no better use than dealing with wounds or recovering the health of those that did battle to defend their homeland. It is quite possible that after battling, a hearthling will be <span class='major'>wounded.</span>\""
+                              "00": "\"A Farmer can grow beautiful gardens, but only someone specialized with herbs like an<span class='major'> Herbalist</span> <span class='minor'>can truly unlock their potential by utilizing planters</span>. There are many types of them, big and small, some for algae or water lilies, some for tree saplings... I'm sure you have your own by now, or at least want to! You should, indeed. And you also need an <span class='major'>exploration garden</span> to be able to <span class='minor'>find more seeds in the wilderness</span>!\"<br>He smiles. \"You really want to collect them all, believe me! There's no better use than dealing with wounds of those that did battle to defend their homeland. It is quite possible that after battling, a hearthling will be <span class='major'>wounded.</span>\""
                            },
                            "choice_000": "Oh no!"
                         },
@@ -2323,6 +2332,14 @@
                      "tooltip": "The Frostfather is here and we've helped in making this Frostfeast special! Hooray!"
                   }
                }
+            },
+            "planters": {
+               "values": {
+                  "tended_planter": {
+                     "display_name": "Tended plants",
+                     "tooltip": "Aww! It's so nice to see the plants and flowers of our town are happy and well cared for!"
+                  }
+               }
             }
          }
       },
@@ -3179,6 +3196,10 @@
             "fermenting_vat_fill_wort_ale_pale": {
                "display_name": "Produce Pale Ale",
                "description": "Order the Brewer to fill this fermenting vat with pale ale wort to start brewing! It will continue producing Pale Ale unless a new command is given."
+            },
+            "exploration_garden_refill": {
+               "display_name": "Add Fertilizer",
+               "description": "The Herbalist is going to refill this garden with fertilizer so it can be used to find new crops again! This command is active by default."
             }
          },
          "slaughter": {
@@ -4186,6 +4207,10 @@
          "garlic_breath": {
             "display_name": "Garlic Breath",
             "description": "Maybe eating a whole garlic wasn't a good idea... Courage is reduced.<ul><li>This hearthling will not be willing to start conversations as much</li></ul>"
+         },
+         "tended_planter": {
+            "display_name": "Tended Planter",
+            "description": "This planter has been tended to and will occasionally give happy thoughts to everyone around it!"
          }
       },
       "loadouts": {
@@ -4946,6 +4971,16 @@
                "description": "Trade or gift it to allow other cultures to cultivate frostsnap flowers!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
+            "rose_seeds_recipe": {
+               "recipe_name": "Rose Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate roses!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "oleander_seeds_recipe": {
+               "recipe_name": "Oleander Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate oleander flowers!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "acacia_tree_seeds_recipe": {
                "recipe_name": "Acacia Seeds",
                "description": "Domesticate Acacia trees and learn how to farm them.",
@@ -4991,6 +5026,11 @@
                "description": "Domesticate Cherry Bushes and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
+            "cherry_bush_seeds_2_recipe": {
+               "recipe_name": "Dried Cherries",
+               "description": "Trade or gift it to allow other cultures to cultivate cherry bushes!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "tea_bush_seeds_recipe": {
                "recipe_name": "Tea Seedpods",
                "description": "Domesticate Tea Shrubs and learn how to farm them.",
@@ -5000,6 +5040,11 @@
                "recipe_name": "Green Coffee Beans",
                "description": "Domesticate Coffee Plants and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "coffee_bush_seeds_2_recipe": {
+               "recipe_name": "Green Coffee Beans",
+               "description": "Trade or gift it to allow other cultures to cultivate coffee plants!",
+               "flavor": "This farming crop is already known to your farmers by default"
             },
             "pear_cactus_seeds_recipe": {
                "recipe_name": "Dried Prickly Pears",
@@ -5011,15 +5056,30 @@
                "description": "Domesticate Dwarfsbeard bushes and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
+            "dwarfsbeard_seeds_2_recipe": {
+               "recipe_name": "Dwarfsbeard Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate dwarfsbeard bushes!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "tumbleweed_seeds_recipe": {
                "recipe_name": "Tumbleweed Seeds",
                "description": "Domesticate Tumbleweed bushes and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
+            "tumbleweed_seeds_2_recipe": {
+               "recipe_name": "Tumbleweed Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate tumbleweed bushes!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "wintermoss_seeds_recipe": {
                "recipe_name": "Wintermoss Seeds",
                "description": "Domesticate Wintermoss bushes and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "wintermoss_seeds_2_recipe": {
+               "recipe_name": "Wintermoss Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate wintermoss bushes!",
+               "flavor": "This farming crop is already known to your farmers by default"
             },
             "apple_tree_seeds_recipe": {
                "recipe_name": "Apple Cores",
@@ -5149,6 +5209,16 @@
             "carrot_seeds_2_recipe": {
                "recipe_name": "Carrot Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate carrots!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "berry_bush_seeds_2_recipe": {
+               "recipe_name": "Dried Berries",
+               "description": "Trade or gift it to allow other cultures to cultivate berry bushes!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "pear_cactus_seeds_2_recipe": {
+               "recipe_name": "Dried Prickly Pears",
+               "description": "Trade or gift it to allow other cultures to cultivate prickly pear cacti!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "pumpkin_seeds_recipe": {
@@ -5549,7 +5619,7 @@
          "herbalist_description": {
             "level_2_data": {
                "taming_local_flora_name": "Botany & Collaborative Insight",
-               "taming_local_flora_description": "The Herbalist has acquired sufficient knowledge of the area to learn how to cultivate the local flora. They are also now skillful enough to use materials created by the other crafters, become a Cleric or follow a career as a Brewer.",
+               "taming_local_flora_description": "The Herbalist has acquired sufficient knowledge of the area to learn how to cultivate the local flora. By building an Exploration Garden, they are able to look for new seeds to be planted! They are also now skillful enough to use materials created by the other crafters, become a Cleric or follow a career as a Brewer.",
                "collaborative_insight_description": "The Herbalist is now skillful enough to use materials created by the other crafters and is also able to become a Cleric"
             },
             "level_3_data": {
@@ -5626,10 +5696,37 @@
             "periodic_interaction": {
                "modes": {
                   "find_native_seed": {
-                     "display_name": "Find Native Seed",
-                     "description": "Prioritize finding a seed for a native plant. This process is faster and more reliable than searching for exotic seeds."
+                     "herb": {
+                        "display_name": "Find Native Herb",
+                        "description": "Prioritize finding seeds for a plant native to this biome. This process is faster and more reliable than searching for exotic seeds. Requires a level 2 Herbalist or Grower."
+                     },
+                     "water": {
+                        "display_name": "Find Native Water Crop",
+                        "description": "Prioritize finding a water plant native to this biome's water bodies. A faster and more reliable process than searching for exotic ones. Requires a level 3 Herbalist or Grower."
+                     },
+                     "fungi": {
+                        "display_name": "Find Native Mushroom",
+                        "description": "Prioritize finding a mushroom native to this biome. This process is faster and more reliable than searching for exotic fungi. Requires a level 5 Herbalist or Grower."
+                     }
+                  },
+                  "find_exotic_seed": {
+                     "herb": {
+                        "display_name": "Find Exotic Herb",
+                        "description": "Try to look for an exotic herb from anywhere in the world. A slower process that relies both on luck and dedication, sometimes finding only native seeds. Requires a level 4 Herbalist or Grower."
+                     },
+                     "water": {
+                        "display_name": "Find Exotic Water Crop",
+                        "description": "Search for an exotic water plant from anywhere in the world. A slower process that relies both on luck and dedication, sometimes finding only native plants. Requires a level 4 Herbalist or Grower."
+                     },
+                     "fungi": {
+                        "display_name": "Find Exotic Mushroom",
+                        "description": "Try to look for an exotic mushroom from anywhere in the world. A slower process that relies both on luck and dedication, sometimes finding only native fungi. Requires a level 6 Herbalist or Grower."
+                     }
                   }
                }
+            },
+            "expired": {
+               "description": "This garden is depleted and requires more fertilizer to be used again!"
             }
          },
          "unlock_crop": {
@@ -7800,7 +7897,7 @@
          },
          "cook_description": {
             "level_2_data": {
-               "recipe_unlock_2_description": "The Cook has learned to make slightly fancier recipes and can now build an oven for delicious baked goods."
+               "recipe_unlock_2_description": "The Cook has learned to make slightly fancier recipes and can now build an oven for delicious baked goods and a leavening table to let their doughs rise - a process necessary for baking."
             },
             "level_4_data": {
                "ornate_perk_name": "Healthier Diets",
@@ -17092,7 +17189,7 @@
                "description": "Can be planted for a climbable vine. Provides robust or pungent herbs."
             },
             "bud": {
-               "display_name": "Budding Highland Vine",
+               "display_name": "Highland Vine Starter",
                "description": "This vine is starting to grow. Who knows how big it will get?"
             },
             "sprout": {
@@ -17106,7 +17203,7 @@
                "description": "Can be planted to grow a spreading and delicate flowering carpet."
             },
             "bud": {
-               "display_name": "Budding Daisies",
+               "display_name": "Daisy Flower Starter",
                "description": "Soon they'll be spreading all around!"
             },
             "sprout": {
@@ -19216,7 +19313,6 @@
                      "supply_fiber_thatch": "Fiber & Thatch Supply (Default)",
                      "supply_weaver": "Weaving Supplies (Default)",
                      "supply_metalworker": "Metalworking Supplies (Default)",
-                     "supply_baking": "Baking Supplies (Default)",
                      "supply_veggie_fruit": "Veggie & Fruit Supply (Default)",
                      "supply_meat": "Meat Supply (Default)",
                      "decayables_vegetables": "Preservable Vegetables (Default)",

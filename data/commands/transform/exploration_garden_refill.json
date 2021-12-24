@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "exploration_garden_refill",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.exploration_garden_refill.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.exploration_garden_refill.description)",
+   "default_enabled": true,
+   "ordinal": 100,
+   "icon": "file(exploration_garden_refill.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "exploration_garden_refill"
+   ]
+}

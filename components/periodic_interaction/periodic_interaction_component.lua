@@ -179,7 +179,7 @@ function PeriodicInteractionComponent:initialize()
 
    self._sv._mode_sequences = {}
    self._sv.ui_data = {}
-   self._sv.current_mode = nil
+   self._sv.current_mode = self._json.default_mode or nil
    self._sv.current_user = nil
    self._sv.current_owner = nil
    self._sv.interaction_stage = 1
@@ -256,6 +256,7 @@ function PeriodicInteractionComponent:set_enabled_command(session, response, ena
 end
 
 function PeriodicInteractionComponent:select_mode_command(session, response, mode)
+   self:_reset(false, true)
    self:select_mode(mode)
    return true
 end

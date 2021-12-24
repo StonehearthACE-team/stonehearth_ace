@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(../daisies.qb)",
+                     "file(../daisies_2.qb)",
+                     "file(../daisies_3.qb)",
+                     "file(../daisies_4.qb)",
+                     "file(../daisies_5.qb)",
+                     "file(../daisies_6.qb)",
+                     "file(../daisies_7.qb)",
+                     "file(../daisies_8.qb)",
+                     "file(../daisies_9.qb)",
+                     "file(../daisies_10.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.vines.daisies.bud.display_name)",
+         "description": "i18n(stonehearth_ace:entities.vines.daisies.seed.description)",
+         "icon": "file(daisies_bud.png)",
+         "material_tags": [
+            "plant"
+         ],
+         "category": "plant"
+      }
+   }
+}
