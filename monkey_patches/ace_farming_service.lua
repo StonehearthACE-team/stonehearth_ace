@@ -5,6 +5,8 @@ local Region3 = _radiant.csg.Region3
 local FarmingService = require 'stonehearth.services.server.farming.farming_service'
 AceFarmingService = class()
 
+local log = radiant.log.create_logger('farming_service')
+
 function AceFarmingService:_load_field_types()
    local data = radiant.resources.load_json('stonehearth:farmer:all_crops')
    self._field_types = data.field_types
@@ -34,6 +36,15 @@ function AceFarmingService:create_new_field(session, location, size, field_type,
    return entity
 end
 
+function AceFarmingService:_ensure_herbalist_crops_loaded()
+   if not self._herbalist_crops then
+      local herbalist_crops_data = radiant.resources.load_json('stonehearth_ace:data:herbalist_planter:crops')
+      self._herbalist_crops = herbalist_crops_data.crops
+   end
+
+   return self._herbalist_crops
+end
+
 function AceFarmingService:_get_crop_list(session)
    local player_id = session.player_id
    local crop_list = self._data.player_crops[player_id]
@@ -58,10 +69,45 @@ function AceFarmingService:_get_crop_list(session)
                field_types = crop.field_types or {farm = true}
             }
          end
+
+         -- then also add any herbalist crops
+         local herbalist_crops = self:_ensure_herbalist_crops_loaded()
+         if herbalist_crops then
+            for key, crop in pairs(herbalist_crops) do
+               log:debug('adding herbalist crop %s to crop list...', key)
+               if not crop_list[key] then
+                  crop_list[key] = {}
+               end
+               crop_list[key].herbalist_crop_info = {
+                  crop_key = key,
+                  crop_type = crop.product_uri,
+                  crop_info = self:get_herbalist_crop_details(crop),
+                  crop_level_requirement = crop.level,
+                  ordinal = crop.ordinal,
+                  initial_crop = kingdom_crops[key],
+                  hidden = crop.hidden,
+                  --planter_types = {}   -- do we want/need to include this here?
+               }
+            end
+         end
       end
       self._data.player_crops[player_id] = crop_list
    end
    return crop_list
+end
+
+function AceFarmingService:get_herbalist_crop_details(crop_data)
+   local uri = crop_data.product_uri
+   local details = self._crop_details[uri]
+   if not details then
+      details = {}
+      details.uri = uri
+      details.name = crop_data.display_name
+      details.description = crop_data.description
+      details.icon = crop_data.icon
+      self._crop_details[uri] = details
+   end
+   return details
 end
 
 --- Given a new crop type, record some important things about it

@@ -94,11 +94,20 @@
             "unfermented_mead_fruit": {
                "recipe": "file(unfermented_mead_fruit_recipe.json)"
             },
-            "wort": {
-               "recipe": "file(wort_recipe.json)"
+            "wort_ale": {
+               "recipe": "file(wort_ale_recipe.json)"
             },
-            "wort_gruit": {
-               "recipe": "file(wort_gruit_recipe.json)"
+            "wort_ale_pale": {
+               "recipe": "file(wort_ale_pale_recipe.json)"
+            },
+            "wort_beer": {
+               "recipe": "file(wort_beer_recipe.json)"
+            },
+            "wort_beer_white": {
+               "recipe": "file(wort_beer_white_recipe.json)"
+            },
+            "wort_beer_opaque": {
+               "recipe": "file(wort_beer_opaque_recipe.json)"
             },
             "must_berry": {
                "recipe": "file(must_berry_recipe.json)"
@@ -184,6 +193,12 @@
             "tea_desert": {
                "recipe": "file(tea_desert_recipe.json)"
             },
+            "tea_green": {
+               "recipe": "file(tea_green_recipe.json)"
+            },
+            "tea_black": {
+               "recipe": "file(tea_black_recipe.json)"
+            },
             "tea_amberstone": {
                "recipe": "file(tea_amberstone_recipe.json)"
             },
@@ -207,6 +222,21 @@
             },
             "coffee": {
                "recipe": "file(coffee_recipe.json)"
+            },
+            "coffee_milk": {
+               "recipe": "file(coffee_milk_recipe.json)"
+            },
+            "coffee_bold": {
+               "recipe": "file(coffee_bold_recipe.json)"
+            },
+            "coffee_lavish": {
+               "recipe": "file(coffee_lavish_recipe.json)"
+            },
+            "ale_table": {
+               "recipe": "file(ale_table_recipe.json)"
+            },
+				"beer_buttered": {
+               "recipe": "file(beer_buttered_serving_keg_recipe.json)"
             }
          }
       },
@@ -217,11 +247,17 @@
             "beer_serving_keg": {
                "recipe": "file(beer_serving_keg_recipe.json)"
             },
+            "beer_white_serving_keg": {
+               "recipe": "file(beer_white_serving_keg_recipe.json)"
+            },
+            "beer_opaque_serving_keg": {
+               "recipe": "file(beer_opaque_serving_keg_recipe.json)"
+            },
 				"ale_serving_keg": {
                "recipe": "file(ale_serving_keg_recipe.json)"
             },
-				"beer_buttered": {
-               "recipe": "file(beer_buttered_serving_keg_recipe.json)"
+				"ale_pale_serving_keg": {
+               "recipe": "file(ale_pale_serving_keg_recipe.json)"
             },
 				"spirit_serving_keg": {
                "recipe": "file(spirit_serving_keg_recipe.json)"
@@ -282,7 +318,7 @@
          }
       },
 		"frostfeast": {
-         "ordinal": 999,
+         "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
 				"frostfeast_egg_milk_punch": {

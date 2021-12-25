@@ -6,9 +6,18 @@ PlantHerbalistPlanter.name = 'plant herbalist planter'
 PlantHerbalistPlanter.does = 'stonehearth_ace:plant_herbalist_planter'
 PlantHerbalistPlanter.args = {
    planter = Entity,    -- the planter that needs to be planted in
-   seed_uri = 'string'  -- the uri of the seed needed for planting
+   seed_uri = {         -- the uri of the seed needed for planting
+      type = 'string',
+      default = stonehearth.ai.NIL,
+   }
 }
 PlantHerbalistPlanter.priority = 0
+
+function PlantHerbalistPlanter:start_thinking(ai, entity, args)
+   if args.seed_uri then
+      ai:set_think_output({})
+   end
+end
 
 local seed_rating_fn = function(item)
    return radiant.entities.get_item_quality(item) / 3

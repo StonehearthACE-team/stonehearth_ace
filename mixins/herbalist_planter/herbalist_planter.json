@@ -14,7 +14,10 @@
       "stonehearth_ace:output": {},
       "stonehearth_ace:herbalist_planter": {
          "harvest_enabled": true,
-         "start_planted": false
+         "start_planted": false,
+         "quality_buffs": [
+            "stonehearth_ace:buffs:tended_planter"
+         ]
       },
       "stonehearth:expendable_resources": {
          "resources": {
@@ -26,6 +29,13 @@
                   "value": 5
                },
                "initial_value": "min_value"
+            }
+         }
+      },
+      "sensor_list": {
+         "sensors": {
+            "range": {
+               "radius": 6
             }
          }
       }

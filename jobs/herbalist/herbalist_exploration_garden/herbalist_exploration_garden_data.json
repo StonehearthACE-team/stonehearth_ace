@@ -1,0 +1,1670 @@
+{
+   "components": {
+      "stonehearth_ace:periodic_interaction": {
+         "modes": {
+            "find_native_seed_herb": {
+               "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.herb",
+               "ui_data": {
+                  "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_native_seed.herb.display_name)",
+                  "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_native_seed.herb.description)"
+               },
+               "cooldown": "10h",
+               "requirements": {
+                  "job": "stonehearth:jobs:herbalist",
+                  "level": 2
+               },
+               "completion": {
+                  "rewards": [
+                     {
+                        "type": "experience",
+                        "value": 25
+                     }
+                  ]
+               },
+               "sequences": {
+                  "default": [
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "cooldown": "6h",
+                        "model": "default",
+                        "num_interactions": 8,
+                        "interaction_points": [
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
+                              "worker_effect": "hoe",
+                              "weight": 2,
+                              "point": [
+                                 -1,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 1,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
+                              "worker_effect": "hoe",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -1.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
+                              "worker_effect": "hoe",
+                              "weight": 1,
+                              "point": [
+                                 -1.5,
+                                 0,
+                                 -1
+                              ],
+                              "face_point": [
+                                 -1,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
+                              "worker_effect": "hoe",
+                              "weight": 1,
+                              "point": [
+                                 1.5,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 2
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "cooldown": "8h",
+                        "model": "stage_01",
+                        "num_interactions": 6,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -1,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 -1,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -1.5
+                              ],
+                              "face_point": [
+                                 1,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -1.5,
+                                 0,
+                                 -1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 2
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "stage_02",
+                        "num_interactions": 4,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -1.5,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 1,
+                                 0,
+                                 -1
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -0.5,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 -1
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 2
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "cooldown": "12h",
+                        "model": "stage_03",
+                        "num_interactions": 4,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -1.5,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -0.5,
+                                 0,
+                                 -1
+                              ],
+                              "face_point": [
+                                 1.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 1,
+                                 0,
+                                 -0.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 2
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "cooldown": "12h",
+                        "model": "stage_04",
+                        "num_interactions": 4,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "emote_browwipe",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 0.5,
+                                 0,
+                                 0.5
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -3,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 -0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -3
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 4
+                           },
+                           {
+                              "type": "script",
+                              "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                              "script_data": {
+                                 "crop_category": "herb",
+                                 "none": 90,
+                                 "native": 10
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "stage_05",
+                        "num_interactions": 6,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "emote_browwipe",
+                              "weight": 1,
+                              "point": [
+                                 -1.5,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "emote_count",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 -1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 2,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 -0.5
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 6
+                           },
+                           {
+                              "type": "script",
+                              "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                              "script_data": {
+                                 "crop_category": "herb",
+                                 "none": 60,
+                                 "native": 40
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "stage_06",
+                        "num_interactions": 8,
+                        "interaction_points": [
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "emote_watch_pet",
+                              "weight": 1,
+                              "point": [
+                                 -3,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0.5
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "emote_proud",
+                              "weight": 1,
+                              "point": [
+                                 -0.5,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -3
+                              ],
+                              "face_point": [
+                                 -0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 0
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0.5
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 8
+                           },
+                           {
+                              "type": "script",
+                              "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                              "script_data": {
+                                 "crop_category": "herb",
+                                 "native": 95,
+                                 "exotic": 5
+                              }
+                           }
+                        ]
+                     }
+                  ]
+               }
+            },
+            "find_exotic_seed_herb": {
+               "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.herb",
+               "ui_data": {
+                  "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_exotic_seed.herb.display_name)",
+                  "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_exotic_seed.herb.description)"
+               },
+               "cooldown": "16h",
+               "requirements": {
+                  "job": "stonehearth:jobs:herbalist",
+                  "level": 4
+               },
+               "completion": {
+                  "rewards": [
+                     {
+                        "type": "experience",
+                        "value": 36
+                     }
+                  ]
+               },
+               "sequences": {
+                  "default": [
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "cooldown": "8h",
+                        "model": "default",
+                        "num_interactions": 8,
+                        "interaction_points": [
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
+                              "worker_effect": "hoe",
+                              "weight": 2,
+                              "point": [
+                                 -1,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 1,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
+                              "worker_effect": "hoe",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -1.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
+                              "worker_effect": "hoe",
+                              "weight": 1,
+                              "point": [
+                                 -1.5,
+                                 0,
+                                 -1
+                              ],
+                              "face_point": [
+                                 -1,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
+                              "worker_effect": "hoe",
+                              "weight": 1,
+                              "point": [
+                                 1.5,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 4
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "cooldown": "12h",
+                        "model": "stage_01",
+                        "num_interactions": 6,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -1,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 -1,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -1.5
+                              ],
+                              "face_point": [
+                                 1,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -1.5,
+                                 0,
+                                 -1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 4
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "stage_02",
+                        "num_interactions": 4,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -1.5,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 1,
+                                 0,
+                                 -1
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -0.5,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 -1
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 6
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "stage_03",
+                        "num_interactions": 4,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -1.5,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -0.5,
+                                 0,
+                                 -1
+                              ],
+                              "face_point": [
+                                 1.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 1,
+                                 0,
+                                 -0.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 6
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "stage_04",
+                        "num_interactions": 4,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "emote_browwipe",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 0.5,
+                                 0,
+                                 0.5
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -3,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 -0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -3
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 8
+                           },
+                           {
+                              "type": "script",
+                              "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                              "script_data": {
+                                 "crop_category": "herb",
+                                 "none": 90,
+                                 "native": 6,
+                                 "exotic": 4
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "stage_05",
+                        "num_interactions": 6,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "emote_browwipe",
+                              "weight": 1,
+                              "point": [
+                                 -1.5,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "emote_count",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 -1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 2,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 -0.5
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 12
+                           },
+                           {
+                              "type": "script",
+                              "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                              "script_data": {
+                                 "crop_category": "herb",
+                                 "none": 60,
+                                 "native": 20,
+                                 "exotic": 20
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "stage_06",
+                        "num_interactions": 8,
+                        "interaction_points": [
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "emote_watch_pet",
+                              "weight": 1,
+                              "point": [
+                                 -3,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0.5
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "emote_proud",
+                              "weight": 1,
+                              "point": [
+                                 -0.5,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -3
+                              ],
+                              "face_point": [
+                                 -0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 0
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0.5
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 14
+                           },
+                           {
+                              "type": "script",
+                              "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                              "script_data": {
+                                 "crop_category": "herb",
+                                 "native": 50,
+                                 "exotic": 50
+                              }
+                           }
+                        ]
+                     }
+                  ]
+               }
+            },
+            "find_native_seed_water": {
+               "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.water",
+               "ui_data": {
+                  "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_native_seed.water.display_name)",
+                  "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_native_seed.water.description)"
+               },
+               "cooldown": "8h",
+               "requirements": {
+                  "job": "stonehearth:jobs:herbalist",
+                  "level": 3
+               },
+               "completion": {
+                  "rewards": [
+                     {
+                        "type": "experience",
+                        "value": 28
+                     }
+                  ]
+               },
+               "sequences": {
+                  "default": [
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "cooldown": "4h",
+                        "model": "water_stage_01",
+                        "num_interactions": 8,
+                        "interaction_points": [
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
+                              "worker_effect": "fiddle",
+                              "weight": 2,
+                              "point": [
+                                 -1,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 1,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 -1.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -1.5,
+                                 0,
+                                 -3
+                              ],
+                              "face_point": [
+                                 -1,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 3
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "cooldown": "6h",
+                        "model": "water_stage_02",
+                        "num_interactions": 4,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -3,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -0.5,
+                                 0,
+                                 -3
+                              ],
+                              "face_point": [
+                                 1.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 1,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 3
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "water_stage_03",
+                        "num_interactions": 4,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "emote_browwipe",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 0.5,
+                                 0,
+                                 0.5
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -3,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 -0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 5
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "water_stage_04",
+                        "num_interactions": 6,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "emote_browwipe",
+                              "weight": 1,
+                              "point": [
+                                 -3,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "emote_count",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 -1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 2,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -3
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 -0.5
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 7
+                           },
+                           {
+                              "type": "script",
+                              "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                              "script_data": {
+                                 "crop_category": "water",
+                                 "none": 70,
+                                 "native": 30
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "water_stage_05",
+                        "num_interactions": 8,
+                        "interaction_points": [
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "emote_watch_pet",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 -0.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0.5
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "emote_proud",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -3
+                              ],
+                              "face_point": [
+                                 0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 -0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -3,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0.5
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 10
+                           },
+                           {
+                              "type": "script",
+                              "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                              "script_data": {
+                                 "crop_category": "water",
+                                 "native": 95,
+                                 "exotic": 5
+                              }
+                           }
+                        ]
+                     }
+                  ]
+               }
+            },
+            "find_exotic_seed_water": {
+               "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.water",
+               "ui_data": {
+                  "display_name": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_exotic_seed.water.display_name)",
+                  "description": "i18n(stonehearth_ace:jobs.herbalist.herbalist_exploration_garden.periodic_interaction.modes.find_exotic_seed.water.description)"
+               },
+               "cooldown": "12h",
+               "requirements": {
+                  "job": "stonehearth:jobs:herbalist",
+                  "level": 4
+               },
+               "completion": {
+                  "rewards": [
+                     {
+                        "type": "experience",
+                        "value": 30
+                     }
+                  ]
+               },
+               "sequences": {
+                  "default": [
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "cooldown": "6h",
+                        "model": "water_stage_01",
+                        "num_interactions": 8,
+                        "interaction_points": [
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
+                              "worker_effect": "fiddle",
+                              "weight": 2,
+                              "point": [
+                                 -1,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 1,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 -1.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -1.5,
+                                 0,
+                                 -3
+                              ],
+                              "face_point": [
+                                 -1,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 3
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "cooldown": "9h",
+                        "model": "water_stage_02",
+                        "num_interactions": 4,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -3,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -0.5,
+                                 0,
+                                 -3
+                              ],
+                              "face_point": [
+                                 1.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 1,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 1
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 4
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "water_stage_03",
+                        "num_interactions": 4,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "emote_browwipe",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 0.5,
+                                 0,
+                                 0.5
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -3,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 -0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 6
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "water_stage_04",
+                        "num_interactions": 6,
+                        "interaction_points": [
+                           {
+                              "worker_effect": "emote_browwipe",
+                              "weight": 1,
+                              "point": [
+                                 -3,
+                                 0,
+                                 1
+                              ],
+                              "face_point": [
+                                 0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "emote_count",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 -1
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "worker_effect": "fiddle",
+                              "weight": 2,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -3
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 -0.5
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 8
+                           },
+                           {
+                              "type": "script",
+                              "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                              "script_data": {
+                                 "crop_category": "water",
+                                 "none": 70,
+                                 "native": 30
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "effect": "stonehearth_ace:effects:item_created_large",
+                        "model": "water_stage_05",
+                        "num_interactions": 8,
+                        "interaction_points": [
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "emote_watch_pet",
+                              "weight": 1,
+                              "point": [
+                                 2.5,
+                                 0,
+                                 -0.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0.5
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "emote_proud",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 -3
+                              ],
+                              "face_point": [
+                                 0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 0.5,
+                                 0,
+                                 2.5
+                              ],
+                              "face_point": [
+                                 -0.5,
+                                 0,
+                                 0
+                              ]
+                           },
+                           {
+                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                              "worker_effect": "fiddle",
+                              "weight": 1,
+                              "point": [
+                                 -3,
+                                 0,
+                                 0.5
+                              ],
+                              "face_point": [
+                                 0,
+                                 0,
+                                 0.5
+                              ]
+                           }
+                        ],
+                        "rewards": [
+                           {
+                              "type": "experience",
+                              "value": 11
+                           },
+                           {
+                              "type": "script",
+                              "script": "stonehearth_ace:scripts:periodic_interaction:herbalist_exploration_garden:rewards",
+                              "script_data": {
+                                 "crop_category": "water",
+                                 "native": 95,
+                                 "exotic": 5
+                              }
+                           }
+                        ]
+                     }
+                  ]
+               }
+            }
+         }
+      }
+   }
+}

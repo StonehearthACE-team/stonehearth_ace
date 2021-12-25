@@ -1,0 +1,40 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:drink:serving_keg_ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(beer_white_serving_keg.qb)"
+            ]
+         },
+         "stone": {
+            "models": [
+               "file(beer_white_serving_keg_stone.qb)"
+            ]
+         },
+         "clay": {
+            "models": [
+               "file(beer_white_serving_keg_clay.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.beer_white.serving_keg.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.beer_white.beer_white.description)",
+         "icon": "file(beer_white_serving_keg.png)",
+         "material_tags": [
+            "prepared_drink",
+            "beer",
+            "white",
+            "beer_or_ale",
+            "alcoholic",
+            "night_time"
+         ]
+      }
+   }
+}

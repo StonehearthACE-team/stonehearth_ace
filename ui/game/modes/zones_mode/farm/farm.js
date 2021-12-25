@@ -971,7 +971,48 @@ App.StonehearthFarmView.reopen({
    }.observes('uri')
 });
 
-App.StonehearthFarmCropPalette.reopen({
+// ACE: have to override this whole view because we need to modify the init function, which calls this._super()
+App.StonehearthFarmCropPalette = App.View.extend({
+   templateName: 'stonehearthCropPalette',
+   modal: true,
+   uriProperty: 'model',
+   components: {
+
+   },
+
+   // ACE: need to filter out herbalist-only crops; we only care about crops with a field_types property
+   init: function() {
+      var self = this;
+      this._super();
+      radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:action_click'} );
+
+      //Get the crops available for this farm
+      radiant.call('stonehearth:get_all_crops')
+         .done(function (o) {
+            if (self.isDestroyed || self.isDestroying) return;
+            self.set('crops', radiant.map_to_array(o.all_crops, function (k, v) {
+               if (v.field_types) {
+                  if (v.crop_info.preferred_seasons) {
+                     v.crop_info.preferred_seasons = _.map(v.crop_info.preferred_seasons, i18n.t).join(', ');
+                  }
+                  return v;
+               }
+               else {
+                  return false;
+               }
+            }));
+            self._updateLockedCrops();
+         });
+   },
+
+   _isCropLocked: function(crop) {
+      var highest_level = this.get('model.highest_level');
+      if (!highest_level) {
+         highest_level = 0;
+      }
+      return crop.crop_level_requirement > highest_level;
+   },
+   
    _isCropHidden: function (crop) {
       if (!this.get('model') || !crop.crop_key) return false; // Too early. We'll recheck later.
       var manually_unlocked = this.get('model.manually_unlocked');
@@ -982,4 +1023,61 @@ App.StonehearthFarmCropPalette.reopen({
 
       return !correctFieldType || (!crop.initial_crop && !manually_unlocked[crop.crop_key]);
    },
+
+   _updateLockedCrops: function() {
+      var crops = this.get('crops');
+      if (crops) {
+         radiant.sortByOrdinal(crops);
+         for (var crop_id = 0; crop_id < crops.length; crop_id++) {
+            var crop = crops[crop_id];
+            var is_locked = this._isCropLocked(crop);
+            var is_hidden = this._isCropHidden(crop);
+            Ember.set(crop, 'is_locked', is_locked);
+            Ember.set(crop, 'is_hidden', is_hidden)
+         }
+      }
+   },
+
+   _tracedMaxFarmerLevel: function () {
+      Ember.run.scheduleOnce('afterRender', this, '_updateLockedCrops')
+   }.observes('model.highest_level', 'model.manually_unlocked'),
+
+   _tooltipifyPreferredSeasons: function () {
+      Ember.run.scheduleOnce('afterRender', this, function () {
+         self.$('.preferredSeasons').tooltipster({
+            content: i18n.t('stonehearth:ui.game.zones_mode.farm.preferred_seasons_tooltip', {
+               num: App.constants.farming.NONPREFERRED_SEASON_GROWTH_TIME_MULTIPLIER
+            })
+         });
+      });
+   }.observes('crops'),
+
+   didInsertElement: function() {
+      this._super();
+      var self = this;
+
+      this.$().on( 'click', '[crop]', function() {
+         if ($(this).attr('locked')) {
+            return;
+         }
+         var cropId = $(this).attr('crop');
+         if (cropId) {
+            radiant.call_obj(self.field, 'set_crop', cropId);
+            self.farm_view.hasShownPaletteOnce = true;
+         }
+         self.destroy();
+      });
+   },
+
+   destroy: function() {
+      if (this.farm_view) {
+         this.farm_view.palette = null;
+      }
+      this._super();
+   },
+
+   willDestroyElement: function() {
+      this.$().off('click', '[crop]');
+      this._super();
+   }
 });

@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.barley_seeds_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.barley_seeds_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.barley_seeds_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/seeds/barley_seeds/barley_seeds.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:barley:barley_bale",
+         "count": 8
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:seeds:barley_seeds"
+      }
+   ]
+}

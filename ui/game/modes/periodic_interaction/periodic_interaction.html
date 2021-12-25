@@ -1,0 +1,28 @@
+<script type="text/x-handlebars" data-template-name="acePeriodicInteraction">
+   <div id="periodicInteractionWindow" class="gui">
+      <div class="window">
+         <div class="title">
+            {{ view.unit_name }}<div class="closeButton"></div>
+         </div>
+
+         <h2>{{i18n_key view.currentModeName}}</h2>
+         <p>{{i18n_key view.currentModeDescription}}</p>
+         
+         <div {{bind-attr class="view.showModeSelection::hidden"}}>
+            <div id="modeSelectionList" class="setting list-setting">
+               <span id="modeSelectionLabel" class="list-label">{{i18n stonehearth_ace:ui.game.periodic_interaction.select_mode}}</label>
+            </div>
+         </div>
+         <div id="bottomStrip">
+            <div id="enabledDiv" class="setting">
+               <input id="enabledCheckbox" type="checkbox" value="enabled">
+               <label for="enabledCheckbox">{{i18n stonehearth_ace:ui.game.periodic_interaction.enabled}}</label>
+            </div>
+            <a id="assignOwnerButton" href="#" {{action "showAssignOwner" target="view"}} class='uisounds'>
+               <div id="assignOwner"><img></div>
+            </a>
+         </div>
+         <br>
+      </div>
+   </div>
+</script>

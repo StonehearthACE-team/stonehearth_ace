@@ -2,9 +2,16 @@
    "type": "entity",
    "mixins": "stonehearth:mixins:placed_object",
    "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(daisies_bud_iconic.json)",
+         "ghost_form": "file(daisies_bud_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
       "render_info": {
          "scale": 0.1
       },
+      "stonehearth:evolve": {},
       "model_variants": {
          "default": {
             "models": [
@@ -19,13 +26,34 @@
       }
    },
    "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
       "stonehearth:evolve_data": {
          "next_stage": "stonehearth_ace:vines:daisies",
          "evolve_time": "6h+4h"
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.vines.daisies.bud.display_name)",
-         "description": "i18n(stonehearth_ace:entities.vines.daisies.bud.description)"
+         "description": "i18n(stonehearth_ace:entities.vines.daisies.bud.description)",
+         "icon": "file(daisies_bud.png)",
+         "category": "plant",
+         "material_tags": [
+            "stockpile_plant",
+            "plant",
+            "daisies_bud",
+            "vine"
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
       }
    }
 }

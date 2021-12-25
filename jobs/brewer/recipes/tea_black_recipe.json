@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 26,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.tea_black_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.tea_black_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.tea_black_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/iron_teapot/iron_teapot.png",
+   "level_requirement": 5,
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:ground_tea:black",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:decoration:iron_teapot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:tea_black"
+      }
+   ]
+}

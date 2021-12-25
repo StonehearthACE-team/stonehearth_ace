@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(moka_coffee_pot.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "material": "materials/shiny.material.json",
+         "scale": 0.11
+      },
+      "mob": {
+         "model_origin": { "x": -0.065, "y": 0, "z": -0.065 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.moka_coffee_pot.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.moka_coffee_pot.description)",
+         "icon": "file(moka_coffee_pot.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "crafted",
+            "metal",
+            "steel",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

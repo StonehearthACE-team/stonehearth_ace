@@ -1,6 +1,21 @@
 {
+   "category": "undead_infection",
+   "unique_in_category": true,
+   "rank": 2,
+	"can_only_affect": [
+      "hearthling",
+      "dwarf",
+      "orc",
+      "rabbit_biped",
+      "goblin",
+      "elf"
+   ],
 	"icon": "file(undead_infection.png)",
 	"display_name": "i18n(stonehearth_ace:data.buffs.undead_infection.display_name)",
+	"description": "i18n(stonehearth_ace:data.buffs.undead_infection.description)",
 	"cant_affect_siege": true,
 	"thought": "stonehearth:thoughts:infection:undead_infection",
+	"queue_crafting_order": "stonehearth_ace:consumables:undead_cordial",
+   "reembarkable": true,
+   "duration": "6h+6h"
 }

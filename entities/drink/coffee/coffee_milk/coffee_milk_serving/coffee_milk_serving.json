@@ -1,0 +1,56 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(coffee_milk_serving.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:drink:coffee:serving"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 95,
+            "food_satisfaction": 10
+         },
+         "default": {
+            "satisfaction": 80,
+            "food_satisfaction": 6
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:coffee_energy",
+            "stonehearth_ace:buffs:consumption:regeneration:minor",
+            "stonehearth_ace:buffs:consumption:warm_belly"
+         ],
+         "quality": 5,
+         "effect_loops": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.coffee.coffee_milk.coffee_milk_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.coffee.coffee_milk.coffee_milk_serving.description)",
+         "material_tags": [
+            "drink",
+            "coffee_milk_serving",
+            "coffee",
+            "milk",
+            "dairy",
+            "morning_time",
+            "night_time",
+            "warming"
+         ],
+         "subject_override": "stonehearth_ace:drink:coffee_milk"
+      }
+   }
+}

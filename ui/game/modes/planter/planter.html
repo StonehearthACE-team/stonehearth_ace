@@ -43,6 +43,10 @@
             <input id="enableHarvestCheckbox" type="checkbox" value="enableHarvest">
             <label for="enableHarvestCheckbox">{{i18n stonehearth_ace:ui.game.herbalist_planter.harvest_crop}}</label>
          </div>
+         <div id="enablePlantHarvest" {{bind-attr class="setting view.showEnablePlantHarvest::hidden"}}>
+            <input id="enablePlantHarvestCheckbox" type="checkbox" value="enablePlantHarvest">
+            <label for="enablePlantHarvestCheckbox">{{i18n stonehearth_ace:ui.game.herbalist_planter.harvest_plant}}</label>
+         </div>
       </div>
    </div>
 </script>
@@ -56,7 +60,7 @@
             <table>
                <tbody>
                {{#each view.cropTypes}}
-                  <tr {{bind-attr cropType=this.type class="row this.bestQualityClass"}}>
+                  <tr {{bind-attr cropType=this.type locked=is_locked class="row this.is_locked:disabled this.is_locked:is-locked this.is_hidden:is-hidden"}}>
                      <td>
                         <div class="icon">
                            <img class="image" {{bind-attr src=this.icon}} />

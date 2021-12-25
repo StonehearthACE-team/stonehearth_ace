@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(barley_bun_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 63,
+            "drink_satisfaction": -10
+         },
+         "default": {
+            "satisfaction": 45,
+            "drink_satisfaction": -15
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:regeneration",
+            "stonehearth_ace:buffs:consumption:baked_goodness"
+         ],
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.barley_bun.barley_bun_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "bread",
+            "baked",
+            "vegetarian",
+            "breakfast_time"
+         ],
+         "subject_override": "stonehearth_ace:food:barley_bun"
+      }
+   }
+}

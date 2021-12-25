@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.creativity_tonic.creativity_tonic_worn_off_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.creativity_tonic.creativity_tonic_worn_off_buff.description)",
+   "icon": "file(creativity_tonic_after_effect_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "diligence": {
+         "multiply": 0.9
+      }
+   },
+   "disallowed_categories": [
+      "creativity_tonic"
+   ]
+}

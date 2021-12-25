@@ -1,0 +1,19 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.garlic_breath.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.garlic_breath.description)",
+   "icon": "file(garlic_breath_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "thought": "stonehearth:thoughts:eating:garlic_breath",
+   "modifiers": {
+      "courage": {
+         "multiply": 0.9
+      },
+      "social_loss_amount": {
+         "multiply": 0.25
+      }
+   },
+   "gained_statistics_key": "garlic_breath"
+}

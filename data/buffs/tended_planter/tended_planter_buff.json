@@ -1,0 +1,23 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.tended_planter.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.tended_planter.description)",
+   "icon": "file(tended_planter_buff.png)",
+   "script": "stonehearth:buff_scripts:aura",
+   "effect": "stonehearth:effects:treasure_glow",
+   "duration": "6h",
+   "repeat_add_action": "renew_duration",
+   "restore_effect": true,
+   "script_info": {
+      "pulse": "30m",
+      "aura_buff": [
+         "stonehearth_ace:buffs:tended_planter:target"
+      ],
+      "radius": 6,
+      "affect_self": false,
+      "target_type": "mob",
+      "sensor_name": "range",
+      "target_any_player": true
+   }
+}

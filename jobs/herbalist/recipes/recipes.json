@@ -5,6 +5,9 @@
             "herbalist_bee_skep": {
                "recipe": "file(herbalist_bee_skep_recipe.json)"
             },
+				"herbalist_exploration_garden": {
+					"recipe": "file(herbalist_exploration_garden_recipe.json)"
+				},
 				"herbalist_cauldron": {
 					"recipe": "file(herbalist_cauldron_recipe.json)"
 				},
@@ -103,25 +106,21 @@
 			"name": "i18n(stonehearth_ace:jobs.herbalist.recipes.refinement_name)",
 			"recipes" : {
 				"mixintypes": {
-					"berry_bush_transmute": "remove",
-					"pear_cactus": "remove",
-					"wintermoss_transmute": "remove",
-					"tumbleweed_transmute": "remove"
-				},
-				"moonbell_herbalist" : {
-					"recipe" : "file(moonbell_transmute_recipe.json)"
-				},
-				"marblesprout_herbalist" : {
-					"recipe" : "file(marblesprout_transmute_recipe.json)"
-				},
-				"daisy_transmute": {
-					"recipe": "file(daisy_transmute_recipe.json)"
+					"brightbell_herbalist": "remove",
+					"frostsnap_herbalist": "remove",
+					"cactus_herbalist": "remove",
+					"cactus_tulip_blue_transmute": "remove",
+					"cactus_tulip_red_transmute": "remove",
+					"cactus_tulip_yellow_transmute": "remove",
+					"wax_plant_green_transmute": "remove",
+					"wax_plant_purple_transmute": "remove",
+					"sunflower_transmute": "remove",
+					"foxlily_transmute": "remove",
+					"snow_poppy_transmute": "remove",
+					"violet_transmute": "remove"
 				},
 				"cotton_transmute": {
 					"recipe": "file(cotton_transmute_recipe.json)"
-				},
-				"silkweed_transmute": {
-					"recipe": "file(silkweed_transmute_recipe.json)"
 				},
 				"carrot_transmute": {
 					"recipe": "file(carrot_transmute_recipe.json)"
@@ -129,63 +128,9 @@
 				"golden_gourd_transmute": {
 					"recipe": "file(golden_gourd_transmute_recipe.json)"
 				},
-				"sugarbell_transmute": {
-					"recipe": "file(sugarbell_transmute_recipe.json)"
+				"garlic_transmute": {
+					"recipe": "file(garlic_transmute_recipe.json)"
 				},
-				"poppy_transmute": {
-					"recipe": "file(poppy_transmute_recipe.json)"
-				},
-				"rose_transmute": {
-					"recipe": "file(rose_transmute_recipe.json)"
-				},
-				"dill_transmute": {
-					"recipe": "file(dill_transmute_recipe.json)"
-				},
-				"chives_transmute": {
-					"recipe": "file(chives_transmute_recipe.json)"
-				},
-				"bog_myrtle_transmute": {
-					"recipe": "file(bog_myrtle_transmute_recipe.json)"
-				},
-				"nightshade_transmute": {
-					"recipe": "file(nightshade_transmute_recipe.json)"
-				},
-				"daylily_transmute": {
-					"recipe": "file(daylily_transmute_recipe.json)"
-				},
-				"oleander_transmute": {
-					"recipe": "file(oleander_transmute_recipe.json)"
-				},
-				"parsley_transmute": {
-					"recipe": "file(parsley_transmute_recipe.json)"
-				},
-				"sage_transmute": {
-					"recipe": "file(sage_transmute_recipe.json)"
-				},
-				"highland_vine_transmute": {
-					"recipe": "file(highland_vine_transmute_recipe.json)"
-				},
-				"water_lily_pad_transmute": {
-					"recipe": "file(water_lily_pad_transmute_recipe.json)"
-				},
-				"water_lily_white_transmute": {
-					"recipe": "file(water_lily_white_transmute_recipe.json)"
-				},
-				"water_lily_pink_transmute": {
-					"recipe": "file(water_lily_pink_transmute_recipe.json)"
-				},
-				"water_lily_yellow_transmute": {
-					"recipe": "file(water_lily_yellow_transmute_recipe.json)"
-				},
-				"water_lily_purple_transmute": {
-					"recipe": "file(water_lily_purple_transmute_recipe.json)"
-				}
-			}
-		},
-		"refinement_large" : {
-			"ordinal": 35,
-			"name": "i18n(stonehearth_ace:jobs.herbalist.recipes.refinement_large_name)",
-			"recipes" : {
 				"dwarfsbeard_transmute": {
 					"recipe": "file(dwarfsbeard_transmute_recipe.json)"
 				},
@@ -197,7 +142,13 @@
 				},
 				"coffee_plant_transmute": {
 					"recipe": "file(coffee_plant_transmute_recipe.json)"
-				},
+				}
+			}
+		},
+		"refinement_large" : {
+			"ordinal": 35,
+			"name": "i18n(stonehearth_ace:jobs.herbalist.recipes.refinement_large_name)",
+			"recipes" : {
 				"hazelnut_transmute": {
 					"recipe": "file(hazelnut_transmute_recipe.json)"
 				},
@@ -221,18 +172,6 @@
 				},
 				"plum_transmute": {
 					"recipe": "file(plum_transmute_recipe.json)"
-				},
-				"berry_bush_transmute": {
-					"recipe": "/stonehearth/jobs/herbalist/recipes/berry_bush_transmute_recipe.json"
-				},
-				"wintermoss_transmute": {
-					"recipe": "/stonehearth/jobs/herbalist/recipes/wintermoss_transmute_recipe.json"
-				},
-				"tumbleweed_transmute": {
-					"recipe": "/stonehearth/jobs/herbalist/recipes/tumbleweed_transmute_recipe.json"
-				},
-				"pear_cactus": {
-					"recipe": "/stonehearth/jobs/herbalist/recipes/pear_cactus_recipe.json"
 				},
 				"tree_pine_gold_seed": {
 					"recipe": "file(tree_pine_gold_seed_recipe.json)"
@@ -288,15 +227,6 @@
 				"pine_tree_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/pine_tree_seeds_recipe.json"
 				},
-				"brightbell_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/brightbell_seeds_recipe.json"
-				},
-				"silkweed_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/silkweed_seeds_recipe.json"
-				},
-				"frostsnap_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/frostsnap_seeds_recipe.json"
-				},
 				"carrot_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/carrot_seeds_recipe.json"
 				},
@@ -305,6 +235,9 @@
 				},
 				"golden_gourd_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/golden_gourd_seeds_recipe.json"
+				},
+				"garlic_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/garlic_seeds_recipe.json"
 				},
 				"berry_bush_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/berry_bush_seeds_recipe.json"
@@ -333,29 +266,8 @@
 				"highland_pine_tree_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/highland_pine_tree_seeds_recipe.json"
 				},
-				"moonbell_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/moonbell_seeds_recipe.json"
-				},
-				"poppy_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/poppy_seeds_recipe.json"
-				},
-				"rose_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/rose_seeds_recipe.json"
-				},
-				"nightshade_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/nightshade_seeds_recipe.json"
-				},
-				"daylily_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/daylily_seeds_recipe.json"
-				},
-				"oleander_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/oleander_seeds_recipe.json"
-				},
 				"cotton_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/cotton_seeds_recipe.json"
-				},
-				"marblesprout_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/marblesprout_seeds_recipe.json"
 				},
 				"arctic_pine_tree_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/arctic_pine_tree_seeds_recipe.json"
@@ -363,20 +275,11 @@
 				"arctic_juniper_tree_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/arctic_juniper_tree_seeds_recipe.json"
 				},
-				"violet_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/violet_seeds_recipe.json"
-				},
-				"snow_poppy_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/snow_poppy_seeds_recipe.json"
-				},
 				"acacia_tree_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/acacia_tree_seeds_recipe.json"
 				},
 				"cactus_tree_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/cactus_tree_seeds_recipe.json"
-				},
-				"cactus_flower_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/cactus_flower_seeds_recipe.json"
 				},
 				"apple_tree_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/apple_tree_seeds_recipe.json"
@@ -435,14 +338,14 @@
 				"pumpkin_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/pumpkin_seeds_recipe.json"
 				},
-				"brightbell_seeds_2_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/brightbell_seeds_2_recipe.json"
+				"brightbell_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/brightbell_seeds_recipe.json"
 				},
-				"silkweed_seeds_2_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/silkweed_seeds_2_recipe.json"
+				"silkweed_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/silkweed_seeds_recipe.json"
 				},
-				"frostsnap_seeds_2_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/frostsnap_seeds_2_recipe.json"
+				"frostsnap_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/frostsnap_seeds_recipe.json"
 				},
 				"apple_tree_seeds_2_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/apple_tree_seeds_2_recipe.json"
@@ -456,8 +359,8 @@
 				"wheat_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/wheat_seeds_recipe.json"
 				},
-				"paddy_seeds_recipe": {
-					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/paddy_seeds_recipe.json"
+				"berry_bush_seeds_2_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/berry_bush_seeds_2_recipe.json"
 				},
 				"hearth_fertilizer": {
                "recipe": "file(hearth_fertilizer_recipe.json)"
@@ -528,6 +431,9 @@
 				"fever_cordial": {
                "recipe": "file(fever_cordial_recipe.json)"
             },
+				"undead_cordial": {
+               "recipe": "file(undead_cordial_recipe.json)"
+            },
 				"weak_antidote": {
                "recipe": "file(weak_antidote_recipe.json)"
             },
@@ -596,6 +502,9 @@
             },
 				"potion_antidote_strong": {
                "recipe": "file(potion_antidote_strong_recipe.json)"
+            },
+				"potion_last_stand": {
+               "recipe": "file(potion_last_stand_recipe.json)"
             }
 			}
 		},
@@ -607,7 +516,7 @@
 			}
 		},
 		"frostfeast": {
-         "ordinal": 999,
+         "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
 				"decorated_frostfeast_tree" : {

@@ -13,13 +13,20 @@ TransformItemAdjacent.priority = 0
 
 function TransformItemAdjacent:start(ai, entity, args)
    -- TODO: check to make sure we'll be next to the entity
-   local key
-   if radiant.entities.get_entity_data(args.item, 'stonehearth_ace:buildable_data') then
+   local key, full_key
+   if radiant.entities.get_entity_data(args.item, 'stonehearth_ace:transform_data').status_key then
+      full_key = tostring(radiant.entities.get_entity_data(args.item, 'stonehearth_ace:transform_data').status_key)
+   elseif radiant.entities.get_entity_data(args.item, 'stonehearth_ace:buildable_data') then
       key = 'build'
    else
       key = 'transform'
    end
-   ai:set_status_text_key('stonehearth_ace:ai.actions.status_text.' .. key, { target = args.item })
+
+   if full_key then
+      ai:set_status_text_key(full_key, { target = args.item })
+   else
+      ai:set_status_text_key('stonehearth_ace:ai.actions.status_text.' .. key, { target = args.item })
+   end
 
    self._completed_work = false
 

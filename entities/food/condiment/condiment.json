@@ -1,0 +1,50 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.08
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(condiment.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.condiment.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.condiment.description)",
+         "icon": "file(condiment.png)",
+         "is_item": true,
+         "category": "cooking_ingredient",
+         "material_tags": [
+            "stockpile_cooking_ingredient",
+            "cooking_ingredient",
+            "seasoning",
+            "condiment",
+            "standard",
+            "other_fluid",
+            "other_ingredient"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

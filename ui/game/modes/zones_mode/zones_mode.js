@@ -92,6 +92,9 @@ App.StonehearthZonesModeView.reopen({
       else if (entity['stonehearth_ace:herbalist_planter']) {
          return App.AceHerbalistPlanterView;
       }
+      else if (entity['stonehearth_ace:periodic_interaction']) {
+         return App.AcePeriodicInteractionView;
+      }
 
       return null;
    }

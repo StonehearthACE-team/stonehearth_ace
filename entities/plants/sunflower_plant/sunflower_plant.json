@@ -1,7 +1,10 @@
 {
    "components": {
       "stonehearth:resource_node": {
-			"resource": "stonehearth_ace:resources:herb:sunflower"
+			"resource": "stonehearth_ace:resources:herb:sunflower",
+         "mixintypes": {
+            "resource_loot_table": "remove"
+         }
       }
    }
 }

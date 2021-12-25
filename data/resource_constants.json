@@ -203,7 +203,7 @@
       "oil_source": {
          "name": "i18n(stonehearth_ace:ui.data.constants.oil_source_name)",
          "icon": "/stonehearth_ace/entities/food/oil_source_icon.png",
-         "default_resource": "stonehearth:plants:sunflower:seed"
+         "default_resource": "stonehearth_ace:resources:herb:sunflower"
       },
       "grease cooking_ingredient": {
          "name": "i18n(stonehearth_ace:ui.data.constants.grease_resource_name)",
@@ -214,6 +214,11 @@
          "name": "i18n(stonehearth_ace:ui.data.constants.oil_resource_name)",
          "icon": "/stonehearth_ace/entities/food/oil_icon.png",
          "default_resource": "stonehearth_ace:food:cooking_oil"
+      },
+      "condiment_base": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.condiment_base_resource_name)",
+         "icon": "/stonehearth_ace/entities/food/condiment_base_icon.png",
+         "default_resource": "stonehearth_ace:food:mayonnaise"
       },
       "raw_food fruit": {
          "name": "i18n(stonehearth_ace:ui.data.constants.fruits_resource_name)",
@@ -234,6 +239,24 @@
          "name": "i18n(stonehearth_ace:ui.data.constants.fungi_resource_name)",
          "icon": "/stonehearth_ace/entities/fungi/fungi_icon.png",
          "default_resource": "stonehearth_ace:fungi:bolete"
+      },
+      "food_container raw_food vegetable": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.food_veggie_raw_name)"
+      },
+      "food_container raw_food vegetable leafy": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.food_veggie_raw_leafy_name)",
+         "default_resource": "stonehearth_ace:food:cabbage:cabbage_basket",
+         "icon": "/stonehearth_ace/entities/food/veggie_raw_leafy_icon.png"
+      },
+      "food_container raw_food vegetable hearty": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.food_veggie_raw_hearty_name)",
+         "default_resource": "stonehearth:food:carrot:carrot_basket",
+         "icon": "/stonehearth_ace/entities/food/veggie_raw_hearty_icon.png"
+      },
+      "food_container raw_food vegetable savory": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.food_veggie_raw_savory_name)",
+         "default_resource": "stonehearth_ace:food:garlic:garlic_basket",
+         "icon": "/stonehearth_ace/entities/food/veggie_raw_savory_icon.png"
       },
       "raw_food fungi": {
          "name": "i18n(stonehearth_ace:ui.data.constants.fungi_basket_resource_name)",

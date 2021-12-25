@@ -13,7 +13,30 @@
             "consume_drink": "drinking [name(data.target)]",
             "drink": "getting a drink",
             "build": "building [name(data.target)]",
-            "collect_building_material": "collecting building materials"
+            "collect_building_material": "collecting building materials",
+            "upgrading": "upgrading [name(data.target)]",
+            "opening": "opening [name(data.target)]",
+            "filling": "filling [name(data.target)]",
+            "draining": "draining [name(data.target)]",
+            "capturing_bees": "capturing bees",
+            "sculpting": "sculpting [name(data.target)]",
+            "carving": "carving [name(data.target)]",
+            "periodic_interaction": {
+               "default": "interacting with [name(data.target)]",
+               "discovery": "making a discovery",
+               "find_native_seed": {
+                  "preparing": "preparing to explore wild seeds",
+                  "herb": "fiddling with native herbs",
+                  "water": "studying native water plants",
+                  "fungi": "searching for native fungi"
+               },
+               "find_exotic_seed": {
+                  "preparing": "preparing to explore exotic seeds",
+                  "herb": "searching for exotic herbs",
+                  "water": "looking for exotic water plants",
+                  "fungi": "observing exotic fungi"
+               }
+            }
          }
       }
    },
@@ -225,6 +248,19 @@
                   "trigger": {
                      "discovery": {
                         "encounters": {
+                           "01_strange_trading": {
+                              "01_strange_trading_outro_f": {
+                                 "donation_dialog_info": {
+                                    "dialog_nodes": {
+                                       "simple_message": {
+                                          "bulletin_message": {
+                                             "00": "The visitor nods and takes their leave.<br><br>Shortly after, you discover a basket brimming with soft petals and potted flowers by your banner.<br><br><i><font size=-1>[The visitors seem to trust you more]</font></i>"
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           },
                            "30_geomancy": {
                               "30_geomancy_outro": {
                                  "donation_dialog_info": {
@@ -545,6 +581,15 @@
                   "recipe_unlock_geomancer": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
                   "recipe_unlock_engineer": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
                   "recipe_unlock_weaver": "New Legendary Hood recipe - Blacksmith, Geomancer, and Weaver collaboration!"
+               },
+               "hearth_foreshadow_dialog": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg4": {
+                           "choice_000": "Frostsnap flowers! Thanks!"
+                        }
+                     }
+                  }
                }
             },
             "rc_town_progression": {
@@ -575,6 +620,15 @@
                }
             },
             "na_town_progression": {
+               "hearth_foreshadow_dialog": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg4": {
+                           "choice_000": "Brightbell flowers! Thanks!"
+                        }
+                     }
+                  }
+               },
                "ace_guildmaster_reached": {
                   "recipe_unlock_coins": "The Blacksmith can now mint gold coins!"
                },
@@ -959,19 +1013,19 @@
                         },
                         "msg3": {
                            "bulletin_message": {
-                              "00": "\"It warms my heart to hear that.\" He begins to speak more confidently. \"These are difficult and complex arts - but they can be mastered.<span class='minor'>It simply requires the correct knowledge and the right materials,</span> and if it can be done in the middle of a battlefield, as orc arrows fly over our heads, while we try to bring back our friends and brothers-in-arms from the cold grasp of...\"<br><br>He's now staring off into the horizon.<br><br>\"Forgive me, I digress. We have peace, but I fear your town might still be found by trouble. Be grateful that you have a capable <span class='major'>healer</span> that is also able to <span class='minor'>grow and tend to herbs of multiple types and colors</span>, for these are your most important resources.\""
+                              "00": "\"It warms my heart to hear that.\" He begins to speak more confidently. \"These are difficult and complex arts - but they can be mastered.<span class='minor'>It simply requires the correct knowledge and the right materials,</span> and if it can be done in the middle of a battlefield, as orc arrows fly over our heads, while we try to bring back our friends and brothers-in-arms from the cold grasp of...\"<br><br>He's now staring off into the horizon.<br><br>\"Forgive me, I digress. We have peace, but I fear your town might still be found by trouble. Be grateful that you have a capable <span class='major'>healer</span> that is also able to <span class='minor'>find, grow and tend to herbs of multiple types</span>, for these are your most important resources.\""
                            },
                            "choice_000": "Ooookay?"
                         },
                         "msg4": {
                            "bulletin_message": {
-                              "00": "\"There are basically<span class='minor'>six colors of herbs.</span> <span class='major'>Red, green, and blue, </span>known as the common ones, represent the most <span class='minor'>common values like our Body, our Mind, and our Spirit.</span> <span class='major'>Yellow, White, and Purple, </span>known as uncommon herbs, represent amplifications or reductions of these values.<br>Every herb can be either <span class='minor'>Aromatic - which means they're good for us</span>, usually even edible! - or <span class='minor'>Bitter, which are the ones we must be careful with, </span>as they can be harmful or cause reactions. It is important to have as many herbs as you can since they're useful for many things... But when talking about healing,<span class='major'> Red Aromatic</span> herbs are your best friend and the most common for healing tonics.\""
+                              "00": "\"There are basically<span class='minor'> eight types of herbs.</span> <span class='major'>Healing, soothing and noxious </span>are their main types and represent their most <span class='minor'>important property for use.</span> <span class='major'>Mild, robust and peculiar </span>are quality enhancers and represent the complexity level of a product or recipe they're used for.<br>And there are also two other properties, <span class='minor'>Zesty - which means they're tasty and fragrant</span>, popular in cooking! - or <span class='minor'>Pungent, which are usually bitter or very strong in flavor or smell, </span>commonly used in brewing. It is important to have as many herbs as you can since they're useful for many things... But when talking about saving lives,<span class='major'> healing and soothing</span> herbs are your best friends.\""
                            },
                            "choice_000": "Useful!"
                         },
                         "msg5": {
                            "bulletin_message": {
-                              "00": "\"A Farmer can grow beautiful gardens, but only someone specialized with herbs like an<span class='major'> Herbalist</span> <span class='minor'>can truly unlock their potential by utilizing planters</span>. There are many types of them, big and small, some for algae or water lilies, some for tree saplings... I'm sure you have your own by now, or at least want to! You should, indeed: just a <span class='minor'>single seed</span> of the type of plant you want will provide you with a <span class='minor'>lifelong production</span> of that herb!\"<br>He smiles. \"But it is how you'll use them that truly matters. And there's no better use than dealing with wounds or recovering the health of those that did battle to defend their homeland. It is quite possible that after battling, a hearthling will be <span class='major'>wounded.</span>\""
+                              "00": "\"A Farmer can grow beautiful gardens, but only someone specialized with herbs like an<span class='major'> Herbalist</span> <span class='minor'>can truly unlock their potential by utilizing planters</span>. There are many types of them, big and small, some for algae or water lilies, some for tree saplings... I'm sure you have your own by now, or at least want to! You should, indeed. And you also need an <span class='major'>exploration garden</span> to be able to <span class='minor'>find more seeds in the wilderness</span>!\"<br>He smiles. \"You really want to collect them all, believe me! There's no better use than dealing with wounds of those that did battle to defend their homeland. It is quite possible that after battling, a hearthling will be <span class='major'>wounded.</span>\""
                            },
                            "choice_000": "Oh no!"
                         },
@@ -2077,6 +2131,10 @@
                "elevated_character": {
                   "display_name": "Elevated character",
                   "tooltip": "There's something really special about the taste of wine and the taste of cheese when experienced together... I feel... Greater."
+               },
+               "garlic_breath": {
+                  "display_name": "Garlic breath",
+                  "tooltip": "Oh no... I better avoid people. My breath smells very... Strong!"
                }
             },
             "traits": {
@@ -2274,6 +2332,14 @@
                      "tooltip": "The Frostfather is here and we've helped in making this Frostfeast special! Hooray!"
                   }
                }
+            },
+            "planters": {
+               "values": {
+                  "tended_planter": {
+                     "display_name": "Tended plants",
+                     "tooltip": "Aww! It's so nice to see the plants and flowers of our town are happy and well cared for!"
+                  }
+               }
             }
          }
       },
@@ -2289,15 +2355,15 @@
                   "6_display_name": ", Master",
                   "6_description": "They have six job levels! They have walked the path of a master!",
                   "12_display_name": ", Grandmaster",
-                  "12_description": "They now have twelve job levels! More than a master, a grand master!",
+                  "12_description": "They now have eleven job levels! More than a master, a grand master!",
                   "18_display_name": ", Jack-of-All-Trades",
-                  "18_description": "They have eighteen job levels! What? That's amazing!",
-                  "30_display_name": ", Blessed",
-                  "30_description": "They've reached thirty job levels, only few and dedicated souls can achieve that...",
+                  "18_description": "They have sixteen job levels! What? That's amazing!",
+                  "30_display_name": ", Blessed One",
+                  "30_description": "They've reached thirty-one job levels, only few and dedicated souls can achieve that...",
                   "60_display_name": ", Living Legend",
-                  "60_description": "They've reached the impressive mark of sixty job levels! That's more experience than many hearthlings combined... Such wisdom!",
-                  "90_display_name": ", Heir of Cid",
-                  "90_description": "They have ninety job levels - this is unbelievable! No hearthling could ever dream of such a feat... Their soul must've been touched by Cid himself!"
+                  "60_description": "They've reached the impressive mark of sixty-one job levels! That's more experience than many hearthlings combined... Such wisdom!",
+                  "90_display_name": ", Scion of Cid",
+                  "90_description": "They have ninety-one job levels - this is unbelievable! No hearthling could ever dream of such a feat... Their soul must've been touched by Cid himself!"
                },
                "slayer": {
                   "display_name": "Slayer",
@@ -2770,6 +2836,18 @@
                   "3_description": "Twenty-one cups of coffee will place them at the great mark of one cup per day for a whole season. Maybe a bit addicting?",
                   "4_display_name": ", Developer",
                   "4_description": "After eighty-four cups of coffee one can safely say they developed a good taste for it. Especially if it was all in a single night of work..."
+               },
+               "garlic_breath": {
+                  "display_name": "Garlic Breath",
+                  "description": "Gained by eating raw garlic and going around with a bad breath!",
+                  "4_display_name": ", Dragon",
+                  "4_description": "Their breath can kill! Like a dragon! Or perhaps just figuratively... Either way, they have earned some reputation for having a garlic breath for fifteen times!",
+                  "3_display_name": " the Foul",
+                  "3_description": "They really, really enjoy eating things that give them a bad breath, it seems... They've done it eight times!",
+                  "2_display_name": " the Unbrushed",
+                  "2_description": "For the third time they've been with a garlic bread... They could at least go brush their teeth afterwards!",
+                  "1_display_name": ", Garlic Breather",
+                  "1_description": "Ouch! They've eaten raw garlic and now have a bad breath... It happens to everyone, don't feel so bad!"
                }
             }
          }
@@ -2989,11 +3067,11 @@
                "display_name": "Produce Fruity Mead",
                "description": "Order the Brewer to fill this fermenting vessel with unfermented fruity mead! This Carboy will continue producing Fruity Mead unless a new command is given."
             },
-            "fermenting_vat_fill_wort": {
+            "fermenting_vat_fill_wort_ale": {
                "display_name": "Produce Ale",
                "description": "Order the Brewer to fill this fermenting vat with ale wort to start brewing! It will continue producing Ale unless a new command is given."
             },
-            "fermenting_vat_fill_wort_gruit": {
+            "fermenting_vat_fill_wort_beer": {
                "display_name": "Produce Beer",
                "description": "Order the Brewer to fill this fermenting vat with beer wort to start brewing! It will continue producing Beer unless a new command is given."
             },
@@ -3106,6 +3184,22 @@
             "drying_bed_fill_black_tea": {
                "display_name": "Dry Black Tea Leaves",
                "description": "Order the Brewer to rest a crate of steamed tea leaves on this drying bed! When using this option, the bed will automatically request to be harvested once the product reaches the Black Tea Leaves stage."
+            },
+            "fermenting_vat_fill_wort_beer_opaque": {
+               "display_name": "Produce Opaque Beer",
+               "description": "Order the Brewer to fill this fermenting vat with opaque beer wort to start brewing! It will continue producing Opaque Beer unless a new command is given."
+            },
+            "fermenting_vat_fill_wort_beer_white": {
+               "display_name": "Produce White Beer",
+               "description": "Order the Brewer to fill this fermenting vat with white beer wort to start brewing! It will continue producing White Beer unless a new command is given."
+            },
+            "fermenting_vat_fill_wort_ale_pale": {
+               "display_name": "Produce Pale Ale",
+               "description": "Order the Brewer to fill this fermenting vat with pale ale wort to start brewing! It will continue producing Pale Ale unless a new command is given."
+            },
+            "exploration_garden_refill": {
+               "display_name": "Add Fertilizer",
+               "description": "The Herbalist is going to refill this garden with fertilizer so it can be used to find new crops again! This command is active by default."
             }
          },
          "slaughter": {
@@ -3653,6 +3747,10 @@
             "hearth_tonic_buff": {
                "display_name": "Hearthbud Light Tonic",
                "description": "Courage, Menace and Muscle are increased. A radiant aura of light encompasses the hearthling, slowly healing them over time."
+            },
+            "hearth_tonic_worn_off_buff": {
+               "description": "The Hearth magic is a pathway to many abilities some consider to be unnatural... And they are not without a cost.<ul><li>Spirit is reduced.</li><li>Healing received is reduced.</li></ul>",
+               "display_name": "Hearthbud Light Tonic (Expiration Effect)"
             }
          },
          "harmony_transcendental": {
@@ -3768,24 +3866,40 @@
          "courage_tonic": {
             "courage_tonic_buff": {
                "description": "Courage is slightly increased for a while."
+            },
+            "courage_tonic_worn_off_buff": {
+               "display_name": "Courage Tonic (Expiration Effect)",
+               "description": "The illusory courage has left some doubts in this hearthling's heart.<ul><li>Diligence and Menace are reduced.</li></ul>"
             }
          },
          "courage_tonic_2": {
             "courage_tonic_2_buff": {
                "display_name": "Enhanced Courage Tonic",
                "description": "Courage and Armor are increased for a while."
+            },
+            "courage_tonic_2_worn_off_buff": {
+               "display_name": "Enhanced Courage Tonic (Expiration Effect)",
+               "description": "The illusory courage and toughness has left lots of doubts in this hearthling's heart.<ul><li>Diligence, Stamina and Menace are reduced.</li></ul>"
             }
          },
          "creativity_tonic": {
             "creativity_tonic_buff": {
                "display_name": "Creativity Tonic",
                "description": "Crafting Speed is slightly increased for a while."
+            },
+            "creativity_tonic_worn_off_buff": {
+               "display_name": "Creativity Tonic (Expiration Effect)",
+               "description": "The exhausting pace has caused this hearthling to feel a bit less diligent for a while.<ul><li>Diligence is reduced.</li></ul>"
             }
          },
          "creativity_tonic_2": {
             "creativity_tonic_2_buff": {
                "display_name": "Enhanced Creativity Tonic",
                "description": "Crafting Speed and Inspiration are increased for a while."
+            },
+            "creativity_tonic_2_worn_off_buff": {
+               "display_name": "Enhanced Creativity Tonic (Expiration Effect)",
+               "description": "The creative boom is fruitful but very exhaustive on the soul.<ul><li>Spirit and Diligence are reduced.</li></ul>"
             }
          },
          "curiosity_tonic": {
@@ -3794,19 +3908,27 @@
                "description": "Curiosity and Experience Gain are slightly increased for a while."
             },
             "curiosity_tonic_worn_off_buff": {
-               "display_name": "Curiosity Tonic (After-effect)",
-               "description": "This hearthlings' intellect is exhausted after forced enlightment. Mind is reduced."
+               "display_name": "Curiosity Tonic (Expiration Effect)",
+               "description": "This hearthlings' intellect is exhausted after forced enlightment.<ul><li>Mind and Speed are reduced.</li></ul>"
             }
          },
          "energy_tonic": {
             "energy_tonic_buff": {
                "description": "Speed and Diligence are slightly increased for a while. Sleepiness is reduced."
+            },
+            "energy_tonic_worn_off_buff": {
+               "display_name": "Energy Tonic (Expiration Effect)",
+               "description": "The energy boost from the tonic has its own price on the body after a while...<ul><li>Speed is reduced.</li></ul>"
             }
          },
          "energy_tonic_2": {
             "energy_tonic_2_buff": {
                "display_name": "Enhanced Energy Tonic",
                "description": "Speed and Diligence are increased for a while. Sleepiness is reduced. This hearthling will focus more on working and engage in less conversations with others."
+            },
+            "energy_tonic_2_worn_off_buff": {
+               "display_name": "Enhanced Energy Tonic (Expiration Effect)",
+               "description": "Working and running around with an unnatural pace forced this hearthling to their limit.<ul><li>Body is reduced.</li><li>Sleepiness is increased.</li></ul>"
             }
          },
          "nightsight_tonic": {
@@ -3814,31 +3936,47 @@
                "display_name": "Nightsight Tonic",
                "description": "The eyes of this hearthling are magically enhanced, allowing them to see in the dark without penalties for a while."
             },
-            "nightsight_tonic_worn_off_buff": {
-               "display_name": "Nightsight Tonic (After-effect)",
-               "description": "Sudden changes to how light and darkness are perceived has confused this hearthling's body clock. They'll feel more sleepy."
+            "nightsight_tonic_side_effect_buff": {
+               "display_name": "Nightsight Tonic (Side Effect)",
+               "description": "Sudden changes to how light and darkness are perceived has confused this hearthling's body clock. They'll feel more sleepy than usual."
             }
          },
          "stamina_tonic": {
             "stamina_tonic_buff": {
                "description": "Stamina is slightly increased for a while, boosting their health."
+            },
+            "stamina_tonic_worn_off_buff": {
+               "display_name": "Stamina Tonic (Expiration Effect)",
+               "description": "After the toughening effect passes, this tonic leaves a feeling of emptiness inside...<ul><li>Diligence and Courage are reduced.</li></ul>"
             }
          },
          "stamina_tonic_2": {
             "stamina_tonic_2_buff": {
                "display_name": "Enhanced Stamina Tonic",
                "description": "Stamina is increased for a while, greatly boosting their health. Healing received is also increased."
+            },
+            "stamina_tonic_2_worn_off_buff": {
+               "display_name": "Enhanced Stamina Tonic (Expiration Effect)",
+               "description": "There's a certain numbness creeping over this hearthling as their body returns to normal.<ul><li>Diligence, Speed and Spirit are reduced.</li></ul>"
             }
          },
          "strength_tonic": {
             "strength_tonic_buff": {
                "description": "Muscle is slightly increased for a while, boosting their combat damage."
+            },
+            "strength_tonic_worn_off_buff": {
+               "display_name": "Strength Tonic (Expiration Effect)",
+               "description": "This hearthlings muscles are sore and tired! <ul><li>Muscle and Menace are reduced.</li></ul>"
             }
          },
          "strength_tonic_2": {
             "strength_tonic_2_buff": {
                "display_name": "Enhanced Strength Tonic",
                "description": "Muscle is increased for a while, greatly boosting their combat damage. Passive resistance to some inflictable conditions is also increased."
+            },
+            "strength_tonic_2_worn_off_buff": {
+               "display_name": "Enhanced Strength Tonic (Expiration Effect)",
+               "description": "This hearthling feels weaker and more tired than normal after the enhancements of a strong strength tonic.<ul><li>Body and Menace are reduced.</li><li>Sleepiness is increased.</li></ul>"
             }
          },
          "warmth_tonic": {
@@ -3855,6 +3993,10 @@
             "water_resist_tonic_buff": {
                "display_name": "Hydrophobic Tonic",
                "description": "This hearthling is surrounded by a thin magical layer that will prevent them from getting soaked."
+            },
+            "water_resist_tonic_side_effect_buff": {
+               "display_name": "Hydrophobic Tonic (Side Effect)",
+               "description": "The added impermeability has caused this hearthling to feel thirstier a slightly more often."
             }
          },
          "water_resist_tonic_2": {
@@ -3862,9 +4004,9 @@
                "display_name": "Enhanced Hydrophobic Tonic",
                "description": "This hearthling is protected by a much stronger magical layer that will entirely avoid water, allowing them to even run underwater!"
             },
-            "water_resist_tonic_2_worn_off_buff": {
-               "display_name": "Hydrophobic Tonic (After-effect)",
-               "description": "Excessive impermeability has caused this hearthling to feel thirstier more quickly."
+            "water_resist_tonic_2_side_effect_buff": {
+               "display_name": "Enhanced Hydrophobic Tonic (Side Effect)",
+               "description": "Excessive impermeability has caused this hearthling to feel thirstier a lot more quickly."
             }
          },
          "minor_flanked": {
@@ -3951,6 +4093,10 @@
             "healing_large": {
                "display_name": "Large Healing Potion",
                "description": "Healing 5% health every 5 minutes for one hour"
+            },
+            "last_stand": {
+               "display_name": "Potion of Last Stand",
+               "description": "This hearthling is under the incredibly and taxing power of a Potion of Last Stand. Their combat prowess is incredibly boosted but they will be knocked out and require rescue at the end of this effect.<ul><li>Courage is absurdly increased</li><li>Speed is increased</li><li>Muscle and Stamina are greatly increased</li><li>Resistance to negative effects increased</li><li>Damage dealt is greatly increased</li><li>Armor is greatly increased</li><li>This hearthling will not receive any healing effects anymore</li><li>This hearthling will be incapacitated when this effect expires</li></ul>"
             }
          },
          "kibble_hearth": {
@@ -4052,7 +4198,19 @@
             "coffee_energy_worn_off": {
                "display_name": "Caffeine Crash",
                "description": "Uhm... I don't feel so focused anymore. And I'm getting tired quick... I suppose I need more coffee? Diligence is reduced. The need for sleep increases faster."
+            },
+            "baked_goodness": {
+               "display_name": "Baked Goodness",
+               "description": "There's something encouraging and inspiring about a meal that requires so much time and dedication...<ul><li>Spirit is increased by 1</li></ul>"
             }
+         },
+         "garlic_breath": {
+            "display_name": "Garlic Breath",
+            "description": "Maybe eating a whole garlic wasn't a good idea... Courage is reduced.<ul><li>This hearthling will not be willing to start conversations as much</li></ul>"
+         },
+         "tended_planter": {
+            "display_name": "Tended Planter",
+            "description": "This planter has been tended to and will occasionally give happy thoughts to everyone around it!"
          }
       },
       "loadouts": {
@@ -4383,8 +4541,8 @@
       "herbalist": {
          "recipes": {
             "clothing_accessories_name": "Clothing & Accessories",
-            "refinement_name": "Seed Extraction: Plants",
-            "refinement_large_name": "Seed Extraction: Shrubs & Trees",
+            "refinement_name": "Seed Extraction: Plants & Shrubs",
+            "refinement_large_name": "Seed Extraction: Trees",
             "refined_fungi_name": "Fungal Refinement",
             "refined_seeds_name": "Farming: Regional Seeds",
             "planters_name": "Planters & Pots",
@@ -4688,6 +4846,11 @@
                "description": "Separate a seed from the flower",
                "flavor": "Only a skilled hand can harvest the weaker seed, but the herb is lost in the process."
             },
+            "coffee_bush_transmute_recipe": {
+               "recipe_name": "Coffee Plant Seed",
+               "description": "Separate seeds from the fruits",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the fruits are lost in the process."
+            },
             "moonbell_transmute_recipe": {
                "recipe_name": "Moonbell Seeds (x2)",
                "description": "Separate seeds from the herbs",
@@ -4697,6 +4860,11 @@
                "recipe_name": "Sugarbell Seeds (x2)",
                "description": "Separate seeds from the harvest",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the sugarbells are lost in the process."
+            },
+            "garlic_transmute_recipe": {
+               "recipe_name": "Garlic Seeds (x2)",
+               "description": "Separate seeds from the harvest",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the garlic is lost in the process."
             },
             "water_lily_pad_transmute_recipe": {
                "recipe_name": "Lily Pad Seed Pods (x2)",
@@ -4790,32 +4958,27 @@
             },
             "brightbell_seeds_recipe": {
                "recipe_name": "Brightbell Seeds",
-               "description": "Domesticate Brightbell flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "brightbell_seeds_2_recipe": {
-               "recipe_name": "Brightbell Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate brightbell flowers!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "silkweed_seeds_recipe": {
-               "recipe_name": "Silkweed Seeds",
-               "description": "Domesticate Silkweed plants and learn how to farm them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "silkweed_seeds_2_recipe": {
                "recipe_name": "Silkweed Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate silkweed!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "frostsnap_seeds_recipe": {
                "recipe_name": "Frostsnap Seeds",
-               "description": "Domesticate Frostsnap flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "frostsnap_seeds_2_recipe": {
-               "recipe_name": "Frostsnap Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate frostsnap flowers!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "rose_seeds_recipe": {
+               "recipe_name": "Rose Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate roses!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "oleander_seeds_recipe": {
+               "recipe_name": "Oleander Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate oleander flowers!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "acacia_tree_seeds_recipe": {
@@ -4829,11 +4992,6 @@
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
             "cactus_flower_seeds_recipe": {
-               "recipe_name": "Cactus Flower Seeds",
-               "description": "Domesticate Cactus flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "cactus_flower_seeds_2_recipe": {
                "recipe_name": "Cactus Flower Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate cactus flowers!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -4850,20 +5008,10 @@
             },
             "violet_seeds_recipe": {
                "recipe_name": "Violet Seeds",
-               "description": "Domesticate Violet flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "violet_seeds_2_recipe": {
-               "recipe_name": "Violet Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate violets!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "snow_poppy_seeds_recipe": {
-               "recipe_name": "Snow Poppy Seeds",
-               "description": "Domesticate Snow Poppy flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "snow_poppy_seeds_2_recipe": {
                "recipe_name": "Snow Poppy Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate snow poppies!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -4878,10 +5026,25 @@
                "description": "Domesticate Cherry Bushes and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
+            "cherry_bush_seeds_2_recipe": {
+               "recipe_name": "Dried Cherries",
+               "description": "Trade or gift it to allow other cultures to cultivate cherry bushes!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "tea_bush_seeds_recipe": {
                "recipe_name": "Tea Seedpods",
                "description": "Domesticate Tea Shrubs and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "coffee_bush_seeds_recipe": {
+               "recipe_name": "Green Coffee Beans",
+               "description": "Domesticate Coffee Plants and learn how to farm them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "coffee_bush_seeds_2_recipe": {
+               "recipe_name": "Green Coffee Beans",
+               "description": "Trade or gift it to allow other cultures to cultivate coffee plants!",
+               "flavor": "This farming crop is already known to your farmers by default"
             },
             "pear_cactus_seeds_recipe": {
                "recipe_name": "Dried Prickly Pears",
@@ -4893,15 +5056,30 @@
                "description": "Domesticate Dwarfsbeard bushes and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
+            "dwarfsbeard_seeds_2_recipe": {
+               "recipe_name": "Dwarfsbeard Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate dwarfsbeard bushes!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "tumbleweed_seeds_recipe": {
                "recipe_name": "Tumbleweed Seeds",
                "description": "Domesticate Tumbleweed bushes and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
+            "tumbleweed_seeds_2_recipe": {
+               "recipe_name": "Tumbleweed Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate tumbleweed bushes!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
             "wintermoss_seeds_recipe": {
                "recipe_name": "Wintermoss Seeds",
                "description": "Domesticate Wintermoss bushes and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "wintermoss_seeds_2_recipe": {
+               "recipe_name": "Wintermoss Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate wintermoss bushes!",
+               "flavor": "This farming crop is already known to your farmers by default"
             },
             "apple_tree_seeds_recipe": {
                "recipe_name": "Apple Cores",
@@ -5000,36 +5178,6 @@
             },
             "moonbell_seeds_recipe": {
                "recipe_name": "Moonbell Seeds",
-               "description": "Domesticate Moonbell flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "poppy_seeds_recipe": {
-               "recipe_name": "Poppy Seeds",
-               "description": "Domesticate Poppy flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "rose_seeds_recipe": {
-               "recipe_name": "Rose Seeds",
-               "description": "Domesticate Rose flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "nightshade_seeds_recipe": {
-               "recipe_name": "Nightshade Seeds",
-               "description": "Domesticate Nightshade flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "daylily_seeds_recipe": {
-               "recipe_name": "Daylily Seeds",
-               "description": "Domesticate Daylily flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "oleander_seeds_recipe": {
-               "recipe_name": "Oleander Seeds",
-               "description": "Domesticate Oleander flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "moonbell_seeds_2_recipe": {
-               "recipe_name": "Moonbell Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate moonbell flowers!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
@@ -5044,11 +5192,6 @@
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "marblesprout_seeds_recipe": {
-               "recipe_name": "Marblesprout Seeds",
-               "description": "Domesticate Marblesprout flowers and learn how to grow them.",
-               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
-            },
-            "marblesprout_seeds_2_recipe": {
                "recipe_name": "Marblesprout Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate marble flowers!",
                "flavor": "This farming crop is already known to your farmers by default"
@@ -5066,6 +5209,16 @@
             "carrot_seeds_2_recipe": {
                "recipe_name": "Carrot Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate carrots!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "berry_bush_seeds_2_recipe": {
+               "recipe_name": "Dried Berries",
+               "description": "Trade or gift it to allow other cultures to cultivate berry bushes!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "pear_cactus_seeds_2_recipe": {
+               "recipe_name": "Dried Prickly Pears",
+               "description": "Trade or gift it to allow other cultures to cultivate prickly pear cacti!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "pumpkin_seeds_recipe": {
@@ -5126,6 +5279,16 @@
             "sweet_potato_seeds_2_recipe": {
                "recipe_name": "Sweet Potato Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate sweet taters!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "garlic_seeds_recipe": {
+               "recipe_name": "Garlic Cloves",
+               "description": "Domesticate Garlic and learn how to grow them like the friendly people of Honeywood!",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
+            "garlic_seeds_2_recipe": {
+               "recipe_name": "Garlic Cloves",
+               "description": "Trade or gift it to allow other cultures to cultivate garlic!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "fertilizer_recipe": {
@@ -5194,27 +5357,27 @@
             },
             "cold_tonic_recipe": {
                "recipe_name": "Refreshing Tonic",
-               "description": "This tonic will protect your entire town from hot weather. However, it reduces their Body as a side effect.",
+               "description": "This tonic will protect your entire town from hot weather but with side effects.",
                "flavor": "Known as 'Frost Embrace' in the famous Illustrated Alchemical Catalogue by Zokumos of Panaples"
             },
             "nightsight_tonic_recipe": {
                "recipe_name": "Nightsight Tonic",
-               "description": "All of your citizens will get enhanced sight, allowing them to see in the dark. Causes after-effects when the quality isn't excellent or higher.",
+               "description": "All of your citizens will get enhanced sight, allowing them to see in the dark but with side effects.",
                "flavor": "Called 'Cat's Eye Tincture' by Picollo Flanel in his celebrated Alchemist's Handbook"
             },
             "warmth_tonic_recipe": {
                "recipe_name": "Warmth Tonic",
-               "description": "This tonic will protect your entire town from cold weather. Causes after-effects when the quality isn't excellent or higher.",
+               "description": "This tonic will protect your entire town from cold weather but with side effects.",
                "flavor": "Known as 'Dragon's Touch' in the famous Illustrated Alchemical Catalogue by Zokumos of Panaples"
             },
             "water_resist_tonic_recipe": {
                "recipe_name": "Hydrophobic Tonic",
-               "description": "Protection from getting soaked will be granted to all of the hearthlings.",
+               "description": "Protection from getting soaked will be granted to all of the hearthlings but with side effects.",
                "flavor": ""
             },
             "water_resist_tonic_2_recipe": {
                "recipe_name": "Enhanced Hydrophobic Tonic",
-               "description": "Protects the whole town from getting soaked, allows running underwater. Causes after-effects when the quality isn't excellent or higher.",
+               "description": "Protects the whole town from getting soaked, allows running underwater but with side effects.",
                "flavor": "Known as 'Mermaid's Kiss' in the famous Illustrated Alchemical Catalogue by Zokumos of Panaples"
             },
             "strength_tonic_recipe": {
@@ -5243,7 +5406,7 @@
             },
             "curiosity_tonic_recipe": {
                "recipe_name": "Curiosity Tonic",
-               "description": "This tonic will increase everyone's Curiosity and Experience Gain. Causes after-effects when the quality isn't excellent or higher.",
+               "description": "This tonic will increase everyone's Curiosity and Experience Gain.",
                "flavor": "Called the 'Philospher's Draught' by Picollo Flanel in his celebrated Alchemist's Handbook"
             },
             "creativity_tonic_2_recipe": {
@@ -5273,6 +5436,11 @@
                "recipe_name": "Fever Cordial",
                "description": "This foul-smelling extract can be used for treating infections of any severity. Will not apply the 'Recently Treated' effect, allowing further treatment without delay.",
                "flavor": "Old Nanny used to say that rubbing moldy bread on infected wounds can be helpful..."
+            },
+            "undead_cordial_recipe": {
+               "recipe_name": "Undead Cordial",
+               "description": "A repulsive extract able to remove the infections applied by the undead. Will not apply the 'Recently Treated' effect, allowing further treatment without delay.",
+               "flavor": "A circle of salt around the patient might help as well..."
             },
             "weak_antidote_recipe": {
                "recipe_name": "Weak Antidote",
@@ -5391,6 +5559,11 @@
                "description": "This draught of antidote will be carried by combatants and used when fighting against venomous foes, protecting them from all poisons for a while.",
                "flavor": "A hearthling can only carry one potion"
             },
+            "potion_last_stand_recipe": {
+               "recipe_name": "Potion of Last Stand",
+               "description": "Used when very low on health, it will greatly boost their combat prowess... However it will incapacitate them when the effect expires. Be ready for a rescue!",
+               "flavor": "A desperate measure for desperate times..."
+            },
             "gruit_recipe": {
                "recipe_name": "Wrap of Gruit",
                "description": "A bundle of pungent herbs and seasonings needed for beer brewing. This traditional recipe uses juniper berries.",
@@ -5446,7 +5619,7 @@
          "herbalist_description": {
             "level_2_data": {
                "taming_local_flora_name": "Botany & Collaborative Insight",
-               "taming_local_flora_description": "The Herbalist has acquired sufficient knowledge of the area to learn how to cultivate the local flora. They are also now skillful enough to use materials created by the other crafters, become a Cleric or follow a career as a Brewer.",
+               "taming_local_flora_description": "The Herbalist has acquired sufficient knowledge of the area to learn how to cultivate the local flora. By building an Exploration Garden, they are able to look for new seeds to be planted! They are also now skillful enough to use materials created by the other crafters, become a Cleric or follow a career as a Brewer.",
                "collaborative_insight_description": "The Herbalist is now skillful enough to use materials created by the other crafters and is also able to become a Cleric"
             },
             "level_3_data": {
@@ -5465,7 +5638,7 @@
                "power_medic_3_name": "Great Physician",
                "power_medic_3_description": "The Herbalist can now attend to up to 6 hearthlings at a time. They will also be able to improve the qualities of their plants faster."
             },
-            "description": "A performer of healing practices, the Herbalist can craft and use tonics, medications and potions but also work with plants, seeds and other goods.",
+            "description": "A performer of healing practices, the Herbalist can craft and use tonics, medications and potions but also work with plants, mushrooms and other goods.",
             "level_1_data": {
                "perk_000_name": "Junior Practitioner",
                "perk_000_description": "The Herbalist is able to craft medicine and use it on up to two injured hearthlings at a time.",
@@ -5519,7 +5692,48 @@
          },
          "herbalist_exploration_garden": {
             "display_name": "Herbalist Exploration Garden",
-            "description": "Used for discovering new types of plants for cultivation in herbalist planters."
+            "description": "Used for discovering new types of plants for cultivation in herbalist planters.",
+            "periodic_interaction": {
+               "modes": {
+                  "find_native_seed": {
+                     "herb": {
+                        "display_name": "Find Native Herb",
+                        "description": "Prioritize finding seeds for a plant native to this biome. This process is faster and more reliable than searching for exotic seeds. Requires a level 2 Herbalist or Grower."
+                     },
+                     "water": {
+                        "display_name": "Find Native Water Crop",
+                        "description": "Prioritize finding a water plant native to this biome's water bodies. A faster and more reliable process than searching for exotic ones. Requires a level 3 Herbalist or Grower."
+                     },
+                     "fungi": {
+                        "display_name": "Find Native Mushroom",
+                        "description": "Prioritize finding a mushroom native to this biome. This process is faster and more reliable than searching for exotic fungi. Requires a level 5 Herbalist or Grower."
+                     }
+                  },
+                  "find_exotic_seed": {
+                     "herb": {
+                        "display_name": "Find Exotic Herb",
+                        "description": "Try to look for an exotic herb from anywhere in the world. A slower process that relies both on luck and dedication, sometimes finding only native seeds. Requires a level 4 Herbalist or Grower."
+                     },
+                     "water": {
+                        "display_name": "Find Exotic Water Crop",
+                        "description": "Search for an exotic water plant from anywhere in the world. A slower process that relies both on luck and dedication, sometimes finding only native plants. Requires a level 4 Herbalist or Grower."
+                     },
+                     "fungi": {
+                        "display_name": "Find Exotic Mushroom",
+                        "description": "Try to look for an exotic mushroom from anywhere in the world. A slower process that relies both on luck and dedication, sometimes finding only native fungi. Requires a level 6 Herbalist or Grower."
+                     }
+                  }
+               }
+            },
+            "expired": {
+               "description": "This garden is depleted and requires more fertilizer to be used again!"
+            }
+         },
+         "unlock_crop": {
+            "bulletin_title": "The [str(i18n_data.job_name)] has unlocked [str(i18n_data.crop_name)]!"
+         },
+         "unlock_last_crop": {
+            "bulletin_title": "The [str(i18n_data.job_name)] has unlocked the last crop possible in this garden: [str(i18n_data.crop_name)]!"
          }
       },
       "engineer": {
@@ -5615,6 +5829,8 @@
       },
       "potter": {
          "recipes": {
+            "porcelain_furniture_name": "Furniture & Decoration, Porcelain",
+            "porcelain_building_parts_name": "Building Parts, Porcelain",
             "rc_shepherds_crook_recipe": {
                "recipe_name": "Shepherd's Ceramic Crook",
                "flavor": "The herding of animals in the desert is a tradition coming for as long as the children of Rayya have been walking these dunes"
@@ -6079,6 +6295,11 @@
          "recipes": {
             "earthbud_seeds_recipe": {
                "recipe_name": "Hearthbud Seeds (x2)"
+            },
+            "hearthbud_flakes_recipe": {
+               "recipe_name": "Hearthbud Flakes",
+               "description": "Dry and grind the very special blossom of a hearthbud flower into an edible powder with interesting properties.",
+               "flavor": "Sometimes you just need a pinch of magic!"
             },
             "legendary_silk_recipe": {
                "recipe_name": "Woodland Silk",
@@ -6612,6 +6833,11 @@
                "description": "Your plants deserve this, don't they?",
                "flavor": "Yes, they do!"
             },
+            "stone_teapot_recipe": {
+               "recipe_name": "Stone Teapot",
+               "description": "Simple yet efficient in keeping things warm.",
+               "flavor": "A Brewer can use these to make tea"
+            },
             "frostfeast": {
                "present_small_recipe": {
                   "recipe_name": "Small Frostfeast Present",
@@ -6668,10 +6894,25 @@
                "description": "Craft a fancy holder that can store up to 4 Bundles O' Firewood.",
                "flavor": ""
             },
+            "copper_coffee_pot_recipe": {
+               "recipe_name": "Copper Coffee Pot",
+               "description": "Very sleek and lightweight, can keep a beverage hot for a good time!",
+               "flavor": "A Brewer can use these to make coffee"
+            },
+            "moka_coffee_pot_recipe": {
+               "recipe_name": "Moka Coffee Pot",
+               "description": "A special pot for extracting the deepest flavors of coffee, very traditional around the southern coast.",
+               "flavor": "A Brewer can use these to make coffee"
+            },
             "pewter_teapot_recipe": {
                "recipe_name": "Pewter Teapot",
                "description": "A very refined and exquisite piece of decoration.",
-               "flavor": "Can also be used to make tea"
+               "flavor": "A Brewer can use these to make tea"
+            },
+            "iron_teapot_recipe": {
+               "recipe_name": "Cast Iron Teapot",
+               "description": "Very sturdy and heavy but should warm its contents evenly and keep them hot for a while.",
+               "flavor": "A Brewer can use these to make tea"
             },
             "pewter_pitcher_recipe": {
                "recipe_name": "Pewter Pitcher",
@@ -7173,6 +7414,11 @@
                "description": "A good flat surface for kneading and preparing stuff.",
                "flavor": "Get those hands dirty!"
             },
+            "cook_leavening_table_recipe": {
+               "recipe_name": "Cook's Leavening Table",
+               "description": "This large and powdered surface is the perfect resting place for doughs to rise!",
+               "flavor": "Many baking recipes require leavened doughs"
+            },
             "cook_workbench_advanced_recipe": {
                "recipe_name": "Metal Cooking Pot",
                "description": "Replaces the Stone Cooking Pot and is needed for the finest meals. Requires lower or good grade fuel.",
@@ -7247,6 +7493,11 @@
                "recipe_name": "Broth",
                "description": "A very nutritious and filling simmer, broth is either an ingredient or a meal on its own.",
                "flavor": "It isn't exactly tasty, though..."
+            },
+            "condiment_recipe": {
+               "recipe_name": "Bowl of Condiment (x4)",
+               "description": "Slice, dice & mix four bowls of a fine and flavorful relish to be used by the Cook as a Seasoning.",
+               "flavor": "Cooking Oil or Mayonnaise are examples of bases. Savory vegetables are the strong or spicy ones, like Garlic or Heirbloom fruit"
             },
             "winter_soup_recipe": {
                "recipe_name": "Winter Soup",
@@ -7339,15 +7590,30 @@
                "description": "Mix and knead a malleable dough to be used on baking meals like bread.",
                "flavor": "Watch it grow! Requires some leavening before it can be used"
             },
+            "dough_flat_recipe": {
+               "recipe_name": "Portion of Flat Dough",
+               "description": "Knead and roll a flat dough with soft flour for unleavened breads.",
+               "flavor": ""
+            },
+            "dough_brown_recipe": {
+               "recipe_name": "Portion of Brown Dough",
+               "description": "Mix and knead a sticker, heavier dough out of flour and the whole grain.",
+               "flavor": "Watch it grow! Requires some leavening before it can be used"
+            },
+            "dough_fluffy_recipe": {
+               "recipe_name": "Portion of Fluffy Dough",
+               "description": "Mix and knead a very malleable and lightweight dough with very thin rye flour.",
+               "flavor": "Watch it grow! Requires some leavening before it can be used"
+            },
+            "dough_sour_recipe": {
+               "recipe_name": "Portion of Sourdough",
+               "description": "Knead and prepare a rustic portion of barley dough to be naturally fermented.",
+               "flavor": "Watch it grow! Requires some leavening before it can be used"
+            },
             "dough_pie_recipe": {
                "recipe_name": "Pie Crust (x2)",
                "description": "Prepare and roll out a couple of pie crusts that will be baked into flaky, buttery pies!",
                "flavor": "A recipe passed down generations"
-            },
-            "cooking_oil_recipe": {
-               "recipe_name": "Cooking Oil",
-               "description": "Extract the oil from any oleaginous seeds or grains to be used as an ingredient.",
-               "flavor": "Pumpkin seeds, Sunflower seeds, Corn or even Paddy are examples of oil sources"
             },
             "dough_sweet_recipe": {
                "recipe_name": "Portion of Sweet Dough",
@@ -7363,6 +7629,11 @@
                "recipe_name": "Bowl of Sweet Batter",
                "description": "Prepare a sweet and wonderful mix that can be turned into things like CAKE!",
                "flavor": "The cake is not a lie!"
+            },
+            "cooking_oil_recipe": {
+               "recipe_name": "Cooking Oil",
+               "description": "Extract the oil from any oleaginous grains or herbs to be used as an ingredient.",
+               "flavor": "Pumpkin seeds, Sunflowers, Corn or even Paddy are examples of oil sources"
             },
             "cooked_rice_recipe": {
                "recipe_name": "Cooked Rice",
@@ -7454,10 +7725,54 @@
                "description": "An appetizing combination of cheese and greens.",
                "flavor": "It is said that the old emperors of the Phoenix Empire loved eating veggies like this"
             },
+            "flat_bread_recipe": {
+               "description": "Unleavened bread made from soft flour.",
+               "flavor": "A Rayya's Children favorite for using up less grain than loafy breads"
+            },
             "nut_bread_recipe": {
                "recipe_name": "Nut Bread",
                "description": "Spicy and soft.",
                "flavor": "An Autumn favorite!"
+            },
+            "horsebread_recipe": {
+               "recipe_name": "Horsebread",
+               "description": "A commoner's whole-grain loaf filled with minced veggies.",
+               "flavor": "A typical meal around The Ascendancy's countryside"
+            },
+            "barley_bun_recipe": {
+               "recipe_name": "Barley Bun",
+               "description": "Crispy crust, incredibly soft inside and with a buttery taste!",
+               "flavor": "The pride of every Northern Alliance baker"
+            },
+            "crispbread_recipe": {
+               "recipe_name": "Crispbread",
+               "description": "Somewhat short but fluffy and flavorful spiced bread.",
+               "flavor": "A favorite snack among the Mountain Folk"
+            },
+            "hardtack_recipe": {
+               "recipe_name": "Hardtack Crackers",
+               "description": "They're hard and they're crunchy... But they'll keep people fed.",
+               "flavor": "Not a popular choice, but they take a very long time to spoil!"
+            },
+            "tortilla_recipe": {
+               "recipe_name": "Tortillas",
+               "description": "Maleable and thin discs of deliciousness!",
+               "flavor": "Perhaps we should wrap them around other food?!"
+            },
+            "brown_loaf_recipe": {
+               "recipe_name": "Brown Loaf",
+               "description": "Ordinary whole-grain bread.",
+               "flavor": ""
+            },
+            "sourdough_bread_recipe": {
+               "recipe_name": "Sourdough Bread",
+               "description": "The taste of natural fermentation is palpable on this rustic bread.",
+               "flavor": "Powdered with flour makes it extra rustic!"
+            },
+            "garlic_bread_recipe": {
+               "recipe_name": "Garlic Bread",
+               "description": "Deliciously roasted with a savory touch and buttery texture.",
+               "flavor": "Everyone loves garlic bread! Garlic breath... Not so much"
             },
             "nutty_meatballs_recipe": {
                "recipe_name": "Nutty Meatballs",
@@ -7582,7 +7897,7 @@
          },
          "cook_description": {
             "level_2_data": {
-               "recipe_unlock_2_description": "The Cook has learned to make slightly fancier recipes and can now build an oven for delicious baked goods."
+               "recipe_unlock_2_description": "The Cook has learned to make slightly fancier recipes and can now build an oven for delicious baked goods and a leavening table to let their doughs rise - a process necessary for baking."
             },
             "level_4_data": {
                "ornate_perk_name": "Healthier Diets",
@@ -7628,10 +7943,16 @@
          "cook_workbench_advanced": {
             "display_name": "Metal Cooking Pot",
             "description": "Used by the finest Cooks for delicious meals. Requires lower or good grade fuel."
+         },
+         "cook_leavening_table": {
+            "display_name": "Leavening Table",
+            "description": "Used by the Cook to let doughs rise."
          }
       },
       "carpenter": {
          "recipes": {
+            "ornate_furniture_name": "Furniture & Decoration, Ornate",
+            "ornate_building_parts_name": "Building Parts, Ornate",
             "wooden_animal_door_recipe": {
                "recipe_name": "Wooden Animal Door",
                "description": "A large door for animal shelters, it can be closed by a shepherd. When closed, only hearthlings may go through!",
@@ -8626,7 +8947,7 @@
                "flavor": "Coffee Cherries are dried on a drying bed"
             },
             "coffee_roasted_recipe": {
-               "recipe_name": "Sack of Roasted Coffee",
+               "recipe_name": "Sack of Roasted Coffee Beans",
                "description": "Coffee Beans are perfectly roasted when they reach a deep, dark brown color and become slightly brittle.",
                "flavor": "The Brewer can use the Cook's oven for this recipe!"
             },
@@ -8650,10 +8971,30 @@
                "description": "Exhales a smell that can't be mistaken with anything else. Required by all the black tea recipes.",
                "flavor": "The Brewer can use the Cook's mill grinder for this recipe!"
             },
-            "wort_recipe": {
+            "wort_ale_recipe": {
                "recipe_name": "Bucket of Ale Wort",
                "description": "An extract of mashed malted grains and herbs. Within a Fermentation Vat it can be turned into ale!",
                "flavor": "Pure malt wort can also be further distilled into other drinks"
+            },
+            "wort_ale_pale_recipe": {
+               "recipe_name": "Bucket of Pale Ale Wort",
+               "description": "Boiled malted rye with juniper berries. Within a Fermentation Vat it can be turned into pale ale!",
+               "flavor": "This refined northern recipe makes ale that are as appreciated as the best beers"
+            },
+            "wort_beer_white_recipe": {
+               "recipe_name": "Bucket of White Beer Wort",
+               "description": "A lightweight and bitter mixture of malted wheat and gruit. Within a Fermentation Vat it can be turned into white beer!",
+               "flavor": "White Beer has a very unique quality and appreciated flavor, providing some nutrition"
+            },
+            "wort_beer_recipe": {
+               "recipe_name": "Bucket of Beer Wort",
+               "description": "A bitter and strong mash of grains and gruit. Within a Fermentation Vat it can be turned into beer!",
+               "flavor": "Beers are ready quicker than common Ale and makes hearthlings slightly happier"
+            },
+            "wort_beer_opaque_recipe": {
+               "recipe_name": "Bucket of Opaque Beer Wort",
+               "description": "A thicker, stronger mixture of millet malt and sugary fruits. Within a Fermentation Vat it can be turned into beer!",
+               "flavor": "Opaque Beer is a very traditional beverage towards the east with a lot of nutrition to it"
             },
             "unfermented_vinegar_brew_recipe": {
                "recipe_name": "Unfermented Brew Vinegar",
@@ -8674,11 +9015,6 @@
                "recipe_name": "Unfermented Juice Vinegar",
                "description": "Prepare an appropriate fruit juice to be fermented. Within a Wine Cask it can be turned into one jug of vinegar.",
                "flavor": "Juice is the least efficient vinegar ingredient - but also the cheapest!"
-            },
-            "wort_gruit_recipe": {
-               "recipe_name": "Bucket of Beer Wort",
-               "description": "A bitter and strong mash of grains and gruit. Within a Fermentation Vat it can be turned into beer!",
-               "flavor": "Beer is ready quicker than Ale and makes hearthlings slightly happier"
             },
             "must_berry_recipe": {
                "recipe_name": "Bucket of Berry Must",
@@ -8755,6 +9091,16 @@
                "description": "Smells good and tastes better, a real forest treasure. Provides multiple bonuses to hearthlings.",
                "flavor": "Prepared tea must be placed somewhere in order to be consumed"
             },
+            "tea_green_recipe": {
+               "recipe_name": "Green Tea",
+               "description": "Deep and soft all at once, a beverage for the mind. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
+            "tea_black_recipe": {
+               "recipe_name": "Black Tea",
+               "description": "The unique and unmistakable fragrance will enlight all the senses. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared tea must be placed somewhere in order to be consumed"
+            },
             "tea_desert_recipe": {
                "recipe_name": "Desert Sun Tea",
                "description": "A unique recipe to the children of Rayya, a flowery black tea from Pal'Mum. Provides multiple bonuses to hearthlings.",
@@ -8773,6 +9119,21 @@
             "coffee_recipe": {
                "recipe_name": "Coffee",
                "description": "A filtered, warm and energizing beverage held dear to many late-night workers! Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared coffee must be placed somewhere in order to be consumed"
+            },
+            "coffee_milk_recipe": {
+               "recipe_name": "White Coffee",
+               "description": "The deep flavor of coffee perfectly balanced with the softness of milk. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared coffee must be placed somewhere in order to be consumed"
+            },
+            "coffee_bold_recipe": {
+               "recipe_name": "Bold Coffee",
+               "description": "A much stronger and deeper preparing of coffee using a special pot to steam it through the grains. Provides multiple bonuses to hearthlings.",
+               "flavor": "Prepared coffee must be placed somewhere in order to be consumed"
+            },
+            "coffee_lavish_recipe": {
+               "recipe_name": "Lavish Coffee",
+               "description": "A refined, sweet and flavorful recipe with all the elegance that coffee lovers deserve! Provides multiple bonuses to hearthlings.",
                "flavor": "Prepared coffee must be placed somewhere in order to be consumed"
             },
             "juice_berry_recipe": {
@@ -8920,9 +9281,29 @@
                "description": "Provides 16 tankards of beer. It needs to be placed down before being used.",
                "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
             },
+            "beer_white_serving_keg_recipe": {
+               "recipe_name": "Serving Keg of White Beer",
+               "description": "Provides 16 tankards of white beer. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+            "beer_opaque_serving_keg_recipe": {
+               "recipe_name": "Serving Keg of Opaque Beer",
+               "description": "Provides 16 tankards of opaque beer. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+            "beer_opaque_gourd_recipe": {
+               "recipe_name": "Opaque Beer in a Gourd",
+               "description": "Provides 18 tankards of beer. It needs to be placed down before being used.",
+               "flavor": "The traditional way to serve this beverage. Requires a really large golden gourd!"
+            },
             "ale_serving_keg_recipe": {
                "recipe_name": "Serving Keg of Ale",
                "description": "Provides 16 tankards of ale. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+            "ale_pale_serving_keg_recipe": {
+               "recipe_name": "Serving Keg of Pale Ale",
+               "description": "Provides 16 tankards of pale ale. It needs to be placed down before being used.",
                "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
             },
             "spirit_serving_keg_recipe": {
@@ -8954,6 +9335,11 @@
                "recipe_name": "Serving Keg of Buttered Beer",
                "description": "A special brew of the Ascendancy. Sweet, flavorful and with little alcohol content.",
                "flavor": "Requires placement before it can be used"
+            },
+            "ale_table_recipe": {
+               "recipe_name": "Jug of Small Ale",
+               "description": "A simple brew with very little alcohol content and quite a bunch of nutritional content. Ideal for thirsty workers!",
+               "flavor": "It's better than water! Promise!"
             },
             "liqueur_almond_serving_keg_recipe": {
                "recipe_name": "Serving Keg of Almond Liqueur",
@@ -9041,7 +9427,7 @@
             "display_name": "Empty Fermentation Vat",
             "description": "Used by the Brewer for fermenting ale and beer."
          },
-         "brewer_fermenting_vat_wort": {
+         "brewer_fermenting_vat_wort_ale": {
             "display_name": "Fermenting Ale Wort Vat",
             "description": "The pure malt wort is fermenting and will then turn into ale!"
          },
@@ -9053,7 +9439,7 @@
             "display_name": "Ale Vat",
             "description": "The ale is ready! It can now be filtered and collected!"
          },
-         "brewer_fermenting_vat_wort_gruit": {
+         "brewer_fermenting_vat_wort_beer": {
             "display_name": "Fermenting Beer Wort Vat",
             "description": "The bitter and flavorful wort is fermenting. Soon it shall become beer!"
          },
@@ -9208,6 +9594,30 @@
          "brewer_drying_bed_coffee_dry": {
             "display_name": "Dry Coffee Cherries",
             "description": "The green coffee beans are ready to be hulled from the dried, dead cherries!"
+         },
+         "brewer_fermenting_vat_wort_beer_opaque": {
+            "display_name": "Fermenting Opaque Beer Wort Vat",
+            "description": "The thick and strong mash is fermenting. Soon it shall become opaque beer!"
+         },
+         "brewer_fermenting_vat_wort_beer_white": {
+            "display_name": "Fermenting White Beer Wort Vat",
+            "description": "The golden and light mix is fermenting. Soon it shall become white beer!"
+         },
+         "brewer_fermenting_vat_wort_ale_pale": {
+            "display_name": "Fermenting Pale Ale Wort Vat",
+            "description": "The unique flavors of malt and juniper berries. Soon it shall become pale ale!"
+         },
+         "brewer_fermenting_vat_ale_pale": {
+            "display_name": "Pale Ale Vat",
+            "description": "The pale ale is ready! It can now be filtered and collected!"
+         },
+         "brewer_fermenting_vat_beer_opaque": {
+            "display_name": "Opaque Beer Vat",
+            "description": "The opaque beer is ready! It can now be filtered and collected!"
+         },
+         "brewer_fermenting_vat_beer_white": {
+            "display_name": "White Beer Vat",
+            "description": "The white beer is ready! It can now be filtered and collected!"
          }
       },
       "professional_beekeeping_hat": {
@@ -9423,6 +9833,10 @@
             "coffee_bush_seeds": {
                "display_name": "Green Coffee Beans",
                "description": "Learn to grow coffee plants."
+            },
+            "garlic_seeds": {
+               "display_name": "Garlic Cloves",
+               "description": "Learn to grow garlic."
             }
          },
          "fertilizer": {
@@ -9556,6 +9970,10 @@
             "display_name": "Fever Cordial",
             "description": "Used by the Herbalist for efficiently treating infections of any severity."
          },
+         "undead_cordial": {
+            "display_name": "Undead Cordial",
+            "description": "Used by the Herbalist for efficiently treating undead infections."
+         },
          "simple_ointment": {
             "display_name": "Simple Ointment",
             "description": "Used by the Herbalist for treating the most basic wounds of low severity."
@@ -9652,6 +10070,11 @@
                   "description": "Provides temporary protection against all poisons.",
                   "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion."
                }
+            },
+            "last_stand": {
+               "display_name": "Potion of Last Stand",
+               "iconic_description": "Potions can be equipped and used anytime. This one is a combat potion.",
+               "description": "Allows the user to glow the brightest before their fall... Only used when under 15% of their health!"
             }
          },
          "frostfeast": {
@@ -10770,6 +11193,40 @@
                   "description": "It's almost there! Look, it has buds!"
                }
             }
+         },
+         "garlic_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Garlic Seedling",
+                  "description": "A long way to go..."
+               },
+               "001": {
+                  "name": "Garlic Sprout",
+                  "description": "It's peeking through!"
+               },
+               "004": {
+                  "name": "Flowering Garlic",
+                  "description": "Just a little bit more..."
+               },
+               "003": {
+                  "name": "Baby Garlic",
+                  "description": "It should flower soon!"
+               },
+               "002": {
+                  "name": "Garlic Stem",
+                  "description": "It's growing nicely!"
+               },
+               "005": {
+                  "name": "Ripe Garlic",
+                  "description": "The bulbs are large enough!"
+               },
+               "012": {
+                  "name": "Rotten Garlic",
+                  "description": "What a waste..."
+               }
+            },
+            "display_name": "Garlic",
+            "description": "A strong flavored bulb that can be used as a savory vegetable."
          }
       },
       "decorations": {
@@ -11051,6 +11508,10 @@
             "camellia_rare": {
                "display_name": "Rare Camellia",
                "description": "This exotic herb holds tea shrub seeds! It's also a peculiar and healing herb."
+            },
+            "hearthbud": {
+               "display_name": "Hearthbud Blossom",
+               "description": "The bulby petals of a Hearthbud flower. Useful as a peculiar or zesty herb."
             }
          },
          "stone": {
@@ -11293,6 +11754,12 @@
          },
          "fur_pelt": {
             "display_name": "Any Fur Pelt"
+         },
+         "refined": {
+            "hearthbud_flakes": {
+               "display_name": "Hearthbud Flakes",
+               "description": "Dried and ground magical blossoms!"
+            }
          }
       },
       "refined": {
@@ -13169,10 +13636,10 @@
             }
          },
          "earthbud_plant": {
-            "description": "Can be harvested for concentrated hearth essence.",
+            "description": "Can be harvested for concentrated hearth essence and peculiar or zesty herbs.",
             "seed": {
                "earthbud_plant_seed_ghost": {
-                  "description": "Will provide hearth essence when it grows."
+                  "description": "Will provide hearth essence and peculiar or zesty herbs when it grows."
                },
                "earthbud_plant_seed": {
                   "description": "A mysterious, magical flower. Can be planted."
@@ -13364,6 +13831,46 @@
                "coffee_bush_plant_stem": {
                   "display_name": "Stemming Coffee Plant",
                   "description": "Still growing!"
+               }
+            }
+         },
+         "garlic": {
+            "garlic_ghost": {
+               "display_name": "Garlic",
+               "description": "A very delicate flower for a much less delicate flavor."
+            },
+            "rotten": {
+               "garlic_rotten": {
+                  "description": "Not good for eating anymore, but a great source of seeds.",
+                  "display_name": "Rotten Garlic"
+               }
+            },
+            "stem": {
+               "garlic_plant_stem": {
+                  "display_name": "Stemming Garlic Plant",
+                  "description": "Still growing!"
+               }
+            },
+            "sprout": {
+               "garlic_plant_sprout": {
+                  "display_name": "Garlic Sproutling",
+                  "description": "Just needs some time and care."
+               }
+            },
+            "seed": {
+               "garlic_plant_seed_ghost": {
+                  "display_name": "Garlic Seed",
+                  "description": "Will grow into a bulby, savory vegetable!"
+               },
+               "garlic_plant_seed": {
+                  "display_name": "Garlic Seed",
+                  "description": "Can be planted to grow a savory vegetable."
+               }
+            },
+            "bud": {
+               "garlic_plant_bud": {
+                  "display_name": "Flowering Garlic",
+                  "description": "It's almost there! Look, it's about to bloom!"
                }
             }
          }
@@ -13787,6 +14294,14 @@
             "display_name": "Pewter Teapot",
             "description": "Refined. Elegant. All the untarnished values of society."
          },
+         "stone_teapot": {
+            "display_name": "Stone Teapot",
+            "description": "Here to prove that tea is a brittle-ish thing."
+         },
+         "iron_teapot": {
+            "display_name": "Cast Iron Teapot",
+            "description": "Careful when moving it around... It's quite heavy!"
+         },
          "pewter_pitcher": {
             "display_name": "Pewter Pitcher",
             "description": "Fancy and good looking."
@@ -13847,6 +14362,14 @@
          "porcelain_coffee_pot": {
             "display_name": "Porcelain Coffee Pot",
             "description": "Beautiful and ornate, perfect for a high quality beverage."
+         },
+         "copper_coffee_pot": {
+            "display_name": "Copper Coffee Pot",
+            "description": "Easy to clean and keeps the beverage warm!"
+         },
+         "moka_coffee_pot": {
+            "display_name": "Moka Coffee Pot",
+            "description": "A unique and special pot for extracting the boldest flavors from the roast."
          },
          "market_stall_farmer": {
             "display_name": "Farmer's Market Stall",
@@ -14428,7 +14951,11 @@
          },
          "dough_sweet": {
             "display_name": "Portion of Sweet Dough",
-            "description": "Sweet Dough is the base for many delicacies like sweet loaf"
+            "description": "Sweet Dough is the base for many delicacies like sweet loaf",
+            "unleavened": {
+               "display_name": "Unleavened Sweet Dough",
+               "description": "Will rise into a Portion of Sweet Dough if left on a Leavening Table!"
+            }
          },
          "batter_sweet": {
             "display_name": "Bowl of Sweet Batter",
@@ -14436,7 +14963,11 @@
          },
          "dough": {
             "display_name": "Portion of Dough",
-            "description": "Dough is a base ingredient for several meals like breads"
+            "description": "Dough is a base ingredient for several baked goods like bread.",
+            "unleavened": {
+               "display_name": "Unleavened Dough",
+               "description": "Will rise into a Portion of Dough if left on a Leavening Table!"
+            }
          },
          "batter": {
             "display_name": "Bowl of Batter",
@@ -15211,6 +15742,114 @@
             "coffee_serving": {
                "display_name": "Serving of Coffee Cherries",
                "description": "Not so bad but goes in one bite!"
+            }
+         },
+         "condiment": {
+            "display_name": "Bowl of Condiment",
+            "description": "A fine relish made to complement savoury dishes. Can be used as a seasoning in cooking recipes."
+         },
+         "garlic": {
+            "garlic_basket": {
+               "display_name": "Basket of Garlic",
+               "description": "Sharp flavored bulbs ready to be eaten or used in cooking as a savory vegetable."
+            },
+            "garlic_serving": {
+               "display_name": "Serving of Garlic",
+               "description": "Very strong taste... And smell."
+            }
+         },
+         "heirbloom": {
+            "heirbloom_basket": {
+               "display_name": "Basket of Heirbloom Fruit",
+               "description": "Its stalks are an Amberstone delicacy but the fruit serves as a savory vegetable."
+            }
+         },
+         "dough_brown": {
+            "display_name": "Portion of Brown Dough",
+            "description": "This whole-grain dough is great for rich and fibrous baked goods.",
+            "unleavened": {
+               "display_name": "Unleavened Brown Dough",
+               "description": "Will rise into a Portion of Brown Dough if left on a Leavening Table!"
+            }
+         },
+         "dough_flat": {
+            "display_name": "Portion of Flat Dough",
+            "description": "This flattened dough is excellent for preparing unleavened breads."
+         },
+         "dough_fluffy": {
+            "display_name": "Portion of Fluffy Dough",
+            "description": "An extremely soft and light dough, perfect for some baking recipes.",
+            "unleavened": {
+               "display_name": "Unleavened Fluffy Dough",
+               "description": "Will rise into a Portion of Fluffy Dough if left on a Leavening Table!"
+            }
+         },
+         "dough_sour": {
+            "display_name": "Portion of Sourdough",
+            "description": "A more rustic and naturally fermented dough made from barley grain.",
+            "unleavened": {
+               "display_name": "Unleavened Sourdough",
+               "description": "Will rise into a Portion of Sourdough if left on a Leavening Table!"
+            }
+         },
+         "unleavened_doughs": {
+            "rising_description": "It's starting to rise...",
+            "rising_2_description": "Hmmmm! This dough is rising nicely!"
+         },
+         "garlic_bread": {
+            "display_name": "Garlic Bread",
+            "description": "Roasted with a savory touch and a buttery texture.",
+            "garlic_bread_serving": {
+               "display_name": "Slice of Garlic Bread"
+            }
+         },
+         "barley_bun": {
+            "barley_bun_serving": {
+               "display_name": "Slice of Barley Bun"
+            },
+            "display_name": "Barley Bun",
+            "description": "A soft bread with a crispy crust."
+         },
+         "brown_loaf": {
+            "brown_loaf_serving": {
+               "display_name": "Slice of Brown Loaf"
+            },
+            "display_name": "Brown Loaf",
+            "description": "An ordinary whole-grain piece of bread."
+         },
+         "crispbread": {
+            "crispbread_serving": {
+               "display_name": "Piece of Crispbread"
+            },
+            "display_name": "Crispbread",
+            "description": "A flattened and fluffy spiced bread."
+         },
+         "hardtack": {
+            "display_name": "Hardtack Crackers",
+            "description": "A meager meal... But lasts a very long time!",
+            "hardtack_serving": {
+               "display_name": "Hardtack Cracker"
+            }
+         },
+         "horsebread": {
+            "display_name": "Horsebread",
+            "description": "A farmer's bread with minced veggies in it.",
+            "horsebread_serving": {
+               "display_name": "Slice of Horsebread"
+            }
+         },
+         "sourdough_bread": {
+            "sourdough_bread_serving": {
+               "display_name": "Piece of Sourdough Bread"
+            },
+            "display_name": "Sourdough Bread",
+            "description": "A very rustic and crunchy bread with a soft and light filling."
+         },
+         "tortilla": {
+            "display_name": "Tortillas",
+            "description": "A maleable, thin and tasty bread with tiny corn flakes!",
+            "tortilla_serving": {
+               "display_name": "Tortilla"
             }
          }
       },
@@ -16191,7 +16830,7 @@
          },
          "dummy_training": {
             "dummy_training_ghost": {
-               "description": "It's best to practice with this friendly guy. Can be repaired before it's destroyed.",
+               "description": "It's best to practice with this friendly guy. Can be repaired before it breaks.",
                "display_name": "Training Dummy",
                "training_limit_tag": "Training Equipment"
             }
@@ -16203,7 +16842,7 @@
          },
          "target_training": {
             "display_name": "Archery Target",
-            "description": "Less dangerous than apples on someone's head. Can be repaired before it's destroyed."
+            "description": "Less dangerous than apples on heads. Can be repaired before it breaks."
          },
          "axle_vertical": {
             "description": "A rotating shaft that can take mechanical power vertically.",
@@ -16239,32 +16878,32 @@
             "description": "Combat party members will prioritize patrolling between these banners."
          },
          "stone_target_training": {
-            "description": "Less dangerous than apples on someone's head. Can be repaired before it's destroyed.",
+            "description": "Less dangerous than apples on heads. Can be repaired before it breaks.",
             "display_name": "Stone Archery Target"
          },
          "clay_target_training": {
-            "description": "Less dangerous than apples on someone's head. Can be repaired before it's destroyed.",
+            "description": "Less dangerous than apples on heads. Can be repaired before it breaks.",
             "display_name": "Clay Archery Target"
          },
          "brass_target_training": {
-            "description": "Less dangerous than apples on someone's head. Can be repaired before it's destroyed.",
+            "description": "Less dangerous than apples on heads. Can be repaired before it breaks.",
             "display_name": "Brass Archery Target"
          },
          "stone_dummy_training": {
             "stone_dummy_training_ghost": {
-               "description": "It's best to practice with this friendly guy. Can be repaired before it's destroyed.",
+               "description": "It's best to practice with this friendly guy. Can be repaired before it breaks.",
                "display_name": "Stone Training Dummy"
             }
          },
          "clay_dummy_training": {
             "clay_dummy_training_ghost": {
-               "description": "It's best to practice with this friendly guy. Can be repaired before it's destroyed.",
+               "description": "It's best to practice with this friendly guy. Can be repaired before it breaks.",
                "display_name": "Clay Training Dummy"
             }
          },
          "brass_dummy_training": {
             "brass_dummy_training_ghost": {
-               "description": "It's best to practice with this friendly guy. Can be repaired before it's destroyed.",
+               "description": "It's best to practice with this friendly guy. Can be repaired before it breaks.",
                "display_name": "Brass Training Dummy"
             }
          },
@@ -16550,7 +17189,7 @@
                "description": "Can be planted for a climbable vine. Provides robust or pungent herbs."
             },
             "bud": {
-               "display_name": "Budding Highland Vine",
+               "display_name": "Highland Vine Starter",
                "description": "This vine is starting to grow. Who knows how big it will get?"
             },
             "sprout": {
@@ -16564,7 +17203,7 @@
                "description": "Can be planted to grow a spreading and delicate flowering carpet."
             },
             "bud": {
-               "display_name": "Budding Daisies",
+               "display_name": "Daisy Flower Starter",
                "description": "Soon they'll be spreading all around!"
             },
             "sprout": {
@@ -16955,7 +17594,7 @@
                "display_name": "Serving Keg of Beer"
             }
          },
-         "wort": {
+         "wort_ale": {
             "display_name": "Bucket of Ale Wort",
             "description": "An extract from grains. The Brewer needs it to make ale."
          },
@@ -17002,46 +17641,6 @@
             },
             "serving_keg": {
                "display_name": "Serving Keg of Liquor"
-            }
-         },
-         "tea_iconic": {
-            "description": "Place it somewhere so hearthlings can serve themselves!"
-         },
-         "tea": {
-            "tea": {
-               "display_name": "Herbal Tea",
-               "description": "A fragrant and warm beverage. Very appreciated by many!"
-            },
-            "tea_serving": {
-               "display_name": "Mug of Herbal Tea"
-            }
-         },
-         "tea_fancy": {
-            "tea_fancy": {
-               "display_name": "Lavish Tea",
-               "description": "The elegant and heartwarming flavor of dried daisies and fruits."
-            },
-            "tea_fancy_serving": {
-               "display_name": "Cup of Lavish Tea",
-               "description": "A civilized drink for a civilized age."
-            }
-         },
-         "tea_desert": {
-            "tea_desert": {
-               "display_name": "Desert Sun Tea",
-               "description": "A unique recipe to the children of Rayya, a flower tea from Pal'Mum."
-            },
-            "tea_desert_serving": {
-               "display_name": "Cup of Desert Sun Tea"
-            }
-         },
-         "tea_amberstone": {
-            "tea_amberstone": {
-               "display_name": "Amberstone Tea",
-               "description": "A traditional recipe from the clan, delighting palates for centuries."
-            },
-            "tea_amberstone_serving": {
-               "display_name": "Mug of Amberstone Tea"
             }
          },
          "juice_berry": {
@@ -17253,9 +17852,9 @@
             "display_name": "Bucket of Berry Must",
             "description": "Crushed berries, juice and solids. A Brewer needs it to fill a wine cask!"
          },
-         "wort_gruit": {
+         "wort_beer": {
             "display_name": "Bucket of Beer Wort",
-            "description": "A mash of malted grains and spices. The Brewer needs it to make beer."
+            "description": "A mash of malted barley and spices. The Brewer needs it to make beer."
          },
          "must_apple": {
             "display_name": "Bucket of Apple Must",
@@ -17292,16 +17891,6 @@
             "serving_keg": {
                "display_name": "Serving Keg of Buttered Beer",
                "description": "An Ascendancy favorite! Sweet, flavorful and with little alcohol content."
-            }
-         },
-         "tea_pine": {
-            "tea_pine": {
-               "display_name": "Pine Needle Tea",
-               "description": "Smells good, tastes better and has gentle healing powers from the forest."
-            },
-            "tea_pine_serving": {
-               "display_name": "Cup of Pine Needle Tea",
-               "description": "Hmmm... The flavors of the woods..."
             }
          },
          "juice_apple": {
@@ -17535,22 +18124,88 @@
                "display_name": "Serving Pitcher of Prickly Pear Wine"
             }
          },
-         "tea_leaves": {
-            "fresh": {
-               "display_name": "Basket of Fresh Tea Leaves",
-               "description": "Fresh and velvety leaves full of potential. Must be steamed and dried."
+         "tea": {
+            "tea_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
             },
-            "green": {
-               "display_name": "Basket of Green Tea Leaves",
-               "description": "A timeless tradition. Used by the brewer for making green tea."
+            "tea_leaves": {
+               "fresh": {
+                  "display_name": "Basket of Fresh Tea Leaves",
+                  "description": "Fresh and velvety leaves full of potential. Must be steamed and dried."
+               },
+               "green": {
+                  "display_name": "Basket of Green Tea Leaves",
+                  "description": "A timeless tradition. Used by the brewer for making green tea."
+               },
+               "black": {
+                  "display_name": "Basket of Black Tea Leaves",
+                  "description": "Stronger and more flavorful! Used by the brewer for making black tea."
+               },
+               "steamed": {
+                  "display_name": "Crate of Steamed Tea Leaves",
+                  "description": "These leaves are ready to be placed on a drying bed."
+               }
             },
-            "black": {
-               "display_name": "Basket of Black Tea Leaves",
-               "description": "Stronger and more flavorful! Used by the brewer for making black tea."
+            "ground_tea_green": {
+               "display_name": "Sack of Green Tea",
+               "description": "Delicately ground leaves. Ready to be used by a brewer."
             },
-            "steamed": {
-               "display_name": "Crate of Steamed Tea Leaves",
-               "description": "These leaves are ready to be placed on a drying bed."
+            "ground_tea_black": {
+               "display_name": "Sack of Black Tea",
+               "description": "Exhales a smell that can't be mistaken. Ready to be used by a brewer."
+            },
+            "tea_pine": {
+               "display_name": "Pine Needle Tea",
+               "description": "Smells good, tastes better and has gentle healing powers from the forest.",
+               "tea_pine_serving": {
+                  "display_name": "Cup of Pine Needle Tea",
+                  "description": "Hmmm... The flavors of the woods..."
+               }
+            },
+            "tea": {
+               "display_name": "Herbal Tea",
+               "description": "A fragrant and warm beverage. Very appreciated by many!",
+               "tea_serving": {
+                  "display_name": "Mug of Herbal Tea"
+               }
+            },
+            "tea_fancy": {
+               "display_name": "Lavish Tea",
+               "description": "The elegant and heartwarming flavor of dried daisies and fruits.",
+               "tea_fancy_serving": {
+                  "display_name": "Cup of Lavish Tea",
+                  "description": "A civilized drink for a civilized age."
+               }
+            },
+            "tea_desert": {
+               "display_name": "Desert Sun Tea",
+               "description": "A unique recipe to the children of Rayya, a flower tea from Pal'Mum.",
+               "tea_desert_serving": {
+                  "display_name": "Cup of Desert Sun Tea"
+               }
+            },
+            "tea_amberstone": {
+               "display_name": "Amberstone Tea",
+               "description": "A traditional recipe from the clan, delighting palates for centuries.",
+               "tea_amberstone_serving": {
+                  "display_name": "Mug of Amberstone Tea"
+               }
+            },
+            "tea_green": {
+               "display_name": "Green Tea",
+               "description": "A very traditional and ancient preparation that soothes the mind.",
+               "tea_green_serving": {
+                  "display_name": "Cup of Green Tea",
+                  "description": "History in your hands."
+               }
+            },
+            "tea_black": {
+               "display_name": "Black Tea",
+               "description": "An exclusive beverage made with time, tradition and skill.",
+               "tea_black_serving": {
+                  "display_name": "Cup of Black Tea",
+                  "description": "Now we need some biscuits!"
+               }
             }
          },
          "coffee": {
@@ -17570,25 +18225,102 @@
                "display_name": "Sack of Ground Coffee",
                "description": "The aroma is irresistible! This coffee is ready to be brewed."
             },
-            "coffee_serving": {
-               "display_name": "Cup of Coffee"
+            "coffee_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "coffee": {
+               "display_name": "Coffee",
+               "description": "A crafter-favorite for late night working! Warm and energizing!",
+               "coffee_serving": {
+                  "display_name": "Cup of Coffee"
+               }
+            },
+            "coffee_milk": {
+               "display_name": "White Coffee",
+               "description": "Deep coffee note perfectly balanced with soft, sweet milk.",
+               "coffee_milk_serving": {
+                  "display_name": "Mug of White Coffee",
+                  "description": "Creamy!"
+               }
+            },
+            "coffee_bold": {
+               "display_name": "Bold Coffee",
+               "description": "Hits like a punch, this one is bound to keep anyone awake for a good while!",
+               "coffee_bold_serving": {
+                  "display_name": "Cup of Bold Coffee",
+                  "description": "YES!"
+               }
+            },
+            "coffee_lavish": {
+               "display_name": "Lavish Coffee",
+               "description": "Piping hot with delicious cream and the flavors of the finest roast!",
+               "coffee_lavish_serving": {
+                  "display_name": "Mug of Lavish Coffee",
+                  "description": "Higher standards"
+               }
             }
          },
-         "ground_tea_green": {
-            "display_name": "Sack of Green Tea",
-            "description": "Delicately ground leaves. Ready to be used by a brewer."
+         "ale_table": {
+            "ale_table": {
+               "display_name": "Small Ale",
+               "description": "A simple and barely fermented grain brew for a casual afternoon drink."
+            },
+            "ale_table_serving": {
+               "display_name": "Pint of Small Ale"
+            }
          },
-         "ground_tea_black": {
-            "display_name": "Sack of Black Tea",
-            "description": "Exhales a smell that can't be mistaken. Ready to be used by a brewer."
+         "wort_beer_opaque": {
+            "display_name": "Bucket of Opaque Beer Wort",
+            "description": "Boiled millet malt and sugary dates ready for fermentation. The Brewer needs it to make opaque beer."
          },
-         "coffee_iconic": {
-            "description": "Place it somewhere so hearthlings can serve themselves!"
+         "wort_beer_white": {
+            "display_name": "Bucket of White Beer Wort",
+            "description": "There's an uniqueness to how light wheat malt is. The Brewer needs it to make white beer."
          },
-         "coffee_desert": {
-            "coffee_desert": {
-               "display_name": "Coffee",
-               "description": "A crafter-favorite for late night working! Warm and energizing!"
+         "wort_ale_pale": {
+            "display_name": "Bucket of Pale Ale Wort",
+            "description": "The softness of rye and the smell of juniper berries. The Brewer needs it to make pale ale."
+         },
+         "ale_pale": {
+            "ale_pale": {
+               "display_name": "Pale Ale",
+               "description": "A spicy variant of ale. Makes hearthlings happy but also a little tipsy! "
+            },
+            "ale_pale_serving": {
+               "display_name": "Pale Ale Tankard",
+               "description": "You can smell the berries!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Pale Ale"
+            }
+         },
+         "beer_opaque": {
+            "beer_opaque": {
+               "display_name": "Opaque Beer",
+               "description": "A dense and sweet brew. Makes hearthlings happy but also a little tipsy! "
+            },
+            "beer_opaque_serving": {
+               "display_name": "Opaque Beer Cup",
+               "description": "Very nutritious!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Opaque Beer"
+            },
+            "gourd": {
+               "display_name": "Opaque Beer in a Gourd"
+            }
+         },
+         "beer_white": {
+            "beer_white": {
+               "display_name": "White Beer",
+               "description": "A delicious beer made out of wheat. Makes hearthlings happy but also a little tipsy! "
+            },
+            "beer_white_serving": {
+               "display_name": "White Beer Tankard",
+               "description": "This beer feels very special!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of White Beer"
             }
          }
       },
@@ -18020,7 +18752,7 @@
       },
       "earthbud": {
          "display_name": "Hearthbud",
-         "description": "A mysterious bloom able to condensate hearth magic. Needs a long time to be fully grown and will provide <span class='extraHerb'>hearth essence</span> when harvested.",
+         "description": "A mysterious bloom able to condensate hearth magic. Needs a long time to be fully grown and will provide <span class='extraHerb'>hearth essence</span> and often <span class='peculiarHerb'>peculiar</span> or <span class='zestyHerb'>zesty</span> herbs when harvested.",
          "harvest_text": "harvesting hearthbud"
       },
       "sugarbell": {
@@ -18581,7 +19313,6 @@
                      "supply_fiber_thatch": "Fiber & Thatch Supply (Default)",
                      "supply_weaver": "Weaving Supplies (Default)",
                      "supply_metalworker": "Metalworking Supplies (Default)",
-                     "supply_baking": "Baking Supplies (Default)",
                      "supply_veggie_fruit": "Veggie & Fruit Supply (Default)",
                      "supply_meat": "Meat Supply (Default)",
                      "decayables_vegetables": "Preservable Vegetables (Default)",
@@ -18729,12 +19460,14 @@
             "queued_crop": "Queued for Planting: ",
             "harvest_crop": "Enable Harvesting",
             "harvest_crop_description": "If enabled, whenever the resource is fully grown, the herbalist or grower will harvest it. Disabling this can be useful when a plus sign (+) is displayed next to the amount harvested - it means this planter will also provide resources over time without having to harvest and wait for it to grow again.",
+            "harvest_plant": "Uproot on Harvest",
+            "harvest_plant_description": "If enabled, when harvesting, the herbalist or grower will uproot the grown crop for it to be planted elsewhere. Very useful for decoration and gardening!",
             "produces": "Produces per Harvest: ",
             "quality": {
-               "quality-1": "This crop is normal quality and will most likely produce normal quality products.",
-               "quality-2": "This crop is Fine quality and has a chance of producing higher quality products.",
-               "quality-3": "This crop is Excellent quality and has a higher chance of producing higher quality products.",
-               "quality-4": "This crop is Masterwork quality and has a very high chance of producing higher quality products."
+               "quality-1": "This crop is of normal quality and will most likely produce normal quality products.",
+               "quality-2": "This crop is of Fine quality and has a chance of producing higher quality products.",
+               "quality-3": "This crop is of Excellent quality and has a higher chance of producing higher quality products.",
+               "quality-4": "This crop is of Masterwork quality and has a very high chance of producing higher quality products."
             }
          },
          "military_mode": {
@@ -18757,6 +19490,12 @@
                "clear_banners": "Remove All",
                "clear_banners_description": "Remove all banners for this party. To remove the selected banner, use the command on the selected entity window."
             }
+         },
+         "periodic_interaction": {
+            "enabled": "Enabled",
+            "enabled_description": "Whether hearthlings should try to interact with this object.",
+            "select_mode": "Mode:",
+            "select_mode_description": "Choose how hearthlings should try to interact with this object."
          },
          "unit_frame": {
             "max_healable_health": {
@@ -18803,7 +19542,8 @@
                "backpack": "Backpack",
                "quiver_arrows": "Arrow Quiver",
                "quiver_bolts": "Bolt Quiver",
-               "cleric_tome": "Healing Tome"
+               "cleric_tome": "Healing Tome",
+               "cleric_scepter": "Holy Scepter"
             },
             "job_roles": {
                "crafter": {
@@ -18834,14 +19574,16 @@
             "consumable_buff": "Consuming Applies: ",
             "injected_buff": "Grants Status: ",
             "inflictable_debuff": "Inflicts Status: ",
+            "consumable_effect": "Applied While Active: ",
+            "consumable_after_effect": "Applied Afterwards: ",
             "transform": {
                "progress": {
                   "building": "Building... ",
                   "upgrading": "Upgrading... ",
                   "opening": "Opening...",
                   "transforming": "Transforming...",
-                  "filling": "Filling...",
-                  "draining": "Draining..."
+                  "filling": "Being Filled...",
+                  "draining": "Being Drained..."
                }
             },
             "attack_with_all_parties": {
@@ -18994,6 +19736,8 @@
                "terrain_slice_buildings_description": "In Terrain Slice mode, don't render entities supported by visible, non-terrain entities.",
                "highlight_entire_vine_on_select": "Highlight Entire Selected Vines",
                "highlight_entire_vine_on_select_description": "When you select a vine, highlight all vines that are part of the same growth.",
+               "disable_weather_effect_rendering": "Disable Weather Camera Effect Rendering",
+               "disable_weather_effect_rendering_description": "Removes weather effects that follow the camera, like rain or snow. This is purely visual and will not affect weather bonuses, penalties or gameplay features. Might help with game performance. Requires a new weather or a save reload to take effect.",
                "water_signal_update_frequency": "Water Signal Update Rate",
                "water_signal_update_frequency_description": "Only update water signals this many ticks of the water system. Increase this value to improve performance with lots of flowing water.",
                "show_processing_meter": "Show Processing Meter",
@@ -19122,7 +19866,7 @@
             }
          },
          "constants": {
-            "edible_nuts_resource_name": "Any Edible Nut",
+            "edible_nuts_resource_name": "Any Edible Hard Seed",
             "fruits_resource_name": "Any Basket of Fruits",
             "thatch_resource_name": "Any Thatch",
             "bone_resource_name": "Bone",
@@ -19149,7 +19893,7 @@
             "strong_bone_resource_name": "Strong Bone",
             "grease_resource_name": "Any Cooking Grease",
             "oil_resource_name": "Any Cooking Oil",
-            "oil_source_name": "Any Oily Seeds or Grain",
+            "oil_source_name": "Any Oily Grain or Herbs",
             "ingot_resource_name": "Any Metal Ingot",
             "ore_resource_name": "Any Ore",
             "fiber_resource_name": "Any Bundle of Fiber",
@@ -19214,7 +19958,12 @@
             "becomes_vinegar_juice_resource_name": "Any Juice",
             "hard_flour_resource_name": "Any Hard Flour",
             "soft_flour_resource_name": "Any Soft Flour",
-            "malt_resource_name": "Any Malted Grains"
+            "malt_resource_name": "Any Malted Grains",
+            "food_veggie_raw_name": "Any Vegetable",
+            "food_veggie_raw_leafy_name": "Any Leafy Greens",
+            "food_veggie_raw_hearty_name": "Any Hearty Vegetable",
+            "food_veggie_raw_savory_name": "Any Savory Vegetable",
+            "condiment_base_resource_name": "Any Condiment Base"
          }
       }
    },

@@ -1,0 +1,20 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.strength_tonic.strength_tonic_worn_off_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.strength_tonic.strength_tonic_worn_off_buff.description)",
+   "icon": "file(strength_tonic_after_effect_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "muscle": {
+         "multiply": 0.9
+      },
+      "menace": {
+         "multiply": 0.9
+      }
+   },
+   "disallowed_categories": [
+      "strength_tonic"
+   ]
+}

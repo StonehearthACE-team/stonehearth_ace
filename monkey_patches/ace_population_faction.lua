@@ -376,7 +376,7 @@ function AcePopulationFaction:_assign_citizen_traits(citizen, options)
       return
    end
 
-   local num_traits = gaussian_rng:get_int(1, 3, 0.25)
+   local num_traits = gaussian_rng:get_int(1, 3, 0.6)
    self._log:info('assigning %d traits', num_traits)
 
    local all_traits = radiant.deep_copy(self:_get_flat_traits(options.foreign_population_uri))

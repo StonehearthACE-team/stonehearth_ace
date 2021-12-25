@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_lavish_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_lavish_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.coffee_lavish_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/porcelain_coffee_pot/porcelain_coffee_pot.png",
+   "level_requirement": 6,
+   "workshop": "stonehearth_ace:brewer:distillery",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:coffee:ground",
+         "count": 1
+      },
+      {
+         "material": "drink_container milk",
+         "count": 1
+      },
+      {
+			"uri": "stonehearth_ace:food:dairy:cream",
+			"count": 1
+		},
+      {
+         "uri": "stonehearth_ace:decoration:porcelain_coffee_pot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:coffee_lavish"
+      }
+   ]
+}

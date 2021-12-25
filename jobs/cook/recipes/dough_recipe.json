@@ -8,14 +8,19 @@
    "portrait": "/stonehearth_ace/entities/food/dough/dough.png",
    "workshop": "stonehearth_ace:cook:table",
    "work_effect": "work_cook_dough",
-   "level_requirement": 2,
+   "level_requirement": 3,
    "ingredients": [
       {
          "material": "flour hard cooking_ingredient",
-         "count": 1
+         "count": 2
       }
    ],
    "produces": [
+      {
+         "item": "stonehearth_ace:food:dough:unleavened"
+      }
+   ],
+   "ace_smart_crafter_consider_as": [
       {
          "item": "stonehearth_ace:food:dough"
       }

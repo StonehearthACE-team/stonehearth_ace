@@ -1,0 +1,78 @@
+{
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/humans/skeletons/male.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(male.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/humans/effects/idle_breathe.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "",
+         "description": ""
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects"
+         ]
+      },
+      "stonehearth:idle_effects": {
+         "effects": [
+            {
+               "name": "idle_breathe",
+               "weight": 3
+            },
+            {
+               "name": "idle_look_around",
+               "weight": 2
+            },
+            {
+               "name": "idle_sway",
+               "weight": 2
+            },
+            {
+               "name": "emote_proud",
+               "weight": 2
+            },
+            {
+               "name": "emote_shout",
+               "weight": 2
+            },
+            {
+               "name": "emote_wave",
+               "weight": 2
+            },
+            {
+               "name": "emote_count",
+               "weight": 1
+            },
+            {
+               "name": "emote_foottap",
+               "weight": 1
+            },
+            {
+               "name": "emote_concerned",
+               "weight": 1
+            },
+            {
+               "name": "yawn",
+               "weight": 1
+            },
+            {
+               "name": "emote_browwipe",
+               "weight": 1
+            }
+         ]
+      }
+   }
+}

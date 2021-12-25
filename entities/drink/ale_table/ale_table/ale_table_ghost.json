@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ale_table.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.09
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": -0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.ale_table.ale_table.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.ale_table.ale_table.description)",
+         "icon": "file(ale_table.png)",
+         "category": "drink",
+         "material_tags": [
+            "drink_container",
+            "prepared_drink",
+            "ale",
+            "table",
+            "alcoholic",
+            "stockpile_serving_vessel",
+            "serving_vessel",
+            "afternoon_time",
+            "night_time"
+         ]
+      }
+   }
+}

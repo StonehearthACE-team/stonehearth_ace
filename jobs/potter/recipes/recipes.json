@@ -43,24 +43,6 @@
 				"reinforced_clay_door_lockable": {
 					"recipe": "file(reinforced_clay_door_lockable_recipe.json)"
 				},
-				"porcelain_fence_bar_double": {
-					"recipe": "file(porcelain_fence_bar_double_recipe.json)"
-				},
-				"porcelain_fence_bar_single": {
-					"recipe": "file(porcelain_fence_bar_single_recipe.json)"
-				},
-				"porcelain_fence_end": {
-					"recipe": "file(porcelain_fence_end_recipe.json)"
-				},
-				"porcelain_fence_gate": {
-					"recipe": "file(porcelain_fence_gate_recipe.json)"
-				},
-				"porcelain_wall_lamp": {
-					"recipe": "file(porcelain_wall_lamp_recipe.json)"
-				},
-				"porcelain_lamp": {
-					"recipe": "file(porcelain_lamp_recipe.json)"
-				},
 				"clay_animal_door": {
 					"recipe": "file(clay_animal_door_recipe.json)"
 				},
@@ -181,77 +163,11 @@
 				"clay_bed_crude": {
 					"recipe": "file(clay_bed_crude_recipe.json)"
 				},
-				"porcelain_bench_comfy": {
-					"recipe": "file(porcelain_bench_comfy_recipe.json)"
-				},
-				"porcelain_bench": {
-					"recipe": "file(porcelain_bench_recipe.json)"
-				},
-				"porcelain_chair_comfy": {
-					"recipe": "file(porcelain_chair_comfy_recipe.json)"
-				},
-				"porcelain_chair": {
-					"recipe": "file(porcelain_chair_recipe.json)"
-				},
-				"porcelain_comfy_bed": {
-					"recipe": "file(porcelain_comfy_bed_recipe.json)"
-				},
-				"porcelain_dining_table": {
-					"recipe": "file(porcelain_dining_table_recipe.json)"
-				},
-				"porcelain_display_cabinet": {
-					"recipe": "file(porcelain_display_cabinet_recipe.json)"
-				},
-				"porcelain_display_cupboard": {
-					"recipe": "file(porcelain_display_cupboard_recipe.json)"
-				},
-				"porcelain_dresser": {
-					"recipe": "file(porcelain_dresser_recipe.json)"
-				},
-				"porcelain_end_table": {
-					"recipe": "file(porcelain_end_table_recipe.json)"
-				},
-				"porcelain_floor_tile": {
-					"recipe": "file(porcelain_floor_tile_recipe.json)"
-				},
-				"porcelain_jar_of_feathers": {
-					"recipe": "file(porcelain_jar_of_feathers_recipe.json)"
-				},
-				"porcelain_daisy_vase": {
-					"recipe": "file(porcelain_daisy_vase_recipe.json)"
-				},
-				"porcelain_shelf": {
-					"recipe": "file(porcelain_shelf_recipe.json)"
-				},
-				"porcelain_table": {
-					"recipe": "file(porcelain_table_recipe.json)"
-				},
-				"porcelain_teapot": {
-					"recipe": "file(porcelain_teapot_recipe.json)"
-				},
-				"porcelain_coffee_pot": {
-					"recipe": "file(porcelain_coffee_pot_recipe.json)"
-				},
-				"porcelain_urn_short": {
-					"recipe": "file(porcelain_urn_short_recipe.json)"
-				},
-				"porcelain_urn_tall": {
-					"recipe": "file(porcelain_urn_tall_recipe.json)"
-				},
-				"porcelain_wall_tile_blue": {
-					"recipe": "file(porcelain_wall_tile_blue_recipe.json)"
-				},
-				"porcelain_wall_tile_gold": {
-					"recipe": "file(porcelain_wall_tile_gold_recipe.json)"
-				},
 				"simple_bed_pet": {
 					"recipe": "file(simple_bed_pet_recipe.json)"
 				},
 				"clay_comfy_bed_pet": {
 					"recipe": "file(clay_comfy_bed_pet_recipe.json)"
-				},
-				"porcelain_bed_pet": {
-					"recipe": "file(porcelain_bed_pet_recipe.json)"
 				},
 				"pet_food_bowl_clay_blue": {
 					"recipe": "file(pet_food_bowl_clay_blue_recipe.json)"
@@ -359,8 +275,104 @@
 				}
 			}
 		},
+		"porcelain_building_parts": {
+         "ordinal": 72,
+         "name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_building_parts_name)",
+         "recipes": {
+				"porcelain_fence_bar_double": {
+					"recipe": "file(porcelain_fence_bar_double_recipe.json)"
+				},
+				"porcelain_fence_bar_single": {
+					"recipe": "file(porcelain_fence_bar_single_recipe.json)"
+				},
+				"porcelain_fence_end": {
+					"recipe": "file(porcelain_fence_end_recipe.json)"
+				},
+				"porcelain_fence_gate": {
+					"recipe": "file(porcelain_fence_gate_recipe.json)"
+				},
+				"porcelain_wall_tile_blue": {
+					"recipe": "file(porcelain_wall_tile_blue_recipe.json)"
+				},
+				"porcelain_wall_tile_gold": {
+					"recipe": "file(porcelain_wall_tile_gold_recipe.json)"
+				},
+				"porcelain_floor_tile": {
+					"recipe": "file(porcelain_floor_tile_recipe.json)"				
+            }
+         }
+      },
+	   "porcelain_furniture": {
+         "ordinal": 87,
+         "name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_furniture_name)",
+         "recipes": {
+				"porcelain_wall_lamp": {
+					"recipe": "file(porcelain_wall_lamp_recipe.json)"
+				},
+				"porcelain_lamp": {
+					"recipe": "file(porcelain_lamp_recipe.json)"
+				},
+				"porcelain_bench_comfy": {
+					"recipe": "file(porcelain_bench_comfy_recipe.json)"
+				},
+				"porcelain_bench": {
+					"recipe": "file(porcelain_bench_recipe.json)"
+				},
+				"porcelain_chair_comfy": {
+					"recipe": "file(porcelain_chair_comfy_recipe.json)"
+				},
+				"porcelain_chair": {
+					"recipe": "file(porcelain_chair_recipe.json)"
+				},
+				"porcelain_comfy_bed": {
+					"recipe": "file(porcelain_comfy_bed_recipe.json)"
+				},
+				"porcelain_dining_table": {
+					"recipe": "file(porcelain_dining_table_recipe.json)"
+				},
+				"porcelain_display_cabinet": {
+					"recipe": "file(porcelain_display_cabinet_recipe.json)"
+				},
+				"porcelain_display_cupboard": {
+					"recipe": "file(porcelain_display_cupboard_recipe.json)"
+				},
+				"porcelain_dresser": {
+					"recipe": "file(porcelain_dresser_recipe.json)"
+				},
+				"porcelain_end_table": {
+					"recipe": "file(porcelain_end_table_recipe.json)"
+				},
+				"porcelain_jar_of_feathers": {
+					"recipe": "file(porcelain_jar_of_feathers_recipe.json)"
+				},
+				"porcelain_daisy_vase": {
+					"recipe": "file(porcelain_daisy_vase_recipe.json)"
+				},
+				"porcelain_shelf": {
+					"recipe": "file(porcelain_shelf_recipe.json)"
+				},
+				"porcelain_table": {
+					"recipe": "file(porcelain_table_recipe.json)"
+				},
+				"porcelain_teapot": {
+					"recipe": "file(porcelain_teapot_recipe.json)"
+				},
+				"porcelain_coffee_pot": {
+					"recipe": "file(porcelain_coffee_pot_recipe.json)"
+				},
+				"porcelain_urn_short": {
+					"recipe": "file(porcelain_urn_short_recipe.json)"
+				},
+				"porcelain_urn_tall": {
+					"recipe": "file(porcelain_urn_tall_recipe.json)"
+				},
+				"porcelain_bed_pet": {
+					"recipe": "file(porcelain_bed_pet_recipe.json)"
+				}
+         }
+      },
 		"frostfeast": {
-         "ordinal": 999,
+         "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
 				"frostfeast_present_small": {

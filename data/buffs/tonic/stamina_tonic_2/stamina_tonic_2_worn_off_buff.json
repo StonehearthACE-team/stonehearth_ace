@@ -1,0 +1,24 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.stamina_tonic_2.stamina_tonic_2_worn_off_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.stamina_tonic_2.stamina_tonic_2_worn_off_buff.description)",
+   "icon": "file(stamina_tonic_2_after_effect_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "spirit": {
+         "min": 1,
+         "add": -1
+      },
+      "diligence": {
+         "multiply": 0.8
+      },
+      "speed": {
+         "multiply": 0.85
+      }
+   },
+   "disallowed_categories": [
+      "stamina_tonic"
+   ]
+}

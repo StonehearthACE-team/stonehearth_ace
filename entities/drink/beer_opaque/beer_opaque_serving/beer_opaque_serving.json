@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(beer_opaque_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 90,
+            "food_satisfaction": 24
+         },
+         "default": {
+            "satisfaction": 75,
+            "food_satisfaction": 16
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time",
+            "stonehearth_ace:buffs:consumption:light_headed"
+         ],
+         "quality": 5,
+         "effect_loops": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.beer_opaque.beer_opaque_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.beer_opaque.beer_opaque_serving.description)",
+         "material_tags": [
+            "drink",
+            "beer_opaque_serving",
+            "alcoholic",
+            "night_time"
+         ],
+         "subject_override": "stonehearth_ace:drink:beer_opaque"
+      }
+   }
+}

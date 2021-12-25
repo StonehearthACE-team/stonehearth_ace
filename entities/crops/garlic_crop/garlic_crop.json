@@ -1,0 +1,160 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth_ace/entities/plants/garlic/sprout/garlic_plant_sprout.qb"
+            ]
+         },
+         "garlic_1": {
+            "models": [
+               "file(garlic_crop_1.qb)"
+            ]
+         },
+         "garlic_2": {
+            "models": [
+               "/stonehearth_ace/entities/plants/garlic/sprout/garlic_plant_sprout.qb"
+            ]
+         },
+         "garlic_3": {
+            "models": [
+               "/stonehearth_ace/entities/plants/garlic/stem/garlic_plant_stem.qb"
+            ]
+         },
+         "garlic_4": {
+            "models": [
+               "/stonehearth_ace/entities/plants/garlic/bud/garlic_plant_bud.qb"
+            ]
+         },
+         "garlic_5": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth_ace/entities/plants/garlic/garlic.qb",
+                     "/stonehearth_ace/entities/plants/garlic/garlic_2.qb",
+                     "/stonehearth_ace/entities/plants/garlic/garlic_3.qb"
+                  ]
+               }
+            ]
+         },
+         "garlic_6": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(garlic_crop_6.qb)",
+                     "file(garlic_crop_6_2.qb)",
+                     "file(garlic_crop_6_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "garlic_12": {
+            "models": [
+               "/stonehearth_ace/entities/plants/garlic/rotten/garlic_rotten.qb"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": -0.25, "z": 0.05 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "garlic_6": "stonehearth_ace:food:garlic:garlic_basket",
+            "garlic_12": ""
+         },
+         "harvest_threshhold": "garlic_6",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
+      },
+      "stonehearth:growing": {
+         "growth_period": "6h",
+         "preferred_climate": "temperate_medium",
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": [
+               "autumn"
+            ],
+            "stonehearth_ace:biome:highlands": [
+               "autumn"
+            ],
+            "stonehearth:biome:desert": [
+               "winter"
+            ],
+            "stonehearth:biome:arctic": [
+               "spring"
+            ]
+         },
+         "growth_stages": [
+            {
+               "model_name": "garlic_1",
+               "name": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "garlic_2",
+               "name": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "garlic_3",
+               "name": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "garlic_4",
+               "name": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.003.description)"
+            },
+            {
+               "model_name": "garlic_5",
+               "name": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.004.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.004.description)"
+            },
+            {
+               "model_name": "garlic_6",
+               "name": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.005.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.005.description)"
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+               "model_name": "garlic_12",
+               "name": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.012.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.garlic_crop.growth_stage.012.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:megacrop": {
+         "num_to_spawn": 3,
+         "pickup_new": true,
+         "effect": "promote"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.garlic_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.garlic_crop.description)",
+         "icon": "file(garlic_crop.png)",
+         "material_tags": [
+            "crop",
+            "garlic"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}

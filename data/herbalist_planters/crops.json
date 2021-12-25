@@ -6,11 +6,12 @@
    },
    "crops": {
       "brightbell": {
-         "seed_uri": "stonehearth:plants:brightbell:seed",
+         "plant_uri": "stonehearth:plants:brightbell",
          "product_uri": "stonehearth:resources:herb:brightbell",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.5,
+         "category": "herb",
          "level": 1,
          "growth_time": "16h+2h",
          "bonus_product_growth_time": "32h",
@@ -39,11 +40,12 @@
          "icon": "file(crops/planter/brightbell/brightbell.png)"
       },
       "cactus_flower": {
-         "seed_uri": "stonehearth:plants:cactus:seed",
+         "plant_uri": "stonehearth:plants:cactus",
          "product_uri": "stonehearth:resources:herb:cactus_flower",
          "harvester_effect": "fiddle",
          "render_scale": 0.07,
          "tending_multiplier": 0.5,
+         "category": "herb",
          "level": 1,
          "growth_time": "16h+2h",
          "bonus_product_growth_time": "32h",
@@ -72,12 +74,13 @@
          "icon": "file(crops/planter/cactus_flower/cactus_flower.png)"
       },
       "cactus_tulip_red": {
-         "seed_uri": "stonehearth:plants:cactus:tulip:red:seed",
+         "plant_uri": "stonehearth:plants:cactus:tulip:red",
          "product_uri": "stonehearth:resources:herb:cactus:tulip:red",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.3,
-         "level": 1,
+         "category": "herb",
+         "level": 2,
          "growth_time": "20h+4h",
          "bonus_product_growth_time": "36h",
          "post_harvest_growth_level": 3,
@@ -105,11 +108,12 @@
          "icon": "file(crops/planter/cactus_tulip_red/cactus_tulip_red.png)"
       },
       "rose": {
-         "seed_uri": "stonehearth_ace:plants:rose:seed",
+         "plant_uri": "stonehearth_ace:plants:rose",
          "product_uri": "stonehearth_ace:resources:herb:rose",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.5,
+         "category": "herb",
          "level": 1,
          "growth_time": "16h+2h",
          "bonus_product_growth_time": "32h",
@@ -138,11 +142,12 @@
          "icon": "file(crops/planter/rose/rose.png)"
       },
       "chives": {
-         "seed_uri": "stonehearth_ace:plants:chives:seed",
+         "plant_uri": "stonehearth_ace:plants:chives",
          "product_uri": "stonehearth_ace:resources:herb:chives",
          "harvester_effect": "fiddle",
          "render_scale": 0.085,
          "tending_multiplier": 0.1,
+         "category": "herb",
          "level": 1,
          "growth_time": "14h+2h",
          "bonus_product_growth_time": "28h",
@@ -170,11 +175,12 @@
          "icon": "file(crops/planter/chives/chives.png)"
       },
       "frostsnap": {
-         "seed_uri": "stonehearth:plants:frostsnap:seed",
+         "plant_uri": "stonehearth:plants:frostsnap",
          "product_uri": "stonehearth:resources:herb:frostsnap",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.3,
+         "category": "herb",
          "level": 2,
          "growth_time": "18h+3h",
          "bonus_product_growth_time": "36h",
@@ -203,11 +209,12 @@
          "icon": "file(crops/planter/frostsnap/frostsnap.png)"
       },
       "cactus_tulip_blue": {
-         "seed_uri": "stonehearth:plants:cactus:tulip:blue:seed",
+         "plant_uri": "stonehearth:plants:cactus:tulip:blue",
          "product_uri": "stonehearth:resources:herb:cactus:tulip:blue",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.3,
+         "category": "herb",
          "level": 2,
          "growth_time": "20h+4h",
          "bonus_product_growth_time": "36h",
@@ -236,11 +243,12 @@
          "icon": "file(crops/planter/cactus_tulip_blue/cactus_tulip_blue.png)"
       },
       "violet": {
-         "seed_uri": "stonehearth:plants:violet:seed",
+         "plant_uri": "stonehearth:plants:violet",
          "product_uri": "stonehearth:resources:herb:violet",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.5,
+         "category": "herb",
          "level": 2,
          "growth_time": "16h+2h",
          "bonus_product_growth_time": "32h",
@@ -269,12 +277,13 @@
          "icon": "file(crops/planter/violet/violet.png)"
       },
       "dill": {
-         "seed_uri": "stonehearth_ace:plants:dill:seed",
+         "plant_uri": "stonehearth_ace:plants:dill",
          "product_uri": "stonehearth_ace:resources:herb:dill",
          "harvester_effect": "fiddle",
          "render_scale": 0.08,
          "tending_multiplier": 0.1,
-         "level": 2,
+         "category": "herb",
+         "level": 1,
          "growth_time": "14h+2h",
          "bonus_product_growth_time": "28h",
          "growth_levels": [
@@ -301,12 +310,13 @@
          "icon": "file(crops/planter/dill/dill.png)"
       },
       "nightshade": {
-         "seed_uri": "stonehearth_ace:plants:nightshade:seed",
+         "plant_uri": "stonehearth_ace:plants:nightshade",
          "product_uri": "stonehearth_ace:resources:herb:nightshade",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.1,
-         "level": 3,
+         "category": "herb",
+         "level": 4,
          "growth_time": "20h+4h",
          "bonus_product_growth_time": "40h",
          "growth_levels": [
@@ -333,11 +343,12 @@
          "icon": "file(crops/planter/nightshade/nightshade.png)"
       },
       "oleander": {
-         "seed_uri": "stonehearth_ace:plants:oleander:seed",
+         "plant_uri": "stonehearth_ace:plants:oleander",
          "product_uri": "stonehearth_ace:resources:herb:oleander",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.3,
+         "category": "herb",
          "level": 3,
          "growth_time": "18h+3h",
          "bonus_product_growth_time": "36h",
@@ -366,11 +377,12 @@
          "icon": "file(crops/planter/oleander/oleander.png)"
       },
       "snow_poppy": {
-         "seed_uri": "stonehearth:plants:snow_poppy:seed",
+         "plant_uri": "stonehearth:plants:snow_poppy",
          "product_uri": "stonehearth:resources:herb:snow_poppy",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.3,
+         "category": "herb",
          "level": 3,
          "growth_time": "18h+3h",
          "bonus_product_growth_time": "36h",
@@ -399,11 +411,12 @@
          "icon": "file(crops/planter/snow_poppy/snow_poppy.png)"
       },
       "poppy": {
-         "seed_uri": "stonehearth_ace:plants:poppy:seed",
+         "plant_uri": "stonehearth_ace:plants:poppy",
          "product_uri": "stonehearth_ace:resources:herb:poppy",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.3,
+         "category": "herb",
          "level": 3,
          "growth_time": "18h+3h",
          "bonus_product_growth_time": "36h",
@@ -432,12 +445,13 @@
          "icon": "file(crops/planter/poppy/poppy.png)"
       },
       "marblesprout": {
-         "seed_uri": "stonehearth_ace:plants:marblesprout:seed",
+         "plant_uri": "stonehearth_ace:plants:marblesprout:tame",
          "product_uri": "stonehearth_ace:resources:herb:marblesprout",
          "harvester_effect": "fiddle",
          "render_scale": 0.07,
          "tending_multiplier": 0.3,
-         "level": 3,
+         "category": "herb",
+         "level": 5,
          "growth_time": "20h+4h",
          "bonus_product_growth_time": "40h",
          "post_harvest_growth_level": 2,
@@ -465,11 +479,12 @@
          "icon": "file(crops/planter/marblesprout/marblesprout.png)"
       },
       "sage": {
-         "seed_uri": "stonehearth_ace:plants:sage:seed",
+         "plant_uri": "stonehearth_ace:plants:sage",
          "product_uri": "stonehearth_ace:resources:herb:sage",
          "harvester_effect": "fiddle",
          "render_scale": 0.09,
          "tending_multiplier": 0.1,
+         "category": "herb",
          "level": 1,
          "growth_time": "14h+2h",
          "bonus_product_growth_time": "28h",
@@ -497,11 +512,12 @@
          "icon": "file(crops/planter/sage/sage.png)"
       },
       "daylily": {
-         "seed_uri": "stonehearth_ace:plants:daylily:seed",
+         "plant_uri": "stonehearth_ace:plants:daylily",
          "product_uri": "stonehearth_ace:resources:herb:daylily",
          "harvester_effect": "fiddle",
          "render_scale": 0.08,
          "tending_multiplier": 0.3,
+         "category": "herb",
          "level": 1,
          "growth_time": "16h+2h",
          "bonus_product_growth_time": "32h",
@@ -530,12 +546,13 @@
          "icon": "file(crops/planter/daylily/daylily.png)"
       },
       "cactus_tulip_yellow": {
-         "seed_uri": "stonehearth:plants:cactus:tulip:yellow:seed",
+         "plant_uri": "stonehearth:plants:cactus:tulip:yellow",
          "product_uri": "stonehearth:resources:herb:cactus:tulip:yellow",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.3,
-         "level": 1,
+         "category": "herb",
+         "level": 4,
          "growth_time": "20h+4h",
          "bonus_product_growth_time": "36h",
          "post_harvest_growth_level": 3,
@@ -563,12 +580,13 @@
          "icon": "file(crops/planter/cactus_tulip_yellow/cactus_tulip_yellow.png)"
       },
       "wax_plant_green": {
-         "seed_uri": "stonehearth:plants:wax_plant:green:seed",
+         "plant_uri": "stonehearth:plants:wax_plant:green",
          "product_uri": "stonehearth_ace:resources:herb:wax_plant:green",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.3,
-         "level": 1,
+         "category": "herb",
+         "level": 2,
          "growth_time": "18h+3h",
          "bonus_product_growth_time": "36h",
          "growth_levels": [
@@ -595,12 +613,13 @@
          "icon": "file(crops/planter/wax_plant_green/wax_plant_green.png)"
       },
       "wax_plant_purple": {
-         "seed_uri": "stonehearth:plants:wax_plant:purple:seed",
+         "plant_uri": "stonehearth:plants:wax_plant:purple",
          "product_uri": "stonehearth_ace:resources:herb:wax_plant:purple",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.3,
-         "level": 1,
+         "category": "herb",
+         "level": 4,
          "growth_time": "18h+3h",
          "bonus_product_growth_time": "36h",
          "growth_levels": [
@@ -627,12 +646,13 @@
          "icon": "file(crops/planter/wax_plant_purple/wax_plant_purple.png)"
       },
       "bog_myrtle": {
-         "seed_uri": "stonehearth_ace:plants:bog_myrtle:seed",
+         "plant_uri": "stonehearth_ace:plants:bog_myrtle",
          "product_uri": "stonehearth_ace:resources:herb:bog_myrtle",
          "harvester_effect": "fiddle",
          "render_scale": 0.09,
          "tending_multiplier": 0.3,
-         "level": 1,
+         "category": "herb",
+         "level": 2,
          "growth_time": "18h+3h",
          "bonus_product_growth_time": "36h",
          "growth_levels": [
@@ -659,11 +679,12 @@
          "icon": "file(crops/planter/bog_myrtle/bog_myrtle.png)"
       },
       "daisy": {
-         "seed_uri": "stonehearth_ace:vines:daisies:seed",
+         "plant_uri": "stonehearth_ace:vines:daisies:bud",
          "product_uri": "stonehearth_ace:resources:herb:daisy",
          "harvester_effect": "fiddle",
          "render_scale": 0.105,
          "tending_multiplier": 0.1,
+         "category": "herb",
          "level": 1,
          "growth_time": "22h+4h",
          "bonus_product_growth_time": "24h",
@@ -692,7 +713,7 @@
          "icon": "file(crops/planter/daisy/daisy.png)"
       },
       "silkweed": {
-         "seed_uri": "stonehearth:plants:silkweed:seed",
+         "plant_uri": "stonehearth:plants:silkweed",
          "product_uri": "stonehearth_ace:resources:herb:silkweed",
          "additional_products": {
             "entries": {
@@ -712,6 +733,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.5,
+         "category": "herb",
          "level": 3,
          "growth_time": "16h+2h",
          "bonus_product_growth_time": "32h",
@@ -739,12 +761,13 @@
          "icon": "file(crops/planter/silkweed/silkweed.png)"
       },
       "parsley": {
-         "seed_uri": "stonehearth_ace:plants:parsley:seed",
+         "plant_uri": "stonehearth_ace:plants:parsley",
          "product_uri": "stonehearth_ace:resources:herb:parsley",
          "harvester_effect": "fiddle",
          "render_scale": 0.08,
          "tending_multiplier": 0.1,
-         "level": 3,
+         "category": "herb",
+         "level": 1,
          "growth_time": "14h+2h",
          "bonus_product_growth_time": "28h",
          "growth_levels": [
@@ -771,7 +794,7 @@
          "icon": "file(crops/planter/parsley/parsley.png)"
       },
       "highland_vine": {
-         "seed_uri": "stonehearth_ace:vines:highland_vine:seed",
+         "plant_uri": "stonehearth_ace:vines:highland_vine:bud",
          "product_uri": "stonehearth_ace:resources:herb:highland_vine",
          "additional_products": {
             "entries": {
@@ -791,6 +814,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.3,
+         "category": "herb",
          "level": 3,
          "growth_time": "22h+4h",
          "bonus_product_growth_time": "24h",
@@ -818,11 +842,12 @@
          "icon": "file(crops/planter/highland_vine/highland_vine.png)"
       },
       "sunflower": {
-         "seed_uri": "stonehearth:plants:sunflower:seed",
+         "plant_uri": "stonehearth:plants:sunflower",
          "product_uri": "stonehearth_ace:resources:herb:sunflower",
          "harvester_effect": "fiddle",
          "render_scale": 0.06,
          "tending_multiplier": 0.1,
+         "category": "herb",
          "level": 5,
          "growth_time": "22h+4h",
          "bonus_product_growth_time": "44h",
@@ -855,12 +880,13 @@
          "icon": "file(crops/planter/sunflower/sunflower.png)"
       },
       "foxlily": {
-         "seed_uri": "stonehearth:plants:foxlily:seed",
+         "plant_uri": "stonehearth:plants:foxlily",
          "product_uri": "stonehearth_ace:resources:herb:foxlily",
          "harvester_effect": "fiddle",
          "render_scale": 0.09,
          "tending_multiplier": 0.1,
-         "level": 5,
+         "category": "herb",
+         "level": 6,
          "growth_time": "22h+4h",
          "bonus_product_growth_time": "44h",
          "growth_levels": [
@@ -891,12 +917,13 @@
          "icon": "file(crops/planter/foxlily/foxlily.png)"
       },
       "moonbell": {
-         "seed_uri": "stonehearth_ace:plants:moonbell:seed",
+         "plant_uri": "stonehearth_ace:plants:moonbell",
          "product_uri": "stonehearth_ace:resources:herb:moonbell",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.3,
-         "level": 5,
+         "category": "herb",
+         "level": 4,
          "growth_time": "18h+3h",
          "bonus_product_growth_time": "36h",
          "post_harvest_growth_level": 2,
@@ -931,11 +958,12 @@
          "icon": "file(crops/planter/moonbell/moonbell.png)"
       },
       "sugarbell": {
-         "seed_uri": "stonehearth:plants:sugarbell:seed",
+         "plant_uri": "stonehearth:plants:sugarbell",
          "product_uri": "stonehearth:food:sugar:sugarbell_basket",
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.1,
+         "category": "herb",
          "level": 6,
          "growth_time": "22h+4h",
          "bonus_product_growth_time": "44h",
@@ -970,11 +998,29 @@
          "icon": "file(crops/planter/sugarbell/sugarbell.png)"
       },
       "earthbud": {
-         "seed_uri": "stonehearth:plants:earthbud:seed",
+         "hidden": true,
+         "plant_uri": "stonehearth:plants:earthbud",
          "product_uri": "stonehearth:resources:earth_essence",
+         "additional_products": {
+            "entries": {
+               "extra": {
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 1
+                     },
+                     "herb": {
+                        "uri": "stonehearth_ace:resources:herb:hearthbud",
+                        "weight": 9
+                     }
+                  }
+               }
+            }
+         },
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.1,
+         "category": "herb",
          "level": 6,
          "growth_time": "24h+12h",
          "bonus_product_growth_time": "48h",
@@ -1014,7 +1060,7 @@
          "icon": "file(crops/planter/earthbud/earthbud.png)"
       },
       "water_lily_pad": {
-         "seed_uri": "stonehearth_ace:plants:water_lily:lily_pad:seed",
+         "plant_uri": "stonehearth_ace:plants:water_lily:lily_pad",
          "product_uri": "stonehearth_ace:resources:herb:water_lily:lily_pad",
          "additional_products": {
             "entries": {
@@ -1039,7 +1085,8 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.13,
          "tending_multiplier": 0.3,
-         "level": 4,
+         "category": "water",
+         "level": 3,
          "growth_time": "32h+4h",
          "bonus_product_growth_time": "64h",
          "growth_levels": [
@@ -1066,7 +1113,7 @@
          "icon": "file(crops/water_planter/water_lily_pad/water_lily_pad.png)"
       },
       "water_lily_pink": {
-         "seed_uri": "stonehearth_ace:plants:water_lily:pink:seed",
+         "plant_uri": "stonehearth_ace:plants:water_lily:pink",
          "product_uri": "stonehearth_ace:resources:herb:water_lily:pink",
          "additional_products": {
             "entries": {
@@ -1091,6 +1138,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.13,
          "tending_multiplier": 0.3,
+         "category": "water",
          "level": 4,
          "growth_time": "32h+4h",
          "bonus_product_growth_time": "64h",
@@ -1119,7 +1167,7 @@
          "icon": "file(crops/water_planter/water_lily_pink/water_lily_pink.png)"
       },
       "water_lily_purple": {
-         "seed_uri": "stonehearth_ace:plants:water_lily:purple:seed",
+         "plant_uri": "stonehearth_ace:plants:water_lily:purple",
          "product_uri": "stonehearth_ace:resources:herb:water_lily:purple",
          "additional_products": {
             "entries": {
@@ -1144,7 +1192,8 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.13,
          "tending_multiplier": 0.3,
-         "level": 6,
+         "category": "water",
+         "level": 4,
          "growth_time": "32h+4h",
          "bonus_product_growth_time": "64h",
          "post_harvest_growth_level": 2,
@@ -1172,7 +1221,7 @@
          "icon": "file(crops/water_planter/water_lily_purple/water_lily_purple.png)"
       },
       "water_lily_white": {
-         "seed_uri": "stonehearth_ace:plants:water_lily:white:seed",
+         "plant_uri": "stonehearth_ace:plants:water_lily:white",
          "product_uri": "stonehearth_ace:resources:herb:water_lily:white",
          "additional_products": {
             "entries": {
@@ -1197,7 +1246,8 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.13,
          "tending_multiplier": 0.3,
-         "level": 5,
+         "category": "water",
+         "level": 4,
          "growth_time": "32h+4h",
          "bonus_product_growth_time": "64h",
          "post_harvest_growth_level": 2,
@@ -1225,7 +1275,7 @@
          "icon": "file(crops/water_planter/water_lily_white/water_lily_white.png)"
       },
       "water_lily_yellow": {
-         "seed_uri": "stonehearth_ace:plants:water_lily:yellow:seed",
+         "plant_uri": "stonehearth_ace:plants:water_lily:yellow",
          "product_uri": "stonehearth_ace:resources:herb:water_lily:yellow",
          "additional_products": {
             "entries": {
@@ -1250,6 +1300,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.13,
          "tending_multiplier": 0.3,
+         "category": "water",
          "level": 4,
          "growth_time": "32h+4h",
          "bonus_product_growth_time": "64h",
@@ -1278,7 +1329,6 @@
          "icon": "file(crops/water_planter/water_lily_yellow/water_lily_yellow.png)"
       },
       "algae_brown": {
-         "seed_uri": "stonehearth_ace:resources:algae:brown_algae",
          "product_uri": "stonehearth_ace:resources:algae:brown_algae",
          "additional_products": {
             "entries": {
@@ -1303,6 +1353,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.1,
+         "category": "water",
          "level": 3,
          "growth_time": "24h+4h",
          "bonus_product_growth_time": "36h",
@@ -1330,7 +1381,6 @@
          "icon": "file(crops/water_planter/algae_brown/algae_brown.png)"
       },
       "algae_red": {
-         "seed_uri": "stonehearth_ace:resources:algae:red_algae",
          "product_uri": "stonehearth_ace:resources:algae:red_algae",
          "additional_products": {
             "entries": {
@@ -1355,6 +1405,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.1,
+         "category": "water",
          "level": 3,
          "growth_time": "24h+4h",
          "bonus_product_growth_time": "36h",
@@ -1382,7 +1433,6 @@
          "icon": "file(crops/water_planter/algae_red/algae_red.png)"
       },
       "algae_green": {
-         "seed_uri": "stonehearth_ace:resources:algae:green_algae",
          "product_uri": "stonehearth_ace:resources:algae:green_algae",
          "additional_products": {
             "entries": {
@@ -1407,6 +1457,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.1,
+         "category": "water",
          "level": 3,
          "growth_time": "24h+4h",
          "bonus_product_growth_time": "36h",
@@ -1439,6 +1490,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.11,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 3,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1470,6 +1522,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.14,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 3,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1502,6 +1555,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.08,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 3,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1533,6 +1587,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.09,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 3,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1564,6 +1619,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.11,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 3,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1595,6 +1651,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.08,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 5,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1626,6 +1683,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.11,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 5,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1657,6 +1715,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.11,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 5,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1688,6 +1747,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.12,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 5,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1719,6 +1779,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 4,
          "growth_time": "18h+6h",
          "growth_levels": [
@@ -1750,6 +1811,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 4,
          "growth_time": "18h+6h",
          "growth_levels": [
@@ -1781,6 +1843,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 4,
          "growth_time": "18h+6h",
          "growth_levels": [
@@ -1812,6 +1875,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 4,
          "growth_time": "18h+6h",
          "growth_levels": [
@@ -1843,6 +1907,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.08,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 3,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1874,6 +1939,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.14,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 3,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1906,6 +1972,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.09,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 3,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1937,6 +2004,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.14,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 3,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1968,6 +2036,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 5,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -1999,6 +2068,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 3,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -2030,6 +2100,7 @@
          "harvester_effect": "fiddle",
          "render_scale": 0.13,
          "tending_multiplier": 0.05,
+         "category": "sapling",
          "level": 3,
          "growth_time": "21h+4h",
          "growth_levels": [
@@ -2057,10 +2128,12 @@
       },
       "bolete": {
          "seed_uri": "stonehearth_ace:fungi:bolete:colony",
+         "plant_uri": "stonehearth_ace:fungi:bolete",
          "product_uri": "stonehearth_ace:food:bolete:bolete_basket",
          "harvester_effect": "fiddle",
          "render_scale": 0.08,
          "tending_multiplier": 0.25,
+         "category": "fungi",
          "level": 3,
          "growth_time": "14h+4h",
          "growth_levels": [
@@ -2088,10 +2161,12 @@
       },
       "desert_truffle": {
          "seed_uri": "stonehearth_ace:fungi:desert_truffle:colony",
+         "plant_uri": "stonehearth_ace:fungi:desert_truffle",
          "product_uri": "stonehearth_ace:food:desert_truffle:desert_truffle_basket",
          "harvester_effect": "fiddle",
          "render_scale": 0.08,
          "tending_multiplier": 0.25,
+         "category": "fungi",
          "level": 3,
          "growth_time": "14h+4h",
          "growth_levels": [
@@ -2119,10 +2194,12 @@
       },
       "chanterelle": {
          "seed_uri": "stonehearth_ace:fungi:chanterelle:colony",
+         "plant_uri": "stonehearth_ace:fungi:chanterelle",
          "product_uri": "stonehearth_ace:food:chanterelle:chanterelle_basket",
          "harvester_effect": "fiddle",
          "render_scale": 0.08,
          "tending_multiplier": 0.25,
+         "category": "fungi",
          "level": 3,
          "growth_time": "14h+4h",
          "growth_levels": [
@@ -2150,10 +2227,12 @@
       },
       "winter_morel": {
          "seed_uri": "stonehearth_ace:fungi:winter_morel:colony",
+         "plant_uri": "stonehearth_ace:fungi:winter_morel",
          "product_uri": "stonehearth_ace:food:winter_morel:winter_morel_basket",
          "harvester_effect": "fiddle",
          "render_scale": 0.075,
          "tending_multiplier": 0.25,
+         "category": "fungi",
          "level": 3,
          "growth_time": "14h+4h",
          "growth_levels": [
@@ -2181,10 +2260,12 @@
       },
       "parasol": {
          "seed_uri": "stonehearth_ace:fungi:parasol:colony",
+         "plant_uri": "stonehearth_ace:fungi:parasol",
          "product_uri": "stonehearth_ace:food:parasol:parasol_basket",
          "harvester_effect": "fiddle",
          "render_scale": 0.04,
          "tending_multiplier": 0.25,
+         "category": "fungi",
          "level": 1,
          "growth_time": "12h+3h",
          "growth_levels": [
@@ -2212,11 +2293,13 @@
       },
       "sweet_tooth": {
          "seed_uri": "stonehearth_ace:fungi:sweet_tooth:colony",
+         "plant_uri": "stonehearth_ace:fungi:sweet_tooth",
          "product_uri": "stonehearth_ace:food:sweet_tooth:sweet_tooth_basket",
          "harvester_effect": "fiddle",
          "render_scale": 0.07,
          "tending_multiplier": 0.25,
-         "level": 1,
+         "category": "fungi",
+         "level": 2,
          "growth_time": "12h+3h",
          "growth_levels": [
             {
@@ -2242,11 +2325,12 @@
          "icon": "file(crops/fungi_planter/sweet_tooth/sweet_tooth.png)"
       },
       "glowshroom": {
-         "seed_uri": "stonehearth:resources:wood:oak_log",
+         "hidden": true,
          "product_uri": "stonehearth_ace:resources:fungi:glowshroom",
          "harvester_effect": "fiddle",
          "render_scale": 0.08,
          "tending_multiplier": 0.2,
+         "category": "fungi",
          "level": 5,
          "growth_time": "12h+6h",
          "growth_levels": [

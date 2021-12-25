@@ -278,6 +278,14 @@
   },
   "landscape" : {
     "placement_table" : {
+      "stonehearth_ace:plants:garlic": {
+        "placement_type": "dense",
+        "parameters": {
+           "grid_multiple": 3,
+           "item_density": 0.7,
+           "exclusion_radius": 0
+        }
+     },
       "stonehearth_ace:trees:birch:small" : {
         "placement_type" : "dense",
         "parameters" : {
@@ -720,6 +728,7 @@
         "weights" : {
           "plains" : {
             "1" : {			   
+          "stonehearth_ace:plants:garlic": 0.35,
 					"stonehearth_ace:plants:poppy" : 1.1,
 					"stonehearth_ace:plants:rose" : 1.6,
 					"stonehearth:plants:violet": 0.5,

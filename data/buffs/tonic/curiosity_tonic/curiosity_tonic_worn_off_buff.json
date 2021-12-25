@@ -3,13 +3,19 @@
    "axis": "debuff",
    "display_name": "i18n(stonehearth_ace:data.buffs.curiosity_tonic.curiosity_tonic_worn_off_buff.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.curiosity_tonic.curiosity_tonic_worn_off_buff.description)",
-   "icon": "file(../tonic_worn_off_buff.png)",
-   "duration": "3h",
+   "icon": "file(curiosity_tonic_after_effect_buff.png)",
+   "duration": "4h",
    "repeat_add_action": "renew_duration",
    "modifiers": {
       "mind": {
          "min": 1,
          "add": -1
+      },
+      "speed": {
+         "multiply": 0.9
       }
-   }
+   },
+   "disallowed_categories": [
+      "curiosity_tonic"
+   ]
 }

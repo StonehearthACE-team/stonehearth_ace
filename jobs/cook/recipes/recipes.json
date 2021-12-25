@@ -5,6 +5,9 @@
             "cook_table": {
                "recipe": "file(cook_table_recipe.json)"
             },
+            "cook_leavening_table": {
+               "recipe": "file(cook_leavening_table_recipe.json)"
+            },
             "cook_oven_advanced": {
                "recipe": "file(cook_oven_advanced_recipe.json)"
             },
@@ -48,6 +51,9 @@
 				},
 				"nuts_basket": {
 					"recipe": "file(nuts_basket_recipe.json)"
+				},
+				"condiment": {
+					"recipe": "file(condiment_recipe.json)"
 				}
          }
       },
@@ -78,6 +84,18 @@
             },
             "dough": {
                "recipe": "file(dough_recipe.json)"
+            },
+            "dough_flat": {
+               "recipe": "file(dough_flat_recipe.json)"
+            },
+            "dough_brown": {
+               "recipe": "file(dough_brown_recipe.json)"
+            },
+            "dough_fluffy": {
+               "recipe": "file(dough_fluffy_recipe.json)"
+            },
+            "dough_sour": {
+               "recipe": "file(dough_sour_recipe.json)"
             },
             "dough_sweet": {
                "recipe": "file(dough_sweet_recipe.json)"
@@ -137,11 +155,26 @@
 				"nut_bread": {
 					"recipe": "file(nut_bread_recipe.json)"
 				},
+				"hardtack": {
+					"recipe": "file(hardtack_recipe.json)"
+				},
+				"sourdough_bread": {
+					"recipe": "file(sourdough_bread_recipe.json)"
+				},
+				"tortilla": {
+					"recipe": "file(tortilla_recipe.json)"
+				},
+				"brown_loaf": {
+					"recipe": "file(brown_loaf_recipe.json)"
+				},
 				"glazed_veggies": {
 					"recipe": "file(glazed_veggies_recipe.json)"
 				},
 				"egged_nut_pancakes": {
 					"recipe": "file(egged_nut_pancakes_recipe.json)"
+				},
+            "faction_bread_dish": {
+					"recipe": "file(horsebread_recipe.json)"
 				}
          }
       },
@@ -200,7 +233,10 @@
 				},
 				"truffled_risotto": {
 					"recipe": "file(truffled_risotto_recipe.json)"
-				}
+				},
+            "garlic_bread": {
+               "recipe": "file(garlic_bread_recipe.json)"
+            }
          }
       },
       "chefs_desserts": {
@@ -285,7 +321,7 @@
          }
       },
 		"frostfeast": {
-         "ordinal": 999,
+         "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
 				"frostfeast_seasonal_fruits": {

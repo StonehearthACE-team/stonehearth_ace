@@ -45,6 +45,7 @@ local monkey_patches = {
    ace_util = 'radiant.lib.util',
    ace_xz_region_selector = 'stonehearth.services.client.selection.xz_region_selector',
    ace_zone_renderer = 'stonehearth.renderers.zone_renderer',
+   ace_weather_render_service = 'stonehearth.services.client.weather_render.weather_render_service',
 }
 
 local function monkey_patching()

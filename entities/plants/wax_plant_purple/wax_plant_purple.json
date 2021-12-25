@@ -2,7 +2,10 @@
    "components": {
       "stonehearth:resource_node": {
          "resource": "stonehearth_ace:resources:herb:wax_plant:purple",
-			"description": "harvest_plant"
+			"description": "harvest_plant",
+         "mixintypes": {
+            "resource_loot_table": "remove"
+         }
       }
    }
 }

@@ -23,31 +23,31 @@
             "rank": 2,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.levels.12_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.levels.12_description)",
-            "required_value": 12
+            "required_value": 11
          },
          {
             "rank": 3,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.levels.18_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.levels.18_description)",
-            "required_value": 18
+            "required_value": 16
          },
          {
             "rank": 4,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.levels.30_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.levels.30_description)",
-            "required_value": 30
+            "required_value": 31
          },
          {
             "rank": 5,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.levels.60_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.levels.60_description)",
-            "required_value": 60
+            "required_value": 61
          },
          {
             "rank": 6,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.levels.90_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.levels.90_description)",
-            "required_value": 90
+            "required_value": 91
          }
       ]
    },
@@ -868,6 +868,43 @@
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.6_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sweet_energy.6_description)",
             "required_value": 500
+         }
+      ]
+   },
+   "garlic_breath": {
+      "ordinal": 23.1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.garlic_breath.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.garlic_breath.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "garlic_breath"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.garlic_breath.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.garlic_breath.1_description)",
+            "required_value": 1
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.garlic_breath.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.garlic_breath.2_description)",
+            "required_value": 3
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.garlic_breath.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.garlic_breath.3_description)",
+            "required_value": 8
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.garlic_breath.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.garlic_breath.4_description)",
+            "required_value": 15
          }
       ]
    },

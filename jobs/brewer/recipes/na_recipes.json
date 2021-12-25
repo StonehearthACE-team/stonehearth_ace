@@ -33,6 +33,9 @@
       },
       "prepared_drinks": {
          "recipes": {
+            "mixintypes": {
+					"beer_buttered": "remove"
+				},
             "spirit_northern": {
                "recipe": "file(spirit_northern_recipe.json)"
             }
@@ -40,9 +43,6 @@
       },
       "serving_vessels": {
          "recipes": {
-				"mixintypes": {
-					"beer_buttered": "remove"
-				},
 				"spirit_northern_serving_keg": {
                "recipe": "file(spirit_northern_serving_keg_recipe.json)"
             }

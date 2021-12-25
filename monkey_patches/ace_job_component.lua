@@ -122,6 +122,10 @@ function AceJobComponent:get_current_talisman_uri()
    return self._sv.current_talisman_uri
 end
 
+function AceJobComponent:get_curr_job_name()
+   return self._sv.curr_job_name
+end
+
 -- this is just for the sake of the UI, so that opening the promotion tree doesn't require requesting the job index
 -- as such, we need to store it in _sv
 function AceJobComponent:_update_job_index()
@@ -150,6 +154,12 @@ function AceJobComponent:level_up(skip_visual_effects)
    local curr_level = attributes_component:get_attribute('total_level')
    self._sv.total_level = curr_level + 1
    attributes_component:set_attribute('total_level', self._sv.total_level)
+
+   --Add to the total job levels statistics
+   local stats_comp = self._entity:get_component('stonehearth_ace:statistics')
+   if stats_comp then
+      stats_comp:set_stat('totals', 'levels', self._sv.total_level)
+   end
 
    --Add all the universal level dependent buffs/bonuses, etc
 

@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 65,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.wort_ale_pale_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.wort_ale_pale_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.wort_ale_pale_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/wort_ale_pale/wort_ale_pale.png",
+   "level_requirement": 5,
+   "ordinal": 1,
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:malted_rye",
+         "count": 3
+      },
+      {
+         "material": "seed juniper",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:wort_ale_pale"
+      }
+   ]
+}

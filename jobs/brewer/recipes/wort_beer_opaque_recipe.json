@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.wort_beer_opaque_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.wort_beer_opaque_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.wort_beer_opaque_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/wort_beer_opaque/wort_beer_opaque.png",
+   "level_requirement": 5,
+   "ordinal": 4,
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:malted_millet",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth_ace:food:dates:date_basket",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:wort_beer_opaque"
+      }
+   ]
+}

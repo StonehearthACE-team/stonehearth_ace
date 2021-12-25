@@ -1,0 +1,74 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.09
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(undead_cordial.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 9,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:heal_target",
+         "work_units": 6,
+         "special_priority": 0.7,
+         "health_healed": 0,
+         "applies_effects": {
+            "stonehearth_ace:buffs:recently_treated:remover": 1
+         },
+         "cures_conditions": {
+            "undead_infection": 2
+         },
+         "consumable_qualities": [
+            {
+               "guts_healed": 2
+            },
+            {
+               "guts_healed": 4
+            },
+            {
+               "guts_healed": 6
+            },
+            {
+               "guts_healed": 10
+            }
+         ]
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.undead_cordial.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.undead_cordial.description)",
+         "icon": "file(undead_cordial.png)",
+         "is_item": true,
+         "category": "consumable",
+         "material_tags": [
+            "healing_item",
+            "undead_cordial",
+            "cordial",
+            "consumable",
+            "stockpile_healing_item"
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

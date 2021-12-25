@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "fermenting_vat_fill_wort_beer_white",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.fermenting_vat_fill_wort_beer_white.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.fermenting_vat_fill_wort_beer_white.description)",
+   "default_enabled": true,
+   "ordinal": 92,
+   "icon": "file(fermenting_vat_fill_wort_beer_white.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "beer_white"
+   ]
+}

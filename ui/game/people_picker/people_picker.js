@@ -1,4 +1,10 @@
 App.StonehearthPeoplePickerView.reopen({
+   components: {
+      'stonehearth:unit_info': {},
+      'stonehearth:ownable_object': {},
+      'stonehearth_ace:periodic_interaction': {},
+   },
+
    medicPatientCallback: null,
    medicPatientTooltip: null,
 
@@ -35,18 +41,21 @@ App.StonehearthPeoplePickerView.reopen({
       var citizens = this.get('citizensArray');
       if (citizens) {
          var rows = radiant.map_to_array(radiant.shallow_copy(citizens));
-         if (this._putTravelerReservationAtTop()) {
-            // additional check for whether it should be traveler first and then medic
-            if (this._reallyPutTravelerReservationAtTop()) {
-               rows.unshift({ isTraveler: true }, { isMedicPatient: true });
+         if (!this.onlyShowCitizens) {
+            if (this._putTravelerReservationAtTop()) {
+               // additional check for whether it should be traveler first and then medic
+               if (this._reallyPutTravelerReservationAtTop()) {
+                  rows.unshift({ isTraveler: true }, { isMedicPatient: true });
+               }
+               else {
+                  rows.unshift({ isMedicPatient: true }, { isTraveler: true });
+               }
+            } else {
+               rows.splice(1, 0, { isMedicPatient: true }, { isTraveler: true });
             }
-            else {
-               rows.unshift({ isMedicPatient: true }, { isTraveler: true });
-            }
-         } else {
-            rows.splice(1, 0, { isMedicPatient: true }, { isTraveler: true });
+            this.set('travelerChanged', false);
+            this.set('medicPatientChanged', false);
          }
-         this.set('travelerChanged', false);
          return rows;
       }
    }.property('model', 'citizensArray', 'travelerChanged', 'medicPatientChanged')

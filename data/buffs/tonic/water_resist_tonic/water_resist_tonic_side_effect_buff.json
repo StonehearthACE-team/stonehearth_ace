@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "water_resist_tonic_side_effect",
+   "unique_in_category": true,
+   "rank": 5,
+   "display_name": "i18n(stonehearth_ace:data.buffs.water_resist_tonic.water_resist_tonic_side_effect_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.water_resist_tonic.water_resist_tonic_side_effect_buff.description)",
+   "icon": "file(water_resist_tonic_side_effect_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "drink_satiety_loss_multiplier": {
+         "multiply": 2
+      }
+   }
+}

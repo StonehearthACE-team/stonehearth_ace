@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.horsebread_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.horsebread_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.horsebread_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/horsebread/horsebread/horsebread.png",
+   "workshop": "stonehearth:cook:oven",
+	"work_effect": "work_wait",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:dough_brown",
+         "count": 1
+      },
+		{
+         "material": "food_container raw_food vegetable hearty",
+         "count": 1
+      },
+		{
+         "material": "food_container raw_food vegetable savory",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:horsebread"
+      }
+   ]
+}

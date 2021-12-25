@@ -1,0 +1,70 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_fermenting_vat",
+      "file(brewer_fermenting_vat_beer_opaque_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(brewer_fermenting_vat_beer_opaque_ghost.json)",
+         "iconic_form": "file(brewer_fermenting_vat_beer_opaque_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -2 },
+               "max": { "x": 0, "y": 1, "z": -1 }
+            }
+         ],
+         "adjacency_flags": [
+            "front"
+         ]
+      },
+      "stonehearth_ace:stump": {},
+      "stonehearth:resource_node": {
+         "category": "brewing",
+         "resource": "stonehearth_ace:drink:beer_opaque",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_prepared_drink_overlay_effect",
+         "harvester_effect": "fiddle",
+         "durability": 1,
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 3,
+                     "max": 4
+                  },
+                  "items": {
+                     "cheese_slice": {
+                        "uri": "stonehearth_ace:drink:beer_opaque"
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:brewer:fermenting_vat:empty",
+         "apply_quality": false,
+         "transform_option_key": "beer_opaque"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 56,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 15
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

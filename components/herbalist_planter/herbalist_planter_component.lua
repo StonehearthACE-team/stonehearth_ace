@@ -25,6 +25,7 @@ local PLANT_ACTION = 'stonehearth_ace:plant_herbalist_planter'
 
 function HerbalistPlanterComponent:initialize()
    self._json = radiant.entities.get_json(self) or {}
+   self._sv.harvest_plant = false
 end
 
 function HerbalistPlanterComponent:create()
@@ -85,6 +86,9 @@ function HerbalistPlanterComponent:post_activate()
    if self._is_create then
       self:set_harvest_enabled(self._json.harvest_enabled ~= false)
    end
+   
+   local render_info = self._entity:get_component('render_info')
+   render_info:set_model_variant("ace_planter")
 end
 
 function HerbalistPlanterComponent:destroy()
@@ -122,7 +126,7 @@ function HerbalistPlanterComponent:_create_planter_tasks()
       }
 
       -- if we're clearing it, just pop out a seed for the existing plant (bonus products in storage are already dumped out automatically)
-      if not args.seed_uri then
+      if not self._sv.current_crop then
          if self._planted_crop_stats then
             local seed_uri = self._planted_crop_stats.seed_uri
             self:plant_crop()
@@ -247,6 +251,14 @@ function HerbalistPlanterComponent:set_harvest_enabled(enabled)
    end
 end
 
+function HerbalistPlanterComponent:set_harvest_plant(harvest_plant)
+   if harvest_plant ~= self._sv.harvest_plant then
+      self._sv.harvest_plant = harvest_plant
+      self.__saved_variables:mark_changed()
+      self:_reconsider()
+   end
+end
+
 function HerbalistPlanterComponent:is_harvest_enabled()
    return self._sv.harvest_enabled
 end
@@ -295,7 +307,11 @@ end
 
 function HerbalistPlanterComponent:get_product_uri()
    if self._planted_crop_stats then
-      return self._planted_crop_stats.product_uri
+      if self._sv.harvest_plant and self._planted_crop_stats.plant_uri then
+         return self._planted_crop_stats.plant_uri
+      else
+         return self._planted_crop_stats.product_uri
+      end
    end
 end
 
@@ -482,7 +498,7 @@ function HerbalistPlanterComponent:create_products(harvester)
       local items
       local reset_growth_level
       if self._planted_crop_stats then
-         items = self:_create_products(harvester, self._planted_crop_stats.product_uri, self._sv.num_products, self._planted_crop_stats.additional_products)
+         items = self:_create_products(harvester, self:get_product_uri(), self._sv.num_products, self._planted_crop_stats.additional_products)
          reset_growth_level = self._planted_crop_stats.post_harvest_growth_level
       end
       self:_reset_growth(reset_growth_level)
@@ -494,6 +510,11 @@ end
 
 function HerbalistPlanterComponent:set_harvest_enabled_command(session, response, enabled)
    self:set_harvest_enabled(enabled)
+   return true
+end
+
+function HerbalistPlanterComponent:set_harvest_plant_command(session, response, harvest_plant)
+   self:set_harvest_plant(harvest_plant)
    return true
 end
 

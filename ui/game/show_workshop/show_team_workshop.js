@@ -284,7 +284,7 @@ $(top).on('stonehearthReady', function() {
             var self = this;
             var productCatalogData = App.catalog.getCatalogData(recipe.product_uri);
       
-            if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles || productCatalogData.consumable_buffs)) {
+            if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles || productCatalogData.consumable_buffs || productCatalogData.consumable_effects || productCatalogData.consumable_after_effects)) {
                self.$('.detailsView').find('.tooltipstered').tooltipster('destroy');
                if (productCatalogData.equipment_roles) {
                   var classArray = stonehearth_ace.findRelevantClassesArray(productCatalogData.equipment_roles);
@@ -302,45 +302,12 @@ $(top).on('stonehearthReady', function() {
                }
                self.set('equipmentTypes', equipmentTypes);
 
-               var consumableBuffs = [];
-               radiant.each(productCatalogData.consumable_buffs, function (_, buff) {
-                  if (!buff.invisible_to_player && !buff.invisible_on_crafting) {
-                     // only show stacks if greater than 1
-                     if (buff.stacks > 1) {
-                        buff = radiant.shallow_copy(buff);
-                        buff.hasStacks = true;
-                     }
-                     consumableBuffs.push(buff);
-                  }
-               });
-               self.set('consumableBuffs', consumableBuffs);
+               self._setBuffsByType(productCatalogData, 'consumable_buffs', 'consumableBuffs');
+               self._setBuffsByType(productCatalogData, 'injected_buffs', 'injectedBuffs');
+               self._setBuffsByType(productCatalogData, 'inflictable_debuffs', 'inflictableDebuffs');
+               self._setBuffsByType(productCatalogData, 'consumable_effects', 'consumableEffects');
+               self._setBuffsByType(productCatalogData, 'consumable_after_effects', 'consumableAfterEffects');
 
-               var injectedBuffs = [];
-               radiant.each(productCatalogData.injected_buffs, function (_, buff) {
-                  if (!buff.invisible_to_player && !buff.invisible_on_crafting) {
-                     // only show stacks if greater than 1
-                     if (buff.stacks > 1) {
-                        buff = radiant.shallow_copy(buff);
-                        buff.hasStacks = true;
-                     }
-                     injectedBuffs.push(buff);
-                  }
-               });
-               self.set('injectedBuffs', injectedBuffs);
-
-               var inflictableDebuffs = [];
-               radiant.each(productCatalogData.inflictable_debuffs, function (_, debuff) {
-                  if (!debuff.invisible_to_player && !debuff.invisible_on_crafting) {
-                     // only show stacks if greater than 1
-                     if (debuff.stacks > 1) {
-                        debuff = radiant.shallow_copy(debuff);
-                        debuff.hasStacks = true;
-                     }
-                     inflictableDebuffs.push(debuff);
-                  }
-               });
-               self.set('inflictableDebuffs', inflictableDebuffs);
-      
                App.tooltipHelper.createDynamicTooltip(self.$('#equipmentRequirements'), function () {
                   var tooltipString = i18n.t('stonehearth:ui.game.unit_frame.no_requirements');
                   if (productCatalogData.equipment_roles) {
@@ -368,30 +335,40 @@ $(top).on('stonehearthReady', function() {
             }
          },
 
+         _setBuffsByType: function (data, buffType, propertyName) {
+            var self = this;
+            var buffs = [];
+            radiant.each(data[buffType], function (_, buff) {
+               if (!buff.invisible_to_player && !buff.invisible_on_crafting) {
+                  // only show stacks if greater than 1
+                  if (buff.stacks > 1) {
+                     buff = radiant.shallow_copy(buff);
+                     buff.hasStacks = true;
+                  }
+                  buffs.push(buff);
+               }
+            });
+            self.set(propertyName, buffs);
+         },
+
          _createBuffTooltips: function () {
             var self = this;
 
-            var consumableBuffs = self.get('consumableBuffs');
-            radiant.each(consumableBuffs, function(_, buff) {
+            self._createBuffTooltipsByType('consumableBuffs', 'consumable_buff');
+            self._createBuffTooltipsByType('injectedBuffs', 'injected_buff');
+            self._createBuffTooltipsByType('inflictableDebuffs', 'inflictable_debuff');
+            self._createBuffTooltipsByType('consumableEffects', 'consumable_effect');
+            self._createBuffTooltipsByType('consumableAfterEffects', 'consumable_after_effect');
+         },
+
+         _createBuffTooltipsByType: function(propertyName, tooltipName)
+         {
+            var self = this;
+            var buffs = self.get(propertyName);
+            radiant.each(buffs, function(_, buff) {
                var div = self.$('[data-id="' + buff.uri + '"]');
                if (div.length > 0) {
-                  App.guiHelper.addTooltip(div, buff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.consumable_buff') + i18n.t(buff.display_name));
-               }
-            });
-
-            var injectedBuffs = self.get('injectedBuffs');
-            radiant.each(injectedBuffs, function(_, buff) {
-               var div = self.$('[data-id="' + buff.uri + '"]');
-               if (div.length > 0) {
-                  App.guiHelper.addTooltip(div, buff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.injected_buff') + i18n.t(buff.display_name));
-               }
-            });
-
-            var inflictableDebuffs = self.get('inflictableDebuffs');
-            radiant.each(inflictableDebuffs, function(_, debuff) {
-               var div = self.$('[data-id="' + debuff.uri + '"]');
-               if (div.length > 0) {
-                  App.guiHelper.addTooltip(div, debuff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.inflictable_debuff') + i18n.t(debuff.display_name));
+                  App.guiHelper.addTooltip(div, buff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.' + tooltipName) + i18n.t(buff.display_name));
                }
             });
          },
