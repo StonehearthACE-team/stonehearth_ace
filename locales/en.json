@@ -3721,6 +3721,10 @@
             "major_infection": {
                "display_name": "Severe Infection",
                "description": "The infection is out of control and this hearthling's life is urgently threatened. Body and Willpower are completely lowered.<ul><li>💬 Type & Severity: Infection (Extreme)</li><li>💊 This infection needs to be treated with at least a Fever Cordial to be completely removed with a single treatment</li><li>❗ This hearthling will take a lot of damage over time until the infection is removed.</li><ul>"
+            },
+            "undead_infection": {
+               "display_name": "Undead Infection",
+               "description": "A nasty wound caused by an undead is festering in unnatural fashion...<ul><li>💬 Type & Severity: Undead Infection (Medium)</li><li>💊 This infection needs to be treated with at least an Undead Cordial to be completely removed with a single treatment</li><li>❗ An undead infection will pass on its own but can be dangerous while it lasts</li><li>💢 Prevents natural health recovery via Willpower</li><ul>"
             }
          },
          "spring_flavors": {
@@ -4044,9 +4048,6 @@
          "using_scepter": {
             "display_name": "Using Scepters",
             "description": "Courage is greatly increased!"
-         },
-         "undead_infection": {
-            "display_name": "Undead Infection"
          },
          "recently_treated": {
             "recently_magically_treated_buff": {
