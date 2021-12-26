@@ -208,7 +208,7 @@ end
 function AceJobInfoController:manually_unlock_all_crops()
    -- only farmers maintain a crop list, though it's used by other jobs (they all reference the farmer job info controller though)
    if self._sv.alias ~= 'stonehearth:jobs:farmer' then
-      radiant.verify(false, "Attempting to manually unlock crop %s when job %s does not have crops!", crop_key, self._sv.alias)
+      radiant.verify(false, "Attempting to manually unlock crops when job %s does not have crops!", self._sv.alias)
       return false
    end
    

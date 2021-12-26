@@ -153,9 +153,7 @@ function AceRenewableResourceNodeComponent:_apply_modifiers(key, modifiers)
          self:spawn_resource(self._entity, radiant.entities.get_world_grid_location(self._entity) + offset, self._entity:get_player_id(), true)
       elseif modifiers.destroy_resource then
          self:_stop_renew_timer()
-         if is_harvestable then
-            self:_deplete()
-         end
+         self:_deplete()
       end
    end
 
