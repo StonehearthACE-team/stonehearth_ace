@@ -1,0 +1,70 @@
+{
+   "type": "entity",
+   "mixins": "file(present_golem_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(present_golem_iconic.json)",
+         "ghost_form": "file(present_golem_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "golem": {
+                     "uri": "stonehearth:monsters:golems:golem_restocking:auto",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:traveler_attraction": {},
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "",
+         "command": "stonehearth_ace:commands:transform:frostfeast:open_present",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth:effects:loot_effect",
+         "transforming_worker_effect": "fiddle_frostfeast",
+         "transform_effect": "stonehearth_ace:effects:poof_effect:frostfeast",
+         "progress_text": "stonehearth_ace:ui.game.unit_frame.transform.progress.opening",
+         "status_key": "stonehearth_ace:ai.actions.status_text.opening",
+         "auto_request": false,
+         "apply_ingredient_quality": true,
+         "kill_entity": true
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 21
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
