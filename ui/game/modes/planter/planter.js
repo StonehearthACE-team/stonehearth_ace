@@ -36,7 +36,7 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
 
             data.seed_index = seed_index;
             self.set('allCropData', data);
-            //self._updateAvailableSeeds();
+            self._updateAvailableSeeds();
          });
          
       // farmer job info has list of unlocked crops for both farmer and herbalist
@@ -55,7 +55,6 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       this._super();
       var self = this;
 
-      /*
       radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:usable_item_tracker')
          .done(function(response) {
             if (self.isDestroying || self.isDestroyed) {
@@ -71,7 +70,6 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
                   self._updateAvailableSeeds();
                });
          });
-      */
 
       self.$('#enableHarvestCheckbox').change(function() {
          var planter = self.get('model.stonehearth_ace:herbalist_planter');
@@ -102,7 +100,6 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       this._super();
    },
 
-   /*
    _updateAvailableSeeds: $.throttle(250, function() {
       var self = this;
       var allCropData = self.get('allCropData');
@@ -130,7 +127,6 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
          self.palette.updateAvailableSeeds(availableSeeds);
       }
    }),
-   */
 
    _planterCropTypeChange: function() {
       var self = this;
@@ -227,8 +223,8 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
             planter_view: this,
             planter_data: this.get('allCropData'),
             allowed_crops: planterComponent.allowed_crops,
-            uri: this.get('farmer_job_info')
-            //available_seeds: this._availableSeeds
+            uri: this.get('farmer_job_info'),
+            available_seeds: this._availableSeeds
          });
       }
    },
@@ -278,6 +274,7 @@ App.AcePlanterTypePaletteView = App.View.extend({
                      description: i18n.t(info.crop_info.description),
                      initial_crop: info.initial_crop,
                      hidden: info.hidden,
+                     has_seed: self.planter_data.crops[k].seed_uri != null
                   }
                }
                return false;
@@ -298,7 +295,7 @@ App.AcePlanterTypePaletteView = App.View.extend({
             }
 
             self.set('cropTypes', cropDataArray);
-            //self.updateAvailableSeeds(self.available_seeds);
+            self.updateAvailableSeeds(self.available_seeds);
 
             self.$().on( 'click', '[cropType]', function() {
                if ($(this).attr('locked')) {
@@ -323,7 +320,7 @@ App.AcePlanterTypePaletteView = App.View.extend({
    _isCropLocked: function(crop) {
       if (!this.get('model') || !crop.type) return false; // Too early. We'll recheck later.
       var manually_unlocked = this.get('model.manually_unlocked');
-      return !crop.initial_crop && !manually_unlocked[crop.type];
+      return !crop.has_seed && !crop.initial_crop && !manually_unlocked[crop.type];
    },
 
    _isCropHidden: function (crop) {
@@ -351,11 +348,13 @@ App.AcePlanterTypePaletteView = App.View.extend({
       if (availableSeeds) {
          var cropTypes = self.get('cropTypes');
          radiant.each(cropTypes, function(i, data) {
-            var bestQuality = self._getAvailableSeedQuality(availableSeeds, data.type);
-            Ember.set(data, 'bestQuality', bestQuality);
-            Ember.set(data, 'bestQualityClass', 'quality' + bestQuality);
+            if (data.has_seed) {
+               var bestQuality = self._getAvailableSeedQuality(availableSeeds, data.type);
+               Ember.set(data, 'bestQuality', bestQuality);
+               Ember.set(data, 'bestQualityClass', 'quality' + bestQuality);
+            }
          });
-         cropTypes.sort(self._sortWithQuality);
+         //cropTypes.sort(self._sortWithQuality);
       }
    },
 
@@ -368,6 +367,12 @@ App.AcePlanterTypePaletteView = App.View.extend({
          return -1;
       }
       else if (a.is_locked && !b.is_locked) {
+         return 1;
+      }
+      else if (a.has_seed && b.has_seed && a.bestQuality > b.bestQuality) {
+         return -1;
+      }
+      else if (a.has_seed && b.has_seed && a.bestQuality < b.bestQuality) {
          return 1;
       }
       else if (a.level < b.level) {

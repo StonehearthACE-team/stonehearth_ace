@@ -230,6 +230,7 @@ function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options,
       end
       for item_quality, quantity in pairs(qualities) do
          for i = 1, quantity do
+            -- log:debug('trying to create %s with options: %s', uri, radiant.util.table_tostring(options))
             local item = radiant.entities.create_entity(uri, options)
             -- manually passed quality will override any quality from the table (e.g., from a LootTable), even if it's lower
             item_quality_lib.apply_quality(item, quality or item_quality, quality_options)

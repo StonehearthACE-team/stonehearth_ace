@@ -64,6 +64,16 @@ function unlock_seed_rewards.process_reward(entity, user, stage, script_data, is
    local native_mult = script_native / (script_total * native_chance)
    local exotic_mult = script_exotic / (script_total * exotic_chance)
 
+   if script_data.convert_to_none then
+      if script_data.convert_to_none.native and native_chance == 0 then
+         script_none = script_none + script_native
+      end
+
+      if script_data.convert_to_none.exotic and exotic_chance == 0 then
+         script_none = script_none + script_exotic
+      end
+   end
+
    local crops = WeightedSet(rng)
    if script_none > 0 then
       crops:add('none', script_none / script_total)

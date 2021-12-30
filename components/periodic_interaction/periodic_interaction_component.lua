@@ -191,7 +191,6 @@ function PeriodicInteractionComponent:initialize()
 end
 
 function PeriodicInteractionComponent:activate()
-   self:_setup_ui_data()
    self:_select_mode_sequences()
 end
 
@@ -208,10 +207,13 @@ function PeriodicInteractionComponent:post_activate()
             end
          end)
 
+   self:_setup_ui_data()
    self:_startup()
 end
 
 function PeriodicInteractionComponent:destroy()
+   self:_destroy_eligibility_listeners()
+   
    if self._consider_usability_timer then
       self._consider_usability_timer:destroy()
       self._consider_usability_timer = nil
@@ -230,6 +232,31 @@ function PeriodicInteractionComponent:destroy()
    end
 end
 
+function PeriodicInteractionComponent:_destroy_eligibility_listeners()
+   if self._eligibility_listeners then
+      for _, listener in ipairs(self._eligibility_listeners) do
+         listener:destroy()
+      end
+
+      self._eligibility_listeners = nil
+   end
+end
+
+function PeriodicInteractionComponent:_setup_usability_listeners()
+   self:_destroy_eligibility_listeners()
+   local listeners = {}
+
+   local jobs_controller = stonehearth.job:get_jobs_controller(self._entity:get_player_id())
+   
+   local job_level_listener = radiant.events.listen(jobs_controller, 'stonehearth_ace:job:highest_level_changed', function(args)
+         self:_check_modes_for_valid_job_levels(args.job_uri, args.highest_level)
+      end)
+
+   table.insert(listeners, job_level_listener)
+
+   self._eligibility_listeners = listeners
+end
+
 function PeriodicInteractionComponent:_startup()
    local location = radiant.entities.get_world_grid_location(self._entity)
    if not location then
@@ -238,11 +265,13 @@ function PeriodicInteractionComponent:_startup()
 
    self:select_mode(self._sv.current_mode)
    self:_setup_consider_usability_timer()
+   self:_setup_usability_listeners()
    self:_consider_usability()
 end
 
 function PeriodicInteractionComponent:_shutdown()
    self:cancel_using(self._sv.current_user)
+   self:_destroy_eligibility_listeners()
 end
 
 function PeriodicInteractionComponent:get_valid_users_command(session, response)
@@ -307,7 +336,7 @@ function PeriodicInteractionComponent:_setup_consider_usability_timer()
       end)
 end
 
-function PeriodicInteractionComponent:_reset(completed, canceled)
+function PeriodicInteractionComponent:_reset(completed, skip_mode_reselection)
    self._sv.interaction_stage = 1
    self._in_use = false
 
@@ -348,7 +377,7 @@ function PeriodicInteractionComponent:_reset(completed, canceled)
 
    self._sv.current_user = nil
 
-   if not canceled then   
+   if not skip_mode_reselection then   
       self:select_mode(self._sv.current_mode)
    end
 end
@@ -358,8 +387,18 @@ function PeriodicInteractionComponent:_cancel_usage()
 end
 
 function PeriodicInteractionComponent:_setup_ui_data()
+   local jobs_controller = stonehearth.job:get_jobs_controller(self._entity:get_player_id())
+
    for id, data in pairs(self._json.modes) do
-      self._sv.ui_data[id] = data.ui_data
+      self._sv.ui_data[id] = radiant.shallow_copy(data.ui_data)
+
+      -- check job eligibility
+      if data.requirements and data.requirements.job then
+         local job = jobs_controller:get_job(data.requirements.job)
+         local max_level = job and job:get_highest_level()
+
+         self._sv.ui_data[id].has_eligible_job = max_level and max_level >= (data.requirements.level or 1)
+      end
    end
    self._sv.show_mode_selection = self._json.show_mode_selection
 
@@ -466,6 +505,28 @@ function PeriodicInteractionComponent:is_valid_potential_user(entity)
       end
 
       return true
+   end
+end
+
+function PeriodicInteractionComponent:_check_modes_for_valid_job_levels(job_uri, level)
+   local has_changed = false
+
+   for mode, data in pairs(self._json.modes) do
+      if data.requirements and data.requirements.job then
+         if job_uri == data.requirements.job then
+            local had_eligible_job = self._sv.ui_data[mode].has_eligible_job
+            local has_eligible_job = level >= (data.requirements.level or 1)
+
+            if has_eligible_job ~= had_eligible_job then
+               has_changed = true
+               self._sv.ui_data[mode].has_eligible_job = has_eligible_job
+            end
+         end
+      end
+   end
+
+   if has_changed then
+      self.__saved_variables:mark_changed()
    end
 end
 

@@ -1,6 +1,6 @@
 -- changed self._craftable_recipes to contain an array of recipes for each product uri
 -- so multiple different recipes for a particular product can be properly considered
-
+local JobInfoController = require 'stonehearth.services.server.job.job_info_controller'
 local AceJobInfoController = class()
 
 local log = radiant.log.create_logger('job_info')
@@ -253,6 +253,18 @@ function AceJobInfoController:_initialize_recipe_data(recipe_key, recipe_data)
             table.insert(recipes, recipe_data)
          end
       end
+   end
+end
+
+-- ACE: trigger an event if it changes
+AceJobInfoController._ace_old__evaluate_highest_level = JobInfoController._evaluate_highest_level
+function AceJobInfoController:_evaluate_highest_level()
+   local highest_level = self._sv.highest_level
+   self:_ace_old__evaluate_highest_level()
+   if self._sv.highest_level ~= highest_level then
+      radiant.events.trigger(stonehearth.job:get_jobs_controller(self._sv.player_id),
+            'stonehearth_ace:job:highest_level_changed',
+            { job_uri = self._sv.alias, highest_level = self._sv.highest_level })
    end
 end
 

@@ -101,10 +101,26 @@ App.AcePeriodicInteractionView = App.StonehearthBaseZonesModeView.extend({
             App.guiHelper.setListSelectorValue(selector, uiData[currentMode]);
 
             self._modeSelector = selector;
+            self._updateJobLevelEligibilityForModes(entries);
             self.$('#modeSelectionList').append(selector);
          }
       }
    }.observes('model.stonehearth_ace:periodic_interaction.ui_data', 'model.stonehearth_ace:periodic_interaction.allow_mode_selection'),
+
+   _updateJobLevelEligibilityForModes: function(uiDataArr) {
+      var self = this;
+      var selector = self._modeSelector;
+      if (selector) {
+         uiDataArr.forEach(modeData => {
+            var $divs = selector.find('[data-key="' + modeData.key + '"]');
+            if (modeData.has_eligible_job === true) {
+               $divs.removeClass('has-ineligible-job');
+            } else if (modeData.has_eligible_job === false) {
+               $divs.addClass('has-ineligible-job');
+            }
+         });
+      }
+   },
 
    _ownerAssignmentCallback: function(object, newOwner) {
       if (object && newOwner) {
@@ -169,8 +185,13 @@ App.AcePeriodicInteractionView = App.StonehearthBaseZonesModeView.extend({
             radiant.call_obj(piComp, 'get_valid_users_command')
             .done(function(result) {
                var filterFn = function(object, person) {
-                  var isValid = result.users.includes(person.__self);
-                  return isValid && self._canBeOwnerCallback(object, person);
+                  if (Array.isArray(result.users)) {
+                     var isValid = result.users.includes(person.__self);
+                     return isValid && self._canBeOwnerCallback(object, person);
+                  }
+                  else {
+                     return false;
+                  }
                };
                
                self._peoplePicker = App.gameView.addView(App.StonehearthPeoplePickerView, {
