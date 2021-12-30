@@ -1,0 +1,10 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_event",
+   "in_edge": "wait_for_ogo_army_destroyed",
+   "out_edge": "ogo_army_weather_clear",
+   "wait_for_event_info": {
+      "source": "ogo_army_raid.guards",
+      "event": "stonehearth:kill_event"
+   }
+}

@@ -1922,6 +1922,10 @@
             "display_name": "Whiteout",
             "description": "There is a storm coming... And it's unlike anything we've ever seen.<ul><li>Slightly reduced sunlight levels.</li><li>Quite reduced humidity.</li></li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li><li>During the whiteout, vision radius is greatly reduced and hearthlings caught in it will have severely reduced capabilities and speed - and start getting hurt after a while.</li><li>The whiteout happens near the middle of the day and lasts until the night.</li></ul>",
             "bulletin_name": "The whiteout has started! Everyone should go inside NOW!"
+         },
+         "under_siege": {
+            "display_name": "Under Siege!",
+            "description": "Smoke, fire and ashes! A light storm rages the land as the sounds of war overtake the environment!"
          }
       },
       "happiness": {
@@ -2085,6 +2089,14 @@
                   "everlasting_summer": {
                      "display_name": "A dream of summer",
                      "tooltip": "I feel touched by an everlasting summer, a place where we'd all find harmony and peace..."
+                  },
+                  "under_siege_positive": {
+                     "display_name": "A time of heroes!",
+                     "tooltip": "Now is the hour! A moment of courage and of glory! This day, WE FIGHT!"
+                  },
+                  "under_siege_negative": {
+                     "display_name": "UNDER SIEGE!",
+                     "tooltip": "Oh, no... They're back! We're doomed, DOOMED!"
                   }
                }
             },
