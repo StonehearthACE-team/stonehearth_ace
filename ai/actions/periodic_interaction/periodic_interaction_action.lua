@@ -95,7 +95,7 @@ return ai:create_compound_action(PeriodicInteraction)
          :execute('stonehearth:find_best_reachable_entity_by_type', {
             filter_fn = ai.BACK(4).filter_fn,
             rating_fn = ai.BACK(4).rating_fn,
-            description = 'finding tendable herbalist planters',
+            description = 'finding periodic interaction entities',
             owner_player_id = ai.BACK(4).owner_player_id
          })
          :execute('stonehearth:abort_on_reconsider_rejected', {

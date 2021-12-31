@@ -84,11 +84,14 @@ end
 function TransformComponent:_create_request_listeners()
    self:_destroy_request_listeners()
    
-   local data = self:get_transform_options()
-   if data and data.request_action and data.auto_request and self._entity:get_player_id() ~= "" then
-      self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
-         :on_changed(function(parent)
-            if parent then
+   self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
+      :on_changed(function(parent)
+         if parent then
+            -- reconsider commands now that we're placed in the world
+            self:reconsider_commands()
+
+            local data = self:get_transform_options()
+            if data and data.request_action and data.auto_request and self._entity:get_player_id() ~= '' then
                -- if we already have a task for this entity, don't override it with a transform request
                local task_tracker_component = self._entity:get_component('stonehearth:task_tracker')
                if task_tracker_component and task_tracker_component:has_any_task() then
@@ -96,8 +99,8 @@ function TransformComponent:_create_request_listeners()
                end
                self:request_transform(self._entity:get_player_id())
             end
-         end)
-   end
+         end
+      end)
 end
 
 function TransformComponent:_create_placement_listener()
