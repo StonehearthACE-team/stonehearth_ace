@@ -5,10 +5,10 @@
    "description": "i18n(stonehearth_ace:data.buffs.tended_planter.description)",
    "icon": "file(tended_planter_buff.png)",
    "script": "stonehearth:buff_scripts:aura",
-   "effect": "stonehearth:effects:treasure_glow",
+   "effect": "stonehearth_ace:effects:tended_planter_glow",
+   "restore_effect": true,
    "duration": "6h",
    "repeat_add_action": "renew_duration",
-   "restore_effect": true,
    "script_info": {
       "pulse": "30m",
       "aura_buff": [

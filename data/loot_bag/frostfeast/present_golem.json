@@ -1,0 +1,94 @@
+{
+   "entries": {
+      "golem": {
+         "roll_type": "one_of",
+         "num_rolls": {
+            "min": 1,
+            "max": 1
+         },
+         "items": {
+            "restocking_golem": {
+               "uri": "stonehearth:monsters:golems:golem_restocking:auto",
+               "weight": 1
+            }
+         }
+      },
+      "random_drop": {
+         "roll_type": "some_of",
+         "num_rolls": {
+            "min": 1,
+            "max": 4
+         },
+         "items": {
+            "tea_pot_amberstone": {
+               "uri": "stonehearth:decoration:amberstone_teapot",
+               "weight": 1
+            },
+            "planter_pot_amberstone": {
+               "uri": "stonehearth_ace:planters:pot:amberstone",
+               "weight": 1
+            },
+            "planter_small_amberstone": {
+               "uri": "stonehearth_ace:planters:small:amberstone",
+               "weight": 1
+            },
+            "planter_small_hearthbud": {
+               "uri": "stonehearth_ace:planters:pot:amberstone:hearthbud",
+               "weight": 1
+            },
+            "amberstone_statue": {
+               "uri": "stonehearth:amberstone:statue",
+               "weight": 1
+            },
+            "amberstone_chest": {
+               "uri": "stonehearth:containers:amberstone_chest",
+               "weight": 1
+            },
+            "amberstone_input_bin": {
+               "uri": "stonehearth:containers:input_bin:amberstone",
+               "weight": 1
+            },
+            "amberstone_output_box": {
+               "uri": "stonehearth:containers:output_box:amberstone",
+               "weight": 1
+            },
+            "amberstone_mat": {
+               "uri": "stonehearth:decoration:amberstone_mat",
+               "weight": 1
+            },
+            "amberstone_lantern": {
+               "uri": "stonehearth:decoration:amberstone_lantern",
+               "weight": 1
+            },
+            "amberstone_painting_branch": {
+               "uri": "stonehearth:decoration:amberstone_painting_branch",
+               "weight": 1
+            },
+            "amberstone_bed": {
+               "uri": "stonehearth:furniture:amberstone_bed",
+               "weight": 1
+            },
+            "amberstone_chair": {
+               "uri": "stonehearth:furniture:amberstone_chair",
+               "weight": 1
+            },
+            "amberstone_table": {
+               "uri": "stonehearth:furniture:amberstone_table",
+               "weight": 1
+            },
+            "amberstone_tunnel_door": {
+               "uri": "stonehearth:portals:amberstone_tunnel_door",
+               "weight": 1
+            },
+            "amberstone_window": {
+               "uri": "stonehearth:portals:amberstone_window",
+               "weight": 1
+            },
+            "amberstone_mason_pedestal": {
+               "uri": "stonehearth:mason:pedestal:amberstone",
+               "weight": 1
+            }
+         }
+      }
+   }
+}

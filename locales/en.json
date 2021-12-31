@@ -1384,6 +1384,10 @@
                   },
                   "quest_5": {
                      "trade_details": "'Hello, Frostfather! I'm writing with a clear conscience to receive your blessing this Frostfeast. We really need <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>, and it would be amazing if you could help with that... I appreciate it! Merry Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And she'd give us <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>!"
+                  },
+                  "amberstone": {
+                     "title": "Tomtee brings a gift request from Clan Amberstone!",
+                     "trade_details": "'We extend the paw of friendship, Frostling! Ever since our great Warren has befriended kind surface-dwellers, we've been introduced to several delicacies and wonders! We can't stop thinking about how much we'd love to have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> this year. Is that how we are supposed to ask for it? We hope so! Many hops to you and happy Frostfeast!'<br><br>Tomtee will be back in [str(i18n_data.num_days)] days to collect this gift if we accept! And she'd give us a [str(i18n_data.reward_item)]</strong> from the Warren itself!"
                   }
                },
                "quest_frostfeast_presents": {
@@ -3213,6 +3217,14 @@
             "exploration_garden_refill": {
                "display_name": "Add Fertilizer",
                "description": "The Herbalist is going to refill this garden with fertilizer so it can be used to find new crops again! This command is active by default."
+            },
+            "goblin_camp": {
+               "display_name": "Restore Terrain",
+               "description": "Order a hearthling to come and restore the terrain. It is recommended that the entire camp is cleared and all buildings or fortifications are removed before issuing this command!"
+            },
+            "goblin_camp_destroy": {
+               "display_name": "Destroy!",
+               "description": "Order someone to finish off this camp once and for all!"
             }
          },
          "slaughter": {
@@ -4607,7 +4619,7 @@
             "herbalist_planter_pot_sapling_recipe": {
                "recipe_name": "Herbalist Tree-Planting Pot",
                "description": "The Herbalist can use this large pot to cultivate tree saplings.",
-               "flavor": "Saplings are cultivated from the seeds of the tree"
+               "flavor": "Saplings require a seed of the desired tree to be planted"
             },
             "herbalist_planter_pot_amberstone_recipe": {
                "recipe_name": "Amberstone Herbalist Pot",
@@ -4622,12 +4634,12 @@
             "herbalist_planter_fungi_wall_recipe": {
                "recipe_name": "Wall-Mounted Mushroom Planter",
                "description": "The Herbalist can use this wall-mounted box to cultivate two renewable fungi.",
-               "flavor": "Changing the cultivated fungus requires the respective fungal colony"
+               "flavor": "Changing the cultivated fungus requires the respective colony"
             },
             "herbalist_planter_fungi_recipe": {
                "recipe_name": "Large Mushroom Planter",
                "description": "The Herbalist can use these standing boxes to cultivate four renewable fungi.",
-               "flavor": "Changing the cultivated fungus requires the respective fungal colony"
+               "flavor": "Changing the cultivated fungus requires the respective colony"
             },
             "professional_beekeeping_hat_recipe": {
                "recipe_name": "Professional Beekeeping Hat",
@@ -5335,6 +5347,11 @@
                "description": "Used by the Herbalist for discovering new types of plants to be cultivated in herbalist planters by trying out wild seeds.",
                "flavor": "To boldly go where no Herbalist has gone before"
             },
+            "herbalist_exploration_garden_water_recipe": {
+               "recipe_name": "Herbalist Exploration Tub",
+               "description": "Used by the Herbalist for discovering new types of water crops to be cultivated in herbalist water planters.",
+               "flavor": "Unlike the regular garden, this one doesn't require fertilizer"
+            },
             "herbalist_cauldron_recipe": {
                "recipe_name": "Herbalist Stone Cauldron",
                "description": "Used by the Herbalist for brewing & concocting simple potions.",
@@ -5715,12 +5732,8 @@
                         "description": "Prioritize finding seeds for a plant native to this biome. This process is faster and more reliable than searching for exotic seeds. Requires a level 2 Herbalist or Grower."
                      },
                      "water": {
-                        "display_name": "Find Native Water Crop",
-                        "description": "Prioritize finding a water plant native to this biome's water bodies. A faster and more reliable process than searching for exotic ones. Requires a level 3 Herbalist or Grower."
-                     },
-                     "fungi": {
-                        "display_name": "Find Native Mushroom",
-                        "description": "Prioritize finding a mushroom native to this biome. This process is faster and more reliable than searching for exotic fungi. Requires a level 5 Herbalist or Grower."
+                        "display_name": "Find Native Water Plant",
+                        "description": "Prioritize finding a water crop native to this biome's water bodies. A faster and more reliable process than searching for exotic ones. Requires a level 3 Herbalist or Grower."
                      }
                   },
                   "find_exotic_seed": {
@@ -5729,12 +5742,8 @@
                         "description": "Try to look for an exotic herb from anywhere in the world. A slower process that relies both on luck and dedication, sometimes finding only native seeds. Requires a level 4 Herbalist or Grower."
                      },
                      "water": {
-                        "display_name": "Find Exotic Water Crop",
-                        "description": "Search for an exotic water plant from anywhere in the world. A slower process that relies both on luck and dedication, sometimes finding only native plants. Requires a level 4 Herbalist or Grower."
-                     },
-                     "fungi": {
-                        "display_name": "Find Exotic Mushroom",
-                        "description": "Try to look for an exotic mushroom from anywhere in the world. A slower process that relies both on luck and dedication, sometimes finding only native fungi. Requires a level 6 Herbalist or Grower."
+                        "display_name": "Find Exotic Water Plant",
+                        "description": "Search for an exotic water crop from anywhere in the world. A slower process that relies both on luck and dedication, sometimes finding only native plants. Requires a level 4 Herbalist or Grower."
                      }
                   }
                }
@@ -5748,6 +5757,10 @@
          },
          "unlock_last_crop": {
             "bulletin_title": "The [str(i18n_data.job_name)] has unlocked the last crop possible in this garden: [str(i18n_data.crop_name)]!"
+         },
+         "herbalist_exploration_garden_water": {
+            "display_name": "Herbalist Exploration Tub",
+            "description": "Used for discovering new types of water plants for cultivation in herbalist planters."
          }
       },
       "engineer": {
@@ -11300,7 +11313,7 @@
          },
          "planter_pot_sapling": {
             "display_name": "Herbalist Tree-Planting Pot",
-            "description": "This large pot can be used for growing tree saplings."
+            "description": "This large pot can be used for growing tree saplings from tree seeds."
          },
          "planter_small_amberstone": {
             "display_name": "Amberstone Herbalist Planter",

@@ -1,0 +1,30 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(goblin_camp_patch_stone.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:entities.landmark.summon_stone_patch_surface.summon_stone_patch_surface_ghost.display_name)",
+         "description": "i18n(stonehearth:entities.landmark.summon_stone_patch_surface.summon_stone_patch_surface_ghost.description)",
+         "icon": "file(goblin_camp_patch_stone.png)",
+         "category": "geomancer",
+         "material_tags": [
+            "crafted",
+            "stone",
+            "summon_stone",
+            "stockpile_geomancer"
+         ]
+      }
+   }
+}

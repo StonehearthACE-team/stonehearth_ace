@@ -1,0 +1,16 @@
+{
+   "type": "command",
+   "name": "goblin_camp",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.goblin_camp.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.goblin_camp.description)",
+   "default_enabled": true,
+   "visible_to_all_players": true,
+   "ordinal": 99,
+   "icon": "file(goblin_camp.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "restore_terrain"
+   ]
+}

@@ -40,31 +40,6 @@
             "models": [
                "file(exploration_default/stage_06.qb)"
             ]
-         },
-         "water_stage_01": {
-            "models": [
-               "file(exploration_water/stage_01.qb)"
-            ]
-         },
-         "water_stage_02": {
-            "models": [
-               "file(exploration_water/stage_02.qb)"
-            ]
-         },
-         "water_stage_03": {
-            "models": [
-               "file(exploration_water/stage_03.qb)"
-            ]
-         },
-         "water_stage_04": {
-            "models": [
-               "file(exploration_water/stage_04.qb)"
-            ]
-         },
-         "water_stage_05": {
-            "models": [
-               "file(exploration_water/stage_05.qb)"
-            ]
          }
       },
       "destination": {
@@ -101,7 +76,12 @@
          "transform_after_using_key": "disable_after_use",
          "transform_after_num_uses": 3,
          "show_mode_selection": true,
-         "modes": {}
+         "modes": {
+            "mixintypes": {
+               "find_native_seed_water": "remove",
+               "find_exotic_seed_water": "remove"
+            }
+         }
       }
    },
    "entity_data": {
