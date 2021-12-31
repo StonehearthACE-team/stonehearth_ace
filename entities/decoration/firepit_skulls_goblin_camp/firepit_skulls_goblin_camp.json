@@ -46,6 +46,15 @@
             "restore_terrain": {
                "transform_uri": "stonehearth_ace:landmark:goblin_camp_patch_stone",
                "command": "stonehearth_ace:commands:transform:goblin_camp",
+               "command_requirements": {
+                  "script": "stonehearth_ace:scripts:transform:terrain_check",
+                  "script_data": {
+                     "allowed_terrain": {
+                        "dirt": true,
+                        "grass": true
+                     }
+                  }
+               },
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth:effects:loot_effect",
                "transforming_worker_effect": "fiddle",

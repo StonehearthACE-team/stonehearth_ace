@@ -503,6 +503,13 @@ function TransformComponent:_meets_commmand_requirements(requirements)
       end
    end
 
+   if requirements.script then
+      local script = radiant.mods.load_script(requirements.script)
+      if script and script.meets_commmand_requirements and not script.meets_commmand_requirements(self._entity, requirements.script_data) then
+         return false
+      end
+   end
+
    return true
 end
 

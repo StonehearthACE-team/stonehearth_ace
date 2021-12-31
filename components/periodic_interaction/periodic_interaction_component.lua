@@ -463,6 +463,16 @@ function PeriodicInteractionComponent:get_valid_potential_users()
    return users
 end
 
+function PeriodicInteractionComponent:get_current_mode_job_requirement()
+   local requirements = self._current_mode_data.requirements
+   return requirements and requirements.job
+end
+
+function PeriodicInteractionComponent:get_current_mode_job_level_requirement()
+   local requirements = self._current_mode_data.requirements
+   return requirements and requirements.level
+end
+
 function PeriodicInteractionComponent:is_valid_potential_user(entity)
    if entity and entity:is_valid() then
       local requirements = self._current_mode_data.requirements
@@ -478,6 +488,7 @@ function PeriodicInteractionComponent:is_valid_potential_user(entity)
          end
       end
 
+      -- TODO: figure out how to get this to work with ai filters or just scrap it
       if requirements.equipped_item then
          local equipment_component = entity:get_component('stonehearth:equipment')
          if not equipment_component then
