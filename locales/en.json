@@ -862,6 +862,20 @@
                   "trigger": {
                      "dragonborn_king": {
                         "encounters": {
+                           "dialog_dragon_growing": {
+                              "dialog_tree_info": {
+                                 "dialog_nodes": {
+                                    "msg1": {
+                                       "bulletin_title": "Our pet dragon is... growing?!",
+                                       "dialog_title": "It surely looks larger!",                                     
+                                       "bulletin_message": {
+                                          "000": "That's interesting... Apparently the copper dragon whelp we pledged to protect as a last wish for Flox Icedragon - the Dragonborn King - is growing! How large will it get? Will it ever fly? Will it be a fire hazard? So many questions... Let's wait and see!"
+                                       },
+                                       "choice_000": "Let's hope we have enough food!"
+                                    }
+                                 }
+                              }
+                           },
                            "dialog_thank_player_for_help": {
                               "dialog_tree_info": {
                                  "dialog_nodes": {
@@ -4237,6 +4251,16 @@
          "tended_planter": {
             "display_name": "Tended Planter",
             "description": "This planter has been tended to and will occasionally give happy thoughts to everyone around it!"
+         },
+         "dragon": {
+            "dragon_blood_buff": {
+               "display_name": "Dragon Blood",
+               "description": "Regenerating 2% of their health every 30 minutes."
+            },
+            "dragon_effect_buff": {
+               "display_name": "Here be Dragons!",
+               "description": "Completely dazed and intimidated by the unfathomable presence of a dragon! Courage and damage inflicted are greatly reduced."
+            }
          }
       },
       "loadouts": {
@@ -14425,6 +14449,13 @@
          "market_stall_farmer": {
             "display_name": "Farmer's Market Stall",
             "description": "Unlocks the town ability to attract farming merchants. Can call upon seed merchants."
+         },
+         "dragon_shrine": {
+            "display_name": "Shrine of Dragon Friendship",
+            "description": "A monument forged with dragon fire itself to celebrate this unique bond!",
+            "iconic": {
+               "description": "Place it somewhere to attract dragon friends... And their enemies!"
+            }
          }
       },
       "pets": {

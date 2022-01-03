@@ -1,0 +1,63 @@
+{
+   "type": "entity",
+   "mixins": "file(dragon_shrine_ghost.json)",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -3, "y": 0, "z": -3 },
+               "max": { "x": 4, "y": 11, "z": 4 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -3, "y": 0, "z": -3 },
+               "max": { "x": 4, "y": 11, "z": 4 }
+            }
+         ]
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(dragon_shrine_iconic.json)",
+         "ghost_form": "file(dragon_shrine_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:traveler_attraction": {},
+      "effect_list": {
+         "default": "stonehearth_ace:effects:monument:dragon_shrine"
+      },
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 18
+            }
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:weather:warmth_source": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 150,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 115
+      }
+   }
+}

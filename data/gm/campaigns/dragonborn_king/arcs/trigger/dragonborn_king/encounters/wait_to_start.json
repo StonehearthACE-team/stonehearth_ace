@@ -1,0 +1,22 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_requirements_met",
+   "in_edge": "start",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "wait_for_tier_2",
+         "wait_for_growing_dragon",
+         "wait_for_dragon_shrine"
+      ]
+   },
+   "wait_for_requirements_met_info": {
+      "requirements": {
+         "days_elapsed_check": {
+            "type": "deny_if_less_than",
+            "item": "days_elapsed",
+            "value": 3    
+         }
+      }
+   }
+}

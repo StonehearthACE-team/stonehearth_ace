@@ -1,0 +1,27 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_requirements_met",
+   "in_edge": "wait_for_growing_dragon",
+   "out_edge": "dialog_dragon_growing",
+   "wait_for_requirements_met_info": {
+      "requirements": {
+         "dragon_young_check": {
+            "item": "script",
+            "type": "deny_if_not",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:inventory_check"
+         },
+			"has_dragon_counter_check": {
+            "type": "deny_if_not",
+            "item": "counter",
+            "key": "has_dragon",
+            "value": 1
+         }
+      },
+      "threshold": 0,
+      "check": "greater_than",
+      "uris": [
+         "stonehearth_ace:pets:dragon_young_copper"
+      ]
+   }
+}
