@@ -375,6 +375,10 @@ function AceTown:_set_up_traveler(traveler)
    traveler:add_component('stonehearth:object_owner'):add_ownership_type('bed')
 end
 
+function AceTown:get_pets()
+   return self._town_pets
+end
+
 function AceTown:get_persistence_data()
    local pop = stonehearth.population:get_population(self._sv.player_id)
    

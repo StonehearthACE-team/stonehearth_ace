@@ -9,7 +9,7 @@
             "item": "script",
             "type": "deny_if_not",
             "value": true,
-            "script": "stonehearth_ace:game_master:script:inventory_check"
+            "script": "stonehearth_ace:game_master:script:pet_check"
          },
 			"has_dragon_counter_check": {
             "type": "deny_if_not",
@@ -18,10 +18,8 @@
             "value": 1
          }
       },
-      "threshold": 0,
-      "check": "greater_than",
-      "uris": [
-         "stonehearth_ace:pets:dragon_young_copper"
-      ]
+      "required_pet": "stonehearth_ace:pets:dragon_young_copper",
+      "register_to_ctx": true,
+      "ctx_registration_path": "growing_dragon"
    }
 }
