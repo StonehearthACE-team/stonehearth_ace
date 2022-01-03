@@ -1,8 +1,8 @@
 {
    "type": "encounter",
    "encounter_type": "wait_for_requirements_met",
-   "in_edge": "wait_for_growing_dragon",
-   "out_edge": "dialog_dragon_growing",
+   "in_edge": "wait_for_grown_dragon",
+   "out_edge": "dialog_dragon_grown",
    "wait_for_requirements_met_info": {
       "requirements": {
          "dragon_young_check": {
@@ -12,8 +12,8 @@
             "script": "stonehearth_ace:game_master:script:pet_check"
          }
       },
-      "required_pet": "stonehearth_ace:pets:dragon_young_copper",
+      "required_pet": "stonehearth_ace:pets:dragon_mature_copper",
       "register_to_ctx": true,
-      "ctx_registration_path": "growing_dragon"
+      "ctx_registration_path": "grown_dragon"
    }
 }

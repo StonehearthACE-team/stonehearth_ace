@@ -2,14 +2,10 @@
    "type": "encounter",
    "encounter_type": "set_counters",
    "in_edge": "add_dragon_counter",
-   "out_edge": {
-      "type": "destroy_tree",
-      "root": "add_dragon_counter",
-      "destroy_root": true
-   },
+   "out_edge": "hatch_and_connect_pet",
    "set_counters_info": {
       "counters": {
-         "has_dragon": "1"
+         "dragon": "x + 1"
       }
    }
 }
