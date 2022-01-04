@@ -62,13 +62,27 @@
             "stonehearth_ace:weapons:animals:mature_dragon_metallic"
          ]
       },
-      "stonehearth:evolve": {}
+      "stonehearth:evolve": {},
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:dragon:blood": true
+         }
+      }
    },
    "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "dragon_effect": {
+               "uri": "stonehearth_ace:buffs:dragon:effect",
+               "chance": 0.25,
+               "resistable": true
+            }
+         }
+      },
       "stonehearth:evolve_data": {
          "current_stage": "mature",
          "next_stage": "stonehearth_ace:pets:dragon_copper",
-         "evolve_time": "42d",
+         "evolve_time": "35d",
          "evolve_effect": "stonehearth:effects:fursplosion_effect"
       },
       "stonehearth:entity_radius": 1,

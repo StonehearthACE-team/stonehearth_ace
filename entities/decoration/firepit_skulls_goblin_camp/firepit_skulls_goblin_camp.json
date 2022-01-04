@@ -49,9 +49,8 @@
                "command_requirements": {
                   "script": "stonehearth_ace:scripts:transform:terrain_check",
                   "script_data": {
-                     "allowed_terrain": {
-                        "dirt": true,
-                        "grass": true
+                     "disallowed_terrain": {
+                        "rock": true
                      }
                   }
                },

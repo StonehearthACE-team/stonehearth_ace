@@ -61,9 +61,23 @@
             "stonehearth_ace:weapons:animals:dragon_metallic",
             "stonehearth_ace:weapons:animals:dragon_melee"
          ]
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:dragon:blood": true
+         }
       }
    },
    "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "dragon_effect": {
+               "uri": "stonehearth_ace:buffs:dragon:effect",
+               "chance": 0.5,
+               "resistable": true
+            }
+         }
+      },
       "stonehearth:entity_radius": 2,
       "stonehearth:species": {
          "id": "dragon",

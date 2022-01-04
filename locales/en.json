@@ -872,6 +872,84 @@
                                     }
                                  }
                               }
+                           },
+                           "dialog_dragon_growing": {
+                              "dialog_tree_info": {
+                                 "dialog_nodes": {
+                                    "msg1": {
+                                       "bulletin_title": "Our pet dragon is... growing?!",
+                                       "dialog_title": "It surely looks larger!",                                     
+                                       "bulletin_message": {
+                                          "000": "That's interesting... Apparently the copper dragon whelp we pledged to protect as a last wish for Flox Icedragon - the Dragonborn King - is growing! How large will it get? Will it ever fly? Will it be a fire hazard? So many questions... Let's wait and see!"
+                                       },
+                                       "choice_000": "Let's hope we have enough food!"
+                                    }
+                                 }
+                              }
+                           },
+                           "dialog_dragon_grown": {
+                              "dialog_tree_info": {
+                                 "dialog_nodes": {
+                                    "msg1": {
+                                       "bulletin_title": "A strong voice resonates within!",
+                                       "dialog_title": "It's [str(i18n_data.dragon_display_name)], our dragon!",                                     
+                                       "bulletin_message": {
+                                          "000": "\"Greetings, our friends... Our family. We are grown enough to finally speak to your minds and hearts now.\" Although surprising, there's a warm and fuzzy feeling inside everyone's chest as [str(i18n_data.dragon_display_name)]'s voice rumbles in their heads. \"We want to thank all of you for taking care of us like you did, and for the name you've all given us, [str(i18n_data.dragon_display_name)]. You must all know, however, that this is not our real name and while we gladly and lovingly accept it, we must embrace our lineage...\" He pauses for a brief moment. \"We are Cadmus'ytrax, the last heir of the Great Dragon. We are a prince.\""
+                                       },
+                                       "choice_000": "How do you know?",
+                                       "choice_001": "Our baby is talking!"
+                                    },
+                                    "talking": {
+                                       "bulletin_title": "A strong voice resonates within!",
+                                       "dialog_title": "He seems happy",                                     
+                                       "bulletin_message": {
+                                          "000": "[str(i18n_data.dragon_display_name)] releases a long, deep laughter before continuing in a friendlier tone. \"Indeed, we can talk. We are no longer a whelp, however! We understand your awe before this... revelation. It's a perfectly understandable reaction for the quaint and quick lives of the children of Monkey. We mean no offense, of course.\" Somehow everyone can tell he's smiling. \"We'll be forever grateful for the ultimate act of love and kindness provided by this town to the last Dragonborn King and to us. But a prince has duties that can not be ignored.\""
+                                       },
+                                       "choice_000": "Prince? Duties?"
+                                    },
+                                    "msg2": {
+                                       "bulletin_title": "A strong voice resonates within!",
+                                       "dialog_title": "His voice is more serious now",                                     
+                                       "bulletin_message": {
+                                          "000": "\"This knowledge might be too complex for most mortal beings but we...\" He measures his words carefully. \"Dragons are connected, linked together like the rings of a chain, the threads of a bolt of cloth. In many ways we are one, and our consciousness and perception of the world are also bound together. We learn from each other, we share our memories, our history and our bonds through each other. Cadmus'ytrax is in every other dragon, and so are they part of Cadmus'ytrax. Our people know that we are alive - that the Great Dragon's lineage is alive...\" He sighs deeply, lost in thought. \"And we now know of our remaining brethren, scattered and in hiding, leaderless and lost since the Great Purge.\""
+                                       },
+                                       "choice_000": "The what-?",
+                                       "choice_001": "Are you leaving, then? [Skip story]"
+                                    },
+                                    "msg3": {
+                                       "bulletin_title": "A strong voice resonates within!",
+                                       "dialog_title": "His deep voice is now sad",                                     
+                                       "bulletin_message": {
+                                          "000": "\"The Great Purge. We believe Flox Icedragon, the last Dragonborn King, wanted to explain it to you but had unfortunately no time. Long ago, we dragons were many. Respected, feared, loved. Under the guidance of the mighty Dragonborn Empire, dragons and dragonkin ruled the lands eons before the ages of Snake and Monkey or the rise of the Phoenix.\" He pauses, perceiving the size and impact of what he was saying. \"The world was very different back then. Raw, chaotic, unfathomable planar forces still disputed the very existence of life in what your kin would call their earliest and most primitive cycles, before recorded history. It was a world torn by conflict much above any living beings... And between the cosmic forces at play and the new, fresh mortal lives were the Dragonborn.\""
+                                       },
+                                       "choice_000": "Wooooah..."
+                                    },
+                                    "msg4": {
+                                       "bulletin_title": "A strong voice resonates within!",
+                                       "dialog_title": "He continues",                                     
+                                       "bulletin_message": {
+                                          "000": "\"We dragons and our shepherds - as we called the Dragonborn - were among the first and most divine creations of life itself. But soon it became clear that this world was not meant for us. As the gods kept bickering with each other, raising their own children to fight each other as their cycles rose and waned, it became clear that soon they'd set their eyes upon those that came first...\" He remains silent for a moment. A small, deep pain seems to encroach on everyone's hearts. \"Cults were formed, entire tribes turned against the Dragonborn and against us. Little by little we were hunted down, our great halls were destroyed, our long lineages were lost. As the cycle of Snake peaked, the Dragonborn Empire was nothing but ashes, the last dragons in hiding, barely keeping their legacies alive, their scales and teeth now prizes, their kills now a glory... We can all still feel the pain of each of our ancestors, still ingrained in our collective memory.\""
+                                       },
+                                       "choice_000": "Aww... I'm sorry."
+                                    },
+                                    "msg5": {
+                                       "bulletin_title": "A strong voice resonates within!",
+                                       "dialog_title": "His spirit seems renewed",                                     
+                                       "bulletin_message": {
+                                          "000": "\"Do not be sorry, my family! For the rest of the world, these memories are as distant and forgotten as sand in a sandstorm.\" He seems to be more cheerful. \"Nothing lasts forever, and the hubris of the Dragonborn... And our own... Prevented us from prevailing. We need not an empire, but perhaps it is not so late to come together and find our place as part of this world. Our brethren have waited far too long for this and we feel this is our responsibility now. We are the last of the Great Dragon's lineage. We can bring the dragons back together and lead them to a place where they will not be seem as prizes or monsters.\""
+                                       },
+                                       "choice_000": "Wait! So... Are you leaving?"
+                                    },
+                                    "msg6": {
+                                       "bulletin_title": "A strong voice resonates within!",
+                                       "dialog_title": "He sounds genuinely thankful",                                     
+                                       "bulletin_message": {
+                                          "000": "\"Well, yes. But not now. We're still growing and learning and understanding our own universe.\" The warm and fuzzy feeling inside comes back. \"For now I shall remain [str(i18n_data.dragon_display_name)], the loved and proud companion of this town. But when the time comes, we shall talk again. There's yet a lot to come and you all must know before I go. Until then, I shall fight for this town to protect our own - and our family.\""
+                                       },
+                                       "choice_000": "Way to go!"
+                                    }
+                                 }
+                              }
                            }
                         }
                      }
@@ -4237,6 +4315,16 @@
          "tended_planter": {
             "display_name": "Tended Planter",
             "description": "This planter has been tended to and will occasionally give happy thoughts to everyone around it!"
+         },
+         "dragon": {
+            "dragon_blood_buff": {
+               "display_name": "Dragon Blood",
+               "description": "Regenerating 2% of their health every 30 minutes."
+            },
+            "dragon_effect_buff": {
+               "display_name": "Here be Dragons!",
+               "description": "Completely dazed and intimidated by the unfathomable presence of a dragon! Courage and damage inflicted are greatly reduced."
+            }
          }
       },
       "loadouts": {
@@ -14425,6 +14513,13 @@
          "market_stall_farmer": {
             "display_name": "Farmer's Market Stall",
             "description": "Unlocks the town ability to attract farming merchants. Can call upon seed merchants."
+         },
+         "dragon_shrine": {
+            "display_name": "Shrine of Dragon Friendship",
+            "description": "A monument forged with dragon fire itself to celebrate this unique bond!",
+            "iconic": {
+               "description": "Place it somewhere to attract dragon friends... And their enemies!"
+            }
          }
       },
       "pets": {

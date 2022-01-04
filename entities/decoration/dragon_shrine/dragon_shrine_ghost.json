@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dragon_shrine.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "scale": 0.175
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.dragon_shrine.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.dragon_shrine.description)",
+         "icon": "file(dragon_shrine.png)",
+         "category": "decoration",
+         "material_tags": [
+            "stone",
+            "statue",
+            "dragon",
+            "shrine",
+            "warmth_source",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

@@ -127,6 +127,21 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          end
       end
 
+      local pet_component = entity:get_component('stonehearth:pet')
+      if pet_component then
+         local player_id = radiant.entities.get_player_id(entity)
+         local pet_owner = pet_component:get_owner()
+         local pet_name = radiant.entities.get_custom_name(entity) or radiant.entities.get_display_name(entity)
+         if pet_owner and pet_name then
+            local transformed_pet_component = transformed_form:add_component('stonehearth:pet')
+            if transformed_pet_component then
+               transformed_pet_component:convert_to_pet(player_id)
+               transformed_pet_component:set_owner(pet_owner)
+               radiant.entities.set_custom_name(transformed_form, pet_name)
+            end
+         end
+      end
+
       local transformed_form_data = radiant.entities.get_entity_data(transformed_form, 'stonehearth:evolve_data')
       if transformed_form_data and transform_source == 'stonehearth:evolve' then
          -- Ensure the transformed form also has the evolve component if it will evolve
