@@ -44,12 +44,59 @@
          "default": true,
          "ordinal": 4
       },
+      "default_craft_search_checks": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_search_checks)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_craft_search_checks_description)",
+         "values": {
+            "title": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.game.show_workshop.search_title)",
+               "description": "i18n(stonehearth_ace:ui.game.show_workshop.search_title_description)"
+            },
+            "description": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.game.show_workshop.search_description)",
+               "description": "i18n(stonehearth_ace:ui.game.show_workshop.search_description_description)"
+            },
+            "ingredients": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.game.show_workshop.search_ingredients)",
+               "description": "i18n(stonehearth_ace:ui.game.show_workshop.search_ingredients_description)"
+            },
+            "title|description": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.game.show_workshop.search_title_and_description)",
+               "description": "i18n(stonehearth_ace:ui.game.show_workshop.search_title_and_description_description)"
+            },
+            "title|ingredients": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:ui.game.show_workshop.search_title_and_ingredients)",
+               "description": "i18n(stonehearth_ace:ui.game.show_workshop.search_title_and_ingredients_description)"
+            },
+            "description|ingredients": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:ui.game.show_workshop.search_description_and_ingredients)",
+               "description": "i18n(stonehearth_ace:ui.game.show_workshop.search_description_and_ingredients_description)"
+            },
+            "title|description|ingredients": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:ui.game.show_workshop.search_all)",
+               "description": "i18n(stonehearth_ace:ui.game.show_workshop.search_all_description)"
+            }
+         },
+         "on_change": {
+            "fire_event": "default_craft_search_checks_changed"
+         },
+         "default": "title",
+         "ordinal": 5
+      },
       "show_unreachable_ingredients_notification": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_unreachable_ingredients_notification)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_unreachable_ingredients_notification_description)",
          "default": false,
-         "ordinal": 5
+         "ordinal": 6
       },
       "enable_auto_harvest": {
          "type": "boolean",

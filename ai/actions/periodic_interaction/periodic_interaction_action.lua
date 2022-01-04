@@ -1,6 +1,6 @@
 local PeriodicInteraction = radiant.class()
 
-PeriodicInteraction.name = 'tend herbalist planter'
+PeriodicInteraction.name = 'periodic interaction'
 PeriodicInteraction.does = 'stonehearth_ace:periodic_interaction'
 PeriodicInteraction.args = {}
 PeriodicInteraction.priority = 0

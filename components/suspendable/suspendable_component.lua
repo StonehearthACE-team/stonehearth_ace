@@ -57,7 +57,7 @@ function SuspendableComponent:town_suspended()
    -- suspend known timer components; any other components that want to be suspended can be specified by monkey-patch
    for _, component_name in ipairs(self._components) do
       local component = self._entity:get_component(component_name)
-      if component then
+      if component and component.town_suspended then
          component:town_suspended()
       end
    end
@@ -66,7 +66,7 @@ end
 function SuspendableComponent:town_continued()
    for _, component_name in ipairs(self._components) do
       local component = self._entity:get_component(component_name)
-      if component then
+      if component and component.town_continued then
          component:town_continued()
       end
    end

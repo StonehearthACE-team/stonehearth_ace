@@ -1,9 +1,13 @@
 var _showSelectedWorkshopCrafting = false;
+var _craftSearchChecks = null;
 
 $(top).on('stonehearthReady', function() {
-   // need to apply the setting on load as well
+   // need to apply the settings on load as well
    stonehearth_ace.getModConfigSetting('stonehearth_ace', 'show_selected_workshop_crafting', function(value) {
       $(top).trigger('show_selected_workshop_crafting_changed', { value: value });
+   });
+   stonehearth_ace.getModConfigSetting('stonehearth_ace', 'default_craft_search_checks', function(value) {
+      $(top).trigger('default_craft_search_checks_changed', { value: value });
    });
 
    // Create a proxy for the workshops object, so we know when a new StonehearthTeamCrafterView is created
@@ -50,6 +54,10 @@ $(top).on('stonehearthReady', function() {
 
    $(top).on("show_selected_workshop_crafting_changed", function (_, e) {
       _showSelectedWorkshopCrafting = e.value;
+   });
+
+   $(top).on("default_craft_search_checks_changed", function (_, e) {
+      _craftSearchChecks = e.value;
    });
    
    App.workshopManager.pauseOrResumeTrackingItems = $.debounce(1, function () {
@@ -204,7 +212,122 @@ $(top).on('stonehearthReady', function() {
                // in case _showSelectedWorkshopCrafting hasn't been updated yet, use e.value
                self._updateSelectedWorkshopEntity(null, e.value);
             });
+
+            $(top).on("default_craft_search_checks_changed", function (_, e) {
+               self._updateCraftSearchChecks(e.value);
+            });
+
+            self._updateCraftSearchChecks(_craftSearchChecks);
+
+            var focusAndKeyUpInput = function() {
+               self.$('#searchInput').focus();
+               self.$('#searchInput').keyup();
+            };
+
+            self.$('#searchTitleCheckbox').change(function() {
+               self.set('searchTitle', this.checked);
+               focusAndKeyUpInput();
+            });
+
+            self.$('#searchDescriptionCheckbox').change(function() {
+               self.set('searchDescription', this.checked);
+               focusAndKeyUpInput();
+            });
+
+            self.$('#searchIngredientsCheckbox').change(function() {
+               self.set('searchIngredients', this.checked);
+               focusAndKeyUpInput();
+            });
+
+            App.guiHelper.addTooltip(self.$('#searchTitleDiv'), 'stonehearth_ace:ui.game.show_workshop.search_title_description');
+            App.guiHelper.addTooltip(self.$('#searchDescriptionDiv'), 'stonehearth_ace:ui.game.show_workshop.search_description_description');
+            App.guiHelper.addTooltip(self.$('#searchIngredientsDiv'), 'stonehearth_ace:ui.game.show_workshop.search_ingredients_description');
          },
+
+         willDestroyElement: function () {
+            var self = this;
+            self._super();
+
+            self.$('#searchContainer').off('focusin');
+            self.$('#searchContainer').off('focusout');
+            if (self._timeoutID != null) {
+               clearTimeout(self._timeoutID);
+            }
+         },
+
+         // ACE: overriding just to also put the i18n.t-ed description in
+         _buildRecipeArray: function () {
+            var self = this;
+            if (self.isDestroying || self.isDestroyed) {
+               return;
+            }
+      
+            var recipes = this.get('model.recipe_list');
+            var recipe_categories = [];
+            self.allRecipes = {};
+      
+            var manuallyUnlockedRecipes = self.get('model.manually_unlocked');
+            var highestLevel = self.get('model.highest_level');
+      
+            radiant.each(recipes, function(_, category) {
+               var recipe_array = [];
+               var category_has_visible_recipes = false;
+               radiant.each(category.recipes, function(recipe_key, recipe_info) {
+                  var recipe = recipe_info.recipe
+                  var formatted_recipe = radiant.shallow_copy(recipe);
+                  formatted_recipe.needs_ingredient_formatting = true;
+      
+                  formatted_recipe.display_name = i18n.t(formatted_recipe.recipe_name);
+                  formatted_recipe.description = i18n.t(formatted_recipe.description);
+                  var is_locked = formatted_recipe.level_requirement > highestLevel;
+                  var is_hidden = formatted_recipe.manual_unlock && !manuallyUnlockedRecipes[formatted_recipe.recipe_key] ? true : false;
+                  if(is_hidden == false){
+                      category_has_visible_recipes = true;
+                  }
+                  Ember.set(formatted_recipe, 'is_hidden', is_hidden);
+                  Ember.set(formatted_recipe, 'is_locked', is_locked || is_hidden);
+      
+                  formatted_recipe.hasWorkshop = formatted_recipe.workshop != null;
+                  var formatted_workshop = {};
+                  if (formatted_recipe.hasWorkshop) {
+                     formatted_workshop.uri = formatted_recipe.workshop;
+                     var catalogData = App.catalog.getCatalogData(formatted_workshop.uri);
+                     formatted_workshop.equivalents = catalogData.workshop_equivalents;
+                     formatted_recipe.workshop = formatted_workshop;
+                  }
+      
+                  formatted_recipe.is_craftable = self._areRequirementsMet(formatted_recipe, highestLevel) ? 1 : 0;
+                  
+                  recipe_array.push(formatted_recipe);
+                  self.allRecipes[formatted_recipe.recipe_key] = formatted_recipe;
+               });
+      
+               if (recipe_array.length > 0 && category_has_visible_recipes) {
+                  //For each of the recipes inside each category, sort them by their level_requirement
+                  recipe_array.sort(self._compareByLevelAndAlphabetical);
+                  
+                  var ui_category = {
+                     category: category.name,
+                     ordinal:  category.ordinal,
+                     recipes:  recipe_array,
+                  };
+                  recipe_categories.push(ui_category)
+               }
+            });
+      
+            //Sort the recipe categories by ordinal
+            recipe_categories.sort(this._compareByOrdinal);
+      
+            //The current recipe may have been oblivated by the change in recipes. If so, set it to null.
+            //If not, set it back to its (potentially new) self
+            if (this.currentRecipe && this.allRecipes[this.currentRecipe.recipe_key]) {
+               this.set('currentRecipe', this._getOrCalculateRecipeData(this.currentRecipe.recipe_key));
+            } else {
+               self.set('currentRecipe', null);
+            }
+      
+            self.set('recipes', recipe_categories);
+         }.observes('model.recipe_list'),
 
          _updateSelectedWorkshopEntity: function(e, showSelectedWorkshopCrafting) {
             var self = this;
@@ -240,6 +363,29 @@ $(top).on('stonehearthReady', function() {
                });
             });
          }.observes('recipes'),
+
+         _updateCraftSearchChecks: function(checks) {
+            var self = this;
+
+            if (checks != null) {
+               var setVals = {
+                  Title: false,
+                  Description: false,
+                  Ingredients: false,
+               };
+               var chks = checks.split('|');
+               chks.forEach(chk => {
+                  var caseStr = chk.charAt(0).toUpperCase() + chk.substr(1).toLowerCase();
+                  setVals[caseStr] = true;
+               });
+
+               radiant.each(setVals, function(chk, val) {
+                  var chkStr = 'search' + chk;
+                  self.set(chkStr, val);
+                  self.$('#' + chkStr + 'Checkbox').prop('checked', val);
+               });
+            }
+         },
 
          _updateCraftInsertShown: function(div) {
             var self = this;
@@ -371,6 +517,122 @@ $(top).on('stonehearthReady', function() {
                   App.guiHelper.addTooltip(div, buff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.' + tooltipName) + i18n.t(buff.display_name));
                }
             });
+         },
+
+         //Called once when the model is loaded
+         // ACE: override to modify search to allow searching ingredients and descriptions
+         _build_workshop_ui: function() {
+            var self = this;
+      
+            if (!self.$("#craftWindow")) {
+               return;
+            }
+      
+            self._buildOrderList();
+      
+            self.$("#craftButton").hover(function() {
+                  $(this).find('#craftButtonLabel').fadeIn();
+               }, function () {
+                  $(this).find('#craftButtonLabel').fadeOut();
+               });
+      
+            // Perform filter after keyup to ensure that key has already been applied
+            self.$('#searchInput').keyup(function (e) {
+               var searchTitle = self.get('searchTitle');
+               var searchDescription = self.get('searchDescription');
+               var searchIngredients = self.get('searchIngredients');
+               // if not searching for anything, just cancel
+               if (!searchTitle && !searchDescription && !searchIngredients) {
+                  return;
+               }
+
+               var search = $(this).val().toLowerCase();
+      
+               if (!search || search == '') {
+                  self.$('.item:not(.is-hidden)').show();
+                  self.$('.category').show();
+               } else {
+                  self.$('.category').show();
+      
+                  // hide items that don't match the search
+                  self.$('.item:not(.is-hidden)').each(function (i, item) {
+                     var el = $(item);
+                     var recipeKey = el.attr('recipe_key');
+      
+                     if(self._recipeMatchesSearch(recipeKey, search, searchTitle, searchDescription, searchIngredients)) {
+                        el.show();
+                     } else {
+                        el.hide();
+                     }
+                  })
+      
+                  self.$('.category').each(function(i, category) {
+                     var el = $(category)
+      
+                     if (el.find('.item:visible').length > 0) {
+                        el.show();
+                     } else {
+                        el.hide();
+                     }
+                  })
+               }
+            });
+            self.$('#searchInput').keyup();
+            
+            // when it has focus, show the extra settings
+            self._timeoutID = null;
+            self.$('#searchContainer').focusin(function (e) {
+               self.set('showSearchSettings', true);
+               if (self._timeoutID != null) {
+                  clearTimeout(self._timeoutID);
+               }
+            });
+            self.$('#searchContainer').focusout(function (e) {
+               if (self._timeoutID != null) {
+                  clearTimeout(self._timeoutID);
+               }
+               self._timeoutID = setTimeout(function() {
+                  if (!$.contains(self.$('#searchContainer').get(0), e.relatedTarget)) {
+                     self.set('showSearchSettings', false);
+                  }
+               }, 500);
+            });
+
+            App.tooltipHelper.createDynamicTooltip(self.$('[title]'));
+
+            // Select the first recipe if currentRecipe isn't set.
+            // Current recipe can be set by autotest before we reach this point.
+            if (!this.currentRecipe) {
+               this._selectFirstValidRecipe();
+            }
+         },
+
+         _recipeMatchesSearch: function(recipeKey, search, searchTitle, searchDescription, searchIngredients) {
+            var self = this;
+            var recipe = self.allRecipes[recipeKey];
+
+            if (recipe) {
+               if (searchTitle && self._stringContains(recipe.display_name, search)) {
+                  return true;
+               }
+               if (searchDescription && self._stringContains(recipe.description, search)) {
+                  return true;
+               }
+               if (searchIngredients && recipe.ingredients) {
+                  recipe = self._getOrCalculateRecipeData(recipeKey);
+                  for (var i = 0; i < recipe.ingredients.length; i++) {
+                     if (self._stringContains(recipe.ingredients[i].name, search)) {
+                        return true;
+                     }
+                  }
+               }
+            }
+
+            return false;
+         },
+
+         _stringContains: function(str, search) {
+            return str && str.toLowerCase().indexOf(search) > -1;
          },
 
          _updateUsableResources: function () {
