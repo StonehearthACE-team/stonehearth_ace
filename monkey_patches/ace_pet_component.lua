@@ -1,3 +1,4 @@
+local rng = _radiant.math.get_default_rng()
 local PetComponent = require 'stonehearth.components.pet.pet_component'
 local AcePetComponent = class()
 
@@ -12,6 +13,8 @@ end
 
 AcePetComponent._ace_old_activate = PetComponent.activate
 function AcePetComponent:activate()
+   self._json = radiant.entities.get_json(self) or {}
+
    -- if restoring, and we're not mounted somewhere, find a location near the town center and move there so we don't get loaded into a stuck position
    if self._is_restore then
       if radiant.entities.exists(self._sv.owner) and radiant.entities.get_world_location(self._entity) then
@@ -24,9 +27,39 @@ function AcePetComponent:activate()
             end
          end
       end
-   end
-   
+   end  
+
    self:_ace_old_activate()
+
+   if self._json.self_tame and not self._sv.owner then
+      self:self_tame()
+   end
+end
+
+function AcePetComponent:self_tame()
+   if not radiant.entities.is_owned_by_non_npc(self._entity) then
+      return
+   end
+
+   local player_id = radiant.entities.get_player_id(self._entity)
+   
+   self:convert_to_pet(player_id)
+
+   local town = stonehearth.town:get_town(player_id)
+   local citizens = town:get_citizens()
+
+   local min_distance = radiant.math.INFINITY
+   local min_citizen = nil
+
+   for _, citizen in citizens:each() do
+      local distance = radiant.entities.distance_between(self._entity, citizen)
+      if not min_citizen or distance < min_distance then
+         min_citizen = citizen
+         min_distance = distance
+      end
+   end
+
+   self:set_owner(min_citizen)
 end
 
 function AcePetComponent:_update_owner_description()
