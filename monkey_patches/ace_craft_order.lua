@@ -418,24 +418,25 @@ function AceCraftOrder:conditions_fulfilled(crafter)
       end
 
       local we_have = num_being_made
-      local uri = self._recipe.produces[1].item
-      local data = radiant.entities.get_component_data(uri, 'stonehearth:entity_forms')
-      if data and data.iconic_form then
-         uri = data.iconic_form
+      local uris = { self:_get_primary_product_uri(self._recipe.produces) }
+      if self._recipe.ace_smart_crafter_consider_as and #self._recipe.ace_smart_crafter_consider_as > 0 then
+         table.insert(uris, self:_get_primary_product_uri(self._recipe.ace_smart_crafter_consider_as))
       end
 
-      local data = self._inventory:get_items_of_type(uri)
-      if data and data.items then
-         for _, item in pairs(data.items) do
-            -- check if the item is contained in a consumer that wants it; if so, disregard
-            local container = self._inventory:public_container_for(item)
-            local consumer = container and container:get_component('stonehearth_ace:consumer')
-            local consumer_storage = consumer and container:get_component('stonehearth:storage')
-            if not consumer_storage or not consumer_storage:passes(item) then -- is this faster than checking for a lease? should consumer have a check?
-               we_have = we_have + 1
-               if we_have >= condition.at_least then
-                  --log:detail('craft_order: We are maintaining recipe %s and now have enough of it. Stopping.', self._recipe.recipe_name)
-                  return false
+      for _, uri in ipairs(uris) do
+         local data = self._inventory:get_items_of_type(uri)
+         if data and data.items then
+            for _, item in pairs(data.items) do
+               -- check if the item is contained in a consumer that wants it; if so, disregard
+               local container = self._inventory:public_container_for(item)
+               local consumer = container and container:get_component('stonehearth_ace:consumer')
+               local consumer_storage = consumer and container:get_component('stonehearth:storage')
+               if not consumer_storage or not consumer_storage:passes(item) then -- is this faster than checking for a lease? should consumer have a check?
+                  we_have = we_have + 1
+                  if we_have >= condition.at_least then
+                     --log:detail('craft_order: We are maintaining recipe %s and now have enough of it. Stopping.', self._recipe.recipe_name)
+                     return false
+                  end
                end
             end
          end
@@ -443,6 +444,16 @@ function AceCraftOrder:conditions_fulfilled(crafter)
    end
 
    return true
+end
+
+function AceCraftOrder:_get_primary_product_uri(products)
+   local uri = products[1].item
+   local data = radiant.entities.get_component_data(uri, 'stonehearth:entity_forms')
+   if data and data.iconic_form then
+      uri = data.iconic_form
+   end
+
+   return uri
 end
 
 function AceCraftOrder:get_auto_crafting()

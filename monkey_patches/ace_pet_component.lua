@@ -2,6 +2,8 @@ local rng = _radiant.math.get_default_rng()
 local PetComponent = require 'stonehearth.components.pet.pet_component'
 local AcePetComponent = class()
 
+local log = radiant.log.create_logger('pet')
+
 AcePetComponent._ace_old_restore = PetComponent.restore
 function AcePetComponent:restore()
    self._is_restore = true
@@ -32,17 +34,36 @@ function AcePetComponent:activate()
    self:_ace_old_activate()
 
    if self._json.self_tame and not self._sv.owner then
-      self:self_tame()
+      if not self:self_tame() then
+         self._player_id_trace = self._entity:trace_player_id('owner observer')
+            :on_changed(function()
+                  if self:self_tame() then
+                     self:_destroy_player_id_trace()
+                  end
+               end)
+      end
+   end
+end
+
+AcePetComponent._ace_old_destroy = PetComponent.__user_destroy
+function AcePetComponent:destroy()
+   self:_destroy_player_id_trace()
+   self:_ace_old_destroy()
+end
+
+function AcePetComponent:_destroy_player_id_trace()
+   if self._player_id_trace then
+      self._player_id_trace:destroy()
+      self._player_id_trace = nil
    end
 end
 
 function AcePetComponent:self_tame()
    if not radiant.entities.is_owned_by_non_npc(self._entity) then
-      return
+      return false
    end
 
    local player_id = radiant.entities.get_player_id(self._entity)
-   
    self:convert_to_pet(player_id)
 
    local town = stonehearth.town:get_town(player_id)
@@ -60,6 +81,7 @@ function AcePetComponent:self_tame()
    end
 
    self:set_owner(min_citizen)
+   return true
 end
 
 function AcePetComponent:_update_owner_description()

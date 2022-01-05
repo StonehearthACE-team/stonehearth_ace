@@ -149,57 +149,6 @@ $(top).on('stonehearthReady', function() {
                }
             });
 
-            var craftInsertDiv = self.$('#craftInsert');
-            $(document).on('keyup keydown', function(e){
-               self.SHIFT_KEY_ACTIVE = e.shiftKey;
-               self._updateCraftInsertShown(craftInsertDiv);
-            });
-
-            $('#craftButton').hover(
-               function() {
-                  self.HOVERING_CRAFT_BUTTON = true;
-                  self._updateCraftInsertShown(craftInsertDiv);
-               },
-               function() {
-                  self.HOVERING_CRAFT_BUTTON = false;
-                  self._updateCraftInsertShown(craftInsertDiv);
-               }
-            );
-            var tooltip = App.tooltipHelper.createTooltip(
-               i18n.t('stonehearth_ace:ui.game.show_workshop.craft_button.title'),
-               i18n.t('stonehearth_ace:ui.game.show_workshop.craft_button.description'));
-            self.$('#craftButton').tooltipster({
-               delay: 1000,
-               content: $(tooltip)
-            });
-
-            tooltip = App.tooltipHelper.createTooltip(
-               i18n.t('stonehearth_ace:ui.game.show_workshop.quality_preference.title'),
-               i18n.t('stonehearth_ace:ui.game.show_workshop.quality_preference.description'));
-            self.$('#qualityPreference').tooltipster({
-               delay: 1000,
-               content: $(tooltip)
-            });
-
-            var orderList = self.$('#orders');
-            orderList.on('scroll', function() {
-               // when the user scrolls with the mouse, make sure the scroll buttons are right
-               var buttons = self.$('#scrollButtons');
-               var scrollTop = orderList.scrollTop();
-               if (scrollTop === 0) {
-                  // top of list
-                  buttons.find('#orderListUpBtn').hide();
-                  buttons.find('#orderListDownBtn').show();
-               } else if (scrollTop + orderList.innerHeight() >= orderList[0].scrollHeight) {
-                  // bottom of list
-                  buttons.find('#orderListUpBtn').show();
-                  buttons.find('#orderListDownBtn').hide();
-               } else {
-                  buttons.find('#orderListUpBtn').show();
-                  buttons.find('#orderListDownBtn').show();
-               }
-            });
-
             self._updateCraftOrderPreference();
 
             $(top).on("selected_workshop_entity_changed", function (_, e) {
@@ -218,40 +167,20 @@ $(top).on('stonehearthReady', function() {
             });
 
             self._updateCraftSearchChecks(_craftSearchChecks);
-
-            var focusAndKeyUpInput = function() {
-               self.$('#searchInput').focus();
-               self.$('#searchInput').keyup();
-            };
-
-            self.$('#searchTitleCheckbox').change(function() {
-               self.set('searchTitle', this.checked);
-               focusAndKeyUpInput();
-            });
-
-            self.$('#searchDescriptionCheckbox').change(function() {
-               self.set('searchDescription', this.checked);
-               focusAndKeyUpInput();
-            });
-
-            self.$('#searchIngredientsCheckbox').change(function() {
-               self.set('searchIngredients', this.checked);
-               focusAndKeyUpInput();
-            });
-
-            App.guiHelper.addTooltip(self.$('#searchTitleDiv'), 'stonehearth_ace:ui.game.show_workshop.search_title_description');
-            App.guiHelper.addTooltip(self.$('#searchDescriptionDiv'), 'stonehearth_ace:ui.game.show_workshop.search_description_description');
-            App.guiHelper.addTooltip(self.$('#searchIngredientsDiv'), 'stonehearth_ace:ui.game.show_workshop.search_ingredients_description');
          },
 
          willDestroyElement: function () {
             var self = this;
             self._super();
 
+            self.$('#craftButton').off('hover');
+            self.$('#orders').off('scroll');
+            self.$('#searchSettingContainer').off('change.refocusInput', '.searchSettingCheckbox');
             self.$('#searchContainer').off('focusin');
             self.$('#searchContainer').off('focusout');
             if (self._timeoutID != null) {
                clearTimeout(self._timeoutID);
+               self._timeoutID = null;
             }
          },
 
@@ -529,12 +458,57 @@ $(top).on('stonehearthReady', function() {
             }
       
             self._buildOrderList();
+
+            var orderList = self.$('#orders');
+            orderList.on('scroll', function() {
+               // when the user scrolls with the mouse, make sure the scroll buttons are right
+               var buttons = self.$('#scrollButtons');
+               var scrollTop = orderList.scrollTop();
+               if (scrollTop === 0) {
+                  // top of list
+                  buttons.find('#orderListUpBtn').hide();
+                  buttons.find('#orderListDownBtn').show();
+               } else if (scrollTop + orderList.innerHeight() >= orderList[0].scrollHeight) {
+                  // bottom of list
+                  buttons.find('#orderListUpBtn').show();
+                  buttons.find('#orderListDownBtn').hide();
+               } else {
+                  buttons.find('#orderListUpBtn').show();
+                  buttons.find('#orderListDownBtn').show();
+               }
+            });
+
+            var craftInsertDiv = self.$('#craftInsert');
+            $(document).on('keyup keydown', function(e){
+               self.SHIFT_KEY_ACTIVE = e.shiftKey;
+               self._updateCraftInsertShown(craftInsertDiv);
+            });
       
             self.$("#craftButton").hover(function() {
                   $(this).find('#craftButtonLabel').fadeIn();
+                  self.HOVERING_CRAFT_BUTTON = true;
+                  self._updateCraftInsertShown(craftInsertDiv);
                }, function () {
                   $(this).find('#craftButtonLabel').fadeOut();
+                  self.HOVERING_CRAFT_BUTTON = false;
+                  self._updateCraftInsertShown(craftInsertDiv);
                });
+
+            var tooltip = App.tooltipHelper.createTooltip(
+               i18n.t('stonehearth_ace:ui.game.show_workshop.craft_button.title'),
+               i18n.t('stonehearth_ace:ui.game.show_workshop.craft_button.description'));
+            self.$('#craftButton').tooltipster({
+               delay: 1000,
+               content: $(tooltip)
+            });
+
+            tooltip = App.tooltipHelper.createTooltip(
+               i18n.t('stonehearth_ace:ui.game.show_workshop.quality_preference.title'),
+               i18n.t('stonehearth_ace:ui.game.show_workshop.quality_preference.description'));
+            self.$('#qualityPreference').tooltipster({
+               delay: 1000,
+               content: $(tooltip)
+            });   
       
             // Perform filter after keyup to ensure that key has already been applied
             self.$('#searchInput').keyup(function (e) {
@@ -585,18 +559,24 @@ $(top).on('stonehearthReady', function() {
                self.set('showSearchSettings', true);
                if (self._timeoutID != null) {
                   clearTimeout(self._timeoutID);
+                  self._timeoutID = null;
                }
             });
             self.$('#searchContainer').focusout(function (e) {
                if (self._timeoutID != null) {
                   clearTimeout(self._timeoutID);
+                  self._timeoutID = null;
                }
                self._timeoutID = setTimeout(function() {
-                  if (!$.contains(self.$('#searchContainer').get(0), e.relatedTarget)) {
-                     self.set('showSearchSettings', false);
-                  }
+                  self.set('showSearchSettings', false);
+                  // related target is always null for some reason, so don't bother with this
+                  //if (!$.contains(self.$('#searchContainer').get(0), e.relatedTarget)) {}
                }, 500);
             });
+
+            App.guiHelper.addTooltip(self.$('#searchTitleDiv'), 'stonehearth_ace:ui.game.show_workshop.search_title_description');
+            App.guiHelper.addTooltip(self.$('#searchDescriptionDiv'), 'stonehearth_ace:ui.game.show_workshop.search_description_description');
+            App.guiHelper.addTooltip(self.$('#searchIngredientsDiv'), 'stonehearth_ace:ui.game.show_workshop.search_ingredients_description');
 
             App.tooltipHelper.createDynamicTooltip(self.$('[title]'));
 
@@ -606,6 +586,12 @@ $(top).on('stonehearthReady', function() {
                this._selectFirstValidRecipe();
             }
          },
+
+         _focusAndKeyUpSearchInput: function() {
+            var self = this;
+            self.$('#searchInput').focus();
+            self.$('#searchInput').keyup();
+         }.observes('searchTitle', 'searchDescription', 'searchIngredients'),
 
          _recipeMatchesSearch: function(recipeKey, search, searchTitle, searchDescription, searchIngredients) {
             var self = this;
@@ -1105,7 +1091,13 @@ $(top).on('stonehearthReady', function() {
             }
          },
 
-         preferHighQualityId: function () { return this.get('uri').replace(/\W/g, '') + '-quality'; }.property('uri')
+         preferHighQualityId: function () { return this.get('uri').replace(/\W/g, '') + '-quality'; }.property('uri'),
+
+         searchTitleCheckboxId: function () { return this.get('uri').replace(/\W/g, '') + '-search-title'; }.property('uri'),
+
+         searchDescriptionCheckboxId: function () { return this.get('uri').replace(/\W/g, '') + '-search-description'; }.property('uri'),
+
+         searchIngredientsCheckboxId: function () { return this.get('uri').replace(/\W/g, '') + '-search-ingredients'; }.property('uri')
       });
    };
 });
