@@ -12,9 +12,9 @@ function PetCheck:start(ctx, info)
          for _, pet in pairs(town_pets) do
             local pet_uri = pet:get_uri()
             if pet_uri == info.required_pet then
-               --if info.register_to_ctx and info.ctx_registration_path then
-               --   game_master_lib.register_entities(ctx, info.ctx_registration_path .. '.entities', pet)
-               --end
+               if info.register_to_ctx and info.ctx_registration_path then
+                  game_master_lib.register_entities(ctx, info.ctx_registration_path, { pet = pet })
+               end
                return true
             end
          end

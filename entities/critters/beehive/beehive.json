@@ -13,18 +13,19 @@
             ]
          }
       },
-      "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
-         "mob_collision_type": "clutter"
-      },
-      "destination": {
+      "region_collision_shape": {
          "region": [
             {
                "min": { "x": 0, "y": 0, "z": 0 },
                "max": { "x": 1, "y": 1, "z": 1 }
             }
          ]
+      },
+      "mob": {
+         "ignore_gravity": false,
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
       },
       "movement_modifier_shape": {
          "nav_preference_modifier": -0.4,

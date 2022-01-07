@@ -12,18 +12,20 @@
             ]
          }
       },
-      "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
-         "mob_collision_type": "clutter"
-      },
-      "destination": {
+      "region_collision_shape": {
          "region": [
             {
                "min": { "x": 0, "y": 0, "z": 0 },
                "max": { "x": 1, "y": 1, "z": 1 }
             }
-         ]
+         ],
+         "region_collision_type": "none"
+      },
+      "mob": {
+         "ignore_gravity": false,
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
       },
       "stonehearth:resource_node": {
          "harvest_overlay_effect": "stonehearth_ace:effects:harvest_honey_overlay_effect",
