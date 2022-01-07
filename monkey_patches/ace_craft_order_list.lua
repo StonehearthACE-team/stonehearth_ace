@@ -111,6 +111,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
             local new_condition = radiant.shallow_copy(condition)
             if condition.type == 'make' then
                new_condition.amount = num_to_craft
+               new_condition.requested_amount = missing
             else -- condition.type == 'maintain'
                new_condition.at_least = num_to_craft
             end
@@ -123,7 +124,12 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
             end
             local associated_order = recipe_info.order_list:add_order(player_id, recipe_info.recipe, new_condition, building, associated_orders)
             if associated_order and associated_order ~= true then
-               table.insert(associated_orders, {order_list = recipe_info.order_list, order = associated_order})
+               associated_order:set_associated_orders(associated_orders)
+               table.insert(associated_orders, {
+                  order_list = recipe_info.order_list,
+                  order = associated_order,
+                  ingredient_per_craft = ingredient.count,
+               })
             end
          end
       end
@@ -165,11 +171,17 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
    -- if we got to this point, it's because we're auto-crafting dependencies
    result:set_auto_crafting(true)
 
-   if not is_recursive_call and associated_orders then
-      -- if this is the original parent order, and there are multiple child orders, we can now tell each of these orders about the rest
-      table.insert(associated_orders, {order_list = self, order = result})
+   if associated_orders then
       for _, associated_order in ipairs(associated_orders) do
+         if not associated_order.parent_order_id then
+            associated_order.parent_order_id = result:get_id()
+         end
+      end
 
+      -- if this is the original parent order, need to add it to the associated_orders now
+      if not is_recursive_call then
+         local associated_order = {order_list = self, order = result}
+         table.insert(associated_orders, associated_order)
          associated_order.order:set_associated_orders(associated_orders)
       end
    end
@@ -215,13 +227,17 @@ function AceCraftOrderList:request_order_of(player_id, product, amount, building
       local num = math.ceil(amount / recipe_info.recipe.products[product])
       local condition = {
          type = 'make',
-         amount = num
+         amount = num,
+         requested_amount = amount,
       }
       return recipe_info.order_list:add_order(player_id, recipe_info.recipe, condition, building)
    end
 end
 
+-- ACE: amount is an optional parameter that refers to the amount of primary products, not the quantity of recipes
+-- e.g., if a recipe would produce 4 fence posts and you have 2 of the recipe queued, reducing by 1 alone would not change anything
 function AceCraftOrderList:remove_order(order_id, amount)
+   log:debug('remove_order(%s, %s)', order_id, tostring(amount))
    local i = self:find_index_of(order_id)
    if i then
       local order = self._sv.orders[i]
@@ -234,6 +250,9 @@ function AceCraftOrderList:remove_order(order_id, amount)
          if self._stuck_orders[order_id] then
             self._stuck_orders[order_id] = nil
          end
+
+         -- remove the order and its children from associated orders
+         order:remove_associated_order(true)
 
          order:destroy()
       end
@@ -256,13 +275,6 @@ function AceCraftOrderList:delete_order_command(session, response, order_id, del
       if order then
          if order:get_auto_crafting() then
             local condition = order:get_condition()
-
-            if condition.type == 'make' and condition.remaining > 0 then
-               self:remove_from_reserved_ingredients(order:get_recipe().ingredients,
-                                                      order_id,
-                                                      session.player_id,
-                                                      condition.remaining)
-            end
 
             if delete_associated_orders then
                -- also remove any associated orders
@@ -408,24 +420,23 @@ function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(crafter_info,
    }
 
    for i, order in ipairs(self._sv.orders) do
-      if to_order_id and order:get_id() >= to_order_id then
-         break
-      end
-      local recipe = crafter_info:get_formatted_recipe(order:get_recipe())
+      if not to_order_id or order:get_id() < to_order_id then
+         local recipe = crafter_info:get_formatted_recipe(order:get_recipe())
 
-      if recipe then
-         local condition = order:get_condition()
+         if recipe then
+            local condition = order:get_condition()
 
-         local material_produces = ingredient.material and self:_recipe_produces_materials(recipe, ingredient.material)
-         local uri_produces = ingredient.uri and recipe.products[ingredient.uri]
-         local num_produces = material_produces or uri_produces
+            local material_produces = ingredient.material and self:_recipe_produces_materials(recipe, ingredient.material)
+            local uri_produces = ingredient.uri and recipe.products[ingredient.uri]
+            local num_produces = material_produces or uri_produces
 
-         if num_produces then
-            local amount = condition.remaining * num_produces
-            if condition.type == 'maintain' then
-               amount = math.max(num_produces, condition.at_least)
+            if num_produces then
+               local amount = condition.remaining * num_produces
+               if condition.type == 'maintain' then
+                  amount = math.max(num_produces, condition.at_least)
+               end
+               ingredient_count[condition.type] = ingredient_count[condition.type] + amount
             end
-            ingredient_count[condition.type] = ingredient_count[condition.type] + amount
          end
       end
    end

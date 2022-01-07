@@ -12,6 +12,7 @@ local SUSPENDED_BUFF = 'stonehearth:buffs:hidden:suspended'
 
 AceTown._ace_old__pre_activate = Town._pre_activate
 function AceTown:_pre_activate()
+   self._periodic_interaction_entities = {}
    self._suspendable_entities = {}
    self._building_material_collection_tasks = {}
    self._default_storage_listener = {}
@@ -554,6 +555,23 @@ function AceTown:remove_default_storage(storage_id)
    self._sv.default_storage[storage_id] = nil
    self.__saved_variables:mark_changed()
    self:_destroy_default_storage_listener(storage_id)
+end
+
+function AceTown:get_periodic_interaction_entities()
+   return self._periodic_interaction_entities
+end
+
+function AceTown:register_periodic_interaction_entity(entity)
+   if entity and entity:is_valid() then
+      self._periodic_interaction_entities[entity:get_id()] = entity
+      radiant.events.trigger_async(self, 'stonehearth_ace:periodic_interaction:entity_added', entity)
+   end
+end
+
+function AceTown:unregister_periodic_interaction_entity(entity)
+   if entity then
+      self._periodic_interaction_entities[entity:get_id()] = nil
+   end
 end
 
 AceTown._ace_old_suspend_town = Town.suspend_town

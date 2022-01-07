@@ -8,9 +8,14 @@ AceCraftOrder._ace_old_on_item_created = CraftOrder.on_item_created
 -- here it's also removing the ingredients tied to the order made from
 -- the reserved ingredients.
 --
-function AceCraftOrder:on_item_created()
-   if self._sv.condition.type == 'make' then
+function AceCraftOrder:on_item_created(primary_output)
+   local condition = self._sv.condition
+   if condition.type == 'make' then
       self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id)
+      -- reduce by the number of requested items by the amount produced (primary product only)
+      if condition.requested_amount and primary_output then
+         condition.requested_amount = condition.requested_amount - primary_output
+      end
    end
    
    self:_ace_old_on_item_created()
@@ -45,6 +50,22 @@ function AceCraftOrder:activate()
       end
    end
 
+   -- track the number of primary products produced by each craft of the recipe
+   if self._sv.condition.requested_amount then
+      local num = 0
+      local product = self._recipe.produces[1]
+      local uri = product and product.item
+      if uri then
+         for _, prod_item in ipairs(self._recipe.produces) do
+            if prod_item.item == uri then
+               num = num + 1
+            end
+         end
+
+         self._num_primary_product_per_craft = num
+      end
+   end
+
    self.__saved_variables:mark_changed()
 end
 
@@ -56,6 +77,16 @@ function AceCraftOrder:destroy()
          crafter_comp:unreserve_fuel()
       end
    end
+
+   -- remove the order from associated orders
+   self:remove_associated_order(false)
+
+   -- remove reserved ingredients
+   local condition = self:get_condition()
+   if condition.type == 'make' and condition.remaining > 0 then
+      self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, self._sv.condition.remaining)
+   end
+
    self:_ace_old_destroy()
 end
 
@@ -474,6 +505,33 @@ function AceCraftOrder:set_associated_orders(associated_orders)
    --self.__saved_variables:mark_changed()
 end
 
+function AceCraftOrder:remove_associated_order(remove_children)
+   local associated_orders = self:get_associated_orders()
+   if associated_orders and #associated_orders > 0 then
+      local order_id = self:get_id()
+      -- first remove any child orders; this will recursively remove any orders necessary
+      if remove_children then
+         local child_orders = {}
+         for _, order in ipairs(associated_orders) do
+            if order.parent_order_id == order_id then
+               table.insert(child_orders, order)
+            end
+         end
+         for _, child_order in ipairs(child_orders) do
+            child_order.order_list:remove_order(child_order.order:get_id())
+         end
+      end
+
+      -- finally search associated orders for this order and remove it
+      for i, order in ipairs(associated_orders) do
+         if order.order:get_id() == order_id then
+            table.remove(associated_orders, i)
+            break
+         end
+      end
+   end
+end
+
 function AceCraftOrder:get_building_id()
    return self._sv.building_id
 end
@@ -491,14 +549,48 @@ end
 -- returns false if the number remaining to make was less than or equal to the amount to reduce
 -- returns nil otherwise, e.g., if it's a 'maintain' order
 function AceCraftOrder:reduce_quantity(amount)
+   log:debug('[%s] reduce_quantity(%s)', self:get_id(), amount)
    local condition = self._sv.condition
    if condition.type == 'make' then
-      if condition.remaining > amount then
-         condition.remaining = condition.remaining - amount
-         self.__saved_variables:mark_changed()
+      if condition.requested_amount and condition.requested_amount > amount and self._num_primary_product_per_craft then
+         log:debug('reducing quantity requested by [%s] from %s to %s', self:get_id(), condition.requested_amount, condition.requested_amount - amount)
+         condition.requested_amount = condition.requested_amount - amount
+         local new_remaining = math.ceil(condition.requested_amount / self._num_primary_product_per_craft)
+
+         if new_remaining < condition.remaining then
+            log:debug('reducing recipe quantity by [%s] from %s to %s', self:get_id(), condition.remaining, new_remaining)
+            local reduction = condition.remaining - new_remaining
+            self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, reduction)
+            condition.remaining = new_remaining
+            self.__saved_variables:mark_changed()
+
+            self:_reduce_associated_orders_quantity(reduction)
+         end
+
          return true
+      -- elseif condition.remaining > amount then
+      --    self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, amount)
+      --    condition.remaining = condition.remaining - amount
+      --    self.__saved_variables:mark_changed()
+
+      --    self:_reduce_associated_orders_quantity(amount)
+
+      --    return true
       else
          return false
+      end
+   end
+end
+
+function AceCraftOrder:_reduce_associated_orders_quantity(amount)
+   log:debug('[%s] _reduce_associated_orders_quantity(%s)', self:get_id(), amount)
+   local associated_orders = self:get_associated_orders()
+   if associated_orders and #associated_orders > 0 then
+      for _, associated_order in ipairs(associated_orders) do
+         -- if the associated order is an ingredient for this recipe, reduce it by the amount that this recipe requires
+         if associated_order.parent_order_id == self:get_id() then
+            associated_order.order_list:remove_order(associated_order.order:get_id(), amount * associated_order.ingredient_per_craft)
+         end
       end
    end
 end

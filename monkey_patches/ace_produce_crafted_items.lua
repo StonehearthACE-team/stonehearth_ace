@@ -16,12 +16,12 @@ function AceProduceCraftedItems:run(ai, entity, args)
 
       -- don't fully destroy the ingredients yet, we want to be able to pass them to other scripts
       local ingredients, ingredient_quality = self:_pre_destroy_ingredients(args)
-      self:_add_outputs_to_bench(ai, entity, args.workshop, args.order:get_recipe(), ingredients, ingredient_quality)
+      local primary_output = self:_add_outputs_to_bench(ai, entity, args.workshop, args.order:get_recipe(), ingredients, ingredient_quality)
       for _, item in pairs(ingredients) do
          radiant.entities.destroy_entity(item)
       end
 
-      args.order:on_item_created()
+      args.order:on_item_created(primary_output)
       args.order:progress_to_next_stage(entity)  -- Paul: changed this line
    -- if this order is done crafting, but we re-entered this action, we may have gotten interrupted
    -- before the crafter was able to drop off the item, so do now if the crafted item is on the table
@@ -85,7 +85,7 @@ function AceProduceCraftedItems:_pre_destroy_ingredients(args)
 end
 
 -- overriding this function to pass along the ingredients and ingredient quality to the crafter component
--- also allow extra scripting
+-- also allow extra scripting and return the number of primary products produced
 function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, recipe, ingredients, ingredient_quality)
    -- figure out where the outputs all go
    local location_on_workshop
@@ -107,6 +107,9 @@ function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, rec
 
    -- create all the recipe products
    --local outputs = self:_get_outputs(crafter, workshop, recipe)
+   local primary_product = recipe.produces[1]
+   local primary_uri = primary_product and primary_product.item
+   local primary_output = 0
    for i, product in ipairs(recipe.produces) do
       local product_uri = product.item
       if product_uri then
@@ -178,8 +181,16 @@ function AceProduceCraftedItems:_add_outputs_to_bench(ai, crafter, workshop, rec
          }
 
          radiant.events.trigger_async(crafter, 'stonehearth:crafter:craft_item', crafting_data)
+
+         for _, prod_item in ipairs(all_products) do
+            if prod_item:get_uri() == primary_uri then
+               primary_output = primary_output + 1
+            end
+         end
       end
    end
+
+   return primary_output
 end
 
 return AceProduceCraftedItems
