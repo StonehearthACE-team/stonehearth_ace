@@ -14,6 +14,8 @@ function PetCheck:start(ctx, info)
             if pet_uri == info.required_pet then
                if info.register_to_ctx and info.ctx_registration_path then
                   game_master_lib.register_entities(ctx, info.ctx_registration_path, { pet = pet })
+                  ctx.pet_custom_name = radiant.entities.get_custom_name(pet)
+                  ctx.pet_display_name = radiant.entities.get_display_name(pet)
                end
                return true
             end

@@ -1000,18 +1000,13 @@
       "earthbud": {
          "hidden": true,
          "plant_uri": "stonehearth:plants:earthbud",
-         "product_uri": "stonehearth:resources:earth_essence",
+         "product_uri": "stonehearth_ace:resources:herb:hearthbud",
          "additional_products": {
             "entries": {
                "extra": {
                   "items": {
-                     "none": {
-                        "uri": "",
-                        "weight": 1
-                     },
                      "herb": {
-                        "uri": "stonehearth_ace:resources:herb:hearthbud",
-                        "weight": 9
+                        "uri": "stonehearth:resources:earth_essence"
                      }
                   }
                }
@@ -1023,7 +1018,7 @@
          "category": "herb",
          "level": 6,
          "growth_time": "24h+12h",
-         "bonus_product_growth_time": "48h",
+         "bonus_product_growth_time": "36h",
          "post_harvest_growth_level": 2,
          "growth_levels": [
             {
