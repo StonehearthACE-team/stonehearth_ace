@@ -431,8 +431,10 @@ function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(crafter_info,
             local num_produces = material_produces or uri_produces
 
             if num_produces then
-               local amount = condition.remaining * num_produces
-               if condition.type == 'maintain' then
+               local amount
+               if condition.type == 'make' then
+                  amount = condition.remaining * num_produces
+               else
                   amount = math.max(num_produces, condition.at_least)
                end
                ingredient_count[condition.type] = ingredient_count[condition.type] + amount
