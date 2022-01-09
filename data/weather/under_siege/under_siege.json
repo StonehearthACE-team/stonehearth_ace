@@ -1,0 +1,34 @@
+{
+   "display_name": "i18n(stonehearth_ace:data.weather.under_siege.display_name)",
+   "description": "i18n(stonehearth_ace:data.weather.under_siege.description)",
+   "icon": "file(under_siege.png)",
+   "sky_settings": "stonehearth_ace:sky_settings:under_siege",
+   "camera_attached_effect": "stonehearth_ace:effects:under_siege_rain_effect",
+   "controller": "stonehearth:weather_scripts:thunderstorm",
+   "renderer": "stonehearth_ace:weather_renderers:under_siege",
+   "ambient_sound_key": "distant_storm",
+   "music_sound_key": "under_siege",
+   "thoughts": [
+      "stonehearth:thoughts:weather:under_siege_negative",
+      "stonehearth:thoughts:weather:under_siege_negative",
+      "stonehearth:thoughts:weather:under_siege_negative",
+      "stonehearth:thoughts:weather:under_siege_negative",
+      "stonehearth:thoughts:weather:under_siege_negative",
+      "stonehearth:thoughts:weather:under_siege_positive"
+   ],
+   "subject_matter": "stonehearth_ace:subjects:weather:under_siege",
+   "hide_cloud_shadows": true,
+   "is_dark_during_daytime": true,
+   "unsheltered_debuff": [
+      "stonehearth_ace:buffs:weather:soaked"
+   ],
+   "unsheltered_animal_debuff": [
+      "stonehearth_ace:buffs:weather:soaked:animal"
+   ],
+   "unsheltered_npc_debuff": [
+      "stonehearth_ace:buffs:weather:soaked"
+   ],
+   "is_bad_weather": true,
+   "humidity": 1.1,
+   "sunlight": 0.7
+}

@@ -1,0 +1,98 @@
+{
+   "mixins": [
+      "file(firepit_skulls_goblin_camp_ghost.json)"
+   ],
+   "type": "entity",
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(firepit_skulls_goblin_camp_ghost.json)",
+         "iconic_form": "file(firepit_skulls_goblin_camp_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:firepit": {},
+      "stonehearth:lamp": {
+         "light_policy": "manual",
+         "light_effect": "stonehearth:effects:firepit_effect:green",
+         "light_origin": { "x": 0, "y": 1, "z": 0 }
+      },
+      "mob": {
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 0, "y": 2, "z": 0 }
+            },
+            {
+               "min": { "x": -1, "y": 0, "z": 1 },
+               "max": { "x": 0, "y": 2, "z": 2 }
+            },
+            {
+               "min": { "x": 1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 2, "z": 0 }
+            },
+            {
+               "min": { "x": 1, "y": 0, "z": 1 },
+               "max": { "x": 2, "y": 2, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "restore_terrain": {
+               "transform_uri": "stonehearth_ace:landmark:goblin_camp_patch_stone",
+               "command": "stonehearth_ace:commands:transform:goblin_camp",
+               "command_requirements": {
+                  "script": "stonehearth_ace:scripts:transform:terrain_check",
+                  "script_data": {
+                     "disallowed_terrain": {
+                        "rock": true
+                     }
+                  }
+               },
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth:effects:loot_effect",
+               "transforming_worker_effect": "fiddle",
+               "transforming_worker_effect_times": 3,
+               "transform_effect": "stonehearth:effects:poof_effect",
+               "auto_request": true
+            },
+            "destroy": {
+               "transform_uri": "",
+               "command": "stonehearth_ace:commands:transform:goblin_camp:destroy",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth:effects:clear_effect",
+               "transforming_worker_effect": "work",
+               "transforming_worker_effect_times": 10,
+               "transform_effect": "stonehearth:effects:object_destroyed",
+               "auto_request": true,
+               "kill_entity": true
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:town_patrol": {
+         "auto_patrol": true,
+         "patrol_pattern": "perimeter"
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "firepit"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": -20
+      }
+   }
+}

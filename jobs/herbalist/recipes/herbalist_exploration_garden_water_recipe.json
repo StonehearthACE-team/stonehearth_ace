@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_exploration_garden_water_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_exploration_garden_water_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_exploration_garden_water_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/herbalist/herbalist_exploration_garden_water/herbalist_exploration_garden_water.png",
+	"work_effect": "work",
+   "level_requirement": 3,
+   "ingredients": [
+		{
+         "material": "wood resource",
+         "count": 6
+      },
+		{
+         "material": "clay resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:herbalist:exploration_garden:water"
+      }
+   ]
+}

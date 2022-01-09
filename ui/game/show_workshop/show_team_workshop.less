@@ -111,5 +111,26 @@
       .item.is-workshop-selected {
          box-shadow: 0px 0px 0px 2px rgb(180, 180, 180);
       }
+
+      .checkboxContainer {
+         padding-left: 10px;
+         padding-right: 10px;
+      }
+
+      #searchSettingContainer {
+         z-index: 1;
+         position: absolute;
+         top: 45px;
+         display: flex;
+         flex-direction: row;
+         //justify-content: space-between;
+         height: 40px;
+         width: 693px;
+         background: url(images/craftSearchSettingsBar.png);
+
+         &.hidden {
+            display: none;
+         }
+      }
    }
 }

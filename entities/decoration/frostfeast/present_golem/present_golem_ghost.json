@@ -1,0 +1,42 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(package_1.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.frostfeast.present_golem.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.frostfeast.present_golem.description)",
+         "icon": "file(present_golem.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "frostfeast",
+            "festival",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

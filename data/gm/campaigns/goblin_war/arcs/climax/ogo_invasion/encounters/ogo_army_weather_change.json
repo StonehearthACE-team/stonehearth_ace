@@ -1,0 +1,12 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "ogo_army_weather_change",
+   "script_info": {
+      "script": "stonehearth:game_master:script_encounter:override_weather",
+      "data": {
+         "weather_uri": "stonehearth_ace:weather:under_siege",
+         "ctx_entity_registration_path": "weather"
+      }
+   }
+}

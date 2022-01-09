@@ -4,12 +4,6 @@
    "in_edge": "returning_collector_encounter",
    "can_start": {
       "test_1": {
-         "script_check": {
-            "item": "script",
-            "type": "deny_if_not",
-            "value": true,
-            "script": "stonehearth:game_master:script:returning_trader_can_start"
-         },
          "not_in_titanstorm": {
             "type": "deny_if",
             "item": "weather",

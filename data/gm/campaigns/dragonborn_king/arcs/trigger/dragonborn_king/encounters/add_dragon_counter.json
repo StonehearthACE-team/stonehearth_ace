@@ -1,0 +1,11 @@
+{
+   "type": "encounter",
+   "encounter_type": "set_counters",
+   "in_edge": "add_dragon_counter",
+   "out_edge": "hatch_and_connect_pet",
+   "set_counters_info": {
+      "counters": {
+         "dragon": "x + 1"
+      }
+   }
+}

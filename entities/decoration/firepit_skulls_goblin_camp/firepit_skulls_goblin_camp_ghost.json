@@ -1,0 +1,26 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/decoration/firepit_skulls/firepit_skulls.qb"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "portrait": "/stonehearth/entities/decoration/firepit_skulls/firepit_skulls.png",
+         "display_name": "i18n(stonehearth:entities.decoration.firepit_skulls.firepit_skulls_ghost.display_name)",
+         "description": "i18n(stonehearth:entities.decoration.firepit_skulls.firepit_skulls_ghost.description)",
+         "icon": "/stonehearth/entities/decoration/firepit_skulls/firepit_skulls.png",
+         "category": "light_source decoration"
+      }
+   }
+}

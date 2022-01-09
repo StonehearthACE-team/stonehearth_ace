@@ -1,0 +1,40 @@
+{
+   "name": "fire",
+   "duration": 20000,
+   "loops": true,
+   "intensity": {
+      "over_lifetime": {
+         "kind": "CURVE",
+         "values": [
+            [0, 0.8],
+            [0.5, 1],
+            [1, 0.8]
+         ]
+      }
+   },
+   "radius": {
+      "over_lifetime": {
+         "kind": "CURVE",
+         "values": [
+            [0, 18],
+            [0.5, 20],
+            [1, 18]
+         ]
+      }
+   },
+   "color": {
+      "start": {
+         "kind": "CONSTANT",
+         "values": [0, 0, 0]
+      },
+      "over_lifetime": {
+         "kind": "CURVE",
+         "values": [
+            [0, 1, 0.433, 0.287],
+            [0.33, 0.43, 0.97, 0.592],
+            [0.66, 0.45, 0.333, 1],
+            [1, 1, 0.433, 0.287]
+         ]
+      }
+   }
+}

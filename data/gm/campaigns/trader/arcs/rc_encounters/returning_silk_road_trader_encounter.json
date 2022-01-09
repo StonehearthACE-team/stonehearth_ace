@@ -4,11 +4,11 @@
    "in_edge": "returning_silk_road_trader_encounter",
    "can_start": {
       "test_1": {
-         "script_check": {
-            "item": "script",
-            "type": "deny_if_not",
-            "value": true,
-            "script": "stonehearth:game_master:script:returning_trader_can_start"
+         "only_one_caravan_allowed": {
+            "type": "deny_if_greater_than",
+            "item": "number_active",
+            "start_node": "returning_silk_road_trader_encounter",
+            "value": 0
          },
          "not_in_titanstorm": {
             "type": "deny_if",

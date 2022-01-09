@@ -1,0 +1,19 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_requirements_met",
+   "in_edge": "wait_for_growing_dragon",
+   "out_edge": "dialog_dragon_growing",
+   "wait_for_requirements_met_info": {
+      "requirements": {
+         "dragon_young_check": {
+            "item": "script",
+            "type": "deny_if_not",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:pet_check"
+         }
+      },
+      "required_pet": "stonehearth_ace:pets:dragon_young_copper",
+      "register_to_ctx": true,
+      "ctx_registration_path": "growing_dragon"
+   }
+}

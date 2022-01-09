@@ -1,0 +1,16 @@
+{
+   "type": "command",
+   "name": "goblin_camp_destroy",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.goblin_camp_destroy.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.goblin_camp_destroy.description)",
+   "default_enabled": true,
+   "visible_to_all_players": true,
+   "ordinal": 99,
+   "icon": "file(goblin_camp_destroy.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "destroy"
+   ]
+}

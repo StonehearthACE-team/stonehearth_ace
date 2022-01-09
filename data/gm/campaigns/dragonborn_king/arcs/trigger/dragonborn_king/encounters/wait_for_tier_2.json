@@ -1,0 +1,24 @@
+{
+   "in_edge": "wait_for_tier_2",
+   "wait_for_requirements_met_info": {
+      "requirements": {
+         "dragon_shrine_check": {
+            "item": "script",
+            "type": "deny_if_not",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:inventory_check"
+         },
+         "item_placed_requirement": {
+            "item": "exists_in_world",
+            "uri": "stonehearth_ace:decoration:dragon_shrine",
+            "type": "deny_if",
+            "value": true
+         }
+      },
+      "threshold": 1,
+      "check": "less_than",
+      "uris": [
+         "stonehearth_ace:decoration:dragon_shrine"
+      ]
+   }
+}

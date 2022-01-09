@@ -65,7 +65,7 @@ function AceReturningTrader:_accept_trade()
       local town = stonehearth.town:get_town(self._sv._player_id)
       local default_storage = town and town:get_default_storage()
       local options = {
-         owner = self._sv.player_id,
+         owner = self._sv._player_id,
          add_spilled_to_inventory = true,
          inputs = default_storage,
          spill_fail_items = true,

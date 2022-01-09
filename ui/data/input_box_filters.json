@@ -7,36 +7,64 @@
                "icon": "/stonehearth_ace/entities/resources/wood/wood_icon.png"
             },
             "stone": {
-               "display_name": "i18n(stonehearth_ace:entities.resources.resources.stone.display_name)",
-               "icon": "/stonehearth_ace/entities/resources/stone/stone_icon.png"
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth:entities.resources.stone.hunk_of_stone.display_name)",
+               "icon": "/stonehearth/entities/resources/stone/stone.png",
+               "filter": "standard stone resource"
+            },
+            "sandstone_stone": {
+               "ordinal": 2.01,
+               "display_name": "i18n(stonehearth_ace:entities.resources.stone.sandstone_stone.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/stone/sandstone_stone/sandstone_stone.png",
+               "filter": "sandstone stone resource"
+            },
+            "slate_stone": {
+               "ordinal": 2.02,
+               "display_name": "i18n(stonehearth_ace:entities.resources.stone.slate_stone.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/stone/slate_stone/slate_stone.png",
+               "filter": "slate stone resource"
+            },
+            "limestone_stone": {
+               "ordinal": 2.03,
+               "display_name": "i18n(stonehearth_ace:entities.resources.stone.limestone_stone.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/stone/limestone_stone/limestone_stone.png",
+               "filter": "limestone stone resource"
             },
             "feldspar_stone": {
                "ordinal": 2.1,
                "display_name": "i18n(stonehearth_ace:entities.resources.stone.feldspar_stone.display_name)",
                "icon": "/stonehearth_ace/entities/resources/stone/feldspar_stone/feldspar_stone.png",
-               "filter": "feldspar_stone resource"
+               "filter": "feldspar stone resource"
             },
             "marble_stone": {
                "ordinal": 2.2,
                "display_name": "i18n(stonehearth_ace:entities.resources.stone.marble_stone.display_name)",
                "icon": "/stonehearth_ace/entities/resources/stone/marble_stone/marble_stone.png",
-               "filter": "marble_stone resource"
+               "filter": "marble stone resource"
             },
             "bedrock_stone": {
                "ordinal": 2.3,
                "display_name": "i18n(stonehearth_ace:entities.resources.stone.bedrock_stone.display_name)",
                "icon": "/stonehearth_ace/entities/resources/stone/bedrock_stone/bedrock_stone.png",
-               "filter": "bedrock_stone resource"
+               "filter": "bedrock stone resource"
             },
             "clay": {
-               "display_name": "i18n(stonehearth_ace:entities.resources.resources.clay.display_name)",
-               "icon": "/stonehearth_ace/entities/resources/clay/clay_icon.png"
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth:entities.resources.clay.clay_mound.display_name)",
+               "icon": "/stonehearth/entities/resources/clay/clay.png",
+               "filter": "standard clay resource"
             },
             "ball_clay": {
-               "ordinal": 3.1,
+               "ordinal": 3.01,
                "display_name": "i18n(stonehearth_ace:entities.resources.clay.ball_clay_mound.display_name)",
                "icon": "/stonehearth_ace/entities/resources/clay/ball_clay_mound/ball_clay_mound.png",
-               "filter": "ball_clay resource"
+               "filter": "ball clay resource"
+            },
+            "shale_clay": {
+               "ordinal": 3.02,
+               "display_name": "i18n(stonehearth_ace:entities.resources.clay.shale_clay_mound.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/clay/shale_clay_mound/shale_clay_mound.png",
+               "filter": "shale clay resource"
             },
             "bone_clay": {
                "ordinal": 3.2,

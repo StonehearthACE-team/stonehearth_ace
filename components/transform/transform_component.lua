@@ -84,11 +84,14 @@ end
 function TransformComponent:_create_request_listeners()
    self:_destroy_request_listeners()
    
-   local data = self:get_transform_options()
-   if data and data.request_action and data.auto_request and self._entity:get_player_id() ~= "" then
-      self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
-         :on_changed(function(parent)
-            if parent then
+   self._added_to_world_listener = self._entity:add_component('mob'):trace_parent('transform entity added or removed')
+      :on_changed(function(parent)
+         if parent then
+            -- reconsider commands now that we're placed in the world
+            self:reconsider_commands()
+
+            local data = self:get_transform_options()
+            if data and data.request_action and data.auto_request and self._entity:get_player_id() ~= '' then
                -- if we already have a task for this entity, don't override it with a transform request
                local task_tracker_component = self._entity:get_component('stonehearth:task_tracker')
                if task_tracker_component and task_tracker_component:has_any_task() then
@@ -96,8 +99,8 @@ function TransformComponent:_create_request_listeners()
                end
                self:request_transform(self._entity:get_player_id())
             end
-         end)
-   end
+         end
+      end)
 end
 
 function TransformComponent:_create_placement_listener()
@@ -503,6 +506,13 @@ function TransformComponent:_meets_commmand_requirements(requirements)
       end
    end
 
+   if requirements.script then
+      local script = radiant.mods.load_script(requirements.script)
+      if script and script.meets_commmand_requirements and not script.meets_commmand_requirements(self._entity, requirements.script_data) then
+         return false
+      end
+   end
+
    return true
 end
 
@@ -550,8 +560,9 @@ end
 function TransformComponent:request_craft_order()
    local data = self:get_transform_options()
    local player_id = radiant.entities.get_player_id(self._entity)
+   local inventory = stonehearth.inventory:get_inventory(player_id):get_item_tracker('stonehearth:basic_inventory_tracker'):get_tracking_data()
    local ingredient = data and data.transform_ingredient_auto_craft and data.transform_ingredient_uri
-   if ingredient and stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth', 'building_auto_queue_crafters', true) then
+   if ingredient and stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth', 'building_auto_queue_crafters', true) and not inventory:contains(data.transform_ingredient_uri) then
       local player_jobs = stonehearth.job:get_jobs_controller(player_id)
       local order = player_jobs:request_craft_product(ingredient, 1)
       self:set_craft_order(order)

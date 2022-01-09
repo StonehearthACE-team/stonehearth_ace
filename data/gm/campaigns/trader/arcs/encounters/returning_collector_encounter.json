@@ -1,6 +1,9 @@
 {
 	"can_start": {
       "test_1": {
+         "mixintypes": {
+            "script_check": "remove"
+         },
 			"kingdom_check": {
             "type": "deny_if_not",
             "item": "kingdom",
@@ -60,6 +63,16 @@
 					"min": 1,
 					"max": 3
 				}
+         },
+         "mixintypes": {
+            "rewards": "override"
+         },
+         "rewards": {
+            "stonehearth:monsters:golems:golem_restocking:auto": {
+               "type": "object",
+               "min": 1,
+               "max": 2
+            }
          }
       }
    }

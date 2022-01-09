@@ -1,0 +1,52 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(goblin_camp_patch_stone_iconic.json)",
+         "ghost_form": "file(goblin_camp_patch_stone_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(goblin_camp_patch_stone.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "stonehearth:effects:summon_stone_radiate"
+      },
+      "stonehearth:terrain_patch": {
+         "terrain_tag": "grass",
+         "max_blocks": 1681
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth:entities.landmark.summon_stone_patch_surface.summon_stone_patch_surface_ghost.display_name)",
+         "description": "i18n(stonehearth:entities.landmark.summon_stone_patch_surface.summon_stone_patch_surface_ghost.description)",
+         "icon": "file(goblin_camp_patch_stone.png)",
+         "category": "geomancer",
+         "material_tags": [
+            "summon_stone"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 20,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:placement": {
+         "effect": "cast_geomancer",
+         "tag": "summon_stone"
+      }
+   }
+}

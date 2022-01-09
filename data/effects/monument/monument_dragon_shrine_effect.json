@@ -1,0 +1,80 @@
+{
+   "type": "effect",
+   "tracks": {
+      "base_dense": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/dragon_shrine/dragon_shrine.base_dense.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.05, "y": 2.2, "z": -2.55,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base_bubbles": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/dragon_shrine/dragon_shrine.base_bubbles.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.05, "y": 1.9, "z": -2.55,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base_bubbles_conc": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/dragon_shrine/dragon_shrine.base_bubbles_conc.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.05, "y": 1.9, "z": -2.55,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base_bubbles_extreme": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/dragon_shrine/dragon_shrine.base_bubbles_extreme.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.05, "y": 1.9, "z": -2.55,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/dragon_shrine/dragon_shrine.glow.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.05, "y": 3, "z": -2.55,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/dragon_shrine/dragon_shrine.embers.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.05, "y": 2, "z": -2.55,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "crackle_sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 400,
+         "min_distance": 40,
+         "falloff": 2.5,
+         "volume": 70,
+         "track": "stonehearth:sounds:firepit_loop_sound"
+      },
+      "light": {
+         "type": "light",
+         "light": "/stonehearth_ace/data/horde/animatedlights/fire/dragon_shrine.animatedlight.json",
+         "transforms": { "x": -0.05, "y": 4.5, "z": -4 },
+         "shadows": true
+      }
+   }
+}

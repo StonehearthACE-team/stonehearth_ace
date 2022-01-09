@@ -61,8 +61,18 @@ function unlock_seed_rewards.process_reward(entity, user, stage, script_data, is
    local script_native = script_data.native or 0
    local script_exotic = script_data.exotic or 0
    local script_total = script_none + script_native + script_exotic
-   local native_mult = script_native / (script_total * native_chance)
-   local exotic_mult = script_exotic / (script_total * exotic_chance)
+   local native_mult = native_chance > 0 and script_native / (script_total * native_chance) or 0
+   local exotic_mult = exotic_chance > 0 and script_exotic / (script_total * exotic_chance) or 0
+
+   if script_data.convert_to_none then
+      if script_data.convert_to_none.native and native_chance == 0 then
+         script_none = script_none + script_native
+      end
+
+      if script_data.convert_to_none.exotic and exotic_chance == 0 then
+         script_none = script_none + script_exotic
+      end
+   end
 
    local crops = WeightedSet(rng)
    if script_none > 0 then
@@ -85,16 +95,19 @@ function unlock_seed_rewards.process_reward(entity, user, stage, script_data, is
       -- got something to unlock so unlock it
       farmer_job_info:manually_unlock_crop(crop, true)
 
-      local bulletin_title = 'stonehearth_ace:jobs.herbalist.unlock_last_crop.bulletin_title'
-      if total_possible > 1 then
-         bulletin_title = 'stonehearth_ace:jobs.herbalist.unlock_crop.bulletin_title'
+      local crop_info = all_herbalist_crops[crop]
+      if crop_info then
+         local bulletin_title = 'stonehearth_ace:jobs.herbalist.unlock_last_crop.bulletin_title'
+         if total_possible > 1 then
+            bulletin_title = 'stonehearth_ace:jobs.herbalist.unlock_crop.bulletin_title'
+         end
+         stonehearth.bulletin_board:post_bulletin(player_id)
+                  :set_sticky(true)
+                  :set_data({title = bulletin_title})
+                  :add_i18n_data('job_name', job_comp:get_curr_job_name())
+                  :add_i18n_data('crop_name', crop_info.display_name)
+                  :add_i18n_data('icon', crop_info.icon)
       end
-      stonehearth.bulletin_board:post_bulletin(player_id)
-               :set_sticky(true)
-               :set_data({title = bulletin_title})
-               :add_i18n_data('job_name', job_comp:get_curr_job_name())
-               :add_i18n_data('crop_name', all_herbalist_crops[crop].display_name)
-               :add_i18n_data('icon', all_herbalist_crops[crop].icon)
 
       -- return true because we want to complete the interaction, since we unlocked a crop
       return true

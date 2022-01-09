@@ -82,7 +82,7 @@ function CrafterInfoController:_create_maps()
                            if not next(keys) then
                               log:error('For recipe "%s": no produced item exists as an alias in its manifest', recipe_name)
                            else
-                              self._formatted_recipes[recipe_data.recipe] = formatted_recipe
+                              self._formatted_recipes[self:_get_recipe_key(recipe_data.recipe)] = formatted_recipe
                               self._recipe_map:add(keys, {
                                  job_key = job_key,
                                  order_list = order_list,
@@ -285,7 +285,11 @@ function CrafterInfoController:get_player_id()
 end
 
 function CrafterInfoController:get_formatted_recipe(recipe)
-   return self._formatted_recipes[recipe]
+   return self._formatted_recipes[self:_get_recipe_key(recipe)]
+end
+
+function CrafterInfoController:_get_recipe_key(recipe)
+   return recipe.recipe_name or recipe
 end
 
 function CrafterInfoController:get_possible_recipes(tags)
