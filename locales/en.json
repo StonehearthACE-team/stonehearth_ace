@@ -27,14 +27,12 @@
                "find_native_seed": {
                   "preparing": "preparing to explore wild seeds",
                   "herb": "fiddling with native herbs",
-                  "water": "studying native water plants",
-                  "fungi": "searching for native fungi"
+                  "water": "studying native water plants"
                },
                "find_exotic_seed": {
                   "preparing": "preparing to explore exotic seeds",
                   "herb": "searching for exotic herbs",
-                  "water": "looking for exotic water plants",
-                  "fungi": "observing exotic fungi"
+                  "water": "looking for exotic water plants"
                }
             }
          }
@@ -862,6 +860,15 @@
                   "trigger": {
                      "dragonborn_king": {
                         "encounters": {
+                           "dragon_cult_attack": {
+                              "mission": {
+                                 "sighted_bulletin": {
+                                    "title": "Dragon Cultist Scouts Approach!",
+                                    "title_2": "Dragon Cultists Approach!",
+                                    "title_3": "A Dragon Cultist Army Approaches!"
+                                 }
+                              }
+                           },
                            "dialog_thank_player_for_help": {
                               "dialog_tree_info": {
                                  "dialog_nodes": {
@@ -951,12 +958,12 @@
                                  }
                               }
                            },
-                           "dialog_dragon_leaving": {
+                           "dialog_dragon_farewell": {
                               "dialog_tree_info": {
                                  "dialog_nodes": {
                                     "msg1": {
                                        "bulletin_title": "The deep voice of [str(i18n_data.pet_custom_name)] echoes again!",
-                                       "dialog_title": "There's both joy and sadness in his words",
+                                       "dialog_title": "Both joy and sadness in his words",
                                        "bulletin_message": {
                                           "000": "\"The time has come. We must soon leave this dear family we found within the Children of Monkey... We feel stronger and wiser than ever.\" There's some comfort in these words. \"However, before we leave, we have a gift to all of you. A very important one.\""
                                        },
@@ -975,13 +982,97 @@
                                        "bulletin_title": "The deep voice of [str(i18n_data.pet_custom_name)] echoes again!",
                                        "dialog_title": "He is filled with excitement",
                                        "bulletin_message": {
-                                          "000": "\"Yes! We have created a monument with rock, chromatic fire and many of our own scales that have been dropping as we were growing...\" His voice seems full of pride. \"We were great crafters once, back in our age. We've lit furnaces higher than mountains and worked rivers of molten metals with the flick of our claws and the blowing of our wings, so we believe that this monument is enough to honor this legacy.\""
+                                          "000": "\"Yes! We have made a monument with rock, fire and many of our own scales that have been dropping as we were growing...\" His voice seems full of pride. \"We were great crafters once, back in our age. We've lit furnaces higher than mountains and worked rivers of molten metals with the flick of our claws and the blowing winds of our wings... We believe that this monument honors such a legacy.\" He pauses for a brief moment. \"A Dragon Shrine that represents the friendship between this town and our kin. As long as it stands and our chromatic flame remains lit with it, others will know you're worthy.\""
                                        },
-                                       "choice_000": "Worthy?",
+                                       "choice_000": "Worthy? Others?",
                                        "choice_001": "Thanks! [Skip instructions]"
                                     },
                                     "msg3": {
-                                       "": ""
+                                       "bulletin_title": "The deep voice of [str(i18n_data.pet_custom_name)] echoes again!",
+                                       "dialog_title": "His voice is strong and decided",
+                                       "bulletin_message": {
+                                          "000": "\"Our quest will be long and dangerous. It will be the labor of more than a single mortal lifetime to bring all the dragons back together and earn the respect of all others, earn our place in this world. Even when away, we'll still need your support, we might find other dragons or dragon eggs that will need love and caring - just like you provided us with. We must know there is a safe place for our kin, towns like yours that will start to forge a new bond between dragonkin and mortals by protecting us and showing the world that we are also part of it.\" His voice rumbles with spite. \"And with so many Dragon Cultists out there, we'll definitely need that safety.\""
+                                       },
+                                       "choice_000": "Dragon Cultists!?"
+                                    },
+                                    "msg4": {
+                                       "bulletin_title": "The deep voice of [str(i18n_data.pet_custom_name)] echoes again!",
+                                       "dialog_title": "He keeps a lower tone",
+                                       "bulletin_message": {
+                                          "000": "\"Yes, they've been around since time imemorial... They've changed over the ages, acted under a thousand different names, banners and credos... But always following the same ideals: necromancy, corruption and dragons as weapons, vessels of destruction...\" [str(i18n_data.pet_custom_name)] pauses, pensive. \"I'm afraid they still exist, their terrible magic preserved through the ages, their cursed masks still a symbol of the chaos they bring about. Sooner or later, they will find you - and your town must stand against them! As long as the Dragon Shrine stands and its flame is lit, Dragon Cultists might attack the town!\""
+                                       },
+                                       "choice_000": "Oh no!"
+                                    },
+                                    "msg5": {
+                                       "bulletin_title": "The deep voice of [str(i18n_data.pet_custom_name)] echoes again!",
+                                       "dialog_title": "He sounds hopeful again",
+                                       "bulletin_message": {
+                                          "000": "\"Do not despair, brave ones! We want them to come... By collecting their masks and giving them to our allies, we'll make sure that new dragons can be hatched by your town and help you defend against their threat! Their masks are highly valuable artifacts for them, providing them with forgotten incognito spells that can no longer be created. The more masks we destroy, the safer the world will be for future dragons! That must be our purpose... Get the Shrine up, defend against cultists and retrieve dragon eggs from our allies by sending us their masks!\""
+                                       },
+                                       "choice_000": "Understood!"
+                                    },
+                                    "msg6": {
+                                       "bulletin_title": "The deep voice of [str(i18n_data.pet_custom_name)] echoes again!",
+                                       "dialog_title": "He is... crying?!",
+                                       "bulletin_message": {
+                                          "000": "A warm yet sad feeling permeates the town. \"It is time to say farewell, then. We know how difficult this can be for mortals. But we dragonkin share our existence with our own so none of us is ever truly gone. We keep all the memories of our last moments within our collective memories - and all the memories of this town and all of you will now be forever ingrained in the history of dragons. We are a part of you, and you'll always be a part of us. '[str(i18n_data.pet_custom_name)]' will never forget your kindness, Children of Monkey. And now Cadmus'ytrax rises!\" The dragon soars above the town for all to see against the sky, the wings spread in gratitude as he looks down all around. \"And may we meet again, one day!\""
+                                       },
+                                       "choice_000": "We'll miss you!"
+                                    }
+                                 }
+                              }
+                           },
+                           "quest_cultist_masks": {
+                              "title": "An ally of dragons approach us in secret!",
+                              "dialog_title": "Collecting Cultist Masks",
+                              "text": "\"Greetings from our mutual friend, Cadmus! Any masks from the cultists to contribute to our cause, brothers and sisters?\""
+                           },
+                           "quest_reward": {
+                              "title": "The ally of dragons departs with the masks",
+                              "dialog_title": "Delivery completed",
+                              "message": "With everyone's support - including our town - little by little we'll help dragons earn their place on this world!<br><br><font size=-1><i>[Dragonkin reputation increased]</i></font>",
+                              "choice_000": "Woot!"
+                           },
+                           "dragon_offer_reward": {
+                              "title": "Cadmus'ytrax flies away!",
+                              "dialog_title": "He bids farewell",
+                              "message": "Before leaving, he gently and carefully places something next to the town banner:",
+                              "choice_000": "Welcome, little one!"
+                           },
+                           "dialog_dragon_offer": {
+                              "dialog_tree_info": {
+                                 "dialog_nodes": {
+                                    "msg1": {
+                                       "bulletin_title": "Cadmus'ytrax is visiting us!",
+                                       "dialog_title": "A mighty dragon prince!",
+                                       "bulletin_message": {
+                                          "000": "Our dear former companion reappears above our town, shinier and bigger than ever!<br>\"Warm greetings, our dear friends! We're sorry this is a brief visit but we're here to share good news! Finding and uniting our kin has been a success so far, but unfortunately we often find... orphaned eggs. Would you be interested in one of them, to care and love our whelp as you once did to us?\" He smiles gently.",
+                                          "001": "Cadmus approaches with an imponent, respectful pace!<br>\"Salutations, our beloved family! Unfortunately we may not stay for too long... But we bring good tidings! We've been doing a good work as the prince of dragons so far, but unfortunately we often find... orphaned eggs. Would you be interested in one of them, to care and love our whelp as you once did to us?\" He smiles excitedly.",
+                                          "002": "Our beloved 'pet' returns home, bright and strong!<br>\"Greetings, our old friends! We hope this is an appropriate time for good news! Our task is a long and difficult one however it has been a success so far! Unfortunately we often find... orphaned eggs. Would you be interested in one of them, to care and love our whelp as you once did to us?\" He smiles kindly.",
+                                          "003": "The dragon hovers above the town, admired by all!<br>\"Warm greetings, family! We apologize it's been so long, but we bring news! We've been really busy uniting and bringing together all the remaining dragons, but unfortunately we often find... orphaned eggs. Would you be interested in one of them, to care and love our whelp as you once did to us?\" He smiles gratefully.",
+                                          "004": "He comes forth with an imposing yet gentle attitude!<br>\"It's good to be back! We've missed all of you, Children of Monkey... We bring good tidings! There's not a single day that we don't dedicate to bringing our kin back together, but unfortunately we often find... orphaned eggs. Would you be interested in one of them, to care and love our whelp as you once did to us?\" He smiles."
+                                       },
+                                       "choice_000": "We sure do!",
+                                       "choice_001": "We'll pass..."
+                                    },
+                                    "msg2": {
+                                       "bulletin_title": "Cadmus'ytrax is visiting us!",
+                                       "dialog_title": "He is satisfied!",
+                                       "bulletin_message": {
+                                          "000": "\"We knew we could count on you! We can always count on our closest kin. We trust you'll take good care of them! Which one would you want?\""
+                                       },
+                                       "choice_000": "Green!",
+                                       "choice_001": "Red!",
+                                       "choice_002": "Blue!",
+                                       "choice_003": "Metal!"
+                                    },
+                                    "decline": {
+                                       "bulletin_title": "Cadmus'ytrax is visiting us!",
+                                       "dialog_title": "He prepares to set off",
+                                       "bulletin_message": {
+                                          "000": "\"We understand, our friends. Raising a dragon is no easy task and we're not always prepared for such a responsibility... Well, we shall return some other time, as long as the shrine is lit, we'll always count on you! Take care and may destiny be kind to your town!\""
+                                       },
+                                       "choice_000": "Farewell!"
                                     }
                                  }
                               }
@@ -14606,6 +14697,38 @@
          "dragon_copper": {
             "display_name": "Copper Dragon",
             "description": "A strong friend and protector. Glorious!"
+         },
+         "dragon_whelp_copper": {
+            "egg": {
+               "dragon_copper_egg_fertilized_ghost": {
+                  "display_name": "Copper Dragon Egg",
+                  "description": "So mysterious! It should be placed somewhere damp and rusty..."
+               }
+            }
+         },
+         "dragon_whelp_fire": {
+            "egg": {
+               "dragon_fire_egg_fertilized_ghost": {
+                  "display_name": "Fire Dragon Egg",
+                  "description": "So mysterious! It should be placed somewhere that is very warm..."
+               }
+            }
+         },
+         "dragon_whelp_ice": {
+            "egg": {
+               "dragon_ice_egg_fertilized_ghost": {
+                  "display_name": "Ice Dragon Egg",
+                  "description": "So mysterious! It should be placed somewhere dark and cold..."
+               }
+            }
+         },
+         "dragon_whelp_nature": {
+            "egg": {
+               "dragon_nature_egg_fertilized_ghost": {
+                  "display_name": "Nature Dragon Egg",
+                  "description": "So mysterious! It should be placed somewhere safe and wild..."
+               }
+            }
          }
       },
       "critters": {
@@ -18592,7 +18715,7 @@
             },
             "dragon_cult": {
                "display_name": "Dragon Cult Mask",
-               "description": "A trophy from defeating the sinister followers of the dragon cult... Must have a good value!"
+               "description": "A trophy from defeating the sinister followers of the dragon cult..."
             }
          }
       },
@@ -19213,7 +19336,8 @@
                "brewing_ingredient": "Brewing Ingredients",
                "boulder": "Stonework",
                "automatons_and_golems": "Automatons & Golems",
-               "herbalist_planter": "Herbalist Planters"
+               "herbalist_planter": "Herbalist Planters",
+               "creature_egg": "Creature Eggs"
             }
          },
          "custom_tooltips": {

@@ -1,0 +1,25 @@
+{
+   "type": "encounter",
+   "encounter_type": "dialog_tree",
+   "rarity": "common",
+   "in_edge": "quest_reward",
+   "dialog_tree_info": {
+      "start_node": "msg1",
+      "nodes": {
+         "msg1": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.dragonborn_king.arcs.trigger.dragonborn_king.encounters.quest_reward.title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.dragonborn_king.arcs.trigger.dragonborn_king.encounters.quest_reward.dialog_title)",
+               "message": [
+                  "i18n(stonehearth_ace:data.gm.campaigns.dragonborn_king.arcs.trigger.dragonborn_king.encounters.quest_reward.message)"
+               ],
+               "choices": {
+                  "stonehearth_ace:data.gm.campaigns.dragonborn_king.arcs.trigger.dragonborn_king.encounters.quest_reward.choice_000": {
+                     "out_edge": "add_quest_counter"
+                  }
+               }
+            }
+         }
+      }
+   }
+}

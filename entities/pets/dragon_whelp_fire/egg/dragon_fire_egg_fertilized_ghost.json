@@ -1,0 +1,27 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dragon_fire_egg_fertilized.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "ignore_gravity": true,
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(dragon_fire_egg_fertilized.png)",
+         "category": "creature_egg",
+         "material_tags": [
+            "fertilized_egg",
+            "dragon_fire_egg_fertilized"
+         ]
+      }
+   }
+}
