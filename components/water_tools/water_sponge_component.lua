@@ -265,12 +265,12 @@ function WaterSpongeComponent:on_tick_water_processor()
                         water_entity = stonehearth.hydrology:get_water_body_at(output_location)
                         if not water_entity then
                            local channel = self._prev_waterfall_channel
+                           local channel_manager = stonehearth.hydrology:get_channel_manager()
 
                            if not channel then
                               local bottom = stonehearth.hydrology:get_terrain_below(output_location)
                               if output_location ~= bottom then
-                                 water_entity = stonehearth.hydrology:get_or_create_water_body_at(bottom)
-                                 local channel_manager = stonehearth.hydrology:get_channel_manager()
+                                 water_entity = stonehearth.hydrology:get_or_create_water_body_at(bottom)                               
                                  channel = channel_manager:add_waterfall_channel(output_origin, bottom, self._entity, water_entity)
                                  self._prev_waterfall_channel = channel
                               end
