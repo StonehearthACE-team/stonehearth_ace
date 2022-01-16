@@ -179,6 +179,7 @@ local monkey_patches = {
    ace_tentacle_snared_debuff = 'stonehearth.data.buffs.tentacle_snared.tentacle_snared_debuff',
    ace_terrain_patch_component = 'stonehearth.components.terrain_patch.terrain_patch_component',
    ace_terrain_service = 'stonehearth.services.server.terrain.terrain_service',
+   ace_thunderstorm = 'stonehearth.data.weather.thunderstorm.thunderstorm',
    ace_town = 'stonehearth.services.server.town.town',
    ace_town_patrol_service = 'stonehearth.services.server.town_patrol.town_patrol_service',
    ace_town_service = 'stonehearth.services.server.town.town_service',
