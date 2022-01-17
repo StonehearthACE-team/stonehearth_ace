@@ -241,7 +241,7 @@ function AceCraftOrderList:remove_order(order_id, amount)
    local i = self:find_index_of(order_id)
    if i then
       local order = self._sv.orders[i]
-      if not amount or not order:reduce_quantity(amount) then
+      if order and not amount or not order:reduce_quantity(amount) then
          table.remove(self._sv.orders, i)
          local order_id = order:get_id()
 
