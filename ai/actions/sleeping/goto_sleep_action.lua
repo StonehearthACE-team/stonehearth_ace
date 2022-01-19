@@ -2,6 +2,8 @@
    override to not try to sleep while following a shepherd, and to cancel sleeping when a shepherd calls
 ]]
 
+local sleeping_lib = require 'stonehearth_ace.ai.lib.sleeping_lib'
+
 local GoToSleep = radiant.class()
 
 GoToSleep.name = 'go to sleep'
@@ -21,8 +23,8 @@ function GoToSleep:start_thinking(ai, entity, args)
 
    self._ai = ai
    self._entity = entity
-   self._bedtime_start = self:_get_bedtime(false)
-   self._bedtime_end = self:_get_bedtime(true)
+   self._bedtime_start = sleeping_lib.get_bedtime(entity, false)
+   self._bedtime_end = sleeping_lib.get_bedtime(entity, true)
    self._ready = false
    self._sleepiness_listener = radiant.events.listen(entity, 'stonehearth:expendable_resource_changed:sleepiness', self, self._rethink)
    self._bedtime_start_alarm = stonehearth.calendar:set_alarm(self._bedtime_start, function()
@@ -93,30 +95,11 @@ function GoToSleep:_rethink()
       return
    end
 
-   -- Our decision is mainly based on the sleepiness resource.
-   local resources = self._entity:get_component('stonehearth:expendable_resources')
-   local raw_sleepiness = resources:get_value('sleepiness')
-   local sleepiness = raw_sleepiness
-
-   -- Effective sleepiness is augmented by whether it's bedtime.
-   local now = stonehearth.calendar:get_seconds_since_last_midnight()
-   local bedtime_end = self._bedtime_end
-   local seconds_in_day = stonehearth.calendar:get_time_durations().day
-   if bedtime_end < self._bedtime_start then
-      bedtime_end = bedtime_end + seconds_in_day
-   end
-   if now < self._bedtime_start then
-      now = now + seconds_in_day
-   end
-   local is_bedtime = now >= self._bedtime_start and now <= bedtime_end
-   if is_bedtime then
-      local progress = math.min(1.0, (now - self._bedtime_start) / stonehearth.calendar:get_time_durations().hour)  -- Rise gradually over an hour.
-      sleepiness = sleepiness + progress * stonehearth.constants.sleep.BEDTIME_SLEEPINESS_BOOST
-   end
+   local sleepiness, raw_sleepiness, is_bedtime = sleeping_lib.get_current_sleepiness(self._entity, self._bedtime_start, self._bedtime_end)
    
    -- Make the decision.
    local min_sleepiness_to_sleep = stonehearth.constants.sleep.MIN_SLEEPINESS_TO_SLEEP
-   local max_sleepiness = resources:get_max_value('sleepiness')
+   local max_sleepiness = self._entity:get_component('stonehearth:expendable_resources'):get_max_value('sleepiness')
    if sleepiness >= min_sleepiness_to_sleep then
       if not self._ready then
          local sleepiness_severity = (math.min(sleepiness, max_sleepiness) - min_sleepiness_to_sleep) / (max_sleepiness - min_sleepiness_to_sleep)
@@ -136,21 +119,6 @@ function GoToSleep:_rethink()
       self._ai:set_debug_progress(radiant.util.format_string('sleepiness =  %d / [%d - %d]; bedtime = %s; ready = %s',
                                                              raw_sleepiness, min_sleepiness_to_sleep, max_sleepiness, is_bedtime, self._ready))
    end
-end
-
-function GoToSleep:_get_bedtime(is_end)  -- in seconds since midnight
-   local hour = is_end and stonehearth.constants.sleep.BEDTIME_END_HOUR
-                        or stonehearth.constants.sleep.BEDTIME_START_HOUR
-                        
-   local attributes = self._entity:get_component('stonehearth:attributes')
-   if attributes then
-      local wake_up_time_modifier = attributes:get_attribute('wake_up_time_modifier', 0)
-      if wake_up_time_modifier ~= 0 then
-         hour = hour + wake_up_time_modifier
-      end
-   end
-
-   return hour * stonehearth.calendar:get_time_durations().hour
 end
 
 local ai = stonehearth.ai

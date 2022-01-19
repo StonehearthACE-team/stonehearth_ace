@@ -4,6 +4,8 @@
 
 local AceChannelManager = class()
 
+local log = radiant.log.create_logger('water')
+
 function AceChannelManager:_update_link(link)
    if not link.to_entity then
       return
@@ -44,11 +46,15 @@ function AceChannelManager:fill_links(links, rate)
    for _, link in pairs(links) do
       local water_level = link.from_entity:add_component('stonehearth_ace:water_source'):get_water_level()
       for key, channel in pairs(link.waterfall_channels) do
-         local waterfall_component = channel.entity:add_component('stonehearth:waterfall')
+         local waterfall_component = channel.entity and channel.entity:add_component('stonehearth:waterfall')
          if waterfall_component then
             channel.volume = channel.volume + rate * channel.capacity
             waterfall_component:set_volume(channel.volume)
             waterfall_component:set_source_water_level(water_level)
+         else
+            -- if there isn't a waterfall channel entity, it's not a waterfall channel! why is this happening?
+            -- does a waterfall channel turn into a non-waterfall channel if it gets short enough?
+            log:error('channel manager trying to fill waterfall link without entity: %s %s', key, radiant.util.table_tostring(channel))
          end
       end
 

@@ -14,6 +14,29 @@ function AceHydrologyService:_create_tick_timer()
    stonehearth_ace.water_signal:start()
 end
 
+AceHydrologyService._ace_old__on_terrain_changed = HydrologyService._on_terrain_changed
+function AceHydrologyService:_on_terrain_changed(delta_region, now)
+   log:debug('_on_terrain_changed...')
+
+   if self._ignore_terrain_region then
+      delta_region:subtract_region(self._ignore_terrain_region)
+      self._ignore_terrain_region = nil
+   end
+
+   if not delta_region:empty() then
+      log:debug('... %s (%s), %s', delta_region, delta_region:get_bounds(), now)
+      self:_ace_old__on_terrain_changed(delta_region, now)
+   end
+end
+
+function AceHydrologyService:add_ignore_terrain_region_changes(region)
+   if not self._ignore_terrain_region then
+      self._ignore_terrain_region = Region3()
+   end
+   
+   self._ignore_terrain_region:add_region(region)
+end
+
 function AceHydrologyService:_ensure_water_processors()
    if not self._water_processors then
       -- instead of always sorting a list, use elevation as a key and process from min to max
@@ -224,6 +247,12 @@ function AceHydrologyService:create_water_body_with_region(region, height, merge
    end
 
    return water_entity
+end
+
+AceHydrologyService._ace_old__create_water_body_internal = HydrologyService._create_water_body_internal
+function AceHydrologyService:_create_water_body_internal(location, boxed_region, height)
+   log:debug('creating water body: %s, %s (%s), %s', location, tostring(boxed_region), boxed_region and boxed_region:get():get_bounds() or 'nil', tostring(height))
+   return self:_ace_old__create_water_body_internal(location, boxed_region, height)
 end
 
 -- ACE: add extra parameter for skipping mark_changed

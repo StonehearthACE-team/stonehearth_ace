@@ -286,4 +286,61 @@ function AceMiningService:get_adjacent_for_destination_region(region)
    return adjacent_region
 end
 
+-- don't remove one point a time; remove the whole thing at once
+function AceMiningService:insta_mine(region)
+   local terrain_region = radiant.terrain.intersect_region(region)
+
+   -- check all adjacent areas for water regions
+   -- if there's a single water region, create a new water region in this mining region at that height
+   -- then merge it into that other region
+   -- if there are multiple regions, let them handle it themselves, it could be complicated
+   local inflated_region = csg_lib.get_non_diagonal_xyz_inflated_region(terrain_region)
+   local waters = radiant.terrain.get_entities_in_region(inflated_region, function(entity) return entity:get_component('stonehearth:water') ~= nil end)
+   local num_waters = radiant.size(waters)
+
+   if num_waters == 1 then
+      stonehearth.hydrology:add_ignore_terrain_region_changes(terrain_region)
+   end
+
+   radiant.terrain.subtract_region(terrain_region)
+
+   self._mined_region:add_region(terrain_region)
+   self._mined_region:optimize_changed_tiles('MiningService:_add_to_mined_region')
+
+   -- and then update interior on a point-by-point basis
+   for point in terrain_region:each_point() do
+      self:_update_interior_region(point)
+   end
+
+   if num_waters == 1 then
+      local water_entity = waters[next(waters)]
+      local water_comp = water_entity:get_component('stonehearth:water')
+      local water_location = water_comp:get_location()
+      local water_region = water_comp:get_region():get():translated(water_location)
+      local water_level = water_comp:get_water_level()
+      log:debug('found adjacent water region %s (%s) with water level %s', water_region, water_region:get_bounds(), water_level)
+
+      -- use the bounds of the region to clip the top down to the water level
+      local new_region = Region3(terrain_region)
+      local bounds = new_region:get_bounds()
+      local water_max_y = water_region:get_bounds().max.y
+      local terrain_max_y = bounds.max.y
+      local terrain_min_y = bounds.min.y
+      log:debug('mining %s (%s) and adding water to world height %s', terrain_region, bounds, water_level)
+      if terrain_max_y > water_max_y then
+         -- first we shift the bounds up by the height of the region, then down by the difference in terrain and water heights
+         new_region = new_region - bounds:translated(Point3(0, water_max_y - terrain_min_y, 0))
+         log:debug('terrain higher than water; reducing bounds to %s', new_region:get_bounds())
+      end
+
+      --local new_height = math.min(water_level, terrain_max_y) - terrain_min_y
+      log:debug('adding region %s (%s) to water body %s', new_region, new_region:get_bounds(), water_entity)
+      new_region:translate(-water_location)
+      water_comp:add_to_region(new_region)
+      --local new_water = stonehearth.hydrology:create_water_body_with_region(new_region, new_height)
+      -- merge the new water with the old
+      --stonehearth.hydrology:merge_water_bodies(water_entity, new_water, true)
+   end
+end
+
 return AceMiningService
