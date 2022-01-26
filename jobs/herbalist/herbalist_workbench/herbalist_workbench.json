@@ -1,5 +1,21 @@
 {	
    "type": "entity",
+   "components": {
+      "mixintypes": {
+         "destination": "override"
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 0 }
+            }
+         ],
+         "adjacency_flags": [
+            "front", "center"
+         ]
+      }
+   },
    "entity_data": {
 	  "stonehearth:workshop": {
          "equivalents": [ "stonehearth_ace:rayyas_children:herbalist:workbench", "stonehearth_ace:northern_alliance:herbalist:workbench", "stonehearth_ace:mountain_folk:grower:workbench" ]

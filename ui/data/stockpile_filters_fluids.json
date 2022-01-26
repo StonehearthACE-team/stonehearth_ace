@@ -176,7 +176,7 @@
                "ordinal": 3.1,
                "display_name": "i18n(stonehearth_ace:entities.drink.coffee.coffee_milk.display_name)",
                "icon": "/stonehearth_ace/entities/decoration/copper_coffee_pot/copper_coffee_pot.png",
-               "filter": "drink_container coffee milk"
+               "filter": "drink_container coffee white"
             },
             "coffee_bold": {
                "ordinal": 3.2,
@@ -778,14 +778,20 @@
                "icon": "/stonehearth_ace/entities/food/vinegar/unfermented_vinegar_wine/unfermented_vinegar_wine.png",
                "filter": "brewing_ingredient unfermented_vinegar wine"
             },
-            "unfermented_vinegar_mead": {
+            "unfermented_vinegar_juice": {
                "ordinal": 14.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.vinegar.unfermented_vinegar_juice.display_name)",
+               "icon": "/stonehearth_ace/entities/food/vinegar/unfermented_vinegar_juice/unfermented_vinegar_juice.png",
+               "filter": "brewing_ingredient unfermented_vinegar juice"
+            },
+            "unfermented_vinegar_mead": {
+               "ordinal": 14.2,
                "display_name": "i18n(stonehearth_ace:entities.food.vinegar.unfermented_vinegar_mead.display_name)",
                "icon": "/stonehearth_ace/entities/food/vinegar/unfermented_vinegar_mead/unfermented_vinegar_mead.png",
                "filter": "brewing_ingredient unfermented_vinegar mead"
             },
             "unfermented_vinegar_brew": {
-               "ordinal": 14.2,
+               "ordinal": 14.3,
                "display_name": "i18n(stonehearth_ace:entities.food.vinegar.unfermented_vinegar_brew.display_name)",
                "icon": "/stonehearth_ace/entities/food/vinegar/unfermented_vinegar_brew/unfermented_vinegar_brew.png",
                "filter": "brewing_ingredient unfermented_vinegar beer_or_ale"
@@ -969,6 +975,12 @@
                "display_name": "i18n(stonehearth_ace:entities.consumables.potion.anti_toxin.strong.display_name)",
                "icon": "/stonehearth_ace/entities/consumables/potion/potion_anti_toxin_strong/potion_anti_toxin_strong.png",
                "filter": "potion anti_toxin strong"
+            },
+            "potion_last_stand": {
+               "ordinal": 51,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.potion.last_stand.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/potion/potion_last_stand/potion_last_stand.png",
+               "filter": "potion last_stand"
             }
          }
       }

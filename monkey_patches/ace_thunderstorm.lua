@@ -56,6 +56,13 @@ function AceThunderstormWeather:_spawn_lightning()
          -- ACE Changes start here; we don't want trees to drop their resources anymore. We'll drop some charcoal now, just for fun!
          if tree:is_valid() then
             radiant.entities.destroy_entity(tree)
+            local charcoal_amount = rng:get_int(1,4)
+            while charcoal_amount ~= 0 do
+               local charcoal = radiant.entities.create_entity('stonehearth_ace:resources:coal:piece_of_charcoal')
+               local charcoal_location = radiant.terrain.find_placement_point(location, 0, 3)
+               radiant.terrain.place_entity(charcoal, charcoal_location)
+               charcoal_amount = charcoal_amount - 1
+            end
          end
          -- ACE Changes end here
       else
