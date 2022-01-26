@@ -1,0 +1,14 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "wait_for_unlock",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "open_lock"
+      ]
+   },
+   "wait_info": {
+      "duration": "2d+3d"
+   }
+}

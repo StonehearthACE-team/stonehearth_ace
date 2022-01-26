@@ -1,0 +1,12 @@
+{
+   "can_start": {
+      "test_1": {
+         "only_one_wait_allowed": {
+            "type": "deny_if_greater_than",
+            "item": "number_active",
+            "start_node": "wait_to_attack",
+            "value": 0
+         }
+      }
+   }
+}

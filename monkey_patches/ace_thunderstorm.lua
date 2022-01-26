@@ -54,7 +54,9 @@ function AceThunderstormWeather:_spawn_lightning()
          self:_spawn_effect_at(location, effect)
          self:_spawn_effect_at(location, LIGHTNING_TREE_EFFECT)
          -- ACE Changes start here; we don't want trees to drop their resources anymore. We'll drop some charcoal now, just for fun!
-         radiant.entities:destroy_entity(tree)
+         if tree:is_valid() then
+            radiant.entities.destroy_entity(tree)
+         end
          -- ACE Changes end here
       else
          local center = Point3(x, terrain_bounds.max.y, z)

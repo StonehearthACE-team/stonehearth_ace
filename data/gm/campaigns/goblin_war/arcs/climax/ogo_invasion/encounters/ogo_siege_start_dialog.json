@@ -1,0 +1,30 @@
+{
+   "type": "encounter",
+   "encounter_type": "dialog_tree",
+   "rarity": "common",
+   "in_edge": "ogo_siege_start_dialog",
+   "dialog_tree_info": {
+      "start_node": "msg1",
+      "nodes": {
+         "msg1": {
+            "bulletin": {
+               "zoom_to_entity": "ogo_army_raid.ogo_skullbonker",
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.goblin_war.arcs.climax.ogo_invasion.encounters.ogo_siege_start_dialog.dialog_tree_info.dialog_nodes.msg1.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.goblin_war.arcs.climax.ogo_invasion.encounters.ogo_siege_start_dialog.dialog_tree_info.dialog_nodes.msg1.dialog_title)",
+               "message": [
+                  "i18n(stonehearth_ace:data.gm.campaigns.goblin_war.arcs.climax.ogo_invasion.encounters.ogo_siege_start_dialog.dialog_tree_info.dialog_nodes.msg1.bulletin_message.000)"
+               ],
+               "choices": {
+                  "stonehearth_ace:data.gm.campaigns.goblin_war.arcs.climax.ogo_invasion.encounters.ogo_siege_start_dialog.dialog_tree_info.dialog_nodes.msg1.reply": {
+                     "out_edge": {
+                        "type": "destroy_tree",
+                        "root": "ogo_siege_start_dialog",
+                        "destroy_root": true
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

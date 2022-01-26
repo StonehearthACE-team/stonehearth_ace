@@ -1,0 +1,39 @@
+{
+   "type": "encounter",
+   "encounter_type": "dialog_tree",
+   "rarity": "common",
+   "in_edge": "town_wipe_dialog_not_hard",
+   "can_start": {
+      "test_1": {
+         "game_mode_check": {
+            "type": "deny_if",
+            "item": "game_mode",
+            "value": "stonehearth:game_mode:hard"
+         }
+      }
+   },
+   "dialog_tree_info": {
+      "start_node": "msg1",
+      "nodes": {
+         "msg1": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.game_events.town_wipe_dialog.dialog_tree_info.dialog_nodes.msg1.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.game_events.town_wipe_dialog.dialog_tree_info.dialog_nodes.msg1.dialog_title)",
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.game_events.town_wipe_dialog.dialog_tree_info.dialog_nodes.msg1.message)",
+               "choices": {
+                  "stonehearth:ui.game.common.ok": {
+                     "out_edge": {
+                        "type": "trigger_many",
+                        "out_edges": [
+                           "set_lock",
+                           "wait_for_lone_wanderer",
+                           "wait_for_clear_hostiles"
+                        ]
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,33 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_requirements_met",
+   "in_edge": "wait_for_town_wipe",
+   "can_start": {
+      "test_1": {
+         "only_one_check_allowed": {
+            "type": "deny_if_greater_than",
+            "item": "number_active",
+            "start_node": "wait_for_town_wipe",
+            "value": 0
+         }
+      }
+   },
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "town_wipe_dialog_not_hard",
+         "town_wipe_dialog_hard"
+      ]
+   },
+   "wait_for_requirements_met_info": {
+      "recheck_delay": "2h",
+      "requirements": {
+         "town_incapacitation_check": {
+            "item": "script",
+            "type": "deny_if_not",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:town_incapacitation_check"
+         }
+      }
+   }
+}

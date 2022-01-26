@@ -1,0 +1,59 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(step_wooden.qb)"
+            ]
+         },
+         "end_left": {
+            "models": [
+               "file(step_wooden_end_left.qb)"
+            ]
+         },
+         "end_right": {
+            "models": [
+               "file(step_wooden_end_right.qb)"
+            ]
+         },
+         "straight": {
+            "models": [
+               "file(step_wooden_straight.qb)"
+            ]
+         },
+         "corner_concave_closed": {
+            "models": [
+               "file(step_wooden_corner_concave_closed.qb)"
+            ]
+         },
+         "corner_concave_open": {
+            "models": [
+               "file(step_wooden_corner_concave_open.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0.0, "y": 0, "z": 0.0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": false
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Crafted Ladder",
+         "description": "The most efficient tool for going upwards.",
+         "icon": "file(step_wooden.png)",
+         "category": "construction",
+         "material_tags": [
+            "wood",
+            "step",
+            "crafted",
+            "stockpile_construction"
+         ]
+      }
+   }
+}

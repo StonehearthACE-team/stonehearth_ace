@@ -1,0 +1,12 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "add_lone_wanderer",
+   "out_edge": "wait_for_unlock",
+   "script_info": {
+      "script": "file(add_lone_wanderer.lua)",
+      "data": {
+         "title": "i18n(stonehearth_ace:data.gm.campaigns.game_events.add_lone_wanderer.bulletin_tile)"
+      }
+   }
+}
