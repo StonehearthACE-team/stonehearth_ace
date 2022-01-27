@@ -1,4 +1,8 @@
+local rng = _radiant.math.get_default_rng()
+
 local AceSandstormWeather = class()
+
+local CROP_DESTROY_CHANCE = 0.05
 
 function AceSandstormWeather:_apply_stormicle_damage_to(item)
     if stonehearth.game_creation:get_game_mode() ~= 'stonehearth:game_mode:peaceful' then
