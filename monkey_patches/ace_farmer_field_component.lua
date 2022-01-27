@@ -395,6 +395,8 @@ function AceFarmerFieldComponent:_replace_crop_with_post_harvest(dirt_plot, prod
          dirt_plot.post_harvest_contents = product
          product:add_component('stonehearth:crop'):set_field(self, x, z)
          product:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
+         -- when the crop is destroyed, it reduces the crop count by one, so offset that by adding one
+         self._sv.num_crops = self._sv.num_crops + 1
       end
    end
 

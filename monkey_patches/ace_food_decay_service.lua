@@ -85,4 +85,42 @@ function AceFoodDecayService:increment_decay(food_decay_data)
    return true
 end
 
+function FoodDecayService:_convert_to_rotten_form(entity, rotten_alias)
+   local inventory = nil
+   local storage_component = nil
+   local location = nil
+   local rotten_entity
+   if rotten_alias then
+      -- Replace Food with a rotten form
+      local player_id = entity:get_player_id()
+      if player_id and player_id ~= '' then
+         inventory = stonehearth.inventory:get_inventory(player_id)
+         location = radiant.entities.get_world_grid_location(entity)
+         rotten_entity = radiant.entities.create_entity(rotten_alias, { owner = player_id })
+         if not location then
+            -- if no location, is it in storage?
+            local storage = inventory and inventory:container_for(entity)
+            if storage then
+               storage_component = storage:get_component('stonehearth:storage')
+            end
+         end
+      end
+   end
+   if inventory then
+      inventory:remove_item(entity:get_id())
+   end
+   -- Food is rotten beyond recognition. Destroy it.
+   radiant.entities.destroy_entity(entity)
+   if rotten_entity then
+      if location then
+         radiant.terrain.place_entity(rotten_entity, location)
+      elseif not storage_component or not storage_component:add_item(rotten_entity, true) then
+         if inventory then
+            inventory:add_item(rotten_entity)
+         end
+      end
+      self:_on_entity_added_to_world(rotten_entity)
+   end
+end
+
 return AceFoodDecayService

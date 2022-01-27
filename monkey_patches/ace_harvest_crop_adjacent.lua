@@ -13,7 +13,6 @@ function AceHarvestCropAdjacent:start_thinking(ai, entity, args)
                                     :get_farmer_field()
 
    self._crop = self._farmer_field:crop_at(args.location)
-   self._spawn_count = self:_get_num_to_increment(entity)
    self._origin = radiant.entities.get_world_grid_location(args.field_layer)
 
    if not self._crop or not self._crop:is_valid() then
@@ -22,6 +21,7 @@ function AceHarvestCropAdjacent:start_thinking(ai, entity, args)
       return
    end
 
+   self._spawn_count = self:_get_num_to_increment(entity)
    local carrying = ai.CURRENT.carrying
    if carrying then
       -- make sure it's the right crop...
