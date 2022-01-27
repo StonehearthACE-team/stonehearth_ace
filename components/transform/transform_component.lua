@@ -564,7 +564,7 @@ function TransformComponent:request_craft_order(player_id)
       local inventory = stonehearth.inventory:get_inventory(player_id)
       if inventory then
          local tracker = inventory:get_item_tracker('stonehearth:basic_inventory_tracker'):get_tracking_data()
-         if stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth', 'building_auto_queue_crafters', true) and not inventory:contains(data.transform_ingredient_uri) then
+         if stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth', 'building_auto_queue_crafters', true) and not tracker:contains(data.transform_ingredient_uri) then
             local player_jobs = stonehearth.job:get_jobs_controller(player_id)
             local order = player_jobs:request_craft_product(ingredient, 1)
             self:set_craft_order(order)

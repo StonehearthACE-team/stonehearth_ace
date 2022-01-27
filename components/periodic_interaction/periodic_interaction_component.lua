@@ -192,6 +192,7 @@ end
 
 function PeriodicInteractionComponent:activate()
    self:_select_mode_sequences()
+   self:_load_current_mode_data(self._sv.current_mode)
 end
 
 function PeriodicInteractionComponent:post_activate()
@@ -214,10 +215,6 @@ end
 function PeriodicInteractionComponent:destroy()
    self:_destroy_eligibility_listeners()
    
-   if self._consider_usability_timer then
-      self._consider_usability_timer:destroy()
-      self._consider_usability_timer = nil
-   end
    if self._parent_trace then
       self._parent_trace:destroy()
       self._parent_trace = nil
@@ -264,7 +261,6 @@ function PeriodicInteractionComponent:_startup()
    end
 
    self:select_mode(self._sv.current_mode)
-   self:_setup_consider_usability_timer()
    self:_setup_usability_listeners()
    self:_consider_usability()
 end
@@ -313,6 +309,10 @@ function PeriodicInteractionComponent:get_current_user()
    return self._sv.current_user
 end
 
+function PeriodicInteractionComponent:is_usable()
+   return self._is_usable
+end
+
 function PeriodicInteractionComponent:start_using(user)
    if self._sv.current_user == user or not self._sv.current_user then
       self._sv.current_user = user
@@ -327,13 +327,6 @@ function PeriodicInteractionComponent:cancel_using(user)
       self:_reset(false, true)
       self:_cancel_usage()
    end
-end
-
-function PeriodicInteractionComponent:_setup_consider_usability_timer()
-   -- is this better than having the ai do find_best_reachable_entity_by_type?
-   self._consider_usability_timer = stonehearth.calendar:set_interval('PeriodicInteraction consider_usability', '10m', function()
-         self:_consider_usability()
-      end)
 end
 
 function PeriodicInteractionComponent:_reset(completed, skip_mode_reselection)
@@ -424,14 +417,20 @@ function PeriodicInteractionComponent:_select_mode_sequences()
    end
 end
 
-function PeriodicInteractionComponent:select_mode(mode)
+function PeriodicInteractionComponent:_load_current_mode_data(mode)
    if not mode or not self._sv._mode_sequences[mode] then
       mode = next(self._sv._mode_sequences)
    end
-
+   
    self._current_mode_data = self._json.modes[mode]
    self._current_sequence = self._sv._mode_sequences[mode]
    self._current_sequence_data = self._current_mode_data.sequences[self._current_sequence]
+
+   return mode
+end
+
+function PeriodicInteractionComponent:select_mode(mode)
+   mode = self:_load_current_mode_data(mode)
 
    if mode ~= self._sv.current_mode then
       self:_cancel_usage()
@@ -439,7 +438,6 @@ function PeriodicInteractionComponent:select_mode(mode)
       self.__saved_variables:mark_changed()
    end
 
-   -- TODO: cancel any current interaction
    self:_stop_interaction_cooldown_timer()
    self:_apply_current_stage_settings()
    self:_consider_usability()
@@ -475,6 +473,10 @@ end
 
 function PeriodicInteractionComponent:is_valid_potential_user(entity)
    if entity and entity:is_valid() then
+      if self._sv.current_user and self._sv.current_user:is_valid() and entity ~= self._sv.current_user then
+         return false
+      end
+
       local requirements = self._current_mode_data.requirements
       
       if requirements.job then
@@ -707,58 +709,24 @@ end
 
 -- consider whether (and who) to alert that this entity can be interacted with
 function PeriodicInteractionComponent:_consider_usability()
+   local usable = true
+
    -- if it's disabled or still on interaction cooldown or actively being used, don't inform anyone
    if not self._sv.enabled or self._sv._interaction_cooldown_timer or self._in_use then
-      return
+      usable = false
    end
 
    -- if it's not in the world, it's not actually usable, so make sure it's reset and don't inform anyone
    local location = radiant.entities.get_world_grid_location(self._entity)
    if not location then
       self:_reset(false)
-      return
+      usable = false
    end
 
-   -- if we already have a user assigned, first ensure that user is stil valid;
-   -- if so, only inform that user; otherwise, reset interaction so someone else can start
-   if self._sv.current_user then
-      if self:is_valid_potential_user(self._sv.current_user) then
-         self:_inform_potential_user(self._sv.current_user)
-      else
-         self:_reset(false)
-      end
-      return
+   if usable ~= self._is_usable then
+      self._is_usable = usable
+      stonehearth.ai:reconsider_entity(self._entity, 'stonehearth_ace:periodic_interaction')
    end
-
-   -- if it's still on general cooldown, don't inform anyone else
-   if self._sv._general_cooldown_timer then
-      return
-   end
-
-   -- next check if somebody owns this entity
-   -- if so, check if they're still a valid user
-   -- if they are, inform them; otherwise, clear ownership and inform all valid potential users
-   -- we can't use base game ownership model because it's one-to-one and requires all hearthlings to be allowed to use that type
-   local owner = self._sv.current_owner
-   if owner then
-      if self:is_valid_potential_user(owner) then
-         self:_inform_potential_user(owner)
-         return
-      else
-         self._sv.current_owner = nil
-         self.__saved_variables:mark_changed()
-      end
-   end
-   
-   local potential_users = self:get_valid_potential_users()
-   for _, user in ipairs(potential_users) do
-      self:_inform_potential_user(user)
-   end
-end
-
-function PeriodicInteractionComponent:_inform_potential_user(entity)
-   --log:debug('%s informing potential user %s of usability...', self._entity, entity)
-   radiant.events.trigger_async(entity, 'stonehearth_ace:periodic_interaction:became_usable', self._entity, self._sv.current_mode)
 end
 
 return PeriodicInteractionComponent

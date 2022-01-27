@@ -4,7 +4,7 @@ function sleeping_lib.is_sleepy_enough_to_sleep(entity, bedtime_start, bedtime_e
    local min_sleepiness_to_sleep = stonehearth.constants.sleep.MIN_SLEEPINESS_TO_SLEEP
    local sleepiness = sleeping_lib.get_current_sleepiness(entity, bedtime_start, bedtime_end)
 
-   return sleepiness > min_sleepiness_to_sleep
+   return sleepiness and sleepiness > min_sleepiness_to_sleep
 end
 
 function sleeping_lib.get_current_sleepiness(entity, bedtime_start, bedtime_end)
@@ -17,7 +17,11 @@ function sleeping_lib.get_current_sleepiness(entity, bedtime_start, bedtime_end)
    
    -- Our decision is mainly based on the sleepiness resource.
    local resources = entity:get_component('stonehearth:expendable_resources')
-   local raw_sleepiness = resources:get_value('sleepiness')
+   local raw_sleepiness = resources and resources:get_value('sleepiness')
+   if not raw_sleepiness then
+      -- it's an egg or something that doesn't have the component or sleepiness resource, return nil
+      return nil, nil, nil
+   end
    local sleepiness = raw_sleepiness
 
    -- Effective sleepiness is augmented by whether it's bedtime.

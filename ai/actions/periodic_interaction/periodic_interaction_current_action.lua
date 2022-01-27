@@ -3,22 +3,13 @@ local PeriodicInteraction = radiant.class()
 PeriodicInteraction.name = 'periodic interaction'
 PeriodicInteraction.does = 'stonehearth_ace:periodic_interaction'
 PeriodicInteraction.args = {}
-PeriodicInteraction.priority = 0
+PeriodicInteraction.priority = 1.0
 
-local function _interact_filter_fn(player_id, job_uri, job_level, item)
-   if not item or not item:is_valid() then
-      return false
-   end
-
-   if radiant.entities.get_player_id(item) ~= player_id then
-      return false
-   end
-
+local function _interact_filter_fn(user_id, item)
    local periodic_interaction = item:get_component('stonehearth_ace:periodic_interaction')
-   if periodic_interaction and periodic_interaction:is_usable() and not periodic_interaction:get_current_user() then
-      local job_req = periodic_interaction:get_current_mode_job_requirement()
-      local level_req = periodic_interaction:get_current_mode_job_level_requirement()
-      return not job_req or (job_uri == job_req and (not level_req or job_level >= level_req))
+   if periodic_interaction and periodic_interaction:is_usable() then
+      local user = periodic_interaction:get_current_user()
+      return user and user:get_id() == user_id
    end
 end
 
@@ -39,12 +30,11 @@ end
 function PeriodicInteraction:start_thinking(ai, entity, args)
    local player_id = radiant.entities.get_work_player_id(entity)
    local job_component = entity:get_component('stonehearth:job')
-   local job_uri = job_component:get_job_uri()
    local job_level = job_component:get_current_job_level()
-   local key = player_id .. '|' .. job_uri .. '|' .. job_level
+   local user_id = entity:get_id()
 
-   local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:periodic_interaction', key, function(item)
-         return _interact_filter_fn(player_id, job_uri, job_level, item)
+   local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:periodic_interaction', user_id, function(item)
+         return _interact_filter_fn(user_id, item)
       end)
       
    local rating_fn = function(item)

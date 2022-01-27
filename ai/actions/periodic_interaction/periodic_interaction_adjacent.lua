@@ -43,7 +43,7 @@ end
 function InteractWithItemAdjacent:run(ai, entity, args)
    local item = args.item
    local pi_comp = args.item:get_component('stonehearth_ace:periodic_interaction')
-   if not pi_comp or not pi_comp:is_enabled() then
+   if not pi_comp or not pi_comp:is_usable() then
       ai:abort('not interactable!')
       return
    end

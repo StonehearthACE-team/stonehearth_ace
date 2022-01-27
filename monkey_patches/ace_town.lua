@@ -543,6 +543,11 @@ function AceTown:task_group_has_active_tasks(task_group)
    return false
 end
 
+function AceTown:is_player_town()
+   local pop = stonehearth.population:get_population(player_id)
+   return pop and not pop:is_npc()
+end
+
 function AceTown:get_default_storage()
    return self._sv.default_storage
 end
