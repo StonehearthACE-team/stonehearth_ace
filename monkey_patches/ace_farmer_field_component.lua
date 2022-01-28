@@ -671,9 +671,23 @@ function AceFarmerFieldComponent:_update_crop_fertilized(x, z, fertilized, ferti
          self._sv.num_fertilized = self._sv.num_fertilized - 1
       end
       dirt_plot.is_fertilized = fertilized
-      dirt_plot.fertilizer_model = fertilized and (fertilizer_model or FERTILIZER_MODEL_FAILSAFE) or nil
+      dirt_plot.fertilizer_model = fertilized and self:_get_fertilizer_model_data(fertilizer_model) or nil
       self.__saved_variables:mark_changed()
    end
+end
+
+function AceFarmerFieldComponent:_get_fertilizer_model_data(fertilizer_model)
+   if not fertilizer_model then
+      return FERTILIZER_MODEL_FAILSAFE
+   end
+   
+   -- determine the actual model data based on this field type
+   local farm_type = self._sv.field_type or 'farm'
+   local model_data = {
+      model = fertilizer_model.models and fertilizer_model.models[farm_type] or fertilizer_model.model or FERTILIZER_MODEL_FAILSAFE.model,
+      offset = fertilizer_model.offsets and fertilizer_model.offsets[farm_type] or fertilizer_model.offset or FERTILIZER_MODEL_FAILSAFE.offset,
+   }
+   return model_data
 end
 
 function AceFarmerFieldComponent:_create_climate_listeners()

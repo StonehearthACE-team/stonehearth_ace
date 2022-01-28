@@ -544,7 +544,7 @@ function AceTown:task_group_has_active_tasks(task_group)
 end
 
 function AceTown:is_player_town()
-   local pop = stonehearth.population:get_population(player_id)
+   local pop = stonehearth.population:get_population(self._sv.player_id)
    return pop and not pop:is_npc()
 end
 
