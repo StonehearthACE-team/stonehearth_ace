@@ -8,8 +8,17 @@ local resources_lib = require 'stonehearth_ace.lib.resources.resources_lib'
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
 local FERTILIZER_MODEL_FAILSAFE = {
+   -- defaults for unknown field types:
    model = 'stonehearth_ace/entities/farming/fertilize_applied/fertilize_applied.qb',
-   offset = { x = 5, y = 1, z = 5}
+   offset = { x = 5, y = 1, z = 5},
+
+   -- field-based defaults for known field types (will use above defaults if not specified):
+   models = {
+      farm = 'stonehearth_ace/entities/farming/fertilize_applied/fertilize_applied.qb',
+   },
+   offsets = {
+      farm = { x = 5, y = 1, z = 5},
+   }
 }
 
 local AceFarmerFieldComponent = class()
@@ -684,8 +693,10 @@ function AceFarmerFieldComponent:_get_fertilizer_model_data(fertilizer_model)
    -- determine the actual model data based on this field type
    local farm_type = self._sv.field_type or 'farm'
    local model_data = {
-      model = fertilizer_model.models and fertilizer_model.models[farm_type] or fertilizer_model.model or FERTILIZER_MODEL_FAILSAFE.model,
-      offset = fertilizer_model.offsets and fertilizer_model.offsets[farm_type] or fertilizer_model.offset or FERTILIZER_MODEL_FAILSAFE.offset,
+      model = fertilizer_model.models and fertilizer_model.models[farm_type] or
+            fertilizer_model.model or FERTILIZER_MODEL_FAILSAFE.models[farm_type] or FERTILIZER_MODEL_FAILSAFE.model,
+      offset = fertilizer_model.offsets and fertilizer_model.offsets[farm_type] or
+            fertilizer_model.offset or FERTILIZER_MODEL_FAILSAFE.offsets[farm_type] or FERTILIZER_MODEL_FAILSAFE.offset,
    }
    return model_data
 end
