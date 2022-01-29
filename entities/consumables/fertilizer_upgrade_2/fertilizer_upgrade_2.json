@@ -55,7 +55,18 @@
                2,
                0.35
             ]
-         ]
+         ],
+         "dirt_model": {
+            "models": {
+               "farm": "file(/entities/farming/fertilize_applied/upgrade_2/fertilize_applied.qb)",
+               "underfarm": "",
+               "treefarm": "file(/entities/farming/fertilize_applied/upgrade_2/fertilize_applied_mound.qb)",
+               "orchard": "file(/entities/farming/fertilize_applied/upgrade_2/fertilize_applied_mound.qb)",
+               "bush_farm": "file(/entities/farming/fertilize_applied/upgrade_2/fertilize_applied_flat.qb)",
+               "decorative_flowers": "file(/entities/farming/fertilize_applied/upgrade_2/fertilize_applied_flat.qb)"
+            },
+            "offset": { "x": 4.5, "y": -0.5, "z": 4.5 }
+         }
       }
    }
 }
