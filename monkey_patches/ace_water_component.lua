@@ -12,6 +12,7 @@ AceWaterComponent._ace_old_restore = WaterComponent.restore
 function AceWaterComponent:restore()
    self:_ace_old_restore()
    self:_update_destination()
+   self:_create_region_trace()
 end
 
 AceWaterComponent._ace_old_activate = WaterComponent.activate
@@ -20,6 +21,57 @@ function AceWaterComponent:activate()
 
    --self:_update_pathing()
    self:reset_changed_since_signal()
+end
+
+AceWaterComponent._ace_old_destroy = WaterComponent.__user_destroy
+function AceWaterComponent:destroy()
+   self:_destroy_region_trace()
+   self:_ace_old_destroy()
+end
+
+function AceWaterComponent:_destroy_region_trace()
+   if self._region_trace then
+      self._region_trace:destroy()
+      self._region_trace = nil
+   end
+end
+
+-- trace the region so whenever it changes we can check again if it borders the world's edge
+function AceWaterComponent:_create_region_trace()
+   self:_destroy_region_trace()
+   self._region_trace = self._sv.region:trace('water world edge check', _radiant.dm.TraceCategories.SYNC_TRACE)
+      :on_changed(function()
+         self:_check_if_at_world_edge()   
+      end)
+   self:_check_if_at_world_edge()
+end
+
+function AceWaterComponent:_check_if_at_world_edge()
+   if not self._sv.region or not self._location then
+      return
+   end
+
+   -- if it doesn't actually have any water in it yet, don't limit it that way
+   -- only start limiting it once some water has been added
+   if self._sv.height < 1 then
+      self._is_infinite = false
+      return
+   end
+
+   local ring = self._world_edge_region
+   if not ring then
+      local bounds = radiant.terrain.get_terrain_component():get_bounds()
+      -- get just the outside x/z ring
+      ring = Region3()
+      ring:add_cube(bounds:get_face(Point3.unit_x))
+      ring:add_cube(bounds:get_face(-Point3.unit_x))
+      ring:add_cube(bounds:get_face(Point3.unit_z))
+      ring:add_cube(bounds:get_face(-Point3.unit_z))
+      self._world_edge_region = ring
+   end
+
+   self._is_infinite = ring:translated(-self._location):intersects_region(self._sv.region:get())
+   log:debug('%s checking if at world edge... %s', self._entity, self._is_infinite and 'YES' or 'NO')
 end
 
 function AceWaterComponent:reset_changed_since_signal()
@@ -77,6 +129,7 @@ end
 AceWaterComponent._ace_old_set_region = WaterComponent.set_region
 function AceWaterComponent:set_region(boxed_region, height)
    self:_ace_old_set_region(boxed_region, height)
+   self:_create_region_trace()
 
    self._calculated_up_to_date = false
    stonehearth_ace.water_signal:water_component_modified(self._entity)
@@ -91,6 +144,10 @@ function AceWaterComponent:_add_height(volume)
       return 0
    end
    assert(volume > 0)
+
+   if self._is_infinite then
+      return 0
+   end
 
    local top_layer = self._sv._top_layer:get()
    local layer_area = top_layer:get_area()
@@ -200,6 +257,10 @@ function AceWaterComponent:_remove_height(volume)
       return 0
    end
    assert(volume > 0)
+
+   if self._is_infinite then
+      return 0
+   end
 
    local lower_limit = self._sv._top_layer_index   
    if self._sv.height <= lower_limit then
@@ -508,6 +569,7 @@ function AceWaterComponent:_move_to_new_origin()
    self._location = new_origin
 
    self:_update_destination()
+   self:_check_if_at_world_edge()
 
    --self.__saved_variables:mark_changed()
 end
