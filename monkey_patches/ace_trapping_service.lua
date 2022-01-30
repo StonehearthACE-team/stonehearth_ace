@@ -28,6 +28,14 @@ AceTrappingService = class()
 --    end
 -- end
 
+AceTrappingService._ace_old_create_trapping_grounds = TrappingService.create_trapping_grounds
+function AceTrappingService:create_trapping_grounds(player_id, location, size, terrain_kind)
+   local entity = self:_ace_old_create_trapping_grounds(player_id, location, size, terrain_kind)
+   radiant.entities.set_entity_movement_modifier(entity, entity:get_component('region_collision_shape'):get_region():get())
+
+   return entity
+end
+
 function AceTrappingService:_setup_fish_trapping()
    -- load up trapping data from json
    -- set up a season listener to inform the trapping service that the loot cache is no longer valid
