@@ -448,8 +448,13 @@ function ace_entities.set_entity_movement_modifier(entity, region, mm_data)
          cursor:copy_region(region)
          cursor:optimize_by_defragmentation('entity movement modifier shape')
       end)
-   mms:set_modifier(movement_modifier)
-   mms:set_nav_preference_modifier(nav_preference_modifier)
+   
+   if movement_modifier then
+      mms:set_modifier(movement_modifier)
+   end
+   if nav_preference_modifier then
+      mms:set_nav_preference_modifier(nav_preference_modifier)
+   end
 end
 
 function ace_entities.get_alternate_uris(uri)
