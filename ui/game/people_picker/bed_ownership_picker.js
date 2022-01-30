@@ -19,6 +19,12 @@ $(document).ready(function(){
       }
    };
 
+   var noOwnerAssignmentCallback = function(object) {
+      if (object) {
+         radiant.call('stonehearth_ace:remove_owner_command', object.__self);
+      }
+   };
+
    var canBeOwnerCallback = function(object, person) {
       if (!object) {
          return false;
@@ -95,6 +101,15 @@ $(document).ready(function(){
       return null;
    };
 
+   var noReservation = function(object) {
+      var owner = object.get('stonehearth:ownable_object.owner');
+      if (!owner) {
+         return "stonehearth_ace:ui.game.people_picker.already_no_owner";
+      }
+
+      return null;
+   };
+
    var bedHasCitizenOwner = function(object) {
       var currentOwner = object.get('stonehearth:ownable_object.owner');
       var ownerType = object.get('stonehearth:ownable_object.reservation_type');
@@ -105,6 +120,12 @@ $(document).ready(function(){
       var currentOwner = object.get('stonehearth:ownable_object.owner');
       var ownerType = object.get('stonehearth:ownable_object.reservation_type');
       return currentOwner && ownerType === 'traveler';
+   };
+
+   var bedHasMedicPatientOwner = function(object) {
+      var currentOwner = object.get('stonehearth:ownable_object.owner');
+      var ownerType = object.get('stonehearth:ownable_object.reservation_type');
+      return currentOwner && ownerType === App.constants.healing.PRIORITY_CARE_OWNERSHIP_TYPE;
    };
 
    $(top).on("radiant_assign_owner_to_entity", function (_, e) {
@@ -122,8 +143,11 @@ $(document).ready(function(){
                                                   travelerTooltip: travelerReserved,
                                                   medicPatientCallback: medicPatientAssignmentCallback,
                                                   medicPatientTooltip: medicPatientReserved,
+                                                  noOwnerCallback: noOwnerAssignmentCallback,
+                                                  noOwnerTooltip: noReservation,
                                                   hasCitizenOwner: bedHasCitizenOwner,
-                                                  hasTravelerOwner: bedHasTravelerOwner });
+                                                  hasTravelerOwner: bedHasTravelerOwner,
+                                                  hasMedicPatientOwner: bedHasMedicPatientOwner });
       } else {
          _peoplePicker.destroy();
          radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:jobs_close' });

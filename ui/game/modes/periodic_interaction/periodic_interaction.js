@@ -123,8 +123,8 @@ App.AcePeriodicInteractionView = App.StonehearthBaseZonesModeView.extend({
    },
 
    _ownerAssignmentCallback: function(object, newOwner) {
-      if (object && newOwner) {
-         radiant.call_obj(object.get('stonehearth_ace:periodic_interaction').__self, 'set_owner_command', newOwner.__self);
+      if (object) {
+         radiant.call_obj(object.get('stonehearth_ace:periodic_interaction').__self, 'set_owner_command', newOwner && newOwner.__self);
       }
    },
 
@@ -174,6 +174,15 @@ App.AcePeriodicInteractionView = App.StonehearthBaseZonesModeView.extend({
       return currentOwner != null;
    },
 
+   _noReservation: function(object) {
+      var currentOwner = object.get('stonehearth_ace:periodic_interaction.current_owner');
+      if (!currentOwner) {
+         return "stonehearth_ace:ui.game.people_picker.already_no_owner";
+      }
+
+      return null;
+   },
+
    actions: {
       showAssignOwner: function() {
          var self = this;
@@ -202,6 +211,8 @@ App.AcePeriodicInteractionView = App.StonehearthBaseZonesModeView.extend({
                      tooltipGenerator: self._getOwnershipTooltip,
                      sortFunction: self._ownerSortFunction,
                      hasCitizenOwner: self._hasCitizenOwner,
+                     noOwnerCallback: self._ownerAssignmentCallback,
+                     noOwnerTooltip: self._noReservation,
                   });
             });
          } else {
