@@ -1,0 +1,40 @@
+{
+   "type": "encounter",
+   "mixins": "stonehearth_ace:mixins:encounter:dragon_cult_raid",
+   "encounter_type": "create_mission",
+   "in_edge": "dragon_cult_raid_1",
+   "out_edge": "wait_to_destroy_raiding_party",
+   "create_mission_info": {
+      "mission": {
+         "sighted_bulletin": {
+            "title": "i18n(stonehearth_ace:data.gm.campaigns.dragonborn_king.arcs.trigger.dragonborn_king.encounters.dragon_cult_attack.mission.sighted_bulletin.title)"
+         },
+         "ctx_entity_registration_path": "dragon_cult_raid_1",
+         "members": {
+            "acolytes": {
+               "from_population": {
+                  "min": 4,
+                  "max": 6
+               }
+            },
+            "scouts": {
+               "from_population": {
+                  "min": 2,
+                  "max": 3
+               }
+            },
+				"zealots": {
+					"from_population": {
+                  "min": 1,
+                  "max": 2
+               }
+				},
+				"disciples": {},
+				"apostles": {},
+				"hierophants": {},
+				"scions": {},
+				"undead": {}
+         }
+      }
+   }
+}

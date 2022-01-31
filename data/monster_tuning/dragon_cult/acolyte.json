@@ -1,0 +1,69 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s1",
+   "scale": 0.105,
+   "job": "stonehearth:jobs:npc:footman",
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.dragon_cult.acolyte.description)"
+   },
+   "attributes": {
+      "max_health": {
+         "base": 160,
+         "net_worth_effect": {
+            "increase_by": 2,
+            "per": 500
+         },
+         "max": 650
+      },
+      "muscle": {
+         "base": 8,
+         "net_worth_effect": {
+            "increase_by": 4,
+            "per": 500
+         },
+         "max": 50
+      },
+      "menace": 45,
+      "courage": 250,
+      "speed": 65,
+      "exp_reward": {
+         "base": 35,
+         "net_worth_effect": {
+            "increase_by": 1,
+            "per": 300
+         },
+         "max": 90
+      },
+      "additive_armor_modifier": 2
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:stone_maul",
+         "stonehearth_ace:weapons:na_iron_mace",
+         "stonehearth_ace:weapons:na_iron_short_sword",
+         "stonehearth_ace:weapons:na_iron_short_spear"
+      ],
+      "shield": [
+         "stonehearth:armor:wooden_shield",
+         "stonehearth:armor:iron_shield",
+         "stonehearth_ace:armor:light_iron_shield"
+      ],
+      "outfit": [
+         "stonehearth_ace:monsters:dragon_cult:outfits:acolyte"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": 1,
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:dragon_cult",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

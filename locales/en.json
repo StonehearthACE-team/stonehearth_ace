@@ -244,7 +244,7 @@
                   "dialog_tree_info": {
                      "dialog_nodes": {
                         "msg1": {
-                           "bulletin_title": "Is this... the end?!", 
+                           "bulletin_title": "Is this... the end?!",
                            "dialog_title": "Maybe...",
                            "message": "But it can also be a new beginning!<br>Unfortunate tragedy befell this land but it doesn't have to be the end of the story for this town! Someone is bound to stumble upon it soon. Perhaps they might even arrive in time to rescue someone! That would be lucky...<br><br>Rebuilding alone might not be an easy task but it surely sounds like a great tale!<br><br><i><font size=-1>[A lone wanderer will join the town some hours from now. Daily Updates will return after a few days]</font></i>",
                            "dialog_title_hard": "The End",
@@ -257,7 +257,7 @@
                   "dialog_tree_info": {
                      "dialog_nodes": {
                         "msg1": {
-                           "bulletin_title": "A lone wanderer approaches!", 
+                           "bulletin_title": "A lone wanderer approaches!",
                            "dialog_title": "What happened here?",
                            "message": "They can't help it but notice that something terrible went on...<br><br>Taken by concern, they decide to stay and help. There might be survivors? Or perhaps answers of what happened? Or... At the very least a warm bed and some loot, right?<br><br>Whatever their motivation, they are staying."
                         }
@@ -274,11 +274,11 @@
                               "dialog_tree_info": {
                                  "dialog_nodes": {
                                     "msg1": {
-                                       "bulletin_title": "Ogo's Army arrives!", 
-                                       "dialog_title": "The siege begins...", 
+                                       "bulletin_title": "Ogo's Army arrives!",
+                                       "dialog_title": "The siege begins...",
                                        "reply": "We can do this!",
                                        "bulletin_message": {
-                                          "000": "Our town is now under siege by the mighty goblin army of Ogo Skullbonker and will remain so until they are defeated or run away!<br><br>The time for bravery has come!" 
+                                          "000": "Our town is now under siege by the mighty goblin army of Ogo Skullbonker and will remain so until they are defeated or run away!<br><br>The time for bravery has come!"
                                        }
                                     }
                                  }
@@ -288,8 +288,8 @@
                               "dialog_tree_info": {
                                  "dialog_nodes": {
                                     "msg1": {
-                                       "bulletin_title": "Ogo's Army Retreats", 
-                                       "dialog_title": "They are leaving!", 
+                                       "bulletin_title": "Ogo's Army Retreats",
+                                       "dialog_title": "They are leaving!",
                                        "message": "Ogo Skullbonker is done with our town, for now... But they will come back!"
                                     }
                                  }
@@ -3252,6 +3252,17 @@
             },
             "epic_undead_giant": {
                "description": "Giants! Undead giants! We're doomed!"
+            }
+         },
+         "dragon_cult": {
+            "acolyte": {
+               "description": "Dragon Cult Acolyte"
+            },
+            "scout": {
+               "description": "Dragon Cult Scout"
+            },
+            "zealot": {
+               "description": "Dragon Cult Zealot"
             }
          }
       },
@@ -9989,6 +10000,21 @@
       "na_weaver": {
          "na_weaver_description": {
             "requirements": "Crafted by Mason"
+         }
+      },
+      "npc_acolyte": {
+         "npc_acolyte_description": {
+            "display_name": "Acolyte"
+         }
+      },
+      "npc_scout": {
+         "npc_scout_description": {
+            "display_name": "Scout"
+         }
+      },
+      "npc_zealot": {
+         "npc_zealot_description": {
+            "display_name": "Zealot"
          }
       }
    },

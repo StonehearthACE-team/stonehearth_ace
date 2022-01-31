@@ -1,0 +1,61 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s1",
+   "job": "stonehearth:jobs:npc:archer",
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.dragon_cult.scout.description)"
+   },
+   "attributes": {
+      "max_health": {
+         "base": 140,
+         "net_worth_effect": {
+            "increase_by": 2,
+            "per": 500
+         },
+         "max": 600
+      },
+      "muscle": {
+         "base": 10,
+         "net_worth_effect": {
+            "increase_by": 5,
+            "per": 500
+         },
+         "max": 60
+      },
+      "menace": 50,
+      "courage": 200,
+      "speed": 70,
+      "exp_reward": {
+         "base": 40,
+         "net_worth_effect": {
+            "increase_by": 1,
+            "per": 300
+         },
+         "max": 100
+      },
+      "additive_armor_modifier": 2
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:poison_bow",
+         "stonehearth_ace:weapons:strong_poison_bow"
+      ],
+      "outfit": [
+         "stonehearth_ace:monsters:dragon_cult:outfits:scout"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": 1,
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:dragon_cult",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

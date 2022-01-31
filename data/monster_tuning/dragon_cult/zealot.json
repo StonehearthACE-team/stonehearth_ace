@@ -1,0 +1,64 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s1",
+   "scale": 0.11,
+   "job": "stonehearth_ace:jobs:npc:warrior",
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.dragon_cult.zealot.description)"
+   },
+   "attributes": {
+      "max_health": {
+         "base": 240,
+         "net_worth_effect": {
+            "increase_by": 2,
+            "per": 500
+         },
+         "max": 950
+      },
+      "muscle": {
+         "base": 15,
+         "net_worth_effect": {
+            "increase_by": 6,
+            "per": 500
+         },
+         "max": 160
+      },
+      "menace": 60,
+      "courage": 350,
+      "speed": 80,
+      "exp_reward": {
+         "base": 40,
+         "net_worth_effect": {
+            "increase_by": 1,
+            "per": 300
+         },
+         "max": 140
+      }
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:na_iron_battle_axe",
+         "stonehearth_ace:weapons:iron_battle_axe",
+         "stonehearth_ace:weapons:na_iron_sword",
+         "stonehearth:weapons:giant_bone_axe",
+         "stonehearth:weapons:giant_bone_mace"
+      ],
+      "outfit": [
+         "stonehearth_ace:monsters:dragon_cult:outfits:zealot"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": 1,
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:dragon_cult",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

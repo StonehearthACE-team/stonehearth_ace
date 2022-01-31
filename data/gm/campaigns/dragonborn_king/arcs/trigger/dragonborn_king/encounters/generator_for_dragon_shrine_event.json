@@ -3,7 +3,7 @@
    "encounter_type": "generator",
    "in_edge": "generator_for_dragon_shrine_event",
    "generator_info": {
-      "delay": "36h+8h",
+      "delay": "36h+12h",
       "spawn_edge": {
          "type": "trigger_one",
          "out_edges": [
@@ -11,6 +11,16 @@
                "type": "weighted_edge",
                "out_edge": "do_nothing",
                "weight": 5
+            },
+            {
+               "type": "weighted_edge",
+               "out_edge": {
+                  "type": "trigger_many",
+                  "out_edges": [
+                     "dragon_cult_raid_1"
+                  ]
+               },
+               "weight": 1
             },
             {
                "type": "weighted_edge",
