@@ -5,6 +5,12 @@
    "out_edge": "quest_reward",
    "can_start": {
       "all_tests": {
+         "only_one_quest_allowed": {
+            "type": "deny_if_greater_than",
+            "item": "number_active",
+            "start_node": "quest_cultist_masks",
+            "value": 0
+         },
          "reputation": {
             "type": "deny_if_greater_than",
             "item": "counter",
@@ -27,7 +33,7 @@
          {
             "type": "give_item",
             "uri": "stonehearth_ace:loot:currency:dragon_cult",
-            "count": 6,
+            "count": 8,
             "keep_items": false
          }
       ],

@@ -5,6 +5,12 @@
    "in_edge": "dialog_dragon_offer",
    "can_start": {
       "all_tests": {
+         "only_one_dialog_allowed": {
+            "type": "deny_if_greater_than",
+            "item": "number_active",
+            "start_node": "dialog_dragon_offer",
+            "value": 0
+         },
          "reputation": {
             "type": "deny_if_less_than",
             "item": "counter",
