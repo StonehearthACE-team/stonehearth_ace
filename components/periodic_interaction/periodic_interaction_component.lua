@@ -281,15 +281,20 @@ function PeriodicInteractionComponent:set_enabled_command(session, response, ena
 end
 
 function PeriodicInteractionComponent:select_mode_command(session, response, mode)
-   self:_reset(false, true)
-   self:select_mode(mode)
-   return true
+   -- don't do anything if it's already this mode
+   if mode ~= self._sv.current_mode then
+      self:_reset(false, true)
+      self:select_mode(mode)
+      return true
+   end
 end
 
 function PeriodicInteractionComponent:set_owner_command(session, response, owner)
-   self._sv.current_owner = owner
-   self.__saved_variables:mark_changed()
-   return true
+   if owner ~= self._sv.current_owner then
+      self._sv.current_owner = owner
+      self.__saved_variables:mark_changed()
+      return true
+   end
 end
 
 function PeriodicInteractionComponent:is_enabled()
@@ -353,10 +358,6 @@ function PeriodicInteractionComponent:_reset(completed, skip_mode_reselection)
          -- instead of doing any other resetting at this point, transform the entity
          local transform_comp = self._entity:add_component('stonehearth_ace:transform')
          if transform_comp then
-            if self._consider_usability_timer then
-               self._consider_usability_timer:destroy()
-               self._consider_usability_timer = nil
-            end
             transform_comp:set_transform_option(self._json.transform_after_using_key)
             transform_comp:request_transform(self._entity:get_player_id())
             return
@@ -372,6 +373,8 @@ function PeriodicInteractionComponent:_reset(completed, skip_mode_reselection)
 
    if not skip_mode_reselection then   
       self:select_mode(self._sv.current_mode)
+   else
+      self:_consider_usability()
    end
 end
 
@@ -578,6 +581,7 @@ function PeriodicInteractionComponent:set_current_interaction_completed(user)
       else
          self:_apply_current_stage_settings()
          self:_start_interaction_cooldown_timer(current_interaction.cooldown)
+         self:_consider_usability()
       end
    end
 end
