@@ -20139,6 +20139,8 @@
                "default_craft_search_checks_description": "When looking at the workshop view, default to filtering recipes by text in these properties.",
                "show_unreachable_ingredients_notification": "Unreachable Crafting Ingredients Alert",
                "show_unreachable_ingredients_notification_description": "Show an alert when a crafter cannot reach ingredients for their recipe.<span class='warn'>WARNING:</span>This may cause a lot of alerts!",
+               "show_food_unfindable_notification": "Food Can't be Found Alert",
+               "show_food_unfindable_notification_description": "Get an alert whenever a hearthling times out when trying to find food. Regardless of this setting, you'll still get notifications when people are starving.<span class='warn'>WARNING:</span>Since this alert is based on a timeout, the search might still succeed shortly after triggering and then send an alert anyway, especially if performance is already compromised. For this reason, you might want to keep it disabled.",
                "auto_harvest_enabled": "Auto-Harvest Renewable Resources",
                "auto_harvest_enabled_description": "When a renewable resource you own becomes harvestable, automatically issue a harvest command on that resource.",
                "auto_harvest_tree_stumps": "Auto-Harvest Tree Stumps",
