@@ -16,7 +16,6 @@ InteractWithItemAdjacent.priority = 0
 
 function InteractWithItemAdjacent:start(ai, entity, args)
    local pi_comp = args.item:get_component('stonehearth_ace:periodic_interaction')
-   pi_comp:start_using(entity)
    ai:set_status_text_key(pi_comp:get_current_mode_ai_status())
 
    self._completed_work = false

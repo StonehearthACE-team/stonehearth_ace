@@ -1,16 +1,18 @@
 local PeriodicInteraction = radiant.class()
 
-PeriodicInteraction.name = 'periodic interaction'
+PeriodicInteraction.name = 'periodic interaction (current user)'
 PeriodicInteraction.does = 'stonehearth_ace:periodic_interaction'
 PeriodicInteraction.args = {}
 PeriodicInteraction.priority = 1.0
 
 local function _interact_filter_fn(user_id, item)
    local periodic_interaction = item:get_component('stonehearth_ace:periodic_interaction')
-   if periodic_interaction and periodic_interaction:is_usable() then
-      local user = periodic_interaction:get_current_user()
-      return user and user:get_id() == user_id
+   if not periodic_interaction or not periodic_interaction:is_usable() then
+      return false
    end
+
+   local user = periodic_interaction:get_current_user()
+   return user and user:get_id() == user_id
 end
 
 -- prefer higher level ones we're capable of interacting with
@@ -33,7 +35,7 @@ function PeriodicInteraction:start_thinking(ai, entity, args)
    local job_level = job_component:get_current_job_level()
    local user_id = entity:get_id()
 
-   local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:periodic_interaction', user_id, function(item)
+   local filter_fn = stonehearth.ai:filter_from_key('stonehearth_ace:periodic_interaction (current user)', user_id, function(item)
          return _interact_filter_fn(user_id, item)
       end)
       

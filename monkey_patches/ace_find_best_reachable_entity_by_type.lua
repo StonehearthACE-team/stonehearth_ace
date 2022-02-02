@@ -14,16 +14,31 @@ FindBestReachableEntityByType.think_output = {
 function AceFindBestReachableEntityByType:start(ai, entity, args)
    if not radiant.entities.exists(self._result) or not args.filter_fn(self._result) then
       if not stonehearth_ace.failed_filter_fn then
-         stonehearth_ace.failed_filter_fn = {}
+         stonehearth_ace.failed_filter_fn = {
+            filter_fns = {},
+            events = {}
+         }
       end
-      table.insert(stonehearth_ace.failed_filter_fn,
+
+      local filter_fns = stonehearth_ace.failed_filter_fn.filter_fns
+      local filter_fn_events = stonehearth_ace.failed_filter_fn.events[args.filter_fn]
+      if not filter_fn_events then
+         table.insert(filter_fns, args.filter_fn)
+         filter_fn_events = {
+            filter_fn_index = #filter_fns,
+            events = {}
+         }
+         stonehearth_ace.failed_filter_fn.events[args.filter_fn] = filter_fn_events
+      end
+      table.insert(filter_fn_events.events,
          {
             filter_fn = args.filter_fn,
             entity = entity,
             result = self._result
          }
       )
-      log:debug('failed to match %s for %s in filter_fn %s: stonehearth_ace.failed_filter_fn[%s]', self._result, entity, tostring(args.filter_fn), #stonehearth_ace.failed_filter_fn)
+      log:debug('failed to match %s for %s in filter_fn %s: stonehearth_ace.failed_filter_fn.filter_fns[%s] => .events[%s]',
+            self._result, entity, tostring(args.filter_fn), filter_fn_events.filter_fn_index, #filter_fn_events.events)
       
       ai:abort(string.format('destination %s is no longer valid at start. filter description: %s', tostring(self._result), tostring(self._description)))
    end
