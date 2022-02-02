@@ -1,4 +1,3 @@
-local log = radiant.log.create_logger('food_availability_observer')
 local FOOD_UNFINDABLE_NOTIFICATION = 'i18n(stonehearth:ui.game.entities.where_is_food_notification)'
 
 local FOOD_CHECK_INTERVAL = 60000
