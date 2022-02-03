@@ -177,8 +177,8 @@ function healing_lib.filter_healing_item(item, conditions, level, guts, health)
       -- if there are no conditions, we only care about consumables that give needed guts/health
       if guts > 0 then
          return (consumable_data.guts_healed or 0) > 0)
-      elseif health > 0 then
-         return (consumable_data.health_healed or 0) > 0
+      else
+         return health > 0 and (consumable_data.health_healed or 0) > 0
       end
    else
       if not consumable_data.cures_conditions then
