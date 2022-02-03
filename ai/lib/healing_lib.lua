@@ -158,7 +158,7 @@ function healing_lib.get_effective_max_health_percent(entity)
    return 1
 end
 
-function healing_lib.filter_healing_item(item, conditions, level)
+function healing_lib.filter_healing_item(item, conditions, level, guts, health)
    -- just filters whether this item *can* be used to heal, not if it's the best item for it
    local uri = item:get_uri()
    -- if the healing_item_tracker isn't caching these before this gets called, we'll have a problem
@@ -173,13 +173,14 @@ function healing_lib.filter_healing_item(item, conditions, level)
    end
 
    conditions = conditions or {}
-   -- we want to prioritize using cures *for* curing; if they don't require a cure, ideally don't use a cure consumable
-   -- but this will be done in the rater so that we can still use items that also cure if they're the only items
-   -- if #conditions == 0 and consumable_data.cures_conditions and next(consumable_data.cures_conditions) then
-   --    return false
-   -- end
-
-   if #conditions > 0 then
+   if #conditions == 0 then
+      -- if there are no conditions, we only care about consumables that give needed guts/health
+      if guts > 0 then
+         return (consumable_data.guts_healed or 0) > 0)
+      elseif health > 0 then
+         return (consumable_data.health_healed or 0) > 0
+      end
+   else
       if not consumable_data.cures_conditions then
          -- if this item doesn't cure anything, we can use it for anything (it probably heals or applies a beneficial effect)
          return true
@@ -253,7 +254,7 @@ function healing_lib.rate_healing_item(item, conditions, missing_guts, missing_h
                value = condition_factor
             end
          end
-      elseif guts_healed >= missing_guts then
+      elseif missing_guts > 0 and guts_healed >= missing_guts then
          -- if the consumable would cure conditions, rate it down (we'd prefer to save those for actually curing conditions)
          if (not conditions or #conditions == 0) then
             -- no conditions and it doesn't cure anything: give it the full value
@@ -275,26 +276,31 @@ function healing_lib.rate_healing_item(item, conditions, missing_guts, missing_h
          end
       end
 
-      -- an extra bit if it fully heals health
-      if health_healed >= missing_health then
-         value = value + full_heal_factor
-      end
-
       -- healing efficiency (if guts are missing, that's all we care about; otherwise we only care about health)
       value = value + percent_heal_factor - percent_heal_factor * 
             ((missing_guts > 0 and math.min(math.abs(guts_healed - missing_guts), healing_constants.FILTER_GUTS_MAX_DIFF) / healing_constants.FILTER_GUTS_MAX_DIFF) or
             (math.min(math.abs(health_healed - missing_health), healing_constants.FILTER_HEALTH_MAX_DIFF) / healing_constants.FILTER_HEALTH_MAX_DIFF))
+
+      -- an extra bit if it fully heals health
+      if missing_health > 0 and health_healed >= missing_health then
+         value = value + full_heal_factor
+      end
+
+      -- don't give a special priority or recently treated remover bonus if it doesn't even do anything needed in the first place
+      if value == 0 then
+         return 0
+      end
+
+      local special_priority = consumable_data.special_priority
+      if special_priority then
+         value = value + special_priority_factor * (1 + math.min(1, math.max(-1, special_priority))) * 0.5
+      end
 
       -- whether it applies the buff that removes the recently treated debuff (allowing subsequent healing items to be applied)
       local avoids_recently_treated = consumable_data.applies_effects and consumable_data.applies_effects['stonehearth_ace:buffs:recently_treated:remover']
       if avoids_recently_treated then
          -- based on the percent chance that it applies the effect
          value = value + avoids_recently_treated_factor * math.min(1, math.max(0, avoids_recently_treated))
-      end
-
-      local special_priority = consumable_data.special_priority
-      if special_priority then
-         value = value + special_priority_factor * (1 + math.min(1, math.max(-1, special_priority))) * 0.5
       end
    end
 
@@ -324,7 +330,7 @@ function healing_lib.make_healing_filter(healer, target)
    end
 
    return stonehearth.ai:filter_from_key('healing_item_filter', condition_str .. level .. '|' .. guts .. '|' .. health, function(item)
-            return healing_lib.filter_healing_item(item, conditions, level)
+            return healing_lib.filter_healing_item(item, conditions, level, guts, health)
          end)
 end
 
