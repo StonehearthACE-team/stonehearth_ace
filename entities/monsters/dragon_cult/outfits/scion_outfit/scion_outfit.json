@@ -10,12 +10,10 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(acolyte.qb)",
-                     "file(acolyte_2.qb)",
-                     "file(acolyte_3.qb)",
-                     "file(acolyte_4.qb)",
-                     "file(acolyte_5.qb)",
-                     "file(acolyte_6.qb)"
+                     "file(scion.qb)",
+                     "file(scion_2.qb)",
+                     "file(scion_3.qb)",
+                     "file(scion_4.qb)"
                   ]
                }
             ]
@@ -27,22 +25,17 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(acolyte.qb)",
-                     "file(acolyte_2.qb)",
-                     "file(acolyte_3.qb)",
-                     "file(acolyte_4.qb)",
-                     "file(acolyte_5.qb)",
-                     "file(acolyte_6.qb)"
+                     "file(scion.qb)",
+                     "file(scion_2.qb)",
+                     "file(scion_3.qb)",
+                     "file(scion_4.qb)"
                   ]
                }
             ]
          }
       },
       "stonehearth:equipment_piece": {
-         "render_type": "merge_with_model",
-         "injected_buffs": [
-            "stonehearth_ace:buffs:armor_medium"
-         ]
+         "render_type": "merge_with_model"
       }
    },
    "entity_data": {}

@@ -10,12 +10,7 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(acolyte.qb)",
-                     "file(acolyte_2.qb)",
-                     "file(acolyte_3.qb)",
-                     "file(acolyte_4.qb)",
-                     "file(acolyte_5.qb)",
-                     "file(acolyte_6.qb)"
+                     "file(male/apostle.qb)"
                   ]
                }
             ]
@@ -27,12 +22,7 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(acolyte.qb)",
-                     "file(acolyte_2.qb)",
-                     "file(acolyte_3.qb)",
-                     "file(acolyte_4.qb)",
-                     "file(acolyte_5.qb)",
-                     "file(acolyte_6.qb)"
+                     "file(female/apostle.qb)"
                   ]
                }
             ]
@@ -41,7 +31,7 @@
       "stonehearth:equipment_piece": {
          "render_type": "merge_with_model",
          "injected_buffs": [
-            "stonehearth_ace:buffs:armor_medium"
+            "stonehearth_ace:buffs:armor_heavy"
          ]
       }
    },

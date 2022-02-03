@@ -1,31 +1,29 @@
 {
    "type": "monster_tuning",
    "estimated_difficulty": "s1",
-   "scale": 0.105,
-   "job": "stonehearth:jobs:npc:footman",
    "unit_info": {
-      "description": "i18n(stonehearth_ace:data.monster_tuning.dragon_cult.acolyte.description)"
+      "description": "i18n(stonehearth_ace:data.monster_tuning.dragon_cult.undead.description)"
    },
    "attributes": {
       "max_health": {
          "base": 160,
          "net_worth_effect": {
-            "increase_by": 2,
-            "per": 500
+            "increase_by": 5,
+            "per": 800
          },
-         "max": 650
+         "max": 1000
       },
       "muscle": {
          "base": 8,
          "net_worth_effect": {
-            "increase_by": 4,
+            "increase_by": 5,
             "per": 500
          },
-         "max": 50
+         "max": 120
       },
-      "menace": 45,
-      "courage": 250,
-      "speed": 65,
+      "menace": 55,
+      "courage": 500,
+      "speed": 40,
       "exp_reward": {
          "base": 35,
          "net_worth_effect": {
@@ -33,23 +31,20 @@
             "per": 300
          },
          "max": 90
-      },
-      "additive_armor_modifier": 2
+      }
    },
    "equipment": {
       "weapon": [
          "stonehearth:weapons:stone_maul",
          "stonehearth_ace:weapons:na_iron_mace",
-         "stonehearth_ace:weapons:na_iron_short_sword",
-         "stonehearth_ace:weapons:iron_short_spear"
+         "stonehearth_ace:weapons:na_iron_battle_axe",
+         "stonehearth_ace:weapons:na_iron_short_spear"
       ],
       "shield": [
-         "stonehearth:armor:wooden_shield",
-         "stonehearth:armor:iron_shield",
-         "stonehearth_ace:armor:light_iron_shield"
+         "stonehearth:armor:wooden_shield"
       ],
       "outfit": [
-         "stonehearth_ace:monsters:dragon_cult:outfits:acolyte"
+         "stonehearth_ace:monsters:dragon_cult:outfits:undead"
       ]
    },
    "loot_drops": {
@@ -58,7 +53,7 @@
             "num_rolls": 1,
             "items": {
                "stone": {
-                  "uri": "stonehearth_ace:loot_bag:dragon_cult",
+                  "uri": "stonehearth_ace:loot_bag:bone_material",
                   "type": "bag",
                   "weight": 1
                }

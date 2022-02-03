@@ -1,0 +1,79 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s1",
+   "scale": 0.105,
+   "job": "stonehearth:jobs:npc:knight",
+   "render_info": {
+      "color_map": "stonehearth:color_map:mob",
+      "material_maps": [
+         "/stonehearth/data/materials/material_maps/mob_material_map.json"
+      ]
+   },
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.dragon_cult.apostle.description)"
+   },
+   "attributes": {
+      "max_health": {
+         "base": 420,
+         "net_worth_effect": {
+            "increase_by": 10,
+            "per": 200
+         },
+         "max": 2500
+      },
+      "muscle": {
+         "base": 10,
+         "net_worth_effect": {
+            "increase_by": 5,
+            "per": 1000
+         },
+         "max": 100
+      },
+      "menace": 80,
+      "courage": {
+         "base": 300,
+         "net_worth_effect": {
+            "increase_by": 15,
+            "per": 1500
+         },
+         "max": 450
+      },
+      "speed": 58,
+      "exp_reward": {
+         "base": 50,
+         "net_worth_effect": {
+            "increase_by": 10,
+            "per": 500
+         },
+         "max": 180
+      },
+      "additive_armor_modifier": 8
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:na_steel_mace",
+         "stonehearth_ace:weapons:na_short_sword",
+         "stonehearth_ace:weapons:na_steel_short_spear"
+      ],
+      "shield": [
+         "stonehearth:armor:iron_shield"
+      ],
+      "outfit": [
+         "stonehearth_ace:monsters:dragon_cult:outfits:apostle"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": 1,
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:dragon_cult",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

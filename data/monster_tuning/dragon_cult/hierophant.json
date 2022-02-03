@@ -1,55 +1,54 @@
 {
    "type": "monster_tuning",
    "estimated_difficulty": "s1",
-   "scale": 0.105,
-   "job": "stonehearth:jobs:npc:footman",
+   "job": "stonehearth:jobs:npc:cleric",
+   "render_info": {
+      "color_map": "stonehearth:color_map:mob",
+      "material_maps": [
+         "/stonehearth/data/materials/material_maps/mob_material_map.json"
+      ]
+   },
    "unit_info": {
-      "description": "i18n(stonehearth_ace:data.monster_tuning.dragon_cult.acolyte.description)"
+      "description": "i18n(stonehearth_ace:data.monster_tuning.dragon_cult.hierophant.description)"
    },
    "attributes": {
       "max_health": {
-         "base": 160,
+         "base": 240,
          "net_worth_effect": {
             "increase_by": 2,
             "per": 500
          },
-         "max": 650
+         "max": 1050
       },
       "muscle": {
-         "base": 8,
+         "base": 15,
          "net_worth_effect": {
-            "increase_by": 4,
+            "increase_by": 6,
             "per": 500
          },
-         "max": 50
+         "max": 90
       },
-      "menace": 45,
-      "courage": 250,
-      "speed": 65,
+      "menace": 70,
+      "courage": 450,
+      "speed": 70,
       "exp_reward": {
-         "base": 35,
+         "base": 40,
          "net_worth_effect": {
             "increase_by": 1,
             "per": 300
          },
-         "max": 90
-      },
-      "additive_armor_modifier": 2
+         "max": 170
+      }
    },
    "equipment": {
       "weapon": [
-         "stonehearth:weapons:stone_maul",
-         "stonehearth_ace:weapons:na_iron_mace",
-         "stonehearth_ace:weapons:na_iron_short_sword",
-         "stonehearth_ace:weapons:iron_short_spear"
+         "stonehearth_ace:weapons:scepter_dragon_cult"
       ],
       "shield": [
-         "stonehearth:armor:wooden_shield",
-         "stonehearth:armor:iron_shield",
-         "stonehearth_ace:armor:light_iron_shield"
+         "stonehearth_ace:armor:rc_light_steel_shield"
       ],
       "outfit": [
-         "stonehearth_ace:monsters:dragon_cult:outfits:acolyte"
+         "stonehearth_ace:monsters:dragon_cult:outfits:hierophant"
       ]
    },
    "loot_drops": {
