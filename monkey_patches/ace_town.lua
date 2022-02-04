@@ -344,10 +344,11 @@ end
 function AceTown:is_any_healing_item_valid(requester, conditions)
    local inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
    if inventory then
+      local guts, health = healing_lib.get_filter_guts_health_missing(requester)
       local tracker = inventory:add_item_tracker('stonehearth_ace:healing_item_tracker')
       for id, item in tracker:get_tracking_data():each() do
          if item and item:is_valid() then
-            if self:is_healing_item_valid(item, requester, conditions) then
+            if self:is_healing_item_valid(item, requester, conditions, guts, health) then
                return true
             end
          end
@@ -357,12 +358,15 @@ function AceTown:is_any_healing_item_valid(requester, conditions)
    return false
 end
 
-function AceTown:is_healing_item_valid(item, requester, conditions)
+function AceTown:is_healing_item_valid(item, requester, conditions, guts, health)
    if not conditions then
       conditions = healing_lib.get_conditions_needing_cure(requester)
    end
+   if not guts or not health then
+      guts, health = healing_lib.get_filter_guts_health_missing(requester)
+   end
 
-   return healing_lib.filter_healing_item(item, conditions) and stonehearth.ai:can_acquire_ai_lease(item, requester)
+   return healing_lib.filter_healing_item(item, conditions, nil, guts, health) and stonehearth.ai:can_acquire_ai_lease(item, requester)
 end
 
 AceTown._ace_old_spawn_traveler = Town.spawn_traveler

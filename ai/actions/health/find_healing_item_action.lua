@@ -36,10 +36,11 @@ function FindHealingItem:_on_level_up()
 end
 
 function FindHealingItem:_check_all_tracker_items()
+   local guts, health = healing_lib.get_filter_guts_health_missing(entity)
    self._items = {}
    for id, item in self._tracker:get_tracking_data():each() do
       if item and item:is_valid() then
-         self:_check_healing_item(item)
+         self:_check_healing_item(item, guts, health)
       end
    end
 
@@ -58,9 +59,12 @@ function FindHealingItem:_on_healing_item_added(e)
    end
 end
 
-function FindHealingItem:_check_healing_item(item)
+function FindHealingItem:_check_healing_item(item, guts, health)
    if not self._ready then
-      if not healing_lib.filter_healing_item(item, self._conditions, self._level) then
+      if not guts or not health then
+         guts, health = healing_lib.get_filter_guts_health_missing(entity)
+      end
+      if not healing_lib.filter_healing_item(item, self._conditions, self._level, guts, health) then
          return
       end
 
