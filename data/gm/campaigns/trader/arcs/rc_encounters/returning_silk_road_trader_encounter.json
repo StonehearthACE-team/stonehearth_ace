@@ -6,8 +6,8 @@
       "test_1": {
          "only_one_caravan_allowed": {
             "type": "deny_if_greater_than",
-            "item": "number_active",
-            "start_node": "returning_silk_road_trader_encounter",
+            "item": "number_spawned",
+            "node_name": "returning_silk_road_trader_encounter",
             "value": 0
          },
          "not_in_titanstorm": {
