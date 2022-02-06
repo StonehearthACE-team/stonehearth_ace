@@ -1,0 +1,113 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:pet:fighter"
+   ],
+   "components": {
+      "render_info": {
+         "scale": 0.23,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/monster/dragon",
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dragon_nature.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 2720
+         },
+         "speed": {
+            "type": "basic",
+            "value": 102
+         },
+         "courage": {
+            "type": "basic",
+            "value": 618
+         },
+         "menace": {
+            "type": "basic",
+            "value": 250
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 50
+         },
+         "multiplicative_damage_modifier": {
+            "type": "basic",
+            "value": 0.9
+         },
+         "additive_armor_modifier": {
+            "type": "basic",
+            "value": 11
+         },
+         "debuff_resistance": {
+            "type": "basic",
+            "value": 0.8
+         }
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 128
+            }
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:weapons:animals:dragon_metallic",
+            "stonehearth_ace:weapons:animals:dragon_melee"
+         ]
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:dragon:blood": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "dragon_effect": {
+               "uri": "stonehearth_ace:buffs:dragon:effect",
+               "chance": 0.5,
+               "resistable": true
+            }
+         }
+      },
+      "stonehearth:entity_radius": 2,
+      "stonehearth:species": {
+         "id": "dragon",
+         "display_name": "dragon"
+      },
+      "stonehearth:catalog": {
+         "display_name": "Copper Dragon",
+         "description": "A strong friend and protector. Glorious!",
+         "icon": "file(dragon_nature.png)",
+         "category": "pets"
+      },
+      "stonehearth:diet": {
+         "food_material": "meat"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 7000,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:ranged_combat:no_kiting"
+         ]
+      }
+   }
+}

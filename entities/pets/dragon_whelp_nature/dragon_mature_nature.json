@@ -1,0 +1,120 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:pet:fighter"
+   ],
+   "components": {
+      "render_info": {
+         "scale": 0.17,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/monster/dragon",
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dragon_nature.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 1666
+         },
+         "speed": {
+            "type": "basic",
+            "value": 90
+         },
+         "courage": {
+            "type": "basic",
+            "value": 238
+         },
+         "menace": {
+            "type": "basic",
+            "value": 120
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 29
+         },
+         "multiplicative_damage_modifier": {
+            "type": "basic",
+            "value": 0.9
+         },
+         "additive_armor_modifier": {
+            "type": "basic",
+            "value": 5
+         },
+         "debuff_resistance": {
+            "type": "basic",
+            "value": 0.5
+         }
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 96
+            }
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:weapons:animals:mature_dragon_melee",
+            "stonehearth_ace:weapons:animals:mature_dragon_metallic"
+         ]
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:dragon:blood": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "dragon_effect": {
+               "uri": "stonehearth_ace:buffs:dragon:effect",
+               "chance": 0.25,
+               "resistable": true
+            }
+         }
+      },
+      "stonehearth:evolve_data": {
+         "current_stage": "mature",
+         "next_stage": "stonehearth_ace:pets:dragon_nature",
+         "evolve_time": "19d",
+         "evolve_effect": "stonehearth:effects:fursplosion_effect"
+      },
+      "stonehearth:entity_radius": 1,
+      "stonehearth:species": {
+         "id": "dragon",
+         "display_name": "dragon"
+      },
+      "stonehearth:catalog": {
+         "display_name": "Mature Copper Dragon",
+         "description": "It's stronger, faster and can even fight! Is it still growing, though?",
+         "icon": "file(dragon_nature.png)",
+         "category": "pets"
+      },
+      "stonehearth:diet": {
+         "food_material": "meat"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 4000,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:ranged_combat:no_kiting"
+         ]
+      }
+   }
+}

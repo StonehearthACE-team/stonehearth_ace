@@ -1,4 +1,14 @@
 {
+   "can_start": {
+      "test_1": {
+         "only_one_attack_dialog_allowed": {
+            "type": "deny_if_greater_than",
+            "item": "number_active",
+            "start_node": "ogo_attacks_dialog",
+            "value": 0
+         }
+      }
+   },
    "dialog_tree_info": {
       "nodes": {
          "army_replies": {

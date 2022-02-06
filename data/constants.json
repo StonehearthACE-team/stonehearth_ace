@@ -785,7 +785,16 @@
       "health": {
          "SCRATCHED_PERCENTAGE" : 0.999,
          "COMBAT_REST_WHEN_INJURED_PERCENTAGE": 0.9,
-         "STOP_RESTING_STATUS_UNCHANGED_DURATION": "4h"
+         "SEVERELY_INJURED_PERCENTAGE": 0.25,
+         "STOP_RESTING_STATUS_UNCHANGED_DURATION": "4h",
+         "WOUND_TYPES": [
+            "wound_corrupt",
+            "wound_fire",
+            "wound_pierce",
+            "wound_impact",
+            "wound_cut",
+            "wound_cold"
+         ]
       },
       "item_quality": {
          "mixintypes": {

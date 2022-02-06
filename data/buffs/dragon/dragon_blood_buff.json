@@ -9,5 +9,15 @@
       "health_change": 0.02,
       "pulse": "30m",
       "is_percentage": true
-   }
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:dragon:effect",
+      "stonehearth:buffs:archer:fire_arrow"
+   ],
+   "disallowed_categories": [
+      "debuff_flanked",
+      "debuff_out_of_balance",
+      "debuff_hamstrung",
+      "debuff_shaken"
+   ]
 }

@@ -2626,6 +2626,39 @@
                      "tooltip": "Aww! It's so nice to see the plants and flowers of our town are happy and well cared for!"
                   }
                }
+            },
+            "health": {
+               "pain_scratched": {
+                  "display_name": "Pain (Mild)",
+                  "tooltip": "Just a little pain, tis but a scratch!"
+               },
+               "pain_minor": {
+                  "tooltip": "I'm a little worse for wear.",
+                  "display_name": "Pain (Minimal)"
+               },
+               "pain_mild": {
+                  "display_name": "Pain (Moderate)"
+               },
+               "pain_moderate": {
+                  "display_name": "Pain (Severe)"
+               },
+               "pain_severe": {
+                  "display_name": "Pain (Unbearable)"
+               }
+            },
+            "health_wounds": {
+               "wound_medium": {
+                  "display_name": "Wounded (Medium severity)",
+                  "tooltip": "This could probably use some treatment soon... I don't want to wait."
+               },
+               "wound_high": {
+                  "display_name": "Wounded (High severity)",
+                  "tooltip": "Ouch. I don't think that's going away by itself... Looks bad!"
+               },
+               "wound_extreme": {
+                  "display_name": "Wounded (Extreme severity)",
+                  "tooltip": "Ugh. I really need help with this one... It's really bad! I feel horrible!"
+               }
             }
          }
       },
@@ -4540,11 +4573,27 @@
          "dragon": {
             "dragon_blood_buff": {
                "display_name": "Dragon Blood",
-               "description": "Regenerating 2% of their health every 30 minutes."
+               "description": "Regenerating 2% of their health every 30 minutes.<ul><li>Immune to fire effects</li><li>Can not be flanked, out of balance, hamstrung or shaken</li></ul>"
             },
             "dragon_effect_buff": {
                "display_name": "Here be Dragons!",
                "description": "Completely dazed and intimidated by the unfathomable presence of a dragon! Courage and damage inflicted are greatly reduced."
+            }
+         },
+         "scratched": {
+            "scratched_buff": {
+               "display_name": "Lightly Injured",
+               "description": "A little hurt, nothing to worry.<ul><li>Speed is very slightly reduced</li><li>Diligence is very slightly reduced</li></ul>"
+            }
+         },
+         "severely_injured": {
+            "severely_injured_buff": {
+               "description": "I'm badly hurt! Can barely walk! <ul><li>Speed is quite reduced</li><li>Diligence is greatly reduced</li></ul>"
+            }
+         },
+         "injured": {
+            "injured_buff": {
+               "description": "Ow ow ow! I'm hurt! <ul><li>Speed is slightly reduced</li><li>Diligence is somewhat reduced</li></ul>"
             }
          }
       },

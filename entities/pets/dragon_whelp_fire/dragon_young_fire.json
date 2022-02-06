@@ -1,0 +1,67 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:pet",
+   "components": {
+      "render_info": {
+         "scale": 0.12,
+         "animation_table": "/stonehearth/data/rigs/entities/pets/dragon_whelp_fire",
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/pets/dragon_whelp_fire/dragon_whelp_fire.qb"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 684
+         },
+         "speed": {
+            "type": "basic",
+            "value": 64
+         }
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:dragon:blood": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "current_stage": "young",
+         "next_stage": "stonehearth_ace:pets:dragon_juvenile_fire",
+         "evolve_time": "6d",
+         "evolve_effect": "stonehearth:effects:fursplosion_effect"
+      },
+      "stonehearth:entity_radius": 0.3,
+      "stonehearth:species": {
+         "id": "dragon",
+         "display_name": "dragon"
+      },
+      "stonehearth:catalog": {
+         "display_name": "Copper Dragon Youngling",
+         "description": "Not a whelp anymore! Is it... still growing? ",
+         "icon": "/stonehearth/entities/pets/dragon_whelp_fire/dragon_whelp_fire.png",
+         "category": "pets"
+      },
+      "stonehearth:diet": {
+         "food_material": "meat"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 1800,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      }
+   }
+}
