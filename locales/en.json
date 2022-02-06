@@ -19491,6 +19491,18 @@
          "citizens": {
             "workers_list_headers": {
                "health": "Health"
+            },
+            "health_tooltips": {
+               "dying_title": "Dying!",
+               "dying_description": "If I'm not rescued soon, I will die! [str(value)]% guts remaining.",
+               "recuperating_title": "Recuperating",
+               "recuperating_description": "I'm slowly recuperating: [str(value)]% of the way to stable.",
+               "wounded_title": "Wounded",
+               "wounded_description": "I need treatment for wounds! My health is only at [str(value)]% of its normal maximum.",
+               "hurt_title": "Hurt",
+               "hurt_description": "I may be hurt, but I'm still standing! [str(value)]% health remaining.",
+               "healthy_title": "Normal",
+               "healthy_description": "I'm full health!"
             }
          },
          "entities": {

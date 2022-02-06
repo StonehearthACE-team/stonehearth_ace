@@ -1,6 +1,6 @@
-var getNonile = function(percentage) {
-   // return 0-8, where 0 is when percentage < 1/9 and 8 is when percentage is < 9/9
-   return Math.floor(percentage * 9);
+var getOctile = function(percentage) {
+   // return 0-8
+   return Math.round(percentage * 8);
 };
 
 App.StonehearthCitizensView.reopen({
@@ -8,6 +8,9 @@ App.StonehearthCitizensView.reopen({
       "citizens" : {
          "*": {
             'stonehearth:expendable_resources' : {},
+            'stonehearth:incapacitation' : {
+               'sm': {}
+            },
          }
       }
    },
@@ -67,6 +70,9 @@ App.StonehearthCitizenTasksRowView.reopen({
    ace_components: {
       'stonehearth:attributes' : {},
       'stonehearth:expendable_resources' : {},
+      'stonehearth:incapacitation' : {
+         'sm': {}
+      },
    },
 
    init: function() {
@@ -103,54 +109,55 @@ App.StonehearthCitizenTasksRowView.reopen({
 
    _updateHealth: function() {
       var self = this;
-      var currentHealth = Math.ceil(self.get('model.stonehearth:expendable_resources.resources.health'));
+      var currentHealth = self.get('model.stonehearth:expendable_resources.resources.health');
       if (currentHealth == null) {
          return;
       }
 
+      currentHealth = Math.ceil(currentHealth);
       var currentGuts = Math.ceil(self.get('model.stonehearth:expendable_resources.resources.guts'));
-      var maxGuts = Math.ceil(self.get('model.stonehearth:attributes.attributes.max_guts.user_visible_value'));
+      var maxGuts = Math.ceil(self.get('model.stonehearth:attributes.attributes.max_guts.effective_value'));
       var percentGuts = currentGuts / maxGuts;
 
-      var maxHealth = Math.ceil(self.get('model.stonehearth:attributes.attributes.max_health.user_visible_value'));
-      var effMaxHealthPercent = Math.ceil(self.get('model.stonehearth:attributes.attributes.effective_max_health_percent.user_visible_value') || 100);
+      var maxHealth = Math.ceil(self.get('model.stonehearth:attributes.attributes.max_health.effective_value'));
+      var effMaxHealthPercent = Math.ceil(self.get('model.stonehearth:attributes.attributes.effective_max_health_percent.effective_value') || 100);
+      var incapacitationState = self.get('model.stonehearth:incapacitation.sm.current_state');
       var percentHealth = currentHealth / maxHealth;
       var icon;
-      var isRescue = false;
       var isWounded = effMaxHealthPercent != 100;
-      var value;
       
       if (currentHealth == 0) {
          // if health is 0, check guts:
-         isRescue = true;
          if (currentGuts == maxGuts) {
             icon = "heart_full"
          }
          else if (currentGuts > 0) {
-            icon = `heart_${getNonile(percentGuts)}_8`;
+            icon = `heart_${getOctile(percentGuts)}_8`;
          }
          else {
             icon = "heart_empty";
-            isRescue = false;
          }
       }
       else if (currentHealth == maxHealth) {
          icon = "heart_full"
       }
       else {
-         icon = `heart_${getNonile(percentHealth)}_8`;
+         icon = `heart_${getOctile(percentHealth)}_8`;
       }
 
-      if (isRescue) {
-         icon = "rescue/" + icon;
-         value = percentGuts;
+      var value = percentGuts;
+      if (incapacitationState == 'recuperating') {
+         icon = "recuperating/" + icon;
       }
-      else if (isWounded) {
-         icon = "wounded/" + icon;
-         value = percentHealth + 2;
+      else if (incapacitationState == 'normal') {
+         if (isWounded) {
+            icon = "wounded/" + icon;
+         }
+         value = percentHealth;
       }
       else {
-         value = percentHealth + 4;
+         // dying/dead
+         icon = "dying/" + icon;
       }
 
       icon = "/stonehearth_ace/ui/game/citizens/images/health/" + icon + ".png";
@@ -158,7 +165,7 @@ App.StonehearthCitizenTasksRowView.reopen({
       var healthData = {
          icon: icon,
          value: value,
-         isRescue: isRescue,
+         incapacitationState: incapacitationState,
          isWounded: isWounded,
       };
 
@@ -167,21 +174,33 @@ App.StonehearthCitizenTasksRowView.reopen({
       if (!curHealthData || curHealthData.icon != healthData.icon || curHealthData.value != healthData.value) {
          self.set('healthData', healthData);
 
-         // TODO: add health/status tooltip
-         // Ember.run.scheduleOnce('afterRender', self, function() {
-         //    var citizenData = self.get('model');
-         //    if (citizenData) {
-         //       App.tooltipHelper.createDynamicTooltip(self.$('.healthColumn'), function () {
-         //          if (!healthData) {
-         //             return;
-         //          }
-         //          var healthString = App.tooltipHelper.createTooltip(
-         //             i18n.t(moodData.current_mood_buff.display_name),
-         //             i18n.t(moodData.current_mood_buff.description));
-         //          return $(healthString);
-         //       });
-         //    }
-         // });
+         Ember.run.scheduleOnce('afterRender', self, function() {
+            var citizenData = self.get('model');
+            if (citizenData) {
+               App.tooltipHelper.createDynamicTooltip(self.$('.healthColumn'), function () {
+                  if (!healthData) {
+                     return;
+                  }
+
+                  var value = Math.floor(100 * healthData.value);
+                  var tooltipKey;
+                  if (incapacitationState == 'recuperating') {
+                     tooltipKey = 'recuperating';
+                  }
+                  else if (incapacitationState == 'normal') {
+                     tooltipKey = healthData.isWounded ? 'wounded' : (value == 100 ? 'healthy' : 'hurt');
+                  }
+                  else {
+                     tooltipKey = 'dying';
+                  }
+
+                  var healthString = App.tooltipHelper.createTooltip(
+                     i18n.t(`stonehearth_ace:ui.game.citizens.health_tooltips.${tooltipKey}_title`, {value: value}),
+                     i18n.t(`stonehearth_ace:ui.game.citizens.health_tooltips.${tooltipKey}_description`, {value: value}));
+                  return $(healthString);
+               });
+            }
+         });
       }
    }.observes('model.uri', 'model.stonehearth:expendable_resources', 'model.stonehearth:attributes.attributes'),
 
@@ -225,18 +244,16 @@ App.StonehearthCitizenTasksContainerView.reopen({
             return x['stonehearth:happiness'] && x['stonehearth:happiness'].current_happiness;
          },
          'health': function(x) {
+            var incapacitationState = x['stonehearth:incapacitation'].sm.current_state;
             var currentGuts = Math.ceil(x['stonehearth:expendable_resources'].resources.health);
-            if (currentGuts == 0) {
-               return 0;
-            }
             var maxGuts = Math.ceil(x['stonehearth:attributes'].attributes.max_guts.user_visible_value);
             if (currentGuts < maxGuts) {
-               return currentGuts / maxGuts;
+               return currentGuts / maxGuts + (incapacitationState == 'recuperating' ? 2 : 0);
             }
             var currentHealth = Math.ceil(x['stonehearth:expendable_resources'].resources.health);
             var maxHealth = Math.ceil(x['stonehearth:attributes'].attributes.max_health.user_visible_value);
             var effMaxHealthPercent = Math.ceil(x['stonehearth:attributes'].attributes.effective_max_health_percent.user_visible_value || 100);
-            return currentHealth / maxHealth + (effMaxHealthPercent != 100 && 2 || 0);
+            return currentHealth / maxHealth + (effMaxHealthPercent != 100 && 6 || 4);
          },
          'working-for': function(x) {
             return x['stonehearth:work_order'] && i18n.t(x['stonehearth:work_order'].working_for);
