@@ -58,7 +58,7 @@ end
 
 function AceHealthObserver:_check_update_wound_thoughts()
    local highest_rank = 0
-   for type in pairs(constants.health.WOUND_TYPES) do
+   for _, type in pairs(constants.health.WOUND_TYPES) do
       if self._sv.entity:get_component('stonehearth:buffs'):has_category_buffs(type) then
          local type_buffs = self._sv.entity:get_component('stonehearth:buffs'):get_buffs_by_category(type)
          for buff_id, buff in pairs(type_buffs) do
