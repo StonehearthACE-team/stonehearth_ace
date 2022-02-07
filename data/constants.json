@@ -788,14 +788,14 @@
          "COMBAT_REST_WHEN_INJURED_PERCENTAGE": 0.9,
          "SEVERELY_INJURED_PERCENTAGE": 0.25,
          "STOP_RESTING_STATUS_UNCHANGED_DURATION": "4h",
-         "WOUND_TYPES": [
-            "wound_corrupt",
-            "wound_fire",
-            "wound_pierce",
-            "wound_impact",
-            "wound_cut",
-            "wound_cold"
-         ]
+         "WOUND_TYPES": {
+            "wound_corrupt": true,
+            "wound_fire": true,
+            "wound_pierce": true,
+            "wound_impact": true,
+            "wound_cut": true,
+            "wound_cold": true
+         }
       },
       "item_quality": {
          "mixintypes": {
