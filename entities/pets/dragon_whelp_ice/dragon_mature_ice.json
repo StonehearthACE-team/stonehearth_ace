@@ -26,7 +26,7 @@
          },
          "speed": {
             "type": "basic",
-            "value": 81
+            "value": 91
          },
          "courage": {
             "type": "basic",
@@ -40,7 +40,7 @@
             "type": "basic",
             "value": 24
          },
-         "multiplicative_damage_modifier": {
+         "multiplicative_dmg_modifier": {
             "type": "basic",
             "value": 0.7
          },
@@ -63,7 +63,7 @@
       "stonehearth:equipment": {
          "items": [
             "stonehearth_ace:weapons:animals:mature_dragon_melee",
-            "stonehearth_ace:weapons:animals:mature_dragon_metallic"
+            "stonehearth_ace:weapons:animals:mature_dragon_ice"
          ]
       },
       "stonehearth:evolve": {},
@@ -92,11 +92,11 @@
       "stonehearth:entity_radius": 1,
       "stonehearth:species": {
          "id": "dragon",
-         "display_name": "dragon"
+         "display_name": "i18n(stonehearth:entities.pets.dragon_whelp_fire.species)"
       },
       "stonehearth:catalog": {
-         "display_name": "Mature Copper Dragon",
-         "description": "It's stronger, faster and can even fight! Is it still growing, though?",
+         "display_name": "i18n(stonehearth_ace:entities.pets.dragon_mature_ice.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.dragon_mature_ice.description)",
          "icon": "file(dragon_ice.png)",
          "category": "pets"
       },

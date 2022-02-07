@@ -44,16 +44,13 @@
       "stonehearth:entity_radius": 0.3,
       "stonehearth:species": {
          "id": "dragon",
-         "display_name": "dragon"
+         "display_name": "i18n(stonehearth:entities.pets.dragon_whelp_fire.species)"
       },
       "stonehearth:catalog": {
-         "display_name": "Copper Dragon Youngling",
-         "description": "Not a whelp anymore! Is it... still growing? ",
+         "display_name": "i18n(stonehearth_ace:entities.pets.dragon_young_nature.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.dragon_young_nature.description)",
          "icon": "/stonehearth/entities/pets/dragon_whelp_nature/dragon_whelp_nature.png",
          "category": "pets"
-      },
-      "stonehearth:diet": {
-         "food_material": "meat"
       },
       "stonehearth:net_worth": {
          "value_in_gold": 1800,

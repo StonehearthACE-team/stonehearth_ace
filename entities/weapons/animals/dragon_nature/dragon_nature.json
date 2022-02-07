@@ -1,0 +1,42 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 60,
+         "reach": 4.5,
+         "base_ranged_damage": 30,
+         "range": 38,
+         "projectile_speed": 15,
+         "projectile_uri": "stonehearth_ace:weapons:nature_burst",
+         "projectile_start_offset": { "x": 0, "y": 2, "z": -3 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "nature_burst_2",
+            "effect": "nature_burst",
+            "active_frame": 29,
+            "cooldown": 15000,
+            "priority": 2
+         }
+      ],
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "nature_breath_2",
+            "effect": "nature_breath",
+            "active_frame": 42,
+            "cooldown": 18000,
+            "priority": 3,
+            "damage_multiplier": 3,
+            "aoe_effect": {
+               "aoe_target_limit": 8
+            }
+         }
+      ]
+   }
+}

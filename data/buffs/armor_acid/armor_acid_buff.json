@@ -1,0 +1,16 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.armor_acid_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.armor_acid_buff.description)",
+   "icon": "file(armor_acid_buff.png)",
+   "duration": "30m",
+   "effect": "stonehearth_ace:effects:debuff_added:armor_acid_debuff",
+   "cant_affect_siege": true,
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "multiplicative_armor_modifier": {
+         "add": -0.6
+      }
+   }
+}

@@ -4595,6 +4595,10 @@
             "injured_buff": {
                "description": "Ow ow ow! I'm hurt! <ul><li>Speed is slightly reduced</li><li>Diligence is somewhat reduced</li></ul>"
             }
+         },
+         "armor_acid_buff": {
+            "display_name": "Corrosive Acid",
+            "description": "Their armor is being destroyed by highly corrosive acid! <ul><il>Reduces armor by 60%</li></ul>"
          }
       },
       "loadouts": {
@@ -14888,6 +14892,54 @@
                   "description": "So mysterious! It should be placed somewhere safe and wild..."
                }
             }
+         },
+         "dragon_fire": {
+            "display_name": "Fire Dragon",
+            "description": "Smaller than most dragons but agile and fierce with strong attacks!"
+         },
+         "dragon_ice": {
+            "display_name": "Ice Dragon",
+            "description": "A bulky and tough dragon! Able to resist most blows and attacks!"
+         },
+         "dragon_nature": {
+            "display_name": "Nature Dragon",
+            "description": "Agile and smart, this dragon can poison enemies and break armor with acid!"
+         },
+         "dragon_juvenile_fire": {
+            "display_name": "Juvenile Fire Dragon",
+            "description": "It's growing so fast! Soon it will be breathing fire..."
+         },
+         "dragon_juvenile_ice": {
+            "display_name": "Juvenile Ice Dragon",
+            "description": "It won't stop growing! Belly rubs are getting kinda cold..."
+         },
+         "dragon_juvenile_nature": {
+            "display_name": "Juvenile Nature Dragon",
+            "description": "Look how it grows! Soon it will be a strong supporter!"
+         },
+         "dragon_mature_fire": {
+            "display_name": "Mature Fire Dragon",
+            "description": "Will still grow a bit but already a fearsome opponent!"
+         },
+         "dragon_mature_ice": {
+            "display_name": "Mature Ice Dragon",
+            "description": "Not fully grown but can pack a punch or two... Or hundreds!"
+         },
+         "dragon_mature_nature": {
+            "display_name": "Mature Nature Dragon",
+            "description": "Still learning how to control their acid, not fully developed!"
+         },
+         "dragon_young_fire": {
+            "display_name": "Fire Dragon Youngling",
+            "description": "Not a whelp anymore! One day..."
+         },
+         "dragon_young_ice": {
+            "display_name": "Ice Dragon Youngling",
+            "description": "Just a child but already so tough!"
+         },
+         "dragon_young_nature": {
+            "display_name": "Nature Dragon Youngling",
+            "description": "A baby dragon that burps... acid. Be careful!"
          }
       },
       "critters": {
@@ -20606,6 +20658,12 @@
       "base_dwarf_npc": {
          "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
          "description": "A visitor from the mountains"
+      }
+   },
+   "buffs": {
+      "chromatic_fire_buff": {
+         "display_name": "On Fire (Chromatic)",
+         "description": "Set aflame! Taking fire damage every 5 minutes for 20 minutes"
       }
    }
 }

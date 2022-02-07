@@ -26,7 +26,7 @@
          },
          "speed": {
             "type": "basic",
-            "value": 107
+            "value": 123
          },
          "courage": {
             "type": "basic",
@@ -44,7 +44,7 @@
             "type": "basic",
             "value": 10
          },
-         "multiplicative_damage_modifier": {
+         "multiplicative_dmg_modifier": {
             "type": "basic",
             "value": 1.2
          },
@@ -62,7 +62,7 @@
       },
       "stonehearth:equipment": {
          "items": [
-            "stonehearth_ace:weapons:animals:dragon_metallic",
+            "stonehearth_ace:weapons:animals:dragon_fire",
             "stonehearth_ace:weapons:animals:dragon_melee"
          ]
       },
@@ -79,17 +79,22 @@
                "uri": "stonehearth_ace:buffs:dragon:effect",
                "chance": 0.5,
                "resistable": true
+            },
+            "fire": {
+               "uri": "stonehearth:buffs:archer:fire_arrow",
+               "chance": 0.4,
+               "resistable": true
             }
          }
       },
       "stonehearth:entity_radius": 2,
       "stonehearth:species": {
          "id": "dragon",
-         "display_name": "dragon"
+         "display_name": "i18n(stonehearth:entities.pets.dragon_whelp_fire.species)"
       },
       "stonehearth:catalog": {
-         "display_name": "Copper Dragon",
-         "description": "A strong friend and protector. Glorious!",
+         "display_name": "i18n(stonehearth_ace:entities.pets.dragon_fire.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.dragon_fire.description)",
          "icon": "file(dragon_fire.png)",
          "category": "pets"
       },

@@ -1,0 +1,20 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "validate_duck",
+   "out_edge": "duck_hunt",
+   "can_start": {
+      "test_1": {
+         "number_active_check": {
+            "item": "number_active",
+            "type": "deny_if_greater_than",
+            "value": 2,
+            "start_node": "duck_hunt",
+            "end_node": "duck_killed"
+         }
+      }
+   },
+   "wait_info": {
+      "duration": "3h+3h"
+   }
+}

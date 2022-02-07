@@ -26,7 +26,7 @@
          },
          "speed": {
             "type": "basic",
-            "value": 95
+            "value": 105
          },
          "courage": {
             "type": "basic",
@@ -75,6 +75,11 @@
             "dragon_effect": {
                "uri": "stonehearth_ace:buffs:dragon:effect",
                "chance": 0.25,
+               "resistable": true
+            },
+            "chromatic_fire": {
+               "uri": "stonehearth_ace:buffs:chromatic_fire",
+               "chance": 0.15,
                "resistable": true
             }
          }

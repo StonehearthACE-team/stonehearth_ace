@@ -1,0 +1,71 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 50,
+         "reach": 4.5,
+         "base_ranged_damage": 25,
+         "range": 32,
+         "projectile_speed": 11,
+         "projectile_uri": "stonehearth_ace:weapons:ice_burst",
+         "projectile_start_offset": { "x": 0, "y": 2, "z": -3 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "ice_burst_2",
+            "effect": "ice_burst",
+            "active_frame": 29,
+            "cooldown": 28000,
+            "priority": 2
+         }
+      ],
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "ice_breath_2",
+            "effect": "ice_breath",
+            "active_frame": 42,
+            "cooldown": 22000,
+            "priority": 3,
+            "damage_multiplier": 3,
+            "aoe_effect": {
+               "aoe_target_limit": 8
+            }
+         },
+         {
+            "name": "ice_taunt_2",
+            "effect": "emote_cute",
+            "active_frame": 0,
+            "cooldown": 14000,
+            "priority": 4,
+            "aggro_addition": 100,
+            "damage_multiplier": 0,
+            "minimum_damage": 0,
+            "inflictable_debuffs": {
+               "infection": {
+                  "uri": "stonehearth:buffs:knight:taunted_effect",
+                  "chance": 1.0
+               }
+            },
+            "aoe_effect": {
+               "aoe_range": 24,
+               "damage_multiplier": 0,
+               "minimum_damage": 0,
+               "aggro_addition": 100,
+               "aoe_target_limit": 12,
+               "inflictable_debuffs": {
+                  "infection": {
+                     "uri": "stonehearth:buffs:knight:taunted_effect",
+                     "chance": 1.0
+                  }
+               }
+            }
+         }
+      ]
+   }
+}

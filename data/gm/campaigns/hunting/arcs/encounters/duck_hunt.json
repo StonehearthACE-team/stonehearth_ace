@@ -1,0 +1,47 @@
+{
+   "type": "encounter",
+   "encounter_type": "create_mission",
+   "rarity": "common",
+   "in_edge": "duck_hunt",
+   "out_edge": "cleanup_duck",
+   "create_mission_info": {
+      "spawn_range": {
+         "min": 50,
+         "max": 100
+      },
+      "on_searcher_failure": {
+         "destroy_tree": {
+            "root": "validate_duck",
+            "destroy_root": true
+         }
+      },
+      "mission": {
+         "only_notify_owner": true,
+         "npc_player_id": "animals",
+         "ctx_entity_registration_path": "duck_hunt",
+         "role": "spawn_enemies",
+         "offset": { "x": 0, "y": 0, "z": 0 },
+         "spawn_range": {
+            "min": 120,
+            "max": 180
+         },
+         "sighted_bulletin": {
+            "title": "i18n(northern_alliance:data.gm.campaigns.hunting.wild_game)",
+            "type": "info",
+            "active_duration": "2h"
+         },
+         "members": {
+            "deer": {
+               "from_population": {
+                  "role": "duck",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 1,
+                  "max": 4,
+                  "range": 5
+               },
+               "combat_leash_range": 50
+            }
+         }
+      }
+   }
+}

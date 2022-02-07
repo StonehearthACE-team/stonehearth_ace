@@ -26,7 +26,7 @@
          },
          "speed": {
             "type": "basic",
-            "value": 90
+            "value": 100
          },
          "courage": {
             "type": "basic",
@@ -40,7 +40,7 @@
             "type": "basic",
             "value": 29
          },
-         "multiplicative_damage_modifier": {
+         "multiplicative_dmg_modifier": {
             "type": "basic",
             "value": 0.9
          },
@@ -63,7 +63,7 @@
       "stonehearth:equipment": {
          "items": [
             "stonehearth_ace:weapons:animals:mature_dragon_melee",
-            "stonehearth_ace:weapons:animals:mature_dragon_metallic"
+            "stonehearth_ace:weapons:animals:mature_dragon_nature"
          ]
       },
       "stonehearth:evolve": {},
@@ -80,6 +80,16 @@
                "uri": "stonehearth_ace:buffs:dragon:effect",
                "chance": 0.25,
                "resistable": true
+            },
+            "poison": {
+               "uri": "stonehearth_ace:buffs:poison:poison",
+               "chance": 0.2,
+               "resistable": true
+            },
+            "acid": {
+               "uri": "stonehearth_ace:buffs:armor_acid",
+               "chance": 0.3,
+               "resistable": true
             }
          }
       },
@@ -92,16 +102,13 @@
       "stonehearth:entity_radius": 1,
       "stonehearth:species": {
          "id": "dragon",
-         "display_name": "dragon"
+         "display_name": "i18n(stonehearth:entities.pets.dragon_whelp_fire.species)"
       },
       "stonehearth:catalog": {
-         "display_name": "Mature Copper Dragon",
-         "description": "It's stronger, faster and can even fight! Is it still growing, though?",
+         "display_name": "i18n(stonehearth_ace:entities.pets.dragon_mature_nature.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.dragon_mature_nature.description)",
          "icon": "file(dragon_nature.png)",
          "category": "pets"
-      },
-      "stonehearth:diet": {
-         "food_material": "meat"
       },
       "stonehearth:net_worth": {
          "value_in_gold": 4000,

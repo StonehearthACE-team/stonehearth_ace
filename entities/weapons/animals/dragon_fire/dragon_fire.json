@@ -1,0 +1,53 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 65,
+         "reach": 5,
+         "base_ranged_damage": 35,
+         "range": 42,
+         "projectile_speed": 15,
+         "projectile_uri": "stonehearth_ace:weapons:fire_burst",
+         "projectile_start_offset": { "x": 0, "y": 2, "z": -3 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "fire_burst_2",
+            "effect": "fire_burst",
+            "active_frame": 29,
+            "cooldown": 21000,
+            "priority": 2
+         }
+      ],
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "fire_breath_2",
+            "effect": "fire_breath",
+            "active_frame": 42,
+            "cooldown": 12000,
+            "priority": 3,
+            "damage_multiplier": 4,
+            "aoe_effect": {
+               "aoe_target_limit": 8
+            }
+         },
+         {
+            "name": "explosion_2",
+            "effect": "explosion",
+            "active_frame": 90,
+            "cooldown": 14000,
+            "priority": 10,
+            "aoe_effect": {
+               "damage_multiplier": 1.1,
+               "aoe_target_limit": 10
+            }
+         }
+      ]
+   }
+}
