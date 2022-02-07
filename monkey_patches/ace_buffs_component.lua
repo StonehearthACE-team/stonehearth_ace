@@ -274,6 +274,11 @@ function AceBuffsComponent:add_buff(uri, options)
          end
       end
 
+      -- Update wound thoughts. This is only needed when a wound buff is either added or removed.
+      if json.update_wound_thoughts then
+         self:_update_wound_thoughts()
+      end
+
       self.__saved_variables:mark_changed()
 
       radiant.events.trigger_async(self._entity, 'stonehearth:buff_added', {
@@ -357,6 +362,12 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks)
 
          self._sv.buffs[uri] = nil
          buff:destroy()
+
+         -- Update the wound thoughts. Has to be done after the buff is destroyed (otherwise it will still be counted!)
+         if json.update_wound_thoughts then
+            self:_update_wound_thoughts()
+         end
+
          self.__saved_variables:mark_changed()
 
          radiant.events.trigger_async(self._entity, 'stonehearth:buff_removed', uri)
@@ -370,6 +381,35 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks)
       if buff then
          buff:remove_stack(false)
       end
+   end
+end
+
+function AceBuffsComponent:_update_wound_thoughts()
+   local highest_rank = 0
+   -- Go over all the wound categories and look for the highest ranking wound
+   for _, type in pairs(stonehearth.constants.health.WOUND_TYPES) do
+      if self:has_category_buffs(type) then
+         local type_buffs = self:get_buffs_by_category(type)
+         for buff_id, buff in pairs(type_buffs) do
+            local new_rank = buff:get_rank()
+            if new_rank > highest_rank then
+               highest_rank = new_rank
+            end
+         end
+      end
+   end
+   
+   -- apply the relevant thought 
+   if highest_rank > 1 then
+      if highest_rank >= 4 then
+         radiant.entities.add_thought(self._entity, 'stonehearth:thoughts:health_wounds:wound_extreme')
+      elseif highest_rank == 3 then
+         radiant.entities.add_thought(self._entity, 'stonehearth:thoughts:health_wounds:wound_high')
+      elseif highest_rank == 2 then
+         radiant.entities.add_thought(self._entity, 'stonehearth:thoughts:health_wounds:wound_medium')
+      end
+   else
+      radiant.entities.add_thought(self._entity, 'stonehearth:thoughts:health_wounds:no_wound')
    end
 end
 

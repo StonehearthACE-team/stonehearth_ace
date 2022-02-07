@@ -26,12 +26,6 @@ function AceHealthObserver:destroy()
    end
 end
 
-AceHealthObserver._ace_old__update = HealthObserver._update
-function AceHealthObserver:_update(initial_update)
-   self:_ace_old__update(initial_update)
-   self:_check_update_wound_thoughts()
-end
-
 function AceHealthObserver:_check_update_thoughts(percentage, last_percentage)
    if percentage >= .99 then
       radiant.entities.add_thought(self._sv.entity, 'stonehearth:thoughts:health:neutral')
@@ -53,33 +47,6 @@ function AceHealthObserver:_check_update_thoughts(percentage, last_percentage)
       end
    elseif not (last_percentage < .25) then
       radiant.entities.add_thought(self._sv.entity, 'stonehearth:thoughts:health:pain_severe')
-   end
-end
-
-function AceHealthObserver:_check_update_wound_thoughts()
-   local highest_rank = 0
-   for _, type in pairs(constants.health.WOUND_TYPES) do
-      if self._sv.entity:get_component('stonehearth:buffs'):has_category_buffs(type) then
-         local type_buffs = self._sv.entity:get_component('stonehearth:buffs'):get_buffs_by_category(type)
-         for buff_id, buff in pairs(type_buffs) do
-            local new_rank = buff:get_rank()
-            if new_rank > highest_rank then
-               highest_rank = new_rank
-            end
-         end
-      end
-   end
-   
-   if highest_rank > 1 then
-      if highest_rank >= 4 then
-         radiant.entities.add_thought(self._sv.entity, 'stonehearth:thoughts:health_wounds:wound_extreme')
-      elseif highest_rank == 3 then
-         radiant.entities.add_thought(self._sv.entity, 'stonehearth:thoughts:health_wounds:wound_high')
-      elseif highest_rank == 2 then
-         radiant.entities.add_thought(self._sv.entity, 'stonehearth:thoughts:health_wounds:wound_medium')
-      end
-   else
-      radiant.entities.add_thought(self._sv.entity, 'stonehearth:thoughts:health_wounds:no_wound')
    end
 end
 
