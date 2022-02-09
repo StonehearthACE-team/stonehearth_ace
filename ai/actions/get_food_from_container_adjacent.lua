@@ -1,7 +1,19 @@
-local AceGetFoodFromContainerAdjacent = class()
+local Entity = _radiant.om.Entity
+
+local GetFoodFromContainerAdjacent = radiant.class()
+GetFoodFromContainerAdjacent.name = 'get food from container adjacent'
+GetFoodFromContainerAdjacent.does = 'stonehearth:get_food_from_container_adjacent'
+GetFoodFromContainerAdjacent.args = {
+   container = Entity,      -- the container with the food in it
+   storage = {
+      type = Entity,
+      default = stonehearth.ai.NIL,
+   }
+}
+GetFoodFromContainerAdjacent.priority = 0
 
 -- have to override this whole function in order to insert the release lease statement at the right time
-function AceGetFoodFromContainerAdjacent:run(ai, entity, args)
+function GetFoodFromContainerAdjacent:run(ai, entity, args)
    local container = args.container
 
    local container_data = radiant.entities.get_entity_data(container, 'stonehearth:food_container')
@@ -10,11 +22,8 @@ function AceGetFoodFromContainerAdjacent:run(ai, entity, args)
       return
    end
 
-   -- if the food container isn't in the world (it's in a storage entity), face its parent
-   local face_entity = container
-   if not radiant.entities.get_world_grid_location(container) then
-      face_entity = radiant.entities.get_parent(container)
-   end
+   -- if a storage entity is specified, face that instead
+   local face_entity = args.storage or container
    radiant.entities.turn_to_face(entity, face_entity)
    ai:execute('stonehearth:run_effect', { effect = container_data.effect })
 
@@ -41,4 +50,4 @@ function AceGetFoodFromContainerAdjacent:run(ai, entity, args)
    stonehearth.ai:pickup_item(ai, entity, food)
 end
 
-return AceGetFoodFromContainerAdjacent
+return GetFoodFromContainerAdjacent
