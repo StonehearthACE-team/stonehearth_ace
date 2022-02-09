@@ -2,11 +2,11 @@ local LampComponent = require 'stonehearth.components.lamp.lamp_component'
 local AceLampComponent = class()
 local Point3 = _radiant.csg.Point3
 
-ALWAYS_ON_COMMAND_URI = 'stonehearth_ace:commands:light_policy:always_on'
-WHEN_DARK_COMMAND_URI = 'stonehearth_ace:commands:light_policy:when_dark'
-NEVER_COMMAND_URI = 'stonehearth_ace:commands:light_policy:never'
-WHEN_COLD_OR_DARK_COMMAND_URI = 'stonehearth_ace:commands:light_policy:when_cold_or_dark'
-WHEN_COLD_COMMAND_URI = 'stonehearth_ace:commands:light_policy:when_cold'
+local ALWAYS_ON_COMMAND_URI = 'stonehearth_ace:commands:light_policy:always_on'
+local WHEN_DARK_COMMAND_URI = 'stonehearth_ace:commands:light_policy:when_dark'
+local NEVER_COMMAND_URI = 'stonehearth_ace:commands:light_policy:never'
+local WHEN_COLD_OR_DARK_COMMAND_URI = 'stonehearth_ace:commands:light_policy:when_cold_or_dark'
+local WHEN_COLD_COMMAND_URI = 'stonehearth_ace:commands:light_policy:when_cold'
 
 function AceLampComponent:_load_json()
    local json = radiant.entities.get_json(self)  
@@ -38,33 +38,24 @@ end
 
 function AceLampComponent:post_activate()
    self:_check_light()
-
-   if self._sv.light_policy == "when_dark" or self._sv.light_policy == "when_cold_and_dark" then
-      self:_create_nighttime_alarms()
-   end
 end
 
 function AceLampComponent:_create_commands()
-   self._sv._added_commands = {}
+   self._sv._added_commands = true
    local commands_component = self._entity:add_component('stonehearth:commands')
    commands_component:add_command(ALWAYS_ON_COMMAND_URI)
-   table.insert(self._sv._added_commands, ALWAYS_ON_COMMAND_URI)
    commands_component:add_command(WHEN_DARK_COMMAND_URI)
-   table.insert(self._sv._added_commands, WHEN_DARK_COMMAND_URI)
    commands_component:add_command(NEVER_COMMAND_URI)
-   table.insert(self._sv._added_commands, NEVER_COMMAND_URI)
    if self._sv.buff_source and self._sv.buff == 'stonehearth_ace:buffs:weather:warmth_source' then
       commands_component:add_command(WHEN_COLD_OR_DARK_COMMAND_URI)
-      table.insert(self._sv._added_commands, WHEN_COLD_OR_DARK_COMMAND_URI)
       commands_component:add_command(WHEN_COLD_COMMAND_URI)
-      table.insert(self._sv._added_commands, WHEN_COLD_COMMAND_URI)
    end
 end
 
 function AceLampComponent:set_light_policy(light_policy)
    self._sv.light_policy = light_policy
-
    self.__saved_variables:mark_changed()
+   self:_check_light()
 end
 
 function AceLampComponent:get_light_policy()
@@ -72,6 +63,13 @@ function AceLampComponent:get_light_policy()
 end
 
 function AceLampComponent:_create_nighttime_alarms()
+   -- if the timers already exist, leave them be
+   if self._sunrise_listener and self._sunset_listener then
+      return
+   end
+
+   self:_destroy_nighttime_alarms()
+
    local calendar_constants = stonehearth.calendar:get_constants()
    local event_times = calendar_constants.event_times
    local jitter = '+20m'
@@ -87,7 +85,7 @@ function AceLampComponent:_create_nighttime_alarms()
 end
 
 function AceLampComponent:_check_light()
-   local should_light
+   local should_light = false
 
    if self._sv.light_policy == "always_on" then
       should_light = true
@@ -100,18 +98,13 @@ function AceLampComponent:_check_light()
       self:_destroy_nighttime_alarms()
    elseif self._sv.light_policy == "when_cold_or_dark" then
       should_light = not stonehearth.calendar:is_daytime() or stonehearth.weather:is_dark_during_daytime() or stonehearth.weather:is_cold_weather()
-      if not self._sunrise_listener or not self._sunset_listener then
-         self:_create_nighttime_alarms()
-      end
+      self:_create_nighttime_alarms()
    elseif self._sv.light_policy == "never" then
-      should_light = false
       self:_destroy_nighttime_alarms()
    else
       assert(self._sv.light_policy == 'when_dark')
       should_light = not stonehearth.calendar:is_daytime() or stonehearth.weather:is_dark_during_daytime()
-      if not self._sunrise_listener or not self._sunset_listener then
-         self:_create_nighttime_alarms()
-      end
+      self:_create_nighttime_alarms()
    end
 
    if should_light then
