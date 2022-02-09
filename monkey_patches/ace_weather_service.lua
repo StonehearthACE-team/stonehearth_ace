@@ -101,22 +101,22 @@ end
 
 function AceWeatherService:is_cold_weather()
    local state = self._sv.current_weather_state
-   return state and state._sv.cold_weather or false
+   return state and state:is_cold_weather()
 end
 
 function AceWeatherService:is_warm_weather()
    local state = self._sv.current_weather_state
-   return state and state._sv.warm_weather or false
+   return state and state:is_warm_weather()
 end
 
 function AceWeatherService:is_bad_weather()
    local state = self._sv.current_weather_state
-   return state and state._sv.bad_weather or false
+   return state and state:is_bad_weather()
 end
 
 function AceWeatherService:is_frozen()
    local state = self._sv.current_weather_state
-   return state and state._sv.frozen or false
+   return state and state:is_frozen()
 end
 
 function AceWeatherService:get_weather_type(weather)

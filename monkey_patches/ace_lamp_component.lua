@@ -77,14 +77,14 @@ function AceLampComponent:_create_nighttime_alarms()
    local sunset_alarm_time = stonehearth.calendar:format_time(event_times.sunset_end) .. jitter
 
    self._sunrise_listener = stonehearth.calendar:set_alarm(sunrise_alarm_time, function()
-         self:_check_light()
+         self:_check_light(true)
       end)
    self._sunset_listener = stonehearth.calendar:set_alarm(sunset_alarm_time, function()
          self:_check_light()
       end)
 end
 
-function AceLampComponent:_check_light()
+function AceLampComponent:_check_light(is_sunrise)
    local should_light = false
 
    if self._sv.light_policy == "always_on" then
@@ -97,13 +97,13 @@ function AceLampComponent:_check_light()
       should_light = stonehearth.weather:is_cold_weather()
       self:_create_nighttime_alarms()
    elseif self._sv.light_policy == "when_cold_or_dark" then
-      should_light = not stonehearth.calendar:is_daytime() or stonehearth.weather:is_dark_during_daytime() or stonehearth.weather:is_cold_weather()
+      should_light = not (is_sunrise or stonehearth.calendar:is_daytime()) or stonehearth.weather:is_dark_during_daytime() or stonehearth.weather:is_cold_weather()
       self:_create_nighttime_alarms()
    elseif self._sv.light_policy == "never" then
       self:_destroy_nighttime_alarms()
    else
       assert(self._sv.light_policy == 'when_dark')
-      should_light = not stonehearth.calendar:is_daytime() or stonehearth.weather:is_dark_during_daytime()
+      should_light = not (is_sunrise or stonehearth.calendar:is_daytime()) or stonehearth.weather:is_dark_during_daytime()
       self:_create_nighttime_alarms()
    end
 

@@ -10,7 +10,12 @@ function AceGetFoodFromContainerAdjacent:run(ai, entity, args)
       return
    end
 
-   radiant.entities.turn_to_face(entity, container)
+   -- if the food container isn't in the world (it's in a storage entity), face its parent
+   local face_entity = container
+   if not radiant.entities.get_world_grid_location(container) then
+      face_entity = radiant.entities.get_parent(container)
+   end
+   radiant.entities.turn_to_face(entity, face_entity)
    ai:execute('stonehearth:run_effect', { effect = container_data.effect })
 
    -- consume the stack after the effect finishes.  this might end up destroying the container

@@ -744,7 +744,7 @@ function AceFarmerFieldComponent:_update_weather()
    local weather = stonehearth.weather:get_current_weather()
    local sunlight = weather:get_sunlight()
    local humidity = weather:get_humidity()
-   local frozen = weather:get_frozen()
+   local is_frozen = weather:is_frozen()
    local changed = false
 
    if sunlight ~= self._weather_sunlight then
@@ -755,8 +755,8 @@ function AceFarmerFieldComponent:_update_weather()
       self._weather_humidity = humidity
       changed = true
    end
-   if frozen ~= self._weather_frozen then
-      self._weather_frozen = frozen
+   if is_frozen ~= self._weather_frozen then
+      self._weather_frozen = is_frozen
       changed = true
    end
 

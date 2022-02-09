@@ -193,19 +193,19 @@ function AceWeatherState:get_base_humidity()
    return self._sv._base_humidity
 end
 
-function AceWeatherState:get_frozen()
+function AceWeatherState:is_frozen()
    return self._sv.frozen
 end
 
-function AceWeatherState:get_cold_weather()
+function AceWeatherState:is_cold_weather()
    return self._sv.cold_weather
 end
 
-function AceWeatherState:get_warm_weather()
+function AceWeatherState:is_warm_weather()
    return self._sv.warm_weather
 end
 
-function AceWeatherState:get_bad_weather()
+function AceWeatherState:is_bad_weather()
    return self._sv.bad_weather
 end
 
