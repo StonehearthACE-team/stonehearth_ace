@@ -1,0 +1,14 @@
+{
+   "type": "command",
+   "name": "when_cold_or_dark_light_policy",
+   "group": "stonehearth_ace:light_policy",
+   "display_name": "i18n(stonehearth_ace:data.commands.light_policy.when_cold_or_dark.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.light_policy.when_cold_or_dark.description)",
+   "ordinal": 6,
+   "icon": "file(when_cold_or_dark_light_policy.png)",
+   "action": "call",
+   "function": "stonehearth_ace:set_light_policy_command",
+   "args": [
+      "when_cold_or_dark"
+   ]
+}

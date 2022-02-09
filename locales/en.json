@@ -3725,6 +3725,28 @@
             "description": "Use this to learn a new crafting recipe. This will destroy the item.",
             "bulletin_title": "The [str(i18n_data.job_name)] has unlocked [str(i18n_data.recipe_count)] new recipe(s)!",
             "bulletin_title_single": "The [str(i18n_data.job_name)] has unlocked a new recipe!"
+         },
+         "light_policy": {
+            "always_on": {
+               "display_name": "Policy: Always",
+               "description": "This light source will never go out.<br>Useful for illuminating dark interiors, mine shafts, caves..."
+            },
+            "never": {
+               "display_name": "Policy: Never",
+               "description": "This light source will remain unlit until a new policy is chosen."
+            },
+            "when_cold": {
+               "display_name": "Policy: Only when Cold",
+               "description": "This light source will only be lit on days with cold weather.<br>Useful for creating additional heat points that you might only want lit for the winter, like street braziers."
+            },
+            "when_cold_or_dark": {
+               "display_name": "Policy: When Cold and/or Dark",
+               "description": "This light source will be lit on days with cold weather and/or whenever it is dark.<br>The default behavior for all the light sources that are also sources of warmth.<br><br>(It is considered dark when it is night or during certain weather types)"
+            },
+            "when_dark": {
+               "display_name": "Policy: When Dark",
+               "description": "This light source will only be lit when it is dark.<br>The default behavior for all the light sources that re not sources of warmth.<br><br>(It is considered dark when it is night or during certain weather types)"
+            }
          }
       },
       "buffs": {

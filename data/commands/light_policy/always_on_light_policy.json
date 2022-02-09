@@ -1,0 +1,14 @@
+{
+   "type": "command",
+   "name": "always_on_light_policy",
+   "group": "stonehearth_ace:light_policy",
+   "display_name": "i18n(stonehearth_ace:data.commands.light_policy.always_on.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.light_policy.always_on.description)",
+   "ordinal": 10,
+   "icon": "file(always_on_light_policy.png)",
+   "action": "call",
+   "function": "stonehearth_ace:set_light_policy_command",
+   "args": [
+      "always_on"
+   ]
+}

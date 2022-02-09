@@ -758,6 +758,11 @@
       "commands:capture_fish": "file(data/commands/capture_fish/capture_fish.json)",
       "commands:collect_bees": "file(data/commands/collect_bees/collect_bees.json)",
       "commands:harvest_highland_vine": "file(data/commands/harvest_vine/harvest_highland_vine.json)",
+      "commands:light_policy:always_on": "file(data/commands/light_policy/always_on_light_policy.json)",
+      "commands:light_policy:never": "file(data/commands/light_policy/never_light_policy.json)",
+      "commands:light_policy:when_cold": "file(data/commands/light_policy/when_cold_light_policy.json)",
+      "commands:light_policy:when_cold_or_dark": "file(data/commands/light_policy/when_cold_or_dark_light_policy.json)",
+      "commands:light_policy:when_dark": "file(data/commands/light_policy/when_dark_light_policy.json)",
       "commands:manage_party_1": "file(data/commands/manage_parties/manage_party_1.json)",
       "commands:manage_party_2": "file(data/commands/manage_parties/manage_party_2.json)",
       "commands:manage_party_3": "file(data/commands/manage_parties/manage_party_3.json)",
@@ -6145,6 +6150,10 @@
       },
       "transform_command": {
          "controller": "file(call_handlers/transform_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "set_light_policy_command": {
+         "controller": "file(call_handlers/light_policy_call_handler.lua)",
          "endpoint": "server"
       },
       "set_farm_fertilizer_preference": {

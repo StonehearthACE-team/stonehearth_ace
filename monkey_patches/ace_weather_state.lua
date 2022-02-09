@@ -62,6 +62,9 @@ function AceWeatherState:_load_ace_values()
    self._sv._base_humidity = json.humidity or 0
    self._sv.humidity = self._sv._base_humidity
    self._sv.frozen = json.frozen or false
+   self._sv.cold_weather = json.cold_weather or false
+   self._sv.warm_weather = json.warm_weather or false
+   self._sv.bad_weather = json.is_bad_weather or false
 	self._sv.unsheltered_npc_debuff = json.unsheltered_npc_debuff or nil
    self._sv.music_sound_key = json.music_sound_key or nil
    self._sv.buff_application_interval = json.buff_application_interval or '20m'
@@ -192,6 +195,18 @@ end
 
 function AceWeatherState:get_frozen()
    return self._sv.frozen
+end
+
+function AceWeatherState:get_cold_weather()
+   return self._sv.cold_weather
+end
+
+function AceWeatherState:get_warm_weather()
+   return self._sv.warm_weather
+end
+
+function AceWeatherState:get_bad_weather()
+   return self._sv.bad_weather
 end
 
 function AceWeatherState:get_json()

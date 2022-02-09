@@ -99,6 +99,26 @@ function AceWeatherService:_get_weather_for_season(season, completion, avoid_bad
    return weighted_set:choose_random()
 end
 
+function AceWeatherService:is_cold_weather()
+   local state = self._sv.current_weather_state
+   return state and state._sv.cold_weather or false
+end
+
+function AceWeatherService:is_warm_weather()
+   local state = self._sv.current_weather_state
+   return state and state._sv.warm_weather or false
+end
+
+function AceWeatherService:is_bad_weather()
+   local state = self._sv.current_weather_state
+   return state and state._sv.bad_weather or false
+end
+
+function AceWeatherService:is_frozen()
+   local state = self._sv.current_weather_state
+   return state and state._sv.frozen or false
+end
+
 function AceWeatherService:get_weather_type(weather)
    local json = weather and weather:get_json()
    if json then
