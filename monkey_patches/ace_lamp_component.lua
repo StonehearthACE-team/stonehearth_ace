@@ -77,10 +77,10 @@ function AceLampComponent:_create_nighttime_alarms()
    local sunset_alarm_time = stonehearth.calendar:format_time(event_times.sunset_end) .. jitter
 
    self._sunrise_listener = stonehearth.calendar:set_alarm(sunrise_alarm_time, function()
-         self:light_off()
+         self:_check_light()
       end)
    self._sunset_listener = stonehearth.calendar:set_alarm(sunset_alarm_time, function()
-         self:light_on()
+         self:_check_light()
       end)
 end
 
@@ -92,10 +92,10 @@ function AceLampComponent:_check_light()
       self:_destroy_nighttime_alarms()
    elseif self._sv.light_policy == "manual" then
       should_light = self._sv.is_lit
-      self:_destroy_nighttime_alarms()
+      self:_create_nighttime_alarms()
    elseif self._sv.light_policy == "when_cold" then
       should_light = stonehearth.weather:is_cold_weather()
-      self:_destroy_nighttime_alarms()
+      self:_create_nighttime_alarms()
    elseif self._sv.light_policy == "when_cold_or_dark" then
       should_light = not stonehearth.calendar:is_daytime() or stonehearth.weather:is_dark_during_daytime() or stonehearth.weather:is_cold_weather()
       self:_create_nighttime_alarms()
