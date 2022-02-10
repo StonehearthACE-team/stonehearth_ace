@@ -11,16 +11,20 @@ local WHEN_COLD_COMMAND_URI = 'stonehearth_ace:commands:light_policy:when_cold'
 function AceLampComponent:_load_json()
    local json = radiant.entities.get_json(self)  
 	self._sv.buff_source = json.buff_source or false
-	
+	local appropriate_policy = 'when_dark'
+
    if self._sv.buff_source then
 	   self._sv.buff = json.buff or 'stonehearth_ace:buffs:weather:warmth_source'
+      if self._sv.buff == 'stonehearth_ace:buffs:weather:warmth_source' then
+         appropriate_policy = 'when_cold_or_dark'
+      end
    end
 
    if not self._sv.light_policy then
-      self._sv.light_policy = json.light_policy or 'when_dark'
+      self._sv.light_policy = json.light_policy or appropriate_policy
    end
 
-   if not self._sv._added_commands and not json.restrict_policy_changing then
+   if not self._sv._added_commands and json.force_policy_changing or not self._sv._added_commands and not json.restrict_policy_changing and not self._entity:get_component('stonehearth:firepit') then
       self:_create_commands()
    end
 

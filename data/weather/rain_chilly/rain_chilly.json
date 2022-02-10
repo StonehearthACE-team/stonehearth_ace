@@ -15,7 +15,6 @@
    "vision_multiplier": 0.6,
    "hide_cloud_shadows": true,
    "snow_accumulation_per_minute": 0.0002,
-   "is_dark_during_daytime": true,
    "unsheltered_debuff": [
       "stonehearth_ace:buffs:weather:cold_breath",
       "stonehearth_ace:buffs:weather:soaked",
@@ -48,9 +47,10 @@
          "time": "night"
       }
    ],
-   "is_bad_weather": true,
    "humidity": 1,
    "sunlight": 0.7,
    "frozen": true,
-   "cold_weather": true
+   "is_bad_weather": true,
+   "cold_weather": true,
+   "is_dark_during_daytime": false
 }
