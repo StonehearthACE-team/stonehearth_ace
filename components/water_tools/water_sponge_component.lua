@@ -221,7 +221,7 @@ function WaterSpongeComponent:on_tick_water_processor()
       if output_rate > 0 then
          local output_location = self._sv._output_location
          if output_location then
-            output_location = radiant.entities.local_to_world(output_location, self._entity)
+            output_location = radiant.entities.local_to_world(Region3(Cube3(output_location)), self._entity):get_bounds().min
 
             local destination_container, destination_sponge, is_solid = self:_get_destination_container(output_location)
             if destination_container then
@@ -261,7 +261,7 @@ function WaterSpongeComponent:on_tick_water_processor()
                   if not water_entity then
                      local output_origin = self._sv._output_origin
                      if output_origin then
-                        output_origin = radiant.entities.local_to_world(output_origin, self._entity)
+                        output_origin = radiant.entities.local_to_world(Region3(Cube3(output_origin)), self._entity):get_bounds().min
                         water_entity = stonehearth.hydrology:get_water_body_at(output_location)
                         if not water_entity then
                            local channel = self._prev_waterfall_channel
@@ -340,7 +340,7 @@ function WaterSpongeComponent:on_tick_water_processor()
          if input_rate > 0 then
             local input_location = self._sv._input_location
             if input_location then
-               input_location = radiant.entities.local_to_world(input_location, self._entity)
+               input_location = radiant.entities.local_to_world(Region3(Cube3(input_location)), self._entity):get_bounds().min
                local volume_not_removed = input_rate
 
                -- the vast majority of the time, we'll be modifying a single water entity
