@@ -1,25 +1,28 @@
 {
-   "mixins": "stonehearth_ace:mixins:weapon",
    "type": "entity",
 	"components": {
+      "mixintypes": {
+         "stonehearth:equipment_piece": "override"
+      },
       "stonehearth:equipment_piece": {
-	     "slot": "mainhand",
+	      "slot": "mainhand",
          "render_type": "attach_to_bone",
          "equipment_types": [
             "mainhand"
          ],
-         "mixintypes": {
-            "roles": "override"
-         },
          "postures": [
             "stonehearth:combat",
-            "stonehearth:patrol"
+            "stonehearth:patrol",
+            "stonehearth:guarding"
          ],
          "ilevel": 14,
          "roles": ["footman_job"],
          "required_job_level": 2,
+         "no_drop": false,
          "equip_effect": "stonehearth:effects:weapon_level_up"
       },
+      "stonehearth_ace:statistics": {},
+      "stonehearth_ace:titles": {},
 	   "stonehearth:entity_forms": {
          "iconic_form": "file(bronze_sword_iconic.json)"
       }

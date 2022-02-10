@@ -1,14 +1,10 @@
 {
-   "mixins": [
-	  "stonehearth_ace:mixins:weapon"
-   ],
    "type": "entity",
    "components": {
+      "mixintypes": {
+         "stonehearth:equipment_piece": "override"
+      },
       "stonehearth:equipment_piece": {
-	      "mixintypes": {
-			"roles": "override",
-			"additional_equipment": "override"
-	     },
          "slot": "mainhand",
          "additional_equipment": {
             "stonehearth:armor:offhand_placeholder": true
@@ -16,14 +12,17 @@
          "render_type": "attach_to_bone",
          "postures": [
             "stonehearth:combat",
-            "stonehearth:patrol"
+            "stonehearth:patrol",
+            "stonehearth:guarding"
          ],
          "ilevel": 18,
          "roles":["knight_job"],
          "required_job_level": 2,
          "equip_effect": "stonehearth:effects:weapon_level_up",
 		 "equipment_types": ["twohanded"]
-      }
+      },
+      "stonehearth_ace:statistics": {},
+      "stonehearth_ace:titles": {}
    },
    "entity_data": {
       "stonehearth:buffs": {
