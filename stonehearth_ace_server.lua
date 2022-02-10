@@ -54,6 +54,7 @@ local monkey_patches = {
    ace_csg_lib = 'stonehearth.lib.csg.csg_lib',
    ace_darkness_observer = 'stonehearth.ai.observers.darkness_observer',
    ace_default_conversation_script = 'stonehearth.data.conversation.default.default_conversation_script',
+   ace_defend_melee_action = 'stonehearth.ai.actions.combat.defend_melee_action',
    ace_dig_adjacent_action = 'stonehearth.ai.actions.mining.dig_adjacent_action',
    ace_donation_dialog_encounter = 'stonehearth.services.server.game_master.controllers.encounters.donation_dialog_encounter',
    ace_donation_encounter = 'stonehearth.services.server.game_master.controllers.encounters.donation_encounter',
