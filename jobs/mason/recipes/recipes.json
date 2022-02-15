@@ -68,7 +68,16 @@
 			},
 			"cold_storage_cabinet": {
 				"recipe": "file(cold_storage_cabinet_recipe.json)"
-			}
+			},
+         "output_box_stone_wolf": {
+            "recipe": "/northern_alliance/jobs/mason/recipes/output_box_stone_wolf_recipe.json"
+         },
+         "input_bin_stone_wolf": {
+            "recipe": "/northern_alliance/jobs/mason/recipes/input_bin_stone_wolf_recipe.json"
+         },
+         "chest_stone_wolf": {
+            "recipe": "/northern_alliance/jobs/mason/recipes/chest_stone_wolf_recipe.json"
+         }
 		 }
 	  },
 	  "furniture": {
@@ -212,6 +221,18 @@
 				},
 				"window_box_stone_snow_poppy": {
                "recipe": "/northern_alliance/jobs/mason/recipes/window_box_stone_snow_poppy_recipe.json"
+            },
+            "window_arrow_short": {
+               "recipe": "/stonehearth/jobs/mason/recipes/valor_window_arrow_short_recipe.json"
+            },
+            "valor_window_arrow_tall": {
+               "recipe": "/stonehearth/jobs/mason/recipes/valor_window_arrow_tall_recipe.json"
+            },
+            "valor_window_frame_barred": {
+               "recipe": "/stonehearth/jobs/mason/recipes/valor_window_frame_barred_recipe.json"
+            },
+            "valor_window_frame_xlarge": {
+               "recipe": "/stonehearth/jobs/mason/recipes/valor_window_frame_xlarge_recipe.json"
             }
          }
       },
@@ -238,17 +259,20 @@
             "wall_mounted_paw": {
                "recipe": "/northern_alliance/jobs/mason/recipes/wall_mounted_paw_recipe.json"
             },
-            "output_box_stone_wolf": {
-               "recipe": "/northern_alliance/jobs/mason/recipes/output_box_stone_wolf_recipe.json"
-            },
-            "input_bin_stone_wolf": {
-               "recipe": "/northern_alliance/jobs/mason/recipes/input_bin_stone_wolf_recipe.json"
-            },
-            "chest_stone_wolf": {
-               "recipe": "/northern_alliance/jobs/mason/recipes/chest_stone_wolf_recipe.json"
-            },
             "stone_teapot": {
                "recipe": "file(stone_teapot_recipe.json)"
+            },
+            "window_arrow_short": {
+               "recipe": ""
+            },
+            "valor_window_arrow_tall": {
+               "recipe": ""
+            },
+            "valor_window_frame_barred": {
+               "recipe": ""
+            },
+            "valor_window_frame_xlarge": {
+               "recipe": ""
             }
 	     }
       },

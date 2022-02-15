@@ -2,6 +2,11 @@
    "mixins": "stonehearth_ace:buffs:weather:whiteout",
    "description": "i18n(stonehearth_ace:data.buffs.weather.whiteout_debuff.npc_description)",
    "evolve_chance": 0,
+   "modifiers": {
+      "additive_weapon_range_modifier": {
+         "add": -4
+      }
+   },
    "mixintypes": {
       "set_posture": "remove",
       "thought": "remove",

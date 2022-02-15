@@ -2193,7 +2193,7 @@
          },
          "whiteout": {
             "display_name": "Whiteout",
-            "description": "There is a storm coming... And it's unlike anything we've ever seen.<ul><li>Slightly reduced sunlight levels.</li><li>Quite reduced humidity.</li></li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li><li>During the whiteout, vision radius is greatly reduced and hearthlings caught in it will have severely reduced capabilities and speed - and start getting hurt after a while.</li><li>The whiteout happens near the middle of the day and lasts until the night.</li></ul>",
+            "description": "There is a storm coming... And it's unlike anything we've ever seen.<ul><li>Slightly reduced sunlight levels.</li><li>Quite reduced humidity.</li></li><li>Unsheltered hearthlings are too cold to work as effectively.</li><li>Unsheltered pasture animals are hurt by the cold.</li><li>During the whiteout, vision radius is greatly reduced and hearthlings caught in it will have severely reduced capabilities like weapon range and speed - and will start to get hurt after a while.</li><li>The whiteout happens near the middle of the day and lasts until the night.</li></ul>",
             "bulletin_name": "The whiteout has started! Everyone should go inside NOW!"
          },
          "under_siege": {
@@ -4051,15 +4051,15 @@
          "poison": {
             "minor_poison": {
                "display_name": "Weak Poison",
-               "description": "A weak, non-lethal poison. Will last some hours. Muscle and Willpower are fairly reduced.<ul><li>💬 Type & Severity: Poison (Low)</li><li>💊 This poison can be treated with Leeches or Weak Antidote</li><li>💢 Losing 5% of their health points every 30 minutes</li><li>❗ This poison will only damage them down to 75% of their total health</li></ul>"
+               "description": "A weak, non-lethal poison. Will last some hours. Muscle and Willpower are fairly reduced.<ul><li>💬 Type & Severity: Poison (Low)</li><li>💊 This poison can be treated with Leeches or Weak Antidote; it is removed if the hearthling is incapacitated</li><li>💢 Losing 5% of their health points every 30 minutes</li><li>❗ This poison will only damage them down to 75% of their total health</li></ul>"
             },
             "poison": {
                "display_name": "Poison",
-               "description": "A non-lethal but dangerous poison. Might last a day or so. Muscle and Willpower are reduced.<ul><li>💬 Type & Severity: Poison (Medium)</li><li>💊 This poison needs to be treated with at least an Antidote to be completely removed with a single treatment</li><li>💢 Losing 5% of their health points every 20 minutes</li><li>❗ This poison will damage them down to only 30% of their total health</li></ul>"
+               "description": "A non-lethal but dangerous poison. Might last a day or so. Muscle and Willpower are reduced.<ul><li>💬 Type & Severity: Poison (Medium)</li><li>💊 This poison needs to be treated with at least an Antidote to be completely removed with a single treatment; it is removed if the hearthling is incapacitated</li><li>💢 Losing 5% of their health points every 20 minutes</li><li>❗ This poison will damage them down to only 30% of their total health</li></ul>"
             },
             "major_poison": {
                "display_name": "Strong Poison",
-               "description": "A tough, lethal poison. Can last a couple of days. Muscle and Willpower are greatly reduced.<ul><li>💬 Type & Severity: Poison (High)</li><li>💊 This poison needs to be treated with at least a Strong Antidote to be completely removed with a single treatment</li><li>💢 Losing 5% of their health points every 15 minutes</li><li>❗ This poison can damage them until they are knocked unconscious and require constant assistance or treatment</li></ul>"
+               "description": "A tough, lethal poison. Can last a couple of days. Muscle and Willpower are greatly reduced.<ul><li>💬 Type & Severity: Poison (High)</li><li>💊 This poison needs to be treated with at least a Strong Antidote to be completely removed with a single treatment; incapacitation will not remove this poison and it can cause the hearthling to be incapacitated over and over again until they're cured</li><li>💢 Losing 5% of their health points every 15 minutes</li><li>❗ This poison can damage them until they are knocked unconscious and require constant assistance or treatment</li></ul>"
             }
          },
          "toxin": {
@@ -4794,21 +4794,29 @@
                "castle_roof": "A stone castle roof made of Tuna, Shuttle Grey, and Mid Grey.",
                "slate_peaked_roof": "A stone roof made of Slate Dark, Slate Shade, Slate, and Slate Light.",
                "thatch_peaked_roof": "A thatch roof made of Pesto, Lemon Ginger, Yukon Gold, and Antique Brass.",
-               "thatch_light_peaked_roof": "A thatch roof made of Sandal, Muesli and Shadow.",
-               "wheat_peaked_roof": "A thatch roof made of Wheat Highlight, Wheat, Wheat Shade and Wheat Dark.",
-               "millet_peaked_roof": "A thatch roof made of Millet Highlight, Millet, Millet Shade and Millet Dark.",
-               "barley_peaked_roof": "A thatch roof made of Barley Highlight, Barley, Barley Shade and Barley Dark.",
-               "rye_peaked_roof": "A thatch roof made of Rye Highlight, Rye, Rye Shade and Rye Dark.",
+               "thatch_light_peaked_roof": "A thatch roof made of Sandal, Muesli, and Shadow.",
+               "wheat_peaked_roof": "A thatch roof made of Wheat Highlight, Wheat, Wheat Shade, and Wheat Dark.",
+               "millet_peaked_roof": "A thatch roof made of Millet Highlight, Millet, Millet Shade, and Millet Dark.",
+               "barley_peaked_roof": "A thatch roof made of Barley Highlight, Barley, Barley Shade, and Barley Dark.",
+               "rye_peaked_roof": "A thatch roof made of Rye Highlight, Rye, Rye Shade, and Rye Dark.",
                "dry_turf_peaked_roof": "A thatch roof made of Pale Grass, Dry Turf, Dark Turf, and Stomped Path.",
-               "wood_dark_squares": "A pattern of Cioccolato, Bistre and Morocco Brown.",
-               "wood_dark_boards": "A pattern of Punga, Cocoa Brown, Clinker and Tobacco Brown.",
-               "wood_light_boards": "A pattern of Ash, Napa and Heathered Grey.",
-               "thatch_messy": "A Pattern of Pesto, Lemon Ginger, Yukon Gold and Antique Brass.",
-               "clay_grey_pattern": "A Pattern of Light Ash, Cloudy and Light Mountain Mist.",
-               "clay_gold_pattern": "A Pattern of Raffia, Winter Hazel and Ecru.",
-               "clay_red_pattern": "A Pattern of Copper Canyon, Korma and New Amber.",
-               "clay_sage_pattern": "A Pattern of Sage Light, Sage and Sage Dark.",
-               "clay_oasis_pattern": "A Pattern of Oasis Light, Oasis and Oasis Dark."
+               "wood_dark_squares": "A pattern of Cioccolato, Bistre, and Morocco Brown.",
+               "wood_dark_boards": "A pattern of Punga, Cocoa Brown, Clinker, and Tobacco Brown.",
+               "wood_light_boards": "A pattern of Ash, Napa, and Heathered Grey.",
+               "thatch_messy": "A Pattern of Pesto, Lemon Ginger, Yukon Gold, and Antique Brass.",
+               "clay_grey_pattern": "A Pattern of Light Ash, Cloudy, and Light Mountain Mist.",
+               "clay_gold_pattern": "A Pattern of Raffia, Winter Hazel, and Ecru.",
+               "clay_red_pattern": "A Pattern of Copper Canyon, Korma, and New Amber.",
+               "clay_sage_pattern": "A Pattern of Sage Light, Sage, and Sage Dark.",
+               "clay_oasis_pattern": "A Pattern of Oasis Light, Oasis, and Oasis Dark.",
+               "big_block_wall": "A Pattern of Granite Green, Pale Oyster, and Hillary.",
+               "block_wall": "A Pattern of Mountain Roots, Mountainside Dark, Mountainside Medium, Mountainside Light, and Mountaintop.",
+               "small_block_wall": "A Pattern of Slate Dark, Slate Shade, Slate, and Slate Light.",
+               "cobblestone_brown_wall": "A Pattern of Cork, Dark Congo Brown, Congo Brown, and Light Congo Brown.",
+               "thin_timber_wall": "A Pattern of Bistre, Cioccolato, and Morocco Brown.",
+               "palisade_wall": "A Pattern of Tobacco Brown, Clinker, Punga, and Cocoa Brown.",
+               "plastered_oak_wall": "A Pattern of Oak leaf Dark, Oak leaf, and Oak leaf Light.",
+               "plastered_peach_wall": "A Pattern of Peach Dark, Peach, and Peach Light."
             },
             "colors": {
                "#626139": "Pale Grass",
@@ -8066,7 +8074,7 @@
             },
             "cooking_oil_recipe": {
                "recipe_name": "Cooking Oil",
-               "description": "Extract the oil from any oleaginous grains or herbs to be used as an ingredient.",
+               "description": "Extract the oil from any oleaginous grains or herbs to be used as an ingredient or condiment base.",
                "flavor": "Pumpkin seeds, Sunflowers, Corn or even Paddy are examples of oil sources"
             },
             "cooked_rice_recipe": {
@@ -8262,6 +8270,18 @@
                "recipe_name": "Large Thatch Bundle",
                "description": "Store a large amount of thatching for later use.",
                "flavor": ""
+            },
+            "barley_pile_recipe": {
+               "recipe_name": "Large Barley Bundle",
+               "description": "For when normal barley bales are just too small. Good for efficiently storing a large amount of barley"
+            },
+            "millet_pile_recipe": {
+               "recipe_name": "Large Millet Bundle",
+               "description": "For when normal millet bales are just too small. Good for efficiently storing a large amount of millet"
+            },
+            "rye_pile_recipe": {
+               "recipe_name": "Large Rye Bundle",
+               "description": "For when normal rye bales are just too small. Good for efficiently storing a large amount of rye"
             },
             "kibble_recipe": {
                "recipe_name": "Kibble (x5)",
@@ -9050,7 +9070,7 @@
             },
             "mayonnaise_recipe": {
                "recipe_name": "Mayonnaise (x3)",
-               "description": "A tangy mixture of egg yolk, oils and acids that is rather appreciated as a sauce or cooking ingredient.",
+               "description": "A tangy mixture of egg yolk, oils and acids that is rather appreciated as a sauce or cooking ingredient and condiment base.",
                "flavor": "Love it or hate it"
             },
             "pasture_bed_small_recipe": {
@@ -15700,7 +15720,7 @@
             "cheese_cottage": {
                "cheese_cottage": {
                   "display_name": "Cottage Cheese",
-                  "description": "Salty and sour cheese curds with a peculiar taste."
+                  "description": "Salty and sour curds with a peculiar taste. Usable as a condiment base."
                },
                "cheese_cottage_serving": {
                   "display_name": "Serving of Cottage Cheese"
@@ -15724,7 +15744,7 @@
             },
             "cream_sour": {
                "display_name": "Bowl of Sour Cream",
-               "description": "Fermented cream. Has a stronger, bitter taste but is greatly appreciated!"
+               "description": "Fermented cream. Has a strong taste and can be used as a condiment base!"
             }
          },
          "beef_jerky": {
@@ -15806,7 +15826,7 @@
          },
          "cooking_oil": {
             "display_name": "Jug of Cooking Oil",
-            "description": "Extracted from vegetables. Can also be used as cooking grease."
+            "description": "Extracted from vegetables. Usable as cooking grease or condiment base."
          },
          "fish_fingers": {
             "fish_fingers": {
@@ -16201,7 +16221,7 @@
          "mayonnaise": {
             "mayonnaise": {
                "display_name": "Mayonnaise",
-               "description": "A creamy and a bit tangy sauce. Eat it raw or use it in cooking!"
+               "description": "A creamy and tangy sauce. Eat it raw or use it in cooking or as a condiment base!"
             },
             "mayonnaise_serving": {
                "display_name": "Serving of Mayonnaise",
@@ -16309,7 +16329,7 @@
          },
          "condiment": {
             "display_name": "Bowl of Condiment",
-            "description": "A fine relish made to complement savoury dishes. Can be used as a seasoning in cooking recipes."
+            "description": "A fine relish made to complement savoury dishes. Can be used as a seasoning."
          },
          "garlic": {
             "garlic_basket": {
@@ -17976,6 +17996,36 @@
          "universal_storage": {
             "display_name": "Universal Storage",
             "description": "Practically unlimited storage accessible from multiple access points."
+         },
+         "barley_pile_old": {
+            "description": "It's still good, if a little mushy in places.",
+            "display_name": "Old Barley Bundle",
+            "iconic_description": "Can be harvested for barley when placed."
+         },
+         "barley_pile": {
+            "description": "Harvest for a large amount of barley",
+            "display_name": "Large Barley Bundle",
+            "iconic_description": "Can be harvested for barley when placed."
+         },
+         "millet_pile": {
+            "display_name": "Large Millet Bundle",
+            "description": "Harvest for a large amount of millet",
+            "iconic_description": "Can be harvested for millet when placed."
+         },
+         "rye_pile": {
+            "display_name": "Large Rye Bundle",
+            "description": "Harvest for a large amount of rye",
+            "iconic_description": "Can be harvested for rye when placed."
+         },
+         "millet_pile_old": {
+            "iconic_description": "Can be harvested for millet when placed.",
+            "display_name": "Old Millet Bundle",
+            "description": "It's still good, if a little mushy in places."
+         },
+         "rye_pile_old": {
+            "iconic_description": "Can be harvested for rye when placed.",
+            "display_name": "Old Rye Bundle",
+            "description": "It's still good, if a little mushy in places."
          }
       },
       "tools": {

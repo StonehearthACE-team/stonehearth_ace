@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 3,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.rye_pile_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.rye_pile_recipe.description)",
+   "flavor": "",
+   "portrait": "/stonehearth_ace/entities/containers/rye_pile/rye_pile.png",
+   "workshop": "stonehearth_ace:cook:table",
+   "level_requirement": 0,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:rye:rye_bale",
+         "count": 20
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:rye_pile"
+      }
+   ]
+}

@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(millet_pile.qb)"
+            ]
+         }
+      },
+      "stonehearth_ace:pile": {
+         "harvest_rate": 3
+      },
+      "render_info": {
+         "scale": 0.12
+      },
+      "mob": {
+         "model_origin": { "x": -0.55, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:replant_data": {
+         "seed_alias": "stonehearth_ace:containers:millet_pile"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.millet_pile.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.millet_pile.description)",
+         "icon": "file(millet_pile.png)",
+         "category": "storage",
+         "material_tags": [
+            "stockpile_cooking_ingredient",
+            "crafted",
+            "millet_pile",
+            "resource_pile"
+         ]
+      }
+   }
+}

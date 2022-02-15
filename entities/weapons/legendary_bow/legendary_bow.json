@@ -4,12 +4,23 @@
    ],
    "type": "entity",
    "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(legendary_bow_equipped.qb)"
+            ]
+         }
+      },
       "stonehearth:equipment_piece": {
 	     "required_job_level": 6
 	  }
    },
    "entity_data": {
       "stonehearth:catalog": {
+         "icon": "file(legendary_bow.png)",
          "material_tags":["legendary", "ascendancy_made", "crafted"]
       }
    }

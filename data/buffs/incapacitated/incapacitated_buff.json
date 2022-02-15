@@ -1,6 +1,11 @@
 {
    "gained_statistics_key": "incapacitated",
+   "disallowed_categories": [
+      "toxin"
+   ],
 	"disallowed_buffs": [
-      "stonehearth_ace:buffs:weather:soaked"
+      "stonehearth_ace:buffs:weather:soaked",
+      "stonehearth_ace:buffs:poison:minor_poison",
+      "stonehearth_ace:buffs:poison:poison"
    ]
 }
