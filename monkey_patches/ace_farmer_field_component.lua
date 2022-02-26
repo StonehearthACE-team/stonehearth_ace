@@ -81,6 +81,7 @@ function AceFarmerFieldComponent:post_activate()
       self:_load_field_type()
       self:_cache_biome_elevation_levels()
       self:_create_listeners()
+      self:_consider_remove_from_town_patrol()
    end
 end
 
@@ -90,6 +91,12 @@ function AceFarmerFieldComponent:_create_listeners()
       self:_create_climate_listeners()
       self:_create_all_post_harvest_crop_listeners()
       self:_create_fertilize_task()
+   end
+end
+
+function AceFarmerFieldComponent:_consider_remove_from_town_patrol()
+   if self:get_field_type() == 'decorative_flowers' then
+      stonehearth.town_patrol:_remove_from_patrol_list(self._entity:get_id())
    end
 end
 
@@ -223,6 +230,7 @@ end
 AceFarmerFieldComponent._ace_old_on_field_created = FarmerFieldComponent.on_field_created
 function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotation)
    self:_ace_old_on_field_created(town, size)
+
    radiant.terrain.place_entity(self._sv._fertilizable_layer, self._location)
    self._sv._queued_overwatered = {}
 
@@ -255,6 +263,7 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotati
    self:_create_water_listener()
    self:_create_climate_listeners()
    self:_check_sky_visibility()
+   self:_consider_remove_from_town_patrol()
 end
 
 function AceFarmerFieldComponent:_is_location_furrow(x, y)
