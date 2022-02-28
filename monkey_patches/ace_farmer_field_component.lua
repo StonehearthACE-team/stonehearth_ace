@@ -31,6 +31,9 @@ function AceFarmerFieldComponent:restore()
    if not self._sv.rotation then
       self._sv.rotation = 0
    end
+   if not self._sv.max_num_crops then
+      self._sv.max_num_crops = math.ceil(self._sv.size.x / 2) * self._sv.size.y
+   end
    
    self:_ace_old_restore()
 
@@ -248,16 +251,22 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotati
 
    local soil_layer = self._sv._soil_layer
    local soil_layer_region = soil_layer:get_component('destination'):get_region()
+   local max_num_crops = 0
    soil_layer_region:modify(function(cursor)
       for x = 1, size.x do
          for y = 1, size.y do
             local rot_x, rot_y = farming_lib.get_crop_coords(size.x, size.y, self._sv.rotation, x, y)
-            if farming_lib.get_location_type(self._field_pattern, rot_x, rot_y) == farming_lib.LOCATION_TYPES.EMPTY then
+            local location_type = farming_lib.get_location_type(self._field_pattern, rot_x, rot_y)
+            if location_type == farming_lib.LOCATION_TYPES.EMPTY then
                cursor:subtract_point(Point3(x - 1, 0, y - 1))
+            elseif location_type == farming_lib.LOCATION_TYPES.CROP then
+               max_num_crops = max_num_crops + 1
             end
          end
       end
    end)
+
+   self._sv.max_num_crops = math.max(1, max_num_crops)
 
    self:_cache_biome_elevation_levels()
    self:_create_water_listener()
@@ -918,7 +927,9 @@ function AceFarmerFieldComponent:_set_water_volume(volume)
       -- i.e., 24 water / 66 crops = 4/11
       -- we compare that to our current volume to crop ratio
       local ideal_ratio = 4/11
-      local this_ratio = volume / (math.ceil(self._sv.size.x/2) * self._sv.size.y)
+      -- account for rotation
+
+      local this_ratio = volume / (self._sv.max_num_crops or 66)
       self._sv._water_level = this_ratio / ideal_ratio
    else
       self._sv._water_level = 0
