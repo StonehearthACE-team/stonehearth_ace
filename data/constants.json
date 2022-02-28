@@ -797,6 +797,9 @@
             "wound_cold": true
          }
       },
+      "hydrology": {
+         "MIN_INFINITE_WATER_HEIGHT": 0.6
+      },
       "item_quality": {
          "mixintypes": {
             "bonuses": "override"
@@ -1144,6 +1147,21 @@
          "FORAGING_SPOT_FREQUENCY": 0.005,
          "MIN_AVG_WILDERNESS_SCORE": 0.004,
          "WILDERNESS_SCORE_MULTIPLIER": 0.02
+      },
+      "universal_storage": {
+         "effect_sizes": {
+            "1": {
+               "max_collision_size": 4,
+               "effect_suffix": ":small"
+            },
+            "2": {
+               "max_collision_size": 15,
+               "effect_suffix": ":medium"
+            },
+            "3": {
+               "effect_suffix": ":large"
+            }
+         }
       },
       "terrain": {
          "MAX_Y_OVERRIDE": 100000,

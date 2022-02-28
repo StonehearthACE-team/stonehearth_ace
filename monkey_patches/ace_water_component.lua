@@ -53,7 +53,7 @@ function AceWaterComponent:_check_if_at_world_edge()
 
    -- if it doesn't actually have any water in it yet, don't limit it that way
    -- only start limiting it once some water has been added
-   if self._sv.height < 1 then
+   if self._sv.height < constants.hydrology.MIN_INFINITE_WATER_HEIGHT then
       self._is_infinite = false
       return
    end

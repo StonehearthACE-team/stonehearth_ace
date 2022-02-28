@@ -45,6 +45,13 @@ function UniversalStorageService:_destroy_player_trace(entity_id)
    end
 end
 
+function UniversalStorageService:set_access_node_effect(player_id, effect)
+   local universal_storage = self._sv.player_storages[player_id]
+   if universal_storage then
+      universal_storage:set_access_node_effect(effect)
+   end
+end
+
 function UniversalStorageService:get_default_category()
    return DEFAULT_CATEGORY
 end
