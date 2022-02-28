@@ -5,13 +5,25 @@
 local Point3 = _radiant.csg.Point3
 local Region3 = _radiant.csg.Region3
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
+local constants = require 'stonehearth.constants'
 
 local UniversalStorage = class()
 local log = radiant.log.create_logger('universal_storage')
 
+local _effect_sizes = {}
+for _, effect_size in pairs(constants.universal_storage.effect_sizes) do
+   table.insert(_effect_sizes, effect_size)
+end
+table.sort(_effect_sizes,
+   function(a, b)
+      return not b.max_collision_size or (a.max_collision_size and a.max_collision_size < b.max_collision_size)
+   end
+)
+
 function UniversalStorage:initialize()
    self._sv.storages = {}
    self._sv.categories = {}
+   self._sv.access_node_effect = nil
 
    self._access_nodes_by_storage = {}  -- tables by storage id contain access node tables
    self._access_nodes = {} -- access node tables by access node entity id; each table contains node entity, traces, and current world destination region
@@ -38,19 +50,21 @@ function UniversalStorage:post_activate()
          end
       end
    end
+
+   self:_update_all_access_node_effects()
 end
 
 function UniversalStorage:destroy()
-   self:_destroy_all_node_traces()
+   self:_destroy_all_node_traces_and_effects()
 end
 
-function UniversalStorage:_destroy_all_node_traces()
+function UniversalStorage:_destroy_all_node_traces_and_effects()
    for _, node in pairs(self._access_nodes) do
-      self:_destroy_node_traces(node)
+      self:_destroy_node_traces_and_effect(node)
    end
 end
 
-function UniversalStorage:_destroy_node_traces(node)
+function UniversalStorage:_destroy_node_traces_and_effect(node)
    if node.parent_trace then
       node.parent_trace:destroy()
       node.parent_trace = nil
@@ -58,6 +72,14 @@ function UniversalStorage:_destroy_node_traces(node)
    if node.location_trace then
       node.location_trace:destroy()
       node.location_trace = nil
+   end
+   self:_stop_access_node_effect(node)
+end
+
+function UniversalStorage:_stop_access_node_effect(node)
+   if node.effect then
+      node.effect:stop()
+      node.effect = nil
    end
 end
 
@@ -80,7 +102,7 @@ function UniversalStorage:unregister_storage(entity)
    local node = self._access_nodes[entity_id]
    if node then
       self._access_nodes[entity_id] = nil
-      self:_destroy_node_traces(node)
+      self:_destroy_node_traces_and_effect(node)
 
       local storage_id = node.storage_id
       local access_nodes_by_storage = self._access_nodes_by_storage[storage_id]
@@ -127,6 +149,19 @@ function UniversalStorage:get_storage_from_category(category, group_id)
    end
 end
 
+function UniversalStorage:set_access_node_effect(effect)
+   if self._sv.access_node_effect ~= effect then
+      self._sv.access_node_effect = effect
+      self:_update_all_access_node_effects()
+   end
+end
+
+function UniversalStorage:_update_all_access_node_effects()
+   for _, node in pairs(self._access_nodes) do
+      self:_update_effect(node)
+   end
+end
+
 function UniversalStorage:_add_storage(entity, category, group_id)
    local category_storages = self._sv.categories[category]
    if not category_storages then
@@ -162,9 +197,11 @@ function UniversalStorage:_add_storage(entity, category, group_id)
       access_node = {
          entity = entity,
          storage_id = storage_id,
+         effect_suffix = self:_get_access_node_size(entity),
          parent_trace = mob:trace_parent('universal storage access node entity added or removed')
             :on_changed(function(parent_entity)
                self:_update_access_node_destination_region(access_node)
+               self:_update_effect(access_node)
             end),
          location_trace = mob:trace_transform('universal storage access node entity moved')
             :on_changed(function()
@@ -172,6 +209,7 @@ function UniversalStorage:_add_storage(entity, category, group_id)
             end)
       }
       self._access_nodes[entity_id] = access_node
+      self:_update_effect(access_node)
    end
 
    local access_nodes_by_storage = self._access_nodes_by_storage[storage_id]
@@ -249,6 +287,33 @@ function UniversalStorage:_update_storage_destination_region(storage_id)
       end)
 
       stonehearth.ai:reconsider_entity(storage, 'adjusted universal storage destination region')
+   end
+end
+
+function UniversalStorage:_get_access_node_size(entity)
+   local rcs = entity:get_component('region_collision_shape')
+   local region = rcs and rcs:get_region()
+   if region then
+      local area = region:get():get_area()
+
+      for _, effect_size in ipairs(_effect_sizes) do
+         if not effect_size.max_collision_size or area < effect_size.max_collision_size then
+            return effect_size.effect_suffix
+         end
+      end
+   end
+end
+
+function UniversalStorage:_update_effect(access_node)
+   self:_stop_access_node_effect(access_node)
+
+   local location = radiant.entities.get_world_grid_location(access_node.entity)
+   if location then
+      local effect = self._sv.access_node_effect
+      if effect and effect ~= '' and access_node.effect_suffix then
+         -- run the appropriate effect based on the access node "size"
+         access_node.effect = radiant.effects.run_effect(access_node.entity, effect .. access_node.effect_suffix)
+      end
    end
 end
 
