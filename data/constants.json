@@ -288,11 +288,11 @@
                "period_multiplier": 0.9
             },
             {
-               "min_level": 1.6,
+               "min_level": 3,
                "period_multiplier": 0.95
             },
             {
-               "min_level": 3.2,
+               "min_level": 3.8,
                "period_multiplier": 1.1
             },
             {
@@ -1055,6 +1055,9 @@
                }
             }
          }
+      },
+      "combat": {
+         "ADDITIVE_COMBAT_LEASH_BONUS": 30
       },
       "equipment": {
          "SLOT_TO_BONE_MAP": {

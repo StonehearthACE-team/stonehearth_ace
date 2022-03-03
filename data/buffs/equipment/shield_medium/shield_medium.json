@@ -1,0 +1,19 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "shield_weight",
+   "unique_in_category": true,
+   "rank": 2,
+   "display_name": "i18n(stonehearth_ace:data.buffs.shield_medium.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.shield_medium.description)",
+   "icon": "file(shield_medium.png)",
+   "invisible_on_crafting": true,
+   "modifiers": {
+      "speed": {
+         "add": -2
+      },
+      "courage": {
+         "add": 10
+      }
+   }
+}

@@ -1,0 +1,26 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cleric_iron_shield_iconic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.085
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(cleric_iron_shield.png)",
+         "is_item": true,
+         "category": "armor"
+      }
+   }
+}

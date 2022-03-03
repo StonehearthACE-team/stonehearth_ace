@@ -1,6 +1,6 @@
 local AceValorTownBonus = class()
 
-local RECIPES_TO_UNLOCK = {
+local ACE_RECIPES_TO_UNLOCK = {
    ['stonehearth:jobs:blacksmith'] = {
       'building_parts:valor_torch',
       'decoration:valor_brazier_large',

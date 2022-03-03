@@ -92,7 +92,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_carpenter_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:refined:water_well_roof:wood",
-					"transform_ingredient_auto_craft": true,
+               "transform_ingredient_auto_craft": true,
                "transforming_worker_effect": "work",
                "transforming_worker_effect_times": 6,
                "transform_effect": "stonehearth:effects:poof_effect",
@@ -108,7 +108,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_mason_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:refined:water_well_roof:stone",
-					"transform_ingredient_auto_craft": true,
+               "transform_ingredient_auto_craft": true,
                "transforming_worker_effect": "work",
                "transforming_worker_effect_times": 6,
                "transform_effect": "stonehearth:effects:poof_effect",
@@ -124,7 +124,7 @@
                "request_action": "stonehearth_ace:transform",
                "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
                "transform_ingredient_uri": "stonehearth_ace:refined:water_well_roof:clay",
-					"transform_ingredient_auto_craft": true,
+               "transform_ingredient_auto_craft": true,
                "transforming_worker_effect": "work",
                "transforming_worker_effect_times": 6,
                "transform_effect": "stonehearth:effects:poof_effect",
@@ -132,6 +132,17 @@
                   "stonehearth:jobs:worker": true,
                   "stonehearth:jobs:potter": true
                }
+            },
+            "destroy": {
+               "transform_uri": "",
+               "command": "stonehearth_ace:commands:transform:build_well_destroy",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth:effects:clear_effect",
+               "transforming_worker_effect": "work",
+               "transforming_worker_effect_times": 3,
+               "transform_effect": "stonehearth:effects:object_destroyed",
+               "auto_request": true,
+               "kill_entity": true
             }
          }
       },

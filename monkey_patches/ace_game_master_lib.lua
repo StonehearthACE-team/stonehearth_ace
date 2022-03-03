@@ -5,6 +5,12 @@ ace_game_master_lib._ace_old_create_citizens = game_master_lib.create_citizens
 function ace_game_master_lib.create_citizens(population, info, origin, ctx)
    local citizens = ace_game_master_lib._ace_old_create_citizens(population, info, origin, ctx)
 
+   for i, citizen in ipairs(citizens) do
+      if info.combat_leash_range then
+         stonehearth.combat:set_leash(citizen, origin, (info.combat_leash_range + stonehearth.constants.combat.ADDITIVE_COMBAT_LEASH_BONUS))
+      end
+   end
+
    local tuning
    if info.tuning then
       tuning = radiant.resources.load_json(info.tuning)

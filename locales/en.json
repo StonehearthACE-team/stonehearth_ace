@@ -3557,6 +3557,10 @@
             "empty_container": {
                "display_name": "Cancel Production",
                "description": "Order this container to be emptied so a different production can be selected. The unprocessed material will be retrieved and can be used again!"
+            },
+            "build_well_destroy": {
+               "display_name": "Remove Water Well",
+               "description": "Permanently remove this water well!"
             }
          },
          "slaughter": {
@@ -3599,7 +3603,7 @@
          "job_equipment_roles": {
             "one_handed_footman": {
                "display_name": "Prefer Weapon & Shield",
-               "description": "This Footman currently prefers using a mainhand weapon and a shield. Click to change!<ul><li>A balanced role ideal for a single soldier or small groups</li><li>Certain mainhand weapons will inflict negative conditions on their enemies, like hamstrung or flanked</li></ul>"
+               "description": "This Footman currently prefers using a mainhand weapon and a medium shield. Click to change!<ul><li>A balanced role ideal for a single soldier or small groups</li><li>Certain mainhand weapons will inflict negative conditions on their enemies, like hamstrung or flanked</li></ul>"
             },
             "two_handed_footman": {
                "display_name": "Prefer Two-Handed Weapons",
@@ -3611,7 +3615,7 @@
             },
             "one_handed_knight": {
                "display_name": "Prefer Weapon & Shield",
-               "description": "This Knight currently prefers using a mainhand weapon and a shield. Click to change!<ul><li>A very defensive role, efficient in holding the attention of the enemies</li><li>If using an impact weapon, the Knight can also lower the armor of their foes</li></ul>"
+               "description": "This Knight currently prefers using a mainhand weapon and a heavy shield. Click to change!<ul><li>A very defensive role, efficient in holding the attention of the enemies</li><li>If using an impact weapon, the Knight can also lower the armor of their foes</li></ul>"
             },
             "two_handed_knight": {
                "display_name": "Prefer Polearms",
@@ -3627,7 +3631,7 @@
             },
             "support_cleric": {
                "display_name": "Prefer Scepter & Shield",
-               "description": "This Cleric currently prefers using a scepter and a shield. Click to change!<ul><li>They will engage enemies on melee combat</li><li>They will focus on support spells that weaken and hinder their foes</li><li>They can't use any direct healing spells, only their healing aura</li></ul>"
+               "description": "This Cleric currently prefers using a scepter and a light shield. Click to change!<ul><li>They will engage enemies on melee combat</li><li>They will focus on support spells that weaken and hinder their foes</li><li>They can't use any direct healing spells, only their healing aura</li></ul>"
             },
             "healing_cleric": {
                "display_name": "Prefer Healing Tome",
@@ -3866,7 +3870,7 @@
          },
          "shield_light": {
             "display_name": "Light Shield",
-            "description": "Courage is slightly increased but speed is slightly reduced."
+            "description": "Courage is slightly increased."
          },
          "weather": {
             "chilly_debuff": {
@@ -4621,6 +4625,10 @@
          "armor_acid_buff": {
             "display_name": "Corrosive Acid",
             "description": "Their armor is being destroyed by highly corrosive acid! <ul><il>Reduces armor by 60%</li></ul>"
+         },
+         "shield_medium": {
+            "display_name": "Medium Shield",
+            "description": "Courage is slightly increased but speed is slightly reduced."
          }
       },
       "loadouts": {
@@ -6958,7 +6966,7 @@
                "flavor": "Also good for bashing!"
             },
             "light_giant_bone_shield_recipe": {
-               "recipe_name": "Light Giant Bone Shield",
+               "recipe_name": "Small Giant Bone Shield",
                "description": "Make a shield with the strong and lighter bones of a big creature.",
                "flavor": ""
             },
@@ -7577,17 +7585,38 @@
                "recipe_name": "Steel Mail",
                "description": "A very fancy and strong chain mail suit of armor for a Footman."
             },
-            "light_iron_shield_recipe": {
+            "cleric_bronze_shield_recipe": {
+               "recipe_name": "Light Bronze Shield",
+               "description": "Provides some protection for a melee cleric.",
+               "flavor": "But you might want your faith as your shield as well... Just in case!"
+            },
+            "cleric_iron_shield_recipe": {
                "recipe_name": "Light Iron Shield",
+               "description": "Provides good protection for a melee cleric.",
+               "flavor": "Beautiful silver rivets!"
+            },
+            "cleric_steel_shield_recipe": {
+               "recipe_name": "Light Steel Shield",
+               "description": "Provides great protection for a melee cleric.",
+               "flavor": "The best defense for a holy warrior!"
+            },
+            "light_iron_shield_recipe": {
+               "recipe_name": "Iron Shield",
                "description": "Not so heavy but also not so strong."
             },
+            "iron_shield_recipe": {
+               "recipe_name": "Iron Heavy Shield"
+            },
+            "steel_shield_recipe": {
+               "recipe_name": "Steel Heavy Shield"
+            },
             "light_steel_shield_recipe": {
-               "recipe_name": "Light Steel Shield",
+               "recipe_name": "Steel Shield",
                "description": "Perfect balance between protection and weight.",
                "flavor": "The finest defense for a Footman!"
             },
             "silver_shield_recipe": {
-               "recipe_name": "Silver Shield",
+               "recipe_name": "Silver Heavy Shield",
                "description": "A very strong Knight's shield made with silver.",
                "flavor": "Almost a legendary defense..."
             },
@@ -7788,7 +7817,7 @@
             },
             "level_4_data": {
                "ornate_perk_name": "Advanced Industry",
-               "ornate_perk_description": "Experience with smelting has gave the Blacksmith ideas on new and improved facilities that will allow them to work more efficiently and with more valuable materials."
+               "ornate_perk_description": "Experience with smelting has given the Blacksmith ideas on new and improved facilities that will allow them to work more efficiently and with more valuable materials."
             },
             "description": "The Blacksmith uses raw ores, fuels and strength to bend metals to their will, creating a wide range of goods like weapons, armor, decorations and useful tools."
          }
@@ -11887,7 +11916,7 @@
             },
             "sunflower": {
                "display_name": "Sunflower",
-               "description": "A lovely, merry flower. Useful as a peculiar herb."
+               "description": "A lovely, merry flower. Useful as a peculiar or oily herb."
             },
             "highland_vine": {
                "display_name": "Highland Vine Leaves",
@@ -14154,10 +14183,10 @@
             }
          },
          "sunflower_plant": {
-            "description": "Can be harvested for peculiar herbs.",
+            "description": "Can be harvested for peculiar and oily herbs.",
             "seed": {
                "sunflower_plant_seed_ghost": {
-                  "description": "Will provide peculiar herbs when it grows."
+                  "description": "Will provide peculiar and oily herbs when it grows."
                },
                "sunflower_plant_seed": {
                   "description": "Bright and happy like the sun. Can be planted or used as an oil source."
@@ -16774,16 +16803,22 @@
             "description": "Strong and not so heavy protection for your head."
          },
          "light_iron_shield": {
-            "display_name": "Light Iron Shield",
+            "display_name": "Iron Shield",
             "description": "Not so heavy but also not so strong, better than a bronze buckler."
          },
          "light_steel_shield": {
             "description": "Perfect balance between protection and weight for a Footman.",
-            "display_name": "Light Steel Shield"
+            "display_name": "Steel Shield"
+         },
+         "iron_shield": {
+            "display_name": "Iron Heavy Shield"
+         },
+         "steel_shield": {
+            "display_name": "Steel Heavy Shield"
          },
          "silver_shield": {
-            "display_name": "Silver Shield",
-            "description": "A very strong and light shield made with silver."
+            "display_name": "Silver Heavy Shield",
+            "description": "A very strong and versatile shield made with silver."
          },
          "silver_mail": {
             "display_name": "Silver Platemail",
@@ -16798,7 +16833,7 @@
             "description": "Chain armor akin to the ones from the Empire's royal vanguard."
          },
          "rc_bronze_breastplate": {
-            "display_name": "Bronze Lamellar Armor"
+            "display_name": "Bronze Scale Vest"
          },
          "rc_bronze_circlet": {
             "display_name": "Bronze Desert Headdress"
@@ -16810,7 +16845,7 @@
             "display_name": "Steel Desert Headdress"
          },
          "rc_iron_mail": {
-            "display_name": "Iron Lamellar Armor"
+            "display_name": "Iron Scale Vest"
          },
          "rc_iron_helm": {
             "display_name": "Iron Desert Helm"
@@ -16822,7 +16857,7 @@
             "display_name": "Bronze Desert Buckler"
          },
          "rc_iron_shield": {
-            "display_name": "Iron Desert Shield"
+            "display_name": "Iron Heavy Targe"
          },
          "rc_silver_helmet": {
             "display_name": "Silver Desert Helmet"
@@ -16837,7 +16872,7 @@
             "display_name": "Steel Gilded Cuirass"
          },
          "rc_steel_shield": {
-            "display_name": "Steel Desert Shield"
+            "display_name": "Steel Heavy Targe"
          },
          "rc_iron_helmet": {
             "display_name": "Iron Desert Helmet"
@@ -16852,10 +16887,10 @@
             "display_name": "Steel Desert Buckler"
          },
          "rc_silver_shield": {
-            "display_name": "Silver Desert Shield"
+            "display_name": "Silver Heavy Targe"
          },
          "rc_steel_chainmail": {
-            "display_name": "Steel Lamellar Armor"
+            "display_name": "Steel Scale Vest"
          },
          "rc_steel_helm": {
             "display_name": "Steel Desert Helm"
@@ -16891,7 +16926,7 @@
             "display_name": "Hide Vest"
          },
          "na_iron_platemail": {
-            "display_name": "Iron Brigandine"
+            "display_name": "Iron Lamellar Armor"
          },
          "na_iron_helmet": {
             "display_name": "Iron Northern Helmet"
@@ -16912,10 +16947,10 @@
             "display_name": "Steel Northern Helmet"
          },
          "na_steel_mail": {
-            "display_name": "Steel Brigandine"
+            "display_name": "Steel Lamellar Armor"
          },
          "na_silver_mail": {
-            "display_name": "Silver Brigandine"
+            "display_name": "Silver Lamellar Armor"
          },
          "na_silver_helmet": {
             "display_name": "Silver Northern Helmet"
@@ -16930,25 +16965,25 @@
             "display_name": "Steel Northern Bangle"
          },
          "na_bronze_shield": {
-            "display_name": "Bronze Northern Shield"
+            "display_name": "Bronze Round Shield"
          },
          "na_iron_shield": {
-            "display_name": "Iron Northern Heavy Shield"
+            "display_name": "Iron Heavy Kite Shield"
          },
          "na_light_iron_shield": {
-            "display_name": "Iron Northern Shield"
+            "display_name": "Iron Round Shield"
          },
          "na_light_steel_shield": {
-            "display_name": "Steel Northern Shield"
+            "display_name": "Steel Round Shield"
          },
          "na_silver_shield": {
-            "display_name": "Silver Northern Heavy Shield"
+            "display_name": "Silver Heavy Kite Shield"
          },
          "na_steel_shield": {
-            "display_name": "Steel Northern Heavy Shield"
+            "display_name": "Steel Heavy Kite Shield"
          },
          "light_giant_bone_shield": {
-            "display_name": "Light Giant Bone Shield",
+            "display_name": "Small Giant Bone Shield",
             "description": "The strong and lighter bones of a big creature will provide cover enough."
          },
          "giant_bone_shield": {
@@ -17013,6 +17048,18 @@
                "display_name": "Frostfeast Circlet of Light",
                "description": "The silver crown that bears the light of Frostfeast, brought upon the darkest night!"
             }
+         },
+         "cleric_bronze_shield": {
+            "display_name": "Light Bronze Shield",
+            "description": "Small enough to be agile with but still a worthy defender for a melee cleric!"
+         },
+         "cleric_iron_shield": {
+            "display_name": "Light Iron Shield",
+            "description": "Beautiful silver rivets!"
+         },
+         "cleric_steel_shield": {
+            "display_name": "Light Steel Shield",
+            "description": "A strong and ornate defense for a holy warrior!"
          }
       },
       "weapons": {
@@ -19367,7 +19414,7 @@
       },
       "sunflower": {
          "display_name": "Sunflower",
-         "description": "A bright and joyful flower loved by all. Needs a bunch of days to be fully grown and will provide <span class='peculiarHerb'>peculiar</span> herbs when harvested.",
+         "description": "A bright and joyful flower loved by all. Needs a bunch of days to be fully grown and will provide <span class='peculiarHerb'>peculiar</span> and also <span class='extraHerb'>oily</span> herbs when harvested.",
          "harvest_text": "harvesting sunflower"
       },
       "silkweed": {
@@ -20188,6 +20235,7 @@
                "offhand": "Off-hand",
                "shield": "Shield",
                "light_shield": "Light Shield",
+               "medium_shield": "Medium Shield",
                "heavy_shield": "Heavy Shield",
                "torso": "Outfit",
                "helmet": "Headgear",

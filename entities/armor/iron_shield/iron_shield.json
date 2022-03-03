@@ -1,4 +1,7 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:armor:heavy_shield"
+   ],
    "components": {
 	  "mixintypes": {
 		 "stonehearth:equipment_piece": "override"
@@ -25,6 +28,12 @@
       }
    },
    "entity_data": {
+      "stonehearth:net_worth": {
+         "rarity": "uncommon",
+         "shop_info": {
+            "shopkeeper_level": 2
+         }
+      },
       "stonehearth:combat:armor_data": {
          "base_damage_reduction": 5
       },
@@ -39,9 +48,10 @@
          }
       ],
       "stonehearth:catalog": {
-	     "mixintypes": {
-			"material_tags": "override"
-		 },
+         "display_name": "i18n(stonehearth_ace:entities.armor.iron_shield.display_name)",
+	      "mixintypes": {
+			   "material_tags": "override"
+		   },
          "material_tags":["iron", "shield", "heavy_armor", "ascendancy_made", "crafted", "stockpile_equipment"]
       }
    }
