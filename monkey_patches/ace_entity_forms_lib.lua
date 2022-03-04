@@ -1,20 +1,26 @@
+local Point3 = _radiant.csg.Point3
 local EntityFormsLib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local AceEntityFormsLib = class()
 
 local Entity = _radiant.om.Entity
 
 function AceEntityFormsLib.initialize_ghost_form_components(ghost, root_uri, quality, json, placement_info)
+   local loaded_json = json or radiant.resources.load_json(root_uri)
+   local components_json = loaded_json and loaded_json.components
+
    local ghost_form = ghost:add_component('stonehearth:ghost_form')
    if placement_info then
+      local ignore_placement_rotation = components_json and components_json['stonehearth:entity_forms'] and
+            components_json['stonehearth:entity_forms'].ignore_placement_rotation
+      if ignore_placement_rotation and placement_info.normal == Point3.unit_y then
+         placement_info.rotation = 0
+      end
       ghost_form:set_placement_info(placement_info)
    end
    if quality then
       ghost_form:set_requested_quality(quality)
    end
 
-   local loaded_json = json or radiant.resources.load_json(root_uri)
-
-   local components_json = loaded_json and loaded_json.components
    if not components_json then
       return
    end
