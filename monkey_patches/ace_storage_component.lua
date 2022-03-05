@@ -5,6 +5,8 @@ AceStorageComponent = class()
 
 local GOLD_URI = 'stonehearth:loot:gold'
 
+local log = radiant.log.create_logger('storage_component')
+
 AceStorageComponent._ace_old_create = StorageComponent.create
 function AceStorageComponent:create()
    self._is_create = true
@@ -116,6 +118,14 @@ end
 AceStorageComponent._ace_old_destroy = StorageComponent.__user_destroy
 function AceStorageComponent:destroy()
    self.__destroying = true
+
+   local inventory = stonehearth.inventory:get_inventory(self._entity:get_player_id())
+   if inventory then
+      inventory:remove_storage(self._entity:get_id())
+   end
+
+   log:debug('%s destroying...', self._entity)
+
    self:_ace_old_destroy()
 end
 

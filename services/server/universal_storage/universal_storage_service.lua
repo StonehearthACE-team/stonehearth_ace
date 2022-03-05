@@ -124,11 +124,13 @@ function UniversalStorageService:register_storage(entity)
          self._sv.player_storages[player_id] = player_storage
       end
 
-      player_storage:register_storage(entity, category, group_id)
+      local storage = player_storage:register_storage(entity, category, group_id)
 
       if group_id >= self._sv.new_group_id then
          self._sv.new_group_id = group_id + 1
       end
+
+      return storage
    end
 end
 

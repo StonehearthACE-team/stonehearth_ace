@@ -142,6 +142,7 @@ local monkey_patches = {
    ace_put_another_restockable_item_into_backpack_action = 'stonehearth.ai.actions.put_another_restockable_item_into_backpack_action',
    ace_raid_crops_mission = 'stonehearth.services.server.game_master.controllers.missions.raid_crops_mission',
    ace_raid_stockpiles_mission = 'stonehearth.services.server.game_master.controllers.missions.raid_stockpiles_mission',
+   ace_raycast_lib = 'stonehearth.ai.lib.raycast_lib',
    ace_reembarkation_encounter = 'stonehearth.services.server.game_master.controllers.encounters.reembarkation_encounter',
    ace_renewable_resource_node_component = 'stonehearth.components.renewable_resource_node.renewable_resource_node_component',
    ace_repair_entity_adjacent_action = 'stonehearth.ai.actions.repair_entity_adjacent_action',

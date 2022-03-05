@@ -95,6 +95,7 @@ function UniversalStorage:register_storage(entity, category, group_id)
 
    -- add any queued items for transfer
    self:_transfer_queued_items(entity, storage)
+   return storage
 end
 
 function UniversalStorage:unregister_storage(entity)
@@ -169,8 +170,8 @@ function UniversalStorage:_add_storage(entity, category, group_id)
       self._sv.categories[category] = category_storages
    end
    local storage_id = category_storages[group_id]
-   local group_storage = storage_id and self._sv.storages[storage_id] and self._sv.storages[storage_id]:is_valid()
-   if not group_storage then
+   local group_storage = storage_id and self._sv.storages[storage_id]
+   if not group_storage or not group_storage:is_valid() then
       local storage_uri = stonehearth_ace.universal_storage:get_universal_storage_uri(category)
       log:debug('get_universal_storage_uri(%s) = %s', tostring(category), tostring(storage_uri))
       group_storage = radiant.entities.create_entity(storage_uri, {owner = self._sv.player_id})

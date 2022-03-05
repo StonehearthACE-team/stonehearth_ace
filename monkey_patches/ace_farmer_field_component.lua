@@ -809,7 +809,9 @@ function AceFarmerFieldComponent:_check_sky_visibility()
    local x = math.floor(size.x / 2)
    local vis = 0
    for z = 0, size.y - 1 do
-      vis = vis + stonehearth.terrain:get_sky_visibility(self._location + Point3(x, 2, z))
+      vis = vis + stonehearth.terrain:get_sky_visibility(self._location + Point3(x, 2, z), nil, function(entity)
+            return entity:get_component('stonehearth:crop') ~= nil
+         end)
    end
    vis = vis / size.y
 
