@@ -1,6 +1,9 @@
 {
    "type" : "effect",
    "tracks": {
+      "animation": {
+         "speed" : 1.05
+      },
       "sound": {
 			"start_time": 200,
 			"volume": 80,
@@ -21,6 +24,123 @@
                "stonehearth:sounds:blacksmith_hammer_03"
             ]
          }
+      },
+      "dust": {
+         "loop": true,
+         "start_time" : 370,
+         "mixintypes": {
+            "end_time": "remove"
+         },
+         "transforms": {
+            "y":0.1,
+            "z":-1.3
+         },
+         "bone": "torso"
+      },
+      "dust_b": {
+         "type": "cubemitter",
+         "start_time" : 1160,
+         "loop": true,
+         "cubemitter": "/stonehearth/data/horde/particles/work/blacksmith/sparks.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0.1,
+            "z":-1.3,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "torso"
+      },
+      "dust_2": {
+         "type": "cubemitter",
+         "start_time" : 1950,
+         "loop": true,
+         "cubemitter": "/stonehearth/data/horde/particles/work/blacksmith/sparks.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0.1,
+            "z":-1.3,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "torso"
+      },
+      "dust_2b": {
+         "type": "cubemitter",
+         "start_time" : 2740,
+         "loop": true,
+         "cubemitter": "/stonehearth/data/horde/particles/work/blacksmith/sparks.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0.1,
+            "z":-1.3,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "torso"
+      },
+      "dust_3": {
+         "type": "cubemitter",
+         "start_time" : 3530,
+         "loop": true,
+         "cubemitter": "/stonehearth/data/horde/particles/work/blacksmith/sparks.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0.1,
+            "z":-1.3,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "torso"
+      },
+      "dust_3b": {
+         "type": "cubemitter",
+         "start_time" : 4320,
+         "loop": true,
+         "cubemitter": "/stonehearth/data/horde/particles/work/blacksmith/sparks.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0.1,
+            "z":-1.3,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "torso"
+      },
+      "dust_4": {
+         "type": "cubemitter",
+         "start_time" : 5110,
+         "loop": true,
+         "cubemitter": "/stonehearth/data/horde/particles/work/blacksmith/sparks.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0.1,
+            "z":-1.3,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "torso"
+      },
+      "dust_4b": {
+         "type": "cubemitter",
+         "start_time" : 5900,
+         "loop": true,
+         "cubemitter": "/stonehearth/data/horde/particles/work/blacksmith/sparks.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0.1,
+            "z":-1.3,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "torso"
       }        
    }
 }
