@@ -23,6 +23,10 @@ function MechanicalCallHandler:select_gearbox_axles_command(session, response, g
       :set_relative_entity(gearbox)
       :set_rotations(rotations)
       :set_multi_select_enabled(true)
+      :require_unblocked(true)
+      :set_can_pass_through_terrain(true)
+      :set_can_pass_through_buildings(true)
+      :set_ignore_middle_collision(false)  -- may need to set this to true if weird behavior colliding with terrain/buildings
       :progress(
          function(selector, is_notify_resolve, rotation_index, length, region, output_point)
             -- we only care about the user clicking, not moving the mouse

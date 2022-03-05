@@ -30,12 +30,12 @@ function WaterToolsCallHandler:select_water_pump_pipe_command(session, response,
       :require_unblocked(true)
       :set_can_pass_through_terrain(true)
       :set_can_pass_through_buildings(true)
-      :set_ignore_middle_collision(false) -- we still want to block on other entities with collision
-      :set_can_contain_entity_filter(
-         function(entity, selector)
-            return can_contain_uris[entity:get_uri()]
-         end
-      )
+      :set_ignore_middle_collision(false)  -- may need to set this to true if weird behavior colliding with terrain/buildings
+      -- :set_can_contain_entity_filter(
+      --    function(entity, selector)
+      --       return can_contain_uris[entity:get_uri()]
+      --    end
+      -- )
       :done(
          function(selector, rotation_index, length, region, output_point)
             local output_origin = selector:get_point_in_current_direction(length - 1)
