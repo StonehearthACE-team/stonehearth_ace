@@ -1,3 +1,4 @@
+local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
@@ -350,6 +351,55 @@ function AceHydrologyService:_check_for_channel_merge()
          end
       end)
    until not restart
+end
+
+-- if you remove something from the water and want it to replace water there instead of adjusting/filling
+function AceHydrologyService:auto_fill_water_region(region, prefill_fn)
+   local inflated_region = csg_lib.get_non_diagonal_xyz_inflated_region(region)
+   local waters = radiant.terrain.get_entities_in_region(inflated_region, function(entity) return entity:get_component('stonehearth:water') ~= nil end)
+   local num_waters = radiant.size(waters)
+
+   log:debug('considering auto-filling region %s with %s neighboring water regions', region:get_bounds(), num_waters)
+   if num_waters == 1 then
+      self:add_ignore_terrain_region_changes(region)
+   end
+
+   if prefill_fn and not prefill_fn(waters) then
+      return
+   end
+
+   -- eventually it would be cool if we could handle more than one water entity intersecting the region at different points
+   if num_waters ~= 1 then
+      return
+   end
+
+   local water_entity = waters[next(waters)]
+   local water_comp = water_entity:get_component('stonehearth:water')
+   local water_location = water_comp:get_location()
+   local water_region = water_comp:get_region():get():translated(water_location)
+   local water_level = water_comp:get_water_level()
+   log:debug('found adjacent water region %s (%s) with water level %s', water_region, water_region:get_bounds(), water_level)
+
+   -- use the bounds of the region to clip the top down to the water level
+   local new_region = Region3(region)
+   local bounds = new_region:get_bounds()
+   local water_max_y = water_region:get_bounds().max.y
+   local region_max_y = bounds.max.y
+   local region_min_y = bounds.min.y
+   log:debug('prepping %s (%s) and adding water to world height %s', region, bounds, water_level)
+   if region_max_y > water_max_y then
+      -- first we shift the bounds up by the height of the region, then down by the difference in region and water heights
+      new_region = new_region - bounds:translated(Point3(0, water_max_y - region_min_y, 0))
+      log:debug('region higher than water; reducing bounds to %s', new_region:get_bounds())
+   end
+
+   --local new_height = math.min(water_level, region_max_y) - region_min_y
+   log:debug('adding region %s (%s) to water body %s', new_region, new_region:get_bounds(), water_entity)
+   new_region:translate(-water_location)
+   water_comp:add_to_region(new_region)
+   --local new_water = self:create_water_body_with_region(new_region, new_height)
+   -- merge the new water with the old
+   --self:merge_water_bodies(water_entity, new_water, true)
 end
 
 return AceHydrologyService

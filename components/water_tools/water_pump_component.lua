@@ -82,7 +82,8 @@ function WaterPumpComponent:set_pipe_extension(rotation_index, length, collision
    local data
    local rotation = self._rotations[rotation_index]
 
-   local rcs = self._sv._pump_child_entity:add_component('region_collision_shape')
+   local child = self._sv._pump_child_entity
+   local rcs = child:add_component('region_collision_shape')
    local region = rcs:get_region()
    local models_comp = self._entity:add_component('stonehearth_ace:models')
 
@@ -98,10 +99,16 @@ function WaterPumpComponent:set_pipe_extension(rotation_index, length, collision
       models_comp:set_model_options(RENDER_MODEL, data)
    else
       self._sv.extended = false
-      region:modify(function(cursor)
-         cursor:clear()
-      end)
 
+      -- add water to the original region if it was displacing any
+      stonehearth.hydrology:auto_fill_water_region(radiant.entities.local_to_world(region:get(), self._entity), function(waters)
+            region:modify(function(cursor)
+               cursor:clear()
+            end)
+
+            return true
+         end)
+         
       models_comp:remove_model(RENDER_MODEL)
    end
 
