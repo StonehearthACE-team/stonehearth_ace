@@ -561,11 +561,13 @@ function AceTown:is_default_storage(storage)
 end
 
 function AceTown:add_default_storage(storage)
-   if storage and storage:is_valid() then
+   if storage and storage:is_valid() and storage:get_component('stonehearth:storage') then
       self._sv.default_storage[storage:get_id()] = storage
       self.__saved_variables:mark_changed()
       storage:add_component('stonehearth_ace:input')
       self:_create_default_storage_listener(storage)
+   else
+      self._log:error('failed to add invalid storage entity %s to default storage')
    end
 end
 

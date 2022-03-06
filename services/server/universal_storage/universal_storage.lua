@@ -164,6 +164,12 @@ function UniversalStorage:_update_all_access_node_effects()
 end
 
 function UniversalStorage:_add_storage(entity, category, group_id)
+   -- if the entity being passed also has a storage component, queue up its items for transfer
+   local storage_comp = entity:get_component('stonehearth:storage')
+   if storage_comp and not storage_comp.__destroying then
+      self:queue_items_for_transfer_on_registration(entity, storage_comp:get_items())
+   end
+   
    local category_storages = self._sv.categories[category]
    if not category_storages then
       category_storages = {}
@@ -323,8 +329,11 @@ function UniversalStorage:_transfer_queued_items(entity, storage)
    local queued = self._queued_items[id]
    if queued then
       local storage_comp = storage:get_component('stonehearth:storage')
+      --local inventory = stonehearth.inventory:get_inventory(entity:get_player_id())
       for _, item in pairs(queued) do
+         --local container = inventory:container_for(item)
          storage_comp:add_item(item, true)
+         --log:debug('adding queued item %s; moving from %s to %s', item, tostring(container), tostring(inventory:container_for(item)))
       end
 
       self._queued_items[id] = nil

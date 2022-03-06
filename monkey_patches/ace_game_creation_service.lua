@@ -11,6 +11,8 @@ local MAX_STARTING_ITEM_CONTAINER_RADIUS = 8
 local GameCreationService = require 'stonehearth.services.server.game_creation.game_creation_service'
 local AceGameCreationService = class()
 
+local log = radiant.log.create_logger('game_creation_service')
+
 AceGameCreationService._ace_old_on_world_generation_complete = GameCreationService.on_world_generation_complete
 function AceGameCreationService:on_world_generation_complete()
    -- when a game is created, save the version of ace that was used to create it
@@ -137,7 +139,7 @@ function AceGameCreationService:create_camp_command(session, response, pt)
          placement_location = radiant.terrain.find_placement_point(placement_location, 0, 5, starting_items_container)
 			radiant.terrain.place_entity(starting_items_container, placement_location, { force_iconic = false, facing = 90 })
       end
-      starting_items_container:add_component('stonehearth_ace:input')
+      
       town:add_default_storage(starting_items_container)
    end
 

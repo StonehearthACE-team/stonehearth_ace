@@ -20,7 +20,6 @@ function UniversalStorageService:initialize()
    end
 
    self._player_traces = {}
-   self._queued_items = {}
 
    self._storage_type_data = radiant.resources.load_json('stonehearth_ace:data:universal_storage')
 end
@@ -56,6 +55,15 @@ function UniversalStorageService:get_default_category()
    return DEFAULT_CATEGORY
 end
 
+function UniversalStorageService:get_universal_storage_controller(player_id)
+   local player_storage = self._sv.player_storages[player_id]
+   if not player_storage then
+      player_storage = radiant.create_controller('stonehearth_ace:universal_storage', player_id)
+      self._sv.player_storages[player_id] = player_storage
+   end
+   return player_storage
+end
+
 function UniversalStorageService:get_universal_storage_uri(category)
    category = category or DEFAULT_CATEGORY
    local data = self._storage_type_data.categories[category]
@@ -89,7 +97,8 @@ function UniversalStorageService:get_new_group_id()
 end
 
 function UniversalStorageService:queue_items_for_transfer_on_registration(entity, items)
-   self._queued_items[entity:get_id()] = items
+   local player_storage = self:get_universal_storage_controller(radiant.entities.get_player_id(entity))
+   player_storage:queue_items_for_transfer_on_registration(entity, items)
 end
 
 -- TODO: if this entity is already registered, it needs to be removed from its current group
@@ -118,12 +127,7 @@ function UniversalStorageService:register_storage(entity)
       local category = us_comp:get_category() or DEFAULT_CATEGORY
       local group_id = us_comp:get_group_id() or 0
       
-      local player_storage = self._sv.player_storages[player_id]
-      if not player_storage then
-         player_storage = radiant.create_controller('stonehearth_ace:universal_storage', player_id)
-         self._sv.player_storages[player_id] = player_storage
-      end
-
+      local player_storage = self:get_universal_storage_controller(player_id)
       local storage = player_storage:register_storage(entity, category, group_id)
 
       if group_id >= self._sv.new_group_id then
