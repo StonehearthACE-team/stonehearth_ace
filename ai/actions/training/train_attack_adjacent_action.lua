@@ -94,7 +94,8 @@ function TrainAttackAdjacent:_attack_once(ai, entity, args)
          ai:execute('stonehearth:run_effect', { effect = heal_info.effect })
       end
 
-   elseif radiant.entities.get_entity_data(stonehearth.combat:get_main_weapon(entity), 'stonehearth:combat:weapon_data').range then
+   elseif radiant.entities.get_entity_data(stonehearth.combat:get_main_weapon(entity), 'stonehearth:combat:weapon_data').range and
+         next(stonehearth.combat:get_combat_actions(entity, 'stonehearth:combat:ranged_attacks')) then
       ai:execute('stonehearth:combat:attack_ranged', { target = args.target })
    else
       ai:execute('stonehearth:combat:attack_melee_adjacent', { target = args.target })
