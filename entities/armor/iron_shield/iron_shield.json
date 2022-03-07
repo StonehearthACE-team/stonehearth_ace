@@ -7,8 +7,13 @@
 		 "stonehearth:equipment_piece": "override"
 	  },
       "stonehearth:equipment_piece": {
+         "mixintypes": {
+            "additional_equipment": "override",
+            "postures": "override",
+            "roles": "override"
+          },
          "slot": "leftArm",
-		 "additional_equipment": {
+		   "additional_equipment": {
             "stonehearth_ace:armor:offhand_placeholder": true
          },
          "render_type": "attach_to_bone",
@@ -21,7 +26,7 @@
          "ilevel": 5,
          "roles":["knight_job"],
          "equip_effect": "stonehearth:effects:weapon_level_up",
-		 "equipment_types": ["shield", "heavy_shield"],
+		   "equipment_types": ["shield", "heavy_shield"],
          "injected_buffs": [
             "stonehearth_ace:buffs:shield_heavy"
          ]
