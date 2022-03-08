@@ -36,9 +36,20 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       return false
    end
 
+   -- if the entity is mounted and/or has something mounted on it, dismount before transforming
+   local mount_component = entity:get_component('stonehearth:mount')
+   if mount_component then
+      mount_component:dismount()
+   end
+
+   local parent = radiant.entities.get_parent(entity) or radiant.entities.get_root_entity()
+   mount_component = parent and parent:get_component('stonehearth:mount')
+   if mount_component then
+      mount_component:dismount()
+   end
+
    local location = radiant.entities.get_world_grid_location(entity)
    local local_location = radiant.entities.get_location_aligned(entity)
-   local parent = radiant.entities.get_parent(entity) or radiant.entities.get_root_entity()
    local facing = radiant.entities.get_facing(entity)
 
    local root_form, iconic_form = entity_forms_lib.get_forms(entity)
