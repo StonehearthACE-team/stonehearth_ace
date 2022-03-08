@@ -46,6 +46,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
    mount_component = parent and parent:get_component('stonehearth:mount')
    if mount_component then
       mount_component:dismount()
+      parent = radiant.entities.get_parent(entity) or radiant.entities.get_root_entity()
    end
 
    local location = radiant.entities.get_world_grid_location(entity)
