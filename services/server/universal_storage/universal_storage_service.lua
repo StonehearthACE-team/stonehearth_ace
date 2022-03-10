@@ -87,9 +87,13 @@ end
 function UniversalStorageService:get_storage_from_access_node_command(session, response, entity)
    validator.expect_argument_types({'Entity'}, entity)
 
-   local player_storage = self._sv.player_storages[entity:get_player_id()]
-   local storage = player_storage and player_storage:get_storage_from_access_node(entity)
+   local storage = self:get_storage_from_access_node(entity)
    return { storage = storage }
+end
+
+function UniversalStorageService:get_storage_from_access_node(entity)
+   local player_storage = self._sv.player_storages[entity:get_player_id()]
+   return player_storage and player_storage:get_storage_from_access_node(entity)
 end
 
 function UniversalStorageService:get_new_group_id()

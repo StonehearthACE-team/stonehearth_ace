@@ -124,6 +124,11 @@ function AceStorageComponent:destroy()
       inventory:remove_storage(self._entity:get_id())
    end
 
+   if self._attention_effect then
+      self._attention_effect:stop()
+      self._attention_effect = nil
+   end
+
    log:debug('%s destroying...', self._entity)
 
    self:_ace_old_destroy()
@@ -131,7 +136,6 @@ end
 
 AceStorageComponent._ace_old__on_contents_changed = StorageComponent._on_contents_changed
 function AceStorageComponent:_on_contents_changed()
-
 	self:_ace_old__on_contents_changed()
 
 	if not self:is_empty() and self._sv.filter and self._sv.render_filter_model then
@@ -175,6 +179,10 @@ end
 
 function AceStorageComponent:is_hidden()
    return self._sv.is_hidden
+end
+
+function AceStorageComponent:is_single_filter()
+   return self._sv.is_single_filter
 end
 
 function AceStorageComponent:allow_default()

@@ -123,17 +123,19 @@ function UniversalStorage:unregister_storage(entity)
    end
 end
 
+-- leave the call here in case we want to do something with it later
+-- but for now don't worry about whether they can be undeployed
 function UniversalStorage:storage_contents_changed(storage, is_empty)
-   local storage_id = storage:get_id()
-   local access_nodes = self._access_nodes_by_storage[storage_id]
-   if access_nodes then
-      for id, node in pairs(access_nodes) do
-         local commands_component = node.entity:get_component('stonehearth:commands')
-         if commands_component then
-            commands_component:set_command_enabled('stonehearth:commands:undeploy_item', is_empty)
-         end
-      end
-   end
+   -- local storage_id = storage:get_id()
+   -- local access_nodes = self._access_nodes_by_storage[storage_id]
+   -- if access_nodes then
+   --    for id, node in pairs(access_nodes) do
+   --       local commands_component = node.entity:get_component('stonehearth:commands')
+   --       if commands_component then
+   --          commands_component:set_command_enabled('stonehearth:commands:undeploy_item', is_empty)
+   --       end
+   --    end
+   -- end
 end
 
 function UniversalStorage:get_storage_from_access_node(entity)
