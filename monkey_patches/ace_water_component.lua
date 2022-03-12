@@ -41,8 +41,11 @@ function AceWaterComponent:_create_region_trace()
    self:_destroy_region_trace()
    self._region_trace = self._sv.region:trace('water world edge check', _radiant.dm.TraceCategories.SYNC_TRACE)
       :on_changed(function()
+         self:_update_movement_modifier_shape()
          self:_check_if_at_world_edge()   
       end)
+   
+   self:_update_movement_modifier_shape()
    self:_check_if_at_world_edge()
 end
 
@@ -607,6 +610,18 @@ function AceWaterComponent:_update_destination()
    destination_component:set_auto_update_adjacent(true)
    destination_component:get_region():modify(function(cursor)
          cursor:copy_region(destination)
+      end)
+end
+
+function AceWaterComponent:_update_movement_modifier_shape()
+   local mms = self._entity:add_component('movement_modifier_shape')
+   if not mms:get_region() then
+      mms:set_region(_radiant.sim.alloc_region3())
+      mms:set_nav_preference_modifier(-0.5)
+   end
+   mms:get_region():modify(function(cursor)
+         cursor:copy_region(self._sv.region:get())
+         cursor:optimize_by_defragmentation('water movement modifier shape')
       end)
 end
 

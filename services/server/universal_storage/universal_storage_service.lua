@@ -5,7 +5,7 @@
 local Entity = _radiant.om.Entity
 local validator = radiant.validator
 local DEFAULT_CATEGORY = 'default'
-local UNIVERSAL_STORAGE_URI = 'stonehearth_ace:containers:universal_storage'
+--local UNIVERSAL_STORAGE_URI = 'stonehearth_ace:containers:universal_storage'
 
 local UniversalStorageService = class()
 local log = radiant.log.create_logger('universal_storage_service')
@@ -72,6 +72,16 @@ function UniversalStorageService:get_universal_storage_uri(category)
    else
       return self._storage_type_data.categories[DEFAULT_CATEGORY].storage_uri
    end
+end
+
+function UniversalStorageService:is_universal_storage_uri(uri)
+   for category, data in pairs(self._storage_type_data.categories) do
+      if data.storage_uri == uri then
+         return true
+      end
+   end
+
+   return false
 end
 
 function UniversalStorageService:get_universal_storage(player_id, category, group_id)

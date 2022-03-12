@@ -12,7 +12,10 @@ function AceStorageComponent:create()
    self._is_create = true
    self:_ace_old_create()
 
-   if self._type == 'input_crate' then
+   if stonehearth_ace.universal_storage:is_universal_storage_uri(self._entity:get_uri()) then
+      -- make sure the filter can accept everything
+      self._sv.filter = nil
+   elseif self._type == 'input_crate' then
       self:_set_filter_to_none()
    elseif self._type == 'output_crate' and self._sv.filter_list == 'stonehearth:ui:stockpile:filters' then
       self._sv.filter_list = 'stonehearth_ace:ui:output_box:filters'
