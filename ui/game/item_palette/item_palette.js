@@ -18,7 +18,7 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
 
       // Convert item entries for display.
       var arr = radiant.map_to_array(itemMap, function(k, v){
-         var uri = self._getUri(v);
+         var uri = self._getRootUri(v);
          if (uri) {
             var catalogData = App.catalog.getCatalogData(uri);
             // only include an item that has an icon
@@ -29,6 +29,9 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
                v.icon = catalogData.icon;
                v.item_quality = v.item_quality || 1;
                v.deprecated = catalogData.deprecated;
+               v.equipment_required_level = catalogData.equipment_required_level;
+               v.equipment_roles = catalogData.equipment_roles;
+               v.equipment_types = catalogData.equipment_types;
                return v;
             }
          }
@@ -132,5 +135,126 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       }
 
       this._updateItemTooltip(itemEl, item);
-   }
+   },
+
+   _updateItemTooltip: function(itemEl, item) {
+      if (itemEl.hasClass('tooltipstered')) {
+         return;
+      }
+
+      var self = this;
+      App.tooltipHelper.createDynamicTooltip(itemEl, function() {
+         var translationVars = self._geti18nVariables(item);
+         var displayNameTranslated = i18n.t(item.display_name, translationVars);
+         if (item.deprecated) {
+            displayNameTranslated = '<span class="item-tooltip-title item-deprecated">' + displayNameTranslated + '</span>';
+         } else if (item.item_quality > 1) {
+            displayNameTranslated = '<span class="item-tooltip-title item-quality-' + item.item_quality + '">' + displayNameTranslated + '</span>';
+         }
+         var description = "";
+         if (item.description) {
+            description = i18n.t(item.description, translationVars);
+         }
+
+         if (debug_itemPaletteShowItemIds) {
+            description = description + '<p>' + self._debugTooltip(item) + '</p>'
+         }
+
+         var entity_data = self._getEntityData(item);
+         var extraTip;
+         if (entity_data) {
+            var combat_info = "";
+
+            var weapon_data = entity_data['stonehearth:combat:weapon_data'];
+            if (weapon_data) {
+               combat_info = combat_info +
+                           '<span id="atkHeader" class="combatHeader">' + i18n.t('stonehearth:ui.game.entities.tooltip_combat_base_damage') + '</span>' +
+                           '<span id="atkValue" class="combatValue">+' + weapon_data.base_damage + '</span>';
+            }
+
+            var armor_data = entity_data['stonehearth:combat:armor_data'];
+            if (armor_data) {
+               combat_info = combat_info +
+                        '<span id="defHeader" class="combatHeader">' + i18n.t('stonehearth:ui.game.entities.tooltip_combat_base_damage_reduction') + '</span>' +
+                        '<span id="defValue" class="combatValue">+' + armor_data.base_damage_reduction + '</span>'
+            }
+
+            if (combat_info != "") {
+               description = description + '<div class="itemCombatData">' + combat_info + "</div>";
+            }
+         }
+
+         var appeal_data = entity_data !== null ? entity_data['stonehearth:appeal'] : (item.appeal ? { 'appeal': item.appeal } : undefined);
+         if (appeal_data) {
+            var appeal = radiant.applyItemQualityBonus('appeal', appeal_data['appeal'], item.item_quality);
+            if (appeal) {  // Ignore zero appeal
+               extraTip = '<div class="item-appeal-tooltip">' + appeal + "</div>";
+            }
+         }
+         
+         if (item.deprecated) {
+            description += '<div class="item-deprecated-tooltip">' + i18n.t('stonehearth:ui.game.entities.tooltip_deprecated') + "</div>";
+         }
+
+         if (item.additionalTip) {
+            description = description + '<div class="itemAdditionalTip">' + item.additionalTip + "</div>";
+         }
+
+         if (item.equipment_required_level || item.equipment_roles || item.equipment_types) {
+            var levelDiv = item.equipment_required_level ?
+                  `<div>${i18n.t('stonehearth:ui.game.unit_frame.level')}<span class="required-level"> ${item.equipment_required_level} </span></div>` : '';
+            var rolesDiv = self._getEquipmentRolesDiv(item.equipment_roles);
+            var typesDiv = self._getEquipmentTypesDiv(item.equipment_types);
+            var equipDiv = `<div class="item-equipment-tooltip">${levelDiv}${rolesDiv}${typesDiv}</div>`;
+            
+            // we want to make sure that none of the regular description text overlaps these attributes in the top right
+            // so just enclose the two in separate inline divs
+            //description = `<div class="item-inline-tooltip">${description}</div>${equipDiv}`;
+            extraTip = extraTip ? extraTip + equipDiv : equipDiv;
+         }
+
+         var tooltip = App.tooltipHelper.createTooltip(displayNameTranslated, description, extraTip);
+         return $(tooltip);
+      });
+      
+   },
+
+   _getEquipmentRolesDiv: function(roles) {
+      var rolesArr = roles && stonehearth_ace.findRelevantClassesArray(roles);
+      if (rolesArr) {
+         var div = '<div class="equipment-roles">';
+         rolesArr.forEach(role => {
+            if (role.icon) {
+               div += `<img src="${role.icon}"/>`;
+            }
+         });
+         div += '</div>';
+         return div;
+      }
+
+      return '';
+   },
+
+   _getEquipmentTypesDiv: function(types) {
+      var typesArr = types && stonehearth_ace.getEquipmentTypesArray(types);
+      if (typesArr) {
+         var div = '<div class="equipment-types">';
+         typesArr.forEach(type => {
+            if (type.icon) {
+               div += `<img src="${type.icon}"/>`;
+            }
+         });
+         div += '</div>';
+         return div;
+      }
+
+      return '';
+   },
+
+   _getRootUri: function (item) {
+      if (!item.uri) return undefined;
+      var canonical = item.canonical_uri && item.canonical_uri.__self || item.canonical_uri;
+      var uri = canonical ? canonical : item.uri.__self ? item.uri.__self : item.uri;
+      return uri;
+   },
 });
