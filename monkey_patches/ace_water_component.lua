@@ -13,6 +13,9 @@ function AceWaterComponent:restore()
    self:_ace_old_restore()
    self:_update_destination()
    self:_create_region_trace()
+   
+   -- movement modifier shape was a performance failure; remove it in case someone saved their game with it
+   self._entity:remove_component('movement_modifier_shape')
 end
 
 AceWaterComponent._ace_old_activate = WaterComponent.activate
@@ -41,11 +44,11 @@ function AceWaterComponent:_create_region_trace()
    self:_destroy_region_trace()
    self._region_trace = self._sv.region:trace('water world edge check', _radiant.dm.TraceCategories.SYNC_TRACE)
       :on_changed(function()
-         self:_update_movement_modifier_shape()
+         --self:_update_movement_modifier_shape()
          self:_check_if_at_world_edge()   
       end)
    
-   self:_update_movement_modifier_shape()
+   --self:_update_movement_modifier_shape()
    self:_check_if_at_world_edge()
 end
 
