@@ -1,12 +1,12 @@
 {
    "type": "buff",
    "axis": "buff",
-   "category": "weather_cold_resistance",
+   "category": "sleeping_cover",
    "unique_in_category": true,
    "rank": 3,
-   "display_name": "i18n(stonehearth_ace:data.buffs.weather.freezing_resist_buff.display_name)",
-   "description": "i18n(stonehearth_ace:data.buffs.weather.freezing_resist_buff.description)",
-   "icon": "file(cold_resist_buff.png)",
+   "display_name": "i18n(stonehearth_ace:data.buffs.sleeping.cover_warm_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.sleeping.cover_warm_buff.description)",
+   "icon": "file(cover_warm_buff.png)",
    "repeat_add_action": "renew_duration",
    "disallowed_buffs": [
       "stonehearth_ace:buffs:weather:chilly",
@@ -16,9 +16,6 @@
       "stonehearth_ace:buffs:weather:cold:animal",
       "stonehearth_ace:buffs:weather:freezing",
       "stonehearth_ace:buffs:weather:freezing:animal",
-      "stonehearth_ace:buffs:weather:freezing:npc",
-      "stonehearth_ace:buffs:sleeping:cover_none",
-      "stonehearth_ace:buffs:sleeping:cover",
-      "stonehearth_ace:buffs:sleeping:cover_warm"
+      "stonehearth_ace:buffs:weather:freezing:npc"
    ]
 }
