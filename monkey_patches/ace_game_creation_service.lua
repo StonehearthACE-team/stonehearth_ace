@@ -39,8 +39,6 @@ function AceGameCreationService:create_camp_command(session, response, pt)
       stonehearth.calendar:start()
       stonehearth.hydrology:start()
       stonehearth.mining:start()
-
-      radiant.events.trigger(radiant, 'stonehearth_ace:host_new_game_starting')
    end
 
    stonehearth.world_generation:set_starting_location(Point2(pt.x, pt.z))
