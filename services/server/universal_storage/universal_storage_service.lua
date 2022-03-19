@@ -106,6 +106,11 @@ function UniversalStorageService:get_storage_from_access_node(entity)
    return player_storage and player_storage:get_storage_from_access_node(entity)
 end
 
+function UniversalStorageService:get_access_nodes_from_storage(entity)
+   local player_storage = self._sv.player_storages[entity:get_player_id()]
+   return player_storage and player_storage:get_access_nodes_from_storage(entity)
+end
+
 function UniversalStorageService:get_new_group_id()
    return self._sv.new_group_id
 end

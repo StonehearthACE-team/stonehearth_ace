@@ -60,7 +60,19 @@ App.StonehearthTownView.reopen({
                         }
                         var camera_focus = self.lastClickedItem;
                         if (response.container && response.container != '') {
-                           camera_focus = response.container;
+                           // if it's a universal_storage, the response will also contain access_nodes; just use the first one that's in the world
+                           if (response.access_nodes) {
+                              for (var i = 0; i < response.access_nodes.length; i++) {
+                                 var access_node = response.access_nodes[i];
+                                 if (access_node.in_world) {
+                                    camera_focus = access_node.entity;
+                                    break;
+                                 }
+                              }
+                           }
+                           else {
+                              camera_focus = response.container;
+                           }
                         }
                         // select and focus on the item, but if the item is in a container, focus on the container
                         radiant.call('stonehearth:select_entity', self.lastClickedItem);

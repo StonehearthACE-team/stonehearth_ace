@@ -152,6 +152,24 @@ function UniversalStorage:get_storage_from_category(category, group_id)
    end
 end
 
+function UniversalStorage:get_access_nodes_from_storage(entity)
+   local access_nodes = self._access_nodes_by_storage[entity:get_id()]
+   if access_nodes then
+      local nodes = {}
+      for id, node in pairs(access_nodes) do
+         table.insert(nodes, {
+            entity = node.entity,
+            in_world = node.destination_region ~= nil,
+         })
+      end
+      return nodes
+   end
+end
+
+function UniversalStorage:get_access_node_effect()
+   return self._sv.access_node_effect
+end
+
 function UniversalStorage:set_access_node_effect(effect)
    if self._sv.access_node_effect ~= effect then
       self._sv.access_node_effect = effect

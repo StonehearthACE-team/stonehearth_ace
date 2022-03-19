@@ -138,6 +138,7 @@ function AceGameCreationService:create_camp_command(session, response, pt)
          -- do a better job at finding a placement location in case of obstacles:
          placement_location = radiant.terrain.find_placement_point(placement_location, 0, 5, starting_items_container)
 			radiant.terrain.place_entity(starting_items_container, placement_location, { force_iconic = false, facing = 90 })
+         inventory:add_item(starting_items_container)
       end
 
       town:add_default_storage(starting_items_container)
