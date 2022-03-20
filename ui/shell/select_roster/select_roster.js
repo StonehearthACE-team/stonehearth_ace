@@ -677,11 +677,14 @@ App.StonehearthCitizenRosterEntryView = App.View.extend({
    _updateStatTooltips: function() {
       var self = this;
 
-      self.$('.stat').each(function(){
-         var attrib_name = $(this).attr('id');
-         var tooltipString = App.tooltipHelper.getTooltip(attrib_name);
-         $(this).tooltipster({content: $(tooltipString)});
-      });
+      var stats = self.$('.stat')
+      if (stats) {
+         stats.each(function(){
+            var attrib_name = $(this).attr('id');
+            var tooltipString = App.tooltipHelper.getTooltip(attrib_name);
+            $(this).tooltipster({content: $(tooltipString)});
+         });
+      }
    },
 
    _getCurrentGender: function() {
@@ -1073,13 +1076,16 @@ App.StonehearthStartingRosterChoiceView = App.View.extend({
    _updateInvalidTraitTooltips: function() {
       var self = this;
 
-      self.$('.row.hasInvalidTraits').each(function(){
-         var tooltipString = App.tooltipHelper.createTooltip(
-            i18n.t('stonehearth_ace:ui.shell.select_roster.invalid_traits_title'),
-            i18n.t('stonehearth_ace:ui.shell.select_roster.invalid_traits_description')
-         );
-         $(this).tooltipster({content: $(tooltipString)});
-      });
+      var invalidTraits = self.$('.row.hasInvalidTraits');
+      if (invalidTraits) {
+         invalidTraits.each(function(){
+            var tooltipString = App.tooltipHelper.createTooltip(
+               i18n.t('stonehearth_ace:ui.shell.select_roster.invalid_traits_title'),
+               i18n.t('stonehearth_ace:ui.shell.select_roster.invalid_traits_description')
+            );
+            $(this).tooltipster({content: $(tooltipString)});
+         });
+      }
    },
 
    willDestroyElement: function () {

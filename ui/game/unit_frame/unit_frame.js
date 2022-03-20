@@ -284,49 +284,51 @@ App.StonehearthUnitFrameView.reopen({
       //it has to happen after render to check the elements for the unit frame for the newly selected item, not the previous
       Ember.run.scheduleOnce('afterRender', this, function() {
          var unitFrame = this.$('#unitFrame');
-         var infoDiv = this.$('#info');
-         var commandButtons = this.$('#commandButtons');
-         var moreCommandsIndicator = this.$('#moreCommandsIndicator');
+         if (unitFrame) {
+            var infoDiv = this.$('#info');
+            var commandButtons = this.$('#commandButtons');
+            var moreCommandsIndicator = this.$('#moreCommandsIndicator');
 
-         var width = Math.max(this.$('#descriptionDiv').width() + commandButtons.width() + 19); // + 19 to account for margins
-         if (this.get('hasPortrait')) {
-            width += this.$('#portrait-frame').width();
-         }
+            var width = Math.max(this.$('#descriptionDiv').width() + commandButtons.width() + 19); // + 19 to account for margins
+            if (this.get('hasPortrait')) {
+               width += this.$('#portrait-frame').width();
+            }
 
-         if (considerCommands == true && self._bestWidth == null) {
-            self._bestWidth = Math.max(520, width);
-            self._commandWidth = commandButtons.width();
-            self._commandsPos = 517 - self._commandWidth;
+            if (considerCommands == true && self._bestWidth == null) {
+               self._bestWidth = Math.max(520, width);
+               self._commandWidth = commandButtons.width();
+               self._commandsPos = 517 - self._commandWidth;
 
-            var diff = self._bestWidth - 520;
-            if (diff > 0) {
-               self._bestWidth += 12;
-               self._commandsPos += diff;
-               // if it's wider than we want, we need to trim the command buttons to fit
-               infoDiv.hover(function(e) {
-                  unitFrame.css('width', self._bestWidth + 'px');
-                  commandButtons.css('width', self._commandWidth + 'px');
-                  moreCommandsIndicator.hide();
-               },
-               function(e) {
-                  unitFrame.css('width', 520 + 'px');
+               var diff = self._bestWidth - 520;
+               if (diff > 0) {
+                  self._bestWidth += 12;
+                  self._commandsPos += diff;
+                  // if it's wider than we want, we need to trim the command buttons to fit
+                  infoDiv.hover(function(e) {
+                     unitFrame.css('width', self._bestWidth + 'px');
+                     commandButtons.css('width', self._commandWidth + 'px');
+                     moreCommandsIndicator.hide();
+                  },
+                  function(e) {
+                     unitFrame.css('width', 520 + 'px');
+                     commandButtons.css('width', (self._commandWidth - diff) + 'px');
+                     moreCommandsIndicator.show();
+                  });
+
                   commandButtons.css('width', (self._commandWidth - diff) + 'px');
                   moreCommandsIndicator.show();
-               });
-
-               commandButtons.css('width', (self._commandWidth - diff) + 'px');
-               moreCommandsIndicator.show();
-            }
-            else {
-               moreCommandsIndicator.hide();
-               if (width < self._bestWidth) {
-                  self._commandsPos += Math.max(-12, width - self._bestWidth);
                }
+               else {
+                  moreCommandsIndicator.hide();
+                  if (width < self._bestWidth) {
+                     self._commandsPos += Math.max(-12, width - self._bestWidth);
+                  }
+               }
+               commandButtons.css('left', (self._commandsPos + 12) + 'px');
             }
-            commandButtons.css('left', (self._commandsPos + 12) + 'px');
-         }
 
-         unitFrame.css('width', 520 + 'px'); //don't want it getting too bitty
+            unitFrame.css('width', 520 + 'px'); //don't want it getting too bitty
+         }
       });
    }.observes('model.uri', 'model.stonehearth:unit_info', 'job_uri'),
 
@@ -722,13 +724,16 @@ App.StonehearthUnitFrameView.reopen({
       }
       if (hasDiffMaxHealth) {
          Ember.run.scheduleOnce('afterRender', self, function() {
-            var tooltipString = i18n.t('stonehearth_ace:ui.game.unit_frame.max_healable_health.tooltip_description', {max_health: maxHealableHealth});
-            var maxHealthTooltip = App.tooltipHelper.createTooltip(
-               i18n.t('stonehearth_ace:ui.game.unit_frame.max_healable_health.tooltip_title'),
-               tooltipString);
-            self.$('#healthBubble').tooltipster({
-               content: $(maxHealthTooltip)
-            });
+            var healthBubble = self.$('#healthBubble');
+            if (healthBubble) {
+               var tooltipString = i18n.t('stonehearth_ace:ui.game.unit_frame.max_healable_health.tooltip_description', {max_health: maxHealableHealth});
+               var maxHealthTooltip = App.tooltipHelper.createTooltip(
+                  i18n.t('stonehearth_ace:ui.game.unit_frame.max_healable_health.tooltip_title'),
+                  tooltipString);
+               healthBubble.tooltipster({
+                  content: $(maxHealthTooltip)
+               });
+            }
          });
       }
    }.observes('model.stonehearth:expendable_resources', 'model.stonehearth:attributes.attributes.max_health'),
@@ -783,7 +788,10 @@ App.StonehearthUnitFrameView.reopen({
          var percentage = Math.round((doneSoFar * 100) / total);
          self.set('transformProgress', percentage);
          Ember.run.scheduleOnce('afterRender', self, function() {
-            self.$('#transformProgress').css("width", percentage / 100 * this.$('#transformProgressbar').width());
+            var transformProgress = self.$('#transformProgress')
+            if (transformProgress) {
+               transformProgress.css("width", percentage / 100 * this.$('#transformProgressbar').width());
+            }
          });
       }
       else {

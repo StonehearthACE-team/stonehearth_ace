@@ -27,11 +27,14 @@ App.StonehearthTerrainVisionWidget.reopen({
             self.set('heatMaps', heatmapArray);
 
             Ember.run.scheduleOnce('afterRender', function() {
-               self.$('.heatmap').each(function(i) {
-                  App.hotkeyManager.makeTooltipWithHotkeys($(this),
-                        $(this).attr('title'),
-                        $(this).attr('description'));
-               });
+               var heatmaps = self.$('.heatmap');
+               if (heatmaps) {
+                  heatmaps.each(function(i) {
+                     App.hotkeyManager.makeTooltipWithHotkeys($(this),
+                           $(this).attr('title'),
+                           $(this).attr('description'));
+                  });
+               }
             });
          });
       });

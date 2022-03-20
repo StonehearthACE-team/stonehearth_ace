@@ -1044,11 +1044,14 @@ App.StonehearthFarmCropPalette = App.View.extend({
 
    _tooltipifyPreferredSeasons: function () {
       Ember.run.scheduleOnce('afterRender', this, function () {
-         self.$('.preferredSeasons').tooltipster({
-            content: i18n.t('stonehearth:ui.game.zones_mode.farm.preferred_seasons_tooltip', {
-               num: App.constants.farming.NONPREFERRED_SEASON_GROWTH_TIME_MULTIPLIER
-            })
-         });
+         var prefSeasons = self.$('.preferredSeasons');
+         if (prefSeasons) {
+            prefSeasons.tooltipster({
+               content: i18n.t('stonehearth:ui.game.zones_mode.farm.preferred_seasons_tooltip', {
+                  num: App.constants.farming.NONPREFERRED_SEASON_GROWTH_TIME_MULTIPLIER
+               })
+            });
+         }
       });
    }.observes('crops'),
 

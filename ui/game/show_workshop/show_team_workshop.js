@@ -442,7 +442,7 @@ $(top).on('stonehearthReady', function() {
             var buffs = self.get(propertyName);
             radiant.each(buffs, function(_, buff) {
                var div = self.$('[data-id="' + buff.uri + '"]');
-               if (div.length > 0) {
+               if (div && div.length > 0) {
                   App.guiHelper.addTooltip(div, buff.description, i18n.t('stonehearth_ace:ui.game.unit_frame.' + tooltipName) + i18n.t(buff.display_name));
                }
             });
