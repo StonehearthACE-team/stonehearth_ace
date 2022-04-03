@@ -2,7 +2,7 @@
    "type": "entity",
    "mixins": [
       "file(stone_training_dummy_ghost.json)",
-      "stonehearth:mixins:destructable_siege_object"
+      "stonehearth_ace:mixins:training_object"
    ],
    "components": {
       "stonehearth:entity_forms": {
@@ -10,12 +10,6 @@
          "ghost_form": "file(stone_training_dummy_ghost.json)",
          "placeable_on_ground": true,
          "hide_undeploy_ui": false
-      },
-      "stonehearth:observers": {
-         "default_observers": {
-            "stonehearth:observers:repairable_item": true,
-            "stonehearth:observers:kill_at_zero_health": true
-         }
       },
       "destination": {
          "region": [
@@ -40,15 +34,10 @@
             "stonehearth:jobs:knight": 2
          }
       },
-      "stonehearth_ace:auto_replace": {},
       "stonehearth:attributes": {
          "max_health": {
             "type": "basic",
             "value": 1200
-         },
-         "menace": {
-            "type": "basic",
-            "value": 0
          }
       }
    },
@@ -65,12 +54,6 @@
       },
       "stonehearth:appeal": {
          "appeal": 3
-      },
-      "stonehearth:siege_object": {
-         "repair_work_units": 1
-      },
-      "stonehearth:killable": {
-         "killable_by_anyone": true
       }
    }
 }

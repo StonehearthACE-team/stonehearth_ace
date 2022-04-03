@@ -1,0 +1,38 @@
+{
+   "type": "entity",
+   "mixins": "file(dragon_ice_egg_fertilized_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(dragon_ice_egg_fertilized_iconic.json)",
+         "ghost_form": "file(dragon_ice_egg_fertilized_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "stonehearth:evolve": {}
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "current_stage": "egg",
+         "next_stage": "stonehearth:pets:dragon_whelp_ice",
+         "evolve_time": "2d+44h",
+         "evolve_effect": "stonehearth:effects:fursplosion_effect"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 200,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.pets.dragon_whelp_ice.egg.dragon_ice_egg_fertilized_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.dragon_whelp_ice.egg.dragon_ice_egg_fertilized_ghost.description)",
+         "icon": "file(dragon_ice_egg_fertilized.png)",
+         "category": "creature_egg",
+         "material_tags": [
+            "fertilized_egg",
+            "dragon_ice_egg_fertilized"
+         ]
+      }
+   }
+}

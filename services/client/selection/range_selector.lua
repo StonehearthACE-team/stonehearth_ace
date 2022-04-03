@@ -432,7 +432,7 @@ function XYZRangeSelector:_update()
       end
       self:notify(true, self._rotation, in_use and 0 or length, region, point)
    elseif self._action == 'resolve' then
-      local region, point = self:get_region_and_point(length, true)
+      local region, point = self:get_region_and_point(length)
       self:resolve(self._rotation, length, region, point)
    else
       log:error('uknown action: %s', self._action)
@@ -724,9 +724,9 @@ function XYZRangeSelector:get_current_region()
    return self._current_region
 end
 
-function XYZRangeSelector:get_region_and_point(length, is_final)
+function XYZRangeSelector:get_region_and_point(length)
    local point = self:get_point_in_current_direction(length)
-   return self:_recalc_current_region(point, is_final), point
+   return self:_recalc_current_region(point, true), point
 end
 
 function XYZRangeSelector:get_current_connector_region()

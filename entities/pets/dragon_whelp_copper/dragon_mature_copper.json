@@ -26,15 +26,15 @@
          },
          "speed": {
             "type": "basic",
-            "value": 90
+            "value": 105
          },
          "courage": {
             "type": "basic",
-            "value": 250
+            "value": 550
          },
          "menace": {
             "type": "basic",
-            "value": 120
+            "value": 160
          },
          "muscle": {
             "type": "basic",
@@ -76,13 +76,18 @@
                "uri": "stonehearth_ace:buffs:dragon:effect",
                "chance": 0.25,
                "resistable": true
+            },
+            "chromatic_fire": {
+               "uri": "stonehearth_ace:buffs:chromatic_fire",
+               "chance": 0.15,
+               "resistable": true
             }
          }
       },
       "stonehearth:evolve_data": {
          "current_stage": "mature",
          "next_stage": "stonehearth_ace:pets:dragon_copper",
-         "evolve_time": "35d",
+         "evolve_time": "21d",
          "evolve_effect": "stonehearth:effects:fursplosion_effect"
       },
       "stonehearth:entity_radius": 1,

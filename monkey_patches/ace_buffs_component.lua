@@ -41,6 +41,9 @@ function AceBuffsComponent:activate()
    if self._json and self._json.seasonal_buffs then
       self:_create_seasonal_listener()
    end
+
+   self._highest_rank_wound = 0
+   self:_update_highest_rank_wound()
 end
 
 AceBuffsComponent._ace_old_destroy = BuffsComponent.__user_destroy
@@ -127,11 +130,15 @@ function AceBuffsComponent:remove_category_buffs(category, rank, reduce_ranks)
       for buff_id, buff in pairs(category_buffs) do
          -- if rank is specified, only remove the buff if it has a rank <= that rank
          if not rank or (rank >= buff:get_rank()) then
-            self:remove_buff(buff_id, true)
+            self:remove_buff(buff_id, true, true)
          elseif rank and reduce_ranks then
             -- if reduce_ranks option is specified, proportionately reduce the effective rank of the buff
             buff:reduce_rank(rank)
          end
+      end
+
+      if stonehearth.constants.health.WOUND_TYPES[category] then
+         self:_update_highest_rank_wound()
       end
    end
 end
@@ -198,6 +205,8 @@ function AceBuffsComponent:add_buff(uri, options)
    options = options or {}
    options.stacks = options.stacks or 1
 
+   local is_wound = false
+
    if json.category then
       local buffs_by_category = self._sv.buffs_by_category[json.category] or {}
 
@@ -220,6 +229,8 @@ function AceBuffsComponent:add_buff(uri, options)
       buffs_by_category[uri] = true
       -- reset this down here in case it was a unique in category buff that removed all previous buffs in the category
       self._sv.buffs_by_category[json.category] = buffs_by_category
+
+      is_wound = stonehearth.constants.health.WOUND_TYPES[json.category]
    end
 
    local buff
@@ -274,6 +285,11 @@ function AceBuffsComponent:add_buff(uri, options)
          end
       end
 
+      -- Update wound thoughts. This is only needed when a wound buff is either added or removed.
+      if is_wound then
+         self:_update_highest_rank_wound()
+      end
+
       self.__saved_variables:mark_changed()
 
       radiant.events.trigger_async(self._entity, 'stonehearth:buff_added', {
@@ -292,7 +308,7 @@ function AceBuffsComponent:add_buff(uri, options)
    return buff
 end
 
-function AceBuffsComponent:remove_buff(uri, remove_all_stacks)
+function AceBuffsComponent:remove_buff(uri, remove_all_stacks, ignore_wound_check)
    local cur_count = self._sv.ref_counts[uri]
    if not cur_count or cur_count == 0 then
       return
@@ -357,6 +373,12 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks)
 
          self._sv.buffs[uri] = nil
          buff:destroy()
+
+         -- Update the wound thoughts. Has to be done after the buff is destroyed (otherwise it will still be counted!)
+         if not ignore_wound_check and json.category and stonehearth.constants.health.WOUND_TYPES[json.category] then
+            self:_update_highest_rank_wound()
+         end
+
          self.__saved_variables:mark_changed()
 
          radiant.events.trigger_async(self._entity, 'stonehearth:buff_removed', uri)
@@ -370,6 +392,40 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks)
       if buff then
          buff:remove_stack(false)
       end
+   end
+end
+
+function AceBuffsComponent:_update_highest_rank_wound()
+   local highest_rank = 0
+   -- Go over all the wound categories and look for the highest ranking wound
+   for wound_type, is_wound_type in pairs(stonehearth.constants.health.WOUND_TYPES) do
+      if is_wound_type and self:has_category_buffs(wound_type) then
+         local type_buffs = self:get_buffs_by_category(wound_type)
+         for buff_id, buff in pairs(type_buffs) do
+            local new_rank = math.ceil(buff:get_rank())
+            if new_rank > highest_rank then
+               highest_rank = new_rank
+            end
+         end
+      end
+   end
+
+   if highest_rank ~= self._highest_rank_wound then
+      self._highest_rank_wound = highest_rank
+      self:_update_wound_thoughts()
+   end
+end
+
+function AceBuffsComponent:_update_wound_thoughts()
+   -- apply the relevant thought 
+   if self._highest_rank_wound <= 1 then
+      radiant.entities.add_thought(self._entity, 'stonehearth:thoughts:health_wounds:no_wound')
+   elseif self._highest_rank_wound <= 2 then
+      radiant.entities.add_thought(self._entity, 'stonehearth:thoughts:health_wounds:wound_medium')
+   elseif self._highest_rank_wound <= 3 then
+      radiant.entities.add_thought(self._entity, 'stonehearth:thoughts:health_wounds:wound_high')
+   else
+      radiant.entities.add_thought(self._entity, 'stonehearth:thoughts:health_wounds:wound_extreme')
    end
 end
 

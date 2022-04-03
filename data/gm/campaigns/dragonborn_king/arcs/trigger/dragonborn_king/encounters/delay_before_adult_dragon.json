@@ -1,0 +1,14 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "delay_before_adult_dragon",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "wait_for_adult_dragon"
+      ]
+   },
+   "wait_info": {
+      "duration": "35d+5d"
+   }
+}

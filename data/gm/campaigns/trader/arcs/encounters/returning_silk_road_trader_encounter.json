@@ -2,13 +2,15 @@
    "type": "encounter",
    "encounter_type": "script",
    "in_edge": "returning_silk_road_trader_encounter",
+   "out_edge": "caravan_wait",
    "can_start": {
       "test_1": {
-         "only_one_caravan_allowed": {
-            "type": "deny_if_greater_than",
+         "number_active_check": {
             "item": "number_active",
+            "type": "deny_if_greater_than",
+            "value": 0,
             "start_node": "returning_silk_road_trader_encounter",
-            "value": 0
+            "end_node": "caravan_cleanup"
          },
          "kingdom_check": {
             "type": "deny_if_not",

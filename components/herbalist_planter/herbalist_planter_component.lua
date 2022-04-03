@@ -75,7 +75,6 @@ function HerbalistPlanterComponent:activate()
       self:plant_crop()
    else
       self:_load_planted_crop_stats()
-      self:_create_planter_tasks()
       self:_set_recently_tended_timer()
    end
 
@@ -104,58 +103,67 @@ function HerbalistPlanterComponent:_create_listeners()
       :on_changed(function(parent)
          if parent then
             self:_restart_timers()
+            self:_create_planter_tasks()
          else
             local cur_time = stonehearth.calendar:get_elapsed_time()
             self:_stop_growth(cur_time)
             self:_stop_bonus_growth(cur_time)
+            self:_destroy_planter_tasks()
          end
       end)
       :push_object_state()
+
+   self._player_id_trace = self._entity:trace_player_id('sync herbalist planter tasks', _radiant.dm.TraceCategories.SYNC_TRACE)
+      :on_changed(function(player_id)
+            self:_create_planter_tasks()
+         end)
 end
 
 -- if necessary, create the proper plant/clear task (harvesting and tending are handled in other ways)
 function HerbalistPlanterComponent:_create_planter_tasks()
    self:_destroy_planter_tasks()
 
-   if self:is_plantable() then
+   local location = radiant.entities.get_world_grid_location(self._entity)
+   if location and self:is_plantable() then
       local town = stonehearth.town:get_town(self._entity)
-      
-      local args = {
-         planter = self._entity,
-         seed_uri = self:get_seed_uri()
-      }
+      if town and town:is_player_town() then
+         local args = {
+            planter = self._entity,
+            seed_uri = self:get_seed_uri()
+         }
 
-      -- if we're clearing it, just pop out a seed for the existing plant (bonus products in storage are already dumped out automatically)
-      if not self._sv.current_crop then
-         if self._planted_crop_stats then
-            local seed_uri = self._planted_crop_stats.seed_uri
-            self:plant_crop()
-            
-            if seed_uri then
-               local player_id = radiant.entities.get_player_id(self._entity)
-               local default_storage = town:get_default_storage()
-               local options = {
-                  owner = player_id,
-                  add_spilled_to_inventory = true,
-                  inputs = default_storage,
-                  spill_fail_items = true,
-                  require_matching_filter_override = true,
-               }
-               radiant.entities.output_items({[seed_uri] = 1}, radiant.entities.get_world_grid_location(self._entity), 1, 2, options)
+         -- if we're clearing it, just pop out a seed for the existing plant (bonus products in storage are already dumped out automatically)
+         if not self._sv.current_crop then
+            if self._planted_crop_stats then
+               local seed_uri = self._planted_crop_stats.seed_uri
+               self:plant_crop()
+               
+               if seed_uri then
+                  local player_id = radiant.entities.get_player_id(self._entity)
+                  local default_storage = town:get_default_storage()
+                  local options = {
+                     owner = player_id,
+                     add_spilled_to_inventory = true,
+                     inputs = default_storage,
+                     spill_fail_items = true,
+                     require_matching_filter_override = true,
+                  }
+                  radiant.entities.output_items({[seed_uri] = 1}, location, 1, 2, options)
+               end
             end
-         end
 
-         return
+            return
+         end
+         --local action = args.seed_uri and PLANT_ACTION or CLEAR_ACTION
+         
+         local planter_task = town:create_task_for_group(
+            'stonehearth_ace:task_groups:planters',
+            PLANT_ACTION,
+            args)
+               :set_source(self._entity)
+               :start()
+         table.insert(self._added_planter_tasks, planter_task)
       end
-      --local action = args.seed_uri and PLANT_ACTION or CLEAR_ACTION
-      
-      local planter_task = town:create_task_for_group(
-         'stonehearth_ace:task_groups:planters',
-         PLANT_ACTION,
-         args)
-            :set_source(self._entity)
-            :start()
-      table.insert(self._added_planter_tasks, planter_task)
    end
 end
 

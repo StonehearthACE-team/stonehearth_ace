@@ -1,7 +1,7 @@
 {
    "mixins": [
       "stonehearth:mixins:item_properties",
-      "stonehearth_ace:mixins:armor:light_shield"
+      "stonehearth_ace:mixins:armor:medium_shield"
    ],
    "type": "entity",
    "components": {
@@ -23,8 +23,7 @@
          ],
          "ilevel": 4,
          "roles": [
-            "footman_job",
-            "cleric_job"
+            "footman_job"
          ],
          "required_job_level": 3,
          "equip_effect": "stonehearth:effects:weapon_level_up"

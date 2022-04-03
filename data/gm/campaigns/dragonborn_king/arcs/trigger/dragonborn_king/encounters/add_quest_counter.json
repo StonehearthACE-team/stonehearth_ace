@@ -1,0 +1,16 @@
+{
+   "type": "encounter",
+   "encounter_type": "set_counters",
+   "in_edge": "add_quest_counter",
+   "out_edge": {
+      "type": "destroy_tree",
+      "root": "quest_cultist_masks",
+      "destroy_root": true
+   },
+   "set_counters_info": {
+      "counters": {
+         "quest": "x + 1",
+         "quest_total": "x + 1"
+      }
+   }
+}

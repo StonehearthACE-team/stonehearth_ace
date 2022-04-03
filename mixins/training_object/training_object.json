@@ -1,0 +1,31 @@
+{
+   "mixins": "stonehearth:mixins:destructable_object",
+   "components": {
+      "stonehearth:observers": {
+         "default_observers": {
+            "stonehearth:observers:repairable_item": true,
+            "stonehearth:observers:kill_at_zero_health": true
+         }
+      },
+      "stonehearth:attributes": {
+         "menace": {
+            "type": "basic",
+            "value": 0
+         }
+      },
+      "stonehearth_ace:auto_replace": {}
+   },
+   "entity_data": {
+      "stonehearth:killable": {
+         "killable_by_anyone": true,
+         "target_type": "training"
+      },
+      "stonehearth:healable": {
+         "healable_by_anyone": false,
+         "target_type": "siege"
+      },
+      "stonehearth:siege_object": {
+         "repair_work_units": 1
+      }
+   }
+}

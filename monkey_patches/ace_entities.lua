@@ -430,6 +430,33 @@ function ace_entities.is_entity_protected_from_targeting(entity)
    return radiant.entities.is_material(entity, 'protected_from_targeting')
 end
 
+function ace_entities.set_entity_movement_modifier(entity, region, mm_data)
+   local base_mm_data = mm_data or radiant.entities.get_entity_data(entity, 'movement_modifier_shape')
+   
+   if not base_mm_data then
+      return
+   end
+
+   local movement_modifier = base_mm_data.modifier
+   local nav_preference_modifier = base_mm_data.nav_preference_modifier
+
+   local mms = entity:add_component('movement_modifier_shape')
+   if not mms:get_region() then
+      mms:set_region(_radiant.sim.alloc_region3())
+   end
+   mms:get_region():modify(function(cursor)
+         cursor:copy_region(region)
+         cursor:optimize_by_defragmentation('entity movement modifier shape')
+      end)
+   
+   if movement_modifier then
+      mms:set_modifier(movement_modifier)
+   end
+   if nav_preference_modifier then
+      mms:set_nav_preference_modifier(nav_preference_modifier)
+   end
+end
+
 function ace_entities.get_alternate_uris(uri)
    local catalog_data = stonehearth.catalog:get_catalog_data(uri)
    return catalog_data and catalog_data.alternate_uris

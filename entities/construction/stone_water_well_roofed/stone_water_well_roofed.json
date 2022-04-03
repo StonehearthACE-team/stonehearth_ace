@@ -58,13 +58,32 @@
                "items": {
                   "well_kit": {
                      "uri": "stonehearth_ace:refined:water_well_kit:stone"
+                  },
+                  "wood": {
+                     "uri": "stonehearth:resources:wood:oak_log"
                   }
                }
             }
          }
-      }
+      },
+      "stonehearth_ace:transform": {}
    },
    "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "destroy": {
+               "transform_uri": "",
+               "command": "stonehearth_ace:commands:transform:build_well_destroy",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth:effects:clear_effect",
+               "transforming_worker_effect": "work",
+               "transforming_worker_effect_times": 3,
+               "transform_effect": "stonehearth:effects:object_destroyed",
+               "auto_request": true,
+               "kill_entity": true
+            }
+         }
+      },
       "stonehearth_ace:drink_container": {
          "effect": "work_water_well",
          "container_effect": "work",

@@ -91,6 +91,14 @@ function PastureItemComponent:_destroy_restock_tasks()
    self._added_restock_tasks = {}
 end
 
+function PastureItemComponent:register_with_town()
+   self:_register_with_town(true)
+end
+
+function PastureItemComponent:unregister_with_town()
+   self:_register_with_town(false)
+end
+
 function PastureItemComponent:_register_with_town(register)
    local player_id = radiant.entities.get_player_id(self._entity)
    local town = stonehearth.town:get_town(player_id)
@@ -98,10 +106,9 @@ function PastureItemComponent:_register_with_town(register)
    self._pasture = nil
 
    if town then
+      town:unregister_pasture_item(self._entity)
       if register then
          self._pasture = town:register_pasture_item(self._entity, self._type)
-      else
-         town:unregister_pasture_item(self._entity)
       end
       -- unnecessary? may be necessary if pasture-based animal filters are implemented
       -- stonehearth.ai:reconsider_entity(self._entity, '(un)registered with pasture/town')

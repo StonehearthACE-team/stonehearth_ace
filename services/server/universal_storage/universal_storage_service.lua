@@ -5,7 +5,7 @@
 local Entity = _radiant.om.Entity
 local validator = radiant.validator
 local DEFAULT_CATEGORY = 'default'
-local UNIVERSAL_STORAGE_URI = 'stonehearth_ace:containers:universal_storage'
+--local UNIVERSAL_STORAGE_URI = 'stonehearth_ace:containers:universal_storage'
 
 local UniversalStorageService = class()
 local log = radiant.log.create_logger('universal_storage_service')
@@ -20,7 +20,6 @@ function UniversalStorageService:initialize()
    end
 
    self._player_traces = {}
-   self._queued_items = {}
 
    self._storage_type_data = radiant.resources.load_json('stonehearth_ace:data:universal_storage')
 end
@@ -45,8 +44,24 @@ function UniversalStorageService:_destroy_player_trace(entity_id)
    end
 end
 
+function UniversalStorageService:set_access_node_effect(player_id, effect)
+   local universal_storage = self._sv.player_storages[player_id]
+   if universal_storage then
+      universal_storage:set_access_node_effect(effect)
+   end
+end
+
 function UniversalStorageService:get_default_category()
    return DEFAULT_CATEGORY
+end
+
+function UniversalStorageService:get_universal_storage_controller(player_id)
+   local player_storage = self._sv.player_storages[player_id]
+   if not player_storage then
+      player_storage = radiant.create_controller('stonehearth_ace:universal_storage', player_id)
+      self._sv.player_storages[player_id] = player_storage
+   end
+   return player_storage
 end
 
 function UniversalStorageService:get_universal_storage_uri(category)
@@ -57,6 +72,16 @@ function UniversalStorageService:get_universal_storage_uri(category)
    else
       return self._storage_type_data.categories[DEFAULT_CATEGORY].storage_uri
    end
+end
+
+function UniversalStorageService:is_universal_storage_uri(uri)
+   for category, data in pairs(self._storage_type_data.categories) do
+      if data.storage_uri == uri then
+         return true
+      end
+   end
+
+   return false
 end
 
 function UniversalStorageService:get_universal_storage(player_id, category, group_id)
@@ -72,9 +97,18 @@ end
 function UniversalStorageService:get_storage_from_access_node_command(session, response, entity)
    validator.expect_argument_types({'Entity'}, entity)
 
-   local player_storage = self._sv.player_storages[entity:get_player_id()]
-   local storage = player_storage and player_storage:get_storage_from_access_node(entity)
+   local storage = self:get_storage_from_access_node(entity)
    return { storage = storage }
+end
+
+function UniversalStorageService:get_storage_from_access_node(entity)
+   local player_storage = self._sv.player_storages[entity:get_player_id()]
+   return player_storage and player_storage:get_storage_from_access_node(entity)
+end
+
+function UniversalStorageService:get_access_nodes_from_storage(entity)
+   local player_storage = self._sv.player_storages[entity:get_player_id()]
+   return player_storage and player_storage:get_access_nodes_from_storage(entity)
 end
 
 function UniversalStorageService:get_new_group_id()
@@ -82,7 +116,8 @@ function UniversalStorageService:get_new_group_id()
 end
 
 function UniversalStorageService:queue_items_for_transfer_on_registration(entity, items)
-   self._queued_items[entity:get_id()] = items
+   local player_storage = self:get_universal_storage_controller(radiant.entities.get_player_id(entity))
+   player_storage:queue_items_for_transfer_on_registration(entity, items)
 end
 
 -- TODO: if this entity is already registered, it needs to be removed from its current group
@@ -111,17 +146,14 @@ function UniversalStorageService:register_storage(entity)
       local category = us_comp:get_category() or DEFAULT_CATEGORY
       local group_id = us_comp:get_group_id() or 0
       
-      local player_storage = self._sv.player_storages[player_id]
-      if not player_storage then
-         player_storage = radiant.create_controller('stonehearth_ace:universal_storage', player_id)
-         self._sv.player_storages[player_id] = player_storage
-      end
-
-      player_storage:register_storage(entity, category, group_id)
+      local player_storage = self:get_universal_storage_controller(player_id)
+      local storage = player_storage:register_storage(entity, category, group_id)
 
       if group_id >= self._sv.new_group_id then
          self._sv.new_group_id = group_id + 1
       end
+
+      return storage
    end
 end
 

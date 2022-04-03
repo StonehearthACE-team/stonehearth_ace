@@ -26,15 +26,15 @@
          },
          "speed": {
             "type": "basic",
-            "value": 102
+            "value": 125
          },
          "courage": {
             "type": "basic",
-            "value": 650
+            "value": 950
          },
          "menace": {
             "type": "basic",
-            "value": 250
+            "value": 350
          },
          "muscle": {
             "type": "basic",
@@ -74,6 +74,11 @@
             "dragon_effect": {
                "uri": "stonehearth_ace:buffs:dragon:effect",
                "chance": 0.5,
+               "resistable": true
+            },
+            "chromatic_fire": {
+               "uri": "stonehearth_ace:buffs:chromatic_fire",
+               "chance": 0.3,
                "resistable": true
             }
          }

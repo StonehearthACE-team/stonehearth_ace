@@ -258,46 +258,63 @@ function AceMiningZoneComponent:_add_ladder_if_needed()
    log:debug('%s enabling and checking if a ladder needs to be built...', self._entity)
    local town = stonehearth.town:get_town(self._entity:get_player_id())
    if town then
-      local town_entity = town:get_hearth() or town:get_banner()
-      if town_entity and town_entity:is_valid() then
-         local location = radiant.entities.get_world_grid_location(town_entity)
-         if not _radiant.sim.topology.are_connected(town_entity, location) then
-            local direct_path_finder = _radiant.sim.create_direct_path_finder(town_entity)
-                                    :set_start_location(location)
-                                    :set_destination_entity(self._entity)
-                                    :set_allow_incomplete_path(true)
-                                    :set_reversible_path(false)
+      local town_entity = town:get_hearth()
+      local location = town_entity and town_entity:is_valid() and radiant.entities.get_world_grid_location(town_entity)
+      if not location then
+         town_entity = town:get_banner()
+         location = town_entity and town_entity:is_valid() and radiant.entities.get_world_grid_location(town_entity)
+         if not location then
+            -- don't have a banner or hearth in the world? then don't bother
+            return
+         end
+      end
 
-            local path = direct_path_finder:get_path()
-            -- if we found an incomplete path
-            if path then
-               local zone_location = radiant.entities.get_world_grid_location(self._entity)
-               local destination = self._destination_component:get_region():get():translated(zone_location)
-               local finish = path:get_finish_point()
-               local closest = destination:get_closest_point(finish)
+      if not _radiant.sim.topology.are_connected(self._entity, town_entity) then
+         local direct_path_finder = _radiant.sim.create_direct_path_finder(town_entity)
+                                 :set_start_location(location)
+                                 :set_destination_entity(self._entity)
+                                 :set_allow_incomplete_path(true)
+                                 :set_reversible_path(false)
 
-               -- we expect the finish point to be at a lower y than the closest point
-               -- and for there to be emptiness underneath the closest point
-               log:debug('%s checking if %s is lower than %s, and there\'s emptiness under the latter...', self._entity, finish, closest)
-               if finish.y < closest.y and not radiant.terrain.is_blocked(closest - Point3.unit_y) then
-                  finish.y = closest.y
-                  local facing = finish - closest
-                  facing:normalize()
-                  facing = facing:to_closest_int()
-                  -- if it's diagonal, we end up with a bad normal; need to 0 out the x or z, so pick one
-                  if facing.x ~= 0 and facing.z ~= 0 then
-                     facing.x = 0
-                  elseif facing.x == 0 and facing.z == 0 then
-                     facing.x = 1
-                  end
-                  self:create_ladder_handle(closest, facing)
+         local path = direct_path_finder:get_path()
+         -- if we found an incomplete path
+         if path then
+            local zone_location = radiant.entities.get_world_grid_location(self._entity)
+            local destination = self._destination_component:get_region():get():translated(zone_location)
+            local finish = path:get_finish_point()
+            local closest = destination:get_closest_point(finish)
+
+            -- the destination region might not reach to the bottom level of the mining region if it's floating in the air
+            -- in that case, check the bottom of the actual mining region at this point
+            local zone_region = self._sv.region:get():translated(zone_location)
+            local bounds = zone_region:get_bounds()
+            local bottom_point = zone_region:intersect_cube(Cube3(Point3(closest.x, bounds.min.y, closest.z), Point3(closest.x + 1, bounds.max.y, closest.z + 1))):get_bounds().min
+            if bottom_point.y < closest.y then
+               log:debug('%s destination region missing lower region point; using %s for closest', self._entity, bottom_point)
+               closest = bottom_point
+            end
+
+            -- we expect the finish point to be at a lower y than the closest point
+            -- and for there to be emptiness underneath the closest point
+            log:debug('%s checking if %s is lower than %s, and there\'s emptiness under the latter...', self._entity, finish, closest)
+            if finish.y < closest.y and not radiant.terrain.is_blocked(closest - Point3.unit_y) then
+               finish.y = closest.y
+               local facing = finish - closest
+               facing:normalize()
+               facing = facing:to_closest_int()
+               -- if it's diagonal, we end up with a bad normal; need to 0 out the x or z, so pick one
+               if facing.x ~= 0 and facing.z ~= 0 then
+                  facing.x = 0
+               elseif facing.x == 0 and facing.z == 0 then
+                  facing.x = 1
                end
-            else
-               log:debug('%s no incomplete path found; cannot build helping ladder', self._entity)
+               self:create_ladder_handle(closest, facing)
             end
          else
-            log:debug('%s complete path found; no ladder needed', self._entity)
+            log:debug('%s no incomplete path found; cannot build helping ladder', self._entity)
          end
+      else
+         log:debug('%s complete path found; no ladder needed', self._entity)
       end
    end
 end

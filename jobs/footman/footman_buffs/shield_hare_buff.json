@@ -1,0 +1,15 @@
+{
+   "description": "i18n(stonehearth_ace:jobs.footman.footman_buffs.shield_hare_buff.description)",
+   "modifiers": {
+      "courage": {
+         "multiply": 1.1
+      }
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": 0.02,
+      "pulse": "1h",
+      "pulse_immediately": false,
+      "is_percentage": true
+   }
+}

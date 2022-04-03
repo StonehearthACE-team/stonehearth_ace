@@ -1,0 +1,14 @@
+{
+   "type": "command",
+   "name": "never_light_policy",
+   "group": "stonehearth_ace:light_policy",
+   "display_name": "i18n(stonehearth_ace:data.commands.light_policy.never.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.light_policy.never.description)",
+   "ordinal": 0,
+   "icon": "file(never_light_policy.png)",
+   "action": "call",
+   "function": "stonehearth_ace:set_light_policy_command",
+   "args": [
+      "never"
+   ]
+}

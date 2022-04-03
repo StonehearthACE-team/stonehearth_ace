@@ -6,7 +6,13 @@ function TownInventoryCallHandler:get_item_container(session, response, item)
    validator.expect.matching_player_id(session.player_id, item)
 
    local container = stonehearth.inventory:get_inventory(session.player_id):container_for(item)
-   response:resolve({container = container})
+   local result = {container = container}
+   -- if the container is a universal_storage container, also return the access point entities
+   if container then
+      result.access_nodes = stonehearth_ace.universal_storage:get_access_nodes_from_storage(container)
+   end
+
+   response:resolve(result)
 end
 
 function TownInventoryCallHandler:set_default_storage(session, response, item, value)

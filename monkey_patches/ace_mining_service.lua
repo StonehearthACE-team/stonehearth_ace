@@ -286,4 +286,27 @@ function AceMiningService:get_adjacent_for_destination_region(region)
    return adjacent_region
 end
 
+-- don't remove one point a time; remove the whole thing at once
+function AceMiningService:insta_mine(region)
+   local terrain_region = radiant.terrain.intersect_region(region)
+
+   -- check all adjacent areas for water regions
+   -- if there's a single water region, create a new water region in this mining region at that height
+   -- then merge it into that other region
+   -- if there are multiple regions, let them handle it themselves, it could be complicated
+   stonehearth.hydrology:auto_fill_water_region(terrain_region, function(waters)
+         radiant.terrain.subtract_region(terrain_region)
+      
+         self._mined_region:add_region(terrain_region)
+         self._mined_region:optimize_changed_tiles('MiningService:_add_to_mined_region')
+      
+         -- and then update interior on a point-by-point basis
+         for point in terrain_region:each_point() do
+            self:_update_interior_region(point)
+         end
+
+         return true
+      end)
+end
+
 return AceMiningService

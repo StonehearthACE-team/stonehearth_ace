@@ -1,0 +1,72 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s1",
+   "scale": 0.11,
+   "render_info": {
+      "color_map": "stonehearth:color_map:mob",
+      "material_maps": [
+         "/stonehearth/data/materials/material_maps/mob_material_map.json"
+      ]
+   },
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.dragon_cult.scion.description)"
+   },
+   "attributes": {
+      "max_health": {
+         "base": 200,
+         "net_worth_effect": {
+            "increase_by": 10,
+            "per": 200
+         },
+         "max": 8000
+      },
+      "muscle": {
+         "base": 10,
+         "net_worth_effect": {
+            "increase_by": 5,
+            "per": 1000
+         },
+         "max": 300
+      },
+      "menace": 60,
+      "courage": {
+         "base": 100,
+         "net_worth_effect": {
+            "increase_by": 15,
+            "per": 1500
+         },
+         "max": 300
+      },
+      "speed": 40,
+      "exp_reward": {
+         "base": 50,
+         "net_worth_effect": {
+            "increase_by": 10,
+            "per": 500
+         },
+         "max": 300
+      }
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:scythe_dragon_cult"
+      ],
+      "outfit": [
+         "stonehearth_ace:monsters:dragon_cult:outfits:scion"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": 1,
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:dragon_cult",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

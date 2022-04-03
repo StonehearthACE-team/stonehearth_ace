@@ -2,7 +2,7 @@
    "type": "index",
    "thoughts": {
       "space": {
-         "averaging_period": "5m",
+         "averaging_period": "6m",
          "thresholds": {
             "very_cramped": {
                "happiness_delta": -6
@@ -18,7 +18,7 @@
       "darkness": {
          "time_average": true,
          "mutually_exclusive": true,
-         "averaging_period": "1m",
+         "averaging_period": "6m",
          "thresholds": {
             "mixintypes": {
                "very_dark": "remove"
@@ -53,6 +53,60 @@
                "tooltip": "i18n(stonehearth:data.happiness.thoughts.darkness.dark.tooltip)",
                "happiness_delta": 3,
                "max_threshold": 10
+            }
+         }
+      },
+      "health": {
+         "values": {
+            "pain_minor": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.health.pain_minor.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.health.pain_scratched.tooltip)",
+               "happiness_delta": -3,
+               "stackable": false
+            },
+            "pain_scratched": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.health.pain_scratched.display_name)",
+               "tooltip": "i18n(stonehearth:data.happiness.thoughts.health.pain_scratched.tooltip)",
+               "happiness_delta": -8
+            },
+            "pain_mild": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.health.pain_mild.display_name)",
+               "tooltip": "i18n(stonehearth:data.happiness.thoughts.health.pain_mild.tooltip)"
+            },
+            "pain_moderate": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.health.pain_moderate.display_name)"
+            },
+            "pain_severe": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.health.pain_severe.display_name)"
+            }
+         }
+      },
+      "health_wounds": {
+         "mutually_exclusive": true,
+         "values": {
+            "no_wound": {
+               "display_name": "",
+               "tooltip": "",
+               "happiness_delta": 0,
+               "hide": true
+            },
+            "wound_extreme": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.health_wounds.wound_extreme.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.health_wounds.wound_extreme.tooltip)",
+               "happiness_delta": -20,
+               "stackable": false
+            },
+            "wound_high": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.health_wounds.wound_high.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.health_wounds.wound_high.tooltip)",
+               "happiness_delta": -12,
+               "stackable": false
+            },
+            "wound_medium": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.health_wounds.wound_medium.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.health_wounds.wound_medium.tooltip)",
+               "happiness_delta": -5,
+               "stackable": false
             }
          }
       },

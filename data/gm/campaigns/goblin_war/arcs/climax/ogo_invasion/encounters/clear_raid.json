@@ -1,0 +1,13 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "clear_raid",
+   "out_edge": {
+      "type": "destroy_tree",
+      "root": "ogo_attacks_dialog",
+      "destroy_root": true
+   },
+   "wait_info": {
+      "duration": "3h"
+   }
+}

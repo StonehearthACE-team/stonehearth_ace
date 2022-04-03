@@ -1,11 +1,19 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:armor:heavy_shield"
+   ],
    "components": {
 	  "mixintypes": {
 		 "stonehearth:equipment_piece": "override"
 	  },
       "stonehearth:equipment_piece": {
+         "mixintypes": {
+            "additional_equipment": "override",
+            "postures": "override",
+            "roles": "override"
+          },
          "slot": "leftArm",
-		 "additional_equipment": {
+		   "additional_equipment": {
             "stonehearth_ace:armor:offhand_placeholder": true
          },
          "render_type": "attach_to_bone",
@@ -18,13 +26,19 @@
          "ilevel": 5,
          "roles":["knight_job"],
          "equip_effect": "stonehearth:effects:weapon_level_up",
-		 "equipment_types": ["shield", "heavy_shield"],
+		   "equipment_types": ["shield", "heavy_shield"],
          "injected_buffs": [
             "stonehearth_ace:buffs:shield_heavy"
          ]
       }
    },
    "entity_data": {
+      "stonehearth:net_worth": {
+         "rarity": "uncommon",
+         "shop_info": {
+            "shopkeeper_level": 2
+         }
+      },
       "stonehearth:combat:armor_data": {
          "base_damage_reduction": 5
       },
@@ -39,9 +53,10 @@
          }
       ],
       "stonehearth:catalog": {
-	     "mixintypes": {
-			"material_tags": "override"
-		 },
+         "display_name": "i18n(stonehearth_ace:entities.armor.iron_shield.display_name)",
+	      "mixintypes": {
+			   "material_tags": "override"
+		   },
          "material_tags":["iron", "shield", "heavy_armor", "ascendancy_made", "crafted", "stockpile_equipment"]
       }
    }

@@ -1,0 +1,81 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "animation": "combat_breath.json",
+            "loop": false
+      },
+      "attack_trigger" : {
+            "type": "trigger_effect",
+            "start_frame": 18,
+            "end_time": 20
+      },
+      "fire_breath_base": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/dragon/fire_burp_base.cubemitter.json",
+         "start_time": 1100,
+         "end_time": 2200,
+         "loop": false,
+         "transforms": { "x": 0, "y": -1.1, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "fire_breath_core": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/dragon/fire_burp_core.cubemitter.json",
+         "start_time": 1100,
+         "end_time": 2200,
+         "loop": false,
+         "transforms": { "x": 0, "y": -1.1, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "fire_breath_core_2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/dragon/fire_burp_core_2.cubemitter.json",
+         "start_time": 1100,
+         "end_time": 2200,
+         "loop": false,
+         "transforms": { "x": 0, "y": -1.1, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "fire_breath_slow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/dragon/fire_burp_slow.cubemitter.json",
+         "start_time": 1100,
+         "end_time": 2200,
+         "loop": false,
+         "transforms": { "x": 0, "y": -1.1, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "fire_breath_cloud": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/dragon/fire_burp_cloud.cubemitter.json",
+         "start_time": 1100,
+         "end_time": 2200,
+         "loop": false,
+         "transforms": { "x": 0, "y": -1.1, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      }
+   }
+}

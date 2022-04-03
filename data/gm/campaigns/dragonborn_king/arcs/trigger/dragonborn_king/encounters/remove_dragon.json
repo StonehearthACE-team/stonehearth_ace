@@ -1,0 +1,22 @@
+{
+   "type": "encounter",
+   "encounter_type": "destroy_entity",
+   "in_edge": "remove_dragon",
+   "out_edge": {
+      "type": "destroy_tree",
+      "root": "dialog_dragon_growing",
+      "destroy_root": true
+   },
+   "destroy_entity_info": {
+      "destroy_all_registered_entities": true,
+      "target_entities": [
+         "adult_dragon"
+      ],
+      "effect": "stonehearth:effects:poof_effect:grey",
+      "random_delay": {
+         "min": 60,
+         "max": 150
+      },
+      "continue_always": true
+   }
+}

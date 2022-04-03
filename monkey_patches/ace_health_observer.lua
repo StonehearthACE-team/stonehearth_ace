@@ -1,4 +1,6 @@
 local HealthObserver = require 'stonehearth.ai.observers.health_observer'
+local constants = require 'stonehearth.constants'
+
 local AceHealthObserver = class()
 
 local log = radiant.log.create_logger('health_observer')
@@ -21,6 +23,30 @@ function AceHealthObserver:destroy()
    if self._magically_healed_listener then
       self._magically_healed_listener:destroy()
       self._magically_healed_listener = nil
+   end
+end
+
+function AceHealthObserver:_check_update_thoughts(percentage, last_percentage)
+   if percentage >= .99 then
+      radiant.entities.add_thought(self._sv.entity, 'stonehearth:thoughts:health:neutral')
+   elseif percentage >= .9 then
+      if not (last_percentage >= .9 and last_percentage < .99) then
+         radiant.entities.add_thought(self._sv.entity, 'stonehearth:thoughts:health:pain_minor')
+      end
+   elseif percentage >= .75 then
+      if not (last_percentage >= .75 and last_percentage < .9) then
+         radiant.entities.add_thought(self._sv.entity, 'stonehearth:thoughts:health:pain_scratched')
+      end
+   elseif percentage >= .5 then
+      if not (last_percentage >= .5 and last_percentage < .75) then
+         radiant.entities.add_thought(self._sv.entity, 'stonehearth:thoughts:health:pain_mild')
+      end
+   elseif percentage >= .25 then
+      if not (last_percentage >= .25 and last_percentage < .5) then
+         radiant.entities.add_thought(self._sv.entity, 'stonehearth:thoughts:health:pain_moderate')
+      end
+   elseif not (last_percentage < .25) then
+      radiant.entities.add_thought(self._sv.entity, 'stonehearth:thoughts:health:pain_severe')
    end
 end
 

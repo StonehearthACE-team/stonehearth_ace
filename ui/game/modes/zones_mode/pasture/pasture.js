@@ -32,11 +32,15 @@ App.StonehearthPastureView.reopen({
       self.$('#harvestGrassCheckbox').change(function() {
          radiant.call('stonehearth_ace:set_pasture_harvest_grass', self.get('uri'), this.checked);
       })
+      self.$('#collectStraysCheckbox').change(function() {
+         radiant.call('stonehearth_ace:set_pasture_collect_strays', self.get('uri'), this.checked);
+      })
 
       // tooltips
       App.guiHelper.addTooltip(self.$('#maintainAnimalsLabel'), 'stonehearth_ace:ui.game.zones_mode.pasture.maintain_animals_description');
       App.guiHelper.addTooltip(self.$('#harvestAnimals'), 'stonehearth_ace:ui.game.zones_mode.pasture.harvest_animals_renewable_description');
       App.guiHelper.addTooltip(self.$('#harvestGrass'), 'stonehearth_ace:ui.game.zones_mode.pasture.harvest_grass_description');
+      App.guiHelper.addTooltip(self.$('#collectStrays'), 'stonehearth_ace:ui.game.zones_mode.pasture.collect_strays_description');
    },
 
    willDestroyElement: function() {
@@ -58,9 +62,11 @@ App.StonehearthPastureView.reopen({
       var self = this;
       var harvestAnimals = self.get('model.stonehearth:shepherd_pasture.harvest_animals_renewable');
       var harvestGrass = self.get('model.stonehearth:shepherd_pasture.harvest_grass');
+      var collectStrays = self.get('model.stonehearth:shepherd_pasture.collect_strays') === false ? false : true;
 
       self.$('#harvestAnimalsCheckbox').prop('checked', harvestAnimals);
       self.$('#harvestGrassCheckbox').prop('checked', harvestGrass);
+      self.$('#collectStraysCheckbox').prop('checked', collectStrays);
    }.observes('model.stonehearth:shepherd_pasture'),
 
    _pastureAnimalTypeChange: function() {

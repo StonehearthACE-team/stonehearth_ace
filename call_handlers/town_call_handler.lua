@@ -17,4 +17,13 @@ function TownCallHandler:has_guildmaster_town_bonus(session, response, player_id
 	response:resolve({ has_guildmaster = guildmaster ~= nil })
 end
 
+function TownCallHandler:remove_owner_command(session, response, entity)
+   validator.expect_argument_types({'Entity'}, entity)
+
+   local ownable_object_component = entity:get_component('stonehearth:ownable_object')
+   if ownable_object_component then
+      ownable_object_component:set_owner()
+   end
+end
+
 return TownCallHandler

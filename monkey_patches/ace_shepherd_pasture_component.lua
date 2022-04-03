@@ -8,6 +8,17 @@ local WEATHER_CHECK_TIME = '05:30am+2h' -- one hour after weather service has ch
 local DEFAULT_GRASS_SPAWN_RATE = '11h+2h'
 local GRASS_HARVEST_TIME = '2h'
 
+local sleeping_lib = require 'stonehearth_ace.ai.lib.sleeping_lib'
+
+AceShepherdPastureComponent._ace_old_create = ShepherdPastureComponent.create
+function AceShepherdPastureComponent:create()
+   self:_ace_old_create()
+   local player_id = self._entity:get_player_id()
+   local collect_strays = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'default_pasture_collect_strays')
+   --log:debug('creating pasture for %s and setting collect_strays to %s', player_id, collect_strays)
+   self._sv.collect_strays = collect_strays
+end
+
 AceShepherdPastureComponent._ace_old_activate = ShepherdPastureComponent.activate
 function AceShepherdPastureComponent:activate()
    self:_ace_old_activate()
@@ -127,6 +138,7 @@ function AceShepherdPastureComponent:set_pasture_type_command(session, response,
       self._sv._queued_slaughters = {}
 
       self:_claim_animals_in_pasture()
+      self:_claim_pasture_items_in_pasture()
    end
 
    return result
@@ -171,6 +183,23 @@ function AceShepherdPastureComponent:_claim_animals_in_pasture()
    local animals = radiant.terrain.get_entities_in_region(region, filter_fn)
    
    self:convert_and_add_animals(animals)
+end
+
+function AceShepherdPastureComponent:_claim_pasture_items_in_pasture()
+   -- reclaim any pasture items within the pasture grounds
+   local size = self:get_size()
+	local world_loc = radiant.entities.get_world_grid_location(self._entity)
+	local cube = Cube3(world_loc, world_loc + Point3(size.x, 1, size.z))
+	local region = Region3(cube)
+   local entities = radiant.terrain.get_entities_in_region(region)
+
+   for _, entity in pairs(entities) do
+      local pasture_item_comp = entity:get_component('stonehearth_ace:pasture_item')
+      if pasture_item_comp and pasture_item_comp:get_pasture() ~= self._entity then
+         pasture_item_comp:unregister_with_town()
+         pasture_item_comp:register_with_town()
+      end
+   end
 end
 
 AceShepherdPastureComponent._ace_old_add_animal = ShepherdPastureComponent.add_animal
@@ -671,11 +700,48 @@ function AceShepherdPastureComponent:unregister_item(id)
    self._troughs[id] = nil
 end
 
+function AceShepherdPastureComponent:set_collect_strays_enabled(enabled)
+   if self._sv.collect_strays ~= enabled then
+      self._sv.collect_strays = enabled
+      if enabled then
+         self:_create_stray_timer()
+         -- go ahead and immediately try to collect strays as well
+         self:_collect_strays()
+      else
+         if self._sv.stray_interval_timer then
+            self._sv.stray_interval_timer:destroy()
+            self._sv.stray_interval_timer = nil
+         end
+
+         -- also destroy any active stray collection tasks
+         local remaining_tasks = {}
+         for _, task in ipairs(self._added_pasture_tasks) do
+            if task:get_activity() == 'stonehearth:find_stray_animal' then
+               task:destroy()
+            else
+               table.insert(remaining_tasks, task)
+            end
+         end
+         self._added_pasture_tasks = remaining_tasks
+      end
+
+      self.__saved_variables:mark_changed()
+   end
+end
+
+AceShepherdPastureComponent._ace_old__create_stray_timer = ShepherdPastureComponent._create_stray_timer
+function AceShepherdPastureComponent:_create_stray_timer()
+   if self._sv.collect_strays ~= false then
+      self:_ace_old__create_stray_timer()
+   end
+end
+
 function AceShepherdPastureComponent:_collect_strays()
    for id, critter_data in pairs(self._sv.tracked_critters) do
       local critter = critter_data.entity
 
-      if critter and critter:is_valid() then
+      -- also check if the critter is sleeping; don't try to collect it if so
+      if critter and critter:is_valid() and not sleeping_lib.is_sleepy_enough_to_sleep(critter) then
          local critter_location = radiant.entities.get_world_grid_location(critter)
          if critter_location then -- Critter location can be nil if the critter is an egg that is being moved.
             local region_shape = self._entity:add_component('region_collision_shape'):get_region():get()

@@ -4,10 +4,6 @@
 			"expiration_timeout": "18h",
          "max_days_before_return": 8,
          "wants": {
-				"stonehearth_ace:food:rice:paddy_basket": {
-               "min": 3,
-               "max": 8
-            },
 				"stonehearth_ace:food:apples:apple_basket": {
                "min": 3,
                "max": 8
@@ -43,6 +39,11 @@
                "max": 1
 				},
 				"stonehearth_ace:consumables:seeds:cotton_seeds": {
+					"type": "object",
+               "min": 1,
+               "max": 1
+				},
+				"stonehearth_ace:consumables:seeds:paddy_seeds": {
 					"type": "object",
                "min": 1,
                "max": 1

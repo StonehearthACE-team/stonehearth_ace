@@ -363,14 +363,17 @@ App.ComponentInfoView = App.View.extend({
                }
 
                Ember.run.scheduleOnce('afterRender', self, function() {
-                  // don't give description tooltips for the unattained "next" ones
-                  self.$('.titleRank.attained').each(function() {
-                     App.guiHelper.addTooltip($(this), i18n.t(descriptions[$(this).attr('description-key')]));
-                  });
+                  var titleRank = self.$('.titleRank');
+                  if (titleRank) {
+                     // don't give description tooltips for the unattained "next" ones
+                     self.$('.titleRank.attained').each(function() {
+                        App.guiHelper.addTooltip($(this), i18n.t(descriptions[$(this).attr('description-key')]));
+                     });
 
-                  self.$('.titleRank.unattained').each(function() {
-                     App.guiHelper.addTooltip($(this), i18n.t('stonehearth_ace:component_info.stonehearth_ace.titles.unattained'));
-                  });
+                     self.$('.titleRank.unattained').each(function() {
+                        App.guiHelper.addTooltip($(this), i18n.t('stonehearth_ace:component_info.stonehearth_ace.titles.unattained'));
+                     });
+                  }
                });
             });
 

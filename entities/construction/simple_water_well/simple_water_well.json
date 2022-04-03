@@ -116,6 +116,17 @@
                   "stonehearth:jobs:worker": true,
                   "stonehearth:jobs:potter": true
                }
+            },
+            "destroy": {
+               "transform_uri": "",
+               "command": "stonehearth_ace:commands:transform:build_well_destroy",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth:effects:clear_effect",
+               "transforming_worker_effect": "work",
+               "transforming_worker_effect_times": 3,
+               "transform_effect": "stonehearth:effects:object_destroyed",
+               "auto_request": true,
+               "kill_entity": true
             }
          }
       },

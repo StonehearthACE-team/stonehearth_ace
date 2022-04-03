@@ -33,6 +33,7 @@ end
 
 function GameplaySettingsService:_on_server_ready()
    -- go through settings and update the values in this data structure from the various mods they're in
+   log:debug('finished loading; setting client gameplay settings from config')
    self:_update_gameplay_settings_from_config()
 end
 

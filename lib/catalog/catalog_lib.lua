@@ -245,6 +245,9 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
             if iconic_json then
                catalog_lib._add_catalog_description(catalog, iconic_path, iconic_json, catalog_data)
                catalog_data.iconic_uri = iconic_path
+               -- if it has an iconic form, the root form shouldn't be considered an item, and the iconic form should be
+               catalog[iconic_path].is_item = true
+               catalog_data.is_item = false  -- unless this causes problems with other game systems that expect root entities to be items?
             else
                log:error('%s has invalid iconic path specified: %s', full_alias, tostring(iconic_path))
             end
@@ -255,6 +258,8 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
             local ghost_json = catalog_lib._load_json(ghost_path)
             if ghost_json then
                catalog_lib._add_catalog_description(catalog, ghost_path, ghost_json, catalog_data)
+               -- make sure the ghost isn't considered an item
+               catalog[ghost_path].is_item = false
             else
                log:error('%s has invalid ghost path specified: %s', full_alias, tostring(iconic_path))
             end

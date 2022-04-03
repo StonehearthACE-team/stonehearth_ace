@@ -1,0 +1,49 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(acolyte.qb)",
+                     "file(acolyte_2.qb)",
+                     "file(acolyte_3.qb)",
+                     "file(acolyte_4.qb)",
+                     "file(acolyte_5.qb)",
+                     "file(acolyte_6.qb)"
+                  ]
+               }
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(acolyte.qb)",
+                     "file(acolyte_2.qb)",
+                     "file(acolyte_3.qb)",
+                     "file(acolyte_4.qb)",
+                     "file(acolyte_5.qb)",
+                     "file(acolyte_6.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:armor_medium"
+         ]
+      }
+   },
+   "entity_data": {}
+}

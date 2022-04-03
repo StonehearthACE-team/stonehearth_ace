@@ -9,6 +9,13 @@ function AceEatFeedAdjacent:stop(ai, entity, args)
    if self._animal_feed_data then
       local animal_feed = radiant.entities.get_entity_data(args.food, 'stonehearth_ace:animal_feed')
       quality_chances = animal_feed and animal_feed.quality_chances
+
+      -- Add the feed buff, if any
+		if self._animal_feed_data.applied_buffs then
+			for _, applied_buff in ipairs(self._animal_feed_data.applied_buffs) do
+				radiant.entities.add_buff(entity, applied_buff)
+			end
+		end
    end
 
    self:_ace_old_stop(ai, entity, args)

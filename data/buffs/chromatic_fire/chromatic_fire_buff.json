@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:buffs.chromatic_fire_buff.display_name)",
+   "description": "i18n(stonehearth_ace:buffs.chromatic_fire_buff.description)",
+   "icon": "file(chromatic_fire_buff.png)",
+   "duration": "20m",
+   "effect": "stonehearth_ace:effects:debuff_added:chromatic_fire_debuff",
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -7,
+      "pulse": "5m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true
+   }
+}

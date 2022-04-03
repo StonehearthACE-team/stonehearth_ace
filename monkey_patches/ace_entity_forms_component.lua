@@ -58,4 +58,34 @@ function AceEntityFormsComponent:get_interaction_proxy()
    return self._sv._interaction_proxy
 end
 
+-- ACE: make sure the ghost has the proper destination region
+AceEntityFormsComponent._ace_old__start_placement_task = EntityFormsComponent._start_placement_task
+function AceEntityFormsComponent:_start_placement_task()
+   local rcs = self._entity:get_component('region_collision_shape')
+   if rcs then
+      local ghost_destination = self._sv.placement_ghost_entity:add_component('destination')
+      if not ghost_destination:get_region() then
+         ghost_destination:set_region(_radiant.sim.alloc_region3())
+      end
+      ghost_destination:get_region():modify(function(cursor)
+            cursor:copy_region(rcs:get_region():get())
+         end)
+      ghost_destination:set_auto_update_adjacent(true)
+      ghost_destination:set_adjacency_flags(_radiant.csg.AdjacencyFlags.ALL_EDGES)
+   end
+
+   self:_ace_old__start_placement_task()
+end
+
+function AceEntityFormsComponent:_reconsider_entity(reason)
+   if radiant.is_server then
+      stonehearth.ai:reconsider_entity(self._entity, reason .. ' (root)')
+      stonehearth.ai:reconsider_entity(self._sv.iconic_entity, reason .. ' (iconic)')
+      -- ACE: also reconsider the interaction proxy if there is one
+      if self._sv._interaction_proxy then
+         stonehearth.ai:reconsider_entity(self._sv._interaction_proxy, reason .. ' (proxy)')
+      end
+   end
+end
+
 return AceEntityFormsComponent

@@ -1,0 +1,17 @@
+{
+   "can_start": {
+      "test_1": {
+         "not_under_siege": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:under_siege"
+         },
+         "locked": {
+            "type": "deny_if",
+            "item": "counter",
+            "key": "lock",
+            "value": 1
+         }
+      }
+   }
+}

@@ -63,6 +63,9 @@ function AceClientState:set_gameplay_settings(settings)
          end
       end
    end
+
+   log:debug('client %s set gameplay settings', self._sv._player_id)
+   radiant.events.trigger(radiant, 'stonehearth_ace:client_gameplay_settings_set', self._sv._player_id)
 end
 
 function AceClientState:set_gameplay_setting(mod, field, value)

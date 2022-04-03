@@ -227,40 +227,49 @@ function AceTown:unregister_pasture_item(item)
    end
 end
 
+-- don't actually pop out pasture items; instead, we'll deal with pasture items not being inside pastures
 AceTown._ace_old_unregister_pasture = Town.unregister_pasture
 function AceTown:unregister_pasture(pasture)
    self:_ace_old_unregister_pasture(pasture)
    
    if pasture then
-      local pasture_reg = csg_lib.get_region_footprint(pasture:add_component('region_collision_shape'):get_region():get())
-      local pasture_loc = radiant.entities.get_world_grid_location(pasture)
-      pasture_reg = pasture_reg:translated(pasture_loc)
-
-      -- make sure all troughs and beds are "popped" back into iconics
-      -- also cancel placement of any ghost pasture_items
-      local items = radiant.terrain.get_entities_in_region(pasture_reg)
-      
-      for id, item in pairs(items) do
-         if item:get_component('stonehearth_ace:pasture_item') then
-            self:remove_previous_task_on_item(item)
-            self:pop_entity_into_iconic(item)
-         else
-            local ghost = item:get_component('stonehearth:ghost_form')
-            if ghost and radiant.entities.get_component_data(ghost:get_root_entity_uri(), 'stonehearth_ace:pasture_item') then
-               -- apparently ghosts just get killed to cancel placement
-               radiant.entities.kill_entity(item)
-            end
-         end
+      local pasture_comp = pasture:get_component('stonehearth:shepherd_pasture')
+      for _, pasture_item in pairs(pasture_comp:get_pasture_items()) do
+         pasture_item:add_component('stonehearth_ace:pasture_item'):unregister_with_town()
       end
+
+      -- local pasture_reg = csg_lib.get_region_footprint(pasture:add_component('region_collision_shape'):get_region():get())
+      -- local pasture_loc = radiant.entities.get_world_grid_location(pasture)
+      -- pasture_reg = pasture_reg:translated(pasture_loc)
+
+      -- -- make sure all troughs and beds are "popped" back into iconics
+      -- -- also cancel placement of any ghost pasture_items
+      -- local items = radiant.terrain.get_entities_in_region(pasture_reg)
+      
+      -- for id, item in pairs(items) do
+      --    if item:get_component('stonehearth_ace:pasture_item') then
+      --       self:remove_previous_task_on_item(item)
+      --       self:pop_entity_into_iconic(item)
+      --    else
+      --       local ghost = item:get_component('stonehearth:ghost_form')
+      --       if ghost and radiant.entities.get_component_data(ghost:get_root_entity_uri(), 'stonehearth_ace:pasture_item') then
+      --          -- apparently ghosts just get killed to cancel placement
+      --          radiant.entities.kill_entity(item)
+      --       end
+      --    end
+      -- end
    end
 end
 
 function AceTown:pop_entity_into_iconic(entity)
    local root, iconic = entity_forms_lib.get_forms(entity)
-   local location = radiant.entities.get_world_grid_location(root)
-   if location then
-      radiant.terrain.remove_entity(root)
-      radiant.terrain.place_entity_at_exact_location(iconic, location)
+   --local location = radiant.entities.get_world_grid_location(root)
+   local local_location = radiant.entities.get_location_aligned(entity)
+   if local_location then
+      local parent = radiant.entities.get_parent(entity) or radiant.entities.get_root_entity()
+      radiant.entities.remove_child(parent, entity)
+      radiant.entities.move_to_grid_aligned(entity, Point3.zero)
+      radiant.entities.add_child(parent, iconic, local_location)
    end
 end
 
@@ -335,10 +344,11 @@ end
 function AceTown:is_any_healing_item_valid(requester, conditions)
    local inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
    if inventory then
+      local guts, health = healing_lib.get_filter_guts_health_missing(requester)
       local tracker = inventory:add_item_tracker('stonehearth_ace:healing_item_tracker')
       for id, item in tracker:get_tracking_data():each() do
          if item and item:is_valid() then
-            if self:is_healing_item_valid(item, requester, conditions) then
+            if self:is_healing_item_valid(item, requester, conditions, guts, health) then
                return true
             end
          end
@@ -348,12 +358,15 @@ function AceTown:is_any_healing_item_valid(requester, conditions)
    return false
 end
 
-function AceTown:is_healing_item_valid(item, requester, conditions)
+function AceTown:is_healing_item_valid(item, requester, conditions, guts, health)
    if not conditions then
       conditions = healing_lib.get_conditions_needing_cure(requester)
    end
+   if not guts or not health then
+      guts, health = healing_lib.get_filter_guts_health_missing(requester)
+   end
 
-   return healing_lib.filter_healing_item(item, conditions) and stonehearth.ai:can_acquire_ai_lease(item, requester)
+   return healing_lib.filter_healing_item(item, conditions, nil, guts, health) and stonehearth.ai:can_acquire_ai_lease(item, requester)
 end
 
 AceTown._ace_old_spawn_traveler = Town.spawn_traveler
@@ -534,6 +547,11 @@ function AceTown:task_group_has_active_tasks(task_group)
    return false
 end
 
+function AceTown:is_player_town()
+   local pop = stonehearth.population:get_population(self._sv.player_id)
+   return pop and not pop:is_npc()
+end
+
 function AceTown:get_default_storage()
    return self._sv.default_storage
 end
@@ -543,11 +561,13 @@ function AceTown:is_default_storage(storage)
 end
 
 function AceTown:add_default_storage(storage)
-   if storage and storage:is_valid() then
+   if storage and storage:is_valid() and storage:get_component('stonehearth:storage') then
       self._sv.default_storage[storage:get_id()] = storage
       self.__saved_variables:mark_changed()
       storage:add_component('stonehearth_ace:input')
       self:_create_default_storage_listener(storage)
+   else
+      self._log:error('failed to add invalid storage entity %s to default storage')
    end
 end
 

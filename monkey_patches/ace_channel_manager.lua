@@ -4,6 +4,8 @@
 
 local AceChannelManager = class()
 
+local log = radiant.log.create_logger('water')
+
 function AceChannelManager:_update_link(link)
    if not link.to_entity then
       return
@@ -44,10 +46,16 @@ function AceChannelManager:fill_links(links, rate)
    for _, link in pairs(links) do
       local water_level = link.from_entity:add_component('stonehearth_ace:water_source'):get_water_level()
       for key, channel in pairs(link.waterfall_channels) do
-         channel.volume = channel.volume + rate * channel.capacity
-         local waterfall_component = channel.entity:add_component('stonehearth:waterfall')
-         waterfall_component:set_volume(channel.volume)
-         waterfall_component:set_source_water_level(water_level)
+         local waterfall_component = channel.entity and channel.entity:add_component('stonehearth:waterfall')
+         if waterfall_component then
+            channel.volume = channel.volume + rate * channel.capacity
+            waterfall_component:set_volume(channel.volume)
+            waterfall_component:set_source_water_level(water_level)
+         else
+            -- if there isn't a waterfall channel entity, it's not a waterfall channel! why is this happening?
+            -- does a waterfall channel turn into a non-waterfall channel if it gets short enough?
+            log:error('channel manager trying to fill waterfall link without entity: %s %s', key, radiant.util.table_tostring(channel))
+         end
       end
 
       link.pressure_channels.volume = link.pressure_channels.volume + rate * link.pressure_channels.capacity
@@ -56,14 +64,18 @@ end
 
 function AceChannelManager:add_water_to_waterfall_channel(channel, volume)
    local water_level = channel.from_entity:add_component('stonehearth_ace:water_source'):get_water_level()
-   channel.volume = channel.volume + volume
-   channel.capacity = channel.volume
    local waterfall_component = channel.entity:add_component('stonehearth:waterfall')
-   waterfall_component:set_volume(channel.volume)
-   waterfall_component:set_source_water_level(water_level)
+   if waterfall_component then
+      channel.volume = channel.volume + volume
+      channel.capacity = channel.volume
+      waterfall_component:set_volume(channel.volume)
+      waterfall_component:set_source_water_level(water_level)
 
-   -- at some point we might want to limit how much water can be put into a waterfall
-   return 0
+      -- at some point we might want to limit how much water can be put into a waterfall
+      return 0
+   else
+      return volume
+   end
 end
 
 -- from_point is a point inside the source water body

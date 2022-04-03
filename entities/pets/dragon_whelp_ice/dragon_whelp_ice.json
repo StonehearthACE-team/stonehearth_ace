@@ -3,7 +3,17 @@
 		"stonehearth:attributes": {
          "max_health": {
             "type": "basic",
-            "value": 350
+            "value": 402
+         },
+         "speed": {
+            "type": "basic",
+            "value": 54
+         }
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:dragon:blood": true
          }
       },
       "stonehearth:pet": {
@@ -17,6 +27,12 @@
             "buyable": false,
             "sellable": false
          }
+      },
+      "stonehearth:evolve_data": {
+         "current_stage": "whelp",
+         "next_stage": "stonehearth_ace:pets:dragon_young_ice",
+         "evolve_time": "8d",
+         "evolve_effect": "stonehearth:effects:fursplosion_effect"
       }
    }
 }

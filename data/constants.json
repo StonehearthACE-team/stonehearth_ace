@@ -288,11 +288,11 @@
                "period_multiplier": 0.9
             },
             {
-               "min_level": 1.6,
+               "min_level": 3,
                "period_multiplier": 0.95
             },
             {
-               "min_level": 3.2,
+               "min_level": 3.8,
                "period_multiplier": 1.1
             },
             {
@@ -761,8 +761,9 @@
          "SPECIAL_ATTENTION_CONDITIONS": {
             "wound_corrupt": 1,
             "infection": 0.9,
-            "wound_fire": 0.8,
-            "poison": 0.7,
+            "undead_infection": 0.85,
+            "poison": 0.8,
+            "wound_fire": 0.7,
             "wound_pierce": 0.6,
             "wound_impact": 0.6,
             "wound_cut": 0.6,
@@ -785,7 +786,19 @@
       "health": {
          "SCRATCHED_PERCENTAGE" : 0.999,
          "COMBAT_REST_WHEN_INJURED_PERCENTAGE": 0.9,
-         "STOP_RESTING_STATUS_UNCHANGED_DURATION": "4h"
+         "SEVERELY_INJURED_PERCENTAGE": 0.25,
+         "STOP_RESTING_STATUS_UNCHANGED_DURATION": "4h",
+         "WOUND_TYPES": {
+            "wound_corrupt": true,
+            "wound_fire": true,
+            "wound_pierce": true,
+            "wound_impact": true,
+            "wound_cut": true,
+            "wound_cold": true
+         }
+      },
+      "hydrology": {
+         "MIN_INFINITE_WATER_HEIGHT": 0.6
       },
       "item_quality": {
          "mixintypes": {
@@ -1043,6 +1056,9 @@
             }
          }
       },
+      "combat": {
+         "ADDITIVE_COMBAT_LEASH_BONUS": 30
+      },
       "equipment": {
          "SLOT_TO_BONE_MAP": {
             "beekeeping_hat": "head",
@@ -1134,6 +1150,21 @@
          "FORAGING_SPOT_FREQUENCY": 0.005,
          "MIN_AVG_WILDERNESS_SCORE": 0.004,
          "WILDERNESS_SCORE_MULTIPLIER": 0.02
+      },
+      "universal_storage": {
+         "effect_sizes": {
+            "1": {
+               "max_collision_size": 4,
+               "effect_suffix": ":small"
+            },
+            "2": {
+               "max_collision_size": 15,
+               "effect_suffix": ":medium"
+            },
+            "3": {
+               "effect_suffix": ":large"
+            }
+         }
       },
       "terrain": {
          "MAX_Y_OVERRIDE": 100000,

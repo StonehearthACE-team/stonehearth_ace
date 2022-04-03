@@ -2,6 +2,13 @@
    "mixins": [
       "stonehearth_ace:mixins:bed:tier_2"
    ],
+   "components": {
+      "stonehearth:mount": {
+         "applied_buffs": [
+            "stonehearth_ace:buffs:sleeping:cover"
+         ]
+      }
+   },
    "entity_data": {
       "stonehearth:bed": {
          "shelter": {

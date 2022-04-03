@@ -1,0 +1,68 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:pet",
+   "components": {
+      "render_info": {
+         "scale": 0.17,
+         "animation_table": "/stonehearth/data/rigs/entities/pets/dragon_whelp_nature",
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/pets/dragon_whelp_nature/dragon_whelp_nature.qb"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 952
+         },
+         "speed": {
+            "type": "basic",
+            "value": 63
+         },
+         "menace": {
+            "type": "basic",
+            "value": 30
+         }
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:dragon:blood": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "current_stage": "juvenile",
+         "next_stage": "stonehearth_ace:pets:dragon_mature_nature",
+         "evolve_time": "12d",
+         "evolve_effect": "stonehearth:effects:fursplosion_effect"
+      },
+      "stonehearth:entity_radius": 0.3,
+      "stonehearth:species": {
+         "id": "dragon",
+         "display_name": "i18n(stonehearth:entities.pets.dragon_whelp_fire.species)"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.pets.dragon_juvenile_nature.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.dragon_juvenile_nature.description)",
+         "icon": "/stonehearth/entities/pets/dragon_whelp_nature/dragon_whelp_nature.png",
+         "category": "pets"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 2400,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      }
+   }
+}

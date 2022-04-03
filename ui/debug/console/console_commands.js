@@ -1,6 +1,9 @@
 function setDebugUIVisible(visible)
 {
-   $(".debugDock").css("display", visible ? 'block' : 'none');
+   var debugDock = $(".debugDock");
+   if (debugDock) {
+      debugDock.css("display", visible ? 'block' : 'none');
+   }
 }
 
 $(document).ready(function(){

@@ -262,6 +262,15 @@
 				},
 				"iron_archer_mail" : {
 					"recipe" : "file(iron_archer_mail_recipe.json)"
+				},
+				"cleric_bronze_shield" : {
+					"recipe" : "file(cleric_bronze_shield_recipe.json)"
+				},
+				"cleric_iron_shield" : {
+					"recipe" : "file(cleric_iron_shield_recipe.json)"
+				},
+				"cleric_steel_shield" : {
+					"recipe" : "file(cleric_steel_shield_recipe.json)"
 				}
 			}
 		},
@@ -292,7 +301,7 @@
          }
       },
 		"frostfeast": {
-         "ordinal": 2,
+         "ordinal": 999,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
 				"frostfeast_candlestick": {

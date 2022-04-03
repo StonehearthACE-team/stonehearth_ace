@@ -1,0 +1,49 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(male/disciple.qb)",
+                     "file(male/disciple_2.qb)",
+                     "file(male/disciple_3.qb)",
+                     "file(male/disciple_4.qb)",
+                     "file(male/disciple_5.qb)",
+                     "file(male/disciple_6.qb)"
+                  ]
+               }
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(female/disciple.qb)",
+                     "file(female/disciple_2.qb)",
+                     "file(female/disciple_3.qb)",
+                     "file(female/disciple_4.qb)",
+                     "file(female/disciple_5.qb)",
+                     "file(female/disciple_6.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:armor_medium"
+         ]
+      }
+   },
+   "entity_data": {}
+}

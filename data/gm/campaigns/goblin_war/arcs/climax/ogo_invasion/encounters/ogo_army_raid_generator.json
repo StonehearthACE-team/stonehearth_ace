@@ -1,0 +1,14 @@
+{
+   "type": "encounter",
+   "encounter_type": "generator",
+   "in_edge": "ogo_army_raid_generator",
+   "generator_info": {
+      "delay": "12d+8d",
+      "spawn_edge": {
+         "type": "trigger_many",
+         "out_edges": [
+            "wait_to_attack"
+         ]
+      }
+   }
+}

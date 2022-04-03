@@ -1,0 +1,64 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s1",
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.dragon_cult.undead.description)"
+   },
+   "attributes": {
+      "max_health": {
+         "base": 160,
+         "net_worth_effect": {
+            "increase_by": 5,
+            "per": 800
+         },
+         "max": 1000
+      },
+      "muscle": {
+         "base": 8,
+         "net_worth_effect": {
+            "increase_by": 5,
+            "per": 500
+         },
+         "max": 120
+      },
+      "menace": 55,
+      "courage": 500,
+      "speed": 40,
+      "exp_reward": {
+         "base": 35,
+         "net_worth_effect": {
+            "increase_by": 1,
+            "per": 300
+         },
+         "max": 90
+      }
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:stone_maul",
+         "stonehearth_ace:weapons:na_iron_mace",
+         "stonehearth_ace:weapons:na_iron_battle_axe",
+         "stonehearth_ace:weapons:na_iron_short_spear"
+      ],
+      "shield": [
+         "stonehearth:armor:wooden_shield"
+      ],
+      "outfit": [
+         "stonehearth_ace:monsters:dragon_cult:outfits:undead"
+      ]
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": 1,
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:bone_material",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

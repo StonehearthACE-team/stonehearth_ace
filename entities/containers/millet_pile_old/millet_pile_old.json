@@ -1,0 +1,59 @@
+{
+   "type": "entity",
+   "mixins": "file(millet_pile_old_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(millet_pile_old_iconic.json)",
+         "ghost_form": "file(millet_pile_old_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:evolve": {},
+      "stonehearth_ace:pile": {
+         "harvest_rate": 3
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:food:millet:millet_bale",
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "harvester_effect": "mine",
+         "description": "mine",
+         "durability": 15
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:containers:thatch_pile",
+         "evolve_time": "4d"
+      },
+      "stonehearth_ace:replant_data": {
+         "seed_alias": "stonehearth_ace:containers:millet_pile"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 18,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

@@ -241,7 +241,7 @@ function AceCraftOrderList:remove_order(order_id, amount)
    local i = self:find_index_of(order_id)
    if i then
       local order = self._sv.orders[i]
-      if not amount or not order:reduce_quantity(amount) then
+      if order and (not amount or not order:reduce_quantity(amount)) then
          table.remove(self._sv.orders, i)
          local order_id = order:get_id()
 
@@ -431,8 +431,10 @@ function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(crafter_info,
             local num_produces = material_produces or uri_produces
 
             if num_produces then
-               local amount = condition.remaining * num_produces
-               if condition.type == 'maintain' then
+               local amount
+               if condition.type == 'make' then
+                  amount = condition.remaining * num_produces
+               else
                   amount = math.max(num_produces, condition.at_least)
                end
                ingredient_count[condition.type] = ingredient_count[condition.type] + amount

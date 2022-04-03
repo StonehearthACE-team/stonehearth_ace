@@ -8,8 +8,17 @@ local resources_lib = require 'stonehearth_ace.lib.resources.resources_lib'
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
 local FERTILIZER_MODEL_FAILSAFE = {
+   -- defaults for unknown field types:
    model = 'stonehearth_ace/entities/farming/fertilize_applied/fertilize_applied.qb',
-   offset = { x = 5, y = 1, z = 5}
+   offset = { x = 5, y = 1, z = 5},
+
+   -- field-based defaults for known field types (will use above defaults if not specified):
+   models = {
+      farm = 'stonehearth_ace/entities/farming/fertilize_applied/fertilize_applied.qb',
+   },
+   offsets = {
+      farm = { x = 5, y = 1, z = 5},
+   }
 }
 
 local AceFarmerFieldComponent = class()
@@ -21,6 +30,9 @@ function AceFarmerFieldComponent:restore()
    self._sv.last_set_water_level = nil
    if not self._sv.rotation then
       self._sv.rotation = 0
+   end
+   if not self._sv.max_num_crops then
+      self._sv.max_num_crops = math.ceil(self._sv.size.x / 2) * self._sv.size.y
    end
    
    self:_ace_old_restore()
@@ -72,6 +84,7 @@ function AceFarmerFieldComponent:post_activate()
       self:_load_field_type()
       self:_cache_biome_elevation_levels()
       self:_create_listeners()
+      self:_consider_remove_from_town_patrol()
    end
 end
 
@@ -81,6 +94,12 @@ function AceFarmerFieldComponent:_create_listeners()
       self:_create_climate_listeners()
       self:_create_all_post_harvest_crop_listeners()
       self:_create_fertilize_task()
+   end
+end
+
+function AceFarmerFieldComponent:_consider_remove_from_town_patrol()
+   if self:get_field_type() == 'decorative_flowers' then
+      stonehearth.town_patrol:_remove_from_patrol_list(self._entity:get_id())
    end
 end
 
@@ -214,6 +233,7 @@ end
 AceFarmerFieldComponent._ace_old_on_field_created = FarmerFieldComponent.on_field_created
 function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotation)
    self:_ace_old_on_field_created(town, size)
+
    radiant.terrain.place_entity(self._sv._fertilizable_layer, self._location)
    self._sv._queued_overwatered = {}
 
@@ -231,21 +251,28 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotati
 
    local soil_layer = self._sv._soil_layer
    local soil_layer_region = soil_layer:get_component('destination'):get_region()
+   local max_num_crops = 0
    soil_layer_region:modify(function(cursor)
       for x = 1, size.x do
          for y = 1, size.y do
             local rot_x, rot_y = farming_lib.get_crop_coords(size.x, size.y, self._sv.rotation, x, y)
-            if farming_lib.get_location_type(self._field_pattern, rot_x, rot_y) == farming_lib.LOCATION_TYPES.EMPTY then
+            local location_type = farming_lib.get_location_type(self._field_pattern, rot_x, rot_y)
+            if location_type == farming_lib.LOCATION_TYPES.EMPTY then
                cursor:subtract_point(Point3(x - 1, 0, y - 1))
+            elseif location_type == farming_lib.LOCATION_TYPES.CROP then
+               max_num_crops = max_num_crops + 1
             end
          end
       end
    end)
 
+   self._sv.max_num_crops = math.max(1, max_num_crops)
+
    self:_cache_biome_elevation_levels()
    self:_create_water_listener()
    self:_create_climate_listeners()
    self:_check_sky_visibility()
+   self:_consider_remove_from_town_patrol()
 end
 
 function AceFarmerFieldComponent:_is_location_furrow(x, y)
@@ -395,6 +422,8 @@ function AceFarmerFieldComponent:_replace_crop_with_post_harvest(dirt_plot, prod
          dirt_plot.post_harvest_contents = product
          product:add_component('stonehearth:crop'):set_field(self, x, z)
          product:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
+         -- when the crop is destroyed, it reduces the crop count by one, so offset that by adding one
+         self._sv.num_crops = self._sv.num_crops + 1
       end
    end
 
@@ -669,9 +698,25 @@ function AceFarmerFieldComponent:_update_crop_fertilized(x, z, fertilized, ferti
          self._sv.num_fertilized = self._sv.num_fertilized - 1
       end
       dirt_plot.is_fertilized = fertilized
-      dirt_plot.fertilizer_model = fertilized and (fertilizer_model or FERTILIZER_MODEL_FAILSAFE) or nil
+      dirt_plot.fertilizer_model = fertilized and self:_get_fertilizer_model_data(fertilizer_model) or nil
       self.__saved_variables:mark_changed()
    end
+end
+
+function AceFarmerFieldComponent:_get_fertilizer_model_data(fertilizer_model)
+   if not fertilizer_model then
+      return FERTILIZER_MODEL_FAILSAFE
+   end
+   
+   -- determine the actual model data based on this field type
+   local farm_type = self._sv.field_type or 'farm'
+   local model_data = {
+      model = fertilizer_model.models and fertilizer_model.models[farm_type] or
+            fertilizer_model.model or FERTILIZER_MODEL_FAILSAFE.models[farm_type] or FERTILIZER_MODEL_FAILSAFE.model,
+      offset = fertilizer_model.offsets and fertilizer_model.offsets[farm_type] or
+            fertilizer_model.offset or FERTILIZER_MODEL_FAILSAFE.offsets[farm_type] or FERTILIZER_MODEL_FAILSAFE.offset,
+   }
+   return model_data
 end
 
 function AceFarmerFieldComponent:_create_climate_listeners()
@@ -717,7 +762,7 @@ function AceFarmerFieldComponent:_update_weather()
    local weather = stonehearth.weather:get_current_weather()
    local sunlight = weather:get_sunlight()
    local humidity = weather:get_humidity()
-   local frozen = weather:get_frozen()
+   local is_frozen = weather:is_frozen()
    local changed = false
 
    if sunlight ~= self._weather_sunlight then
@@ -728,8 +773,8 @@ function AceFarmerFieldComponent:_update_weather()
       self._weather_humidity = humidity
       changed = true
    end
-   if frozen ~= self._weather_frozen then
-      self._weather_frozen = frozen
+   if is_frozen ~= self._weather_frozen then
+      self._weather_frozen = is_frozen
       changed = true
    end
 
@@ -764,7 +809,9 @@ function AceFarmerFieldComponent:_check_sky_visibility()
    local x = math.floor(size.x / 2)
    local vis = 0
    for z = 0, size.y - 1 do
-      vis = vis + stonehearth.terrain:get_sky_visibility(self._location + Point3(x, 2, z))
+      vis = vis + stonehearth.terrain:get_sky_visibility(self._location + Point3(x, 2, z), nil, function(entity)
+            return entity:get_component('stonehearth:crop') ~= nil
+         end)
    end
    vis = vis / size.y
 
@@ -882,7 +929,9 @@ function AceFarmerFieldComponent:_set_water_volume(volume)
       -- i.e., 24 water / 66 crops = 4/11
       -- we compare that to our current volume to crop ratio
       local ideal_ratio = 4/11
-      local this_ratio = volume / (math.ceil(self._sv.size.x/2) * self._sv.size.y)
+      -- account for rotation
+
+      local this_ratio = volume / (self._sv.max_num_crops or 66)
       self._sv._water_level = this_ratio / ideal_ratio
    else
       self._sv._water_level = 0

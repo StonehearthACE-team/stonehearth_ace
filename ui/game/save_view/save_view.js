@@ -92,8 +92,11 @@ App.SaveView.reopen({
       }
 
       Ember.run.scheduleOnce('afterRender', self, function() {
-         $('#savePopup #message').append('<br>' + (isAuto ? `<i>${saveid}</i>` : (saveName ? saveName : App.stonehearthClient.settlementName())));
-         $('#savePopup #message').css('text-align', 'center');
+         var savePopup = $('#savePopup #message');
+         if (savePopup) {
+            savePopup.append('<br>' + (isAuto ? `<i>${saveid}</i>` : (saveName ? saveName : App.stonehearthClient.settlementName())));
+            savePopup.css('text-align', 'center');
+         }
       });
 
       return radiant.call("radiant:client:save_game", saveid, {

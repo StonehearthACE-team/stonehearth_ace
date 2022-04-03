@@ -324,25 +324,31 @@ App.AceBuildFenceModeView = App.View.extend({
    _updateAllSegmentTooltips: function() {
       // this function is run only at the beginning to set up dynamic tooltips for all the possible segments in the palette window
       var self = this;
-      self.$('.segmentDiv').each(function() {
-         self._createSegmentTooltip($(this), 250);
-      });
+      var segmentDivs = self.$('.segmentDiv');
+      if (segmentDivs) {
+         segmentDivs.each(function() {
+            self._createSegmentTooltip($(this), 250);
+         });
+      }
    },
 
    _updateSegmentTooltips: function() {
       var self = this;
-      self.$('.fenceSegmentBtn').each(function() {
-         self._createSegmentTooltip($(this), 250);
-      });
-      self.$('.toggleSegmentBtn').each(function() {
-         var $el = $(this);
-         App.tooltipHelper.createDynamicTooltip($el , function () {
-            var enabledStr = $el.hasClass('enabled') ? 'segment_enabled' : 'segment_disabled';
-            return $(App.tooltipHelper.createTooltip(
-               i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.title'),
-               i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.description')));
-         }, {delay: 250, position: 'bottom'});
-      });
+      var fenceSegmentBtns = self.$('.fenceSegmentBtn');
+      if (fenceSegmentBtns) {
+         fenceSegmentBtns.each(function() {
+            self._createSegmentTooltip($(this), 250);
+         });
+         self.$('.toggleSegmentBtn').each(function() {
+            var $el = $(this);
+            App.tooltipHelper.createDynamicTooltip($el , function () {
+               var enabledStr = $el.hasClass('enabled') ? 'segment_enabled' : 'segment_disabled';
+               return $(App.tooltipHelper.createTooltip(
+                  i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.title'),
+                  i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.description')));
+            }, {delay: 250, position: 'bottom'});
+         });
+      }
    },
 
    _createSegmentTooltip: function($el, delay) {
@@ -398,40 +404,43 @@ App.AceBuildFenceModeView = App.View.extend({
 
    _updatePresetTooltips: function() {
       var self = this;
-      self.$('.presetRow').each(function() {
-         var name = $(this).data('name');
-         var isDefault = $(this).hasClass('default');
-         var preset = self._getPreset(name, isDefault);
-         App.tooltipHelper.createDynamicTooltip($(this).find('.presetPreview'), function () {
-            // maybe work in the crafting requirements to this tooltip (e.g., 3/4 craftable, requires [Mason] Lvl 2)
-            var requirementText = self._getPresetCrafterRequirementText(preset);
-            return $(App.tooltipHelper.createTooltip(preset.title, requirementText));
-         }, {position: 'right', offsetX: 60});
+      var presetRows = self.$('.presetRow');
+      if (presetRows) {
+         presetRows.each(function() {
+            var name = $(this).data('name');
+            var isDefault = $(this).hasClass('default');
+            var preset = self._getPreset(name, isDefault);
+            App.tooltipHelper.createDynamicTooltip($(this).find('.presetPreview'), function () {
+               // maybe work in the crafting requirements to this tooltip (e.g., 3/4 craftable, requires [Mason] Lvl 2)
+               var requirementText = self._getPresetCrafterRequirementText(preset);
+               return $(App.tooltipHelper.createTooltip(preset.title, requirementText));
+            }, {position: 'right', offsetX: 60});
 
-         // $(this).find('.presetSegmentImg').each(function() {
-         //    self._createSegmentTooltip(self, $(this));
-         // });
+            // $(this).find('.presetSegmentImg').each(function() {
+            //    self._createSegmentTooltip(self, $(this));
+            // });
 
-         $(this).find('.loadPreset').each(function() {
-            App.tooltipHelper.createDynamicTooltip($(this), function () {
-               return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.load_preset.title')));
+            $(this).find('.loadPreset').each(function() {
+               App.tooltipHelper.createDynamicTooltip($(this), function () {
+                  return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.load_preset.title')));
+               });
+            });
+            $(this).find('.savePreset').each(function() {
+               App.tooltipHelper.createDynamicTooltip($(this), function () {
+                  return $(App.tooltipHelper.createTooltip(
+                     i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.save_preset.title'),
+                     i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.save_preset.description')));
+               });
+            });
+            $(this).find('.deletePreset').each(function() {
+               App.tooltipHelper.createDynamicTooltip($(this), function () {
+                  return $(App.tooltipHelper.createTooltip(
+                     i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.delete_preset.title'),
+                     i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.delete_preset.description')));
+               });
             });
          });
-         $(this).find('.savePreset').each(function() {
-            App.tooltipHelper.createDynamicTooltip($(this), function () {
-               return $(App.tooltipHelper.createTooltip(
-                  i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.save_preset.title'),
-                  i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.save_preset.description')));
-            });
-         });
-         $(this).find('.deletePreset').each(function() {
-            App.tooltipHelper.createDynamicTooltip($(this), function () {
-               return $(App.tooltipHelper.createTooltip(
-                  i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.delete_preset.title'),
-                  i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.delete_preset.description')));
-            });
-         });
-      });
+      }
    },
 
    _togglePresetsVisibility: function(mode) {
@@ -589,7 +598,10 @@ App.AceBuildFenceModeView = App.View.extend({
          self.$('.fenceSegmentBtn').removeClass('selected');
          // have to do this after render because we might be inserting a new segment
          Ember.run.scheduleOnce('afterRender', self, function() {
-            $(self.$('.fenceSegmentBtn').get(index)).addClass('selected');
+            var fenceSegmentBtns = self.$('.fenceSegmentBtn');
+            if (fenceSegmentBtns) {
+               $(fenceSegmentBtns.get(index)).addClass('selected');
+            }
          });
 
          self.set('canAddSegment', false);

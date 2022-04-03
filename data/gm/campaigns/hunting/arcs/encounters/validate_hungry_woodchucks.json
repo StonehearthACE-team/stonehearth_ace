@@ -3,15 +3,9 @@
    "encounter_type": "wait",
    "in_edge": "validate_hungry_woodchucks",
    "out_edge": "hungry_woodchuck_raid",
+   "unique": true,
    "can_start": {
       "test_1": {
-         "number_active_check": {
-            "item": "number_active",
-            "type": "deny_if_greater_than",
-            "value": 2,
-            "start_node": "hungry_woodchuck_raid",
-            "end_node": "hungry_woodchuck_raid"
-         },
          "farms_exist": {
             "type": "deny_if_not",
             "item": "script",

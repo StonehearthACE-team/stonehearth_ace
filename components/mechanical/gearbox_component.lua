@@ -100,8 +100,13 @@ function GearboxComponent:set_axle_extension(rotation_index, length, connector_r
       models_comp:set_model_options(self:_get_model_name(id), data)
       self._sv.cur_axles[id] = true
    else
-      region:modify(function(cursor)
-         cursor:clear()
+      -- add water to the original region if it was displacing any
+      stonehearth.hydrology:auto_fill_water_region(radiant.entities.local_to_world(region:get(), self._entity), function(waters)
+         region:modify(function(cursor)
+            cursor:clear()
+         end)
+
+         return true
       end)
 
       models_comp:remove_model(self:_get_model_name(id))
@@ -129,8 +134,14 @@ function GearboxComponent:_clear_all_axles()
       local child = self._sv._axle_child_entities[id]
 
       if child then
-         child:add_component('region_collision_shape'):get_region():modify(function(cursor)
-            cursor:clear()
+         -- add water to the original region if it was displacing any
+         local region = child:add_component('region_collision_shape'):get_region()
+         stonehearth.hydrology:auto_fill_water_region(radiant.entities.local_to_world(region:get(), self._entity), function(waters)
+            region:modify(function(cursor)
+               cursor:clear()
+            end)
+
+            return true
          end)
       end
 

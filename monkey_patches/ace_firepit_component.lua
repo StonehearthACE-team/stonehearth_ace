@@ -125,6 +125,27 @@ function AceFirepitComponent:_shutdown()
 
 end
 
+function AceFirepitComponent:_start_or_stop_firepit()
+   --Only light fires after dark --ACE: Or when its cold!
+   local time_constants = stonehearth.calendar:get_constants()
+   local curr_time = stonehearth.calendar:get_time_and_date()
+   local should_light_fire = not stonehearth.calendar:is_daytime() or stonehearth.weather:is_dark_during_daytime() or stonehearth.weather:is_cold_weather()
+   local is_lit = self:is_lit()
+
+   self._log:debug('start or stop? (lit:%s should_light:%s)', tostring(is_lit), tostring(should_light_fire))
+
+   --If we should already be lit (ie, from load, then just jump straight to light)
+   if is_lit and should_light_fire then
+      self:_light()
+   elseif should_light_fire then
+      self._log:detail('decided to light the fire!')
+      self:_init_gather_wood_task()
+   elseif not should_light_fire then
+      self._log:detail('decided to put out the fire!')
+      self:_extinguish()
+   end
+end
+
 function AceFirepitComponent:_transform_residue()
    local is_lit = self:is_lit()
    if is_lit then

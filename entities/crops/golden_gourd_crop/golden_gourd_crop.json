@@ -88,7 +88,18 @@
          }
       },
       "mob": {
-         "model_origin": { "x": -0.05, "y": -0.01, "z": 0.05 }
+         "model_origin": { "x": -0.05, "y": -0.01, "z": 0.05 },
+         "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
+      },
+      "movement_modifier_shape": {
+         "modifier": -0.8,
+         "nav_preference_modifier": -0.6,
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 0, "y": 2, "z": 0 }
+            }
+         ]
       },
 	  "stonehearth:growing": {
 			"growth_period": "12h",

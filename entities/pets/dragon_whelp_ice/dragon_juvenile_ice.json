@@ -1,0 +1,71 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:pet",
+   "components": {
+      "render_info": {
+         "scale": 0.19,
+         "animation_table": "/stonehearth/data/rigs/entities/pets/dragon_whelp_ice",
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/entities/pets/dragon_whelp_ice/dragon_whelp_ice.qb"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 1288
+         },
+         "speed": {
+            "type": "basic",
+            "value": 57
+         },
+         "menace": {
+            "type": "basic",
+            "value": 33
+         }
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:dragon:blood": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "current_stage": "juvenile",
+         "next_stage": "stonehearth_ace:pets:dragon_mature_ice",
+         "evolve_time": "15d",
+         "evolve_effect": "stonehearth:effects:fursplosion_effect"
+      },
+      "stonehearth:entity_radius": 0.3,
+      "stonehearth:species": {
+         "id": "dragon",
+         "display_name": "i18n(stonehearth:entities.pets.dragon_whelp_fire.species)"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.pets.dragon_juvenile_ice.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.dragon_juvenile_ice.description)",
+         "icon": "/stonehearth/entities/pets/dragon_whelp_ice/dragon_whelp_ice.png",
+         "category": "pets"
+      },
+      "stonehearth:diet": {
+         "food_material": "meat"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 2400,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      }
+   }
+}

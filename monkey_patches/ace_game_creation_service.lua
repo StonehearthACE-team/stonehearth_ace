@@ -11,6 +11,8 @@ local MAX_STARTING_ITEM_CONTAINER_RADIUS = 8
 local GameCreationService = require 'stonehearth.services.server.game_creation.game_creation_service'
 local AceGameCreationService = class()
 
+local log = radiant.log.create_logger('game_creation_service')
+
 AceGameCreationService._ace_old_on_world_generation_complete = GameCreationService.on_world_generation_complete
 function AceGameCreationService:on_world_generation_complete()
    -- when a game is created, save the version of ace that was used to create it
@@ -136,8 +138,9 @@ function AceGameCreationService:create_camp_command(session, response, pt)
          -- do a better job at finding a placement location in case of obstacles:
          placement_location = radiant.terrain.find_placement_point(placement_location, 0, 5, starting_items_container)
 			radiant.terrain.place_entity(starting_items_container, placement_location, { force_iconic = false, facing = 90 })
+         inventory:add_item(starting_items_container)
       end
-      starting_items_container:add_component('stonehearth_ace:input')
+
       town:add_default_storage(starting_items_container)
    end
 
@@ -246,6 +249,8 @@ function AceGameCreationService:create_camp_command(session, response, pt)
    
    -- ACE: just moved this down here so everything else (especially reembarkation stuff) happens first
    stonehearth.game_master:get_game_master(player_id):start()
+
+   radiant.events.trigger(radiant, 'stonehearth_ace:player_camp_placed', player_id)
 
    return {random_town_name = random_town_name}
 end

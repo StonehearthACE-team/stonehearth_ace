@@ -1,6 +1,19 @@
 {
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(legendary_face.qb)"
+            ]
+         }
+      }
+   },
    "entity_data": {
       "stonehearth:catalog": {
+         "icon": "file(legendary_face.png)",
          "mixintypes": {
 				"material_tags": "override"
 			},

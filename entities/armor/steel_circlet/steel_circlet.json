@@ -5,15 +5,42 @@
    ],
 	"type": "entity",
    "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "hat",
+            "transparent": "true",
+            "models": [
+               "file(steel_circlet.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "true",
+            "models": [
+               "file(steel_circlet_female.qb)"
+            ]
+         }
+      },
       "stonehearth:equipment_piece": {
          "required_job_level": 5
       }
    },
    "entity_data": {
+      "stonehearth:net_worth": {
+         "rarity": "uncommon",
+         "shop_info": {
+            "shopkeeper_level": 3
+         }
+      },
       "stonehearth:catalog": {
-	     "mixintypes": {
-			"material_tags": "override"
-		 },
+         "icon": "file(steel_circlet.png)",
+	      "mixintypes": {
+			   "material_tags": "override"
+		   },
          "material_tags": ["steel", "armor", "circlet", "light_armor", "ascendancy_made", "crafted", "stockpile_equipment"]
       }
    }

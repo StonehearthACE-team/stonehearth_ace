@@ -123,7 +123,8 @@ function PlaceItemTypeOnStructure:_try_next_entry(ai, entity)
    local item_types = town:get_requested_placement_tasks()
    local entry
 
-   self._item_type_cursor, entry = next(item_types, self._item_type_cursor)
+   local prev_key = item_types[self._item_type_cursor] and self._item_type_cursor or nil
+   self._item_type_cursor, entry = next(item_types, prev_key)
 
    if not self._item_type_cursor then
       -- We've run through the entire list of items to place.  Take a breath, then start again.

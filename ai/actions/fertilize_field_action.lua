@@ -15,8 +15,40 @@ FertilizeField.args = {
 FertilizeField.priority = {0, 1}
 
 function FertilizeField:start_thinking(ai, entity, args)
-   ai:set_utility(stonehearth.farming.rate_field(args.field, entity))
-   ai:set_think_output({})
+   self._ai = ai
+   self._entity = entity
+   self._field = args.field
+   self._ready = false
+   self._job_changed_listener = radiant.events.listen(self._entity, 'stonehearth:job_changed', self, self._on_reconsider)
+   self._job_level_changed_listener = radiant.events.listen(self._entity, 'stonehearth:level_up', self, self._on_reconsider)
+   self:_on_reconsider()
+end
+
+function FertilizeField:_on_reconsider()
+   if not self._ready then
+      local job_component = self._entity:get_component('stonehearth:job')
+      if job_component and job_component:curr_job_has_perk('farmer_fertilizer') then
+         self._ready = true
+         self._ai:set_utility(stonehearth.farming.rate_field(self._field, self._entity))
+         self._ai:set_think_output({})
+      end
+   end
+end
+
+function FertilizeField:stop_thinking(ai, entity)
+   self:destroy()
+end
+
+function FertilizeField:destroy()
+   if self._job_changed_listener then
+      self._job_changed_listener:destroy()
+      self._job_changed_listener = nil
+   end
+
+   if self._job_level_changed_listener then
+      self._job_level_changed_listener:destroy()
+      self._job_level_changed_listener = nil
+   end
 end
 
 local ai = stonehearth.ai

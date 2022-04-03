@@ -379,7 +379,7 @@ function TransformComponent:request_transform(player_id, ignore_duplicate_reques
          end
       end
 
-      self:request_craft_order()
+      self:request_craft_order(player_id)
       local category = 'transform'  --data.category or 
       local success = task_tracker_component:request_task(player_id, category, transform_action, data.request_action_overlay_effect)
       return self:_set_transformable(player_id, success)
@@ -557,15 +557,19 @@ function TransformComponent:spawn_additional_items(transforming_worker, collect_
 end
 
 -- for whatever ingredient is required and auto-crafted for the transformation, so that it can be modified/canceled
-function TransformComponent:request_craft_order()
+function TransformComponent:request_craft_order(player_id)
    local data = self:get_transform_options()
-   local player_id = radiant.entities.get_player_id(self._entity)
-   local inventory = stonehearth.inventory:get_inventory(player_id):get_item_tracker('stonehearth:basic_inventory_tracker'):get_tracking_data()
    local ingredient = data and data.transform_ingredient_auto_craft and data.transform_ingredient_uri
-   if ingredient and stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth', 'building_auto_queue_crafters', true) and not inventory:contains(data.transform_ingredient_uri) then
-      local player_jobs = stonehearth.job:get_jobs_controller(player_id)
-      local order = player_jobs:request_craft_product(ingredient, 1)
-      self:set_craft_order(order)
+   if ingredient then
+      local inventory = stonehearth.inventory:get_inventory(player_id)
+      if inventory then
+         local tracker = inventory:get_item_tracker('stonehearth:basic_inventory_tracker'):get_tracking_data()
+         if stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth', 'building_auto_queue_crafters', true) and not tracker:contains(data.transform_ingredient_uri) then
+            local player_jobs = stonehearth.job:get_jobs_controller(player_id)
+            local order = player_jobs:request_craft_product(ingredient, 1)
+            self:set_craft_order(order)
+         end
+      end
    end
 end
 

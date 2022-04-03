@@ -73,6 +73,7 @@ function WaterSpongeComponent:destroy()
       self._parent_trace = nil
    end
    self:_stop_effects()
+   self:_destroy_output_waterfall_channel()
 end
 
 function WaterSpongeComponent:_ensure_effect(condition, name, ...)
@@ -117,6 +118,14 @@ function WaterSpongeComponent:_stop_effects()
    self._effects = {}
 end
 
+function WaterSpongeComponent:_destroy_output_waterfall_channel()
+   if self._prev_waterfall_channel then
+      local channel_manager = stonehearth.hydrology:get_channel_manager()
+      channel_manager:destroy_channel(self._prev_waterfall_channel)
+      self._prev_waterfall_channel = nil
+   end
+end
+
 function WaterSpongeComponent:_startup()
 	local location = radiant.entities.get_world_grid_location(self._entity)
 	if not location then
@@ -132,6 +141,7 @@ end
 function WaterSpongeComponent:_shutdown()
    stonehearth.hydrology:unregister_water_processor(self._entity:get_id(), self)
    self:_update_effects()
+   self:_destroy_output_waterfall_channel()
 end
 
 function WaterSpongeComponent:get_input_rate()
@@ -203,16 +213,20 @@ function WaterSpongeComponent:on_tick_water_processor()
    self._processed_this_tick = true
 
 	if not self._sv.input_enabled and not self._sv.output_enabled then
+      self:_destroy_output_waterfall_channel()
 		return
 	end
 
 	local location = radiant.entities.get_world_grid_location(self._entity)
 	if not location then
+      self:_destroy_output_waterfall_channel()
 		return
    end
 
    -- first try outputting what we have
    -- a pipe/pump/sponge will output from its container; a well/wet-stone will simply create water and not have a container
+
+   local output_waterfall_channel
 
    if self._output_fail_ignores > 0 then
       self._output_fail_ignores = self._output_fail_ignores - 1
@@ -221,7 +235,7 @@ function WaterSpongeComponent:on_tick_water_processor()
       if output_rate > 0 then
          local output_location = self._sv._output_location
          if output_location then
-            output_location = radiant.entities.local_to_world(output_location, self._entity)
+            output_location = radiant.entities.local_to_world(Region3(Cube3(output_location)), self._entity):get_bounds().min
 
             local destination_container, destination_sponge, is_solid = self:_get_destination_container(output_location)
             if destination_container then
@@ -261,23 +275,22 @@ function WaterSpongeComponent:on_tick_water_processor()
                   if not water_entity then
                      local output_origin = self._sv._output_origin
                      if output_origin then
-                        output_origin = radiant.entities.local_to_world(output_origin, self._entity)
+                        output_origin = radiant.entities.local_to_world(Region3(Cube3(output_origin)), self._entity):get_bounds().min
                         water_entity = stonehearth.hydrology:get_water_body_at(output_location)
                         if not water_entity then
-                           local channel = self._prev_waterfall_channel
+                           output_waterfall_channel = self._prev_waterfall_channel
+                           local channel_manager = stonehearth.hydrology:get_channel_manager()
 
-                           if not channel then
+                           if not output_waterfall_channel then
                               local bottom = stonehearth.hydrology:get_terrain_below(output_location)
                               if output_location ~= bottom then
-                                 water_entity = stonehearth.hydrology:get_or_create_water_body_at(bottom)
-                                 local channel_manager = stonehearth.hydrology:get_channel_manager()
-                                 channel = channel_manager:add_waterfall_channel(output_origin, bottom, self._entity, water_entity)
-                                 self._prev_waterfall_channel = channel
+                                 water_entity = stonehearth.hydrology:get_or_create_water_body_at(bottom)                               
+                                 output_waterfall_channel = channel_manager:add_waterfall_channel(output_origin, bottom, self._entity, water_entity)
                               end
                            end
 
-                           if channel then
-                              volume_not_added = channel_manager:add_water_to_waterfall_channel(channel, volume_not_added)
+                           if output_waterfall_channel then
+                              volume_not_added = channel_manager:add_water_to_waterfall_channel(output_waterfall_channel, volume_not_added)
                            end
                         else
                            self._prev_output_water_entity = water_entity
@@ -290,7 +303,7 @@ function WaterSpongeComponent:on_tick_water_processor()
                      volume_not_added = result
                      if info then
                         self._prev_output_water_entity = info.water_entity
-                        self._prev_waterfall_channel = nil
+                        output_waterfall_channel = nil
                      end
                   end
                end
@@ -302,7 +315,7 @@ function WaterSpongeComponent:on_tick_water_processor()
                   end
 
                   self._prev_output_water_entity = nil
-                  self._prev_waterfall_channel = nil
+                  output_waterfall_channel = nil
 
                   if volume_not_added == output_rate then
                      self._output_fail_ignores = FAIL_IGNORE_COUNT
@@ -313,15 +326,19 @@ function WaterSpongeComponent:on_tick_water_processor()
             end
          else
             self._prev_output_water_entity = nil
-            self._prev_waterfall_channel = nil
          end
       else
          self._prev_output_water_entity = nil
-         self._prev_waterfall_channel = nil
       end
    else
       self._prev_output_water_entity = nil
-      self._prev_waterfall_channel = nil
+   end
+
+   if not output_waterfall_channel then
+      -- there was a waterfall, but no more; it's artificially created, so make sure we destroy it
+      self:_destroy_output_waterfall_channel()
+   else
+      self._prev_waterfall_channel = output_waterfall_channel
    end
 
    -- then input water into our container (or destroy water if we don't have one and are set to destroy)
@@ -340,7 +357,7 @@ function WaterSpongeComponent:on_tick_water_processor()
          if input_rate > 0 then
             local input_location = self._sv._input_location
             if input_location then
-               input_location = radiant.entities.local_to_world(input_location, self._entity)
+               input_location = radiant.entities.local_to_world(Region3(Cube3(input_location)), self._entity):get_bounds().min
                local volume_not_removed = input_rate
 
                -- the vast majority of the time, we'll be modifying a single water entity

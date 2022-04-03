@@ -1,0 +1,45 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(male/hierophant.qb)",
+                     "file(male/hierophant_2.qb)",
+                     "file(male/hierophant_3.qb)",
+                     "file(male/hierophant_4.qb)"
+                  ]
+               }
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(female/hierophant.qb)",
+                     "file(female/hierophant_2.qb)",
+                     "file(female/hierophant_3.qb)",
+                     "file(female/hierophant_4.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:armor_light"
+         ]
+      }
+   },
+   "entity_data": {}
+}

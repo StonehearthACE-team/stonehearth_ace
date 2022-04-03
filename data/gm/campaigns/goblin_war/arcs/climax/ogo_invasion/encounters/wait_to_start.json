@@ -1,0 +1,12 @@
+{
+   "mixintypes": {
+      "out_edge": "override"
+   },
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "ogo_army_raid_generator",
+         "ogos_bannerman"
+      ]
+   }
+}

@@ -1,0 +1,36 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(undead.qb)"
+                  ]
+               }
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(undead.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model"
+      }
+   },
+   "entity_data": {}
+}

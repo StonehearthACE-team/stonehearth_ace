@@ -1,0 +1,21 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": []
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:projectile": {
+         "impact_fade_time": 1250,
+         "impact_effect": "stonehearth:effects:poof_effect"
+      },
+      "effect_list": {
+         "default": "stonehearth_ace:effects:nature_burst"
+      }
+   },
+   "entity_data": {}
+}

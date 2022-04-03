@@ -292,17 +292,20 @@ App.StonehearthStockpileView.reopen({
          self.$('#fuelLevel').tooltipster('destroy');
       }
       Ember.run.scheduleOnce('afterRender', self, function() {
-         // verify that we actually have the correct values for these as they may have been updated
-         perCraft = self.get('fuelPerCraft');
-         var residualCrafts = Math.floor(self.get('fuelLevel') / perCraft);
-         var potentialCrafts = Math.floor(self.get('potentialFuel') / perCraft);
-         var totalCrafts = residualCrafts + potentialCrafts;
+         var fuelLevelDiv = self.$('#fuelLevel');
+         if (fuelLevelDiv) {
+            // verify that we actually have the correct values for these as they may have been updated
+            perCraft = self.get('fuelPerCraft');
+            var residualCrafts = Math.floor(self.get('fuelLevel') / perCraft);
+            var potentialCrafts = Math.floor(self.get('potentialFuel') / perCraft);
+            var totalCrafts = residualCrafts + potentialCrafts;
 
-         var tooltipStr = i18n.t(tooltip, {num_residual: residualCrafts, num_potential: potentialCrafts, num_total: totalCrafts});
-         var tt = App.tooltipHelper.createTooltip('', tooltipStr);
-         self.$('#fuelLevel').tooltipster({
-            content: $(tt)
-         });
+            var tooltipStr = i18n.t(tooltip, {num_residual: residualCrafts, num_potential: potentialCrafts, num_total: totalCrafts});
+            var tt = App.tooltipHelper.createTooltip('', tooltipStr);
+            fuelLevelDiv.tooltipster({
+               content: $(tt)
+            });
+         }
       });
    }.observes('fuelPerCraft', 'fuelLevel', 'potentialFuel'),
 
@@ -482,36 +485,39 @@ App.StonehearthStockpileView.reopen({
 
    _updatePresetTooltips: function() {
       var self = this;
-      self.$('.presetRow').each(function() {
-         var name = $(this).data('name');
-         var isDefault = $(this).hasClass('default');
-         var preset = self._getPreset(name, isDefault);
-         App.tooltipHelper.createDynamicTooltip($(this).find('.presetPreview'), function () {
-            // maybe work in the crafting requirements to this tooltip (e.g., 3/4 craftable, requires [Mason] Lvl 2)
-            var description = self._getFilterPresetDescription(preset);
-            return $(App.tooltipHelper.createTooltip(preset.title, description));
-         }, {position: 'right', offsetX: 60});
+      var presetRows = self.$('.presetRow');
+      if (presetRows) {
+         presetRows.each(function() {
+            var name = $(this).data('name');
+            var isDefault = $(this).hasClass('default');
+            var preset = self._getPreset(name, isDefault);
+            App.tooltipHelper.createDynamicTooltip($(this).find('.presetPreview'), function () {
+               // maybe work in the crafting requirements to this tooltip (e.g., 3/4 craftable, requires [Mason] Lvl 2)
+               var description = self._getFilterPresetDescription(preset);
+               return $(App.tooltipHelper.createTooltip(preset.title, description));
+            }, {position: 'right', offsetX: 60});
 
-         $(this).find('.loadPreset').each(function() {
-            App.tooltipHelper.createDynamicTooltip($(this), function () {
-               return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.filter_presets.buttons.load_preset.title')));
+            $(this).find('.loadPreset').each(function() {
+               App.tooltipHelper.createDynamicTooltip($(this), function () {
+                  return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.filter_presets.buttons.load_preset.title')));
+               });
+            });
+            $(this).find('.savePreset').each(function() {
+               App.tooltipHelper.createDynamicTooltip($(this), function () {
+                  return $(App.tooltipHelper.createTooltip(
+                     i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.filter_presets.buttons.save_preset.title'),
+                     i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.filter_presets.buttons.save_preset.description')));
+               });
+            });
+            $(this).find('.deletePreset').each(function() {
+               App.tooltipHelper.createDynamicTooltip($(this), function () {
+                  return $(App.tooltipHelper.createTooltip(
+                     i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.filter_presets.buttons.delete_preset.title'),
+                     i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.filter_presets.buttons.delete_preset.description')));
+               });
             });
          });
-         $(this).find('.savePreset').each(function() {
-            App.tooltipHelper.createDynamicTooltip($(this), function () {
-               return $(App.tooltipHelper.createTooltip(
-                  i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.filter_presets.buttons.save_preset.title'),
-                  i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.filter_presets.buttons.save_preset.description')));
-            });
-         });
-         $(this).find('.deletePreset').each(function() {
-            App.tooltipHelper.createDynamicTooltip($(this), function () {
-               return $(App.tooltipHelper.createTooltip(
-                  i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.filter_presets.buttons.delete_preset.title'),
-                  i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.filter_presets.buttons.delete_preset.description')));
-            });
-         });
-      });
+      }
    },
 
    _togglePresetsVisibility: function(mode) {

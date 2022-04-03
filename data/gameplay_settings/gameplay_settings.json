@@ -98,6 +98,13 @@
          "default": false,
          "ordinal": 6
       },
+      "show_food_unfindable_notification": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_food_unfindable_notification)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_food_unfindable_notification_description)",
+         "default": false,
+         "ordinal": 7
+      },
       "enable_auto_harvest": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled)",
@@ -167,6 +174,13 @@
          },
          "default": "1",
          "ordinal": 12
+      },
+      "default_pasture_collect_strays": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_pasture_collect_strays)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_pasture_collect_strays_description)",
+         "default": true,
+         "ordinal": 12.5
       },
       "show_farm_water_regions": {
          "type": "boolean",

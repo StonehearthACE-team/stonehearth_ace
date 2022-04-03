@@ -1,4 +1,5 @@
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
+local raycast_lib = require 'stonehearth.ai.lib.raycast_lib'
 local Point3 = _radiant.csg.Point3
 local validator = radiant.validator
 local log = radiant.log.create_logger('terrain')
@@ -30,7 +31,7 @@ end
 
 AceTerrainService = class()
 
-function AceTerrainService:get_sky_visibility(location, distance)
+function AceTerrainService:get_sky_visibility(location, distance, ignore_entity_fn)
    -- check straight above and at several east-west (x+ to x-) angles to determine amount of sunlight
    distance = distance or SKYRAY_DISTANCE
    
@@ -43,8 +44,9 @@ function AceTerrainService:get_sky_visibility(location, distance)
       local ray = Point3(x, y, 0) * distance
 
       local target = location + ray
-      local end_point = _physics:shoot_ray(location, target, true, 0)
-      if not radiant.terrain.is_blocked(end_point) then
+      if not raycast_lib.is_sight_blocked(location, target, ignore_entity_fn) then
+      -- local end_point = _physics:shoot_ray(location, target, true, 0)
+      -- if not radiant.terrain.is_blocked(end_point) then
          vis_weight = vis_weight + y
       end
       total_weight = total_weight + y

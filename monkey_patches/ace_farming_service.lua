@@ -27,6 +27,7 @@ function AceFarmingService:create_new_field(session, location, size, field_type,
    radiant.terrain.place_entity(entity, location)
 
    self:_add_region_components(entity, size)
+   radiant.entities.set_entity_movement_modifier(entity, entity:get_component('region_collision_shape'):get_region():get())
 
    local town = stonehearth.town:get_town(session.player_id)
 

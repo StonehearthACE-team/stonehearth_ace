@@ -1,0 +1,17 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "clear_hostiles",
+   "script_info": {
+      "script": "file(clear_hostiles.lua)",
+      "data": {
+         "kingdoms": {
+            "forest": true,
+            "undead": true,
+            "goblins": true,
+            "orcs": true,
+            "undergrowth": true
+         }
+      }
+   }
+}

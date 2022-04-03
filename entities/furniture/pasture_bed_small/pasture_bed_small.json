@@ -28,7 +28,10 @@
          "region_collision_type": "none"
       },
       "stonehearth:mount": {
-         "mount_offset": { "x": -0.5, "y": 0.35, "z": -0.5 }
+         "mount_offset": { "x": -0.5, "y": 0.35, "z": -0.5 },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:sleeping:cover"
+         ]
       },
       "stonehearth_ace:pasture_item": {
          "type": "bed"
@@ -57,11 +60,6 @@
       },
       "stonehearth:item_quality": {
          "variable_quality": true
-      },
-      "stonehearth_ace:advanced_placement": {
-         "required_components": {
-            "stonehearth:shepherd_pasture": {}
-         }
       }
    }
 }

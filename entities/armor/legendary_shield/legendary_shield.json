@@ -4,6 +4,16 @@
    ],
 	"type": "entity",
    "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(legendary_shield.qb)"
+            ]
+         }
+      },
       "stonehearth:equipment_piece": {
          "required_job_level": 6,
          "ilevel": 12
@@ -45,6 +55,7 @@
          }
       ],
       "stonehearth:catalog": {
+         "icon": "file(legendary_shield.png)",
          "material_tags":["legendary", "shield", "heavy_armor", "ascendancy_made", "crafted", "stockpile_equipment"]
       }
    }

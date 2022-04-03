@@ -204,7 +204,10 @@ App.AceMilitaryModeView = App.View.extend({
 
       var prevParty = self.get('selectedParty');
       if (prevParty != partyId) {
-         self.$('#partyTab_'+partyId).click();
+         var partyDiv = self.$('#partyTab_'+partyId)
+         if (partyDiv) {
+            partyDiv.click();
+         }
       }
    },
 

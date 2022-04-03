@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 26,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.cleric_bronze_shield_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.cleric_bronze_shield_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.cleric_bronze_shield_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/armor/cleric_bronze_shield/cleric_bronze_shield.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:bronze_ingot",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:cleric_bronze_shield"
+      }
+   ]
+}
