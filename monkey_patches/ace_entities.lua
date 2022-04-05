@@ -265,15 +265,15 @@ function ace_entities.output_items(uris, origin, min_radius, max_radius, options
    end
    if not output_comp and (not inputs or not next(inputs)) then
       if options.spill_fail_items then
-         local result = ace_entities.get_empty_output_table()
-         result.spilled = ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, true)
+         local result = radiant.entities.get_empty_output_table()
+         result.spilled = radiant.entities.spawn_items(uris, origin, min_radius, max_radius, options, true)
          return result
       else
-         return ace_entities.get_empty_output_table()
+         return radiant.entities.get_empty_output_table()
       end
    end
 
-   local items = ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, false)
+   local items = radiant.entities.spawn_items(uris, origin, min_radius, max_radius, options, false)
    return ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options)
 end
 
@@ -324,7 +324,7 @@ function ace_entities.get_empty_output_table()
 end
 
 function ace_entities.combine_output_tables(t1, t2)
-   local result = ace_entities.get_empty_output_table()
+   local result = radiant.entities.get_empty_output_table()
 
    for category, items in pairs(result) do
       if t1 and t1[category] then

@@ -68,7 +68,7 @@ function AceLootDropsComponent:_on_kill_event(e)
 
          --Add a loot command to each of the spawned items, or claim them automatically
          if not force_auto_loot then
-         for id, entity in pairs(spawned_entities) do
+            for id, entity in pairs(spawned_entities) do
                local target = entity
                local entity_forms = entity:get_component('stonehearth:entity_forms')
                if entity_forms then

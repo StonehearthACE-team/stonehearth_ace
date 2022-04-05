@@ -19,6 +19,28 @@ function AceEatingLib.get_hour_type(hour)
    end
 end
 
+function AceEatingLib.is_edible(food_stuff)
+   local food = food_stuff
+   local food_uri = food:get_uri()
+   local container_data = radiant.entities.get_entity_data(food, 'stonehearth:food_container', false)
+   if container_data then
+      food = container_data.food
+      food_uri = food
+   end
+
+   if not stonehearth.catalog:is_material(food_uri, 'food') then
+      return false
+   end
+
+   local food_data = radiant.entities.get_entity_data(food, 'stonehearth:food', false)
+
+   if not food_data or not food_data.default then
+      return false
+   end
+
+   return true
+end
+
 function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerances, hour_type, weather_type)
    local food = food_stuff
    local food_uri = food:get_uri()
@@ -97,10 +119,9 @@ function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerance
    return math.max(quality, qualities.UNPALATABLE)
 end
 
-function AceEatingLib.make_food_filter(food_preferences, food_intolerances, hour_type, weather_type)
-   local key = tostring(food_preferences) .. '|' .. tostring(food_intolerances) .. '|' .. tostring(hour_type) .. '|' .. tostring(weather_type)
-   local filter_fn = stonehearth.ai:filter_from_key('food_filter', key, function(item)
-            return AceEatingLib.get_quality(item, food_preferences, food_intolerances, hour_type, weather_type) ~= nil
+function AceEatingLib.make_food_filter()
+   local filter_fn = stonehearth.ai:filter_from_key('food_filter', 'any food! it\'s actually all the same filter!', function(item)
+            return AceEatingLib.is_edible(item)
          end)
    -- log:debug('made eating filter_fn for %s: %s', key, tostring(filter_fn))
    -- if not stonehearth_ace.eating_filter_fn then

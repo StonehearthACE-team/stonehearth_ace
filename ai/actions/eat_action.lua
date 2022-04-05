@@ -28,6 +28,7 @@ function Eat:start_thinking(ai, entity, args)
    local consumption = self._entity:get_component('stonehearth:consumption')
    self._food_preferences = consumption:get_food_preferences()
    self._food_intolerances = consumption:get_food_intolerances()
+   self._food_filter_fn = EatingLib.make_food_filter()
    
    self._hour_type = nil
    self._weather_type = nil
@@ -71,7 +72,7 @@ function Eat:_reconsider_filter()
       self._hour_type = hour_type
       self._weather_type = weather_type
 
-      self._food_filter_fn = EatingLib.make_food_filter(self._food_preferences, self._food_intolerances, hour_type, weather_type)
+      --self._food_filter_fn = EatingLib.make_food_filter(self._food_preferences, self._food_intolerances, hour_type, weather_type)
       local consumption = self._entity:get_component('stonehearth:consumption')
       if consumption:distinguishes_food_quality() then
          self._food_rating_fn = EatingLib.make_food_rater(self._food_preferences, self._food_intolerances, hour_type, weather_type)

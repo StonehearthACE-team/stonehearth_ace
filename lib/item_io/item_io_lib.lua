@@ -95,10 +95,14 @@ end
 
 function item_io_lib._output_to_inputs(items, inputs, successes, fails, location, force_add, require_matching_filter_override)
    for id, item in pairs(items) do
-      for _, input in ipairs(inputs) do
-         if input:try_input(item, location, force_add, require_matching_filter_override) then
-            successes[id] = item
-            break
+      -- check to make sure the item actually *should* be addable to a storage: it's an item or has an iconic version
+      local catalog_data = stonehearth.catalog:get_catalog_data(item:get_uri())
+      if catalog_data and (catalog_data.is_item or catalog_data.iconic_uri) then
+         for _, input in ipairs(inputs) do
+            if input:try_input(item, location, force_add, require_matching_filter_override) then
+               successes[id] = item
+               break
+            end
          end
       end
 
@@ -166,19 +170,24 @@ end
 
 function item_io_lib._can_output_to_inputs(items, inputs, successes, fails, location, require_matching_filter_override)
    for id, item in pairs(items) do
-      for _, input in ipairs(inputs) do
-         local result = input:can_input(item, location)
-         if result then
-            successes[id] = {
-               output = function()
-                  --log:debug('trying to push %s into %s', item, input._entity)
-                  -- first destroy the space reservation
-                  result.destroy()
-                  -- then force input the item
-                  input:try_input(item, location, true, require_matching_filter_override)
-               end
-            }
-            break
+      -- check to make sure the item actually *should* be addable to a storage: it's an item or has an iconic version
+      local catalog_data = stonehearth.catalog:get_catalog_data(item:get_uri())
+      if catalog_data and (catalog_data.is_item or catalog_data.iconic_uri) then
+         for _, input in ipairs(inputs) do
+            local result = input:can_input(item, location)
+            if result then
+               successes[id] = {
+                  destroy = result.destroy,
+                  output = function()
+                     --log:debug('trying to push %s into %s', item, input._entity)
+                     -- first destroy the space reservation
+                     result.destroy()
+                     -- then force input the item
+                     input:try_input(item, location, true, require_matching_filter_override)
+                  end
+               }
+               break
+            end
          end
       end
 

@@ -40,8 +40,10 @@ $(top).on('stonehearthReady', function(cc) {
                      radiant.each(settings, function(mod, modSettings) {
                         if(mod != 'stonehearth') {
                            newParent = self._createGameplayDivForMod(mod, modSettings);
-                           accordion.append(newParent.header);
-                           accordion.append(newParent.section);
+                           if (newParent) {
+                              accordion.append(newParent.header);
+                              accordion.append(newParent.section);
+                           }
                         }
                      });
 
