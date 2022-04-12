@@ -216,6 +216,28 @@
          "default": true,
          "ordinal": 16
       },
+      "title_selection_criteria": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.title_selection_criteria.display_name)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.title_selection_criteria.description)",
+         "values": {
+            "highest_renown": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.title_selection_criteria.highest_renown)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.title_selection_criteria.highest_renown_description)"
+            },
+            "latest": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.title_selection_criteria.latest)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.title_selection_criteria.latest_description)"
+            }
+         },
+         "on_change": {
+            "call": "title_selection_criteria_changed"
+         },
+         "default": "highest_renown",
+         "ordinal": 17
+      },
       "issue_party_commands_when_job_disabled": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.issue_party_commands_when_job_disabled)",

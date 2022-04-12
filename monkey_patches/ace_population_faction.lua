@@ -515,6 +515,15 @@ function AcePopulationFaction:get_title_rank_data(entity, title, rank)
    return titles[title] and titles[title][rank]
 end
 
+function AcePopulationFaction:get_title_renown(entity, title, rank)
+   local rank_data = self:get_title_rank_data(entity, title, rank)
+   if not rank_data then
+      return nil
+   end
+
+   return rank_data.renown or 0
+end
+
 function AcePopulationFaction:get_titles_for_statistic(entity, stat_changed_args)
    local titles = self:_get_stats_titles_for_entity_type(entity)
 
