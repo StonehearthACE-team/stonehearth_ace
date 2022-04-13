@@ -20840,8 +20840,8 @@
          "titles": {
             "display_name": "Titles",
             "description": "This entity can be given a title that will show up after their name. Right-click their name in the selected unit window or their character sheet (if they have one) to select a different title.",
-            "all_earned_titles": "The following titles have been earned:",
-            "total_renown": "Total Renown: 🏆 ",
+            "all_earned_titles": "Total Renown: 🏆 [str(renown)]<br>The following titles have been earned:",
+            "renown": "🏆 [str(renown)]",
             "unattained": "This is the next rank that hasn't yet been attained."
          },
          "transform": {

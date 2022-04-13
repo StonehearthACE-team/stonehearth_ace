@@ -147,7 +147,8 @@ var stonehearth_ace = {
                      key: title + '|' + rank_data.rank,
                      title: title,
                      rank: rank_data.rank,
-                     attained: rank_data.rank <= rank,
+                     renown: rank_data.renown,
+                     attained: (rank_data.rank || 1) <= rank,
                      display_name: entityName + rank_data.display_name,
                      description: rank_data.description
                   });

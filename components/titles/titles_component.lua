@@ -7,8 +7,12 @@ local TitlesComponent = class()
 
 function TitlesComponent:initialize()
    self._sv.titles = {}
-   self._sv.latest_title = {}
+   self._sv.latest_title = nil
    self._sv.renown = 0
+end
+
+function TitlesComponent:restore()
+   self._is_restore = true
 end
 
 function TitlesComponent:activate()
@@ -28,7 +32,7 @@ function TitlesComponent:post_activate()
    self:update_titles_json()
 
    -- if they have titles but renown is 0, this is probably the first load after renown was added; calculate it
-   if self._sv.titles ~= {} and self._sv.renown == 0 then
+   if self._is_restore and next(self._sv.titles) and self._sv.renown == 0 then
       self:_recalculate_renown()
    end
 end
@@ -72,11 +76,12 @@ function TitlesComponent:_recalculate_renown()
    local renown = 0
    if self._sv.titles then
       for title, rank in pairs(self._sv.titles) do
-         renown = renown + (self:get_title_renown(title, rank) or 0)
+         renown = renown + (self:_get_title_renown(title, rank) or 0)
       end
    end
    self._sv.renown = renown
    self.__saved_variables:mark_changed()
+   self:_update_component_info()
 end
 
 function TitlesComponent:has_title(title, rank)
@@ -88,44 +93,23 @@ function TitlesComponent:get_highest_rank(title)
    return title and self._sv.titles[title]
 end
 
-function TitlesComponent:get_title_renown(title, rank)
-   local population = stonehearth.population:get_population(self._entity:get_player_id())
-   return population:get_title_renown(self._entity, title, rank)
-end
-
-function TitlesComponent:get_current_title_renown()
-   local current_title = self._entity:add_component('stonehearth:unit_info'):get_current_title()
-   return current_title and current_title.renown or 0
-end
-
-function TitlesComponent:get_highest_renown_title()
-   local hr_title = {}
-   local hr = 0
-   for title, rank in pairs(self._sv.titles) do
-      local renown = self:get_title_renown(title, rank)
-      if renown >= hr then
-         hr_title = { title = title, rank = rank }
-      end
-   end
-   return hr_title
-end
-
 -- once bestowed, a title is never removed; it can only be increased in rank
 function TitlesComponent:add_title(title, rank)
    if not self:has_title(title, rank) then
-      self._sv.titles[title] = rank or 1
-      self._sv.latest_title = { title = title, rank = rank }
-      self._sv.renown = self._sv.renown + (self:get_title_renown(title, rank) - (self:get_title_renown(title, (rank - 1)) or 0))
+      rank = rank or 1
+      self._sv.titles[title] = rank
+      self._sv.latest_title = title
+      self._sv.renown = self._sv.renown + (self:_get_title_renown(title, rank) - (self:_get_title_renown(title, (rank - 1)) or 0))
       self.__saved_variables:mark_changed()
 
       -- update component info details
       self:_update_component_info()
 
-      self:_select_new_title(nil, title, rank)
-		
-		if stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'show_new_title_notification', true) then
-			self:_show_bulletin(title, rank)
-		end
+      self:_select_new_title(nil, title)
+
+      if stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'show_new_title_notification', true) then
+         self:_show_bulletin(title, rank)
+      end
    end
 end
 
@@ -136,42 +120,67 @@ function TitlesComponent:_update_component_info()
          titles = self._sv.titles,
          titles_json = self._sv.titles_json,
          header = 'stonehearth_ace:component_info.stonehearth_ace.titles.all_earned_titles'
-      }, {})
+      }, {
+         renown = self._sv.renown
+      })
 end
 
-function TitlesComponent:_select_new_title(criteria_change, title, rank)
+-- either criteria_change is specified (and not title), when changing the criteria in gameplay settings,
+-- or only title is specified (don't need to specify rank because a new title will always be the highest rank)
+function TitlesComponent:_select_new_title(criteria_change, title)
    if stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'auto_select_new_titles', true) then
-      local criteria 
-      if not criteria_change then
-         criteria = stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'title_selection_criteria')
-      end
+      local criteria = criteria_change or
+            stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'title_selection_criteria')
 
-      if criteria_change and criteria_change == 'latest' or criteria == 'latest' then
-         if self._sv.latest_title then
-            self:_set_new_title(self._sv.latest_title['title'], self._sv.latest_title['rank'])
+      if criteria == 'latest' then
+         local latest_title = self._sv.latest_title
+         if latest_title then
+            self:_set_new_title(latest_title)
          end
-      elseif criteria_change and criteria_change == 'highest_renown' or criteria == 'highest_renown' then
+      elseif criteria == 'highest_renown' then
          if criteria_change then
-            local hr_title = self:get_highest_renown_title()
-            self:_set_new_title(hr_title['title'], hr_title['rank'])
-         elseif title and rank then
-            if self:get_current_title_renown() <= self:get_title_renown(title, rank) then
-               self:_set_new_title(title, rank)
+            local highest_title = self:_get_highest_renown_title()
+            if highest_title then
+               self:_set_new_title(highest_title)
+            end
+         elseif title then
+            if self:_get_title_renown(title, self._sv.titles[title]) > self:_get_current_title_renown() then
+               self:_set_new_title(title)
             end
          end
-      else
-         if title and rank then
-            self:_set_new_title(title, rank)
-         end
+      elseif title then
+         self:_set_new_title(title)
       end
    end
 end
 
-function TitlesComponent:_set_new_title(title, rank)
+-- don't need to specify rank because a new title will always be the highest rank
+function TitlesComponent:_set_new_title(title)
    local unit_info = self._entity:add_component('stonehearth:unit_info')
    unit_info:ensure_custom_name()
 
-   unit_info:select_title(title, rank)
+   unit_info:select_title(title)
+end
+
+function TitlesComponent:_get_title_renown(title, rank)
+   local population = stonehearth.population:get_population(self._entity:get_player_id())
+   return population:get_title_renown(self._entity, title, rank)
+end
+
+function TitlesComponent:_get_current_title_renown()
+   local current_title = self._entity:add_component('stonehearth:unit_info'):get_current_title()
+   return current_title and current_title.renown or 0
+end
+
+function TitlesComponent:_get_highest_renown_title()
+   local highest_title, highest_renown
+   for title, rank in pairs(self._sv.titles) do
+      local renown = self:_get_title_renown(title, rank)
+      if not highest_renown or renown > highest_renown then
+         highest_title = title
+      end
+   end
+   return highest_title
 end
 
 function TitlesComponent:_on_stat_changed(args)
