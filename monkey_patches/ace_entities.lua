@@ -161,26 +161,24 @@ function ace_entities.kill_entity(entity, kill_data)
    end
 end
 
-function ace_entities.get_current_title(entity)
-   local current_title
-   local name_component = entity:get_component('stonehearth:unit_info')
-
-   if name_component then
-      current_title = name_component:get_current_title()
+function ace_entities.add_title(entity, title, rank)
+   if entity and entity:is_valid() then
+      entity:add_component('stonehearth_ace:titles'):add_title(title, rank)
    end
+end
 
-   return current_title or {display_name = '', description = ''}
+function ace_entities.get_current_title(entity)
+   if entity and entity:is_valid() then
+      local name_component = entity:get_component('stonehearth:unit_info')
+      return name_component and name_component:get_current_title()
+   end
 end
 
 function ace_entities.get_custom_data(entity)
-   local custom_data
-   local name_component = entity:get_component('stonehearth:unit_info')
-
-   if name_component then
-      custom_data = name_component:get_custom_data()
+   if entity and entity:is_valid() then
+      local name_component = entity:get_component('stonehearth:unit_info')
+      return name_component and name_component:get_custom_data()
    end
-
-   return custom_data or {}
 end
 
 function ace_entities.increment_stat(entity, category, name, value, default)
