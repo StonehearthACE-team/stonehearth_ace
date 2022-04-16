@@ -208,6 +208,8 @@ function TitlesComponent:_show_bulletin(title, rank)
    -- alert the player that they gained a title
    local player_id = self._entity:get_player_id()
    local pop = stonehearth.population:get_population(player_id)
+   local title_rank_data = pop and pop:get_title_rank_data(self._entity, title, rank) or {}
+   title_rank_data.renown = title_rank_data.renown or 0
    local is_citizen = pop and pop:is_citizen(self._entity)
    local message = is_citizen and 'i18n(stonehearth_ace:ui.game.bulletin.achievement_acquired_bulletin.new_title.message)'
                      or 'i18n(stonehearth_ace:ui.game.bulletin.achievement_acquired_bulletin.new_title.item_message)'
@@ -226,7 +228,7 @@ function TitlesComponent:_show_bulletin(title, rank)
       :set_active_duration('1h')
       :add_i18n_data('entity', self._entity)
       --:add_i18n_data('old_name', old_name)
-      :add_i18n_data('new_title', pop and pop:get_title_rank_data(self._entity, title, rank) or {})
+      :add_i18n_data('new_title', title_rank_data)
 
    return bulletin
 end
