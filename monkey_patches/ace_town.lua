@@ -165,35 +165,52 @@ function AceTown:_requirements_met(person, job_uri)
    return one_of ~= false
 end
 
-function AceTown:register_entity_type(type, entity)
+function AceTown:register_entity_type(type_name, entity)
    if not self._sv._registered_entity_types then
       self._sv._registered_entity_types = {}
    end
-   if not self._sv._registered_entity_types[type] then
-      self._sv._registered_entity_types[type] = {}
+   local type_tbl = self._sv._registered_entity_types[type_name]
+   if not type_tbl then
+      type_tbl = {}
+      self._sv._registered_entity_types[type_name] = type_tbl
    end
-   self._sv._registered_entity_types[type][entity:get_id()] = true
-   --self.__saved_variables:mark_changed()
+
+   local id = entity:get_id()
+   local is_first_registered = next(type_tbl) == nil
+   type_tbl[id] = true
+   
+   radiant.events.trigger_async(self, 'stonehearth_ace:town:entity_type_registered', type_name)
+   if is_first_registered then
+      radiant.events.trigger_async(self, 'stonehearth_ace:town:entity_type_registered_first', type_name)
+   end
 end
 
-function AceTown:unregister_entity_type(type, entity)
-   if self._sv._registered_entity_types and self._sv._registered_entity_types[type] then
-      self._sv._registered_entity_types[type][entity:get_id()] = nil
-      --self.__saved_variables:mark_changed()
+function AceTown:unregister_entity_type(type_name, entity)
+   if self._sv._registered_entity_types and self._sv._registered_entity_types[type_name] then
+      local type_tbl = self._sv._registered_entity_types[type_name]
+      local id = entity:get_id()
+      if type_tbl[id] then
+         type_tbl[id] = nil
+
+         radiant.events.trigger_async(self, 'stonehearth_ace:town:entity_type_unregistered:' .. type_name)
+         if not next(type_tbl) then
+            radiant.events.trigger_async(self, 'stonehearth_ace:town:entity_type_unregistered_last:' .. type_name)
+         end
+      end
    end
 end
 
 function AceTown:unregister_entity_types(entity)
    if self._sv._registered_entity_types then
-      for _, type_tbl in pairs(self._sv._registered_entity_types) do
-         type_tbl[entity:get_id()] = nil
+      for type_name, type_tbl in pairs(self._sv._registered_entity_types) do
+         -- a little extra access overhead, but this will trigger the proper events
+         self:unregister_entity_type(type_name, entity)
       end
    end
-   --self.__saved_variables:mark_changed()
 end
 
-function AceTown:is_entity_type_registered(type)
-   local registered = self._sv._registered_entity_types and self._sv._registered_entity_types[type]
+function AceTown:is_entity_type_registered(type_name)
+   local registered = self._sv._registered_entity_types and self._sv._registered_entity_types[type_name]
    return registered and next(registered) ~= nil
 end
 

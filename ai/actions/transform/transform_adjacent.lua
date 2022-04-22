@@ -61,7 +61,8 @@ function TransformItemAdjacent:run(ai, entity, args)
    local data = transform_comp:get_transform_options()
 
    if transform_comp and data then
-      radiant.entities.turn_to_face(entity, item)
+      -- face the center of the entity instead of the edge
+      radiant.entities.turn_to_face(entity, radiant.entities.get_world_grid_location(item))
 
       local effect = data.transforming_worker_effect
       local times = data.transforming_worker_effect_times

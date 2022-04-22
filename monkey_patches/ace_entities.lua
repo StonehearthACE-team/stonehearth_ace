@@ -205,6 +205,30 @@ function ace_entities.set_property_value(entity, property, value, replace)
    return pv_comp:set_property(property, value, replace)
 end
 
+function ace_entities.get_renown(entity, include_equipment)
+   if not entity or not entity:is_valid() then
+      return
+   end
+
+   local renown = 0
+   local titles_comp = entity:get_component('stonehearth_ace:titles')
+   if titles_comp then
+      renown = titles_comp:get_renown()
+   end
+
+   if include_equipment ~= false then
+      local equipment_component = entity:get_component('stonehearth:equipment')
+      for key, item in pairs(equipment_component:get_all_items()) do
+         titles_comp = item:get_component('stonehearth_ace:titles')
+         if titles_comp then
+            renown = renown + titles_comp:get_renown()
+         end
+      end
+   end
+
+   return renown
+end
+
 -- uris are key, value pairs of uri, quantity
 -- quantity can also be a table of quality/quantity pairs
 function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, place_items)

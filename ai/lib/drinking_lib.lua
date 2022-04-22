@@ -17,6 +17,21 @@ function DrinkingLib.get_hour_type(hour)
    end
 end
 
+function DrinkingLib.is_drinkable(drink_stuff)
+   local drink = drink_stuff
+   local container_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink_container', false)
+   if container_data then
+      drink = container_data.drink
+   end
+   local drink_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink', false)
+
+   if not drink_data or not drink_data.default then
+      return false
+   end
+
+   return true
+end
+
 function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intolerances, hour_type, weather_type)
    local drink = drink_stuff
    local container_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink_container', false)
@@ -92,6 +107,12 @@ function DrinkingLib.make_drink_filter(drink_preferences, drink_intolerances, ho
    return stonehearth.ai:filter_from_key('drink_filter', key, function(item)
             local quality = DrinkingLib.get_quality(item, drink_preferences, drink_intolerances, hour_type, weather_type)
             return quality and quality >= stonehearth.constants.drink_qualities.MINIMUM_VIABLE
+         end)
+end
+
+function DrinkingLib.make_simple_drink_filter()
+   return stonehearth.ai:filter_from_key('drink_filter', 'any drink! it\'s actually all the same filter!', function(item)
+            return DrinkingLib.is_drinkable(item)
          end)
 end
 

@@ -42,7 +42,8 @@ ace_constants.drink_item_quality_thoughts[constants.item_quality.FINE] = 					co
 ace_constants.drink_item_quality_thoughts[constants.item_quality.EXCELLENT] = 			constants.thoughts.drink_item_quality.EXCELLENT 
 ace_constants.drink_item_quality_thoughts[constants.item_quality.MASTERWORK] = 			constants.thoughts.drink_item_quality.MASTERWORK 
 
-constants.conversation.MEDIUM_STAGES = {
+ace_constants.conversation = constants.conversation
+ace_constants.conversation.MEDIUM_STAGES = {
    order = {
       constants.conversation.stages.GREETING,
       constants.conversation.stages.MOVE,
@@ -59,7 +60,7 @@ constants.conversation.MEDIUM_STAGES = {
    },
 }
 
-constants.conversation.SHORT_STAGES = {
+ace_constants.conversation.SHORT_STAGES = {
    order = {
       constants.conversation.stages.GREETING,
       constants.conversation.stages.CONCLUSION
@@ -68,6 +69,13 @@ constants.conversation.SHORT_STAGES = {
       [constants.conversation.stages.GREETING] = "num_participants",
       [constants.conversation.stages.CONCLUSION] = "num_participants",
    },
+}
+
+ace_constants.conversation.RENOWN_THOUGHTS = {
+   [constants.conversation.renown_thresholds.LOW] = 'stonehearth:thoughts:social:talk_with_low_renown',
+   [constants.conversation.renown_thresholds.MEDIUM] = 'stonehearth:thoughts:social:talk_with_medium_renown',
+   [constants.conversation.renown_thresholds.HIGH] = 'stonehearth:thoughts:social:talk_with_high_renown',
+   [constants.conversation.renown_thresholds.VERY_HIGH] = 'stonehearth:thoughts:social:talk_with_very_high_renown',
 }
 
 return ace_constants
