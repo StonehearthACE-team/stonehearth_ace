@@ -86,9 +86,13 @@ function AceConversationManager:_add_renown_thought(participant, target, options
    if reaction and reaction > 0 then
       -- sentiment was positive for this participant, so check the renown of their target
       local renown = radiant.entities.get_renown(target)
+      local is_lower
+      if renown < radiant.entities.get_renown(participant) then
+         is_lower = true
+      end
       if renown then
          -- this could be done with an easily customizable array of tiers, but it's not that important to customize?
-         local renown_levels = constants.conversation.renown
+         local renown_levels = constants.conversation.renown_thresholds
          local level
          if renown >= renown_levels.VERY_HIGH then
             level = renown_levels.VERY_HIGH
@@ -96,11 +100,11 @@ function AceConversationManager:_add_renown_thought(participant, target, options
             level = renown_levels.HIGH
          elseif renown >= renown_levels.MEDIUM then
             level = renown_levels.MEDIUM
-         elseif renown >= renown_levels.LOW then
+         elseif renown >= renown_levels.LOW or is_lower then
             level = renown_levels.LOW
          end
 
-         local thought_key = level and constants.conversation.RENOWN_THOUGHTS[level]
+         local thought_key = is_lower and level and constants.conversation.RENOWN_THOUGHTS[level] .. '_lower' or level and constants.conversation.RENOWN_THOUGHTS[level]
          if thought_key then
             radiant.entities.add_thought(participant, thought_key, options)
          end

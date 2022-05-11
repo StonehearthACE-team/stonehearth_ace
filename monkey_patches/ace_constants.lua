@@ -72,10 +72,10 @@ ace_constants.conversation.SHORT_STAGES = {
 }
 
 ace_constants.conversation.RENOWN_THOUGHTS = {
-   [constants.conversation.renown_thresholds.LOW] = 'stonehearth:thoughts:social:talk_with_low_renown',
-   [constants.conversation.renown_thresholds.MEDIUM] = 'stonehearth:thoughts:social:talk_with_medium_renown',
-   [constants.conversation.renown_thresholds.HIGH] = 'stonehearth:thoughts:social:talk_with_high_renown',
-   [constants.conversation.renown_thresholds.VERY_HIGH] = 'stonehearth:thoughts:social:talk_with_very_high_renown',
+   [constants.conversation.renown_thresholds.LOW] = 'stonehearth:thoughts:renown:talk_with_low_renown',
+   [constants.conversation.renown_thresholds.MEDIUM] = 'stonehearth:thoughts:renown:talk_with_medium_renown',
+   [constants.conversation.renown_thresholds.HIGH] = 'stonehearth:thoughts:renown:talk_with_high_renown',
+   [constants.conversation.renown_thresholds.VERY_HIGH] = 'stonehearth:thoughts:renown:talk_with_very_high_renown',
 }
 
 return ace_constants

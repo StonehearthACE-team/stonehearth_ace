@@ -2659,6 +2659,42 @@
                   "display_name": "Wounded (Extreme severity)",
                   "tooltip": "Ugh. I really need help with this one... It's really bad! I feel horrible!"
                }
+            },
+            "social": {
+               "values": {
+                  "talk_with_low_renown": {
+                     "tooltip": "Always good to hear advice from someone experienced like [str(target_name)]! ",
+                     "display_name": "In exemplary company"
+                  },
+                  "talk_with_medium_renown": {
+                     "display_name": "In noteworthy company",
+                     "tooltip": "Woah! What a nice talk with [str(target_name)]! It's refreshing to know we have such promising talent among us!"
+                  },
+                  "talk_with_high_renown": {
+                     "display_name": "In famous company",
+                     "tooltip": "Nice! [str(target_name)] had time to talk with me! Their feats are remarkable and their name is known far and wide!"
+                  },
+                  "talk_with_very_high_renown": {
+                     "display_name": "On the shoulders of giants",
+                     "tooltip": "[str(target_name)] is a living legend. Can't believe we talked! Listening to them is truly interesting and I couldn't be more grateful!"
+                  },
+                  "talk_with_low_lower_renown": {
+                     "display_name": "Being exemplary",
+                     "tooltip": "[str(target_name)] shows a lot of promise. I'm confident that at least something good rubbed off on them after our chat today!"
+                  },
+                  "talk_with_medium_lower_renown": {
+                     "display_name": "Being noteworthy",
+                     "tooltip": "It's rewarding to see how far [str(target_name)] got! They're doing pretty well and feels good to encourage them further!"
+                  },
+                  "talk_with_high_lower_renown": {
+                     "display_name": "Being famous",
+                     "tooltip": "[str(target_name)] is not someone for small feats! They're quite known and accomplished but it is great to be able to share some extra experience with them!"
+                  },
+                  "talk_with_very_high_lower_renown": {
+                     "display_name": "Meeting of giants",
+                     "tooltip": "It's very considerate of [str(target_name)] to listen and respect me as they do; for we're nothing but equals in our successful journeys!"
+                  }
+               }
             }
          }
       },
@@ -4895,20 +4931,21 @@
                "wood_dark_squares": "A pattern of Cioccolato, Bistre, and Morocco Brown.",
                "wood_dark_boards": "A pattern of Punga, Cocoa Brown, Clinker, and Tobacco Brown.",
                "wood_light_boards": "A pattern of Ash, Napa, and Heathered Grey.",
-               "thatch_messy": "A Pattern of Pesto, Lemon Ginger, Yukon Gold, and Antique Brass.",
-               "clay_grey_pattern": "A Pattern of Light Ash, Cloudy, and Light Mountain Mist.",
-               "clay_gold_pattern": "A Pattern of Raffia, Winter Hazel, and Ecru.",
-               "clay_red_pattern": "A Pattern of Copper Canyon, Korma, and New Amber.",
-               "clay_sage_pattern": "A Pattern of Sage Light, Sage, and Sage Dark.",
-               "clay_oasis_pattern": "A Pattern of Oasis Light, Oasis, and Oasis Dark.",
-               "big_block_wall": "A Pattern of Granite Green, Pale Oyster, and Hillary.",
-               "block_wall": "A Pattern of Mountain Roots, Mountainside Dark, Mountainside Medium, Mountainside Light, and Mountaintop.",
-               "small_block_wall": "A Pattern of Slate Dark, Slate Shade, Slate, and Slate Light.",
-               "cobblestone_brown_wall": "A Pattern of Cork, Dark Congo Brown, Congo Brown, and Light Congo Brown.",
-               "thin_timber_wall": "A Pattern of Bistre, Cioccolato, and Morocco Brown.",
-               "palisade_wall": "A Pattern of Tobacco Brown, Clinker, Punga, and Cocoa Brown.",
-               "plastered_oak_wall": "A Pattern of Oak leaf Dark, Oak leaf, and Oak leaf Light.",
-               "plastered_peach_wall": "A Pattern of Peach Dark, Peach, and Peach Light."
+               "thatch_messy": "A pattern of Pesto, Lemon Ginger, Yukon Gold, and Antique Brass.",
+               "clay_grey_pattern": "A pattern of Light Ash, Cloudy, and Light Mountain Mist.",
+               "clay_gold_pattern": "A pattern of Raffia, Winter Hazel, and Ecru.",
+               "clay_red_pattern": "A pattern of Copper Canyon, Korma, and New Amber.",
+               "clay_sage_pattern": "A pattern of Sage Light, Sage, and Sage Dark.",
+               "clay_oasis_pattern": "A pattern of Oasis Light, Oasis, and Oasis Dark.",
+               "big_block_wall": "A pattern of Granite Green, Pale Oyster, and Hillary.",
+               "block_wall": "A pattern of Mountain Roots, Mountainside Dark, Mountainside Medium, Mountainside Light, and Mountaintop.",
+               "clay_brick_wall": "A pattern of Copper Canyon, Korma, and New Amber.",
+               "small_block_wall": "A pattern of Slate Dark, Slate Shade, Slate, and Slate Light.",
+               "cobblestone_brown_wall": "A pattern of Cork, Dark Congo Brown, Congo Brown, and Light Congo Brown.",
+               "thin_timber_wall": "A pattern of Bistre, Cioccolato, and Morocco Brown.",
+               "palisade_wall": "A pattern of Tobacco Brown, Clinker, Punga, and Cocoa Brown.",
+               "plastered_oak_wall": "A pattern of Oak leaf Dark, Oak leaf, and Oak leaf Light.",
+               "plastered_peach_wall": "A pattern of Peach Dark, Peach, and Peach Light."
             },
             "colors": {
                "#626139": "Pale Grass",
@@ -8853,8 +8890,8 @@
                "flavor": "You might want to store these far away from kittens..."
             },
             "fine_stuffing_recipe": {
-               "recipe_name": "Fine Stuffing",
-               "description": "Craft a neat and useful wadding that can be used as a filling in several objects or pieces of clothing.",
+               "recipe_name": "Fine Stuffing (x2)",
+               "description": "Craft a couple of neat and useful wadding that can be used as a filling in several objects or pieces of clothing.",
                "flavor": "Warm and comfy!"
             },
             "sunstroke_field_work_outfit_recipe": {
