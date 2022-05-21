@@ -85,26 +85,35 @@ function AceConversationManager:_add_renown_thought(participant, target, options
    local reaction = self._reactions[participant:get_id()]
    if reaction and reaction > 0 then
       -- sentiment was positive for this participant, so check the renown of their target
-      local renown = radiant.entities.get_renown(target)
-      local is_lower
-      if renown < radiant.entities.get_renown(participant) then
-         is_lower = true
-      end
-      if renown then
-         -- this could be done with an easily customizable array of tiers, but it's not that important to customize?
-         local renown_levels = constants.conversation.renown_thresholds
-         local level
-         if renown >= renown_levels.VERY_HIGH then
-            level = renown_levels.VERY_HIGH
-         elseif renown >= renown_levels.HIGH then
-            level = renown_levels.HIGH
-         elseif renown >= renown_levels.MEDIUM then
-            level = renown_levels.MEDIUM
-         elseif renown >= renown_levels.LOW or is_lower then
-            level = renown_levels.LOW
+      local target_renown = radiant.entities.get_renown(target) or 0
+      local min_renown = constants.conversation.MIN_TARGET_RENOWN
+
+      if target_renown >= min_renown then
+         local thresholds = constants.conversation.RENOWN_THRESHOLDS
+         local thought_keys = constants.conversation.RENOWN_THOUGHTS
+
+         local renown = radiant.entities.get_renown(participant) or 0
+         local threshold = target_renown / math.max(renown, min_renown)
+         local thought_key
+
+         -- thresholds are named for the target's renown relative to this participant's renown
+         -- e.g., MUCH_LOWER means the participant is talking to a target of much lower renown than the participant
+         if renown < thresholds.MUCH_LOWER then
+            thought_key = thought_keys.MUCH_LOWER
+         elseif renown < thresholds.LOWER then
+            thought_key = thought_keys.LOWER
+         elseif renown < thresholds.SOME_LOWER then
+            thought_key = thought_keys.SOME_LOWER
+         elseif renown <= thresholds.EQUAL then
+            thought_key = thought_keys.EQUAL
+         elseif renown <= thresholds.SOME_HIGHER then
+            thought_key = thought_keys.SOME_HIGHER
+         elseif renown <= thresholds.HIGHER then
+            thought_key = thought_keys.HIGHER
+         else
+            thought_key = thought_keys.MUCH_HIGHER
          end
 
-         local thought_key = is_lower and level and constants.conversation.RENOWN_THOUGHTS[level] .. '_lower' or level and constants.conversation.RENOWN_THOUGHTS[level]
          if thought_key then
             radiant.entities.add_thought(participant, thought_key, options)
          end

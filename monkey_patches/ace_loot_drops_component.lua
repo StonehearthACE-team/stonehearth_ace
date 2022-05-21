@@ -29,10 +29,10 @@ function AceLootDropsComponent:_on_kill_event(e)
    end
 
    if loot_table then
-      local location = radiant.entities.get_world_grid_location(self._entity)
+      local kill_data = e.kill_data or {}
+      local location = kill_data.location or radiant.entities.get_world_grid_location(self._entity)
       if location then
          local player_id = radiant.entities.get_player_id(self._entity)
-         local kill_data = e.kill_data or {}
          local loot_player_id = kill_data.source or self._sv.auto_loot_player_id
          if radiant.entities.is_entity(loot_player_id) then
             loot_player_id = radiant.entities.get_player_id(loot_player_id)

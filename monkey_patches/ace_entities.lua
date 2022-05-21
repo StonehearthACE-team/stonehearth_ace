@@ -1,6 +1,7 @@
 local Point3 = _radiant.csg.Point3
 local Region3 = _radiant.csg.Region3
 
+local constants = require 'stonehearth.constants'
 local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local item_io_lib = require 'stonehearth_ace.lib.item_io.item_io_lib'
@@ -205,7 +206,7 @@ function ace_entities.set_property_value(entity, property, value, replace)
    return pv_comp:set_property(property, value, replace)
 end
 
-function ace_entities.get_renown(entity, include_equipment)
+function ace_entities.get_renown(entity) --, include_equipment)
    if not entity or not entity:is_valid() then
       return
    end
@@ -216,15 +217,15 @@ function ace_entities.get_renown(entity, include_equipment)
       renown = titles_comp:get_renown()
    end
 
-   if include_equipment ~= false then
-      local equipment_component = entity:get_component('stonehearth:equipment')
-      for key, item in pairs(equipment_component:get_all_items()) do
-         titles_comp = item:get_component('stonehearth_ace:titles')
-         if titles_comp then
-            renown = renown + titles_comp:get_renown()
-         end
-      end
-   end
+   -- if include_equipment ~= false then
+   --    local equipment_component = entity:get_component('stonehearth:equipment')
+   --    for key, item in pairs(equipment_component:get_all_items()) do
+   --       titles_comp = item:get_component('stonehearth_ace:titles')
+   --       if titles_comp then
+   --          renown = renown + titles_comp:get_renown()
+   --       end
+   --    end
+   -- end
 
    return renown
 end

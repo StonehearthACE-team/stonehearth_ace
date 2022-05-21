@@ -256,7 +256,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          local player_id = radiant.entities.get_player_id(options.transformer_entity)
          loot_drops_component:set_auto_loot_player_id(player_id)
       end
-      radiant.entities.kill_entity(entity)
+      radiant.entities.kill_entity(entity, {location = location})
    elseif options.undeploy_entity and iconic_form and location then
       -- option to undeploy, but only use it if there's an iconic form
       local output_options = {
