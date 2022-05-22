@@ -73,22 +73,22 @@ ace_constants.conversation.SHORT_STAGES = {
 
 -- thresholds are named for the target's renown relative to this participant's renown
 ace_constants.conversation.RENOWN_THRESHOLDS = {
-   [constants.conversation.renown_thresholds.MUCH_LOWER] = 0.25,
-   [constants.conversation.renown_thresholds.LOWER] = 0.5,
-   [constants.conversation.renown_thresholds.SOME_LOWER] = 0.75,
-   [constants.conversation.renown_thresholds.EQUAL] = 1.333,
-   [constants.conversation.renown_thresholds.SOME_HIGHER] = 2,
-   [constants.conversation.renown_thresholds.HIGHER] = 4,
+   [constants.conversation.renown_levels.MUCH_LOWER] = 0.25,
+   [constants.conversation.renown_levels.LOWER] = 0.5,
+   [constants.conversation.renown_levels.SOME_LOWER] = 0.75,
+   [constants.conversation.renown_levels.EQUAL] = 1.333,
+   [constants.conversation.renown_levels.SOME_HIGHER] = 2,
+   [constants.conversation.renown_levels.HIGHER] = 4,
 }
 
 ace_constants.conversation.RENOWN_THOUGHTS = {
-   [constants.conversation.renown_thresholds.MUCH_LOWER] = 'stonehearth:thoughts:renown:talk_with_much_lower_renown',
-   [constants.conversation.renown_thresholds.LOWER] = 'stonehearth:thoughts:renown:talk_with_lower_renown',
-   [constants.conversation.renown_thresholds.SOME_LOWER] = 'stonehearth:thoughts:renown:talk_with_some_lower_renown',
-   [constants.conversation.renown_thresholds.EQUAL] = 'stonehearth:thoughts:renown:talk_with_equal_renown',
-   [constants.conversation.renown_thresholds.SOME_HIGHER] = 'stonehearth:thoughts:renown:talk_with_some_higher_renown',
-   [constants.conversation.renown_thresholds.HIGHER] = 'stonehearth:thoughts:renown:talk_with_higher_renown',
-   [constants.conversation.renown_thresholds.MUCH_HIGHER] = 'stonehearth:thoughts:renown:talk_with_much_higher_renown',
+   [constants.conversation.renown_levels.MUCH_LOWER] = 'stonehearth:thoughts:renown:talk_with_much_lower_renown',
+   [constants.conversation.renown_levels.LOWER] = 'stonehearth:thoughts:renown:talk_with_lower_renown',
+   [constants.conversation.renown_levels.SOME_LOWER] = 'stonehearth:thoughts:renown:talk_with_some_lower_renown',
+   [constants.conversation.renown_levels.EQUAL] = 'stonehearth:thoughts:renown:talk_with_equal_renown',
+   [constants.conversation.renown_levels.SOME_HIGHER] = 'stonehearth:thoughts:renown:talk_with_some_higher_renown',
+   [constants.conversation.renown_levels.HIGHER] = 'stonehearth:thoughts:renown:talk_with_higher_renown',
+   [constants.conversation.renown_levels.MUCH_HIGHER] = 'stonehearth:thoughts:renown:talk_with_much_higher_renown',
 }
 
 return ace_constants
