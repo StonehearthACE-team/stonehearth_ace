@@ -73,7 +73,7 @@ function TransformItemAdjacent:run(ai, entity, args)
       
       if ingredient then
          ing_item = radiant.entities.get_carrying(entity)
-         ai:execute('stonehearth:drop_carrying_now')
+         ai:execute('stonehearth:drop_carrying_into_entity_adjacent', { entity = args.item })
       end
 
       local transformed_form
