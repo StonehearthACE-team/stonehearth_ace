@@ -30,7 +30,7 @@ function TitlesComponent:post_activate()
       )
 
    self:update_titles_json()
-   self:update_traits()
+   self:_create_trait_listeners()
 
    -- if they have titles but renown is 0, this is probably the first load after renown was added; calculate it
    if self._is_restore and next(self._sv.titles) and self._sv.renown == 0 then
@@ -39,6 +39,16 @@ function TitlesComponent:post_activate()
 end
 
 function TitlesComponent:destroy()
+   if self._trait_added_listener then
+      self._trait_added_listener:destroy()
+      self._trait_added_listener = nil
+   end
+
+   if self._trait_removed_listener then
+      self._trait_removed_listener:destroy()
+      self._trait_removed_listener = nil
+   end
+
    if self._stats_listener then
       self._stats_listener:destroy()
       self._stats_listener = nil
@@ -53,6 +63,14 @@ function TitlesComponent:destroy()
       self._player_id_trace:destroy()
       self._player_id_trace = nil
    end
+end
+
+function TitlesComponent:_create_trait_listeners()
+   -- it's checking the traits in _update_traits already, no need to check a second time to see if they should be checked; just call it directly
+   self._trait_added_listener = radiant.events.listen(self._entity, 'stonehearth_ace:trait_added', self, self._update_traits)
+   self._trait_removed_listener = radiant.events.listen(self._entity, 'stonehearth_ace:trait_removed', self, self._update_traits)
+
+   self:_update_traits()
 end
 
 function TitlesComponent:get_titles()
@@ -168,10 +186,12 @@ function TitlesComponent:_get_title_renown(title, rank)
    local population = stonehearth.population:get_population(self._entity:get_player_id())
    local renown = population:get_title_renown(self._entity, title, rank)
 
-   if renown and self._braggart then
-      renown = math.floor((renown * 1.1) + 0.5)
-   elseif renown and self._modest then
-      renown = math.floor((renown * 0.75) + 0.5)
+   if renown then
+      if self._braggart then
+         renown = math.floor((renown * 1.1) + 0.5)
+      elseif self._modest then
+         renown = math.floor((renown * 0.75) + 0.5)
+      end
    end
 
    return renown
@@ -205,20 +225,31 @@ function TitlesComponent:_on_stat_changed(args)
    end
 end
 
-function TitlesComponent:update_titles_json()
+function TitlesComponent:update_titles_json(recalculate_renown)
    local pop = stonehearth.population:get_population(self._entity:get_player_id())
    local titles_json = pop and pop:get_titles_json_for_entity(self._entity)
    if titles_json ~= self._sv.titles_json then
       self._sv.titles_json = titles_json
-      self.__saved_variables:mark_changed()
+
+      if recalculate_renown then
+         self:_recalculate_renown()
+      else
+         self.__saved_variables:mark_changed()
+      end
    end
 end
 
-function TitlesComponent:update_traits()
-   local traits_component = self._entity:get_component('stonehearth:traits') or nil
+function TitlesComponent:_update_traits()
+   local traits_component = self._entity:get_component('stonehearth:traits')
    if traits_component then
-      self._braggart = traits_component:has_trait('stonehearth_ace:traits:braggart') or false
-      self._modest = traits_component:has_trait('stonehearth_ace:traits:modest') or false
+      local had_braggart = self._braggart or false
+      local had_modest = self._modest or false
+      self._braggart = traits_component:has_trait('stonehearth_ace:traits:braggart')
+      self._modest = traits_component:has_trait('stonehearth_ace:traits:modest')
+
+      if had_braggart ~= self._braggart or had_modest ~= self._modest then
+         self:_recalculate_renown()
+      end
    end
 end
 
