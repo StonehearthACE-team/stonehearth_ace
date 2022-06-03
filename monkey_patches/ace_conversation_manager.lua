@@ -89,6 +89,7 @@ function AceConversationManager:_add_renown_thought(participant, target, options
       local min_renown = constants.conversation.MIN_TARGET_RENOWN
 
       if target_renown >= min_renown then
+         local levels = constants.conversation.renown_levels
          local thresholds = constants.conversation.RENOWN_THRESHOLDS
          local thought_keys = constants.conversation.RENOWN_THOUGHTS
 
@@ -98,20 +99,20 @@ function AceConversationManager:_add_renown_thought(participant, target, options
 
          -- thresholds are named for the target's renown relative to this participant's renown
          -- e.g., MUCH_LOWER means the participant is talking to a target of much lower renown than the participant
-         if renown < thresholds.MUCH_LOWER then
-            thought_key = thought_keys.MUCH_LOWER
-         elseif renown < thresholds.LOWER then
-            thought_key = thought_keys.LOWER
-         elseif renown < thresholds.SOME_LOWER then
-            thought_key = thought_keys.SOME_LOWER
-         elseif renown <= thresholds.EQUAL then
-            thought_key = thought_keys.EQUAL
-         elseif renown <= thresholds.SOME_HIGHER then
-            thought_key = thought_keys.SOME_HIGHER
-         elseif renown <= thresholds.HIGHER then
-            thought_key = thought_keys.HIGHER
+         if renown < thresholds[levels.MUCH_LOWER] then
+            thought_key = thought_keys[levels.MUCH_LOWER]
+         elseif renown < thresholds[levels.LOWER] then
+            thought_key = thought_keys[levels.LOWER]
+         elseif renown < thresholds[levels.SOME_LOWER] then
+            thought_key = thought_keys[levels.SOME_LOWER]
+         elseif renown <= thresholds[levels.EQUAL] then
+            thought_key = thought_keys[levels.EQUAL]
+         elseif renown <= thresholds[levels.SOME_HIGHER] then
+            thought_key = thought_keys[levels.SOME_HIGHER]
+         elseif renown <= thresholds[levels.HIGHER] then
+            thought_key = thought_keys[levels.HIGHER]
          else
-            thought_key = thought_keys.MUCH_HIGHER
+            thought_key = thought_keys[levels.MUCH_HIGHER]
          end
 
          if thought_key then
