@@ -815,60 +815,53 @@
       "renown": {
          "mutually_exclusive": true,
          "values": {
-            "talk_with_very_high_renown": {
-               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_very_high_renown.display_name)",
-               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_very_high_renown.tooltip)",
-               "happiness_delta": 12,
-               "duration": "24h",
+            "talk_with_much_lower_renown": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_much_lower_renown.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_much_lower_renown.tooltip)",
+               "happiness_delta": 2,
+               "duration": "4h",
                "stackable": false
             },
-            "talk_with_very_high_renown_lower": {
-               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_very_high_lower_renown.display_name)",
-               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_very_high_lower_renown.tooltip)",
-               "happiness_delta": 10,
-               "duration": "12h",
+            "talk_with_lower_renown": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_lower_renown.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_lower_renown.tooltip)",
+               "happiness_delta": 4,
+               "duration": "6h",
                "stackable": false
             },
-            "talk_with_high_renown": {
-               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_high_renown.display_name)",
-               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_high_renown.tooltip)",
+            "talk_with_some_lower_renown": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_some_lower_renown.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_some_lower_renown.tooltip)",
+               "happiness_delta": 6,
+               "duration": "8h",
+               "stackable": false
+            },
+            "talk_with_equal_renown": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_equal_renown.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_equal_renown.tooltip)",
                "happiness_delta": 8,
                "duration": "12h",
                "stackable": false
             },
-            "talk_with_high_renown_lower": {
-               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_high_lower_renown.display_name)",
-               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_high_lower_renown.tooltip)",
+            "talk_with_some_higher_renown": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_some_higher_renown.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_some_higher_renown.tooltip)",
                "happiness_delta": 6,
-               "duration": "8h",
+               "duration": "16h",
                "stackable": false
             },
-            "talk_with_medium_renown": {
-               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_medium_renown.display_name)",
-               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_medium_renown.tooltip)",
-               "happiness_delta": 6,
-               "duration": "8h",
+            "talk_with_higher_renown": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_higher_renown.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_higher_renown.tooltip)",
+               "happiness_delta": 8,
+               "duration": "20h",
                "stackable": false
             },
-            "talk_with_medium_renown_lower": {
-               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_medium_lower_renown.display_name)",
-               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_medium_lower_renown.tooltip)",
-               "happiness_delta": 4,
-               "duration": "6h",
-               "stackable": false
-            },
-            "talk_with_low_renown": {
-               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_low_renown.display_name)",
-               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_low_renown.tooltip)",
-               "happiness_delta": 4,
-               "duration": "6h",
-               "stackable": false
-            },
-            "talk_with_low_renown_lower": {
-               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_low_lower_renown.display_name)",
-               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_low_lower_renown.tooltip)",
-               "happiness_delta": 2,
-               "duration": "4h",
+            "talk_with_much_higher_renown": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_much_higher_renown.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.social.values.talk_with_much_higher_renown.tooltip)",
+               "happiness_delta": 10,
+               "duration": "24h",
                "stackable": false
             }
          }

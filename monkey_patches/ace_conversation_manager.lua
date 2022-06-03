@@ -99,17 +99,17 @@ function AceConversationManager:_add_renown_thought(participant, target, options
 
          -- thresholds are named for the target's renown relative to this participant's renown
          -- e.g., MUCH_LOWER means the participant is talking to a target of much lower renown than the participant
-         if renown < thresholds[levels.MUCH_LOWER] then
+         if threshold < thresholds[levels.MUCH_LOWER] then
             thought_key = thought_keys[levels.MUCH_LOWER]
-         elseif renown < thresholds[levels.LOWER] then
+         elseif threshold < thresholds[levels.LOWER] then
             thought_key = thought_keys[levels.LOWER]
-         elseif renown < thresholds[levels.SOME_LOWER] then
+         elseif threshold < thresholds[levels.SOME_LOWER] then
             thought_key = thought_keys[levels.SOME_LOWER]
-         elseif renown <= thresholds[levels.EQUAL] then
+         elseif threshold <= thresholds[levels.EQUAL] then
             thought_key = thought_keys[levels.EQUAL]
-         elseif renown <= thresholds[levels.SOME_HIGHER] then
+         elseif threshold <= thresholds[levels.SOME_HIGHER] then
             thought_key = thought_keys[levels.SOME_HIGHER]
-         elseif renown <= thresholds[levels.HIGHER] then
+         elseif threshold <= thresholds[levels.HIGHER] then
             thought_key = thought_keys[levels.HIGHER]
          else
             thought_key = thought_keys[levels.MUCH_HIGHER]

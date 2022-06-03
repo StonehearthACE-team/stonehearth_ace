@@ -2662,37 +2662,33 @@
             },
             "social": {
                "values": {
-                  "talk_with_low_renown": {
-                     "tooltip": "Always good to hear advice from someone experienced like [str(target_name)]! ",
-                     "display_name": "In exemplary company"
+                  "talk_with_much_lower_renown": {
+                     "display_name": "Being famous",
+                     "tooltip": "[str(target_name)] is very happy with our conversation! It is great to be able to share some extra experience with them!"
                   },
-                  "talk_with_medium_renown": {
-                     "display_name": "In noteworthy company",
-                     "tooltip": "Woah! What a nice talk with [str(target_name)]! It's refreshing to know we have such promising talent among us!"
+                  "talk_with_lower_renown": {
+                     "display_name": "Being noteworthy",
+                     "tooltip": "It's rewarding to see how far [str(target_name)] can get! Feels good to encourage them further!"
                   },
-                  "talk_with_high_renown": {
-                     "display_name": "In famous company",
-                     "tooltip": "Nice! [str(target_name)] had time to talk with me! Their feats are remarkable and their name is known far and wide!"
-                  },
-                  "talk_with_very_high_renown": {
-                     "display_name": "On the shoulders of giants",
-                     "tooltip": "[str(target_name)] is a living legend. Can't believe we talked! Listening to them is truly interesting and I couldn't be more grateful!"
-                  },
-                  "talk_with_low_lower_renown": {
+                  "talk_with_some_lower_renown": {
                      "display_name": "Being exemplary",
                      "tooltip": "[str(target_name)] shows a lot of promise. I'm confident that at least something good rubbed off on them after our chat today!"
                   },
-                  "talk_with_medium_lower_renown": {
-                     "display_name": "Being noteworthy",
-                     "tooltip": "It's rewarding to see how far [str(target_name)] got! They're doing pretty well and feels good to encourage them further!"
+                  "talk_with_equal_renown": {
+                     "display_name": "Grow as we go",
+                     "tooltip": "[str(target_name)] is always a good company! We enjoy sharing tales of our exploits and learning from each other!"
                   },
-                  "talk_with_high_lower_renown": {
-                     "display_name": "Being famous",
-                     "tooltip": "[str(target_name)] is not someone for small feats! They're quite known and accomplished but it is great to be able to share some extra experience with them!"
+                  "talk_with_some_higher_renown": {
+                     "display_name": "In exemplary company",
+                     "tooltip": "Always good to hear advice from someone a bit more experienced like [str(target_name)]! "
                   },
-                  "talk_with_very_high_lower_renown": {
-                     "display_name": "Meeting of giants",
-                     "tooltip": "It's very considerate of [str(target_name)] to listen and respect me as they do; for we're nothing but equals in our successful journeys!"
+                  "talk_with_higher_renown": {
+                     "display_name": "In noteworthy company",
+                     "tooltip": "What a nice talk with [str(target_name)]! It's refreshing to know we have such talent among us!"
+                  },
+                  "talk_with_much_higher_renown": {
+                     "display_name": "In famous company",
+                     "tooltip": "I feel like I'm on the shoulder of giants when [str(target_name)] gives me some advice! What an accomplished individual!"
                   }
                }
             }
@@ -4912,6 +4908,14 @@
          "coffee_love_trait": {
             "display_name": "Coffee Lover",
             "description": "One can easily tell how much [name(i18n_data.entity)] loves coffee just by looking how grumpy they are without it (and how happy they are when they get it). They always appreciate drinking it more than anything else, if possible."
+         },
+         "modest_trait": {
+            "display_name": "Modest",
+            "description": "[name(i18n_data.entity)] is very unpretentious when it comes to their feats. It's about the town, not them! They'll receive less renown than usual when earning titles."
+         },
+         "braggart_trait": {
+            "display_name": "Braggart",
+            "description": "It's known that [name(i18n_data.entity)] is a bit of a show off. But some tales are better when slightly taller, anyway! They'll receive more renown than usual when earning titles."
          }
       },
       "build": {

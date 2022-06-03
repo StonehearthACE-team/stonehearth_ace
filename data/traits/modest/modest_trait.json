@@ -1,0 +1,22 @@
+{
+   "type": "trait",
+   "display_name": "i18n(stonehearth_ace:data.traits.modest_trait.display_name)",
+   "description": "i18n(stonehearth_ace:data.traits.modest_trait.description)",
+   "icon": "file(modest_trait.png)",
+   "attribute_modifiers": {
+      "compassion": {
+         "add": 20
+      },
+      "diligence": {
+         "add": 20
+      }
+   },
+   "subject_overrides": [
+      {
+         "subject": "stonehearth:subjects:town_status",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      }
+   ]
+}
