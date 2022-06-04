@@ -30,7 +30,10 @@ function TitlesComponent:post_activate()
       )
 
    self:update_titles_json()
-   self:_create_trait_listeners()
+
+   radiant.on_game_loop_once('Titles Component creating listeners...', function()
+      self:_create_trait_listeners()
+   end)
 
    -- if they have titles but renown is 0, this is probably the first load after renown was added; calculate it
    if self._is_restore and next(self._sv.titles) and self._sv.renown == 0 then

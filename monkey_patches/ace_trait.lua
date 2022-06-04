@@ -2,9 +2,9 @@ local Trait = require 'stonehearth.components.traits.trait'
 local AceTrait = class()
 
 AceTrait._ace_old_create = Trait.create
-function AceTrait:create()
+function AceTrait:create(entity, uri, args)
    self._is_create = true
-   self:_ace_old_create()
+   self:_ace_old_create(entity, uri, args)
 end
 
 AceTrait._ace_old_post_activate = Trait.post_activate
