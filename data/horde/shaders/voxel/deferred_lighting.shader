@@ -25,11 +25,14 @@ void main(void)
   gl_Position = projMat * vec4(vertPos, 1.0);
 }
 
+
 [[FS]]
 #version 410
-#include "/stonehearth/data/horde/shaders/utilityLib/camera_transforms.glsl"
-#include "/stonehearth_ace/data/horde/shaders/utilityLib/fragLighting.glsl"
-#include "/stonehearth/data/horde/shaders/utilityLib/desaturate.glsl"
+out vec4 fragColor;
+
+#include "shaders/utilityLib/camera_transforms.glsl"
+#include "shaders/utilityLib/fragLighting.glsl"
+#include "shaders/utilityLib/desaturate.glsl"
 
 #ifndef DISABLE_SHADOWS
 in vec4 projShadowPos[3];
@@ -44,7 +47,6 @@ uniform mat4 camProjMat;
 uniform mat4 camViewMatInv;
 
 in vec2 texCoords;
-out vec4 fragColor;
 
 void main(void)
 {
@@ -67,7 +69,5 @@ void main(void)
   #endif
 
   vec4 lightColor = calcPhongDirectionalLight(camViewerPos, pos, normal.xyz, depthInfo.b, depthInfo.a) * shadowTerm;
-  // Added by ACE, courtesy of Agon
-  float ambientShade = calcDirectionalAmbientShade(normal.xyz);
-  fragColor = vec4(globalDesaturate(lightColor.rgb + ambientShade * lightAmbientColor), lightColor.a);
+  fragColor = vec4(globalDesaturate(lightColor.rgb + lightAmbientColor), lightColor.a);
 }
