@@ -1,0 +1,109 @@
+{
+   "name": "radiant shrine glow",
+   "duration": 8000,
+   "material": "materials/cubemitter_bloom.material.json",
+   "loops": true,
+   "mesh": {
+      "file": "",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "RANDOM_BETWEEN",
+         "values": [3, 6]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [0]
+      },
+      "origin": {
+         "surface": "POINT"
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [500, 1300]
+         }
+      },
+      "speed": {
+			"start": {
+				"kind": "CONSTANT",
+				"values": [0]
+			}
+		},
+      "velocity": {},
+		"rotation": {
+			"over_lifetime_x": {
+				"kind": "RANDOM_BETWEEN_CURVES",
+				"values": [
+					[
+						[0, 0],
+						[1, 0]
+					],
+					[
+						[0, 90],
+						[1, 90]
+					]
+				]
+			},
+			"over_lifetime_y": {
+				"kind": "RANDOM_BETWEEN_CURVES",
+				"values": [
+					[
+						[0, 0],
+						[1, 0]
+					],
+					[
+						[0, 90],
+						[1, 90]
+					]
+				]
+			},
+			"over_lifetime_z": {
+				"kind": "RANDOM_BETWEEN_CURVES",
+				"values": [
+					[
+						[0, 0],
+						[1, 0]
+					],
+					[
+						[0, 90],
+						[1, 90]
+					]
+				]
+			}
+		},
+      "scale": {
+         "start": {
+				"kind": "RANDOM_BETWEEN",
+				"values": [0.6, 1.2]
+			}
+      },
+      "color": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               [0.944, 0.821, 0.557, 1],
+               [0.931, 0.759, 0.472, 1]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.1474635124206543, 0.042564435081199405],
+               [0.51, 0.16131911111111111],
+               [0.8848009490966797, 0.061643821497034114],
+               [1, 0]
+            ]
+         }
+      }
+   }
+}

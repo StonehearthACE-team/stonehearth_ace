@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(radiant_shrine.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "scale": 0.15,
+         "animation_table": "file(/data/rigs/entities/decoration/radiant_shrine/radiant_shrine.json)"
+      },
+      "effect_list": {
+         "default": "file(/data/rigs/entities/decoration/radiant_shrine/effects/stopped.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.radiant_shrine.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.radiant_shrine.description)",
+         "icon": "file(radiant_shrine.png)",
+         "category": "decoration",
+         "material_tags": [
+            "stone",
+            "radiant",
+            "shrine",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

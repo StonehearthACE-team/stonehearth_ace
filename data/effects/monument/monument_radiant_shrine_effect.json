@@ -1,0 +1,75 @@
+{
+   "type": "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "speed": 0.5,
+         "animation": "idle.json",
+         "loop": true
+      },
+      "glitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/radiant_shrine/radiant_shrine_projecting.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "essence"
+      },
+      "glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/radiant_shrine/radiant_shrine_glow.cubemitter.json",
+         "transforms": { "x": 0, "y": 5.25, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow_large": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/radiant_shrine/radiant_shrine_glow_large.cubemitter.json",
+         "transforms": { "x": 0, "y": 5.25, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "bubbles_base": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/valor_statue/shrine.valor_statue.bubbles_base.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.0, "y": 0.4, "z": 0.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "water_spray": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/valor_statue/shrine.valor_statue.spray_sword.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.0, "y": 0.8, "z": 0.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 10,
+         "min_distance": 22,
+         "falloff": 8,
+         "volume": 47,
+         "track": "stonehearth_ace:sounds:legacy_kingdom"
+      },
+      "light": {
+         "type": "light",
+         "light": "/stonehearth_ace/data/horde/animatedlights/natural/radiant_shrine.animatedlight.json",
+         "transforms": { "x": 0, "y": 5.2, "z": 0 },
+         "shadows": true
+      }
+   }
+}
