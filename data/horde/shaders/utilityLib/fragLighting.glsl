@@ -122,3 +122,11 @@ vec3 calcSimpleDirectionalLight(const vec3 normal) {
   float atten = max( dot( normal, -lightDir.xyz ), 0.0 );
   return atten * lightColor;
 }
+
+
+// function added by ACE, courtesy of Agon
+
+float calcDirectionalAmbientShade(const vec3 normal) {
+	float shade = dot( normal, -lightDir.xyz );
+	return (shade * 0.1) + 0.9;
+}
