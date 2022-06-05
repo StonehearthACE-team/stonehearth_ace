@@ -69,5 +69,6 @@ void main(void)
   #endif
 
   vec4 lightColor = calcPhongDirectionalLight(camViewerPos, pos, normal.xyz, depthInfo.b, depthInfo.a) * shadowTerm;
+  float ambientShade = calcDirectionalAmbientShade(normal.xyz);
   fragColor = vec4(globalDesaturate(lightColor.rgb + ambientShade * lightAmbientColor), lightColor.a);
 }
