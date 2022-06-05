@@ -11,21 +11,6 @@ uniform mat4 camViewMat;
 // Private Functions
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Unused, for now.
-int _selectShadowCascade(const vec3 worldSpace_fragmentPos, out vec4 cascadeTexCoord)
-{
-  int cascadeFound = 0;
-  int cascadeNum = 3;
-  for (int i = 0; i < 4 /*cascade count*/ && cascadeFound == 0; i++) {
-    if (min(cascadeTexCoord.x, cascadeTexCoord.y) > 0.0 &&
-      (max(cascadeTexCoord.x, cascadeTexCoord.y) < 1.0)) {
-        cascadeNum = i;
-        cascadeFound = 1;
-    }
-  }
-  
-  return cascadeNum;
-}
 
 vec4 _shadowCoordsByMap_deferred(const vec3 worldSpace_fragmentPos) {
   vec4 cascadeTexCoord;
@@ -114,21 +99,6 @@ vec4 _shadowCoordsByDistance(const vec3 worldSpace_fragmentPos, out int cascadeN
   }
   return projShadow;
 }
-
-float _PCF( vec4 projShadow ) {
-  // 5-tap PCF with a 30° rotated grid
-  
-  float offset = 1.0 / shadowMapSize;
-  
-  float shadowTerm = textureProj(shadowMap, projShadow);
-  shadowTerm += textureProj(shadowMap, projShadow + vec4(-0.866 * offset, 0.5 * offset, 0.0, 0.0));
-  shadowTerm += textureProj(shadowMap, projShadow + vec4(-0.866 * offset, -0.5 * offset, 0.0, 0.0));
-  shadowTerm += textureProj(shadowMap, projShadow + vec4(0.866 * offset, -0.5 * offset, 0.0, 0.0));
-  shadowTerm += textureProj(shadowMap, projShadow + vec4(0.866 * offset, 0.5 * offset, 0.0, 0.0));
-  
-  return shadowTerm / 5.0;
-}
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Public Functions
