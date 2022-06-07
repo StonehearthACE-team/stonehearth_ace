@@ -347,7 +347,11 @@ App.ComponentInfoView = App.View.extend({
                   var list = '<ul class="titleList">';
                   radiant.each(titleData.ranks, function(_, rankData) {
                      descriptions[rankData.key] = rankData.description;
-                     list += `<li class="titleRank ${rankData.attained ? 'attained' : 'unattained'}" description-key="${rankData.key}">${i18n.t(rankData.display_name)}</li>`;
+                     var renown = '';
+                     if (rankData.renown) {
+                        renown = ` renown="${rankData.renown}"`;
+                     }
+                     list += `<li class="titleRank ${rankData.attained ? 'attained' : 'unattained'}" description-key="${rankData.key}"${renown}>${i18n.t(rankData.display_name)}</li>`;
                   });
                   list += '</ul></div>';
                   titlesContent += list;
@@ -367,7 +371,12 @@ App.ComponentInfoView = App.View.extend({
                   if (titleRank) {
                      // don't give description tooltips for the unattained "next" ones
                      self.$('.titleRank.attained').each(function() {
-                        App.guiHelper.addTooltip($(this), i18n.t(descriptions[$(this).attr('description-key')]));
+                        var description = i18n.t(descriptions[$(this).attr('description-key')]);
+                        var renown = $(this).attr('renown');
+                        if (renown) {
+                           description += '<br>' + i18n.t('stonehearth_ace:component_info.stonehearth_ace.titles.renown', {renown: renown});
+                        }
+                        App.guiHelper.addTooltip($(this), description);
                      });
 
                      self.$('.titleRank.unattained').each(function() {

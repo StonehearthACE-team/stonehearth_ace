@@ -40,6 +40,11 @@ end
 
 function PetEat:_rethink()
    local consumption = self._entity:get_component('stonehearth:consumption')
+   if not consumption then
+      self._ai:abort('pet lost consumption component')
+      return
+   end
+   
    local hunger_score = consumption:get_hunger_score()
    if consumption:get_hunger_state() >= stonehearth.constants.hunger_levels.HUNGRY then
       self._ai:set_debug_progress('ready; hunger = ' .. hunger_score)

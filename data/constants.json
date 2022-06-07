@@ -683,6 +683,18 @@
             "MASTERWORK": "stonehearth:thoughts:drinking:had_item_quality_masterwork"
          }
       },
+      "conversation": {
+         "MIN_TARGET_RENOWN": 25,
+         "renown_levels": {
+            "MUCH_LOWER": -3,
+            "LOWER": -2,
+            "SOME_LOWER": -1,
+            "EQUAL": 0,
+            "SOME_HIGHER": 1,
+            "HIGHER": 2,
+            "MUCH_HIGHER": 3
+         }
+      },
       "food_satisfaction_thresholds": {
          "AVERAGE": 45,
          "HIGH": 80
@@ -816,6 +828,12 @@
                0.5,
                1.2,
                3
+            ],
+            "menace": [
+               0,
+               2,
+               5,
+               10
             ]
          }
       },

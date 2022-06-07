@@ -343,15 +343,35 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
    -- Set equipment.
    if citizen_spec.equipment then
       local equipment = citizen:get_component('stonehearth:equipment')
-      for _, equipment_uri in ipairs(citizen_spec.equipment) do
-         local equipment_data = radiant.util.is_string(equipment_uri) and {uri = equipment_uri} or equipment_uri
-         local equipment_entity = radiant.entities.create_entity(equipment_data.uri, { owner = session.player_id })
-         self:_set_customizable_entity_data(equipment_entity, equipment_data)
-         if equipment_data.item_quality and equipment_data.item_quality > 1 then
-            equipment_entity:add_component('stonehearth:item_quality'):initialize_quality(equipment_data.item_quality)
+      -- we can't do anything about making sure intended additional equipment stays equipped,
+      -- but we can at least do a single extra loop to try to make sure intended primary equipment remains equipped
+      local intended_equipment = {}
+
+      local add_equipment = function(data)
+         local equipment_entity = radiant.entities.create_entity(data.uri, { owner = session.player_id })
+         self:_set_customizable_entity_data(equipment_entity, data)
+         if data.item_quality and data.item_quality > 1 then
+            equipment_entity:add_component('stonehearth:item_quality'):initialize_quality(data.item_quality)
          end
 
          equipment:equip_item(equipment_entity, true)
+      end
+
+      for _, equipment_uri in ipairs(citizen_spec.equipment) do
+         local equipment_data = radiant.util.is_string(equipment_uri) and {uri = equipment_uri} or equipment_uri
+         local slot = radiant.entities.get_component_data(equipment_data.uri, 'stonehearth:equipment_piece').slot
+         -- only slot-based equipment can get removed due to equip order
+         if slot then
+            intended_equipment[slot] = equipment_data
+         end
+
+         add_equipment(equipment_data)
+      end
+
+      for slot, equipment_data in pairs(intended_equipment) do
+         if not equipment:has_item_type(equipment_data.uri) then
+            add_equipment(equipment_data)
+         end
       end
    end
 end

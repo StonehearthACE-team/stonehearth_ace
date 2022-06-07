@@ -58,7 +58,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
 
    if into_uri and into_uri ~= '' then
       --Create the transformed entity and put it on the ground
-      transformed_form = radiant.entities.create_entity(into_uri, { owner = entity})
+      transformed_form = radiant.entities.create_entity(into_uri, { owner = options.transformer_entity or entity})
       -- set the facing so that is_standable properly considers a rotated collision region
       radiant.entities.turn_to(transformed_form, facing)
       
@@ -89,7 +89,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
             -- likewise if it's reserved for travelers
             local owner_proxy = owner:get_component('stonehearth_ace:owner_proxy')
             local new_owner_proxy
-            local reserve_for_travelers = owner:get_component('stonehearth:traveler_reservation') and true
+            local traveler_reservation = owner:get_component('stonehearth:traveler_reservation')
 
             if owner_proxy then
                local new_owner = radiant.entities.create_entity(owner:get_uri())
@@ -101,8 +101,13 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
 
             if new_owner_proxy then
                new_owner_proxy:track_reservation(transformed_form)
-            elseif reserve_for_travelers then
+            elseif traveler_reservation then
+               traveler_reservation:unassign_traveler()
                stonehearth.traveler:reserve_for_travelers(transformed_form)
+               local traveler_component = owner:get_component('stonehearth:traveler')
+               if traveler_component then
+                  traveler_component:update_bed(transformed_form)
+               end
             else
                transformed_owner_component:set_owner(owner)
             end
@@ -251,7 +256,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          local player_id = radiant.entities.get_player_id(options.transformer_entity)
          loot_drops_component:set_auto_loot_player_id(player_id)
       end
-      radiant.entities.kill_entity(entity)
+      radiant.entities.kill_entity(entity, {location = location})
    elseif options.undeploy_entity and iconic_form and location then
       -- option to undeploy, but only use it if there's an iconic form
       local output_options = {

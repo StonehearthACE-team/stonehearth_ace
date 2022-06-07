@@ -1,0 +1,43 @@
+{
+   "type": "trait",
+   "display_name": "i18n(stonehearth_ace:data.traits.braggart_trait.display_name)",
+   "description": "i18n(stonehearth_ace:data.traits.braggart_trait.description)",
+   "icon": "file(braggart_trait.png)",
+   "attribute_modifiers": {
+      "courage": {
+         "add": 15
+      },
+      "menace": {
+         "add": 15
+      },
+      "inspiration": {
+         "add": 2
+      }
+   },
+   "subject_overrides": [
+      {
+         "subject": "stonehearth:loot:gold",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth:monsters:goblins:skull_trophy",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth:subjects:darkness",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      },
+      {
+         "subject": "stonehearth:subjects:death",
+         "sentiment": 1,
+         "permanent": true,
+         "unvarying": true
+      }
+   ]
+}

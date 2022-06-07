@@ -442,7 +442,7 @@ function AcePopulationFaction:_load_titles_from_json(json_ref)
          if data.ranks then
             titles[title] = {}
             for _, rank_data in ipairs(data.ranks) do
-               titles[title][rank_data.rank] = rank_data
+               titles[title][rank_data.rank or 1] = rank_data
             end
 
             -- load stats requirements, if there are any
@@ -513,6 +513,13 @@ function AcePopulationFaction:get_title_rank_data(entity, title, rank)
    local titles = self:_get_titles_for_entity_type(entity)
    
    return titles[title] and titles[title][rank]
+end
+
+function AcePopulationFaction:get_title_renown(entity, title, rank)
+   local rank_data = self:get_title_rank_data(entity, title, rank)
+   if rank_data then
+      return rank_data.renown or 0
+   end
 end
 
 function AcePopulationFaction:get_titles_for_statistic(entity, stat_changed_args)

@@ -17,7 +17,22 @@
          "stonehearth_ace:traits:vegetable_love": {},
          "stonehearth_ace:traits:fungi_love": {}
       },
-      "temperament": {},
+      "temperament": {
+         "stonehearth_ace:traits:braggart": {
+            "excludes": {
+               "stonehearth:traits:loner": true,
+               "stonehearth:traits:empathetic": true,
+               "stonehearth_ace:traits:modest": true
+            }
+         },
+         "stonehearth_ace:traits:modest": {
+            "excludes": {
+               "stonehearth:traits:hothead": true,
+               "stonehearth:traits:opinionated": true,
+               "stonehearth_ace:traits:braggart": true
+            }
+         }
+      },
       "outlook": {},
       "passion_jobs": {
          "stonehearth_ace:traits:passion_brewer": {}

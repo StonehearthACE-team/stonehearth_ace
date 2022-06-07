@@ -213,6 +213,7 @@ function PeriodicInteractionComponent:post_activate()
 end
 
 function PeriodicInteractionComponent:destroy()
+   self:_destroy_current_user_job_listener()
    self:_destroy_eligibility_listeners()
    self:_stop_interaction_cooldown_timer()
    self:_stop_general_cooldown_timer()
@@ -256,6 +257,27 @@ function PeriodicInteractionComponent:_setup_usability_listeners()
    self._eligibility_listeners = listeners
 end
 
+function PeriodicInteractionComponent:_create_current_user_job_listener()
+   self:_destroy_current_user_job_listener()
+   local current_user = self._sv.current_user
+   if current_user and current_user:is_valid() then
+      self._current_user_job_listener = radiant.events.listen(current_user, 'stonehearth:job_changed', function()
+            -- check if they can still use this entity; otherwise, reset current user and owner
+            if not self:is_valid_potential_user(current_user) then
+               self._sv.current_owner = nil
+               self:cancel_using(current_user)
+            end
+         end)
+   end
+end
+
+function PeriodicInteractionComponent:_destroy_current_user_job_listener()
+   if self._current_user_job_listener then
+      self._current_user_job_listener:destroy()
+      self._current_user_job_listener = nil
+   end
+end
+
 function PeriodicInteractionComponent:_startup()
    local location = radiant.entities.get_world_grid_location(self._entity)
    if not location then
@@ -264,12 +286,13 @@ function PeriodicInteractionComponent:_startup()
 
    self:select_mode(self._sv.current_mode)
    self:_setup_usability_listeners()
-   self:_consider_usability()
+   self:_create_current_user_job_listener()
 end
 
 function PeriodicInteractionComponent:_shutdown()
-   self:cancel_using(self._sv.current_user)
+   self:cancel_using(self._sv.current_user, true)
    self:_destroy_eligibility_listeners()
+   self:_destroy_current_user_job_listener()
 end
 
 function PeriodicInteractionComponent:get_valid_users_command(session, response)
@@ -326,9 +349,12 @@ function PeriodicInteractionComponent:is_usable()
    return self._is_usable
 end
 
-function PeriodicInteractionComponent:cancel_using(user)
+function PeriodicInteractionComponent:cancel_using(user, force_reset)
    if self._sv.current_user == user then
-      self:_reset(false, true)
+      -- only reset if the current mode requires a reset on cancel
+      if force_reset or (self._current_mode_data and self._current_mode_data.reset_on_cancel) then
+         self:_reset(false, true)
+      end
       self:_cancel_usage()
    end
 end
@@ -370,6 +396,7 @@ function PeriodicInteractionComponent:_reset(completed, skip_mode_reselection)
 
    self._sv.current_user = nil
    self.__saved_variables:mark_changed()
+   self:_destroy_current_user_job_listener()
 
    if not skip_mode_reselection then   
       self:select_mode(self._sv.current_mode)
@@ -379,6 +406,10 @@ function PeriodicInteractionComponent:_reset(completed, skip_mode_reselection)
 end
 
 function PeriodicInteractionComponent:_cancel_usage()
+   self._sv.current_user = nil
+   self.__saved_variables:mark_changed()
+   self:_destroy_current_user_job_listener()
+   self:_consider_usability(true)
    radiant.events.trigger_async(self._entity, 'stonehearth_ace:periodic_interaction:cancel_usage')
 end
 
@@ -432,13 +463,13 @@ function PeriodicInteractionComponent:_load_current_mode_data(mode)
    return mode
 end
 
+-- this should only get called when the mode has changed or on startup/reset
 function PeriodicInteractionComponent:select_mode(mode)
    mode = self:_load_current_mode_data(mode)
 
    if mode ~= self._sv.current_mode then
-      self:_cancel_usage()
       self._sv.current_mode = mode
-      self.__saved_variables:mark_changed()
+      self:_cancel_usage()
    end
 
    self:_stop_interaction_cooldown_timer()
@@ -552,6 +583,7 @@ end
 
 function PeriodicInteractionComponent:set_current_interaction_completed(user)
    self._sv.current_user = user
+   self:_create_current_user_job_listener()
 
    local current_interaction = self:get_current_interaction()
    if not current_interaction then

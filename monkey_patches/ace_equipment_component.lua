@@ -16,6 +16,16 @@ function AceEquipmentComponent:activate()
    end
 end
 
+AceEquipmentComponent._ace_old_destroy = EquipmentComponent.__user_destroy
+function AceEquipmentComponent:destroy()
+   if self._menace_modifier then
+      self._menace_modifier:destroy()
+      self._menace_modifier = nil
+   end
+
+   self:_ace_old_destroy()
+end
+
 function AceEquipmentComponent:equip_item(item, destroy_old_item)
    -- destroy the old item by default, unless explicitly told not to
    destroy_old_item = destroy_old_item ~= false
@@ -241,6 +251,38 @@ function AceEquipmentComponent:reset_cached(key)
 
    self._sv.caches[key] = nil
    self.__saved_variables:mark_changed()
+end
+
+-- ACE: also update quality-based buff to menace
+function AceEquipmentComponent:_update_score()
+   local equipment
+   local strength_score = 0
+   local quality_score = 0
+   local quality_lookup = stonehearth.constants.item_quality.bonuses.menace or {}
+
+   for key, item in pairs(self._sv.equipped_items) do
+      if item and item:is_valid() then
+         local item_piece = item:get_component('stonehearth:equipment_piece')
+         assert(item_piece, 'no equipment_piece found on item ' .. tostring(item or '<nil>'))
+         strength_score = strength_score + math.floor(item_piece:get_score_contribution())
+         quality_score = quality_score + (quality_lookup[radiant.entities.get_item_quality(item)] or 0)
+      end
+   end
+
+   self:_update_menace(quality_score)
+   stonehearth.score:change_score(self._entity, 'military_strength', 'equipment', strength_score)
+end
+
+function AceEquipmentComponent:_update_menace(value)
+   if self._menace_modifier then
+      self._menace_modifier:destroy()
+      self._menace_modifier = nil
+   end
+
+   if value ~= 0 then
+      local attributes_component = self._entity:add_component('stonehearth:attributes')
+      self._menace_modifier = attributes_component:modify_attribute('menace', { add = value })
+   end
 end
 
 return AceEquipmentComponent

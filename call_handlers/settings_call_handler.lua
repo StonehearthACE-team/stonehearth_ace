@@ -26,6 +26,10 @@ function SettingsCallHandler:issue_party_commands_when_job_disabled_setting_chan
    end
 end
 
+function SettingsCallHandler:title_selection_criteria_changed(session, response, criteria_change)
+   radiant.events.trigger(radiant, 'title_selection_criteria_changed', criteria_change)
+end
+
 function SettingsCallHandler:terrain_slice_buildings_setting_changed(session, response)
    stonehearth.subterranean_view:terrain_slice_buildings_setting_changed()
 end

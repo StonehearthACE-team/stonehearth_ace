@@ -165,35 +165,123 @@ function AceTown:_requirements_met(person, job_uri)
    return one_of ~= false
 end
 
-function AceTown:register_entity_type(type, entity)
+-- ACE: recalculate with the tags this entity was modifying
+function AceTown:remove_placement_slot_entity(entity)
+   local entry = self._placement_slot_entities[entity:get_id()]
+   self._placement_slot_entities[entity:get_id()] = nil
+
+   -- reset to zero for tags being passed in
+   local placement_limitations = entry and entry.placement_limitations
+   if placement_limitations then
+      for tag, max_placeable in pairs(placement_limitations) do
+         placement_limitations[tag] = 0
+      end
+      self:_calculate_num_placement_slots(placement_limitations)
+   end
+end
+
+-- ACE: removed unnecessary saved_variables mark_changed
+function AceTown:register_limited_placement_item(entity, item_tag)
+   local id = entity
+   if type(entity) ~= 'number' then
+      id = entity:get_id()
+   end
+
+   if not self._registered_limited_placement_items.ids[id] then
+      local count = self._registered_limited_placement_items.item_tags[item_tag] or 0
+      self._registered_limited_placement_items.item_tags[item_tag] = count + 1
+      self._registered_limited_placement_items.ids[id] = {
+         entity = entity,
+         item_tag = item_tag
+      }
+      --self.__saved_variables:mark_changed()
+      self:_calculate_num_placement_slots()
+   end
+end
+
+function AceTown:unregister_limited_placement_item(entity, item_tag)
+   local id = entity
+   if type(entity) ~= 'number' then
+      id = entity:get_id()
+   end
+   if self._registered_limited_placement_items.ids[id] then
+      local count = self._registered_limited_placement_items.item_tags[item_tag] or 0
+      self._registered_limited_placement_items.item_tags[item_tag] = math.max(0, count - 1)
+      self._registered_limited_placement_items.ids[id] = nil
+      --self.__saved_variables:mark_changed()
+      self:_calculate_num_placement_slots()
+   end
+end
+
+-- ACE: if a placement slot entity is removed,
+-- pass in its placement limitations table with 0s for amounts
+-- so that those tags will get updated even if no other placement slot entities modify them
+function AceTown:_calculate_num_placement_slots(placement_slots)
+   placement_slots = placement_slots or {}
+
+   for id, data in pairs(self._placement_slot_entities) do
+      if data and data.entity and data.entity:is_valid() then
+         for tag, max_placeable in pairs(data.placement_limitations) do
+            local count = placement_slots[tag]
+            placement_slots[tag] = (placement_slots[tag] or 0) + max_placeable
+         end
+      else
+         self._placement_slot_entities[id] = nil
+      end
+   end
+
+   -- Recalculate which items have reached the item placement limit
+   for tag, max_placeable in pairs(placement_slots) do
+      self:_update_num_placed(tag, max_placeable)
+   end
+end
+
+function AceTown:register_entity_type(type_name, entity)
    if not self._sv._registered_entity_types then
       self._sv._registered_entity_types = {}
    end
-   if not self._sv._registered_entity_types[type] then
-      self._sv._registered_entity_types[type] = {}
+   local type_tbl = self._sv._registered_entity_types[type_name]
+   if not type_tbl then
+      type_tbl = {}
+      self._sv._registered_entity_types[type_name] = type_tbl
    end
-   self._sv._registered_entity_types[type][entity:get_id()] = true
-   --self.__saved_variables:mark_changed()
+
+   local id = entity:get_id()
+   local is_first_registered = next(type_tbl) == nil
+   type_tbl[id] = true
+   
+   radiant.events.trigger_async(self, 'stonehearth_ace:town:entity_type_registered', type_name)
+   if is_first_registered then
+      radiant.events.trigger_async(self, 'stonehearth_ace:town:entity_type_registered_first', type_name)
+   end
 end
 
-function AceTown:unregister_entity_type(type, entity)
-   if self._sv._registered_entity_types and self._sv._registered_entity_types[type] then
-      self._sv._registered_entity_types[type][entity:get_id()] = nil
-      --self.__saved_variables:mark_changed()
+function AceTown:unregister_entity_type(type_name, entity)
+   if self._sv._registered_entity_types and self._sv._registered_entity_types[type_name] then
+      local type_tbl = self._sv._registered_entity_types[type_name]
+      local id = entity:get_id()
+      if type_tbl[id] then
+         type_tbl[id] = nil
+
+         radiant.events.trigger_async(self, 'stonehearth_ace:town:entity_type_unregistered:' .. type_name)
+         if not next(type_tbl) then
+            radiant.events.trigger_async(self, 'stonehearth_ace:town:entity_type_unregistered_last:' .. type_name)
+         end
+      end
    end
 end
 
 function AceTown:unregister_entity_types(entity)
    if self._sv._registered_entity_types then
-      for _, type_tbl in pairs(self._sv._registered_entity_types) do
-         type_tbl[entity:get_id()] = nil
+      for type_name, type_tbl in pairs(self._sv._registered_entity_types) do
+         -- a little extra access overhead, but this will trigger the proper events
+         self:unregister_entity_type(type_name, entity)
       end
    end
-   --self.__saved_variables:mark_changed()
 end
 
-function AceTown:is_entity_type_registered(type)
-   local registered = self._sv._registered_entity_types and self._sv._registered_entity_types[type]
+function AceTown:is_entity_type_registered(type_name)
+   local registered = self._sv._registered_entity_types and self._sv._registered_entity_types[type_name]
    return registered and next(registered) ~= nil
 end
 

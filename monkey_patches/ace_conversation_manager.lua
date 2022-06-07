@@ -51,4 +51,75 @@ function AceConversationManager:_produce_conversation_results()
    end
 end
 
+-- ACE: additionally (conditionally) add positive thoughts based on the renown of the conversation target
+function AceConversationManager:_add_conversation_thoughts()
+   local result = self._conversation_result.result
+   for _, participant in pairs(self._participants) do
+      local target_name
+      local target = stonehearth.conversation:get_target(participant)
+      if target and target:is_valid() then
+         target_name = radiant.entities.get_custom_name(target)
+      end
+
+      local options = {
+         tooltip_args = {
+            --TODO/Fix: this doesn't update in the thought if the target's name changes later
+            target_name = target_name
+         }
+      }
+
+      -- add default outcome-based thoughts
+      local thought_key = constants.conversation.THOUGHTS[result]
+
+      -- add default outcome-based thoughts
+      -- conversations that didn't end in agreement or disagreement generate no thoughts
+      if thought_key then
+         radiant.entities.add_thought(participant, thought_key, options)
+      end
+
+      self:_add_renown_thought(participant, target, options)
+   end
+end
+
+function AceConversationManager:_add_renown_thought(participant, target, options)
+   local reaction = self._reactions[participant:get_id()]
+   if reaction and reaction > 0 then
+      -- sentiment was positive for this participant, so check the renown of their target
+      local target_renown = radiant.entities.get_renown(target) or 0
+      local min_renown = constants.conversation.MIN_TARGET_RENOWN
+
+      if target_renown >= min_renown then
+         local levels = constants.conversation.renown_levels
+         local thresholds = constants.conversation.RENOWN_THRESHOLDS
+         local thought_keys = constants.conversation.RENOWN_THOUGHTS
+
+         local renown = radiant.entities.get_renown(participant) or 0
+         local threshold = target_renown / math.max(renown, min_renown)
+         local thought_key
+
+         -- thresholds are named for the target's renown relative to this participant's renown
+         -- e.g., MUCH_LOWER means the participant is talking to a target of much lower renown than the participant
+         if threshold < thresholds[levels.MUCH_LOWER] then
+            thought_key = thought_keys[levels.MUCH_LOWER]
+         elseif threshold < thresholds[levels.LOWER] then
+            thought_key = thought_keys[levels.LOWER]
+         elseif threshold < thresholds[levels.SOME_LOWER] then
+            thought_key = thought_keys[levels.SOME_LOWER]
+         elseif threshold <= thresholds[levels.EQUAL] then
+            thought_key = thought_keys[levels.EQUAL]
+         elseif threshold <= thresholds[levels.SOME_HIGHER] then
+            thought_key = thought_keys[levels.SOME_HIGHER]
+         elseif threshold <= thresholds[levels.HIGHER] then
+            thought_key = thought_keys[levels.HIGHER]
+         else
+            thought_key = thought_keys[levels.MUCH_HIGHER]
+         end
+
+         if thought_key then
+            radiant.entities.add_thought(participant, thought_key, options)
+         end
+      end
+   end
+end
+
 return AceConversationManager

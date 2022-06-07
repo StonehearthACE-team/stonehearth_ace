@@ -58,4 +58,43 @@ function AceSubterraneanViewService:_calculate_visible(entity, ignore_entities, 
    return false
 end
 
+function AceSubterraneanViewService:_create_entity_traces()
+   local entity_container = self:_get_root_entity_container()
+
+   self._entity_container_trace = entity_container:trace_children('subterranean view')
+      :on_added(function(id, entity)
+            -- ACE: if the entity was already destroyed, it will be nil here
+            if self._entity_traces[id] or not entity then
+               -- trace already exists
+               return
+            end
+
+            local location_trace = radiant.entities.trace_grid_location(entity, 'subterranean view')
+               :on_changed(function()
+                     if self.xray_mode or self.clip_enabled then
+                        self:_update_visiblity(entity)
+                     end
+                  end)
+               :push_object_state()
+
+            local parent_trace = entity:add_component('mob'):trace_parent('subterranean view')
+               :on_changed(function()
+                     if self.xray_mode or self.clip_enabled then
+                        self:_update_visiblity(entity)
+                     end
+                  end)
+
+            self._entity_traces[id] = {
+               location = location_trace,
+               parent = parent_trace,
+            }
+
+            self:_update_visiblity(entity)
+         end)
+      :on_removed(function(id, entity)
+            self:_destroy_entity_traces(id)
+         end)
+      :push_object_state()
+end
+
 return AceSubterraneanViewService

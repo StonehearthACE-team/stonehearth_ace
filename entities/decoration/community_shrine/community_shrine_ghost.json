@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(community_shrine.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "scale": 0.15
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.community_shrine.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.community_shrine.description)",
+         "icon": "file(community_shrine.png)",
+         "category": "decoration",
+         "material_tags": [
+            "stone",
+            "community",
+            "shrine",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

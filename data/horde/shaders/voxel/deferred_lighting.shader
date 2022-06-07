@@ -13,26 +13,29 @@ sampler2D depths = sampler_state
 };
 
 [[VS]]
+#version 410
 
 uniform mat4 projMat;
-attribute vec3 vertPos;
-varying vec2 texCoords;
-        
+in vec3 vertPos;
+out vec2 texCoords;
+
 void main(void)
 {
-  texCoords = vertPos.xy; 
+  texCoords = vertPos.xy;
   gl_Position = projMat * vec4(vertPos, 1.0);
 }
 
 
 [[FS]]
-#version 120
-#include "/stonehearth/data/horde/shaders/utilityLib/camera_transforms.glsl"
-#include "/stonehearth_ace/data/horde/shaders/utilityLib/fragLighting.glsl" 
-#include "/stonehearth/data/horde/shaders/utilityLib/desaturate.glsl"
+#version 410
+out vec4 fragColor;
+
+#include "shaders/utilityLib/camera_transforms.glsl"
+#include "shaders/utilityLib/fragLighting.glsl"
+#include "shaders/utilityLib/desaturate.glsl"
 
 #ifndef DISABLE_SHADOWS
-varying vec4 projShadowPos[3];
+in vec4 projShadowPos[3];
 #include "shaders/shadows.shader"
 #endif
 
@@ -43,11 +46,11 @@ uniform vec3 camViewerPos;
 uniform mat4 camProjMat;
 uniform mat4 camViewMatInv;
 
-varying vec2 texCoords;
+in vec2 texCoords;
 
 void main(void)
 {
-  vec4 normal = texture2D(normals, texCoords);
+  vec4 normal = texture(normals, texCoords);
 
   // Check to see if a valid normal was even written!
   if (normal.w == 0.0) {
@@ -55,7 +58,7 @@ void main(void)
   }
 
   float shadowTerm = 1.0;
-  vec4 depthInfo = texture2D(depths, texCoords);
+  vec4 depthInfo = texture(depths, texCoords);
 
   mat4 lProj = camProjMat;
   mat4 lView = camViewMatInv;
@@ -66,7 +69,7 @@ void main(void)
   #endif
 
   vec4 lightColor = calcPhongDirectionalLight(camViewerPos, pos, normal.xyz, depthInfo.b, depthInfo.a) * shadowTerm;
-  // Added by ACE, courtesy of Agon
+  // added by ACE, courtesy of Agon
   float ambientShade = calcDirectionalAmbientShade(normal.xyz);
-  gl_FragColor = vec4(globalDesaturate(lightColor.rgb + ambientShade * lightAmbientColor), lightColor.a);
+  fragColor = vec4(globalDesaturate(lightColor.rgb + ambientShade * lightAmbientColor), lightColor.a);
 }

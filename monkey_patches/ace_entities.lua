@@ -1,6 +1,7 @@
 local Point3 = _radiant.csg.Point3
 local Region3 = _radiant.csg.Region3
 
+local constants = require 'stonehearth.constants'
 local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local item_io_lib = require 'stonehearth_ace.lib.item_io.item_io_lib'
@@ -161,26 +162,24 @@ function ace_entities.kill_entity(entity, kill_data)
    end
 end
 
-function ace_entities.get_current_title(entity)
-   local current_title
-   local name_component = entity:get_component('stonehearth:unit_info')
-
-   if name_component then
-      current_title = name_component:get_current_title()
+function ace_entities.add_title(entity, title, rank)
+   if entity and entity:is_valid() then
+      entity:add_component('stonehearth_ace:titles'):add_title(title, rank)
    end
+end
 
-   return current_title or {display_name = '', description = ''}
+function ace_entities.get_current_title(entity)
+   if entity and entity:is_valid() then
+      local name_component = entity:get_component('stonehearth:unit_info')
+      return name_component and name_component:get_current_title()
+   end
 end
 
 function ace_entities.get_custom_data(entity)
-   local custom_data
-   local name_component = entity:get_component('stonehearth:unit_info')
-
-   if name_component then
-      custom_data = name_component:get_custom_data()
+   if entity and entity:is_valid() then
+      local name_component = entity:get_component('stonehearth:unit_info')
+      return name_component and name_component:get_custom_data()
    end
-
-   return custom_data or {}
 end
 
 function ace_entities.increment_stat(entity, category, name, value, default)
@@ -205,6 +204,30 @@ end
 function ace_entities.set_property_value(entity, property, value, replace)
    local pv_comp = entity:add_component('stonehearth_ace:property_values')
    return pv_comp:set_property(property, value, replace)
+end
+
+function ace_entities.get_renown(entity) --, include_equipment)
+   if not entity or not entity:is_valid() then
+      return
+   end
+
+   local renown = 0
+   local titles_comp = entity:get_component('stonehearth_ace:titles')
+   if titles_comp then
+      renown = titles_comp:get_renown()
+   end
+
+   -- if include_equipment ~= false then
+   --    local equipment_component = entity:get_component('stonehearth:equipment')
+   --    for key, item in pairs(equipment_component:get_all_items()) do
+   --       titles_comp = item:get_component('stonehearth_ace:titles')
+   --       if titles_comp then
+   --          renown = renown + titles_comp:get_renown()
+   --       end
+   --    end
+   -- end
+
+   return renown
 end
 
 -- uris are key, value pairs of uri, quantity
@@ -265,15 +288,15 @@ function ace_entities.output_items(uris, origin, min_radius, max_radius, options
    end
    if not output_comp and (not inputs or not next(inputs)) then
       if options.spill_fail_items then
-         local result = ace_entities.get_empty_output_table()
-         result.spilled = ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, true)
+         local result = radiant.entities.get_empty_output_table()
+         result.spilled = radiant.entities.spawn_items(uris, origin, min_radius, max_radius, options, true)
          return result
       else
-         return ace_entities.get_empty_output_table()
+         return radiant.entities.get_empty_output_table()
       end
    end
 
-   local items = ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, false)
+   local items = radiant.entities.spawn_items(uris, origin, min_radius, max_radius, options, false)
    return ace_entities.output_spawned_items(items, origin, min_radius, max_radius, options)
 end
 
@@ -324,7 +347,7 @@ function ace_entities.get_empty_output_table()
 end
 
 function ace_entities.combine_output_tables(t1, t2)
-   local result = ace_entities.get_empty_output_table()
+   local result = radiant.entities.get_empty_output_table()
 
    for category, items in pairs(result) do
       if t1 and t1[category] then

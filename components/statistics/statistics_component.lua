@@ -5,25 +5,33 @@
 local StatisticsComponent = class()
 
 function StatisticsComponent:initialize()
-   self._sv.statistics = {}
+   self._sv._statistics = {}
+end
+
+-- switch to statistics being private to reduce network usage (esp. in multiplayer/combat situations)
+function StatisticsComponent:restore()
+   if self._sv.statistics then
+      self._sv._statistics = self._sv.statistics
+      self._sv.statistics = nil
+   end
 end
 
 -- used by reembarking
 function StatisticsComponent:get_statistics()
-   return self._sv.statistics
+   return self._sv._statistics
 end
 
 function StatisticsComponent:set_statistics(statistics)
-   self._sv.statistics = statistics or {}
-   self.__saved_variables:mark_changed()
+   self._sv._statistics = statistics or {}
+   --self.__saved_variables:mark_changed()
 end
 
 function StatisticsComponent:get_category_stats(category)
-   return self._sv.statistics[category]
+   return self._sv._statistics[category]
 end
 
 function StatisticsComponent:get_stat(category, name, default)
-   local category_stats = self._sv.statistics[category]
+   local category_stats = self._sv._statistics[category]
    return category_stats and category_stats[name] or default
 end
 
@@ -35,8 +43,8 @@ end
 function StatisticsComponent:increment_stat(category, name, value, default)
    local prev_value = self:_add_stat(category, name) or default or 0
    value = prev_value + (value or 1)
-   self._sv.statistics[category][name] = value
-   self.__saved_variables:mark_changed()
+   self._sv._statistics[category][name] = value
+   --self.__saved_variables:mark_changed()
 
    self:_trigger_on_changed(category, name, value)
 end
@@ -45,23 +53,23 @@ function StatisticsComponent:add_to_stat_list(category, name, value, default)
    local prev_value = self:_add_stat(category, name)
    if not prev_value then
       prev_value = default or {}
-      self._sv.statistics[category][name] = prev_value
+      self._sv._statistics[category][name] = prev_value
    end
    table.insert(prev_value, value)
-   self.__saved_variables:mark_changed()
+   --self.__saved_variables:mark_changed()
 
    self:_trigger_on_changed(category, name, value)
 end
 
 function StatisticsComponent:_add_stat(category, name, value)
-   local category_stats = self._sv.statistics[category]
+   local category_stats = self._sv._statistics[category]
    if not category_stats then
       category_stats = {}
-      self._sv.statistics[category] = category_stats
+      self._sv._statistics[category] = category_stats
    end
    if value then
       category_stats[name] = value
-      self.__saved_variables:mark_changed()
+      --self.__saved_variables:mark_changed()
    end
 
    return category_stats[name]

@@ -25,6 +25,14 @@ function ComponentInfoComponent:set_component_detail(component, name, detail, i1
    self.__saved_variables:mark_changed()
 end
 
+function ComponentInfoComponent:remove_component_details(component)
+   local comp = self._sv.components[component]
+   if comp then
+      self._sv.components[component] = nil
+      self.__saved_variables:mark_changed()
+   end
+end
+
 function ComponentInfoComponent:remove_component_detail(component, name)
    local comp = self._sv.components[component]
    if comp then

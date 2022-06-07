@@ -42,7 +42,8 @@ ace_constants.drink_item_quality_thoughts[constants.item_quality.FINE] = 					co
 ace_constants.drink_item_quality_thoughts[constants.item_quality.EXCELLENT] = 			constants.thoughts.drink_item_quality.EXCELLENT 
 ace_constants.drink_item_quality_thoughts[constants.item_quality.MASTERWORK] = 			constants.thoughts.drink_item_quality.MASTERWORK 
 
-constants.conversation.MEDIUM_STAGES = {
+ace_constants.conversation = constants.conversation
+ace_constants.conversation.MEDIUM_STAGES = {
    order = {
       constants.conversation.stages.GREETING,
       constants.conversation.stages.MOVE,
@@ -59,7 +60,7 @@ constants.conversation.MEDIUM_STAGES = {
    },
 }
 
-constants.conversation.SHORT_STAGES = {
+ace_constants.conversation.SHORT_STAGES = {
    order = {
       constants.conversation.stages.GREETING,
       constants.conversation.stages.CONCLUSION
@@ -68,6 +69,26 @@ constants.conversation.SHORT_STAGES = {
       [constants.conversation.stages.GREETING] = "num_participants",
       [constants.conversation.stages.CONCLUSION] = "num_participants",
    },
+}
+
+-- thresholds are named for the target's renown relative to this participant's renown
+ace_constants.conversation.RENOWN_THRESHOLDS = {
+   [constants.conversation.renown_levels.MUCH_LOWER] = 0.25,
+   [constants.conversation.renown_levels.LOWER] = 0.5,
+   [constants.conversation.renown_levels.SOME_LOWER] = 0.75,
+   [constants.conversation.renown_levels.EQUAL] = 1.333,
+   [constants.conversation.renown_levels.SOME_HIGHER] = 2,
+   [constants.conversation.renown_levels.HIGHER] = 4,
+}
+
+ace_constants.conversation.RENOWN_THOUGHTS = {
+   [constants.conversation.renown_levels.MUCH_LOWER] = 'stonehearth:thoughts:renown:talk_with_much_lower_renown',
+   [constants.conversation.renown_levels.LOWER] = 'stonehearth:thoughts:renown:talk_with_lower_renown',
+   [constants.conversation.renown_levels.SOME_LOWER] = 'stonehearth:thoughts:renown:talk_with_some_lower_renown',
+   [constants.conversation.renown_levels.EQUAL] = 'stonehearth:thoughts:renown:talk_with_equal_renown',
+   [constants.conversation.renown_levels.SOME_HIGHER] = 'stonehearth:thoughts:renown:talk_with_some_higher_renown',
+   [constants.conversation.renown_levels.HIGHER] = 'stonehearth:thoughts:renown:talk_with_higher_renown',
+   [constants.conversation.renown_levels.MUCH_HIGHER] = 'stonehearth:thoughts:renown:talk_with_much_higher_renown',
 }
 
 return ace_constants
