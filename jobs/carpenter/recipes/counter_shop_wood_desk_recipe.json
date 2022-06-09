@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.counter_shop_wood_desk_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.counter_shop_wood_desk_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.counter_shop_wood_desk_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/counter_shop/wood/counter_shop_wood_desk/counter_shop_wood_desk.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "material": "herb resource",
+         "count": 2
+      },
+      {
+         "material": "fiber resource",
+         "count": 2
+      },
+      {
+         "material": "feather resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:counter:shop:wood:desk"
+      }
+   ]
+}

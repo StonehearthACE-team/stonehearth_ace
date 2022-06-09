@@ -133,6 +133,7 @@ local monkey_patches = {
    ace_place_carrying_on_structure_adjacent_action = 'stonehearth.ai.actions.place_carrying_on_structure_adjacent_action',
    ace_plant_field_adjacent_action = 'stonehearth.ai.actions.plant_field_adjacent_action',
    ace_player_jobs_controller = 'stonehearth.services.server.job.player_jobs_controller',
+   ace_player_market_stall_component = 'stonehearth.components.player_market_stall.player_market_stall_component',
    ace_player_service = 'stonehearth.services.server.player.player_service',
    ace_population_faction = 'stonehearth.services.server.population.population_faction',
    ace_portal_component = 'stonehearth.components.portal.portal_component',

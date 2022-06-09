@@ -44,20 +44,27 @@
          "buffs": {
             "stonehearth_ace:buffs:weather:warmth_source": true
          }
+      },
+      "stonehearth_ace:static_component_info": {
+         "details": {
+            "description": "i18n(stonehearth_ace:entities.decoration.radiant_shrine.static_component_info.description)",
+            "team": "i18n(stonehearth_ace:entities.decoration.radiant_shrine.static_component_info.team)"
+         }
       }
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 150,
+         "value_in_gold": 111,
          "rarity": "common",
          "shop_info": {
-            "buyable": false,
-            "sellable": false,
-            "shopkeeper_type": "caravan"
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_type": "caravan",
+            "shopkeeper_level": 2
          }
       },
       "stonehearth:appeal": {
-         "appeal": 115
+         "appeal": 99
       }
    }
 }

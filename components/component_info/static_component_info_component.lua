@@ -18,7 +18,7 @@ function StaticComponentInfoComponent:activate()
    if json.details then
       -- TODO: include entity unit_info data in i18n_data?
       local i18n_data = {}
-      for name, detail in json.details do
+      for name, detail in pairs(json.details) do
          ci_comp:set_component_detail('stonehearth_ace:static_component_info', name, detail, i18n_data)
       end
    end

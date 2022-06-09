@@ -1,0 +1,27 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:furniture:counter:shop:slim:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(counter_shop_clay_end_right.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.counter_shop.clay.counter_shop_clay_end_right.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.counter_shop.clay.counter_shop_clay_end_right.description)",
+         "icon": "file(counter_shop_clay_end_right.png)",
+         "material_tags": [
+            "clay",
+            "crafted"
+         ]
+      }
+   }
+}

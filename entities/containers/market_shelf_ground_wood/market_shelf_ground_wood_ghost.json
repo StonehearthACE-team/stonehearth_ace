@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(market_shelf_ground_wood.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/containers/shelf/shelf.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/containers/shelf/effects/idle.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Market Trading Shelf",
+         "description": "Other players and Travellers can buy the items stored here.",
+         "icon": "file(market_shelf_ground_wood.png)",
+         "category": "storage",
+         "material_tags": [
+            "wood",
+            "containers",
+            "crafted",
+            "furniture",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

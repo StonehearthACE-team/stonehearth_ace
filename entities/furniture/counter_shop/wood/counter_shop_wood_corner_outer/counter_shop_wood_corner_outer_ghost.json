@@ -1,0 +1,27 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:furniture:counter:shop:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(counter_shop_wood_corner_outer.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.counter_shop.wood.counter_shop_wood_corner_outer.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.counter_shop.wood.counter_shop_wood_corner_outer.description)",
+         "icon": "file(counter_shop_wood_corner_outer.png)",
+         "material_tags": [
+            "wood",
+            "crafted"
+         ]
+      }
+   }
+}
