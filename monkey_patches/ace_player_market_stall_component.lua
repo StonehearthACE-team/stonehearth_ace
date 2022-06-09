@@ -1,4 +1,4 @@
-local entity_forms_lib = require 'lib.entity_forms.entity_forms_lib'
+local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
 local AcePlayerMarketStall = class()
 
@@ -16,9 +16,13 @@ function AcePlayerMarketStall:sell_items_to_player(to_player_id, item_uri_to_sel
       return false
    end
 
+   local player_id = radiant.entities.get_player_id(self._entity)
+   local from_inventory = stonehearth.inventory:get_inventory(player_id)
+   local is_boosted = self:_is_value_booster_in_range(from_inventory)
+   local item_cost = self:_calculate_item_cost(item_uri_to_sell, is_boosted)
+
    local to_inventory = stonehearth.inventory:get_inventory(to_player_id)
    local gold = to_inventory:get_gold_count()
-   local item_cost = self:calculate_item_cost(item_uri_to_sell)
    local buy_quantity = math.min(quantity or 1, math.floor(gold / item_cost))
 
    if buy_quantity <= 0 then
@@ -34,7 +38,7 @@ function AcePlayerMarketStall:sell_items_to_player(to_player_id, item_uri_to_sel
 
       if item_uri == item_uri_to_sell and item_quality == quality then
          item_count = item_count + 1
-         item_list[item_count] = item
+         item_list[id] = item
 
          if item_count >= buy_quantity then
             break
@@ -47,19 +51,23 @@ function AcePlayerMarketStall:sell_items_to_player(to_player_id, item_uri_to_sel
    end
 
    local total_cost = item_cost * item_count
-   local player_id = radiant.entities.get_player_id(self._entity)
-   local from_inventory = stonehearth.inventory:get_inventory(player_id)
    to_inventory:subtract_gold(total_cost)
    from_inventory:add_gold(total_cost)
 
-   for _, entity in ipairs(item_list) do
+   for _, entity in pairs(item_list) do
       from_inventory:remove_item(entity:get_id())
       to_inventory:add_item(entity)
 
-      local location = radiant.terrain.find_placement_point(target_drop_origin, 1, 5)
-      radiant.terrain.place_entity(entity, location, { force_iconic = true })
       stonehearth.ai:reconsider_entity(entity, 'entity was purchased from a stockpile')
    end
+
+   local default_storage = target_town:get_default_storage()
+   local options = {
+      inputs = default_storage,
+      spill_fail_items = true,
+      require_matching_filter_override = true,
+   }
+   radiant.entities.output_spawned_items(item_list, target_drop_origin, 1, 5, options)
 
    stonehearth.ai:reconsider_entity(self._entity, 'purchased item was removed from storage')
    return true
@@ -85,9 +93,10 @@ function AcePlayerMarketStall:sell_next_items(max_quantity)
 
    local player_id = radiant.entities.get_player_id(self._entity)
    local from_inventory = stonehearth.inventory:get_inventory(player_id)
+   local is_boosted = self:_is_value_booster_in_range(from_inventory)
 
    for _, entity in ipairs(item_list) do
-      local item_cost = self:calculate_item_cost(entity)
+      local item_cost = self:_calculate_item_cost(entity, is_boosted)
 
       from_inventory:remove_item(entity:get_id())
       from_inventory:add_gold(item_cost)
@@ -99,47 +108,31 @@ function AcePlayerMarketStall:sell_next_items(max_quantity)
    return true
 end
 
-function AcePlayerMarketStall:calculate_item_cost(entity)
+function AcePlayerMarketStall:_calculate_item_cost(entity, is_boosted)
    local item_catalog_data = stonehearth.catalog.get_catalog_data(stonehearth.catalog, entity:get_uri())
    local quality = radiant.entities.get_item_quality(entity)
    local item_cost = radiant.entities.apply_item_quality_bonus('net_worth', item_catalog_data.net_worth, quality)
 
-   local player_id = radiant.entities.get_player_id(self._entity)
-   local from_inventory = stonehearth.inventory:get_inventory(player_id)
-   local value_boosters = {}
-   local value_boost
-	local booster_found
-
-	if from_inventory then
-      for uri, active in pairs(stonehearth.constants.traveler.VALUE_BOOSTER_URIS) do
-		   local matching = active and from_inventory and from_inventory:get_items_of_type(uri)
-		   for _, booster in pairs(matching and matching.items or {}) do
-			   if radiant.entities.exists_in_world(booster) then
-				   table.insert(value_boosters, booster)
-			   end
-		   end
-      end
-	end
-
-   if value_boosters ~= {} and booster_found == nil then
-      for _, placed_booster in ipairs(value_boosters) do
-         local distance = radiant.entities.distance_between_entities(placed_booster, self._entity)
-         if distance and distance < stonehearth.constants.traveler.VALUE_BOOSTER_RANGE then
-            booster_found = true
-            break
-         end
-      end
-   end
-
-   if booster_found == true then
-     value_boost = stonehearth.constants.traveler.VALUE_BOOSTER_BOOST
-   end
-
-   if value_boost then
-      item_cost = item_cost * (1 + value_boost)
+   if is_boosted then
+      item_cost = item_cost * (1 + stonehearth.constants.traveler.VALUE_BOOSTER_BOOST)
    end
 
    return math.floor(item_cost + 0.5) or 1
+end
+
+function AcePlayerMarketStall:_is_value_booster_in_range(from_inventory)
+   if from_inventory then
+      for uri, active in pairs(stonehearth.constants.traveler.VALUE_BOOSTER_URIS) do
+		   local matching = active and from_inventory:get_items_of_type(uri)
+         if matching and matching.items then
+            for _, booster in pairs(matching.items) do
+               if radiant.entities.distance_between_entities(booster, self._entity) < stonehearth.constants.traveler.VALUE_BOOSTER_RANGE then
+                  return true
+               end
+            end
+         end
+      end
+	end
 end
 
 return AcePlayerMarketStall
