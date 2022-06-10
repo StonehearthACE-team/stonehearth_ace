@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(copper_weighing_scale.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "material": "materials/shiny.material.json",
+         "scale": 0.09
+      },
+      "mob": {
+         "model_origin": { "x": 0.45, "y": 0, "z": -0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.copper_weighing_scale.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.copper_weighing_scale.description)",
+         "icon": "file(copper_weighing_scale.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "crafted",
+            "metal",
+            "copper",
+            "weighing_scale",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

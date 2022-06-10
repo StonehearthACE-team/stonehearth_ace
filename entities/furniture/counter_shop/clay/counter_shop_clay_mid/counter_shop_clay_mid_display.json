@@ -1,0 +1,49 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:furniture:counter:shop:clay:mid"
+   ],
+   "components": {
+      "mixintypes": {
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(counter_shop_clay_mid_display.qb)"
+            ]
+         }
+      },
+      "stonehearth:storage": {
+         "type": "input_crate",
+         "capacity": 4,
+         "render_contents": true,
+         "filter_list": "stonehearth:ui:stockpile:filters",
+         "is_single_filter": false
+      },
+      "stonehearth:player_market_stall": {},
+      "stonehearth:traveler_attraction": {},
+      "render_info": {
+         "animation_table": "file(/data/rigs/entities/containers/counter_shop/mid_display/counter_shop_mid_display.json)"
+      },
+      "effect_list": {
+         "default": "file(/data/rigs/entities/containers/counter_shop/mid_display/effects/idle.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(counter_shop_clay_mid_display.png)",
+         "category": "undefined"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 12,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 15
+      }
+   }
+}

@@ -10,12 +10,17 @@
       "destination": {
          "region": [
             {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 3, "z": 2 }
+               "min": { "x": -1, "y": 0, "z": -2 },
+               "max": { "x": 1, "y": 3, "z": 0 }
+            },
+            {
+               "min": { "x": -1, "y": 0, "z": 1 },
+               "max": { "x": 1, "y": 3, "z": 3 }
             }
          ],
          "adjacency_flags": [
             "front",
+            "center",
             "back"
          ]
       },

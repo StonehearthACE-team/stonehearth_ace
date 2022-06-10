@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.copper_weighing_scale_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.copper_weighing_scale_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.copper_weighing_scale_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/copper_weighing_scale/copper_weighing_scale.png",
+   "workshop": "stonehearth:blacksmith:forge",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:copper_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:copper_weighing_scale"
+      }
+   ]
+}

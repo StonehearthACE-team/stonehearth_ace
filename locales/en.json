@@ -7556,6 +7556,16 @@
                "description": "Very sleek and lightweight, can keep a beverage hot for a good time!",
                "flavor": "A Brewer can use these to make coffee"
             },
+            "copper_weighing_scale_recipe": {
+               "recipe_name": "Copper Weighing Scale",
+               "description": "Very helpful for measuring the mass of things and looking smarter!",
+               "flavor": "How can one be sure the weights weigh what they say they weigh?"
+            },
+            "gold_weighing_scale_recipe": {
+               "recipe_name": "Gold Weighing Scale",
+               "description": "A new level of sophistication for your business!",
+               "flavor": ""
+            },
             "moka_coffee_pot_recipe": {
                "recipe_name": "Moka Coffee Pot",
                "description": "A special pot for extracting the deepest flavors of coffee, very traditional around the southern coast.",
@@ -13754,6 +13764,10 @@
                "counter_shop_stone_corner_inner": {
                   "display_name": "Stone Counter Inner Corner",
                   "description": "The cold and smooth stone surface is great for cooking!"
+               },
+               "counter_shop_stone_desk": {
+                  "display_name": "Stone Counter Desk",
+                  "description": "Increases the value of items sold by nearby display counters and shelves!"
                }
             },
             "clay": {
@@ -13780,6 +13794,10 @@
                "counter_shop_clay_corner_inner": {
                   "display_name": "Clay Counter Inner Corner",
                   "description": "Fine craftsmanship on this nice piece for both homes or workshops!"
+               },
+               "counter_shop_clay_desk": {
+                  "display_name": "Clay Counter Desk",
+                  "description": "Increases the value of items sold by nearby display counters and shelves!"
                }
             }
          },
@@ -15248,6 +15266,14 @@
                "description": "<p style='text-align:center;color:white;'>This beautiful monument is dedicated to the great community behind Stonehearth and to those that have supported the ACE project!<br><br>Below is a permanent list of all the kind donors, ordered by total amount. This list will be updated whenever a new release is out!</p>",
                "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>Gary, Destroyer of Worlds<br>The Illuminati<br>Secret Horse Overlords</p>"
             }
+         },
+         "copper_weighing_scale": {
+            "display_name": "Copper Weighing Scale",
+            "description": "Makes you look a lot smarter!"
+         },
+         "gold_weighing_scale": {
+            "display_name": "Gold Weighing Scale",
+            "description": "Very sophisticated and shiny!"
          }
       },
       "pets": {
@@ -18415,6 +18441,14 @@
             "iconic_description": "Can be harvested for rye when placed.",
             "display_name": "Old Rye Bundle",
             "description": "It's still good, if a little mushy in places."
+         },
+         "market_shelf_ground": {
+            "display_name": "Short Market Trading Shelf",
+            "description": "Other players and travelers can buy the items stored here."
+         },
+         "market_shelf_tall_ground": {
+            "display_name": "Market Trading Shelf",
+            "description": "Other players and travelers can buy the items stored here."
          }
       },
       "tools": {
