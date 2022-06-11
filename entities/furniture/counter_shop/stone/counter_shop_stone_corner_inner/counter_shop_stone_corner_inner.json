@@ -1,0 +1,32 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:furniture:counter:shop",
+      "file(counter_shop_stone_corner_inner_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(counter_shop_stone_corner_inner_iconic.json)",
+         "ghost_form": "file(counter_shop_stone_corner_inner_ghost.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

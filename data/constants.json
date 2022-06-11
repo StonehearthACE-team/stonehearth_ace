@@ -1187,6 +1187,17 @@
       "terrain": {
          "MAX_Y_OVERRIDE": 100000,
          "NUM_SUNLIGHT_CHECK_ANGLES": 6
+      },
+      "traveler": {
+         "LEAVE_GIFT_CHANCE": 0.2,
+         "VISIT_NEXT_ATTRACTION_INTERVAL": "40m+40m",
+         "VALUE_BOOSTER_RANGE": 12,
+         "VALUE_BOOSTER_BOOST": 0.12,
+         "VALUE_BOOSTER_URIS": {
+            "stonehearth_ace:furniture:counter:shop:wood:desk": true,
+            "stonehearth_ace:furniture:counter:shop:stone:desk": true,
+            "stonehearth_ace:furniture:counter:shop:clay:desk": true
+         }
       }
    }
 }

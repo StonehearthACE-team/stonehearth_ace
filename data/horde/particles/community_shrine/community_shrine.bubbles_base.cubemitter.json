@@ -1,0 +1,95 @@
+{
+   "name": "valor_statue",
+   "duration": 9999,
+   "material": "materials/cubemitter.material.json",
+   "loops": true,
+   "mesh": {
+      "file": "",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "CONSTANT",
+         "values": [18]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [0]
+      },
+      "origin": {
+         "surface": "RECTANGLE",
+         "values": [3.6, 3.6, 1, 1]
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [300, 400]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0]
+         },
+         "over_lifetime": {
+            "kind": "CONSTANT",
+            "values": [0]
+         }
+      },
+      "acceleration": {
+         "over_lifetime_x": {
+            "kind": "CONSTANT",
+            "values": [0]
+         }
+      },
+      "velocity": {
+         "over_lifetime_y": {
+            "kind": "CONSTANT",
+            "values": [0]
+         }
+      },
+      "rotation": {},
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.2, 0.3]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 1],
+               [1, 2]
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               [0.59, 0.85, 0.98, 1],
+               [0.8, 0.85, 0.9, 1]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 0.2],
+                  [1, 0.1]
+               ],
+               [
+                  [0, 0.3],
+                  [1, 0.21399999999999997]
+               ]
+            ]
+         }
+      }
+   }
+}

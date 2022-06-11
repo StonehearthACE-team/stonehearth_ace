@@ -1,0 +1,73 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:furniture:counter:shop",
+      "file(counter_shop_clay_mid_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(counter_shop_clay_mid_iconic.json)",
+         "ghost_form": "file(counter_shop_clay_mid_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "display_x1": {
+               "transform_uri": "stonehearth_ace:furniture:counter:shop:clay:mid:display:2",
+               "request_action": "stonehearth_ace:transform",
+               "command": "stonehearth_ace:commands:transform:set_up_display_x1",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
+               "transform_ingredient_material": "cloth resource",
+               "transforming_worker_effect": "fiddle",
+               "transforming_worker_effect_times": 1,
+               "transform_effect": "stonehearth:effects:item_created",
+               "auto_request": false,
+               "worker_required_job": {
+                  "stonehearth:jobs:worker": true,
+                  "stonehearth:jobs:weaver": true,
+                  "stonehearth:jobs:potter": true
+               }
+            },
+            "display_x4": {
+               "transform_uri": "stonehearth_ace:furniture:counter:shop:clay:mid:display",
+               "request_action": "stonehearth_ace:transform",
+               "command": "stonehearth_ace:commands:transform:set_up_display_x4",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
+               "transform_ingredient_material": "cloth resource",
+               "transforming_worker_effect": "fiddle",
+               "transforming_worker_effect_times": 1,
+               "transform_effect": "stonehearth:effects:item_created",
+               "auto_request": false,
+               "worker_required_job": {
+                  "stonehearth:jobs:worker": true,
+                  "stonehearth:jobs:weaver": true,
+                  "stonehearth:jobs:potter": true
+               }
+            }
+         }
+      },
+      "stonehearth:table": {
+         "drop_effect": "carry_putdown_on_table",
+         "drop_offset": { "x": -0.5, "y": 1, "z": -0.5 }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

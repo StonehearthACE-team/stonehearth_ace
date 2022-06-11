@@ -32,20 +32,27 @@
       "stonehearth:traveler_attraction": {},
       "effect_list": {
          "default": "stonehearth_ace:effects:monument:community_shrine"
+      },
+      "stonehearth_ace:static_component_info": {
+         "details": {
+            "description": "i18n(stonehearth_ace:entities.decoration.community_shrine.static_component_info.description)",
+            "donors": "i18n(stonehearth_ace:entities.decoration.community_shrine.static_component_info.donors)"
+         }
       }
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 150,
+         "value_in_gold": 111,
          "rarity": "common",
          "shop_info": {
-            "buyable": false,
-            "sellable": false,
-            "shopkeeper_type": "caravan"
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_type": "caravan",
+            "shopkeeper_level": 2
          }
       },
       "stonehearth:appeal": {
-         "appeal": 115
+         "appeal": 99
       }
    }
 }

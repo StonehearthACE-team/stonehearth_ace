@@ -3659,6 +3659,13 @@
             "build_well_destroy": {
                "display_name": "Remove Water Well",
                "description": "Permanently remove this water well!"
+            },
+            "set_up_display": {
+               "x2_description": "Order a Worker, Weaver or the professional that crafted this furniture piece to add any type of Bolt of Cloth and turn it into a shop display for two items!",
+               "display_name": "Set up Shop Display",
+               "x1_description": "Order a Worker, Weaver or the professional that crafted this furniture piece to add any type of Bolt of Cloth and turn it into a shop display for one item!",
+               "x3_description": "Order a Worker, Weaver or the professional that crafted this furniture piece to add any type of Bolt of Cloth and turn it into a shop display for three items!",
+               "x4_description": "Order a Worker, Weaver or the professional that crafted this furniture piece to add any type of Bolt of Cloth and turn it into a shop display for four items!"
             }
          },
          "slaughter": {
@@ -6750,44 +6757,79 @@
                "flavor": "Well done!"
             },
             "clay_stool_recipe": {
-               "recipe_name": "Clay Stool",
+               "recipe_name": "Clay Bar Stool",
                "description": "An alternative to chairs.",
                "flavor": "Should probably be a bit sturdier..."
             },
             "counter_clay_corner_inner_recipe": {
-               "recipe_name": "Clay Counter Inner Corner",
-               "description": "An inner corner piece for your counter.",
+               "recipe_name": "Clay Bar Inner Corner",
+               "description": "An inner corner piece for your bar.",
                "flavor": ""
             },
             "counter_clay_corner_outer_recipe": {
-               "recipe_name": "Clay Counter Corner",
-               "description": "A corner piece for your counter.",
+               "recipe_name": "Clay Bar Corner",
+               "description": "A corner piece for your bar.",
                "flavor": ""
             },
             "counter_clay_mid_recipe": {
-               "recipe_name": "Clay Counter Midsection",
-               "description": "The main part of a clay counter.",
+               "recipe_name": "Clay Bar Midsection",
+               "description": "The main part of a clay bar.",
                "flavor": "Feels like an oasis for the weary traveler"
             },
             "counter_clay_mid_small_recipe": {
-               "recipe_name": "Clay Counter Small Midsection",
+               "recipe_name": "Clay Bar Small Midsection",
                "description": "Half the size of a regular midsection.",
                "flavor": "Feels like an oasis for the weary traveler"
             },
             "counter_clay_end_left_recipe": {
-               "recipe_name": "Clay Counter Left End",
-               "description": "For properly finishing your counter if not against a wall.",
+               "recipe_name": "Clay Bar Left End",
+               "description": "For properly finishing your bar if not against a wall.",
                "flavor": ""
             },
             "counter_clay_end_right_recipe": {
-               "recipe_name": "Clay Counter Right End",
-               "description": "For properly finishing your counter if not against a wall.",
+               "recipe_name": "Clay Bar Right End",
+               "description": "For properly finishing your bar if not against a wall.",
                "flavor": "Is there a wrong end?"
             },
             "counter_clay_door_recipe": {
-               "recipe_name": "Clay Counter Door",
-               "description": "Allows hearthlings to traverse between both sides of the counter.",
+               "recipe_name": "Clay Bar Door",
+               "description": "Allows hearthlings to traverse between both sides of the bar.",
                "flavor": "Keep it closed, keep it clean"
+            },
+            "counter_shop_clay_corner_inner_recipe": {
+               "recipe_name": "Clay Counter Inner Corner",
+               "description": "An inner corner piece for your counter.",
+               "flavor": ""
+            },
+            "counter_shop_clay_corner_outer_recipe": {
+               "recipe_name": "Clay Counter Corner",
+               "description": "A corner piece for your counter.",
+               "flavor": "With a bolt of any cloth, can be transformed into a shop counter display for travelers and other players!"
+            },
+            "counter_shop_clay_mid_recipe": {
+               "recipe_name": "Clay Counter Midsection",
+               "description": "The main part of a clay counter.",
+               "flavor": "With a bolt of any cloth, can be transformed into a shop counter display for travelers and other players!"
+            },
+            "counter_shop_clay_mid_small_recipe": {
+               "recipe_name": "Clay Counter Small Midsection (x2)",
+               "description": "Half the size of a regular midsection.",
+               "flavor": "With a bolt of any cloth, can be transformed into a shop counter display for travelers and other players!"
+            },
+            "counter_shop_clay_end_left_recipe": {
+               "recipe_name": "Clay Counter Left End",
+               "description": "For properly finishing your counter if not against a wall.",
+               "flavor": "Is it coming back to End?"
+            },
+            "counter_shop_clay_end_right_recipe": {
+               "recipe_name": "Clay Counter Right End",
+               "description": "For properly finishing your counter if not against a wall.",
+               "flavor": ""
+            },
+            "counter_shop_clay_desk_recipe": {
+               "recipe_name": "Clay Counter Desk",
+               "description": "The forefront of any worthy establishment!",
+               "flavor": "Counter desks will boost the value of all items being sold by counters and shelves (up to 12 blocks away) in a whopping 12%!"
             },
             "clay_comfy_bed_herbalist_recipe": {
                "recipe_name": "Herbalist Clay Comfy Bed",
@@ -7225,44 +7267,79 @@
                "flavor": "Well fitting!"
             },
             "stone_stool_recipe": {
-               "recipe_name": "Stone Stool",
+               "recipe_name": "Stone Bar Stool",
                "description": "An alternative to chairs.",
                "flavor": "Stone furniture tends to be... oversized"
             },
             "counter_stone_corner_inner_recipe": {
-               "recipe_name": "Stone Counter Inner Corner",
-               "description": "An inner corner piece for your counter.",
+               "recipe_name": "Stone Bar Inner Corner",
+               "description": "An inner corner piece for your bar.",
                "flavor": ""
             },
             "counter_stone_corner_outer_recipe": {
-               "recipe_name": "Stone Counter Corner",
-               "description": "A corner piece for your counter.",
+               "recipe_name": "Stone Bar Corner",
+               "description": "A corner piece for your bar.",
                "flavor": ""
             },
             "counter_stone_mid_recipe": {
-               "recipe_name": "Stone Counter Midsection",
-               "description": "The main part of a stone counter.",
+               "recipe_name": "Stone Bar Midsection",
+               "description": "The main part of a stone bar.",
                "flavor": "Home for revelers and patrons alike"
             },
             "counter_stone_mid_small_recipe": {
-               "recipe_name": "Stone Counter Small Midsection",
+               "recipe_name": "Stone Bar Small Midsection",
                "description": "Half the size of a regular midsection.",
                "flavor": "Home for revelers and patrons alike"
             },
             "counter_stone_end_left_recipe": {
+               "recipe_name": "Stone Bar Left End",
+               "description": "For properly finishing your bar if not against a wall.",
+               "flavor": ""
+            },
+            "counter_stone_end_right_recipe": {
+               "recipe_name": "Stone Bar Right End",
+               "description": "For properly finishing your bar if not against a wall.",
+               "flavor": "This end is probably the right one for your needs"
+            },
+            "counter_stone_door_recipe": {
+               "recipe_name": "Stone Bar Door",
+               "description": "Allows hearthlings to traverse between both sides of the bar.",
+               "flavor": "That top part must be quite heavy..."
+            },
+            "counter_shop_stone_corner_inner_recipe": {
+               "recipe_name": "Stone Counter Inner Corner",
+               "description": "An inner corner piece for your counter.",
+               "flavor": ""
+            },
+            "counter_shop_stone_corner_outer_recipe": {
+               "recipe_name": "Stone Counter Corner",
+               "description": "A corner piece for your counter.",
+               "flavor": "With a bolt of any cloth, can be transformed into a shop counter display for travelers and other players!"
+            },
+            "counter_shop_stone_mid_recipe": {
+               "recipe_name": "Stone Counter Midsection",
+               "description": "The main part of a stone counter.",
+               "flavor": "With a bolt of any cloth, can be transformed into a shop counter display for travelers and other players!"
+            },
+            "counter_shop_stone_mid_small_recipe": {
+               "recipe_name": "Stone Counter Small Midsection (x2)",
+               "description": "Half the size of a regular midsection.",
+               "flavor": "With a bolt of any cloth, can be transformed into a shop counter display for travelers and other players!"
+            },
+            "counter_shop_stone_end_left_recipe": {
                "recipe_name": "Stone Counter Left End",
                "description": "For properly finishing your counter if not against a wall.",
                "flavor": ""
             },
-            "counter_stone_end_right_recipe": {
+            "counter_shop_stone_end_right_recipe": {
                "recipe_name": "Stone Counter Right End",
                "description": "For properly finishing your counter if not against a wall.",
                "flavor": "This end is probably the right one for your needs"
             },
-            "counter_stone_door_recipe": {
-               "recipe_name": "Stone Counter Door",
-               "description": "Allows hearthlings to traverse between both sides of the counter.",
-               "flavor": "That top part must be quite heavy..."
+            "counter_shop_stone_desk_recipe": {
+               "recipe_name": "Stone Counter Desk",
+               "description": "The forefront of any worthy establishment!",
+               "flavor": "Counter desks will boost the value of all items being sold by counters and shelves (up to 12 blocks away) in a whopping 12%!"
             },
             "stone_comfy_bed_herbalist_recipe": {
                "recipe_name": "Herbalist Stone Comfy Bed",
@@ -7478,6 +7555,16 @@
                "recipe_name": "Copper Coffee Pot",
                "description": "Very sleek and lightweight, can keep a beverage hot for a good time!",
                "flavor": "A Brewer can use these to make coffee"
+            },
+            "copper_weighing_scale_recipe": {
+               "recipe_name": "Copper Weighing Scale",
+               "description": "Very helpful for measuring the mass of things and looking smarter!",
+               "flavor": "How can one be sure the weights weigh what they say they weigh?"
+            },
+            "gold_weighing_scale_recipe": {
+               "recipe_name": "Gold Weighing Scale",
+               "description": "A new level of sophistication for your business!",
+               "flavor": ""
             },
             "moka_coffee_pot_recipe": {
                "recipe_name": "Moka Coffee Pot",
@@ -8732,44 +8819,79 @@
                "flavor": "Very well!"
             },
             "wooden_stool_recipe": {
-               "recipe_name": "Wooden Stool",
+               "recipe_name": "Wooden Bar Stool",
                "description": "An alternative to chairs.",
                "flavor": "A higher seat for lower purposes"
             },
             "counter_wood_corner_inner_recipe": {
-               "recipe_name": "Wooden Counter Inner Corner",
-               "description": "An inner corner piece for your counter.",
+               "recipe_name": "Wooden Bar Inner Corner",
+               "description": "An inner corner piece for your bar.",
                "flavor": ""
             },
             "counter_wood_corner_outer_recipe": {
-               "recipe_name": "Wooden Counter Corner",
-               "description": "A corner piece for your counter.",
+               "recipe_name": "Wooden Bar Corner",
+               "description": "A corner piece for your bar.",
                "flavor": ""
             },
             "counter_wood_mid_recipe": {
-               "recipe_name": "Wooden Counter Midsection",
-               "description": "The main part of a wooden counter.",
+               "recipe_name": "Wooden Bar Midsection",
+               "description": "The main part of a wooden bar.",
                "flavor": "An appropriate surface for nightly gossip"
             },
             "counter_wood_mid_small_recipe": {
-               "recipe_name": "Wooden Counter Small Midsection",
+               "recipe_name": "Wooden Bar Small Midsection",
                "description": "Half the size of a regular midsection.",
                "flavor": "An appropriate surface for nightly gossip"
             },
             "counter_wood_end_left_recipe": {
+               "recipe_name": "Wooden Bar Left End",
+               "description": "For properly finishing your bar if not against a wall.",
+               "flavor": ""
+            },
+            "counter_wood_end_right_recipe": {
+               "recipe_name": "Wooden Bar Right End",
+               "description": "For properly finishing your bar if not against a wall.",
+               "flavor": "Make sure that the right end will end it right and not wrong"
+            },
+            "counter_wood_door_recipe": {
+               "recipe_name": "Wooden Bar Door",
+               "description": "Allows hearthlings to traverse between both sides of the bar.",
+               "flavor": "Only authorized per-- oh, nevermind..."
+            },
+            "counter_shop_wood_corner_inner_recipe": {
+               "recipe_name": "Wooden Counter Inner Corner",
+               "description": "An inner corner piece for your counter.",
+               "flavor": ""
+            },
+            "counter_shop_wood_corner_outer_recipe": {
+               "recipe_name": "Wooden Counter Corner",
+               "description": "A corner piece for your counter.",
+               "flavor": "With a bolt of any cloth, can be transformed into a shop counter display for travelers and other players!"
+            },
+            "counter_shop_wood_mid_recipe": {
+               "recipe_name": "Wooden Counter Midsection",
+               "description": "The main part of a wooden counter.",
+               "flavor": "With a bolt of any cloth, can be transformed into a shop counter display for travelers and other players!"
+            },
+            "counter_shop_wood_mid_small_recipe": {
+               "recipe_name": "Wooden Counter Small Midsection (x2)",
+               "description": "Half the size of a regular midsection.",
+               "flavor": "With a bolt of any cloth, can be transformed into a shop counter display for travelers and other players!"
+            },
+            "counter_shop_wood_end_left_recipe": {
                "recipe_name": "Wooden Counter Left End",
                "description": "For properly finishing your counter if not against a wall.",
                "flavor": ""
             },
-            "counter_wood_end_right_recipe": {
+            "counter_shop_wood_end_right_recipe": {
                "recipe_name": "Wooden Counter Right End",
                "description": "For properly finishing your counter if not against a wall.",
                "flavor": "Make sure that the right end will end it right and not wrong"
             },
-            "counter_wood_door_recipe": {
-               "recipe_name": "Wooden Counter Door",
-               "description": "Allows hearthlings to traverse between both sides of the counter.",
-               "flavor": "Only authorized per-- oh, nevermind..."
+            "counter_shop_wood_desk_recipe": {
+               "recipe_name": "Wooden Counter Desk",
+               "description": "The forefront of any worthy establishment!",
+               "flavor": "Counter desks will boost the value of all items being sold by counters and shelves (up to 12 blocks away) in a whopping 12%!"
             },
             "comfy_bed_herbalist_recipe": {
                "recipe_name": "Herbalist Comfy Bed",
@@ -13486,106 +13608,198 @@
          "counter": {
             "wood": {
                "counter_wood_mid": {
-                  "display_name": "Wooden Counter Midsection",
+                  "display_name": "Wooden Bar Midsection",
                   "description": "An appropriate surface for nightly gossip."
                },
                "counter_wood_mid_small": {
-                  "display_name": "Wooden Counter Small Midsection",
+                  "display_name": "Wooden Bar Small Midsection",
                   "description": "An appropriate surface for nightly gossip."
                },
                "counter_wood_end_right": {
-                  "display_name": "Wooden Counter Right End",
+                  "display_name": "Wooden Bar Right End",
                   "description": "An appropriate surface for nightly gossip."
                },
                "counter_wood_end_left": {
-                  "display_name": "Wooden Counter Left End",
+                  "display_name": "Wooden Bar Left End",
                   "description": "An appropriate surface for nightly gossip."
                },
                "counter_wood_door": {
-                  "display_name": "Wooden Counter Door",
-                  "description": "Allows movement between both sides of the counter."
+                  "display_name": "Wooden Bar Door",
+                  "description": "Allows movement between both sides of the bar."
                },
                "counter_wood_corner_outer": {
-                  "display_name": "Wooden Counter Corner",
+                  "display_name": "Wooden Bar Corner",
                   "description": "An appropriate surface for nightly gossip."
                },
                "counter_wood_corner_inner": {
-                  "display_name": "Wooden Counter Inner Corner",
+                  "display_name": "Wooden Bar Inner Corner",
                   "description": "An appropriate surface for nightly gossip."
                }
             },
             "stone": {
                "counter_stone_mid": {
-                  "display_name": "Stone Counter Midsection",
+                  "display_name": "Stone Bar Midsection",
                   "description": "The home of revelers and patrons alike."
                },
                "counter_stone_mid_small": {
-                  "display_name": "Stone Counter Small Midsection",
+                  "display_name": "Stone Bar Small Midsection",
                   "description": "The home of revelers and patrons alike."
                },
                "counter_stone_end_right": {
-                  "display_name": "Stone Counter Right End",
+                  "display_name": "Stone Bar Right End",
                   "description": "The home of revelers and patrons alike."
                },
                "counter_stone_end_left": {
-                  "display_name": "Stone Counter Left End",
+                  "display_name": "Stone Bar Left End",
                   "description": "The home of revelers and patrons alike."
                },
                "counter_stone_door": {
-                  "display_name": "Stone Counter Door",
-                  "description": "Allows movement between both sides of the counter."
+                  "display_name": "Stone Bar Door",
+                  "description": "Allows movement between both sides of the bar."
                },
                "counter_stone_corner_outer": {
-                  "display_name": "Stone Counter Corner",
+                  "display_name": "Stone Bar Corner",
                   "description": "The home of revelers and patrons alike."
                },
                "counter_stone_corner_inner": {
-                  "display_name": "Stone Counter Inner Corner",
+                  "display_name": "Stone Bar Inner Corner",
                   "description": "The home of revelers and patrons alike."
                }
             },
             "clay": {
                "counter_clay_mid": {
-                  "display_name": "Clay Counter Midsection",
+                  "display_name": "Clay Bar Midsection",
                   "description": "Feels like an oasis for the weary traveler."
                },
                "counter_clay_mid_small": {
-                  "display_name": "Clay Counter Small Midsection",
+                  "display_name": "Clay Bar Small Midsection",
                   "description": "Feels like an oasis for the weary traveler."
                },
                "counter_clay_end_right": {
-                  "display_name": "Clay Counter Right End",
+                  "display_name": "Clay Bar Right End",
                   "description": "Feels like an oasis for the weary traveler."
                },
                "counter_clay_end_left": {
-                  "display_name": "Clay Counter Left End",
+                  "display_name": "Clay Bar Left End",
                   "description": "Feels like an oasis for the weary traveler."
                },
                "counter_clay_door": {
-                  "display_name": "Clay Counter Door",
-                  "description": "Allows movement between both sides of the counter."
+                  "display_name": "Clay Bar Door",
+                  "description": "Allows movement between both sides of the bar."
                },
                "counter_clay_corner_outer": {
-                  "display_name": "Clay Counter Corner",
+                  "display_name": "Clay Bar Corner",
                   "description": "Feels like an oasis for the weary traveler."
                },
                "counter_clay_corner_inner": {
-                  "display_name": "Clay Counter Inner Corner",
+                  "display_name": "Clay Bar Inner Corner",
                   "description": "Feels like an oasis for the weary traveler."
                }
             }
          },
          "wooden_stool": {
-            "display_name": "Wooden Stool",
+            "display_name": "Wooden Bar Stool",
             "description": "Higher seat for lower purposes."
          },
          "stone_stool": {
-            "display_name": "Stone Stool",
+            "display_name": "Stone Bar Stool",
             "description": "Stone furniture tends to be... oversized."
          },
          "clay_stool": {
-            "display_name": "Clay Stool",
+            "display_name": "Clay Bar Stool",
             "description": "Hopefully shouldn't break so easily."
+         },
+         "counter_shop": {
+            "wood": {
+               "counter_shop_wood_mid": {
+                  "display_name": "Wooden Counter Midsection",
+                  "description": "Quite useful in shops as a display for customers!"
+               },
+               "counter_shop_wood_mid_small": {
+                  "display_name": "Wooden Counter Small Midsection",
+                  "description": "Quite useful in shops as a display for customers!"
+               },
+               "counter_shop_wood_end_right": {
+                  "display_name": "Wooden Counter Right End",
+                  "description": "A nice and flat surface for all your superficial needs."
+               },
+               "counter_shop_wood_end_left": {
+                  "display_name": "Wooden Counter Left End",
+                  "description": "A nice and flat surface for all your superficial needs."
+               },
+               "counter_shop_wood_corner_outer": {
+                  "display_name": "Wooden Counter Corner",
+                  "description": "Quite useful in shops as a display for customers!"
+               },
+               "counter_shop_wood_corner_inner": {
+                  "display_name": "Wooden Counter Inner Corner",
+                  "description": "A nice and flat surface for all your superficial needs."
+               },
+               "counter_shop_wood_desk": {
+                  "display_name": "Wooden Counter Desk",
+                  "description": "Increases the value of items sold by nearby display counters and shelves!"
+               }
+            },
+            "stone": {
+               "counter_shop_stone_mid": {
+                  "display_name": "Stone Counter Midsection",
+                  "description": "Quite useful in shops as a display for customers!"
+               },
+               "counter_shop_stone_mid_small": {
+                  "display_name": "Stone Counter Small Midsection",
+                  "description": "Quite useful in shops as a display for customers!"
+               },
+               "counter_shop_stone_end_right": {
+                  "display_name": "Stone Counter Right End",
+                  "description": "The cold and smooth stone surface is great for cooking!"
+               },
+               "counter_shop_stone_end_left": {
+                  "display_name": "Stone Counter Left End",
+                  "description": "The cold and smooth stone surface is great for cooking!"
+               },
+               "counter_shop_stone_corner_outer": {
+                  "display_name": "Stone Counter Corner",
+                  "description": "Quite useful in shops as a display for customers!"
+               },
+               "counter_shop_stone_corner_inner": {
+                  "display_name": "Stone Counter Inner Corner",
+                  "description": "The cold and smooth stone surface is great for cooking!"
+               },
+               "counter_shop_stone_desk": {
+                  "display_name": "Stone Counter Desk",
+                  "description": "Increases the value of items sold by nearby display counters and shelves!"
+               }
+            },
+            "clay": {
+               "counter_shop_clay_mid": {
+                  "display_name": "Clay Counter Midsection",
+                  "description": "Quite useful in shops as a display for customers!"
+               },
+               "counter_shop_clay_mid_small": {
+                  "display_name": "Clay Counter Small Midsection",
+                  "description": "Quite useful in shops as a display for customers!"
+               },
+               "counter_shop_clay_end_right": {
+                  "display_name": "Clay Counter Right End",
+                  "description": "Fine craftsmanship on this nice piece for both homes or workshops!"
+               },
+               "counter_shop_clay_end_left": {
+                  "display_name": "Clay Counter Left End",
+                  "description": "Fine craftsmanship on this nice piece for both homes or workshops!"
+               },
+               "counter_shop_clay_corner_outer": {
+                  "display_name": "Clay Counter Corner",
+                  "description": "Quite useful in shops as a display for customers!"
+               },
+               "counter_shop_clay_corner_inner": {
+                  "display_name": "Clay Counter Inner Corner",
+                  "description": "Fine craftsmanship on this nice piece for both homes or workshops!"
+               },
+               "counter_shop_clay_desk": {
+                  "display_name": "Clay Counter Desk",
+                  "description": "Increases the value of items sold by nearby display counters and shelves!"
+               }
+            }
          },
          "comfy_bed_herbalist": {
             "display_name": "Herbalist Comfy Bed",
@@ -14782,11 +14996,11 @@
          },
          "iron_brazier": {
             "display_name": "Cast Iron Brazier",
-            "description": "A fine piece that also provides some warmth. Requires any coal."
+            "description": "A fine piece that also provides some warmth."
          },
          "iron_brazier_tall": {
             "display_name": "Tall Cast Iron Brazier",
-            "description": "Provides warmth and light. Requires any coal."
+            "description": "Provides warmth and light."
          },
          "ember_green": {
             "display_name": "Green Embers",
@@ -15039,11 +15253,27 @@
          },
          "radiant_shrine": {
             "display_name": "Radiant Shrine",
-            "description": "An intricate device honoring the radiant sun that first shed light onto the world."
+            "description": "An intricate device honoring the radiant sun that first shed light onto the world.",
+            "static_component_info": {
+               "description": "<p style='text-align:center;color:white;'>A complex and yet beautifully made armillary sphere moves with elegance and perfection. In its scenter, a magical essence of some sort radiates warm, comforting light. The light that has created our world, this world we love to inhabit!<br><br>This shrine is our very heartwarm 'Thank you' to the original members of Radiant Entertainment, creators of Stonehearth!</p>",
+               "team": "<hr><h3 style='text-align:center;color:orange;'>Members</h3><p style='text-align:center'>Tom Cannon<br>Tony Cannon<br>Stephanie Dee<br>Albert Wang<br>Chris Klochek<br>Brad Justus<br>Linda Cai<br>Allie Strom<br>Matt Malley<br>Ana Padilla<br>Richard Hough<br>Nikki Silver<br>Justin Hamilton<br>Morgan Tenney<br>Angelo Yazar<br>Max Shawabkeh<br>Luke Rinard<br>Aaron Walz</p><h3 style='text-align:center;color:orange;'>Additional Development</h3><p style='text-align:center'>Raj Mann<br>Yang Shan<br>Doug Prior<br>Carl Quinn<br>Winnie Lin<br>Jack Seibert<br>Gabriel Martinez</p><h3 style='text-align:center;color:orange;'>Community Moderation</h3><p style='text-align:center'>SteveAdamo<br>Geoffers<br>Jomaxro<br>Relyss<br>Megashub<br>8BitCrab</p>"
+            }
          },
          "community_shrine": {
             "display_name": "Community Shrine",
-            "description": "An ancient testament to the power a community has to give, nurture, care and thrive."
+            "description": "An ancient testament to the power a community has to nurture and thrive.",
+            "static_component_info": {
+               "description": "<p style='text-align:center;color:white;'>This beautiful monument is dedicated to the great community behind Stonehearth and to those that have supported the ACE project!<br><br>Below is a permanent list of all the kind donors, ordered by total amount. This list will be updated whenever a new release is out!</p>",
+               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>Gary, Destroyer of Worlds<br>The Illuminati<br>Secret Horse Overlords</p>"
+            }
+         },
+         "copper_weighing_scale": {
+            "display_name": "Copper Weighing Scale",
+            "description": "Makes you look a lot smarter!"
+         },
+         "gold_weighing_scale": {
+            "display_name": "Gold Weighing Scale",
+            "description": "Very sophisticated and shiny!"
          }
       },
       "pets": {
@@ -18211,6 +18441,14 @@
             "iconic_description": "Can be harvested for rye when placed.",
             "display_name": "Old Rye Bundle",
             "description": "It's still good, if a little mushy in places."
+         },
+         "market_shelf_ground": {
+            "display_name": "Short Market Trading Shelf",
+            "description": "Other players and travelers can buy the items stored here."
+         },
+         "market_shelf_tall_ground": {
+            "display_name": "Market Trading Shelf",
+            "description": "Other players and travelers can buy the items stored here."
          }
       },
       "tools": {
@@ -20883,7 +21121,7 @@
             "item_list_header": "This pile currently contains the following <span class='textValue'>[str(item_count)]</span> items:"
          },
          "static_component_info": {
-            "display_name": "Static Info"
+            "display_name": "About"
          },
          "tile": {
             "display_name": "Tile",

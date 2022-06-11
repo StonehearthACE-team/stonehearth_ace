@@ -1,0 +1,120 @@
+{
+   "name": "roadside_shrine",
+   "duration": 9999,
+   "material": "materials/cubemitter_add_bloom.material.json",
+   "loops": true,
+   "mesh": {
+      "file": "",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "CONSTANT",
+         "values": [7]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [0]
+      },
+      "origin": {
+         "surface": "RECTANGLE",
+         "values": [0.4, 0.1, 0.3, 0]
+      },
+      "translation_z": {
+         "kind": "CONSTANT",
+         "values": [-2]
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [300, 500]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [1]
+         },
+         "over_lifetime": {
+            "kind": "CONSTANT",
+            "values": [0]
+         }
+      },
+      "acceleration": {
+         "over_lifetime_x": {
+            "kind": "CONSTANT",
+            "values": [0]
+         },
+         "over_lifetime_y": {
+            "kind": "CURVE",
+            "values": [
+               [0, -15],
+               [1, -20]
+            ]
+         }
+      },
+      "velocity": {
+         "over_lifetime_y": {
+            "kind": "CONSTANT",
+            "values": [0]
+         }
+      },
+      "rotation": {},
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.5, 1]
+         },
+         "over_lifetime": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 0.1933333333333333],
+                  [0.16, 0.21333333333333332],
+                  [1, 0.13999999999999999]
+               ],
+               [
+                  [0, 0.27499999999999997],
+                  [0.16, 0.295],
+                  [1, 0.22999999999999998]
+               ]
+            ]
+         },
+         "start_z": {
+            "kind": "CONSTANT",
+            "values": [2]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [
+               [0.59, 0.85, 0.98, 1],
+               [0.8, 0.85, 0.9, 1]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 0],
+                  [0.4, 0.6119870151095922],
+                  [1, 0]
+               ],
+               [
+                  [0, 0],
+                  [0.4, 0.7881813585069444],
+                  [1, 0]
+               ]
+            ]
+         }
+      }
+   }
+}

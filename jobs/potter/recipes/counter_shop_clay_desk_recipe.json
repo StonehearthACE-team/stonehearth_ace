@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.counter_shop_clay_desk_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.counter_shop_clay_desk_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.counter_shop_clay_desk_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/counter_shop/clay/counter_shop_clay_desk/counter_shop_clay_desk.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:molded_clay",
+         "count": 3
+      },
+      {
+         "material": "herb resource",
+         "count": 2
+      },
+      {
+         "material": "fiber resource",
+         "count": 2
+      },
+      {
+         "material": "feather resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:counter:shop:clay:desk"
+      }
+   ]
+}

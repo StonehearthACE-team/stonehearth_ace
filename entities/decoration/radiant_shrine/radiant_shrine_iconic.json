@@ -3,7 +3,11 @@
    "type": "entity",
    "components": {
       "render_info": {
-         "scale": 0.09
+         "scale": 0.09,
+         "color_map": "stonehearth_ace:color_map:shrines",
+         "material_maps": [
+            "/stonehearth_ace/data/materials/material_maps/stonehearth_ace_material_map.json"
+         ]
       },
       "model_variants": {
          "default": {

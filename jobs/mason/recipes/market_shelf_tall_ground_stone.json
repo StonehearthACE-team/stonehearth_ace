@@ -1,3 +1,20 @@
 {
-   "workshop": "stonehearth:mason:workbench"
+   "effort": 32,
+   "recipe_name": "i18n(stonehearth_ace:entities.containers.market_shelf_tall_ground.display_name)",
+   "description": "i18n(stonehearth_ace:entities.containers.market_shelf_tall_ground.description)",
+   "workshop": "stonehearth:mason:workbench",
+   "level_requirement": 4,
+   "mixintypes": {
+      "ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 4
+      },
+      {
+         "material": "cloth resource",
+         "count": 2
+      }
+   ]
 }

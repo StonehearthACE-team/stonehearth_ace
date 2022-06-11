@@ -1,14 +1,135 @@
 {
    "type": "effect",
    "tracks": {
-      "crackle_sound": {
+      "bubbles_base": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/community_shrine/community_shrine.bubbles_base.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.0, "y": 0.4, "z": 0.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "top_falls1": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/community_shrine/community_shrine.falls.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1.5, "z": 1,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "top_falls2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/community_shrine/community_shrine.falls90.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 1, "y": 1.5, "z": 0,
+            "rx": 0,
+            "ry": 90,
+            "rz": 0
+         }
+      },
+      "top_falls3": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/community_shrine/community_shrine.falls.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1.5, "z": -1,
+            "rx": 0,
+            "ry": 180,
+            "rz": 0
+         }
+      },
+      "top_falls4": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/community_shrine/community_shrine.falls90.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -1, "y": 1.5, "z": 0,
+            "rx": 0,
+            "ry": 270,
+            "rz": 0
+         }
+      },
+      "top_falls_add1": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/community_shrine/community_shrine.falls_add.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1.5, "z": 1,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "top_falls_add2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/community_shrine/community_shrine.falls_add90.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 1, "y": 1.5, "z": 0,
+            "rx": 0,
+            "ry": 90,
+            "rz": 0
+         }
+      },
+      "top_falls_add3": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/community_shrine/community_shrine.falls_add.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1.5, "z": -1,
+            "rx": 0,
+            "ry": 180,
+            "rz": 0
+         }
+      },
+      "top_falls_add4": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/community_shrine/community_shrine.falls_add90.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -1, "y": 1.5, "z": 0,
+            "rx": 0,
+            "ry": 270,
+            "rz": 0
+         }
+      },
+      "glint1": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/community_shrine/community_shrine.sparkle.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 4, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "petals_1": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/community_shrine/community_shrine.petal_float.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 4.5, "z": 0,
+            "rx": 0,
+            "ry": 100,
+            "rz": 90
+         }
+      },
+      "petals_2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/community_shrine/community_shrine.petal_spray.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 4, "z": 0,
+            "rx": 0,
+            "ry": 90,
+            "rz": 90
+         }
+      },
+      "sound": {
          "type": "sound_effect",
          "loop": true,
-         "start_time": 400,
-         "min_distance": 40,
-         "falloff": 2.5,
-         "volume": 70,
-         "track": "stonehearth:sounds:firepit_loop_sound"
+         "start_time": 0,
+         "min_distance": 20,
+         "max_instances": 2,
+         "falloff": 6,
+         "volume": 60,
+         "track": "stonehearth:sounds:water_fountain_loop_sm"
       }
    }
 }

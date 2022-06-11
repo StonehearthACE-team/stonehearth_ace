@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.counter_shop_stone_desk_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.counter_shop_stone_desk_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.counter_shop_stone_desk_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/counter_shop/stone/counter_shop_stone_desk/counter_shop_stone_desk.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 2
+      },
+      {
+         "material": "herb resource",
+         "count": 2
+      },
+      {
+         "material": "fiber resource",
+         "count": 2
+      },
+      {
+         "material": "feather resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:counter:shop:stone:desk"
+      }
+   ]
+}

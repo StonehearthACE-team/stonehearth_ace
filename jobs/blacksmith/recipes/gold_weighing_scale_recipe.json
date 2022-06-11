@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.gold_weighing_scale_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.gold_weighing_scale_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.gold_weighing_scale_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/gold_weighing_scale/gold_weighing_scale.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:gold_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:gold_weighing_scale"
+      }
+   ]
+}
