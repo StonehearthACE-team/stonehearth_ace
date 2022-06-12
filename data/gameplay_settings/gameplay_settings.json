@@ -5,6 +5,13 @@
       "auto_rescue": {}
    },
    "stonehearth_ace": {
+      "load_paused": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.load_paused)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.load_paused_description)",
+         "default": true,
+         "ordinal": 0.1
+      },
       "building_grid_size": {
          "type": "number",
          "number_settings": {
