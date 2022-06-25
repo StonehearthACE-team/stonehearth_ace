@@ -1,0 +1,53 @@
+{
+   "categories": {
+      "masonry": {
+         "display_name": "i18n: Masonry",
+         "description": "i18n: Merchants who specialize in stone and its uses.",
+         "ordinal": 1,
+         "min_city_tier": 1
+      }
+   },
+   "merchants": {
+      "mason1": {
+         "population_role": "mason",
+         "min_city_tier": 1,
+         "persistence_job": "stonehearth:jobs:mason",
+         "cooldown": 2,
+         "weight": 2,
+         "category": "masonry",
+         "wanted_items": [
+            {
+               "material": "stone resource",
+               "price_factor": 2,
+               "max_quantity": 10
+            },
+            {
+               "uri": "stonehearth:decoration:gargoyle",
+               "price_factor": 1.5,
+               "max_quantity": 3
+            }
+         ],
+         "shop": "file(/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/stonecutter_shop_1.json)"
+      },
+      "butternut": {
+         "population_role": "butternut",
+         "min_city_tier": 2,
+         "cooldown": 7,
+         "weight": 1,
+         "required_stall": "stonehearth_ace:mercantile:butter_nut_stall",
+         "wanted_items": [
+            {
+               "material": "cooked_nuts",
+               "price_factor": 2,
+               "max_quantity": 10
+            },
+            {
+               "uri": "stonehearth_ace:food:dairy:butter",
+               "price_factor": 1.5,
+               "max_quantity": 5
+            }
+         ],
+         "shop": "file(/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/unique_shops/butternut_shop.json)"
+      }
+   }
+}

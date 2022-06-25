@@ -12,72 +12,100 @@ function MercantileService:initialize()
    self._sv = self.__saved_variables:get_data()
 
    if not self._sv._initialized then
-      -- generated each morning based on settings/conditions at that time
-      self._sv._merchants_to_spawn = {} -- keyed by player id, value is list of merchants to spawn for that town
-
-      -- merchant entities will spawn regardless of whether they get attached to a stall
-      -- merchant entities will have a merchant component modeled after shop component
-      self._sv._merchants_to_towns = {} -- keyed by merchant id, value is corresponding town controller
+      self._sv.players = {}
 
       self._sv._initialized = true
    end
 
+   self:_load_merchant_data()
+
    self._morning_spawn_alarm = stonehearth.calendar:set_alarm('8:00', function()
          self:_spawn_all_merchants()
       end)
-   
-   self:_setup_spawn_timers()
 end
 
-function MercantileService:_setup_spawn_timers()
-   self._spawning_timers = {}
-   for player_id, num_to_spawn in pairs(self._sv._merchants_to_spawn) do
-      if num_to_spawn > 0 then
-         local town = stonehearth.town:get_town(player_id)
-         self._spawning_timers[player_id] = self:_spawn_merchants(town, num_to_spawn)
+function MercantileService:get_player_controller(player_id)
+   return self._sv.players[player_id]
+end
+
+function MercantileService:add_player_controller(player_id)
+   local controller = self:get_player_controller(player_id)
+   if not controller then
+      controller = radiant.create_controller('stonehearth_ace:player_mercantile_controller', player_id)
+      self._sv.players[player_id] = controller
+   end
+   return controller
+end
+
+function MercantileService:remove_player(player_id)
+   local controller = self:get_player_controller(player_id)
+   if controller then
+      controller:destroy()
+      self._sv.players[player_id] = nil
+   end
+end
+
+function MercantileService:get_categories()
+   return self._category_merchants
+end
+
+function MercantileService:get_unique_merchants()
+   return self._unique_merchants
+end
+
+function MercantileService:get_category_min_city_tier(category)
+   local category_data = self._categories[category]
+   return category_data and category_data.min_city_tier or 1
+end
+
+function MercantileService:register_merchant_stall(stall)
+   if stall and stall:is_valid() then
+      local player = self:add_player_controller(stall:get_player_id())
+      player:register_merchant_stall(stall)
+   end
+end
+
+function MercantileService:unregister_merchant_stall(stall)
+   if stall and stall:is_valid() then
+      local player = self:get_player_controller(stall:get_player_id())
+      if player then
+         player:unregister_merchant_stall(stall)
       end
    end
 end
 
-function MercantileService:_spawn_merchants(town, merchants_to_spawn)
-   local player_id = town:get_player_id()
-   self._sv._merchants_to_spawn[player_id] = merchants_to_spawn
-   return stonehearth.calendar:set_interval('towns traveler spawner', '5m+20m', function()
-         local traveler = town:spawn_traveler()
-         if not self._sv._seen_bulletin[player_id] then
-            stonehearth.bulletin_board:post_bulletin(player_id)
-               :set_ui_view('StonehearthGenericBulletinDialog')
-               :set_callback_instance(self)
-               :set_data({
-                  title = 'i18n(stonehearth:ui.game.bulletin.traveler.first.title)',
-                  message = 'i18n(stonehearth:ui.game.bulletin.traveler.first.message)',
-                  zoom_to_entity = traveler,
-                  ok_callback = '_on_bulletin_ok',
-               })
-               :add_i18n_data('traveler_name', radiant.entities.get_custom_name(traveler))
-            self._sv._seen_bulletin[player_id] = true
+function MercantileService:_load_merchant_data()
+   -- deep copy the loaded table because we're going to be modifying it a lot
+   local data = radiant.deep_copy(radiant.resources.load_json('stonehearth_ace:data:merchants'))
+   local category_merchants = {}
+   local unique_merchants = {}
+
+   for merchant, merchant_data in pairs(data.merchants) do
+      merchant_data.key = merchant
+      if radiant.util.is_string(merchant_data.shop) then
+         merchant_data.shop = radiant.resources.load_json(merchant_data.shop)
+      end
+      
+      if merchant_data.category and data.categories[merchant_data.category] then
+         local category_data = category_merchants[merchant_data.category]
+         if not category_data then
+            category_data = {}
+            category_merchants[merchant_data.category] = category_data
          end
-         self._sv._merchants_to_spawn[player_id] = self._sv._merchants_to_spawn[player_id] - 1
-         if self._sv._merchants_to_spawn[player_id] <= 0 then
-            if self._spawning_timers[player_id] then
-               self._spawning_timers[player_id]:destroy()
-               self._spawning_timers[player_id] = nil
-            end
-         end
-      end)
+         category_data[merchant] = merchant_data
+      elseif merchant_data.required_stall then
+         unique_merchants[merchant] = merchant_data
+      end
+   end
+
+   self._category_merchants = category_merchants
+   self._unique_merchants = unique_merchants
+   self._categories = data.categories
 end
 
 function MercantileService:_spawn_all_merchants()
-   for player_id, town in pairs(self._sv._target_players) do
-      if not self._spawning_timers[player_id] and stonehearth.presence:is_player_connected(player_id) then
-         local pop = stonehearth.population:get_population(player_id)
-         if pop:get_city_tier() >= stonehearth.constants.merchant.MIN_CITY_TIER then
-            local merchants_to_spawn = town:get_merchants_to_spawn()
-            if merchants_to_spawn and next(merchants_to_spawn) then
-               self._spawning_timers[player_id] = self:_spawn_merchants(town, merchants_to_spawn)
-            end
-         end
-      end
+   for player_id, controller in pairs(self._sv.players) do
+      controller:create_spawn_timer()
    end
 end
 
