@@ -1133,13 +1133,18 @@
          "DEFAULT_FLOODED_GROWTH_TIME_MULTIPLIER": 3,
          "DEFAULT_FROZEN_GROWTH_TIME_MULTIPLIER": 2,
          "BASE_MEGACROP_CHANCE": 0.001,
-         "SUNLIGHT_CHECK_FREQUENCY": "4h",
+         "SUNLIGHT_CHECK_FREQUENCY": "3h",
          "WATER_RECALCULATE_THRESHOLD": 0.04,
          "DEFAULT_MEGACROP_DESCRIPTION": "i18n(stonehearth_ace:entities.crops.megacrops.default_description)",
          "DEFAULT_MEGACROP_SCALE": 2,
          "crop_growth_times": {
-            "SHORT": "60h",
-            "FAIR": "96h"
+            "SHORTEST": "2d",
+            "VERY_SHORT": "3d",
+            "SHORT": "5d",
+            "FAIR": "7d",
+            "LONG": "9d",
+            "VERY_LONG": "11d",
+            "LONGEST": "14d"
          },
          "water_levels": {
             "NONE": "none",

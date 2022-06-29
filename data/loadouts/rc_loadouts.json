@@ -5,11 +5,20 @@
       "merchant_caravan": {
          "content": {
             "mixintypes": {
-               "berries": "remove"
+               "berries": "remove",
+               "mason": "remove"
             },
             "herbalist": {
                "uri": "stonehearth_ace:herbalist:talisman:clay",
                "icon": "file(images/items/herbalist_idol.png)"
+            },
+            "cook": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth:jobs.cook.cook_description.display_name)",
+               "type": "entity",
+               "uri": "stonehearth:cook:talisman",
+               "icon": "/stonehearth/data/loadouts/images/items/cook_spoon.png",
+               "amount": 1
             },
             "footman": {
                "uri": "stonehearth_ace:footman:talisman:clay",
@@ -112,7 +121,9 @@
                "uri": "stonehearth_ace:furniture:clay_comfy_bed",
                "icon": "file(images/items/clay_comfy_bed.png)"
             },
-            "roast_venison": {},
+            "roast_venison": {
+               "amount": 4
+            },
             "tea": {
                "uri": "stonehearth_ace:drink:tea_desert",
                "icon": "file(images/items/tea_desert.png)",

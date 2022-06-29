@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:food:rotten:basket",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/glass_material_map.json"
+         ],
+         "scale": 0.04
+      },
+      "mixintypes": {
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(../jam_glass.qb)",
+               "file(rotten_preserve_cover.qb)",
+               "file(rotten_preserve_content.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.04, "y": 0, "z": 0.04 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.rotten_preserve.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.rotten_preserve.description)",
+         "icon": "file(rotten_preserve.png)"
+      },
+      "stonehearth:appeal": {
+         "appeal": -3
+      }
+   }
+}

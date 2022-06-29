@@ -1,5 +1,5 @@
 {
-   "mixins": "stonehearth:mixins:food_decay",
+   "mixins": "stonehearth_ace:mixins:food_decay:nuts",
    "type": "entity",
    "components": {
       "model_variants": {
@@ -10,19 +10,13 @@
          }
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+         "model_origin": { "x": 0.05, "y": 0, "z": 0 }
       },
       "stonehearth:stacks": {
          "max_stacks": 2
       }
    },
    "entity_data": {
-      "stonehearth:food_decay": {
-         "initial_decay": {
-            "min": 360,
-            "max": 480
-         }
-      },
       "stonehearth:food_container": {
          "effect": "fiddle",
          "food": "stonehearth_ace:food:chestnut:chestnut_serving",

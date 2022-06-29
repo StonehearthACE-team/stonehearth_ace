@@ -26,6 +26,14 @@
             }
          }
       },
+      "ingredients": {
+         "name": "i18n(stonehearth_ace:jobs.cook.recipes.food_preparation_name)",
+         "recipes": {
+				"jam_fruit": {
+					"recipe": "file(jam_lingonberry_recipe.json)"
+				}
+         }
+      },
       "baking": {
          "recipes": {
             "dough_brown": {
@@ -44,7 +52,10 @@
          "recipes": {
             "faction_fish_dish": {
                "recipe": "file(dumpling_salmon_recipe.json)"
-            }
+            },
+            "nutty_meatballs": {
+					"recipe": "file(northern_meatballs_recipe.json)"
+				}
          }
       },
 		"animal_feed": {

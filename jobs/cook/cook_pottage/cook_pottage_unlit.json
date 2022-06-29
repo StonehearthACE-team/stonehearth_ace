@@ -1,0 +1,52 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(cook_pottage_ghost.json)",
+      "stonehearth_ace:mixins:workbench:cook_pottage"
+   ],
+   "components": {
+      "mixintypes": {
+         "sensor_list": "remove"
+      },
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(cook_pottage_ghost.json)",
+         "iconic_form": "file(cook_pottage_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": false
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cook_pottage_fuel.qb)"
+            ]
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:weather:warmth_source": false
+         }
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "progress_text": "stonehearth_ace:ui.game.unit_frame.transform.progress.pottage",
+         "status_key": "stonehearth_ace:ai.actions.status_text.pottage_start",
+         "transform_uri": "stonehearth_ace:cook:pottage:broth",
+         "request_action": "stonehearth_ace:transform",
+         "transform_ingredient_uri": "stonehearth_ace:food:broth",
+         "transforming_worker_effect": "light_fire",
+         "transforming_worker_effect_times": 1,
+         "auto_request": true
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 16
+      },
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:jobs.cook.cook_pottage.unlit.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      }
+   }
+}

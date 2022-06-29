@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fishwrap_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 92
+         },
+         "default": {
+            "satisfaction": 75
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:regeneration:major"
+         ],
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.fishwrap_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.fishwrap_serving.description)",
+         "material_tags": [
+            "food",
+            "fishwrap_serving",
+            "fish",
+            "meat",
+            "lunch_time",
+            "dinner_time"
+         ],
+         "subject_override": "stonehearth_ace:food:fishwrap"
+      }
+   }
+}

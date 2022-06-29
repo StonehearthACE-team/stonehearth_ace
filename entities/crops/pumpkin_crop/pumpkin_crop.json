@@ -15,14 +15,17 @@
          ]
       },
 	  "stonehearth:growing": {
-			"growth_period": "18h",
+			"growth_period": "71h+1h",
 			"preferred_climate": "temperate_medium"
       },
       "stonehearth:crop": {
-         "stacks_per_harvest": 2
+         "stacks_per_harvest": 3
       }
    },
    "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.crops.pumpkin_crop.description)"
+      },
       "stonehearth_ace:megacrop": {
          "num_to_spawn": 0,
          "other_items": {

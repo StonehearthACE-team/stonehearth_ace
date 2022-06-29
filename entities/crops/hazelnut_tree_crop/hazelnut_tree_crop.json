@@ -45,8 +45,23 @@
          "auto_harvest": "place"
       },
       "stonehearth:growing": {
-         "growth_period": "32h",
+         "growth_period": "55h+1h",
          "preferred_climate": "highlands_tree_easy",
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": [
+               "spring"
+            ],
+            "stonehearth:biome:desert": [
+               "spring"
+            ],
+            "stonehearth:biome:arctic": [
+               "spring"
+            ],
+            "stonehearth_ace:biome:highlands": [
+               "spring",
+               "summer"
+            ]
+         },
          "growth_stages": [
             {
                "model_name": "hazelnut_tree_1",

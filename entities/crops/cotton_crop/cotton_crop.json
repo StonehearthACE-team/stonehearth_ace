@@ -84,22 +84,24 @@
             "cotton_22": ""
          },
          "harvest_threshhold": "cotton_7",
-         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
+         "stacks_per_harvest": 3
       },
       "stonehearth:growing": {
-         "growth_period": "15h",
+         "growth_period": "36h",
          "preferred_seasons": {
             "stonehearth_ace:biome:highlands": [
-               "autumn"
+               "summer"
             ],
             "stonehearth:biome:temperate": [
-               "autumn"
+               "summer"
             ],
             "stonehearth:biome:desert": [
-               "winter"
+               "summer",
+               "autumn"
             ],
             "stonehearth:biome:arctic": [
-               "autumn"
+               "summer"
             ]
          },
          "preferred_climate": "highlands_easy",

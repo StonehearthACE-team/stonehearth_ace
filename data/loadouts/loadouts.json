@@ -7,16 +7,32 @@
             "berries": {},
             "carrots": {},
             "jerky": {},
-            "juice": {
+            "broth": {
                "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.broth)",
+               "type": "entity",
+               "uri": "stonehearth_ace:food:broth",
+               "icon": "file(images/items/broth.png)",
+               "amount": 2
+            },
+            "juice": {
+               "ordinal": 6,
                "display_name": "i18n(stonehearth_ace:data.loadouts.items.juice)",
                "type": "entity",
                "uri": "stonehearth_ace:drink:juice_berry",
                "icon": "file(images/items/juice_berry.png)",
                "amount": 16
             },
+            "pottage": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.pottage)",
+               "type": "entity",
+               "uri": "stonehearth_ace:cook:pottage:empty",
+               "icon": "file(images/items/cook_pottage.png)",
+               "amount": 1
+            },
             "thatch": {
-               "ordinal": 6,
+               "ordinal": 8,
                "display_name": "i18n(stonehearth_ace:data.loadouts.items.thatching)",
                "type": "entity",
                "uri": "stonehearth_ace:resources:thatch_bale",
@@ -24,18 +40,40 @@
                "amount": 5
             },
             "gold": {
-               "ordinal": 7
+               "ordinal": 99
             }
          }
       },
       "merchant_caravan": {
+         "description": "i18n(stonehearth_ace:data.loadouts.merchant_caravan.description)",
+         "splash": "file(images/merchant_caravan/splash.png)",
          "content": {
             "trapper": {},
             "footman": {},
-            "herbalist": {},
-            "berries": {},
-            "juice": {
+            "mason": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.mason)",
+               "type": "entity",
+               "uri": "stonehearth:mason:talisman",
+               "icon": "file(images/items/mason_chisel.png)",
+               "amount": 1
+            },
+            "herbalist": {
+               "ordinal": 4
+            },
+            "herbalist_pot": {
                "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.herbalist_pot)",
+               "type": "entity",
+               "uri": "stonehearth_ace:planters:pot",
+               "icon": "file(images/items/planter_pot.png)",
+               "amount": 4
+            },
+            "berries": {
+               "ordinal": 6
+            },
+            "juice": {
+               "ordinal": 7,
                "display_name": "i18n(stonehearth_ace:data.loadouts.items.juice)",
                "type": "entity",
                "uri": "stonehearth_ace:drink:juice_carrot",
@@ -43,7 +81,7 @@
                "amount": 6
             },
             "gold": {
-               "ordinal": 6
+               "ordinal": 99
             }
          }
       },
@@ -78,10 +116,18 @@
                "type": "entity",
                "uri": "stonehearth_ace:gizmos:training_dummy",
                "icon": "file(images/items/training_dummy.png)",
-               "amount": 2
+               "amount": 3
+            },
+            "healing_tonic": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.healing_tonic)",
+               "type": "entity",
+               "uri": "stonehearth_ace:consumables:potion:healing:small",
+               "icon": "file(images/items/potion.png)",
+               "amount": 8
             },
             "jerky": {
-               "ordinal": 4,
+               "ordinal": 5,
                "display_name": "i18n(stonehearth:data.loadouts.items.jerky)",
                "type": "entity",
                "uri": "stonehearth:rabbit_jerky",
@@ -89,7 +135,7 @@
                "amount": 12
             },
             "mead": {
-               "ordinal": 5,
+               "ordinal": 6,
                "display_name": "i18n(stonehearth_ace:data.loadouts.items.mead)",
                "type": "entity",
                "uri": "stonehearth_ace:drink:mead",
@@ -97,12 +143,12 @@
                "amount": 8
             },
             "gold": {
-               "ordinal": 6,
+               "ordinal": 99,
                "display_name": "i18n(stonehearth:data.loadouts.items.gold)",
                "type": "gold",
                "icon": "/stonehearth/data/loadouts/images/items/gold.png",
                "uri": "stonehearth:loot:gold",
-               "amount": 20
+               "amount": 30
             }
          }
       },
@@ -145,7 +191,7 @@
                "type": "entity",
                "uri": "stonehearth:food:roast_venison",
                "icon": "file(images/items/roast_venison.png)",
-               "amount": 2
+               "amount": 3
             },
             "tea": {
                "ordinal": 5,
@@ -153,10 +199,10 @@
                "type": "entity",
                "uri": "stonehearth_ace:drink:tea",
                "icon": "file(images/items/tea.png)",
-               "amount": 2
+               "amount": 3
             },
             "gold": {
-               "ordinal": 6,
+               "ordinal": 99,
                "display_name": "i18n(stonehearth:data.loadouts.items.gold)",
                "type": "gold",
                "icon": "/stonehearth/data/loadouts/images/items/gold.png",
@@ -179,7 +225,8 @@
                "amount": 10
             },
             "gold": {
-               "ordinal": 5
+               "amount": 160,
+               "ordinal": 99
             }
          }
       }

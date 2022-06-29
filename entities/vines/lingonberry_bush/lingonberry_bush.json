@@ -1,0 +1,120 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth_ace:vine": {
+         "growth_data": {
+            "grows_on_ground": true,
+            "grows_on_ceiling": false,
+            "grows_on_wall": false,
+            "grows_hanging": false,
+            "grows_on_structure": false,
+            "spreads_on_ground": true,
+            "spreads_on_ceiling": false,
+            "spreads_on_wall": false,
+            "ignore_gravity": false,
+            "randomize_facing": true,
+            "terrain_types": {
+               "grass": true
+            },
+            "spread_function": {
+               "type": "horizontal_walk",
+               "min_steps": 1,
+               "max_steps": 2,
+               "max_drop": 1
+            },
+            "growth_directions": {
+               "x-": 1,
+               "x+": 1,
+               "z-": 1,
+               "z+": 1
+            },
+            "start_num_growths_remaining": 4,
+            "natural_num_growths_remaining": 2,
+            "growth_times": [
+               {
+                  "growths_remaining": 4,
+                  "time": "2d+8h"
+               },
+               {
+                  "growths_remaining": 2,
+                  "time": "3d+24h"
+               },
+               {
+                  "growths_remaining": 1,
+                  "time": "4d+12h"
+               }
+            ]
+         },
+         "render_options": {
+            "bottom": {
+               "scale": 0.15,
+               "origin": { "x": 5, "y": 0, "z": 5 },
+               "models": {
+                  "default": [
+                     "file(lingonberry_bush.qb)",
+                     "file(lingonberry_bush_2.qb)",
+                     "file(lingonberry_bush_3.qb)",
+                     "file(lingonberry_bush_4.qb)",
+                     "file(lingonberry_bush_5.qb)",
+                     "file(lingonberry_bush_6.qb)",
+                     "file(lingonberry_bush_7.qb)",
+                     "file(lingonberry_bush_8.qb)",
+                     "file(lingonberry_bush_9.qb)"
+                  ]
+               }
+            }
+         }
+      },
+      "stonehearth:resource_node": {
+         "durability": 1,
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_fruit_overlay_effect",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 4
+                     },
+                     "seed": {
+                        "uri": "stonehearth_ace:vines:lingonberry_bush:seed",
+                        "weight": 8
+                     },
+                     "basket": {
+                        "uri": "stonehearth_ace:food:lingonberry_basket",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.vines.lingonberry_bush.display_name)",
+         "description": "i18n(stonehearth_ace:entities.vines.lingonberry_bush.description)"
+      },
+      "stonehearth:animal_feed": {
+         "calorie_gain": 15
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      },
+      "navgrid": {
+         "has_physics": true
+      },
+      "stonehearth:target_type": {
+         "target_type": "item"
+      }
+   }
+}

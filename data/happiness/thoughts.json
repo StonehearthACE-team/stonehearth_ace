@@ -786,6 +786,14 @@
                "stackable": true,
                "max_stacks": 3
             },
+            "leafy_lover_ate_leafy": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.leafy_lover_ate_leafy.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.leafy_lover_ate_leafy.tooltip)",
+               "happiness_delta": 16,
+               "duration": "24h",
+               "stackable": true,
+               "max_stacks": 3
+            },
             "dairy_intolerant_ate_dairy": {
                "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.dairy_intolerant_ate_dairy.display_name)",
                "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.dairy_intolerant_ate_dairy.tooltip)",
@@ -809,6 +817,13 @@
                "duration": "16h",
                "stackable": true,
                "max_stacks": 3
+            },
+            "leafy_intolerant_ate_leafy": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.eating.leafy_intolerant_ate_leafy.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.eating.leafy_intolerant_ate_leafy.tooltip)",
+               "happiness_delta": -6,
+               "duration": "24h",
+               "stackable": false
             }
          }
       },

@@ -1,0 +1,36 @@
+{
+   "type": "recipe",
+   "effort": 36,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.jam_lingonberry_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.jam_lingonberry_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.jam_lingonberry_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/preserves/jam_lingonberry/jam_lingonberry.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 2,
+   "ace_smart_crafter_ignore": true,
+   "ingredients": [
+		{
+			"uri": "stonehearth_ace:food:lingonberry_basket",
+			"count": 4
+		},
+      {
+         "material": "sweetener cooking_ingredient",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:preserves:jam_lingonberry"
+      },
+      {
+         "item": "stonehearth_ace:food:preserves:jam_lingonberry"
+      },
+      {
+         "item": "stonehearth_ace:food:preserves:jam_lingonberry"
+      },
+      {
+         "item": "stonehearth_ace:food:preserves:jam_lingonberry"
+      }
+   ]
+}

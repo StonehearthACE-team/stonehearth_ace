@@ -1,0 +1,17 @@
+{
+   "mixins": "stonehearth:mixins:food_decay",
+   "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 360,
+            "max": 480
+         },
+         "decay_stages": {
+            "decay_1": {
+               "trigger_decay_value": 100
+            }
+         },
+         "rotten_entity_alias": "stonehearth_ace:food:rotten:basket_nuts"
+      }
+   }
+}

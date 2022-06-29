@@ -1,0 +1,24 @@
+{
+   "mixins": "stonehearth:food:rotten:basket",
+   "type": "entity",
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "mixintypes": {
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(rotten_basket_fruit.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(rotten_basket_fruit.png)"
+      }
+   }
+}

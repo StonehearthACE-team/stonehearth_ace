@@ -1,10 +1,29 @@
 {
-   "components": {},
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "decay_1": "override"
+         },
+         "default": {
+            "models": [
+               "file(golden_gourd_basket.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(golden_gourd_basket_rotting.qb)"
+            ]
+         }
+      }
+   },
    "entity_data": {
       "stonehearth:net_worth": {
          "value_in_gold": 2
       },
       "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.food.golden_gourd.golden_gourd_basket.description)",
+         "icon": "file(golden_gourd_basket.png)",
          "material_tags": ["hearty"]
       }
    }

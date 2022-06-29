@@ -1,0 +1,58 @@
+{
+   "mixins": "stonehearth:mixins:prepared_food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(northern_meatballs.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 3
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:northern_meatballs:northern_meatballs_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 22,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.northern_meatballs.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.northern_meatballs.description)",
+         "icon": "file(northern_meatballs.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "na_made",
+            "northern_meatballs",
+            "stockpile_prepared_food",
+            "meat",
+            "lunch_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 7
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

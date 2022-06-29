@@ -712,6 +712,43 @@
          "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.daisy.harvest_text)",
          "icon": "file(crops/planter/daisy/daisy.png)"
       },
+      "lingonberry_bush": {
+         "product_uri": "stonehearth_ace:food:lingonberry_basket",
+         "harvester_effect": "fiddle",
+         "render_scale": 0.12,
+         "tending_multiplier": 0.1,
+         "category": "bush",
+         "level": 2,
+         "growth_time": "32h+12h",
+         "bonus_product_growth_time": "36h",
+         "post_harvest_growth_level": 4,
+         "growth_levels": [
+            {
+               "model": "file(crops/planter/lingonberry_bush/lingonberry_bush_1.qb)",
+               "offset": { "x": 3.5, "y": 0, "z": 3.5 }
+            },
+            {
+               "model": "file(crops/planter/lingonberry_bush/lingonberry_bush_2.qb)",
+               "offset": { "x": 3, "y": 0, "z": 3 }
+            },
+            {
+               "model": "file(crops/planter/lingonberry_bush/lingonberry_bush_3.qb)",
+               "offset": { "x": 3, "y": 0, "z": 3 }
+            },
+            {
+               "model": "file(crops/planter/lingonberry_bush/lingonberry_bush_4.qb)",
+               "offset": { "x": 5, "y": -0.8, "z": 5 }
+            },
+            {
+               "model": "file(crops/planter/lingonberry_bush/lingonberry_bush_5.qb)",
+               "offset": { "x": 5, "y": -0.8, "z": 5 }
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.lingonberry_bush.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.lingonberry_bush.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.lingonberry_bush.harvest_text)",
+         "icon": "file(crops/planter/lingonberry_bush/lingonberry_bush.png)"
+      },
       "silkweed": {
          "plant_uri": "stonehearth:plants:silkweed",
          "product_uri": "stonehearth_ace:resources:herb:silkweed",

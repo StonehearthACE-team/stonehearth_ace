@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:weapons:long_sword",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_long_sword_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_long_sword_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Steel Broad Sword",
+         "icon": "file(ea_long_sword.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "steel",
+            "melee_weapon",
+            "mainhand",
+            "crafted",
+            "na_made",
+            "sword",
+            "long",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

@@ -8,27 +8,9 @@
             },
             "stone": {
                "ordinal": 2,
-               "display_name": "i18n(stonehearth:entities.resources.stone.hunk_of_stone.display_name)",
-               "icon": "/stonehearth/entities/resources/stone/stone.png",
-               "filter": "standard stone resource"
-            },
-            "sandstone_stone": {
-               "ordinal": 2.01,
-               "display_name": "i18n(stonehearth_ace:entities.resources.stone.sandstone_stone.display_name)",
-               "icon": "/stonehearth_ace/entities/resources/stone/sandstone_stone/sandstone_stone.png",
-               "filter": "sandstone stone resource"
-            },
-            "slate_stone": {
-               "ordinal": 2.02,
-               "display_name": "i18n(stonehearth_ace:entities.resources.stone.slate_stone.display_name)",
-               "icon": "/stonehearth_ace/entities/resources/stone/slate_stone/slate_stone.png",
-               "filter": "slate stone resource"
-            },
-            "limestone_stone": {
-               "ordinal": 2.03,
-               "display_name": "i18n(stonehearth_ace:entities.resources.stone.limestone_stone.display_name)",
-               "icon": "/stonehearth_ace/entities/resources/stone/limestone_stone/limestone_stone.png",
-               "filter": "limestone stone resource"
+               "display_name": "i18n(stonehearth_ace:entities.resources.resources.common_stone.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/stone/stone_icon.png",
+               "filter": "common stone resource"
             },
             "feldspar_stone": {
                "ordinal": 2.1,
@@ -881,10 +863,17 @@
             "turnip": {
                "ordinal": 1
             },
+            "turnip_greens": {
+               "ordinal": 1.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.turnip.turnip_greens_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/turnip/turnip_greens/turnip_greens/turnip_greens.png",
+               "filter": "raw_food turnip_greens"
+            },
             "carrot": {
                "ordinal": 2
             },
             "gourd": {
+               "icon": "/stonehearth_ace/entities/food/golden_gourd/golden_gourd_basket/golden_gourd_basket.png",
                "ordinal": 3
             },
             "sweet_potatoes": {
@@ -895,6 +884,36 @@
             },
             "corn": {
                "ordinal": 6
+            },
+            "beetroot": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:entities.food.beetroot.beetroot_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/beetroot/beetroot_basket/beetroot_basket.png",
+               "filter": "raw_food beetroot"
+            },
+            "beet_greens": {
+               "ordinal": 7.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.beetroot.beet_greens_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/beetroot/beet_greens/beet_greens/beet_greens.png",
+               "filter": "raw_food beet_greens"
+            },
+            "cucumber": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:entities.food.cucumber.cucumber_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/cucumber/cucumber_basket/cucumber_basket.png",
+               "filter": "raw_food cucumber"
+            },
+            "cabbage": {
+               "ordinal": 9,
+               "display_name": "i18n(stonehearth_ace:entities.food.cabbage.cabbage_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/cabbage/cabbage_basket/cabbage_basket.png",
+               "filter": "raw_food cabbage"
+            },
+            "lettuce": {
+               "ordinal": 9.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.lettuce.lettuce_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/lettuce/lettuce_basket/lettuce_basket.png",
+               "filter": "raw_food lettuce"
             },
             "heirbloom": {
                "icon": "/stonehearth_ace/entities/food/heirbloom/heirbloom_basket/heirbloom_basket.png",
@@ -907,9 +926,11 @@
                "filter": "raw_food garlic"
             },
             "berries": {
+               "icon": "/stonehearth_ace/entities/food/berries/berry_basket/berry_basket.png",
                "ordinal": 15
             },
             "prickly_pear": {
+               "icon": "/stonehearth_ace/entities/food/prickly_pear/prickly_pear_basket/prickly_pear_basket.png",
                "ordinal": 15.1,
                "filter": "raw_food prickly_pear"
             },
@@ -926,6 +947,7 @@
                "filter": "raw_food coffee"
             },
             "watermelon": {
+               "icon": "/stonehearth_ace/entities/food/watermelon/watermelon_basket/watermelon_basket.png",
                "ordinal": 16
             },
             "apple": {
@@ -1186,7 +1208,7 @@
                "filter": "cooking_ingredient nut_basket"
             },
             "parasol": {
-               "ordinal": 2.5,
+               "ordinal": 2.31,
                "display_name": "i18n(stonehearth_ace:entities.food.parasol.parasol_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/parasol/parasol_basket/parasol_basket.png",
                "filter": "food_container parasol"
@@ -1204,6 +1226,7 @@
                "filter": "cooking_ingredient duck_meat"
             },
             "sugarbell": {
+               "icon": "/stonehearth_ace/entities/food/sugar/sugarbell_basket/sugarbell_basket.png",
                "ordinal": 2.199
             },
             "honey_wild": {
@@ -1289,6 +1312,27 @@
                "display_name": "i18n(stonehearth_ace:entities.food.condiment.display_name)",
                "icon": "/stonehearth_ace/entities/food/condiment/condiment.png",
                "filter": "condiment standard cooking_ingredient"
+            },
+            "jam_fruit": {
+               "ordinal": 2.5,
+               "display_name": "i18n(stonehearth_ace:entities.food.preserves.jam_fruit.display_name)",
+               "icon": "/stonehearth_ace/entities/food/preserves/jam_fruit/jam_fruit.png",
+               "filter": "jam fruit standard cooking_ingredient"
+            },
+            "jam_lingonberry": {
+               "ordinal": 2.51,
+               "display_name": "i18n(stonehearth_ace:entities.food.preserves.jam_lingonberry.display_name)",
+               "icon": "/stonehearth_ace/entities/food/preserves/jam_lingonberry/jam_lingonberry.png",
+               "filter": "jam fruit lingonberry cooking_ingredient"
+            },
+            "pickles": {
+               "ordinal": 2.6,
+               "display_name": "i18n(stonehearth_ace:entities.food.preserves.pickles.display_name)",
+               "icon": "/stonehearth_ace/entities/food/preserves/pickles/pickles.png",
+               "filter": "pickles standard cooking_ingredient"
+            },
+            "bug_meat": {
+               "ordinal": 2.99
             },
             "sausage": {
                "ordinal": 3.1,

@@ -1,0 +1,182 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(lettuce_crop_5.qb)"
+            ]
+         },
+         "lettuce_1": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(lettuce_crop_1.qb)",
+                     "file(lettuce_crop_1_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "lettuce_2": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(lettuce_crop_2.qb)",
+                     "file(lettuce_crop_2_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "lettuce_3": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(lettuce_crop_3.qb)",
+                     "file(lettuce_crop_3_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "lettuce_4": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(lettuce_crop_4.qb)",
+                     "file(lettuce_crop_4_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "lettuce_5": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(lettuce_crop_5.qb)",
+                     "file(lettuce_crop_5_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "lettuce_12": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(lettuce_crop_12.qb)",
+                     "file(lettuce_crop_12_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "material": "materials/shiny.material.json",
+         "scale": 0.09
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -0.05, "z": 0 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "lettuce_5": "stonehearth_ace:food:lettuce:lettuce_basket",
+            "lettuce_12": ""
+         },
+         "harvest_threshhold": "lettuce_5",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
+      },
+      "stonehearth:growing": {
+         "growth_period": "30h",
+         "preferred_climate": "tropical_easy",
+         "flood_period_multiplier": 1,
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": [
+               "summer"
+            ],
+            "stonehearth:biome:desert": [
+               "spring",
+               "summer"
+            ],
+            "stonehearth:biome:arctic": [
+               "summer"
+            ],
+            "stonehearth_ace:biome:highlands": [
+               "summer"
+            ]
+         },
+         "growth_stages": [
+            {
+               "model_name": "lettuce_1",
+               "name": "i18n(stonehearth_ace:entities.crops.lettuce_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.lettuce_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "lettuce_2",
+               "name": "i18n(stonehearth_ace:entities.crops.lettuce_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.lettuce_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "lettuce_3",
+               "name": "i18n(stonehearth_ace:entities.crops.lettuce_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.lettuce_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "lettuce_4",
+               "name": "i18n(stonehearth_ace:entities.crops.lettuce_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.lettuce_crop.growth_stage.003.description)"
+            },
+            {
+               "model_name": "lettuce_5",
+               "name": "i18n(stonehearth_ace:entities.crops.lettuce_crop.growth_stage.004.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.lettuce_crop.growth_stage.004.description)"
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+               "model_name": "lettuce_12",
+               "name": "i18n(stonehearth_ace:entities.crops.lettuce_crop.growth_stage.011.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.lettuce_crop.growth_stage.011.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:megacrop": {
+         "num_to_spawn": 0,
+         "other_items": {
+            "stonehearth_ace:food:megacrop:fodder": 1
+         },
+         "pickup_new": true,
+         "effect": "promote"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.lettuce_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.lettuce_crop.description)",
+         "icon": "file(icon.png)",
+         "material_tags": [
+            "crop",
+            "lettuce"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      }
+   }
+}

@@ -1,7 +1,7 @@
 {
    "components": {
 	  "stonehearth:growing": {
-			"growth_period": "11h",
+			"growth_period": "24h",
 			"preferred_climate": "temperate_staple"
       },
       "mob": {
@@ -16,9 +16,27 @@
                "max": { "x": 0, "y": 2, "z": 0 }
             }
          ]
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "none": {
+                     "weight": 10
+                  },
+                  "greens": {
+                     "uri": "stonehearth_ace:food:turnip:turnip_greens_basket",
+                     "weight": 1
+                  }
+               }
+            }
+         }
       }
    },
    "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.crops.turnip_crop.description)"
+      },
       "stonehearth_ace:megacrop": {
          "num_to_spawn": 0,
          "other_items": {

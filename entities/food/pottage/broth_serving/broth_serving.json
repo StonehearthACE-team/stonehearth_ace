@@ -1,0 +1,45 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(broth_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 55,
+            "drink_satisfaction": 16
+         },
+         "default": {
+            "satisfaction": 40,
+            "drink_satisfaction": 8
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:warm_belly"
+         ],
+         "quality": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.pottage.broth_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "meat",
+            "warming",
+            "dinner_time",
+            "lunch_time"
+         ],
+         "subject_override": "stonehearth_ace:cook:pottage:broth"
+      }
+   }
+}

@@ -13,6 +13,9 @@
             },
             "cook_workbench_advanced": {
                "recipe": "file(cook_workbench_advanced_recipe.json)"
+            },
+            "cook_pottage": {
+               "recipe": "file(cook_pottage_recipe.json)"
             }
          }
 	   },
@@ -32,6 +35,9 @@
 					"recipe": ""
 				},
             "corn_meal": {
+					"recipe": ""
+				},
+            "sugar": {
 					"recipe": ""
 				},
 				"raw_rice": {
@@ -54,6 +60,12 @@
 				},
 				"condiment": {
 					"recipe": "file(condiment_recipe.json)"
+				},
+				"jam_fruit": {
+					"recipe": "file(jam_fruit_recipe.json)"
+				},
+				"pickles": {
+					"recipe": "file(pickles_recipe.json)"
 				}
          }
       },
@@ -108,6 +120,9 @@
             },
             "batter_sweet": {
                "recipe": "file(batter_sweet_recipe.json)"
+            },
+            "sugar": {
+               "recipe": "/stonehearth/jobs/cook/recipes/sugar_recipe.json"
             }
          }
       },
@@ -143,15 +158,18 @@
 				"buttered_bulbs": {
                "recipe": "file(buttered_bulbs_recipe.json)"
             },
-				"imperial_salad": {
-               "recipe": "file(imperial_salad_recipe.json)"
-            },
 				"fish_fingers": {
 					"recipe": "file(fish_fingers_recipe.json)"
 				},
 				"poyo_nuggets": {
 					"recipe": "file(poyo_nuggets_recipe.json)"
 				},
+            "veggie_roll": {
+               "recipe": "file(veggie_roll_recipe.json)"
+            },
+            "peasant_salad": {
+               "recipe": "file(peasant_salad_recipe.json)"
+            },
 				"nut_bread": {
 					"recipe": "file(nut_bread_recipe.json)"
 				},
@@ -182,6 +200,12 @@
          "recipes": {
             "mixintypes": {
                "donation_box": "remove"
+            },
+            "imperial_salad": {
+               "recipe": "file(imperial_salad_recipe.json)"
+            },
+            "fishwrap": {
+               "recipe": "file(fishwrap_recipe.json)"
             },
             "huntsman_banquet": {
                "recipe": "file(huntsman_banquet_recipe.json)"

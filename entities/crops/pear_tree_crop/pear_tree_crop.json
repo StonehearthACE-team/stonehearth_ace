@@ -45,8 +45,23 @@
          "auto_harvest": "place"
       },
       "stonehearth:growing": {
-         "growth_period": "24h",
+         "growth_period": "55h+1h",
          "preferred_climate": "highlands_tree_complex",
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": [
+               "winter"
+            ],
+            "stonehearth:biome:desert": [
+               "winter"
+            ],
+            "stonehearth:biome:arctic": [
+               "winter",
+               "spring"
+            ],
+            "stonehearth_ace:biome:highlands": [
+               "winter"
+            ]
+         },
          "growth_stages": [
             {
                "model_name": "pear_tree_1",

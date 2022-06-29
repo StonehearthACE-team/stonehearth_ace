@@ -1,4 +1,26 @@
 {
+   "mixins": "stonehearth_ace:mixins:food_decay:ingredient",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "decay_1": "override"
+         },
+         "default": {
+            "models": [
+               "file(sugarbell_basket.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(sugarbell_basket_rotting.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
    "entity_data": {
 		"stonehearth:net_worth": {
          "value_in_gold": 3

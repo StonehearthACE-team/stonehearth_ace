@@ -1,5 +1,5 @@
 {
-   "mixins": "stonehearth:mixins:food_decay",
+   "mixins": "stonehearth_ace:mixins:food_decay:fungi",
    "type": "entity",
    "components": {
       "model_variants": {
@@ -10,7 +10,7 @@
          }
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
       },
       "stonehearth:stacks": {
          "max_stacks": 3

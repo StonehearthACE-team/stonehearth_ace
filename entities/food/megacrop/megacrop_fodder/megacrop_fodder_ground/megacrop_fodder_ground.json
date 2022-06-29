@@ -1,0 +1,61 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(../megacrop_fodder/megacrop_fodder.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "mob_collision_type": "tiny"
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 16
+      },
+      "render_info": {
+         "scale": 0.11
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.megacrop_fodder.megacrop_fodder_ground.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.megacrop_fodder.megacrop_fodder_ground.description)",
+         "icon": "file(../megacrop_fodder/megacrop_fodder.png)",
+         "material_tags": [
+            "animal_feed",
+            "poyo_feed_edible",
+            "rabbit_feed_edible",
+            "sheep_feed_edible",
+            "rabbit_feed_ground",
+            "sheep_feed_ground",
+            "feed_on_ground",
+            "ostrich_feed_edible",
+            "ostrich_feed_ground",
+            "poyo_feed_ground",
+            "moomoo_feed_ground",
+            "moomoo_feed_edible",
+            "duck_feed_ground",
+            "duck_feed_edible",
+            "oinker_feed_ground",
+            "oinker_feed_edible"
+         ],
+         "subject_override": "stonehearth_ace:food:megacrop:fodder"
+      },
+      "stonehearth:animal_feed": {
+         "calorie_gain": 65,
+         "effect_loops": 5,
+         "quality_chances": [
+            [
+               3,
+               0.01
+            ],
+            [
+               2,
+               0.04
+            ]
+         ]
+      }
+   }
+}

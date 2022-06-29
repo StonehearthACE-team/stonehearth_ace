@@ -1,11 +1,11 @@
 {
    "components": {
 	  "stonehearth:growing": {
-			"growth_period": "28h",
+			"growth_period": "71h+1h",
 			"preferred_climate": "desert_medium"
       },
       "stonehearth:crop": {
-         "stacks_per_harvest": 2
+         "stacks_per_harvest": 3
       },
       "mob": {
          "model_origin": { "x": -0.05, "y": -0.01, "z": 0.05 },
@@ -23,6 +23,9 @@
       }
    },
    "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.crops.watermelon_crop.description)"
+      },
       "stonehearth_ace:megacrop": {
          "num_to_spawn": 0,
          "other_items": {

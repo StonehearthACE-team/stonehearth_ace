@@ -54,8 +54,11 @@
          }
       },
 		"stonehearth:growing": {
-			"growth_period": "36h",
-			"preferred_climate": "temperate_complex"
+			"growth_period": "72h",
+			"preferred_climate": "temperate_complex",
+         "mixintypes": {
+            "preferred_seasons": "remove"
+         }
       },
       "mob": {
          "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }

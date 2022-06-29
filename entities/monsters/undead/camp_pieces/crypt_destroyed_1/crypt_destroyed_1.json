@@ -1,0 +1,41 @@
+{
+   "mixins": "stonehearth:mixins:destructable_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 1.0
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(crypt_destroyed_1.qb)"
+            ]
+         }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -6.5, "y": 0, "z": -4.5 },
+               "max": { "x": 6.5, "y": 15, "z": 9.5 }
+            },
+            {
+               "min": { "x": -3.5, "y": 0, "z": -8.5 },
+               "max": { "x": -1.5, "y": 11, "z": -4.5 }
+            },
+            {
+               "min": { "x": 1.5, "y": 0, "z": -8.5 },
+               "max": { "x": 3.5, "y": 11, "z": -4.5 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "A Crypt",
+         "description": "What lies inside?"
+      },
+      "stonehearth:appeal": {
+         "appeal": -18
+      }
+   }
+}

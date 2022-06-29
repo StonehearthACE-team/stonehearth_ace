@@ -1,0 +1,67 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "stonehearth:evolve": {},
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(lingonberry_bush_seed_iconic.json)",
+         "ghost_form": "file(lingonberry_bush_seed_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_1.qb",
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_2.qb",
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_3.qb"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.075, "y": 0, "z": 0.075 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:vines:lingonberry_bush:sprout",
+         "evolve_time": "10h+6h"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.vines.lingonberry_bush.seed.display_name)",
+         "description": "i18n(stonehearth_ace:entities.vines.lingonberry_bush.seed.description)",
+         "icon": "file(lingonberry_bush_seed.png)",
+         "category": "seed",
+         "material_tags": [
+            "stockpile_plant",
+            "plant",
+            "resource",
+            "seed",
+            "seed_fruit",
+            "lingoberry_bush_seed",
+            "vine"
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

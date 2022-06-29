@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 28,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.fishwrap_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.fishwrap_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.fishwrap_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/fishwrap/fishwrap/fishwrap.png",
+   "workshop": "stonehearth:cook:oven",
+   "level_requirement": 4,
+   "ingredients": [
+	  {
+         "material": "food_container raw_food vegetable leafy",
+         "count": 3
+      },
+      {
+         "material": "food_container raw_food vegetable savory",
+         "count": 2
+      },
+      {
+         "material": "raw fish_meat",
+         "count": 2
+      },
+      {
+         "material": "butter cooking_ingredient",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:fishwrap"
+      }
+   ]
+}

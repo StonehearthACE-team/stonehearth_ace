@@ -1,0 +1,42 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(northern_meatballs_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 130
+         },
+         "default": {
+            "satisfaction": 90
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:regeneration"
+         ],
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.northern_meatballs.northern_meatballs_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.northern_meatballs.northern_meatballs_serving.description)",
+         "material_tags": [
+            "food",
+            "northern_meatballs_serving",
+            "meat",
+            "lunch_time"
+         ],
+         "subject_override": "stonehearth_ace:food:northern_meatballs"
+      }
+   }
+}

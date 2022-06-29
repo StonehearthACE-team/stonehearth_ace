@@ -1,0 +1,58 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:food_decay:preserve"
+   ],
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/glass_material_map.json"
+         ],
+         "scale": 0.04
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(../jam_glass.qb)",
+               "file(jam_lingonberry_cover.qb)",
+               "file(jam_lingonberry_content.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.04, "y": 0, "z": 0.04 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 7,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.preserves.jam_lingonberry.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.preserves.jam_lingonberry.description)",
+         "icon": "file(jam_lingonberry.png)",
+         "is_item": true,
+         "category": "cooking_ingredient",
+         "material_tags": [
+            "stockpile_cooking_ingredient",
+            "cooking_ingredient",
+            "raw_food",
+            "fruit",
+            "jam",
+            "lingonberry",
+            "preserve_ingredient"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 10
+      }
+   }
+}

@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/armor/bronze_shield/bronze_shield_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_bronze_shield_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Bronze Desert Buckler",
+         "icon": "file(ea_bronze_shield.png)"
+      }
+   }
+}

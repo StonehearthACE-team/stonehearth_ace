@@ -1,0 +1,48 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.pickles_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.pickles_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.pickles_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/preserves/pickles/pickles.png",
+   "workshop": "stonehearth_ace:cook:table",
+   "level_requirement": 3,
+   "ace_smart_crafter_ignore": true,
+   "ingredients": [
+		{
+			"material": "food_container raw_food vegetable hearty",
+			"count": 3
+		},
+      {
+			"uri": "stonehearth_ace:food:garlic:garlic_basket",
+			"count": 1
+		},
+      {
+         "uri": "stonehearth_ace:food:vinegar",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:preserves:pickles",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "food_container raw_food vegetable hearty"
+      },
+      {
+         "item": "stonehearth_ace:food:preserves:pickles",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "food_container raw_food vegetable hearty"
+      },
+      {
+         "item": "stonehearth_ace:food:preserves:pickles",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "food_container raw_food vegetable hearty"
+      },
+      {
+         "item": "stonehearth_ace:food:preserves:pickles",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "food_container raw_food vegetable hearty"
+      }
+   ]
+}
