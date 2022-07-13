@@ -6,32 +6,70 @@
       and easily shown through the town ui (settings will also get saved there)
 ]]
 
+local validator = radiant.validator
+
 local MercantileService = class()
+
+local log = radiant.log.create_logger('mercantile_service')
 
 function MercantileService:initialize()
    self._sv = self.__saved_variables:get_data()
 
    if not self._sv._initialized then
       self._sv.players = {}
+      
+      -- make sure all non-npc players have a controller
+      for player_id, _ in pairs(stonehearth.player:get_non_npc_players()) do
+         self:add_player_controller(player_id, true)
+      end
 
       self._sv._initialized = true
    end
 
-   self:_load_merchant_data()
+   -- merchants can't spawn before a biome has been set, so don't bother loading merchants until then
+   local biome_uri = stonehearth.world_generation:get_biome_alias()
+   if not biome_uri then
+      self._biome_listener = radiant.events.listen(radiant, 'stonehearth:biome_set', function(args)
+            self:_load_merchant_data(args.biome_uri)
+         end)
+   else
+      self:_load_merchant_data(biome_uri)
+   end
 
-   self._morning_spawn_alarm = stonehearth.calendar:set_alarm('8:00', function()
+   self._morning_spawn_alarm = stonehearth.calendar:set_alarm(stonehearth.constants.mercantile.SPAWN_TIME, function()
          self:_spawn_all_merchants()
       end)
+
+   self._evening_depart_alarm = stonehearth.calendar:set_alarm(stonehearth.constants.mercantile.DEPART_TIME, function()
+         radiant.events.trigger_async(self, 'stonehearth_ace:merchants:depart_time')
+      end)
+end
+
+function MercantileService:destroy()
+   if self._morning_spawn_alarm then
+      self._morning_spawn_alarm:destroy()
+      self._morning_spawn_alarm = nil
+   end
+   if self._evening_depart_alarm then
+      self._evening_depart_alarm:destroy()
+      self._evening_depart_alarm = nil
+   end
+   if self._biome_listener then
+      self._biome_listener:destroy()
+      self._biome_listener = nil
+   end
 end
 
 function MercantileService:get_player_controller(player_id)
    return self._sv.players[player_id]
 end
 
-function MercantileService:add_player_controller(player_id)
+function MercantileService:add_player_controller(player_id, start_enabled)
    local controller = self:get_player_controller(player_id)
    if not controller then
-      controller = radiant.create_controller('stonehearth_ace:player_mercantile_controller', player_id)
+      -- if it's a non-npc player, start the controller enabled; otherwise start it disabled
+      controller = radiant.create_controller('stonehearth_ace:player_mercantile_controller', player_id,
+                                             start_enabled or stonehearth.player:get_non_npc_players()[player_id])
       self._sv.players[player_id] = controller
    end
    return controller
@@ -46,6 +84,10 @@ function MercantileService:remove_player(player_id)
 end
 
 function MercantileService:get_categories()
+   return self._categories
+end
+
+function MercantileService:get_category_merchants()
    return self._category_merchants
 end
 
@@ -53,9 +95,44 @@ function MercantileService:get_unique_merchants()
    return self._unique_merchants
 end
 
+function MercantileService:get_merchant_data(merchant)
+   return self._all_merchants and self._all_merchants[merchant]
+end
+
 function MercantileService:get_category_min_city_tier(category)
    local category_data = self._categories[category]
    return category_data and category_data.min_city_tier or 1
+end
+
+function MercantileService:get_player_controller_command(session, response)
+   response:resolve({controller = self:add_player_controller(session.player_id)})
+end
+
+function MercantileService:show_shop_command(session, response, entity)
+   validator.expect_argument_types({'Entity'}, entity)
+
+   -- entity can be either a merchant or a stall
+   -- the merchant component has the shop stored in it
+   local merchant_component = entity:get_component('stonehearth_ace:merchant')
+   if not merchant_component then
+      local stall_component = entity:get_component('stonehearth_ace:market_stall')
+      if stall_component then
+         local merchant = stall_component:get_merchant()
+         merchant_component = merchant and merchant:get_component('stonehearth_ace:merchant')
+      end
+   end
+
+   local shop = merchant_component and merchant_component:get_shop()
+   if shop then
+      merchant_component:show_bulletin()
+   end
+end
+
+function MercantileService:set_trade_preferences_command(session, response, categories, uniques)
+   local player_controller = self:get_player_controller(session.player_id)
+   if player_controller then
+      player_controller:set_trade_preferences(categories, uniques)
+   end
 end
 
 function MercantileService:register_merchant_stall(stall)
@@ -74,38 +151,72 @@ function MercantileService:unregister_merchant_stall(stall)
    end
 end
 
-function MercantileService:_load_merchant_data()
+function MercantileService:remove_merchant(merchant)
+   if merchant and merchant:is_valid() then
+      local merchant_component = merchant:get_component('stonehearth_ace:merchant')
+      if merchant_component then
+         local player = self:get_player_controller(merchant_component:get_player_id())
+         if player then
+            player:remove_merchant(merchant)
+         end
+      end
+   end
+end
+
+function MercantileService:_load_merchant_data(biome_uri)
    -- deep copy the loaded table because we're going to be modifying it a lot
    local data = radiant.deep_copy(radiant.resources.load_json('stonehearth_ace:data:merchants'))
    local category_merchants = {}
    local unique_merchants = {}
+   local all_merchants = {}
 
    for merchant, merchant_data in pairs(data.merchants) do
-      merchant_data.key = merchant
-      if radiant.util.is_string(merchant_data.shop) then
-         merchant_data.shop = radiant.resources.load_json(merchant_data.shop)
-      end
-      
-      if merchant_data.category and data.categories[merchant_data.category] then
-         local category_data = category_merchants[merchant_data.category]
-         if not category_data then
-            category_data = {}
-            category_merchants[merchant_data.category] = category_data
+      if self:_merchant_allowed_in_biome(merchant_data, biome_uri) then
+         merchant_data.key = merchant
+         if radiant.util.is_string(merchant_data.shop) then
+            merchant_data.shop_info = radiant.resources.load_json(merchant_data.shop).shop_info
          end
-         category_data[merchant] = merchant_data
-      elseif merchant_data.required_stall then
-         unique_merchants[merchant] = merchant_data
+
+         merchant_data.min_city_tier = merchant_data.min_city_tier or 1
+         merchant_data.min_stall_tier = merchant_data.min_stall_tier or merchant_data.min_city_tier
+         merchant_data.weight = merchant_data.weight or 1
+         
+         if merchant_data.category and data.categories[merchant_data.category] then
+            local category_data = category_merchants[merchant_data.category]
+            if not category_data then
+               category_data = {}
+               category_merchants[merchant_data.category] = category_data
+            end
+            category_data[merchant] = merchant_data
+         elseif merchant_data.required_stall then
+            unique_merchants[merchant] = merchant_data
+         end
+
+         all_merchants[merchant] = merchant_data
       end
    end
 
+   self._categories = data.categories
    self._category_merchants = category_merchants
    self._unique_merchants = unique_merchants
-   self._categories = data.categories
+   self._all_merchants = all_merchants
+end
+
+function MercantileService:_merchant_allowed_in_biome(merchant_data, biome_uri)
+   if merchant_data.forbidden_biome and merchant_data.forbidden_biome[biome_uri] then
+      return false
+   end
+   if merchant_data.only_biome and not merchant_data.only_biome[biome_uri] then
+      return false
+   end
+
+   return true
 end
 
 function MercantileService:_spawn_all_merchants()
    for player_id, controller in pairs(self._sv.players) do
-      controller:create_spawn_timer()
+      controller:determine_daily_merchants() -- checks existing cooldowns when determining which merchants to use
+      controller:reduce_merchant_cooldowns() -- then reduces the cooldowns... this way a cooldown of 1 actually means something
    end
 end
 

@@ -41,6 +41,15 @@ function AcePlayerService:get_default_base_job(player_id, population_override)
    return self._default_base_job
 end
 
+AcePlayerService._ace_old_add_player = PlayerService.add_player
+function AcePlayerService:add_player(player_id, kingdom, options)
+   self:_ace_old_add_player(player_id, kingdom, options)
+   
+   if not (options and options.is_npc) then
+      stonehearth_ace.mercantile:add_player_controller(player_id, true)
+   end
+end
+
 -- Clean up data for this player
 AcePlayerService._ace_old_remove_player = PlayerService.remove_player
 function AcePlayerService:remove_player(player_id)

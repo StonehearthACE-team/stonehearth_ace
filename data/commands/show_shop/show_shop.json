@@ -1,0 +1,14 @@
+{
+   "type": "command",
+   "name": "show_shop",
+   "display_name": "i18n(stonehearth_ace:data.commands.show_shop.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.show_shop.description)",
+   "disabled_description": "i18n(stonehearth_ace:data.commands.show_shop.disabled_description)",
+   "icon": "file(show_shop.png)",
+   "visible_to_all_players": true,
+   "action": "call",
+   "function": "show_shop_command",
+   "object": "stonehearth_ace.mercantile",
+   "args": [
+   ]
+}

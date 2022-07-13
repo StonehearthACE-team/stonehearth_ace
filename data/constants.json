@@ -927,11 +927,13 @@
          }
       },
       "mercantile": {
+         "MIN_CITY_TIER": 1,
+         "MAX_STALL_TIER": 3,
          "MAX_DAILY_MERCHANTS": 8,
          "NET_WORTH_MUTLIPLIER": 0.03,
          "TOTAL_TRADE_MUTLIPLIER": 0.01,
          "ADDITIVE_MODIFIER": -1,
-         "SPAWN_TIME": "08:00",
+         "SPAWN_TIME": "8:00",
          "DEPART_TIME": "20:00",
          "category_preferences": {
             "DISABLED": 0,
@@ -941,7 +943,16 @@
          "ENCOURAGED_MULTIPLIER": 3,
          "MAX_DISABLES_PER_TIER": [1, 3, 5],
          "MAX_ENCOURAGES_PER_TIER": [1, 3, 5],
-         "PERSISTENCE_ITEM_DISCOUNT": 0.5
+         "DEFAULT_WANTED_ITEM_PRICE_FACTOR": 1.5,
+         "PERSISTENCE_ITEM_PRICE_FACTOR": 0.5,
+         "PERSISTENCE_ITEM_QUALITY_COUNTS": [7, 3, 1],
+         "PERSISTENCE_TOWN_NAME_CHANCE": 0.2,
+         "rarities": {
+            "JUNK": "junk",
+            "COMMON": "common",
+            "UNCOMMON": "uncommon",
+            "RARE": "rare"
+         }
       },
       "town_progression": {
          "MAX_CITY_TIER": 3

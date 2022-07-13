@@ -4,7 +4,7 @@ local service_creation_order = {
    'connection',
    'crafter_info',
    'mechanical',
-   --'mercantile',
+   'mercantile',
    'persistence',
    'universal_storage',
    --'water_processor',
