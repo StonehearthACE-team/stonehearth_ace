@@ -70,36 +70,42 @@ function PlayerMercantile:register_merchant_stall(stall)
    self._merchant_stalls[stall:get_id()] = stall
 
    local uri = stall:get_uri()
-   local stall_data = radiant.entities.get_entity_data(uri, 'stonehearth_ace:market_stall')
-   if stall_data and stall_data.tier then
-      local tier_stalls = self._sv.tier_stalls
-      tier_stalls[stall_data.tier] = (tier_stalls[stall_data.tier] or 0) + 1
+   local stall_component = stall:get_component('stonehearth_ace:market_stall')
+   if stall_component then
+      local tier = stall_component:get_tier()
+      if tier then
+         local tier_stalls = self._sv.tier_stalls
+         tier_stalls[tier] = (tier_stalls[tier] or 0) + 1
+      else
+         local unique_stalls = self._sv.unique_stalls
+         unique_stalls[uri] = (unique_stalls[uri] or 0) + 1
+      end
+
+      self.__saved_variables:mark_changed()
    end
-
-   local unique_stalls = self._sv.unique_stalls
-   unique_stalls[uri] = (unique_stalls[uri] or 0) + 1
-
-   self.__saved_variables:mark_changed()
 end
 
 function PlayerMercantile:unregister_merchant_stall(stall)
    self._merchant_stalls[stall:get_id()] = nil
 
    local uri = stall:get_uri()
-   local stall_data = radiant.entities.get_entity_data(uri, 'stonehearth_ace:market_stall')
-   if stall_data and stall_data.tier then
-      local tier_stalls = self._sv.tier_stalls
-      if tier_stalls[stall_data.tier] then
-         tier_stalls[stall_data.tier] = tier_stalls[stall_data.tier] - 1
+   local stall_component = stall:get_component('stonehearth_ace:market_stall')
+   if stall_component then
+      local tier = stall_component:get_tier()
+      if tier then
+         local tier_stalls = self._sv.tier_stalls
+         if tier_stalls[tier] then
+            tier_stalls[tier] = tier_stalls[tier] - 1
+         end
+      else
+         local unique_stalls = self._sv.unique_stalls
+         if unique_stalls[uri] then
+            unique_stalls[uri] = unique_stalls[uri] - 1
+         end
       end
-   end
 
-   local unique_stalls = self._sv.unique_stalls
-   if unique_stalls[uri] then
-      unique_stalls[uri] = unique_stalls[uri] - 1
+      self.__saved_variables:mark_changed()
    end
-
-   self.__saved_variables:mark_changed()
 end
 
 function PlayerMercantile:remove_merchant(merchant)
