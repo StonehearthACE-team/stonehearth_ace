@@ -7,6 +7,8 @@
 
 local MerchantComponent = class()
 
+local log = radiant.log.create_logger('merchant_component')
+
 function MerchantComponent:create()
    stonehearth.ai:inject_ai(self._entity, { ai_packs = { 'stonehearth_ace:ai_pack:merchant' } })
 end
@@ -17,9 +19,12 @@ function MerchantComponent:restore()
 end
 
 function MerchantComponent:post_activate()
-   self._depart_time = stonehearth.calendar:parse_time(stonehearth.constants.mercantile.DEPART_TIME)
-   self:_load_merchant_data()
-   self:_update_commands()
+   if self._is_restore and self._sv._should_depart then
+      self:_destroy_shop()
+   else
+      self:_load_merchant_data()
+      self:_update_commands()
+   end
 end
 
 function MerchantComponent:destroy()
@@ -66,6 +71,8 @@ function MerchantComponent:set_merchant_data(player_id, merchant_data)
 
    self._entity:add_component('stonehearth:commands'):add_command('stonehearth_ace:commands:show_shop')
    self:_update_commands()
+   
+   self:show_bulletin()
 end
 
 function MerchantComponent:get_current_stall()
@@ -95,7 +102,6 @@ function MerchantComponent:show_bulletin()
    self._sv._bulletin = stonehearth.bulletin_board:post_bulletin(self._sv.player_id)
                         :set_ui_view('StonehearthShopBulletinDialog')
                         :set_callback_instance(self)
-                        :set_sticky(false)
                         :set_data(data)
 end
 
@@ -118,6 +124,7 @@ end
 function MerchantComponent:_destroy_bulletin()
    local bulletin = self._sv._bulletin
    if bulletin then
+      log:debug('destroying shop bulletin for %s', self._entity)
       stonehearth.bulletin_board:remove_bulletin(bulletin)
       self._sv._bulletin = nil
    end
@@ -146,11 +153,12 @@ function MerchantComponent:set_up_at_stall(stall)
 end
 
 function MerchantComponent:should_depart()
-   if not self._sv._should_depart then
-      local now = stonehearth.calendar:get_seconds_since_last_midnight()
-      self._sv._should_depart = now > self._depart_time
-   end
    return self._sv._should_depart
+end
+
+function MerchantComponent:set_should_depart()
+   self._sv._should_depart = true
+   self:_destroy_shop()
 end
 
 function MerchantComponent:_update_commands()

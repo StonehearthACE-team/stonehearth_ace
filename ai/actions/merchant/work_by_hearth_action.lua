@@ -44,11 +44,15 @@ return ai:create_compound_action(WorkByHearth)
             filter_fn = ai.BACK(2).filter_fn,
             item = ai.BACK(1).item
          })
+         :execute('stonehearth:abort_on_event_triggered', {
+            source = stonehearth_ace.mercantile,
+            event = 'stonehearth_ace:merchants:depart_time',
+         })
          :execute('stonehearth:reserve_entity', {
-            entity = ai.BACK(2).item
+            entity = ai.BACK(3).item
          })
          :execute('stonehearth:find_path_to_reachable_entity', {
-            destination = ai.BACK(3).item
+            destination = ai.BACK(4).item
          })
          :execute('stonehearth:follow_path', {
             path = ai.PREV.path,

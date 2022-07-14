@@ -17,7 +17,7 @@ end
 
 AceHydrologyService._ace_old__on_terrain_changed = HydrologyService._on_terrain_changed
 function AceHydrologyService:_on_terrain_changed(delta_region, now)
-   log:debug('_on_terrain_changed...')
+   --log:debug('_on_terrain_changed...')
 
    if self._ignore_terrain_region then
       delta_region:subtract_region(self._ignore_terrain_region)
@@ -25,7 +25,7 @@ function AceHydrologyService:_on_terrain_changed(delta_region, now)
    end
 
    if not delta_region:empty() then
-      log:debug('... %s (%s), %s', delta_region, delta_region:get_bounds(), now)
+      --log:debug('... %s (%s), %s', delta_region, delta_region:get_bounds(), now)
       self:_ace_old__on_terrain_changed(delta_region, now)
    end
 end

@@ -122,6 +122,13 @@ function PlayerMercantile:reduce_merchant_cooldowns()
          cds[id] = nil
       end
    end
+   self.__saved_variables:mark_changed()
+end
+
+function PlayerMercantile:depart_active_merchants()
+   for _, merchant in pairs(self._sv.active_merchants) do
+      merchant:get_component('stonehearth_ace:merchant'):set_should_depart()
+   end
 end
 
 function PlayerMercantile:set_trade_preferences(category_preferences, unique_preferences)

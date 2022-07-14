@@ -87,9 +87,9 @@ function InteractionProxyComponent:_on_parent_changed(parent)
    local entity = self._sv._entity
    local this_parent = radiant.entities.get_parent(self._entity)
 
-   log:debug('%s parent changed to %s (from %s)', entity, parent, tostring(this_parent))
-
    if entity and entity:is_valid() and parent ~= this_parent then
+      --log:debug('%s parent changed to %s (from %s)', entity, parent, tostring(this_parent))
+
       if this_parent then
          log:debug('removing %s from %s', self._entity, this_parent)
          radiant.entities.remove_child(this_parent, self._entity)

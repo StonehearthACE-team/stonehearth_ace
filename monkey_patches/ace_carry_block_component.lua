@@ -6,7 +6,7 @@ local AceCarryBlock = class()
 
 function AceCarryBlock:set_carrying(new_item, opt_relative_orientation)
    if not new_item or not new_item:is_valid() then
-      log:info('%s set_carrying to nil or invalid item', self._entity)
+      --log:info('%s set_carrying to nil or invalid item', self._entity)
       self:_remove_carrying()
       return
    end
@@ -30,7 +30,7 @@ function AceCarryBlock:set_carrying(new_item, opt_relative_orientation)
    self._is_carrying_cache = true
    --self.__saved_variables:mark_changed()
 
-   log:info('%s adding %s to carry bone', self._entity, new_item)
+   --log:info('%s adding %s to carry bone', self._entity, new_item)
 
    self._entity:add_component('entity_container')
                      :add_child_to_bone(new_item, 'carry')

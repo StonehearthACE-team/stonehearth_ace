@@ -42,6 +42,9 @@ function MercantileService:initialize()
 
    self._evening_depart_alarm = stonehearth.calendar:set_alarm(stonehearth.constants.mercantile.DEPART_TIME, function()
          radiant.events.trigger_async(self, 'stonehearth_ace:merchants:depart_time')
+         for player_id, player_controller in pairs(self._sv.players) do
+            player_controller:depart_active_merchants()
+         end
       end)
 end
 

@@ -20,7 +20,7 @@ end
 AceRenewableResourceNodeComponent._ace_old_activate = RenewableResourceNodeComponent.activate
 function AceRenewableResourceNodeComponent:activate()
    self._renewal_time_multipliers = {}
-   log:debug('%s RRN:activate() current model: %s', self._entity, self._entity:get_component('render_info'):get_model_variant())
+   --log:debug('%s RRN:activate() current model: %s', self._entity, self._entity:get_component('render_info'):get_model_variant())
    self:_ace_old_activate()
    if self._sv.half_renew_timer and self._sv.half_renew_timer.bind then
       self._sv.half_renew_timer:bind(function()
@@ -66,7 +66,7 @@ function AceRenewableResourceNodeComponent:post_activate()
       self._loot_table_filter_args = self._json.loot_table_filter_args
    end
 
-   log:debug('%s RRN:post_activate() current model: %s', self._entity, self._entity:get_component('render_info'):get_model_variant())
+   --log:debug('%s RRN:post_activate() current model: %s', self._entity, self._entity:get_component('render_info'):get_model_variant())
 end
 
 AceRenewableResourceNodeComponent._ace_old_destroy = RenewableResourceNodeComponent.__user_destroy
@@ -412,7 +412,7 @@ function AceRenewableResourceNodeComponent:_update_renew_timer(create_if_no_time
          self:renew()
       end
    )
-   log:debug('%s set renew timer for duration %s', self._entity, renewal_time)
+   --log:debug('%s set renew timer for duration %s', self._entity, renewal_time)
 
    if self._json.half_renewed_model or self._json.half_renewed_model_variant and half_renewal_time >= 1 then
       self._sv.half_renew_timer = stonehearth.calendar:set_persistent_timer("RenewableResourceNodeComponent half-renew", half_renewal_time,
@@ -420,7 +420,7 @@ function AceRenewableResourceNodeComponent:_update_renew_timer(create_if_no_time
             self:_set_model_half_renewed()
          end
       )
-      log:debug('%s set half-renewed timer for duration %s', self._entity, half_renewal_time)
+      --log:debug('%s set half-renewed timer for duration %s', self._entity, half_renewal_time)
    end
 
    self.__saved_variables:mark_changed()
@@ -507,7 +507,7 @@ function AceRenewableResourceNodeComponent:is_harvest_requested()
 end
 
 function AceRenewableResourceNodeComponent:cancel_harvest_request()
-   log:debug('canceling auto harvest for %s', self._entity)
+   --log:debug('canceling auto harvest for %s', self._entity)
    self:_cancel_harvest_request()
 end
 
