@@ -622,6 +622,71 @@
                      }
                   }
                },
+               "dom_vandon_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "A fine-looking merchant approaches with a very exotic caravan!",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "The goblin approaches, revealing herself to be a bit shorter than expected. \"BONES! BONES!\" she shouts in a playful, almost childish voice.<p>\"BOOOONEEES!\" she continues.<p>She seems to be harmless.<p><span class='aside'>Is that a child? Are there goblin children?</span></p>"
+                           },
+                           "choice_000": "Oh?",
+                           "choice_001": "Nope, sorry! [Skip Quest]"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "She's clearly happy about it, hopping around in circles. \"BONES! BONES! MANY BONES!\"<p>Suddenly, a stern and yet compassionate hearthling voice rumbles nearby. \"There you are, Rattley!\""
+                           },
+                           "choice_000": "Who?"
+                        },
+                        "msg3": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "He wears the colors of the Northern Alliance. Strong and grizzled, he rests his hand on the head of the little goblin. \"So there you are! Going out and making friends, eh?\"<p>He notices the people around. \"I apologize. Name's Thorulf, traveler and former Scout of the Library.\"<p>With a gentle pat the goblin goes back to jumping around."
+                           },
+                           "choice_000": "Greetings!",
+                           "choice_001": "You have a... pet goblin?"
+                        },
+                        "msg3b": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "\"What?\" he thunders. \"No, don't call her a pet! She's a goblin - not a squirrel. They're people too, you know?\"<p>He coughs, waving his hand as an apology.<p>\"I apologize. It's just... We've been through a lot, Rattley and I.\" He looks in her direction as she plays with a small bone club. \"Unfortunately, not many places are prepared to accept or at least try to understand goblins...\""
+                           },
+                           "choice_000": "I see. Apologies!"
+                        },
+                        "msg4": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "\"Rattley is like a daughter to me,\" he says with a bittersweet smile, \"I am the reason she is alone in the world, and she is the reason I left the Library. Each of us watches over the other now!\" he laughs, shoving the past back where it belongs.<p>\"I know you're busy, so we'll go find a place to camp for a few days!\" He waves his hand, calling Rattley closer."
+                           },
+                           "choice_000": "Sure!"
+                        },
+                        "msg5": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "\"Oh, I almost forgot...\" he scratches the back of his head and smirks. \"I'll be busy setting up camp and won't have time to hunt very soon... Would you mind gifting little Rattley a couple of bones?\"<p>The little goblin reacts enthusiastically. \"BONES! GIVE BONES!\"<p>Thorulf stares back at her \"Rattley, what have I told you?\".<p>She looks down. \"Please?\"<p>Thorulf smiles. \"We would appreciate it, she loves carving them!\""
+                           },
+                           "choice_000": "Of course!"
+                        },
+                        "skip": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "\"Good!\" he exclaims, before turning around. \"We'll be nearby. Stay warm!\"<p>They start walking away."
+                           },
+                           "choice_000": "Alright, we'll listen!",
+                           "choice_001": "Take care! [Skip Quest]"
+                        }
+                     }
+                  }
+               },
                "returning_silk_road_trader_encounter": {
                   "title": "A caravaneer from the far east is passing through!",
                   "trade_details": "Warm greetings, [str(i18n_data.town_name)]! Don Vandon, at your service. Yes, that is right: the famous merchant! Our latest fruitful crossing of the perilous Silk Road has brought us many wonderful goods, most of which are already reserved for the mightiest lords, kings and queens, I'm afraid! We do have some cancelled orders, however... Like these <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>. Not my finest products, no no, so you can have them. For a fair price, of course! The eastern kingdoms are interested in our exotic goods, let's say... <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>! We'll be around for [str(i18n_data.num_days)] days, think your fair town can manage this exchange, yes?",

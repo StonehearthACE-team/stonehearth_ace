@@ -5,7 +5,8 @@
    "out_edge": {
       "type": "trigger_many",
       "out_edges": [
-         "wait_for_minimum_net_worth"
+         "wait_for_minimum_net_worth",
+         "wait_for_net_worth"
       ]
    }
 }

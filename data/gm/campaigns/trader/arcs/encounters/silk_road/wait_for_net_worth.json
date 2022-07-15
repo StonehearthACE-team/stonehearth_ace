@@ -1,0 +1,10 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_net_worth",
+   "in_edge": "wait_for_net_worth",
+   "out_edge": "dom_vandon_arrival",
+   "wait_for_net_worth_info": {
+      "threshold": 2500,
+      "interval": "24h"
+   }
+}
