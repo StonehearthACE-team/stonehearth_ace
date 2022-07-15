@@ -205,11 +205,14 @@ function PlayerMercantile:_spawn_merchant(player_id, town, merchant)
       
       local cooldown = merchant_data.cooldown
       if cooldown then
+         -- TODO: Dani maybe find a town bonus for this kind of feature?
          local mercantile_bonus = town:get_town_bonus('stonehearth_ace:town_bonus:mercantile')
          if mercantile_bonus then
             cooldown = mercantile_bonus:get_reduced_cooldown(cooldown)
          end
-         self._sv.cooldowns[merchant_data.key] = cooldown
+         if cooldown > 0 then
+            self._sv.cooldowns[merchant_data.key] = cooldown
+         end
       end
       self._sv.active_merchants[merchant:get_id()] = merchant
       self.__saved_variables:mark_changed()
@@ -486,11 +489,10 @@ function PlayerMercantile:_calculate_num_merchants()
             (mercantile_constants.NET_WORTH_MUTLIPLIER or 1)
    end
 
-   -- = log ( coefficient * net worth + coefficient * traded)
+   -- = ( coefficient * net worth + coefficient * traded) ^ (1/3) + modifier
    local sum = net_worth + traded
    if sum > 0 then
-      -- math.log(1 + sum) so we're always getting a positive result from log (log(1) == 0)
-      local num_merchants = math.max(0, math.log(1 + sum) + (mercantile_constants.ADDITIVE_MODIFIER or 0))
+      local num_merchants = math.max(0, math.min(mercantile_constants.MAX_DAILY_MERCHANTS, sum ^ (1/3) + (mercantile_constants.ADDITIVE_MODIFIER or 0)))
       if num_merchants > 0 then
          -- it probably won't be less than 1 for very long, so we can just do normal chance with that
          -- if > 1, guarantee the integer amount of merchants and then randomize on the remainder

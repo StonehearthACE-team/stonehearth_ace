@@ -72,7 +72,7 @@ function MerchantComponent:set_merchant_data(player_id, merchant_data)
    self._entity:add_component('stonehearth:commands'):add_command('stonehearth_ace:commands:show_shop')
    self:_update_commands()
    
-   self:show_bulletin()
+   self:show_bulletin(true)
 end
 
 function MerchantComponent:get_current_stall()
@@ -83,7 +83,7 @@ function MerchantComponent:get_shop()
    return self._sv._shop
 end
 
-function MerchantComponent:show_bulletin()
+function MerchantComponent:show_bulletin(initial)
    if self._sv._bulletin then
       if self._sv._bulletin.__destroyed then
          self:_destroy_bulletin()
@@ -96,7 +96,7 @@ function MerchantComponent:show_bulletin()
       shop = self._sv._shop,
       title = self._merchant_data.shop_info.title,
       closed_callback = '_on_shop_closed',
-      skip_notification = true
+      skip_notification = not initial
    }
 
    self._sv._bulletin = stonehearth.bulletin_board:post_bulletin(self._sv.player_id)
