@@ -2,6 +2,7 @@ local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 local rng = _radiant.math.get_default_rng()
 local constants = require 'stonehearth.constants'
 local mercantile_constants = constants.mercantile
+local game_mode_modifier
 
 local PlayerMercantile = class()
 
@@ -475,6 +476,8 @@ function PlayerMercantile:_calculate_num_merchants()
    local player_id = self._sv.player_id
    local inventory = stonehearth.inventory:get_inventory(player_id)
    if not inventory then
+      self._sv.enabled = false
+      self.__saved_variables:mark_changed()
       return 0
    end
 
@@ -489,10 +492,17 @@ function PlayerMercantile:_calculate_num_merchants()
             (mercantile_constants.NET_WORTH_MUTLIPLIER or 1)
    end
 
-   -- = ( coefficient * net worth + coefficient * traded) ^ (1/3) + modifier
+   -- = (( coefficient * net worth + coefficient * traded) ^ (1/3) + modifier) * game_mode_modifier
    local sum = net_worth + traded
    if sum > 0 then
-      local num_merchants = math.max(0, math.min(mercantile_constants.MAX_DAILY_MERCHANTS, sum ^ (1/3) + (mercantile_constants.ADDITIVE_MODIFIER or 0)))
+      local num_merchants = sum ^ (1/3) + (mercantile_constants.ADDITIVE_MODIFIER or 0)
+      
+      if not game_mode_modifier then
+         local game_mode_json = stonehearth.game_creation:get_game_mode_json()
+         game_mode_modifier = game_mode_json.merchant_chance_multiplier or 1
+      end
+      num_merchants = math.min(mercantile_constants.MAX_DAILY_MERCHANTS, num_merchants * game_mode_modifier)
+
       if num_merchants > 0 then
          -- it probably won't be less than 1 for very long, so we can just do normal chance with that
          -- if > 1, guarantee the integer amount of merchants and then randomize on the remainder
@@ -502,9 +512,9 @@ function PlayerMercantile:_calculate_num_merchants()
          end
          return int_num_merchants, num_merchants
       end
-   else
-      return 0
    end
+
+   return 0
 end
 
 return PlayerMercantile
