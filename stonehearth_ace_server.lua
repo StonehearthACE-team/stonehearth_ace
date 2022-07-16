@@ -53,6 +53,7 @@ local monkey_patches = {
    ace_crafter_jobs_node = 'stonehearth.components.building2.plan.nodes.crafter_jobs_node',
    ace_crafting_progress = 'stonehearth.components.workshop.crafting_progress',
    ace_csg_lib = 'stonehearth.lib.csg.csg_lib',
+   ace_daily_report_script = 'stonehearth.data.gm.campaigns.game_events.arcs.trigger.game_events.encounters.daily_report_script',
    ace_darkness_observer = 'stonehearth.ai.observers.darkness_observer',
    ace_default_conversation_script = 'stonehearth.data.conversation.default.default_conversation_script',
    ace_dig_adjacent_action = 'stonehearth.ai.actions.mining.dig_adjacent_action',

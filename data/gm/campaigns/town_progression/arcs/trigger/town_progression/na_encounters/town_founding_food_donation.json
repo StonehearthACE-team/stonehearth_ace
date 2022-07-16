@@ -1,30 +1,215 @@
 {
    "donation_dialog_info": {
+      "mixintypes": {
+         "loot_table": "override"
+      },
       "loot_table": {
          "entries": {
-            "spirit_definite": {
-               "num_rolls": 2,
+            "meat_definite": {
+               "num_rolls": 1,
                "items": {
-                  "spirit_fruit": {
-                     "uri": "stonehearth_ace:drink:spirit_fruit",
+                  "roast_fish": {
+                     "uri": "stonehearth_ace:food:roast_fish",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 3
+                     },
+                     "weight": 1
+                  },
+                  "roast_venison": {
+                     "uri": "stonehearth:food:roast_venison",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 2
+                     },
+                     "weight": 1
+                  },
+                  "roast_pork": {
+                     "uri": "stonehearth:food:roast_pork",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 2
+                     },
+                     "weight": 1
+                  },
+                  "roast_steak": {
+                     "uri": "stonehearth_ace:food:roast_steak",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 2
+                     },
+                     "weight": 1
+                  }
+               }
+            },
+            "bread_definite": {
+               "num_rolls": 1,
+               "items": {
+                  "brown_loaf": {
+                     "uri": "stonehearth_ace:food:brown_loaf",
+                     "num_rolls": {
+                        "min" : 2,
+                        "max" : 3
+                     },
+                     "weight": 1
+                  },
+                  "hardtack": {
+                     "uri": "stonehearth_ace:food:hardtack",
+                     "num_rolls": {
+                        "min" : 2,
+                        "max" : 3
+                     },
+                     "weight": 1
+                  },
+                  "sourdough_bread": {
+                     "uri": "stonehearth_ace:food:sourdough_bread",
+                     "num_rolls": {
+                        "min" : 2,
+                        "max" : 3
+                     },
+                     "weight": 1
+                  },
+                  "peasant_bread": {
+                     "uri": "stonehearth:food:peasant_bread",
+                     "num_rolls": {
+                        "min" : 2,
+                        "max" : 3
+                     },
+                     "weight": 1
+                  },
+                  "nut_bread": {
+                     "uri": "stonehearth_ace:food:nut_bread",
+                     "num_rolls": {
+                        "min" : 2,
+                        "max" : 3
+                     },
+                     "weight": 1
+                  }
+               }
+            },
+            "food_variety": {
+               "num_rolls": 1,
+               "items": {
+                  "veggie_roll": {
+                     "uri": "stonehearth_ace:food:veggie_roll",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 2
+                     },
+                     "weight": 1
+                  },
+                  "cheese": {
+                     "uri": "stonehearth_ace:food:dairy:cheese_aged",
+                     "num_rolls": 1,
+                     "weight": 1
+                  },
+                  "cooked_nuts": {
+                     "uri": "stonehearth_ace:food:cooked_nuts",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 2
+                     },
+                     "weight": 1
+                  },
+                  "panettone": {
+                     "uri": "stonehearth_ace:food:panettone",
+                     "num_rolls": 1,
+                     "weight": 1
+                  }
+               }
+            },
+            "alcohol_definite": {
+               "num_rolls": 1,
+               "items": {
+                  "ale": {
+                     "uri": "stonehearth_ace:drink:ale",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 3
+                     },
+                     "weight": 1
+                  },
+                  "beer": {
+                     "uri": "stonehearth_ace:drink:beer",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 2
+                     },
+                     "weight": 1
+                  },
+						"mead_fruit": {
+                     "uri": "stonehearth_ace:drink:mead_fruit",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 2
+                     },
                      "weight": 1
                   },
 						"mead": {
                      "uri": "stonehearth_ace:drink:mead",
-                     "weight": 2
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 2
+                     },
+                     "weight": 1
+                  },
+						"spirit_northern": {
+                     "uri": "stonehearth_ace:drink:spirit_northern",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 2
+                     },
+                     "weight": 1
+                  },
+                  "wine_pear": {
+                     "uri": "stonehearth_ace:drink:wine_pear",
+                     "num_rolls": 1,
+                     "weight": 1
                   }
                }
             },
-            "drink_variety": {
-               "num_rolls": 3,
+            "non_alcohol_definite": {
+               "num_rolls": 1,
                "items": {
-                  "juice_carrot": {
-                     "uri": "stonehearth_ace:drink:juice_carrot",
-                     "weight": 2
+                  "clarea_water": {
+                     "uri": "stonehearth_ace:drink:clarea_water",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 3
+                     },
+                     "weight": 1
+                  },
+                  "ale_table": {
+                     "uri": "stonehearth_ace:drink:ale_table",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 2
+                     },
+                     "weight": 1
+                  },
+                  "juice_sweet_potato": {
+                     "uri": "stonehearth_ace:drink:juice_sweet_potato",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 3
+                     },
+                     "weight": 1
+                  },
+                  "juice_pear": {
+                     "uri": "stonehearth_ace:drink:juice_pear",
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 3
+                     },
+                     "weight": 1
                   },
                   "sheep_milk": {
                      "uri": "stonehearth_ace:drink:dairy:sheep_milk",
-                     "weight": 2
+                     "num_rolls": {
+                        "min" : 1,
+                        "max" : 3
+                     },
+                     "weight": 1
                   }
                }
             }
