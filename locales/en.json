@@ -20687,7 +20687,11 @@
                "automatons_and_golems": "Automatons & Golems",
                "herbalist_planter": "Herbalist Planters",
                "creature_egg": "Creature Eggs"
-            }
+            },
+            "tooltip_wanted_item_higher": "Merchant will pay <span class='higherPrice'>[str(factor)]% more</span> for these!",
+            "tooltip_wanted_item_higher_quantity": "Merchant will pay <span class='higherPrice'>[str(factor)]% more</span> for [str(quantity)] of these!",
+            "tooltip_wanted_item_lower": "Merchant will pay <span class='lowerPrice'>[str(factor)]% less</span> for these!",
+            "tooltip_wanted_item_lower_quantity": "Merchant will pay <span class='lowerPrice'>[str(factor)]% less</span> for [str(quantity)] of these!"
          },
          "custom_tooltips": {
             "mechanical": {
@@ -21320,6 +21324,9 @@
                   "message": "[str(i18n_data.new_title.description)]<h4>Title Renown:</h4>🏆 [str(i18n_data.new_title.renown)]<p>Doesn't that title have a nice ring to it? You can select which title one of your citizens is using by right-clicking their name in their character sheet or the selected unit window.</p>",
                   "item_message": "[str(i18n_data.new_title.description)]<h4>Title Renown:</h4>🏆 [str(i18n_data.new_title.renown)]<p>Doesn't that title have a nice ring to it? You can select which title this item is using by right-clicking its name in the selected unit window.</p><p><i>You might also consider giving [str(i18n_data.entity.stonehearth:unit_info.custom_name)] a fancier name to go along with their new title by left-clicking its name in the selected unit window.</i></p>"
                }
+            },
+            "shop": {
+               "wanted_items": "Offering special rates for these items:"
             }
          },
          "promotion_tree": {
@@ -21388,6 +21395,12 @@
       "shell": {
          "settings": {
             "gameplayTab": {
+               "backup_i18n_language": {
+                  "name": "Backup Localization Language",
+                  "description": "If set to a language other than your primary localization language, strings that fail to localize will be re-attempted in this backup localization language. May require a UI refresh (F5) to take effect.",
+                  "none": "None",
+                  "none_description": "Don't use a backup localization language."
+               },
                "load_paused": "Load Games Paused",
                "load_paused_description": "When loading a saved game, start it paused instead of immediately resuming at the previous speed. This can help with performance issues and crashes when loading large games.",
                "building_grid_size": "Building Template Snap Grid Size",

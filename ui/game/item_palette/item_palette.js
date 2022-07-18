@@ -4,7 +4,8 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
    options: {
       showZeroes: false,
       skipCategories: false,
-      sortField: 'display_name'
+      sortField: 'display_name',
+      wantedItems: null,
    },
 
    updateItems: function(itemMap) {
@@ -23,6 +24,7 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
             var catalogData = App.catalog.getCatalogData(uri);
             // only include an item that has an icon
             if (catalogData && catalogData.icon) {
+               v.root_uri = uri;
                v.display_name = catalogData.display_name;
                v.description = catalogData.description;
                v.category = v.category || catalogData.category;   // don't override a manually supplied category
@@ -114,6 +116,18 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       });
    },
 
+   updateWantedItems: function(wantedItems) {
+      var self = this;
+      self.options.wantedItems = wantedItems;
+      radiant.each(self._itemElements, function(uri, itemQualities) {
+         radiant.each(itemQualities, function(quality, el) {
+            if (el != null) {
+               self._updateWantedItem(el, uri);
+            }
+         });
+      });
+   },
+
    _updateItemElement: function(itemEl, item, uri) {
       if (!this.options.hideCount) {
          var num = this._getCount(item);
@@ -132,9 +146,54 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
                itemEl.find('.num').html(num);
             }
          }
+
+         if (this.options.wantedItems) {
+            this._updateWantedItem(itemEl, uri);
+         }
       }
 
       this._updateItemTooltip(itemEl, item);
+   },
+
+   _updateWantedItem: function(itemEl, uri) {
+      var wantedItem = this._getBestWantedItem(uri);
+      // update its wanted status
+      if (wantedItem) {
+         itemEl.addClass('wantedItem');
+         if (wantedItem.price_factor > 1) {
+            itemEl.addClass('higherPrice');
+         }
+         else if (wantedItem.price_factor < 1) {
+            itemEl.addClass('lowerPrice');
+         }
+      }
+      else {
+         itemEl.removeClass('wantedItem');
+         itemEl.removeClass('higherPrice');
+         itemEl.removeClass('lowerPrice');
+      }
+
+      if (this.options.updateWantedItem) {
+         this.options.updateWantedItem(itemEl, wantedItem);
+      }
+   },
+
+   _getBestWantedItem: function(uri) {
+      var catalogData = App.catalog.getCatalogData(uri);
+      var wantedItems = this.options.wantedItems;
+      var bestWantedItem = null;
+      for (i = 0; i < wantedItems.length; i++) {
+         var wantedItem = wantedItems[i];
+         if (!wantedItem.max_quantity || wantedItem.max_quantity > wantedItem.quantity) {
+            if (!bestWantedItem || bestWantedItem.price_factor < wantedItem.price_factor) {
+               if (uri == wantedItem.uri || (wantedItem.material && radiant.isMaterial(catalogData.materials, wantedItem.material))) {
+                  bestWantedItem = wantedItem;
+               }
+            }
+         }
+      }
+
+      return bestWantedItem;
    },
 
    _updateItemTooltip: function(itemEl, item) {
@@ -211,6 +270,34 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
             // so just enclose the two in separate inline divs
             //description = `<div class="item-inline-tooltip">${description}</div>${equipDiv}`;
             extraTip = extraTip ? extraTip + equipDiv : equipDiv;
+         }
+
+         if (self.options.wantedItems) {
+            var wantedItem = self._getBestWantedItem(item.root_uri);
+            if (wantedItem) {
+               var quantity = wantedItem.max_quantity != null ? (wantedItem.max_quantity - wantedItem.quantity) : null;
+               var hasQuantity = quantity != null;
+               // show the percentage modification to the price
+               var priceMod = Math.floor((wantedItem.price_factor - 1) * 100 + 0.5);
+               if (priceMod > 0) {
+                  // price is increased
+                  description += '<div class="wantedItem">' +
+                        i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_higher' + (hasQuantity ? '_quantity' : ''),
+                           {
+                              "factor": priceMod,
+                              "quantity": quantity
+                           }) + '</div>'
+               }
+               else if (priceMod < 0) {
+                  // price is decreased!
+                  description += '<div class="wantedItem">' +
+                        i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_lower' + (hasQuantity ? '_quantity' : ''),
+                           {
+                              "factor": priceMod,
+                              "quantity": quantity
+                           }) + '</div>'
+               }
+            }
          }
 
          var tooltip = App.tooltipHelper.createTooltip(displayNameTranslated, description, extraTip);

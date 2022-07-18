@@ -5,6 +5,27 @@
       "auto_rescue": {}
    },
    "stonehearth_ace": {
+      "backup_i18n_language": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.backup_i18n_language.name)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.backup_i18n_language.description)",
+         "values": {
+            "none": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.backup_i18n_language.none)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.backup_i18n_language.none_description)"
+            },
+            "en": {
+               "ordinal": 2,
+               "display_name": "English"
+            }
+         },
+         "on_change": {
+            "fire_event": "backup_i18n_language_changed"
+         },
+         "default": "en",
+         "ordinal": 0
+      },
       "load_paused": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.load_paused)",

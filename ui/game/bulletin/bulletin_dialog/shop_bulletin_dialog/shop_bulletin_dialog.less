@@ -1,0 +1,95 @@
+#shopBulletinDialog {
+   .window {
+      top: inherit;
+      bottom: 150px;
+      height: 650px;
+      max-height: 650px;
+   }
+
+   .tabPage {
+      height: 600px;
+   }
+
+   .inventoryList {
+      height: 515px;
+
+      &.hasWantedItems {
+         height: 399px;
+      }
+   }
+   
+   #wantedItems {
+      margin-top: 15px;
+
+      #wantedItemsList {
+         display: flex;
+         justify-content: flex-start;
+         align-items: center;
+         overflow-x: auto;
+         padding: 4px;
+
+         .wantedItem {
+            position: relative;
+            width: 72px;
+            height: 72px;
+            padding-top: 4px;
+            margin-right: 10px;
+            opacity: 0.5;
+
+            &.available {
+               opacity: 1.0;
+            }
+
+            &.higherPrice {
+               background-image: url(../../../item_palette/images/higher_price_bg.png);
+               div.factor {
+                  color: @greenFontColor;
+               }
+            }
+            &.lowerPrice {
+               background-image: url(../../../item_palette/images/lower_price_bg.png);
+               div.factor {
+                  color: @warningFontColor;
+               }
+            }
+      
+            .image {
+               width: 100%;
+               height: auto;
+            }
+
+            .factor {
+               .controlFont;
+               position: absolute;
+               top: 0px;
+               right: 4px;
+               font-size: 16px;
+            }
+      
+            .num {
+               .controlFont;
+               position: absolute;
+               bottom: 0px;
+               right: 4px;
+               color: #fff;
+               font-size: 16px;
+            }
+         }
+      }
+   }
+}
+
+.shopItem {
+   &.higherPrice {
+      background-image: url(../../../item_palette/images/higher_price_bg.png);
+      div.cost {
+         color: @greenFontColor;
+      }
+   }
+   &.lowerPrice {
+      background-image: url(../../../item_palette/images/lower_price_bg.png);
+      div.cost {
+         color: @warningFontColor;
+      }
+   }
+}

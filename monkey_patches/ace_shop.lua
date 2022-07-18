@@ -73,6 +73,7 @@ function AceShop:stock_shop()
                   uri = item.uri,
                   price_factor = item.price_factor or def_price_factor,
                   max_quantity = item.max_quantity,
+                  quantity = 0,
                })
             end
          end
@@ -213,7 +214,7 @@ function AceShop:sell_item(uri, quality, quantity)
       local actual_cost = item_cost
       local wanted_items = self:_get_wanted_items_entry(uri)
       if wanted_items then
-         actual_cost = item_cost * wanted_items.price_factor
+         actual_cost = item_cost * math.floor(wanted_items.price_factor + 0.5)
       end
 
       if sell_quantity == 0 or shopkeeper_gold < actual_cost then
@@ -231,6 +232,7 @@ function AceShop:sell_item(uri, quality, quantity)
 
       if wanted_items and wanted_items.max_quantity then
          wanted_items.max_quantity = wanted_items.max_quantity - 1
+         wanted_items.quantity = wanted_items.quantity + 1
       end
    end
 
@@ -256,7 +258,7 @@ function AceShop:_get_wanted_items_entry(uri)
       -- we do these checks in an unconventional order for efficiency
       -- simple arithmetic is an easier check that can avoid the is_material check
       -- first check if there's any quantity left (or unlimited quantity)
-      if not item.max_quantity or item.max_quantity > 0 then
+      if not item.max_quantity or item.max_quantity > item.quantity then
          -- then check if it's better than our current best match
          if not best_match or item.price_factor > best_match.price_factor then
             -- finally check if it's generally a match
