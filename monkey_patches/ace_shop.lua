@@ -230,10 +230,10 @@ function AceShop:sell_item(uri, quality, quantity)
       shopkeeper_gold = shopkeeper_gold - actual_cost
       sell_quantity = sell_quantity - 1
 
-      if wanted_items and wanted_items.max_quantity then
-         wanted_items.max_quantity = wanted_items.max_quantity - 1
-         wanted_items.quantity = wanted_items.quantity + 1
-      end
+      wanted_items.quantity = wanted_items.quantity + 1
+      -- if wanted_items and wanted_items.max_quantity then
+      --    wanted_items.max_quantity = wanted_items.max_quantity - 1
+      -- end
    end
 
    -- notify containers that items were removed from it, as it is possible they were full and now have room

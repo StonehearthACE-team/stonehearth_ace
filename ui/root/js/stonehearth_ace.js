@@ -321,8 +321,11 @@ $.getJSON('/stonehearth_ace/data/gameplay_settings/gameplay_settings.json', func
 
 $(top).trigger('stonehearth_ace:initialized');
 
+var _backupI18nLanguage = "none";
 var setI18nTranslateFunc = function(backup_language) {
-   // need to add support for titles and other custom data to name localization
+   console.debug(`setting i18n translation function with backup language '${backup_language}'`);
+
+   // ACE: add support for titles and other custom data to name localization
    var stonehearth_translate;
    if (backup_language == null || backup_language == 'none') {
       stonehearth_translate = function(key, options) {
@@ -331,9 +334,9 @@ var setI18nTranslateFunc = function(backup_language) {
             return "";
          }
 
-         if (backup_language == null) {
-            console.debug(`pre-settings translation of ${key}`)
-         }
+         // if (backup_language == null) {
+         //    console.debug(`pre-settings translation of ${key}`)
+         // }
 
          if (key.indexOf('i18n(') == 0 && key.charAt(key.length-1) == ')' && key.charAt(6) != '_') {
             key = key.substr(5, key.length-6);
@@ -427,12 +430,13 @@ var setI18nTranslateFunc = function(backup_language) {
 
    i18n.t = stonehearth_translate;
 }
-setI18nTranslateFunc();
+setI18nTranslateFunc(_backupI18nLanguage);
 
-var _backupI18nLanguage;
 $(top).on("backup_i18n_language_changed", function (_, e) {
-   _backupI18nLanguage = e.value;
-   setI18nTranslateFunc(_backupI18nLanguage);
+   if (_backupI18nLanguage != e.value) {
+      _backupI18nLanguage = e.value;
+      setI18nTranslateFunc(_backupI18nLanguage);
+   }
 });
 
 // need to apply the setting on load as well

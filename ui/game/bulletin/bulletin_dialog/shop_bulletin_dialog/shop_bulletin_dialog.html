@@ -20,7 +20,7 @@
             <div id="wantedItemsTitle">{{i18n stonehearth_ace:ui.game.bulletin.shop.wanted_items}}</div>
             <div id="wantedItemsList">
                {{#each view.wantedItems}}
-               <div {{bind-attr class=":wantedItem this.isAvailable:available this.isHigher:higherPrice this.isLower:lowerPrice"}}>
+               <div {{bind-attr data-index=this.index class=":wantedItem this.isAvailable:available this.isHigher:higherPrice this.isLower:lowerPrice"}}>
                   <img class="image" {{bind-attr src=this.icon}}>
                   <div class="factor">{{this.factor}}</div>
                   <div class="num">{{this.num}}</div>

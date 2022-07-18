@@ -14,26 +14,28 @@
       height: 515px;
 
       &.hasWantedItems {
-         height: 399px;
+         height: 390px;
       }
    }
    
    #wantedItems {
-      margin-top: 15px;
+      margin-top: 20px;
 
       #wantedItemsList {
          display: flex;
          justify-content: flex-start;
          align-items: center;
          overflow-x: auto;
+         width: 100%;
          padding: 4px;
 
          .wantedItem {
+            .button;
             position: relative;
             width: 72px;
             height: 72px;
-            padding-top: 4px;
-            margin-right: 10px;
+            padding-top: 8px;
+            margin-right: 14px;
             opacity: 0.5;
 
             &.available {

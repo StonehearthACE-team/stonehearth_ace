@@ -88,7 +88,12 @@ function MerchantComponent:show_bulletin(initial)
       if self._sv._bulletin.__destroyed then
          self:_destroy_bulletin()
       else
-         return
+         -- the bulletin exists, but we want to make sure it pops back up
+         -- sadly, the easiest way to do this is to just destroy it and make it again
+         -- otherwise we'd have to rework how commands handle call/fire_event and
+         -- do both for this; this way it's all in one place
+         self:_destroy_bulletin()
+         --return
       end
    end
 
