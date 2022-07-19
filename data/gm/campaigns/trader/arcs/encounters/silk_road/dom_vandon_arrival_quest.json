@@ -1,0 +1,34 @@
+{
+   "type": "encounter",
+   "encounter_type": "delivery_quest",
+   "in_edge": "dom_vandon_arrival_quest",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "arrival_quest_reward"
+      ]
+   },
+   "delivery_quest_info": {
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.dom_vandon_arrival_quest.title)",
+      "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.trader.dom_vandon_arrival_quest.dialog_title)",
+      "text": "i18n(stonehearth_ace:data.gm.campaigns.trader.dom_vandon_arrival_quest.text)",
+      "requirements": [
+         {
+            "type": "give_material",
+            "material": "prepared_food",
+            "count": 3
+         },
+         {
+            "type": "give_item",
+            "uri": "stonehearth:consumables:healing_tonic:small",
+            "count": 2
+         },
+         {
+            "type": "give_material",
+            "material": "bone resource",
+            "count": 5
+         }
+      ],
+      "abandon_out_edge": "return_dialogue"
+   }
+}

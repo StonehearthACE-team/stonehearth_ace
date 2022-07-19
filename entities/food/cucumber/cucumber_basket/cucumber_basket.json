@@ -1,0 +1,72 @@
+{
+   "mixins": "stonehearth_ace:mixins:food_decay:leafy",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cucumber_basket.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(cucumber_basket_rotting.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 10
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 120,
+            "max": 140
+         },
+         "decay_stages": {
+            "decay_1": {
+               "trigger_decay_value": 12
+            }
+         }
+      },
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:cucumber:cucumber_serving",
+         "stacks_per_serving": 4
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.cucumber.cucumber_basket.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.cucumber.cucumber_basket.description)",
+         "icon": "file(cucumber_basket.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "raw_food",
+            "vegetable",
+            "vegetarian",
+            "leafy",
+            "hearty",
+            "cucumber",
+            "stockpile_raw_food"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

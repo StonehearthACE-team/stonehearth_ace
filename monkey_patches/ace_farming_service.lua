@@ -166,12 +166,20 @@ function AceFarmingService:get_crop_details(crop_type)
                end
                details.total_growth_time = total_growth_time
 
-               if total_time <= stonehearth.calendar:parse_duration(stonehearth.constants.farming.crop_growth_times.SHORT) then
+               if total_time <= stonehearth.calendar:parse_duration(stonehearth.constants.farming.crop_growth_times.SHORTEST) then
+                  details.growth_time = 'shortest'
+               elseif total_time <= stonehearth.calendar:parse_duration(stonehearth.constants.farming.crop_growth_times.VERY_SHORT) then
+                  details.growth_time = 'very_short'
+               elseif total_time <= stonehearth.calendar:parse_duration(stonehearth.constants.farming.crop_growth_times.SHORT) then
                   details.growth_time = 'short'
                elseif total_time <= stonehearth.calendar:parse_duration(stonehearth.constants.farming.crop_growth_times.FAIR) then
                   details.growth_time = 'fair'
-               else
+               elseif total_time <= stonehearth.calendar:parse_duration(stonehearth.constants.farming.crop_growth_times.LONG) then
                   details.growth_time = 'long'
+               elseif total_time <= stonehearth.calendar:parse_duration(stonehearth.constants.farming.crop_growth_times.VERY_LONG) then
+                  details.growth_time = 'very_long'
+               else
+                  details.growth_time = 'longest'
                end
             end
          end

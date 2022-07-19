@@ -1,0 +1,75 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(cook_pottage_ghost.json)",
+      "stonehearth_ace:mixins:workbench:cook_pottage"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(cook_pottage_ghost.json)",
+         "iconic_form": "file(cook_pottage_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cook_pottage_fuel.qb)",
+               "file(cook_pottage_meat.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:cook_pottage_2"
+         ]
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 6
+      },
+      "stonehearth_ace:stump": {},
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "progress_text": "stonehearth_ace:ui.game.unit_frame.transform.progress.pottage",
+         "status_key": "stonehearth_ace:ai.actions.status_text.pottage",
+         "transform_uri": "stonehearth_ace:cook:pottage:grain",
+         "request_action": "stonehearth_ace:transform",
+         "transform_ingredient_material": "grain",
+         "transforming_worker_effect": "emote_proud",
+         "transforming_worker_effect_times": 1,
+         "auto_request": true,
+         "transform_effect": "stonehearth:effects:item_created",
+         "apply_ingredient_quality": true
+      },
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:cook:pottage:veggie",
+         "keep_stump_component": true,
+         "apply_quality": true
+      },
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:pottage:meat_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 41
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.cook.cook_pottage.meat.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.cook.cook_pottage.meat.description)",
+         "icon": "file(cook_pottage_meat.png)",
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "meat",
+            "warming",
+            "dinner_time",
+            "lunch_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      }
+   }
+}

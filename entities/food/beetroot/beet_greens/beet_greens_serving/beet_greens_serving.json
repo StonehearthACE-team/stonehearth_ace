@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(beet_greens_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 20,
+            "drink_satisfaction": 6
+         },
+         "default": {
+            "satisfaction": 14,
+            "drink_satisfaction": 3
+         },
+         "quality": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.beetroot.beet_greens_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.beetroot.beet_greens_serving.description)",
+         "material_tags": [
+            "food",
+            "vegetarian",
+            "leafy"
+         ],
+         "subject_override": "stonehearth_ace:crops:beetroot_crop"
+      }
+   }
+}

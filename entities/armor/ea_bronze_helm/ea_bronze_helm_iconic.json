@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/armor/bronze_helm/bronze_helm_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_bronze_helm_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Bronze Northern Helm",
+         "icon": "file(ea_bronze_helm.png)"
+      }
+   }
+}

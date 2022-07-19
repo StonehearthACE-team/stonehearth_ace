@@ -433,7 +433,7 @@ function FindTargetObserver:_find_target()
 
    if stance == 'passive' then
       -- don't attack
-      self._log:info('stance is passive.  returning nil target.')
+      --self._log:info('stance is passive.  returning nil target.')
       return nil, nil
    end
 
@@ -447,7 +447,7 @@ function FindTargetObserver:_find_target()
       score = self._highest_score
    end
 
-   self._log:info('stance is %s.  returning %s as target.', stance, tostring(target))
+   --self._log:info('stance is %s.  returning %s as target.', stance, tostring(target))
 
    -- Can we get rid of this? We needed it because the aggro observer updates the aggro table
    -- asynchronously and may not have removed a newly friendly entity yet.

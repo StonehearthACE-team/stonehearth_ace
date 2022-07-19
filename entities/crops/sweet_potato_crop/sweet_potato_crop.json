@@ -1,7 +1,7 @@
 {
    "components": {
 	  "stonehearth:growing": {
-			"growth_period": "12h",
+			"growth_period": "40h",
 			"preferred_climate": "arctic_staple"
       },
       "mob": {
@@ -19,6 +19,9 @@
       }
    },
    "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.crops.sweet_potato_crop.description)"
+      },
       "stonehearth_ace:megacrop": {
          "num_to_spawn": 0,
          "other_items": {

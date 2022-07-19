@@ -1,0 +1,26 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "beetroot_tonic",
+   "unique_in_category": true,
+   "rank": 5,
+   "display_name": "i18n(stonehearth_ace:data.buffs.megacrop.beetroot_2_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.megacrop.beetroot_2_buff.description)",
+   "icon": "file(beetroot_tonic_2_buff.png)",
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "effect": "stonehearth_ace:effects:buff_tonic_beetroot_added",
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": 0.04,
+      "pulse": "20m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true,
+      "is_percentage": true
+   },
+   "disallowed_categories": [
+      "poison",
+      "infection",
+      "toxin"
+   ]
+}

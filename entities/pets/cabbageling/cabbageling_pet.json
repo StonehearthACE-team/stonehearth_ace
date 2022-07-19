@@ -1,0 +1,115 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:pet",
+   "components": {
+      "mixintypes": {
+         "stonehearth:animal_social": "remove"
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(cabbageling_pet_iconic.json)",
+         "ghost_form": "file(cabbageling_pet_ghost.json)",
+         "placeable_on_ground": true,
+         "must_parent_to_terrain": true,
+         "hide_move_ui": true,
+         "hide_undeploy_ui": true
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "skin": {
+                     "uri": "stonehearth_ace:food:cabbage:cabbage_basket",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      },
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/monster/forest/entling/entling.json",
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cabbageling.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "speed": {
+            "type": "basic",
+            "value": 70
+         },
+         "min_calories": {
+            "type": "basic",
+            "value": 25
+         }
+      },
+      "stonehearth:pet": {
+         "self_tame": true
+      },
+      "stonehearth:social": {},
+      "stonehearth:conversation": {},
+      "stonehearth:subject_matter": {},
+      "stonehearth:interactions": {}
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "cabbageling",
+         "display_name": "i18n(stonehearth:entities.pets.cabbageling.species)"
+      },
+      "stonehearth:entity_radius": 0.3,
+      "stonehearth:calories": {
+         "hungry_threshold": 0,
+         "famished_threshold": 0,
+         "malnourished_threshold": -10,
+         "hourly_calorie_loss": 0
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     5,
+                     1.1,
+                     -6
+                  ],
+                  "look_at": [
+                     0.2,
+                     0.85,
+                     0
+                  ],
+                  "ace_fov": 50
+               }
+            }
+         }
+      },
+      "stonehearth:conversation_type": "humanoid",
+      "stonehearth:idle_effects": {
+         "effects": [
+            {
+               "name": "emote_pickear_fail",
+               "weight": 0.5
+            }
+         ]
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.pets.cabbageling.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.cabbageling.description)",
+         "icon": "file(cabbageling.png)",
+         "category": "pets"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 500,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      }
+   }
+}

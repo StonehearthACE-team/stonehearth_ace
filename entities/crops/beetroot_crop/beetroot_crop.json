@@ -1,0 +1,163 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(beetroot_crop_4.qb)"
+            ]
+         },
+         "beetroot_1": {
+            "models": [
+               "file(beetroot_crop_1.qb)"
+            ]
+         },
+         "beetroot_2": {
+            "models": [
+               "file(beetroot_crop_2.qb)"
+            ]
+         },
+         "beetroot_3": {
+            "models": [
+               "file(beetroot_crop_3.qb)"
+            ]
+         },
+         "beetroot_4": {
+            "models": [
+               "file(beetroot_crop_4.qb)"
+            ]
+         },
+         "beetroot_5": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(beetroot_crop_5.qb)",
+                     "file(beetroot_crop_5_2.qb)",
+                     "file(beetroot_crop_5_3.qb)",
+                     "file(beetroot_crop_5_4.qb)"
+                  ]
+               }
+            ]
+         },
+         "beetroot_12": {
+            "models": [
+               "file(beetroot_crop_12.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": -0.05, "z": 0.05 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "beetroot_5": "stonehearth_ace:food:beetroot:beetroot_basket",
+            "beetroot_12": ""
+         },
+         "harvest_threshhold": "beetroot_5",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect"
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "none": {
+                     "weight": 5
+                  },
+                  "greens": {
+                     "uri": "stonehearth_ace:food:beetroot:beet_greens_basket",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:growing": {
+         "growth_period": "42h",
+         "preferred_climate": "highlands_medium",
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": [
+               "spring"
+            ],
+            "stonehearth:biome:desert": [
+               "spring"
+            ],
+            "stonehearth:biome:arctic": [
+               "spring"
+            ],
+            "stonehearth_ace:biome:highlands": [
+               "spring"
+            ]
+         },
+         "growth_stages": [
+            {
+               "model_name": "beetroot_1",
+               "name": "i18n(stonehearth_ace:entities.crops.beetroot_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.beetroot_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "beetroot_2",
+               "name": "i18n(stonehearth_ace:entities.crops.beetroot_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.beetroot_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "beetroot_3",
+               "name": "i18n(stonehearth_ace:entities.crops.beetroot_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.beetroot_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "beetroot_4",
+               "name": "i18n(stonehearth_ace:entities.crops.beetroot_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.beetroot_crop.growth_stage.003.description)"
+            },
+            {
+               "model_name": "beetroot_5",
+               "name": "i18n(stonehearth_ace:entities.crops.beetroot_crop.growth_stage.004.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.beetroot_crop.growth_stage.004.description)"
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+               "model_name": "beetroot_12",
+               "name": "i18n(stonehearth_ace:entities.crops.beetroot_crop.growth_stage.011.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.beetroot_crop.growth_stage.011.description)"
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:megacrop": {
+         "num_to_spawn": 0,
+         "other_items": {
+            "stonehearth_ace:decoration:megacrop:mega_beetroot": 1
+         },
+         "pickup_new": true,
+         "effect": "promote"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.beetroot_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.beetroot_crop.description)",
+         "icon": "file(icon.png)",
+         "material_tags": [
+            "crop",
+            "beetroot"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

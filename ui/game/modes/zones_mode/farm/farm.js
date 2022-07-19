@@ -35,9 +35,13 @@ App.StonehearthFarmView.reopen({
    },
 
    _GROWTH_TIMES: {
+      SHORTEST: 'shortest',
+      VERY_SHORT: 'very_short',
       SHORT: 'short',
       FAIR: 'fair',
       LONG: 'long',
+      VERY_LONG: 'very_long',
+      LONGEST: 'longest',
       SHORTER: 'positive_modifiers',
       NORMAL: 'average_modifiers',
       LONGER: 'negative_modifiers'

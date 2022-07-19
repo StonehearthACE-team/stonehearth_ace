@@ -1,11 +1,32 @@
 {
+   "mixins": "stonehearth_ace:mixins:food_decay:fruit",
    "components": {
       "stonehearth:stacks": {
          "max_stacks": 16
+      },
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "decay_1": "override"
+         },
+         "default": {
+            "models": [
+               "file(watermelon_basket.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(watermelon_basket_rotting.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
       }
 	},
    "entity_data": {
 		"stonehearth:catalog": {
+         "icon": "file(watermelon_basket.png)",
 			"mixintypes": {
 				"material_tags": "override"
 			},
@@ -17,7 +38,7 @@
             "vegetarian",
             "stockpile_raw_food",
             "breakfast_time"
-         ],
+         ]
       }
    }
 }

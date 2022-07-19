@@ -1,0 +1,119 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:food_decay:preserve"
+   ],
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/glass_material_map.json"
+         ],
+         "scale": 0.045
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(../pickles_glass.qb)",
+               "file(pickles_cover.qb)",
+               "file(pickles_content.qb)"
+            ]
+         },
+         "carrot": {
+            "models": [
+               "file(../pickles_glass.qb)",
+               "file(pickles_cover.qb)",
+               "file(carrot_content.qb)"
+            ]
+         },
+         "golden_gourd": {
+            "models": [
+               "file(../pickles_glass.qb)",
+               "file(pickles_cover.qb)",
+               "file(golden_gourd_content.qb)"
+            ]
+         },
+         "corn": {
+            "models": [
+               "file(../pickles_glass.qb)",
+               "file(pickles_cover.qb)",
+               "file(corn_content.qb)"
+            ]
+         },
+         "pumpkin": {
+            "models": [
+               "file(../pickles_glass.qb)",
+               "file(pickles_cover.qb)",
+               "file(pumpkin_content.qb)"
+            ]
+         },
+         "sweet_potato": {
+            "models": [
+               "file(../pickles_glass.qb)",
+               "file(pickles_cover.qb)",
+               "file(sweet_potato_content.qb)"
+            ]
+         },
+         "turnip": {
+            "models": [
+               "file(../pickles_glass.qb)",
+               "file(pickles_cover.qb)",
+               "file(turnip_content.qb)"
+            ]
+         },
+         "beetroot": {
+            "models": [
+               "file(../pickles_glass.qb)",
+               "file(pickles_cover.qb)",
+               "file(beetroot_content.qb)"
+            ]
+         }
+      },
+      "stonehearth_ace:entity_modification": {
+         "model_variants": {
+            "stonehearth:food:carrot:carrot_basket": "carrot",
+            "stonehearth:food:golden_gourd:golden_gourd_basket": "golden_gourd",
+            "stonehearth:food:corn:corn_basket": "corn",
+            "stonehearth:food:corn:amazing_corn_basket": "corn",
+            "stonehearth:food:pumpkin:pumpkin_basket": "pumpkin",
+            "stonehearth:food:sweet_potato:sweet_potato_basket": "sweet_potato",
+            "stonehearth:food:turnip:turnip_basket": "turnip",
+            "stonehearth_ace:food:beetroot:beetroot_basket": "beetroot"
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.preserves.pickles.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.preserves.pickles.description)",
+         "icon": "file(pickles.png)",
+         "is_item": true,
+         "category": "cooking_ingredient",
+         "material_tags": [
+            "stockpile_cooking_ingredient",
+            "cooking_ingredient",
+            "raw_food",
+            "vegetable",
+            "pickles",
+            "standard",
+            "preserve_ingredient"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 5
+      }
+   }
+}

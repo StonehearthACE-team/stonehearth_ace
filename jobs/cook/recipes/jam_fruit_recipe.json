@@ -1,0 +1,44 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.jam_fruit_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.jam_fruit_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.jam_fruit_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/preserves/jam_fruit/jam_fruit.png",
+   "workshop": "stonehearth_ace:cook:workbench_advanced",
+   "level_requirement": 4,
+   "ace_smart_crafter_ignore": true,
+   "ingredients": [
+		{
+			"material": "food_container raw_food fruit",
+			"count": 4
+		},
+      {
+         "material": "sweetener cooking_ingredient",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:preserves:jam_fruit",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "food_container raw_food fruit"
+      },
+      {
+         "item": "stonehearth_ace:food:preserves:jam_fruit",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "food_container raw_food fruit"
+      },
+      {
+         "item": "stonehearth_ace:food:preserves:jam_fruit",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "food_container raw_food fruit"
+      },
+      {
+         "item": "stonehearth_ace:food:preserves:jam_fruit",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "food_container raw_food fruit"
+      }
+   ]
+}

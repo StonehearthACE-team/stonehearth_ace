@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(grain_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 70,
+            "drink_satisfaction": 19
+         },
+         "default": {
+            "satisfaction": 55,
+            "drink_satisfaction": 11
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:warm_belly",
+            "stonehearth_ace:buffs:consumption:regeneration:minor"
+         ],
+         "quality": 5
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.pottage.grain_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "meat",
+            "warming",
+            "dinner_time",
+            "lunch_time"
+         ],
+         "subject_override": "stonehearth_ace:cook:pottage:grain"
+      }
+   }
+}

@@ -45,8 +45,22 @@
          "auto_harvest": "place"
       },
       "stonehearth:growing": {
-         "growth_period": "36h",
+         "growth_period": "39h+1h",
          "preferred_climate": "highlands_staple",
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": [
+               "spring"
+            ],
+            "stonehearth:biome:desert": [
+               "spring"
+            ],
+            "stonehearth:biome:arctic": [
+               "spring"
+            ],
+            "stonehearth_ace:biome:highlands": [
+               "spring"
+            ]
+         },
          "growth_stages": [
             {
                "model_name": "birch_tree_1",

@@ -1,0 +1,63 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(cook_pottage_ghost.json)",
+      "stonehearth_ace:mixins:workbench:cook_pottage"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(cook_pottage_ghost.json)",
+         "iconic_form": "file(cook_pottage_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cook_pottage_fuel.qb)",
+               "file(cook_pottage_complete.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:cook_pottage_3"
+         ]
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 24
+      },
+      "stonehearth_ace:stump": {}
+   },
+   "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:cook:pottage:empty",
+         "keep_stump_component": true,
+         "apply_quality": true,
+         "transform_option_key": "pottage"
+      },
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:pottage:complete_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 50
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.cook.cook_pottage.complete.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.cook.cook_pottage.complete.description)",
+         "icon": "file(cook_pottage_complete.png)",
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "meat",
+            "warming",
+            "dinner_time",
+            "lunch_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 12
+      }
+   }
+}

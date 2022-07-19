@@ -47,6 +47,22 @@ function AcePopulationFaction:unlock_ability(ability)
    self.__saved_variables:mark_changed()
 end
 
+function AcePopulationFaction:set_city_tier(city_tier)
+   if city_tier <= stonehearth.constants.town_progression.MAX_CITY_TIER and city_tier >= 1 then
+      local do_event = self._sv.city_tier ~= city_tier
+      self._sv.city_tier = city_tier
+      self.__saved_variables:mark_changed()
+
+      -- ACE: also trigger an event if it actually changed
+      if do_event then
+         radiant.events.trigger(self, 'stonehearth_ace:city_tier_changed', {
+               player_id = self._sv.player_id,
+               city_tier = city_tier,
+            })
+      end
+   end
+end
+
 AcePopulationFaction._ace_old_set_kingdom = PopulationFaction.set_kingdom
 function AcePopulationFaction:set_kingdom(kingdom)
    local no_kingdom = not self._sv.kingdom

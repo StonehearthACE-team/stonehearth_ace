@@ -65,8 +65,11 @@
          }
       },
 	   "stonehearth:growing": {
-			"growth_period": "20h",
+			"growth_period": "42h",
 			"preferred_climate": "tropical_easy"
+      },
+      "stonehearth:crop": {
+         "stacks_per_harvest": 2
       },
       "mob": {
          "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
@@ -83,6 +86,9 @@
       }
    },
    "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.crops.silkweed_crop.description)"
+      },
       "stonehearth_ace:megacrop": {
          "num_to_spawn": 0,
          "other_items": {

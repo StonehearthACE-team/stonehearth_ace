@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.northern_meatballs_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.northern_meatballs_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.northern_meatballs_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/northern_meatballs/northern_meatballs/northern_meatballs.png",
+   "workshop": "stonehearth:cook:oven",
+	"work_effect": "work_wait",
+   "level_requirement": 2,
+   "ingredients": [
+		{
+         "material": "food meat raw",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:food:sweet_potato:sweet_potato_basket",
+         "count": 2
+      },     
+		{
+         "uri": "stonehearth_ace:food:preserves:jam_lingonberry",
+         "count": 1
+      },
+      {
+         "material": "seasoning",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:northern_meatballs"
+      }
+   ]
+}

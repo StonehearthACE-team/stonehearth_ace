@@ -286,6 +286,14 @@
            "exclusion_radius": 0
         }
      },
+     "stonehearth_ace:plants:beetroot": {
+      "placement_type": "dense",
+      "parameters": {
+         "grid_multiple": 2.5,
+         "item_density": 1,
+         "exclusion_radius": 0
+      }
+   },
       "stonehearth_ace:trees:birch:small" : {
         "placement_type" : "dense",
         "parameters" : {
@@ -729,6 +737,7 @@
           "plains" : {
             "1" : {			   
           "stonehearth_ace:plants:garlic": 0.35,
+          "stonehearth_ace:plants:beetroot": 0.2,
 					"stonehearth_ace:plants:poppy" : 1.1,
 					"stonehearth_ace:plants:rose" : 1.6,
 					"stonehearth:plants:violet": 0.5,
@@ -748,6 +757,7 @@
           },
           "foothills" : {
             "1" : {
+          "stonehearth_ace:plants:beetroot": 0.36,
 					"stonehearth_ace:plants:poppy" : 1.5,
 					"stonehearth_ace:plants:rose" : 0.4,
 					"stonehearth_ace:plants:dill" : 1.5,
@@ -765,6 +775,7 @@
 					"stonehearth_ace:trees:plum:small" : 0.6
             },
             "2" : {
+          "stonehearth_ace:plants:beetroot": 0.32,
 					"stonehearth_ace:plants:moonbell" : 3.2,
 					"stonehearth:plants:violet": 2,
 					"stonehearth_ace:plants:dill" : 1.2,

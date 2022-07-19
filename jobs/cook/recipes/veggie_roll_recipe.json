@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.veggie_roll_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.veggie_roll_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.veggie_roll_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/veggie_roll/veggie_roll/veggie_roll.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+	   {
+         "material": "food_container raw_food vegetable leafy",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth_ace:food:rice:raw_rice",
+         "count": 2
+      },
+      {
+         "material": "food meat raw",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:veggie_roll"
+      }
+   ]
+}

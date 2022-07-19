@@ -10,8 +10,22 @@
 					"recipe": "file(na_herbalist_cauldron_recipe.json)"
 				}
          }
-	  },	  	  
-	  "farming_enhancements": {
+	   },  	  
+		"refinement" : {
+			"recipes" : {
+				"lingonberry_bush_transmute": {
+					"recipe": "file(lingonberry_bush_transmute_recipe.json)"
+				}
+		   }
+	   },
+		"refinement_seeds": {
+         "recipes": {
+				"lingonberry_bush_seeds": {
+					"recipe": "file(lingonberry_bush_seeds_recipe.json)"
+				}
+			}
+		},
+	   "farming_enhancements": {
 			"recipes": {
 				"mixintypes": {
 					"turnip_seeds_recipe": "remove",
@@ -28,6 +42,9 @@
 				},
 				"barley_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/barley_seeds_recipe.json"
+				},
+				"cabbage_seeds_recipe": {
+					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/cabbage_seeds_recipe.json"
 				},
 				"rose_seeds_recipe": {
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/rose_seeds_recipe.json"

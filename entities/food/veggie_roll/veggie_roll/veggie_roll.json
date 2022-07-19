@@ -1,0 +1,58 @@
+{
+   "mixins": "stonehearth:mixins:prepared_food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(veggie_roll.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 3
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:veggie_roll:veggie_roll_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 14,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.veggie_roll.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.veggie_roll.description)",
+         "icon": "file(veggie_roll.png)",
+         "is_item": true,
+         "category": "food",
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "veggie_roll",
+            "stockpile_prepared_food",
+            "leafy",
+            "meat",
+            "dinner_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 5
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

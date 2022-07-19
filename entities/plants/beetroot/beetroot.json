@@ -1,0 +1,68 @@
+{
+   "type": "entity",
+   "mixins": "file(beetroot_ghost.json)",
+   "components": {
+      "stonehearth:resource_node": {
+         "resource": "stonehearth_ace:food:beetroot:beetroot_basket",
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_veggie_overlay_effect",
+         "resource_spawn_effect": "stonehearth:effects:harvest_plants_effect",
+         "description": "harvest_plant",
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 2
+                  },
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 8
+                     },
+                     "greens": {
+                        "uri": "stonehearth_ace:food:beetroot:beet_greens_basket",
+                        "weight": 1
+                     },
+                     "pelt": {
+                        "uri": "stonehearth_ace:plants:beetroot:seed",
+                        "weight": 2
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(beetroot_iconic.json)",
+         "ghost_form": "file(beetroot_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": false
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:replant_data": {
+         "seed_alias": "stonehearth_ace:plants:beetroot:seed"
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:plants:beetroot:rotten",
+         "evolve_time": "8d+24h"
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "stockpile_plant"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      }
+   }
+}

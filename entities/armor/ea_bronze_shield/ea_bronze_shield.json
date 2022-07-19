@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:armor:bronze_shield",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_bronze_shield.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_bronze_shield_iconic.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Bronze Desert Buckler",
+         "icon": "file(ea_bronze_shield.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "bronze",
+            "crafted",
+            "rc_made",
+            "shield",
+            "medium_armor",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

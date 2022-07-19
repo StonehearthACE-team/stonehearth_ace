@@ -1,0 +1,19 @@
+{
+   "type": "ai_pack",
+   "actions": [
+      "stonehearth:actions:depart_visible_area",
+      "stonehearth:actions:depart_visible_area_in_place",
+      "stonehearth:actions:find_point_beyond_visible",
+      "stonehearth_ace:actions:merchant:depart",
+      "stonehearth_ace:actions:merchant:work",
+      "stonehearth_ace:actions:merchant:work_at_stall",
+      "stonehearth_ace:actions:merchant:work_by_hearth"
+   ],
+   "ai_packs": [
+      "stonehearth:ai_pack:core",
+      "stonehearth:ai_pack:movement"
+   ],
+   "task_groups": [
+      "stonehearth_ace:task_groups:merchant"
+   ]
+}

@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(veggie_roll_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 70
+         },
+         "default": {
+            "satisfaction": 55
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:regeneration"
+         ],
+         "quality": 5
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.veggie_roll_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.veggie_roll_serving.description)",
+         "material_tags": [
+            "food",
+            "veggie_roll_serving",
+            "meat",
+            "leafy",
+            "dinner_time"
+         ],
+         "subject_override": "stonehearth_ace:food:veggie_roll"
+      }
+   }
+}

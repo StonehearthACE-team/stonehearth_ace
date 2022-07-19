@@ -1,0 +1,53 @@
+{
+   "components": {
+      "stonehearth:entity_forms": {
+         "hide_undeploy_ui": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 2, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:weather:warmth_source": true
+         }
+      },
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 6
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:table": {
+         "drop_effect": "carry_putdown_on_table",
+         "drop_offset": { "x": 0, "y": 0.65, "z": 0 }
+      },
+      "stonehearth:net_worth": {
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false,
+            "shopkeeper_type": "caravan",
+            "shopkeeper_level": 1
+         }
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

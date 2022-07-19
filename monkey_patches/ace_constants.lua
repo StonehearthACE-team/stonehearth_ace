@@ -91,4 +91,19 @@ ace_constants.conversation.RENOWN_THOUGHTS = {
    [constants.conversation.renown_levels.MUCH_HIGHER] = 'stonehearth:thoughts:renown:talk_with_much_higher_renown',
 }
 
+ace_constants.mercantile = constants.mercantile
+ace_constants.mercantile.RARITY_RANKS = {
+   [constants.mercantile.rarities.JUNK] = 0,
+   [constants.mercantile.rarities.COMMON] = 1,
+   [constants.mercantile.rarities.UNCOMMON] = 2,
+   [constants.mercantile.rarities.RARE] = 3,
+}
+
+ace_constants.mercantile.RARITY_WEIGHTS = {
+   [constants.mercantile.rarities.JUNK] = 1,
+   [constants.mercantile.rarities.COMMON] = 5,
+   [constants.mercantile.rarities.UNCOMMON] = 3,
+   [constants.mercantile.rarities.RARE] = 2,
+}
+
 return ace_constants

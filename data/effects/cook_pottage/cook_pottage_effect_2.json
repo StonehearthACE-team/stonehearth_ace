@@ -1,0 +1,64 @@
+{
+   "type": "effect",
+   "tracks": {
+      "smoke": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/cook_pottage/pottage_smoke_plume.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.0, "y": 1.35, "z": 0.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "fire": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/cook_pottage/pottage_coals.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.0, "y": 0.06, "z": 0.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "cubemitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/cook_pottage/pottage_main.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.05, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/cook_pottage/pottage_embers.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "bubbling": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/cook_pottage/pottage_bubbling.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.0, "y": 1.15, "z": 0.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 200,
+         "min_distance": 34,
+         "falloff": 4,
+         "volume": 70,
+         "track": "stonehearth:sounds:jobs_cook_workbench_work"
+      }
+   }
+}

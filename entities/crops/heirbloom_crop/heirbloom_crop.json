@@ -66,11 +66,11 @@
          }
       },
 	  "stonehearth:growing": {
-			"growth_period": "16h",
+			"growth_period": "40h",
 			"preferred_climate": "temperate_easy"
       },
       "stonehearth:crop": {
-         "stacks_per_harvest": 2
+         "stacks_per_harvest": 1
       },
       "mob": {
          "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
@@ -87,6 +87,9 @@
       }
    },
    "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.crops.heirbloom_crop.description)"
+      },
       "stonehearth_ace:megacrop": {
          "num_to_spawn": 0,
          "other_items": {

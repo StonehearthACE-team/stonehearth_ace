@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/weapons/long_sword/long_sword_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_long_sword.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Steel Broad Sword",
+         "icon": "file(ea_long_sword.png)"
+      }
+   }
+}

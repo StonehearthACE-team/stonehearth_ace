@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "effort": 23,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.lingonberry_bush_transmute_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.lingonberry_bush_transmute_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.lingonberry_bush_transmute_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/vines/lingonberry_bush/seed/lingonberry_bush_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:lingonberry_basket",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:vines:lingonberry_bush:seed"
+      },
+      {
+         "item": "stonehearth_ace:vines:lingonberry_bush:seed"
+      }
+   ]
+}

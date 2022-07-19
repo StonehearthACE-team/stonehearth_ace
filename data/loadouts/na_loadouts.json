@@ -33,25 +33,69 @@
                "icon": "file(images/items/sleeping_bag.png)",
                "amount": 3
             },
+            "bear_coat": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.bear_coat)",
+               "type": "entity",
+               "uri": "stonehearth_ace:worker:outfit:freezing_simple",
+               "icon": "file(images/items/bear_coat.png)",
+               "amount": 2
+            },
+            "mantle": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.mantle)",
+               "type": "entity",
+               "uri": "stonehearth_ace:combat:outfit:freezing",
+               "icon": "file(images/items/mantle.png)",
+               "amount": 2
+            },
             "gold": {
-               "ordinal": 7
+               "amount": 15,
+               "ordinal": 99
             }
          }
       },
       "merchant_caravan": {
+         "description": "i18n(stonehearth_ace:data.loadouts.merchant_caravan.description)",
+         "splash": "file(images/merchant_caravan/splash.png)",
          "content": {
-            "mixintypes": {},
+            "mixintypes": {
+               "herbalist_pot": "remove",
+               "mason": "remove"
+            },
             "herbalist": {
+               "ordinal": 3,
                "uri": "stonehearth_ace:herbalist:talisman:bone",
                "icon": "file(images/items/herbalist_staff_bone.png)"
             },
+            "broth": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.broth)",
+               "type": "entity",
+               "uri": "stonehearth_ace:food:broth",
+               "icon": "file(images/items/broth.png)",
+               "amount": 2
+            },
+            "pottage": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:data.loadouts.items.pottage)",
+               "type": "entity",
+               "uri": "stonehearth_ace:cook:pottage:empty",
+               "icon": "file(images/items/cook_pottage.png)",
+               "amount": 1
+            },
             "archer": {},
-            "sweet_potatoes": {}
+            "sweet_potatoes": {
+               "ordinal": 4
+            }
          }
       },
       "military_expedition": {
          "ordinal": 3,
          "content": {
+            "mixintypes": {
+               "healing_tonic": "remove"
+            },
             "footman": {
                "uri": "stonehearth_ace:footman:talisman:stone",
                "icon": "file(images/items/stone_axe.png)"
@@ -69,16 +113,28 @@
       "food_for_days": {
          "content": {
             "mixintypes": {
-               "thatch": "remove",
-               "carrots": "remove"
+               "carrots": "remove",
+               "pottage": "remove",
+               "broth": "remove",
+               "cook": "remove"
+            },
+            "farmer": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth:jobs.farmer.farmer_description.display_name)",
+               "type": "entity",
+               "uri": "stonehearth:farmer:talisman",
+               "icon": "/stonehearth/data/loadouts/images/items/farmer_hoe.png",
+               "amount": 1
             },
             "trapper": {},
-            "cook": {},
             "jerky": {
                "amount": 15
             },
             "sweet_potatoes": {
                "amount": 15
+            },
+            "gold": {
+               "amount": 25
             }
          }
       },

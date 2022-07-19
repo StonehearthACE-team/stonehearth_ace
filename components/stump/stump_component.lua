@@ -48,7 +48,9 @@ function StumpComponent:add_stump(killer_player_id)
       local rotation = radiant.entities.get_facing(self._entity)
       radiant.entities.turn_to(the_stump, rotation)
 
-      the_stump:remove_component("stonehearth_ace:stump")
+      if self._stump_data.keep_stump_component ~= true then
+         the_stump:remove_component("stonehearth_ace:stump")
+      end
 
       -- if the harvesting player wants to auto-clear stumps, queue up a harvest command on the stump
       if killer_player_id and killer_player_id ~= '' then

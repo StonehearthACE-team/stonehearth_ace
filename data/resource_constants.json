@@ -220,11 +220,6 @@
          "icon": "/stonehearth_ace/entities/food/condiment_base_icon.png",
          "default_resource": "stonehearth_ace:food:mayonnaise"
       },
-      "raw_food fruit": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.fruits_resource_name)",
-         "icon": "/stonehearth_ace/entities/food/fruit_icon.png",
-         "default_resource": "stonehearth:food:berries:berry_basket"
-      },
       "bone resource": {
          "name": "i18n(stonehearth_ace:ui.data.constants.bone_resource_name)",
          "icon": "/stonehearth_ace/entities/resources/bone/bone_material/bone_material.png",
@@ -239,6 +234,26 @@
          "name": "i18n(stonehearth_ace:ui.data.constants.fungi_resource_name)",
          "icon": "/stonehearth_ace/entities/fungi/fungi_icon.png",
          "default_resource": "stonehearth_ace:fungi:bolete"
+      },
+      "raw_food fruit": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.fruits_resource_name)",
+         "icon": "/stonehearth_ace/entities/food/fruit_and_jam_icon.png",
+         "default_resource": "stonehearth:food:berries:berry_basket"
+      },
+      "food_container raw_food fruit": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.fruits_raw_name)",
+         "icon": "/stonehearth_ace/entities/food/fruit_icon.png",
+         "default_resource": "stonehearth_ace:food:apples:apple_basket"
+      },
+      "raw_food fruit berry": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.fruits_berry_name)",
+         "icon": "/stonehearth_ace/entities/food/fruit_berry_icon.png",
+         "default_resource": "stonehearth_ace:food:cherries:cherry_basket"
+      },
+      "raw_food vegetable": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.food_veggie_name)",
+         "default_resource": "stonehearth:food:turnip:turnip_basket",
+         "icon": "/stonehearth_ace/entities/food/veggie_and_pickles_icon.png"
       },
       "food_container raw_food vegetable": {
          "name": "i18n(stonehearth_ace:ui.data.constants.food_veggie_raw_name)"

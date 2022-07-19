@@ -1,0 +1,51 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(megacrop_fodder.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.08
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 5,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.megacrop_fodder.megacrop_fodder.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.megacrop_fodder.megacrop_fodder.description)",
+         "icon": "file(megacrop_fodder.png)",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": [
+            "stockpile_fodder",
+            "fodder_bag",
+            "rabbit_feed_bag",
+            "poyo_feed_bag",
+            "ostrich_feed_bag",
+            "sheep_feed_bag",
+            "moomoo_feed_bag",
+            "duck_feed_bag",
+            "oinker_feed_bag",
+            "animal_feed"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      }
+   }
+}

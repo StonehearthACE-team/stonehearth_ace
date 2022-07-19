@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth/entities/armor/iron_helm/iron_helm_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_iron_helm_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Iron Northern Helm",
+         "icon": "file(ea_iron_helm.png)"
+      }
+   }
+}

@@ -17,11 +17,14 @@
             "upgrading": "upgrading [name(data.target)]",
             "opening": "opening [name(data.target)]",
             "filling": "filling [name(data.target)]",
+            "fueling": "fueling [name(data.target)]",
             "draining": "draining [name(data.target)]",
             "capturing_bees": "capturing bees",
             "sculpting": "sculpting [name(data.target)]",
             "carving": "carving [name(data.target)]",
             "emptying": "emptying [name(data.target)]",
+            "pottage": "contributing to the pottage",
+            "pottage_start": "starting the pottage",
             "periodic_interaction": {
                "default": "interacting with [name(data.target)]",
                "discovery": "making a discovery",
@@ -619,6 +622,71 @@
                      }
                   }
                },
+               "dom_vandon_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "A fine-looking merchant approaches with a very exotic caravan!",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "The goblin approaches, revealing herself to be a bit shorter than expected. \"BONES! BONES!\" she shouts in a playful, almost childish voice.<p>\"BOOOONEEES!\" she continues.<p>She seems to be harmless.<p><span class='aside'>Is that a child? Are there goblin children?</span></p>"
+                           },
+                           "choice_000": "Oh?",
+                           "choice_001": "Nope, sorry! [Skip Quest]"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "She's clearly happy about it, hopping around in circles. \"BONES! BONES! MANY BONES!\"<p>Suddenly, a stern and yet compassionate hearthling voice rumbles nearby. \"There you are, Rattley!\""
+                           },
+                           "choice_000": "Who?"
+                        },
+                        "msg3": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "He wears the colors of the Northern Alliance. Strong and grizzled, he rests his hand on the head of the little goblin. \"So there you are! Going out and making friends, eh?\"<p>He notices the people around. \"I apologize. Name's Thorulf, traveler and former Scout of the Library.\"<p>With a gentle pat the goblin goes back to jumping around."
+                           },
+                           "choice_000": "Greetings!",
+                           "choice_001": "You have a... pet goblin?"
+                        },
+                        "msg3b": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "\"What?\" he thunders. \"No, don't call her a pet! She's a goblin - not a squirrel. They're people too, you know?\"<p>He coughs, waving his hand as an apology.<p>\"I apologize. It's just... We've been through a lot, Rattley and I.\" He looks in her direction as she plays with a small bone club. \"Unfortunately, not many places are prepared to accept or at least try to understand goblins...\""
+                           },
+                           "choice_000": "I see. Apologies!"
+                        },
+                        "msg4": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "\"Rattley is like a daughter to me,\" he says with a bittersweet smile, \"I am the reason she is alone in the world, and she is the reason I left the Library. Each of us watches over the other now!\" he laughs, shoving the past back where it belongs.<p>\"I know you're busy, so we'll go find a place to camp for a few days!\" He waves his hand, calling Rattley closer."
+                           },
+                           "choice_000": "Sure!"
+                        },
+                        "msg5": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "\"Oh, I almost forgot...\" he scratches the back of his head and smirks. \"I'll be busy setting up camp and won't have time to hunt very soon... Would you mind gifting little Rattley a couple of bones?\"<p>The little goblin reacts enthusiastically. \"BONES! GIVE BONES!\"<p>Thorulf stares back at her \"Rattley, what have I told you?\".<p>She looks down. \"Please?\"<p>Thorulf smiles. \"We would appreciate it, she loves carving them!\""
+                           },
+                           "choice_000": "Of course!"
+                        },
+                        "skip": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "\"Good!\" he exclaims, before turning around. \"We'll be nearby. Stay warm!\"<p>They start walking away."
+                           },
+                           "choice_000": "Alright, we'll listen!",
+                           "choice_001": "Take care! [Skip Quest]"
+                        }
+                     }
+                  }
+               },
                "returning_silk_road_trader_encounter": {
                   "title": "A caravaneer from the far east is passing through!",
                   "trade_details": "Warm greetings, [str(i18n_data.town_name)]! Don Vandon, at your service. Yes, that is right: the famous merchant! Our latest fruitful crossing of the perilous Silk Road has brought us many wonderful goods, most of which are already reserved for the mightiest lords, kings and queens, I'm afraid! We do have some cancelled orders, however... Like these <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>. Not my finest products, no no, so you can have them. For a fair price, of course! The eastern kingdoms are interested in our exotic goods, let's say... <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>! We'll be around for [str(i18n_data.num_days)] days, think your fair town can manage this exchange, yes?",
@@ -983,7 +1051,7 @@
                                        "bulletin_title": "A strong voice resonates within!",
                                        "dialog_title": "His voice is more serious now",
                                        "bulletin_message": {
-                                          "000": "\"This knowledge might be too complex for most mortal beings...\" He measures his words carefully. \"Dragons are connected, joined together like the links of a chain, the threads in a bolt of cloth. In many ways we are one, our consciousnesses bound. We learn from each other, share our memories, our history and our bonds through each other. Cadmus'ytrax is in every dragon, and so are they part of Cadmus'ytrax. Our kin now knows of our survival - the Great Dragon's lineage is not gone.\" He sighs deeply, lost in thought. \"And we now know of our remaining brethren: scattered, hiding, leaderless and lost since the Great Purge.\""
+                                          "000": "\"This knowledge might be too complex for most mortal beings...\" He measures his words carefully. \"Dragons are connected, joined together like the links of a chain, the threads in a bolt of cloth. In many ways we are one, our consciousnesses merged. We learn from each other, share our memories, our history and our bonds through each other. Cadmus'ytrax is in every dragon, and so are they part of Cadmus'ytrax. Our kin now knows of our survival - the Great Dragon's lineage is not gone.\" He sighs deeply, lost in thought. \"And we now know of our remaining brethren: scattered, hiding, leaderless and lost since the Great Purge.\""
                                        },
                                        "choice_000": "The what-?",
                                        "choice_001": "Are you leaving, then? [Skip story]"
@@ -2383,11 +2451,11 @@
                   "tooltip": "Unfortunately [str(foodname)] really doesn't go well with my stomach... Ouch..."
                },
                "nuts_intolerant_ate_nuts": {
-                  "display_name": "Nut Intolerance",
+                  "display_name": "Nut intolerance",
                   "tooltip": "Ugh... That [str(foodname)] looked nice but I guess it isn't for me..."
                },
                "fish_intolerant_ate_fish": {
-                  "display_name": "Fish Intolerance",
+                  "display_name": "Fish intolerance",
                   "tooltip": "I'm never having [str(foodname)] again. Never! Ouch..."
                },
                "ate_lovely": {
@@ -2421,6 +2489,14 @@
                "garlic_breath": {
                   "display_name": "Garlic breath",
                   "tooltip": "Oh no... I better avoid people. My breath smells very... Strong!"
+               },
+               "leafy_intolerant_ate_leafy": {
+                  "display_name": "Salad disgust",
+                  "tooltip": "Eww! I had to eat [str(foodname)]! Who even likes that thing? It's like eating green paper!"
+               },
+               "leafy_lover_ate_leafy": {
+                  "display_name": "Salad lover",
+                  "tooltip": "Oh yes! I've enjoyed some [str(foodname)] today! So healthy, fresh and light!"
                }
             },
             "traits": {
@@ -3428,7 +3504,7 @@
          "transform": {
             "prepare_mega_pumpkin_soup": {
                "display_name": "Prepare Pumpkin Soup",
-               "description": "With a Bundle o' Firewood the Cook can turn this huge vegetable into a wonderful soup!"
+               "description": "With any lower grade fuel the Cook can turn this huge vegetable into a wonderful soup!"
             },
             "stomp_mega_cotton_pet_bed": {
                "display_name": "Stomp it!",
@@ -3666,6 +3742,10 @@
                "x1_description": "Order a Worker, Weaver or the professional that crafted this furniture piece to add any type of Bolt of Cloth and turn it into a shop display for one item!",
                "x3_description": "Order a Worker, Weaver or the professional that crafted this furniture piece to add any type of Bolt of Cloth and turn it into a shop display for three items!",
                "x4_description": "Order a Worker, Weaver or the professional that crafted this furniture piece to add any type of Bolt of Cloth and turn it into a shop display for four items!"
+            },
+            "prepare_pottage": {
+               "display_name": "Prepare Pottage",
+               "description": "Order someone to add any lower grade fuel and some Broth to begin preparing tasty pottage!<br><br>The pottage can be improved by adding different ingredients after it's started: vegetables, meat, grains... Each level will provide a better food serving!<br><br>When all the servings of a certain level run out, the pottage will go back to the previous level instead of getting empty! It will only go empty again if the first (or last) levels are completely consumed!"
             }
          },
          "slaughter": {
@@ -4752,6 +4832,12 @@
                "display_name": "Healing Bed",
                "description": "Feels warmer and safer than being out there... A good place to recover! <ul><li>Protected from chilly and cold weather but not from freezing weather</li><li>Recovering 5% of their health every 2 hours</li><li>If incapacitated, this hearthling will recover faster than in any other bed</li></ul>"
             }
+         },
+         "megacrop": {
+            "beetroot_2_buff": {
+               "display_name": "Mega Beetroot Tonic",
+               "description": "This hearthling is cured (and protected from) any poison, toxin or infection. The strong, thick beetroot juices also provide some healing over time."
+            }
          }
       },
       "loadouts": {
@@ -4769,7 +4855,14 @@
             "beer": "Beer",
             "tea": "Tea",
             "milk": "Milk",
-            "mead": "Mead"
+            "mead": "Mead",
+            "broth": "Broth",
+            "pottage": "Camp Pot",
+            "mason": "Mason",
+            "herbalist_pot": "Planters",
+            "healing_tonic": "Potion",
+            "bear_coat": "Bear Coat",
+            "mantle": "Mantle"
          },
          "military_expedition": {
             "display_name": "Military Expedition",
@@ -4780,6 +4873,9 @@
             "display_name": "Noble Entourage",
             "description": "Not everyone might eat venison, nor are there beds for all... So what? They're not meant for anyone, just for some very special and important hearthling—or so they say—that has everyone else following them into the wild.",
             "tooltip": "A small collection of high value items and professions for an oddly specialized beginning."
+         },
+         "merchant_caravan": {
+            "description": "A collection of valuable trade tools, basic defense and some essential resources that should give the settlement a leg up in the wilderness."
          }
       },
       "hotkeys": {
@@ -4923,6 +5019,14 @@
          "braggart_trait": {
             "display_name": "Braggart",
             "description": "It's known that [name(i18n_data.entity)] is a bit of a show off. But some tales are better when slightly taller, anyway! They'll receive more renown than usual when earning titles."
+         },
+         "leafy_intolerance_trait": {
+            "display_name": "Salad Disgust",
+            "description": "There's a lot of things that [name(i18n_data.entity)] can endure - but salad isn't one of them. They just can't stand it and it will ruin their day if they have to eat some."
+         },
+         "leafy_love_trait": {
+            "display_name": "Salad Lover",
+            "description": "It is no secret how much [name(i18n_data.entity)] loves salad. They always appreciate eating it more than anything else, if possible."
          }
       },
       "build": {
@@ -5361,6 +5465,11 @@
                "description": "Separate seeds from the vegetables",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the vegetable is destroyed in the process."
             },
+            "beetroot_transmute_recipe": {
+               "recipe_name": "Beetroot Seeds (x2)",
+               "description": "Separate seeds from the vegetables",
+               "flavor": "Only a skilled hand can harvest the weaker seeds, but the vegetable is destroyed in the process."
+            },
             "sunflower_transmute_recipe": {
                "recipe_name": "Sunflower Seeds (x2)",
                "flavor": "Sunflower seeds are oleaginous seeds and can be used to make oil."
@@ -5370,6 +5479,11 @@
             },
             "berry_bush_transmute_recipe": {
                "recipe_name": "Berry Bush Seeds (x2)"
+            },
+            "lingonberry_bush_transmute_recipe": {
+               "recipe_name": "Lingonberries (x2)",
+               "description": "Select the best fruits from the basket",
+               "flavor": "Only a skilled hand can choose the best fruits, but the rest are destroyed in the process."
             },
             "brightbell_transmute_recipe": {
                "recipe_name": "Brightbell Seeds (x2)"
@@ -5607,6 +5721,11 @@
                "description": "Domesticate Berry Bushes and learn how to farm them.",
                "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
             },
+            "lingonberry_bush_seeds_recipe": {
+               "recipe_name": "Dried Lingonberries",
+               "description": "Domesticate Lingonberry Bushes and learn how to cultivate them in herbalist planters.",
+               "flavor": "Interact with the finished bag to unlock the crop. This will also consume this item"
+            },
             "cherry_bush_seeds_recipe": {
                "recipe_name": "Dried Cherries",
                "description": "Domesticate Cherry Bushes and learn how to farm them.",
@@ -5782,6 +5901,11 @@
                "description": "Trade or gift it to allow other cultures to cultivate marble flowers!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
+            "beetroot_seeds_recipe": {
+               "recipe_name": "Beetroot Seeds",
+               "description": "Domesticate Beetroots and learn how to grow them.",
+               "flavor": "Interact with the finished crate to unlock the crop. This will also consume this item"
+            },
             "turnip_seeds_recipe": {
                "recipe_name": "Turnip Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate turnips!",
@@ -5810,6 +5934,16 @@
             "pumpkin_seeds_recipe": {
                "recipe_name": "Pumpkin Seeds",
                "description": "Trade or gift it to allow other cultures to cultivate pumpkins!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "cabbage_seeds_recipe": {
+               "recipe_name": "Cabbage Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate cabbages!",
+               "flavor": "This farming crop is already known to your farmers by default"
+            },
+            "lettuce_seeds_recipe": {
+               "recipe_name": "Lettuce Seeds",
+               "description": "Trade or gift it to allow other cultures to cultivate lettuce!",
                "flavor": "This farming crop is already known to your farmers by default"
             },
             "corn_seeds_recipe": {
@@ -8097,6 +8231,11 @@
             "baking_name": "Baking Goods",
             "brewing_name": "Brewing Ingredients",
             "animal_feed_name": "Pet Kibble",
+            "cook_pottage_recipe": {
+               "recipe_name": "Campfire Pot",
+               "description": "A handy cauldron that can be used by anyone - not just the Cook - to prepare pottage!",
+               "flavor": "The townsfolk will also need Broth to begin cooking!"
+            },
             "cook_table_recipe": {
                "recipe_name": "Cook's Table",
                "description": "A good flat surface for kneading and preparing stuff.",
@@ -8116,6 +8255,21 @@
                "recipe_name": "Brick Oven",
                "description": "Replaces the Stone Oven and is needed for advanced roasts and desserts. Requires lower or good grade fuel.",
                "flavor": "Higher temperatures for a higher palate"
+            },
+            "pickles_recipe": {
+               "recipe_name": "Jar of Pickles (x4)",
+               "description": "Bold, spicy flavors. Can replace 'Any Vegetable' in many recipes.",
+               "flavor": "Preserves are a good way to make raw foodstuffs last a lot longer than they usually would"
+            },
+            "jam_fruit_recipe": {
+               "recipe_name": "Jar of Fruit Jam (x4)",
+               "description": "Sweet and smooth. Can replace 'Any Fruit' in many recipes.",
+               "flavor": "Preserves are a good way to make raw foodstuffs last a lot longer than they usually would"
+            },
+            "jam_lingonberry_recipe": {
+               "recipe_name": "Jar of Lingonberry Jam (x4)",
+               "description": "A delicious northern specialty. Can replace 'Any Fruit' in many recipes.",
+               "flavor": "Preserves are a good way to make raw foodstuffs last a lot longer than they usually would"
             },
             "cereals_corn_recipe": {
                "recipe_name": "Bowl of Corn Cereal",
@@ -8180,7 +8334,7 @@
             "broth_recipe": {
                "recipe_name": "Broth",
                "description": "A very nutritious and filling simmer, broth is either an ingredient or a meal on its own.",
-               "flavor": "It isn't exactly tasty, though..."
+               "flavor": "Broth is needed to start pottage preparation with a Campfire Pot"
             },
             "condiment_recipe": {
                "recipe_name": "Bowl of Condiment (x4)",
@@ -8238,7 +8392,7 @@
                "flavor": "Better if made with all-'porpoise' flour"
             },
             "raw_rice_recipe": {
-               "recipe_name": "Sack of Raw Rice",
+               "recipe_name": "Basket of Raw Rice",
                "description": "Delicious grains ready to be used in other recipes. Raw Rice can also be used as a vegetable.",
                "flavor": "Who knew grass could be so tasty?"
             },
@@ -8408,6 +8562,21 @@
                "description": "Bake a very soft and flavorful cheese cream and top it with delicious fruit jelly!",
                "flavor": "Cheese is great, cake is great, why not get them together?"
             },
+            "peasant_salad_recipe": {
+               "recipe_name": "Peasant Salad",
+               "description": "A basic combination of greens with some seasoning for taste.",
+               "flavor": ""
+            },
+            "veggie_roll_recipe": {
+               "recipe_name": "Veggie Rolls",
+               "description": "Ground meat and rice rolled in leafy greens and steamed until they're crispy!",
+               "flavor": "A traditional Pal'mum delicacy that has earned the hearts of everyone!"
+            },
+            "fishwrap_recipe": {
+               "recipe_name": "Fishwrap",
+               "description": "Deliciously buttered fish fillets baked inside leafy veggies.",
+               "flavor": "'It's fish WRAP, not warp! You're not going anywhere with fish!' - Chef J.T. Kirkling"
+            },
             "imperial_salad_recipe": {
                "recipe_name": "Imperial Salad",
                "description": "An appetizing combination of cheese and greens.",
@@ -8466,6 +8635,11 @@
                "recipe_name": "Nutty Meatballs",
                "description": "Brings forth the most exquisite flavors.",
                "flavor": ""
+            },
+            "northern_meatballs_recipe": {
+               "recipe_name": "Northern Meatballs",
+               "description": "A delicious combination of mashed sweet potatoes, lingonberry jam and well seasoned meatballs.",
+               "flavor": "'A very traditional meal present in most northern households' - Chef Ike Hästbullar"
             },
             "nut_cake_recipe": {
                "recipe_name": "Nut Cake",
@@ -8584,6 +8758,9 @@
                   "description": "Very tender and succulent pork meat, seasoned with spices and fruits.",
                   "flavor": "Frostfeast meals must be placed down before consumed"
                }
+            },
+            "veggie_stew_recipe": {
+               "description": "Warm and savory stock fortified with hearty veggies!"
             }
          },
          "cook_mill_powered": {
@@ -8647,6 +8824,43 @@
          "cook_leavening_table": {
             "display_name": "Leavening Table",
             "description": "Used by the Cook to let doughs rise."
+         },
+         "cook_pottage": {
+            "veggie": {
+               "display_name": "Simple Pottage",
+               "description": "Better than just broth... But could definitely be improved with a whole piece of meat!"
+            },
+            "meat": {
+               "display_name": "Ordinary Pottage",
+               "description": "Getting there! Try some grain to make it thick and yummy!"
+            },
+            "leafy": {
+               "display_name": "Tasty Pottage",
+               "description": "It's great! Almost perfect! Now it just needs to be properly seasoned..."
+            },
+            "grain": {
+               "display_name": "Decent Pottage",
+               "description": "It's pretty good! But can be even better with... A leafy veggie, maybe?"
+            },
+            "complete": {
+               "display_name": "Exquisite Pottage",
+               "description": "A delicious stew prepared by the community. It's perfect!"
+            },
+            "broth": {
+               "display_name": "Meager Pottage",
+               "description": "Only a bland stock for now... Could use some hearty veggies, maybe?"
+            },
+            "empty": {
+               "display_name": "Campfire Pot",
+               "description": "Used by anyone to prepare pottage, a very communal meal!"
+            },
+            "iconic": {
+               "description": "Place it down before it can be used!",
+               "display_name": "Campfire Pot"
+            },
+            "unlit": {
+               "description": "The campfire is fueled but the pottage requires Broth to be started."
+            }
          }
       },
       "carpenter": {
@@ -9357,7 +9571,7 @@
             "pasture_bed_small_recipe": {
                "recipe_name": "Small Pasture Bedding",
                "description": "Small pasture animals will go to these during the night or bad weather, place them under shelter.",
-               "flavor": "Must be placed inside a pasture. Small animals include ducks, poyos and rabbits"
+               "flavor": "Must be placed inside a pasture, can be placed on walls. Small animals include ducks, poyos and rabbits"
             },
             "pasture_bed_recipe": {
                "recipe_name": "Pasture Bedding",
@@ -10590,6 +10804,24 @@
             "garlic_seeds": {
                "display_name": "Garlic Cloves",
                "description": "Learn to grow garlic."
+            },
+            "cabbage_seeds": {
+               "display_name": "Cabbage Seeds",
+               "description": "Learn to grow cabbage."
+            },
+            "lettuc_seeds": {
+               "display_name": "Lettuce Seeds"
+            },
+            "lettuce_seeds": {
+               "description": "Learn to grow lettuce."
+            },
+            "beetroot_seeds": {
+               "display_name": "Beetroot Seeds",
+               "description": "Learn to grow beetroots."
+            },
+            "lingonberry_bush_seeds": {
+               "display_name": "Dried Lingonberries",
+               "description": "Learn to cultivate lingonberry bushes in herbalist planters."
             }
          },
          "fertilizer": {
@@ -10834,6 +11066,12 @@
             "frostfeast_recipe": {
                "display_name": "Frostfeast Crafting Recipe",
                "description": "Read this to learn how to craft special Frostfeast stuff!"
+            }
+         },
+         "megacrop": {
+            "beetroot_tonic_2": {
+               "display_name": "Mega Beetroot Tonic",
+               "description": "Temporarily provides healing over time and protection against poisons, toxins and infections."
             }
          }
       },
@@ -11084,7 +11322,7 @@
       "crops": {
          "moonbell_crop": {
             "display_name": "Moonbell Flower",
-            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide peculiar herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for for peculiar herbs.",
             "growth_stage": {
                "000": {
                   "name": "Moonbell Seedling",
@@ -11106,7 +11344,7 @@
          },
          "marblesprout_crop": {
             "display_name": "Marblesprout Flower",
-            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide noxious herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for for noxious herbs.",
             "growth_stage": {
                "000": {
                   "name": "Marblesprout Seedling",
@@ -11128,7 +11366,7 @@
          },
          "cotton_crop": {
             "display_name": "Cotton",
-            "description": "This plant's fiber can be spun into thread",
+            "description": "Fair growth time; Very efficiently provides fiber",
             "growth_stage": {
                "000": {
                   "name": "Cotton Seedling",
@@ -11165,7 +11403,7 @@
          },
          "violet_crop": {
             "display_name": "Violet Flower",
-            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide soothing herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for for soothing herbs.",
             "growth_stage": {
                "000": {
                   "name": "Violet Seedlings",
@@ -11187,7 +11425,7 @@
          },
          "snow_poppy_crop": {
             "display_name": "Snow Poppy Flower",
-            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide noxious herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for for noxious herbs.",
             "growth_stage": {
                "000": {
                   "name": "Snow Poppy Seedlings",
@@ -11209,7 +11447,7 @@
          },
          "acacia_tree_crop": {
             "display_name": "Acacia Tree",
-            "description": "Can be grown and harvested for wood logs, boughs and a seed when cut"
+            "description": "Fair growth time; Provides wood logs, boughs and an acacia seed"
          },
          "almond_tree_crop": {
             "growth_stage": {
@@ -11231,7 +11469,7 @@
                }
             },
             "display_name": "Almond Tree",
-            "description": "Can be grown for its nuts and harvested for wood logs and boughs"
+            "description": "Long growth time; Provides edible nuts or wood logs and boughs if cut"
          },
          "apple_tree_crop": {
             "growth_stage": {
@@ -11253,7 +11491,7 @@
                }
             },
             "display_name": "Apple Tree",
-            "description": "Can be grown for its fruits and harvested for wood logs and boughs"
+            "description": "Long growth time; Provides fine fruits or wood logs and boughs if cut"
          },
          "date_tree_crop": {
             "growth_stage": {
@@ -11275,7 +11513,7 @@
                }
             },
             "display_name": "Date Palm",
-            "description": "Can be grown for its fruits and harvested for wood logs"
+            "description": "Fair growth time; Provides fine fruits or wood logs if cut"
          },
          "pear_tree_crop": {
             "growth_stage": {
@@ -11297,7 +11535,7 @@
                }
             },
             "display_name": "Pear Tree",
-            "description": "Can be grown for its fruits and harvested for wood logs and boughs"
+            "description": "Fair growth time; Provides fine fruits or wood logs and boughs if cut"
          },
          "plum_tree_crop": {
             "growth_stage": {
@@ -11319,11 +11557,11 @@
                }
             },
             "display_name": "Plum Tree",
-            "description": "Can be grown for its fruits and harvested for wood logs and boughs"
+            "description": "Short growth time; Provides fine fruits or wood logs and boughs if cut"
          },
          "arctic_juniper_tree_crop": {
             "display_name": "Arctic Juniper Tree",
-            "description": "Can be grown and harvested for wood logs, evergreen boughs and a seed when cut",
+            "description": "Fair growth time; Provides wood logs, evergreen boughs and a juniper berry",
             "growth_stage": {
                "000": {
                   "name": "Arctic Juniper Berry",
@@ -11345,7 +11583,7 @@
          },
          "arctic_pine_tree_crop": {
             "display_name": "Arctic Pine Tree",
-            "description": "Can be grown and harvested for wood logs, evergreen boughs and a seed when cut",
+            "description": "Fair growth time; Provides wood logs, evergreen boughs and a pine cone",
             "growth_stage": {
                "000": {
                   "name": "Arctic Pine Berry",
@@ -11385,11 +11623,11 @@
                }
             },
             "display_name": "Birch Tree",
-            "description": "Can be grown and harvested for wood logs, boughs and a seed when cut"
+            "description": "Short growth time; Provides wood logs, boughs and a birch catkin"
          },
          "cactus_tree_crop": {
             "display_name": "Tree Cactus",
-            "description": "Can be grown and harvested for wood logs and a seed when cut"
+            "description": "Short growth time; Provides wood logs and a cactus seed"
          },
          "chestnut_tree_crop": {
             "growth_stage": {
@@ -11411,7 +11649,7 @@
                }
             },
             "display_name": "Chestnut Tree",
-            "description": "Can be grown for its nuts and harvested for wood logs and boughs"
+            "description": "Fair growth time; Provides edible nuts or wood logs and boughs if cut"
          },
          "hazelnut_tree_crop": {
             "growth_stage": {
@@ -11433,11 +11671,11 @@
                }
             },
             "display_name": "Hazelnut Tree",
-            "description": "Can be grown for its nuts and harvested for wood logs and boughs"
+            "description": "Fair growth time; Provides edible nuts or wood logs and boughs if cut"
          },
          "highland_pine_tree_crop": {
             "display_name": "Highland Pine Tree",
-            "description": "Can be grown and harvested for wood logs, evergreen boughs and a seed when cut",
+            "description": "Long growth time; Provides wood logs, evergreen boughs and a pine cone",
             "growth_stage": {
                "000": {
                   "name": "Highland Pine Seed",
@@ -11459,15 +11697,15 @@
          },
          "juniper_tree_crop": {
             "display_name": "Juniper Tree",
-            "description": "Can be grown and harvested for wood logs, evergreen boughs and a seed when cut"
+            "description": "Fair growth time; Provides wood logs, evergreen boughs and a juniper berry"
          },
          "oak_tree_crop": {
             "display_name": "Oak Tree",
-            "description": "Can be grown and harvested for wood logs, boughs and a seed when cut"
+            "description": "Long growth time; Provides wood logs, boughs and a oak acorn"
          },
          "pine_tree_crop": {
             "display_name": "Pine Tree",
-            "description": "Can be grown and harvested for wood logs, evergreen boughs and a seed when cut"
+            "description": "Fair growth time; Provides wood logs, evergreen boughs and a pine cone"
          },
          "walnut_tree_crop": {
             "growth_stage": {
@@ -11489,7 +11727,7 @@
                }
             },
             "display_name": "Walnut Tree",
-            "description": "Can be grown for its nuts and harvested for wood logs and boughs"
+            "description": "Long growth time; Provides edible nuts or wood logs and boughs if cut"
          },
          "yew_tree_crop": {
             "growth_stage": {
@@ -11511,7 +11749,7 @@
                }
             },
             "display_name": "Yew Tree",
-            "description": "Can be grown and harvested for wood logs, evergreen boughs and a seed when cut"
+            "description": "Very long growth time; Provides wood logs, evergreen boughs and a yew seed"
          },
          "berry_bush_crop": {
             "growth_stage": {
@@ -11532,7 +11770,7 @@
                   "name": "Budding Berry Bush"
                }
             },
-            "description": "Can be harvested for a small supply of fruits",
+            "description": "Takes a short time to grow; Can be harvested for a small supply of fruits",
             "display_name": "Berry Bush"
          },
          "cherry_bush_crop": {
@@ -11554,7 +11792,7 @@
                   "name": "Budding Cherry Bush"
                }
             },
-            "description": "Can be harvested for a small supply of fruits",
+            "description": "Takes a short time to grow; Can be harvested for a small supply of fruits",
             "display_name": "Cherry Bush"
          },
          "pear_cactus_crop": {
@@ -11576,7 +11814,7 @@
                   "name": "Budding Pear Cactus"
                }
             },
-            "description": "Can be carefully harvested for a small supply of fruits",
+            "description": "Takes a fair time to grow; Can be carefully picked for some fruits",
             "display_name": "Pear Cactus"
          },
          "tumbleweed_crop": {
@@ -11598,7 +11836,7 @@
                   "name": "Budding Tumbleweed"
                }
             },
-            "description": "After drying out can be harvested for its scratchy fiber",
+            "description": "Takes a short time to grow and dry out; Can be harvested for scratchy fiber",
             "display_name": "Tumbleweed"
          },
          "wintermoss_crop": {
@@ -11620,7 +11858,7 @@
                   "name": "Budding Wintermoss"
                }
             },
-            "description": "Can be harvested for its itchy fiber",
+            "description": "Takes a very short time to grow; Can be harvested for its itchy fiber",
             "display_name": "Wintermoss"
          },
          "dwarfsbeard_crop": {
@@ -11642,15 +11880,15 @@
                   "name": "Budding Dwarfsbeard"
                }
             },
-            "description": "Can be harvested for its greasy fiber",
+            "description": "Takes a very short time to grow; Can be harvested for its greasy fiber",
             "display_name": "Dwarfsbeard"
          },
          "corn_crop": {
-            "description": "Slow-growing, but super nutritious crop. Provides soft flour."
+            "description": "Long growth time; Provides both soft flour grain and hearty vegetables"
          },
          "paddy_crop": {
             "display_name": "Paddy Field",
-            "description": "Rice grows slowly and requires water but works both as a grain and a vegetable! Provides hard and soft flour.",
+            "description": "Long growth time, requires flooding; Provides both soft and hard flour grain",
             "growth_stage": {
                "000": {
                   "name": "Paddy Stub",
@@ -11682,7 +11920,7 @@
          },
          "poppy_crop": {
             "display_name": "Poppy Flower",
-            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide noxious herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for for noxious herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -11704,7 +11942,7 @@
          },
          "rose_crop": {
             "display_name": "Rose Flower",
-            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide healing herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for for healing herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -11726,7 +11964,7 @@
          },
          "oleander_crop": {
             "display_name": "Oleander Flower",
-            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide noxious herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for for noxious herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -11748,7 +11986,7 @@
          },
          "daylily_crop": {
             "display_name": "Daylily Flower",
-            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide mild herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for for mild herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -11770,7 +12008,7 @@
          },
          "nightshade_crop": {
             "display_name": "Nightshade Flower",
-            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide noxious herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for for noxious herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -11791,7 +12029,7 @@
             }
          },
          "brightbell_crop": {
-            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide healing herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for for healing herbs.",
             "growth_stage": {
                "003": {
                   "description": "Decorative, will not be harvested."
@@ -11799,7 +12037,7 @@
             }
          },
          "cactus_flower_crop": {
-            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide healing herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for for healing herbs.",
             "growth_stage": {
                "003": {
                   "description": "Decorative, will not be harvested."
@@ -11807,7 +12045,7 @@
             }
          },
          "frostsnap_crop": {
-            "description": "Decorative flowers will not be harvested. When cultivated on herbalist planters these provide soothing herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for for soothing herbs.",
             "growth_stage": {
                "003": {
                   "description": "Decorative, will not be harvested."
@@ -11816,7 +12054,7 @@
          },
          "barley_crop": {
             "display_name": "Barley",
-            "description": "Sturdy and rough grain, endures colder weather. Provides hard flour.",
+            "description": "Long growth time; Provides hard flour grain with average efficiency",
             "growth_stage": {
                "011": {
                   "name": "Barley Husk",
@@ -11842,7 +12080,7 @@
          },
          "millet_crop": {
             "display_name": "Millet",
-            "description": "Less efficient but fast-growing grain and fiber. Provides soft flour.",
+            "description": "Fair growth time; Less efficiently provides soft flour grain and fiber",
             "growth_stage": {
                "011": {
                   "name": "Millet Husk",
@@ -11868,7 +12106,7 @@
          },
          "rye_crop": {
             "display_name": "Rye",
-            "description": "Pale and shiny grain, takes long to grow but handles any season. Provides hard flour.",
+            "description": "Longest growth time; Very efficiently provides hard flour grain",
             "growth_stage": {
                "011": {
                   "name": "Rye Husk",
@@ -11893,7 +12131,7 @@
             }
          },
          "wheat_crop": {
-            "description": "Amber wave of grain, very versatile. Provides hard flour.",
+            "description": "Very long growth time; Efficiently provides hard flour grain",
             "growth_stage": {
                "002": {
                   "name": "Immature Wheat"
@@ -11905,7 +12143,7 @@
          },
          "tea_bush_crop": {
             "display_name": "Tea Shrub",
-            "description": "Can be harvested for fresh tea leaves ",
+            "description": "Takes a fair time to grow; Can be harvested for fresh tea leaves",
             "growth_stage": {
                "000": {
                   "name": "Tea Shrub Seed",
@@ -11927,7 +12165,7 @@
          },
          "coffee_bush_crop": {
             "display_name": "Coffee Plant",
-            "description": "Can be harvested for energetic coffee cherries",
+            "description": "Takes a long time to grow; Can be harvested for energetic coffee cherries",
             "growth_stage": {
                "000": {
                   "name": "Coffee Plant Seed",
@@ -11979,7 +12217,121 @@
                }
             },
             "display_name": "Garlic",
-            "description": "A strong flavored bulb that can be used as a savory vegetable."
+            "description": "Very short growth time; Provides savory vegetables"
+         },
+         "silkweed_crop": {
+            "description": "Fair growth time; Efficiently provides fiber and rarely herbs"
+         },
+         "watermelon_crop": {
+            "description": "Long growth time; Very efficiently provides fruits"
+         },
+         "heirbloom_crop": {
+            "description": "Short growth time; Provides savory vegetables and sometimes fiber"
+         },
+         "carrot_crop": {
+            "description": "Shortest growth time; Provides hearty vegetables"
+         },
+         "golden_gourd_crop": {
+            "description": "Shortest growth time; Provides hearty vegetables"
+         },
+         "pumpkin_crop": {
+            "description": "Long growth time; Very efficiently provides hearty vegetables"
+         },
+         "turnip_crop": {
+            "description": "Very short growth time; Provides hearty vegetables and sometimes leafy greens"
+         },
+         "sweet_potato_crop": {
+            "description": "Short growth time; Provides hearty vegetables"
+         },
+         "beetroot_crop": {
+            "display_name": "Beetroot",
+            "description": "Fair growth time; Provides hearty vegetables and often leafy greens",
+            "growth_stage": {
+               "000": {
+                  "name": "Beetroot Seedling",
+                  "description": "So much potential!"
+               },
+               "001": {
+                  "name": "Beetroot Sprout",
+                  "description": "It's starting to come out..."
+               },
+               "002": {
+                  "name": "Growing Beetroot",
+                  "description": "Such nice leaves already!"
+               },
+               "003": {
+                  "name": "Budding Beetroot",
+                  "description": "The leaves are about to spread open!"
+               },
+               "004": {
+                  "name": "Ripe Beetroot",
+                  "description": "It's time to harvest!"
+               },
+               "011": {
+                  "name": "Rotten Beetroot",
+                  "description": "It's dead."
+               }
+            }
+         },
+         "cabbage_crop": {
+            "display_name": "Cabbage",
+            "description": "Very short growth time; Provides leafy greens",
+            "growth_stage": {
+               "000": {
+                  "name": "Cabbage Seedling",
+                  "description": "The promise of a cabbage..."
+               },
+               "001": {
+                  "name": "Cabbage Sprout",
+                  "description": "It broke free from the soil!"
+               },
+               "002": {
+                  "name": "Stemming Cabbage",
+                  "description": "Is that when the baby is brought?"
+               },
+               "003": {
+                  "name": "Budding Cabbage",
+                  "description": "The head is forming!"
+               },
+               "004": {
+                  "name": "Ripe Cabbage",
+                  "description": "Time to harvest it!"
+               },
+               "011": {
+                  "name": "Rotten Cabbage",
+                  "description": "It's dead."
+               }
+            }
+         },
+         "lettuce_crop": {
+            "display_name": "Lettuce",
+            "description": "Short growth time; Provides leafy greens",
+            "growth_stage": {
+               "000": {
+                  "name": "Lettuce Seedling",
+                  "description": "A shiny and tiny plant!"
+               },
+               "001": {
+                  "name": "Lettuce Sprout",
+                  "description": "Look how it grows..."
+               },
+               "002": {
+                  "name": "Stemming Lettuce",
+                  "description": "Bigger leaves are beginning to form."
+               },
+               "003": {
+                  "name": "Budding Lettuce",
+                  "description": "It's almost ready!"
+               },
+               "004": {
+                  "name": "Ripe Lettuce",
+                  "description": "Harvest time!"
+               },
+               "011": {
+                  "name": "Rotten Lettuce",
+                  "description": "It's dead."
+               }
+            }
          }
       },
       "decorations": {
@@ -12503,6 +12855,9 @@
             },
             "clay": {
                "display_name": "Any Clay"
+            },
+            "common_stone": {
+               "display_name": "Any Common Stone"
             }
          },
          "fur_pelt": {
@@ -14718,6 +15073,54 @@
                   "description": "It's almost there! Look, it's about to bloom!"
                }
             }
+         },
+         "beetroot_plant": {
+            "display_name": "Beetroot",
+            "description": "A hearty veggie with tasty leaves!",
+            "bud": {
+               "beetroot_plant_bud": {
+                  "display_name": "Budding Beetroot",
+                  "description": "The leaves are spreading open now!"
+               }
+            },
+            "rotten": {
+               "beetroot_plant_rotten": {
+                  "display_name": "Rotten Beetroot",
+                  "description": "Not good for eating anymore, but a great source of seeds."
+               }
+            },
+            "seed": {
+               "beetroot_plant_seed_ghost": {
+                  "display_name": "Beetroot Seed",
+                  "description": "Will grow into a hearty and leafy veggie!"
+               },
+               "beetroot_plant_seed": {
+                  "display_name": "Beetroot Seed",
+                  "description": "Can be planted to grow into a hearty and leafy veggie!"
+               }
+            },
+            "sprout": {
+               "beetroot_plant_sprout": {
+                  "display_name": "Sprouting Beetroot",
+                  "description": "Hello, little friend!"
+               }
+            },
+            "stem": {
+               "beetroot_plant_stem": {
+                  "display_name": "Stemming Beetroot",
+                  "description": "It's coming along nicely!"
+               }
+            }
+         },
+         "carrot": {
+            "carrot_basket": {
+               "description": "Lined up in neat rows. Useful as a hearty vegetable."
+            }
+         },
+         "turnip": {
+            "turnip_basket": {
+               "description": "Juicy and exciting! Useful as a hearty vegetable."
+            }
          }
       },
       "decoration": {
@@ -14965,6 +15368,11 @@
                "iconic_description": "Place it to be harvested for some moo-moo feed or used as a fancy chair.",
                "display_name": "Mega Sweet Potato",
                "description": "Tasty! Harvest for some moo-moo feed or use it as a fancy chair."
+            },
+            "mega_beetroot": {
+               "iconic_description": "Place it to be harvested for mega beetroot tonic or used as a fancy chair.",
+               "display_name": "Mega Beetroot",
+               "description": "Oof! So heavy! Harvest it for a special tonic or just use it as a chair!"
             }
          },
          "valor_statue": {
@@ -15402,6 +15810,11 @@
          "dragon_young_nature": {
             "display_name": "Nature Dragon Youngling",
             "description": "A baby dragon that burps... acid. Be careful!"
+         },
+         "cabbageling": {
+            "display_name": "Cabbageling",
+            "description": "It's a living cabbage! It apparently doesn't need food! (It IS food, kind of...)",
+            "iconic_description": "Place it on the ground and... See what happens?!"
          }
       },
       "critters": {
@@ -15665,7 +16078,7 @@
             },
             "broth": {
                "display_name": "Broth",
-               "description": "Very nutritious but not really exciting."
+               "description": "Very nutritious but not really exciting. Required to start pottage preparation!"
             }
          },
          "bone_marrow": {
@@ -15808,8 +16221,8 @@
                "description": "Unmilled grass seeds. Grind into raw rice or versatile flour."
             },
             "raw_rice": {
-               "display_name": "Sack of Raw Rice",
-               "description": "Delicious grains ready to be used in cooking or as a vegetable."
+               "display_name": "Basket of Raw Rice",
+               "description": "Delicious grains ready to be used in cooking or as any vegetable."
             },
             "rice_flour": {
                "display_name": "Sack of Rice Flour",
@@ -16200,7 +16613,7 @@
                "description": "An appetizing combination of cheese and greens as old as the Phoenix Empire."
             },
             "imperial_salad_serving": {
-               "display_name": "Serving of Imperial Salad"
+               "display_name": "Bowl of Imperial Salad"
             }
          },
          "melted_poyo": {
@@ -16830,6 +17243,167 @@
             "description": "A maleable, thin and tasty bread with tiny corn flakes!",
             "tortilla_serving": {
                "display_name": "Tortilla"
+            }
+         },
+         "preserves": {
+            "jam_fruit": {
+               "display_name": "Jar of Fruit Jam",
+               "description": "A yummy spread made with juicy fruits! Can replace \"Any Fruit\" in many recipes."
+            },
+            "pickles": {
+               "display_name": "Jar of Pickles",
+               "description": "Spicy and carefully preserved veggies. Can replace \"Any vegetable\" in many recipes."
+            },
+            "jam_lingonberry": {
+               "display_name": "Jar of Lingonberry Jam",
+               "description": "Unique northern flavors! Can replace \"Any Fruit\" in many recipes."
+            }
+         },
+         "rotten_preserve": {
+            "display_name": "Jar of Rotten Stuff",
+            "description": "At least the jar itself can be saved, I guess?"
+         },
+         "pottage": {
+            "veggie_serving": {
+               "display_name": "Bowl of Simple Pottage"
+            },
+            "meat_serving": {
+               "display_name": "Bowl of Ordinary Pottage"
+            },
+            "grain_serving": {
+               "display_name": "Bowl of Decent Pottage"
+            },
+            "leafy_serving": {
+               "display_name": "Bowl of Tasty Pottage"
+            },
+            "complete_serving": {
+               "display_name": "Bowl of Exquisite Pottage"
+            },
+            "broth_serving": {
+               "display_name": "Bowl of Meager Pottage"
+            }
+         },
+         "megacrop_fodder": {
+            "megacrop_fodder": {
+               "display_name": "Mega Lettuce Animal Fodder",
+               "description": "A very healthy and delicious feed that can be given to any animal!"
+            },
+            "megacrop_fodder_ground": {
+               "display_name": "Mega Lettuce Animal Fodder",
+               "description": "Crunchy, bright green leaves! Delicious for all animals!"
+            }
+         },
+         "beetroot": {
+            "beet_greens_basket": {
+               "display_name": "Basket of Beet Greens",
+               "description": "Nutritious and crunchy beetroot leaves. Useful as leafy greens."
+            },
+            "beet_greens_serving": {
+               "display_name": "Serving of Beet Greens",
+               "description": "Nom nom nom"
+            },
+            "beetroot_basket": {
+               "display_name": "Basket of Beetroots",
+               "description": "A strong and highly nutritious veggie. Useful as a hearty vegetable."
+            },
+            "beetroot_serving": {
+               "display_name": "Beetroot"
+            }
+         },
+         "cabbage": {
+            "cabbage_basket": {
+               "display_name": "Basket of Cabbage",
+               "description": "Don't forget to check for babies! Useful as leafy greens."
+            },
+            "cabbage_serving": {
+               "display_name": "Serving of Cabbage"
+            }
+         },
+         "lettuce": {
+            "lettuce_basket": {
+               "display_name": "Basket of Lettuce",
+               "description": "Shiny and healthy leaves! Useful as leafy greens."
+            },
+            "lettuce_serving": {
+               "display_name": "Serving of Lettuce",
+               "description": "It's salad time!"
+            }
+         },
+         "turnip": {
+            "turnip_greens_basket": {
+               "display_name": "Basket of Turnip Greens",
+               "description": "These actually turned up pretty good. Useful as leafy greens."
+            },
+            "turnip_greens_serving": {
+               "display_name": "Serving of Turnip Greens"
+            }
+         },
+         "fishwrap": {
+            "display_name": "Fishwrap",
+            "description": "Buttered fish baked in tasty leaves!"
+         },
+         "fishwrap_serving": {
+            "display_name": "Serving of Fishwrap",
+            "description": "Don't let it unwrap!"
+         },
+         "peasant_salad": {
+            "display_name": "Peasant Salad",
+            "description": "Greener days ahead..."
+         },
+         "peasant_salad_serving": {
+            "display_name": "Bowl of Peasant Salad",
+            "description": "Could use some olive oil and salt..."
+         },
+         "veggie_roll": {
+            "display_name": "Veggie Rolls",
+            "description": "Steamed to perfection with ground meat and rice inside."
+         },
+         "veggie_roll_serving": {
+            "display_name": "Serving of Veggie Roll",
+            "description": "It's like eating a plant cigar!"
+         },
+         "cucumber": {
+            "cucumber_basket": {
+               "display_name": "Basket of Cucumbers",
+               "description": "A vegetable that can be used both as a hearty veggie or leafy greens if sliced thin."
+            },
+            "cucumber_serving": {
+               "display_name": "Cucumber"
+            }
+         },
+         "lingonberry_basket": {
+            "display_name": "Basket of Lingonberries",
+            "description": "Tasty berries! Too few to be used as 'Any Fruit' but enough for jam or be eaten!"
+         },
+         "corn": {
+            "amazing_corn_basket": {
+               "description": "Super nutritious corn. Useful as a hearty vegetable or grain."
+            },
+            "corn_basket": {
+               "description": "Sweet and crunchy. Useful as a hearty vegetable or grain."
+            }
+         },
+         "golden_gourd": {
+            "golden_gourd_basket": {
+               "description": "Edible when raw, barely. Better as a hearty vegetable!"
+            }
+         },
+         "pumpkin": {
+            "pumpkin_basket": {
+               "description": "Plump and delicious! Useful as a hearty vegetable."
+            }
+         },
+         "sweet_potato": {
+            "sweet_potato_basket": {
+               "description": "A strong northern tuber. Useful as a hearty vegetable."
+            }
+         },
+         "northern_meatballs": {
+            "display_name": "Northern Meatballs",
+            "description": "A very traditional northern meal, present in most households!",
+            "northern_meatballs_serving": {
+               "display_name": "Serving of Northern Meatballs",
+               "description": "Mashed sweet potatoes, meatballs and lingonberry jam! Very nice!"
             }
          }
       },
@@ -18215,6 +18789,22 @@
             "sprout": {
                "display_name": "Daisy Sproutlings",
                "description": "They'll be beautiful one day!"
+            }
+         },
+         "lingonberry_bush": {
+            "display_name": "Lingonberry Bushes",
+            "description": "Small and vibrant! Can be harvested for some berries, but not many.",
+            "sprout": {
+               "display_name": "Sprouting Lingonberry Bush",
+               "description": "Will provide a small amount of berries one day!"
+            },
+            "bud": {
+               "display_name": "Budding Lingonberry Bush",
+               "description": "It's almost done growing and will start to spread!"
+            },
+            "seed": {
+               "display_name": "Lingonberries",
+               "description": "A handful of berries. Can be planted for lingonberry bushes."
             }
          }
       },
@@ -20042,6 +20632,11 @@
          "display_name": "Apple Tree Sapling",
          "harvest_text": "harvesting apple tree sapling",
          "description": "A common fruit-bearing woodland tree. Needs some days before it has grown enough to be replanted somewhere else."
+      },
+      "lingonberry_bush": {
+         "display_name": "Lingonberry Bush",
+         "description": "A small, pretty bush. Needs several days to be fully grown and will provide <span class='extraHerb'>fruits</span> when harvested.",
+         "harvest_text": "harvesting lingonberries"
       }
    },
    "plants": {
@@ -20092,7 +20687,11 @@
                "automatons_and_golems": "Automatons & Golems",
                "herbalist_planter": "Herbalist Planters",
                "creature_egg": "Creature Eggs"
-            }
+            },
+            "tooltip_wanted_item_higher": "Merchant will pay <span class='higherPrice'>[str(factor)]% more</span> for these!",
+            "tooltip_wanted_item_higher_quantity": "Merchant will pay <span class='higherPrice'>[str(factor)]% more</span> for [str(quantity)] of these!",
+            "tooltip_wanted_item_lower": "Merchant will pay <span class='lowerPrice'>[str(factor)]% less</span> for these!",
+            "tooltip_wanted_item_lower_quantity": "Merchant will pay <span class='lowerPrice'>[str(factor)]% less</span> for [str(quantity)] of these!"
          },
          "custom_tooltips": {
             "mechanical": {
@@ -20319,9 +20918,13 @@
                   "days_only": "[str(i18n_data.day)] day(s)",
                   "days_and_hours": "[str(i18n_data.day)] day(s) and [str(i18n_data.hour)] hour(s)",
                   "hours_only": "[str(i18n_data.hour)] hour(s)",
-                  "short": "This crop matures quickly (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
-                  "fair": "This crop matures at a moderate rate (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
-                  "long": "This crop takes a long time to mature (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
+                  "shortest": "This crop matures very quickly (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
+                  "very_short": "This crop matures quickly (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
+                  "short": "This crop slightly faster than average (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
+                  "fair": "This crop matures at an average rate (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
+                  "long": "This crop takes slightly longer to mature (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
+                  "very_long": "This crop takes a long time to mature (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
+                  "longest": "This crop takes a very long time to mature (<span class='text-value'>[str(i18n_data.total_growth_time)]</span> before modifiers).",
                   "shorter": "Environmental factors make this crop grow <span class='text-value text-optimal'>[str(i18n_data.growth_time_percent)] faster</span> than normal!",
                   "normal": "Environmental factors make this crop grow at a normal rate.",
                   "longer": "Environmental factors make this crop grow <span class='text-value text-poor'>[str(i18n_data.growth_time_percent)] slower</span> than normal!",
@@ -20397,6 +21000,7 @@
                      "supply_metalworker": "Metalworking Supplies (Default)",
                      "supply_veggie_fruit": "Veggie & Fruit Supply (Default)",
                      "supply_meat": "Meat Supply (Default)",
+                     "special_ingredients": "Ingredients & Preserves (Default)",
                      "decayables_vegetables": "Preservable Vegetables (Default)",
                      "decayables_fruits": "Preservable Fruits (Default)",
                      "decayables_nuts": "Preservable Nuts (Default)",
@@ -20509,7 +21113,8 @@
                   "tooltip_edible_fruit": "Edible Fruit Seeds",
                   "tooltip_refined_weaver": "Refined Stuff",
                   "tooltip_dyes": "Dyes",
-                  "tooltip_baking": "Baking"
+                  "tooltip_baking": "Baking",
+                  "tooltip_preserves": "Preserves"
                },
                "fuel_level": {
                   "label": "Fuel Level:",
@@ -20668,7 +21273,9 @@
                   "opening": "Opening...",
                   "transforming": "Transforming...",
                   "filling": "Being Filled...",
-                  "draining": "Being Drained..."
+                  "draining": "Being Drained...",
+                  "fueling": "Being Fueled...",
+                  "pottage": "Stirring..."
                }
             },
             "attack_with_all_parties": {
@@ -20717,6 +21324,15 @@
                   "message": "[str(i18n_data.new_title.description)]<h4>Title Renown:</h4>🏆 [str(i18n_data.new_title.renown)]<p>Doesn't that title have a nice ring to it? You can select which title one of your citizens is using by right-clicking their name in their character sheet or the selected unit window.</p>",
                   "item_message": "[str(i18n_data.new_title.description)]<h4>Title Renown:</h4>🏆 [str(i18n_data.new_title.renown)]<p>Doesn't that title have a nice ring to it? You can select which title this item is using by right-clicking its name in the selected unit window.</p><p><i>You might also consider giving [str(i18n_data.entity.stonehearth:unit_info.custom_name)] a fancier name to go along with their new title by left-clicking its name in the selected unit window.</i></p>"
                }
+            },
+            "merchant": {
+               "first": {
+                  "title": "A traveling merchant arrives at your town...",
+                  "message": "Your town has blah blah blah something about its presence in the world attracting merchants from far off lands?"
+               }
+            },
+            "shop": {
+               "wanted_items": "Offering special rates for these items:"
             }
          },
          "promotion_tree": {
@@ -20785,6 +21401,14 @@
       "shell": {
          "settings": {
             "gameplayTab": {
+               "backup_i18n_language": {
+                  "name": "Backup Localization Language",
+                  "description": "If set to a language other than your primary localization language, strings that fail to localize will be re-attempted in this backup localization language. May require a UI refresh (F5) to take effect.",
+                  "none": "None",
+                  "none_description": "Don't use a backup localization language."
+               },
+               "load_paused": "Load Games Paused",
+               "load_paused_description": "When loading a saved game, start it paused instead of immediately resuming at the previous speed. This can help with performance issues and crashes when loading large games.",
                "building_grid_size": "Building Template Snap Grid Size",
                "building_grid_size_description": "Hold the Shift key while placing a building template to snap placement to a square horizontal grid of this size.",
                "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",
@@ -20966,7 +21590,7 @@
          },
          "constants": {
             "edible_nuts_resource_name": "Any Edible Hard Seed",
-            "fruits_resource_name": "Any Basket of Fruits",
+            "fruits_resource_name": "Any Fruit or Fruit Jam",
             "thatch_resource_name": "Any Thatch",
             "bone_resource_name": "Bone",
             "fungi_resource_name": "Any Undeployed Fungi",
@@ -21058,11 +21682,14 @@
             "hard_flour_resource_name": "Any Hard Flour",
             "soft_flour_resource_name": "Any Soft Flour",
             "malt_resource_name": "Any Malted Grains",
-            "food_veggie_raw_name": "Any Vegetable",
+            "food_veggie_raw_name": "Any Raw Vegetable",
             "food_veggie_raw_leafy_name": "Any Leafy Greens",
             "food_veggie_raw_hearty_name": "Any Hearty Vegetable",
             "food_veggie_raw_savory_name": "Any Savory Vegetable",
-            "condiment_base_resource_name": "Any Condiment Base"
+            "condiment_base_resource_name": "Any Condiment Base",
+            "fruits_raw_name": "Any Basket of Fruits",
+            "fruits_berry_name": "Any Berry",
+            "food_veggie_name": "Any Vegetable or Pickles"
          }
       }
    },

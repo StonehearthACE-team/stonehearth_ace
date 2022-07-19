@@ -1,0 +1,56 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(cook_pottage_ghost.json)",
+      "stonehearth_ace:mixins:workbench:cook_pottage"
+   ],
+   "components": {
+      "mixintypes": {
+         "sensor_list": "remove"
+      },
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(cook_pottage_ghost.json)",
+         "iconic_form": "file(cook_pottage_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": false
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:weather:warmth_source": false
+         }
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "pottage": {
+               "progress_text": "stonehearth_ace:ui.game.unit_frame.transform.progress.fueling",
+               "status_key": "stonehearth_ace:ai.actions.status_text.fueling",
+               "transform_uri": "stonehearth_ace:cook:pottage:unlit",
+               "command": "stonehearth_ace:commands:transform:prepare_pottage",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_cook_overlay_effect",
+               "transform_ingredient_material": "low_fuel",
+               "auto_request": true
+            }
+         }
+      },
+      "stonehearth:table": {
+         "drop_offset": { "x": 0, "y": 0.1, "z": 0 }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 14,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_type": "caravan",
+            "shopkeeper_level": 1
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      }
+   }
+}

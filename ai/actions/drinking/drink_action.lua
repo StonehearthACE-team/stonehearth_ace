@@ -83,14 +83,14 @@ function Drink:_reconsider_filter(well_status_changed)
    local weather_type = stonehearth.weather:get_current_weather_type()
 
    if well_status_changed or hour_type ~= self._hour_type or weather_type ~= self._weather_type then
-      log:debug('%s reconsidering filter at hour %s (%s) and weather %s (%s)',
-            self._entity, tostring(hour_type), tostring(self._hour_type), tostring(weather_type), tostring(self._weather_type))
+      --log:debug('%s reconsidering filter at hour %s (%s) and weather %s (%s)',
+      --      self._entity, tostring(hour_type), tostring(self._hour_type), tostring(weather_type), tostring(self._weather_type))
       self._hour_type = hour_type
       self._weather_type = weather_type
 
       -- if there's a well, we don't care about complicated filters, but we still want the adjust our rater
       if self._has_well then
-         log:debug('well present, %s using simple drink filter', self._entity)
+         --log:debug('well present, %s using simple drink filter', self._entity)
          self._drink_filter_fn = DrinkingLib.make_simple_drink_filter()
       else
          self._drink_filter_fn = DrinkingLib.make_drink_filter(self._drink_preferences, self._drink_intolerances, hour_type, weather_type)

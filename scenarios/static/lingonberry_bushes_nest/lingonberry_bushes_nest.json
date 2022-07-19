@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth_ace/scenarios/static/terrain_spreader_nest/terrain_spreader_nest.json",
+   "name": "lingonberry_bushes_nest",
+   "overwrite_occupied_size": 0,
+   "allow_nonflat": false,
+   "habitat_types": [
+      "plains",
+      "foothills"
+   ],
+   "weight": 3,
+   "biomes": [
+      "stonehearth:biome:arctic"
+   ],
+   "data": {
+      "entity_type": [
+         "stonehearth_ace:vines:lingonberry_bush"
+      ],
+      "quantity": {
+         "min": 4,
+         "max": 8
+      }
+   }
+}

@@ -1,0 +1,58 @@
+<script type="text/x-handlebars" data-template-name="shopBulletinDialog">
+<div id="shopBulletinDialog" class="gui bulletinDialog">
+   <div class="window">
+      <div class="title">{{i18n_key view.model.data.shop.name}}<div class="closeButton"></div></div>
+
+      <div id="buyTab" class="tabPage">
+         <!-- shop inventory -->
+         <div id="buyList" class="inventoryList"></div>
+
+         <div class="shopButtons" id="buyButtons">
+            <button class="green disabled" id="buy1Button">{{i18n stonehearth:ui.game.bulletin.shop.buy_1}}</button>
+            <button class="green disabled" id="buy10Button">{{i18n stonehearth:ui.game.bulletin.shop.buy_10}}</button>
+            <button class="green disabled" id="buyAllButton">{{i18n stonehearth:ui.game.bulletin.shop.buy_all}}</button>
+         </div>
+      </div>
+
+      <div id="sellTab" class="tabPage"}}>
+         {{#if view.hasWantedItems}}
+         <div id="wantedItems">
+            <div id="wantedItemsTitle">{{i18n stonehearth_ace:ui.game.bulletin.shop.wanted_items}}</div>
+            <div id="wantedItemsList">
+               {{#each view.wantedItems}}
+               <div {{bind-attr data-index=this.index class=":wantedItem this.isAvailable:available this.isHigher:higherPrice this.isLower:lowerPrice"}}>
+                  <img class="image" {{bind-attr src=this.icon}}>
+                  <div class="factor">{{this.factor}}</div>
+                  <div class="num">{{this.num}}</div>
+               </div>
+               {{/each}}
+            </div>
+         </div>
+         {{/if}}
+
+         <!-- player inventory -->
+         <div id="sellList" {{bind-attr class=":inventoryList view.hasWantedItems:hasWantedItems"}}></div>
+
+         <div class="shopButtons" id="sellButtons">
+            <button class="green disabled" id="sell1Button">{{i18n stonehearth:ui.game.bulletin.shop.sell_1}}</button>
+            <button class="green disabled" id="sell10Button">{{i18n stonehearth:ui.game.bulletin.shop.sell_10}}</button>
+            <button class="green disabled" id="sellAllButton">{{i18n stonehearth:ui.game.bulletin.shop.sell_all}}</button>
+         </div>
+      </div>
+
+      <div id="shopkeeperGold">
+         <h2>{{i18n stonehearth:ui.game.bulletin.shop.shopkeeper_gold_label}}: <span class="goldText">{{view.model.data.shop.shopkeeper_gold}}</h2>
+      </div>
+      <div id="playerGold">
+         <h2>{{i18n stonehearth:ui.game.bulletin.shop.shop_gold_label}}: <span class="goldText">{{view.gold}}</h2>
+      </div>
+
+      <div id="tabs">
+         <div class="tab active" tabPage="buyTab">{{i18n stonehearth:ui.game.bulletin.shop.buy_tab}}</div>
+         <div class="tab" tabPage="sellTab">{{i18n stonehearth:ui.game.bulletin.shop.sell_tab}}</div>
+      </div>
+
+   </div>
+
+</div>
+</script>

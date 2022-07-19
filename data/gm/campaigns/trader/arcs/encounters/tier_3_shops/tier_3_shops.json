@@ -1,4 +1,14 @@
 {
+   "can_start": {
+      "all_tests": {
+         "block_shops_for_ace": {
+            "type": "deny_if_less_than",
+            "item": "counter",
+            "key": "non_existing_counter",
+            "value": 999
+         }
+      }
+   },
    "out_edge": {
       "out_edges": [
          {

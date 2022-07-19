@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.lettuce_seeds_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.lettuce_seeds_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.lettuce_seeds_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/seeds/lettuce_seeds/lettuce_seeds.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:lettuce:lettuce_basket",
+         "count": 8
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:seeds:lettuce_seeds"
+      }
+   ]
+}
