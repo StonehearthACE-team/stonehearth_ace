@@ -214,7 +214,7 @@ function AceShop:sell_item(uri, quality, quantity)
       local actual_cost = item_cost
       local wanted_items = self:_get_wanted_items_entry(uri)
       if wanted_items then
-         actual_cost = item_cost * math.floor(wanted_items.price_factor + 0.5)
+         actual_cost = math.floor(item_cost * wanted_items.price_factor + 0.5)
       end
 
       if sell_quantity == 0 or shopkeeper_gold < actual_cost then
@@ -230,10 +230,9 @@ function AceShop:sell_item(uri, quality, quantity)
       shopkeeper_gold = shopkeeper_gold - actual_cost
       sell_quantity = sell_quantity - 1
 
-      wanted_items.quantity = wanted_items.quantity + 1
-      -- if wanted_items and wanted_items.max_quantity then
-      --    wanted_items.max_quantity = wanted_items.max_quantity - 1
-      -- end
+      if wanted_items then
+         wanted_items.quantity = wanted_items.quantity + 1
+      end
    end
 
    -- notify containers that items were removed from it, as it is possible they were full and now have room

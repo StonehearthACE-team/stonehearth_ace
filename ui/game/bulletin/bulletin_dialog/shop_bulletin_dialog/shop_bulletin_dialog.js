@@ -4,6 +4,22 @@ App.StonehearthShopBulletinDialog.reopen({
       this._super();
    },
 
+   didInsertElement: function() {
+      var self = this;
+      self._super();
+
+      self.$().on('click', '.wantedItem', function() {
+         var el = $(this);
+         var wantedItems = self.get('wantedItems');
+         var wantedItem = wantedItems && wantedItems[el.attr('data-index')];
+         if (wantedItem != null) {
+            // try to scroll to and select the first owned item matching this
+            self._scrollSellPalette(wantedItem);
+         }
+         return false;
+      });
+   },
+
    _updateWantedItems: function() {
       if (!this.$()) {
          return;
@@ -56,17 +72,6 @@ App.StonehearthShopBulletinDialog.reopen({
          self.set('wantedItems', null);
          self.set('hasWantedItems', false);
       }
-
-      self.$().on('click', '.wantedItem', function() {
-         var el = $(this);
-         var wantedItems = self.get('wantedItems');
-         var wantedItem = wantedItems && wantedItems[el.attr('data-index')];
-         if (wantedItem != null) {
-            // try to scroll to and select the first owned item matching this
-            self._scrollSellPalette(wantedItem);
-         }
-         return false;
-      });
 
       Ember.run.scheduleOnce('afterRender', self, function () {
          self.$('.wantedItem').each(function () {
