@@ -83,7 +83,7 @@ function MerchantComponent:set_merchant_data(player_id, merchant_data)
    self._entity:add_component('stonehearth:commands'):add_command('stonehearth_ace:commands:show_shop')
    self:_update_commands()
    
-   self:show_bulletin(true)
+   --self:show_bulletin(true)
 end
 
 function MerchantComponent:get_current_stall()

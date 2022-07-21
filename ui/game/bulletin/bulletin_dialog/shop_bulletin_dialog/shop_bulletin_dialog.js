@@ -107,6 +107,10 @@ App.StonehearthShopBulletinDialog.reopen({
          updateWantedItem: function(itemEl, wantedItem) {
             var cost = Math.floor(itemEl.attr('cost') * (wantedItem && wantedItem.price_factor || 1) + 0.5);
             itemEl.find('.cost').html(cost + 'g');
+            
+            if (itemEl.hasClass('selected')) {
+               self._updateSellButtons();
+            }
          },
          click: function(item, e) {
             self._updateSellButtons();
@@ -149,6 +153,31 @@ App.StonehearthShopBulletinDialog.reopen({
          //foundItem.get(0).scrollIntoView({behavior: "smooth", block: "center"}); // options don't work in this old version of chrome
          //self.$('#sellList').scrollTo(foundItem);
          foundItem.click();
+      }
+   },
+
+   _updateSellButtons: function() {
+      var self = this;
+
+      var item = self.$('#sellList .selected')
+      var costStr = item.find('cost').html();
+      var cost = parseInt(costStr.substr(0, costStr.length - 1)); // trim off the 'g' at the end
+
+      if (!item || item.length == 0) {
+         self._disableButton('#sell1Button');
+         self._disableButton('#sell10Button');
+         self._disableButton('#sellAllButton');
+      } else {
+         var gold = self.get('model.data.shop.shopkeeper_gold');
+         if (cost && (cost > gold)) {
+            self._disableButton('#sell1Button', 'stonehearth:ui.game.bulletin.shop.shopkeeper_not_enough_gold_tooltip');
+            self._disableButton('#sell10Button', 'stonehearth:ui.game.bulletin.shop.shopkeeper_not_enough_gold_tooltip');
+            self._disableButton('#sellAllButton', 'stonehearth:ui.game.bulletin.shop.shopkeeper_not_enough_gold_tooltip');
+         } else {
+            self._enableButton('#sell1Button');
+            self._enableButton('#sell10Button');
+            self._enableButton('#sellAllButton');
+         }
       }
    },
 });
