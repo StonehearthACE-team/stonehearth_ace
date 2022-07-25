@@ -75,18 +75,22 @@ end
 function Drink:_reconsider_well_existence()
    local town = stonehearth.town:get_town(self._entity)
    self._has_well = town and town:is_entity_type_registered('stonehearth_ace:well')
-   self:_reconsider_filter(true)
+   -- upgrading your only well can cause this to happen twice in a tick
+   -- don't force a reconsider; just set a flag that gets cleared on next reconsider
+   --self:_reconsider_filter(true)
+   self._has_well_changed = true
 end
 
-function Drink:_reconsider_filter(well_status_changed)
+function Drink:_reconsider_filter()
    local hour_type = DrinkingLib.get_current_hour_type()
    local weather_type = stonehearth.weather:get_current_weather_type()
 
-   if well_status_changed or hour_type ~= self._hour_type or weather_type ~= self._weather_type then
+   if self._has_well_changed or hour_type ~= self._hour_type or weather_type ~= self._weather_type then
       --log:debug('%s reconsidering filter at hour %s (%s) and weather %s (%s)',
       --      self._entity, tostring(hour_type), tostring(self._hour_type), tostring(weather_type), tostring(self._weather_type))
       self._hour_type = hour_type
       self._weather_type = weather_type
+      self._has_well_changed = nil
 
       -- if there's a well, we don't care about complicated filters, but we still want the adjust our rater
       if self._has_well then

@@ -128,9 +128,13 @@ function MoveToTargetableLocation:_find_location(entity, target)
       return nil
    end
 
+   local target_location = radiant.entities.get_world_location(target)
+   if not target_location then
+      return nil
+   end
+
    local range = stonehearth.combat:get_weapon_range(entity, weapon)
    local entity_location = radiant.entities.get_world_location(entity)
-   local target_location = radiant.entities.get_world_location(target)
 
    local leash = stonehearth.combat:get_leash_data(entity) or {}
 
