@@ -161,7 +161,7 @@ App.StonehearthShopBulletinDialog.reopen({
 
       var item = self.$('#sellList .selected')
       var costStr = item.find('cost').html();
-      var cost = parseInt(costStr.substr(0, costStr.length - 1)); // trim off the 'g' at the end
+      var cost = costStr && parseInt(costStr.substr(0, costStr.length - 1)); // trim off the 'g' at the end
 
       if (!item || item.length == 0) {
          self._disableButton('#sell1Button');
