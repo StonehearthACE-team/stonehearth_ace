@@ -66,6 +66,17 @@ function PersistenceService:_load_all_persistence_data()
             for _, crafter in ipairs(crafters) do
                crafter.job_uri = job_uri
                crafter.town = town   -- allow us to easily reference this crafter's town
+
+               -- strip out best crafted items with invalid uris
+               if crafter.best_crafts then
+                  for i = #crafter.best_crafts, 1, -1 do
+                     local best_craft = crafter.best_crafts[i]
+                     if not stonehearth.catalog:get_catalog_data(best_craft.uri) then
+                        table.remove(crafter.best_crafts, i)
+                     end
+                  end
+               end
+
                table.insert(crafter_type, crafter)
                table.insert(self._all_crafters, crafter)
             end
@@ -96,10 +107,23 @@ function PersistenceService:get_all_crafters(job_uri)
    end
 end
 
-function PersistenceService:get_random_crafter(job_uri)
+function PersistenceService:get_random_crafter(job_uri, min_best_crafts)
    local crafters = self:get_all_crafters(job_uri)
 
    if crafters and #crafters > 0 then
+      if min_best_crafts then
+         local min_crafters = {}
+         for _, crafter in ipairs(crafters) do
+            if crafter.best_crafts and #crafter.best_crafts > 0 then
+               table.insert(min_crafters, crafter)
+            end
+         end
+         if #min_crafters > 0 then
+            crafters = min_crafters
+         else
+            return nil
+         end
+      end
       return crafters[rng:get_int(1, #crafters)]
    end
 end

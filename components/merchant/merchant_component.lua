@@ -64,15 +64,26 @@ function MerchantComponent:set_merchant_data(player_id, merchant_data)
    local persistence_job = options.merchant_options.persistence_job
    if persistence_job then
       -- if a persistence job was specified, try to find a match in persistence data
-      local crafter = stonehearth_ace.persistence:get_random_crafter(persistence_job)
-      options.persistence_data = crafter
+      local crafter = stonehearth_ace.persistence:get_random_crafter(persistence_job, 1)
+      if crafter then
+         options.persistence_data = {
+            name = crafter.name,
+            level = crafter.level,
+            best_crafts = crafter.best_crafts,
+            town = {
+               save_id = crafter.town.save_id,
+               player_id = crafter.town.player_id,
+               town_name = crafter.town.town_name,
+            },
+         }
+      end
    end
    self._sv._shop = stonehearth.shop:create_shop(player_id, merchant_data.shop_info.name, options)
 
    self._entity:add_component('stonehearth:commands'):add_command('stonehearth_ace:commands:show_shop')
    self:_update_commands()
    
-   self:show_bulletin(true)
+   --self:show_bulletin(true)
 end
 
 function MerchantComponent:get_current_stall()

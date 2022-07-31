@@ -194,6 +194,9 @@ function PlayerMercantile:_create_spawn_timer()
                self._spawning_timer = nil
             end
          end
+
+         -- show the initial bulletin here so it's after the "first merchant" bulletin
+         merchant:get_component('stonehearth_ace:merchant'):show_bulletin(true)
       end)
 end
 
