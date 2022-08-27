@@ -116,6 +116,39 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       });
    },
 
+   _addCategoryForItem: function(item) {
+      /*same as vanilla, but added this part to h2 elements:
+      .click(function(){
+         this.classList.toggle("collapsed");
+      });*/
+      var category = $('<div>')
+         .addClass('category')
+         .attr('category', item.category);
+
+      // new title element for the category
+      var categoryDisplayName = i18n.t('stonehearth:ui.game.entities.item_categories.' + item.category);
+      if (!categoryDisplayName) {
+         console.log("No category display name found for item category " + item.category);
+         categoryDisplayName = item.category;
+      }
+
+      $('<h2>')
+         .html(categoryDisplayName)
+         .appendTo(category)
+         .click(function(){
+            this.classList.toggle("collapsed");
+         });
+
+      // the category container element that items are inserted into
+      $('<div>')
+         .addClass('downSection')
+         .appendTo(category);
+
+      category.appendTo(this.palette);
+
+      return category;
+   },
+
    updateWantedItems: function(wantedItems) {
       var self = this;
       self.options.wantedItems = wantedItems;

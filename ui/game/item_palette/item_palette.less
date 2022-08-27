@@ -26,3 +26,14 @@
       padding-right: 4px;
    }
 }
+
+.itemPalette h2::before {
+   content: "▼";
+}
+.itemPalette h2.collapsed::before {
+   content: "►";
+}
+.itemPalette h2.collapsed ~ div{
+   height: 1em;
+   overflow-y: hidden;
+}
