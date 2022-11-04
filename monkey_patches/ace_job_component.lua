@@ -384,7 +384,7 @@ function AceJobComponent:demote(old_job_json, dont_drop_talisman)
 	radiant.events.trigger(self._entity, 'stonehearth_ace:on_demote', { old_job_json = old_job_json, dont_drop_talisman = dont_drop_talisman })
 end
 
-AceJobComponent._ace_old__equip_equipment = JobComponent._equip_equipment
+--AceJobComponent._ace_old__equip_equipment = JobComponent._equip_equipment
 function AceJobComponent:_equip_equipment(json, talisman_entity)
    self._sv._job_equipment_uris = {}
    
@@ -409,9 +409,10 @@ function AceJobComponent:_equip_equipment(json, talisman_entity)
             local equipment = radiant.entities.create_entity(item)
             local unequipped_item = equipment_component:equip_item(equipment, false)
             if unequipped_item then
-               -- if the unequipped item is the same as the equipped one, delete it
+               -- if the unequipped item is the same as the equipped one or shouldn't be dropped, delete it
                local location = radiant.entities.get_world_grid_location(self._entity)
-               if location and unequipped_item:get_uri() ~= item then
+               local ep_comp = unequipped_item:get_component('stonehearth:equipment_piece')
+               if location and unequipped_item:get_uri() ~= item and (not ep_comp or ep_comp:get_should_drop()) then
                   local placement_point = radiant.terrain.find_placement_point(location, 1, 4)
                   radiant.terrain.place_entity(unequipped_item, placement_point)
                else

@@ -26,7 +26,7 @@ App.StonehearthShopBulletinDialog.reopen({
       }
       var self = this;
       var wantedItems = self.get('model.data.shop.wanted_items');
-      if (wantedItems != null && wantedItems.length == 0) {
+      if (wantedItems != null && (!wantedItems.length || wantedItems.length == 0)) {
          wantedItems = null;
       }
       self._sellPalette.stonehearthItemPalette('updateWantedItems', wantedItems);
@@ -34,12 +34,13 @@ App.StonehearthShopBulletinDialog.reopen({
       if (wantedItems != null) {
          var items = [];
          wantedItems.forEach(item => {
-            var icon, display_name;
+            var icon, display_name, category;
             if (item.uri) {
                var catalogData = App.catalog.getCatalogData(item.uri);
                if (catalogData == null) return;
                icon = catalogData.icon;
                display_name = catalogData.display_name;
+               category = catalogData.category;
             }
             else if (item.material) {
                var resource = App.resourceConstants.resources[item.material];
@@ -81,7 +82,8 @@ App.StonehearthShopBulletinDialog.reopen({
             if (wantedItem != null) {
                // add a tooltip
                App.tooltipHelper.createDynamicTooltip(el, function() {
-                  return $(App.tooltipHelper.createTooltip(i18n.t(wantedItem.display_name)));
+                  var categoryDisplayName = wantedItem.category && i18n.t('stonehearth:ui.game.entities.item_categories.' + wantedItem.category);
+                  return $(App.tooltipHelper.createTooltip(i18n.t(wantedItem.display_name), categoryDisplayName));
                });
             }
          });

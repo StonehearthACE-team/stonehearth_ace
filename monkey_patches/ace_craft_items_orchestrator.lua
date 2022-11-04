@@ -178,7 +178,7 @@ function AceCraftItemsOrchestrator:_show_unreachable_ingredients_notification(ev
          local order = crafter_component:get_current_order()
 
          -- Don't notify if we just ran out of that ingredient
-         if order and order:is_missing_ingredient({missing_ingredient}) then
+         if order and not order:is_missing_ingredient({missing_ingredient}) then
             self._bulletins[ingredient_name] = true
             stonehearth.bulletin_board:post_bulletin(player_id)
                                        :set_callback_instance(stonehearth.town:get_town(player_id))

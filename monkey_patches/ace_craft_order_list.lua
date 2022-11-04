@@ -535,7 +535,7 @@ function AceCraftOrderList:get_next_order(crafter)
                craftable = order:has_ingredients()
                self._craftable_orders[order_id] = craftable
             end
-            if craftable then
+            if craftable and not self._stuck_orders[order_id] then
                return order
             else
                local crafter_comp = crafter:get_component('stonehearth:crafter')
