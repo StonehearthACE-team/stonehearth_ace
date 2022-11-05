@@ -281,4 +281,35 @@ function AceStorageComponent:get_items_of_type(uri)
    return nil
 end
 
+AceStorageComponent._ace_old_set_filter = StorageComponent.set_filter
+function AceStorageComponent:set_filter(filter)
+   self._sv._has_set_filter = true
+   self:_ace_old_set_filter(filter)
+end
+
+function AceStorageComponent:_refresh_attention_effect()
+   if self._sv.is_single_filter then
+      local filter = self._sv.filter
+      local lacks_filter = not self._sv._has_set_filter
+
+      if lacks_filter and filter then
+         if filter.is_exact_filter then
+            lacks_filter = filter.uri == ''
+         else
+            lacks_filter = next(filter) == nil
+         end
+      end
+
+      local has_effect = self._attention_effect ~= nil
+      if lacks_filter ~= has_effect then
+         if lacks_filter then
+            self._attention_effect = radiant.effects.run_effect(self._entity, 'stonehearth:effects:attention_effect', nil, nil, { playerColor = radiant.entities.get_player_color(self._entity) })
+         else
+            self._attention_effect:stop()
+            self._attention_effect = nil
+         end
+      end
+   end
+end
+
 return AceStorageComponent
