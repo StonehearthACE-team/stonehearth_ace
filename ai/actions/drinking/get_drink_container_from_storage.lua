@@ -4,7 +4,10 @@ GetDrinkFromContainerFromStorage.name = 'get drink from container in storage'
 GetDrinkFromContainerFromStorage.does = 'stonehearth_ace:get_drink'
 GetDrinkFromContainerFromStorage.args = {
    drink_filter_fn = 'function',
-   drink_rating_fn = 'function',
+   drink_rating_fn = {           -- a rating function that returns a score 0-1 given the item and entity
+      type = 'function',
+      default = stonehearth.ai.NIL,
+   },
 }
 GetDrinkFromContainerFromStorage.think_output = {
    drink_container_filter_fn = 'function',

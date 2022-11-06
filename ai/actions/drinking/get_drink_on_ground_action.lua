@@ -5,7 +5,10 @@ GetDrinkOnGround.name = 'get drink on the ground'
 GetDrinkOnGround.does = 'stonehearth_ace:get_drink'
 GetDrinkOnGround.args = {
    drink_filter_fn = 'function',
-   drink_rating_fn = 'function',
+   drink_rating_fn = {           -- a rating function that returns a score 0-1 given the item and entity
+      type = 'function',
+      default = stonehearth.ai.NIL,
+   },
 }
 GetDrinkOnGround.think_output = {
    drink_filter_fn = 'function',

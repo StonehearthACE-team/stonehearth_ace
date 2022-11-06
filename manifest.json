@@ -6552,6 +6552,10 @@
          "controller": "file(call_handlers/mechanical_call_handler.lua)",
          "endpoint": "server"
       },
+      "storage_mark_changed": {
+         "controller": "file(call_handlers/saved_variables_call_handler.lua)",
+         "endpoint": "server"
+      },
       "select_water_pump_pipe_command": {
          "controller": "file(call_handlers/water_tools_call_handler.lua)",
          "endpoint": "client"

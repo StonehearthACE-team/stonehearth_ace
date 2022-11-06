@@ -5,7 +5,10 @@ GetDrinkTrivial.name = 'get drink trivial'
 GetDrinkTrivial.does = 'stonehearth_ace:get_drink'
 GetDrinkTrivial.args = {
    drink_filter_fn = 'function',
-   drink_rating_fn = 'function',
+   drink_rating_fn = {           -- a rating function that returns a score 0-1 given the item and entity
+      type = 'function',
+      default = stonehearth.ai.NIL,
+   },
 }
 GetDrinkTrivial.priority = {0, 1}
 
@@ -15,8 +18,8 @@ function GetDrinkTrivial:start_thinking(ai, entity, args)
    if ai.CURRENT.carrying ~= nil then
       local drink = radiant.entities.get_entity_data(ai.CURRENT.carrying, 'stonehearth_ace:drink')
       if drink and args.drink_filter_fn(ai.CURRENT.carrying)then
-      	ai:set_utility(args.drink_rating_fn(ai.CURRENT.carrying, entity))
-        ai:set_think_output()
+         ai:set_utility(args.drink_rating_fn and args.drink_rating_fn(ai.CURRENT.carrying, entity) or 1)
+         ai:set_think_output()
       end
    end
 end

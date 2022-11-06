@@ -10,12 +10,20 @@ local log = radiant.log.create_logger('storage_component')
 AceStorageComponent._ace_old_create = StorageComponent.create
 function AceStorageComponent:create()
    self._is_create = true
-   self:_ace_old_create()
+
+   local basic_tracker = radiant.create_controller('stonehearth:basic_inventory_tracker')
+   self._sv.item_tracker = radiant.create_controller('stonehearth:inventory_tracker', basic_tracker, true)
+
+   local default_storage_filter_none = stonehearth.client_state:get_default_storage_filter_none(self._entity:get_player_id())
+   if default_storage_filter_none == nil then
+      -- Grab host config value if client state value not set
+      default_storage_filter_none = radiant.util.get_config('default_storage_filter_none', false)
+   end
 
    if stonehearth_ace.universal_storage:is_universal_storage_uri(self._entity:get_uri()) then
       -- make sure the filter can accept everything
       self._sv.filter = nil
-   elseif self._type == 'input_crate' then
+   elseif (self._sv.is_public and default_storage_filter_none) or self._sv.is_single_filter or self._type == 'input_crate' then
       self:_set_filter_to_none()
    elseif self._type == 'output_crate' and self._sv.filter_list == 'stonehearth:ui:stockpile:filters' then
       self._sv.filter_list = 'stonehearth_ace:ui:output_box:filters'
@@ -33,7 +41,13 @@ function AceStorageComponent:restore()
       return
    end
 
-   self:_ace_old_restore()
+   -- Recreate the tracking data. It isn't actually saved, as the format is not kept backward-compatible.
+   local basic_tracker = radiant.create_controller('stonehearth:basic_inventory_tracker')
+   self._sv.item_tracker = radiant.create_controller('stonehearth:inventory_tracker', basic_tracker, true)
+   for id, item in pairs(self._sv.items) do
+      self._sv.item_tracker:add_item(item, self._entity)
+   end
+   self._sv.item_tracker:mark_changed()
 end
 
 AceStorageComponent._ace_old_activate = StorageComponent.activate
@@ -271,6 +285,142 @@ end
 
 function AceStorageComponent:add_gold(amount, combine_only)
    return self._inventory:add_gold(amount, self._entity, combine_only)
+end
+
+-- overriding for __saved_variables:mark_changed() optionality
+function AceStorageComponent:add_item(item, force_add, owner_player_id)
+   if self:is_full() and not force_add then
+      return false
+   end
+
+   local id = item:get_id()
+   if self._sv.items[id] then
+      return true
+   end
+
+   -- At one point in time we had (and still may have) a bug where an entity's
+   -- root form could be placed in the world *AND* the iconic form was in storage.
+   -- Certainly that's a bug and should be found and fixed, but if we encounter it here
+   -- (e.g. in a save file or an unfortunate series of events that leads to an error()
+   -- at just the right moment causing this discrepencey) just silently ignore the add
+   -- request.  This has the effect of "removing" the iconic entity from the world, since
+   -- the guy who asked for it to be put into storage has released the previous reference
+   -- to it (e.g. taken it off the carry bone).
+   local root, iconic = entity_forms_lib.get_forms(item)
+   if iconic and item == iconic then
+      local in_world_item = entity_forms_lib.get_in_world_form(item)
+      if in_world_item == root then
+         log:error('cannot add %s to storage, root form %s is currently in world!', iconic, root)
+         self:remove_item(item:get_id())
+         return false
+      end
+   elseif iconic and item == root then
+      radiant.verify(false, 'cannot add %s to storage because it is the root form!', root)
+      self:remove_item(item:get_id())
+      return false
+   end
+
+   self._sv.items[id] = item
+   self._sv.num_items = self._sv.num_items + 1
+   self:_filter_item(item)
+   self._sv.item_tracker:add_item(item, self._entity)
+
+   local inventory = self._inventory
+
+   if owner_player_id and owner_player_id ~= '' then
+      inventory = stonehearth.inventory:get_inventory(owner_player_id) or self._inventory
+   end
+
+   if inventory then
+      inventory:add_item(item, self._entity) -- force add to inventory
+   end
+
+   if item:is_valid() and not force_add then
+      stonehearth.ai:reconsider_entity(item, 'added item to storage')
+      -- Don't need to let AI know to reconsider this container because reconsider_entity already calls on the storage
+   end
+   self:_on_contents_changed()
+   self:_consider_marking_changed()
+
+   radiant.events.trigger_async(self._entity, 'stonehearth:storage:item_added', {
+         item = item,
+         item_id = item:get_id(),
+      })
+   if self:is_full() then
+      radiant.events.trigger_async(self._entity, 'stonehearth:storage:fullness_changed', true)
+   end
+
+   return true
+end
+
+function AceStorageComponent:remove_item(id, inventory_predestroy, owner_player_id)
+   assert(type(id) == 'number', 'expected entity id')
+
+   local item = self._sv.items[id]
+   if not item then
+      return nil
+   end
+
+   if self:is_full() then
+      radiant.events.trigger_async(self._entity, 'stonehearth:storage:fullness_changed', false)  -- Async, so when delivery, this will be true.
+   end
+
+   self._sv.num_items = self._sv.num_items - 1
+   self._sv.items[id] = nil
+   self._passed_items[id] = nil
+   self._filtered_items[id] = nil
+   self._sv.item_tracker:remove_item(id)
+
+   if not inventory_predestroy then
+      local inventory = self._inventory
+
+      if owner_player_id and owner_player_id ~= '' then
+         inventory = stonehearth.inventory:get_inventory(owner_player_id) or self._inventory
+      end
+      
+      if inventory then
+         --Item isn't part of storage anymore, so storage is now nil
+         inventory:update_item_container(id, nil)
+      end
+
+      if item:is_valid() then
+         stonehearth.ai:reconsider_entity(item, 'removed item from storage')
+
+         -- Note: We need to reconsider the storage container here because the item is no longer part of storage
+         -- and therefore the ai service will not automatically reconsider the storage.
+         -- But we need the storage to be reconsidered because it's possible it was full and now is not.
+         stonehearth.ai:reconsider_entity(self._entity, 'removed item from storage')
+      end
+   end
+
+   self:_on_contents_changed()
+   self:_consider_marking_changed()
+
+   local event_item = not inventory_predestroy and item:is_valid() and item or nil
+
+   radiant.events.trigger_async(self._entity, 'stonehearth:storage:item_removed', {
+         item_id = id,
+         item = event_item,
+      })
+   return item
+end
+
+function AceStorageComponent:_consider_marking_changed()
+   self._has_changed = true
+   -- don't check multiplayer; we also want to be able to do this in single-player
+   -- if we're rendering the contents or it's a private storage, go ahead and update immediately (it's probably small)
+   if self._sv.render_contents or not self._sv.is_public or --not stonehearth.presence:is_multiplayer() or
+         not stonehearth.client_state:get_client_gameplay_setting(self._player_id, 'stonehearth_ace', 'limit_network_data', true) then
+      self:mark_changed()
+   end
+end
+
+function AceStorageComponent:mark_changed()
+   if self._has_changed then
+      self._has_changed = false
+      self.__saved_variables:mark_changed()
+      self._sv.item_tracker:mark_changed(true)
+   end
 end
 
 function AceStorageComponent:get_items_of_type(uri)
