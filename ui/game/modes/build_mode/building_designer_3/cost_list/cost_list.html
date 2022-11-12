@@ -1,0 +1,26 @@
+<script type="text/x-handlebars" data-template-name="costList">
+   <div id="buildingCostList" {{bind-attr class=view.building_complete:hidden:downSection}}>
+      <table class="costTable">
+         <tbody>
+         {{#each cost_item in view.building_cost}}
+            <tr {{bind-attr class=cost_item.requirementsMet:costMet:costMissing data-uri=cost_item.uri}}>
+               <td class="iconCellTd">
+                  <div class="iconContainer">
+
+                     <div class="icon"><img {{bind-attr src=cost_item.icon}} class="iconimg"/>
+                        <div {{bind-attr class=cost_item.requirementsMet:hidden:issuesIcon}}/>
+                        <div class="quality-icon" {{bind-attr data-quality=cost_item.quality}}></div>
+                     </div>
+
+                  </div>
+               </td>
+               <td class="name">{{i18n_key cost_item.name}}</td>
+               <td class="count">
+                  {{cost_item.available}}/{{cost_item.count}}
+               </td>
+            </tr>
+         {{/each}}
+         </tbody>
+      </table>
+   </div>
+</script>

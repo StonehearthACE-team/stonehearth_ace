@@ -47,17 +47,17 @@ function AcePlayerJobsController:_ensure_all_job_indexes()
    end
 end
 
-function AcePlayerJobsController:request_craft_product(product_uri, amount, building, require_exact)
+function AcePlayerJobsController:request_craft_product(product_uri, amount, building, require_exact, insert_order)
    -- first try it with requiring exact; that way we don't default to a secondary option if the primary is available
    if not require_exact then
-      local result = self:request_craft_product(product_uri, amount, building, true)
+      local result = self:request_craft_product(product_uri, amount, building, true, insert_order)
       if result ~= nil then
          return result
       end
    end
    
    for _, job_info in pairs(self._sv.jobs) do
-      local order = job_info:queue_order_if_possible(product_uri, amount, building, require_exact)
+      local order = job_info:queue_order_if_possible(product_uri, amount, building, require_exact, insert_order)
       if order then
          -- it's just true if the order didn't need to be created
          -- otherwise it returns the actual order

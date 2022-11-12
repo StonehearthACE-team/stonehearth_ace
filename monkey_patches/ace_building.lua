@@ -250,6 +250,49 @@ function AceBuilding:get_building_quality()
    return quality
 end
 
+function AceBuilding:build(ignored_entities, insert_craft_requests)
+   if self._sv._plan or self._sv._building_job then
+      return self._sv.plan_job_status
+   end
+
+   -- If ignored_entities are specified, then we take this to mean we don't
+   -- care about validation (because this is a terrain restoration).
+   -- The building plan will still alert us to impossible-to-build structures,
+   -- this just bypasses the 'you have intersecting stuff' test because the
+   -- player didn't even design this.
+   if radiant.empty(ignored_entities) and self:_any_invalid_blueprints() then
+      self._sv.plan_job_status = stonehearth.constants.building.plan_job_status.INVALID_BLUEPRINTS
+      return self._sv.plan_job_status
+   end
+
+   self._sv.building_status = stonehearth.constants.building.building_status.PLANNING
+
+   local blueprints = {}
+   for bid, bp in self._sv.blueprints:each() do
+      blueprints[bid] = bp
+   end
+
+   self._sv._building_job = radiant.create_controller('stonehearth:persistent_job_sequence', 'building plan', {
+         blueprints = blueprints,
+         ignored_entities = ignored_entities,
+         building_entity = self._entity,
+         insert_craft_requests = insert_craft_requests
+      })
+
+   self:_attach_plan_job_listeners()
+
+   self._sv.plan_job_status = stonehearth.constants.building.plan_job_status.WORKING
+
+   self._sv._building_job
+         :add_job('stonehearth:build2:jobs:blueprint')
+         :add_job('stonehearth:build2:jobs:blueprints_to_building_pieces')
+         :add_job('stonehearth:build2:jobs:building_piece_dependencies')
+         :add_job('stonehearth:build2:jobs:plan')
+         :start()
+
+   return self._sv.plan_job_status
+end
+
 AceBuilding._ace_old__calculate_remaining_resource_cost = Building._calculate_remaining_resource_cost
 function AceBuilding:_calculate_remaining_resource_cost()
    self:_ace_old__calculate_remaining_resource_cost()

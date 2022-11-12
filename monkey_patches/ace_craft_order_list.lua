@@ -199,7 +199,7 @@ function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_o
    end
 
 	local old_order_index = condition.order_index or maintain_order_index
-	if old_order_index then
+	if old_order_index and old_order_index < #self._sv.orders then
 		-- Change the order of the recipe to what its predecessor had
 
 		-- Note: We could call the function `change_order_position` for this one,
@@ -218,7 +218,8 @@ function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_o
 end
 
 -- this is used by the job_info_controller:queue_order_if_possible
-function AceCraftOrderList:request_order_of(player_id, product, amount, building)
+function AceCraftOrderList:request_order_of(player_id, product, amount, building, insert_order)
+   log:debug('requesting order of %d %s (%s)', amount, product, insert_order and 'inserting at top' or 'adding to bottom')
    local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
 
    local recipe_info = self:_ace_get_recipe_info_from_product(product, crafter_info)
@@ -229,6 +230,7 @@ function AceCraftOrderList:request_order_of(player_id, product, amount, building
          type = 'make',
          amount = num,
          requested_amount = amount,
+         order_index = insert_order and 1 or nil,
       }
       return recipe_info.order_list:add_order(player_id, recipe_info.recipe, condition, building)
    end

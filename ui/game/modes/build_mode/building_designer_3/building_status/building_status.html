@@ -1,0 +1,57 @@
+<script type="text/x-handlebars" data-template-name="buildingStatus">
+   <div id="buildingStatusRoot" class="unexpanded">
+
+      <div id="top" class="paper">
+         <input id="buildingName" class="paper header" onClick="this.select();" type="text" maxlength="28" />
+
+         {{#if view.building}}
+            <div id="buildButton" class="paper blueButton button" {{ action "pause" target="view" }} >
+               {{ i18n stonehearth:ui.game.build2.building_status.pause_button }}
+            </div>
+         {{else}}
+            {{#if view.paused}}
+               <div id="buildButton" class="paper blueButton button" {{ action "resume" target="view" }} >
+                  {{ i18n stonehearth:ui.game.build2.building_status.resume_button }}
+               </div>
+            {{else}}
+               {{#if view.finished}}
+                  <div id="buildButton" class="paper blueButton button disabled">
+                     {{ i18n stonehearth:ui.game.build2.building_status.finished_button }}
+                  </div>
+               {{else}}
+                  <div id="buildButton" class="paper blueButton button preBuild" {{ action "build" target="view" allowedKeys="shift" }} >
+                     {{ i18n stonehearth:ui.game.build2.building_status.build_button }}
+                  </div>
+               {{/if}}
+            {{/if}}
+         {{/if}}
+      </div>
+
+      <div id="costSummary">
+         <div id="costIcon">
+         </div>
+         <div id="postIcon">
+            <div id="costPre">
+               {{ i18n stonehearth:ui.game.build2.building_status.cost_prefix }}
+            </div>
+               {{#each res in view.resources}}
+                  <div class="resource" {{ bind-attr style=res.style }} ">
+                  </div>
+                  <div class="count">
+                     {{res.count}}
+                  </div>
+               {{/each}}
+               <div class="icon itemCount">
+               </div>
+               <div class="count itemCount">
+               </div>
+         </div>
+         <div id="downButton"  class="paper">
+         </div>
+      </div>
+
+      <div id="costDetails">
+         {{ view "stonehearthBuildingCostList" }}
+      </div>
+   </div>
+</script>

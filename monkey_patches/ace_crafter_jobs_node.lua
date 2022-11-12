@@ -3,6 +3,13 @@ local log = radiant.log.create_logger('build.plan.crafter_jobs_node')
 local CrafterJobsNode = require 'stonehearth.components.building2.plan.nodes.crafter_jobs_node'
 local AceCrafterJobsNode = radiant.class('CrafterJobsNode')
 
+function CrafterJobsNode:__init(building, items, resources, insert_craft_requests)
+   self._building = building
+   self._items = items
+   self._resources = resources
+   self._insert_craft_requests = insert_craft_requests
+end
+
 function AceCrafterJobsNode:start()
    radiant.events.trigger_async(self, 'stonehearth:build2:plan:node_complete')
    
@@ -14,7 +21,7 @@ function AceCrafterJobsNode:start()
 
    local resource_constants = stonehearth.constants.resources
 
-   log:debug('queuing crafting jobs for %s', self._building)
+   log:debug('queuing crafting jobs for %s%s', self._building, tostring(self._insert_craft_requests) and ' (inserting at top of queue)' or '')
    local bid = self._building:get_id()
 
    for resource_name, stacks in pairs(self._resources) do
@@ -38,7 +45,7 @@ function AceCrafterJobsNode:start()
          local real_uri = item_data[1]
          local quality = tonumber(item_data[2])
 
-         player_jobs_controller:request_craft_product(real_uri, count, bid)
+         player_jobs_controller:request_craft_product(real_uri, count, bid, false, self._insert_craft_requests)
       end
    end
 end
