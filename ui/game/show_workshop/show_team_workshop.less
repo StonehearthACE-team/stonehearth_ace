@@ -108,6 +108,63 @@
    }
 
    #recipeList {
+      .categoryHeader {
+         display: flex;
+         flex-direction: row;
+         align-items: flex-end;
+         justify-content: space-between;
+         width: 100%;
+         height: 20px;
+         padding: 4px 0px;
+
+         h3 {
+            display: inline-block;
+         }
+         .categoryCrafters {
+            display: flex;
+            flex-direction: row;
+
+            .categoryCrafter {
+               .button;
+               display: flex;
+               flex-direction: row;
+               //padding-left: 10px;
+
+               .craftingImage {
+                  height: 25px;
+                  width: 30px;
+                  margin: 0px 5px;
+               }
+
+               &.disabledCrafting {
+                  opacity: 0.8;
+
+                  .craftingImage {
+                     background-image: url(/stonehearth_ace/ui/images/redXSmaller.png);
+                  }
+               }
+
+               &.enabledCrafting {
+                  opacity: 0.2;
+
+                  .craftingImage {
+                     background-image: url(/stonehearth_ace/ui/images/greenCheckSmaller.png);
+                  }
+               }
+
+               &:hover {
+                  opacity: 0.8;
+               }
+
+               .crafterDetail {
+                  .controlFont;
+                  font-size: 16px;
+                  color: white;
+               }
+            }
+         }
+      }
+
       .item.is-workshop-selected {
          box-shadow: 0px 0px 0px 2px rgb(180, 180, 180);
       }

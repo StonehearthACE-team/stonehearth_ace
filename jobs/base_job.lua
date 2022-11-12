@@ -17,6 +17,7 @@ function BaseJob:initialize()
    self._sv.attained_perks = {}
    -- ADDED FOR ACE
    self._sv.max_num_training = {}
+   self._sv.disabled_crafting_categories = {}
    self._sv._lookup_values = {}
    self._sv._can_repair_as_jobs = {}
    self._sv._can_repair_as_any_job = false
@@ -481,6 +482,19 @@ function BaseJob:_add_current_role_buffs()
          radiant.entities.add_buff(self._sv._entity, buff)
       end
    end
+end
+
+function BaseJob:get_disabled_crafting_categories()
+   return self._sv.disabled_crafting_categories
+end
+
+function BaseJob:get_crafting_category_disabled(category)
+   return self._sv.disabled_crafting_categories[category]
+end
+
+function BaseJob:set_crafting_category_disabled(category, disabled)
+   self._sv.disabled_crafting_categories[category] = (disabled ~= false) or nil
+   self.__saved_variables:mark_changed()
 end
 
 function BaseJob:get_medic_capabilities()

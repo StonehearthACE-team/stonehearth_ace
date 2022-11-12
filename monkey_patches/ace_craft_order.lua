@@ -359,10 +359,17 @@ end
 ]]
 function CraftOrder:should_execute_order(crafter)
    --If the crafter is not appropriately leveled, return false
-   local job_level = crafter:get_component('stonehearth:job'):get_current_job_level()
-   if job_level and self._recipe.level_requirement and
-      job_level < self._recipe.level_requirement then
+   local job_component = crafter:get_component('stonehearth:job')
+   local job_level = job_component:get_current_job_level()
+   if job_level and self._recipe.level_requirement and job_level < self._recipe.level_requirement then
       log:detail('craft_order: cannot execute order with recipe %s, crafter %s does not meet requriements', self._recipe.recipe_name, crafter)
+      return false
+   end
+
+   -- also make sure this category of crafting isn't disabled for this crafter
+   if self._recipe.category and job_component:get_crafting_category_disabled(self._recipe.category) then
+      log:detail('craft_order: cannot execute order with recipe %s, crafter %s has crafting for category %s disabled',
+            self._recipe.recipe_name, crafter, self._recipe.category)
       return false
    end
 

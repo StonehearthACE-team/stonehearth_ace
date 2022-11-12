@@ -6226,6 +6226,10 @@
          "controller": "file(call_handlers/building_call_handler.lua)",
          "endpoint": "server"
       },
+      "set_crafting_category_disabled": {
+         "controller": "file(call_handlers/job_call_handler.lua)",
+         "endpoint": "server"
+      },
       "toggle_enabled_command": {
          "controller": "file(call_handlers/toggle_enabled_call_handler.lua)",
          "endpoint": "server"

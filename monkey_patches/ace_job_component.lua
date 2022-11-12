@@ -668,4 +668,19 @@ function AceJobComponent:_remove_equipment_preferences_toggle()
    end
 end
 
+function AceJobComponent:get_crafting_category_disabled(category)
+   local job_controller = self:get_curr_job_controller()
+   if job_controller then
+      return job_controller:get_crafting_category_disabled(category)
+   end
+   return false
+end
+
+function AceJobComponent:set_crafting_category_disabled(category, disabled)
+   local job_controller = self:get_curr_job_controller()
+   if job_controller then
+      job_controller:set_crafting_category_disabled(category, disabled)
+   end
+end
+
 return AceJobComponent
