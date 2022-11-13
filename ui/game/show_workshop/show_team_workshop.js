@@ -195,6 +195,7 @@ $(top).on('stonehearthReady', function() {
          self._super();
 
          self.$('#craftButton').off('hover');
+         self.$(".category").off('mouseenter mouseleave', '.item');
          self.$('#orders').off('scroll');
          self.$('#searchSettingContainer').off('change.refocusInput', '.searchSettingCheckbox');
          self.$('#searchContainer').off('focusin');
@@ -412,7 +413,7 @@ $(top).on('stonehearthReady', function() {
       _updateCraftInsertShown: function(div) {
          var self = this;
 
-         if (self.SHIFT_KEY_ACTIVE && self.HOVERING_CRAFT_BUTTON) {
+         if (self.SHIFT_KEY_ACTIVE && (self.HOVERING_CRAFT_BUTTON || self.HOVERING_ITEM)) {
             div.show();
          }
          else {
@@ -580,12 +581,27 @@ $(top).on('stonehearthReady', function() {
          self.$("#craftButton").hover(function() {
                $(this).find('#craftButtonLabel').fadeIn();
                self.HOVERING_CRAFT_BUTTON = true;
+               self.set('insertRecipePortrait', self.get('currentRecipe.portrait'));
                self._updateCraftInsertShown(craftInsertDiv);
             }, function () {
                $(this).find('#craftButtonLabel').fadeOut();
                self.HOVERING_CRAFT_BUTTON = false;
                self._updateCraftInsertShown(craftInsertDiv);
             });
+
+         self.$(".category").on({
+            mouseenter: function() {
+               var recipe = self._getOrCalculateRecipeData($(this).attr('recipe_key'));
+               if (recipe) {
+                  self.HOVERING_ITEM = true;
+                  self.set('insertRecipePortrait', recipe.portrait);
+                  self._updateCraftInsertShown(craftInsertDiv);
+               }
+            },
+            mouseleave: function () {
+               self.HOVERING_ITEM = false;
+               self._updateCraftInsertShown(craftInsertDiv);
+            }}, '.item');
 
          var tooltip = App.tooltipHelper.createTooltip(
             i18n.t('stonehearth_ace:ui.game.show_workshop.craft_button.title'),
@@ -598,8 +614,9 @@ $(top).on('stonehearthReady', function() {
          tooltip = App.tooltipHelper.createTooltip(
             i18n.t('stonehearth_ace:ui.game.show_workshop.quality_preference.title'),
             i18n.t('stonehearth_ace:ui.game.show_workshop.quality_preference.description'));
-         self.$('#qualityPreference').tooltipster({
+         self.$('#qualityPreference label').tooltipster({
             delay: 1000,
+            position: 'bottom',
             content: $(tooltip)
          });   
    

@@ -118,7 +118,7 @@ App.StonehearthBuildingCostListView.reopen({
          available: availableCount,
          requirementsMet: (availableCount >= count),
          recipeUnlocked: craftable != null,
-         recipeCraftable: craftable.craftable
+         recipeCraftable: craftable && craftable.craftable || false
       };
 
       return entry;

@@ -31,4 +31,8 @@ function AceMountComponent:dismount(set_egress_location)
    self:_ace_old_dismount(set_egress_location)
 end
 
+function AceMountComponent:get_dismount_location()
+   return self._sv.saved_location
+end
+
 return AceMountComponent

@@ -70,6 +70,9 @@ function AceStorageComponent:activate()
       -- end
    end
 
+   self._always_mark_changed = self._sv.is_public or json.render_contents
+   self:mark_changed()
+
    self._sv.is_hidden = json.is_hidden or false -- public inventory that's accessible, but hidden from UI
    self._sv.allow_default = json.allow_default ~= false  -- can be set to town default storage
    if self._type == 'output_crate' then
@@ -409,7 +412,7 @@ function AceStorageComponent:_consider_marking_changed()
    self._has_changed = true
    -- don't check multiplayer; we also want to be able to do this in single-player
    -- if we're rendering the contents or it's a private storage, go ahead and update immediately (it's probably small)
-   if self._sv.render_contents or not self._sv.is_public or --not stonehearth.presence:is_multiplayer() or
+   if self._always_mark_changed or --not stonehearth.presence:is_multiplayer() or
          not stonehearth.client_state:get_client_gameplay_setting(self._player_id, 'stonehearth_ace', 'limit_network_data', true) then
       self:mark_changed()
    end
