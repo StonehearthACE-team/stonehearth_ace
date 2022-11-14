@@ -41,13 +41,13 @@ function AceEquipmentComponent:drop_item(item)
       return
    end
 
+   local player_id = radiant.entities.get_player_id(self._entity)
    local town = stonehearth.town:get_town(player_id)
    local town_center_entity = town and (town:get_banner() or town:get_hearth())
    
    local placement_point = radiant.terrain.find_placement_point(location, 1, 4, nil, nil, town_center_entity or true)
    local placed_item = radiant.terrain.place_entity(item, placement_point)
 
-   local player_id = radiant.entities.get_player_id(self._entity)
    local inventory = stonehearth.inventory:get_inventory(player_id)
    if inventory then
       inventory:add_item(placed_item)
