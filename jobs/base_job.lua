@@ -16,7 +16,7 @@ function BaseJob:initialize()
    self._sv.equipment = {}
    self._sv.attained_perks = {}
    -- ADDED FOR ACE
-   self._sv.max_num_training = {}
+   --self._sv.max_num_training = {}
    self._sv.disabled_crafting_categories = {}
    self._sv._lookup_values = {}
    self._sv._can_repair_as_jobs = {}
@@ -48,7 +48,7 @@ function BaseJob:activate()
          self:_create_listeners()
       end
 
-      self:_register_with_town()
+      --self:_register_with_town()
    end
 end
 
@@ -75,7 +75,7 @@ function BaseJob:restore()
       self._sv._json_path = nil
    end
    if self._sv.is_current_class then
-      self:_register_with_town()
+      --self:_register_with_town()
    end
 end
 
@@ -134,7 +134,7 @@ function BaseJob:promote(json_path)
 
    -- ADDED FOR ACE
    self:_add_commands()
-   self:_register_with_town()
+   --self:_register_with_town()
 end
 
 function BaseJob:level_up()
@@ -341,19 +341,19 @@ function BaseJob:set_next_equipment_role(from_role)
    return self:set_equipment_role(new_role or first)
 end
 
-function BaseJob:increase_max_placeable_training(args)
-   self._sv.max_num_training = args.max_num_training
-   self:_register_with_town()
-   self.__saved_variables:mark_changed()
-end
+-- function BaseJob:increase_max_placeable_training(args)
+--    self._sv.max_num_training = args.max_num_training
+--    self:_register_with_town()
+--    self.__saved_variables:mark_changed()
+-- end
 
-function BaseJob:_register_with_town()
-   local player_id = radiant.entities.get_player_id(self._sv._entity)
-   local town = stonehearth.town:get_town(player_id)
-   if town then
-      town:add_placement_slot_entity(self._sv._entity, self._sv.max_num_training)
-   end
-end
+-- function BaseJob:_register_with_town()
+--    local player_id = radiant.entities.get_player_id(self._sv._entity)
+--    local town = stonehearth.town:get_town(player_id)
+--    if town then
+--       town:add_placement_slot_entity(self._sv._entity, self._sv.max_num_training)
+--    end
+-- end
 
 function BaseJob:get_lookup_value(key)
    return self._sv._lookup_values[key]
