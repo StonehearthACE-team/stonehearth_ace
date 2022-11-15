@@ -12,6 +12,12 @@
             "key": "quest_total",
             "value": 2
          },
+         "quest_total_2": {
+            "type": "deny_if_greater_than",
+            "item": "counter",
+            "key": "quest_total",
+            "value": 3
+         },
          "item_placed_requirement": {
             "item": "exists_in_world",
             "uri": "stonehearth_ace:decoration:dragon_shrine",

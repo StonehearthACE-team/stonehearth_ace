@@ -68,7 +68,7 @@ function AceShop:stock_shop()
             -- copy the entries because we'll want to modify the quantity
             -- and ignore any items with a price factor of 1
             if item.price_factor ~= 1 and (not item.chance or rng:get_real(0, 1) <= item.chance) and
-                  (not merchant.max_wanted_items or #self._sv.wanted_items < merchant.max_wanted_items) then
+                  (not merchant_options.max_wanted_items or #self._sv.wanted_items < merchant_options.max_wanted_items) then
                table.insert(self._sv.wanted_items, {
                   material = item.material,
                   uri = item.uri,

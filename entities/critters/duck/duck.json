@@ -62,7 +62,7 @@
       "stonehearth:renewable_resource_node": {
          "category": "herding",
          "resource": "stonehearth_ace:food:egg:duck",
-         "renewal_time": "40h+12h",
+         "renewal_time": "40h+24h",
          "resource_spawn_effect": "stonehearth:effects:fursplosion_effect",
          "start_unharvestable": true,
          "spawn_resource_immediately": true,
@@ -78,7 +78,7 @@
                   "items": {
                      "none": {
                         "uri": "",
-                        "weight": 10000
+                        "weight": 1000
                      },
                      "bones": {
                         "uri": "stonehearth_ace:food:golden_egg",
@@ -91,13 +91,13 @@
          "auto_harvest": true,
          "seasons": {
             "spring": {
+               "renewal_time_multiplier": 1.4
+            },
+            "summer": {
                "renewal_time_multiplier": 1.2
             },
-            "autumn": {
-               "renewal_time_multiplier": 1.5
-            },
             "winter": {
-               "renewal_time_multiplier": 2
+               "renewal_time_multiplier": 2.5
             }
          }
       },

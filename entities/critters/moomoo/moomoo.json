@@ -23,7 +23,7 @@
       "stonehearth:renewable_resource_node": {
          "category": "herding",
          "resource": "stonehearth_ace:drink:dairy:moomoo_milk",
-         "renewal_time": "26h",
+         "renewal_time": "22h",
          "unripe_description": "i18n(stonehearth_ace:entities.critters.moomoo.unripe_description)",
          "harvest_status_text": "i18n(stonehearth_ace:entities.critters.moomoo.renewable_harvest_status_text)",
          "check_owner": true,
@@ -33,13 +33,9 @@
                "optional": {
                   "num_rolls": {
                      "min": 0,
-                     "max": 1
+                     "max": 3
                   },
                   "items": {
-                     "none": {
-                        "uri": "",
-                        "weight": 3
-                     },
                      "extra_milk": {
                         "uri": "stonehearth_ace:drink:dairy:moomoo_milk",
                         "weight": 1
@@ -50,13 +46,13 @@
          },
          "seasons": {
             "summer": {
-               "renewal_time_multiplier": 1.5
+               "renewal_time_multiplier": 1.2
             },
             "autumn": {
-               "renewal_time_multiplier": 2
+               "renewal_time_multiplier": 1.5
             },
             "winter": {
-               "renewal_time_multiplier": 3
+               "renewal_time_multiplier": 2.5
             }
          }
       },

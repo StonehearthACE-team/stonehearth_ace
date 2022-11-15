@@ -2,6 +2,9 @@
    "type" : "effect",
    "mixins": "/stonehearth/data/rigs/entities/humans/effects/run_climb_ladder_up.json",
    "tracks": {
+      "animation": {
+         "animation": "run_climb_ladder_up_no_carry.json"
+      },
 	  "hide_carrying" : {
          "type": "hide_bone",
          "start_time": 0,
