@@ -266,6 +266,40 @@ App.ComponentInfoView = App.View.extend({
             var content = i18n.t(detail.content, details.i18n_data);
             return content;
 
+         case 'list':
+            // 'entries' contains the entries, 'header' contains optional header, 'footer' contains optional footer
+            var content = '';
+            if (detail.header) {
+               content += i18n.t(detail.header, details.i18n_data);
+            }
+
+            var hasSelected = detail.entries.some(x => x.selected);
+
+            detail.entries.forEach(function(entry){
+               var classes = (hasSelected && !entry.selected ? 'deselected ' : '') + 'entrySpacing listItem';
+               content += `<div class="${classes}">`;
+               if (entry.icon) {
+                  content += `<img class="headerImg" src="${entry.icon}" />`;
+               }
+               if (entry.title) {
+                  content += `<span class="listItemTitle">${i18n.t(entry.title)}</span>`;
+               }
+               if (entry.description) {
+                  // if there was a title, add a line break
+                  if (entry.title) {
+                     content += '<br/>';
+                  }
+                  content += `<div class="normal-color">${i18n.t(entry.description)}</div>`;
+               }
+               content += '</div>';
+            })
+
+            if (detail.footer) {
+               content += i18n.t(detail.footer, details.i18n_data);
+            }
+
+            return content;
+
          case 'item_list':
             // 'items' contains the items, 'header' contains optional header, 'footer' contains optional footer
             var content = '';

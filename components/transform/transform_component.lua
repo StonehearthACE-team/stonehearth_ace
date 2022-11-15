@@ -67,6 +67,8 @@ function TransformComponent:post_activate()
          self:set_transform_option(self._sv.transform_key or self._all_transform_data.default_key)
       end
       self:_create_transform_tasks()
+   else
+      self:_update_component_info()
    end
 
    self:_create_placement_listener()
@@ -255,6 +257,7 @@ function TransformComponent:_set_transform_option(key, overrides)
    self._compiled_options = nil
    self:_create_request_listeners()
    self:_set_up_commands()
+   self:_update_component_info()
 end
 
 function TransformComponent:reconsider_commands()
@@ -289,6 +292,7 @@ function TransformComponent:add_option_overrides(overrides)
    self._compiled_options = nil
    radiant.util.merge_into_table(self._sv.option_overrides, overrides)
    self.__saved_variables:mark_changed()
+   self:_update_component_info()
 end
 
 function TransformComponent:transform(transformer)
@@ -595,6 +599,80 @@ function TransformComponent:cancel_craft_order()
    self._sv.craft_order_id = nil
    self._sv.craft_order_list = nil
    self.__saved_variables:mark_changed()
+end
+
+function TransformComponent:_update_component_info()
+   local comp_info = self._entity:add_component('stonehearth_ace:component_info')
+
+   --comp_info:set_component_general_hidden('stonehearth_ace:transform', true)
+
+   -- compile list of transform options, indicating which one is selected
+   local options = self._all_transform_data and self._all_transform_data.transform_options or {self._all_transform_data}
+   local entries = {}
+   if options and next(options) then
+      for id, option in pairs(options) do
+         local command_data = option.command and radiant.resources.load_json(option.command)
+         if command_data then
+            table.insert(entries, {
+               selected = id == self._sv.transform_key,
+               title = command_data.display_name,
+               description = command_data.description,
+               icon = command_data.icon,
+               ordinal = command_data.ordinal,
+            })
+         end
+      end
+
+      table.sort(entries, function(a, b) return (a.ordinal or 9999) < (b.ordinal or 9999) end)
+   end
+
+   -- if an auto_harvest_key has been set
+   -- follow the evolve/transform chain to that entity and get its catalog data
+   local auto_harvest_key = self._sv.option_overrides.auto_harvest_key
+   if auto_harvest_key then
+      log:debug('checking for stage "%s"...', auto_harvest_key)
+      local evolved_form = self._entity:get_uri()
+      local stage_data = radiant.entities.get_entity_data(evolved_form, 'stonehearth_ace:stage_data')
+      while evolved_form and (not stage_data or stage_data.current_stage ~= auto_harvest_key) do
+         log:debug('checking form %s...', evolved_form)
+         local evolve_data = radiant.entities.get_entity_data(evolved_form, 'stonehearth:evolve_data')
+         -- rather than evolving, it could be transforming directly from the current stage
+         if evolve_data then
+            evolved_form = evolve_data and evolve_data.next_stage
+         else
+            -- there could be a single transform setting, or there could be multiple options with a default key
+            evolve_data = radiant.entities.get_entity_data(evolved_form, 'stonehearth_ace:transform_data')
+            evolved_form = evolve_data and ((not evolve_data.transform_options and evolve_data.transform_uri) or
+                  (evolve_data.transform_options and evolve_data.default_key and evolve_data.transform_options[evolve_data.default_key] and
+                  evolve_data.transform_options[evolve_data.default_key].transform_uri))
+         end
+         stage_data = evolved_form and radiant.entities.get_entity_data(evolved_form, 'stonehearth_ace:stage_data')
+      end
+      
+      log:debug('end of evolve/transform chain: %s at stage %s', tostring(evolved_form), tostring(stage_data and stage_data.current_stage))
+
+      if stage_data and stage_data.current_stage == auto_harvest_key then
+         local catalog_data = stonehearth.catalog:get_catalog_data(evolved_form)
+         if catalog_data then
+            table.insert(entries, {
+               selected = evolved_form == auto_harvest_key or not self._sv.transform_key,
+               title = catalog_data.display_name,
+               description = catalog_data.description,
+               icon = catalog_data.icon,
+            })
+         end
+      end
+   end
+
+   if #entries > 0 then
+      comp_info:set_component_detail('stonehearth_ace:transform', 'options', {
+            type = 'list',
+            entries = entries,
+            --header = 'stonehearth_ace:component_info.stonehearth_ace.pile.item_list_header'
+         }, { entry_count = #entries })
+   else
+      comp_info:remove_component_details('stonehearth_ace:transform', 'options')
+   end
 end
 
 return TransformComponent

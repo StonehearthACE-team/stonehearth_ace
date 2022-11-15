@@ -53,6 +53,16 @@
          .quality-4 {
             color: #ddb063 !important;
          }
+         .normal-color {
+            color: #ebebeb;
+         }
+
+         .headerImg {
+            float: left;
+            padding: 0px 10px 10px 0px;
+            max-height: 60px;
+            max-width: 60px;
+         }
 
          .inlineImg {
             display: inline-block;
@@ -70,9 +80,22 @@
             display: block;
             padding: 1px 0px 1px 15px;
 
+            &.entrySpacing {
+               padding-bottom: 7px;
+            }
+
             .listItemText {
                display: inline-block;
                vertical-align: middle;
+            }
+
+            .listItemTitle {
+               font-size: 16px;
+               padding-bottom: 8px;
+            }
+
+            &.deselected {
+               opacity: 0.5;
             }
          }
 
