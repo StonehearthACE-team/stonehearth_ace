@@ -632,7 +632,8 @@ function TransformComponent:_update_component_info()
    -- follow the evolve/transform chain to that entity and get its catalog data
    local auto_harvest_key = self._transform_data and self._transform_data.auto_harvest_key or self._sv.option_overrides.auto_harvest_key
    local has_evolve = self._entity:get_component('stonehearth:evolve') ~= nil
-   if auto_harvest_key or has_evolve then
+   local transform_form = self._transform_data and self._transform_data.transform_uri
+   if auto_harvest_key or has_evolve or transform_form then
       local get_next_form = function(form)
          local evolve_data = radiant.entities.get_entity_data(form, 'stonehearth:evolve_data')
          if evolve_data then
@@ -651,7 +652,7 @@ function TransformComponent:_update_component_info()
       end
 
       -- if we already have a transform setting and aren't evolving, go ahead and use that instead
-      local evolved_form = not has_evolve and self._transform_data and self._transform_data.transform_uri or self._entity:get_uri()
+      local evolved_form = not has_evolve and transform_form or self._entity:get_uri()
       local last_evolved_form
       local stage_data
       while evolved_form do -- and (not stage_data or stage_data.current_stage ~= auto_harvest_key) do

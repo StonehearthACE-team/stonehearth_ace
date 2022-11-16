@@ -204,7 +204,8 @@ function PlayerMercantile:_spawn_merchant(merchant)
    local merchant_data = stonehearth_ace.mercantile:get_merchant_data(merchant)
    if town and merchant_data then
       local pop = stonehearth.population:get_population('human_npcs')
-      local merchant = pop:create_new_citizen(merchant_data.population_role, merchant_data.population_gender)
+      local role = merchant_data.population_role or stonehearth.mercantile:get_default_population_role(merchant_data.category)
+      local merchant = pop:create_new_citizen(role, merchant_data.population_gender)
       merchant:add_component('stonehearth_ace:merchant'):set_merchant_data(player_id, merchant_data)
       
       local cooldown = merchant_data.cooldown

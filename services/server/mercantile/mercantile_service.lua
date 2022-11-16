@@ -107,6 +107,11 @@ function MercantileService:get_category_min_city_tier(category)
    return category_data and category_data.min_city_tier or 1
 end
 
+function MercantileService:get_default_population_role(category)
+   local category_data = self._categories[category]
+   return category_data and category_data.default_population_role or 'merchant'
+end
+
 function MercantileService:get_player_controller_command(session, response)
    response:resolve({controller = self:add_player_controller(session.player_id)})
 end
