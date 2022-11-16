@@ -168,34 +168,42 @@ end
 
 function MercantileService:_load_merchant_data(biome_uri)
    -- deep copy the loaded table because we're going to be modifying it a lot
-   local data = radiant.deep_copy(radiant.resources.load_json('stonehearth_ace:data:merchants'))
+   local data = radiant.resources.load_json('stonehearth_ace:data:merchant_categories')
    local category_merchants = {}
    local unique_merchants = {}
    local all_merchants = {}
 
-   for merchant, merchant_data in pairs(data.merchants) do
-      if self:_merchant_allowed_in_biome(merchant_data, biome_uri) then
-         merchant_data.key = merchant
-         if radiant.util.is_string(merchant_data.shop) then
-            merchant_data.shop_info = radiant.resources.load_json(merchant_data.shop).shop_info
-         end
+   for category, category_data in pairs(data.categories) do
+      local merchants = category_data.merchants and radiant.resources.load_json(category_data.merchants)
+      if merchants and merchants.merchants then
+         for merchant, merchant_data in pairs(merchants.merchants) do
+            if self:_merchant_allowed_in_biome(merchant_data, biome_uri) then
+               local copied_merchant_data = radiant.deep_copy(merchant_data)
+               local key = category .. '.' .. merchant
+               copied_merchant_data.category = category
+               copied_merchant_data.key = key
+               if radiant.util.is_string(merchant_data.shop) then
+                  copied_merchant_data.shop_info = radiant.resources.load_json(merchant_data.shop).shop_info
+               end
 
-         merchant_data.min_city_tier = merchant_data.min_city_tier or 1
-         merchant_data.min_stall_tier = merchant_data.min_stall_tier or merchant_data.min_city_tier
-         merchant_data.weight = merchant_data.weight or 1
-         
-         if merchant_data.category and data.categories[merchant_data.category] then
-            local category_data = category_merchants[merchant_data.category]
-            if not category_data then
-               category_data = {}
-               category_merchants[merchant_data.category] = category_data
+               copied_merchant_data.min_city_tier = merchant_data.min_city_tier or 1
+               copied_merchant_data.min_stall_tier = merchant_data.min_stall_tier or merchant_data.min_city_tier
+               copied_merchant_data.weight = merchant_data.weight or 1
+               
+               if merchant_data.required_stall then
+                  unique_merchants[key] = copied_merchant_data
+               else
+                  local category_data = category_merchants[category]
+                  if not category_data then
+                     category_data = {}
+                     category_merchants[category] = category_data
+                  end
+                  category_data[key] = copied_merchant_data
+               end
+
+               all_merchants[key] = copied_merchant_data
             end
-            category_data[merchant] = merchant_data
-         elseif merchant_data.required_stall then
-            unique_merchants[merchant] = merchant_data
          end
-
-         all_merchants[merchant] = merchant_data
       end
    end
 

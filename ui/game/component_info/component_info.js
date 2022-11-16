@@ -276,13 +276,15 @@ App.ComponentInfoView = App.View.extend({
             var hasSelected = detail.entries.some(x => x.selected);
 
             detail.entries.forEach(function(entry){
-               var classes = (hasSelected && !entry.selected ? 'deselected ' : '') + 'entrySpacing listItem';
+               var noDescription = entry.description == null;
+               var classes = (hasSelected && !entry.selected ? 'deselected ' : '') + (noDescription ? 'noDescription ' : '') + 'entrySpacing listItem';
                content += `<div class="${classes}">`;
                if (entry.icon) {
                   content += `<img class="headerImg" src="${entry.icon}" />`;
                }
                if (entry.title) {
-                  content += `<span class="listItemTitle">${i18n.t(entry.title)}</span>`;
+                  // if there's no description, center align the title vertically
+                  content += `<span class="listItemTitle${noDescription ? ' listItemText' : ''}">${i18n.t(entry.title)}</span>`;
                }
                if (entry.description) {
                   // if there was a title, add a line break
