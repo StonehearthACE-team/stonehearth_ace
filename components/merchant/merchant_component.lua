@@ -126,6 +126,7 @@ function MerchantComponent:_on_shop_closed()
 end
 
 function MerchantComponent:_destroy_shop()
+   log:debug('destroying shop for %s...', self._entity)
    local shop = self._sv._shop
    if shop then
       stonehearth.shop:destroy_shop(shop)
@@ -174,7 +175,11 @@ end
 
 function MerchantComponent:set_should_depart()
    self._sv._should_depart = true
-   self:_destroy_shop()
+   log:debug('set should_depart for %s', self._entity)
+   -- give it a loop so the ai can respond to the async event before destroying the shop
+   radiant.on_game_loop_once('destroy shop on departure', function()
+         self:_destroy_shop()
+      end)
 end
 
 function MerchantComponent:_update_commands()
