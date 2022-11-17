@@ -435,6 +435,7 @@ function TransformComponent:_set_transformable(player_id, is_transformable)
    if self._sv._is_transformable_player_id ~= transform_player_id then
       self._sv._is_transformable_player_id = transform_player_id
       self:_create_transform_tasks()
+      self:_update_component_info()
    end
    return self:is_transformable()
 end
@@ -628,12 +629,15 @@ function TransformComponent:_update_component_info()
 
    local entries = {}
 
-   -- if an auto_harvest_key has been set or the evolve component is already present
+   -- if a transform has been requested or the evolve component is already present
    -- follow the evolve/transform chain to that entity and get its catalog data
-   local auto_harvest_key = self._transform_data and self._transform_data.auto_harvest_key or self._sv.option_overrides.auto_harvest_key
    local has_evolve = self._entity:get_component('stonehearth:evolve') ~= nil
-   local transform_form = self._transform_data and self._transform_data.transform_uri
-   if auto_harvest_key or has_evolve or transform_form then
+   local transform_form = self._transform_data and
+         (not self._transform_data.request_action or self:is_transformable()) and
+         self._transform_data.transform_uri
+   local past_forms = {[self._entity:get_uri()] = true}
+   log:debug('starting form check with has_evolve = %s, transform_form = %s', tostring(has_evolve), tostring(transform_form))
+   if has_evolve or transform_form then
       local get_next_form = function(form)
          local evolve_data = radiant.entities.get_entity_data(form, 'stonehearth:evolve_data')
          if evolve_data then
@@ -651,6 +655,8 @@ function TransformComponent:_update_component_info()
          end
       end
 
+      local auto_harvest_key = self._transform_data and self._transform_data.auto_harvest_key or self._sv.option_overrides.auto_harvest_key
+
       -- if we already have a transform setting and aren't evolving, go ahead and use that instead
       local evolved_form = not has_evolve and transform_form or self._entity:get_uri()
       local last_evolved_form
@@ -664,6 +670,16 @@ function TransformComponent:_update_component_info()
 
          last_evolved_form = evolved_form
          evolved_form = get_next_form(evolved_form)
+         -- evolved_form could now be a table of pairs of possible transform uri keys and weight values
+         -- if so, set to nil since the previous form was the last fully determinate one
+         if not radiant.util.is_string(evolved_form) then
+            evolved_form = nil
+         elseif past_forms[evolved_form] then
+            -- if we already saw this form, break out of a probable infinite loop
+            break
+         else
+            past_forms[evolved_form] = true
+         end
       end
       
       log:debug('end of evolve/transform chain: %s now %s at stage %s', tostring(last_evolved_form), tostring(evolved_form), tostring(stage_data and stage_data.current_stage))
