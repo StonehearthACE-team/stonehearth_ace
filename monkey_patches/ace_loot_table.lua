@@ -316,11 +316,8 @@ function AceLootTable:roll_loot(inc_recursive_uri_storage)
                end
                
                for quality, quantity in pairs(recursive_value) do
-                  -- roll the quality for each item
-                  for i = 1, quantity do
-                     local quality = recursive_key.quality_fn()
-                     item[quality] = (item[quality] or 0) + 1
-                  end
+                  -- the quality was already rolled, these are end-result items
+                  item[quality] = (item[quality] or 0) + quantity
                end
             end
          else
