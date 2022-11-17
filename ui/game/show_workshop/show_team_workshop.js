@@ -300,7 +300,9 @@ $(top).on('stonehearthReady', function() {
                if (formatted_recipe.hasWorkshop) {
                   formatted_workshop.uri = formatted_recipe.workshop;
                   var catalogData = App.catalog.getCatalogData(formatted_workshop.uri);
-                  formatted_workshop.equivalents = catalogData.workshop_equivalents;
+                  if (catalogData) {
+                     formatted_workshop.equivalents = catalogData.workshop_equivalents;
+                  }
                   formatted_recipe.workshop = formatted_workshop;
                }
    

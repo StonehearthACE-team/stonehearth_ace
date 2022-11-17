@@ -15,8 +15,10 @@ function BalanceTownBonus:activate()
    radiant.events.listen(radiant, 'radiant:entity:post_create', function(e)
          -- New builder structures don't become roads until next frame. -_-
          local entity = e.entity
-         radiant.on_game_loop_once('unning road detector', function()
-               self:_process_entity_if_its_a_road(entity)
+         radiant.on_game_loop_once('running road detector', function()
+               if entity:is_valid() then
+                  self:_process_entity_if_its_a_road(entity)
+               end
             end)
       end)
 end

@@ -28,7 +28,8 @@ function SpawnTeddyScript:_set_conversation_listener()
             self:_despawn()
          end
          radiant.entities.add_thought(e.target, 'stonehearth:thoughts:kitties:teddy')
-         radiant.on_game_loop_once('reset social satisfaction', function()
+         self._reset_social_satisfaction_listener = radiant.on_game_loop_once('reset social satisfaction', function()
+               self._reset_social_satisfaction_listener = nil
                radiant.entities.modify_resource(self._sv.teddy, 'social_satisfaction', -100)
             end)
       end)
@@ -61,6 +62,10 @@ function SpawnTeddyScript:_despawn()
    if self._conversation_end_listener then
       self._conversation_end_listener:destroy()
       self._conversation_end_listener = nil
+   end
+   if self._reset_social_satisfaction_listener then
+      self._reset_social_satisfaction_listener:destroy()
+      self._reset_social_satisfaction_listener = nil
    end
 end
 

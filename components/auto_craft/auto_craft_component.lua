@@ -61,6 +61,10 @@ function AutoCraftComponent:_destroy_listeners()
       self._storage_item_added_listener:destroy()
       self._storage_item_added_listener = nil
    end
+   if self._new_ingredient_listener then
+      self._new_ingredient_listener:destroy()
+      self._new_ingredient_listener = nil
+   end
 end
 
 function AutoCraftComponent:_destroy_order()
@@ -355,7 +359,8 @@ function AutoCraftComponent:_finish_crafting(recipe, ingredients, products, outp
       self:_destroy_order()
 
       -- schedule a check to see if there were new ingredients added
-      radiant.on_game_loop_once('consider crafting again', function()
+      self._new_ingredient_listener = radiant.on_game_loop_once('consider crafting again', function()
+         self._new_ingredient_listener = nil
          if self._got_new_ingredients then
             self._try_crafting_from_recipes(self._all_recipes)
          end

@@ -635,6 +635,7 @@ function TransformComponent:_update_component_info()
    local transform_form = self._transform_data and
          (not self._transform_data.request_action or self:is_transformable()) and
          self._transform_data.transform_uri
+   transform_form = radiant.util.is_string(transform_form) and transform_form
    local past_forms = {[self._entity:get_uri()] = true}
    log:debug('starting form check with has_evolve = %s, transform_form = %s', tostring(has_evolve), tostring(transform_form))
    if has_evolve or transform_form then
