@@ -45,6 +45,7 @@
          }
       },
       "stonehearth:renewable_resource_node": {
+         "renewal_time": "36h+24h",
          "mixintypes": {
             "resource_loot_table": "override"
          },
@@ -59,7 +60,7 @@
                   "items": {
                      "none": {
                         "uri": "",
-                        "weight": 10000
+                        "weight": 100
                      },
                      "bones": {
                         "uri": "stonehearth_ace:food:golden_egg",
@@ -72,10 +73,10 @@
          "auto_harvest": true,
          "seasons": {
             "spring": {
-               "renewal_time_multiplier": 1.2
+               "renewal_time_multiplier": 1.1
             },
             "autumn": {
-               "renewal_time_multiplier": 1.5
+               "renewal_time_multiplier": 1.4
             },
             "winter": {
                "renewal_time_multiplier": 2

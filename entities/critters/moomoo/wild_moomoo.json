@@ -20,7 +20,7 @@
       },
       "stonehearth:renewable_resource_node": {
          "resource": "stonehearth_ace:drink:dairy:wild_cattle_milk",
-         "renewal_time": "10d+5d",
+         "renewal_time": "1d+2d",
          "unripe_description": "i18n(stonehearth_ace:entities.critters.moomoo.unripe_description)",
          "harvest_status_text": "i18n(stonehearth_ace:entities.critters.moomoo.renewable_harvest_status_text)",
          "harvest_overlay_effect": "stonehearth_ace:effects:harvest_milk_overlay_effect",
@@ -28,13 +28,13 @@
          "check_owner": false,
          "seasons": {
             "summer": {
-               "renewal_time_multiplier": 1.5
+               "renewal_time_multiplier": 1.2
             },
             "autumn": {
-               "renewal_time_multiplier": 2
+               "renewal_time_multiplier": 1.5
             },
             "winter": {
-               "renewal_time_multiplier": 3
+               "renewal_time_multiplier": 2.5
             }
          }
       },

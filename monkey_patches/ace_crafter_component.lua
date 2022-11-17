@@ -55,20 +55,26 @@ function AceCrafterComponent:_distribute_all_crafting_ingredients()
       end
 
       if next(items) then
-         local location = radiant.entities.get_world_grid_location(self._entity)
+         local parent = radiant.entities.get_parent(self._entity)
+         local mount_component = parent and parent:get_component('stonehearth:mount')
+         local location = mount_component and mount_component:get_dismount_location() or radiant.entities.get_world_grid_location(self._entity)
          local player_id = radiant.entities.get_player_id(self._entity)
          local default_storage
-         if not location then
-            local town = stonehearth.town:get_town(player_id)
-            if town then
-               default_storage = town:get_default_storage()
+         local town_center_entity
+         local town = stonehearth.town:get_town(player_id)
+         if town then
+            default_storage = town:get_default_storage()
+            town_center_entity = town:get_banner() or town:get_hearth()
+            if not location then
                location = town:get_landing_location()
             end
          end
+         
          local options = {
             inputs = default_storage,
             spill_fail_items = true,
             require_matching_filter_override = true,
+            require_reachable = town_center_entity,
          }
          radiant.entities.output_spawned_items(items, location, 1, 4, options)
       end

@@ -26,6 +26,36 @@ function AceEquipmentComponent:destroy()
    self:_ace_old_destroy()
 end
 
+-- ACE override to make sure the placement point is pathable and takes into account mounting
+function AceEquipmentComponent:drop_item(item)
+   local ep = item:get_component('stonehearth:equipment_piece')
+   if ep and (not ep:get_should_drop() or ep:should_destroy_on_drop()) then
+      radiant.entities.destroy_entity(item)
+      return
+   end
+   local parent = radiant.entities.get_parent(self._entity)
+   local mount_component = parent and parent:get_component('stonehearth:mount')
+   local location = mount_component and mount_component:get_dismount_location() or radiant.entities.get_world_grid_location(self._entity)
+   if not location then
+      radiant.entities.destroy_entity(item)
+      return
+   end
+
+   local player_id = radiant.entities.get_player_id(self._entity)
+   local town = stonehearth.town:get_town(player_id)
+   local town_center_entity = town and (town:get_banner() or town:get_hearth())
+   
+   local placement_point = radiant.terrain.find_placement_point(location, 1, 4, nil, nil, town_center_entity or true)
+   local placed_item = radiant.terrain.place_entity(item, placement_point)
+
+   local inventory = stonehearth.inventory:get_inventory(player_id)
+   if inventory then
+      inventory:add_item(placed_item)
+   end
+
+   stonehearth.ai:reconsider_entity(placed_item, 'dropping equipment piece')
+end
+
 function AceEquipmentComponent:equip_item(item, destroy_old_item)
    -- destroy the old item by default, unless explicitly told not to
    destroy_old_item = destroy_old_item ~= false

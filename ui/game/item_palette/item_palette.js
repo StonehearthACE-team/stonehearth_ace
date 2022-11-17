@@ -161,6 +161,18 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       });
    },
 
+   updateSoldItems: function(soldItems) {
+      var self = this;
+      self.options.soldItems = soldItems;
+      radiant.each(self._itemElements, function(uri, itemQualities) {
+         radiant.each(itemQualities, function(quality, el) {
+            if (el != null) {
+               self._updateWantedItem(el, uri);
+            }
+         });
+      });
+   },
+
    _updateItemElement: function(itemEl, item, uri) {
       if (!this.options.hideCount) {
          var num = this._getCount(item);
@@ -180,7 +192,7 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
             }
          }
 
-         if (this.options.wantedItems) {
+         if (this.options.wantedItems || this.options.soldItems) {
             this._updateWantedItem(itemEl, uri);
          }
       }
@@ -189,14 +201,14 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
    },
 
    _updateWantedItem: function(itemEl, uri) {
-      var wantedItem = this._getBestWantedItem(uri);
+      var priceFactor = this._getBestPriceFactorForItem(uri);
       // update its wanted status
-      if (wantedItem) {
+      if (priceFactor != 1) {
          itemEl.addClass('wantedItem');
-         if (wantedItem.price_factor > 1) {
+         if (priceFactor > 1) {
             itemEl.addClass('higherPrice');
          }
-         else if (wantedItem.price_factor < 1) {
+         else if (priceFactor < 1) {
             itemEl.addClass('lowerPrice');
          }
       }
@@ -207,20 +219,41 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       }
 
       if (this.options.updateWantedItem) {
-         this.options.updateWantedItem(itemEl, wantedItem);
+         this.options.updateWantedItem(itemEl, priceFactor);
       }
    },
 
+   _getBestPriceFactorForItem: function(uri, skipWanted) {
+      var soldItems = this.options.soldItems;
+      var bestWantedItem = !skipWanted && this._getBestWantedItem(uri);
+      var factor = bestWantedItem && bestWantedItem.price_factor || 1;
+
+      if (soldItems) {
+         // WARNING: hard-coding max item quality as 4 (masterwork) for checks
+         for (var i = 1; i <= 4; i++) {
+            var key = uri + App.constants.item_quality.KEY_SEPARATOR + i;
+            if (soldItems[key]) {
+               return factor * App.constants.mercantile.DEFAULT_UNWANTED_ITEM_PRICE_FACTOR;
+            }
+         }
+      }
+
+      return factor;
+   },
+
    _getBestWantedItem: function(uri) {
-      var catalogData = App.catalog.getCatalogData(uri);
       var wantedItems = this.options.wantedItems;
       var bestWantedItem = null;
-      for (i = 0; i < wantedItems.length; i++) {
-         var wantedItem = wantedItems[i];
-         if (!wantedItem.max_quantity || wantedItem.max_quantity > wantedItem.quantity) {
-            if (!bestWantedItem || bestWantedItem.price_factor < wantedItem.price_factor) {
-               if (uri == wantedItem.uri || (wantedItem.material && radiant.isMaterial(catalogData.materials, wantedItem.material))) {
-                  bestWantedItem = wantedItem;
+      
+      if (wantedItems) {
+         var catalogData = App.catalog.getCatalogData(uri);
+         for (var i = 0; i < wantedItems.length; i++) {
+            var wantedItem = wantedItems[i];
+            if (!wantedItem.max_quantity || wantedItem.max_quantity > wantedItem.quantity) {
+               if (!bestWantedItem || bestWantedItem.price_factor < wantedItem.price_factor) {
+                  if (uri == wantedItem.uri || (wantedItem.material && radiant.isMaterial(catalogData.materials, wantedItem.material))) {
+                     bestWantedItem = wantedItem;
+                  }
                }
             }
          }
@@ -317,18 +350,26 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
                   description += '<div class="wantedItem">' +
                         i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_higher' + (hasQuantity ? '_quantity' : ''),
                            {
-                              "factor": priceMod,
-                              "quantity": quantity
-                           }) + '</div>'
+                              factor: priceMod,
+                              quantity: quantity
+                           }) + '</div>';
                }
                else if (priceMod < 0) {
                   // price is decreased!
                   description += '<div class="wantedItem">' +
                         i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_lower' + (hasQuantity ? '_quantity' : ''),
                            {
-                              "factor": priceMod,
-                              "quantity": quantity
-                           }) + '</div>'
+                              factor: Math.abs(priceMod),
+                              quantity: quantity
+                           }) + '</div>';
+               }
+            }
+            else {
+               // if it's not wanted and it has a lower price factor, it's an unwanted item the merchant sells
+               var priceFactor = self._getBestPriceFactorForItem(item.root_uri, true);
+               if (priceFactor < 1) {
+                  description += '<div class="wantedItem">' +
+                        i18n.t('stonehearth_ace:ui.game.entities.tooltip_unwanted_item', {factor: Math.abs(Math.floor((priceFactor - 1) * 100 + 0.5))}) + '</div>';
                }
             }
          }

@@ -174,13 +174,11 @@ function AceLootTable:_load_from_json(json, quality_override)
                log:error('no uri')
             end
 
-            local quality = item_quality_lib.get_quality(quality_override)
-
             entry_data = {
                item_uri = loc_item_uri,
                num_rolls = items_entry.num_rolls,
                item_type = out_item_type,
-               quality = math.max(quality, item_quality_lib.get_quality(items_entry.quality or data.quality or 1))
+               quality_fn = self:_get_quality_fn(quality_override, items_entry.quality or data.quality or 1)
             }
 
             if not item_filter_fn or item_filter_fn(filter_args, items_entry, entry_data) then
@@ -199,6 +197,20 @@ function AceLootTable:_load_from_json(json, quality_override)
    end
 end
 
+function AceLootTable:_get_quality_fn(quality_override, quality)
+   -- quality_override and quality could each be a table or a number, and quality_override could also be nil or a higher level quality function
+   -- even if no tables are present, we still want to use item_quality_lib to ensure respect for max quality
+   return function()
+      local q = 1
+      if type(quality_override) == 'function' then
+         q = quality_override()
+      elseif quality_override and (type(quality_override) == 'table' or quality_override > 1) then
+         q = item_quality_lib.get_quality(quality_override)
+      end
+      return math.max(q, item_quality_lib.get_quality(quality))
+   end
+end
+
 -- Returns a table of uri, quantity
 function AceLootTable:roll_loot(inc_recursive_uri_storage)
    local uris = {}
@@ -214,15 +226,12 @@ function AceLootTable:roll_loot(inc_recursive_uri_storage)
                      item_uri = entryvalue.item_uri,
                      item_type = entryvalue.item_type,
                      num_rolls = entryvalue.num_rolls,
-                     quality = entryvalue.quality
+                     quality_fn = entryvalue.quality_fn
                   }
                   
-                  if uri and uri.item_uri ~= '' then
+                  if uri and uri.item_uri ~= '' and uri.num_rolls > 0 then
                      --this should be where we use num_rolls to add multiple of the same thing
-                     for count = 1, uri.num_rolls do
-                        local quantity = (uris_interim[uri] or 0) + 1
-                        uris_interim[uri] = quantity
-                     end
+                     uris_interim[uri] = (uris_interim[uri] or 0) + uri.num_rolls
                   end
                end
             
@@ -235,15 +244,12 @@ function AceLootTable:roll_loot(inc_recursive_uri_storage)
                      item_uri = inc_item.item_uri,
                      item_type = inc_item.item_type,
                      num_rolls = inc_item.num_rolls,
-                     quality = inc_item.quality
+                     quality_fn = inc_item.quality_fn
                   }
                      
-                  if uri and uri.item_uri ~= '' then
+                  if uri and uri.item_uri ~= '' and uri.num_rolls > 0 then
                      --this should be where we use num_rolls to add multiple of the same thing
-                     for count = 1, uri.num_rolls do
-                        local quantity = (uris_interim[uri] or 0) + 1
-                        uris_interim[uri] = quantity
-                     end
+                     uris_interim[uri] = (uris_interim[uri] or 0) + uri.num_rolls
                   end
                end
             end
@@ -265,8 +271,11 @@ function AceLootTable:roll_loot(inc_recursive_uri_storage)
             uris[key.item_uri] = item
          end
          
-         local quality = key.quality or 1
-         item[quality] = (item[quality] or 0) + value
+         -- roll the quality for each item
+         for i = 1, value do
+            local quality = key.quality_fn()
+            item[quality] = (item[quality] or 0) + 1
+         end
 
       elseif key.item_type == 'bag' then
          local bool_is_not_looping = true
@@ -293,7 +302,8 @@ function AceLootTable:roll_loot(inc_recursive_uri_storage)
          if bool_is_not_looping then
             recursive_uri_storage[key] = value
             local recursive_uris = nil
-            local bag = LootTable(radiant.deep_copy(radiant.resources.load_json(key.item_uri, true)), key.quality, self._filter_script, self._filter_args)
+            -- roll the quality for the bag first to pass in as an override (minimum)
+            local bag = LootTable(radiant.deep_copy(radiant.resources.load_json(key.item_uri, true)), key.quality_fn(), self._filter_script, self._filter_args)
             recursive_uris = bag:roll_loot(recursive_uri_storage)
             
             --add the recursive_uris found back into the rest of the uris found.
@@ -306,6 +316,7 @@ function AceLootTable:roll_loot(inc_recursive_uri_storage)
                end
                
                for quality, quantity in pairs(recursive_value) do
+                  -- the quality was already rolled, these are end-result items
                   item[quality] = (item[quality] or 0) + quantity
                end
             end

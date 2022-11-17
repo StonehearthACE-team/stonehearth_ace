@@ -19,6 +19,7 @@ local service_creation_order = {
 
 local monkey_patches = {
    --ace_follow_camera_controller = 'stonehearth.services.client.camera.follow_camera_controller',
+   ace_building_client_service = 'stonehearth.services.client.building.building_client_service',
    ace_camera_service = 'stonehearth.services.client.camera.camera_service',
    ace_client_entities = 'radiant.modules.client_entities',
    ace_constants = 'stonehearth.constants',
@@ -42,6 +43,7 @@ local monkey_patches = {
    ace_storage_renderer = 'stonehearth.renderers.storage.storage_renderer',
    ace_subterranean_view_service = 'stonehearth.services.client.subterranean_view.subterranean_view_service',
    ace_template_placement_tool = 'stonehearth.services.client.building.template_placement_tool',
+   ace_terrain = 'radiant.modules.terrain',
    ace_util = 'radiant.lib.util',
    ace_xz_region_selector = 'stonehearth.services.client.selection.xz_region_selector',
    ace_zone_renderer = 'stonehearth.renderers.zone_renderer',

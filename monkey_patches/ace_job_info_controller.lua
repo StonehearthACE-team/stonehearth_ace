@@ -66,7 +66,7 @@ function AceJobInfoController:_job_can_craft_exact(product_uri, require_unlocked
    return true
 end
 
-function AceJobInfoController:queue_order_if_possible(product_uri, amount, building, require_exact)
+function AceJobInfoController:queue_order_if_possible(product_uri, amount, building, require_exact, insert_order)
    -- if we can craft this product, queue it up and return true
    local craft_uri = self:job_can_craft(product_uri, true, require_exact)
    if not craft_uri then
@@ -74,7 +74,7 @@ function AceJobInfoController:queue_order_if_possible(product_uri, amount, build
    end
 
    -- queue up the appropriate uri (could be an alternate)
-   return self._sv.order_list:request_order_of(self._sv.player_id, craft_uri, amount, building)
+   return self._sv.order_list:request_order_of(self._sv.player_id, craft_uri, amount, building, insert_order)
 end
 
 function AceJobInfoController:remove_craft_orders_for_building(bid)

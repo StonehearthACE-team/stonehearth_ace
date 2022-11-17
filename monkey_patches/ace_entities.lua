@@ -238,7 +238,7 @@ function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options,
    local owner_id = options.owner
    owner_id = owner_id and type(owner_id) ~= 'string' and owner_id:get_player_id() or owner_id
    local quality = options.quality
-   local quality_options = quality and owner_id and {max_quality = item_quality_lib.get_max_random_quality(owner_id)}
+   local quality_options = quality and {max_quality = owner_id and item_quality_lib.get_max_random_quality(owner_id) or nil}
    local inventory
    if owner_id and options.add_spilled_to_inventory then
       inventory = stonehearth.inventory:get_inventory(owner_id)
@@ -252,11 +252,15 @@ function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options,
          qualities = detail
       end
       for item_quality, quantity in pairs(qualities) do
+         if quality_options and item_quality > 1 then
+            quality_options.min_quality = item_quality
+         end
+         local this_quality = quality or item_quality
+
          for i = 1, quantity do
             -- log:debug('trying to create %s with options: %s', uri, radiant.util.table_tostring(options))
             local item = radiant.entities.create_entity(uri, options)
-            -- manually passed quality will override any quality from the table (e.g., from a LootTable), even if it's lower
-            item_quality_lib.apply_quality(item, quality or item_quality, quality_options)
+            item_quality_lib.apply_quality(item, this_quality, quality_options)
 
             items[item:get_id()] = item
 

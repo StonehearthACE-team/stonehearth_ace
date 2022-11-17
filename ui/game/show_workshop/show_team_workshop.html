@@ -77,11 +77,24 @@
       </div>
    </div>
    <div id="recipeItems">
-      {{#each view.recipes}}
+      {{#each recipe_category in view.recipes}}
          <div class='category'>
-            <h3>{{i18n_key category}}</h3>
+            <div class='categoryHeader'>
+               <div><h3>{{i18n_key recipe_category.category}}</h3></div>
+               <div class='categoryCrafters'>
+                  {{#each member in recipe_category.members}}
+                     <div {{bind-attr
+                              class=':categoryCrafter member.disabled:disabledCrafting:enabledCrafting'
+                              category='recipe_category.category_id'
+                              crafterId='member.id'
+                           }}>
+                        <div class='craftingImage'></div>
+                     </div>
+                  {{/each}}
+               </div>
+            </div>
             <div>
-               {{#each recipes}}
+               {{#each recipe_category.recipes}}
                   <div
                      {{bind-attr
                         title=this.display_name
@@ -284,7 +297,7 @@
 
       <div id="orders">
          <div id="craftInsert">
-            <img id="craftInsertPortrait" {{bind-attr src=view.currentRecipe.portrait}}>
+            <img id="craftInsertPortrait" {{bind-attr src=view.insertRecipePortrait}}>
          </div>
 
          {{#each view.model.order_list.orders}}

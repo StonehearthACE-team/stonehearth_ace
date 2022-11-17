@@ -163,9 +163,20 @@ App.StonehearthStockpileView.reopen({
             }
          }
       });
+
+      self._updateTimer = setInterval(() => {
+         // make sure it's been updated, in case Limit Network Data gameplay setting is set
+         var uri = self.get('uri');
+         if (uri) {
+            radiant.call('stonehearth_ace:storage_mark_changed', uri);
+         }
+      }, 1000);
    },
 
    willDestroyElement: function() {
+      if (this._updateTimer) {
+         clearInterval(this._updateTimer);
+      }
       this.$().find('.tooltipstered').tooltipster('destroy');
       this.$('#presetSearch').off('keydown').off('keyup');
       this.$().off('click', '.presetRow');

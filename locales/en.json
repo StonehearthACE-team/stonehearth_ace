@@ -2065,7 +2065,7 @@
       "biome": {
          "highlands": {
             "display_name": "Highlands",
-            "description": "Uneven valleys and tall cliffs with many lakes and rivers. Default home of the Mountain Folk.",
+            "description": "Uneven valleys and tall limestone cliffs with many lakes and rivers. Default home of the Mountain Folk.",
             "random_location_names": {
                "000": "The Whiterock Plateau"
             },
@@ -3515,8 +3515,8 @@
                "description": "By carving up a hole and stirring inside the Cook can turn this huge fruit into a lot of wonderful juice!"
             },
             "add_thatch_to_bed": {
-               "display_name": "Add Thatch",
-               "description": "Make this bed a little more comfortable by adding some thatch to it!"
+               "display_name": "Add Thatching",
+               "description": "Make this bed a little more comfortable by adding some thatching to it!"
             },
             "cheese_vat_drain": {
                "display_name": "Drain Cheese Vat",
@@ -4843,7 +4843,7 @@
       "loadouts": {
          "items": {
             "prickly_pear": "Pears",
-            "thatching": "Thatch",
+            "thatching": "Thatching",
             "watermelon": "Watermelons",
             "winter_morel": "Morels",
             "training_dummy": "Dummy",
@@ -8687,8 +8687,8 @@
                "flavor": "It is a very... complicated mixture. Don't ask"
             },
             "thatch_pile_recipe": {
-               "recipe_name": "Large Thatch Bundle",
-               "description": "Store a large amount of thatching for later use.",
+               "recipe_name": "Large Dry Grass Bundle",
+               "description": "Store a large amount of thatching material for later use.",
                "flavor": ""
             },
             "barley_pile_recipe": {
@@ -8987,11 +8987,6 @@
                "description": "Hearthlings can put kibble in this wooden bowl for their pets to eat.",
                "flavor": "Hopefully they won't make much of a mess..."
             },
-            "fish_trap_recipe": {
-               "recipe_name": "Fish Trap",
-               "description": "Used by the Trapper to safely catch and harvest fish. It can also be used to capture fish for transport.",
-               "flavor": "Place it on water edges. It can be accessed from above and will float to the surface if placed underwater"
-            },
             "input_cask_wood_recipe": {
                "recipe_name": "Wooden Supply Cask",
                "description": "Priority storage for 64 items.",
@@ -9220,9 +9215,12 @@
       "weaver": {
          "recipes": {
             "thatch_twine_bundle_recipe": {
-               "recipe_name": "Thatch Twine Bundle",
-               "description": "Coil strains of thatch together into a neat cordage that can be used as fiber.",
+               "recipe_name": "Straw Twine Bundle",
+               "description": "Coil strains of dry grass together into a neat cordage that can be used as fiber.",
                "flavor": ""
+            },
+            "thread_recipe": {
+               "description": "A refined product required for cloth and many other crafts. Must use fiber that can be spun into thread."
             },
             "yarn_recipe": {
                "recipe_name": "Ball of Yarn (x2)",
@@ -9515,10 +9513,10 @@
                "perk_001_description": "The Trapper is capable of placing and utilizing fish traps for providing your town with fish meat and, sometimes, fish roe."
             },
             "level_3_data": {
-               "trapper_level_3_description": "Long practice helps the trapper salvage more from each animal. The added agility allows the Trapper to occupy themselves with 3 additional fish traps."
+               "trapper_level_3_description": "Long practice helps the trapper salvage more from each animal."
             },
             "level_6_data": {
-               "trapper_level_6_description": "The trapper can now use metal clamp traps to capture big game and also has a thing or two to teach the Engineer about setting traps. Increases town trap limit and the fish trap limit by 6."
+               "trapper_level_6_description": "The trapper can now use metal clamp traps to capture big game and also has a thing or two to teach the Engineer about setting traps."
             },
             "description": "The Trapper can arm snares to capture and (ahem) &quot;harvest&quot; wild critters for a reliable source of food, pelts and bones."
          },
@@ -9580,7 +9578,7 @@
             },
             "rabbit_feed_recipe": {
                "recipe_name": "Rabbit Feed (x3)",
-               "description": "Selected carrots for rabbits. Improves the quality of animal produce."
+               "description": "Selected foodstuffs for rabbits. Improves the quality of animal produce."
             },
             "poyo_feed_recipe": {
                "recipe_name": "Poyo Feed (x3)",
@@ -9589,7 +9587,7 @@
             },
             "duck_feed_recipe": {
                "recipe_name": "Duck Feed (x3)",
-               "description": "Grain and seeds for ducks. Improves the quality of animal produce.",
+               "description": "Favorite ingredients for ducks! Improves the quality of animal produce.",
                "flavor": "Really good quack-lity food"
             },
             "oinker_feed_recipe": {
@@ -9598,7 +9596,7 @@
             },
             "sheep_feed_recipe": {
                "recipe_name": "Sheep Feed (x3)",
-               "description": "Tasty grasses for sheep. Improves the quality of animal produce."
+               "description": "Tasty fibers for sheep. Improves the quality of animal produce."
             },
             "fodder_recipe": {
                "recipe_name": "Animal Fodder (x4)",
@@ -9633,7 +9631,7 @@
                },
                "goat_small_recipe": {
                   "recipe_name": "Small Frostfeast Goat",
-                  "description": "A tiny version of the traditional Frostfeast Goat, made with a bit of thatch and string.",
+                  "description": "A tiny version of the traditional Frostfeast Goat, made with a bit of thatching and string.",
                   "flavor": "Loved as a toy or as a decoration"
                },
                "goat_large_recipe": {
@@ -11071,7 +11069,7 @@
          "megacrop": {
             "beetroot_tonic_2": {
                "display_name": "Mega Beetroot Tonic",
-               "description": "Temporarily provides healing over time and protection against poisons, toxins and infections."
+               "description": "Provides some healing and protection against poisons, toxins and infections."
             }
          }
       },
@@ -12646,8 +12644,8 @@
             }
          },
          "thatch_bale": {
-            "display_name": "Bale of Thatch",
-            "description": "Dry grass harvested from fibrous plants or from digging grass terrain."
+            "display_name": "Bale of Dry Grass",
+            "description": "Thatching harvested from fibrous plants or from digging grass terrain."
          },
          "pelt": {
             "bitsy_spider_pelt": {
@@ -12730,18 +12728,27 @@
             },
             "highland_vine_bundle": {
                "display_name": "Highland Vine Stems",
-               "description": "Strong, flexible vine stems. Spinnable into thread."
+               "description": "Strong, flexible vine stems. Can not be spun into thread."
             },
             "silkweed_bundle": {
                "display_name": "Silkweed Fiber Bundle"
             },
             "thatch_twine_bundle": {
-               "display_name": "Thatch Twine Bundle",
+               "display_name": "Straw Twine Bundle",
                "description": "Rough and dry, but strong. Spinnable into thread"
             },
             "millet_straw_bundle": {
                "display_name": "Millet Straw Bundle",
                "description": "Long and dry straw rich in fiber. Spinnable into thread."
+            },
+            "coarse_fiber_bundle": {
+               "description": "Rough and itchy. Spinnable into thread."
+            },
+            "heirbloom_bundle": {
+               "description": "An Amberstone favorite. Can not be spun into thread."
+            },
+            "wool_bundle": {
+               "description": "A greasy and thick animal fiber. Spinnable into yarns."
             }
          },
          "coal": {
@@ -14412,7 +14419,7 @@
          },
          "dwarfsbeard_seed": {
             "display_name": "Dwarfsbeard Seed",
-            "description": "Can be planted to grow a rough fiber that can also be used as thatch."
+            "description": "Can be planted to grow a rough fiber that can also be used as thatching."
          },
          "dwarfsbeard_sprout": {
             "display_name": "Dwarfsbeard Sproutling",
@@ -17365,7 +17372,7 @@
          "cucumber": {
             "cucumber_basket": {
                "display_name": "Basket of Cucumbers",
-               "description": "A vegetable that can be used both as a hearty veggie or leafy greens if sliced thin."
+               "description": "A veggie that can be used both as a hearty veggie or leafy greens if sliced."
             },
             "cucumber_serving": {
                "display_name": "Cucumber"
@@ -17410,11 +17417,11 @@
       "terrain": {
          "pasture_grass": {
             "display_name": "Grass",
-            "description": "Tall grass can be grazed on by animals or harvested for thatch."
+            "description": "Tall grass can be grazed on by animals or harvested for thatching."
          },
          "overgrown_pasture_grass": {
             "display_name": "Overgrown Grass",
-            "description": "Overgrown grass can be grazed on by animals or harvested for thatch."
+            "description": "Overgrown grass can be grazed on by animals or harvested for thatching."
          },
          "short_pasture_grass": {
             "display_name": "Short Grass",
@@ -18404,10 +18411,6 @@
          }
       },
       "gizmos": {
-         "animal_traps": {
-            "game_trap_limit_tag": "Animal Traps",
-            "fish_trap_limit_tag": "Fish Traps"
-         },
          "dummy_training": {
             "dummy_training_ghost": {
                "description": "It's best to practice with this friendly guy. Can be repaired before it breaks.",
@@ -18810,9 +18813,9 @@
       },
       "containers": {
          "thatch_pile": {
-            "display_name": "Large Thatch Bundle",
-            "description": "Harvest for bundles of thatch.",
-            "iconic_description": "Can be harvested for bundles of thatch when placed."
+            "display_name": "Large Dry Grass Bundle",
+            "description": "Harvest for bales of dry grass.",
+            "iconic_description": "Can be harvested for bales of dry grass when placed."
          },
          "fuel_holder_small": {
             "display_name": "Cast Iron Holder",
@@ -20653,6 +20656,46 @@
    },
    "ui": {
       "game": {
+         "mercantile": {
+            "categories": {
+               "general_goods": {
+                  "display_name": "General Goods",
+                  "description": "Merchants with no clear specialization that prefer to bring an assortment of different types of goods and can be interested in many different things."
+               },
+               "resources": {
+                  "display_name": "Raw Resources",
+                  "description": "Merchants from quarries, lumber camps or charcoal mounds selling raw resources or fuels; They're often interested in containers, prepared food and refined goods."
+               },
+               "wilderness": {
+                  "display_name": "Wilderness",
+                  "description": "Merchants from remote areas, distant settlements and fishing villages selling herbs, mushrooms or fish; They're often interested in backpacks, clothing and protection."
+               },
+               "agriculture": {
+                  "display_name": "Agriculture",
+                  "description": "Merchants from farming villages or ranches selling vegetables, fruits, eggs, dairy or pets; They're often interested in tools, fertilizer and herbs."
+               },
+               "building": {
+                  "display_name": "Building",
+                  "description": "Merchants from thriving towns selling wood, clay and stone furniture, decorations and building parts; They're often interested in raw resources, textiles and refined goods."
+               },
+               "defense": {
+                  "display_name": "Defense",
+                  "description": "Merchants from strong settlements selling weapons, armor, medicine and other defensive assets; They're often interested in metals, fuels and pelts."
+               },
+               "artisan": {
+                  "display_name": "Artisan",
+                  "description": "Merchants from rich cities selling metalworking goods, work tools, textiles and other refined materials; They're often interested in raw ores, prepared drinks and fiber."
+               },
+               "provisions": {
+                  "display_name": "Provisions",
+                  "description": "Merchants from busy and bustling towns selling prepared food or drinks; They're often interested in raw foods, dairy products and decorations."
+               },
+               "exotic_goods": {
+                  "display_name": "Exotic Goods",
+                  "description": "Merchants from distant lands, unusual friends and hidden places... They might deal with the uncommon, rarities and sometimes even the unnatural!"
+               }
+            }
+         },
          "citizens": {
             "workers_list_headers": {
                "health": "Health"
@@ -20691,7 +20734,8 @@
             "tooltip_wanted_item_higher": "Merchant will pay <span class='higherPrice'>[str(factor)]% more</span> for these!",
             "tooltip_wanted_item_higher_quantity": "Merchant will pay <span class='higherPrice'>[str(factor)]% more</span> for [str(quantity)] of these!",
             "tooltip_wanted_item_lower": "Merchant will pay <span class='lowerPrice'>[str(factor)]% less</span> for these!",
-            "tooltip_wanted_item_lower_quantity": "Merchant will pay <span class='lowerPrice'>[str(factor)]% less</span> for [str(quantity)] of these!"
+            "tooltip_wanted_item_lower_quantity": "Merchant will pay <span class='lowerPrice'>[str(factor)]% less</span> for [str(quantity)] of these!",
+            "tooltip_unwanted_item": "Merchant already sells these and will pay <span class='lowerPrice'>[str(factor)]% less</span> for them!"
          },
          "custom_tooltips": {
             "mechanical": {
@@ -20878,9 +20922,14 @@
             "search_description_and_ingredients_description": "Include the descriptions of crafted items and the names of ingredients in the search filter.",
             "search_all": "All",
             "search_all_description": "Include the recipe titles, crafted item descriptions, and names of ingredients in the search filter.",
+            "category_crafter": {
+               "title": "Toggle Category Crafting",
+               "enable_description": "Enable crafting of this category for <span class='bold'>[str(name)]</span> (level <span class='bold'>[str(level)]</span>).",
+               "disable_description": "Disable crafting of this category for <span class='bold'>[str(name)]</span> (level <span class='bold'>[str(level)]</span>)."
+            },
             "craft_button": {
                "title": "Craft",
-               "description": "Add this order to the end of the list. Hold [Shift] to insert at the top of the list."
+               "description": "Add this order to the end of the list. Hold [Shift] to insert at the top of the list.<br><br>Right-click any item in the workshop to queue up making 1 of it (or hold [Ctrl] to queue up maintaining 1 of it)."
             },
             "quality_preference": {
                "title": "Ingredient Quality Preference",
@@ -20995,7 +21044,7 @@
                      "supply_carpenter": "Carpentry Supplies (Default)",
                      "supply_potter": "Pottery Supplies (Default)",
                      "supply_mason": "Masonry Supplies(Default)",
-                     "supply_fiber_thatch": "Fiber & Thatch Supply (Default)",
+                     "supply_fiber_thatch": "Fiber & Thatching Supply (Default)",
                      "supply_weaver": "Weaving Supplies (Default)",
                      "supply_metalworker": "Metalworking Supplies (Default)",
                      "supply_veggie_fruit": "Veggie & Fruit Supply (Default)",
@@ -21343,6 +21392,16 @@
             }
          },
          "build_mode2": {
+            "building_status": {
+               "build_button_description": "Hold [Shift] to insert craft orders at the top of the queue when Auto Queue Crafting For Building is enabled.",
+               "build_button_title": "Start Building"
+            },
+            "cost_list": {
+               "missing_crafter_description": "You lack an appropriate crafter of the required level to craft this item:",
+               "missing_crafter_title": "Missing Crafter",
+               "missing_recipe_description": "None of your citizens have even heard of how to craft this item!",
+               "missing_recipe_title": "Missing Recipe"
+            },
             "tooltips": {
                "clay_resource": "Raw Clay",
                "clay_bricks_resource": "Clay Bricks",
@@ -21409,6 +21468,8 @@
                },
                "load_paused": "Load Games Paused",
                "load_paused_description": "When loading a saved game, start it paused instead of immediately resuming at the previous speed. This can help with performance issues and crashes when loading large games.",
+               "limit_network_data": "Limit Network Data Sent",
+               "limit_network_data_description": "Limit the frequency of some transfers of data from server to client(s). This can help with performance issues in multiplayer games.",
                "building_grid_size": "Building Template Snap Grid Size",
                "building_grid_size_description": "Hold the Shift key while placing a building template to snap placement to a square horizontal grid of this size.",
                "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",
@@ -21591,7 +21652,7 @@
          "constants": {
             "edible_nuts_resource_name": "Any Edible Hard Seed",
             "fruits_resource_name": "Any Fruit or Fruit Jam",
-            "thatch_resource_name": "Any Thatch",
+            "thatch_resource_name": "Any Thatching Material",
             "bone_resource_name": "Bone",
             "fungi_resource_name": "Any Undeployed Fungi",
             "chitin_resource_name": "Any Chitin",
@@ -21689,7 +21750,8 @@
             "condiment_base_resource_name": "Any Condiment Base",
             "fruits_raw_name": "Any Basket of Fruits",
             "fruits_berry_name": "Any Berry",
-            "food_veggie_name": "Any Vegetable or Pickles"
+            "food_veggie_name": "Any Vegetable or Pickles",
+            "fiber_spinnable_resource_name": "Any Spinnable Bundle of Fiber"
          }
       }
    },
@@ -21763,7 +21825,8 @@
          },
          "transform": {
             "display_name": "Transform",
-            "description": "Will transform into something else when a specific command or action is performed on it."
+            "description": "Will transform into something else when a specific command or action is performed on it.",
+            "entry_list_header": "Current selection options will result in this entity eventually transforming into:"
          },
          "vine": {
             "display_name": "Vine",

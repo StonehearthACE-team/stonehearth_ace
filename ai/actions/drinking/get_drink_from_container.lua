@@ -5,7 +5,10 @@ GetDrinkFromContainer.name = 'get drink from container'
 GetDrinkFromContainer.does = 'stonehearth_ace:get_drink'
 GetDrinkFromContainer.args = {
    drink_filter_fn = 'function',
-   drink_rating_fn = 'function',
+   drink_rating_fn = {           -- a rating function that returns a score 0-1 given the item and entity
+      type = 'function',
+      default = stonehearth.ai.NIL,
+   },
 }
 GetDrinkFromContainer.think_output = {
    drink_container_filter_fn = 'function'

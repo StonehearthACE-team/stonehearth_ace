@@ -65,7 +65,7 @@ function item_io_lib.try_output(items, inputs, options)
       local max_radius = options.spill_max_radius
 
       for id, item in pairs(fails) do
-         local location = radiant.terrain.find_placement_point(origin, min_radius, max_radius)
+         local location = radiant.terrain.find_placement_point(origin, min_radius, max_radius, nil, nil, options.require_reachable)
          radiant.terrain.place_entity(item, location)
          spills[id] = item
          fails[id] = nil

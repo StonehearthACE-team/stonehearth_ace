@@ -26,7 +26,7 @@ App.StonehearthShopBulletinDialog.reopen({
       }
       var self = this;
       var wantedItems = self.get('model.data.shop.wanted_items');
-      if (wantedItems != null && wantedItems.length == 0) {
+      if (wantedItems != null && (!wantedItems.length || wantedItems.length == 0)) {
          wantedItems = null;
       }
       self._sellPalette.stonehearthItemPalette('updateWantedItems', wantedItems);
@@ -34,18 +34,20 @@ App.StonehearthShopBulletinDialog.reopen({
       if (wantedItems != null) {
          var items = [];
          wantedItems.forEach(item => {
-            var icon, display_name;
+            var icon, display_name, category;
             if (item.uri) {
                var catalogData = App.catalog.getCatalogData(item.uri);
                if (catalogData == null) return;
                icon = catalogData.icon;
                display_name = catalogData.display_name;
+               category = catalogData.category;
             }
             else if (item.material) {
                var resource = App.resourceConstants.resources[item.material];
                if (resource == null) return;
                icon = resource.icon;
                display_name = resource.name;
+               category = 'resources';
             }
 
             var priceMod = Math.floor((item.price_factor - 1) * 100 + 0.5);
@@ -53,14 +55,18 @@ App.StonehearthShopBulletinDialog.reopen({
             var isLower = priceMod < 0;
 
             items.push({
+               maxQuantity: item.max_quantity,
+               quantity: item.quantity,
                index: items.length,
                uri: item.uri,
                material: item.material,
                icon: icon,
                display_name: display_name,
+               category: category,
                isAvailable: item.max_quantity == null || item.max_quantity > item.quantity,
                isHigher: isHigher,
                isLower: isLower,
+               priceMod: priceMod,
                factor: isHigher ? `+${priceMod}%` : (isLower ? `${priceMod}%` : null),
                num: `${item.quantity} / ${item.max_quantity == null ? '∞' : item.max_quantity}`,
             });
@@ -81,7 +87,30 @@ App.StonehearthShopBulletinDialog.reopen({
             if (wantedItem != null) {
                // add a tooltip
                App.tooltipHelper.createDynamicTooltip(el, function() {
-                  return $(App.tooltipHelper.createTooltip(i18n.t(wantedItem.display_name)));
+                  var description = wantedItem.category && i18n.t('stonehearth:ui.game.entities.item_categories.' + wantedItem.category);
+                  var quantity = wantedItem.maxQuantity != null ? (wantedItem.maxQuantity - wantedItem.quantity) : null;
+                  var hasQuantity = quantity != null;
+                  // show the percentage modification to the price
+                  var priceMod = wantedItem.priceMod;
+                  if (priceMod > 0) {
+                     // price is increased
+                     description += '<div class="wantedItem">' +
+                           i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_higher' + (hasQuantity ? '_quantity' : ''),
+                              {
+                                 factor: priceMod,
+                                 quantity: quantity
+                              }) + '</div>';
+                  }
+                  else if (priceMod < 0) {
+                     // price is decreased!
+                     description += '<div class="wantedItem">' +
+                           i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_lower' + (hasQuantity ? '_quantity' : ''),
+                              {
+                                 factor: Math.abs(priceMod),
+                                 quantity: quantity
+                              }) + '</div>';
+                  }
+                  return $(App.tooltipHelper.createTooltip(i18n.t(wantedItem.display_name), description));
                });
             }
          });
@@ -104,8 +133,8 @@ App.StonehearthShopBulletinDialog.reopen({
                .appendTo(itemEl);
 
          },
-         updateWantedItem: function(itemEl, wantedItem) {
-            var cost = Math.floor(itemEl.attr('cost') * (wantedItem && wantedItem.price_factor || 1) + 0.5);
+         updateWantedItem: function(itemEl, priceFactor) {
+            var cost = Math.max(1, Math.floor(itemEl.attr('cost') * priceFactor + 0.5));
             itemEl.find('.cost').html(cost + 'g');
             
             if (itemEl.hasClass('selected')) {
@@ -121,6 +150,10 @@ App.StonehearthShopBulletinDialog.reopen({
          }
       });
    },
+   
+   _updateSoldItems: function() {
+      this._sellPalette.stonehearthItemPalette('updateSoldItems', this.get('model.data.shop.shop_inventory'));
+   }.observes('model.data.shop.shop_inventory'),
 
    _scrollSellPalette: function(item) {
       // .shopItem elements in the palette will already be marked as wantedItem if they're wanted

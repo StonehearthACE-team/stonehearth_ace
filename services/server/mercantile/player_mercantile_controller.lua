@@ -170,12 +170,10 @@ function PlayerMercantile:_create_spawn_timer()
    self:_destroy_spawning_timer()
 
    self._spawning_timer = stonehearth.calendar:set_interval('towns merchant spawner', '5m+20m', function()
-         local player_id = self._sv.player_id
-         local town = stonehearth.town:get_town(player_id)
-         local merchant = self:_spawn_merchant(player_id, town, table.remove(self._sv._merchants_to_spawn))
+         local merchant = self:_spawn_merchant(table.remove(self._sv._merchants_to_spawn))
 
          if not self._sv._seen_bulletin then
-            stonehearth.bulletin_board:post_bulletin(player_id)
+            stonehearth.bulletin_board:post_bulletin(self._sv.player_id)
                :set_ui_view('StonehearthGenericBulletinDialog')
                :set_callback_instance(self)
                :set_data({
@@ -200,11 +198,14 @@ function PlayerMercantile:_create_spawn_timer()
       end)
 end
 
-function PlayerMercantile:_spawn_merchant(player_id, town, merchant)
+function PlayerMercantile:_spawn_merchant(merchant)
+   local player_id = self._sv.player_id
+   local town = stonehearth.town:get_town(player_id)
    local merchant_data = stonehearth_ace.mercantile:get_merchant_data(merchant)
    if town and merchant_data then
       local pop = stonehearth.population:get_population('human_npcs')
-      local merchant = pop:create_new_citizen(merchant_data.population_role, merchant_data.population_gender)
+      local role = merchant_data.population_role or stonehearth.mercantile:get_default_population_role(merchant_data.category)
+      local merchant = pop:create_new_citizen(role, merchant_data.population_gender)
       merchant:add_component('stonehearth_ace:merchant'):set_merchant_data(player_id, merchant_data)
       
       local cooldown = merchant_data.cooldown

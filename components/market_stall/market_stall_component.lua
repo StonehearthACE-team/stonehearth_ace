@@ -31,8 +31,12 @@ function MarketStallComponent:activate()
 end
 
 function MarketStallComponent:post_activate()
-   -- make sure the base game shop commands are removed
-   self:_update_commands()
+   if self._sv._is_setting_up then
+      self:_finish_setting_up()
+   else
+      -- make sure the base game shop commands are removed
+      self:_update_commands()
+   end
 end
 
 function MarketStallComponent:destroy()
@@ -49,15 +53,24 @@ end
 function MarketStallComponent:set_merchant(merchant)
    if merchant ~= self._sv._merchant then
       self._sv._merchant = merchant
-      self._sv._active = merchant and merchant:is_valid()
-      self:_set_stall_model()
-      self:_update_commands()
+      self._sv._is_setting_up = true
 
       local effect = merchant and self._setup_effect or self._teardown_effect
       if effect then
-         radiant.effects.run_effect(self._entity, effect)
+         self._effect = radiant.effects.run_effect(self._entity, effect)
+         self._effect:set_finished_cb(function() self:_finish_setting_up() end)
+      else
+         self:_finish_setting_up()
       end
    end
+end
+
+function MarketStallComponent:_finish_setting_up()
+   self._effect = nil
+   self._sv._is_setting_up = nil
+   self._sv._active = self._sv._merchant and self._sv._merchant:is_valid()
+   self:_set_stall_model()
+   self:_update_commands()
 end
 
 function MarketStallComponent:get_tier()

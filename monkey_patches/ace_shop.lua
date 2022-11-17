@@ -67,7 +67,8 @@ function AceShop:stock_shop()
          for _, item in ipairs(merchant_options.wanted_items) do
             -- copy the entries because we'll want to modify the quantity
             -- and ignore any items with a price factor of 1
-            if item.price_factor ~= 1 then
+            if item.price_factor ~= 1 and (not item.chance or rng:get_real(0, 1) <= item.chance) and
+                  (not merchant_options.max_wanted_items or #self._sv.wanted_items < merchant_options.max_wanted_items) then
                table.insert(self._sv.wanted_items, {
                   material = item.material,
                   uri = item.uri,
@@ -203,6 +204,11 @@ function AceShop:sell_item(uri, quality, quantity)
    end
 
    local item_cost = item_quality_entry.resale
+   -- if the merchant is selling this item, also apply their unwanted modifier
+   if self:_is_selling_item(uri) then
+      item_cost = item_cost * mercantile_constants.DEFAULT_UNWANTED_ITEM_PRICE_FACTOR
+   end
+
    local removed_from_containers = {}
    local total_gold = 0
 
@@ -214,8 +220,10 @@ function AceShop:sell_item(uri, quality, quantity)
       local actual_cost = item_cost
       local wanted_items = self:_get_wanted_items_entry(uri)
       if wanted_items then
-         actual_cost = math.floor(item_cost * wanted_items.price_factor + 0.5)
+         actual_cost = item_cost * wanted_items.price_factor
       end
+      -- rounding is applied after wanted and unwanted item bonuses
+      actual_cost = math.max(1, math.floor(actual_cost + 0.5))
 
       if sell_quantity == 0 or shopkeeper_gold < actual_cost then
          break
@@ -248,6 +256,16 @@ function AceShop:sell_item(uri, quality, quantity)
 
    radiant.events.trigger_async(self, 'stonehearth:item_sold', {item_uri = uri, item_cost = item_cost, quantity = quantity - sell_quantity})
    return true
+end
+
+function AceShop:_is_selling_item(uri)
+   -- WARNING: hard-coding max item quality as 4 (masterwork) for checks
+   for quality = 1, 4 do
+      local key = self:_key_from_uri_and_quality(uri, quality)
+      if self._sv.shop_inventory[key] then
+         return true
+      end
+   end
 end
 
 function AceShop:_get_wanted_items_entry(uri)

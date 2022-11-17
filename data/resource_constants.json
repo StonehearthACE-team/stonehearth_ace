@@ -31,7 +31,15 @@
          "icon": "/stonehearth_ace/entities/refined/thread_icon.png"
       },
       "fiber resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.fiber_resource_name)"
+         "name": "i18n(stonehearth_ace:ui.data.constants.fiber_resource_name)",
+         "default_resource": "stonehearth:resources:fiber:coarse_fiber_bundle",
+         "icon": "/stonehearth_ace/entities/resources/fiber/fiber.png"
+      },
+      "fiber spinnable resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.fiber_spinnable_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/fiber/fiber_spinnable.png",
+         "default_resource": "stonehearth:resources:fiber:silkweed_bundle",
+         "stacks": 1
       },
       "ore resource": {
          "name": "i18n(stonehearth_ace:ui.data.constants.ore_resource_name)",

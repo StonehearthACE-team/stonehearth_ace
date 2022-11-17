@@ -173,6 +173,7 @@ function AceTown:remove_placement_slot_entity(entity)
    -- reset to zero for tags being passed in
    local placement_limitations = entry and entry.placement_limitations
    if placement_limitations then
+      placement_limitations = radiant.shallow_copy(placement_limitations)
       for tag, max_placeable in pairs(placement_limitations) do
          placement_limitations[tag] = 0
       end
@@ -217,7 +218,7 @@ end
 -- pass in its placement limitations table with 0s for amounts
 -- so that those tags will get updated even if no other placement slot entities modify them
 function AceTown:_calculate_num_placement_slots(placement_slots)
-   placement_slots = placement_slots or {}
+   placement_slots = placement_slots and radiant.shallow_copy(placement_slots) or {}
 
    for id, data in pairs(self._placement_slot_entities) do
       if data and data.entity and data.entity:is_valid() then
