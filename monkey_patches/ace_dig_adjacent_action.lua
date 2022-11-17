@@ -64,6 +64,7 @@ function AceDigAdjacent:_mine_block(ai, entity, mining_zone, block)
       spill_fail_items = true,
       quality = self:_get_quality_chances(entity, mining_zone, block),
    }
+   log:debug('outputting mining loot %s', radiant.util.table_tostring(loot))
    radiant.entities.output_items(loot, worker_location, 1, 3, options)
 
    -- apply quality to mined items if relevant

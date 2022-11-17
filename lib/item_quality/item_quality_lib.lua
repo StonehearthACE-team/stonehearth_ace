@@ -1,4 +1,5 @@
 local rng = _radiant.math.get_default_rng()
+local log = radiant.log.create_logger('item_quality_lib')
 
 local item_quality_lib = {}
 
@@ -57,6 +58,11 @@ function item_quality_lib.apply_quality(item, quality, options)
    if type(quality) == 'table' then
       item_quality_lib.apply_random_quality(item, quality, options)
    else
+      options = options or {}
+      --log:debug('applying quality %s to %s (min_quality = %s)', quality, item, tostring(options.min_quality))
+      if options.min_quality then
+         quality = math.max(quality, options.min_quality)
+      end
       if quality > 1 then
          -- allow replacing existing, lower item qualities (assume the item has properly been removed from inventories if necessary)
          local iq_comp = item:get_component('stonehearth:item_quality')
@@ -68,11 +74,10 @@ function item_quality_lib.apply_quality(item, quality, options)
             end
          end
          iq_comp = item:add_component('stonehearth:item_quality')
-         options = options or {}
          if options.override_allow_variable_quality == nil then
             options.override_allow_variable_quality = true
          end
-         iq_comp:initialize_quality(quality, options and options.author, options and options.author_type, options)
+         iq_comp:initialize_quality(quality, options.author, options.author_type, options)
       end
    end
 end
@@ -121,7 +126,7 @@ function item_quality_lib.modify_quality_table(qualities, ingredient_quality)
    for i = #qualities, 1, -1 do
       local value = qualities[i]
       local quality, chance = value[1], value[2]
-      if i > 1 then
+      if quality > 1 then
          chance = chance * (1 + 2 ^ (1 + ingredient_quality - quality) - 2 ^ (2 - quality))
       end
       modified_chances[i] = { quality, chance }

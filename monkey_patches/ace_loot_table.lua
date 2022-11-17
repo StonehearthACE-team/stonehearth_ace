@@ -229,7 +229,7 @@ function AceLootTable:roll_loot(inc_recursive_uri_storage)
                      quality_fn = entryvalue.quality_fn
                   }
                   
-                  if uri and uri.item_uri ~= '' then
+                  if uri and uri.item_uri ~= '' and uri.num_rolls > 0 then
                      --this should be where we use num_rolls to add multiple of the same thing
                      uris_interim[uri] = (uris_interim[uri] or 0) + uri.num_rolls
                   end
@@ -247,12 +247,9 @@ function AceLootTable:roll_loot(inc_recursive_uri_storage)
                      quality_fn = inc_item.quality_fn
                   }
                      
-                  if uri and uri.item_uri ~= '' then
+                  if uri and uri.item_uri ~= '' and uri.num_rolls > 0 then
                      --this should be where we use num_rolls to add multiple of the same thing
-                     for count = 1, uri.num_rolls do
-                        local quantity = (uris_interim[uri] or 0) + 1
-                        uris_interim[uri] = quantity
-                     end
+                     uris_interim[uri] = (uris_interim[uri] or 0) + uri.num_rolls
                   end
                end
             end

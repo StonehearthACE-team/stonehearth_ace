@@ -332,9 +332,11 @@ function AceMiningZoneComponent:mine_point(point)
       local region_index = region_intersections[1]
       local intersection = radiant.terrain.remove_region_from_landmark(region, region_index)
       loot = landmark_lib.get_loot_from_region(intersection, radiant.terrain._landmarks[region_index][2])
+      log:debug('mined landmark point: %s', radiant.util.table_tostring(loot))
    else
       local block_kind = radiant.terrain.get_block_kind_at(point)
       loot = stonehearth.mining:roll_loot(block_kind)
+      log:debug('mined point: %s', radiant.util.table_tostring(loot))
    end
 
    -- TODO: detect materials of loot items and only apply town bonuses if they apply
