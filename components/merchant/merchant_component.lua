@@ -20,7 +20,7 @@ end
 
 function MerchantComponent:post_activate()
    if self._is_restore and self._sv._should_depart then
-      self:_destroy_shop()
+      self:set_should_depart()
    else
       self:_load_merchant_data()
       self:_update_commands()
@@ -176,11 +176,11 @@ end
 function MerchantComponent:set_should_depart()
    self._sv._should_depart = true
    self:_update_commands()
-   log:debug('set should_depart for %s', self._entity)
-   -- give it a loop so the ai can respond to the async event before destroying the shop
-   -- radiant.on_game_loop_once('destroy shop on departure', function()
-   --       self:_destroy_shop()
-   --    end)
+   
+   self._entity:get_component('stonehearth:ai')
+      :get_task_group('stonehearth_ace:task_groups:merchant')
+         :create_task('stonehearth_ace:merchant:depart', {})
+            :start()
 end
 
 function MerchantComponent:_update_commands()

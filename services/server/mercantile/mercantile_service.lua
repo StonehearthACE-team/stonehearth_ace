@@ -44,7 +44,7 @@ function MercantileService:initialize()
          for player_id, player_controller in pairs(self._sv.players) do
             player_controller:depart_active_merchants()
          end
-         radiant.events.trigger_async(self, 'stonehearth_ace:merchants:depart_time')
+         --radiant.events.trigger_async(self, 'stonehearth_ace:merchants:depart_time')
       end)
 end
 
