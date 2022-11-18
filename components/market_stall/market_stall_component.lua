@@ -59,6 +59,7 @@ function MarketStallComponent:set_merchant(merchant)
       if effect then
          self._effect = radiant.effects.run_effect(self._entity, effect)
          self._effect:set_finished_cb(function() self:_finish_setting_up() end)
+         return true
       else
          self:_finish_setting_up()
       end

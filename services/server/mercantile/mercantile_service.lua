@@ -41,10 +41,10 @@ function MercantileService:initialize()
       end)
 
    self._evening_depart_alarm = stonehearth.calendar:set_alarm(stonehearth.constants.mercantile.DEPART_TIME, function()
-         radiant.events.trigger_async(self, 'stonehearth_ace:merchants:depart_time')
          for player_id, player_controller in pairs(self._sv.players) do
             player_controller:depart_active_merchants()
          end
+         radiant.events.trigger_async(self, 'stonehearth_ace:merchants:depart_time')
       end)
 end
 
@@ -163,6 +163,7 @@ function MercantileService:remove_merchant(merchant)
    if merchant and merchant:is_valid() then
       local merchant_component = merchant:get_component('stonehearth_ace:merchant')
       if merchant_component then
+         merchant_component:take_down_from_stall()
          local player = self:get_player_controller(merchant_component:get_player_id())
          if player then
             player:remove_merchant(merchant)

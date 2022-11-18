@@ -153,7 +153,7 @@ function MerchantComponent:take_down_from_stall()
       self._sv._stall = nil
       local stall_comp = stall:get_component('stonehearth_ace:market_stall')
       if stall_comp then
-         stall_comp:set_merchant(nil)
+         stall_comp:reset()
       end
    end
 end
@@ -164,7 +164,7 @@ function MerchantComponent:set_up_at_stall(stall)
       local stall_comp = stall:get_component('stonehearth_ace:market_stall')
       if stall_comp then
          self._sv._stall = stall
-         stall_comp:set_merchant(self._entity)
+         return stall_comp:set_merchant(self._entity)
       end
    end
 end
@@ -175,11 +175,12 @@ end
 
 function MerchantComponent:set_should_depart()
    self._sv._should_depart = true
+   self:_update_commands()
    log:debug('set should_depart for %s', self._entity)
    -- give it a loop so the ai can respond to the async event before destroying the shop
-   radiant.on_game_loop_once('destroy shop on departure', function()
-         self:_destroy_shop()
-      end)
+   -- radiant.on_game_loop_once('destroy shop on departure', function()
+   --       self:_destroy_shop()
+   --    end)
 end
 
 function MerchantComponent:_update_commands()
@@ -187,7 +188,7 @@ function MerchantComponent:_update_commands()
    local shop_commands = self._entity:get_component('stonehearth:commands')
 
    if shop_commands then
-      shop_commands:set_command_enabled('stonehearth_ace:commands:show_shop', self._sv._shop ~= nil)
+      shop_commands:set_command_enabled('stonehearth_ace:commands:show_shop', self._sv._shop and not self._sv._should_depart)
    end
 end
 
