@@ -34,55 +34,55 @@
          "ordinal": 10,
          "name": "i18n(stonehearth_ace:jobs.brewer.recipes.ingredients_name)",
          "recipes": {
-				"gruit" : {
-					"recipe" : "file(gruit_recipe.json)"
-				},
-				"malted_grains": {
-					"recipe": "file(malted_grains_recipe.json)"
-				},
-				"malted_wheat": {
-					"recipe": "file(malted_wheat_recipe.json)"
-				},
-				"malted_millet": {
-					"recipe": "file(malted_millet_recipe.json)"
-				},
-				"malted_barley": {
-					"recipe": "file(malted_barley_recipe.json)"
-				},
-				"malted_rye": {
-					"recipe": "file(malted_rye_recipe.json)"
-				},
-				"ground_tea_green": {
-					"recipe": "file(ground_tea_green_recipe.json)"
-				},
-				"ground_tea_black": {
-					"recipe": "file(ground_tea_black_recipe.json)"
-				},
-				"tea_leaves_steamed": {
-					"recipe": "file(tea_leaves_steamed_recipe.json)"
-				},
-				"coffee_sorted": {
-					"recipe": "file(coffee_sorted_recipe.json)"
-				},
-				"coffee_roasted": {
-					"recipe": "file(coffee_roasted_recipe.json)"
-				},
-				"coffee_ground": {
-					"recipe": "file(coffee_ground_recipe.json)"
-				},
-			   "unfermented_vinegar_juice_recipe": {
-					"recipe": "file(unfermented_vinegar_juice_recipe.json)"
-				},
-			   "unfermented_vinegar_wine_recipe": {
-					"recipe": "file(unfermented_vinegar_wine_recipe.json)"
-				},
-			   "unfermented_vinegar_mead_recipe": {
-					"recipe": "file(unfermented_vinegar_mead_recipe.json)"
-				},
-			   "unfermented_vinegar_brew_recipe": {
-					"recipe": "file(unfermented_vinegar_brew_recipe.json)"
-				}
-			}
+            "gruit" : {
+               "recipe" : "file(gruit_recipe.json)"
+            },
+            "malted_grains": {
+               "recipe": "file(malted_grains_recipe.json)"
+            },
+            "malted_wheat": {
+               "recipe": "file(malted_wheat_recipe.json)"
+            },
+            "malted_millet": {
+               "recipe": "file(malted_millet_recipe.json)"
+            },
+            "malted_barley": {
+               "recipe": "file(malted_barley_recipe.json)"
+            },
+            "malted_rye": {
+               "recipe": "file(malted_rye_recipe.json)"
+            },
+            "ground_tea_green": {
+               "recipe": "file(ground_tea_green_recipe.json)"
+            },
+            "ground_tea_black": {
+               "recipe": "file(ground_tea_black_recipe.json)"
+            },
+            "tea_leaves_steamed": {
+               "recipe": "file(tea_leaves_steamed_recipe.json)"
+            },
+            "coffee_sorted": {
+               "recipe": "file(coffee_sorted_recipe.json)"
+            },
+            "coffee_roasted": {
+               "recipe": "file(coffee_roasted_recipe.json)"
+            },
+            "coffee_ground": {
+               "recipe": "file(coffee_ground_recipe.json)"
+            },
+            "unfermented_vinegar_juice_recipe": {
+               "recipe": "file(unfermented_vinegar_juice_recipe.json)"
+            },
+            "unfermented_vinegar_wine_recipe": {
+               "recipe": "file(unfermented_vinegar_wine_recipe.json)"
+            },
+            "unfermented_vinegar_mead_recipe": {
+               "recipe": "file(unfermented_vinegar_mead_recipe.json)"
+            },
+            "unfermented_vinegar_brew_recipe": {
+               "recipe": "file(unfermented_vinegar_brew_recipe.json)"
+            }
+         }
       },
       "brewing": {
          "ordinal": 20,
@@ -173,7 +173,13 @@
                "recipe": "file(clarea_water_recipe.json)"
             },
             "sage_water": {
-               "recipe": "file(sage_water_recipe.json)"
+               "recipe": "file(sage_water_recipe_2.json)"
+            },
+            "juice_golden_gourd": {
+               "recipe": "file(juice_golden_gourd_recipe.json)"
+            },
+            "juice_sweet_potato": {
+               "recipe": "file(juice_sweet_potato_recipe.json)"
             }
          }
       },
@@ -184,7 +190,7 @@
             "tea": {
                "recipe": "file(tea_recipe.json)"
             },
-				"tea_pine": {
+            "tea_pine": {
                "recipe": "file(tea_pine_recipe.json)"
             },
             "tea_fancy": {
@@ -205,7 +211,7 @@
             "smoothie": {
                "recipe": "file(smoothie_recipe.json)"
             },
-				"spirit": {
+            "spirit": {
                "recipe": "file(spirit_recipe.json)"
             },
             "spirit_fruit": {
@@ -235,15 +241,21 @@
             "ale_table": {
                "recipe": "file(ale_table_recipe.json)"
             },
-				"beer_buttered": {
-               "recipe": "file(beer_buttered_serving_keg_recipe.json)"
+            "beer_buttered": {
+               "recipe": "file(beer_buttered_serving_keg_recipe_2.json)"
+            },
+            "liqueur_almond": {
+               "recipe": "file(liqueur_almond_recipe.json)"
+            },
+            "spirit_northern": {
+               "recipe": "file(spirit_northern_recipe.json)"
             }
          }
       },
       "serving_vessels": {
          "ordinal": 50,
          "name": "i18n(stonehearth_ace:jobs.brewer.recipes.serving_vessels_name)",
-         "recipes": {         
+         "recipes": {
             "beer_serving_keg": {
                "recipe": "file(beer_serving_keg_recipe.json)"
             },
@@ -253,53 +265,62 @@
             "beer_opaque_serving_keg": {
                "recipe": "file(beer_opaque_serving_keg_recipe.json)"
             },
-				"ale_serving_keg": {
+            "ale_serving_keg": {
                "recipe": "file(ale_serving_keg_recipe.json)"
             },
-				"ale_pale_serving_keg": {
+            "ale_pale_serving_keg": {
                "recipe": "file(ale_pale_serving_keg_recipe.json)"
             },
-				"spirit_serving_keg": {
+            "spirit_serving_keg": {
                "recipe": "file(spirit_serving_keg_recipe.json)"
             },
-				"spirit_fruit_serving_keg": {
+            "spirit_fruit_serving_keg": {
                "recipe": "file(spirit_fruit_serving_keg_recipe.json)"
             },
-				"spirit_sugar_serving_keg": {
+            "spirit_sugar_serving_keg": {
                "recipe": "file(spirit_sugar_serving_keg_recipe.json)"
             },
-				"spirit_hearth_serving_keg": {
+            "spirit_hearth_serving_keg": {
                "recipe": "file(spirit_hearth_serving_keg_recipe.json)"
             },
-				"liquor_serving_keg": {
+            "liquor_serving_keg": {
                "recipe": "file(liquor_serving_keg_recipe.json)"
             },
-				"mead_serving_pitcher": {
+            "mead_serving_pitcher": {
                "recipe": "file(mead_serving_pitcher_recipe.json)"
             },
-				"mead_fruit_serving_pitcher": {
+            "mead_fruit_serving_pitcher": {
                "recipe": "file(mead_fruit_serving_pitcher_recipe.json)"
             },
-				"wine_apple_serving_pitcher": {
+            "wine_apple_serving_pitcher": {
                "recipe": "file(wine_apple_serving_pitcher_recipe.json)"
             },
-				"wine_date_serving_pitcher": {
+            "wine_date_serving_pitcher": {
                "recipe": "file(wine_date_serving_pitcher_recipe.json)"
             },
-				"wine_pear_serving_pitcher": {
+            "wine_pear_serving_pitcher": {
                "recipe": "file(wine_pear_serving_pitcher_recipe.json)"
             },
-				"wine_plum_serving_pitcher": {
+            "wine_plum_serving_pitcher": {
                "recipe": "file(wine_plum_serving_pitcher_recipe.json)"
             },
-				"wine_berry_serving_pitcher": {
+            "wine_berry_serving_pitcher": {
                "recipe": "file(wine_berry_serving_pitcher_recipe.json)"
             },
-				"wine_cherry_serving_pitcher": {
+            "wine_cherry_serving_pitcher": {
                "recipe": "file(wine_cherry_serving_pitcher_recipe.json)"
             },
-				"wine_prickly_pear_serving_pitcher": {
+            "wine_prickly_pear_serving_pitcher": {
                "recipe": "file(wine_prickly_pear_serving_pitcher_recipe.json)"
+            },
+            "beer_opaque_gourd": {
+               "recipe": "file(beer_opaque_gourd_recipe.json)"
+            },
+            "liqueur_almond_serving_keg": {
+               "recipe": "file(liqueur_almond_serving_keg_recipe.json)"
+            },
+            "spirit_northern_serving_keg": {
+               "recipe": "file(spirit_northern_serving_keg_recipe.json)"
             }
          }
       },
@@ -317,17 +338,17 @@
             }
          }
       },
-		"frostfeast": {
+      "frostfeast": {
          "ordinal": 999,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
-				"frostfeast_egg_milk_punch": {
+            "frostfeast_egg_milk_punch": {
                "recipe": "file(frostfeast/egg_milk_punch_recipe.json)"
             },
-				"frostfeast_mulled_wine": {
+            "frostfeast_mulled_wine": {
                "recipe": "file(frostfeast/mulled_wine_recipe.json)"
             },
-				"frostfeast_hot_coco": {
+            "frostfeast_hot_coco": {
                "recipe": "file(frostfeast/hot_coco_recipe.json)"
             }
          }
