@@ -31,7 +31,7 @@ function TitlesComponent:post_activate()
 
    self:update_titles_json()
 
-   radiant.on_game_loop_once('Titles Component creating listeners...', function()
+   self._delay_listener_timer = radiant.on_game_loop_once('Titles Component creating listeners...', function()
       self:_create_trait_listeners()
    end)
 
@@ -42,6 +42,11 @@ function TitlesComponent:post_activate()
 end
 
 function TitlesComponent:destroy()
+   if self._delay_listener_timer then
+      self._delay_listener_timer:destroy()
+      self._delay_listener_timer = nil
+   end
+
    if self._trait_added_listener then
       self._trait_added_listener:destroy()
       self._trait_added_listener = nil
@@ -69,6 +74,7 @@ function TitlesComponent:destroy()
 end
 
 function TitlesComponent:_create_trait_listeners()
+   self._delay_listener_timer = nil
    -- it's checking the traits in _update_traits already, no need to check a second time to see if they should be checked; just call it directly
    self._trait_added_listener = radiant.events.listen(self._entity, 'stonehearth_ace:trait_added', self, self._update_traits)
    self._trait_removed_listener = radiant.events.listen(self._entity, 'stonehearth_ace:trait_removed', self, self._update_traits)

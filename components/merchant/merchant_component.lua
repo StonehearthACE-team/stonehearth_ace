@@ -20,7 +20,7 @@ end
 
 function MerchantComponent:post_activate()
    if self._is_restore and self._sv._should_depart then
-      self:_destroy_shop()
+      self:set_should_depart()
    else
       self:_load_merchant_data()
       self:_update_commands()
@@ -126,6 +126,7 @@ function MerchantComponent:_on_shop_closed()
 end
 
 function MerchantComponent:_destroy_shop()
+   log:debug('destroying shop for %s...', self._entity)
    local shop = self._sv._shop
    if shop then
       stonehearth.shop:destroy_shop(shop)
@@ -152,7 +153,7 @@ function MerchantComponent:take_down_from_stall()
       self._sv._stall = nil
       local stall_comp = stall:get_component('stonehearth_ace:market_stall')
       if stall_comp then
-         stall_comp:set_merchant(nil)
+         stall_comp:reset()
       end
    end
 end
@@ -163,7 +164,7 @@ function MerchantComponent:set_up_at_stall(stall)
       local stall_comp = stall:get_component('stonehearth_ace:market_stall')
       if stall_comp then
          self._sv._stall = stall
-         stall_comp:set_merchant(self._entity)
+         return stall_comp:set_merchant(self._entity)
       end
    end
 end
@@ -174,7 +175,12 @@ end
 
 function MerchantComponent:set_should_depart()
    self._sv._should_depart = true
-   self:_destroy_shop()
+   self:_update_commands()
+   
+   self._entity:get_component('stonehearth:ai')
+      :get_task_group('stonehearth_ace:task_groups:merchant')
+         :create_task('stonehearth_ace:merchant:depart', {})
+            :start()
 end
 
 function MerchantComponent:_update_commands()
@@ -182,7 +188,7 @@ function MerchantComponent:_update_commands()
    local shop_commands = self._entity:get_component('stonehearth:commands')
 
    if shop_commands then
-      shop_commands:set_command_enabled('stonehearth_ace:commands:show_shop', self._sv._shop ~= nil)
+      shop_commands:set_command_enabled('stonehearth_ace:commands:show_shop', self._sv._shop and not self._sv._should_depart)
    end
 end
 

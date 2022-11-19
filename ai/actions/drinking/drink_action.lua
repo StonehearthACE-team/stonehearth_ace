@@ -36,6 +36,7 @@ function Drink:start_thinking(ai, entity, args)
    self._marked_unready_listener = radiant.events.listen(self._entity, 'stonehearth_ace:entity:looking_for_drink:marked_unready', self, self._rethink)
    self._timer = stonehearth.calendar:set_interval("drink_action hourly", '25m+5m', function() self:_reconsider_filter() end)
    self:_reconsider_well_existence()
+   self:_reconsider_filter()
 end
 
 function Drink:stop_thinking(ai, entity, args)
@@ -103,7 +104,7 @@ function Drink:_reconsider_filter()
       if consumption:distinguishes_drink_quality() then
          self._drink_rating_fn = DrinkingLib.make_drink_rater(self._drink_preferences, self._drink_intolerances, hour_type, weather_type)
       else
-         self._drink_rating_fn = nil
+         self._drink_rating_fn = nil -- function(item) return 1 end
       end
 
       if not self._ready then
@@ -135,6 +136,7 @@ function Drink:_mark_ready()
    --log:debug('%s marking ready (currently %s)', self._entity, tostring(self._ready))
    if not self._ready then
       self._ready = true
+      --log:debug('%s ready to drink with rating function %s', self._entity, tostring(self._drink_rating_fn))
       self._ai:set_think_output({
          drink_filter_fn = self._drink_filter_fn,
          drink_rating_fn = self._drink_rating_fn,
