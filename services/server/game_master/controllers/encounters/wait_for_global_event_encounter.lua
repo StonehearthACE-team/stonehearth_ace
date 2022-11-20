@@ -16,9 +16,9 @@ end
 
 function WaitForGlobalEventEncounter:start(ctx, info)
    local event = info.event
-   local source = info.source and self:_get_source(info.source)
+   local source = info.source
 
-   assert(event and source)
+   assert(event)
    
    self._sv.is_repeatable = info.repeatable or false
    
@@ -27,7 +27,13 @@ function WaitForGlobalEventEncounter:start(ctx, info)
    self._sv.event = event
    self.__saved_variables:mark_changed()
 
-   self:_listen_for_event()
+   if self._sv.source then
+      self:_listen_for_event()
+   end
+end
+
+function WaitForGlobalEventEncounter:_load_source(source)
+   self._source = self:_get_source(source)
 end
 
 function WaitForGlobalEventEncounter:_get_source(source)
@@ -54,7 +60,7 @@ end
 
 function WaitForGlobalEventEncounter:_listen_for_event()
    local event = self._sv.event
-   local source = self._sv.source
+   local source = self:_get_source(self._sv.source)
 
    self._log:debug('listening for "%s" event on "%s"', event, tostring(source))
    self._listener = radiant.events.listen(source, event, function()
