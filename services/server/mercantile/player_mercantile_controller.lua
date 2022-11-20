@@ -99,12 +99,20 @@ function PlayerMercantile:unregister_merchant_stall(stall)
       if tier then
          local tier_stalls = self._sv.tier_stalls
          if tier_stalls[tier] then
-            tier_stalls[tier] = tier_stalls[tier] - 1
+            if tier_stalls[tier] > 1 then
+               tier_stalls[tier] = tier_stalls[tier] - 1
+            else
+               tier_stalls[tier] = nil
+            end
          end
       else
          local unique_stalls = self._sv.unique_stalls
          if unique_stalls[uri] then
-            unique_stalls[uri] = unique_stalls[uri] - 1
+            if unique_stalls[uri] > 1 then
+               unique_stalls[uri] = unique_stalls[uri] - 1
+            else
+               unique_stalls[uri] = nil
+            end
          end
       end
 
@@ -333,7 +341,6 @@ function PlayerMercantile:_get_merchants_to_spawn(num_merchants)
 
       -- first load up the possible merchant stalls they could use
       -- if there are no stalls, we only want to get a single merchant and have them hang out by the fire
-      local stalls = self._sv.unique_stalls
       local has_stalls = self._sv.num_stalls > 0
       if not has_stalls then
          num_merchants = 1
@@ -345,8 +352,9 @@ function PlayerMercantile:_get_merchants_to_spawn(num_merchants)
       local cur_weather_uri = cur_weather and cur_weather:get_uri()
 
       -- generate bags of merchants to draw from and then draw them until we've reached num_merchants
-      -- first get as many unique merchants as we can (skip if no stalls)
-      if has_stalls then
+      -- first get as many unique merchants as we can (skip if no unique stalls)
+      local stalls = self._sv.unique_stalls
+      if next(stalls) then
          local used_stalls = {}
          local uniques = self:_get_available_unique_merchants(cur_weather_uri, stalls, city_tier)
          

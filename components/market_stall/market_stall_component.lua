@@ -11,7 +11,8 @@ local STALL_MODEL_NAME = 'stonehearth_ace:market_stall:model'
 
 function MarketStallComponent:activate()
    self._json = radiant.entities.get_json(self) or {}
-   self._tier = self._json.tier or 1
+   -- we want unique stalls to be totally separate from tier stalls; if no explicit tier, it's unique
+   self._tier = self._json.tier  -- or 1
    self._setup_effect = self._json.setup_effect
    self._teardown_effect = self._json.setup_effect or self._setup_effect
    self._stall_models = self._json.stall_models or {}
