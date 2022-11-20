@@ -28,6 +28,7 @@ function MarketStallComponent:activate()
                stonehearth_ace.mercantile:register_merchant_stall(self._entity)
             end
          end)
+      :push_object_state()
 end
 
 function MarketStallComponent:post_activate()

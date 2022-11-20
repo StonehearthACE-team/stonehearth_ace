@@ -9,22 +9,7 @@
          "iconic_form": "file(stone_market_stall_iconic.json)",
          "ghost_form": "file(stone_market_stall_ghost.json)",
          "placeable_on_ground": true
-      },
-      "stonehearth:shop": {
-         "shop_uri": "stonehearth:shops:basic_resource_shop",
-         "trader": {
-            "player_id": "human_npcs",
-            "unit_info": {
-               "description": "i18n(stonehearth:entities.furniture.blue_market_stall.trader.description)"
-            },
-            "outfit_uri": "stonehearth:outfits:trader_outfit",
-            "spawn_effect": "stonehearth:effects:spawn_entity",
-            "despawn_effect": "stonehearth:effects:poof_effect:small",
-            "despawn_delay": "5h",
-            "return_delay": "5h"
-         }
-      },
-      "stonehearth:shop_trigger": {}
+      }
    },
    "entity_data": {
       "stonehearth:net_worth": {

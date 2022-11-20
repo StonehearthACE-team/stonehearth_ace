@@ -23,6 +23,7 @@ function PlayerMercantile:initialize()
 
    self._sv.tier_stalls = {}            -- keyed by tier number, gives count for each
    self._sv.unique_stalls = {}          -- keyed by uri, gives count for each
+   self._sv.num_stalls = 0
 
    self._sv.max_disables = 0
    self._sv.max_encourages = 0
@@ -82,6 +83,8 @@ function PlayerMercantile:register_merchant_stall(stall)
          unique_stalls[uri] = (unique_stalls[uri] or 0) + 1
       end
 
+      self._sv.num_stalls = self._sv.num_stalls + 1
+
       self.__saved_variables:mark_changed()
    end
 end
@@ -104,6 +107,8 @@ function PlayerMercantile:unregister_merchant_stall(stall)
             unique_stalls[uri] = unique_stalls[uri] - 1
          end
       end
+
+      self._sv.num_stalls = math.max(0, self._sv.num_stalls - 1)
 
       self.__saved_variables:mark_changed()
    end
@@ -329,7 +334,7 @@ function PlayerMercantile:_get_merchants_to_spawn(num_merchants)
       -- first load up the possible merchant stalls they could use
       -- if there are no stalls, we only want to get a single merchant and have them hang out by the fire
       local stalls = self._sv.unique_stalls
-      local has_stalls = next(stalls) ~= nil
+      local has_stalls = self._sv.num_stalls > 0
       if not has_stalls then
          num_merchants = 1
       end

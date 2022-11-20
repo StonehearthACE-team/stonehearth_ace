@@ -12,28 +12,7 @@
       },
       "stonehearth_ace:market_stall": {
          "tier": 2,
-         "setup_effect": "stonehearth:effects:poof_effect",
-         "stall_models": {
-            "default": {
-               "model_data": {
-                  "model": "file(butts.qb)",
-                  "scale": 0.15
-               },
-               "entity_points": [
-                  {
-                     "bone_name": "butt_1"
-                  },
-                  {
-                     "bone_name": "butt_2",
-                     "min_rarity": "uncommon"
-                  },
-                  {
-                     "bone_name": "butt_3",
-                     "min_quality": 2
-                  }
-               ]
-            }
-         }
+         "setup_effect": "stonehearth:effects:poof_effect"
       },
       "stonehearth_ace:remove_components": {
          "components": {
