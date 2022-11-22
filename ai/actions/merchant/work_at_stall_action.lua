@@ -66,18 +66,19 @@ function WorkAtStall:start_thinking(ai, entity, args)
    if merchant_component and not merchant_component:should_depart() then
       local filter_fn, rating_fn
       local owner_id = merchant_component:get_player_id()
+      local entity_id = entity:get_id()
       local required_stall = merchant_component:get_required_stall()
       if required_stall then
          filter_fn = stonehearth.ai:filter_from_key(
                'stonehearth_ace:merchant:work_at_stall',
-               owner_id .. '|' .. required_stall,
-               _make_unique_stall_filter_fn(owner_id, required_stall, entity:get_id()))
+               owner_id .. '|' .. entity_id .. '|' .. required_stall,
+               _make_unique_stall_filter_fn(owner_id, required_stall, entity_id))
       else
          local min_stall_tier = merchant_component:get_stall_tier()
          filter_fn = stonehearth.ai:filter_from_key(
                'stonehearth_ace:merchant:work_at_stall',
-               owner_id .. '|' .. tostring(min_stall_tier),
-               _make_tier_stall_filter_fn(owner_id, min_stall_tier, entity:get_id()))
+               owner_id .. '|' .. entity_id .. '|' .. tostring(min_stall_tier),
+               _make_tier_stall_filter_fn(owner_id, min_stall_tier, entity_id))
          rating_fn = _make_tier_stall_rating_fn(math.max(1, min_stall_tier))
       end
 
