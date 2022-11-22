@@ -95,7 +95,8 @@ function MarketStallComponent:_set_stall_model()
    local merchant_component = merchant and merchant:get_component('stonehearth_ace:merchant')
    local merchant_data = merchant_component and merchant_component:get_merchant_data()
    local stall_model = merchant_data and merchant_data.stall_model
-   models = self._stall_models[stall_model or 'default']
+   -- only want models set if there is a merchant here still
+   models = merchant and self._stall_models[stall_model or 'default']
 
    local model_data = models and models.model_data
    if model_data then
