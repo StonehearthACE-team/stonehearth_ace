@@ -65,6 +65,8 @@ function MarketStallComponent:set_merchant(merchant)
       else
          self:_finish_setting_up()
       end
+
+      stonehearth.ai:reconsider_entity(self._entity, 'active merchant changed')
    end
 end
 
