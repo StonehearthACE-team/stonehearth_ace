@@ -93,11 +93,9 @@ function MarketStallComponent:_set_stall_model()
 
    local merchant = self._sv._merchant
    local merchant_component = merchant and merchant:get_component('stonehearth_ace:merchant')
-   if merchant_component then
-      local merchant_data = merchant_component:get_merchant_data()
-      local stall_model = merchant_data and merchant_data.stall_model
-      models = self._stall_models[stall_model or 'default']
-   end
+   local merchant_data = merchant_component and merchant_component:get_merchant_data()
+   local stall_model = merchant_data and merchant_data.stall_model
+   models = self._stall_models[stall_model or 'default']
 
    local model_data = models and models.model_data
    if model_data then
@@ -109,10 +107,10 @@ function MarketStallComponent:_set_stall_model()
       end
    end
 
-   self:_setup_entity_points(models and models.entity_points)
+   self:_setup_entity_points(models and models.entity_points, merchant_data and merchant_data.shop_display_items)
 end
 
-function MarketStallComponent:_setup_entity_points(points)
+function MarketStallComponent:_setup_entity_points(points, inventory_override)
    -- have entity points where sample wares can be rendered
    --[[
       {
@@ -136,9 +134,10 @@ function MarketStallComponent:_setup_entity_points(points)
    if points and #points > 0 then
       entity_container = self._entity:add_component('entity_container')
       local merchant_player_id = self._sv._merchant:get_player_id()
-      local shop_inventory = self._sv._merchant:get_component('stonehearth_ace:merchant'):get_shop():get_shop_inventory()
+      local shop_inventory = inventory_override or self._sv._merchant:get_component('stonehearth_ace:merchant'):get_shop():get_shop_inventory()
       -- cache item sets in case points want items with the same limitations (probably common)
       local item_sets = {}
+      local used_items = {}
       for _, point in ipairs(points) do
          if point.bone_name then
             -- try to find an item in the shop that fits the requirements for this bone
@@ -152,7 +151,15 @@ function MarketStallComponent:_setup_entity_points(points)
             end
 
             if not items:is_empty() then
-               local uri = items:choose_random()
+               local uri
+               while not items:is_empty() do
+                  uri = items:choose_random()
+                  items:remove(uri)
+                  if not used_items[uri] then
+                     break
+                  end
+               end
+               used_items[uri] = true
                -- make sure we only bother creating the iconic entity
                local catalog_data = stonehearth.catalog:get_catalog_data(uri)
                if catalog_data then
@@ -170,8 +177,9 @@ function MarketStallComponent:_get_item_set(shop_inventory, min_rarity_rank, min
    -- go through the shop inventory and add all the qualifying items to a weighted set, with quantity as weight
    local items = WeightedSet(rng)
    for key, item in pairs(shop_inventory) do
-      if item.num > 0 and item.item_quality >= min_quality and mercantile_constants.RARITY_RANKS[item.rarity] >= min_rarity_rank then
-         items:add(item.uri, item.num)
+      if (item.item_quality or 1) >= min_quality and
+            mercantile_constants.RARITY_RANKS[(item.rarity or 'common')] >= min_rarity_rank then
+         items:add(item.uri, 1)
       end
    end
 

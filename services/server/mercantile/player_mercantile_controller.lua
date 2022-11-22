@@ -10,6 +10,8 @@ function PlayerMercantile:initialize()
    -- generated each morning based on settings/conditions at that time
    -- as each one is spawned, it's removed from the list
    self._sv._merchants_to_spawn = {}    -- list of merchants to spawn for this town
+   self._sv._merchants_to_depart = {}   -- list of merchants who need to depart this town
+   self._sv._departing_merchant_ids = {}  -- list of ids of merchants already instructed to depart
 
    -- merchant entities will only spawn if a stall could initially be assigned to them
    -- otherwise, or if something happens to their stall, their ai will have them hang out by the fire
@@ -54,6 +56,8 @@ end
 
 function PlayerMercantile:destroy()
    self:_destroy_spawning_timer()
+   self:_destroy_depart_timer()
+   self:_depart_all_merchants()
 end
 
 function PlayerMercantile:_destroy_spawning_timer()
@@ -61,6 +65,21 @@ function PlayerMercantile:_destroy_spawning_timer()
       self._spawning_timer:destroy()
       self._spawning_timer = nil
    end
+end
+
+function PlayerMercantile:_destroy_depart_timer()
+   if self._depart_timer then
+      self._depart_timer:destroy()
+      self._depart_timer = nil
+   end
+end
+
+function PlayerMercantile:_depart_all_merchants()
+   local merchants = self:_get_all_undeparted_merchants()
+   for _, merchant in pairs(merchants) do
+      self:_depart_merchant(merchant)
+   end
+   self._sv._merchants_to_depart = {}
 end
 
 function PlayerMercantile:set_enabled(enabled)
@@ -123,7 +142,9 @@ function PlayerMercantile:unregister_merchant_stall(stall)
 end
 
 function PlayerMercantile:remove_merchant(merchant)
-   self._sv.active_merchants[merchant:get_id()] = nil
+   local id = merchant:get_id()
+   self._sv.active_merchants[id] = nil
+   self._sv._departing_merchant_ids[id] = nil
    self.__saved_variables:mark_changed()
 end
 
@@ -140,9 +161,43 @@ function PlayerMercantile:reduce_merchant_cooldowns()
 end
 
 function PlayerMercantile:depart_active_merchants()
-   for _, merchant in pairs(self._sv.active_merchants) do
-      merchant:get_component('stonehearth_ace:merchant'):set_should_depart()
+   -- similar to spawning the merchants initially, set up a timer to arbitrarily do one at a time
+   self:_get_all_undeparted_merchants()
+   self:_create_depart_timer()
+end
+
+function PlayerMercantile:_get_all_undeparted_merchants()
+   -- create lookup so we're not trying to double-depart
+   local departing_merchants = {}
+   for _, merchant in ipairs(self._sv._merchants_to_depart) do
+      departing_merchants[merchant:get_id()] = merchant
    end
+
+   for id, merchant in pairs(self._sv.active_merchants) do
+      if not departing_merchants[id] and not self._sv._departing_merchant_ids[id] then
+         table.insert(self._sv._merchants_to_depart, merchant)
+      end
+   end
+
+   return self._sv._merchants_to_depart
+end
+
+function PlayerMercantile:_create_depart_timer()
+   self:_destroy_depart_timer()
+
+   self._depart_timer = stonehearth.calendar:set_interval('towns merchant departer', '5m+20m', function()
+         local merchant = table.remove(self._sv._merchants_to_depart)
+         self._sv._departing_merchant_ids[merchant:get_id()] = true
+         self:_depart_merchant(merchant)
+
+         if #self._sv._merchants_to_depart <= 0 then
+            self:_destroy_depart_timer()
+         end
+      end)
+end
+
+function PlayerMercantile:_depart_merchant(merchant)
+   merchant:get_component('stonehearth_ace:merchant'):set_should_depart()
 end
 
 function PlayerMercantile:set_trade_preferences(category_preferences, unique_preferences)
@@ -179,6 +234,12 @@ function PlayerMercantile:_start_spawn_timer_on_load()
    end
 end
 
+function PlayerMercantile:_start_depart_timer_on_load()
+   if #self._sv._merchants_to_depart > 0 then
+      self:_create_depart_timer()
+   end
+end
+
 function PlayerMercantile:_create_spawn_timer()
    self:_destroy_spawning_timer()
 
@@ -200,10 +261,7 @@ function PlayerMercantile:_create_spawn_timer()
             self._sv._seen_bulletin = true
          end
          if #self._sv._merchants_to_spawn <= 0 then
-            if self._spawning_timer then
-               self._spawning_timer:destroy()
-               self._spawning_timer = nil
-            end
+            self:_destroy_spawning_timer()
          end
 
          -- show the initial bulletin here so it's after the "first merchant" bulletin
