@@ -3994,6 +3994,7 @@
       "stonehearth/data/gm/campaigns/amberstone/arcs/trigger/discovery/encounters/15_crystal_charging/15_crystal_charging_wait_for_night.json": "file(data/gm/campaigns/amberstone/arcs/trigger/discovery/encounters/15_crystal_charging/15_crystal_charging_wait_for_night.json)",
       "stonehearth/data/gm/campaigns/amberstone/arcs/trigger/discovery/encounters/21_residents/21_residents_outro_a.json": "file(data/gm/campaigns/amberstone/arcs/trigger/discovery/encounters/21_residents/21_residents_outro_a.json)",
       "stonehearth/data/gm/campaigns/amberstone/arcs/trigger/discovery/encounters/30_geomancy/30_geomancy_outro.json": "file(data/gm/campaigns/amberstone/arcs/trigger/discovery/encounters/30_geomancy/30_geomancy_outro.json)",
+      "stonehearth/data/gm/campaigns/amberstone/arcs/trigger/discovery/encounters/40_recipe_sharing/40_recipe_sharing_outro.json": "file(data/gm/campaigns/amberstone/arcs/trigger/discovery/encounters/40_recipe_sharing/40_recipe_sharing_outro.json)",
       "stonehearth/data/gm/campaigns/ambient_threats/arcs/trigger/ambient_threats/ambient_threats_arc.json": "file(data/gm/campaigns/ambient_threats/arcs/trigger/ambient_threats/ambient_threats_arc.json)",
       "stonehearth/data/gm/campaigns/ambient_threats/arcs/trigger/ambient_threats/encounters/create_raider_camp.json": "file(data/gm/campaigns/ambient_threats/arcs/trigger/ambient_threats/encounters/create_raider_camp.json)",
       "stonehearth/data/gm/campaigns/ambient_threats/arcs/trigger/ambient_threats/encounters/create_thief_camp.json": "file(data/gm/campaigns/ambient_threats/arcs/trigger/ambient_threats/encounters/create_thief_camp.json)",
@@ -6227,6 +6228,7 @@
       "class:brewer": "file(jobs/brewer/brewer.lua)",
       "crafter_info_controller": "file(services/server/crafter_info/crafter_info_controller.lua)",
       "fertilizer_tracker": "file(services/server/inventory/fertilizer_tracker.lua)",
+      "game_master:encounters:unlock_recipe_list": "file(services/server/game_master/controllers/encounters/unlock_recipe_list_encounter.lua)",
       "game_master:script_encounter:kitties:mila": "file(data/gm/campaigns/kitties/arcs/trigger/kitties/encounters/mila_script.lua)",
       "game_master:script_encounter:kitties:teddy": "file(data/gm/campaigns/kitties/arcs/trigger/kitties/encounters/teddy_script.lua)",
       "game_master:script_encounter:unlock_crops": "file(services/server/game_master/controllers/scripts/unlock_crops.lua)",
@@ -6648,7 +6650,14 @@
       ],
       "universal_storage": [
          "get_storage_from_access_node_command"
-      ]
+      ],
+      "game_master": {
+         "encounters": {
+            "unlock_recipe_list": [
+               "_on_closed"
+            ]
+         }
+      }
    },
    "ui": {
       "html": [

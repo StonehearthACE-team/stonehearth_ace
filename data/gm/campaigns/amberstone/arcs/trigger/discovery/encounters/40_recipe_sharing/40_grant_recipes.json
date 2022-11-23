@@ -1,0 +1,17 @@
+{
+   "type": "encounter",
+   "mod_root": "stonehearth_ace",
+   "encounter_type": "unlock_recipe_list",
+   "in_edge": "40_grant_recipes",
+   "out_edge": {
+      "type": "destroy_tree",
+      "root": "40_recipe_sharing_set_stage",
+      "destroy_root": true
+   },
+   "unlock_recipe_list_info": {
+      "recipe_lists": {
+         "stonehearth:amberstone:40_recipe_sharing": true
+      },
+      "bulletin_title": "i18n(stonehearth_ace:data.gm.campaigns.amberstone.arcs.trigger.discovery.encounters.40_recipe_sharing.40_grant_recipes.bulletin_title)"
+   }
+}
