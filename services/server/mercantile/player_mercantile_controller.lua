@@ -51,7 +51,7 @@ function PlayerMercantile:post_activate()
 
    self._kingdom_uri = stonehearth.population:get_population(self._sv.player_id):get_kingdom()
 
-   self:_start_spawn_timer_on_load()
+   self:_start_depart_timer()
 end
 
 function PlayerMercantile:destroy()
@@ -163,7 +163,7 @@ end
 function PlayerMercantile:depart_active_merchants()
    -- similar to spawning the merchants initially, set up a timer to arbitrarily do one at a time
    self:_get_all_undeparted_merchants()
-   self:_create_depart_timer()
+   self:_start_depart_timer()
 end
 
 function PlayerMercantile:_get_all_undeparted_merchants()
@@ -234,7 +234,7 @@ function PlayerMercantile:_start_spawn_timer_on_load()
    end
 end
 
-function PlayerMercantile:_start_depart_timer_on_load()
+function PlayerMercantile:_start_depart_timer()
    if #self._sv._merchants_to_depart > 0 then
       self:_create_depart_timer()
    end
