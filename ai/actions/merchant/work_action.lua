@@ -1,7 +1,7 @@
 local Entity = _radiant.om.Entity
 local rng = _radiant.math.get_default_rng()
 
-local MIN_RANGE_SQUARED = 200
+local MIN_RANGE_SQUARED = 500
 
 local Work = class()
 
@@ -61,7 +61,7 @@ function Work:run(ai, entity, args)
       if at_stall and not turned then
          -- select the point opposite the merchant from the closest stall point
          local stall_point = radiant.entities.get_facing_point(entity, args.stall)
-         ai:execute('stonehearth:turn_to_face_point', {point = stall_point * 2 - location})
+         ai:execute('stonehearth:turn_to_face_point', {point = location * 2 - stall_point})
       end
 
       ai:execute('stonehearth:idle', {hold_position = at_stall})

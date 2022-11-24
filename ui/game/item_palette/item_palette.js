@@ -338,39 +338,37 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
             extraTip = extraTip ? extraTip + equipDiv : equipDiv;
          }
 
-         if (self.options.wantedItems) {
-            var wantedItem = self._getBestWantedItem(item.root_uri);
-            if (wantedItem) {
-               var quantity = wantedItem.max_quantity != null ? (wantedItem.max_quantity - wantedItem.quantity) : null;
-               var hasQuantity = quantity != null;
-               // show the percentage modification to the price
-               var priceMod = Math.floor((wantedItem.price_factor - 1) * 100 + 0.5);
-               if (priceMod > 0) {
-                  // price is increased
-                  description += '<div class="wantedItem">' +
-                        i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_higher' + (hasQuantity ? '_quantity' : ''),
-                           {
-                              factor: priceMod,
-                              quantity: quantity
-                           }) + '</div>';
-               }
-               else if (priceMod < 0) {
-                  // price is decreased!
-                  description += '<div class="wantedItem">' +
-                        i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_lower' + (hasQuantity ? '_quantity' : ''),
-                           {
-                              factor: Math.abs(priceMod),
-                              quantity: quantity
-                           }) + '</div>';
-               }
+         var wantedItem = self._getBestWantedItem(item.root_uri);
+         if (wantedItem) {
+            var quantity = wantedItem.max_quantity != null ? (wantedItem.max_quantity - wantedItem.quantity) : null;
+            var hasQuantity = quantity != null;
+            // show the percentage modification to the price
+            var priceMod = Math.floor((wantedItem.price_factor - 1) * 100 + 0.5);
+            if (priceMod > 0) {
+               // price is increased
+               description += '<div class="wantedItem">' +
+                     i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_higher' + (hasQuantity ? '_quantity' : ''),
+                        {
+                           factor: priceMod,
+                           quantity: quantity
+                        }) + '</div>';
             }
-            else {
-               // if it's not wanted and it has a lower price factor, it's an unwanted item the merchant sells
-               var priceFactor = self._getBestPriceFactorForItem(item.root_uri, true);
-               if (priceFactor < 1) {
-                  description += '<div class="wantedItem">' +
-                        i18n.t('stonehearth_ace:ui.game.entities.tooltip_unwanted_item', {factor: Math.abs(Math.floor((priceFactor - 1) * 100 + 0.5))}) + '</div>';
-               }
+            else if (priceMod < 0) {
+               // price is decreased!
+               description += '<div class="wantedItem">' +
+                     i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_lower' + (hasQuantity ? '_quantity' : ''),
+                        {
+                           factor: Math.abs(priceMod),
+                           quantity: quantity
+                        }) + '</div>';
+            }
+         }
+         else {
+            // if it's not wanted and it has a lower price factor, it's an unwanted item the merchant sells
+            var priceFactor = self._getBestPriceFactorForItem(item.root_uri, true);
+            if (priceFactor < 1) {
+               description += '<div class="wantedItem">' +
+                     i18n.t('stonehearth_ace:ui.game.entities.tooltip_unwanted_item', {factor: Math.abs(Math.floor((priceFactor - 1) * 100 + 0.5))}) + '</div>';
             }
          }
 

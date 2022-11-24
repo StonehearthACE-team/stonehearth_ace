@@ -6,9 +6,11 @@
    "disabled_description": "i18n(stonehearth_ace:data.commands.show_shop.disabled_description)",
    "icon": "file(show_shop.png)",
    "visible_to_all_players": true,
-   "action": "call",
-   "function": "show_shop_command",
-   "object": "stonehearth_ace.mercantile",
+   "action": "fire_event",
+   "event_name": "stonehearth_ace_show_shop",
+   "event_data": {},
+   "__function": "show_shop_command",
+   "__object": "stonehearth_ace.mercantile",
    "args": [
    ]
 }
