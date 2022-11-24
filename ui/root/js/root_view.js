@@ -202,17 +202,17 @@ App.RootView.reopen({
                   self._unclosedBulletinDialogViews[dialogBulletinViewId] = self._bulletinDialogView;
                   self._bulletinDialogView.hide();
                }
-            }
 
-            // also mark the bulletin as handled and remove any notification for it
-            var id = dialogBulletinViewModel.id;
-            if (id) {
-               self.notificationContainerView.removeNotificationView(self._bulletins[id]);
-               self.markBulletinHandled(self._bulletins[id]);
+               // also mark the bulletin as handled and remove any notification for it
+               var id = dialogBulletinViewModel.id;
+               if (id) {
+                  self.notificationContainerView.removeNotificationView(self._bulletins[id]);
+                  self.markBulletinHandled(self._bulletins[id]);
+               }
+
+               self._bulletinDialogView = null;
             }
          }
-
-         self._bulletinDialogView = null;
       }
    }
 });
