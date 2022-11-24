@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 40,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bulk_iron_ingot_recipe_2.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bulk_iron_ingot_recipe_2.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.bulk_iron_ingot_recipe_2.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/bulk_iron_ingot_2.png",
+   "workshop": "stonehearth_ace:blacksmith:forge_advanced",
+   "work_effect": "work_wait",
+   "manual_unlock": true,
+   "level_requirement": 6,
+   "ace_smart_crafter_ignore": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:starsteel:ore",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:refined:iron_ingot"
+      },
+	   {
+         "item": "stonehearth:refined:iron_ingot"
+      },
+      {
+          "item": "stonehearth:refined:iron_ingot"
+      }
+   ]
+}

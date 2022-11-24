@@ -1,0 +1,168 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "meteor_shower_night",
+   "out_edge": {
+      "type": "destroy_tree",
+      "root": "generate_meteor_shower_night",
+      "destroy_root": false
+   },
+   "can_start": {
+      "test_1": {
+         "appropriate_weather": {
+            "type": "deny_if_not",
+            "item": "weather",
+            "value": "stonehearth:weather:sunny"
+         },
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 20
+            }
+         }
+      },
+      "test_2": {
+         "appropriate_weather": {
+            "type": "deny_if_not",
+            "item": "weather",
+            "value": "stonehearth:weather:sunny:desert"
+         },
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 20
+            }
+         }
+      },
+      "test_3": {
+         "appropriate_weather": {
+            "type": "deny_if_not",
+            "item": "weather",
+            "value": "stonehearth:weather:windy"
+         },
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 20
+            }
+         }
+      },
+      "test_4": {
+         "appropriate_weather": {
+            "type": "deny_if_not",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:sunny:autumn"
+         },
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 20
+            }
+         }
+      },
+      "test_5": {
+         "appropriate_weather": {
+            "type": "deny_if_not",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:sunny:chilly"
+         },
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 20
+            }
+         }
+      },
+      "test_6": {
+         "appropriate_weather": {
+            "type": "deny_if_not",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:sunny:hot"
+         },
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 20
+            }
+         }
+      },
+      "test_7": {
+         "appropriate_weather": {
+            "type": "deny_if_not",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:sunny:stagnant"
+         },
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 20
+            }
+         }
+      },
+      "test_8": {
+         "appropriate_weather": {
+            "type": "deny_if_not",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:sunny:sweltering"
+         },
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 20
+            }
+         }
+      },
+      "test_9": {
+         "appropriate_weather": {
+            "type": "deny_if_not",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:windy:chilly"
+         },
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 20
+            }
+         }
+      },
+      "test_10": {
+         "appropriate_weather": {
+            "type": "deny_if_not",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:windy:springtime"
+         },
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 1,
+               "max": 20
+            }
+         }
+      }
+   },
+   "script_info": {
+      "script": "stonehearth_ace:game_master:script_encounter:switch_weather",
+      "data": {
+         "weather_uri": "stonehearth_ace:weather:event:meteor_shower"
+      }
+   }
+}

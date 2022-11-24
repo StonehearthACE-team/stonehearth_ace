@@ -1,0 +1,60 @@
+{
+   "type": "effect",
+   "tracks": {
+      "cubemitter": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "end_time": 400,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/sparkle/starstruck_sparks.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1.5, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "cubemitter2": {
+         "type": "cubemitter",
+         "start_time": 300,
+         "end_time": 700,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/sparkle/starstruck_sparks.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1.0, "z": 0,
+            "rx": 45,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "cubemitter3": {
+         "type": "cubemitter",
+         "start_time": 600,
+         "end_time": 1000,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/sparkle/starstruck_sparks.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 2, "z": 0,
+            "rx": -45,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 40,
+         "falloff": 3.1,
+         "volume": 66,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:starstruck_01",
+               "stonehearth_ace:sounds:starstruck_02",
+               "stonehearth_ace:sounds:starstruck_03"
+            ]
+         }
+      }
+   }
+}

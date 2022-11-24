@@ -1,0 +1,15 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:market_stall:tier_2",
+      "file(wood_market_stall_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(wood_market_stall_iconic.json)",
+         "ghost_form": "file(wood_market_stall_ghost.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {}
+}

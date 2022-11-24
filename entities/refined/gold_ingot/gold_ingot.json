@@ -1,13 +1,19 @@
 {
    "components": {
 	  "render_info": {
-         "scale": 0.09
+         "scale": 0.08
       }
    },
    "entity_data": {
       "stonehearth:catalog": {
          "icon": "/stonehearth_ace/entities/refined/gold_ingot/gold_ingot.png",
+         "mixintypes": {
+            "material_tags": "override"
+         },
          "material_tags":["stockpile_precious_metal", "gold", "ingot", "precious_metal", "refined", "stockpile_refined_craftable"]
+      },
+      "stonehearth:appeal": {
+         "appeal": 15
       }
    }
 }

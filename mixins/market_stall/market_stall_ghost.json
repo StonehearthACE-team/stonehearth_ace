@@ -3,14 +3,6 @@
       "render_info": {
          "scale": 0.1
       },
-      "model_variants": {
-         "default_merchant": {
-            "models": [
-               "file(goods/default.qb)",
-               "file(signs/default.qb)"
-            ]
-         }
-      },
       "mob": {
          "model_origin": { "x": 0.5, "y": 0, "z": 0 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
@@ -18,12 +10,12 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "category": "construction",
+         "category": "mercantile",
          "material_tags": [
-            "decoration",
             "crafted",
             "utility",
-            "stockpile_decoration"
+            "furniture",
+            "stockpile_furniture"
          ]
       }
    }

@@ -1,0 +1,73 @@
+{
+   "type": "effect",
+   "tracks": {
+      "lightning_strike_base_small": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/lightning/lightning_impact_base_sml.cubemitter.json",
+         "start_time": 300,
+         "end_time": 320000,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "lightning_strike_base_mid": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/lightning/lightning_impact_base_mid.cubemitter.json",
+         "start_time": 300,
+         "end_time": 320000,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "lightning_strike_base_lrg": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/lightning/lightning_impact_base_lrg.cubemitter.json",
+         "start_time": 300,
+         "end_time": 320000,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "lightning_strike_smoke_small": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/meteorite/meteorite_impact_smoking.cubemitter.json",
+         "start_time": 300,
+         "end_time": 320000,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "dust": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/dust_poof/dust_poof.cubemitter.json",
+         "loop": false,
+         "start_time": 300,
+         "end_time": 2000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 450,
+         "min_distance": 35,
+         "falloff": 0.5,
+         "volume": 85,
+         "track": "stonehearth:sounds:death_poof"
+      }
+   }
+}

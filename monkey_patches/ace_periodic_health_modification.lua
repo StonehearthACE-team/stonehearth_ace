@@ -31,6 +31,20 @@ function AcePeriodicHealthModificationBuff:_on_pulse()
 			end
 		end
 	end
+
+   if self._tuning.multiply_per_axis_buff then
+      local axis_buffs = self._entity:get_component('stonehearth:buffs'):get_buffs_by_axis(self._tuning.multiply_per_axis_buff)
+      if axis_buffs then
+         local multiplier = 0
+         for buff, data in pairs(axis_buffs) do
+            multiplier = multiplier + 1
+		   end
+
+         if multiplier ~= 0 then
+            health_change = health_change * multiplier
+         end
+      end
+   end
    
    local current_health = resources:get_value('health')
    local current_guts = resources:get_percentage('guts') or 1

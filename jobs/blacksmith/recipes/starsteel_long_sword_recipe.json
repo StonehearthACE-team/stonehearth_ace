@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 65,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.starsteel_long_sword_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.starsteel_long_sword_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.starsteel_long_sword_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/weapons/starsteel_long_sword/starsteel_long_sword.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:starsteel_ingot",
+         "count": 3
+      },
+	  {
+         "material": "leather resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:weapons:starsteel_long_sword"
+      }
+   ]
+}

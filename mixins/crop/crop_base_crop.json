@@ -1,0 +1,28 @@
+{
+   "type": "entity",
+   "components": {
+      "mob": {
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:growing": {
+         "preferred_climate": "forest_staple"
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:megacrop": {
+         "pickup_new": true,
+         "effect": "promote"
+      },
+      "stonehearth:net_worth": {
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "crop"
+         ]
+      }
+   }
+}

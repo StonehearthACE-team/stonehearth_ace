@@ -1,0 +1,32 @@
+{
+   "type": "recipe",
+   "effort": 90,
+   "work_units": 40,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.starsteel_ingot_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.starsteel_ingot_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.starsteel_ingot_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/starsteel_ingot/starsteel_ingot.png",
+   "workshop": "stonehearth_ace:blacksmith:crucible",
+   "work_effect": "work_wait",
+   "manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:starsteel:ore",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:starsteel_ingot"
+      }
+   ]
+}

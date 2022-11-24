@@ -1419,7 +1419,8 @@
                         "choice_001": "It's all good. [skip tutorial]"
                      },
                      "msg_denial": {
-                        "choice_000": "Nah, it's not needed! [skip tutorial]"
+                        "choice_000": "Nah, it's not needed! [skip tutorial]",
+                        "choice_001": "Nah, it's not needed! [skip quest]"
                      },
                      "msg_met_again": {
                         "choice_000": "Haven't we met before?"
@@ -1427,7 +1428,8 @@
                      "gift_title": "Someone left us a gift and a letter!",
                      "gift_accept": {
                         "choice_000": "Thank you very much!"
-                     }
+                     },
+                     "bulletin_title_2": "A curious stranger approaches!"
                   }
                },
                "smith_gift": {
@@ -1465,6 +1467,64 @@
                         }
                      }
                   }
+               },
+               "astrologer_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "dialog_title": "Astrologer Carina",
+                        "msg1": {
+                           "bulletin_message": {
+                              "00": "A woman distractedly walks towards the town while scanning the horizon with a spyglass. Suddenly, she's startled by everyone.<p>\"Oh, OH! Merling's beard! D-did you fall from the sky?! No, wait... You look quite normal.\" She shrugs. \"Yes, I'm sorry, I might've trespassed without noticing...\"<p>She retracts her spyglass into a smaller form and place it in a pocket, making sure her conical hat is in place before waving to everyone with both hands.<br>\"Hello, hello! I am <span class='minor'>Carina</span>, from the <span class='major'>Astrologer's Guild</span>!\""
+                           },
+                           "choice_000": "Astrologer's Guild?"
+                        },
+                        "msg2": {
+                           "bulletin_message": {
+                              "00": "\"Astrologer's Guild, the best guild! We study the stars, the cosmos, the sun and the moon... All through intense observation of the night sky! We also play a bit of 'connect the dots' when it's not so intense...\" Carina coughs.<p>\"Anyway, I didn't mean to invade your settlement, no, no. I was traveling by this area <span class='minor'>a night or so ago when a bright star lit the evening sky!</span> It seemed to be going down in a glorious blaze somewhere around...\" She ponders, looking around. \"...here? Here! Tell me, you haven't heard or seen anything unusual, have you? Maybe a very long, twinkly <i>peeeeeeeew</i> from the sky?\""
+                           },
+                           "choice_000": "Uh... No.",
+                           "choice_001": "Yes! We found a meteorite!"
+                        },
+                        "msg3": {
+                           "bulletin_message": {
+                              "00": "\"I see, understandable. For most people there are far more interesting things down here than up there. But did you know that <i>there's far more interesting things down there than up here?</i> Wait... That sounded wrong.\"<p>She takes off her glasses and clean them up with her robes, revealing pointy and funny-looking shoes.<p>\"Sorry about that, the point is that <span class='minor'>I'm sure a meteorite has fallen somewhere around here,</span> and it would be great if you could find it!\""
+                           },
+                           "choice_000": "Sounds fun!"
+                        },
+                        "msg3b": {
+                           "bulletin_message": {
+                              "00": "\"OHYOUDID?!\" She gasps with excitement, almost dropping her starry conical hat.<p>\"That is <i>STELLAR!</i> Can I take a look at it? Just a little look? Maybe lick it? For science, of course! And only if it's already cold, that-\" She scratches the back of her head. \"That wouldn't end well, <i>haha</i>, ehm...\"<p>Everyone just stares at her.<p>\"Is it a big one? Was it still smoking? <span class='minor'>They release a column of smoke for quite a while after they fall, very useful for finding them!</span> If it's a big one, you can mine it out, you know! <span class='minor'>They're often rich in higher quality gold, stone...</span> And something way better!\""
+                           },
+                           "choice_000": "Something better?"
+                        },
+                        "msg4": {
+                           "bulletin_message": {
+                              "00": "\"Well, yes!\" She smiles proudly. \"We at the Astrologer's Guild dedicate years of our lives in studying, understanding and registering all things above this lush and flat world of ours!\" She gently moves the hand around, pointing to the sky.<p>\"Always keep an eye out for crashed meteorites! <span class='minor'>They're more likely to fall on nights filled with shooting stars,</span> I'm sure you'll notice when such events happen... And remember, they will only happen after a clear day! So don't even bother when it's cloudy or raining.\"<p>She holds her chin for a second, thinking. \"But yes, our findings regarding <span class='major'>meteoric metals</span> are astonishing! You wouldn't believe!\""
+                           },
+                           "choice_000": "Huh?"
+                        },
+                        "msg5": {
+                           "bulletin_message": {
+                              "00": "\"I can provide you with some notes, actually! I can tell you how to <span class='minor'>extract high quality iron from meteorites</span> or, even better...\" She seems to be very excited about the next bit. \"Turn meteoric fragments into an incredibly strong metal, <span class='major'>Starsteel!</span>\"<p>She seems happy to share their knowledge. \"And don't forget to go after fallen meteorites! They make a very peculiar sound, like magic! Or... Bubbles. You'll certainly notice it, even if you don't get to see their fiery demise!\"<p>She's suddenly lost in thoughts before coming back with a rushed voice. \"So, right! Starsteel, stellar knowledge, <i>bada bing, bada boom</i>, yes?\""
+                           },
+                           "choice_000": "Sounds great!"
+                        },
+                        "msg_cancel": {
+                           "bulletin_message": {
+                              "00": "\"Huh! Maybe! I'm a bit distracted, sorry about that... Perhaps we did meet before indeed! If so, am I safe to assume that you already know the secrets about <span class='minor'>meteorites, shooting stars and the art of crafting</span> <span class='major'>Starsteel</span>, right?\"<p>She grins, a bit embarrassed for being confused.<p>\"Because if you do, I'll just hang around a bit and leave in the morning! Otherwise I could tell you about it all right now!\""
+                           }
+                        },
+                        "msg_farewell": {
+                           "bulletin_message": {
+                              "00": "\"Brilliant! You don't mind if I stay a bit longer, right?\" She seems very eager for some reason.<p>\"I think it might be nice and starry tonight! And this place seems like a prime location for stargazing! I might even feel like sharing an astrology tale or two around the fire, who knows?\"<p>She seems to remember something.\"Oh, and don't worry about the recipes I'll teach today... Others in our guild have additional knowledge they can share, I'll let them know where to find you in the future!\""
+                           },
+                           "choice_000": "You're welcome!"
+                        }
+                     }
+                  }
+               },
+               "astrologer_gift": {
+                  "recipe_unlock": "The Blacksmith has unlocked recipes with meteoric fragments and a Starsteel sword!"
                }
             },
             "hunting": {
@@ -2262,11 +2322,18 @@
          "whiteout": {
             "display_name": "Whiteout",
             "description": "There is a storm coming... And it's unlike anything we've ever seen.<ul><li>Slightly reduced sunlight levels</li><li>Quite reduced humidity</li></li><li>Unsheltered hearthlings are too cold to work as effectively</li><li>Unsheltered pasture animals are hurt by the cold</li><li>During the whiteout, vision radius is greatly reduced and hearthlings caught in it will have severely reduced capabilities like weapon range and speed - and will start to get hurt after a while</li><li>The whiteout happens near the middle of the day and lasts until the night</li></ul>",
-            "bulletin_name": "The whiteout has started! Everyone should go inside NOW!"
+            "bulletin_name": "The whiteout has started! Everyone should go inside NOW! ❄️"
          },
          "under_siege": {
             "display_name": "Under Siege!",
             "description": "Smoke, fire and ashes! A light storm rages the land as the sounds of war overtake the environment!"
+         },
+         "event": {
+            "meteor_shower": {
+               "display_name": "Shooting Stars",
+               "description": "The sky is lit by a spectacular meteor shower!<ul><li>Shooting stars will bring joy to most hearthlings!</li><li>Sometimes one of them may actually land nearby...</li><li>If you hear or see anything unusual, scan the horizon for smoke columns!</li></ul>",
+               "bulletin_name": "Look up! There are shooting stars tonight! 🌠"
+            }
          }
       },
       "happiness": {
@@ -2438,6 +2505,14 @@
                   "under_siege_negative": {
                      "display_name": "UNDER SIEGE!",
                      "tooltip": "Oh, no... They're back! We're doomed, DOOMED!"
+                  },
+                  "event_meteor_shower_positive": {
+                     "display_name": "Made a wish!",
+                     "tooltip": "There's one... Oh! There's another one! I love shooting stars!"
+                  },
+                  "event_meteor_shower_negative": {
+                     "display_name": "Wish for what?",
+                     "tooltip": "Everyone loves shooting stars... I don't know why. Make a wish? For what? It never happens!"
                   }
                }
             },
@@ -4843,6 +4918,10 @@
                "display_name": "Mega Beetroot Tonic",
                "description": "This hearthling is cured (and protected from) any poison, toxin or infection. The strong, thick beetroot juices also provide some healing over time."
             }
+         },
+         "starstruck": {
+            "display_name": "Starstruck",
+            "description": "Being damaged by 1% of their total health every 8 minutes for 32 minutes, plus another 1% damage per pulse for every negative effect they're currently inflicted with.<br><br><i>The crushing power of gravity!</i>"
          }
       },
       "loadouts": {
@@ -6970,6 +7049,20 @@
                "description": "The forefront of any worthy establishment!",
                "flavor": "Counter desks will boost the value of all items being sold by counters and shelves (up to 12 blocks away) in a whopping 12%!"
             },
+            "clay_market_stall_simple_recipe": {
+               "recipe_name": "Clay Market Stand",
+               "description": "This market stall can only be used by merchants of the first town level.",
+               "flavor": "Market stalls are used by merchants to set up their shops and are required to attract more than one merchant per day"
+            },
+            "clay_market_stall_recipe": {
+               "recipe_name": "Clay Market Stall",
+               "description": "This market stall can be used by merchants of up to the second town level."
+            },
+            "clay_market_stall_fancy_recipe": {
+               "recipe_name": "Porcelain Market Booth",
+               "description": "This market stall can be used by all merchants and is needed by the wealthiest ones.",
+               "flavor": ""
+            },
             "clay_comfy_bed_herbalist_recipe": {
                "recipe_name": "Herbalist Clay Comfy Bed",
                "description": "Wounded or incapacitated hearthlings will prefer this bed, which can be placed closer to their medications and recovers them slightly faster.",
@@ -7143,9 +7236,19 @@
                "description": "A strong and deadly headpiece for the Ascendant Star.",
                "flavor": "Made out of rock extracted straight from a meteorite... or not"
             },
+            "stone_market_stall_simple_recipe": {
+               "recipe_name": "Stone Market Stand",
+               "description": "This market stall can only be used by merchants of the first town level.",
+               "flavor": "Market stalls are used by merchants to set up their shops and are required to attract more than one merchant per day"
+            },
             "stone_market_stall_recipe": {
                "recipe_name": "Stone Market Stall",
-               "description": "Merchants can visit this stall to buy and sell goods",
+               "description": "This market stall can be used by merchants of up to the second town level.",
+               "flavor": ""
+            },
+            "stone_market_stall_fancy_recipe": {
+               "recipe_name": "Marble Market Booth",
+               "description": "This market stall can be used by all merchants and is needed by the wealthiest ones.",
                "flavor": "All the lonely merchants... where do they all come from?"
             },
             "stone_safety_standard_recipe": {
@@ -7914,6 +8017,16 @@
                "description": "An Enhanced Furnace will allow the Blacksmith to use iron ore more efficiently.",
                "flavor": ""
             },
+            "bulk_iron_ingot_recipe_2": {
+               "recipe_name": "Iron Ingot (x3)",
+               "description": "With a hot enough furnace and a lot of skill, the Blacksmith is able to very efficiently extract meteoric iron from a fallen star.",
+               "flavor": "UNLIMITED POWER!"
+            },
+            "starsteel_ingot_recipe": {
+               "recipe_name": "Starsteel Ingot",
+               "description": "Steel, some bits of pure gold and a meteoric fragment. Keep it all molten in a crucible for long enough and a rare, strong metal will be formed.",
+               "flavor": "Incredibly hard and not so heavy!"
+            },
             "copper_wall_lantern_recipe": {
                "recipe_name": "Copper Wall-Mounted Lantern",
                "description": "A beautiful lantern. Place on buildings to provide light at night.",
@@ -8079,6 +8192,11 @@
                "recipe_name": "Silver Scepter",
                "description": "A reliable and blessed weapon for a Cleric, if they decide to go up close and personal.",
                "flavor": ""
+            },
+            "starsteel_long_sword_recipe": {
+               "recipe_name": "Starsteel Long Sword",
+               "description": "A powerful single-handed weapon that can turn the tide of battle!",
+               "flavor": "'The Sea of Stars is full of untold knowledge... and power!' - Astrologer Cygnus"
             },
             "gold_scepter_recipe": {
                "recipe_name": "Gold Scepter",
@@ -9107,6 +9225,19 @@
                "description": "The forefront of any worthy establishment!",
                "flavor": "Counter desks will boost the value of all items being sold by counters and shelves (up to 12 blocks away) in a whopping 12%!"
             },
+            "wood_market_stall_simple_recipe": {
+               "recipe_name": "Wooden Market Stand",
+               "description": "This market stall can only be used by merchants of the first town level.",
+               "flavor": "Market stalls are used by merchants to set up their shops and are required to attract more than one merchant per day"
+            },
+            "blue_market_stall_recipe": {
+               "description": "This market stall can be used by merchants of up to the second town level."
+            },
+            "wood_market_stall_fancy_recipe": {
+               "recipe_name": "Ornate Market Booth",
+               "description": "This market stall can be used by all merchants and is needed by the wealthiest ones.",
+               "flavor": ""
+            },
             "comfy_bed_herbalist_recipe": {
                "recipe_name": "Herbalist Comfy Bed",
                "description": "Wounded or incapacitated hearthlings will prefer this bed, which can be placed closer to their medications and recovers them slightly faster.",
@@ -10027,7 +10158,7 @@
                "flavor": "Fruity and sweet, a festival favorite!"
             },
             "liqueur_almond_recipe": {
-               "recipe_name": "Keg of Almond Liqueuer",
+               "recipe_name": "Keg of Almond Liqueur",
                "description": "A very refined and traditional Rayya's Children recipe for a luxury beverage.",
                "flavor": "Particularly good after a great meal"
             },
@@ -12880,6 +13011,12 @@
                "display_name": "Hearthbud Flakes",
                "description": "Dried and ground magical blossoms!"
             }
+         },
+         "starsteel": {
+            "starsteel_ore": {
+               "display_name": "Meteoric Fragment",
+               "description": "It came from the sky! I swear it on my pet poyo!"
+            }
          }
       },
       "refined": {
@@ -12994,6 +13131,10 @@
          "unfired_porcelain": {
             "display_name": "Unfired Porcelain",
             "description": "Thrown porcelain pottery ready to be fired into decorations and vessels."
+         },
+         "starsteel_ingot": {
+            "display_name": "Starsteel Ingot",
+            "description": "A bar of steel purified with gold and imbued with meteoric metal."
          }
       },
       "trees": {
@@ -13723,6 +13864,44 @@
          }
       },
       "furniture": {
+         "mercantile": {
+            "wood_market_stall_simple": {
+               "display_name": "Wooden Market Stand",
+               "description": "A plain spot for simple merchants to set up their stores when visiting."
+            },
+            "wood_market_stall": {
+               "display_name": "Wooden Market Stall",
+               "description": "A fine location for the average merchant to set up their store when visiting."
+            },
+            "wood_market_stall_fancy": {
+               "display_name": "Ornate Market Booth",
+               "description": "A fancy shop for the best merchants to set up their stores when visiting."
+            },
+            "clay_market_stall_simple": {
+               "display_name": "Clay Market Stand",
+               "description": "A plain spot for simple merchants to set up their stores when visiting."
+            },
+            "clay_market_stall": {
+               "display_name": "Clay Market Stall",
+               "description": "A fine location for the average merchant to set up their store when visiting."
+            },
+            "clay_market_stall_fancy": {
+               "display_name": "Porcelain Market Booth",
+               "description": "A fancy shop for the best merchants to set up their stores when visiting."
+            },
+            "stone_market_stall_simple": {
+               "display_name": "Stone Market Stand",
+               "description": "A plain spot for simple merchants to set up their stores when visiting."
+            },
+            "stone_market_stall": {
+               "display_name": "Stone Market Stall",
+               "description": "A fine location for the average merchant to set up their store when visiting."
+            },
+            "stone_market_stall_fancy": {
+               "display_name": "Marble Market Booth",
+               "description": "A fancy shop for the best merchants to set up their stores when visiting."
+            }
+         },
          "patrol_point": {
             "patrol_point_ghost": {
                "display_name": "Patrol Point",
@@ -13896,11 +14075,6 @@
          "clay_comfy_bed_pet": {
             "display_name": "Clay Comfy Pet Bed",
             "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!"
-         },
-         "blue_market_stall": {
-            "blue_market_stall_ghost": {
-               "display_name": "Wooden Market Stall"
-            }
          },
          "megacrop": {
             "cotton_bed_pet": {
@@ -15136,6 +15310,18 @@
          }
       },
       "decoration": {
+         "blue_market_stall": {
+            "blue_market_stall_ghost": {
+               "display_name": "Old Wooden Market Stall",
+               "description": "Can't be used anymore... Maybe as a decoration?!"
+            }
+         },
+         "clay_market_stall": {
+            "clay_market_stall_ghost": {
+               "display_name": "Old Clay Market Stall",
+               "description": "Can't be used anymore... Maybe as a decoration?!"
+            }
+         },
          "plant_glass": {
             "plant_glass_ghost": {
                "display_name": "Flowers in a vase",
@@ -15234,12 +15420,6 @@
                   "display_name": "Quenching Station",
                   "description": "It gets cool really fast."
                }
-            }
-         },
-         "stone_market_stall": {
-            "stone_market_stall_ghost": {
-               "display_name": "Stone Market Stall",
-               "description": "Merchants can set up shop here"
             }
          },
          "brass_sign_blacksmith": {
@@ -18413,6 +18593,10 @@
          "dragon_cult_scepter": {
             "display_name": "Hierophant's Staff",
             "description": "The pounding and healing tool of a dragon cult Hierophant."
+         },
+         "starsteel_long_sword": {
+            "display_name": "Starsteel Long Sword",
+            "description": "The power of the stars made into a fine footman's blade."
          }
       },
       "gizmos": {
@@ -19995,6 +20179,12 @@
                   "display_name": "Sir Edmund",
                   "description": "Accomplished battle-cleric"
                }
+            },
+            "female": {
+               "astrologer": {
+                  "display_name": "Astrologer Carina",
+                  "description": "An observer of the night sky"
+               }
             }
          },
          "mountain_folk": {
@@ -20723,6 +20913,7 @@
             "missing_catalog_data": "[MISSING CATALOG DATA]",
             "item_categories": {
                "undefined": "Miscellaneous",
+               "mercantile": "Trading & Commerce",
                "aquatic": "Aquatic Life",
                "fluid_control": "Fluid Control",
                "mechanism": "Mechanisms",

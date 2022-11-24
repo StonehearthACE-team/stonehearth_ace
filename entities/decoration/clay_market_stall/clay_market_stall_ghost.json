@@ -3,7 +3,7 @@
       "render_info": {
          "scale": 0.1
       },
-      "mixintypes": {
+	   "mixintypes": {
 		   "model_variants": "override"
 	   },
       "model_variants": {
@@ -17,8 +17,8 @@
 					      "file(clay_market_stall_3.qb)",
 					      "file(clay_market_stall_4.qb)",
 					      "file(clay_market_stall_5.qb)",
-					      "file(clay_market_stall_6.qb)",
-					      "file(clay_market_stall_7.qb)"
+                     "file(clay_market_stall_6.qb)",
+                     "file(clay_market_stall_7.qb)"
                   ]
                }
             ]
@@ -31,6 +31,8 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
+	      "display_name": "i18n(stonehearth_ace:entities.decoration.clay_market_stall.clay_market_stall_ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.clay_market_stall.clay_market_stall_ghost.description)",
          "icon": "file(clay_market_stall.png)",
          "category": "construction"
       }

@@ -1,0 +1,16 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "invisible_to_player": true,
+   "script": "stonehearth_ace:buff_scripts:run_event",
+   "effect": "stonehearth_ace:effects:ember_effect",
+   "restore_effect": true,
+   "duration": "16h",
+   "script_info": {
+      "source": "stonehearth_ace",
+      "event": "stonehearth_ace:meteoric_fragment_present",
+      "tick": "2h",
+      "on_added": true,
+      "on_removed": true
+   }
+}

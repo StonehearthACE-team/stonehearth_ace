@@ -5,22 +5,22 @@
    "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.stone_market_stall_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.mason.recipes.stone_market_stall_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.stone_market_stall_recipe.flavor)",
-   "portrait": "/stonehearth_ace/entities/decoration/stone_market_stall/stone_market_stall.png",
+   "portrait": "/stonehearth_ace/entities/furniture/stone_market_stall/stone_market_stall.png",
    "workshop": "stonehearth:mason:pedestal",
    "level_requirement": 3,
    "ingredients": [
       {
          "material": "stone resource",
-         "count": 16
+         "count": 8
       },
       {
          "material": "pelt resource",
-         "count": 6
+         "count": 4
       }
    ],
    "produces": [
       {
-         "item": "stonehearth_ace:decoration:stone_market_stall"
+         "item": "stonehearth_ace:furniture:stone_market_stall"
       }
    ]
 }

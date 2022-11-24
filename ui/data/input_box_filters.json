@@ -118,6 +118,12 @@
             "mixintypes": {
                "ore": "remove",
                "coal": "remove"
+            },
+            "starsteel_ore": {
+               "ordinal": 99,
+               "display_name": "i18n(stonehearth_ace:entities.resources.starsteel.starsteel_ore.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/starsteel/starsteel_ore/starsteel_ore.png",
+               "filter": "starsteel ore resource"
             }
          }
       },
@@ -127,8 +133,33 @@
             "mixintypes": {
                "ingots": "remove"
             },
+            "copper_ingot": {
+               "icon": "/stonehearth_ace/entities/refined/copper_ingot/copper_ingot.png",
+               "filter": "copper ingot refined"
+            },
             "tin_ingot": {
-               "icon": "/stonehearth_ace/entities/refined/tin_ingot/tin_ingot.png"
+               "icon": "/stonehearth_ace/entities/refined/tin_ingot/tin_ingot.png",
+               "filter": "tin ingot refined"
+            },
+            "bronze_ingot": {
+               "icon": "/stonehearth_ace/entities/refined/bronze_ingot/bronze_ingot.png",
+               "filter": "bronze ingot refined"
+            },
+            "iron_ingot": {
+               "icon": "/stonehearth_ace/entities/refined/iron_ingot/iron_ingot.png",
+               "filter": "iron ingot refined"
+            },
+            "steel_ingot": {
+               "icon": "/stonehearth_ace/entities/refined/steel_ingot/steel_ingot.png",
+               "filter": "steel ingot refined"
+            },
+            "silver_ingot": {
+               "icon": "/stonehearth_ace/entities/refined/silver_ingot/silver_ingot.png",
+               "filter": "silver ingot refined"
+            },
+            "gold_ingot": {
+               "icon": "/stonehearth_ace/entities/refined/gold_ingot/gold_ingot.png",
+               "filter": "gold ingot refined"
             },
             "brass_plate": {
                "ordinal": 5.51,
@@ -153,6 +184,12 @@
                "display_name": "i18n(stonehearth_ace:entities.refined.lock.display_name)",
                "icon": "/stonehearth_ace/entities/refined/lock/lock.png",
                "filter": "lock resource"
+            },
+            "starsteel_ingot": {
+               "ordinal": 99,
+               "display_name": "i18n(stonehearth_ace:entities.refined.starsteel_ingot.display_name)",
+               "icon": "/stonehearth_ace/entities/refined/starsteel_ingot/starsteel_ingot.png",
+               "filter": "starsteel ingot refined"
             }
          }
       },

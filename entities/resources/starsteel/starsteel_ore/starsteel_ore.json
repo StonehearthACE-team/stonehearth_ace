@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(starsteel_ore.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": -0.05 }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:meteoric_fragment": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 18,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.starsteel.starsteel_ore.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.starsteel.starsteel_ore.description)",
+         "icon": "file(starsteel_ore.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": [
+            "stockpile_ore",
+            "starsteel",
+            "ore",
+            "resource"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 6
+      }
+   }
+}
