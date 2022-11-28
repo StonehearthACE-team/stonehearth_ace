@@ -490,7 +490,7 @@ App.StonehearthUnitFrameView.reopen({
       var name_entity = self.get('name_entity');
       var unit_info = self.get(name_entity + '.stonehearth:unit_info');
       
-      var canChangeName = playerCheck && unit_info && !unit_info.locked;
+      var canChangeName = playerCheck && unit_info && unit_info.custom_name && !unit_info.locked;
       self.set('canChangeName', canChangeName);
       self.notifyPropertyChange('canChangeName');
 

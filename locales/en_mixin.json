@@ -155,6 +155,11 @@
                }
             }
          }
+      },
+      "gizmos": {
+         "charging_pedestal": {
+            "charging_display_name": "[str(self.stonehearth:unit_info.custom_name)] [[str(self.stonehearth:unit_info.custom_data.percent_charge)]%]"
+         }
       }
    }
 }
