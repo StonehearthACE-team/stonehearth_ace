@@ -354,6 +354,7 @@ function AceHydrologyService:_check_for_channel_merge()
 end
 
 -- if you remove something from the water and want it to replace water there instead of adjusting/filling
+-- returns true if successful, false if prefill function failed, and nil if not exactly one adjacent water region
 function AceHydrologyService:auto_fill_water_region(region, prefill_fn)
    local inflated_region = csg_lib.get_non_diagonal_xyz_inflated_region(region)
    local waters = radiant.terrain.get_entities_in_region(inflated_region, function(entity) return entity:get_component('stonehearth:water') ~= nil end)
@@ -365,12 +366,12 @@ function AceHydrologyService:auto_fill_water_region(region, prefill_fn)
    end
 
    if prefill_fn and not prefill_fn(waters) then
-      return
+      return false
    end
 
    -- eventually it would be cool if we could handle more than one water entity intersecting the region at different points
    if num_waters ~= 1 then
-      return
+      return nil
    end
 
    local water_entity = waters[next(waters)]
@@ -400,6 +401,8 @@ function AceHydrologyService:auto_fill_water_region(region, prefill_fn)
    --local new_water = self:create_water_body_with_region(new_region, new_height)
    -- merge the new water with the old
    --self:merge_water_bodies(water_entity, new_water, true)
+
+   return true
 end
 
 return AceHydrologyService
