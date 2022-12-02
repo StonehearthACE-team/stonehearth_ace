@@ -746,7 +746,7 @@ App.StonehearthUnitFrameView.reopen({
       if (attributeMap) {
          radiant.each(attributeMap, function(name, buff) {
             //only push public buffs (buffs who have an is_private unset or false)
-            if (buff.invisible_to_player == undefined || !buff.invisible_to_player) {
+            if (typeof buff === 'object' && (buff.invisible_to_player == undefined || !buff.invisible_to_player)) {
                var this_buff = radiant.shallow_copy(buff);
                // only show stacks if greater than 1
                if (this_buff.stacks > 1) {
