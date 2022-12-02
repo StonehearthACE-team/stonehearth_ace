@@ -12,27 +12,27 @@ function CropCheck:start(ctx, info)
       log:debug('could not get the farmer crops!')
       return false
    end
-
-   if info.unknown_crop then
-      for _, locked_crop in ipairs(info.unknown_crop) do
-         if not manually_unlocked[locked_crop] and not initial_crops[locked_crop] then
-            log:debug('looking for unknown crops: at least one crop is unknown, return true')
-            return true
-         end
-      end
-   end
    
    if info.known_crop then
       for _, unlocked_crop in ipairs(info.known_crop) do
-         if not manually_unlocked[locked_crop] and not initial_crops[locked_crop] then
+         if not manually_unlocked[unlocked_crop] and not initial_crops[unlocked_crop] then
             log:debug('looking for known crops: at least one crop is not known, return false')
             return false
          end
       end
-      return true
    end
    
-   return false
+   if info.unknown_crop then
+      for _, locked_crop in ipairs(info.unknown_crop) do
+         if manually_unlocked[locked_crop] or initial_crops[locked_crop] then
+            log:debug('looking for unknown crops: at least one crop is known, return false')
+            return false
+         end
+      end
+   end
+   
+   log:debug('no uknown "known" or known "unknown" requirements found, return true')
+   return true
 end
 
 return CropCheck

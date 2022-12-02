@@ -1,24 +1,11 @@
 {
    "type": "encounter",
-   "encounter_type": "donation",
+   "encounter_type": "script",
    "in_edge": "arrival_quest_reward",
-   "out_edge": "branching_quest_dialogue",
-   "donation_info": {
-      "loot_table": {
-         "entries": {
-            "default": {
-               "num_rolls": {
-                  "min": 1,
-                  "max": 1
-               },
-               "items": {
-                  "pet_food_bowl_bone": {
-                     "uri": "stonehearth_ace:containers:pet_food_bowl:bone",
-                     "weight": 1
-                  }
-               }
-            }
-         }
+   "script_info": {
+      "script": "file(unlock_crop.lua)",
+      "data": {
+         "crop": "paddy"
       }
    }
 }

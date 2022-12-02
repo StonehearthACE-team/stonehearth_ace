@@ -598,7 +598,7 @@
                         "fishing_shop_3": {
                            "shop_info": {
                               "name": "Bruno the Fisher's Shop",
-                              "title": "A famous fisherman is in town with many exotic wares to sell"
+                              "title": "A famous fisherman is in town with many uncommon wares to sell"
                            }
                         },
                         "quarry_shop_3": {
@@ -622,6 +622,9 @@
                      }
                   }
                },
+               "returning_collector_encounter": {
+                  "title": "An explorer approaches your town."
+               },
                "dom_vandon_arrival": {
                   "dialog_tree_info": {
                      "dialog_nodes": {
@@ -629,75 +632,141 @@
                            "bulletin_title": "A fine-looking merchant approaches with a very exotic caravan!",
                            "dialog_title": "Dom Vandon, Caravaneer",
                            "bulletin_message": {
-                              "00": "The goblin approaches, revealing herself to be a bit shorter than expected. \"BONES! BONES!\" she shouts in a playful, almost childish voice.<p>\"BOOOONEEES!\" she continues.<p>She seems to be harmless.<p><span class='aside'>Is that a child? Are there goblin children?</span></p>"
+                              "00": "\"Warm greetings to your settlement! Dom Vandon,<i>ao vosso dispor.</i>\" He seems to be wearing the finest silk garments and bows with admirable elegance. \"Yes, you heard right, the famous merchant! I'm sure you've heard my name before,<i> sim</i>?\"<p>He looks around, clearly analyzing the town in detail before continuing. \"Our latest - and most fruitful! - journey has brought us many wonderful goods, most of which are already reserved for the mightiest lords, kings and queens, I'm afraid! However, I sense there's still a good opportunity for business here!\"<p>He smiles, holding some sort of heavy ledger or journal close to his chest."
                            },
-                           "choice_000": "Oh?",
+                           "choice_000": "We're listening!",
                            "choice_001": "Nope, sorry! [Skip Quest]"
                         },
                         "msg2": {
                            "bulletin_title": "Dom Vandon's Caravan from the Far East",
                            "dialog_title": "Dom Vandon, Caravaneer",
                            "bulletin_message": {
-                              "00": "She's clearly happy about it, hopping around in circles. \"BONES! BONES! MANY BONES!\"<p>Suddenly, a stern and yet compassionate hearthling voice rumbles nearby. \"There you are, Rattley!\""
+                              "00": "\"I knew I could see it in you, um<i>grande mercador!</i> A visionary! An explorer! Just like Dom Vandon.\" He frowns his face, tipping his head a bit. \"Ehm, no. Not like him, there's no one like him! But many are trying, yes, yes! From the frozen wastes in the north to the serene minds by the southern coast, many adventurous and enterprising individuals are risking their fortunes outside their borders, all after the great deeds of Dom Vandon! The vanguard of a new age!\"<p>He clenches a fist close to his face, proudly staring at the horizon.<p>\"Alas, there is only one Silk Road and its wonders and that... That is under my<i> autoridade!</i>\" He says with a strong voice."
                            },
-                           "choice_000": "Who?"
+                           "choice_000": "Go on.",
+                           "choice_001": "A Silk Road?"
                         },
                         "msg3": {
                            "bulletin_title": "Dom Vandon's Caravan from the Far East",
                            "dialog_title": "Dom Vandon, Caravaneer",
                            "bulletin_message": {
-                              "00": "He wears the colors of the Northern Alliance. Strong and grizzled, he rests his hand on the head of the little goblin. \"So there you are! Going out and making friends, eh?\"<p>He notices the people around. \"I apologize. Name's Thorulf, traveler and former Scout of the Library.\"<p>With a gentle pat the goblin goes back to jumping around."
+                              "00": "\"No, no. Not a Silk Road.<i>The</i> Silk Road!\" He starts gesturing towards the east. \"Go for as long as you can, following the mountains beyond the Pal'Mum sands! Cross barren lands and dangerous steppes towards the sunrise and there you'll reach it, the eastern kingdoms! Great and beautiful cities with thousands of people, long and winding rivers surrounded by terrace farms of crops or fruits you've never dreamed of...\"<p>A tear rolls down his eye.<p>\"From there you can go further southeast to find the prosperous kingdoms of limestone and spice, full of colorful textiles... Or even further east and your path shall be greeted by imperial dynasties as old as the Phoenix Empire!\""
                            },
-                           "choice_000": "Greetings!",
-                           "choice_001": "You have a... pet goblin?"
+                           "choice_000": "Is that real?!"
                         },
                         "msg3b": {
                            "bulletin_title": "Dom Vandon's Caravan from the Far East",
                            "dialog_title": "Dom Vandon, Caravaneer",
                            "bulletin_message": {
-                              "00": "\"What?\" he thunders. \"No, don't call her a pet! She's a goblin - not a squirrel. They're people too, you know?\"<p>He coughs, waving his hand as an apology.<p>\"I apologize. It's just... We've been through a lot, Rattley and I.\" He looks in her direction as she plays with a small bone club. \"Unfortunately, not many places are prepared to accept or at least try to understand goblins...\""
+                              "00": "\"It is! Golden roofed palaces and clay statues the size of an ogre, a hundred cities of jade and ivory you will pass before you reach the sea where the sun is born every morning, home of the island clans with their fine metalwork and combat arts. Survive this whole journey then travel the entire way back to the west with a caravan of goods... And you'll have riches beyond measure. That is the Silk Road, my<i>amigo</i>.\" He sighs, longing to return to the road. \"That is Dom Vandon's calling. To explore these distant lands and bring their treasures to everyone!\""
                            },
-                           "choice_000": "I see. Apologies!"
+                           "choice_000": "What is your offer?"
                         },
                         "msg4": {
                            "bulletin_title": "Dom Vandon's Caravan from the Far East",
                            "dialog_title": "Dom Vandon, Caravaneer",
                            "bulletin_message": {
-                              "00": "\"Rattley is like a daughter to me,\" he says with a bittersweet smile, \"I am the reason she is alone in the world, and she is the reason I left the Library. Each of us watches over the other now!\" he laughs, shoving the past back where it belongs.<p>\"I know you're busy, so we'll go find a place to camp for a few days!\" He waves his hand, calling Rattley closer."
+                              "00": "\"Well, I can't simply bring their unique riches, seeds and products without giving something in return,<i>amigo!</i> I must offer them something of equal value - our own things that are unique or special to them.\"<p>He looks around, contemplating.<p>\"When you're somewhere for your entire life, you start to take some things for granted... But they are not. This is the greatest lesson a<i> grande mercador</i> like Dom Vandon will learn, for it is also the most precious lesson for trading: give others what they don't have and they'll give you what you want.\" He scratches his chin, pensive. \"So, I might not have much left from the Far East but I'll definitely need certain things for the journey back...\""
                            },
-                           "choice_000": "Sure!"
+                           "choice_000": "Huh!"
                         },
                         "msg5": {
                            "bulletin_title": "Dom Vandon's Caravan from the Far East",
                            "dialog_title": "Dom Vandon, Caravaneer",
                            "bulletin_message": {
-                              "00": "\"Oh, I almost forgot...\" he scratches the back of his head and smirks. \"I'll be busy setting up camp and won't have time to hunt very soon... Would you mind gifting little Rattley a couple of bones?\"<p>The little goblin reacts enthusiastically. \"BONES! GIVE BONES!\"<p>Thorulf stares back at her \"Rattley, what have I told you?\".<p>She looks down. \"Please?\"<p>Thorulf smiles. \"We would appreciate it, she loves carving them!\""
+                              "00": "\"You help Dom Vandon now, providing some of the resources we need for the next journey... And in return Dom Vandon will give you something very special from one of his crates. Seeds for a shiny grass that will grow into delicious grain,<span class='major'>Rice.</span>\" He smiles, opening the big ledger skipping around some pages.<p>\"With these seeds and some knowledge that I can also provide, as a gesture of good faith, I'm certain that your people will be able to grow their own paddy fields!\"<p>He vigorously extends his hand.\"And, of course, Dom Vandon never forgets those that helped him! I might even bring something different in the future, yes? What say you,<i>amigo?</i>\""
                            },
-                           "choice_000": "Of course!"
+                           "choice_000": "We accept!",
+                           "choice_001": "Nope, sorry! [Skip Quest]"
                         },
                         "skip": {
                            "bulletin_title": "Dom Vandon's Caravan from the Far East",
                            "dialog_title": "Dom Vandon, Caravaneer",
                            "bulletin_message": {
-                              "00": "\"Good!\" he exclaims, before turning around. \"We'll be nearby. Stay warm!\"<p>They start walking away."
+                              "00": "\"Oh, it's understandable.\"<p>He shrugs, seemingly not worried at all - almost as if refusal was expected.<p>\"The path to greatness is not for everyone, of course. Some people are just happy the way they are, with the things they already have, without dreaming of more. Ahh, but one day...\" He looks up, hopeful. \"One day the world will feel small and everyone will have everything from everywhere,<i> amigo!</i> Write this down... Dom Vandon is starting a new age!\" He looks down again, back to his unworried face.<p>\"I thought this could be different, but sometimes even a visionary must take a step back... Stay safe, little town!\""
                            },
-                           "choice_000": "Alright, we'll listen!",
+                           "choice_000": "Wait, we'll listen!",
                            "choice_001": "Take care! [Skip Quest]"
                         }
                      }
                   }
                },
-               "returning_silk_road_trader_encounter": {
-                  "title": "A caravaneer from the far east is passing through!",
-                  "trade_details": "Warm greetings, [str(i18n_data.town_name)]! Don Vandon, at your service. Yes, that is right: the famous merchant! Our latest fruitful crossing of the perilous Silk Road has brought us many wonderful goods, most of which are already reserved for the mightiest lords, kings and queens, I'm afraid! We do have some cancelled orders, however... Like these <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong>. Not my finest products, no no, so you can have them. For a fair price, of course! The eastern kingdoms are interested in our exotic goods, let's say... <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong>! We'll be around for [str(i18n_data.num_days)] days, think your fair town can manage this exchange, yes?",
-                  "waiting_title": "Don Vandon's caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
-                  "waiting_text": "Don Vandon's caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> ready for them!",
-                  "return_title": "The caravaneer from the far east returns!",
-                  "return_greetings_positive": "Greetings again! It seems your [str(i18n_data.want_number)] [str(i18n_data.want_item)] are ready to be traded for my [str(i18n_data.reward_number)] [str(i18n_data.reward_item)]! We should proceed with the deal, yes?",
-                  "return_greetings_negative": "We're about to proceed back into the Silk Road and it seems you've not procured us [str(i18n_data.want_number)] [str(i18n_data.want_item)]. Understandable. Look for our caravan again in the future, yes, yes. Safe passage under the moonlight, friend!"
+               "dom_vandon_arrival_quest": {
+                  "title": "Supplies for Dom Vandon's Caravan",
+                  "dialog_title": "Supplies for Dom Vandon's Caravan",
+                  "text": "Dom Vandon gave us a small list of some resources they need for the next crossing of the Silk Road. In return, he'll teach us how to cultivate Rice - and might even bring other goods from the Far East in the future!"
                },
-               "returning_collector_encounter": {
-                  "title": "An explorer approaches your town."
+               "return_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "The fine-looking merchant approaches, worried about the delay on delivering him his request.<p>\"Is everything alright, <i>amigo</i>? Do I notice a slight lack of interest in being part of the future and the dawn of a new age from your part?\" He checks some values on his ledger before closing it and looking at everyone that gathered around him.<p>\"It is not a problem, I'll understand if your town has different priorities. But please, if this is the case let Dom Vandon know it right now so he can move on with his caravan. Are you still interested in our deal?\""
+                           },
+                           "choice_000": "We can do it!",
+                           "choice_001": "Nope, sorry! [Skip Quest]"
+                        }
+                     }
+                  }
+               },
+               "main_quest_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "Dom Vandon returns!",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "\"Look who is back, my<i> amigo!</i> And, as promised, Dom Vandon brings you an incredible gift!\" He brings a large crate full of seedbags and some notes.<p>\"This is paddy, a type of grass that must grow on water but will provide you with rice, a delicious and starchy grain! Yes, rice is known - and many merchants will sell it... But now you may plant your own! Besides, rice flour is very versatile, you see... And <span class='minor'>can be used both as a hard or soft flour!</span> Dom Vandon was fascinated the day he discovered this eastern delicacy and he's sure your people will be, too!\" He points to his own head. \"And that's not all!\""
+                           },
+                           "choice_000": "Oh?"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "\"You've proven yourself to be a reliable business partner!\" He smiles, checking something on his ledger once more. He then retrieves a fine quill and starts writing something and, without looking, he continues speaking. \"There are many journeys and caravans to take care of, Dom Vandon must never linger on the same place for too long! However, I'll definitely let my caravaneers know that this settlement can be trusted from now on! Which means that they might come looking for supplies or products that are very interesting for the eastern kingdoms...\"<p>He finishes writing, drops the quill and closes the ledger, finally looking back up. \"And in return they might bring more exotic goods!\""
+                           },
+                           "choice_000": "More?"
+                        },
+                        "msg3": {
+                           "bulletin_title": "Dom Vandon's Caravan from the Far East",
+                           "dialog_title": "Dom Vandon, Caravaneer",
+                           "bulletin_message": {
+                              "00": "\"Yes! <span class='major'>Tea, coffee,</span> <span class='minor'>intricate crafts like decorations, building parts...</span>\" He raises his brows. \"Even <span class='major'>weapons and armor</span>, they have very unique equipment that will surely be useful to your people, my<i> amigo!</i>\"<p>He gestures down, displaying his own fine-looking and exotic garments.<p>\"Well, it has been a pleasure but the road awaits! Remember, <span class='minor'>help my caravans as much as you can and Dom Vandon promises that it will be worth your time!</span> Never a bad deal with this <i>grande mercador!</i>\"<p>He smiles before pacing away. \"Good bye and until our next meeting!\""
+                           },
+                           "choice_000": "We'll be waiting!"
+                        }
+                     }
+                  }
+               },
+               "tier_1_returning_silk_road_encounter": {
+                  "title": "A small caravan from the far east is passing through!",
+                  "trade_details": "\"Hello, people of [str(i18n_data.town_name)]!\"<p>It seems to be a small caravan in service to Dom Vandon, on its way back from the Silk Road with a few articles from the eastern kingdoms. They are offering <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if we provide them with <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> for their next journey.<p>They can wait for [str(i18n_data.num_days)] days.",
+                  "waiting_title": "The Far East caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
+                  "waiting_text": "The Far East caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> ready for them!",
+                  "return_title": "The caravaneer from the far east returns!",
+                  "return_greetings_positive": "\"Greetings again! It seems your [str(i18n_data.want_number)] [str(i18n_data.want_item)] are ready to be traded for my [str(i18n_data.reward_number)] [str(i18n_data.reward_item)]! We should proceed with the deal, yes?\"",
+                  "return_greetings_negative": "\"We're about to proceed back into the Silk Road and it seems you've not procured us [str(i18n_data.want_number)] [str(i18n_data.want_item)]. It's alright... Look for our caravan again in the future, yes, yes.\"<p>They start leaving."
+               },
+               "tier_2_returning_silk_road_encounter": {
+                  "title": "A caravan from the far east is passing through!",
+                  "trade_details": "\"Warm greetings, friends of [str(i18n_data.town_name)]!\"<p>It seems to be a fairly sized caravan in service to Dom Vandon, on its way back from the Silk Road with several and valuable articles from the eastern kingdoms. They are offering <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if we provide them with <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> for their next journey.<p>They can wait for [str(i18n_data.num_days)] days.",
+                  "waiting_title": "The Far East caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
+                  "waiting_text": "The Far East caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> ready for them!",
+                  "return_title": "The caravaneer from the far east returns!",
+                  "return_greetings_positive": "\"Hello, friend! Looks like your [str(i18n_data.want_number)] [str(i18n_data.want_item)] are good to go! I brought our [str(i18n_data.reward_number)] [str(i18n_data.reward_item)]! Shake hands?\"",
+                  "return_greetings_negative": "\"It's time for us to return to the east and you don't seem to have [str(i18n_data.want_number)] [str(i18n_data.want_item)]. Not a problem, we might come back some other day! Safe passage under the moonlight, friend!\"<p>They start leaving."
+               },
+               "tier_3_returning_silk_road_encounter": {
+                  "title": "A large caravan from the far east is passing through!",
+                  "trade_details": "\"Very fragrant greetings, dear friends of [str(i18n_data.town_name)]!\"<p>It seems to be a huge caravan in service to Dom Vandon, on its way back from the Silk Road with lots of fancy and precious articles from the eastern kingdoms. They are offering <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if we provide them with <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> for their next journey.<p>They can wait for [str(i18n_data.num_days)] days.",
+                  "waiting_title": "The Far East caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
+                  "waiting_text": "The Far East caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> ready for them!",
+                  "return_title": "The caravaneer from the far east returns!",
+                  "return_greetings_positive": "\"We're back, my friends! And it seems you have the [str(i18n_data.want_number)] [str(i18n_data.want_item)] ready and packed for us! Here is the [str(i18n_data.reward_number)] [str(i18n_data.reward_item)] we promised! We keeping the deal, yes?\"",
+                  "return_greetings_negative": "\"The eastern lands are calling again and we must answer their call. We're sorry, but it seems you couldn't arrange the [str(i18n_data.want_number)] [str(i18n_data.want_item)] we wanted. Fear not, we shall return soon! May the sand be always warm under your feet, friends!\"<p>They start leaving."
                }
             },
             "town_progression": {
@@ -8693,7 +8762,7 @@
             "veggie_roll_recipe": {
                "recipe_name": "Veggie Rolls",
                "description": "Ground meat and rice rolled in leafy greens and steamed until they're crispy!",
-               "flavor": "A traditional Pal'mum delicacy that has earned the hearts of everyone!"
+               "flavor": "A traditional Pal'Mum delicacy that has earned the hearts of everyone!"
             },
             "fishwrap_recipe": {
                "recipe_name": "Fishwrap",
