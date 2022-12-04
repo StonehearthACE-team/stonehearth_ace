@@ -54,6 +54,14 @@ App.StonehearthShopBulletinDialog.reopen({
       });
    },
 
+   _updateShopDescription: function() {
+      var self = this;
+      var description = self.get('model.data.shop.description');
+      var description_i18n_data = self.get('model.data.shop.description_i18n_data');
+      self.set('hasShopDescription', description != null);
+      self.set('shopDescription', i18n.t(description, description_i18n_data));
+   }.observes('model.data.shop.description'),
+
    _updateWantedItems: function() {
       if (!this.$()) {
          return;
