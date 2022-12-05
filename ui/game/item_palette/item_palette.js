@@ -92,7 +92,7 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
             if (!updated.items[uri]) updated.items[uri] = {};
             updated.items[uri][itemQuality] = true;
          }
-      })
+      });
 
       // Anything that is not marked as updated needs to be removed.
       radiant.each(self._itemElements, function(uri, itemQualities) {
@@ -114,19 +114,26 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
             self._categoryElements[category] = null;
          }
       });
+
+      // now sort each category according to its ordinal
+      var categories = $(self.palette).find('.category');
+      categories.sort(function(a, b) {
+         return +$(a).attr('ordinal') - +$(b).attr('ordinal');
+      });
+      categories.appendTo(self.palette);
    },
 
    _addCategoryForItem: function(item) {
-      /*same as vanilla, but added this part to h2 elements:
-      .click(function(){
-         this.classList.toggle("collapsed");
-      });*/
+      var categoryData = stonehearth_ace.getItemCategory(item.category) || {};
+      var ordinal = isNaN(categoryData.ordinal) ? 999 : categoryData.ordinal;
+
       var category = $('<div>')
          .addClass('category')
-         .attr('category', item.category);
+         .attr('category', item.category)
+         .attr('ordinal', ordinal);
 
       // new title element for the category
-      var categoryDisplayName = i18n.t('stonehearth:ui.game.entities.item_categories.' + item.category);
+      var categoryDisplayName = i18n.t(categoryData.display_name || 'stonehearth:ui.game.entities.item_categories.' + item.category);
       if (!categoryDisplayName) {
          console.log("No category display name found for item category " + item.category);
          categoryDisplayName = item.category;
