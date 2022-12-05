@@ -159,4 +159,11 @@ function AceTownService:get_persistence_data()
    return data
 end
 
+-- attempted fix to rare issue of red_alert.js calling it before player has been fully set up?
+function AceTownService:town_alert_enabled_command(session, response)
+   local town = self:get_town(session.player_id)
+   local enabled = town and town:town_alert_enabled()
+   return { enabled = enabled }
+end
+
 return AceTownService
