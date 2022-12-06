@@ -73,22 +73,20 @@ AceSound._ace_old_on_server_ready = Sound.on_server_ready
 function AceSound:on_server_ready()
    self:_ace_old_on_server_ready()
 
-   self:set_soundtrack_override()
+   self:set_soundtrack_override(stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'soundtrack_override'))
 end
 
 function AceSound:set_soundtrack_override(override)
-   if not override then
-      override = stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'soundtrack_override')
-   end 
-
-   if override then
-      if override == 'none' then
-         self._soundtrack_override = nil
-      else
-         self._soundtrack_override = override
-      end
+   local prev_override = self._soundtrack_override
+   if not override or override == 'none' then
+      self._soundtrack_override = nil
+   else
+      self._soundtrack_override = override
    end
-   self._trigger_tracklist_change = true
+
+   if prev_override ~= self._soundtrack_override then
+      self._trigger_tracklist_change = true
+   end
 end
 
 function AceSound:_on_time_changed(date)
