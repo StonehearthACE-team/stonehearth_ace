@@ -7,7 +7,7 @@
       "data": {
          "abandon_out_edge": "quest_cleanup",
          "timeout_out_edge": "quest_cleanup",
-         "success_out_edge": "quest_reward",
+         "success_out_edge": "quest_reward_2",
          "expiration_timeout": "6h",
          "score_threshold": 1000,
          "title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_timed_items.title)",
@@ -97,20 +97,28 @@
                "max": 2
             },
             "stonehearth:food:flour": {
-               "min": 15,
-               "max": 25
+               "min": 12,
+               "max": 18
             },
             "stonehearth_ace:food:rice:raw_rice": {
-               "min": 15,
-               "max": 25
+               "min": 8,
+               "max": 16
             },
             "stonehearth_ace:brewer:wine_cask:empty": {
-               "min": 6,
-               "max": 8
+               "min": 3,
+               "max": 6
             },
             "stonehearth:cook:oven": {
                "min": 2,
-               "max": 10
+               "max": 8
+            },
+            "stonehearth_ace:rayyas_children:cook:oven": {
+               "min": 2,
+               "max": 8
+            },
+            "stonehearth_ace:northern_alliance:cook:oven": {
+               "min": 2,
+               "max": 8
             },
             "stonehearth_ace:herbalist:metal_cauldron": {
                "min": 2,
@@ -161,15 +169,15 @@
                "max": 5
             },
             "stonehearth:toys:plushie_toy_rabbit": {
-               "min": 6,
-               "max": 16
+               "min": 5,
+               "max": 9
             }
          },
          "rewards": {
             "stonehearth_ace:consumables:frostfeast:recipe": {
                "type": "object",
                "min": 1,
-               "max": 3
+               "max": 4
             }
          }
       }

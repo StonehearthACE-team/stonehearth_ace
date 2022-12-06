@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(light_string_vertical.qb)",
+                     "file(light_string_vertical_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 3, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "mob_collision_type": "clutter"
+      },
+      "render_info": {
+         "scale": 0.1,
+         "color_map": "stonehearth_ace:color_map:frostfeast",
+         "material_maps": [
+            "stonehearth_ace:material_map:ace"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.frostfeast.light_string_vertical.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.frostfeast.light_string_vertical.description)",
+         "icon": "file(light_string_vertical.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "festival",
+            "frostfeast",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

@@ -14,7 +14,7 @@
          "city_tier": {
             "type": "deny_if_less_than",
             "item": "city_tier",
-            "value": 999
+            "value": 2
          }
       },
       "jobs": {
@@ -38,7 +38,11 @@
             "recipes": [
                "frostfeast:frostfeast_clay_door_wreath",
                "frostfeast:frostfeast_snowling_short",
-               "frostfeast:frostfeast_snowling"
+               "frostfeast:frostfeast_snowling",
+               "frostfeast:frostfeast_light_string_horizontal",
+               "frostfeast:frostfeast_light_string_horizontal_short",
+               "frostfeast:frostfeast_light_string_vertical",
+               "frostfeast:frostfeast_light_string_vertical_short"
             ]
          },
          "stonehearth:jobs:mason": {

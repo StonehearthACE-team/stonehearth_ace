@@ -30,6 +30,10 @@ function SettingsCallHandler:title_selection_criteria_changed(session, response,
    radiant.events.trigger(radiant, 'title_selection_criteria_changed', criteria_change)
 end
 
+function SettingsCallHandler:soundtrack_override_setting_changed(session, response, override)
+   stonehearth.sound:set_soundtrack_override(override)
+end
+
 function SettingsCallHandler:terrain_slice_buildings_setting_changed(session, response)
    stonehearth.subterranean_view:terrain_slice_buildings_setting_changed()
 end
