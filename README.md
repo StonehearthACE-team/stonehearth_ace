@@ -11,6 +11,6 @@ Follow the **A**uthorized **C**ommunity **E**xpansion project on [Discourse](htt
 
 ## Support
 
-Thank you for your interest in contributing to ACE!
+Thank you for your interest in contributing with ACE!
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K0GRWJT)
