@@ -6,6 +6,7 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       skipCategories: false,
       sortField: 'display_name',
       wantedItems: null,
+      showSearchFilter: true, // TODO
    },
 
    updateItems: function(itemMap) {

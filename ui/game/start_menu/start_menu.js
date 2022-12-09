@@ -2,6 +2,11 @@ App.StonehearthStartMenuView.reopen({
    init: function() {
       var self = this;
 
+      self.menuActions.town_overview = self.menuActions.town_menu;
+      delete self.menuActions.town_menu;
+      self.menuActions.mercantile_view = function(){
+         App.stonehearthClient.showMercantileView();
+      };
       self.menuActions.box_harvest_and_replant = function(){
          self.boxHarvestAndReplant();
       };
@@ -73,6 +78,12 @@ App.StonehearthStartMenuView.reopen({
             self.$('#startMenu').stonehearthMenu('unlockItem', 'unlocked_ability', ability);
          }
       });
+   },
+
+   _updateCitizensCount: function(num_citizens) {
+      var self = this;
+      self.$('#town_menu .badgeNum').text(num_citizens);
+      self.$('#town_menu .badgeNum').show();
    },
 
    // just override this function to add the population change call

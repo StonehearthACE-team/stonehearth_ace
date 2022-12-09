@@ -1,0 +1,52 @@
+<script type="text/x-handlebars" data-template-name="mercantile">
+<div id="mercantile" class="gui">
+   <div class="window">
+      <div class="title">{{i18n stonehearth_ace:ui.game.mercantile.title}}<div class="closeButton"></div></div>
+
+      <div id="activeTab" class="tabPage">
+         <div id="activeContainer">
+            <div class="info">
+               <!--show # merchants spawned (range) and # of tier stalls, indicator for restricted by # stalls-->
+               <div id="numMerchants">{{{view.numMerchants}}}</div>
+            </div>
+            <div id="merchants" class="downSection">
+               {{#each merchant in view.merchants}}
+               <div class="merchant" {{bind-attr merchant-id=merchant.id}}>
+                  <div class="name">{{merchant.display_name}}</div>
+                  <div class="portrait-frame">
+                     <div class="portrait button" title="{{i18n stonehearth:ui.game.unit_frame.focus_camera}}"></div>
+                  </div>
+                  <img class="shop button"/>
+                  {{#if merchant.has_stall}}
+                  <img class="stall button" {{bind-attr src=merchant.stall_icon}}/>
+                  {{/if}}
+               </div>
+               {{/each}}
+            </div>
+         </div>
+      </div>
+
+      <div id="preferencesTab" class="tabPage">
+         <div id="preferencesContainer">
+            <div class="info">
+               <!--show # of preference settings are and can be made at once -->
+            </div>
+            <div id="allPreferences">
+               <div id="categoryPreferences" class="downSection">
+                  <div class="sectionTitle">{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_title}}</div>
+               </div>
+               <div id="exclusivePreferences" class="downSection">
+                  <div class="sectionTitle">{{i18n stonehearth_ace:ui.game.mercantile.preferences.exclusive_title}}</div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div id="tabs">
+      <div class="tab active" tabPage="activeTab">{{i18n stonehearth_ace:ui.game.mercantile.active.title}}</div>
+      <div class="tab" tabPage="preferencesTab">{{i18n stonehearth_ace:ui.game.mercantile.preferences.title}}</div>
+   </div>
+
+</div>
+</script>

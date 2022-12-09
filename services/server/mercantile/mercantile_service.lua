@@ -94,8 +94,8 @@ function MercantileService:get_category_merchants()
    return self._category_merchants
 end
 
-function MercantileService:get_unique_merchants()
-   return self._unique_merchants
+function MercantileService:get_exclusive_merchants()
+   return self._exclusive_merchants
 end
 
 function MercantileService:get_merchant_data(merchant)
@@ -155,10 +155,10 @@ function MercantileService:_get_shop(merchant_component, player_id)
    end
 end
 
-function MercantileService:set_trade_preferences_command(session, response, categories, uniques)
+function MercantileService:set_trade_preferences_command(session, response, categories, exclusives)
    local player_controller = self:get_player_controller(session.player_id)
    if player_controller then
-      player_controller:set_trade_preferences(categories, uniques)
+      player_controller:set_trade_preferences(categories, exclusives)
    end
 end
 
@@ -195,7 +195,7 @@ function MercantileService:_load_merchant_data(biome_uri)
    -- deep copy the loaded table because we're going to be modifying it a lot
    local data = radiant.resources.load_json('stonehearth_ace:data:merchant_categories')
    local category_merchants = {}
-   local unique_merchants = {}
+   local exclusive_merchants = {}
    local all_merchants = {}
 
    for category, category_data in pairs(data.categories) do
@@ -216,7 +216,7 @@ function MercantileService:_load_merchant_data(biome_uri)
                copied_merchant_data.weight = merchant_data.weight or 1
                
                if merchant_data.required_stall then
-                  unique_merchants[key] = copied_merchant_data
+                  exclusive_merchants[key] = copied_merchant_data
                else
                   local category_data = category_merchants[category]
                   if not category_data then
@@ -234,7 +234,7 @@ function MercantileService:_load_merchant_data(biome_uri)
 
    self._categories = data.categories
    self._category_merchants = category_merchants
-   self._unique_merchants = unique_merchants
+   self._exclusive_merchants = exclusive_merchants
    self._all_merchants = all_merchants
 end
 
