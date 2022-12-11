@@ -63,6 +63,9 @@ function MerchantComponent:set_merchant_data(player_id, merchant_data)
    self.__saved_variables:mark_changed()
 
    self:_load_merchant_data()
+   if merchant_data.use_shop_description then
+      radiant.entities.set_description(self._entity, merchant_data.shop_info.title)
+   end
    
    local options = radiant.shallow_copy(merchant_data.shop_info.inventory)
    options.merchant_options = merchant_data.shoptions or {}

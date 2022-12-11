@@ -44,6 +44,7 @@ function PlayerMercantile:restore()
    -- (they're only in _sv so they get shown in the client ui)
    self._sv.tier_stalls = {}
    self._sv.exclusive_stalls = {}
+   self._sv.num_stalls = 0
 end
 
 function PlayerMercantile:post_activate()
@@ -185,7 +186,7 @@ end
 function PlayerMercantile:_create_depart_timer()
    self:_destroy_depart_timer()
 
-   self._depart_timer = stonehearth.calendar:set_interval('towns merchant departer', '5m+20m', function()
+   self._depart_timer = stonehearth.calendar:set_interval('towns merchant departer', '5m+15m', function()
          local merchant = table.remove(self._sv._merchants_to_depart)
          self._sv._departing_merchant_ids[merchant:get_id()] = true
          self:_depart_merchant(merchant)
@@ -522,7 +523,7 @@ function PlayerMercantile:_get_available_category_merchants(cur_weather_uri, sta
          local pref = self._sv.category_preferences[category]
          if pref ~= mercantile_constants.category_preferences.DISABLED then
             for merchant, merchant_data in pairs(category_merchants) do
-               if merchant_data.min_city_tier >= city_tier and merchant_data.min_stall_tier <= stall_tier then
+               if city_tier >= merchant_data.min_city_tier and merchant_data.min_stall_tier <= stall_tier then
                   -- if this merchant's visit isn't forbidden by a cooldown, the kingdom, or the current weather, add them to the list
                   if self:_merchant_allowed(merchant_data, cur_weather_uri) then
                      local weight = merchant_data.weight

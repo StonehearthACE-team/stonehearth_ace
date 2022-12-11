@@ -8,11 +8,11 @@ App.StonehearthAceMerchantileView = App.View.extend({
    components: {
       'active_merchants': {
          '*': {
-            'stonehearth_ace:merchant': {
-               'stall': {
-                  'stonehearth:unit_info': {},
-               }
-            },
+            // 'stonehearth_ace:merchant': {
+            //    'stall': {
+            //       'stonehearth:unit_info': {},
+            //    }
+            // },
             'stonehearth:unit_info': {},
          }},
    },
@@ -22,31 +22,34 @@ App.StonehearthAceMerchantileView = App.View.extend({
       this._super();
 
       var self = this;
+      self._activeMerchants = {};
       radiant.call_obj('stonehearth_ace.mercantile', 'get_player_controller_command')
          .done(function (response) {
             self.set('uri', response.controller);
-            // var components = {
-            //    'active_merchants': {'*': {}},
-            // }
-            // self._mercantileTrace = new StonehearthDataTrace(response.controller, components)
-            //    .progress(function (response) {
-            //       if (self.isDestroyed || self.isDestroying) {
-            //          return;
-            //       }
-            //       var bonuses = [];
-            //       radiant.each(response.town_bonuses, (uri, bonus) => {
-            //          bonuses.push({ display_name: bonus.display_name, description: bonus.description });
-            //       });
-            //       self.set('townBonuses', bonuses);
-            //    });
          });
    },
 
    destroy: function() {
-      // if (this._mercantileTrace) {
-      //    this._mercantileTrace.destroy();
-      // }
+      this._destroyMerchantTraces();
       this._super();
+   },
+
+   _destroyMerchantTraces: function(exceptTheseMerchants) {
+      var keptTraces = {};
+      var tracesRemoved = false;
+      if (this._merchantTraces) {
+         radiant.each(this._merchantTraces, function(id, trace) {
+            if (exceptTheseMerchants && exceptTheseMerchants[id] != null) {
+               keptTraces[id] = trace;
+            }
+            else {
+               trace.destroy();
+               tracesRemoved = true;
+            }
+         });
+      }
+      this._merchantTraces = keptTraces;
+      return tracesRemoved;
    },
 
    didInsertElement: function() {
@@ -137,54 +140,86 @@ App.StonehearthAceMerchantileView = App.View.extend({
 
       var active_merchants = self.get('model.active_merchants');
       var merchants = {};
+      var merchantsChanged = self._destroyMerchantTraces(active_merchants);
 
       if (active_merchants) {
-         radiant.each(active_merchants, function(id, merchant) {
-            // name information
-            var unit_info = merchant['stonehearth:unit_info'];
-            var display_name = self._getDisplayName(merchant);
-            var description = unit_info && unit_info.description;
-            if (!description) {
-               var catalogData = merchant.uri && App.catalog.getCatalogData(merchant.uri);
-               if (catalogData) {
-                  description = catalogData.description;
+         var components = {
+            // 'stonehearth_ace:merchant': {
+               'stall': {
+                  'stonehearth:unit_info': {},
                }
+            // },
+            // 'stonehearth:unit_info': {},
+         };
+
+         radiant.each(active_merchants, function(id, merchant) {
+            // this is great for most of the data, but the individual merchants need to be traced to track their stall usage
+            if (self._merchantTraces[id] != null) {
+               merchants[id] = self._activeMerchants[id];
             }
+            else {
+               merchantsChanged = true;
 
-            // active stall/shop information
-            var merchant_data = merchant['stonehearth_ace:merchant'];
-            var stall = merchant_data && merchant_data.stall;
-            var stall_name = self._getDisplayName(stall);
-            var stallCatalogData = stall && App.catalog.getCatalogData(stall.uri);
-            var stallIcon = stallCatalogData && stallCatalogData.icon;
+               // name information
+               var unit_info = merchant['stonehearth:unit_info'];
+               var display_name = self._getDisplayName(merchant);
+               var description = unit_info && unit_info.description;
+               if (!description) {
+                  var catalogData = merchant.uri && App.catalog.getCatalogData(merchant.uri);
+                  if (catalogData) {
+                     description = i18n.t(catalogData.description, {self: merchant});
+                  }
+               }
 
-            merchants[id] = {
-               entity: merchant.__self,
-               display_name: display_name,
-               description: i18n.t(description),
-               stall_entity: stall && stall.__self,
-               stall_name: stall_name,
-               stall_icon: stallIcon,
+               merchants[id] = {
+                  id: id,
+                  entity: merchant.__self,
+                  display_name: display_name,
+                  description: description,
+               };
+
+               self._merchantTraces[id] = new StonehearthDataTrace(merchant['stonehearth_ace:merchant'], components)
+                  .progress(function (response) {
+                     if (self.isDestroyed || self.isDestroying) {
+                        return;
+                     }
+                     
+                     var thisMerchant = merchants[id];
+                     var merchant_data = response; //['stonehearth_ace:merchant'];
+                     var stallData = self._getStallData(merchant_data) || {};
+                     Ember.set(thisMerchant, 'stall_entity', stallData.stall_entity);
+                     Ember.set(thisMerchant, 'stall_name', stallData.stall_name);
+                     Ember.set(thisMerchant, 'stall_icon', stallData.stall_icon);
+                     Ember.set(thisMerchant, 'has_stall', stallData.has_stall);
+                  });
             }
-
-            // TODO: trace each merchant so we can update its stall whenever that changes
          });
       }
-      self._activeMerchants = merchants;
 
-      // convert table into array of just what's necessary
-      var merchantArr = [];
-      radiant.each(merchants, function(id, merchant) {
-         merchantArr.push({
-            id: id,
-            display_name: merchant.display_name,
-            stall_name: merchant.stall_name,
-            stall_icon: merchant.stall_icon,
-            has_stall: merchant.stall_icon != null,
+      if (merchantsChanged) {
+         self._activeMerchants = merchants;
+
+         // use the entire object so we have a simpler time updating for stall changes
+         var merchantArr = [];
+         radiant.each(merchants, function(_, merchant) {
+            merchantArr.push(merchant);
          });
-      });
-      self.set('merchants', merchantArr);
+         self.set('merchants', merchantArr);
+      }
    }.observes('model.active_merchants'),
+
+   _getStallData: function(merchant_data) {
+      var stall = merchant_data && merchant_data.stall;
+      var stall_name = this._getDisplayName(stall);
+      var stallCatalogData = stall && App.catalog.getCatalogData(stall.uri);
+      var stall_icon = stallCatalogData && stallCatalogData.icon;
+      return {
+         stall_entity: stall && stall.__self,
+         stall_name: stall_name,
+         stall_icon: stall_icon,
+         has_stall: stall_icon != null,
+      }
+   },
 
    _getDisplayName: function(entity) {
       if (entity) {
@@ -194,7 +229,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
             var catalogData = entity.uri && App.catalog.getCatalogData(entity.uri);
             display_name = catalogData && catalogData.display_name;
          }
-         return display_name && i18n.t(display_name, entity);
+         return display_name && i18n.t(display_name, {self: entity});
       }
    },
 

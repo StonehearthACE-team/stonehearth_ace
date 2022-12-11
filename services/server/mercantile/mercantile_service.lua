@@ -112,6 +112,14 @@ function MercantileService:get_default_population_role(category)
    return category_data and category_data.default_population_role or 'merchant'
 end
 
+function MercantileService:get_all_mercantile_data_command(session, response)
+   response:resolve({
+      categories = self._categories,
+      category_merchants = self._category_merchants,
+      exclusive_merchants = self._exclusive_merchants,
+   })
+end
+
 function MercantileService:get_player_controller_command(session, response)
    response:resolve({controller = self:add_player_controller(session.player_id)})
 end

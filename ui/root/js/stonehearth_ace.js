@@ -275,6 +275,18 @@ var stonehearth_ace = {
       var settingData = modSettings && modSettings[setting];
       return settingData && settingData.default;
    },
+
+   getMerchantCategories: function() {
+      return stonehearth_ace._mercantile_data && stonehearth_ace._mercantile_data.categories;
+   },
+
+   getCategoryMerchants: function() {
+      return stonehearth_ace._mercantile_data && stonehearth_ace._mercantile_data.category_merchants;
+   },
+
+   getExclusiveMerchants: function() {
+      return stonehearth_ace._mercantile_data && stonehearth_ace._mercantile_data.exclusive_merchants;
+   },
 }
 
 $.getJSON('/stonehearth_ace/ui/data/equipment_types.json', function(data) {
@@ -452,4 +464,11 @@ $(document).ready(function(){
    stonehearth_ace.getModConfigSetting('stonehearth_ace', 'backup_i18n_language', function(value) {
       $(top).trigger('backup_i18n_language_changed', { value: value });
    });
+});
+
+$(document).on('stonehearthReady', function() {
+   radiant.call_obj('stonehearth_ace.mercantile', 'get_all_mercantile_data_command')
+      .done(function(response) {
+         stonehearth_ace._mercantile_data = response;
+      });
 });
