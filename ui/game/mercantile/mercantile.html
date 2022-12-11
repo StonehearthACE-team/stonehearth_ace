@@ -11,14 +11,12 @@
             </div>
             <div id="merchants" class="downSection">
                {{#each merchant in view.merchants}}
-               <div class="merchant" {{bind-attr merchant-id=merchant.id}}>
-                  <div class="name">{{merchant.display_name}}</div>
-                  <div class="portrait-frame">
-                     <div class="portrait button" title="{{i18n stonehearth:ui.game.unit_frame.focus_camera}}"></div>
-                  </div>
-                  <img class="shop button"/>
+               <div {{bind-attr merchant-id=merchant.id class=":merchant merchant.has_stall:hasStall:"}}>
+                  <div {{bind-attr class=":name merchant.tier_class"}}>{{merchant.display_name}}</div>
+                  <div class="portrait merchantPortrait" title="{{i18n stonehearth:ui.game.unit_frame.focus_camera}}"></div>
+                  <img class="shop"/>
                   {{#if merchant.has_stall}}
-                  <img class="stall button" {{bind-attr src=merchant.stall_icon}}/>
+                  <div class="portrait stallPortrait" title="{{i18n stonehearth:ui.game.unit_frame.focus_camera}}"></div>
                   {{/if}}
                </div>
                {{/each}}

@@ -66,12 +66,12 @@ App.StonehearthAceMerchantileView = App.View.extend({
             var id = merchantDiv.attr('merchant-id');
             var merchant = id && self._activeMerchants[id];
             if (merchant) {
-               $(top).trigger('stonehearth_ace_show_shop', {entity: merchant});
+               $(top).trigger('stonehearth_ace_show_shop', {entity: merchant.entity});
             }
          }
       });
       
-      self.$('#merchants').on('click', '.stall', function() {
+      self.$('#merchants').on('click', '.stallPortrait', function() {
          var merchantDiv = $(this).parent();
          if (merchantDiv) {
             var id = merchantDiv.attr('merchant-id');
@@ -83,8 +83,8 @@ App.StonehearthAceMerchantileView = App.View.extend({
          }
       });
 
-      self.$('#merchants').on('click', '.portrait', function() {
-         var merchantDiv = $(this).parent().parent();
+      self.$('#merchants').on('click', '.merchantPortrait', function() {
+         var merchantDiv = $(this).parent();
          if (merchantDiv) {
             var id = merchantDiv.attr('merchant-id');
             var merchant = id && self._activeMerchants[id];
@@ -191,6 +191,8 @@ App.StonehearthAceMerchantileView = App.View.extend({
                      Ember.set(thisMerchant, 'stall_name', stallData.stall_name);
                      Ember.set(thisMerchant, 'stall_icon', stallData.stall_icon);
                      Ember.set(thisMerchant, 'has_stall', stallData.has_stall);
+
+                     self._updatePortraits();
                   });
             }
          });
@@ -247,17 +249,26 @@ App.StonehearthAceMerchantileView = App.View.extend({
                var id = el.attr('merchant-id');
                var merchantData = self._activeMerchants[parseInt(id)];
                if (merchantData) {
-                  // apply portrait and tooltip
+                  // apply portraits and tooltips
+                  var portrait = el.find('.merchantPortrait');
                   var img_url = `url(/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=${merchantData.entity}&cache_buster=${Math.random()})`;
-                  el.find('.portrait').css('background-image', img_url);
+                  portrait.css('background-image', img_url);
 
-                  App.tooltipHelper.createDynamicTooltip(el.find('.portrait'), function() {
+                  App.tooltipHelper.createDynamicTooltip(portrait, function() {
                      return $(App.tooltipHelper.createTooltip(merchantData.display_name, merchantData.description));
                   });
 
-                  App.tooltipHelper.createDynamicTooltip(el.find('.stall'), function() {
-                     return $(App.tooltipHelper.createTooltip(merchantData.display_name, i18n.t('stonehearth_ace:ui.game.mercantile.active.merchant.working_at_stall', merchantData)));
-                  });
+                  if (merchantData.stall_entity) {
+                     portrait = el.find('.stallPortrait');
+                     img_url = `url(/r/get_portrait/?type=headshot&entity=${merchantData.stall_entity}&cache_buster=${Math.random()})`;
+                     // var opts = 'cam_x=-20&cam_y=12&cam_z=-30&look_x=0&look_y=3&look_z=0&fov=98'
+                     // img_url = `url(/r/get_portrait/?type=custom&${opts}&entity=${merchantData.stall_entity}&cache_buster=${Math.random()})`;
+                     portrait.css('background-image', img_url);
+
+                     App.tooltipHelper.createDynamicTooltip(portrait, function() {
+                        return $(App.tooltipHelper.createTooltip(merchantData.display_name, i18n.t('stonehearth_ace:ui.game.mercantile.active.merchant.working_at_stall', merchantData)));
+                     });
+                  }
                }
             });
          }
