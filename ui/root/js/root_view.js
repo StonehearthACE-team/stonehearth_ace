@@ -44,6 +44,17 @@ App.RootView.reopen({
    },
 
    _applyStonehearthClientChanges: function() {
+      var mercantileView = null;
+      App.stonehearthClient.showMercantileView = function() {
+      // toggle the mercantile view
+         if (!mercantileView || mercantileView.isDestroyed) {
+            mercantileView = App.gameView.addView(App.StonehearthAceMerchantileView);
+         } else {
+            mercantileView.destroy();
+            mercantileView = null;
+         }
+      };
+
       App.stonehearthClient._placeItemOrItemType = function (placementType, toolName, item, quality) {
          var self = this;
          var placementCall = placementType == 'item' ? 'stonehearth:choose_place_item_location' : 'stonehearth:choose_place_item_type_location';

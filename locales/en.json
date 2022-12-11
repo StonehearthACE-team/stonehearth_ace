@@ -20969,6 +20969,19 @@
    "ui": {
       "game": {
          "mercantile": {
+            "active": {
+               "title": "Active Merchants",
+               "info": {
+                  "num_merchants_one": "Each morning, at most <span class='num'>1</span> merchant will visit your town.",
+                  "num_merchants_max": "Each morning, <span class='num max'>[str(num_merchants)]</span> merchants will visit your town.",
+                  "num_merchants_limited": "Each morning, up to <span class='num'>[str(num_merchants)]</span> merchants would visit your town if not limited by your market stalls (<span class='num'>[str(num_stalls)]</span>).",
+                  "num_merchants_exact": "Each morning, exactly <span class='num'>[str(num_merchants)]</span> merchants will visit your town.",
+                  "num_merchants_range": "Each morning, <span class='num'>[str(num_merchants)]</span> merchants will visit your town."
+               },
+               "merchant": {
+                  "working_at_stall": "Currently working at <span class='num'>[str(stall_name)]."
+               }
+            },
             "categories": {
                "general_goods": {
                   "display_name": "General Goods",
@@ -21006,7 +21019,13 @@
                   "display_name": "Exotic Goods",
                   "description": "Merchants from distant lands, unusual friends and hidden places... They might deal with the uncommon, rarities and sometimes even the unnatural!"
                }
-            }
+            },
+            "preferences": {
+               "category_title": "Categories",
+               "exclusive_title": "Exclusive Merchants",
+               "title": "Merchant Preferences"
+            },
+            "title": "Mercantile Overview"
          },
          "citizens": {
             "workers_list_headers": {
@@ -21059,6 +21078,10 @@
             }
          },
          "menu": {
+            "mercantile_view": {
+               "display_name": "Mercantile Overview",
+               "description": "Show it."
+            },
             "build_menu": {
                "items": {
                   "build_well": {
@@ -21911,6 +21934,7 @@
                   "build_fence": "Build Fence",
                   "build_fish_trap": "Place Fish Trap",
                   "cam_previous": "Move Camera Back",
+                  "mercantile_overview": "Mercantile Overview",
                   "vision_wilderness_toggle": "Toggle Wilderness Vision",
                   "vision_ore_detector_toggle": "Toggle Ore Detector",
                   "harvest_harvest_and_replant": "Gather & Replant",

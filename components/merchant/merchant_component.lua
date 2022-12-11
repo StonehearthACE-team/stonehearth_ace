@@ -16,6 +16,12 @@ end
 function MerchantComponent:restore()
    self._is_restore = true
    stonehearth.ai:inject_ai(self._entity, { ai_packs = { 'stonehearth_ace:ai_pack:merchant' } })
+
+   if self._sv._stall then
+      self._sv.stall = self._sv._stall
+      self._sv._stall = nil
+      self.__saved_variables:mark_changed()
+   end
 end
 
 function MerchantComponent:post_activate()
@@ -57,6 +63,9 @@ function MerchantComponent:set_merchant_data(player_id, merchant_data)
    self.__saved_variables:mark_changed()
 
    self:_load_merchant_data()
+   if merchant_data.use_shop_description then
+      radiant.entities.set_description(self._entity, merchant_data.shop_info.title)
+   end
    
    local options = radiant.shallow_copy(merchant_data.shop_info.inventory)
    options.merchant_options = merchant_data.shoptions or {}
@@ -87,7 +96,7 @@ function MerchantComponent:set_merchant_data(player_id, merchant_data)
 end
 
 function MerchantComponent:get_current_stall()
-   return self._sv._stall
+   return self._sv.stall
 end
 
 function MerchantComponent:get_shop()
@@ -149,9 +158,11 @@ function MerchantComponent:_destroy_bulletin()
 end
 
 function MerchantComponent:take_down_from_stall()
-   local stall = self._sv._stall
+   local stall = self._sv.stall
    if stall then
-      self._sv._stall = nil
+      self._sv.stall = nil
+      self.__saved_variables:mark_changed()
+
       local stall_comp = stall:get_component('stonehearth_ace:market_stall')
       if stall_comp then
          stall_comp:reset()
@@ -160,11 +171,13 @@ function MerchantComponent:take_down_from_stall()
 end
 
 function MerchantComponent:set_up_at_stall(stall)
-   if stall ~= self._sv._stall then
+   if stall ~= self._sv.stall then
       self:take_down_from_stall()
       local stall_comp = stall:get_component('stonehearth_ace:market_stall')
       if stall_comp then
-         self._sv._stall = stall
+         self._sv.stall = stall
+         self.__saved_variables:mark_changed()
+
          return stall_comp:set_merchant(self._entity)
       end
    end

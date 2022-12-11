@@ -20,11 +20,11 @@ function PlayerMercantile:initialize()
 
    self._sv.category_preferences = {}   -- keyed by category, with a value from constants for disabled, enabled, encouraged
    self._sv.cooldowns = {}              -- keyed by merchant id, with a game time when that merchant will no longer be on cd
-   self._sv.unique_preferences = {}     -- keyed by unique merchant id, with a boolean value for disabled/enabled
-   self._sv.unique_merchants = {}       -- keyed by unique merchant id, an indicator for whether they should show up in the ui
+   self._sv.exclusive_preferences = {}     -- keyed by exclusive merchant id, with a boolean value for disabled/enabled
+   --self._sv.exclusive_merchants = {}       -- keyed by exclusive merchant id, an indicator for whether they should show up in the ui
 
    self._sv.tier_stalls = {}            -- keyed by tier number, gives count for each
-   self._sv.unique_stalls = {}          -- keyed by uri, gives count for each
+   self._sv.exclusive_stalls = {}          -- keyed by uri, gives count for each
    self._sv.num_stalls = 0
 
    self._sv.max_disables = 0
@@ -43,7 +43,8 @@ function PlayerMercantile:restore()
    -- since those will get populated as the stalls themselves load
    -- (they're only in _sv so they get shown in the client ui)
    self._sv.tier_stalls = {}
-   self._sv.unique_stalls = {}
+   self._sv.exclusive_stalls = {}
+   self._sv.num_stalls = 0
 end
 
 function PlayerMercantile:post_activate()
@@ -98,8 +99,8 @@ function PlayerMercantile:register_merchant_stall(stall)
          local tier_stalls = self._sv.tier_stalls
          tier_stalls[tier] = (tier_stalls[tier] or 0) + 1
       else
-         local unique_stalls = self._sv.unique_stalls
-         unique_stalls[uri] = (unique_stalls[uri] or 0) + 1
+         local exclusive_stalls = self._sv.exclusive_stalls
+         exclusive_stalls[uri] = (exclusive_stalls[uri] or 0) + 1
       end
 
       self._sv.num_stalls = self._sv.num_stalls + 1
@@ -125,12 +126,12 @@ function PlayerMercantile:unregister_merchant_stall(stall)
             end
          end
       else
-         local unique_stalls = self._sv.unique_stalls
-         if unique_stalls[uri] then
-            if unique_stalls[uri] > 1 then
-               unique_stalls[uri] = unique_stalls[uri] - 1
+         local exclusive_stalls = self._sv.exclusive_stalls
+         if exclusive_stalls[uri] then
+            if exclusive_stalls[uri] > 1 then
+               exclusive_stalls[uri] = exclusive_stalls[uri] - 1
             else
-               unique_stalls[uri] = nil
+               exclusive_stalls[uri] = nil
             end
          end
       end
@@ -185,7 +186,7 @@ end
 function PlayerMercantile:_create_depart_timer()
    self:_destroy_depart_timer()
 
-   self._depart_timer = stonehearth.calendar:set_interval('towns merchant departer', '5m+20m', function()
+   self._depart_timer = stonehearth.calendar:set_interval('towns merchant departer', '5m+15m', function()
          local merchant = table.remove(self._sv._merchants_to_depart)
          self._sv._departing_merchant_ids[merchant:get_id()] = true
          self:_depart_merchant(merchant)
@@ -200,10 +201,10 @@ function PlayerMercantile:_depart_merchant(merchant)
    merchant:get_component('stonehearth_ace:merchant'):set_should_depart()
 end
 
-function PlayerMercantile:set_trade_preferences(category_preferences, unique_preferences)
+function PlayerMercantile:set_trade_preferences(category_preferences, exclusive_preferences)
    self._sv.category_preferences = category_preferences
    self:_verify_category_preferences()
-   self._sv.unique_preferences = unique_preferences
+   self._sv.exclusive_preferences = exclusive_preferences
 
    self.__saved_variables:mark_changed()
 end
@@ -277,6 +278,13 @@ function PlayerMercantile:_spawn_merchant(merchant)
       local pop = stonehearth.population:get_population('human_npcs')
       local role = merchant_data.population_role or stonehearth.mercantile:get_default_population_role(merchant_data.category)
       local merchant = pop:create_new_citizen(role, merchant_data.population_gender)
+      if merchant_data.equipment then
+         local equipment_component = merchant:add_component('stonehearth:equipment')
+         for _, uri in ipairs(merchant_data.equipment) do
+            equipment_component:equip_item(uri)
+         end
+      end
+
       merchant:add_component('stonehearth_ace:merchant'):set_merchant_data(player_id, merchant_data)
       
       local cooldown = merchant_data.cooldown
@@ -387,6 +395,7 @@ function PlayerMercantile:_determine_daily_merchants()
    
    self._sv._merchants_to_spawn = self:_get_merchants_to_spawn(num_merchants)
    self._sv.num_merchants_last_spawned = #self._sv._merchants_to_spawn
+   self.__saved_variables:mark_changed()
 
    return self._sv._merchants_to_spawn
 end
@@ -399,6 +408,7 @@ function PlayerMercantile:_get_merchants_to_spawn(num_merchants)
 
       -- first load up the possible merchant stalls they could use
       -- if there are no stalls, we only want to get a single merchant and have them hang out by the fire
+      self._sv.limited_by_stalls = self._sv.num_stalls < num_merchants
       local has_stalls = self._sv.num_stalls > 0
       if not has_stalls then
          num_merchants = 1
@@ -410,15 +420,15 @@ function PlayerMercantile:_get_merchants_to_spawn(num_merchants)
       local cur_weather_uri = cur_weather and cur_weather:get_uri()
 
       -- generate bags of merchants to draw from and then draw them until we've reached num_merchants
-      -- first get as many unique merchants as we can (skip if no unique stalls)
-      local stalls = self._sv.unique_stalls
+      -- first get as many exclusive merchants as we can (skip if no exclusive stalls)
+      local stalls = self._sv.exclusive_stalls
       if next(stalls) then
          local used_stalls = {}
-         local uniques = self:_get_available_unique_merchants(cur_weather_uri, stalls, city_tier)
+         local exclusives = self:_get_available_exclusive_merchants(cur_weather_uri, stalls, city_tier)
          
-         while num_merchants > 0 and not uniques:is_empty() do
-            local merchant = uniques:choose_random()
-            uniques:remove(merchant)
+         while num_merchants > 0 and not exclusives:is_empty() do
+            local merchant = exclusives:choose_random()
+            exclusives:remove(merchant)
             -- make sure we still have a stall that can support this merchant
             local uri = merchant.required_stall
             if stalls[uri] > (used_stalls[uri] or 0) then
@@ -488,12 +498,12 @@ end
 --    return stalls
 -- end
 
--- returns a weighted set of available unique merchants
-function PlayerMercantile:_get_available_unique_merchants(cur_weather_uri, stall_uris, city_tier)
-   local unique_merchants = stonehearth_ace.mercantile:get_unique_merchants()
+-- returns a weighted set of available exclusive merchants
+function PlayerMercantile:_get_available_exclusive_merchants(cur_weather_uri, stall_uris, city_tier)
+   local exclusive_merchants = stonehearth_ace.mercantile:get_exclusive_merchants()
    local merchants = WeightedSet(rng)
-   for merchant, merchant_data in pairs(unique_merchants) do
-      if self._sv.unique_preferences[merchant] ~= false and merchant_data.min_city_tier >= city_tier and stall_uris[merchant_data.required_stall] then
+   for merchant, merchant_data in pairs(exclusive_merchants) do
+      if self._sv.exclusive_preferences[merchant] ~= false and merchant_data.min_city_tier >= city_tier and stall_uris[merchant_data.required_stall] then
          -- if this merchant's visit isn't forbidden by a cooldown, the kingdom, or the current weather, add them to the list
          if self:_merchant_allowed(merchant_data, cur_weather_uri) then
             merchants:add(merchant, merchant_data.weight)
@@ -513,7 +523,7 @@ function PlayerMercantile:_get_available_category_merchants(cur_weather_uri, sta
          local pref = self._sv.category_preferences[category]
          if pref ~= mercantile_constants.category_preferences.DISABLED then
             for merchant, merchant_data in pairs(category_merchants) do
-               if merchant_data.min_city_tier >= city_tier and merchant_data.min_stall_tier <= stall_tier then
+               if city_tier >= merchant_data.min_city_tier and merchant_data.min_stall_tier <= stall_tier then
                   -- if this merchant's visit isn't forbidden by a cooldown, the kingdom, or the current weather, add them to the list
                   if self:_merchant_allowed(merchant_data, cur_weather_uri) then
                      local weight = merchant_data.weight

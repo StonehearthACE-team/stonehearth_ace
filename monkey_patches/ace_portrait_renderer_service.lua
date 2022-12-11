@@ -6,6 +6,7 @@ local log = radiant.log.create_logger('portrait_renderer')
 local AcePortraitRendererService = class()
 
 function AcePortraitRendererService:_stage_scene(options, scene_root, camera)
+   --log:debug('staging portrait scene with options: %s', radiant.util.table_tostring(options))
    local entity = options.entity
    if not (radiant.util.is_a(entity, Entity) and entity:is_valid()) then
       log:warning('non-entity passed in portrait render options: %s', tostring(options.entity))
@@ -22,7 +23,21 @@ function AcePortraitRendererService:_stage_scene(options, scene_root, camera)
    local camera_fov = 64
 
    local portrait_data = radiant.entities.get_entity_data(entity, 'stonehearth:portrait')
-   if options.type and portrait_data and portrait_data.portrait_types[options.type] then
+   if options.type == 'custom' then
+      local scale = self:_get_value(options.scale) or 0.1
+      local cam_x = self:_get_value(options.cam_x) or 0
+      local cam_y = self:_get_value(options.cam_y) or 0
+      local cam_z = self:_get_value(options.cam_z) or 0
+      local look_x = self:_get_value(options.look_x) or 0
+      local look_y = self:_get_value(options.look_y) or 0
+      local look_z = self:_get_value(options.look_z) or 0
+      camera_fov = self:_get_value(options.fov) or 64
+
+      render_entity:get_model():set_model_scale(scale)
+      render_entity:get_skeleton():set_scale(scale)
+      camera_pos = Point3(cam_x, cam_y, cam_z)
+      camera_look_at = Point3(look_x, look_y, look_z)
+   elseif options.type and portrait_data and portrait_data.portrait_types[options.type] then
       render_entity:get_model():set_model_scale(0.1)
       render_entity:get_skeleton():set_scale(0.1)
 
@@ -77,6 +92,18 @@ function AcePortraitRendererService:_stage_scene(options, scene_root, camera)
    -- would make a mathematician throw up a little.  Also, it's probably quite a bit easier to control
    -- the extents of the orthographic box with just one value (assuming constant near/far planes).
    camera:set_fov(camera_fov)
+end
+
+function AcePortraitRendererService:_get_value(value)
+   if type(value) == 'string' then
+      -- if the start is an underscore, remove it
+      if string.sub(value, 1, 1) == '_' then
+         value = string.sub(value, 2)
+      end
+      return tonumber(value)
+   else
+      return value
+   end
 end
 
 return AcePortraitRendererService

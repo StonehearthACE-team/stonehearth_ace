@@ -285,6 +285,7 @@ App.StonehearthUnitFrameView.reopen({
       Ember.run.scheduleOnce('afterRender', this, function() {
          var unitFrame = this.$('#unitFrame');
          if (unitFrame) {
+            var maxWidth = 560;
             var infoDiv = this.$('#info');
             var commandButtons = this.$('#commandButtons');
             var moreCommandsIndicator = this.$('#moreCommandsIndicator');
@@ -295,11 +296,11 @@ App.StonehearthUnitFrameView.reopen({
             }
 
             if (considerCommands == true && self._bestWidth == null) {
-               self._bestWidth = Math.max(520, width);
+               self._bestWidth = Math.max(maxWidth, width);
                self._commandWidth = commandButtons.width();
-               self._commandsPos = 517 - self._commandWidth;
+               self._commandsPos = maxWidth - 3 - self._commandWidth;
 
-               var diff = self._bestWidth - 520;
+               var diff = self._bestWidth - maxWidth;
                if (diff > 0) {
                   self._bestWidth += 12;
                   self._commandsPos += diff;
@@ -310,7 +311,7 @@ App.StonehearthUnitFrameView.reopen({
                      moreCommandsIndicator.hide();
                   },
                   function(e) {
-                     unitFrame.css('width', 520 + 'px');
+                     unitFrame.css('width', maxWidth + 'px');
                      commandButtons.css('width', (self._commandWidth - diff) + 'px');
                      moreCommandsIndicator.show();
                   });
@@ -327,7 +328,7 @@ App.StonehearthUnitFrameView.reopen({
                commandButtons.css('left', (self._commandsPos + 12) + 'px');
             }
 
-            unitFrame.css('width', 520 + 'px'); //don't want it getting too bitty
+            unitFrame.css('width', maxWidth + 'px'); //don't want it getting too bitty
          }
       });
    }.observes('model.uri', 'model.stonehearth:unit_info', 'job_uri'),
@@ -395,7 +396,7 @@ App.StonehearthUnitFrameView.reopen({
       this.$('#info').off('mouseenter mouseleave');
       this.$('#commandButtons').css('width', '');
       delete this._bestWidth;
-      delete self._commandsPos;
+      delete this._commandsPos;
    }.observes('model.uri'),
 
    _updateCommandsWidth: function() {
