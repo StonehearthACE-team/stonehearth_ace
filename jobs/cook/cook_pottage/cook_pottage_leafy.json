@@ -1,22 +1,15 @@
 {
    "type": "entity",
    "mixins": [
-      "file(cook_pottage_ghost.json)",
+      "file(cook_pottage_leafy_ghost.json)",
       "stonehearth_ace:mixins:workbench:cook_pottage"
    ],
    "components": {
       "stonehearth:entity_forms": {
-         "ghost_form": "file(cook_pottage_ghost.json)",
-         "iconic_form": "file(cook_pottage_iconic.json)",
-         "placeable_on_ground": true
-      },
-      "model_variants": {
-         "default": {
-            "models": [
-               "file(cook_pottage_fuel.qb)",
-               "file(cook_pottage_leafy.qb)"
-            ]
-         }
+         "ghost_form": "file(cook_pottage_leafy_ghost.json)",
+         "iconic_form": "file(cook_pottage_leafy_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
       },
       "effect_list": {
          "effects": [

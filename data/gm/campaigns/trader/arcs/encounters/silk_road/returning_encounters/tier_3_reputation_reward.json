@@ -1,0 +1,11 @@
+{
+   "type": "encounter",
+   "encounter_type": "set_counters",
+   "in_edge": "tier_3_reputation_reward",
+   "out_edge": "caravan_cleanup",
+   "set_counters_info": {
+      "counters": {
+         "caravan_reputation": "x + 3"
+      }
+   }
+}

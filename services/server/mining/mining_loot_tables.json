@@ -8,11 +8,11 @@
                "items": {
                   "none": {
                      "uri": "",
-                     "weight": 100
+                     "weight": 75
                   },
                   "thatch_bale": {
                      "uri": "stonehearth_ace:resources:thatch_bale",
-                     "weight": 3
+                     "weight": 5
                   }
                }
             }
@@ -229,11 +229,11 @@
                "items": {
                   "none": {
                      "uri": "",
-                     "weight": 100
+                     "weight": 130
                   },
                   "hunk_of_stone": {
                      "uri": "stonehearth:resources:stone:hunk_of_stone",
-                     "weight": 50,
+                     "weight": 30,
                      "quality": [
                         [
                            4,
@@ -241,29 +241,37 @@
                         ],
                         [
                            3,
-                           0.1
-                        ],
-                        [
-                           2,
-                           0.6
-                        ]
-                     ]
-                  },
-                  "iron_ore": {
-                     "uri": "stonehearth:resources:iron:ore",
-                     "weight": 80,
-                     "quality": [
-                        [
-                           4,
-                           0.002
-                        ],
-                        [
-                           3,
-                           0.08
+                           0.3
                         ],
                         [
                            2,
                            0.5
+                        ],
+                        [
+                           1,
+                           0
+                        ]
+                     ]
+                  },
+                  "starsteel_ore": {
+                     "uri": "stonehearth_ace:resources:starsteel:ore",
+                     "weight": 20,
+                     "quality": [
+                        [
+                           4,
+                           0.02
+                        ],
+                        [
+                           3,
+                           0.4
+                        ],
+                        [
+                           2,
+                           0.4
+                        ],
+                        [
+                           1,
+                           0
                         ]
                      ]
                   },
@@ -273,15 +281,19 @@
                      "quality": [
                         [
                            4,
-                           0.001
+                           0.01
                         ],
                         [
                            3,
-                           0.06
+                           0.5
                         ],
                         [
                            2,
-                           0.4
+                           0.2
+                        ],
+                        [
+                           1,
+                           0
                         ]
                      ]
                   }

@@ -1,0 +1,15 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_time_of_day",
+   "unique": true,
+   "in_edge": "wait_for_8_pm_encounter",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "generate_meteor_shower_night"
+      ]
+   },
+   "wait_for_time_of_day_info": {
+      "time": "20:10"
+   }
+}

@@ -19,6 +19,9 @@ function AceBuffsComponent:activate()
    if not self._sv.buffs_by_category then
       self._sv.buffs_by_category = {}
    end
+   if not self._sv.buffs_by_axis then
+      self._sv.buffs_by_axis = {}
+   end
    if not self._sv.managed_properties then
       self._sv.managed_properties = {}
    end
@@ -102,6 +105,17 @@ function AceBuffsComponent:get_buffs_by_category(category)
    end
 end
 
+function AceBuffsComponent:get_buffs_by_axis(axis)
+   local axis_buffs = self._sv.buffs_by_axis[axis]
+   if axis_buffs then
+      local buffs = {}
+      for buff_id, _ in pairs(axis_buffs) do
+         buffs[buff_id] = self._sv.buffs[buff_id]
+      end
+      return buffs
+   end
+end
+
 function AceBuffsComponent:get_buffs()
    return self._sv.buffs
 end
@@ -122,6 +136,10 @@ end
 
 function AceBuffsComponent:has_category_buffs(category)
    return self._sv.buffs_by_category[category] ~= nil
+end
+
+function AceBuffsComponent:has_axis_buffs(axis)
+   return self._sv.buffs_by_axis[axis] ~= nil
 end
 
 function AceBuffsComponent:remove_category_buffs(category, rank, reduce_ranks)
@@ -231,6 +249,13 @@ function AceBuffsComponent:add_buff(uri, options)
       self._sv.buffs_by_category[json.category] = buffs_by_category
 
       is_wound = stonehearth.constants.health.WOUND_TYPES[json.category]
+   end
+
+   if json.axis then
+      local buffs_by_axis = self._sv.buffs_by_axis[json.axis] or {}
+
+      buffs_by_axis[uri] = true
+      self._sv.buffs_by_axis[json.axis] = buffs_by_axis
    end
 
    local buff
@@ -352,6 +377,16 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks, ignore_wound_chec
                   buffs_by_category[uri] = nil
                   if not next(buffs_by_category) then
                      self._sv.buffs_by_category[json.category] = nil
+                  end
+               end
+            end
+
+            if json.axis then
+               local buffs_by_axis = self._sv.buffs_by_axis[json.axis]
+               if buffs_by_axis then
+                  buffs_by_axis[uri] = nil
+                  if not next(buffs_by_axis) then
+                     self._sv.buffs_by_axis[json.axis] = nil
                   end
                end
             end

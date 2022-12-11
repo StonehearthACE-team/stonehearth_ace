@@ -1,3 +1,4 @@
+local Sound = require 'stonehearth.services.client.sound.sound_service'
 local AceSound = class()
 
 --When the population changes, check the tier
@@ -65,6 +66,26 @@ function AceSound:_on_threat_changed(data)
                self:_play_sound(self._constants.sounds.combat_finished_sound)
             end)
       end
+   end
+end
+
+AceSound._ace_old_on_server_ready = Sound.on_server_ready
+function AceSound:on_server_ready()
+   self:_ace_old_on_server_ready()
+
+   self:set_soundtrack_override(stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'soundtrack_override'))
+end
+
+function AceSound:set_soundtrack_override(override)
+   local prev_override = self._soundtrack_override
+   if not override or override == 'none' then
+      self._soundtrack_override = nil
+   else
+      self._soundtrack_override = override
+   end
+
+   if prev_override ~= self._soundtrack_override then
+      self._trigger_tracklist_change = true
    end
 end
 
@@ -154,7 +175,14 @@ function AceSound:_get_music_tracklist(is_day)
    local tier_music = self:_choose_tier_music_track(is_day)
    local weather_music = self:_choose_weather_music_track(is_day)
    local music_tracklist
-   if weather_music and tier_music then
+   if self._soundtrack_override then
+      if weather_music then
+         music_tracklist  = radiant.deep_copy(self:_choose_overriden_music_track(is_day, self._soundtrack_override))
+         radiant.array_append(music_tracklist.track, weather_music.track)
+      else
+         music_tracklist = self:_choose_overriden_music_track(is_day, self._soundtrack_override)
+      end
+   elseif weather_music and tier_music then
       music_tracklist  = radiant.deep_copy(tier_music)
       radiant.array_append(music_tracklist.track, weather_music.track)
    elseif weather_music then
@@ -163,6 +191,22 @@ function AceSound:_get_music_tracklist(is_day)
       music_tracklist = tier_music
    end
    return music_tracklist
+end
+
+function AceSound:_choose_overriden_music_track(is_day, soundtrack_override)
+   local music_sound_key = soundtrack_override
+   local music_data = self._constants.music[music_sound_key]
+   radiant.assert(music_data, 'soundtrack override can not be found in music data', music_sound_key)
+
+   local time_of_day = is_day and 'day' or 'night'
+   -- Get map of playable songs for this time of day
+   local time_of_day_music = music_data[time_of_day]
+   if not time_of_day_music then
+      return
+   end
+
+   -- Get track for this time of day
+   return time_of_day_music
 end
 
 function AceSound:_choose_weather_music_track(is_day)

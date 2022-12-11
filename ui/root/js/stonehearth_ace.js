@@ -76,6 +76,10 @@ var stonehearth_ace = {
       return typeString;
    },
 
+   getItemCategory: function(category) {
+      return stonehearth_ace._item_categories[category];
+   },
+
    findRelevantClassesArray: function(roles) {
       var classes = {};
       var classArray = [];
@@ -278,6 +282,10 @@ $.getJSON('/stonehearth_ace/ui/data/equipment_types.json', function(data) {
       type_data.type = type;
    });
    stonehearth_ace._equipment_types = data;
+});
+
+$.getJSON('/stonehearth_ace/ui/data/item_categories.json', function(data) {
+   stonehearth_ace._item_categories = data.categories;
 });
 
 $.getJSON('/stonehearth_ace/ui/data/season_icons.json', function(data) {

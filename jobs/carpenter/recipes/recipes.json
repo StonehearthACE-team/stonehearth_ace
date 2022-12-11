@@ -184,6 +184,12 @@
 			},
 			"market_shelf_ground_wood": {
 				"recipe": "file(market_shelf_ground_wood_recipe.json)"
+			},
+			"wood_market_stall_simple": {
+				"recipe": "file(wood_market_stall_simple_recipe.json)"
+			},
+			"wood_market_stall_fancy": {
+				"recipe": "file(wood_market_stall_fancy_recipe.json)"
 			}
 		}
 		},
@@ -273,7 +279,7 @@
          }
       },
 		"frostfeast": {
-         "ordinal": 999,
+         "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
 				"frostfeast_present_small": {

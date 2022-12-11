@@ -1,0 +1,25 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "wait_for_day_two_non_hard",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "wait_for_fisher_requirements",
+         "wait_for_smith_requirements",
+         "wait_for_healer_requirements"
+      ]
+   },
+   "can_start": {
+      "test_1": {
+         "game_mode_check": {
+            "type": "deny_if",
+            "item": "game_mode",
+            "value": "stonehearth:game_mode:hard"
+         }
+      }
+   },
+   "wait_info": {
+      "duration": "12h"
+   }
+}

@@ -2,7 +2,9 @@
    "type": "arc",
    "rarity": "common",
    "encounters": {
+		"start": "file(encounters/start.json)",
 		"wait_for_day_two": "file(encounters/wait_for_day_two.json)",
+		"wait_for_day_two_non_hard": "file(encounters/wait_for_day_two_non_hard.json)",
 		"friendly_strangers_add_counter": "file(encounters/friendly_strangers_add_counter.json)",
 		"friendly_strangers_subtract_counter": "file(encounters/friendly_strangers_subtract_counter.json)",
 	
@@ -28,6 +30,15 @@
 		"healer_destroy": "file(encounters/healer/healer_destroy.json)",
 		"healer_spawn": "file(encounters/healer/healer_spawn.json)",
 		"healer_wait": "file(encounters/healer/healer_wait.json)",
-		"healer_gift": "file(encounters/healer/healer_gift.json)"
+		"healer_gift": "file(encounters/healer/healer_gift.json)",
+
+		"wait_for_meteoric_fragment_event": "file(encounters/wait_for_meteoric_fragment_event.json)",
+		"wait_for_astrologer_requirements": "file(encounters/wait_for_astrologer_requirements.json)",
+		"delay_before_astrologer_arrival": "file(encounters/astrologer/delay_before_astrologer_arrival.json)",
+		"astrologer_dialog": "file(encounters/astrologer/astrologer_dialog.json)",
+		"astrologer_destroy": "file(encounters/astrologer/astrologer_destroy.json)",
+		"astrologer_spawn": "file(encounters/astrologer/astrologer_spawn.json)",
+		"astrologer_wait": "file(encounters/astrologer/astrologer_wait.json)",
+		"astrologer_gift": "file(encounters/astrologer/astrologer_gift.json)"
 	}
 }

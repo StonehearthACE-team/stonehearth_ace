@@ -1,0 +1,59 @@
+{
+   "type": "effect",
+   "tracks": {
+      "meteorite_main": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/meteorite/meteorite_main.cubemitter.json",
+         "start_time": 0,
+         "end_time": 2000,
+         "transforms": { "x": 0, "y": 80, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "meteorite_base": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/meteorite/meteorite_base.cubemitter.json",
+         "start_time": 300,
+         "end_time": 2000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "meteorite_smoke": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/meteorite/meteorite_smoke.cubemitter.json",
+         "start_time": 200,
+         "end_time": 2000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "light": {
+         "type": "light",
+         "start_time": 300,
+         "light": "/stonehearth_ace/data/horde/animatedlights/meteorite/meteorite.animatedlight.json",
+         "transforms": { "x": 0, "y": 20, "z": 0 }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 6000,
+         "start_time": 0,
+         "falloff": 0,
+         "volume": 60,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:starstruck_01",
+               "stonehearth_ace:sounds:starstruck_02",
+               "stonehearth_ace:sounds:starstruck_03"
+            ]
+         }
+      }
+   }
+}

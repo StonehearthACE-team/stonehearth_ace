@@ -1,0 +1,25 @@
+{
+   "display_name": "i18n(stonehearth_ace:data.weather.event.meteor_shower.display_name)",
+   "description": "i18n(stonehearth_ace:data.weather.event.meteor_shower.description)",
+   "icon": "file(event_meteor_shower.png)",
+   "sky_settings": "stonehearth_ace:sky_settings:event:meteor_shower",
+   "controller": "stonehearth_ace:weather_scripts:event_meteor_shower",
+   "renderer": "stonehearth_ace:weather_renderers:meteor_shower",
+   "ambient_sound_key": "sunny_autumn",
+   "thoughts": [
+      "stonehearth:thoughts:weather:event_meteor_shower_negative",
+      "stonehearth:thoughts:weather:event_meteor_shower_positive",
+      "stonehearth:thoughts:weather:event_meteor_shower_positive",
+      "stonehearth:thoughts:weather:event_meteor_shower_positive",
+      "stonehearth:thoughts:weather:event_meteor_shower_positive",
+      "stonehearth:thoughts:weather:event_meteor_shower_positive",
+      "stonehearth:thoughts:weather:event_meteor_shower_positive",
+      "stonehearth:thoughts:weather:event_meteor_shower_positive",
+      "stonehearth:thoughts:weather:event_meteor_shower_positive"
+   ],
+   "subject_matter": "stonehearth_ace:subjects:weather:event_meteor_shower",
+   "is_bad_weather": false,
+   "cold_weather": false,
+   "is_dark_during_daytime": false,
+   "hide_cloud_shadows": true
+}

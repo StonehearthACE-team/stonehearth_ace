@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 6,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.frostfeast.light_string_horizontal_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.frostfeast.light_string_horizontal_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.frostfeast.light_string_horizontal_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/frostfeast/light_string_horizontal/light_string_horizontal.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+	"manual_unlock": true,
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "thread resource",
+         "count": 4
+      },
+		{
+         "material": "clay resource",
+         "count": 2
+      },
+		{
+         "uri": "stonehearth:resources:earth_essence",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:light_string:horizontal"
+      },
+      {
+         "item": "stonehearth_ace:decoration:frostfeast:light_string:horizontal"
+      }
+   ]
+}

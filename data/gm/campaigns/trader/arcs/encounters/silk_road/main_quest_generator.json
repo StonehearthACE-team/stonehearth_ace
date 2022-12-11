@@ -1,0 +1,49 @@
+{
+   "type": "encounter",
+   "encounter_type": "generator",
+   "in_edge": "main_quest_generator",
+   "generator_info": {
+      "delay": "24+12h",
+      "spawn_edge": {
+         "type": "trigger_one",
+         "out_edges": [
+            {
+               "out_edge": {
+                  "type": "trigger_many",
+                  "out_edges": [
+                     "tier_1_returning_silk_road_encounter",
+                     "tier_1_rc_returning_silk_road_encounter",
+                     "tier_1_na_returning_silk_road_encounter"
+                  ]
+               },
+               "type": "weighted_edge",
+               "weight": 1
+            },
+            {
+               "out_edge": {
+                  "type": "trigger_many",
+                  "out_edges": [
+                     "tier_2_returning_silk_road_encounter",
+                     "tier_2_rc_returning_silk_road_encounter",
+                     "tier_2_na_returning_silk_road_encounter"
+                  ]
+               },
+               "type": "weighted_edge",
+               "weight": 1
+            },
+            {
+               "out_edge": {
+                  "type": "trigger_many",
+                  "out_edges": [
+                     "tier_3_returning_silk_road_encounter",
+                     "tier_3_rc_returning_silk_road_encounter",
+                     "tier_3_na_returning_silk_road_encounter"
+                  ]
+               },
+               "type": "weighted_edge",
+               "weight": 1
+            }
+         ]
+      }
+   }
+}

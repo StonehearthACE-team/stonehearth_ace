@@ -119,6 +119,7 @@ function MerchantComponent:show_bulletin(initial)
                         :set_ui_view('StonehearthShopBulletinDialog')
                         :set_callback_instance(self)
                         :set_data(data)
+                        :set_type('shop')
 end
 
 function MerchantComponent:_on_shop_closed()

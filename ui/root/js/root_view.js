@@ -109,8 +109,7 @@ App.RootView.reopen({
 
       App.stonehearthClient.showCharacterSheet = function(entity) {
          if (this._petCharacterSheet != null && !this._petCharacterSheet.isDestroyed) {
-            this._petCharacterSheet.destroy();
-            this._petCharacterSheet = null;
+            this._petCharacterSheet.dismiss();
          }
          if (this._characterSheet != null && !this._characterSheet.isDestroyed) {
             if (this._characterSheet.get('uri') == entity) {
@@ -131,7 +130,13 @@ App.RootView.reopen({
          }
 
          if (this._petCharacterSheet != null && !this._petCharacterSheet.isDestroyed) {
-            this._petCharacterSheet.set('uri', entity);
+            if (this._petCharacterSheet.get('uri') == entity) {
+               this._petCharacterSheet.dismiss();
+            }
+            else {
+               this._petCharacterSheet.set('uri', entity);
+               this._petCharacterSheet.show();
+            }
          } else {
             this._petCharacterSheet = App.gameView.addView(App.StonehearthPetCharacterSheetView, { uri: entity });
          }
@@ -168,5 +173,46 @@ App.RootView.reopen({
             });
          });
       };
+
+      App.bulletinBoard.tryShowBulletin = function(bulletin) {
+         var self = this;
+
+         if (self.notificationContainerView.isShowingBulletinNotification()) {
+            return;
+         }
+
+         if (bulletin) {
+            self._lastViewedBulletinId = bulletin.id
+            self.showDialogView(bulletin);
+
+            if (!bulletin.shown) {
+               radiant.call('stonehearth:mark_bulletin_shown', bulletin.id);
+            }
+         }
+      };
+
+      App.bulletinBoard.closeDialogView = function(filter_fn) {
+         var self = this;
+         var dialogBulletinViewModel = self._bulletinDialogView && !self._bulletinDialogView.isDestroyed && self._bulletinDialogView.get('model');
+         if (dialogBulletinViewModel) {
+            if (!filter_fn || filter_fn(dialogBulletinViewModel)) {
+               if (self._bulletinDialogView.SHOULD_DESTROY_ON_HIDE_DIALOG) {
+                  self._bulletinDialogView.hideByDestroying();
+               } else {
+                  self._unclosedBulletinDialogViews[dialogBulletinViewId] = self._bulletinDialogView;
+                  self._bulletinDialogView.hide();
+               }
+
+               // also mark the bulletin as handled and remove any notification for it
+               var id = dialogBulletinViewModel.id;
+               if (id) {
+                  self.notificationContainerView.removeNotificationView(self._bulletins[id]);
+                  self.markBulletinHandled(self._bulletins[id]);
+               }
+
+               self._bulletinDialogView = null;
+            }
+         }
+      }
    }
 });

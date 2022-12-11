@@ -5,6 +5,28 @@
       "auto_rescue": {}
    },
    "stonehearth_ace": {
+      "soundtrack_override": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.soundtrack_override.name)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.soundtrack_override.description)",
+         "values": {
+            "none": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.soundtrack_override.none)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.soundtrack_override.none_description)"
+            },
+            "frostfeast": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.soundtrack_override.frostfeast)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.soundtrack_override.frostfeast_description)"
+            }
+         },
+         "on_change": {
+            "call": "soundtrack_override_setting_changed"
+         },
+         "default": "frostfeast",
+         "ordinal": 0
+      },
       "backup_i18n_language": {
          "type": "list",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.backup_i18n_language.name)",
@@ -24,21 +46,21 @@
             "fire_event": "backup_i18n_language_changed"
          },
          "default": "en",
-         "ordinal": 0
+         "ordinal": 0.1
       },
       "load_paused": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.load_paused)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.load_paused_description)",
          "default": true,
-         "ordinal": 0.1
+         "ordinal": 0.2
       },
       "limit_network_data": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data_description)",
          "default": true,
-         "ordinal": 0.2
+         "ordinal": 0.3
       },
       "building_grid_size": {
          "type": "number",

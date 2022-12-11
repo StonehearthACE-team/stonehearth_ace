@@ -1,0 +1,34 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cook_pottage_grain.qb)",
+               "file(cook_pottage_empty.qb)",
+               "file(cook_pottage_fuel.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.055, "y": 0, "z": -0.055 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": false
+      },
+      "render_info": {
+         "scale": 0.11
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.cook.cook_pottage.grain.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.cook.cook_pottage.grain.description)",
+         "icon": "file(cook_pottage.png)",
+         "category": "workshops",
+         "material_tags": [
+            "stockpile_tool",
+            "pottage"
+         ]
+      }
+   }
+}

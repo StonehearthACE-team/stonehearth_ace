@@ -5,23 +5,66 @@ WorkAtStall.does = 'stonehearth_ace:merchant:work_at_stall'
 WorkAtStall.args = {}
 WorkAtStall.priority = 1
 
-local function _make_tier_stall_filter_fn(owner_id, min_tier)
+local function _make_tier_stall_filter_fn(owner_id, min_tier, merchant_id)
    return function(item)
          if owner_id ~= '' and radiant.entities.get_player_id(item) ~= owner_id then
             return false
          end
          local stall_data = radiant.entities.get_component_data(item, 'stonehearth_ace:market_stall')
-         return stall_data and stall_data.tier and stall_data.tier >= min_tier
+         if not stall_data or not stall_data.tier or stall_data.tier < min_tier then
+            return false
+         end
+         
+         -- make sure it's not already set up for another merchant
+         local stall_component = item:get_component('stonehearth_ace:market_stall')
+         if stall_component then
+            local active_merchant = stall_component:get_merchant()
+            if not active_merchant or not active_merchant:is_valid() or active_merchant:get_id() == merchant_id then
+               return true
+            end
+         end
+
+         return false
       end
 end
 
-local function _make_unique_stall_filter_fn(owner_id, uri)
+local function _make_unique_stall_filter_fn(owner_id, uri, merchant_id)
    return function(item)
          if owner_id ~= '' and radiant.entities.get_player_id(item) ~= owner_id then
             return false
          end
-         return item:get_uri() == uri
+         if item:get_uri() ~= uri then
+            return false
+         end
+
+         -- make sure it's not already set up for another merchant
+         local stall_component = item:get_component('stonehearth_ace:market_stall')
+         if stall_component then
+            local active_merchant = stall_component:get_merchant()
+            if not active_merchant or not active_merchant:is_valid() or active_merchant:get_id() == merchant_id then
+               return true
+            end
+         end
+
+         return false
       end
+end
+
+local function _make_stall_rating_fn(merchant_id, tier_rating_fn)
+   return function(item)
+      -- first check if it's currently set up for this merchant
+      local stall_component = item:get_component('stonehearth_ace:market_stall')
+      if stall_component then
+         local active_merchant = stall_component:get_merchant()
+         if active_merchant and active_merchant:get_id() == merchant_id then
+            return 1
+         end
+      end
+      if tier_rating_fn then
+         return tier_rating_fn(item)
+      end
+      return 0
+   end
 end
 
 local function _make_tier_stall_rating_fn(min_tier)
@@ -40,19 +83,21 @@ function WorkAtStall:start_thinking(ai, entity, args)
    if merchant_component and not merchant_component:should_depart() then
       local filter_fn, rating_fn
       local owner_id = merchant_component:get_player_id()
+      local entity_id = entity:get_id()
       local required_stall = merchant_component:get_required_stall()
       if required_stall then
          filter_fn = stonehearth.ai:filter_from_key(
                'stonehearth_ace:merchant:work_at_stall',
-               owner_id .. '|' .. required_stall,
-               _make_unique_stall_filter_fn(owner_id, required_stall))
+               owner_id .. '|' .. entity_id .. '|' .. required_stall,
+               _make_unique_stall_filter_fn(owner_id, required_stall, entity_id))
+         rating_fn = _make_stall_rating_fn(entity_id)
       else
          local min_stall_tier = merchant_component:get_stall_tier()
          filter_fn = stonehearth.ai:filter_from_key(
                'stonehearth_ace:merchant:work_at_stall',
-               owner_id .. '|' .. tostring(min_stall_tier),
-               _make_tier_stall_filter_fn(owner_id, min_stall_tier))
-         rating_fn = _make_tier_stall_rating_fn(math.max(1, min_stall_tier))
+               owner_id .. '|' .. entity_id .. '|' .. tostring(min_stall_tier),
+               _make_tier_stall_filter_fn(owner_id, min_stall_tier, entity_id))
+         rating_fn = _make_stall_rating_fn(entity_id, _make_tier_stall_rating_fn(math.max(1, min_stall_tier)))
       end
 
       ai:set_think_output({

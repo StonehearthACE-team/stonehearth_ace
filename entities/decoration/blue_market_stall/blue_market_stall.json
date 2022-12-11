@@ -1,6 +1,9 @@
 {
-   "mixins": "stonehearth_ace:mixins:market_stall:shops",
    "components": {
+      "mixintypes": {
+         "stonehearth:shop": "remove",
+         "stonehearth:shop_trigger": "remove"
+      },
       "region_collision_shape": {
          "region": [
             {
@@ -15,19 +18,15 @@
                "min": { "x": -3, "y": 0, "z": -2 },
                "max": { "x": 3, "y": 5, "z": 3 }
             }
-         ],
-         "adjacency_flags": [
-            "front",
-            "front_left",
-            "front_right"
          ]
+      },
+      "stonehearth_ace:remove_components": {
+         "components": {
+            "stonehearth:shop": true,
+            "stonehearth:shop_trigger": true
+         }
       }
    },
 	"entity_data": {
-		"stonehearth:net_worth": {
-         "shop_info": {
-            "sellable": false
-         }
-      }
 	}
 }

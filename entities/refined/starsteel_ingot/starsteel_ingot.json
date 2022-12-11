@@ -1,0 +1,49 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.09,
+         "material": "materials/shiny.material.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(starsteel_ingot.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "stonehearth_ace:effects:starsteel_glow"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 58,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.refined.starsteel_ingot.display_name)",
+         "description": "i18n(stonehearth_ace:entities.refined.starsteel_ingot.description)",
+         "icon": "file(starsteel_ingot.png)",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": [
+            "stockpile_refined_ore",
+            "starsteel",
+            "ingot",
+            "hard_metal",
+            "refined",
+            "stockpile_refined_craftable",
+            "undesirable_ingredient"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 10
+      }
+   }
+}

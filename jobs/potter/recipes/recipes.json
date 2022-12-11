@@ -146,7 +146,13 @@
 				},
 				"market_shelf_ground_clay": {
 					"recipe": "file(market_shelf_ground_clay_recipe.json)"
-				}
+				},
+				"clay_market_stall_simple": {
+               "recipe": "file(clay_market_stall_simple_recipe.json)"
+            },
+				"clay_market_stall_fancy": {
+               "recipe": "file(clay_market_stall_fancy_recipe.json)"
+            }
 			}
 		},
 		"furniture": {
@@ -396,7 +402,7 @@
          }
       },
 		"frostfeast": {
-         "ordinal": 999,
+         "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
 				"frostfeast_present_small": {
@@ -416,6 +422,18 @@
 				},
 				"frostfeast_clay_door_wreath": {
 					"recipe": "file(frostfeast/clay_door_wreath_recipe.json)"
+				},
+				"frostfeast_light_string_horizontal": {
+					"recipe": "file(frostfeast/light_string_horizontal_recipe.json)"
+				},
+				"frostfeast_light_string_horizontal_short": {
+					"recipe": "file(frostfeast/light_string_horizontal_short_recipe.json)"
+				},
+				"frostfeast_light_string_vertical": {
+					"recipe": "file(frostfeast/light_string_vertical_recipe.json)"
+				},
+				"frostfeast_light_string_vertical_short": {
+					"recipe": "file(frostfeast/light_string_vertical_short_recipe.json)"
 				}
          }
       }

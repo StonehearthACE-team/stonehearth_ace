@@ -1,0 +1,21 @@
+{
+   "mixins": "stonehearth_ace:mixins:buffs:npc_only_buff",
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.starstruck.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.starstruck.description)",
+   "icon": "file(starstruck.png)",
+   "effect": "stonehearth_ace:effects:hit_sparks:starstruck",
+   "duration": "32m",
+   "cant_affect_siege": true,
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -0.01,
+      "pulse": "8m",
+      "pulse_immediately": false,
+      "is_percentage": true,
+      "pulse_on_destroy": true,
+      "multiply_per_axis_buff": "debuff"
+   }
+}

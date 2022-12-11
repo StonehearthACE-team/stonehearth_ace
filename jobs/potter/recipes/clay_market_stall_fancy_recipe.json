@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 15,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.clay_market_stall_fancy_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.clay_market_stall_fancy_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.clay_market_stall_fancy_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/clay_market_stall_fancy/clay_market_stall_fancy.png",
+   "workshop": "stonehearth:potter:kiln",
+   "work_effect": "work_wait",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:molded_clay",
+         "count": 12
+      },
+      {
+         "uri": "stonehearth_ace:refined:molded_porcelain",
+         "count": 6
+      },
+      {
+         "material": "clay_brick resource",
+         "count": 8
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:clay_market_stall_fancy"
+      }
+   ]
+}

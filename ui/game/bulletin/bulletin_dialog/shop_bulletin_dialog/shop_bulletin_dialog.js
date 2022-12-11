@@ -1,3 +1,37 @@
+$(top).on('stonehearth_ace_show_shop', function(_, e) {
+   // instead of calling a command to show a bulletin by default, first fire this event
+   // check to see if the bulletin already exists
+   // if it exists and is currently being shown, simply dismiss it
+   // if it exists and isn't being shown, show it (do we need to dismiss other existing shop bulletins?)
+   // if it doesn't exist, dismiss other existing shop bulletins and call the command function
+   radiant.call_obj('stonehearth_ace.mercantile', 'get_shop_command', e.entity)
+      .done(function(response) {
+         if (response.shop) {
+            var shopBulletin;
+            radiant.each(App.bulletinBoard._bulletins, function(_, bulletin) {
+               if (bulletin.type == 'shop') {
+                  var shop = bulletin.data && bulletin.data.shop;
+                  if (shop == response.shop) {
+                     shopBulletin = bulletin;
+                  }
+               }
+            });
+
+            // first close any existing (shop?) bulletins that aren't this one
+            App.bulletinBoard.closeDialogView(function(data) {
+               return !shopBulletin || data.id != shopBulletin.id;
+            });
+
+            if (shopBulletin) {
+               App.bulletinBoard.tryShowBulletin(shopBulletin);
+            }
+            else {
+               radiant.call_obj('stonehearth_ace.mercantile', 'show_shop_command', e.entity);
+            }
+         }
+      });
+});
+
 App.StonehearthShopBulletinDialog.reopen({
    willDestroyElement: function() {
       this.$().off('click', '.wantedItem');
@@ -19,6 +53,14 @@ App.StonehearthShopBulletinDialog.reopen({
          return false;
       });
    },
+
+   _updateShopDescription: function() {
+      var self = this;
+      var description = self.get('model.data.shop.description');
+      var description_i18n_data = self.get('model.data.shop.description_i18n_data');
+      self.set('hasShopDescription', description != null);
+      self.set('shopDescription', i18n.t(description, description_i18n_data));
+   }.observes('model.data.shop.description'),
 
    _updateWantedItems: function() {
       if (!this.$()) {
@@ -80,40 +122,43 @@ App.StonehearthShopBulletinDialog.reopen({
       }
 
       Ember.run.scheduleOnce('afterRender', self, function () {
-         self.$('.wantedItem').each(function () {
-            var el = $(this);
-            var wantedItems = self.get('wantedItems');
-            var wantedItem = wantedItems && wantedItems[el.attr('data-index')];
-            if (wantedItem != null) {
-               // add a tooltip
-               App.tooltipHelper.createDynamicTooltip(el, function() {
-                  var description = wantedItem.category && i18n.t('stonehearth:ui.game.entities.item_categories.' + wantedItem.category);
-                  var quantity = wantedItem.maxQuantity != null ? (wantedItem.maxQuantity - wantedItem.quantity) : null;
-                  var hasQuantity = quantity != null;
-                  // show the percentage modification to the price
-                  var priceMod = wantedItem.priceMod;
-                  if (priceMod > 0) {
-                     // price is increased
-                     description += '<div class="wantedItem">' +
-                           i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_higher' + (hasQuantity ? '_quantity' : ''),
-                              {
-                                 factor: priceMod,
-                                 quantity: quantity
-                              }) + '</div>';
-                  }
-                  else if (priceMod < 0) {
-                     // price is decreased!
-                     description += '<div class="wantedItem">' +
-                           i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_lower' + (hasQuantity ? '_quantity' : ''),
-                              {
-                                 factor: Math.abs(priceMod),
-                                 quantity: quantity
-                              }) + '</div>';
-                  }
-                  return $(App.tooltipHelper.createTooltip(i18n.t(wantedItem.display_name), description));
-               });
-            }
-         });
+         var wantedItems = self.$('.wantedItem');
+         if (wantedItems) {
+            wantedItems.each(function () {
+               var el = $(this);
+               var wantedItems = self.get('wantedItems');
+               var wantedItem = wantedItems && wantedItems[el.attr('data-index')];
+               if (wantedItem != null) {
+                  // add a tooltip
+                  App.tooltipHelper.createDynamicTooltip(el, function() {
+                     var description = wantedItem.category && i18n.t('stonehearth:ui.game.entities.item_categories.' + wantedItem.category);
+                     var quantity = wantedItem.maxQuantity != null ? (wantedItem.maxQuantity - wantedItem.quantity) : null;
+                     var hasQuantity = quantity != null;
+                     // show the percentage modification to the price
+                     var priceMod = wantedItem.priceMod;
+                     if (priceMod > 0) {
+                        // price is increased
+                        description += '<div class="wantedItem">' +
+                              i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_higher' + (hasQuantity ? '_quantity' : ''),
+                                 {
+                                    factor: priceMod,
+                                    quantity: quantity
+                                 }) + '</div>';
+                     }
+                     else if (priceMod < 0) {
+                        // price is decreased!
+                        description += '<div class="wantedItem">' +
+                              i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_lower' + (hasQuantity ? '_quantity' : ''),
+                                 {
+                                    factor: Math.abs(priceMod),
+                                    quantity: quantity
+                                 }) + '</div>';
+                     }
+                     return $(App.tooltipHelper.createTooltip(i18n.t(wantedItem.display_name), description));
+                  });
+               }
+            });
+         }
       });
    }.observes('model.data.shop.wanted_items'),
 

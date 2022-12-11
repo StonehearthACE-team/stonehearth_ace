@@ -2,15 +2,6 @@
    "type": "campaign",
    "encounter_type": "script",
    "rarity": "common",
-   "can_start": {
-      "test_1": {
-         "game_mode_check": {
-            "type": "deny_if",
-            "item": "game_mode",
-            "value": "stonehearth:game_mode:hard"
-         }
-      }
-   },
    "arcs": {
       "trigger": {
          "friendly_strangers_arc": "file(arcs/trigger/friendly_strangers_arc.json)"

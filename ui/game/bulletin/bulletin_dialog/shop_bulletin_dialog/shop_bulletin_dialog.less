@@ -10,16 +10,29 @@
       height: 600px;
    }
 
-   .inventoryList {
+   .shopTabContents {
       height: 515px;
+      display: flex;
+      flex-direction: column;
+   }
 
-      &.hasWantedItems {
-         height: 390px;
-      }
+   .inventoryList {
+      // height: 515px;
+
+      // &.hasWantedItems {
+      //    height: 390px;
+      // }
+      height: inherit;
+   }
+
+   #shopDescription {
+      margin-top: 20px;
+      margin-bottom: -15px;
    }
    
    #wantedItems {
       margin-top: 20px;
+      height: 125px;
 
       #wantedItemsList {
          display: flex;

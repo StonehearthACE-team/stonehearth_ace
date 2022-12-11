@@ -92,7 +92,7 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
             if (!updated.items[uri]) updated.items[uri] = {};
             updated.items[uri][itemQuality] = true;
          }
-      })
+      });
 
       // Anything that is not marked as updated needs to be removed.
       radiant.each(self._itemElements, function(uri, itemQualities) {
@@ -114,19 +114,26 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
             self._categoryElements[category] = null;
          }
       });
+
+      // now sort each category according to its ordinal
+      var categories = $(self.palette).find('.category');
+      categories.sort(function(a, b) {
+         return +$(a).attr('ordinal') - +$(b).attr('ordinal');
+      });
+      categories.appendTo(self.palette);
    },
 
    _addCategoryForItem: function(item) {
-      /*same as vanilla, but added this part to h2 elements:
-      .click(function(){
-         this.classList.toggle("collapsed");
-      });*/
+      var categoryData = stonehearth_ace.getItemCategory(item.category) || {};
+      var ordinal = isNaN(categoryData.ordinal) ? 999 : categoryData.ordinal;
+
       var category = $('<div>')
          .addClass('category')
-         .attr('category', item.category);
+         .attr('category', item.category)
+         .attr('ordinal', ordinal);
 
       // new title element for the category
-      var categoryDisplayName = i18n.t('stonehearth:ui.game.entities.item_categories.' + item.category);
+      var categoryDisplayName = i18n.t(categoryData.display_name || 'stonehearth:ui.game.entities.item_categories.' + item.category);
       if (!categoryDisplayName) {
          console.log("No category display name found for item category " + item.category);
          categoryDisplayName = item.category;
@@ -338,39 +345,37 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
             extraTip = extraTip ? extraTip + equipDiv : equipDiv;
          }
 
-         if (self.options.wantedItems) {
-            var wantedItem = self._getBestWantedItem(item.root_uri);
-            if (wantedItem) {
-               var quantity = wantedItem.max_quantity != null ? (wantedItem.max_quantity - wantedItem.quantity) : null;
-               var hasQuantity = quantity != null;
-               // show the percentage modification to the price
-               var priceMod = Math.floor((wantedItem.price_factor - 1) * 100 + 0.5);
-               if (priceMod > 0) {
-                  // price is increased
-                  description += '<div class="wantedItem">' +
-                        i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_higher' + (hasQuantity ? '_quantity' : ''),
-                           {
-                              factor: priceMod,
-                              quantity: quantity
-                           }) + '</div>';
-               }
-               else if (priceMod < 0) {
-                  // price is decreased!
-                  description += '<div class="wantedItem">' +
-                        i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_lower' + (hasQuantity ? '_quantity' : ''),
-                           {
-                              factor: Math.abs(priceMod),
-                              quantity: quantity
-                           }) + '</div>';
-               }
+         var wantedItem = self._getBestWantedItem(item.root_uri);
+         if (wantedItem) {
+            var quantity = wantedItem.max_quantity != null ? (wantedItem.max_quantity - wantedItem.quantity) : null;
+            var hasQuantity = quantity != null;
+            // show the percentage modification to the price
+            var priceMod = Math.floor((wantedItem.price_factor - 1) * 100 + 0.5);
+            if (priceMod > 0) {
+               // price is increased
+               description += '<div class="wantedItem">' +
+                     i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_higher' + (hasQuantity ? '_quantity' : ''),
+                        {
+                           factor: priceMod,
+                           quantity: quantity
+                        }) + '</div>';
             }
-            else {
-               // if it's not wanted and it has a lower price factor, it's an unwanted item the merchant sells
-               var priceFactor = self._getBestPriceFactorForItem(item.root_uri, true);
-               if (priceFactor < 1) {
-                  description += '<div class="wantedItem">' +
-                        i18n.t('stonehearth_ace:ui.game.entities.tooltip_unwanted_item', {factor: Math.abs(Math.floor((priceFactor - 1) * 100 + 0.5))}) + '</div>';
-               }
+            else if (priceMod < 0) {
+               // price is decreased!
+               description += '<div class="wantedItem">' +
+                     i18n.t('stonehearth_ace:ui.game.entities.tooltip_wanted_item_lower' + (hasQuantity ? '_quantity' : ''),
+                        {
+                           factor: Math.abs(priceMod),
+                           quantity: quantity
+                        }) + '</div>';
+            }
+         }
+         else {
+            // if it's not wanted and it has a lower price factor, it's an unwanted item the merchant sells
+            var priceFactor = self._getBestPriceFactorForItem(item.root_uri, true);
+            if (priceFactor < 1) {
+               description += '<div class="wantedItem">' +
+                     i18n.t('stonehearth_ace:ui.game.entities.tooltip_unwanted_item', {factor: Math.abs(Math.floor((priceFactor - 1) * 100 + 0.5))}) + '</div>';
             }
          }
 

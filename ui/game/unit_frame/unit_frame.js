@@ -490,7 +490,7 @@ App.StonehearthUnitFrameView.reopen({
       var name_entity = self.get('name_entity');
       var unit_info = self.get(name_entity + '.stonehearth:unit_info');
       
-      var canChangeName = playerCheck && unit_info && !unit_info.locked;
+      var canChangeName = playerCheck && unit_info && unit_info.custom_name && !unit_info.locked;
       self.set('canChangeName', canChangeName);
       self.notifyPropertyChange('canChangeName');
 
@@ -746,7 +746,7 @@ App.StonehearthUnitFrameView.reopen({
       if (attributeMap) {
          radiant.each(attributeMap, function(name, buff) {
             //only push public buffs (buffs who have an is_private unset or false)
-            if (buff.invisible_to_player == undefined || !buff.invisible_to_player) {
+            if (typeof buff === 'object' && (buff.invisible_to_player == undefined || !buff.invisible_to_player)) {
                var this_buff = radiant.shallow_copy(buff);
                // only show stacks if greater than 1
                if (this_buff.stacks > 1) {

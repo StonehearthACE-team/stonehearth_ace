@@ -1,0 +1,41 @@
+{
+   "mixins": "stonehearth_ace:mixins:market_stall",
+   "components": {
+      "stonehearth_ace:market_stall": {
+         "tier": 2,
+         "setup_effect": "stonehearth:effects:poof_effect",
+         "teardown_effect": "stonehearth:effects:poof_effect:grey",
+         "stall_models": {
+            "default": {
+               "model_data": {
+                  "model": "file(shop/default_tier_1.qb)",
+                  "matrix": "Shop",
+                  "scale": 0.1
+               },
+               "entity_points": [
+                  {
+                     "bone_name": "Goods"
+                  },
+                  {
+                     "bone_name": "Goods",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "Goods",
+                     "min_quality": 2
+                  }
+               ]
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 58,
+         "rarity": "uncommon"
+      },
+      "stonehearth:appeal": {
+         "appeal": 15
+      }
+   }
+}

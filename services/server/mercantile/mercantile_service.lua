@@ -119,6 +119,21 @@ end
 function MercantileService:show_shop_command(session, response, entity)
    validator.expect_argument_types({'Entity'}, entity)
 
+   local merchant_component = self:_get_merchant_component(entity)
+   local shop = self:_get_shop(merchant_component, session.player_id)
+   if shop then
+      merchant_component:show_bulletin()
+   end
+end
+
+function MercantileService:get_shop_command(session, response, entity)
+   validator.expect_argument_types({'Entity'}, entity)
+
+   local merchant_component = self:_get_merchant_component(entity)
+   response:resolve({shop = self:_get_shop(merchant_component, session.player_id)})
+end
+
+function MercantileService:_get_merchant_component(entity)
    -- entity can be either a merchant or a stall
    -- the merchant component has the shop stored in it
    local merchant_component = entity:get_component('stonehearth_ace:merchant')
@@ -130,9 +145,13 @@ function MercantileService:show_shop_command(session, response, entity)
       end
    end
 
-   local shop = merchant_component and merchant_component:get_shop()
-   if shop then
-      merchant_component:show_bulletin()
+   return merchant_component
+end
+
+function MercantileService:_get_shop(merchant_component, player_id)
+   -- make sure the shop is actually for the calling player
+   if merchant_component and merchant_component:get_player_id() == player_id then
+      return merchant_component:get_shop()
    end
 end
 

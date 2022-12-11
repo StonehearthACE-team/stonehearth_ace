@@ -1,0 +1,100 @@
+{
+   "name": "fire",
+   "duration": 2000,
+   "material": "materials/cubemitter_bloom.material.json",
+   "loops": false,
+   "mesh": {
+      "file": "stonehearth_ace/data/models/vfx/meteorite/meteorite.qb",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": 13
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "BURST",
+         "values": [
+            [0, 1, 0]
+         ]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [0]
+      },
+      "origin": {
+         "surface": "POINT"
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [90, 360]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [
+               -720
+            ]
+         }
+      },
+      "acceleration": {
+         "over_lifetime_y": {
+            "kind": "CONSTANT",
+            "values": [
+               350
+            ]
+         }
+      },
+      "rotation": {
+         "over_lifetime_x": {
+            "kind": "CONSTANT",
+            "values": [90]
+         }
+      },
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.4, 0.7]
+         },
+         "start_x": {
+            "kind": "CONSTANT",
+            "values": [1]
+         },
+         "start_y": {
+            "kind": "CONSTANT",
+            "values": [1.5]
+         },
+         "start_z": {
+            "kind": "CONSTANT",
+            "values": [6]
+         },
+         "over_lifetime_z": {
+            "kind": "CURVE",
+            "values": [
+               [0, 3],
+               [0.6, 1],
+               [1, 0]
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0.88, 0.559, 0.322, 1]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0.8],
+               [0.8, 1],
+               [1, 0]
+            ]
+         }
+      }
+   }
+}

@@ -82,8 +82,12 @@ function AceShop:stock_shop()
 
       if merchant_options.persistence_data then
          -- if a persistence job was defined, try to find an appropriate match
-         -- add some of the recent crafts from that crafter to the shop, and set the town name
-         self._sv.town_name = merchant_options.persistence_data.town.town_name
+         -- add some of the recent crafts from that crafter to the shop, and set the town name, crafter name, and description
+         self._sv.description = 'i18n(stonehearth_ace:ui.game.bulletin.shop.persistence.crafter_description)'
+         self._sv.description_i18n_data = {
+            crafter_name = merchant_options.persistence_data.name,
+            town_name = merchant_options.persistence_data.town.town_name,
+         }
 
          -- randomly select one of their best crafts
          local best_crafts = merchant_options.persistence_data.best_crafts

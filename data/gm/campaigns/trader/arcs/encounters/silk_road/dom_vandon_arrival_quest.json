@@ -5,7 +5,8 @@
    "out_edge": {
       "type": "trigger_many",
       "out_edges": [
-         "arrival_quest_reward"
+         "arrival_quest_reward",
+         "main_quest_dialogue"
       ]
    },
    "delivery_quest_info": {
@@ -16,17 +17,22 @@
          {
             "type": "give_material",
             "material": "prepared_food",
-            "count": 3
+            "count": 6
          },
          {
             "type": "give_item",
-            "uri": "stonehearth:consumables:healing_tonic:small",
-            "count": 2
+            "uri": "stonehearth:food:feed:fodder",
+            "count": 6
          },
          {
-            "type": "give_material",
-            "material": "bone resource",
-            "count": 5
+            "type": "give_item",
+            "uri": "stonehearth:containers:input_bin:woven",
+            "count": 4
+         },
+         {
+            "type": "give_item",
+            "uri": "stonehearth:containers:log_pile",
+            "count": 1
          }
       ],
       "abandon_out_edge": "return_dialogue"

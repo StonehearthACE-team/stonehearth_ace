@@ -4,6 +4,14 @@ local rng = _radiant.math.get_default_rng()
 local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local log = radiant.log.create_logger('unit_info_component')
+local _default_locked_key = ':create()'
+
+function AceUnitInfoComponent.get_locked_key(json)
+   local locked = json.locked
+   if locked then
+      return type(locked) == 'string' and locked or _default_locked_key
+   end
+end
 
 -- TODO: implement some kind of randomized naming so you can get uniquely named items from regular loot mechanics
 -- perhaps limit it to items of higher-than-base quality?
@@ -29,7 +37,7 @@ function AceUnitInfoComponent:create()
       self:set_icon(json.icon)
    end
    if json.locked then
-      self:lock(type(json.locked) == 'string' and json.locked or ':create()')
+      self:lock(self.get_locked_key(json))
    end
    
    if self._ace_old_create then
@@ -52,21 +60,21 @@ end
 -- since this is the only thing that can be custom-set arbitrarily by the player
 -- in future, perhaps extend this capability to set_description and/or set_icon
 AceUnitInfoComponent._ace_old_set_custom_name = UnitInfoComponent.set_custom_name
-function AceUnitInfoComponent:set_custom_name(custom_name, custom_data, propogate_to_forms, is_creating)
+function AceUnitInfoComponent:set_custom_name(custom_name, custom_data, propogate_to_forms, keep_display_name)
    if self._sv.locked then
       return false
    end
 
    -- if we aren't currently using a title, clear the display name
    -- the base function will then assign the default custom name i18n string
-   if not is_creating and self._sv.display_name ~= 'i18n(stonehearth_ace:ui.game.entities.custom_name_with_title)' then
+   if not keep_display_name and self._sv.display_name ~= 'i18n(stonehearth_ace:ui.game.entities.custom_name_with_title)' then
       self._sv.display_name = nil
    end
 
    local name = self:_select_custom_name(custom_name)
    self:_ace_old_set_custom_name(name, self:_process_custom_data(custom_data))
    if propogate_to_forms ~= false then
-      self:_propogate_custom_name(name, custom_data, is_creating)
+      self:_propogate_custom_name(name, custom_data, keep_display_name)
    end
    return true
 end
@@ -93,11 +101,11 @@ function AceUnitInfoComponent:_select_custom_name(custom_name)
    return custom_name
 end
 
-function AceUnitInfoComponent:_propogate_custom_name(custom_name, custom_data, is_creating)
+function AceUnitInfoComponent:_propogate_custom_name(custom_name, custom_data, keep_display_name)
    local root, iconic = entity_forms.get_forms(self._entity)
    for _, form in ipairs({root, iconic}) do
       if form and form ~= self._entity then
-         form:add_component('stonehearth:unit_info'):set_custom_name(custom_name, custom_data, false, is_creating)
+         form:add_component('stonehearth:unit_info'):set_custom_name(custom_name, custom_data, false, keep_display_name)
       end
    end
 end
