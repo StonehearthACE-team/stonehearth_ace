@@ -1,144 +1,49 @@
 {
+   "mixins": [
+      "stonehearth_ace:data:namelists:human_npcs"
+   ],
    "roles": {
       "default": {
          "male": {
-            "given_names": [
-               "Dani",
-               "Snorr",
-               "Jay",
-               "Maddy",
-               "Cirdain",
-               "Shub",
-               "Wouter",
-               "Duncan",
-               "Paul",
-               "Schnabel",
-               "Wiese",
-               "Bruno",
-               "Niko",
-               "Coasters",
-               "Tendo",
-               "Pawel",
-               "Banto",
-               "Brax",
-               "Finder",
-               "Fenris",
-               "Highwall",
-               "Jos",
-               "Kasarov",
-               "Patches",
-               "Pingu",
-               "Sancho",
-               "Mads",
-               "Jynx",
-               "Rad",
-               "Wolfy",
-               "Fasalad",
-               "Mathra",
-               "Lost",
-               "Anaue",
-               "Sabs",
-               "Avairian",
-               "Michael",
-               "Cole",
-               "Emre",
-               "Eregion",
-               "Hans",
-               "Ale",
-               "Kurio",
-               "Paldor",
-               "Straph",
-               "Destro",
-               "Tobles",
-               "Sydron",
-               "Gwer",
-               "Nex",
-               "Perd",
-               "Ultra",
-               "Mouse",
-               "Lucarius",
-               "Joseph",
-               "Vyrael",
-               "Basstian",
-               "Albreo"
-            ]
+            "given_names": []
          },
          "female": {
-            "given_names": [
-               "Atikin",
-               "Kita",
-               "Amnaa",
-               "Chester",
-               "Ruby",
-               "Drott",
-               "Nanda",
-               "Cookie",
-               "Kitty",
-               "Spell",
-               "Hunnie",
-               "Tilyene",
-               "Pea",
-               "Rohana",
-               "Lauren",
-               "Pandy",
-               "Seolmin",
-               "Legen",
-               "Tinfoil",
-               "Baro",
-               "Nati",
-               "Taylor"
-            ]
+            "given_names": []
+         },
+         "surnames": []
+      },
+      "merchant": {
+         "male": {
+            "uri": [
+               "stonehearth_ace:male_npc_merchant"
+            ],
+            "given_names": []
+         },
+         "female": {
+            "uri": [
+               "stonehearth_ace:female_npc_merchant"
+            ],
+            "given_names": []
          },
          "surnames": [
-            "Cairns",
-            "Graves",
-            "Brightwood",
-            "Rivers",
-            "Clads",
-            "of Elm",
-            "of Ash",
-            "of Dom",
-            "of Wez",
-            "of Rur",
-            "of Lam",
-            "de Rumi",
-            "de Vita",
-            "de Naro",
-            "de Mogi",
-            "de Luna",
-            "de Marco",
-            "Liams",
-            "Grav",
-            "Rezi",
-            "Orik",
-            "Aceron",
-            "Steelex",
-            "Courts",
-            "Ja'had",
-            "Ja'rik",
-            "Ya'ktani",
-            "Ya'vrin",
-            "Ya'runa",
-            "T'sari",
-            "T'bani",
-            "K'med",
-            "K'tar",
-            "Razzik",
-            "Eclot",
-            "Coulsen",
-            "Springs",
-            "Natts",
-            "Wochzek",
-            "Warren",
-            "Alethal",
-            "Shopp",
-            "Stonksman",
-            "Faur",
-            "Nova",
-            "Soul",
-            "Ki'teer",
-            "Wailer",
-            "Joestar"
+            "the Peddler",
+            "the Trader",
+            "the Merchant",
+            "the Wanderer",
+            "the Dealer",
+            "the Vendor",
+            "the Huckster",
+            "the Procurer",
+            "the Provider",
+            "the Caravaneer",
+            "the Traveler",
+            "the Lucky",
+            "the Available",
+            "the Salesperson",
+            "the Provisioner",
+            "the Carrier",
+            "the Envoy",
+            "the Representative"
          ]
       },
       "mountain_folk_dwalek": {
@@ -175,7 +80,7 @@
                "stonehearth_ace:npc:frostfeast:tomtee"
             ]
          }
-      },    
+      },
       "frostfeast_frostfather": {
          "male": {
             "uri": [

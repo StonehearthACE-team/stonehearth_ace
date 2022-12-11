@@ -43,5 +43,72 @@
       }
    },
    "entity_data": {
+      "stonehearth:customization_variants": {
+         "root": {
+            "hair_and_skin_color": {
+               "weights": {
+                  "white_color": 1,
+                  "brown_1_color": 1,
+                  "brown_2_color": 1
+               }
+            },
+            "age": {
+               "weights": {
+                  "young": 3,
+                  "old": 1
+               }
+            }
+         },
+         "packages": {
+            "white_color": {
+               "eye_color": {
+                  "weights": {
+                     "aqua": 2,
+                     "black": 2,
+                     "blue": 2,
+                     "blurple": 1,
+                     "brown": 2,
+                     "green": 2,
+                     "hazel": 2,
+                     "magenta": 0.5,
+                     "red": 0.5,
+                     "yellow": 1
+                  }
+               }
+            },
+            "brown_1_color": {
+               "eye_color": {
+                  "weights": {
+                     "aqua": 1,
+                     "black": 2,
+                     "blue": 1,
+                     "blurple": 1,
+                     "brown": 2,
+                     "green": 2,
+                     "hazel": 2,
+                     "magenta": 0.5,
+                     "red": 0.5,
+                     "yellow": 1
+                  }
+               }
+            },
+            "brown_2_color": {
+               "eye_color": {
+                  "weights": {
+                     "aqua": 0.5,
+                     "black": 2,
+                     "blue": 0.5,
+                     "blurple": 1,
+                     "brown": 2,
+                     "green": 1,
+                     "hazel": 2,
+                     "magenta": 0.5,
+                     "red": 0.5,
+                     "yellow": 1
+                  }
+               }
+            }
+         }
+      }
    }
 }

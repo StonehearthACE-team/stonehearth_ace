@@ -2,11 +2,7 @@
    "type": "encounter",
    "encounter_type": "wait",
    "in_edge": "wait_give_up",
-   "out_edge": {
-      "type": "destroy_tree",
-      "root": "wait_for_requirements_met",
-      "destroy_root": true
-   },
+   "out_edge": "arc:finish",
    "wait_info": {
       "duration": "5m+5m"
    }

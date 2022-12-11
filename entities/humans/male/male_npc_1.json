@@ -1,47 +1,123 @@
 {
-	"_comment": "Not being used for now - ACE",
-   "components": {
-		"stonehearth:attributes": {
-         "max_calories": {
-            "type": "basic",
-            "value": 88
-         },
-         "min_calories": {
-            "type": "basic",
-            "value": 20
-         },
-         "min_drink_satiety": {
-            "type": "basic",
-            "value": 30
-         },
-         "max_drink_satiety": {
-            "type": "basic",
-            "value": 100
-         }
-      },
-		"stonehearth:expendable_resources": {
-         "resources": {
-				"calories": {
-               "min": {
-                  "linked_attribute": "min_calories"
-               },
-               "max": {
-                  "linked_attribute": "max_calories"
-               },
-               "initial_value": 50
+   "components": {},
+   "entity_data": {
+      "stonehearth:customization_variants": {
+         "root": {
+            "hair_and_skin_color": {
+               "weights": {
+                  "white_color": 1,
+                  "brown_1_color": 1,
+                  "brown_2_color": 1
+               }
             },
-            "drink_satiety": {
-               "min": {
-                  "linked_attribute": "min_drink_satiety"
+            "age": {
+               "weights": {
+                  "young": 3,
+                  "old": 1
+               }
+            }
+         },
+         "packages": {
+            "white_color": {
+               "eye_color": {
+                  "weights": {
+                     "aqua": 2,
+                     "black": 2,
+                     "blue": 2,
+                     "blurple": 1,
+                     "brown": 2,
+                     "green": 2,
+                     "hazel": 2,
+                     "magenta": 0.5,
+                     "red": 0.5,
+                     "yellow": 1
+                  }
+               }
+            },
+            "brown_1_color": {
+               "eye_color": {
+                  "weights": {
+                     "aqua": 1,
+                     "black": 2,
+                     "blue": 1,
+                     "blurple": 1,
+                     "brown": 2,
+                     "green": 2,
+                     "hazel": 2,
+                     "magenta": 0.5,
+                     "red": 0.5,
+                     "yellow": 1
+                  }
+               }
+            },
+            "brown_2_color": {
+               "eye_color": {
+                  "weights": {
+                     "aqua": 0.5,
+                     "black": 2,
+                     "blue": 0.5,
+                     "blurple": 1,
+                     "brown": 2,
+                     "green": 1,
+                     "hazel": 2,
+                     "magenta": 0.5,
+                     "red": 0.5,
+                     "yellow": 1
+                  }
+               }
+            },
+            "young": {
+               "eyebrows": {
+                  "weights": {
+                     "[none]": 1,
+                     "straight_eyebrows": 1
+                  }
                },
-               "max": {
-                  "linked_attribute": "max_drink_satiety"
+               "facial_hair": {
+                  "weights": {
+                     "[none]": 3,
+                     "chops": 2,
+                     "chin_beard": 1,
+                     "beard": 1,
+                     "na_moustache_1": 1,
+                     "na_moustache_2": 1,
+                     "na_beard_1": 1
+                  }
                },
-               "initial_value": 50
+               "head_hair": {
+                  "weights": {
+                     "male_hair_1": 1,
+                     "male_hair_2": 1,
+                     "male_hair_3": 1,
+                     "male_hair_4": 1
+                  }
+               }
+            },
+            "old": {
+               "eyebrows": {
+                  "weights": {
+                     "[none]": 1,
+                     "straight_eyebrows": 1
+                  }
+               },
+               "facial_hair": {
+                  "weights": {
+                     "chops": 2,
+                     "chin_beard": 1,
+                     "beard": 1,
+                     "na_moustache_1": 1,
+                     "na_moustache_2": 1,
+                     "na_beard_1": 1
+                  }
+               },
+               "head_hair": {
+                  "weights": {
+                     "male_hair_old_1": 1,
+                     "male_hair_old_2": 1
+                  }
+               }
             }
          }
       }
-   },
-   "entity_data": {
    }
 }

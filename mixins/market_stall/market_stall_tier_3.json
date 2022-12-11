@@ -1,6 +1,12 @@
 {
    "mixins": "stonehearth_ace:mixins:market_stall",
    "components": {
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/furniture/market_stall/market_stall_tier_3.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/furniture/market_stall/effects/idle_3.json"
+      },
       "stonehearth_ace:market_stall": {
          "tier": 3,
          "setup_effect": "stonehearth:effects:poof_effect",

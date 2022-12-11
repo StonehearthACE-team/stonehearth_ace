@@ -1,6 +1,12 @@
 {
    "mixins": "stonehearth_ace:mixins:market_stall",
    "components": {
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/furniture/market_stall/market_stall_tier_2.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/furniture/market_stall/effects/idle_2.json"
+      },
       "stonehearth_ace:market_stall": {
          "tier": 2,
          "setup_effect": "stonehearth:effects:poof_effect",
@@ -10,19 +16,34 @@
                "model_data": {
                   "model": "file(shop/default_tier_1.qb)",
                   "matrix": "Shop",
-                  "scale": 0.1
+                  "scale": 0.1,
+                  "offset": { "x": 23, "y": -4, "z": 18 }
                },
                "entity_points": [
                   {
-                     "bone_name": "Goods"
+                     "bone_name": "goodsShelf3"
                   },
                   {
-                     "bone_name": "Goods",
+                     "bone_name": "goodsShelf4"
+                  },
+                  {
+                     "bone_name": "goodsShelf5"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
                      "min_rarity": "uncommon"
                   },
                   {
-                     "bone_name": "Goods",
-                     "min_quality": 2
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4"
+                  },
+                  {
+                     "bone_name": "goodsMidRow5"
                   }
                ]
             }

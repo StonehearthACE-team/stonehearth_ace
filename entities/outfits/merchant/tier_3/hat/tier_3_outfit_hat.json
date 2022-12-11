@@ -1,0 +1,57 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(no_hat.qb)",
+                     "file(no_hat.qb)",
+                     "file(no_hat.qb)",
+                     "file(no_hat.qb)",
+                     "file(no_hat.qb)",
+                     "file(no_hat.qb)",
+                     "file(hat_1.qb)",
+                     "file(hat_2.qb)",
+                     "file(hat_3.qb)",
+                     "file(hat_4.qb)",
+                     "file(hat_5.qb)"
+                  ]
+               }
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(no_hat.qb)",
+                     "file(no_hat.qb)",
+                     "file(no_hat.qb)",
+                     "file(no_hat.qb)",
+                     "file(no_hat.qb)",
+                     "file(no_hat.qb)",
+                     "file(hat_1_female.qb)",
+                     "file(hat_2_female.qb)",
+                     "file(hat_3_female.qb)",
+                     "file(hat_4_female.qb)",
+                     "file(hat_5_female.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "helmet",
+         "no_drop": true
+      }
+   }
+}
