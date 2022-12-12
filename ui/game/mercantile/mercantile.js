@@ -252,6 +252,9 @@ App.StonehearthAceMerchantileView = App.View.extend({
                   // apply portraits and tooltips
                   var portrait = el.find('.merchantPortrait');
                   var img_url = `url(/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=${merchantData.entity}&cache_buster=${Math.random()})`;
+                  
+                  // var opts = 'cam_x=-20&cam_y=12&cam_z=-30&look_x=0&look_y=3&look_z=0&fov=110&r=0.5&g=1.0&b=0.9&yaw=40&pitch=100&render_children=1'
+                  // img_url = `url(/r/get_portrait/?type=custom&${opts}&entity=${merchantData.entity}&cache_buster=${Math.random()})`;
                   portrait.css('background-image', img_url);
 
                   App.tooltipHelper.createDynamicTooltip(portrait, function() {
@@ -260,9 +263,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
 
                   if (merchantData.stall_entity) {
                      portrait = el.find('.stallPortrait');
-                     img_url = `url(/r/get_portrait/?type=headshot&entity=${merchantData.stall_entity}&cache_buster=${Math.random()})`;
-                     // var opts = 'cam_x=-20&cam_y=12&cam_z=-30&look_x=0&look_y=3&look_z=0&fov=98'
-                     // img_url = `url(/r/get_portrait/?type=custom&${opts}&entity=${merchantData.stall_entity}&cache_buster=${Math.random()})`;
+                     img_url = `url(/r/get_portrait/?type=headshot&render_children=1&entity=${merchantData.stall_entity}&cache_buster=${Math.random()})`;
                      portrait.css('background-image', img_url);
 
                      App.tooltipHelper.createDynamicTooltip(portrait, function() {
