@@ -215,8 +215,12 @@ function AceEvolveComponent:_calculate_growth_period(evolve_time)
 	end
 	
 	local catalog_data = stonehearth.catalog:get_catalog_data(self._entity:get_uri())
-	if catalog_data.category == 'seed' or catalog_data.category == 'plants' then
-		evolve_time = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), evolve_time)
+	if catalog_data then
+      if catalog_data.category == 'seed' or catalog_data.category == 'plants' then
+		   evolve_time = stonehearth.town:calculate_growth_period(self._entity:get_player_id(), evolve_time)
+      end
+   else
+      log:error('%s has no catalog data', self._entity)
    end
    
    for _, multiplier in pairs(self._evolve_time_multipliers) do
