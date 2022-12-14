@@ -41,6 +41,7 @@
          "portrait_types": {
             "headshot": {
                "camera": {
+                  "render_children": true,
                   "pos": [
                      -20,
                      12,
@@ -51,7 +52,12 @@
                      2.1,
                      2
                   ],
-                  "ace_fov": 110
+                  "ace_fov": 110,
+                  "light_direction": [
+                     70,
+                     160,
+                     0
+                  ]
                }
             }
          }

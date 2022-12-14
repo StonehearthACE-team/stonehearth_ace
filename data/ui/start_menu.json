@@ -3,6 +3,7 @@
       "citizen_manager": "remove"
    },
    "town_menu": {
+      "description": "i18n(stonehearth_ace:ui.game.menu.town_menu.description)",
       "mixintypes": {
          "hotkey_action": "remove",
          "clickSound": "remove"
@@ -11,10 +12,10 @@
       "items": {
          "town_overview": {
             "ordinal": 1,
-            "name": "i18n(stonehearth:ui.game.menu.town_menu.display_name)",
+            "name": "i18n(stonehearth_ace:ui.game.menu.town_overview.display_name)",
             "description": "i18n(stonehearth:ui.game.menu.town_menu.description)",
             "class": "dock",
-            "icon": "/stonehearth/ui/game/start_menu/images/town.png",
+            "icon": "/stonehearth_ace/ui/game/start_menu/images/town_overview.png",
             "hotkey_action": "town:overview",
             "game_mode": "normal",
             "clickSound": "stonehearth:sounds:banner_grab"
@@ -35,7 +36,7 @@
             "name": "i18n(stonehearth_ace:ui.game.menu.mercantile_view.display_name)",
             "description": "i18n(stonehearth_ace:ui.game.menu.mercantile_view.description)",
             "class": "button",
-            "icon": "/stonehearth_ace/ui/game/start_menu/images/build_well.png",
+            "icon": "/stonehearth_ace/ui/game/start_menu/images/mercantile_view.png",
             "sticky": true,
             "hotkey_action": "mercantile:overview"
          }
@@ -142,7 +143,7 @@
             "class": "button",
             "icon": "/stonehearth_ace/ui/game/start_menu/images/box_forage_menu.png",
             "sticky": true,
-            "hotkey_action": "build:box_forage"
+            "hotkey_action": "harvest:box_forage"
          }
       }
    },

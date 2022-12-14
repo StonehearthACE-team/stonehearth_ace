@@ -26,15 +26,35 @@
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.mercantile_overview)",
          "category": "menus",
          "ordinal": 25,
-         "combo1": "shift+keyt",
+         "combo1": "keyt",
          "combo2": ""
       },
       "harvest:harvest_and_replant": {
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.harvest_harvest_and_replant)",
          "category": "harvest",
          "ordinal": 11,
-         "combo1": "",
+         "combo1": "shift+keyh",
          "combo2": ""
+      },
+      "harvest:box_forage": {
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.harvest_box_forage)",
+         "category": "harvest",
+         "ordinal": 11.5,
+         "combo1": "ctrl+keyh",
+         "combo2": ""
+      },
+      "harvest:box_hunt": {
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.harvest_box_hunt)",
+         "category": "harvest",
+         "ordinal": 11.8,
+         "combo1": "ctrl+shift+keyh",
+         "combo2": ""
+      },
+      "harvest:cancel": {
+         "combo1": "shift+keyx"
+      },
+      "harvest:clear": {
+         "combo1": "ctrl+keyx"
       },
 		"craft:brewer": {
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.craft_brewer)",
@@ -68,14 +88,14 @@
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.build_well)",
          "category": "build",
          "ordinal": 41,
-         "combo1": "",
+         "combo1": "ctrl+keyw",
          "combo2": ""
       },
       "build:fence": {
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.build_fence)",
          "category": "build",
          "ordinal": 42,
-         "combo1": "",
+         "combo1": "alt+keyw",
          "combo2": ""
       },
       "build:fish_trap": {
@@ -89,14 +109,14 @@
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.ui_box_move_items.display_name)",
          "category": "build",
          "ordinal": 47,
-         "combo1": "",
+         "combo1": "alt+keym",
          "combo2": ""
       },
       "build:box_undeploy_items": {
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.ui_box_undeploy_items.display_name)",
          "category": "build",
          "ordinal": 48,
-         "combo1": "",
+         "combo1": "alt+keyu",
          "combo2": ""
       },
       "ui:show_promotion_tree": {
@@ -176,14 +196,14 @@
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.zone_bush_farm.display_name)",
          "category": "zone",
          "ordinal": 21,
-         "combo1": "",
+         "combo1": "ctrl+keyf",
          "combo2": ""
       },
 		"zone:decorative_flowers": {
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.zone_decorative_flowers.display_name)",
          "category": "zone",
          "ordinal": 22,
-         "combo1": "",
+         "combo1": "ctrl+keyd",
          "combo2": ""
       },
 		"zone:orchard": {
@@ -204,8 +224,14 @@
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.zone_underfarm.display_name)",
          "category": "zone",
          "ordinal": 25,
-         "combo1": "ctrl+keyf",
+         "combo1": "ctrl+keyu",
          "combo2": ""
+      },
+      "zone:trapping": {
+         "combo1": "shift+keyt"
+      },
+      "ui:character": {
+         "combo1": "tab"
       }
    }
 }

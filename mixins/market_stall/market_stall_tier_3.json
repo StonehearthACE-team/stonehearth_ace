@@ -7,6 +7,41 @@
       "effect_list": {
          "default": "/stonehearth_ace/data/rigs/entities/furniture/market_stall/effects/idle_3.json"
       },
+      "mixintypes": {
+         "destination": "override",
+         "region_collision_shape": "override"
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -3, "y": 0, "z": 1 },
+               "max": { "x": 4, "y": 6, "z": 5 }
+            }
+         ],
+         "adjacency_flags": [
+            "front",
+            "left",
+            "right",
+            "front_left",
+            "front_right"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -3, "y": 0, "z": 1 },
+               "max": { "x": 4, "y": 6, "z": 4.5 }
+            },
+            {
+               "min": { "x": 0.9, "y": 0, "z": -2.3 },
+               "max": { "x": 1.4, "y": 5, "z": -1.8 }
+            },
+            {
+               "min": { "x": 3.2, "y": 0, "z": -2.3 },
+               "max": { "x": 3.7, "y": 5, "z": -1.8 }
+            }
+         ]
+      },
       "stonehearth_ace:market_stall": {
          "tier": 3,
          "setup_effect": "stonehearth:effects:poof_effect",

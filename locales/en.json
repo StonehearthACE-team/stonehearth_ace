@@ -2644,6 +2644,10 @@
                "leafy_lover_ate_leafy": {
                   "display_name": "Salad lover",
                   "tooltip": "Oh yes! I've enjoyed some [str(foodname)] today! So healthy, fresh and light!"
+               },
+               "fish_lover_ate_fish": {
+                  "display_name": "Fish Lover",
+                  "tooltip": "Nom, nom, nom! Had some delicious [str(foodname)]! Gotta love 'em slippery fellows!"
                }
             },
             "traits": {
@@ -5183,6 +5187,10 @@
          "leafy_love_trait": {
             "display_name": "Salad Lover",
             "description": "It is no secret how much [name(i18n_data.entity)] loves salad. They always appreciate eating it more than anything else, if possible."
+         },
+         "fish_love_trait": {
+            "display_name": "Fish Lover",
+            "description": "It is no secret how much [name(i18n_data.entity)] loves fish. They always appreciate eating it more than anything else, if possible."
          }
       },
       "build": {
@@ -21080,7 +21088,13 @@
          "menu": {
             "mercantile_view": {
                "display_name": "Mercantile Overview",
-               "description": "Show it."
+               "description": "View information on your town's commercial attractiveness, visiting merchants and other things important to trading."
+            },
+            "town_overview": {
+               "display_name": "Town Overview"
+            },
+            "town_menu": {
+               "description": "A set outliners for managing the most important aspects of your town and people.<br><br>The number is your current population!"
             },
             "build_menu": {
                "items": {
@@ -21938,6 +21952,8 @@
                   "vision_wilderness_toggle": "Toggle Wilderness Vision",
                   "vision_ore_detector_toggle": "Toggle Ore Detector",
                   "harvest_harvest_and_replant": "Gather & Replant",
+                  "harvest_box_forage": "Forage",
+                  "harvest_box_hunt": "Hunt",
                   "zone_underfarm": "Underfarm Tool",
                   "craft_brewer": "Brewer Menu",
                   "craft_grower": "Grower Menu",

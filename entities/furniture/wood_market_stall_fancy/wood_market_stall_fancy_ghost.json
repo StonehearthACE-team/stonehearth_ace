@@ -4,13 +4,36 @@
       "stonehearth:mixins:placed_object"
    ],
    "components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": -0.4 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
       "model_variants": {
          "default": {
             "models": [
                {
                   "type": "one_of",
                   "items": [
-                     "file(wood_market_stall_fancy.qb)"
+                     "file(wood_market_stall_fancy.qb)",
+                     "file(wood_market_stall_fancy_2.qb)",
+                     "file(wood_market_stall_fancy_3.qb)",
+                     "file(wood_market_stall_fancy_4.qb)",
+                     "file(wood_market_stall_fancy_5.qb)",
+                     "file(wood_market_stall_fancy_6.qb)",
+                     "file(wood_market_stall_fancy_7.qb)",
+                     "file(wood_market_stall_fancy_8.qb)",
+                     "file(wood_market_stall_fancy_9.qb)",
+                     "file(wood_market_stall_fancy_10.qb)",
+                     "file(wood_market_stall_fancy_11.qb)",
+                     "file(wood_market_stall_fancy_12.qb)",
+                     "file(wood_market_stall_fancy_13.qb)",
+                     "file(wood_market_stall_fancy_14.qb)",
+                     "file(wood_market_stall_fancy_15.qb)",
+                     "file(wood_market_stall_fancy_16.qb)",
+                     "file(wood_market_stall_fancy_17.qb)",
+                     "file(wood_market_stall_fancy_18.qb)",
+                     "file(wood_market_stall_fancy_19.qb)",
+                     "file(wood_market_stall_fancy_20.qb)"
                   ]
                }
             ]
