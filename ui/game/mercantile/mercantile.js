@@ -146,9 +146,6 @@ App.StonehearthAceMerchantileView = App.View.extend({
       var tier_stalls = self.get('model.tier_stalls');
       var exclusive_stalls = self.get('model.exclusive_stalls');
       var merchants = self.get('merchants');
-      if (!merchants || !tier_stalls || !exclusive_stalls) {
-         return;
-      }
 
       var availableStalls = {};
 
