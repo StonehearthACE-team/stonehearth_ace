@@ -10,7 +10,7 @@
 
    .window {
       width: 900px;
-      height: 650px;
+      height: 657px;
       position: relative;
    }
 
@@ -24,7 +24,6 @@
 
    #tabs {
       position: absolute;
-      top: 691px;
       left: 13px;
    }
 
@@ -32,6 +31,7 @@
       width: 100%;
       font-size: 18px;
       padding: 10px;
+      flex: 0 0 auto;
       
       .num {
          .controlFont;
@@ -51,17 +51,18 @@
       #activeContainer {
          display: flex;
          flex-direction: column;
+         justify-content: space-between;
          width: 100%;
          height: 100%;
 
          #merchants {
-            overflow: auto;
+            flex: 1 1 auto;
+            overflow-y: auto;
 
             .merchant {
                display: inline-block;
                position: relative;
-               padding-left: 8px;
-               padding-top: 8px;
+               padding: 8px 0px 0px 8px;
                width: 128px;
 
                &.hasStall {
@@ -91,7 +92,7 @@
                   .button;
                   position: absolute;
                   z-index: 2;
-                  right: 0px;
+                  left: 0px;
                   bottom: 0px;
 
                   content: url(/stonehearth_ace/ui/game/bulletin/bulletin_notification/images/shop_icon.png);
@@ -100,6 +101,50 @@
                .stallPortrait {
                   z-index: 0;
                   margin-left: -10px;
+               }
+            }
+         }
+
+         #availableStalls {
+            flex: 0 0 auto;
+            overflow-x: auto;
+
+            .availableStall {
+               display: inline-block;
+               position: relative;
+               padding: 8px 0px 0px 8px;
+               width: 92px;
+
+               .stallIcon {
+                  height: 80px;
+                  width: 80px;
+
+                  &.tier1 {
+                     content: url(images/stall_tier_1.png);
+                  }
+                  &.tier2 {
+                     content: url(images/stall_tier_2.png);
+                  }
+                  &.tier3 {
+                     content: url(images/stall_tier_3.png);
+                  }
+               }
+
+               .num {
+                  .controlFont;
+                  position: absolute;
+                  right: 4px;
+                  bottom: 0px;
+                  font-size: 18px;
+                  color: inherit;
+
+                  &.limited {
+                     color: @warningFontColor;
+                  }
+         
+                  &.max {
+                     color: @greenFontColor;
+                  }
                }
             }
          }
@@ -121,4 +166,12 @@
          }
       }
    }
+}
+
+.limited {
+   color: @warningFontColor;
+}
+
+.max {
+   color: @greenFontColor;
 }

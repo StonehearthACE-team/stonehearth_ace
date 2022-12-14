@@ -13,14 +13,24 @@
                {{#each merchant in view.merchants}}
                <div {{bind-attr merchant-id=merchant.id class=":merchant merchant.has_stall:hasStall:"}}>
                   <div {{bind-attr class=":name merchant.tier_class"}}>{{merchant.display_name}}</div>
-                  <div class="portrait merchantPortrait" title="{{i18n stonehearth:ui.game.unit_frame.focus_camera}}"></div>
+                  <div class="portrait merchantPortrait"></div>
                   <img class="shop"/>
                   {{#if merchant.has_stall}}
-                  <div class="portrait stallPortrait" title="{{i18n stonehearth:ui.game.unit_frame.focus_camera}}"></div>
+                  <div class="portrait stallPortrait"></div>
                   {{/if}}
                </div>
                {{/each}}
             </div>
+            {{#if view.hasAvailableStalls}}
+            <div id="availableStalls" class="downSection">
+               {{#each stall in view.availableStalls}}
+               <div class="availableStall" {{bind-attr stall-type-id=stall.id}}>
+                  <img {{bind-attr src="stall.icon" class=":stallIcon stall.tier_class"}}/>
+                  <div {{bind-attr class=":num stall.num_class"}}>{{stall.total}}</div>
+               </div>
+               {{/each}}
+            </div>
+            {{/if}}
          </div>
       </div>
 

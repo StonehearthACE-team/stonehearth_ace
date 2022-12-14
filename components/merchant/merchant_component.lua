@@ -176,11 +176,13 @@ function MerchantComponent:set_up_at_stall(stall)
       local stall_comp = stall:get_component('stonehearth_ace:market_stall')
       if stall_comp then
          self._sv.stall = stall
-         self.__saved_variables:mark_changed()
-
          return stall_comp:set_merchant(self._entity)
       end
    end
+end
+
+function MerchantComponent:finish_stall_setup()
+   self.__saved_variables:mark_changed()
 end
 
 function MerchantComponent:should_depart()

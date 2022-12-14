@@ -29,6 +29,7 @@ function Work:run(ai, entity, args)
             radiant.entities.turn_to_face(entity, args.stall)
             ai:execute('stonehearth:run_effect', { effect = 'fiddle' })
          end
+         merchant_component:finish_stall_setup()
       end
    end
 

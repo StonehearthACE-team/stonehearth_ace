@@ -20978,7 +20978,7 @@
       "game": {
          "mercantile": {
             "active": {
-               "title": "Active Merchants",
+               "title": "Merchants & Stalls",
                "info": {
                   "num_merchants_one": "Each morning, at most <span class='num'>1</span> merchant will visit your town.",
                   "num_merchants_max": "Each morning, <span class='num max'>[str(num_merchants)]</span> merchants will visit your town.",
@@ -20988,6 +20988,15 @@
                },
                "merchant": {
                   "working_at_stall": "Currently working at <span class='num'>[str(stall_name)]."
+               },
+               "stalls": {
+                  "available": "Unoccupied: <span class='[str(num_class)]'>[str(num)]</span>.",
+                  "tier1_display_name": "Tier 1 Stalls",
+                  "tier1_description": "Blah blah blah",
+                  "tier2_display_name": "Tier 2 Stalls",
+                  "tier2_description": "Blah blah blah",
+                  "tier3_display_name": "Tier 3 Stalls",
+                  "tier3_description": "Blah blah blah"
                }
             },
             "categories": {
@@ -21031,7 +21040,7 @@
             "preferences": {
                "category_title": "Categories",
                "exclusive_title": "Exclusive Merchants",
-               "title": "Merchant Preferences"
+               "title": "Preferences"
             },
             "title": "Mercantile Overview"
          },
@@ -21094,7 +21103,7 @@
                "display_name": "Town Overview"
             },
             "town_menu": {
-               "description": "A set outliners for managing the most important aspects of your town and people.<br><br>The number is your current population!"
+               "description": "A set of tools for managing the most important aspects of your town and people.<br><br>The number is your current population!"
             },
             "build_menu": {
                "items": {

@@ -90,56 +90,43 @@ end
 
 function PlayerMercantile:register_merchant_stall(stall)
    self._merchant_stalls[stall:get_id()] = stall
-
-   local uri = stall:get_uri()
-   local stall_component = stall:get_component('stonehearth_ace:market_stall')
-   if stall_component then
-      local tier = stall_component:get_tier()
-      if tier then
-         local tier_stalls = self._sv.tier_stalls
-         tier_stalls[tier] = (tier_stalls[tier] or 0) + 1
-      else
-         local exclusive_stalls = self._sv.exclusive_stalls
-         exclusive_stalls[uri] = (exclusive_stalls[uri] or 0) + 1
-      end
-
-      self._sv.num_stalls = self._sv.num_stalls + 1
-
-      self.__saved_variables:mark_changed()
-   end
+   self:_recompute_num_stalls()
 end
 
 function PlayerMercantile:unregister_merchant_stall(stall)
    self._merchant_stalls[stall:get_id()] = nil
+   self:_recompute_num_stalls()
+end
 
-   local uri = stall:get_uri()
-   local stall_component = stall:get_component('stonehearth_ace:market_stall')
-   if stall_component then
-      local tier = stall_component:get_tier()
-      if tier then
-         local tier_stalls = self._sv.tier_stalls
-         if tier_stalls[tier] then
-            if tier_stalls[tier] > 1 then
-               tier_stalls[tier] = tier_stalls[tier] - 1
-            else
-               tier_stalls[tier] = nil
-            end
+function PlayerMercantile:_recompute_num_stalls()
+   -- for some reason keeping track of it with +1/-1 on register/unregister was unreliable?
+   -- shouldn't be more than a dozen or so stalls though, so it's fine to recheck all
+   -- (and infrequent changes besides reload)
+   local tier_stalls = {
+      [1] = 0,
+      [2] = 0,
+      [3] = 0,
+   }
+   local exclusive_stalls = {}
+   local num_stalls = 0
+   for id, stall in pairs(self._merchant_stalls) do
+      local stall_component = stall:get_component('stonehearth_ace:market_stall')
+      if stall_component then
+         local uri = stall:get_uri()
+         local tier = stall_component:get_tier()
+         if tier then
+            tier_stalls[tier] = tier_stalls[tier] + 1
+         else
+            exclusive_stalls[uri] = (exclusive_stalls[uri] or 0) + 1
          end
-      else
-         local exclusive_stalls = self._sv.exclusive_stalls
-         if exclusive_stalls[uri] then
-            if exclusive_stalls[uri] > 1 then
-               exclusive_stalls[uri] = exclusive_stalls[uri] - 1
-            else
-               exclusive_stalls[uri] = nil
-            end
-         end
+         num_stalls = num_stalls + 1
       end
-
-      self._sv.num_stalls = math.max(0, self._sv.num_stalls - 1)
-
-      self.__saved_variables:mark_changed()
    end
+
+   self._sv.tier_stalls = tier_stalls
+   self._sv.exclusive_stalls = exclusive_stalls
+   self._sv.num_stalls = num_stalls
+   self.__saved_variables:mark_changed()
 end
 
 function PlayerMercantile:remove_merchant(merchant)

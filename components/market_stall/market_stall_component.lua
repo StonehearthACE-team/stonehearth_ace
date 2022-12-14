@@ -12,7 +12,7 @@ local STALL_MODEL_NAME = 'stonehearth_ace:market_stall:model'
 function MarketStallComponent:activate()
    self._json = radiant.entities.get_json(self) or {}
    -- we want exclusive stalls to be totally separate from tier stalls; if no explicit tier, it's exclusive
-   self._tier = self._json.tier  -- or 1
+   self._sv.tier = self._json.tier  -- or 1
    self._setup_effect = self._json.setup_effect
    self._teardown_effect = self._json.setup_effect or self._setup_effect
    self._stall_models = self._json.stall_models or {}
@@ -30,6 +30,8 @@ function MarketStallComponent:activate()
             end
          end)
       :push_object_state()
+
+   self.__saved_variables:mark_changed()
 end
 
 function MarketStallComponent:post_activate()
@@ -42,6 +44,7 @@ function MarketStallComponent:post_activate()
 end
 
 function MarketStallComponent:destroy()
+   stonehearth_ace.mercantile:unregister_merchant_stall(self._entity)
    if self._sv._merchant and self._sv._merchant:is_valid() then
       local merchant_component = self._sv._merchant:get_component('stonehearth_ace:merchant')
       if merchant_component then
@@ -85,7 +88,7 @@ function MarketStallComponent:_finish_setting_up()
 end
 
 function MarketStallComponent:get_tier()
-   return self._tier
+   return self._sv.tier
 end
 
 function MarketStallComponent:reset()

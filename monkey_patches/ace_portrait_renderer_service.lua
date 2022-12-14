@@ -6,19 +6,20 @@ local log = radiant.log.create_logger('portrait_renderer')
 local PortraitRendererService = require 'stonehearth.services.client.portrait_renderer.portrait_renderer_service'
 local AcePortraitRendererService = class()
 
-AcePortraitRendererService._ace_old__add_existing_entity = PortraitRendererService._add_existing_entity
-function AcePortraitRendererService:_add_existing_entity(scene_root, ent, render_children)
-   local render_ent = self:_ace_old__add_existing_entity(scene_root, ent)
-   if render_children then
-      -- if we want to render child entities, add them to the table
-      local ec = ent:get('entity_container')
-      if ec then
-         for id, child in ec:each_child() do
-            table.insert(render_ent, child)
-         end
-      end
-   end
-   return render_ent
+function AcePortraitRendererService:_render_portrait(options, response)
+   assert(options)
+   assert(response)
+   
+   _radiant.client.render_staged_scene(options.size or 128, function(scene_root, camera)
+         self:_stage_scene(options, scene_root, camera)
+      end, function()
+         self:_clear_scene()
+      end, function(bytes)
+         response:add_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+         response:add_header('Pragma', 'no-cache')
+         response:add_header('Expires', '0')
+         response:resolve_with_content(bytes, 'image/png');
+      end)
 end
 
 function AcePortraitRendererService:_stage_scene(options, scene_root, camera)
@@ -29,7 +30,7 @@ function AcePortraitRendererService:_stage_scene(options, scene_root, camera)
       return
    end
 
-   local render_entity = self:_add_existing_entity(scene_root, entity, options.render_children)
+   local render_entity = self:_add_existing_entity(scene_root, entity)
    if options.animation then
       render_entity:get_animation_controller():apply_custom_pose(options.animation, options.time or 0)
    end
@@ -59,8 +60,8 @@ function AcePortraitRendererService:_stage_scene(options, scene_root, camera)
       local ar = self:_get_value(options.ar, ambient_color.x)
       local ag = self:_get_value(options.ag, ambient_color.y)
       local ab = self:_get_value(options.ab, ambient_color.z)
-      local yaw = self:_get_value(options.light_x, light_color.x)
-      local pitch = self:_get_value(options.light_y, light_color.y)
+      local pitch = self:_get_value(options.pitch, light_direction.x)
+      local yaw = self:_get_value(options.yaw, light_direction.y)
 
       render_entity:get_model():set_model_scale(scale)
       render_entity:get_skeleton():set_scale(scale)
@@ -68,7 +69,7 @@ function AcePortraitRendererService:_stage_scene(options, scene_root, camera)
       camera_look_at = Point3(look_x, look_y, look_z)
       light_color = Point3(r, g, b)
       ambient_color = Point3(ar, ag, ab)
-      light_direction = Point3(yaw, pitch, 0)
+      light_direction = Point3(pitch, yaw, 0)
    elseif options.type and portrait_data and portrait_data.portrait_types[options.type] then
       -- If the entity specifies portrait setup for the given type, use that.
       local camera = portrait_data.portrait_types[options.type].camera
