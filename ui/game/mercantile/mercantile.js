@@ -69,6 +69,11 @@ App.StonehearthAceMerchantileView = App.View.extend({
 
       this.$('#activeTab').show();
 
+      var tooltip = $(App.tooltipHelper.createTooltip(
+            i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_title'),
+            i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_title')));
+      self.$('#numMerchants').tooltipster({delay: 1000, content: tooltip});
+
       self.$('#merchants').on('click', '.shop', function() {
          var merchantDiv = $(this).parent();
          if (merchantDiv) {
@@ -103,6 +108,21 @@ App.StonehearthAceMerchantileView = App.View.extend({
             }
          }
       });
+
+      self._setupCategories();
+   },
+
+   willDestroyElement: function() {
+      var self = this;
+      this.$('#merchants').off('click', '.shop');
+      this.$('#merchants').off('click', '.stall');
+      this.$('#merchants').off('click', '.portrait');
+      this.$('#mercantile').find('.tooltipstered').tooltipster('destroy');
+
+      App.tooltipHelper.removeDynamicTooltip(self.$('#merchants.name'));
+      App.tooltipHelper.removeDynamicTooltip(self.$('#merchants.stall'));
+
+      this._super();
    },
 
    _updateNumMerchants: function() {
@@ -112,30 +132,31 @@ App.StonehearthAceMerchantileView = App.View.extend({
       var numStalls = self.get('model.num_stalls');
       var numMerchants = null;
 
-      if (maxDailyMerchants != null) {
-         if (maxDailyMerchants <= 1) {
-            numMerchants = i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_one');
-         }
-         else if (maxDailyMerchants == App.constants.mercantile.max) {
-            numMerchants = i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_max', {num_merchants: maxDailyMerchants});
-         }
-         else if (maxDailyMerchants > 1 && limitedByStalls) {
-            numMerchants = i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_limited',
-                  {
-                     num_merchants: Math.ceil(maxDailyMerchants),
-                     num_stalls: numStalls,
-                  });
-         }
-         else if (maxDailyMerchants == Math.floor(maxDailyMerchants)) {
-            numMerchants = i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_exact', {num_merchants: maxDailyMerchants});
-         }
-         else {
-            // show the integer range
-            numMerchants = i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_range',
-                  {
-                     num_merchants: `${Math.floor(maxDailyMerchants)}-${Math.ceil(maxDailyMerchants)}`,
-                  });
-         }
+      if (maxDailyMerchants == 0) {
+         numMerchants = i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_none');
+      }
+      else if (maxDailyMerchants <= 1) {
+         numMerchants = i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_one');
+      }
+      else if (maxDailyMerchants == App.constants.mercantile.max) {
+         numMerchants = i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_max', {num_merchants: maxDailyMerchants});
+      }
+      else if (maxDailyMerchants > 1 && limitedByStalls) {
+         numMerchants = i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_limited',
+               {
+                  num_merchants: Math.ceil(maxDailyMerchants),
+                  num_stalls: numStalls,
+               });
+      }
+      else if (maxDailyMerchants == Math.floor(maxDailyMerchants)) {
+         numMerchants = i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_exact', {num_merchants: maxDailyMerchants});
+      }
+      else {
+         // show the integer range
+         numMerchants = i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_range',
+               {
+                  num_merchants: `${Math.floor(maxDailyMerchants)}-${Math.ceil(maxDailyMerchants)}`,
+               });
       }
 
       self.set('numMerchants', numMerchants);
@@ -146,6 +167,9 @@ App.StonehearthAceMerchantileView = App.View.extend({
       var tier_stalls = self.get('model.tier_stalls');
       var exclusive_stalls = self.get('model.exclusive_stalls');
       var merchants = self.get('merchants');
+      if (!tier_stalls || !exclusive_stalls || !merchants) {
+         return;
+      }
 
       var availableStalls = {};
 
@@ -224,7 +248,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
 
       var active_merchants = self.get('model.active_merchants');
       var merchants = {};
-      var merchantsChanged = self._destroyMerchantTraces(active_merchants);
+      var merchantsChanged = self._destroyMerchantTraces(active_merchants) || !self._activeMerchants;
 
       if (active_merchants) {
          var components = {
@@ -396,17 +420,18 @@ App.StonehearthAceMerchantileView = App.View.extend({
       });
    },
 
-   willDestroyElement: function() {
-      var self = this;
-      this.$('#merchants').off('click', '.shop');
-      this.$('#merchants').off('click', '.stall');
-      this.$('#merchants').off('click', '.portrait');
-      this.$('#mercantile').find('.tooltipstered').tooltipster('destroy');
-
-      App.tooltipHelper.removeDynamicTooltip(self.$('#merchants.name'));
-      App.tooltipHelper.removeDynamicTooltip(self.$('#merchants.stall'));
-
-      this._super();
+   _setupCategories: function() {
+      // load and setup all the categories; then category preferences will do the rest
+      
    },
-});
 
+   _updateCategoryPreferences: function() {
+      var self = this;
+      var preferenceTypes = App.constants.mercantile.category_preferences;
+      var preferences = self.get('model.category_preferences');
+
+      if (preferences) {
+
+      }
+   }.observes('model.category_preferences'),
+});

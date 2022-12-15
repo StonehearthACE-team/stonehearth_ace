@@ -38,10 +38,18 @@
          <div id="preferencesContainer">
             <div class="info">
                <!--show # of preference settings are and can be made at once -->
+               <div id="numPreferences">{{{view.numPreferences}}}</div>
             </div>
             <div id="allPreferences">
                <div id="categoryPreferences" class="downSection">
                   <div class="sectionTitle">{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_title}}</div>
+                  <div id="categories">
+                     {{#each category in view.categories}}
+                     <div class="category">
+                        
+                     </div>
+                     {{/each}}
+                  </div>
                </div>
                <div id="exclusivePreferences" class="downSection">
                   <div class="sectionTitle">{{i18n stonehearth_ace:ui.game.mercantile.preferences.exclusive_title}}</div>

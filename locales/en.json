@@ -20980,11 +20980,14 @@
             "active": {
                "title": "Merchants & Stalls",
                "info": {
+                  "num_merchants_none": "No merchants will visit your town until it increases in wealth.",
                   "num_merchants_one": "Each morning, at most <span class='num'>1</span> merchant will visit your town.",
-                  "num_merchants_max": "Each morning, <span class='num max'>[str(num_merchants)]</span> merchants will visit your town.",
+                  "num_merchants_max": "Each morning, up to <span class='num max'>[str(num_merchants)]</span> merchants will visit your town.",
                   "num_merchants_limited": "Each morning, up to <span class='num'>[str(num_merchants)]</span> merchants would visit your town if not limited by your market stalls (<span class='num'>[str(num_stalls)]</span>).",
-                  "num_merchants_exact": "Each morning, exactly <span class='num'>[str(num_merchants)]</span> merchants will visit your town.",
-                  "num_merchants_range": "Each morning, <span class='num'>[str(num_merchants)]</span> merchants will visit your town."
+                  "num_merchants_exact": "Each morning, up to <span class='num'>[str(num_merchants)]</span> merchants will visit your town.",
+                  "num_merchants_range": "Each morning, up to <span class='num'>[str(num_merchants)]</span> merchants will visit your town.",
+                  "num_merchants_title": "Daily Merchants",
+                  "num_merchants_description": "Increasing your town's worth and the amount that you buy from and sell to merchants will increase the number of merchants likely to visit your town each day. Make sure you have market stalls for them to set up at, or at most only one will bother visiting."
                },
                "merchant": {
                   "working_at_stall": "Currently working at <span class='num'>[str(stall_name)]."

@@ -30,6 +30,9 @@ function PlayerMercantile:initialize()
    self._sv.max_disables = 0
    self._sv.max_encourages = 0
 
+   self._sv.max_daily_merchants = 0
+   self._sv.num_merchants_last_spawned = 0
+
    self._merchant_stalls = {}
 end
 
