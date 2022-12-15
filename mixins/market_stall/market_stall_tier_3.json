@@ -7,6 +7,65 @@
       "effect_list": {
          "default": "/stonehearth_ace/data/rigs/entities/furniture/market_stall/effects/idle_3.json"
       },
+      "stonehearth_ace:market_stall": {
+         "tier": 3,
+         "setup_effect": "stonehearth:effects:poof_effect",
+         "teardown_effect": "stonehearth:effects:poof_effect:grey",
+         "stall_models": {
+            "default": {
+               "model_data": {
+                  "model": "file(shop/default_tier_3.qb)",
+                  "matrix": "Shop",
+                  "scale": 0.1,
+                  "offset": { "x": 40, "y": 0, "z": 40 }
+               },
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            }
+         }
+      },
       "mixintypes": {
          "destination": "override",
          "region_collision_shape": "override"
@@ -14,16 +73,14 @@
       "destination": {
          "region": [
             {
-               "min": { "x": -3, "y": 0, "z": 1 },
-               "max": { "x": 4, "y": 6, "z": 5 }
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 0, "y": 6, "z": 1 }
             }
          ],
          "adjacency_flags": [
             "front",
             "left",
-            "right",
-            "front_left",
-            "front_right"
+            "front_left"
          ]
       },
       "region_collision_shape": {
@@ -42,32 +99,15 @@
             }
          ]
       },
-      "stonehearth_ace:market_stall": {
-         "tier": 3,
-         "setup_effect": "stonehearth:effects:poof_effect",
-         "teardown_effect": "stonehearth:effects:poof_effect:grey",
-         "stall_models": {
-            "default": {
-               "model_data": {
-                  "model": "file(shop/default_tier_1.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1
-               },
-               "entity_points": [
-                  {
-                     "bone_name": "Goods"
-                  },
-                  {
-                     "bone_name": "Goods",
-                     "min_rarity": "uncommon"
-                  },
-                  {
-                     "bone_name": "Goods",
-                     "min_quality": 2
-                  }
-               ]
+      "movement_modifier_shape": {
+         "modifier": -0.5,
+         "nav_preference_modifier": -0.9,
+         "region": [
+            {
+               "min": { "x": 1, "y": 0, "z": -2 },
+               "max": { "x": 4, "y": 5, "z": 1 }
             }
-         }
+         ]
       }
    },
    "entity_data": {

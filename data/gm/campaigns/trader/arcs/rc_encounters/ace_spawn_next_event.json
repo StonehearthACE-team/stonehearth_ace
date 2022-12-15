@@ -1,0 +1,33 @@
+{
+   "type": "encounter",
+   "encounter_type": "generator",
+   "in_edge": "ace_spawn_next_event",
+   "generator_info": {
+      "delay": "3d+3d",
+      "spawn_edge": {
+         "type": "trigger_one",
+         "out_edges": [
+            {
+               "type": "weighted_edge",
+               "out_edge": "do_nothing",
+               "weight": 1
+            },
+            {
+               "out_edge": "returning_collector_encounter",
+               "type": "weighted_edge",
+               "weight": 2
+            },
+            {
+               "out_edge": "returning_trader_encounter",
+               "type": "weighted_edge",
+               "weight": 2
+            },
+            {
+               "out_edge": "returning_trader_encounter_2",
+               "type": "weighted_edge",
+               "weight": 2
+            }
+         ]
+      }
+   }
+}

@@ -20980,7 +20980,7 @@
             "active": {
                "title": "Merchants & Stalls",
                "info": {
-                  "num_merchants_none": "No merchants will visit your town until it increases in wealth.",
+                  "num_merchants_none": "No merchants have noticed our town yet... Maybe if we increase our wealth?",
                   "num_merchants_one": "Each morning, at most <span class='num'>1</span> merchant will visit your town.",
                   "num_merchants_max": "Each morning, up to <span class='num max'>[str(num_merchants)]</span> merchants will visit your town.",
                   "num_merchants_limited": "Each morning, up to <span class='num'>[str(num_merchants)]</span> merchants would visit your town if not limited by your market stalls (<span class='num'>[str(num_stalls)]</span>).",
@@ -20994,12 +20994,12 @@
                },
                "stalls": {
                   "available": "Unoccupied: <span class='[str(num_class)]'>[str(num)]</span>.",
-                  "tier1_display_name": "Tier 1 Stalls",
-                  "tier1_description": "Blah blah blah",
-                  "tier2_display_name": "Tier 2 Stalls",
-                  "tier2_description": "Blah blah blah",
-                  "tier3_display_name": "Tier 3 Stalls",
-                  "tier3_description": "Blah blah blah"
+                  "tier1_display_name": "Simple Market Stands",
+                  "tier1_description": "Can be occupied by Town level 1 merchants.<br>Is required to attract more than one Town Level 1 merchant.",
+                  "tier2_display_name": "Market Stalls",
+                  "tier2_description": "Can be occupied by Town level 1 and 2 merchants.<br>Is required to attract more than one Town Level 2 merchant.",
+                  "tier3_display_name": "Fancy Market Booths",
+                  "tier3_description": "Can be occupied by all Town level merchants.<br>Is required to attract more than one Town Level 3 merchant."
                }
             },
             "categories": {
@@ -21738,8 +21738,8 @@
             },
             "merchant": {
                "first": {
-                  "title": "A traveling merchant arrives at your town...",
-                  "message": "Your town has blah blah blah something about its presence in the world attracting merchants from far off lands?"
+                  "title": "Your first merchant!",
+                  "message": "Your town was attractive enough to trigger the interest of a traveling merchant!<p>Going forward, word will spread about this settlement and others will come, but your crafters will need to provide them with market stands and stalls fit for their needs!<p>The wealthier your town becomes, the more merchants are drawn to it. Moreover, every Town Upgrade will entice richer merchants: better goods and bigger piles of gold!<p>Finally, advertisement is key! Not just hosting but actually trading with the merchants will boost your commercial attractiveness even more. A happy merchant will surely tell their friends about it!"
                }
             },
             "shop": {
