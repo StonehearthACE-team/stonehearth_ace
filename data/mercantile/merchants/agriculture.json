@@ -3,7 +3,7 @@
       "farming_shop_1": {
          "category": "agriculture",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -13,14 +13,14 @@
          "cooldown": 2,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/farming_shop_1.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:farmer",
+            "stall_model": "farming_shop",
             "wanted_items": []
          }
       },
       "farming_shop_2": {
          "category": "agriculture",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -30,7 +30,6 @@
          "cooldown": 3,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/farming_shop_2.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:farmer",
             "stall_model": "farming_shop",
             "wanted_items": []
          }
@@ -38,7 +37,7 @@
       "pets_shop_1": {
          "category": "agriculture",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -48,14 +47,14 @@
          "cooldown": 2,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/pets_shop_1.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:shepherd",
+            "stall_model": "pets_shop",
             "wanted_items": []
          }
       },
       "pets_shop_2": {
          "category": "agriculture",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -65,7 +64,6 @@
          "cooldown": 3,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/pets_shop_2.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:shepherd",
             "stall_model": "pets_shop",
             "wanted_items": []
          }
@@ -73,7 +71,7 @@
       "pets_shop_3": {
          "category": "agriculture",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -81,6 +79,23 @@
          "min_city_tier": 3,
          "weight": 3,
          "cooldown": 4,
+         "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/pets_shop_3.json",
+         "shoptions": {
+            "stall_model": "pets_shop",
+            "wanted_items": []
+         }
+      },
+      "persistence_shepherd": {
+         "category": "agriculture",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 1,
+         "cooldown": 7,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/pets_shop_3.json",
          "shoptions": {
             "persistence_job": "stonehearth:jobs:shepherd",

@@ -3,7 +3,7 @@
       "rugs_shop_1": {
          "category": "artisan",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -13,14 +13,14 @@
          "cooldown": 2,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/rugs_shop_1.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:weaver",
+            "stall_model": "rugs_shop",
             "wanted_items": []
          }
       },
       "rugs_shop_3": {
          "category": "artisan",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -30,7 +30,6 @@
          "cooldown": 4,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/rugs_shop_3.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:weaver",
             "stall_model": "rugs_shop",
             "wanted_items": []
          }
@@ -38,7 +37,7 @@
       "tannery_shop_1": {
          "category": "artisan",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -48,14 +47,14 @@
          "cooldown": 3,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/tannery_shop_1.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:trapper",
+            "stall_model": "tannery_shop",
             "wanted_items": []
          }
       },
       "blacksmith_shop_1": {
          "category": "artisan",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -65,14 +64,14 @@
          "cooldown": 2,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/blacksmith_shop_1.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:blacksmith",
+            "stall_model": "blacksmith_shop",
             "wanted_items": []
          }
       },
       "blacksmith_shop_2": {
          "category": "artisan",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -82,7 +81,6 @@
          "cooldown": 3,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/blacksmith_shop_2.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:blacksmith",
             "stall_model": "blacksmith_shop",
             "wanted_items": []
          }
@@ -90,7 +88,7 @@
       "blacksmith_shop_3": {
          "category": "artisan",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -100,7 +98,6 @@
          "cooldown": 4,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/blacksmith_shop_3.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:blacksmith",
             "stall_model": "blacksmith_shop",
             "wanted_items": []
          }
@@ -108,7 +105,7 @@
       "engineering_shop_1": {
          "category": "artisan",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -118,7 +115,6 @@
          "cooldown": 2,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/engineering_shop_1.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:engineer",
             "stall_model": "engineering_shop",
             "wanted_items": []
          }
@@ -126,7 +122,7 @@
       "engineering_shop_2": {
          "category": "artisan",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -136,7 +132,6 @@
          "cooldown": 3,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/engineering_shop_2.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:engineer",
             "stall_model": "engineering_shop",
             "wanted_items": []
          }
@@ -144,7 +139,7 @@
       "engineering_shop_3": {
          "category": "artisan",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -154,8 +149,61 @@
          "cooldown": 4,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/engineering_shop_3.json",
          "shoptions": {
+            "stall_model": "engineering_shop",
+            "wanted_items": []
+         }
+      },
+      "persistence_weaver": {
+         "category": "artisan",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 1,
+         "cooldown": 7,
+         "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/rugs_shop_3.json",
+         "shoptions": {
+            "persistence_job": "stonehearth:jobs:weaver",
+            "stall_model": "rugs_shop",
+            "wanted_items": []
+         }
+      },
+      "persistence_engineer": {
+         "category": "artisan",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 1,
+         "cooldown": 7,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/engineering_shop_2.json",
+         "shoptions": {
             "persistence_job": "stonehearth:jobs:engineer",
             "stall_model": "engineering_shop",
+            "wanted_items": []
+         }
+      },
+      "persistence_blacksmith": {
+         "category": "artisan",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 1,
+         "cooldown": 7,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/blacksmith_shop_2.json",
+         "shoptions": {
+            "persistence_job": "stonehearth:jobs:blacksmith",
+            "stall_model": "blacksmith_shop",
             "wanted_items": []
          }
       }

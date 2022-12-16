@@ -3,7 +3,7 @@
       "charcoal_shop_1": {
          "category": "resources",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -13,13 +13,14 @@
          "cooldown": 2,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/charcoal_shop_1.json",
          "shoptions": {
+            "stall_model": "charcoal_shop",
             "wanted_items": []
          }
       },
       "charcoal_shop_2": {
          "category": "resources",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -36,7 +37,7 @@
       "charcoal_shop_3": {
          "category": "resources",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -53,7 +54,7 @@
       "quarry_shop_1": {
          "category": "resources",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -63,13 +64,14 @@
          "cooldown": 2,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/quarry_shop_1.json",
          "shoptions": {
+            "stall_model": "quarry_shop",
             "wanted_items": []
          }
       },
       "quarry_shop_2": {
          "category": "resources",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -86,7 +88,7 @@
       "quarry_shop_3": {
          "category": "resources",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -97,6 +99,159 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/quarry_shop_3.json",
          "shoptions": {
             "stall_model": "quarry_shop",
+            "wanted_items": []
+         }
+      },
+      "lumberjacking_shop_1": {
+         "category": "resources",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_1_outfit",
+            "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
+         ],
+         "min_city_tier": 1,
+         "weight": 1,
+         "cooldown": 2,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/lumberjacking_shop_1.json",
+         "shoptions": {
+            "stall_model": "lumberjacking_shop",
+            "wanted_items": []
+         }
+      },
+      "lumberjacking_shop_2": {
+         "category": "resources",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 2,
+         "cooldown": 3,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/lumberjacking_shop_2.json",
+         "shoptions": {
+            "stall_model": "lumberjacking_shop",
+            "wanted_items": []
+         }
+      },
+      "lumberjacking_shop_3": {
+         "category": "resources",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_3_outfit",
+            "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
+         ],
+         "min_city_tier": 3,
+         "weight": 3,
+         "cooldown": 4,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/lumberjacking_shop_3.json",
+         "shoptions": {
+            "stall_model": "lumberjacking_shop",
+            "wanted_items": []
+         }
+      },
+      "mining_shop_1": {
+         "category": "resources",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_1_outfit",
+            "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
+         ],
+         "min_city_tier": 1,
+         "weight": 1,
+         "cooldown": 2,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/mining_shop_1.json",
+         "shoptions": {
+            "stall_model": "mining_shop",
+            "wanted_items": []
+         }
+      },
+      "mining_shop_2": {
+         "category": "resources",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 2,
+         "cooldown": 3,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/mining_shop_2.json",
+         "shoptions": {
+            "stall_model": "mining_shop",
+            "wanted_items": []
+         }
+      },
+      "mining_shop_3": {
+         "category": "resources",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_3_outfit",
+            "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
+         ],
+         "min_city_tier": 3,
+         "weight": 3,
+         "cooldown": 4,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/mining_shop_3.json",
+         "shoptions": {
+            "stall_model": "mining_shop",
+            "wanted_items": []
+         }
+      },
+      "clay_pit_shop_1": {
+         "category": "resources",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_1_outfit",
+            "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
+         ],
+         "min_city_tier": 1,
+         "weight": 1,
+         "cooldown": 2,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/clay_pit_shop_1.json",
+         "shoptions": {
+            "stall_model": "clay_pit_shop",
+            "wanted_items": []
+         }
+      },
+      "clay_pit_shop_2": {
+         "category": "resources",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 2,
+         "cooldown": 3,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/clay_pit_shop_2.json",
+         "shoptions": {
+            "stall_model": "clay_pit_shop",
+            "wanted_items": []
+         }
+      },
+      "clay_pit_shop_3": {
+         "category": "resources",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_3_outfit",
+            "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
+         ],
+         "min_city_tier": 3,
+         "weight": 3,
+         "cooldown": 4,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/clay_pit_shop_3.json",
+         "shoptions": {
+            "stall_model": "clay_pit_shop",
             "wanted_items": []
          }
       }

@@ -64,8 +64,12 @@ function MerchantComponent:set_merchant_data(player_id, merchant_data)
 
    self:_load_merchant_data()
    if merchant_data.use_shop_description then
-      log:debug('%s using shop description: %s', self._entity, tostring(merchant_data.shop_info.title))
-      radiant.entities.set_description(self._entity, merchant_data.shop_info.title)
+      --log:debug('%s using shop description: %s', self._entity, tostring(merchant_data.shop_info.name))
+      radiant.entities.set_description(self._entity, merchant_data.shop_info.name)
+   end
+
+   if merchant_data.required_stall then
+      self._exclusive = 'shop_exclusive'
    end
    
    local options = radiant.shallow_copy(merchant_data.shop_info.inventory)
@@ -129,7 +133,7 @@ function MerchantComponent:show_bulletin(initial)
                         :set_ui_view('StonehearthShopBulletinDialog')
                         :set_callback_instance(self)
                         :set_data(data)
-                        :set_type('shop')
+                        :set_type(self._exclusive or 'shop')
 end
 
 function MerchantComponent:_on_shop_closed()

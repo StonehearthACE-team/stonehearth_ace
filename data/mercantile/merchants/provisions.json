@@ -3,7 +3,7 @@
       "food_shop_1": {
          "category": "provisions",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -13,14 +13,14 @@
          "cooldown": 2,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/food_shop_1.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:cook",
+            "stall_model": "food_shop",
             "wanted_items": []
          }
       },
       "food_shop_2": {
          "category": "provisions",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -30,7 +30,6 @@
          "cooldown": 3,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/food_shop_2.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:cook",
             "stall_model": "food_shop",
             "wanted_items": []
          }
@@ -38,7 +37,7 @@
       "food_shop_3": {
          "category": "provisions",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -48,7 +47,6 @@
          "cooldown": 4,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/food_shop_3.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:cook",
             "stall_model": "food_shop",
             "wanted_items": []
          }
@@ -56,7 +54,7 @@
       "drink_shop_1": {
          "category": "provisions",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -66,14 +64,14 @@
          "cooldown": 2,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/drink_shop_1.json",
          "shoptions": {
-            "persistence_job": "stonehearth_ace:jobs:brewer",
+            "stall_model": "drink_shop",
             "wanted_items": []
          }
       },
       "drink_shop_2": {
          "category": "provisions",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -83,7 +81,6 @@
          "cooldown": 3,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/drink_shop_2.json",
          "shoptions": {
-            "persistence_job": "stonehearth_ace:jobs:brewer",
             "stall_model": "drink_shop",
             "wanted_items": []
          }
@@ -91,7 +88,7 @@
       "drink_shop_3": {
          "category": "provisions",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -100,6 +97,41 @@
          "weight": 3,
          "cooldown": 4,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/drink_shop_3.json",
+         "shoptions": {
+            "stall_model": "drink_shop",
+            "wanted_items": []
+         }
+      },
+      "persistence_cook": {
+         "category": "provisions",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 1,
+         "cooldown": 7,
+         "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/food_shop_2.json",
+         "shoptions": {
+            "persistence_job": "stonehearth:jobs:cook",
+            "stall_model": "food_shop",
+            "wanted_items": []
+         }
+      },
+      "persistence_brewer": {
+         "category": "provisions",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 1,
+         "cooldown": 7,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/drink_shop_2.json",
          "shoptions": {
             "persistence_job": "stonehearth_ace:jobs:brewer",
             "stall_model": "drink_shop",

@@ -3,7 +3,7 @@
       "woodcutter_shop_1": {
          "category": "building",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -13,14 +13,14 @@
          "weight": 2,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/woodcutter_shop_1.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:carpenter",
+            "stall_model": "woodcutter_shop",
             "wanted_items": []
          }
       },
       "woodcutter_shop_2": {
          "category": "building",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -30,7 +30,6 @@
          "cooldown": 3,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/woodcutter_shop_2.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:carpenter",
             "stall_model": "woodcutter_shop",
             "wanted_items": []
          }
@@ -38,7 +37,7 @@
       "woodcutter_shop_3": {
          "category": "building",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -48,7 +47,6 @@
          "cooldown": 4,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/woodcutter_shop_3.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:carpenter",
             "stall_model": "woodcutter_shop",
             "wanted_items": []
          }
@@ -56,7 +54,7 @@
       "potter_shop_1": {
          "category": "building",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -66,14 +64,14 @@
          "cooldown": 2,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/potter_shop_1.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:potter",
+            "stall_model": "potter_shop",
             "wanted_items": []
          }
       },
       "potter_shop_2": {
          "category": "building",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -83,7 +81,6 @@
          "cooldown": 3,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/potter_shop_2.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:potter",
             "stall_model": "potter_shop",
             "wanted_items": []
          }
@@ -91,7 +88,7 @@
       "potter_shop_3": {
          "category": "building",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -101,7 +98,6 @@
          "cooldown": 4,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/potter_shop_3.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:potter",
             "stall_model": "potter_shop",
             "wanted_items": []
          }
@@ -109,7 +105,7 @@
       "stonecutter_shop_1": {
          "category": "building",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -119,14 +115,14 @@
          "weight": 2,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/stonecutter_shop_1.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:mason",
+            "stall_model": "stonecutter_shop",
             "wanted_items": []
          }
       },
       "stonecutter_shop_2": {
          "category": "building",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -136,7 +132,6 @@
          "cooldown": 3,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/stonecutter_shop_2.json",
          "shoptions": {
-            "persistence_job": "stonehearth:jobs:mason",
             "stall_model": "stonecutter_shop",
             "wanted_items": []
          }
@@ -144,7 +139,7 @@
       "stonecutter_shop_3": {
          "category": "building",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -154,8 +149,112 @@
          "cooldown": 4,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/stonecutter_shop_3.json",
          "shoptions": {
+            "stall_model": "stonecutter_shop",
+            "wanted_items": []
+         }
+      },
+      "gardener_shop_1": {
+         "category": "building",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_1_outfit",
+            "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
+         ],
+         "min_city_tier": 1,
+         "weight": 1,
+         "cooldown": 2,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/gardener_shop_1.json",
+         "shoptions": {
+            "stall_model": "gardener_shop",
+            "wanted_items": []
+         }
+      },
+      "gardener_shop_2": {
+         "category": "building",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 2,
+         "cooldown": 3,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/gardener_shop_2.json",
+         "shoptions": {
+            "stall_model": "gardener_shop",
+            "wanted_items": []
+         }
+      },
+      "gardener_shop_3": {
+         "category": "building",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_3_outfit",
+            "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
+         ],
+         "min_city_tier": 3,
+         "weight": 3,
+         "cooldown": 4,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/gardener_shop_3.json",
+         "shoptions": {
+            "stall_model": "gardener_shop",
+            "wanted_items": []
+         }
+      },
+      "persistence_carpenter": {
+         "category": "building",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 1,
+         "cooldown": 7,
+         "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/woodcutter_shop_3.json",
+         "shoptions": {
+            "persistence_job": "stonehearth:jobs:carpenter",
+            "stall_model": "woodcutter_shop",
+            "wanted_items": []
+         }
+      },
+      "persistence_mason": {
+         "category": "building",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 1,
+         "cooldown": 7,
+         "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/stonecutter_shop_2.json",
+         "shoptions": {
             "persistence_job": "stonehearth:jobs:mason",
             "stall_model": "stonecutter_shop",
+            "wanted_items": []
+         }
+      },
+      "persistence_potter": {
+         "category": "building",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 1,
+         "cooldown": 7,
+         "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/potter_shop_2.json",
+         "shoptions": {
+            "persistence_job": "stonehearth:jobs:potter",
+            "stall_model": "potter_shop",
             "wanted_items": []
          }
       }

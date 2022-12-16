@@ -3,7 +3,7 @@
       "container_shop_1": {
          "category": "general_goods",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -13,13 +13,14 @@
          "cooldown": 2,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/container_shop_1.json",
          "shoptions": {
+            "stall_model": "container_shop",
             "wanted_items": []
          }
       },
       "container_shop_2": {
          "category": "general_goods",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -36,7 +37,7 @@
       "container_shop_3": {
          "category": "general_goods",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -53,7 +54,7 @@
       "door_shop_1": {
          "category": "general_goods",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -63,13 +64,14 @@
          "cooldown": 2,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/door_shop_1.json",
          "shoptions": {
+            "stall_model": "door_shop",
             "wanted_items": []
          }
       },
       "door_shop_2": {
          "category": "general_goods",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -86,7 +88,7 @@
       "door_shop_3": {
          "category": "general_goods",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -103,7 +105,7 @@
       "training_shop_1": {
          "category": "general_goods",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
@@ -113,13 +115,14 @@
          "cooldown": 2,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/training_shop_1.json",
          "shoptions": {
+            "stall_model": "training_shop",
             "wanted_items": []
          }
       },
       "training_shop_2": {
          "category": "general_goods",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_2_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
@@ -129,14 +132,14 @@
          "cooldown": 3,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/training_shop_2.json",
          "shoptions": {
-            "stall_model": "quarry_shop",
+            "stall_model": "training_shop",
             "wanted_items": []
          }
       },
       "training_shop_3": {
          "category": "general_goods",
          "population_role": "merchant",
-         "use_shop_description ": true,
+         "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
@@ -147,6 +150,57 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/training_shop_3.json",
          "shoptions": {
             "stall_model": "training_shop",
+            "wanted_items": []
+         }
+      },
+      "general_goods_shop_1": {
+         "category": "general_goods",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_1_outfit",
+            "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
+         ],
+         "min_city_tier": 1,
+         "weight": 1,
+         "cooldown": 2,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/general_goods_shop_1.json",
+         "shoptions": {
+            "stall_model": "general_goods_shop",
+            "wanted_items": []
+         }
+      },
+      "general_goods_shop_2": {
+         "category": "general_goods",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "weight": 2,
+         "cooldown": 3,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/general_goods_shop_2.json",
+         "shoptions": {
+            "stall_model": "general_goods_shop",
+            "wanted_items": []
+         }
+      },
+      "general_goods_shop_3": {
+         "category": "general_goods",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_3_outfit",
+            "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
+         ],
+         "min_city_tier": 3,
+         "weight": 3,
+         "cooldown": 4,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/general_goods_shop_3.json",
+         "shoptions": {
+            "stall_model": "general_goods_shop",
             "wanted_items": []
          }
       }

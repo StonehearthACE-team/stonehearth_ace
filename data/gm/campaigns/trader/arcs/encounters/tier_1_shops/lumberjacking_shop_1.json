@@ -1,0 +1,32 @@
+{
+   "type": "encounter",
+   "encounter_type": "shop",
+   "in_edge": "lumberjacking_shop_1",
+   "shop_info": {
+      "name": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.lumberjacking_shop_1.shop_info.name)",
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.lumberjacking_shop_1.shop_info.title)",
+      "inventory": {
+         "shopkeeper_level": 1,
+         "shopkeeper_gold": 350,
+		   "overall_price_multiplier": 1.1,
+         "entries": [
+            {
+               "items_matching": {
+                  "wood": {
+                     "category": [
+                        "resources"
+                     ],
+                     "material": [
+                        "wood"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 0,
+                  "max": 12
+               }
+            }
+         ]
+      }
+   }
+}
