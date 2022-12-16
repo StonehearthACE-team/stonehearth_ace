@@ -44,11 +44,19 @@
                <div id="categoryPreferences" class="downSection">
                   <div class="sectionTitle">{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_title}}</div>
                   <div id="categories">
-                     {{#each category in view.categories}}
-                     <div class="category">
-                        
-                     </div>
-                     {{/each}}
+                     <table id="categoriesTable">
+                        {{#each category in view.categories}}
+                        <tr class="category">
+                           <td class="description">
+                              <div class="name">{{i18n_key category.display_name}}</div>
+                              <div class="description">{{i18n_key category.description}}</div>
+                           </td>
+                           <td class="settings">
+
+                           </td>
+                        </tr>
+                        {{/each}}
+                     </table>
                   </div>
                </div>
                <div id="exclusivePreferences" class="downSection">

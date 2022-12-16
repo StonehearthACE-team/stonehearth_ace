@@ -71,7 +71,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
 
       var tooltip = $(App.tooltipHelper.createTooltip(
             i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_title'),
-            i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_title')));
+            i18n.t('stonehearth_ace:ui.game.mercantile.active.info.num_merchants_description')));
       self.$('#numMerchants').tooltipster({delay: 1000, content: tooltip});
 
       self.$('#merchants').on('click', '.shop', function() {
@@ -238,7 +238,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
          self.set('hasAvailableStalls', false);
          self.set('availableStalls', null);
       }
-   }.observes('model.tier_stalls', 'model.exclusive_stalls'),
+   }.observes('model.tier_stalls', 'model.exclusive_stalls', 'merchants'),
 
    _updateActiveMerchants: function() {
       var self = this;
@@ -247,8 +247,18 @@ App.StonehearthAceMerchantileView = App.View.extend({
       App.tooltipHelper.removeDynamicTooltip(self.$('#merchants.stall'));
 
       var active_merchants = self.get('model.active_merchants');
-      var merchants = {};
-      var merchantsChanged = self._destroyMerchantTraces(active_merchants) || !self._activeMerchants;
+      var merchants = self._activeMerchants;
+      if (!merchants) {
+         merchants = {};
+         self._activeMerchants = merchants;
+      }
+      var eMerchants = self.get('merchants');
+      if (!eMerchants) {
+         self.set('merchants', radiant.map_to_array(self._activeMerchants));
+         eMerchants = self.get('merchants');
+      }
+
+      self._destroyMerchantTraces(active_merchants);
 
       if (active_merchants) {
          var components = {
@@ -258,14 +268,17 @@ App.StonehearthAceMerchantileView = App.View.extend({
             }
          };
 
+         var removedMerchants = {};
+         radiant.each(merchants, function(id, merchant) {
+            removedMerchants[id] = true;
+         });
          radiant.each(active_merchants, function(id, merchant) {
-            // this is great for most of the data, but the individual merchants need to be traced to track their stall usage
+            delete removedMerchants[id];
+            // the individual merchants need to be traced to track their stall usage
             if (self._merchantTraces[id] != null) {
-               merchants[id] = self._activeMerchants[id];
+               
             }
             else {
-               merchantsChanged = true;
-
                // name information
                var unit_info = merchant['stonehearth:unit_info'];
                var display_name = self._getDisplayName(merchant);
@@ -277,12 +290,15 @@ App.StonehearthAceMerchantileView = App.View.extend({
                   }
                }
 
-               merchants[id] = {
+               var thisMerchant = {
                   id: id,
                   entity: merchant.__self,
                   display_name: display_name,
                   description: description,
                };
+               merchants[id] = thisMerchant;
+               eMerchants.pushObject(thisMerchant);
+               self._updatePortrait(thisMerchant);
 
                self._merchantTraces[id] = new StonehearthDataTrace(merchant['stonehearth_ace:merchant'], components)
                   .progress(function (response) {
@@ -290,35 +306,35 @@ App.StonehearthAceMerchantileView = App.View.extend({
                         return;
                      }
                      
-                     var thisMerchant = merchants[id];
-                     var merchant_data = response;
-                     var stallData = self._getStallData(merchant_data) || {};
-                     Ember.set(thisMerchant, 'stall_entity', stallData.stall_entity);
-                     Ember.set(thisMerchant, 'stall_uri', stallData.stall_uri);
-                     Ember.set(thisMerchant, 'stall_name', stallData.stall_name);
-                     Ember.set(thisMerchant, 'stall_icon', stallData.stall_icon);
-                     Ember.set(thisMerchant, 'stall_tier', stallData.stall_tier);
-                     Ember.set(thisMerchant, 'has_stall', stallData.has_stall);
+                     var m = self._activeMerchants[id];
+                     if (m) {
+                        var merchant_data = response;
+                        var stallData = self._getStallData(merchant_data) || {};
+                        var changedStall = stallData.stall_entity != m.stall_entity;
+                        Ember.set(m, 'stall_entity', stallData.stall_entity);
+                        Ember.set(m, 'stall_uri', stallData.stall_uri);
+                        Ember.set(m, 'stall_name', stallData.stall_name);
+                        Ember.set(m, 'stall_icon', stallData.stall_icon);
+                        Ember.set(m, 'stall_tier', stallData.stall_tier);
+                        Ember.set(m, 'has_stall', stallData.has_stall);
 
-                     self._updatePortraits();
-                     self._updateAvailableStalls();
+                        if (changedStall) {
+                           if (stallData.stall_entity) {
+                              // don't bother if it was changed to null, since handlebars will remove the element
+                              self._updateStallPortrait(m);
+                           }
+                           self._updateAvailableStalls();
+                        }
+                     }
                   });
             }
          });
-      }
-      else {
-         self._updateAvailableStalls();
-      }
 
-      if (merchantsChanged) {
-         self._activeMerchants = merchants;
-
-         // use the entire object so we have a simpler time updating for stall changes
-         var merchantArr = [];
-         radiant.each(merchants, function(_, merchant) {
-            merchantArr.push(merchant);
+         // removed merchants must be removed from the list
+         radiant.each(removedMerchants, function(id, merchant) {
+            delete merchants[id];
+            eMerchants.removeObject(merchant);
          });
-         self.set('merchants', merchantArr);
       }
    }.observes('model.active_merchants'),
 
@@ -352,46 +368,50 @@ App.StonehearthAceMerchantileView = App.View.extend({
       }
    },
 
-   _updatePortraits: function() {
+   _updatePortrait: function(merchantData) {
       var self = this;
       Ember.run.scheduleOnce('afterRender', function() {
          if (!self.$()) {
             return;
          }
 
-         var merchants = self.$('.merchant');
-         if (merchants) {
-            merchants.each(function() {
-               var el = $(this);
-               var id = el.attr('merchant-id');
-               var merchantData = self._activeMerchants[parseInt(id)];
-               if (merchantData) {
-                  // apply portraits and tooltips
-                  var portrait = el.find('.merchantPortrait');
-                  var img_url = `url(/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=${merchantData.entity}&cache_buster=${Math.random()})`;
-                  
-                  portrait.css('background-image', img_url);
+         var el = self.$('#merchants').find(`[merchant-id='${merchantData.id}']`);
+         if (el) {
+            // apply portraits and tooltips
+            var portrait = el.find('.merchantPortrait');
+            var img_url = `url(/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=${merchantData.entity}&cache_buster=${Math.random()})`;
+            
+            portrait.css('background-image', img_url);
 
-                  App.tooltipHelper.createDynamicTooltip(portrait, function() {
-                     return $(App.tooltipHelper.createTooltip(merchantData.display_name, merchantData.description));
-                  });
-
-                  if (merchantData.stall_entity) {
-                     portrait = el.find('.stallPortrait');
-                     img_url = `url(/r/get_portrait/?type=headshot&animation=idle_2.json&size=256&entity=${merchantData.stall_entity}&cache_buster=${Math.random()})`;
-                     // var opts = 'cam_x=-20&cam_y=12&cam_z=-30&look_x=1&look_y=_2.1&look_z=2&fov=110&yaw=40&pitch=200';
-                     // img_url = `url(/r/get_portrait/?type=custom&${opts}&entity=${merchantData.stall_entity}&cache_buster=${Math.random()})`;
-                     portrait.css('background-image', img_url);
-
-                     App.tooltipHelper.createDynamicTooltip(portrait, function() {
-                        return $(App.tooltipHelper.createTooltip(merchantData.display_name, i18n.t('stonehearth_ace:ui.game.mercantile.active.merchant.working_at_stall', merchantData)));
-                     });
-                  }
-               }
+            App.tooltipHelper.createDynamicTooltip(portrait, function() {
+               return $(App.tooltipHelper.createTooltip(merchantData.display_name, merchantData.description));
             });
          }
       });
-   }.observes('merchants'),
+   },
+
+   _updateStallPortrait: function(merchantData) {
+      var self = this;
+      Ember.run.scheduleOnce('afterRender', function() {
+         if (!self.$()) {
+            return;
+         }
+
+         var el = self.$('#merchants').find(`[merchant-id='${merchantData.id}']`);
+         if (el) {
+            // apply portraits and tooltips
+            portrait = el.find('.stallPortrait');
+            img_url = `url(/r/get_portrait/?type=headshot&animation=idle.json&size=256&entity=${merchantData.stall_entity}&cache_buster=${Math.random()})`;
+            // var opts = 'cam_x=-20&cam_y=12&cam_z=-30&look_x=1&look_y=_2.1&look_z=2&fov=110&yaw=40&pitch=200';
+            // img_url = `url(/r/get_portrait/?type=custom&animation=idle.json&size=256&${opts}&entity=${merchantData.stall_entity}&cache_buster=${Math.random()})`;
+            portrait.css('background-image', img_url);
+
+            App.tooltipHelper.createDynamicTooltip(portrait, function() {
+               return $(App.tooltipHelper.createTooltip(merchantData.display_name, i18n.t('stonehearth_ace:ui.game.mercantile.active.merchant.working_at_stall', merchantData)));
+            });
+         }
+      });
+   },
 
    _updateStallTooltips: function() {
       var self = this;
@@ -408,9 +428,14 @@ App.StonehearthAceMerchantileView = App.View.extend({
                var stallData = self._availableStalls[id];
                if (stallData) {
                   App.tooltipHelper.createDynamicTooltip(el.find('.stallIcon'), function() {
-                     var description = stallData.description + '<div class="itemAdditionalTip">' +
+                     var description = stallData.description;
+
+                     // only include the available bit if there are actually any that could be available
+                     if (stallData.total > 0) {
+                        description += '<div class="itemAdditionalTip">' +
                            i18n.t('stonehearth_ace:ui.game.mercantile.active.stalls.available',
-                           { num: stallData.num, num_class: stallData.num_class }) + "</div>";
+                           { num: stallData.num, num_class: stallData.num_class }) + "</div>"
+                     }
 
                      return $(App.tooltipHelper.createTooltip(stallData.display_name, description));
                   });
@@ -422,7 +447,25 @@ App.StonehearthAceMerchantileView = App.View.extend({
 
    _setupCategories: function() {
       // load and setup all the categories; then category preferences will do the rest
-      
+      var self = this;
+      var categories = [];
+      radiant.each(stonehearth_ace.getMerchantCategories(), function(category, data) {
+         categories.push(data);
+      });
+
+      categories.sort(function(a, b) {
+         if (a.ordinal != null && b.ordinal != null) {
+            return a.ordinal - b.ordinal;
+         }
+         else if (a.ordinal == null) {
+            return 1;
+         }
+         else if (b.ordinal == null) {
+            return -1;
+         }
+      });
+
+      self.set('categories', categories);
    },
 
    _updateCategoryPreferences: function() {
@@ -433,5 +476,11 @@ App.StonehearthAceMerchantileView = App.View.extend({
       if (preferences) {
 
       }
+
+      self._updateNumPreferences();
    }.observes('model.category_preferences'),
+
+   _updateNumPreferences: function() {
+
+   }.observes('model.max_disables', 'model.max_encourages'),
 });

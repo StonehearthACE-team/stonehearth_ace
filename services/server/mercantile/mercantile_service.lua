@@ -207,6 +207,7 @@ function MercantileService:_load_merchant_data(biome_uri)
    local all_merchants = {}
 
    for category, category_data in pairs(data.categories) do
+      category_data.category = category
       local merchants = category_data.merchants and radiant.resources.load_json(category_data.merchants)
       if merchants and merchants.merchants then
          for merchant, merchant_data in pairs(merchants.merchants) do

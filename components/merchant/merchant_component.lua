@@ -64,6 +64,7 @@ function MerchantComponent:set_merchant_data(player_id, merchant_data)
 
    self:_load_merchant_data()
    if merchant_data.use_shop_description then
+      log:debug('%s using shop description: %s', self._entity, tostring(merchant_data.shop_info.title))
       radiant.entities.set_description(self._entity, merchant_data.shop_info.title)
    end
    
