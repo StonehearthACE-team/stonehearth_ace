@@ -96,6 +96,10 @@
                   bottom: 0px;
 
                   content: url(/stonehearth_ace/ui/game/bulletin/bulletin_notification/images/shop_icon.png);
+
+                  &.exclusive {
+                     content: url(/stonehearth_ace/ui/game/bulletin/bulletin_notification/images/shop_exclusive_icon.png);
+                  }
                }
 
                .stallPortrait {
@@ -155,6 +159,8 @@
       #preferencesContainer {
          display: flex;
          flex-direction: column;
+         width: 100%;
+         height: 100%;
 
          #allPreferences {
             display: flex;
@@ -162,12 +168,54 @@
             width: 100%;
             height: 100%;
 
-            .sectionTitle {
-               display: none;
-            }
-
             #categoryPreferences {
                flex: 1 1 auto;
+               overflow-y: auto;
+
+               #categories {
+                  tr:nth-child(even) {
+                     background-color: rgba(0, 0, 0, 0.1);
+                  }
+
+                  .category {
+                     .details {
+                        .name {
+                           .controlFont;
+                           padding: 8px 0px;
+                        }
+
+                        .icon {
+                           float: left;
+                           padding-right: 8px;
+                        }
+
+                        .description {
+                           // display: inline-block;
+                        }
+                     }
+
+                     .settings {
+                        width: 75px;
+
+                        .selected {
+                           border: 3px solid rgb(255, 255, 34);
+                           opacity: 1;
+                        }
+
+                        .disableCategory {
+                           content: url(images/disableCategory.png);
+                        }
+
+                        .enableCategory {
+                           content: url(images/enableCategory.png);
+                        }
+
+                        .encourageCategory {
+                           content: url(images/encourageCategory.png);
+                        }
+                     }
+                  }
+               }
             }
 
             #exclusivePreferences {

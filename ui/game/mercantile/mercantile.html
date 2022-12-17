@@ -14,7 +14,7 @@
                <div {{bind-attr merchant-id=merchant.id class=":merchant merchant.has_stall:hasStall:"}}>
                   <div {{bind-attr class=":name merchant.tier_class"}}>{{merchant.display_name}}</div>
                   <div class="portrait merchantPortrait"></div>
-                  <img class="shop"/>
+                  <img {{bind-attr class=":shop merchant.is_exclusive:exclusive:"}}/>
                   {{#if merchant.has_stall}}
                   <div class="portrait stallPortrait"></div>
                   {{/if}}
@@ -42,17 +42,31 @@
             </div>
             <div id="allPreferences">
                <div id="categoryPreferences" class="downSection">
-                  <div class="sectionTitle">{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_title}}</div>
                   <div id="categories">
                      <table id="categoriesTable">
                         {{#each category in view.categories}}
                         <tr class="category">
-                           <td class="description">
+                           <td class="details">
                               <div class="name">{{i18n_key category.display_name}}</div>
+                              <img class="icon" {{bind-attr src="category.icon"}}/>
                               <div class="description">{{i18n_key category.description}}</div>
                            </td>
-                           <td class="settings">
-
+                           <td class="settings" {{bind-attr category=category.category}}>
+                              <a href="#" {{action "encourageCategory" category.category target=view}}>
+                                 <div {{bind-attr class=':uisounds category.encourageEnabled:enabled:disabled category.isEncouraged:selected:'}}>
+                                    <img class="setting encourageCategory"/>
+                                 </div>
+                              </a>
+                              <a href="#" {{action "enableCategory" category.category target=view}}>
+                                 <div {{bind-attr class=':uisounds category.enableEnabled:enabled:disabled category.isEnabled:selected:'}}>
+                                    <img class="setting enableCategory"/>
+                                 </div>
+                              </a>
+                              <a href="#" {{action "disableCategory" category.category target=view}}>
+                                 <div {{bind-attr class=':uisounds category.disableEnabled:enabled:disabled category.isDisabled:selected:'}}>
+                                    <img class="setting disableCategory"/>
+                                 </div>
+                              </a>
                            </td>
                         </tr>
                         {{/each}}
@@ -60,7 +74,6 @@
                   </div>
                </div>
                <div id="exclusivePreferences" class="downSection">
-                  <div class="sectionTitle">{{i18n stonehearth_ace:ui.game.mercantile.preferences.exclusive_title}}</div>
                </div>
             </div>
          </div>

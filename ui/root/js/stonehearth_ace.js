@@ -280,13 +280,13 @@ var stonehearth_ace = {
       return stonehearth_ace._mercantile_data && stonehearth_ace._mercantile_data.categories;
    },
 
-   getCategoryMerchants: function() {
-      return stonehearth_ace._mercantile_data && stonehearth_ace._mercantile_data.category_merchants;
+   getMerchants: function() {
+      return stonehearth_ace._mercantile_data && stonehearth_ace._mercantile_data.merchants;
    },
 
-   getExclusiveMerchants: function() {
-      return stonehearth_ace._mercantile_data && stonehearth_ace._mercantile_data.exclusive_merchants;
-   },
+   getMerchantData: function(merchantId) {
+      return stonehearth_ace._mercantile_data && stonehearth_ace._mercantile_data.merchants[merchantId];
+   }
 }
 
 $.getJSON('/stonehearth_ace/ui/data/equipment_types.json', function(data) {

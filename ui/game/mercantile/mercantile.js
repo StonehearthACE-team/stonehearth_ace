@@ -285,16 +285,14 @@ App.StonehearthAceMerchantileView = App.View.extend({
                var description = unit_info && unit_info.description;
                if (!description) {
                   var catalogData = merchant.uri && App.catalog.getCatalogData(merchant.uri);
-                  if (catalogData) {
-                     description = i18n.t(catalogData.description, {self: merchant});
-                  }
+                  description = catalogData && catalogData.description;
                }
 
                var thisMerchant = {
                   id: id,
                   entity: merchant.__self,
                   display_name: display_name,
-                  description: description,
+                  description: i18n.t(catalogData.description, {self: merchant}),
                };
                merchants[id] = thisMerchant;
                eMerchants.pushObject(thisMerchant);
@@ -311,12 +309,16 @@ App.StonehearthAceMerchantileView = App.View.extend({
                         var merchant_data = response;
                         var stallData = self._getStallData(merchant_data) || {};
                         var changedStall = stallData.stall_entity != m.stall_entity;
+
+                        var merchantData = stonehearth_ace.getMerchantData(merchant_data.merchant);
+
                         Ember.set(m, 'stall_entity', stallData.stall_entity);
                         Ember.set(m, 'stall_uri', stallData.stall_uri);
                         Ember.set(m, 'stall_name', stallData.stall_name);
                         Ember.set(m, 'stall_icon', stallData.stall_icon);
                         Ember.set(m, 'stall_tier', stallData.stall_tier);
                         Ember.set(m, 'has_stall', stallData.has_stall);
+                        Ember.set(m, 'is_exclusive', merchantData.is_exclusive);
 
                         if (changedStall) {
                            if (stallData.stall_entity) {
@@ -450,7 +452,10 @@ App.StonehearthAceMerchantileView = App.View.extend({
       var self = this;
       var categories = [];
       radiant.each(stonehearth_ace.getMerchantCategories(), function(category, data) {
-         categories.push(data);
+         // we need to copy the data to a new object because we'll be setting preference values
+         var copiedData = radiant.shallow_copy(data);
+         copiedData.icon = copiedData.icon || '/stonehearth_ace/ui/game/mercantile/images/categoryPlaceholder.png';
+         categories.push(copiedData);
       });
 
       categories.sort(function(a, b) {
@@ -466,21 +471,69 @@ App.StonehearthAceMerchantileView = App.View.extend({
       });
 
       self.set('categories', categories);
+      self._updateCategoryPreferences();
    },
 
    _updateCategoryPreferences: function() {
       var self = this;
-      var preferenceTypes = App.constants.mercantile.category_preferences;
       var preferences = self.get('model.category_preferences');
-
-      if (preferences) {
-
+      if (!preferences) {
+         return;
       }
+
+      var preferenceTypes = App.constants.mercantile.category_preferences;
+      var categories = self.get('categories');
+
+      radiant.each(categories, function(_, category) {
+         var preference = preferences[category.category];
+         if (preference == null) {
+            preference = preferenceTypes.ENABLED;
+         }
+         Ember.set(category, 'preference', preference);
+      });
 
       self._updateNumPreferences();
    }.observes('model.category_preferences'),
 
    _updateNumPreferences: function() {
+      var self = this;
+      var maxDisables = self.get('model.max_disables');
+      var maxEncourages = self.get('model.max_encourages');
+      var numDisables = self.get('model.num_disables');
+      var numEncourages = self.get('model.num_encourages');
+      var categories = self.get('categories');
+      if (maxDisables == null || maxEncourages == null || numDisables == null || numEncourages == null || categories == null) {
+         return;
+      }
 
+      var preferenceTypes = App.constants.mercantile.category_preferences;
+      radiant.each(categories, function(_, category) {
+         Ember.set(category, 'isDisabled', category.preference == preferenceTypes.DISABLED);
+         Ember.set(category, 'disableEnabled', category.preference != preferenceTypes.DISABLED && numDisables < maxDisables);
+         Ember.set(category, 'isEnabled', category.preference == preferenceTypes.ENABLED);
+         Ember.set(category, 'enableEnabled', category.preference != preferenceTypes.ENABLED);
+         Ember.set(category, 'isEncouraged', category.preference == preferenceTypes.ENCOURAGED);
+         Ember.set(category, 'encourageEnabled', category.preference != preferenceTypes.ENCOURAGED && numEncourages < maxEncourages);
+      });
    }.observes('model.max_disables', 'model.max_encourages'),
+
+   actions: {
+      disableCategory: function(category) {
+         if (this.$('#categoriesTable').find(`[category='${category}'] .enabled:not(.selected) .disableCategory`).length > 0) {
+            radiant.call_obj(_playerMercantileControllerUri, 'set_category_preference_command', category, App.constants.mercantile.category_preferences.DISABLED);
+         }
+      },
+
+      enableCategory: function(category) {
+         if (this.$('#categoriesTable').find(`[category='${category}'] .enabled:not(.selected) .enableCategory`).length > 0) {
+            radiant.call_obj(_playerMercantileControllerUri, 'set_category_preference_command', category, App.constants.mercantile.category_preferences.ENABLED);
+         }
+      },
+
+      encourageCategory: function(category) {
+         if (this.$('#categoriesTable').find(`[category='${category}'] .enabled:not(.selected) .encourageCategory`).length > 0) {
+            radiant.call_obj(_playerMercantileControllerUri, 'set_category_preference_command', category, App.constants.mercantile.category_preferences.ENCOURAGED);
+         }
+      },
+   }
 });

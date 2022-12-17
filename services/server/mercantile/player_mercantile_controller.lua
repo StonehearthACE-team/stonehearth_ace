@@ -199,6 +199,12 @@ function PlayerMercantile:set_trade_preferences(category_preferences, exclusive_
    self.__saved_variables:mark_changed()
 end
 
+function PlayerMercantile:set_category_preference_command(session, response, category, preference)
+   self._sv.category_preferences[category] = preference
+   self:_verify_category_preferences()
+   self.__saved_variables:mark_changed()
+end
+
 function PlayerMercantile:determine_daily_merchants()
    local player_id = self._sv.player_id
    if self._sv.enabled and not self._spawning_timer and stonehearth.presence:is_player_connected(player_id) then
@@ -335,7 +341,7 @@ function PlayerMercantile:_update_city_tier()
    -- in case it's not specified for this tier, use the closest lower specified tier
    local max_disables
    for tier = city_tier, 1, -1 do
-      local max_disables = mercantile_constants.MAX_DISABLES_PER_TIER[tier]
+      max_disables = mercantile_constants.MAX_DISABLES_PER_TIER[tier]
       if max_disables then
          break
       end
@@ -344,7 +350,7 @@ function PlayerMercantile:_update_city_tier()
 
    local max_encourages
    for tier = city_tier, 1, -1 do
-      local max_encourages = mercantile_constants.MAX_ENCOURAGES_PER_TIER[tier]
+      max_encourages = mercantile_constants.MAX_ENCOURAGES_PER_TIER[tier]
       if max_encourages then
          break
       end
@@ -365,15 +371,20 @@ function PlayerMercantile:_verify_category_preferences()
       if pref == mercantile_constants.category_preferences.DISABLED then
          num_disables = num_disables + 1
          if num_disables > self._sv.max_disables then
+            num_disables = num_disables - 1
             category_preferences[category] = mercantile_constants.category_preferences.ENABLED
          end
       elseif pref == mercantile_constants.category_preferences.ENCOURAGED then
          num_encourages = num_encourages + 1
          if num_encourages > self._sv.max_encourages then
+            num_encourages = num_encourages - 1
             category_preferences[category] = mercantile_constants.category_preferences.ENABLED
          end
       end
    end
+
+   self._sv.num_disables = num_disables
+   self._sv.num_encourages = num_encourages
 end
 
 function PlayerMercantile:_determine_daily_merchants()
