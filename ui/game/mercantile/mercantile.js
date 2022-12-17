@@ -121,6 +121,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
 
       App.tooltipHelper.removeDynamicTooltip(self.$('#merchants.name'));
       App.tooltipHelper.removeDynamicTooltip(self.$('#merchants.stall'));
+      App.tooltipHelper.removeDynamicTooltip(self.$('#merchants.shop'));
 
       this._super();
    },
@@ -292,7 +293,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
                   id: id,
                   entity: merchant.__self,
                   display_name: display_name,
-                  description: i18n.t(catalogData.description, {self: merchant}),
+                  description: i18n.t(description, {self: merchant}),
                };
                merchants[id] = thisMerchant;
                eMerchants.pushObject(thisMerchant);
@@ -388,6 +389,10 @@ App.StonehearthAceMerchantileView = App.View.extend({
             App.tooltipHelper.createDynamicTooltip(portrait, function() {
                return $(App.tooltipHelper.createTooltip(merchantData.display_name, merchantData.description));
             });
+
+            App.tooltipHelper.createDynamicTooltip(el.find('.shop'), function() {
+               return $(App.tooltipHelper.createTooltip(null, i18n.t('stonehearth_ace:ui.game.mercantile.active.shop')));
+            }, {delay: 500, position: 'bottom'});
          }
       });
    },

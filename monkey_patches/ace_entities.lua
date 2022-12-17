@@ -162,6 +162,10 @@ function ace_entities.kill_entity(entity, kill_data)
    end
 end
 
+function ace_entities.set_description(entity, description, description_data)
+   entity:add_component('stonehearth:unit_info'):set_description(description, description_data)
+end
+
 function ace_entities.add_title(entity, title, rank)
    if entity and entity:is_valid() then
       entity:add_component('stonehearth_ace:titles'):add_title(title, rank)

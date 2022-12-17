@@ -72,7 +72,7 @@ function AceUnitInfoComponent:set_custom_name(custom_name, custom_data, propogat
    end
 
    local name = self:_select_custom_name(custom_name)
-   self:_ace_old_set_custom_name(name, self:_process_custom_data(custom_data))
+   self:_ace_old_set_custom_name(name, self:_process_custom_data(custom_data, self._sv.custom_data))
    if propogate_to_forms ~= false then
       self:_propogate_custom_name(name, custom_data, keep_display_name)
    end
@@ -110,9 +110,10 @@ function AceUnitInfoComponent:_propogate_custom_name(custom_name, custom_data, k
    end
 end
 
-function AceUnitInfoComponent:set_description(custom_description)
-   if self._sv.description ~= custom_description then
+function AceUnitInfoComponent:set_description(custom_description, description_data)
+   if self._sv.description ~= custom_description or description_data then
       self._sv.description = custom_description
+      self._sv.description_data = self:_process_custom_data(description_data, self._sv.description_data)
       self:_trigger_on_change()
    end
 end
@@ -126,6 +127,10 @@ end
 
 function AceUnitInfoComponent:get_custom_data()
    return self._sv.custom_data
+end
+
+function AceUnitInfoComponent:get_description_data()
+   return self._sv.description_data
 end
 
 function AceUnitInfoComponent:get_title_locked()
@@ -226,9 +231,9 @@ function AceUnitInfoComponent:force_unlock()
    self.__saved_variables:mark_changed()
 end
 
-function AceUnitInfoComponent:_process_custom_data(custom_data)
+function AceUnitInfoComponent:_process_custom_data(custom_data, default)
    if not custom_data then
-      return self._sv.custom_data or {}
+      return default or {}
    end
 
    if type(custom_data) ~= 'table' then

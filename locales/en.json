@@ -20781,7 +20781,7 @@
       "humans": {
          "npc_merchant": {
             "description": "A merchant visiting your town to buy and sell goods.",
-            "shop_prefix": "A merchant visiting on behalf of "
+            "shop_name_description": "A merchant visiting on behalf of [str(self.stonehearth:unit_info.description_data.shop_name)]."
          }
       }
    },
@@ -21367,7 +21367,8 @@
                   "tier2_description": "Can be occupied by Town level 1 and 2 merchants.<br>Is required to attract more than one Town Level 2 merchant.",
                   "tier3_display_name": "Fancy Market Booths",
                   "tier3_description": "Can be occupied by all Town level merchants.<br>Is required to attract more than one Town Level 3 merchant."
-               }
+               },
+               "shop": "Show shop to buy and sell goods."
             },
             "categories": {
                "general_goods": {
