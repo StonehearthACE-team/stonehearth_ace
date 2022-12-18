@@ -129,7 +129,7 @@ function EntityModificationComponent:set_model_variant(model_variant, override_o
 		-- if so, choose a random variant from the array
 		-- otherwise, check if the current model is in the list
 		-- if so, choose the next model in the sequence, looping around to start; otherwise, choose the first model
-		if model_variant.models and type(model_variant.models) == 'table' and #model_variant.models > 0 then
+		if type(model_variant) == 'table' and model_variant.models and type(model_variant.models) == 'table' and #model_variant.models > 0 then
 			local index = 1
 			if model_variant.type == 'one_of' then
 				index = rng:get_int(1, #model_variant.models)

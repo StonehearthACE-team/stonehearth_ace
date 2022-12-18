@@ -6,6 +6,8 @@ local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local item_io_lib = require 'stonehearth_ace.lib.item_io.item_io_lib'
 local healing_lib = require 'stonehearth_ace.ai.lib.healing_lib'
+local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
+local rng = _radiant.math.get_default_rng()
 
 local log = radiant.log.create_logger('entities')
 
@@ -111,6 +113,26 @@ function ace_entities.modify_resource(entity, resource_name, change, source)
       return false
    end
    return expendable_resource_component:modify_value(resource_name, change, source)
+end
+
+ace_entities._ace_old_create_entity = radiant.entities.create_entity
+function ace_entities.create_entity(ref, options)
+   local entity = ace_entities._ace_old_create_entity(ref, options)
+   if entity then
+      local create_entity_data = radiant.entities.get_entity_data(entity, 'stonehearth_ace:create_entity')
+      if create_entity_data and create_entity_data.assign_random_model_variant then
+         local model_variants = radiant.entities.get_component_data(entity, 'model_variants')
+         local variants = WeightedSet(rng)
+         for id, variant in pairs(model_variants) do
+            if id ~= 'default' then
+               variants:add(id, 1)
+            end
+         end
+         entity:add_component('render_info'):set_model_variant(variants:choose_random() or 'default')
+      end
+   end
+
+   return entity
 end
 
 -- Use when the entity is being killed in the world

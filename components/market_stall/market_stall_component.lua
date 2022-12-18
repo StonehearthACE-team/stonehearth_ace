@@ -48,7 +48,7 @@ function MarketStallComponent:destroy()
    if self._sv._merchant and self._sv._merchant:is_valid() then
       local merchant_component = self._sv._merchant:get_component('stonehearth_ace:merchant')
       if merchant_component then
-         merchant_component:take_down_from_stall()
+         merchant_component:clear_stall()
       end
    end
    if self._parent_trace then
@@ -63,6 +63,12 @@ end
 
 function MarketStallComponent:set_merchant(merchant)
    if merchant ~= self._sv._merchant then
+      local prev_merchant = self._sv._merchant
+      local merchant_component = prev_merchant and prev_merchant:get_component('stonehearth_ace:merchant')
+      if merchant_component then
+         merchant_component:clear_stall()
+      end
+
       self._sv._merchant = merchant
       self._sv._is_setting_up = true
 

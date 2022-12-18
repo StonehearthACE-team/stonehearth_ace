@@ -165,8 +165,7 @@ end
 function MerchantComponent:take_down_from_stall()
    local stall = self._sv.stall
    if stall then
-      self._sv.stall = nil
-      self.__saved_variables:mark_changed()
+      self:clear_stall()
 
       local stall_comp = stall:get_component('stonehearth_ace:market_stall')
       if stall_comp then
@@ -184,6 +183,12 @@ function MerchantComponent:set_up_at_stall(stall)
          return stall_comp:set_merchant(self._entity)
       end
    end
+end
+
+-- called from market stall component when it's destroyed or removed from world
+function MerchantComponent:clear_stall()
+   self._sv.stall = nil
+   self.__saved_variables:mark_changed()
 end
 
 function MerchantComponent:finish_stall_setup()

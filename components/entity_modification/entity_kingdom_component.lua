@@ -43,7 +43,7 @@ function EntityKingdomComponent:_create_listeners()
 	-- start up listeners for form changes
 	local entity_forms = self._entity:get_component('stonehearth:entity_forms')
 	if entity_forms then
-		self._ghost_placed_listener = radiant.events.listen(entity_forms, 'stonehearth:entity:ghost_placed', _on_ghost_placed)
+		self._ghost_placed_listener = radiant.events.listen(entity_forms, 'stonehearth:entity:ghost_placed', self, self._on_ghost_placed)
 	end
 end
 
@@ -114,8 +114,8 @@ end
 function EntityKingdomComponent:_on_ghost_placed()
 	local entity_forms = self._entity:get_component('stonehearth:entity_forms')
 	self._sv.ghost_entity = entity_forms:get_ghost_placement_entity()
-	if self._sv.ghost_entity and models.ghost then
-		self._sv.ghost_entity:add_component('stonehearth_ace:entity_modification'):set_model_variant(models.ghost)
+	if self._sv.ghost_entity and self._sv.ghost_model then
+		self._sv.ghost_entity:add_component('stonehearth_ace:entity_modification'):set_model_variant(self._sv.ghost_model)
 	end
 	self.__saved_variables:mark_changed()
 end

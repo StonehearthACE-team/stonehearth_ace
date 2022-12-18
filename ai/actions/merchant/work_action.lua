@@ -45,7 +45,7 @@ function Work:run(ai, entity, args)
       end
 
       -- also check to make sure the stall setup hasn't changed
-      if stall_location and stall_location ~= radiant.entities.get_world_grid_location(args.stall) then
+      if merchant_component:get_current_stall() ~= args.stall then
          break
       end
 
