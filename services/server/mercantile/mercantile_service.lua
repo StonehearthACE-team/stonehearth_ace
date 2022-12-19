@@ -46,6 +46,8 @@ function MercantileService:initialize()
          end
          --radiant.events.trigger_async(self, 'stonehearth_ace:merchants:depart_time')
       end)
+
+   self:_create_kingdom_assigned_listener()
 end
 
 function MercantileService:destroy()
@@ -61,6 +63,18 @@ function MercantileService:destroy()
       self._biome_listener:destroy()
       self._biome_listener = nil
    end
+   if self._kingdom_assigned_listener then
+      self._kingdom_assigned_listener:destroy()
+      self._kingdom_assigned_listener = nil
+   end
+end
+
+function MercantileService:_create_kingdom_assigned_listener()
+   self._kingdom_assigned_listener = radiant.events.listen(radiant, 'radiant:player_kingdom_assigned', function(args)
+         if not stonehearth.player:is_player_npc(args.player_id) then
+            self:add_player_controller(args.player_id):update_kingdom()
+         end
+      end)
 end
 
 function MercantileService:get_player_controller(player_id)

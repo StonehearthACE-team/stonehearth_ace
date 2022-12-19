@@ -1,11 +1,14 @@
 local PlayerService = require 'stonehearth.services.server.player.player_service'
 local AcePlayerService = class()
 
+local log = radiant.log.create_logger('player_service')
+
 --If the kingdom is not already specified for this player, add it now
 AcePlayerService._ace_old_add_kingdom = PlayerService.add_kingdom
 function AcePlayerService:add_kingdom(player_id, kingdom)
    self:_ace_old_add_kingdom(player_id, kingdom)
 
+   log:debug('triggering "radiant:player_kingdom_assigned" for player_id "%s"', player_id)
    radiant.events.trigger(radiant, 'radiant:player_kingdom_assigned', {player_id = player_id})
 end
 

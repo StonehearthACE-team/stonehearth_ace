@@ -93,9 +93,11 @@ function CrafterInfoService:get_uris(material_tags)
 end
 
 function CrafterInfoService:_create_kingdom_listener(player_id)
-   self._kingdom_assigned_listeners[player_id] = radiant.events.listen_once(radiant, 'radiant:player_kingdom_assigned', function()
-      self._kingdom_assigned_listeners[player_id] = nil
-      self:get_crafter_info(player_id)
+   self._kingdom_assigned_listeners[player_id] = radiant.events.listen(radiant, 'radiant:player_kingdom_assigned', function(args)
+      if args.player_id == player_id then
+         self._kingdom_assigned_listeners[player_id] = nil
+         self:get_crafter_info(player_id)
+      end
    end)
 end
 

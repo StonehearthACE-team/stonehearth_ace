@@ -52,8 +52,7 @@ end
 
 function PlayerMercantile:post_activate()
    self:_create_city_tier_listener()
-
-   self._kingdom_uri = stonehearth.population:get_population(self._sv.player_id):get_kingdom()
+   self:update_kingdom()
 
    self:_start_depart_timer()
 end
@@ -89,6 +88,10 @@ end
 function PlayerMercantile:set_enabled(enabled)
    self._sv.enabled = not not enabled
    self.__saved_variables:mark_changed()
+end
+
+function PlayerMercantile:update_kingdom()
+   self._kingdom_uri = stonehearth.population:get_population(self._sv.player_id):get_kingdom()
 end
 
 function PlayerMercantile:register_merchant_stall(stall)
