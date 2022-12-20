@@ -21,6 +21,7 @@ function AceItemPlacer:go(session, response, item_to_place, quality, transaction
    self.region_shape = nil
    self.ignorable_uris = self:_get_ignorable_uris()
 
+   local root_to_place, model_variant
    if type(item_to_place) == 'string' then
       -- used for place item type
       self.item_uri_to_place = item_to_place
@@ -29,6 +30,8 @@ function AceItemPlacer:go(session, response, item_to_place, quality, transaction
       -- used for moving a specific item around
       self.specific_item_to_place = item_to_place
       local root_form, iconic_form = entity_forms_lib.get_forms(self.specific_item_to_place)
+      root_to_place = root_form
+      model_variant = radiant.entities.get_model_variant(root_form)
       self.item_uri_to_place = root_form:get_uri()
       self.forms_to_ignore[root_form:get_id()] = true
       self.forms_to_ignore[iconic_form:get_id()] = true
@@ -39,10 +42,10 @@ function AceItemPlacer:go(session, response, item_to_place, quality, transaction
       end
    end
 
-   self.ghost_entity = entity_forms_lib.create_ghost_entity(self.item_uri_to_place, quality)
+   self.ghost_entity = entity_forms_lib.create_ghost_entity(root_to_place or self.item_uri_to_place, quality)
    self.forms_to_ignore[self.ghost_entity:get_id()] = true
 
-   self.placement_test_entity = radiant.entities.create_entity(self.item_uri_to_place)
+   self.placement_test_entity = radiant.entities.create_entity(self.item_uri_to_place, {model_variant = model_variant})
    assert(self.placement_test_entity, 'could not determine placement test entity')
 
    self.entity_forms = entity_forms_lib.get_root_entity(self.placement_test_entity)
@@ -74,7 +77,7 @@ function AceItemPlacer:go(session, response, item_to_place, quality, transaction
    end
 
    self.location_selector
-      :use_ghost_entity_cursor(cursor_uri)
+      :use_ghost_entity_cursor(cursor_uri, model_variant)
       :set_rotation_disabled(rotation_disabled)
       :create_footprint()
       :set_filter_fn(function (result, selector)

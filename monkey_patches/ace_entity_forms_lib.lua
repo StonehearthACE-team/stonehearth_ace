@@ -1,3 +1,4 @@
+local Entity = _radiant.om.Entity
 local Point3 = _radiant.csg.Point3
 local EntityFormsLib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local AceEntityFormsLib = class()
@@ -62,6 +63,54 @@ function AceEntityFormsLib.initialize_ghost_form_components(ghost, root_uri, qua
                :load_from_json(region_collision_shape_json)
                :set_region_collision_type(_radiant.om.RegionCollisionShape.NONE)
    end
+end
+
+AceEntityFormsLib._ace_old_create_ghost_entity = EntityFormsLib.create_ghost_entity
+function AceEntityFormsLib.create_ghost_entity(entity, quality, player_id, placement_info)
+   -- if entity is an entity, extract uri for base function
+   local is_entity
+   local uri = entity
+   if radiant.util.is_a(entity, Entity) then
+      is_entity = true
+      uri = entity:get_uri()
+   end
+
+   local ghost = AceEntityFormsLib._ace_old_create_ghost_entity(uri, quality, player_id, placement_info)
+
+   -- perform any extra initialization to match up the ghost to the entity, like model variant
+   if is_entity then
+      local variant = radiant.entities.get_model_variant(entity)
+      if variant then
+         ghost:add_component('render_info'):set_model_variant(variant)
+      end
+   end
+
+   return ghost
+end
+
+function AceEntityFormsLib.place_ghost_entity(entity, quality, player_id, placement_info)
+   assert(type(entity) == 'string' or radiant.util.is_a(entity, Entity))
+
+   local normal = placement_info.normal
+   local location = placement_info.location
+
+   if placement_info.structure ~= radiant._root_entity then
+      placement_info.ignore_gravity = true
+   else
+      placement_info.ignore_gravity = normal and normal.y == 0
+   end
+
+   local ghost, err = EntityFormsLib.create_ghost_entity(entity, quality, player_id, placement_info)
+   if not ghost then
+      return nil, err
+   end
+
+   -- now we stick it in the world!
+
+   radiant.terrain.place_entity_at_exact_location(ghost, placement_info.location)
+   radiant.entities.turn_to(ghost, placement_info.rotation)
+
+   return ghost
 end
 
 return AceEntityFormsLib

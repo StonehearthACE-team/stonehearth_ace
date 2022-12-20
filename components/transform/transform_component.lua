@@ -637,7 +637,7 @@ function TransformComponent:_update_component_info()
          self._transform_data.transform_uri
    transform_form = radiant.util.is_string(transform_form) and transform_form
    local past_forms = {[self._entity:get_uri()] = true}
-   log:debug('starting form check with has_evolve = %s, transform_form = %s', tostring(has_evolve), tostring(transform_form))
+   --log:debug('starting form check with has_evolve = %s, transform_form = %s', tostring(has_evolve), tostring(transform_form))
    if has_evolve or transform_form then
       local get_next_form = function(form)
          local evolve_data = radiant.entities.get_entity_data(form, 'stonehearth:evolve_data')
@@ -706,7 +706,7 @@ function TransformComponent:_update_component_info()
             header = 'stonehearth_ace:component_info.stonehearth_ace.transform.entry_list_header'
          }, { entry_count = #entries })
    else
-      comp_info:remove_component_details('stonehearth_ace:transform', 'options')
+      comp_info:remove_component_detail('stonehearth_ace:transform', 'options')
    end
 end
 

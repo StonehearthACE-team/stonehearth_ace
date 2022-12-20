@@ -36,7 +36,8 @@ end
 function ComponentInfoComponent:remove_component_detail(component, name)
    local comp = self._sv.components[component]
    if comp then
-      if comp.details[name] then
+      local detail = comp.details[name]
+      if detail then
          comp.details[name] = nil
          self.__saved_variables:mark_changed()
       end

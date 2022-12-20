@@ -1,4 +1,5 @@
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
+local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
 local EntityFormsComponent = require 'stonehearth.components.entity_forms.entity_forms_component'
 local AceEntityFormsComponent = class()
@@ -56,6 +57,46 @@ end
 
 function AceEntityFormsComponent:get_interaction_proxy()
    return self._sv._interaction_proxy
+end
+
+-- ACE: pass the full entity into the place_ghost_entity function
+function AceEntityFormsComponent:_place_item()
+   self:set_should_restock(false) -- if we're gonna place this item, don't restock it. That would be rude
+
+   local town = stonehearth.town:get_town(self._entity)
+
+   assert(town)
+   assert(self._sv.placement_info)
+   assert(not self._sv.placement_ghost_entity)
+
+   --ask the town to cancel any  other existing tasks on the root and the iconic
+   town:remove_town_tasks_on_item(self._entity)
+   town:remove_town_tasks_on_item(self:get_iconic_entity())
+
+   --local uri = self._entity:get_uri()
+   local player_id = radiant.entities.get_player_id(self._entity)
+   local ghost, err = entity_forms.place_ghost_entity(self._entity, radiant.entities.get_item_quality(self._entity), player_id, self._sv.placement_info)
+
+   assert(ghost, err)
+   -- if we hide the undeploy ui, then we have to prevent cancelling the move as that hacks an undeploy
+   if self._sv.hide_undeploy_ui then
+      ghost:get_component('stonehearth:commands'):remove_command('stonehearth:commands:destroy_item')
+   end
+   self._sv.placement_ghost_entity = ghost
+   radiant.events.trigger_async(self, 'stonehearth:entity:ghost_placed')
+
+   local ghost_component = ghost:get_component('stonehearth:ghost_form')
+   -- if root form item exists in world, then the item is placed and we are trying to move it
+   local moving_placed_item = radiant.entities.exists_in_world(self._entity)
+   ghost_component:request_place_item(moving_placed_item)
+
+   local inventory = stonehearth.inventory:get_inventory(self._entity)
+   if inventory then
+      inventory:reevaluate_tracker_item(self._entity)
+      inventory:reevaluate_tracker_item(self._sv.iconic_entity)
+   end
+
+   self:_start_placement_task()
 end
 
 -- ACE: make sure the ghost has the proper destination region
