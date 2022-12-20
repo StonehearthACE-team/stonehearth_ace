@@ -302,4 +302,7 @@ stonehearth_ace:load_version_info()
 radiant.events.listen(stonehearth_ace, 'radiant:init', stonehearth_ace, stonehearth_ace._on_init)
 radiant.events.listen(radiant, 'radiant:required_loaded', stonehearth_ace, stonehearth_ace._on_required_loaded)
 
+print("Mod List:")
+print(radiant.resources.get_mod_list())
+
 return stonehearth_ace
