@@ -17,6 +17,41 @@
                   ]
                }
             ]
+         },
+         "model1": {
+            "models": [
+               "file(stocking.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(stocking_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(stocking_3.qb)"
+            ]
+         },
+         "model4": {
+            "models": [
+               "file(stocking_4.qb)"
+            ]
+         },
+         "model5": {
+            "models": [
+               "file(stocking_5.qb)"
+            ]
+         },
+         "model6": {
+            "models": [
+               "file(stocking_6.qb)"
+            ]
+         },
+         "model7": {
+            "models": [
+               "file(stocking_7.qb)"
+            ]
          }
       },
       "mob": {
@@ -44,6 +79,9 @@
             "frostfeast",
             "stockpile_decoration"
          ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
       }
    }
 }

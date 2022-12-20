@@ -20,6 +20,36 @@
                   ]
                }
             ]
+         },
+         "model1": {
+            "models": [
+               "file(oinker.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(oinker_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(oinker_3.qb)"
+            ]
+         },
+         "model4": {
+            "models": [
+               "file(oinker_4.qb)"
+            ]
+         },
+         "model5": {
+            "models": [
+               "file(oinker_5.qb)"
+            ]
+         },
+         "model6": {
+            "models": [
+               "file(oinker_6.qb)"
+            ]
          }
       },
       "stonehearth:renewable_resource_node": {
@@ -259,6 +289,9 @@
          "display_name": "i18n(stonehearth_ace:entities.critters.oinker.display_name)",
          "description": "i18n(stonehearth_ace:entities.critters.oinker.description)",
          "icon": "file(oinker.png)"
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
       }
    }
 }

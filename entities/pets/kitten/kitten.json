@@ -1,10 +1,32 @@
 {
    "components": {
+      "model_variants": {
+         "model1": {
+            "models": [
+               "file(kitten.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(kitten_black.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(kitten_tabby.qb)"
+            ]
+         }
+      },
 		"stonehearth:attributes": {
          "max_health": {
             "type": "basic",
             "value": 40
          }
       }
-	}
+	},
+   "entity_data": {
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
+      }
+   }
 }

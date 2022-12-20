@@ -16,6 +16,16 @@
                   ]
                }
             ]
+         },
+         "model1": {
+            "models": [
+               "file(wild_moomoo.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(wild_moomoo_2.qb)"
+            ]
          }
       },
       "stonehearth:renewable_resource_node": {
@@ -171,6 +181,9 @@
          "display_name": "i18n(stonehearth_ace:entities.critters.wild_moomoo.display_name)",
          "description": "i18n(stonehearth_ace:entities.critters.wild_moomoo.description)",
          "icon": "file(wild_moomoo.png)"
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
       }
    }
 }

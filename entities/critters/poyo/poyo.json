@@ -1,5 +1,22 @@
 {
    "components": {
+      "model_variants": {
+         "model1": {
+            "models": [
+               "file(poyo.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(poyo_red.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(poyo_brown.qb)"
+            ]
+         }
+      },
 		"stonehearth:loot_drops": {
          "force_auto_loot": false
       },
@@ -95,6 +112,9 @@
       "stonehearth:calories": {
          "breakfast_hour": 6,
          "dinner_hour": 19
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
       }
    }
 }

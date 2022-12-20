@@ -20,6 +20,31 @@
                   ]
                }
             ]
+         },
+         "model1": {
+            "models": [
+               "file(duck_wild.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(duck_wild.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(duck_wild.qb)"
+            ]
+         },
+         "model4": {
+            "models": [
+               "file(duck_wild_drake.qb)"
+            ]
+         },
+         "model5": {
+            "models": [
+               "file(duck_wild_drake.qb)"
+            ]
          }
       },
       "stonehearth:attributes": {
@@ -108,6 +133,9 @@
       },
       "stonehearth:catalog": {
          "icon": "file(duck_wild.png)"
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
       }
    }
 }

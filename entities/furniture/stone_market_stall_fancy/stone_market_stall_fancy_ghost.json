@@ -5,6 +5,10 @@
    ],
    "components": {
       "render_info": {
+         "color_map": "stonehearth_ace:color_map:marble",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ],
          "animation_table": "/stonehearth_ace/data/rigs/entities/furniture/market_stall/market_stall_tier_3.json"
       },
       "effect_list": {
@@ -20,9 +24,116 @@
                {
                   "type": "one_of",
                   "items": [
-                     "file(stone_market_stall_fancy.qb)"
+                     "file(stone_market_stall_fancy.qb)",
+                     "file(stone_market_stall_fancy_2.qb)",
+                     "file(stone_market_stall_fancy_3.qb)",
+                     "file(stone_market_stall_fancy_4.qb)",
+                     "file(stone_market_stall_fancy_5.qb)",
+                     "file(stone_market_stall_fancy_6.qb)",
+                     "file(stone_market_stall_fancy_7.qb)",
+                     "file(stone_market_stall_fancy_8.qb)",
+                     "file(stone_market_stall_fancy_9.qb)",
+                     "file(stone_market_stall_fancy_10.qb)",
+                     "file(stone_market_stall_fancy_11.qb)",
+                     "file(stone_market_stall_fancy_12.qb)",
+                     "file(stone_market_stall_fancy_13.qb)",
+                     "file(stone_market_stall_fancy_14.qb)",
+                     "file(stone_market_stall_fancy_15.qb)",
+                     "file(stone_market_stall_fancy_16.qb)",
+                     "file(stone_market_stall_fancy_17.qb)",
+                     "file(stone_market_stall_fancy_18.qb)"
                   ]
                }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(stone_market_stall_fancy.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(stone_market_stall_fancy_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(stone_market_stall_fancy_3.qb)"
+            ]
+         },
+         "model4": {
+            "models": [
+               "file(stone_market_stall_fancy_4.qb)"
+            ]
+         },
+         "model5": {
+            "models": [
+               "file(stone_market_stall_fancy_5.qb)"
+            ]
+         },
+         "model6": {
+            "models": [
+               "file(stone_market_stall_fancy_6.qb)"
+            ]
+         },
+         "model7": {
+            "models": [
+               "file(stone_market_stall_fancy_7.qb)"
+            ]
+         },
+         "model8": {
+            "models": [
+               "file(stone_market_stall_fancy_8.qb)"
+            ]
+         },
+         "model9": {
+            "models": [
+               "file(stone_market_stall_fancy_9.qb)"
+            ]
+         },
+         "model10": {
+            "models": [
+               "file(stone_market_stall_fancy_10.qb)"
+            ]
+         },
+         "model11": {
+            "models": [
+               "file(stone_market_stall_fancy_11.qb)"
+            ]
+         },
+         "model12": {
+            "models": [
+               "file(stone_market_stall_fancy_12.qb)"
+            ]
+         },
+         "model13": {
+            "models": [
+               "file(stone_market_stall_fancy_13.qb)"
+            ]
+         },
+         "model14": {
+            "models": [
+               "file(stone_market_stall_fancy_14.qb)"
+            ]
+         },
+         "model15": {
+            "models": [
+               "file(stone_market_stall_fancy_15.qb)"
+            ]
+         },
+         "model16": {
+            "models": [
+               "file(stone_market_stall_fancy_16.qb)"
+            ]
+         },
+         "model17": {
+            "models": [
+               "file(stone_market_stall_fancy_17.qb)"
+            ]
+         },
+         "model18": {
+            "models": [
+               "file(stone_market_stall_fancy_18.qb)"
             ]
          }
       }
@@ -35,6 +146,9 @@
          "material_tags": [
             "stone"
          ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
       }
    }
 }

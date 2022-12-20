@@ -23,6 +23,31 @@
                   ]
                }
             ]
+         },
+         "model1": {
+            "models": [
+               "file(duck.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(duck.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(duck.qb)"
+            ]
+         },
+         "model4": {
+            "models": [
+               "file(duck.qb)"
+            ]
+         },
+         "model5": {
+            "models": [
+               "file(duck_drake.qb)"
+            ]
          }
       },
       "stonehearth:resource_node": {
@@ -257,6 +282,9 @@
          "description": "i18n(stonehearth_ace:entities.critters.duck.description)",
          "icon": "file(duck.png)",
          "category": "aquatic"
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
       }
    }
 }

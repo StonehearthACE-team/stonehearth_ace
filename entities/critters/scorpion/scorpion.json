@@ -17,6 +17,21 @@
                   ]
                }
             ]
+         },
+         "model1": {
+            "models": [
+               "file(scorpion.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(scorpion_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(scorpion_3.qb)"
+            ]
          }
       },
       "stonehearth:resource_node": {
@@ -144,6 +159,9 @@
             "shopkeeper_level": 2,
             "shopkeeper_type": "pet"
          }
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
       }
    }
 }

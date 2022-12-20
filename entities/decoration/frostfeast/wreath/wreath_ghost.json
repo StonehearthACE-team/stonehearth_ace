@@ -8,9 +8,6 @@
                   "type": "one_of",
                   "items": [
                      "file(wreath.qb)",
-                     "file(wreath.qb)",
-                     "file(wreath.qb)",
-                     "file(wreath_2.qb)",
                      "file(wreath_2.qb)",
                      "file(wreath_3.qb)",
                      "file(wreath_4.qb)"
@@ -20,14 +17,132 @@
                   "type": "one_of",
                   "items": [
                      "file(decorations_1.qb)",
-                     "file(decorations_1.qb)",
-                     "file(decorations_1.qb)",
                      "file(decorations_2.qb)",
                      "file(decorations_3.qb)",
                      "file(decorations_4.qb)",
                      "file(decorations_5.qb)"
                   ]
                }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(wreath.qb)",
+               "file(decorations_1.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(wreath.qb)",
+               "file(decorations_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(wreath.qb)",
+               "file(decorations_3.qb)"
+            ]
+         },
+         "model4": {
+            "models": [
+               "file(wreath.qb)",
+               "file(decorations_4.qb)"
+            ]
+         },
+         "model5": {
+            "models": [
+               "file(wreath.qb)",
+               "file(decorations_5.qb)"
+            ]
+         },
+         "model6": {
+            "models": [
+               "file(wreath_2.qb)",
+               "file(decorations_1.qb)"
+            ]
+         },
+         "model7": {
+            "models": [
+               "file(wreath_2.qb)",
+               "file(decorations_2.qb)"
+            ]
+         },
+         "model8": {
+            "models": [
+               "file(wreath_2.qb)",
+               "file(decorations_3.qb)"
+            ]
+         },
+         "model9": {
+            "models": [
+               "file(wreath_2.qb)",
+               "file(decorations_4.qb)"
+            ]
+         },
+         "model10": {
+            "models": [
+               "file(wreath_2.qb)",
+               "file(decorations_5.qb)"
+            ]
+         },
+         "model11": {
+            "models": [
+               "file(wreath_3.qb)",
+               "file(decorations_1.qb)"
+            ]
+         },
+         "model12": {
+            "models": [
+               "file(wreath_3.qb)",
+               "file(decorations_2.qb)"
+            ]
+         },
+         "model13": {
+            "models": [
+               "file(wreath_3.qb)",
+               "file(decorations_3.qb)"
+            ]
+         },
+         "model14": {
+            "models": [
+               "file(wreath_3.qb)",
+               "file(decorations_4.qb)"
+            ]
+         },
+         "model15": {
+            "models": [
+               "file(wreath_3.qb)",
+               "file(decorations_5.qb)"
+            ]
+         },
+         "model16": {
+            "models": [
+               "file(wreath_4.qb)",
+               "file(decorations_1.qb)"
+            ]
+         },
+         "model17": {
+            "models": [
+               "file(wreath_4.qb)",
+               "file(decorations_2.qb)"
+            ]
+         },
+         "model18": {
+            "models": [
+               "file(wreath_4.qb)",
+               "file(decorations_3.qb)"
+            ]
+         },
+         "model19": {
+            "models": [
+               "file(wreath_4.qb)",
+               "file(decorations_4.qb)"
+            ]
+         },
+         "model20": {
+            "models": [
+               "file(wreath_4.qb)",
+               "file(decorations_5.qb)"
             ]
          }
       },
@@ -55,6 +170,9 @@
             "frostfeast",
             "stockpile_decoration"
          ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
       }
    }
 }

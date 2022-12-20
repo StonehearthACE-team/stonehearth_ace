@@ -12,6 +12,16 @@
                   ]
                }
             ]
+         },
+         "model1": {
+            "models": [
+               "file(light_string_horizontal_short.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(light_string_horizontal_short_2.qb)"
+            ]
          }
       },
       "mob": {
@@ -39,6 +49,9 @@
             "frostfeast",
             "stockpile_decoration"
          ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
       }
    }
 }

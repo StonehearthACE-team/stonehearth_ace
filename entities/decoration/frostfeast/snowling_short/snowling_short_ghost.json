@@ -8,16 +8,37 @@
                   "type": "one_of",
                   "items": [
                      "file(snowling_short.qb)",
-                     "file(snowling_short.qb)",
-                     "file(snowling_short.qb)",
-                     "file(snowling_short.qb)",
-                     "file(snowling_short_2.qb)",
                      "file(snowling_short_2.qb)",
                      "file(snowling_short_3.qb)",
                      "file(snowling_short_4.qb)",
                      "file(snowling_short_5.qb)"
                   ]
                }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(snowling_short.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(snowling_short_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(snowling_short_3.qb)"
+            ]
+         },
+         "model4": {
+            "models": [
+               "file(snowling_short_4.qb)"
+            ]
+         },
+         "model5": {
+            "models": [
+               "file(snowling_short_5.qb)"
             ]
          }
       },
@@ -41,6 +62,9 @@
             "festival",
             "frostfeast"
          ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
       }
    }
 }

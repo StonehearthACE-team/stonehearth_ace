@@ -22,6 +22,21 @@
                   ]
                }
             ]
+         },
+         "model1": {
+            "models": [
+               "file(bitsy_spider.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(bitsy_spider_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(bitsy_spider_3.qb)"
+            ]
          }
       },
       "stonehearth:resource_node": {
@@ -149,6 +164,9 @@
             "shopkeeper_level": 2,
             "shopkeeper_type": "pet"
          }
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
       }
    }
 }

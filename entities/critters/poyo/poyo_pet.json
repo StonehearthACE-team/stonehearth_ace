@@ -1,0 +1,26 @@
+{
+   "components": {
+      "model_variants": {
+         "model1": {
+            "models": [
+               "file(poyo.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(poyo_red.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(poyo_brown.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
+      }
+   }
+}
