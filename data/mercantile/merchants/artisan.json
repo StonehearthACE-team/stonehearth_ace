@@ -153,6 +153,23 @@
             "wanted_items": []
          }
       },
+      "exclusive_makers": {
+         "category": "artisan",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "required_stall": "stonehearth_ace:furniture:market_stall:makers",
+         "weight": 3,
+         "cooldown": 4,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/makers_shop.json",
+         "shoptions": {
+            "wanted_items": []
+         }
+      },
       "persistence_weaver": {
          "category": "artisan",
          "population_role": "merchant",
@@ -168,24 +185,6 @@
          "shoptions": {
             "persistence_job": "stonehearth:jobs:weaver",
             "stall_model": "rugs_shop",
-            "wanted_items": []
-         }
-      },
-      "persistence_engineer": {
-         "category": "artisan",
-         "population_role": "merchant",
-         "use_shop_description": true,
-         "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_2_outfit",
-            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
-         ],
-         "min_city_tier": 2,
-         "weight": 1,
-         "cooldown": 7,
-         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/engineering_shop_2.json",
-         "shoptions": {
-            "persistence_job": "stonehearth:jobs:engineer",
-            "stall_model": "engineering_shop",
             "wanted_items": []
          }
       },

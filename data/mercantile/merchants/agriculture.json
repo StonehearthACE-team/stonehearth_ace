@@ -85,6 +85,23 @@
             "wanted_items": []
          }
       },
+      "exclusive_cheer": {
+         "category": "agriculture",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "required_stall": "stonehearth_ace:furniture:market_stall:cheer",
+         "weight": 3,
+         "cooldown": 4,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/cheer_shop.json",
+         "shoptions": {
+            "wanted_items": []
+         }
+      },
       "persistence_shepherd": {
          "category": "agriculture",
          "population_role": "merchant",

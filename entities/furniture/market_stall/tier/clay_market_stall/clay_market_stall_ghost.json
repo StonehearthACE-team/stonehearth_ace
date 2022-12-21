@@ -1,0 +1,75 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:market_stall:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(clay_market_stall.qb)",
+                     "file(clay_market_stall_2.qb)",
+                     "file(clay_market_stall_3.qb)",
+                     "file(clay_market_stall_4.qb)",
+                     "file(clay_market_stall_5.qb)",
+                     "file(clay_market_stall_6.qb)",
+                     "file(clay_market_stall_7.qb)"
+                  ]
+               }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(clay_market_stall.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(clay_market_stall_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(clay_market_stall_3.qb)"
+            ]
+         },
+         "model4": {
+            "models": [
+               "file(clay_market_stall_4.qb)"
+            ]
+         },
+         "model5": {
+            "models": [
+               "file(clay_market_stall_5.qb)"
+            ]
+         },
+         "model6": {
+            "models": [
+               "file(clay_market_stall_6.qb)"
+            ]
+         },
+         "model7": {
+            "models": [
+               "file(clay_market_stall_7.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.mercantile.clay_market_stall.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.mercantile.clay_market_stall.description)",
+         "icon": "file(clay_market_stall.png)",
+         "material_tags": [
+            "tier",
+            "clay"
+         ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
+      }
+   }
+}

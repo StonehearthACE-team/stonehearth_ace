@@ -307,8 +307,11 @@
                "21_residents_reward_b": {
                   "bulletin_title": "Amberstone Cook & Brewer recipes unlocked!"
                },
+               "21_residents_reward_c": {
+                  "bulletin_title": "The Mason can now craft a 'Clan Amberstone Market Stall'!"
+               },
                "21_residents_outro_a": {
-                  "dialogue": "\"What a nice home you've built for them! They will be here shortly, and I'm sure they'll be charmed! By the way, I'm certain they can teach you some of our delicious recipes as well...\""
+                  "dialogue": "\"What a nice home you've built for them! They will be here shortly, and I'm sure they'll be charmed! By the way, I'm certain they can teach you some of our delicious recipes as well...\"<p>They remember one last thing before they leave.<p>\"Oh, and now that some of our kin will be living over here, I feel like some of our merchants might risk going outside, if you let them know they are welcome!\""
                },
                "arcs": {
                   "trigger": {
@@ -415,7 +418,7 @@
             },
             "trader": {
                "arcs": {
-                  "encounters": {                  
+                  "encounters": {
                      "tier_1_shops": {
                         "rugs_shop_1": {
                            "shop_info": {
@@ -458,7 +461,7 @@
                               "name": "Jo Boxen's Container Barn",
                               "title": "Jo Boxen arrives with a basket of bins"
                            }
-                        }, 
+                        },
                         "door_shop_1": {
                            "shop_info": {
                               "name": "Edgar Planckton's Door Store",
@@ -594,7 +597,7 @@
                            }
                         }
                      },
-                     "tier_2_shops": {    
+                     "tier_2_shops": {
                         "farming_shop_2": {
                            "shop_info": {
                               "name": "Farmer Gem's Farm Supplies",
@@ -612,7 +615,7 @@
                               "name": "Jo Boxen's Container Barn",
                               "title": "Jo Boxen arrives with a box of crates"
                            }
-                        }, 
+                        },
                         "food_shop_2": {
                            "shop_info": {
                               "name": "Jordan Sugarcane's Breads and Soups",
@@ -624,7 +627,7 @@
                               "name": "Dinali's Little Menagerie",
                               "title": "An animal trainer is visiting with her menagerie"
                            }
-                        },             
+                        },
                         "stonecutter_shop_2": {
                            "shop_info": {
                               "name": "Rufus Garrow's Stonecutter Shop",
@@ -838,7 +841,7 @@
                               "name": "Ollin and Ruvel's Traveling Zoo",
                               "title": "A zoo caravan is offering exotic animals for sale"
                            }
-                        },   
+                        },
                         "woodcutter_shop_3": {
                            "shop_info": {
                               "name": "Norm Windriser's Woodcutter Shop",
@@ -985,6 +988,80 @@
                               "title": "A notorious traveling merchant is in town with some of their best deals on general goods"
                            }
                         }
+                     },
+                     "exclusive_shops": {
+                        "vitality_shop": {
+                           "shop_info": {
+                              "name": "The Herbalist's Guild",
+                              "title": "An exclusive envoy from the Herbalist's Guild is in town with herb seeds"
+                           }
+                        },
+                        "strength_shop": {
+                           "shop_info": {
+                              "name": "The Miner's Guild",
+                              "title": "An exclusive envoy from the Miner's Guild is in town with ores and fuels"
+                           }
+                        },
+                        "cunning_shop": {
+                           "shop_info": {
+                              "name": "The Royal Mint",
+                              "title": "An exclusive envoy from the Royal Mint is visiting for gold and currency exchange"
+                           }
+                        },
+                        "cheer_shop": {
+                           "shop_info": {
+                              "name": "The Farmer's Guild",
+                              "title": "An exclusive envoy from the Farmer's Guild is in town with crop seeds"
+                           }
+                        },
+                        "makers_shop": {
+                           "shop_info": {
+                              "name": "The Sculptor's Guild",
+                              "title": "An exclusive envoy from the Sculptor's Guild is in town with rare and collectible statues"
+                           }
+                        },
+                        "glory_shop": {
+                           "shop_info": {
+                              "name": "The Engineer's Guild",
+                              "title": "An exclusive envoy from the Engineer's Guild is in town with engineered goods"
+                           }
+                        },
+                        "iskender_caravan_1": {
+                           "shop_info": {
+                              "name": "The Iskender Caravan",
+                              "title": "The Iskender Trading Caravan returns with some wares!"
+                           }
+                        },
+                        "iskender_caravan_2": {
+                           "shop_info": {
+                              "name": "The Iskender Caravan",
+                              "title": "The Iskender Trading Caravan returns with even more things!"
+                           }
+                        },
+                        "iskender_caravan_3": {
+                           "shop_info": {
+                              "name": "The Iskender Caravan",
+                              "title": "The Iskender Trading Caravan returns with most of their goods!"
+                           }
+                        },
+                        "iskender_caravan_recurring": {
+                           "shop_info": {
+                              "name": "The Iskender Caravan",
+                              "title": "A friendly Iskender Trading Caravan is passing by and wants to trade"
+                           }
+                        },
+                        "amberstone_shop": {
+                           "shop_info": {
+                              "name": "Clan Amberstone's Wares",
+                              "title": "An exclusive merchant from Clan Amberstone is visiting with lapine goods"
+                           }
+                        },
+                        "silk_road_shop": {
+                           "shop_info": {
+                              "name": "Dom Vandon's Caravan",
+                              "title": "An exclusive Silk Road caravan is in town with exotic goods from the far east"
+                           }
+                        }
                      }
                   }
                },
@@ -1040,7 +1117,7 @@
                            "bulletin_title": "Dom Vandon's Caravan from the Far East",
                            "dialog_title": "Dom Vandon, Caravaneer",
                            "bulletin_message": {
-                              "00": "\"You help Dom Vandon now, providing some of the resources we need for the next journey... And in return Dom Vandon will give you something very special from one of his crates. Seeds for a shiny grass that will grow into delicious grain,<span class='major'>Rice.</span>\" He smiles, opening the big ledger skipping around some pages.<p>\"With these seeds and some knowledge that I can also provide, as a gesture of good faith, I'm certain that your people will be able to grow their own paddy fields!\"<p>He vigorously extends his hand.\"And, of course, Dom Vandon never forgets those that helped him! I might even bring something different in the future, yes? What say you,<i>amigo?</i>\""
+                              "00": "\"You help Dom Vandon now, providing some of the resources we need for the next journey... And in return Dom Vandon will give you something very special from one of his crates. Seeds for a shiny grass that will grow into delicious grain,<span class='major'>Rice.</span>\" He smiles, opening the big ledger skipping and around some pages.<p>\"With these seeds and some knowledge that I can also provide, as a gesture of good faith, I'm certain that your people will be able to grow their own paddy fields!\"<p>He vigorously extends his hand. \"And, of course, Dom Vandon never forgets those that helped him! I might even bring something different in the future, yes? What say you, <i>amigo?</i>\""
                            },
                            "choice_000": "We accept!",
                            "choice_001": "Nope, sorry! [Skip Quest]"
@@ -1092,7 +1169,7 @@
                            "bulletin_title": "Dom Vandon's Caravan from the Far East",
                            "dialog_title": "Dom Vandon, Caravaneer",
                            "bulletin_message": {
-                              "00": "\"You've proven yourself to be a reliable business partner!\" He smiles, checking something on his ledger once more. He then retrieves a fine quill and starts writing something and, without looking, he continues speaking. \"There are many journeys and caravans to take care of, Dom Vandon must never linger on the same place for too long! However, I'll definitely let my caravaneers know that this settlement can be trusted from now on! Which means that they might come looking for supplies or products that are very interesting for the eastern kingdoms...\"<p>He finishes writing, drops the quill and closes the ledger, finally looking back up. \"And in return they might bring more exotic goods!\""
+                              "00": "\"You've proven yourself to be a reliable business partner!\" He smiles, checking something on his ledger once more. He then retrieves a fine quill and starts writing something and, without looking, he continues speaking. \"There are many journeys and caravans to take care of, Dom Vandon must never linger on the same place for too long! However, he'll definitely let his caravaneers know that this settlement can be trusted from now on! Which means that they might come looking for supplies or products that are very interesting for the eastern kingdoms...\"<p>He finishes writing, drops the quill and closes the ledger, finally looking back up. \"And in return they might bring more exotic goods!\""
                            },
                            "choice_000": "More?"
                         },
@@ -1100,7 +1177,7 @@
                            "bulletin_title": "Dom Vandon's Caravan from the Far East",
                            "dialog_title": "Dom Vandon, Caravaneer",
                            "bulletin_message": {
-                              "00": "\"Yes! <span class='major'>Tea, coffee,</span> <span class='minor'>intricate crafts like decorations, building parts...</span>\" He raises his brows. \"Even <span class='major'>weapons and armor</span>, they have very unique equipment that will surely be useful to your people, my<i> amigo!</i>\"<p>He gestures down, displaying his own fine-looking and exotic garments.<p>\"Well, it has been a pleasure but the road awaits! Remember, <span class='minor'>help my caravans as much as you can and Dom Vandon promises that it will be worth your time!</span> Never a bad deal with this <i>grande mercador!</i>\"<p>He smiles before pacing away. \"Good bye and until our next meeting!\""
+                              "00": "\"Yes! <span class='major'>Tea, coffee,</span> <span class='minor'>intricate crafts like decorations, building parts...</span>\" He raises his brows. \"Even <span class='major'>weapons and armor</span>, they have very unique equipment that will surely be useful to your people, my<i> amigo!</i>\"<p>He gestures down, displaying his own fine-looking and exotic garments.<p>\"Well, it has been a pleasure but the road awaits! Remember, <span class='minor'>help the caravans as much as you can and Dom Vandon promises that it will be worth your time!</span> Never a bad deal with this <i>grande mercador!</i>\"<p>He smiles before pacing away. \"Good bye and until the next meeting!\""
                            },
                            "choice_000": "We'll be waiting!"
                         }
@@ -1136,6 +1213,46 @@
                }
             },
             "town_progression": {
+               "ace_vitality_unlock": {
+                  "recipe_unlock": "The Carpenter can now craft a 'Herbalist's Guild Market Stand'!"
+               },
+               "ace_strength_unlock": {
+                  "recipe_unlock": "The Mason can now craft a 'Miner's Guild Market Stand'!"
+               },
+               "ace_cunning_unlock": {
+                  "recipe_unlock": "The Potter can now craft a 'Gold Trader Market Stand'!"
+               },
+               "ace_cheer_unlock": {
+                  "recipe_unlock": "The Carpenter can now craft a 'Farmer's Guild Market Stall'!"
+               },
+               "ace_makers_unlock": {
+                  "recipe_unlock": "The Mason can now craft a 'Sculptor's Guild Market Stall'!"
+               },
+               "ace_glory_unlock": {
+                  "recipe_unlock": "The Blacksmith can now craft a 'Engineer's Guild Market Stall'!"
+               },
+               "hearth_choice": {
+                  "glory": {
+                     "description": "<i>Proof that you have military strength, and that you're prepared to keep it on its feet.</i><ul><li>Allows summoning increasingly difficult enemies to prove your mettle</li><li>Each rank defeated will boost Daily Update net worth</li><li>Exclusive Merchant: Disposable Traps & Turrets Trader</li></ul>"
+                  },
+                  "makers": {
+                     "description": "<i>Proof that gold has been flowing through your settlement, and that you have fine crafters.</i><ul><li>Generates 5% daily interest on any Gold Coins you have on hand (up to 300 per day)</li><li>Boosts your Daily Update net worth based on Gold Coins on hand</li><li>Exclusive Merchant: Rare & Collectible Statues Trader</li></ul>"
+                  },
+                  "cheer": {
+                     "description": "<i>Proof that you have happy, well-fed citizens, and nice places for them to live.</i><ul><li>Boosts Daily Update net worth based on the overall Morale of your citizens</li><li>Each day brings a new random buff for your townsfolk.</li><li>Exclusive Merchant: Crop Seed Boxes Trader</li></ul>"
+                  }
+               },
+               "banner_choice": {
+                  "cunning": {
+                     "description": "<i>This settlement will be a bustling hub of trade.</i><ul><li>Roads give 3x their normal speed boost</li><li>Your items sell for 50% more</li><li>Traders will bring 2x the goods and Gold</li><li>Exclusive Merchant: Gold & Trophies Trader</li></ul>"                    
+                  },
+                  "strength": {
+                     "description": "<i>This settlement will grow strong through earth and steel.</i><ul><li>Mining gives 50% more Ore, Stone, and Clay</li><li>Hearthlings no longer mind cramped spaces</li><li>Exclusive Merchant: Ore & Fuel Trader</li></ul>"
+                  },
+                  "vitality": {
+                     "description": "<i>This settlement shall be at one with the environment.</i><ul><li>Trees produce 25% more Wood</li><li>Plants and Crops both grow 25% faster</li><li>Plants have 2x their normal Appeal</li><li>Exclusive Merchant: Herb Seed Bags Trader</li></ul>"
+                  }
+               },
                "ace_unlock_shrine_recipes": {
                   "bulletin_title": "The Cook can now prepare Donation Boxes!"
                },
@@ -2828,7 +2945,7 @@
                   },
                   "sunny_chilly_positive": {
                      "display_name": "Sunshine and fresh air!",
-                     "tooltip": "Ah! What a wonderful feeling, there is nothing like the bright sun on a nice winter's day."
+                     "tooltip": "Ah! What a wonderful feeling, there is nothing like the bright sun on a nice and chilly day."
                   },
                   "sunny_chilly_negative": {
                      "display_name": "My sunshine was spoiled!",
@@ -7514,6 +7631,16 @@
                "description": "Wounded or incapacitated hearthlings will prefer this bed, which can be placed closer to their medications and recovers them slightly faster.",
                "flavor": "Herbalist beds can't be personally owned"
             },
+            "cunning_market_stall_recipe": {
+               "recipe_name": "Gold Trader Market Stand",
+               "description": "This exclusive market stand will allow your town to be visited by a special merchant providing gold resources and lots of money!",
+               "flavor": "Unlocked by the 'Banner of Cunning' Town Bonus"
+            },
+            "silk_road_market_stall_recipe": {
+               "recipe_name": "Caravanserai",
+               "description": "This exclusive market booth will allow your town to be visited by Dom Vandon's caravan with far eastern goods, decorations and equipment!",
+               "flavor": "Unlocked by the 'Dom Vandon' questline"
+            },
             "golden_clay_wall_planter_recipe": {
                "recipe_name": "Window Planter with Oleanders",
                "description": "A decorative planter to be placed under window frames. Comes with Oleanders but a different herb can be chosen and planted by the Herbalist."
@@ -7521,6 +7648,12 @@
             "potted_cactus_recipe": {
                "recipe_name": "Window Planter with Cacti",
                "description": "A decorative planter to be placed under window frames. Comes with Cacti but a different herb can be chosen and planted by the Herbalist."
+            },
+            "clay_bricks_recipe": {
+               "flavor": "Mud bricks will dry and harden into reliable abodes"
+            },
+            "unfired_clay_vase_recipe": {
+               "recipe_name": "Rough Clay Vase"
             },
             "frostfeast": {
                "present_small_recipe": {
@@ -7573,12 +7706,6 @@
                   "description": "A short string holding a bunch of tiny glass globes filled with magic light!",
                   "flavor": "Can't be turned off"
                }
-            },
-            "clay_bricks_recipe": {
-               "flavor": "Mud bricks will dry and harden into reliable abodes"
-            },
-            "unfired_clay_vase_recipe": {
-               "recipe_name": "Rough Clay Vase"
             }
          },
          "potter_description": {
@@ -7716,6 +7843,21 @@
                "recipe_name": "Marble Market Booth",
                "description": "This market stall can be used by all merchants and is needed by the wealthiest ones.",
                "flavor": "All the lonely merchants... where do they all come from?"
+            },
+            "strength_market_stall_recipe": {
+               "recipe_name": "Miner's Guild Market Stand",
+               "description": "This exclusive market stand will allow your town to be visited by a special merchant providing ores and fuel!",
+               "flavor": "Unlocked by the 'Banner of Strength' Town Bonus"
+            },
+            "makers_market_stall_recipe": {
+               "recipe_name": "Sculptor's Guild Market Stall",
+               "description": "This exclusive market stall will allow your town to be visited by a special merchant providing rare and collectible statues!",
+               "flavor": "Unlocked by the 'Hearth of the Makers' Town Bonus"
+            },
+            "amberstone_market_stall_recipe": {
+               "recipe_name": "Clan Amberstone Market Stall",
+               "description": "This exclusive market stall will allow your town to be visited by a Clan Amberstone merchant with many unique lapine goods and decorations!",
+               "flavor": "Unlocked by the 'Clan Amberstone' questline"
             },
             "stone_safety_standard_recipe": {
                "recipe_name": "Stone Safety Standard",
@@ -8254,6 +8396,12 @@
          "recipes": {
             "utility_name": "Utility",
             "civillian_tools_name": "Improved Tools",
+            "storage_name": "Storage & Utility",
+            "glory_market_stall_recipe": {
+               "recipe_name": "Engineer's Guild Market Stall",
+               "description": "This exclusive market stall will allow your town to be visited by a special merchant providing unique (but disposable) turrets and traps that can be used without an engineer!",
+               "flavor": "Unlocked by the 'Hearth of Glory' Town Bonus"
+            },
             "fuel_holder_small_recipe": {
                "recipe_name": "Cast Iron Holder",
                "description": "Craft a fancy holder that can store up to 4 Bundles O' Firewood.",
@@ -9703,6 +9851,16 @@
                "recipe_name": "Ornate Market Booth",
                "description": "This market stall can be used by all merchants and is needed by the wealthiest ones.",
                "flavor": ""
+            },
+            "vitality_market_stall_recipe": {
+               "recipe_name": "Herbalist's Guild Market Stand",
+               "description": "This exclusive market stand will allow your town to be visited by a special merchant providing herb seeds that can be learned!",
+               "flavor": "Unlocked by the 'Banner of Vitality' Town Bonus"
+            },
+            "cheer_market_stall_recipe": {
+               "recipe_name": "Farmer's Guild Market Stall",
+               "description": "This exclusive market stall will allow your town to be visited by a special merchant providing crop seeds that can be learned!",
+               "flavor": "Unlocked by the 'Hearth of Cheer' Town Bonus"
             },
             "comfy_bed_herbalist_recipe": {
                "recipe_name": "Herbalist Comfy Bed",
@@ -14366,6 +14524,38 @@
             "stone_market_stall_fancy": {
                "display_name": "Marble Market Booth",
                "description": "A fancy shop for the best merchants to set up their stores when visiting."
+            },
+            "amberstone_market_stall": {
+               "display_name": "Clan Amberstone Market Stall",
+               "description": "A customized stall for attracting an exclusive Clan Amberstone trader!"
+            },
+            "cheer_market_stall": {
+               "display_name": "Farmer's Guild Market Stall",
+               "description": "A customized stall for attracting an exclusive crop seed merchant!"
+            },
+            "silk_road_market_stall": {
+               "display_name": "Caravanserai",
+               "description": "A customized booth for attracting an exclusive caravaneer from the far east!"
+            },
+            "makers_market_stall": {
+               "display_name": "Sculptor's Guild Market Stall",
+               "description": "A customized stall for attracting an exclusive and rare statues merchant!"
+            },
+            "glory_market_stall": {
+               "display_name": "Engineer's Guild Market Stall",
+               "description": "A customized stall for attracting an exclusive traps & turrets merchant!"
+            },
+            "cunning_market_stall": {
+               "display_name": "Gold Trader Market Stand",
+               "description": "A customized stand for attracting an exclusive merchant from a coin mint!"
+            },
+            "strength_market_stall": {
+               "display_name": "Miner's Guild Market Stand",
+               "description": "A customized stand for attracting an exclusive merchant with ore and fuels!"
+            },
+            "vitality_market_stall": {
+               "display_name": "Herbalist's Guild Market Stand",
+               "description": "A customized stand for attracting an exclusive herb seed merchant!"
             }
          },
          "patrol_point": {
@@ -16325,10 +16515,6 @@
          "moka_coffee_pot": {
             "display_name": "Moka Coffee Pot",
             "description": "A unique and special pot for extracting the boldest flavors from the roast."
-         },
-         "market_stall_farmer": {
-            "display_name": "Farmer's Market Stall",
-            "description": "Unlocks the town ability to attract farming merchants. Can call upon seed merchants."
          },
          "dragon_shrine": {
             "display_name": "Shrine of Dragon Friendship",
@@ -19487,6 +19673,9 @@
          }
       },
       "containers": {
+         "vault": {
+            "display_name": "Vault"
+         },
          "thatch_pile": {
             "display_name": "Large Dry Grass Bundle",
             "description": "Harvest for bales of dry grass.",

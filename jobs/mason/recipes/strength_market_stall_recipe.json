@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 15,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.strength_market_stall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.strength_market_stall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.strength_market_stall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/market_stall/exclusive/strength_market_stall/strength_market_stall.png",
+   "workshop": "stonehearth:mason:workbench",
+   "level_requirement": 2,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 5
+      },
+      {
+         "material": "wood resource",
+         "count": 1
+      },
+      {
+         "material": "fiber resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:market_stall:strength"
+      }
+   ]
+}

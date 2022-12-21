@@ -8,7 +8,7 @@
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
          ],
-         "min_city_tier": 1,
+         "min_city_tier": 2,
          "weight": 3,
          "cooldown": 4,
          "only_kingdom": {
@@ -28,12 +28,13 @@
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
          ],
-         "min_city_tier": 2,
+         "min_city_tier": 1,
          "weight": 3,
          "cooldown": 4,
          "only_kingdom": {
             "rayyas_children:kingdoms:rayyas_children": true
          },
+         "event_only": true,
          "shop": "/rayyas_children/data/gm/campaigns/trader/arcs/encounters/iskender_caravan_1.json",
          "shoptions": {
             "stall_model": "iskender_caravan",
@@ -48,12 +49,13 @@
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
          ],
-         "min_city_tier": 2,
+         "min_city_tier": 1,
          "weight": 3,
          "cooldown": 4,
          "only_kingdom": {
             "rayyas_children:kingdoms:rayyas_children": true
          },
+         "event_only": true,
          "shop": "/rayyas_children/data/gm/campaigns/trader/arcs/encounters/iskender_caravan_2.json",
          "shoptions": {
             "stall_model": "iskender_caravan",
@@ -68,12 +70,13 @@
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
          ],
-         "min_city_tier": 3,
+         "min_city_tier": 1,
          "weight": 3,
          "cooldown": 4,
          "only_kingdom": {
             "rayyas_children:kingdoms:rayyas_children": true
          },
+         "event_only": true,
          "shop": "/rayyas_children/data/gm/campaigns/trader/arcs/encounters/iskender_caravan_3.json",
          "shoptions": {
             "stall_model": "iskender_caravan",
@@ -85,16 +88,32 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+         ],
+         "min_city_tier": 2,
+         "required_stall": "stonehearth_ace:furniture:market_stall:amberstone",
+         "weight": 3,
+         "cooldown": 4,
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/amberstone_shop.json",
+         "shoptions": {
+            "wanted_items": []
+         }
+      },
+      "exclusive_silk_road": {
+         "category": "exotic_goods",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
             "stonehearth_ace:outfits:merchant:tier_3_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
          ],
-         "min_city_tier": 2,
-         "required_stall": "stonehearth_ace:furniture:amberstone_market_stall",
+         "min_city_tier": 1,
+         "required_stall": "stonehearth_ace:furniture:market_stall:silk_road",
          "weight": 3,
          "cooldown": 4,
-         "shop": "/rayyas_children/data/gm/campaigns/trader/arcs/encounters/iskender_caravan_2.json",
+         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/silk_road_shop.json",
          "shoptions": {
-            "stall_model": "iskender_caravan",
             "wanted_items": []
          }
       }

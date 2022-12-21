@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 15,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.glory_market_stall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.glory_market_stall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.glory_market_stall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/market_stall/exclusive/glory_market_stall/glory_market_stall.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 4
+      },
+      {
+         "material": "ingot hard_metal",
+         "count": 2
+      },
+      {
+         "material": "ingot soft_metal",
+         "count": 1
+      },
+      {
+         "material": "cloth resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:market_stall:glory"
+      }
+   ]
+}

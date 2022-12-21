@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 75,
+   "work_units": 15,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.silk_road_market_stall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.silk_road_market_stall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.silk_road_market_stall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/market_stall/exclusive/silk_road_market_stall/silk_road_market_stall.png",
+   "workshop": "stonehearth:potter:kiln",
+   "level_requirement": 6,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:molded_clay",
+         "count": 8
+      },
+      {
+         "material": "clay_brick resource",
+         "count": 12
+      },
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "material": "cloth resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:market_stall:silk_road"
+      }
+   ]
+}

@@ -1,0 +1,26 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:market_stall:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(strength_market_stall.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.mercantile.strength_market_stall.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.mercantile.strength_market_stall.description)",
+         "icon": "file(strength_market_stall.png)",
+         "material_tags": [
+            "exclusive",
+            "stone"
+         ]
+      }
+   }
+}

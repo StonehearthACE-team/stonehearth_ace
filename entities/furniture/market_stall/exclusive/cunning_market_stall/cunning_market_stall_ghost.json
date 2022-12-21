@@ -1,0 +1,26 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:market_stall:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cunning_market_stall.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.mercantile.cunning_market_stall.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.mercantile.cunning_market_stall.description)",
+         "icon": "file(cunning_market_stall.png)",
+         "material_tags": [
+            "exclusive",
+            "clay"
+         ]
+      }
+   }
+}

@@ -1,0 +1,28 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:market_stall:tier_2",
+      "file(amberstone_market_stall_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(amberstone_market_stall_iconic.json)",
+         "ghost_form": "file(amberstone_market_stall_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:market_stall": {
+         "mixintypes": {
+            "tier": "remove"
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 70,
+         "rarity": "rare"
+      },
+      "stonehearth:appeal": {
+         "appeal": 18
+      }
+   }
+}

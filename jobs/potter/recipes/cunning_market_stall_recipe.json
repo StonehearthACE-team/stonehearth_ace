@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 15,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.cunning_market_stall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.cunning_market_stall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.cunning_market_stall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/market_stall/exclusive/cunning_market_stall/cunning_market_stall.png",
+   "workshop": "stonehearth:potter:kiln",
+   "level_requirement": 2,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:molded_clay",
+         "count": 6
+      },
+      {
+         "material": "wood resource",
+         "count": 1
+      },
+      {
+         "material": "fiber resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:market_stall:cunning"
+      }
+   ]
+}

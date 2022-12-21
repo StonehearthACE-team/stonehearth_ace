@@ -33,9 +33,16 @@
 			}
 		},
 		"storage" : {
+			"name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.storage_name)",
 			"recipes" : {
+				"mixintypes": {
+					"vault": "remove"
+				},
 				"fuel_holder_small" : {
 					"recipe" : "file(fuel_holder_small_recipe.json)"
+				},
+				"glory_market_stall" : {
+					"recipe" : "file(glory_market_stall_recipe.json)"
 				}
 			}
 		},

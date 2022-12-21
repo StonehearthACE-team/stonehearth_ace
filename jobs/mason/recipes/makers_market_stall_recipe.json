@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 15,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.makers_market_stall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.makers_market_stall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.makers_market_stall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/market_stall/exclusive/makers_market_stall/makers_market_stall.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 8
+      },
+      {
+         "material": "pelt resource",
+         "count": 4
+      },
+      {
+         "material": "cloth resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:market_stall:makers"
+      }
+   ]
+}
