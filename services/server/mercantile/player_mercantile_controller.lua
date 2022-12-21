@@ -435,7 +435,7 @@ function PlayerMercantile:_get_merchants_to_spawn(num_merchants)
             exclusives:remove(merchant)
             -- make sure we still have a stall that can support this merchant
             local uri = merchant.required_stall
-            if stalls[uri] > (used_stalls[uri] or 0) then
+            if (stalls[uri] or 0) > (used_stalls[uri] or 0) then
                merchants[merchant] = true
                num_merchants = num_merchants - 1
                used_stalls[uri] = (used_stalls[uri] or 0) + 1

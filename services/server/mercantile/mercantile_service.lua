@@ -237,16 +237,18 @@ function MercantileService:_load_merchant_data(biome_uri)
                copied_merchant_data.min_stall_tier = merchant_data.min_stall_tier or merchant_data.min_city_tier
                copied_merchant_data.weight = merchant_data.weight or 1
                
-               if merchant_data.required_stall then
-                  copied_merchant_data.is_exclusive = true
-                  exclusive_merchants[key] = copied_merchant_data
-               else
-                  local category_data = category_merchants[category]
-                  if not category_data then
-                     category_data = {}
-                     category_merchants[category] = category_data
+               if not merchant_data.event_only then
+                  if merchant_data.required_stall then
+                     copied_merchant_data.is_exclusive = true
+                     exclusive_merchants[key] = copied_merchant_data
+                  else
+                     local category_data = category_merchants[category]
+                     if not category_data then
+                        category_data = {}
+                        category_merchants[category] = category_data
+                     end
+                     category_data[key] = copied_merchant_data
                   end
-                  category_data[key] = copied_merchant_data
                end
 
                all_merchants[key] = copied_merchant_data
