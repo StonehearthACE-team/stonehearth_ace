@@ -436,7 +436,7 @@ function PlayerMercantile:_get_merchants_to_spawn(num_merchants)
             -- make sure we still have a stall that can support this merchant
             local uri = merchant.required_stall
             if (stalls[uri] or 0) > (used_stalls[uri] or 0) then
-               merchants[merchant] = true
+               merchants[merchant.key] = true
                num_merchants = num_merchants - 1
                used_stalls[uri] = (used_stalls[uri] or 0) + 1
             end
@@ -510,7 +510,8 @@ function PlayerMercantile:_get_available_exclusive_merchants(cur_weather_uri, st
       if self._sv.exclusive_preferences[merchant] ~= false and merchant_data.min_city_tier >= city_tier and stall_uris[merchant_data.required_stall] then
          -- if this merchant's visit isn't forbidden by a cooldown, the kingdom, or the current weather, add them to the list
          if self:_merchant_allowed(merchant_data, cur_weather_uri) then
-            merchants:add(merchant, merchant_data.weight)
+            -- have to add the data because we need to check stall uri for quantity available
+            merchants:add(merchant_data, merchant_data.weight)
          end
       end
    end
