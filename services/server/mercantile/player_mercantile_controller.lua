@@ -555,7 +555,9 @@ function PlayerMercantile:_merchant_allowed(merchant_data, cur_weather_uri)
       return false
    end
 
-   if cur_weather_uri and merchant_data.forbidden_weather and merchant_data.forbidden_weather[cur_weather_uri] then
+   if cur_weather_uri and ((merchant_data.forbidden_weather and merchant_data.forbidden_weather[cur_weather_uri]) or
+         (merchant_data.only_weather and not merchant_data.only_weather[cur_weather_uri]) or
+         (not merchant_data.ignore_default_weather and mercantile_constants.DEFAULT_BAD_WEATHER[cur_weather_uri])) then
       return false
    end
 
