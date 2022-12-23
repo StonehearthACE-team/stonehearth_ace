@@ -1155,6 +1155,32 @@
          "weather_types": {
             "COLD": "cold_weather",
             "HOT": "hot_weather"
+         },
+         "DYNAMIC_WEATHER": {
+            "stonehearth:weather:cloudy": {
+               "change_to": "stonehearth:weather:rain",
+               "chance": 0.2            
+            },
+            "stonehearth_ace:weather:cloudy:chilly": {
+               "change_to": "stonehearth_ace:weather:rain:chilly",
+               "chance": 0.15           
+            },
+            "stonehearth_ace:weather:cloudy:cold": {
+               "change_to": "stonehearth:subjects:weather:snow",
+               "chance": 0.15           
+            },
+            "stonehearth_ace:weather:distant_storm": {
+               "change_to": "stonehearth:weather:thunderstorm",
+               "chance": 0.1           
+            },
+            "stonehearth:subjects:weather:rain_sunny": {
+               "change_to": "stonehearth:weather:sunny",
+               "chance": 0.3            
+            },
+            "stonehearth:subjects:weather:snow_sunny": {
+               "change_to": "stonehearth_ace:weather:sunny:chilly",
+               "chance": 0.3           
+            }
          }
       },
       "farming": {
