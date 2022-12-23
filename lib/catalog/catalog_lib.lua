@@ -188,6 +188,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
             if net_worth.shop_info.buyable then
                result.buyable = true
             end
+            result.specific_buyable = true
          end
       end
 

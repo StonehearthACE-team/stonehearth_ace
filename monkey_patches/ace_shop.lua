@@ -18,8 +18,8 @@ local function round_cost(value)
    return value
 end
 
-function AceShop:_get_item_quantity_to_add(uri, entity_description, inventory_spec)
-   if self:_item_matches_inventory_spec(inventory_spec, uri, entity_description) then
+function AceShop:_get_item_quantity_to_add(uri, entity_description, inventory_spec, is_material_sellable)
+   if self:_item_matches_inventory_spec(inventory_spec, uri, entity_description, is_material_sellable) then
       local min = inventory_spec.quantity.min
       local max = inventory_spec.quantity.max
 
@@ -41,6 +41,51 @@ function AceShop:_get_item_quantity_to_add(uri, entity_description, inventory_sp
    return nil
 end
 
+function AceShop:_item_matches_inventory_spec(inventory_spec, uri, entity_description, is_material_sellable)
+   -- check if entity matches shop rarity
+   local rarities = self._sv.rarity
+   if entity_description.rarity then
+      if not rarities[entity_description.rarity] then
+         return false
+      end
+   end
+
+   local matches = false
+   -- check if the entity in the list of items
+   if inventory_spec.items then
+      local entity_path = radiant.resources.convert_to_canonical_path(uri)
+      for _, sellable_uri in ipairs(inventory_spec.items) do
+         local item_path = radiant.resources.convert_to_canonical_path(sellable_uri)
+         if item_path == entity_path then
+            matches = true
+            break
+         end
+      end
+   end
+
+   if not matches then
+      -- check if the entity passes any filter
+      if is_material_sellable and inventory_spec.items_matching then
+         for key, filter in pairs(inventory_spec.items_matching) do
+            if stonehearth.shop:inventory_filter_fn(entity_description, filter) then
+               matches = true
+               break
+            end
+         end
+      end
+   end
+
+   if not matches then
+      return false
+   end
+
+   if entity_description.shopkeeper_level and entity_description.shopkeeper_level > self._sv.shopkeeper_level then
+      return false
+   end
+
+   return true
+end
+
 -- ACE: handle new "wanted_items", "persistence_data", "max_unique" quantity option, and rarity weights
 function AceShop:stock_shop()
    -- we've changed bought items to spawn directly to the player so we don't need the escrow; go ahead and destroy it
@@ -52,6 +97,7 @@ function AceShop:stock_shop()
    -- get a table of all the items which can appear in a shop
    local rarity_weights = mercantile_constants.RARITY_WEIGHTS
    local all_sellable_items = stonehearth.catalog:get_shop_buyable_items()
+   local all_specific_sellable_items = stonehearth.catalog:get_shop_specific_buyable_items()
 
    self._sv.shop_inventory = {}
    self._sv.wanted_items = {}
@@ -116,9 +162,9 @@ function AceShop:stock_shop()
    for _, inventory_spec in pairs(options.entries) do
       local entry_items = {}
 
-      for uri, _ in pairs(all_sellable_items) do
+      for uri, _ in pairs(all_specific_sellable_items) do
          local entity_description = stonehearth.catalog:get_catalog_data(uri)
-         local quantity = self:_get_item_quantity_to_add(uri, entity_description, inventory_spec)
+         local quantity = self:_get_item_quantity_to_add(uri, entity_description, inventory_spec, all_sellable_items[uri])
          if quantity then
             table.insert(entry_items, {
                uri = uri,
@@ -175,8 +221,7 @@ function AceShop:stock_shop()
             self:_add_item_to_inventory(uri, shop_item_description, cost, 1, quantity)
             
             local fine_chance = shop_item_data.shop_data.fine_item_chance or stonehearth.constants.shop.DEFAULT_FINE_ITEM_CHANCE
-            local quality_entity_data = radiant.entities.get_entity_data(uri , 'stonehearth:item_quality')
-            if quality_entity_data and quality_entity_data.variable_quality and fine_chance >= rng:get_real(0, 1) then
+            if fine_chance >= rng:get_real(0, 1) then
                self:_add_item_to_inventory(uri, shop_item_description, cost, 2, 1)
             end
          end
