@@ -290,7 +290,7 @@ function PlayerMercantile:_spawn_merchant(merchant)
       if cooldown then
          local cunning_bonus = town:get_town_bonus('stonehearth:town_bonus:cunning')
          if cunning_bonus then
-            cooldown = cunning_bonus:get_reduced_cooldown(cooldown)
+            cooldown = math.ceil(cunning_bonus:apply_merchant_cooldown_bonus(cooldown))
          end
          if cooldown > 0 then
             self._sv.cooldowns[merchant_data.key] = cooldown
