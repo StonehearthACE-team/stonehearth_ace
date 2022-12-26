@@ -15,6 +15,17 @@
          "shoptions": {
             "stall_model": "container_shop",
             "wanted_items": []
+         },
+         "forbidden_weather": {
+            "stonehearth_ace:weather:rain:chilly": true,
+            "stonehearth_ace:weather:sandy:drifts": true,
+            "stonehearth_ace:weather:snow:drifts": true,
+            "stonehearth_ace:weather:snow:early": true,
+            "stonehearth_ace:weather:snow:late": true,
+            "stonehearth:weather:rain": true,
+            "stonehearth:weather:rain:sunny": true,
+            "stonehearth:weather:snow": true,
+            "stonehearth:weather:snow:sunny": true
          }
       },
       "container_shop_2": {
@@ -66,6 +77,17 @@
          "shoptions": {
             "stall_model": "door_shop",
             "wanted_items": []
+         },
+         "forbidden_weather": {
+            "stonehearth_ace:weather:rain:chilly": true,
+            "stonehearth_ace:weather:sandy:drifts": true,
+            "stonehearth_ace:weather:snow:drifts": true,
+            "stonehearth_ace:weather:snow:early": true,
+            "stonehearth_ace:weather:snow:late": true,
+            "stonehearth:weather:rain": true,
+            "stonehearth:weather:rain:sunny": true,
+            "stonehearth:weather:snow": true,
+            "stonehearth:weather:snow:sunny": true
          }
       },
       "door_shop_2": {
@@ -117,6 +139,13 @@
          "shoptions": {
             "stall_model": "training_shop",
             "wanted_items": []
+         },
+         "forbidden_weather": {
+            "stonehearth_ace:weather:rain:chilly": true,
+            "stonehearth_ace:weather:sandy:drifts": true,
+            "stonehearth_ace:weather:snow:drifts": true,
+            "stonehearth:weather:rain": true,
+            "stonehearth:weather:snow": true
          }
       },
       "training_shop_2": {
@@ -168,6 +197,17 @@
          "shoptions": {
             "stall_model": "general_goods_shop",
             "wanted_items": []
+         },
+         "forbidden_weather": {
+            "stonehearth_ace:weather:rain:chilly": true,
+            "stonehearth_ace:weather:sandy:drifts": true,
+            "stonehearth_ace:weather:snow:drifts": true,
+            "stonehearth_ace:weather:snow:early": true,
+            "stonehearth_ace:weather:snow:late": true,
+            "stonehearth:weather:rain": true,
+            "stonehearth:weather:rain:sunny": true,
+            "stonehearth:weather:snow": true,
+            "stonehearth:weather:snow:sunny": true
          }
       },
       "general_goods_shop_2": {
@@ -215,10 +255,21 @@
          "min_city_tier": 1,
          "required_stall": "stonehearth_ace:furniture:market_stall:cunning",
          "weight": 3,
-         "cooldown": 4,
+         "cooldown": 0,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/cunning_shop.json",
          "shoptions": {
             "wanted_items": []
+         },
+         "forbidden_weather": {
+            "stonehearth_ace:weather:rain:chilly": true,
+            "stonehearth_ace:weather:sandy:drifts": true,
+            "stonehearth_ace:weather:snow:drifts": true,
+            "stonehearth_ace:weather:snow:early": true,
+            "stonehearth_ace:weather:snow:late": true,
+            "stonehearth:weather:rain": true,
+            "stonehearth:weather:rain:sunny": true,
+            "stonehearth:weather:snow": true,
+            "stonehearth:weather:snow:sunny": true
          }
       }
    }

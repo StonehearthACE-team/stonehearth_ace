@@ -1,0 +1,28 @@
+{
+   "mixins": "stonehearth_ace:mixins:destructable_siege_object:disposable",
+   "components": {
+      "stonehearth:attributes": {
+         "menace": {
+            "type": "basic",
+            "value": 15
+         }
+      },
+      "stonehearth:siege_weapon": {
+         "disposable": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:siege_turret"
+         ]
+      },
+      "stonehearth:item_placement_limit": {
+         "tag": "turret_disposable",
+         "default": 8
+      },
+      "stonehearth:killable": {
+         "killable_by_anyone": true
+      }
+   }
+}

@@ -7,25 +7,80 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.exclusive_shops.strength_shop.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 350,
-		   "overall_price_multiplier": 1.1,
+         "shopkeeper_gold": 210,
          "entries": [
             {
-               "items_matching": {
-                  "ore": {
-                     "category": [
-                        "resources"
-                     ],
-                     "material": [
-                        "ore"
-                     ]
-                  }
+               "items": [
+                  "stonehearth:resources:tin:ore",
+                  "stonehearth:resources:copper:ore"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 16
                },
+               "price_multiplier": 0.8,
+               "fine_item_chance": 0.15
+            },
+            {
+               "items": [
+                  "stonehearth:resources:iron:ore"
+               ],
+               "quantity": {
+                  "min": 4,
+                  "max": 12
+               },
+               "price_multiplier": 0.9,
+               "fine_item_chance": 0.1
+            },
+            {
+               "items": [
+                  "stonehearth:resources:gold:ore",
+                  "stonehearth:resources:silver:ore"
+               ],
                "quantity": {
                   "min": 0,
-                  "max": 6
-               }
-            }           
+                  "max": 3,
+                  "max_unique": 1
+               },
+               "price_multiplier": 1.2,
+               "fine_item_chance": 0.2
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:coal:chunk_of_brown_coal",
+                  "stonehearth_ace:resources:fuel:bit_of_peat",
+                  "stonehearth_ace:resources:fuel:bundle_of_firewood"
+               ],
+               "quantity": {
+                  "min": 5,
+                  "max": 15
+               },
+               "price_multiplier": 0.6,
+               "fine_item_chance": 0
+            },
+            {
+               "items": [
+                  "stonehearth:resources:coal:lump_of_coal",
+                  "stonehearth_ace:resources:coal:piece_of_charcoal"
+               ],
+               "quantity": {
+                  "min": 4,
+                  "max": 12
+               },
+               "price_multiplier": 1.5,
+               "fine_item_chance": 0.1
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:coal:hunk_of_hard_coal"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               },
+               "price_multiplier": 2,
+               "fine_item_chance": 0.3
+            }              
          ]
       }
    }

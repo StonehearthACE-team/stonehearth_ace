@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/construction/barricade/barricade.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/construction/barricade/effects/idle.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(barricade_short_spiky.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.barricade_short_spiky.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.barricade_short_spiky.description)",
+         "icon": "file(barricade_short_spiky.png)",
+         "category": "defense",
+         "material_tags": [
+            "wood",
+            "barricade_spiky",
+            "short",
+            "stockpile_defense",
+            "stockpile_construction"
+         ]
+      }
+   }
+}

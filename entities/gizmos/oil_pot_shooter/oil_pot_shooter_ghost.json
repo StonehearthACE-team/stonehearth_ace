@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.15,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/gizmos/oil_pot_shooter/oil_pot_shooter.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(oil_pot_shooter.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/gizmos/oil_pot_shooter/effects/ghost_idle.json"
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.oil_pot_shooter.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.oil_pot_shooter.description)",
+         "icon": "file(oil_pot_shooter.png)",
+         "category": "defense",
+         "material_tags": [
+            "wood",
+            "defense",
+            "disposable",
+            "stockpile_defense"
+         ]
+      }
+   }
+}

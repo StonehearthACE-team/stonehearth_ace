@@ -1,0 +1,24 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(water_lily_yellow_seeds.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.seeds.water_lily_yellow_seeds.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.seeds.water_lily_yellow_seeds.description)",
+         "icon": "file(water_lily_yellow_seeds.png)",
+         "category": "consumable"
+      }
+   }
+}

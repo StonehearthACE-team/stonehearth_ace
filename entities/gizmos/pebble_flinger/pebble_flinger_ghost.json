@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/gizmos/pebble_flinger/pebble_flinger.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(pebble_flinger.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/gizmos/pebble_flinger/effects/ghost_idle.json"
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0.6, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.pebble_flinger.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.pebble_flinger.description)",
+         "icon": "file(pebble_flinger.png)",
+         "category": "defense",
+         "material_tags": [
+            "wood",
+            "defense",
+            "disposable",
+            "stockpile_defense"
+         ]
+      }
+   }
+}

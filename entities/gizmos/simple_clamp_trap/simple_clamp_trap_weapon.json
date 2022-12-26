@@ -1,0 +1,30 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 150,
+         "reach": 1.5
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "close",
+            "effect": "close",
+            "active_frame": 10,
+            "cooldown": 300,
+            "priority": 0,
+            "inflictable_debuffs": {
+               "slow": {
+                  "uri": "stonehearth:buffs:snap_trap_1",
+                  "chance": 1
+               }
+            }
+         }
+      ]
+   }
+}

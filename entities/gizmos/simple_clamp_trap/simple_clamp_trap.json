@@ -1,0 +1,81 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(simple_clamp_trap_ghost.json)",
+      "stonehearth_ace:mixins:siege_trap:disposable"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(simple_clamp_trap_iconic.json)",
+         "ghost_form": "file(simple_clamp_trap_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:siege_weapon": {
+         "max_uses": 1
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:gizmos:simple_clamp_trap:weapon"
+         ]
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 5
+            }
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "log": {
+                     "uri": "stonehearth:resources:wood:oak_log"
+                  },
+                  "firewood": {
+                     "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood"
+                  },
+                  "fiber": {
+                     "uri": "stonehearth:resources:fiber:coarse_fiber_bundle"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 50,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -8
+      }
+   }
+}

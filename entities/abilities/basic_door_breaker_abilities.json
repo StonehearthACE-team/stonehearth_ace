@@ -1,0 +1,18 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "injected_ai": {
+            "actions": [
+               "stonehearth_ace:actions:siege:basic_run_to_siege_object",
+               "stonehearth_ace:actions:siege:basic_attack_siege_object"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:can_target": {
+         "siege": true
+      }
+   }
+}

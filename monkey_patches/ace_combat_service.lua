@@ -6,6 +6,21 @@ local AceCombatService = class()
 local get_player_id = radiant.entities.get_player_id
 
 local EXP_SPLIT_AMOUNT = 0.7  -- each entity involved will get 30% of the raw exp value; 70% will be divided out among them
+local BASIC_SIEGE_DAMAGE = 0.4  -- how much of their total damage (in %) will non siege-specific units perform against siege objects
+
+AceCombatService._ace_old__calculate_damage = CombatService._calculate_damage
+function AceCombatService:_calculate_damage(attacker, target, attack_info, base_damage_name)
+   local damage = self:_ace_old__calculate_damage(attacker, target, attack_info, base_damage_name)
+
+   if stonehearth.combat:is_killable_target_of_type(target, 'siege') then
+      local ec = attacker:get_component('stonehearth:equipment')
+      if ec and ec:has_item_type('stonehearth_ace:abilities:basic_door_breaker_abilities') then
+         damage = math.max(1, damage * BASIC_SIEGE_DAMAGE)
+      end
+   end
+
+   return damage
+end
 
 AceCombatService._ace_old_calculate_healing = CombatService.calculate_healing
 function AceCombatService:calculate_healing(healer, target, heal_info)

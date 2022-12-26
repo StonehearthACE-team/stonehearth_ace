@@ -1,0 +1,71 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(barricade_short_spiky_ghost.json)",
+      "stonehearth_ace:mixins:destructable_siege_object:disposable"
+   ],
+   "components": {
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 3, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(barricade_short_spiky_iconic.json)",
+         "ghost_form": "file(barricade_short_spiky_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 250
+         },
+         "menace": {
+            "type": "basic",
+            "value": 5
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
+               },
+               "items": {
+                  "log": {
+                     "uri": "stonehearth:resources:wood:oak_log"
+                  },
+                  "firewood": {
+                     "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood"
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:barricade_spiky": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:killable": {
+         "killable_by_anyone": true
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 20,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -12
+      }
+   }
+}

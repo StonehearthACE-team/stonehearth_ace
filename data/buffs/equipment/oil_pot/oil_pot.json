@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "invisible_to_player": true,
+   "script": "stonehearth:buff_scripts:aura",
+   "effect": "stonehearth_ace:effects:debuff_added:oil_pot_debuff",
+   "duration": "2m",
+   "script_info": {
+      "pulse": "1m",
+      "aura_buff": [
+         "stonehearth:buffs:archer:fire_arrow"
+      ],
+      "radius": 6,
+      "affect_self": true,
+      "target_type": "mob",
+      "sensor_name": "sight"
+   }
+}

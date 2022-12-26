@@ -1,0 +1,28 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(oil_pot.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0.2, "z": 0.05 }
+      },
+      "stonehearth:projectile": {},
+      "effect_list": {
+         "default": "stonehearth_ace:effects:oil_pot"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.oil_pot.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.oil_pot.description)"
+      }
+   }
+}

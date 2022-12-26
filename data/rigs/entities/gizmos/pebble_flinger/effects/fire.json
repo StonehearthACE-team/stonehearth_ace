@@ -1,0 +1,52 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "fire.json",
+         "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 50,
+         "min_distance": 15,
+         "falloff" : 5,
+         "volume": 30,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:turret_draw_01",
+               "stonehearth:sounds:turret_draw_02"          
+            ]
+         }
+      },
+      "sound_2": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 900,
+         "min_distance": 30,
+         "max_instances": 6,
+         "falloff" : 4.5,
+         "volume": 55,
+         "track" : "stonehearth:sounds:turret_fire"
+      },
+      "sound_3": {
+         "type": "sound_effect",
+         "start_time": 1000,
+         "min_distance": 15,
+         "falloff" : 5,
+         "volume": 30,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:turret_reload_01",
+               "stonehearth:sounds:turret_reload_02",   
+               "stonehearth:sounds:turret_reload_03"       
+            ]
+         }
+      }
+   }
+}
+
+

@@ -1,0 +1,31 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:portals:door_portcullis:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(wood_portcullis.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.wood_portcullis.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.wood_portcullis.description)",
+         "icon": "file(wood_portcullis.png)",
+         "category": "door",
+         "material_tags": [
+            "wood",
+            "portal",
+            "defense",
+            "door",
+            "stockpile_portal"
+         ]
+      }
+   }
+}

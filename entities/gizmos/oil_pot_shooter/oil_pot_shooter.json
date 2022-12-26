@@ -1,0 +1,96 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(oil_pot_shooter_ghost.json)",
+      "stonehearth_ace:mixins:siege_turret:disposable"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(oil_pot_shooter_iconic.json)",
+         "ghost_form": "file(oil_pot_shooter_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 3, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:siege_weapon": {
+         "max_uses": 4
+      },
+      "stonehearth:bone_transform": {
+         "bones": [
+            "body",
+            "leftwingSplitFront",
+            "leftwingSplitBack",
+            "rightwingSplitFront",
+            "rightwingSplitBack",
+            "block",
+            "turnip"
+         ]
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:gizmos:oil_pot_shooter:weapon"
+         ]
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 32
+            }
+         }
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/gizmos/oil_pot_shooter/effects/idle.json",
+         "initial_pose_animation": "idle.json"
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 2,
+                  "max": 4
+               },
+               "items": {
+                  "log": {
+                     "uri": "stonehearth:resources:wood:oak_log"
+                  },
+                  "firewood": {
+                     "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood"
+                  },
+                  "fiber": {
+                     "uri": "stonehearth:resources:fiber:coarse_fiber_bundle"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 80,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -6
+      }
+   }
+}

@@ -1,0 +1,14 @@
+{
+   "mixins": "stonehearth:mixins:destructable_object",
+   "components": {},
+   "entity_data": {
+      "stonehearth:killable": {
+         "killable_by_anyone": false,
+         "target_type": "siege"
+      },
+      "stonehearth:healable": {
+         "healable_by_anyone": false,
+         "target_type": "siege"
+      }
+   }
+}

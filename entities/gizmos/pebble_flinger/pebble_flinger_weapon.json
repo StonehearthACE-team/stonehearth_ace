@@ -1,0 +1,29 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 60,
+         "base_ranged_damage": 60,
+         "range": 16,
+         "projectile_speed": 18,
+         "projectile_uri": "stonehearth_ace:weapons:pebble",
+         "projectile_start_offset": { "x": 0, "y": 2.7, "z": 0 },
+         "projectile_end_offset": { "x": 0, "y": 1.5, "z": 0 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "fire_pebble",
+            "effect": "fire",
+            "active_frame": 25,
+            "cooldown": 180,
+            "priority": 0
+         }
+      ]
+   }
+}

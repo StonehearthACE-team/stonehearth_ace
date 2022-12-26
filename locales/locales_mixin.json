@@ -53,6 +53,16 @@
 		"gm": {
 			"campaigns": {
 				"town_progression": {
+					"encounters": {
+                  "banner_upgrade_cunning": {
+                     "achievements": {
+                        "001": "i18n(stonehearth_ace:data.gm.campaigns.town_progression.encounters.banner_upgrade_cunning.achievements.001)",
+                        "000": "i18n(stonehearth_ace:data.gm.campaigns.town_progression.encounters.banner_upgrade_cunning.achievements.000)",
+                        "002": "i18n(stonehearth_ace:data.gm.campaigns.town_progression.encounters.banner_upgrade_cunning.achievements.002)",
+                        "003": "i18n(stonehearth_ace:data.gm.campaigns.town_progression.encounters.banner_upgrade_cunning.achievements.003)"
+                     }
+                  }
+               },
 					"hearth_choice": {
                   "glory": {
                      "description": "i18n(stonehearth_ace:data.gm.campaigns.town_progression.hearth_choice.glory.description)"
@@ -162,9 +172,8 @@
 		"game": {
 			"unit_frame": {
 				"placement_tags": {
-					"training": "i18n(stonehearth_ace:entities.gizmos.dummy_training.dummy_training_ghost.training_limit_tag)",
-					"game_trap": "i18n(stonehearth_ace:entities.gizmos.animal_traps.game_trap_limit_tag)",
-					"fish_trap": "i18n(stonehearth_ace:entities.gizmos.animal_traps.fish_trap_limit_tag)"
+					"turret_disposable": "i18n(stonehearth_ace:ui.game.unit_frame.placement_tags.turret_disposable)",
+               "trap_disposable": "i18n(stonehearth_ace:ui.game.unit_frame.placement_tags.trap_disposable)"
 				}
 			},
 			"entities": {

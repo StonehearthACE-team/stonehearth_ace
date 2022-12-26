@@ -1,0 +1,32 @@
+{
+   "mixins": "stonehearth_ace:mixins:destructable_siege_object:disposable",
+   "components": {
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 80
+         },
+         "menace": {
+            "type": "basic",
+            "value": 15
+         }
+      },
+      "stonehearth:siege_weapon": {
+         "disposable": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:siege_trap"
+         ]
+      },
+      "stonehearth:item_placement_limit": {
+         "tag": "trap_disposable",
+         "default": 8
+      },
+      "stonehearth:killable": {
+         "killable_by_anyone": true
+      }
+   }
+}

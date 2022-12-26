@@ -4,5 +4,43 @@
       "out_edges": [
          "ace_cunning_unlock"
       ]
+   },
+   "town_upgrade_info": {
+      "conversation_subjects": [
+         "stonehearth_ace:furniture:market_stall:cunning",
+         "stonehearth:loot:gold"
+      ],
+      "dialog": {
+         "mixintypes": {
+            "achievements": "override"
+         },
+         "achievements": [
+            {
+               "id": "cunning_bonus_1",
+               "name": "i18n(stonehearth_ace:data.gm.campaigns.town_progression.encounters.banner_upgrade_cunning.achievements.000)",
+               "icon": "/stonehearth/ui/game/bulletin/bulletin_dialog/city_tier_success_dialog/images/ribbon_1.png",
+               "track": "stonehearth:sounds:ui:immigration_menu:immigration_pass"
+            },
+            {
+               "id": "cunning_bonus_2",
+               "name": "i18n(stonehearth_ace:data.gm.campaigns.town_progression.encounters.banner_upgrade_cunning.achievements.001)",
+               "icon": "/stonehearth/ui/game/bulletin/bulletin_dialog/city_tier_success_dialog/images/ribbon_1.png",
+               "track": "stonehearth:sounds:ui:immigration_menu:immigration_pass"
+            },
+            {
+               "id": "cunning_bonus_3",
+               "name": "i18n(stonehearth_ace:data.gm.campaigns.town_progression.encounters.banner_upgrade_cunning.achievements.002)",
+               "icon": "/stonehearth/ui/game/bulletin/bulletin_dialog/city_tier_success_dialog/images/ribbon_1.png",
+               "track": "stonehearth:sounds:ui:immigration_menu:immigration_pass"
+            },
+            {
+               "id": "cunning_bonus_4",
+               "name": "i18n(stonehearth_ace:data.gm.campaigns.town_progression.encounters.banner_upgrade_cunning.achievements.003)",
+               "icon": "/stonehearth/ui/game/bulletin/bulletin_dialog/city_tier_success_dialog/images/ribbon_1.png",
+               "track": "stonehearth:sounds:ui:immigration_menu:immigration_pass"
+            }
+         ]
+      },
+      "npcs": []
    }
 }

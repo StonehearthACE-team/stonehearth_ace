@@ -1,0 +1,71 @@
+{
+   "type": "effect",
+   "tracks": {
+      "cubemitter": {
+         "type": "cubemitter",
+         "cubemitter": "particles/sparks/spark_explosion.json",
+         "start_time": 0,
+         "end_time": 1500,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "cubemitter_2": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fire/fire_temporary_cubemitter.json",
+         "start_time": 0,
+         "end_time": 1500,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "dust": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "end_time": 1500,
+         "cubemitter": "particles/death/death_poof.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "cubemitter_3": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fire/fire.cubemitter.json",
+         "loop": false,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "ignite_sound": {
+         "type": "sound_effect",
+         "start_time": 0,
+         "min_distance": 25,
+         "falloff": 3,
+         "volume": 40,
+         "track": "stonehearth_ace:sounds:oil_pot_break"
+      },
+      "crackle_sound": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 300,
+         "min_distance": 40,
+         "falloff": 2.5,
+         "volume": 30,
+         "track": "stonehearth:sounds:firearrow_burn"
+      },
+      "light": {
+         "type": "light",
+         "light": "animatedlights/lamp/lamp.animatedlight.json",
+         "transforms": { "x": 0, "y": 1.0, "z": 0 },
+         "shadows": false
+      }
+   }
+}

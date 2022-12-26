@@ -1213,6 +1213,16 @@
                }
             },
             "town_progression": {
+               "encounters": {
+                  "banner_upgrade_cunning": {
+                     "achievements": {
+                        "001": "Items sell for ~10% more",
+                        "000": "Roads give 2x their normal speed boost",
+                        "002": "Merchants will bring 50% more goods",
+                        "003": "Merchants may visit again 25% sooner"
+                     }
+                  }
+               },
                "ace_vitality_unlock": {
                   "recipe_unlock": "The Carpenter can now craft a 'Herbalist's Guild Market Stand'!"
                },
@@ -1233,24 +1243,24 @@
                },
                "hearth_choice": {
                   "glory": {
-                     "description": "<i>Proof that you have military strength, and that you're prepared to keep it on its feet.</i><ul><li>Allows summoning increasingly difficult enemies to prove your mettle</li><li>Each rank defeated will boost Daily Update net worth</li><li>Exclusive Merchant: Disposable Traps & Turrets Trader</li></ul>"
+                     "description": "<i>Proof that you have military strength, and that you're prepared to keep it on its feet.</i><ul><li>Allows summoning increasingly difficult enemies to prove your mettle</li><li>Each rank defeated will boost Daily Update net worth</li><li>Exclusive Market Stall: Disposable Traps & Turrets Merchant</li></ul>"
                   },
                   "makers": {
-                     "description": "<i>Proof that gold has been flowing through your settlement, and that you have fine crafters.</i><ul><li>Generates 5% daily interest on any Gold Coins you have on hand (up to 300 per day)</li><li>Boosts your Daily Update net worth based on Gold Coins on hand</li><li>Exclusive Merchant: Rare & Collectible Statues Trader</li></ul>"
+                     "description": "<i>Proof that gold has been flowing through your settlement, and that you have fine crafters.</i><ul><li>Generates 5% daily interest on any Gold Coins you have on hand (up to 300 per day)</li><li>Boosts your Daily Update net worth based on Gold Coins on hand</li><li>Exclusive Market Stall: Rare & Collectible Statues Merchant</li></ul>"
                   },
                   "cheer": {
-                     "description": "<i>Proof that you have happy, well-fed citizens, and nice places for them to live.</i><ul><li>Boosts Daily Update net worth based on the overall Morale of your citizens</li><li>Each day brings a new random buff for your townsfolk.</li><li>Exclusive Merchant: Crop Seed Boxes Trader</li></ul>"
+                     "description": "<i>Proof that you have happy, well-fed citizens, and nice places for them to live.</i><ul><li>Boosts Daily Update net worth based on the overall Morale of your citizens</li><li>Each day brings a new random buff for your townsfolk.</li><li>Exclusive Market Stall: Crop Seed Boxes Merchant</li></ul>"
                   }
                },
                "banner_choice": {
                   "cunning": {
-                     "description": "<i>This settlement will be a bustling hub of trade.</i><ul><li>Roads give 3x their normal speed boost</li><li>Your items sell for 50% more</li><li>Traders will bring 2x the goods and Gold</li><li>Exclusive Merchant: Gold & Trophies Trader</li></ul>"                    
+                     "description": "<i>This settlement will be a bustling hub of trade.</i><ul><li>Roads give 2x their normal speed boost</li><li>Your items sell for ~10% more</li><li>Merchants will bring 50% more goods</li><li>The same merchant will need less time before they can visit again</li><li>Exclusive Market Stand: Gold & Trophies Merchant</li></ul>"
                   },
                   "strength": {
-                     "description": "<i>This settlement will grow strong through earth and steel.</i><ul><li>Mining gives 50% more Ore, Stone, and Clay</li><li>Hearthlings no longer mind cramped spaces</li><li>Exclusive Merchant: Ore & Fuel Trader</li></ul>"
+                     "description": "<i>This settlement will grow strong through earth and steel.</i><ul><li>Mining gives 50% more Ore, Stone, and Clay</li><li>Hearthlings no longer mind cramped spaces</li><li>Exclusive Market Stand: Ore & Fuel Merchant</li></ul>"
                   },
                   "vitality": {
-                     "description": "<i>This settlement shall be at one with the environment.</i><ul><li>Trees produce 25% more Wood</li><li>Plants and Crops both grow 25% faster</li><li>Plants have 2x their normal Appeal</li><li>Exclusive Merchant: Herb Seed Bags Trader</li></ul>"
+                     "description": "<i>This settlement shall be at one with the environment.</i><ul><li>Trees produce 25% more Wood</li><li>Plants and Crops both grow 25% faster</li><li>Plants have 2x their normal Appeal</li><li>Exclusive Market Stand: Herb Seed Bags Merchant</li></ul>"
                   }
                },
                "ace_unlock_shrine_recipes": {
@@ -11409,11 +11419,11 @@
          "seeds": {
             "moonbell_seeds": {
                "display_name": "Moonbell Seeds",
-               "description": "Learn to grow moonbells."
+               "description": "Learn to grow decorative fields or cultivate moonbells in herbalist planters."
             },
             "marblesprout_seeds": {
                "display_name": "Marblesprout Seeds",
-               "description": "Learn to grow marblesprouts."
+               "description": "Learn to grow decorative fields or cultivate marblesprouts in herbalist planters."
             },
             "cotton_seeds": {
                "display_name": "Cotton Seeds",
@@ -11425,11 +11435,11 @@
             },
             "violet_seeds": {
                "display_name": "Violet Seeds",
-               "description": "Learn to grow pretty violets."
+               "description": "Learn to grow decorative fields or cultivate violets in herbalist planters."
             },
             "snow_poppy_seeds": {
                "display_name": "Snow Poppy Seeds",
-               "description": "Learn to grow charming poppies."
+               "description": "Learn to grow decorative fields or cultivate snow poppies in planters."
             },
             "arctic_juniper_tree_seeds": {
                "display_name": "Dried Arctic Juniper Berries",
@@ -11521,23 +11531,23 @@
             },
             "poppy_seeds": {
                "display_name": "Poppy Seeds",
-               "description": "Learn to grow decorative poppy flowers."
+               "description": "Learn to grow decorative fields or cultivate poppies in herbalist planters."
             },
             "rose_seeds": {
                "display_name": "Rose Seeds",
-               "description": "Learn to grow decorative rose flowers."
+               "description": "Learn to grow decorative fields or cultivate roses in herbalist planters."
             },
             "nightshade_seeds": {
-               "description": "Learn to grow decorative nightshade flowers.",
+               "description": "Learn to grow decorative fields or cultivate nightshade in herbalist planters.",
                "display_name": "Nightshade Seeds"
             },
             "daylily_seeds": {
-               "description": "Learn to grow decorative daylily flowers.",
+               "description": "Learn to grow decorative fields or cultivate daylilies in herbalist planters.",
                "display_name": "Daylily Seeds"
             },
             "oleander_seeds": {
                "display_name": "Oleander Seeds",
-               "description": "Learn to grow decorative oleander flowers."
+               "description": "Learn to grow decorative fields or cultivate oleanders in herbalist planters."
             },
             "barley_seeds": {
                "display_name": "Barley Grain",
@@ -11580,6 +11590,94 @@
             "lingonberry_bush_seeds": {
                "display_name": "Dried Lingonberries",
                "description": "Learn to cultivate lingonberry bushes in herbalist planters."
+            },
+            "bog_myrtle_seeds": {
+               "display_name": "Bog Myrtle Seeds",
+               "description": "Learn to cultivate bog myrtles in herbalist planters."
+            },
+            "cactus_tulip_blue_seeds": {
+               "display_name": "Blue Cactus Tulip Seeds",
+               "description": "Learn to grow decorative fields or cultivate blue cactus tulips in planters."
+            },
+            "cactus_tulip_red_seeds": {
+               "display_name": "Red Cactus Tulip Seeds",
+               "description": "Learn to grow decorative fields or cultivate red cactus tulips in planters."
+            },
+            "cactus_tulip_yellow_seeds": {
+               "display_name": "Yellow Cactus Tulip Seeds",
+               "description": "Learn to grow decorative fields or cultivate yellow cactus tulips in planters."
+            },
+            "chives_seeds": {
+               "display_name": "Chives Seeds",
+               "description": "Learn to cultivate chives in herbalist planters."
+            },
+            "daisy_seeds": {
+               "display_name": "Daisy Seeds",
+               "description": "Learn to cultivate daisies in herbalist planters."
+            },
+            "dill_seeds": {
+               "display_name": "Dill Seeds",
+               "description": "Learn to cultivate dill in herbalist planters."
+            },
+            "foxlily_seeds": {
+               "display_name": "Fox Lily Seeds",
+               "description": "Learn to cultivate fox lilies in herbalist planters."
+            },
+            "highland_vine_seeds": {
+               "display_name": "Highland Vine Seeds",
+               "description": "Learn to cultivate highland vines in herbalist planters."
+            },
+            "parsley_seeds": {
+               "display_name": "Parsley Seeds",
+               "description": "Learn to cultivate parsley in herbalist planters."
+            },
+            "sage_seeds": {
+               "display_name": "Sage Seeds",
+               "description": "Learn to cultivate sage in herbalist planters."
+            },
+            "sunflower_seeds": {
+               "display_name": "Sunflower Seeds",
+               "description": "Learn to cultivate sunflowers in herbalist planters."
+            },
+            "algae_brown_seeds": {
+               "display_name": "Brown Alga Starter",
+               "description": "Learn to grow brown algae in herbalist water planters."
+            },
+            "algae_green_seeds": {
+               "display_name": "Green Alga Starter",
+               "description": "Learn to grow green algae in herbalist water planters."
+            },
+            "algae_red_seeds": {
+               "display_name": "Red Alga Starter",
+               "description": "Learn to grow red algae in herbalist water planters."
+            },
+            "water_lily_pad_seeds": {
+               "display_name": "Water Lily Pad Starter",
+               "description": "Learn to grow water lily pads in herbalist water planters."
+            },
+            "water_lily_pink_seeds": {
+               "display_name": "Pink Water Lily Starter",
+               "description": "Learn to grow pink water lilies in herbalist water planters."
+            },
+            "water_lily_purple_seeds": {
+               "display_name": "Purple Water Lily Starter",
+               "description": "Learn to grow purple water lilies in herbalist water planters."
+            },
+            "water_lily_white_seeds": {
+               "display_name": "White Water Lily Starter",
+               "description": "Learn to grow white water lilies in herbalist water planters."
+            },
+            "water_lily_yellow_seeds": {
+               "display_name": "Yellow Water Lily Starter",
+               "description": "Learn to grow yellow water lilies in herbalist water planters."
+            },
+            "wax_plant_green_seeds": {
+               "display_name": "Green Wax Plant Seeds",
+               "description": "Learn to cultivate green wax plants in herbalist planters."
+            },
+            "wax_plant_purple_seeds": {
+               "display_name": "Purple Wax Plant Seeds",
+               "description": "Learn to cultivate purple wax plants in herbalist planters."
             }
          },
          "fertilizer": {
@@ -12075,6 +12173,18 @@
                "display_name": "Marble Fence Gate",
                "description": "Must have some really strong hinges..."
             }
+         },
+         "barricade_spiky": {
+            "display_name": "Disposable Spiky Barricade",
+            "description": "Place it between you and whoever is angry at you! Will damage attackers."
+         },
+         "barricade_short_spiky": {
+            "display_name": "Disposable Spiky Short Barricade",
+            "description": "Smaller but not necessarily less dangerous! Will damage attackers."
+         },
+         "wood_portcullis": {
+            "display_name": "Disposable Wood Portcullis",
+            "description": "A rustic yet efficient defense. Can't be repaired."
          }
       },
       "crops": {
@@ -19269,6 +19379,18 @@
          "starsteel_long_sword": {
             "display_name": "Starsteel Long Sword",
             "description": "The power of the stars made into a fine footman's blade."
+         },
+         "simple_bolt": {
+            "display_name": "Simple Bolt",
+            "description": "Simply a bolt."
+         },
+         "pebble": {
+            "display_name": "Pebble",
+            "description": "Ouch!"
+         },
+         "oil_pot": {
+            "display_name": "Oil Pot",
+            "description": "Don't drop it! Or... Maybe do?"
          }
       },
       "gizmos": {
@@ -19361,6 +19483,22 @@
             "titan_slayer_monument": {
                "description": "A memorial to an alliance against the darkness. It radiates well-being."
             }
+         },
+         "simple_turret": {
+            "display_name": "Disposable Simple Turret",
+            "description": "Shoots at enemies from a small distance. Can't be repaired and will break once dry."
+         },
+         "pebble_flinger": {
+            "description": "Flings tiny rocks at enemies. Can't be repaired and will break once dry.",
+            "display_name": "Disposable Pebble Flinger"
+         },
+         "oil_pot_shooter": {
+            "display_name": "Disposable Oil Pot Shooter",
+            "description": "Burns enemies in a small radius. Can't be repaired and will break once out of pots."
+         },
+         "simple_clamp_trap": {
+            "description": "Damages and shortly stuns enemies. Can't be repaired and is broken upon activation.",
+            "display_name": "Disposable Simple Trap"
          }
       },
       "aquatic": {
@@ -22276,6 +22414,10 @@
                "toggledOn": "The Job activity for this unit or party is currently on; click to toggle it off.",
                "toggledOff": "The Job activity for this unit or party is currently off; click to toggle it on.",
                "toggledSome": "The Job activity for some of this party is on, and for some it is off; click to toggle it on for all."
+            },
+            "placement_tags": {
+               "turret_disposable": "Disposable Turrets",
+               "trap_disposable": "Disposable Traps"
             }
          },
          "save_view": {

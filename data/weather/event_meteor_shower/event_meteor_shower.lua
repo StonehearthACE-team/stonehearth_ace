@@ -4,7 +4,7 @@ local rng = _radiant.math.get_default_rng()
 
 local EventMeteorShowerWeather = class()
 
-local METEORITE_INTERVAL = '90m+350m'
+local METEORITE_INTERVAL = '120m+350m'
 local METEORITE_EFFECTS = {
    'stonehearth_ace:effects:meteorite_effect'
 }
@@ -26,10 +26,10 @@ function EventMeteorShowerWeather:start()
       title = "i18n(stonehearth_ace:data.weather.event.meteor_shower.bulletin_name)",
       notification_closed_callback = '_on_closed'
    }
-	
-	local players = stonehearth.player:get_non_npc_players()
+   
+   local players = stonehearth.player:get_non_npc_players()
    for player_id in pairs(players) do
-		self._sv.notification_bulletin = stonehearth.bulletin_board:post_bulletin(player_id)
+      self._sv.notification_bulletin = stonehearth.bulletin_board:post_bulletin(player_id)
             :set_callback_instance(self)
             :set_sticky(true)
             :set_data(bulletin_data)

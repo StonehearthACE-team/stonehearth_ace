@@ -1,0 +1,112 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(pebble_flinger_ghost.json)",
+      "stonehearth_ace:mixins:siege_turret:disposable"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(pebble_flinger_iconic.json)",
+         "ghost_form": "file(pebble_flinger_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 3, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:siege_weapon": {
+         "max_uses": 16
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 90
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:gizmos:pebble_flinger:weapon"
+         ]
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 35
+            }
+         }
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/gizmos/pebble_flinger/effects/idle.json",
+         "initial_pose_animation": "idle.json"
+      },
+      "stonehearth:bone_transform": {
+         "bones": [
+            "main",
+            "arrow1",
+            "arrow2",
+            "arrow3",
+            "arrow4",
+            "boltPusher",
+            "arrow0",
+            "gearLarge",
+            "gearSmall",
+            "bowTop0",
+            "bowTop1",
+            "bowBottom0",
+            "bowBottom1",
+            "head"
+         ]
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 3
+               },
+               "items": {
+                  "log": {
+                     "uri": "stonehearth:resources:wood:oak_log"
+                  },
+                  "stone": {
+                     "uri": "stonehearth:resources:stone:hunk_of_stone"
+                  },
+                  "firewood": {
+                     "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood"
+                  },
+                  "fiber": {
+                     "uri": "stonehearth:resources:fiber:coarse_fiber_bundle"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 35,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -5
+      }
+   }
+}

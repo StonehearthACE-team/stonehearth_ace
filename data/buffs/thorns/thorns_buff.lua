@@ -18,7 +18,7 @@ end
 
 function ThornsScript:_on_hit_received(context)
    -- deal damage to the attacker, percentage based and/or flat amount  
-   if context.attacker and context.damage then
+   if context.attacker and context.damage and context.is_melee then
 		radiant.entities.modify_health(context.attacker, -1 * (context.damage * (self._tuning.damage_percent or 0) + (self._tuning.flat_damage or 0)))
    end
    
