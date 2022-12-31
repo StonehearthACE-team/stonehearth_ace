@@ -5,51 +5,6 @@ local AceAggroObserver = class()
 
 local log = radiant.log.create_logger('aggro_observer')
 
-AceAggroObserver._ace_old_post_activate = AggroObserver.post_activate
-function AceAggroObserver:post_activate()
-   self:_ace_old_post_activate()
-   --self:_create_party_changed_listener()
-end
-
-AceAggroObserver._ace_old_destroy = AggroObserver.__user_destroy
-function AceAggroObserver:destroy()
-   self:_destroy_party_listeners()
-   self:_ace_old_destroy()
-end
-
-function AceAggroObserver:_create_party_changed_listener()
-   self._party_changed_listener = radiant.events.listen(self._sv._entity, 'stonehearth:party:party_changed', self, self._on_party_changed)
-   self:_on_party_changed()
-end
-
-function AceAggroObserver:_destroy_party_listeners()
-   self:_destroy_party_changed_listener()
-   self:_destroy_party_target_acquired_listener()
-end
-
-function AceAggroObserver:_destroy_party_changed_listener()
-   if self._party_changed_listener then
-      self._party_changed_listener:destroy()
-      self._party_changed_listener = nil
-   end
-end
-
-function AceAggroObserver:_destroy_party_target_acquired_listener()
-   if self._party_target_acquired_listener then
-      self._party_target_acquired_listener:destroy()
-      self._party_target_acquired_listener = nil
-   end
-end
-
-function AceAggroObserver:_on_party_changed()
-   self:_destroy_party_target_acquired_listener()
-   local party = radiant.entities.get_party(self._sv._entity)
-
-   if party then
-      self._party_target_acquired_listener = radiant.events.listen(party, 'stonehearth:combat:target_acquired', self, self._on_party_target_acquired)
-   end
-end
-
 AceAggroObserver._ace_old__is_killable = AggroObserver._is_killable
 function AceAggroObserver:_is_killable(target)
    local killable = self:_ace_old__is_killable(target)
@@ -62,30 +17,6 @@ function AceAggroObserver:_is_killable(target)
    end
 
    return killable
-end
-
--- When attacked, reset the (artifically high) aggro score of the inanimate siege object
--- you are attacking so you have a chance to attack your attacker
-function AceAggroObserver:_on_party_target_acquired(context)
-   -- only do this for party members that aren't this entity
-   if context.attacker == self._sv._entity then
-      return
-   end
-
-   local primary_target = stonehearth.combat:get_primary_target(self._sv._entity)
-   if not primary_target then
-      return
-   end
-   local is_siege = radiant.entities.get_entity_data(primary_target, 'stonehearth:siege_object')
-   -- If assaulted by someone, reset the siege aggro score (may have been modified in attack siege action)
-   -- so we have a chance to switch targets if attacker aggro score is higher
-   if is_siege and primary_target ~= context.target then
-      -- also make sure the party member's target is actually reachable and not a siege object
-      if not stonehearth.combat:is_killable_target_of_type(context.target, 'siege') and _radiant.sim.topology.are_connected(self._sv._entity, context.target) then
-         log:debug('%s resetting siege aggro on %s due to party target acquiring of %s', self._sv._entity, primary_target, context.target)
-         self:_reset_siege_aggro_score(primary_target)
-      end
-   end
 end
 
 -- note that an entity is considered an ally of itself
