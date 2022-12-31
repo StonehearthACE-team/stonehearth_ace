@@ -56,8 +56,11 @@
          height: 100%;
 
          #merchants {
+            display: flex;
             flex: 1 1 auto;
             overflow-y: auto;
+            flex-wrap: wrap;
+            align-items: flex-start;
 
             .merchant {
                display: inline-block;
@@ -110,6 +113,7 @@
          }
 
          #availableStalls {
+            display: flex;
             flex: 0 0 auto;
             overflow-x: auto;
 
@@ -173,45 +177,44 @@
                overflow-y: auto;
 
                #categories {
-                  tr:nth-child(even) {
-                     background-color: rgba(0, 0, 0, 0.1);
-                  }
+                  width: 100%;
 
                   .category {
-                     .details {
-                        .name {
-                           .controlFont;
-                           padding: 8px 0px;
-                        }
-
-                        .icon {
-                           float: left;
-                           padding-right: 8px;
-                        }
-
-                        .description {
-                           // display: inline-block;
-                        }
+                     &:nth-child(even) {
+                        background-color: rgba(0, 0, 0, 0.1);
                      }
 
-                     .settings {
-                        width: 75px;
+                     .name {
+                        .controlFont;
+                        width: 200px;
+                        //padding: 8px 0px;
+                     }
 
-                        .selected {
-                           border: 3px solid rgb(255, 255, 34);
-                           opacity: 1;
-                        }
+                     .icon {
+                        // float: left;
+                        // padding-right: 8px;
+                     }
 
-                        .disableCategory {
-                           content: url(images/disableCategory.png);
-                        }
+                     .setting {
+                        a {
+                           width: 75px;
 
-                        .enableCategory {
-                           content: url(images/enableCategory.png);
-                        }
+                           .selected {
+                              border: 3px solid rgb(255, 255, 34);
+                              opacity: 1;
+                           }
 
-                        .encourageCategory {
-                           content: url(images/encourageCategory.png);
+                           .disableCategory {
+                              content: url(images/disableCategory.png);
+                           }
+
+                           .enableCategory {
+                              content: url(images/enableCategory.png);
+                           }
+
+                           .encourageCategory {
+                              content: url(images/encourageCategory.png);
+                           }
                         }
                      }
                   }

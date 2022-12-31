@@ -23,7 +23,7 @@ function AcePortraitRendererService:_render_portrait(options, response)
 end
 
 function AcePortraitRendererService:_stage_scene(options, scene_root, camera)
-   log:debug('staging portrait scene with options: %s', radiant.util.table_tostring(options))
+   --log:debug('staging portrait scene with options: %s', radiant.util.table_tostring(options))
    local entity = options.entity
    if not (radiant.util.is_a(entity, Entity) and entity:is_valid()) then
       log:warning('non-entity passed in portrait render options: %s', tostring(options.entity))

@@ -43,28 +43,34 @@
             <div id="allPreferences">
                <div id="categoryPreferences" class="downSection">
                   <div id="categories">
+                     <!--show table headers for encourage/enable/disable-->
                      <table id="categoriesTable">
                         {{#each category in view.categories}}
                         <tr class="category">
-                           <td class="details">
-                              <div class="name">{{i18n_key category.display_name}}</div>
+                           <td class="categoryIcon">
                               <img class="icon" {{bind-attr src="category.icon"}}/>
-                              <div class="description">{{i18n_key category.description}}</div>
                            </td>
-                           <td class="settings" {{bind-attr category=category.category}}>
+                           <td class="categoryName">
+                              <div class="name">{{i18n_key category.display_name}}</div>
+                           </td>
+                           <td class="encourage setting" {{bind-attr category=category.category}}>
                               <a href="#" {{action "encourageCategory" category.category target=view}}>
                                  <div {{bind-attr class=':uisounds category.encourageEnabled:enabled:disabled category.isEncouraged:selected:'}}>
-                                    <img class="setting encourageCategory"/>
+                                    <img class="encourageCategory"/>
                                  </div>
                               </a>
+                           </td>
+                           <td class="enable setting" {{bind-attr category=category.category}}>
                               <a href="#" {{action "enableCategory" category.category target=view}}>
                                  <div {{bind-attr class=':uisounds category.enableEnabled:enabled:disabled category.isEnabled:selected:'}}>
-                                    <img class="setting enableCategory"/>
+                                    <img class="enableCategory"/>
                                  </div>
                               </a>
+                           </td>
+                           <td class="disable setting" {{bind-attr category=category.category}}>
                               <a href="#" {{action "disableCategory" category.category target=view}}>
                                  <div {{bind-attr class=':uisounds category.disableEnabled:enabled:disabled category.isDisabled:selected:'}}>
-                                    <img class="setting disableCategory"/>
+                                    <img class="disableCategory"/>
                                  </div>
                               </a>
                            </td>
