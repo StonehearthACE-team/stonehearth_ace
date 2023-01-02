@@ -3,6 +3,26 @@
       "mixintypes": {
          "stonehearth:wet_stone": "remove"
       },
+      "region_collision_shape": {
+         "mixintypes": {
+            "region": "override"
+         },
+         "region": [
+            {
+               "min": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+               },
+               "max": {
+                  "x": 2,
+                  "y": 2,
+                  "z": 2
+               }
+            }
+         ],
+         "region_collision_type": "platform"
+      },
       "stonehearth_ace:water_sponge": {
          "input_location": { "x": 0, "y": 0, "z": 0 },
          "input_region": [

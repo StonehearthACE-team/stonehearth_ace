@@ -1,4 +1,5 @@
 {
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.sausage_recipe.recipe_name)",
    "workshop": "stonehearth_ace:cook:table",
    "mixintypes": {
 		"ingredients": "override"
@@ -6,11 +7,16 @@
    "ingredients": [
       {
          "material": "food meat raw",
-         "count": 4
+         "count": 6
       },
       {
          "material": "seasoning",
-         "count": 1
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:food:sausage"
       }
    ]
 }

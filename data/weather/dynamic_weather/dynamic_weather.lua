@@ -47,7 +47,7 @@ function DynamicWeather:decide_for_change()
 end
 
 function DynamicWeather:decide_change_time()
-   return rng:get_int(10, 18) .. ':' .. rng:get_int(10, 59)
+   return rng:get_int(10, 21) .. ':' .. rng:get_int(0, 5) .. rng:get_int(0, 9)
 end
 
 function DynamicWeather:_change_dynamic_weather()

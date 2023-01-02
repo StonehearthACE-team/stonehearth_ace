@@ -1,6 +1,31 @@
 {
    "default_preset_list": "stonehearth:ui:stockpile:filters",
    "presets": {
+		"stonehearth_ace:ui:desk:filters": {
+			"workshop": [
+				"stockpile_tool",
+				"civillian_equipment job_tool",
+				"stockpile_gold_money"
+			],
+			"private_room": [
+				"civillian_equipment worker_tools",
+				"stockpile_gold_money",
+				"stockpile_trophy"
+			]
+		},
+		"stonehearth_ace:ui:dresser:filters": {
+			"toolshed": [
+				"stockpile_tool",
+				"civillian_equipment job_tool",
+				"civillian_equipment worker_tools",
+				"civillian_equipment backpack"
+			],
+			"dormitory": [
+				"civillian_equipment field_work_outfit",
+				"civillian_equipment crafter_outfit",
+				"civillian_equipment worker_outfit"
+			]
+		},
       "stonehearth:ui:stockpile:filters": {
 			"crafting": [
 				"stockpile_wood",
@@ -175,11 +200,11 @@
 				"pelt rabbit"
 			],
 			"supply_metalworker" : [
-				"copper ingot resource",
-				"tin ingot resource",
-				"bronze ingot resource",
-				"iron ingot resource",
-				"steel ingot resource",
+				"copper ingot refined",
+				"tin ingot refined",
+				"bronze ingot refined",
+				"iron ingot refined",
+				"steel ingot refined",
 				"bronze gear resource",
 				"iron gear resource",
 				"lock resource",

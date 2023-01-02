@@ -35,7 +35,10 @@
          }
       },
       "stonehearth:equipment_piece": {
-         "render_type": "merge_with_model"
+         "render_type": "merge_with_model",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:dragon_cult:resistance"
+         ]
       }
    },
    "entity_data": {}

@@ -3,6 +3,14 @@
    "type": "entity",
    "components": {},
    "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "fire_effect": {
+               "uri": "stonehearth:buffs:archer:fire_arrow",
+               "chance": 0.1
+            }
+         }
+      },
       "stonehearth:catalog": {
 			"description": "i18n(stonehearth_ace:entities.weapons.maul_lantern.maul_lantern_iconic.description)",
          "material_tags":["legendary", "lantern", "maul"]

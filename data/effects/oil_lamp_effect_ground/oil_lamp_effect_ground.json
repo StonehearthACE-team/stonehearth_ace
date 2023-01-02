@@ -1,40 +1,30 @@
 {
-   "type" : "effect",
+   "type": "effect",
    "tracks": {
       "cubemitter": {
          "type": "cubemitter",
-         "cubemitter": "particles/fire/tiny_fire.cubemitter.json",
+         "cubemitter": "/stonehearth/data/horde/particles/fire/tiny_fire.cubemitter.json",
          "loop": true,
-         "transforms": {
-            "x":0,
-            "y":0.8,
-            "z":-0.65,
-            "rx":90,
-            "ry":0,
-            "rz":0
+         "transforms": { "x": 0, "y": 0.8, "z": -0.65,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
          }
       },
       "cubemitter_glow": {
          "type": "cubemitter",
-         "cubemitter": "particles/lamp/oil_lamp_glow.cubemitter.json",
+         "cubemitter": "/stonehearth/data/horde/particles/lamp/oil_lamp_glow.cubemitter.json",
          "loop": true,
-         "transforms": {
-            "x":0,
-            "y":1.2,
-            "z":-0.65,
-            "rx":90,
-            "ry":0,
-            "rz":0
+         "transforms": { "x": 0, "y": 1.2, "z": -0.65,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
          }
       },
-     "light": {
+      "light": {
          "type": "light",
-         "light": "animatedlights/lamp/oil_lamp.animatedlight.json",
-         "transforms": {
-            "x":0,
-            "y":1.0,
-            "z":-0.65
-        }
-     }
+         "light": "/stonehearth_ace/data/horde/animatedlights/lamp/oil_lamp.animatedlight.json",
+         "transforms": { "x": 0, "y": 1.0, "z": -0.65 }
+      }
    }
 }

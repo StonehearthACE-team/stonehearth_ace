@@ -9064,7 +9064,7 @@
                "flavor": "'This is SO GOOD' - Mer Burlyhands"
             },
             "nuts_basket_recipe": {
-               "recipe_name": "Basket of Nuts",
+               "recipe_name": "Basket of Nuts (x2)",
                "description": "An assortment of edible nuts ready to be used in cooking.",
                "flavor": ""
             },
@@ -9139,7 +9139,7 @@
                "flavor": "Better if made with all-'porpoise' flour"
             },
             "raw_rice_recipe": {
-               "recipe_name": "Basket of Raw Rice",
+               "recipe_name": "Basket of Raw Rice (x2)",
                "description": "Delicious grains ready to be used in other recipes. Raw Rice can also be used as a vegetable.",
                "flavor": "Who knew grass could be so tasty?"
             },
@@ -9219,8 +9219,11 @@
                "description": "Prepare a sweet and wonderful mix that can be turned into things like CAKE!",
                "flavor": "The cake is not a lie!"
             },
+            "sausage_recipe": {
+               "recipe_name": "Raw Sausage (x2)"
+            },
             "cooking_oil_recipe": {
-               "recipe_name": "Cooking Oil",
+               "recipe_name": "Cooking Oil (x2)",
                "description": "Extract the oil from any oleaginous grains or herbs to be used as an ingredient or condiment base.",
                "flavor": "Pumpkin seeds, Sunflowers, Corn or even Paddy are examples of oil sources"
             },
@@ -16646,7 +16649,7 @@
             "description": "An ancient testament to the power a community has to nurture and thrive.",
             "static_component_info": {
                "description": "<p style='text-align:center;color:white;'>This beautiful monument is dedicated to the great community behind Stonehearth and to those that have supported the ACE project!<br><br>Below is a permanent list of all the kind donors, ordered by membership tier, then total amount and finally date. This list will be updated whenever a new release is out!</p>",
-               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Doris<br>AnonymousFriendo<hr><p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Coolcup5<br>Croxo<br>Yunoh<br>shimizu & jontaro</p>"
+               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Doris<br>AnonymousFriendo<hr><p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Coolcup5<br>ghostcrap<br>Croxo<br>Yunoh<br>shimizu & jontaro</p>"
             }
          },
          "copper_weighing_scale": {
@@ -22083,6 +22086,10 @@
                   "preset_description": "[str(good_count)] selected material filters",
                   "preset_with_invalid_description": "[str(good_count)] selected material filters<br/><span class='tooltipInvalidMaterials'>[str(bad_count)] inapplicable material filters</span>",
                   "default_presets": {
+                     "workshop": "Workshop Desk (Default)",
+                     "private_room": "Private Quarters (Default)",
+                     "toolshed": "Toolbox (Default)",
+                     "dormitory": "Dormitory (Default)",
                      "construction": "Construction Site (Default)",
                      "furniture": "Furniture & Decoration",
                      "weaver": "Weaver Storage (Default)",
