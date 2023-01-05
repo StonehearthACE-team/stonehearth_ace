@@ -179,42 +179,48 @@
                #categories {
                   width: 100%;
 
+                  #listTitles {
+                     margin-top: -15px;
+                     padding-bottom: 5px;
+                  }
+
+                  #categoryNameTitle {
+                     padding-right: 140px;
+                  }
+
+                  .listTitle {
+                     display: inline-block;
+                     h2 {
+                        font-size: 14x;
+                     }
+                  }
+
+                  .settingTitle {
+                     text-align: center;
+                     padding-right: 10px;
+                  }
+
                   .category {
-                     &:nth-child(even) {
+                     &:nth-child(odd) {
                         background-color: rgba(0, 0, 0, 0.1);
                      }
 
                      .name {
                         .controlFont;
                         width: 200px;
-                        //padding: 8px 0px;
                      }
 
-                     .icon {
+                     .categoryIcon {
                         // float: left;
-                        // padding-right: 8px;
+                        width: 50px;
+                        padding: 4px 0px;
                      }
 
                      .setting {
-                        a {
-                           width: 75px;
-
-                           .selected {
-                              border: 3px solid rgb(255, 255, 34);
-                              opacity: 1;
-                           }
-
-                           .disableCategory {
-                              content: url(images/disableCategory.png);
-                           }
-
-                           .enableCategory {
-                              content: url(images/enableCategory.png);
-                           }
-
-                           .encourageCategory {
-                              content: url(images/encourageCategory.png);
-                           }
+                        width: 75px;
+                        
+                        label {
+                           margin-left: 20px;
                         }
                      }
                   }

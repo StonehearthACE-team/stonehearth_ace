@@ -109,6 +109,23 @@ App.StonehearthAceMerchantileView = App.View.extend({
          }
       });
 
+      var tooltip = $(App.tooltipHelper.createTooltip(
+            i18n.t('stonehearth_ace:ui.game.mercantile.preferences.enables_disables_title'),
+            i18n.t('stonehearth_ace:ui.game.mercantile.preferences.enables_disables_description')));
+      self.$('#numPreferences').tooltipster({delay: 1000, content: tooltip});
+
+      self.$('#categoriesTable').on('click', '.setting', function() {
+         var settingDiv = $(this);
+         var categoryDiv = settingDiv.parent();
+         if (categoryDiv) {
+            var category = categoryDiv.attr('category');
+            if (settingDiv.find(':enabled').length > 0) {
+               var type = settingDiv.attr('setting-type').toUpperCase();
+               radiant.call_obj(_playerMercantileControllerUri, 'set_category_preference_command', category, App.constants.mercantile.category_preferences[type]);
+            }
+         }
+      });
+
       self._setupCategories();
    },
 
@@ -456,11 +473,18 @@ App.StonehearthAceMerchantileView = App.View.extend({
       // load and setup all the categories; then category preferences will do the rest
       var self = this;
       var categories = [];
+      var categoryLookup = {};
       radiant.each(stonehearth_ace.getMerchantCategories(), function(category, data) {
          // we need to copy the data to a new object because we'll be setting preference values
          var copiedData = radiant.shallow_copy(data);
          copiedData.icon = copiedData.icon || '/stonehearth_ace/ui/game/mercantile/images/categoryPlaceholder.png';
+         copiedData.display_name = i18n.t(copiedData.display_name);
+         copiedData.description = i18n.t(copiedData.description);
+         copiedData.encourageId = copiedData.category + '|encourage';
+         copiedData.enableId = copiedData.category + '|enable';
+         copiedData.disableId = copiedData.category + '|disable';
          categories.push(copiedData);
+         categoryLookup[category] = copiedData;
       });
 
       categories.sort(function(a, b) {
@@ -475,8 +499,10 @@ App.StonehearthAceMerchantileView = App.View.extend({
          }
       });
 
+      self._categoryLookup = categoryLookup;
       self.set('categories', categories);
       self._updateCategoryPreferences();
+      self._updateCategoryTooltips();
    },
 
    _updateCategoryPreferences: function() {
@@ -511,34 +537,60 @@ App.StonehearthAceMerchantileView = App.View.extend({
          return;
       }
 
+      self.set('numPreferences', i18n.t('stonehearth_ace:ui.game.mercantile.preferences.enables_disables',
+            { max_disables: maxDisables, max_encourages: maxEncourages }));
+
       var preferenceTypes = App.constants.mercantile.category_preferences;
       radiant.each(categories, function(_, category) {
          Ember.set(category, 'isDisabled', category.preference == preferenceTypes.DISABLED);
-         Ember.set(category, 'disableEnabled', category.preference != preferenceTypes.DISABLED && numDisables < maxDisables);
+         Ember.set(category, 'disableDisabled', category.preference != preferenceTypes.DISABLED && numDisables >= maxDisables);
          Ember.set(category, 'isEnabled', category.preference == preferenceTypes.ENABLED);
-         Ember.set(category, 'enableEnabled', category.preference != preferenceTypes.ENABLED);
+         Ember.set(category, 'enableDisabled', false); // category.preference != preferenceTypes.ENABLED);
          Ember.set(category, 'isEncouraged', category.preference == preferenceTypes.ENCOURAGED);
-         Ember.set(category, 'encourageEnabled', category.preference != preferenceTypes.ENCOURAGED && numEncourages < maxEncourages);
+         Ember.set(category, 'encourageDisabled', category.preference != preferenceTypes.ENCOURAGED && numEncourages >= maxEncourages);
       });
    }.observes('model.max_disables', 'model.max_encourages'),
 
-   actions: {
-      disableCategory: function(category) {
-         if (this.$('#categoriesTable').find(`[category='${category}'] .enabled:not(.selected) .disableCategory`).length > 0) {
-            radiant.call_obj(_playerMercantileControllerUri, 'set_category_preference_command', category, App.constants.mercantile.category_preferences.DISABLED);
+   _updateCategoryTooltips: function() {
+      var self = this;
+      Ember.run.scheduleOnce('afterRender', function() {
+         if (!self.$()) {
+            return;
          }
-      },
 
-      enableCategory: function(category) {
-         if (this.$('#categoriesTable').find(`[category='${category}'] .enabled:not(.selected) .enableCategory`).length > 0) {
-            radiant.call_obj(_playerMercantileControllerUri, 'set_category_preference_command', category, App.constants.mercantile.category_preferences.ENABLED);
+         var categories = self.$('#categoriesTable .category');
+         if (categories) {
+            categories.each(function() {
+               var el = $(this);
+               var category = el.attr('category');
+               var categoryData = self._categoryLookup[category];
+               if (categoryData) {
+                  App.tooltipHelper.createDynamicTooltip(el.find('.categoryName'), function() {
+                     return $(App.tooltipHelper.createTooltip(categoryData.display_name, categoryData.description));
+                  });
+               }
+            });
          }
-      },
+      });
+   },
 
-      encourageCategory: function(category) {
-         if (this.$('#categoriesTable').find(`[category='${category}'] .enabled:not(.selected) .encourageCategory`).length > 0) {
-            radiant.call_obj(_playerMercantileControllerUri, 'set_category_preference_command', category, App.constants.mercantile.category_preferences.ENCOURAGED);
-         }
-      },
-   }
+   // actions: {
+   //    disableCategory: function(category) {
+   //       if (this.$('#categoriesTable').find(`[category='${category}'] .enabled:not(.selected) .disableCategory`).length > 0) {
+   //          radiant.call_obj(_playerMercantileControllerUri, 'set_category_preference_command', category, App.constants.mercantile.category_preferences.DISABLED);
+   //       }
+   //    },
+
+   //    enableCategory: function(category) {
+   //       if (this.$('#categoriesTable').find(`[category='${category}'] .enabled:not(.selected) .enableCategory`).length > 0) {
+   //          radiant.call_obj(_playerMercantileControllerUri, 'set_category_preference_command', category, App.constants.mercantile.category_preferences.ENABLED);
+   //       }
+   //    },
+
+   //    encourageCategory: function(category) {
+   //       if (this.$('#categoriesTable').find(`[category='${category}'] .enabled:not(.selected) .encourageCategory`).length > 0) {
+   //          radiant.call_obj(_playerMercantileControllerUri, 'set_category_preference_command', category, App.constants.mercantile.category_preferences.ENCOURAGED);
+   //       }
+   //    },
+   // }
 });

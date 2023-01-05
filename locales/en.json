@@ -21741,7 +21741,16 @@
             "preferences": {
                "category_title": "Categories",
                "exclusive_title": "Exclusive Merchants",
-               "title": "Preferences"
+               "title": "Preferences",
+               "category_list_titles": {
+                  "name": "Category",
+                  "encourage": "Encourage",
+                  "enable": "Enable",
+                  "disable": "Disable"
+               },
+               "enables_disables": "You may Disable up to <span class='num'>[str(max_disables)]</span> categories and Encourage up to <span class='num'>[str(max_encourages)]</span> categories.",
+               "enables_disables_title": "Disables & Encourages",
+               "enables_disables_description": "Disabling a category will prevent regular merchants of that category from visiting your town. Encouraging a category will significantly increase the chance that regular merchants of that category will visit your town. When your town's tier increases, so will the number of categories you can Disable or Encourage."
             },
             "title": "Mercantile Overview"
          },

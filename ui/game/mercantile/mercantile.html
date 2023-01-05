@@ -44,35 +44,49 @@
                <div id="categoryPreferences" class="downSection">
                   <div id="categories">
                      <!--show table headers for encourage/enable/disable-->
+                     <div id="listTitles">
+                        <div class="listTitle" id="categoryNameTitle" data-sort-key="name">
+                           <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.name}}</h2>
+                        </div>
+                        <div class="listTitle settingTitle" data-sort-key="encourage">
+                           <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.encourage}}</h2>
+                        </div>
+                        <div class="listTitle settingTitle" data-sort-key="enable">
+                           <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.enable}}</h2>
+                        </div>
+                        <div class="listTitle settingTitle" data-sort-key="disable">
+                           <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.disable}}</h2>
+                        </div>
+                     </div>
                      <table id="categoriesTable">
                         {{#each category in view.categories}}
-                        <tr class="category">
+                        <tr class="category" {{bind-attr category=category.category}}>
                            <td class="categoryIcon">
                               <img class="icon" {{bind-attr src="category.icon"}}/>
                            </td>
                            <td class="categoryName">
-                              <div class="name">{{i18n_key category.display_name}}</div>
+                              <div class="name">{{category.display_name}}</div>
                            </td>
-                           <td class="encourage setting" {{bind-attr category=category.category}}>
-                              <a href="#" {{action "encourageCategory" category.category target=view}}>
-                                 <div {{bind-attr class=':uisounds category.encourageEnabled:enabled:disabled category.isEncouraged:selected:'}}>
-                                    <img class="encourageCategory"/>
-                                 </div>
-                              </a>
+                           <td class="encourage setting" setting-type="encouraged" {{bind-attr category=category.category}}>
+                              <input type="radio" {{bind-attr id=category.encourageId}}
+                                               {{bind-attr checked=category.isEncouraged}}
+                                               {{bind-attr disabled=category.encourageDisabled}}
+                                               {{bind-attr name=category.category}}>
+                              <label {{bind-attr for=category.encourageId}}></label>
                            </td>
-                           <td class="enable setting" {{bind-attr category=category.category}}>
-                              <a href="#" {{action "enableCategory" category.category target=view}}>
-                                 <div {{bind-attr class=':uisounds category.enableEnabled:enabled:disabled category.isEnabled:selected:'}}>
-                                    <img class="enableCategory"/>
-                                 </div>
-                              </a>
+                           <td class="enable setting" setting-type="enabled" {{bind-attr category=category.category}}>
+                              <input type="radio" {{bind-attr id=category.enableId}}
+                                               {{bind-attr checked=category.isEnabled}}
+                                               {{bind-attr disabled=category.enableDisabled}}
+                                               {{bind-attr name=category.category}}>
+                              <label {{bind-attr for=category.enableId}}></label>
                            </td>
-                           <td class="disable setting" {{bind-attr category=category.category}}>
-                              <a href="#" {{action "disableCategory" category.category target=view}}>
-                                 <div {{bind-attr class=':uisounds category.disableEnabled:enabled:disabled category.isDisabled:selected:'}}>
-                                    <img class="disableCategory"/>
-                                 </div>
-                              </a>
+                           <td class="disable setting" setting-type="disabled" {{bind-attr category=category.category}}>
+                              <input type="radio" {{bind-attr id=category.disableId}}
+                                               {{bind-attr checked=category.isDisabled}}
+                                               {{bind-attr disabled=category.disableDisabled}}
+                                               {{bind-attr name=category.category}}>
+                              <label {{bind-attr for=category.disableId}}></label>
                            </td>
                         </tr>
                         {{/each}}
