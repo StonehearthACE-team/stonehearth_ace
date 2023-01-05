@@ -220,8 +220,8 @@ function AceShop:stock_shop()
             -- Add it to the shop inventory
             self:_add_item_to_inventory(uri, shop_item_description, cost, 1, quantity)
             
-            local fine_chance = shop_item_data.shop_data.fine_item_chance or stonehearth.constants.shop.DEFAULT_FINE_ITEM_CHANCE
-            if fine_chance >= rng:get_real(0, 1) then
+            local fine_chance = shop_item_data.shop_data.entry.fine_item_chance or stonehearth.constants.shop.DEFAULT_FINE_ITEM_CHANCE
+            if fine_chance > rng:get_real(0, 1) then
                self:_add_item_to_inventory(uri, shop_item_description, cost, 2, 1)
             end
          end
