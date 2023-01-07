@@ -56,14 +56,13 @@ end
 
 function EventMeteorShowerWeather:_spawn_meteorite()
    local effect = METEORITE_EFFECTS[rng:get_int(1, #METEORITE_EFFECTS)]
+   local meteorite = radiant.entities.create_entity('stonehearth_ace:resources:starsteel:ore', { owner = '' } )
    -- Choose a point to hit.
    local terrain_bounds = stonehearth.terrain:get_bounds()
    local x = rng:get_int(terrain_bounds.min.x, terrain_bounds.max.x)
    local z = rng:get_int(terrain_bounds.min.z, terrain_bounds.max.z)
-
-   local center = Point3(x, terrain_bounds.max.y, z)
-   local target = Point3(x, terrain_bounds.min.y, z)
-   local ground_point = _physics:shoot_ray(center, target, true, 0)
+   local pt = radiant.terrain.get_point_on_terrain(x, terrain_bounds.max.y, z)
+   local ground_point = radiant.terrain.find_placement_point(pt, 0, 10, meteorite)
 
    -- Don't hit water.
    local search_cube = Cube3(ground_point - Point3(1, 2, 1),
@@ -76,8 +75,9 @@ function EventMeteorShowerWeather:_spawn_meteorite()
       self:_spawn_effect_at(ground_point, effect)
       self:_spawn_effect_at(ground_point, METEORITE_GROUND_EFFECT)
 
-      local meteorite = radiant.entities.create_entity('stonehearth_ace:resources:starsteel:ore', { owner = '' } )
       radiant.terrain.place_entity_at_exact_location(meteorite, ground_point)
+   else
+      radiant.entities.destroy_entity(meteorite)
    end
    self._sv._meteorite_timer = stonehearth.calendar:set_persistent_timer('event_meteor_shower ligtning', METEORITE_INTERVAL, radiant.bind(self, '_spawn_meteorite'))
 end
