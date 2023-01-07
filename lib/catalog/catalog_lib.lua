@@ -322,30 +322,35 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
 
       local stacks = catalog_data.max_stacks or 1
 
-      if entity_data['stonehearth:consumable'] and entity_data['stonehearth:consumable'].script == 'stonehearth:consumables:scripts:buff_town' then
-         local quality_1 = entity_data['stonehearth:consumable'].consumable_qualities and entity_data['stonehearth:consumable'].consumable_qualities[1]
-         local buffs = quality_1 and quality_1.buff
-         if not buffs then
-            buffs = entity_data['stonehearth:consumable'].buff
-         end
-         if type(buffs) == 'string' then
-            buffs = { buffs }
-         end
+      local consumable_data = entity_data['stonehearth:consumable']
+      if consumable_data then
+         if consumable_data.script == 'stonehearth:consumables:scripts:buff_town' then
+            local quality_1 = entity_data['stonehearth:consumable'].consumable_qualities and entity_data['stonehearth:consumable'].consumable_qualities[1]
+            local buffs = quality_1 and quality_1.buff
+            if not buffs then
+               buffs = entity_data['stonehearth:consumable'].buff
+            end
+            if type(buffs) == 'string' then
+               buffs = { buffs }
+            end
 
-         if buffs and #buffs > 0 then
-            catalog_data.consumable_effects = catalog_lib.get_buffs(buffs)
-            if catalog_data.consumable_effects then
-               local after_effects = {}
-               for _, buff_data in ipairs(catalog_data.consumable_effects) do
-                  if buff_data.cooldown_buff then
-                     table.insert(after_effects, buff_data.cooldown_buff)
+            if buffs and #buffs > 0 then
+               catalog_data.consumable_effects = catalog_lib.get_buffs(buffs)
+               if catalog_data.consumable_effects then
+                  local after_effects = {}
+                  for _, buff_data in ipairs(catalog_data.consumable_effects) do
+                     if buff_data.cooldown_buff then
+                        table.insert(after_effects, buff_data.cooldown_buff)
+                     end
+                  end
+                  
+                  if #after_effects > 0 then
+                     catalog_data.consumable_after_effects = catalog_lib.get_buffs(after_effects)
                   end
                end
-               
-               if #after_effects > 0 then
-                  catalog_data.consumable_after_effects = catalog_lib.get_buffs(after_effects)
-               end
             end
+         elseif consumable_data.script == 'stonehearth:consumables:scripts:unlock_crop' then
+            catalog_data.unlocks_crop = consumable_data.crop
          end
       end
 

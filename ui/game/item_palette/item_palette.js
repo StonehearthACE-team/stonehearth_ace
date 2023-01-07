@@ -9,6 +9,15 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       showSearchFilter: true, // TODO
    },
 
+   _destroy: function() {
+      var self = this;
+      self.isDestroyed = true;
+      if (self._unlocked_crops_trace) {
+         self._unlocked_crops_trace.destroy();
+      }
+      self._unlocked_crops_trace = null;
+   },
+
    updateItems: function(itemMap) {
       var self = this;
 
@@ -19,6 +28,7 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       };
 
       // Convert item entries for display.
+      var hasCropUnlocks = false;
       var arr = radiant.map_to_array(itemMap, function(k, v){
          var uri = self._getRootUri(v);
          if (uri) {
@@ -35,11 +45,40 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
                v.equipment_required_level = catalogData.equipment_required_level;
                v.equipment_roles = catalogData.equipment_roles;
                v.equipment_types = catalogData.equipment_types;
+               v.unlocks_crop = catalogData.unlocks_crop;
+
+               if (v.unlocks_crop) {
+                  hasCropUnlocks = true;
+               }
+
                return v;
             }
          }
          return false;  // Skip items with no URI or catalog data.
       });
+
+      if (hasCropUnlocks) {
+         if (self._unlocked_crops_trace == null) {
+            self._unlocked_crops_trace = false;
+            radiant.call_obj('stonehearth.job', 'get_job_call', 'stonehearth:jobs:farmer')
+               .done(function (response) {
+                  if (self.isDestroyed) return;
+                  if (response.job_info_object) {
+                     self._unlocked_crops_trace = new StonehearthDataTrace(response.job_info_object)
+                        .progress(function (response) {
+                           if (self.isDestroyed) return;
+                           self._unlocked_crops = response.manually_unlocked;
+                        });
+                  }
+               });
+         }
+
+         radiant.call('stonehearth:get_all_crops')
+            .done(function (o) {
+               if (self.isDestroyed) return;
+               self._all_crops = o.all_crops;
+            });
+      }
 
       // Sort all items globally. This ensures they are sorted within their categories on first add (but not subsequent ones).
       var sortField = self.options.sortField;
@@ -270,6 +309,11 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       return bestWantedItem;
    },
 
+   _isCropUnlocked: function(crop) {
+      var self = this;
+      return (self._unlocked_crops && self._unlocked_crops[crop]) || (self._all_crops && self._all_crops[crop] && self._all_crops[crop].initial_crop)
+   },
+
    _updateItemTooltip: function(itemEl, item) {
       if (itemEl.hasClass('tooltipstered')) {
          return;
@@ -331,6 +375,10 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
 
          if (item.additionalTip) {
             description = description + '<div class="itemAdditionalTip">' + item.additionalTip + "</div>";
+         }
+
+         if (item.unlocks_crop && self._isCropUnlocked(item.unlocks_crop)) {
+            description = description + '<div class="itemAdditionalTip">' + i18n.t('stonehearth_ace:ui.game.entities.tooltip_crop_unlocked') + "</div>";
          }
 
          if (item.equipment_required_level || item.equipment_roles || item.equipment_types) {
