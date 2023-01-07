@@ -61,7 +61,7 @@ function EventMeteorShowerWeather:_spawn_meteorite()
    local terrain_bounds = stonehearth.terrain:get_bounds()
    local x = rng:get_int(terrain_bounds.min.x, terrain_bounds.max.x)
    local z = rng:get_int(terrain_bounds.min.z, terrain_bounds.max.z)
-   local pt = radiant.terrain.get_point_on_terrain(x, terrain_bounds.max.y, z)
+   local pt = radiant.terrain.get_point_on_terrain(Point3(x, terrain_bounds.max.y, z))
    local ground_point = radiant.terrain.find_placement_point(pt, 0, 10, meteorite)
 
    -- Don't hit water.
