@@ -1,5 +1,6 @@
 App.StonehearthBuildingFixtureListView.reopen({
    categories: {
+      mercantile: true,
       training_equipment: true,
 		mechanism: true,
 		herbalist_planter: true,

@@ -1,0 +1,31 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(candelabra_iron.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Iron Candle Holder",
+         "description": "let there be light!",
+         "icon": "file(candelabra_iron.png)",
+         "category": "decoration",
+         "material_tags": [
+            "light_source",
+            "iron",
+            "candle",
+            "crafted",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

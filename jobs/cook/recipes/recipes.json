@@ -1,5 +1,8 @@
 {
    "craftable_recipes": {
+      "mixintypes": {
+         "animal_feed": "remove"
+      },
 	   "workbenches": {
 		  "recipes": {
             "cook_table": {
@@ -306,31 +309,6 @@
 				},			
 				"hearth_ambrosia": {
                "recipe": "file(hearth_ambrosia_recipe.json)"
-            }
-         }
-      },
-	   "animal_feed": {
-			"name": "i18n(stonehearth_ace:jobs.cook.recipes.animal_feed_name)",
-         "recipes": {
-				"mixintypes": {
-					"sheep_feed": "remove",
-					"poyo_feed": "remove",
-					"rabbit_feed": "remove"
-				},
-				"kibble": {
-               "recipe": "file(kibble_recipe.json)"
-            },
-            "kibble_fish": {
-               "recipe": "file(kibble_fish_recipe.json)"
-            },
-            "kibble_meat": {
-               "recipe": "file(kibble_meat_recipe.json)"
-            },
-				"kibble_veggie": {
-               "recipe": "file(kibble_veggie_recipe.json)"
-            },
-				"kibble_hearth": {
-               "recipe": "file(kibble_hearth_recipe.json)"
             }
          }
       },

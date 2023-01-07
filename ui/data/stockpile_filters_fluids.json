@@ -478,11 +478,83 @@
                "icon": "/stonehearth_ace/entities/trees/oak_tree/seed/edible_nuts_icon.png",
                "filter": "seed_hard cooking_ingredient"
             },
+            "chestnuts": {
+               "ordinal": 9.1,
+               "display_name": "i18n(stonehearth_ace:entities.food.chestnut.chestnut_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/chestnut/chestnut_basket/chestnut_basket.png",
+               "filter": "food_container chestnut"
+            },
+            "almonds": {
+               "ordinal": 9.2,
+               "display_name": "i18n(stonehearth_ace:entities.food.almond.almond_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/almond/almond_basket/almond_basket.png",
+               "filter": "food_container almond"
+            },
+            "walnuts": {
+               "ordinal": 9.3,
+               "display_name": "i18n(stonehearth_ace:entities.food.walnut.walnut_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/walnut/walnut_basket/walnut_basket.png",
+               "filter": "food_container walnut"
+            },
+            "hazelnuts": {
+               "ordinal": 9.4,
+               "display_name": "i18n(stonehearth_ace:entities.food.hazelnut.hazelnut_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/hazelnut/hazelnut_basket/hazelnut_basket.png",
+               "filter": "food_container hazelnut"
+            },
             "edible_fruit": {
                "ordinal": 10,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_edible_fruit)",
                "icon": "/stonehearth_ace/entities/trees/apple_tree/seed/edible_fruits_icon.png",
                "filter": "seed_fruit cooking_ingredient"
+            },
+            "berries": {
+               "display_name": "i18n(stonehearth:entities.food.berries.berry_basket.display_name)",
+               "filter": "raw_food berry",
+               "icon": "/stonehearth_ace/entities/food/berries/berry_basket/berry_basket.png",
+               "ordinal": 10.1
+            },
+            "prickly_pear": {
+               "display_name": "i18n(stonehearth:entities.food.prickly_pear.prickly_pear_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/prickly_pear/prickly_pear_basket/prickly_pear_basket.png",
+               "ordinal": 10.2,
+               "filter": "raw_food prickly_pear"
+            },
+            "cherries": {
+               "ordinal": 10.3,
+               "display_name": "i18n(stonehearth_ace:entities.food.cherries.cherry_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/cherries/cherry_basket/cherry_basket.png",
+               "filter": "raw_food cherry"
+            },
+            "coffee_cherries": {
+               "ordinal": 10.4,
+               "display_name": "i18n(stonehearth_ace:entities.food.coffee.coffee_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/coffee/coffee_basket/coffee_basket.png",
+               "filter": "raw_food coffee"
+            },
+            "apple": {
+               "ordinal": 10.5,
+               "display_name": "i18n(stonehearth_ace:entities.food.apples.apple_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/apples/apple_basket/apple_basket.png",
+               "filter": "raw_food apple"
+            },
+            "date": {
+               "ordinal": 10.6,
+               "display_name": "i18n(stonehearth_ace:entities.food.dates.date_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/dates/date_basket/date_basket.png",
+               "filter": "raw_food date"
+            },
+            "plum": {
+               "ordinal": 10.7,
+               "display_name": "i18n(stonehearth_ace:entities.food.plums.plum_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/plums/plum_basket/plum_basket.png",
+               "filter": "raw_food plum"
+            },
+            "pear": {
+               "ordinal": 10.8,
+               "display_name": "i18n(stonehearth_ace:entities.food.pears.pear_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/pears/pear_basket/pear_basket.png",
+               "filter": "raw_food pear"
             },
             "coffee_green": {
                "ordinal": 11,

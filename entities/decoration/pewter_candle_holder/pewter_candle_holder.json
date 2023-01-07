@@ -1,0 +1,42 @@
+{
+   "type": "entity",
+   "mixins": "file(pewter_candle_holder_ghost.json)",
+   "components": {
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:lamp": {
+         "light_effect": "stonehearth_ace:effects:candle_holder",
+         "light_origin": { "x": 0, "y": 1, "z": 0 }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(pewter_candle_holder_iconic.json)",
+         "ghost_form": "file(pewter_candle_holder_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:traveler_attraction": {}
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 8,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 9
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

@@ -1185,7 +1185,7 @@
                   }
                },
                "tier_1_returning_silk_road_encounter": {
-                  "title": "A small caravan from the far east is passing through!",
+                  "title": "A small far eastern caravan is passing through!",
                   "trade_details": "\"Hello, people of [str(i18n_data.town_name)]!\"<p>It seems to be a small caravan in service to Dom Vandon, on its way back from the Silk Road with a few articles from the eastern kingdoms. They are offering <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if we provide them with <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> for their next journey.<p>They can wait for [str(i18n_data.num_days)] days.",
                   "waiting_title": "The Far East caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
                   "waiting_text": "The Far East caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> ready for them!",
@@ -1194,7 +1194,7 @@
                   "return_greetings_negative": "\"We're about to proceed back into the Silk Road and it seems you've not procured us [str(i18n_data.want_number)] [str(i18n_data.want_item)]. It's alright... Look for our caravan again in the future, yes, yes.\"<p>They start leaving."
                },
                "tier_2_returning_silk_road_encounter": {
-                  "title": "A caravan from the far east is passing through!",
+                  "title": "A far eastern caravan is passing through!",
                   "trade_details": "\"Warm greetings, friends of [str(i18n_data.town_name)]!\"<p>It seems to be a fairly sized caravan in service to Dom Vandon, on its way back from the Silk Road with several and valuable articles from the eastern kingdoms. They are offering <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if we provide them with <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> for their next journey.<p>They can wait for [str(i18n_data.num_days)] days.",
                   "waiting_title": "The Far East caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
                   "waiting_text": "The Far East caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> ready for them!",
@@ -1203,7 +1203,7 @@
                   "return_greetings_negative": "\"It's time for us to return to the east and you don't seem to have [str(i18n_data.want_number)] [str(i18n_data.want_item)]. Not a problem, we might come back some other day! Safe passage under the moonlight, friend!\"<p>They start leaving."
                },
                "tier_3_returning_silk_road_encounter": {
-                  "title": "A large caravan from the far east is passing through!",
+                  "title": "A large far eastern caravan is passing through!",
                   "trade_details": "\"Very fragrant greetings, dear friends of [str(i18n_data.town_name)]!\"<p>It seems to be a huge caravan in service to Dom Vandon, on its way back from the Silk Road with lots of fancy and precious articles from the eastern kingdoms. They are offering <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if we provide them with <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> for their next journey.<p>They can wait for [str(i18n_data.num_days)] days.",
                   "waiting_title": "The Far East caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
                   "waiting_text": "The Far East caravan will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)]</strong> ready for them!",
@@ -4984,7 +4984,7 @@
          },
          "shepherd_crook_corn": {
             "display_name": "Shepherd's Corn Crook",
-            "description": "Compassion is increased."
+            "description": "Compassion and inspiration are increased. Crafting is faster."
          },
          "frostfeast": {
             "merry_time": {
@@ -7030,7 +7030,7 @@
          },
          "herbalist_mortar_pewter": {
             "display_name": "Herbalist's Pewter Mortar",
-            "description": "A fancy metallic mortar and pestle for increasing the Herbalist's speed."
+            "description": "A fancy mortar set for increasing the Herbalist's speed and quality."
          },
          "herbalist_pestle_pewter": {
             "display_name": "Herbalist's Pewter Pestle",
@@ -7446,11 +7446,6 @@
                "recipe_name": "Porcelain Golden Tile Wall",
                "description": "Even fancier with gildings!",
                "flavor": "Reflects light so well it's almost blinding"
-            },
-            "simple_bed_pet_recipe": {
-               "recipe_name": "Thatch Pet Bed",
-               "description": "A slightly better place for hearthlings' pets to sleep.",
-               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
             "clay_comfy_bed_pet_recipe": {
                "recipe_name": "Clay Comfy Pet Bed",
@@ -8041,11 +8036,6 @@
                "recipe_name": "Stone Practice Axe",
                "flavor": "Training with stone weapons is a cruel but efficient joke"
             },
-            "simple_bed_pet_2_recipe": {
-               "recipe_name": "Dry Thatch Pet Bed",
-               "description": "A slightly better place for hearthlings' pets to sleep.",
-               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
-            },
             "stone_comfy_bed_pet_recipe": {
                "recipe_name": "Stone Comfy Pet Bed",
                "description": "Allows animals to have a more comfortable sleep.",
@@ -8474,42 +8464,42 @@
             },
             "cook_spoon_copper_recipe": {
                "recipe_name": "Cook's Copper Spoon",
-               "description": "Create a lighter and cleaner spoon that will improve the Cook's efficiency.",
+               "description": "Create a lighter and cleaner spoon that will improve the Cook's efficiency and the quality of their crafts.",
                "flavor": ""
             },
             "herbalist_mortar_pestle_pewter_recipe": {
                "recipe_name": "Herbalist's Pewter Mortar",
-               "description": "Craft a fancy metallic mortar and pestle to increase the Herbalist's crafting speed.",
+               "description": "Craft a fancy metallic mortar and pestle to increase the Herbalist's crafting speed and quality output.",
                "flavor": ""
             },
             "mason_chisel_iron_recipe": {
                "recipe_name": "Mason's Iron Chisel",
-               "description": "Craft a set of hammer and chisel out of iron to improve the Mason's crafting speed.",
+               "description": "Craft a set of hammer and chisel out of iron to improve the Mason's crafting speed and work quality.",
                "flavor": "This tool will also improve their repair efficiency!"
             },
             "potter_cutter_iron_recipe": {
                "recipe_name": "Potter's Iron Cutter",
-               "description": "Create an improved, sharper cutter for the Potter so they can craft faster.",
+               "description": "Create an improved, sharper cutter for the Potter so they can craft faster and better.",
                "flavor": "This tool will also improve their repair efficiency!"
             },
             "blacksmith_hammer_steel_recipe": {
                "recipe_name": "Blacksmith's Steel Hammer",
-               "description": "Forge a new and stronger hammer out of steel for the Blacksmith, improving their crafting speed.",
-               "flavor": "The hammer is a blacksmith's most loyal companion, like a shield to a knight or the moon to the night. -Lucan Varius, Artifex Ignis"
+               "description": "Forge a new and stronger hammer for the Blacksmith, improving their crafting speed and work quality.",
+               "flavor": "The hammer is our most loyal companion, like a shield to a knight or the moon to the night. -Lucan Varius, Artifex Ignis"
             },
             "carpenter_saw_steel_recipe": {
                "recipe_name": "Carpenter's Steel Saw",
-               "description": "Make an enhanced steel saw that will allow the Carpenter to be faster when crafting.",
+               "description": "Make an enhanced steel saw that will allow the Carpenter to be faster and better when crafting.",
                "flavor": "This tool will also improve their repair efficiency!"
             },
             "engineer_wrench_steel_recipe": {
                "recipe_name": "Engineer's Steel Wrench",
-               "description": "Make an enhanced steel wrench that will allow the Engineer to be faster when crafting.",
+               "description": "Make an enhanced steel wrench that will allow the Engineer to be faster and better when crafting.",
                "flavor": "This tool will also improve their repair efficiency!"
             },
             "brewer_tumbler_copper_recipe": {
                "recipe_name": "Brewer's Copper Tumbler",
-               "description": "Make an enhanced copper tumbler that will allow the Brewer to be faster when crafting.",
+               "description": "Make an enhanced copper tumbler that will allow the Brewer to be faster and better when crafting.",
                "flavor": ""
             },
             "trapper_knife_steel_recipe": {
@@ -8519,43 +8509,13 @@
             },
             "weaver_spindle_steel_recipe": {
                "recipe_name": "Weaver's Spindle & Steel Needle",
-               "description": "Create a set of elegant, silver coated needles to improve the Weaver's crafting speed.",
+               "description": "Create a set of elegant, silver coated needles to improve the Weaver's crafting speed and work quality.",
                "flavor": "This tool will also improve their repair efficiency!"
             },
             "farmer_hoe_iron_recipe": {
                "recipe_name": "Farmer's Iron Hoe",
                "description": "Craft a tool that Farmers can use to slightly improve their working efficiency.",
                "flavor": ""
-            },
-            "worker_axe_iron_recipe": {
-               "recipe_name": "Iron Worker's Axe",
-               "description": "Craft a tool that Workers can use to slightly improve their efficiency when cutting trees.",
-               "flavor": ""
-            },
-            "worker_axe_steel_recipe": {
-               "recipe_name": "Steel Worker's Axe",
-               "description": "Craft a tool that Workers can use to greatly improve their efficiency when cutting trees.",
-               "flavor": ""
-            },
-            "worker_hammer_iron_recipe": {
-               "recipe_name": "Iron Worker's Hammer",
-               "description": "Craft a tool that Workers can use to slightly improve their efficiency when building.",
-               "flavor": ""
-            },
-            "worker_hammer_steel_recipe": {
-               "recipe_name": "Steel Worker's Hammer",
-               "description": "Craft a tool that Workers can use to greatly improve their efficiency when building.",
-               "flavor": ""
-            },
-            "mining_pick_iron_recipe": {
-               "recipe_name": "Iron Worker's Pick",
-               "description": "Craft a tool that Workers can use to slightly improve their efficiency when mining.",
-               "flavor": "This tool will also improve the odds of obtaining better quality resources"
-            },
-            "mining_pick_steel_recipe": {
-               "recipe_name": "Steel Worker's Pick",
-               "description": "Craft a tool that Workers can use to greatly improve their efficiency when mining.",
-               "flavor": "This tool will also improve the odds of obtaining better quality resources"
             },
             "worker_tools_iron_recipe": {
                "recipe_name": "Worker's Iron Tools",
@@ -8977,7 +8937,6 @@
             "food_preparation_name": "Ingredients & Preparation",
             "baking_name": "Baking Goods",
             "brewing_name": "Brewing Ingredients",
-            "animal_feed_name": "Pet Kibble",
             "cook_pottage_recipe": {
                "recipe_name": "Campfire Pot",
                "description": "A handy cauldron that can be used by anyone - not just the Cook - to prepare pottage!",
@@ -9453,31 +9412,6 @@
                "recipe_name": "Large Rye Bundle",
                "description": "For when normal rye bales are just too small. Good for efficiently storing a large amount of rye"
             },
-            "kibble_recipe": {
-               "recipe_name": "Kibble (x5)",
-               "description": "Bake simple, basic rations for pets. All animals will eat this kibble.",
-               "flavor": "Not their favorite but will do the trick"
-            },
-            "kibble_fish_recipe": {
-               "recipe_name": "Fish Kibble (x5)",
-               "description": "Bake savory, crunchy rations for pets. Exclusively vegetarian animals will not eat this kibble.",
-               "flavor": "Particularly tasty for kittens"
-            },
-            "kibble_meat_recipe": {
-               "recipe_name": "Meat Kibble (x5)",
-               "description": "Bake hearty, proteic rations for pets. Exclusively vegetarian animals will not eat this kibble.",
-               "flavor": "More efficient than fish, but not as tasty"
-            },
-            "kibble_veggie_recipe": {
-               "recipe_name": "Veggie Kibble (x5)",
-               "description": "Bake delicious and healthy rations for pets. Exclusively carnivore animals will not eat this kibble.",
-               "flavor": ""
-            },
-            "kibble_hearth_recipe": {
-               "recipe_name": "Hearthbud Kibble (x4)",
-               "description": "Bake magically enhanced rations that will make your pets extremely satisfied! All animals will eat this kibble.",
-               "flavor": "Our pets deserve all the love"
-            },
             "malted_grains_recipe": {
                "description": "Toast some mixed, starchy grains. An ingredient necessary for brewing.",
                "flavor": "Malted Grains can also be milled for cooking oil"
@@ -9544,7 +9478,7 @@
          },
          "cook_spoon_copper": {
             "display_name": "Cook's Copper Spoon",
-            "description": "Lighter and cleaner, this spoon will improve the Cook's efficiency."
+            "description": "Lighter and cleaner, this spoon will improve the Cook's efficiency and quality."
          },
          "cook_workbench": {
             "cook_workbench_ghost": {
@@ -9682,11 +9616,6 @@
             "wood_bed_crude_recipe": {
                "recipe_name": "Mean Bed Frame",
                "description": "Literally sleeping on a board."
-            },
-            "simple_bed_pet_recipe": {
-               "recipe_name": "Thatch Pet Bed",
-               "description": "A slightly better place for hearthlings' pets to sleep.",
-               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
             },
             "comfy_bed_pet_recipe": {
                "recipe_name": "Comfy Pet Bed",
@@ -10303,6 +10232,7 @@
             "refining_name": "Refinement",
             "animal_feed_name": "Animal Feed",
             "animal_furniture_name": "Animal Furniture",
+            "pets_name": "Pet Food & Furniture",
             "decorations_name": "Decorations",
             "shepherd_churn_recipe": {
                "recipe_name": "Shepherd's Churn",
@@ -10396,6 +10326,41 @@
                "description": "Animal fodder imbued with the essence of the hearth.",
                "flavor": "Hearthbud Animal Fodder is appreciated by all animals and will greatly increase the quality of their products!"
             },
+            "kibble_recipe": {
+               "recipe_name": "Kibble (x5)",
+               "description": "Bake simple, basic rations for hearthlings' pets. All will eat this kibble.",
+               "flavor": "Not their favorite but will do the trick; The Shepherd can use the Cook's Oven for this recipe"
+            },
+            "kibble_fish_recipe": {
+               "recipe_name": "Fish Kibble (x5)",
+               "description": "Bake savory, crunchy rations for hearthlings' pets. Exclusively vegetarian pets will not eat this kibble.",
+               "flavor": "Particularly tasty for kittens; The Shepherd can use the Cook's Oven for this recipe"
+            },
+            "kibble_meat_recipe": {
+               "recipe_name": "Meat Kibble (x5)",
+               "description": "Bake hearty, proteic rations for hearthlings' pets. Exclusively vegetarian pets will not eat this kibble.",
+               "flavor": "More efficient than fish, but not as tasty; The Shepherd can use the Cook's Oven for this recipe"
+            },
+            "kibble_veggie_recipe": {
+               "recipe_name": "Veggie Kibble (x5)",
+               "description": "Bake delicious and healthy rations for hearthlings' pets. Exclusively carnivore pets will not eat this kibble.",
+               "flavor": "The Shepherd can use the Cook's Oven for this recipe"
+            },
+            "kibble_hearth_recipe": {
+               "recipe_name": "Hearthbud Kibble (x4)",
+               "description": "Bake magically enhanced rations that will make hearthlings' pets extremely satisfied! All pets will eat this kibble.",
+               "flavor": "❤ Our pets deserve all the love ❤"
+            },
+            "simple_bed_pet_recipe": {
+               "recipe_name": "Straw Pet Bed",
+               "description": "A slightly better place for hearthlings' pets to sleep.",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
+            "simple_bed_pet_2_recipe": {
+               "recipe_name": "Thatch Pet Bed",
+               "description": "A slightly better place for hearthlings' pets to sleep.",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
             "frostfeast": {
                "goat_recipe": {
                   "recipe_name": "Frostfeast Goat",
@@ -10477,7 +10442,7 @@
          },
          "shepherd_crook_corn": {
             "display_name": "Shepherd's Corn Crook",
-            "description": "This beautiful crook increases the Shepherd's Compassion and the happiness of the animals."
+            "description": "A crook that increases the Shepherd's Compassion and the happiness of the herd."
          },
          "shepherd_churn": {
             "display_name": "Shepherd Churn",
@@ -13695,7 +13660,7 @@
             }
          },
          "skins": {
-            "display_name": "Any Skin"
+            "display_name": "Any Hard Skin"
          },
          "chitin": {
             "display_name": "Any Chitin"
@@ -13753,6 +13718,14 @@
             "starsteel_ore": {
                "display_name": "Meteoric Fragment",
                "description": "It came from the sky! I swear it on my pet poyo!"
+            }
+         },
+         "skin": {
+            "zilla_skin": {
+               "description": "Rough and scaly, it's always just a little warm. Can be used as leather."
+            },
+            "varanus_skin": {
+               "description": "Rough and scaly. Can be used as leather."
             }
          }
       },
@@ -14814,7 +14787,7 @@
             "description": "Better than the ground, bedrolls are good for their portability."
          },
          "simple_bed_pet": {
-            "display_name": "Thatch Pet Bed",
+            "display_name": "Straw Pet Bed",
             "description": "A slightly better place for pets to sleep. Place it close to their owner's bed!"
          },
          "ornate_bed_pet": {
@@ -14826,7 +14799,7 @@
             "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!"
          },
          "simple_bed_pet_2": {
-            "display_name": "Dry Thatch Pet Bed",
+            "display_name": "Thatch Pet Bed",
             "description": "A slightly better place for pets to sleep. Place it close to their owner's bed!"
          },
          "stone_comfy_bed_pet": {
@@ -20108,19 +20081,19 @@
          },
          "blacksmith_hammer_steel": {
             "display_name": "Blacksmith's Steel Hammer",
-            "description": "Improves the blacksmith's efficiency allowing them to craft faster."
+            "description": "Improves the blacksmith's efficiency allowing them to craft faster and better!"
          },
          "carpenter_saw_steel": {
             "display_name": "Carpenter's Steel Saw",
-            "description": "An improved version of the carpenter's tool, provides faster crafting."
+            "description": "An improved version of the carpenter's tool, provides faster and better crafting."
          },
          "mason_chisel_iron": {
             "display_name": "Mason's Iron Chisel",
-            "description": "This enhanced tool will allow the Mason to be faster when creating things."
+            "description": "This enhanced tool will allow the Mason to be faster and better when creating things."
          },
          "potter_cutter_iron": {
             "display_name": "Potter's Iron Cutter",
-            "description": "This versatile tool can improve the efficiency of the Potter when crafting."
+            "description": "This versatile tool can improve the efficiency and quality of the Potter's work."
          },
          "trapper_knife_steel": {
             "display_name": "Trapper's Steel Knife",
@@ -20128,7 +20101,7 @@
          },
          "weaver_steel_needle": {
             "display_name": "Weaver's Spindle & Steel Needle",
-            "description": "A silver-coated needle will allow the Weaver to be much more efficient!"
+            "description": "A silver-coated needle will allow the Weaver to be more efficient and precise."
          },
          "mason_hammer_iron": {
             "display_name": "Mason's Iron Hammer",
@@ -20136,11 +20109,11 @@
          },
          "brewer_tumbler_copper": {
             "display_name": "Brewer's Copper Tumbler",
-            "description": "Improves the brewer's efficiency allowing them to craft faster."
+            "description": "Improves the brewer's efficiency allowing them to craft faster and better!"
          },
          "engineer_wrench_steel": {
             "display_name": "Engineer's Steel Wrench",
-            "description": "Improves the engineer's efficiency allowing them to craft faster."
+            "description": "Improves the engineer's efficiency allowing them to craft faster and better!"
          }
       },
       "tile": {
@@ -22864,7 +22837,8 @@
             "fruits_raw_name": "Any Basket of Fruits",
             "fruits_berry_name": "Any Berry",
             "food_veggie_name": "Any Vegetable or Pickles",
-            "fiber_spinnable_resource_name": "Any Spinnable Bundle of Fiber"
+            "fiber_spinnable_resource_name": "Any Spinnable Bundle of Fiber",
+            "skin_resource_name": "Any Hard Skin"
          }
       }
    },

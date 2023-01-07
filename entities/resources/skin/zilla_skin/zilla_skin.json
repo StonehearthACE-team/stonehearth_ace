@@ -1,7 +1,11 @@
 {
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags": ["skin"]
+         "description": "i18n(stonehearth_ace:entities.resources.skin.zilla_skin.description)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": ["stockpile_animal_part", "resource", "animal_part", "skin", "hard_pelt", "undesirable_ingredient", "leather"]
       }
    }
 }

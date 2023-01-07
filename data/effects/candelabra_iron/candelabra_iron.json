@@ -1,0 +1,70 @@
+{
+   "type": "effect",
+   "tracks": {
+      "center tiny_fire": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/ace_tiny_fire.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1.9, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "center cubemitter_glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/lamp/large_oil_lamp_glow.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1.65, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "2 tiny_fire": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/ace_tiny_fire.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.5, "y": 1.65, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "3 tiny_fire": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/ace_tiny_fire.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.5, "y": 1.65, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "4 tiny_fire": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/ace_tiny_fire.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1.65, "z": 0.5,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "5 tiny_fire": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/ace_tiny_fire.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 1.65, "z": -0.5,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "light": {
+         "type": "light",
+         "light": "/stonehearth_ace/data/horde/animatedlights/lamp/oil_lamp.animatedlight.json",
+         "transforms": { "x": 0, "y": 2.5, "z": 0 }
+      }
+   }
+}

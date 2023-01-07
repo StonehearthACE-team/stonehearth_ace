@@ -78,6 +78,33 @@
 			   }
 		   }
 	   },
+		"pets": {
+			"ordinal": 35,
+			"name": "i18n(stonehearth_ace:jobs.shepherd.recipes.pets_name)",
+         "recipes": {
+				"simple_bed_pet": {
+					"recipe": "file(simple_bed_pet_recipe.json)"
+				},
+				"simple_bed_pet_2": {
+					"recipe": "file(simple_bed_pet_2_recipe.json)"
+				},
+				"kibble": {
+               "recipe": "file(kibble_recipe.json)"
+            },
+            "kibble_fish": {
+               "recipe": "file(kibble_fish_recipe.json)"
+            },
+            "kibble_meat": {
+               "recipe": "file(kibble_meat_recipe.json)"
+            },
+				"kibble_veggie": {
+               "recipe": "file(kibble_veggie_recipe.json)"
+            },
+				"kibble_hearth": {
+               "recipe": "file(kibble_hearth_recipe.json)"
+            }
+         }
+      },
 		"decorations": {
          "ordinal": 85,
          "name": "i18n(stonehearth_ace:jobs.shepherd.recipes.decorations_name)",

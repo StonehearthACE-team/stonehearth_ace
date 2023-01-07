@@ -1,0 +1,35 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(pewter_candle_holder.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.105
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Skull Candle Holder",
+         "description": "Guests love it... sometimes.",
+         "icon": "file(pewter_candle_holder.png)",
+         "category": "decoration",
+         "material_tags": [
+            "light_source",
+            "crafted",
+            "metal",
+            "pewter",
+            "candle",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

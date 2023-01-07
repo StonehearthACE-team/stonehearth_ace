@@ -44,15 +44,16 @@
          "type": "sound_effect",
          "duration": 1000,
          "start_time": 0,
-         "min_distance": 40,
-         "falloff": 3.1,
-         "volume": 66,
+         "min_distance": 36,
+         "falloff" : 6,
+         "volume": 55,
          "track": {
             "type": "one_of",
             "items": [
                "stonehearth_ace:sounds:starstruck_01",
                "stonehearth_ace:sounds:starstruck_02",
-               "stonehearth_ace:sounds:starstruck_03"
+               "stonehearth_ace:sounds:starstruck_03",
+               "stonehearth_ace:sounds:starstruck_04"
             ]
          }
       }
