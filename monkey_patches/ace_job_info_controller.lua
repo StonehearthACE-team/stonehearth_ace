@@ -5,8 +5,18 @@ local AceJobInfoController = class()
 
 local log = radiant.log.create_logger('job_info')
 
+AceJobInfoController._ace_old_activate = JobInfoController.activate
+function AceJobInfoController:activate()
+   self._all_recipes = {}
+   self:_ace_old_activate()
+end
+
 function AceJobInfoController:get_class_name()
    return self._sv.class_name
+end
+
+function AceJobInfoController:is_enabled()
+   return self._description_json and self._description_json.enabled
 end
 
 function AceJobInfoController:foreach_available_recipes(fn)
@@ -66,15 +76,16 @@ function AceJobInfoController:_job_can_craft_exact(product_uri, require_unlocked
    return true
 end
 
-function AceJobInfoController:queue_order_if_possible(product_uri, amount, building, require_exact, insert_order)
-   -- if we can craft this product, queue it up and return true
-   local craft_uri = self:job_can_craft(product_uri, true, require_exact)
-   if not craft_uri then
-      return false
-   end
+function AceJobInfoController:is_recipe_unlocked(recipe_key)
+   local recipe = self._all_recipes[recipe_key]
+   return recipe and (not recipe.manual_unlock or self._sv.manually_unlocked[recipe_key])
+end
 
-   -- queue up the appropriate uri (could be an alternate)
-   return self._sv.order_list:request_order_of(self._sv.player_id, craft_uri, amount, building, insert_order)
+function AceJobInfoController:queue_order_if_possible(product_uri, amount, building, require_exact, insert_order)
+   -- this is no longer used except by deprecated building component
+   -- call our new system just in case this is called
+   local player_jobs_controller = stonehearth.job:get_jobs_controller(self._sv.player_id)
+   return player_jobs_controller:request_craft_product(product_uri, amount, building, require_exact, insert_order)
 end
 
 function AceJobInfoController:remove_craft_orders_for_building(bid)
@@ -229,6 +240,7 @@ end
 
 -- Prep the recipe data with any default values
 function AceJobInfoController:_initialize_recipe_data(recipe_key, recipe_data)
+   self._all_recipes[recipe_key] = recipe_data
    if not recipe_data.level_requirement then
       recipe_data.level_requirement = 0
    end

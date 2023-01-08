@@ -47,17 +47,25 @@ function AcePlayerJobsController:_ensure_all_job_indexes()
    end
 end
 
-function AcePlayerJobsController:request_craft_product(product_uri, amount, building, require_exact, insert_order)
+function AcePlayerJobsController:request_craft_product(product_uri, amount, building, require_exact, insert_order, condition)
+   log:debug('request_craft_product( %s, %s, %s, %s, %s, %s )', product_uri, amount, tostring(building), tostring(require_exact), tostring(insert_order), tostring(condition))
    -- first try it with requiring exact; that way we don't default to a secondary option if the primary is available
    if not require_exact then
-      local result = self:request_craft_product(product_uri, amount, building, true, insert_order)
+      local result = self:request_craft_product(product_uri, amount, building, true, insert_order, condition)
       if result ~= nil then
          return result
       end
    end
    
-   for _, job_info in pairs(self._sv.jobs) do
-      local order = job_info:queue_order_if_possible(product_uri, amount, building, require_exact, insert_order)
+   -- TODO: this can be reworked to call crafter_info directly
+   -- then it can just do the sort and pick the best recipe to use
+   -- and call that job_info controller only
+   -- craft_order_list will need to be patched to call this then
+   local products = not require_exact and radiant.entities.get_alternate_uris(product_uri) or {[product_uri] = true}
+   local selection = self:_get_recipe_info_from_products(products, amount)
+
+   if selection then
+      local order = selection.recipe_info.order_list:request_order_of(self._sv.player_id, selection.recipe_info, selection.produces, amount, building, insert_order, condition)
       if order then
          -- it's just true if the order didn't need to be created
          -- otherwise it returns the actual order
@@ -68,6 +76,90 @@ function AcePlayerJobsController:request_craft_product(product_uri, amount, buil
          end
       end
    end
+end
+
+-- Used to get a recipe if it can be used to craft `ingredient`.
+-- Returns information such as what the recipe itself and the order list used for it.
+function AcePlayerJobsController:_get_recipe_info_from_products(products, amount)
+   -- Take the cheapest recipe on a per-product basis
+   local choices = {}
+   local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(self._sv.player_id)
+   local inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
+
+   for product, consider in pairs(products) do
+      if consider then
+         local possible = crafter_info:get_possible_recipes(product)
+         for recipe_info, count in pairs(possible) do
+            -- verify that the recipe is accessible (if it requires unlocking, it is unlocked)
+            if recipe_info.job_info:is_recipe_unlocked(recipe_info.recipe.recipe_key) then
+               -- if we only want to craft one, we don't want to divide the cost by the number produced
+               table.insert(choices, {
+                  recipe_info = recipe_info,
+                  produces = count,
+                  cost = recipe_info.recipe.cost / math.min(count, amount),
+                  has_job = recipe_info.job_info:has_members(),
+                  can_craft = self:_can_craft_recipe(inventory, recipe_info),
+               })
+            end
+         end
+      end
+   end
+
+   -- prefer craftable recipes (has job and level requirement)
+   table.sort(choices, function(a, b)
+      if a.can_craft and b.can_craft then
+         return a.cost < b.cost
+      elseif a.can_craft then
+         return true
+      elseif b.can_craft then
+         return false
+      elseif a.has_job and not b.has_job then
+         return true
+      elseif b.has_job and not a.has_job then
+         return false
+      else
+         return (a.recipe_info.recipe.level_requirement or 1) < (b.recipe_info.recipe.level_requirement or 1)
+      end
+   end)
+
+   return choices[1]
+end
+
+function AcePlayerJobsController:_can_craft_recipe(inventory, recipe_info)
+   -- check max crafter level of the specified job in the specified player's town
+   -- to see if this recipe is currently craftable
+   if recipe_info.job_info:get_highest_level() >= (recipe_info.recipe.level_requirement or 1) then
+      -- check if it requires a workshop and that workshop exists
+      if recipe_info.recipe.workshop then
+         local workshop_uri = recipe_info.recipe.workshop.uri
+   
+         if self:_has_valid_workshop(inventory, workshop_uri) then
+            return true
+         else
+            -- Not an exact match. Maybe a valid equivalent?
+            local workshop_entity_data = radiant.entities.get_entity_data(workshop_uri, 'stonehearth:workshop')
+            if workshop_entity_data then
+               local equivalents = workshop_entity_data.equivalents
+               if equivalents then
+                  for _, equivalent in ipairs(equivalents) do
+                     if self:_has_valid_workshop(inventory, equivalent) then
+                        return true
+                     end
+                  end
+               end
+            end
+         end
+
+         return false
+      end
+
+      return true
+   end
+end
+
+function AcePlayerJobsController:_has_valid_workshop(inventory, workshop_uri)
+   local workshop_data = inventory:get_items_of_type(workshop_uri)
+   return workshop_data and workshop_data.count > 0
 end
 
 function AcePlayerJobsController:remove_craft_orders_for_building(bid)

@@ -108,6 +108,7 @@ function catalog_lib.load_catalog(catalog, added_cb)
                local iconic_uri = catalog_data.iconic_uri
                local iconic_data = iconic_uri and catalog[iconic_uri]
                if iconic_data then
+                  checked[alternate_iconic_uris] = true
                   _all_alternate_uris[iconic_uri] = alternate_iconic_uris
                   alternate_iconic_uris[iconic_uri] = true
                   iconic_data.alternate_uris = alternate_iconic_uris
@@ -166,6 +167,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
    end
 
    local catalog_data = radiant.shallow_copy(base_data)
+   catalog[full_alias] = catalog_data
 
    local result = {
       buyable = false,
@@ -192,37 +194,40 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          end
       end
 
-      local catalog = entity_data['stonehearth:catalog']
-      if catalog ~= nil then
-         if catalog.display_name ~= nil then
-            catalog_data.display_name = catalog.display_name
+      local catalog_entity_data = entity_data['stonehearth:catalog']
+      if catalog_entity_data ~= nil then
+         if catalog_entity_data.display_name ~= nil then
+            catalog_data.display_name = catalog_entity_data.display_name
          end
-         if catalog.description ~= nil then
-            catalog_data.description = catalog.description
+         if catalog_entity_data.description ~= nil then
+            catalog_data.description = catalog_entity_data.description
          end
-         if catalog.icon ~= nil then
-            catalog_data.icon = catalog.icon
+         if catalog_entity_data.icon ~= nil then
+            catalog_data.icon = catalog_entity_data.icon
          end
-         if catalog.category ~= nil then
-            catalog_data.category = catalog.category
+         if catalog_entity_data.category ~= nil then
+            catalog_data.category = catalog_entity_data.category
          end
-         if catalog.is_item ~= nil then
-            catalog_data.is_item = catalog.is_item
+         if catalog_entity_data.is_item ~= nil then
+            catalog_data.is_item = catalog_entity_data.is_item
          end
-         if catalog.material_tags ~= nil then
-            catalog_data.materials = catalog.material_tags
+         if catalog_entity_data.material_tags ~= nil then
+            catalog_data.materials = catalog_entity_data.material_tags
          end
-         if catalog.player_id ~= nil then
-            catalog_data.player_id = catalog.player_id
+         if catalog_entity_data.player_id ~= nil then
+            catalog_data.player_id = catalog_entity_data.player_id
          end
-         if catalog.subject_override ~= nil then
-            catalog_data.subject_override = catalog.subject_override
+         if catalog_entity_data.subject_override ~= nil then
+            catalog_data.subject_override = catalog_entity_data.subject_override
          end
-         if catalog.alternate_builder_uri ~= nil then
-            catalog_data.alternate_uris = catalog_lib.set_alternate_uris(catalog, catalog.alternate_builder_uri, full_alias)
+         if catalog_entity_data.alternate_builder_uri ~= nil then
+            catalog_data.alternate_uris = catalog_lib.set_alternate_uris(catalog, catalog_entity_data.alternate_builder_uri, full_alias)
          else
-            -- this is the original; the alternates already have their catalog_data.alternate_uris assigned
-            catalog_data.alternate_uris = catalog_lib.get_alternate_uris(full_alias)
+            local alternates = catalog_lib.get_alternate_uris(full_alias)
+            if alternates then
+               -- this is the original; the alternates already have their catalog_data.alternate_uris assigned
+               catalog_data.alternate_uris = alternates
+            end
          end
       end
    end
@@ -393,7 +398,6 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
       end
    end
 
-   catalog[full_alias] = catalog_data
    result.catalog_data = catalog_data
    return result
 end

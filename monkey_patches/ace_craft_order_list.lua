@@ -66,11 +66,11 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
       local missing
       if condition.type == 'make' then
          local needed = condition.amount * ingredient.count
-         local in_storage = self:_ace_get_ingredient_amount_in_storage(ingredient, inv)
+         local in_storage = self:_get_ingredient_amount_in_storage(ingredient, inv)
          -- Go through and combine the orders in all the order lists
          local in_order_list = {}
          for _, order_list in ipairs(crafter_info:get_order_lists()) do
-            local order_list_amount = order_list:ace_get_ingredient_amount_in_order_list(crafter_info, ingredient)
+            local order_list_amount = order_list:_get_ingredient_amount_in_order_list(crafter_info, ingredient)
             for k, v in pairs(order_list_amount) do
                in_order_list[k] = (in_order_list[k] or 0) + v
             end
@@ -93,42 +93,19 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
          --            if it does, proceed to step 3;
          --            if not, continue on to the next ingredient.
 
-         local recipe_info = self:_ace_get_recipe_info_from_product(ingredient.uri or ingredient.material, crafter_info)
-         if recipe_info then
-            --log:debug('a "%s" can be made via the recipe "%s"', ingredient_id, recipe_info.recipe.recipe_name)
-
-            -- Step 3: Recursively check on the ingredient's recipe.
-
-            local num_crafted
-            if ingredient.uri then
-               num_crafted = recipe_info.recipe.products[ingredient.uri]
-            else
-               num_crafted = self:_recipe_produces_materials(recipe_info.recipe, ingredient.material)
-            end
-            local num_to_craft = math.ceil(missing / num_crafted)
-
-            -- shallow copy to get not just the type and the order_index, but anything else that might've been passed along
-            local new_condition = radiant.shallow_copy(condition)
-            if condition.type == 'make' then
-               new_condition.amount = num_to_craft
-               new_condition.requested_amount = missing
-            else -- condition.type == 'maintain'
-               new_condition.at_least = num_to_craft
-            end
-
-            --log:debug('adding the recipe "%s" to %s %d of those', recipe_info.recipe.recipe_name, new_condition.type, missing)
-
+         local player_jobs_controller = stonehearth.job:get_jobs_controller(player_id)
+         local associated_order = player_jobs_controller:request_craft_product(
+               ingredient.uri or ingredient.material, missing, building, false, condition.order_index ~= nil, condition)
+         if associated_order and associated_order ~= true then
             -- Add the new order to the appropiate order list
+            -- if the associated order had associated orders of its own, that's the table we use
+            associated_orders = associated_order:get_associated_orders()
             if not associated_orders then
                associated_orders = {}
-            end
-            local associated_order = recipe_info.order_list:add_order(player_id, recipe_info.recipe, new_condition, building, associated_orders)
-            if associated_order and associated_order ~= true then
                associated_order:set_associated_orders(associated_orders)
                table.insert(associated_orders, {
-                  order_list = recipe_info.order_list,
                   order = associated_order,
-                  ingredient_per_craft = ingredient.count,
+                  ingredient_per_craft = missing,
                })
             end
          end
@@ -140,7 +117,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
       -- See if the order_list already contains a maintain order for the recipe:
       --    if it does, remake the order if its amount is lower than `missing`, otherwise ignore it;
       --    if it doesn't, simply add it as usual
-      local order = self:_ace_find_craft_order(recipe.recipe_name, 'maintain')
+      local order = self:_find_craft_order(recipe.recipe_name, 'maintain')
       if order then
          --log:debug('checking if maintain order "%s" is to be replaced', order:get_recipe().recipe_name)
          --log:detail('this is %sa recursive call, the order\'s value is %d and the new one is %d',
@@ -148,7 +125,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
          --   order:get_condition().at_least,
          --   condition.at_least)
 
-         if not is_recursive_call or order:get_condition().at_least < tonumber(condition.at_least) then
+         if order:get_condition().at_least < tonumber(condition.at_least) then
             -- The order is to be replaced, so remove the current one so when the new one is added;
             -- there are no duplicates of the same recipe
 
@@ -178,12 +155,8 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
          end
       end
 
-      -- if this is the original parent order, need to add it to the associated_orders now
-      if not is_recursive_call then
-         local associated_order = {order_list = self, order = result}
-         table.insert(associated_orders, associated_order)
-         associated_order.order:set_associated_orders(associated_orders)
-      end
+      table.insert(associated_orders, {order_list = self, order = result})
+      result:set_associated_orders(associated_orders)
    end
 
    return result
@@ -217,23 +190,27 @@ function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_o
    return order
 end
 
--- this is used by the job_info_controller:queue_order_if_possible
-function AceCraftOrderList:request_order_of(player_id, product, amount, building, insert_order)
-   log:debug('requesting order of %d %s (%s)', amount, product, insert_order and 'inserting at top' or 'adding to bottom')
-   local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
-
-   local recipe_info = self:_ace_get_recipe_info_from_product(product, crafter_info)
-   if recipe_info then
-      -- queue the appropriate number based on how many the recipe produces
-      local num = math.ceil(amount / recipe_info.recipe.products[product])
-      local condition = {
+-- this is used by the player_jobs_controller:request_craft_product
+function AceCraftOrderList:request_order_of(player_id, recipe_info, produces, amount, building, insert_order, condition)
+   log:debug('requesting order of %d %s (%s)', amount, recipe_info.recipe.product_uri, insert_order and 'inserting at top' or 'adding to bottom')
+   -- queue the appropriate number based on how many the recipe produces
+   local num = math.ceil(amount / produces)
+   if condition then
+      condition = radiant.shallow_copy(condition)
+   else
+      condition = {
          type = 'make',
-         amount = num,
-         requested_amount = amount,
          order_index = insert_order and 1 or nil,
       }
-      return recipe_info.order_list:add_order(player_id, recipe_info.recipe, condition, building)
    end
+   if condition.type == 'make' then
+      condition.amount = num
+      condition.requested_amount = amount
+   else -- condition.type == 'maintain'
+      condition.at_least = num
+   end
+
+   return recipe_info.order_list:add_order(player_id, recipe_info.recipe, condition, building)
 end
 
 -- ACE: amount is an optional parameter that refers to the amount of primary products, not the quantity of recipes
@@ -278,11 +255,12 @@ function AceCraftOrderList:delete_order_command(session, response, order_id, del
          if order:get_auto_crafting() then
             local condition = order:get_condition()
 
-            if delete_associated_orders then
+            local associated_orders = delete_associated_orders and order:get_associated_orders()
+            if associated_orders then
                -- also remove any associated orders
-               for _, associated_order in ipairs(order:get_associated_orders() or {}) do
+               for _, associated_order in ipairs(associated_orders) do
                   if order_id ~= associated_order.order_id then
-                     associated_order.order_list:delete_order_command(session, response, associated_order.order:get_id())
+                     associated_order.order:get_order_list():delete_order_command(session, response, associated_order.order:get_id())
                   end
                end
             end
@@ -303,7 +281,7 @@ function AceCraftOrderList:remove_from_reserved_ingredients(ingredients, order_i
    multiple = multiple or 1
    local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
    for _, ingredient in pairs(ingredients) do
-      local in_order_list = self:ace_get_ingredient_amount_in_order_list(crafter_info, ingredient, order_id)
+      local in_order_list = self:_get_ingredient_amount_in_order_list(crafter_info, ingredient, order_id)
       local ingredient_id = ingredient.uri or ingredient.material
       local amount = math.max(ingredient.count * multiple - in_order_list.maintain, 0)
 
@@ -311,80 +289,9 @@ function AceCraftOrderList:remove_from_reserved_ingredients(ingredients, order_i
    end
 end
 
--- Used to get a recipe if it can be used to craft `ingredient`.
--- Returns information such as what the recipe itself and the order list used for it.
---
-function AceCraftOrderList:_ace_get_recipe_info_from_product(product, crafter_info)
-   -- Take the cheapest recipe on a per-product basis
-   local possible = crafter_info:get_possible_recipes(product)
-   local choices = {}
-   for recipe_info, count in pairs(possible) do
-      table.insert(choices, {
-         recipe_info = recipe_info,
-         cost = recipe_info.recipe.cost / count,
-         can_craft = self:_can_craft_recipe(crafter_info:get_player_id(), recipe_info)
-      })
-   end
-
-   -- prefer craftable recipes (has job and level requirement)
-   table.sort(choices, function(a, b)
-      if a.can_craft and b.can_craft then
-         return a.cost < b.cost
-      elseif a.can_craft then
-         return true
-      elseif b.can_craft then
-         return false
-      else
-         return (a.recipe_info.recipe.level_requirement or 1) < (b.recipe_info.recipe.level_requirement or 1)
-      end
-   end)
-
-   local choice = choices[1]
-   return choice and choice.recipe_info
-end
-
-function AceCraftOrderList:_can_craft_recipe(player_id, recipe_info)
-   -- check max crafter level of the specified job in the specified player's town
-   -- to see if this recipe is currently craftable
-   local job_info = stonehearth.job:get_job_info(player_id, recipe_info.job_key)
-   if job_info and job_info:get_highest_level() >= (recipe_info.recipe.level_requirement or 1) then
-      -- check if it requires a workshop and that workshop exists
-      if recipe_info.recipe.workshop then
-         local workshop_uri = recipe_info.recipe.workshop.uri
-         local inventory = stonehearth.inventory:get_inventory(player_id)
-   
-         if self:_has_valid_workshop(inventory, workshop_uri) then
-            return true
-         else
-            -- Not an exact match. Maybe a valid equivalent?
-            local workshop_entity_data = radiant.entities.get_entity_data(workshop_uri, 'stonehearth:workshop')
-            if workshop_entity_data then
-               local equivalents = workshop_entity_data.equivalents
-               if equivalents then
-                  for _, equivalent in ipairs(equivalents) do
-                     if self:_has_valid_workshop(inventory, equivalent) then
-                        return true
-                     end
-                  end
-               end
-            end
-         end
-
-         return false
-      end
-
-      return true
-   end
-end
-
-function AceCraftOrderList:_has_valid_workshop(inventory, workshop_uri)
-   local workshop_data = inventory:get_items_of_type(workshop_uri)
-   return workshop_data and workshop_data.count > 0
-end
-
 -- Checking `inventory` to see how much of `ingredient` is available.
 --
-function AceCraftOrderList:_ace_get_ingredient_amount_in_storage(ingredient, inventory)
+function AceCraftOrderList:_get_ingredient_amount_in_storage(ingredient, inventory)
    local tracking_data = inventory:get_item_tracker('stonehearth:usable_item_tracker')
                                        :get_tracking_data()
    local ingredient_count = 0
@@ -414,7 +321,7 @@ end
 -- The optional `to_order_id` says that any orders with their id,
 -- that are at least as great as that number, will be ignored.
 --
-function AceCraftOrderList:ace_get_ingredient_amount_in_order_list(crafter_info, ingredient, to_order_id)
+function AceCraftOrderList:_get_ingredient_amount_in_order_list(crafter_info, ingredient, to_order_id)
    local ingredient_count = {
       make = 0,
       maintain = 0,
@@ -454,55 +361,11 @@ function AceCraftOrderList:_recipe_produces_materials(recipe, material)
    return util.sum_where_all_keys_present(recipe.product_materials, recipe.products, material)
 end
 
-function AceCraftOrderList:_ace_matching_tags(tags1, tags2)
-   if type(tags1) == 'string' then
-      tags1 = radiant.util.split_string(tags1, ' ')
-   end
-   if type(tags2) == 'string' then
-      tags2 = radiant.util.split_string(tags2, ' ')
-   end
-
-   -- this isn't necessarily super efficient, but these are tiny arrays; better to do this than generate a map
-   for _, tag in ipairs(tags1) do
-      local found = false
-      for _, tag2 in ipairs(tags2) do
-         if tag == tag2 then
-            found = true
-            break
-         end
-      end
-      if not found then
-         return false
-      end
-   end
-
-   return true
-end
-
--- Checks to see if `tags_string1` is a sub-set of `tags_string2`.
--- Returns true if it is, else false.
---
-function AceCraftOrderList:_ace_matching_tags__strings(tags_string1, tags_string2)
-   -- Hack!
-   -- Add a space at the end to make the frontier pattern search succeed at all times
-   tags_string2 = tags_string2 .. ' '
-   -- gmatch will return either 1 tag or the empty string
-   -- make sure we skip over the empty strings!
-   for tag in tags_string1:gmatch("([^ ]*)") do
-      -- use frontier pattern to find the tag,
-      -- whilst making sure that it's a word-border search
-      if tag ~= '' and not tags_string2:find("%f[%a%d_]".. tag .."%f[ ]") then
-         return false
-      end
-   end
-   return true
-end
-
 -- Gets the craft order which matches `recipe_name`, if an `order_type`
 -- is defined, then it will also check for a match against it.
 -- Returns nil if no match was found.
 --
-function AceCraftOrderList:_ace_find_craft_order(recipe_name, order_type)
+function AceCraftOrderList:_find_craft_order(recipe_name, order_type)
    --log:debug('finding a recipe for "%s"', recipe_name)
    --log:debug('There are %d orders', radiant.size(self._sv.orders) - 1)
 
@@ -578,6 +441,51 @@ function AceCraftOrderList:remove_craft_orders_for_building(bid)
    for _, order_id in ipairs(to_remove) do
       self:remove_order(order_id)
    end
+end
+
+-- UNUSED FUNCTIONS
+function AceCraftOrderList:_matching_tags(tags1, tags2)
+   if type(tags1) == 'string' then
+      tags1 = radiant.util.split_string(tags1, ' ')
+   end
+   if type(tags2) == 'string' then
+      tags2 = radiant.util.split_string(tags2, ' ')
+   end
+
+   -- this isn't necessarily super efficient, but these are tiny arrays; better to do this than generate a map
+   for _, tag in ipairs(tags1) do
+      local found = false
+      for _, tag2 in ipairs(tags2) do
+         if tag == tag2 then
+            found = true
+            break
+         end
+      end
+      if not found then
+         return false
+      end
+   end
+
+   return true
+end
+
+-- Checks to see if `tags_string1` is a sub-set of `tags_string2`.
+-- Returns true if it is, else false.
+--
+function AceCraftOrderList:_matching_tags__strings(tags_string1, tags_string2)
+   -- Hack!
+   -- Add a space at the end to make the frontier pattern search succeed at all times
+   tags_string2 = tags_string2 .. ' '
+   -- gmatch will return either 1 tag or the empty string
+   -- make sure we skip over the empty strings!
+   for tag in tags_string1:gmatch("([^ ]*)") do
+      -- use frontier pattern to find the tag,
+      -- whilst making sure that it's a word-border search
+      if tag ~= '' and not tags_string2:find("%f[%a%d_]".. tag .."%f[ ]") then
+         return false
+      end
+   end
+   return true
 end
 
 return AceCraftOrderList

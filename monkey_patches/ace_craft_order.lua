@@ -525,7 +525,7 @@ function AceCraftOrder:remove_associated_order(remove_children)
             end
          end
          for _, child_order in ipairs(child_orders) do
-            child_order.order_list:remove_order(child_order.order:get_id())
+            child_order.order:get_order_list():remove_order(child_order.order:get_id())
          end
       end
 
@@ -596,7 +596,7 @@ function AceCraftOrder:_reduce_associated_orders_quantity(amount)
       for _, associated_order in ipairs(associated_orders) do
          -- if the associated order is an ingredient for this recipe, reduce it by the amount that this recipe requires
          if associated_order.parent_order_id == self:get_id() then
-            associated_order.order_list:remove_order(associated_order.order:get_id(), amount * associated_order.ingredient_per_craft)
+            associated_order.order:get_order_list():remove_order(associated_order.order:get_id(), amount * associated_order.ingredient_per_craft)
          end
       end
    end

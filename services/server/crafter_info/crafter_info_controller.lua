@@ -54,7 +54,7 @@ function CrafterInfoController:_create_maps()
    for job_key, _ in pairs(job_index.jobs) do
       local job_info = stonehearth.job:get_job_info(player_id, job_key)
       -- If `job_info` contains a recipe list, then `job` is a crafter
-      local recipe_list = job_info:get_recipe_list()
+      local recipe_list = job_info:is_enabled() and job_info:get_recipe_list()
       if recipe_list then
          local order_list = job_info:get_order_list()
          table.insert(self._sv.order_lists, order_list)
@@ -85,6 +85,7 @@ function CrafterInfoController:_create_maps()
                               self._formatted_recipes[self:_get_recipe_key(recipe_data.recipe)] = formatted_recipe
                               self._recipe_map:add(keys, {
                                  job_key = job_key,
+                                 job_info = job_info,
                                  order_list = order_list,
                                  recipe = formatted_recipe,
                               })
