@@ -5,14 +5,6 @@ local constants = radiant.mods.require('stonehearth.constants')
 
 local log = radiant.log.create_logger('craft_order_list')
 
--- AceCraftOrder._ace_old_post_activate = CraftOrder.post_activate
--- function AceCraftOrder:post_activate()
---    self._inventory = stonehearth.inventory:get_inventory(self._sv._player_id)
---    self._crafter_info = stonehearth_ace.crafter_info:get_crafter_info(self._sv._player_id)
-
---    self:_ace_old_post_activate()
--- end
-
 AceCraftOrderList._ace_old_destroy = CraftOrderList.__user_destroy
 function AceCraftOrderList:destroy()
    if self._stuck_timer then
@@ -95,7 +87,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
 
          local player_jobs_controller = stonehearth.job:get_jobs_controller(player_id)
          local associated_order = player_jobs_controller:request_craft_product(
-               ingredient.uri or ingredient.material, missing, building, false, condition.order_index ~= nil, condition)
+               ingredient.uri or ingredient.material, missing, building, false, condition.order_index ~= nil, condition, associated_orders)
          if associated_order and associated_order ~= true then
             -- Add the new order to the appropiate order list
             -- if the associated order had associated orders of its own, that's the table we use
@@ -150,8 +142,8 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
 
    if associated_orders then
       for _, associated_order in ipairs(associated_orders) do
-         if not associated_order.parent_order_id then
-            associated_order.parent_order_id = result:get_id()
+         if not associated_order.parent_order then
+            associated_order.parent_order = result
          end
       end
 
@@ -191,7 +183,7 @@ function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_o
 end
 
 -- this is used by the player_jobs_controller:request_craft_product
-function AceCraftOrderList:request_order_of(player_id, recipe_info, produces, amount, building, insert_order, condition)
+function AceCraftOrderList:request_order_of(player_id, recipe_info, produces, amount, building, insert_order, condition, associated_orders)
    log:debug('requesting order of %d %s (%s)', amount, recipe_info.recipe.product_uri, insert_order and 'inserting at top' or 'adding to bottom')
    -- queue the appropriate number based on how many the recipe produces
    local num = math.ceil(amount / produces)
@@ -210,7 +202,7 @@ function AceCraftOrderList:request_order_of(player_id, recipe_info, produces, am
       condition.at_least = num
    end
 
-   return recipe_info.order_list:add_order(player_id, recipe_info.recipe, condition, building)
+   return recipe_info.order_list:add_order(player_id, recipe_info.recipe, condition, building, associated_orders)
 end
 
 -- ACE: amount is an optional parameter that refers to the amount of primary products, not the quantity of recipes

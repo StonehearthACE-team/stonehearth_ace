@@ -515,12 +515,11 @@ end
 function AceCraftOrder:remove_associated_order(remove_children)
    local associated_orders = self:get_associated_orders()
    if associated_orders and #associated_orders > 0 then
-      local order_id = self:get_id()
       -- first remove any child orders; this will recursively remove any orders necessary
       if remove_children then
          local child_orders = {}
          for _, order in ipairs(associated_orders) do
-            if order.parent_order_id == order_id then
+            if order.parent_order == self then
                table.insert(child_orders, order)
             end
          end
@@ -531,7 +530,7 @@ function AceCraftOrder:remove_associated_order(remove_children)
 
       -- finally search associated orders for this order and remove it
       for i, order in ipairs(associated_orders) do
-         if order.order:get_id() == order_id then
+         if order.order == self then
             table.remove(associated_orders, i)
             break
          end
@@ -595,7 +594,7 @@ function AceCraftOrder:_reduce_associated_orders_quantity(amount)
    if associated_orders and #associated_orders > 0 then
       for _, associated_order in ipairs(associated_orders) do
          -- if the associated order is an ingredient for this recipe, reduce it by the amount that this recipe requires
-         if associated_order.parent_order_id == self:get_id() then
+         if associated_order.parent_order == self then
             associated_order.order:get_order_list():remove_order(associated_order.order:get_id(), amount * associated_order.ingredient_per_craft)
          end
       end

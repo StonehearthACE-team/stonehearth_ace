@@ -47,11 +47,12 @@ function AcePlayerJobsController:_ensure_all_job_indexes()
    end
 end
 
-function AcePlayerJobsController:request_craft_product(product_uri, amount, building, require_exact, insert_order, condition)
-   log:debug('request_craft_product( %s, %s, %s, %s, %s, %s )', product_uri, amount, tostring(building), tostring(require_exact), tostring(insert_order), tostring(condition))
+function AcePlayerJobsController:request_craft_product(product_uri, amount, building, require_exact, insert_order, condition, associated_orders)
+   log:debug('request_craft_product( %s, %s, %s, %s, %s, %s )',
+         product_uri, amount, tostring(building), tostring(require_exact), tostring(insert_order), tostring(condition), tostring(associated_orders))
    -- first try it with requiring exact; that way we don't default to a secondary option if the primary is available
    if not require_exact then
-      local result = self:request_craft_product(product_uri, amount, building, true, insert_order, condition)
+      local result = self:request_craft_product(product_uri, amount, building, true, insert_order, condition, associated_orders)
       if result ~= nil then
          return result
       end
@@ -65,7 +66,8 @@ function AcePlayerJobsController:request_craft_product(product_uri, amount, buil
    local selection = self:_get_recipe_info_from_products(products, amount)
 
    if selection then
-      local order = selection.recipe_info.order_list:request_order_of(self._sv.player_id, selection.recipe_info, selection.produces, amount, building, insert_order, condition)
+      local order = selection.recipe_info.order_list:request_order_of(
+            self._sv.player_id, selection.recipe_info, selection.produces, amount, building, insert_order, condition, associated_orders)
       if order then
          -- it's just true if the order didn't need to be created
          -- otherwise it returns the actual order
