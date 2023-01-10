@@ -20,7 +20,7 @@ function PlayerMercantile:initialize()
 
    self._sv.category_preferences = {}   -- keyed by category, with a value from constants for disabled, enabled, encouraged
    self._sv.cooldowns = {}              -- keyed by merchant id, with a game time when that merchant will no longer be on cd
-   self._sv.exclusive_preferences = {}     -- keyed by exclusive merchant id, with a boolean value for disabled/enabled
+   self._sv.exclusive_preferences = {}     -- keyed by exclusive stall uri, with a boolean value for disabled/enabled
    --self._sv.exclusive_merchants = {}       -- keyed by exclusive merchant id, an indicator for whether they should show up in the ui
 
    self._sv.tier_stalls = {}            -- keyed by tier number, gives count for each
@@ -205,6 +205,11 @@ end
 function PlayerMercantile:set_category_preference_command(session, response, category, preference)
    self._sv.category_preferences[category] = preference
    self:_verify_category_preferences()
+   self.__saved_variables:mark_changed()
+end
+
+function PlayerMercantile:set_exclusive_preference_command(session, response, exclusive_stall, preference)
+   self._sv.exclusive_preferences[exclusive_stall] = preference
    self.__saved_variables:mark_changed()
 end
 
@@ -506,7 +511,7 @@ function PlayerMercantile:_get_available_exclusive_merchants(cur_weather_uri, st
    local exclusive_merchants = stonehearth_ace.mercantile:get_exclusive_merchants()
    local merchants = WeightedSet(rng)
    for merchant, merchant_data in pairs(exclusive_merchants) do
-      if self._sv.exclusive_preferences[merchant] ~= false and merchant_data.min_city_tier >= city_tier and stall_uris[merchant_data.required_stall] then
+      if self._sv.exclusive_preferences[merchant_data.required_stall] ~= false and merchant_data.min_city_tier >= city_tier and stall_uris[merchant_data.required_stall] then
          -- if this merchant's visit isn't forbidden by a cooldown, the kingdom, or the current weather, add them to the list
          if self:_merchant_allowed(merchant_data, cur_weather_uri) then
             -- have to add the data because we need to check stall uri for quantity available

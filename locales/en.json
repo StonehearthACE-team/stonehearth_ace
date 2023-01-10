@@ -21718,12 +21718,18 @@
                "category_list_titles": {
                   "name": "Category",
                   "encourage": "Encourage",
+                  "encourage_description": "Encouraging a category of merchants makes it significantly more likely that merchants from that category will visit your town.",
                   "enable": "Enable",
-                  "disable": "Disable"
+                  "enable_description": "Enabling a category of merchants makes it so merchants from that category will have a normal chance of visiting your town.",
+                  "disable": "Disable",
+                  "disable_description": "Disabling a category of merchants makes it so merchants from that category will NOT visit your town."
                },
                "enables_disables": "You may Disable up to <span class='num'>[str(max_disables)]</span> categories and Encourage up to <span class='num'>[str(max_encourages)]</span> categories.",
                "enables_disables_title": "Disables & Encourages",
-               "enables_disables_description": "Disabling a category will prevent regular merchants of that category from visiting your town. Encouraging a category will significantly increase the chance that regular merchants of that category will visit your town. When your town's tier increases, so will the number of categories you can Disable or Encourage."
+               "enables_disables_description": "Disabling a category will prevent regular merchants of that category from visiting your town. Encouraging a category will significantly increase the chance that regular merchants of that category will visit your town. When your town's tier increases, so will the number of categories you can Disable or Encourage.",
+               "no_exclusive_stalls": "Exclusive merchants will only visit your town if you have certain exclusive market stalls placed. These generally require high level crafters or specific town upgrade choices to acquire.",
+               "disable_exclusive": "<span class='max'>Enabled!</span> Click to Disable.",
+               "enable_exclusive": "<span class='limited'>Disabled!</span> Click to Enable."
             },
             "title": "Mercantile Overview"
          },

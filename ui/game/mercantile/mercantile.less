@@ -228,7 +228,55 @@
             }
 
             #exclusivePreferences {
+               display: flex;
+               flex-direction: row;
+               width: 360px;
+               overflow-y: auto;
+               flex-wrap: wrap;
+               align-items: flex-start;
+               align-content: flex-start;
 
+               .exclusiveStall {
+                  .button;
+                  display: inline-block;
+                  position: relative;
+                  flex: 0 0 auto;
+                  padding: 10px 0px 8px 8px;
+
+                  &.enabled {
+
+                  }
+                  
+                  &.disabled {
+                     .icon {
+                        filter: grayscale(100%);
+                        opacity: 0.75;
+                        cursor: url(http://radiant/stonehearth/ui/root/css/images/cursors/Finalhand.cur), default;
+                     }
+
+                     .num {
+                        color: @warningFontColor;
+                     }
+                  }
+
+                  .icon {
+                     width: 100px;
+                     height: 100px;
+                  }
+
+                  .num {
+                     .controlFont;
+                     position: absolute;
+                     right: 4px;
+                     bottom: 0px;
+                     font-size: 18px;
+                     color: inherit;
+                  }
+               }
+
+               .info {
+                  font-size: 16px;
+               }
             }
          }
       }

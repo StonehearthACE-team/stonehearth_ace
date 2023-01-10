@@ -109,10 +109,25 @@ App.StonehearthAceMerchantileView = App.View.extend({
          }
       });
 
-      var tooltip = $(App.tooltipHelper.createTooltip(
+      tooltip = $(App.tooltipHelper.createTooltip(
             i18n.t('stonehearth_ace:ui.game.mercantile.preferences.enables_disables_title'),
             i18n.t('stonehearth_ace:ui.game.mercantile.preferences.enables_disables_description')));
       self.$('#numPreferences').tooltipster({delay: 1000, content: tooltip});
+
+      tooltip = $(App.tooltipHelper.createTooltip(
+            i18n.t('stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.encourage'),
+            i18n.t('stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.encourage_description')));
+      self.$('#encourageListTitle').tooltipster({content: tooltip});
+
+      tooltip = $(App.tooltipHelper.createTooltip(
+            i18n.t('stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.enable'),
+            i18n.t('stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.enable_description')));
+      self.$('#enableListTitle').tooltipster({content: tooltip});
+
+      tooltip = $(App.tooltipHelper.createTooltip(
+            i18n.t('stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.disable'),
+            i18n.t('stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.disable_description')));
+      self.$('#disableListTitle').tooltipster({content: tooltip});
 
       self.$('#categoriesTable').on('click', '.setting', function() {
          var settingDiv = $(this);
@@ -126,7 +141,20 @@ App.StonehearthAceMerchantileView = App.View.extend({
          }
       });
 
+      self.$('#exclusivePreferences').on('click', '.exclusiveStall', function() {
+         var stallDiv = $(this);
+         if (stallDiv) {
+            var id = stallDiv.attr('stall-id');
+            var stall = id && self._exclusiveStalls[id];
+            if (stall) {
+               var preferences = self.get('model.exclusive_preferences');
+               radiant.call_obj(_playerMercantileControllerUri, 'set_exclusive_preference_command', id, !(preferences[id] != false));
+            }
+         }
+      });
+
       self._setupCategories();
+      self._setupExclusives();
    },
 
    willDestroyElement: function() {
@@ -135,10 +163,12 @@ App.StonehearthAceMerchantileView = App.View.extend({
       this.$('#merchants').off('click', '.stall');
       this.$('#merchants').off('click', '.portrait');
       this.$('#mercantile').find('.tooltipstered').tooltipster('destroy');
+      this.$('#exclusivePreferences').off('click', '.exclusiveStall');
 
       App.tooltipHelper.removeDynamicTooltip(self.$('#merchants.name'));
       App.tooltipHelper.removeDynamicTooltip(self.$('#merchants.stall'));
       App.tooltipHelper.removeDynamicTooltip(self.$('#merchants.shop'));
+      App.tooltipHelper.removeDynamicTooltip(self.$('#exclusivePreferences.exclusiveStall'));
 
       this._super();
    },
@@ -184,12 +214,16 @@ App.StonehearthAceMerchantileView = App.View.extend({
       var self = this;
       var tier_stalls = self.get('model.tier_stalls');
       var exclusive_stalls = self.get('model.exclusive_stalls');
+      var exclusive_preferences = self.get('model.exclusive_preferences');
       var merchants = self.get('merchants');
-      if (!tier_stalls || !exclusive_stalls || !merchants) {
+      if (!tier_stalls || !exclusive_stalls || !exclusive_preferences || !merchants) {
          return;
       }
 
       var availableStalls = {};
+      var availableStallsArr = [];
+      var exclusiveStallsArr = [];
+      var numExclusive = 0;
 
       radiant.each(tier_stalls, function(tier, num) {
          var realTier = tier + 1;   // lua is 1-indexed
@@ -203,6 +237,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
          };
       });
       radiant.each(exclusive_stalls, function(uri, num) {
+         numExclusive += num;
          var catalogData = App.catalog.getCatalogData(uri);
          if (catalogData && catalogData.icon) {
             availableStalls[uri] = {
@@ -214,6 +249,12 @@ App.StonehearthAceMerchantileView = App.View.extend({
                num: num,
                total: num,
             };
+            exclusiveStallsArr.push({
+               id: uri,
+               icon: catalogData.icon,
+               num: num,
+               enabled: exclusive_preferences[uri] != false,
+            });
          }
       });
 
@@ -235,7 +276,6 @@ App.StonehearthAceMerchantileView = App.View.extend({
          }
       });
 
-      var availableStallsArr = [];
       radiant.each(availableStalls, function(_, stall) {
          if (stall.num == 0) {
             stall.num_class = 'limited';
@@ -249,13 +289,16 @@ App.StonehearthAceMerchantileView = App.View.extend({
       self._availableStalls = availableStalls;
       if (availableStallsArr.length > 0) {
          self.set('availableStalls', availableStallsArr);
+         self.set('exclusiveStalls', exclusiveStallsArr);
          self.set('hasAvailableStalls', true);
          self._updateStallTooltips();
       }
       else {
          self.set('hasAvailableStalls', false);
          self.set('availableStalls', null);
+         self.set('exclusiveStalls', null);
       }
+      self.set('hasExclusiveStalls', numExclusive > 0);
    }.observes('model.tier_stalls', 'model.exclusive_stalls', 'merchants'),
 
    _updateActiveMerchants: function() {
@@ -444,6 +487,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
             return;
          }
 
+         // available stalls (in active tab)
          var stalls = self.$('.availableStall');
          if (stalls) {
             stalls.each(function() {
@@ -460,6 +504,35 @@ App.StonehearthAceMerchantileView = App.View.extend({
                            i18n.t('stonehearth_ace:ui.game.mercantile.active.stalls.available',
                            { num: stallData.num, num_class: stallData.num_class }) + "</div>"
                      }
+
+                     return $(App.tooltipHelper.createTooltip(stallData.display_name, description));
+                  });
+               }
+            });
+         }
+
+         // exclusive stalls (in preferences tab)
+         stalls = self.$('.exclusiveStall');
+         if (stalls) {
+            stalls.each(function() {
+               var el = $(this);
+               var id = el.attr('stall-id');
+               var stallData = self._exclusiveStalls[id];
+               if (stallData) {
+                  App.tooltipHelper.createDynamicTooltip(el, function() {
+                     var description = stallData.description;
+
+                     // then list out each exclusive merchant associated with it
+                     description += '<ul>';
+                     stallData.merchants.forEach(merchant => {
+                        var shop_info = merchant.shop_info;
+                        if (shop_info && shop_info.name) {
+                           description += `<li>${i18n.t(shop_info.name)}</li>`;
+                        }
+                     });
+
+                     var isEnabled = el.hasClass('enabled');
+                     description += `</ul><div>${i18n.t(`stonehearth_ace:ui.game.mercantile.preferences.${isEnabled ? 'disable' : 'enable'}_exclusive`)}`;
 
                      return $(App.tooltipHelper.createTooltip(stallData.display_name, description));
                   });
@@ -505,6 +578,33 @@ App.StonehearthAceMerchantileView = App.View.extend({
       self._updateCategoryTooltips();
    },
 
+   _setupExclusives: function() {
+      // load and setup all the exclusive merchant-by-stall lookups for tooltips
+      var self = this;
+      var merchants = stonehearth_ace.getMerchants();
+      var exclusiveStalls = {};
+      radiant.each(merchants, function(id, merchant) {
+         if (merchant.is_exclusive) {
+            var stallUri = merchant.required_stall;
+            var catalogData = App.catalog.getCatalogData(stallUri);
+            if (catalogData) {
+               var stall = exclusiveStalls[stallUri];
+               if (!stall) {
+                  stall = {
+                     merchants: [],
+                     display_name: i18n.t(catalogData.display_name),
+                     description: i18n.t(catalogData.description),
+                  };
+                  exclusiveStalls[stallUri] = stall;
+               }
+               stall.merchants.push(merchant);
+            }
+         }
+      });
+
+      self._exclusiveStalls = exclusiveStalls;
+   },
+
    _updateCategoryPreferences: function() {
       var self = this;
       var preferences = self.get('model.category_preferences');
@@ -525,6 +625,20 @@ App.StonehearthAceMerchantileView = App.View.extend({
 
       self._updateNumPreferences();
    }.observes('model.category_preferences'),
+
+   _updateExclusivePreferences: function() {
+      var self = this;
+      var preferences = self.get('model.exclusive_preferences');
+      if (!preferences) {
+         return;
+      }
+
+      var exclusiveStalls = self.get('exclusiveStalls');
+
+      radiant.each(exclusiveStalls, function(_, stall) {
+         Ember.set(stall, 'enabled', preferences[stall.id] != false);
+      });
+   }.observes('model.exclusive_preferences'),
 
    _updateNumPreferences: function() {
       var self = this;

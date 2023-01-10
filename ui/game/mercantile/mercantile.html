@@ -48,13 +48,13 @@
                         <div class="listTitle" id="categoryNameTitle" data-sort-key="name">
                            <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.name}}</h2>
                         </div>
-                        <div class="listTitle settingTitle" data-sort-key="encourage">
+                        <div id="encourageListTitle" class="listTitle settingTitle" data-sort-key="encourage">
                            <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.encourage}}</h2>
                         </div>
-                        <div class="listTitle settingTitle" data-sort-key="enable">
+                        <div id="enableListTitle" class="listTitle settingTitle" data-sort-key="enable">
                            <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.enable}}</h2>
                         </div>
-                        <div class="listTitle settingTitle" data-sort-key="disable">
+                        <div id="disableListTitle" class="listTitle settingTitle" data-sort-key="disable">
                            <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.disable}}</h2>
                         </div>
                      </div>
@@ -94,6 +94,18 @@
                   </div>
                </div>
                <div id="exclusivePreferences" class="downSection">
+                  {{#if view.hasExclusiveStalls}}
+                     {{#each stall in view.exclusiveStalls}}
+                     <div {{bind-attr stall-id="stall.id" class=":exclusiveStall stall.enabled:enabled:disabled"}}>
+                        <img class="icon" {{bind-attr src="stall.icon"}}/>
+                        <div class="num">{{stall.num}}</div>
+                     </div>
+                     {{/each}}
+                  {{else}}
+                  <div class="info">
+                     {{i18n stonehearth_ace:ui.game.mercantile.preferences.no_exclusive_stalls}}
+                  </div>
+                  {{/if}}
                </div>
             </div>
          </div>
