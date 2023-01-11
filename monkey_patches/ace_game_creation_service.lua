@@ -172,6 +172,16 @@ function AceGameCreationService:create_camp_command(session, response, pt)
       end
    end
 
+   -- place all existing pets in the world (e.g., from reembarking)
+   local pets = town:get_pets()
+   for id, pet in pairs(pets) do
+      if not radiant.entities.get_world_grid_location(pet) then
+         local placement_location = Point3(camp_x, pt.y, camp_z+6)
+         placement_location = radiant.terrain.find_placement_point(placement_location, 0, 5, pet)
+         self:try_place_entity_on_terrain(pet, placement_location.x, placement_location.z, {force_iconic = false})
+      end
+   end
+
    -- kickstarter pets
    if game_options.starting_pets then
        for i, pet_uri in ipairs (game_options.starting_pets) do
@@ -263,7 +273,7 @@ function AceGameCreationService:generate_citizens_for_reembark_command(session, 
    local kingdom = pop:get_kingdom()
 
    for index, citizen_spec in ipairs(reembark_spec.citizens) do
-      local gender = citizen_spec.model_variant
+      local gender = citizen_spec.model_variant or stonehearth.constants.population.DEFAULT_GENDER
       local role_data = { [gender] = { uri = { citizen_spec.uri } } }
       local citizen = pop:create_new_citizen_from_role_data('default', role_data, gender, {
          suppress_traits = true,
@@ -290,6 +300,7 @@ function AceGameCreationService:generate_citizens_for_reembark_command(session, 
 end
 
 function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kingdom, citizen, citizen_spec)
+   local player_id = citizen:get_player_id()
    citizen:set_debug_text(citizen_spec.name)
 
    -- Set attributes.
@@ -300,10 +311,39 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
 
 	self:_set_customizable_entity_data(citizen, citizen_spec)
 
+   -- create pets before traits so traits can access them
+   local pet_id_map = {}
+   if citizen_spec.pets then
+      for _, pet_data in ipairs(citizen_spec.pets) do
+         -- make sure the pet entity exists by querying catalog
+         if stonehearth.catalog:get_catalog_data(pet_data.uri) then
+            local pet = radiant.entities.create_entity(pet_data.uri, {owner = player_id, model_variant = pet_data.model_variant})
+            if pet then
+               local pet_component = pet:add_component('stonehearth:pet')
+               pet_component:convert_to_pet(player_id)
+               pet_component:set_owner(citizen)
+               -- have to wait until after pet conversion, which changes the pet's name
+               self:_set_customizable_entity_data(pet, pet_data)
+               pet_id_map[pet_data.entity_id] = pet:get_id()
+            end
+         end
+      end
+   end
+
    -- Set traits.
    local traits = citizen:add_component('stonehearth:traits')
-   for _, trait_uri in ipairs(citizen_spec.traits) do
-      traits:add_trait(trait_uri)
+   -- traits could be either an array or a table with extra args
+   if type(next(citizen_spec.traits)) == 'number' then
+      for _, trait_uri in ipairs(citizen_spec.traits) do
+         traits:add_trait(trait_uri)
+      end
+   else
+      for trait_uri, args in pairs(citizen_spec.traits) do
+         local args_copy = radiant.shallow_copy(args)
+         -- this is a bit of a hack; it would be nice to have more general data access
+         args_copy.pet_id_map = pet_id_map
+         traits:add_trait(trait_uri, args_copy)
+      end
    end
 
    -- Set jobs.
@@ -348,7 +388,7 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
       local intended_equipment = {}
 
       local add_equipment = function(data)
-         local equipment_entity = radiant.entities.create_entity(data.uri, { owner = session.player_id })
+         local equipment_entity = radiant.entities.create_entity(data.uri, { owner = session.player_id, model_variant = data.model_variant })
          self:_set_customizable_entity_data(equipment_entity, data)
          if data.item_quality and data.item_quality > 1 then
             equipment_entity:add_component('stonehearth:item_quality'):initialize_quality(data.item_quality)

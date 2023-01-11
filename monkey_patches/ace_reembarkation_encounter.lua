@@ -59,9 +59,9 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
       spirit = citizen:get_component('stonehearth:attributes'):get_attribute('spirit'),
    }
 
-   local model_variant = citizen:get_component('render_info'):get_model_variant()  -- Gender
-   if model_variant == '' then
-      model_variant = stonehearth.constants.population.DEFAULT_GENDER
+   local traits = {}
+   for uri, trait in pairs(citizen:get_component('stonehearth:traits'):get_traits()) do
+      traits[uri] = trait:get_reembark_args()
    end
 
    local customization_styles = {}
@@ -93,18 +93,18 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
       statistics = data.statistics,
       titles = data.titles,
 		buffs = data.buffs,
-      model_variant = model_variant,
+      model_variant = data.model_variant or stonehearth.constants.population.DEFAULT_GENDER,
       customization = customization_styles,
       job_levels = job_levels,
       current_job = citizen:get_component('stonehearth:job'):get_job_uri(),
       allowed_jobs = citizen:get_component('stonehearth:job'):get_allowed_jobs(),
       population_override = population_override,
       attributes = attributes,
-      traits = radiant.keys(citizen:get_component('stonehearth:traits'):get_traits()),
+      traits = traits,
       item_preferences = citizen:get_component('stonehearth:appeal'):get_item_preferences(),
       item_preference_discovered_flags = citizen:get_component('stonehearth:appeal'):get_item_preference_discovered_flags(),
       equipment = equipment,
-      -- TODO: Pets?
+      pets = self:_get_pet_data(citizen),
    }
 end
 
@@ -122,12 +122,31 @@ function AceReembarkationEncounter:_get_customizable_entity_data(entity)
    
    return {
       uri = entity:get_uri(),
+      model_variant = radiant.entities.get_model_variant(entity),
       name = unit_info_comp and unit_info_comp:get_custom_name(),
       custom_data = unit_info_comp and unit_info_comp:get_custom_data(),
       statistics = statistics,
       titles = titles,
       buffs = buffs,
    }
+end
+
+function AceReembarkationEncounter:_get_pet_data(entity)
+   local pet_owner_comp = entity:get_component('stonehearth:pet_owner')
+   if pet_owner_comp then
+      local pets = {}
+
+      for id, pet in pairs(pet_owner_comp:get_pets()) do
+         local pet_data = self:_get_customizable_entity_data(pet)
+         -- record the id in case it needs to be referenced by something else, e.g., animal companion trait
+         pet_data.entity_id = id
+         table.insert(pets, pet_data)
+      end
+
+      if #pets > 0 then
+         return pets
+      end
+   end
 end
 
 return AceReembarkationEncounter

@@ -31,4 +31,13 @@ function AceTrait:get_icon()
    return self._sv.icon
 end
 
+function AceTrait:get_reembark_args()
+   -- normally no args are necessary, but a script (e.g., animal companion) might have some
+   local args = radiant.shallow_copy(self._sv._args or {})
+   if self._sv._script_controller and self._sv._script_controller.get_reembark_args then
+      args = self._sv._script_controller:get_reembark_args(args)
+   end
+   return args or {}
+end
+
 return AceTrait
