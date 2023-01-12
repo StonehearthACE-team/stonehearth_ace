@@ -70,3 +70,60 @@ App.StonehearthReembarkationBulletinDialog.reopen({
       self.notifyPropertyChange('dstItems');
    }.observes('sellableItemsTrackingData', 'ownedItemsTrackingData')
 });
+
+App.StonehearthReembarkationBulletinRowView.reopen({
+   ace_components: {
+      'stonehearth:pet_owner': {
+         'pets': {
+            '*': {
+               'stonehearth:unit_info': {},
+            },
+         },
+      },
+   },
+
+   init: function() {
+      var self = this;
+      stonehearth_ace.mergeInto(self.components, self.ace_components);
+
+      self._super();
+   },
+
+   didInsertElement: function() {
+      var self = this;
+      self._super();
+
+      App.tooltipHelper.createDynamicTooltip(self.$('.hasPetsIcon'), function () {
+         var pets = self.get('model.stonehearth:pet_owner.pets');
+         var petsArr = [];
+         radiant.each(pets, function(_, pet) {
+            var petUri = pet.uri;
+            var catalogData = App.catalog.getCatalogData(petUri);
+            var unit_info = pet['stonehearth:unit_info'];
+            var name = unit_info && i18n.t(unit_info.display_name, {self: pet}) || catalogData.display_name;
+            petsArr.push({
+               name: name,
+               icon: catalogData.icon,
+               species: i18n.t(catalogData.species_name),
+            });
+         });
+
+         if (petsArr.length > 0) {
+            var description = '<table>';
+            petsArr.forEach(pet => {
+               description += `<tr><td><img class='reembarkPetImg' src='${pet.icon}'/></td><td class='reembarkPetInfo'><div class='reembarkPetName'>${pet.name}</div><div class='reembarkPetSpecies'>${pet.species}</div></td></tr>`;
+            });
+            description += '</table>'
+
+            return $(App.tooltipHelper.createTooltip(i18n.t(`stonehearth_ace:ui.game.bulletin.reembarkation.pets`), description));
+         }
+      });
+   },
+
+   _updatePets: function() {
+      var self = this;
+      var pets = self.get('model.stonehearth:pet_owner.pets');
+
+      self.set('hasPets', pets && radiant.map_to_array(pets).length > 0);
+   }.observes('model.stonehearth:pet_owner.pets')
+});

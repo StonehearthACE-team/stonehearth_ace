@@ -820,7 +820,7 @@
       "commands:mechanical:reset_gearbox_axles": "file(data/commands/mechanical/reset_gearbox_axles.json)",
       "commands:patrol_banner:move": "file(data/commands/patrol_banner/move_patrol_banner.json)",
       "commands:patrol_banner:remove": "file(data/commands/patrol_banner/remove_patrol_banner.json)",
-      "commands:show_shop": "file(data/commands/show_shop/show_shop.json)",
+      "commands:change_pet_owner": "file(data/commands/change_pet_owner/change_pet_owner.json)",
       "commands:slaughter:wild_animal": "file(data/commands/slaughter/slaughter.json)",
       "commands:toggle_enabled_off": "file(data/commands/toggle_enabled/toggle_off.json)",
       "commands:toggle_enabled_on": "file(data/commands/toggle_enabled/toggle_on.json)",
@@ -6391,6 +6391,7 @@
       "stonehearth/services/server/combat/battery_context.lua": "file(services/server/combat/battery_context.lua)",
       "stonehearth/services/server/game_master/controllers/node.lua": "file(services/server/game_master/controllers/node.lua)",
       "stonehearth/ui/game/bulletin/bulletin_dialog/delivery_quest_dialog/images/quality.png": "file(ui/game/bulletin/bulletin_dialog/delivery_quest_dialog/images/quality.png)",
+      "stonehearth/ui/game/bulletin/bulletin_dialog/reembarkation_dialog/reembarkation_dialog.html": "file(ui/game/bulletin/bulletin_dialog/reembarkation_dialog/reembarkation_dialog.html)",
       "stonehearth/ui/game/bulletin/bulletin_dialog/shop_bulletin_dialog/shop_bulletin_dialog.html": "file(ui/game/bulletin/bulletin_dialog/shop_bulletin_dialog/shop_bulletin_dialog.html)",
       "stonehearth/ui/game/character_sheets/citizen_character_sheet/citizen_character_sheet.html": "file(ui/game/character_sheets/citizen_character_sheet/citizen_character_sheet.html)",
       "stonehearth/ui/game/citizens/citizens.html": "file(ui/game/citizens/citizens.html)",
@@ -6734,6 +6735,10 @@
          "controller": "file(call_handlers/patrol_banner_call_handler.lua)",
          "endpoint": "server"
       },
+      "set_pet_owner": {
+         "controller": "file(call_handlers/pet_call_handler.lua)",
+         "endpoint": "server"
+      },
       "assign_ownership_proxy": {
          "controller": "file(call_handlers/town_call_handler.lua)",
          "endpoint": "server"
@@ -6987,6 +6992,7 @@
          "file(ui/game/modes/zones_mode/zones_mode.js)",
          "file(ui/game/multiplayer_menu/multiplayer_menu.js)",
          "file(ui/game/people_picker/people_picker.js)",
+         "file(ui/game/people_picker/pet_ownership_picker.js)",
          "file(ui/game/promotion_tree/promotion_tree.js)",
          "file(ui/game/save_view/save_view.js)",
          "file(ui/game/show_workshop/show_team_workshop.js)",
@@ -7014,6 +7020,7 @@
          "file(ui/common/input_prompt/input_prompt.less)",
          "file(ui/game/bulletin/bulletin_dialog/achievement_acquired_bulletin_dialog/achievement_acquired_bulletin_dialog.less)",
          "file(ui/game/bulletin/bulletin_dialog/dialog_tree_bulletin_dialog/dialog_tree_bulletin_dialog.less)",
+         "file(ui/game/bulletin/bulletin_dialog/reembarkation_dialog/reembarkation_dialog.less)",
          "file(ui/game/bulletin/bulletin_dialog/shop_bulletin_dialog/shop_bulletin_dialog.less)",
          "file(ui/game/bulletin/bulletin_list/bulletin_list.less)",
          "file(ui/game/bulletin/bulletin_notification/base_notification.less)",

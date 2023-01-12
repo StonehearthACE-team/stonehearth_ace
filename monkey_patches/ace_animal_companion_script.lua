@@ -11,6 +11,13 @@ function AceAnimalCompanionScript:create(entity, uri, parent, args)
    self._sv._args = args
 end
 
+function AceAnimalCompanionScript:restore()
+   local pet_component = self._sv._companion and self._sv._companion:get_component('stonehearth:pet')
+   if pet_component then
+      pet_component:lock_to_owner()
+   end
+end
+
 function AceAnimalCompanionScript:_create_companion(player_id)
    log:debug('_create_companion for %s with args %s', self._sv._entity, radiant.util.table_tostring(self._sv._args))
    -- the args might specify a pet for us (e.g., from reembark)
@@ -27,7 +34,7 @@ function AceAnimalCompanionScript:_create_companion(player_id)
       local companion = radiant.entities.create_entity(self._possible_companions[i], { owner = player_id })
       self._sv._companion = companion
 
-      self:_make_pet(player_id)
+      radiant.entities.add_pet(self._sv._entity, self._sv._companion, true)
       self._sv._companion_id = self._sv._companion:get_id()
    end
 end

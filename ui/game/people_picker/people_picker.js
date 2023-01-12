@@ -2,6 +2,7 @@ App.StonehearthPeoplePickerView.reopen({
    components: {
       'stonehearth:unit_info': {},
       'stonehearth:ownable_object': {},
+      'stonehearth:pet': {},
       'stonehearth_ace:periodic_interaction': {},
    },
 
@@ -100,7 +101,7 @@ App.StonehearthPeoplePickerView.reopen({
             this.set('travelerChanged', false);
             this.set('medicPatientChanged', false);
          }
-         else {
+         else if (this.showNoOwner != false) {
             if (this._hasCitizenOwner()) {
                rows.splice(1, 0, noOwner);
             }

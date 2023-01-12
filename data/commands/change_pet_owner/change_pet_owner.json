@@ -1,0 +1,13 @@
+{
+   "type": "command",
+   "name": "change_owner",
+   "display_name": "i18n(stonehearth_ace:data.commands.change_pet_owner.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.change_pet_owner.description)",
+   "icon": "file(change_pet_owner.png)",
+   "action": "fire_event",
+   "ordinal": 9,
+   "event_name": "radiant_assign_owner_to_pet",
+   "hotkey_action": "ui:change_owner",
+   "event_data": {
+   }
+}

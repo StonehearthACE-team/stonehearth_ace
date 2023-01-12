@@ -1,4 +1,5 @@
 var _playerMercantileControllerUri = null;
+var CATEGORY_PLACEHOLDER_ICON = '/stonehearth_ace/ui/game/mercantile/images/categoryPlaceholder.png';
 
 // The view that shows all your active merchants, market stalls, and mercantile preferences
 App.StonehearthAceMerchantileView = App.View.extend({
@@ -118,11 +119,6 @@ App.StonehearthAceMerchantileView = App.View.extend({
             i18n.t('stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.encourage'),
             i18n.t('stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.encourage_description')));
       self.$('#encourageListTitle').tooltipster({content: tooltip});
-
-      tooltip = $(App.tooltipHelper.createTooltip(
-            i18n.t('stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.enable'),
-            i18n.t('stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.enable_description')));
-      self.$('#enableListTitle').tooltipster({content: tooltip});
 
       tooltip = $(App.tooltipHelper.createTooltip(
             i18n.t('stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.disable'),
@@ -372,6 +368,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
                         var changedStall = stallData.stall_entity != m.stall_entity;
 
                         var merchantData = stonehearth_ace.getMerchantData(merchant_data.merchant);
+                        var category = self._categoryLookup[merchantData.category];
 
                         Ember.set(m, 'stall_entity', stallData.stall_entity);
                         Ember.set(m, 'stall_uri', stallData.stall_uri);
@@ -380,6 +377,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
                         Ember.set(m, 'stall_tier', stallData.stall_tier);
                         Ember.set(m, 'has_stall', stallData.has_stall);
                         Ember.set(m, 'is_exclusive', merchantData.is_exclusive);
+                        Ember.set(m, 'category_icon', category.icon || CATEGORY_PLACEHOLDER_ICON);
 
                         if (changedStall) {
                            if (stallData.stall_entity) {
@@ -550,7 +548,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
       radiant.each(stonehearth_ace.getMerchantCategories(), function(category, data) {
          // we need to copy the data to a new object because we'll be setting preference values
          var copiedData = radiant.shallow_copy(data);
-         copiedData.icon = copiedData.icon || '/stonehearth_ace/ui/game/mercantile/images/categoryPlaceholder.png';
+         copiedData.icon = copiedData.icon || CATEGORY_PLACEHOLDER_ICON;
          copiedData.display_name = i18n.t(copiedData.display_name);
          copiedData.description = i18n.t(copiedData.description);
          copiedData.encourageId = copiedData.category + '|encourage';

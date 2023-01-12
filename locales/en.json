@@ -4141,6 +4141,10 @@
             "display_name": "Disallow Hunting",
             "description": "This hearthling will hunt any wild game they see. Click to forbid it!"
          },
+         "change_pet_owner": {
+            "display_name": "Assign Owner",
+            "description": "Assign this pet to a new owner."
+         },
          "harvest_highland_vine": {
             "display_name": "Harvest Entire Vine",
             "description": "Toggle harvest requests for all segments of this vine."
@@ -22590,6 +22594,9 @@
                   "title": "Your first merchant!",
                   "message": "Your town was attractive enough to trigger the interest of a traveling merchant!<p>Going forward, word will spread about this settlement and others will come, but your crafters will need to provide them with market stands and stalls fit for their needs!<p>The wealthier your town becomes, the more merchants are drawn to it. Moreover, every Town Upgrade will entice richer merchants: better goods and bigger piles of gold!<p>Finally, advertisement is key! Not just hosting but actually trading with the merchants will boost your commercial attractiveness even more. A happy merchant will surely tell their friends about it!"
                }
+            },
+            "reembarkation": {
+               "pets": "Pets (will reembark with owner)"
             },
             "shop": {
                "wanted_items": "Offering special rates for these items:",

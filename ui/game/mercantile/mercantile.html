@@ -15,6 +15,7 @@
                   <div {{bind-attr class=":name merchant.tier_class"}}>{{merchant.display_name}}</div>
                   <div class="portrait merchantPortrait"></div>
                   <img {{bind-attr class=":shop merchant.is_exclusive:exclusive:"}}/>
+                  <img class="categoryIcon" {{bind-attr src="merchant.category_icon"}}/>
                   {{#if merchant.has_stall}}
                   <div class="portrait stallPortrait"></div>
                   {{/if}}
@@ -45,17 +46,14 @@
                   <div id="categories">
                      <!--show table headers for encourage/enable/disable-->
                      <div id="listTitles">
-                        <div class="listTitle" id="categoryNameTitle" data-sort-key="name">
+                        <div id="categoryNameTitle" class="listTitle" data-sort-key="name">
                            <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.name}}</h2>
                         </div>
-                        <div id="encourageListTitle" class="listTitle settingTitle" data-sort-key="encourage">
-                           <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.encourage}}</h2>
-                        </div>
-                        <div id="enableListTitle" class="listTitle settingTitle" data-sort-key="enable">
-                           <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.enable}}</h2>
-                        </div>
-                        <div id="disableListTitle" class="listTitle settingTitle" data-sort-key="disable">
+                        <div id="disableListTitle" class="listTitle" data-sort-key="disable">
                            <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.disable}}</h2>
+                        </div>
+                        <div id="encourageListTitle" class="listTitle" data-sort-key="encourage">
+                           <h2>{{i18n stonehearth_ace:ui.game.mercantile.preferences.category_list_titles.encourage}}</h2>
                         </div>
                      </div>
                      <table id="categoriesTable">
@@ -67,12 +65,12 @@
                            <td class="categoryName">
                               <div class="name">{{category.display_name}}</div>
                            </td>
-                           <td class="encourage setting" setting-type="encouraged" {{bind-attr category=category.category}}>
-                              <input type="radio" {{bind-attr id=category.encourageId}}
-                                               {{bind-attr checked=category.isEncouraged}}
-                                               {{bind-attr disabled=category.encourageDisabled}}
+                           <td class="disable setting" setting-type="disabled" {{bind-attr category=category.category}}>
+                              <input type="radio" {{bind-attr id=category.disableId}}
+                                               {{bind-attr checked=category.isDisabled}}
+                                               {{bind-attr disabled=category.disableDisabled}}
                                                {{bind-attr name=category.category}}>
-                              <label {{bind-attr for=category.encourageId}}></label>
+                              <label {{bind-attr for=category.disableId}}></label>
                            </td>
                            <td class="enable setting" setting-type="enabled" {{bind-attr category=category.category}}>
                               <input type="radio" {{bind-attr id=category.enableId}}
@@ -81,12 +79,12 @@
                                                {{bind-attr name=category.category}}>
                               <label {{bind-attr for=category.enableId}}></label>
                            </td>
-                           <td class="disable setting" setting-type="disabled" {{bind-attr category=category.category}}>
-                              <input type="radio" {{bind-attr id=category.disableId}}
-                                               {{bind-attr checked=category.isDisabled}}
-                                               {{bind-attr disabled=category.disableDisabled}}
+                           <td class="encourage setting" setting-type="encouraged" {{bind-attr category=category.category}}>
+                              <input type="radio" {{bind-attr id=category.encourageId}}
+                                               {{bind-attr checked=category.isEncouraged}}
+                                               {{bind-attr disabled=category.encourageDisabled}}
                                                {{bind-attr name=category.category}}>
-                              <label {{bind-attr for=category.disableId}}></label>
+                              <label {{bind-attr for=category.encourageId}}></label>
                            </td>
                         </tr>
                         {{/each}}

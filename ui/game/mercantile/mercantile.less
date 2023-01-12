@@ -65,7 +65,7 @@
             .merchant {
                display: inline-block;
                position: relative;
-               padding: 10px 0px 8px 8px;
+               padding: 10px 10px 8px 8px;
                width: 128px;
 
                &.hasStall {
@@ -77,7 +77,7 @@
                   z-index: 2;
                   font-size: 16px;
                   top: 0px;
-                  left: 10px;
+                  left: 45px;
                }
 
                .portrait {
@@ -103,6 +103,13 @@
                   &.exclusive {
                      content: url(/stonehearth_ace/ui/game/bulletin/bulletin_notification/images/shop_exclusive_icon.png);
                   }
+               }
+
+               .categoryIcon {
+                  position: absolute;
+                  z-index: 2;
+                  left: 0px;
+                  top: 0px;
                }
 
                .stallPortrait {
@@ -185,7 +192,11 @@
                   }
 
                   #categoryNameTitle {
-                     padding-right: 140px;
+                     padding-right: 165px;
+                  }
+
+                  #disableListTitle {
+                     padding-right: 70px;
                   }
 
                   .listTitle {
@@ -193,11 +204,7 @@
                      h2 {
                         font-size: 14x;
                      }
-                  }
-
-                  .settingTitle {
                      text-align: center;
-                     padding-right: 10px;
                   }
 
                   .category {

@@ -396,6 +396,10 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
       if entity_data['stonehearth_ace:fence_data'] then
          catalog_data.fence_length = entity_data['stonehearth_ace:fence_data'].length
       end
+
+      if entity_data['stonehearth:species'] then
+         catalog_data.species_name = entity_data['stonehearth:species'].display_name
+      end
    end
 
    result.catalog_data = catalog_data

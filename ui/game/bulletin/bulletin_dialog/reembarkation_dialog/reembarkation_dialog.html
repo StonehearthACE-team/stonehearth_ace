@@ -1,0 +1,112 @@
+<script type="text/x-handlebars" data-template-name="reembarkationBulletinDialog">
+<div id="reembarkationBulletinDialog" class="gui bulletinDialog">
+   <div class="window">
+      <div class="title">{{i18n stonehearth:ui.game.bulletin.reembarkation.title}}<div class="closeButton"></div></div>
+      <div class="contentFrame" class="parchment" >
+         <p class="instructionText">{{i18n stonehearth:ui.game.bulletin.reembarkation.prompt}}</p>
+         <table class="paneContainer">
+            <tr class="citizensPane">
+               <td>
+                  <div class="list downSection">
+                     <table class="citizenList">
+                        {{#each citizen in view.srcCitizens}}
+                           {{ view "stonehearthReembarkationBulletinRow" dialogView=view uriBinding="citizen" isSrc=true }}
+                        {{/each}}
+                     </table>
+                  </div>
+               </td>
+               <td class="middle">
+                  <a href="#" {{action "addSelectedCitizen" target="view"}} class="uisounds">
+                     {{#if view.canAddCitizen}}
+                        <button class="green buttonEnabled"><img src="/stonehearth/ui/root/css/images/numeric/right_arrow.png" /></button>
+                     {{else}}
+                        <button class="green disabled" disabled><img src="/stonehearth/ui/root/css/images/numeric/right_arrow.png" /></button>
+                     {{/if}}
+                  </a>
+                  <br />
+                  <a href="#" {{action "removeSelectedCitizen" target="view"}} class="uisounds">
+                     {{#if view.selectedDstCitizen}}
+                        <button class="red buttonEnabled"><img src="/stonehearth/ui/root/css/images/numeric/left_arrow.png" /></button>
+                     {{else}}
+                        <button class="red disabled" disabled><img src="/stonehearth/ui/root/css/images/numeric/left_arrow.png" /></button>
+                     {{/if}}
+                  </a>
+               </td>
+               <td>
+                  <div class="list downSection">
+                     <table class="citizenList">
+                        {{#each citizen in view.dstCitizens}}
+                           {{ view "stonehearthReembarkationBulletinRow" dialogView=view uriBinding="citizen" isSrc=false }}
+                        {{/each}}
+                     </table>
+                  </div>
+                  <div class="counter">
+                     {{ view.numDstCitizens }} / {{ view.maxDstCitizens }}
+                  </div>
+               </td>
+            </tr>
+            <tr class="itemsPane">
+               <td>
+                  <div class="list downSection">
+                     <div class="srcItemsList itemList"></div>
+                  </div>
+               </td>
+               <td class="middle">
+                  <a href="#" {{action "addSelectedItem" target="view"}} class="uisounds">
+                     {{#if view.canAddItem}}
+                        <button class="green buttonEnabled"><img src="/stonehearth/ui/root/css/images/numeric/right_arrow.png" /></button>
+                     {{else}}
+                        <button class="green disabled" disabled><img src="/stonehearth/ui/root/css/images/numeric/right_arrow.png" /></button>
+                     {{/if}}
+                  </a>
+                  <br />
+                  <a href="#" {{action "removeSelectedItem" target="view"}} class="uisounds">
+                     {{#if view.selectedDstItem}}
+                        <button class="red buttonEnabled"><img src="/stonehearth/ui/root/css/images/numeric/left_arrow.png" /></button>
+                     {{else}}
+                        <button class="red disabled" disabled><img src="/stonehearth/ui/root/css/images/numeric/left_arrow.png" /></button>
+                     {{/if}}
+                  </a>
+               </td>
+               <td>
+                  <div class="list downSection">
+                     <div class="dstItemsList itemList"></div>
+                  </div>
+                  <div class="counter">
+                     {{ view.numDstItems }} / {{ view.maxDstItems }}
+                  </div>
+               </td>
+            </tr>
+         </table>
+         <div class="buttonDiv">
+            <button id="confirmButton" {{bind-attr class="view.isConfigValid::disabled" }}><span>{{i18n stonehearth:ui.game.bulletin.reembarkation.confirm}}</span></button>
+            <button id="dismissButton"><span>{{i18n stonehearth:ui.game.bulletin.reembarkation.dismiss}}</span></button>
+            <button id="rejectButton"><span>{{i18n stonehearth:ui.game.bulletin.reembarkation.reject}}</span></button>
+         </div>
+      </div>
+   </div>
+</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthReembarkationBulletinRow">
+   <td {{action "selectPerson" target="view"}} {{bind-attr class=":selectable_citizen_row view.isSelected:selected:"}}>
+      <div class="level">
+         {{i18n stonehearth:ui.game.unit_frame.Lvl }}
+         <span class="number">{{view.model.stonehearth:job.curr_job_level}}</span>
+      </div>
+      <div class="banner">
+         <img class="jobIcon" {{bind-attr src=view.model.stonehearth:job.class_icon}}/>
+      </div>
+      <div class="name">
+         {{i18n_key view.model.stonehearth:unit_info.display_name self=view.model}}
+      </div>
+      <div class="stats">
+         <span class="mind mindStat">{{view.model.stonehearth:attributes.attributes.mind.effective_value}}</span>   /
+         <span class="body bodyStat">{{view.model.stonehearth:attributes.attributes.body.effective_value}}</span>   /   
+         <span class="spirit spiritStat">{{view.model.stonehearth:attributes.attributes.spirit.effective_value}}</span>
+      </div>
+      <div {{bind-attr class=":pets view.hasPets::hidden"}}>
+         <img class="hasPetsIcon"/>
+      </div>
+   </td>
+</script>

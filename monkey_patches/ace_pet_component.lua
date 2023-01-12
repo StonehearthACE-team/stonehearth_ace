@@ -11,6 +11,7 @@ function AcePetComponent:restore()
    if self._ace_old_restore then
       self:_ace_old_restore()
    end
+   self:_update_commands()
 end
 
 AcePetComponent._ace_old_activate = PetComponent.activate
@@ -58,6 +59,17 @@ function AcePetComponent:_destroy_player_id_trace()
    end
 end
 
+function AcePetComponent:is_locked_to_owner()
+   return self._sv._locked
+end
+
+function AcePetComponent:lock_to_owner()
+   if self._sv.owner then
+      self._sv._locked = true
+      self:_update_commands()
+   end
+end
+
 function AcePetComponent:self_tame()
    if not radiant.entities.is_owned_by_non_npc(self._entity) then
       return false
@@ -100,6 +112,16 @@ function AcePetComponent:_update_owner_description()
       radiant.entities.set_description(self._entity, nil)
    end
    self.__saved_variables:mark_changed()
+end
+
+function AcePetComponent:_update_commands()
+   -- if the pet isn't locked to its owner, show the change owner command
+   local commands_component = self._entity:add_component('stonehearth:commands')
+   if self._sv._locked then
+      commands_component:remove_command('stonehearth_ace:commands:change_pet_owner')
+   else
+      commands_component:add_command('stonehearth_ace:commands:change_pet_owner')
+   end
 end
 
 return AcePetComponent

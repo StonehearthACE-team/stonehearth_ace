@@ -281,6 +281,19 @@ function ace_entities.set_description(entity, description, description_data)
    entity:add_component('stonehearth:unit_info'):set_description(description, description_data)
 end
 
+function ace_entities.add_pet(entity, pet, lock_to_owner)
+   if entity and entity:is_valid() and pet and pet:is_valid() then
+      local pet_component = pet:add_component('stonehearth:pet')
+      if not pet_component:is_locked_to_owner() then
+         pet_component:convert_to_pet(entity:get_player_id())
+         pet_component:set_owner(entity)
+         if lock_to_owner then
+            pet_component:lock_to_owner()
+         end
+      end
+   end
+end
+
 function ace_entities.add_title(entity, title, rank)
    if entity and entity:is_valid() then
       entity:add_component('stonehearth_ace:titles'):add_title(title, rank)
