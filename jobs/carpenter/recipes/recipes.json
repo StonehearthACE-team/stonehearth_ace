@@ -147,6 +147,15 @@
 			},
 			"wooden_sign_tavern": {
                "recipe": "file(wooden_sign_tavern_recipe.json)"
+         },
+			"wood_candle_holder": {
+               "recipe": "file(wood_candle_holder_recipe.json)"
+         },
+			"candle_holder_wood_wall": {
+               "recipe": "file(candle_holder_wood_wall_recipe.json)"
+         },
+			"candle_holder_double_wood_wall": {
+               "recipe": "file(candle_holder_double_wood_wall_recipe.json)"
          }
       }
    },
@@ -242,7 +251,13 @@
             },
             "ornate_picket_fence_combo": {
                "recipe": "/stonehearth/jobs/carpenter/recipes/ornate_picket_fence_combo_recipe.json"
-            }
+            },
+				"candle_holder_ornate_wall": {
+						"recipe": "file(candle_holder_ornate_wall_recipe.json)"
+				},
+				"candle_holder_double_ornate_wall": {
+						"recipe": "file(candle_holder_double_ornate_wall_recipe.json)"
+				}
          }
       },
 	   "ornate_furniture": {

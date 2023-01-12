@@ -7,7 +7,7 @@
    "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.output_tun_stone_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/containers/output_tun_stone/output_tun_stone.png",
    "workshop": "stonehearth:mason:workbench",
-   "level_requirement": 2,
+   "level_requirement": 4,
    "ingredients": [
       {
          "material": "stone resource",
@@ -18,8 +18,8 @@
          "count": 1
       },
       {
-         "material": "ore resource",
-         "count": 1
+         "uri": "stonehearth_ace:refined:metal_bits:hard",
+         "count": 2
       }
    ],
    "produces": [

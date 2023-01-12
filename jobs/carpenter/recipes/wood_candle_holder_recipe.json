@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 5,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.wood_candle_holder_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.wood_candle_holder_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.wood_candle_holder_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/candles/candles.png",
+   "workshop": "stonehearth:carpenter:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:wood_candle_holder"
+      }
+   ]
+}

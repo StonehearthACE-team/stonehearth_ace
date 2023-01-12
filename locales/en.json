@@ -8397,6 +8397,16 @@
             "utility_name": "Utility",
             "civillian_tools_name": "Improved Tools",
             "storage_name": "Storage & Utility",
+            "metal_bits_hard_recipe": {
+               "recipe_name": "Hard Metal Bits (x3)",
+               "description": "Tinker an ingot of hard metal into multiple parts that are useful for other crafters.",
+               "flavor": "Hinges, supports, barrel loops, bolts, plates, knobs... Just name what you need!"
+            },
+            "metal_bits_soft_recipe": {
+               "recipe_name": "Soft Metal Bits (x3)",
+               "description": "Tinker an ingot of soft metal into multiple parts that are useful for other crafters.",
+               "flavor": "Small tubes, buckles, buttons, handles, trinkets... The blacksmith will provide!"
+            },
             "glory_market_stall_recipe": {
                "recipe_name": "Engineer's Guild Market Stall",
                "description": "This exclusive market stall will allow your town to be visited by a special merchant providing unique (but disposable) turrets and traps that can be used without an engineer!",
@@ -8590,6 +8600,27 @@
                "recipe_name": "Copper Ingot (x2)",
                "description": "An Enhanced Furnace will allow the Blacksmith to use copper ore more efficiently.",
                "flavor": ""
+            },
+            "bronze_ingot_recipe": {
+               "description": "Two bars of solid bronze. A hard metal suitable for crafted goods."
+            },
+            "copper_ingot_recipe": {
+               "description": "A bar of solid copper. A soft metal suitable for crafted goods."
+            },
+            "gold_ingot_recipe": {
+               "description": "A bar of solid gold. A precious metal suitable for crafted goods."
+            },
+            "iron_ingot_recipe": {
+               "description": "A bar of solid Iron. A hard metal suitable for crafted goods."
+            },
+            "silver_ingot_recipe": {
+               "description": "A bar of solid silver. A precious metal suitable for crafted goods."
+            },
+            "steel_ingot_recipe": {
+               "description": "A bar of solid steel. A hard metal suitable for crafted goods."
+            },
+            "tin_ingot_recipe": {
+               "description": "A bar of solid tin. A soft metal suitable for crafted goods."
             },
             "bulk_tin_ingot_recipe": {
                "recipe_name": "Tin Ingot (x2)",
@@ -8813,6 +8844,33 @@
                "recipe_name": "Brass Plate (x4)",
                "description": "Create sheets of cheap but durable metal as learned from the dwarves.",
                "flavor": "The trick is to melt anything alongside copper"
+            },
+            "pewter_candle_holder_recipe": {
+               "recipe_name": "Pewter Table Candle Holder",
+               "description": "A pewter carrying plate with candles.",
+               "flavor": "Goes great with a nightgown"
+            },
+            "candle_holder_pewter_wall_recipe": {
+               "recipe_name": "Pewter Wall Candle Holder",
+               "description": "A pewter wall support for a candle.",
+               "flavor": ""
+            },
+            "candle_holder_double_pewter_wall_recipe": {
+               "recipe_name": "Pewter Wall Candelabra",
+               "description": "A pewter wall support for two candles.",
+               "flavor": ""
+            },
+            "candelabra_pewter_recipe": {
+               "recipe_name": "Pewter Table Candelabra",
+               "description": "A decorated five-point pewter candle holder.",
+               "flavor": "Butler Belltower, in the library, with the candelabra!"
+            },
+            "craftsman_statue": {
+               "candelabra_iron_recipe": {
+                  "recipe_name": "Iron Table Candelabra",
+                  "description": "A very beautiful five-point iron candle holder.",
+                  "flavor": ""
+               }
             },
             "frostfeast": {
                "candlestick_recipe": {
@@ -9822,6 +9880,31 @@
             },
             "shepherds_crook_recipe": {
                "flavor": "Can you tell me another story about The Shepherd?"
+            },
+            "wood_candle_holder_recipe": {
+               "recipe_name": "Wooden Table Candle Holder",
+               "description": "A simple wooden plate with candles.",
+               "flavor": "Helps with reading!"
+            },
+            "candle_holder_wood_wall_recipe": {
+               "recipe_name": "Wooden Wall Candle Holder",
+               "description": "A simple wooden wall support for a candle.",
+               "flavor": ""
+            },
+            "candle_holder_double_wood_wall_recipe": {
+               "recipe_name": "Wooden Wall Candelabra",
+               "description": "A simple wooden wall support for two candles.",
+               "flavor": "For when one isn't enough"
+            },
+            "candle_holder_ornate_wall_recipe": {
+               "recipe_name": "Ornate Wall Candle Holder",
+               "description": "A fancy wall support for a candle.",
+               "flavor": ""
+            },
+            "candle_holder_double_ornate_wall_recipe": {
+               "recipe_name": "Ornate Wall Candelabra",
+               "description": "A fancy wall support for two candles.",
+               "flavor": ""
             },
             "frostfeast": {
                "present_small_recipe": {
@@ -13842,9 +13925,38 @@
             "display_name": "Unfired Porcelain",
             "description": "Thrown porcelain pottery ready to be fired into decorations and vessels."
          },
+         "copper_ingot": {
+            "description": "A bar of solid copper, usable as a soft metal."
+         },
+         "tin_ingot": {
+            "description": "A bar of solid tin, usable as a soft metal."
+         },
+         "bronze_ingot": {
+            "description": "A bar of solid bronze, usable as a hard metal."
+         },
+         "iron_ingot": {
+            "description": "A bar of solid iron, usable as a hard metal."
+         },
+         "steel_ingot": {
+            "description": "A bar of solid steel, usable as a hard metal."
+         },
+         "silver_ingot": {
+            "description": "A bar of solid silver, usable as a precious metal."
+         },
+         "gold_ingot": {
+            "description": "A bar of solid gold, usable as a precious metal."
+         },
          "starsteel_ingot": {
             "display_name": "Starsteel Ingot",
             "description": "A bar of steel purified with gold and imbued with meteoric metal."
+         },
+         "metal_bits_hard": {
+            "display_name": "Hard Metal Bits",
+            "description": "A bunch of hard metal parts required for some advanced crafts."
+         },
+         "metal_bits_soft": {
+            "display_name": "Soft Metal Bits",
+            "description": "A bunch of soft metal parts required for some advanced crafts."
          }
       },
       "trees": {
@@ -16602,6 +16714,14 @@
             "display_name": "Moka Coffee Pot",
             "description": "A unique and special pot for extracting the boldest flavors from the roast."
          },
+         "copper_weighing_scale": {
+            "display_name": "Copper Weighing Scale",
+            "description": "Makes you look a lot smarter!"
+         },
+         "gold_weighing_scale": {
+            "display_name": "Gold Weighing Scale",
+            "description": "Very sophisticated and shiny!"
+         },
          "dragon_shrine": {
             "display_name": "Shrine of Dragon Friendship",
             "description": "A monument forged with dragon fire itself to celebrate this unique bond!",
@@ -16622,16 +16742,50 @@
             "description": "An ancient testament to the power a community has to nurture and thrive.",
             "static_component_info": {
                "description": "<p style='text-align:center;color:white;'>This beautiful monument is dedicated to the great community behind Stonehearth and to those that have supported the ACE project!<br><br>Below is a permanent list of all the kind donors, ordered by membership tier, then total amount and finally date. This list will be updated whenever a new release is out!</p>",
-               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Doris<br>AnonymousFriendo<hr><p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Coolcup5<br>ghostcrap<br>Croxo<br>Yunoh<br>shimizu & jontaro</p>"
+               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>Yunoh<br>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Doris<br>AnonymousFriendo<hr><p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Coolcup5<br>ghostcrap<br>Croxo<br>shimizu & jontaro</p>"
             }
          },
-         "copper_weighing_scale": {
-            "display_name": "Copper Weighing Scale",
-            "description": "Makes you look a lot smarter!"
+         "craftsman_statue": {
+            "candelabra_iron": {
+               "display_name": "Iron Table Candelabra",
+               "description": "For all your fancy needs."
+            }
          },
-         "gold_weighing_scale": {
-            "display_name": "Gold Weighing Scale",
-            "description": "Very sophisticated and shiny!"
+         "wood_candle_holder": {
+            "display_name": "Wooden Table Candle Holder",
+            "description": "Helps with reading!"
+         },
+         "candle_holder_wood_wall": {
+            "display_name": "Wooden Wall Candle Holder",
+            "description": "A simple time."
+         },
+         "candle_holder_double_wood_wall": {
+            "display_name": "Wooden Wall Candelabra",
+            "description": "For when one isn't enough."
+         },
+         "candle_holder_ornate_wall": {
+            "display_name": "Ornate Wall Candle Holder",
+            "description": "For a very fancy room!"
+         },
+         "candle_holder_double_ornate_wall": {
+            "display_name": "Ornate Wall Candelabra",
+            "description": "A royal light-source!"
+         },
+         "pewter_candle_holder": {
+            "display_name": "Pewter Table Candle Holder",
+            "description": "Easier to carry around."
+         },
+         "candle_holder_pewter_wall": {
+            "display_name": "Pewter Wall Candle Holder",
+            "description": "Full of mystery..."
+         },
+         "candle_holder_double_pewter_wall": {
+            "display_name": "Pewter Wall Candelabra",
+            "description": "Illuminating suspicious corridors since time imemmorial."
+         },
+         "candelabra_pewter": {
+            "display_name": "Pewter Table Candelabra",
+            "description": "A strong light solution for your dinner room!"
          }
       },
       "pets": {
@@ -21699,7 +21853,7 @@
                   "description": "Merchants from strong settlements selling weapons, armor, medicine and other defensive assets; They're often interested in metals, fuels and pelts."
                },
                "artisan": {
-                  "display_name": "Artisan",
+                  "display_name": "Artisans",
                   "description": "Merchants from rich cities selling metalworking goods, work tools, textiles and other refined materials; They're often interested in raw ores, prepared drinks and fiber."
                },
                "provisions": {

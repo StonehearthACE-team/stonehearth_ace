@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 28,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.craftsman_statue.candelabra_iron_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.craftsman_statue.candelabra_iron_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.craftsman_statue.candelabra_iron_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/craftsman_statue/candelabra_iron/candelabra_iron.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 6,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:craftsman_statue:candelabra_iron"
+      }
+   ]
+}

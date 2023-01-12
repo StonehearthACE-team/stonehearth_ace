@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 12,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.metal_bits_soft_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.metal_bits_soft_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.metal_bits_soft_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/metal_bits_soft/metal_bits_soft.png",
+   "workshop": "stonehearth:blacksmith:forge",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "ingot soft_metal",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:metal_bits:soft",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "ingot soft_metal"
+      },
+      {
+         "item": "stonehearth_ace:refined:metal_bits:soft",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "ingot soft_metal"
+      },
+      {
+         "item": "stonehearth_ace:refined:metal_bits:soft",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "ingot soft_metal"
+      }
+   ]
+}

@@ -159,6 +159,21 @@
             },
             "wall_hanging_key": {
                "recipe": "/rayyas_children/jobs/blacksmith/recipes/wall_hanging_key_recipe.json"
+            },
+            "pewter_candle_holder": {
+               "recipe": "file(pewter_candle_holder_recipe.json)"
+            },
+            "candle_holder_pewter_wall": {
+               "recipe": "file(candle_holder_pewter_wall_recipe.json)"
+            },
+            "candle_holder_double_pewter_wall": {
+               "recipe": "file(candle_holder_double_pewter_wall_recipe.json)"
+            },
+            "candelabra_pewter": {
+               "recipe": "file(candelabra_pewter_recipe.json)"
+            },
+            "candelabra_iron": {
+               "recipe": "file(candelabra_iron_recipe.json)"
             }
 			}
 		},
@@ -166,6 +181,12 @@
 			"ordinal": 35,
 			"name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.refined_name)",
 			"recipes": {
+				"metal_bits_hard": {
+					"recipe": "file(metal_bits_hard_recipe.json)"
+				},
+				"metal_bits_soft": {
+					"recipe": "file(metal_bits_soft_recipe.json)"
+				},
 				"charcoal": {
 					"recipe": "file(charcoal_recipe.json)"
 				},
