@@ -26,6 +26,9 @@
          "worker_required_job": {
             "stonehearth:jobs:shepherd": true
          }
+      },
+      "stonehearth:on_destroy": {
+         "effect": "stonehearth_ace:effects:object_large_destroyed"
       }
    }
 }

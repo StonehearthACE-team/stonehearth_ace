@@ -43,6 +43,7 @@ local monkey_patches = {
    ace_collect_ingredients_orchestrator = 'stonehearth.services.server.town.orchestrators.collect_ingredients_orchestrator',
    ace_collect_starting_resources = 'stonehearth.scenarios.quests.collect_starting_resources.collect_starting_resources',
    ace_collection_quest_shakedown = 'stonehearth.services.server.game_master.controllers.scripts.collection_quest_shakedown',
+   ace_combat_panic_observer = 'stonehearth.ai.observers.combat_panic_observer',
    ace_combat_server_commands_service = 'stonehearth.services.server.combat_server_commands.combat_server_commands_service',
    ace_combat_service = 'stonehearth.services.server.combat.combat_service',
    ace_combat_state_component = 'stonehearth.components.combat_state.combat_state_component',

@@ -25,6 +25,9 @@ function AceBuffsComponent:activate()
    if not self._sv.managed_properties then
       self._sv.managed_properties = {}
    end
+   if not self._sv.invulnerability then
+      self._sv.invulnerability = 0
+   end
 
    if self._ace_old_activate then
       self:_ace_old_activate()
@@ -315,6 +318,10 @@ function AceBuffsComponent:add_buff(uri, options)
          self:_update_highest_rank_wound()
       end
 
+      if json.invulnerability then
+         self:add_invulnerability()
+      end
+
       self.__saved_variables:mark_changed()
 
       radiant.events.trigger_async(self._entity, 'stonehearth:buff_added', {
@@ -404,6 +411,10 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks, ignore_wound_chec
 						end  
 					end
 				end
+
+            if json.invulnerability then
+               self:remove_invulnerability()
+            end
          end
 
          self._sv.buffs[uri] = nil
@@ -428,6 +439,18 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks, ignore_wound_chec
          buff:remove_stack(false)
       end
    end
+end
+
+function AceBuffsComponent:add_invulnerability()
+   self._sv.invulnerability = self._sv.invulnerability + 1
+end
+
+function AceBuffsComponent:remove_invulnerability()
+   self._sv.invulnerability = math.max(0, (self._sv.invulnerability - 1))
+end
+
+function AceBuffsComponent:is_invulnerable()
+   return self._sv.invulnerability ~= 0
 end
 
 function AceBuffsComponent:_update_highest_rank_wound()

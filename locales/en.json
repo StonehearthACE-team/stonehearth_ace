@@ -5864,6 +5864,14 @@
             "major_debuff_aura_effect_buff": {
                "display_name": "Major Weakening",
                "description": "Attack strength and speed reduced from the presence of a cleric"
+            },
+            "phoenix_cleric_armor_buff": {
+               "display_name": "Heroes' Legacy",
+               "description": "Increases Willpower by 6% and Healing Efficiency by 12%<ul><li>If the wearer's health goes under 10% they will become protected by a divine shield for one full hour, being knocked out after its effects are expired. Be ready for a rescue!</li><li>This effect can only be activated once every 24 hours</li></ul>"
+            },
+            "divine_extension_buff": {
+               "display_name": "Divine Intervention (Overtime)",
+               "description": "Armor is incomprehensibly increased for a short time, protecting this hearthling. This blessing is an extension of one's due time and once it run its course, the hearthling will be knocked out and need rescue!"
             }
          }
       },
@@ -22626,7 +22634,7 @@
                }
             },
             "reembarkation": {
-               "pets": "Pets (will reembark with owner)"
+               "pets": "Accompanying Pets"
             },
             "shop": {
                "wanted_items": "Offering special rates for these items:",
