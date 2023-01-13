@@ -1,15 +1,22 @@
 {
    "type": "buff",
    "axis": "buff",
-   "display_name": "Blessed Regalia",
-   "description": "Increases Willpower by 5% and Healing Efficiency by 10%",
+   "display_name": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.phoenix_cleric_armor_buff.display_name)",
+   "description": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.phoenix_cleric_armor_buff.description)",
    "icon": "file(phoenix_cleric_armor_buff.png)",
    "modifiers": {
       "willpower": {
-         "multiply": 1.05
+         "multiply": 1.06
       },
       "multiplicative_heal_modifier": {
-         "multiply": 1.1
+         "multiply": 1.12
       }
+   },
+   "script": "stonehearth_ace:buff_scripts:apply_buff_based_on_health",
+   "script_info": {
+      "health_percentage": 0.1,
+      "buff": "stonehearth_ace:buffs:cleric:divine_extension",
+      "cooldown_buff": "stonehearth_ace:buffs:cleric:divine_extension:cooldown",
+      "reapply": false
    }
 }

@@ -5,12 +5,8 @@
    "description": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.divine_intervention_buff.description)",
    "icon": "file(divine_intervention_buff.png)",
    "effect": "stonehearth_ace:effects:heal:divine_intervention",
+   "invulnerability": true,
    "restore_effect": true,
    "duration": "40m",
-   "repeat_add_action": "renew_duration",
-   "modifiers": {
-      "additive_armor_modifier": {
-         "add": 100
-      }
-   }
+   "repeat_add_action": "renew_duration"
 }

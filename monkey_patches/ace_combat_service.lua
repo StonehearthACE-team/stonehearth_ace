@@ -19,6 +19,10 @@ function AceCombatService:_calculate_damage(attacker, target, attack_info, base_
       end
    end
 
+   if target:get_component('stonehearth:buffs') and target:get_component('stonehearth:buffs'):is_invulnerable() then
+      return 0
+   end
+
    return damage
 end
 

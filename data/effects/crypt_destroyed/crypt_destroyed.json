@@ -1,0 +1,42 @@
+{
+   "type": "effect",
+   "tracks": {
+      "dust": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/dust_poof/crypt_destroyed.cubemitter.json",
+         "loop": false,
+         "start_time": 0,
+         "end_time": 9999,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "dirt": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/dust_poof/crypt_destroyed_dirt.cubemitter.json",
+         "loop": false,
+         "start_time": 0,
+         "end_time": 9999,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 0,
+         "min_distance": 40,
+         "falloff": 3,
+         "volume": 75,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:crypt_destruction"
+            ]
+         }
+      }
+   }
+}

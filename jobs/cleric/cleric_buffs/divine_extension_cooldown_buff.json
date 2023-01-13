@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "visible_to_player": false,
+   "duration": "23h",
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -1,
+      "pulse": "30h",
+      "pulse_immediately": true,
+      "pulse_on_destroy": false,
+      "is_percentage": true
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:cleric:divine_extension"
+   ]
+}
