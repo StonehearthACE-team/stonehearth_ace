@@ -18823,6 +18823,28 @@
             "ogre": {
                "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
                "description": "That's a big skeleton."
+            },
+            "crypt": {
+               "display_name": "Ancient Crypt",
+               "description": "Built by the Phoenix Empire... Beware, the undead can be heard inside!",
+               "destroyed": {
+                  "1": {
+                     "display_name": "Destroyed Ancient Crypt",
+                     "description": "Can be harvested for the wood from all these crumbled and old roof tiles!"
+                  },
+                  "2": {
+                     "display_name": "Pillaged Ancient Crypt",
+                     "description": "Can now be harvested for all the stone scattered around."
+                  },
+                  "3": {
+                     "display_name": "Ruined Ancient Crypt",
+                     "description": "There's still some good stone to be harvested from these walls!"
+                  },
+                  "4": {
+                     "display_name": "Ancient Crypt Remains",
+                     "description": "But a shadow of its former self... Not so scary anymore!"
+                  }
+               }
             }
          },
          "undergrowth": {
@@ -19110,6 +19132,10 @@
          "cleric_steel_shield": {
             "display_name": "Light Steel Shield",
             "description": "A strong and ornate defense for a holy warrior!"
+         },
+         "phoenix_cleric_armor": {
+            "display_name": "Phoenix Paladin Regalia",
+            "description": "A restoration of an ancient and protective armor for combat clerics!"
          }
       },
       "weapons": {
@@ -21189,6 +21215,10 @@
                "display_name": "Dragon Cult Mask",
                "description": "A trophy from defeating the sinister followers of the dragon cult..."
             }
+         },
+         "ancient_armor_fragment": {
+            "display_name": "Ancient Armor Fragment",
+            "description": "Some would call this junk... But it's clearly a treasure!"
          }
       },
       "peoples": {

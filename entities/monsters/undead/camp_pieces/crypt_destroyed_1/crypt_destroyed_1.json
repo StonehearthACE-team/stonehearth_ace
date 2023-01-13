@@ -1,7 +1,10 @@
 {
-   "mixins": "stonehearth:mixins:destructable_object",
    "type": "entity",
    "components": {
+      "mob": {
+         "model_origin": { "x": -0.5, "y": 0, "z": -0.5 },
+         "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
+      },
       "render_info": {
          "scale": 1.0
       },
@@ -12,30 +15,61 @@
             ]
          }
       },
+      "stonehearth_ace:stump": {},
+      "stonehearth:resource_node": {
+         "durability": 16,
+         "resource": "stonehearth_ace:resources:wood:old_wood_log",
+         "harvest_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
+         "harvester_effect": "chop_block",
+         "description": "mine"
+      },
       "region_collision_shape": {
          "region": [
             {
-               "min": { "x": -6.5, "y": 0, "z": -4.5 },
-               "max": { "x": 6.5, "y": 15, "z": 9.5 }
+               "min": { "x": -6, "y": 0, "z": -4 },
+               "max": { "x": 7, "y": 3, "z": 10 }
             },
             {
-               "min": { "x": -3.5, "y": 0, "z": -8.5 },
-               "max": { "x": -1.5, "y": 11, "z": -4.5 }
+               "min": { "x": -3, "y": 0, "z": -8 },
+               "max": { "x": -1, "y": 9, "z": -4 }
             },
             {
-               "min": { "x": 1.5, "y": 0, "z": -8.5 },
-               "max": { "x": 3.5, "y": 11, "z": -4.5 }
+               "min": { "x": 2, "y": 0, "z": -8 },
+               "max": { "x": 4, "y": 9, "z": -4 }
+            },
+            {
+               "min": { "x": -6, "y": 3, "z": -4 },
+               "max": { "x": -3, "y": 10, "z": 10 }
+            },
+            {
+               "min": { "x": 4, "y": 3, "z": -4 },
+               "max": { "x": 7, "y": 10, "z": 10 }
+            },
+            {
+               "min": { "x": -3, "y": 3, "z": 7 },
+               "max": { "x": 4, "y": 10, "z": 10 }
+            },
+            {
+               "min": { "x": -1, "y": 0, "z": -7 },
+               "max": { "x": 2, "y": 2, "z": -4 }
+            },
+            {
+               "min": { "x": 0, "y": 0, "z": -9 },
+               "max": { "x": 2, "y": 1, "z": -7 }
             }
          ]
       }
    },
    "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:monsters:undead:crypt:destroyed:2"
+      },
       "stonehearth:catalog": {
-         "display_name": "A Crypt",
-         "description": "What lies inside?"
+         "display_name": "i18n(stonehearth_ace:entities.monsters.undead.crypt.destroyed.1.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.undead.crypt.destroyed.1.description)"
       },
       "stonehearth:appeal": {
-         "appeal": -18
+         "appeal": -6
       }
    }
 }

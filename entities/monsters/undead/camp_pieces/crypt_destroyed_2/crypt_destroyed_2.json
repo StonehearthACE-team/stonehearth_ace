@@ -1,0 +1,44 @@
+{
+   "type": "entity",
+   "components": {
+      "mob": {
+         "model_origin": { "x": -0.5, "y": 0, "z": -0.5 },
+         "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
+      },
+      "render_info": {
+         "scale": 1.0
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(crypt_destroyed_2.qb)"
+            ]
+         }
+      },
+      "stonehearth_ace:stump": {},
+      "stonehearth:resource_node": {
+         "durability": 10,
+         "resource": "stonehearth:resources:stone:hunk_of_stone",
+         "harvest_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
+         "harvester_effect": "mine",
+         "description": "mine"
+      },
+      "region_collision_shape": {
+         "region_from_model": {
+            "model": "file(crypt_destroyed_2.qb)"
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:monsters:undead:crypt:destroyed:3"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.undead.crypt.destroyed.2.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.undead.crypt.destroyed.2.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": -4
+      }
+   }
+}

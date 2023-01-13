@@ -1,0 +1,64 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:medium_armor_torso",
+      "stonehearth_ace:mixins:armor:resistance:torso:average"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "armor",
+            "transparent": "true",
+            "models": [
+               "file(phoenix_cleric_armor.qb)"
+            ]
+         },
+         "female": {
+            "layer": "armor",
+            "transparent": "true",
+            "models": [
+               "file(phoenix_cleric_armor_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(phoenix_cleric_armor_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 5,
+         "roles": [
+            "cleric_job"
+         ],
+         "required_job_level": 5,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:cleric:phoenix_cleric_armor"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 5
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 65,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.phoenix_cleric_armor.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.phoenix_cleric_armor.description)",
+         "icon": "file(phoenix_cleric_armor.png)",
+         "category": "armor",
+         "material_tags": [
+            "crafted",
+            "phoenix_made",
+            "cleric_armor"
+         ]
+      }
+   }
+}

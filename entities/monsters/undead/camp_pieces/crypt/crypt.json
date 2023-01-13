@@ -1,0 +1,162 @@
+{
+   "components": {
+      "region_collision_shape": {
+         "mixintypes": {
+            "region": "override"
+         },
+         "region": [
+            {
+               "min": {
+                  "x": -6,
+                  "y": 0,
+                  "z": -4
+               },
+               "max": {
+                  "x": 7,
+                  "y": 15,
+                  "z": 10
+               }
+            },
+            {
+               "min": {
+                  "x": -3,
+                  "y": 0,
+                  "z": -8
+               },
+               "max": {
+                  "x": -1,
+                  "y": 11,
+                  "z": -4
+               }
+            },
+            {
+               "min": {
+                  "x": 2,
+                  "y": 0,
+                  "z": -8
+               },
+               "max": {
+                  "x": 4,
+                  "y": 11,
+                  "z": -4
+               }
+            }
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": -0.5, "y": 0, "z": -0.5 },
+         "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
+      },
+      "stonehearth_ace:stump": {},
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 999
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "loot": {
+               "num_rolls": {
+                  "min": 4,
+                  "max": 6
+               },
+               "items": {
+                  "floor_candle": {
+                     "uri": "stonehearth:decoration:stone_floor_candle_holder",
+                     "weight": 1
+                  },
+                  "gold_ingot": {
+                     "uri": "stonehearth:refined:gold_ingot",
+                     "weight": 1
+                  },
+                  "silver_ingot": {
+                     "uri": "stonehearth:refined:silver_ingot",
+                     "weight": 1
+                  },
+                  "steel_ingot": {
+                     "uri": "stonehearth:refined:steel_ingot",
+                     "weight": 1
+                  },
+                  "gold_flakes": {
+                     "uri": "stonehearth:refined:gold_flakes",
+                     "weight": 1
+                  },
+                  "statue_cleric": {
+                     "uri": "stonehearth_ace:decoration:statue:cleric_female",
+                     "weight": 1
+                  },
+                  "gargoyle": {
+                     "uri": "stonehearth:decoration:gargoyle",
+                     "weight": 1
+                  },
+                  "stone_brazier": {
+                     "uri": "stonehearth:decoration:stone_brazier",
+                     "weight": 1
+                  },
+                  "candelabra_pewter": {
+                     "uri": "stonehearth_ace:decoration:candelabra_pewter",
+                     "weight": 1
+                  },
+                  "candle_holder_pewter_wall": {
+                     "uri": "stonehearth_ace:decoration:candle_holder_pewter_wall",
+                     "weight": 1
+                  },
+                  "candle_holder_double_pewter_wall": {
+                     "uri": "stonehearth_ace:decoration:candle_holder_double_pewter_wall",
+                     "weight": 1
+                  },
+                  "bone_candle_holder": {
+                     "uri": "stonehearth_ace:decoration:bone_candle_holder",
+                     "weight": 1
+                  },
+                  "bone_floor_candle_holder": {
+                     "uri": "stonehearth_ace:decoration:bone_floor_candle_holder",
+                     "weight": 1
+                  },
+                  "scepter": {
+                     "uri": "stonehearth_ace:weapons:bronze_scepter",
+                     "weight": 1
+                  }
+               }
+            },
+            "possible_tome": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "dusty_tome": {
+                     "uri": "stonehearth:loot:dusty_tome",
+                     "weight": 1
+                  }
+               }
+            },
+            "possible_ancient_armor_fragment": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "ancient_armor_fragment": {
+                     "uri": "stonehearth_ace:loot:ancient_armor_fragment",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:monsters:undead:crypt:destroyed:1"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.undead.crypt.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.undead.crypt.description)"
+      },
+      "stonehearth:appeal": {
+         "appeal": -18
+      }
+   }
+}

@@ -1,0 +1,15 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "Blessed Regalia",
+   "description": "Increases Willpower by 5% and Healing Efficiency by 10%",
+   "icon": "file(phoenix_cleric_armor_buff.png)",
+   "modifiers": {
+      "willpower": {
+         "multiply": 1.05
+      },
+      "multiplicative_heal_modifier": {
+         "multiply": 1.1
+      }
+   }
+}

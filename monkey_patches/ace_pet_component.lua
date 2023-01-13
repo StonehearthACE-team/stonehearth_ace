@@ -93,6 +93,7 @@ function AcePetComponent:self_tame()
    end
 
    self:set_owner(min_citizen)
+   self:_update_commands()
    return true
 end
 
