@@ -1,6 +1,13 @@
 -- Health modification generic class
 --
+local PeriodicHealthModificationBuff = require 'stonehearth.data.buffs.scripts.periodic_health_modification'
 local AcePeriodicHealthModificationBuff = class()
+
+AcePeriodicHealthModificationBuff._ace_old_on_buff_added = PeriodicHealthModificationBuff.on_buff_added
+function AcePeriodicHealthModificationBuff:on_buff_added(entity, buff)
+   self._buff = buff
+   self:_ace_old_on_buff_added(entity, buff)
+end
 
 function AcePeriodicHealthModificationBuff:_on_pulse()
    local resources = self._entity:is_valid() and self._entity:get_component('stonehearth:expendable_resources')
@@ -59,7 +66,7 @@ function AcePeriodicHealthModificationBuff:_on_pulse()
 
    health_change = math.max(health_change, -(current_health - min_health))
 
-   radiant.entities.modify_health(self._entity, health_change)
+   radiant.entities.modify_health(self._entity, health_change, self._buff:get_source())
 end
 
 return AcePeriodicHealthModificationBuff

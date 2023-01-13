@@ -8,6 +8,38 @@ local get_player_id = radiant.entities.get_player_id
 local EXP_SPLIT_AMOUNT = 0.7  -- each entity involved will get 30% of the raw exp value; 70% will be divided out among them
 local BASIC_SIEGE_DAMAGE = 0.4  -- how much of their total damage (in %) will non siege-specific units perform against siege objects
 
+-- Notify target that it has been hit by an attack.
+-- ACE: include damage source when modifying health
+function AceCombatService:battery(context)
+   local attacker = context.attacker
+   local target = context.target
+
+   if not target or not target:is_valid() then
+      return nil
+   end
+
+   local health = radiant.entities.get_health(target)
+   local damage = context.damage
+
+   if health ~= nil then
+      if health <= 0 then
+      -- if monster is already at/below 0 health, it should be considered dead so don't continue battery
+         return nil
+      end
+      health = health - damage
+      if health <= 0 then
+         self:_on_target_killed(attacker, target)
+      end
+
+      -- Modify health after distributing xp and removing components,
+      -- so it does not kill the entity before we have a chance to do that
+      radiant.entities.modify_health(target, -damage, attacker)
+   end
+
+   radiant.events.trigger_async(attacker, 'stonehearth:combat:target_hit', context)
+   radiant.events.trigger_async(target, 'stonehearth:combat:battery', context)
+end
+
 AceCombatService._ace_old__calculate_damage = CombatService._calculate_damage
 function AceCombatService:_calculate_damage(attacker, target, attack_info, base_damage_name)
    local damage = self:_ace_old__calculate_damage(attacker, target, attack_info, base_damage_name)
@@ -277,8 +309,14 @@ function CombatService:choose_defense_action(entity, actions, attack_impact_time
    return self:_choose_combat_action(entity, actions, filter_fn)
 end
 
+-- ACE: include attacker with the debuffs
+function AceCombatService:inflict_debuffs(attacker, target, attack_info)
+   local inflictable_debuffs = self:get_inflictable_debuffs(attacker, attack_info)
+   stonehearth.combat:try_inflict_debuffs(target, inflictable_debuffs, attacker)
+end
+
 -- Adds resistance to wounds
-function AceCombatService:try_inflict_debuffs(target, debuff_list)
+function AceCombatService:try_inflict_debuffs(target, debuff_list, attacker)
    local attributes = target:get_component('stonehearth:attributes')
 	local debuff_resistance = attributes and attributes:get_attribute('debuff_resistance') or 0
    for i, debuff_data in ipairs(debuff_list) do
@@ -290,7 +328,10 @@ function AceCombatService:try_inflict_debuffs(target, debuff_list)
 				i = i + (debuff_resistance * 100)
 			end
          if i <= n then
-            target:add_component('stonehearth:buffs'):add_buff(debuff.uri)
+            target:add_component('stonehearth:buffs'):add_buff(debuff.uri, {
+               source = attacker,
+               source_player = attacker:get_player_id()
+            })
          end
       end
    end

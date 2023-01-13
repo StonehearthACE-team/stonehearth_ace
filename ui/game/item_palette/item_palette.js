@@ -6,7 +6,45 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       skipCategories: false,
       sortField: 'display_name',
       wantedItems: null,
-      showSearchFilter: true, // TODO
+   },
+
+   showSearchFilter: function() {
+      var self = this;
+      self.searchBox = $('<div>').addClass('itemPaletteSearchBox').addClass('collapsed');
+      self.searchInput = $('<input>').attr('placeholder', i18n.t('stonehearth:ui.game.show_workshop.placeholder'));
+
+      self.searchBox.mousedown(function (e) {
+         if (self.searchBox.hasClass('collapsed')) {
+            self.searchBox.removeClass('collapsed');
+            self.searchInput.focus();
+            e.stopPropagation();
+            return false;
+         }
+      });
+
+      self.searchInput.keydown(function (e) {
+         if (e.key == 'Escape') {
+            e.stopPropagation();
+         }
+      });
+      self.searchInput.keyup(function (e) {
+         if (e.key == 'Escape') {
+            self.searchInput.val('');
+            e.stopPropagation();
+         }
+         self._updateAllItemsSearchFilter();
+         if (e.key == 'Enter' || e.key == 'Escape') {
+            self.searchInput.blur();
+         }
+      });
+      self.searchInput.blur(function (e) {
+         if (!self.searchInput.val()) {
+            self.searchBox.addClass('collapsed');
+         }
+      });
+
+      self.searchBox.append(self.searchInput);
+      self.palette.append(self.searchBox);
    },
 
    _destroy: function() {
@@ -16,6 +54,16 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
          self._unlocked_crops_trace.destroy();
       }
       self._unlocked_crops_trace = null;
+
+      if (self.searchInput) {
+         self.searchInput.off('keyup');
+         self.searchInput.off('keydown');
+         self.searchInput.off('blur');
+      }
+      if (self.searchBox) {
+         self.searchBox.off('return');
+      }
+      self._super();
    },
 
    updateItems: function(itemMap) {
@@ -73,11 +121,13 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
                });
          }
 
-         radiant.call('stonehearth:get_all_crops')
-            .done(function (o) {
-               if (self.isDestroyed) return;
-               self._all_crops = o.all_crops;
-            });
+         if (!self._all_crops) {
+            radiant.call('stonehearth:get_all_crops')
+               .done(function (o) {
+                  if (self.isDestroyed) return;
+                  self._all_crops = o.all_crops;
+               });
+         }
       }
 
       // Sort all items globally. This ensures they are sorted within their categories on first add (but not subsequent ones).
@@ -94,9 +144,10 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
           // a must be equal to b
           return 0;
       });
+      self._itemArr = arr;
 
       // Go through each item and update the corresponding DOM element for it.
-      radiant.each(arr, function(i, item) {
+      radiant.each(self._itemArr, function(i, item) {
          var itemCount = self._getCount(item);
          if (self.options.filter(item) && (self.options.showZeroes || itemCount > 0)) {
             var uri = self._getUri(item);
@@ -161,6 +212,8 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
          return +$(a).attr('ordinal') - +$(b).attr('ordinal');
       });
       categories.appendTo(self.palette);
+
+      self._updateAllItemsSearchFilter();
    },
 
    _addCategoryForItem: function(item) {
@@ -245,6 +298,54 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       }
 
       this._updateItemTooltip(itemEl, item);
+   },
+
+   _updateAllItemsSearchFilter: function() {
+      var self = this;
+      var search = self.searchInput && self.searchInput.val().toLowerCase();
+      if (search) {
+         radiant.each(self._itemElements, function(uri, elements) {
+            var catalogData = App.catalog.getCatalogData(uri);
+            var tags = (catalogData.materials || []).slice();
+            tags.push(i18n.t(catalogData.display_name).toLowerCase());
+            tags.push(i18n.t(catalogData.description).toLowerCase());
+            radiant.each(elements, function(quality, $el) {
+               var parent = $el && $el.parent() && $el.parent().parent();
+               if (parent) {
+                  var category = parent.find('h2').text().toLowerCase();
+                  self._updateItemSearchFilter(search, $el, category, tags);
+               }
+            });
+         });
+
+         // then hide/unhide categories based on whether they have any unhidden elements
+         var hasUnhidden = self.palette.find('.category').has('.item:not(.notInSearchFilter)');
+         hasUnhidden.removeClass('notInSearchFilter');
+         self.palette.find('.category').not(hasUnhidden).addClass('notInSearchFilter');
+      }
+      else {
+         self.palette.find('.notInSearchFilter').removeClass('notInSearchFilter');
+      }
+   },
+
+   _updateItemSearchFilter: function(search, itemEl, category, tags) {
+      var matches = category.includes(search);
+      if (!matches) {
+         for (var i = 0; i < tags.length; i++) {
+            if (tags[i].includes(search)) {
+               matches = true;
+               break;
+            }
+         }
+      }
+
+      if (!matches) {
+         itemEl.addClass('notInSearchFilter');
+      }
+      else
+      {
+         itemEl.removeClass('notInSearchFilter');
+      }
    },
 
    _updateWantedItem: function(itemEl, uri) {

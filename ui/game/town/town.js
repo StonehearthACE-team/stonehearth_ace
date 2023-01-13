@@ -81,6 +81,7 @@ App.StonehearthTownView.reopen({
                }
          }
       });
+      self._inventoryPalette.stonehearthItemPalette('showSearchFilter');
 
       App.tooltipHelper.attachTooltipster(self.$('#defaultStorageLabel'),
          $(App.tooltipHelper.createTooltip(null, i18n.t('stonehearth_ace:ui.game.zones_mode.stockpile.default_storage.tooltip')))

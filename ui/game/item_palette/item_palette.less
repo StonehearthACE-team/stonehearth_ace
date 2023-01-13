@@ -38,3 +38,41 @@
    //height: 1em;
    overflow-y: hidden;
 }
+
+.itemPalette {
+   position: relative;
+
+   .notInSearchFilter {
+      .hidden;
+   }
+
+   .itemPaletteSearchBox {
+      display: block;
+      position: absolute;
+      top: -18px;
+      right: 0px;
+      height: 44px;
+      width: 223px;
+      border-bottom: 0px;
+      background: url(images/searchBar.png);
+   
+      input {
+         .baseFont;
+         background: rgba(0,0,0,0.0);
+         height: 25px;
+         width: 161px;
+         border-style: none;
+         padding: 10px;
+         color: white;
+      }
+   
+      &.collapsed {
+         width: 45px;
+         background: url(images/collapsedSearchBar.png);
+   
+         input {
+            .hidden;
+         }
+      }
+   }
+}

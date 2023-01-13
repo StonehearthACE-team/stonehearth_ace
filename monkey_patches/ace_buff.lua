@@ -12,6 +12,8 @@ AceBuff._ace_old_create = Buff.create
 function AceBuff:create(entity, uri, json, options)
    self:_ace_old_create(entity, uri, json)
    self._options = options
+   self._sv._source = options.source
+   self._sv._source_player = options.source_player
 end
 
 AceBuff._ace_old_destroy = Buff.__user_destroy
@@ -174,6 +176,13 @@ function AceBuff:_set_expiration_timer(duration, destroy_fn)
 end
 
 function AceBuff:on_repeat_add(options)
+   if options.source then
+      self._sv._source = options.source
+   end
+   if options.source_player then
+      self._sv._source_player = options.source_player
+   end
+
    local repeat_add_action = self._json.repeat_add_action
    if repeat_add_action == 'renew_duration' then
       self:_destroy_timer()
@@ -258,6 +267,14 @@ end
 
 function AceBuff:get_expire_time()
    return self._sv.expire_time
+end
+
+function AceBuff:get_source()
+   return self._sv._source
+end
+
+function AceBuff:get_source_player()
+   return self._sv._source_player
 end
 
 function AceBuff:get_rank()

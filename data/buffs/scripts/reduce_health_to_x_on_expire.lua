@@ -7,7 +7,7 @@ function ReduceHealthOnExpire:on_buff_removed(entity, buff)
       local target_health = script_info and script_info.health or 0
 
       if target_health < health then
-         radiant.entities.modify_health(entity, target_health - health)
+         radiant.entities.modify_health(entity, target_health - health, buff:get_source())
       end
    end
 end

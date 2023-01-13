@@ -165,7 +165,7 @@ App.StonehearthShopBulletinDialog.reopen({
    _buildSellPalette: function() {
       var self = this;
 
-      this._sellPalette = this.$('#sellList').stonehearthItemPalette({
+      self._sellPalette = self.$('#sellList').stonehearthItemPalette({
          cssClass: 'shopItem',
          wantedItems: self.get('model.data.shop.wanted_items'),
          itemAdded: function(itemEl, itemData) {
@@ -192,8 +192,10 @@ App.StonehearthShopBulletinDialog.reopen({
          rightClick: function (item, e) {
             self._updateSellButtons();
             self._doSell(1);
-         }
+         },
+         showSearchFilter: true,
       });
+      self._sellPalette.stonehearthItemPalette('showSearchFilter');
    },
    
    _updateSoldItems: function() {

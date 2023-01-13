@@ -1,6 +1,13 @@
 var GOLD_URI = 'stonehearth:loot:gold';
 
 App.StonehearthReembarkationBulletinDialog.reopen({
+   didInsertElement: function() {
+      this._super();
+      var self = this;
+
+      self._srcItemPalette.stonehearthItemPalette('showSearchFilter');
+   },
+
    _updateItems: function () {
       var self = this;
       var srcItems = {};
