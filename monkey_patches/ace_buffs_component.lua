@@ -443,14 +443,16 @@ end
 
 function AceBuffsComponent:add_invulnerability()
    self._sv.invulnerability = self._sv.invulnerability + 1
+   self.__saved_variables:mark_changed()
 end
 
 function AceBuffsComponent:remove_invulnerability()
    self._sv.invulnerability = math.max(0, (self._sv.invulnerability - 1))
+   self.__saved_variables:mark_changed()
 end
 
 function AceBuffsComponent:is_invulnerable()
-   return self._sv.invulnerability ~= 0
+   return self._sv.invulnerability > 0
 end
 
 function AceBuffsComponent:_update_highest_rank_wound()
