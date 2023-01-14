@@ -69,6 +69,11 @@ function ace_entities.modify_health(entity, health_change, source)
    if health_change > 0 then
       -- We can only modify the health of an entity whose guts are now fully restored.
       assert((radiant.entities.get_resource_percentage(entity, 'guts') or 1) >= 1)
+   else
+      -- cancel any reduction if the entity is invulnerable
+      if radiant.entities.has_property('invulnerable') then
+         return
+      end
    end
    local old_value = radiant.entities.get_health(entity)
 
@@ -88,15 +93,10 @@ function ace_entities.modify_health(entity, health_change, source)
             end
          end
       elseif health_change < 0 then
-         -- if decreasing health, apply a "wounded" debuff stack if they drop below a threshold
-         -- nope! don't automatically apply wounds, let those get specifically applied by monsters/events
-         -- "WOUNDED_BUFF": "stonehearth_ace:buffs:wounded"
-         -- "WOUNDED_PERCENT_THRESHOLD": 0.15
-         -- local threshold = stonehearth.constants.healing.WOUNDED_PERCENT_THRESHOLD
-         -- local max_health = expendable_resource_component:get_max_value('health')
-         -- if math.floor((1 - old_value / max_health) / threshold) < math.floor((1 - (old_value + health_change) / max_health) / threshold) then
-         --    radiant.entities.add_buff(entity, stonehearth.constants.healing.WOUNDED_BUFF)
-         -- end
+         -- if health would drop to 0 and entity is unkillable, make it only drop to 1
+         if radiant.entities.has_property('unkillable') and old_value + health_change < 1 then
+            health_change = 1 - old_value
+         end
       end
 
       local new_value = radiant.entities.modify_resource(entity, 'health', health_change, source)

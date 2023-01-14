@@ -44,7 +44,10 @@ function PeriodicBuffChance:_on_tick()
    for buff, chance_per_stack in pairs(self._tuning.periodic_chance_buff) do
       local chance = math.min(1, chance_per_stack * stacks)
       if rng:get_real(0, 1) < chance then
-         radiant.entities.add_buff(self._entity, buff)
+         radiant.entities.add_buff(self._entity, buff, {
+            source = self._buff:get_source(),
+            source_player = self._buff:get_source_player(),
+         })
       end
    end
 end

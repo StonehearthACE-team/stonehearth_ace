@@ -5,7 +5,6 @@
    "description": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.divine_extension_buff.description)",
    "icon": "file(divine_intervention_buff.png)",
    "effect": "stonehearth_ace:effects:heal:divine_intervention",
-   "invulnerability": true,
    "restore_effect": true,
    "duration": "1h",
    "repeat_add_action": "renew_duration",
@@ -15,5 +14,9 @@
       "courage": {
          "multiply": 4
       }
-   }
+   },
+   "properties": [
+      "invulnerable",
+      "cannot_panic"
+   ]
 }

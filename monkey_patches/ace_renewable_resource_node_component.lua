@@ -355,7 +355,11 @@ function AceRenewableResourceNodeComponent:renew()
             if not type(stacks) == 'number' then
                stacks = 1
             end
-            radiant.entities.add_buff(self._entity, uri, {stacks = stacks})
+            radiant.entities.add_buff(self._entity, uri, {
+               stacks = stacks,
+               source = self._entity,
+               source_player = self._entity:get_player_id(),
+            })
          else
             -- don't keep trying; it won't change, and it's not entity-specific
             -- so we can just remove it from the shared cached table

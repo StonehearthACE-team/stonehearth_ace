@@ -50,12 +50,12 @@ function EatTroughFeedAdjacent:stop(ai, entity, args)
       -- result in destroying the action, so make sure we do it LAST! (see calorie_obserer.lua)
       expendable_resources_component:modify_value('calories', self._animal_feed_data.calorie_gain)
 
-      		-- Add the feed buff, if any
-		if self._animal_feed_data.applied_buffs then
-			for _, applied_buff in ipairs(self._animal_feed_data.applied_buffs) do
-				radiant.entities.add_buff(entity, applied_buff)
-			end
-		end
+      -- Add the feed buff, if any
+      if self._animal_feed_data.applied_buffs then
+         for _, applied_buff in ipairs(self._animal_feed_data.applied_buffs) do
+            radiant.entities.add_buff(entity, applied_buff)
+         end
+      end
 
       -- Animals that are fed get the Cared For buff.
       local equipment_component = entity:get_component('stonehearth:equipment')

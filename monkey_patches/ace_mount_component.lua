@@ -9,7 +9,10 @@ function AceMountComponent:mount(user, model_variant_delay)
       local json = radiant.entities.get_json(self) or {}
       if json.applied_buffs then
          for _, buff in ipairs(json.applied_buffs) do
-            radiant.entities.add_buff(user, buff)
+            radiant.entities.add_buff(user, buff, {
+               source = self._entity,
+               source_player = self._entity:get_player_id(),
+            })
          end
       end
       return self:_ace_old_mount(user, model_variant_delay)

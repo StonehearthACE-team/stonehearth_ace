@@ -110,7 +110,10 @@ function HealEntityAdjacentWithMagic:_heal(healer, target, medic_capabilities)
    healing_lib.heal_target(healer, target, medic_capabilities.health_healed or 1, medic_capabilities.guts_healed)
 
 	if medic_capabilities.apply_buff then
-		radiant.entities.add_buff(target, medic_capabilities.apply_buff)
+		radiant.entities.add_buff(target, medic_capabilities.apply_buff, {
+         source = healer,
+         source_player = radiant.entities.get_player_id(healer),
+      })
    end
    
    -- set this ability on cooldown

@@ -27,7 +27,10 @@ function AceHealTarget.use(consumable, consumable_data, user, target_entity)
 	if consumable_data.applies_effects then
 		for effect, chance in pairs(consumable_data.applies_effects) do
 			if rng:get_real(0, 1) < chance then
-				radiant.entities.add_buff(target_entity, effect)
+				radiant.entities.add_buff(target_entity, effect, {
+               source = user,
+               source_player = radiant.entities.get_player_id(user),
+            })
 			end  
 		end
 	end

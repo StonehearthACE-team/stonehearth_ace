@@ -149,7 +149,10 @@ function HealRangedInSight:_heal(healer, target, weapon_data)
 	
 	-- ACE addition
 	if heal_info.buff then
-		radiant.entities.add_buff(target, heal_info.buff)
+		radiant.entities.add_buff(target, heal_info.buff, {
+         source = healer,
+         source_player = radiant.entities.get_player_id(healer),
+      })
 	end
 
    if stonehearth.combat:heal(heal_context) then

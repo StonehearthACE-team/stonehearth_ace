@@ -47,6 +47,10 @@ function AceBuff:_create_buff()
          self._options.stacks = self._options.stacks - 1
          self:on_repeat_add(self._options)
       end
+      if self._options.rank then
+         self._sv.rank = self._options.rank
+         self.__saved_variables:mark_changed()
+      end
    end
    
    if self._sv.stacks == self._sv.max_stacks and self._json.buff_evolve then
@@ -257,7 +261,9 @@ end
 
 function AceBuff:get_options()
    return {
-      stacks = self._sv.stacks
+      rank = self:get_rank(),
+      stacks = self:get_stacks(),
+      source_player = self:get_source_player(),
    }
 end
 

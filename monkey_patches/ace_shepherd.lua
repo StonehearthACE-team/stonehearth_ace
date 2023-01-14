@@ -77,10 +77,14 @@ function AceShepherdClass:_on_interacted_with_animal(animal)
       local buff_chance = compassion * stonehearth.constants.attribute_effects.COMPASSION_SHEPHERD_BUFF_CHANCE_MULTIPLIER
       local roll = rng:get_int(1, 100)  
       if roll <= buff_chance then
+         local options = {
+            source = self._sv._entity,
+            source_player = self._sv._entity:get_player_id(),
+         }
          if self:has_perk('improved_buffs') then
-            radiant.entities.add_buff(animal, 'stonehearth_ace:buffs:shepherd:compassionate_shepherd_major');
+            radiant.entities.add_buff(animal, 'stonehearth_ace:buffs:shepherd:compassionate_shepherd_major', options);
          else
-            radiant.entities.add_buff(animal, 'stonehearth:buffs:shepherd:compassionate_shepherd');
+            radiant.entities.add_buff(animal, 'stonehearth:buffs:shepherd:compassionate_shepherd', options);
          end        
       end
    end

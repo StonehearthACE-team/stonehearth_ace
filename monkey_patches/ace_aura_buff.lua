@@ -1,4 +1,11 @@
+local AuraBuff = require 'stonehearth.data.buffs.scripts.aura_buff'
 local AceAuraBuff = class()
+
+AceAuraBuff._ace_old_on_buff_added = AuraBuff.on_buff_added
+function AceAuraBuff:on_buff_added(entity, buff)
+   self._buff = buff
+   self:_ace_old_on_buff_added(entity, buff)
+end
 
 function AceAuraBuff:_on_pulse()
    local player_id = radiant.entities.get_player_id(self._entity)
@@ -52,7 +59,10 @@ function AceAuraBuff:_on_pulse()
 
    for _, target in ipairs(target_entities) do
       for _, aura_buff in ipairs(aura_buffs) do
-         radiant.entities.add_buff(target, aura_buff)
+         radiant.entities.add_buff(target, aura_buff, {
+            source = buff:get_source(),
+            source_player = buff:get_source_player(),
+         })
          if radiant.entities.has_buff(target, aura_buff) then
             num_affected = num_affected + 1
          end

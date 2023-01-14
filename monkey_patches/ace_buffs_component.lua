@@ -2,6 +2,8 @@ local BuffsComponent = radiant.mods.require('stonehearth.components.buffs.buffs_
 local rng = _radiant.math.get_default_rng()
 local AceBuffsComponent = class()
 
+local IMMUNE_TO_HOSTILE_DEBUFFS = 'immune_to_hostile_debuffs'
+
 AceBuffsComponent._ace_old_create = BuffsComponent.create
 function AceBuffsComponent:create()
    self:_ace_old_create()
@@ -25,9 +27,6 @@ function AceBuffsComponent:activate()
    if not self._sv.managed_properties then
       self._sv.managed_properties = {}
    end
-   if not self._sv.invulnerability then
-      self._sv.invulnerability = 0
-   end
 
    if self._ace_old_activate then
       self:_ace_old_activate()
@@ -50,6 +49,8 @@ function AceBuffsComponent:activate()
 
    self._highest_rank_wound = 0
    self:_update_highest_rank_wound()
+
+   self:_create_immunity_listeners()
 end
 
 AceBuffsComponent._ace_old_destroy = BuffsComponent.__user_destroy
@@ -63,6 +64,25 @@ function AceBuffsComponent:_destroy_listeners()
       self._season_change_listener:destroy()
       self._season_change_listener = nil
    end
+   if self._immune_to_hostile_debuffs_listener then
+      self._immune_to_hostile_debuffs_listener:destroy()
+      self._immune_to_hostile_debuffs_listener = nil
+   end
+end
+
+function AceBuffsComponent:_create_immunity_listeners()
+   self._immune_to_hostile_debuffs_listener = radiant.events.listen(self._entity, 'stonehearth:property_changed:' .. IMMUNE_TO_HOSTILE_DEBUFFS, function()
+      if radiant.entities.has_property(self._entity, IMMUNE_TO_HOSTILE_DEBUFFS) then
+         -- if they gained immunity to hostile debuffs, go through and remove all hostile debuffs
+         local debuffs = self:get_buffs_by_axis('debuff')
+         if debuffs then
+            for buff_id, _ in pairs(debuffs) do
+               self:remove_buff(buff_id, true, true)
+            end
+            self:_update_highest_rank_wound()
+         end
+      end
+   end)
 end
 
 function AceBuffsComponent:_create_seasonal_listener()
@@ -172,6 +192,14 @@ function AceBuffsComponent:add_buff(uri, options)
    end
 
    local json = radiant.resources.load_json(uri, true)
+
+   -- don't add this buff if they're immune to debuffs from a hostile source and it is one
+   if radiant.entities.has_property(self._entity, IMMUNE_TO_HOSTILE_DEBUFFS) and json.axis == 'debuff' then
+      local source_player = options.source_player or (options.source and radiant.entities.get_player_id(options.source))
+      if source_player and stonehearth.player:are_player_ids_hostile(source_player, self._entity:get_player_id()) then
+         return
+      end
+   end
    
    if json.cant_affect_siege then
       local siege_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:siege_object')
@@ -318,10 +346,6 @@ function AceBuffsComponent:add_buff(uri, options)
          self:_update_highest_rank_wound()
       end
 
-      if json.invulnerability then
-         self:add_invulnerability()
-      end
-
       self.__saved_variables:mark_changed()
 
       radiant.events.trigger_async(self._entity, 'stonehearth:buff_added', {
@@ -411,10 +435,6 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks, ignore_wound_chec
 						end  
 					end
 				end
-
-            if json.invulnerability then
-               self:remove_invulnerability()
-            end
          end
 
          self._sv.buffs[uri] = nil
@@ -439,20 +459,6 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks, ignore_wound_chec
          buff:remove_stack(false)
       end
    end
-end
-
-function AceBuffsComponent:add_invulnerability()
-   self._sv.invulnerability = self._sv.invulnerability + 1
-   self.__saved_variables:mark_changed()
-end
-
-function AceBuffsComponent:remove_invulnerability()
-   self._sv.invulnerability = math.max(0, (self._sv.invulnerability - 1))
-   self.__saved_variables:mark_changed()
-end
-
-function AceBuffsComponent:is_invulnerable()
-   return self._sv.invulnerability > 0
 end
 
 function AceBuffsComponent:_update_highest_rank_wound()

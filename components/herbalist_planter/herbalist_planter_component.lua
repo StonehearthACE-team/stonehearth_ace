@@ -646,7 +646,10 @@ function HerbalistPlanterComponent:_set_quality_table(tender)
    self._sv._quality_table = tender and item_quality_lib.get_quality_table(tender, self._planted_crop_stats.level or 1)
    local quality_buff = self._json.quality_buffs and self._json.quality_buffs[math.min(math.floor(self:_get_tend_quality()), #self._json.quality_buffs)]
    if quality_buff then
-      self._entity:add_component('stonehearth:buffs'):add_buff(quality_buff)
+      radiant.entities.add_buff(self._entity, quality_buff, {
+         source = tender,
+         source_player = radiant.entities.get_player_id(tender),
+      })
    end
 end
 
