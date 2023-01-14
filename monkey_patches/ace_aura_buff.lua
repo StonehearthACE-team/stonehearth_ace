@@ -12,6 +12,18 @@ function AceAuraBuff:_on_pulse()
    local num_affected = 0
    -- get everyone around us
 
+   if not self._tuning.ignore_sleep then 
+      if radiant.entities.has_buff(self._entity, 'stonehearth:buffs:sleeping') or radiant.entities.has_buff(self._entity, 'stonehearth:buffs:recuperating') then
+         return
+      end
+   end
+
+   if not self._tuning.ignore_incapacitation then
+      if radiant.entities.has_buff(self._entity, 'stonehearth:buffs:incapacitated') then
+         return
+      end
+   end   
+
    local aura_buffs = self._tuning.aura_buff
    if type(aura_buffs) == 'string' then
       aura_buffs = { aura_buffs }
@@ -60,8 +72,8 @@ function AceAuraBuff:_on_pulse()
    for _, target in ipairs(target_entities) do
       for _, aura_buff in ipairs(aura_buffs) do
          radiant.entities.add_buff(target, aura_buff, {
-            source = buff:get_source(),
-            source_player = buff:get_source_player(),
+            source = aura_buff:get_source(),
+            source_player = aura_buff:get_source_player(),
          })
          if radiant.entities.has_buff(target, aura_buff) then
             num_affected = num_affected + 1
