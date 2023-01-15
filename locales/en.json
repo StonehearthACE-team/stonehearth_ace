@@ -5318,7 +5318,7 @@
             },
             "last_stand": {
                "display_name": "Potion of Last Stand",
-               "description": "This hearthling is under the incredibly and taxing power of a Potion of Last Stand. Their combat prowess is incredibly boosted but they will be knocked out and require rescue at the end of this effect.<ul><li>Courage is absurdly increased</li><li>Speed is increased</li><li>Muscle and Stamina are greatly increased</li><li>Resistance to negative effects increased</li><li>Damage dealt is greatly increased</li><li>Armor is greatly increased</li><li>This hearthling will not receive any healing effects anymore</li><li>This hearthling will be incapacitated when this effect expires</li></ul>"
+               "description": "This hearthling is under the incredibly and taxing power of a Potion of Last Stand. Their combat prowess is incredibly boosted but they will be knocked out and require rescue at the end of this effect.<ul><li>Courage is absurdly increased and they can't panic anymore</li><li>Speed is increased</li><li>Muscle and Stamina are greatly increased</li><li>Resistance to negative effects increased</li><li>Damage dealt is greatly increased</li><li>Armor is greatly increased</li><li>This hearthling will not receive any healing effects anymore</li><li>This hearthling will be incapacitated when this effect expires</li></ul>"
             }
          },
          "kibble_hearth": {
@@ -5847,7 +5847,7 @@
             },
             "divine_intervention_buff": {
                "display_name": "Divine Intervention",
-               "description": "Armor is incomprehensibly increased for a short time, protecting this hearthling from harm."
+               "description": "Completely invulnerable for a short time, protecting this hearthling from all harm and preventing them from panicking."
             },
             "minor_debuff_aura_buff": {
                "display_name": "Minor Weakening Aura",
@@ -5867,11 +5867,11 @@
             },
             "phoenix_cleric_armor_buff": {
                "display_name": "Heroes' Legacy",
-               "description": "Increases Willpower by 6% and Healing Efficiency by 12%<ul><li>If the wearer's health goes under 10% they will become protected by a divine shield for one full hour, being knocked out after its effects are expired. Be ready for a rescue!</li><li>This effect can only be activated once every 24 hours</li></ul>"
+               "description": "Increases Willpower by 6% and Healing Efficiency by 12%<ul><li>If the wearer's health goes under 20% they will become protected by a divine blessing for one full hour, being impossible to knock out during that time. However, their health can still be reduced to a minimum of 1 point, so be ready to take them to safety or for a rescue!</li><li>This effect can only be activated once every 24 hours</li></ul>"
             },
             "divine_extension_buff": {
                "display_name": "Divine Intervention (Overtime)",
-               "description": "Armor is incomprehensibly increased for a short time, protecting this hearthling. This blessing is an extension of one's due time and once it run its course, the hearthling will be knocked out and need rescue!"
+               "description": "A holy protection that prevents this hearthling from panicking and from being knocked out, keeping them with at least 1 HP left.<ul><li>This blessing is an extension of one's due time and if they keep getting attacked they'll be in trouble when the effect ends, so make sure to get them to safety or be ready for a rescue!</li></ul>"
             }
          }
       },
@@ -7773,7 +7773,7 @@
             "legendary_tome_recipe": {
                "recipe_name": "Cleric Tome, 'The Walk of Cid'",
                "description": "A legendary tome for the followers of the Church of Plenty.",
-               "flavor": "Through the ways of Cid, healing shall be done. This tome unlocks a protective shield spell."
+               "flavor": "Through the ways of Cid, healing shall be done. This tome unlocks an invulnerability shield spell."
             },
             "wooden_sign_geomancer_recipe": {
                "recipe_name": "Geomancer's Wall-Mounted Sign",
@@ -21872,39 +21872,57 @@
             "categories": {
                "general_goods": {
                   "display_name": "General Goods",
-                  "description": "Merchants with no clear specialization that prefer to bring an assortment of different types of goods and can be interested in many different things."
+                  "description": "Traveling merchants and resellers with no clear specialization.",
+                  "selling": "Assortments of different stuff, cooking ingredints, refined goods, finished furniture and building parts</style>",
+                  "buying": "They can be interested in lots of diverse things"
                },
                "resources": {
                   "display_name": "Raw Resources",
-                  "description": "Merchants from quarries, lumber camps or charcoal mounds selling raw resources or fuels; They're often interested in containers, prepared food and refined goods."
+                  "description": "Merchants from quarries, lumber yards, charcoal mounds and other types of labor camps.",
+                  "selling": "Wood logs, stone hunks, clay mounds, ores, simple fuels",
+                  "buying": "Containers, prepared food, refined goods and sometimes tools"
                },
                "wilderness": {
                   "display_name": "Wilderness",
-                  "description": "Merchants from remote areas, distant settlements and fishing villages selling herbs, mushrooms or fish; They're often interested in backpacks, clothing and protection."
+                  "description": "Merchants from remote areas, distant settlements and isolated fishing villages.",
+                  "selling": "Herbs, mushrooms, fish and other foraging goods",
+                  "buying": "Backpacks, clothing, medicine and sometimes protection"
                },
                "agriculture": {
                   "display_name": "Agriculture",
-                  "description": "Merchants from farming villages or ranches selling vegetables, fruits, eggs, dairy or pets; They're often interested in tools, fertilizer and herbs."
+                  "description": "Merchants from farming villages or thriving ranches.",
+                  "selling": "Vegetables, fruits, eggs, dairy products and pets",
+                  "buying": "Farming and worker tools, fertilizer and sometimes herbs"
                },
                "building": {
                   "display_name": "Building",
-                  "description": "Merchants from thriving towns selling wood, clay and stone furniture, decorations and building parts; They're often interested in raw resources, textiles and refined goods."
+                  "description": "Merchants from thriving towns.",
+                  "selling": "Wood, clay and stone furniture, decorations and building parts",
+                  "buying": "Raw resources, textiles, refined goods and sometimes baked goods."
                },
                "defense": {
                   "display_name": "Defense",
-                  "description": "Merchants from strong settlements selling weapons, armor, medicine and other defensive assets; They're often interested in metals, fuels and pelts."
+                  "description": "Merchants from strong settlements.",
+                  "selling": "Weapons, armor, medicine and other defensive assets",
+                  "buying": "Refined metals, fuels, pelts and sometimes other refined goods"
                },
                "artisan": {
                   "display_name": "Artisans",
-                  "description": "Merchants from rich cities selling metalworking goods, work tools, textiles and other refined materials; They're often interested in raw ores, prepared drinks and fiber."
+                  "description": "Merchants from rich cities.",
+                  "selling": "Metalworking goods, work tools, textiles and refined materials",
+                  "buying": "Raw ores, fiber, prepared drinks and sometimes fancy furniture"
                },
                "provisions": {
                   "display_name": "Provisions",
-                  "description": "Merchants from busy and bustling towns selling prepared food or drinks; They're often interested in raw foods, dairy products and decorations."
+                  "description": "Merchants from busy and bustling towns.",
+                  "selling": "Prepared food, simple and prepared drinks",
+                  "buying": "Raw foods, dairy products, cooking or brewing ingredients and sometimes decorations"
                },
                "exotic_goods": {
                   "display_name": "Exotic Goods",
-                  "description": "Merchants from distant lands, unusual friends and hidden places... They might deal with the uncommon, rarities and sometimes even the unnatural!"
+                  "description": "Merchants from distant lands, unusual friends and hidden places...",
+                  "selling": "The uncommon, rarities and sometimes even the unnatural",
+                  "buying": "Common goods that are likewise exotic to them"
                }
             },
             "preferences": {
@@ -21925,7 +21943,9 @@
                "enables_disables_description": "Disabling a category will prevent regular merchants of that category from visiting your town. Encouraging a category will significantly increase the chance that regular merchants of that category will visit your town. When your town's tier increases, so will the number of categories you can Disable or Encourage.",
                "no_exclusive_stalls": "Exclusive merchants will only visit your town if you have certain exclusive market stalls placed. These generally require high level crafters or specific town upgrade choices to acquire.",
                "disable_exclusive": "<span class='max'>Enabled!</span> Click to Disable.",
-               "enable_exclusive": "<span class='limited'>Disabled!</span> Click to Enable."
+               "enable_exclusive": "<span class='limited'>Disabled!</span> Click to Enable.",
+               "selling": "Selling",
+               "buying": "Buying"
             },
             "title": "Mercantile Overview"
          },

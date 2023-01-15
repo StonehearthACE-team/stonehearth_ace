@@ -551,6 +551,8 @@ App.StonehearthAceMerchantileView = App.View.extend({
          copiedData.icon = copiedData.icon || CATEGORY_PLACEHOLDER_ICON;
          copiedData.display_name = i18n.t(copiedData.display_name);
          copiedData.description = i18n.t(copiedData.description);
+         copiedData.selling = i18n.t(copiedData.selling);
+         copiedData.buying = i18n.t(copiedData.buying);
          copiedData.encourageId = copiedData.category + '|encourage';
          copiedData.enableId = copiedData.category + '|enable';
          copiedData.disableId = copiedData.category + '|disable';
@@ -677,8 +679,17 @@ App.StonehearthAceMerchantileView = App.View.extend({
                var category = el.attr('category');
                var categoryData = self._categoryLookup[category];
                if (categoryData) {
+                  //App.tooltipHelper.createDynamicTooltip(el.find('.categoryName'), function() {
+                  //   return $(App.tooltipHelper.createTooltip(categoryData.display_name, categoryData.description));
+                  //});
                   App.tooltipHelper.createDynamicTooltip(el.find('.categoryName'), function() {
-                     return $(App.tooltipHelper.createTooltip(categoryData.display_name, categoryData.description));
+                     var description = categoryData.description;
+                     description += `<ul><strong><h style="color:Coral;">💰 ${i18n.t("stonehearth_ace:ui.game.mercantile.preferences.selling")}</strong><br>
+                                     <h style="color:gray;">${categoryData.selling}</ul>
+                                     <ul><strong><h style="color:MediumSpringGreen;">🔎 ${i18n.t("stonehearth_ace:ui.game.mercantile.preferences.buying")}</strong><br>
+                                     <h style="color:gray;">${categoryData.buying}</ul>`;
+
+                     return $(App.tooltipHelper.createTooltip(categoryData.display_name, description));
                   });
                }
             });

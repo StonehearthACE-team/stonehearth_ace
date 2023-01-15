@@ -4,12 +4,15 @@
    "display_name": "i18n(stonehearth_ace:data.buffs.potion.last_stand.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.potion.last_stand.description)",
    "icon": "file(potion_last_stand_buff.png)",
-   "duration": "125m",
+   "duration": "120m",
    "repeat_add_action": "renew_duration",
    "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "properties": [
+      "cannot_panic"
+   ],
    "modifiers": {
       "courage": {
-         "multiply": 6
+         "multiply": 3
       },
       "speed": {
          "multiply": 1.5

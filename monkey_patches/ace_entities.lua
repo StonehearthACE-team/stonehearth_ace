@@ -71,7 +71,7 @@ function ace_entities.modify_health(entity, health_change, source)
       assert((radiant.entities.get_resource_percentage(entity, 'guts') or 1) >= 1)
    else
       -- cancel any reduction if the entity is invulnerable
-      if radiant.entities.has_property('invulnerable') then
+      if radiant.entities.has_property(entity, 'invulnerable') then
          return
       end
    end
@@ -94,7 +94,7 @@ function ace_entities.modify_health(entity, health_change, source)
          end
       elseif health_change < 0 then
          -- if health would drop to 0 and entity is unkillable, make it only drop to 1
-         if radiant.entities.has_property('unkillable') and old_value + health_change < 1 then
+         if radiant.entities.has_property(entity, 'unkillable') and old_value + health_change < 1 then
             health_change = 1 - old_value
          end
       end
