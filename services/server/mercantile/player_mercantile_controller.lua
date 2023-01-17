@@ -6,6 +6,8 @@ local game_mode_modifier
 
 local PlayerMercantile = class()
 
+local log = radiant.log.create_logger('player_mercantile_controller')
+
 function PlayerMercantile:initialize()
    -- generated each morning based on settings/conditions at that time
    -- as each one is spawned, it's removed from the list
@@ -429,48 +431,68 @@ function PlayerMercantile:_get_merchants_to_spawn(num_merchants)
 
       -- generate bags of merchants to draw from and then draw them until we've reached num_merchants
       -- first get as many exclusive merchants as we can (skip if no exclusive stalls)
-      local stalls = self._sv.exclusive_stalls
-      if next(stalls) then
-         local used_stalls = {}
-         local exclusives = self:_get_available_exclusive_merchants(cur_weather_uri, stalls, city_tier)
-         
-         while num_merchants > 0 and not exclusives:is_empty() do
+      local exclusives = next(self._sv.exclusive_stalls) and self:_get_available_exclusive_merchants(cur_weather_uri, self._sv.exclusive_stalls, city_tier)
+      local exclusive_stalls = self._sv.exclusive_stalls
+      local used_exclusive_stalls = {}
+      local used_tier_stalls = {0, 0, 0}
+      local max_tier = has_stalls and mercantile_constants.MAX_STALL_TIER or 1
+      local tier_stalls = self._sv.tier_stalls
+      local tier_category_merchants = {
+         (tier_stalls[1] or 0) > 0 and self:_get_available_category_merchants(cur_weather_uri, 1, city_tier),
+         max_tier > 1 and (tier_stalls[2] or 0) > 0 and self:_get_available_category_merchants(cur_weather_uri, 2, city_tier),
+         max_tier > 2 and (tier_stalls[3] or 0) > 0 and self:_get_available_category_merchants(cur_weather_uri, 3, city_tier),
+      }
+
+      while num_merchants > 0 do
+         -- alternate exclusive and tier merchants, starting with exclusive if possible
+         local added = false
+         while exclusives and not exclusives:is_empty() do
             local merchant = exclusives:choose_random()
             exclusives:remove(merchant)
             -- make sure we still have a stall that can support this merchant
             local uri = merchant.required_stall
-            if (stalls[uri] or 0) > (used_stalls[uri] or 0) then
+            if (exclusive_stalls[uri] or 0) > (used_exclusive_stalls[uri] or 0) then
+               log:debug('%s selected exclusive merchant %s', self._sv.player_id, merchant.key)
                merchants[merchant.key] = true
                num_merchants = num_merchants - 1
-               used_stalls[uri] = (used_stalls[uri] or 0) + 1
+               used_exclusive_stalls[uri] = (used_exclusive_stalls[uri] or 0) + 1
+               added = true
+               break
             end
+         end
+
+         if num_merchants > 0 and max_tier > 0 then
+            -- start with the highest tier stalls
+            local tier = max_tier
+            while tier > 0 and ((has_stalls and (tier_stalls[tier] or 0) <= used_tier_stalls[tier]) or
+                  not tier_category_merchants[tier] or tier_category_merchants[tier]:is_empty()) do
+               tier = tier - 1
+            end
+            if tier > 0 then
+               -- we have category merchants for a valid tier
+               local merchant = tier_category_merchants[tier]:choose_random()
+               tier_category_merchants[tier]:remove(merchant)
+               -- make sure we didn't get this same merchant already from a higher tier
+               if not merchants[merchant] then
+                  log:debug('%s selected category tier %s merchant %s', self._sv.player_id, tier, merchant)
+                  merchants[merchant] = true
+                  num_merchants = num_merchants - 1
+                  used_tier_stalls[tier] = used_tier_stalls[tier] + 1
+                  added = true
+               end
+            else
+               -- no more tier merchants, so don't keep trying
+               max_tier = 0
+            end
+         end
+
+         if not added and num_merchants > 0 then
+            -- not enough qualified merchants available for the stalls and num_merchants
+            log:debug('%s not enough qualified merchants!', self._sv.player_id)
+            break
          end
       end
 
-      -- populate highest tier stalls first
-      if num_merchants > 0 then
-         stalls = self._sv.tier_stalls
-         local max_tier = has_stalls and mercantile_constants.MAX_STALL_TIER or 1
-         for tier = max_tier, 1, -1 do
-            local used = 0
-            local available = stalls[tier] or 0
-            if num_merchants > 0 and (available > used or not has_stalls) then
-               local category_merchants = self:_get_available_category_merchants(cur_weather_uri, tier, city_tier)
-               
-               while num_merchants > 0 and (available > used or not has_stalls) and not category_merchants:is_empty() do
-                  local merchant = category_merchants:choose_random()
-                  category_merchants:remove(merchant)
-                  -- make sure we didn't get this same merchant already from a higher tier
-                  if not merchants[merchant] then
-                     merchants[merchant] = true
-                     num_merchants = num_merchants - 1
-                     used = used + 1
-                  end
-               end
-            end
-         end
-      end
-      
       -- transform merchants table into a shuffled list
       for merchant, _ in pairs(merchants) do
          table.insert(merchants_list, rng:get_int(1, #merchants_list + 1), merchant)
@@ -511,11 +533,12 @@ function PlayerMercantile:_get_available_exclusive_merchants(cur_weather_uri, st
    local exclusive_merchants = stonehearth_ace.mercantile:get_exclusive_merchants()
    local merchants = WeightedSet(rng)
    for merchant, merchant_data in pairs(exclusive_merchants) do
-      if self._sv.exclusive_preferences[merchant_data.required_stall] ~= false and merchant_data.min_city_tier >= city_tier and stall_uris[merchant_data.required_stall] then
+      if self._sv.exclusive_preferences[merchant_data.required_stall] ~= false and city_tier >= merchant_data.min_city_tier and stall_uris[merchant_data.required_stall] then
          -- if this merchant's visit isn't forbidden by a cooldown, the kingdom, or the current weather, add them to the list
          if self:_merchant_allowed(merchant_data, cur_weather_uri) then
             -- have to add the data because we need to check stall uri for quantity available
             merchants:add(merchant_data, merchant_data.weight)
+            log:debug('%s added exclusive merchant %s to weighted set', self._sv.player_id, merchant)
          end
       end
    end
@@ -540,6 +563,7 @@ function PlayerMercantile:_get_available_category_merchants(cur_weather_uri, sta
                         weight = weight * mercantile_constants.ENCOURAGED_MULTIPLIER
                      end
                      merchants:add(merchant, weight)
+                     log:debug('%s added category tier %s merchant %s to weighted set', self._sv.player_id, stall_tier, merchant)
                   end
                end
             end

@@ -138,7 +138,7 @@ function QuestStorageComponent:set_requirements(requirements)
          end
          storage_component:set_exact_filter(uri)
       elseif requirement.material then
-         storage_component:set_filter(requirement.material)
+         storage_component:set_filter({requirement.material})
       else
          log:error('%s has invalid requirement filter: %s', self._entity, radiant.util.table_tostring(requirement))
       end
