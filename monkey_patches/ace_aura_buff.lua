@@ -72,8 +72,8 @@ function AceAuraBuff:_on_pulse()
    for _, target in ipairs(target_entities) do
       for _, aura_buff in ipairs(aura_buffs) do
          radiant.entities.add_buff(target, aura_buff, {
-            source = aura_buff:get_source(),
-            source_player = aura_buff:get_source_player(),
+            source = self._buff:get_source(),
+            source_player = self._buff:get_source_player(),
          })
          if radiant.entities.has_buff(target, aura_buff) then
             num_affected = num_affected + 1

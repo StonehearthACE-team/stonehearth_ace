@@ -29,11 +29,11 @@ function ApplyBuffBasedOnHealthScript:_on_health_changed()
    local current_health = radiant.entities.get_resource_percentage(self._entity, 'health')
 
    if current_health and (self._tuning.health_percentage_below and current_health < self._tuning.health_percentage_below) or
-         (self._tuning.health_percentage_at_least and current_health >= self._tuning.health_percentage_at_least) then
-      local options = radiant.shallow_copy(self._tuning.buff)
-      options.source = self._entity
-      options.source_player = self._entity:get_player_id()
-      radiant.entities.add_buff(self._entity, options)
+   (self._tuning.health_percentage_at_least and current_health >= self._tuning.health_percentage_at_least) then
+      radiant.entities.add_buff(self._entity, self._tuning.buff, {
+         source = self._entity,
+         source_player = self._entity:get_player_id(),
+      })
    end
 end
 
