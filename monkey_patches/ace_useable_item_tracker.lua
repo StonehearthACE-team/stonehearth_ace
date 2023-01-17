@@ -1,6 +1,9 @@
 --[[
-   changed to not track items in consumer containers
+   changed to not track items in consumer containers or quest storage
 ]]
+local constants = require 'stonehearth.constants'
+local QUEST_STORAGE_URI = constants.game_master.quests.QUEST_STORAGE_URI
+
 local AceUsableItemTracker = class()
 
 function AceUsableItemTracker:create_key_for_entity(entity, storage)
@@ -14,7 +17,7 @@ function AceUsableItemTracker:create_key_for_entity(entity, storage)
    local in_public_storage
    local on_ground = self:_is_item_on_ground(entity)
 
-   if storage then
+   if storage and storage:get_uri() ~= QUEST_STORAGE_URI then
       local storage_component = storage:get_component('stonehearth:storage')
       -- if this item is in a fuel consumer, assume it's unavailable
       if storage_component and storage_component:is_public() and not storage:get_component('stonehearth_ace:consumer') then

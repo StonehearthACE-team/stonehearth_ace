@@ -11,7 +11,7 @@
                <div {{bind-attr class=":reqBlock this.fulfilled::unfulfilled"}}>
                   <img class='icon' {{bind-attr src=this.icon}} />
                   <span class='name'>{{i18n_key this.display_name}}</span>
-                  <span class='count'>{{this.available_count}}{{{this.cached_count}}} / {{this.count}}</span><img {{bind-attr class=':questItemsCached this.items_cached_class'}}/>
+                  <span class='count'>{{this.real_available_count}}{{{this.cached_count}}} / {{this.count}}</span><img {{bind-attr class=':questItemsCached this.items_cached_class'}}/>
                </div>
             {{/each}}
          </div>
