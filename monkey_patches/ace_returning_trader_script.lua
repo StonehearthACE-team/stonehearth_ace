@@ -31,7 +31,7 @@ function AceReturningTrader:_on_accepted()
          uri = self._sv._trade_data.want_uri,
          quantity = self._sv._trade_data.want_count,
       }}
-      self._sv._quest_storage = game_master_lib.create_quest_storage(self._sv.player_id, self._sv._info.quest_storage_uri, item_requirements, self._sv._bulletin)
+      self._sv._quest_storage = game_master_lib.create_quest_storage(self._sv._player_id, self._sv._trade_info.quest_storage_uri, item_requirements, self._sv._bulletin)
    end
 end
 
