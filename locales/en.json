@@ -16276,6 +16276,10 @@
             "statue_princess_dania": {
                "display_name": "Statue of Princess Dania",
                "description": "The beloved and charismatic princess of the Ascendancy with open arms!"
+            },
+            "statue_sigrid_asketill": {
+               "display_name": "Statue of Sigrid Asketill",
+               "description": "A legendary hero of the north, one of the first paladins and shield-wife of Magnus."
             }
          },
          "wall_axe": {
@@ -21893,12 +21897,12 @@
                "general_goods": {
                   "display_name": "General Goods",
                   "description": "Traveling merchants and resellers with no clear specialization.",
-                  "selling": "Assortments of different stuff, cooking ingredints, refined goods, finished furniture and building parts",
-                  "buying": "They can be interested in lots of diverse things"
+                  "selling": "Useful assortments of things like ingredients, building parts, consumables",
+                  "buying": "Their needs are as varied as their products, and difficult to predict"
                },
                "resources": {
                   "display_name": "Raw Resources",
-                  "description": "Merchants from quarries, lumber yards, charcoal mounds and other types of labor camps.",
+                  "description": "Merchants from quarries, lumber yards, mines and other labor camps.",
                   "selling": "Wood logs, stone hunks, clay mounds, ores, simple fuels",
                   "buying": "Containers, prepared food, refined goods and sometimes tools"
                },
@@ -21910,39 +21914,39 @@
                },
                "agriculture": {
                   "display_name": "Agriculture",
-                  "description": "Merchants from farming villages or thriving ranches.",
+                  "description": "Merchants from prosperous pastures, farming villages and ranches.",
                   "selling": "Vegetables, fruits, eggs, dairy products and pets",
                   "buying": "Farming and worker tools, fertilizer and sometimes herbs"
                },
                "building": {
                   "display_name": "Building",
-                  "description": "Merchants from thriving towns.",
-                  "selling": "Wood, clay and stone furniture, decorations and building parts",
-                  "buying": "Raw resources, textiles, refined goods and sometimes baked goods."
+                  "description": "Merchants from expanding towns specialized in construction and basic crafts.",
+                  "selling": "Wood, clay and stone furniture, lights, decorations and building parts",
+                  "buying": "Raw resources, textiles, refined goods and sometimes baked goods"
                },
                "defense": {
                   "display_name": "Defense",
-                  "description": "Merchants from strong settlements.",
+                  "description": "Merchants from encamped armies, strong border settlements and military academies.",
                   "selling": "Weapons, armor, medicine and other defensive assets",
                   "buying": "Refined metals, fuels, pelts and sometimes other refined goods"
                },
                "artisan": {
                   "display_name": "Artisans",
-                  "description": "Merchants from rich cities.",
+                  "description": "Merchants from capitals and rich cities where highly skilled crafters thrive.",
                   "selling": "Metalworking goods, work tools, textiles and refined materials",
                   "buying": "Raw ores, fiber, prepared drinks and sometimes fancy furniture"
                },
                "provisions": {
                   "display_name": "Provisions",
-                  "description": "Merchants from busy and bustling towns.",
-                  "selling": "Prepared food, simple and prepared drinks",
-                  "buying": "Raw foods, dairy products, cooking or brewing ingredients and sometimes decorations"
+                  "description": "Merchants from busy and bustling towns full of taverns, breweries and restaurants.",
+                  "selling": "Simple and prepared food, simple and prepared drinks",
+                  "buying": "Raw foods, dairy products, ingredients and sometimes decorations"
                },
                "exotic_goods": {
                   "display_name": "Exotic Goods",
                   "description": "Merchants from distant lands, unusual friends and hidden places...",
                   "selling": "The uncommon, rarities and sometimes even the unnatural",
-                  "buying": "Common goods that are likewise exotic to them"
+                  "buying": "Common goods that are probably exotic to them instead"
                }
             },
             "preferences": {
@@ -21964,8 +21968,8 @@
                "no_exclusive_stalls": "Exclusive merchants will only visit your town if you have certain exclusive market stalls placed. These generally require high level crafters or specific town upgrade choices to acquire.",
                "disable_exclusive": "<span class='max'>Enabled!</span> Click to Disable.",
                "enable_exclusive": "<span class='limited'>Disabled!</span> Click to Enable.",
-               "selling": "💰 Selling",
-               "buying": "🔎 Buying"
+               "selling": "They might bring...",
+               "buying": "They might pay more for..."
             },
             "title": "Mercantile Overview"
          },

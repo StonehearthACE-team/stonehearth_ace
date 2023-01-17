@@ -1,0 +1,33 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(statue_sigrid_asketill.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.45, "y": 0, "z": -0.45 },
+         "region_origin": { "x": -0.5, "y": 0, "z": -0.5 }
+      },
+      "render_info": {
+         "scale": 0.17
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.statue.statue_sigrid_asketill.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.statue.statue_sigrid_asketill.description)",
+         "icon": "file(statue_sigrid_asketill.png)",
+         "category": "decoration",
+         "material_tags": [
+            "stone",
+            "collectible",
+            "statue",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}
