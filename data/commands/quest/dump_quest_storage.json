@@ -1,0 +1,13 @@
+{
+   "type": "command",
+   "group": "stonehearth_ace:quest",
+   "name": "dump_quest_storage",
+   "display_name": "i18n(stonehearth_ace:data.commands.dump_quest_storage.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.dump_quest_storage.description)",
+   "default_enabled": true,
+   "ordinal": 99,
+   "icon": "file(dump_quest_storage.png)",
+   "action": "call",
+   "function": "stonehearth_ace:dump_quest_storage_command",
+   "args": []
+}

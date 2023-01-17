@@ -1120,7 +1120,8 @@
                      "stonehearth:resources:tin:ore"
                   ]
                }
-            }
+            },
+            "QUEST_STORAGE_URI": "stonehearth_ace:containers:quest:child"
          }
       },
       "combat": {
@@ -1222,7 +1223,9 @@
          "MAX_INSIGNIFICANT_PATH_LENGTH": 12,
          "MIN_COUNT_FOR_PLENTIFUL_ITEMS": 20,
          "restock_director": {
-            "FAILED_ITEM_REQUEUE_DELAY": "30m"
+            "FAILED_ITEM_REQUEUE_DELAY": "30m",
+            "FAILED_ITEM_REQUEUE_SHORT_DELAY": "5m",
+            "FAILED_ITEM_REQUEUE_BATCH_SIZE": 100
          },
          "input_bins": {
             "MIN_PRIORITY": 0,

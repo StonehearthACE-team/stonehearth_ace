@@ -27,7 +27,9 @@
          "enabled": false,
          "alert_on_reload": true,
          "enable_effect": "opened",
-         "disable_effect": "closed"
+         "disable_effect": "closed",
+         "enable_command": "stonehearth_ace:commands:toggle_water_gate_on",
+         "disable_command": "stonehearth_ace:commands:toggle_water_gate_off"
       },
       "stonehearth_ace:water_gate": {},
       "stonehearth_ace:entity_modification": {

@@ -4,14 +4,58 @@ local AceReturningTrader = class()
 
 local log = radiant.log.create_logger('returning_trader_script')
 
+AceReturningTrader._ace_old_destroy = ReturningTrader.__user_destroy
+function AceReturningTrader:destroy()
+   self:_ace_old_destroy()
+   self:_destroy_quest_storage()
+end
+
+function AceReturningTrader:_destroy_quest_storage()
+   if self._sv._quest_storage then
+      self._sv._quest_storage:add_component('stonehearth_ace:quest_storage'):destroy_storage(false)
+      self._sv._quest_storage = nil
+   end
+end
+
 function AceReturningTrader:get_out_edge()
    log:debug('getting out_edge (%s)', tostring(self._sv.resolved_out_edge))
    return self._sv.resolved_out_edge
 end
 
+AceReturningTrader._ace_old__on_accepted = ReturningTrader._on_accepted
+function AceReturningTrader:_on_accepted()
+   self:_ace_old__on_accepted()
+
+   local town = stonehearth.town:get_town(self._sv._player_id)
+   local drop_origin = town:get_landing_location()
+   if not drop_origin then
+      return
+   end
+
+   local quest_storage = radiant.entities.create_entity('stonehearth_ace:containers:quest', {owner = self._sv._player_id})
+   local location, valid = radiant.terrain.find_placement_point(drop_origin, 4, 7, quest_storage)
+   if not valid then
+      radiant.entities.destroy_entity(quest_storage)
+      return
+   end
+
+   -- create a quest storage near the town banner for these items
+   local qs_comp = quest_storage:add_component('stonehearth_ace:quest_storage')
+   qs_comp:set_requirements({{
+      uri = self._sv._trade_data.want_uri,
+      quantity = self._sv._trade_data.want_count,
+   }})
+   qs_comp:set_bulletin(self._sv._bulletin)
+   radiant.terrain.place_entity_at_exact_location(quest_storage, location, {force_iconic = false})
+   radiant.effects.run_effect(quest_storage, 'stonehearth:effects:gib_effect')
+
+   self._sv._quest_storage = quest_storage
+end
+
 AceReturningTrader._ace_old__on_declined = ReturningTrader._on_declined
 function AceReturningTrader:_on_declined()
    self._encounter_abandoned = true
+   self:_destroy_quest_storage()
    self:_ace_old__on_declined()
 end
 
@@ -45,7 +89,55 @@ function AceReturningTrader:_destroy_node()
    end
 end
 
+--- Given inventory data for a type of item, reserve N of those items
+-- ACE: prioritize reserving from quest storage
+function ReturningTrader:_reserve_items(inventory_data_for_item, num_desired)
+   local num_reserved = 0
+   local reserved = {}
+   if self._sv._quest_storage then
+      local storages = self._sv._quest_storage:add_component('stonehearth_ace:quest_storage'):get_storage_components()
+      -- for returning trader, there's only a single requirement and a single storage
+      if #storages > 0 then
+         for id, item in pairs(storages[1]:get_items()) do
+            if self:_try_reserving_item(reserved, id, item) then
+               reserved[id] = true
+               num_reserved = num_reserved + 1
+               if num_reserved >= num_desired then
+                  return true
+               end
+            end
+         end
+      end
+   end
+
+   for id, item in pairs(inventory_data_for_item.items) do
+      if not reserved[id] and self:_try_reserving_item(reserved, id, item) then
+         num_reserved = num_reserved + 1
+         if num_reserved >= num_desired then
+            return true
+         end
+      end
+   end
+   --if we got here, we didn't reserve enough to satisfy demand.
+   self:_unreserve_items()
+   return false
+end
+
+function AceReturningTrader:_try_reserving_item(reserved, id, item)
+   if item and not reserved[id] then
+      local leased = stonehearth.ai:acquire_ai_lease(item, self._sv.trader_entity)
+      if leased then
+         table.insert(self._sv.leased_items, item)
+         return true
+      end
+   end
+end
+
 function AceReturningTrader:_accept_trade()
+   if self._sv._quest_storage then
+      -- make sure they don't bring more items here since we have all we need
+      self._sv._quest_storage:add_component('stonehearth_ace:quest_storage'):set_enabled(false)
+   end
    --TODO: go through the reserved items and nuke them all
    self:_take_items()
 

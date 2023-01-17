@@ -325,12 +325,15 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       // then hide/unhide categories based on whether they have any unhidden elements
       var hasUnhidden = self.palette.find('.category').has('.item:not(.notInSearchFilter)');
       hasUnhidden.removeClass('notInSearchFilter');
+      
       self.palette.find('.category').not(hasUnhidden).addClass('notInSearchFilter');
-      if (hasUnhidden.length == 0) {
-         self.searchBox.addClass('noUnhiddenCategories');
-      }
-      else {
-         self.searchBox.removeClass('noUnhiddenCategories');
+      if (self.searchBox) {
+         if (hasUnhidden.length == 0) {
+            self.searchBox.addClass('noUnhiddenCategories');
+         }
+         else {
+            self.searchBox.removeClass('noUnhiddenCategories');
+         }
       }
    },
 

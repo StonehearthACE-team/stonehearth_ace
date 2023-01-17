@@ -61,6 +61,7 @@ local monkey_patches = {
    ace_daily_report_script = 'stonehearth.data.gm.campaigns.game_events.arcs.trigger.game_events.encounters.daily_report_script',
    ace_darkness_observer = 'stonehearth.ai.observers.darkness_observer',
    ace_default_conversation_script = 'stonehearth.data.conversation.default.default_conversation_script',
+   ace_delivery_quest_encounter = 'stonehearth.services.server.game_master.controllers.encounters.delivery_quest_encounter',
    ace_dig_adjacent_action = 'stonehearth.ai.actions.mining.dig_adjacent_action',
    ace_donation_dialog_encounter = 'stonehearth.services.server.game_master.controllers.encounters.donation_dialog_encounter',
    ace_donation_encounter = 'stonehearth.services.server.game_master.controllers.encounters.donation_encounter',

@@ -52,6 +52,7 @@ function EntityModificationComponent:set_region3(component_name, region, add)
          component:get_region():modify(function(cursor)
             cursor:copy_region(r3)
          end)
+         stonehearth.ai:reconsider_entity(self._entity, 'region changed')
 		end
 	end
 end

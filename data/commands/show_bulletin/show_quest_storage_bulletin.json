@@ -1,0 +1,17 @@
+{
+   "type": "command",
+   "group": "stonehearth_ace:quest",
+   "name": "show_quest_storage_bulletin",
+   "display_name": "i18n(stonehearth_ace:data.commands.show_quest_storage_bulletin.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.show_quest_storage_bulletin.description)",
+   "ordinal": 10,
+   "icon": "file(show_bulletin.png)",
+   "action": "fire_event",
+   "event_name": "show_bulletin_from_component",
+   "event_data": {
+      "component": "stonehearth_ace:quest_storage",
+      "property": "bulletin"
+   },
+   "args": [
+   ]
+}

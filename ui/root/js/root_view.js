@@ -185,6 +185,58 @@ App.RootView.reopen({
          });
       };
 
+      // also pass entity_data that's already been fully traced by unit_frame so we don't have to retrace it
+      App.stonehearthClient.doCommand = function(entity, player_id, command, entity_data) {
+         var self = this;
+         if (!command.enabled) {
+            return;
+         }
+         var event_name = '';
+
+         if (command.action == 'fire_event') {
+            // xxx: error checking would be nice!!
+            var e = {
+               entity : entity,
+               entity_data: entity_data,
+               event_data : command.event_data,
+               player_id : player_id
+            };
+            $(top).trigger(command.event_name, e);
+
+            event_name = command.event_name.toString().replace(':','_')
+
+         } else if (command.action == 'call') {
+            var uri = ((typeof entity) == 'object') ? entity.__self : entity;
+            if (!uri) return;
+            var args = [uri];
+            if (command.args) {
+               radiant.each(command.args, function(_, v) {
+                  args.push(v);
+               });
+            }
+
+            if (command.object) {
+               //if the command is "repeating" then call it again when done
+               radiant.call_objv(command.object, command['function'], args)
+                  .deferred.done(function(response){
+                     if (command.sound_on_complete) {
+                        radiant.call('radiant:play_sound', {'track' : command.sound_on_complete } );
+                     }
+                     if (command.repeating == true) {
+                        self.doCommand(entity, player_id, command);
+                     }
+                  });
+            } else {
+               radiant.callv(command['function'], args)
+            }
+
+            event_name = command['function'].toString().replace(':','_')
+
+         } else {
+            throw "unknown command.action " + command.action
+         }
+      };
+
       App.bulletinBoard.tryShowBulletin = function(bulletin) {
          var self = this;
 
@@ -207,15 +259,17 @@ App.RootView.reopen({
          var dialogBulletinViewModel = self._bulletinDialogView && !self._bulletinDialogView.isDestroyed && self._bulletinDialogView.get('model');
          if (dialogBulletinViewModel) {
             if (!filter_fn || filter_fn(dialogBulletinViewModel)) {
+               var id = dialogBulletinViewModel.id;
                if (self._bulletinDialogView.SHOULD_DESTROY_ON_HIDE_DIALOG) {
                   self._bulletinDialogView.hideByDestroying();
                } else {
-                  self._unclosedBulletinDialogViews[dialogBulletinViewId] = self._bulletinDialogView;
+                  if (id) {
+                     self._unclosedBulletinDialogViews[id] = self._bulletinDialogView;
+                  }
                   self._bulletinDialogView.hide();
                }
 
                // also mark the bulletin as handled and remove any notification for it
-               var id = dialogBulletinViewModel.id;
                if (id) {
                   self.notificationContainerView.removeNotificationView(self._bulletins[id]);
                   self.markBulletinHandled(self._bulletins[id]);

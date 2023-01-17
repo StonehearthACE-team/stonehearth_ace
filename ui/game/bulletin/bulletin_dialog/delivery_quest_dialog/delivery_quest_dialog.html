@@ -1,0 +1,29 @@
+<script type="text/x-handlebars" data-template-name="deliveryQuestBulletinDialog">
+<div id="deliveryQuestBulletinDialog" class="gui bulletinDialog">
+   <div class="window">
+      <div class="title">{{i18n_key view.model.data.dialog_title}}<div class="closeButton"></div></div>
+      <div class="contentFrame" class="parchment" >
+         {{#if view.model.data.text}}
+            <p class='instructionText'>{{i18n_key view.model.data.text}}</p>
+         {{/if}}
+         <div class='requirementsList'>
+            {{#each view.requirements}}
+               <div {{bind-attr class=":reqBlock this.fulfilled::unfulfilled"}}>
+                  <img class='icon' {{bind-attr src=this.icon}} />
+                  <span class='name'>{{i18n_key this.display_name}}</span>
+                  <span class='count'>{{this.available_count}}{{{this.cached_count}}} / {{this.count}}</span><img {{bind-attr class=':questItemsCached this.items_cached_class'}}/>
+               </div>
+            {{/each}}
+         </div>
+         <div class="buttonDiv">
+            {{#if view.model.data.requirements_met}}
+               <button id="completeButton"><span>{{i18n stonehearth:ui.game.bulletin.delivery_quest.complete}}</span></button>
+            {{else}}
+               <button id="completeButton" class="disabled" disabled><span>{{i18n stonehearth:ui.game.bulletin.delivery_quest.complete}}</span></button>
+            {{/if}}
+            <button id="abandonButton"><span>{{i18n stonehearth:ui.game.bulletin.delivery_quest.abandon}}</span></button>
+         </div>
+      </div>
+   </div>
+</div>
+</script>

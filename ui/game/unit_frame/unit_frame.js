@@ -38,27 +38,38 @@ $(top).on('stonehearthReady', function (cc) {
    });
 });
 
+$(top).on("show_bulletin_from_component", function (_, e) {
+   var componentData = e.event_data && e.entity_data[e.event_data.component];
+   var bulletin = componentData && componentData[e.event_data.property];
+   if (bulletin) {
+      App.bulletinBoard.tryShowBulletin(bulletin);
+   }
+});
+
 App.StonehearthUnitFrameView.reopen({
    ace_components: {
       "stonehearth:party": {
-          "members": {
-              "*": {
-                  "entity": {
-                      "stonehearth:work_order": {
-                          "work_order_statuses": {},
-                          "work_order_refs": {}
-                      }
+         "members": {
+            "*": {
+               "entity": {
+                  "stonehearth:work_order": {
+                     "work_order_statuses": {},
+                     "work_order_refs": {},
                   }
-              }
-          }
+               }
+            }
+         }
       },
       "stonehearth:work_order": {
-          "work_order_statuses": {},
-          "work_order_refs": {}
+         "work_order_statuses": {},
+         "work_order_refs": {},
+      },
+      "stonehearth_ace:quest_storage": {
+         "bulletin": {},
       },
       "stonehearth_ace:titles": {},
       "stonehearth_ace:transform": {
-         "progress": {}
+         "progress": {},
       }
    },
 
@@ -1036,20 +1047,10 @@ App.StonehearthUnitFrameView.reopen({
    }
 });
 
-// App.StonehearthCommandButtonView.reopen({
-//    didInsertElement: function () {
-//       if (this.$().find('.commandGroup').length == 0) {
-//          this._super();
-//       }
-//    },
-
-//    willDestroyElement: function() {
-//       this.$().find('.tooltipstered').tooltipster('destroy');
-//    },
-
-//    actions: {
-//       doCommand: function(command) {
-//          App.stonehearthClient.doCommand(this.get("parentView.uri"), this.get("parentView.model.player_id"), command);
-//       }
-//    }
-// });
+App.StonehearthCommandButtonView.reopen({
+   actions: {
+      doCommand: function(command) {
+         App.stonehearthClient.doCommand(this.get("parentView.uri"), this.get("parentView.model.player_id"), command, this.get("parentView.model"));
+      }
+   }
+});

@@ -6,6 +6,9 @@ local are_connected = _radiant.sim.topology.are_connected
 local is_supported = radiant.terrain.is_supported
 
 local MAX_EXTRA_ITEMS = constants.inventory.restock_director.MAX_EXTRA_ITEMS
+local FAILED_ITEM_REQUEUE_BATCH_SIZE = constants.inventory.restock_director.FAILED_ITEM_REQUEUE_BATCH_SIZE
+local FAILED_ITEM_REQUEUE_DELAY = constants.inventory.restock_director.FAILED_ITEM_REQUEUE_DELAY
+local FAILED_ITEM_REQUEUE_SHORT_DELAY = constants.inventory.restock_director.FAILED_ITEM_REQUEUE_SHORT_DELAY
 local RestockDirector = require 'stonehearth.services.server.inventory.restock_director'
 local AceRestockDirector = radiant.class()
 
@@ -140,6 +143,38 @@ function AceRestockDirector:_on_item_added(item)
       -- If any new errands are now possible, generate them.
       self:_mark_ready_to_generate_new_errands()
    end
+end
+
+function AceRestockDirector:_request_process_failed_items()
+   if self._failed_item_requeue_timer then
+      return
+   end
+
+   -- if no errands currently, use short delay
+   local delay = next(self._errands) and FAILED_ITEM_REQUEUE_DELAY or FAILED_ITEM_REQUEUE_SHORT_DELAY
+   self._failed_item_requeue_timer = stonehearth.calendar:set_timer('requeue failed restock items', delay, function()
+      self._failed_item_requeue_timer = nil
+
+      local remaining_item_attempts = FAILED_ITEM_REQUEUE_BATCH_SIZE
+
+      while self._failed_item_queue:get_size() > 0 and remaining_item_attempts > 0 do
+         local item = self._failed_item_queue:top()
+         self._failed_item_queue:pop()
+         if item and item:is_valid() then
+            local item_id = item:get_id()
+            if self._failed_items[item_id] then
+               self._failed_items[item_id] = nil
+               self._restockable_items_queue:push(0, item)  -- Deprioritize failed items, and don't waste time rating them either.
+               remaining_item_attempts = remaining_item_attempts - 1
+            end
+         end
+      end
+      self:_mark_ready_to_generate_new_errands()
+
+      if next(self._failed_items) then
+         self:_request_process_failed_items()
+      end
+   end)
 end
 
 function AceRestockDirector:_are_reachable(item, storage_or_executor)

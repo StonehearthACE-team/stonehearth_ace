@@ -139,8 +139,52 @@ App.guiHelper = {
          var tooltip = App.tooltipHelper.createTooltip(title && i18n.t(title) || "", i18n.t(text), "");
          itemEl.tooltipster({ content: $(tooltip) });
       }
-   }
+   },
 
+   createDynamicTooltip: function($parentEl, selector, contentGenerator, options) {
+      if (!$parentEl) return;
+      App.guiHelper.removeDynamicTooltip($parentEl, selector);
+      $parentEl.on('mouseover.guiHelper.createDynamicTooltip', selector, function() {
+         var $element = $(this);
+         if ($element.data('tooltipster')) {
+            $element.tooltipster('destroy');  // Remove previous tooltip. functionBefore fails to override if specified more than once.
+         }
+
+         var tooltipsterArgs = {
+            content: ' ',  // Just to force the tooltip to appear. The actual content is created dynamically below.
+            functionBefore: function (instance, proceed) {
+               if (instance && instance.data('tooltipster')) {
+                  var content = contentGenerator ? contentGenerator() : instance.attr('title');
+                  if (content) {
+                     instance.tooltipster('content', content);
+                     proceed();
+                  }
+               }
+            },
+         };
+
+         if (options) {
+            radiant.each(options, function (key, value) {
+               tooltipsterArgs[key] = value;
+            });
+         }
+
+         $element.tooltipster(tooltipsterArgs);
+         $element.tooltipster('show');
+      });
+   },
+
+   removeDynamicTooltip: function($parentEl, selector) {
+      if (!$parentEl) return;
+      $parentEl.off('mouseover.guiHelper.createDynamicTooltip', selector);
+      var $elements = $parentEl.find(selector);
+      $elements.each(function () {
+         var $element = $(this);
+         if ($element.data('tooltipster')) {
+            $element.tooltipster('destroy');
+         }
+      });
+   }
 };
 
 $(document).on('click', function() {

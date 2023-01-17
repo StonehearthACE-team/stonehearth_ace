@@ -2,6 +2,8 @@
 
 local Path = _radiant.sim.Path
 local Entity = _radiant.om.Entity
+local constants = require 'stonehearth.constants'
+local QUEST_STORAGE_URI = constants.game_master.quests.QUEST_STORAGE_URI
 
 local FindReachableStorageContainingBestEntityType = radiant.class()
 
@@ -48,8 +50,8 @@ local function make_storage_filter_fn(entity, args_filter_fn, owner_player_id, i
             return false
          end
 
-         -- Don't take items out of non-public storage (e.g.hearthling backpacks)
-         if not storage_comp:is_public() then
+         -- Don't take items out of non-public storage (e.g.hearthling backpacks) or quest storage
+         if not storage_comp:is_public() or storage:get_uri() == QUEST_STORAGE_URI then
             return false
          end
 
