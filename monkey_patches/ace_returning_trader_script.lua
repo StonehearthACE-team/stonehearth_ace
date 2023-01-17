@@ -26,30 +26,13 @@ AceReturningTrader._ace_old__on_accepted = ReturningTrader._on_accepted
 function AceReturningTrader:_on_accepted()
    self:_ace_old__on_accepted()
 
-   local town = stonehearth.town:get_town(self._sv._player_id)
-   local drop_origin = town:get_landing_location()
-   if not drop_origin then
-      return
+   if stonehearth.client_state:get_client_gameplay_setting(self._sv._player_id, 'stonehearth_ace', 'use_quest_storage', true) then
+      local item_requirements = {{
+         uri = self._sv._trade_data.want_uri,
+         quantity = self._sv._trade_data.want_count,
+      }}
+      self._sv._quest_storage = game_master_lib.create_quest_storage(self._sv.player_id, self._sv._info.quest_storage_uri, item_requirements, self._sv._bulletin)
    end
-
-   local quest_storage = radiant.entities.create_entity('stonehearth_ace:containers:quest', {owner = self._sv._player_id})
-   local location, valid = radiant.terrain.find_placement_point(drop_origin, 4, 7, quest_storage)
-   if not valid then
-      radiant.entities.destroy_entity(quest_storage)
-      return
-   end
-
-   -- create a quest storage near the town banner for these items
-   local qs_comp = quest_storage:add_component('stonehearth_ace:quest_storage')
-   qs_comp:set_requirements({{
-      uri = self._sv._trade_data.want_uri,
-      quantity = self._sv._trade_data.want_count,
-   }})
-   qs_comp:set_bulletin(self._sv._bulletin)
-   radiant.terrain.place_entity_at_exact_location(quest_storage, location, {force_iconic = false})
-   radiant.effects.run_effect(quest_storage, 'stonehearth:effects:gib_effect')
-
-   self._sv._quest_storage = quest_storage
 end
 
 AceReturningTrader._ace_old__on_declined = ReturningTrader._on_declined

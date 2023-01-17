@@ -1,3 +1,5 @@
+local game_master_lib = require 'stonehearth.lib.game_master.game_master_lib'
+
 local DeliveryQuest = require 'stonehearth.services.server.game_master.controllers.encounters.delivery_quest_encounter'
 local AceDeliveryQuest = class()
 
@@ -18,33 +20,15 @@ AceDeliveryQuest._ace_old_start = DeliveryQuest.start
 function AceDeliveryQuest:start(ctx, info)
    self:_ace_old_start(ctx, info)
 
-   local item_requirements = self:_get_item_requirements()
-   if #item_requirements < 1 then
-      -- no item requirements? no need for quest storage
-      return
+   if stonehearth.client_state:get_client_gameplay_setting(self._sv._player_id, 'stonehearth_ace', 'use_quest_storage', true) then
+      local item_requirements = self:_get_item_requirements()
+      if #item_requirements < 1 then
+         -- no item requirements? no need for quest storage
+         return
+      end
+
+      self._sv._quest_storage = game_master_lib.create_quest_storage(ctx.player_id, self._sv._info.quest_storage_uri, item_requirements, self._sv.bulletin)
    end
-
-   local town = stonehearth.town:get_town(ctx.player_id)
-   local drop_origin = town:get_landing_location()
-   if not drop_origin then
-      return
-   end
-
-   local quest_storage = radiant.entities.create_entity('stonehearth_ace:containers:quest', {owner = ctx.player_id})
-   local location, valid = radiant.terrain.find_placement_point(drop_origin, 4, 7, quest_storage)
-   if not valid then
-      radiant.entities.destroy_entity(quest_storage)
-      return
-   end
-
-   -- create a quest storage near the town banner for these items
-   local qs_comp = quest_storage:add_component('stonehearth_ace:quest_storage')
-   qs_comp:set_requirements(item_requirements)
-   qs_comp:set_bulletin(self._sv.bulletin)
-   radiant.terrain.place_entity_at_exact_location(quest_storage, location, {force_iconic = false})
-   radiant.effects.run_effect(quest_storage, 'stonehearth:effects:gib_effect')
-
-   self._sv._quest_storage = quest_storage
 end
 
 function AceDeliveryQuest:_get_item_requirements()

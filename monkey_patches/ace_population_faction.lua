@@ -560,6 +560,10 @@ function AcePopulationFaction:get_titles_for_statistic(entity, stat_changed_args
    end
 end
 
+function AcePopulationFaction:get_default_quest_storage_uri()
+   return self._data and self._data.default_quest_storage_uri
+end
+
 function AcePopulationFaction:get_job_index(population)
    local job_index = 'stonehearth:jobs:index'
    if self:is_npc() then

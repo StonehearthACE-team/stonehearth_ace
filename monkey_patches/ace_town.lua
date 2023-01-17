@@ -641,6 +641,12 @@ function AceTown:is_player_town()
    return pop and not pop:is_npc()
 end
 
+function AceTown:get_default_quest_storage_uri()
+   -- if the kingdom has a default quest storage uri, return it
+   local pop = stonehearth.population:get_population(self._sv.player_id)
+   return pop and pop:get_default_quest_storage_uri()
+end
+
 function AceTown:get_default_storage()
    return self._sv.default_storage
 end

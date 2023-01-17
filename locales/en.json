@@ -4414,6 +4414,10 @@
             "description": "Harvest this wild animal for some of its resources.",
             "disabled_description": "This wild animal is unfit for slaughtering."
          },
+         "teleport_quest_storage": {
+            "display_name": "Teleport Storage",
+            "description": "Choose a location and teleport this quest storage there (in case it spawned in a difficult location)."
+         },
          "toggle_enabled_off": {
             "display_name": "Enabled",
             "description": "Click to disable!"
@@ -22814,6 +22818,8 @@
                "show_unreachable_ingredients_notification_description": "Show an alert when a crafter cannot reach ingredients for their recipe.<span class='warn'>WARNING:</span>This may cause a lot of alerts!",
                "show_food_unfindable_notification": "Food Can't be Found Alert",
                "show_food_unfindable_notification_description": "Get an alert whenever a hearthling times out when trying to find food. Regardless of this setting, you'll still get notifications when people are starving.<span class='warn'>WARNING:</span>Since this alert is based on a timeout, the search might still succeed shortly after triggering and then send an alert anyway, especially if performance is already compromised. For this reason, you might want to keep it disabled.",
+               "use_quest_storage": "Use Quest Storage",
+               "use_quest_storage_description": "When a returning trader or other quest requires giving items or materials, create a dedicated storage for those items near your town banner so they don't get used elsewhere.",
                "auto_enable_quest_storage": "Auto Enable Quest Storage",
                "auto_enable_quest_storage_description": "When a returning trader or other quest creates quest storage, automatically enable that storage to securely cache requested items.",
                "auto_harvest_enabled": "Auto-Harvest Renewable Resources",

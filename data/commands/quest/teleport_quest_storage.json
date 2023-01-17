@@ -1,0 +1,13 @@
+{
+   "type": "command",
+   "group": "stonehearth_ace:quest",
+   "name": "teleport_quest_storage",
+   "display_name": "i18n(stonehearth_ace:data.commands.teleport_quest_storage.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.teleport_quest_storage.description)",
+   "default_enabled": true,
+   "ordinal": 20,
+   "icon": "file(teleport_quest_storage.png)",
+   "action": "call",
+   "function": "stonehearth:teleport_entity",
+   "args": []
+}
