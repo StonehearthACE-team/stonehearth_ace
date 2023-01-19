@@ -244,7 +244,7 @@ App.RootView.reopen({
             return;
          }
 
-         if (bulletin) {
+         if (bulletin && bulletin.id) {
             self._lastViewedBulletinId = bulletin.id
             self.showDialogView(bulletin);
 
