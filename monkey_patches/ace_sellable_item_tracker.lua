@@ -2,8 +2,6 @@
    changed to not track items in consumer containers or quest storage
 ]]
 
-local constants = require 'stonehearth.constants'
-local QUEST_STORAGE_URI = constants.game_master.quests.QUEST_STORAGE_URI
 local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
 local AceSellableItemTracker = class()
@@ -22,9 +20,9 @@ function AceSellableItemTracker:create_key_for_entity(entity, storage)
    end
 
    --if it's sellable, AND it is public storage or escrow storage, then return the uri as the key
-   if sellable and storage and storage:get_uri() ~= QUEST_STORAGE_URI then
+   if sellable and storage and not storage:get_component('stonehearth_ace:consumer') then
       local storage_component = storage:get_component('stonehearth:storage')
-      if storage_component and not storage:get_component('stonehearth_ace:consumer') and
+      if storage_component and storage_component:allow_item_removal() and
             (storage_component:is_public() or storage_component:get_type() == 'escrow') then
          return entity_uri
       end

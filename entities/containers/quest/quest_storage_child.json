@@ -1,28 +1,16 @@
 {
    "type": "entity",
    "components": {
-      "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": 0, "y": 0, "z": 0 },
-         "align_to_grid": [
-            "x",
-            "z"
-         ]
-      },
+      "mob": {},
       "stonehearth:storage": {
          "type": "input_crate",
          "allow_default": false,
+         "allow_item_removal": false,
          "priority": 3,
          "capacity": 0
       },
       "destination": {
-         "auto_update_adjacent": true,
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 1, "y": 2, "z": 1 }
-            }
-         ]
+         "auto_update_adjacent": true
       }
    },
    "entity_data": {

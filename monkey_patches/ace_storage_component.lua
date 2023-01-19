@@ -70,6 +70,8 @@ function AceStorageComponent:activate()
       -- end
    end
 
+   self._allow_item_removal = json.allow_item_removal ~= false
+
    self._always_mark_changed = self._sv.is_public or json.render_contents
    self:mark_changed()
 
@@ -207,6 +209,10 @@ end
 
 function AceStorageComponent:allow_default()
    return self._sv.allow_default
+end
+
+function AceStorageComponent:allow_item_removal()
+   return self._allow_item_removal
 end
 
 function AceStorageComponent:is_output_bin_for_crafter(job_id)

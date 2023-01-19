@@ -9,15 +9,14 @@
 ]]
 
 local Region3 = _radiant.csg.Region3
-local constants = require 'stonehearth.constants'
 
 local QuestStorageComponent = class()
-local STORAGE_URI = constants.game_master.quests.QUEST_STORAGE_URI
 
 local log = radiant.log.create_logger('quest_storage')
 
 function QuestStorageComponent:initialize()
    self._json = radiant.entities.get_json(self)
+   self._child_uri = self._json.child_uri or 'stonehearth_ace:containers:quest:child'
    self._sv._storages = {}
    self._storage_listeners = {}
 end
@@ -125,8 +124,12 @@ function QuestStorageComponent:set_requirements(requirements)
       return false
    end
 
+   local mob = self._entity:add_component('mob')
    for i, requirement in ipairs(requirements) do
-      local storage = radiant.entities.create_entity(STORAGE_URI, {owner = self._entity})
+      local storage = radiant.entities.create_entity(self._child_uri, {owner = self._entity})
+      storage:add_component('mob'):set_region_origin(mob:get_region_origin())
+      storage:add_component('mob'):set_align_to_grid_flags(mob:get_align_to_grid_flags())
+
       local storage_component = storage:add_component('stonehearth:storage')
       storage_component:set_capacity(requirement.quantity)
       if requirement.uri then
@@ -203,7 +206,7 @@ function QuestStorageComponent:_update_storage_destinations(enabled)
    for _, storage in ipairs(self._sv._storages) do
       local entity_modification = storage.entity:add_component('stonehearth_ace:entity_modification')
       if enabled then
-         entity_modification:reset_region3('destination')
+         entity_modification:set_region3('destination', self._entity:add_component('destination'):get_region())
       else
          entity_modification:set_region3('destination', Region3())
       end

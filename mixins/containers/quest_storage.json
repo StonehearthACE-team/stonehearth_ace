@@ -7,7 +7,9 @@
             "stonehearth_ace:commands:teleport_quest_storage"
          ]
       },
-      "stonehearth_ace:quest_storage": {},
+      "stonehearth_ace:quest_storage": {
+         "child_uri": "stonehearth_ace:containers:quest:child"
+      },
       "stonehearth_ace:toggle_enabled": {
          "enabled": true,
          "alert_on_reload": true,
