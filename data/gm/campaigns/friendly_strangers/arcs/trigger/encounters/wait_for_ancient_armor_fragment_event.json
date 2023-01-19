@@ -1,0 +1,12 @@
+{
+   "type": "encounter",
+   "mod_root": "stonehearth_ace",  
+   "encounter_type": "wait_for_global_event",
+   "in_edge": "wait_for_ancient_armor_fragment_event",
+   "out_edge": "wait_for_archeologist_requirements",
+   "wait_for_global_event_info": {
+      "mod_root": "stonehearth_ace",  
+      "source": "stonehearth_ace",
+      "event": "stonehearth_ace:ancient_armor_fragment_present"
+   }
+}

@@ -18,6 +18,7 @@
       ],
       "script": "stonehearth:game_master:script_encounter:returning_trader",
       "data": {
+         "quest_storage_uri": "stonehearth_ace:containers:quest:frostfeast",
          "abandon_out_edge": "quest_cleanup",
          "timeout_out_edge": "quest_cleanup",
          "success_out_edge": "quest_reward",

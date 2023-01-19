@@ -1978,7 +1978,8 @@
                      "bulletin_title": "A friendly stranger approaches",
                      "msg_cancel": {
                         "choice_000": "Alright then!",
-                        "choice_001": "It's all good. [skip tutorial]"
+                        "choice_001": "It's all good. [skip tutorial]",
+                        "choice_002": "It's all good. [skip unlock]"
                      },
                      "msg_denial": {
                         "choice_000": "Nah, it's not needed! [skip tutorial]",
@@ -2087,6 +2088,57 @@
                },
                "astrologer_gift": {
                   "recipe_unlock": "The Blacksmith has unlocked recipes with meteoric fragments and a Starsteel sword!"
+               },
+               "archeologist_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "dialog_title": "Mara Loft, Archeologist",
+                        "msg1": {
+                           "bulletin_message": {
+                              "00": "A young lady clad in chainmail and with a bright red cloak over her shoulders approaches with decisive, strong steps. She seems disappointed.<p>\"Aww, no! There's already people here... Oh well.\" She recomposes from her disappointment and resumes speaking on a gentler tone. \"Greetings, friends! You may call me Mara Loft, famous explorer, tomb raider and currently an archeologist working for the capital's Phoenix Empire Museum.\""
+                           },
+                           "choice_000": "Welcome! May we help?"
+                        },
+                        "msg2": {
+                           "bulletin_message": {
+                              "00": "\"I've been following some old maps from the Museum collection, hoping that they might bring me to some new and exciting discoveries!\" She shrugs. \"However I didn't expect this place to be settled already, maps take a while to be updated, so of course I can't really interfere with that...\"<p>She continues after a brief pause. \"But the Museum is always interested in registering new findings and the locations of old ruins for future research! Have you seen anything... Maybe some hidden crypt?\""
+                           },
+                           "choice_000": "Yes, we found an Ancient Crypt!"
+                        },
+                        "msg3": {
+                           "bulletin_message": {
+                              "00": "\"Great! I'd really appreciate if you could point me the location of it later.\" She smiles. \"According to the old documents we have, this area was the resting place of some really honorable warriors from the Phoenix Empire. Chances are you might find fragments of armor and other ancient relics by exploring these places! And who knows? Some of the ancient fragments you find might still have some of their magic...\""
+                           },
+                           "choice_000": "Ooh! Tomb raiding!"
+                        },
+                        "msg4": {
+                           "bulletin_message": {
+                              "00": "\"Indeed!\" She swings her fists on the air, excited. \"I do love some dungeon delving myself but according to the Museum code, we won't take artifacts or anything from lands that are already settled. But we're always accepting donations, of course!\"<p>She rummages through her satchel, looking for something.<p>\"Now that your settlement is in our official map, we might visit again in the future... But for now, please accept this gift. I think it might be helpful to your people... And don't worry, this is just a copy!\""
+                           },
+                           "choice_000": "Gift?"
+                        },
+                        "msg5": {
+                           "bulletin_message": {
+                              "00": "She removes a scroll from the satchel and unfurls it open. It depicts a colorful image of a strong warrior clad in beautiful lamellar armor.<p>\"This scroll has some translated information on the making and the enchantments used on the legendary Palatine Guard armor. You might've heard about them on writings from the Church of Plenty, they're called 'Paladins' nowadays...\"<p>She grins. \"An innocent translation error. Either way, I wrote the translation and copied the original drawing myself, and I'm sure a Blacksmith would love to read this!\""
+                           },
+                           "choice_000": "Exciting!"
+                        },
+                        "msg_cancel": {
+                           "bulletin_message": {
+                              "00": "She ponders for a moment.<p>\"Oh! You're absolutely correct, I think. I talked about ancient ruins, armor fragments and showed you the old illustrations of the Phoenix Palatine Guard, did I not? Or was that someone else? I can always repeat all that, if you want!<p><span class='aside'>...or if you don't remember it...\"</span><p>She smiles."
+                           }
+                        },
+                        "msg_farewell": {
+                           "bulletin_message": {
+                              "00": "\"Great!\" She eagerly looks around.<p>\"You wouldn't mind if I stay for a day or so, right? I just want to take a look around, see if I spot any new ruins not yet added to the Museum catalog... I'll depart tomorrow! And remember, if you ever visit the capital, make sure to check out our collection!\""
+                           },
+                           "choice_000": "Will do!"
+                        }
+                     }
+                  }
+               },
+               "archeologist_gift": {
+                  "recipe_unlock": "The Blacksmith has unlocked the legendary 'Phoenix Paladin Regalia' recipe!"
                }
             },
             "hunting": {
@@ -4146,7 +4198,7 @@
             "description": "Assign this pet to a new owner."
          },
          "dump_quest_storage": {
-            "display_name": "Dump Items",
+            "display_name": "Dump Contents",
             "description": "Disable this quest storage and dump all the contained items on the ground."
          },
          "harvest_highland_vine": {
@@ -4154,7 +4206,7 @@
             "description": "Toggle harvest requests for all segments of this vine."
          },
          "show_quest_storage_bulletin": {
-            "display_name": "Show Bulletin",
+            "display_name": "Show Quest Bulletin",
             "description": "Show the bulletin for the quest associated with this storage."
          },
          "show_shop": {
@@ -4415,8 +4467,8 @@
             "disabled_description": "This wild animal is unfit for slaughtering."
          },
          "teleport_quest_storage": {
-            "display_name": "Teleport Storage",
-            "description": "Choose a location and teleport this quest storage there (in case it spawned in a difficult location)."
+            "display_name": "Teleport Quest Storage",
+            "description": "If the quest storage was spawned on a bad or inconvenient location, use this command to choose a new place for it to be teleported to."
          },
          "toggle_enabled_off": {
             "display_name": "Enabled",
@@ -8830,6 +8882,11 @@
                "description": "Blunt. Strong. Unstoppable. Can break armor.",
                "flavor": "Lightbringer"
             },
+            "starsteel_long_sword_recipe": {
+               "recipe_name": "Starsteel Long Sword",
+               "description": "A powerful single-handed weapon that can turn the tide of battle!",
+               "flavor": "'The Sea of Stars is full of untold knowledge... and power!' - Astrologer Cygnus"
+            },
             "bronze_scepter_recipe": {
                "recipe_name": "Bronze Scepter",
                "description": "A good weapon for the Cleric that goes into the breach.",
@@ -8840,15 +8897,15 @@
                "description": "A reliable and blessed weapon for a Cleric, if they decide to go up close and personal.",
                "flavor": ""
             },
-            "starsteel_long_sword_recipe": {
-               "recipe_name": "Starsteel Long Sword",
-               "description": "A powerful single-handed weapon that can turn the tide of battle!",
-               "flavor": "'The Sea of Stars is full of untold knowledge... and power!' - Astrologer Cygnus"
-            },
             "gold_scepter_recipe": {
                "recipe_name": "Gold Scepter",
                "description": "A very powerful and sacred Cleric's weapon, the Undead shall tremble upon seeing it!",
                "flavor": "It's time to SMITE!"
+            },
+            "phoenix_cleric_armor_recipe": {
+               "recipe_name": "Phoenix Paladin Regalia",
+               "description": "A mythic piece of armor worn by the legendary Phoenix Empire's Palatine Guard.",
+               "flavor": "The golden crest was likely a phoenix... But without reference, a golden poyo will have to do!"
             },
             "silver_mail_recipe": {
                "recipe_name": "Silver Platemail",
@@ -20005,7 +20062,7 @@
       "containers": {
          "quest_storage": {
             "display_name": "Quest Storage",
-            "description": "Hearthlings can store requested items here for safe-keeping."
+            "description": "Can be used to store items requested by a quest for safe-keeping."
          },
          "vault": {
             "display_name": "Vault"
@@ -20240,6 +20297,18 @@
          "market_shelf_tall_ground": {
             "display_name": "Market Trading Shelf",
             "description": "Other players and travelers can buy the items stored here."
+         },
+         "amberstone_quest_storage": {
+            "display_name": "Amberstone Quest Storage"
+         },
+         "food_basket_quest_storage": {
+            "display_name": "Quest Food Offering"
+         },
+         "frostfeast_quest_storage": {
+            "display_name": "Frostfeast Quest Present"
+         },
+         "silk_road_quest_storage": {
+            "display_name": "Far Eastern Caravan Quest Storage"
          }
       },
       "tools": {
@@ -21193,6 +21262,10 @@
                "astrologer": {
                   "display_name": "Astrologer Carina",
                   "description": "An observer of the night sky"
+               },
+               "archeologist": {
+                  "display_name": "Mara Loft",
+                  "description": "Famous archeologist, explorer and tomb raider."
                }
             }
          },
@@ -21972,8 +22045,8 @@
                "no_exclusive_stalls": "Exclusive merchants will only visit your town if you have certain exclusive market stalls placed. These generally require high level crafters or specific town upgrade choices to acquire.",
                "disable_exclusive": "<span class='max'>Enabled!</span> Click to Disable.",
                "enable_exclusive": "<span class='limited'>Disabled!</span> Click to Enable.",
-               "selling": "They might bring...",
-               "buying": "They might pay more for..."
+               "selling": "💰 They might bring...",
+               "buying": "🔎 They might pay more for..."
             },
             "title": "Mercantile Overview"
          },

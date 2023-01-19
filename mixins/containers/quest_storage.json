@@ -1,0 +1,31 @@
+{
+   "components": {
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth_ace:commands:show_bulletin:quest",
+            "stonehearth_ace:commands:dump_quest_storage",
+            "stonehearth_ace:commands:teleport_quest_storage"
+         ]
+      },
+      "stonehearth_ace:quest_storage": {},
+      "stonehearth_ace:toggle_enabled": {
+         "enabled": true,
+         "alert_on_reload": true,
+         "enable_command": "stonehearth_ace:commands:toggle_enabled_on",
+         "disable_command": "stonehearth_ace:commands:toggle_enabled_off"
+      }
+   },
+   "entity_data": {
+      "navgrid": {
+         "has_physics": true
+      },
+      "stonehearth:target_type": {
+         "target_type": "item"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.quest_storage.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.quest_storage.description)",
+         "category": "mercantile"
+      }
+   }
+}

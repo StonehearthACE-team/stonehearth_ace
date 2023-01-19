@@ -1,15 +1,15 @@
 {
    "type": "encounter",
    "encounter_type": "wait",
-   "in_edge": "delay_before_smith_arrival",
+   "in_edge": "archeologist_wait",
    "out_edge": {
       "type": "trigger_many",
       "out_edges": [
-         "smith_spawn",
-         "smith_wait"
+         "archeologist_destroy",
+         "friendly_strangers_subtract_counter"
       ]
    },
    "wait_info": {
-      "duration": "2h+6h"
+      "duration": "24h"
    }
 }

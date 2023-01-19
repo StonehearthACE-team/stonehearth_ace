@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 80,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.phoenix_cleric_armor_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.phoenix_cleric_armor_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.phoenix_cleric_armor_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/armor/phoenix_cleric_armor/phoenix_cleric_armor.png",
+   "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
+   "level_requirement": 6,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:loot:ancient_armor_fragment",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth:refined:steel_ingot",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth:refined:gold_ingot",
+         "count": 2
+      },
+      {
+         "material": "leather resource",
+         "count": 2
+      },
+      {
+         "material": "cloth resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:armor:phoenix_cleric_armor"
+      }
+   ]
+}

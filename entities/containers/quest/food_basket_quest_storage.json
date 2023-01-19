@@ -1,0 +1,45 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:mixins:containers:quest_storage",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(food_basket_quest_storage.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": -0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.food_basket_quest_storage.display_name)",
+         "icon": "file(food_basket_quest_storage.png)"
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      }
+   }
+}

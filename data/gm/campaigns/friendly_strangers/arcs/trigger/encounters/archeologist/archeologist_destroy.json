@@ -1,0 +1,13 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "archeologist_destroy",
+   "out_edge": {
+      "type": "destroy_tree",
+      "root": "wait_for_ancient_armor_fragment_event",
+      "destroy_root": true
+   },
+   "wait_info": {
+      "duration": "2d"
+   }
+}

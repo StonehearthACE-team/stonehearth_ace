@@ -1,5 +1,6 @@
 {
    "type": "entity",
+   "mixins": "stonehearth_ace:mixins:containers:quest_storage",
    "components": {
       "model_variants": {
          "default": {
@@ -12,12 +13,8 @@
          "scale": 0.1
       },
       "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": 0, "y": 0, "z": 0 },
-         "align_to_grid": [
-            "x",
-            "z"
-         ]
+         "model_origin": { "x": 0.5, "y": 0, "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": -0.5 }
       },
       "destination": {
          "region": [
@@ -34,38 +31,11 @@
                "max": { "x": 1, "y": 2, "z": 1 }
             }
          ]
-      },
-      "stonehearth:commands": {
-         "commands": [
-            "stonehearth_ace:commands:show_bulletin:quest",
-            "stonehearth_ace:commands:dump_quest_storage",
-            "stonehearth_ace:commands:teleport_quest_storage"
-         ]
-      },
-      "stonehearth_ace:quest_storage": {},
-      "stonehearth_ace:toggle_enabled": {
-         "enabled": true,
-         "alert_on_reload": true,
-         "enable_command": "stonehearth_ace:commands:toggle_enabled_on",
-         "disable_command": "stonehearth_ace:commands:toggle_enabled_off"
       }
    },
    "entity_data": {
-      "navgrid": {
-         "has_physics": true
-      },
-      "stonehearth:target_type": {
-         "target_type": "item"
-      },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.containers.quest_storage.display_name)",
-         "description": "i18n(stonehearth_ace:entities.containers.quest_storage.description)",
-         "icon": "file(quest_storage.png)",
-         "category": "storage"
-      },
-      "stonehearth:town_patrol": {
-         "auto_patrol": true,
-         "patrol_pattern": "perimeter"
+         "icon": "file(quest_storage.png)"
       },
       "stonehearth:appeal": {
          "appeal": 1
