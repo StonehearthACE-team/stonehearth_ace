@@ -1,0 +1,15 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "delay_before_cook_arrival",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "cook_spawn",
+         "cook_wait"
+      ]
+   },
+   "wait_info": {
+      "duration": "2h+6h"
+   }
+}

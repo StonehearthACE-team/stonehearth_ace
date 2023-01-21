@@ -1,0 +1,39 @@
+{
+   "type": "entity",
+   "mixins": "file(quaint_farm_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(quaint_farm_iconic.json)",
+         "ghost_form": "file(quaint_farm_ghost.json)",
+         "placeable_on_walls": true
+      },
+      "region_collision_shape": {
+         "region_collision_type": "none",
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": 0 },
+               "max": { "x": 2, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:traveler_attraction": {}
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 50,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 24
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

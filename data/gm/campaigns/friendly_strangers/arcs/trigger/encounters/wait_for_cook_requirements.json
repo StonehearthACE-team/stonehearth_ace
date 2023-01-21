@@ -1,0 +1,41 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_requirements_met",
+   "in_edge": "wait_for_cook_requirements",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "delay_before_cook_arrival",
+         "friendly_strangers_add_counter"
+      ]
+   },
+   "wait_for_requirements_met_info": {
+      "requirements": {
+         "trapper": {
+            "item": "highest_job_level",
+            "type": "deny_if_less_than",
+            "value": 2,
+            "job_alias": "stonehearth:jobs:cook"
+         },
+         "not_in_titanstorm": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:titanstorm"
+         },
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_not_between",
+            "value": {
+               "min": 5,
+               "max": 10
+            }
+         },
+			"simultaneous_visitors_check": {
+            "type": "deny_if_greater_than",
+            "item": "counter",
+            "key": "visitors",
+            "value": 0
+         }
+      }
+   }
+}

@@ -1793,6 +1793,54 @@
                }
             },
             "friendly_strangers": {
+               "cook_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "dialog_title": "Grandma Chenba",
+                        "msg1": {
+                           "bulletin_message": {
+                              "00": "\"Oh, hello there, dearie. You wouldn't mind if I stopped here for a moment, right? Of course not, you seem to be a sweetie. I'm Grandma Chenba, the itinerant cooking matriarch of the desert, but you may call me Grandma. I've been traveling for many years now, spreading the delicacies of the Rayya's cuisine and my own special recipes... You have to try my cookies!\""
+                           },
+                           "choice_000": "Be welcome!"
+                        },
+                        "msg2": {
+                           "bulletin_message": {
+                              "00": "\"Oh I am very welcome, dearie! Don't worry about me... It's these old bones, they're making the 'itinerant' part of my job a little more challenging lately. Anyway, I can smell very promising food, yes. Whoever is cooking has a long road ahead, though... Not a dangerous one, mind you, but a very tasty one! It might help to learn some important things early on, if you'd be interested. How to organize your kitchen, how to be a good baker and how to preserve your food!\""
+                           },
+                           "choice_000": "Tell us, grandma!"
+                        },
+                        "msg3": {
+                           "bulletin_message": {
+                              "00": "\"Oh, I will! You younger people nowadays... Always impatient! Don't worry, dearie, I was planning to tell you these things all along! The first thing a master cook must know is how to organize their kitchen. Discipline and companionship helps, of course, but the real secret is on dividing the tasks. You can tell your cooks to focus on different recipe categories, did you know? In fact, I'm sure this tip is useful for every other crafter, depending on the situation. Just pray make sure to never have a category with no one assigned...\"<p class='smaller'>You can disable or enable crafters by clicking the small head icons to the right of each category in the workshop's recipe list"
+                           },
+                           "choice_000": "That's useful!"
+                        },
+                        "msg4": {
+                           "bulletin_message": {
+                              "00": "\"It is very useful, dearie. With an organized kitchen, you could have someone focusing only on baking, for example. And this is a good idea, baking is a very complex process but it will result in sophisticated, delicious recipes! Many baking recipes start with the flour and then with a dough, that must rise before it can be used, so remember to place a leavening table for that. Doughs rise fast, in a matter of hours, and only when they're done rising you may use them for baking. And balance is essential, because doughs will also spoil quite quickly!\""
+                           },
+                           "choice_000": "Sounds bad!"
+                        },
+                        "msg5": {
+                           "bulletin_message": {
+                              "00": "\"Oh, it's not that bad, dearie! Food preservation is something that I've learned from my own grandma since I was a little girl with a rolling pin chasing cactuslings away from her pies. Just having the food be properly stored in a container will already give it some extra time, but what you'll really want is a proper cooling box! Most masons or potters can craft one... And if you can ever afford it, an engineer is able to create proper refrigerators. These will keep food preserved for a long, long time. I've never served a meal that didn't look fresh and delicious!\""
+                           },
+                           "choice_000": "Safety first!"
+                        },
+                        "msg_cancel": {
+                           "bulletin_message": {
+                              "00": "Are you sure?"
+                           }
+                        },
+                        "msg_farewell": {
+                           "bulletin_message": {
+                              "00": "\"Culinary is an art, my dearie. But it's also a skill that can be practiced and improved. Everyone dreams about their grandmothers' cookies, pies and cakes but they forget that they too will be a grandma or grandpa one day. Your young, aspiring cook will do wonders, I'm sure of it! So pray hold this advice close to your heart, sweetie: organize your kitchen, let doughs rise on a leavening table and preserve your ingredients and your food! Nothing brings people together like a home-cooked meal! Now, if you'll allow me, I must rest for a day before I go back to the road...\""
+                           },
+                           "choice_000": "Enjoy your stay!"
+                        }
+                     }
+                  }
+               },
                "fisher_arrival": {
                   "dialog_tree_info": {
                      "dialog_nodes": {
@@ -1995,18 +2043,18 @@
                      "bulletin_title_2": "A curious stranger approaches!"
                   }
                },
-               "smith_gift": {
+               "cook_gift": {
                   "donation_dialog_info": {
                      "dialog_nodes": {
                         "letter": {
-                           "dialog_title": "From: Fernand the Great",
+                           "dialog_title": "From: Grandma Chenba",
                            "message": {
-                              "00": "<i>\"Many greetings,<i> pollito!</i><p>I've just left to meet my caravan and go home. The world needs Fernand and Fernand needs the world.<br>But I didn't want to leave without sharing one last thing to help you get started!<p>Keep on growing!<br><span class='smaller'>PS: Store that hunk o' hard coal well, it will be very useful in the future!</span>\"</i><p>The gift package contains:"
+                              "00": "<i>\"My dearie!<p>Thank you for your company and for being such a sweetie. I can't wait to tell my grandchildren about your settlement.<br>I've made you some food and, of course, some cookies with a little bit of love. May your ovens sing for generations to come! Farewell.\"</i><p>The gift package contains:"
                            }
                         }
                      }
                   }
-               },
+               },               
                "fisher_gift": {
                   "donation_dialog_info": {
                      "dialog_nodes": {
@@ -2014,6 +2062,18 @@
                            "dialog_title": "From: Bruno the Fisher",
                            "message": {
                               "00": "<i>\"Hey, friends!<p>As I write this, I'm about to leave on my boat. One must always follow the currents. I had a good time here and actually managed to fish a little during the evening!<br>I feel that the first fish from your town should stay where they belong, though. Hopefully we'll meet again and I'll bring lots of goods!<br>Stay safe!\"</i><p>The gift package contains:"
+                           }
+                        }
+                     }
+                  }
+               },
+               "smith_gift": {
+                  "donation_dialog_info": {
+                     "dialog_nodes": {
+                        "letter": {
+                           "dialog_title": "From: Fernand the Great",
+                           "message": {
+                              "00": "<i>\"Many greetings,<i> pollito!</i><p>I've just left to meet my caravan and go home. The world needs Fernand and Fernand needs the world.<br>But I didn't want to leave without sharing one last thing to help you get started!<p>Keep on growing!<br><span class='smaller'>PS: Store that hunk o' hard coal well, it will be very useful in the future!</span>\"</i><p>The gift package contains:"
                            }
                         }
                      }
@@ -7948,6 +8008,39 @@
                "description": "This exclusive market stall will allow your town to be visited by a Clan Amberstone merchant with many unique lapine goods and decorations!",
                "flavor": "Unlocked by the 'Clan Amberstone' questline"
             },
+            "amberstone_table_recipe": {
+               "recipe_name": "Amberstone Dining Table"
+            },
+            "amberstone_lantern_recipe": {
+               "recipe_name": "Amberstone Lantern"
+            },
+            "amberstone_window_recipe": {
+               "recipe_name": "Amberstone Burrow Window"
+            },
+            "amberstone_tunnel_door_recipe": {
+               "recipe_name": "Amberstone Burrow Door"
+            },
+            "amberstone_teapot_recipe": {
+               "recipe_name": "Amberstone Teapot"
+            },
+            "output_box_amberstone_recipe": {
+               "recipe_name": "Amberstone Finished Work Shelf"
+            },
+            "input_table_ground_amberstone_recipe": {
+               "recipe_name": "Amberstone Supply Table",
+               "description": "Craft a supply table for stockpiling materials.",
+               "flavor": ""
+            },
+            "pet_food_bowl_amberstone_recipe": {
+               "recipe_name": "Amberstone Kibble Bowl",
+               "description": "Hearthlings can put kibble in this lapine bowl for their pets to eat.",
+               "flavor": "Bunnies love eating from those! Probably..."
+            },
+            "amberstone_tank_recipe": {
+               "recipe_name": "Amberstone Large Jar",
+               "description": "Stores up to 24 items of a certain kind.",
+               "flavor": "Can hold a diverse range of fluids and dry goods"
+            },
             "stone_safety_standard_recipe": {
                "recipe_name": "Stone Safety Standard",
                "description": "Use to designate a safety point."
@@ -10088,6 +10181,28 @@
       },
       "weaver": {
          "recipes": {
+            "amberstone_painting_branch_recipe": {
+               "recipe_name": "Amberstone Painting (Flowering)"
+            },
+            "amberstone_chest_recipe": {
+               "recipe_name": "Woven Chest"
+            },
+            "amberstone_mat_recipe": {
+               "recipe_name": "Woven Floormat"
+            },
+            "input_bin_amberstone_recipe": {
+               "recipe_name": "Amberstone Supply Basket"
+            },
+            "amberstone_bed_herbalist_recipe": {
+               "recipe_name": "Herbalist Woven Bed",
+               "description": "Wounded or incapacitated hearthlings will prefer this bed, which can be placed closer to their medications and recovers them slightly faster.",
+               "flavor": "Herbalist beds can't be personally owned"
+            },
+            "amberstone_bed_pet_recipe": {
+               "recipe_name": "Woven Pet Bed",
+               "description": "Allows animals to have a more comfortable sleep. Bunnies love this one, somehow...",
+               "flavor": "Pets will always try to sleep on the bed that is closest to their owner's bed!"
+            },
             "thatch_twine_bundle_recipe": {
                "recipe_name": "Straw Twine Bundle",
                "description": "Coil strains of dry grass together into a neat cordage that can be used as fiber.",
@@ -10100,6 +10215,11 @@
                "recipe_name": "Ball of Yarn (x2)",
                "description": "Spin animal wool into a versatile resource that can be used as both fiber or thread.",
                "flavor": "You might want to store these far away from kittens..."
+            },
+            "bolt_of_cloth_amberstone_recipe": {
+               "recipe_name": "Bolt of Woven Cloth",
+               "description": "Weave thin cords of fiber into a reliable and lightweight fabric much adored by the rabbit-folk.",
+               "flavor": "Made straight from fiber instead of thread!"
             },
             "fine_stuffing_recipe": {
                "recipe_name": "Fine Stuffing (x2)",
@@ -12072,6 +12192,12 @@
          }
       },
       "construction": {
+         "amberstone_tunnel_door": {
+            "display_name": "Amberstone Burrow Door"
+         },
+         "amberstone_window": {
+            "display_name": "Amberstone Burrow Window"
+         },
          "simple_hatch_wooden": {
             "display_name": "Simple Wooden Hatch",
             "description": "A simple hatch for vertical doorways.",
@@ -14046,6 +14172,14 @@
          "metal_bits_soft": {
             "display_name": "Soft Metal Bits",
             "description": "A bunch of soft metal parts required for some advanced crafts."
+         },
+         "cloth_bolt_amberstone": {
+            "display_name": "Bolt of Woven Cloth",
+            "description": "Lighter and gently itchy to the touch."
+         },
+         "cloth_bolt_silk": {
+            "display_name": "Bolt of Silk Cloth",
+            "description": "Extremely soft, flowy and smooth to the touch!"
          }
       },
       "trees": {
@@ -14845,6 +14979,9 @@
                "description": "A customized stand for attracting an exclusive herb seed merchant!"
             }
          },
+         "amberstone_table": {
+            "display_name": "Amberstone Dining Table"
+         },
          "patrol_point": {
             "patrol_point_ghost": {
                "display_name": "Patrol Point",
@@ -15326,6 +15463,14 @@
                "display_name": "Marble Table for One",
                "description": "Contemplate your loneliness in luxury."
             }
+         },
+         "amberstone_bed_herbalist": {
+            "description": "A comfortable bed with a support table to provide the best treatments.",
+            "display_name": "Herbalist Woven Bed"
+         },
+         "amberstone_bed_pet": {
+            "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!",
+            "display_name": "Woven Pet Bed"
          }
       },
       "recipes": {
@@ -16253,6 +16398,15 @@
          }
       },
       "decoration": {
+         "amberstone_lantern": {
+            "display_name": "Amberstone Lantern"
+         },
+         "amberstone_painting_branch": {
+            "display_name": "Amberstone Painting (Flowering)"
+         },
+         "amberstone_teapot": {
+            "display_name": "Amberstone Teapot"
+         },
          "blue_market_stall": {
             "blue_market_stall_ghost": {
                "display_name": "Old Wooden Market Stall",
@@ -16835,7 +16989,7 @@
             "description": "An ancient testament to the power a community has to nurture and thrive.",
             "static_component_info": {
                "description": "<p style='text-align:center;color:white;'>This beautiful monument is dedicated to the great community behind Stonehearth and to those that have supported the ACE project!<br><br>Below is a permanent list of all the kind donors, ordered by membership tier, then total amount and finally date. This list will be updated whenever a new release is out!</p>",
-               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>Yunoh<br>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Doris<br>AnonymousFriendo<hr><p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Coolcup5<br>ghostcrap<br>Croxo<br>shimizu & jontaro</p>"
+               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>Yunoh<br>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<br>Vyrael<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Doris<br>AnonymousFriendo<hr><p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Coolcup5<br>ghostcrap<br>Croxo<br>shimizu & jontaro</p>"
             }
          },
          "craftsman_statue": {
@@ -16879,6 +17033,12 @@
          "candelabra_pewter": {
             "display_name": "Pewter Table Candelabra",
             "description": "A strong light solution for your dinner room!"
+         },
+         "painting": {
+            "quaint_farm": {
+               "display_name": "Painting (Quaint Farm)",
+               "description": "Farmers working golden fields of grain in a sunny day. A very bucolic scene."
+            }
          }
       },
       "pets": {
@@ -20060,6 +20220,12 @@
          }
       },
       "containers": {
+         "input_bin_amberstone": {
+            "display_name": "Amberstone Supply Basket"
+         },
+         "output_box_amberstone": {
+            "display_name": "Amberstone Finished Work Shelf"
+         },
          "quest_storage": {
             "display_name": "Quest Storage",
             "description": "Can be used to store items requested by a quest for safe-keeping."
@@ -20309,6 +20475,18 @@
          },
          "silk_road_quest_storage": {
             "display_name": "Far Eastern Caravan Quest Storage"
+         },
+         "amberstone_tank": {
+            "description": "Stores up to 24 items of a certain kind.",
+            "display_name": "Amberstone Large Jar"
+         },
+         "input_table_ground_amberstone": {
+            "display_name": "Amberstone Supply Table",
+            "description": "A supply container, for quicker crafting."
+         },
+         "pet_food_bowl_amberstone": {
+            "description": "Hearthlings can put kibble in this stone bowl for their pets to eat.",
+            "display_name": "Amberstone Kibble Bowl"
          }
       },
       "tools": {
@@ -21266,6 +21444,10 @@
                "archeologist": {
                   "display_name": "Mara Loft",
                   "description": "Famous archeologist, explorer and tomb raider."
+               },
+               "cook": {
+                  "display_name": "Grandma Chenba",
+                  "description": "The itinerant cooking matriarch of the desert"
                }
             }
          },

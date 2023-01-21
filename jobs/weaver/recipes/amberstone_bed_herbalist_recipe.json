@@ -1,0 +1,39 @@
+{
+	"type": "recipe",
+   "effort": 30,
+	"work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.amberstone_bed_herbalist_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.amberstone_bed_herbalist_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.amberstone_bed_herbalist_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/amberstone_bed_herbalist/amberstone_bed_herbalist.png",
+	"workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:refined:cloth_bolt:amberstone",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:cloth_bolt",
+         "count": 1
+      },
+      {
+          "uri": "stonehearth_ace:refined:fine_stuffing",
+          "count": 2
+      },
+      {
+         "uri": "stonehearth:consumables:light_bandage",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:amberstone_bed:herbalist"
+      }
+   ]
+}

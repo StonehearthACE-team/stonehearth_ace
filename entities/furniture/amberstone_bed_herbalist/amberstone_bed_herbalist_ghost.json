@@ -1,0 +1,42 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(amberstone_bed_herbalist.qb)"
+            ]
+         },
+         "sleeping": {
+            "models": [
+               "file(amberstone_bed_herbalist_sleeping.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.22
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.amberstone_bed_herbalist.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.amberstone_bed_herbalist.description)",
+         "icon": "file(amberstone_bed_herbalist.png)",
+         "category": "furniture",
+         "material_tags": [
+            "fiber",
+            "amberstone",
+            "furniture",
+            "priority_care",
+            "bed",
+            "crafted",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

@@ -1,0 +1,120 @@
+{
+   "type": "encounter",
+   "encounter_type": "dialog_tree",
+   "rarity": "common",
+   "in_edge": "cook_dialog",
+   "dialog_tree_info": {
+      "expiration_timeout": "1d",
+      "start_node": "msg1",
+      "i18n_data": {
+         "town_name": "town_name"
+      },
+      "nodes": {
+         "msg1": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.dialog_title)",
+               "portrait": "file(../images/cook.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg1.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg1.choice_000)": {
+                     "next_node": "msg2"
+                  },
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.msg_met_again.choice_000)": {
+                     "next_node": "msg_cancel"
+                  }
+               }
+            }
+         },
+         "msg2": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.dialog_title)",
+               "portrait": "file(../images/cook.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg2.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg2.choice_000)": {
+                     "next_node": "msg3"
+                  },
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.msg_denial.choice_000)": {
+                     "next_node": "msg_farewell"
+                  }
+               }
+            }
+         },
+         "msg3": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.dialog_title)",
+               "portrait": "file(../images/cook.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg3.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg3.choice_000)": {
+                     "next_node": "msg4"
+                  }
+               }
+            }
+         },
+         "msg4": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.dialog_title)",
+               "portrait": "file(../images/cook.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg4.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg4.choice_000)": {
+                     "next_node": "msg5"
+                  }
+               }
+            }
+         },
+         "msg5": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.dialog_title)",
+               "portrait": "file(../images/cook.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg5.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg5.choice_000)": {
+                     "next_node": "msg_farewell"
+                  }
+               }
+            }
+         },
+         "msg_cancel": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.dialog_title)",
+               "portrait": "file(../images/cook.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg_cancel.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.msg_cancel.choice_000)": {
+                     "next_node": "msg2"
+                  },
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.msg_cancel.choice_001)": {
+                     "next_node": "msg_farewell"
+                  }
+               }
+            }
+         },
+         "msg_farewell": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.common.dialog_nodes.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.dialog_title)",
+               "portrait": "file(../images/cook.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg_farewell.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.friendly_strangers.cook_arrival.dialog_tree_info.dialog_nodes.msg_farewell.choice_000)": {}
+               }
+            }
+         }
+      }
+   }
+}

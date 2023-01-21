@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.amberstone_tank_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.amberstone_tank_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.amberstone_tank_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/amberstone_tank/amberstone_tank.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth_ace:refined:cloth_bolt:amberstone",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:amberstone_tank"
+      }
+   ]
+}

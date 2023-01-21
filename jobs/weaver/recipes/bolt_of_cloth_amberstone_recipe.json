@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 12,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.bolt_of_cloth_amberstone_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.bolt_of_cloth_amberstone_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.bolt_of_cloth_amberstone_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/cloth_bolt_amberstone/cloth_bolt_amberstone.png",
+   "workshop": "stonehearth:weaver:loom",
+   "level_requirement": 3,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "fiber spinnable resource",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:cloth_bolt:amberstone"
+      }
+   ]
+}

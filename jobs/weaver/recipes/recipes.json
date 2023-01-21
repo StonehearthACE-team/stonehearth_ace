@@ -17,6 +17,7 @@
          }
       },
 		"crafting_materials": {
+         "ordinal": 20,
          "recipes": {
             "thatch_twine_bundle": {
                "recipe": "file(thatch_twine_bundle_recipe.json)"
@@ -26,13 +27,19 @@
             },
 				"fine_stuffing": {
                "recipe": "file(fine_stuffing_recipe.json)"
+            },
+				"bolt_of_cloth_amberstone": {
+               "recipe": "file(bolt_of_cloth_amberstone_recipe.json)"
             }
          }
       },
-	  "weapons": {
-	     "ordinal": 40,
+      "storage": {
+         "ordinal": 30
+      },
+	   "weapons": {
+	      "ordinal": 40,
          "name": "i18n(stonehearth_ace:jobs.weaver.recipes.weapons_name)",
-	     "recipes": {
+	      "recipes": {
 			"cloth_padded_vest": {
                "recipe": "/stonehearth/jobs/weaver/recipes/cloth_padded_vest_recipe.json"
             },
@@ -127,6 +134,12 @@
             },
 				"ornate_double_curtain_door": {
                "recipe": "file(ornate_double_curtain_door_recipe.json)"
+            },
+				"amberstone_bed_herbalist": {
+               "recipe": "file(amberstone_bed_herbalist_recipe.json)"
+            },
+				"amberstone_bed_pet": {
+               "recipe": "file(amberstone_bed_pet_recipe.json)"
             }
          }
       },

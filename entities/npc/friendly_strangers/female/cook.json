@@ -1,0 +1,26 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:mixins:base_friendly_stranger_npc:human",
+   "components": {
+      "render_info": {
+         "scale": 0.09
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cook.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment": {
+         "mainhand": "stonehearth_ace:tools:cook_spoon_copper"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.friendly_strangers.female.cook.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.friendly_strangers.female.cook.description)",
+         "icon": "file(cook.png)"
+      }
+   }
+}
