@@ -9,6 +9,8 @@
          "clickSound": "remove"
       },
       "ordinal": 1,
+      "menuHideSound": "stonehearth:sounds:ui:start_menu:wash_out",
+      "menuShowSound": "stonehearth:sounds:ui:start_menu:wash_in",
       "items": {
          "town_overview": {
             "ordinal": 1,
@@ -27,9 +29,7 @@
             "class": "dock",
             "icon": "/stonehearth/ui/game/start_menu/images/citizens.png",
             "hotkey_action": "citizen:manager",
-            "game_mode": "normal",
-            "menuHideSound": "stonehearth:sounds:ui:start_menu:jobs_close",
-            "menuShowSound": "stonehearth:sounds:ui:start_menu:jobs_open"
+            "game_mode": "normal"
          },
          "mercantile_view": {
             "ordinal": 3,
@@ -38,9 +38,7 @@
             "class": "button",
             "icon": "/stonehearth_ace/ui/game/start_menu/images/mercantile_view.png",
             "sticky": true,
-            "hotkey_action": "mercantile:overview",
-            "menuShowSound": "stonehearth:sounds:ui:carpenter_menu:open",
-            "menuHideSound": "stonehearth:sounds:ui:carpenter_menu:menu_closed"
+            "hotkey_action": "mercantile:overview"
          }
       }
    },

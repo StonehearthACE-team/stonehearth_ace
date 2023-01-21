@@ -28,4 +28,21 @@ App.StonehearthGameUiView.reopen({
 
       self._super();
    },
+
+   addCompleteViews: function() {
+      this._addViews(this.views.complete);
+
+      // Preconstruct these views as well
+      // Wait until a delay period after start menu load
+      // so that we can offset some of the load time until later
+      App.waitForStartMenuLoad().then(() => {
+         setTimeout(() => {
+            App.stonehearthClient.showSettings(true); // true for hide
+            App.stonehearthClient.showSaveMenu(true);
+            App.stonehearthClient.showCitizenManager(true);
+            App.stonehearthClient.showMercantileView(true);
+            App.stonehearthClient.showMultiplayerMenu(true);
+         }, 500);
+      });
+   },
 });

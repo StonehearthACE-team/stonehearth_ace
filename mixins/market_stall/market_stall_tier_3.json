@@ -10,7 +10,9 @@
       "stonehearth_ace:market_stall": {
          "tier": 3,
          "setup_effect": "stonehearth_ace:effects:mercantile:setup:tier_3",
+         "setup_delay": 1000,
          "teardown_effect": "stonehearth_ace:effects:mercantile:remove",
+         "teardown_delay": 1000,
          "stall_models": {
             "default": {
                "model_data": {

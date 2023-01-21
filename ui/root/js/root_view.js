@@ -44,14 +44,19 @@ App.RootView.reopen({
    },
 
    _applyStonehearthClientChanges: function() {
-      var mercantileView = null;
-      App.stonehearthClient.showMercantileView = function() {
-      // toggle the mercantile view
-         if (!mercantileView || mercantileView.isDestroyed) {
-            mercantileView = App.gameView.addView(App.StonehearthAceMerchantileView);
-         } else {
-            mercantileView.destroy();
-            mercantileView = null;
+      App.stonehearthClient.showMercantileView = function(hideOnCreate) {
+         // toggle the mercantile view
+         var self = this;
+         if (!self._mercantileView || self._mercantileView.isDestroyed || self._mercantileView.isDestroying) {
+            self._mercantileView = App.gameView.addView(App.StonehearthAceMerchantileView, { hideOnCreate: hideOnCreate });
+         } else if(!hideOnCreate) {
+            if (self._mercantileView.get('isVisible')) {
+               radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:menu_closed' });
+               self._mercantileView.hide();
+            } else {
+               radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:open' });
+               self._mercantileView.show();
+            }
          }
       };
 

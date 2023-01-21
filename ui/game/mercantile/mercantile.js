@@ -6,6 +6,8 @@ App.StonehearthAceMerchantileView = App.View.extend({
    templateName: 'mercantile',
    classNames: ['flex', 'fullScreen', 'exclusive'],
    closeOnEsc: true,
+   skipInvisibleUpdates: true,
+   hideOnCreate: false,
 
    uriProperty: 'model',
    components: {
@@ -60,6 +62,27 @@ App.StonehearthAceMerchantileView = App.View.extend({
       }
       this._merchantTraces = keptTraces;
       return tracesRemoved;
+   },
+
+   dismiss: function () {
+      this.hide();
+   },
+
+   hide: function () {
+      var self = this;
+
+      if (!self.$()) return;
+
+      var index = App.stonehearth.modalStack.indexOf(self)
+      if (index > -1) {
+         App.stonehearth.modalStack.splice(index, 1);
+      }
+      this._super();
+   },
+
+   show: function () {
+      this._super();
+      App.stonehearth.modalStack.push(this);
    },
 
    didInsertElement: function() {
@@ -151,6 +174,10 @@ App.StonehearthAceMerchantileView = App.View.extend({
 
       self._setupCategories();
       self._setupExclusives();
+
+      if (self.hideOnCreate) {
+         self.hide();
+      }
    },
 
    willDestroyElement: function() {
@@ -393,9 +420,9 @@ App.StonehearthAceMerchantileView = App.View.extend({
          });
 
          // removed merchants must be removed from the list
-         radiant.each(removedMerchants, function(id, merchant) {
+         radiant.each(removedMerchants, function(id, _) {
+            eMerchants.removeObject(merchants[id]);
             delete merchants[id];
-            eMerchants.removeObject(merchant);
          });
       }
    }.observes('model.active_merchants'),

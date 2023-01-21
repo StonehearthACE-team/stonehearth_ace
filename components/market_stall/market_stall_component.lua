@@ -14,7 +14,9 @@ function MarketStallComponent:activate()
    -- we want exclusive stalls to be totally separate from tier stalls; if no explicit tier, it's exclusive
    self._sv.tier = self._json.tier  -- or 1
    self._setup_effect = self._json.setup_effect
-   self._teardown_effect = self._json.setup_effect or self._setup_effect
+   self._teardown_effect = self._json.teardown_effect
+   self._setup_delay = self._json.setup_delay
+   self._teardown_delay = self._json.teardown_delay
    self._stall_models = self._json.stall_models or {}
 
    -- register with mercantile service when it's in the world, unregister when out
@@ -55,6 +57,14 @@ function MarketStallComponent:destroy()
       self._parent_trace:destroy()
       self._parent_trace = nil
    end
+   self:_destroy_setup_delay_timer()
+end
+
+function MarketStallComponent:_destroy_setup_delay_timer()
+   if self._setup_delay_timer then
+      self._setup_delay_timer:destroy()
+      self._setup_delay_timer = nil
+   end
 end
 
 function MarketStallComponent:get_merchant()
@@ -72,10 +82,29 @@ function MarketStallComponent:set_merchant(merchant)
       self._sv._merchant = merchant
       self._sv._is_setting_up = true
 
-      local effect = merchant and self._setup_effect or self._teardown_effect
+      local effect, delay
+      if not radiant.entities.get_world_grid_location(self._entity) then
+         -- if we're not in the world, skip all the effect stuff
+      elseif merchant then
+         effect = self._setup_effect
+         delay = self._setup_delay
+      else
+         effect = self._teardown_effect
+         delay = self._teardown_delay
+      end
+
       if effect then
          self._effect = radiant.effects.run_effect(self._entity, effect)
-         self._effect:set_finished_cb(function() self:_finish_setting_up() end)
+         if delay == true then
+            self._effect:set_finished_cb(function() self:_finish_setting_up() end)
+         elseif delay and delay > 0 then
+            local game_seconds = stonehearth.calendar:realtime_to_game_seconds(delay, true)
+            self._setup_delay_timer = stonehearth.calendar:set_timer('market stall setup delay', game_seconds, function()
+                  self:_finish_setting_up()
+               end)
+         else
+            self:_finish_setting_up()
+         end
          return true
       else
          self:_finish_setting_up()
@@ -86,6 +115,7 @@ function MarketStallComponent:set_merchant(merchant)
 end
 
 function MarketStallComponent:_finish_setting_up()
+   self:_destroy_setup_delay_timer()
    self._effect = nil
    self._sv._is_setting_up = nil
    self._sv._active = self._sv._merchant and self._sv._merchant:is_valid()
