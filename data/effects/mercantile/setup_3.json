@@ -1,0 +1,58 @@
+{
+   "type": "effect",
+   "tracks": {
+      "dust": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/mercantile/mercantile_poof.cubemitter.json",
+         "loop": false,
+         "start_time": 0,
+         "end_time": 3500,
+         "transforms": { "x": 0, "y": 0.5, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "upward_particles": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/mercantile/mercantile_particles.cubemitter.json",
+         "start_time": 0,
+         "end_time": 1000,
+         "transforms": { "x": 0, "y": 0.5, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/mercantile/mercantile_glow.cubemitter.json",
+         "start_time": 0,
+         "end_time": 800,
+         "transforms": { "x": 0, "y": 0.5, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "spiral": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/mercantile/mercantile_spiral.cubemitter.json",
+         "start_time": 0,
+         "end_time": 600,
+         "transforms": { "x": 0, "y": 0.5, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 0,
+         "min_distance": 70,
+         "falloff": 2,
+         "volume": 65,
+         "track": "stonehearth_ace:sounds:merchant_setup:tier_3"
+      }
+   }
+}

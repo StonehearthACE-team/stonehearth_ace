@@ -1,0 +1,72 @@
+{
+   "name": "fire",
+   "duration": 1000,
+   "material": "materials/cubemitter.material.json",
+   "loops": true,
+   "emission": {
+      "rate": {
+         "kind": "CONSTANT",
+         "values": [45]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [0]
+      },
+      "origin": {
+         "surface": "RECTANGLE",
+         "values": [6, 4, 0, 0]
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [500, 700]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [5, 10]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 1],
+               [0.7, 1],
+               [0.8, 0.4],
+               [1, 0]
+            ]
+         }
+      },
+      "velocity": {},
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.4, 1.2]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 1],
+               [0.75, 0.5],
+               [1, 0]
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [1, 0.87, 0, 0.03]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0.05],
+               [0.75, 0.05],
+               [1, 0]
+            ]
+         }
+      }
+   }
+}

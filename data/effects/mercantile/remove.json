@@ -1,0 +1,25 @@
+{
+   "type": "effect",
+   "tracks": {
+      "dust": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/mercantile/mercantile_removal_poof.cubemitter.json",
+         "loop": false,
+         "start_time": 0,
+         "end_time": 5000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 100,
+         "min_distance": 32,
+         "falloff": 4,
+         "volume": 60,
+         "track": "stonehearth:sounds:death_poof"
+      }
+   }
+}

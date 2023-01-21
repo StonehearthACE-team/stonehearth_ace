@@ -9,8 +9,8 @@
       },
       "stonehearth_ace:market_stall": {
          "tier": 2,
-         "setup_effect": "stonehearth:effects:poof_effect",
-         "teardown_effect": "stonehearth:effects:poof_effect:grey",
+         "setup_effect": "stonehearth_ace:effects:mercantile:setup:tier_2",
+         "teardown_effect": "stonehearth_ace:effects:mercantile:remove",
          "stall_models": {
             "default": {
                "model_data": {
