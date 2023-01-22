@@ -82,40 +82,6 @@
          "only_kingdom": {
             "rayyas_children:kingdoms:rayyas_children": true
          }
-      },
-      "exclusive_amberstone": {
-         "category": "exotic_goods",
-         "population_role": "merchant",
-         "use_shop_description": true,
-         "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_2_outfit",
-            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
-         ],
-         "min_city_tier": 1,
-         "required_stall": "stonehearth_ace:furniture:market_stall:amberstone",
-         "weight": 3,
-         "cooldown": 0,
-         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/amberstone_shop.json",
-         "shoptions": {
-            "wanted_items": []
-         }
-      },
-      "exclusive_silk_road": {
-         "category": "exotic_goods",
-         "population_role": "merchant",
-         "use_shop_description": true,
-         "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_3_outfit",
-            "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
-         ],
-         "min_city_tier": 1,
-         "required_stall": "stonehearth_ace:furniture:market_stall:silk_road",
-         "weight": 3,
-         "cooldown": 0,
-         "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/silk_road_shop.json",
-         "shoptions": {
-            "wanted_items": []
-         }
       }
    }
 }
