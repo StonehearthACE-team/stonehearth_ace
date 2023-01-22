@@ -6,8 +6,8 @@
          "cubemitter": "/stonehearth_ace/data/horde/particles/mercantile/mercantile_poof.cubemitter.json",
          "loop": false,
          "start_time": 0,
-         "end_time": 3500,
-         "transforms": { "x": 0, "y": 0.5, "z": 0,
+         "end_time": 3200,
+         "transforms": { "x": 0, "y": 1, "z": 0,
             "rx": 90,
             "ry": 0,
             "rz": 0
@@ -16,8 +16,8 @@
       "upward_particles": {
          "type": "cubemitter",
          "cubemitter": "/stonehearth_ace/data/horde/particles/mercantile/mercantile_particles.cubemitter.json",
-         "start_time": 0,
-         "end_time": 1000,
+         "start_time": 700,
+         "end_time": 1700,
          "transforms": { "x": 0, "y": 0.5, "z": 0,
             "rx": 90,
             "ry": 0,
@@ -27,8 +27,8 @@
       "glow": {
          "type": "cubemitter",
          "cubemitter": "/stonehearth_ace/data/horde/particles/mercantile/mercantile_glow.cubemitter.json",
-         "start_time": 0,
-         "end_time": 800,
+         "start_time": 700,
+         "end_time": 1500,
          "transforms": { "x": 0, "y": 0.5, "z": 0,
             "rx": 90,
             "ry": 0,
@@ -38,17 +38,27 @@
       "spiral": {
          "type": "cubemitter",
          "cubemitter": "/stonehearth_ace/data/horde/particles/mercantile/mercantile_spiral.cubemitter.json",
-         "start_time": 0,
-         "end_time": 600,
+         "start_time": 700,
+         "end_time": 1300,
          "transforms": { "x": 0, "y": 0.5, "z": 0,
             "rx": 90,
             "ry": 0,
             "rz": 0
          }
       },
+      "sound_level_up": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 700,
+         "min_distance": 60,
+         "falloff": 3.15,
+         "max_instances": 2,
+         "volume": 44,
+         "track": "stonehearth:sounds:level_up"
+      },
       "sound": {
          "type": "sound_effect",
-         "start_time": 0,
+         "start_time": 2420,
          "min_distance": 70,
          "falloff": 2,
          "volume": 65,

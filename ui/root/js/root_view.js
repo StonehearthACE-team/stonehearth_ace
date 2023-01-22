@@ -54,7 +54,7 @@ App.RootView.reopen({
                radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:menu_closed' });
                self._mercantileView.hide();
             } else {
-               radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:open' });
+               radiant.call('radiant:play_sound', { 'track': 'stonehearth_ace:sounds:ui:mercantile_menu:open' });
                self._mercantileView.show();
             }
          }

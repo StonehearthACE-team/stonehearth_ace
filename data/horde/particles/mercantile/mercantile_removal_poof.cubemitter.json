@@ -76,13 +76,13 @@
       "color": {
          "start": {
             "kind": "CONSTANT",
-            "values": [0.75, 0.8, 0.82, 0.2]
+            "values": [0.75, 0.8, 0.82, 0.1]
          },
          "over_lifetime_a": {
             "kind": "CURVE",
             "values": [
-               [0, 0.8],
-               [0.8, 0.2],
+               [0, 0.5],
+               [0.8, 0.07],
                [1, 0]
             ]
          }

@@ -1,0 +1,13 @@
+{
+   "type": "command",
+   "name": "quest_storage_toggle_on",
+   "display_name": "i18n(stonehearth_ace:data.commands.quest_storage_toggle_on.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.quest_storage_toggle_on.description)",
+   "icon": "file(quest_storage_toggle_on.png)",
+   "ordinal": 1,
+   "action": "call",
+   "function": "stonehearth_ace:toggle_enabled_command",
+   "args": [
+      true
+   ]
+}
