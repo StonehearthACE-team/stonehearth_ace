@@ -586,14 +586,17 @@ App.StonehearthAceMerchantileView = App.View.extend({
          var copiedData = radiant.shallow_copy(data);
          copiedData.icon = copiedData.icon || CATEGORY_PLACEHOLDER_ICON;
          copiedData.display_name = i18n.t(copiedData.display_name);
-         copiedData.description = i18n.t(copiedData.description);
-         copiedData.selling = copiedData.selling && i18n.t(copiedData.selling);
-         copiedData.buying = copiedData.buying && i18n.t(copiedData.buying);
-         copiedData.encourageId = copiedData.category + '|encourage';
-         copiedData.enableId = copiedData.category + '|enable';
-         copiedData.disableId = copiedData.category + '|disable';
-         categories.push(copiedData);
          categoryLookup[category] = copiedData;
+
+         if (!data.hidden) {
+            copiedData.description = i18n.t(copiedData.description);
+            copiedData.selling = copiedData.selling && i18n.t(copiedData.selling);
+            copiedData.buying = copiedData.buying && i18n.t(copiedData.buying);
+            copiedData.encourageId = copiedData.category + '|encourage';
+            copiedData.enableId = copiedData.category + '|enable';
+            copiedData.disableId = copiedData.category + '|disable';
+            categories.push(copiedData);
+         }
       });
 
       categories.sort(function(a, b) {
