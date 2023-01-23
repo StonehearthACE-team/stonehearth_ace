@@ -583,18 +583,28 @@ function HerbalistPlanterComponent:tend_to_crop(tender, amount)
    if self._sv.planted_crop then
       local tend_amount = amount
       if not tend_amount then
-         local job_component = tender and tender:get_component('stonehearth:job')
-         local job_controller = job_component and job_component:get_curr_job_controller()
-         if job_controller and job_controller.get_planter_tend_amount then
-            tend_amount = job_controller:get_planter_tend_amount()
+         if tender then
+            local job_component = tender:get_component('stonehearth:job')
+            local job_controller = job_component and job_component:get_curr_job_controller()
+            if job_controller and job_controller.get_planter_tend_amount then
+               tend_amount = job_controller:get_planter_tend_amount()
+            else
+               tend_amount = 0
+            end
          else
             tend_amount = 0
          end
       end
+
       self:_modify_tend_quality(tend_amount * (self._planted_crop_stats.tending_multiplier or 1))
       self._sv._last_tended = stonehearth.calendar:get_elapsed_time()
       self:_set_recently_tended_timer()
-      self:_set_quality_table(tender)
+      
+      if tender then
+         -- only set quality based on tender if there was an actual tender
+         -- i.e., not auto-planted
+         self:_set_quality_table(tender)
+      end
       self:_reconsider()
    end
 end
@@ -643,7 +653,7 @@ function HerbalistPlanterComponent:_get_quality()
 end
 
 function HerbalistPlanterComponent:_set_quality_table(tender)
-   self._sv._quality_table = tender and item_quality_lib.get_quality_table(tender, self._planted_crop_stats.level or 1)
+   self._sv._quality_table = item_quality_lib.get_quality_table(tender, self._planted_crop_stats.level or 1)
    local quality_buff = self._json.quality_buffs and self._json.quality_buffs[math.min(math.floor(self:_get_tend_quality()), #self._json.quality_buffs)]
    if quality_buff then
       radiant.entities.add_buff(self._entity, quality_buff, {
