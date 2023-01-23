@@ -1,22 +1,26 @@
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local selector_util = require 'stonehearth.services.client.selection.selector_util'
+local IntegerGaussianRandom = require 'stonehearth.lib.math.integer_gaussian_random'
 local rng = _radiant.math.get_default_rng()
+local igRng = IntegerGaussianRandom(rng)
+
+local log = radiant.log.create_logger('meteor_shower_renderer')
 
 local MeteorShowerWeatherRenderer = class()
 
-local SHOOTING_STAR_INTERVAL = {1, 15}  -- Random in range in game minutes
+local SHOOTING_STAR_INTERVAL = {1, 2}  -- Random in range in game minutes
 local SHOOTING_STAR_EFFECTS = {
-   { uri = 'stonehearth_ace:effects:shooting_star', size = Point3(6, 5, 6) }
+   { uri = 'stonehearth_ace:effects:shooting_star', size = Point3(6, 5, 6), duration = 200 }
 }
-local MAX_POINTS_TO_TRY_PER_SPAWN = 3
-local SCREEN_MARGIN = 100
+local WORLD_BOUNDS_DISTANCE = 100
 
 function MeteorShowerWeatherRenderer:initialize()
-   self._shooting_star_anchor = nil
    self._clock_trace = nil
    self._time_constants = radiant.resources.load_json('/stonehearth/data/calendar/calendar_constants.json')
-   self._next_spawn_time = 0         
+   self._next_spawn_time = 0    
+   self._anchors = {}
+   self._pending_render_entities = {}
 end
 
 function MeteorShowerWeatherRenderer:destroy()
@@ -24,12 +28,27 @@ function MeteorShowerWeatherRenderer:destroy()
       self._clock_trace:destroy()
       self._clock_trace = nil
    end
+   if self._on_re_creation_listener then
+      self._on_re_creation_listener:destroy()
+      self._on_re_creation_listener = nil
+   end
+   self:_destroy_anchors(nil, true)
+end
+
+function MeteorShowerWeatherRenderer:_destroy_anchors(now, destroy_all)
+   while true do
+      local anchor = self._anchors[1]
+      if not anchor or (not destroy_all and anchor.expiration > now) then
+         break
+      end
+      table.remove(self._anchors, 1)
+      self._pending_render_entities[anchor.entity:get_id()] = nil
+      log:debug('destroying effect at %s', radiant.entities.get_world_grid_location(anchor.entity))
+      radiant.entities.destroy_entity(anchor.entity)
+   end
 end
 
 function MeteorShowerWeatherRenderer:activate()
-   self._shooting_star_anchor = radiant.entities.create_entity('stonehearth:object:transient', { debug_text = 'shooting_star effect anchor' })
-   radiant.terrain.place_entity_at_exact_location(self._shooting_star_anchor, Point3(0, 0, 0))
-   
    _radiant.call('stonehearth:get_clock_object'):done(function (o)
          local clock_object = o.clock_object
          self._clock_trace = clock_object:trace_data('drawing sky')
@@ -41,77 +60,74 @@ function MeteorShowerWeatherRenderer:activate()
                end)
             :push_object_state()
       end)
+
+   self._on_re_creation_listener = radiant.events.listen(radiant, 'radiant:client:render_entities_created', self, self._on_render_entities_created)
 end
 
 function MeteorShowerWeatherRenderer:_update_time(now)
    if now >= self._next_spawn_time then
-      if self:_try_spawn_shooting_star() then
-         self._next_spawn_time = now + rng:get_real(unpack(SHOOTING_STAR_INTERVAL)) * self._time_constants.seconds_per_minute
-      end
+      self:_destroy_anchors(now)
+      self:_try_spawn_shooting_star(now)
+      self._next_spawn_time = now + rng:get_real(unpack(SHOOTING_STAR_INTERVAL)) * self._time_constants.seconds_per_minute
    end
 end
 
-function MeteorShowerWeatherRenderer:_try_spawn_shooting_star()
+function MeteorShowerWeatherRenderer:_try_spawn_shooting_star(now)
    local effect = SHOOTING_STAR_EFFECTS[rng:get_int(1, #SHOOTING_STAR_EFFECTS)]
+   -- instead of spawning over land, we want these effects to happen off in the distance, outside of the world
+   local bounds = radiant.terrain.get_terrain_component():get_bounds()
 
-   local location
-   for _ = 1, MAX_POINTS_TO_TRY_PER_SPAWN do
-      -- Select a random spot in the player's view.
-      local x = rng:get_int(SCREEN_MARGIN, 1920 - SCREEN_MARGIN)
-      local y = rng:get_int(SCREEN_MARGIN, 1080 - SCREEN_MARGIN)
-      location = selector_util.get_selected_brick(x, y, function(result)
-            if result.normal.y < 0.95 then
-               return stonehearth.selection.FILTER_IGNORE  -- Only stop on up-facing voxels.
-            else
-               if result.entity ~= radiant._root_entity then
-                  return stonehearth.selection.FILTER_IGNORE  -- Only look at terrain.
-               end
+   -- determine side
+   local side = rng:get_int(1, 4)
+   local x, y, z
+   if side == 1 then
+      x = rng:get_int(bounds.min.x, bounds.max.x)
+      z = bounds.min.z - WORLD_BOUNDS_DISTANCE
+   elseif side == 2 then
+      x = bounds.min.x - WORLD_BOUNDS_DISTANCE
+      z = rng:get_int(bounds.min.z, bounds.max.z)
+   elseif side == 3 then
+      x = rng:get_int(bounds.min.x, bounds.max.x)
+      z = bounds.max.z + WORLD_BOUNDS_DISTANCE
+   else
+      x = bounds.max.x + WORLD_BOUNDS_DISTANCE
+      z = rng:get_int(bounds.min.z, bounds.max.z)
+   end
+   y = igRng:get_int(bounds.min.y, 150, (150 - bounds.min.y) / 5)
 
-               return true
-            end
-         end)
+   -- we're outside the world, so assume the location doesn't intersect with terrain or anything
+   local location = Point3(x, y, z)
+   self:_spawn_shooting_star_at(location, effect, now)
+end
 
-      -- Check that we have no obstacles.
-      if location then
-         -- TODO: Check each effect, rather than choosing one early.
-         local search_cube = Cube3(location + Point3(0, 50, 0), location + effect.size)
-         for _, entity in pairs(radiant.terrain.get_entities_in_cube(search_cube)) do
-            if (entity == radiant._root_entity or
-                entity:get_component('stonehearth:construction_data') or
-                entity:get_component('stonehearth:build2:structure')) then  -- terrain or buildings
-               location = nil
-               break
-            end
+function MeteorShowerWeatherRenderer:_spawn_shooting_star_at(location, effect, now)
+   local anchor = radiant.entities.create_entity('stonehearth:object:transient', { debug_text = 'shooting_star effect anchor' })
+   local anchor_data = {
+      entity = anchor,
+      expiration = now + effect.duration,
+      effect = effect.uri,
+   }
+   table.insert(self._anchors, anchor_data)
+   self._pending_render_entities[anchor:get_id()] = anchor_data
+
+   radiant.terrain.place_entity_at_exact_location(anchor, location)
+   self:_on_render_entities_created()
+end
+
+function MeteorShowerWeatherRenderer:_on_render_entities_created()
+   local progress = true
+   while not radiant.empty(self._pending_render_entities) and progress do
+      progress = false
+      for id, anchor_data in pairs(self._pending_render_entities) do
+         local re = _radiant.client.get_render_entity(anchor_data.entity)
+         if re then
+            self._pending_render_entities[id] = nil
+            log:debug('starting meteor effect at %s (expiration %s)', radiant.entities.get_world_grid_location(anchor_data.entity), anchor_data.expiration)
+            re:start_client_only_effect(anchor_data.effect)
+            progress = true
          end
       end
-
-      if location then
-         break  -- Found a good one!
-      end
    end
-
-   if location then
-      return self:_spawn_shooting_star_at(location, effect.uri)
-   else
-      return false
-   end
-end
-
-function MeteorShowerWeatherRenderer:_spawn_shooting_star_at(location, effect)
-   if not self._shooting_star_anchor then
-      return false -- Too early
-   end
-   
-   local render_entity = _radiant.client.get_render_entity(self._shooting_star_anchor)
-   if not render_entity then
-      return false  -- Too early
-   end
-
-   radiant.entities.move_to(self._shooting_star_anchor, location)
-
-   render_entity:start_client_only_effect(effect)
-   
-   return true
 end
 
 return MeteorShowerWeatherRenderer

@@ -13,28 +13,32 @@ sampler2D backgroundMap = sampler_state
   Filter = Pixely;
 };
 
-float4 playerColor;
-
 
 [[VS]]
 #version 410
+uniform vec2 viewPortSize;
+uniform mat4 viewProjMat;
 uniform mat4 worldMat;
-uniform mat4 viewMat;
-uniform mat4 projMat;
+uniform sampler2D albedoMap;
 
-in vec3 vertPos;
+in vec4 vertPos;
 in vec2 texCoords0;
 in vec4 color;
 
-out vec2 texCoords;
 out vec4 oColor;
+out vec2 texCoords;
 
 void main() {
-	texCoords = vec2(texCoords0.x, texCoords0.y);
-	oColor = color;
-	gl_Position = projMat * ((viewMat * worldMat * vec4(0, 0, 0, 1)) + vec4(vertPos.x, vertPos.y, 0, 0));
+  texCoords = texCoords0;
+  oColor = color;
 
-	//gl_Position = projMat * ((viewMat * worldMat * vec4(0, vertPos.y, 0, 1)) + vec4(vertPos.x, 0, 0, 0));
+  vec4 origin = viewProjMat * worldMat * vec4(0.0, 0.0, 0.0, 1.0);
+  vec2 offset = vertPos.zw;
+  ivec2 texSize = textureSize(albedoMap, 0);
+  vec2 scale = origin.w * vec2(0.03 * float(texSize.x) / viewPortSize.x, 0.03 * float(texSize.y) / viewPortSize.y);
+  vec4 screenPos = vec4(vertPos.xy + offset, 0, 0);
+
+  gl_Position = origin + screenPos * scale.xyxy;
 }
 
 
@@ -42,15 +46,12 @@ void main() {
 #version 410
 out vec4 fragColor;
 uniform sampler2D albedoMap;
-uniform sampler2D backgroundMap;
-uniform vec4 playerColor;
 
-in vec2 texCoords;
 in vec4 oColor;
+in vec2 texCoords;
 
-// just ignore the background! only use the albedo map
 void main() {
-   vec4 foreground = texture(albedoMap, texCoords);
-   fragColor = foreground * oColor;
-   gl_FragDepth = fragColor.a > 0.5 ? gl_FragCoord.z : 1.0;
+  vec4 foreground = texture2D(albedoMap, texCoords);
+  fragColor = foreground * oColor;
+  //gl_FragDepth = fragColor.a > 0.5 ? gl_FragCoord.z : 1.0;
 }

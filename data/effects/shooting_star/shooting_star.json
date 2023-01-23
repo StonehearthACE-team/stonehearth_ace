@@ -5,7 +5,17 @@
       "shooting_star": {
          "type": "activity_overlay_effect",
          "material": {
-            "name": "/stonehearth/data/horde/materials/shooting_star.material.json"
+            "name": "/stonehearth_ace/data/horde/materials/shooting_star/shooting_star.material.json",
+            "samplers": [
+               {
+                  "name" : "albedoMap",
+                  "map" : "/stonehearth_ace/data/horde/materials/shooting_star/shooting_star_.png",
+                  "animation_frames": [],
+                  "numAnimationFrames" : 31,
+                  "frameRate" : 50,
+                  "numLoops": 1
+               }
+            ]
          },
          "yOffset": 25
       }

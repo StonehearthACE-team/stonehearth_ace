@@ -1,22 +1,25 @@
 {
-	"shaders" : {
-		"TRANSLUCENT" : {
-			"state" : "states/voxel/blend_withdepth.state",
-			"shader" : "/stonehearth_ace/data/horde/shaders/shooting_star.shader"
-		}
-	},
-	"samplers" : [
-		{
-			"name" : "albedoMap",
-			"map" : "/stonehearth_ace/data/horde/materials/shooting_star/shooting_star_.png",
-			"animation_frames": [],
-			"numAnimationFrames" : 29,
-			"frameRate" : 50,
+   "shaders" : {
+      "TRANSLUCENT" : {
+         "state" : "states/voxel/blend.state",
+         "shader" : "/stonehearth_ace/data/horde/shaders/shooting_star.shader",
+         "inputs" : [
+               {
+                  "name" : "playerColor",
+                  "default": [1.0, 1.0, 1.0, 1.0],
+                  "bind_to_material_input": "playerColor"
+               }
+         ]
+      }
+   },
+   "samplers" : [
+      {
+         "name" : "albedoMap",
+         "map" : "/stonehearth_ace/data/horde/materials/shooting_star/shooting_star_.png",
+         "animation_frames": [],
+         "numAnimationFrames" : 31,
+         "frameRate" : 50,
          "numLoops": 1
-		},
-        {
-            "name": "backgroundMap",
-            "map": "/stonehearth_ace/data/horde/materials/shooting_star/background.png"
-        }
+      }
 	]
 }

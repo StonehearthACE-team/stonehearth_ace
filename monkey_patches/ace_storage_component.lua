@@ -212,6 +212,13 @@ function AceStorageComponent:allow_default()
 end
 
 function AceStorageComponent:allow_item_removal()
+   -- inventory sets up its item trackers in pre-activate
+   -- so either we have to override the storage component entirely and set this up in initialize
+   -- or we can do a special check here
+   if self._allow_item_removal == nil then
+      local json = radiant.entities.get_json(self) or {}
+      self._allow_item_removal = json.allow_item_removal ~= false
+   end
    return self._allow_item_removal
 end
 

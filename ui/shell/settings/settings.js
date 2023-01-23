@@ -56,6 +56,101 @@ $(top).on('stonehearthReady', function(cc) {
             });
       },
 
+      _updateGfxTabPage: function(o) {
+         var self = this;
+   
+         self.set('context.shadows_forbidden', !o.enable_shadows.allowed);
+         if (!o.enable_shadows.allowed) {
+            o.enable_shadows.value = false;
+         }
+         self.set('context.enable_shadows', o.enable_shadows.value);
+         self.set('context.shadow_quality', o.shadow_quality.value)
+         self.set('context.max_lights', o.max_lights.value)
+         self.set('context.max_shadows', o.max_shadows.value)
+         self.set('context.vsync_enabled', o.enable_vsync.value);
+         self.set('context.fullscreen_enabled', o.fullscreen.value);
+   
+         self.set('context.enable_antialiasing', o.msaa_samples.value != 0);
+         self.set('context.draw_distance', o.draw_distance.value);
+   
+         self.set('context.enable_ssao', o.enable_ssao.value);
+         self.set('context.enable_dynamic_icons', o.enable_dynamic_icons.value);
+   
+         self.set('context.high_quality_forbidden', !o.use_high_quality.allowed);
+         if (!o.use_high_quality.allowed) {
+            o.use_high_quality.value = false;
+         }
+         self.set('context.disable_high_quality', !o.use_high_quality.value);
+   
+         self.set('context.recommended_graphics_preset', o.recommended_graphics_preset.value);
+         self.set('graphicsPreset', o.graphics_preset.value);
+   
+         self._updateGraphicsRadioButtons(o.graphics_preset.value);
+   
+         $('#shadowResSlider').slider({
+            value: self.get('context.shadow_quality'),
+            min: 0,
+            max: 5,
+            step: 1,
+            disabled: self.get('context.shadows_forbidden'),
+            slide: function( event, ui ) {
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:action_hover' });
+               $('#shadowResDescription').html(i18n.t('stonehearth:ui.shell.settings.shadow_' + ui.value));
+               // Note: this can't be in a slider.change callback because we change the sliders when
+               // changing a graphics preset, which would cause the custom radio button to always get checked
+               if (ui.value != self.$('shadowResSlider').slider('value')) {
+                  self._changeGraphicsPreset(self.graphics_presets.CUSTOM);
+               }
+            }
+         });
+         $('#shadowResDescription').html(i18n.t('stonehearth:ui.shell.settings.shadow_' + self.get('context.shadow_quality')));
+   
+         $('#maxLightsSlider').slider({
+            value: self.get('context.max_lights'),
+            min: 1,
+            max: 250,
+            step: 1,
+            slide: function( event, ui ) {
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:action_hover' });
+               $('#maxLightsDescription').html(ui.value);
+               if (ui.value != self.$('maxLightsSlider').slider('value')) {
+                  self._changeGraphicsPreset(self.graphics_presets.CUSTOM);
+               }
+            }
+         });
+         $('#maxLightsDescription').html(self.get('context.max_lights'));
+   
+         $('#maxShadowsSlider').slider({
+            value: self.get('context.max_shadows'),
+            min: 0,
+            max: 16,
+            step: 1,
+            slide: function( event, ui ) {
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:action_hover' });
+               $('#maxShadowsDescription').html(ui.value);
+               if (ui.value != self.$('maxShadowsSlider').slider('value')) {
+                  self._changeGraphicsPreset(self.graphics_presets.CUSTOM);
+               }
+            }
+         });
+         $('#maxShadowsDescription').html(self.get('context.max_shadows'));
+   
+         $('#drawDistSlider').slider({
+            value: self.get('context.draw_distance'),
+            min: 500,
+            max: 2000,
+            step: 20,
+            slide: function( event, ui ) {
+               radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:action_hover' });
+               $('#drawDistDescription').html(ui.value);
+               if (ui.value != self.$('drawDistSlider').slider('value')) {
+                  self._changeGraphicsPreset(self.graphics_presets.CUSTOM);
+               }
+            }
+         });
+         $('#drawDistDescription').html(self.get('context.draw_distance'));
+      },
+
       _updateModifiedGameplayTabPage: function() {
          var self = this;
          

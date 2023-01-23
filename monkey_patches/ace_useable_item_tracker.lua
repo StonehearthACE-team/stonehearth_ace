@@ -15,9 +15,9 @@ function AceUsableItemTracker:create_key_for_entity(entity, storage)
    local in_public_storage
    local on_ground = self:_is_item_on_ground(entity)
 
+   -- if this item is in a fuel consumer, assume it's unavailable
    if storage and not storage:get_component('stonehearth_ace:consumer') then
       local storage_component = storage:get_component('stonehearth:storage')
-      -- if this item is in a fuel consumer, assume it's unavailable
       if storage_component and storage_component:is_public() and storage_component:allow_item_removal() then
          in_public_storage = true
       end
