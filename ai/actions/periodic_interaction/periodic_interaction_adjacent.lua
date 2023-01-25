@@ -53,15 +53,18 @@ function InteractWithItemAdjacent:run(ai, entity, args)
       local effect = data.interaction_effect
       local times = data.num_interactions
       local points = data.interaction_points
+      local interaction_points = {}
       
       local interactions = {}
       local selector = WeightedSet(rng)
-      for i, point in ipairs(points) do
-         selector:add(i, point.weight or 1)
+      local total_interactions = 0
+      for point, point_data in pairs(points) do
+         selector:add(point, point_data.weight or 1)
+         total_interactions = total_interactions + 1
       end
 
       for i = 1, times do
-         if #points > 1 then
+         if total_interactions > 1 then
             local prev = interactions[i - 1]
             local cur
             repeat
@@ -79,16 +82,25 @@ function InteractWithItemAdjacent:run(ai, entity, args)
 
       local location = radiant.entities.get_world_grid_location(item)
 
-      for _, i in ipairs(interactions) do
-         local interaction_data = points[i]
-         ai:set_status_text_key(interaction_data.ai_status_key or pi_comp:get_current_mode_ai_status())
+      for _, interaction in ipairs(interactions) do
+         local interaction_data = interaction_points[interaction]
+         if not interaction_data then
+            interaction_data = radiant.shallow_copy(pi_comp:get_interaction_point(interaction) or {})
+            radiant.util.merge_into_table(interaction_data, points[interaction])
+            interaction_points[interaction] = interaction_data
+         end
+         ai:set_status_text_key(interaction_data.ai_status_key or data.ai_status_key or pi_comp:get_current_mode_ai_status())
          local pt = interaction_data.point and (radiant.util.to_point3(interaction_data.point) or Point3(unpack(interaction_data.point))) or Point3.zero
          local face_pt = interaction_data.face_point and (radiant.util.to_point3(interaction_data.face_point) or Point3(unpack(interaction_data.face_point)))
          ai:execute('stonehearth:go_toward_location', { destination = location + pt })
          if face_pt then
             radiant.entities.turn_to_face(entity, location + face_pt)
          end
-         ai:execute('stonehearth:run_effect', { effect = interaction_data.worker_effect or 'fiddle' })
+         local worker_effect = interaction_data.worker_effect or data.worker_effect
+         if type(worker_effect) == 'table' then
+            worker_effect = worker_effect[rng:get_int(1, #worker_effect)]
+         end
+         ai:execute('stonehearth:run_effect', { effect = worker_effect or 'fiddle' })
       end
       
       self._completed_work = true

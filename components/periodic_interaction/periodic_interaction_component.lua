@@ -16,6 +16,44 @@
       "transform_after_using_key": "disable_after_use",
       "transform_after_num_uses": 5,
       "allow_mode_selection": true,
+      "interaction_points": {
+         "point1": {
+            "point": [
+               -1,
+               0,
+               0.5
+            ],
+            "face_point": [
+               1,
+               0,
+               0
+            ]
+         },
+         "point2": {
+            "point": [
+               0.5,
+               0,
+               -1.5
+            ],
+            "face_point": [
+               0,
+               0,
+               1
+            ]
+         },
+         "point3": {
+            "point": [
+               -1.5,
+               0,
+               -1
+            ],
+            "face_point": [
+               -1,
+               0,
+               0
+            ]
+         },
+      },
       "modes": {
          "find_native_seed": {
             "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.default",
@@ -45,24 +83,15 @@
                      "cooldown": "4h",
                      "model": "stage_1",
                      "num_interactions": 3,
-                     "interaction_points": [
-                        {
-                           "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.specific_1",
-                           "worker_effect": "fiddle",
+                     "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.specific_1",
+                     "worker_effect": "fiddle",
+                     "interaction_points": {
+                        "point1": {
                            "weight": 3,
-                           "point": [2, 0, 3]
                         },
-                        {
-                           "worker_effect": "fiddle",
-                           "weight": 1,
-                           "point": [1, 0, 1]
-                        },
-                        {
-                           "worker_effect": "fiddle",
-                           "weight": 1,
-                           "point": [3, 0, 2]
-                        }
-                     ],
+                        "point2": {},
+                        "point3": {}
+                     },
                      "rewards": [
                         {
                            "type": "experience",
@@ -85,23 +114,13 @@
                      "cooldown": "4h",
                      "model": "stage_2",
                      "num_interactions": 3,
-                     "interaction_points": [
-                        {
-                           "worker_effect": "fiddle",
-                           "weight": 1,
-                           "point": [2, 0, 3]
+                     "interaction_points": {
+                        "point1": {},
+                        "point2": {
+                           "weight": 3
                         },
-                        {
-                           "worker_effect": "fiddle",
-                           "weight": 3,
-                           "point": [1, 0, 1]
-                        },
-                        {
-                           "worker_effect": "fiddle",
-                           "weight": 1,
-                           "point": [3, 0, 2]
-                        }
-                     ],
+                        "point3": {}
+                     },
                      "rewards": [
                         {
                            "type": "experience",
@@ -124,23 +143,13 @@
                      "interaction_effect": "stonehearth_ace:effects:something_happens",
                      "model": "stage_3",
                      "num_interactions": 3,
-                     "interaction_points": [
-                        {
-                           "worker_effect": "fiddle",
-                           "weight": 1,
-                           "point": [2, 0, 3]
-                        },
-                        {
-                           "worker_effect": "fiddle",
-                           "weight": 1,
-                           "point": [1, 0, 1]
-                        },
-                        {
-                           "worker_effect": "fiddle",
-                           "weight": 3,
-                           "point": [3, 0, 2]
+                     "interaction_points": {
+                        "point1": {},
+                        "point2": {},
+                        "point3": {
+                           "weight": 3
                         }
-                     ],
+                     },
                      "rewards": [
                         {
                            "type": "experience",
@@ -579,6 +588,10 @@ end
 
 function PeriodicInteractionComponent:get_current_interaction()
    return self._current_sequence_data and self._current_sequence_data[self._sv.interaction_stage]
+end
+
+function PeriodicInteractionComponent:get_interaction_point(point_id)
+   return self._json.interaction_points and self._json.interaction_points[point_id]
 end
 
 function PeriodicInteractionComponent:set_current_interaction_completed(user)

@@ -1,6 +1,321 @@
 {
    "components": {
       "stonehearth_ace:periodic_interaction": {
+         "interaction_points": {
+            "point1": {
+               "point": [
+                  -1,
+                  0,
+                  0.5
+               ],
+               "face_point": [
+                  1,
+                  0,
+                  0
+               ]
+            },
+            "point2": {
+               "point": [
+                  0.5,
+                  0,
+                  -1.5
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  1
+               ]
+            },
+            "point3": {
+               "point": [
+                  -1.5,
+                  0,
+                  -1
+               ],
+               "face_point": [
+                  -1,
+                  0,
+                  0
+               ]
+            },
+            "point4": {
+               "point": [
+                  1.5,
+                  0,
+                  1
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  1
+               ]
+            },
+            "point5": {
+               "point": [
+                  0.5,
+                  0,
+                  -1
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  1
+               ]
+            },
+            "point6": {
+               "point": [
+                  -1.5,
+                  0,
+                  0.5
+               ],
+               "face_point": [
+                  1,
+                  0,
+                  -1
+               ]
+            },
+            "point7": {
+               "point": [
+                  -0.5,
+                  0,
+                  0.5
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  -1
+               ]
+            },
+            "point8": {
+               "point": [
+                  -1.5,
+                  0,
+                  1
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  1
+               ]
+            },
+            "point9": {
+               "point": [
+                  -0.5,
+                  0,
+                  -1
+               ],
+               "face_point": [
+                  1.5,
+                  0,
+                  0
+               ]
+            },
+            "point10": {
+               "point": [
+                  1,
+                  0,
+                  -0.5
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  1
+               ]
+            },
+            "point11": {
+               "point": [
+                  2.5,
+                  0,
+                  0.5
+               ],
+               "face_point": [
+                  0.5,
+                  0,
+                  0.5
+               ]
+            },
+            "point12": 
+            {
+               "point": [
+                  -3,
+                  0,
+                  1
+               ],
+               "face_point": [
+                  -0.5,
+                  0,
+                  0
+               ]
+            },
+            "point13": {
+               "point": [
+                  0.5,
+                  0,
+                  -3
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  0
+               ]
+            },
+            "point14": {
+               "point": [
+                  -1.5,
+                  0,
+                  2.5
+               ],
+               "face_point": [
+                  0.5,
+                  0,
+                  0
+               ]
+            },
+            "point15": {
+               "point": [
+                  2.5,
+                  0,
+                  -1
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  0
+               ]
+            },
+            "point16": {
+               "point": [
+                  0.5,
+                  0,
+                  2.5
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  -0.5
+               ]
+            },
+            "point17": {
+               "point": [
+                  -0.5,
+                  0,
+                  2.5
+               ],
+               "face_point": [
+                  0.5,
+                  0,
+                  0
+               ]
+            },
+            "point18": {
+               "point": [
+                  2.5,
+                  0,
+                  0
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  0.5
+               ]
+            },
+            "point19": {
+               "point": [
+                  -1,
+                  0,
+                  2.5
+               ],
+               "face_point": [
+                  1,
+                  0,
+                  0
+               ]
+            },
+            "point20": {
+               "point": [
+                  2.5,
+                  0,
+                  -1.5
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  1
+               ]
+            },
+            "point21": {
+               "point": [
+                  -1.5,
+                  0,
+                  -3
+               ],
+               "face_point": [
+                  -1,
+                  0,
+                  0
+               ]
+            },
+            "point22": {
+               "point": [
+                  2.5,
+                  0,
+                  1
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  1
+               ]
+            },
+            "point23": {
+               "point": [
+                  -0.5,
+                  0,
+                  -3
+               ],
+               "face_point": [
+                  1.5,
+                  0,
+                  0
+               ]
+            },
+            "point24": {
+               "point": [
+                  1,
+                  0,
+                  2.5
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  1
+               ]
+            },
+            "point25": {
+               "point": [
+                  2.5,
+                  0,
+                  -0.5
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  0.5
+               ]
+            },
+            "point26": {
+               "point": [
+                  -3,
+                  0,
+                  0.5
+               ],
+               "face_point": [
+                  0,
+                  0,
+                  0.5
+               ]
+            }
+         },
          "modes": {
             "find_native_seed_herb": {
                "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.herb",
@@ -28,68 +343,16 @@
                         "cooldown": "4h",
                         "model": "default",
                         "num_interactions": 8,
-                        "interaction_points": [
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
-                              "worker_effect": "hoe",
-                              "weight": 2,
-                              "point": [
-                                 -1,
-                                 0,
-                                 0.5
-                              ],
-                              "face_point": [
-                                 1,
-                                 0,
-                                 0
-                              ]
+                        "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
+                        "worker_effect": "hoe",
+                        "interaction_points": {
+                           "point1": {
+                              "weight": 2
                            },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
-                              "worker_effect": "hoe",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -1.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
-                              "worker_effect": "hoe",
-                              "weight": 1,
-                              "point": [
-                                 -1.5,
-                                 0,
-                                 -1
-                              ],
-                              "face_point": [
-                                 -1,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
-                              "worker_effect": "hoe",
-                              "weight": 1,
-                              "point": [
-                                 1.5,
-                                 0,
-                                 1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           }
-                        ],
+                           "point2": {},
+                           "point3": {},
+                           "point4": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -102,50 +365,28 @@
                         "cooldown": "4h",
                         "model": "stage_01",
                         "num_interactions": 6,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -1,
-                                 0,
-                                 0.5
-                              ],
+                        "interaction_points": {
+                           "point1": {
                               "face_point": [
                                  -1,
                                  0,
                                  0
                               ]
                            },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -1.5
-                              ],
+                           "point2": {
                               "face_point": [
                                  1,
                                  0,
                                  0
                               ]
                            },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -1.5,
-                                 0,
-                                 -1
-                              ],
+                           "point3": {
                               "face_point": [
                                  0,
                                  0,
                                  1
-                              ]
-                           }
-                        ],
+                              ]}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -158,50 +399,11 @@
                         "cooldown": "8h",
                         "model": "stage_02",
                         "num_interactions": 4,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -1.5,
-                                 0,
-                                 0.5
-                              ],
-                              "face_point": [
-                                 1,
-                                 0,
-                                 -1
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -0.5,
-                                 0,
-                                 0.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 -1
-                              ]
-                           }
-                        ],
+                        "interaction_points": {
+                           "point5": {},
+                           "point6": {},
+                           "point7": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -214,50 +416,11 @@
                         "cooldown": "9h",
                         "model": "stage_03",
                         "num_interactions": 4,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -1.5,
-                                 0,
-                                 1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -0.5,
-                                 0,
-                                 -1
-                              ],
-                              "face_point": [
-                                 1.5,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 1,
-                                 0,
-                                 -0.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           }
-                        ],
+                        "interaction_points": {
+                           "point8": {},
+                           "point9": {},
+                           "point10": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -270,50 +433,13 @@
                         "cooldown": "10h",
                         "model": "stage_04",
                         "num_interactions": 4,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "emote_browwipe",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 0.5
-                              ],
-                              "face_point": [
-                                 0.5,
-                                 0,
-                                 0.5
-                              ]
+                        "interaction_points": {
+                           "point11": {
+                              "worker_effect": "emote_browwipe"
                            },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -3,
-                                 0,
-                                 1
-                              ],
-                              "face_point": [
-                                 -0.5,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -3
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0
-                              ]
-                           }
-                        ],
+                           "point12": {},
+                           "point13": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -335,50 +461,15 @@
                         "cooldown": "10h",
                         "model": "stage_05",
                         "num_interactions": 6,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "emote_browwipe",
-                              "weight": 1,
-                              "point": [
-                                 -1.5,
-                                 0,
-                                 2.5
-                              ],
-                              "face_point": [
-                                 0.5,
-                                 0,
-                                 0
-                              ]
+                        "interaction_points": {
+                           "point14": {},
+                           "point15": {
+                              "worker_effect": "emote_count"
                            },
-                           {
-                              "worker_effect": "emote_count",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 -1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 2,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 2.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 -0.5
-                              ]
+                           "point16": {
+                              "weight": 2
                            }
-                        ],
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -400,68 +491,28 @@
                         "cooldown": "10h",
                         "model": "stage_06",
                         "num_interactions": 8,
-                        "interaction_points": [
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                        "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                        "interaction_points": {
+                           "point12": {
                               "worker_effect": "emote_watch_pet",
-                              "weight": 1,
-                              "point": [
-                                 -3,
-                                 0,
-                                 1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0.5
-                              ]
-                           },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
-                              "worker_effect": "emote_proud",
-                              "weight": 1,
-                              "point": [
-                                 -0.5,
-                                 0,
-                                 2.5
-                              ],
-                              "face_point": [
-                                 0.5,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -3
-                              ],
                               "face_point": [
                                  -0.5,
                                  0,
                                  0
                               ]
                            },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
+                           "point17": {
+                              "worker_effect": "emote_proud"
+                           },
+                           "point10": {
+                              "face_point": [
+                                 -0.5,
                                  0,
                                  0
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0.5
                               ]
-                           }
-                        ],
+                           },
+                           "point18": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -510,68 +561,16 @@
                         "cooldown": "8h",
                         "model": "default",
                         "num_interactions": 8,
-                        "interaction_points": [
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
-                              "worker_effect": "hoe",
-                              "weight": 2,
-                              "point": [
-                                 -1,
-                                 0,
-                                 0.5
-                              ],
-                              "face_point": [
-                                 1,
-                                 0,
-                                 0
-                              ]
+                        "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
+                        "worker_effect": "hoe",
+                        "interaction_points": {
+                           "point1": {
+                              "weight": 2
                            },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
-                              "worker_effect": "hoe",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -1.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
-                              "worker_effect": "hoe",
-                              "weight": 1,
-                              "point": [
-                                 -1.5,
-                                 0,
-                                 -1
-                              ],
-                              "face_point": [
-                                 -1,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
-                              "worker_effect": "hoe",
-                              "weight": 1,
-                              "point": [
-                                 1.5,
-                                 0,
-                                 1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           }
-                        ],
+                           "point2": {},
+                           "point3": {},
+                           "point4": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -584,50 +583,28 @@
                         "cooldown": "8h",
                         "model": "stage_01",
                         "num_interactions": 6,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -1,
-                                 0,
-                                 0.5
-                              ],
+                        "interaction_points": {
+                           "point1": {
                               "face_point": [
                                  -1,
                                  0,
                                  0
                               ]
                            },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -1.5
-                              ],
+                           "point2": {
                               "face_point": [
                                  1,
                                  0,
                                  0
                               ]
                            },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -1.5,
-                                 0,
-                                 -1
-                              ],
+                           "point3": {
                               "face_point": [
                                  0,
                                  0,
                                  1
-                              ]
-                           }
-                        ],
+                              ]}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -640,50 +617,11 @@
                         "cooldown": "10h",
                         "model": "stage_02",
                         "num_interactions": 4,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -1.5,
-                                 0,
-                                 0.5
-                              ],
-                              "face_point": [
-                                 1,
-                                 0,
-                                 -1
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -0.5,
-                                 0,
-                                 0.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 -1
-                              ]
-                           }
-                        ],
+                        "interaction_points": {
+                           "point5": {},
+                           "point6": {},
+                           "point7": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -696,50 +634,11 @@
                         "cooldown": "10h",
                         "model": "stage_03",
                         "num_interactions": 4,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -1.5,
-                                 0,
-                                 1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -0.5,
-                                 0,
-                                 -1
-                              ],
-                              "face_point": [
-                                 1.5,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 1,
-                                 0,
-                                 -0.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           }
-                        ],
+                        "interaction_points": {
+                           "point8": {},
+                           "point9": {},
+                           "point10": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -752,50 +651,13 @@
                         "cooldown": "12h",
                         "model": "stage_04",
                         "num_interactions": 4,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "emote_browwipe",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 0.5
-                              ],
-                              "face_point": [
-                                 0.5,
-                                 0,
-                                 0.5
-                              ]
+                        "interaction_points": {
+                           "point11": {
+                              "worker_effect": "emote_browwipe"
                            },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -3,
-                                 0,
-                                 1
-                              ],
-                              "face_point": [
-                                 -0.5,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -3
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0
-                              ]
-                           }
-                        ],
+                           "point12": {},
+                           "point13": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -821,50 +683,15 @@
                         "cooldown": "12h",
                         "model": "stage_05",
                         "num_interactions": 6,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "emote_browwipe",
-                              "weight": 1,
-                              "point": [
-                                 -1.5,
-                                 0,
-                                 2.5
-                              ],
-                              "face_point": [
-                                 0.5,
-                                 0,
-                                 0
-                              ]
+                        "interaction_points": {
+                           "point14": {},
+                           "point15": {
+                              "worker_effect": "emote_count"
                            },
-                           {
-                              "worker_effect": "emote_count",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 -1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 2,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 2.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 -0.5
-                              ]
+                           "point16": {
+                              "weight": 2
                            }
-                        ],
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -890,68 +717,28 @@
                         "model": "stage_06",
                         "cooldown": "14h",
                         "num_interactions": 8,
-                        "interaction_points": [
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                        "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                        "interaction_points": {
+                           "point12": {
                               "worker_effect": "emote_watch_pet",
-                              "weight": 1,
-                              "point": [
-                                 -3,
-                                 0,
-                                 1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0.5
-                              ]
-                           },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
-                              "worker_effect": "emote_proud",
-                              "weight": 1,
-                              "point": [
-                                 -0.5,
-                                 0,
-                                 2.5
-                              ],
-                              "face_point": [
-                                 0.5,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -3
-                              ],
                               "face_point": [
                                  -0.5,
                                  0,
                                  0
                               ]
                            },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
+                           "point17": {
+                              "worker_effect": "emote_proud"
+                           },
+                           "point10": {
+                              "face_point": [
+                                 -0.5,
                                  0,
                                  0
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0.5
                               ]
-                           }
-                        ],
+                           },
+                           "point18": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -1000,68 +787,15 @@
                         "cooldown": "4h",
                         "model": "water_stage_01",
                         "num_interactions": 8,
-                        "interaction_points": [
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
-                              "worker_effect": "fiddle",
-                              "weight": 2,
-                              "point": [
-                                 -1,
-                                 0,
-                                 2.5
-                              ],
-                              "face_point": [
-                                 1,
-                                 0,
-                                 0
-                              ]
+                        "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
+                        "interaction_points": {
+                           "point19": {
+                              "weight": 2
                            },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 -1.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -1.5,
-                                 0,
-                                 -3
-                              ],
-                              "face_point": [
-                                 -1,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_native_seed.preparing",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           }
-                        ],
+                           "point20": {},
+                           "point21": {},
+                           "point22": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -1074,50 +808,17 @@
                         "cooldown": "6h",
                         "model": "water_stage_02",
                         "num_interactions": 4,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -3,
-                                 0,
-                                 1
-                              ],
+                        "interaction_points": {
+                           "point12": {
                               "face_point": [
                                  0,
                                  0,
                                  1
                               ]
                            },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -0.5,
-                                 0,
-                                 -3
-                              ],
-                              "face_point": [
-                                 1.5,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 1,
-                                 0,
-                                 2.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           }
-                        ],
+                           "point23": {},
+                           "point24": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -1130,50 +831,19 @@
                         "model": "water_stage_03",
                         "cooldown": "10h",
                         "num_interactions": 4,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "emote_browwipe",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 0.5
-                              ],
-                              "face_point": [
-                                 0.5,
-                                 0,
-                                 0.5
-                              ]
+                        "interaction_points": {
+                           "point11": {
+                              "worker_effect": "emote_browwipe"
                            },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -3,
-                                 0,
-                                 1
-                              ],
-                              "face_point": [
-                                 -0.5,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 2.5
-                              ],
+                           "point12": {},
+                           "point16": {
                               "face_point": [
                                  0,
                                  0,
                                  0
                               ]
                            }
-                        ],
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -1186,50 +856,27 @@
                         "model": "water_stage_04",
                         "cooldown": "12h",
                         "num_interactions": 6,
-                        "interaction_points": [
-                           {
+                        "interaction_points": {
+                           "point12": {
                               "worker_effect": "emote_browwipe",
-                              "weight": 1,
-                              "point": [
-                                 -3,
-                                 0,
-                                 1
-                              ],
                               "face_point": [
                                  0.5,
                                  0,
                                  0
                               ]
                            },
-                           {
-                              "worker_effect": "emote_count",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 -1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0
-                              ]
+                           "point15": {
+                              "worker_effect": "emote_count"
                            },
-                           {
-                              "worker_effect": "fiddle",
+                           "point13": {
                               "weight": 2,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -3
-                              ],
                               "face_point": [
                                  0,
                                  0,
                                  -0.5
                               ]
                            }
-                        ],
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -1251,68 +898,28 @@
                         "model": "water_stage_05",
                         "cooldown": "12h",
                         "num_interactions": 8,
-                        "interaction_points": [
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
-                              "worker_effect": "emote_watch_pet",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 -0.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0.5
-                              ]
+                        "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                        "interaction_points": {
+                           "point25": {
+                              "worker_effect": "emote_watch_pet"
                            },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                           "point13": {
                               "worker_effect": "emote_proud",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -3
-                              ],
                               "face_point": [
                                  0.5,
                                  0,
                                  0
                               ]
                            },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 2.5
-                              ],
+                           "point16": {
                               "face_point": [
                                  -0.5,
                                  0,
                                  0
                               ]
                            },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -3,
-                                 0,
-                                 0.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0.5
-                              ]
-                           }
-                        ],
+                           "point26": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -1361,68 +968,15 @@
                         "cooldown": "8h",
                         "model": "water_stage_01",
                         "num_interactions": 8,
-                        "interaction_points": [
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
-                              "worker_effect": "fiddle",
-                              "weight": 2,
-                              "point": [
-                                 -1,
-                                 0,
-                                 2.5
-                              ],
-                              "face_point": [
-                                 1,
-                                 0,
-                                 0
-                              ]
+                        "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
+                        "interaction_points": {
+                           "point19": {
+                              "weight": 2
                            },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 -1.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -1.5,
-                                 0,
-                                 -3
-                              ],
-                              "face_point": [
-                                 -1,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.find_exotic_seed.preparing",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           }
-                        ],
+                           "point20": {},
+                           "point21": {},
+                           "point22": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -1435,50 +989,17 @@
                         "cooldown": "8h",
                         "model": "water_stage_02",
                         "num_interactions": 4,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -3,
-                                 0,
-                                 1
-                              ],
+                        "interaction_points": {
+                           "point12": {
                               "face_point": [
                                  0,
                                  0,
                                  1
                               ]
                            },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -0.5,
-                                 0,
-                                 -3
-                              ],
-                              "face_point": [
-                                 1.5,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 1,
-                                 0,
-                                 2.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 1
-                              ]
-                           }
-                        ],
+                           "point23": {},
+                           "point24": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -1491,50 +1012,19 @@
                         "cooldown": "8h",
                         "model": "water_stage_03",
                         "num_interactions": 4,
-                        "interaction_points": [
-                           {
-                              "worker_effect": "emote_browwipe",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 0.5
-                              ],
-                              "face_point": [
-                                 0.5,
-                                 0,
-                                 0.5
-                              ]
+                        "interaction_points": {
+                           "point11": {
+                              "worker_effect": "emote_browwipe"
                            },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -3,
-                                 0,
-                                 1
-                              ],
-                              "face_point": [
-                                 -0.5,
-                                 0,
-                                 0
-                              ]
-                           },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 2.5
-                              ],
+                           "point12": {},
+                           "point16": {
                               "face_point": [
                                  0,
                                  0,
                                  0
                               ]
                            }
-                        ],
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -1547,50 +1037,26 @@
                         "cooldown": "12h",
                         "model": "water_stage_04",
                         "num_interactions": 6,
-                        "interaction_points": [
-                           {
+                        "interaction_points": {
+                           "point12": {
                               "worker_effect": "emote_browwipe",
-                              "weight": 1,
-                              "point": [
-                                 -3,
-                                 0,
-                                 1
-                              ],
                               "face_point": [
                                  0.5,
                                  0,
                                  0
                               ]
                            },
-                           {
-                              "worker_effect": "emote_count",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 -1
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0
-                              ]
+                           "point15": {
+                              "worker_effect": "emote_count"
                            },
-                           {
-                              "worker_effect": "fiddle",
-                              "weight": 2,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -3
-                              ],
+                           "point13": {
                               "face_point": [
                                  0,
                                  0,
                                  -0.5
                               ]
                            }
-                        ],
+                        },
                         "rewards": [
                            {
                               "type": "experience",
@@ -1616,68 +1082,28 @@
                         "cooldown": "14h",
                         "model": "water_stage_05",
                         "num_interactions": 8,
-                        "interaction_points": [
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
-                              "worker_effect": "emote_watch_pet",
-                              "weight": 1,
-                              "point": [
-                                 2.5,
-                                 0,
-                                 -0.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0.5
-                              ]
+                        "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                        "interaction_points": {
+                           "point25": {
+                              "worker_effect": "emote_watch_pet"
                            },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
+                           "point13": {
                               "worker_effect": "emote_proud",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 -3
-                              ],
                               "face_point": [
                                  0.5,
                                  0,
                                  0
                               ]
                            },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 0.5,
-                                 0,
-                                 2.5
-                              ],
+                           "point16": {
                               "face_point": [
                                  -0.5,
                                  0,
                                  0
                               ]
                            },
-                           {
-                              "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.discovery",
-                              "worker_effect": "fiddle",
-                              "weight": 1,
-                              "point": [
-                                 -3,
-                                 0,
-                                 0.5
-                              ],
-                              "face_point": [
-                                 0,
-                                 0,
-                                 0.5
-                              ]
-                           }
-                        ],
+                           "point26": {}
+                        },
                         "rewards": [
                            {
                               "type": "experience",
