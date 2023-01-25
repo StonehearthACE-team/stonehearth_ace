@@ -276,6 +276,15 @@ function PlayerMercantile:_create_spawn_timer()
       end)
 end
 
+-- try to spawn a specific merchant; if successful, show the bulletin for them
+function PlayerMercantile:spawn_merchant(merchant_id)
+   local merchant = self:_spawn_merchant(merchant_id)
+   if merchant then
+      merchant:get_component('stonehearth_ace:merchant'):show_bulletin(true)
+   end
+   return merchant
+end
+
 function PlayerMercantile:_spawn_merchant(merchant)
    local player_id = self._sv.player_id
    local town = stonehearth.town:get_town(player_id)
