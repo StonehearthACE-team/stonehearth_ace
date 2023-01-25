@@ -1,0 +1,15 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "rarity": "common",
+   "unique": true,
+   "in_edge": "call_iskender_caravan_3",
+   "out_edge": "wait_for_shops",
+   "script_info": {
+      "script": "stonehearth_ace:game_master:script_encounter:call_merchant",
+      "data": {
+         "category": "exotic_goods",
+         "merchant": "iskender_caravan_3"
+      }
+   }
+}

@@ -9,9 +9,12 @@ local log = radiant.log.create_logger('meteor_shower_renderer')
 
 local MeteorShowerWeatherRenderer = class()
 
-local SHOOTING_STAR_INTERVAL = {1, 2}  -- Random in range in game minutes
+local SHOOTING_STAR_INTERVAL = {1, 10}  -- Random in range in game minutes
 local SHOOTING_STAR_EFFECTS = {
-   { uri = 'stonehearth_ace:effects:shooting_star', size = Point3(6, 5, 6), duration = 200 }
+   { uri = 'stonehearth_ace:effects:shooting_star', size = Point3(6, 5, 6), duration = 200 },
+   { uri = 'stonehearth_ace:effects:shooting_star_2', size = Point3(6, 5, 6), duration = 200 },
+   { uri = 'stonehearth_ace:effects:shooting_star_3', size = Point3(6, 5, 6), duration = 200 },
+   { uri = 'stonehearth_ace:effects:shooting_star_4', size = Point3(6, 5, 6), duration = 200 }
 }
 local WORLD_BOUNDS_DISTANCE = 100
 
