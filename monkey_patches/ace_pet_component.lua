@@ -93,9 +93,32 @@ function AcePetComponent:self_tame()
    end
 
    self:set_owner(min_citizen)
-   self:_update_commands()
    self:_update_owner_description()
    return true
+end
+
+function AcePetComponent:set_owner(owner, lock_to_owner)
+   if owner ~= self._sv.owner and not self._setting_owner then
+      self._setting_owner = true
+
+      local old_owner = self._sv.owner
+      self._sv.owner = owner
+      self:_update_listeners()
+      self:_update_owner_description()
+
+      if old_owner and old_owner:is_valid() then
+         old_owner:add_component('stonehearth:pet_owner'):remove_pet(self._entity:get_id())
+      end
+      
+      if lock_to_owner then
+         self:lock_to_owner()
+      else
+         self._sv._locked = false
+         self:_update_commands()
+      end
+
+      self._setting_owner = false
+   end
 end
 
 function AcePetComponent:_update_owner_description()
