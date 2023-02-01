@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth_ace/entities/weapons/bronze_hatchet/bronze_hatchet_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_bronze_offhand.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_bronze_offhand.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_bronze_offhand.description)",
+         "icon": "file(ea_bronze_offhand.png)"
+      }
+   }
+}

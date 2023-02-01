@@ -1,0 +1,13 @@
+{
+   "type": "command",
+   "name": "broad_arrows",
+   "display_name": "i18n(stonehearth_ace:data.commands.archer_arrows.broad_arrows.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.archer_arrows.broad_arrows.description)",
+   "icon": "file(broad_arrows.png)",
+   "action": "call",
+   "function": "stonehearth:swap_equipment",
+   "args": [
+      "accessory",
+      "broad"
+   ]
+}

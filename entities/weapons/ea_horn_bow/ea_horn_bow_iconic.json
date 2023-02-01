@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth/entities/weapons/recurve_bow/recurve_bow_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_horn_bow.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_horn_bow.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_horn_bow.description)",
+         "icon": "file(ea_horn_bow.png)"
+      }
+   }
+}

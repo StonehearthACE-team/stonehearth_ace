@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth/entities/weapons/two_handed_sword/two_handed_sword_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_steel_cleaver.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_steel_cleaver.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_steel_cleaver.description)",
+         "icon": "file(ea_steel_cleaver.png)"
+      }
+   }
+}

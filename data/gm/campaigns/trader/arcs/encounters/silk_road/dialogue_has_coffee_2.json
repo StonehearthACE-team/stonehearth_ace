@@ -1,0 +1,25 @@
+{
+   "mixins": "file(dialogue_has_coffee.json)",
+   "in_edge": "dialogue_has_coffee_2",   
+   "dialog_tree_info": {
+      "nodes": {
+         "msg1": {
+            "bulletin": {
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.trader.dialogue_has_coffee.dialog_tree_info.dialog_nodes.msg1.choice_000)": {
+                     "out_edge": {
+                        "mixintypes": {
+                           "out_edges": "override"
+                        },
+                        "out_edges": [
+                           "unlock_tea",
+                           "reputation_checker_3"
+                        ]
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

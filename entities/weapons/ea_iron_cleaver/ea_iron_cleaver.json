@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth_ace:weapons:iron_battle_axe",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_iron_cleaver_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_iron_cleaver_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 21.5
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 37,
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_iron_cleaver.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_iron_cleaver.description)",
+         "icon": "file(ea_iron_cleaver.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "twohanded",
+            "iron",
+            "melee_weapon",
+            "ea_made",
+            "axe",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

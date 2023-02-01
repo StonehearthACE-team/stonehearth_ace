@@ -1,112 +1,80 @@
 {
+   "mixins": "stonehearth_ace:mixins:encounter:tier_3_silk_road_caravan",
    "type": "encounter",
-   "encounter_type": "script",
    "in_edge": "tier_3_rc_returning_silk_road_encounter",
-   "out_edge": "caravan_point",
    "can_start": {
       "test_1": {
-         "number_active_check": {
-            "type": "deny_if_greater_than",
-            "item": "counter",
-            "key": "caravans",
-            "value": 0
-         },
-         "reputation_check": {
-            "type": "deny_if_less_than",
-            "item": "counter",
-            "key": "caravan_reputation",
-            "value": 10
-         },
          "kingdom_check": {
             "type": "deny_if_not",
             "item": "kingdom",
             "value": "rayyas_children:kingdoms:rayyas_children"
-         },
-         "not_in_titanstorm": {
-            "type": "deny_if",
-            "item": "weather",
-            "value": "stonehearth:weather:titanstorm"
-         },
-         "not_under_siege": {
-            "type": "deny_if",
-            "item": "weather",
-            "value": "stonehearth_ace:weather:under_siege"
          }
       }
    },
    "script_info": {
-      "script": "stonehearth:game_master:script_encounter:returning_trader",
       "data": {
-         "quest_storage_uri": "stonehearth_ace:containers:quest:silk_road",
-         "abandon_out_edge": "caravan_cleanup",
-         "timeout_out_edge": "caravan_cleanup",
-         "success_out_edge": "tier_3_reputation_reward",
-         "expiration_timeout": "18h",
-         "score_threshold": 1000,
-         "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_3_returning_silk_road_encounter.title)",
-         "trade_details": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_3_returning_silk_road_encounter.trade_details)",
-         "waiting_title": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_3_returning_silk_road_encounter.waiting_title)",
-         "waiting_text": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_3_returning_silk_road_encounter.waiting_text)",
-         "return_title": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_3_returning_silk_road_encounter.return_title)",
-         "return_greetings_positive": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_3_returning_silk_road_encounter.return_greetings_positive)",
-         "return_greetings_negative": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_3_returning_silk_road_encounter.return_greetings_negative)",
          "min_days_before_return": 3,
          "max_days_before_return": 7,
          "wants": {
-            "stonehearth:refined:cloth_bolt": {
-               "min": 3,
-               "max": 6
-            },
-            "stonehearth_ace:resources:herb:parsley": {
-               "min": 12,
-               "max": 25
+            "stonehearth:resources:fiber:wool_bundle": {
+               "min": 5,
+               "max": 10
             },
             "stonehearth_ace:resources:fiber:cotton_bundle": {
                "min": 10,
-               "max": 24
+               "max": 14
+            },    
+            "stonehearth_ace:tools:backpack_cloth": {
+               "min": 6,
+               "max": 10
             },
-            "stonehearth:resources:fiber:wool_bundle": {
+            "stonehearth_ace:tools:cook_spoon_copper": {
+               "min": 6,
+               "max": 8
+            },           
+            "stonehearth:resources:herb:cactus_flower": {
+               "min": 12,
+               "max": 18
+            },
+            "stonehearth_ace:resources:herb:parsley": {
+               "min": 12,
+               "max": 18
+            },
+            "stonehearth_ace:food:dates:date_basket": {
+               "min": 12,
+               "max": 18
+            },
+            "stonehearth_ace:fungi:desert_truffle:colony": {
+               "min": 6,
+               "max": 10
+            },
+            "stonehearth_ace:resources:wild_cattle_pelt": {
+               "min": 6,
+               "max": 10
+            },
+            "stonehearth:resources:rabbit_pelt": {
                "min": 10,
-               "max": 24
+               "max": 12
             },
-            "stonehearth_ace:food:rice:raw_rice": {
+            "stonehearth_ace:food:millet_flour": {
                "min": 8,
                "max": 16
             },
-            "stonehearth_ace:food:dates:date_basket": {
-               "min": 10,
-               "max": 20
-            },
-            "stonehearth:refined:gold_ingot": {
-               "min": 1,
-               "max": 1
-            },
-            "stonehearth:refined:silver_ingot": {
+            "stonehearth_ace:consumables:seeds:almond_tree_seeds": {
                "min": 1,
                "max": 2
             },
-            "stonehearth:refined:gold_flakes": {
-               "min": 1,
+            "stonehearth_ace:consumables:seeds:millet_seeds": {
+               "min": 2,
                "max": 3
             },
-            "stonehearth_ace:consumables:seeds:paddy_seeds": {
-               "min": 1,
-               "max": 1
-            },
-            "stonehearth_ace:consumables:seeds:millet_seeds": {
-               "min": 1,
-               "max": 1
-            },
             "stonehearth:consumables:seeds:golden_gourd_seeds": {
-               "min": 1,
-               "max": 1
-            }
-         },
-         "rewards": {
-            "stonehearth_ace:plants:tea_bush:seed": {
-               "type": "object",
                "min": 2,
-               "max": 6
+               "max": 3
+            },
+            "stonehearth:consumables:seeds:watermelon_seeds": {
+               "min": 2,
+               "max": 3
             }
          }
       }

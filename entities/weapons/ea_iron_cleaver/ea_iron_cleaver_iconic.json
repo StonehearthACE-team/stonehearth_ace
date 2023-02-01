@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth_ace/entities/weapons/iron_battle_axe/iron_battle_axe_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_iron_cleaver.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_iron_cleaver.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_iron_cleaver.description)",
+         "icon": "file(ea_iron_cleaver.png)"
+      }
+   }
+}

@@ -14,7 +14,73 @@
          "cooldown": 0,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/vitality_shop.json",
          "shoptions": {
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "herb resource",
+                  "price_factor": 2.5
+               },
+               {
+                  "material": "herb healing resource",
+                  "price_factor": 3.5,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "herb soothing resource",
+                  "price_factor": 3.5,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "herb noxious resource",
+                  "price_factor": 3.5,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "herb mild resource",
+                  "price_factor": 4,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "herb robust resource",
+                  "price_factor": 4.5,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "herb peculiar resource",
+                  "price_factor": 5,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "seed_hard",
+                  "price_factor": 2.5,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },
+               {
+                  "material": "seed_fruit",
+                  "price_factor": 2.5,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:tools:herbalist_mortar_pewter",
+                  "price_factor": 2,
+                  "max_quantity": 2,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:fertilizer",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -30,36 +96,156 @@
       },
       "exclusive_amberstone": {
          "category": "exclusive",
-         "population_role": "merchant",
-         "use_shop_description": true,
-         "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_2_outfit",
-            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
-         ],
+         "population_role": "merchant_sonia_cottonpurse",
+         "population_gender": "female",
          "min_city_tier": 1,
          "required_stall": "stonehearth_ace:furniture:market_stall:amberstone",
          "weight": 3,
          "cooldown": 0,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/amberstone_shop.json",
          "shoptions": {
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth:resources:fiber:heirbloom_bundle",
+                  "price_factor": 2,
+                  "max_quantity": 10
+               },
+               {
+                  "material": "raw_food vegetable",
+                  "price_factor": 1.8,
+                  "max_quantity": 8
+               },
+               {
+                  "uri": "stonehearth:food:sugar:sugarbell_basket",
+                  "price_factor": 1.4,
+                  "max_quantity": 4,
+                  "chance": 0.3
+               },
+               {
+                  "material": "grain",
+                  "price_factor": 2,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:food:carrot:carrot_basket",
+                  "price_factor": 2,
+                  "max_quantity": 4,
+                  "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth_ace:drink:juice_carrot",
+                  "price_factor": 1.6,
+                  "max_quantity": 4,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:food:megacrop:rabbit_feed",
+                  "price_factor": 1.4,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:daisy",
+                  "price_factor": 1.6,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:silkweed",
+                  "price_factor": 1.6,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth:food:sugar",
+                  "price_factor": 1.6,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               }
+            ]
          }
       },
       "exclusive_silk_road": {
          "category": "exclusive",
-         "population_role": "merchant",
-         "use_shop_description": true,
-         "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_3_outfit",
-            "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
-         ],
+         "population_role": "merchant_dom_vandon",
+         "population_gender": "male",
          "min_city_tier": 1,
          "required_stall": "stonehearth_ace:furniture:market_stall:silk_road",
          "weight": 3,
          "cooldown": 0,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/silk_road_shop.json",
          "shoptions": {
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth:refined:cloth_bolt",
+                  "price_factor": 1.2,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:refined:leather_bolt",
+                  "price_factor": 1.2,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:food:nut_flour",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:refined:yarn",
+                  "price_factor": 1.8,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:resources:stone:marble_stone",
+                  "price_factor": 1.4,
+                  "max_quantity": 10,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:refined:fire_bricks",
+                  "price_factor": 1.2,
+                  "max_quantity": 6,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth:refined:iron_ingot",
+                  "price_factor": 1.4,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:food:honey",
+                  "price_factor": 1.6,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:food:sugar",
+                  "price_factor": 1.4,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "grain",
+                  "price_factor": 2.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "material": "flour hard cooking_ingredient",
+                  "price_factor": 1.6,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               }
+            ]
          }
       },
       "exclusive_strength": {
@@ -76,7 +262,68 @@
          "cooldown": 0,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/strength_shop.json",
          "shoptions": {
-            "wanted_items": []
+            "max_wanted_items": 3,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth:containers:large_crate",
+                  "price_factor": 1.6,
+                  "max_quantity": 4
+               },
+               {
+                  "uri": "stonehearth:containers:small_crate",
+                  "price_factor": 1.6,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:woven",
+                  "price_factor": 1.6,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:tools:backpack_cloth",
+                  "price_factor": 1.5,
+                  "max_quantity": 3,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:tools:backpack_leather",
+                  "price_factor": 1.4,
+                  "max_quantity": 3,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:tools:worker_tools_iron",
+                  "price_factor": 1.5,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:tools:worker_tools_steel",
+                  "price_factor": 1.4,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:consumables:energy_tonic",
+                  "price_factor": 1.5,
+                  "max_quantity": 3,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:consumables:strength_tonic",
+                  "price_factor": 1.5,
+                  "max_quantity": 3,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:consumables:stamina_tonic",
+                  "price_factor": 1.5,
+                  "max_quantity": 3,
+                  "chance": 0.3
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:snow:drifts": true,
@@ -100,7 +347,74 @@
          "cooldown": 0,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/cunning_shop.json",
          "shoptions": {
-            "wanted_items": []
+            "max_wanted_items": 6,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth:monsters:goblins:skull_trophy",
+                  "price_factor": 1.8,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth:loot:dusty_tome",
+                  "price_factor": 1.8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:monsters:kobolds:loot:elite_bling_hat",
+                  "price_factor": 1.8,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth:monsters:kobolds:loot:generals_bling_hat",
+                  "price_factor": 1.8,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth:monsters:kobolds:loot:masters_bling_hat",
+                  "price_factor": 1.8,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth:monsters:kobolds:loot:scout_bling_hat",
+                  "price_factor": 1.8,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth_ace:loot:currency:forest",
+                  "price_factor": 1.8,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:loot:currency:goblin",
+                  "price_factor": 1.8,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:loot:currency:red_kiln",
+                  "price_factor": 1.8,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:loot:currency:undead",
+                  "price_factor": 1.8,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:loot:currency:titan",
+                  "price_factor": 2,
+                  "chance": 0.1
+               },
+               {
+                  "uri": "stonehearth_ace:loot:currency:dragon_cult",
+                  "price_factor": 2,
+                  "chance": 0.1
+               },
+               {
+                  "uri": "stonehearth_ace:loot:ancient_armor_fragment",
+                  "price_factor": 2,
+                  "chance": 0.1
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -128,7 +442,74 @@
          "cooldown": 0,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/glory_shop.json",
          "shoptions": {
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth:refined:iron_gear",
+                  "price_factor": 1.8,
+                  "max_quantity": 8
+               },
+               {
+                  "uri": "stonehearth:refined:bronze_gear",
+                  "price_factor": 1.8,
+                  "max_quantity": 8,
+                  "chance": 0.9
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:hard",
+                  "price_factor": 1.5,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.5,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:refined:steel_plate",
+                  "price_factor": 1.8,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:refined:brass_plate",
+                  "price_factor": 1.8,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:refined:iron_ingot",
+                  "price_factor": 1.6,
+                  "max_quantity": 10,
+                  "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth:refined:steel_ingot",
+                  "price_factor": 1.6,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:refined:bronze_ingot",
+                  "price_factor": 1.6,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:refined:lock",
+                  "price_factor": 2,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:tools:engineer_wrench_steel",
+                  "price_factor": 2,
+                  "max_quantity": 2,
+                  "chance": 0.8
+               }
+            ]
          }
       },
       "exclusive_makers": {
@@ -145,7 +526,56 @@
          "cooldown": 0,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/makers_shop.json",
          "shoptions": {
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "stone resource",
+                  "price_factor": 3,
+                  "max_quantity": 16
+               },
+               {
+                  "uri": "stonehearth_ace:resources:stone:limestone_stone",
+                  "price_factor": 3.5,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:stone:slate_stone",
+                  "price_factor": 3.5,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:stone:sandstone_stone",
+                  "price_factor": 3.5,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:stone:marble_stone",
+                  "price_factor": 2,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:tools:mason_chisel_iron",
+                  "price_factor": 2,
+                  "max_quantity": 2,
+                  "chance": 0.8
+               },
+               {
+                  "material": "clay resource",
+                  "price_factor": 2.5,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:resources:stone:feldspar_stone",
+                  "price_factor": 3.5,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               }
+            ]
          }
       },
       "exclusive_cheer": {
@@ -153,8 +583,8 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_2_outfit",
-            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+            "stonehearth_ace:outfits:merchant:agriculture_outfit",
+            "stonehearth_ace:outfits:merchant:agriculture_outfit:hat"
          ],
          "min_city_tier": 1,
          "required_stall": "stonehearth_ace:furniture:market_stall:cheer",
@@ -162,7 +592,73 @@
          "cooldown": 0,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/exclusive_shops/cheer_shop.json",
          "shoptions": {
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "raw_food vegetable",
+                  "price_factor": 2.5
+               },
+               {
+                  "material": "raw_food vegetable leafy",
+                  "price_factor": 3,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "raw_food vegetable savory",
+                  "price_factor": 3,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "raw_food vegetable hearty",
+                  "price_factor": 3,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "raw_food fruit",
+                  "price_factor": 3,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "grain",
+                  "price_factor": 3,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "fiber resource",
+                  "price_factor": 3,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:tools:farmer_hoe_iron",
+                  "price_factor": 2,
+                  "max_quantity": 2,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:fertilizer",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:fertilizer_upgrade",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:fertilizer_upgrade_2",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               }
+            ]
          }
       }
    }

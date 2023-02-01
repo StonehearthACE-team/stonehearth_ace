@@ -1,0 +1,81 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:quiver_arrows"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(ea_simple_quiver.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(ea_simple_quiver_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_simple_quiver_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model",
+         "slot": "accessory",
+         "ilevel": 3,
+         "required_job_level": 3,
+         "roles": [
+            "archer_job"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      },
+      "stonehearth:equipment_swap": {
+         "swap_options": {
+            "none": {
+               "command": "stonehearth:commands:archer_arrows:default",
+               "ordinal": 1
+            },
+            "slow": {
+               "uri": "stonehearth:archer:abilities:slow_arrow",
+               "command": "stonehearth:commands:archer_arrows:slow",
+               "ordinal": 2
+            },
+            "broad": {
+               "uri": "stonehearth_ace:archer:abilities:broad_arrow",
+               "command": "stonehearth_ace:commands:archer_arrows:broad",
+               "ordinal": 3
+            }
+         },
+         "default": "broad"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 32,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.ea_simple_quiver.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.ea_simple_quiver.description)",
+         "icon": "file(ea_simple_quiver.png)",
+         "category": "weapons",
+         "material_tags": [
+            "ea_made",
+            "eastern",
+            "accessory",
+            "quiver",
+            "arrows",
+            "stockpile_exotic_equipment"
+         ]
+      }
+   }
+}

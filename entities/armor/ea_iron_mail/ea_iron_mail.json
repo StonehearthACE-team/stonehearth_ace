@@ -28,12 +28,19 @@
       "stonehearth:equipment_piece": {
          "injected_buffs": [
             "stonehearth_ace:buffs:weather:chilly_resist"
-         ]
+         ],
+         "ilevel": 6.5
       }
    },
    "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 73,
+         "shop_info": {
+            "buyable": false
+         }
+      },
       "stonehearth:catalog": {
-         "display_name": "Iron Hauberk",
+         "display_name": "i18n(stonehearth_ace:entities.armor.ea_iron_mail.display_name)",
          "icon": "file(ea_iron_mail.png)",
          "mixintypes": {
             "material_tags": "override"
@@ -43,8 +50,7 @@
             "armor",
             "medium_armor",
             "torso",
-            "na_made",
-            "crafted",
+            "ea_made",
             "stockpile_equipment"
          ]
       }

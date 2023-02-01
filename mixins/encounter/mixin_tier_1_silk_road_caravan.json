@@ -1,0 +1,213 @@
+{
+   "encounter_type": "script",
+   "out_edge": "caravan_point",
+   "can_start": {
+      "test_1": {
+         "number_active_check": {
+            "type": "deny_if_greater_than",
+            "item": "counter",
+            "key": "caravans",
+            "value": 0
+         },
+         "reputation_check_max": {
+            "type": "deny_if_greater_than",
+            "item": "counter",
+            "key": "caravan_reputation",
+            "value": 17
+         },
+         "not_in_titanstorm": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:titanstorm"
+         },
+         "not_under_siege": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:under_siege"
+         }
+      }
+   },
+   "script_info": {
+      "script": "stonehearth:game_master:script_encounter:returning_trader",
+      "data": {
+         "quest_storage_uri": "stonehearth_ace:containers:quest:silk_road",
+         "abandon_out_edge": "caravan_cleanup",
+         "timeout_out_edge": "caravan_cleanup",
+         "success_out_edge": "tier_1_reputation_reward",
+         "expiration_timeout": "18h",
+         "score_threshold": 1000,
+         "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_1_returning_silk_road_encounter.title)",
+         "trade_details": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_1_returning_silk_road_encounter.trade_details)",
+         "waiting_title": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_1_returning_silk_road_encounter.waiting_title)",
+         "waiting_text": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_1_returning_silk_road_encounter.waiting_text)",
+         "return_title": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_1_returning_silk_road_encounter.return_title)",
+         "return_greetings_positive": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_1_returning_silk_road_encounter.return_greetings_positive)",
+         "return_greetings_negative": "i18n(stonehearth_ace:data.gm.campaigns.trader.tier_1_returning_silk_road_encounter.return_greetings_negative)",
+         "wants": {
+            "stonehearth:refined:cloth_bolt": {
+               "min": 2,
+               "max": 4
+            },
+            "stonehearth:refined:leather_bolt": {
+               "min": 2,
+               "max": 4
+            },
+            "stonehearth_ace:food:honey": {
+               "min": 4,
+               "max": 8
+            },
+            "stonehearth_ace:food:nut_flour": {
+               "min": 2,
+               "max": 4
+            },
+            "stonehearth:refined:gold_ingot": {
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth:refined:silver_ingot": {
+               "min": 1,
+               "max": 2
+            },
+            "stonehearth:refined:gold_flakes": {
+               "min": 1,
+               "max": 3
+            },
+            "stonehearth_ace:refined:yarn": {
+               "min": 1,
+               "max": 3
+            },
+            "stonehearth_ace:resources:stone:marble_stone": {
+               "min": 3,
+               "max": 5
+            }
+         },
+         "rewards": {
+            "stonehearth_ace:eastern:field_work:outfit:sunstroke": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:armor:ea_bronze_breastplate": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:armor:ea_bronze_helm": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:armor:ea_bronze_shield": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:weapons:ea_bronze_cleaver": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:weapons:ea_bronze_offhand": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:weapons:ea_bronze_short_spear": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:weapons:ea_bronze_short_spear_2": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:weapons:ea_bronze_sword": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:weapons:ea_iron_short_sword": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:weapons:ea_iron_lance": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:weapons:ea_crossbow": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:weapons:ea_long_bow": {
+               "type": "object",
+               "min": 1,
+               "max": 1
+            },
+            "stonehearth_ace:refined:fiber:silk_bundle": {
+               "type": "object",
+               "min": 3,
+               "max": 6
+            },
+            "stonehearth_ace:refined:thread:silk": {
+               "type": "object",
+               "min": 1,
+               "max": 2
+            },
+            "stonehearth_ace:food:rice:raw_rice": {
+               "type": "object",
+               "min": 4,
+               "max": 8
+            },
+            "stonehearth_ace:food:rice:paddy_basket": {
+               "type": "object",
+               "min": 6,
+               "max": 10
+            },
+            "stonehearth_ace:food:coffee:coffee_basket": {
+               "type": "object",
+               "min": 3,
+               "max": 6
+            },
+            "stonehearth_ace:drink:coffee:green": {
+               "type": "object",
+               "min": 2,
+               "max": 3
+            },
+            "stonehearth_ace:drink:coffee": {
+               "type": "object",
+               "min": 2,
+               "max": 3
+            },
+            "stonehearth_ace:drink:tea_leaves:fresh": {
+               "type": "object",
+               "min": 4,
+               "max": 6
+            },
+            "stonehearth_ace:drink:tea_leaves:green": {
+               "type": "object",
+               "min": 2,
+               "max": 3
+            },
+            "stonehearth_ace:drink:tea_green": {
+               "type": "object",
+               "min": 2,
+               "max": 3
+            },
+            "stonehearth_ace:food:cucumber:cucumber_basket": {
+               "type": "object",
+               "min": 4,
+               "max": 8
+            },
+            "stonehearth_ace:resources:wood:bamboo_log": {
+               "type": "object",
+               "min": 6,
+               "max": 10
+            }
+         }
+      }
+   }
+}

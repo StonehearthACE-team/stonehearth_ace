@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth_ace/entities/weapons/long_bow/long_bow_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_long_bow.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_long_bow.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_long_bow.description)",
+         "icon": "file(ea_long_bow.png)"
+      }
+   }
+}

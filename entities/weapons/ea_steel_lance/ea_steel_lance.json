@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth_ace:weapons:steel_lance",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_steel_lance_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_steel_lance_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 21.5
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 40,
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_steel_lance.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_steel_lance.description)",
+         "icon": "file(ea_steel_lance.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "twohanded",
+            "steel",
+            "melee_weapon",
+            "ea_made",
+            "polearm",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

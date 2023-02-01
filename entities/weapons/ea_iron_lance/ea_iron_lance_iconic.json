@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth/entities/weapons/iron_pike/iron_pike_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_iron_lance.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_iron_lance.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_iron_lance.description)",
+         "icon": "file(ea_iron_lance.png)"
+      }
+   }
+}

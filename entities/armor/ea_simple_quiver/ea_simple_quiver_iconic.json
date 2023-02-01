@@ -1,0 +1,24 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ea_simple_quiver_iconic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.ea_simple_quiver.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.ea_simple_quiver.description)",
+         "is_item": true,
+         "category": "armor"
+      }
+   }
+}

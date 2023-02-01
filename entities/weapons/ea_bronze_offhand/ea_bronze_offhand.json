@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth_ace:weapons:bronze_hatchet",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_bronze_offhand_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_bronze_offhand_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 8.5
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 30,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_bronze_offhand.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_bronze_offhand.description)",
+         "icon": "file(ea_bronze_offhand.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "offhand",
+            "bronze",
+            "melee_weapon",
+            "dagger",
+            "ea_made",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

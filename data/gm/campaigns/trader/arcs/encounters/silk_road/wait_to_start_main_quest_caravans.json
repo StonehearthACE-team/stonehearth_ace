@@ -1,0 +1,15 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "wait_to_start_main_quest_caravans",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "main_quest_generator",
+         "reputation_checker"
+      ]
+   },
+   "wait_info": {
+      "duration": "2d+3d"
+   }
+}

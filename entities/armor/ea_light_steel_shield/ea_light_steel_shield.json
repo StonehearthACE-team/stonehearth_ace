@@ -1,0 +1,65 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:armor:medium_shield"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ea_light_steel_shield.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_light_steel_shield_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol",
+            "stonehearth:have_shield"
+         ],
+         "ilevel": 4.5,
+         "roles": [
+            "footman_job"
+         ],
+         "required_job_level": 4,
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:armor_data": {
+         "base_damage_reduction": 4
+      },
+      "stonehearth:combat:melee_defenses": [
+         {
+            "name": "simple_shield_block",
+            "effect": "combat_1h_shield_block",
+            "active_frame": 4,
+            "cooldown": 10000,
+            "priority": 0,
+            "chance_of_success": 0.4
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 49,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.ea_light_steel_shield.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.ea_light_steel_shield.description)",
+         "icon": "file(ea_light_steel_shield.png)",
+         "category": "armor",
+         "material_tags": [
+            "steel",
+            "ea_made"
+         ]
+      }
+   }
+}

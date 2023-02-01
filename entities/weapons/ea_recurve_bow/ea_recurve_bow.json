@@ -1,0 +1,51 @@
+{
+   "mixins": "stonehearth_ace:weapons:composite_bow",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_recurve_bow_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_recurve_bow_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 32.5
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "range": 45,
+         "projectile_uri": "stonehearth_ace:weapons:ea_arrow"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 50,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_recurve_bow.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_recurve_bow.description)",
+         "icon": "file(ea_recurve_bow.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "wood",
+            "recurve",
+            "bow",
+            "ranged_weapon",
+            "ea_made",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

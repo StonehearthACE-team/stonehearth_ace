@@ -78,7 +78,7 @@ end
 
 function AceSound:set_soundtrack_override(override)
    local prev_override = self._soundtrack_override
-   if not override or override == 'none' then
+   if not override or override == 'none' or not self._constants.music[override] then
       self._soundtrack_override = nil
    else
       self._soundtrack_override = override

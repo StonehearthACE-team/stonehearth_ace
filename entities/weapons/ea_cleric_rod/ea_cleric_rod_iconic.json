@@ -1,0 +1,26 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ea_cleric_rod.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_cleric_rod.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_cleric_rod.description)",
+         "icon": "file(ea_cleric_rod.png)",
+         "is_item": true,
+         "category": "weapons"
+      }
+   }
+}

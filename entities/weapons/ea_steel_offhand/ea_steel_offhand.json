@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth_ace:weapons:steel_dagger",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_steel_offhand_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_steel_offhand_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 14.5
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 35,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_steel_offhand.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_steel_offhand.description)",
+         "icon": "file(ea_steel_offhand.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "offhand",
+            "steel",
+            "melee_weapon",
+            "ea_made",
+            "dagger",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

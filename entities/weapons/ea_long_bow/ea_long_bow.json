@@ -1,0 +1,50 @@
+{
+   "mixins": "stonehearth_ace:weapons:long_bow",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_long_bow_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_long_bow_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 24.5
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "range": 34,
+         "projectile_uri": "stonehearth_ace:weapons:ea_arrow"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 18,
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_long_bow.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_long_bow.description)",
+         "icon": "file(ea_long_bow.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "wood",
+            "long",
+            "bow",
+            "ea_made",
+            "ranged_weapon",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

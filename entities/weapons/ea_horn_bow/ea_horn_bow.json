@@ -1,0 +1,50 @@
+{
+   "mixins": "stonehearth:weapons:recurve_bow",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_horn_bow_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_horn_bow_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 28.5
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "range": 38,
+         "projectile_uri": "stonehearth_ace:weapons:ea_arrow"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 31,
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_horn_bow.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_horn_bow.description)",
+         "icon": "file(ea_horn_bow.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "wood",
+            "horn",
+            "bow",
+            "ranged_weapon",
+            "ea_made",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

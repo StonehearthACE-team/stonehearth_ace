@@ -1,0 +1,56 @@
+{
+   "mixins": "stonehearth_ace:armor:steel_helm",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(ea_steel_helm.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(ea_steel_helm_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_steel_helm_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 5.5
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 51,
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.ea_steel_helm.display_name)",
+         "icon": "file(ea_steel_helm.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "steel",
+            "armor",
+            "helmet",
+            "medium_armor",
+            "ea_made",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

@@ -1,7 +1,30 @@
 {
+   "components": {
+      "mob": {
+         "model_origin": {
+            "x": 0.05,
+            "y": 0,
+            "z": -0.05
+         }
+      },
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(thread.qb)"
+            ]
+         }
+      }
+   },
 	"entity_data": {
       "stonehearth:catalog": {
-         "description": "i18n(stonehearth_ace:entities.refined.thread.description)"
+         "icon": "file(thread.png)",
+         "description": "i18n(stonehearth_ace:entities.refined.thread.description)",
+         "material_tags": [
+            "standard"
+         ]
 		}
    }
 }

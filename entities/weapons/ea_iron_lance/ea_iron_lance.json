@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth:weapons:iron_pike",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_iron_lance_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_iron_lance_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 18.5
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 19,
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_iron_lance.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_iron_lance.description)",
+         "icon": "file(ea_iron_lance.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "twohanded",
+            "iron",
+            "melee_weapon",
+            "ea_made",
+            "polearm",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

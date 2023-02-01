@@ -28,12 +28,19 @@
       "stonehearth:equipment_piece": {
          "injected_buffs": [
             "stonehearth_ace:buffs:weather:chilly_resist"
-         ]
+         ],
+         "ilevel": 5.5
       }
    },
    "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 55,
+         "shop_info": {
+            "buyable": false
+         }
+      },
       "stonehearth:catalog": {
-         "display_name": "Bronze Hauberk",
+         "display_name": "i18n(stonehearth_ace:entities.armor.ea_bronze_breastplate.display_name)",
          "icon": "file(ea_bronze_breastplate.png)",
          "mixintypes": {
             "material_tags": "override"
@@ -42,9 +49,8 @@
             "bronze",
             "armor",
             "medium_armor",
-            "na_made",
+            "ea_made",
             "torso",
-            "crafted",
             "stockpile_equipment"
          ]
       }

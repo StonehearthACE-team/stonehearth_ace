@@ -1,0 +1,90 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:weapons:cleric_scepter",
+      "stonehearth_ace:mixins:inflicted_wounds:impact:very_easy",
+      "stonehearth_ace:mixins:weapons:twohanded"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ea_cleric_rod_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_cleric_rod_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "ilevel": 11.5,
+         "roles": [
+            "cleric_job"
+         ],
+         "required_job_level": 1,
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 15,
+         "reach": 1.8
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_backhand",
+            "effect": "combat_1h_backhand",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 0
+         },
+         {
+            "name": "combat_2h_attack",
+            "effect": "combat_2h_attack",
+            "active_frame": 21,
+            "cooldown": 0,
+            "priority": 1
+         },
+         {
+            "name": "combat_1h_thrust",
+            "effect": "combat_1h_thrust",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         },
+         {
+            "name": "combat_1h_forehand_spin",
+            "effect": "combat_1h_forehand_spin",
+            "active_frame": 21,
+            "cooldown": 4000,
+            "priority": 2,
+            "aoe_effect": {
+               "damage_multiplier": 0.5,
+               "aoe_target_limit": 4
+            }
+         }
+      ],
+      "stonehearth:net_worth": {
+         "value_in_gold": 38,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_cleric_rod.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_cleric_rod.description)",
+         "icon": "file(ea_cleric_rod.png)",
+         "category": "weapons",
+         "material_tags": [
+            "bronze",
+            "ea_made"
+         ]
+      }
+   }
+}

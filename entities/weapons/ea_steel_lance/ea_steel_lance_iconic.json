@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth_ace/entities/weapons/steel_lance/steel_lance_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_steel_lance.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_steel_lance.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_steel_lance.description)",
+         "icon": "file(ea_steel_lance.png)"
+      }
+   }
+}

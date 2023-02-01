@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth:weapons:bronze_sword",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_bronze_sword_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_bronze_sword_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 14.5
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 30,
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_bronze_sword.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_bronze_sword.description)",
+         "icon": "file(ea_bronze_sword.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "bronze",
+            "melee_weapon",
+            "mainhand",
+            "sword",
+            "long",
+            "ea_made",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

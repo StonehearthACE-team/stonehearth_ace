@@ -1,0 +1,64 @@
+{
+   "mixins": "stonehearth_ace:weapons:crossbow",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_crossbow_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_crossbow_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 27
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "projectile_uri": "stonehearth_ace:weapons:ea_bolt",
+         "base_damage": 7,
+         "base_ranged_damage": 7,
+         "range": 30,
+         "projectile_speed": 60
+      },
+      "mixintypes": {
+         "stonehearth:combat:ranged_attacks": "override"
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "ea_crossbow_multi_shot",
+            "effect": "archer_xbow_shoot",
+            "active_frame": 16,
+            "active_frames": [
+               16,
+               18,
+               20,
+               22
+            ],
+            "cooldown": 4200,
+            "priority": 1
+         }
+      ],
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_crossbow.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_crossbow.description)",
+         "icon": "file(ea_crossbow.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "wood",
+            "crossbow",
+            "ranged_weapon",
+            "ea_made",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

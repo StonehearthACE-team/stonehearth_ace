@@ -1,0 +1,22 @@
+{
+   "mixins": "/stonehearth_ace/entities/armor/steel_chainmail/steel_chainmail_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_steel_chainmail_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.ea_steel_chainmail.display_name)",
+         "icon": "file(ea_steel_chainmail.png)"
+      }
+   }
+}

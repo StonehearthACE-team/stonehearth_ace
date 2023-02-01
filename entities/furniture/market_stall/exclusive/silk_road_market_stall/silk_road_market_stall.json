@@ -12,7 +12,19 @@
       },
       "stonehearth_ace:market_stall": {
          "mixintypes": {
-            "tier": "remove"
+            "tier": "remove",
+            "stall_models": "override"
+         },
+         "stall_models": {
+            "default": {
+               "model_data": {
+                  "model": "file(default_shop.qb)",
+                  "matrix": "Shop",
+                  "scale": 0.1,
+                  "offset": { "x": 40, "y": 0, "z": 40 }
+               },
+               "entity_points": []
+            }
          }
       }
    },

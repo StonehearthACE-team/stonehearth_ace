@@ -666,6 +666,10 @@
          "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/refined_cloth.png",
          "filter": "refined",
          "categories": {
+            "thread": {
+               "icon": "/stonehearth_ace/entities/refined/thread/thread.png",
+               "filter": "resource refined_cloth thread standard"
+            },
             "yarn": {
                "ordinal": 1.5,
                "display_name": "i18n(stonehearth_ace:entities.refined.yarn.display_name)",
@@ -687,6 +691,18 @@
                "display_name": "i18n(stonehearth_ace:entities.refined.cloth_bolt_silk.display_name)",
                "icon": "/stonehearth_ace/entities/refined/cloth_bolt_silk/cloth_bolt_silk.png",
                "filter": "resource refined_cloth cloth silk"
+            },
+            "thread_silk": {
+               "ordinal": 2.21,
+               "display_name": "i18n(stonehearth_ace:entities.refined.thread_silk.display_name)",
+               "icon": "/stonehearth_ace/entities/refined/thread_silk/thread_silk.png",
+               "filter": "resource refined_cloth thread silk"
+            },
+            "fiber_silk": {
+               "ordinal": 2.22,
+               "display_name": "i18n(stonehearth_ace:entities.refined.silk_bundle.display_name)",
+               "icon": "/stonehearth_ace/entities/refined/silk_bundle/silk_bundle.png",
+               "filter": "resource refined_cloth thread silk"
             },
             "fine_stuffing": {
                "ordinal": 2.5,

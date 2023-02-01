@@ -1,0 +1,47 @@
+{
+   "mixins": "stonehearth:weapons:short_sword",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_short_sword_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ea_short_sword_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 16.5
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 35,
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_short_sword.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_short_sword.description)",
+         "icon": "file(ea_short_sword.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "steel",
+            "mainhand",
+            "melee_weapon",
+            "ea_made",
+            "sword",
+            "short",
+            "stockpile_weapon"
+         ]
+      }
+   }
+}

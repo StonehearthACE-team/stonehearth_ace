@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth_ace/entities/weapons/iron_short_sword/iron_short_sword_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_iron_short_sword.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_iron_short_sword.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_iron_short_sword.description)",
+         "icon": "file(ea_iron_short_sword.png)"
+      }
+   }
+}

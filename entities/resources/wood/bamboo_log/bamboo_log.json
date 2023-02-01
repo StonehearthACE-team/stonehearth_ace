@@ -1,0 +1,52 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bamboo_log.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 60
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.resources.wood.bamboo_log.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.wood.bamboo_log.description)",
+         "icon": "file(bamboo_log.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": [
+            "stockpile_wood",
+            "wood",
+            "bamboo",
+            "low_fuel",
+            "any_fuel",
+            "common_fuel",
+            "building_material",
+            "resource"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      },
+      "stonehearth_ace:fuel": {
+         "fuel_amount": 3
+      }
+   }
+}

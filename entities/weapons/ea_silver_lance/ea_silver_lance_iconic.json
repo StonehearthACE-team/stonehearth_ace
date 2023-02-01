@@ -1,0 +1,23 @@
+{
+   "mixins": "/stonehearth_ace/entities/weapons/silver_halberd/silver_halberd_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ea_silver_lance.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.ea_silver_lance.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.ea_silver_lance.description)",
+         "icon": "file(ea_silver_lance.png)"
+      }
+   }
+}
