@@ -96,6 +96,7 @@ function AceShop:stock_shop()
 
    -- get a table of all the items which can appear in a shop
    local rarity_weights = mercantile_constants.RARITY_WEIGHTS
+   local rarity_weights_override = {}
    local all_sellable_items = stonehearth.catalog:get_shop_buyable_items()
    local all_specific_sellable_items = stonehearth.catalog:get_shop_specific_buyable_items()
 
@@ -108,6 +109,10 @@ function AceShop:stock_shop()
    local options = self._sv.options
    local merchant_options = options.merchant_options
    if merchant_options then
+      if merchant_options.rarity_weights then
+         rarity_weights_override = merchant_options.rarity_weights
+      end
+
       if merchant_options.wanted_items then
          local def_price_factor = mercantile_constants.DEFAULT_WANTED_ITEM_PRICE_FACTOR
          for _, item in ipairs(merchant_options.wanted_items) do
@@ -182,7 +187,7 @@ function AceShop:stock_shop()
          -- randomly limit the number of different items to this amount
          local set = WeightedSet(rng)
          for _, item in ipairs(entry_items) do
-            set:add(item, rarity_weights[item.rarity])
+            set:add(item, rarity_weights_override[item.rarity] or rarity_weights[item.rarity])
          end
 
          local limited_items = {}
@@ -201,10 +206,10 @@ function AceShop:stock_shop()
    end
 
    for rarity, entities in pairs(shop_sold_items) do
-      local rarity_weight = math.ceil(rarity_weights[rarity])
+      local rarity_weight = math.ceil(rarity_weights_override[rarity] or rarity_weights[rarity])
       for uri, shop_item_data in pairs(entities) do
          -- for each item, have a chance to include it based on its rarity
-         local chance = rng:get_int(1, rarity_weights.common)
+         local chance = rng:get_int(1, rarity_weights_override.common or rarity_weights.common)
          if chance <= rarity_weight then
             local shop_item_description = shop_item_data.entity_description
             local quantity = shop_item_data.shop_data.quantity
