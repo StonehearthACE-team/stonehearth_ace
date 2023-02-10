@@ -114,20 +114,34 @@ function AceShop:stock_shop()
       end
 
       if merchant_options.wanted_items then
-         local def_price_factor = mercantile_constants.DEFAULT_WANTED_ITEM_PRICE_FACTOR
+         local wanted_items = {}
+         local maybe_wanted_items = {}
          for _, item in ipairs(merchant_options.wanted_items) do
             -- copy the entries because we'll want to modify the quantity
             -- and ignore any items with a price factor of 1
-            if item.price_factor ~= 1 and (not item.chance or rng:get_real(0, 1) <= item.chance) and
-                  (not merchant_options.max_wanted_items or #self._sv.wanted_items < merchant_options.max_wanted_items) then
-               table.insert(self._sv.wanted_items, {
+            if item.price_factor ~= 1 then
+               if not item.chance then
+                  table.insert(wanted_items, item)
+               elseif rng:get_real(0, 1) < item.chance then
+                  table.insert(maybe_wanted_items, item)
+               end
+            end
+         end
+
+         while #maybe_wanted_items > 0 and (not merchant_options.max_wanted_items or #wanted_items < merchant_options.max_wanted_items) do
+            table.insert(wanted_items, table.remove(maybe_wanted_items, rng:get_int(1, #maybe_wanted_items)))
+         end
+
+         local def_price_factor = mercantile_constants.DEFAULT_WANTED_ITEM_PRICE_FACTOR
+         for _, item in ipairs(wanted_items) do
+            table.insert(self._sv.wanted_items, 
+               {
                   material = item.material,
                   uri = item.uri,
                   price_factor = item.price_factor or def_price_factor,
                   max_quantity = item.max_quantity,
                   quantity = 0,
                })
-            end
          end
       end
 
