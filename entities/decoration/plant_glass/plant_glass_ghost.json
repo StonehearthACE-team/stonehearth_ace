@@ -1,7 +1,6 @@
 {
    "mixins": "stonehearth:mixins:placed_object",
    "components": {
-
       "model_variants": {
          "violet": {
             "models": [
@@ -24,7 +23,6 @@
             ]
          }
       },
-   
       "stonehearth_ace:entity_modification": {
          "model_variants": {
             "stonehearth:resources:herb:violet": "violet",
@@ -32,7 +30,6 @@
             "stonehearth:resources:herb:frostsnap": "frostsnap"
          }
       },
-     
       "render_info": {
          "scale": 0.09,
          "color_map": "stonehearth_ace:color_map:ace",
@@ -40,7 +37,6 @@
             "/stonehearth/data/materials/material_maps/glass_material_map.json"
          ]
       },
-
       "mob": {
          "model_origin": { "x": -0.05, "y": 0, "z": 0 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
@@ -52,7 +48,13 @@
          "description": "i18n(stonehearth_ace:entities.decoration.plant_glass.plant_glass_ghost.description)",
          "icon": "file(plant_glass.png)",
          "category": "decoration",
-         "material_tags":["decoration", "crafted", "plant", "stockpile_decoration"]
+         "material_tags": [
+            "decoration",
+            "crafted",
+            "comfy",
+            "plant",
+            "stockpile_decoration"
+         ]
       }
    }
 }

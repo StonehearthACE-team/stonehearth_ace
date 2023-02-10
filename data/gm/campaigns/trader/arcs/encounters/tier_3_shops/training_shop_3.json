@@ -8,75 +8,144 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_3_shops.training_shop_3.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 3,
-         "shopkeeper_gold": 1200,
-         "overall_price_multiplier": 1.8,
+         "shopkeeper_gold": 970,
+         "overall_price_multiplier": 1.7,
          "entries": [
             {
                "items": [
                   "stonehearth:footman:wooden_sword_talisman",
 						"stonehearth_ace:footman:talisman:clay",
-                  "stonehearth:archer:talisman",
-						"stonehearth:armor:wooden_shield",
-						"stonehearth:containers:wheat_pile",
-                  "stonehearth_ace:containers:thatch_pile",
-						"stonehearth:knight:talisman"
-               ],
-               "quantity": {
-                  "min": 2,
-                  "max": 4
-               }
-            },
-			{
-               "items": [
-                  "stonehearth:consumables:coarse_bandage",
-						"stonehearth:consumables:light_bandage",
-						"stonehearth:consumables:healing_tonic:small"
+                  "stonehearth_ace:footman:talisman:stone"
                ],
                "quantity": {
                   "min": 1,
-                  "max": 6
+                  "max": 2,
+                  "max_unique": 1
                },
-					"price_multiplier": 2
+               "fine_item_chance": 0,
+               "price_multiplier": 3
             },
-			{
+            {
                "items": [
-                  "stonehearth:consumables:heavy_bandage",
-						"stonehearth:consumables:strength_tonic",
-						"stonehearth:consumables:courage_tonic"
+                  "stonehearth:archer:talisman"
                ],
                "quantity": {
-                  "min": 0,
+                  "min": 1,
+                  "max": 2
+               },
+               "fine_item_chance": 0,
+               "price_multiplier": 3.2
+            },
+            {
+               "items": [
+                  "stonehearth:knight:talisman",
+                  "stonehearth:cleric:talisman"
+               ],
+               "quantity": {
+                  "min": 1,
                   "max": 1
                },
-					"price_multiplier": 3.5
+               "fine_item_chance": 0,
+               "price_multiplier": 4
             },
-			{
+			   {
+               "items": [
+                  "stonehearth_ace:consumables:fine_ointment",
+						"stonehearth:consumables:light_bandage",
+                  "stonehearth:consumables:heavy_bandage",
+						"stonehearth:consumables:healing_tonic:small",
+                  "stonehearth_ace:consumables:healing_tonic"
+               ],
+               "quantity": {
+                  "min": 3,
+                  "max": 6,
+                  "max_unique": 3
+               }
+            },
+			   {
+               "items": [
+						"stonehearth:consumables:strength_tonic",
+                  "stonehearth:consumables:stamina_tonic",
+                  "stonehearth_ace:consumables:energy_tonic_2",
+                  "stonehearth_ace:consumables:curiosity_tonic"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 3
+               },
+					"price_multiplier": 2.8
+            },
+            {
+               "items": [
+						"stonehearth:decoration:valor_statue:brazier_large",
+                  "stonehearth:decoration:valor_statue:wall_hanging_plaque",
+                  "stonehearth:portals:valor_statue:portcullis_valor",
+                  "stonehearth:portals:valor_statue:window_frame_xlarge",
+                  "stonehearth_ace:decoration:wall_axe"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 3
+               },
+					"price_multiplier": 3
+            },
+            {
+               "items": [
+                  "stonehearth:decoration:valor_statue:torch",
+                  "stonehearth:portals:valor_statue:window_arrow_short",
+                  "stonehearth:portals:valor_statue:window_arrow_tall",
+                  "stonehearth:portals:valor_statue:window_frame_barred",
+                  "stonehearth_ace:decoration:wall_shield"
+               ],
+               "quantity": {
+                  "min": 3,
+                  "max": 6,
+                  "max_unique": 3
+               },
+					"price_multiplier": 2.8
+            },
+			   {
                "items": [
                   "stonehearth_ace:furniture:sleeping_bag"
                ],
                "quantity": {
-                  "min": 2,
-                  "max": 8
+                  "min": 3,
+                  "max": 6
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:weapons:cleric_tome_3"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 1
                }
             },
             {
                "items": [
                   "stonehearth_ace:gizmos:training_target",
+                  "stonehearth_ace:gizmos:stone_training_target",
+                  "stonehearth_ace:gizmos:clay_training_target"
+               ],
+               "quantity": {
+                  "min": 3,
+                  "max": 6,
+                  "max_unique": 1
+               }
+            },
+			   {
+               "items": [
+						"stonehearth_ace:gizmos:stone_training_dummy",
+                  "stonehearth_ace:gizmos:clay_training_dummy",
                   "stonehearth_ace:gizmos:training_dummy"
                ],
                "quantity": {
-                  "min": 5,
-                  "max": 8
-               }
-            },
-			{
-               "items": [
-						"stonehearth_ace:gizmos:clay_training_target",
-                  "stonehearth_ace:gizmos:clay_training_dummy"
-               ],
-               "quantity": {
-                  "min": 2,
-                  "max": 4
+                  "min": 6,
+                  "max": 10,
+                  "max_unique": 1
                }
             }
          ]

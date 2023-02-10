@@ -1,0 +1,121 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:base_human_npc",
+   "components": {
+      "render_info": {
+         "animation_table": "stonehearth:skeletons:humanoid:male"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "/rayyas_children/entities/npc/herald/male/herald_naryal.qb"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "mixintypes": {
+         "stonehearth:ai_packs": "override",
+         "stonehearth:idle_effects": "override"
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:humanoid",
+            "stonehearth:ai_pack:conversation",
+            "stonehearth:ai_pack:injury",
+            "stonehearth:ai_pack:death",
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects"
+         ]
+      },
+      "stonehearth:conversation_type": "humanoid",
+      "stonehearth:idle_effects": {
+         "effects": [
+            {
+               "name": "emote_applaud_upward",
+               "weight": 0.5
+            },
+            {
+               "name": "emote_applaud",
+               "weight": 0.5
+            },
+            {
+               "name": "idle_look_around",
+               "weight": 1
+            },
+            {
+               "name": "emote_count",
+               "weight": 1
+            },
+            {
+               "name": "emote_complete",
+               "weight": 1
+            },
+            {
+               "name": "emote_concerned",
+               "weight": 0.5
+            },
+            {
+               "name": "yawn",
+               "weight": 0.5
+            },
+            {
+               "name": "emote_browwipe",
+               "weight": 0.5
+            },
+            {
+               "name": "emote_delighted",
+               "weight": 1
+            },
+            {
+               "name": "emote_fistpump",
+               "weight": 1
+            },
+            {
+               "name": "emote_proud",
+               "weight": 1
+            },
+            {
+               "name": "emote_readiness",
+               "weight": 1
+            },
+            {
+               "name": "emote_shout",
+               "weight": 1.5
+            },
+            {
+               "name": "emote_wave",
+               "weight": 1.5
+            },
+            {
+               "name": "talk_consideration",
+               "weight": 1
+            },
+            {
+               "name": "talk_exclamation",
+               "weight": 1
+            },
+            {
+               "name": "talk_generic",
+               "weight": 1
+            },
+            {
+               "name": "talk_listen",
+               "weight": 1
+            },
+            {
+               "name": "whistle",
+               "weight": 2
+            }
+         ]
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(rayyas_children:entities.npc.herald.male.herald_naryal.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.merchants.male.naryal_iskender.description)",
+         "icon": "/rayyas_children/entities/npc/herald/male/herald_naryal.png",
+         "material_tags": [
+            "merchant"
+         ]
+      }
+   }
+}

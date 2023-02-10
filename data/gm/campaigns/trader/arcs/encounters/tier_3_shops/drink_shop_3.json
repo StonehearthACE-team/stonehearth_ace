@@ -8,8 +8,8 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_3_shops.drink_shop_3.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 3,
-         "shopkeeper_gold": 1150,
-		 "overall_price_multiplier": 1.1,
+         "shopkeeper_gold": 1370,
+		   "overall_price_multiplier": 2.1,
          "entries": [
 				{
                "items_matching": {
@@ -18,14 +18,16 @@
                         "brewing_ingredient"
                      ],
                      "material": [
-                        "brewing_ingredient"
+                        "malt"
                      ]
                   }
                },
                "quantity": {
-                  "min": 6,
-                  "max": 12
-               }
+                  "min": 4,
+                  "max": 12,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0.4
             },
 				{
                "items_matching": {
@@ -39,9 +41,11 @@
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 8
-               }
+                  "min": 2,
+                  "max": 4,
+                  "max_unique": 1
+               },
+               "fine_item_chance": 0.7
             },
 				{
                "items_matching": {
@@ -51,13 +55,20 @@
                      ],
                      "material": [
                         "raw_drink"
+                     ],
+                     "exclude_material": [
+                        "tea",
+                        "coffee",
+                        "milk"
                      ]
                   }
                },
                "quantity": {
-                  "min": 4,
-                  "max": 10
-               }
+                  "min": 6,
+                  "max": 12,
+                  "max_unique": 6
+               },
+               "fine_item_chance": 0.6
             },
 				{
                "items_matching": {
@@ -67,28 +78,59 @@
                      ],
                      "material": [
                         "prepared_drink"
+                     ],
+                     "exclude_material": [
+                        "tea",
+                        "coffee"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 4,
+                  "max": 10,
+                  "max_unique": 10
+               },
+               "fine_item_chance": 0.8
+            },
+            {
+               "items_matching": {
+                  "drink_container": {
+                     "category": [
+                        "drink"
+                     ],
+                     "material": [
+                        "tea",
+                        "standard"
                      ]
                   }
                },
                "quantity": {
                   "min": 0,
-                  "max": 12
-               }
+                  "max": 2,
+                  "max_unique": 1
+               },
+               "fine_item_chance": 1
             },
-				{
+            {
                "items": [
-                  "stonehearth_ace:drink:spirit",
-						"stonehearth_ace:drink:spirit_fruit",
-						"stonehearth_ace:drink:liquor",
-						"stonehearth_ace:drink:ale",
-						"stonehearth_ace:drink:beer",
-						"stonehearth_ace:drink:mead",
-						"stonehearth_ace:drink:mead_fruit"
+                  "stonehearth_ace:drink:ale:serving_keg",
+						"stonehearth_ace:drink:ale_pale:serving_keg",
+						"stonehearth_ace:drink:beer:serving_keg",
+						"stonehearth_ace:drink:beer_buttered:serving_keg",
+						"stonehearth_ace:drink:beer_opaque:serving_keg",
+						"stonehearth_ace:drink:liqueur_almond:serving_keg",
+                  "stonehearth_ace:drink:liquor:serving_keg",
+                  "stonehearth_ace:drink:spirit:serving_keg",
+                  "stonehearth_ace:drink:spirit_fruit:serving_keg",
+                  "stonehearth_ace:drink:spirit_northern:serving_keg",
+                  "stonehearth_ace:drink:spirit_sugar:serving_keg"
                ],
                "quantity": {
-                  "min": 4,
-                  "max": 12
-               }
+                  "min": 2,
+                  "max": 6,
+                  "max_unique": 4
+               },
+               "fine_item_chance": 0.8
             },
 				{
                "items": [
@@ -101,7 +143,8 @@
                ],
                "quantity": {
                   "min": 2,
-                  "max": 6
+                  "max": 3,
+                  "max_unique": 3
                }
             },
 				{
@@ -114,9 +157,10 @@
 						"stonehearth_ace:amphora_red"
                ],
                "quantity": {
-                  "min": 4,
-                  "max": 8
-               }
+                  "min": 2,
+                  "max": 2
+               },
+               "max_unique": 3
             },
 				{
                "items": [
@@ -127,8 +171,9 @@
 						"stonehearth_ace:containers:input_cask:stone"
                ],
                "quantity": {
-                  "min": 0,
-                  "max": 4
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 2
                }
             }
          ]

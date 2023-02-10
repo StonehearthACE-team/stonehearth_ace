@@ -30,10 +30,10 @@ function AceShopService:_item_in_material_filter(entity_description, filter)
          -- split this material and check each individual tag
          -- ALL individual tags for this material must match to exclude
          local exclude_tags = radiant.util.split_string(exclude_material)
-         local exclude = false
+         local exclude = true
          for _, tag in ipairs(exclude_tags) do
             if not materials[tag] then
-               exclude = true
+               exclude = false
                break
             end
          end

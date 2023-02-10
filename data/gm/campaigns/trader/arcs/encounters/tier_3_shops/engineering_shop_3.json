@@ -9,101 +9,97 @@
       "inventory": {
          "shopkeeper_level": 3,
          "shopkeeper_gold": 1450,
-		 "overall_price_multiplier": 1.2,
+		   "overall_price_multiplier": 2.45,
          "entries": [
-		    {
-               "items": [
-                  "stonehearth:engineer:talisman"
-               ],
-               "quantity": {
-                  "min": 1,
-                  "max": 1
-               }
-            },
             {
                "items": [
                   "stonehearth:refined:bronze_gear",
-				  "stonehearth:refined:iron_gear"
+				      "stonehearth:refined:iron_gear"
                ],
                "quantity": {
-                  "min": 8,
-                  "max": 16
-               }
+                  "min": 12,
+                  "max": 20
+               },
+               "fine_item_chance": 0.7,
+               "price_multiplier": 1.8
             },
-			{
+			   {
                "items": [
                   "stonehearth_ace:refined:lock"
                ],
                "quantity": {
-                  "min": 2,
-                  "max": 8
-               }
+                  "min": 6,
+                  "max": 14
+               },
+               "fine_item_chance": 0.5,
+               "price_multiplier": 1.9
             },
-			{
+			   {
                "items": [
                   "stonehearth:refined:copper_ingot"
                ],
                "quantity": {
-                  "min": 6,
-                  "max": 10
-               }
-            },
-			{
-               "items": [
-                  "stonehearth:refined:tin_ingot",
-				  "stonehearth:refined:bronze_ingot"
-               ],
-               "quantity": {
                   "min": 4,
-                  "max": 8
+                  "max": 6
                }
             },
-			{
+			   {
                "items": [
+				      "stonehearth:refined:bronze_ingot",
                   "stonehearth:refined:iron_ingot",
-				  "stonehearth:refined:steel_ingot"
+                  "stonehearth:refined:steel_ingot"
                ],
                "quantity": {
-                  "min": 0,
+                  "min": 2,
+                  "max": 4,
+                  "max_unique": 2
+               }
+            },
+			   {
+               "items": [
+                  "stonehearth:gizmos:critter_trap",
+				      "stonehearth_ace:gizmos:decoy_trap"
+               ],
+               "quantity": {
+                  "min": 2,
                   "max": 4
                }
             },
-			{
+			   {
                "items": [
-                  "stonehearth:gizmos:critter_trap",
-				  "stonehearth_ace:gizmos:decoy_trap"
+                  "stonehearth:gizmos:turnip_shooter",
+				      "stonehearth:gizmos:clamp_trap"
                ],
                "quantity": {
                   "min": 1,
                   "max": 3
                }
             },
-			{
+            {
                "items": [
-                  "stonehearth:gizmos:turnip_shooter",
-				  "stonehearth:gizmos:clamp_trap"
+                  "stonehearth:gizmos:small_turret"
                ],
                "quantity": {
-                  "min": 0,
+                  "min": 1,
                   "max": 2
                }
             },
-			{
+			   {
                "items": [
                   "stonehearth_ace:refined:brass_plate"
                ],
                "quantity": {
-                  "min": 4,
+                  "min": 3,
                   "max": 10
                }
             },
-			{
+			   {
                "items": [
                   "stonehearth_ace:refined:steel_plate"
                ],
                "quantity": {
                   "min": 0,
-                  "max": 6
+                  "max": 8
                }
             },
             {
@@ -115,41 +111,63 @@
                   }
                },
                "quantity": {
-                  "min": 0,
+                  "min": 2,
                   "max": 8
                }
             },
-			{
-               "items_matching": {
-                  "fluid_control": {
-                     "category": [
-                        "mechanism"
-                     ],
-					 "material": [
-						"axle"
-					 ]
-                  }
-               },
+            {
+               "items": [
+                  "stonehearth:containers:vault"
+               ],
                "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
+                  "min": 1,
+                  "max": 2
+               },
+               "fine_item_chance": 0.75
             },
-			{
+            {
+               "items": [
+                  "stonehearth_ace:containers:refrigerator:small",
+                  "stonehearth_ace:containers:refrigerator"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 3
+               },
+               "fine_item_chance": 0.6
+            },
+            {
                "items_matching": {
-                  "fluid_control": {
+                  "crossbows": {
                      "category": [
-                        "mechanism"
+                        "weapons"
                      ],
-					 "material": [
-						"sources"
-					 ]
+                     "material": [
+                        "crossbow",
+                        "steel"
+                     ]
                   }
                },
                "quantity": {
+                  "min": 1,
+                  "max": 2
+               },
+               "price_multiplier": 2.6,
+               "fine_item_chance": 1
+            },
+            {
+               "items": [
+				      "stonehearth_ace:portals:bronze_portcullis:large",
+                  "stonehearth_ace:portals:valor_statue:portcullis_valor:large",
+                  "stonehearth:portals:bronze_portcullis",
+                  "stonehearth:portals:valor_statue:portcullis_valor"
+               ],
+               "quantity": {
                   "min": 0,
-                  "max": 1
-               }
+                  "max": 2,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0.5
             }
          ]
       }

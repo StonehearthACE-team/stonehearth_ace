@@ -1,0 +1,78 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "render_info": {},
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(../../tier_1/no_backpack.qb)",
+                     "file(../../tier_1/no_backpack.qb)",
+                     "file(backpack_1.qb)",
+                     "file(backpack_2.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(clothing_1.qb)",
+                     "file(clothing_2.qb)",
+                     "file(clothing_3.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(../../tier_3/boots_1.qb)",
+                     "file(../../tier_3/boots_2.qb)",
+                     "file(../../tier_3/boots_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(../../tier_1/no_backpack.qb)",
+                     "file(../../tier_1/no_backpack.qb)",
+                     "file(backpack_1_female.qb)",
+                     "file(backpack_2_female.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(clothing_1_female.qb)",
+                     "file(clothing_2_female.qb)",
+                     "file(clothing_3_female.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(../../tier_3/boots_1_female.qb)",
+                     "file(../../tier_3/boots_2_female.qb)",
+                     "file(../../tier_3/boots_3_female.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "torso",
+         "render_type": "merge_with_model",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:sunstroke_resist",
+            "stonehearth_ace:buffs:weather:cold_resist"
+         ]
+      }
+   },
+   "entity_data": {}
+}

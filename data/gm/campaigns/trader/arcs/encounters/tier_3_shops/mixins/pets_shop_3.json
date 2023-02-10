@@ -7,29 +7,51 @@
       },
       "inventory": {
          "shopkeeper_level": 3,
-         "shopkeeper_gold": 1400,
+         "shopkeeper_gold": 800,
+		   "overall_price_multiplier": 2.5,
          "entries": [
             {
                "items": [
-                  "stonehearth:pets:kitten"
+                  "stonehearth:pets:sheep",
+                  "stonehearth:pets:rabbit",
+                  "stonehearth:pets:poyo",
+                  "stonehearth_ace:pets:oinker_mini",
+                  "stonehearth_ace:pets:duck"
                ],
                "quantity": {
                   "min": 1,
-                  "max": 1
-               }
+                  "max": 3,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0
             },
             {
-               "items_matching": {
-                  "pets": {
-                     "category": [
-                        "pets"
-                     ]
-                  }
-               },
+               "items": [
+                  "stonehearth:pets:kitten",
+                  "stonehearth:pets:collie"
+               ],
                "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
+                  "min": 1,
+                  "max": 2
+               },
+               "fine_item_chance": 0
+            },
+            {
+               "items": [
+                  "stonehearth:pets:boar",
+                  "stonehearth:pets:cougar",
+                  "stonehearth:pets:duckduck",
+                  "stonehearth:pets:ostrich",
+                  "stonehearth:pets:mammoth",
+                  "stonehearth_ace:pets:wombat",
+                  "stonehearth_ace:pets:monkey"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0
             }
          ]
       }

@@ -7,8 +7,8 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_3_shops.lumberjacking_shop_3.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 3,
-         "shopkeeper_gold": 850,
-		   "overall_price_multiplier": 1.1,
+         "shopkeeper_gold": 830,
+		   "overall_price_multiplier": 1.5,
          "entries": [
             {
                "items_matching": {
@@ -22,10 +22,80 @@
                   }
                },
                "quantity": {
+                  "min": 12,
+                  "max": 18,
+                  "max_unique": 6
+               },
+               "fine_item_chance": 0.6
+            },
+            {
+               "items": [
+                  "stonehearth_ace:trees:willow:seed",
+                  "stonehearth_ace:trees:parana_pine:seed",
+                  "stonehearth_ace:trees:arctic_juniper:seed",
+                  "stonehearth_ace:trees:arctic_pine:seed",
+                  "stonehearth_ace:trees:birch:seed",
+                  "stonehearth_ace:trees:highland_pine:seed",
+                  "stonehearth_ace:trees:yew:seed",
+                  "stonehearth:trees:acacia:seed",
+                  "stonehearth:trees:gold:juniper:seed",
+                  "stonehearth:trees:gold:pine:seed",
+                  "stonehearth:trees:juniper:seed",
+                  "stonehearth:trees:oak:seed",
+                  "stonehearth:trees:pine:seed",
+                  "stonehearth:trees:silver:pine:seed",
+                  "stonehearth:trees:snowy:juniper:seed",
+                  "stonehearth:trees:snowy:pine:seed"
+               ],
+               "quantity": {
+                  "min": 2,
+                  "max": 6,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0.3
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:fuel:bundle_of_firewood"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 36
+               },
+               "fine_item_chance": 0
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:bough_bale",
+                  "stonehearth_ace:resources:bough_bale:evergreen"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 24
+               },
+               "fine_item_chance": 0
+            },
+            {
+               "items": [
+                  "stonehearth_ace:consumables:captive:bees"
+
+               ],
+               "quantity": {
                   "min": 0,
-                  "max": 12
-               }
-            }
+                  "max": 1
+               },
+               "fine_item_chance": 1
+            },
+            {
+               "items": [
+                  "stonehearth_ace:food:honey:wild"                
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 6
+               },
+               "fine_item_chance": 1
+            }             
          ]
       }
    }

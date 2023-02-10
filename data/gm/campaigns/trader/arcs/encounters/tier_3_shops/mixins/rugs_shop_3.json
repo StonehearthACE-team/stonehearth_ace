@@ -7,17 +7,99 @@
       },
       "inventory": {
          "shopkeeper_level": 3,
-         "shopkeeper_gold": 1300,
+         "shopkeeper_gold": 1250,
+		   "overall_price_multiplier": 2.3,
          "entries": [
             {
                "items": [
                   "stonehearth:refined:thread",
+                  "stonehearth_ace:refined:yarn"
+               ],
+               "quantity": {
+                  "min": 12,
+                  "max": 32
+               },
+               "fine_item_chance": 0.5
+            },
+            {
+               "items": [
                   "stonehearth:refined:cloth_bolt"
                ],
                "quantity": {
                   "min": 10,
                   "max": 20
+               },
+               "fine_item_chance": 0.7
+            },
+            {
+               "items": [
+                  "stonehearth_ace:refined:fine_stuffing",
+                  "stonehearth:refined:leather_bolt"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 16
+               },
+               "fine_item_chance": 0.6
+            },
+            {
+               "items": [
+                  "stonehearth_ace:tools:backpack_cloth",
+                  "stonehearth_ace:tools:backpack_leather"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 4
                }
+            },
+            {
+               "items": [
+                  "stonehearth:toys:plushie_toy_rabbit"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 4
+               },
+               "fine_item_chance": 1
+            },
+            {
+               "items": [
+                  "stonehearth_ace:furniture:sleeping_bag",
+                  "stonehearth_ace:portals:curtain_door",
+                  "stonehearth_ace:portals:double_curtain_door",
+                  "stonehearth_ace:portals:ornate_curtain_door",
+                  "stonehearth_ace:portals:ornate_double_curtain_door",
+                  "stonehearth:containers:input_bin:woven",
+                  "stonehearth:containers:input_bin:woven_blue",
+                  "stonehearth:containers:input_bin:woven_green",
+                  "stonehearth:containers:input_bin:woven_red"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 6,
+                  "max_unique": 6
+               },
+               "fine_item_chance": 0.6
+            },
+            {
+               "items_matching": {
+                  "civillian_clothes": {
+                     "category": [
+                        "armor"
+                     ],
+                     "material": [
+                        "civillian_equipment",
+                        "cloth"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 2,
+                  "max": 4,
+                  "max_unique": 6
+               },
+               "price_multiplier": 2,
+               "fine_item_chance": 0.75
             },
             {
                "items_matching": {
@@ -26,14 +108,18 @@
                         "armor"
                      ],
                      "material": [
+                        "light_armor",
                         "cloth"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 3
-               }
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 3
+               },
+               "price_multiplier": 2.5,
+               "fine_item_chance": 1
             },
             {
                "items_matching": {
@@ -48,8 +134,11 @@
                },
                "quantity": {
                   "min": 0,
-                  "max": 3
-               }
+                  "max": 5,
+                  "max_unique": 8
+               },
+               "price_multiplier": 1.8,
+               "fine_item_chance": 0.6
             }
          ]
       }

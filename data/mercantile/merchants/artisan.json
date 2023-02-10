@@ -10,11 +10,37 @@
          ],
          "min_city_tier": 1,
          "weight": 2,
-         "cooldown": 2,
+         "cooldown": 3,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/rugs_shop_1.json",
          "shoptions": {
             "stall_model": "rugs_shop",
-            "wanted_items": []
+            "max_wanted_items": 2,
+            "wanted_items": [
+               {
+                  "material": "fiber spinnable resource",
+                  "price_factor": 1.9,
+                  "max_quantity": 18,
+                  "chance": 0.8
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.6,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -33,16 +59,87 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_1_outfit",
-            "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
          ],
          "min_city_tier": 2,
-         "weight": 2,
+         "weight": 4,
          "cooldown": 3,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/tannery_shop_1.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 4
+            },
             "stall_model": "tannery_shop",
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "fiber spinnable resource",
+                  "price_factor": 2,
+                  "max_quantity": 16,
+                  "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth_ace:tools:weaver_spindle_steel",
+                  "price_factor": 1.5,
+                  "max_quantity": 2,
+                  "chance": 0.3
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 2,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "summer_hat crafter_outfit civillian_equipment",
+                  "price_factor": 1.75,
+                  "max_quantity": 5,
+                  "chance": 0.4
+               },
+               {
+                  "material": "comfy furniture",
+                  "price_factor": 1.5,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:consumables:energy_tonic",
+                  "price_factor": 1.8,
+                  "max_quantity": 2,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:creativity_tonic",
+                  "price_factor": 1.8,
+                  "max_quantity": 2,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.8,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit crafter_outfit civillian_equipment",
+                  "price_factor": 1.6,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "comfy stockpile_decoration",
+                  "price_factor": 1.75,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               }
+            ]
          }
       },
       "rugs_shop_3": {
@@ -54,12 +151,118 @@
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
          ],
          "min_city_tier": 3,
-         "weight": 3,
-         "cooldown": 4,
+         "weight": 5,
+         "cooldown": 7,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/rugs_shop_3.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 3
+            },
             "stall_model": "rugs_shop",
-            "wanted_items": []
+            "max_wanted_items": 6,
+            "wanted_items": [
+               {
+                  "material": "fiber spinnable resource",
+                  "price_factor": 2,
+                  "max_quantity": 16
+               },
+               {
+                  "uri": "stonehearth_ace:tools:weaver_spindle_steel",
+                  "price_factor": 1.6,
+                  "max_quantity": 3,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:resources:fiber:silkweed_bundle",
+                  "price_factor": 3,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:drink:tea_black",
+                  "price_factor": 2.2,
+                  "max_quantity": 3,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:resources:fiber:coarse_fiber_bundle",
+                  "price_factor": 3,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:fiber:wool_bundle",
+                  "price_factor": 3,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:fiber:cotton_bundle",
+                  "price_factor": 3,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 2,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "summer_hat crafter_outfit civillian_equipment",
+                  "price_factor": 1.75,
+                  "max_quantity": 5,
+                  "chance": 0.4
+               },
+               {
+                  "material": "fancy furniture",
+                  "price_factor": 1.5,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:energy_tonic_2",
+                  "price_factor": 1.8,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:creativity_tonic_2",
+                  "price_factor": 1.8,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.8,
+                  "max_quantity": 8,
+                  "chance": 0.2
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.2
+               },
+               {
+                  "material": "freezing_outfit crafter_outfit civillian_equipment",
+                  "price_factor": 1.6,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "fancy stockpile_decoration",
+                  "price_factor": 1.75,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fancy portal",
+                  "price_factor": 2,
+                  "max_quantity": 3,
+                  "chance": 0.2
+               }
+            ]
          }
       },
       "blacksmith_shop_1": {
@@ -71,12 +274,44 @@
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
          ],
          "min_city_tier": 1,
-         "weight": 1,
-         "cooldown": 2,
+         "weight": 2,
+         "cooldown": 5,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/blacksmith_shop_1.json",
          "shoptions": {
             "stall_model": "blacksmith_shop",
-            "wanted_items": []
+            "max_wanted_items": 2,
+            "wanted_items": [
+               {
+                  "material": "ore resource",
+                  "price_factor": 1.75,
+                  "max_quantity": 28,
+                  "chance": 0.8
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.6,
+                  "max_quantity": 15,
+                  "chance": 0.8
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.7
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 10,
+                  "chance": 0.5
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -99,29 +334,232 @@
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
          ],
          "min_city_tier": 2,
-         "weight": 2,
-         "cooldown": 3,
+         "weight": 4,
+         "cooldown": 6,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/blacksmith_shop_2.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 4
+            },
             "stall_model": "blacksmith_shop",
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "ore resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 32,
+                  "chance": 0.9
+               },
+               {
+                  "uri": "stonehearth_ace:tools:blacksmith_hammer_steel",
+                  "price_factor": 1.7,
+                  "max_quantity": 1,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:iron:ore",
+                  "price_factor": 3,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:resources:silver:ore",
+                  "price_factor": 3,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.8,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.6,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 2,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },
+               {
+                  "material": "summer_hat crafter_outfit civillian_equipment",
+                  "price_factor": 1.6,
+                  "max_quantity": 3,
+                  "chance": 0.4
+               },
+               {
+                  "material": "comfy furniture",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:consumables:strength_tonic",
+                  "price_factor": 2,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth:consumables:stamina_tonic",
+                  "price_factor": 2,
+                  "max_quantity": 2,
+                  "chance": 0.3
+               },
+               {
+                  "material": "freezing_outfit crafter_outfit civillian_equipment",
+                  "price_factor": 1.5,
+                  "max_quantity": 3,
+                  "chance": 0.4
+               },
+               {
+                  "material": "comfy stockpile_decoration",
+                  "price_factor": 2,
+                  "max_quantity": 5,
+                  "chance": 0.3
+               }
+            ]
          }
       },
       "blacksmith_shop_3": {
          "category": "artisan",
-         "population_role": "merchant",
-         "use_shop_description": true,
-         "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_3_outfit",
-            "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
-         ],
+         "population_role": "merchant_fernand_the_great",
+         "population_gender": "male",
          "min_city_tier": 3,
-         "weight": 3,
-         "cooldown": 4,
+         "weight": 5,
+         "cooldown": 7,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/blacksmith_shop_3.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 3
+            },
             "stall_model": "blacksmith_shop",
-            "wanted_items": []
+            "max_wanted_items": 6,
+            "wanted_items": [
+               {
+                  "material": "ore resource",
+                  "price_factor": 2,
+                  "max_quantity": 24
+               },
+               {
+                  "uri": "stonehearth_ace:tools:blacksmith_hammer_steel",
+                  "price_factor": 1.8,
+                  "max_quantity": 2,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:resources:iron:ore",
+                  "price_factor": 3,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:drink:beer",
+                  "price_factor": 2,
+                  "max_quantity": 5,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:resources:gold:ore",
+                  "price_factor": 3,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:silver:ore",
+                  "price_factor": 3,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.8,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "material": "high_fuel",
+                  "price_factor": 2,
+                  "max_quantity": 4,
+                  "chance": 0.2
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.6,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 2,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "material": "thread resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "summer_hat crafter_outfit civillian_equipment",
+                  "price_factor": 1.6,
+                  "max_quantity": 3,
+                  "chance": 0.4
+               },
+               {
+                  "material": "fancy furniture",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:strength_tonic_2",
+                  "price_factor": 2,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:stamina_tonic_2",
+                  "price_factor": 2,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               },
+               {
+                  "material": "freezing_outfit crafter_outfit civillian_equipment",
+                  "price_factor": 1.5,
+                  "max_quantity": 3,
+                  "chance": 0.4
+               },
+               {
+                  "material": "fancy stockpile_decoration",
+                  "price_factor": 2,
+                  "max_quantity": 5,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fancy portal",
+                  "price_factor": 2.2,
+                  "max_quantity": 4,
+                  "chance": 0.2
+               }
+            ]
          }
       },
       "engineering_shop_1": {
@@ -130,15 +568,47 @@
          "use_shop_description": true,
          "equipment": [
             "stonehearth_ace:outfits:merchant:tier_1_outfit",
-            "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
+            "stonehearth_ace:outfits:merchant:engineer_outfit:hat"
          ],
          "min_city_tier": 1,
          "weight": 1,
-         "cooldown": 2,
+         "cooldown": 5,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/engineering_shop_1.json",
          "shoptions": {
             "stall_model": "engineering_shop",
-            "wanted_items": []
+            "max_wanted_items": 2,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.8
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.7,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.35,
+                  "max_quantity": 12,
+                  "chance": 0.7
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 1.6,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -157,33 +627,235 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_2_outfit",
-            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+            "stonehearth_ace:outfits:merchant:engineer_outfit",
+            "stonehearth_ace:outfits:merchant:engineer_outfit:hat"
          ],
          "min_city_tier": 2,
-         "weight": 2,
-         "cooldown": 3,
+         "weight": 3,
+         "cooldown": 6,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/engineering_shop_2.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 4
+            },
             "stall_model": "engineering_shop",
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.8,
+                  "max_quantity": 12
+               },
+               {
+                  "uri": "stonehearth_ace:tools:engineer_wrench_steel",
+                  "price_factor": 1.7,
+                  "max_quantity": 2,
+                  "chance": 0.3
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.8,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.5,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:refined:bronze_ingot",
+                  "price_factor": 2.2,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:hard",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "material": "freezing_outfit crafter_outfit civillian_equipment",
+                  "price_factor": 1.2,
+                  "max_quantity": 5,
+                  "chance": 0.5
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "summer_hat crafter_outfit civillian_equipment",
+                  "price_factor": 1.3,
+                  "max_quantity": 3,
+                  "chance": 0.5
+               },
+               {
+                  "material": "comfy furniture",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:creativity_tonic",
+                  "price_factor": 1.6,
+                  "max_quantity": 1,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:consumables:energy_tonic",
+                  "price_factor": 1.5,
+                  "max_quantity": 1,
+                  "chance": 0.3
+               },
+               {
+                  "material": "comfy stockpile_decoration",
+                  "price_factor": 1.9,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               }
+            ]
          }
       },
       "engineering_shop_3": {
          "category": "artisan",
-         "population_role": "merchant",
-         "use_shop_description": true,
-         "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_3_outfit",
-            "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
-         ],
+         "population_role": "merchant_artificer_wrynn",
+         "population_gender": "male",
          "min_city_tier": 3,
-         "weight": 3,
-         "cooldown": 4,
+         "weight": 4,
+         "cooldown": 7,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/engineering_shop_3.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 3
+            },
             "stall_model": "engineering_shop",
-            "wanted_items": []
+            "max_wanted_items": 6,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 2,
+                  "max_quantity": 10
+               },
+               {
+                  "uri": "stonehearth_ace:tools:engineer_wrench_steel",
+                  "price_factor": 1.8,
+                  "max_quantity": 3,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth:refined:iron_ingot",
+                  "price_factor": 2.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:drink:coffee_bold",
+                  "price_factor": 2,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 2,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.75,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:refined:bronze_ingot",
+                  "price_factor": 2.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:refined:steel_ingot",
+                  "price_factor": 2.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.6,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:hard",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "material": "freezing_outfit crafter_outfit civillian_equipment",
+                  "price_factor": 1.3,
+                  "max_quantity": 5,
+                  "chance": 0.4
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 2.1,
+                  "max_quantity": 4,
+                  "chance": 0.3
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 2,
+                  "max_quantity": 4,
+                  "chance": 0.3
+               },
+               {
+                  "material": "summer_hat crafter_outfit civillian_equipment",
+                  "price_factor": 1.4,
+                  "max_quantity": 5,
+                  "chance": 0.5
+               },
+               {
+                  "material": "fancy furniture",
+                  "price_factor": 2,
+                  "max_quantity": 4,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:creativity_tonic_2",
+                  "price_factor": 1.8,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:energy_tonic_2",
+                  "price_factor": 1.6,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               },
+               {
+                  "material": "fancy stockpile_decoration",
+                  "price_factor": 2.2,
+                  "max_quantity": 3,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fancy portal",
+                  "price_factor": 2.5,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               }
+            ]
          }
       },
       "persistence_weaver": {
@@ -195,13 +867,119 @@
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
          ],
          "min_city_tier": 2,
-         "weight": 1,
-         "cooldown": 7,
+         "weight": 4,
+         "cooldown": 6,
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/rugs_shop_3.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 3
+            },
             "persistence_job": "stonehearth:jobs:weaver",
             "stall_model": "rugs_shop",
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "fiber spinnable resource",
+                  "price_factor": 2,
+                  "max_quantity": 16
+               },
+               {
+                  "uri": "stonehearth_ace:tools:weaver_spindle_steel",
+                  "price_factor": 1.6,
+                  "max_quantity": 3,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:resources:fiber:silkweed_bundle",
+                  "price_factor": 3,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:drink:tea_black",
+                  "price_factor": 2.2,
+                  "max_quantity": 3,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:resources:fiber:coarse_fiber_bundle",
+                  "price_factor": 3,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:fiber:wool_bundle",
+                  "price_factor": 3,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:fiber:cotton_bundle",
+                  "price_factor": 3,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 2,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "summer_hat crafter_outfit civillian_equipment",
+                  "price_factor": 1.75,
+                  "max_quantity": 5,
+                  "chance": 0.4
+               },
+               {
+                  "material": "fancy furniture",
+                  "price_factor": 1.5,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:energy_tonic_2",
+                  "price_factor": 1.8,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:creativity_tonic_2",
+                  "price_factor": 1.8,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.8,
+                  "max_quantity": 8,
+                  "chance": 0.2
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.2
+               },
+               {
+                  "material": "freezing_outfit crafter_outfit civillian_equipment",
+                  "price_factor": 1.6,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "fancy stockpile_decoration",
+                  "price_factor": 1.75,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fancy portal",
+                  "price_factor": 2,
+                  "max_quantity": 3,
+                  "chance": 0.2
+               }
+            ]
          }
       },
       "persistence_blacksmith": {
@@ -213,13 +991,131 @@
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
          ],
          "min_city_tier": 2,
-         "weight": 1,
-         "cooldown": 7,
+         "weight": 4,
+         "cooldown": 6,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/blacksmith_shop_2.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 3
+            },
             "persistence_job": "stonehearth:jobs:blacksmith",
             "stall_model": "blacksmith_shop",
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "ore resource",
+                  "price_factor": 2,
+                  "max_quantity": 24
+               },
+               {
+                  "uri": "stonehearth_ace:tools:blacksmith_hammer_steel",
+                  "price_factor": 1.8,
+                  "max_quantity": 2,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:resources:iron:ore",
+                  "price_factor": 3,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:drink:beer",
+                  "price_factor": 2,
+                  "max_quantity": 5,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:resources:gold:ore",
+                  "price_factor": 3,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:silver:ore",
+                  "price_factor": 3,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.8,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "material": "high_fuel",
+                  "price_factor": 2,
+                  "max_quantity": 4,
+                  "chance": 0.2
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.6,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 2,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "material": "thread resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "summer_hat crafter_outfit civillian_equipment",
+                  "price_factor": 1.6,
+                  "max_quantity": 3,
+                  "chance": 0.4
+               },
+               {
+                  "material": "fancy furniture",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:strength_tonic_2",
+                  "price_factor": 2,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:stamina_tonic_2",
+                  "price_factor": 2,
+                  "max_quantity": 2,
+                  "chance": 0.2
+               },
+               {
+                  "material": "freezing_outfit crafter_outfit civillian_equipment",
+                  "price_factor": 1.5,
+                  "max_quantity": 3,
+                  "chance": 0.4
+               },
+               {
+                  "material": "fancy stockpile_decoration",
+                  "price_factor": 2,
+                  "max_quantity": 5,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fancy portal",
+                  "price_factor": 2.2,
+                  "max_quantity": 4,
+                  "chance": 0.2
+               }
+            ]
          }
       }
    }

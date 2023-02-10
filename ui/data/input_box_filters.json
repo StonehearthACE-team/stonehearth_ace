@@ -1132,13 +1132,13 @@
                "ordinal": 40,
                "display_name": "i18n(stonehearth_ace:entities.food.fish_roe.fish_roe_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/fish_roe/fish_roe_basket/fish_roe_basket.png",
-               "filter": "food_container fish_roe_fish_roe"
+               "filter": "food_container fish_roe standard"
             },
             "fish_big_roe": {
                "ordinal": 40.1,
                "display_name": "i18n(stonehearth_ace:entities.food.fish_roe.fish_big_roe_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/fish_roe/fish_big_roe_basket/fish_big_roe_basket.png",
-               "filter": "food_container fish_big_roe"
+               "filter": "food_container fish_roe big"
             }
          }
       },
@@ -1444,31 +1444,31 @@
                "ordinal": 25.1,
                "display_name": "i18n(stonehearth_ace:entities.food.fish_meat.display_name)",
                "icon": "/stonehearth_ace/entities/food/fish_meat/fish_meat.png",
-               "filter": "raw fish_meat_fish_meat"
+               "filter": "raw fish_meat standard"
             },
             "fish_carp_meat": {
                "ordinal": 25.2,
                "display_name": "i18n(stonehearth_ace:entities.food.fish_carp_meat.display_name)",
                "icon": "/stonehearth_ace/entities/food/fish_carp_meat/fish_carp_meat.png",
-               "filter": "raw fish_carp_meat"
+               "filter": "raw fish_meat carp"
             },
             "fish_catfish_meat": {
                "ordinal": 25.3,
                "display_name": "i18n(stonehearth_ace:entities.food.fish_catfish_meat.display_name)",
                "icon": "/stonehearth_ace/entities/food/fish_catfish_meat/fish_catfish_meat.png",
-               "filter": "raw fish_catfish_meat"
+               "filter": "raw fish_meat catfish"
             },
             "fish_salmon_meat": {
                "ordinal": 25.4,
                "display_name": "i18n(stonehearth_ace:entities.food.fish_salmon_meat.display_name)",
                "icon": "/stonehearth_ace/entities/food/fish_salmon_meat/fish_salmon_meat.png",
-               "filter": "raw fish_salmon_meat"
+               "filter": "raw fish_meat salmon"
             },
             "fish_trout_meat": {
                "ordinal": 25.5,
                "display_name": "i18n(stonehearth_ace:entities.food.fish_trout_meat.display_name)",
                "icon": "/stonehearth_ace/entities/food/fish_trout_meat/fish_trout_meat.png",
-               "filter": "raw fish_trout_meat"
+               "filter": "raw fish_meat trout"
             }
          }
       },

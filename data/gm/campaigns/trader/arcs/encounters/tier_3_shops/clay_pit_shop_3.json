@@ -8,23 +8,58 @@
       "inventory": {
          "shopkeeper_level": 3,
          "shopkeeper_gold": 950,
-		   "overall_price_multiplier": 1.1,
+		   "overall_price_multiplier": 1.8,
          "entries": [
             {
                "items_matching": {
-                  "herb": {
+                  "clay": {
                      "category": [
                         "resources"
                      ],
                      "material": [
                         "clay"
+                     ],
+                     "exclude_material": [
+                        "ball",
+                        "shale"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 10
-               }
+                  "min": 38,
+                  "max": 48
+               },
+               "fine_item_chance": 0.75
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:clay:ball_clay_mound"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 16
+               },
+               "fine_item_chance": 0.5
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:clay:shale_clay_mound"
+               ],
+               "quantity": {
+                  "min": 3,
+                  "max": 6
+               },
+               "fine_item_chance": 0.4
+            },
+            {
+               "items": [
+				      "stonehearth_ace:resources:fuel:bit_of_peat"
+               ],
+               "quantity": {
+                  "min": 12,
+                  "max": 18
+               },
+               "fine_item_chance": 0.4
             }
          ]
       }

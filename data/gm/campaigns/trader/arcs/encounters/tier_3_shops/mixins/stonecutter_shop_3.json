@@ -7,30 +7,94 @@
       },
       "inventory": {
          "shopkeeper_level": 3,
-         "shopkeeper_gold": 1200,
+         "shopkeeper_gold": 1150,
+         "overall_price_multiplier": 1.9,
          "entries": [
             {
+               "items": [
+                  "stonehearth_ace:furniture:market_stall:stone:simple",
+                  "stonehearth_ace:furniture:market_stall:stone:fancy",
+                  "stonehearth_ace:furniture:market_stall:stone",
+                  "stonehearth_ace:refined:water_well_kit:stone",
+                  "stonehearth_ace:refined:water_well_roof:stone"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 4,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0.5
+            },
+            {
+               "items": [
+                  "stonehearth_ace:stone_safety_standard",
+                  "stonehearth_ace:furniture:counter:shop:stone:desk"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 1
+               },
+               "fine_item_chance": 0.3
+            },
+            {
+               "items": [
+                  "stonehearth_ace:refined:serving_keg:stone"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 8
+               },
+               "fine_item_chance": 0.6
+            },
+            {
                "items_matching": {
-                  "stone stuff": {
+                  "stone_furniture_decor": {
                      "category": [
                         "furniture",
                         "decoration"
                      ],
                      "material": [
                         "stone"
+                     ],
+                     "exclude_material": [
+                        "plant",
+                        "iron",
+                        "collectible"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 3
-               }
+                  "min": 2,
+                  "max": 6,
+                  "max_unique": 16
+               },
+               "fine_item_chance": 0.75
             },
             {
                "items_matching": {
-                  "stone stuff": {
+                  "statues": {
                      "category": [
-                        "resources"
+                        "decoration"
+                     ],
+                     "material": [
+                        "stone",
+                        "statue"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 1
+            },
+            {
+               "items_matching": {
+                  "stone_storage": {
+                     "category": [
+                        "storage"
                      ],
                      "material": [
                         "stone"
@@ -38,31 +102,37 @@
                   }
                },
                "quantity": {
-                  "min": 15,
-                  "max": 30
-               }
+                  "min": 4,
+                  "max": 8,
+                  "max_unique": 5
+               },
+               "price_multiplier": 2,
+               "fine_item_chance": 0.4
             },
             {
-               "items": [
-                  "stonehearth:resources:copper:ore",
-                  "stonehearth:resources:tin:ore",
-                  "stonehearth:resources:coal:lump_of_coal",
-                  "stonehearth:resources:iron:ore"
-               ],
+               "items_matching": {
+                  "stone_construction": {
+                     "category": [
+                        "construction",
+                        "door",
+                        "window"
+                     ],
+                     "material": [
+                        "stone"
+                     ],
+                     "exclude_material": [
+                        "wood",
+                        "clay"
+                     ]
+                  }
+               },
                "quantity": {
-                  "min": 15,
-                  "max": 25
-               }
-            },
-            {
-               "items": [
-                  "stonehearth_ace:resources:stone:marble_stone",
-                  "stonehearth_ace:resources:stone:feldspar_stone"
-               ],
-               "quantity": {
-                  "min": 8,
-                  "max": 20
-               }
+                  "min": 1,
+                  "max": 4,
+                  "max_unique": 10
+               },
+               "price_multiplier": 1.4,
+               "fine_item_chance": 0.2
             }
          ]
       }

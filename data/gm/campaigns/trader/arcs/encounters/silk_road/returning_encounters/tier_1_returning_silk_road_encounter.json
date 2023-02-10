@@ -1,6 +1,9 @@
 {
-   "mixins": "stonehearth_ace:mixins:encounter:tier_1_silk_road_caravan",
+   "mixins": [
+      "stonehearth_ace:mixins:encounter:tier_1_silk_road_caravan"
+   ],
    "type": "encounter",
+   "encounter_type": "script",
    "in_edge": "tier_1_returning_silk_road_encounter",
    "can_start": {
       "test_1": {

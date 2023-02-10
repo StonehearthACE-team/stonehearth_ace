@@ -926,13 +926,17 @@
             "Y_ONLY": "y_only"
          }
       },
+      "shop": {
+         "SALE_MULTIPLIER": 1.25,
+         "DEFAULT_FINE_ITEM_CHANCE": 0.05
+      },
       "mercantile": {
          "MERCHANT_CITIZEN_FOCUS": 0.8,
          "MIN_CITY_TIER": 1,
          "MAX_STALL_TIER": 3,
-         "MAX_DAILY_MERCHANTS": 8,
-         "NET_WORTH_MUTLIPLIER": 0.01,
-         "TOTAL_TRADE_MUTLIPLIER": 0.01,
+         "MAX_DAILY_MERCHANTS": 10,
+         "NET_WORTH_MUTLIPLIER": 0.008,
+         "TOTAL_TRADE_MUTLIPLIER": 0.015,
          "ADDITIVE_MODIFIER": -1.5,
          "SPAWN_TIME": "8:00",
          "DEPART_TIME": "20:00",
@@ -948,7 +952,7 @@
          "DEFAULT_UNWANTED_ITEM_PRICE_FACTOR": 0.5,
          "PERSISTENCE_ITEM_PRICE_FACTOR": 0.5,
          "PERSISTENCE_ITEM_QUALITY_COUNTS": [7, 3, 1],
-         "PERSISTENCE_TOWN_NAME_CHANCE": 0.2,
+         "PERSISTENCE_TOWN_NAME_CHANCE": 0.5,
          "rarities": {
             "JUNK": "junk",
             "COMMON": "common",

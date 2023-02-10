@@ -7,8 +7,8 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_3_shops.hunting_shop_3.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 3,
-         "shopkeeper_gold": 850,
-		   "overall_price_multiplier": 1.1,
+         "shopkeeper_gold": 1070,
+		   "overall_price_multiplier": 1.9,
          "entries": [
             {
                "items_matching": {
@@ -17,46 +17,132 @@
                         "cooking_ingredient"
                      ],
                      "material": [
-                        "meat_ingredient"
+                        "meat_ingredient",
+                        "piece"
+                     ],
+                     "exclude_material": [
+                        "roast_zilla",
+                        "poyo_meat"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 3
-               }
+                  "min": 6,
+                  "max": 14,
+                  "max_unique": 6
+               },
+               "fine_item_chance": 0.8
             },
             {
-               "items_matching": {
-                  "pelts": {
-                     "category": [
-                        "resources"
-                     ],
-                     "material": [
-                        "pelt"
-                     ]
-                  }
-               },
+               "items": [
+                  "stonehearth:food:sausage"
+               ],
                "quantity": {
-                  "min": 0,
-                  "max": 2
-               }
+                  "min": 5,
+                  "max": 10,
+                  "max_unique": 6
+               },
+               "fine_item_chance": 1,
+               "price_multiplier": 3
             },
             {
-               "items_matching": {
-                  "bones": {
-                     "category": [
-                        "resources"
-                     ],
-                     "material": [
-                        "bone"
-                     ]
-                  }
+               "items": [
+                  "stonehearth_ace:bear_jerky",
+                  "stonehearth:boarjerky",
+                  "stonehearth_ace:cougar_jerky",
+                  "stonehearth:rabbit_jerky",
+                  "stonehearth:deer_jerky",
+                  "stonehearth:duckduck_jerky",
+                  "stonehearth:racoon_jerky",
+                  "stonehearth:red_fox_jerky",
+                  "stonehearth:squirrel_jerky",
+                  "stonehearth:varanus_jerky",
+                  "stonehearth:wolf_jerky"
+               ],
+               "quantity": {
+                  "min": 12,
+                  "max": 16,
+                  "max_unique": 6
                },
+               "fine_item_chance": 0.6
+            },
+			   {
+               "items": [			         
+                  "stonehearth:resources:rabbit_pelt",
+                  "stonehearth:resources:racoon_pelt",
+                  "stonehearth:resources:squirrel_pelt"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 12,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0.5
+            },
+            {
+               "items": [			         
+                  "stonehearth_ace:resources:wild_cattle_pelt",
+                  "stonehearth:resources:boar_pelt",
+                  "stonehearth:resources:deer_pelt",
+                  "stonehearth:resources:red_fox_pelt"
+               ],
+               "quantity": {
+                  "min": 4,
+                  "max": 8,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0.75,
+               "price_multiplier": 2.5
+            },
+            {
+               "items": [			         
+                  "stonehearth_ace:resources:bear_pelt",
+                  "stonehearth:resources:cougar_pelt",
+                  "stonehearth:resources:wolf_pelt",
+                  "stonehearth:resources:varanus_skin"
+               ],
+               "quantity": {
+                  "min": 3,
+                  "max": 6,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 1,
+               "price_multiplier": 3
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:bone:bone_material"
+               ],
+               "quantity": {
+                  "min": 12,
+                  "max": 20
+               },
+               "fine_item_chance": 0.4,
+               "price_multiplier": 2.2
+            },
+			   {
+               "items": [			         
+                  "stonehearth:resources:deer_horn",
+                  "stonehearth_ace:resources:bone:bone_big"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 12
+               },
+               "fine_item_chance": 0.3,
+               "price_multiplier": 2.5
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:thatch_bale",
+                  "stonehearth:resources:fiber:wool_bundle"
+               ],
                "quantity": {
                   "min": 0,
-                  "max": 2
-               }
+                  "max": 18
+               },
+               "fine_item_chance": 0,
+               "price_multiplier": 2
             }
          ]
       }

@@ -8,25 +8,17 @@
       "inventory": {
          "shopkeeper_level": 3,
          "shopkeeper_gold": 950,
-		 "overall_price_multiplier": 1.2,
+		   "overall_price_multiplier": 1.8,
          "entries": [
             {
                "items": [
                   "stonehearth_ace:food:fish_meat"
                ],
                "quantity": {
-                  "min": 15,
+                  "min": 20,
                   "max": 30
-               }
-            },
-				{
-               "items": [
-                  "stonehearth_ace:trapper:fish_trap"
-               ],
-               "quantity": {
-                  "min": 2,
-                  "max": 4
-               }
+               },
+               "fine_item_chance": 0.5
             },
             {
                "items_matching": {
@@ -36,16 +28,18 @@
                      ],
                      "material": [
                         "fish_meat",
-						"raw"
+						      "raw"
                      ]
                   }
                },
                "quantity": {
-                  "min": 1,
-                  "max": 12
-               }
+                  "min": 8,
+                  "max": 12,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0.75
             },
-			{
+			   {
                "items_matching": {
                   "algae": {
                      "category": [
@@ -57,73 +51,96 @@
                   }
                },
                "quantity": {
-                  "min": 4,
-                  "max": 12
-               }
+                  "min": 10,
+                  "max": 18
+               },
+               "fine_item_chance": 0.4
             },
-			{
+			   {
                "items": [
-                  "stonehearth_ace:food:fish_stew"
+                  "stonehearth_ace:food:fish_stew",
+                  "stonehearth_ace:food:roast_fish",
+				      "stonehearth_ace:food:fish_pot_pie",
+				      "stonehearth_ace:food:fisherman_soup",
+				      "stonehearth_ace:food:catfish_tagine",
+                  "stonehearth_ace:food:fish_fingers",
+                  "stonehearth_ace:food:fishwrap",
+                  "stonehearth_ace:food:kibble_fish"
+               ],
+               "quantity": {
+                  "min": 2,
+                  "max": 6,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0.3,
+               "price_multiplier": 2.1
+            },
+			   {
+               "items": [
+                  "stonehearth_ace:food:fish_roe:fish_roe_basket",
+                  "stonehearth_ace:resources:herb:water_lily:lily_pad"
+               ],
+               "quantity": {
+                  "min": 12,
+                  "max": 24
+               },
+               "fine_item_chance": 0.3
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:herb:water_lily:pink",
+                  "stonehearth_ace:resources:herb:water_lily:purple",
+                  "stonehearth_ace:resources:herb:water_lily:yellow",
+                  "stonehearth_ace:resources:herb:water_lily:white"
                ],
                "quantity": {
                   "min": 6,
-                  "max": 10
-               }
+                  "max": 12,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0.3
             },
-			{
-               "items": [
-                  "stonehearth_ace:food:roast_fish"
-               ],
-               "quantity": {
-                  "min": 4,
-                  "max": 10
-               }
-            },
-			{
-               "items": [
-                  "stonehearth_ace:food:fish_roe:fish_roe_basket"
-               ],
-               "quantity": {
-                  "min": 4,
-                  "max": 10
-               }
-            },
-			{
+			   {
                "items": [
                   "stonehearth_ace:food:fish_roe:fish_big_roe_basket",
-				  "stonehearth_ace:food:fish_pot_pie",
-				  "stonehearth_ace:food:sushi",
-				  "stonehearth_ace:food:fisherman_soup",
-				  "stonehearth_ace:food:catfish_tagine"
-               ],
-               "quantity": {
-                  "min": 0,
-                  "max": 4
-               }
-            },
-			{
-               "items": [
-                  "stonehearth_ace:consumables:captive:fish:silver",
-				  "stonehearth_ace:consumables:captive:fish:big",
-				  "stonehearth_ace:consumables:captive:fish:dark",
-				  "stonehearth_ace:consumables:captive:fish:long"
+                  "stonehearth_ace:consumables:water_resist_tonic"
                ],
                "quantity": {
                   "min": 1,
-                  "max": 2
-               }
+                  "max": 4
+               },
+               "fine_item_chance": 0.2,
+               "price_multiplier": 2
             },
-			{
+			   {
                "items": [
-				  "stonehearth_ace:consumables:captive:fish:trout",
-				  "stonehearth_ace:consumables:captive:fish:salmon",
-				  "stonehearth_ace:consumables:captive:fish:catfish",
-				  "stonehearth_ace:consumables:captive:fish:carp"
+                  "stonehearth_ace:consumables:captive:fish:silver",
+				      "stonehearth_ace:consumables:captive:fish:big",
+				      "stonehearth_ace:consumables:captive:fish:dark",
+				      "stonehearth_ace:consumables:captive:fish:long"
                ],
                "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
+                  "min": 1,
+                  "max": 3,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0,
+               "price_multiplier": 2.3
+            },
+			   {
+               "items": [
+				      "stonehearth_ace:consumables:captive:fish:trout",
+				      "stonehearth_ace:consumables:captive:fish:salmon",
+				      "stonehearth_ace:consumables:captive:fish:catfish",
+				      "stonehearth_ace:consumables:captive:fish:carp"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0,
+               "price_multiplier": 2.5
             }
          ]
       }

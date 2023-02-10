@@ -1,0 +1,224 @@
+{
+   "mixins": "stonehearth:mixins:mob",
+   "components": {
+      "stonehearth:ai": {},
+      "stonehearth:trivial_death": {},
+      "render_info": {
+         "color_map": "stonehearth:color_map:human",
+         "cache_model_geometry": false
+      },
+      "model_variants": {
+         "default": {
+            "share_model_layer": false
+         }
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/humans/effects/idle_breathe.json"
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 32
+            }
+         }
+      },
+      "stonehearth:combat_state": {
+         "stance": "defensive"
+      },
+      "stonehearth:carry_block": {},
+      "stonehearth:posture": {
+         "priorities": {
+            "stonehearth:sitting_on_chair": 1000,
+            "stonehearth:sitting": 900,
+            "stonehearth:carrying": 800,
+            "stonehearth:swimming": 40,
+            "stonehearth:injured": 20
+         }
+      },
+      "stonehearth:job": {
+         "starting_level_title": "i18n(stonehearth:stonehearth_mixins.base_human.job.starting_level_title)",
+         "default_level_title": "i18n(stonehearth:stonehearth_mixins.base_human.job.default_level_title)",
+         "default_level_announcement": "i18n(stonehearth:stonehearth_mixins.base_human.job.default_level_announcement)",
+         "default_promote_announcement": "i18n(stonehearth:stonehearth_mixins.base_human.job.default_promote_announcement)",
+         "xp_equation_for_next_level": "curr_level ^ 1.1 * 100",
+         "levels_between_attribute_increase": 10,
+         "level_up_data": {
+            "level_up_perk_description": "i18n(stonehearth:stonehearth_mixins.base_human.job.level_up_perk_description)",
+            "level_up_perk_icon": "/stonehearth/data/images/race/human_HP_on_level.png"
+         }
+      },
+      "stonehearth:social": {},
+      "stonehearth:conversation": {},
+      "stonehearth:subject_matter": {},
+      "stonehearth:interactions": {},
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "social_satisfaction": {
+               "min": {
+                  "value": 0
+               },
+               "max": {
+                  "linked_attribute": "max_social_satisfaction"
+               },
+               "initial_value": {
+                  "type": "random_between",
+                  "min": 61,
+                  "max": "max_value"
+               }
+            },
+            "sleepiness": {
+               "min": {
+                  "linked_attribute": "min_sleepiness"
+               },
+               "max": {
+                  "linked_attribute": "max_sleepiness"
+               },
+               "initial_value": {
+                  "type": "random_between",
+                  "min": "min_value",
+                  "max": 7
+               }
+            }
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 50
+         },
+         "speed": {
+            "type": "basic",
+            "value": 80
+         },
+         "menace": {
+            "type": "basic",
+            "value": 70
+         },
+         "courage": {
+            "type": "basic",
+            "value": 100
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 20
+         },
+         "social_loss_amount": {
+            "type": "derived",
+            "equation": "0.44"
+         },
+         "max_social_satisfaction": {
+            "type": "basic",
+            "value": 72
+         },
+         "min_sleepiness": {
+            "type": "basic",
+            "value": 0
+         },
+         "max_sleepiness": {
+            "type": "basic",
+            "value": 32
+         },
+         "sleep_duration": {
+            "type": "basic",
+            "value": 100
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.75,
+      "stonehearth:entity_reach": 1.0,
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:humanoid",
+            "stonehearth:ai_pack:sitting",
+            "stonehearth:ai_pack:injury",
+            "stonehearth:ai_pack:death",
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects",
+            "stonehearth:ai_pack:idle:bored:wander",
+            "stonehearth:ai_pack:conversation"
+         ]
+      },
+      "stonehearth:conversation_type": "humanoid",
+      "stonehearth:idle_effects": {
+         "effects": [
+            {
+               "name": "idle_breathe",
+               "weight": 5
+            },
+            {
+               "name": "idle_look_around",
+               "weight": 2
+            },
+            {
+               "name": "idle_sway",
+               "weight": 2
+            },
+            {
+               "name": "emote_count",
+               "weight": 0.25
+            },
+            {
+               "name": "emote_foottap",
+               "weight": 0.25
+            },
+            {
+               "name": "emote_toolinspection",
+               "weight": 0.25
+            },
+            {
+               "name": "emote_complete",
+               "weight": 0.25
+            },
+            {
+               "name": "emote_concerned",
+               "weight": 0.25
+            },
+            {
+               "name": "yawn",
+               "weight": 0.25
+            },
+            {
+               "name": "emote_browwipe",
+               "weight": 0.25
+            },
+            {
+               "name": "emote_reservation",
+               "weight": 0.1
+            }
+         ]
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     1.85,
+                     2.5,
+                     -2.8
+                  ],
+                  "look_at": [
+                     0,
+                     2.2,
+                     0
+                  ],
+                  "fov": 64
+               }
+            }
+         }
+      },
+      "stonehearth:species": {
+         "id": "npc_dwarf",
+         "display_name": "i18n(stonehearth_ace:entities.peoples.elves.species)"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:stonehearth_mixins.base_elf_npc.display_name)",
+         "description": "i18n(stonehearth_ace:stonehearth_mixins.base_elf_npc.description)",
+         "material_tags": [
+            "meat",
+            "elf",
+            "npc"
+         ]
+      }
+   }
+}

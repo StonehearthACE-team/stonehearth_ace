@@ -7,43 +7,50 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_3_shops.charcoal_shop_3.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 3,
-         "shopkeeper_gold": 700,
+         "shopkeeper_gold": 1020,
+		   "overall_price_multiplier": 1.9,
          "entries": [
-		    {
+		      {
                "items": [
                   "stonehearth_ace:resources:coal:piece_of_charcoal"
                ],
                "quantity": {
-                  "min": 20,
+                  "min": 32,
                   "max": 45
-               }
+               },
+               "fine_item_chance": 0.8
             },
-			{
+			   {
                "items": [
                   "stonehearth_ace:resources:fuel:bundle_of_firewood"
                ],
                "quantity": {
                   "min": 12,
-                  "max": 30
-               }
+                  "max": 20
+               },
+               "fine_item_chance": 0.7
             },
             {
                "items": [
-                  "stonehearth_ace:resources:clay:ball_clay_mound"
+				      "stonehearth_ace:resources:fuel:bit_of_peat",
+                  "stonehearth_ace:resources:coal:chunk_of_brown_coal"
                ],
                "quantity": {
-                  "min": 4,
-                  "max": 12
-               }
+                  "min": 8,
+                  "max": 20
+               },
+               "fine_item_chance": 0.6
             },
-			{
+            {
                "items": [
-                  "stonehearth:decoration:firepit"
+				      "stonehearth_ace:resources:coal:slab_of_coke",
+                  "stonehearth:resources:coal:lump_of_coal"
                ],
                "quantity": {
-                  "min": 0,
-                  "max": 4
-               }
+                  "min": 6,
+                  "max": 12
+               },
+               "fine_item_chance": 0.8
             }
          ]
       }

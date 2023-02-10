@@ -1,0 +1,72 @@
+{
+   "mixins": "stonehearth:mixins:base_human",
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 128
+            }
+         }
+      },
+      "stonehearth:attributes": {
+         "mind": {
+            "base": 2
+         },
+         "body": {
+            "max": 4
+         },
+         "spirit": {
+            "base": 3,
+            "max": 8
+         }
+      },
+      "stonehearth:score": {
+         "shelter": {
+            "starting_score": 60,
+            "weight": 2,
+            "max": 100,
+            "min": 1
+         },
+         "safety": {
+            "starting_score": 40,
+            "weight": 2,
+            "max": 100,
+            "min": 1
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     1.85,
+                     2.5,
+                     -2.8
+                  ],
+                  "look_at": [
+                     0,
+                     2.2,
+                     0
+                  ],
+                  "fov": 64
+               }
+            }
+         }
+      },
+      "stonehearth:species": {
+         "id": "elf",
+         "display_name": "i18n(stonehearth_ace:entities.peoples.elves.species)"
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "meat",
+            "elf"
+         ]
+      }
+   }
+}

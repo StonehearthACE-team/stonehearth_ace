@@ -7,14 +7,73 @@
       },
       "inventory": {
          "shopkeeper_level": 3,
-         "shopkeeper_gold": 1450,
+         "shopkeeper_gold": 1500,
+         "overall_price_multiplier": 2.1,
          "entries": [
             {
+               "items": [
+                  "stonehearth_ace:furniture:market_stall:clay:simple",
+                  "stonehearth_ace:furniture:market_stall:clay:fancy",
+                  "stonehearth_ace:furniture:market_stall:clay",
+                  "stonehearth_ace:refined:water_well_kit:clay",
+                  "stonehearth_ace:refined:water_well_roof:clay"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 4,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0.5
+            },
+            {
+               "items": [
+                  "stonehearth:clay_safety_standard",
+                  "stonehearth_ace:furniture:counter:shop:clay:desk"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 1
+               },
+               "fine_item_chance": 0.3
+            },
+            {
+               "items": [
+                  "stonehearth_ace:refined:serving_keg:clay"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 8
+               },
+               "fine_item_chance": 0.6
+            },
+            {
                "items_matching": {
-                  "wood stuff": {
+                  "clay_furniture_decor": {
                      "category": [
                         "furniture",
                         "decoration"
+                     ],
+                     "material": [
+                        "clay"
+                     ],
+                     "exclude_material": [
+                        "plant"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 2,
+                  "max": 6,
+                  "max_unique": 16
+               },
+               "fine_item_chance": 0.75
+            },
+            {
+               "items_matching": {
+                  "clay_storage": {
+                     "category": [
+                        "storage"
                      ],
                      "material": [
                         "clay"
@@ -22,29 +81,37 @@
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
+                  "min": 4,
+                  "max": 8,
+                  "max_unique": 5
+               },
+               "price_multiplier": 2,
+               "fine_item_chance": 0.4
             },
             {
-               "items": [
-                  "stonehearth:resources:clay:clay_mound",
-                  "stonehearth:construction:clay_bricks"
-               ],
+               "items_matching": {
+                  "clay_construction": {
+                     "category": [
+                        "construction",
+                        "door",
+                        "window"
+                     ],
+                     "material": [
+                        "clay"
+                     ],
+                     "exclude_material": [
+                        "stone",
+                        "wood"
+                     ]
+                  }
+               },
                "quantity": {
-                  "min": 20,
-                  "max": 30
-               }
-            },
-            {
-               "items": [
-                  "stonehearth_ace:resources:clay:shale_clay_mound",
-                  "stonehearth_ace:resources:clay:ball_clay_mound"
-               ],
-               "quantity": {
-                  "min": 8,
-                  "max": 20
-               }
+                  "min": 1,
+                  "max": 4,
+                  "max_unique": 10
+               },
+               "price_multiplier": 1.4,
+               "fine_item_chance": 0.2
             }
          ]
       }

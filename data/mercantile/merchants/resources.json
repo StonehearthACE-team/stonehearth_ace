@@ -5,15 +5,16 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_1_outfit",
-            "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
+            "stonehearth_ace:outfits:merchant:labor_outfit",
+            "stonehearth_ace:outfits:merchant:labor_outfit:hat"
          ],
          "min_city_tier": 1,
-         "weight": 1,
-         "cooldown": 2,
+         "weight": 2,
+         "cooldown": 3,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/charcoal_shop_1.json",
          "shoptions": {
             "stall_model": "charcoal_shop",
+            "max_wanted_items": 2,
             "wanted_items": []
          },
          "forbidden_weather": {
@@ -33,15 +34,19 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_2_outfit",
-            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+            "stonehearth_ace:outfits:merchant:labor_outfit",
+            "stonehearth_ace:outfits:merchant:labor_outfit:hat"
          ],
          "min_city_tier": 2,
-         "weight": 2,
+         "weight": 4,
          "cooldown": 3,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/charcoal_shop_2.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 4
+            },
             "stall_model": "charcoal_shop",
+            "max_wanted_items": 4,
             "wanted_items": []
          }
       },
@@ -50,16 +55,86 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_3_outfit",
+            "stonehearth_ace:outfits:merchant:labor_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
          ],
          "min_city_tier": 3,
-         "weight": 3,
+         "weight": 5,
          "cooldown": 4,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/charcoal_shop_3.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 3
+            },
             "stall_model": "charcoal_shop",
-            "wanted_items": []
+            "max_wanted_items": 6,
+            "wanted_items": [
+               {
+                  "material": "wood resource",
+                  "price_factor": 1.2,
+                  "max_quantity": 30
+               },
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.6,
+                  "max_quantity": 12,
+                  "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:woven",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:iron",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:tools:worker_tools_iron",
+                  "price_factor": 1.6,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.6,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.8,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },    
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.4,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.5,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.8,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.6,
+                  "max_quantity": 4,
+                  "chance": 0.5
+               }
+            ]
          }
       },
       "quarry_shop_1": {
@@ -67,15 +142,16 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_1_outfit",
-            "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
+            "stonehearth_ace:outfits:merchant:mason_outfit",
+            "stonehearth_ace:outfits:merchant:mason_outfit:hat"
          ],
          "min_city_tier": 1,
-         "weight": 1,
-         "cooldown": 2,
+         "weight": 3,
+         "cooldown": 3,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/quarry_shop_1.json",
          "shoptions": {
             "stall_model": "quarry_shop",
+            "max_wanted_items": 2,
             "wanted_items": []
          },
          "forbidden_weather": {
@@ -92,33 +168,109 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_2_outfit",
-            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+            "stonehearth_ace:outfits:merchant:mason_outfit",
+            "stonehearth_ace:outfits:merchant:miner_outfit:hat"
          ],
          "min_city_tier": 2,
-         "weight": 2,
-         "cooldown": 3,
+         "weight": 4,
+         "cooldown": 6,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/quarry_shop_2.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 4
+            },
             "stall_model": "quarry_shop",
+            "max_wanted_items": 4,
             "wanted_items": []
          }
       },
       "quarry_shop_3": {
          "category": "resources",
-         "population_role": "merchant",
-         "use_shop_description": true,
-         "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_3_outfit",
-            "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
-         ],
+         "population_role": "merchant_jonar_hillcrown",
+         "population_gender": "male",
          "min_city_tier": 3,
-         "weight": 3,
-         "cooldown": 4,
+         "weight": 5,
+         "cooldown": 14,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/quarry_shop_3.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 3
+            },
             "stall_model": "quarry_shop",
-            "wanted_items": []
+            "max_wanted_items": 6,
+            "wanted_items": [
+               {
+                  "material": "wood resource",
+                  "price_factor": 1.1,
+                  "max_quantity": 18,
+                  "chance": 0.6
+               },
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.4,
+                  "max_quantity": 16
+               },
+               {
+                  "uri": "stonehearth_ace:containers:large_stone_coffer",
+                  "price_factor": 1.6,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:iron",
+                  "price_factor": 1.9,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.6,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.8,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },  
+               {
+                  "uri": "stonehearth_ace:tools:worker_tools_iron",
+                  "price_factor": 1.8,
+                  "max_quantity": 4,
+                  "chance": 0.5
+               },  
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.25,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.8,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 1.65,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.3,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               }
+            ]
          }
       },
       "lumberjacking_shop_1": {
@@ -126,15 +278,16 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_1_outfit",
+            "stonehearth_ace:outfits:merchant:wilderness_outfit",
             "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
          ],
          "min_city_tier": 1,
-         "weight": 1,
-         "cooldown": 2,
+         "weight": 3,
+         "cooldown": 3,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/lumberjacking_shop_1.json",
          "shoptions": {
             "stall_model": "lumberjacking_shop",
+            "max_wanted_items": 2,
             "wanted_items": []
          },
          "forbidden_weather": {
@@ -152,15 +305,19 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:wilderness_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
          ],
          "min_city_tier": 2,
-         "weight": 2,
+         "weight": 4,
          "cooldown": 3,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/lumberjacking_shop_2.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 4
+            },
             "stall_model": "lumberjacking_shop",
+            "max_wanted_items": 4,
             "wanted_items": []
          }
       },
@@ -169,16 +326,99 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_3_outfit",
+            "stonehearth_ace:outfits:merchant:wilderness_outfit",
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
          ],
          "min_city_tier": 3,
-         "weight": 3,
-         "cooldown": 4,
+         "weight": 5,
+         "cooldown": 7,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/lumberjacking_shop_3.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 3
+            },
             "stall_model": "lumberjacking_shop",
-            "wanted_items": []
+            "max_wanted_items": 6,
+            "wanted_items": [
+               {
+                  "material": "stonehearth_ace:planters:pot:sapling",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.9
+               },
+               {
+                  "material": "ingot soft_metal",
+                  "price_factor": 1.3,
+                  "max_quantity": 6,
+                  "chance": 0.8
+               },
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.6,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:containers:large_crate",
+                  "price_factor": 1.6,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:containers:small_crate",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.6,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },  
+               {
+                  "uri": "stonehearth_ace:tools:worker_tools_iron",
+                  "price_factor": 2,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },  
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.4,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.9,
+                  "max_quantity": 3,
+                  "chance": 0.3
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.2,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.2,
+                  "max_quantity": 4,
+                  "chance": 0.5
+               }
+            ]
          }
       },
       "mining_shop_1": {
@@ -186,15 +426,16 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_1_outfit",
-            "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
+            "stonehearth_ace:outfits:merchant:miner_outfit",
+            "stonehearth_ace:outfits:merchant:labor_outfit:hat"
          ],
          "min_city_tier": 1,
-         "weight": 1,
-         "cooldown": 2,
+         "weight": 2,
+         "cooldown": 5,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/mining_shop_1.json",
          "shoptions": {
             "stall_model": "mining_shop",
+            "max_wanted_items": 2,
             "wanted_items": []
          },
          "forbidden_weather": {
@@ -209,33 +450,103 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_2_outfit",
-            "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
+            "stonehearth_ace:outfits:merchant:miner_outfit",
+            "stonehearth_ace:outfits:merchant:miner_outfit:hat"
          ],
          "min_city_tier": 2,
-         "weight": 2,
-         "cooldown": 3,
+         "weight": 3,
+         "cooldown": 6,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/mining_shop_2.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 4
+            },
             "stall_model": "mining_shop",
+            "max_wanted_items": 4,
             "wanted_items": []
          }
       },
       "mining_shop_3": {
          "category": "resources",
-         "population_role": "merchant",
-         "use_shop_description": true,
-         "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_3_outfit",
-            "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
-         ],
+         "population_role": "merchant_mario_the_miner",
+         "population_gender": "male",
          "min_city_tier": 3,
-         "weight": 3,
-         "cooldown": 4,
+         "weight": 4,
+         "cooldown": 14,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/mining_shop_3.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 3
+            },
             "stall_model": "mining_shop",
-            "wanted_items": []
+            "max_wanted_items": 6,
+            "wanted_items": [
+               {
+                  "material": "wood resource",
+                  "price_factor": 1.4,
+                  "max_quantity": 8,
+                  "chance": 0.8
+               },
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.9,
+                  "max_quantity": 8
+               },
+               {
+                  "uri": "stonehearth:containers:input_corner:ground:iron",
+                  "price_factor": 1.6,
+                  "max_quantity": 4,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:iron",
+                  "price_factor": 2,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.4,
+                  "max_quantity": 16,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.5,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },  
+               {
+                  "uri": "stonehearth_ace:tools:worker_tools_steel",
+                  "price_factor": 1.6,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },  
+               {
+                  "material": "healing_item",
+                  "price_factor": 2,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.3,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               }
+            ]
          }
       },
       "clay_pit_shop_1": {
@@ -243,15 +554,16 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_1_outfit",
-            "stonehearth_ace:outfits:merchant:tier_1:outfit:hat"
+            "stonehearth_ace:outfits:merchant:miner_outfit",
+            "stonehearth_ace:outfits:merchant:labor_outfit:hat"
          ],
          "min_city_tier": 1,
-         "weight": 1,
-         "cooldown": 2,
+         "weight": 3,
+         "cooldown": 3,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/clay_pit_shop_1.json",
          "shoptions": {
             "stall_model": "clay_pit_shop",
+            "max_wanted_items": 2,
             "wanted_items": []
          },
          "forbidden_weather": {
@@ -271,15 +583,19 @@
          "population_role": "merchant",
          "use_shop_description": true,
          "equipment": [
-            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:miner_outfit",
             "stonehearth_ace:outfits:merchant:tier_2:outfit:hat"
          ],
          "min_city_tier": 2,
-         "weight": 2,
-         "cooldown": 3,
+         "weight": 4,
+         "cooldown": 6,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/clay_pit_shop_2.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 4
+            },
             "stall_model": "clay_pit_shop",
+            "max_wanted_items": 4,
             "wanted_items": []
          }
       },
@@ -292,12 +608,89 @@
             "stonehearth_ace:outfits:merchant:tier_3:outfit:hat"
          ],
          "min_city_tier": 3,
-         "weight": 3,
-         "cooldown": 4,
+         "weight": 5,
+         "cooldown": 7,
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/clay_pit_shop_3.json",
          "shoptions": {
+            "rarity_weights": {
+               "common": 3
+            },
             "stall_model": "clay_pit_shop",
-            "wanted_items": []
+            "max_wanted_items": 6,
+            "wanted_items": [
+               {
+                  "material": "stone resource",
+                  "price_factor": 1.6,
+                  "max_quantity": 16,
+                  "chance": 0.9
+               },
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.2,
+                  "max_quantity": 14,
+                  "chance": 0.9
+               },
+               {
+                  "uri": "stonehearth_ace:containers:large_stone_coffer",
+                  "price_factor": 1.4,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:woven",
+                  "price_factor": 1.6,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.4,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.55,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },  
+               {
+                  "uri": "stonehearth_ace:tools:worker_tools_iron",
+                  "price_factor": 1.5,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },  
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.4,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ingot soft_metal",
+                  "price_factor": 1.6,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 1.7,
+                  "max_quantity": 3,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.7,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.8,
+                  "max_quantity": 4,
+                  "chance": 0.5
+               }
+            ]
          }
       }
    }

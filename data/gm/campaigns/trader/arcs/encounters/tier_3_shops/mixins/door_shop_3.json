@@ -7,59 +7,42 @@
       },
       "inventory": {
          "shopkeeper_level": 3,
-         "shopkeeper_gold": 1100,
+         "shopkeeper_gold": 1150,
+         "overall_price_multiplier": 2.1,
          "entries": [
             {
                "items_matching": {
-                  "storage": {
-                     "material": [
-                        "door"
+                  "portals": {
+                     "category": [
+                        "door",
+                        "window"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 2
-               }
+                  "min": 2,
+                  "max": 3,
+                  "max_unique": 26
+               },
+               "fine_item_chance": 0.5
             },
             {
                "items_matching": {
-                  "storage": {
+                  "gates": {
+                     "category": [
+                        "construction"
+                     ],
                      "material": [
                         "gate"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 2
-               }
-            },
-            {
-               "items_matching": {
-                  "storage": {
-                     "material": [
-                        "window"
-                     ]
-                  }
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 4
                },
-               "quantity": {
-                  "min": 0,
-                  "max": 2
-               }
-            },
-            {
-               "items_matching": {
-                  "storage": {
-                     "material": [
-                        "fence"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 2
-               }
+               "fine_item_chance": 0.5
             }
          ]
       }
