@@ -6,13 +6,13 @@ PeriodicInteraction.args = {}
 PeriodicInteraction.priority = 1.0
 
 local function _interact_filter_fn(user_id, item)
-   local periodic_interaction = item:get_component('stonehearth_ace:periodic_interaction')
+   local periodic_interaction = item:is_valid() and item:get_component('stonehearth_ace:periodic_interaction')
    if not periodic_interaction or not periodic_interaction:is_usable() then
       return false
    end
 
    local user = periodic_interaction:get_current_user()
-   return user and user:get_id() == user_id
+   return user and user:is_valid() and user:get_id() == user_id
 end
 
 -- prefer higher level ones we're capable of interacting with
