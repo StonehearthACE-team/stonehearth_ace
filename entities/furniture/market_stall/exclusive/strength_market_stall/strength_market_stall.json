@@ -12,7 +12,39 @@
       },
       "stonehearth_ace:market_stall": {
          "mixintypes": {
-            "tier": "remove"
+            "tier": "remove",
+            "stall_models": "override"
+         },
+         "stall_models": {
+            "default": {
+               "model_data": {
+                  "model": "file(default_shop.qb)",
+                  "matrix": "Shop",
+                  "scale": 0.1,
+                  "offset": { "x": 30, "y": 0, "z": 25 }
+               },
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf5"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4"
+                  },
+                  {
+                     "bone_name": "goodsMidRow5"
+                  }
+               ]
+            }
          }
       }
    },
