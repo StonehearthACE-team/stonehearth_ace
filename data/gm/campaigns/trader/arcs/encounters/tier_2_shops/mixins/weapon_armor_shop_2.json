@@ -6,154 +6,55 @@
          "inventory": "override"
       },
       "inventory": {
-         "overall_price_multiplier": 2.2,
+         "overall_price_multiplier": 2,
          "shopkeeper_level": 2,
-         "shopkeeper_gold": 950,
+         "shopkeeper_gold": 820,
          "entries": [
             {
                "items_matching": {
-                  "leather_armor": {
+                  "plants": {
                      "category": [
                         "armor"
                      ],
                      "material": [
-                        "leather",
-						"ascendancy_made"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
-            },
-            {
-               "items_matching": {
-                  "leather_armor": {
-                     "category": [
-                        "armor"
+                        "ascendancy_made"
                      ],
-                     "material": [
-                        "bronze",
-						"ascendancy_made"
+                     "exclude_material": [
+                        "civillian_equipment",
+                        "silver",
+                        "cloth",
+                        "leather"
                      ]
                   }
                },
                "quantity": {
                   "min": 1,
-                  "max": 1
-               }
-            },
-            {
-               "items_matching": {
-                  "leather_armor": {
-                     "category": [
-                        "armor"
-                     ],
-                     "material": [
-                        "light_armor",
-						"ascendancy_made"
-                     ]
-                  }
+                  "max": 1,
+                  "max_unique": 12
                },
-               "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
+               "fine_item_chance": 0.3
             },
             {
                "items_matching": {
-                  "leather_armor": {
+                  "plants": {
                      "category": [
-                        "armor"
+                        "weapons"
                      ],
                      "material": [
-                        "iron",
-						"ascendancy_made"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
-            },
-            {
-               "items_matching": {
-                  "leather_armor": {
-                     "category": [
-                        "armor"
+                        "ascendancy_made"
                      ],
-                     "material": [
+                     "exclude_material": [
+                        "silver",
                         "wood"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
-            },
-            {
-               "items_matching": {
-                  "leather_armor": {
-                     "category": [
-                        "armor"
-                     ],
-                     "material": [
-                        "steel",
-						"ascendancy_made"
-                     ]
-                  }
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 15
                },
-               "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
-            },
-            {
-               "items_matching": {
-                  "leather_armor": {
-                     "category": [
-                        "armor"
-                     ],
-                     "material": [
-                        "iron",
-						"ascendancy_made"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
-            },
-            {
-               "items_matching": {
-                  "weapon": {
-                     "category": [
-                        "weapons"
-                     ],
-					 "material": [
-						"ascendancy_made",
-						"melee_weapon"
-					 ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
-            },
-            {
-               "items": [
-                  "stonehearth:knight:talisman",
-                  "stonehearth:cleric:talisman"
-               ],
-               "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
+               "fine_item_chance": 0.3
             }
          ]
       }

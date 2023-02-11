@@ -8,42 +8,45 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_2_shops.quarry_shop_2.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 2,
-         "shopkeeper_gold": 750,
+         "shopkeeper_gold": 440,
+		   "overall_price_multiplier": 1.6,
          "entries": [
-		    {
+		      {
                "items": [
                   "stonehearth:resources:stone:hunk_of_stone",
-                  "stonehearth_ace:resources:clay:shale_clay_mound"
+                  "stonehearth_ace:resources:stone:slate_stone",
+				      "stonehearth_ace:resources:stone:limestone_stone",
+				      "stonehearth_ace:resources:stone:sandstone_stone"
+               ],
+               "quantity": {
+                  "min": 24,
+                  "max": 30,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0.3
+            },
+			   {
+               "items": [
+                  "stonehearth_ace:resources:clay:shale_clay_mound",
+                  "stonehearth_ace:resources:stone:marble_stone",
+				      "stonehearth_ace:resources:stone:feldspar_stone"
                ],
                "quantity": {
                   "min": 8,
-                  "max": 16
-               }
-            },
-			{
-               "items": [
-			      "stonehearth_ace:resources:stone:slate_stone",
-				  "stonehearth_ace:resources:stone:limestone_stone",
-				  "stonehearth_ace:resources:stone:sandstone_stone",
-                  "stonehearth_ace:resources:stone:marble_stone",
-				  "stonehearth_ace:resources:stone:feldspar_stone"
-               ],
-               "quantity": {
-                  "min": 3,
-                  "max": 9
-               }
+                  "max": 16,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0.4
             },
             {
                "items": [
-                  "stonehearth:resources:copper:ore",
-                  "stonehearth:resources:tin:ore",
-                  "stonehearth_ace:resources:coal:chunk_of_brown_coal",
-				  "stonehearth_ace:resources:fuel:bit_of_peat"
+                  "stonehearth_ace:resources:coal:chunk_of_brown_coal"
                ],
                "quantity": {
-                  "min": 0,
-                  "max": 12
-               }
+                  "min": 8,
+                  "max": 14
+               },
+               "fine_item_chance": 0.15
             }
          ]
       }

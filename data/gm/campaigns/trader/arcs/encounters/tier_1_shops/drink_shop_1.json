@@ -8,9 +8,43 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.drink_shop_1.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 500,
-		 "overall_price_multiplier": 1.5,
+         "shopkeeper_gold": 400,
+		   "overall_price_multiplier": 1.6,
          "entries": [
+				{
+               "items_matching": {
+                  "brewing_ingredient": {
+                     "category": [
+                        "brewing_ingredient"
+                     ],
+                     "material": [
+                        "malt"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 4,
+                  "max": 6,
+                  "max_unique": 2
+               }
+            },
+				{
+               "items_matching": {
+                  "seed_juniper": {
+                     "category": [
+                        "seed"
+                     ],
+                     "material": [
+                        "juniper"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 1,
+                  "max": 3,
+                  "max_unique": 1
+               }
+            },
 				{
                "items_matching": {
                   "drink_container": {
@@ -19,34 +53,103 @@
                      ],
                      "material": [
                         "raw_drink"
+                     ],
+                     "exclude_material": [
+                        "tea",
+                        "coffee",
+                        "milk"
                      ]
                   }
                },
                "quantity": {
+                  "min": 4,
+                  "max": 8,
+                  "max_unique": 4
+               }
+            },
+				{
+               "items_matching": {
+                  "prepared_drink": {
+                     "category": [
+                        "drink"
+                     ],
+                     "material": [
+                        "prepared_drink"
+                     ],
+                     "exclude_material": [
+                        "tea",
+                        "coffee"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 3,
+                  "max": 6,
+                  "max_unique": 5
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:drink:ale:serving_keg",
+						"stonehearth_ace:drink:ale_pale:serving_keg",
+						"stonehearth_ace:drink:beer:serving_keg",
+						"stonehearth_ace:drink:beer_buttered:serving_keg",
+						"stonehearth_ace:drink:beer_opaque:serving_keg",
+						"stonehearth_ace:drink:liqueur_almond:serving_keg",
+                  "stonehearth_ace:drink:liquor:serving_keg",
+                  "stonehearth_ace:drink:spirit:serving_keg",
+                  "stonehearth_ace:drink:spirit_fruit:serving_keg",
+                  "stonehearth_ace:drink:spirit_northern:serving_keg",
+                  "stonehearth_ace:drink:spirit_sugar:serving_keg"
+               ],
+               "quantity": {
                   "min": 1,
-                  "max": 3
+                  "max": 2,
+                  "max_unique": 3
                }
             },
 				{
                "items": [
-                  "stonehearth_ace:drink:spirit",
-						"stonehearth_ace:drink:ale",
-						"stonehearth_ace:drink:mead"
+                  "stonehearth_ace:containers:input_cask:wood:small",
+						"stonehearth_ace:containers:input_cask:clay:small",
+						"stonehearth_ace:containers:input_cask:stone:small",
+						"stonehearth_ace:refined:serving_keg:wood",
+						"stonehearth_ace:refined:serving_keg:clay",
+						"stonehearth_ace:refined:serving_keg:stone"
                ],
                "quantity": {
-                  "min": 0,
-                  "max": 3
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 2
                }
             },
 				{
                "items": [
                   "stonehearth_ace:barrel_small",
 						"stonehearth_ace:tank_small",
-						"stonehearth_ace:amphora"
+						"stonehearth_ace:amphora",
+						"stonehearth_ace:amphora_blue",
+						"stonehearth_ace:amphora_green",
+						"stonehearth_ace:amphora_red"
                ],
                "quantity": {
-                  "min": 0,
+                  "min": 1,
                   "max": 2
+               },
+               "max_unique": 2
+            },
+				{
+               "items": [
+						"stonehearth_ace:barrel",
+						"stonehearth_ace:tank",
+                  "stonehearth_ace:containers:input_cask:wood",
+						"stonehearth_ace:containers:input_cask:clay",
+						"stonehearth_ace:containers:input_cask:stone"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 1
                }
             }
          ]

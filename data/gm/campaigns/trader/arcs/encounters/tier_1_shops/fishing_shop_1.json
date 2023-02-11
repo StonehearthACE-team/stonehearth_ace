@@ -7,34 +7,16 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.fishing_shop_1.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 350,
-			"overall_price_multiplier": 1.2,
+         "shopkeeper_gold": 190,
+		   "overall_price_multiplier": 1.5,
          "entries": [
             {
                "items": [
                   "stonehearth_ace:food:fish_meat"
                ],
                "quantity": {
-                  "min": 6,
-                  "max": 12
-               }
-            },
-				{
-               "items": [
-                  "stonehearth_ace:food:fish_roe:fish_roe_basket"
-               ],
-               "quantity": {
-                  "min": 0,
-                  "max": 3
-               }
-            },
-				{
-               "items": [
-                  "stonehearth_ace:trapper:fish_trap"
-               ],
-               "quantity": {
-                  "min": 0,
-                  "max": 2
+                  "min": 12,
+                  "max": 20
                }
             },
             {
@@ -45,16 +27,17 @@
                      ],
                      "material": [
                         "fish_meat",
-								"raw"
+						      "raw"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 3
+                  "min": 2,
+                  "max": 8,
+                  "max_unique": 1
                }
             },
-				{
+			   {
                "items_matching": {
                   "algae": {
                      "category": [
@@ -66,27 +49,91 @@
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 4
+                  "min": 4,
+                  "max": 8,
+                  "max_unique": 2
                }
             },
-				{
+			   {
                "items": [
-                  "stonehearth_ace:food:fish_stew"
+                  "stonehearth_ace:food:fish_stew",
+                  "stonehearth_ace:food:roast_fish",
+				      "stonehearth_ace:food:fish_pot_pie",
+				      "stonehearth_ace:food:fisherman_soup",
+				      "stonehearth_ace:food:catfish_tagine",
+                  "stonehearth_ace:food:fish_fingers",
+                  "stonehearth_ace:food:fishwrap",
+                  "stonehearth_ace:food:kibble_fish"
                ],
                "quantity": {
-                  "min": 2,
-                  "max": 4
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 3
+               },
+               "price_multiplier": 1.6
+            },
+			   {
+               "items": [
+                  "stonehearth_ace:food:fish_roe:fish_roe_basket",
+                  "stonehearth_ace:resources:herb:water_lily:lily_pad"
+               ],
+               "quantity": {
+                  "min": 6,
+                  "max": 12
                }
             },
-				{
+            {
                "items": [
-                  "stonehearth_ace:food:roast_fish"
+                  "stonehearth_ace:resources:herb:water_lily:pink",
+                  "stonehearth_ace:resources:herb:water_lily:purple",
+                  "stonehearth_ace:resources:herb:water_lily:yellow",
+                  "stonehearth_ace:resources:herb:water_lily:white"
                ],
                "quantity": {
-                  "min": 0,
+                  "min": 4,
+                  "max": 8,
+                  "max_unique": 2
+               }
+            },
+			   {
+               "items": [
+                  "stonehearth_ace:food:fish_roe:fish_big_roe_basket"
+               ],
+               "quantity": {
+                  "min": 1,
                   "max": 2
-               }
+               },
+               "price_multiplier": 1.75
+            },
+			   {
+               "items": [
+                  "stonehearth_ace:consumables:captive:fish:silver",
+				      "stonehearth_ace:consumables:captive:fish:big",
+				      "stonehearth_ace:consumables:captive:fish:dark",
+				      "stonehearth_ace:consumables:captive:fish:long"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 1
+               },
+               "fine_item_chance": 0,
+               "price_multiplier": 1.9
+            },
+			   {
+               "items": [
+				      "stonehearth_ace:consumables:captive:fish:trout",
+				      "stonehearth_ace:consumables:captive:fish:salmon",
+				      "stonehearth_ace:consumables:captive:fish:catfish",
+				      "stonehearth_ace:consumables:captive:fish:carp"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 1,
+                  "max_unique": 1
+               },
+               "fine_item_chance": 0,
+               "price_multiplier": 2
             }
          ]
       }

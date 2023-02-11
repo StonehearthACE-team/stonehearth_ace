@@ -14,8 +14,63 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/charcoal_shop_1.json",
          "shoptions": {
             "stall_model": "charcoal_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.4,
+                  "max_quantity": 8,
+                  "chance": 0.9
+               },
+               {
+                  "material": "wood resource",
+                  "price_factor": 2,
+                  "max_quantity": 32,
+                  "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:woven",
+                  "price_factor": 1.3,
+                  "max_quantity": 10,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.4,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.6,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },    
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.25,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.3,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.6,
+                  "max_quantity": 2,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.4,
+                  "max_quantity": 2,
+                  "chance": 0.5
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -46,8 +101,75 @@
                "common": 4
             },
             "stall_model": "charcoal_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.9
+               },
+               {
+                  "material": "wood resource",
+                  "price_factor": 2.5,
+                  "max_quantity": 24,
+                  "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:woven",
+                  "price_factor": 1.4,
+                  "max_quantity": 10,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:iron",
+                  "price_factor": 1.7,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:tools:worker_tools_iron",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.5,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },    
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.3,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.7,
+                  "max_quantity": 2,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.5,
+                  "max_quantity": 2,
+                  "chance": 0.5
+               }
+            ]
          }
       },
       "charcoal_shop_3": {
@@ -70,14 +192,15 @@
             "max_wanted_items": 6,
             "wanted_items": [
                {
-                  "material": "wood resource",
-                  "price_factor": 1.2,
-                  "max_quantity": 30
-               },
-               {
                   "material": "containers furniture",
                   "price_factor": 1.6,
                   "max_quantity": 12,
+                  "chance": 0.9
+               },
+               {
+                  "material": "wood resource",
+                  "price_factor": 3,
+                  "max_quantity": 30,
                   "chance": 0.8
                },
                {
@@ -90,7 +213,7 @@
                   "uri": "stonehearth:containers:input_bin:iron",
                   "price_factor": 1.8,
                   "max_quantity": 6,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "uri": "stonehearth_ace:tools:worker_tools_iron",
@@ -102,7 +225,7 @@
                   "material": "prepared_food",
                   "price_factor": 1.6,
                   "max_quantity": 12,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "material": "prepared_food baked",
@@ -114,7 +237,7 @@
                   "material": "healing_item",
                   "price_factor": 1.4,
                   "max_quantity": 8,
-                  "chance": 0.4
+                  "chance": 0.6
                },
                {
                   "material": "leather resource",
@@ -151,8 +274,51 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/quarry_shop_1.json",
          "shoptions": {
             "stall_model": "quarry_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.2,
+                  "max_quantity": 12,
+                  "chance": 0.9
+               },
+               {
+                  "material": "wood resource",
+                  "price_factor": 1.5,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:containers:large_stone_coffer",
+                  "price_factor": 1.4,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.4,
+                  "max_quantity": 18,
+                  "chance": 0.6
+               },
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.25,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.2,
+                  "max_quantity": 3,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.2,
+                  "max_quantity": 3,
+                  "chance": 0.5
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:sandy:drifts": true,
@@ -180,8 +346,81 @@
                "common": 4
             },
             "stall_model": "quarry_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.9
+               },
+               {
+                  "material": "wood resource",
+                  "price_factor": 2,
+                  "max_quantity": 24,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:containers:large_stone_coffer",
+                  "price_factor": 1.5,
+                  "max_quantity": 4,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:iron",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.5,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.65,
+                  "max_quantity": 4,
+                  "chance": 0.5
+               },  
+               {
+                  "uri": "stonehearth_ace:tools:worker_tools_iron",
+                  "price_factor": 1.7,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },  
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.25,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.7,
+                  "max_quantity": 2,
+                  "chance": 0.6
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 1.5,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.2,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               }
+            ]
          }
       },
       "quarry_shop_3": {
@@ -200,15 +439,16 @@
             "max_wanted_items": 6,
             "wanted_items": [
                {
-                  "material": "wood resource",
-                  "price_factor": 1.1,
-                  "max_quantity": 18,
-                  "chance": 0.6
-               },
-               {
                   "material": "containers furniture",
                   "price_factor": 1.4,
-                  "max_quantity": 16
+                  "max_quantity": 16,
+                  "chance": 0.9
+               },
+               {
+                  "material": "wood resource",
+                  "price_factor": 2.5,
+                  "max_quantity": 18,
+                  "chance": 0.6
                },
                {
                   "uri": "stonehearth_ace:containers:large_stone_coffer",
@@ -287,8 +527,63 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/lumberjacking_shop_1.json",
          "shoptions": {
             "stall_model": "lumberjacking_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "stonehearth_ace:planters:pot:sapling",
+                  "price_factor": 1.35,
+                  "max_quantity": 8,
+                  "chance": 0.9
+               },
+               {
+                  "material": "ingot soft_metal",
+                  "price_factor": 1.2,
+                  "max_quantity": 6,
+                  "chance": 0.8
+               },
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.25,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:containers:large_crate",
+                  "price_factor": 1.45,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:containers:small_crate",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.35,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               }, 
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.2,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.6,
+                  "max_quantity": 2,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.15,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -317,8 +612,87 @@
                "common": 4
             },
             "stall_model": "lumberjacking_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "stonehearth_ace:planters:pot:sapling",
+                  "price_factor": 1.4,
+                  "max_quantity": 12,
+                  "chance": 0.9
+               },
+               {
+                  "material": "ingot soft_metal",
+                  "price_factor": 1.25,
+                  "max_quantity": 10,
+                  "chance": 0.8
+               },
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.3,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:containers:large_crate",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:containers:small_crate",
+                  "price_factor": 1.35,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.4,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.5,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },  
+               {
+                  "uri": "stonehearth_ace:tools:worker_tools_iron",
+                  "price_factor": 1.75,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },  
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.35,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.8,
+                  "max_quantity": 4,
+                  "chance": 0.3
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.7,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.2,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.1,
+                  "max_quantity": 2,
+                  "chance": 0.5
+               }
+            ]
          }
       },
       "lumberjacking_shop_3": {
@@ -354,7 +728,7 @@
                },
                {
                   "material": "containers furniture",
-                  "price_factor": 1.6,
+                  "price_factor": 1.35,
                   "max_quantity": 12,
                   "chance": 0.6
                },
@@ -435,8 +809,45 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/mining_shop_1.json",
          "shoptions": {
             "stall_model": "mining_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.35,
+                  "max_quantity": 12,
+                  "chance": 0.9
+               },
+               {
+                  "material": "wood resource",
+                  "price_factor": 1.5,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.4,
+                  "max_quantity": 18,
+                  "chance": 0.6
+               },
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.25,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.2,
+                  "max_quantity": 3,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.2,
+                  "max_quantity": 3,
+                  "chance": 0.5
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -462,8 +873,81 @@
                "common": 4
             },
             "stall_model": "mining_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.9
+               },
+               {
+                  "material": "wood resource",
+                  "price_factor": 2,
+                  "max_quantity": 24,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth:containers:input_corner:ground:iron",
+                  "price_factor": 1.5,
+                  "max_quantity": 4,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:iron",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.5,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.65,
+                  "max_quantity": 4,
+                  "chance": 0.5
+               },  
+               {
+                  "uri": "stonehearth_ace:tools:worker_tools_iron",
+                  "price_factor": 1.7,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },  
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.25,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.7,
+                  "max_quantity": 2,
+                  "chance": 0.6
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 1.5,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.2,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               }
+            ]
          }
       },
       "mining_shop_3": {
@@ -482,15 +966,16 @@
             "max_wanted_items": 6,
             "wanted_items": [
                {
-                  "material": "wood resource",
-                  "price_factor": 1.4,
-                  "max_quantity": 8,
-                  "chance": 0.8
-               },
-               {
                   "material": "containers furniture",
                   "price_factor": 1.9,
-                  "max_quantity": 8
+                  "max_quantity": 8,
+                  "chance": 0.9
+               },
+               {
+                  "material": "wood resource",
+                  "price_factor": 2,
+                  "max_quantity": 8,
+                  "chance": 0.8
                },
                {
                   "uri": "stonehearth:containers:input_corner:ground:iron",
@@ -563,8 +1048,57 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/clay_pit_shop_1.json",
          "shoptions": {
             "stall_model": "clay_pit_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.1,
+                  "max_quantity": 16,
+                  "chance": 0.9
+               },
+               {
+                  "material": "stone resource",
+                  "price_factor": 1.5,
+                  "max_quantity": 32,
+                  "chance": 0.9
+               },
+               {
+                  "uri": "stonehearth_ace:containers:large_stone_coffer",
+                  "price_factor": 1.25,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:woven",
+                  "price_factor": 1.3,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.2,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.25,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 1.3,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.45,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -595,8 +1129,81 @@
                "common": 4
             },
             "stall_model": "clay_pit_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "containers furniture",
+                  "price_factor": 1.15,
+                  "max_quantity": 10,
+                  "chance": 0.9
+               },
+               {
+                  "material": "stone resource",
+                  "price_factor": 2,
+                  "max_quantity": 24,
+                  "chance": 0.9
+               },
+               {
+                  "uri": "stonehearth_ace:containers:large_stone_coffer",
+                  "price_factor": 1.35,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:containers:input_bin:woven",
+                  "price_factor": 1.5,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.3,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.45,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },  
+               {
+                  "uri": "stonehearth_ace:tools:worker_tools_iron",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },  
+               {
+                  "material": "healing_item",
+                  "price_factor": 1.3,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ingot soft_metal",
+                  "price_factor": 1.5,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 1.5,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.6,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },
+               {
+                  "material": "freezing_outfit field_work_outfit civillian_equipment",
+                  "price_factor": 1.7,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               }
+            ]
          }
       },
       "clay_pit_shop_3": {
@@ -619,15 +1226,15 @@
             "max_wanted_items": 6,
             "wanted_items": [
                {
-                  "material": "stone resource",
-                  "price_factor": 1.6,
-                  "max_quantity": 16,
-                  "chance": 0.9
-               },
-               {
                   "material": "containers furniture",
                   "price_factor": 1.2,
                   "max_quantity": 14,
+                  "chance": 0.9
+               },
+               {
+                  "material": "stone resource",
+                  "price_factor": 2,
+                  "max_quantity": 16,
                   "chance": 0.9
                },
                {

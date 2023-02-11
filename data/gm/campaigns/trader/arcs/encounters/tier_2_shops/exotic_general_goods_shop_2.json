@@ -6,41 +6,215 @@
       "name": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_2_shops.exotic_general_goods_shop_2.shop_info.name)",
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_2_shops.exotic_general_goods_shop_2.shop_info.title)",
       "inventory": {
-         "shopkeeper_level": 1,
-         "shopkeeper_gold": 350,
-		   "overall_price_multiplier": 1.1,
+         "shopkeeper_level": 2,
+         "shopkeeper_gold": 590,
+		   "overall_price_multiplier": 1.65,
          "entries": [
             {
                "items_matching": {
-                  "ingredients": {
+                  "civillian_gear": {
                      "category": [
-                        "cooking_ingredient"
+                        "armor"
                      ],
                      "material": [
-                        "other_ingredient"
+                        "ascendancy_made",
+                        "civillian_equipment"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 5
+               },
+               "fine_item_chance": 0.25
             },
             {
-               "items_matching": {
-                  "ingredients": {
-                     "category": [
-                        "cooking_ingredient"
-                     ],
-                     "material": [
-                        "animal_ingredient"
-                     ]
-                  }
-               },
+               "items": [
+                  "stonehearth:resources:stone:hunk_of_stone",
+                  "stonehearth:resources:clay:clay_mound"
+               ],
                "quantity": {
-                  "min": 0,
-                  "max": 2
-               }
+                  "min": 10,
+                  "max": 15
+               },
+               "fine_item_chance": 0.25
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:wood:oak_log",
+                  "stonehearth_ace:resources:wood:juniper_log",
+                  "stonehearth_ace:resources:wood:pine_log",
+                  "stonehearth_ace:resources:wood:chestnut_log",
+                  "stonehearth_ace:resources:wood:apple_log"
+               ],
+               "quantity": {
+                  "min": 6,
+                  "max": 10,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0.25
+            },
+            {
+               "items": [
+                  "stonehearth:food:berries:berry_basket",
+                  "stonehearth_ace:food:apples:apple_basket",
+                  "stonehearth_ace:food:chestnut:chestnut_basket",
+                  "stonehearth:food:carrot:carrot_basket",
+                  "stonehearth:food:turnip:turnip_basket",
+                  "stonehearth_ace:food:turnip:turnip_greens_basket",
+                  "stonehearth:food:wheat:wheat_bale",
+                  "stonehearth_ace:food:bolete:bolete_basket"
+               ],
+               "quantity": {
+                  "min": 6,
+                  "max": 12,
+                  "max_unique": 5
+               },
+               "fine_item_chance": 0.3
+            },
+            {
+               "items": [
+                  "stonehearth:food:flour",
+                  "stonehearth_ace:food:fish_meat:carp",
+                  "stonehearth:deer_jerky",
+                  "stonehearth:food:venison",
+                  "stonehearth:racoon_jerky",
+                  "stonehearth:fox_jerky",
+                  "stonehearth:refined:gold_flakes"
+               ],
+               "quantity": {
+                  "min": 5,
+                  "max": 10,
+                  "max_unique": 5
+               },
+               "fine_item_chance": 0.3
+            },
+            {
+               "items": [
+                  "stonehearth_ace:food:horsebread",
+                  "stonehearth_ace:food:fisherman_soup",
+                  "stonehearth_ace:food:pie_apple"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 3
+               },
+               "fine_item_chance": 0.5
+            },
+            {
+               "items": [
+                  "stonehearth_ace:drink:wine_apple",
+                  "stonehearth_ace:drink:wine_berry",
+                  "stonehearth_ace:drink:juice_apple",
+                  "stonehearth_ace:drink:juice_berry",
+                  "stonehearth_ace:drink:juice_carrot",
+                  "stonehearth_ace:drink:sage_water",
+                  "stonehearth_ace:drink:beer_buttered:serving_keg",
+                  "stonehearth_ace:drink:beer_white"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0.5
+            },
+            {
+               "items": [
+                  "stonehearth:resources:herb:brightbell",
+                  "stonehearth:resources:herb:frostsnap",
+                  "stonehearth_ace:resources:herb:nightshade",
+                  "stonehearth_ace:resources:herb:oleander",
+                  "stonehearth_ace:resources:herb:water_lily:white",
+                  "stonehearth_ace:resources:herb:sage",
+                  "stonehearth_ace:resources:herb:daylily",
+                  "stonehearth_ace:resources:herb:daisy",
+                  "stonehearth_ace:resources:herb:water_lily:pink",
+                  "stonehearth_ace:resources:herb:water_lily:lily_pad",
+                  "stonehearth_ace:resources:herb:silkweed"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 16,
+                  "max_unique": 6
+               },
+               "fine_item_chance": 0.2
+            },
+            {
+               "items": [
+                  "stonehearth:resources:fiber:silkweed_bundle"
+               ],
+               "quantity": {
+                  "min": 6,
+                  "max": 12
+               },
+               "fine_item_chance": 0.2
+            },
+            {
+               "items": [
+                  "stonehearth_ace:decoration:candle_holder_double_ornate_wall",
+                  "stonehearth_ace:decoration:candle_holder_ornate_wall",
+                  "stonehearth_ace:decoration:ornate_banner_wall",
+                  "stonehearth_ace:decoration:ornate_curtains",
+                  "stonehearth_ace:decoration:ornate_curtains_wide",
+                  "stonehearth_ace:decoration:ornate_throw_rug",
+                  "stonehearth_ace:furniture:ornate_bed_pet",
+                  "stonehearth_ace:portals:ornate_curtain_door",
+                  "stonehearth_ace:portals:ornate_double_curtain_door",
+                  "stonehearth:construction:ornate_picket_fence:bar:double",
+                  "stonehearth:construction:ornate_picket_fence:bar:single",
+                  "stonehearth:construction:ornate_picket_fence:end",
+                  "stonehearth:construction:ornate_picket_fence:combo",
+                  "stonehearth:construction:ornate_picket_fence_gate",
+                  "stonehearth:containers:ornate_leather_bound_chest",
+                  "stonehearth:decoration:ornate_wooden_garden_lantern",
+                  "stonehearth:decoration:ornate_wooden_wall_lantern",
+                  "stonehearth:furniture:ornate_bench",
+                  "stonehearth:furniture:ornate_comfy_bed",
+                  "stonehearth:furniture:ornate_comfy_chair",
+                  "stonehearth:furniture:ornate_dining_table",
+                  "stonehearth:furniture:ornate_dresser",
+                  "stonehearth:furniture:ornate_table_for_one",
+                  "stonehearth:furniture:ornate_wooden_chair",
+                  "stonehearth:furniture:ornate_writing_desk",
+                  "stonehearth:portals:ornate_wooden_door",
+                  "stonehearth:portals:ornate_wooden_double_door",
+                  "stonehearth:portals:ornate_wooden_tunnel_door"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 4
+               },
+               "fine_item_chance": 0.3
+            },
+            {
+               "items": [
+                  "stonehearth:decoration:craftsman_statue:fountain",
+                  "stonehearth:decoration:craftsman_statue:fountain_garden",
+                  "stonehearth:decoration:craftsman_statue:fountain_tiered",
+                  "stonehearth:decoration:craftsman_statue:lantern_iron",
+                  "stonehearth:decoration:craftsman_statue:pot_berry_bush",
+                  "stonehearth:decoration:valor_statue:brazier_large",
+                  "stonehearth:decoration:valor_statue:wall_hanging_plaque",
+                  "stonehearth:decoration:valor_statue:war_horn",
+                  "stonehearth:decoration:valor_statue:knight_female",
+                  "stonehearth:decoration:valor_statue:knight_male",
+                  "stonehearth:portals:valor_statue:portcullis_valor",
+                  "stonehearth:decoration:roadside_shrine:fountain_wishing",
+                  "stonehearth:decoration:roadside_shrine:lantern_poyo",
+                  "stonehearth:decoration:roadside_shrine:pot_goldrose",
+                  "stonehearth:decoration:roadside_shrine:pot_moondrop",
+                  "stonehearth:decoration:roadside_shrine:pot_redbloom",
+                  "stonehearth:decoration:roadside_shrine:weathervane_poyo"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 1
             }
          ]
       }

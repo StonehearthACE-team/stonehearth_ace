@@ -7,57 +7,169 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.blacksmith_shop_1.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 550,
-		   "overall_price_multiplier": 2,
+         "shopkeeper_gold": 380,
+		   "overall_price_multiplier": 1.5,
          "entries": [
-		    {
+		      {
                "items": [
                   "stonehearth:refined:copper_ingot",
                   "stonehearth:refined:tin_ingot"
                ],
                "quantity": {
-                  "min": 3,
-                  "max": 6
+                  "min": 6,
+                  "max": 12
                }
             },
-			{
+			   {
                "items": [
                   "stonehearth:refined:bronze_ingot",
                   "stonehearth:refined:iron_ingot"
                ],
                "quantity": {
-                  "min": 0,
-                  "max": 2
+                  "min": 4,
+                  "max": 8
                }
             },
-			{
+			   {
                "items": [
-                  "stonehearth_ace:rayyas_children:blacksmith:workbench"
+                  "stonehearth:refined:steel_ingot"
                ],
                "quantity": {
                   "min": 0,
                   "max": 1
-               }
+               },
+               "price_multiplier": 2.1
             },
-			{
+			   {
                "items": [
-                  "stonehearth:blacksmith:talisman"
+                  "stonehearth:refined:silver_ingot"
                ],
                "quantity": {
                   "min": 0,
                   "max": 1
+               },
+               "price_multiplier": 2.5
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:coal:slab_of_coke"
+               ],
+               "quantity": {
+                  "min": 2,
+                  "max": 4
+               },
+               "fine_item_chance": 0
+            },
+			   {
+               "items": [
+                  "stonehearth_ace:refined:metal_bits:soft",
+                  "stonehearth_ace:refined:metal_bits:hard"
+               ],
+               "quantity": {
+                  "min": 4,
+                  "max": 8
                }
             },
             {
                "items": [
-                  "stonehearth:resources:copper:ore",
-                  "stonehearth:resources:tin:ore",
-                  "stonehearth:resources:coal:lump_of_coal"
+                  "stonehearth_ace:tools:worker_tools_iron"
                ],
                "quantity": {
-                  "min": 0,
-                  "max": 8
-               }
+                  "min": 1,
+                  "max": 3
+               },
+               "fine_item_chance": 0,
+               "price_multiplier": 1.8
+            },
+            {
+               "items_matching": {
+                  "job_tools": {
+                     "category": [
+                        "tools"
+                     ],
+                     "material": [
+                        "job_tool"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 2
+               },
+               "price_multiplier": 1.8
+            },
+            {
+               "items_matching": {
+                  "metal_decorations": {
+                     "category": [
+                        "decoration"
+                     ],
+                     "material": [
+                        "metal"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 2
+               },
+               "price_multiplier": 1.4
+            },
+            {
+               "items_matching": {
+                  "iron_decorations": {
+                     "category": [
+                        "decoration"
+                     ],
+                     "material": [
+                        "iron"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 1
+               },
+               "price_multiplier": 1.4
+            },
+            {
+               "items_matching": {
+                  "metal_furniture": {
+                     "category": [
+                        "furniture"
+                     ],
+                     "material": [
+                        "metal"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 1
+               },
+               "price_multiplier": 1.45
+            },
+            {
+               "items_matching": {
+                  "iron_containers": {
+                     "category": [
+                        "storage"
+                     ],
+                     "material": [
+                        "iron"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 2
+               },
+               "price_multiplier": 1.45
             }
          ]
       }

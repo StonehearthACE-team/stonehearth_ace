@@ -7,17 +7,92 @@
       },
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 600,
+         "shopkeeper_gold": 480,
+		   "overall_price_multiplier": 1.8,
          "entries": [
             {
                "items": [
                   "stonehearth:refined:thread",
+                  "stonehearth_ace:refined:yarn"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 22
+               }
+            },
+            {
+               "items": [
                   "stonehearth:refined:cloth_bolt"
                ],
                "quantity": {
-                  "min": 5,
-                  "max": 10
+                  "min": 6,
+                  "max": 12
                }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:refined:fine_stuffing",
+                  "stonehearth:refined:leather_bolt"
+               ],
+               "quantity": {
+                  "min": 4,
+                  "max": 8
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:tools:backpack_cloth"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 2
+               }
+            },
+            {
+               "items": [
+                  "stonehearth:toys:plushie_toy_rabbit"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:furniture:sleeping_bag",
+                  "stonehearth_ace:portals:curtain_door",
+                  "stonehearth_ace:portals:double_curtain_door",
+                  "stonehearth_ace:portals:ornate_curtain_door",
+                  "stonehearth_ace:portals:ornate_double_curtain_door",
+                  "stonehearth:containers:input_bin:woven",
+                  "stonehearth:containers:input_bin:woven_blue",
+                  "stonehearth:containers:input_bin:woven_green",
+                  "stonehearth:containers:input_bin:woven_red"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 3
+               }
+            },
+            {
+               "items_matching": {
+                  "civillian_clothes": {
+                     "category": [
+                        "armor"
+                     ],
+                     "material": [
+                        "civillian_equipment",
+                        "cloth"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 4
+               },
+               "price_multiplier": 1.6
             },
             {
                "items_matching": {
@@ -26,14 +101,17 @@
                         "armor"
                      ],
                      "material": [
+                        "light_armor",
                         "cloth"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 3
-               }
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 2
+               },
+               "price_multiplier": 2
             },
             {
                "items_matching": {
@@ -48,8 +126,10 @@
                },
                "quantity": {
                   "min": 0,
-                  "max": 3
-               }
+                  "max": 3,
+                  "max_unique": 4
+               },
+               "price_multiplier": 1.6
             }
          ]
       }

@@ -7,20 +7,26 @@
       },
       "inventory": {
          "shopkeeper_level": 2,
-         "shopkeeper_gold": 600,
+         "shopkeeper_gold": 710,
+		   "overall_price_multiplier": 1.65,
          "entries": [
             {
                "items_matching": {
                   "food": {
+                     "category": [
+                        "food"
+                     ],
                      "material": [
                         "prepared_food"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 5
-               }
+                  "min": 2,
+                  "max": 6,
+                  "max_unique": 24
+               },
+               "fine_item_chance": 0.3
             }
          ]
       }

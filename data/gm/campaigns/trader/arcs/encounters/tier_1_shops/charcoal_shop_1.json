@@ -7,34 +7,35 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.charcoal_shop_1.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 300,
-		 "overall_price_multiplier": 0.8,
+         "shopkeeper_gold": 250,
+		   "overall_price_multiplier": 1.4,
          "entries": [
-		    {
+		      {
                "items": [
                   "stonehearth_ace:resources:coal:piece_of_charcoal"
                ],
                "quantity": {
-                  "min": 8,
-                  "max": 24
+                  "min": 12,
+                  "max": 18
                }
             },
-			{
+			   {
                "items": [
                   "stonehearth_ace:resources:fuel:bundle_of_firewood"
                ],
                "quantity": {
-                  "min": 4,
-                  "max": 12
+                  "min": 18,
+                  "max": 24
                }
             },
             {
                "items": [
-                  "stonehearth_ace:resources:clay:ball_clay_mound"
+				      "stonehearth_ace:resources:fuel:bit_of_peat",
+                  "stonehearth_ace:resources:coal:chunk_of_brown_coal"
                ],
                "quantity": {
-                  "min": 0,
-                  "max": 4
+                  "min": 8,
+                  "max": 16
                }
             }
          ]

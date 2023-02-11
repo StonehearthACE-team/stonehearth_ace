@@ -7,24 +7,59 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_2_shops.clay_pit_shop_2.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 2,
-         "shopkeeper_gold": 650,
-		   "overall_price_multiplier": 1.1,
+         "shopkeeper_gold": 410,
+		   "overall_price_multiplier": 1.6,
          "entries": [
             {
                "items_matching": {
-                  "herb": {
+                  "clay": {
                      "category": [
                         "resources"
                      ],
                      "material": [
                         "clay"
+                     ],
+                     "exclude_material": [
+                        "ball",
+                        "shale"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 10
-               }
+                  "min": 24,
+                  "max": 36
+               },
+               "fine_item_chance": 0.35
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:clay:ball_clay_mound"
+               ],
+               "quantity": {
+                  "min": 6,
+                  "max": 12
+               },
+               "fine_item_chance": 0.2
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:clay:shale_clay_mound"
+               ],
+               "quantity": {
+                  "min": 2,
+                  "max": 4
+               },
+               "fine_item_chance": 0.2
+            },
+            {
+               "items": [
+				      "stonehearth_ace:resources:fuel:bit_of_peat"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 16
+               },
+               "fine_item_chance": 0.2
             }
          ]
       }

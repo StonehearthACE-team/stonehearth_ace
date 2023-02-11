@@ -15,8 +15,45 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/healing_shop_1.json",
          "shoptions": {
             "stall_model": "healing_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "herb resource",
+                  "price_factor": 2.5,
+                  "max_quantity": 24,
+                  "chance": 0.8
+               },
+               {
+                  "material": "herb healing resource",
+                  "price_factor": 3,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "material": "herb soothing resource",
+                  "price_factor": 3,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "material": "honey cooking_ingredient",
+                  "price_factor": 1.9,
+                  "max_quantity": 12,
+                  "chance": 0.7
+               },
+               {
+                  "material": "herb robust resource",
+                  "price_factor": 3,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "material": "thread resource",
+                  "price_factor": 1.45,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -48,8 +85,69 @@
                "common": 4
             },
             "stall_model": "healing_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "herb resource",
+                  "price_factor": 3,
+                  "max_quantity": 18,
+                  "chance": 0.9
+               },
+               {
+                  "material": "herb healing resource",
+                  "price_factor": 3.6,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "material": "herb soothing resource",
+                  "price_factor": 3.6,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "material": "herb noxious resource",
+                  "price_factor": 3.6,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "material": "honey cooking_ingredient",
+                  "price_factor": 2.2,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:beekeeping_hat:simple",
+                  "price_factor": 1.4,
+                  "max_quantity": 2,
+                  "chance": 0.4
+               },
+               {
+                  "material": "herb robust resource",
+                  "price_factor": 3.6,
+                  "max_quantity": 10,
+                  "chance": 0.5
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },
+               {
+                  "material": "thread resource",
+                  "price_factor": 1.65,
+                  "max_quantity": 14,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:refined:fine_stuffing",
+                  "price_factor": 1.45,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               }
+            ]
          }
       },
       "healing_shop_3": {
@@ -73,24 +171,24 @@
             "wanted_items": [
                {
                   "material": "herb resource",
-                  "price_factor": 2,
+                  "price_factor": 3.5,
                   "max_quantity": 20
                },
                {
                   "material": "herb healing resource",
-                  "price_factor": 3,
+                  "price_factor": 4,
                   "max_quantity": 12,
                   "chance": 0.3
                },
                {
                   "material": "herb soothing resource",
-                  "price_factor": 3,
+                  "price_factor": 4,
                   "max_quantity": 12,
                   "chance": 0.3
                },
                {
                   "material": "herb noxious resource",
-                  "price_factor": 3,
+                  "price_factor": 4,
                   "max_quantity": 12,
                   "chance": 0.3
                },
@@ -120,13 +218,13 @@
                },
                {
                   "material": "herb peculiar resource",
-                  "price_factor": 3,
+                  "price_factor": 4,
                   "max_quantity": 12,
                   "chance": 0.3
                },
                {
                   "material": "herb robust resource",
-                  "price_factor": 3,
+                  "price_factor": 4,
                   "max_quantity": 12,
                   "chance": 0.3
                },
@@ -171,8 +269,45 @@
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/weapon_armor_shop_1.json",
          "shoptions": {
             "stall_model": "weapon_armor_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.75,
+                  "max_quantity": 18,
+                  "chance": 0.8
+               },
+               {
+                  "material": "ingot soft_metal",
+                  "price_factor": 1.6,
+                  "max_quantity": 24,
+                  "chance": 0.7
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.65,
+                  "max_quantity": 32,
+                  "chance": 0.6
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 24,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.1,
+                  "max_quantity": 4,
+                  "chance": 0.3
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 2.2,
+                  "max_quantity": 24,
+                  "chance": 0.6
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -207,8 +342,74 @@
                "common": 4
             },
             "stall_model": "weapon_armor_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.9,
+                  "max_quantity": 20
+               },
+               {
+                  "uri": "stonehearth_ace:tools:blacksmith_hammer_steel",
+                  "price_factor": 2,
+                  "max_quantity": 1,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth:refined:iron_ingot",
+                  "price_factor": 2.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.8,
+                  "max_quantity": 24,
+                  "chance": 0.3
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 2,
+                  "max_quantity": 16,
+                  "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.15,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:hard",
+                  "price_factor": 1.35,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth:refined:bronze_ingot",
+                  "price_factor": 2.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 2.3,
+                  "max_quantity": 16,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.3,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               }
+            ]
          },
          "forbidden_kingdom": {
             "rayyas_children:kingdoms:rayyas_children": true,
@@ -340,8 +541,45 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/rc_weapon_armor_shop_1.json",
          "shoptions": {
             "stall_model": "rc_weapon_armor_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.75,
+                  "max_quantity": 18,
+                  "chance": 0.8
+               },
+               {
+                  "material": "ingot soft_metal",
+                  "price_factor": 1.6,
+                  "max_quantity": 24,
+                  "chance": 0.7
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.65,
+                  "max_quantity": 32,
+                  "chance": 0.6
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 24,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.1,
+                  "max_quantity": 4,
+                  "chance": 0.3
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 2.2,
+                  "max_quantity": 24,
+                  "chance": 0.6
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:snow:drifts": true,
@@ -371,8 +609,74 @@
                "common": 4
             },
             "stall_model": "rc_weapon_armor_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.9,
+                  "max_quantity": 20
+               },
+               {
+                  "uri": "stonehearth_ace:tools:blacksmith_hammer_steel",
+                  "price_factor": 2,
+                  "max_quantity": 1,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth:refined:iron_ingot",
+                  "price_factor": 2.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.8,
+                  "max_quantity": 24,
+                  "chance": 0.3
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 2,
+                  "max_quantity": 16,
+                  "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.15,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:hard",
+                  "price_factor": 1.35,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth:refined:bronze_ingot",
+                  "price_factor": 2.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 2.3,
+                  "max_quantity": 16,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.3,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               }
+            ]
          },
          "only_kingdom": {
             "rayyas_children:kingdoms:rayyas_children": true
@@ -502,8 +806,45 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/na_weapon_armor_shop_1.json",
          "shoptions": {
             "stall_model": "na_weapon_armor_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.75,
+                  "max_quantity": 18,
+                  "chance": 0.8
+               },
+               {
+                  "material": "ingot soft_metal",
+                  "price_factor": 1.6,
+                  "max_quantity": 24,
+                  "chance": 0.7
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.65,
+                  "max_quantity": 32,
+                  "chance": 0.6
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 24,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.1,
+                  "max_quantity": 4,
+                  "chance": 0.3
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 2.2,
+                  "max_quantity": 24,
+                  "chance": 0.6
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -532,8 +873,74 @@
                "common": 4
             },
             "stall_model": "na_weapon_armor_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.9,
+                  "max_quantity": 20
+               },
+               {
+                  "uri": "stonehearth_ace:tools:blacksmith_hammer_steel",
+                  "price_factor": 2,
+                  "max_quantity": 1,
+                  "chance": 0.2
+               },
+               {
+                  "uri": "stonehearth:refined:iron_ingot",
+                  "price_factor": 2.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.8,
+                  "max_quantity": 24,
+                  "chance": 0.3
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 2,
+                  "max_quantity": 16,
+                  "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.15,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:hard",
+                  "price_factor": 1.35,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth:refined:bronze_ingot",
+                  "price_factor": 2.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 2.3,
+                  "max_quantity": 16,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.3,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               }
+            ]
          },
          "only_kingdom": {
             "northern_alliance:kingdoms:northern_alliance": true
@@ -667,7 +1074,7 @@
             },
             "persistence_job": "stonehearth:jobs:engineer",
             "stall_model": "engineering_shop",
-            "max_wanted_items": 4,
+            "max_wanted_items": 5,
             "wanted_items": [
                {
                   "material": "ingot hard_metal",

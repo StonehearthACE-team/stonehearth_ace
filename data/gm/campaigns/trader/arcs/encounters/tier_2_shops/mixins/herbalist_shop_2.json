@@ -7,37 +7,124 @@
       },
       "inventory": {
          "shopkeeper_level": 2,
-         "shopkeeper_gold": 950,
+         "shopkeeper_gold": 720,
+		   "overall_price_multiplier": 1.9,
          "entries": [
             {
                "items_matching": {
-                  "herbs": {
+                  "tonics": {
+                     "category": [
+                        "consumable"
+                     ],
                      "material": [
-                        "stockpile_plant"
+                        "tonic"
+                     ],
+                     "exclude_material": [
+                        "healing_item"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 3
+                  "min": 1,
+                  "max": 3,
+                  "max_unique": 8
                }
             },
             {
                "items_matching": {
-                  "decor": {
+                  "tonics": {
                      "category": [
-                        "furniture",
-                        "decoration"
+                        "consumable"
                      ],
                      "material": [
-                        "plant"
+                        "healing_item"
                      ]
                   }
                },
                "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 4
+               },
+               "price_multiplier": 2
+            },
+            {
+               "items_matching": {
+                  "herb": {
+                     "category": [
+                        "resources"
+                     ],
+                     "material": [
+                        "herb"
+                     ],
+                     "exclude_material": [
+                        "peculiar"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 8,
+                  "max": 12,
+                  "max_unique": 4
+               },
+               "fine_item_chance": 0.15,
+               "price_multiplier": 2.1
+            },
+            {
+               "items_matching": {
+                  "fertilizer": {
+                     "category": [
+                        "consumable"
+                     ],
+                     "material": [
+                        "fertilizer"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 4,
+                  "max": 6,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0,
+               "price_multiplier": 2.4
+            },
+            {
+               "items": [			         
+                  "stonehearth_ace:food:honey"
+               ],
+               "quantity": {
+                  "min": 10,
+                  "max": 18
+               },
+               "fine_item_chance": 0.4
+            },
+            {
+               "items": [			         
+                  "stonehearth_ace:consumables:royal_jelly"
+               ],
+               "quantity": {
                   "min": 0,
-                  "max": 2
-               }
+                  "max": 3
+               },
+               "fine_item_chance": 0.5,
+               "price_multiplier": 2.6
+            },
+            {
+               "items": [			         
+                  "stonehearth_ace:planters:large",
+                  "stonehearth_ace:planters:small",
+                  "stonehearth_ace:planters:water",
+                  "stonehearth_ace:planters:pot:sapling",
+                  "stonehearth_ace:planters:pot"
+               ],
+               "quantity": {
+                  "min": 2,
+                  "max": 3,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0.5,
+               "price_multiplier": 3.5
             }
          ]
       }

@@ -7,39 +7,160 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.na_exotic_general_goods_shop_1.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 350,
-		   "overall_price_multiplier": 1.1,
+         "shopkeeper_gold": 210,
+		   "overall_price_multiplier": 1.5,
          "entries": [
             {
                "items_matching": {
-                  "ingredients": {
+                  "civillian_gear": {
                      "category": [
-                        "cooking_ingredient"
+                        "armor"
                      ],
                      "material": [
-                        "other_ingredient"
+                        "na_made",
+                        "civillian_equipment"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 1
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 3
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:stone:slate_stone",
+                  "stonehearth_ace:resources:clay:shale_clay_mound"
+               ],
+               "quantity": {
+                  "min": 10,
+                  "max": 15
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:wood:walnut_log",
+                  "stonehearth_ace:resources:wood:juniper_log",
+                  "stonehearth_ace:resources:wood:pine_log",
+                  "stonehearth_ace:resources:wood:pear_log"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 12,
+                  "max_unique": 2
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:food:lingonberry_basket",
+                  "stonehearth_ace:food:pears:pear_basket",
+                  "stonehearth_ace:food:walnut:walnut_basket",
+                  "stonehearth:food:sweet_potato:sweet_potato_basket",
+                  "stonehearth_ace:food:cabbage:cabbage_basket",
+                  "stonehearth_ace:food:barley:barley_bale",
+                  "stonehearth_ace:food:winter_morel:winter_morel_basket"
+               ],
+               "quantity": {
+                  "min": 6,
+                  "max": 12,
+                  "max_unique": 4
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:food:preserves:jam_lingonberry",
+                  "stonehearth_ace:food:barley_flour",
+                  "stonehearth_ace:food:fish_meat:salmon",
+                  "stonehearth:boar_jerky",
+                  "stonehearth:food:pork",
+                  "stonehearth:bear_jerky",
+                  "stonehearth:squirrel_jerky",
+                  "stonehearth_ace:resources:stone:marble_stone"
+               ],
+               "quantity": {
+                  "min": 5,
+                  "max": 10,
+                  "max_unique": 3
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:food:barley_bun",
+                  "stonehearth_ace:food:dumpling_salmon",
+                  "stonehearth:food:dumpling_meat",
+                  "stonehearth_ace:food:winter_soup",
+                  "stonehearth_ace:food:nut_cake"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:drink:wine_pear",
+                  "stonehearth_ace:drink:juice_pear",
+                  "stonehearth_ace:drink:juice_sweet_potato",
+                  "stonehearth_ace:drink:beer",
+                  "stonehearth_ace:drink:spirit_northern",
+                  "stonehearth_ace:drink:mead"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 2
+               }
+            },
+            {
+               "items": [
+                  "stonehearth:resources:herb:violet",
+                  "stonehearth:resources:herb:frostsnap",
+                  "stonehearth:resources:herb:snow_poppy",
+                  "stonehearth_ace:resources:herb:chives",
+                  "stonehearth_ace:resources:herb:rose",
+                  "stonehearth_ace:resources:herb:nightshade",
+                  "stonehearth_ace:resources:herb:daylily",
+                  "stonehearth_ace:resources:herb:daisy",
+                  "stonehearth_ace:resources:herb:bog_myrtle",
+                  "stonehearth_ace:resources:herb:water_lily:white",
+                  "stonehearth_ace:resources:herb:water_lily:purple",
+                  "stonehearth_ace:resources:herb:water_lily:lily_pad"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 16,
+                  "max_unique": 4
+               }
+            },
+            {
+               "items": [
+                  "stonehearth:resources:fiber:wintermoss_bundle"
+               ],
+               "quantity": {
+                  "min": 6,
+                  "max": 10
                }
             },
             {
                "items_matching": {
-                  "ingredients": {
+                  "wood_furniture": {
                      "category": [
-                        "cooking_ingredient"
+                        "furniture",
+                        "decoration",
+                        "construction",
+                        "door",
+                        "window"
                      ],
                      "material": [
-                        "animal_ingredient"
+                        "stone"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 2
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 4
                }
             }
          ]

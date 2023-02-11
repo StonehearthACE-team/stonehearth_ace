@@ -14,8 +14,87 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/weapon_armor_shop_1_exotic.json",
          "shoptions": {
             "stall_model": "weapon_armor_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.8,
+                  "max_quantity": 24,
+                  "chance": 0.7
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.6,
+                  "max_quantity": 18,
+                  "chance": 0.6
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 16,
+                  "chance": 0.5
+               },
+               {
+                  "material": "rc_made bronze armor",
+                  "price_factor": 1.55,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "na_made bronze armor",
+                  "price_factor": 1.55,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "rc_made bronze stockpile_weapon",
+                  "price_factor": 1.35,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "na_made bronze stockpile_weapon",
+                  "price_factor": 1.35,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "rc_made iron armor",
+                  "price_factor": 2,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "na_made iron armor",
+                  "price_factor": 2,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "rc_made iron stockpile_weapon",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "na_made iron stockpile_weapon",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.2,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.45,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -49,8 +128,129 @@
                "common": 4
             },
             "stall_model": "weapon_armor_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 2,
+                  "max_quantity": 14,
+                  "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth_ace:tools:blacksmith_hammer_steel",
+                  "price_factor": 1.9,
+                  "max_quantity": 1,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.8,
+                  "max_quantity": 24,
+                  "chance": 0.6
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 1.9,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "material": "rc_made iron armor",
+                  "price_factor": 1.7,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "na_made iron armor",
+                  "price_factor": 1.7,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "rc_made iron stockpile_weapon",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "na_made iron stockpile_weapon",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "rc_made steel armor",
+                  "price_factor": 2.1,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "na_made steel armor",
+                  "price_factor": 2.1,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "rc_made steel stockpile_weapon",
+                  "price_factor": 1.9,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "na_made steel stockpile_weapon",
+                  "price_factor": 1.9,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.2,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:hard",
+                  "price_factor": 1.4,
+                  "max_quantity": 2,
+                  "chance": 0.3
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.3,
+                  "max_quantity": 16,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.65,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "material": "rc_made armor",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.2
+               },
+               {
+                  "material": "na_made armor",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.2
+               },
+               {
+                  "material": "rc_made stockpile_weapon",
+                  "price_factor": 1.2,
+                  "max_quantity": 8,
+                  "chance": 0.2
+               },
+               {
+                  "material": "na_made stockpile_weapon",
+                  "price_factor": 1.2,
+                  "max_quantity": 8,
+                  "chance": 0.2
+               }
+            ]
          },
          "forbidden_kingdom": {
             "stonehearth:kingdoms:ascendancy": true
@@ -256,8 +456,87 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/rc_weapon_armor_shop_1_exotic.json",
          "shoptions": {
             "stall_model": "rc_weapon_armor_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.8,
+                  "max_quantity": 24,
+                  "chance": 0.7
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.6,
+                  "max_quantity": 18,
+                  "chance": 0.6
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 16,
+                  "chance": 0.5
+               },
+               {
+                  "material": "ascendancy_made bronze armor",
+                  "price_factor": 1.55,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "na_made bronze armor",
+                  "price_factor": 1.55,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "ascendancy_made bronze stockpile_weapon",
+                  "price_factor": 1.35,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "na_made bronze stockpile_weapon",
+                  "price_factor": 1.35,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "ascendancy_made iron armor",
+                  "price_factor": 2,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "na_made iron armor",
+                  "price_factor": 2,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "ascendancy_made iron stockpile_weapon",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "na_made iron stockpile_weapon",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.2,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.45,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:snow:drifts": true,
@@ -287,8 +566,129 @@
                "common": 4
             },
             "stall_model": "rc_weapon_armor_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 2,
+                  "max_quantity": 14,
+                  "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth_ace:tools:blacksmith_hammer_steel",
+                  "price_factor": 1.9,
+                  "max_quantity": 1,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.8,
+                  "max_quantity": 24,
+                  "chance": 0.6
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 1.9,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "material": "ascendancy_made iron armor",
+                  "price_factor": 1.7,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "na_made iron armor",
+                  "price_factor": 1.7,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ascendancy_made iron stockpile_weapon",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "na_made iron stockpile_weapon",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ascendancy_made steel armor",
+                  "price_factor": 2.1,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "na_made steel armor",
+                  "price_factor": 2.1,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ascendancy_made steel stockpile_weapon",
+                  "price_factor": 1.9,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "na_made steel stockpile_weapon",
+                  "price_factor": 1.9,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.2,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:hard",
+                  "price_factor": 1.4,
+                  "max_quantity": 2,
+                  "chance": 0.3
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.3,
+                  "max_quantity": 16,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.65,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "material": "ascendancy_made armor",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.2
+               },
+               {
+                  "material": "na_made armor",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.2
+               },
+               {
+                  "material": "ascendancy_made stockpile_weapon",
+                  "price_factor": 1.2,
+                  "max_quantity": 8,
+                  "chance": 0.2
+               },
+               {
+                  "material": "na_made stockpile_weapon",
+                  "price_factor": 1.2,
+                  "max_quantity": 8,
+                  "chance": 0.2
+               }
+            ]
          },
          "forbidden_kingdom": {
             "rayyas_children:kingdoms:rayyas_children": true
@@ -494,8 +894,87 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/na_weapon_armor_shop_1_exotic.json",
          "shoptions": {
             "stall_model": "na_weapon_armor_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 1.8,
+                  "max_quantity": 24,
+                  "chance": 0.7
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.6,
+                  "max_quantity": 18,
+                  "chance": 0.6
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 16,
+                  "chance": 0.5
+               },
+               {
+                  "material": "rc_made bronze armor",
+                  "price_factor": 1.55,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "ascendancy_made bronze armor",
+                  "price_factor": 1.55,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "rc_made bronze stockpile_weapon",
+                  "price_factor": 1.35,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "ascendancy_made bronze stockpile_weapon",
+                  "price_factor": 1.35,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "rc_made iron armor",
+                  "price_factor": 2,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "ascendancy_made iron armor",
+                  "price_factor": 2,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               },
+               {
+                  "material": "rc_made iron stockpile_weapon",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "ascendancy_made iron stockpile_weapon",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.2,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.45,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -524,8 +1003,129 @@
                "common": 4
             },
             "stall_model": "na_weapon_armor_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "ingot hard_metal",
+                  "price_factor": 2,
+                  "max_quantity": 14,
+                  "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth_ace:tools:blacksmith_hammer_steel",
+                  "price_factor": 1.9,
+                  "max_quantity": 1,
+                  "chance": 0.3
+               },
+               {
+                  "material": "fuel",
+                  "price_factor": 1.8,
+                  "max_quantity": 24,
+                  "chance": 0.6
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 1.9,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "material": "rc_made iron armor",
+                  "price_factor": 1.7,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ascendancy_made iron armor",
+                  "price_factor": 1.7,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "rc_made iron stockpile_weapon",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ascendancy_made iron stockpile_weapon",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "rc_made steel armor",
+                  "price_factor": 2.1,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ascendancy_made steel armor",
+                  "price_factor": 2.1,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "rc_made steel stockpile_weapon",
+                  "price_factor": 1.9,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "ascendancy_made steel stockpile_weapon",
+                  "price_factor": 1.9,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.2,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:hard",
+                  "price_factor": 1.4,
+                  "max_quantity": 2,
+                  "chance": 0.3
+               },
+               {
+                  "material": "prepared_drink",
+                  "price_factor": 1.3,
+                  "max_quantity": 16,
+                  "chance": 0.5
+               },
+               {
+                  "material": "prepared_food",
+                  "price_factor": 1.65,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "material": "rc_made armor",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.2
+               },
+               {
+                  "material": "ascendancy_made armor",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.2
+               },
+               {
+                  "material": "rc_made stockpile_weapon",
+                  "price_factor": 1.2,
+                  "max_quantity": 8,
+                  "chance": 0.2
+               },
+               {
+                  "material": "ascendancy_made stockpile_weapon",
+                  "price_factor": 1.2,
+                  "max_quantity": 8,
+                  "chance": 0.2
+               }
+            ]
          },
          "forbidden_kingdom": {
             "northern_alliance:kingdoms:northern_alliance": true
@@ -731,8 +1331,81 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/exotic_general_goods_shop_1.json",
          "shoptions": {
             "stall_model": "exotic_general_goods_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth_ace:resources:stone:sandstone_stone",
+                  "price_factor": 1.2,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:stone:slate_stone",
+                  "price_factor": 1.2,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:wood:acacia_log",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:wood:walnut_log",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:food:prickly_pear:prickly_pear_basket",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:lingonberry_basket",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:dates:date_basket",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:pears:pear_basket",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:cactus:tulip:blue",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:violet",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:cactus:tulip:yellow",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:rose",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -766,8 +1439,93 @@
                "common": 4
             },
             "stall_model": "exotic_general_goods_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth_ace:resources:stone:sandstone_stone",
+                  "price_factor": 1.4,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:resources:stone:slate_stone",
+                  "price_factor": 1.4,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:clay:ball_clay_mound",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:clay:shale_clay_mound",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:wood:acacia_log",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:wood:walnut_log",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:dates:date_basket",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:pears:pear_basket",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:millet_flour",
+                  "price_factor": 1.85,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:barley_flour",
+                  "price_factor": 1.85,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:cactus:tulip:blue",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:violet",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:cactus:tulip:yellow",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:rose",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               }
+            ]
          },
          "forbidden_biome": {
             "stonehearth:biome:temperate": true
@@ -853,18 +1611,6 @@
                   "chance": 0.3
                },
                {
-                  "uri": "stonehearth_ace:food:millet_flour",
-                  "price_factor": 1.95,
-                  "max_quantity": 12,
-                  "chance": 0.3
-               },
-               {
-                  "uri": "stonehearth_ace:food:barley_flour",
-                  "price_factor": 1.95,
-                  "max_quantity": 12,
-                  "chance": 0.3
-               },
-               {
                   "uri": "stonehearth:resources:herb:cactus:tulip:blue",
                   "price_factor": 2,
                   "max_quantity": 15,
@@ -920,8 +1666,93 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/rc_exotic_general_goods_shop_1.json",
          "shoptions": {
             "stall_model": "rc_exotic_general_goods_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth:resources:stone:hunk_of_stone",
+                  "price_factor": 1.2,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:stone:slate_stone",
+                  "price_factor": 1.2,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:clay:clay_mound",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:clay:shale_clay_mound",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:wood:oak_log",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:wood:walnut_log",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:food:berries:berry_basket",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:lingonberry_basket",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:apples:apple_basket",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:pears:pear_basket",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:brightbell",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:violet",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:sage",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:rose",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:snow:drifts": true,
@@ -951,8 +1782,105 @@
                "common": 4
             },
             "stall_model": "rc_exotic_general_goods_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth:resources:stone:hunk_of_stone",
+                  "price_factor": 1.4,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:stone:slate_stone",
+                  "price_factor": 1.4,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:clay:clay_mound",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:clay:shale_clay_mound",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:wood:oak_log",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:wood:walnut_log",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:food:berries:berry_basket",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:lingonberry_basket",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:apples:apple_basket",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:pears:pear_basket",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:food:flour",
+                  "price_factor": 1.85,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:barley_flour",
+                  "price_factor": 1.85,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:brightbell",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:violet",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:sage",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:rose",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               }
+            ]
          },
          "forbidden_biome": {
             "stonehearth:biome:desert": true
@@ -1105,8 +2033,117 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/na_exotic_general_goods_shop_1.json",
          "shoptions": {
             "stall_model": "na_exotic_general_goods_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth_ace:resources:stone:sandstone_stone",
+                  "price_factor": 1.2,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:stone:hunk_of_stone",
+                  "price_factor": 1.2,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:clay:ball_clay_mound",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:clay:clay_mound",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:wood:acacia_log",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:wood:oak_log",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:food:prickly_pear:prickly_pear_basket",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:food:berries:berry_basket",
+                  "price_factor": 1.3,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:dates:date_basket",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },           
+               {
+                  "uri": "stonehearth_ace:food:apples:apple_basket",
+                  "price_factor": 1.5,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:millet_flour",
+                  "price_factor": 1.65,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:food:flour",
+                  "price_factor": 1.65,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:cactus:tulip:blue",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:brightbell",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:cactus:tulip:red",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:daylily",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:cactus:tulip:yellow",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:sage",
+                  "price_factor": 1.7,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -1135,8 +2172,117 @@
                "common": 4
             },
             "stall_model": "na_exotic_general_goods_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth_ace:resources:stone:sandstone_stone",
+                  "price_factor": 1.4,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:stone:hunk_of_stone",
+                  "price_factor": 1.4,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:clay:ball_clay_mound",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:clay:clay_mound",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:wood:acacia_log",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:wood:oak_log",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:food:prickly_pear:prickly_pear_basket",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:food:berries:berry_basket",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:dates:date_basket",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },           
+               {
+                  "uri": "stonehearth_ace:food:apples:apple_basket",
+                  "price_factor": 1.7,
+                  "max_quantity": 10,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:food:millet_flour",
+                  "price_factor": 1.85,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:food:flour",
+                  "price_factor": 1.85,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:cactus:tulip:blue",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:brightbell",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:cactus:tulip:red",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:daylily",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth:resources:herb:cactus:tulip:yellow",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:sage",
+                  "price_factor": 1.9,
+                  "max_quantity": 15,
+                  "chance": 0.3
+               }
+            ]
          },
          "forbidden_biome": {
             "stonehearth:biome:arctic": true

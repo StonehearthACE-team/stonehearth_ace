@@ -6,197 +6,90 @@
          "inventory": "override"
       },
       "inventory": {
-         "overall_price_multiplier": 1.6,
+         "overall_price_multiplier": 1.7,
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 550,
+         "shopkeeper_gold": 520,
          "entries": [
             {
                "items_matching": {
-                  "cloth_armor": {
+                  "plants": {
                      "category": [
                         "armor"
                      ],
                      "material": [
-                        "cloth",
+                        "ascendancy_made"
+                     ],
+                     "exclude_material": [
+                        "civillian_equipment",
+                        "silver",
+                        "iron",
+                        "steel"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 10
+               }
+            },
+            {
+               "items_matching": {
+                  "plants": {
+                     "category": [
+                        "armor"
+                     ],
+                     "material": [
                         "ascendancy_made",
-                        "light_armor"
+                        "iron"
                      ]
                   }
                },
                "quantity": {
                   "min": 1,
-                  "max": 2
+                  "max": 1,
+                  "max_unique": 3
                }
             },
             {
                "items_matching": {
-                  "cloth_armor": {
+                  "plants": {
                      "category": [
-                        "armor"
+                        "weapons"
                      ],
                      "material": [
-                        "cloth",
+                        "ascendancy_made"
+                     ],
+                     "exclude_material": [
+                        "silver",
+                        "iron",
+                        "steel",
+                        "wood"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 12
+               }
+            },
+            {
+               "items_matching": {
+                  "plants": {
+                     "category": [
+                        "weapons"
+                     ],
+                     "material": [
                         "ascendancy_made",
-                        "light_armor"
+                        "iron"
                      ]
                   }
                },
                "quantity": {
                   "min": 1,
-                  "max": 3
-               }
-            },
-            {
-               "items_matching": {
-                  "leather_armor": {
-                     "category": [
-                        "armor"
-                     ],
-                     "material": [
-                        "leather",
-                        "ascendancy_made"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 2
-               }
-            },
-            {
-               "items_matching": {
-                  "leather_armor": {
-                     "category": [
-                        "armor"
-                     ],
-                     "material": [
-                        "leather",
-                        "ascendancy_made"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 2
-               }
-            },
-            {
-               "items_matching": {
-                  "bronze_armor": {
-                     "category": [
-                        "armor"
-                     ],
-                     "material": [
-                        "bronze",
-                        "ascendancy_made"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 1,
-                  "max": 1
-               }
-            },
-            {
-               "items_matching": {
-                  "bronze_armor": {
-                     "category": [
-                        "armor"
-                     ],
-                     "material": [
-                        "bronze",
-                        "ascendancy_made"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
-            },
-            {
-               "items_matching": {
-                  "iron_armor": {
-                     "category": [
-                        "armor"
-                     ],
-                     "material": [
-                        "iron",
-                        "ascendancy_made"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
-            },
-            {
-               "items_matching": {
-                  "iron_armor": {
-                     "category": [
-                        "armor"
-                     ],
-                     "material": [
-                        "iron",
-                        "ascendancy_made"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
-            },
-            {
-               "items_matching": {
-                  "bronze_weapons": {
-                     "category": [
-                        "weapons"
-                     ],
-                     "material": [
-                        "bronze",
-                        "ascendancy_made"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 1,
-                  "max": 1
-               }
-            },
-            {
-               "items_matching": {
-                  "bronze_weapons": {
-                     "category": [
-                        "weapons"
-                     ],
-                     "material": [
-                        "bronze",
-                        "ascendancy_made"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 1,
-                  "max": 1
-               }
-            },
-            {
-               "items_matching": {
-                  "bronze_weapons": {
-                     "category": [
-                        "weapons"
-                     ],
-                     "material": [
-                        "iron",
-                        "ascendancy_made"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 1
+                  "max": 1,
+                  "max_unique": 4
                }
             }
          ]

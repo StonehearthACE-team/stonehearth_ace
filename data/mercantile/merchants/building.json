@@ -14,8 +14,38 @@
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/woodcutter_shop_1.json",
          "shoptions": {
             "stall_model": "woodcutter_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "wood resource",
+                  "price_factor": 2,
+                  "chance": 0.9
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.7
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.6,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "thread resource",
+                  "price_factor": 1.6,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.3,
+                  "max_quantity": 10,
+                  "chance": 0.8
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -46,8 +76,61 @@
                "common": 4
             },
             "stall_model": "woodcutter_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "wood resource",
+                  "price_factor": 2
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 1.9,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth:refined:gold_flakes",
+                  "price_factor": 1.5,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "thread resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:refined:fine_stuffing",
+                  "price_factor": 2.1,
+                  "max_quantity": 10,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:hard",
+                  "price_factor": 1.5,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.35,
+                  "max_quantity": 12,
+                  "chance": 0.7
+               },              
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.4,
+                  "max_quantity": 2,
+                  "chance": 0.5
+               }
+            ]
          }
       },
       "woodcutter_shop_3": {
@@ -128,12 +211,6 @@
                   "chance": 0.3
                },
                {
-                  "material": "comfy furniture",
-                  "price_factor": 1.6,
-                  "max_quantity": 6,
-                  "chance": 0.4
-               },
-               {
                   "material": "prepared_food baked",
                   "price_factor": 1.4,
                   "max_quantity": 10,
@@ -149,12 +226,6 @@
                   "uri": "stonehearth_ace:refined:metal_bits:soft",
                   "price_factor": 1.5,
                   "max_quantity": 4,
-                  "chance": 0.3
-               },
-               {
-                  "material": "comfy stockpile_decoration",
-                  "price_factor": 1.8,
-                  "max_quantity": 8,
                   "chance": 0.3
                }
             ]
@@ -174,8 +245,38 @@
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/potter_shop_1.json",
          "shoptions": {
             "stall_model": "potter_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "clay resource",
+                  "price_factor": 1.45,
+                  "chance": 0.9
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 1.7,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },
+               {
+                  "material": "common_fuel",
+                  "price_factor": 1.35,
+                  "max_quantity": 24,
+                  "chance": 0.8
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.4,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.4,
+                  "max_quantity": 16,
+                  "chance": 0.8
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -206,8 +307,61 @@
                "common": 4
             },
             "stall_model": "potter_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "clay resource",
+                  "price_factor": 1.5
+               },
+               {
+                  "material": "cloth resource",
+                  "price_factor": 2,
+                  "max_quantity": 10,
+                  "chance": 0.5
+               },
+               {
+                  "material": "common_fuel",
+                  "price_factor": 1.5,
+                  "max_quantity": 16,
+                  "chance": 0.7
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.4,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:resources:stone:feldspar_stone",
+                  "price_factor": 1.75,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:refined:fine_stuffing",
+                  "price_factor": 2.2,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:hard",
+                  "price_factor": 1.3,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.5,
+                  "max_quantity": 12,
+                  "chance": 0.7
+               },              
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.1,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               }
+            ]
          }
       },
       "potter_shop_3": {
@@ -288,12 +442,6 @@
                   "chance": 0.3
                },
                {
-                  "material": "comfy furniture",
-                  "price_factor": 1.8,
-                  "max_quantity": 4,
-                  "chance": 0.4
-               },
-               {
                   "material": "prepared_food baked",
                   "price_factor": 1.6,
                   "max_quantity": 8,
@@ -310,12 +458,6 @@
                   "price_factor": 1.2,
                   "max_quantity": 6,
                   "chance": 0.5
-               },
-               {
-                  "material": "comfy stockpile_decoration",
-                  "price_factor": 1.9,
-                  "max_quantity": 6,
-                  "chance": 0.3
                }
             ]
          }
@@ -334,8 +476,44 @@
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/stonecutter_shop_1.json",
          "shoptions": {
             "stall_model": "stonecutter_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "stone resource",
+                  "price_factor": 1.5,
+                  "chance": 0.8
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 1.6,
+                  "max_quantity": 10,
+                  "chance": 0.5
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.3,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "material": "bone resource",
+                  "price_factor": 1.5,
+                  "max_quantity": 16,
+                  "chance": 0.8
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.9,
+                  "max_quantity": 12,
+                  "chance": 0.9
+               },             
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.2,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -366,8 +544,61 @@
                "common": 4
             },
             "stall_model": "stonecutter_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "stone resource",
+                  "price_factor": 2.5
+               },
+               {
+                  "material": "pelt resource",
+                  "price_factor": 1.8,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "material": "leather resource",
+                  "price_factor": 1.4,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:resources:stone:marble_stone",
+                  "price_factor": 2.8,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "bone resource",
+                  "price_factor": 2,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:refined:fine_stuffing",
+                  "price_factor": 1.8,
+                  "max_quantity": 4,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:hard",
+                  "price_factor": 1.8,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 2,
+                  "max_quantity": 12,
+                  "chance": 0.7
+               },             
+               {
+                  "uri": "stonehearth_ace:refined:metal_bits:soft",
+                  "price_factor": 1.3,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               }
+            ]
          }
       },
       "stonecutter_shop_3": {
@@ -391,7 +622,7 @@
             "wanted_items": [
                {
                   "material": "stone resource",
-                  "price_factor": 1.8
+                  "price_factor": 3
                },
                {
                   "uri": "stonehearth_ace:tools:mason_chisel_iron",
@@ -419,13 +650,13 @@
                },
                {
                   "uri": "stonehearth_ace:resources:stone:marble_stone",
-                  "price_factor": 1.7,
+                  "price_factor": 3.2,
                   "max_quantity": 10,
                   "chance": 0.4
                },
                {
                   "material": "bone resource",
-                  "price_factor": 2.2,
+                  "price_factor": 2.5,
                   "max_quantity": 10,
                   "chance": 0.3
                },
@@ -448,12 +679,6 @@
                   "chance": 0.4
                },
                {
-                  "material": "comfy furniture",
-                  "price_factor": 1.4,
-                  "max_quantity": 6,
-                  "chance": 0.3
-               },
-               {
                   "material": "prepared_food baked",
                   "price_factor": 2.1,
                   "max_quantity": 8,
@@ -468,12 +693,6 @@
                {
                   "uri": "stonehearth_ace:refined:metal_bits:soft",
                   "price_factor": 1.3,
-                  "max_quantity": 6,
-                  "chance": 0.3
-               },
-               {
-                  "material": "comfy stockpile_decoration",
-                  "price_factor": 2,
                   "max_quantity": 6,
                   "chance": 0.3
                }
@@ -494,8 +713,38 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/gardener_shop_1.json",
          "shoptions": {
             "stall_model": "gardener_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth:resources:clay:clay_mound",
+                  "price_factor": 1.15,
+                  "chance": 0.7
+               },
+               {
+                  "material": "consumable seeds",
+                  "price_factor": 1.8,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },
+               {
+                  "material": "bone resource",
+                  "price_factor": 1.5,
+                  "max_quantity": 25,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:fertilizer",
+                  "price_factor": 1.15,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.6,
+                  "max_quantity": 16,
+                  "chance": 0.7
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -525,8 +774,61 @@
                "common": 4
             },
             "stall_model": "gardener_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "uri": "stonehearth:resources:clay:clay_mound",
+                  "price_factor": 1.4
+               },
+               {
+                  "material": "herb resource",
+                  "price_factor": 2,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },
+               {
+                  "material": "consumable seeds",
+                  "price_factor": 2,
+                  "max_quantity": 8,
+                  "chance": 0.5
+               },
+               {
+                  "material": "bone resource",
+                  "price_factor": 2,
+                  "max_quantity": 12,
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:consumables:fertilizer",
+                  "price_factor": 1.3,
+                  "max_quantity": 10,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat field_work_outfit civillian_equipment",
+                  "price_factor": 1.9,
+                  "max_quantity": 2,
+                  "chance": 0.4
+               },
+               {
+                  "material": "prepared_food baked",
+                  "price_factor": 1.75,
+                  "max_quantity": 12,
+                  "chance": 0.7
+               },
+               {
+                  "material": "comfy furniture",
+                  "price_factor": 1.5,
+                  "max_quantity": 4,
+                  "chance": 0.4
+               },
+               {
+                  "material": "comfy stockpile_decoration",
+                  "price_factor": 1.7,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               }
+            ]
          }
       },
       "gardener_shop_3": {
@@ -556,7 +858,7 @@
                },
                {
                   "material": "herb resource",
-                  "price_factor": 2.25,
+                  "price_factor": 2.5,
                   "max_quantity": 12,
                   "chance": 0.4
                },
@@ -586,7 +888,7 @@
                },
                {
                   "material": "bone resource",
-                  "price_factor": 1.8,
+                  "price_factor": 2,
                   "max_quantity": 16,
                   "chance": 0.3
                },
@@ -613,6 +915,18 @@
                   "price_factor": 2.2,
                   "max_quantity": 3,
                   "chance": 0.5
+               },
+               {
+                  "material": "comfy furniture",
+                  "price_factor": 1.6,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "comfy stockpile_decoration",
+                  "price_factor": 1.8,
+                  "max_quantity": 8,
+                  "chance": 0.3
                }
             ]
          }
@@ -635,11 +949,11 @@
             },
             "persistence_job": "stonehearth:jobs:carpenter",
             "stall_model": "woodcutter_shop",
-            "max_wanted_items": 4,
+            "max_wanted_items": 5,
             "wanted_items": [
                {
                   "material": "wood resource",
-                  "price_factor": 2.1
+                  "price_factor": 2.5
                },
                {
                   "uri": "stonehearth_ace:tools:carpenter_saw_steel",
@@ -696,12 +1010,6 @@
                   "chance": 0.3
                },
                {
-                  "material": "comfy furniture",
-                  "price_factor": 1.6,
-                  "max_quantity": 6,
-                  "chance": 0.4
-               },
-               {
                   "material": "prepared_food baked",
                   "price_factor": 1.4,
                   "max_quantity": 10,
@@ -717,12 +1025,6 @@
                   "uri": "stonehearth_ace:refined:metal_bits:soft",
                   "price_factor": 1.5,
                   "max_quantity": 4,
-                  "chance": 0.3
-               },
-               {
-                  "material": "comfy stockpile_decoration",
-                  "price_factor": 1.8,
-                  "max_quantity": 8,
                   "chance": 0.3
                }
             ]
@@ -746,11 +1048,11 @@
             },
             "persistence_job": "stonehearth:jobs:mason",
             "stall_model": "stonecutter_shop",
-            "max_wanted_items": 4,
+            "max_wanted_items": 5,
             "wanted_items": [
                {
                   "material": "stone resource",
-                  "price_factor": 1.8
+                  "price_factor": 2
                },
                {
                   "uri": "stonehearth_ace:tools:mason_chisel_iron",
@@ -778,13 +1080,13 @@
                },
                {
                   "uri": "stonehearth_ace:resources:stone:marble_stone",
-                  "price_factor": 1.7,
+                  "price_factor": 2.5,
                   "max_quantity": 10,
                   "chance": 0.4
                },
                {
                   "material": "bone resource",
-                  "price_factor": 2.2,
+                  "price_factor": 2.5,
                   "max_quantity": 10,
                   "chance": 0.3
                },
@@ -807,12 +1109,6 @@
                   "chance": 0.4
                },
                {
-                  "material": "comfy furniture",
-                  "price_factor": 1.4,
-                  "max_quantity": 6,
-                  "chance": 0.3
-               },
-               {
                   "material": "prepared_food baked",
                   "price_factor": 2.1,
                   "max_quantity": 8,
@@ -827,12 +1123,6 @@
                {
                   "uri": "stonehearth_ace:refined:metal_bits:soft",
                   "price_factor": 1.3,
-                  "max_quantity": 6,
-                  "chance": 0.3
-               },
-               {
-                  "material": "comfy stockpile_decoration",
-                  "price_factor": 2,
                   "max_quantity": 6,
                   "chance": 0.3
                }
@@ -857,7 +1147,7 @@
             },
             "persistence_job": "stonehearth:jobs:potter",
             "stall_model": "potter_shop",
-            "max_wanted_items": 4,
+            "max_wanted_items": 5,
             "wanted_items": [
                {
                   "material": "clay resource",
@@ -918,12 +1208,6 @@
                   "chance": 0.3
                },
                {
-                  "material": "comfy furniture",
-                  "price_factor": 1.8,
-                  "max_quantity": 4,
-                  "chance": 0.4
-               },
-               {
                   "material": "prepared_food baked",
                   "price_factor": 1.6,
                   "max_quantity": 8,
@@ -940,12 +1224,6 @@
                   "price_factor": 1.2,
                   "max_quantity": 6,
                   "chance": 0.5
-               },
-               {
-                  "material": "comfy stockpile_decoration",
-                  "price_factor": 1.9,
-                  "max_quantity": 6,
-                  "chance": 0.3
                }
             ]
          }

@@ -7,82 +7,104 @@
       },
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 400,
+         "shopkeeper_gold": 120,
+		   "overall_price_multiplier": 1.55,
          "entries": [
             {
                "items_matching": {
-                  "wool": {
+                  "grain": {
                      "material": [
-                        "wool"
+                        "grain"
                      ]
                   }
                },
                "quantity": {
-                  "min": 2,
-                  "max": 10
+                  "min": 12,
+                  "max": 20,
+                  "max_unique": 2
                }
             },
             {
                "items_matching": {
-                  "feathers": {
+                  "veggies_leafy": {
                      "material": [
-                        "feather"
+                        "food_container raw_food vegetable leafy"
                      ]
                   }
                },
                "quantity": {
-                  "min": 2,
-                  "max": 8
-               },
-               "price_multiplier": 3
-            },
-            {
-               "items_matching": {
-                  "raw_food": {
-                     "material": [
-                        "raw_food"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 10
+                  "min": 8,
+                  "max": 12,
+                  "max_unique": 1
                }
             },
             {
                "items_matching": {
-                  "raw_food": {
+                  "veggies_hearty": {
                      "material": [
-                        "cooking_ingredient"
+                        "food_container raw_food vegetable hearty"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 10
+                  "min": 10,
+                  "max": 20,
+                  "max_unique": 4
                }
             },
             {
                "items_matching": {
-                  "raw_food": {
+                  "veggies_savory": {
                      "material": [
-                        "raw",
-                        "meat"
+                        "food_container raw_food vegetable savory"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 10
+                  "min": 8,
+                  "max": 16,
+                  "max_unique": 1
+               }
+            },
+            {
+               "items_matching": {
+                  "fruits": {
+                     "material": [
+                        "food_container raw_food fruit"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 10,
+                  "max": 20,
+                  "max_unique": 2
                }
             },
             {
                "items": [
-                  "stonehearth:farmer:talisman"
+                  "stonehearth_ace:resources:fiber:cotton_bundle",
+                  "stonehearth_ace:resources:fiber:millet_straw_bundle",
+                  "stonehearth_ace:resources:fiber:thatch_twine_bundle",
+                  "stonehearth:resources:fiber:silkweed_bundle"
+               ],
+               "quantity": {
+                  "min": 6,
+                  "max": 16,
+                  "max_unique": 2
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:containers:thatch_pile",
+                  "stonehearth_ace:containers:barley_pile",
+                  "stonehearth_ace:containers:millet_pile",
+                  "stonehearth_ace:containers:rye_pile",
+                  "stonehearth:containers:wheat_pile"
                ],
                "quantity": {
                   "min": 1,
-                  "max": 2
+                  "max": 2,
+                  "max_unique": 1
                }
             },
             {
@@ -94,8 +116,9 @@
                   }
                },
                "quantity": {
-                  "min": 5,
-                  "max": 20
+                  "min": 2,
+                  "max": 6,
+                  "max_unique": 2
                }
             }
          ]

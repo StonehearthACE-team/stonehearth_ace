@@ -7,14 +7,73 @@
       },
       "inventory": {
          "shopkeeper_level": 2,
-         "shopkeeper_gold": 1000,
+         "shopkeeper_gold": 780,
+         "overall_price_multiplier": 1.6,
          "entries": [
             {
+               "items": [
+                  "stonehearth_ace:furniture:market_stall:wood:simple",
+                  "stonehearth_ace:furniture:market_stall:wood",
+                  "stonehearth_ace:refined:water_well_kit:wood",
+                  "stonehearth_ace:refined:water_well_roof:wood"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 3,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0.25
+            },
+            {
+               "items": [
+                  "stonehearth:safety_standard",
+                  "stonehearth_ace:furniture:counter:shop:wood:desk"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 1
+               },
+               "fine_item_chance": 0.15
+            },
+            {
+               "items": [
+                  "stonehearth_ace:refined:serving_keg:wood"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 6
+               },
+               "fine_item_chance": 0.3
+            },
+            {
                "items_matching": {
-                  "wood stuff": {
+                  "wood_furniture_decor": {
                      "category": [
                         "furniture",
                         "decoration"
+                     ],
+                     "material": [
+                        "wood"
+                     ],
+                     "exclude_material": [
+                        "plant",
+                        "iron"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 2,
+                  "max": 4,
+                  "max_unique": 14
+               },
+               "fine_item_chance": 0.35
+            },
+            {
+               "items_matching": {
+                  "wood_storage": {
+                     "category": [
+                        "storage"
                      ],
                      "material": [
                         "wood"
@@ -23,49 +82,36 @@
                },
                "quantity": {
                   "min": 3,
-                  "max": 0
-               }
+                  "max": 6,
+                  "max_unique": 5
+               },
+               "price_multiplier": 1.8,
+               "fine_item_chance": 0.2
             },
             {
-               "items": [
-                  "stonehearth:resources:wood:oak_log",
-                  "stonehearth:resources:wood:juniper_log"
-               ],
+               "items_matching": {
+                  "wood_construction": {
+                     "category": [
+                        "construction",
+                        "door",
+                        "window"
+                     ],
+                     "material": [
+                        "wood"
+                     ],
+                     "exclude_material": [
+                        "stone",
+                        "clay"
+                     ]
+                  }
+               },
                "quantity": {
-                  "min": 10,
-                  "max": 20
-               }
-            },
-            {
-               "items": [
-                  "stonehearth:resources:wood:cactus_log",
-                  "stonehearth:resources:wood:acacia_log"
-               ],
-               "quantity": {
-                  "min": 5,
-                  "max": 14
-               }
-            },
-			   {
-               "items": [
-                  "stonehearth:resources:wood:juniper_log",
-                  "stonehearth:resources:wood:pine_log"
-               ],
-               "quantity": {
-                  "min": 5,
-                  "max": 14
-               }
-            },
-			   {
-               "items": [
-                  "stonehearth_ace:resources:wood:birch_log",
-                  "stonehearth_ace:resources:wood:highland_pine_log",
-				      "stonehearth_ace:resources:wood:yew_log"
-               ],
-               "quantity": {
-                  "min": 5,
-                  "max": 14
-               }
+                  "min": 1,
+                  "max": 3,
+                  "max_unique": 9
+               },
+               "price_multiplier": 1.35,
+               "fine_item_chance": 0.1
             }
          ]
       }

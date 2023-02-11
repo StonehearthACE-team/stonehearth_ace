@@ -7,8 +7,8 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.forager_shop_1.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 350,
-		 "overall_price_multiplier": 1.1,
+         "shopkeeper_gold": 120,
+		   "overall_price_multiplier": 1.4,
          "entries": [
             {
                "items_matching": {
@@ -17,13 +17,125 @@
                         "resources"
                      ],
                      "material": [
-                        "herb"
+                        "herb",
+                        "healing"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 2
+                  "min": 8,
+                  "max": 12,
+                  "max_unique": 2
+               }
+            },
+            {
+               "items_matching": {
+                  "herb": {
+                     "category": [
+                        "resources"
+                     ],
+                     "material": [
+                        "herb",
+                        "soothing"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 8,
+                  "max": 12,
+                  "max_unique": 1
+               }
+            },
+            {
+               "items_matching": {
+                  "herb": {
+                     "category": [
+                        "resources"
+                     ],
+                     "material": [
+                        "herb",
+                        "noxious"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 8,
+                  "max": 12,
+                  "max_unique": 1
+               }
+            },
+            {
+               "items_matching": {
+                  "herb": {
+                     "category": [
+                        "resources"
+                     ],
+                     "material": [
+                        "herb",
+                        "mild"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 10,
+                  "max": 14,
+                  "max_unique": 2
+               },
+               "price_multiplier": 1.6
+            },
+            {
+               "items_matching": {
+                  "herb": {
+                     "category": [
+                        "resources"
+                     ],
+                     "material": [
+                        "herb",
+                        "robust"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 2,
+                  "max": 6,
+                  "max_unique": 1
+               },
+               "price_multiplier": 1.7
+            },
+            {
+               "items_matching": {
+                  "herb": {
+                     "category": [
+                        "resources"
+                     ],
+                     "material": [
+                        "herb",
+                        "zesty"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 4,
+                  "max": 8,
+                  "max_unique": 1
+               }
+            },
+            {
+               "items_matching": {
+                  "herb": {
+                     "category": [
+                        "resources"
+                     ],
+                     "material": [
+                        "herb",
+                        "pungent"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 4,
+                  "max": 8,
+                  "max_unique": 1
                }
             },
             {
@@ -33,45 +145,70 @@
                         "fungi"
                      ],
                      "material": [
-                        "stockpile_fungi"
+                        "stockpile_fungi",
+                        "fungi_colony"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 4
-               }
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 1
+               },
+               "price_multiplier": 1.8
             },
-			{
+			   {
                "items_matching": {
                   "fungi_basket": {
                      "category": [
                         "food"
                      ],
                      "material": [
-                        "fungi"
+                        "fungi",
+                        "raw_food"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 3
+                  "min": 4,
+                  "max": 12,
+                  "max_unique": 2
                }
             },
-			{
-               "items_matching": {
-                  "fungi_colony": {
-                     "category": [
-                        "fungi"
-                     ],
-                     "material": [
-                        "fungi_colony"
-                     ]
-                  }
+            {
+               "items": [
+                  "stonehearth_ace:resources:feathers:duck_feathers",
+                  "stonehearth:resources:feathers:duckduck_feathers",
+                  "stonehearth:resources:feathers:ostrich_feathers",
+				      "stonehearth:resources:feathers:poyo_feathers"
+               ],
+               "quantity": {
+                  "min": 2,
+                  "max": 8,
+                  "max_unique": 1
                },
+               "price_multiplier": 1.8
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:bough_bale:evergreen",
+                  "stonehearth_ace:resources:bough_bale",
+                  "stonehearth_ace:food:honey:wild",
+				      "stonehearth_ace:resources:thatch_bale"
+               ],
+               "quantity": {
+                  "min": 6,
+                  "max": 12,
+                  "max_unique": 2
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:food:garlic:garlic_basket"
+               ],
                "quantity": {
                   "min": 0,
-                  "max": 3
+                  "max": 2
                }
             }
          ]

@@ -7,58 +7,39 @@
       },
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 300,
+         "shopkeeper_gold": 320,
+         "overall_price_multiplier": 1.6,
          "entries": [
             {
                "items_matching": {
-                  "storage": {
-                     "material": [
-                        "door"
+                  "portals": {
+                     "category": [
+                        "door",
+                        "window"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 2
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 18
                }
             },
             {
                "items_matching": {
-                  "storage": {
+                  "gates": {
+                     "category": [
+                        "construction"
+                     ],
                      "material": [
                         "gate"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 2
-               }
-            },
-            {
-               "items_matching": {
-                  "storage": {
-                     "material": [
-                        "window"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 2
-               }
-            },
-            {
-               "items_matching": {
-                  "storage": {
-                     "material": [
-                        "fence"
-                     ]
-                  }
-               },
-               "quantity": {
-                  "min": 0,
-                  "max": 2
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 3
                }
             }
          ]

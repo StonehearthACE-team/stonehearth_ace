@@ -8,47 +8,82 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.healing_shop_1.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 400,
-         "overall_price_multiplier": 1.3,
+         "shopkeeper_gold": 180,
+         "overall_price_multiplier": 1.5,       
          "entries": [
             {
                "items": [
-                  "stonehearth_ace:footman:talisman:stone",
-                  "stonehearth:archer:talisman",
-						"stonehearth:armor:wooden_shield"
-               ],
-               "quantity": {
-                  "min": 1,
-                  "max": 2
-               }
-            },
-			{
-               "items": [
-                  "stonehearth:containers:wheat_pile",
-                  "stonehearth_ace:containers:thatch_pile"
+                  "stonehearth_ace:furniture:comfy_bed:herbalist",
+                  "stonehearth_ace:furniture:stone_comfy_bed:herbalist",
+                  "stonehearth_ace:furniture:clay_comfy_bed:herbalist"
                ],
                "quantity": {
                   "min": 0,
-                  "max": 2
-               }
-            },
-			{
-               "items": [
-                  "stonehearth_ace:furniture:sleeping_bag"
-               ],
-               "quantity": {
-                  "min": 0,
-                  "max": 3
+                  "max": 1,
+                  "max_unique": 1
                }
             },
             {
-               "items": [
-                  "stonehearth_ace:gizmos:stone_training_target",
-                  "stonehearth_ace:gizmos:stone_training_dummy"
-               ],
+               "items_matching": {
+                  "healing_herbs": {
+                     "category": [
+                        "resources"
+                     ],
+                     "material": [
+                        "herb",
+                        "healing"
+                     ]
+                  },
+                  "soothing_herbs": {
+                     "category": [
+                        "resources"
+                     ],
+                     "material": [
+                        "herb",
+                        "soothing"
+                     ]
+                  }
+               },
                "quantity": {
                   "min": 1,
-                  "max": 3
+                  "max": 4,
+                  "max_unique": 2
+               }
+            },
+            {
+               "items_matching": {
+                  "healing_tonics": {
+                     "category": [
+                        "consumable"
+                     ],
+                     "material": [
+                        "healing_item",
+                        "healing_tonic"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 4,
+                  "max": 12
+               }
+            },
+            {
+               "items_matching": {
+                  "healing_items": {
+                     "category": [
+                        "consumable"
+                     ],
+                     "material": [
+                        "healing_item"
+                     ],
+                     "exclude_material": [
+                        "healing_tonic"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 2,
+                  "max": 4
                }
             }
          ]

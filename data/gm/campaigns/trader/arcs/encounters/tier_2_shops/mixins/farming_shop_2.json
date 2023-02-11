@@ -7,83 +7,112 @@
       },
       "inventory": {
          "shopkeeper_level": 2,
-         "shopkeeper_gold": 800,
+         "shopkeeper_gold": 420,
+		   "overall_price_multiplier": 1.75,
          "entries": [
             {
                "items_matching": {
-                  "wool": {
+                  "grain": {
                      "material": [
-                        "wool"
+                        "grain"
                      ]
                   }
                },
                "quantity": {
-                  "min": 2,
-                  "max": 10
-               }
+                  "min": 16,
+                  "max": 32,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0.3
             },
             {
                "items_matching": {
-                  "feathers": {
+                  "veggies_leafy": {
                      "material": [
-                        "feather"
+                        "food_container raw_food vegetable leafy"
                      ]
                   }
                },
                "quantity": {
-                  "min": 2,
-                  "max": 8
+                  "min": 12,
+                  "max": 24,
+                  "max_unique": 1
                },
-               "price_multiplier": 3
+               "fine_item_chance": 0.3
             },
             {
                "items_matching": {
-                  "raw_food": {
+                  "veggies_hearty": {
                      "material": [
-                        "raw_food"
+                        "food_container raw_food vegetable hearty"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 10
-               }
+                  "min": 12,
+                  "max": 24,
+                  "max_unique": 6
+               },
+               "fine_item_chance": 0.25
             },
             {
                "items_matching": {
-                  "raw_food": {
+                  "veggies_savory": {
                      "material": [
-                        "cooking_ingredient"
+                        "food_container raw_food vegetable savory"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 10
-               }
+                  "min": 12,
+                  "max": 24,
+                  "max_unique": 1
+               },
+               "fine_item_chance": 0.2
             },
             {
                "items_matching": {
-                  "raw_food": {
+                  "fruits": {
                      "material": [
-                        "raw",
-                        "meat"
+                        "food_container raw_food fruit"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 10
-               }
+                  "min": 16,
+                  "max": 32,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0.4
             },
             {
                "items": [
-                  "stonehearth:farmer:talisman"
+                  "stonehearth_ace:resources:fiber:cotton_bundle",
+                  "stonehearth_ace:resources:fiber:millet_straw_bundle",
+                  "stonehearth_ace:resources:fiber:thatch_twine_bundle",
+                  "stonehearth:resources:fiber:silkweed_bundle"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 18,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0.2
+            },
+            {
+               "items": [
+                  "stonehearth_ace:containers:thatch_pile",
+                  "stonehearth_ace:containers:barley_pile",
+                  "stonehearth_ace:containers:millet_pile",
+                  "stonehearth_ace:containers:rye_pile",
+                  "stonehearth:containers:wheat_pile"
                ],
                "quantity": {
                   "min": 1,
-                  "max": 2
-               }
+                  "max": 4,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0.2
             },
             {
                "items_matching": {
@@ -94,8 +123,26 @@
                   }
                },
                "quantity": {
-                  "min": 5,
-                  "max": 20
+                  "min": 4,
+                  "max": 8,
+                  "max_unique": 4
+               },
+               "fine_item_chance": 0.1
+            },
+            {
+               "items": [
+                  "stonehearth_ace:decoration:megacrop:mega_pumpkin",
+                  "stonehearth_ace:containers:megacrop:mega_golden_gourd_pot",
+                  "stonehearth_ace:decoration:megacrop:mega_beetroot",
+                  "stonehearth_ace:decoration:megacrop:mega_cotton",
+                  "stonehearth_ace:decoration:megacrop:mega_sweet_potato",
+                  "stonehearth_ace:decoration:megacrop:mega_turnip",
+                  "stonehearth_ace:decoration:megacrop:mega_watermelon"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 1,
+                  "max_unique": 1
                }
             }
          ]

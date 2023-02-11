@@ -7,29 +7,77 @@
       },
       "inventory": {
          "shopkeeper_level": 2,
-         "shopkeeper_gold": 700,
+         "shopkeeper_gold": 400,
+		   "overall_price_multiplier": 2.2,
          "entries": [
             {
                "items": [
-                  "stonehearth:beetle"
+                  "stonehearth:pets:rabbit",
+                  "stonehearth:pets:poyo",
+                  "stonehearth_ace:pets:oinker_mini",
+                  "stonehearth_ace:pets:duck"
                ],
                "quantity": {
                   "min": 1,
-                  "max": 1
-               }
+                  "max": 2,
+                  "max_unique": 3
+               },
+               "fine_item_chance": 0
             },
             {
-               "items_matching": {
-                  "pets": {
-                     "category": [
-                        "pets"
-                     ]
-                  }
-               },
+               "items": [
+                  "stonehearth:beetle",
+                  "stonehearth_ace:ladybug_beetle",
+                  "stonehearth_ace:scarab_beetle",
+                  "stonehearth_ace:grasshopper",
+                  "stonehearth:bitsy_ant",
+                  "stonehearth_ace:bitsy_spider",
+                  "stonehearth_ace:scorpion"
+               ],
                "quantity": {
-                  "min": 0,
-                  "max": 1
-               }
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0
+            },
+            {
+               "items": [
+                  "stonehearth:pets:kitten",
+                  "stonehearth:pets:collie"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 1
+               },
+               "fine_item_chance": 0
+            },
+            {
+               "items": [
+                  "stonehearth:red_fox_wolf",
+                  "stonehearth:racoon",
+                  "stonehearth:squirrel"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0
+            },
+            {
+               "items": [
+                  "stonehearth:pets:boar",
+                  "stonehearth:pets:duckduck",
+                  "stonehearth_ace:pets:monkey"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 1
+               },
+               "fine_item_chance": 0
             }
          ]
       }

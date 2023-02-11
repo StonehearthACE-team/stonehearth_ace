@@ -8,12 +8,71 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.engineering_shop_1.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 700,
-		 "overall_price_multiplier": 2.5,
+         "shopkeeper_gold": 420,
+		   "overall_price_multiplier": 1.7,
          "entries": [
-		    {
+            {
                "items": [
-                  "stonehearth:engineer:talisman"
+                  "stonehearth:refined:bronze_gear",
+				      "stonehearth:refined:iron_gear"
+               ],
+               "quantity": {
+                  "min": 6,
+                  "max": 12
+               }
+            },
+			   {
+               "items": [
+                  "stonehearth_ace:refined:lock"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 2
+               },
+               "price_multiplier": 2
+            },
+			   {
+               "items": [
+                  "stonehearth:gizmos:critter_trap",
+				      "stonehearth_ace:gizmos:decoy_trap"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2
+               }
+            },
+			   {
+               "items": [
+                  "stonehearth:gizmos:turnip_shooter",
+				      "stonehearth:gizmos:clamp_trap"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 1
+               }
+            },
+            {
+               "items": [
+                  "stonehearth:gizmos:small_turret"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+			   {
+               "items": [
+                  "stonehearth_ace:refined:brass_plate"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 3
+               }
+            },
+			   {
+               "items": [
+                  "stonehearth_ace:refined:steel_plate"
                ],
                "quantity": {
                   "min": 0,
@@ -22,43 +81,41 @@
             },
             {
                "items": [
-                  "stonehearth:refined:bronze_gear"
-               ],
-               "quantity": {
-                  "min": 2,
-                  "max": 4
-               }
-            },
-			{
-               "items": [
-                  "stonehearth:refined:copper_ingot"
-               ],
-               "quantity": {
-                  "min": 3,
-                  "max": 6
-               }
-            },
-			{
-               "items": [
-                  "stonehearth_ace:refined:brass_plate"
+                  "stonehearth_ace:gizmos:water_gate"
                ],
                "quantity": {
                   "min": 0,
-                  "max": 5
+                  "max": 2
+               },
+               "price_multiplier": 1.8
+            },
+            {
+               "items": [
+                  "stonehearth_ace:containers:refrigerator:small"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 1
                }
             },
             {
                "items_matching": {
-                  "fluid_control": {
+                  "crossbows": {
                      "category": [
-                        "fluid_control"
+                        "weapons"
+                     ],
+                     "material": [
+                        "crossbow",
+                        "bronze"
                      ]
                   }
                },
                "quantity": {
                   "min": 0,
-                  "max": 1
-               }
+                  "max": 1,
+                  "max_unique": 1
+               },
+               "price_multiplier": 1.8
             }
          ]
       }

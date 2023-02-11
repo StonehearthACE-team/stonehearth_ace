@@ -7,39 +7,166 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.rc_exotic_general_goods_shop_1.shop_info.title)",
       "inventory": {
          "shopkeeper_level": 1,
-         "shopkeeper_gold": 350,
-		   "overall_price_multiplier": 1.1,
+         "shopkeeper_gold": 210,
+		   "overall_price_multiplier": 1.5,
          "entries": [
             {
                "items_matching": {
-                  "ingredients": {
+                  "civillian_gear": {
                      "category": [
-                        "cooking_ingredient"
+                        "armor"
                      ],
                      "material": [
-                        "other_ingredient"
+                        "rc_made",
+                        "civillian_equipment"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 1
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 3
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:stone:sandstone_stone",
+                  "stonehearth_ace:resources:clay:ball_clay_mound"
+               ],
+               "quantity": {
+                  "min": 10,
+                  "max": 15
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:wood:almond_log",
+                  "stonehearth_ace:resources:wood:date_log",
+                  "stonehearth:resources:wood:acacia_log",
+                  "stonehearth:resources:wood:cactus_log"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 12,
+                  "max_unique": 2
+               }
+            },
+            {
+               "items": [
+                  "stonehearth:food:prickly_pear:prickly_pear_basket",
+                  "stonehearth_ace:food:dates:date_basket",
+                  "stonehearth_ace:food:almond:almond_basket",
+                  "stonehearth:food:golden_gourd:golden_gourd_basket",
+                  "stonehearth:food:watermelon:watermelon_basket",
+                  "stonehearth_ace:food:lettuce:lettuce_basket",
+                  "stonehearth_ace:food:wheat:millet_bale",
+                  "stonehearth_ace:food:desert_truffle:desert_truffle_basket"
+               ],
+               "quantity": {
+                  "min": 6,
+                  "max": 12,
+                  "max_unique": 4
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:food:millet_flour",
+                  "stonehearth_ace:food:fish_meat:catfish",
+                  "stonehearth:sheep_jerky",
+                  "stonehearth:food:mutton",
+                  "stonehearth:ostrich_jerky",
+                  "stonehearth:cougar_jerky",
+                  "stonehearth_ace:resources:clay:bone_clay_mound"
+               ],
+               "quantity": {
+                  "min": 5,
+                  "max": 10,
+                  "max_unique": 3
+               }
+            },
+            {
+               "items": [
+                  "stonehearth:food:flat_bread",
+                  "stonehearth_ace:food:catfish_tagine",
+                  "stonehearth_ace:food:bug_meat_tagine",
+                  "stonehearth_ace:food:lamb_tagine",
+                  "stonehearth:food:vegetable_tagine",
+                  "stonehearth:food:meat_tagine"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:drink:wine_date",
+                  "stonehearth_ace:drink:wine_prickly_pear",
+                  "stonehearth_ace:drink:juice_date",
+                  "stonehearth_ace:drink:juice_prickly_pear",
+                  "stonehearth_ace:drink:juice_watermelon",
+                  "stonehearth_ace:drink:almond_milk",
+                  "stonehearth_ace:drink:liqueur_almond",
+                  "stonehearth_ace:drink:beer_opaque"
+               ],
+               "quantity": {
+                  "min": 1,
+                  "max": 2,
+                  "max_unique": 2
+               }
+            },
+            {
+               "items": [
+                  "stonehearth:resources:herb:cactus:tulip:blue",
+                  "stonehearth:resources:herb:cactus:tulip:red",
+                  "stonehearth:resources:herb:cactus:tulip:yellow",
+                  "stonehearth:resources:herb:cactus_flower",
+                  "stonehearth_ace:resources:herb:oleander",
+                  "stonehearth_ace:resources:herb:wax_plant:green",
+                  "stonehearth_ace:resources:herb:wax_plant:purple",
+                  "stonehearth_ace:resources:herb:parsley",
+                  "stonehearth_ace:resources:herb:water_lily:yellow",
+                  "stonehearth_ace:resources:herb:water_lily:purple",
+                  "stonehearth_ace:resources:herb:water_lily:lily_pad",
+                  "stonehearth_ace:resources:herb:silkweed"
+               ],
+               "quantity": {
+                  "min": 8,
+                  "max": 16,
+                  "max_unique": 4
+               }
+            },
+            {
+               "items": [
+                  "stonehearth:resources:fiber:silkweed_bundle",
+                  "stonehearth:resources:fiber:coarse_fiber_bundle",
+                  "stonehearth_ace:resources:fiber:millet_straw_bundle"
+               ],
+               "quantity": {
+                  "min": 3,
+                  "max": 8,
+                  "max_unique": 2
                }
             },
             {
                "items_matching": {
-                  "ingredients": {
+                  "wood_furniture": {
                      "category": [
-                        "cooking_ingredient"
+                        "furniture",
+                        "decoration",
+                        "construction",
+                        "door",
+                        "window"
                      ],
                      "material": [
-                        "animal_ingredient"
+                        "clay"
                      ]
                   }
                },
                "quantity": {
-                  "min": 0,
-                  "max": 2
+                  "min": 1,
+                  "max": 1,
+                  "max_unique": 4
                }
             }
          ]

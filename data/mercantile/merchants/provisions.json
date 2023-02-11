@@ -14,8 +14,91 @@
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/food_shop_1.json",
          "shoptions": {
             "stall_model": "food_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "cooking_ingredient",
+                  "price_factor": 1.2
+               },
+               {
+                  "material": "herb zesty resource",
+                  "price_factor": 2,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "seasoning",
+                  "price_factor": 2,
+                  "max_quantity": 24,
+                  "chance": 0.4
+               },
+               {
+                  "material": "sweetener cooking_ingredient",
+                  "price_factor": 1.5,
+                  "max_quantity": 12,
+                  "chance": 0.3
+               },
+               {
+                  "material": "egg small cooking_ingredient",
+                  "price_factor": 2,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "flour cooking_ingredient",
+                  "price_factor": 2,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "butter cooking_ingredient",
+                  "price_factor": 1.8,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "grease cooking_ingredient",
+                  "price_factor": 1.9,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "oil cooking_ingredient",
+                  "price_factor": 1.75,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "food_container raw_food fruit",
+                  "price_factor": 2,
+                  "max_quantity": 24,
+                  "chance": 0.4
+               },
+               {
+                  "material": "raw_food vegetable",
+                  "price_factor": 2,
+                  "max_quantity": 24,
+                  "chance": 0.4
+               },
+               {
+                  "material": "raw meat piece",
+                  "price_factor": 1.8,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "comfy stockpile_decoration",
+                  "price_factor": 1.5,
+                  "max_quantity": 12,
+                  "chance": 0.7
+               }, 
+               {
+                  "material": "summer_hat crafter_outfit civillian_equipment",
+                  "price_factor": 1.25,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               }
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -46,8 +129,109 @@
                "common": 4
             },
             "stall_model": "food_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "cooking_ingredient",
+                  "price_factor": 1.3
+               },
+               {
+                  "uri": "stonehearth_ace:tools:cook_spoon_copper",
+                  "price_factor": 1.65,
+                  "max_quantity": 6,
+                  "chance": 0.5
+               },
+               {
+                  "material": "herb zesty resource",
+                  "price_factor": 2,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "seasoning",
+                  "price_factor": 2.5,
+                  "max_quantity": 16,
+                  "chance": 0.4
+               },
+               {
+                  "material": "sweetener cooking_ingredient",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.3
+               },
+               {
+                  "material": "egg small cooking_ingredient",
+                  "price_factor": 2.5,
+                  "max_quantity": 16,
+                  "chance": 0.4
+               },
+               {
+                  "material": "flour cooking_ingredient",
+                  "price_factor": 2,
+                  "max_quantity": 10,
+                  "chance": 0.4
+               },
+               {
+                  "material": "butter cooking_ingredient",
+                  "price_factor": 2.2,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "grease cooking_ingredient",
+                  "price_factor": 2.3,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "oil cooking_ingredient",
+                  "price_factor": 2,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "food_container raw_food fruit",
+                  "price_factor": 2.5,
+                  "max_quantity": 16,
+                  "chance": 0.4
+               },
+               {
+                  "material": "raw_food vegetable",
+                  "price_factor": 2.5,
+                  "max_quantity": 32,
+                  "chance": 0.4
+               },
+               {
+                  "material": "raw meat piece",
+                  "price_factor": 2,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "comfy stockpile_decoration",
+                  "price_factor": 1.6,
+                  "max_quantity": 10,
+                  "chance": 0.7
+               },  
+               {
+                  "material": "fancy stockpile_decoration",
+                  "price_factor": 1.7,
+                  "max_quantity": 4,
+                  "chance": 0.5
+               },  
+               {
+                  "material": "summer_hat crafter_outfit civillian_equipment",
+                  "price_factor": 1.4,
+                  "max_quantity": 6,
+                  "chance": 0.6
+               },            
+               {
+                  "material": "freezing_outfit crafter_outfit civillian_equipment",
+                  "price_factor": 1.65,
+                  "max_quantity": 4,
+                  "chance": 0.6
+               }
+            ]
          }
       },
       "food_shop_3": {
@@ -125,13 +309,13 @@
                },
                {
                   "material": "food_container raw_food fruit",
-                  "price_factor": 1.9,
+                  "price_factor": 3,
                   "max_quantity": 20,
                   "chance": 0.4
                },
                {
                   "material": "raw_food vegetable",
-                  "price_factor": 1.8,
+                  "price_factor": 3,
                   "max_quantity": 24,
                   "chance": 0.4
                },
@@ -176,8 +360,73 @@
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/drink_shop_1.json",
          "shoptions": {
             "stall_model": "drink_shop",
-            "max_wanted_items": 2,
-            "wanted_items": []
+            "max_wanted_items": 4,
+            "wanted_items": [
+               {
+                  "material": "brewing_ingredient",
+                  "price_factor": 1.2
+               },
+               {
+                  "material": "drink_container milk",
+                  "price_factor": 1.75,
+                  "max_quantity": 16,
+                  "chance": 0.4
+               },
+               {
+                  "material": "sweetener cooking_ingredient",
+                  "price_factor": 1.7,
+                  "max_quantity": 8,
+                  "chance": 0.3
+               },
+               {
+                  "material": "grain",
+                  "price_factor": 1.5,
+                  "max_quantity": 32,
+                  "chance": 0.4
+               },
+               {
+                  "material": "refined serving_keg",
+                  "price_factor": 1.75,
+                  "max_quantity": 16,
+                  "chance": 0.4
+               },
+               {
+                  "material": "raw_food fruit",
+                  "price_factor": 1.8,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "food_container raw_food fruit",
+                  "price_factor": 2,
+                  "max_quantity": 8,
+                  "chance": 0.4
+               },
+               {
+                  "material": "honey cooking_ingredient",
+                  "price_factor": 1.45,
+                  "max_quantity": 20,
+                  "chance": 0.4
+               },
+               {
+                  "material": "seed juniper",
+                  "price_factor": 1.55,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "comfy stockpile_decoration",
+                  "price_factor": 1.7,
+                  "max_quantity": 12,
+                  "chance": 0.6
+               },
+               {
+                  "material": "summer_hat crafter_outfit civillian_equipment",
+                  "price_factor": 1.1,
+                  "max_quantity": 4,
+                  "chance": 0.7
+               }     
+            ]
          },
          "forbidden_weather": {
             "stonehearth_ace:weather:rain:chilly": true,
@@ -208,8 +457,109 @@
                "common": 4
             },
             "stall_model": "drink_shop",
-            "max_wanted_items": 4,
-            "wanted_items": []
+            "max_wanted_items": 5,
+            "wanted_items": [
+               {
+                  "material": "brewing_ingredient",
+                  "price_factor": 1.35
+               },
+               {
+                  "uri": "stonehearth_ace:tools:brewer_tumbler_copper",
+                  "price_factor": 1.8,
+                  "max_quantity": 4,
+                  "chance": 0.5
+               },
+               {
+                  "material": "herb pungent resource",
+                  "price_factor": 2,
+                  "max_quantity": 16,
+                  "chance": 0.4
+               },
+               {
+                  "material": "drink_container milk",
+                  "price_factor": 1.9,
+                  "max_quantity": 24,
+                  "chance": 0.4
+               },
+               {
+                  "material": "sweetener cooking_ingredient",
+                  "price_factor": 1.8,
+                  "max_quantity": 14,
+                  "chance": 0.3
+               },
+               {
+                  "material": "malt brewing_ingredient",
+                  "price_factor": 1.9,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "grain",
+                  "price_factor": 2,
+                  "max_quantity": 24,
+                  "chance": 0.4
+               },
+               {
+                  "material": "refined serving_pitcher",
+                  "price_factor": 1.8,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "refined serving_keg",
+                  "price_factor": 1.8,
+                  "max_quantity": 12,
+                  "chance": 0.4
+               },
+               {
+                  "material": "raw_food fruit",
+                  "price_factor": 2,
+                  "max_quantity": 32,
+                  "chance": 0.4
+               },
+               {
+                  "material": "food_container raw_food fruit",
+                  "price_factor": 2,
+                  "max_quantity": 18,
+                  "chance": 0.4
+               },
+               {
+                  "material": "honey cooking_ingredient",
+                  "price_factor": 1.6,
+                  "max_quantity": 16,
+                  "chance": 0.4
+               },
+               {
+                  "material": "seed juniper",
+                  "price_factor": 1.7,
+                  "max_quantity": 6,
+                  "chance": 0.4
+               },
+               {
+                  "material": "comfy stockpile_decoration",
+                  "price_factor": 1.9,
+                  "max_quantity": 16,
+                  "chance": 0.6
+               },  
+               {
+                  "material": "fancy stockpile_decoration",
+                  "price_factor": 2,
+                  "max_quantity": 8,
+                  "chance": 0.6
+               },  
+               {
+                  "material": "summer_hat crafter_outfit civillian_equipment",
+                  "price_factor": 1.25,
+                  "max_quantity": 6,
+                  "chance": 0.7
+               },            
+               {
+                  "material": "freezing_outfit crafter_outfit civillian_equipment",
+                  "price_factor": 1.5,
+                  "max_quantity": 2,
+                  "chance": 0.7
+               }
+            ]
          }
       },
       "drink_shop_3": {
@@ -239,7 +589,7 @@
                },
                {
                   "material": "herb pungent resource",
-                  "price_factor": 2.2,
+                  "price_factor": 2.6,
                   "max_quantity": 18,
                   "chance": 0.4
                },
@@ -263,7 +613,7 @@
                },
                {
                   "material": "grain",
-                  "price_factor": 2,
+                  "price_factor": 2.5,
                   "max_quantity": 16,
                   "chance": 0.4
                },
@@ -342,7 +692,7 @@
             },
             "persistence_job": "stonehearth:jobs:cook",
             "stall_model": "food_shop",
-            "max_wanted_items": 4,
+            "max_wanted_items": 5,
             "wanted_items": [
                {
                   "material": "cooking_ingredient",
@@ -459,7 +809,7 @@
             },
             "persistence_job": "stonehearth_ace:jobs:brewer",
             "stall_model": "drink_shop",
-            "max_wanted_items": 4,
+            "max_wanted_items": 5,
             "wanted_items": [
                {
                   "material": "brewing_ingredient",
