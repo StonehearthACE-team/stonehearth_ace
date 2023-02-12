@@ -218,9 +218,7 @@ App.RootView = Ember.ContainerView.extend({
          }
       };
 
-      // ACE: also apply any stonehearthClient changes we want to make here
-      self._applyStonehearthClientChanges();
-
+      // ACE: add custom game modes and entity mode checking
       self._game_mode_manager.addCustomMode("military", "military"); //, null, "AceMilitaryModeView", true);
       self._game_mode_manager.addCustomMode("connection", "hud");
       self._game_mode_manager.addCustomMode("farm", "hud", "create_farm");
