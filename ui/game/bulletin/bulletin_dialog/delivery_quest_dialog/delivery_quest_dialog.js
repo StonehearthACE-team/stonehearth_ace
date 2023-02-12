@@ -27,6 +27,7 @@ App.StonehearthDeliveryQuestBulletinDialog.reopen({
                Ember.set(requirements[i], 'real_available_count', requirements[i].available_count + (i18nData.quantity || 0));
                Ember.set(requirements[i], 'items_cached_class', i18nData.items_cached_class || 'noCache');
                Ember.set(requirements[i], 'cached_count', i18nData.quantity && ` <span class='numCached'>(${i18nData.quantity})</span>` || '');
+               Ember.set(requirements[i], 'fulfilled', requirements[i].real_available_count >= requirement.count);
                foundReq = true;
                break;
             }
@@ -36,6 +37,7 @@ App.StonehearthDeliveryQuestBulletinDialog.reopen({
             Ember.set(requirements[i], 'real_available_count', requirements[i].available_count);
             Ember.set(requirements[i], 'items_cached_class', '');
             Ember.set(requirements[i], 'cached_count', '');
+            Ember.set(requirements[i], 'fulfilled', requirements[i].real_available_count >= requirements[i].count);
          }
       }
    }.observes('model.i18n_data', 'requirements'),

@@ -62,8 +62,16 @@ function QuestStorageComponent:_destroy_storage_listeners()
    self._storage_listeners = {}
 end
 
-function QuestStorageComponent:get_satisfied_requirements()
-   return self._sv._requirements_satisfied
+function QuestStorageComponent:get_requirements_status()
+   local requirements = {}
+   for _, storage in ipairs(self._sv._storages) do
+      table.insert(requirements, {
+         requirement = radiant.shallow_copy(storage.requirement),
+         quantity = storage.quantity,
+         satisfied = storage.satisfied,
+      })
+   end
+   return requirements
 end
 
 function QuestStorageComponent:get_storage_components()
