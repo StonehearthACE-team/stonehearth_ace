@@ -6098,6 +6098,7 @@
       "stonehearth:worker:outfit": "file(jobs/worker/worker_outfit/worker_outfit_dwarf.json)"
    },
    "overrides": {
+      "debugtools/ui/debug_dock/debug_dock.js": "file(debugtools/ui/debug_dock/debug_dock.js)",
       "microworld/micro_world_server.lua": "file(microworld/micro_world_server.lua)",
       "northern_alliance/entities/armor/shield_hare/shield_hare.qb": "file(entities/armor/shield_hare/shield_hare.qb)",
       "northern_alliance/entities/container/output_box_stone_wolf/output_box_stone_wolf.qb": "file(entities/containers/output_box_stone_wolf/output_box_stone_wolf.qb)",
@@ -6618,6 +6619,8 @@
       "stonehearth/services/server/catalog/catalog_service.lua": "file(services/server/catalog/catalog_service.lua)",
       "stonehearth/services/server/combat/battery_context.lua": "file(services/server/combat/battery_context.lua)",
       "stonehearth/services/server/game_master/controllers/node.lua": "file(services/server/game_master/controllers/node.lua)",
+      "stonehearth/ui/debug/console/console_commands.js": "file(ui/debug/console/console_commands.js)",
+      "stonehearth/ui/game/bulletin/bulletin_board.js": "file(ui/game/bulletin/bulletin_board.js)",
       "stonehearth/ui/game/bulletin/bulletin_dialog/delivery_quest_dialog/delivery_quest_dialog.html": "file(ui/game/bulletin/bulletin_dialog/delivery_quest_dialog/delivery_quest_dialog.html)",
       "stonehearth/ui/game/bulletin/bulletin_dialog/delivery_quest_dialog/images/quality.png": "file(ui/game/bulletin/bulletin_dialog/delivery_quest_dialog/images/quality.png)",
       "stonehearth/ui/game/bulletin/bulletin_dialog/reembarkation_dialog/reembarkation_dialog.html": "file(ui/game/bulletin/bulletin_dialog/reembarkation_dialog/reembarkation_dialog.html)",
@@ -6644,10 +6647,17 @@
       "stonehearth/ui/game/unit_frame/images/cancel_order.png": "file(ui/game/unit_frame/images/cancel_order.png)",
       "stonehearth/ui/game/unit_frame/unit_frame.html": "file(ui/game/unit_frame/unit_frame.html)",
       "stonehearth/ui/game/widgets/terrain_vision/terrain_vision.html": "stonehearth_ace/ui/game/widgets/terrain_vision/terrain_vision.html",
+      "stonehearth/ui/root/js/helpers.js": "file(ui/root/js/helpers.js)",
+      "stonehearth/ui/root/js/root_view.js": "file(ui/root/js/root_view.js)",
+      "stonehearth/ui/root/js/stonehearth/stonehearth_client.js": "file(ui/root/js/stonehearth/stonehearth_client.js)",
       "stonehearth/ui/shell/about/credits.json": "file(ui/shell/about/credits.json)",
       "stonehearth/ui/shell/select_roster/select_roster.html": "file(ui/shell/select_roster/select_roster.html)",
       "stonehearth/ui/shell/select_roster/select_roster.js": "file(ui/shell/select_roster/select_roster.js)",
+      "stonehearth/ui/shell/select_settlement/select_settlement.js": "file(ui/shell/select_settlement/select_settlement.js)",
+      "stonehearth/ui/shell/settings/settings.html": "file(ui/shell/settings/settings.html)",
+      "stonehearth/ui/shell/settings/settings.js": "file(ui/shell/settings/settings.js)",
       "stonehearth/ui/shell/title/title.html": "file(ui/shell/title/title.html)",
+      "stonehearth/ui/shell/title/title.js": "file(ui/shell/title/title.js)",
       "stonehearth:actions:light_firepit": "stonehearth_ace:actions:light_firepit"
    },
    "client_controllers": {
@@ -7198,7 +7208,6 @@
       ],
       "js": [
          "file(ui/common/input_prompt/input_prompt.js)",
-         "file(ui/debug/console/console_commands.js)",
          "file(ui/game/bulletin/bulletin_dialog/achievement_acquired_bulletin_dialog/achievement_acquired_bulletin_dialog.js)",
          "file(ui/game/bulletin/bulletin_dialog/base_bulletin_dialog.js)",
          "file(ui/game/bulletin/bulletin_dialog/delivery_quest_dialog/delivery_quest_dialog.js)",
@@ -7242,14 +7251,7 @@
          "file(ui/game/unit_frame/unit_frame.js)",
          "file(ui/game/widgets/terrain_vision/terrain_vision.js)",
          "file(ui/root/js/gui.js)",
-         "file(ui/root/js/helpers.js)",
-         "file(ui/root/js/root_controller.js)",
-         "file(ui/root/js/root_view.js)",
-         "file(ui/root/js/stonehearth_ace.js)",
-         "file(ui/shell/loadout_screen/loadout_screen.js)",
-         "file(ui/shell/select_settlement/select_settlement.js)",
-         "file(ui/shell/settings/settings.js)",
-         "file(ui/shell/title/title.js)"
+         "file(ui/root/js/stonehearth_ace.js)"
       ],
       "less": [
          "file(jobs/brewer/skin/workshop.less)",

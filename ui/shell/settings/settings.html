@@ -1,0 +1,241 @@
+<script type="text/x-handlebars" data-template-name="settings">
+   <div id="settings" class="settings gui">
+      <div class="settingsDiv">
+         <div class="window">
+            <div class="title">{{i18n stonehearth:ui.shell.settings.title}} </div>
+
+            <div id="graphicsTab" class="tabPage">
+               <h2>{{i18n stonehearth:ui.shell.settings.graphics}}</h2>
+
+               <div id="gfxCardSetting">
+                  <label>{{i18n stonehearth:ui.shell.settings.card}}</label>
+                  <span id="gfxCardString">{{view.gfxCardString}}</span>
+               </div>
+
+               <div class="setting">
+                  <input type="checkbox" id="opt_enableFullscreen" {{bind-attr checked="fullscreen_enabled"}}>
+                  <label for="opt_enableFullscreen">{{i18n stonehearth:ui.shell.settings.gfx_enable_fullscreen}}</label>
+               </div>
+
+               <div class="setting">
+                  <input type="checkbox" id="opt_enableVsync" {{bind-attr checked="vsync_enabled"}}>
+                  <label for="opt_enableVsync">{{i18n stonehearth:ui.shell.settings.gfx_enable_vsync}}</label>
+               </div>
+
+               <div class="settingsBorder">
+                  <div class="graphicsPresetSettings setting">
+                     <input type="radio" id="opt_useCustomGraphics" name="graphicsPreset">
+                     <label for="opt_useCustomGraphics">{{i18n stonehearth:ui.shell.settings.gfx_custom}}</label>
+
+                     <input type="radio" id="opt_useMinimumGraphics" name="graphicsPreset">
+                     <label for="opt_useMinimumGraphics">{{i18n stonehearth:ui.shell.settings.gfx_minimum}}</label>
+
+                     <input type="radio" id="opt_useLowGraphics" name="graphicsPreset">
+                     <label for="opt_useLowGraphics">{{i18n stonehearth:ui.shell.settings.gfx_low}}</label>
+
+                     <input type="radio" id="opt_useMediumGraphics" name="graphicsPreset">
+                     <label for="opt_useMediumGraphics">{{i18n stonehearth:ui.shell.settings.gfx_medium}}</label>
+
+                     <input type="radio" id="opt_useHighGraphics" name="graphicsPreset">
+                     <label for="opt_useHighGraphics">{{i18n stonehearth:ui.shell.settings.gfx_high}}</label>
+
+                     <input type="radio" id="opt_useUltraGraphics" name="graphicsPreset">
+                     <label for="opt_useUltraGraphics">{{i18n stonehearth:ui.shell.settings.gfx_ultra}}</label>
+                  </div>
+
+                  <div class="setting">
+                     {{i18n stonehearth:ui.shell.settings.gfx_shadows}}
+                     <div id="shadowResSlider"></div>
+                     <div id="shadowResDescription" class="sliderDescription"></div>
+                  </div>
+
+                  <div class="setting">
+                     {{i18n stonehearth:ui.shell.settings.gfx_max_lights}}
+                     <div id="maxLightsSlider"></div>
+                     <div id="maxLightsDescription" class="sliderDescription"></div>
+                  </div>
+
+                  <div class="setting">
+                     {{i18n stonehearth:ui.shell.settings.gfx_max_shadows}}
+                     <div id="maxShadowsSlider"></div>
+                     <div id="maxShadowsDescription" class="sliderDescription"></div>
+                  </div>
+
+                  <div class="setting">
+                     {{i18n stonehearth:ui.shell.settings.gfx_drawdistance}}
+                     <div id="drawDistSlider"></div>
+                     <div id="drawDistDescription" class="sliderDescription"></div>
+                  </div>
+
+                  <div class="setting settingsCheckbox">
+                     {{input type="checkbox" id="opt_enableSsao" checked=enable_ssao disabled=view.low_quality }}
+                     <label class="chkSetting" for="opt_enableSsao">{{i18n stonehearth:ui.shell.settings.gfx_enable_ssao}}</label>
+                  </div>
+
+                  <div class="setting settingsCheckbox">
+                     {{input type="checkbox" id="opt_enableAntiAliasing" checked=enable_antialiasing disabled=view.low_quality }}
+                     <label class="chkSetting" for="opt_enableAntiAliasing">{{i18n stonehearth:ui.shell.settings.gfx_msaa}}</label>
+                  </div>
+                  
+                  <div class="setting settingsCheckbox">
+                     {{input type="checkbox" id="opt_enableDynamicIcons" checked=enable_dynamic_icons }}
+                     <label class="chkSetting" for="opt_enableDynamicIcons">{{i18n stonehearth:ui.shell.settings.gfx_enable_dynamic_icons}}</label>
+                  </div>
+                  
+                  <div class="setting settingsCheckbox">
+                     {{input type="checkbox" id="opt_disableDeferredRenderer" checked=disable_high_quality disabled=high_quality_forbidden }}
+                     <label class="chkSetting" for="opt_disableDeferredRenderer">{{i18n stonehearth:ui.shell.settings.gfx_use_high_quality}}</label>
+                  </div>
+
+                  <a href='#' {{action "useRecommendedGraphicsPreset" target=view}}>
+                     <button id="useRecommendedGraphicsButton">{{i18n stonehearth:ui.shell.settings.gfx_use_recommended_graphics}}</button>
+                  </a>
+               </div>
+            </div>
+
+            <div id="soundTab" class="tabPage">
+               <h2>{{i18n stonehearth:ui.shell.settings.sound}}</h2>
+               <br><br>
+               <div class="setting">
+                  {{i18n stonehearth:ui.shell.settings.background_music_volume}}
+                  <div id="bgmMusicSlider"></div>
+                  <div id="bgmMusicSliderDescription" class="sliderDescription"></div>
+               </div>
+               <div class="setting">
+                  {{i18n stonehearth:ui.shell.settings.ambient_volume}}
+                  <div id="ambientSlider"></div>
+                  <div id="ambientSliderDescription" class="sliderDescription"></div>
+               </div>
+               <div class="setting">
+                  {{i18n stonehearth:ui.shell.settings.effects_volume}}
+                  <div id="effectsSlider"></div>
+                  <div id="efxSliderDescription" class="sliderDescription"></div>
+               </div>
+            </div>
+
+            <div id="systemTab" class="tabPage">
+               <h2>{{i18n stonehearth:ui.shell.settings.system}}</h2>
+               <br><br>
+
+               <div class="setting">
+                  {{i18n stonehearth:ui.shell.settings.language_select}}
+                  <button id="selectLanguageButton">{{view.currentLanguageData.display_name}}</button>
+               </div>
+
+               <div class="setting">
+                  <input type="checkbox" id="opt_force32bit" {{bind-attr checked="force_32_bit"}}>
+                  <label for="opt_force32bit">{{i18n stonehearth:ui.shell.settings.force_32_bit}}</label>
+               </div>
+
+               <div class="note">{{i18n stonehearth:ui.shell.settings.force_32_bit_note}}</div>
+               <div class="setting"/>
+               <div class="setting">
+                  <button id="collectClientProfile">{{i18n stonehearth:ui.shell.settings.collect_profile}}</button>
+               </div>
+            </div>
+
+            <div id="gameplayTab" class="tabPage">
+               <div class="setting">
+                  <input type="checkbox" id="opt_defaultStorageFilterNone" {{bind-attr checked=view.defaultStorageFilterNone}}>
+                  <label for="opt_defaultStorageFilterNone" title="{{i18n stonehearth:ui.shell.settings.gameplay_tab.default_storage_filter_none_description}}">
+                     {{i18n stonehearth:ui.shell.settings.gameplay_tab.default_storage_filter_none}}</label>
+               </div>
+
+               <div class="setting">
+                  <input type="checkbox" id="opt_defaultMiningZonesSuspended" {{bind-attr checked=view.defaultMiningZonesSuspended}}>
+                  <label for="opt_defaultMiningZonesSuspended" title="{{i18n stonehearth:ui.shell.settings.gameplay_tab.default_mining_zones_suspended_description}}">
+                     {{i18n stonehearth:ui.shell.settings.gameplay_tab.default_mining_zones_suspended}}</label>
+               </div>
+               
+               <div class="setting">
+                  <input type="checkbox" id="opt_autoLoot" {{bind-attr checked=view.autoLoot}}>
+                  <label for="opt_autoLoot" title="{{i18n stonehearth:ui.shell.settings.gameplay_tab.auto_loot_description}}">
+                     {{i18n stonehearth:ui.shell.settings.gameplay_tab.auto_loot}}</label>
+               </div>
+
+               <div class="setting">
+                  <input type="checkbox" id="opt_autoRescue" {{bind-attr checked=view.autoRescue}}>
+                  <label for="opt_autoRescue" title="{{i18n stonehearth:ui.shell.settings.gameplay_tab.auto_rescue_description}}">
+                     {{i18n stonehearth:ui.shell.settings.gameplay_tab.auto_rescue}}</label>
+               </div>
+
+               <div class="setting">
+                  <input type="checkbox" id="opt_buildingAutoQueueCrafters" {{bind-attr checked=view.buildingAutoQueueCrafters}}>
+                  <label for="opt_buildingAutoQueueCrafters" title="{{i18n stonehearth:ui.shell.settings.gameplay_tab.building_auto_queue_crafters_description}}">
+                     {{i18n stonehearth:ui.shell.settings.gameplay_tab.building_auto_queue_crafters}}</label>
+               </div>
+
+               <div class="setting">
+                  <input type="checkbox" id="opt_showHearthlingPaths" {{bind-attr checked=view.showHearthlingPaths}}>
+                  <label for="opt_showHearthlingPaths" title="{{i18n stonehearth:ui.shell.settings.gameplay_tab.show_hearthling_paths_description}}">
+                     {{i18n stonehearth:ui.shell.settings.gameplay_tab.show_hearthling_paths}}</label>
+               </div>
+
+               <div class="advancedGameplaySettings settingsBorder">
+                  <h2 class="advancedGameplayTitle">{{i18n stonehearth:ui.shell.settings.gameplay_tab.advanced}}</h2>
+                  <br>
+                  <div class="setting">
+                     <div id="maxCitizensTitle" title="{{i18n stonehearth:ui.shell.settings.gameplay_tab.max_citizens_description}}">{{i18n stonehearth:ui.shell.settings.gameplay_tab.max_citizens}}</div>
+                     <div id="maxCitizensSlider"></div>
+                     <div id="maxCitizensDescription" class="sliderDescription"></div>
+                  </div>
+                  <div {{bind-attr class=":setting view.isHostPlayer::hidden"}}>
+                     <input type="checkbox" id="opt_infiniteInventory" {{bind-attr checked=view.infiniteInventory}}>
+                     <label for="opt_infiniteInventory">
+                        {{i18n stonehearth:ui.shell.settings.gameplay_tab.infinite_inventory}}
+                     </label>
+                  </div>
+                  <div class="setting">
+                     <input type="checkbox" id="opt_enableSpeedThree" {{bind-attr checked=view.enableSpeedThree}}>
+                     <label for="opt_enableSpeedThree" title="{{i18n stonehearth:ui.shell.settings.gameplay_tab.enable_speed_3_description}}">
+                        {{i18n stonehearth:ui.shell.settings.gameplay_tab.enable_speed_3}}
+                     </label>
+                  </div>
+                  <div class="note">
+                     {{i18n stonehearth:ui.shell.settings.gameplay_tab.advanced_description}}
+                  </div>
+               </div>
+
+            </div>
+
+            <div id="controlsTab" class="tabPage">
+               <h2>{{i18n stonehearth:ui.shell.settings.controls}}</h2>
+               <button id="resetToDefaults">
+                  {{i18n stonehearth:ui.shell.settings.controls_tab.reset_to_defaults}}
+               </button>
+               <div id="keyBindings" class="downSection">
+                  {{#each keyCategory in view.categorizedKeyBindings}}
+                     <h3>{{keyCategory.name}}</h3>
+                     {{#each binding in keyCategory.keys}}
+                        <div class="bindingEntry" {{bind-attr keyBindingId=binding.id}}>
+                           <span class="bindingName">{{binding.name}}</span>
+                           <button {{bind-attr class=":combo1 binding.combo1::unbound"}} data-active-prompt="{{i18n stonehearth:ui.shell.settings.controls_tab.key_binding_prompt}}">
+                              {{#if binding.combo1}} {{binding.combo1}} {{else}} {{i18n stonehearth:ui.shell.settings.controls_tab.unbound}} {{/if}}
+                           </button>
+                           <button {{bind-attr class=":combo2 binding.combo2::unbound"}} data-active-prompt="{{i18n stonehearth:ui.shell.settings.controls_tab.key_binding_prompt}}">
+                              {{#if binding.combo2}} {{binding.combo2}} {{else}} {{i18n stonehearth:ui.shell.settings.controls_tab.unbound}} {{/if}}
+                           </button>
+                        </div>
+                     {{/each}}
+                  {{/each}}
+               </div>
+            </div>
+
+            <div id=buttons>
+               <button id="applyButton">{{i18n stonehearth:ui.game.common.ok}}</button>
+               <button id="cancelButton">{{i18n stonehearth:ui.game.common.cancel}}</button>
+            </div>
+         </div>
+
+         <div id="tabs">
+            <div class="tab active" tabPage="graphicsTab">{{i18n stonehearth:ui.shell.settings.graphics}}</div>
+            <div class="tab" tabPage="soundTab">{{i18n stonehearth:ui.shell.settings.sound}}</div>
+            <div class="tab" tabPage="systemTab">{{i18n stonehearth:ui.shell.settings.system}}</div>
+            <div class="tab" tabPage="gameplayTab">{{i18n stonehearth:ui.shell.settings.gameplay}}</div>
+            <div class="tab" tabPage="controlsTab">{{i18n stonehearth:ui.shell.settings.controls}}</div>
+         </div>
+      </div>
+   </div>
+
+   <div id="languageOptionSelect"></div>
+</script>
