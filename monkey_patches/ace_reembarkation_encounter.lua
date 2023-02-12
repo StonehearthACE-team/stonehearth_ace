@@ -7,6 +7,56 @@ local Entity = _radiant.om.Entity
 
 local AceReembarkationEncounter = class()
 
+-- ACE override to add pets to departees and lock them to their owners
+function AceReembarkationEncounter:_on_confirm(session, request, reembark_choices)
+   if self._sv.is_celebrating then
+      return  -- Already confirmed.
+   end
+
+   local reembark_record = self:_construct_reembark_record(reembark_choices)
+   
+   self._sv.is_celebrating = true
+   self._sv.departees = self:_get_departees(reembark_choices.citizens)
+   self._sv.items_to_take = reembark_choices.items
+   self:_start_farewell_party()
+   
+   if self._sv.bulletin then
+      stonehearth.bulletin_board:remove_bulletin(self._sv.bulletin)
+      self._sv.bulletin = nil
+      self.__saved_variables:mark_changed()
+   end
+   
+   return { spec_id = _radiant.sim.generate_uuid(), spec_record = reembark_record }
+end
+
+function AceReembarkationEncounter:_get_departees(citizens)
+   -- start with a copy of the citizens
+   local departees = radiant.shallow_copy(citizens)
+
+   -- then go through and get all the pets, locking them to their current owners
+   for _, citizen in pairs(citizens) do
+      local pets = self:_lock_pets_to_owner(citizen)
+      if pets then
+         radiant.util.merge_into_table(departees, pets)
+      end
+   end
+
+   return departees
+end
+
+function AceReembarkationEncounter:_lock_pets_to_owner(citizen)
+   local pet_owner_comp = citizen:get_component('stonehearth:pet_owner')
+   if pet_owner_comp then
+      local pets = pet_owner_comp:get_pets()
+      for id, pet in pairs(pets) do
+         pet:add_component('stonehearth:pet'):lock_to_owner()
+      end
+      if next(pets) then
+         return pets
+      end
+   end
+end
+
 function AceReembarkationEncounter:_construct_reembark_record(reembark_choices)
    radiant.validator.expect.table.only_fields({'citizens', 'items'}, reembark_choices)
    radiant.validator.expect.table.types({citizens = 'table', items = 'table'}, reembark_choices)

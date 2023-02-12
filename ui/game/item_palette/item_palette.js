@@ -408,7 +408,9 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
             var wantedItem = wantedItems[i];
             if (!wantedItem.max_quantity || wantedItem.max_quantity > wantedItem.quantity) {
                if (!bestWantedItem || bestWantedItem.price_factor < wantedItem.price_factor) {
-                  if (uri == wantedItem.uri || (wantedItem.material && radiant.isMaterial(catalogData.materials, wantedItem.material))) {
+                  if (uri == wantedItem.uri ||
+                        (wantedItem.material && catalogData.materials && !$.isEmptyObject(catalogData.materials) &&
+                        radiant.isMaterial(catalogData.materials, wantedItem.material))) {
                      bestWantedItem = wantedItem;
                   }
                }
