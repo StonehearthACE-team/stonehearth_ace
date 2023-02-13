@@ -56,13 +56,25 @@
             }
 
             &.higherPrice {
-               background-image: url(../../../item_palette/images/higher_price_bg.png);
+               //background-image: url(../../../item_palette/images/higher_price_bg.png);
+               .image {
+                  filter: @higherPriceFilter @higherPriceFilter;
+               }
+               &:hover:not(.disabled) .image {
+                  filter: brightness(1.4) @higherPriceFilter @higherPriceFilter;
+               }
                div.factor {
                   color: @greenFontColor;
                }
             }
             &.lowerPrice {
-               background-image: url(../../../item_palette/images/lower_price_bg.png);
+               //background-image: url(../../../item_palette/images/lower_price_bg.png);
+               .image {
+                  filter: @lowerPriceFilter @lowerPriceFilter;
+               }
+               &:hover:not(.disabled) .image {
+                  filter: brightness(1.4) @lowerPriceFilter @lowerPriceFilter;
+               }
                div.factor {
                   color: @warningFontColor;
                }
@@ -96,15 +108,29 @@
    }
 }
 
+@dropShadowRadius: 4px;
+@higherPriceShadowColor: rgba(57, 149, 57, 1.0);
+@lowerPriceShadowColor: rgba(235, 76, 54, 1.0);
+@higherPriceFilter: drop-shadow(0 0 @dropShadowRadius @higherPriceShadowColor);
+@lowerPriceFilter: drop-shadow(0 0 @dropShadowRadius @lowerPriceShadowColor);
+
 .shopItem {
    &.higherPrice {
-      background-image: url(../../../item_palette/images/higher_price_bg.png);
+      //background-image: url(../../../item_palette/images/higher_price_bg.png);
+      filter: @higherPriceFilter @higherPriceFilter;
+      &:hover:not(.disabled) {
+         filter: brightness(1.4) @higherPriceFilter @higherPriceFilter;
+      }
       div.cost {
          color: @greenFontColor;
       }
    }
    &.lowerPrice {
-      background-image: url(../../../item_palette/images/lower_price_bg.png);
+      //background-image: url(../../../item_palette/images/lower_price_bg.png);
+      filter: @lowerPriceFilter @lowerPriceFilter;
+      &:hover:not(.disabled) {
+         filter: brightness(1.4) @lowerPriceFilter @lowerPriceFilter;
+      }
       div.cost {
          color: @warningFontColor;
       }

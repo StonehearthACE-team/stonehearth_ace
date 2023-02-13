@@ -474,14 +474,16 @@ App.StonehearthAceMerchantileView = App.View.extend({
             portrait.css('background-image', img_url);
 
             App.tooltipHelper.createDynamicTooltip(portrait, function() {
-               return $(App.tooltipHelper.createTooltip(merchantData.display_name, merchantData.description));
+               var title = merchantData.display_name + `<div class="tier">${i18n.t('stonehearth_ace:ui.game.mercantile.active.tier', {tier: merchantData.tier})}</div>`;
+               var description = merchantData.description;
+               return $(App.tooltipHelper.createTooltip(title, description));
             });
 
             var categoryIcon = el.find('.categoryIcon');
             if (categoryIcon) {
                App.tooltipHelper.createDynamicTooltip(categoryIcon, function() {
                   var category = self._categoryLookup[merchantData.category];
-                  return $(App.tooltipHelper.createTooltip(null, '<div class="bold">'+i18n.t(category.display_name)+'</div><br><div class="tier">'+i18n.t('stonehearth_ace:ui.game.mercantile.active.tier')+merchantData.tier+i18n.t('stonehearth_ace:ui.game.mercantile.active.tier_2')+'</div>'));
+                  return $(App.tooltipHelper.createTooltip(null, '<div class="bold">'+i18n.t(category.display_name)+'</div>'));
                });
             }
 
@@ -509,7 +511,8 @@ App.StonehearthAceMerchantileView = App.View.extend({
             portrait.css('background-image', img_url);
 
             App.tooltipHelper.createDynamicTooltip(portrait, function() {
-               return $(App.tooltipHelper.createTooltip(merchantData.display_name, i18n.t('stonehearth_ace:ui.game.mercantile.active.merchant.working_at_stall', merchantData)));
+               var title = merchantData.display_name + `<div class="tier">${i18n.t('stonehearth_ace:ui.game.mercantile.active.tier', {tier: merchantData.tier})}</div>`;
+               return $(App.tooltipHelper.createTooltip(title, i18n.t('stonehearth_ace:ui.game.mercantile.active.merchant.working_at_stall', merchantData)));
             });
          }
       });

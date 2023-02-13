@@ -22656,15 +22656,14 @@
                "stalls": {
                   "available": "Unoccupied: <span class='[str(num_class)]'>[str(num)]</span>.",
                   "tier1_display_name": "Simple Market Stands",
-                  "tier1_description": "Can be occupied by Town level 1 merchants.<br>Is required to attract more than one Town Level 1 merchant.",
+                  "tier1_description": "Can be occupied by Town Level 1 merchants.<br>Required to attract more than one Town Level 1 merchant.",
                   "tier2_display_name": "Market Stalls",
-                  "tier2_description": "Can be occupied by Town level 1 and 2 merchants.<br>Is required to attract more than one Town Level 2 merchant.",
+                  "tier2_description": "Can be occupied by Town Level 1 and 2 merchants.<br>Required to attract more than one Town Level 2 merchant.",
                   "tier3_display_name": "Fancy Market Booths",
-                  "tier3_description": "Can be occupied by all Town level merchants.<br>Is required to attract more than one Town Level 3 merchant."
+                  "tier3_description": "Can be occupied by all Town Level merchants.<br>Required to attract more than one Town Level 3 merchant."
                },
                "shop": "Show shop to buy and sell goods.",
-               "tier": "Level ",
-               "tier_2": " Merchant"
+               "tier": "Level [str(tier)]"
             },
             "categories": {
                "general_goods": {
@@ -22743,7 +22742,7 @@
                },
                "enables_disables": "You may Disable up to <span class='num'>[str(max_disables)]</span> categories and Encourage up to <span class='num'>[str(max_encourages)]</span> categories.",
                "enables_disables_title": "Disables & Encourages",
-               "enables_disables_description": "Disabling a category will prevent regular merchants of that category from visiting your town. Encouraging a category will significantly increase the chance that regular merchants of that category will visit your town. When your town's tier increases, so will the number of categories you can Disable or Encourage.",
+               "enables_disables_description": "Disabling a category will prevent regular merchants of that category from visiting your town. Encouraging a category will significantly increase the chance that regular merchants of that category will visit your town. When your town's level increases, so will the number of categories you can Disable or Encourage.",
                "no_exclusive_stalls": "Exclusive merchants will only visit your town if you have certain exclusive market stalls placed. These generally require high level crafters or specific town upgrade choices to acquire.",
                "disable_exclusive": "<span class='max'>Enabled</span>! Click to Disable.",
                "enable_exclusive": "<span class='limited'>Disabled</span>! Click to Enable.",
