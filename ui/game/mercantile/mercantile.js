@@ -406,6 +406,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
                         Ember.set(m, 'is_exclusive', merchantData.is_exclusive);
                         Ember.set(m, 'category', merchantData.category);
                         Ember.set(m, 'category_icon', category.icon || CATEGORY_PLACEHOLDER_ICON);
+                        Ember.set(m, 'tier', merchantData.min_city_tier);
 
                         if (changedStall) {
                            if (stallData.stall_entity) {
@@ -480,7 +481,7 @@ App.StonehearthAceMerchantileView = App.View.extend({
             if (categoryIcon) {
                App.tooltipHelper.createDynamicTooltip(categoryIcon, function() {
                   var category = self._categoryLookup[merchantData.category];
-                  return $(App.tooltipHelper.createTooltip(null, i18n.t(category.display_name)));
+                  return $(App.tooltipHelper.createTooltip(null, '<div class="bold">'+i18n.t(category.display_name)+'</div><br><div class="tier">'+i18n.t('stonehearth_ace:ui.game.mercantile.active.tier')+merchantData.tier+i18n.t('stonehearth_ace:ui.game.mercantile.active.tier_2')+'</div>'));
                });
             }
 
