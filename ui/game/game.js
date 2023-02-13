@@ -39,7 +39,7 @@ App.StonehearthGameUiView = App.ContainerView.extend({
             }
          });
 
-         self.set('gameHotkeys', hotkeys);
+         self.set('gameHotKeys', hotkeys);
       });
    },
 
@@ -56,7 +56,7 @@ App.StonehearthGameUiView = App.ContainerView.extend({
       var gameHotKeys = self.get('gameHotKeys');
       if (!gameHotKeys) return;
 
-      gameHotkeys.forEach(keyData => {
+      gameHotKeys.forEach(keyData => {
          var key = keyData.key;
          var btn = $(`<button style="display: none" hotkey_action="${key}">${key}</button>`);
          self.$().append(btn);
