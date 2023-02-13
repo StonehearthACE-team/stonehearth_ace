@@ -112,67 +112,6 @@ function AceShop:stock_shop()
       if merchant_options.rarity_weights then
          rarity_weights_override = merchant_options.rarity_weights
       end
-
-      if merchant_options.wanted_items then
-         local wanted_items = {}
-         local maybe_wanted_items = {}
-         for _, item in ipairs(merchant_options.wanted_items) do
-            -- copy the entries because we'll want to modify the quantity
-            -- and ignore any items with a price factor of 1
-            if item.price_factor ~= 1 then
-               if not item.chance then
-                  table.insert(wanted_items, item)
-               elseif rng:get_real(0, 1) < item.chance then
-                  table.insert(maybe_wanted_items, item)
-               end
-            end
-         end
-
-         while #maybe_wanted_items > 0 and (not merchant_options.max_wanted_items or #wanted_items < merchant_options.max_wanted_items) do
-            table.insert(wanted_items, table.remove(maybe_wanted_items, rng:get_int(1, #maybe_wanted_items)))
-         end
-
-         local def_price_factor = mercantile_constants.DEFAULT_WANTED_ITEM_PRICE_FACTOR
-         for _, item in ipairs(wanted_items) do
-            table.insert(self._sv.wanted_items, 
-               {
-                  material = item.material,
-                  uri = item.uri,
-                  price_factor = item.price_factor or def_price_factor,
-                  max_quantity = item.max_quantity,
-                  quantity = 0,
-               })
-         end
-      end
-
-      if merchant_options.persistence_data then
-         -- if a persistence job was defined, try to find an appropriate match
-         -- add some of the recent crafts from that crafter to the shop, and set the town name, crafter name, and description
-         self._sv.description = 'i18n(stonehearth_ace:ui.game.bulletin.shop.persistence.crafter_description)'
-         self._sv.description_i18n_data = {
-            crafter_name = merchant_options.persistence_data.name,
-            town_name = merchant_options.persistence_data.town.town_name,
-         }
-
-         -- randomly select one of their best crafts
-         local best_crafts = merchant_options.persistence_data.best_crafts
-         if #best_crafts > 0 then
-            local craft_entry = best_crafts[rng:get_int(1, #best_crafts)]
-
-            -- the idea is that the crafter made a bunch of lower quality versions of this item
-            -- while trying to make this high quality one; so they're selling the single high quality one
-            -- along with all the lower quality ones they made along the way
-            local entity_description = stonehearth.catalog:get_catalog_data(craft_entry.uri)
-            local cost = entity_description.sell_cost * mercantile_constants.PERSISTENCE_ITEM_PRICE_FACTOR
-            local quality_counts = mercantile_constants.PERSISTENCE_ITEM_QUALITY_COUNTS
-
-            self:_add_item_to_inventory(craft_entry.uri, entity_description, cost, craft_entry.quality, 1)
-
-            for quality = 1, math.min(craft_entry.quality - 1, #quality_counts) do
-               self:_add_item_to_inventory(craft_entry.uri, entity_description, cost, quality, quality_counts[quality])
-            end
-         end
-      end
    end
 
    -- go through separately for each shop inventory entry and find items to add
@@ -259,6 +198,75 @@ function AceShop:stock_shop()
          end
       end
    end
+
+   -- reorganized so that wanted items are added last
+   -- and can exclude any that are now found in the shop's inventory
+   if merchant_options then
+      if merchant_options.persistence_data then
+         -- if a persistence job was defined, try to find an appropriate match
+         -- add some of the recent crafts from that crafter to the shop, and set the town name, crafter name, and description
+         self._sv.description = 'i18n(stonehearth_ace:ui.game.bulletin.shop.persistence.crafter_description)'
+         self._sv.description_i18n_data = {
+            crafter_name = merchant_options.persistence_data.name,
+            town_name = merchant_options.persistence_data.town.town_name,
+         }
+
+         -- randomly select one of their best crafts
+         local best_crafts = merchant_options.persistence_data.best_crafts
+         if #best_crafts > 0 then
+            local craft_entry = best_crafts[rng:get_int(1, #best_crafts)]
+
+            -- the idea is that the crafter made a bunch of lower quality versions of this item
+            -- while trying to make this high quality one; so they're selling the single high quality one
+            -- along with all the lower quality ones they made along the way
+            local entity_description = stonehearth.catalog:get_catalog_data(craft_entry.uri)
+            local cost = entity_description.sell_cost * mercantile_constants.PERSISTENCE_ITEM_PRICE_FACTOR
+            local quality_counts = mercantile_constants.PERSISTENCE_ITEM_QUALITY_COUNTS
+
+            self:_add_item_to_inventory(craft_entry.uri, entity_description, cost, craft_entry.quality, 1)
+
+            for quality = 1, math.min(craft_entry.quality - 1, #quality_counts) do
+               self:_add_item_to_inventory(craft_entry.uri, entity_description, cost, quality, quality_counts[quality])
+            end
+         end
+      end
+
+      if merchant_options.wanted_items then
+         local wanted_items = {}
+         local maybe_wanted_items = {}
+         for _, item in ipairs(merchant_options.wanted_items) do
+            -- copy the entries because we'll want to modify the quantity
+            -- and ignore any items with a price factor of 1
+            if item.price_factor ~= 1 then
+               -- check if this item isn't already in the shop's inventory
+               if (item.uri and not self:_is_selling_item(item.uri)) or (item.material and not self:_is_selling_material(item.material)) then
+                  if not item.chance then
+                     table.insert(wanted_items, item)
+                  elseif rng:get_real(0, 1) < item.chance then
+                     table.insert(maybe_wanted_items, item)
+                  end
+               end
+            end
+         end
+
+         while #maybe_wanted_items > 0 and (not merchant_options.max_wanted_items or #wanted_items < merchant_options.max_wanted_items) do
+            table.insert(wanted_items, table.remove(maybe_wanted_items, rng:get_int(1, #maybe_wanted_items)))
+         end
+
+         local def_price_factor = mercantile_constants.DEFAULT_WANTED_ITEM_PRICE_FACTOR
+         for _, item in ipairs(wanted_items) do
+            table.insert(self._sv.wanted_items, 
+               {
+                  material = item.material,
+                  uri = item.uri,
+                  price_factor = item.price_factor or def_price_factor,
+                  max_quantity = item.max_quantity,
+                  quantity = 0,
+               })
+         end
+      end
+   end
+
    self.__saved_variables:mark_changed()
 end
 
@@ -347,6 +355,17 @@ function AceShop:_is_selling_item(uri)
          return true
       end
    end
+   return false
+end
+
+function AceShop:_is_selling_material(material)
+   -- check all shop inventory items to see if an item with the given material is already present
+   for _, entry in pairs(self._sv.shop_inventory) do
+      if stonehearth.catalog:is_material(entry.uri, material) then
+         return true
+      end
+   end
+   return false
 end
 
 function AceShop:_get_wanted_items_entry(uri)
