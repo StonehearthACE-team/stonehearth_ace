@@ -237,6 +237,24 @@ function AceTown:_calculate_num_placement_slots(placement_slots)
    end
 end
 
+function AceTown:is_placeable(limit_data, id)
+   -- if item we are trying to place is already placed in town,
+   -- we must be trying to move the item, so allow that
+   if self._registered_limited_placement_items.ids[id] then
+     return true
+  end
+  -- if no placement slot entities available, make sure to still limit the number
+  -- placeable items for this tag using default placement data
+  if not next(self._placement_slot_entities) or not self._num_item_tags_placed[limit_data.tag] then
+     self:_update_num_placed(limit_data.tag, limit_data.default or 0)
+  end
+  -- entry will be non-nil if we already hit the limit for this type of item
+  local entry = self._num_item_tags_placed[limit_data.tag]
+  return entry and entry.can_place,
+         entry and entry.num_placed,
+         entry and entry.max_placeable
+end
+
 function AceTown:register_entity_type(type_name, entity)
    if not self._sv._registered_entity_types then
       self._sv._registered_entity_types = {}
