@@ -121,6 +121,16 @@ function AcePetComponent:set_owner(owner, lock_to_owner)
    end
 end
 
+AcePetComponent._ace_old__set_custom_pet_name = PetComponent._set_custom_pet_name
+function AcePetComponent:_set_custom_pet_name(player_id)
+   if self._sv._initialized_name then
+      return
+   end
+
+   self._sv._initialized_name = true
+   self:_ace_old__set_custom_pet_name(player_id)
+end
+
 function AcePetComponent:_update_owner_description()
    local owner = self._sv.owner
    if owner and owner:is_valid() then
