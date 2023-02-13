@@ -1,6 +1,8 @@
 {
    "type": "entity",
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": [
+      "stonehearth:mixins:placed_object"
+   ],
    "components": {
       "render_info": {
          "scale": 0.1
@@ -38,11 +40,11 @@
          "evolve_time": "10h+6h"
       },
       "stonehearth:net_worth": {
-         "value_in_gold": 0,
+         "value_in_gold": 1,
          "rarity": "rare",
          "shop_info": {
             "buyable": false,
-            "sellable": false
+            "sellable": true
          }
       },
       "stonehearth:catalog": {

@@ -55,13 +55,9 @@
 					"recipe": "file(rc_lamb_tagine_recipe.json)"
 				}
          }
-      },
-		"animal_feed": {
-         "recipes": {
-				"mixintypes": {
-					"sheep_feed": "remove"
-				}
-         }
+      },     
+      "mixintypes": {
+         "animal_feed": "remove"
       }
    }
 }

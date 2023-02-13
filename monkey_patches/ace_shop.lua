@@ -9,11 +9,14 @@ local constants = require 'stonehearth.constants'
 local mercantile_constants = constants.mercantile
 local log = radiant.log.create_logger('shop')
 
+local rounding_min_threshold = constants.shop.SHOP_VALUE_ROUNDING_MIN_THRESHOLD or 50
+
 local function round_cost(value)
-   -- Round to the nearest 5.
-   value = math.ceil(value / 5) * 5
-   if value < 5 then
-      value = 5
+   if value >= rounding_min_threshold then
+      -- Round to the nearest 5.
+      value = math.max(5, (math.ceil(value / 5) * 5))
+   else
+      value = math.max(2, math.ceil(value))
    end
    return value
 end
