@@ -11,9 +11,9 @@
          "min_city_tier": 1,
          "weight": 2,
          "cooldown": 3,
+         "stall_model": "rugs_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/rugs_shop_1.json",
          "shoptions": {
-            "stall_model": "rugs_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -65,12 +65,12 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 3,
+         "stall_model": "rugs_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/tannery_shop_1.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "tannery_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -153,12 +153,12 @@
          "min_city_tier": 3,
          "weight": 5,
          "cooldown": 7,
+         "stall_model": "rugs_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/rugs_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "rugs_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -276,9 +276,9 @@
          "min_city_tier": 1,
          "weight": 2,
          "cooldown": 5,
+         "stall_model": "blacksmith_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/blacksmith_shop_1.json",
          "shoptions": {
-            "stall_model": "blacksmith_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -336,12 +336,12 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 6,
+         "stall_model": "blacksmith_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/blacksmith_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "blacksmith_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -438,12 +438,12 @@
          "min_city_tier": 3,
          "weight": 5,
          "cooldown": 7,
+         "stall_model": "blacksmith_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/blacksmith_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "blacksmith_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -573,9 +573,9 @@
          "min_city_tier": 1,
          "weight": 1,
          "cooldown": 5,
+         "stall_model": "engineering_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/engineering_shop_1.json",
          "shoptions": {
-            "stall_model": "engineering_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -633,12 +633,12 @@
          "min_city_tier": 2,
          "weight": 3,
          "cooldown": 6,
+         "stall_model": "engineering_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/engineering_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "engineering_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -734,12 +734,12 @@
          "min_city_tier": 3,
          "weight": 4,
          "cooldown": 7,
+         "stall_model": "engineering_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/engineering_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "engineering_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -869,13 +869,13 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 6,
+         "stall_model": "rugs_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/rugs_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
             "persistence_job": "stonehearth:jobs:weaver",
-            "stall_model": "rugs_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -993,13 +993,13 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 6,
+         "stall_model": "blacksmith_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/blacksmith_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
             "persistence_job": "stonehearth:jobs:blacksmith",
-            "stall_model": "blacksmith_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {

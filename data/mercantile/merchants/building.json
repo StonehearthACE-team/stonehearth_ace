@@ -11,9 +11,9 @@
          "min_city_tier": 1,
          "cooldown": 3,
          "weight": 3,
+         "stall_model": "woodcutter_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/woodcutter_shop_1.json",
          "shoptions": {
-            "stall_model": "woodcutter_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -70,12 +70,12 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 3,
+         "stall_model": "woodcutter_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/woodcutter_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "woodcutter_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -123,7 +123,7 @@
                   "price_factor": 1.35,
                   "max_quantity": 12,
                   "chance": 0.7
-               },              
+               },
                {
                   "uri": "stonehearth_ace:refined:metal_bits:soft",
                   "price_factor": 1.4,
@@ -144,12 +144,12 @@
          "min_city_tier": 3,
          "weight": 5,
          "cooldown": 7,
+         "stall_model": "woodcutter_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/woodcutter_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "woodcutter_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -215,7 +215,7 @@
                   "price_factor": 1.4,
                   "max_quantity": 10,
                   "chance": 0.3
-               },              
+               },
                {
                   "material": "freezing_outfit crafter_outfit civillian_equipment",
                   "price_factor": 1.8,
@@ -242,9 +242,9 @@
          "min_city_tier": 1,
          "weight": 3,
          "cooldown": 3,
+         "stall_model": "potter_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/potter_shop_1.json",
          "shoptions": {
-            "stall_model": "potter_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -301,12 +301,12 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 3,
+         "stall_model": "potter_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/potter_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "potter_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -354,7 +354,7 @@
                   "price_factor": 1.5,
                   "max_quantity": 12,
                   "chance": 0.7
-               },              
+               },
                {
                   "uri": "stonehearth_ace:refined:metal_bits:soft",
                   "price_factor": 1.1,
@@ -375,12 +375,12 @@
          "min_city_tier": 3,
          "weight": 5,
          "cooldown": 7,
+         "stall_model": "potter_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/potter_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "potter_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -446,7 +446,7 @@
                   "price_factor": 1.6,
                   "max_quantity": 8,
                   "chance": 0.3
-               },              
+               },
                {
                   "material": "freezing_outfit crafter_outfit civillian_equipment",
                   "price_factor": 1.4,
@@ -473,9 +473,9 @@
          "min_city_tier": 1,
          "cooldown": 3,
          "weight": 3,
+         "stall_model": "stonecutter_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/stonecutter_shop_1.json",
          "shoptions": {
-            "stall_model": "stonecutter_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -506,7 +506,7 @@
                   "price_factor": 1.9,
                   "max_quantity": 12,
                   "chance": 0.9
-               },             
+               },
                {
                   "uri": "stonehearth_ace:refined:metal_bits:soft",
                   "price_factor": 1.2,
@@ -538,12 +538,12 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 3,
+         "stall_model": "stonecutter_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/stonecutter_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "stonecutter_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -591,7 +591,7 @@
                   "price_factor": 2,
                   "max_quantity": 12,
                   "chance": 0.7
-               },             
+               },
                {
                   "uri": "stonehearth_ace:refined:metal_bits:soft",
                   "price_factor": 1.3,
@@ -612,12 +612,12 @@
          "min_city_tier": 3,
          "weight": 5,
          "cooldown": 7,
+         "stall_model": "stonecutter_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/stonecutter_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "stonecutter_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -683,7 +683,7 @@
                   "price_factor": 2.1,
                   "max_quantity": 8,
                   "chance": 0.4
-               },              
+               },
                {
                   "material": "freezing_outfit crafter_outfit civillian_equipment",
                   "price_factor": 2.1,
@@ -710,9 +710,9 @@
          "min_city_tier": 1,
          "weight": 2,
          "cooldown": 3,
+         "stall_model": "gardener_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/gardener_shop_1.json",
          "shoptions": {
-            "stall_model": "gardener_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -768,12 +768,12 @@
          "min_city_tier": 2,
          "weight": 3,
          "cooldown": 6,
+         "stall_model": "gardener_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/gardener_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "gardener_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -838,12 +838,12 @@
          "min_city_tier": 3,
          "weight": 4,
          "cooldown": 7,
+         "stall_model": "gardener_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/gardener_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "gardener_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -909,7 +909,7 @@
                   "price_factor": 1.8,
                   "max_quantity": 10,
                   "chance": 0.5
-               },              
+               },
                {
                   "material": "freezing_outfit field_work_outfit civillian_equipment",
                   "price_factor": 2.2,
@@ -942,13 +942,13 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 6,
+         "stall_model": "woodcutter_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/woodcutter_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
             "persistence_job": "stonehearth:jobs:carpenter",
-            "stall_model": "woodcutter_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -1014,7 +1014,7 @@
                   "price_factor": 1.4,
                   "max_quantity": 10,
                   "chance": 0.3
-               },              
+               },
                {
                   "material": "freezing_outfit crafter_outfit civillian_equipment",
                   "price_factor": 1.8,
@@ -1041,13 +1041,13 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 6,
+         "stall_model": "stonecutter_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/stonecutter_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
             "persistence_job": "stonehearth:jobs:mason",
-            "stall_model": "stonecutter_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -1113,7 +1113,7 @@
                   "price_factor": 2.1,
                   "max_quantity": 8,
                   "chance": 0.4
-               },              
+               },
                {
                   "material": "freezing_outfit crafter_outfit civillian_equipment",
                   "price_factor": 2.1,
@@ -1140,13 +1140,13 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 6,
+         "stall_model": "potter_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/potter_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
             "persistence_job": "stonehearth:jobs:potter",
-            "stall_model": "potter_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -1212,7 +1212,7 @@
                   "price_factor": 1.6,
                   "max_quantity": 8,
                   "chance": 0.3
-               },              
+               },
                {
                   "material": "freezing_outfit crafter_outfit civillian_equipment",
                   "price_factor": 1.4,

@@ -11,9 +11,9 @@
          "min_city_tier": 1,
          "weight": 2,
          "cooldown": 3,
+         "stall_model": "charcoal_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/charcoal_shop_1.json",
          "shoptions": {
-            "stall_model": "charcoal_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -23,7 +23,7 @@
                   "chance": 0.9
                },
                {
-                  "material": "wood resource",
+                  "material": "clay resource",
                   "price_factor": 2,
                   "max_quantity": 32,
                   "chance": 0.8
@@ -33,6 +33,12 @@
                   "price_factor": 1.3,
                   "max_quantity": 10,
                   "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth:containers:log_pile",
+                  "price_factor": 1.45,
+                  "max_quantity": 2,
+                  "chance": 0.6
                },
                {
                   "material": "prepared_food",
@@ -45,7 +51,7 @@
                   "price_factor": 1.6,
                   "max_quantity": 10,
                   "chance": 0.3
-               },    
+               },
                {
                   "material": "healing_item",
                   "price_factor": 1.25,
@@ -95,12 +101,12 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 3,
+         "stall_model": "charcoal_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/charcoal_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "charcoal_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -110,7 +116,7 @@
                   "chance": 0.9
                },
                {
-                  "material": "wood resource",
+                  "material": "clay resource",
                   "price_factor": 2.5,
                   "max_quantity": 24,
                   "chance": 0.8
@@ -120,6 +126,12 @@
                   "price_factor": 1.4,
                   "max_quantity": 10,
                   "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth:containers:log_pile",
+                  "price_factor": 1.5,
+                  "max_quantity": 3,
+                  "chance": 0.6
                },
                {
                   "uri": "stonehearth:containers:input_bin:iron",
@@ -144,7 +156,7 @@
                   "price_factor": 1.7,
                   "max_quantity": 10,
                   "chance": 0.3
-               },    
+               },
                {
                   "material": "healing_item",
                   "price_factor": 1.3,
@@ -183,12 +195,12 @@
          "min_city_tier": 3,
          "weight": 5,
          "cooldown": 4,
+         "stall_model": "charcoal_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/charcoal_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "charcoal_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -198,10 +210,16 @@
                   "chance": 0.9
                },
                {
-                  "material": "wood resource",
+                  "material": "clay resource",
                   "price_factor": 3,
                   "max_quantity": 30,
                   "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth:containers:log_pile",
+                  "price_factor": 1.65,
+                  "max_quantity": 1,
+                  "chance": 0.6
                },
                {
                   "uri": "stonehearth:containers:input_bin:woven",
@@ -232,7 +250,7 @@
                   "price_factor": 1.8,
                   "max_quantity": 8,
                   "chance": 0.3
-               },    
+               },
                {
                   "material": "healing_item",
                   "price_factor": 1.4,
@@ -271,9 +289,9 @@
          "min_city_tier": 1,
          "weight": 3,
          "cooldown": 3,
+         "stall_model": "quarry_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/quarry_shop_1.json",
          "shoptions": {
-            "stall_model": "quarry_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -340,12 +358,12 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 6,
+         "stall_model": "quarry_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/quarry_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "quarry_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -383,13 +401,13 @@
                   "price_factor": 1.65,
                   "max_quantity": 4,
                   "chance": 0.5
-               },  
+               },
                {
                   "uri": "stonehearth_ace:tools:worker_tools_iron",
                   "price_factor": 1.7,
                   "max_quantity": 6,
                   "chance": 0.5
-               },  
+               },
                {
                   "material": "healing_item",
                   "price_factor": 1.25,
@@ -430,12 +448,12 @@
          "min_city_tier": 3,
          "weight": 5,
          "cooldown": 14,
+         "stall_model": "quarry_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/quarry_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "quarry_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -473,13 +491,13 @@
                   "price_factor": 1.8,
                   "max_quantity": 8,
                   "chance": 0.5
-               },  
+               },
                {
                   "uri": "stonehearth_ace:tools:worker_tools_iron",
                   "price_factor": 1.8,
                   "max_quantity": 4,
                   "chance": 0.5
-               },  
+               },
                {
                   "material": "healing_item",
                   "price_factor": 1.25,
@@ -524,9 +542,9 @@
          "min_city_tier": 1,
          "weight": 3,
          "cooldown": 3,
+         "stall_model": "lumberjacking_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/lumberjacking_shop_1.json",
          "shoptions": {
-            "stall_model": "lumberjacking_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -540,6 +558,12 @@
                   "price_factor": 1.2,
                   "max_quantity": 6,
                   "chance": 0.8
+               },
+               {
+                  "material": "stone resource",
+                  "price_factor": 2,
+                  "max_quantity": 18,
+                  "chance": 0.4
                },
                {
                   "material": "containers furniture",
@@ -564,7 +588,7 @@
                   "price_factor": 1.35,
                   "max_quantity": 10,
                   "chance": 0.6
-               }, 
+               },
                {
                   "material": "healing_item",
                   "price_factor": 1.2,
@@ -606,12 +630,12 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 3,
+         "stall_model": "lumberjacking_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/lumberjacking_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "lumberjacking_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -619,6 +643,12 @@
                   "price_factor": 1.4,
                   "max_quantity": 12,
                   "chance": 0.9
+               },
+               {
+                  "material": "stone resource",
+                  "price_factor": 2,
+                  "max_quantity": 16,
+                  "chance": 0.4
                },
                {
                   "material": "ingot soft_metal",
@@ -655,13 +685,13 @@
                   "price_factor": 1.5,
                   "max_quantity": 6,
                   "chance": 0.5
-               },  
+               },
                {
                   "uri": "stonehearth_ace:tools:worker_tools_iron",
                   "price_factor": 1.75,
                   "max_quantity": 6,
                   "chance": 0.4
-               },  
+               },
                {
                   "material": "healing_item",
                   "price_factor": 1.35,
@@ -706,12 +736,12 @@
          "min_city_tier": 3,
          "weight": 5,
          "cooldown": 7,
+         "stall_model": "lumberjacking_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/lumberjacking_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "lumberjacking_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -719,6 +749,12 @@
                   "price_factor": 1.5,
                   "max_quantity": 8,
                   "chance": 0.9
+               },
+               {
+                  "material": "stone resource",
+                  "price_factor": 2.5,
+                  "max_quantity": 12,
+                  "chance": 0.5
                },
                {
                   "material": "ingot soft_metal",
@@ -755,13 +791,13 @@
                   "price_factor": 1.6,
                   "max_quantity": 6,
                   "chance": 0.5
-               },  
+               },
                {
                   "uri": "stonehearth_ace:tools:worker_tools_iron",
                   "price_factor": 2,
                   "max_quantity": 6,
                   "chance": 0.4
-               },  
+               },
                {
                   "material": "healing_item",
                   "price_factor": 1.4,
@@ -806,9 +842,9 @@
          "min_city_tier": 1,
          "weight": 2,
          "cooldown": 5,
+         "stall_model": "mining_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/mining_shop_1.json",
          "shoptions": {
-            "stall_model": "mining_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -867,12 +903,12 @@
          "min_city_tier": 2,
          "weight": 3,
          "cooldown": 6,
+         "stall_model": "mining_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/mining_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "mining_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -910,13 +946,13 @@
                   "price_factor": 1.65,
                   "max_quantity": 4,
                   "chance": 0.5
-               },  
+               },
                {
                   "uri": "stonehearth_ace:tools:worker_tools_iron",
                   "price_factor": 1.7,
                   "max_quantity": 6,
                   "chance": 0.5
-               },  
+               },
                {
                   "material": "healing_item",
                   "price_factor": 1.25,
@@ -957,12 +993,12 @@
          "min_city_tier": 3,
          "weight": 4,
          "cooldown": 14,
+         "stall_model": "mining_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/mining_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "mining_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -1000,13 +1036,13 @@
                   "price_factor": 1.5,
                   "max_quantity": 12,
                   "chance": 0.5
-               },  
+               },
                {
                   "uri": "stonehearth_ace:tools:worker_tools_steel",
                   "price_factor": 1.6,
                   "max_quantity": 8,
                   "chance": 0.6
-               },  
+               },
                {
                   "material": "healing_item",
                   "price_factor": 2,
@@ -1045,9 +1081,9 @@
          "min_city_tier": 1,
          "weight": 3,
          "cooldown": 3,
+         "stall_model": "clay_pit_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/clay_pit_shop_1.json",
          "shoptions": {
-            "stall_model": "clay_pit_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -1057,7 +1093,7 @@
                   "chance": 0.9
                },
                {
-                  "material": "stone resource",
+                  "material": "wood resource",
                   "price_factor": 1.5,
                   "max_quantity": 32,
                   "chance": 0.9
@@ -1123,12 +1159,12 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 6,
+         "stall_model": "clay_pit_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/clay_pit_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "clay_pit_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -1138,7 +1174,7 @@
                   "chance": 0.9
                },
                {
-                  "material": "stone resource",
+                  "material": "wood resource",
                   "price_factor": 2,
                   "max_quantity": 24,
                   "chance": 0.9
@@ -1166,13 +1202,13 @@
                   "price_factor": 1.45,
                   "max_quantity": 8,
                   "chance": 0.5
-               },  
+               },
                {
                   "uri": "stonehearth_ace:tools:worker_tools_iron",
                   "price_factor": 1.4,
                   "max_quantity": 6,
                   "chance": 0.5
-               },  
+               },
                {
                   "material": "healing_item",
                   "price_factor": 1.3,
@@ -1217,12 +1253,12 @@
          "min_city_tier": 3,
          "weight": 5,
          "cooldown": 7,
+         "stall_model": "clay_pit_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/clay_pit_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "clay_pit_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -1232,7 +1268,7 @@
                   "chance": 0.9
                },
                {
-                  "material": "stone resource",
+                  "material": "wood resource",
                   "price_factor": 2,
                   "max_quantity": 16,
                   "chance": 0.9
@@ -1260,13 +1296,13 @@
                   "price_factor": 1.55,
                   "max_quantity": 8,
                   "chance": 0.5
-               },  
+               },
                {
                   "uri": "stonehearth_ace:tools:worker_tools_iron",
                   "price_factor": 1.5,
                   "max_quantity": 6,
                   "chance": 0.5
-               },  
+               },
                {
                   "material": "healing_item",
                   "price_factor": 1.4,

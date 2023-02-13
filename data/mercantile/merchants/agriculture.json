@@ -11,9 +11,9 @@
          "min_city_tier": 1,
          "weight": 3,
          "cooldown": 3,
+         "stall_model": "farming_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/farming_shop_1.json",
          "shoptions": {
-            "stall_model": "farming_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -76,12 +76,12 @@
          "min_city_tier": 2,
          "weight": 4,
          "cooldown": 3,
+         "stall_model": "farming_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/farming_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "farming_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -147,12 +147,12 @@
          "min_city_tier": 3,
          "weight": 5,
          "cooldown": 4,
+         "stall_model": "farming_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/farming_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "farming_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -234,9 +234,9 @@
          "min_city_tier": 1,
          "weight": 2,
          "cooldown": 3,
+         "stall_model": "pasture_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/pasture_shop_1.json",
          "shoptions": {
-            "stall_model": "pasture_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -287,12 +287,12 @@
          "min_city_tier": 2,
          "weight": 3,
          "cooldown": 6,
+         "stall_model": "pasture_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/pasture_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "pasture_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -324,7 +324,7 @@
                   "price_factor": 1.5,
                   "max_quantity": 8,
                   "chance": 0.6
-               },              
+               },
                {
                   "uri": "stonehearth:food:poyo_feed",
                   "price_factor": 1.3,
@@ -369,12 +369,12 @@
          "min_city_tier": 3,
          "weight": 5,
          "cooldown": 7,
+         "stall_model": "pasture_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/pasture_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "pasture_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -474,9 +474,9 @@
          "min_city_tier": 1,
          "weight": 1,
          "cooldown": 7,
+         "stall_model": "pets_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_1_shops/pets_shop_1.json",
          "shoptions": {
-            "stall_model": "pets_shop",
             "max_wanted_items": 4,
             "wanted_items": [
                {
@@ -528,12 +528,12 @@
          "min_city_tier": 2,
          "weight": 2,
          "cooldown": 10,
+         "stall_model": "pets_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_2_shops/pets_shop_2.json",
          "shoptions": {
             "rarity_weights": {
                "common": 4
             },
-            "stall_model": "pets_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {
@@ -598,12 +598,12 @@
          "min_city_tier": 3,
          "weight": 3,
          "cooldown": 14,
+         "stall_model": "pets_shop",
          "shop": "/stonehearth/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/pets_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
-            "stall_model": "pets_shop",
             "max_wanted_items": 6,
             "wanted_items": [
                {
@@ -673,13 +673,13 @@
          "min_city_tier": 2,
          "weight": 3,
          "cooldown": 6,
+         "stall_model": "pasture_shop",
          "shop": "/stonehearth_ace/data/gm/campaigns/trader/arcs/encounters/tier_3_shops/pasture_shop_3.json",
          "shoptions": {
             "rarity_weights": {
                "common": 3
             },
             "persistence_job": "stonehearth:jobs:shepherd",
-            "stall_model": "pasture_shop",
             "max_wanted_items": 5,
             "wanted_items": [
                {

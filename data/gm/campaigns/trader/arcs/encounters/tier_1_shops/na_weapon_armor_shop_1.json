@@ -7,7 +7,7 @@
       "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.na_weapon_armor_shop_1.shop_info.title)",
       "inventory": {
          "overall_price_multiplier": 1.7,
-         "shopkeeper_level": 1,
+         "shopkeeper_level": 2,
          "shopkeeper_gold": 520,
          "entries": [
             {
@@ -30,8 +30,9 @@
                "quantity": {
                   "min": 1,
                   "max": 1,
-                  "max_unique": 10
-               }
+                  "max_unique": 8
+               },
+               "price_multiplier": 3.6
             },
             {
                "items_matching": {
@@ -48,8 +49,9 @@
                "quantity": {
                   "min": 1,
                   "max": 1,
-                  "max_unique": 3
-               }
+                  "max_unique": 1
+               },
+               "price_multiplier": 4.5
             },
             {
                "items_matching": {
