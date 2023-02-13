@@ -1,11 +1,72 @@
-// "reopen" the existing widget
-$.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPalette, {
+var debug_itemPaletteShowItemIds = false;
+$.widget( "stonehearth.stonehearthItemPalette", {
 
    options: {
+
+      click: function(item) {
+      },
+
+      filter: function(item) {
+         return true;
+      },
+
+      cssClass: '',
+      hideCount: false,
+      // ACE: added more options
       showZeroes: false,
       skipCategories: false,
       sortField: 'display_name',
       wantedItems: null,
+   },
+
+   _create: function() {
+      var self = this;
+
+      self.palette = $('<div>').addClass('itemPalette');
+      self._selectedElement = null;
+      self._itemElements = {};
+      self._categoryElements = {};
+
+      function handleClick(itemSelected, e, callback) {
+         radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:start_menu:popup' });
+         if (self._selectedElement) {
+            self._selectedElement.removeClass('selected');
+         }
+         self._selectedElement = itemSelected;
+         itemSelected.addClass('selected');
+
+         if (callback) {
+            callback(itemSelected, e);
+         }
+         return false;
+      }
+
+      self.palette.on('click', '.item', function (e) { return handleClick($(this), e, self.options.click); });
+      self.palette.on('contextmenu', '.item', function (e) { return handleClick($(this), e, self.options.rightClick); });
+
+      self.element.append(this.palette);
+   },
+
+   _destroy: function() {
+      // ACE: clear up extra resources we added
+      var self = this;
+      self.isDestroyed = true;
+      if (self._unlocked_crops_trace) {
+         self._unlocked_crops_trace.destroy();
+      }
+      self._unlocked_crops_trace = null;
+
+      if (self.searchInput) {
+         self.searchInput.off('keyup');
+         self.searchInput.off('keydown');
+         self.searchInput.off('blur');
+      }
+      if (self.searchBox) {
+         self.searchBox.off('return');
+      }
+
+      App.tooltipHelper.removeDynamicTooltip(this.element);
+      this.palette.off('click', '.item');
    },
 
    showSearchFilter: function() {
@@ -47,25 +108,32 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       self.palette.append(self.searchBox);
    },
 
-   _destroy: function() {
+   // ACE: handle "wanted items" functionality for shop dialogs
+   updateWantedItems: function(wantedItems) {
       var self = this;
-      self.isDestroyed = true;
-      if (self._unlocked_crops_trace) {
-         self._unlocked_crops_trace.destroy();
-      }
-      self._unlocked_crops_trace = null;
-
-      if (self.searchInput) {
-         self.searchInput.off('keyup');
-         self.searchInput.off('keydown');
-         self.searchInput.off('blur');
-      }
-      if (self.searchBox) {
-         self.searchBox.off('return');
-      }
-      self._super();
+      self.options.wantedItems = wantedItems;
+      radiant.each(self._itemElements, function(uri, itemQualities) {
+         radiant.each(itemQualities, function(quality, el) {
+            if (el != null) {
+               self._updateWantedItem(el, uri);
+            }
+         });
+      });
    },
 
+   updateSoldItems: function(soldItems) {
+      var self = this;
+      self.options.soldItems = soldItems;
+      radiant.each(self._itemElements, function(uri, itemQualities) {
+         radiant.each(itemQualities, function(quality, el) {
+            if (el != null) {
+               self._updateWantedItem(el, uri);
+            }
+         });
+      });
+   },
+
+   // ACE: handle extra information about equipment and whether an item unlocks a crop
    updateItems: function(itemMap) {
       var self = this;
 
@@ -206,6 +274,7 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
          }
       });
 
+      // ACE: added category sorting
       // now sort each category according to its ordinal
       var categories = $(self.palette).find('.category');
       categories.sort(function(a, b) {
@@ -216,6 +285,16 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       self._updateAllItemsSearchFilter();
    },
 
+   _findCategory: function(item) {
+      var selector = "[category='" + item.category + "']";
+      var match = this.palette.find(selector)[0];
+
+      if (match) {
+         return $(match);
+      }
+   },
+
+   // ACE: handle category ordinals
    _addCategoryForItem: function(item) {
       var categoryData = stonehearth_ace.getItemCategory(item.category) || {};
       var ordinal = isNaN(categoryData.ordinal) ? 999 : categoryData.ordinal;
@@ -249,57 +328,7 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       return category;
    },
 
-   updateWantedItems: function(wantedItems) {
-      var self = this;
-      self.options.wantedItems = wantedItems;
-      radiant.each(self._itemElements, function(uri, itemQualities) {
-         radiant.each(itemQualities, function(quality, el) {
-            if (el != null) {
-               self._updateWantedItem(el, uri);
-            }
-         });
-      });
-   },
-
-   updateSoldItems: function(soldItems) {
-      var self = this;
-      self.options.soldItems = soldItems;
-      radiant.each(self._itemElements, function(uri, itemQualities) {
-         radiant.each(itemQualities, function(quality, el) {
-            if (el != null) {
-               self._updateWantedItem(el, uri);
-            }
-         });
-      });
-   },
-
-   _updateItemElement: function(itemEl, item, uri) {
-      if (!this.options.hideCount) {
-         var num = this._getCount(item);
-
-         if (num == 0 && !this.options.showZeroes) {
-            App.tooltipHelper.removeDynamicTooltip(itemEl);
-
-            // Remove from item elements map
-            if (self._itemElements[uri]) {
-               delete self._itemElements[uri][item.quality];
-            }
-         } else {
-            if (!num && !this.options.showZeroes) {
-               itemEl.find('.num').html('');
-            } else {
-               itemEl.find('.num').html(num);
-            }
-         }
-
-         if (this.options.wantedItems || this.options.soldItems) {
-            this._updateWantedItem(itemEl, uri);
-         }
-      }
-
-      this._updateItemTooltip(itemEl, item);
-   },
-
+   // ACE: added functionality for search filter and wanted items
    _updateAllItemsSearchFilter: function() {
       var self = this;
       var search = self.searchInput && self.searchInput.val().toLowerCase();
@@ -421,11 +450,126 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       return bestWantedItem;
    },
 
+   _getUri: function (item) {
+      if (!item.uri) return undefined;
+      var uri = item.uri.__self ? item.uri.__self : item.uri;
+      return uri;
+   },
+
+   _addItemElement: function(item) {
+      var img = $('<img>')
+         .addClass('image')
+         .attr('src', item.icon);
+
+      var num = $('<div>')
+         .addClass('num');
+
+      var selectBox = $('<div>')
+         .addClass('selectBox');
+
+      var uri = this._getUri(item);
+
+      var itemEl = $('<div>')
+         .addClass('item')
+         .addClass(this.options.cssClass)
+         .attr('uri', uri)
+         .attr('item_quality', item.item_quality)
+         .append(img)
+         .append(num)
+         .append(selectBox);
+
+      if (item.item_quality > 1) {
+         $('<div>')
+            .addClass('quality-' + item.item_quality + '-icon')
+            .appendTo(itemEl);
+      }
+
+      if (this.options.itemAdded) {
+         this.options.itemAdded(itemEl, item);
+      }
+
+      return itemEl;
+   },
+
+   _getCount: function(item) {
+      if (item.count) {
+         return item.count;
+      } else if (item.items) {
+         return Object.keys(item.items).length
+      } else {
+         return item.num || 0;
+      }
+   },
+
+   // ACE: added showZeroes option and handling for wanted items
+   _updateItemElement: function(itemEl, item, uri) {
+      if (!this.options.hideCount) {
+         var num = this._getCount(item);
+
+         if (num == 0 && !this.options.showZeroes) {
+            App.tooltipHelper.removeDynamicTooltip(itemEl);
+
+            // Remove from item elements map
+            if (self._itemElements[uri]) {
+               delete self._itemElements[uri][item.quality];
+            }
+         } else {
+            if (!num && !this.options.showZeroes) {
+               itemEl.find('.num').html('');
+            } else {
+               itemEl.find('.num').html(num);
+            }
+         }
+
+         if (this.options.wantedItems || this.options.soldItems) {
+            this._updateWantedItem(itemEl, uri);
+         }
+      }
+
+      this._updateItemTooltip(itemEl, item);
+   },
+
+   _geti18nVariables: function(item) {
+      var itemSelf = {}
+
+      var uri = this._getUri(item);
+      // Only display the stack count for gold in a gold chest.
+      var stackCount = 0;
+      if (item.items) {
+         radiant.each(item.items, function(id, individualItem) {
+            var stacksComponent = individualItem['stonehearth:stacks'];
+            if (stacksComponent && stacksComponent.stacks) {
+              stackCount += stacksComponent.stacks;
+            }
+         });
+      }
+
+      if (stackCount > 0) {
+         itemSelf['stonehearth:stacks'] = {
+            stacks: stackCount
+         };
+      }
+
+      return {self: itemSelf, allowUntranslated: false};
+   },
+
+   _debugTooltip: function(item) {
+      var tooltipString = "";
+      if (item.items) {
+         radiant.each(item.items, function(k, v) {
+            tooltipString = tooltipString + k + ", ";
+
+         });
+      }
+      return tooltipString;
+   },
+
    _isCropUnlocked: function(crop) {
       var self = this;
       return (self._unlocked_crops && self._unlocked_crops[crop]) || (self._all_crops && self._all_crops[crop] && self._all_crops[crop].initial_crop)
    },
 
+   // ACE: added various extra information, like equipment info, wanted items, and whether a crop is already unlocked
    _updateItemTooltip: function(itemEl, item) {
       if (itemEl.hasClass('tooltipstered')) {
          return;
@@ -578,6 +722,18 @@ $.widget( "stonehearth.stonehearthItemPalette", $.stonehearth.stonehearthItemPal
       return '';
    },
 
+   _getEntityData: function(item) {
+      if (item.canonical_uri && item.canonical_uri.entity_data) {
+         return item.canonical_uri.entity_data;
+      }
+
+      if (item.uri.entity_data) {
+         return item.uri.entity_data;
+      }
+
+      return null;
+   },
+   
    _getRootUri: function (item) {
       if (!item.uri) return undefined;
       var canonical = item.canonical_uri && item.canonical_uri.__self || item.canonical_uri;

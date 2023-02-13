@@ -1,3 +1,4 @@
+// ACE: added event for showing a shop bulletin from a merchant/stall
 $(top).on('stonehearth_ace_show_shop', function(_, e) {
    // instead of calling a command to show a bulletin by default, first fire this event
    // check to see if the bulletin already exists
@@ -32,15 +33,127 @@ $(top).on('stonehearth_ace_show_shop', function(_, e) {
       });
 });
 
-App.StonehearthShopBulletinDialog.reopen({
+// ACE: added concept of "wanted items" to merchants
+// as well as unwanted (generally what they're already selling)
+App.StonehearthShopBulletinDialog = App.StonehearthBaseBulletinDialog.extend({
+   templateName: 'shopBulletinDialog',
+   components : {
+      data : {
+         shop : {
+            sellable_items : {
+               "tracking_data" : {}
+            },
+            shop_inventory : {
+               "*" : {}
+            }
+         }
+      }
+   },
+
+   // sellable item trace is very expensive and shop dialogs can stack up when hidden
+   // so just destroy this dialog and recreate when dialog is re-opened from bulletin list
+   SHOULD_DESTROY_ON_HIDE_DIALOG: true,
+
+   _traceInventoryGold: function() {
+      let self = this;
+      self.set('gold', 0);
+      radiant.call_obj('stonehearth.inventory', 'get_inventory_command')
+         .done(function (response) {
+            self._gold_trace = new StonehearthDataTrace(response.result, {})
+               .progress(function (response) {
+                  if (self.isDestroying || self.isDestroyed) {
+                     return;
+                  }
+                  self.set('gold', response.read_only_gold_amount);
+                  self._updateBuyButtons();
+                  self._updateSellButtons();
+               });
+         });
+   },
+
    willDestroyElement: function() {
+      if (this._gold_trace && this._gold_trace.destroy) {
+         this._gold_trace.destroy();
+         delete this._gold_trace;
+      }
+      this._buyPalette.stonehearthItemPalette('destroy');
+      this._sellPalette.stonehearthItemPalette('destroy');
+
+      this.$().find('.tooltipstered').tooltipster('destroy');
+
+      this.$().off('click', '#sellList .row');
       this.$().off('click', '.wantedItem');
+
+      this.$('#buy1Button').off('click');
+      this.$('#buy10Button').off('click');
+      this.$('#buyAllButton').off('click');
+      this.$('#sell1Button').off('click');
+      this.$('#sell10Button').off('click');
+      this.$('#sellAllButton').off('click');
       this._super();
    },
 
    didInsertElement: function() {
       var self = this;
       self._super();
+
+      // build the inventory palettes
+      self._buildBuyPalette();
+      self._buildSellPalette();
+
+      self.$('#buy1Button').tooltipster();
+      self.$('#buy10Button').tooltipster();
+      self.$('#buyAllButton').tooltipster();
+      self.$('#sell1Button').tooltipster();
+      self.$('#sell10Button').tooltipster();
+      self.$('#sellAllButton').tooltipster();
+
+      self.$().on('click', '#sellList .row', function() {
+         self.$('#sellList .row').removeClass('selected');
+         var row = $(this);
+
+         row.addClass('selected');
+         //self._selectedUri = row.attr('uri');
+
+         self._updateSellButton();
+      });
+
+      self.$('#buy1Button').click(function() {
+         if (!$(this).hasClass('disabled')) {
+            self._doBuy(1);
+         }
+      });
+
+      self.$('#buy10Button').click(function() {
+         if (!$(this).hasClass('disabled')) {
+            self._doBuy(10);
+         }
+      });
+      self.$('#buyAllButton').click(function() {
+         if (!$(this).hasClass('disabled')) {
+            var allCount = self.$('#buyList .selected .num').text()
+            self._doBuy(Number(allCount));
+         }
+      });
+
+      self.$('#sell1Button').click(function() {
+         if (!$(this).hasClass('disabled')) {
+            self._doSell(1);
+         }
+      });
+
+      self.$('#sell10Button').click(function() {
+         if (!$(this).hasClass('disabled')) {
+            self._doSell(10);
+         }
+      });
+
+      self.$('#sellAllButton').click(function() {
+         if (!$(this).hasClass('disabled')) {
+            var allCount = self.$('#sellList .selected .num').text();
+            self._doSell(Number(allCount));
+         }
+      });
 
       self.$().on('click', '.wantedItem', function() {
          var el = $(this);
@@ -52,7 +165,64 @@ App.StonehearthShopBulletinDialog.reopen({
          }
          return false;
       });
+
+      self._traceInventoryGold();
+      self._updateBuyButtons();
+      self._updateSellButtons();
+      self._updateInventory();
+      self._updateSellableItems();
+      this.$('#buyTab').show();
    },
+
+   _buildBuyPalette: function() {
+      var self = this;
+
+      this._buyPalette = this.$('#buyList').stonehearthItemPalette({
+         cssClass: 'shopItem',
+         itemAdded: function(itemEl, itemData) {
+            itemEl.attr('cost', itemData.cost);
+            itemEl.attr('num', itemData.num);
+
+            $('<div>')
+               .addClass('cost')
+               .html(itemData.cost + 'g')
+               .appendTo(itemEl);
+
+         },
+         click: function(item, e) {
+            self._updateBuyButtons();
+         },
+         rightClick: function (item, e) {
+            self._updateBuyButtons();
+            self._doBuy(1);
+         }
+      });
+   },
+
+   _updateInventory: function() {
+      if (!this.$()) {
+         return;
+      }
+      var shop_inventory = this.get('model.data.shop.shop_inventory');
+      this._buyPalette.stonehearthItemPalette('updateItems', shop_inventory);
+   }.observes('model.data.shop.shop_inventory'),
+
+   _updateSellableItems: function() {
+      if (!this.$()) {
+         return;
+      }
+      var tracking_data = this.get('model.data.shop.sellable_items.tracking_data');
+      var sellable_items = {}
+      radiant.each(tracking_data, function(uri, uri_entry) {
+         radiant.each(uri_entry.item_qualities, function(item_quality_key, data) {
+            data.uri = uri_entry.uri;
+            // The key's purpose is just to make sure each entry with a different item quality is unique
+            var key = data.uri + '&item_quality=' + item_quality_key;
+            sellable_items[key] = data;
+         });
+      });
+      this._sellPalette.stonehearthItemPalette('updateItems', sellable_items);
+   }.observes('model.data.shop.sellable_items'),
 
    _updateShopDescription: function() {
       var self = this;
@@ -197,7 +367,7 @@ App.StonehearthShopBulletinDialog.reopen({
       });
       self._sellPalette.stonehearthItemPalette('showSearchFilter');
    },
-   
+
    _updateSoldItems: function() {
       this._sellPalette.stonehearthItemPalette('updateSoldItems', this.get('model.data.shop.shop_inventory'));
    }.observes('model.data.shop.shop_inventory'),
@@ -236,6 +406,70 @@ App.StonehearthShopBulletinDialog.reopen({
       }
    },
 
+   _doBuy: function(quantity) {
+      var self = this;
+      var shop = self.get('model.data.shop');
+      var selected = self.$('#buyList .selected')
+      var uri = selected.attr('uri');
+      var quality = parseInt(selected.attr('item_quality'));
+
+      radiant.call_obj(shop, 'buy_item_command', uri, quality, quantity)
+         .done(function() {
+            // play a 'chaching!' noise or something
+            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:shop_buy'} )
+         })
+         .fail(function() {
+            // play a 'bonk!' noise or something
+            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:shop_negative'} )
+         })
+   },
+
+   _doSell: function(quantity) {
+      var self = this;
+      var shop = self.get('model.data.shop');
+      var selected = self.$('#sellList .selected')
+      var uri = selected.attr('uri');
+      var quality = parseInt(selected.attr('item_quality'));
+      radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:shop_sell'} )
+
+      if (!uri) {
+         return;
+      }
+
+      radiant.call_obj(shop, 'sell_item_command', uri, quality, quantity)
+         .fail(function() {
+            // play a 'bonk!' noise or something
+            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:shop_negative'} )
+         })
+   },
+
+   _updateBuyButtons: function() {
+      var self = this;
+
+      var item = self.$('#buyList').find(".selected");
+      var cost = parseInt(item.attr('cost'));
+      // For some reason, if there's nothing selected
+      // item will still be defined, but its cost will be NaN.
+      if (item && cost) {
+         // update the buy buttons
+         var gold = self.get('gold');
+
+         if (cost <= gold) {
+            self._enableButton('#buy1Button');
+            self._enableButton('#buy10Button');
+            self._enableButton('#buyAllButton');
+         } else  {
+            self._disableButton('#buy1Button', 'stonehearth:ui.game.bulletin.shop.not_enough_gold_tooltip');
+            self._disableButton('#buy10Button', 'stonehearth:ui.game.bulletin.shop.not_enough_gold_tooltip');
+            self._disableButton('#buyAllButton', 'stonehearth:ui.game.bulletin.shop.not_enough_gold_tooltip');
+         }
+      } else {
+         self._disableButton('#buy1Button');
+         self._disableButton('#buy10Button');
+         self._disableButton('#buyAllButton');
+      }
+   },
+
    _updateSellButtons: function() {
       var self = this;
 
@@ -260,5 +494,21 @@ App.StonehearthShopBulletinDialog.reopen({
          }
       }
    },
-});
 
+   _disableButton: function(buttonId, tooltipId) {
+      // Disable the button with a tooltip if provided.
+      self.$(buttonId).addClass('disabled');
+      if (tooltipId) {
+         self.$(buttonId).tooltipster('content', i18n.t(tooltipId));
+         self.$(buttonId).tooltipster('enable');
+      } else {
+         self.$(buttonId).tooltipster('disable');
+      }
+   },
+
+   _enableButton: function(buttonId) {
+      self.$(buttonId).removeClass('disabled');
+      self.$(buttonId).tooltipster('disable');
+   },
+
+});
