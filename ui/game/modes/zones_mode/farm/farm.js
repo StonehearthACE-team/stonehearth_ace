@@ -1,4 +1,14 @@
-App.StonehearthFarmView.reopen({
+App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
+   templateName: 'stonehearthFarm',
+   closeOnEsc: true,
+
+   components: {
+      "stonehearth:unit_info": {},
+      "stonehearth:farmer_field" : {
+         "current_crop_alias": {}
+      }
+   },
+
    _STATUSES: {
       BAD: 'bad',
       POOR: 'poor',
@@ -57,9 +67,21 @@ App.StonehearthFarmView.reopen({
    _IMAGES_DIR: '/stonehearth_ace/ui/game/modes/zones_mode/farm/images/',
 
    init: function() {
-      var self = this;
-      self._super();
+      this._super();
 
+      var self = this;
+
+      radiant.call_obj('stonehearth.job', 'get_job_call', 'stonehearth:jobs:farmer')
+               .done(function (response) {
+                  if (self.isDestroying || self.isDestroyed) {
+                     return;
+                  }
+                  if (response.job_info_object) {
+                     self.set('farmer_job_info', response.job_info_object);
+                  }
+               });
+
+      // ACE: handle additional information that's now relevant to farm crops
       self.set('propertyLocalizations', null);
       var localizations;
       // get the property localization keys (allows other seasons/properties to be mixed in)
@@ -69,47 +91,35 @@ App.StonehearthFarmView.reopen({
       });
 
       radiant.call('stonehearth:get_service', 'seasons')
-      .done(function (o) {
-         self.seasons_trace = radiant.trace(o.result)
-            .progress(function (o2) {
-               if (self.isDestroyed || self.isDestroying) {
-                  return;
-               }
-               self.set('_currentSeason', o2.current_season);
-               self._updateStatuses();
-            });
-      });
-   },
-
-   willDestroyElement: function() {
-      var self = this;
-
-      clearInterval(self._periodicFertilizerUpdate);
-
-      this._fertilizerPalette.stonehearthItemPalette('destroy');
-      this._fertilizerPalette = null;
-
-      App.tooltipHelper.removeDynamicTooltip(self.$('.cropProperty'));
-
-      this._super();
-   },
-
-   destroy: function() {
-      this._super();
-      if (this.seasons_trace) {
-         this.seasons_trace.destroy();
-         this.seasons_trace = null;
-      }
-      if (this.farmer_info_trace) {
-         this.farmer_info_trace.destroy();
-         this.farmer_info_trace = null;
-      }
+         .done(function (o) {
+            self.seasons_trace = radiant.trace(o.result)
+               .progress(function (o2) {
+                  if (self.isDestroyed || self.isDestroying) {
+                     return;
+                  }
+                  self.set('_currentSeason', o2.current_season);
+                  self._updateStatuses();
+               });
+         });
    },
 
    didInsertElement: function() {
+      this._super();
       var self = this;
-      self._super();
 
+      self.$('button.warn').click(function() {
+         radiant.call('stonehearth:destroy_entity', self.uri)
+         self.destroy();
+      });
+
+      self.$('button.ok').click(function() {
+         radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:submenu_select'} );
+         self.destroy();
+      });
+
+      self.hasShownPaletteOnce = false;
+
+      // ACE: lots of additional information and ui elements to handle
       var filterFn = function(k, v) {
          if (v.materials) {
             for (i = 0; i < v.materials.length; i++) {
@@ -179,6 +189,69 @@ App.StonehearthFarmView.reopen({
          });
    },
 
+   willDestroyElement: function() {
+      var self = this;
+
+      clearInterval(self._periodicFertilizerUpdate);
+
+      this._fertilizerPalette.stonehearthItemPalette('destroy');
+      this._fertilizerPalette = null;
+
+      App.tooltipHelper.removeDynamicTooltip(self.$('.cropProperty'));
+
+      self.$('button.warn').off('click');
+      self.$('button.ok').off('click');
+
+      this._super();
+   },
+
+   destroy: function() {
+      if (this.palette) {
+         this.palette.destroy();
+         this.palette = null;
+      }
+      if (this.seasons_trace) {
+         this.seasons_trace.destroy();
+         this.seasons_trace = null;
+      }
+      if (this.farmer_info_trace) {
+         this.farmer_info_trace.destroy();
+         this.farmer_info_trace = null;
+      }
+      this._super();
+   },
+
+   _onFieldChanged: function() {
+      var field = this.get('model.stonehearth:farmer_field');
+      if (field && field.has_set_crop || this.hasShownPaletteOnce) {
+         return;
+      }
+      this._createPalette();
+   }.observes('model.stonehearth:farmer_field.has_set_crop'),
+
+   _tracedFieldChanged: function() {
+      this.hasShownPaletteOnce = false;
+   }.observes('uri'),
+
+   _tracedFarmerJobInfo: function() {
+      if (this.palette) {
+         this.palette.set('uri', this.get('farmer_job_info'));
+      }
+   }.observes('farmer_job_info'),
+
+   _createPalette: function() {
+      if (!this.palette) {
+         var self = this;
+         if (!self.get('model.stonehearth:farmer_field')) return;
+         self.palette = App.gameView.addView(App.StonehearthFarmCropPalette, {
+                        field: self.get('model.stonehearth:farmer_field').__self,
+                        farm_view: self,
+                        uri: self.get('farmer_job_info')
+                     });
+      }
+   },
+
+   // ACE: lots of additional features
    _harvestEnabledChanged: function() {
       var self = this;
       var harvestCrop = self.get('model.stonehearth:farmer_field.harvest_enabled');
@@ -972,10 +1045,15 @@ App.StonehearthFarmView.reopen({
          this.palette.destroy();
          this.palette = null;
       }
-   }.observes('uri')
+   }.observes('uri'),
+
+   actions :  {
+      addCropButtonClicked: function() {
+         this._createPalette();
+      },
+   },
 });
 
-// ACE: have to override this whole view because we need to modify the init function, which calls this._super()
 App.StonehearthFarmCropPalette = App.View.extend({
    templateName: 'stonehearthCropPalette',
    modal: true,

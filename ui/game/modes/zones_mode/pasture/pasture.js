@@ -1,4 +1,14 @@
-App.StonehearthPastureView.reopen({
+App.StonehearthPastureView = App.StonehearthBaseZonesModeView.extend({
+   templateName: 'stonehearthPasture',
+   closeOnEsc: true,
+   _currentPastureType: '',
+
+   components: {
+      "uri": {},
+      "stonehearth:unit_info": {},
+      "stonehearth:shepherd_pasture" : {}
+   },
+
    init: function() {
       this._super();
 
@@ -22,21 +32,37 @@ App.StonehearthPastureView.reopen({
    },
 
    didInsertElement: function() {
+      this._super();
       var self = this;
-      self._super();
 
-      // clicking checkboxes
+      this.$('button.ok').click(function() {
+         radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:submenu_select'} );
+         self.destroy();
+      });
+
+      this.$('button.warn').click(function() {
+         radiant.call('stonehearth:destroy_entity', self.uri)
+         self.destroy();
+      });
+
+      this.$('#disableButton').click(function() {
+         //xxx toggle zone enabled and disabled state.
+      });
+
+      self._updateTooltip();
+
+      // ACE: clicking checkboxes
       self.$('#harvestAnimalsCheckbox').change(function() {
          radiant.call('stonehearth_ace:set_pasture_harvest_animals_renewable', self.get('uri'), this.checked);
-      })
+      });
       self.$('#harvestGrassCheckbox').change(function() {
          radiant.call('stonehearth_ace:set_pasture_harvest_grass', self.get('uri'), this.checked);
-      })
+      });
       self.$('#collectStraysCheckbox').change(function() {
          radiant.call('stonehearth_ace:set_pasture_collect_strays', self.get('uri'), this.checked);
-      })
+      });
 
-      // tooltips
+      // ACE tooltips
       App.guiHelper.addTooltip(self.$('#maintainAnimalsLabel'), 'stonehearth_ace:ui.game.zones_mode.pasture.maintain_animals_description');
       App.guiHelper.addTooltip(self.$('#harvestAnimals'), 'stonehearth_ace:ui.game.zones_mode.pasture.harvest_animals_renewable_description');
       App.guiHelper.addTooltip(self.$('#harvestGrass'), 'stonehearth_ace:ui.game.zones_mode.pasture.harvest_grass_description');
@@ -45,6 +71,11 @@ App.StonehearthPastureView.reopen({
 
    willDestroyElement: function() {
       var self = this;
+      this.$().find('.tooltipstered').tooltipster('destroy');
+      this.$('button.ok').off('click');
+      this.$('button.warn').off('click');
+      this.$('#disableButton').off('click');
+
       if (self._maintainSelector) {
          self._maintainSelector.find('.tooltipstered').tooltipster('destroy');
          self._maintainSelector.empty();
@@ -58,22 +89,29 @@ App.StonehearthPastureView.reopen({
       this._super();
    },
 
-   _pastureChanged: function() {
-      var self = this;
-      var harvestAnimals = self.get('model.stonehearth:shepherd_pasture.harvest_animals_renewable');
-      var harvestGrass = self.get('model.stonehearth:shepherd_pasture.harvest_grass');
-      var collectStrays = self.get('model.stonehearth:shepherd_pasture.collect_strays') === false ? false : true;
-
-      self.$('#harvestAnimalsCheckbox').prop('checked', harvestAnimals);
-      self.$('#harvestGrassCheckbox').prop('checked', harvestGrass);
-      self.$('#collectStraysCheckbox').prop('checked', collectStrays);
-   }.observes('model.stonehearth:shepherd_pasture'),
-
    _pastureAnimalTypeChange: function() {
       var self = this;
-      self._super();
+      var currentPastureType = self.get('model.stonehearth:shepherd_pasture.pasture_type');
 
-      // check if the current animal type has a renewable resource component to it and set 'renewable' accordingly
+      self._currentPastureType = currentPastureType;
+      if (!currentPastureType) {
+         self._showPastureTypePalette();
+         return;
+      }
+
+      var pastureData = self.get('model.uri.components.stonehearth:shepherd_pasture.pasture_data');
+      var currentPastureData = pastureData[currentPastureType];
+      if (currentPastureData) {
+         self.set('currentPastureData', currentPastureData);
+      }
+
+      var capacityData = self.get('model.stonehearth:shepherd_pasture.max_population_data')
+      var capacity = capacityData[currentPastureType];
+      if (capacity) {
+         self.set('capacity', capacity);
+      }
+
+      // ACE: check if the current animal type has a renewable resource component to it and set 'renewable' accordingly
 
       var capacity = self.get('capacity');
       var maintain = self.get('model.stonehearth:shepherd_pasture.maintain_animals');
@@ -114,20 +152,81 @@ App.StonehearthPastureView.reopen({
       }
    }.observes('model.stonehearth:shepherd_pasture.pasture_type'),
 
+   _updateTooltip: function() {
+      var pastureData = this.get('currentPastureData');
+      if (pastureData && this.$('#pastureTypeImage')) {
+         this.$('#pastureTypeImage').tooltipster({
+            content: $('<div class=detailedTooltip><h2>' + i18n.t(pastureData.name) + '</h2>'
+                        + i18n.t(pastureData.description) + '</div>')
+         });
+      }
+   }.observes('currentPastureData'),
+
+   _showPastureTypePalette: function() {
+      if (!this.palette) {
+         var pastureComponent = this.get('model.stonehearth:shepherd_pasture');
+         this.palette = App.gameView.addView(App.StonehearthPastureTypePaletteView, {
+            pasture: pastureComponent && pastureComponent.__self,
+            pasture_view: this,
+            pasture_data: this.get('model.uri.components.stonehearth:shepherd_pasture.pasture_data'),
+         });
+      }
+   },
+
+   // ACE: handle updates to extra pasture settings
+   _pastureChanged: function() {
+      var self = this;
+      var harvestAnimals = self.get('model.stonehearth:shepherd_pasture.harvest_animals_renewable');
+      var harvestGrass = self.get('model.stonehearth:shepherd_pasture.harvest_grass');
+      var collectStrays = self.get('model.stonehearth:shepherd_pasture.collect_strays') === false ? false : true;
+
+      self.$('#harvestAnimalsCheckbox').prop('checked', harvestAnimals);
+      self.$('#harvestGrassCheckbox').prop('checked', harvestGrass);
+      self.$('#collectStraysCheckbox').prop('checked', collectStrays);
+   }.observes('model.stonehearth:shepherd_pasture'),
+
    _tracedShepherdJobInfo: function() {
       if (this.palette) {
          this.palette.set('highest_level', this.get('shepherd_job_info.highest_level'));
       }
    }.observes('shepherd_job_info.highest_level'),
+
+   actions :  {
+      choosePastureTypeLinkClicked: function() {
+         this._showPastureTypePalette();
+      },
+   },
+   destroy: function() {
+      if (this.palette) {
+         this.palette.destroy();
+         this.palette = null;
+      }
+      this._super();
+   },
 });
 
-App.StonehearthPastureTypePaletteView.reopen({
-   didInsertElement: function() {
-      var self = this;
-      self._super();
+App.StonehearthPastureTypePaletteView = App.View.extend({
+   templateName: 'stonehearthPastureTypePalette',
+   modal: true,
 
-      this.$().off('click', '[pastureType]')
-      .on( 'click', '[pastureType]', function() {
+   didInsertElement: function() {
+      this._super();
+      var self = this;
+
+      var pastureDataArray = [];
+      radiant.each(self.pasture_data, function(key, data) {
+         var pastureData = {
+            type: key,
+            icon: data.icon,
+            name: data.name,
+            description: data.description
+         }
+         pastureDataArray.push(pastureData);
+      });
+      self.set('pastureTypes', pastureDataArray);
+
+      // ACE: better handling of locked pasture types and sorting
+      this.$().on( 'click', '[pastureType]', function() {
          if ($(this).attr('locked')) {
             return;
          }
@@ -145,6 +244,18 @@ App.StonehearthPastureTypePaletteView.reopen({
       });
       self.set('highest_level', self.pasture_view.get('shepherd_job_info.highest_level'));
       self._updateLockedAnimals();
+   },
+
+   willDestroyElement: function() {
+      this.$().off('click', '[pastureType]');
+      this._super();
+   },
+
+   destroy: function() {
+      if (this.pasture_view) {
+         this.pasture_view.palette = null;
+      }
+      this._super();
    },
 
    _isAnimalLocked: function(animal) {

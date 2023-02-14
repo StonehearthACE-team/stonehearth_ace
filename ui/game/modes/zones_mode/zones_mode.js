@@ -1,14 +1,69 @@
-App.StonehearthZonesModeView.reopen({
+App.StonehearthZonesModeView = App.View.extend({
+   templateName: 'zonesMode',
+   i18nNamespace: 'stonehearth',
    customEntityZoneViews: [],
 
-   // modders can override this function to add their own custom entity zone views
    init: function() {
+      this._super();
+
       var self = this;
-      self._super();
+      $(top).on("radiant_selection_changed", function (_, e) {
+         self._onEntitySelected(e);
+      });
+
+      $(top).on('mode_changed', function(_, mode) {
+         if (mode != 'zones') {
+            if (self._propertyView) {
+               self._propertyView.destroyWithoutDeselect();
+            }
+         }
+      });
+
+      self._components = {
+         "stonehearth:storage" : {}
+      };
       
       self.customEntityZoneViews.push(self._ACE_CustomZoneViews)
    },
-   
+
+   didInsertElement: function() {
+      this.$().hide();
+   },
+
+   destroy: function() {
+      if (this.selectedEntityTrace) {
+         this.selectedEntityTrace.destroy();
+         this.selectedEntityTrace = null;
+      }
+
+      this._super();
+   },
+
+   _onEntitySelected: function(e) {
+      var self = this;
+      var entity = e.selected_entity
+
+      // nuke the old trace
+      if (self.selectedEntityTrace) {
+         self.selectedEntityTrace.destroy();
+         self.selectedEntityTrace = null;
+      }
+
+      if (!entity) {
+         return;
+      }
+
+      // trace the properties so we can tell if we need to popup the properties window for the object
+      self.selectedEntityTrace = new RadiantTrace(entity, self._components)
+         .progress(function(result) {
+            self._examineEntity(result);
+         })
+         .fail(function(e) {
+            console.log(e);
+         });
+   },
+
+   // ACE: examine more components of the entity
    _examineEntity: function(entity) {
       var self = this;
       if (!entity && self._propertyView) {
@@ -54,7 +109,7 @@ App.StonehearthZonesModeView.reopen({
       }
    },
 
-   // override this to not set the game mode; that should already be happening elsewhere
+   // ACE: override this to not set the game mode; that should already be happening elsewhere
    _showZoneUi: function(entity, viewType) {
       var self = this;
 
@@ -85,6 +140,7 @@ App.StonehearthZonesModeView.reopen({
       return null;
    },
 
+   // modders can override this function to add their own custom entity zone views
    _ACE_CustomZoneViews: function(entity) {
       if (entity['stonehearth_ace:guard_zone']) {
          return App.StonehearthAceGuardZoneView;
