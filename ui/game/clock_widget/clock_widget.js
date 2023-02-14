@@ -71,16 +71,6 @@ App.StonehearthCalendarView = App.View.extend({
       this._moonBody = this._moon.find('#body');
       this._moonRays = this._moon.find('.ray');
 
-      // ACE: added image for season
-      var img = $('<img>')
-         .addClass('seasonImage')
-         .attr('id', 'seasonImage');
-      self.$('#dateString')
-         .append($('<br>'))
-         .append(img);
-      
-      img.hide();
-
       self._showingTooltip = false;
 
       $('#clock').tooltipster({
@@ -292,17 +282,8 @@ App.StonehearthCalendarView = App.View.extend({
    _updateSeasonImage: function() {
       var self = this;
       var season = self.get('season');
-      if (season && season.id) {
-         var icon = stonehearth_ace.getSeasonIcon(season.id);
-         if (icon) {
-            self.$('#seasonImage')
-               .attr('src', icon)
-               .show();
-         }
-      }
-      else {
-         self.$('#seasonImage').hide();
-      }
+      var icon = season && season.id && stonehearth_ace.getSeasonIcon(season.id);
+      self.set('seasonIcon', icon);
    }.observes('season'),
 
    _updateDateTooltip: function (date) {
