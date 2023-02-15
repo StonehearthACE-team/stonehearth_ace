@@ -8,18 +8,12 @@
          "placeable_on_ground": true,
          "hide_undeploy_ui": true
       },
-      "stonehearth:resource_node": {
-         "durability": 8,
-         "resource": "stonehearth:resources:wood:oak_log",
-         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
-         "harvester_effect": "saw"
-      },
       "stonehearth:storage": {
          "type": "crate",
          "filter_list": "stonehearth_ace:ui:stockpile:filters:zone",
          "render_contents": true,
          "reposition_items": "fill",
-         "capacity": 96
+         "capacity": 128
       },
       "destination": {
          "region": [
@@ -39,9 +33,40 @@
                "max": { "x": 2, "y": 2, "z": 3 }
             }
          ]
+      },
+      "stonehearth_ace:transform": {},
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 10,
+                  "max": 12
+               },
+               "items": {
+                  "whey_butter": {
+                     "uri": "stonehearth:resources:wood:oak_log"
+                  }
+               }
+            }
+         }
       }
    },
    "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "",
+         "command": "stonehearth_ace:commands:transform:embark_wagon_harvest",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "transforming_worker_effect": "saw",
+         "transforming_worker_effect_times": 8,
+         "transform_effect": "stonehearth:effects:poof_effect:grey",
+         "worker_required_job": {
+            "stonehearth:jobs:worker": true,
+            "stonehearth:jobs:carpenter": true
+         },
+         "auto_request": false,
+         "kill_entity": true
+      },
       "stonehearth:town_patrol": {
          "auto_patrol": true,
          "patrol_pattern": "perimeter"
