@@ -259,7 +259,8 @@ function AceStorageComponent:drop_all(fallback_location, priority_location)
    local player_id = get_player_id(self._entity)
    local default_storage
    local town = stonehearth.town:get_town(player_id)
-   if town then
+   -- if this was private storage, don't automatically put it in default (public) storage
+   if town and self._sv.is_public then
       -- unregister this storage from default; if we're dropping all the items, even if it's not getting destroyed, we probably don't want more stuff in here
       -- especially the items we're trying to drop!
       town:remove_default_storage(self._entity:get_id())

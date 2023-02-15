@@ -303,10 +303,10 @@ end
 
 function FenceCallHandler:get_fence_settings_command(session, response)
    local settings_folder = radiant.mods.enum_objects('settings')
-   local settings = {}
-   if settings_folder.fence_mode then
-      settings = radiant.mods.read_object('settings/fence_mode') or {}
-   end
+   local settings = radiant.mods.read_object('settings/fence_mode') or {}
+   -- if settings_folder.fence_mode then
+   --    settings = radiant.mods.read_object('settings/fence_mode') or {}
+   -- end
 
    -- check if we still have fence settings saved to user_settings.json
    local config = radiant.util.get_config('fence_mode')

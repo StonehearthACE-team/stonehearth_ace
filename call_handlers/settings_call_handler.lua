@@ -1,6 +1,8 @@
 local validator = radiant.validator
 local SettingsCallHandler = class()
 
+local log = radiant.log.create_logger('settings_call_handler')
+
 function SettingsCallHandler:get_all_client_gameplay_settings_command(session, response)
    local settings = stonehearth.client_state:get_client_gameplay_settings(session.player_id)
    return {settings = settings}
@@ -54,10 +56,12 @@ end
 
 function SettingsCallHandler:get_storage_filter_custom_presets_command(session, response)
    local settings_folder = radiant.mods.enum_objects('settings')
-   local presets = {}
-   if settings_folder.storage_filter_custom_presets then
-      presets = radiant.mods.read_object('settings/storage_filter_custom_presets') or {}
-   end
+   local presets = radiant.mods.read_object('settings/storage_filter_custom_presets') or {}
+   -- log:debug('settings folder: %s', radiant.util.table_tostring(settings_folder))
+   -- if settings_folder.storage_filter_custom_presets then
+   --    log:debug('loading storage_filter_custom_presets...')
+   --    presets = radiant.mods.read_object('settings/storage_filter_custom_presets') or {}
+   -- end
 
    -- check if we still have custom presets saved to user_settings.json
    local config = radiant.util.get_config('storage_filter_custom_presets')

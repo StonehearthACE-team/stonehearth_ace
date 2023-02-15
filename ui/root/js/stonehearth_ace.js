@@ -313,7 +313,7 @@ $.getJSON('/stonehearth_ace/ui/data/fence_types.json', function(data) {
 
    radiant.call('stonehearth_ace:get_fence_settings_command')
       .done(function(response) {
-         var settings = response || {};
+         var settings = response.result || {};
          stonehearth_ace._fence_mode.selected_segments = settings.selected_segments;
          stonehearth_ace._fence_mode.custom_presets = settings.custom_presets || {};
       });
@@ -327,7 +327,7 @@ $.getJSON('/stonehearth_ace/ui/data/storage_filter_presets.json', function(data)
 
    radiant.call('stonehearth_ace:get_storage_filter_custom_presets_command')
       .done(function(response) {
-         stonehearth_ace._storageFilterPresets.custom_presets = response || {};
+         stonehearth_ace._storageFilterPresets.custom_presets = response.result || {};
       });
 });
 

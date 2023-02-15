@@ -37,7 +37,7 @@
                <div id="topBar">
                   <input id="nameInput" type="text" {{bind-attr value=view.display_name}} />
                   <div id="nametag" {{bind-attr class=view.nameTagClass}}>
-                     <div class="name" {{bind-attr class=view.hasPortrait:compressed:extended}}>{{i18n_key view.display_name self=view.model}}</div>
+                     <div {{bind-attr class=":name view.nameWidthClass"}}>{{i18n_key view.display_name self=view.model}}</div>
                   </div>
                   <div id="lockTitle" {{bind-attr class=view.titleLockClass}}></div>
                   <div id="qualityGem"></div>

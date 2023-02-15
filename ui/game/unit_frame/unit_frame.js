@@ -3,7 +3,7 @@ var _showJobToggleButton = false;
 
 var _selectionHasComponentInfoChanged = function() {
    if (_selectionHasComponentInfo) {
-      $('#componentInfoButton').show().css('display', 'inline-flex');
+      $('#componentInfoButton').show(); //.css('display', 'inline-flex');
    }
    else {
       $('#componentInfoButton').hide();
@@ -620,7 +620,7 @@ App.StonehearthUnitFrameView = App.View.extend({
       Ember.run.scheduleOnce('afterRender', this, function() {
          var unitFrame = this.$('#unitFrame');
          if (unitFrame) {
-            var maxWidth = 560;
+            var maxWidth = 540;
             var infoDiv = this.$('#info');
             var commandButtons = this.$('#commandButtons');
             var moreCommandsIndicator = this.$('#moreCommandsIndicator');
@@ -809,6 +809,11 @@ App.StonehearthUnitFrameView = App.View.extend({
       }
       return false;
    },
+
+   nameWidthClass: function() {
+      var self = this;
+      return self.get('hasPortrait') || self.get('model.stonehearth:expendable_resources.resources.health') ? 'compressed' : 'extended';
+   }.property('hasPortrait', 'model.stonehearth:expendable_resources.resources.health'),
 
    _updatePortrait: function() {
       if (!this.$()) {

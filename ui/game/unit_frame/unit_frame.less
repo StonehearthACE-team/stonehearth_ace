@@ -72,9 +72,17 @@
             position: absolute;
             top: 0px;
             left: 10px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            width: 535px;
 
             #nametag {
+               display: flex;
                position: relative;
+               flex: 0 2 auto;
+               min-width: 10px;
                
                &.hostile {
                   border-image: url(images/name_hostile.png) 4 32 4 32;
@@ -85,17 +93,19 @@
                }
 
                .compressed {
-                  max-width: 340px;
+                  //max-width: 300px;
+                  max-width: inherit;
                }
    
                .extended {
-                  max-width: 370px;
+                  //max-width: 370px;
+                  max-width: inherit;
                }
 
             }
 
             #lockTitle {
-               display: inline-flex;
+               display: flex;
                background-repeat: no-repeat;
                background-size: 20px;
                height: 20px;
@@ -125,6 +135,27 @@
                   bottom: 0px;
                   height: 100%;
                   margin-top: auto;
+               }
+            }
+
+            #componentInfoButton {
+               display: block;
+               height: 20px;
+               padding: 5px;
+               border: 3px #383230 solid;
+               border-radius: 8px;
+               align-items: center;
+               background-clip: padding-box;
+               background-color: #ebebeb;
+               margin-left: 3px;
+               display: none;
+            
+               #infoIcon {
+                  background-image: url(images/info.png);
+                  background-repeat: no-repeat;
+                  width: 10px;
+                  height: 22px;
+                  margin: 0px 5px 5px 5px;
                }
             }
          }
@@ -169,7 +200,7 @@
 
          #nameBlock {
             margin-top: 30px;
-            margin-left: 12px;
+            margin-left: 2px;
             #moodIcon {
                display: inline-block;
                clear: both;
@@ -177,26 +208,32 @@
                margin: -12px 4px 10px 4px;
             }
    
-            // #descriptionDiv {
-            //    clear: inherit;
-            //    float: inherit;
-            // }
+            .description,
+            .currLevel {
+               margin-top: 7px;
+               vertical-align: top;
+               max-width: 280px;
+            }
+
+            .currLevel {
+               margin-top: 5px;
+            }
 
             #activityDiv {
                display: inline-block;
                clear:both;
                float:left;
-               margin: 4px;
+               //margin: 4px;
             }
             #activityDiv.hasPortrait {
                position: absolute;
                bottom: -26px;
-               left: 112px;
+               left: 102px;
             }
          }
 			
 			.bubble {
-            display: inline-flex;
+            display: flex;
             height: 20px;
             padding: 5px;
             border: 3px #383230 solid;
@@ -247,6 +284,10 @@
                height: 17px;
                margin: 5px;
             }
+         }
+
+         #rescueButton {
+            display: block;
          }
          
          #item {
@@ -408,27 +449,6 @@
 
       #cancelAttack {
          background-image: url('images/cancel_order.png');
-      }
-   }
-
-   #componentInfoButton {
-      display: inline-flex;
-      height: 20px;
-      padding: 5px;
-      border: 3px #383230 solid;
-      border-radius: 8px;
-      align-items: center;
-      background-clip: padding-box;
-      background-color: #ebebeb;
-      margin-left: 3px;
-      display: none;
-   
-      #infoIcon {
-         background-image: url(images/info.png);
-         background-repeat: no-repeat;
-         width: 10px;
-         height: 22px;
-         margin: 5px;
       }
    }
 
