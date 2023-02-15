@@ -131,6 +131,10 @@ function TitlesComponent:add_title(title, rank)
       self._sv.renown = self._sv.renown + (self:_get_title_renown(title, rank) - (self:_get_title_renown(title, (rank - 1)) or 0))
       self.__saved_variables:mark_changed()
 
+      -- even if we're not selecting a new title now, we need to ensure that the entity has a custom name
+      local unit_info = self._entity:add_component('stonehearth:unit_info')
+      unit_info:ensure_custom_name()
+
       -- update component info details
       self:_update_component_info()
 
@@ -157,6 +161,9 @@ end
 -- either criteria_change is specified (and not title), when changing the criteria in gameplay settings,
 -- or only title is specified (don't need to specify rank because a new title will always be the highest rank)
 function TitlesComponent:_select_new_title(criteria_change, title)
+   local unit_info = self._entity:add_component('stonehearth:unit_info')
+   -- don't need to specify rank with unit_info:select_title because a new title will always be the highest rank
+
    if stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'auto_select_new_titles', true) then
       local criteria = criteria_change or
             stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'title_selection_criteria')
@@ -164,31 +171,23 @@ function TitlesComponent:_select_new_title(criteria_change, title)
       if criteria == 'latest' then
          local latest_title = self._sv.latest_title
          if latest_title then
-            self:_set_new_title(latest_title)
+            unit_info:select_title(latest_title)
          end
       elseif criteria == 'highest_renown' then
          if criteria_change then
             local highest_title = self:_get_highest_renown_title()
             if highest_title then
-               self:_set_new_title(highest_title)
+               unit_info:select_title(highest_title)
             end
          elseif title then
             if self:_get_title_renown(title, self._sv.titles[title]) > self:_get_current_title_renown() then
-               self:_set_new_title(title)
+               unit_info:select_title(title)
             end
          end
       elseif title then
-         self:_set_new_title(title)
+         unit_info:select_title(title)
       end
    end
-end
-
--- don't need to specify rank because a new title will always be the highest rank
-function TitlesComponent:_set_new_title(title)
-   local unit_info = self._entity:add_component('stonehearth:unit_info')
-   unit_info:ensure_custom_name()
-
-   unit_info:select_title(title)
 end
 
 function TitlesComponent:_get_title_renown(title, rank)

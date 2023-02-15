@@ -54,6 +54,11 @@ function AceUnitInfoComponent:restore()
    if self._sv.title_locked == nil then
       self._sv.title_locked = true
    end
+
+   -- make sure if we have titles that we have a custom name
+   if self._entity:get_component('stonehearth_ace:titles') then
+      self:ensure_custom_name()
+   end
 end
 
 -- for now, only change set_custom_name to consider 'locked'
