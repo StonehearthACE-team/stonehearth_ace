@@ -1,10 +1,96 @@
 var _cachedJobIndexes = {};
 
-App.StonehearthPromotionTree.reopen({
-	// init: function() {
-   //    this._super();
-   //    console.log('finished init');
-   // },
+$(document).ready(function() {
+   $(top).on("radiant_promote_to_job", function(_, e) {
+      if (App.stonehearth.promotionTreeView) {
+         App.stonehearth.promotionTreeView.destroy();
+      } else {
+         App.stonehearth.promotionTreeView = App.gameView.addView(App.StonehearthPromotionTree, {
+            citizen: e.entity
+         });
+      }
+   });
+});
+
+App.StonehearthPromotionTree = App.View.extend({
+   templateName: 'promotionTree',
+   classNames: ['flex', 'fullScreen', 'exclusive'],
+   closeOnEsc: true,
+
+   init: function() {
+      this._super();
+      // Constant job data for icon display
+      var jobArray = radiant.map_to_array(App.jobConstants);
+      this.set('allJobData', jobArray);
+      this._baseWorkerJob = App.constants.job.DEFAULT_BASE_JOB;
+   },
+
+   didInsertElement: function() {
+      var self = this;
+
+      this.$().draggable({ handle: '.title' });
+
+      radiant.call('radiant:play_sound', {
+         'track': 'stonehearth:sounds:ui:promotion_menu:scroll_open'
+      });
+      this._super();
+
+      var self = this;
+
+      var components = {
+         "jobs": {
+            "*": {
+               "description": {}
+            }
+         }
+      };
+
+      self._addHandlers();
+
+      radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:basic_inventory_tracker')
+         .done(function(response) {
+            var itemTraces = {
+               "tracking_data": {
+                  "*": {
+                  }
+               }
+            };
+
+            self._playerInventoryTrace = new StonehearthDataTrace(response.tracker, itemTraces)
+               .progress(function (response) {
+                  if (self.isDestroyed || self.isDestroying) return;
+                  self.set('inventory_data', response.tracking_data);
+               });
+         })
+         .fail(function(response) {
+            console.error(response);
+         });
+
+      radiant.call_obj('stonehearth.player', 'get_job_index')
+         .done(function(response){
+            var jIndex = response.job_index;
+            self._jobsTrace = new StonehearthDataTrace(jIndex, components);
+            self._jobsTrace.progress(function(eobj) {
+               self._jobsTrace.destroy();
+               self._jobData = eobj.jobs;
+               if (eobj.base_job) {
+                  self._baseWorkerJob = eobj.base_job;
+               }
+               self._getCitizenData();
+            });
+         })
+         .fail(function(response) {
+            console.error('error getting job index');
+         });
+
+      self._getJobIndex();
+   },
+
+   willDestroyElement: function() {
+      this.$().find('.node').off('click');
+      this.$('#approveStamper').off('click');
+      this._super();
+   },
 
    dismiss: function () {
       radiant.call('radiant:play_sound', {
@@ -47,134 +133,6 @@ App.StonehearthPromotionTree.reopen({
          this._citizenTrace = null;
       }
    },
-	
-   didInsertElement: function() {
-      var self = this;
-
-      this.$().draggable({ handle: '.title' });
-
-      radiant.call('radiant:play_sound', {
-         'track': 'stonehearth:sounds:ui:promotion_menu:scroll_open'
-      });
-      //this._super();
-
-      var self = this;
-      self._addHandlers();
-
-		//console.log('didInsertElement');
-      radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:basic_inventory_tracker')
-         .done(function(response) {
-            var itemTraces = {
-               "tracking_data": {
-                  "*": {
-                  }
-               }
-            };
-
-            self._playerInventoryTrace = new StonehearthDataTrace(response.tracker, itemTraces)
-               .progress(function (response) {
-                  if (self.isDestroyed || self.isDestroying) return;
-                  self.set('inventory_data', response.tracking_data);
-						//console.log("finished getting inventory data");
-               });
-         })
-         .fail(function(response) {
-            console.error(response);
-         });
-
-      self._getJobIndex();
-   },
-
-   _getJobIndex: function() {
-      var self = this;
-      var citizen = self.get('citizen');
-		
-      var finishedGettingJobs = function (jobData) {
-         self._jobData = jobData.jobs;
-         if (jobData.base_job) {
-            self._baseWorkerJob = jobData.base_job;
-         }
-         self._getCitizenData();
-         //console.log("finished getting jobs");
-      };
-
-      var finishedGettingJobIndex = function (jobIndex) {
-         if (_cachedJobIndexes[jobIndex]) {
-            finishedGettingJobs(_cachedJobIndexes[jobIndex]);
-         }
-         else {
-            var components = {
-               "jobs": {
-                  "*": {
-                     "description": {}
-                  }
-               }
-            };
-            self._jobsTrace = new StonehearthDataTrace(jobIndex, components);
-            self._jobsTrace.progress(function(eobj) {
-               if (self.isDestroyed || self.isDestroying) {
-                  return;
-               }
-               self._jobsTrace.destroy();
-					_cachedJobIndexes[jobIndex] = eobj;
-               finishedGettingJobs(eobj);
-            });
-			}
-      }
-
-      var index = self.get('job_index');
-      if (index) {
-         finishedGettingJobIndex(index);
-      }
-      else {
-         radiant.call_obj('stonehearth.player', 'get_job_index', citizen)
-            .done(function(response){
-               if (self.isDestroyed || self.isDestroying) {
-                  return;
-               }
-               finishedGettingJobIndex(response.job_index);
-            })
-            .fail(function(response) {
-               console.error('error getting job index');
-            });
-      }
-   },
-
-   // also trace the properties to track if the selected citizen has their job locked
-   _getCitizenData: function(jobData) {
-      var self = this;
-      var citizenId = this.get('citizen');
-
-      // Get the info for the citizen.
-      self._citizenTrace = new StonehearthDataTrace(citizenId, {
-         'stonehearth:job': {
-            'job_controllers': {
-               '*': {}
-            },
-            'allowed_jobs': {}
-         },
-         'stonehearth:unit_info': {},
-         'stonehearth:properties': {},
-      });
-
-      // Finally, build the tree.
-      self._citizenTrace.progress(function(o) {
-         if (self.isDestroyed || self.isDestroying) {
-            return;
-         }
-         var props = o['stonehearth:properties'];
-         var jobLocked = props && props.properties['job_locked'] || false;
-         self.set('jobLocked', jobLocked);
-         self.set('jobLockedTitle', jobLocked && i18n.t('stonehearth_ace:ui.game.promotion_tree.job_locked') || '');
-         self._startingJob = o['stonehearth:job'].job_uri;
-         self._citizenJobData = o['stonehearth:job'].job_controllers;
-         self._citizenAllowedJobs = o['stonehearth:job'].allowed_jobs;
-         self.set('selectedJobAlias', self._startingJob);
-         self._updateTalismanData();
-         self.set('citizen', o);
-         self._citizenTrace.destroy();
-      })
-   },
 
    getParentJobs: function(jobDescription) {
       var self = this;
@@ -210,8 +168,9 @@ App.StonehearthPromotionTree.reopen({
       var job = alias && self._jobData && self._jobData[alias]
       return job && job.description && job.description.enabled;
    },
-   
+
    // Transform the job data map into a tree for use by D3.
+   // ACE: handle multiple job parents
    _buildTreeData: function() {
       var self = this;
 
@@ -270,6 +229,24 @@ App.StonehearthPromotionTree.reopen({
       return root;
    },
 
+   _buildTreeNode: function(node, job) {
+      if (job.description.enabled == "in-progress") {
+         job.description.set('name', "???");
+         job.description.set('display_name', "???"); // why does this turn into an ember object?
+         job.description.set('description', "???");
+         job.description.set('requirements', "???");
+         job.description.set('icon', "/stonehearth/jobs/unknown/images/icon.png");
+         job.available = false;
+      }
+
+      node.name = job.description.name;
+      node.description = job.description.description;
+      node.icon = job.description.icon;
+      node.alias = job.description.alias;
+      node.available = job.available;
+   },
+
+   // ACE: handle multiple job parents and base jobs other than worker
    _buildTree: function(treeData) {
       var self = this;
 
@@ -510,7 +487,98 @@ App.StonehearthPromotionTree.reopen({
       });
    },
 
-   // override to handle talisman uri arrays
+   // ACE: also trace the properties to track if the selected citizen has their job locked
+   _getCitizenData: function(jobData) {
+      var self = this;
+      var citizenId = this.get('citizen');
+
+      // Get the info for the citizen.
+      self._citizenTrace = new StonehearthDataTrace(citizenId, {
+         'stonehearth:job': {
+            'job_controllers': {
+               '*': {}
+            },
+            'allowed_jobs': {}
+         },
+         'stonehearth:unit_info': {},
+         'stonehearth:properties': {},
+      });
+
+      // Finally, build the tree.
+      self._citizenTrace.progress(function(o) {
+         if (self.isDestroyed || self.isDestroying) {
+            return;
+         }
+         var props = o['stonehearth:properties'];
+         var jobLocked = props && props.properties['job_locked'] || false;
+         self.set('jobLocked', jobLocked);
+         self.set('jobLockedTitle', jobLocked && i18n.t('stonehearth_ace:ui.game.promotion_tree.job_locked') || '');
+         self._startingJob = o['stonehearth:job'].job_uri;
+         self._citizenJobData = o['stonehearth:job'].job_controllers;
+         self._citizenAllowedJobs = o['stonehearth:job'].allowed_jobs;
+         self.set('selectedJobAlias', self._startingJob);
+         self._updateTalismanData();
+         self.set('citizen', o);
+         self._citizenTrace.destroy();
+      })
+   },
+
+   _getJobIndex: function() {
+      var self = this;
+      var citizen = self.get('citizen');
+		
+      var finishedGettingJobs = function (jobData) {
+         self._jobData = jobData.jobs;
+         if (jobData.base_job) {
+            self._baseWorkerJob = jobData.base_job;
+         }
+         self._getCitizenData();
+         //console.log("finished getting jobs");
+      };
+
+      var finishedGettingJobIndex = function (jobIndex) {
+         if (_cachedJobIndexes[jobIndex]) {
+            finishedGettingJobs(_cachedJobIndexes[jobIndex]);
+         }
+         else {
+            var components = {
+               "jobs": {
+                  "*": {
+                     "description": {}
+                  }
+               }
+            };
+            self._jobsTrace = new StonehearthDataTrace(jobIndex, components);
+            self._jobsTrace.progress(function(eobj) {
+               if (self.isDestroyed || self.isDestroying) {
+                  return;
+               }
+               self._jobsTrace.destroy();
+					_cachedJobIndexes[jobIndex] = eobj;
+               finishedGettingJobs(eobj);
+            });
+			}
+      }
+
+      var index = self.get('job_index');
+      if (index) {
+         finishedGettingJobIndex(index);
+      }
+      else {
+         radiant.call_obj('stonehearth.player', 'get_job_index', citizen)
+            .done(function(response){
+               if (self.isDestroyed || self.isDestroying) {
+                  return;
+               }
+               finishedGettingJobIndex(response.job_index);
+            })
+            .fail(function(response) {
+               console.error('error getting job index');
+            });
+      }
+   },
+
+   // ACE: override to handle talisman uri arrays
    _updateTalismanData: function() {
       var self = this;
 
@@ -579,6 +647,16 @@ App.StonehearthPromotionTree.reopen({
       }
    }.observes('inventory_data'),
 
+   _addHandlers: function() {
+      var self = this;
+
+      self.$('#approveStamper').click(function() {
+         self._animateStamper();
+         self._promote(self.get('selectedJobAlias'));
+      })
+   },
+
+   // ACE: handle multiple job parents and non-worker base job
    _updateUi: function(jobAlias) {
       var self = this;
       var jobEl = $(document.getElementById(jobAlias)); // use getElementById because jobAlias contains colons
@@ -710,32 +788,11 @@ App.StonehearthPromotionTree.reopen({
       //console.log('finished updating UI');
    },
 
-   // Go through the selected job and annotate the perk table accordingly
-   _updateJobPerks : function(jobAlias) {
-      var self = this;
-
-      // Hide all the divs before selectively showing the ones for the current job.
-      self.$('.jobData').hide();
-
-      radiant.each(self._jobData, function(alias, jobData) {
-         if (alias != self._baseWorkerJob && jobData.description.__self == jobAlias) {
-            var citizenJob = self._citizenJobData[alias];
-            var highestLvl = citizenJob ? citizenJob.last_gained_lv : -1;
-            var div = self.$("[uri='" + jobAlias + "']");
-            self._unlockPerksToLevel(div, highestLvl)
-            $(div).show();
-         }
-      });
-
-      // Make the job tooltips.
-      this._updateJobTooltips();
-   },
-
    // Call only with jobs whose talismans exist in the world
    // True if the current job is worker or has a parent that is the worker class
    // If there is a parent job and a required level of the parent job,
    // take that into consideration also
-   // also take into account multiple parent jobs
+   // ACE: handle multiple job parents and non-worker base job
    _calculateRequirementsMet: function(jobAlias) {
       var self = this;
 
@@ -801,4 +858,145 @@ App.StonehearthPromotionTree.reopen({
       return result != false && one_of != false;
    },
 
+   // Go through the selected job and annotate the perk table accordingly
+   // ACE: handle non-worker base job
+   _updateJobPerks : function(jobAlias) {
+      var self = this;
+
+      // Hide all the divs before selectively showing the ones for the current job.
+      self.$('.jobData').hide();
+
+      radiant.each(self._jobData, function(alias, jobData) {
+         if (alias != self._baseWorkerJob && jobData.description.__self == jobAlias) {
+            var citizenJob = self._citizenJobData[alias];
+            var highestLvl = citizenJob ? citizenJob.last_gained_lv : -1;
+            var div = self.$("[uri='" + jobAlias + "']");
+            self._unlockPerksToLevel(div, highestLvl)
+            $(div).show();
+         }
+      });
+
+      // Make the job tooltips.
+      this._updateJobTooltips();
+   },
+
+   // Given a perk div and target level, change the classes within to reflect the current level
+   _unlockPerksToLevel : function(target_div, target_level) {
+      $(target_div).find('.levelLabel').addClass('lvLabelLocked');
+      $(target_div).find('img').addClass('perkImgLocked');
+      for (var i = 0; i <= target_level; i++) {
+         $(target_div).find("[imgLevel='" + i + "']").removeClass('perkImgLocked').addClass('perkImgUnlocked');
+         $(target_div).find("[lbLevel='" + i + "']").removeClass('lvLabelLocked').addClass('lvLabelUnlocked');
+         $(target_div).find("[divLevel='" + i + "']").attr('locked', "false");
+      }
+   },
+
+   // Make tooltips for the perks
+   _updateJobTooltips : function() {
+      var self = this;
+      $('.tooltip').tooltipster();
+      $('.perkDiv').each(function(index) {
+         var perkName = $(this).attr('name');
+         var perkDescription = $(this).attr('description');
+         var tooltipString = '<div class="perkTooltip"> <h2>' + i18n.t(perkName);
+
+         // If we're locked then add the locked label.
+         if ($(this).attr('locked') == "true") {
+            tooltipString = tooltipString + '<span class="lockedTooltipLabel">' + i18n.t('stonehearth:ui.game.citizen_character_sheet.locked_status') + '</span>';
+         }
+
+         tooltipString = tooltipString + '</h2>'+ i18n.t(perkDescription) + '</div>';
+         $(this).tooltipster('content', $(tooltipString));
+      });
+   },
+
+   _promote: function(jobAlias) {
+      var self = this;
+
+      var jobInfo = self._jobData[jobAlias];
+
+      var citizen = this.get('citizen');
+      if (!citizen) return;
+      var talisman = jobInfo.description.talisman_uri;
+
+      radiant.call('stonehearth:grab_promotion_talisman', citizen.__self, jobAlias);
+   },
+
+   _animateStamper: function() {
+      var self = this;
+
+      radiant.call('radiant:play_sound', {
+         'track': 'stonehearth:sounds:ui:promotion_menu:stamp'
+      });
+
+      // animate down
+      self.$('#approveStamper').animate({
+         bottom: 20
+      }, 130, function() {
+         var approveStamper = self.$('#approvedStamp');
+         if (!approveStamper) {
+            // If approve stamper doesn't exist here, we might already have been destroyed.
+            return;
+         }
+         self.$('#approvedStamp').show();
+         //animate up
+         $(this)
+            .delay(200)
+            .animate({
+               bottom: 200
+            }, 150, function() {
+               // close the wizard after a short delay
+               setTimeout(function() {
+                  self.invokeDestroy();
+               }, 600);
+            });
+      });
+   },
+
+   dateString: function() {
+      var dateObject = App.gameView.getDateTime();
+      var od = this.ordinalSuffixOf(dateObject.day)
+      var dateLocalized = i18n.t('stonehearth:ui.game.calendar.date_format_long_ordinal',
+         {ord_day: od, date: dateObject});
+
+      return dateLocalized;
+   },
+
+   destroy: function() {
+      radiant.call('radiant:play_sound', {
+         'track': 'stonehearth:sounds:ui:start_menu:page_down'
+      });
+
+      if (this._jobsTrace) {
+         this._jobsTrace.destroy();
+      }
+
+      if (this._citizenTrace) {
+         this._citizenTrace.destroy();
+      }
+
+      if (this._playerInventoryTrace) {
+         this._playerInventoryTrace.destroy();
+      }
+
+      App.stonehearth.promotionTreeView = null;
+
+      this._super();
+   },
+
 });
+
+function ordinalSuffixOf(d) {
+    var d1 = d % 10,
+        d2 = d % 100;
+    if (d1 == 1 && d2 != 11) {
+        return d + "st";
+    }
+    if (d1 == 2 && d2 != 12) {
+        return d + "nd";
+    }
+    if (d1 == 3 && d2 != 13) {
+        return d + "rd";
+    }
+    return d + "th";
+}

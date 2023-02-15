@@ -601,8 +601,9 @@ var StonehearthClient;
       },
 
       select_combat_party: function(party_id) {
-         if (this._partyEditor != null && !this._partyEditor.isDestroyed && !this._partyEditor.isDestroying) {
-            App.stonehearthClient.hidePartyEditor();
+         var self = this;
+         if (self._partyEditor != null && !self._partyEditor.isDestroyed && !self._partyEditor.isDestroying) {
+            self.hidePartyEditor();
          }
          radiant.call_obj('stonehearth.party_editor', 'select_party_by_population_name', party_id);
       },
@@ -1167,6 +1168,7 @@ var StonehearthClient;
          radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:small_click' });
       },
 
+      // ACE: added various functions, mostly triggered through the start menu
       showMercantileView: function(hideOnCreate) {
          // toggle the mercantile view
          var self = this;
@@ -1181,6 +1183,209 @@ var StonehearthClient;
                self._mercantileView.show();
             }
          }
+      },
+
+      boxHarvestAndReplant: function() {
+         var self = this;
+   
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.harvest_menu.items.harvest_and_replant.tip_title',
+               'stonehearth_ace:ui.game.menu.harvest_menu.items.harvest_and_replant.tip_description', {i18n : true});
+   
+         return self._callTool('boxHarvestAndReplant', function() {
+            return radiant.call('stonehearth_ace:box_harvest_and_replant_resources')
+               .done(function(response) {
+                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
+                  self.boxHarvestAndReplant();
+               })
+               .fail(function(response) {
+                  self.hideTip(tip);
+               });
+         });
+      },
+   
+      boxMove: function() {
+         var self = this;
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.harvest_menu.items.box_move.tip_title',
+               'stonehearth_ace:ui.game.menu.harvest_menu.items.box_move.tip_description', {i18n : true});
+   
+         return self._callTool('boxMove', function() {
+            return radiant.call('stonehearth_ace:box_move')
+               .done(function(response) {
+                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
+                  self.boxMove();
+               })
+               .fail(function(response) {
+                  self.hideTip(tip);
+               });
+         });
+      },
+   
+      boxUndeploy: function() {
+         var self = this;
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.harvest_menu.items.box_undeploy.tip_title',
+               'stonehearth_ace:ui.game.menu.harvest_menu.items.box_undeploy.tip_description', {i18n : true});
+   
+         return self._callTool('boxUndeploy', function() {
+            return radiant.call('stonehearth_ace:box_undeploy')
+               .done(function(response) {
+                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
+                  self.boxUndeploy();
+               })
+               .fail(function(response) {
+                  self.hideTip(tip);
+               });
+         });
+      },
+   
+      boxCancelPlacement: function() {
+         var self = this;
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.harvest_menu.items.box_cancel_placement.tip_title',
+               'stonehearth_ace:ui.game.menu.harvest_menu.items.box_cancel_placement.tip_description', {i18n : true});
+   
+         return self._callTool('boxCancelPlacement', function() {
+            return radiant.call('stonehearth_ace:box_cancel_placement')
+               .done(function(response) {
+                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
+                  self.boxCancelPlacement();
+               })
+               .fail(function(response) {
+                  self.hideTip(tip);
+               });
+         });
+      },
+   
+      boxEnableAutoHarvest: function() {
+         var self = this;
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.harvest_menu.items.box_enable_auto_harvest.tip_title',
+               'stonehearth_ace:ui.game.menu.harvest_menu.items.box_enable_auto_harvest.tip_description', {i18n : true});
+   
+         return self._callTool('boxEnableAutoHarvest', function() {
+            return radiant.call('stonehearth_ace:box_enable_auto_harvest')
+               .done(function(response) {
+                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
+                  self.boxEnableAutoHarvest();
+               })
+               .fail(function(response) {
+                  self.hideTip(tip);
+               });
+         });
+      },
+   
+      boxDisableAutoHarvest: function() {
+         var self = this;
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.harvest_menu.items.box_disable_auto_harvest.tip_title',
+               'stonehearth_ace:ui.game.menu.harvest_menu.items.box_disable_auto_harvest.tip_description', {i18n : true});
+   
+         return self._callTool('boxDisableAutoHarvest', function() {
+            return radiant.call('stonehearth_ace:box_disable_auto_harvest')
+               .done(function(response) {
+                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
+                  self.boxDisableAutoHarvest();
+               })
+               .fail(function(response) {
+                  self.hideTip(tip);
+               });
+         });
+      },
+   
+      boxHunt: function() {
+         var self = this;
+   
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.harvest_menu.items.box_hunt.tip_title',
+               'stonehearth_ace:ui.game.menu.harvest_menu.items.box_hunt.tip_description', {i18n : true});
+   
+         return self._callTool('boxHunt', function() {
+            return radiant.call('stonehearth_ace:box_hunt')
+               .done(function(response) {
+                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
+                  self.boxHunt();
+               })
+               .fail(function(response) {
+                  self.hideTip(tip);
+               });
+         });
+      },
+   
+      buildWell: function() {
+         var self = this;
+   
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.build_menu.items.build_well.tip_title', 'stonehearth_ace:ui.game.menu.build_menu.items.build_well.tip_description',
+            {i18n: true});
+   
+         App.setGameMode('place');
+         return self._callTool('buildWell', function() {
+            return radiant.call('stonehearth_ace:place_buildable_entity', 'stonehearth_ace:construction:simple:water_well_ghost')
+               .done(function(response) {
+                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
+                  self.buildWell();
+               })
+               .fail(function(response) {
+                  self.hideTip(tip);
+               });
+         });
+      },
+   
+      buildFence: function() {
+         var self = this;
+   
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.build_menu.items.build_fence.tip_title', 'stonehearth_ace:ui.game.menu.build_menu.items.build_fence.tip_description',
+            {i18n: true});
+   
+         //App.setGameMode('fence');
+         //self.showBuildFenceView();
+         return self._callTool('buildFence', function() {
+            // TODO: make fence pieces customizable
+            var fencePieces = [
+               'stonehearth:construction:picket_fence:end',
+               'stonehearth:construction:picket_fence:bar:single',
+               'stonehearth:construction:picket_fence:bar:double'
+            ];
+            return radiant.call('stonehearth_ace:choose_fence_location_command', fencePieces)
+               .done(function(response) {
+                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
+                  self.buildFence();
+               })
+               .fail(function(response) {
+                  self.hideTip(tip);
+               });
+         });
+      },
+   
+      boxForage: function() {
+         var self = this;
+   
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.harvest_menu.items.box_forage.tip_title',
+               'stonehearth_ace:ui.game.menu.harvest_menu.items.box_forage.tip_description', {i18n : true});
+   
+         return self._callTool('boxForage', function() {
+            return radiant.call('stonehearth_ace:box_forage')
+               .done(function(response) {
+                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:popup'} );
+                  self.boxForage();
+               })
+               .fail(function(response) {
+                  self.hideTip(tip);
+               });
+         });
+      },
+   
+      buildFishTrap: function() {
+         var self = this;
+   
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.build_menu.items.build_well.tip_title', 'stonehearth_ace:ui.game.menu.build_menu.items.build_well.tip_description',
+            {i18n: true});
+   
+         App.setGameMode('place');
+         return self._callTool('buildFishTrap', function() {
+            return radiant.call('stonehearth_ace:place_buildable_entity', 'stonehearth_ace:trapper:fish_trap_anchor_ghost')
+               .done(function(response) {
+                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
+                  self.buildFishTrap();
+               })
+               .fail(function(response) {
+                  self.hideTip(tip);
+               });
+         });
       }
    });
    App.stonehearthClient = new StonehearthClient();

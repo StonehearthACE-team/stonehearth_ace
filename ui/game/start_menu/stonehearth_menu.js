@@ -1,4 +1,34 @@
-$.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
+$.widget( "stonehearth.stonehearthMenu", {
+
+   _dataToMenuItemMap: {},
+   _foundjobs: {},
+
+   options: {
+      // callbacks
+      data: {},
+
+      click: function(item) {
+         // console.log('Clicked item: ' + item);
+      },
+
+      hide: function() {
+         // console.log('menu hidden');
+      }
+   },
+
+   hideMenu: function() {
+      //this.menu.find('.menuItemGroup').hide();
+      this.showMenu(null);
+      if (this.options.hide) {
+         this.options.hide();
+      }
+      this._currentOpenMenu = null;
+   },
+
+   getMenu: function() {
+      return this._currentOpenMenu;
+   },
+
    showMenu: function(id) {
       this.menu.find('.menuItemGroup').on('webkitAnimationEnd', function(e) {
          var el = $(e.target);
@@ -37,6 +67,90 @@ $.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
       //    id: id,
       //    nodeData: nodeData
       // });
+   },
+
+   /*
+   setGameMode: function(mode) {
+      if (mode == "normal" && this.getGameMode() != "normal") {
+         this.hideMenu();
+         return;
+      }
+
+      if (this.getGameMode() == mode ) {
+         return;
+      }
+
+      var self = this;
+      $.each(this._dataToMenuItemMap, function(key, node) {
+         if (node.game_mode == mode) {
+
+            if (self._currentOpenMenu != key) {
+               self.showMenu(key);
+            }
+         }
+      });
+   },
+   */
+
+   getOpenMenu: function() {
+      return this._currentOpenMenu;
+   },
+
+   getGameMode: function() {
+      if (this._currentOpenMenu) {
+         return this._dataToMenuItemMap[this._currentOpenMenu].game_mode
+      } else {
+         return null;
+      }
+   },
+
+   lockAllItems: function() {
+      var self = this;
+      var item = this.element.find('.unlockable');
+      if (item.length > 0) {
+         item.addClass('locked');
+         item.each(function() {
+            self._buildTooltip($(this));
+         });
+      }
+   },
+
+   unlockItem: function(attributeName, attributeValue) {
+      var self = this;
+      var item = this.element.find('[' + attributeName + '=' + attributeValue + ']');
+      if (item.length > 0) {
+         item.removeClass('locked');
+         item.each(function() {
+            self._buildTooltip($(this));
+         });
+         if (item.attr('menu_action') == 'show_crafter_ui') {
+            App.workshopManager.createWorkshop(attributeValue.replace(/\\:/g, ':'));
+         }
+      }
+   },
+
+   unlock: function(jobAlias) {
+      var self = this;
+      var alias = jobAlias.split(":").join('\\:');
+      var item = this.element.find('[job=' + alias + ']');
+      if (item.length > 0) {
+         item.removeClass('locked');
+         item.each(function() {
+            self._buildTooltip($(this));
+         });
+      }
+   },
+
+   setWarning: function(findString, warning_text) {
+      var self = this;
+      var items = this.element.find(findString);
+      if (items.length > 0) {
+         items.each(function() {
+            var item = $(this);
+            item.warning_text = warning_text;
+            self._buildTooltip(item);
+         });
+      }
    },
 
    _create: function() {
@@ -148,7 +262,8 @@ $.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
       });
       */
    },
-   
+
+   // ACE: added ordinal sorting to nodes and required_ability option for locking
    _addItems: function(nodes, parentId, name, depth, parent) {
       if (!nodes) {
          return;
@@ -265,6 +380,20 @@ $.widget( "stonehearth.stonehearthMenu", $.stonehearth.stonehearthMenu, {
                    .addClass('header')
                    .appendTo(el);
       }
+   },
+
+   _buildTooltip: function(item) {
+      var node = this._dataToMenuItemMap[item.attr('id')];
+
+      var description = i18n.t(node.description);
+      if (node.required_job_text && item.hasClass('locked')) {
+         description = description + '<span class=warn>' + i18n.t(node.required_job_text) + '</span>';
+      };
+      if (item.warning_text) {
+         description = description + '<span class=warn>' + i18n.t(item.warning_text) + '</span>';
+      };
+
+      App.hotkeyManager.makeTooltipWithHotkeys(item, node.name, description);
    },
 
    _applyGameMode: function(node, enable = true) {
