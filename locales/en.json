@@ -4769,6 +4769,10 @@
             "prepare_pottage": {
                "display_name": "Prepare Pottage",
                "description": "Order someone to add any lower grade fuel and some Broth to begin preparing tasty pottage!<br><br>The pottage can be improved by adding different ingredients after it's started: vegetables, meat, grains... Each level will provide a better food serving!<br><br>When all the servings of a certain level run out, the pottage will go back to the previous level instead of getting empty! It will only go empty again if the first (or last) levels are completely consumed!"
+            },
+            "embark_wagon_harvest": {
+               "display_name": "Dismantle",
+               "description": "Order this object to be dismantled. Some of the materials will be recovered!"
             }
          },
          "slaughter": {
@@ -7561,6 +7565,11 @@
             "water_pump_recipe": {
                "recipe_name": "Copper Water Pump",
                "description": "Make a pump that will take fluids from the placement level to be released on its upper shaft.",
+               "flavor": "You can stack up pumps to get water higher and higher!"
+            },
+            "water_pump_steel_recipe": {
+               "recipe_name": "Steel Water Pump",
+               "description": "Make a pump for transferring fluids. Steel Water Pumps can extend much longer pipes than a Copper Water Pump!",
                "flavor": "You can stack up pumps to get water higher and higher!"
             },
             "water_gate_greater_recipe": {
@@ -15750,6 +15759,10 @@
          "amberstone_bed_pet": {
             "description": "Allows pets a more comfortable sleep. They like it close to their owner's bed!",
             "display_name": "Woven Pet Bed"
+         },
+         "water_pump_steel": {
+            "display_name": "Steel Water Pump",
+            "description": "It will take fluids from the placement level to be released on its upper shaft. "
          }
       },
       "recipes": {
@@ -17274,7 +17287,7 @@
             "description": "An ancient testament to the power a community has to nurture and thrive.",
             "static_component_info": {
                "description": "<p style='text-align:center;color:white;'>This beautiful monument is dedicated to the great community behind Stonehearth and to those that have supported the ACE project!<br><br>Below is a permanent list of all the kind donors, ordered by membership tier, then total amount and finally date. This list will be updated whenever a new release is out!</p>",
-               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>Yunoh<br>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<br>Doris<br>Vyrael<br>ZeroTronix<br>Anna_Ankiemankie<br>Lazuli<br>Sayptie<br>Elfonnzo<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>AnonymousFriendo<br>Joy144SK<br>Orlondok<hr><p style='text-align:center'>...and everyone else!<p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Dayison<br>Coolcup5<br>ghostcrap<br>thatpenguinstar<br>Croxo<br>Fran Tremblay<br>Alex Kay<br>TRG<br>shimizu & jontaro<br><br>Thanks to all the anonymous supporters as well!</p>"
+               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>Yunoh<br>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<br>Doris<br>Vyrael<br>ZeroTronix<br>Anna_Ankiemankie<br>Lazuli<br>Sayptie<br>Elfonnzo<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>AnonymousFriendo<br>Joy144SK<br>Orlondok<hr><p style='text-align:center'>...and everyone else!<p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Dayison<br>Coolcup5<br>ghostcrap<br>thatpenguinstar<br>Croxo<br>Fran Tremblay<br>Alex Kay<br>TRG<br>shimizu & jontaro<br>Telunar<br><br>Thanks to all the anonymous supporters as well!</p>"
             }
          },
          "craftsman_statue": {

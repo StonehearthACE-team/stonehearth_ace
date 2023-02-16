@@ -1,10 +1,10 @@
 {
    "type": "entity",
-   "mixins": "file(water_pump_ghost.json)",
+   "mixins": "file(water_pump_steel_ghost.json)",
    "components": {
       "stonehearth:entity_forms": {
-         "iconic_form": "file(water_pump_iconic.json)",
-         "ghost_form": "file(water_pump_ghost.json)",
+         "iconic_form": "file(water_pump_steel_iconic.json)",
+         "ghost_form": "file(water_pump_steel_ghost.json)",
          "ignore_placement_rotation": true,
          "placeable_on_ground": true,
          "placeable_on_walls": true
@@ -31,7 +31,7 @@
          "capacity": 10
       },
       "stonehearth_ace:water_pump": {
-         "max_length": 6,
+         "max_length": 12,
          "matrix": "pipe",
          "rotations": [
             {
@@ -113,15 +113,15 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 75,
-         "rarity": "common",
+         "value_in_gold": 121,
+         "rarity": "uncommon",
          "shop_info": {
             "buyable": false,
             "sellable": true
          }
       },
       "stonehearth:appeal": {
-         "appeal": 6
+         "appeal": 9
       },
       "stonehearth:item_quality": {
          "variable_quality": true
