@@ -10,6 +10,19 @@
          "ghost_form": "file(counter_shop_clay_mid_ghost.json)",
          "placeable_on_ground": true
       },
+      "stonehearth:storage": {
+         "type": "input_crate",
+         "capacity": 8,
+         "render_contents": true,
+         "filter_list": "stonehearth_ace:ui:counter:filters",
+         "is_single_filter": false
+      },
+      "render_info": {
+         "animation_table": "file(/data/rigs/entities/containers/counter_shop/mid_display/counter_shop_mid_display.json)"
+      },
+      "effect_list": {
+         "default": "file(/data/rigs/entities/containers/counter_shop/mid_display/effects/idle.json)"
+      },
       "stonehearth_ace:transform": {}
    },
    "entity_data": {
@@ -25,6 +38,7 @@
                "transforming_worker_effect_times": 1,
                "transform_effect": "stonehearth:effects:item_created",
                "auto_request": false,
+               "dump_storage": true,
                "worker_required_job": {
                   "stonehearth:jobs:worker": true,
                   "stonehearth:jobs:weaver": true,
@@ -41,6 +55,7 @@
                "transforming_worker_effect_times": 1,
                "transform_effect": "stonehearth:effects:item_created",
                "auto_request": false,
+               "dump_storage": true,
                "worker_required_job": {
                   "stonehearth:jobs:worker": true,
                   "stonehearth:jobs:weaver": true,

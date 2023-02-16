@@ -1,0 +1,117 @@
+{
+   "mixins": "stonehearth_ace:ui:all_input:filters",
+   "stockpile": {
+      "mixintypes": {
+         "resources": "remove",
+         "fuels": "remove",
+         "ore": "remove",
+         "ingots": "remove",
+         "animal_parts": "remove",
+         "plants": "remove",
+         "dyes": "remove",
+         "cloth": "remove",
+         "healing_items": "remove",
+         "fertilizers": "remove",
+         "baking": "remove",
+         "brewing_ingredients": "remove",
+         "animal_food": "remove",
+         "dry_goods": "remove",
+         "raw_foods": "remove",
+         "raw_drinks": "remove",
+         "prepared_drinks": "remove",
+         "cooking_ingredients": "remove",
+         "fluids": "remove"
+      },
+      "cooked_food": {
+         "ordinal": 1
+      },
+      "drinks": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_drink)",
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/drink.png",
+         "filter": "drink_container",
+         "ordinal": 2,
+         "categories": {
+            "milk": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.drink_container_milk_name)",
+               "icon": "/stonehearth_ace/entities/drink/milk_resource.png",
+               "filter": "drink_container milk"
+            },
+            "juice": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.drink_container_juice_name)",
+               "icon": "/stonehearth_ace/entities/drink/juice_resource.png",
+               "filter": "drink_container juice"
+            },
+            "refreshing": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.drink_container_refreshing_name)",
+               "icon": "/stonehearth_ace/entities/drink/refreshing_resource.png",
+               "filter": "drink_container refreshing"
+            },
+            "mead": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.drink_container_mead_name)",
+               "icon": "/stonehearth_ace/entities/drink/mead_resource.png",
+               "filter": "drink_container mead"
+            },
+            "beer_or_ale": {
+               "ordinal": 5,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.drink_container_beer_or_ale_name)",
+               "icon": "/stonehearth_ace/entities/drink/beer_or_ale_resource.png",
+               "filter": "drink_container beer_or_ale"
+            },
+            "wine": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.drink_container_wine_name)",
+               "icon": "/stonehearth_ace/entities/drink/wine_resource.png",
+               "filter": "drink_container wine"
+            },
+            "spirit": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.drink_container_spirit_name)",
+               "icon": "/stonehearth_ace/entities/drink/spirit_resource.png",
+               "filter": "drink_container spirit"
+            },
+            "tea": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.drink_container_tea_name)",
+               "icon": "/stonehearth_ace/entities/drink/tea_resource.png",
+               "filter": "drink_container tea"
+            },
+            "coffee": {
+               "ordinal": 9,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.drink_container_coffee_name)",
+               "icon": "/stonehearth_ace/entities/drink/coffee_resource.png",
+               "filter": "drink_container coffee"
+            },
+            "festival": {
+               "ordinal": 99,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.drink_container_festival_name)",
+               "icon": "/stonehearth_ace/entities/drink/festival_resource.png",
+               "filter": "drink_container festival"
+            }
+         }
+      },
+      "potions": {
+         "ordinal": 4,
+         "categories": {
+            "mixintypes": {
+               "healing_tonic_small": "remove",
+               "healing_tonic": "remove",
+               "hearth_healing_tonic": "remove",
+               "potion_healing_small": "remove",
+               "potion_healing_large": "remove",
+               "potion_healing_hearth": "remove",
+               "potion_antidote_small": "remove",
+               "potion_antidote_large": "remove",
+               "potion_antidote_strong": "remove",
+               "potion_anti_toxin_small": "remove",
+               "potion_anti_toxin_large": "remove",
+               "potion_anti_toxin_strong": "remove",
+               "potion_last_stand": "remove"
+            }
+         }
+      }
+   }
+}
