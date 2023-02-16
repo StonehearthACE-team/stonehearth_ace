@@ -117,7 +117,9 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
 		-- If the transformed entity is a storage, transfer the contents (regardless of capacity)
 		local storage_component = entity:get_component('stonehearth:storage')
 		if storage_component then 
-         if not options.dump_storage then
+         if options.dump_storage then
+            storage_component:drop_all(location)
+         else
             local transformed_storage_component = transformed_form:get_component('stonehearth:storage')			
             if transformed_storage_component then
                -- apply the same storage filter on the transformed entity
@@ -134,8 +136,6 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
                   end
                end
             end
-         else
-            storage_component:drop_all()
          end
 		end
 
