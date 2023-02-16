@@ -238,6 +238,32 @@ function AceJobInfoController:manually_unlock_all_crops()
    return true
 end
 
+--- Build the list sent to the UI from the json
+--  Load each recipe's data and add it to the table
+-- ACE: also set the category
+function AceJobInfoController:_build_craftable_recipe_list(recipe_index_url)
+   -- Note: this recipe list is recreated everytime we load the game.
+   -- The reason it's in _sv is so we can easily send the recipe data to the client.
+   self._sv.recipe_list = radiant.deep_copy(radiant.resources.load_json(recipe_index_url).craftable_recipes)
+
+   for category, category_data in pairs(self._sv.recipe_list) do
+      if category_data.recipes then
+         for recipe_short_key, recipe_data in pairs(category_data.recipes) do
+            local recipe_key = category .. ":" .. recipe_short_key
+            if recipe_data.recipe == "" then
+               --we've lost the recipe, for example, because it's been overridden by a mod
+               self._sv.recipe_list[category].recipes[recipe_short_key] = nil
+            else
+               recipe_data.recipe = radiant.deep_copy(radiant.resources.load_json(recipe_data.recipe))
+               self:_initialize_recipe_data(recipe_key, recipe_data.recipe)
+               recipe_data.recipe.category = category
+            end
+         end
+      end
+   end
+   self.__saved_variables:mark_changed()
+end
+
 -- Prep the recipe data with any default values
 function AceJobInfoController:_initialize_recipe_data(recipe_key, recipe_data)
    self._all_recipes[recipe_key] = recipe_data

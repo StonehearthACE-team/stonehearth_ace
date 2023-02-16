@@ -497,7 +497,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             }
 
             formatted_recipe.is_craftable = self._areRequirementsMet(formatted_recipe, highestLevel) ? 1 : 0;
-            formatted_recipe.category = category_id;
+            //formatted_recipe.category = category_id;
             
             recipe_array.push(formatted_recipe);
             self.allRecipes[formatted_recipe.recipe_key] = formatted_recipe;
