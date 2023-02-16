@@ -335,7 +335,14 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       if (search) {
          radiant.each(self._itemElements, function(uri, elements) {
             var catalogData = App.catalog.getCatalogData(uri);
-            var tags = (catalogData.materials || []).slice();
+            // need to handle tags that are a single string instead of an array
+            var tags = catalogData.materials;
+            if (typeof tags === 'string') {
+               tags = tags.split(' ');
+            }
+            else {
+               tags = (tags || []).slice();
+            }
             tags.push(i18n.t(catalogData.display_name).toLowerCase());
             tags.push(i18n.t(catalogData.description).toLowerCase());
             radiant.each(elements, function(quality, $el) {

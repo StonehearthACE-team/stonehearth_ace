@@ -9,7 +9,6 @@ local BaseJob = class()
 
 function BaseJob:initialize()
    self._sv._entity = nil
-   self._sv._alias = nil
    self._sv.json_path = nil
    self._sv.last_gained_lv = 1
    self._sv.is_current_class = false
@@ -495,6 +494,13 @@ end
 function BaseJob:set_crafting_category_disabled(category, disabled)
    self._sv.disabled_crafting_categories[category] = (disabled ~= false) or nil
    self.__saved_variables:mark_changed()
+
+   -- if we are in fact a crafter, make sure we tell the list to reconsider which orders are craftable
+   local job_info = self._job_component:get_job_info()
+   local order_list = job_info and job_info:get_order_list()
+   if order_list then
+      order_list:reconsider_category(category)
+   end
 end
 
 function BaseJob:get_medic_capabilities()
@@ -538,7 +544,7 @@ function BaseJob:get_can_repair_as_jobs()
 end
 
 function BaseJob:can_repair_as_job(job_uri)
-   return job_uri == self._sv._alias or self._sv._can_repair_as_jobs[job_uri]
+   return job_uri == self._job_json.alias or self._sv._can_repair_as_jobs[job_uri]
 end
 
 function BaseJob:can_repair_as_any_job()

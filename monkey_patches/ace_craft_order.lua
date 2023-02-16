@@ -185,7 +185,7 @@ function AceCraftOrder:set_crafting_status(crafter, is_crafting)
    self:_on_changed()
 end
 
-function CraftOrder:is_missing_ingredient(ingredients)
+function AceCraftOrder:is_missing_ingredient(ingredients)
    -- these ingredients still maintain the old counts but are separated out
    -- need to count them up
    -- TODO: integrate this into the ingredient_list controller
@@ -357,7 +357,7 @@ end
    order, return false.
    returns: true if conditions are not yet met, false if conditions are met
 ]]
-function CraftOrder:should_execute_order(crafter)
+function AceCraftOrder:should_execute_order(crafter)
    --If the crafter is not appropriately leveled, return false
    local job_component = crafter:get_component('stonehearth:job')
    local job_level = job_component:get_current_job_level()
@@ -530,7 +530,7 @@ function AceCraftOrder:remove_associated_order(remove_children)
 
       -- finally search associated orders for this order and remove it
       for i, order in ipairs(associated_orders) do
-         if order.order == self then
+         if order.order:get_id() == self:get_id() then
             table.remove(associated_orders, i)
             break
          end

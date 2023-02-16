@@ -147,7 +147,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
          end
       end
 
-      table.insert(associated_orders, {order_list = self, order = result})
+      table.insert(associated_orders, {order = result})
       result:set_associated_orders(associated_orders)
    end
 
@@ -251,7 +251,7 @@ function AceCraftOrderList:delete_order_command(session, response, order_id, del
             if associated_orders then
                -- also remove any associated orders
                for _, associated_order in ipairs(associated_orders) do
-                  if order_id ~= associated_order.order_id then
+                  if order_id ~= associated_order.order:get_id() then
                      associated_order.order:get_order_list():delete_order_command(session, response, associated_order.order:get_id())
                   end
                end
@@ -421,6 +421,17 @@ function AceCraftOrderList:get_next_order(crafter)
                              function() radiant.events.trigger(self, 'stonehearth:order_list_changed') end)
       end
    end
+end
+
+function AceCraftOrderList:reconsider_category(category)
+   for _, order in ipairs(self._sv.orders) do
+      local order_category = order:get_recipe().category
+      if order_category == category then
+         self._stuck_orders[order:get_id()] = nil
+      end
+   end
+
+   self:_on_inventory_changed()
 end
 
 function AceCraftOrderList:remove_craft_orders_for_building(bid)
