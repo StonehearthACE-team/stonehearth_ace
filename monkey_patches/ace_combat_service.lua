@@ -44,7 +44,7 @@ AceCombatService._ace_old__calculate_damage = CombatService._calculate_damage
 function AceCombatService:_calculate_damage(attacker, target, attack_info, base_damage_name)
    local damage = self:_ace_old__calculate_damage(attacker, target, attack_info, base_damage_name)
 
-   if stonehearth.combat:is_killable_target_of_type(target, 'siege') then
+   if self:is_killable_target_of_type(target, 'siege') then
       local ec = attacker:get_component('stonehearth:equipment')
       if ec and ec:has_item_type('stonehearth_ace:abilities:basic_door_breaker_abilities') then
          damage = math.max(1, damage * BASIC_SIEGE_DAMAGE)
@@ -312,7 +312,7 @@ end
 -- ACE: include attacker with the debuffs
 function AceCombatService:inflict_debuffs(attacker, target, attack_info)
    local inflictable_debuffs = self:get_inflictable_debuffs(attacker, attack_info)
-   stonehearth.combat:try_inflict_debuffs(target, inflictable_debuffs, attacker)
+   self:try_inflict_debuffs(target, inflictable_debuffs, attacker)
 end
 
 -- Adds resistance to wounds

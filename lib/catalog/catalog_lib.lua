@@ -402,6 +402,10 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
       end
    end
 
+   if not catalog_data.materials then
+      log:error('%s has no materials', full_alias)
+   end
+
    result.catalog_data = catalog_data
    return result
 end

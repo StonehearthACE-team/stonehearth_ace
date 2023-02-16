@@ -209,6 +209,7 @@ local monkey_patches = {
    ace_trapping_grounds_component = 'stonehearth.components.trapping.trapping_grounds_component',
    ace_trapping_service = 'stonehearth.services.server.trapping.trapping_service',
    ace_traveler_component = 'stonehearth.components.traveler.traveler_component',
+   ace_trivial_death_component = 'stonehearth.components.incapacitation.trivial_death_component',
    ace_unit_info_component = 'stonehearth.components.unit_info.unit_info_component',
    ace_unit_wait_at_location_action = 'stonehearth.ai.actions.unit_control.unit_wait_at_location_action',
    ace_unlock_recipe_encounter = 'stonehearth.services.server.game_master.controllers.encounters.unlock_recipe_encounter',

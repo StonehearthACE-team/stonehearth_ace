@@ -537,7 +537,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       var stackCount = 0;
       if (item.items) {
          radiant.each(item.items, function(id, individualItem) {
-            var stacksComponent = individualItem['stonehearth:stacks'];
+            var stacksComponent = individualItem && individualItem['stonehearth:stacks'];
             if (stacksComponent && stacksComponent.stacks) {
               stackCount += stacksComponent.stacks;
             }
