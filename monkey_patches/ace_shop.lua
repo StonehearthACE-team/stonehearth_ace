@@ -1,4 +1,5 @@
 local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local PopulationFaction = require 'stonehearth.services.server.population.population_faction'
 
 local Shop = require 'stonehearth.services.server.shop.shop'
@@ -416,7 +417,10 @@ end
       local item = radiant.entities.create_entity(uri, { owner = self._sv.player_id })
       if quality > 1 then
          local author = self:_get_quality_item_author()
-         item:add_component('stonehearth:item_quality'):initialize_quality(quality, author, 'place')
+         item_quality_lib.apply_quality(item, quality, {
+            author = author,
+            author_type = 'place',
+         })
       end
       local root, iconic = entity_forms.get_forms(item)
       item = iconic or root or item
