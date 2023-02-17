@@ -36,7 +36,8 @@ AceDeliveryQuest._ace_old_start = DeliveryQuest.start
 function AceDeliveryQuest:start(ctx, info)
    self:_ace_old_start(ctx, info)
 
-   if stonehearth.client_state:get_client_gameplay_setting(ctx.player_id, 'stonehearth_ace', 'use_quest_storage', true) then
+   local use_quest_storage = self._sv._info.use_quest_storage or true
+   if stonehearth.client_state:get_client_gameplay_setting(ctx.player_id, 'stonehearth_ace', 'use_quest_storage', true) and not use_quest_storage then
       local item_requirements = self:_get_item_requirements()
       if #item_requirements < 1 then
          -- no item requirements? no need for quest storage
@@ -162,13 +163,23 @@ function AceDeliveryQuest:_check_requirements()
             all_satisfied = false
          end
       elseif requirement.type == 'placed_item' then
+         local count = 0
          local found = false
          local inventory = stonehearth.inventory:get_inventory(self._sv.ctx.player_id)
          local matching = inventory and inventory:get_items_of_type(requirement.uri)
          for _, entity in pairs(matching and matching.items or {}) do
             if radiant.entities.exists_in_world(entity) then
-               found = true
-               break
+               -- ACE: adding support for multiple placed objects
+               if requirement.count then
+                  count = count + 1
+                  if count >= requirement.count then
+                     found = true
+                     break
+                  end
+               else
+                  found = true
+                  break
+               end
             end
          end
 

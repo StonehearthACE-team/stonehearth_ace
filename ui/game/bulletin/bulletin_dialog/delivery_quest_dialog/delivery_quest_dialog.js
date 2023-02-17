@@ -170,11 +170,11 @@ App.StonehearthDeliveryQuestBulletinDialog = App.StonehearthBaseBulletinDialog.e
             formatted.available_count = self.get('netWorth') || 0;
             formatted.fulfilled = formatted.available_count >= v.value;
          } else if (v.type == 'placed_item') {
-            formatted.count = 1;
+            formatted.count = v.count || 1;
             formatted.display_name = i18n.t('stonehearth:ui.game.bulletin.delivery_quest.placed_item_label', { itemName: App.catalog.getCatalogData(v.uri).display_name });
             formatted.icon = '/stonehearth/ui/game/bulletin/bulletin_dialog/delivery_quest_dialog/images/placed.png';
             formatted.available_count = (self.get('placedItemCounts') || {})[v.uri] || 0;
-            formatted.fulfilled = formatted.available_count > 0;
+            formatted.fulfilled = formatted.available_count >= v.count || 1;
          }
          requirementsArray.push(formatted);
       });
