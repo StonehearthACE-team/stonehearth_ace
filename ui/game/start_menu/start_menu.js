@@ -110,7 +110,7 @@ App.StonehearthStartMenuView = App.View.extend({
       mercantile_view: function(){
          App.stonehearthClient.showMercantileView();
       },
-      sbox_harvest_and_replant: function(){
+      box_harvest_and_replant: function(){
          App.stonehearthClient.boxHarvestAndReplant();
       },
       box_move: function(){
