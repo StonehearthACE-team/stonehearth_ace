@@ -207,7 +207,7 @@ end
 
 -- ACE: amount is an optional parameter that refers to the amount of primary products, not the quantity of recipes
 -- e.g., if a recipe would produce 4 fence posts and you have 2 of the recipe queued, reducing by 1 alone would not change anything
-function AceCraftOrderList:remove_order(order_id, amount)
+function AceCraftOrderList:remove_order(order_id, amount, remove_associated)
    log:debug('remove_order(%s, %s)', order_id, tostring(amount))
    local i = self:find_index_of(order_id)
    if i then
@@ -223,7 +223,7 @@ function AceCraftOrderList:remove_order(order_id, amount)
          end
 
          -- remove the order and its children from associated orders
-         order:remove_associated_order(true)
+         order:remove_associated_order(remove_associated ~= false)
 
          order:destroy()
       end

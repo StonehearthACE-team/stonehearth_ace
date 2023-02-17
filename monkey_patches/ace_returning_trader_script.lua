@@ -26,8 +26,8 @@ AceReturningTrader._ace_old__on_accepted = ReturningTrader._on_accepted
 function AceReturningTrader:_on_accepted()
    self:_ace_old__on_accepted()
 
-   local use_quest_storage = self._sv._trade_info.use_quest_storage or true
-   if stonehearth.client_state:get_client_gameplay_setting(self._sv._player_id, 'stonehearth_ace', 'use_quest_storage', true) and not use_quest_storage then
+   local use_quest_storage = self._sv._trade_info.use_quest_storage ~= false
+   if stonehearth.client_state:get_client_gameplay_setting(self._sv._player_id, 'stonehearth_ace', 'use_quest_storage', true) and use_quest_storage then
       local item_requirements = {{
          uri = self._sv._trade_data.want_uri,
          quantity = self._sv._trade_data.want_count,

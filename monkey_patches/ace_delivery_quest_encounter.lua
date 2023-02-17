@@ -36,8 +36,8 @@ AceDeliveryQuest._ace_old_start = DeliveryQuest.start
 function AceDeliveryQuest:start(ctx, info)
    self:_ace_old_start(ctx, info)
 
-   local use_quest_storage = self._sv._info.use_quest_storage or true
-   if stonehearth.client_state:get_client_gameplay_setting(ctx.player_id, 'stonehearth_ace', 'use_quest_storage', true) and not use_quest_storage then
+   local use_quest_storage = self._sv._info.use_quest_storage ~= false
+   if stonehearth.client_state:get_client_gameplay_setting(ctx.player_id, 'stonehearth_ace', 'use_quest_storage', true) and use_quest_storage then
       local item_requirements = self:_get_item_requirements()
       if #item_requirements < 1 then
          -- no item requirements? no need for quest storage
@@ -52,16 +52,18 @@ end
 function AceDeliveryQuest:_get_item_requirements()
    local requirements = {}
    for _, requirement in ipairs(self._sv._info.requirements) do
-      if requirement.type == 'give_item' and not requirement.keep_items then
-         table.insert(requirements, {
-            uri = requirement.uri,
-            quantity = requirement.count,
-         })
-      elseif requirement.type == 'give_material' and not requirement.keep_items then
-         table.insert(requirements, {
-            material = requirement.material,
-            quantity = requirement.count,
-         })
+      if requirement.use_quest_storage ~= false and not requirement.keep_items then
+         if requirement.type == 'give_item' then
+            table.insert(requirements, {
+               uri = requirement.uri,
+               quantity = requirement.count,
+            })
+         elseif requirement.type == 'give_material' then
+            table.insert(requirements, {
+               material = requirement.material,
+               quantity = requirement.count,
+            })
+         end
       end
    end
    return requirements

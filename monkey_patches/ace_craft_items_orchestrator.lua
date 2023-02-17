@@ -141,7 +141,7 @@ function AceCraftItemsOrchestrator:run(town, args)
          if self:_process_order(order) then
             if order:is_complete() then
                log:detail('Crafter %s finished order %s', self._crafter, recipe_name)
-               self._craft_order_list:remove_order(order:get_id())
+               self._craft_order_list:remove_order(order:get_id(), nil, false)
             end
             log:detail('Crafter %s setting crafting status and current order to nil', self._crafter)
             order:set_crafting_status(self._crafter, false) -- Paul: this line was changed
