@@ -463,7 +463,7 @@ App.StonehearthPromotionTree = App.View.extend({
    },
 
    // ACE: also trace the properties to track if the selected citizen has their job locked
-   _getCitizenData: function(jobData) {
+   _getCitizenData: function() {
       var self = this;
       var citizenId = this.get('citizen');
 
@@ -484,6 +484,11 @@ App.StonehearthPromotionTree = App.View.extend({
          if (self.isDestroyed || self.isDestroying) {
             return;
          }
+         if (self._citizenTrace) {
+            self._citizenTrace.destroy();
+            self._citizenTrace = null;
+         }
+
          var props = o['stonehearth:properties'];
          var jobLocked = props && props.properties['job_locked'] || false;
          self.set('jobLocked', jobLocked);
@@ -494,7 +499,6 @@ App.StonehearthPromotionTree = App.View.extend({
          self.set('selectedJobAlias', self._startingJob);
          self._updateTalismanData();
          self.set('citizen', o);
-         self._citizenTrace.destroy();
       })
    },
 
