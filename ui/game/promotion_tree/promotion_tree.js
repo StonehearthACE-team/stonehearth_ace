@@ -37,14 +37,6 @@ App.StonehearthPromotionTree = App.View.extend({
 
       var self = this;
 
-      var components = {
-         "jobs": {
-            "*": {
-               "description": {}
-            }
-         }
-      };
-
       self._addHandlers();
 
       radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:basic_inventory_tracker')
@@ -64,23 +56,6 @@ App.StonehearthPromotionTree = App.View.extend({
          })
          .fail(function(response) {
             console.error(response);
-         });
-
-      radiant.call_obj('stonehearth.player', 'get_job_index')
-         .done(function(response){
-            var jIndex = response.job_index;
-            self._jobsTrace = new StonehearthDataTrace(jIndex, components);
-            self._jobsTrace.progress(function(eobj) {
-               self._jobsTrace.destroy();
-               self._jobData = eobj.jobs;
-               if (eobj.base_job) {
-                  self._baseWorkerJob = eobj.base_job;
-               }
-               self._getCitizenData();
-            });
-         })
-         .fail(function(response) {
-            console.error('error getting job index');
          });
 
       self._getJobIndex();
@@ -651,8 +626,9 @@ App.StonehearthPromotionTree = App.View.extend({
       var self = this;
 
       self.$('#approveStamper').click(function() {
-         self._animateStamper();
-         self._promote(self.get('selectedJobAlias'));
+         if (self._promote(self.get('selectedJobAlias'))) {
+            self._animateStamper();
+         }
       })
    },
 
@@ -681,32 +657,33 @@ App.StonehearthPromotionTree = App.View.extend({
       }
 
       var job = self._jobData[jobAlias].description;
-      var defTalisman = App.catalog.getCatalogData(job.talisman_uri);
-
-      var talisman_uris = job.talisman_uris || {[job.talisman_uri] : true};
-      if (talisman_uris) {
-         var talismans = [];
-         radiant.each(talisman_uris, (uri, enabled) => {
-            if (enabled && uri != job.talisman_uri) {
-               talismans.push(App.catalog.getCatalogData(uri));
-            }
-         });
-
-         if (talismans.length > 0) {
-            // if there are alternate talismans that could be used, indicate that in a tooltip
-            App.tooltipHelper.createDynamicTooltip(self.$('#requiredTalisman'), function () {
-               var t = '<div class="tooltipJobTalisman">';
-               talismans.forEach(talisman => {
-                  if (talisman != defTalisman) {
-                     t += `<div class="tooltipJobTalismanEntry"><img src="${talisman.icon}"><div>${i18n.t(talisman.display_name)}</div></div>`;
-                  }
-               })
-               t += '</div>';
-               return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.promotion_tree.alternate_talismans'), t));
+      var defTalisman = job.talisman_uri && App.catalog.getCatalogData(job.talisman_uri);
+      if (defTalisman) {
+         var talisman_uris = job.talisman_uris || {[job.talisman_uri] : true};
+         if (talisman_uris) {
+            var talismans = [];
+            radiant.each(talisman_uris, (uri, enabled) => {
+               if (enabled && uri != job.talisman_uri) {
+                  talismans.push(App.catalog.getCatalogData(uri));
+               }
             });
-         }
-         else {
-            App.tooltipHelper.removeDynamicTooltip(self.$('#requiredTalisman'));
+
+            if (talismans.length > 0) {
+               // if there are alternate talismans that could be used, indicate that in a tooltip
+               App.tooltipHelper.createDynamicTooltip(self.$('#requiredTalisman'), function () {
+                  var t = '<div class="tooltipJobTalisman">';
+                  talismans.forEach(talisman => {
+                     if (talisman != defTalisman) {
+                        t += `<div class="tooltipJobTalismanEntry"><img src="${talisman.icon}"><div>${i18n.t(talisman.display_name)}</div></div>`;
+                     }
+                  })
+                  t += '</div>';
+                  return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.promotion_tree.alternate_talismans'), t));
+               });
+            }
+            else {
+               App.tooltipHelper.removeDynamicTooltip(self.$('#requiredTalisman'));
+            }
          }
       }
       
@@ -912,6 +889,9 @@ App.StonehearthPromotionTree = App.View.extend({
 
    _promote: function(jobAlias) {
       var self = this;
+      if (!self.get('promoteOk')) {
+         return false;
+      }
 
       var jobInfo = self._jobData[jobAlias];
 
@@ -920,6 +900,8 @@ App.StonehearthPromotionTree = App.View.extend({
       var talisman = jobInfo.description.talisman_uri;
 
       radiant.call('stonehearth:grab_promotion_talisman', citizen.__self, jobAlias);
+
+      return true;
    },
 
    _animateStamper: function() {
