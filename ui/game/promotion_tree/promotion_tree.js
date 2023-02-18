@@ -2,13 +2,7 @@ var _cachedJobIndexes = {};
 
 $(document).ready(function() {
    $(top).on("radiant_promote_to_job", function(_, e) {
-      if (App.stonehearth.promotionTreeView) {
-         App.stonehearth.promotionTreeView.destroy();
-      } else {
-         App.stonehearth.promotionTreeView = App.gameView.addView(App.StonehearthPromotionTree, {
-            citizen: e.entity
-         });
-      }
+      App.stonehearthClient.showPromotionTree(e.entity);
    });
 });
 
