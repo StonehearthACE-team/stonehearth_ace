@@ -11,6 +11,96 @@ FindBestReachableEntityByType.think_output = {
    rating = 'number',                  -- the rating of the found item (1 if no rating_fn)
 }
 
+function AceFindBestReachableEntityByType:start_thinking(ai, entity, args)
+   assert(args.filter_fn)
+
+   -- Constant state
+   self._ai = ai
+   self._description = args.description
+   self._log = log
+   -- This is a hotspot, and creating loggers here is expensive, so only enable this for debugging.
+   -- self._log = ai:get_log()
+
+   -- Mutable state
+   self._ready = false
+   self._exhausted = false
+   self._result = nil
+   self._best_item = nil
+   self._best_rating = 0
+   self._location = ai.CURRENT.location
+   self._items_examined = 0
+   
+   -- Too expensive: self._log:debug('start_thinking for %s; result=%s; if=%s', self._description, self._result or 'nil', self._if or 'nil')
+
+   local exhausted = function()
+      self._log:debug('exhausted item finder for %s @ %s', self._description, self._location)
+      self._exhausted = true
+      if self._best_item then
+         self:_set_result(self._best_item, self._best_rating, args, entity)
+      else
+         ai:set_debug_progress('exhausted with no results')
+      end
+   end
+
+   local consider = function(item)
+      if not ai.CURRENT then
+         self._log:debug('ai.CURRENT == %s', tostring(ai.CURRENT))
+         return false
+      end
+
+      if ai.CURRENT.self_reserved[item:get_id()] then
+         self._log:debug('already reserved')
+         return false
+      end
+
+      self._items_examined = self._items_examined + 1
+      if self._items_examined > args.max_items_to_examine then
+         exhausted()
+         return true  -- We reached the limit of how many items we are willing to examine.
+      end
+      
+      local rating = args.rating_fn and math.min(1.0, args.rating_fn(item, entity)) or 1  -- If no rating function, accept first item.
+      self._log:spam('considering %s => %f for %s', item, rating, self._description)
+      if self._exhausted then
+         -- We exhausted previously, so we will definitely be ready after this.
+         -- Perhaps we just found something better (or had exhausted with no results).
+         if not self._result or rating > self._best_rating then
+            self._best_rating = rating
+            self:_set_result(item, rating, args, entity)
+            if rating == 1.0 then
+               return true  -- We found the best thing ever!
+            end
+         end
+         return false  -- We might still find something better.
+      else
+         -- Record this item if it's better than the best one we've found so far.
+         if not self._best_item or rating > self._best_rating then
+            self._best_item = item
+            self._best_rating = rating
+            if rating == 1.0 then
+               self:_set_result(item, rating, args, entity)
+               return true  -- We found the best thing ever!
+            end
+         end
+         return false  -- Can't determine the best item until we've exhausted everything.
+      end
+   end
+   
+   -- Make sure any clear_think_outputs that might happen happen asynchronously.
+   self._delay_start_timer = radiant.on_game_loop_once('FindBestReachableEntityByType start_thinking', function()
+         -- Too expensive: self._log:debug('creating item finder for %s @ %s', self._description, self._location)
+         self._if = entity:add_component('stonehearth:item_finder'):find_reachable_entity_type(
+               self._location, args.filter_fn, consider, {
+                  description = self._description,     -- for those of us in meat space
+                  ignore_leases = args.ignore_leases,
+                  exhausted_cb = exhausted,
+                  reappraise_cb = consider,
+                  owner_player_id = args.owner_player_id,
+                  should_sort = false                  -- we'll be sorting ourselves
+               })
+      end)
+end
+
 function AceFindBestReachableEntityByType:start(ai, entity, args)
    if not radiant.entities.exists(self._result) or not args.filter_fn(self._result) then
       if not stonehearth_ace.failed_filter_fn then
