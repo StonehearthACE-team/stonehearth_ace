@@ -47,6 +47,9 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
             }
             if (response.job_info_object) {
                self.set('farmer_job_info', response.job_info_object);
+               if (self.palette) {
+                  self.palette.set('uri', response.job_info_object);
+               }
             }
          });
    },
@@ -318,13 +321,13 @@ App.AcePlanterTypePaletteView = App.View.extend({
    },
 
    _isCropLocked: function(crop) {
-      if (!this.get('model') || !crop.type) return false; // Too early. We'll recheck later.
+      if (!this.get('model') || !crop.type) return true; // Too early. We'll recheck later.
       var manually_unlocked = this.get('model.manually_unlocked');
       return !crop.has_seed && !crop.initial_crop && !manually_unlocked[crop.type];
    },
 
    _isCropHidden: function (crop) {
-      if (!this.get('model') || !crop.type) return false; // Too early. We'll recheck later.
+      if (!this.get('model') || !crop.type) return true; // Too early. We'll recheck later.
       var manually_unlocked = this.get('model.manually_unlocked');
       return crop.hidden && !manually_unlocked[crop.type];
    },
@@ -341,7 +344,7 @@ App.AcePlanterTypePaletteView = App.View.extend({
             Ember.set(crop, 'is_hidden', is_hidden)
          }
       }
-   },
+   }.observes('model.manually_unlocked'),
 
    updateAvailableSeeds: function(availableSeeds) {
       var self = this;

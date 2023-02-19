@@ -28,7 +28,7 @@ function AceTrapperClass:_on_clear_trap(args)
       base_exp = self._xp_rewards['unsuccessful_trap']
    end
 
-   self._job_component:add_exp(base_exp * args.experience_multiplier)
+   self._job_component:add_exp(base_exp * (args.experience_multiplier or 1))
 end
 
 return AceTrapperClass

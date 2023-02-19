@@ -1226,7 +1226,7 @@ App.StonehearthUnitFrameView = App.View.extend({
          Ember.run.scheduleOnce('afterRender', self, function() {
             var transformProgress = self.$('#transformProgress')
             if (transformProgress) {
-               transformProgress.css("width", percentage / 100 * this.$('#transformProgressbar').width());
+               transformProgress.css("width", percentage / 100 * this.$('#transformProgressBar').width());
             }
          });
       }
