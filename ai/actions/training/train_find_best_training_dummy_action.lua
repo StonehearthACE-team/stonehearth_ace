@@ -43,7 +43,8 @@ return ai:create_compound_action(FindBestTrainingDummy)
             event_name = 'stonehearth:work_order:build:work_player_id_changed',
          })
          :execute('stonehearth:find_best_reachable_entity_by_type', {
-            filter_fn = ai.BACK(2).filter_fn
+            filter_fn = ai.BACK(2).filter_fn,
+            description = 'finding training dummy',
          })
          :set_think_output({
             dummy = ai.PREV.item
