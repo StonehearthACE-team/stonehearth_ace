@@ -57,8 +57,12 @@
       },
       "limit_network_data": {
          "type": "boolean",
+         "host_only": true,
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data_description)",
+         "on_change": {
+            "call": "limit_network_data_setting_changed"
+         },
          "default": true,
          "ordinal": 0.3
       },

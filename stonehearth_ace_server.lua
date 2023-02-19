@@ -149,6 +149,7 @@ local monkey_patches = {
    ace_population_faction = 'stonehearth.services.server.population.population_faction',
    ace_portal_component = 'stonehearth.components.portal.portal_component',
    ace_posture_component = 'stonehearth.components.posture.posture_component',
+   ace_presence_component = 'stonehearth.components.presence.presence_component',
    ace_presence_service = 'stonehearth.services.server.presence.presence_service',
    ace_produce_crafted_items = 'stonehearth.ai.actions.produce_crafted_items',
    ace_projectile_component = 'stonehearth.components.projectile.projectile_component',
