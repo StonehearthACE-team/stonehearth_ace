@@ -546,24 +546,28 @@ App.SettingsView = App.View.extend(Ember.ViewTargetActionSupport, {
                self.set('enableSpeedThree', stonehearthOptions.enable_speed_three);
                self.set('maxCitizens', stonehearthOptions.max_citizens ? stonehearthOptions.max_citizens : App.constants.population.DEFAULT_MAX_CITIZENS);
                self.set('infiniteInventory', stonehearthOptions.infinite_inventory);
+
+               self.set('oldGameplayOptions', {
+                  show_hearthling_paths: stonehearthOptions.show_hearthling_paths,
+                  building_auto_queue_crafters: stonehearthOptions.building_auto_queue_crafters,
+                  default_storage_filter_none: stonehearthOptions.default_storage_filter_none,
+                  default_mining_zones_suspended: stonehearthOptions.default_mining_zones_suspended,
+                  auto_loot: stonehearthOptions.auto_loot,
+                  auto_rescue: stonehearthOptions.auto_rescue,
+                  enable_speed_three: stonehearthOptions.enable_speed_three,
+                  max_citizens: stonehearthOptions.max_citizens,
+                  infinite_inventory: stonehearthOptions.infinite_inventory,
+               });
             } else {
                // Set everything to be default
                self.set('buildingAutoQueueCrafters', true);
                self.set('autoLoot', true);
                self.set('autoRescue', false);
                self.set('infiniteInventory', false);
+
+               self.set('oldGameplayOptions', {});
             }
-            self.set('oldGameplayOptions', {
-               show_hearthling_paths: stonehearthOptions.show_hearthling_paths,
-               building_auto_queue_crafters: stonehearthOptions.building_auto_queue_crafters,
-               default_storage_filter_none: stonehearthOptions.default_storage_filter_none,
-               default_mining_zones_suspended: stonehearthOptions.default_mining_zones_suspended,
-               auto_loot: stonehearthOptions.auto_loot,
-               auto_rescue: stonehearthOptions.auto_rescue,
-               enable_speed_three: stonehearthOptions.enable_speed_three,
-               max_citizens: stonehearthOptions.max_citizens,
-               infinite_inventory: stonehearthOptions.infinite_inventory,
-            });
+
             self._updateMaxCitizensSlider();
          });
    },
