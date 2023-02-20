@@ -52,9 +52,4 @@ return ai:create_compound_action(GetDrinkFromContainer)
             rating_fn = ai.ARGS.drink_rating_fn,
             description = 'drink container filter'
          })
-         :execute('stonehearth:find_path_to_reachable_entity', {
-            destination = ai.PREV.item
-         })
-         :execute('stonehearth:follow_path', { path = ai.PREV.path })
-         --:execute('stonehearth:reserve_entity', { entity = ai.BACK(3).item })
-         :execute('stonehearth_ace:get_drink_from_container_adjacent', { container = ai.BACK(3).item })
+         :execute('stonehearth_ace:get_drink_from_container', { container = ai.PREV.item })

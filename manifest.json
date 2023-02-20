@@ -50,8 +50,8 @@
       "actions:get_drink_container_from_storage": "file(ai/actions/drinking/get_drink_container_from_storage.lua)",
       "actions:get_drink_from_container": "file(ai/actions/drinking/get_drink_from_container.lua)",
       "actions:get_drink_from_container_adjacent": "file(ai/actions/drinking/get_drink_from_container_adjacent.lua)",
-      "actions:get_drink_from_storage": "file(ai/actions/drinking/get_drink_from_storage.lua)",
-      "actions:get_drink_on_ground": "file(ai/actions/drinking/get_drink_on_ground_action.lua)",
+      "actions:get_drink_from_container_no_reserve": "file(ai/actions/drinking/get_drink_from_container_no_reserve.lua)",
+      "actions:get_drink_from_container_reserve": "file(ai/actions/drinking/get_drink_from_container_reserve.lua)",
       "actions:get_drink_trivial": "file(ai/actions/drinking/get_drink_trivial_action.lua)",
       "actions:health:find_healing_item": "file(ai/actions/health/find_healing_item_action.lua)",
       "actions:health:heal_entity_adjacent_with_magic": "file(ai/actions/health/heal_entity_adjacent_with_magic_action.lua)",
@@ -6113,6 +6113,7 @@
       "stonehearth:worker:outfit": "file(jobs/worker/worker_outfit/worker_outfit_dwarf.json)"
    },
    "overrides": {
+      "debugtools/ui/console/debug_console_commands.js": "file(debugtools/ui/console/debug_console_commands.js)",
       "debugtools/ui/debug_dock/debug_dock.js": "file(debugtools/ui/debug_dock/debug_dock.js)",
       "microworld/micro_world_server.lua": "file(microworld/micro_world_server.lua)",
       "northern_alliance/entities/armor/shield_hare/shield_hare.qb": "file(entities/armor/shield_hare/shield_hare.qb)",
