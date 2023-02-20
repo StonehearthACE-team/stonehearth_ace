@@ -170,6 +170,9 @@
       "gm": {
          "campaigns": {
             "trader": {
+               "returning_collector_encounter": {
+                  "waiting_text": "The explorer will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)] <span class='numCached'>([str(i18n_data.req_1.quantity)])</span></strong><img class='questItemsCached [str(i18n_data.req_1.items_cached_class)]'/> ready for them!"
+               },
                "returning_trader_encounter": {
                   "waiting_text": "The trader will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to give you <strong>[str(i18n_data.reward_number)] [str(i18n_data.reward_item)]</strong> if you have <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)] <span class='numCached'>([str(i18n_data.req_1.quantity)])</span></strong><img class='questItemsCached [str(i18n_data.req_1.items_cached_class)]'/> ready for him!"
                },
