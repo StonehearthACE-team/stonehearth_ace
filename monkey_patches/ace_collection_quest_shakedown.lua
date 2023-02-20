@@ -12,7 +12,7 @@ function AceShakeDown:_construct()
    self:_ace_old__construct()
 end
 
-function ShakeDown:_determine_filler_material(player_id)
+function AceShakeDown:_determine_filler_material(player_id)
    local biome = stonehearth.world_generation:get_biome_alias()
    local population = stonehearth.population:get_population(player_id)
    local kingdom = population and population:get_kingdom()
@@ -28,7 +28,7 @@ function ShakeDown:_determine_filler_material(player_id)
       else
          filler_material = filler_materials[biome].default
       end
-      log:error('found biome filler materials: %s', tostring(filler_material))
+      log:debug('found biome filler materials: %s', tostring(filler_material))
    end
    -- if biome keys didn't work out, check for a general kingdom setting
    filler_material = filler_material or (kingdom and filler_materials and filler_materials[kingdom])

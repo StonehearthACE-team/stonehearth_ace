@@ -36,7 +36,7 @@ AceDeliveryQuest._ace_old_start = DeliveryQuest.start
 function AceDeliveryQuest:start(ctx, info)
    self:_ace_old_start(ctx, info)
 
-   local use_quest_storage = self._sv._info.use_quest_storage ~= false
+   local use_quest_storage = info.use_quest_storage ~= false
    if stonehearth.client_state:get_client_gameplay_setting(ctx.player_id, 'stonehearth_ace', 'use_quest_storage', true) and use_quest_storage then
       local item_requirements = self:_get_item_requirements()
       if #item_requirements < 1 then

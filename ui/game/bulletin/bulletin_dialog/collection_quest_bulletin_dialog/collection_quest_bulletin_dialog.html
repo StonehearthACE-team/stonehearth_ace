@@ -1,0 +1,44 @@
+<script type="text/x-handlebars" data-template-name="collectionQuestBulletinDialog">
+<div id="collectionQuestBulletinDialog" class="gui bulletinDialog">
+   <div class="window dialog">
+      <div class="title">{{i18n_key view.model.data.dialog_title i18n_data=view.model.i18n_data}}</div>
+      <div id="portrait">
+         <img {{bind-attr src=view.model.data.portrait}} />
+      </div>
+      <div id="content">
+         <div class="message">{{{ formatted_i18n_key view.model.data.message i18n_data=view.model.i18n_data}}}</div>
+
+         <ul class="demandList">
+            {{#each view.demands}}
+               {{#if this.progress}}
+                  <li>{{ i18n_key this.display_name }} ({{ this.progress }}{{{this.cached_count}}} / {{ this.count }})<img {{bind-attr class=':questItemsCached this.items_cached_class'}}/></li>
+               {{else}}
+                  <li>{{ this.count }} {{ i18n_key this.display_name }}</li>
+               {{/if}}
+            {{/each}}
+         </ul>
+      </div>
+
+      <div id='buttons'>
+         {{#if view.model.data.ok_callback }}
+            <button id="okButton" class="">{{i18n stonehearth:ui.game.common.ok}}</button>
+         {{/if}}
+         {{#if view.model.data.next_callback }}
+            <button id="nextButton" class="">{{i18n stonehearth:ui.game.common.next}}</button>
+         {{/if}}
+         {{#if view.model.data.accepted_callback }}
+            <button id="acceptButton" class="">{{i18n stonehearth:ui.game.common.accept}}</button>
+         {{/if}}
+         {{#if view.model.data.declined_callback }}
+            <button id="declineButton" class="">{{i18n stonehearth:ui.game.common.decline}}</button>
+         {{/if}}
+         {{#if view.model.data.collection_pay_callback }}
+            <button id="collectionPayButton" {{bind-attr class=view.model.data.have_enough:enabled:disabled}}>{{i18n stonehearth:ui.game.bulletin.collection_quest.pay}}</button>
+         {{/if}}
+         {{#if view.model.data.collection_cancel_callback }}
+            <button id="collectionCancelButton" class="">{{i18n stonehearth:ui.game.bulletin.collection_quest.cancel}}</button>
+         {{/if}}
+      </div>
+   </div>
+</div>
+</script>
