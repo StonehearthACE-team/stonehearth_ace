@@ -38,7 +38,7 @@ function PresenceClientService:_ensure_limited_data_call_timer()
 
    self:_destroy_call_timer()
 
-   self._limited_data_call_timer = radiant.set_realtime_interval('presence server update call', 200, function() -- slower frequency
+   self._limited_data_call_timer = radiant.set_realtime_interval('presence server update call', 500, function() -- slower frequency
          -- if self._modified.cursor_uri or self._modified.cursor_world_position then
          --    _radiant.call_obj('stonehearth.client_state', 'set_cursor_command', self._presence.cursor_uri, self._presence.cursor_world_position)
          --    self._modified.cursor_uri = false

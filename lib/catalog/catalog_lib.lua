@@ -74,7 +74,7 @@ function catalog_lib.load_catalog(catalog, added_cb)
             -- this does the base-game catalog-building (with ACE additions)
             -- the base game only cares about entities, and the added_cb can't be modified without overriding the catalog service files
             -- so just assume it only applies to base game things
-            result = catalog_lib._update_catalog_data(catalog, full_alias, json)
+            result = catalog_lib._update_catalog_data(catalog, full_alias, json, mod)
             if entity_scripts then
                for _, script in ipairs(entity_scripts) do
                   script(catalog, full_alias, json, DEFAULT_CATALOG_DATA)
@@ -157,11 +157,11 @@ function catalog_lib._load_entity_json(full_alias)
 end
 
 -- Add catalog description for this alias and insert in buyable items if applicable
-function catalog_lib._update_catalog_data(catalog, full_alias, json)
-   return catalog_lib._add_catalog_description(catalog, full_alias, json, DEFAULT_CATALOG_DATA)
+function catalog_lib._update_catalog_data(catalog, full_alias, json, mod)
+   return catalog_lib._add_catalog_description(catalog, full_alias, json, DEFAULT_CATALOG_DATA, mod)
 end
 
-function catalog_lib._add_catalog_description(catalog, full_alias, json, base_data)
+function catalog_lib._add_catalog_description(catalog, full_alias, json, base_data, mod)
    if catalog[full_alias] ~= nil then
       return
    end
@@ -249,7 +249,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          if iconic_path then
             local iconic_json = catalog_lib._load_json(iconic_path)
             if iconic_json then
-               catalog_lib._add_catalog_description(catalog, iconic_path, iconic_json, catalog_data)
+               catalog_lib._add_catalog_description(catalog, iconic_path, iconic_json, catalog_data, mod)
                catalog_data.iconic_uri = iconic_path
                -- if it has an iconic form, the root form shouldn't be considered an item, and the iconic form should be
                catalog[iconic_path].is_item = true
@@ -263,7 +263,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          if ghost_path then
             local ghost_json = catalog_lib._load_json(ghost_path)
             if ghost_json then
-               catalog_lib._add_catalog_description(catalog, ghost_path, ghost_json, catalog_data)
+               catalog_lib._add_catalog_description(catalog, ghost_path, ghost_json, catalog_data, mod)
                -- make sure the ghost isn't considered an item
                catalog[ghost_path].is_item = false
             else
@@ -403,7 +403,11 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
    end
 
    if not catalog_data.materials then
-      log:error('%s has no materials', full_alias)
+      -- assume everything in the base game (and ACE) that should have materials does
+      if mod ~= 'radiant' and mod ~= 'stonehearth' and mod ~= 'rayyas_children' and mod ~= 'northern_alliance' and
+            mod ~= 'debugtools' and mod ~= 'stonehearth_ace' then
+         log:error('%s has no materials', full_alias)
+      end
    end
 
    result.catalog_data = catalog_data

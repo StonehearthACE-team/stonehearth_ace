@@ -82,7 +82,7 @@
                display: flex;
                position: relative;
                flex: 0 2 auto;
-               min-width: 10px;
+               min-width: 0px;
                
                &.hostile {
                   border-image: url(images/name_hostile.png) 4 32 4 32;
@@ -222,13 +222,67 @@
             #activityDiv {
                display: inline-block;
                clear:both;
-               float:left;
-               //margin: 4px;
-            }
-            #activityDiv.hasPortrait {
                position: absolute;
                bottom: -26px;
+               left: 0px;
+            }
+            #activityDiv.hasPortrait {
                left: 102px;
+            }
+
+            #craftedByDiv {
+               top: 96px;
+            }
+
+            #progressDiv {
+               display: flex;
+               position: absolute;
+               top: 92px;
+   
+               #percentComplete {
+                  margin-top: 0px;
+               }
+            }
+   
+            #transformItem {
+               position: absolute;
+               left: 20px;
+            }
+   
+            #transformProgressDiv {
+               display: flex;
+               align-items: center;
+               position: absolute;
+               top: 89px;
+            }
+   
+            #transformProgressBar {
+               display: inline-flex;
+               width: 240px;
+               height: 20px;
+               margin-left: 2px;
+               margin-top: -2px;
+               align-items: center;
+               font-family: "AutourOneRegular";
+               text-shadow: none;
+               font-size: 13px;
+               background-color: #707070;
+               border: 2px solid black;
+               color: black;
+            }
+   
+            #transformProgress {
+               margin: 1px;
+               height: 18px;
+               width: 0px;
+               max-width: 238px;
+               background-color: #95cc5c;
+            }
+   
+            #transformPercentComplete {
+               display: inline-block;
+               margin-left: 2px;
+               margin-top: 0px;
             }
          }
 			
@@ -296,46 +350,6 @@
          
          #item {
             left: 50px;
-         }
-
-         #transformItem {
-            position: absolute;
-            left: 20px;
-         }
-
-         #transformProgressDiv {
-            display: flex;
-            align-items: center;
-            margin-top: -11px;
-         }
-
-         #transformProgressBar {
-            display: inline-flex;
-            width: 240px;
-            height: 20px;
-            margin-left: 2px;
-            margin-top: -2px;
-            align-items: center;
-            font-family: "AutourOneRegular";
-            text-shadow: none;
-            font-size: 13px;
-            background-color: #707070;
-            border: 2px solid black;
-            color: black;
-         }
-
-         #transformProgress {
-            margin: 1px;
-            height: 18px;
-            width: 0px;
-            max-width: 238px;
-            background-color: #95cc5c;
-         }
-
-         #transformPercentComplete {
-            display: inline-block;
-            margin-left: 2px;
-            margin-top: 0px;
          }
       }
 

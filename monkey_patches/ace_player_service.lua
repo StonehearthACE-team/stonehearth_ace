@@ -57,7 +57,7 @@ end
 AcePlayerService._ace_old_remove_player = PlayerService.remove_player
 function AcePlayerService:remove_player(player_id)
    -- TODO: mercantile service once it's made; figure out what else might need to be handled
-   -- stonehearth_ace.mercantile:remove_player(player_id)
+   stonehearth_ace.mercantile:remove_player(player_id)
 
    self:_ace_old_remove_player(player_id)
 end

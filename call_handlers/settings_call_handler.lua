@@ -33,6 +33,7 @@ function SettingsCallHandler:title_selection_criteria_changed(session, response,
 end
 
 function SettingsCallHandler:limit_network_data_setting_changed(session, response, limit_data)
+   log:debug('limit_network_data_setting_changed to %s', tostring(limit_data))
    stonehearth.presence:set_limit_network_data(limit_data)
 end
 
