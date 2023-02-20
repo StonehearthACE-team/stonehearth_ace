@@ -33,6 +33,7 @@ App.StonehearthSelectRosterView = App.View.extend({
    didInsertElement: function() {
       this._super();
       var self = this;
+      self._reembarkOptionSelected = false;
       self._start = Date.now();
       var biome_uri = self._options.biome_src;
       var kingdom_uri = self._options.starting_kingdom;
@@ -183,6 +184,7 @@ App.StonehearthSelectRosterView = App.View.extend({
                                  for (var i = 0; i < e.num_reembarked; ++i) {
                                     self.get('childViews')[i].setFrozen(true);
                                  }
+                                 self._reembarkOptionSelected = true;
                               });
                         }
                      });
@@ -229,6 +231,7 @@ App.StonehearthSelectRosterView = App.View.extend({
                            var citizenMap = e.citizens;
                            self._citizensArray = radiant.map_to_array(citizenMap);
                            self.set('citizensArray', self._citizensArray);
+                           self._reembarkOptionSelected = false;
                         });
                   }
                });
@@ -238,6 +241,27 @@ App.StonehearthSelectRosterView = App.View.extend({
 
       showSaveRosterDialog: function () {
          var self = this;
+
+         // if a reembark option was selected, disallow saving this roster, since it wouldn't be saved "properly"
+         if (self._reembarkOptionSelected) {
+            if (self._confirmView != null && !self._confirmView.isDestroyed) {
+               self._confirmView.destroy();
+               self._confirmView = null;
+            }
+
+            self._confirmView = App.shellView.addView(App.StonehearthConfirmView, {
+               title : i18n.t('stonehearth_ace:ui.shell.select_roster.reembark_selected_save_title'),
+               message : i18n.t('stonehearth_ace:ui.shell.select_roster.reembark_selected_save_message'),
+               buttons : [
+                  {
+                     id: 'confirm',
+                     label: i18n.t('stonehearth:ui.game.common.ok')
+                  }
+               ]
+            });
+
+            return;
+         }
 
          App.shellView.addView(App.StonehearthInputPromptView,
             {
@@ -315,6 +339,7 @@ App.StonehearthSelectRosterView = App.View.extend({
             self.$('#saveCitizensButton').removeClass('disabled');
             self._citizensArray = radiant.map_to_array(citizenMap);
             self.set('citizensArray', self._citizensArray);
+            self._reembarkOptionSelected = false;
 
             self._hideLoading();
          })
