@@ -1,0 +1,18 @@
+{
+   "mixins": "stonehearth_ace:mixins:construction:water_well",
+   "components": {},
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "drink": "stonehearth_ace:drink:water_serving:cool"
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "mixintypes": {
+               "wood": "remove",
+               "stone": "remove",
+               "clay": "remove"
+            }
+         }
+      }
+   }
+}

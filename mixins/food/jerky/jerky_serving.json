@@ -1,0 +1,42 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "/stonehearth/mixins/food/jerky/jerky.qb"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "/stonehearth/mixins/food/jerky/jerky_rotting.qb"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 44
+         },
+         "default": {
+            "satisfaction": 40
+         },
+         "quality": 2
+      },
+      "stonehearth:catalog": {
+         "description": "",
+         "material_tags": [
+            "food",
+            "jerky_serving",
+            "meat",
+            "lunch_time",
+            "dinner_time"
+         ]
+      }
+   }
+}
