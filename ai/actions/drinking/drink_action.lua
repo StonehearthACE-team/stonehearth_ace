@@ -96,9 +96,9 @@ function Drink:_reconsider_filter()
       -- if there's a well, we don't care about complicated filters, but we still want the adjust our rater
       if self._has_well then
          --log:debug('well present, %s using simple drink filter', self._entity)
-         self._drink_filter_fn = DrinkingLib.make_simple_drink_filter()
+         self._drink_filter_fn = DrinkingLib.make_drink_filter()
       else
-         self._drink_filter_fn = DrinkingLib.make_drink_filter(self._drink_preferences, self._drink_intolerances, hour_type, weather_type)
+         self._drink_filter_fn = DrinkingLib.make_drink_filter(self._drink_intolerances)
       end
       local consumption = self._entity:get_component('stonehearth:consumption')
       if consumption:distinguishes_drink_quality() then

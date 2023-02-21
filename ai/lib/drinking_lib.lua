@@ -17,16 +17,25 @@ function DrinkingLib.get_hour_type(hour)
    end
 end
 
-function DrinkingLib.is_drinkable(drink_stuff)
+function DrinkingLib.is_drinkable(drink_stuff, drink_intolerances)
    local drink = drink_stuff
    local container_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink_container', false)
    if container_data then
       drink = container_data.drink
+   else
+      -- actually, we don't care about drinks that aren't in containers; they shouldn't exist!
+      return false
    end
    local drink_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink', false)
 
    if not drink_data or not drink_data.default then
       return false
+   end
+
+   if drink_intolerances and drink_intolerances ~= '' then
+      if radiant.entities.is_material(drink_stuff, drink_intolerances) then
+         return false
+      end
    end
 
    return true
@@ -37,6 +46,9 @@ function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intoleran
    local container_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink_container', false)
    if container_data then
       drink = container_data.drink
+   else
+      -- actually, we don't care about drinks that aren't in containers; they shouldn't exist!
+      return nil
    end
    local drink_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink', false)
 
@@ -102,17 +114,12 @@ function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intoleran
    return math.max(quality, qualities.UNPALATABLE)
 end
 
-function DrinkingLib.make_drink_filter(drink_preferences, drink_intolerances, hour_type, weather_type)
-   local key = tostring(drink_preferences) .. '|' .. tostring(drink_intolerances) .. '|' .. tostring(hour_type) .. '|' .. tostring(weather_type)
+-- for the filter, we only actually care about intolerances
+-- and this is nil if there's a well available, equivalent to no intolerances, because the well water will simply get rated higher
+function DrinkingLib.make_drink_filter(drink_intolerances)
+   local key = tostring(drink_intolerances or '')
    return stonehearth.ai:filter_from_key('drink_filter', key, function(item)
-            local quality = DrinkingLib.get_quality(item, drink_preferences, drink_intolerances, hour_type, weather_type)
-            return quality and quality >= stonehearth.constants.drink_qualities.MINIMUM_VIABLE
-         end)
-end
-
-function DrinkingLib.make_simple_drink_filter()
-   return stonehearth.ai:filter_from_key('drink_filter', 'any drink! it\'s actually all the same filter!', function(item)
-            return DrinkingLib.is_drinkable(item)
+            return DrinkingLib.is_drinkable(item, drink_intolerances)
          end)
 end
 

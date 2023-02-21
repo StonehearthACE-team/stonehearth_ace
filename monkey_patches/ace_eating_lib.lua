@@ -20,15 +20,15 @@ function AceEatingLib.get_hour_type(hour)
 end
 
 function AceEatingLib.is_edible(food_stuff)
-   local food = food_stuff
-   local food_uri = food:get_uri()
-   local container_data = radiant.entities.get_entity_data(food, 'stonehearth:food_container', false)
-   if container_data then
-      food = container_data.food
-      food_uri = food
+   local container_data = radiant.entities.get_entity_data(food_stuff, 'stonehearth:food_container', false)
+   if not container_data then
+      -- actually, we don't care about food that isn't in a container
+      return false
    end
 
-   if not stonehearth.catalog:is_material(food_uri, 'food') then
+   local food = container_data.food
+
+   if not stonehearth.catalog:is_material(food, 'food') then
       return false
    end
 
@@ -42,15 +42,15 @@ function AceEatingLib.is_edible(food_stuff)
 end
 
 function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerances, hour_type, weather_type)
-   local food = food_stuff
-   local food_uri = food:get_uri()
-   local container_data = radiant.entities.get_entity_data(food, 'stonehearth:food_container', false)
-   if container_data then
-      food = container_data.food
-      food_uri = food
+   local container_data = radiant.entities.get_entity_data(food_stuff, 'stonehearth:food_container', false)
+   if not container_data then
+      -- actually, we don't care about food that isn't in a container
+      return nil
    end
 
-   if not stonehearth.catalog:is_material(food_uri, 'food') then
+   local food = container_data.food
+
+   if not stonehearth.catalog:is_material(food, 'food') then
       return nil
    end
 

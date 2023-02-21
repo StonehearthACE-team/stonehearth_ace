@@ -52,11 +52,7 @@ return ai:create_compound_action(GetFoodFromContainerFromStorage)
          :execute('stonehearth:goto_entity_in_storage', {
             entity = ai.PREV.item,
          })
-         :execute('stonehearth:reserve_entity', {
-            entity = ai.BACK(2).item,
-            reserve_from_self = true,
-         })
-         :execute('stonehearth:get_food_from_container_adjacent', {
-            container = ai.BACK(3).item,
-            storage = ai.BACK(4).storage,
+         :execute('stonehearth_ace:get_food_from_container', {
+            container = ai.BACK(2).item,
+            storage = ai.BACK(3).storage,
          })

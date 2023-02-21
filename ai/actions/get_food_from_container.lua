@@ -48,6 +48,4 @@ return ai:create_compound_action(GetFoodFromContainer)
             destination = ai.PREV.item
          })
          :execute('stonehearth:follow_path', { path = ai.PREV.path })
-         --:execute('stonehearth:reserve_entity', { entity = ai.BACK(3).item })
-         :execute('stonehearth:get_food_from_container_adjacent', { container = ai.BACK(3).item })
-
+         :execute('stonehearth_ace:get_food_from_container', { container = ai.BACK(3).item })

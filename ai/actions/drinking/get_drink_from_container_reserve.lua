@@ -5,6 +5,10 @@ GetDrinkFromContainerReserve.name = 'get drink from container reserve'
 GetDrinkFromContainerReserve.does = 'stonehearth_ace:get_drink_from_container'
 GetDrinkFromContainerReserve.args = {
    container = Entity,
+   storage = {
+      type = Entity,
+      default = stonehearth.ai.NIL,
+   }
 }
 GetDrinkFromContainerReserve.priority = 0
 
@@ -20,9 +24,8 @@ end
 
 local ai = stonehearth.ai
 return ai:create_compound_action(GetDrinkFromContainerReserve)
-         :execute('stonehearth:find_path_to_reachable_entity', {
-            destination = ai.ARGS.container
-         })
-         :execute('stonehearth:follow_path', { path = ai.PREV.path })
          :execute('stonehearth:reserve_entity', { entity = ai.ARGS.container })
-         :execute('stonehearth_ace:get_drink_from_container_adjacent', { container = ai.ARGS.container })
+         :execute('stonehearth_ace:get_drink_from_container_adjacent', {
+            container = ai.ARGS.container,
+            storage = ai.ARGS.storage,
+         })

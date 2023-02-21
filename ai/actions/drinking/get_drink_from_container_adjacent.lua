@@ -4,7 +4,11 @@ local GetDrinkFromContainerAdjacent = class()
 GetDrinkFromContainerAdjacent.name = 'get drink from container adjacent'
 GetDrinkFromContainerAdjacent.does = 'stonehearth_ace:get_drink_from_container_adjacent'
 GetDrinkFromContainerAdjacent.args = {
-   container = Entity      
+   container = Entity,
+   storage = {
+      type = Entity,
+      default = stonehearth.ai.NIL,
+   }
 }
 GetDrinkFromContainerAdjacent.priority = 0
 
@@ -21,24 +25,27 @@ function GetDrinkFromContainerAdjacent:run(ai, entity, args)
       ai:abort(string.format("%s has no stonehearth_ace:drink_container entity data", tostring(container)))
       return
    end
-	
-	local model_variant
-	if container_data.dynamic_serving_model then
-		model_variant = container:add_component('render_info'):get_model_variant()
-	end
+   
+   local model_variant
+   if container_data.dynamic_serving_model then
+      model_variant = container:add_component('render_info'):get_model_variant()
+   end
    
    local quality_component = container:get_component("stonehearth:item_quality")
    local container_quality = (quality_component and quality_component:get_quality()) or 0
 
-	if container_data.container_effect then
-		radiant.effects.run_effect(container, container_data.container_effect)
-	end
+   if container_data.container_effect then
+      radiant.effects.run_effect(container, container_data.container_effect)
+   end
+
+   -- if a storage entity is specified, face that instead
+   local face_entity = args.storage or container
    radiant.entities.turn_to_face(entity, container)
    ai:execute('stonehearth:run_effect', { effect = container_data.effect })
 
    -- go ahead and release it for others while we sit and drink
    stonehearth.ai:release_ai_lease(container, entity)
-	
+   
    local stacks_per_serving = container_data.stacks_per_serving or 1
    if stacks_per_serving > 0 then
       ai:unprotect_argument(container)
@@ -54,13 +61,13 @@ function GetDrinkFromContainerAdjacent:run(ai, entity, args)
       drink:add_component('stonehearth:item_quality'):initialize_quality(container_quality, nil, nil, {override_allow_variable_quality=true})
    end
 
-	if container_data.serving_model then
-		drink:add_component('stonehearth_ace:entity_modification'):set_model_variant(container_data.serving_model)
-	end
-	
-	if model_variant then
-		drink:add_component('stonehearth_ace:entity_modification'):set_model_variant(model_variant)
-	end
+   if container_data.serving_model then
+      drink:add_component('stonehearth_ace:entity_modification'):set_model_variant(container_data.serving_model)
+   end
+   
+   if model_variant then
+      drink:add_component('stonehearth_ace:entity_modification'):set_model_variant(model_variant)
+   end
 
    stonehearth.ai:pickup_item(ai, entity, drink)
 end

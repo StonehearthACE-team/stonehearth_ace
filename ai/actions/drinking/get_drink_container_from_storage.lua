@@ -57,6 +57,7 @@ return ai:create_compound_action(GetDrinkFromContainerFromStorage)
          :execute('stonehearth:goto_entity_in_storage', {
             entity = ai.PREV.item,
          })
-         --:execute('stonehearth:reserve_entity', { entity = ai.BACK(2).item })
-         :execute('stonehearth:drop_carrying_now', {})
-         :execute('stonehearth_ace:get_drink_from_container_adjacent', { container = ai.BACK(3).item })
+         :execute('stonehearth_ace:get_drink_from_container', {
+            container = ai.BACK(2).item,
+            storage = ai.BACK(3).storage,
+         })
