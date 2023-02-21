@@ -1,55 +1,25 @@
 {
    "type": "entity",
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": [
+      "stonehearth_ace:mixins:construction:water_well:roofed"
+   ],
    "components": {
-      "render_info": {
-         "scale": 0.133,
-         "animation_table": "/stonehearth_ace/data/rigs/entities/construction/water_well/water_well.json"
-      },
-      "effect_list": {
-         "default": "/stonehearth_ace/data/rigs/entities/construction/water_well/effects/idle.json"
-      },
       "model_variants": {
          "default": {
             "models": [
                "file(wooden_water_well_roofed.qb)"
             ]
          },
-         "stone": {
-            "models": [
-               "file(wooden_water_well_roofed_stone.qb)"
-            ]
-         },
          "clay": {
             "models": [
                "file(wooden_water_well_roofed_clay.qb)"
             ]
+         },
+         "stone": {
+            "models": [
+               "file(wooden_water_well_roofed_stone.qb)"
+            ]
          }
-      },
-      "mob": {
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
-      },
-      "destination": {
-         "region": [
-            {
-               "min": { "x": -2, "y": 0, "z": 0 },
-               "max": { "x": 0, "y": 1, "z": 1 }
-            }
-         ],
-         "adjacency_flags": [
-            "left",
-            "back_left",
-            "front_left"
-         ]
-      },
-      "region_collision_shape": {
-         "region": [
-            {
-               "min": { "x": -2, "y": 0, "z": -2 },
-               "max": { "x": 3, "y": 5, "z": 3 }
-            }
-         ]
       },
       "stonehearth:loot_drops": {
          "entries": {
@@ -65,55 +35,24 @@
                }
             }
          }
-      },
-      "stonehearth_ace:transform": {}
+      }
    },
    "entity_data": {
-      "stonehearth_ace:transform_data": {
-         "transform_options": {
-            "destroy": {
-               "transform_uri": "",
-               "command": "stonehearth_ace:commands:transform:build_well_destroy",
-               "request_action": "stonehearth_ace:transform",
-               "request_action_overlay_effect": "stonehearth:effects:clear_effect",
-               "transforming_worker_effect": "work",
-               "transforming_worker_effect_times": 3,
-               "transform_effect": "stonehearth:effects:object_destroyed",
-               "auto_request": true,
-               "kill_entity": true
-            }
-         }
-      },
-      "stonehearth_ace:drink_container": {
-         "effect": "work_water_well",
-         "container_effect": "work",
-         "drink": "stonehearth_ace:drink:water_serving:cool",
-         "stacks_per_serving": 0
-      },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.construction.wooden_water_well_roofed.display_name)",
          "description": "i18n(stonehearth_ace:entities.construction.wooden_water_well_roofed.description)",
          "icon": "file(wooden_water_well_roofed.png)",
-         "category": "construction",
          "material_tags": [
-            "drink_container",
             "wood",
-            "water_well",
-            "crafted",
-            "construction",
-            "stockpile_construction"
+            "crafted"
          ]
       },
       "stonehearth:net_worth": {
          "value_in_gold": 54,
-         "rarity": "common",
-         "shop_info": {
-            "buyable": false,
-            "sellable": false
-         }
+         "rarity": "uncommon"
       },
       "stonehearth:appeal": {
-         "appeal": 15
+         "appeal": 14
       }
    }
 }

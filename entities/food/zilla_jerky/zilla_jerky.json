@@ -1,6 +1,4 @@
 {
-   "mixins": "stonehearth:mixins:resources:jerky",
-   "type": "entity",
    "components": {},
    "entity_data": {
       "stonehearth:net_worth": {
@@ -11,10 +9,10 @@
          }
       },
       "stonehearth:food_container": {
-         "food": "stonehearth_ace:cougar_jerky_serving"
+         "food": "stonehearth_ace:zilla_jerky_serving"
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.food.cougar_jerky.display_name)"
+         "subject_override": "stonehearth:zilla_jerky"
       }
    }
 }

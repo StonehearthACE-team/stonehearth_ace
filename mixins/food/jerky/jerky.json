@@ -3,8 +3,15 @@
       "type": "remove"
    },
    "entity_data": {
+      "mixintypes": {
+         "stonehearth:food": "remove"
+      },
+      "stonehearth:food_container": {
+         "effect": "carry_pickup",
+         "stacks_per_serving": 3
+      },
       "stonehearth:catalog": {
-         "material_tags": ["meat_ingredient"]
+         "material_tags": ["meat_ingredient", "food_container"]
       },
 		"stonehearth:food_decay": {
 			"initial_decay": {
