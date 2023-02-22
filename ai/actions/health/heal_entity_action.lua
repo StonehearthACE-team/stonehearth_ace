@@ -10,7 +10,7 @@ local MIN_GUTS_PERCENTAGE_TO_PREFER = 90
 
 local function make_is_healable_entity_filter(player_id)
    return stonehearth.ai:filter_from_key('stonehearth:healing:heal_entity', player_id, function(target)
-         if target:get_player_id() ~= player_id then
+         if not stonehearth.player:are_player_ids_friendly(target:get_player_id(), player_id) then
             return false
          end
 

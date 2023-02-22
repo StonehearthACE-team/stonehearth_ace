@@ -76,6 +76,46 @@ function AceCombatService:calculate_healing(healer, target, heal_info)
    return total_healing
 end
 
+-- ACE: also get allies of the attacker
+function AceCombatService:_get_nearby_units(target, attacker, player_id)
+   local radius = stonehearth.constants.exp.EXP_REWARD_RADIUS
+   local enemy_location = radiant.entities.get_world_grid_location(target)
+   local ally_location = radiant.entities.get_world_grid_location(attacker)
+
+   local units = {}
+   local count = 0
+
+   -- check all citizens in population of player *and friendly players* and return all combats units within the radius
+   local friendly_players = stonehearth.player:get_friendly_players(player_id)
+   for friendly_player, _ in pairs(friendly_players) do
+      local population = stonehearth.population:get_population(friendly_player)
+      if population then
+         for id, citizen in population:get_citizens():each() do
+            if citizen and citizen:is_valid() then
+               local job_component = citizen:get_component('stonehearth:job')
+               -- should the citizen be counted as participating?
+
+               local location = radiant.entities.get_world_grid_location(citizen)
+               -- Allow unit to participate if the combat unit is in range of the enemy or allied attacker OR
+               -- the combat unit has the enemy in its target table -> ranged attackers may be far away but
+               -- still may have contributed to killing the target.
+               if location then
+                  local target_table = radiant.entities.get_target_table(citizen, 'aggro')
+                  if (target_table and target_table:contains(target)) or
+                     radiant.math.point_within_sphere(location, enemy_location, radius) or
+                     radiant.math.point_within_sphere(location, ally_location, radius) then
+                     units[id] = citizen
+                     count = count + 1
+                  end
+               end
+            end
+         end
+      end
+   end
+
+   return units, count
+end
+
 --AceCombatService._ace_old__on_target_killed = CombatService._on_target_killed
 function AceCombatService:_on_target_killed(attacker, target)
    local attacker_player_id = get_player_id(attacker)

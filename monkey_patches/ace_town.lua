@@ -729,6 +729,10 @@ end
 
 function AceTown:register_suspendable_entity(entity)
    if entity and entity:is_valid() then
+      -- this fails on microworld because the town hasn't finished its loading yet
+      if not self._suspendable_entities then
+         self._suspendable_entities = {}
+      end
       self._suspendable_entities[entity:get_id()] = entity
 
       -- if register is called after suspend applied on load
