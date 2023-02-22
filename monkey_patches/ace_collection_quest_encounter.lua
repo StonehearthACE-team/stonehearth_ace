@@ -119,8 +119,6 @@ function AceCollectionQuest:_get_stored_item_quantity(quest_storage_status, requ
          end
       end
    end
-
-   return 0
 end
 
 function AceCollectionQuest:_update_progress()

@@ -11,7 +11,7 @@
          <ul class="demandList">
             {{#each view.demands}}
                {{#if this.progress}}
-                  <li>{{ i18n_key this.display_name }} ({{ this.progress }}{{{this.cached_count}}} / {{ this.count }})<img {{bind-attr class=':questItemsCached this.items_cached_class'}}/></li>
+                  <li>{{ i18n_key this.display_name }} — {{ this.progress }}{{{this.formatted_cached_count}}} / {{ this.count }}<img {{bind-attr class=':questItemsCached this.items_cached_class'}}/></li>
                {{else}}
                   <li>{{ this.count }} {{ i18n_key this.display_name }}</li>
                {{/if}}
