@@ -40,15 +40,15 @@ function SuspendableComponent:destroy()
 end
 
 function SuspendableComponent:_register_with_town()
-   local town = stonehearth.town:get_town(self._player_id or self._entity)
-   if town then
+   local town = self._player_id and stonehearth.town:get_town(self._player_id)
+   if town and not stonehearth.player:is_player_npc(self._player_id) then
       town:register_suspendable_entity(self._entity)
    end
 end
 
 function SuspendableComponent:_unregister_with_town()
-   local town = stonehearth.town:get_town(self._player_id or self._entity)
-   if town then
+   local town = self._player_id and stonehearth.town:get_town(self._player_id)
+   if town and not stonehearth.player:is_player_npc(self._player_id) then
       town:unregister_suspendable_entity(self._entity)
    end
 end

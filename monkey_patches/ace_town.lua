@@ -744,7 +744,7 @@ function AceTown:register_suspendable_entity(entity)
 end
 
 function AceTown:unregister_suspendable_entity(entity)
-   if entity then
+   if entity and self._suspendable_entities then
       self._suspendable_entities[entity:get_id()] = nil
    end
 end
