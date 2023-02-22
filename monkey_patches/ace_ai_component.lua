@@ -23,4 +23,35 @@ function AceAIComponent:set_status_text_key(key, data)
    self.__saved_variables:mark_changed()
 end
 
+function AceAIComponent:town_suspended()
+   -- check if the entity is currently mounted and save that mount entity, then dismount
+   local parent = radiant.entities.get_parent(self._entity)
+   local mount_component = parent and parent:get_component('stonehearth:mount')
+   if mount_component and mount_component:is_in_use() and mount_component:get_user() == self._entity then
+      self._sv._suspended_mount = parent
+      self._sv._suspended_mount_location = mount_component:get_dismount_location()
+      mount_component:dismount()
+   end
+end
+
+function AceAIComponent:town_continued()
+   -- try to remount a formerly dismounted entity, if possible
+   local mount = self._sv._suspended_mount
+   
+   if mount then
+      local mount_component = mount:get_component('stonehearth:mount')
+      if mount_component then
+         if self._sv._suspended_mount_location then
+            -- need to first move the entity to where it had been
+            -- so when it later dismounts, it'll be in an appropriate location
+            radiant.terrain.place_entity(self._entity, self._sv._suspended_mount_location)
+         end
+         mount_component:mount(self._entity)
+      end
+   end
+
+   self._sv._suspended_mount = nil
+   self._sv._suspended_mount_location = nil
+end
+
 return AceAIComponent

@@ -10,6 +10,7 @@ end
 ]]
 function SuspendableComponent:activate()
    self._components = {
+      'stonehearth:ai',
       'stonehearth:farmer_field',
    }
 end

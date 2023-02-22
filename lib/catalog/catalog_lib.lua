@@ -21,6 +21,12 @@ local DEFAULT_CATALOG_DATA = {
    iconic_uri = nil
 }
 
+local TRACK_MATERIALS = false
+local _total_materials = 0
+local _total_combinations = 0
+local _max_materials = 0
+local _total_entities = 0
+
 function catalog_lib.load_catalog(catalog, added_cb)
    local mods = radiant.resources.get_mod_list()
 
@@ -116,6 +122,11 @@ function catalog_lib.load_catalog(catalog, added_cb)
             end
          end
       end
+   end
+
+   if TRACK_MATERIALS then
+      log:debug('finished loading catalog: total entities = %s, max materials = %s, avg materials = %s, total (avg) combinations = %s (%s)',
+            _total_entities, _max_materials, _total_materials / _total_entities, _total_combinations, _total_combinations / _total_entities)
    end
 
    return catalog
@@ -359,11 +370,13 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          end
       end
 
-      if entity_data['stonehearth:food_container'] and entity_data['stonehearth:food_container'].food then
-         local stacks_per_serving = entity_data['stonehearth:food_container'].stacks_per_serving or 1
-         catalog_data.food_servings = math.ceil(stacks / math.max(1, stacks_per_serving))
-         local food_json = radiant.resources.load_json(entity_data['stonehearth:food_container'].food)
+      if entity_data['stonehearth:food_container'] then
+         local food_uri = entity_data['stonehearth:food_container'].food
+         local food_json = food_uri and radiant.resources.load_json(food_uri)
          if food_json and food_json.entity_data and food_json.entity_data['stonehearth:food'] then
+            local stacks_per_serving = entity_data['stonehearth:food_container'].stacks_per_serving or 1
+            catalog_data.food_servings = math.ceil(stacks / math.max(1, stacks_per_serving))
+            
             local food = food_json.entity_data['stonehearth:food']
             if food.applied_buffs then
                catalog_data.consumable_buffs = catalog_lib.get_buffs(food.applied_buffs)
@@ -371,14 +384,18 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
             local satisfaction = food['stonehearth:sitting_on_chair'] or food.default
             catalog_data.food_satisfaction = satisfaction and satisfaction.satisfaction
             catalog_data.food_quality = food.quality
+         else
+            log:error('%s food from container %s isn\'t real food!', tostring(food_uri), full_alias)
          end
       end
 		
-      if entity_data['stonehearth_ace:drink_container'] and entity_data['stonehearth_ace:drink_container'].drink then
-         local stacks_per_serving = entity_data['stonehearth_ace:drink_container'].stacks_per_serving or 1
-         catalog_data.drink_servings = math.ceil(stacks / math.max(1, stacks_per_serving))
-         local drink_json = radiant.resources.load_json(entity_data['stonehearth_ace:drink_container'].drink)
+      if entity_data['stonehearth_ace:drink_container'] then
+         local drink_uri = entity_data['stonehearth_ace:drink_container'].drink
+         local drink_json = drink_uri and radiant.resources.load_json(drink_uri)
          if drink_json and drink_json.entity_data and drink_json.entity_data['stonehearth_ace:drink'] then
+            local stacks_per_serving = entity_data['stonehearth_ace:drink_container'].stacks_per_serving or 1
+            catalog_data.drink_servings = math.ceil(stacks / math.max(1, stacks_per_serving))
+         
             local drink = drink_json.entity_data['stonehearth_ace:drink']
             if drink.applied_buffs then
                catalog_data.consumable_buffs = catalog_lib.get_buffs(drink.applied_buffs)
@@ -386,6 +403,8 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
             local satisfaction = drink['stonehearth:sitting_on_chair'] or drink.default
             catalog_data.drink_satisfaction = satisfaction and satisfaction.satisfaction
             catalog_data.drink_quality = drink.quality
+         else
+            log:error('%s drink from container %s isn\'t a real drink!', tostring(drink_uri), full_alias)
          end
       end
 
@@ -407,6 +426,16 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
       if mod ~= 'radiant' and mod ~= 'stonehearth' and mod ~= 'rayyas_children' and mod ~= 'northern_alliance' and
             mod ~= 'debugtools' and mod ~= 'stonehearth_ace' then
          log:error('%s has no materials', full_alias)
+      end
+   elseif TRACK_MATERIALS then
+      local mats = type(catalog_data.materials) == 'string' and radiant.util.split_string(catalog_data.materials) or catalog_data.materials
+      _total_entities = _total_entities + 1
+      _total_materials = _total_materials + #mats
+      _total_combinations = _total_combinations + 2 ^ #mats
+      _max_materials = math.max(_max_materials, #mats)
+
+      if #mats > 7 then
+         --log:debug('high materials (%s) entity %s : %s', #mats, full_alias, table.concat(mats, ' '))
       end
    end
 

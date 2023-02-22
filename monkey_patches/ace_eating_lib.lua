@@ -29,6 +29,7 @@ function AceEatingLib.is_edible(food_stuff)
    local food = container_data.food
 
    if not stonehearth.catalog:is_material(food, 'food') then
+      --log:error('%s food from container %s isn\'t real food!', tostring(food), food_stuff)
       return false
    end
 

@@ -8,6 +8,8 @@ PetEatFoodContainerFromStorage.think_output = {
 }
 PetEatFoodContainerFromStorage.priority = 0
 
+local log = radiant.log.create_logger('pet_eat_food_container_from_storage')
+
 local function make_food_container_filter(owner_id, food_preferences)
    return stonehearth.ai:filter_from_key('food_container_filter', tostring(food_preferences) .. ":" .. owner_id,
       function(food_container)
@@ -24,6 +26,12 @@ local function make_food_container_filter(owner_id, food_preferences)
             return false
          end
 			local food = container_data.food
+
+         if not stonehearth.catalog:is_material(food, 'food') then
+            --log:error('%s food from container %s isn\'t real food!', tostring(food), food_container)
+            return false
+         end
+
 			local food_data = radiant.entities.get_entity_data(food, 'stonehearth:food', false)
 
 			if not food_data or not food_data.default then

@@ -709,16 +709,22 @@ end
 
 AceTown._ace_old_suspend_town = Town.suspend_town
 function AceTown:suspend_town()
-   self:_ace_old_suspend_town()
+   -- we're already suspended! don't double-suspend
+   -- can happen if client fails to connect and then later succeeds
+   if self._sv._is_suspended then
+      return
+   end
 
    self:_suspend_suspendable_entities()
+
+   self:_ace_old_suspend_town()
 end
 
 AceTown._ace_old_continue_town = Town.continue_town
 function AceTown:continue_town()
-   self:_continue_suspendable_entities()
-
    self:_ace_old_continue_town()
+   
+   self:_continue_suspendable_entities()
 end
 
 function AceTown:register_suspendable_entity(entity)
@@ -751,6 +757,41 @@ function AceTown:_continue_suspendable_entities()
    for _, entity in pairs(self._suspendable_entities) do
       local suspendable = entity:get_component('stonehearth_ace:suspendable')
       suspendable:town_continued()
+   end
+end
+
+function AceTown:_suspend_animal(animal_id, animal)
+   -- check if the animal has an ai component - if not, it's an egg (or something similar) that can't be sent away
+   if animal:get_component('stonehearth:ai') then
+      if radiant.entities.get_world_location(animal) then
+         radiant.terrain.remove_entity(animal)
+      end
+
+      -- ACE: don't double-inject ai
+      if not self._injected_ai[animal_id] then
+         self._injected_ai[animal_id] = stonehearth.ai:inject_ai(animal, { actions = { 'stonehearth:actions:be_away_from_town' } })
+      end
+
+      local renewable_resource_component = animal:get_component('stonehearth:renewable_resource_node')
+      if renewable_resource_component then
+         renewable_resource_component:pause_resource_timer()
+      end
+
+      local pasture_tag = animal:get_component('stonehearth:equipment'):has_item_type('stonehearth:pasture_equipment:tag')
+      if pasture_tag then
+         local shepherded_component = pasture_tag:get_component('stonehearth:shepherded_animal')
+         if shepherded_component:get_following() then
+            local shepherd = shepherded_component:get_last_shepherd()
+            local shepherd_class = shepherd:get_component('stonehearth:job'):get_curr_job_controller()
+            shepherd_class:remove_trailing_animal(animal_id)
+
+            shepherded_component:set_following(false)
+         end
+      end
+
+      if not radiant.entities.has_buff(animal, SUSPENDED_BUFF) then
+         radiant.entities.add_buff(animal, SUSPENDED_BUFF)
+      end
    end
 end
 
@@ -799,13 +840,6 @@ function AceTown:_prepare_citizen_for_dispatch(citizen_id, citizen)
    local crafter_component = citizen:get_component('stonehearth:crafter')
    if crafter_component then
       crafter_component:clean_up_order()
-   end
-
-   -- if they're currently in bed or some other mount, remove them from that
-   local parent = radiant.entities.get_parent(citizen)
-   local mount_component = parent and parent:get_component('stonehearth:mount')
-   if mount_component and mount_component:is_in_use() and mount_component:get_user() == citizen then
-      mount_component:dismount(false)  -- false to not put them back in the world
    end
 end
 
