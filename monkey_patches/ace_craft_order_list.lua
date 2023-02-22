@@ -205,6 +205,46 @@ function AceCraftOrderList:request_order_of(player_id, recipe_info, produces, am
    return recipe_info.order_list:add_order(player_id, recipe_info.recipe, condition, building, associated_orders)
 end
 
+-- ACE: when changing order, consider clearing stuck order status of affected orders
+AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_command
+function AceCraftOrderList:change_order_position_command(session, response, new, id)
+   local i = self:find_index_of(id)
+   if i then
+      local order = self._sv.orders[i]
+      table.remove(self._sv.orders, i)
+      local next_index = #self._sv.orders + 1
+      if new > next_index then
+         -- If new index is more than number of orders put it at the end of the list.
+         new = next_index
+      end
+
+      if new < 1 then
+         new = 1
+      end
+
+      -- if moving down and we weren't stuck, unstuck all orders above new index
+      -- if moving up above any non-stuck orders and we were stuck, unstuck this
+      if new > i and not self._stuck_orders[id] then
+         for j = i, new - 1 do
+            self._stuck_orders[self._sv.orders[j]:get_id()] = nil
+         end
+      elseif new < i and self._stuck_orders[id] then
+         for j = new, i - 1 do
+            if not self._stuck_orders[self._sv.orders[j]:get_id()] then
+               self._stuck_orders[id] = nil
+               break
+            end
+         end
+      end
+
+      table.insert(self._sv.orders, new, order)
+      --TODO: comment out when you've fixed the drag/drop problem
+      self:_on_order_list_changed()
+      return true
+   end
+   return false
+end
+
 -- ACE: amount is an optional parameter that refers to the amount of primary products, not the quantity of recipes
 -- e.g., if a recipe would produce 4 fence posts and you have 2 of the recipe queued, reducing by 1 alone would not change anything
 function AceCraftOrderList:remove_order(order_id, amount, remove_associated)

@@ -2,6 +2,7 @@ local Entity = _radiant.om.Entity
 local Point3 = _radiant.csg.Point3
 local Material = require 'components.material.material'
 local log = radiant.log.create_logger('catalog')
+local log_mods = radiant.resources.load_json('stonehearth_ace/lib/catalog/catalog_logging.json').mods
 
 local catalog_lib = {}
 local _all_alternate_uris = {}
@@ -423,8 +424,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
 
    if not catalog_data.materials then
       -- assume everything in the base game (and ACE) that should have materials does
-      if mod ~= 'radiant' and mod ~= 'stonehearth' and mod ~= 'rayyas_children' and mod ~= 'northern_alliance' and
-            mod ~= 'debugtools' and mod ~= 'stonehearth_ace' then
+      if log_mods[mod] ~= false then
          log:error('%s has no materials', full_alias)
       end
    elseif TRACK_MATERIALS then
