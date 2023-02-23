@@ -136,7 +136,8 @@ function AceEatingLib.make_food_rater(food_preferences, food_intolerances, hour_
    local min = stonehearth.constants.food_qualities.MINIMUM_VIABLE
    local range = stonehearth.constants.food_qualities.MAXIMUM - min
    return function(item)
-      return (AceEatingLib.get_quality(item, food_preferences, food_intolerances, hour_type, weather_type) - min) / range
+      local quality = AceEatingLib.get_quality(item, food_preferences, food_intolerances, hour_type, weather_type) or min
+      return (quality - min) / range
    end
 end
 

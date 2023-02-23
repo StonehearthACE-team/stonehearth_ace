@@ -8,10 +8,18 @@ AceBuffsComponent._ace_old_create = BuffsComponent.create
 function AceBuffsComponent:create()
    self:_ace_old_create()
    self._is_create = true
+
+   self:_pre_activate()
 end
 
-AceBuffsComponent._ace_old_activate = BuffsComponent.activate
-function AceBuffsComponent:activate()
+AceBuffsComponent._ace_old_restore = BuffsComponent.restore
+function AceBuffsComponent:restore()
+   self:_ace_old_restore()
+
+   self:_pre_activate()
+end
+
+function AceBuffsComponent:_pre_activate()
    if not self._sv.disallowed_buffs then
       self._sv.disallowed_buffs = {}
    end
@@ -27,7 +35,10 @@ function AceBuffsComponent:activate()
    if not self._sv.managed_properties then
       self._sv.managed_properties = {}
    end
+end
 
+AceBuffsComponent._ace_old_activate = BuffsComponent.activate
+function AceBuffsComponent:activate()
    if self._ace_old_activate then
       self:_ace_old_activate()
    end

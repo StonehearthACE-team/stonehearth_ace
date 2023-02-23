@@ -57,6 +57,11 @@ function AceStorageComponent:activate()
       return
    end
 
+   -- whenever a storage filter checks for any contained entities that match a filter,
+   -- cache those results and update them on individual item removals and additions
+   self._storage_filter_cache = {}
+   self._num_storage_filter_caches = 0
+
    self:_ace_old_activate()
    
    local json = radiant.entities.get_json(self) or {}
@@ -153,6 +158,9 @@ function AceStorageComponent:destroy()
 
    log:debug('%s destroying...', self._entity)
 
+   self._storage_filter_cache = {}
+   self._num_storage_filter_caches = 0
+
    self:_ace_old_destroy()
 end
 
@@ -169,6 +177,100 @@ function AceStorageComponent:_on_contents_changed()
 	end
 
    stonehearth_ace.universal_storage:storage_contents_changed(self._entity, self:is_empty())
+end
+
+function AceStorageComponent:_get_filter_cache(filter_fn)
+   local cache = self._storage_filter_cache[filter_fn]
+   if not cache then
+      cache = {
+         passed = {},
+         failed = {},
+         untested = radiant.shallow_copy(self._sv.items),
+      }
+      self._storage_filter_cache[filter_fn] = cache
+      self._num_storage_filter_caches = self._num_storage_filter_caches + 1
+   end
+
+   return cache
+end
+
+function AceStorageComponent:reconsider_entity_in_filter_caches(item_id, item)
+   for filter_fn, cache in pairs(self._storage_filter_cache) do
+      cache.passed[item_id] = nil
+      cache.failed[item_id] = nil
+      cache.untested[item_id] = item
+   end
+end
+
+function AceStorageComponent:storage_contains_filter_fn(filter_fn)
+   local cache = self:_get_filter_cache(filter_fn)
+   
+   -- if we already pass, return true
+   if next(cache.passed) then
+      return true
+   end
+
+   -- otherwise, if we have no untested items, return false
+   if not next(cache.untested) then
+      return false
+   end
+
+   -- otherwise, go through all the untested items and test them now
+   -- stopping early if we find a passing item
+   local ai_service = stonehearth.ai
+   local passed, failed, untested = cache.passed, cache.failed, cache.untested
+   for id, item in pairs(untested) do
+      rawset(untested, id, nil)
+      if ai_service:fast_call_filter_fn(filter_fn, item) then
+         rawset(passed, id, item)
+         rawset(failed, id, nil)
+         return true
+      else
+         rawset(passed, id, nil)
+         rawset(failed, id, true)
+      end
+   end
+
+   return next(passed) ~= nil
+end
+
+-- this duplicates a lot of code from the above storage_contains_filter_fn() function,
+-- but this is a performance hotspot
+-- the is_max_rating_fn should be used locally to record actual item ratings / best item
+function AceStorageComponent:eval_best_passing_item(filter_fn, is_max_rating_fn)
+   local cache = self:_get_filter_cache(filter_fn)
+   local passed, failed, untested = cache.passed, cache.failed, cache.untested
+
+   -- first process through all passed items
+   for id, item in pairs(passed) do
+      if is_max_rating_fn(id, item) then
+         return true
+      end
+   end
+
+   -- if we have no untested items, return false
+   if not next(untested) then
+      return false
+   end
+   
+   -- if we haven't gotten a max rating item yet, test the untested
+   -- stopping early if we find a max rating passing item
+   local ai_service = stonehearth.ai
+   for id, item in pairs(untested) do
+      rawset(untested, id, nil)
+      if ai_service:fast_call_filter_fn(filter_fn, item) then
+         rawset(passed, id, item)
+         rawset(failed, id, nil)
+         if is_max_rating_fn(id, item) then
+            return true
+         end
+      else
+         rawset(passed, id, nil)
+         rawset(failed, id, true)
+      end
+   end
+
+   return next(passed) ~= nil
 end
 
 function AceStorageComponent:get_limited_all_filter()
@@ -250,6 +352,9 @@ function AceStorageComponent:drop_all(fallback_location, priority_location)
          table.insert(items, item)
       end
    end
+
+   self._storage_filter_cache = {}
+   self._num_storage_filter_caches = 0
 
    local get_player_id = radiant.entities.get_player_id
    for _, item in ipairs(items) do
@@ -402,6 +507,7 @@ function AceStorageComponent:remove_item(id, inventory_predestroy, owner_player_
 
       if item:is_valid() then
          stonehearth.ai:reconsider_entity(item, 'removed item from storage')
+         self:reconsider_entity_in_filter_caches(id, nil)
 
          -- Note: We need to reconsider the storage container here because the item is no longer part of storage
          -- and therefore the ai service will not automatically reconsider the storage.

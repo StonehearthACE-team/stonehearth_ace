@@ -254,7 +254,7 @@ function AceCombatService:_get_nearby_non_max_level_combat_units(target, attacke
 
    for id, unit in pairs(units) do
       local job_component = unit:get_component('stonehearth:job')
-      if not job_component:is_max_level() and job_component:has_role('combat') then
+      if job_component and not job_component:is_max_level() and job_component:has_role('combat') then
          combat_units[id] = unit
          count = count + 1
       end

@@ -1,4 +1,5 @@
 -- ACE: add ignore_leases handling for entities within the storage (no point deciding on a storage if we can't lease any of its items)
+-- also implement smart caching
 
 local Path = _radiant.sim.Path
 local Entity = _radiant.om.Entity
@@ -53,22 +54,7 @@ local function make_storage_filter_fn(entity, args_filter_fn, owner_player_id, i
             return false
          end
 
-         -- cache these upvalues for the loop
-         local ai_service = stonehearth.ai
-         for _, item in pairs(storage_comp:get_items()) do
-            if ai_service:fast_call_filter_fn(args_filter_fn, item) then
-               return true
-               -- !!! can't do lease checking because the hearthling entity isn't part of the filter_fn key
-               -- !!! so multiple entities use the same filter_fn and get conflicting results on the lease
-               -- if ignore_leases or stonehearth.ai:can_acquire_ai_lease(item, entity, owner_player_id) then
-               --    return true
-               -- else
-               --    log:debug('%s can\'t acquire lease on %s matching filter_fn %s', entity, item, args_filter_fn)
-               -- end
-            end
-         end
-
-         return false
+         return storage_comp:storage_contains_filter_fn(args_filter_fn)
       end
 end
 
@@ -79,17 +65,17 @@ local function make_storage_rating_fn(item_filter_fn, item_rating_fn)
             local storage_location = radiant.entities.get_world_grid_location(storage_entity)
 
             local best_rating = 0
-            for _, item in pairs(storage:get_items()) do
-               if item_filter_fn(item) then
+            local is_max_rating_fn = function(id, item)
                   local rating = item_rating_fn(item, entity, nil, storage_location)  -- HACK: 3rd/4th args only used by InventoryService.rate_item().
                   if rating > best_rating then
                      best_rating = rating
                      if rating == 1 then
-                        break
+                        return true
                      end
                   end
                end
-            end
+            
+            storage:eval_best_passing_item(item_filter_fn, is_max_rating_fn)
 
             return best_rating
          end
