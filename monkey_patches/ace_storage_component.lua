@@ -184,7 +184,7 @@ function AceStorageComponent:_get_filter_cache(filter_fn)
    if not cache then
       cache = {
          passed = {},
-         failed = {},
+         --failed = {},
          untested = radiant.shallow_copy(self._sv.items),
       }
       self._storage_filter_cache[filter_fn] = cache
@@ -196,18 +196,25 @@ end
 
 function AceStorageComponent:reconsider_entity_in_filter_caches(item_id, item)
    for filter_fn, cache in pairs(self._storage_filter_cache) do
-      cache.passed[item_id] = nil
-      cache.failed[item_id] = nil
-      cache.untested[item_id] = item
+      rawset(cache.passed, item_id, nil)
+      --cache.failed[item_id] = nil
+      rawset(cache.untested, item_id, item)
    end
 end
 
 function AceStorageComponent:storage_contains_filter_fn(filter_fn)
    local cache = self:_get_filter_cache(filter_fn)
+   --local passed, failed, untested = cache.passed, cache.failed, cache.untested
+   local passed, untested = cache.passed, cache.untested
    
    -- if we already pass, return true
-   if next(cache.passed) then
-      return true
+   -- we have to process through in case the items have been destroyed and are no longer valid
+   for id, item in pairs(passed) do
+      if item:is_valid() then
+         return true
+      else
+         rawset(passed, id, nil)
+      end
    end
 
    -- otherwise, if we have no untested items, return false
@@ -218,20 +225,19 @@ function AceStorageComponent:storage_contains_filter_fn(filter_fn)
    -- otherwise, go through all the untested items and test them now
    -- stopping early if we find a passing item
    local ai_service = stonehearth.ai
-   local passed, failed, untested = cache.passed, cache.failed, cache.untested
    for id, item in pairs(untested) do
       rawset(untested, id, nil)
       if ai_service:fast_call_filter_fn(filter_fn, item) then
          rawset(passed, id, item)
-         rawset(failed, id, nil)
+         --rawset(failed, id, nil)
          return true
-      else
-         rawset(passed, id, nil)
-         rawset(failed, id, true)
+      --else
+         --rawset(passed, id, nil)
+         --rawset(failed, id, true)
       end
    end
 
-   return next(passed) ~= nil
+   return false
 end
 
 -- this duplicates a lot of code from the above storage_contains_filter_fn() function,
@@ -239,18 +245,23 @@ end
 -- the is_max_rating_fn should be used locally to record actual item ratings / best item
 function AceStorageComponent:eval_best_passing_item(filter_fn, is_max_rating_fn)
    local cache = self:_get_filter_cache(filter_fn)
-   local passed, failed, untested = cache.passed, cache.failed, cache.untested
+   --local passed, failed, untested = cache.passed, cache.failed, cache.untested
+   local passed, untested = cache.passed, cache.untested
 
    -- first process through all passed items
    for id, item in pairs(passed) do
-      if is_max_rating_fn(id, item) then
-         return true
+      if item:is_valid() then
+         if is_max_rating_fn(id, item) then
+            return
+         end
+      else
+         rawset(passed, id, nil)
       end
    end
 
    -- if we have no untested items, return false
    if not next(untested) then
-      return false
+      return
    end
    
    -- if we haven't gotten a max rating item yet, test the untested
@@ -260,17 +271,17 @@ function AceStorageComponent:eval_best_passing_item(filter_fn, is_max_rating_fn)
       rawset(untested, id, nil)
       if ai_service:fast_call_filter_fn(filter_fn, item) then
          rawset(passed, id, item)
-         rawset(failed, id, nil)
+         --rawset(failed, id, nil)
          if is_max_rating_fn(id, item) then
             return true
          end
-      else
-         rawset(passed, id, nil)
-         rawset(failed, id, true)
+      --else
+         --rawset(passed, id, nil)
+         --rawset(failed, id, true)
       end
    end
 
-   return next(passed) ~= nil
+   return
 end
 
 function AceStorageComponent:get_limited_all_filter()
