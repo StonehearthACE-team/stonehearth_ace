@@ -103,6 +103,7 @@ local monkey_patches = {
    ace_game_master_lib = 'stonehearth.lib.game_master.game_master_lib',
    ace_game_speed_service = 'stonehearth.services.server.game_speed.game_speed_service',
    ace_geomancer = 'stonehearth.jobs.geomancer.geomancer',
+   ace_get_nearby_items_action = 'stonehearth.ai.actions.get_nearby_items_action',
    ace_get_patrol_route_action = 'stonehearth.ai.actions.get_patrol_route_action',
    ace_ghost_form_component = 'stonehearth.components.ghost_form.ghost_form_component',
    ace_growing_component = 'stonehearth.components.growing.growing_component',
