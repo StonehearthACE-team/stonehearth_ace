@@ -1,4 +1,7 @@
 {
+   "mixintypes": {
+      "task_groups": "override"
+   },
    "description": "i18n(stonehearth_ace:jobs.weaver.weaver_description.description)",
    "talisman_uris": {
       "stonehearth:weaver:talisman": true
@@ -10,6 +13,12 @@
 		]
    },
 	"task_groups": [
+      "stonehearth:task_groups:common_tasks",
+      "stonehearth:task_groups:restock",
+      "stonehearth:task_groups:placement",
+      "stonehearth:task_groups:rescue",
+      "stonehearth:task_groups:crafting",
+      "stonehearth:task_groups:town_alert",
       "stonehearth_ace:task_groups:transform",
       "stonehearth:task_groups:repairing"
    ],

@@ -48,7 +48,8 @@ App.StonehearthCitizensView = App.View.extend({
    stats: [
       'mind',
       'body',
-      'spirit'
+      'spirit',
+      'health',
    ],
 
    init: function() {
@@ -375,9 +376,12 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
       self._jobDisplayName = null;
 
       radiant.each(self.taskView.stats, function(i, stat) {
-         App.tooltipHelper.createDynamicTooltip(self.$('.' + stat), function () {
-            return $(App.tooltipHelper.getTooltip(stat));
-         });
+         var statDiv = self.$('.' + stat);
+         if (statDiv) {
+            App.tooltipHelper.createDynamicTooltip(statDiv, function () {
+               return $(App.tooltipHelper.getTooltip(stat));
+            });
+         }
       });
 
       self.$()[0].setAttribute('data-citizen-id', self.get('citizenId'));

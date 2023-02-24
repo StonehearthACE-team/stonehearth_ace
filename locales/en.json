@@ -22771,9 +22771,6 @@
             "title": "Mercantile Overview"
          },
          "citizens": {
-            "workers_list_headers": {
-               "health": "Health"
-            },
             "health_tooltips": {
                "dying_title": "Incapacitated!",
                "dying_description": "If I'm not rescued soon, I will die!<br>[str(value)]% guts remaining",
@@ -23791,6 +23788,10 @@
                "bullet_points": {
                   "000": "The value itself represents a bonus percentage added over every experience gain."
                }
+            },
+            "health": {
+               "display_name": "Health",
+               "description": "DANI, PUT SOMETHING GENERIC ABOUT HEALTH STATUS HERE, it's for the citizens view column header."
             }
          },
          "constants": {
