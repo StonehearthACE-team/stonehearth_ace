@@ -94,13 +94,13 @@ function AceReturningTrader:_get_desired_items()
       -- or an unowned craftable item where we have at least one of each ingredient
       -- otherwise, set fallback item to an item not in our inventory and ask for the min amount
       -- otherwise, set fallback item to an item that *is* in our inventory, but use max amount
-      if (inventory_data_for_item and inventory_data_for_item.count < max) or
+      if (inventory_data_for_item and inventory_data_for_item.count < wanted_item.max) or
             (not inventory_data_for_item and self:_is_item_craftable(inventory, jobs_controller, uri)) then
-         local proposed_number = math.max(inventory_data_for_item.count + 1, rng:get_int(min, max - 1))
-         available:add({wanted_item_uri, proposed_number}, wanted_item.weight or 1)
+         local proposed_number = math.max((inventory_data_for_item and inventory_data_for_item.count + 1) or 1, rng:get_int(wanted_item.min, wanted_item.max - 1))
+         available:add({wanted_item.uri, proposed_number}, wanted_item.weight or 1)
       elseif not inventory_data_for_item then
          table.insert(fallback, {uri, wanted_item.min})
-      elseif inventory_data_for_item.count >= max then
+      elseif inventory_data_for_item.count >= wanted_item.max then
          table.insert(fallback2, {uri, wanted_item.max})
       end
    end
