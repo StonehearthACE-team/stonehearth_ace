@@ -955,13 +955,14 @@
                "raw_vegetables": "remove"
             },
             "turnip": {
-               "ordinal": 1
+               "ordinal": 1,
+               "filter": "raw_food turnip hearty"
             },
             "turnip_greens": {
                "ordinal": 1.1,
                "display_name": "i18n(stonehearth_ace:entities.food.turnip.turnip_greens_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/turnip/turnip_greens/turnip_greens/turnip_greens.png",
-               "filter": "raw_food turnip_greens"
+               "filter": "raw_food turnip leafy"
             },
             "carrot": {
                "ordinal": 2
@@ -983,13 +984,13 @@
                "ordinal": 7,
                "display_name": "i18n(stonehearth_ace:entities.food.beetroot.beetroot_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/beetroot/beetroot_basket/beetroot_basket.png",
-               "filter": "raw_food beetroot"
+               "filter": "raw_food beetroot hearty"
             },
             "beet_greens": {
                "ordinal": 7.1,
                "display_name": "i18n(stonehearth_ace:entities.food.beetroot.beet_greens_basket.display_name)",
                "icon": "/stonehearth_ace/entities/food/beetroot/beet_greens/beet_greens/beet_greens.png",
-               "filter": "raw_food beet_greens"
+               "filter": "raw_food beetroot leafy"
             },
             "cucumber": {
                "ordinal": 8,
@@ -1011,7 +1012,8 @@
             },
             "heirbloom": {
                "icon": "/stonehearth_ace/entities/food/heirbloom/heirbloom_basket/heirbloom_basket.png",
-               "ordinal": 10
+               "ordinal": 10,
+               "filter": "raw_food heirbloom savory"
             },
             "garlic": {
                "ordinal": 10.1,

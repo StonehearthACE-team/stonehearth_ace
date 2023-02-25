@@ -1,5 +1,4 @@
 {
-   "mixins": "stonehearth_ace:mixins:food_decay:savory",
    "components": {
       "model_variants": {
          "mixintypes": {
@@ -25,6 +24,18 @@
       }
    },
    "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 150,
+            "max": 220
+         },
+         "decay_stages": {
+            "decay_1": {
+               "trigger_decay_value": 48
+            }
+         },
+         "rotten_entity_alias": "stonehearth_ace:food:rotten:basket_savory"
+      },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.food.heirbloom.heirbloom_basket.display_name)",
          "description": "i18n(stonehearth_ace:entities.food.heirbloom.heirbloom_basket.description)",
