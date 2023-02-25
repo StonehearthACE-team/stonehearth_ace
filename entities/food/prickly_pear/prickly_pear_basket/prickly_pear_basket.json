@@ -1,5 +1,4 @@
 {
-   "mixins": "stonehearth_ace:mixins:food_decay:fruit",
    "components": {
       "model_variants": {
          "mixintypes": {
@@ -22,6 +21,18 @@
       }
    },
    "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 180,
+            "max": 240
+         },
+         "decay_stages": {
+            "decay_1": {
+               "trigger_decay_value": 24
+            }
+         },
+         "rotten_entity_alias": "stonehearth_ace:food:rotten:basket_fruit"
+      },
       "stonehearth:catalog": {
          "icon": "file(prickly_pear_basket.png)",
 			"mixintypes": {
