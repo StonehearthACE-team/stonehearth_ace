@@ -91,14 +91,17 @@ function healing_lib.cure_conditions(target, cures_conditions, reduce_rank)
 end
 
 function healing_lib.heal_target(healer, target, health, guts)
-   local current_health = radiant.entities.get_health(target)
-   if current_health > 0 then
-      local healed_amount = health * healing_lib.get_healing_multiplier(healer)
+   if radiant.entities.get_health(target) > 0 then
+      if health and health ~= 0 then
+         local healed_amount = health * healing_lib.get_healing_multiplier(healer)
 
-      radiant.entities.modify_health(target, healed_amount)
+         radiant.entities.modify_health(target, healed_amount)
+      end
    else
       local guts_healed = guts or 1
-      radiant.entities.modify_resource(target, 'guts', guts_healed)
+      if guts_healed ~= 0 then
+         radiant.entities.modify_resource(target, 'guts', guts_healed)
+      end
    end
 end
 
