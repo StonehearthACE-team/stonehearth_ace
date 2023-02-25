@@ -21,7 +21,11 @@ function SpawnFriendlyStranger:start(ctx, data)
 end
 
 function SpawnFriendlyStranger:restore()
-   if self._sv.is_leaving then
+   self._is_restore = true
+end
+
+function SpawnFriendlyStranger:post_activate()
+   if self._is_restore and self._sv.is_leaving then
       self:_despawn()
    end
 end
