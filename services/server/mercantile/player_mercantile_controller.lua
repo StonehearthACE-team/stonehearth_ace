@@ -228,18 +228,18 @@ function PlayerMercantile:determine_daily_merchants()
    end
 end
 
-function PlayerMercantile:_start_spawn_timer_on_load()
-   if #self._sv._merchants_to_spawn > 0 and self._sv.enabled then
-      -- if the current time is already past the depart time, cancel the whole thing
-      local now = stonehearth.calendar:get_seconds_since_last_midnight()
-      local depart_time = stonehearth.calendar:parse_time(mercantile_constants.DEPART_TIME)
-      if now >= depart_time then
-         self._sv._merchants_to_spawn = {}
-      else
-         self:_create_spawn_timer()
-      end
-   end
-end
+-- function PlayerMercantile:_start_spawn_timer_on_load()
+--    if #self._sv._merchants_to_spawn > 0 and self._sv.enabled then
+--       -- if the current time is already past the depart time, cancel the whole thing
+--       local now = stonehearth.calendar:get_seconds_since_last_midnight()
+--       local depart_time = stonehearth.calendar:parse_time(mercantile_constants.DEPART_TIME)
+--       if now >= depart_time then
+--          self._sv._merchants_to_spawn = {}
+--       else
+--          self:_create_spawn_timer()
+--       end
+--    end
+-- end
 
 function PlayerMercantile:_start_depart_timer()
    if #self._sv._merchants_to_depart > 0 then

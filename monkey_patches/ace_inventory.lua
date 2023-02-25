@@ -285,6 +285,33 @@ function AceInventory:set_storage_filter(storage_entity, filter)
    return filter_fn
 end
 
+-- optionally specify either the uri or the material of the item to find in storage
+function AceInventory:get_amount_in_storage(uri, material)
+   local tracking_data = self:get_item_tracker('stonehearth:usable_item_tracker')
+                                       :get_tracking_data()
+   local count = 0
+
+   if uri then
+      local item = uri
+      local entity_forms = radiant.entities.get_component_data(uri, 'stonehearth:entity_forms')
+      if entity_forms and entity_forms.iconic_form then
+         item = entity_forms.iconic_form
+      end
+
+      if tracking_data:contains(item) then
+         count = tracking_data:get(item).count
+      end
+   elseif material then
+      for _, item in tracking_data:each() do
+         if radiant.entities.is_material(item.first_item, material) then
+            count = count + item.count
+         end
+      end
+   end
+
+   return count
+end
+
 -- if storage is specified and combine_only, the number of remaining stacks that were unable to be added is returned (nil if none)
 -- otherwise, if any gold items were created, those are returned in a table (nil if none)
 function AceInventory:add_gold(amount, storage, combine_only)

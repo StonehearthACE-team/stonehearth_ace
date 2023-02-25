@@ -63,7 +63,27 @@ function AcePlayerJobsController:request_craft_product(product_uri, amount, buil
    -- and call that job_info controller only
    -- craft_order_list will need to be patched to call this then
    local products = not require_exact and radiant.entities.get_alternate_uris(product_uri) or {[product_uri] = true}
-   local selection = self:_get_recipe_info_from_products(products, amount)
+   local choices = self:_get_recipe_info_from_products(products, amount)
+
+   -- prefer craftable recipes (has job and level requirement)
+   table.sort(choices, function(a, b)
+      if a.can_craft and b.can_craft then
+         return a.cost < b.cost
+      elseif a.can_craft then
+         return true
+      elseif b.can_craft then
+         return false
+      elseif a.has_job and not b.has_job then
+         return true
+      elseif b.has_job and not a.has_job then
+         return false
+      else
+         return (a.recipe_info.recipe.level_requirement or 1) < (b.recipe_info.recipe.level_requirement or 1)
+      end
+   end)
+
+   -- select the "best" option
+   local selection = choices[1]
 
    if selection then
       local order = selection.recipe_info.order_list:request_order_of(
@@ -78,6 +98,29 @@ function AcePlayerJobsController:request_craft_product(product_uri, amount, buil
          end
       end
    end
+end
+
+function AcePlayerJobsController:get_craftable_recipes_for_product(product_uri, require_exact)
+   -- first try it with requiring exact; that way we don't default to a secondary option if the primary is available
+   if not require_exact then
+      local result = self:get_craftable_recipes_for_product(product_uri, true)
+      if result ~= nil then
+         return result
+      end
+   end
+
+   local products = not require_exact and radiant.entities.get_alternate_uris(product_uri) or {[product_uri] = true}
+   local choices = self:_get_recipe_info_from_products(products, 1)
+   local craftable = {}
+
+   for _, choice in ipairs(choices) do
+      if choice.can_craft and choice.has_job and
+            (choice.recipe_info.recipe.level_requirement or 1) <= choice.recipe_info.job_info:get_highest_level() then
+         table.insert(craftable, choice.recipe_info)
+      end
+   end
+
+   return craftable
 end
 
 -- Used to get a recipe if it can be used to craft `ingredient`.
@@ -107,24 +150,7 @@ function AcePlayerJobsController:_get_recipe_info_from_products(products, amount
       end
    end
 
-   -- prefer craftable recipes (has job and level requirement)
-   table.sort(choices, function(a, b)
-      if a.can_craft and b.can_craft then
-         return a.cost < b.cost
-      elseif a.can_craft then
-         return true
-      elseif b.can_craft then
-         return false
-      elseif a.has_job and not b.has_job then
-         return true
-      elseif b.has_job and not a.has_job then
-         return false
-      else
-         return (a.recipe_info.recipe.level_requirement or 1) < (b.recipe_info.recipe.level_requirement or 1)
-      end
-   end)
-
-   return choices[1]
+   return choices
 end
 
 function AcePlayerJobsController:_can_craft_recipe(inventory, recipe_info)

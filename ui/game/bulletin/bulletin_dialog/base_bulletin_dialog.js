@@ -79,6 +79,17 @@ App.StonehearthBaseBulletinDialog = App.View.extend({
       }
    }.observes('model.ui_view'),
 
+   _updateI18nData: function() {
+      var self = this;
+      var data = self.get('model.i18n_data.req_1');
+
+      Ember.run.scheduleOnce('afterRender', function() {
+         if (!data) {
+            self.$('.numCached').addClass('.noCache');
+         }
+      });
+   }.observes('model.i18n_data'),
+
    _callCallback: function(callback_key) {
       var self = this;
       var bulletin = self.get('model');

@@ -1,4 +1,7 @@
+local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
+local rng = _radiant.math.get_default_rng()
 local game_master_lib = require 'stonehearth.lib.game_master.game_master_lib'
+
 local ReturningTrader = require 'stonehearth.services.server.game_master.controllers.script_encounters.returning_trader_script'
 local AceReturningTrader = class()
 
@@ -73,9 +76,74 @@ function AceReturningTrader:_destroy_node()
    end
 end
 
+--- Returns the URI of the desired item, and the number of desired items
+function AceReturningTrader:_get_desired_items()
+   local inventory = stonehearth.inventory:get_inventory(self._sv._player_id)
+   local jobs_controller = stonehearth.job:get_jobs_controller(self._sv._player_id)
+
+   local available = WeightedSet(rng)
+   local fallback, fallback2 = {}, {}
+
+   for uri, wanted_item in pairs(self._sv._trade_info.wants) do
+      local data = radiant.entities.get_component_data(uri, 'stonehearth:entity_forms')
+      local item_real_uri = data and data.iconic_form or uri
+
+      local inventory_data_for_item = inventory:get_items_of_type(item_real_uri)
+      
+      -- try to find an owned item where the amount is less than the max possible items requested
+      -- or an unowned craftable item where we have at least one of each ingredient
+      -- otherwise, set fallback item to an item not in our inventory and ask for the min amount
+      -- otherwise, set fallback item to an item that *is* in our inventory, but use max amount
+      if (inventory_data_for_item and inventory_data_for_item.count < max) or
+            (not inventory_data_for_item and self:_is_item_craftable(inventory, jobs_controller, uri)) then
+         local proposed_number = math.max(inventory_data_for_item.count + 1, rng:get_int(min, max - 1))
+         available:add({wanted_item_uri, proposed_number}, wanted_item.weight or 1)
+      elseif not inventory_data_for_item then
+         table.insert(fallback, {uri, wanted_item.min})
+      elseif inventory_data_for_item.count >= max then
+         table.insert(fallback2, {uri, wanted_item.max})
+      end
+   end
+
+   if not available:is_empty() then
+      return unpack(available:choose_random())
+   elseif next(fallback) then
+      -- don't get picky, just choose one
+      return unpack(fallback[rng:get_int(1, #fallback)])
+   elseif next(fallback2) then
+      -- don't get picky, just choose one
+      return unpack(fallback2[rng:get_int(1, #fallback2)])
+   else
+      -- really? *none* of the listed items fit the bill? is that possible? just randomly select one then
+      local item_uri = self._sv._want_table[rng:get_int(1, #self._sv._want_table)]
+      return item_uri, self._sv._trade_info.wants[item_uri].min
+   end
+end
+
+function AceReturningTrader:_is_item_craftable(inventory, jobs_controller, uri)
+   local craftable = jobs_controller:get_craftable_recipes_for_product(uri)
+
+   -- check each ingredient to see if we have any in our inventory
+   for _, recipe_info in ipairs(craftable) do
+      local is_craftable = true
+      for _, ingredient in ipairs(recipe_info.recipe.ingredients) do
+         if inventory:get_amount_in_storage(ingredient.uri, ingredient.material) < 1 then
+            is_craftable = false
+            break
+         end
+      end
+
+      if is_craftable then
+         return true
+      end
+   end
+
+   return false
+end
+
 --- Given inventory data for a type of item, reserve N of those items
 -- ACE: prioritize reserving from quest storage
-function ReturningTrader:_reserve_items(inventory_data_for_item, num_desired)
+function AceReturningTrader:_reserve_items(inventory_data_for_item, num_desired)
    local num_reserved = 0
    local reserved = {}
    if self._sv._quest_storage then

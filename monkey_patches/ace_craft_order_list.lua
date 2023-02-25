@@ -58,7 +58,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
       local missing
       if condition.type == 'make' then
          local needed = condition.amount * ingredient.count
-         local in_storage = self:_get_ingredient_amount_in_storage(ingredient, inv)
+         local in_storage = inv:get_amount_in_storage(ingredient.uri, ingredient.material)
          -- Go through and combine the orders in all the order lists
          local in_order_list = {}
          for _, order_list in ipairs(crafter_info:get_order_lists()) do
