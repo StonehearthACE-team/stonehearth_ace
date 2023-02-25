@@ -262,6 +262,9 @@ function AceGameCreationService:create_camp_command(session, response, pt)
 
    radiant.events.trigger(radiant, 'stonehearth_ace:player_camp_placed', player_id)
 
+   -- clear out references to their reembarked pets
+
+
    return {random_town_name = random_town_name}
 end
 
@@ -271,6 +274,21 @@ function AceGameCreationService:generate_citizens_for_reembark_command(session, 
 
    local pop = stonehearth.population:get_population(session.player_id)
    local kingdom = pop:get_kingdom()
+
+   -- destroy any pets from previous reembark
+   local pets = self._reembark_pets
+   if not pets then
+      pets = {}
+      self._reembark_pets = pets
+   end
+
+   pets = pets[session.player_id]
+   if pets then
+      for _, pet in ipairs(pets) do
+         radiant.entities.destroy_entity(pet)
+      end
+   end
+   self._reembark_pets[session.player_id] = {}
 
    for index, citizen_spec in ipairs(reembark_spec.citizens) do
       local gender = citizen_spec.model_variant or stonehearth.constants.population.DEFAULT_GENDER
@@ -312,6 +330,7 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
 	self:_set_customizable_entity_data(citizen, citizen_spec)
 
    -- create pets before traits so traits can access them
+   local pets = self._reembark_pets[session.player_id]
    local pet_id_map = {}
    if citizen_spec.pets then
       for _, pet_data in ipairs(citizen_spec.pets) do
@@ -325,6 +344,7 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
                -- have to wait until after pet conversion, which changes the pet's name
                self:_set_customizable_entity_data(pet, pet_data)
                pet_id_map[pet_data.entity_id] = pet:get_id()
+               table.insert(pets, pet)
             end
          end
       end
