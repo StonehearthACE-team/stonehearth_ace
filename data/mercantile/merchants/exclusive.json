@@ -24,37 +24,37 @@
                   "material": "herb healing resource",
                   "price_factor": 3.5,
                   "max_quantity": 10,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "material": "herb soothing resource",
                   "price_factor": 3.5,
                   "max_quantity": 10,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "material": "herb noxious resource",
                   "price_factor": 3.5,
                   "max_quantity": 10,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "material": "herb mild resource",
                   "price_factor": 4,
                   "max_quantity": 12,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "material": "herb robust resource",
                   "price_factor": 4.5,
                   "max_quantity": 12,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "material": "herb peculiar resource",
                   "price_factor": 5,
                   "max_quantity": 12,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "material": "seed_hard",
@@ -79,6 +79,12 @@
                   "price_factor": 1.8,
                   "max_quantity": 6,
                   "chance": 0.6
+               },
+               {
+                  "uri": "stonehearth_ace:food:peasant_salad",
+                  "price_factor": 6,
+                  "max_quantity": 1,
+                  "chance": 0.1
                }
             ]
          },
@@ -123,13 +129,13 @@
                   "uri": "stonehearth:food:sugar:sugarbell_basket",
                   "price_factor": 1.4,
                   "max_quantity": 4,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "material": "grain",
                   "price_factor": 2,
                   "max_quantity": 8,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth:food:carrot:carrot_basket",
@@ -142,12 +148,6 @@
                   "price_factor": 1.6,
                   "max_quantity": 4,
                   "chance": 0.5
-               },
-               {
-                  "uri": "stonehearth_ace:food:megacrop:rabbit_feed",
-                  "price_factor": 1.4,
-                  "max_quantity": 2,
-                  "chance": 0.2
                },
                {
                   "uri": "stonehearth_ace:resources:herb:daisy",
@@ -165,7 +165,13 @@
                   "uri": "stonehearth:food:sugar",
                   "price_factor": 1.6,
                   "max_quantity": 6,
-                  "chance": 0.4
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:food:megacrop:rabbit_feed",
+                  "price_factor": 6,
+                  "max_quantity": 1,
+                  "chance": 0.1
                }
             ]
          }
@@ -201,13 +207,13 @@
                   "uri": "stonehearth_ace:food:nut_flour",
                   "price_factor": 1.5,
                   "max_quantity": 8,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth_ace:refined:yarn",
                   "price_factor": 1.8,
                   "max_quantity": 12,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "uri": "stonehearth_ace:resources:stone:marble_stone",
@@ -219,7 +225,7 @@
                   "uri": "stonehearth_ace:refined:fire_bricks",
                   "price_factor": 1.2,
                   "max_quantity": 6,
-                  "chance": 0.2
+                  "chance": 0.3
                },
                {
                   "uri": "stonehearth:refined:iron_ingot",
@@ -237,19 +243,25 @@
                   "uri": "stonehearth:food:sugar",
                   "price_factor": 1.4,
                   "max_quantity": 8,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "material": "grain",
                   "price_factor": 2.5,
                   "max_quantity": 8,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "material": "flour hard cooking_ingredient",
                   "price_factor": 1.6,
                   "max_quantity": 8,
-                  "chance": 0.4
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth_ace:drink:wine_cherry",
+                  "price_factor": 6,
+                  "max_quantity": 1,
+                  "chance": 0.1
                }
             ]
          }
@@ -279,19 +291,19 @@
                   "uri": "stonehearth:consumables:strength_tonic",
                   "price_factor": 1.5,
                   "max_quantity": 3,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth:consumables:energy_tonic",
                   "price_factor": 1.5,
                   "max_quantity": 3,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth:consumables:stamina_tonic",
                   "price_factor": 1.5,
                   "max_quantity": 3,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth:containers:small_crate",
@@ -315,7 +327,7 @@
                   "uri": "stonehearth_ace:tools:backpack_leather",
                   "price_factor": 1.4,
                   "max_quantity": 3,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "uri": "stonehearth_ace:tools:worker_tools_iron",
@@ -327,7 +339,13 @@
                   "uri": "stonehearth_ace:tools:worker_tools_steel",
                   "price_factor": 1.4,
                   "max_quantity": 4,
-                  "chance": 0.4
+                  "chance": 0.5
+               },
+               {
+                  "uri": "stonehearth:food:roast_poultry",
+                  "price_factor": 6,
+                  "max_quantity": 1,
+                  "chance": 0.1
                }
             ]
          },
@@ -363,32 +381,32 @@
                {
                   "uri": "stonehearth:loot:dusty_tome",
                   "price_factor": 1.8,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth:monsters:kobolds:loot:elite_bling_hat",
                   "price_factor": 1.8,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth:monsters:kobolds:loot:generals_bling_hat",
                   "price_factor": 1.8,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth:monsters:kobolds:loot:masters_bling_hat",
                   "price_factor": 1.8,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth:monsters:kobolds:loot:scout_bling_hat",
                   "price_factor": 1.8,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth_ace:loot:currency:forest",
                   "price_factor": 1.8,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "uri": "stonehearth_ace:loot:currency:goblin",
@@ -408,17 +426,23 @@
                {
                   "uri": "stonehearth_ace:loot:currency:titan",
                   "price_factor": 2,
-                  "chance": 0.25
+                  "chance": 0.35
                },
                {
                   "uri": "stonehearth_ace:loot:currency:dragon_cult",
                   "price_factor": 2,
-                  "chance": 0.25
+                  "chance": 0.35
                },
                {
                   "uri": "stonehearth_ace:loot:ancient_armor_fragment",
                   "price_factor": 2,
-                  "chance": 0.25
+                  "chance": 0.35
+               },
+               {
+                  "uri": "stonehearth_ace:food:honeybuns",
+                  "price_factor": 6,
+                  "max_quantity": 1,
+                  "chance": 0.1
                }
             ]
          },
@@ -480,13 +504,13 @@
                   "uri": "stonehearth_ace:refined:steel_plate",
                   "price_factor": 1.8,
                   "max_quantity": 10,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth_ace:refined:brass_plate",
                   "price_factor": 1.8,
                   "max_quantity": 10,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth:refined:iron_ingot",
@@ -510,13 +534,19 @@
                   "uri": "stonehearth_ace:refined:lock",
                   "price_factor": 2,
                   "max_quantity": 6,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "uri": "stonehearth_ace:tools:engineer_wrench_steel",
                   "price_factor": 2,
                   "max_quantity": 2,
                   "chance": 0.8
+               },
+               {
+                  "uri": "stonehearth_ace:food:poyo_nuggets",
+                  "price_factor": 6,
+                  "max_quantity": 1,
+                  "chance": 0.1
                }
             ]
          }
@@ -549,19 +579,19 @@
                   "uri": "stonehearth_ace:resources:stone:limestone_stone",
                   "price_factor": 3.5,
                   "max_quantity": 6,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth_ace:resources:stone:slate_stone",
                   "price_factor": 3.5,
                   "max_quantity": 6,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth_ace:resources:stone:sandstone_stone",
                   "price_factor": 3.5,
                   "max_quantity": 6,
-                  "chance": 0.3
+                  "chance": 0.4
                },
                {
                   "uri": "stonehearth_ace:resources:stone:marble_stone",
@@ -579,13 +609,19 @@
                   "material": "clay resource",
                   "price_factor": 2.5,
                   "max_quantity": 12,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "uri": "stonehearth_ace:resources:stone:feldspar_stone",
                   "price_factor": 3.5,
                   "max_quantity": 6,
-                  "chance": 0.3
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:food:fish_fingers",
+                  "price_factor": 6,
+                  "max_quantity": 1,
+                  "chance": 0.1
                }
             ]
          }
@@ -647,7 +683,7 @@
                   "material": "fiber resource",
                   "price_factor": 3,
                   "max_quantity": 8,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "uri": "stonehearth_ace:tools:farmer_hoe_iron",
@@ -665,13 +701,19 @@
                   "uri": "stonehearth_ace:consumables:fertilizer_upgrade",
                   "price_factor": 1.8,
                   "max_quantity": 6,
-                  "chance": 0.4
+                  "chance": 0.5
                },
                {
                   "uri": "stonehearth_ace:consumables:fertilizer_upgrade_2",
                   "price_factor": 1.8,
                   "max_quantity": 6,
-                  "chance": 0.3
+                  "chance": 0.4
+               },
+               {
+                  "uri": "stonehearth_ace:food:imperial_salad",
+                  "price_factor": 6,
+                  "max_quantity": 1,
+                  "chance": 0.1
                }
             ]
          }

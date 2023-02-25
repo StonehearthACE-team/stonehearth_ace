@@ -1,10 +1,19 @@
 {
-   "mixins": [
-      "stonehearth_ace:mixins:armor:medium_armor_helmet",
-      "stonehearth_ace:mixins:armor:resistance:helmet:low"
-   ],
-	"type": "entity",
-   "components": {},
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "helmet",
+         "render_type": "merge_with_model",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:armor_resistance:helmet:low",         
+            "stonehearth_ace:buffs:armor_medium",
+            "stonehearth_ace:buffs:weather:sunstroke_resist"
+         ],
+         "equipment_types": [
+            "helmet",
+            "medium_armor"
+         ]
+      }
+   },
    "entity_data": {
       "stonehearth:net_worth": {
          "rarity": "uncommon",
@@ -13,10 +22,10 @@
          }
       },
       "stonehearth:catalog": {
-	     "mixintypes": {
-			"material_tags": "override"
-		 },
-         "material_tags":["bronze", "armor", "helmet", "medium_armor", "ascendancy_made", "crafted", "stockpile_equipment"]
+	      "mixintypes": {
+			   "material_tags": "override"
+		   },
+         "material_tags":["bronze", "armor", "helmet", "medium_armor", "ascendancy_made", "crafted", "stockpile_equipment" ]
       }
    }
 }
