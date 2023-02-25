@@ -85,7 +85,10 @@ App.StonehearthBaseBulletinDialog = App.View.extend({
 
       Ember.run.scheduleOnce('afterRender', function() {
          if (!data) {
-            self.$('.numCached').addClass('noCache');
+            var cachedText = self.$('.numCached');
+            if (cachedText) {
+               cachedText.addClass('noCache');
+            }
          }
       });
    }.observes('model.i18n_data'),
