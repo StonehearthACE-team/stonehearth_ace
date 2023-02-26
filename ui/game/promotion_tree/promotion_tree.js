@@ -785,7 +785,7 @@ App.StonehearthPromotionTree = App.View.extend({
       var parents = self.getParentJobs(jobDescription);
       var parent_jobs = [];
       parents.forEach(parent_job => {
-         if (!self._citizenAllowedJobs || self._citizenAllowedJobs[jobDescription.parent_job]) {  // If we can't have the parent job, ignore that requirement.
+         if (!self._citizenAllowedJobs || self._citizenAllowedJobs[parent_job.job]) {  // If we can't have the parent job, ignore that requirement.
             parent_jobs.push(parent_job);
          }
       });
