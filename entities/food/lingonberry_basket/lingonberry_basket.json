@@ -16,19 +16,17 @@
       },
       "mob": {
          "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 1
       }
    },
    "entity_data": {
-      "stonehearth:food": {
-         "stonehearth:sitting_on_chair": {
-            "satisfaction": 10,
-            "drink_satisfaction": 10
-         },
-         "default": {
-            "satisfaction": 8,
-            "drink_satisfaction": 8
-         },
-         "quality": 2
+      "stonehearth:food_container": {
+         "food": "stonehearth_ace:food:lingonberry_serving",
+         "effect": "carry_pickup",
+         "stacks_per_serving": 1,
+         "require_reservation": true
       },
       "stonehearth:net_worth": {
          "value_in_gold": 1,
@@ -47,14 +45,14 @@
          "is_item": true,
          "category": "food",
          "material_tags": [
+            "food_container",
             "raw_food",
-            "fruit",
-            "berry",
+            "lingonberry",
             "vegetarian",
             "stockpile_raw_food",
             "breakfast_time"
          ],
-         "subject_override": "stonehearth_ace:plants:cherry_bush"
+         "subject_override": "stonehearth_ace:vines:lingonberry_bush"
       },
       "stonehearth:appeal": {
          "appeal": 1
