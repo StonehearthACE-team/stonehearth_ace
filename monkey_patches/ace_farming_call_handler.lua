@@ -25,6 +25,7 @@ end
 function AceFarmingCallHandler:_choose_new_field_location(session, response, field_type, biome_data)
    local bindings = _radiant.client.get_binding_system()
    local orig_rotation = rotation
+   local prev_box, prev_rotation, selector
    
    local max_elevation = biome_data.max_farm_elevation
    local min_elevation = biome_data.min_farm_elevation
@@ -99,12 +100,18 @@ function AceFarmingCallHandler:_choose_new_field_location(session, response, fie
       end
       return Point3(p0), Point3(p1)
    end
+
    local get_resolved_points_fn = get_proposed_points_fn
    if size.valid_x or size.valid_y then
       -- if size specifies only specific valid x/y dimensions, limit to those
       get_resolved_points_fn = function(p0, p1)
          if not p0 or not p1 then
             return nil, nil
+         end
+
+         -- if we haven't selected the second point yet, just return the original (identical) points
+         if not selector:is_state('p0_selected') then
+            return Point3(p0), Point3(p1)
          end
          
          -- get current size; have to consider rotation
@@ -139,7 +146,6 @@ function AceFarmingCallHandler:_choose_new_field_location(session, response, fie
       end
    end
 
-   local prev_box, prev_rotation, selector
    selector = stonehearth.selection:select_designation_region(stonehearth.constants.xz_region_reasons.NEW_FIELD)
       :set_min_size(size.min or 1)
       :set_max_size(max_size)
@@ -167,7 +173,7 @@ function AceFarmingCallHandler:_choose_new_field_location(session, response, fie
 
             -- now add/remove crop entities based on size
             -- only adjust them if the selection box has actually changed size
-            if xz_region_selector._state == 'p0_selected' and (not prev_box or prev_box.min ~= box.min or prev_box.max ~= box.max or prev_rotation ~= rotation) then
+            if xz_region_selector:is_state('p0_selected') and (not prev_box or prev_box.min ~= box.min or prev_box.max ~= box.max or prev_rotation ~= rotation) then
                prev_box = box
                prev_rotation = rotation
 
@@ -235,6 +241,9 @@ function AceFarmingCallHandler:_choose_new_field_location(session, response, fie
          local is_valid = valid_terrain[kind] or valid_terrain[name]
          return is_valid
       end)
+      :restart(function(selector)
+            hide_crop_nodes()
+         end)
       :done(function(selector, box)
             local size = {
                x = box.max.x - box.min.x,

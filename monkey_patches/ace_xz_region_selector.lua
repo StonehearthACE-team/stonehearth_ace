@@ -12,7 +12,7 @@ local AceXZRegionSelector = class()
 local log = radiant.log.create_logger('xz_region_selector')
 
 local INTERSECTION_NODE_NAME = 'xz region selector intersection node'
-local MAX_RESONABLE_DRAG_DISTANCE = 512
+local MAX_REASONABLE_DRAG_DISTANCE = 512
 local MODEL_OFFSET = Point3(-0.5, 0, -0.5)
 
 AceXZRegionSelector._ace_old___init = XZRegionSelector.__user_init
@@ -38,12 +38,28 @@ function AceXZRegionSelector:set_requires_recalculation(requires)
    self._requires_recalculation = requires
 end
 
+function XZRegionSelector:restart(cb)
+   self._restart_cb = cb
+   return self
+end
+
+function XZRegionSelector:on_restart(...)
+   if self._restart_cb then
+      self._restart_cb(self, ...)
+   end
+   return self
+end
+
+function AceXZRegionSelector:is_state(state)
+   return self._state == state
+end
+
 function AceXZRegionSelector:_run_p0_selected_state(event, brick, normal)
    -- make a new entity that we can use to find the position of the mouse
    -- at the same height that we started.
    if self._create_intersection_node and not self._intersection_node then
       local y = self._p0.y
-      local d = MAX_RESONABLE_DRAG_DISTANCE
+      local d = MAX_REASONABLE_DRAG_DISTANCE
       local cube = Cube3(self._p0):inflated(Point3(d, 0, d))
       local region = Region3(cube)
 
@@ -90,6 +106,7 @@ function AceXZRegionSelector:_run_p0_selected_state(event, brick, normal)
          self._action = 'resolve'
       elseif self._reset_on_invalid_region then
          self._p0, self._p1 = nil, nil
+         self:on_restart(self)
          return 'start'
       else
          self._action = 'reject'
@@ -184,11 +201,10 @@ function AceXZRegionSelector:_update()
    end
 
    if self._requires_recalculation then
-      if self._last_event and self._last_brick and self._last_normal then
+      if self._last_event and self._last_brick and self._last_normal and self._state == 'p0_selected' and self._action == 'notify' then
          local state_transition_fn = self._dispatch_table[self._state]
          assert(state_transition_fn)
          state_transition_fn(self, self._last_event, self._last_brick, self._last_normal)
-         self._action = self._action or 'notify'
       end
       self._requires_recalculation = false
    end
