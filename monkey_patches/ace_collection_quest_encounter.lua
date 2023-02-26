@@ -70,6 +70,27 @@ function AceCollectionQuest:_get_item_requirements()
    return requirements
 end
 
+AceCollectionQuest._ace_old__on_collection_timer_expired = CollectionQuest._on_collection_timer_expired
+function AceCollectionQuest:_on_collection_timer_expired()
+   self:_ace_old__on_collection_timer_expired()
+
+   if self._sv._quest_storage then
+      -- if we have quest storage, if we don't have enough then we want to just destroy the quest storage
+      if not self._sv.have_enough then
+         self:_destroy_quest_storage()
+      else
+         -- if we do have enough, make sure we update the bulletin
+         self._sv._quest_storage:add_component('stonehearth_ace:quest_storage'):set_bulletin(self._sv.bulletin)
+      end
+   end
+end
+
+AceCollectionQuest._ace_old__on_collection_cancelled = CollectionQuest._on_collection_cancelled
+function AceCollectionQuest:_on_collection_cancelled()
+   self:_ace_old__on_collection_cancelled()
+   self:_destroy_quest_storage()
+end
+
 function AceCollectionQuest:_on_collection_paid()
    if not self._sv.bulletin then
       return false  -- Protect against spam clicks
