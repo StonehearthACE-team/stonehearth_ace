@@ -206,7 +206,10 @@ App.StonehearthCitizenCharacterSheetView = App.View.extend({
       $('.moodBarSegment').each(function (index) {
          var $e = $(this);
          App.tooltipHelper.createDynamicTooltip($e, function () {
-            return $(self._makeMoodBarTooltip(self.get('model.stonehearth:happiness'), $e.attr("mood"), index));
+            var happiness = self.get('model.stonehearth:happiness');
+            if (happiness) {
+               return $(self._makeMoodBarTooltip(happiness, $e.attr("mood"), index));
+            }
          });
       });
    },
