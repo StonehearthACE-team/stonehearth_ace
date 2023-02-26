@@ -70,19 +70,91 @@ function AceFarmingCallHandler:_choose_new_field_location(session, response, fie
       end
    end
 
-   local prev_box, prev_rotation
-   stonehearth.selection:select_designation_region(stonehearth.constants.xz_region_reasons.NEW_FIELD)
+   local get_valid_axis_value = function(valid_vals, val)
+      local lower, higher
+      for _, valid in ipairs(valid_vals) do
+         if val == valid then
+            return val
+         elseif val > valid then
+            lower = valid
+         elseif not lower then
+            return valid
+         else
+            -- find the closer to val between lower and valid
+            if val - lower <= valid - val then
+               return lower
+            else
+               return valid
+            end
+         end
+      end
+
+      -- just in case poorly formatted valid_vals
+      return val
+   end
+
+   local get_proposed_points_fn = function(p0, p1)
+      if not p0 or not p1 then
+         return nil, nil
+      end
+      return Point3(p0), Point3(p1)
+   end
+   local get_resolved_points_fn = get_proposed_points_fn
+   if size.valid_x or size.valid_y then
+      -- if size specifies only specific valid x/y dimensions, limit to those
+      get_resolved_points_fn = function(p0, p1)
+         if not p0 or not p1 then
+            return nil, nil
+         end
+         
+         -- get current size; have to consider rotation
+         local length = p1 - p0
+         local x = math.abs(length.x) + 1
+         local y = math.abs(length.z) + 1
+         if rotation == 1 or rotation == 3 then
+            x, y = y, x
+         end
+
+         -- check each axis to see if the dimension is valid
+         -- if it's not valid, get the closest valid value
+         if size.valid_x then
+            x = get_valid_axis_value(size.valid_x, x)
+         end
+         if size.valid_y then
+            y = get_valid_axis_value(size.valid_y, y)
+         end
+
+         -- then we have to switch it back to the rotation/direction
+         if rotation == 1 or rotation == 3 then
+            x, y = y, x
+         end
+
+         local q0, q1 = Point3(p0), Point3(p1)
+         local sign_x = length.x < 0 and -1 or 1
+         local sign_z = length.z < 0 and -1 or 1
+         q1.x = q0.x + sign_x * (x - 1)
+         q1.z = q0.z + sign_z * (y - 1)
+
+         return q0, q1
+      end
+   end
+
+   local prev_box, prev_rotation, selector
+   selector = stonehearth.selection:select_designation_region(stonehearth.constants.xz_region_reasons.NEW_FIELD)
       :set_min_size(size.min or 1)
       :set_max_size(max_size)
       :set_keyboard_event_handler(function(e)
             if bindings:is_action_active('build:rotate:left') then
                rotation = (rotation + 1) % 4
+               selector:set_requires_recalculation(true)
                return true
             elseif bindings:is_action_active('build:rotate:right') then
                rotation = (rotation + 3) % 4
+               selector:set_requires_recalculation(true)
                return true
             end
          end)
+      :set_end_point_transforms(get_proposed_points_fn, get_resolved_points_fn)
       :use_manual_marquee(function(xz_region_selector, box, start_location, stabbed_normal)
             -- this first section is the default marquee that we also want to render
             -- save these to be sent to the presence service to render on other players' clients
