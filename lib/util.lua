@@ -48,6 +48,18 @@ function util.itable_append(t1, t2)
    return t1
 end
 
+function util.filter_list(t, fn)
+   local result = {}
+
+  for k, v in ipairs(t) do
+    if fn(k, v) then
+      result[#result + 1] = v
+    end
+  end
+
+  return result
+end
+
 -- used for seeing if two sequences share all the same values
 function util.sequence_equals(t1, t2)
    if #t1 ~= #t2 then

@@ -507,9 +507,25 @@ function AceCraftOrder:get_associated_orders()
    return self._sv._associated_orders
 end
 
-function AceCraftOrder:set_associated_orders(associated_orders)
+-- returns the entry for this order
+function AceCraftOrder:set_associated_orders(associated_orders, ingredient_per_craft)
    self._sv._associated_orders = associated_orders
-   --self.__saved_variables:mark_changed()
+   if not associated_orders then
+      return
+   end
+   
+   -- if this order is already in the associated orders, return its entry
+   for _, associated_order in ipairs(associated_orders) do
+      if associated_order.order == self then
+         return associated_order
+      end
+   end
+
+   -- otherwise we need to add it
+   table.insert(associated_orders, {
+      order = self,
+   })
+   return associated_orders[#associated_orders]
 end
 
 function AceCraftOrder:remove_associated_order(remove_children)
@@ -518,19 +534,20 @@ function AceCraftOrder:remove_associated_order(remove_children)
       -- first remove any child orders; this will recursively remove any orders necessary
       if remove_children then
          local child_orders = {}
-         for _, order in ipairs(associated_orders) do
-            if order.parent_order == self then
-               table.insert(child_orders, order)
+         for _, child_order in ipairs(associated_orders) do
+            if child_order.parent_order == self then
+               table.insert(child_orders, child_order)
             end
          end
          for _, child_order in ipairs(child_orders) do
+            --log:debug('order %s removing child order %s', self:get_id(), child_order.order:get_id())
             child_order.order:get_order_list():remove_order(child_order.order:get_id())
          end
       end
 
       -- finally search associated orders for this order and remove it
       for i, order in ipairs(associated_orders) do
-         if order.order:get_id() == self:get_id() then
+         if order.order == self then
             table.remove(associated_orders, i)
             break
          end
@@ -584,6 +601,31 @@ function AceCraftOrder:reduce_quantity(amount)
       --    return true
       else
          return false
+      end
+   end
+end
+
+-- returns true if the order changed and the order list should be updated
+function AceCraftOrder:change_quantity(quantity)
+   log:debug('[%s] change_quantity(%s)', self:get_id(), quantity)
+   -- if trying to change quantity to less than 1, simply remove the order
+   if quantity < 1 then
+      self._sv.order_list:remove_order(self:get_id())
+      return false   -- order list will already be updated by removing the order
+   end
+
+   local condition = self._sv.condition
+   if condition.type == 'maintain' then
+      if condition.at_least ~= quantity then
+         condition.at_least = quantity
+         self.__saved_variables:mark_changed()
+         return true
+      end
+   else
+      if quantity < condition.requested_amount then
+         return self:reduce_quantity(condition.requested_amount - quantity)
+      elseif quantity > condition.requested_amount then
+         -- unsupported
       end
    end
 end

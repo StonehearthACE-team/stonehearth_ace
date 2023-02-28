@@ -48,7 +48,7 @@ function AcePlayerJobsController:_ensure_all_job_indexes()
 end
 
 function AcePlayerJobsController:request_craft_product(product_uri, amount, building, require_exact, insert_order, condition, associated_orders)
-   log:debug('request_craft_product( %s, %s, %s, %s, %s, %s )',
+   log:debug('request_craft_product( %s, %s, %s, %s, %s, %s, %s )',
          product_uri, amount, tostring(building), tostring(require_exact), tostring(insert_order), tostring(condition), tostring(associated_orders))
    -- first try it with requiring exact; that way we don't default to a secondary option if the primary is available
    if not require_exact then
