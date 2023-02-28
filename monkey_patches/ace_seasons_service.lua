@@ -5,6 +5,8 @@ local CALENDAR_CONSTANTS = radiant.resources.load_json('/stonehearth/data/calend
 local DAYS_PER_YEAR = CALENDAR_CONSTANTS.days_per_month * CALENDAR_CONSTANTS.months_per_year
 local SECONDS_PER_DAY = CALENDAR_CONSTANTS.hours_per_day * CALENDAR_CONSTANTS.minutes_per_hour * CALENDAR_CONSTANTS.seconds_per_minute
 
+local terrain_blocks = radiant.resources.load_json("stonehearth:terrain_blocks", true, false)
+
 local log = radiant.log.create_logger('seasons')
 
 -- Also return the season completion on that day
@@ -92,6 +94,14 @@ function AceSeasonsService:_get_seasons_data(biome_uri)
    else
       -- Not even weather defined. I guess it's always sunny.
       table.insert(seasons, self:_get_season_data(biome_uri, default_palette, { weather = { { uri = DEFAULT_WEATHER, weight = 1 } } }))
+   end
+
+   for _, season in ipairs(seasons) do
+      for block, color in pairs(terrain_blocks.default_colors) do
+         if not season.terrain_palette[block] then
+            season.terrain_palette[block] = color
+         end
+      end
    end
 
    return seasons
