@@ -156,6 +156,7 @@ local monkey_patches = {
    ace_presence_service = 'stonehearth.services.server.presence.presence_service',
    ace_produce_crafted_items = 'stonehearth.ai.actions.produce_crafted_items',
    ace_projectile_component = 'stonehearth.components.projectile.projectile_component',
+   ace_promote_unit_to_class_script = 'stonehearth.data.gm.campaigns.amberstone.arcs.trigger.discovery.encounters.30_geomancy.promote_unit_to_class_script',
    ace_put_another_restockable_item_into_backpack_action = 'stonehearth.ai.actions.put_another_restockable_item_into_backpack_action',
    ace_raid_crops_mission = 'stonehearth.services.server.game_master.controllers.missions.raid_crops_mission',
    ace_raid_stockpiles_mission = 'stonehearth.services.server.game_master.controllers.missions.raid_stockpiles_mission',
