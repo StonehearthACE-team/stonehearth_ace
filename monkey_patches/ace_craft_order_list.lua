@@ -11,8 +11,16 @@ function AceCraftOrderList:destroy()
       self._stuck_timer:destroy()
       self._stuck_timer = nil
    end
+   self:_destroy_periodic_stuck_timer()
 
    self:_ace_old_destroy()
+end
+
+function AceCraftOrderList:_destroy_periodic_stuck_timer()
+   if self._periodic_stuck_timer then
+      self._periodic_stuck_timer:destroy()
+      self._periodic_stuck_timer = nil
+   end
 end
 
 function AceCraftOrderList:_should_auto_craft_recipe_dependencies(player_id)
@@ -409,6 +417,22 @@ function AceCraftOrderList:_find_craft_order(recipe_name, order_type)
    return nil
 end
 
+function AceCraftOrderList:register_stuck_order(order_id)
+   self._stuck_orders[order_id] = true
+
+   self:_ensure_periodic_stuck_timer()
+end
+
+function AceCraftOrderList:_ensure_periodic_stuck_timer()
+   if not self._periodic_stuck_timer then
+      self._periodic_stuck_timer = stonehearth.calendar:set_timer("periodically reconsider stuck orders", constants.crafting.PERIODIC_RECONSIDER_ORDERS_COOLDOWN,
+         function()
+            self._periodic_stuck_timer = nil
+            self:_create_stuck_timer()
+         end)
+   end
+end
+
 -- overrides this base function in order to support multiple crafters on the same order
 function AceCraftOrderList:get_next_order(crafter)
    --log:debug('craft_order_list: There are %s orders', #self._sv.orders)
@@ -444,9 +468,17 @@ function AceCraftOrderList:get_next_order(crafter)
       --log:debug('craft_order_list: Crafting status is %s', order:get_crafting_status())
    end
 
+   if count > 0 then
+      self:_create_stuck_timer()
+   end
+end
+
+function AceCraftOrderList:_create_stuck_timer()
+   self:_destroy_periodic_stuck_timer()
+   
    -- Note: don't clear the stuck_orders table in _on_inventory_changed, since the inventory changes when the crafter drops the leftovers
    -- so the same order would be picked again and again
-   if count > 0 and self:has_stuck_orders() then
+   if self:has_stuck_orders() then
       -- Only refresh the list if there are still orders in it, and some/all of them were tagged as stuck
       self._stuck_orders = {}
       -- Now set a timer to make the crafter reconsider the orders. It has to be done after a while because of a race
@@ -454,7 +486,10 @@ function AceCraftOrderList:get_next_order(crafter)
       -- Otherwise there can be problems with multiple crafters or depending on whether the last order was stuck or not
       if not self._stuck_timer then
          self._stuck_timer = stonehearth.calendar:set_timer("reconsider stuck orders", constants.crafting.RECONSIDER_ORDERS_COOLDOWN,
-                             function() radiant.events.trigger(self, 'stonehearth:order_list_changed') end)
+                           function()
+                              self._stuck_timer = nil
+                              radiant.events.trigger(self, 'stonehearth:order_list_changed')
+                           end)
       end
    end
 end
