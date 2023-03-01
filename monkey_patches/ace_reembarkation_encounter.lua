@@ -61,15 +61,32 @@ function AceReembarkationEncounter:_construct_reembark_record(reembark_choices)
    radiant.validator.expect.table.only_fields({'citizens', 'items'}, reembark_choices)
    radiant.validator.expect.table.types({citizens = 'table', items = 'table'}, reembark_choices)
    
-   local town_name = stonehearth.town:get_town(self._sv.ctx.player_id):get_town_name()
+   local town = stonehearth.town:get_town(self._sv.ctx.player_id)
+   local town_name = town:get_town_name()
 
    local reembark_record = { citizens = {}, items = {}, recipes = {}, name = town_name }
    -- TODO: Maybe carry over quest flags.
 
+   local town_bonuses = town:get_active_town_bonuses()
+   local attribute_modifiers = {}
+   for _, bonus in pairs(town_bonuses) do
+      if bonus.get_citizen_attribute_bonuses then
+         local bonuses = bonus:get_citizen_attribute_bonuses() or {}
+         for attribute, amount in pairs(bonuses) do
+            attribute_modifiers[attribute] = (attribute_modifiers[attribute] or 0) + amount
+         end
+      end
+   end
+
    -- Citizens
    for _, citizen in pairs(reembark_choices.citizens) do
       radiant.validator.assert_type(citizen, 'Entity')
-      table.insert(reembark_record.citizens, self:_get_citizen_record(citizen))
+      local citizen_record = self:_get_citizen_record(citizen)
+      for attribute, amount in pairs(attribute_modifiers) do
+         citizen_record.attributes[attribute] = (citizen_record.attributes[attribute] or 0) + amount
+      end
+
+      table.insert(reembark_record.citizens, citizen_record)
    end
 
    -- Items
@@ -103,10 +120,11 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
       job_levels[uri] = job_controller:get_job_level()
    end
 
+   local attributes_component = citizen:get_component('stonehearth:attributes')
    local attributes = {
-      mind = citizen:get_component('stonehearth:attributes'):get_attribute('mind'),
-      body = citizen:get_component('stonehearth:attributes'):get_attribute('body'),
-      spirit = citizen:get_component('stonehearth:attributes'):get_attribute('spirit'),
+      mind = attributes_component:get_unmodified_attribute('mind'),
+      body = attributes_component:get_unmodified_attribute('body'),
+      spirit = attributes_component:get_unmodified_attribute('spirit'),
    }
 
    local traits = {}

@@ -17,6 +17,7 @@ local monkey_patches = {
    ace_ai_service = 'stonehearth.services.server.ai.ai_service',
    ace_animal_companion_script = 'stonehearth.data.traits.animal_companion.animal_companion_script',
    ace_attack_melee_adjacent_action = 'stonehearth.ai.actions.combat.attack_melee_adjacent_action',
+   ace_attributes_component = 'stonehearth.components.attributes.attributes_component',
    ace_aura_buff = 'stonehearth.data.buffs.scripts.aura_buff',
    ace_bait_trap_component = 'stonehearth.components.trapping.bait_trap_component',
    ace_blueprint_job = 'stonehearth.components.building2.plan.jobs.blueprint_job',
