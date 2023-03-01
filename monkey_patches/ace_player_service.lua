@@ -12,6 +12,22 @@ function AcePlayerService:add_kingdom(player_id, kingdom)
    radiant.events.trigger(radiant, 'radiant:player_kingdom_assigned', {player_id = player_id})
 end
 
+-- return all populations which are *ACTUALLY* friendly to the specified player
+function AcePlayerService:get_friendly_players(player_id)
+   local players = self._friendly_players_cache[player_id]
+   if not players then
+      players = {}
+      self._friendly_players_cache[player_id] = players
+      for other_player_id, _ in pairs(self._sv.players) do
+         if stonehearth.player:are_player_ids_friendly(player_id, other_player_id) then
+            players[other_player_id] = true
+         end
+      end
+   end
+
+   return players
+end
+
 --For the client, given a player, get their kingdom's job index
 function AcePlayerService:get_job_index(session, response, entity)
    local job = entity and entity:get_component('stonehearth:job')

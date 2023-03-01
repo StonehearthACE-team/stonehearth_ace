@@ -242,13 +242,19 @@ $(document).ready(function() {
          if (custom_mode) {
             return custom_mode;
          }
-         
-         if ((!entity['stonehearth:ai'] && entity['stonehearth:storage'] && !entity['stonehearth:storage'].is_hidden) ||
+
+         if (entity['stonehearth:stockpile'] ||
                entity['stonehearth:trapping_grounds'] ||
                entity['stonehearth:shepherd_pasture'] ||
                entity['stonehearth:mining_zone'] ||
                entity['stonehearth:defense_zone'] ||
                entity['stonehearth_ace:universal_storage']) {
+            return this.modes.ZONES;
+         }
+
+         // if we were already in zones mode and selected a public, non-hidden storage, stay in zones mode
+         if (this._currentMode == this.modes.ZONES &&
+               !entity['stonehearth:ai'] && entity['stonehearth:storage'] && !entity['stonehearth:storage'].is_hidden) {
             return this.modes.ZONES;
          }
    

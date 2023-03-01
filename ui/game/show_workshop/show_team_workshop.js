@@ -1949,12 +1949,12 @@ App.StonehearthTeamCrafterView = App.View.extend({
          //they just feel like they're having an ideological argument IN OUR CODE.
          var found = false;
          for (i = 0; i < orders.length; i++) {
-            if (orders[0].id == orderID) {
+            if (orders[i].id == orderID) {
                found = true;
                break;
             }
          }
-         if (!found || $(self.is_sorting).hasClass('inProgressOrder')) {
+         if (found || $(sortedOrder).hasClass('inProgressOrder')) {
             //The thing we're sorting is no longer here or a new copy has been made; Remove it.
             $(sortedOrder).remove();
          }

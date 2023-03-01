@@ -29,11 +29,46 @@ AceCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 --
 function AceCraftOrderList:add_order(player_id, recipe, condition, building, associated_orders)
    log:debug('add_order(%s, %s, %s, %s, %s)', player_id, recipe, condition, tostring(building), tostring(associated_orders))
+   
+   local is_recursive_call = associated_orders ~= nil
+
+   -- if it's a maintain order, try to modify an existing maintain order
+   if condition.type == 'maintain' then
+      -- See if the order_list already contains a maintain order for the recipe:
+      --    if it does, remake the order if its amount is lower than `missing`, otherwise ignore it;
+      --    if it doesn't, simply add it as usual
+      local order = self:_find_craft_order(recipe.recipe_name, 'maintain')
+      if order then
+         --log:debug('checking if maintain order "%s" is to be replaced', order:get_recipe().recipe_name)
+         --log:detail('this is %sa recursive call, the order\'s value is %d and the new one is %d',
+         --   is_recursive_call and 'NOT ' or '',
+         --   order:get_condition().at_least,
+         --   condition.at_least)
+         local at_least = tonumber(condition.at_least)
+         local order_at_least = order:get_condition().at_least
+
+         if at_least > order_at_least or (not is_recursive_call and at_least < order_at_least) then
+            -- only allow reducing the quantity if this is a direct add_order call
+            -- and not a recursive call to a child order
+            if order:change_quantity(at_least) then
+               -- if we're specifying an index, move the order there
+               if condition.order_index then
+                  self:change_order_position(condition.order_index, order:get_id())
+               else
+                  self:_on_order_list_changed()
+               end
+            end
+         else
+            log:debug('an order already exists which fulfills the request')
+         end
+         return true
+      end
+   end
+   
    if not self:_should_auto_craft_recipe_dependencies(player_id) then
       return self:insert_order(player_id, recipe, condition, nil, building)
    end
 
-   --local is_recursive_call = associated_orders ~= nil
    associated_orders = associated_orders or {}
    local child_orders = {}
 
@@ -99,79 +134,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
       end
    end
 
-   local old_order_index, old_order_parent
-   if condition.type == 'maintain' and not condition.order_index then
-      -- See if the order_list already contains a maintain order for the recipe:
-      --    if it does, remake the order if its amount is lower than `missing`, otherwise ignore it;
-      --    if it doesn't, simply add it as usual
-      local order = self:_find_craft_order(recipe.recipe_name, 'maintain')
-      if order then
-         --log:debug('checking if maintain order "%s" is to be replaced', order:get_recipe().recipe_name)
-         --log:detail('this is %sa recursive call, the order\'s value is %d and the new one is %d',
-         --   is_recursive_call and 'NOT ' or '',
-         --   order:get_condition().at_least,
-         --   condition.at_least)
-         local at_least = tonumber(condition.at_least)
-         local order_at_least = order:get_condition().at_least
-
-         if order_at_least == at_least then
-            log:debug('an order already exists which fulfills the request')
-         else
-            if order:change_quantity(at_least) then
-               self.__saved_variables:mark_changed()
-            end
-         end
-         return true
-
-         -- if order_at_least < at_least then
-         --    -- The order is to be replaced, so remove the current one so when the new one is added;
-         --    -- there are no duplicates of the same recipe
-
-         --    --log:debug('replacing the order with %d as its new amount', condition.at_least)
-
-         --    -- Note: It would be preferable to change the order's `at_least` value directly instead, but
-         --    --       I haven't found a way to accomplish that *and* have the ui update itself instantly
-
-         --    old_order_index = self:find_index_of(order:get_id())
-            
-         --    -- see if there are any child orders that need to be modified
-         --    local old_associated_orders = {}
-         --    for _, associated_order in ipairs(order:get_associated_orders() or {}) do
-         --       if associated_order.order == order then
-         --          -- record the old order's parent order so we can set this new order's parent to that
-         --          old_order_parent = associated_order.parent_order
-         --       else
-         --          table.insert(old_associated_orders, associated_order)
-         --       end
-         --    end
-
-         --    -- merge associated orders with that order's associated orders
-         --    if #old_associated_orders > 0 then
-         --       radiant.array_append(associated_orders, old_associated_orders)
-         --       -- then we need to go through and update those orders' associated orders,
-         --       -- as well as add them to our child orders if the old one was their parent
-         --       for _, associated_order in ipairs(old_associated_orders) do
-         --          associated_order.order:set_associated_orders(associated_orders)
-         --          if associated_order.parent_order == order then
-         --             table.insert(child_orders, associated_order)
-         --          end
-         --       end
-         --    end
-
-         --    -- remove only the old order and not any child orders, which are being adopted by this order
-         --    self:remove_order(order:get_id(), nil, false)
-         -- else
-         --    -- if we want to maintain fewer, we still want to be able to simply modify the existing order
-         --    -- instead of having to remove it and its possible child orders
-
-
-         --    log:debug('an order already exists which fulfills the request')
-         --    return true
-         -- end
-      end
-   end
-
-   local result = self:insert_order(player_id, recipe, condition, old_order_index, building)
+   local result = self:insert_order(player_id, recipe, condition, nil, building)
 
    -- if we got to this point, it's because we're auto-crafting dependencies
    result:set_auto_crafting(true)
@@ -184,7 +147,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
          end
       end
 
-      result:set_associated_orders(associated_orders).parent_order = old_order_parent
+      result:set_associated_orders(associated_orders)
    end
 
    return result
@@ -231,8 +194,11 @@ function AceCraftOrderList:request_order_of(player_id, recipe_info, produces, am
 end
 
 -- ACE: when changing order, consider clearing stuck order status of affected orders
-AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_command
 function AceCraftOrderList:change_order_position_command(session, response, new, id)
+   return self:change_order_position(new, id)
+end
+
+function AceCraftOrderList:change_order_position(new, id)
    local i = self:find_index_of(id)
    if i then
       local order = self._sv.orders[i]
