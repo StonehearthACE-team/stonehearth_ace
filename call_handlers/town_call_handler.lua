@@ -26,4 +26,27 @@ function TownCallHandler:remove_owner_command(session, response, entity)
    end
 end
 
+function TownCallHandler:craft_and_place_item_type_in_world(session, response, uri, location, rotation, normal)
+   validator.expect_argument_types({'string', 'Point3', 'number', 'Point3'}, uri, location, rotation, normal)
+
+   local town = stonehearth.town:get_town(session.player_id)
+   if town then
+      local placement_info = {
+         location = location,
+         normal = normal,
+         rotation = rotation,
+         structure = radiant._root_entity,
+         preserve_destination = true,
+      }
+      town:craft_and_place_item_type(uri, placement_info)
+
+      response:resolve({
+         item_uri = uri,
+         more_items = true,
+      })
+   else
+      response:reject({error = 'no town for player'})
+   end
+end
+
 return TownCallHandler

@@ -3,7 +3,7 @@
    bottom: 210px;
    left: 200px;
 	
-	.PresetsImg {
+	.presetsImg {
       content: url(images/presets_icon.png);
    }
    .loadPresetImg {
@@ -14,6 +14,9 @@
    }
    .deletePresetImg {
       content: url(images/delete_icon.png);
+   }
+   .reverseSegmentsImg {
+      content: url(images/reverse_icon.png);
    }
 
    #fenceSegmentsDiv {
@@ -79,6 +82,26 @@
                content: url(images/segmentDisable.png);
             }
          }
+
+         .buildFromSegmentBtn {
+            position: absolute;
+            top: -30px;
+            left: 0px;
+
+            .buildFromSegmentImg {
+               content: url(images/buildFromSegment.png);
+            }
+         }
+
+         .buildSegmentBtn {
+            position: absolute;
+            top: -30px;
+            right: 0px;
+
+            .buildSegmentImg {
+               content: url(images/buildSegment.png);
+            }
+         }
       }
 
       #addSegmentBtn {
@@ -95,7 +118,7 @@
 
    #fenceControls {
       position: absolute;
-      height: 94px;
+      height: 124px;
       bottom: 0px;
       right: 100%;
       margin-right: 20px;

@@ -6803,6 +6803,7 @@
       "place_terrain": "file(components/place_terrain/place_terrain_component.lua)",
       "property_values": "file(components/property_values/property_values_component.lua)",
       "quest_storage": "file(components/quest_storage/quest_storage_component.lua)",
+      "quest_storage_zone": "file(components/quest_storage/quest_storage_zone_component.lua)",
       "remove_components": "file(components/remove_components/remove_components_component.lua)",
       "replant": "file(components/replant/replant_component.lua)",
       "static_component_info": "file(components/component_info/static_component_info_component.lua)",
@@ -7086,6 +7087,10 @@
          "endpoint": "server"
       },
       "assign_ownership_proxy": {
+         "controller": "file(call_handlers/town_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "craft_and_place_item_type_in_world": {
          "controller": "file(call_handlers/town_call_handler.lua)",
          "endpoint": "server"
       },

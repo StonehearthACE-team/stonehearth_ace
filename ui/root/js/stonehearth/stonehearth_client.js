@@ -417,28 +417,38 @@ var StonehearthClient;
          this._placeItemOrItemType('itemType', 'placeItemType', itemType, quality);
       },
 
+      // item type is a uri, not an item entity
+      craftAndPlaceItemType: function(itemType, gameMode) {
+         this._placeItemOrItemType('itemType', 'placeItemType', itemType, null, {
+            add_craft_order: true,
+            gameMode: gameMode,
+            tip_description: 'stonehearth_ace:ui.game.menu.build_menu.items.craft_and_build.tip_description',
+         });
+      },
+
       // ACE: added custom tooltips
-      _placeItemOrItemType: function (placementType, toolName, item, quality) {
+      _placeItemOrItemType: function (placementType, toolName, item, quality, options) {
          var self = this;
          var placementCall = placementType == 'item' ? 'stonehearth:choose_place_item_location' : 'stonehearth:choose_place_item_type_location';
+         var opts = options || {};
 
          radiant.call('stonehearth:check_can_place_item', item, quality)
             .done(function (response) {
                radiant.call('stonehearth_ace:get_custom_tooltip_command', item, 'stonehearth:ui.game.menu.build_menu.items.place_item')
                .done(function (r) {
                   var custom_tooltips = r.custom_tooltips;
-                  var tip_title = custom_tooltips.tip_title || 'stonehearth:ui.game.menu.build_menu.items.place_item.tip_title';
-                  var tip_description = custom_tooltips.tip_description || 'stonehearth:ui.game.menu.build_menu.items.place_item.tip_description';
-                  var tip_bindings = custom_tooltips.tip_bindings || {left_binding: 'build:rotate:left', right_binding: 'build:rotate:right'};
+                  var tip_title = opts.tip_title || custom_tooltips.tip_title || 'stonehearth:ui.game.menu.build_menu.items.place_item.tip_title';
+                  var tip_description = opts.tip_description || custom_tooltips.tip_description || 'stonehearth:ui.game.menu.build_menu.items.place_item.tip_description';
+                  var tip_bindings = opts.tip_bindings || custom_tooltips.tip_bindings || {left_binding: 'build:rotate:left', right_binding: 'build:rotate:right'};
                   self.showTipWithKeyBindings(tip_title, tip_description, tip_bindings);
 
-                  App.setGameMode('place');
+                  App.setGameMode(opts.gameMode || 'place');
                   return self._callTool(toolName, function() {
-                     return radiant.call(placementCall, item, quality)
+                     return radiant.call(placementCall, item, quality, null, options)
                         .done(function(response) {
                            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} )
                            if ((placementType == 'itemType') && response.more_items) {
-                              self.placeItemType(item, quality);
+                              self._placeItemOrItemType(placementType, toolName, item, quality, options);
                            } else {
                               self.hideTip();
                            }

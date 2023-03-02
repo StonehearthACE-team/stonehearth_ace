@@ -154,7 +154,7 @@ App.guiHelper = {
             content: ' ',  // Just to force the tooltip to appear. The actual content is created dynamically below.
             functionBefore: function (instance, proceed) {
                if (instance && instance.data('tooltipster')) {
-                  var content = contentGenerator ? contentGenerator() : instance.attr('title');
+                  var content = contentGenerator ? contentGenerator($element) : instance.attr('title');
                   if (content) {
                      instance.tooltipster('content', content);
                      proceed();
@@ -170,7 +170,15 @@ App.guiHelper = {
          }
 
          $element.tooltipster(tooltipsterArgs);
-         $element.tooltipster('show');
+         if (tooltipsterArgs.delay && tooltipsterArgs.delay > 0) {
+            var delayTimeout = setTimeout(() => $element.tooltipster('show'), tooltipsterArgs.delay);
+            $element.one('mouseout.guiHelper.createDynamicTooltip', function(e) {
+               clearTimeout(delayTimeout);
+            });
+         }
+         else {
+            $element.tooltipster('show');
+         }
       });
    },
 

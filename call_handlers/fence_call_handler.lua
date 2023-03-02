@@ -46,7 +46,7 @@ local _create_fence_nodes = function(pattern, start_location, end_location, faci
    while x * step_x <= max_x * step_x and z * step_z <= max_z * step_z do
       local uri = pattern[pattern_index]
       local fence_data = radiant.entities.get_entity_data(uri, 'stonehearth_ace:fence_data') or {}
-      local is_end = fence_data.type == 'end'
+      local is_end = fence_data.type == 'end' or fence_data.type == 'gate'
       local this_length = math.max(1, fence_data.length or 1)
       if not is_end and last_was_end then
          this_length = this_length - 1
@@ -250,7 +250,7 @@ function FenceCallHandler:build_fence_command(session, response, pattern, start_
    local player_id = session.player_id
    local town = stonehearth.town:get_town(player_id)
    if town then
-      local ghosts = {}
+      local uri_placements = {}
       _create_fence_nodes(pattern, start_location, end_location, facing, function(index, uri, location, rotation)
             local location_check = _get_entity_to_place(uri, location, rotation)
             if location_check then
@@ -276,25 +276,18 @@ function FenceCallHandler:build_fence_command(session, response, pattern, start_
                   rotation = rotation,
                   structure = structure
                }
-               local ghost_entity = town:place_item_type(uri, nil, placement_info)
-               if ghost_entity then
-                  local uri_ghosts = ghosts[uri]
-                  if not uri_ghosts then
-                     uri_ghosts = {}
-                     ghosts[uri] = uri_ghosts
-                  end
-                  table.insert(uri_ghosts, ghost_entity)
+               local placements = uri_placements[uri]
+               if not placements then
+                  placements = {}
+                  uri_placements[uri] = placements
                end
+               table.insert(placements, placement_info)
                radiant.entities.destroy_entity(location_check)
             end
          end)
 
-      for uri, uri_ghosts in pairs(ghosts) do
-         local player_jobs = stonehearth.job:get_jobs_controller(player_id)
-         local order = player_jobs:request_craft_product(uri, #uri_ghosts)
-         for _, ghost in ipairs(uri_ghosts) do
-            ghost:add_component('stonehearth_ace:transform'):set_craft_order(order)
-         end
+      for uri, placements in pairs(uri_placements) do
+         town:craft_and_place_item_types(uri, placements)
       end
    end
 

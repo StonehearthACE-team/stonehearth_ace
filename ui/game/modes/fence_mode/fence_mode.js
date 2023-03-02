@@ -151,10 +151,37 @@ App.AceBuildFenceModeView = App.View.extend({
             i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.show_save.title'),
             i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.show_save.description')))
       );
+      App.tooltipHelper.attachTooltipster(self.$('#reverseSegments'),
+         $(App.tooltipHelper.createTooltip(
+            i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.reverse_segments.title'),
+            i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.reverse_segments.description')))
+      );
+
+      App.guiHelper.createDynamicTooltip(self.$('#fenceSegmentsDiv'), '.toggleSegmentBtn', function($el) {
+         var enabledStr = $el.hasClass('enabled') ? 'segment_enabled' : 'segment_disabled';
+         return $(App.tooltipHelper.createTooltip(
+            i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.title'),
+            i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.description')));
+      }, {delay: 500, position: 'bottom'});
+
+      App.guiHelper.createDynamicTooltip(self.$('#fenceSegmentsDiv'), '.buildFromSegmentBtn', function() {
+         return $(App.tooltipHelper.createTooltip(
+            i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.build_from_segment.title'),
+            i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.build_from_segment.description')));
+      }, {delay: 500});
+
+      App.guiHelper.createDynamicTooltip(self.$('#fenceSegmentsDiv'), '.buildSegmentBtn', function() {
+         return $(App.tooltipHelper.createTooltip(
+            i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.build_segment.title'),
+            i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.build_segment.description')));
+      }, {delay: 500});
    },
 
    willDestroyElement: function() {
       App.jobController.removeChangeCallback('fence_mode');
+      App.guiHelper.removeDynamicTooltip(this.$('#fenceSegmentsDiv'), '.toggleSegmentBtn');
+      App.guiHelper.removeDynamicTooltip(this.$('#fenceSegmentsDiv'), '.buildFromSegmentBtn');
+      App.guiHelper.removeDynamicTooltip(this.$('#fenceSegmentsDiv'), '.buildSegmentBtn');
       this.$().find('.tooltipstered').tooltipster('destroy');
       this.$('#presetSearch').off('keydown').off('keyup');
       this.$().off('click', '.presetRow');
@@ -339,15 +366,15 @@ App.AceBuildFenceModeView = App.View.extend({
          fenceSegmentBtns.each(function() {
             self._createSegmentTooltip($(this), 250);
          });
-         self.$('.toggleSegmentBtn').each(function() {
-            var $el = $(this);
-            App.tooltipHelper.createDynamicTooltip($el , function () {
-               var enabledStr = $el.hasClass('enabled') ? 'segment_enabled' : 'segment_disabled';
-               return $(App.tooltipHelper.createTooltip(
-                  i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.title'),
-                  i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.description')));
-            }, {delay: 250, position: 'bottom'});
-         });
+         // self.$('.toggleSegmentBtn').each(function() {
+         //    var $el = $(this);
+         //    App.tooltipHelper.createDynamicTooltip($el , function () {
+         //       var enabledStr = $el.hasClass('enabled') ? 'segment_enabled' : 'segment_disabled';
+         //       return $(App.tooltipHelper.createTooltip(
+         //          i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.title'),
+         //          i18n.t('stonehearth_ace:ui.game.fence_mode.buttons.' + enabledStr + '.description')));
+         //    }, {delay: 250, position: 'bottom'});
+         // });
       }
    },
 
@@ -514,13 +541,21 @@ App.AceBuildFenceModeView = App.View.extend({
       self.buildFence();
    },
 
-   buildFence: function(internalRecall) {
+   buildFence: function(fromSegment, internalRecall) {
       var self = this;
 
       var curSegments = self.get('segments');
       if (!curSegments) {
          App.stonehearthClient.deactivateAllTools();
          return;
+      }
+
+      // if fromSegment is specified, shift the segment array so it starts with that one
+      if (fromSegment) {
+         var index = curSegments.indexOf(fromSegment);
+         if (index > 0) {
+            curSegments = curSegments.slice(index).concat(curSegments.slice(0, index));
+         }
       }
 
       var fencePieces = [];
@@ -545,7 +580,7 @@ App.AceBuildFenceModeView = App.View.extend({
          return radiant.call('stonehearth_ace:choose_fence_location_command', fencePieces)
             .done(function(response) {
                radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
-               self.buildFence(true);
+               self.buildFence(fromSegment, true);
             })
             .fail(function(response) {
                if (!self._recallingTool) {
@@ -556,6 +591,10 @@ App.AceBuildFenceModeView = App.View.extend({
       };
 
       return App.stonehearthClient._callTool('buildFence', toolFn);
+   },
+
+   buildSegment: function(uri) {
+      App.stonehearthClient.craftAndPlaceItemType(uri, 'fence');
    },
 
    _updateSegmentsConfig: function() {
@@ -700,6 +739,31 @@ App.AceBuildFenceModeView = App.View.extend({
             self._updateSegmentsConfig();
             self.buildFence();
          }
+      },
+
+      buildSegment: function(segment) {
+         var self = this;
+         if (segment) {
+            App.stonehearthClient.deactivateAllTools();
+            self.buildSegment(segment.uri);
+         }
+      },
+
+      buildFromSegment: function(segment) {
+         var self = this;
+         if (segment) {
+            App.stonehearthClient.deactivateAllTools();
+            self.buildFence(segment);
+         }
+      },
+
+      reverseSegments: function() {
+         var self = this;
+         var segments = self.get('segments');
+         App.stonehearthClient.deactivateAllTools();
+         segments.reverseObjects();
+         self._setCurrentSegments(segments);
+         self._updateSegmentsConfig();
       },
 
       showLoadPreset: function() {

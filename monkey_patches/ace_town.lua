@@ -16,6 +16,7 @@ function AceTown:_pre_activate()
    self._suspendable_entities = {}
    self._building_material_collection_tasks = {}
    self._default_storage_listener = {}
+   self._quest_storage_zones = {}
 
    self:_ace_old__pre_activate()
 
@@ -690,6 +691,27 @@ function AceTown:remove_default_storage(storage_id)
    self:_destroy_default_storage_listener(storage_id)
 end
 
+function AceTown:register_quest_storage_zone(zone)
+   if zone and zone:is_valid() then
+      self._quest_storage_zones[zone:get_id()] = zone
+   end
+end
+
+function AceTown:unregister_quest_storage_zone(zone_id)
+   self._quest_storage_zones[zone_id] = nil
+end
+
+function AceTown:get_quest_storage_locations()
+   local locations = {}
+   for _, zone in pairs(self._quest_storage_zones) do
+      local zone_component = zone:get_component('stonehearth_ace:quest_storage_zone')
+      if zone_component then
+         radiant.array_append(locations, zone_component:get_available_locations())
+      end
+   end
+   return locations
+end
+
 function AceTown:get_periodic_interaction_entities()
    return self._periodic_interaction_entities
 end
@@ -844,6 +866,39 @@ function AceTown:_prepare_citizen_for_dispatch(citizen_id, citizen)
    local crafter_component = citizen:get_component('stonehearth:crafter')
    if crafter_component then
       crafter_component:clean_up_order()
+   end
+end
+
+function AceTown:_should_auto_craft_items()
+   return stonehearth.client_state:get_client_gameplay_setting(self._sv.player_id, 'stonehearth', 'building_auto_queue_crafters', true)
+end
+
+function AceTown:craft_and_place_item_type(entity_uri, placement_info)
+   local ghost_entity = self:place_item_type(entity_uri, nil, placement_info)
+   if ghost_entity and self:_should_auto_craft_items() then
+      local player_jobs = stonehearth.job:get_jobs_controller(self._sv.player_id)
+      local order = player_jobs:request_craft_product(entity_uri, 1)
+      ghost_entity:add_component('stonehearth_ace:transform'):set_craft_order(order)
+      return true
+   end
+end
+
+function AceTown:craft_and_place_item_types(entity_uri, placement_infos)
+   local ghosts = {}
+   for _, placement_info in ipairs(placement_infos) do
+      local ghost_entity = self:place_item_type(entity_uri, nil, placement_info)
+      if ghost_entity then
+         table.insert(ghosts, ghost_entity)
+      end
+   end
+
+   if #ghosts > 0 and self:_should_auto_craft_items() then
+      local player_jobs = stonehearth.job:get_jobs_controller(self._sv.player_id)
+      local order = player_jobs:request_craft_product(entity_uri, #ghosts)
+      for _, ghost in ipairs(ghosts) do
+         ghost:add_component('stonehearth_ace:transform'):set_craft_order(order)
+      end
+      return true
    end
 end
 

@@ -6,7 +6,7 @@ local log = radiant.log.create_logger('build_editor')
 local AceItemPlacer = class()
 
 --AceItemPlacer._ace_old_go = ItemPlacer.go
-function AceItemPlacer:go(session, response, item_to_place, quality, transactional)
+function AceItemPlacer:go(session, response, item_to_place, quality, transactional, options)
    assert(item_to_place)
 
    self.response = response
@@ -20,6 +20,7 @@ function AceItemPlacer:go(session, response, item_to_place, quality, transaction
    self.location_selector = stonehearth.selection:select_location()
    self.region_shape = nil
    self.ignorable_uris = self:_get_ignorable_uris()
+   self.options = options or {}
 
    local root_to_place, model_variant
    if type(item_to_place) == 'string' then
@@ -129,6 +130,43 @@ function AceItemPlacer:_get_ignorable_uris()
    return {
       ['stonehearth:terrain:water'] = true,
    }
+end
+
+function AceItemPlacer:_done_fn(selector, location, rotation)
+   local deferred
+   if self.placement_structure and self.placement_structure:get_id() ~= radiant._root_entity_id then
+      if self.specific_item_to_place then
+         deferred = _radiant.call('stonehearth:place_item_on_structure',
+            self.specific_item_to_place, location, rotation, self.placement_structure,
+            self.placement_structure_normal, self.transactional)
+      else
+         deferred = _radiant.call('stonehearth:place_item_type_on_structure',
+            self.item_uri_to_place, self.quality, location, rotation, self.placement_structure,
+            self.placement_structure_normal, self.transactional)
+      end
+   else
+      if self.specific_item_to_place then
+         deferred = _radiant.call('stonehearth:place_item_in_world',
+            self.specific_item_to_place, location, rotation, self.placement_structure_normal)
+      elseif self.options.add_craft_order then
+         deferred = _radiant.call('stonehearth_ace:craft_and_place_item_type_in_world',
+            self.item_uri_to_place, location, rotation, self.placement_structure_normal)
+      else
+         deferred = _radiant.call('stonehearth:place_item_type_in_world',
+            self.item_uri_to_place, self.quality, location, rotation, self.placement_structure_normal)
+      end
+   end
+   deferred
+      :done(function (result)
+            self.response:resolve(result)
+         end)
+      :fail(function(result)
+            self.response:reject(result)
+         end)
+      :always(function ()
+            radiant.entities.destroy_entity(self.ghost_entity)
+            selector:destroy()
+         end)
 end
 
 function AceItemPlacer:_location_filter(result, selector)

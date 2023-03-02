@@ -10,6 +10,12 @@
          <a href="#" {{action "toggleSegment" segment target="view"}} {{bind-attr data-index=_view.contentIndex class=":toggleSegmentBtn segment.enabled:enabled:disabled"}}>
             <img class="toggleSegmentImg"/>
          </a>
+         <a href="#" {{action "buildFromSegment" segment target="view"}} {{bind-attr data-index=_view.contentIndex class=":buildFromSegmentBtn segment.enabled::hidden"}}>
+            <img class="buildFromSegmentImg"/>
+         </a>
+         <a href="#" {{action "buildSegment" segment target="view"}} {{bind-attr data-index=_view.contentIndex class=":buildSegmentBtn segment.crafterRequirement::hidden"}}>
+            <img class="buildSegmentImg"/>
+         </a>
       </div>
       {{/each}}
       <a href="#" {{action "insertSegment" target="view"}} id="addSegmentBtn" {{bind-attr class="view.canAddSegment::hidden"}}>
@@ -18,10 +24,13 @@
    </div>
    <div id="fenceControls">
       <a id="showLoadPreset" class="button" href="#" {{action "showLoadPreset" target="view"}}>
-         <img class="PresetsImg"/>
+         <img class="presetsImg"/>
       </a>
       <a id="showSavePreset" class="button" href="#" {{action "showSavePreset" target="view"}}>
          <img class="savePresetImg"/>
+      </a>
+      <a id="reverseSegments" class="button" href="#" {{action "reverseSegments" target="view"}}>
+         <img class="reverseSegmentsImg"/>
       </a>
    </div>
 
