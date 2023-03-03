@@ -52,45 +52,11 @@ App.StonehearthBuildingCostListView = App.View.extend({
       }
 
       self._resource_cost = building_c.resource_cost;
-      self._item_cost = building_c.item_cost;
+      self._item_cost = self._getCondensedItemQualities(building_c.item_cost);
 
       self._updateAvailable();
 
-   }.observes('model'),
-
-   _onResourcesChanged: function() {
-      var self = this;
-
-      var building = self.get('model');
-      if (!building) {
-         return;
-      }
-      var building_c = building['stonehearth:build2:building'];
-      if (!building_c) {
-         return;
-      }
-
-      self._resource_cost = building_c.resource_cost;
-      self._item_cost = building_c.item_cost;
-      self._updateAvailable();
-   }.observes('model.stonehearth:build2:building.resource_cost'),
-
-   _onItemsChanged: function() {
-      var self = this;
-
-      var building = self.get('model');
-      if (!building) {
-         return;
-      }
-      var building_c = building['stonehearth:build2:building'];
-      if (!building_c) {
-         return;
-      }
-
-      self._resource_cost = building_c.resource_cost;
-      self._item_cost = building_c.item_cost;
-      self._updateAvailable();
-   }.observes('model.stonehearth:build2:building.item_cost'),
+   }.observes('model', 'model.stonehearth:build2:building.resource_cost', 'model.stonehearth:build2:building.item_cost'),
 
    didInsertElement: function() {
       var self = this;
@@ -167,17 +133,12 @@ App.StonehearthBuildingCostListView = App.View.extend({
       return entry;
    },
 
-   _itemToViewData: function(uri, count) {
+   _itemToViewData: function(item) {
       var self = this;
 
-      var quality;
-      if (uri.indexOf(App.constants.item_quality.KEY_SEPARATOR) == -1) {
-         quality = 1;
-      } else {
-         var parts = uri.split(App.constants.item_quality.KEY_SEPARATOR);
-         uri = parts[0];
-         quality = parts[1];
-      }
+      var uri = item.uri;
+      var quality = item.quality;
+      var count = item.count;
 
       var catalogData = App.catalog.getCatalogData(uri);
       if (!catalogData || !catalogData.iconic_uri) {
@@ -189,7 +150,7 @@ App.StonehearthBuildingCostListView = App.View.extend({
       var ingredientData = {};
       ingredientData.kind = 'uri';
       ingredientData.identifier = emberIconicKey;
-      if (quality && quality > 0) {
+      if (quality) {
          ingredientData.quality = quality;
       }
       var availableCount = radiant.findUsableCount(ingredientData, self.usableInventoryTracker);
@@ -209,6 +170,45 @@ App.StonehearthBuildingCostListView = App.View.extend({
       };
 
       return entry;
+   },
+
+   _getCondensedItemQualities: function(item_cost) {
+      var self = this;
+      var items = [];
+      _.forEach(item_cost, function(count, uri) {
+         if (count < 1) return;
+
+         var quality;
+         if (uri.indexOf(App.constants.item_quality.KEY_SEPARATOR) == -1) {
+            quality = null;
+         } else {
+            var parts = uri.split(App.constants.item_quality.KEY_SEPARATOR);
+            uri = parts[0];
+            quality = parts[1];
+            if (quality && quality <= 1) {
+               quality = null;
+            }
+         }
+
+         var foundItem = false;
+         for (var i = 0; i < items.length; i++) {
+            if (items[i].uri == uri && items[i].quality == quality) {
+               items[i].count += count;
+               foundItem = true;
+               break;
+            }
+         }
+
+         if (!foundItem) {
+            items.push({
+               uri: uri,
+               quality: quality,
+               count: count,
+            })
+         }
+      });
+
+      return items;
    },
 
    _getItemCraftable: function(uri) {
@@ -295,9 +295,9 @@ App.StonehearthBuildingCostListView = App.View.extend({
          }
       });
 
-      _.forEach(self._item_cost, function(count, uri) {
-         var entry = self._itemToViewData(uri, count);
-         if (entry && entry.count > 0) {
+      _.forEach(self._item_cost, function(item) {
+         var entry = self._itemToViewData(item);
+         if (entry) {
             arr.push(entry);
          }
       });

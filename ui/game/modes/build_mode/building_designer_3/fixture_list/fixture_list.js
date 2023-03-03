@@ -80,7 +80,7 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       self.$('.fixture').each(function() {
          var tooltipString = $(this).data('tooltip');
          App.tooltipHelper.createDynamicTooltip($(this), function () {
-            return tooltipString;
+            return $(App.tooltipHelper.createTooltip(null, tooltipString));;
          });
       });
    },
@@ -140,6 +140,11 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
          }
 
          var highestLevel = jobControllerInfo.highest_level;
+         var jobInfo = App.jobConstants[jobUri];
+         var jobIcon;
+         if (jobInfo) {
+            jobIcon = jobInfo.description.icon;
+         }
 
          _.forEach(jobControllerInfo.recipe_list, function(category) {
             _.forEach(category.recipes, function(recipe_info, recipe_key) {
@@ -167,7 +172,8 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
 
                var entry = {
                   uri: product_uri,
-                  item_quality: -1
+                  item_quality: -1,
+                  jobIcon: jobIcon,
                };
 
                self._appendCatalogData(entry, catalogData);
@@ -181,6 +187,9 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
          var key = rootUri + '+1';  // Merge with the "quality 1" version.
          if (!allFixtures[key]) {
             allFixtures[key] = data;  // Merge with the "quality 1" version.
+         }
+         else {
+            allFixtures[key].jobIcon = data.jobIcon;
          }
       });
 
@@ -225,11 +234,22 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
    },
 
    _addItem: function(data) {
+      var tooltip = i18n.t(data.display_name);
+      if (data.count) {
+         // if there's a number of them in inventory, show that
+         tooltip += ` (${data.count})`;
+      }
+
+      if (data.jobIcon) {
+         // if there's a crafter job icon, include that
+         tooltip += `<img class="jobIcon" src="${data.jobIcon}"/>`;
+      }
+
       var item = {
          style: "background-image: url(" + data.icon + ")",
          item_quality: data.item_quality || 1,
          item_quality_class: "quality-" + (data.item_quality || 1) + "-icon",
-         tooltip: i18n.t(data.display_name),
+         tooltip: tooltip,
          data: data.uri
       };
       return item;
@@ -287,9 +307,10 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
 
       addFixture: function(fixtureUri, itemQuality) {
          var self = this;
-         radiant.call_obj('stonehearth.building', 'do_decoration_tool_command', fixtureUri, itemQuality)
+         var quality = (itemQuality || -1) <= 1 ? -1 : itemQuality;
+         radiant.call_obj('stonehearth.building', 'do_decoration_tool_command', fixtureUri, quality)
             .done(function() {
-               self.send('addFixture', fixtureUri, itemQuality);
+               self.send('addFixture', fixtureUri, quality);
             })
             .fail(function(e) {
                self.send('clearSelectedFixture');

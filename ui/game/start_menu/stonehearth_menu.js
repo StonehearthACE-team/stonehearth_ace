@@ -59,6 +59,9 @@ $.widget( "stonehearth.stonehearthMenu", {
             menuMode.addClass('selected');
          }
       }
+      else if (this._currentOpenMenu) {
+         App.setGameMode('normal');
+      }
 
       this._currentOpenMenu = id;
 
