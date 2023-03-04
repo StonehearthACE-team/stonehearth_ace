@@ -278,6 +278,10 @@
 .requirementText {
    color: @warningFontColor;
 
+   &.requirementMet {
+      color: @greenFontColor;
+   }
+
    .requirement {
       margin-top: inherit;
 
@@ -292,9 +296,14 @@
    display: inline-block;
    color: @warningFontColor;
 
+   &.requirementMet {
+      color: @greenFontColor;
+   }
+
    img {
+      float: inherit;
+      padding: inherit;
       height: 30px;
-      //padding: 2px;
       vertical-align: middle;
       margin-top: -2px;
    }

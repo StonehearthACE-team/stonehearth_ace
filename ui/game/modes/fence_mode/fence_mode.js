@@ -328,17 +328,20 @@ App.AceBuildFenceModeView = App.View.extend({
                if (recipe.manual_unlock && !jobControllerInfo.manually_unlocked[recipe.recipe_key]) {
                   // if it's locked, don't show that it's craftable
                }
-               else if (recipe.level_requirement > highestLevel) {
+               else {
                   // show unmet requirement
+                  var level = Math.max(1, recipe.level_requirement || 1);
                   crafterRequirement = {
                      jobUri: jobUri,
                      jobIcon: jobIcon,
-                     level: recipe.level_requirement
+                     level: level,
+                     met: highestLevel >= level,
                   };
-               }
-               else {
-                  // it's craftable, remove requirement
-                  available = true;
+
+                  if (crafterRequirement.met) {
+                     // it's actually craftable, show it as available
+                     available = true;
+                  }
                }
 
                Ember.set(segment, 'crafterRequirement', crafterRequirement);
@@ -392,7 +395,7 @@ App.AceBuildFenceModeView = App.View.extend({
       // show crafter icon and level required (if it can be crafted), with formatting based on meeting requirements
       var self = this;
       if (crafterRequirement) {
-         return `<span class="requirement"><img class="jobIcon" src="${crafterRequirement.jobIcon}"/>` +
+         return `<span class="requirement${crafterRequirement.met ? ' requirementMet' : ''}"><img class="jobIcon" src="${crafterRequirement.jobIcon}"/>` +
                `${i18n.t('stonehearth_ace:ui.game.fence_mode.level_requirement', crafterRequirement)}</span>`;;
       }
       
@@ -408,24 +411,28 @@ App.AceBuildFenceModeView = App.View.extend({
          if (segment.crafterRequirement) {
             var jobUri = segment.crafterRequirement.jobUri;
             var lvl = requirements[jobUri] && requirements[jobUri].level || 1;
+            var met = requirements[jobUri] ? requirements[jobUri].met : true;
             requirements[jobUri] = {
                jobIcon: segment.crafterRequirement.jobIcon,
-               level: Math.max(lvl, segment.crafterRequirement.level)
+               level: Math.max(lvl, segment.crafterRequirement.level),
+               met: met && segment.crafterRequirement.met,
             }
          }
       });
 
       var requirementText = '';
+      var isMet = true;
       radiant.each(requirements, function(jobUri, requirement) {
          if (requirementText.length > 0) {
-            requirementText += ', ';
+            requirementText += ' ';
          }
          requirementText += self._getCrafterRequirementText(requirement);
+         isMet = isMet && requirement.met;
       });
 
       if (requirementText.length > 0)
       {
-         return `<div class="requirementText">${i18n.t('stonehearth_ace:ui.game.fence_mode.crafter_requirement')}${requirementText}</div>`;
+         return `<div class="requirementText${isMet ? ' requirementMet' : ''}">${i18n.t('stonehearth_ace:ui.game.fence_mode.crafter_requirement')}${requirementText}</div>`;
       }
    },
 
