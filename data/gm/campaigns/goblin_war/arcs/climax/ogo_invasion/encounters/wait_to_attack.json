@@ -1,3 +1,13 @@
 {
-   "unique": true
+   "unique": true,
+   "can_start": {
+      "all_tests": {
+         "stage": {
+            "type": "deny_if_not",
+            "item": "counter",
+            "key": "ogo_army",
+            "value": 0
+         }
+      }
+   }
 }

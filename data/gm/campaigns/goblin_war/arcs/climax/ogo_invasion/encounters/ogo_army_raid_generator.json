@@ -7,7 +7,8 @@
       "spawn_edge": {
          "type": "trigger_many",
          "out_edges": [
-            "wait_to_attack"
+            "wait_to_attack",
+            "ogo_army_add_counter"
          ]
       }
    }
