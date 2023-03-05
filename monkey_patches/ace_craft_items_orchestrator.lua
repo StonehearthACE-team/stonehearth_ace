@@ -41,8 +41,16 @@ function AceCraftItemsOrchestrator:_process_order(order)
       --if neither of the above are true, put down an invisible temporary workshop,
       --where we will create the target item
       local location = radiant.entities.get_world_grid_location(self._crafter)
+      if not location then
+         -- ACE: in multiplayer, a client player's town might be suspended on resuming, and the crafter won't be in the world
+         -- if they're in the middle of crafting an order without a workbench, create the temporary one near the banner
+         local town = stonehearth.town:get_town(self._crafter)
+         location = town:get_landing_location()
+      end
+
       local items = {}
 
+      log:debug('%s find_closest_standable_point_to %s', tostring(self._crafter), tostring(location))
       local temp_workbench_location, _ = radiant.terrain.find_closest_standable_point_to(location, 30, self._crafter)
       self._temp_workbench = radiant.entities.create_entity('stonehearth:crafter:temporary_workbench', { owner = radiant.entities.get_player_id(self._crafter) })
       radiant.terrain.place_entity(self._temp_workbench, temp_workbench_location)

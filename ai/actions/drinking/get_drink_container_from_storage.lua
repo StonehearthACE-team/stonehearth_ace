@@ -1,3 +1,4 @@
+local DrinkingLib = require 'stonehearth_ace.ai.lib.drinking_lib'
 local GetDrinkFromContainerFromStorage = class()
 
 GetDrinkFromContainerFromStorage.name = 'get drink from container in storage'
@@ -16,7 +17,7 @@ GetDrinkFromContainerFromStorage.priority = {0, 1}
 
 local function make_drink_container_filter(owner_id, drink_filter_fn)
    return function(item)
-         if not radiant.entities.is_material(item, 'drink_container') then
+         if not DrinkingLib.is_drinkable(item) then
             return false
          end
          if owner_id ~= '' and radiant.entities.get_player_id(item) ~= owner_id then

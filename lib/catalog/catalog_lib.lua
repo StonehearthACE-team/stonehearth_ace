@@ -382,9 +382,22 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
             if food.applied_buffs then
                catalog_data.consumable_buffs = catalog_lib.get_buffs(food.applied_buffs)
             end
-            local satisfaction = food['stonehearth:sitting_on_chair'] or food.default
+            local satisfaction = food.default   --food['stonehearth:sitting_on_chair'] or 
             catalog_data.food_satisfaction = satisfaction and satisfaction.satisfaction
             catalog_data.food_quality = food.quality
+            if catalog_data.materials then
+               local food_materials = catalog_lib._get_material_table(catalog_data.materials)
+               catalog_data.food_attributes = {
+                  is_warming = food_materials.warming,
+                  is_refreshing = food_materials.refreshing,
+                  is_breakfast_time = food_materials.breakfast_time,
+                  is_lunch_time = food_materials.lunch_time,
+                  is_dinner_time = food_materials.dinner_time,
+                  is_night_time = food_materials.night_time,
+               }
+            else
+               catalog_data.food_attributes = {}
+            end
          else
             log:error('%s food from container %s isn\'t real food!', tostring(food_uri), full_alias)
          end
@@ -401,9 +414,24 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
             if drink.applied_buffs then
                catalog_data.consumable_buffs = catalog_lib.get_buffs(drink.applied_buffs)
             end
-            local satisfaction = drink['stonehearth:sitting_on_chair'] or drink.default
+            local satisfaction = drink.default  --drink['stonehearth:sitting_on_chair'] or 
             catalog_data.drink_satisfaction = satisfaction and satisfaction.satisfaction
             catalog_data.drink_quality = drink.quality
+
+            -- make sure we're on the server before trying to check catalog materials
+            -- this only needs to happen on the server anyway; it's for eating/drinking ai
+            if catalog_data.materials then
+               local drink_materials = catalog_lib._get_material_table(catalog_data.materials)
+               catalog_data.drink_attributes = {
+                  is_warming = drink_materials.warming,
+                  is_refreshing = drink_materials.refreshing,
+                  is_morning_time = drink_materials.morning_time,
+                  is_afternoon_time = drink_materials.afternoon_time,
+                  is_night_time = drink_materials.night_time,
+               }
+            else
+               catalog_data.drink_attributes = {}
+            end
          else
             log:error('%s drink from container %s isn\'t a real drink!', tostring(drink_uri), full_alias)
          end
@@ -541,6 +569,17 @@ function catalog_lib.get_buffs(buff_data)
       end
    end
    return buffs
+end
+
+function catalog_lib._get_material_table(materials)
+   local mats = {}
+   if radiant.util.is_string(materials) then
+      materials = radiant.util.split_string(materials)
+   end
+   for _, mat in ipairs(materials) do
+      mats[mat] = true
+   end
+   return mats
 end
 
 return catalog_lib

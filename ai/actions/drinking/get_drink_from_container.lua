@@ -1,4 +1,5 @@
 local Entity = _radiant.om.Entity
+local DrinkingLib = require 'stonehearth_ace.ai.lib.drinking_lib'
 local GetDrinkFromContainer = class()
 
 GetDrinkFromContainer.name = 'get drink from container'
@@ -19,7 +20,7 @@ local log = radiant.log.create_logger('get_drink_from_container')
 
 local function make_drink_container_filter(owner_id, drink_filter_fn)
    return function(item)
-         if not radiant.entities.get_entity_data(item, 'stonehearth_ace:drink_container') then
+         if not DrinkingLib.is_drinkable(item) then
             return false
          end
          if owner_id ~= '' then

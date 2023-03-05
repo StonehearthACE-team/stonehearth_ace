@@ -737,8 +737,10 @@ function AceTown:suspend_town()
       return
    end
 
+   --self._log:error('suspending suspendable entities for town %s...', self._sv.player_id)
    self:_suspend_suspendable_entities()
 
+   --self._log:error('suspending town %s...', self._sv.player_id)
    self:_ace_old_suspend_town()
 end
 

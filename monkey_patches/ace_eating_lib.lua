@@ -20,22 +20,10 @@ function AceEatingLib.get_hour_type(hour)
 end
 
 function AceEatingLib.is_edible(food_stuff)
-   local container_data = radiant.entities.get_entity_data(food_stuff, 'stonehearth:food_container', false)
-   if not container_data then
-      -- actually, we don't care about food that isn't in a container
-      return false
-   end
-
-   local food = container_data.food
-
-   if not stonehearth.catalog:is_material(food, 'food') then
-      --log:error('%s food from container %s isn\'t real food!', tostring(food), food_stuff)
-      return false
-   end
-
-   local food_data = radiant.entities.get_entity_data(food, 'stonehearth:food', false)
-
-   if not food_data or not food_data.default then
+   -- we don't care about food that isn't in a container
+   -- properly formatted food containers with properly formatted food has that data catalogued
+   local catalog_data = stonehearth.catalog:get_catalog_data(food_stuff)
+   if not catalog_data or not catalog_data.food_satisfaction then
       return false
    end
 
@@ -43,33 +31,14 @@ function AceEatingLib.is_edible(food_stuff)
 end
 
 function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerances, hour_type, weather_type)
-   local container_data = radiant.entities.get_entity_data(food_stuff, 'stonehearth:food_container', false)
-   if not container_data then
-      -- actually, we don't care about food that isn't in a container
+   -- we don't care about food that isn't in a container
+   -- properly formatted food containers with properly formatted food has that data catalogued
+   local catalog_data = stonehearth.catalog:get_catalog_data(food_stuff)
+   if not catalog_data or not catalog_data.food_satisfaction then
       return nil
    end
 
-   local food = container_data.food
-
-   if not stonehearth.catalog:is_material(food, 'food') then
-      return nil
-   end
-
-   local food_data = radiant.entities.get_entity_data(food, 'stonehearth:food', false)
-
-   if not food_data or not food_data.default then
-      return nil
-   end
-
-   local qualities = stonehearth.constants.food_qualities
-
-	if food_intolerances and food_intolerances ~= '' then
-      if radiant.entities.is_material(food_stuff, food_intolerances) then
-         return qualities.INTOLERABLE
-      end
-   end
-
-   local quality = food_data.quality or stonehearth.constants.food_qualities.RAW_BLAND
+   local quality = catalog_data.food_quality or stonehearth.constants.food_qualities.RAW_BLAND
 	
    if food_preferences and food_preferences ~= '' then
       if radiant.entities.is_material(food_stuff, food_preferences) then
@@ -78,17 +47,18 @@ function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerance
    end
 
    local weather_types = stonehearth.constants.weather.weather_types
+   local food_attributes = catalog_data.food_attributes
 	
 	if weather_type == weather_types.COLD then
-		if radiant.entities.is_material(food_stuff, 'warming') then
+		if food_attributes.is_warming then
          quality = quality + 4
-		elseif radiant.entities.is_material(food_stuff, 'refreshing') then
+		elseif food_attributes.is_refreshing then
 			quality = quality - 1
 		end
 	elseif weather_type == weather_types.HOT then
-		if radiant.entities.is_material(food_stuff, 'refreshing') then
+		if food_attributes.is_refreshing then
          quality = quality + 4
-		elseif radiant.entities.is_material(food_stuff, 'warming') then
+		elseif food_attributes.is_warming then
 			quality = quality - 1
 		end
    end
@@ -96,23 +66,23 @@ function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerance
    local times = stonehearth.constants.food
    
    if hour_type == times.MEALTIME_DINNER_START then
-      if not radiant.entities.is_material(food_stuff, 'night_time') then
+      if not food_attributes.is_night_time then
          quality = quality - 2
       end
    elseif hour_type == times.MEALTIME_START then
-		if radiant.entities.is_material(food_stuff, 'dinner_time') then
+		if food_attributes.is_dinner_time then
          quality = quality - 1
-		elseif not radiant.entities.is_material(food_stuff, 'lunch_time') then
+		elseif not food_attributes.is_lunch_time then
          quality = quality - 2
-		elseif radiant.entities.is_material(food_stuff, 'lunch_time') then
+		elseif food_attributes.is_lunch_time then
 			quality = quality + 1
       end
 	elseif hour_type == times.MEALTIME_BREAKFAST_START then
-		if radiant.entities.is_material(food_stuff, 'dinner_time') then
+		if food_attributes.is_dinner_time then
          quality = quality - 1
-		elseif not radiant.entities.is_material(food_stuff, 'breakfast_time') then
+		elseif not food_attributes.is_breakfast_time then
          quality = quality - 2
-      elseif radiant.entities.is_material(food_stuff, 'breakfast_time')then
+      elseif food_attributes.is_breakfast_time then
 			quality = quality + 3
 		end
 	end

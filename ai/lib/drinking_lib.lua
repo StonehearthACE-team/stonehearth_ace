@@ -18,17 +18,10 @@ function DrinkingLib.get_hour_type(hour)
 end
 
 function DrinkingLib.is_drinkable(drink_stuff, drink_intolerances)
-   local drink = drink_stuff
-   local container_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink_container', false)
-   if container_data then
-      drink = container_data.drink
-   else
-      -- actually, we don't care about drinks that aren't in containers; they shouldn't exist!
-      return false
-   end
-   local drink_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink', false)
-
-   if not drink_data or not drink_data.default then
+   -- we don't care about drink that isn't in a container
+   -- properly formatted drink containers with properly formatted drink has that data catalogued
+   local catalog_data = stonehearth.catalog:get_catalog_data(drink_stuff)
+   if not catalog_data or not catalog_data.drink_satisfaction then
       return false
    end
 
@@ -42,18 +35,11 @@ function DrinkingLib.is_drinkable(drink_stuff, drink_intolerances)
 end
 
 function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intolerances, hour_type, weather_type)
-   local drink = drink_stuff
-   local container_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink_container', false)
-   if container_data then
-      drink = container_data.drink
-   else
-      -- actually, we don't care about drinks that aren't in containers; they shouldn't exist!
-      return nil
-   end
-   local drink_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink', false)
-
-   if not drink_data or not drink_data.default then
-      return nil
+   -- we don't care about drink that isn't in a container
+   -- properly formatted drink containers with properly formatted drink has that data catalogued
+   local catalog_data = stonehearth.catalog:get_catalog_data(drink_stuff)
+   if not catalog_data or not catalog_data.drink_satisfaction then
+      return false
    end
 
    local qualities = stonehearth.constants.drink_qualities
@@ -70,19 +56,20 @@ function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intoleran
       end
    end
 
-   local quality = drink_data.quality or qualities.RAW_BLAND
+   local quality = catalog_data.drink_quality or qualities.RAW_BLAND
    local weather_types = stonehearth.constants.weather.weather_types
+   local drink_attributes = catalog_data.drink_attributes
 	
 	if weather_type == weather_types.COLD then
-		if radiant.entities.is_material(drink_stuff, 'warming') then
+		if drink_attributes.is_warming then
          quality = quality + 3
-		elseif radiant.entities.is_material(drink_stuff, 'refreshing') then
+		elseif drink_attributes.is_refreshing then
 			quality = quality - 2
 		end
 	elseif weather_type == weather_types.HOT then
-		if radiant.entities.is_material(drink_stuff, 'refreshing') then
+		if drink_attributes.is_refreshing then
          quality = quality + 3
-		elseif radiant.entities.is_material(drink_stuff, 'warming') then
+		elseif drink_attributes.is_warming then
 			quality = quality - 2
 		end
 	end
@@ -90,23 +77,23 @@ function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intoleran
    local times = stonehearth.constants.drink_satiety
 	
    if hour_type == times.DRINKTIME_NIGHT_START then
-      if not radiant.entities.is_material(drink_stuff, 'night_time') then
+      if not drink_attributes.is_night_time then
          quality = quality - 2
       end
 	elseif hour_type == times.DRINKTIME_AFTERNOON_START then
-		if radiant.entities.is_material(drink_stuff, 'night_time') then
+		if drink_attributes.is_night_time then
          quality = quality - 2
-		elseif not radiant.entities.is_material(drink_stuff, 'afternoon_time') then
+		elseif not drink_attributes.is_afternoon_time then
          quality = quality - 3
-		elseif radiant.entities.is_material(drink_stuff, 'afternoon_time') then
+		elseif drink_attributes.is_afternoon_time then
 			quality = quality + 2
       end
 	else  --if hour_type == times.DRINKTIME_MORNING_START then
-		if radiant.entities.is_material(drink_stuff, 'night_time') then
+		if drink_attributes.is_night_time then
          quality = quality - 6
-		elseif not radiant.entities.is_material(drink_stuff, 'morning_time') then
+		elseif not drink_attributes.is_morning_time then
          quality = quality - 1
-      elseif radiant.entities.is_material(drink_stuff, 'morning_time')then
+      elseif drink_attributes.is_morning_time then
 			quality = quality + 2
 		end
 	end

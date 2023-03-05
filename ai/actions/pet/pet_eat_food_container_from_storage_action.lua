@@ -13,9 +13,10 @@ local log = radiant.log.create_logger('pet_eat_food_container_from_storage')
 local function make_food_container_filter(owner_id, food_preferences)
    return stonehearth.ai:filter_from_key('food_container_filter', tostring(food_preferences) .. ":" .. owner_id,
       function(food_container)
-         if not radiant.entities.is_material(food_container, 'food_container') then
-            return false
-         end
+         -- this check is expensive! just don't do it because we're getting entity data from it that's more important
+         -- if not radiant.entities.is_material(food_container, 'food_container') then
+         --    return false
+         -- end
 
          if owner_id ~= '' and radiant.entities.get_player_id(food_container) ~= owner_id then
             return false
@@ -27,10 +28,11 @@ local function make_food_container_filter(owner_id, food_preferences)
          end
 			local food = container_data.food
 
-         if not stonehearth.catalog:is_material(food, 'food') then
-            --log:error('%s food from container %s isn\'t real food!', tostring(food), food_container)
-            return false
-         end
+         -- this check is expensive! just don't do it because we're getting entity data from it that's more important
+         -- if not stonehearth.catalog:is_material(food, 'food') then
+         --    --log:error('%s food from container %s isn\'t real food!', tostring(food), food_container)
+         --    return false
+         -- end
 
 			local food_data = radiant.entities.get_entity_data(food, 'stonehearth:food', false)
 
@@ -48,19 +50,26 @@ local function make_food_container_filter(owner_id, food_preferences)
 		end)
 end
 
+local function pet_food_rating_fn(item)
+   local container_data = radiant.entities.get_entity_data(item, 'stonehearth:food_container', false)
+   local food_data = radiant.entities.get_entity_data(container_data.food, 'stonehearth:food', false)
+   return food_data.is_pet_food and 1 or 0
+end
+
 function PetEatFoodContainerFromStorage:start_thinking(ai, entity, args)
    local owner_id = radiant.entities.get_player_id(entity)
    local diet_data = radiant.entities.get_entity_data(entity, 'stonehearth:diet')
 	local food_container_filter_fn = make_food_container_filter(owner_id, diet_data and diet_data.food_material or '') 
    ai:set_think_output( { 
       food_container_filter_fn = food_container_filter_fn,
-      food_rating_fn = function(item)
-         if radiant.entities.is_material(item, 'pet_food') then
-            return 1
-         else
-            return 0
-         end
-      end
+      food_rating_fn = pet_food_rating_fn,
+      -- function(item)
+      --    if radiant.entities.is_material(item, 'pet_food') then
+      --       return 1
+      --    else
+      --       return 0
+      --    end
+      -- end
 	})
 end
 

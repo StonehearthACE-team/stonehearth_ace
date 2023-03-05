@@ -391,6 +391,11 @@ function AceFarmerFieldComponent:_create_post_harvest_crop_listeners(dirt_plot)
 end
 
 function AceFarmerFieldComponent:_destroy_all_post_harvest_crop_listeners()
+   -- on restore, a suspended town can have farmer fields where this table hasn't been created yet
+   if not self._post_harvest_crop_listeners then
+      return
+   end
+
    for _, listeners in pairs(self._post_harvest_crop_listeners) do
       for _, listener in pairs(listeners) do
          listener:destroy()

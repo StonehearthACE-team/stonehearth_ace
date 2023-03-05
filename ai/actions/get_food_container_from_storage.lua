@@ -1,3 +1,4 @@
+local EatingLib = require 'stonehearth.ai.lib.eating_lib'
 local GetFoodFromContainerFromStorage = radiant.class()
 
 GetFoodFromContainerFromStorage.name = 'get food from container in storage'
@@ -13,7 +14,7 @@ GetFoodFromContainerFromStorage.priority = {0, 1}
 
 local function make_food_container_filter(owner_id, food_filter_fn)
    return function(item)
-         if not radiant.entities.is_material(item, 'food_container') then
+         if not EatingLib.is_edible(item) then
             return false
          end
          if owner_id ~= '' and radiant.entities.get_player_id(item) ~= owner_id then
