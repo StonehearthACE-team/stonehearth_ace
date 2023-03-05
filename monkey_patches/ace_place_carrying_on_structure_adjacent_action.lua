@@ -1,10 +1,12 @@
+local Point3 = _radiant.csg.Point3
+
 local AcePlaceItemOnStructureAdjacent = radiant.class()
 
 function AcePlaceItemOnStructureAdjacent:run(ai, entity, args)
    local ghost = args.ghost
    local ghost_comp = ghost:get_component('stonehearth:ghost_form')
    local options = ghost_comp:get_placement_info()
-   if not options then
+   if not options or not options.location or not radiant.util.is_a(options.location, Point3) then
       ai:abort('placement cancelled before arriving?')
    end
 
