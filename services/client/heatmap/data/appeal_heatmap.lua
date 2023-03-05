@@ -128,7 +128,12 @@ end
 
 function AppealHeatmap:fn_is_entity_relevant(item)
    local appeal_data = get_entity_data(item, 'stonehearth:appeal')
-   return appeal_data and rawget(appeal_data, 'appeal') and rawget(appeal_data, 'appeal') ~= 0
+   if appeal_data then
+      --log:debug('checking appeal for relevant entity %s', item)
+      return (rawget(appeal_data, 'appeal') or 0) ~= 0
+   else
+      return false
+   end
 end
 
 return AppealHeatmap

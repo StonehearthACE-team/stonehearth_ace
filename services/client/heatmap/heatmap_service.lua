@@ -5,6 +5,7 @@ local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
 local Point2 = _radiant.csg.Point2
 local log = radiant.log.create_logger('heatmap')
+local is_temporary_entity = radiant.entities.is_temporary_entity
 
 local HeatmapService = class()
 
@@ -415,7 +416,7 @@ function HeatmapService:_get_surrounding_items(origin, extra_radius)
    local get_entity_data = radiant.entities.get_entity_data
    local table_insert = table.insert
    for _, item in pairs(radiant.terrain.get_entities_in_cube(sampling_cube)) do
-      if self:_is_entity_relevant(item, raycast_origin) then
+      if not is_temporary_entity(item) and self:_is_entity_relevant(item, raycast_origin) then
          table_insert(result, {item = item, sampling_region = Region3(sampling_cube)})
       end
    end

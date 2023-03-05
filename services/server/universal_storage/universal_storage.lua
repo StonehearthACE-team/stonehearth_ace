@@ -45,6 +45,13 @@ function UniversalStorage:post_activate()
 
       for id, storage in pairs(self._sv.storages) do
          local access_nodes = self._access_nodes_by_storage[id]
+         -- verify that the access nodes properly just have the universal_storage component and not the storage component
+         -- local has_access_node = false
+         -- for _, node in pairs(access_nodes) do
+         --    if node:get_component('stonehearth:storage') then
+
+         --    end
+         -- end
          if not access_nodes or not next(access_nodes) then
             self:_destroy_universal_storage(storage, town_entity, location)
          end
@@ -338,6 +345,10 @@ function UniversalStorage:_update_effect(access_node)
    if location then
       local effect = self._sv.access_node_effect
       if effect and effect ~= '' and access_node.effect_suffix then
+         -- make sure the effect exists (e.g., Ethereal Storage mod hasn't been disabled)
+         if not radiant.resources.load_json(effect, true, false) then
+            return
+         end
          -- run the appropriate effect based on the access node "size"
          access_node.effect = radiant.effects.run_effect(access_node.entity, effect .. access_node.effect_suffix)
       end

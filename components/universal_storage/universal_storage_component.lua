@@ -6,6 +6,7 @@
 ]]
 
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
+local log = radiant.log.create_logger('universal_storage_component')
 
 local UniversalStorageComponent = class()
 
@@ -22,6 +23,14 @@ end
 function UniversalStorageComponent:activate()
    if not self._is_create or self._json.register_on_create ~= false then
       self:_register()
+   end
+end
+
+function UniversalStorageComponent:post_activate()
+   -- verify that the access nodes properly just have the universal_storage component and not the storage component
+   if self._entity:is_valid() and self._entity:get_component('stonehearth:storage') then
+      log:debug('%s has storage component, removing universal storage component', self._entity)
+      self._entity:remove_component('stonehearth_ace:universal_storage')
    end
 end
 
