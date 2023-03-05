@@ -27,8 +27,8 @@ function UniversalStorageComponent:activate()
 end
 
 function UniversalStorageComponent:post_activate()
-   -- verify that the access nodes properly just have the universal_storage component and not the storage component
-   if self._entity:is_valid() and self._entity:get_component('stonehearth:storage') then
+   -- verify on restore that the access nodes properly just have the universal_storage component and not the storage component
+   if not self._is_create and self._entity:is_valid() and self._entity:get_component('stonehearth:storage') then
       log:debug('%s has storage component, removing universal storage component', self._entity)
       self._entity:remove_component('stonehearth_ace:universal_storage')
    end

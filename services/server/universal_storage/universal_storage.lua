@@ -346,11 +346,12 @@ function UniversalStorage:_update_effect(access_node)
       local effect = self._sv.access_node_effect
       if effect and effect ~= '' and access_node.effect_suffix then
          -- make sure the effect exists (e.g., Ethereal Storage mod hasn't been disabled)
+         effect = effect .. access_node.effect_suffix
          if not radiant.resources.load_json(effect, true, false) then
             return
          end
          -- run the appropriate effect based on the access node "size"
-         access_node.effect = radiant.effects.run_effect(access_node.entity, effect .. access_node.effect_suffix)
+         access_node.effect = radiant.effects.run_effect(access_node.entity, effect)
       end
    end
 end
