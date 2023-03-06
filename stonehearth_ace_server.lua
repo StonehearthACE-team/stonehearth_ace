@@ -33,7 +33,6 @@ local monkey_patches = {
    ace_bulletin = 'stonehearth.services.server.bulletin_board.bulletin',
    ace_calendar_service = 'stonehearth.services.server.calendar.calendar_service',
    ace_carry_block_component = 'stonehearth.components.carry_block.carry_block_component',
-   ace_catalog_service = 'stonehearth.services.server.catalog.catalog_service',
    ace_channel_manager = 'stonehearth.services.server.hydrology.channel_manager',
    ace_charging_pedestal_component = 'stonehearth.entities.gizmos.charging_pedestal.charging_pedestal_component',
    ace_check_bait_trap_adjacent_action = 'stonehearth.ai.actions.trapping.check_bait_trap_adjacent_action',

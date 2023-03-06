@@ -86,7 +86,8 @@ function CatalogService:is_item(uri)
       return false
    end
    local catalog_data = self._catalog[uri]
-   return catalog_data.is_item == true
+   -- ACE: also check to make sure we're not considering the root form for an entity that has a separate iconic form
+   return catalog_data.is_item == true and uri ~= catalog_data.root_entity_uri
 end
 
 function CatalogService:is_material(uri, desired_materials)
