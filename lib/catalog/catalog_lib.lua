@@ -394,6 +394,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
                   is_lunch_time = food_materials.lunch_time,
                   is_dinner_time = food_materials.dinner_time,
                   is_night_time = food_materials.night_time,
+                  is_pet_food = food_materials.pet_food,
                }
             else
                catalog_data.food_attributes = {}
