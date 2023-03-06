@@ -22,7 +22,7 @@ end
 function AceEatingLib.is_edible(food_stuff)
    -- we don't care about food that isn't in a container
    -- properly formatted food containers with properly formatted food has that data catalogued
-   local catalog_data = stonehearth.catalog:get_catalog_data(food_stuff)
+   local catalog_data = stonehearth.catalog:get_catalog_data(food_stuff:get_uri())
    if not catalog_data or not catalog_data.food_satisfaction then
       return false
    end
@@ -33,9 +33,17 @@ end
 function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerances, hour_type, weather_type)
    -- we don't care about food that isn't in a container
    -- properly formatted food containers with properly formatted food has that data catalogued
-   local catalog_data = stonehearth.catalog:get_catalog_data(food_stuff)
+   local catalog_data = stonehearth.catalog:get_catalog_data(food_stuff:get_uri())
    if not catalog_data or not catalog_data.food_satisfaction then
       return nil
+   end
+
+   local qualities = stonehearth.constants.food_qualities
+
+	if food_intolerances and food_intolerances ~= '' then
+      if radiant.entities.is_material(food_stuff, food_intolerances) then
+         return qualities.INTOLERABLE
+      end
    end
 
    local quality = catalog_data.food_quality or stonehearth.constants.food_qualities.RAW_BLAND

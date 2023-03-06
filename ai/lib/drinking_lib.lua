@@ -20,7 +20,7 @@ end
 function DrinkingLib.is_drinkable(drink_stuff, drink_intolerances)
    -- we don't care about drink that isn't in a container
    -- properly formatted drink containers with properly formatted drink has that data catalogued
-   local catalog_data = stonehearth.catalog:get_catalog_data(drink_stuff)
+   local catalog_data = stonehearth.catalog:get_catalog_data(drink_stuff:get_uri())
    if not catalog_data or not catalog_data.drink_satisfaction then
       return false
    end
@@ -37,7 +37,7 @@ end
 function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intolerances, hour_type, weather_type)
    -- we don't care about drink that isn't in a container
    -- properly formatted drink containers with properly formatted drink has that data catalogued
-   local catalog_data = stonehearth.catalog:get_catalog_data(drink_stuff)
+   local catalog_data = stonehearth.catalog:get_catalog_data(drink_stuff:get_uri())
    if not catalog_data or not catalog_data.drink_satisfaction then
       return false
    end
