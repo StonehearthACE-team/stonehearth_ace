@@ -218,19 +218,20 @@ function AceShop:stock_shop()
          -- randomly select one of their best crafts
          local best_crafts = merchant_options.persistence_data.best_crafts
          if #best_crafts > 0 then
-            local craft_entry = best_crafts[rng:get_int(1, #best_crafts)]
+            local craft_entry = self:_get_sellable_item(all_specific_sellable_items, best_crafts)
+            if craft_entry then
+               -- the idea is that the crafter made a bunch of lower quality versions of this item
+               -- while trying to make this high quality one; so they're selling the single high quality one
+               -- along with all the lower quality ones they made along the way
+               local entity_description = stonehearth.catalog:get_catalog_data(craft_entry.uri)
+               local cost = entity_description.sell_cost * mercantile_constants.PERSISTENCE_ITEM_PRICE_FACTOR
+               local quality_counts = mercantile_constants.PERSISTENCE_ITEM_QUALITY_COUNTS
 
-            -- the idea is that the crafter made a bunch of lower quality versions of this item
-            -- while trying to make this high quality one; so they're selling the single high quality one
-            -- along with all the lower quality ones they made along the way
-            local entity_description = stonehearth.catalog:get_catalog_data(craft_entry.uri)
-            local cost = entity_description.sell_cost * mercantile_constants.PERSISTENCE_ITEM_PRICE_FACTOR
-            local quality_counts = mercantile_constants.PERSISTENCE_ITEM_QUALITY_COUNTS
+               self:_add_item_to_inventory(craft_entry.uri, entity_description, cost, craft_entry.quality, 1)
 
-            self:_add_item_to_inventory(craft_entry.uri, entity_description, cost, craft_entry.quality, 1)
-
-            for quality = 1, math.min(craft_entry.quality - 1, #quality_counts) do
-               self:_add_item_to_inventory(craft_entry.uri, entity_description, cost, quality, quality_counts[quality])
+               for quality = 1, math.min(craft_entry.quality - 1, #quality_counts) do
+                  self:_add_item_to_inventory(craft_entry.uri, entity_description, cost, quality, quality_counts[quality])
+               end
             end
          end
       end
@@ -243,7 +244,8 @@ function AceShop:stock_shop()
             -- and ignore any items with a price factor of 1
             if item.price_factor ~= 1 then
                -- check if this item isn't already in the shop's inventory
-               if (item.uri and not self:_is_selling_item(item.uri)) or (item.material and not self:_is_selling_material(item.material)) then
+               if (item.uri and all_specific_sellable_items[item.uri] and not self:_is_selling_item(item.uri)) or
+                     (item.material and not self:_is_selling_material(item.material)) then
                   if not item.chance then
                      table.insert(wanted_items, item)
                   elseif rng:get_real(0, 1) < item.chance then
@@ -349,6 +351,22 @@ function AceShop:sell_item(uri, quality, quantity)
 
    radiant.events.trigger_async(self, 'stonehearth:item_sold', {item_uri = uri, item_cost = item_cost, quantity = quantity - sell_quantity})
    return true
+end
+
+function AceShop:_get_sellable_item(all_sellable, items)
+   local order = {}
+   for i, item in ipairs(items) do
+      if i > 1 then
+         table.insert(order, rng:get_int(1, #order + 1), item)
+      else
+         table.insert(order, item)
+      end
+   end
+   for i, item in ipairs(order) do
+      if all_sellable[item.uri] then
+         return item
+      end
+   end
 end
 
 function AceShop:_is_selling_item(uri)
