@@ -32,6 +32,7 @@ App.AcePeriodicInteractionView = App.StonehearthBaseZonesModeView.extend({
 
    willDestroyElement: function() {
       var self = this;
+      self.$('#enabledCheckbox').off('change');
       if (self._modeSelector) {
          self._modeSelector.find('.tooltipstered').tooltipster('destroy');
          self._modeSelector.empty();

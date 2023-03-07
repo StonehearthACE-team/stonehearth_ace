@@ -195,6 +195,7 @@ function PeriodicInteractionComponent:initialize()
    self._sv.num_uses = 0
    self._sv.enabled = self._json.start_enabled ~= false
    self._sv.allow_mode_selection = self._json.allow_mode_selection ~= false
+   self._sv.allow_non_owner_player_interaction = self._json.allow_non_owner_player_interaction
    self._sv._general_cooldown_timer = nil
    self._sv._interaction_cooldown_timer = nil
 end

@@ -73,7 +73,8 @@ App.StonehearthZonesModeView = App.View.extend({
       }
 
       var viewType = null;
-       if (entity['stonehearth:player_market_stall']) {
+      var matchesPlayerId = entity.player_id == App.stonehearthClient.getPlayerId();
+      if (entity['stonehearth:player_market_stall']) {
          viewType = App.StonehearthPlayerMarketStallView;
       } else if (entity['stonehearth:storage'] && entity['stonehearth:storage'].is_public && !entity['stonehearth:storage'].is_hidden) {
          // TODO: sigh, the above is probably wrong, but highly convenient.
@@ -96,7 +97,7 @@ App.StonehearthZonesModeView = App.View.extend({
                self._showZoneUi(response.storage, App.StonehearthStockpileView);
             });
       } else {
-         viewType = self._getCustomZoneView(entity);
+         viewType = self._getCustomZoneView(entity, matchesPlayerId);
       }
 
       if (viewType) {
@@ -127,11 +128,11 @@ App.StonehearthZonesModeView = App.View.extend({
       //App.setGameMode('zones');
    },
 
-   _getCustomZoneView: function(entity) {
+   _getCustomZoneView: function(entity, matchesPlayerId) {
       var self = this;
       for (var i = 0; i < self.customEntityZoneViews.length; i++)
       {
-         var mode = self.customEntityZoneViews[i](entity);
+         var mode = self.customEntityZoneViews[i](entity, matchesPlayerId);
          if (mode) {
             return mode;
          }
@@ -141,14 +142,15 @@ App.StonehearthZonesModeView = App.View.extend({
    },
 
    // modders can override this function to add their own custom entity zone views
-   _ACE_CustomZoneViews: function(entity) {
+   _ACE_CustomZoneViews: function(entity, matchesPlayerId) {
       if (entity['stonehearth_ace:guard_zone']) {
          return App.StonehearthAceGuardZoneView;
       }
-      else if (entity['stonehearth_ace:herbalist_planter']) {
+      else if (entity['stonehearth_ace:herbalist_planter'] && matchesPlayerId) {
          return App.AceHerbalistPlanterView;
       }
-      else if (entity['stonehearth_ace:periodic_interaction']) {
+      else if (entity['stonehearth_ace:periodic_interaction'] &&
+            (matchesPlayerId || entity['stonehearth_ace:periodic_interaction'].allow_non_owner_player_interaction)) {
          return App.AcePeriodicInteractionView;
       }
 

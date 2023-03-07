@@ -35,7 +35,8 @@ $(document).ready(function() {
       _currentVisionMode: 'normal',
 
       _trace_components: {
-         "stonehearth:storage": {}
+         "stonehearth:storage": {},
+         "stonehearth_ace:periodic_interaction": {},
       },
 
       init: function() {
