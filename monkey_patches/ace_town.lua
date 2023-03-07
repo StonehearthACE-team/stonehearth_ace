@@ -31,6 +31,12 @@ function AceTown:activate(loading)
    self:_create_default_storage_listeners()
 end
 
+AceTown._ace_old_post_activate = Town.post_activate
+function AceTown:post_activate()
+   self:_ace_old_post_activate()
+   self._post_activated = true
+end
+
 AceTown._ace_old_destroy = Town.__user_destroy
 function AceTown:destroy()
    self:_destroy_default_storage_listeners()
@@ -667,7 +673,11 @@ function AceTown:get_default_quest_storage_uri()
 end
 
 function AceTown:get_default_storage()
-   return self._sv.default_storage
+   if self._post_activated then
+      return self._sv.default_storage
+   else
+      return {}
+   end
 end
 
 function AceTown:is_default_storage(storage)
