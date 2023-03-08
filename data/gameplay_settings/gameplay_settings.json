@@ -284,6 +284,30 @@
          "default": true,
          "ordinal": 15
       },
+      "merchant_notifications": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.merchant_notifications.display_name)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.merchant_notifications.description)",
+         "values": {
+            "all": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.merchant_notifications.all)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.merchant_notifications.all_description)"
+            },
+            "exclusive": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.merchant_notifications.exclusive)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.merchant_notifications.exclusive_description)"
+            },
+            "none": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.merchant_notifications.none)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.merchant_notifications.none_description)"
+            }
+         },
+         "default": "all",
+         "ordinal": 15.5
+      },
       "auto_select_new_titles": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_select_new_titles)",

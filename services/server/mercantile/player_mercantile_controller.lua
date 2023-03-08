@@ -252,34 +252,40 @@ function PlayerMercantile:_create_spawn_timer()
 
    self._spawning_timer = stonehearth.calendar:set_interval('towns merchant spawner', '5m+20m', function()
          local merchant = self:_spawn_merchant(table.remove(self._sv._merchants_to_spawn))
-
-         if not self._sv._seen_bulletin then
-            stonehearth.bulletin_board:post_bulletin(self._sv.player_id)
-               :set_ui_view('StonehearthGenericBulletinDialog')
-               :set_callback_instance(self)
-               :set_data({
-                  title = 'i18n(stonehearth_ace:ui.game.bulletin.merchant.first.title)',
-                  message = 'i18n(stonehearth_ace:ui.game.bulletin.merchant.first.message)',
-                  zoom_to_entity = merchant,
-                  ok_callback = '_on_bulletin_ok',
-               })
-               :add_i18n_data('merchant_name', radiant.entities.get_custom_name(merchant))
-               :add_i18n_data('shop_name')
-            self._sv._seen_bulletin = true
-         end
          if #self._sv._merchants_to_spawn <= 0 then
             self:_destroy_spawning_timer()
          end
 
-         -- show the initial bulletin here so it's after the "first merchant" bulletin
-         merchant:get_component('stonehearth_ace:merchant'):show_bulletin(true)
+         if merchant then
+            if not self._sv._seen_bulletin then
+               stonehearth.bulletin_board:post_bulletin(self._sv.player_id)
+                  :set_ui_view('StonehearthGenericBulletinDialog')
+                  :set_callback_instance(self)
+                  :set_data({
+                     title = 'i18n(stonehearth_ace:ui.game.bulletin.merchant.first.title)',
+                     message = 'i18n(stonehearth_ace:ui.game.bulletin.merchant.first.message)',
+                     zoom_to_entity = merchant,
+                     ok_callback = '_on_bulletin_ok',
+                  })
+                  :add_i18n_data('merchant_name', radiant.entities.get_custom_name(merchant))
+                  :add_i18n_data('shop_name')
+               self._sv._seen_bulletin = true
+            end
+
+            -- show the initial bulletin here so it's after the "first merchant" bulletin
+            local merchant_component = merchant:get_component('stonehearth_ace:merchant')
+            local show_setting = stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'merchant_notifications')
+            if show_setting == 'all' or (show_setting == 'exclusive' and merchant_component:is_exclusive()) then
+               merchant_component:show_bulletin(true)
+            end
+         end
       end)
 end
 
 -- try to spawn a specific merchant; if successful, show the bulletin for them
-function PlayerMercantile:spawn_merchant(merchant_id)
+function PlayerMercantile:spawn_merchant(merchant_id, show_bulletin)
    local merchant = self:_spawn_merchant(merchant_id)
-   if merchant then
+   if merchant and show_bulletin ~= false then
       merchant:get_component('stonehearth_ace:merchant'):show_bulletin(true)
    end
    return merchant
