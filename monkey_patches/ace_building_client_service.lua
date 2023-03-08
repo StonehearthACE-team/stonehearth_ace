@@ -4,10 +4,9 @@ local AceBuildingClientService = class()
 
 function AceBuildingClientService:_on_ui_mode_changed()
    local mode = stonehearth.renderer:get_ui_mode()
-   local building_filter = stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'enable_building_filter')
 
    if mode == 'build' then
-      _radiant.renderer.set_pipeline_stage_enabled('BuildingFilter', building_filter)
+      _radiant.renderer.set_pipeline_stage_enabled('BuildingFilter', stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'enable_building_filter'))
       _radiant.renderer.set_pipeline_stage_enabled('Buildings', true)
       self:set_widgets_visible(true)
    else
