@@ -31,6 +31,3 @@ function AceBuildingClientService:build(session, response, insert_craft_requests
 end
 
 return AceBuildingClientService
-
-      --if stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'tbd') then
-      --end
