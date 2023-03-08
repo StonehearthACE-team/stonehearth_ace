@@ -274,7 +274,7 @@ function PlayerMercantile:_create_spawn_timer()
 
             -- show the initial bulletin here so it's after the "first merchant" bulletin
             local merchant_component = merchant:get_component('stonehearth_ace:merchant')
-            local show_setting = stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'merchant_notifications')
+            local show_setting = stonehearth.client_state:get_client_gameplay_setting(self._sv.player_id, 'stonehearth_ace', 'merchant_notifications')
             if show_setting == 'all' or (show_setting == 'exclusive' and merchant_component:is_exclusive()) then
                merchant_component:show_bulletin(true)
             end
