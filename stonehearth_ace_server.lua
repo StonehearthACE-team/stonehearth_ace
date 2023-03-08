@@ -7,7 +7,7 @@ local service_creation_order = {
    'mercantile',
    'persistence',
    'universal_storage',
-   --'water_processor',
+   --'water_processor', -- functionality rolled into hydrology service
    'water_signal',
 }
 
@@ -59,7 +59,6 @@ local monkey_patches = {
    ace_crafting_progress = 'stonehearth.components.workshop.crafting_progress',
    ace_create_mission_encounter = 'stonehearth.services.server.game_master.controllers.encounters.create_mission_encounter',
    ace_csg_lib = 'stonehearth.lib.csg.csg_lib',
-   --ace_cunning_town_bonus = 'stonehearth.data.town_bonuses.cunning_town_bonus',
    ace_daily_report_script = 'stonehearth.data.gm.campaigns.game_events.arcs.trigger.game_events.encounters.daily_report_script',
    ace_darkness_observer = 'stonehearth.ai.observers.darkness_observer',
    ace_default_conversation_script = 'stonehearth.data.conversation.default.default_conversation_script',
@@ -140,7 +139,6 @@ local monkey_patches = {
    ace_periodic_health_modification = 'stonehearth.data.buffs.scripts.periodic_health_modification',
    ace_personality_component = 'stonehearth.components.personality.personality_component',
    ace_pet_component = 'stonehearth.components.pet.pet_component',
-   --ace_pickup_item_adjacent_action = 'stonehearth.ai.actions.pickup_item_adjacent_action',
    ace_pickup_item_type_from_backpack_action = 'stonehearth.ai.actions.pickup_item_type_from_backpack_action',
    ace_pickup_placed_item_adjacent_action = 'stonehearth.ai.actions.pickup_placed_item_adjacent_action',
    ace_pillage_mission = 'stonehearth.services.server.game_master.controllers.missions.pillage_mission',

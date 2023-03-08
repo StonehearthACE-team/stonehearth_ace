@@ -18,7 +18,6 @@ local service_creation_order = {
 }
 
 local monkey_patches = {
-   --ace_follow_camera_controller = 'stonehearth.services.client.camera.follow_camera_controller',
    ace_building_client_service = 'stonehearth.services.client.building.building_client_service',
    ace_camera_service = 'stonehearth.services.client.camera.camera_service',
    ace_client_entities = 'radiant.modules.client_entities',
