@@ -606,7 +606,7 @@ function AceCraftOrder:reduce_quantity(amount)
 end
 
 -- returns true if the order changed and the order list should be updated
-function AceCraftOrder:change_quantity(quantity)
+function AceCraftOrder:change_quantity(quantity, prefer_high_quality)
    log:debug('[%s] change_quantity(%s)', self:get_id(), quantity)
    -- if trying to change quantity to less than 1, simply remove the order
    if quantity < 1 then
@@ -616,8 +616,9 @@ function AceCraftOrder:change_quantity(quantity)
 
    local condition = self._sv.condition
    if condition.type == 'maintain' then
-      if condition.at_least ~= quantity then
+      if condition.at_least ~= quantity or (prefer_high_quality ~= nil and prefer_high_quality ~= self:get_high_quality_preference()) then
          condition.at_least = quantity
+         condition.prefer_high_quality = prefer_high_quality
          self.__saved_variables:mark_changed()
          return true
       end

@@ -27,6 +27,10 @@ function AceCraftOrderList:_should_auto_craft_recipe_dependencies(player_id)
    return stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_craft_recipe_dependencies', true)
 end
 
+function AceCraftOrderList:_should_update_maintain_orders(player_id)
+   return stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'update_maintain_orders', true)
+end
+
 AceCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 -- In addition to the original add_order function (from craft_order_list.lua),
 -- here it's also checking if the order has enough of the required ingredients and,
@@ -40,8 +44,8 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
    
    local is_recursive_call = associated_orders ~= nil
 
-   -- if it's a maintain order, try to modify an existing maintain order
-   if condition.type == 'maintain' then
+   -- if it's a maintain order, and it's a child order or the player prefers updating maintain orders, try to modify an existing maintain order
+   if condition.type == 'maintain' and (is_recursive_call or self:_should_update_maintain_orders(player_id)) then
       -- See if the order_list already contains a maintain order for the recipe:
       --    if it does, remake the order if its amount is lower than `missing`, otherwise ignore it;
       --    if it doesn't, simply add it as usual
@@ -53,12 +57,14 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
          --   order:get_condition().at_least,
          --   condition.at_least)
          local at_least = tonumber(condition.at_least)
-         local order_at_least = order:get_condition().at_least
+         local order_condition = order:get_condition()
+         local order_at_least = order_condition.at_least
+         local quality_preference_changed = order_condition.prefer_high_quality ~= condition.prefer_high_quality
 
-         if at_least > order_at_least or (not is_recursive_call and at_least < order_at_least) then
+         if at_least >= order_at_least or (not is_recursive_call and at_least <= order_at_least) then
             -- only allow reducing the quantity if this is a direct add_order call
             -- and not a recursive call to a child order
-            if order:change_quantity(at_least) then
+            if (at_least ~= order_at_least or quality_preference_changed) and order:change_quantity(at_least, condition.prefer_high_quality) then
                -- if we're specifying an index, move the order there
                if condition.order_index then
                   self:change_order_position(condition.order_index, order:get_id())
