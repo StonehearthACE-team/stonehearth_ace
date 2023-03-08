@@ -2,6 +2,21 @@ local Point3 = _radiant.csg.Point3
 
 local AceBuildingClientService = class()
 
+function AceBuildingClientService:_on_ui_mode_changed()
+   local mode = stonehearth.renderer:get_ui_mode()
+   local building_filter = stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'enable_building_filter')
+
+   if mode == 'build' then
+      _radiant.renderer.set_pipeline_stage_enabled('BuildingFilter', building_filter)
+      _radiant.renderer.set_pipeline_stage_enabled('Buildings', true)
+      self:set_widgets_visible(true)
+   else
+      _radiant.renderer.set_pipeline_stage_enabled('BuildingFilter', false)
+      _radiant.renderer.set_pipeline_stage_enabled('Buildings', false)
+      self:set_widgets_visible(false)
+   end
+end
+
 function AceBuildingClientService:build(session, response, insert_craft_requests)
    self:_destroy_tool(true)
    self:_destroy_cursor()
@@ -16,3 +31,6 @@ function AceBuildingClientService:build(session, response, insert_craft_requests
 end
 
 return AceBuildingClientService
+
+      --if stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'tbd') then
+      --end
