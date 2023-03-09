@@ -2,7 +2,7 @@ local rng = _radiant.math.get_default_rng()
 local WeatherState = require 'stonehearth.services.server.weather.weather_state'
 
 local DYNAMIC_WEATHER_WINDOW_START = stonehearth.constants.weather.DYNAMIC_WEATHER_WINDOW_START or 10
-local DYNAMIC_WEATHER_WINDOW_END = (stonehearth.constants.weather.DYNAMIC_WEATHER_WINDOW_END or 22)
+local DYNAMIC_WEATHER_WINDOW_END = stonehearth.constants.weather.DYNAMIC_WEATHER_WINDOW_END or 22
 
 local AceWeatherState = class()
 
