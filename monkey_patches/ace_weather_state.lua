@@ -1,6 +1,9 @@
 local rng = _radiant.math.get_default_rng()
 local WeatherState = require 'stonehearth.services.server.weather.weather_state'
 
+local DYNAMIC_WEATHER_WINDOW_START = stonehearth.constants.weather.DYNAMIC_WEATHER_WINDOW_START or 10
+local DYNAMIC_WEATHER_WINDOW_END = (stonehearth.constants.weather.DYNAMIC_WEATHER_WINDOW_END or 22)
+
 local AceWeatherState = class()
 
 AceWeatherState._ace_old_create = WeatherState.create
@@ -18,7 +21,15 @@ function AceWeatherState:restore()
    end
 end
 
-function AceWeatherState:start(instigating_player_id)
+AceWeatherState._ace_old_stop = WeatherState.stop
+function AceWeatherState:stop()
+   self:_destroy_dynamic_weather_timer()
+
+   self:_ace_old_stop()
+end
+
+
+function AceWeatherState:start(instigating_player_id, is_dynamic_switch)
    self._sv.is_active = true
 
    if self._sv.thoughts then
@@ -49,6 +60,10 @@ function AceWeatherState:start(instigating_player_id)
       self._sv.script_controller:start(instigating_player_id)
    end
 
+   if self._sv.dynamic_weather and not is_dynamic_switch then
+      self:_dynamic_weather()
+   end
+
    self.__saved_variables:mark_changed()
 
    radiant.events.trigger(radiant, 'stonehearth_ace:weather_state_started', self)
@@ -68,6 +83,7 @@ function AceWeatherState:_load_ace_values()
 	self._sv.unsheltered_npc_debuff = json.unsheltered_npc_debuff or nil
    self._sv.music_sound_key = json.music_sound_key or nil
    self._sv.buff_application_interval = json.buff_application_interval or '20m'
+   self._sv.dynamic_weather = json.dynamic_weather or nil
    
    if type(self._sv.unsheltered_debuff) == 'string' then
       self._sv.unsheltered_debuff = { self._sv.unsheltered_debuff }
@@ -157,6 +173,58 @@ function AceWeatherState:_for_common_npc_character(fn)
 			end
 		end
 	end
+end
+
+
+function AceWeatherState:_dynamic_weather()
+   self._sv._dynamic_weather_timer = nil
+   self._dynamic_weather_target_weather = self:decide_for_dynamic_weather_change()
+
+   if self._dynamic_weather_target_weather then
+      self._sv._dynamic_weather_timer = stonehearth.calendar:set_persistent_alarm(self:decide_dynamic_weather_change_time(), radiant.bind(self, '_change_dynamic_weather'))
+   end
+end
+
+function AceWeatherState:_destroy_dynamic_weather_timer()
+   if self._sv._dynamic_weather_timer then
+      self._sv._dynamic_weather_timer:destroy()
+      self._sv._dynamic_weather_timer = nil
+   end
+end
+
+function AceWeatherState:decide_for_dynamic_weather_change()
+   for weather, data in pairs(self._sv.dynamic_weather) do
+      if rng:get_real(0, 1) <= data.chance or 0.5 then
+         return weather
+      end
+   end
+
+   return false
+end
+
+function AceWeatherState:decide_dynamic_weather_change_time()
+   local change_time = self._sv.dynamic_weather[self._dynamic_weather_target_weather].change_time or nil
+   local window_start = nil
+   local window_end = nil
+   
+   if change_time and type(change_time) == 'string' then
+      return change_time
+   elseif change_time then
+      if change_time.min then
+         window_start = change_time.min
+      end
+      if change_time.max then
+         window_end = change_time.max
+      end
+   end
+
+   return rng:get_int(window_start or DYNAMIC_WEATHER_WINDOW_START, (window_end or DYNAMIC_WEATHER_WINDOW_END - 1)) .. ':' .. rng:get_int(0, 5) .. rng:get_int(0, 9)
+end
+
+function AceWeatherState:_change_dynamic_weather()
+   self:_destroy_dynamic_weather_timer()   
+   
+   stonehearth.weather:_switch_to(self._dynamic_weather_target_weather, nil, true)
 end
 
 function AceWeatherState:get_unsheltered_animal_debuffs()

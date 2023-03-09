@@ -46,6 +46,24 @@ function AceWeatherService:_switch_weather(instigating_player_id)
    self.__saved_variables:mark_changed()
 end
 
+function AceWeatherService:_switch_to(weather_uri, instigating_player_id, is_dynamic_switch)
+   if self._sv.current_weather_state then
+      self._sv.current_weather_state:stop()
+   end
+   if self._sv.last_weather_state then
+      self._sv.last_weather_state:destroy()
+   end
+   self._sv.last_weather_state = self._sv.current_weather_state
+   self._sv.current_weather_state = nil
+
+   self._sv.current_weather_state = radiant.create_controller('stonehearth:weather_state', weather_uri)
+   self._sv.current_weather_state:start(instigating_player_id, is_dynamic_switch)
+   
+   self._sv.current_weather_stamp = self._sv.current_weather_stamp + 1
+
+   self.__saved_variables:mark_changed()
+end
+
 function AceWeatherService:set_weather_override(weather_uri, instigating_player_id)  -- nil clears override
    self._sv.weather_override = weather_uri
    self._sv.next_weather_types = {}
