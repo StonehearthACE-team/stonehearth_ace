@@ -16,8 +16,14 @@
    "cold_weather": false,
    "is_dark_during_daytime": false,
    "dynamic_weather": {
+      "stonehearth:weather:sunny": {
+         "chance": 0.2,
+         "change_time": {
+            "max": 18
+         }
+      },
       "stonehearth:weather:thunderstorm": {
-         "chance": 0.1
+         "chance": 0.15
       }
    }
 }

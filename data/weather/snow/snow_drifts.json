@@ -42,5 +42,15 @@
    "frozen": true,
    "is_bad_weather": true,
    "cold_weather": true,
-   "is_dark_during_daytime": false
+   "is_dark_during_daytime": false,
+   "dynamic_weather": {
+      "stonehearth_ace:weather:windy:chilly": {
+         "chance": 0.3,
+         "priority": 1
+      },
+      "stonehearth:weather:snow": {
+         "chance": 0.2,
+         "priority": 2
+      }
+   }
 }

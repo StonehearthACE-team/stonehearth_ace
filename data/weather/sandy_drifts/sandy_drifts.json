@@ -22,5 +22,15 @@
    "vision_multiplier": 0.9,
    "is_bad_weather": true,
    "hot_weather": true,
-   "is_dark_during_daytime": false
+   "is_dark_during_daytime": false,
+   "dynamic_weather": {
+      "stonehearth_ace:weather:sunny:sweltering": {
+         "chance": 0.3,
+         "priority": 1
+      },
+      "stonehearth:weather:sandy": {
+         "chance": 0.2,
+         "priority": 2
+      }
+   }
 }

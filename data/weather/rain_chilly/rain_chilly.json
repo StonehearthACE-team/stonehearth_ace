@@ -52,5 +52,14 @@
    "frozen": true,
    "is_bad_weather": true,
    "cold_weather": true,
-   "is_dark_during_daytime": false
+   "is_dark_during_daytime": false,
+   "dynamic_weather": {
+      "stonehearth_ace:weather:cloudy:cold": {
+         "chance": 0.2,
+         "priority": 1,
+         "change_time": {
+            "min": 18
+         }
+      }
+   }
 }

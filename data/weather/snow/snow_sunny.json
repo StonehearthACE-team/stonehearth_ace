@@ -42,7 +42,15 @@
    "is_dark_during_daytime": false,
    "dynamic_weather": {
       "stonehearth_ace:weather:sunny:chilly": {
-         "chance": 0.3
+         "chance": 0.3,
+         "priority": 1,
+         "change_time": {
+            "max": 18
+         }
+      },
+      "stonehearth:weather:snow": {
+         "chance": 0.2,
+         "priority": 2
       }
    }
 }
