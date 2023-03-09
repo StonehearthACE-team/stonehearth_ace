@@ -8798,6 +8798,21 @@
                "description": "Simple yet efficient in keeping things warm.",
                "flavor": "A Brewer can use these to make tea"
             },
+            "amberstone_door_frame_recipe": {
+               "recipe_name": "Amberstone Burrow Door Frame",
+               "description": "A fancy arch for underground dwellings.",
+               "flavor": "Very inviting!"
+            },
+            "stone_door_frame_recipe": {
+               "recipe_name": "Stone Door Frame",
+               "description": "A beautiful stone arch.",
+               "flavor": "'Stone doors are heavy! This is the most efficient stone door ever made, extremely lightweight due to the absence of the door itself!' - Dee Hevit, Mason Extraordinaire"
+            },
+            "stone_double_door_frame_recipe": {
+               "recipe_name": "Stone Double Door Frame",
+               "description": "A larger stone arch, held together by the power of magic! (Or gravity)",
+               "flavor": "So that's why they call it architecture?"
+            },
             "frostfeast": {
                "present_small_recipe": {
                   "recipe_name": "Small Frostfeast Present",
@@ -10363,6 +10378,26 @@
                "recipe_name": "Ornate Wall Candelabra",
                "description": "A fancy wall support for two candles.",
                "flavor": ""
+            },
+            "ornate_wooden_door_frame_recipe": {
+               "recipe_name": "Ornate Wooden Door Frame",
+               "description": "A decorated doorway for a fancy room.",
+               "flavor": ""
+            },
+            "ornate_wooden_double_door_frame_recipe": {
+               "recipe_name": "Ornate Wooden Double Door Frame",
+               "description": "A slightly larger decorated door frame.",
+               "flavor": "The latest fashion in minimalist doorways"
+            },
+            "wooden_door_frame_recipe": {
+               "recipe_name": "Wooden Door Frame",
+               "description": "A door frame with no door.",
+               "flavor": "For dividing without separating"
+            },
+            "wooden_double_door_frame_recipe": {
+               "recipe_name": "Wooden Double Door Frame",
+               "description": "A larger door frame without a door.",
+               "flavor": "Please air-knock before coming in"
             },
             "frostfeast": {
                "present_small_recipe": {
@@ -12730,6 +12765,34 @@
          "wood_portcullis": {
             "display_name": "Disposable Wood Portcullis",
             "description": "A rustic yet efficient defense. Can't be repaired."
+         },
+         "amberstone_door_frame": {
+            "display_name": "Amberstone Burrow Door Frame",
+            "description": "A fancy arch for underground dwellings."
+         },
+         "ornate_wooden_door_frame": {
+            "display_name": "Ornate Wooden Door Frame",
+            "description": "A decorated doorway for a fancy room."
+         },
+         "ornate_wooden_double_door_frame": {
+            "display_name": "Ornate Wooden Double Door Frame",
+            "description": "Even more space for you to go through!"
+         },
+         "stone_door_frame": {
+            "display_name": "Stone Door Frame",
+            "description": "A beautiful stone arch."
+         },
+         "stone_double_door_frame": {
+            "display_name": "Stone Double Door Frame",
+            "description": "It's guaranteed safe to go through!"
+         },
+         "wooden_door_frame": {
+            "display_name": "Wooden Door Frame",
+            "description": "For dividing without separating."
+         },
+         "wooden_double_door_frame": {
+            "display_name": "Wooden Double Door Frame",
+            "description": "It's like a huge window that goes all the way to the ground!"
          }
       },
       "crops": {
@@ -17290,7 +17353,7 @@
             "description": "An ancient testament to the power a community has to nurture and thrive.",
             "static_component_info": {
                "description": "<p style='text-align:center;color:white;'>This beautiful monument is dedicated to the great community behind Stonehearth and to those that have supported the ACE project!<br><br>Below is a permanent list of all the kind donors, ordered by membership tier, then total amount and finally date. This list will be updated whenever a new release is out!</p>",
-               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<br>Lykos<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>Yunoh<br>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<br>Doris<br>ZeroTronix<br>Anna_Ankiemankie<br>Lazuli<br>Sayptie<br>Elfonnzo<br>Joy144SK<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Tsukaiyo<br>Orlondok<br>Goldmetal<hr><p style='text-align:center'>...and everyone else!<p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Dayison<br>Coolcup5<br>ghostcrap<br>Fran Tremblay<br>Phania<br>Chichin<br>thatpenguinstar<br>Croxo<br>Verree<br>Jantsje<br>Xavier Xing<br>Vyrael<br>Alex Kay<br>TRG<br>KoriZ<br>shimizu & jontaro<br>Telunar<br>Yokes<br><br>Thanks to all the anonymous supporters as well!</p>"
+               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<br>Lykos<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>Yunoh<br>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<br>Doris<br>ZeroTronix<br>Anna_Ankiemankie<br>Lazuli<br>Sayptie<br>Elfonnzo<br>Joy144SK<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Tsukaiyo<br>Orlondok<br>Goldmetal<hr><p style='text-align:center'>...and everyone else!<p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Dayison<br>Coolcup5<br>ghostcrap<br>Fran Tremblay<br>Phania<br>Chichin<br>thatpenguinstar<br>Croxo<br>Heureka<br>Verree<br>Jantsje<br>Xavier Xing<br>Vyrael<br>Alex Kay<br>TRG<br>KoriZ<br>shimizu & jontaro<br>Telunar<br>Yokes<br><br>Thanks to all the anonymous supporters as well!</p>"
             }
          },
          "craftsman_statue": {

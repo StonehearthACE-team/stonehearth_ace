@@ -1,8 +1,18 @@
 {
-   "mixintypes": {
-      "type": "remove"
-   },
    "components": {
+      "stonehearth:entity_forms": {
+         "placeable_on_walls": true,
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region_collision_type": "none",
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -0.5 },
+               "max": { "x": 2, "y": 4, "z": 1.5 }
+            }
+         ]
+      },
       "movement_modifier_shape": {
          "modifier": 0,
          "nav_preference_modifier": -0.8,
@@ -16,11 +26,6 @@
                "max": { "x": 2, "y": 1, "z": 1 }
             }
          ]
-      }
-   },
-   "entity_data": {
-      "stonehearth:on_destroy": {
-         "effect": "stonehearth_ace:effects:object_large_destroyed"
       }
    }
 }

@@ -278,7 +278,16 @@
             },
             "valor_window_frame_xlarge": {
                "recipe": "/stonehearth/jobs/mason/recipes/valor_window_frame_xlarge_recipe.json"
-            }
+            },
+				"stone_door_frame": {
+					"recipe": "file(stone_door_frame_recipe.json)"
+				},
+				"stone_double_door_frame": {
+					"recipe": "file(stone_double_door_frame_recipe.json)"
+				},
+				"amberstone_door_frame": {
+					"recipe": "file(amberstone_door_frame_recipe.json)"
+				}
          }
       },
 		"signage_decoration": {

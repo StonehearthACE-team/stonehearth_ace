@@ -1,0 +1,43 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:portals:single_door_frame:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ornate_wooden_door_frame.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth:color_map:gold",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/gold_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.ornate_wooden_door_frame.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.ornate_wooden_door_frame.description)",
+         "icon": "file(ornate_wooden_door_frame.png)",
+         "category": "door",
+         "material_tags": [
+            "wood",
+            "portal",
+            "crafted",
+            "door",
+            "frame",
+            "ornate",
+            "stockpile_portal"
+         ]
+      }
+   }
+}

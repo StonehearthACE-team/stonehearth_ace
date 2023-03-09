@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 6,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.stone_door_frame_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.stone_door_frame_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.stone_door_frame_recipe.flavor)",
+   "portrait":  "/stonehearth_ace/entities/construction/stone_door_frame/stone_door_frame.png",
+   "workshop": "stonehearth:mason:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:stone_door_frame"
+      }
+   ]
+}

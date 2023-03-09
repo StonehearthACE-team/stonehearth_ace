@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.ornate_wooden_door_frame_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.ornate_wooden_door_frame_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.ornate_wooden_door_frame_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/ornate_wooden_door_frame/ornate_wooden_door_frame.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:refined:gold_flakes",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:ornate_wooden_door_frame"
+      }
+   ]
+}

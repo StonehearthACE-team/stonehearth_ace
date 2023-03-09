@@ -1,0 +1,32 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(ornate_wooden_double_door_frame_ghost.json)",
+      "stonehearth_ace:mixins:portals:double_door_frame"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(ornate_wooden_double_door_frame_iconic.json)",
+         "ghost_form": "file(ornate_wooden_double_door_frame_ghost.json)",
+         "hide_placement_ui": false
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 19,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 10
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
