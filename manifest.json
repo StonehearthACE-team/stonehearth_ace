@@ -6907,6 +6907,10 @@
          "controller": "file(call_handlers/toggle_training_call_handler.lua)",
          "endpoint": "server"
       },
+      "get_all_weathers": {
+         "controller": "file(call_handlers/services_call_handler.lua)",
+         "endpoint": "client"
+      },
       "get_service": {
          "controller": "file(call_handlers/services_call_handler.lua)",
          "endpoint": "server"

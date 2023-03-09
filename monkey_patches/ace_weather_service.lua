@@ -64,6 +64,10 @@ function AceWeatherService:_switch_to(weather_uri, instigating_player_id, is_dyn
    self.__saved_variables:mark_changed()
 end
 
+function AceWeatherService:dynamically_change_weather(weather_uri)
+   self:_switch_to(weather_uri, nil, true)
+end
+
 function AceWeatherService:set_weather_override(weather_uri, instigating_player_id)  -- nil clears override
    self._sv.weather_override = weather_uri
    self._sv.next_weather_types = {}

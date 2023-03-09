@@ -37,6 +37,12 @@ App.StonehearthCalendarView = App.View.extend({
                   self.set('season', o2.current_season);
                })
          });
+
+      // get a lookup of all the weather options by uri
+      radiant.call('stonehearth_ace:get_all_weathers')
+         .done(function (result) {
+            self._all_weathers = result.weathers;
+         });
    },
 
    willDestroyElement: function() {
@@ -103,7 +109,7 @@ App.StonehearthCalendarView = App.View.extend({
       radiant.call('stonehearth:get_service', 'weather')
          .done(function (response) {
             self._weatherServiceUri = response.result;
-            self._weatherTrace = new RadiantTrace(self._weatherServiceUri, { 'current_weather_state': {}, 'next_weather_types': {} })
+            self._weatherTrace = new RadiantTrace(self._weatherServiceUri, { 'current_weather_state': {} })
                .progress(function (weatherService) {
                   if (!weatherService.current_weather_state) {
                      // No weather yet. Could happen during initialization.
@@ -118,17 +124,16 @@ App.StonehearthCalendarView = App.View.extend({
 
                   var days = [];
                   days.push({
-                     name: weatherService.current_weather_state.display_name,
-                     description: weatherService.current_weather_state.description,
+                     uri: weatherService.current_weather_state.uri,
                      icon: weatherService.current_weather_state.icon,
                      prefix: 'stonehearth:ui.game.calendar.weather_prefix_0',
                   })
                   var FORECAST_DAYS = 2;
                   for (var i = 0; i < Math.min(FORECAST_DAYS, weatherService.next_weather_types.length) ; ++i) {
+                     var uri = weatherService.next_weather_types[i]
                      days.push({
-                        name: weatherService.next_weather_types[i].display_name,
-                        description: weatherService.next_weather_types[i].description,
-                        icon: weatherService.next_weather_types[i].icon,
+                        uri: uri,
+                        icon: self._all_weathers[uri].icon,
                         prefix: 'stonehearth:ui.game.calendar.weather_prefix_' + (i + 1),
                      })
                   }
@@ -139,7 +144,27 @@ App.StonehearthCalendarView = App.View.extend({
                      self.$('.weatherDay').each(function () {
                         var el = $(this);
                         App.tooltipHelper.createDynamicTooltip(el, function() {
-                           return $(App.tooltipHelper.createTooltip(i18n.t(el.attr('data-prefix')) + i18n.t(el.attr('data-name')), i18n.t(el.attr('data-description'))));
+                           var uri = el.attr('data-uri');
+                           var weather = self._all_weathers[uri];
+                           if (weather) {
+                              var description = i18n.t(weather.description);
+                              if (weather.dynamic_weather) {
+                                 // collect the icons from all the possible visible_to_user dynamic weathers
+                                 var icons = '';
+                                 radiant.each(weather.dynamic_weather, function(dynamicUri, conditions) {
+                                    var dynamicWeather = self._all_weathers[dynamicUri];
+                                    if (dynamicWeather && dynamicWeather.icon && !conditions.invisible_to_player) {
+                                       icons += `<img class='inlineImg' src='${dynamicWeather.icon}'/>`;
+                                    }
+                                 });
+                                 if (icons != '') {
+                                    description += `<div>${i18n.t('stonehearth_ace:data.weather.dynamic')} <span class='weatherIcons'>${icons}</span></div>`;
+                                 }
+                              }
+                              return $(App.tooltipHelper.createTooltip(
+                                    i18n.t(el.attr('data-prefix')) + i18n.t(weather.display_name),
+                                    description));
+                           }
                         }, { position: 'bottom' });
                      });
                   });

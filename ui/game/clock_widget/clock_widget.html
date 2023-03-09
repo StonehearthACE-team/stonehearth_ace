@@ -40,7 +40,7 @@
    {{#if view.weatherForecast}}
       <div id="weather">
          {{#each weather in view.weatherForecast}}
-            <span class="weatherDay" {{bind-attr data-name=weather.name data-description=weather.description data-prefix=weather.prefix}}>
+            <span class="weatherDay" {{bind-attr data-uri=weather.uri data-prefix=weather.prefix}}>
                <img {{bind-attr src=weather.icon}} />
             </span>
          {{/each}}
