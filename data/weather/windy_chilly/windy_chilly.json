@@ -22,5 +22,14 @@
    ],
    "is_bad_weather": false,
    "cold_weather": false,
-   "is_dark_during_daytime": false
+   "is_dark_during_daytime": false,
+   "dynamic_weather": {
+      "stonehearth_ace:weather:event:meteor_shower": {
+         "chance": 0.05,
+         "change_time": {
+            "min": 20,
+            "max": 23
+         }
+      }
+   }
 }

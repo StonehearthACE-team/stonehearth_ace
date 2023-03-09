@@ -1,4 +1,10 @@
 {
    "description": "i18n(stonehearth_ace:data.weather.windy.description)",
-   "humidity": 0.1
+   "humidity": 0.1,
+   "dynamic_weather": {
+      "stonehearth_ace:weather:event:meteor_shower": {
+         "chance": 0.05,
+         "change_time": "20:30"
+      }
+   }
 }

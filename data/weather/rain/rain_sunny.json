@@ -1,6 +1,5 @@
 {
    "description": "i18n(stonehearth_ace:data.weather.rain.rain_sunny.description)",
-   "controller": "stonehearth_ace:weather_scripts:dynamic_weather",
    "ambient_sound_key": "rain_sunny",
    "music_sound_key": "rain_sunny",
 	"mixintypes": {
@@ -20,5 +19,10 @@
    "sunlight": 0.95,
    "is_bad_weather": false,
    "cold_weather": false,
-   "is_dark_during_daytime": false
+   "is_dark_during_daytime": false,
+   "dynamic_weather": {
+      "stonehearth:weather:sunny": {
+         "chance": 0.3
+      }
+   }
 }

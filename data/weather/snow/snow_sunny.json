@@ -1,6 +1,5 @@
 {
    "description": "i18n(stonehearth_ace:data.weather.snow.snow_sunny.description)",
-   "controller": "stonehearth_ace:weather_scripts:dynamic_weather",
 	"mixintypes": {
 		"unsheltered_resistance_buff": "remove",
 		"unsheltered_debuff": "override",
@@ -40,5 +39,10 @@
 	"frozen": true,
    "is_bad_weather": true,
    "cold_weather": true,
-   "is_dark_during_daytime": false
+   "is_dark_during_daytime": false,
+   "dynamic_weather": {
+      "stonehearth_ace:weather:sunny:chilly": {
+         "chance": 0.3
+      }
+   }
 }

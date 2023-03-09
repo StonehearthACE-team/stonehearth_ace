@@ -3,7 +3,6 @@
    "description": "i18n(stonehearth_ace:data.weather.cloudy.cloudy_cold.description)",
    "icon": "file(cloudy_cold.png)",
    "sky_settings": "stonehearth_ace:sky_settings:cloudy:cold",
-   "controller": "stonehearth_ace:weather_scripts:dynamic_weather",
    "buff_application_interval": "35m",
    "unsheltered_debuff": [
       "stonehearth_ace:buffs:weather:cold",
@@ -28,5 +27,10 @@
    "sunlight": 0.7,
    "is_bad_weather": true,
    "cold_weather": true,
-   "is_dark_during_daytime": false
+   "is_dark_during_daytime": false,
+   "dynamic_weather": {
+      "stonehearth:weather:snow": {
+         "chance": 0.15
+      }
+   }
 }
