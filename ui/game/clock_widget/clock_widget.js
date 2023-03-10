@@ -109,7 +109,7 @@ App.StonehearthCalendarView = App.View.extend({
       radiant.call('stonehearth:get_service', 'weather')
          .done(function (response) {
             self._weatherServiceUri = response.result;
-            self._weatherTrace = new RadiantTrace(self._weatherServiceUri, { 'current_weather_state': {} })
+            self._weatherTrace = new RadiantTrace(self._weatherServiceUri, { 'current_weather_state': {}, 'next_weather_types': {} })
                .progress(function (weatherService) {
                   if (!weatherService.current_weather_state) {
                      // No weather yet. Could happen during initialization.
@@ -129,11 +129,10 @@ App.StonehearthCalendarView = App.View.extend({
                      prefix: 'stonehearth:ui.game.calendar.weather_prefix_0',
                   })
                   var FORECAST_DAYS = 2;
-                  for (var i = 0; i < Math.min(FORECAST_DAYS, weatherService.next_weather_types.length) ; ++i) {
-                     var uri = weatherService.next_weather_types[i]
+                  for (var i = 0; i < Math.min(FORECAST_DAYS, weatherService.next_weather_types.length); ++i) {
                      days.push({
-                        uri: uri,
-                        icon: self._all_weathers[uri].icon,
+                        uri: weatherService.next_weather_types[i].__self,
+                        icon: weatherService.next_weather_types[i].icon,
                         prefix: 'stonehearth:ui.game.calendar.weather_prefix_' + (i + 1),
                      })
                   }
