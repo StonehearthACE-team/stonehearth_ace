@@ -2,6 +2,15 @@
   "statistics": {
       "specifier": "ogre_boss"
    },
+   "attributes": {
+      "max_health": 1400,
+      "muscle": 4,
+      "menace": 90,
+      "courage": 520,
+      "speed": 70,
+      "additive_armor_modifier": 1,
+      "exp_reward": 210
+   },
 	"loot_drops": {
       "entries": {
          "currency": {
@@ -24,6 +33,7 @@
    },
    "equipment": {
       "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:hard",
-      "impact": "stonehearth_ace:weapons:inflicted_wounds:impact:hard"
+      "impact": "stonehearth_ace:weapons:inflicted_wounds:impact:hard",
+      "boss": "stonehearth_ace:abilities:cannot_panic"
    }
 }
