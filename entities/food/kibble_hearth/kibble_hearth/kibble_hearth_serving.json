@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(kibble_hearth.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 100
+         },
+         "default": {
+            "satisfaction": 100
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:kibble_hearth"
+         ],
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.kibble_hearth.display_name)",
+         "icon": "file(kibble_hearth.png)",
+         "material_tags": [
+            "pet_food",
+            "animal_feed",
+            "kibble_hearth",
+            "stockpile_fodder",
+            "meat",
+            "vegetarian"
+         ],
+         "subject_override": "stonehearth_ace:food:kibble_hearth"
+      }
+   }
+}

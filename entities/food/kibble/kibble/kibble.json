@@ -17,17 +17,9 @@
       }
    },
    "entity_data": {
-      "stonehearth:item": {
-         "category": "food"
-      },
-      "stonehearth:food": {
-         "stonehearth:sitting_on_chair": {
-            "satisfaction": 45
-         },
-         "default": {
-            "satisfaction": 45
-         },
-         "quality": 5
+      "stonehearth_ace:pet_food_container": {
+         "food": "stonehearth_ace:food:kibble_serving",
+         "stacks_per_serving": 1
       },
       "stonehearth:net_worth": {
          "value_in_gold": 3,
@@ -47,6 +39,7 @@
          "category": "food",
          "material_tags": [
             "pet_food",
+            "pet_food_container",
             "animal_feed",
             "kibble",
             "stockpile_fodder",

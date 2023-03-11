@@ -1,0 +1,40 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(kibble_fish.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 65
+         },
+         "default": {
+            "satisfaction": 65
+         },
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.kibble_fish.display_name)",
+         "icon": "file(kibble_fish.png)",
+         "material_tags": [
+            "pet_food",
+            "animal_feed",
+            "kibble",
+            "stockpile_fodder",
+            "meat"
+         ],
+         "subject_override": "stonehearth_ace:food:kibble_fish"
+      }
+   }
+}
