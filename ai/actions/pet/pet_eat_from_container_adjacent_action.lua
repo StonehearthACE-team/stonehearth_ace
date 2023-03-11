@@ -24,9 +24,8 @@ function PetEatFromFoodDishAdjacent:run(ai, entity, args)
    -- if a storage entity is specified, face that instead
    local face_entity = args.storage or container
    radiant.entities.turn_to_face(entity, face_entity)
-   ai:execute('stonehearth:run_effect', { effect = container_data.effect })
 
-   -- consume the stack after the effect finishes.  this might end up destroying the container
+   -- consume the stack.  this might end up destroying the container
    -- so unprotect it first; also release the lease on it so others can use it
    -- go ahead and get its quality now before we do that
    local quality_component = container:get_component("stonehearth:item_quality")

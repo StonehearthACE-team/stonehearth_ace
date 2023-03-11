@@ -5,14 +5,14 @@ PetEatFromPetFoodBowl.name = 'pet eat from pet food bowl'
 PetEatFromPetFoodBowl.does = 'stonehearth:pet_eat_directly'
 PetEatFromPetFoodBowl.args = {}
 PetEatFromPetFoodBowl.think_output = {
+   owner_player_id = 'string',
    food_container_filter_fn = 'function',
 }
 PetEatFromPetFoodBowl.priority = 1
 
 local log = radiant.log.create_logger('pet_eat_from_pet_food_bowl')
 
-local function make_food_container_filter(owner_id, food_preferences)
-   local inventory = stonehearth.inventory:get_inventory(owner_id)
+local function make_pet_food_bowl_filter(owner_id, food_preferences, inventory)
    return stonehearth.ai:filter_from_key('pet_food_bowl_filter', tostring(food_preferences) .. ":" .. owner_id,
       function(food_container)
          -- first check container type to see if it's a pet food bowl
@@ -47,11 +47,14 @@ end
 function PetEatFromPetFoodBowl:start_thinking(ai, entity, args)
    local owner_id = radiant.entities.get_player_id(entity)
    local diet_data = radiant.entities.get_entity_data(entity, 'stonehearth:diet')
-	local food_container_filter_fn = make_food_container_filter(owner_id, diet_data and diet_data.food_material or '') 
-   ai:set_think_output({
-      owner_player_id = owner_id,
-      food_container_filter_fn = food_container_filter_fn,
-	})
+   local inventory = stonehearth.inventory:get_inventory(owner_id)
+   if inventory then
+	   local food_container_filter_fn = make_pet_food_bowl_filter(owner_id, diet_data and diet_data.food_material or '', inventory) 
+      ai:set_think_output({
+         owner_player_id = owner_id,
+         food_container_filter_fn = food_container_filter_fn,
+      })
+   end
 end
 
 function PetEatFromPetFoodBowl:compose_utility(entity, self_utility, child_utilities, current_activity)
@@ -73,6 +76,6 @@ return ai:create_compound_action(PetEatFromPetFoodBowl)
             entity = ai.PREV.item,
          })
 			:execute('stonehearth:pet_eat_from_container_adjacent', {
-            container = ai.BACK(1).item,
+            container = ai.BACK(2).item,
             storage = ai.BACK(3).storage,
          })
