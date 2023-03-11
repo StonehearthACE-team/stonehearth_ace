@@ -36,8 +36,8 @@
       "script": "stonehearth:game_master:script_encounter:returning_trader",
       "data": {
          "quest_storage_uri": "stonehearth_ace:containers:quest:silk_road",
-         "abandon_out_edge": "caravan_cleanup",
-         "timeout_out_edge": "caravan_cleanup",
+         "abandon_out_edge": "wait_for_caravan_cleanup",
+         "timeout_out_edge": "wait_for_caravan_cleanup",
          "success_out_edge": "tier_3_reputation_reward",
          "expiration_timeout": "18h",
          "score_threshold": 1000,
