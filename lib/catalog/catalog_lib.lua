@@ -394,13 +394,18 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
                   is_lunch_time = food_materials.lunch_time,
                   is_dinner_time = food_materials.dinner_time,
                   is_night_time = food_materials.night_time,
-                  is_pet_food = food_materials.pet_food,
                }
             else
                catalog_data.food_attributes = {}
             end
          else
             log:error('%s food from container %s isn\'t real food!', tostring(food_uri), full_alias)
+         end
+      elseif entity_data['stonehearth_ace:pet_food_container'] then
+         local food_uri = entity_data['stonehearth_ace:pet_food_container'].food
+         local food_json = food_uri and radiant.resources.load_json(food_uri)
+         if food_json and food_json.entity_data and food_json.entity_data['stonehearth:food'] then
+            catalog_data.is_pet_food = true
          end
       end
 		

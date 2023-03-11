@@ -30,6 +30,15 @@ function AceEatingLib.is_edible(food_stuff)
    return true
 end
 
+function AceEatingLib.is_edible_by_pet(food_stuff)
+   local catalog_data = stonehearth.catalog:get_catalog_data(food_stuff:get_uri())
+   if not catalog_data or (not catalog_data.food_satisfaction and not catalog_data.is_pet_food) then
+      return false
+   end
+
+   return true
+end
+
 function AceEatingLib.get_quality(food_stuff, food_preferences, food_intolerances, hour_type, weather_type)
    -- we don't care about food that isn't in a container
    -- properly formatted food containers with properly formatted food has that data catalogued

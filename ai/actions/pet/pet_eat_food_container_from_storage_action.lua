@@ -12,8 +12,9 @@ PetEatFoodContainerFromStorage.priority = 0
 local log = radiant.log.create_logger('pet_eat_food_container_from_storage')
 
 local function make_food_container_filter(owner_id, food_preferences)
-   return stonehearth.ai:filter_from_key('food_container_filter', tostring(food_preferences) .. ":" .. owner_id,
+   return stonehearth.ai:filter_from_key('pet_food_container_filter', tostring(food_preferences) .. ":" .. owner_id,
       function(food_container)
+         -- don't eat pet food directly from storage, only regular food
          if not EatingLib.is_edible(food_container) then
             return false
          end
@@ -32,10 +33,10 @@ local function make_food_container_filter(owner_id, food_preferences)
 		end)
 end
 
-local function pet_food_rating_fn(item)
-   local catalog_data = stonehearth.catalog:get_catalog_data(item:get_uri())
-   return catalog_data and catalog_data.food_attributes and catalog_data.food_attributes.is_pet_food and 1 or 0
-end
+-- local function pet_food_rating_fn(item)
+--    local catalog_data = stonehearth.catalog:get_catalog_data(item:get_uri())
+--    return catalog_data and catalog_data.food_attributes and catalog_data.food_attributes.is_pet_food and 1 or 0
+-- end
 
 function PetEatFoodContainerFromStorage:start_thinking(ai, entity, args)
    local owner_id = radiant.entities.get_player_id(entity)
@@ -43,7 +44,7 @@ function PetEatFoodContainerFromStorage:start_thinking(ai, entity, args)
 	local food_container_filter_fn = make_food_container_filter(owner_id, diet_data and diet_data.food_material or '') 
    ai:set_think_output( { 
       food_container_filter_fn = food_container_filter_fn,
-      food_rating_fn = pet_food_rating_fn,
+      -- food_rating_fn = pet_food_rating_fn,
       -- function(item)
       --    if radiant.entities.is_material(item, 'pet_food') then
       --       return 1
@@ -62,12 +63,12 @@ local ai = stonehearth.ai
 return ai:create_compound_action(PetEatFoodContainerFromStorage)
          :execute('stonehearth:find_reachable_storage_containing_best_entity_type', {
 				filter_fn = ai.BACK(1).food_container_filter_fn,
-            rating_fn = ai.BACK(1).food_rating_fn,
+            --rating_fn = ai.BACK(1).food_rating_fn,
             description = 'find path to food container',
          })
          :execute('stonehearth_ace:pet_pull_item_type_from_storage', {
             filter_fn = ai.BACK(2).food_container_filter_fn,
-            rating_fn = ai.BACK(2).food_rating_fn,
+            --rating_fn = ai.BACK(2).food_rating_fn,
             storage = ai.PREV.storage,
             description = 'find path to food container',
          })
