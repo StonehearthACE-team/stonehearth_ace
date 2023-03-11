@@ -1,5 +1,7 @@
 local AceAiService = class()
 
+local log = radiant.log.create_logger('ai_service')
+
 function AceAiService:reconsider_entity(entity, reason, reconsider_parent)
    if not entity or not entity:is_valid() then
       return
@@ -13,10 +15,12 @@ function AceAiService:reconsider_entity(entity, reason, reconsider_parent)
    -- `container_for` to stonehearth.inventory (implemented with a single, global map) -- tony
 
    local player_id = radiant.entities.get_player_id(entity)
-   if player_id then
+   if player_id and player_id ~= '' then
       local inventory = stonehearth.inventory:get_inventory(player_id)
-      if inventory then
+      -- make sure inventory has been properly initialized and we're in post-activate
+      if inventory and inventory:is_initialized() then
          local container = inventory:container_for(entity)
+         log:debug('reconsidering %s need to reconsider container %s', entity, tostring(container))
          if container then
             local is_stockpile = container:get_component('stoneheath:stockpile')
             if not is_stockpile then

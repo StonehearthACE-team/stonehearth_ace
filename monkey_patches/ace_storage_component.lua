@@ -187,6 +187,7 @@ function AceStorageComponent:_get_filter_cache(filter_fn)
          --failed = {},
          untested = radiant.shallow_copy(self._sv.items),
       }
+      --log:debug('%s created filter storage cache for filter_fn %s with %s untested items', self._entity, filter_fn, radiant.size(self._sv.items))
       self._storage_filter_cache[filter_fn] = cache
       self._num_storage_filter_caches = self._num_storage_filter_caches + 1
    end
@@ -194,7 +195,15 @@ function AceStorageComponent:_get_filter_cache(filter_fn)
    return cache
 end
 
+function AceStorageComponent:reset_storage_filter_caches()
+   for filter_fn, cache in pairs(self._storage_filter_cache) do
+      cache.passed = {}
+      cache.untested = radiant.shallow_copy(self._sv.items)
+   end
+end
+
 function AceStorageComponent:reconsider_entity_in_filter_caches(item_id, item)
+   log:debug('%s reconsidering item id %s as %s in filter caches...', self._entity, item_id, tostring(item))
    for filter_fn, cache in pairs(self._storage_filter_cache) do
       rawset(cache.passed, item_id, nil)
       --cache.failed[item_id] = nil

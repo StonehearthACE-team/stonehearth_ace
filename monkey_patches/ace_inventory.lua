@@ -16,6 +16,18 @@ function AceInventory:_pre_activate()
    self:_add_more_trackers()
 end
 
+AceInventory._ace_old_activate = Inventory.activate
+function AceInventory:activate()
+   self:_ace_old_activate()
+
+   self._is_initialized = true
+   radiant.events.trigger(self, 'stonehearth:inventory:initialized')
+end
+
+function AceInventory:is_initialized()
+   return self._is_initialized
+end
+
 function AceInventory:_add_more_trackers()
    -- load up a json file to see what other trackers need to be added
    local trackers = radiant.resources.load_json('stonehearth_ace:data:inventory_trackers')

@@ -28,12 +28,19 @@ function UniversalStorage:initialize()
    self._access_nodes_by_storage = {}  -- tables by storage id contain access node tables
    self._access_nodes = {} -- access node tables by access node entity id; each table contains node entity, traces, and current world destination region
    self._queued_items = {} -- items queued up for transfer to a universal storage entity as soon as it's registered
+   self._queued_destination_storage = {}  -- universal storage ids by queued storage id
+   self._storage_destroyed_listeners = {}
 end
 
 function UniversalStorage:create(player_id)
    self._sv.player_id = player_id
 
    self._is_create = true
+   self:_create_inventory_loaded_listener()
+end
+
+function UniversalStorage:restore()
+   self:_create_inventory_loaded_listener()
 end
 
 function UniversalStorage:post_activate()
@@ -54,6 +61,8 @@ function UniversalStorage:post_activate()
          -- end
          if not access_nodes or not next(access_nodes) then
             self:_destroy_universal_storage(storage, town_entity, location)
+         else
+            self:_add_storage_destroyed_listener(storage)
          end
       end
    end
@@ -63,6 +72,45 @@ end
 
 function UniversalStorage:destroy()
    self:_destroy_all_node_traces_and_effects()
+   self:_destroy_inventory_loaded_listener()
+   --self:_destroy_storage_destroyed_listeners()
+end
+
+function UniversalStorage:_create_inventory_loaded_listener()
+   local inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
+   if inventory then
+      self._inventory_loaded_listener = radiant.events.listen_once(inventory, 'stonehearth:inventory:initialized', function()
+            self._inventory_loaded_listener = nil
+            self._can_transfer_items = true
+            --log:debug('transferring all queued items... %s', radiant.util.table_tostring(self._queued_items))
+            self:_transfer_all_queued_items()
+         end)
+   end
+end
+
+function UniversalStorage:_add_storage_destroyed_listener(storage)
+   local id = storage:get_id()
+   if not self._storage_destroyed_listeners[id] then
+      self._storage_destroyed_listeners[id] = radiant.events.listen_once(storage, 'radiant:entity:pre_destroy', function()
+            self._storage_destroyed_listeners[id] = nil   
+            self._sv.storages[id] = nil
+            for _, category in pairs(self._sv.categories) do
+               for group_id, storage_id in pairs(category) do
+                  if storage_id == id then
+                     category[group_id] = nil
+                  end
+               end
+            end
+            self.__saved_variables:mark_changed()
+         end)
+   end
+end
+
+function UniversalStorage:_destroy_inventory_loaded_listener()
+   if self._inventory_loaded_listener then
+      self._inventory_loaded_listener:destroy()
+      self._inventory_loaded_listener = nil
+   end
 end
 
 function UniversalStorage:_destroy_all_node_traces_and_effects()
@@ -91,7 +139,9 @@ function UniversalStorage:_stop_access_node_effect(node)
 end
 
 function UniversalStorage:queue_items_for_transfer_on_registration(entity, items)
-   self._queued_items[entity:get_id()] = items
+   if not self._queued_items[entity:get_id()] then
+      self._queued_items[entity:get_id()] = items
+   end
 end
 
 -- TODO: if this entity is already registered, it needs to be removed from its current group
@@ -99,9 +149,16 @@ end
 -- (or old group simply transformed into new group if new group doesn't already exist)
 function UniversalStorage:register_storage(entity, category, group_id)
    local storage = self:_add_storage(entity, category, group_id)
+   local id = entity:get_id()
 
-   -- add any queued items for transfer
-   self:_transfer_queued_items(entity, storage)
+   if self._can_transfer_items then
+      -- add any queued items for transfer
+      --log:debug('transferring queued items from %s... %s', entity, radiant.util.table_tostring(self._queued_items[id] or {}))
+      self:_transfer_queued_items(self._queued_items[id], storage)
+      self._queued_items[id] = nil
+   else
+      self._queued_destination_storage[id] = storage
+   end
    return storage
 end
 
@@ -193,6 +250,7 @@ end
 function UniversalStorage:_add_storage(entity, category, group_id)
    -- if the entity being passed also has a storage component, queue up its items for transfer
    local storage_comp = entity:get_component('stonehearth:storage')
+   --log:debug('adding storage for %s (%sdestroying)...', entity, storage_comp and storage_comp.__destroying and '' or 'NOT ')
    if storage_comp and not storage_comp.__destroying then
       self:queue_items_for_transfer_on_registration(entity, storage_comp:get_items())
    end
@@ -215,6 +273,8 @@ function UniversalStorage:_add_storage(entity, category, group_id)
       category_storages[group_id] = storage_id
       self._sv.storages[storage_id] = group_storage
       self.__saved_variables:mark_changed()
+
+      self:_add_storage_destroyed_listener(group_storage)
 
       radiant.events.trigger(stonehearth_ace.universal_storage, 'stonehearth_ace:universal_storage:entity_created', {
          entity = group_storage,
@@ -356,19 +416,33 @@ function UniversalStorage:_update_effect(access_node)
    end
 end
 
-function UniversalStorage:_transfer_queued_items(entity, storage)
-   local id = entity:get_id()
-   local queued = self._queued_items[id]
-   if queued then
+function UniversalStorage:_transfer_all_queued_items()
+   local destinations = {}
+   for id, items in pairs(self._queued_items) do
+      local destination = self:_transfer_queued_items(items, self._queued_destination_storage[id], true)
+      if destination then
+         destinations[destination:get_id()] = destination
+      end
+   end
+   for id, destination in pairs(destinations) do
+      desination:get_component('stonehearth:storage'):reset_storage_filter_caches()
+   end
+   self._queued_destination_storage = {}
+   self._queued_items = {}
+end
+
+function UniversalStorage:_transfer_queued_items(queued, storage, skip_reset)
+   if queued and storage then
       local storage_comp = storage:get_component('stonehearth:storage')
       --local inventory = stonehearth.inventory:get_inventory(entity:get_player_id())
       for _, item in pairs(queued) do
          --local container = inventory:container_for(item)
          storage_comp:add_item(item, true)
          --log:debug('adding queued item %s; moving from %s to %s', item, tostring(container), tostring(inventory:container_for(item)))
+         if not skip_reset then
+            storage_comp:reset_storage_filter_caches()
+         end
       end
-
-      self._queued_items[id] = nil
    end
 end
 

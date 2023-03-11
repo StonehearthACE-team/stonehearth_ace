@@ -17,7 +17,9 @@ GetDrinkTrivial.priority = {0, 1}
 function GetDrinkTrivial:start_thinking(ai, entity, args)
    if ai.CURRENT.carrying ~= nil then
       local drink = radiant.entities.get_entity_data(ai.CURRENT.carrying, 'stonehearth_ace:drink')
-      if drink and args.drink_filter_fn(ai.CURRENT.carrying)then
+      -- we don't need to check if it passes the filter function, which now only validates drink containers:
+      -- the only possible way to carry a non-container drink is if it passed the filter function very recently
+      if drink then -- and args.drink_filter_fn(ai.CURRENT.carrying)then
          ai:set_utility(args.drink_rating_fn and args.drink_rating_fn(ai.CURRENT.carrying, entity) or 1)
          ai:set_think_output()
       end

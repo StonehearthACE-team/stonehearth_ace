@@ -45,8 +45,10 @@ function AceTown:destroy()
 end
 
 function AceTown:_destroy_default_storage_listeners()
-   for _, listener in pairs(self._default_storage_listener) do
-      listener:destroy()
+   if self._default_storage_listener then
+      for _, listener in pairs(self._default_storage_listener) do
+         listener:destroy()
+      end
    end
    self._default_storage_listener = {}
 end
@@ -61,7 +63,7 @@ function AceTown:_destroy_all_building_material_collection_tasks()
 end
 
 function AceTown:_destroy_default_storage_listener(storage_id)
-   if self._default_storage_listener[storage_id] then
+   if self._default_storage_listener and self._default_storage_listener[storage_id] then
       self._default_storage_listener[storage_id]:destroy()
       self._default_storage_listener[storage_id] = nil
    end

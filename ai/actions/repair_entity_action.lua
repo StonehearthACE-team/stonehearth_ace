@@ -9,8 +9,9 @@ local RepairEntity = radiant.class()
 
 RepairEntity.name = 'repair entity'
 RepairEntity.does = 'stonehearth:repair'
+RepairEntity.status_text_key = 'stonehearth_ace:ai.actions.status_text.repair'
 RepairEntity.args = {}
-RepairEntity.priority = 0
+RepairEntity.priority = {0, 1}
 
 function RepairEntity:start_thinking(ai, entity, args)
    local player_id = radiant.entities.get_player_id(entity)
@@ -84,7 +85,25 @@ function RepairEntity:start_thinking(ai, entity, args)
          return false
       end)
 
-   ai:set_think_output({ filter_fn = filter_fn })
+   -- prioritize repairing structural entities, deprioritize training dummies
+   local rating_fn = function(item)
+         if item:get_component('stonehearth_ace:training_dummy') then
+            return 0
+         else
+            return 1
+         end
+      end
+
+   ai:set_think_output({
+      filter_fn = filter_fn,
+      rating_fn = rating_fn,
+      owner_player_id = player_id,
+   })
+end
+
+function RepairEntity:compose_utility(entity, self_utility, child_utilities, current_activity)
+   return child_utilities:get('stonehearth:find_best_reachable_entity_by_type') * 0.8
+        + child_utilities:get('stonehearth:follow_path') * 0.2
 end
 
 local ai = stonehearth.ai
@@ -98,21 +117,26 @@ return ai:create_compound_action(RepairEntity)
             event_name = 'stonehearth_ace:repair_capabilities_changed',
          })
          :execute('stonehearth:drop_carrying_now')
-         :execute('stonehearth:find_path_to_entity_type', {
+         :execute('stonehearth:find_best_reachable_entity_by_type', {
             filter_fn = ai.BACK(4).filter_fn,
+            rating_fn = ai.BACK(4).rating_fn,
             description = 'find a siege object to run to',
+            owner_player_id = ai.BACK(4).owner_player_id,
+         })
+         :execute('stonehearth:find_path_to_reachable_entity', {
+            destination = ai.PREV.item
          })
          :execute('stonehearth:abort_on_reconsider_rejected', {
-            filter_fn = ai.BACK(5).filter_fn,
-            item = ai.BACK(1).destination,
+            filter_fn = ai.BACK(6).filter_fn,
+            item = ai.BACK(2).item,
          })
          :execute('stonehearth:reserve_entity', {
-            entity = ai.BACK(2).destination
+            entity = ai.BACK(3).item
          })
          :execute('stonehearth:follow_path', {
             path = ai.BACK(3).path,
             stop_distance = 3
          })
          :execute('stonehearth:repair_entity_adjacent', {
-            entity = ai.BACK(4).destination
+            entity = ai.BACK(5).item
          })
