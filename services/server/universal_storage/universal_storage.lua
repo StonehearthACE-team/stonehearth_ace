@@ -79,12 +79,18 @@ end
 function UniversalStorage:_create_inventory_loaded_listener()
    local inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
    if inventory then
-      self._inventory_loaded_listener = radiant.events.listen_once(inventory, 'stonehearth:inventory:initialized', function()
-            self._inventory_loaded_listener = nil
-            self._can_transfer_items = true
-            --log:debug('transferring all queued items... %s', radiant.util.table_tostring(self._queued_items))
-            self:_transfer_all_queued_items()
-         end)
+      if inventory:is_initialized() then
+         self._can_transfer_items = true
+      else
+         self._inventory_loaded_listener = radiant.events.listen_once(inventory, 'stonehearth:inventory:initialized', function()
+               self._inventory_loaded_listener = nil
+               self._can_transfer_items = true
+               --log:debug('transferring all queued items... %s', radiant.util.table_tostring(self._queued_items))
+               self:_transfer_all_queued_items()
+            end)
+      end
+   else
+      log:error('no inventory found for %s! unable to transfer items', self._sv.player_id)
    end
 end
 
