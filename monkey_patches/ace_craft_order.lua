@@ -585,6 +585,7 @@ function AceCraftOrder:reduce_quantity(amount)
             local reduction = condition.remaining - new_remaining
             self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, reduction)
             condition.remaining = new_remaining
+            self:_remove_desires(reduction)
             self.__saved_variables:mark_changed()
 
             self:_reduce_associated_orders_quantity(reduction)
@@ -619,6 +620,8 @@ function AceCraftOrder:change_quantity(quantity, prefer_high_quality)
       if condition.at_least ~= quantity or (prefer_high_quality ~= nil and prefer_high_quality ~= self:get_high_quality_preference()) then
          condition.at_least = quantity
          condition.prefer_high_quality = prefer_high_quality
+         self:_remove_desires()
+         self:_add_desires()
          self.__saved_variables:mark_changed()
          return true
       end

@@ -617,14 +617,14 @@ function PlayerMercantile:_calculate_num_merchants()
    end
 
    local traded = (inventory:get_trade_gold_earned() + inventory:get_trade_gold_spent()) *
-         (mercantile_constants.TOTAL_TRADE_MUTLIPLIER or 1)
+         (mercantile_constants.TOTAL_TRADE_MULTIPLIER or 1)
 
    local score_data = stonehearth.score:get_scores_for_player(player_id)
                               :get_score_data()
    local net_worth = 0
    if score_data and score_data.total_scores:contains('net_worth') then
       net_worth = (score_data.total_scores:get('net_worth') or 0) *
-            (mercantile_constants.NET_WORTH_MUTLIPLIER or 1)
+            (mercantile_constants.NET_WORTH_MULTIPLIER or 1)
    end
 
    -- = (( coefficient * net worth + coefficient * traded) ^ (1/3) + modifier) * game_mode_modifier
