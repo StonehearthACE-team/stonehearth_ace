@@ -181,6 +181,23 @@ App.StonehearthTerrainVisionWidget = App.View.extend({
 
       // this is a call to a global function stored in task_manager.js
       //_updateProcessingMeterShown();
+      $(top).on("show_processing_meter_changed.terrain_vision", function (_, e) {
+         if (e.value) {
+            self.$('#stonehearthTerrainVision').removeClass('meter-hidden');
+         }
+         else {
+            self.$('#stonehearthTerrainVision').addClass('meter-hidden');
+         }
+      });
+
+      // make sure it initializes properly
+      Ember.run.scheduleOnce('afterRender', this, function() {
+         stonehearth_ace.getModConfigSetting('stonehearth_ace', 'show_processing_meter', function(value) {
+            if (!value) {
+               self.$('#stonehearthTerrainVision').addClass('meter-hidden');
+            }
+         });
+      });
    },
 
    modeChangeClickHandler: function() {

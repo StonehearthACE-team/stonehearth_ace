@@ -25,17 +25,13 @@ App.StonehearthTaskManagerView = App.View.extend({
 
       $(top).on("show_processing_meter_changed.task_manager", function (_, e) {
          if (e.value) {
-            self.$('#stonehearthTerrainVision').removeClass('meter-hidden');
-   
-            // simply show the meter in the taskbar
-            self.$('#meter').show();
+            // make sure details are hidden before reshowing
+            self.details.hide();
+            self.$('#taskManager').show();
          }
          else {
-            // if we're hiding it, we need to make sure the details part is also hidden
-            self.$('#details').hide();
-            self.$('#meter').hide();
-   
-            self.$('#stonehearthTerrainVision').addClass('meter-hidden');
+            // just hide the whole thing!
+            self.$('#taskManager').hide();
          }
       });
 

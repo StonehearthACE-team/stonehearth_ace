@@ -166,14 +166,23 @@ App.StonehearthStartMenuView = App.View.extend({
          return;
       }
 
-      $(top).on("show_processing_meter_changed.start_menu", function (_, e) {
-         if (e.value) {
-            self.$('#startMenu .stonehearthMenu').removeClass('meter-hidden');
-         }
-         else {
-            self.$('#startMenu .stonehearthMenu').addClass('meter-hidden');
-         }
-      });
+      // $(top).on("show_processing_meter_changed.start_menu", function (_, e) {
+      //    if (e.value) {
+      //       self.$('#startMenu .stonehearthMenu').removeClass('meter-hidden');
+      //    }
+      //    else {
+      //       self.$('#startMenu .stonehearthMenu').addClass('meter-hidden');
+      //    }
+      // });
+
+      // // make sure it initializes properly
+      // Ember.run.scheduleOnce('afterRender', this, function() {
+      //    stonehearth_ace.getModConfigSetting('stonehearth_ace', 'show_processing_meter', function(value) {
+      //       if (!value) {
+      //          self.$('#startMenu .stonehearthMenu').addClass('meter-hidden');
+      //       }
+      //    });
+      // });
 
       $('#startMenuTrigger').click(function() {
          radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:trigger_click'} );
