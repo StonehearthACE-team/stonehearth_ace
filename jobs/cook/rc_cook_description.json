@@ -1,7 +1,9 @@
 {
    "type": "job",
-   "display_order": 2,
+   "display_order": 6,
    "mixins": "rayyas_children:jobs:cook",
+   "talisman_uri": "stonehearth_ace:cook:talisman:clay",
+	"requirements": "i18n(stonehearth_ace:jobs.rc_cook.rc_cook_description.requirements)",
    "crafter": {
       "recipe_list": "file(recipes/rc_recipes.json)"
    },
@@ -9,6 +11,6 @@
       "helmet": "file(rc_cook_outfit/rc_cook_outfit_hat)",
       "torso": "file(rc_cook_outfit)"
    },
-   "parent_job": "stonehearth:jobs:trapper",
-   "parent_level_requirement": 2
+   "parent_job": "stonehearth:jobs:worker",
+   "parent_level_requirement": 0
 }

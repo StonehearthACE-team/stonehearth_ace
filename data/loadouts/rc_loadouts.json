@@ -6,7 +6,16 @@
          "content": {
             "mixintypes": {
                "berries": "remove",
-               "mason": "remove"
+               "mason": "remove",
+               "trapper": "remove"
+            },
+            "shepherd": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth:jobs.shepherd.shepherd_description.display_name)",
+               "type": "entity",
+               "uri": "stonehearth_ace:shepherd:talisman:clay",
+               "icon": "file(images/items/shepherd_crook_clay.png)",
+               "amount": 1
             },
             "herbalist": {
                "uri": "stonehearth_ace:herbalist:talisman:clay",
@@ -16,8 +25,8 @@
                "ordinal": 3,
                "display_name": "i18n(stonehearth:jobs.cook.cook_description.display_name)",
                "type": "entity",
-               "uri": "stonehearth:cook:talisman",
-               "icon": "/stonehearth/data/loadouts/images/items/cook_spoon.png",
+               "uri": "stonehearth_ace:cook:talisman:clay",
+               "icon": "/stonehearth_ace/data/loadouts/images/items/cook_ladle.png",
                "amount": 1
             },
             "footman": {

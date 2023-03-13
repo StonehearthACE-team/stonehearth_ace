@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 4,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.cook_clay_spoon_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.cook_clay_spoon_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.cook_clay_spoon_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/cook/cook_ladle/cook_ladle.png",
+   "workshop": "stonehearth:potter:kiln",
+	"work_effect": "work_wait",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:molded_clay",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:cook:talisman:clay"
+      }
+   ]
+}
