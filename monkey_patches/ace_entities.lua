@@ -153,7 +153,9 @@ function ace_entities.create_entity(ref, options)
          local scale = create_entity_data.scale_range
          local min = (scale.min or 1) * base_scale
          local max = (scale.max or 1) * base_scale
-         render_info:set_scale(rng:get_real(math.min(min, max), math.max(min, max)))
+         -- scale can result in performance issues: try to limit the number of different scales and the length of the decimal
+         local r = rng:get_int(0, 100) * 0.01
+         render_info:set_scale(math.min(min, max) + r * math.abs(min - max))
       end
    end
 
