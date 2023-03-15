@@ -40,6 +40,8 @@ function AceFarmingCallHandler:_choose_new_field_location(session, response, fie
    local crop_data = radiant.entities.get_component_data(sample_crop, 'stonehearth:crop')
    local harvest_stage = crop_data and crop_data.harvest_threshhold
    local pattern = field_data.pattern or farming_lib.DEFAULT_PATTERN
+   local border = field_data.border or 0
+   local max_size_interior = max_size - border * 2
    local valid_terrain = field_data.terrain or {grass = true, dirt = true}
 
    local crop_entities = {}
@@ -47,7 +49,10 @@ function AceFarmingCallHandler:_choose_new_field_location(session, response, fie
    for x = 1, max_size do
       local row = {}
       for y = 1, max_size do
-         if farming_lib.get_location_type(pattern, x, y) == farming_lib.LOCATION_TYPES.CROP then
+         local xb, yb = x - border, y - border
+         if xb < 1 or yb < 1 or xb > max_size_interior or yb > max_size_interior then
+            row[y] = false
+         elseif farming_lib.get_location_type(pattern, xb, yb) == farming_lib.LOCATION_TYPES.CROP then
             local entity = radiant.entities.create_entity(sample_crop)
             entity:add_component('region_collision_shape'):set_region_collision_type(_radiant.om.RegionCollisionShape.NONE)
             if harvest_stage then
@@ -176,15 +181,17 @@ function AceFarmingCallHandler:_choose_new_field_location(session, response, fie
             if xz_region_selector:is_state('p0_selected') and (not prev_box or prev_box.min ~= box.min or prev_box.max ~= box.max or prev_rotation ~= rotation) then
                prev_box = box
                prev_rotation = rotation
+               local xb_max, yb_max = size.x - border * 2, size.z - border * 2
 
                hide_crop_nodes()
 
                for x = 1, max_size do
                   for y = 1, max_size do
-                     local rot_x, rot_y = farming_lib.get_crop_coords(size.x, size.z, rotation, x, y)
-                     --log:debug('get_crop_coords(%s, %s, %s, %s) = %s, %s', radiant.util.table_tostring(size), rotation, x, y, rot_x, rot_y)
-                     if rot_x > 0 and rot_y > 0 then
-                     local crop = crops[rot_x][rot_y]
+                     local xb, yb = x - border, y - border
+                     if xb >= 1 and yb >= 1 and xb <= xb_max and yb <= yb_max then
+                        local rot_x, rot_y = farming_lib.get_crop_coords(size.x, size.z, rotation, x, y)
+                        --log:debug('get_crop_coords(%s, %s, %s, %s) = %s, %s', radiant.util.table_tostring(size), rotation, x, y, rot_x, rot_y)
+                        local crop = crops[rot_x][rot_y]
                         if crop then
                            local location = box.min + Point3(x - 1, 0, y - 1)
                            if location.x < box.max.x and location.z < box.max.z then

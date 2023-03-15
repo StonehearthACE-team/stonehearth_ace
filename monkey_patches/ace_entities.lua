@@ -138,6 +138,23 @@ function ace_entities.create_entity(ref, options)
          end
          entity:add_component('render_info'):set_model_variant(variant_to_set or 'default')
       end
+
+      if create_entity_data and create_entity_data.vertical_model_offset_range then
+         local offset = create_entity_data.vertical_model_offset_range
+         local min = offset.min or 0
+         local max = offset.max or 0
+         local mob = entity:add_component('mob')
+         mob:set_model_origin(mob:get_model_origin() + Point3(0, rng:get_real(math.min(min, max), math.max(min, max)), 0))
+      end
+
+      if create_entity_data and create_entity_data.scale_range then
+         local render_info = entity:add_component('render_info')
+         local base_scale = render_info:get_scale()
+         local scale = create_entity_data.scale_range
+         local min = (scale.min or 1) * base_scale
+         local max = (scale.max or 1) * base_scale
+         render_info:set_scale(rng:get_real(math.min(min, max), math.max(min, max)))
+      end
    end
 
    return entity

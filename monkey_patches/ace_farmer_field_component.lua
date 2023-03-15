@@ -222,6 +222,7 @@ end
 function AceFarmerFieldComponent:_load_field_type()
    self._field_type_data = stonehearth.farming:get_field_type(self._sv.field_type or 'farm') or {}
    self._field_pattern = self._field_type_data.pattern or farming_lib.DEFAULT_PATTERN
+   self._field_border = self._field_type_data.border or 0
    self._sv.allow_disable_harvest = self._field_type_data.allow_disable_harvest
    self._sv.allow_fertilizing = self._field_type_data.allow_fertilizing ~= false
 
@@ -249,14 +250,21 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotati
       self._sv.harvest_enabled = not self._field_type_data.default_disable_harvest
    end
 
+   local border = self._field_border
+   local xb_max, yb_max = size.x - border * 2, size.y - border * 2
    local soil_layer = self._sv._soil_layer
    local soil_layer_region = soil_layer:get_component('destination'):get_region()
    local max_num_crops = 0
    soil_layer_region:modify(function(cursor)
       for x = 1, size.x do
          for y = 1, size.y do
-            local rot_x, rot_y = farming_lib.get_crop_coords(size.x, size.y, self._sv.rotation, x, y)
-            local location_type = farming_lib.get_location_type(self._field_pattern, rot_x, rot_y)
+            local location_type = farming_lib.LOCATION_TYPES.EMPTY
+            local xb, yb = x - border, y - border
+            if xb >= 1 and yb >= 1 and xb <= xb_max and yb <= yb_max then
+               local rot_x, rot_y = farming_lib.get_crop_coords(xb_max, yb_max, self._sv.rotation, xb, yb)
+               location_type = farming_lib.get_location_type(self._field_pattern, rot_x, rot_y)
+            end
+
             if location_type == farming_lib.LOCATION_TYPES.EMPTY then
                cursor:subtract_point(Point3(x - 1, 0, y - 1))
             elseif location_type == farming_lib.LOCATION_TYPES.CROP then
@@ -276,8 +284,16 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotati
 end
 
 function AceFarmerFieldComponent:_is_location_furrow(x, y)
-   local rot_x, rot_y = farming_lib.get_crop_coords(self._sv.size.x, self._sv.size.y, self._sv.rotation, x, y)
-   return farming_lib.get_location_type(self._field_pattern, rot_x, rot_y) == farming_lib.LOCATION_TYPES.FURROW
+   local size = self._sv.size
+   local border = self._field_border
+   local xb, yb = x - border, y - border
+   local xb_max, yb_max = size.x - border * 2, size.y - border * 2
+   if xb >= 1 and yb >= 1 and xb <= xb_max and yb <= yb_max then
+      local rot_x, rot_y = farming_lib.get_crop_coords(xb_max, yb_max, self._sv.rotation, xb, yb)
+      return farming_lib.get_location_type(self._field_pattern, rot_x, rot_y) == farming_lib.LOCATION_TYPES.FURROW
+   else
+      return false
+   end
 end
 
 function AceFarmerFieldComponent:notify_till_location_finished(location)
