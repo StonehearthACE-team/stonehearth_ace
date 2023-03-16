@@ -35,6 +35,13 @@
          },
          "perks": [
             {
+               "name": "i18n(stonehearth_ace:jobs.knight.knight_description.level_1_data.training_perk_name)",
+               "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_1_data.training_perk_description)",
+               "id": "training_perk",
+               "icon": "file(images/training.png)",
+               "level": 1
+            },
+            {
                "type": "apply_buff",
                "name": "i18n(stonehearth:jobs.knight.knight_description.level_1_data.perk_000_name)",
                "id": "knight_health_up_1",
@@ -43,25 +50,32 @@
                "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_1_data.perk_000_description)",
                "level": 1,
                "demote_fn": "remove_buff"
-            },
-            {
-               "name": "i18n(stonehearth_ace:jobs.knight.knight_description.level_1_data.training_perk_name)",
-               "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_1_data.training_perk_description)",
-               "id": "training_perk",
-               "icon": "file(images/training.png)",
-               "level": 1
             }
          ]
       },
 	  "2": {
+         "mixintypes": {
+            "perks": "override"
+         },
          "perks": [
+            {
+               "type": "add_combat_action",
+               "name": "i18n(stonehearth:jobs.knight.knight_description.level_2_data.perk_000_name)",
+               "id": "knight_aggro_attack",
+               "icon": "/stonehearth/jobs/knight/images/knight_perk_shout.png",
+               "equipment": "stonehearth:knight:aggro_shout_1",
+               "action_type": "stonehearth:combat:melee_attacks",
+               "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_2_data.perk_000_description)",
+               "level": 2,
+               "demote_fn": "remove_combat_action"
+            },
             {
                "type": "apply_buff",
                "name": "i18n(stonehearth:jobs.knight.knight_description.level_1_data.perk_001_name)",
                "id": "knight_defense_up_1",
                "icon": "/stonehearth/jobs/knight/images/knight_perk_def_up_1.png",
                "buff_name": "stonehearth:buffs:knight:defense_1",
-               "description": "i18n(stonehearth:jobs.knight.knight_description.level_1_data.perk_001_description)",
+               "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_1_data.perk_001_description)",
                "level": 2,
                "demote_fn": "remove_buff"
             }
@@ -82,6 +96,60 @@
                "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_3_data.perk_000_description)",
                "level": 3,
                "demote_fn": "remove_buff"
+            }
+         ]
+      },
+      "4": {
+         "mixintypes": {
+            "perks": "override"
+         },
+         "perks": [
+            {
+               "type": "apply_chained_buff",
+               "name": "i18n(stonehearth:jobs.knight.knight_description.level_4_data.perk_000_name)",
+               "id": "knight_defense_up_2",
+               "icon": "/stonehearth/jobs/knight/images/knight_perk_def_up_2.png",
+               "buff_name": "stonehearth:buffs:knight:defense_2",
+               "last_buff": "stonehearth:buffs:knight:defense_1",
+               "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_4_data.perk_000_description)",
+               "level": 4,
+               "demote_fn": "remove_buff"
+            }
+         ]
+      },
+      "5": {
+         "mixintypes": {
+            "perks": "override"
+         },
+         "perks": [
+            {
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.knight.knight_description.level_5_data.perk_000_name)",
+               "id": "knight_courage_aura",
+               "icon": "/stonehearth/jobs/knight/images/knight_perk_inspiring_presence.png",
+               "buff_name": "stonehearth:buffs:knight:courage_aura",
+               "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_5_data.perk_000_description)",
+               "level": 5,
+               "demote_fn": "remove_buff"
+            }
+         ]
+      },
+      "6": {
+         "mixintypes": {
+            "perks": "override"
+         },
+         "perks": [
+            {
+               "type": "add_chained_combat_action",
+               "name": "i18n(stonehearth:jobs.knight.knight_description.level_6_data.perk_000_name)",
+               "id": "knight_aggro_shout",
+               "icon": "/stonehearth/jobs/knight/images/knight_perk_heros_horn.png",
+               "equipment": "stonehearth:knight:aggro_shout_2",
+               "last_equipment": "stonehearth:knight:aggro_shout_1",
+               "action_type": "stonehearth:combat:melee_attacks",
+               "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_6_data.perk_000_description)",
+               "level": 6,
+               "demote_fn": "remove_combat_action"
             }
          ]
       }

@@ -30,6 +30,9 @@
    "max_training_level": 2,
    "level_data": {
       "1": {
+         "mixintypes": {
+				"perks": "override"
+		   },
          "perks": [
             {
                "name": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_1_data.training_perk_name)",
@@ -37,6 +40,16 @@
                "id": "training_perk",
                "icon": "file(images/training.png)",
                "level": 1
+            },
+            {
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.cleric.cleric_description.level_1_data.perk_000_name)",
+               "id": "cleric_heal_aura_1",
+               "icon": "/stonehearth/jobs/cleric/images/cleric_perk_healing_aura.png",
+               "buff_name": "stonehearth:buffs:cleric:heal_aura_1",
+               "description": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_1_data.perk_000_description)",
+               "level": 1,
+               "demote_fn": "remove_buff"
             }
          ]
       },

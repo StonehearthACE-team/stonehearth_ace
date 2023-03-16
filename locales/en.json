@@ -311,6 +311,19 @@
                   }
                }
             },
+            "orc_war": {   
+               "arcs": {
+                  "trigger": {
+                     "old_khan": {
+                        "encounters": {
+                           "unlock_blue_token_recipe": {
+                              "bulletin_title": "The Blacksmith has unlocked the Decorative Elite Gong recipe!"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
             "amberstone": {
                "21_residents_reward_b": {
                   "bulletin_title": "Amberstone Cook & Brewer recipes unlocked!"
@@ -6165,13 +6178,40 @@
    "jobs": {
       "footman": {
          "footman_description": {
+            "level_4_data": {
+               "perk_000_description": "The Footman is now practiced at optimizing the effect of each blow."
+            },
             "level_1_data": {
                "training_perk_name": "Combat Training",
-               "training_perk_description": "A Footman can use Training Dummies to train their combat techniques and earn experience up to Job Level 3"
+               "training_perk_description": "The Footman can use Training Dummies to train their combat techniques and earn experience up to Job Level 3",
+               "perk_000_description": "The Footman knows that all combats may have mortal consequences, and attacks with renewed determination."
             },
             "level_3_data": {
                "training_complete_name": "Academy Graduate",
                "training_complete_description": "The Footman has finished their combat training and can now seek new opportunities like trying to become a Knight!"
+            },
+            "level_2_data": {
+               "perk_000_description": "The Footman charges into battle with speed."
+            },
+            "level_5_data": {
+               "perk_000_description": "A slashing strike that deals damage to up to 4 enemies around the Footman's target."
+            }
+         },
+         "footman_buffs": {
+            "damage_1_buff": {
+               "description": "At Level 1, the Footman attacks with increased ferocity"
+            },
+            "damage_2_buff": {
+               "description": "The Footman attacks with increased ferocity"
+            },
+            "damage_3_buff": {
+               "description": "At Level 6, the Footman's attacks are unstoppable!"
+            },
+            "speed_buff": {
+               "description": "The Footman moves faster"
+            },
+            "shield_hare_buff": {
+               "description": "This hearthling is protected with Knut's blessing.<ul><li>Courage is increased by 10%</li><li>Recovers 2% of their health every hour</li></ul>"
             }
          },
          "footman_stone_axe": {
@@ -6189,24 +6229,35 @@
             },
             "display_name": "Ceramic Short Spear",
             "description": "Efficient for poking your enemies, but poke them carefully!"
-         },
-         "footman_buffs": {
-            "shield_hare_buff": {
-               "description": "This hearthling is protected with Knut's blessing.<ul><li>Courage is increased by 10%</li><li>Recovers 2% of their health every hour</li></ul>"
-            }
          }
       },
       "archer": {
-         "archer_description": {
+         "archer_description": {       
+            "description": "A rearguard combatant capable of using ranged weaponry like bows, crossbows and a variety of hindering types of arrows or bolts to attack their foes.",
             "level_1_data": {
                "training_perk_name": "Archery Training",
-               "training_perk_description": "An Archer can use Archery Targets to train their precision and earn experience up to Job Level 3"
+               "training_perk_description": "The Archer can use Archery Targets to train their precision and earn experience up to Job Level 3",
+               "perk_001_description": "The Archer's damage is increased"
             },
             "level_2_data": {
                "xbow_proficiency_name": "Crossbow Proficiency",
-               "xbow_proficiency_description": "The Archer is able to use a crossbow to shoot strong bolts at enemies"
+               "xbow_proficiency_description": "The Archer is able to use a crossbow to shoot strong bolts at enemies",
+               "perk_000_description": "The Archer's shots ignore 50% of the target's armor"
             },
-            "description": "A rearguard combatant capable of using ranged weaponry like bows, crossbows and a variety of hindering types of arrows or bolts to attack their foes."
+            "level_3_data": {
+               "perk_000_description": "The Archer can attack enemies from further away"
+            },
+            "level_4_data": {
+               "perk_000_description": "The Archer shoots arrows with greater speed"
+            },
+            "level_6_data": {
+               "perk_000_description": "The Archer learns the ancient art of quick shots, allowing rapid firing of two arrows in rapid succession"
+            }
+         },
+         "archer_buffs": {
+            "damage_1_buff": {
+               "description": "The Archer's damage is increased."
+            }
          }
       },
       "na_archer": {
@@ -6218,10 +6269,17 @@
          }
       },
       "cleric": {
+         "cleric_tome": {
+            "cleric_tome_talisman": {
+               "description": "Required to promote a hearthling into a Cleric."
+            },
+            "description": "Contains sacred texts on the way of the Cleric."
+         },
          "cleric_description": {
             "level_1_data": {
                "training_perk_name": "Healer Training",
-               "training_perk_description": "A Cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Job Level 3"
+               "training_perk_description": "The Cleric can use Sheep tamed by a Shepherd to practice their magical gestures and earn experience up to Job Level 3",
+               "perk_000_description": "The Cleric's presence heals everyone around them periodically"
             },
             "level_2_data": {
                "perk_000_name": "Minor Strength & Weakness",
@@ -6243,6 +6301,18 @@
             }
          },
          "cleric_buffs": {
+            "heal_aura_1_buff": {
+               "description": "The Cleric's presence heals everyone around them periodically"
+            },
+            "minor_muscle_aura_effect_buff": {
+               "description": "Strength improved slightly from the presence of a Cleric"
+            },
+            "heal_aura_2_buff": {
+               "description": "The Cleric's presence heals everyone around them periodically."
+            },
+            "major_muscle_aura_effect_buff": {
+               "description": "Muscle improved greatly from the presence of a Cleric"
+            },
             "ornate_cleric_armor_buff": {
                "display_name": "Blessed Regalia",
                "description": "Increases Willpower by 5% and Healing Efficiency by 10%"
@@ -6283,24 +6353,43 @@
       },
       "knight": {
          "knight_description": {
+            "description": "A defensive fighter focused on protecting allies from harm and rounding up enemies, striking fear in their hearts!",
             "level_1_data": {
                "training_perk_name": "Squire Training",
-               "training_perk_description": "A Knight can use Training Dummies to train their defensive taunting skills and earn experience up to Job Level 3",
-               "perk_000_description": "Increases Stamina, Courage, and draws attention from monsters. Greater fortitude allows the Knight to feel more comfortable in armor, also slightly increasing their Speed."
+               "training_perk_description": "The Knight can use Training Dummies to train their defensive taunting skills and earn experience up to Job Level 3",
+               "perk_000_description": "Increases Stamina, Courage, and draws attention from monsters. Greater fortitude allows the Knight to feel more comfortable in armor, also slightly increasing their Speed.",
+               "perk_001_description": "The Knight gains an additional 10% defense from equipment"
             },
-            "description": "A defensive fighter focused on protecting allies from harm and rounding up enemies, striking fear in their hearts!",
+            "level_2_data": {
+               "perk_000_description": "The Knight intimidates the opponent, drawing the attention of nearby enemies."
+            },
             "level_3_data": {
                "perk_000_description": "The Stamina and Courage bonuses are increased greatly. The Speed bonus is doubled."
+            },
+            "level_4_data": {
+               "perk_000_description": "The Knight gains an additional 20% armor from equipment"
+            },
+            "level_5_data": {
+               "perk_000_description": "The Knight boosts courage of everyone around"
+            },
+            "level_6_data": {
+               "perk_000_description": "The Knight sounds a horn of combat, drawing the attention enemies both near and far"
+            }
+         },
+         "knight_buffs": {
+            "health_1_buff": {
+               "description": "The Knight becomes more menacing to enemies, drawing their attention in combat. They also get a health, speed and stamina bonus to keep up."
+            },
+            "courage_aura_buff": {
+               "description": "The Knight increases courage of everyone around"
+            },
+            "courage_aura_effect_buff": {
+               "description": "Courage increased from the presence of a Knight."
             }
          },
          "knight_horn": {
             "display_name": "Knight's Horn",
             "description": "To strike fear, rally your fellow hearthlings or protect the little ones."
-         },
-         "knight_buffs": {
-            "health_1_buff": {
-               "description": "The Knight becomes more menacing to enemies, drawing their attention in combat. They also get a health, speed and stamina bonus to keep up."
-            }
          }
       },
       "herbalist": {
@@ -6319,6 +6408,9 @@
                "recipe_name": "Brewer's Tumbler",
                "description": "Required to promote a hearthling into a Brewer.",
                "flavor": "You can survive out of food, but only out of drinks you can live -'On the Art of Brewing' by Franz Baden"
+            },
+            "cleric_tome_recipe": {
+               "description": "Required to promote a hearthling into a Cleric."
             },
             "cleric_tome_2_recipe": {
                "recipe_name": "Fine Tome of Healing",
@@ -7446,6 +7538,17 @@
                "perk_001_description": "The Herbalist channels the spirits of the forest and gains natural regeneration, increasing their Willpower and Diligence. They are also proficient in gathering and handling herb planters."
             }
          },
+         "herbalist_buffs": {
+            "willpower_1_buff": {
+               "description": "The Herbalist has improved health regeneration and diligence."
+            }
+         },
+         "herbalist_pestle": {
+            "description": "Tools of the trade for an Herbalist."
+         },
+         "herbalist_mortar": {
+            "description": "Tools of the trade for an Herbalist."
+         },
          "herbalist_mortar_pewter": {
             "display_name": "Herbalist's Pewter Mortar",
             "description": "A fancy mortar set for increasing the Herbalist's speed and quality."
@@ -7533,8 +7636,23 @@
          }
       },
       "engineer": {
+         "engineer_buffs": {
+            "diligence_2_buff": {
+               "display_name": "Engineer's Commitment",
+               "description": "Increases Diligence. The Engineer can repair objects more efficiently"
+            }
+         },
+         "engineer_workbench": {
+            "engineer_workbench_ghost": {
+               "display_name": "Engineer's Toolbench",
+               "description": "Used by the Engineer for crafting."
+            }
+         },
          "recipes": {
             "mechanisms_name": "Machines & Mechanisms",
+            "engineer_workbench_recipe": {
+               "description": "Used by the Engineer to craft their various gadgets and contraptions."
+            },
             "refrigerator_small_recipe": {
                "recipe_name": "Small Refrigerator",
                "description": "Preserves up to 16 items for a very long time, preventing them from spoiling.",
@@ -7632,6 +7750,9 @@
          "recipes": {
             "porcelain_furniture_name": "Furniture & Decoration, Porcelain",
             "porcelain_building_parts_name": "Building Parts, Porcelain",
+            "potter_workbench_recipe": {
+               "description": "Used by the Potter to create symmetrical clay objects."
+            },
             "rc_shepherds_crook_recipe": {
                "recipe_name": "Shepherd's Ceramic Crook",
                "flavor": "The herding of animals in the desert is a tradition coming for as long as the children of Rayya have been walking these dunes"
@@ -7647,7 +7768,7 @@
             },
             "herbalist_clay_staff_recipe": {
                "recipe_name": "Herbalist's Idol",
-               "description": "Required to promote a hearthling to an Herbalist, who creates healing tonics and bandages.",
+               "description": "Required to promote a hearthling into an Herbalist, who creates healing tonics and bandages.",
                "flavor": "Earthy idols have healing powers, they say"
             },
             "potter_mold_bench_recipe": {
@@ -8239,7 +8360,7 @@
             },
             "na_herbalist_staff_bone_recipe": {
                "recipe_name": "Herbalist's Bone Staff",
-               "description": "Required to promote a hearthling to an Herbalist, who creates healing tonics and bandages.",
+               "description": "Required to promote a hearthling into an Herbalist, who creates healing tonics and bandages.",
                "flavor": "The healing powers of Firnn shall provide"
             },
             "mason_workbench_bone_recipe": {
@@ -9371,6 +9492,12 @@
                }
             }
          },
+         "sign_blacksmith_recipe": {
+            "description": "An iron-forged sign, to be displayed outside a Blacksmith's workshop."
+         },
+         "door_blacksmith_recipe": {
+            "description": "Fit for a the workshop of a Master Blacksmith."
+         },
          "blacksmith_fuel_oven": {
             "blacksmith_fuel_oven_ghost": {
                "display_name": "Blacksmith Kiln",
@@ -9417,6 +9544,15 @@
                "ornate_perk_description": "Experience with smelting has given the Blacksmith ideas on new and improved facilities that will allow them to work more efficiently and with more valuable materials."
             },
             "description": "The Blacksmith uses raw ores, fuels and strength to bend metals to their will, creating a wide range of goods like weapons, armor, decorations and useful tools."
+         },
+         "blacksmith_hammer": {
+            "description": "Tools of the trade for a Blacksmith.",
+            "blacksmith_hammer_iconic": {
+               "description": "Tools of the trade for a Blacksmith."
+            },
+            "blacksmith_hammer_talisman": {
+               "description": "Required to promote a hearthling into a Blacksmith."
+            }
          }
       },
       "worker": {
@@ -10103,6 +10239,18 @@
          "recipes": {
             "ornate_furniture_name": "Furniture & Decoration, Ornate",
             "ornate_building_parts_name": "Building Parts, Ornate",
+            "carpenter_toolbench_recipe": {
+               "description": "Fancier tools used by the Carpenter for prettier and more complex crafts."
+            },
+            "archer_bow_recipe": {
+               "description": "Required to promote a hearthling into an Archer"
+            },
+            "herbalist_staff_recipe": {
+               "description": "Required to promote a hearthling into an Herbalist."
+            },
+            "wooden_sign_blacksmith_recipe": {
+               "description": "A sign with the mark of the Blacksmith, to be placed on buildings."
+            },
             "wooden_animal_door_recipe": {
                "recipe_name": "Wooden Animal Door",
                "description": "A large door for animal shelters, it can be closed by a Shepherd. When closed, only hearthlings may go through!",
@@ -10423,6 +10571,12 @@
                "description": "A larger door frame without a door.",
                "flavor": "Please air-knock before coming in"
             },
+            "door_carpenter_recipe": {
+               "description": "Fit for the workshop of a Master Carpenter."
+            },
+            "sign_carpenter_recipe": {
+               "description": "An expertly carved sign, to be displayed outside a Carpenter's workshop."
+            },
             "frostfeast": {
                "present_small_recipe": {
                   "recipe_name": "Small Frostfeast Present",
@@ -10651,6 +10805,9 @@
                "recipe_name": "Bedroll",
                "description": "Better than the ground but not really a homely bedding. Very portable, though!",
                "flavor": "A bed you can carry. Well, to be honest you can actually carry ANY bed..."
+            },
+            "simple_quiver_recipe": {
+               "description": "A quiver equippable by an Archer. Stores crippling arrows that will slow enemies."
             },
             "simple_quiver_bolts_recipe": {
                "recipe_name": "Spiky Bolt Quiver",
@@ -17095,6 +17252,11 @@
             "display_name": "Green Embers",
             "description": "How do they even do that...?"
          },
+         "wooden_sign_blacksmith": {
+            "wooden_sign_blacksmith_ghost": {
+               "description": "A sign with the mark of the Blacksmith."
+            }
+         },
          "wooden_sign_tavern": {
             "display_name": "Tavern Sign",
             "description": "A sign for a place where the night is long and merry."
@@ -17377,10 +17539,46 @@
             "description": "An ancient testament to the power a community has to nurture and thrive.",
             "static_component_info": {
                "description": "<p style='text-align:center;color:white;'>This beautiful monument is dedicated to the great community behind Stonehearth and to those that have supported the ACE project!<br><br>Below is a permanent list of all the kind donors, ordered by membership tier, then total amount and finally date. This list will be updated whenever a new release is out!</p>",
-               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<br>Lykos<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>Yunoh<br>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<br>Doris<br>ZeroTronix<br>Anna_Ankiemankie<br>Lazuli<br>Sayptie<br>Elfonnzo<br>Joy144SK<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Tsukaiyo<br>Orlondok<br>Goldmetal<br>Claire<hr><p style='text-align:center'>...and everyone else!<p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Dayison<br>Coolcup5<br>ghostcrap<br>Fran Tremblay<br>Phania<br>Chichin<br>thatpenguinstar<br>Croxo<br>Heureka<br>Verree<br>Jantsje<br>Xavier Xing<br>Vyrael<br>Alex Kay<br>TRG<br>KoriZ<br>shimizu & jontaro<br>Telunar<br>Yokes<br><br>Thanks to all the anonymous supporters as well!</p>"
+               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<br>Lykos<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>Yunoh<br>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<br>Doris<br>ZeroTronix<br>Anna_Ankiemankie<br>Lazuli<br>Sayptie<br>Elfonnzo<br>Joy144SK<br>TOFUFU<br>Wild Cherry Bomb<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Tsukaiyo<br>Orlondok<br>Goldmetal<br>Claire<hr><p style='text-align:center'>...and everyone else!<p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Dayison<br>Coolcup5<br>ghostcrap<br>Fran Tremblay<br>Phania<br>Chichin<br>thatpenguinstar<br>Croxo<br>Heureka<br>Verree<br>Jantsje<br>Xavier Xing<br>Vyrael<br>Alex Kay<br>TRG<br>KoriZ<br>shimizu & jontaro<br>Telunar<br>Yokes<br><br>Thanks to all the anonymous supporters as well!</p>"
             }
          },
          "craftsman_statue": {
+            "door_blacksmith": {
+               "door_blacksmith_ghost": {
+                  "display_name": "Blacksmith's Door",
+                  "description": "Fit for the workshop of a Master Blacksmith."
+               }
+            },
+            "door_carpenter": {
+               "door_carpenter_ghost": {
+                  "display_name": "Carpenter's Door",
+                  "description": "Fit for the workshop of a Master Carpenter."
+               }
+            },
+            "door_mason": {
+               "door_mason_ghost": {
+                  "display_name": "Mason's Door",
+                  "description": "Fit for the workshop of a Master Mason."
+               }
+            },
+            "sign_blacksmith": {
+               "sign_blacksmith_ghost": {
+                  "display_name": "Blacksmith's Shop Sign",
+                  "description": "An iron-forged sign, to be displayed outside a Blacksmith's workshop."
+               }
+            },
+            "sign_carpenter": {
+               "sign_carpenter_ghost": {
+                  "display_name": "Carpenter's Shop Sign",
+                  "description": "An expertly carved sign, to be displayed outside a Carpenter's workshop."
+               }
+            },
+            "sign_mason": {
+               "sign_mason_ghost": {
+                  "display_name": "Mason's Shop Sign",
+                  "description": "A sturdy stone sign, to be displayed outside a Mason's workshop."
+               }
+            },
             "candelabra_iron": {
                "display_name": "Iron Table Candelabra",
                "description": "For all your fancy needs."
@@ -19501,6 +19699,11 @@
          }
       },
       "armor": {
+         "knights_shield": {
+            "shield_talisman": {
+               "description": "Required to promote a hearthling into a Knight."
+            }
+         },
          "iron_platemail": {
             "description": "A full suit of knightly iron armor.",
             "display_name": "Iron Platemail"
@@ -19815,6 +20018,12 @@
          }
       },
       "weapons": {
+         "bow": {
+            "description": "Used by an Archer for shooting arrows",
+            "bow_talisman": {
+               "description": "Required to promote a hearthling into an Archer."
+            }
+         },
          "iron_battle_axe": {
             "description": "Extra large for when you need some extra punch. (Two-handed)",
             "display_name": "Iron Battle Axe"
@@ -22940,11 +23149,34 @@
             },
             "crafter_menu": {
                "items": {
+                  "carpenter": {
+                     "required_job_text": "Requires a Carpenter"
+                  },
+                  "weaver": {
+                     "required_job_text": "Requires a Weaver"
+                  },
+                  "mason": {
+                     "required_job_text": "Requires a Mason"
+                  },
+                  "blacksmith": {
+                     "required_job_text": "Requires a Blacksmith"
+                  },
+                  "cook": {
+                     "required_job_text": "Requires a Cook"
+                  },
+                  "potter": {
+                     "required_job_text": "Requires a Potter"
+                  },
+                  "herbalist": {
+                     "required_job_text": "Requires an Herbalist"
+                  },
                   "engineer": {
-                     "description": "Make contraptions and defensive weaponry."
+                     "description": "Make contraptions and defensive weaponry.",
+                     "required_job_text": "Requires an Engineer"
                   },
                   "geomancer": {
-                     "description": "Imbue summoning stones and golems."
+                     "description": "Imbue summoning stones and golems.",
+                     "required_job_text": "Requires a Geomancer"
                   },
                   "shepherd": {
                      "display_name": "Shepherd Craft Menu",

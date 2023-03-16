@@ -35,6 +35,9 @@
    },
    "level_data": {
       "1": {
+         "mixintypes": {
+            "perks": "override"
+         },
          "perks": [
             {
                "name": "i18n(stonehearth_ace:jobs.footman.footman_description.level_1_data.training_perk_name)",
@@ -42,6 +45,33 @@
                "id": "training_perk",
                "icon": "file(images/training.png)",
                "level": 1
+            },
+            {
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.footman.footman_description.level_1_data.perk_000_name)",
+               "id": "footman_damage_up_1",
+               "icon": "/stonehearth/jobs/footman/images/damage_up_1.png",
+               "buff_name": "stonehearth:buffs:footman:dmg_1",
+               "description": "i18n(stonehearth_ace:jobs.footman.footman_description.level_1_data.perk_000_description)",
+               "level": 1,
+               "demote_fn": "remove_buff"
+            }
+         ]
+      },
+      "2": {
+         "mixintypes": {
+            "perks": "override"
+         },
+         "perks": [
+            {
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.footman.footman_description.level_2_data.perk_000_name)",
+               "id": "footman_speed_up",
+               "icon": "/stonehearth/jobs/footman/images/footman_perk_speed_boost.png",
+               "buff_name": "stonehearth:buffs:footman:speed",
+               "description": "i18n(stonehearth_ace:jobs.footman.footman_description.level_2_data.perk_000_description)",
+               "level": 2,
+               "demote_fn": "remove_buff"
             }
          ]
       },
@@ -53,6 +83,42 @@
                "icon": "file(images/training_complete.png)",
                "description": "i18n(stonehearth_ace:jobs.footman.footman_description.level_3_data.training_complete_description)",
                "level": 3
+            }
+         ]
+      },
+      "4": {
+         "mixintypes": {
+				"perks": "override"
+		   },
+         "perks": [
+            {
+               "type": "apply_chained_buff",
+               "name": "i18n(stonehearth:jobs.footman.footman_description.level_4_data.perk_000_name)",
+               "id": "footman_damage_up_2",
+               "icon": "/stonehearth/jobs/footman/images/damage_up_2.png",
+               "buff_name": "stonehearth:buffs:footman:dmg_2",
+               "last_buff": "stonehearth:buffs:footman:dmg_1",
+               "description": "i18n(stonehearth_ace:jobs.footman.footman_description.level_4_data.perk_000_description)",
+               "level": 4,
+               "demote_fn": "remove_buff"
+            }
+         ]
+      },
+      "5": {
+         "mixintypes": {
+				"perks": "override"
+		   },
+         "perks": [
+            {
+               "type": "add_combat_action",
+               "name": "i18n(stonehearth:jobs.footman.footman_description.level_5_data.perk_000_name)",
+               "id": "footman_cleave",
+               "icon": "/stonehearth/jobs/footman/images/cleave.png",
+               "equipment": "stonehearth:footman:manual_of_cleave",
+               "action_type": "stonehearth:combat:melee_attacks",
+               "description": "i18n(stonehearth_ace:jobs.footman.footman_description.level_5_data.perk_000_description)",
+               "level": 5,
+               "demote_fn": "remove_combat_action"
             }
          ]
       },
