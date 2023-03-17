@@ -239,11 +239,21 @@ $(document).ready(function() {
       },
 
       _getModeForEntity: function(entity) {
-         var custom_mode = this._getCustomModeForEntity(entity);
-         if (custom_mode) {
-            return custom_mode;
+         var self = this;
+         var mode = self._getBaseModeForEntity(entity);
+
+         for (var i = 0; i < self.customEntityModeChecks.length; i++)
+         {
+            var custom_mode = self.customEntityModeChecks[i](self.modes, entity, self._currentMode, mode);
+            if (custom_mode) {
+               return custom_mode;
+            }
          }
 
+         return mode;
+      },
+
+      _getBaseModeForEntity: function(entity) {
          if (entity['stonehearth:stockpile'] ||
                entity['stonehearth:trapping_grounds'] ||
                entity['stonehearth:shepherd_pasture'] ||
@@ -265,19 +275,6 @@ $(document).ready(function() {
          }
    
          return this.modes.NORMAL;
-      },
-   
-      _getCustomModeForEntity: function(entity) {
-         var self = this;
-         for (var i = 0; i < self.customEntityModeChecks.length; i++)
-         {
-            var mode = self.customEntityModeChecks[i](self.modes, entity);
-            if (mode) {
-               return mode;
-            }
-         }
-         
-         return null;
       }
    });
 })();

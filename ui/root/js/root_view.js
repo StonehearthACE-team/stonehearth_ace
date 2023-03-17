@@ -293,7 +293,7 @@ App.RootView = Ember.ContainerView.extend({
    },
 
    // ACE: additional game modes
-   _getCustomModeForEntity: function(modes, entity) {
+   _getCustomModeForEntity: function(modes, entity, curMode, consideredMode) {
       if (entity['stonehearth:farmer_field']) {
          return modes.FARM;
       }
@@ -302,7 +302,7 @@ App.RootView = Ember.ContainerView.extend({
          return modes.MILITARY;
       }
 
-      if (entity['stonehearth_ace:connection']) {
+      if (entity['stonehearth_ace:connection'] && consideredMode == modes.NORMAL) {
          return modes.CONNECTION;
       }
 
