@@ -458,7 +458,11 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks, ignore_wound_chec
 
          self.__saved_variables:mark_changed()
 
-         radiant.events.trigger_async(self._entity, 'stonehearth:buff_removed', uri)
+         -- ACE: changed the event to pass args table instead of just the uri
+         radiant.events.trigger_async(self._entity, 'stonehearth:buff_removed', {
+            uri = uri,
+            category = json.category,
+         })
          if uri == 'stonehearth:buffs:sleeping' then
             stonehearth.ai:reconsider_entity(self._entity, 'woke up')
          end

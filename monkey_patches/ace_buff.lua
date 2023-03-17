@@ -255,6 +255,10 @@ function AceBuff:_update_duration_stat()
    end
 end
 
+function AceBuff:get_category()
+   return self._json.category
+end
+
 function AceBuff:is_reembarkable()
    return self._json.reembarkable
 end

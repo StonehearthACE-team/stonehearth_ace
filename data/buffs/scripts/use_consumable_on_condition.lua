@@ -56,11 +56,11 @@ function UseConsumableOnCondition:_create_listeners(condition)
       elseif condition.type == 'stonehearth:buffs' then
          if condition.has_buff ~= false then
             self:_create_listener('stonehearth:buff_added', function(args)
-                  return args.uri == condition.buff_uri
+                  return self:_buff_matches_condition(condition, args.uri, args.buff:get_category())
                end)
          else
-            self:_create_listener('stonehearth:buff_removed', function(uri)
-                  return uri == condition.buff_uri
+            self:_create_listener('stonehearth:buff_removed', function(args)
+                  return self:_buff_matches_condition(condition, args.uri, args.category)
                end)
          end
       end
@@ -69,12 +69,29 @@ end
 
 function UseConsumableOnCondition:_create_listener(event_name, check_fn)
    if not self._listeners[event_name] then
-      self._listeners[event_name] = radiant.events.listen(self._entity, event_name, function(args)
-            if not check_fn or check_fn(args) then
+      local check_fns = {check_fn}
+      self._listeners[event_name] = {
+         check_fns = check_fns,
+         listener = radiant.events.listen(self._entity, event_name, function(args)
+            if #check_fns == 0 then
                self:_consider_using()
+            else
+               for _, fn in ipairs(check_fns) do
+                  if fn(args) then
+                     self:_consider_using()
+                     break
+                  end
+               end
             end
-         end)
+         end),
+      }
+   elseif check_fn then
+      table.insert(self._listeners[event_name].check_fns, check_fn)
    end
+end
+
+function UseConsumableOnCondition:_buff_matches_condition(condition, uri, category)
+   return (condition.buff_uri and condition.buff_uri == uri) or (condition.buff_category and condition.buff_category == category)
 end
 
 function UseConsumableOnCondition:_consider_using()
@@ -150,7 +167,7 @@ end
 function UseConsumableOnCondition:on_buff_removed(entity, buff)
    if self._listeners then
       for _, listener in pairs(self._listeners) do
-         listener:destroy()
+         listener.listener:destroy()
       end
       self._listeners = nil
    end
