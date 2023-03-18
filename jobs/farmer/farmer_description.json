@@ -19,6 +19,23 @@
    ],
    "description": "i18n(stonehearth_ace:jobs.farmer.farmer_description.description)",
    "level_data": {
+      "1": {
+         "mixintypes": {
+            "perks": "override"
+         },
+         "perks": [
+            {
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.farmer.farmer_description.level_1_data.perk_000_name)",
+               "id": "farmer_speed_up_1",
+               "icon": "/stonehearth/jobs/farmer/images/speed_up.png",
+               "buff_name": "stonehearth:buffs:farmer:speed_1",
+               "description": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_1_data.perk_000_description)",
+               "level": 1,
+               "demote_fn": "remove_buff"
+            }
+         ]
+      },
       "2": {
 			"mixintypes": {
             "perks": "override"
@@ -91,7 +108,7 @@
                "name": "i18n(stonehearth:jobs.farmer.farmer_description.level_5_data.perk_000_name)",
                "id": "farmer_unlock_trees",
                "icon": "/stonehearth/jobs/farmer/images/farmerLv5.png",
-               "description": "i18n(stonehearth:jobs.farmer.farmer_description.level_5_data.perk_000_description)",
+               "description": "i18n(stonehearth_ace:jobs.farmer.farmer_description.level_5_data.perk_000_description)",
                "level": 5,
                "type": "unlock_town_ability",
                "unlock_ability": "field_type_treefarm"

@@ -28,6 +28,9 @@
    },
    "level_data": {
       "1": {
+         "mixintypes": {
+            "perks": "override"
+         },	
          "perks": [
 				{
                "name": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_1_data.perk_001_name)",
@@ -35,6 +38,39 @@
                "icon": "file(images/fish_trap.png)",
                "description": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_1_data.perk_001_description)",
                "level": 1
+            },
+            {
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.trapper.trapper_description.level_1_data.perk_000_name)",
+               "id": "trapper_speed_up_1",
+               "icon": "/stonehearth/jobs/trapper/images/speed_up.png",
+               "buff_name": "stonehearth:buffs:trapper:speed_1",
+               "description": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_1_data.perk_000_description)",
+               "level": 1,
+               "demote_fn": "remove_buff"
+            }
+         ]
+      },
+      "2": {
+         "mixintypes": {
+            "perks": "override"
+         },	
+         "perks": [
+            {
+               "type": "set_tame_beast_percentage",
+               "name": "i18n(stonehearth:jobs.trapper.trapper_description.level_2_data.perk_000_name)",
+               "id": "trapper_natural_empathy_1",
+               "icon": "/stonehearth/jobs/trapper/images/charm_pet.png",
+               "description": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_2_data.perk_000_description)",
+               "level": 2,
+               "tame_beast_percentage": 20
+            },
+            {
+               "name": "i18n(stonehearth:jobs.trapper.trapper_description.level_2_data.perk_001_name)",
+               "id": "trapper_job_opportunities",
+               "icon": "/stonehearth/jobs/trapper/images/trapperLevel5.png",
+               "description": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_2_data.perk_001_description)",
+               "level": 2
             }
          ]
       },
@@ -54,6 +90,36 @@
                   "trap": 0,
                   "fish_trap": 6
                }
+            }
+         ]
+      },
+      "4": {
+         "mixintypes": {
+            "perks": "override"
+         },	 
+         "perks": [
+            {
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.trapper.trapper_description.level_4_data.perk_001_name)",
+               "id": "trapper_master_survivalist",
+               "icon": "/stonehearth/jobs/trapper/images/survivalist_1_buff.png",
+               "level": 4,
+               "description": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_4_data.perk_001_description)",
+               "buff_name": "stonehearth:buffs:trapper:survivalist_1"
+            }
+         ]
+      },
+      "5": {
+         "mixintypes": {
+            "perks": "override"
+         },	 
+         "perks": [
+            {
+               "name": "i18n(stonehearth:jobs.trapper.trapper_description.level_5_data.perk_000_name)",
+               "id": "trapper_critter_enhancement",
+               "icon": "/stonehearth/jobs/trapper/images/trapperLevel5.png",
+               "level": 5,
+               "description": "i18n(stonehearth_ace:jobs.trapper.trapper_description.level_5_data.perk_000_description)"
             }
          ]
       },

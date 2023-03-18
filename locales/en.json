@@ -4513,7 +4513,11 @@
             }
          }
       },
-      "commands": {
+      "commands": {        
+         "use_seeds": {
+            "display_name": "Use & Learn",
+            "description": "Utilize these seeds to allow your citizens to learn how to grow a new type of plant. This will destroy the item."
+         },
          "allow_hunting": {
             "display_name": "Allow Hunting",
             "description": "This hearthling will ignore any wild game they see. Click to allow them to hunt!"
@@ -4793,6 +4797,10 @@
                "display_name": "Dismantle",
                "description": "Order this object to be dismantled. Some of the materials will be recovered!"
             }
+         },
+         "slaughter_shepherd": {
+            "display_name": "Harvest Animal",
+            "description": "Have your Shepherd harvest this animal for its resources."
          },
          "slaughter": {
             "display_name": "Harvest Wild Animal",
@@ -5075,6 +5083,11 @@
             "display_name": "Slightly Shaken",
             "description": "Courage is mildly reduced, might despair and run away."
          },
+         "starving": {
+            "starving_animal_buff": {
+               "description": "This animal is hungry! Have your Shepherd craft some fodder to feed it."
+            }
+         },
          "stunned": {
             "ice_trap": {
                "display_name": "Frozen!",
@@ -5243,6 +5256,15 @@
          "shepherding": {
             "compassionate_shepherd_buff": {
                "description": "Taken care of by a compassionate Shepherd. This animal will heal over time, produce more resources, and breed faster."
+            },
+            "shepherding_speed_bonus": {
+               "description": "The Shepherd is now more adept at getting the flock to walk a tiny bit faster."
+            },
+            "stenched_shepherd_buff": {
+               "description": "Animals can smell that this Shepherd has slaughtered something recently. This Shepherd won't be able to find new wild animals until the stench fades."
+            },
+            "shepherding_solitary": {
+               "description": "The Shepherd is at peace in nature, and desires conversation less often."
             }
          },
          "warm_belly": {
@@ -8354,6 +8376,12 @@
             "bone_building_parts_name": "Building Parts, Bone Carving",
             "marble_furniture_name": "Furniture & Decoration, Marble",
             "marble_building_parts_name": "Building Parts, Marble",
+            "door_mason_recipe": {
+               "description": "Fit for the workshop of a Master Mason."
+            },
+            "sign_mason_recipe": {
+               "description": "A heavy stone sign, to be displayed outside a Mason's workshop."
+            },
             "na_weaver_spindle_recipe": {
                "recipe_name": "Weaver's Bone Spindle",
                "flavor": "Winter may be late but always arrives, you better thread your wool and your hides! -Northern folk saying"
@@ -8367,6 +8395,10 @@
                "recipe_name": "Bone Carving Studio",
                "description": "Required by the Mason to carve furniture and equipment out of bone material.",
                "flavor": ""
+            },
+            "mason_pedestal_amberstone_recipe": {
+               "description": "Approved by rabbit-folk Masons.",
+               "flavor": "The skill of the Mason can be read from the quality of their worktable"
             },
             "stone_animal_door_recipe": {
                "recipe_name": "Stone Animal Door",
@@ -8414,7 +8446,8 @@
                "flavor": "Unlocked by the 'Clan Amberstone' questline"
             },
             "amberstone_table_recipe": {
-               "recipe_name": "Amberstone Dining Table"
+               "recipe_name": "Amberstone Dining Table",
+               "flavor": "Rabbit Masons will only part with work if they are proud of it"
             },
             "amberstone_lantern_recipe": {
                "recipe_name": "Amberstone Lantern"
@@ -8964,6 +8997,15 @@
                   "flavor": "Welcome to our feast!"
                }
             }
+         },
+         "mason_chisel": {
+            "description": "Tools of the trade for a Mason.",
+            "mason_chisel_talisman": {
+               "description": "Required to promote a hearthling into a Mason."
+            }
+         },
+         "mason_hammer": {
+            "description": "Tools of the trade for a Mason."
          },
          "mason_workbench_bone": {
             "display_name": "Bone Carving Studio",
@@ -10135,6 +10177,9 @@
             "level_2_data": {
                "recipe_unlock_2_description": "The Cook has learned to make slightly fancier recipes and can now build an oven for delicious baked goods and a leavening table to let their doughs rise - a process necessary for baking."
             },
+            "level_3_data": {
+               "perk_000_description": "The Cook can now make more big, satisfying meat dishes, along with a crusty, savory pot pie."
+            },
             "level_4_data": {
                "ornate_perk_name": "Healthier Diets",
                "ornate_perk_description": "The Cook has mastered the abilities necessary to create more diverse and specific foods, particularly specific rations for different animals."
@@ -10144,6 +10189,11 @@
                "mastery_description": "From burning sauces to delighting crowds, a long journey has brought the Cook to the mastery of their craft. They now can try the most exotic and amazing recipes known to hearthlings."
             },
             "description": "The art of cooking will provide a diverse menu of hearty or fortifying meals created with resources of many origins like vegetables, meat and foraged goods."
+         },
+         "cook_mill": {
+            "cook_mill_ghost": {
+               "description": "Used by the Cook to grind grains into flour."
+            }
          },
          "cook_workbench_pumpkin": {
             "cook_workbench_pumpkin_ghost": {
@@ -10220,6 +10270,9 @@
             "unlit": {
                "description": "The campfire is fueled but the pottage requires Broth to be started."
             }
+         },
+         "cook_spoon": {
+            "description": "Used by the Cook."
          },
          "cook_ladle": {
             "display_name": "Cook's Ladle",
@@ -10680,7 +10733,8 @@
                "recipe_name": "Woven Floormat"
             },
             "input_bin_amberstone_recipe": {
-               "recipe_name": "Amberstone Supply Basket"
+               "recipe_name": "Amberstone Supply Basket",
+               "flavor": "Would-be crafters of clan amberstone must practice discerning quality stone and cloth for many years before they are allowed near a tool, if ever"
             },
             "amberstone_bed_herbalist_recipe": {
                "recipe_name": "Herbalist Woven Bed",
@@ -10996,10 +11050,22 @@
          "trapper_description": {
             "level_1_data": {
                "perk_001_name": "Fish Trapping",
-               "perk_001_description": "The Trapper is capable of placing and utilizing fish traps for providing your town with fish meat and, sometimes, fish roe."
+               "perk_001_description": "The Trapper is capable of placing and utilizing fish traps for providing your town with fish meat and, sometimes, fish roe.",
+               "perk_000_description": "Long walks have increased the Trapper's foot speed."
+            },
+            "level_2_data": {
+               "perk_000_description": "The Trapper will occasionally choose to turn a particularly fine animal into a pet!",
+               "perk_001_description": "The Trapper now qualifies for advanced jobs. Click the promote command for details."
             },
             "level_3_data": {
                "trapper_level_3_description": "Long practice helps the Trapper salvage more from each animal."
+            },
+            "level_4_data": {
+               "perk_000_description": "The Trapper has become more efficient at packing in the loot.",
+               "perk_001_description": "When downed, the Trapper keeps themselves alive much longer while waiting for rescue"
+            },
+            "level_5_data": {
+               "perk_000_description": "Better trap arming skills increase the Trapper's chance for capturing prey by 25%."
             },
             "level_6_data": {
                "trapper_level_6_description": "The Trapper can now use metal clamp traps to capture big game and also has a thing or two to teach the Engineer about setting traps."
@@ -11008,6 +11074,17 @@
          },
          "fish_trap_ghost": {
             "description": "Must be built by the Trapper before it can be used."
+         },
+         "trapper_buffs": {
+            "speed_1_buff": {
+               "description": "Long walks have increased the Trapper's foot speed."
+            },
+            "survivalist_1_buff": {
+               "description": "The Trapper can stay downed for much longer than most before giving up the ghost."
+            }
+         },
+         "trapper_knife": {
+            "description": "A Trapper's knife"
          }
       },
       "shepherd": {
@@ -11204,15 +11281,16 @@
          "shepherd_description": {
             "level_1_data": {
                "small_animals_name": "Apprentice Animal Tamer",
-               "small_animals_description": "The Shepherd has just started mastering the techniques of animal taming and can only tame small animals."
+               "small_animals_description": "The Shepherd has just started mastering the techniques of animal taming and can only tame small animals.",
+               "perk_000_description": "The Shepherd is now more adept at getting the flock to walk a tiny bit faster."
             },
             "level_2_data": {
-               "perk_000_name": "Job Opportunities",
-               "perk_000_description": "The Shepherd has learned how to wander these lands and tame its animals. Now it's time to learn how to settle down - and work the land itself. See the promotion menu for details."
+               "perk_000_description": "The Shepherd finds comfort in long walks and feeding the animals, making them less likely to stop and converse."
             },
             "level_3_data": {
                "big_animals_name": "Adept Animal Tamer",
-               "big_animals_description": "The Shepherd is now much more experienced with animals and can tame large animals."
+               "big_animals_description": "The Shepherd is now much more experienced with animals and can tame large animals.",
+               "perk_000_description": "The Shepherd's skill produces greater yields in animal products."
             },
             "level_5_data": {
                "exotic_animals_name": "Master Animal Tamer",
@@ -11221,6 +11299,9 @@
             "level_6_data": {
                "level_6_name": "One With the Herd",
                "level_6_description": "Complete mastery of the Shepherd's trade allows them to form a stronger bond with any animal. The positive effects of compassion on animals will last longer and the negative effects of slaughtering will be shorter."
+            },
+            "level_4_data": {
+               "perk_000_description": "Wild animals are more likely to appear whenever the Shepherd is looking for them."
             },
             "description": "Nature-loving loners, Shepherds domesticate gentle animals to care for them, harvest their resources like wool or meat and even process some of them like milk or eggs."
          },
@@ -11270,7 +11351,18 @@
                "perk_001_name": "Mega Crops",
                "perk_001_description": "The Farmer's masterful skills can now occasionally cause a crop to grow much larger and become a mega crop. These rare giant plants will provide extra resources or unique rewards."
             },
-            "description": "Farmers till fields, sow seeds and harvest crops, taming the land to provide a consistent supply of food, ingredients for cooking, fibers and more."
+            "description": "Farmers till fields, sow seeds and harvest crops, taming the land to provide a consistent supply of food, ingredients for cooking, fibers and more.",
+            "level_5_data": {
+               "perk_000_description": "The Farmer can perform amazing acts of arboreal advancement! They can grow trees in Orchards (for fruits or nuts) and Timber Farms (mostly for wood but also for specific seeds like juniper berries or pine cones)."
+            },
+            "level_1_data": {
+               "perk_000_description": "Running fresh food from field to table has increased the Farmer's footspeed."
+            }
+         },
+         "farmer_buffs": {
+            "speed_1_buff": {
+               "description": "Running fresh food from field to table has increased the Farmer's footspeed."
+            }
          },
          "farmer_mega_watermelon_hat": {
             "display_name": "Farmer's Watermelon Cap",
@@ -17422,6 +17514,11 @@
                "description": "Proof that your crafters learned the land and created worthy goods"
             }
          },
+         "wooden_sign_cook": {
+            "wooden_sign_cook_ghost": {
+               "description": "A sign with the mark of the Cook"
+            }
+         },
          "wooden_sign_brewer": {
             "display_name": "Brewer's Sign",
             "description": "A sign with the mark of the Brewer"
@@ -23257,6 +23354,7 @@
                   "create_farm": {
                      "display_name": "Farms",
                      "description": "Create a zone that allows you to grow different things from the ground!",
+                     "required_job_text": "Requires a Farmer",
                      "tip_description": "Right click to exit. Rotate with [str(left_binding)] and [str(right_binding)] keys",
                      "create_field_farm": {
                         "display_name": "Farm Field",
@@ -23288,6 +23386,14 @@
                         "description": "Place a farm on grass or dirt that can grow beautiful flowers. These can NOT be harvested.",
                         "required_ability_text": "Your town has not yet unlocked this farm type."
                      }
+                  },
+                  "create_trapping_grounds": {
+                     "description": "Place traps to capture different kinds of critters.",
+                     "required_job_text": "Requires a Trapper"
+                  },
+                  "create_pasture": {
+                     "description": "The Shepherd will bring animals here to graze.",
+                     "required_job_text": "Requires a Shepherd"
                   }
                }
             }
@@ -24137,6 +24243,12 @@
       },
       "data": {
          "tooltips": {
+            "compassion": {
+               "bullet_points": {
+                  "000": "Determines maximum Trapper pet count",
+                  "001": "Increases Shepherd animal happiness"
+               }
+            },
             "curiosity": {
                "bullet_points": {
                   "000": "The value itself represents a bonus percentage added over every experience gain."

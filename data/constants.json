@@ -19,11 +19,11 @@
             "plant_light_affinity": "HIGH"
          },
          "temperate_tree_easy": {
-            "plant_water_affinity": "VERY_LOW",
+            "plant_water_affinity": "IRRELEVANT",
             "plant_light_affinity": "HIGH"
          },
          "temperate_tree_complex": {
-            "plant_water_affinity": "LOW",
+            "plant_water_affinity": "BASIC",
             "plant_light_affinity": "HIGH"
          },
          "desert_staple": {
@@ -43,11 +43,11 @@
             "plant_light_affinity": "EXTREME"
          },
 			"desert_tree_easy": {
-            "plant_water_affinity": "VERY_LOW",
-            "plant_light_affinity": "VERY_HIGH"
+            "plant_water_affinity": "IRRELEVANT",
+            "plant_light_affinity": "MEDIUM"
          },
          "desert_tree_complex": {
-            "plant_water_affinity": "LOW",
+            "plant_water_affinity": "IRRELEVANT",
             "plant_light_affinity": "VERY_HIGH"
          },
          "arctic_staple": {
@@ -67,11 +67,11 @@
             "plant_light_affinity": "MEDIUM"
          },
 			"arctic_tree_easy": {
-            "plant_water_affinity": "VERY_LOW",
-            "plant_light_affinity": "MEDIUM"
+            "plant_water_affinity": "IRRELEVANT",
+            "plant_light_affinity": "LOW"
          },
          "arctic_tree_complex": {
-            "plant_water_affinity": "LOW",
+            "plant_water_affinity": "BASIC",
             "plant_light_affinity": "MEDIUM"
          },
          "highlands_staple": {
@@ -91,12 +91,12 @@
             "plant_light_affinity": "HIGH"
          },
 			"highlands_tree_easy": {
-            "plant_water_affinity": "LOW",
-            "plant_light_affinity": "HIGH"
+            "plant_water_affinity": "IRRELEVANT",
+            "plant_light_affinity": "MEDIUM"
          },
          "highlands_tree_complex": {
-            "plant_water_affinity": "SIMPLE",
-            "plant_light_affinity": "HIGH"
+            "plant_water_affinity": "BASIC",
+            "plant_light_affinity": "MEDIUM"
          },
          "tropical_staple": {
             "plant_water_affinity": "IRRELEVANT",
@@ -115,11 +115,11 @@
             "plant_light_affinity": "VERY_HIGH"
          },
 			"tropical_tree_easy": {
-            "plant_water_affinity": "MEDIUM",
+            "plant_water_affinity": "IRRELEVANT",
             "plant_light_affinity": "VERY_HIGH"
          },
          "tropical_tree_complex": {
-            "plant_water_affinity": "HIGH",
+            "plant_water_affinity": "BASIC",
             "plant_light_affinity": "VERY_HIGH"
          },
          "underground_dry": {
@@ -148,6 +148,16 @@
             {
                "min_level": 0,
                "period_multiplier": 1
+            }
+         ],
+         "BASIC": [
+            {
+               "min_level": 0,
+               "period_multiplier": 1
+            },
+            {
+               "min_level": 0.8,
+               "period_multiplier": 0.9
             }
          ],
          "UNDESIRABLE": [

@@ -156,6 +156,7 @@
          "create_farm": {
             "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.display_name)",
             "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.description)",
+            "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.required_job_text)",
             "icon": "/stonehearth/ui/game/start_menu/images/zone_farm.png",
             "hotkey_action": "zone:farms",
             "ensure_parent_menu": false,
@@ -242,9 +243,13 @@
             }
          },
          "create_trapping_grounds": {
+            "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_trapping_grounds.description)",
+            "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_trapping_grounds.required_job_text)",
             "ordinal": 3
          },
          "create_pasture": {
+            "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_pasture.description)",
+            "required_job_text": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_pasture.required_job_text)",
             "ordinal": 4
          }
       }
