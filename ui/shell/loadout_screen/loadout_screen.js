@@ -32,10 +32,6 @@ App.StonehearthLoadoutScreenView = App.View.extend({
       $('#startButton').click(function() {
          self._start();
       });
-
-      $('.quitButton').click(function() {
-         App.stonehearthClient.quitToMainMenu('shellView', this);
-      });
    },
 
    willDestroyElement: function() {
@@ -137,6 +133,12 @@ App.StonehearthLoadoutScreenView = App.View.extend({
          .fail(function(e) {
             console.error('updating options (loadout) failed:', e);
          });
+   },
+
+   actions: {
+      quitToMainMenu: function() {
+         App.stonehearthClient.quitToMainMenu('shellView', this);
+      },
    }
 });
 

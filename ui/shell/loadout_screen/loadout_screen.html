@@ -3,7 +3,9 @@
 
       <div id="title">{{i18n stonehearth:ui.shell.loadout.title}}</div>
 
-      <button class="quitButton">{{i18n stonehearth:ui.game.esc_menu.quit_to_menu}}</button>
+      <a href="#" {{action "quitToMainMenu" target="view"}}>
+         <button class="quitButton">{{i18n stonehearth:ui.game.esc_menu.quit_to_menu}}</button>
+      </a>
 
       <div id="loadoutsList">
          {{#each loadout in view.loadoutsList}}
