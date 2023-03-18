@@ -82,6 +82,17 @@ function GoToSleep:_rethink()
       return
    end
 
+   -- check if we're already sleeping (i.e., just loaded the game)
+   local sleepiness_observer = radiant.entities.get_observer(self._entity, 'stonehearth:observers:sleepiness')
+   if sleepiness_observer:is_asleep() then
+      if not self._ready then
+         self._ready = true
+         self._ai:set_think_output()
+         self._ai:set_utility(1)
+         return
+      end
+   end
+
    -- make sure we're not a pasture animal currently following a shepherd
    local equipment_component = self._entity:get_component('stonehearth:equipment')
    local pasture_tag = equipment_component and equipment_component:has_item_type('stonehearth:pasture_equipment:tag')
