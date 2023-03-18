@@ -1,3 +1,10 @@
+// ACE: CANNOT OVERRIDE THIS FILE
+// for some inexplicable reason, trying to call this function:
+// radiant.call_obj('stonehearth.game_creation', 'new_game_command', 12, 8, seed, self.options, self.analytics)
+// results in this lua error:
+// lua.code | expected at least 6 arguments but received 5
+// even when the js code is all exactly the same, and ACE isn't changing that function
+
 App.StonehearthSelectSettlementView.reopen({
    // ACE: added more detailed seasons descriptions
    _loadSeasons: function () {
@@ -30,4 +37,10 @@ App.StonehearthSelectSettlementView.reopen({
             })
       }
    }.observes('options.biome_src'),
+
+   actions: {
+      quitToMainMenu: function() {
+         App.stonehearthClient.quitToMainMenu('shellView', this);
+      }
+   },
 });

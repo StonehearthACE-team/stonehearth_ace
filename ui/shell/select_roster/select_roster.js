@@ -194,7 +194,7 @@ App.StonehearthSelectRosterView = App.View.extend({
       },
 
       quitToMainMenu: function() {
-         App.stonehearthClient.quitToMainMenu('shellView');
+         App.stonehearthClient.quitToMainMenu('shellView', this);
       },
 
       showLoadRosterDialog: function () {

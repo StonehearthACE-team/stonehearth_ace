@@ -1157,9 +1157,18 @@ var StonehearthClient;
          return this._saveMenu;
       },
 
-      quitToMainMenu: function(viewName) {
+      quitToMainMenu: function(viewName, view) {
          var doQuitToMainMenu = function() {
-            radiant.call('radiant:client:return_to_main_menu');
+            if (viewName == 'shellView') {
+               // don't reload the whole game if we're just coming from the game creation views
+               App.navigate('shell/title');
+               if (view) {
+                  view.destroy();
+               }
+            }
+            else {
+               radiant.call('radiant:client:return_to_main_menu');
+            }
          };
 
          this._showExitConfirmDialog('return_to_menu_dialog', doQuitToMainMenu, viewName);

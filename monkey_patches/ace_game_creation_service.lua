@@ -13,6 +13,17 @@ local AceGameCreationService = class()
 
 local log = radiant.log.create_logger('game_creation_service')
 
+--If the kingdom is not yet selected, select it now
+-- ACE: make sure we change the kingdom if it was set to something else
+-- (if player started creating game, then went back to main menu and started again)
+function AceGameCreationService:select_player_kingdom(session, response, kingdom)
+   validator.expect_argument_types({'string'}, kingdom)
+   validator.expect.string.max_length(kingdom, 256)
+
+   stonehearth.player:add_kingdom(session.player_id, kingdom)
+   return {}
+end
+
 AceGameCreationService._ace_old_on_world_generation_complete = GameCreationService.on_world_generation_complete
 function AceGameCreationService:on_world_generation_complete()
    -- when a game is created, save the version of ace that was used to create it

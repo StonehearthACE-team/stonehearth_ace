@@ -6,10 +6,21 @@ local log = radiant.log.create_logger('player_service')
 --If the kingdom is not already specified for this player, add it now
 AcePlayerService._ace_old_add_kingdom = PlayerService.add_kingdom
 function AcePlayerService:add_kingdom(player_id, kingdom)
-   self:_ace_old_add_kingdom(player_id, kingdom)
+   -- removed the assert
+   local pop = stonehearth.population:get_population(player_id)
+   if pop:get_kingdom() ~= kingdom then
+      pop:debug_set_kingdom(kingdom)
+      pop:on_citizen_count_changed()
 
-   log:debug('triggering "radiant:player_kingdom_assigned" for player_id "%s"', player_id)
-   radiant.events.trigger(radiant, 'radiant:player_kingdom_assigned', {player_id = player_id})
+      self:_set_amenity(pop, player_id, kingdom)
+
+      stonehearth.job:reset_jobs(player_id)
+      self._sv.players[player_id].kingdom = kingdom
+      self.__saved_variables:mark_changed()
+
+      log:debug('triggering "radiant:player_kingdom_assigned" for player_id "%s"', player_id)
+      radiant.events.trigger(radiant, 'radiant:player_kingdom_assigned', {player_id = player_id})
+   end
 end
 
 -- return all populations which are *ACTUALLY* friendly to the specified player
