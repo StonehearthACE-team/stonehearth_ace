@@ -663,6 +663,7 @@ ace_entities.get_appeal_optimized = (function()
    local min = math.min
    local abs = math.abs
    local VITALITY_PLANT_APPEAL_MULTIPLIER = stonehearth.constants.town_progression.bonuses.VITALITY_PLANT_APPEAL_MULTIPLIER
+   local VITALITY_PLANTER_APPEAL_ADDITION = stonehearth.constants.town_progression.bonuses.VITALITY_PLANTER_APPEAL_ADDITION
    local catalog, get_catalog_data
 
    return function(entity, uri, player_id, has_town_vitality_bonus)
@@ -699,8 +700,12 @@ ace_entities.get_appeal_optimized = (function()
       -- we'll need a generic hook, but for now, let's keep it light.
       if has_town_vitality_bonus then
          local catalog_data = get_catalog_data(catalog, uri)
-         if catalog_data and (catalog_data.category == 'plants' or catalog_data.category == 'herbalist_planter') then
-            appeal = floor(appeal * VITALITY_PLANT_APPEAL_MULTIPLIER + 0.5)
+         if catalog_data then
+            if catalog_data.category == 'plants' then
+               appeal = floor(appeal * VITALITY_PLANT_APPEAL_MULTIPLIER + 0.5)
+            elseif catalog_data.category == 'herbalist_planter' then
+               appeal = appeal + VITALITY_PLANTER_APPEAL_ADDITION
+            end
          end
       end
 

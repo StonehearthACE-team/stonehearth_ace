@@ -21,6 +21,8 @@ local Color4 = _radiant.csg.Color4
 local Point3 = _radiant.csg.Point3
 local log = radiant.log.create_logger('appeal_heatmap')
 local get_entity_data = radiant.entities.get_entity_data
+local VITALITY_PLANT_APPEAL_MULTIPLIER = stonehearth.constants.town_progression.bonuses.VITALITY_PLANT_APPEAL_MULTIPLIER
+local VITALITY_PLANTER_APPEAL_ADDITION = stonehearth.constants.town_progression.bonuses.VITALITY_PLANTER_APPEAL_ADDITION
 
 local AppealHeatmap = class()
 
@@ -29,7 +31,6 @@ AppealHeatmap.valuation_mode = 'entity'
 AppealHeatmap.shape = 'circle'
 AppealHeatmap.radius = stonehearth.constants.appeal.APPEAL_SAMPLE_RADIUS
 AppealHeatmap.sample_denominator = stonehearth.constants.appeal.APPEAL_SAMPLE_DENOMINATOR
-AppealHeatmap._vitality_multiplier = stonehearth.constants.town_progression.bonuses.VITALITY_PLANT_APPEAL_MULTIPLIER
 
 function AppealHeatmap:initialize(fn_callback)
    if self:_check_initialized_done(fn_callback) then
@@ -96,8 +97,12 @@ function AppealHeatmap:fn_get_entity_heat_value(entity)
    if self._town and self._town:get_data().town_bonuses['stonehearth:town_bonus:vitality'] then
       local uri = type(entity) == 'string' and entity or entity:get_uri()
       local catalog_data = self._catalog_data[uri]
-      if catalog_data and (catalog_data.category == 'plants' or catalog_data.category == 'herbalist_planter') then
-         appeal = radiant.math.round(appeal * self._vitality_multiplier)
+      if catalog_data then
+         if catalog_data.category == 'plants' then
+            appeal = radiant.math.round(appeal * VITALITY_PLANT_APPEAL_MULTIPLIER)
+         elseif catalog_data.category == 'herbalist_planter' then
+            appeal = appeal + VITALITY_PLANTER_APPEAL_ADDITION
+         end
       end
    end
 
