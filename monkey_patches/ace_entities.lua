@@ -139,23 +139,33 @@ function ace_entities.create_entity(ref, options)
          entity:add_component('render_info'):set_model_variant(variant_to_set or 'default')
       end
 
-      if create_entity_data and create_entity_data.vertical_model_offset_range then
-         local offset = create_entity_data.vertical_model_offset_range
-         local min = offset.min or 0
-         local max = offset.max or 0
-         local mob = entity:add_component('mob')
-         mob:set_model_origin(mob:get_model_origin() + Point3(0, rng:get_real(math.min(min, max), math.max(min, max)), 0))
-      end
+      if create_entity_data then
+         local vertical_model_offset_range = create_entity_data.vertical_model_offset_range
+         if vertical_model_offset_range then
+            local min = vertical_model_offset_range.min or 0
+            local max = vertical_model_offset_range.max or 0
+            local mob = entity:add_component('mob')
+            mob:set_model_origin(mob:get_model_origin() + Point3(0, rng:get_real(math.min(min, max), math.max(min, max)), 0))
+         end
 
-      if create_entity_data and create_entity_data.scale_range then
-         local render_info = entity:add_component('render_info')
-         local base_scale = render_info:get_scale()
-         local scale = create_entity_data.scale_range
-         local min = (scale.min or 1) * base_scale
-         local max = (scale.max or 1) * base_scale
-         -- scale can result in performance issues: try to limit the number of different scales and the length of the decimal
-         local r = rng:get_int(0, 100) * 0.01
-         render_info:set_scale(math.min(min, max) + r * math.abs(min - max))
+         local scale_range = create_entity_data.scale_range
+         if scale_range then
+            local render_info = entity:add_component('render_info')
+            local base_scale = render_info:get_scale()
+            local min = (scale_range.min or 1) * base_scale
+            local max = (scale_range.max or 1) * base_scale
+            -- scale can result in performance issues: try to limit the number of different scales and the length of the decimal
+            local r = rng:get_int(0, 100) * 0.01
+            render_info:set_scale(math.min(min, max) + r * math.abs(min - max))
+         end
+
+         local add_loot_command = create_entity_data.add_loot_command
+         if add_loot_command then
+            if (add_loot_command == 'no_player' and entity:get_player_id() == '') or
+                  (add_loot_command == 'any_npc_player' and stonehearth.player:is_npc(entity)) then
+               entity:add_component('stonehearth:commands'):add_command('stonehearth:commands:loot_item')
+            end
+         end
       end
    end
 

@@ -57,7 +57,8 @@ end
 function EventMeteorShowerWeather:_spawn_meteorite()
    local effect = METEORITE_EFFECTS[rng:get_int(1, #METEORITE_EFFECTS)]
    local meteorite = radiant.entities.create_entity('stonehearth_ace:resources:starsteel:ore', { owner = '' } )
-   meteorite:add_component('stonehearth:commands'):add_command('stonehearth:commands:loot_item')
+   -- no longer necessary to manually add the loot command with its stonehearth_ace:create_entity entity_data
+   --meteorite:add_component('stonehearth:commands'):add_command('stonehearth:commands:loot_item')
    -- Choose a point to hit.
    local terrain_bounds = stonehearth.terrain:get_bounds()
    local x = rng:get_int(terrain_bounds.min.x, terrain_bounds.max.x)
