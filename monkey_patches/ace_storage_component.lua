@@ -37,6 +37,7 @@ function AceStorageComponent:restore()
       stonehearth_ace.universal_storage:queue_items_for_transfer_on_registration(self._entity, self._sv.items)
       self._sv.items = {}
       self._sv.num_items = 0
+      self:_on_contents_changed()
       self._entity:remove_component('stonehearth:storage')
       return
    end
@@ -61,6 +62,7 @@ function AceStorageComponent:activate()
    -- cache those results and update them on individual item removals and additions
    self._storage_filter_cache = {}
    self._num_storage_filter_caches = 0
+   self._location = radiant.entities.get_world_grid_location(self._entity)
 
    self:_ace_old_activate()
    
@@ -113,6 +115,7 @@ function AceStorageComponent:activate()
    end
 
    self._ignore_restock = json.ignore_restock
+   self._drop_all_on_undeploy = json.drop_all_on_undeploy
 
    local bounds = stonehearth.constants.inventory.input_bins
    if self._type == 'input_crate' then
@@ -164,9 +167,30 @@ function AceStorageComponent:destroy()
    self:_ace_old_destroy()
 end
 
-AceStorageComponent._ace_old__on_contents_changed = StorageComponent._on_contents_changed
+function AceStorageComponent:is_undeployable()
+   return self._drop_all_on_undeploy or self:is_empty()
+end
+
+--AceStorageComponent._ace_old__on_contents_changed = StorageComponent._on_contents_changed
 function AceStorageComponent:_on_contents_changed()
-	self:_ace_old__on_contents_changed()
+	-- Crates cannot undeploy when they are carrying stuff.
+   -- ACE: change to check whether it's undeployable rather than empty (e.g., drop_all_on_undeploy)
+   local commands_component = self._entity:get_component('stonehearth:commands')
+   if commands_component then
+      commands_component:set_command_enabled('stonehearth:commands:undeploy_item', self:is_undeployable())
+   end
+
+   if not self:is_empty() then
+      -- If we just got filled with items, but we have an existing undeploy task, drop all of our items
+      -- so that our items don't become inaccessible when we get restocked.
+      local efc = self._entity:get_component('stonehearth:entity_forms')
+      if efc and efc:get_should_restock() then
+         self:drop_all()
+      end
+   end
+
+   -- Crate cancellable status may have changed now
+   self:_update_cancellable()
 
 	if not self:is_empty() and self._sv.filter and self._sv.render_filter_model then
 		if (self._sv.num_items / self._sv.capacity) >= self._sv.render_filter_model_threshold then
@@ -177,6 +201,33 @@ function AceStorageComponent:_on_contents_changed()
 	end
 
    stonehearth_ace.universal_storage:storage_contents_changed(self._entity, self:is_empty())
+end
+
+function AceStorageComponent:_on_parent_changed()
+   local inventory = self._inventory
+   if inventory then
+      local position = radiant.entities.get_world_grid_location(self._entity)
+      --Whether this storage is actually avilable for placing items into it.
+      --Items like undeployed crates are not available.
+      if position then
+         inventory:add_storage(self._entity)
+         self._filter_fn = inventory:set_storage_filter(self._entity, self._sv.filter)
+         self._location = position
+      else
+         if self._drop_all_on_undeploy then
+            self:drop_all(self._location)
+         end
+         inventory:remove_storage(self._entity:get_id())
+      end
+   end
+
+   local parent = radiant.entities.get_parent(self._entity)
+   if parent and self._sv._drop_all_timer then
+      -- Destroy drop all timer now if we are now placed
+      self:_destroy_drop_all_timer()
+   end
+
+   self:_update_cancellable()
 end
 
 function AceStorageComponent:_get_filter_cache(filter_fn)

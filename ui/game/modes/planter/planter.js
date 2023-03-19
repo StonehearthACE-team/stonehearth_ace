@@ -221,14 +221,19 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
    _showPlanterTypePalette: function() {
       if (!this.palette) {
          var planterComponent = this.get('model.stonehearth_ace:herbalist_planter');
-         this.palette = App.gameView.addView(App.AcePlanterTypePaletteView, {
-            planter: planterComponent && planterComponent.__self,
-            planter_view: this,
-            planter_data: this.get('allCropData'),
-            allowed_crops: planterComponent.allowed_crops,
-            uri: this.get('farmer_job_info'),
-            available_seeds: this._availableSeeds
-         });
+         // only show the palette if there's actually a selection that can be made
+         var numAllowed = 0;
+         radiant.each(planterComponent.allowed_crops, (k, v) => numAllowed += (v ? 1 : 0));
+         if (numAllowed > 1) {
+            this.palette = App.gameView.addView(App.AcePlanterTypePaletteView, {
+               planter: planterComponent && planterComponent.__self,
+               planter_view: this,
+               planter_data: this.get('allCropData'),
+               allowed_crops: planterComponent.allowed_crops,
+               uri: this.get('farmer_job_info'),
+               available_seeds: this._availableSeeds
+            });
+         }
       }
    },
 

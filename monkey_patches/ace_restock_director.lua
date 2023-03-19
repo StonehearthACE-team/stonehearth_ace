@@ -468,7 +468,7 @@ function AceRestockDirector:_make_is_restockable_predicate(allow_stored)
 
       local sc = root_entity:get_component('stonehearth:storage')
       if sc then
-         if not sc:is_empty() then
+         if not sc:is_undeployable() then
             return false
          end
       end

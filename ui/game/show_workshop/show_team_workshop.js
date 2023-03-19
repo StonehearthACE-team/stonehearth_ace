@@ -394,7 +394,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self.$().find('.tooltipstered').tooltipster('destroy');
       App.tooltipHelper.removeDynamicTooltip(self.$('[title]'));
       self.$('#craftButton').off('mouseenter mouseleave hover');
-      self.$('#searchInput').off('keyup');
+      self.$('#searchInput').off('keydown keyup');
       this.makeSortable(self.$('#orders, #garbageList'), 'destroy');
       this.makeSortable(self.$('#orderListContainer table'), 'destroy');
       self.$('#orders, #garbageList').enableSelection();
@@ -849,13 +849,24 @@ App.StonehearthTeamCrafterView = App.View.extend({
       });   
 
       // Perform filter after keyup to ensure that key has already been applied
-      self.$('#searchInput').keyup(function (e) {
+      self.searchInput = self.$('#searchInput');
+      self.searchInput.keydown(function (e) {
+         if (e.key == 'Escape') {
+            e.stopPropagation();
+         }
+      });
+      self.searchInput.keyup(function (e) {
          var searchTitle = self.get('searchTitle');
          var searchDescription = self.get('searchDescription');
          var searchIngredients = self.get('searchIngredients');
          // if not searching for anything, just cancel
          if (!searchTitle && !searchDescription && !searchIngredients) {
             return;
+         }
+
+         if (e.key == 'Escape') {
+            self.searchInput.val('');
+            e.stopPropagation();
          }
 
          var search = $(this).val().toLowerCase();
@@ -888,8 +899,12 @@ App.StonehearthTeamCrafterView = App.View.extend({
                }
             })
          }
+
+         if (e.key == 'Enter' || e.key == 'Escape') {
+            self.searchInput.blur();
+         }
       });
-      self.$('#searchInput').keyup();
+      self.searchInput.keyup();
       
       // when it has focus, show the extra settings
       self._timeoutID = null;

@@ -1,5 +1,6 @@
 local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 local rng = _radiant.math.get_default_rng()
+local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local game_master_lib = require 'stonehearth.lib.game_master.game_master_lib'
 
 local ReturningTrader = require 'stonehearth.services.server.game_master.controllers.script_encounters.returning_trader_script'
@@ -186,6 +187,26 @@ function AceReturningTrader:_try_reserving_item(reserved, id, item)
    end
 end
 
+function AceReturningTrader:_get_item_resale_value(item)
+   -- don't worry about cunning town bonus here, or who's "selling" to whom, just use the raw value
+   return radiant.entities.get_net_worth(entity_forms.get_root_entity(item) or item) or 0
+end
+
+--TODO: instead of doing this, the trader should pick them up and haul them off
+function AceReturningTrader:_take_items()
+   -- ACE: calculate total value of items so trade gold earned/spent can be adjusted
+   local total_gold = 0
+   for i, item in ipairs(self._sv.leased_items) do
+      total_gold = total_gold + self:_get_item_resale_value(item)
+      stonehearth.ai:release_ai_lease(item, self._sv.caravan_entity)
+      radiant.entities.kill_entity(item)
+   end
+   self._sv.leased_items = {}
+
+   -- "earned" because we "sold" these items
+   stonehearth.inventory:get_inventory(self._sv._player_id):add_trade_gold_earned(total_gold)
+end
+
 function AceReturningTrader:_accept_trade()
    if self._sv._quest_storage then
       -- make sure they don't bring more items here since we have all we need
@@ -216,7 +237,18 @@ function AceReturningTrader:_accept_trade()
          spill_fail_items = true,
          require_matching_filter_override = true,
       }
-      radiant.entities.output_items(uris, drop_origin, 1, 3, options)
+      local items = radiant.entities.output_items(uris, drop_origin, 1, 3, options)
+      -- ACE: calculate total value of items so trade gold earned/spent can be adjusted
+      local total_gold = 0
+      for _, item in pairs(items.succeeded) do
+         total_gold = total_gold + self:_get_item_resale_value(item)
+      end
+      for _, item in pairs(items.spilled) do
+         total_gold = total_gold + self:_get_item_resale_value(item)
+      end
+
+      -- "spent" because we "bought" these items
+      stonehearth.inventory:get_inventory(self._sv._player_id):add_trade_gold_spent(total_gold)
    end
 end
 
