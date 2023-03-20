@@ -132,10 +132,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
       // ACE: track the individual crafters that are part of this crafting view
       "members": {
          "*": {
-            "stonehearth:job": {
-               "curr_job_controller": {}
-            },
-            "stonehearth:unit_info": {}
+            'stonehearth:job': {},
+            "stonehearth:unit_info": {},
          }
       }
    },
@@ -368,6 +366,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var categoryMember = member.categoryMembers[category];
             if (categoryMember) {
                Ember.set(categoryMember, 'disabled', disable);
+               //self._updateDetailedOrderList();
             }
          }
       });
@@ -386,6 +385,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       App.stonehearth.showTeamWorkshopView = null;
+      this._destroyCrafterTraces();
       this._super();
    },
 
@@ -420,6 +420,24 @@ App.StonehearthTeamCrafterView = App.View.extend({
       this._super();
    },
 
+   _destroyCrafterTraces: function(exceptTheseCrafters) {
+      var keptTraces = {};
+      var tracesRemoved = false;
+      if (this._crafterTraces) {
+         radiant.each(this._crafterTraces, function(id, trace) {
+            if (exceptTheseCrafters && exceptTheseCrafters[id] != null) {
+               keptTraces[id] = trace;
+            }
+            else {
+               trace.destroy();
+               tracesRemoved = true;
+            }
+         });
+      }
+      this._crafterTraces = keptTraces;
+      return tracesRemoved;
+   },
+
    getOrderList: function(){
       return this.get('model.order_list').__self;
    },
@@ -431,38 +449,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
          return;
       }
 
-      var members = this.get('model.members');
-      var memberLookup = {};
-      var memberArray = [];
-      radiant.each(members, function(id, member) {
-         var job = member['stonehearth:job'];
-         var jobController = job && job.curr_job_controller;
-         if (jobController) {
-            var name = member['stonehearth:unit_info'].custom_name;
-            var level = jobController.last_gained_lv;
-            var disabledCategories = jobController.disabled_crafting_categories;
-
-            var memberStruct = {
-               objectRef: member.__self,
-               id: id,
-               name: name,
-               level: level,
-               disabledCategories: disabledCategories,
-               categoryMembers: {},
-            };
-            memberArray.push(memberStruct);
-            memberLookup[id] = memberStruct;
-         }
-      });
-
-      self._memberLookup = memberLookup;
-      // sort first by level, then by entity id
-      // they're both numeric, and 0 equates to false, so we can do it with one expression
-      memberArray.sort((a, b) => (a.level - b.level) || (a.id - b.id));
-
+      var memberArray = self._memberArray || [];
       var recipes = this.get('model.recipe_list');
       var recipe_categories = [];
       self.allRecipes = {};
+      self.allCategories = {};
 
       var manuallyUnlockedRecipes = self.get('model.manually_unlocked');
       var highestLevel = self.get('model.highest_level');
@@ -527,6 +518,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
                members: categoryMembers,
             };
             recipe_categories.push(ui_category)
+            self.allCategories[category_id] = {
+               display_name: category.name,
+            }
          }
       });
 
@@ -542,7 +536,77 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       self.set('recipes', recipe_categories);
-   }.observes('model.recipe_list', 'model.members'),
+   }.observes('model.recipe_list'),
+
+   _updateMembers: function() {
+      var self = this;
+      var members = this.get('model.members');
+      var memberArray = [];
+
+      var memberLookup = self._memberLookup;
+      if (!memberLookup) {
+         memberLookup = {};
+         self._memberLookup = memberLookup;
+      }
+
+      self._destroyCrafterTraces(members);
+
+      if (members) {
+         radiant.each(members, function(id, member) {
+            // the individual members need to be traced to track their disabled categories
+            if (self._crafterTraces[id] != null) {
+               
+            }
+            else {
+               var name = member['stonehearth:unit_info'].custom_name;
+
+               var memberStruct = {
+                  objectRef: member.__self,
+                  id: id,
+                  name: name,
+                  level: 0,
+                  disabledCategories: {},
+                  categoryMembers: {},
+               };
+               memberArray.push(memberStruct);
+               memberLookup[id] = memberStruct;
+
+               self._crafterTraces[id] = new StonehearthDataTrace(member['stonehearth:job'].curr_job_controller, {})
+                  .progress(function (response) {
+                     if (self.isDestroyed || self.isDestroying) {
+                        return;
+                     }
+                     
+                     var m = self._memberLookup[id];
+                     if (m) {
+                        var jobController = response;
+                        if (jobController) {
+                           var level = jobController.last_gained_lv;
+                           var disabledCategories = jobController.disabled_crafting_categories;
+                           if (level != m.level || !stonehearth_ace.shallowAreEqual(disabledCategories, m.disabledCategories)) {
+                              m.level = level;
+                              m.disabledCategories = disabledCategories;
+                              self._membersUpdated();
+                           }
+                        }
+                     }
+                  });
+            }
+         });
+      }
+
+      self._memberArray = memberArray;
+      self._memberLookup = memberLookup;
+   }.observes('model.members'),
+
+   _membersUpdated: function () {
+      var self = this;
+      // sort first by level, then by entity id
+      // they're both numeric, and 0 equates to false, so we can do it with one expression
+      self._memberArray.sort((a, b) => (a.level - b.level) || (a.id - b.id));
+      self._buildRecipeArray();
+      self._updateDetailedOrderList();
+   },
 
    // Go through recipes displayed and update based on whether recipe is now craftable or not
    _updateCraftableRecipes: function() {
@@ -1213,10 +1277,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
             failedRequirements = self._calculate_failed_requirements(recipe);
          }
          var currentText = orderListRow.find('.orderListRowCraftingStatus').text();
+         if (failedRequirements != currentText) {
+            orderListRow.find('.orderListRowCraftingStatus').html(failedRequirements);
+         }
          if (failedRequirements != "") {
-            if (failedRequirements != currentText) {
-               orderListRow.find('.orderListRowCraftingStatus').html(failedRequirements);
-            }
             //display a badge on the RHS order list also
             $issueIcon.show();
          } else {
@@ -1273,6 +1337,27 @@ App.StonehearthTeamCrafterView = App.View.extend({
                               i18n.t(self.get('model.class_name')) +
                               i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level') +
                               recipe.level_requirement + '<br>';
+      }
+      else {
+         // check if the are no crafters of the appropriate level *who have the category enabled*
+         var members = self._memberArray || [];
+         var canCraft = false;
+         for (var i = 0; i < members.length; i++) {
+            if (members[i].level >= recipe.level_requirement && !members[i].disabledCategories[recipe.category]) {
+               canCraft = true;
+               break;
+            }
+         }
+
+         if (!canCraft) {
+            var category = self.allCategories[recipe.category];
+            requirementsString = requirementsString +
+                              i18n.t('stonehearth_ace:ui.game.show_workshop.category_level_requirement_needed', {
+                                 category: category.display_name,
+                                 class: self.get('model.class_name'),
+                                 level: recipe.level_requirement || 1,
+                              }) + '<br>';
+         }
       }
 
       //if they have missing ingredients, list those here

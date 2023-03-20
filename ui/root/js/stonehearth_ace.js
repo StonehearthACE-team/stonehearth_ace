@@ -4,6 +4,24 @@ var stonehearth_ace = {
    _fence_mode: {},
    _storageFilterPresets: {},
 
+   // specifically used for comparing objects/tables
+   shallowAreEqual: function(a, b) {
+      var equal = true;
+      var size = 0;
+      radiant.each(a, function(k, v) {
+         size++;
+         if (equal) {
+            equal = b[k] === v;
+         } else { return; }
+      });
+      if (equal) {
+         var size2 = 0;
+         radiant.each(b, () => size2++);
+         return size == size2;
+      }
+      return false;
+   },
+
    mergeInto: function(to_obj, from_obj) {
       radiant.each(from_obj, function(name, data) {
          if (Array.isArray(to_obj[name]) && Array.isArray(data)) {
