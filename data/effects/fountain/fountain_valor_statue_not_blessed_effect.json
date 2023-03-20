@@ -1,0 +1,25 @@
+{
+   "type": "effect",
+   "tracks": {
+      "bubbles_base": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/valor_statue/shrine.valor_statue.bubbles_base.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.0, "y": 0.6, "z": 0.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "bubbles_sword": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/valor_statue/shrine.valor_statue.bubbles_sword.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.0, "y": 2.2, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

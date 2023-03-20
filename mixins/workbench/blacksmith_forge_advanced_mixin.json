@@ -44,6 +44,7 @@
       "stonehearth:storage": {
          "type": "input_crate",
          "allow_default": false,
+         "drop_all_on_undeploy": true,
          "priority": 3,
          "capacity": 8,
          "filter_list": "stonehearth_ace:ui:workbench_fuel:good_grade:filters",

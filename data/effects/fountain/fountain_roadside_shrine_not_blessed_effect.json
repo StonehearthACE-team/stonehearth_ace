@@ -1,0 +1,45 @@
+{
+   "type": "effect",
+   "tracks": {
+      "fountain_roadside_shrine_standard": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/roadside_shrine/shrine.roadside_shrine.standard.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.1, "y": 6.2, "z": -0.1,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "shape": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/roadside_shrine/shrine.roadside_shrine.shape.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.1, "y": 6.2, "z": -0.1,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "fountain_roadside_shrine_splash": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/roadside_shrine/shrine.roadside_shrine.splash_outer.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.0, "y": 1, "z": 0.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "fountain_roadside_shrine_splash_add": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/roadside_shrine/shrine.roadside_shrine.splash_add.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.0, "y": 1, "z": 0.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

@@ -1,0 +1,51 @@
+{
+   "type": "effect",
+   "tracks": {
+      "base_dark": {
+         "type": "cubemitter",
+         "cubemitter": "/northern_alliance/data/horde/particles/shrine/shrine_wolf/shrine_wolf.base_dark.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 2.15, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base_bubbles": {
+         "type": "cubemitter",
+         "cubemitter": "/northern_alliance/data/horde/particles/shrine/shrine_wolf/shrine_wolf.base_bubbles.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "ring": {
+         "type": "cubemitter",
+         "cubemitter": "/northern_alliance/data/horde/particles/shrine/shrine_wolf/shrine_wolf.ring.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.05, "y": 2.15, "z": 0.05,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "embers": {
+         "type": "cubemitter",
+         "cubemitter": "/northern_alliance/data/horde/particles/shrine/shrine_wolf/shrine_wolf.embers.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 2.15, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "light_main": {
+         "type": "light",
+         "light": "/northern_alliance/data/horde/animatedlights/shrine/shrine.wolf.soft.animatedlight.json",
+         "transforms": { "x": 0.2, "y": 9, "z": -2 },
+         "shadows": true
+      }
+   }
+}

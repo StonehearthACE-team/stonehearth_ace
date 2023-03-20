@@ -1,0 +1,75 @@
+{
+   "type": "effect",
+   "tracks": {
+      "bubbles_base": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/craftsman_statue/shrine.craftsman_statue.bubbles_base.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.0, "y": 0.4, "z": 0.0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "bubbles_top": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/craftsman_statue/shrine.craftsman_statue.bubbles_top.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.1, "y": 2, "z": 0.1,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "spray_top": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/craftsman_statue/shrine.craftsman_statue.spray_top.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.1, "y": 2, "z": 0.1,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "top_falls1": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/craftsman_statue/shrine.craftsman_statue.falls.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.1, "y": 2, "z": 0.1,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "top_falls2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/craftsman_statue/shrine.craftsman_statue.falls90.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.1, "y": 2, "z": 0.1,
+            "rx": 0,
+            "ry": 90,
+            "rz": 0
+         }
+      },
+      "top_falls3": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/craftsman_statue/shrine.craftsman_statue.falls.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.1, "y": 2, "z": 0.1,
+            "rx": 0,
+            "ry": 180,
+            "rz": 0
+         }
+      },
+      "top_falls4": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/shrine/craftsman_statue/shrine.craftsman_statue.falls90.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.1, "y": 2, "z": 0.1,
+            "rx": 0,
+            "ry": 270,
+            "rz": 0
+         }
+      }
+   }
+}
