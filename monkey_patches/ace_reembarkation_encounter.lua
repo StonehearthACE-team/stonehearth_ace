@@ -63,7 +63,7 @@ function AceReembarkationEncounter:_construct_reembark_record(reembark_choices)
    
    local town = stonehearth.town:get_town(self._sv.ctx.player_id)
    local town_name = town:get_town_name()
-   local arrival_year = stonehearth.calendar:get_date_data().year + 1
+   local arrival_year = stonehearth.calendar:get_date_data().year + 1 - stonehearth.calendar:get_start_year()
 
    local reembark_record = { citizens = {}, items = {}, recipes = {}, name = town_name, year = arrival_year }
    -- TODO: Maybe carry over quest flags.

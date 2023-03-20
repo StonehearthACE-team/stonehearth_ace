@@ -31,6 +31,7 @@ local monkey_patches = {
    ace_building_piece_dependencies_job = 'stonehearth.components.building2.plan.jobs.building_piece_dependencies_job',
    ace_building_service = 'stonehearth.services.server.building.building_service',
    ace_bulletin = 'stonehearth.services.server.bulletin_board.bulletin',
+   ace_calendar_call_handler = 'stonehearth.call_handlers.calendar_call_handler',
    ace_calendar_service = 'stonehearth.services.server.calendar.calendar_service',
    ace_carry_block_component = 'stonehearth.components.carry_block.carry_block_component',
    ace_channel_manager = 'stonehearth.services.server.hydrology.channel_manager',

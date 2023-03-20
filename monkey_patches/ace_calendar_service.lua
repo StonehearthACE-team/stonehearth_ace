@@ -3,7 +3,13 @@ local CalendarService = require 'stonehearth.services.server.calendar.calendar_s
 
 local AceCalendarService = class()
 
-function AceCalendarService:set_start_day(day_since_epoch)
+local log = radiant.log.create_logger('calendar_service')
+
+function AceCalendarService:get_start_year()
+   return CONSTANTS.start.year
+end
+
+function AceCalendarService:set_start_day(day_since_epoch, start_year)
    self._sv.absolute_start_time = {}
    local start_date = self:_day_since_epoch_to_date(day_since_epoch)
    for unit, value in pairs(start_date) do
@@ -11,7 +17,7 @@ function AceCalendarService:set_start_day(day_since_epoch)
       self._sv.start_time[unit] = value
       self._sv.absolute_start_time[unit] = value
    end
-   self._sv.date.year = self._sv.date.year + CONSTANTS.start.year
+   self._sv.date.year = self._sv.date.year + CONSTANTS.start.year + (start_year or 0)
    self._sv.start_time.year = self._sv.date.year
    self._sv.absolute_start_time.year = self._sv.date.year
    radiant.events.trigger_async(radiant, 'stonehearth:start_date_set')
