@@ -541,12 +541,14 @@ App.StonehearthTeamCrafterView = App.View.extend({
    _updateMembers: function() {
       var self = this;
       var members = this.get('model.members');
-      var memberArray = [];
 
       var memberLookup = self._memberLookup;
+      var memberArray = self._memberArray;
       if (!memberLookup) {
          memberLookup = {};
          self._memberLookup = memberLookup;
+         memberArray = [];
+         self._memberArray = memberArray;
       }
 
       self._destroyCrafterTraces(members);
@@ -594,9 +596,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
             }
          });
       }
-
-      self._memberArray = memberArray;
-      self._memberLookup = memberLookup;
    }.observes('model.members'),
 
    _membersUpdated: function () {
