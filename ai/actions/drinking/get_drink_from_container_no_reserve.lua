@@ -1,7 +1,7 @@
 local Entity = _radiant.om.Entity
 local GetDrinkFromContainerNoReserve = class()
 
-GetDrinkFromContainerNoReserve.name = 'get drink from container reserve'
+GetDrinkFromContainerNoReserve.name = 'get drink from container no reserve'
 GetDrinkFromContainerNoReserve.does = 'stonehearth_ace:get_drink_from_container'
 GetDrinkFromContainerNoReserve.args = {
    container = Entity,

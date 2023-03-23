@@ -965,9 +965,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
          if (e.key == 'Enter' || e.key == 'Escape') {
             self.searchInput.blur();
+            self.$('#searchContainer').blur();
          }
       });
-      self.searchInput.keyup();
       
       // when it has focus, show the extra settings
       self._timeoutID = null;
@@ -987,7 +987,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             self.set('showSearchSettings', false);
             // related target is always null for some reason, so don't bother with this
             //if (!$.contains(self.$('#searchContainer').get(0), e.relatedTarget)) {}
-         }, 500);
+         }, 100);
       });
 
       App.guiHelper.addTooltip(self.$('#searchTitleDiv'), 'stonehearth_ace:ui.game.show_workshop.search_title_description');
@@ -1027,8 +1027,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
    _focusAndKeyUpSearchInput: function() {
       var self = this;
-      self.$('#searchInput').focus();
-      self.$('#searchInput').keyup();
+      // we only care about this if the search setting checkboxes are visible; otherwise they're just initializing
+      if (self.get('showSearchSettings')) {
+         self.$('#searchInput').focus();
+         self.$('#searchInput').keyup();
+      }
    }.observes('searchTitle', 'searchDescription', 'searchIngredients'),
 
    _recipeMatchesSearch: function(recipeKey, search, searchTitle, searchDescription, searchIngredients) {
