@@ -994,7 +994,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
       App.guiHelper.addTooltip(self.$('#searchDescriptionDiv'), 'stonehearth_ace:ui.game.show_workshop.search_description_description');
       App.guiHelper.addTooltip(self.$('#searchIngredientsDiv'), 'stonehearth_ace:ui.game.show_workshop.search_ingredients_description');
 
-      App.tooltipHelper.createDynamicTooltip(self.$('[title]'));
+      //App.tooltipHelper.createDynamicTooltip(self.$('[title]'));
+      App.guiHelper.createDynamicTooltip(self.$('#recipeItems'), '[data-uri]', function($el) {
+         return App.guiHelper.getUriTooltip($el.attr('data-uri'));
+      });
 
       // Select the first recipe if currentRecipe isn't set.
       // Current recipe can be set by autotest before we reach this point.
@@ -1695,12 +1698,12 @@ App.StonehearthTeamCrafterView = App.View.extend({
          statHtml += self._formattedRecipeProductProperty(recipe, 'appeal', 'appeal');
       }
       if (catalogData['food_satisfaction']) {
-         var level = self._getSatisfactionLevel(App.constants.food_satisfaction_thresholds, catalogData['food_satisfaction']);
+         var level = stonehearth_ace.getSatisfactionLevel(App.constants.food_satisfaction_thresholds, catalogData['food_satisfaction']);
          statHtml += self._formattedRecipeProductProperty(recipe, 'food_servings', 'satisfaction food ' + level);
          //statHtml += `<div class="stat satisfaction">${catalogData['food_servings']} x <img class="food_${level}"/></div>`;
       }
       if (catalogData['drink_satisfaction']) {
-         var level = self._getSatisfactionLevel(App.constants.drink_satisfaction_thresholds, catalogData['drink_satisfaction']);
+         var level = stonehearth_ace.getSatisfactionLevel(App.constants.drink_satisfaction_thresholds, catalogData['drink_satisfaction']);
          statHtml += self._formattedRecipeProductProperty(recipe, 'drink_servings', 'satisfaction drink ' + level);
          //statHtml += `<div class="stat satisfaction">${catalogData['drink_servings']} x <img class="drink_${level}"/></div>`;
       }
@@ -1721,11 +1724,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
          App.tooltipHelper.createDynamicTooltip(self.$('.stat.satisfaction'), function () {
             if (satisfactionLevel == null || servings == null) {
                if (catalogData['food_satisfaction']) {
-                  satisfactionLevel = 'food.' + self._getSatisfactionLevel(App.constants.food_satisfaction_thresholds, catalogData['food_satisfaction']);
+                  satisfactionLevel = 'food.' + stonehearth_ace.getSatisfactionLevel(App.constants.food_satisfaction_thresholds, catalogData['food_satisfaction']);
                   servings = catalogData['food_servings'];
                }
                else if (catalogData['drink_satisfaction']) {
-                  satisfactionLevel = 'drink.' + self._getSatisfactionLevel(App.constants.drink_satisfaction_thresholds, catalogData['drink_satisfaction']);
+                  satisfactionLevel = 'drink.' + stonehearth_ace.getSatisfactionLevel(App.constants.drink_satisfaction_thresholds, catalogData['drink_satisfaction']);
                   servings = catalogData['drink_servings'];
                }
             }
@@ -1734,18 +1737,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
                return i18n.t(`stonehearth_ace:ui.game.unit_frame.satisfaction.${satisfactionLevel}`, {servings: servings});
             }
          })
-      }
-   },
-
-   _getSatisfactionLevel: function(thresholds, val) {
-      if (val >= thresholds.HIGH) {
-         return 'high';
-      }
-      else if (val >= thresholds.AVERAGE) {
-         return 'average';
-      }
-      else {
-         return 'low';
       }
    },
 

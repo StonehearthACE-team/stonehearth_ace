@@ -164,5 +164,10 @@ App.StonehearthBaseBulletinDialog = App.View.extend({
       App.guiHelper.createDynamicTooltip(self.$('.window'), '.numCached', function() {
          return $(App.tooltipHelper.createTooltip(null, i18n.t(`stonehearth_ace:ui.game.bulletin.generic.num_cached`)));
       });
+      App.guiHelper.createDynamicTooltip(self.$('.window'), '.uriEntry', function($el) {
+         // generate a catalog data based tooltip from this uri
+         var uri = $el.attr('data-uri');
+         return uri && App.guiHelper.getUriTooltip(uri);
+      });
    },
 });

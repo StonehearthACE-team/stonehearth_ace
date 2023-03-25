@@ -97,13 +97,14 @@
                {{#each recipe_category.recipes}}
                   <div
                      {{bind-attr
+                        data-uri=this.product_uri
                         title=this.display_name
                         class=":item :uisounds this.is_locked:is-locked this.is_hidden:is-hidden this.is_workshop_selected:is-workshop-selected"
                         recipe_key=this.recipe_key
                         is_craftable=this.is_craftable
                      }}
                      {{action "select" this target="view"}}>
-                     <img {{bind-attr src="this.portrait"}} {{bind-attr title = "recipe.display_name"}}/>
+                     <img {{bind-attr src="this.portrait"}}/>
                   </div>
                {{/each}}
             </div>

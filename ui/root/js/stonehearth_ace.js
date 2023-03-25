@@ -304,6 +304,18 @@ var stonehearth_ace = {
 
    getMerchantData: function(merchantId) {
       return stonehearth_ace._mercantile_data && stonehearth_ace._mercantile_data.merchants[merchantId];
+   },
+
+   getSatisfactionLevel: function(thresholds, val) {
+      if (val >= thresholds.HIGH) {
+         return 'high';
+      }
+      else if (val >= thresholds.AVERAGE) {
+         return 'average';
+      }
+      else {
+         return 'low';
+      }
    }
 }
 

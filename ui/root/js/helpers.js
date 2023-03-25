@@ -253,7 +253,7 @@ Ember.Handlebars.registerBoundHelper('formatted_i18n_key', function(key, options
       return null;
    }
    var attrs = options.hash;
-   attrs.escapeHTML = true;
+   attrs.escapeHTML = false;
    var result = i18n.t(key, attrs);
    return new Ember.Handlebars.SafeString(result);
 });

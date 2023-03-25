@@ -1,4 +1,5 @@
 App.guiHelper = {
+   _uriTooltips: {},
 
    // see _createListValueDiv for value expectations
    // for creating just the list without the anchoring element (e.g., to display on right-click), specify an alternateSelector table
@@ -192,6 +193,98 @@ App.guiHelper = {
             $element.tooltipster('destroy');
          }
       });
+   },
+
+   getUriTooltip: function(uri, options) {
+      if (!options && this._uriTooltips[uri]) {
+         return $(this._uriTooltips[uri]);
+      }
+
+      var catalogData = App.catalog.getCatalogData(uri);
+      if (!catalogData) return;
+
+      if (!options) {
+         options = {
+            show_appeal: true,
+            show_net_worth: true,
+         };
+      }
+
+      var title = catalogData.display_name && i18n.t(catalogData.display_name, options);
+      if (options.item_quality && options.item_quality > 1) {
+         title = '<span class="item-tooltip-title item-quality-' + options.item_quality + '">' + title + '</span>';
+      }
+      var description = catalogData.description && `<span class='description'>${i18n.t(catalogData.description, options)}</span>`;
+      var extra = '';
+      var hasDetail = false;
+
+      var appeal = options.appeal || catalogData.appeal;
+      if (options.appeal || (options.show_appeal && appeal)) {
+         extra += `<div class="appeal">${catalogData.appeal}</div>`;
+      }
+
+      var net_worth = options.net_worth || catalogData.net_worth
+      if (options.net_worth || (options.show_net_worth && net_worth)) {
+         extra += `<div class="netWorth">${net_worth}</div>`;
+      }
+
+      var detail = '<div class="details">';
+      // TODO: show buffs? quality?
+
+      var satisfactionLevel, servings;
+      if (satisfactionLevel == null || servings == null) {
+         if (catalogData.food_satisfaction) {
+            satisfactionLevel = 'food.' + stonehearth_ace.getSatisfactionLevel(App.constants.food_satisfaction_thresholds, catalogData.food_satisfaction);
+            servings = catalogData.food_servings;
+         }
+         else if (catalogData.drink_satisfaction) {
+            satisfactionLevel = 'drink.' + stonehearth_ace.getSatisfactionLevel(App.constants.drink_satisfaction_thresholds, catalogData.drink_satisfaction);
+            servings = catalogData.drink_servings;
+         }
+      }
+
+      if (satisfactionLevel && servings) {
+         hasDetail = true;
+         detail += '<div class="stat">' +
+                  i18n.t(`stonehearth_ace:ui.game.generic_tooltips.satisfaction.${satisfactionLevel}`, {servings: servings}) +
+                  '</div>';
+      }
+
+      var equipmentRequirements = '';
+      if (catalogData.equipment_roles) {
+         var allowedClasses = stonehearth_ace.findRelevantClassesArray(catalogData.equipment_roles);
+         equipmentRequirements += i18n.t('stonehearth_ace:ui.game.generic_tooltips.equipment_description',
+                                 { class_list: radiant.getClassString(allowedClasses) });
+         if (catalogData.equipment_required_level) {
+            equipmentRequirements += i18n.t('stonehearth_ace:ui.game.generic_tooltips.level_description', { level_req: catalogData.equipment_required_level });
+         }
+      }
+      if (catalogData.equipment_types) {
+         var equipmentTypes = stonehearth_ace.getEquipmentTypesArray(catalogData.equipment_types);
+         equipmentRequirements += '<br>' + i18n.t('stonehearth_ace:ui.game.generic_tooltips.equipment_types_description',
+                                          { i18n_data: { types: stonehearth_ace.getEquipmentTypesString(equipmentTypes) } });
+      }
+
+      if (equipmentRequirements != '') {
+         hasDetail = true;
+         detail += `<div class='stat'>${equipmentRequirements}</div>`;
+      }
+
+      if (catalogData.combat_damage) {
+         hasDetail = true;
+         detail += `<div class="stat">${i18n.t('stonehearth_ace:ui.game.generic_tooltips.damage', {damage: catalogData.combat_damage})}</div>`;
+      }
+      if (catalogData.combat_armor) {
+         hasDetail = true;
+         detail += `<div class="stat">${i18n.t('stonehearth_ace:ui.game.generic_tooltips.armor', {armor: catalogData.combat_armor})}</div>`;
+      }
+
+      detail += '</div>';
+
+      var tooltip = App.tooltipHelper.createTooltip(title, description + (hasDetail ? detail : ''), extra == '' ? null : extra);
+      this._uriTooltips[uri] = tooltip;
+
+      return $(tooltip);
    }
 };
 

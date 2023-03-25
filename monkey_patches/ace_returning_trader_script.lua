@@ -77,6 +77,18 @@ function AceReturningTrader:_destroy_node()
    end
 end
 
+-- ACE: insert an icon, if available, and wrap in a class
+function AceReturningTrader:_get_user_visible_name(uri)
+   local item_data = stonehearth.catalog:get_catalog_data(uri)
+   if item_data then
+      local name = item_data.display_name
+      if item_data.icon then
+         name = '<img class="entityIcon" src="' .. item_data.icon .. '"/>' .. name
+      end
+      return '<span class="uriEntry" data-uri="' .. uri .. '">' .. name .. '</span>'
+   end
+end
+
 --- Returns the URI of the desired item, and the number of desired items
 function AceReturningTrader:_get_desired_items()
    local inventory = stonehearth.inventory:get_inventory(self._sv._player_id)
