@@ -13,10 +13,12 @@
             padding: 2px;
          }
 
-         .higherPrice, .max {
+         .higherValue, .max {
+            .bold;
             color: @greenFontColor;
          }
-         .lowerPrice, .limited {
+         .lowerValue, .limited {
+            .bold;
             color: @warningFontColor;
          }
 
@@ -44,54 +46,72 @@
             color: rgb(255, 238, 165);
          }
 
-         .description {
+         .combatValue {
+            color: #02ff39;
+         }
+
+         .description.faded {
             color: rgba(255, 255, 255, 0.6);
          }
 
          .details {
-            padding: 6px;
+            padding: 6px 0px 0px 6px;
             color:rgba(255, 255, 255, 0.85);
          }
 
          .stat {
-            padding-top: 5px;
-         }
+            //padding-top: 5px;
+            line-height: 23px;
 
-         .netWorth {
-            display: inline-block;
-            color: #dad5bb;
-            text-shadow: none;
-            font-size: 17px;
-            font-family: 'GroboldRegular';
-            width: auto;
-            height: auto;
-            padding: 7px 2px 4px 33px;
-            background-image: url(images/stat_net_worth_icon.png);
-            background-repeat: no-repeat;
-            background-position: 6px 3px;
-            line-height: 22px;
-            margin-top: -10px;
-         }
+            .header {
+               margin-left: 5px;
+		         margin-right: 6px;
+            }
+
+            .spacer {
+               margin-right: 20px;
+            }
+
+            .imgHeader {
+               display: inline-block;
+               vertical-align: -12px;
+               padding: 2px 4px 2px 0px;
+               height: 30px;
+            }
+
+            .netWorth {
+               content: url(/stonehearth_ace/ui/images/stat_net_worth_icon.png);
+            }
+      
+            .appeal {
+               content: url(/stonehearth_ace/ui/images/stat_appeal_icon.png);
+            }
    
-         .appeal {
-            display: inline-block;
-            color: #dacabb;
-            text-shadow: none;
-            font-size: 17px;
-            font-family: 'GroboldRegular';
-            width: auto;
-            height: auto;
-            padding: 7px 2px 4px 33px;
-            background-image: url(images/stat_appeal_icon.png);
-            background-repeat: no-repeat;
-            background-position: 6px 3px;
-            line-height: 22px;
-            margin-top: -10px;
+            .satisfaction.food.high {
+               content: url(/stonehearth_ace/ui/images/satisfaction/food_satisfaction_high.png);
+            }
+            .satisfaction.food.average {
+               content: url(/stonehearth_ace/ui/images/satisfaction/food_satisfaction_average.png);
+            }
+            .satisfaction.food.low {
+               content: url(/stonehearth_ace/ui/images/satisfaction/food_satisfaction_low.png);
+            }
+            .satisfaction.drink.high {
+               content: url(/stonehearth_ace/ui/images/satisfaction/drink_satisfaction_high.png);
+            }
+            .satisfaction.drink.average {
+               content: url(/stonehearth_ace/ui/images/satisfaction/drink_satisfaction_average.png);
+            }
+            .satisfaction.drink.low {
+               content: url(/stonehearth_ace/ui/images/satisfaction/drink_satisfaction_low.png);
+            }
          }
 		}
 
 		.bold {
-         font-size: 15px;
+         :not(.wantedItem) {
+            font-size: 15px;
+         }
 			font-weight: bold;
 		}
    }

@@ -995,8 +995,15 @@ App.StonehearthTeamCrafterView = App.View.extend({
       App.guiHelper.addTooltip(self.$('#searchIngredientsDiv'), 'stonehearth_ace:ui.game.show_workshop.search_ingredients_description');
 
       //App.tooltipHelper.createDynamicTooltip(self.$('[title]'));
-      App.guiHelper.createDynamicTooltip(self.$('#recipeItems'), '[data-uri]', function($el) {
-         return App.guiHelper.getUriTooltip($el.attr('data-uri'));
+      App.guiHelper.createDynamicTooltip(self.$('#recipeItems'), '[recipe_key]', function($el) {
+         var key = $el.attr('recipe_key');
+         var recipe = self._getOrCalculateRecipeData(key);
+         var options = {
+            recipe_key: key,
+            display_name: recipe.display_name,
+            description: recipe.description,
+         };
+         return $(App.guiHelper.createUriTooltip(recipe.product_uri, options));
       });
 
       // Select the first recipe if currentRecipe isn't set.

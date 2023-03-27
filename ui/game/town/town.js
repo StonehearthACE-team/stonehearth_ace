@@ -266,7 +266,10 @@ App.StonehearthTownView = App.View.extend({
             } else {
                inventoryItems[key].count = inventoryItems[key].count + displayedCount;
             }
-            if (isIconic) {
+
+            // don't show undeployed tip for equipment
+            var catalogData = App.catalog.getCatalogData(rootUri) || {};
+            if (isIconic && !catalogData.equipment_roles) {
                var numUndeployed = item.count;
                // Add an additional tip to the item for the number of undeployed items in the world.
                inventoryItems[key].additionalTip = i18n.t('stonehearth:ui.game.entities.tooltip_num_undeployed', { num_undeployed: numUndeployed });

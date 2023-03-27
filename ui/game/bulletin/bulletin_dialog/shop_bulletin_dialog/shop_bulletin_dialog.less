@@ -55,25 +55,25 @@
                opacity: 1.0;
             }
 
-            &.higherPrice {
+            &.higherValue {
                //background-image: url(../../../item_palette/images/higher_price_bg.png);
                .image {
-                  filter: @higherPriceFilter @higherPriceFilter;
+                  filter: @higherValueFilter @higherValueFilter;
                }
                &:hover:not(.disabled) .image {
-                  filter: brightness(1.4) @higherPriceFilter @higherPriceFilter;
+                  filter: brightness(1.4) @higherValueFilter @higherValueFilter;
                }
                div.factor {
                   color: @greenFontColor;
                }
             }
-            &.lowerPrice {
+            &.lowerValue {
                //background-image: url(../../../item_palette/images/lower_price_bg.png);
                .image {
-                  filter: @lowerPriceFilter @lowerPriceFilter;
+                  filter: @lowerValueFilter @lowerValueFilter;
                }
                &:hover:not(.disabled) .image {
-                  filter: brightness(1.4) @lowerPriceFilter @lowerPriceFilter;
+                  filter: brightness(1.4) @lowerValueFilter @lowerValueFilter;
                }
                div.factor {
                   color: @warningFontColor;
@@ -109,27 +109,27 @@
 }
 
 @dropShadowRadius: 4px;
-@higherPriceShadowColor: rgba(57, 149, 57, 1.0);
-@lowerPriceShadowColor: rgba(235, 76, 54, 1.0);
-@higherPriceFilter: drop-shadow(0 0 @dropShadowRadius @higherPriceShadowColor);
-@lowerPriceFilter: drop-shadow(0 0 @dropShadowRadius @lowerPriceShadowColor);
+@higherValueShadowColor: rgba(57, 149, 57, 1.0);
+@lowerValueShadowColor: rgba(235, 76, 54, 1.0);
+@higherValueFilter: drop-shadow(0 0 @dropShadowRadius @higherValueShadowColor);
+@lowerValueFilter: drop-shadow(0 0 @dropShadowRadius @lowerValueShadowColor);
 
 .shopItem {
-   &.higherPrice {
+   &.higherValue {
       //background-image: url(../../../item_palette/images/higher_price_bg.png);
-      filter: @higherPriceFilter @higherPriceFilter;
+      filter: @higherValueFilter @higherValueFilter;
       &:hover:not(.disabled) {
-         filter: brightness(1.4) @higherPriceFilter @higherPriceFilter;
+         filter: brightness(1.4) @higherValueFilter @higherValueFilter;
       }
       div.cost {
          color: @greenFontColor;
       }
    }
-   &.lowerPrice {
+   &.lowerValue {
       //background-image: url(../../../item_palette/images/lower_price_bg.png);
-      filter: @lowerPriceFilter @lowerPriceFilter;
+      filter: @lowerValueFilter @lowerValueFilter;
       &:hover:not(.disabled) {
-         filter: brightness(1.4) @lowerPriceFilter @lowerPriceFilter;
+         filter: brightness(1.4) @lowerValueFilter @lowerValueFilter;
       }
       div.cost {
          color: @warningFontColor;

@@ -167,7 +167,8 @@ App.StonehearthBaseBulletinDialog = App.View.extend({
       App.guiHelper.createDynamicTooltip(self.$('.window'), '.uriEntry', function($el) {
          // generate a catalog data based tooltip from this uri
          var uri = $el.attr('data-uri');
-         return uri && App.guiHelper.getUriTooltip(uri);
+         var tooltip = uri && App.guiHelper.createUriTooltip(uri);
+         return tooltip && $(tooltip);
       });
    },
 });

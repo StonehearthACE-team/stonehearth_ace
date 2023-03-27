@@ -399,16 +399,16 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       if (priceFactor != 1) {
          itemEl.addClass('wantedItem');
          if (priceFactor > 1) {
-            itemEl.addClass('higherPrice');
+            itemEl.addClass('higherValue');
          }
          else if (priceFactor < 1) {
-            itemEl.addClass('lowerPrice');
+            itemEl.addClass('lowerValue');
          }
       }
       else {
          itemEl.removeClass('wantedItem');
-         itemEl.removeClass('higherPrice');
-         itemEl.removeClass('lowerPrice');
+         itemEl.removeClass('higherValue');
+         itemEl.removeClass('lowerValue');
       }
 
       if (this.options.updateWantedItem) {
@@ -536,10 +536,9 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       this._updateItemTooltip(itemEl, item);
    },
 
-   _geti18nVariables: function(item) {
+   _getTooltipOptions: function(item, cost) {
       var itemSelf = {}
 
-      var uri = this._getUri(item);
       // Only display the stack count for gold in a gold chest.
       var stackCount = 0;
       if (item.items) {
@@ -551,13 +550,36 @@ $.widget( "stonehearth.stonehearthItemPalette", {
          });
       }
 
+      var hasOptions = false;
       if (stackCount > 0) {
          itemSelf['stonehearth:stacks'] = {
-            stacks: stackCount
+            stacks: stackCount,
          };
+         hasOptions = true;
       }
 
-      return {self: itemSelf, allowUntranslated: false};
+      if (item.item_quality && item.item_quality > 1) {
+         hasOptions = true;
+      }
+
+      var uri = this._getUri(item);
+      var catalogData = App.catalog.getCatalogData(uri);
+      if (catalogData) {
+         if (((item.appeal || catalogData.appeal) != catalogData.appeal) ||
+               (((cost || catalogData.net_worth) != catalogData.net_worth))) {
+            hasOptions = true;
+         }
+      }
+
+      if (hasOptions) {
+         return {
+            self: itemSelf,
+            allowUntranslated: false,
+            item_quality: item.item_quality,
+            appeal: item.appeal,
+            net_worth: cost,
+         };
+      }
    },
 
    _debugTooltip: function(item) {
@@ -565,7 +587,6 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       if (item.items) {
          radiant.each(item.items, function(k, v) {
             tooltipString = tooltipString + k + ", ";
-
          });
       }
       return tooltipString;
@@ -584,56 +605,17 @@ $.widget( "stonehearth.stonehearthItemPalette", {
 
       var self = this;
       App.tooltipHelper.createDynamicTooltip(itemEl, function() {
-         var translationVars = self._geti18nVariables(item);
-         var displayNameTranslated = i18n.t(item.display_name, translationVars);
-         if (item.deprecated) {
-            displayNameTranslated = '<span class="item-tooltip-title item-deprecated">' + displayNameTranslated + '</span>';
-         } else if (item.item_quality > 1) {
-            displayNameTranslated = '<span class="item-tooltip-title item-quality-' + item.item_quality + '">' + displayNameTranslated + '</span>';
-         }
-         var description = "";
-         if (item.description) {
-            description = i18n.t(item.description, translationVars);
-         }
+         var cost = itemEl.find('.cost').html();
+         cost = cost && parseInt(cost.slice(-1) == 'g' ? cost.substring(0, cost.length - 1) : cost) || null;
+         var options = self._getTooltipOptions(item, cost);
+         var tooltip = App.guiHelper.createUriTooltip(item.root_uri, options);
 
+         // strip off the last "</div>" so we can add more content to the tooltip
+         tooltip = tooltip.substring(0, tooltip.length - 6);
+
+         var description = '';
          if (debug_itemPaletteShowItemIds) {
-            description = description + '<p>' + self._debugTooltip(item) + '</p>'
-         }
-
-         var entity_data = self._getEntityData(item);
-         var extraTip;
-         if (entity_data) {
-            var combat_info = "";
-
-            var weapon_data = entity_data['stonehearth:combat:weapon_data'];
-            if (weapon_data) {
-               combat_info = combat_info +
-                           '<span id="atkHeader" class="combatHeader">' + i18n.t('stonehearth:ui.game.entities.tooltip_combat_base_damage') + '</span>' +
-                           '<span id="atkValue" class="combatValue">+' + weapon_data.base_damage + '</span>';
-            }
-
-            var armor_data = entity_data['stonehearth:combat:armor_data'];
-            if (armor_data) {
-               combat_info = combat_info +
-                        '<span id="defHeader" class="combatHeader">' + i18n.t('stonehearth:ui.game.entities.tooltip_combat_base_damage_reduction') + '</span>' +
-                        '<span id="defValue" class="combatValue">+' + armor_data.base_damage_reduction + '</span>'
-            }
-
-            if (combat_info != "") {
-               description = description + '<div class="itemCombatData">' + combat_info + "</div>";
-            }
-         }
-
-         var appeal_data = entity_data !== null ? entity_data['stonehearth:appeal'] : (item.appeal ? { 'appeal': item.appeal } : undefined);
-         if (appeal_data) {
-            var appeal = radiant.applyItemQualityBonus('appeal', appeal_data['appeal'], item.item_quality);
-            if (appeal) {  // Ignore zero appeal
-               extraTip = '<div class="item-appeal-tooltip">' + appeal + "</div>";
-            }
-         }
-         
-         if (item.deprecated) {
-            description += '<div class="item-deprecated-tooltip">' + i18n.t('stonehearth:ui.game.entities.tooltip_deprecated') + "</div>";
+            description += '<p>' + self._debugTooltip(item) + '</p>'
          }
 
          if (item.additionalTip) {
@@ -642,19 +624,6 @@ $.widget( "stonehearth.stonehearthItemPalette", {
 
          if (item.unlocks_crop && self._isCropUnlocked(item.unlocks_crop)) {
             description = description + '<div class="itemAdditionalTip">' + i18n.t('stonehearth_ace:ui.game.entities.tooltip_crop_unlocked') + "</div>";
-         }
-
-         if (item.equipment_required_level || item.equipment_roles || item.equipment_types) {
-            var levelDiv = item.equipment_required_level ?
-                  `<div>${i18n.t('stonehearth:ui.game.unit_frame.level')}<span class="required-level"> ${item.equipment_required_level} </span></div>` : '';
-            var rolesDiv = self._getEquipmentRolesDiv(item.equipment_roles);
-            var typesDiv = self._getEquipmentTypesDiv(item.equipment_types);
-            var equipDiv = `<div class="item-equipment-tooltip">${levelDiv}${rolesDiv}${typesDiv}</div>`;
-            
-            // we want to make sure that none of the regular description text overlaps these attributes in the top right
-            // so just enclose the two in separate inline divs
-            //description = `<div class="item-inline-tooltip">${description}</div>${equipDiv}`;
-            extraTip = extraTip ? extraTip + equipDiv : equipDiv;
          }
 
          var wantedItem = self._getBestWantedItem(item.root_uri);
@@ -691,7 +660,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
             }
          }
 
-         var tooltip = App.tooltipHelper.createTooltip(displayNameTranslated, description, extraTip);
+         tooltip += description + '</div>';
          return $(tooltip);
       });
       
@@ -729,13 +698,13 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       return '';
    },
 
-   _getEntityData: function(item) {
-      if (item.canonical_uri && item.canonical_uri.entity_data) {
-         return item.canonical_uri.entity_data;
+   _getCatalogData: function(item) {
+      if (item.canonical_uri) {
+         return App.catalog.getCatalogData(item.canonical_uri);
       }
 
-      if (item.uri.entity_data) {
-         return item.uri.entity_data;
+      if (item.uri) {
+         return App.catalog.getCatalogData(item.uri);
       }
 
       return null;

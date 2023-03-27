@@ -97,7 +97,6 @@
                {{#each recipe_category.recipes}}
                   <div
                      {{bind-attr
-                        data-uri=this.product_uri
                         title=this.display_name
                         class=":item :uisounds this.is_locked:is-locked this.is_hidden:is-hidden this.is_workshop_selected:is-workshop-selected"
                         recipe_key=this.recipe_key

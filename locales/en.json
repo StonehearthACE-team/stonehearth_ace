@@ -23206,36 +23206,33 @@
                "creature_egg": "Creature Eggs"
             },
             "tooltip_crop_unlocked": "You have already unlocked this crop.",
-            "tooltip_wanted_item_higher": "Merchant will pay <span class='higherPrice'>[str(factor)]% more</span> for these!",
-            "tooltip_wanted_item_higher_quantity": "Merchant will pay <span class='higherPrice'>[str(factor)]% more</span> for [str(quantity)] of these!",
-            "tooltip_wanted_item_lower": "Merchant will pay <span class='lowerPrice'>[str(factor)]% less</span> for these!",
-            "tooltip_wanted_item_lower_quantity": "Merchant will pay <span class='lowerPrice'>[str(factor)]% less</span> for [str(quantity)] of these!",
-            "tooltip_unwanted_item": "Merchant already sells these and will pay <span class='lowerPrice'>[str(factor)]% less</span> for them!"
+            "tooltip_equipment_requirement": "Requires:",
+            "tooltip_equipment_type": "Type:",
+            "tooltip_satisfaction": {
+               "drink": {
+                  "high": "<span class='value'>[str(servings)] highly satisfying</span> drink servings",
+                  "average": "<span class='value'>[str(servings)] somewhat satisfying</span> drink servings",
+                  "low": "<span class='value'>[str(servings)] mildly satiating</span> drink servings"
+               },
+               "food": {
+                  "high": "<span class='value'>[str(servings)] very filling</span> meals",
+                  "average": "<span class='value'>[str(servings)] quite filling</span> meals",
+                  "low": "<span class='value'>[str(servings)] meager</span> meals"
+               }
+            },
+            "tooltip_value_modified": "<span class='value'>[str(value)]</span> ([str(unmodified)])",
+            "tooltip_value_unmodified": "<span class='value'>[str(value)]</span>",
+            "tooltip_wanted_item_higher": "Merchant will pay <span class='higherValue'>[str(factor)]% more</span> for these!",
+            "tooltip_wanted_item_higher_quantity": "Merchant will pay <span class='higherValue'>[str(factor)]% more</span> for [str(quantity)] of these!",
+            "tooltip_wanted_item_lower": "Merchant will pay <span class='lowerValue'>[str(factor)]% less</span> for these!",
+            "tooltip_wanted_item_lower_quantity": "Merchant will pay <span class='lowerValue'>[str(factor)]% less</span> for [str(quantity)] of these!",
+            "tooltip_unwanted_item": "Merchant already sells these and will pay <span class='lowerValue'>[str(factor)]% less</span> for them!"
          },
          "custom_tooltips": {
             "mechanical": {
                "attach_to_connector": {
                   "tip_title": "Click on a connector to attach this item",
                   "tip_description": "This item must be placed on a mechanical connector, like a gearbox, axle, or powered mill"
-               }
-            }
-         },
-         "generic_tooltips": {
-            "armor": "DEF: <span class='value'>[str(armor)]</span>",
-            "damage": "ATK: <span class='value'>[str(damage)]</span>",
-            "equipment_description": "Equippable by: <span class='value'>[str(class_list)]</span>",
-            "equipment_types_description": "Type: <span class='value'>[str(i18n_data.types)]</span>",
-            "level_description": "of Level <span class='value'>[str(level_req)]</span>",
-            "satisfaction": {
-               "drink": {
-                  "high": "Provides <span class='value'>[str(servings)] highly satisfying</span> drink servings",
-                  "average": "Provides <span class='value'>[str(servings)] somewhat satisfying</span> drink servings",
-                  "low": "Provides <span class='value'>[str(servings)] mildly satiating</span> drink servings"
-               },
-               "food": {
-                  "high": "Provides <span class='value'>[str(servings)] very filling</span> meals",
-                  "average": "Provides <span class='value'>[str(servings)] quite filling</span> meals",
-                  "low": "Provides <span class='value'>[str(servings)] meager</span> meals"
                }
             }
          },
