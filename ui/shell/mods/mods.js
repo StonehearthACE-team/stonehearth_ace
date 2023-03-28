@@ -141,6 +141,11 @@ App.StonehearthModsView = App.View.extend({
                   }
                   modData.typedId = modData.id + modData.modType;
 
+                  // override default status for RC and NA to mark them as "required"
+                  if (modData.status == 0 && (key == 'rayyas_children' || key == 'northern_alliance')) {
+                     modData.status = self.mod_status.REQUIRED;
+                  }
+
                   if (modData.status != 0) {
                      modData.unavailable = true;
                      switch(modData.status) {
