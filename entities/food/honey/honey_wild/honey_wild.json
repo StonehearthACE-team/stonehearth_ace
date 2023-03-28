@@ -20,22 +20,16 @@
       },
       "mob": {
          "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 2
       }
    },
    "entity_data": {
-      "stonehearth:food": {
-         "stonehearth:sitting_on_chair": {
-            "satisfaction": 45,
-				"drink_satisfaction": 12
-         },
-         "default": {
-            "satisfaction": 35,
-				"drink_satisfaction": 6
-         },
-         "applied_buffs": [
-            "stonehearth_ace:buffs:consumption:sweet_energy"
-         ],
-         "quality": 2
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:honey:honey_wild_serving",
+         "stacks_per_serving": 2
       },
       "stonehearth:net_worth": {
          "value_in_gold": 9,
@@ -55,6 +49,7 @@
             "stockpile_cooking_ingredient",
             "cooking_ingredient",
             "food",
+            "food_container",
             "honey_wild",
             "honey",
             "sweetener",

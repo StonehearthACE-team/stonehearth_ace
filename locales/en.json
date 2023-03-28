@@ -311,7 +311,7 @@
                   }
                }
             },
-            "orc_war": {   
+            "orc_war": {
                "arcs": {
                   "trigger": {
                      "old_khan": {
@@ -4513,7 +4513,7 @@
             }
          }
       },
-      "commands": {        
+      "commands": {
          "use_seeds": {
             "display_name": "Use & Learn",
             "description": "Utilize these seeds to allow your citizens to learn how to grow a new type of plant. This will destroy the item."
@@ -6254,7 +6254,7 @@
          }
       },
       "archer": {
-         "archer_description": {       
+         "archer_description": {
             "description": "A rearguard combatant capable of using ranged weaponry like bows, crossbows and a variety of hindering types of arrows or bolts to attack their foes.",
             "level_1_data": {
                "training_perk_name": "Archery Training",
@@ -17641,7 +17641,7 @@
             "description": "An ancient testament to the power a community has to nurture and thrive.",
             "static_component_info": {
                "description": "<p style='text-align:center;color:white;'>This beautiful monument is dedicated to the great community behind Stonehearth and to those that have supported the ACE project!<br><br>Below is a permanent list of all the kind donors, ordered by membership tier, then total amount and finally date. This list will be updated whenever a new release is out!</p>",
-               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<br>Lykos<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>Yunoh<br>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<br>Doris<br>ZeroTronix<br>Anna_Ankiemankie<br>Lazuli<br>Sayptie<br>Elfonnzo<br>Joy144SK<br>TOFUFU<br>Wild Cherry Bomb<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Tsukaiyo<br>Orlondok<br>Goldmetal<br>Claire<hr><p style='text-align:center'>...and everyone else!<p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Dayison<br>Coolcup5<br>ghostcrap<br>Fran Tremblay<br>Phania<br>Chichin<br>thatpenguinstar<br>Croxo<br>Heureka<br>Verree<br>Jantsje<br>Xavier Xing<br>Vyrael<br>Alex Kay<br>TRG<br>KoriZ<br>shimizu & jontaro<br>Telunar<br>Yokes<br><br>Thanks to all the anonymous supporters as well!</p>"
+               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<br>Lykos<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>Yunoh<br>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<br>Doris<br>ZeroTronix<br>Anna_Ankiemankie<br>Lazuli<br>Sayptie<br>Elfonnzo<br>Joy144SK<br>TOFUFU<br>Wild Cherry Bomb<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Tsukaiyo<br>Orlondok<br>Goldmetal<br>Claire<hr><p style='text-align:center'>...and everyone else!<p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Dayison<br>Coolcup5<br>ghostcrap<br>Fran Tremblay<br>Phania<br>Chichin<br>thatpenguinstar<br>Croxo<br>Heureka<br>Verree<br>Jantsje<br>Xavier Xing<br>Vyrael<br>Alex Kay<br>TRG<br>KoriZ<br>shimizu & jontaro<br>Telunar<br>machu<br>Yokes<br><br>Thanks to all the anonymous supporters as well!</p>"
             }
          },
          "craftsman_statue": {
@@ -18783,6 +18783,9 @@
             },
             "honey_serving": {
                "display_name": "Serving of Honey"
+            },
+            "honey_wild_serving": {
+               "display_name": "Serving of Wild Honey"
             }
          },
          "honeybuns": {
@@ -23190,6 +23193,14 @@
             "custom_name_with_title": "[str(self.stonehearth:unit_info.custom_name)][str(self.stonehearth:unit_info.custom_data.current_title.display_name)]",
             "missing_catalog_data": "[MISSING CATALOG DATA]",
             "item_categories": {
+               "resources": "Resources (Plant)",
+               "resources_mineral": "Resources (Mineral)",
+               "resources_animal": "Resources (Animal)",
+               "resources_fiber": "Resources (Fiber)",
+               "food_animal": "Food (Animal)",
+               "food_prepared": "Food (Prepared)",
+               "healing_item": "Healing Items",
+               "civillian_equipment": "Civillian Clothing",
                "undefined": "Miscellaneous",
                "mercantile": "Trading & Commerce",
                "aquatic": "Aquatic Life",
@@ -23199,6 +23210,7 @@
                "gizmos": "Gizmos",
                "fungi": "Fungi",
                "drink": "Drinks",
+               "drink_prepared": "Drinks (Prepared)",
                "brewing_ingredient": "Brewing Ingredients",
                "boulder": "Stonework",
                "automatons_and_golems": "Automatons & Golems",
@@ -23211,13 +23223,19 @@
             "tooltip_satisfaction": {
                "drink": {
                   "high": "<span class='value'>[str(servings)] highly satisfying</span> drink servings",
+                  "high_single": "<span class='value'>[str(servings)] highly satisfying</span> drink serving",
                   "average": "<span class='value'>[str(servings)] somewhat satisfying</span> drink servings",
-                  "low": "<span class='value'>[str(servings)] mildly satiating</span> drink servings"
+                  "average_single": "<span class='value'>[str(servings)] somewhat satisfying</span> drink serving",
+                  "low": "<span class='value'>[str(servings)] mildly satisfying</span> drink servings",
+                  "low_single": "<span class='value'>[str(servings)] mildly satisfying</span> drink serving"
                },
                "food": {
                   "high": "<span class='value'>[str(servings)] very filling</span> meals",
+                  "high_single": "<span class='value'>[str(servings)] very filling</span> meal",
                   "average": "<span class='value'>[str(servings)] quite filling</span> meals",
-                  "low": "<span class='value'>[str(servings)] meager</span> meals"
+                  "average_single": "<span class='value'>[str(servings)] quite filling</span> meal",
+                  "low": "<span class='value'>[str(servings)] meager</span> meals",
+                  "low_single": "<span class='value'>[str(servings)] meager</span> meal"
                }
             },
             "tooltip_value_modified": "<span class='value'>[str(value)]</span> ([str(unmodified)])",
@@ -23844,7 +23862,7 @@
                "drink": {
                   "high": "This drink provides [str(servings)] highly satisfying servings",
                   "average": "This drink provides [str(servings)] somewhat satisfying servings",
-                  "low": "This drink provides [str(servings)] mildly satiating servings"
+                  "low": "This drink provides [str(servings)] mildly satisfying servings"
                },
                "food": {
                   "high": "This food provides [str(servings)] very filling meals",

@@ -11,7 +11,7 @@
                   "items": [
                      "file(lump_of_coal.qb)",
                      "file(lump_of_coal_2.qb)",
-					 "file(lump_of_coal_3.qb)",
+					      "file(lump_of_coal_3.qb)",
                      "file(lump_of_coal_4.qb)"
                   ]
                }
@@ -24,12 +24,13 @@
          "value_in_gold": 2
       },
       "stonehearth:catalog": {
+         "category": "resources_mineral",
          "display_name": "i18n(stonehearth_ace:entities.resources.coal.lump_of_coal.display_name)",
          "description": "i18n(stonehearth_ace:entities.resources.coal.lump_of_coal.description)",
-		 "icon": "file(lump_of_coal.png)",
-		 "mixintypes": {
-			"material_tags": "override"
-		 },
+		   "icon": "file(lump_of_coal.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
          "material_tags":["stockpile_coal", "coal", "lump_of_coal", "fuel", "any_fuel", "common_fuel", "resource"]
       },
       "stonehearth_ace:fuel": {
