@@ -272,8 +272,10 @@ function AceJobInfoController:_initialize_recipe_data(recipe_key, recipe_data)
    end
    recipe_data.recipe_key = recipe_key
    if recipe_data.produces then
-      local uri = recipe_data.produces[1].item
+      local first_product = recipe_data.produces[1]
+      local uri = first_product.item
       recipe_data.product_uri = uri
+      recipe_data.product_stacks = first_product.stacks
 
       local canonical = radiant.resources.convert_to_canonical_path(uri)
       radiant.verify(canonical, 'Crafter job %s has a recipe named "%s" that produces an item not in the manifest %s', self._sv.alias, recipe_key, uri)

@@ -1004,6 +1004,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
             display_name: recipe.display_name,
             description: recipe.description,
          };
+         if (recipe.product_stacks) {
+            options.self = {'stonehearth:stacks': {stacks: recipe.product_stacks}};
+         }
          return $(App.guiHelper.createUriTooltip(recipe.product_uri, options));
       });
 
