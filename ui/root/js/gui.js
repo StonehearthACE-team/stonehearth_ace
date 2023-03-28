@@ -275,19 +275,28 @@ App.guiHelper = {
 
       var netWorthAppeal = '';
       var net_worth = options.net_worth;
+      var showDiff = true;
       if (!net_worth && catalogData.net_worth && options.show_net_worth) {
          if (itemQuality > 1) {
             net_worth = radiant.applyItemQualityBonus('net_worth', catalogData.net_worth, itemQuality);
          }
          else {
             net_worth = catalogData.net_worth;
+            // special case for chest of gold coins
+            // TODO: maybe special case for other things with stacks?
+            if (uri == 'stonehearth:loot:gold') {
+               showDiff = false;
+               var stacks = options.self && options.self['stonehearth:stacks'];
+               net_worth *= (stacks && stacks.stacks || 1);
+            }
          }
       }
       if (options.net_worth || (options.show_net_worth && net_worth)) {
          var netWorthDiv = `<span class="value">${net_worth}</span>`;
-         if (catalogData.net_worth && net_worth != catalogData.net_worth) {
+         if (showDiff && catalogData.net_worth && net_worth != catalogData.net_worth) {
             var diff = net_worth - catalogData.net_worth;
-            netWorthDiv += ` (<span class="${diff > 0 ? 'higherValue' : 'lowerValue'}">${(diff > 0 ? '+' : '') + diff}</span>)`;
+            var diffType = (options.invertNetWorthDiffColor ? diff < 0 : diff > 0) ? 'higherValue' : 'lowerValue';
+            netWorthDiv += ` (<span class="${diffType}">${(diff > 0 ? '+' : '') + diff}</span>)`;
          }
          netWorthAppeal += `<img class="imgHeader netWorth"/>${netWorthDiv}<span class="spacer"/>`;
       }
@@ -367,8 +376,9 @@ App.guiHelper = {
    _getSatisfactionDiv: function(satisfactionType, thresholds, satisfaction, servings) {
       var satisfactionLevel = stonehearth_ace.getSatisfactionLevel(thresholds, satisfaction)
       if (satisfactionLevel && servings) {
+         var singleServing = servings == 1 ? '_single' : '';
          return `<div class="stat"><img class="imgHeader satisfaction ${satisfactionType} ${satisfactionLevel}"/>` +
-                  i18n.t(`stonehearth_ace:ui.game.entities.tooltip_satisfaction.${satisfactionType}.${satisfactionLevel}`, {servings: servings}) +
+                  i18n.t(`stonehearth_ace:ui.game.entities.tooltip_satisfaction.${satisfactionType}.${satisfactionLevel}${singleServing}`, {servings: servings}) +
                   '</div>';
       }
    }

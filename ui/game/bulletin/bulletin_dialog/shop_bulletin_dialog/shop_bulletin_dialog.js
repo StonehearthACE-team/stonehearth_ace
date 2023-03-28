@@ -179,6 +179,7 @@ App.StonehearthShopBulletinDialog = App.StonehearthBaseBulletinDialog.extend({
 
       this._buyPalette = this.$('#buyList').stonehearthItemPalette({
          cssClass: 'shopItem',
+         isBuying: true,
          itemAdded: function(itemEl, itemData) {
             itemEl.attr('cost', itemData.cost);
             itemEl.attr('num', itemData.num);

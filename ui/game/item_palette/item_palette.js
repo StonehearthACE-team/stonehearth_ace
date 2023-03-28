@@ -17,6 +17,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       skipCategories: false,
       sortField: 'display_name',
       wantedItems: null,
+      isBuying: false,
    },
 
    _create: function() {
@@ -562,6 +563,10 @@ $.widget( "stonehearth.stonehearthItemPalette", {
          hasOptions = true;
       }
 
+      if (this.options.isBuying) {
+         hasOptions = true;
+      }
+
       var uri = this._getUri(item);
       var catalogData = App.catalog.getCatalogData(uri);
       if (catalogData) {
@@ -578,8 +583,34 @@ $.widget( "stonehearth.stonehearthItemPalette", {
             item_quality: item.item_quality,
             appeal: item.appeal,
             net_worth: cost,
+            invertNetWorthDiffColor: this.options.isBuying,
          };
       }
+   },
+
+   // ACE: unused now, kept for compatibility
+   _geti18nVariables: function(item) {
+      var itemSelf = {}
+
+      var uri = this._getUri(item);
+      // Only display the stack count for gold in a gold chest.
+      var stackCount = 0;
+      if (item.items) {
+         radiant.each(item.items, function(id, individualItem) {
+            var stacksComponent = individualItem['stonehearth:stacks'];
+            if (stacksComponent && stacksComponent.stacks) {
+              stackCount += stacksComponent.stacks;
+            }
+         });
+      }
+
+      if (stackCount > 0) {
+         itemSelf['stonehearth:stacks'] = {
+            stacks: stackCount
+         };
+      }
+
+      return {self: itemSelf, allowUntranslated: false};
    },
 
    _debugTooltip: function(item) {
