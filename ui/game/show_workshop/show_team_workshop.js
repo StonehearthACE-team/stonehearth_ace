@@ -536,6 +536,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       self.set('recipes', recipe_categories);
+      self._recipeListInitialized = true;
    }.observes('model.recipe_list'),
 
    _updateMembers: function() {
@@ -1264,7 +1265,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
    _updateDetailedOrderList: function() {
       var self = this;
       var orders = this.get('model.order_list.orders');
-      if (!orders || !self.$('.orderListItem')) {
+      if (!orders || !self.$('.orderListItem') || !self._recipeListInitialized) {
          return;
       }
       for (var i=0; i<orders.length; i++) {
