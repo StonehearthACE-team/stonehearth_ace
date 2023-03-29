@@ -23,11 +23,11 @@ App.AceBuildFenceModeView = App.View.extend({
             self._loadConfigSegments();
          }
          else {
-            self.buildFence();
+            //self.buildFence();
          }
       }
       else {
-         self.buildFence();
+         //self.buildFence();
       }
    },
 
@@ -305,9 +305,10 @@ App.AceBuildFenceModeView = App.View.extend({
          }
 
          var jobInfo = App.jobConstants[jobUri];
-         var jobIcon;
+         var jobIcon, jobName;
          if (jobInfo) {
             jobIcon = jobInfo.description.icon;
+            jobName = jobInfo.description.display_name;
          }
 
          var highestLevel = jobControllerInfo.num_members > 0 && jobControllerInfo.highest_level || 0;
@@ -334,7 +335,8 @@ App.AceBuildFenceModeView = App.View.extend({
                   crafterRequirement = {
                      jobUri: jobUri,
                      jobIcon: jobIcon,
-                     level: level,
+                     jobName: jobName,
+                     jobLevel: level,
                      met: highestLevel >= level,
                   };
 
@@ -386,9 +388,28 @@ App.AceBuildFenceModeView = App.View.extend({
       var uri = $el.data('uri');
       var segment = self._segments[uri];
       App.tooltipHelper.createDynamicTooltip($el, function () {
-         var crafterRequirement = self._getCrafterRequirementText(segment.crafterRequirement);
-         return $(App.tooltipHelper.createTooltip(i18n.t(segment.display_name), i18n.t(segment.description), crafterRequirement));
+         var crafterRequirement = self._getCrafterRequirementTooltipText(segment.crafterRequirement);
+         return $(App.guiHelper.createUriTooltip(uri, {moreDetails: crafterRequirement}));
       }, {delay: delay});
+   },
+
+   _getCrafterRequirementTooltipText: function(crafterRequirement) {
+      // show crafter icon and level required (if it can be crafted), with formatting based on meeting requirements
+      var self = this;
+      if (crafterRequirement) {
+         // return `<span class="requirement${crafterRequirement.met ? ' requirementMet' : ''}"><img class="jobIcon" src="${crafterRequirement.jobIcon}"/>` +
+         //       `${i18n.t('stonehearth_ace:ui.game.fence_mode.level_requirement', crafterRequirement)}</span>`;
+         var detail = `</div><div class="details"><div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_crafted_by')}</span>` +
+            `<img class="jobIcon" src="${crafterRequirement.jobIcon}"/><span class="value">${i18n.t(crafterRequirement.jobName)}</span>`;
+         if (crafterRequirement.jobLevel) {
+            detail += `<span class="${crafterRequirement.met ? 'higherValue' : 'lowerValue'}">` + 
+                           `${i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level')}${crafterRequirement.jobLevel}</span>`;
+         }
+         detail += '</div>';
+         return detail;
+      }
+      
+      return null;
    },
 
    _getCrafterRequirementText: function(crafterRequirement) {
@@ -396,7 +417,8 @@ App.AceBuildFenceModeView = App.View.extend({
       var self = this;
       if (crafterRequirement) {
          return `<span class="requirement${crafterRequirement.met ? ' requirementMet' : ''}"><img class="jobIcon" src="${crafterRequirement.jobIcon}"/>` +
-               `${i18n.t('stonehearth_ace:ui.game.fence_mode.level_requirement', crafterRequirement)}</span>`;;
+               `<span class="value">${i18n.t(crafterRequirement.jobName)}</span>${i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level')}` +
+               `${crafterRequirement.jobLevel}</span>`;
       }
       
       return null;
@@ -410,11 +432,12 @@ App.AceBuildFenceModeView = App.View.extend({
          var segment = self._segments[seg.uri];
          if (segment.crafterRequirement) {
             var jobUri = segment.crafterRequirement.jobUri;
-            var lvl = requirements[jobUri] && requirements[jobUri].level || 1;
+            var lvl = requirements[jobUri] && requirements[jobUri].jobLevel || 1;
             var met = requirements[jobUri] ? requirements[jobUri].met : true;
             requirements[jobUri] = {
                jobIcon: segment.crafterRequirement.jobIcon,
-               level: Math.max(lvl, segment.crafterRequirement.level),
+               jobName: segment.crafterRequirement.jobName,
+               jobLevel: Math.max(lvl, segment.crafterRequirement.jobLevel),
                met: met && segment.crafterRequirement.met,
             }
          }
@@ -424,7 +447,7 @@ App.AceBuildFenceModeView = App.View.extend({
       var isMet = true;
       radiant.each(requirements, function(jobUri, requirement) {
          if (requirementText.length > 0) {
-            requirementText += ' ';
+            requirementText += ', ';
          }
          requirementText += self._getCrafterRequirementText(requirement);
          isMet = isMet && requirement.met;
@@ -432,7 +455,7 @@ App.AceBuildFenceModeView = App.View.extend({
 
       if (requirementText.length > 0)
       {
-         return `<div class="requirementText${isMet ? ' requirementMet' : ''}">${i18n.t('stonehearth_ace:ui.game.fence_mode.crafter_requirement')}${requirementText}</div>`;
+         return `<span class="requirementText${isMet ? ' requirementMet' : ''}">${i18n.t('stonehearth_ace:ui.game.fence_mode.crafter_requirement')}</span>${requirementText}`;
       }
    },
 
@@ -491,7 +514,7 @@ App.AceBuildFenceModeView = App.View.extend({
          self._hidePresets();
          if (!mode) {
             // if the user simply closed the presets window
-            self.buildFence();
+            //self.buildFence();
          }
       }
       else {
@@ -545,7 +568,8 @@ App.AceBuildFenceModeView = App.View.extend({
       var self = this;
       self.set('segments', segments);
       Ember.run.scheduleOnce('afterRender', self, '_updateSegmentTooltips');
-      self.buildFence();
+      //self.buildFence();
+      App.stonehearthClient.deactivateAllTools();
    },
 
    buildFence: function(fromSegment, internalRecall) {
@@ -631,7 +655,8 @@ App.AceBuildFenceModeView = App.View.extend({
       var self = this;
       if (self._activeSegment == segment) {
          self._hideSegmentSelection();
-         self.buildFence();
+         //self.buildFence();
+         App.stonehearthClient.deactivateAllTools();
       }
       else {
          self._hidePresets();

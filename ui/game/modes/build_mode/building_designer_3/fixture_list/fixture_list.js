@@ -60,6 +60,40 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
          self._setSearchbarsText(text);
       });
       self.$('#fixtures').children().hide();
+
+      App.guiHelper.createDynamicTooltip(self.$('#fixtures'), '.fixture', function($el) {
+         var uri = $el.data('fixture_uri');
+         var item_quality = Math.abs($el.data('item_quality'));
+         var data = self._allFixtures[uri + '+' + item_quality];
+         var extra = '';
+
+         if (data.count) {
+            // if there's a number of them in inventory, show that
+            extra += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_inventory')}</span><span class="value">${data.count}</span></div>`;
+         }
+   
+         if (data.jobName && data.jobIcon) {
+            // if there's a crafter job icon, include that
+            extra += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_crafted_by')}</span>` +
+                  `<img class="inlineImg" src="${data.jobIcon}"/><span class="value">${i18n.t(data.jobName)}</span>`;
+            if (data.jobLevel) {
+               extra += i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level') +
+                  `<span class="value">${data.jobLevel}</span>`;
+            }
+            extra += '</div>';
+         }
+
+         if (extra != '') {
+            // we actually want some vertical space between the previous details and these,
+            // so end the previous details div and start a new one
+            extra = '</div><div class="details">' + extra;
+         }
+
+         var options = (item_quality && item_quality > 1) || extra != '' ? {item_quality: item_quality, moreDetails: extra} : null;
+         var tooltip = App.guiHelper.createUriTooltip(uri, options);
+
+         return $(tooltip);
+      });
    },
 
    willDestroyElement: function() {
@@ -116,7 +150,7 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
          });
       });
       self._updateItems();
-      Ember.run.scheduleOnce('afterRender', self, '_updateFixtureItemTooltips');
+      //Ember.run.scheduleOnce('afterRender', self, '_updateFixtureItemTooltips');
    },
 
    _updateItems: function() {
@@ -141,9 +175,10 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
 
          var highestLevel = jobControllerInfo.highest_level;
          var jobInfo = App.jobConstants[jobUri];
-         var jobIcon;
+         var jobIcon, jobName;
          if (jobInfo) {
             jobIcon = jobInfo.description.icon;
+            jobName = jobInfo.description.display_name;
          }
 
          _.forEach(jobControllerInfo.recipe_list, function(category) {
@@ -174,6 +209,8 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
                   uri: product_uri,
                   item_quality: -1,
                   jobIcon: jobIcon,
+                  jobName: jobName,
+                  jobLevel: recipe.level_requirement || 1,
                };
 
                self._appendCatalogData(entry, catalogData);
@@ -184,14 +221,25 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
 
       // Merge placeable fixes and recipes
       _.forEach(craftableProducts, function(data, rootUri) {
+         // also try to merge job info with other qualities
+         // NOTE: hard-coded max quality of 4
+         for(var i = 1; i <= 4; i++) {
+            var qualityData = allFixtures[rootUri + '+' + i];
+            if (qualityData) {
+               qualityData.jobIcon = data.jobIcon;
+               qualityData.jobName = data.jobName;
+               qualityData.jobLevel = data.jobLevel;
+            }
+         }
+
+         // if there was no base quality entry, create it with this data
          var key = rootUri + '+1';  // Merge with the "quality 1" version.
          if (!allFixtures[key]) {
             allFixtures[key] = data;  // Merge with the "quality 1" version.
          }
-         else {
-            allFixtures[key].jobIcon = data.jobIcon;
-         }
       });
+
+      self._allFixtures = allFixtures;
 
       self._updateView(allFixtures);
    },
@@ -235,15 +283,6 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
 
    _addItem: function(data) {
       var tooltip = i18n.t(data.display_name);
-      if (data.count) {
-         // if there's a number of them in inventory, show that
-         tooltip += ` (${data.count})`;
-      }
-
-      if (data.jobIcon) {
-         // if there's a crafter job icon, include that
-         tooltip += `<img class="jobIcon" src="${data.jobIcon}"/>`;
-      }
 
       var item = {
          style: "background-image: url(" + data.icon + ")",

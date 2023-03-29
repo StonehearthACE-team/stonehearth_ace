@@ -275,36 +275,27 @@
    }
 }
 
-.requirementText {
+.requirementText, .requirement {
+   font-weight: bold;
    color: @warningFontColor;
 
    &.requirementMet {
       color: @greenFontColor;
+   }
+
+   .normal {
+      color: inherit;
    }
 
    .requirement {
       margin-top: inherit;
-
-      img {
-         margin-top: -8px;
-      }
    }
 }
 
-.requirement {
-   margin-top: -10px;
-   display: inline-block;
-   color: @warningFontColor;
-
-   &.requirementMet {
-      color: @greenFontColor;
-   }
-
-   img {
-      float: inherit;
-      padding: inherit;
-      height: 30px;
-      vertical-align: middle;
-      margin-top: -2px;
-   }
+.jobIcon {
+   float: inherit;
+   padding: inherit;
+   height: 24px;
+   vertical-align: middle;
+   margin-top: -6px;
 }

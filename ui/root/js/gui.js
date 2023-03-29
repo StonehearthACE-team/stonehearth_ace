@@ -197,7 +197,8 @@ App.guiHelper = {
    },
 
    createUriTooltip: function(uri, options) {
-      if (!options && this._uriTooltips[uri]) {
+      var cacheTooltip = this._shouldCacheTooltip(options);
+      if (cacheTooltip && this._uriTooltips[uri]) {
          return this._uriTooltips[uri];
       }
 
@@ -264,6 +265,10 @@ App.guiHelper = {
          detail += combat_info;
       }
 
+      if (options.moreDetails) {
+         detail += options.moreDetails;
+      }
+
       if (detail != '') {
          detail = '<div class="details">' + detail + '</div>';
       }
@@ -324,9 +329,20 @@ App.guiHelper = {
       }
 
       var tooltip = App.tooltipHelper.createTooltip(title, detail);
-      this._uriTooltips[uri] = tooltip;
+      if (cacheTooltip) {
+         this._uriTooltips[uri] = tooltip;
+      }
+      else if (options.recipe_key) {
+         this._recipeKeyTooltips[options.recipe_key] = tooltip;
+      }
 
       return tooltip;
+   },
+
+   _shouldCacheTooltip: function(options) {
+      if (!options) {
+         return true;
+      }
    },
 
    _getEquipmentRolesDiv: function(roles) {
