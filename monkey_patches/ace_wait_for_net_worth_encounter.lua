@@ -1,3 +1,5 @@
+local log = radiant.log.create_logger('game_master.encounters.wait_for_net_worth')
+
 local AceWaitForNetWorthEncounter = class()
 
 function AceWaitForNetWorthEncounter:_start_check_net_worth_interval()
