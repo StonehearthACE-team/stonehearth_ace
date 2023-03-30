@@ -555,7 +555,14 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self._destroyCrafterTraces(members);
 
       if (members) {
+         var removedMembers = {};
+         radiant.each(memberLookup, function(id, member) {
+            removedMembers[id] = true;
+         });
+
          radiant.each(members, function(id, member) {
+            delete removedMembers[id];
+
             // the individual members need to be traced to track their disabled categories
             if (self._crafterTraces[id] != null) {
                
@@ -596,6 +603,19 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   });
             }
          });
+
+         // removed members must be removed from the list
+         var removedAny = false;
+         radiant.each(removedMembers, function(id, _) {
+            memberArray.removeObject(memberLookup[id]);
+            delete memberLookup[id];
+            removedAny = true;
+         });
+
+         // if any were removed, we need to update to get rid of their category icons
+         if (removedAny) {
+            self._membersUpdated();
+         }
       }
    }.observes('model.members'),
 

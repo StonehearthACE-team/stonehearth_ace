@@ -104,10 +104,11 @@ function AceCrafterComponent:produce_crafted_item(product_uri, recipe, ingredien
    local item = radiant.entities.create_entity(product_uri, { owner = self._entity })
 
    -- Set quality on an item; don't bother doing it if variable quality is explicitly denied
-   local item_quality_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:item_quality', false)
+   local item_quality_data = radiant.entities.get_entity_data(product_uri, 'stonehearth:item_quality', false)
    if not (item_quality_data and (item_quality_data.variable_quality == false)) then
       local quality = self:_calculate_quality(recipe.level_requirement or 0, ingredient_quality or STANDARD_QUALITY_INDEX)
-      item:add_component('stonehearth:item_quality'):initialize_quality(quality, self._entity, 'person')
+      item_quality_lib.apply_quality(item, quality, {author = self._entity, author_type = 'person'})
+      --item:add_component('stonehearth:item_quality'):initialize_quality(quality, self._entity, 'person')
    end
    self:_update_best_crafts(item)
 
