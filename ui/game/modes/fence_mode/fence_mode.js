@@ -402,7 +402,7 @@ App.AceBuildFenceModeView = App.View.extend({
          var detail = `</div><div class="details"><div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_crafted_by')}</span>` +
             `<img class="jobIcon" src="${crafterRequirement.jobIcon}"/><span class="value">${i18n.t(crafterRequirement.jobName)}</span>`;
          if (crafterRequirement.jobLevel) {
-            detail += `<span class="${crafterRequirement.met ? 'higherValue' : 'lowerValue'}">` + 
+            detail += `<span${!crafterRequirement.met ? ' class="lowerValue"' : ''}>` + 
                            `${i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level')}${crafterRequirement.jobLevel}</span>`;
          }
          detail += '</div>';
@@ -416,8 +416,8 @@ App.AceBuildFenceModeView = App.View.extend({
       // show crafter icon and level required (if it can be crafted), with formatting based on meeting requirements
       var self = this;
       if (crafterRequirement) {
-         return `<span class="requirement${crafterRequirement.met ? ' requirementMet' : ''}"><img class="jobIcon" src="${crafterRequirement.jobIcon}"/>` +
-               `<span class="value">${i18n.t(crafterRequirement.jobName)}</span>${i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level')}` +
+         return `<img class="jobIcon" src="${crafterRequirement.jobIcon}"/><span class="value">${i18n.t(crafterRequirement.jobName)}</span>` +
+               `<span${!crafterRequirement.met ? ' class="lowerValue"' : ''}>${i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level')}` +
                `${crafterRequirement.jobLevel}</span>`;
       }
       
@@ -455,7 +455,7 @@ App.AceBuildFenceModeView = App.View.extend({
 
       if (requirementText.length > 0)
       {
-         return `<span class="requirementText${isMet ? ' requirementMet' : ''}">${i18n.t('stonehearth_ace:ui.game.fence_mode.crafter_requirement')}</span>${requirementText}`;
+         return `<span class="header">${i18n.t('stonehearth_ace:ui.game.fence_mode.crafter_requirement')}</span>${requirementText}`;
       }
    },
 

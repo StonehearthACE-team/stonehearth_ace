@@ -47,8 +47,60 @@
       },
       "stonehearth_ace:static_component_info": {
          "details": {
-            "description": "i18n(stonehearth_ace:entities.decoration.radiant_shrine.static_component_info.description)",
-            "team": "i18n(stonehearth_ace:entities.decoration.radiant_shrine.static_component_info.team)"
+            "data": {
+               "type": "credit_list",
+               "sections": [
+                  {
+                     "footer": "i18n(stonehearth_ace:entities.decoration.radiant_shrine.static_component_info.description)"
+                  },
+                  {
+                     "header": "i18n(stonehearth_ace:entities.decoration.radiant_shrine.static_component_info.team.members.header)",
+                     "entries": [
+                        "Tom Cannon",
+                        "Tony Cannon",
+                        "Stephanie Dee",
+                        "Albert Wang",
+                        "Chris Klochek",
+                        "Brad Justus",
+                        "Linda Cai",
+                        "Allie Strom",
+                        "Matt Malley",
+                        "Ana Padilla",
+                        "Richard Hough",
+                        "Nikki Silver",
+                        "Justin Hamilton",
+                        "Morgan Tenney",
+                        "Angelo Yazar",
+                        "Max Shawabkeh",
+                        "Luke Rinard",
+                        "Aaron Walz"
+                     ]
+                  },
+                  {
+                     "header": "i18n(stonehearth_ace:entities.decoration.radiant_shrine.static_component_info.team.additional.header)",
+                     "entries": [
+                        "Raj Mann",
+                        "Yang Shan",
+                        "Doug Prior",
+                        "Carl Quinn",
+                        "Winnie Lin",
+                        "Jack Seibert",
+                        "Gabriel Martinez"
+                     ]
+                  },
+                  {
+                     "header": "i18n(stonehearth_ace:entities.decoration.radiant_shrine.static_component_info.team.community.header)",
+                     "entries": [
+                        "SteveAdamo",
+                        "Geoffers",
+                        "Jomaxro",
+                        "Relyss",
+                        "Megashub",
+                        "8BitCrab"
+                     ]
+                  }
+               ]
+            }
          }
       }
    },

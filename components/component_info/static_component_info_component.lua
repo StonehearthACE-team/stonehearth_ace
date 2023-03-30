@@ -14,7 +14,7 @@ function StaticComponentInfoComponent:activate()
 
    local ci_comp = self._entity:add_component('stonehearth_ace:component_info')
    ci_comp:remove_component_details('stonehearth_ace:static_component_info')
-   
+
    if json.details then
       -- TODO: include entity unit_info data in i18n_data?
       local i18n_data = {}

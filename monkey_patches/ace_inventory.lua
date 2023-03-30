@@ -28,6 +28,76 @@ function AceInventory:is_initialized()
    return self._is_initialized
 end
 
+-- changed stack updates to only trigger an update for wealth category items (otherwise score isn't changing)
+function AceInventory:_install_listeners()
+   self._storage_added_listener = radiant.events.listen(self, 'stonehearth:inventory:storage_added', self, self._on_storage_gen_changed)
+   self._filter_changed_listener = radiant.events.listen(self, 'stonehearth:inventory:filter_changed', self, self._on_storage_gen_changed)
+   self._destroy_listener = radiant.events.listen(radiant, 'radiant:entity:pre_destroy', self, self._on_destroy)
+
+   self._stacks_changed_listener = radiant.events.listen(radiant, 'radiant:item:stacks_changed', function(e)
+         self:_update_score_for_item(e.entity, true)
+      end)
+end
+
+-- ACE: added other edibles categories
+function AceInventory:_update_score_for_item(item, stacks_changed)
+   if item and item:is_valid() then
+      -- if this is an icon, find the root entity
+      local ic = item:get_component('stonehearth:iconic_form')
+      if ic then
+         item = ic:get_root_entity()
+         if not item or not item:is_valid() then
+            return
+         end
+      end
+
+      local category = radiant.entities.get_category(item)
+      -- if it's a stacks change and it's not wealth (e.g., food/drink/etc.), no update necessary
+      if stacks_changed and category ~= 'wealth' then
+         return
+      end
+
+      -- if it's raw resources, don't score it
+      if category == 'resources' or category == 'resources_animal' or category == 'resources_mineral' or category == 'resources_fiber' then
+         return
+      end
+
+      -- compute the score
+      local score = self:_get_score_for_item(item, category)
+      local id = item:get_id()
+
+      -- add to 'edibles' and 'net_worth' categories
+      -- ACE: add 'food_prepared' but don't count 'food_animal'
+      if category == 'food' or category == 'food_prepared' then
+         -- if this is an edible item, add it to edibles
+         stonehearth.score:change_score(item, 'edibles', 'food_inventory', score)
+      else
+         -- if not edible item, add to net_worth
+         stonehearth.score:change_score(item, 'net_worth', 'inventory', score)
+      end
+   end
+end
+
+--- Given an entity, get the score for it, aka the entity's net worth
+--  If we don't have a score for that entity, use the default score, which is 1
+-- ACE: also pass in category since we already queried that
+function AceInventory:_get_score_for_item(item, category)
+   local net_worth = radiant.entities.get_net_worth(item)
+   if net_worth then
+      -- The value of wealth is item_score * stacks
+      if category == 'wealth' then
+         local stacks_component = item:get_component('stonehearth:stacks')
+         local stacks = stacks_component and stacks_component:get_stacks() or 1
+         return net_worth * stacks
+      end
+      --if not wealth, then just return value in gold
+      return net_worth
+   end
+
+   -- otherwise, return 1
+   return 1
+end
+
 function AceInventory:_add_more_trackers()
    -- load up a json file to see what other trackers need to be added
    local trackers = radiant.resources.load_json('stonehearth_ace:data:inventory_trackers')

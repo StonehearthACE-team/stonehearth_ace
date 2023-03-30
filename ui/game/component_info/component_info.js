@@ -302,6 +302,37 @@ App.ComponentInfoView = App.View.extend({
 
             return content;
 
+         case 'credit_list':
+            // 'sections' contains the sections which each contain optional header, entries, and footer
+            var content = '';
+
+            detail.sections.forEach(function(section){
+               var sectionContent = '';
+               var isCentered = section.centered !== false;
+               var centeredClass = isCentered ? ' class="centered"' : '';
+
+               if (section.header) {
+                  sectionContent += `<h3${centeredClass}>${i18n.t(section.header, details.i18n_data)}</h3>`;
+               }
+
+               if (section.entries) {
+                  var entries = [];
+                  section.entries.forEach(function(entry){
+                     entries.push(i18n.t(entry));
+                  });
+
+                  sectionContent += `<div class="normal-color${isCentered ? ' centered' : ''}">${entries.join('<br>')}</div><br>`;
+               }
+
+               if (section.footer) {
+                  sectionContent += (sectionContent == '' ? '<br>' : '') + i18n.t(section.footer, details.i18n_data) + '<br><br>';
+               }
+
+               content += (content != '' ? '<hr>' : '') + `<div${centeredClass}>${sectionContent}</div>`;
+            });
+
+            return content;
+
          case 'item_list':
             // 'items' contains the items, 'header' contains optional header, 'footer' contains optional footer
             var content = '';

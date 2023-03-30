@@ -17632,16 +17632,41 @@
             "display_name": "Radiant Shrine",
             "description": "An intricate device honoring the radiant sun that first shed light onto the world.",
             "static_component_info": {
-               "description": "<p style='text-align:center;color:white;'>A complex and yet beautifully made armillary sphere moves with elegance and perfection. In its scenter, a magical essence of some sort radiates warm, comforting light. The light that has created our world, this world we love to inhabit!<br><br>This shrine is our very heartwarm 'Thank you' to the original members of Radiant Entertainment, creators of Stonehearth!</p>",
-               "team": "<hr><h3 style='text-align:center;color:orange;'>Members</h3><p style='text-align:center'>Tom Cannon<br>Tony Cannon<br>Stephanie Dee<br>Albert Wang<br>Chris Klochek<br>Brad Justus<br>Linda Cai<br>Allie Strom<br>Matt Malley<br>Ana Padilla<br>Richard Hough<br>Nikki Silver<br>Justin Hamilton<br>Morgan Tenney<br>Angelo Yazar<br>Max Shawabkeh<br>Luke Rinard<br>Aaron Walz</p><h3 style='text-align:center;color:orange;'>Additional Development</h3><p style='text-align:center'>Raj Mann<br>Yang Shan<br>Doug Prior<br>Carl Quinn<br>Winnie Lin<br>Jack Seibert<br>Gabriel Martinez</p><h3 style='text-align:center;color:orange;'>Community Moderation</h3><p style='text-align:center'>SteveAdamo<br>Geoffers<br>Jomaxro<br>Relyss<br>Megashub<br>8BitCrab</p>"
+               "description": "A complex and yet beautifully made armillary sphere moves with elegance and perfection. In its center, a magical essence of some sort radiates warm, comforting light. The light that has created our world, this world we love to inhabit!<br><br>This shrine is our very heartwarm 'Thank you' to the original members of Radiant Entertainment, creators of Stonehearth!",
+               "team": {
+                  "members": {
+                     "header": "Members"
+                  },
+                  "additional": {
+                     "header": "Additional Development"
+                  },
+                  "community": {
+                     "header": "Community Moderation"
+                  }
+               }
             }
          },
          "community_shrine": {
             "display_name": "Community Shrine",
             "description": "An ancient testament to the power a community has to nurture and thrive.",
             "static_component_info": {
-               "description": "<p style='text-align:center;color:white;'>This beautiful monument is dedicated to the great community behind Stonehearth and to those that have supported the ACE project!<br><br>Below is a permanent list of all the kind donors, ordered by membership tier, then total amount and finally date. This list will be updated whenever a new release is out!</p>",
-               "donors": "<hr><h3 style='text-align:center;color:orange;'>❤️ Thank you very much ❤️</h3><p style='text-align:center'>🐔 Determined Poyos 🐔<p style='text-align:center;color:white;'>Psycho Trooper<br>Cirdain<br>Ourcasula<br>Lykos<p style='text-align:center'>🐤 Poyo Chicks 🐤<p style='text-align:center;color:white;'>Yunoh<br>illythekitty<br>Narthiar<br>Frazzledazzle<br>Banto<br>Paldorien<br>Doris<br>ZeroTronix<br>Anna_Ankiemankie<br>Lazuli<br>Sayptie<br>Elfonnzo<br>Joy144SK<br>TOFUFU<br>Wild Cherry Bomb<p style='text-align:center'>🥚 Poyo Eggs 🥚<p style='text-align:center;color:white;'>Tsukaiyo<br>Orlondok<br>Goldmetal<br>Claire<hr><p style='text-align:center'>...and everyone else!<p style='text-align:center;color:white;'>Findersword<br>KeiwaM<br>Dayison<br>Coolcup5<br>ghostcrap<br>Fran Tremblay<br>Phania<br>Chichin<br>thatpenguinstar<br>Croxo<br>Heureka<br>Verree<br>Jantsje<br>Xavier Xing<br>Vyrael<br>Alex Kay<br>TRG<br>KoriZ<br>shimizu & jontaro<br>Telunar<br>machu<br>Yokes<br><br>Thanks to all the anonymous supporters as well!</p>"
+               "description": "This beautiful monument is dedicated to the great community behind Stonehearth and to those that have supported the ACE project!<br><br>Below is a permanent list of all the kind donors, ordered by membership tier, then total amount and finally date. This list will be updated whenever a new release is out!",
+               "donors": {
+                  "header": "❤️ Thank you very much ❤️",
+                  "poyos": {
+                     "header": "🐔 Determined Poyos 🐔"
+                  },
+                  "chicks": {
+                     "header": "🐤 Poyo Chicks 🐤"
+                  },
+                  "eggs": {
+                     "header": "🥚 Poyo Eggs 🥚"
+                  },
+                  "other": {
+                     "header": "...and everyone else!"
+                  },
+                  "footer": "Thanks to all the anonymous supporters as well!"
+               }
             }
          },
          "craftsman_statue": {
