@@ -23506,8 +23506,9 @@
             "search_all_description": "Include the recipe titles, crafted item descriptions, and names of ingredients in the search filter.",
             "category_crafter": {
                "title": "Toggle Category Crafting",
-               "enable_description": "Enable crafting of this category for <span class='bold'>[str(name)]</span> (level <span class='bold'>[str(level)]</span>).",
-               "disable_description": "Disable crafting of this category for <span class='bold'>[str(name)]</span> (level <span class='bold'>[str(level)]</span>)."
+               "enable_description": "Enable crafting of [str(category)] for <span class='bold'>[str(name)]</span> (level <span class='bold'>[str(level)]</span>).",
+               "disable_description": "Disable crafting of [str(category)] for <span class='bold'>[str(name)]</span> (level <span class='bold'>[str(level)]</span>).",
+               "proficiency": "Crafting Proficiency:"
             },
             "craft_button": {
                "title": "Craft",

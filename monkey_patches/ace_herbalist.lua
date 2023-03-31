@@ -42,9 +42,9 @@ function AceHerbalistClass:_on_herbalist_planter_interaction(args)
    local exp = args.type and self._xp_rewards[args.type]
    if exp then
       -- modify it by the level of crop in the planter
-      local planter_comp = args.planter and args.planter:get_component('stonehearth_ace:herbalist_planter')
-      if planter_comp then
-         exp = exp * math.sqrt(math.max(1, planter_comp:get_planted_crop_level()))
+      local level = args.level
+      if level then
+         exp = exp * math.sqrt(math.max(1, level))
 
          if args.products then
             -- maybe do something with this?
@@ -52,6 +52,11 @@ function AceHerbalistClass:_on_herbalist_planter_interaction(args)
       end
 
       self._job_component:add_exp(exp)
+   end
+
+   -- track this like a category craft
+   if args.type == 'tend_planter' and args.category then
+      self:add_category_proficiency('_tending_' .. args.category)
    end
 end
 

@@ -336,6 +336,10 @@ function HerbalistPlanterComponent:get_planted_crop_level()
    return self._planted_crop_stats and self._planted_crop_stats.level or 1
 end
 
+function HerbalistPlanterComponent:get_planted_crop_category()
+   return self._planted_crop_stats and self._planted_crop_stats.category
+end
+
 function HerbalistPlanterComponent:get_harvester_effect()
    return self._planted_crop_stats and self._planted_crop_stats.harvester_effect or 'fiddle'
 end
@@ -653,7 +657,7 @@ function HerbalistPlanterComponent:_get_quality()
 end
 
 function HerbalistPlanterComponent:_set_quality_table(tender)
-   self._sv._quality_table = item_quality_lib.get_quality_table(tender, self._planted_crop_stats.level or 1)
+   self._sv._quality_table = item_quality_lib.get_quality_table(tender, '_tending_' .. self._planted_crop_stats.category)
    local quality_buff = self._json.quality_buffs and self._json.quality_buffs[math.min(math.floor(self:_get_tend_quality()), #self._json.quality_buffs)]
    if quality_buff then
       radiant.entities.add_buff(self._entity, quality_buff, {

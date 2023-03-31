@@ -576,6 +576,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   name: name,
                   level: 0,
                   disabledCategories: {},
+                  categoryProficiency: {},
                   categoryMembers: {},
                };
                memberArray.push(memberStruct);
@@ -593,6 +594,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
                         if (jobController) {
                            var level = jobController.last_gained_lv;
                            var disabledCategories = jobController.disabled_crafting_categories;
+                           
+                           // this can be set without updating the ui because it only shows in tooltips
+                           m.categoryProficiency = jobController.category_profiency;
+
+                           // for the other fields, changing them changes the ui if they're different
                            if (level != m.level || !stonehearth_ace.shallowAreEqual(disabledCategories, m.disabledCategories)) {
                               m.level = level;
                               m.disabledCategories = disabledCategories;
@@ -1163,10 +1169,15 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   var data = {
                      name: member.name,
                      level: member.level,
+                     category: self.allCategories[category].display_name,
                   };
 
                   var tooltipString = disable && i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.disable_description', data) ||
                         i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.enable_description', data);
+
+                  tooltipString += '<div class="details"><div class="stat"><span class="header">' +
+                        i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.proficiency') +
+                        `</span><span class="value">${Math.min(100, Math.floor((member.categoryProficiency[category] || 0) * 100))}</span>%</div></div>`;
 
                   return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.title'), tooltipString));
                }

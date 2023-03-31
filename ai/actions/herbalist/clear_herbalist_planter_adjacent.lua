@@ -38,7 +38,12 @@ function ClearHerbalistPlanterAdjacent:run(ai, entity, args)
 
    planter_comp:plant_crop(entity)
 
-   radiant.events.trigger(entity, 'stonehearth_ace:interact_herbalist_planter', {type = 'clear_planter', planter = planter})
+   radiant.events.trigger(entity, 'stonehearth_ace:interact_herbalist_planter', {
+      type = 'clear_planter',
+      planter = planter,
+      level = planter_comp:get_planted_crop_level(),
+      category = planter_comp:get_planted_crop_category(),
+   })
 end
 
 return ClearHerbalistPlanterAdjacent

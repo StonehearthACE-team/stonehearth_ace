@@ -2,6 +2,8 @@ local constants = require 'stonehearth.constants'
 
 local BaseJob = class()
 
+local log = radiant.log.create_logger('base_job')
+
 --[[
    A base class for all classes. Contains getters for job variables common to all classes
    TODO: Move functions out of classes that inherit from this class if its function is identical to the one here
@@ -17,6 +19,7 @@ function BaseJob:initialize()
    -- ADDED FOR ACE
    --self._sv.max_num_training = {}
    self._sv.disabled_crafting_categories = {}
+   self._sv.category_profiency = {}
    self._sv._lookup_values = {}
    self._sv._can_repair_as_jobs = {}
    self._sv._can_repair_as_any_job = false
@@ -480,6 +483,35 @@ function BaseJob:_add_current_role_buffs()
       for _, buff in ipairs(buffs) do
          radiant.entities.add_buff(self._sv._entity, buff)
       end
+   end
+end
+
+function BaseJob:get_category_profiency(category)
+   return self._sv.category_profiency[category] or 0
+end
+
+function BaseJob:add_category_proficiency(category, factor)
+   if category then
+      local proficiency = self._sv.category_profiency[category] or 0
+      if proficiency == 1 then
+         return
+      elseif proficiency > 1 then
+         self._sv.category_profiency[category] = 1
+         self.__saved_variables:mark_changed()
+         return
+      end
+
+      -- determine amount of proficiency to add based on diligence attribute
+      local diligence = 1
+      local attributes_component = self._sv._entity:get_component('stonehearth:attributes')
+      if attributes_component then
+         -- normal proficiency percentage gain (100%) should happen with average base diligence (35)
+         diligence = math.max(10, attributes_component:get_attribute('diligence') + 65) * 0.01
+      end
+      local amount = math.max(0, (factor or 1)) * diligence * constants.crafting.CATEGORY_PROFICIENCY_GAIN_FACTOR
+      log:debug('adding category proficiency of %s to %s', amount, category)
+      self._sv.category_profiency[category] = math.min(1, proficiency + amount)
+      self.__saved_variables:mark_changed()
    end
 end
 

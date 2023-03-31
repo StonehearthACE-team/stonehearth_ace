@@ -1,4 +1,7 @@
 local rng = _radiant.math.get_default_rng()
+local constants = require 'stonehearth.constants'
+local item_qualities = constants.item_quality
+local crafting_constants = constants.crafting
 local log = radiant.log.create_logger('item_quality_lib')
 
 local item_quality_lib = {}
@@ -9,7 +12,7 @@ function item_quality_lib.get_quality(quality, max_quality)
    if type(quality) == 'table' then
       return item_quality_lib.get_random_quality(quality, max_quality)
    else
-      return math.min(quality or 1, max_quality or stonehearth.constants.item_quality.MASTERWORK)
+      return math.min(quality or 1, max_quality or item_qualities.MASTERWORK)
    end
 end
 
@@ -17,7 +20,7 @@ function item_quality_lib.get_random_quality(quality_chances, max_quality)
    local roll = rng:get_real(0, 1)
    local output_quality = 1
    if not max_quality then
-      max_quality = stonehearth.constants.item_quality.MASTERWORK
+      max_quality = item_qualities.MASTERWORK
    end
 
    local cumulative_chance = 0
@@ -95,8 +98,8 @@ end
 function item_quality_lib.get_max_random_quality(player_id)
    local town = stonehearth.town:get_town(player_id)
    return (town and town:get_town_bonus('stonehearth:town_bonus:guildmaster') ~= nil
-            and stonehearth.constants.item_quality.MASTERWORK)
-            or stonehearth.constants.item_quality.EXCELLENT
+            and item_qualities.MASTERWORK)
+            or item_qualities.EXCELLENT
 end
 
 function item_quality_lib.add_quality_tables(qt1, qt2)
@@ -136,8 +139,8 @@ function item_quality_lib.modify_quality_table(qualities, ingredient_quality)
 end
 
 -- moved from crafter_component:_calculate_quality to allow for uses outside strictly crafting
-function item_quality_lib.get_quality_table(hearthling, recipe_lvl_req, ingredient_quality)
-   local quality_distribution = stonehearth.constants.crafting.ITEM_QUALITY_CHANCES
+function item_quality_lib.get_quality_table(hearthling, recipe_category, ingredient_quality)
+   local quality_distribution = crafting_constants.ITEM_QUALITY_CHANCES
    -- Towns with the Guildmaster bonus can produce masterwork items.
    local town = stonehearth.town:get_town(hearthling:get_player_id())
    if town then
@@ -148,22 +151,29 @@ function item_quality_lib.get_quality_table(hearthling, recipe_lvl_req, ingredie
       end
    end
 
-   local job_level = hearthling:get_component('stonehearth:job'):get_current_job_level()
+   local job_comp = hearthling:get_component('stonehearth:job')
+   local job_level = job_comp:get_current_job_level()
    -- Make sure range falls between 1 and max number of levels listed in chances table
    local index = math.min(math.max(1, job_level), #quality_distribution)
    local base_chances_table = quality_distribution[index]
 
    -- Modify item quality chances based on the level requirement of the recipe
-   -- Paul: also consider the ingredient quality
+   -- ACE: also consider the ingredient quality, and change level multiplier to consider category proficiency instead
    local calculated_chances = {}
    local remaining = 1
+   --local lvl_mult = recipe_lvl_req and (1 + (0.4 * (job_level - math.max(1, recipe_lvl_req)))) or 1
+   local category_crafts_mult = 1
+   if recipe_category then
+      category_crafts_mult = 1 + (crafting_constants.CATEGORY_PROFICIENCY_MAX_HIGHER_QUALITY_MULT - 1) *
+            math.min(1, job_comp:get_curr_job_controller():get_category_profiency(recipe_category))
+   end
+
    for i=#base_chances_table, 1, -1 do
       local value = base_chances_table[i]
       local quality, chance = value[1], value[2]
       if i > 1 then
-         local lvl_mult = recipe_lvl_req and (1 + (0.4 * (job_level - math.max(1, recipe_lvl_req)))) or 1
          local ing_mult = ingredient_quality and (1 + 2 ^ (1 + ingredient_quality - quality) - 2 ^ (2 - quality)) or 1
-         chance = math.floor(1000 * chance * lvl_mult * ing_mult) * 0.001
+         chance = math.floor(1000 * chance * category_crafts_mult * ing_mult) * 0.001
       else
          chance = remaining
       end
@@ -187,9 +197,10 @@ function item_quality_lib.get_quality_table(hearthling, recipe_lvl_req, ingredie
             local value = calculated_chances[i]
             local quality, chance = value[1], value[2]
             --add our flat chance to this quality tier's chance
-            calculated_chances[i][2] = math.max(chance + flat_quality_chance_modifier, 0)
+            local modifier = math.max(chance + flat_quality_chance_modifier, 0) - chance
+            calculated_chances[i][2] = chance + modifier
             -- ...and remove it from Standard Quality
-            calculated_chances[STANDARD_QUALITY_INDEX][2] = calculated_chances[STANDARD_QUALITY_INDEX][2] - flat_quality_chance_modifier
+            calculated_chances[STANDARD_QUALITY_INDEX][2] = math.max(calculated_chances[STANDARD_QUALITY_INDEX][2] - modifier, 0)
          end
       end
    end
@@ -199,7 +210,7 @@ end
 
 function item_quality_lib.get_max_crafting_quality(player_id)
    -- Towns with the Guildmaster bonus can produce masterwork items.
-   local quality = stonehearth.constants.item_quality.EXCELLENT or 3
+   local quality = item_qualities.EXCELLENT or 3
    local town = stonehearth.town:get_town(player_id)
    if town then
       for _, bonus in pairs(town:get_active_town_bonuses()) do
