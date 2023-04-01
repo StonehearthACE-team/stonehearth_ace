@@ -19,7 +19,7 @@ function BaseJob:initialize()
    -- ADDED FOR ACE
    --self._sv.max_num_training = {}
    self._sv.disabled_crafting_categories = {}
-   self._sv.category_profiency = {}
+   self._sv.category_profiencies = {}
    self._sv._lookup_values = {}
    self._sv._can_repair_as_jobs = {}
    self._sv._can_repair_as_any_job = false
@@ -486,17 +486,27 @@ function BaseJob:_add_current_role_buffs()
    end
 end
 
-function BaseJob:get_category_profiency(category)
-   return self._sv.category_profiency[category] or 0
+-- ACE: used by reembark to get/set all category proficiencies at once
+function BaseJob:get_category_proficiencies()
+   return self._sv.category_profiencies
+end
+
+function BaseJob:set_category_proficiencies(proficiences)
+   self._sv.category_profiencies = proficiences or {}
+   self.__saved_variables:mark_changed()
+end
+
+function BaseJob:get_category_proficiency(category)
+   return self._sv.category_profiencies[category] or 0
 end
 
 function BaseJob:add_category_proficiency(category, factor)
    if category then
-      local proficiency = self._sv.category_profiency[category] or 0
+      local proficiency = self._sv.category_profiencies[category] or 0
       if proficiency == 1 then
          return
       elseif proficiency > 1 then
-         self._sv.category_profiency[category] = 1
+         self._sv.category_profiencies[category] = 1
          self.__saved_variables:mark_changed()
          return
       end
@@ -510,7 +520,7 @@ function BaseJob:add_category_proficiency(category, factor)
       end
       local amount = math.max(0, (factor or 1)) * diligence * constants.crafting.CATEGORY_PROFICIENCY_GAIN_FACTOR
       log:debug('adding category proficiency of %s to %s', amount, category)
-      self._sv.category_profiency[category] = math.min(1, proficiency + amount)
+      self._sv.category_profiencies[category] = math.min(1, proficiency + amount)
       self.__saved_variables:mark_changed()
    end
 end

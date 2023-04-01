@@ -165,7 +165,7 @@ function item_quality_lib.get_quality_table(hearthling, recipe_category, ingredi
    local category_crafts_mult = 1
    if recipe_category then
       category_crafts_mult = 1 + (crafting_constants.CATEGORY_PROFICIENCY_MAX_HIGHER_QUALITY_MULT - 1) *
-            math.min(1, job_comp:get_curr_job_controller():get_category_profiency(recipe_category))
+            math.min(1, job_comp:get_curr_job_controller():get_category_proficiency(recipe_category))
    end
 
    for i=#base_chances_table, 1, -1 do

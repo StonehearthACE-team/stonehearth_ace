@@ -387,6 +387,7 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
    if population_override ~= '' and population_override ~= kingdom then
       job:set_population_override(population_override)
    end
+   -- leave job_levels separate from jobs data for backwards compatibility
    if citizen_spec.job_levels then
       for job_uri, level in pairs(citizen_spec.job_levels) do
          job:promote_to(job_uri, { skip_visual_effects = true, dont_drop_talisman = true })
@@ -395,6 +396,15 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
          end
       end
    end
+   if citizen_spec.jobs then
+      for job_uri, job_data in pairs(citizen_spec.jobs) do
+         local job_controller = job:get_controller(job_uri)
+         if job_controller then
+            job_controller:set_category_proficiencies(job_data.category_profiencies)
+         end
+      end
+   end
+
    if citizen_spec.current_job then
       job:promote_to(citizen_spec.current_job, { skip_visual_effects = true, dont_drop_talisman = true })
    end

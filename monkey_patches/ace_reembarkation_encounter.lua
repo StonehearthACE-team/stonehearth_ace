@@ -116,9 +116,14 @@ function AceReembarkationEncounter:_construct_reembark_record(reembark_choices)
 end
 
 function AceReembarkationEncounter:_get_citizen_record(citizen)
+   -- leave job_levels separate from jobs data for backwards compatibility
    local job_levels = {}
+   local jobs = {}
    for uri, job_controller in pairs(citizen:get_component('stonehearth:job'):get_all_controller()) do
       job_levels[uri] = job_controller:get_job_level()
+      jobs[uri] = {
+         category_profiencies = job_controller:get_category_profiencies()
+      }
    end
 
    local attributes_component = citizen:get_component('stonehearth:attributes')
@@ -165,6 +170,7 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
       model_variant = data.model_variant or stonehearth.constants.population.DEFAULT_GENDER,
       customization = customization_styles,
       job_levels = job_levels,
+      jobs = jobs,
       current_job = citizen:get_component('stonehearth:job'):get_job_uri(),
       allowed_jobs = citizen:get_component('stonehearth:job'):get_allowed_jobs(),
       population_override = population_override,
