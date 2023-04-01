@@ -153,12 +153,12 @@
                   </div>
                {{else}}
                   {{#if view.qualityItemCreationDescription}}
-                     <div id="craftedByDiv">
+                     <div id="craftedByDiv" {{bind-attr class=view.hasPortrait:hasPortrait}}>
                         {{view.qualityItemCreationDescription}}
                      </div>
                   {{/if}}
                   {{#if view.gifterDescription}}
-                     <div id="craftedByDiv">
+                     <div id="craftedByDiv" {{bind-attr class=view.hasPortrait:hasPortrait}}>
                         {{view.gifterDescription}}
                      </div>
                   {{/if}}
