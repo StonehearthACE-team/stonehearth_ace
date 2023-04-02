@@ -56,14 +56,31 @@
          "ordinal": 0.2
       },
       "limit_network_data": {
-         "type": "boolean",
+         "type": "list",
          "host_only": true,
-         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data)",
-         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data_description)",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data.name)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data.description)",
          "on_change": {
             "call": "limit_network_data_setting_changed"
          },
-         "default": true,
+         "values": {
+            "unlimited": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data.unlimited)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data.unlimited_description)"
+            },
+            "limited": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data.limited)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data.limited_description)"
+            },
+            "very_limited": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data.very_limited)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.limit_network_data.very_limited_description)"
+            }
+         },
+         "default": "limited",
          "ordinal": 0.3
       },
       "building_grid_size": {

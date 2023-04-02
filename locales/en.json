@@ -24104,8 +24104,16 @@
                },
                "load_paused": "Load Games Paused",
                "load_paused_description": "When loading a saved game, start it paused instead of immediately resuming at the previous speed. This can help with performance issues and crashes when loading large games.",
-               "limit_network_data": "Limit Network Data Sent",
-               "limit_network_data_description": "Limit the frequency of some transfers of data from server to client(s). This can help with performance issues in multiplayer games.<span class='warn'>WARNING:</span>This will hide players' cursors, but should still render their presence and pings in other ways.",
+               "limit_network_data": {
+                  "name": "Limit Network Data Sent",
+                  "description": "Limit the frequency of some transfers of data from server to client(s). This can help with performance issues in multiplayer games.<span class='warn'>WARNING:</span>This may hide players' cursors and other active presence indicators, but will still render pings.",
+                  "unlimited": "Unlimited",
+                  "unlimited_description": "Default gameplay settings that use frequent updates of multiplayer presence.",
+                  "limited": "Limited",
+                  "limited_description": "Reduce some regular network data usage, and significantly reduce the frequency of multiplayer presence updates.",
+                  "very_limited": "Very Limited",
+                  "very_limited_description": "Reduce some regular network data usage, and eliminate regular multiplayer presence updates."
+               },
                "building_grid_size": "Building Template Snap Grid Size",
                "building_grid_size_description": "Hold the Shift key while placing a building template to snap placement to a square horizontal grid of this size.",
                "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",

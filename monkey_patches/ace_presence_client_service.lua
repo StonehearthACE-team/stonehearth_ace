@@ -21,11 +21,18 @@ end
 AcePresenceClientService._ace_old__check_presence_data_changed = PresenceClientService._check_presence_data_changed
 function AcePresenceClientService:_check_presence_data_changed()
    local updated_presence_data = self._presence_datastore:get_data()
-   if updated_presence_data.limit_data then
+   local limit_data = updated_presence_data.limit_data
+   -- backwards compatibility with previous true/false setting
+   if limit_data == false or limit_data == 'unlimited' then
+      -- no limits
+      self:_destroy_limited_data_call_timer(true)
+   elseif limit_data == 'very_limited' then
+      -- no updates at all
+      self:_destroy_call_timer()
+      self:_destroy_limited_data_call_timer(false)
+   else  -- if true or 'limited'
       -- make sure we're using our limited data timer
       self:_ensure_limited_data_call_timer()
-   else
-      self:_destroy_limited_data_call_timer(true)
    end
 
    self:_ace_old__check_presence_data_changed()
