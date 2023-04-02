@@ -338,6 +338,7 @@ App.StonehearthShopBulletinDialog = App.StonehearthBaseBulletinDialog.extend({
 
       self._sellPalette = self.$('#sellList').stonehearthItemPalette({
          cssClass: 'shopItem',
+         isSelling: true,
          wantedItems: self.get('model.data.shop.wanted_items'),
          itemAdded: function(itemEl, itemData) {
             itemEl.attr('cost', itemData.resale );

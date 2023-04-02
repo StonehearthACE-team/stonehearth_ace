@@ -298,8 +298,12 @@ App.guiHelper = {
       }
       if (options.net_worth || (options.show_net_worth && net_worth)) {
          var netWorthDiv = `<span class="value">${net_worth}</span>`;
-         if (showDiff && catalogData.net_worth && net_worth != catalogData.net_worth) {
-            var diff = net_worth - catalogData.net_worth;
+         var compare_net_worth = catalogData.net_worth;
+         if (compare_net_worth && options.useItemQuality && itemQuality > 1) {
+            compare_net_worth = radiant.applyItemQualityBonus('net_worth', compare_net_worth, itemQuality);
+         }
+         if (showDiff && compare_net_worth && net_worth != compare_net_worth) {
+            var diff = net_worth - compare_net_worth;
             var diffType = (options.invertNetWorthDiffColor ? diff < 0 : diff > 0) ? 'higherValue' : 'lowerValue';
             netWorthDiv += ` (<span class="${diffType}">${(diff > 0 ? '+' : '') + diff}</span>)`;
          }
@@ -317,8 +321,12 @@ App.guiHelper = {
       }
       if (options.appeal || (options.show_appeal && appeal)) {
          var appealDiv = `<span class="value">${appeal}</span>`;
-         if (catalogData.appeal && appeal != catalogData.appeal) {
-            var diff = appeal - catalogData.appeal;
+         var compare_appeal = catalogData.appeal;
+         if (compare_appeal && options.useItemQuality && itemQuality > 1) {
+            compare_appeal = radiant.applyItemQualityBonus('appeal', compare_appeal, itemQuality);
+         }
+         if (compare_appeal && appeal != compare_appeal) {
+            var diff = appeal - compare_appeal;
             appealDiv += ` (<span class="${diff > 0 ? 'higherValue' : 'lowerValue'}">${(diff > 0 ? '+' : '') + diff}</span>)`;
          }
          netWorthAppeal += `<img class="imgHeader appeal"/>${appealDiv}`;

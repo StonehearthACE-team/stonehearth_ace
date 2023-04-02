@@ -18,6 +18,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       sortField: 'display_name',
       wantedItems: null,
       isBuying: false,
+      isSelling: false,
    },
 
    _create: function() {
@@ -563,7 +564,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
          hasOptions = true;
       }
 
-      if (this.options.isBuying) {
+      if (this.options.isBuying || this.options.isSelling) {
          hasOptions = true;
       }
 
@@ -584,6 +585,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
             appeal: item.appeal,
             net_worth: cost,
             invertNetWorthDiffColor: this.options.isBuying,
+            useItemQuality: this.options.isBuying || this.options.isSelling,
          };
       }
    },
