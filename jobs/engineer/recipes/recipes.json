@@ -27,6 +27,12 @@
       },
       "gadget_parts": {
          "recipes": {
+            "metal_bits_hard": {
+					"recipe": "file(metal_bits_hard_recipe.json)"
+				},
+				"metal_bits_soft": {
+					"recipe": "file(metal_bits_soft_recipe.json)"
+				},
             "lock": {
                "recipe": "file(lock_recipe.json)"
             }

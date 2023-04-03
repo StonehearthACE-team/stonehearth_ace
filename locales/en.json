@@ -7750,6 +7750,14 @@
             "bronze_gear_recipe": {
                "flavor": "Luckily it has teeth that do not require brushing"
             },
+            "metal_bits_hard_recipe": {
+               "recipe_name": "Hard Metal Bits (x4)",
+               "flavor": "The Engineer is able to more efficiently tinker with metal parts"
+            },
+            "metal_bits_soft_recipe": {
+               "recipe_name": "Soft Metal Bits (x4)",
+               "flavor": "The Engineer is able to more efficiently tinker with metal parts"
+            },
             "storage_name": "Storage"
          },
          "engineer_description": {
@@ -24329,6 +24337,13 @@
             "curiosity": {
                "bullet_points": {
                   "000": "The value itself represents a bonus percentage added over every experience gain."
+               }
+            },
+            "diligence": {
+               "description": "How long this hearthling can work before needing rest and how commited to their work they are.",
+               "bullet_points": {
+                  "001": "Determines repair speed",
+                  "002": "Increases the proficiency gained per craft"
                }
             },
             "health": {
