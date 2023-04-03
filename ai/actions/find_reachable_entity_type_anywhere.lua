@@ -96,6 +96,12 @@ function FindReachableEntityTypeAnywhere:start_thinking(ai, entity, args)
    -- This is a hotspot, and creating loggers here is expensive, so only enable this for debugging.
    -- self._log = ai:get_log()
 
+   -- if we're not in the world, why are we thinking about this?
+   if not self._location then
+      ai:set_think_output({})
+      return
+   end
+
    -- If the filter is for a no-material object, then use 'that'.
    if args.material == NO_MATERIAL then
       ai:set_think_output({})
