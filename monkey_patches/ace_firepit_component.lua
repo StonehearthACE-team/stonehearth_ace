@@ -26,6 +26,12 @@ function AceFirepitComponent:activate()
    self:_ace_old_activate()
 end
 
+AceFirepitComponent._ace_old_destroy = FirepitComponent.__user_destroy
+function AceFirepitComponent:destroy()
+   self.__destroying = true
+   self:_ace_old_destroy()
+end
+
 function AceFirepitComponent:get_fuel_material()
    return self._fuel
 end
@@ -122,7 +128,6 @@ function AceFirepitComponent:_shutdown()
    end
    
    self:_ace_old_shutdown()
-
 end
 
 function AceFirepitComponent:_start_or_stop_firepit()
@@ -190,7 +195,7 @@ function AceFirepitComponent:_extinguish()
    
    self:_ace_old_extinguish()
 
-   if was_lit then
+   if was_lit and not self.__destroying then
       if self._buff_source then
          local buff = self._buff
          radiant.entities.remove_buff(self._entity, buff)

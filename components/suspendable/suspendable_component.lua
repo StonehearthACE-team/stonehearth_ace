@@ -52,6 +52,7 @@ end
 function SuspendableComponent:_unregister_with_town()
    local town = self._player_id and stonehearth.town:get_town(self._player_id)
    if town and not stonehearth.player:is_player_npc(self._player_id) then
+      --log:debug('%s UNregistering suspendable entity with town %s', self._entity, self._player_id)
       town:unregister_suspendable_entity(self._entity)
    end
 end

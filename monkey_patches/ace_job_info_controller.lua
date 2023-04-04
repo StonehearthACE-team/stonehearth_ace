@@ -254,9 +254,16 @@ function AceJobInfoController:_build_craftable_recipe_list(recipe_index_url)
                --we've lost the recipe, for example, because it's been overridden by a mod
                self._sv.recipe_list[category].recipes[recipe_short_key] = nil
             else
-               recipe_data.recipe = radiant.deep_copy(radiant.resources.load_json(recipe_data.recipe))
-               self:_initialize_recipe_data(recipe_key, recipe_data.recipe)
-               recipe_data.recipe.category = category
+               local recipe_json = radiant.resources.load_json(recipe_data.recipe, true, false)
+               radiant.verify(recipe_json, 'unable to load crafting recipe %s for job %s! invalid json path %s', recipe_key, self._sv.alias, recipe_data.recipe or 'NIL')
+
+               if not recipe_json then
+                  self._sv.recipe_list[category].recipes[recipe_short_key] = nil
+               else
+                  recipe_data.recipe = radiant.deep_copy(recipe_json)
+                  self:_initialize_recipe_data(recipe_key, recipe_data.recipe)
+                  recipe_data.recipe.category = category
+               end
             end
          end
       end

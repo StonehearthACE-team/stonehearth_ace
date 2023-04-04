@@ -12,8 +12,10 @@ local SUSPENDED_BUFF = 'stonehearth:buffs:hidden:suspended'
 
 AceTown._ace_old__pre_activate = Town._pre_activate
 function AceTown:_pre_activate()
+   -- this function is in a race condition with the suspendable component registering with the town
+   -- so let the _suspendable_entities table get created when necessary and not potentially overridden here
+   self._suspendable_entities = self._suspendable_entities or {}
    self._periodic_interaction_entities = {}
-   self._suspendable_entities = {}
    self._building_material_collection_tasks = {}
    self._default_storage_listener = {}
    self._quest_storage_zones = {}
@@ -27,7 +29,17 @@ end
 
 AceTown._ace_old_activate = Town.activate
 function AceTown:activate(loading)
-   self:_ace_old_activate(loading)
+   -- instead of calling the old function, make sure we pass in to suspend_town that we're loading
+   --self:_ace_old_activate(loading)
+   if loading then
+      local player_id = self._sv.player_id
+      local pop = stonehearth.population:get_population(player_id)
+      if not pop:is_npc() and player_id ~= _radiant.sim.get_host_player_id() and pop:is_camp_placed() then
+         -- If we are loading, suspend this town's hearthlings since the player isn't connected
+         self:suspend_town(true)
+      end
+   end
+
    self:_create_default_storage_listeners()
 end
 
@@ -742,17 +754,18 @@ function AceTown:unregister_periodic_interaction_entity(entity)
 end
 
 AceTown._ace_old_suspend_town = Town.suspend_town
-function AceTown:suspend_town()
+function AceTown:suspend_town(loading)
    -- we're already suspended! don't double-suspend
    -- can happen if client fails to connect and then later succeeds
-   if self._sv._is_suspended then
+   --self._log:debug('%s suspend_town(loading == %s)', self._sv.player_id, tostring(loading))
+   if self._sv._is_suspended and not loading then
       return
    end
 
-   --self._log:error('suspending suspendable entities for town %s...', self._sv.player_id)
+   --self._log:debug('suspending suspendable entities for town %s...', self._sv.player_id)
    self:_suspend_suspendable_entities()
 
-   --self._log:error('suspending town %s...', self._sv.player_id)
+   --self._log:debug('suspending town %s...', self._sv.player_id)
    self:_ace_old_suspend_town()
 end
 
@@ -786,7 +799,6 @@ function AceTown:unregister_suspendable_entity(entity)
 end
 
 function AceTown:_suspend_suspendable_entities()
-   -- suspend farms (growing); evolve/herbalist_planter also? this should be made generic as a separate component (like an interface)
    for _, entity in pairs(self._suspendable_entities) do
       local suspendable = entity:get_component('stonehearth_ace:suspendable')
       suspendable:town_suspended()

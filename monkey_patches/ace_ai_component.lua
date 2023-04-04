@@ -29,7 +29,7 @@ function AceAIComponent:town_suspended()
    -- check if the entity is currently mounted and save that mount entity, then dismount
    local parent = radiant.entities.get_parent(self._entity)
    local mount_component = parent and parent:get_component('stonehearth:mount')
-   --log:debug('%s town suspended, checking mounted status in %s...', self._entity, parent)
+   --log:debug('%s town suspended, checking mounted status in %s...', self._entity, tostring(parent))
    if mount_component and mount_component:is_in_use() and mount_component:get_user() == self._entity then
       log:debug('%s is mounted in %s while town suspending; dismounting!', self._entity, parent)
       self._sv._suspended_mount = parent
