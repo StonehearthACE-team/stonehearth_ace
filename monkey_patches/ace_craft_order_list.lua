@@ -139,7 +139,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
 
          local player_jobs_controller = stonehearth.job:get_jobs_controller(player_id)
          local child_order = player_jobs_controller:request_craft_product(
-               ingredient.uri or ingredient.material, missing, building, false, condition.order_index ~= nil, condition, associated_orders)
+               ingredient_id, missing, building, false, condition.order_index ~= nil, condition, associated_orders, recipe)
          if child_order and child_order ~= true then
             local associated_order = child_order:set_associated_orders(associated_orders)
             associated_order.ingredient_per_craft = missing

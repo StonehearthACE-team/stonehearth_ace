@@ -47,23 +47,23 @@ function AcePlayerJobsController:_ensure_all_job_indexes()
    end
 end
 
-function AcePlayerJobsController:request_craft_product(product_uri, amount, building, require_exact, insert_order, condition, associated_orders)
-   log:debug('request_craft_product( %s, %s, %s, %s, %s, %s, %s )',
-         product_uri, amount, tostring(building), tostring(require_exact), tostring(insert_order), tostring(condition), tostring(associated_orders))
+function AcePlayerJobsController:request_craft_product(product_uri, amount, building, require_exact, insert_order, condition, associated_orders, current_recipe)
+   log:debug('request_craft_product( %s, %s, %s, %s, %s, %s, %s, %s )',
+         product_uri, amount, tostring(building), tostring(require_exact), tostring(insert_order), tostring(condition), tostring(associated_orders), tostring(current_recipe))
    -- first try it with requiring exact; that way we don't default to a secondary option if the primary is available
    if not require_exact then
-      local result = self:request_craft_product(product_uri, amount, building, true, insert_order, condition, associated_orders)
+      local result = self:request_craft_product(product_uri, amount, building, true, insert_order, condition, associated_orders, current_recipe)
       if result ~= nil then
          return result
       end
    end
-   
+
    -- TODO: this can be reworked to call crafter_info directly
    -- then it can just do the sort and pick the best recipe to use
    -- and call that job_info controller only
    -- craft_order_list will need to be patched to call this then
    local products = not require_exact and radiant.entities.get_alternate_uris(product_uri) or {[product_uri] = true}
-   local choices = self:_get_recipe_info_from_products(products, amount)
+   local choices = self:_get_recipe_info_from_products(products, amount, associated_orders, current_recipe)
 
    -- prefer craftable recipes (has job and level requirement)
    table.sort(choices, function(a, b)
@@ -125,7 +125,7 @@ end
 
 -- Used to get a recipe if it can be used to craft `ingredient`.
 -- Returns information such as what the recipe itself and the order list used for it.
-function AcePlayerJobsController:_get_recipe_info_from_products(products, amount)
+function AcePlayerJobsController:_get_recipe_info_from_products(products, amount, associated_orders, current_recipe)
    -- Take the cheapest recipe on a per-product basis
    local choices = {}
    local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(self._sv.player_id)
@@ -135,8 +135,25 @@ function AcePlayerJobsController:_get_recipe_info_from_products(products, amount
       if consider then
          local possible = crafter_info:get_possible_recipes(product)
          for recipe_info, count in pairs(possible) do
+            local allowed = true
+            -- first make sure the recipe isn't already included in our associated orders or current recipe
+            if current_recipe and recipe_info.recipe.job_alias == current_recipe.job_alias and recipe_info.recipe.recipe_key == current_recipe.recipe_key then
+               allowed = false
+            end
+            if allowed and associated_orders then
+               for _, associated_order in ipairs(associated_orders) do
+                  local recipe = associated_order.order:get_recipe()
+                  if recipe_info.recipe.job_alias == recipe.job_alias and recipe_info.recipe.recipe_key == recipe.recipe_key then
+                     allowed = false
+                     break
+                  end
+               end
+            end
+
             -- verify that the recipe is accessible (if it requires unlocking, it is unlocked)
-            if recipe_info.job_info:is_recipe_unlocked(recipe_info.recipe.recipe_key) then
+            if not allowed then
+               log:error('queuing %s recipe %s would create a loop!', recipe_info.recipe.job_alias, recipe_info.recipe.recipe_key)
+            elseif recipe_info.job_info:is_recipe_unlocked(recipe_info.recipe.recipe_key) then
                -- if we only want to craft one, we don't want to divide the cost by the number produced
                table.insert(choices, {
                   recipe_info = recipe_info,

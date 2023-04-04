@@ -270,6 +270,7 @@ function AceJobInfoController:_initialize_recipe_data(recipe_key, recipe_data)
    if not recipe_data.level_requirement then
       recipe_data.level_requirement = 0
    end
+   recipe_data.job_alias = self._sv.alias
    recipe_data.recipe_key = recipe_key
    if recipe_data.produces then
       local first_product = recipe_data.produces[1]
