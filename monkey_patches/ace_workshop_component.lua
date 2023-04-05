@@ -65,6 +65,12 @@ function AceWorkshopComponent:cancel_crafting_progress()
    self:finish_crafting_progress()
 end
 
+function AceWorkshopComponent:destroy_working_ingredient()
+   if self._sv.crafting_progress then
+      self._sv.crafting_progress:destroy_working_ingredient()
+   end
+end
+
 function AceWorkshopComponent:_redistribute_ingredients()
    local location = radiant.entities.get_world_grid_location(self._entity)
    local ec_children = {}
@@ -73,6 +79,8 @@ function AceWorkshopComponent:_redistribute_ingredients()
       for id, child in entity_container:each_child() do
          if child and child:is_valid() then
             ec_children[id] = child
+            -- make sure it's visible, in case crafting hid it
+            child:get_component('render_info'):set_visible(true)
          end
       end
 

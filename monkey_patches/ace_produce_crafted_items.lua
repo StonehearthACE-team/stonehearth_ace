@@ -21,6 +21,8 @@ function AceProduceCraftedItems:run(ai, entity, args)
          radiant.entities.destroy_entity(item)
       end
 
+      args.workshop:get_component('stonehearth:workshop'):destroy_working_ingredient()
+
       args.order:on_item_created(primary_output)
       args.order:progress_to_next_stage(entity)  -- Paul: changed this line
    -- if this order is done crafting, but we re-entered this action, we may have gotten interrupted
