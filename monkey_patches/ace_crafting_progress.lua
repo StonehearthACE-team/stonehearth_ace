@@ -88,10 +88,12 @@ function AceCraftingProgress:crafting_started()
 
             local working_ingredient = radiant.entities.create_entity(uri, {owner = workshop})
             local container_entity_data = radiant.entities.get_entity_data(workshop, 'stonehearth:table')
-            local offset = container_entity_data and container_entity_data.drop_offset and radiant.util.to_point3(container_entity_data.drop_offset)
+            local offset = container_entity_data and radiant.util.to_point3(container_entity_data.drop_offset)
             radiant.entities.add_child(workshop, working_ingredient)
             if offset then
-               working_ingredient:add_component('mob'):move_to(offset)
+               local mob = working_ingredient:add_component('mob')
+               offset = offset:rotated(mob:get_facing())
+               mob:move_to(offset)
             end
             self._sv._working_ingredient = working_ingredient
          end
