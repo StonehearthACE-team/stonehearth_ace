@@ -20,6 +20,7 @@ function AceCraftingProgress:create(order, crafter)
    local recipe = order:get_recipe()
    crafter = crafter or order:get_current_crafter()
    local crafter_component = crafter:get_component('stonehearth:crafter')
+   local workshop = crafter_component:get_current_workshop()
    self._sv.crafter_id = crafter:get_id()
 
    --The recipes may call for different effects (based on the workbench type)
@@ -41,7 +42,8 @@ function AceCraftingProgress:create(order, crafter)
       game_seconds = secs_per_work_unit * recipe.work_units
    end
 
-   self._sv.working_ingredient_uri = recipe.working_ingredient
+   local container_entity_data = radiant.entities.get_entity_data(workshop, 'stonehearth:table')
+   self._sv.working_ingredient_uri = recipe.working_ingredient or (container_entity_data and container_entity_data.working_ingredient)
 
    self._sv.workshop_modifier = 1
    self._sv.game_seconds_total_raw = game_seconds
