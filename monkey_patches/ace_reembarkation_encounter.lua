@@ -122,7 +122,7 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
    for uri, job_controller in pairs(citizen:get_component('stonehearth:job'):get_all_controller()) do
       job_levels[uri] = job_controller:get_job_level()
       jobs[uri] = {
-         category_profiencies = job_controller:get_category_profiencies()
+         category_profiencies = job_controller:get_category_proficiencies()
       }
    end
 
