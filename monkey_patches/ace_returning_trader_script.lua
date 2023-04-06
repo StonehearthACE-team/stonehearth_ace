@@ -10,8 +10,8 @@ local log = radiant.log.create_logger('returning_trader_script')
 
 AceReturningTrader._ace_old_destroy = ReturningTrader.__user_destroy
 function AceReturningTrader:destroy()
-   self:_ace_old_destroy()
    self:_destroy_quest_storage()
+   self:_ace_old_destroy()
 end
 
 function AceReturningTrader:_destroy_quest_storage()
@@ -70,6 +70,7 @@ function AceReturningTrader:_destroy_node()
       self._sv.resolved_out_edge = out_edge
       self._sv.ctx.arc:trigger_next_encounter(self._sv.ctx)
       self.__saved_variables:mark_changed()
+      self:_destroy_quest_storage()
    else
       self:destroy()
       assert(self._sv.ctx, 'No ctx saved in returning trader ecnounter script!')

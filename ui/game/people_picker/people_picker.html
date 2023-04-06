@@ -12,6 +12,8 @@
                            <div class="banner">
                               <img class="jobIcon" src="/stonehearth_ace/ui/images/no_owner.png">
                            </div>
+                        </td>
+                        <td class="selectable_citizen_row">
                            <div class="name">
                               {{i18n stonehearth_ace:ui.game.people_picker.no_owner}}
                               <div class="additionalText">
@@ -34,6 +36,8 @@
                               <div class="banner">
                                  <img class="jobIcon" src="/stonehearth_ace/ui/images/medic_patient.png">
                               </div>
+                           </td>
+                           <td class="selectable_citizen_row">
                               <div class="name">
                                  {{i18n stonehearth_ace:ui.game.people_picker.reserve_for_medic_patients}}
                                  <div class="additionalText">
@@ -57,6 +61,8 @@
                                     <div class="banner">
                                        <img class="jobIcon" src="/stonehearth/data/images/backpack.png">
                                     </div>
+                                 </td>
+                                 <td class="selectable_citizen_row">
                                     <div class="name">
                                        {{i18n stonehearth:ui.game.people_picker.reserve_for_travelers}}
                                        <div class="additionalText">
@@ -90,13 +96,14 @@
    {{#if view.shouldShow}}
       <td class="selectable_citizen_row">
          <div class="banner"><img class="jobIcon" {{bind-attr src=view.model.stonehearth:job.class_icon}}/></div>
+      </td>
+      <td class="selectable_citizen_row">
          <div class="name">
             {{i18n_key view.model.stonehearth:unit_info.display_name self=view.model}}
             <div class="additionalText">
                {{i18n_key view.additionalText}}
             </div>
          </div>
-
       </td>
       <td>
          <a {{bind-attr id=command.name}} href="#" {{action "selectPerson" view.model target="view"}} class='uisounds'>
