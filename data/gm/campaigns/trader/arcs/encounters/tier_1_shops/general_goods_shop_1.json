@@ -15,12 +15,17 @@
                   "random": {
                      "category": [
                         "food",
+								"food_prepared",
+								"food_animal",
                         "drink",
+								"drink_prepared",
                         "cooking_ingredient",
                         "brewing_ingredient",
                         "refined",
                         "armor",
+								"civillian_equipment",
                         "weapons",
+								"healing_item",
                         "consumable"
                      ],
                      "exclude_material": [
@@ -39,7 +44,10 @@
                "items_matching": {
                   "resources": {
                      "category": [
-                        "resources"
+                        "resources",
+								"resources_mineral",
+								"resources_animal",
+								"resources_fiber"
                      ]
                   }
                },

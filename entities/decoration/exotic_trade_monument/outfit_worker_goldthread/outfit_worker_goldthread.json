@@ -3,13 +3,38 @@
       "stonehearth:equipment_piece": {
          "injected_buffs": [
             "stonehearth_ace:buffs:weather:hot_resist"
-         ]
+         ],
+         "conditional_values": {
+            "season": {
+               "winter": -2,
+               "autumn": -1,
+               "spring": -1,
+               "summer": 0
+            }
+         }
       }
    },
    "entity_data": {
+      "stonehearth:net_worth": {
+         "rarity": "rare",
+         "shop_info": {
+            "shopkeeper_level": 3
+         }
+      },
       "stonehearth:catalog": {
          "category": "civillian_equipment",
-         "icon": "file(outfit_worker_goldthread.png)"
+         "icon": "file(outfit_worker_goldthread.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags":[
+            "worker_outfit",
+            "civillian_equipment",
+            "hot_outfit",
+            "upgraded",
+            "cloth",
+            "rc_made",
+            "stockpile_equipment"]
       }
    }
 }
