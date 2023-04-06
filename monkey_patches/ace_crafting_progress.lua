@@ -91,9 +91,7 @@ function AceCraftingProgress:crafting_started()
             local offset = container_entity_data and radiant.util.to_point3(container_entity_data.drop_offset)
             radiant.entities.add_child(workshop, working_ingredient)
             if offset then
-               local mob = working_ingredient:add_component('mob')
-               offset = offset:rotated(mob:get_facing())
-               mob:move_to(offset)
+               working_ingredient:add_component('mob'):move_to(offset:rotated(radiant.entities.get_facing(workshop)))
             end
             self._sv._working_ingredient = working_ingredient
          end
