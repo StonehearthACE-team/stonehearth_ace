@@ -59,6 +59,7 @@ end
 
 -- called from town controller (ace_town.lua) when the registered town is suspended
 function SuspendableComponent:town_suspended()
+   --log:debug('%s town_suspended', self._entity)
    -- suspend known timer components; any other components that want to be suspended can be specified by monkey-patch
    for component_name, suspendable in pairs(self._components) do
       if suspendable then

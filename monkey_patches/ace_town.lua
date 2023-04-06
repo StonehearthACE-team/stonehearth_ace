@@ -757,15 +757,15 @@ AceTown._ace_old_suspend_town = Town.suspend_town
 function AceTown:suspend_town(loading)
    -- we're already suspended! don't double-suspend
    -- can happen if client fails to connect and then later succeeds
-   --self._log:debug('%s suspend_town(loading == %s)', self._sv.player_id, tostring(loading))
+   --self._log:error('%s suspend_town(loading == %s)', self._sv.player_id, tostring(loading))
    if self._sv._is_suspended and not loading then
       return
    end
 
-   --self._log:debug('suspending suspendable entities for town %s...', self._sv.player_id)
+   --self._log:error('suspending suspendable entities for town %s...', self._sv.player_id)
    self:_suspend_suspendable_entities()
 
-   --self._log:debug('suspending town %s...', self._sv.player_id)
+   --self._log:error('suspending town %s...', self._sv.player_id)
    self:_ace_old_suspend_town()
 end
 

@@ -19,6 +19,32 @@ function AceShepherdPastureComponent:create()
    self._sv.collect_strays = collect_strays
 end
 
+AceShepherdPastureComponent._ace_old_restore = ShepherdPastureComponent.restore
+function AceShepherdPastureComponent:restore()
+   self:_ace_old_restore()
+
+   if self._sv.pasture_type then
+      -- make sure animals all exist
+      local had_invalid
+      local inventory = stonehearth.inventory:get_inventory(self._entity)
+      for id, critter in pairs(self._sv.tracked_critters) do
+         local animal = critter.entity
+         if not animal or not animal:is_valid() then
+            self._sv.tracked_critters[id] = nil
+            had_invalid = true
+         elseif inventory then
+            -- make sure this animal isn't part of the player's inventory, thus bugging out town suspension
+            -- like if they used the debug item stamper to add it... Kita!
+            inventory:remove_item(id)
+         end
+      end
+
+      if had_invalid then
+         self.__saved_variables:mark_changed()
+      end
+   end
+end
+
 AceShepherdPastureComponent._ace_old_activate = ShepherdPastureComponent.activate
 function AceShepherdPastureComponent:activate()
    self:_ace_old_activate()
