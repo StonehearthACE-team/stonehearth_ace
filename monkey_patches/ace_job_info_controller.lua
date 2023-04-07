@@ -250,12 +250,14 @@ function AceJobInfoController:_build_craftable_recipe_list(recipe_index_url)
       if category_data.recipes then
          for recipe_short_key, recipe_data in pairs(category_data.recipes) do
             local recipe_key = category .. ":" .. recipe_short_key
-            if recipe_data.recipe == "" then
+            if not recipe_data.recipe then
+               log:debug('missing recipe %s for job %s!', recipe_key, self._sv.alias)
+            elseif recipe_data.recipe == "" then
                --we've lost the recipe, for example, because it's been overridden by a mod
                self._sv.recipe_list[category].recipes[recipe_short_key] = nil
             else
                local recipe_json = radiant.resources.load_json(recipe_data.recipe, true, false)
-               radiant.verify(recipe_json, 'unable to load crafting recipe %s for job %s! invalid json path %s', recipe_key, self._sv.alias, recipe_data.recipe or 'NIL')
+               radiant.verify(recipe_json, 'unable to load crafting recipe %s for job %s! invalid json path %s', recipe_key, self._sv.alias, tostring(recipe_data.recipe))
 
                if not recipe_json then
                   self._sv.recipe_list[category].recipes[recipe_short_key] = nil
