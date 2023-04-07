@@ -65,14 +65,14 @@ function AceReturningTrader:_destroy_node()
    end
 
    log:debug('destroying node, progressing to out_edge: %s', tostring(out_edge))
+   
+   self:destroy()
 
    if out_edge then
       self._sv.resolved_out_edge = out_edge
       self._sv.ctx.arc:trigger_next_encounter(self._sv.ctx)
       self.__saved_variables:mark_changed()
-      self:_destroy_quest_storage()
    else
-      self:destroy()
       assert(self._sv.ctx, 'No ctx saved in returning trader ecnounter script!')
       game_master_lib.destroy_node(self._sv.ctx.encounter, self._sv.ctx.parent_node)
    end
