@@ -3,9 +3,11 @@ local Region3 = _radiant.csg.Region3
 local rng = _radiant.math.get_default_rng()
 local log = radiant.log.create_logger('farmer_field')
 local FarmerFieldComponent = require 'stonehearth.components.farmer_field.farmer_field_component'
-local farming_lib = require 'stonehearth_ace.lib.farming.farming_lib'
+local pattern_lib = require 'stonehearth_ace.lib.pattern.pattern_lib'
 local resources_lib = require 'stonehearth_ace.lib.resources.resources_lib'
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
+local constants = require 'stonehearth.constants'
+local farming_constants = constants.farming
 
 local FERTILIZER_MODEL_FAILSAFE = {
    -- defaults for unknown field types:
@@ -221,7 +223,7 @@ end
 
 function AceFarmerFieldComponent:_load_field_type()
    self._field_type_data = stonehearth.farming:get_field_type(self._sv.field_type or 'farm') or {}
-   self._field_pattern = self._field_type_data.pattern or farming_lib.DEFAULT_PATTERN
+   self._field_pattern = self._field_type_data.pattern or farming_constants.DEFAULT_PATTERN
    self._field_border = self._field_type_data.border or 0
    self._sv.allow_disable_harvest = self._field_type_data.allow_disable_harvest
    self._sv.allow_fertilizing = self._field_type_data.allow_fertilizing ~= false
@@ -258,16 +260,16 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotati
    soil_layer_region:modify(function(cursor)
       for x = 1, size.x do
          for y = 1, size.y do
-            local location_type = farming_lib.LOCATION_TYPES.EMPTY
+            local location_type = farming_constants.location_types.EMPTY
             local xb, yb = x - border, y - border
             if xb >= 1 and yb >= 1 and xb <= xb_max and yb <= yb_max then
-               local rot_x, rot_y = farming_lib.get_crop_coords(xb_max, yb_max, self._sv.rotation, xb, yb)
-               location_type = farming_lib.get_location_type(self._field_pattern, rot_x, rot_y)
+               local rot_x, rot_y = pattern_lib.get_pattern_coords(xb_max, yb_max, self._sv.rotation, xb, yb)
+               location_type = pattern_lib.get_location_type(self._field_pattern, rot_x, rot_y)
             end
 
-            if location_type == farming_lib.LOCATION_TYPES.EMPTY then
+            if location_type == farming_constants.location_types.EMPTY then
                cursor:subtract_point(Point3(x - 1, 0, y - 1))
-            elseif location_type == farming_lib.LOCATION_TYPES.CROP then
+            elseif location_type == farming_constants.location_types.CROP then
                max_num_crops = max_num_crops + 1
             end
          end
@@ -289,8 +291,8 @@ function AceFarmerFieldComponent:_is_location_furrow(x, y)
    local xb, yb = x - border, y - border
    local xb_max, yb_max = size.x - border * 2, size.y - border * 2
    if xb >= 1 and yb >= 1 and xb <= xb_max and yb <= yb_max then
-      local rot_x, rot_y = farming_lib.get_crop_coords(xb_max, yb_max, self._sv.rotation, xb, yb)
-      return farming_lib.get_location_type(self._field_pattern, rot_x, rot_y) == farming_lib.LOCATION_TYPES.FURROW
+      local rot_x, rot_y = pattern_lib.get_pattern_coords(xb_max, yb_max, self._sv.rotation, xb, yb)
+      return pattern_lib.get_location_type(self._field_pattern, rot_x, rot_y) == farming_constants.location_types.FURROW
    else
       return false
    end
