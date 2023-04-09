@@ -2,6 +2,7 @@ local XZRegionSelector = require 'stonehearth.services.client.selection.xz_regio
 local selector_util = require 'stonehearth.services.client.selection.selector_util'
 local RulerWidget = require 'stonehearth.services.client.selection.ruler_widget'
 local pattern_lib = require 'stonehearth_ace.lib.pattern.pattern_lib'
+local PatternCalculator = require 'stonehearth_ace.lib.pattern.pattern_calculator'
 
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local Color4 = _radiant.csg.Color4
@@ -244,6 +245,18 @@ function PatternXZRegionSelector:_get_pattern_entity(x, y, max_size)
    return false
 end
 
+function PatternXZRegionSelector:get_rotation()
+   return self._rotation
+end
+
+function PatternXZRegionSelector:get_grid_entity_locations()
+   if self._pattern_calculator then
+      return self._pattern_calculator:get_locations_by_type()
+   end
+
+   return {}
+end
+
 function PatternXZRegionSelector:_initialize_grid()
    self:_destroy_grid_entities()
 
@@ -253,11 +266,10 @@ function PatternXZRegionSelector:_initialize_grid()
    local border = self._border
    local max_size_interior = self._max_size - border * 2
 
-   for x = 1, self._max_size do
+   for x = 1, max_size_interior do
       local row = {}
-      for y = 1, self._max_size do
-         local xb, yb = x - border, y - border
-         local entity = self:_get_pattern_entity(xb, yb, max_size_interior)
+      for y = 1, max_size_interior do
+         local entity = self:_get_pattern_entity(x, y, max_size_interior)
          row[y] = entity
          if entity then
             grid_entities[entity] = false
@@ -296,15 +308,15 @@ function PatternXZRegionSelector:_render_grid_entity_nodes(box)
    local max_size = self._max_size
    local xb_max, yb_max = size.x - border * 2, size.z - border * 2
    local color = self._color
+   self._pattern_calculator = PatternCalculator(self._pattern, self._max_size, self._border)
+      :set_rotation(self._rotation):set_size(size.x, size.z)
 
    self:_hide_grid_entity_nodes()
 
    for x = 1, max_size do
       for y = 1, max_size do
-         local xb, yb = x - border, y - border
-         if xb >= 1 and yb >= 1 and xb <= xb_max and yb <= yb_max then
-            local rot_x, rot_y = pattern_lib.get_pattern_coords(size.x, size.z, self._rotation, x, y)
-            --log:debug('get_crop_coords(%s, %s, %s, %s) = %s, %s', radiant.util.table_tostring(size), rotation, x, y, rot_x, rot_y)
+         local rot_x, rot_y = self._pattern_calculator:get_pattern_coords(x, y)
+         if rot_x and rot_y then
             local entity = self._grid[rot_x][rot_y]
             if entity then
                local location = box.min + Point3(x - 1, 0, y - 1)
