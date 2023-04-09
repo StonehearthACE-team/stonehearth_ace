@@ -8,11 +8,27 @@ local log = radiant.log.create_logger('job_info')
 AceJobInfoController._ace_old_activate = JobInfoController.activate
 function AceJobInfoController:activate()
    self._all_recipes = {}
+   self._proficiency_category_stats = {}
    self:_ace_old_activate()
+
+   self:_initialize_proficiency_category_stats()
+end
+
+function AceJobInfoController:_initialize_proficiency_category_stats()
+   local stats = self._description_json and self._description_json.proficiency_category_stats
+   if stats then
+      for category, stat in pairs(stats) do
+         self._proficiency_category_stats[category] = stat
+      end
+   end
 end
 
 function AceJobInfoController:get_class_name()
    return self._sv.class_name
+end
+
+function AceJobInfoController:get_proficiency_category_stat(category)
+   return self._proficiency_category_stats[category]
 end
 
 function AceJobInfoController:is_enabled()
@@ -247,6 +263,7 @@ function AceJobInfoController:_build_craftable_recipe_list(recipe_index_url)
    self._sv.recipe_list = radiant.deep_copy(radiant.resources.load_json(recipe_index_url).craftable_recipes)
 
    for category, category_data in pairs(self._sv.recipe_list) do
+      self._proficiency_category_stats[category] = category_data.proficiency_category_stat
       if category_data.recipes then
          for recipe_short_key, recipe_data in pairs(category_data.recipes) do
             local recipe_key = category .. ":" .. recipe_short_key

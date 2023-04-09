@@ -520,8 +520,16 @@ function BaseJob:add_category_proficiency(category, factor)
       end
       local amount = math.max(0, (factor or 1)) * diligence * constants.crafting.CATEGORY_PROFICIENCY_GAIN_FACTOR
       log:debug('adding category proficiency of %s to %s', amount, category)
-      self._sv.category_profiencies[category] = math.min(1, proficiency + amount)
+      local new_proficiency = math.min(1, proficiency + amount)
+      self._sv.category_profiencies[category] = new_proficiency
       self.__saved_variables:mark_changed()
+
+      -- if we just reached 100% proficiency, increase a stat for this category that could add a title
+      if new_proficiency == 1 then
+         local job_info = self._job_component:get_job_info()
+         local stat = job_info and job_info:get_proficiency_category_stat(category) or category
+         self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('category_proficiency', stat)
+      end
    end
 end
 
