@@ -15,7 +15,7 @@ local log = radiant.log.create_logger('xz_region_selector')
 local DEFAULT_BOX_COLOR = Color4(192, 192, 192, 255)
 
 local INTERSECTION_NODE_NAME = 'xz region selector intersection node'
-local MAX_RESONABLE_DRAG_DISTANCE = 512
+local MAX_REASONABLE_DRAG_DISTANCE = 512
 local MODEL_OFFSET = Point3(-0.5, 0, -0.5)
 local TERRAIN_NODES = 1
 

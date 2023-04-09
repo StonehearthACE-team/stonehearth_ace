@@ -2,6 +2,7 @@ local XZRegionSelector = require 'stonehearth.services.client.selection.xz_regio
 local selector_util = require 'stonehearth.services.client.selection.selector_util'
 local RulerWidget = require 'stonehearth.services.client.selection.ruler_widget'
 local pattern_lib = require 'stonehearth_ace.lib.pattern.pattern_lib'
+local PatternCalculator = require 'stonehearth_ace.lib.pattern.pattern_calculator'
 
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local Color4 = _radiant.csg.Color4

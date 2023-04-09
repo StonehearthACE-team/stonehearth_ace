@@ -86,11 +86,12 @@ function AceFarmingCallHandler:_choose_new_field_location(session, response, fie
          return is_valid
       end)
       :done(function(selector, box)
+         log:debug('done: %s, %s', tostring(selector), radiant.util.table_tostring(box))
             local size = {
                x = box.max.x - box.min.x,
                y = box.max.z - box.min.z,
             }
-            _radiant.call('stonehearth:create_new_field', box.min, size, field_type, rotation)
+            _radiant.call('stonehearth:create_new_field', box.min, size, field_type, selector:get_rotation())
                      :done(function(r)
                            response:resolve({ field = r.field })
                         end)
