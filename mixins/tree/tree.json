@@ -4,6 +4,9 @@
       "type": "remove"
    },
    "components": {
+      "stonehearth:resource_node": {
+         "statistics_stat": "trees"
+      },
       "stonehearth:loot_drops": {
          "filter_script": "stonehearth_ace:loot_table:filter_scripts:items_with_property_value",
          "force_auto_loot": true,

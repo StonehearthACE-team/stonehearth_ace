@@ -3818,6 +3818,20 @@
                   "90_display_name": ", Scion of Cid",
                   "90_description": "They have ninety-one job levels - this is unbelievable! No hearthling could ever dream of such a feat... Their soul must've been touched by Cid himself!"
                },
+               "reembarks": {
+                  "display_name": "🧭 Reembarkations",
+                  "description": "Gained by reembarking into a new adventure.",
+                  "1_display_name": " the Wanderer",
+                  "1_description": "Not all who wander are lost! They have reembarked once and been a part of two different towns!",
+                  "2_display_name": " the Founder",
+                  "2_description": "Practice makes it perfect! They have reembarked twice and been part of three different towns!",
+                  "5_display_name": ", Famous Pioneer",
+                  "5_description": "They're known for traveling the world! They have reembarked five times and been part of six different towns!",
+                  "8_display_name": ", Trailblazer",
+                  "8_description": "Defining standards for how to start a settlement! They have reembarked eight times and been part of nine different towns!",
+                  "11_display_name": " the Essential",
+                  "11_description": "There's no way to go anywhere without them! They have been reembarked eleven times and been part of twelve different towns!"
+               },
                "slayer": {
                   "display_name": "⚔️ Slayer",
                   "description": "Gained by killing any creature.",
@@ -4208,6 +4222,128 @@
                   "25_display_name": " the Legend of Crafting",
                   "25_description": "They crafted 25 masterwork quality items! Who knew that was even possible?"
                },
+               "job_trapper_traps": {
+                  "display_name": "🎯 Trapper Mastery",
+                  "description": "Gained by successfully trapping and harvesting creatures.",
+                  "15_display_name": " the Trapper",
+                  "15_description": "They have trapped and harvested 15 creatures!",
+                  "40_display_name": " the Bloodied",
+                  "40_description": "They have trapped and harvested 40 creatures!",
+                  "100_display_name": ", Fur-Trader",
+                  "100_description": "They have trapped and harvested 100 creatures! Wicked!",
+                  "250_display_name": " the Great Skinner",
+                  "250_description": "They have trapped and harvested 250 creatures! What did they ever do to them?!"
+               },
+               "job_trapper_pets": {
+                  "display_name": "🐇 Trapper Charm",
+                  "description": "Gained by charming captured creatures into becoming pets.",
+                  "1_display_name": " the Charming",
+                  "1_description": "They charmed a pet! How... charming!",
+                  "2_display_name": ", Picky Eater",
+                  "2_description": "They charmed 2 pets! Everyone loves pets, right?",
+                  "4_display_name": " the Merciful",
+                  "4_description": "They charmed 4 pets! They should be food, not friends!",
+                  "8_display_name": " the Compassionate",
+                  "8_description": "They charmed 8 pets! It's almost like they forgot their job..."
+               },
+               "job_farmer_plants": {
+                  "display_name": "🌱 Farmer Sowing",
+                  "description": "Gained by sowing farming zones.",
+                  "264_display_name": " the Seedling",
+                  "264_description": "They have sowed 264 crops, enough for 4 large fields!",
+                  "528_display_name": " the Sprout",
+                  "528_description": "They have sowed 528 crops, enough for 8 large fields! That's a lot of seeds!",
+                  "1584_display_name": " the Planter",
+                  "1584_description": "They have sowed 1584 crops, enough for 24 large fields! Who's going to harvest all that?!",
+                  "6336_display_name": ", Sowing Extraordinaire",
+                  "6336_description": "They have sowed 6336 crops, enough for 96 large fields! Seriously, did anyone count that?"
+               },
+               "job_farmer_harvests": {
+                  "display_name": "🌾 Farmer Mastery",
+                  "description": "Gained by harvesting crops on farmer zones.",
+                  "264_display_name": " the Farmer",
+                  "264_description": "They have harvested 264 crops, that's 4 large fields worth of stuff!",
+                  "528_display_name": " the Bloodied",
+                  "528_description": "They have harvested 528 crops, that's 8 large fields worth of stuff! Food won't be a problem...",
+                  "1584_display_name": ", Fur-Trader",
+                  "1584_description": "They have harvested 1584 crops, that's 24 large fields worth of stuff! You better have storage for all that!",
+                  "6336_display_name": " the Great Skinner",
+                  "6336_description": "They have harvested 6336 crops, that's 96 large fields worth of stuff! They can feed a whole town by themselves!"
+               },
+               "job_shepherd_harvests": {
+                  "display_name": "🐑 Shepherd Mastery",
+                  "description": "Gained by harvesting animal products or having their animals passively produce products.",
+                  "15_display_name": " the Shepherd",
+                  "15_description": "They have produced 15 animal goods.",
+                  "60_display_name": ", Coop Raider",
+                  "60_description": "They have produced 60 animal goods. Enough to bolster your eggo!",
+                  "250_display_name": ", Barn Master",
+                  "250_description": "They have produced 250 animal goods. Will they ever stop? Only time wool tell.",
+                  "1000_display_name": " the Milker",
+                  "1000_description": "They have produced 1000 animal goods. They are legendairy!"
+               },
+               "job_shepherd_cares": {
+                  "display_name": "💞 Shepherd Caring",
+                  "description": "Gained by successfully interacting with animals and also by feeding pastures.",
+                  "20_display_name": " the Provider",
+                  "20_description": "They have cared for their animals 20 times! Aww.",
+                  "50_display_name": ", Duckling Steerer",
+                  "50_description": "They have cared for their animals 50 times! Sweet!",
+                  "100_display_name": " the Lovely",
+                  "100_description": "They have cared for their animals 100 times! Such deduckation!",
+                  "200_display_name": ", One Among the Herd",
+                  "200_description": "They have cared for their animals 200 times! They're seen as one of the herd!"
+               },
+               "job_shepherd_slaughters": {
+                  "display_name": "🥩 Shepherd Slaughtering",
+                  "description": "Gained by slaughtering pasture animals.",
+                  "1_display_name": " the Stenched",
+                  "1_description": "They have slaughtered 1 pasture animal.",
+                  "8_display_name": " the Culler",
+                  "8_description": "They have slaughtered 8 pasture animals.",
+                  "16_display_name": ", Bringer of Bacon",
+                  "16_description": "They have slaughtered 16 pasture animals.",
+                  "32_display_name": " the Barbecue Master",
+                  "32_description": "They have slaughtered 32 pasture animals."
+               },
+               "job_herbalist_planters": {
+                  "display_name": "🌺 Herbalist Mastery",
+                  "description": "Gained by interacting with herbalist planters.",
+                  "20_display_name": " the Herbalist",
+                  "20_description": "They have planted, tended or harvested 20 herbalist planters.",
+                  "80_display_name": " the Cultivator",
+                  "80_description": "They have planted, tended or harvested 80 herbalist planters.",
+                  "200_display_name": ", Flower Powered",
+                  "200_description": "They have planted, tended or harvested 200 herbalist planters. Herbs for everyone!",
+                  "500_display_name": " the Tender",
+                  "500_description": "They have planted, tended or harvested 500 herbalist planters. Petals, petals everywhere!"
+               },
+               "job_herbalist_treatments": {
+                  "display_name": "🩸 Herbalist Medicine",
+                  "description": "Gained by treating hearthlings with healing items.",
+                  "3_display_name": ", Emergency Responder",
+                  "3_description": "They have treated 3 hearthlings.",
+                  "12_display_name": " the Medic",
+                  "12_description": "They have treated 12 hearthlings.",
+                  "25_display_name": ", Healing Hands",
+                  "25_description": "They have treated 25 hearthlings. Well done!",
+                  "50_display_name": " the Life-Saver",
+                  "50_description": "They have treated 50 hearthlings. What a blessing to have them!"
+               },
+               "resource_harvest_trees": {
+                  "display_name": "🪓 Tree-Cutting",
+                  "description": "Gained by chopping down trees.",
+                  "10_display_name": ", Stumped",
+                  "10_description": "They have chopped 10 trees!",
+                  "25_display_name": " the Woodcutter",
+                  "25_description": "They have chopped 25 trees! Timber!",
+                  "60_display_name": " the Good Feller",
+                  "60_description": "They have chopped 60 trees! What did the trees even do to them!?",
+                  "120_display_name": ", Timber Maniac",
+                  "120_description": "They have chopped 120 trees! That can't be good for the environment...",
+                  "250_display_name": " the Beaver King",
+                  "250_description": "They have chopped 250 trees! Someone has to stop them!"
+               },
                "starving": {
                   "display_name": "🍽️ Starvation",
                   "description": "Gained by spending a lot of time being very hungry.",
@@ -4327,7 +4463,7 @@
                   "1_description": "Ouch! They've eaten raw garlic and now have a bad breath... It happens to everyone, don't feel so bad!"
                },
                "wounded": {
-                  "display_name": "🩸 Wounded"
+                  "display_name": "😵 Wounded"
                },
                "sleep": {
                   "display_name": "💤 Sleeping"

@@ -187,6 +187,7 @@ function AceReembarkationEncounter:_get_customizable_entity_data(entity)
    local unit_info_comp = entity:get_component('stonehearth:unit_info')
 
    local statistics_comp = entity:get_component('stonehearth_ace:statistics')
+   statistics_comp:increment_stat('totals', 'reembarks')
    local statistics = statistics_comp and statistics_comp:get_statistics()
 
    local titles_comp = entity:get_component('stonehearth_ace:titles')
