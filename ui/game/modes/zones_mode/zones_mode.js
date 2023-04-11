@@ -149,6 +149,9 @@ App.StonehearthZonesModeView = App.View.extend({
       else if (entity['stonehearth_ace:herbalist_planter'] && matchesPlayerId) {
          return App.AceHerbalistPlanterView;
       }
+      else if (entity['stonehearth_ace:quest_storage_zone']) {
+         return App.StonehearthAceQuestStorageZoneView;
+      }
       else if (entity['stonehearth_ace:periodic_interaction'] &&
             (matchesPlayerId || entity['stonehearth_ace:periodic_interaction'].allow_non_owner_player_interaction)) {
          return App.AcePeriodicInteractionView;

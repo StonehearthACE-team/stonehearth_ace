@@ -13,7 +13,7 @@ local log = radiant.log.create_logger('resource_call_handler')
 local boxed_entities = {}
 
 function ResourceCallHandler:box_move(session, response)
-   stonehearth.selection:select_xz_region('box_move')
+   stonehearth.selection:select_xz_region(stonehearth.constants.xz_region_reasons.BOX_MOVE)
       :set_max_size(50)
       :require_supported(false)
       :use_outline_marquee(Color4(0, 255, 0, 32), Color4(0, 255, 0, 255))
@@ -39,7 +39,7 @@ function ResourceCallHandler:box_move(session, response)
 end
 
 function ResourceCallHandler:box_undeploy(session, response)
-   stonehearth.selection:select_xz_region('box_undeploy')
+   stonehearth.selection:select_xz_region(stonehearth.constants.xz_region_reasons.BOX_UNDEPLOY)
       :set_max_size(50)
       :require_supported(false)
       :use_outline_marquee(Color4(255, 0, 0, 32), Color4(255, 0, 0, 255))
@@ -62,7 +62,7 @@ function ResourceCallHandler:box_undeploy(session, response)
 end
 
 function ResourceCallHandler:box_cancel_placement(session, response)
-   stonehearth.selection:select_xz_region('box_cancel_placement')
+   stonehearth.selection:select_xz_region(stonehearth.constants.xz_region_reasons.BOX_CANCEL_PLACEMENT)
       :set_max_size(50)
       :require_supported(false)
       :use_outline_marquee(Color4(192, 0, 0, 32), Color4(192, 0, 0, 255))
@@ -524,7 +524,7 @@ function ResourceCallHandler:toggle_fish_trap_capture(session, response, entity,
 end
 
 function ResourceCallHandler:box_forage(session, response)
-   stonehearth.selection:select_xz_region('box_forage')
+   stonehearth.selection:select_xz_region(stonehearth.constants.xz_region_reasons.BOX_FORAGE)
       :set_min_size(20)
       :set_max_size(50)
       :require_supported(true)

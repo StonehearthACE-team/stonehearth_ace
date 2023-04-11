@@ -41,6 +41,7 @@ function PatternXZRegionSelector:__init(reason)
    self._show_rulers = true
    self._color = Color4(55, 187, 56, 255)
    self._rotation = 0
+   self._rotate_entities = false
    self._min_size = 0
    self._max_size = radiant.math.MAX_INT32
    self._border = 0
@@ -100,8 +101,8 @@ function PatternXZRegionSelector:__init(reason)
          end
       end
 
-      -- just in case poorly formatted valid_vals
-      return val
+      -- if they were all lower, cap the value at the highest lower value
+      return lower or val
    end
 
    self._get_proposed_points_fn = identity_end_point_transform
@@ -214,6 +215,11 @@ function PatternXZRegionSelector:set_rotation(rotation)
    return self
 end
 
+function PatternXZRegionSelector:set_rotate_entities(rotate_entities)
+   self._rotate_entities = rotate_entities
+   return self
+end
+
 function PatternXZRegionSelector:set_model_offset(offset)
    self._model_offset = offset
    return self
@@ -322,15 +328,19 @@ function PatternXZRegionSelector:_render_grid_entity_nodes(box)
                local location = box.min + Point3(x - 1, 0, y - 1)
                if location.x < box.max.x and location.z < box.max.z then
                   radiant.terrain.place_entity_at_exact_location(entity, location, {force_iconic = false})
+                  if self._rotate_entities then
+                     radiant.entities.turn_to(entity, -self._rotation * 90)
+                  end
                   if not self._grid_entities[entity] then
                      self._grid_entities[entity] = _radiant.client.trace_render_frame()
                         :on_frame_start('adjust grid entity', function(now, alpha, frame_time, frame_time_wallclock)
                               local render_entity = _radiant.client.get_render_entity(entity)
                               if render_entity and render_entity:is_valid() then
+                                 render_entity:add_query_flag(_radiant.renderer.QueryFlags.UNSELECTABLE)
                                  render_entity:get_node():set_can_query(false)
                                  render_entity:get_node():set_visible(true)
                                  render_entity:get_model():set_material('materials/always_on_top_obj.material.json', true)
-                                 render_entity:get_model():get_material():set_vector_parameter('widgetColor', color.r / 255.0, color.g / 255.0, color.b / 255.0, 0.6)
+                                 render_entity:get_model():get_material():set_vector_parameter('widgetColor', color.r / 255.0, color.g / 255.0, color.b / 255.0, 0.4)
                                  self._grid_entities[entity]:destroy()
                                  self._grid_entities[entity] = false
                               end

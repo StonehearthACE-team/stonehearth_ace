@@ -1,5 +1,6 @@
 local constants = require 'stonehearth.constants'
 local DEFAULT_QUEST_STORAGE_URI = constants.game_master.quests.DEFAULT_QUEST_STORAGE_CONTAINER_URI
+local rng = _radiant.math.get_default_rng()
 
 local game_master_lib = require 'stonehearth.lib.game_master.game_master_lib'
 local ace_game_master_lib = {}
@@ -41,10 +42,21 @@ function ace_game_master_lib.create_citizens(population, info, origin, ctx)
    return citizens
 end
 
-function ace_game_master_lib.create_quest_storage(player_id, uri, item_requirements, bulletin, location)
+function ace_game_master_lib.create_quest_storage(player_id, uri, item_requirements, bulletin, location, facing)
    local town = stonehearth.town:get_town(player_id)
    if not town then
       return
+   end
+
+   -- first try to get a location within a quest storage zone
+   local zone_location
+   if not location then
+      local zone_locations = town:get_quest_storage_locations()
+      zone_location = zone_locations[rng:get_int(1, #zone_locations)]
+      if zone_location then
+         location = zone_location.location
+         facing = zone_location.facing
+      end
    end
 
    local drop_origin = town:get_landing_location()
@@ -56,7 +68,7 @@ function ace_game_master_lib.create_quest_storage(player_id, uri, item_requireme
    local quest_storage = radiant.entities.create_entity(uri, { owner = player_id })
    if not location then
       local valid
-      location, valid = radiant.terrain.find_placement_point(drop_origin, 4, 7, quest_storage)
+      location, valid = radiant.terrain.find_placement_point(drop_origin, 5, 9, quest_storage)
       if not valid then
          radiant.entities.destroy_entity(quest_storage)
          return
@@ -68,7 +80,12 @@ function ace_game_master_lib.create_quest_storage(player_id, uri, item_requireme
    qs_comp:set_requirements(item_requirements)
    qs_comp:set_bulletin(bulletin)
    radiant.terrain.place_entity_at_exact_location(quest_storage, location, {force_iconic = false})
+   radiant.entities.turn_to(quest_storage, facing or (rng:get_int(0, 3) * 90))
    radiant.effects.run_effect(quest_storage, 'stonehearth:effects:gib_effect')
+
+   if zone_location then
+      zone_location.zone:add_component('stonehearth_ace:quest_storage_zone'):add_quest_storage(quest_storage, location)
+   end
 
    return quest_storage
 end

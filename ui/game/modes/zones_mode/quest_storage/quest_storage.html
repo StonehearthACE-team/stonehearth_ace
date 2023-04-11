@@ -1,0 +1,15 @@
+<script type="text/x-handlebars" data-template-name="aceQuestStorageZone">
+   <div id="questStorageZoneWindow" class="gui">
+      <div class="window">
+         <div class="title">
+            {{ view.unit_name }}<div class="closeButton"></div>
+         </div>
+
+         <p>{{i18n stonehearth_ace:ui.game.zones_mode.quest_storage.help}}</p>
+
+         <button class="warn" {{bind-attr class=view.showButtons::hidden}}>{{i18n stonehearth:ui.game.common.remove}}</button>
+
+         <button class="ok" {{bind-attr class=view.showButtons::hidden}}></button>
+      </div>
+   </div>
+</script>

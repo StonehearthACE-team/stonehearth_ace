@@ -34,5 +34,5 @@ void main() {
 
    float f = clamp(dot(absN, vec3(0.6)), 0.0, 1.0);
 
-   fragColor = vec4(outColor.rgb * f, 1.0);
+   fragColor = vec4(outColor.rgb * f, outColor.a);
 }
