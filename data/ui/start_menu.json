@@ -153,6 +153,15 @@
          "create_stockpile": {
             "ordinal": 1
          },
+         "create_quest_storage": {
+            "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_quest_storage.display_name)",
+            "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_quest_storage.description)",
+            "class": "button",
+            "icon": "/stonehearth_ace/ui/game/start_menu/images/zone_quest_storage.png",
+            "sticky": true,
+            "hotkey_action": "zone:quest_storage",
+            "ordinal": 1.5
+         },
          "create_farm": {
             "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.display_name)",
             "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.description)",

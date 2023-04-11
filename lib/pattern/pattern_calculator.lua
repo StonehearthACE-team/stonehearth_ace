@@ -67,7 +67,7 @@ function PatternCalculator:get_locations_by_type()
                t_l = {}
                locations[t] = t_l
             end
-            table.insert(t_l, Point3(rot_x + self._border - 1, 0, rot_y + self._border - 1))
+            table.insert(t_l, Point3(x + self._border - 1, 0, y + self._border - 1))
          end
       end
    end

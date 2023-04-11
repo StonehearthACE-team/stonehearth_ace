@@ -1142,7 +1142,8 @@
                   ]
                }
             },
-            "DEFAULT_QUEST_STORAGE_CONTAINER_URI": "stonehearth_ace:containers:quest"
+            "DEFAULT_QUEST_STORAGE_CONTAINER_URI": "stonehearth_ace:containers:quest",
+            "QUEST_STORAGE_ZONE_URI": "stonehearth_ace:containers:quest_zone"
          }
       },
       "combat": {
@@ -1254,6 +1255,13 @@
          "FORAGING_SPOT_FREQUENCY": 0.005,
          "MIN_AVG_WILDERNESS_SCORE": 0.004,
          "WILDERNESS_SCORE_MULTIPLIER": 0.02
+      },
+      "xz_region_reasons": {
+         "BOX_CANCEL_PLACEMENT": "box_cancel_placement",
+         "BOX_FORAGE": "box_forage",
+         "BOX_MOVE": "box_move",
+         "BOX_UNDEPLOY": "box_undeploy",
+         "QUEST_STORAGE": "quest_storage"
       },
       "universal_storage": {
          "effect_sizes": {

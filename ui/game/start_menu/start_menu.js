@@ -18,6 +18,9 @@ App.StonehearthStartMenuView = App.View.extend({
       create_stockpile: function () {
          App.stonehearthClient.createStockpile();
       },
+      create_quest_storage: function () {
+         App.stonehearthClient.createQuestStorage();
+      },
       // ACE: handle different kinds of farm field types
       create_farm: function(nodeData) {
          // if there's only one type of farm unlocked, go ahead and click that type

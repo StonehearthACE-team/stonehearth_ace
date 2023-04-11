@@ -306,7 +306,7 @@ App.RootView = Ember.ContainerView.extend({
          return modes.CONNECTION;
       }
 
-      if (entity['stonehearth_ace:fish_trap']) {
+      if (entity['stonehearth_ace:fish_trap'] || entity['stonehearth_ace:quest_storage_zone']) {
          return modes.ZONES;
       }
 

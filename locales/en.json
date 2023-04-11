@@ -6148,6 +6148,9 @@
             "fight_cancel_attack": {
                "display_name": "Cancel All Attacks"
             },
+            "zone_quest_storage": {
+               "display_name": "Quest Storage Tool"
+            },
             "zone_farms": {
                "display_name": "Farm Type Menu"
             },
@@ -21248,6 +21251,10 @@
             "display_name": "Quest Storage",
             "description": "Can be used to store items requested by a quest for safe-keeping."
          },
+         "quest_storage_zone": {
+            "display_name": "Quest Storage Zone",
+            "description": "Quest Storage containers will be automatically created and placed in this zone."
+         },
          "vault": {
             "display_name": "Vault"
          },
@@ -23756,6 +23763,9 @@
             "underfarm": {
                "substrate_name": "Substrate",
                "substrate_description": "You need a layer of organic material to plant undercrops."
+            },
+            "quest_storage": {
+               "help": "Quest Storage containers will be automatically created and placed in this zone."
             },
             "stockpile": {
                "default_storage": {

@@ -1134,6 +1134,7 @@
       "containers:pet_food_bowl:stone": "file(entities/containers/pet_food_bowl_stone/pet_food_bowl_stone.json)",
       "containers:pet_food_bowl:wood": "file(entities/containers/pet_food_bowl_wood/pet_food_bowl_wood.json)",
       "containers:quest": "file(entities/containers/quest/quest_storage.json)",
+      "containers:quest_zone": "file(entities/containers/quest/quest_storage_zone.json)",
       "containers:quest:amberstone": "file(entities/containers/quest/amberstone_quest_storage.json)",
       "containers:quest:child": "file(entities/containers/quest/quest_storage_child.json)",
       "containers:quest:food_basket": "file(entities/containers/quest/food_basket_quest_storage.json)",
@@ -1279,6 +1280,7 @@
       "crops:yew_tree_crop:medium": "file(entities/crops/yew_tree_crop/yew_tree_crop_medium.json)",
       "crops:yew_tree_crop:sapling": "file(entities/crops/yew_tree_crop/yew_tree_crop_sapling.json)",
       "crops:yew_tree_crop:small": "file(entities/crops/yew_tree_crop/yew_tree_crop_small.json)",
+      "cursors:zone_quest_storage": "file(data/cursors/zone_quest_storage.cur)",
       "data:biome_recipes": "file(data/gm/campaigns/biome_unlocks/arcs/trigger/encounters/biome_recipes.json)",
       "data:connection_types": "file(data/connections/connection_types.json)",
       "data:constants": "file(data/constants.json)",
@@ -6955,6 +6957,7 @@
       "patrol_banner": "file(renderers/patrol_banner/patrol_banner_renderer.lua)",
       "pasture_item": "file(renderers/pasture_item/pasture_item_renderer.lua)",
       "place_terrain": "file(renderers/place_terrain/place_terrain_renderer.lua)",
+      "quest_storage_zone": "file(renderers/quest_storage_zone/quest_storage_zone_renderer.lua)",
       "tile": "file(renderers/tile/tile_renderer.lua)",
       "vine": "file(renderers/vine/vine_renderer.lua)"
    },
@@ -7051,7 +7054,19 @@
          "controller": "file(call_handlers/new_game_call_handler.lua)",
          "endpoint": "client"
       },
+      "choose_quest_storage_zone_location": {
+         "controller": "file(call_handlers/quest_call_handler.lua)",
+         "endpoint": "client"
+      },
+      "create_quest_storage_zone": {
+         "controller": "file(call_handlers/quest_call_handler.lua)",
+         "endpoint": "server"
+      },
       "dump_quest_storage_command": {
+         "controller": "file(call_handlers/quest_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "get_default_quest_storage_uri": {
          "controller": "file(call_handlers/quest_call_handler.lua)",
          "endpoint": "server"
       },
@@ -7430,6 +7445,7 @@
          "file(ui/game/modes/military_mode/military_mode.html)",
          "file(ui/game/modes/periodic_interaction/periodic_interaction.html)",
          "file(ui/game/modes/planter/planter.html)",
+         "file(ui/game/modes/zones_mode/quest_storage/quest_storage.html)",
          "file(ui/shell/loadout_screen/loadout_screen.html)"
       ],
       "js": [
@@ -7442,6 +7458,7 @@
          "file(ui/game/modes/military_mode/military_mode.js)",
          "file(ui/game/modes/periodic_interaction/periodic_interaction.js)",
          "file(ui/game/modes/planter/planter.js)",
+         "file(ui/game/modes/zones_mode/quest_storage/quest_storage.js)",
          "file(ui/game/people_picker/pet_ownership_picker.js)",
          "file(ui/root/js/gui.js)",
          "file(ui/root/js/stonehearth_ace.js)",
@@ -7476,6 +7493,7 @@
          "file(ui/game/modes/planter/planter.less)",
          "file(ui/game/modes/zones_mode/farm/farm.less)",
          "file(ui/game/modes/zones_mode/pasture/pasture.less)",
+         "file(ui/game/modes/zones_mode/quest_storage/quest_storage.less)",
          "file(ui/game/modes/zones_mode/stockpile/stockpile.less)",
          "file(ui/game/modes/zones_mode/trapping_grounds/trapping_grounds.less)",
          "file(ui/game/multiplayer_menu/multiplayer_menu.less)",

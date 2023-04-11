@@ -1,4 +1,11 @@
+local Cube3 = _radiant.csg.Cube3
+local Point2 = _radiant.csg.Point2
+local Point3 = _radiant.csg.Point3
+local Color4 = _radiant.csg.Color4
 local validator = radiant.validator
+local constants = require 'stonehearth.constants'
+local DEFAULT_QUEST_STORAGE_URI = constants.game_master.quests.DEFAULT_QUEST_STORAGE_CONTAINER_URI
+local QUEST_STORAGE_ZONE_URI = constants.game_master.quests.QUEST_STORAGE_ZONE_URI
 
 local QuestCallHandler = class()
 
@@ -106,6 +113,18 @@ function QuestCallHandler:dump_quest_storage_command(session, response, entity)
       quest_storage:set_enabled(false)
       quest_storage:dump_items()
    end
+end
+
+function QuestCallHandler:_add_region_components(entity, size)
+   local shape = Cube3(Point3.zero, Point3(size.x, 1, size.y))
+
+   entity:add_component('region_collision_shape')
+            :set_region_collision_type(_radiant.om.RegionCollisionShape.NONE)
+            :set_region(_radiant.sim.alloc_region3())
+            :get_region():modify(function(cursor)
+                  cursor:add_unique_cube(shape)
+               end)
+
 end
 
 return QuestCallHandler

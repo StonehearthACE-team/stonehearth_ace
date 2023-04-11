@@ -86,7 +86,7 @@ function AceFarmingCallHandler:_choose_new_field_location(session, response, fie
          return is_valid
       end)
       :done(function(selector, box)
-         log:debug('done: %s, %s', tostring(selector), radiant.util.table_tostring(box))
+         --log:debug('done: %s, %s', tostring(selector), radiant.util.table_tostring(box))
             local size = {
                x = box.max.x - box.min.x,
                y = box.max.z - box.min.z,
