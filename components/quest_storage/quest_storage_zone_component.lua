@@ -88,8 +88,7 @@ end
 
 function QuestStorageZoneComponent:_create_destroy_listener(id, storage)
    local listener = radiant.events.listen(storage, 'radiant:entity:pre_destroy', function()
-         listener:destroy()
-         self._destroy_listeners[id] = nil
+         self:_destroy_destroy_listener(id)
          self:_remove_quest_storage(id)
       end)
 
@@ -101,6 +100,13 @@ function QuestStorageZoneComponent:_destroy_destroy_listeners()
       listener:destroy()
    end
    self._destroy_listeners = {}
+end
+
+function QuestStorageZoneComponent:_destroy_destroy_listener(id)
+   if self._destroy_listeners[id] then
+      self._destroy_listeners[id]:destroy()
+      self._destroy_listeners[id] = nil
+   end
 end
 
 function QuestStorageZoneComponent:_remove_quest_storage(id)
