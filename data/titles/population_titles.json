@@ -57,6 +57,54 @@
          }
       ]
    },
+   "reembarks": {
+      "ordinal": 0.1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.description)",
+      "requirement": {
+         "statistics": {
+            "category": "totals",
+            "name": "reembarks"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.1_description)",
+            "required_value": 1,
+            "renown": 400
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.2_description)",
+            "required_value": 2,
+            "renown": 750
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.5_description)",
+            "required_value": 5,
+            "renown": 1200
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.8_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.8_description)",
+            "required_value": 8,
+            "renown": 1700
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.11_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.11_description)",
+            "required_value": 11,
+            "renown": 2500
+         }
+      ]
+   },
    "slayer": {
       "ordinal": 0.8,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.display_name)",
@@ -774,8 +822,377 @@
          }
       ]
    },
-   "proficient_category_tools": {
+   "job_trapper_traps": {
       "ordinal": 13,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_traps.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_traps.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_activities",
+            "name": "trapper_traps"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_traps.15_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_traps.15_description)",
+            "required_value": 15,
+            "renown": 150
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_traps.40_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_traps.40_description)",
+            "required_value": 40,
+            "renown": 400
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_traps.100_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_traps.100_description)",
+            "required_value": 100,
+            "renown": 1000
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_traps.250_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_traps.250_description)",
+            "required_value": 250,
+            "renown": 2500
+         }
+      ]
+   },
+   "job_trapper_pets": {
+      "ordinal": 13.1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_pets.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_pets.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_activities",
+            "name": "trapper_traps"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_pets.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_pets.1_description)",
+            "required_value": 1,
+            "renown": 50
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_pets.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_pets.2_description)",
+            "required_value": 2,
+            "renown": 120
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_pets.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_pets.4_description)",
+            "required_value": 4,
+            "renown": 500
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_pets.8_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_trapper_pets.8_description)",
+            "required_value": 8,
+            "renown": 1100
+         }
+      ]
+   },
+   "job_farmer_plants": {
+      "ordinal": 13.2,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_plants.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_plants.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_activities",
+            "name": "farmer_plants"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_plants.264_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_plants.264_description)",
+            "required_value": 264,
+            "renown": 450
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_plants.528_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_plants.528_description)",
+            "required_value": 528,
+            "renown": 900
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_plants.1584_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_plants.1584_description)",
+            "required_value": 1584,
+            "renown": 1600
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_plants.6336_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_plants.6336_description)",
+            "required_value": 6336,
+            "renown": 2900
+         }
+      ]
+   },
+   "job_farmer_harvests": {
+      "ordinal": 13.3,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_harvests.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_harvests.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_activities",
+            "name": "farmer_harvests"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_harvests.264_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_harvests.264_description)",
+            "required_value": 264,
+            "renown": 600
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_harvests.528_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_harvests.528_description)",
+            "required_value": 528,
+            "renown": 1100
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_harvests.1584_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_harvests.1584_description)",
+            "required_value": 1584,
+            "renown": 1800
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_harvests.6336_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_farmer_harvests.6336_description)",
+            "required_value": 6336,
+            "renown": 3100
+         }
+      ]
+   },
+   "job_shepherd_harvests": {
+      "ordinal": 13.4,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_harvests.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_harvests.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_activities",
+            "name": "shepherd_harvests"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_harvests.15_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_harvests.15_description)",
+            "required_value": 15,
+            "renown": 350
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_harvests.60_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_harvests.60_description)",
+            "required_value": 60,
+            "renown": 600
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_harvests.250_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_harvests.250_description)",
+            "required_value": 250,
+            "renown": 1150
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_harvests.1000_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_harvests.1000_description)",
+            "required_value": 1000,
+            "renown": 1900
+         }
+      ]
+   },
+   "job_shepherd_cares": {
+      "ordinal": 13.5,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_cares.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_cares.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_activities",
+            "name": "shepherd_cares"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_cares.20_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_cares.20_description)",
+            "required_value": 20,
+            "renown": 100
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_cares.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_cares.50_description)",
+            "required_value": 50,
+            "renown": 250
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_cares.100_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_cares.100_description)",
+            "required_value": 100,
+            "renown": 500
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_cares.200_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_cares.200_description)",
+            "required_value": 200,
+            "renown": 1000
+         }
+      ]
+   },
+   "job_shepherd_slaughters": {
+      "ordinal": 13.6,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_slaughters.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_slaughters.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_activities",
+            "name": "shepherd_slaughters"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_slaughters.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_slaughters.1_description)",
+            "required_value": 1,
+            "renown": 50
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_slaughters.8_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_slaughters.8_description)",
+            "required_value": 8,
+            "renown": 400
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_slaughters.16_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_slaughters.16_description)",
+            "required_value": 16,
+            "renown": 800
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_slaughters.32_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_shepherd_slaughters.32_description)",
+            "required_value": 32,
+            "renown": 1600
+         }
+      ]
+   },
+   "job_herbalist_planters": {
+      "ordinal": 13.7,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_planters.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_planters.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_activities",
+            "name": "herbalist_planters"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_planters.20_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_planters.20_description)",
+            "required_value": 20,
+            "renown": 150
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_planters.80_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_planters.80_description)",
+            "required_value": 80,
+            "renown": 350
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_planters.200_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_planters.200_description)",
+            "required_value": 200,
+            "renown": 700
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_planters.500_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_planters.500_description)",
+            "required_value": 500,
+            "renown": 1400
+         }
+      ]
+   },
+   "job_herbalist_treatments": {
+      "ordinal": 13.8,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_treatments.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_treatments.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_activities",
+            "name": "herbalist_treatments"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_treatments.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_treatments.3_description)",
+            "required_value": 3,
+            "renown": 400
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_treatments.12_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_treatments.12_description)",
+            "required_value": 12,
+            "renown": 750
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_treatments.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_treatments.25_description)",
+            "required_value": 25,
+            "renown": 1100
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_treatments.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_herbalist_treatments.50_description)",
+            "required_value": 50,
+            "renown": 1800
+         }
+      ]
+   },
+   "proficient_category_tools": {
+      "ordinal": 15,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.display_name)",
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.description)",
       "requirement": {
@@ -809,7 +1226,7 @@
       ]
    },
    "proficient_category_tending_herbs": {
-      "ordinal": 14,
+      "ordinal": 16,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.display_name)",
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.description)",
       "requirement": {
@@ -846,6 +1263,54 @@
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.4_description)",
             "required_value": 4,
             "renown": 800
+         }
+      ]
+   },
+   "resource_harvest_trees": {
+      "ordinal": 18,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.description)",
+      "requirement": {
+         "statistics": {
+            "category": "resource_harvest",
+            "name": "trees"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.10_description)",
+            "required_value": 10,
+            "renown": 250
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.25_description)",
+            "required_value": 25,
+            "renown": 500
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.60_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.60_description)",
+            "required_value": 60,
+            "renown": 750
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.120_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.120_description)",
+            "required_value": 120,
+            "renown": 1000
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.250_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.250_description)",
+            "required_value": 250,
+            "renown": 1250
          }
       ]
    },
@@ -1167,7 +1632,7 @@
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.morning_after.4_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.morning_after.4_description)",
             "required_value": 60,
-            "renown": 2400
+            "renown": 1800
          }
       ]
    },

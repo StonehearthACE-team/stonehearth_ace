@@ -23,10 +23,17 @@ function AceFarmerClass:_remove_listeners()
    end
 end
 
+AceFarmerClass._ace_old__on_harvest = FarmerClass._on_harvest
+function AceFarmerClass:_on_harvest(args)
+   self:_ace_old__on_harvest(args)
+   self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'farmer_harvests')
+end
+
 function AceFarmerClass:_on_plant()
    -- exp gained from planting will not level up the farmer
    local xp_to_add = self._xp_rewards["base_exp_per_plant"]
    self._job_component:add_exp(xp_to_add, false, {only_through_level = 2})
+   self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'farmer_plants')
 end
 
 function AceFarmerClass:_on_fertilize()

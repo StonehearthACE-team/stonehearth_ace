@@ -20,6 +20,11 @@ function AceHerbalistClass:_remove_listeners()
    end
 end
 
+AceHerbalistClass._ace_old__on_healed_entity = HerbalistClass._on_healed_entity
+function AceHerbalistClass:_on_healed_entity(args)
+   self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'herbalist_treatments')
+end
+
 function AceHerbalistClass:increase_healing_item_effect(args)
    self._sv.healing_item_effect_multiplier = args.healing_item_effect_multiplier
    self.__saved_variables:mark_changed()
@@ -58,6 +63,8 @@ function AceHerbalistClass:_on_herbalist_planter_interaction(args)
    if args.type == 'tend_planter' and args.category then
       self:add_category_proficiency('_tending_' .. args.category)
    end
+
+   self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'herbalist_planters')
 end
 
 return AceHerbalistClass

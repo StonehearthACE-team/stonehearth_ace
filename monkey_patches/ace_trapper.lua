@@ -20,10 +20,18 @@ function AceTrapperClass:should_tame(target)
    end
 end
 
+function AceTrapperClass:_on_pet_befriended(args)
+   if args.pet_id then
+      self._job_component:add_exp(self._xp_rewards['befriend_pet'])
+      self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'trapper_pets')
+   end
+end
+
 function AceTrapperClass:_on_clear_trap(args)
    local base_exp
    if args.trapped_entity_id then
       base_exp = self._xp_rewards['successful_trap']
+      self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'trapper_traps')
    else
       base_exp = self._xp_rewards['unsuccessful_trap']
    end

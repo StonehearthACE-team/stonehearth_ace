@@ -56,11 +56,24 @@ function AceShepherdClass:can_find_animal_in_world()
    return self:_ace_old_can_find_animal_in_world()
 end
 
+AceShepherdClass._ace_old__on_pasture_fed = ShepherdClass._on_pasture_fed
+function AceShepherdClass:_on_pasture_fed(args)
+   self:_ace_old__on_pasture_fed(args)
+   self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'shepherd_cares')
+end
+
+AceShepherdClass._ace_old__on_renewable_resource_gathered = ShepherdClass._on_renewable_resource_gathered
+function AceShepherdClass:_on_renewable_resource_gathered(args)
+   self:_ace_old__on_renewable_resource_gathered(args)
+   self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'shepherd_harvests')
+end
+
 function AceShepherdClass:_on_resource_gathered(args)
    if args.harvested_target then
       local equipment_component = args.harvested_target:get_component('stonehearth:equipment')
       if equipment_component and equipment_component:has_item_type('stonehearth:pasture_equipment:tag') then
          self._job_component:add_exp(self._xp_rewards['harvest_animal'])
+         self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'shepherd_slaughters')
          if self:has_perk('improved_buffs') then
             radiant.entities.add_buff(self._sv._entity, 'stonehearth_ace:buffs:shepherd:stenched_minor');
          else
@@ -77,6 +90,7 @@ function AceShepherdClass:_on_interacted_with_animal(animal)
       local buff_chance = compassion * stonehearth.constants.attribute_effects.COMPASSION_SHEPHERD_BUFF_CHANCE_MULTIPLIER
       local roll = rng:get_int(1, 100)  
       if roll <= buff_chance then
+         self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'shepherd_cares')
          local options = {
             source = self._sv._entity,
             source_player = self._sv._entity:get_player_id(),
