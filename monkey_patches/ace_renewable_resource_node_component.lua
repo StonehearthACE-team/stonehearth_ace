@@ -465,6 +465,7 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester,
       local filter_args = self._loot_table_filter_args or (self._loot_table_filter_script and util.get_current_conditions_loot_table_filter_args())
       local uris = LootTable(json.resource_loot_table, quality, self._loot_table_filter_script, filter_args):roll_loot()
       if next(uris) then
+         self:_modify_harvest_amounts(harvester, uris)
          local output_items = radiant.entities.output_items(uris, location, 1, 3, options)
          spawned_items = output_items.spilled
          item = (next(spawned_items) and spawned_items[next(spawned_items)]) or (next(output_items.succeeded) and output_items.succeeded[next(output_items.succeeded)])
@@ -479,6 +480,7 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester,
    local resource = json.resource
    if resource then
       local uris = {[json.resource] = {[quality] = 1}}
+      self:_modify_harvest_amounts(harvester, uris)
       local items = radiant.entities.output_items(uris, location, 0, 2, options)
       --Create the harvested entity and put it on the ground
       item = (next(items.spilled) and items.spilled[next(items.spilled)]) or (next(items.succeeded) and items.succeeded[next(items.succeeded)])
@@ -503,8 +505,12 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester,
    end
 end
 
-function AceRenewableResourceNodeComponent:_set_quality(item, quality)
-   item_quality_lib.apply_quality(item, quality)
+function AceRenewableResourceNodeComponent:_modify_harvest_amounts(harvester, uris)
+   local job_component = harvester and harvester:get_component('stonehearth:job')
+   local job_controller = job_component and job_component:get_curr_job_controller()
+   if job_controller then
+      job_controller:modify_renewable_harvest(self._entity, uris)
+   end
 end
 
 function AceRenewableResourceNodeComponent:is_harvest_requested()

@@ -62,10 +62,15 @@ function AceShepherdClass:_on_pasture_fed(args)
    self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'shepherd_cares')
 end
 
-AceShepherdClass._ace_old__on_renewable_resource_gathered = ShepherdClass._on_renewable_resource_gathered
 function AceShepherdClass:_on_renewable_resource_gathered(args)
-   self:_ace_old__on_renewable_resource_gathered(args)
-   self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'shepherd_harvests')
+   if args.harvested_target then
+      local equipment_component = args.harvested_target:get_component('stonehearth:equipment')
+      if equipment_component and equipment_component:has_item_type('stonehearth:pasture_equipment:tag') then
+         self._job_component:add_exp(self._xp_rewards['harvest_animal_resources'])
+         self:_on_interacted_with_animal(args.harvested_target)
+         self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'shepherd_harvests')
+      end
+   end
 end
 
 function AceShepherdClass:_on_resource_gathered(args)
@@ -100,6 +105,23 @@ function AceShepherdClass:_on_interacted_with_animal(animal)
          else
             radiant.entities.add_buff(animal, 'stonehearth:buffs:shepherd:compassionate_shepherd', options);
          end        
+      end
+   end
+end
+
+function AceShepherdClass:modify_renewable_harvest(entity, uris)
+   if not next(uris) then
+      return
+   end
+
+   -- if we harvested a pasture animal and have the perk to produce extra items, apply that bonus
+   if self:has_perk('shepherd_extra_bonuses') then
+      local equipment_component = entity:get_component('stonehearth:equipment')
+      if equipment_component and equipment_component:has_item_type('stonehearth:pasture_equipment:tag') then
+         -- just double the quantity of the first quality of the first uri
+         local qualities = uris[next(uris)]
+         local quality = next(qualities)
+         qualities[quality] = qualities[quality] + 1
       end
    end
 end

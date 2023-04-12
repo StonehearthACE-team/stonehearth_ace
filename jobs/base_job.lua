@@ -609,4 +609,8 @@ function BaseJob:is_farmer()
    return false
 end
 
+function BaseJob:modify_renewable_harvest(entity, uris)
+   -- no modification by default; other jobs can override this
+end
+
 return BaseJob
