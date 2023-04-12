@@ -196,8 +196,8 @@ function AceResourceNodeComponent:spawn_resource(harvester_entity, collect_locat
    self._sv.durability = self._sv.durability - durability_to_consume
 
    if self._sv.durability <= 0 or (pile_comp and pile_comp:is_empty()) then
-      if self._json.statistics_stat then
-         harvester_entity:add_component('stonehearth_ace:statistics'):increment_stat('resource_harvest', self._json.statistics_stat)
+      if json.harvest_statistic_name then
+         harvester_entity:add_component('stonehearth_ace:statistics'):increment_stat('resource_harvest', json.harvest_statistic_name)
       end
       radiant.entities.kill_entity(self._entity, {source_id = player_id})
    end
