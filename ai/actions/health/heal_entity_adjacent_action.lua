@@ -49,6 +49,8 @@ function HealEntityAdjacent:run(ai, entity, args)
       radiant.events.trigger_async(injured_entity, 'stonehearth:entity:healed', { healer = entity })
       ai:unprotect_argument(consumable)
       radiant.entities.destroy_entity(consumable)
+
+      radiant.events.trigger_async(entity, 'stonehearth:healer:healed_entity', { entity = injured_entity })
    end
 end
 
