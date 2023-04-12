@@ -22,6 +22,7 @@ end
 
 AceHerbalistClass._ace_old__on_healed_entity = HerbalistClass._on_healed_entity
 function AceHerbalistClass:_on_healed_entity(args)
+   self:_ace_old__on_healed_entity(args)
    self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'herbalist_treatments')
 end
 

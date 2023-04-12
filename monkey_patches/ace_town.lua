@@ -53,6 +53,9 @@ AceTown._ace_old_destroy = Town.__user_destroy
 function AceTown:destroy()
    self:_destroy_default_storage_listeners()
    self:_destroy_all_building_material_collection_tasks()
+   self:_destroy_quest_storage_zones()
+   self:_destroy_town_bonus_controllers()
+   self._placement_tasks = {}
    self:_ace_old_destroy()
 end
 

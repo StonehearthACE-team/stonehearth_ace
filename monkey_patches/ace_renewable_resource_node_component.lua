@@ -495,8 +495,8 @@ function AceRenewableResourceNodeComponent:_place_spawned_items(json, harvester,
    end
 
    if not failed then
-      if harvester and json.statistics_stat then
-         harvester:add_component('stonehearth_ace:statistics'):increment_stat('resource_harvest', json.statistics_stat)
+      if harvester and json.harvest_statistic_name then
+         harvester:add_component('stonehearth_ace:statistics'):increment_stat('resource_harvest', json.harvest_statistic_name)
       end
       return spawned_items, item
    end
