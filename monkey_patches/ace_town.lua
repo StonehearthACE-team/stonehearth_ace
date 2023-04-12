@@ -53,6 +53,9 @@ AceTown._ace_old_destroy = Town.__user_destroy
 function AceTown:destroy()
    self:_destroy_default_storage_listeners()
    self:_destroy_all_building_material_collection_tasks()
+   self._destroy_quest_storage_zones()
+   self._destroy_town_bonus_controllers()
+   self._placement_tasks = {}
    self:_ace_old_destroy()
 end
 
@@ -72,6 +75,21 @@ function AceTown:_destroy_all_building_material_collection_tasks()
       end
    end
    self._building_material_collection_tasks = {}
+end
+
+function AceTown:_destroy_quest_storage_zones()
+   for id, zone in pairs(self._quest_storage_zones) do
+      radiant.entities.destroy_entity(zone)
+   end
+   self._quest_storage_zones = {}
+end
+
+function AceTown:_destroy_town_bonus_controllers()
+   for uri, controller in pairs(self._sv.town_bonuses) do
+      controller:destroy()
+   end
+   self._sv.town_bonuses = {}
+   self._sv._town_bonus_refs = {}
 end
 
 function AceTown:_destroy_default_storage_listener(storage_id)
@@ -727,7 +745,7 @@ end
 
 function AceTown:get_quest_storage_locations()
    local locations = {}
-   for _, zone in pairs(self._quest_storage_zones) do
+   for id, zone in pairs(self._quest_storage_zones) do
       local zone_component = zone:get_component('stonehearth_ace:quest_storage_zone')
       if zone_component then
          radiant.array_append(locations, zone_component:get_available_locations())

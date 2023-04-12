@@ -42,6 +42,7 @@ function PatternXZRegionSelector:__init(reason)
    self._color = Color4(55, 187, 56, 255)
    self._rotation = 0
    self._rotate_entities = false
+   self._auto_rotate = false
    self._min_size = 0
    self._max_size = radiant.math.MAX_INT32
    self._border = 0
@@ -61,14 +62,16 @@ function PatternXZRegionSelector:__init(reason)
    self._grid_entities = {}
 
    self._on_keyboad_event_fn = function(e)
-      if bindings:is_action_active('build:rotate:left') then
-         self._rotation = (self._rotation + 1) % 4
-         self:set_requires_recalculation(true)
-         return true
-      elseif bindings:is_action_active('build:rotate:right') then
-         self._rotation = (self._rotation + 3) % 4
-         self:set_requires_recalculation(true)
-         return true
+      if not self._auto_rotate then
+         if bindings:is_action_active('build:rotate:left') then
+            self._rotation = (self._rotation + 1) % 4
+            self:set_requires_recalculation(true)
+            return true
+         elseif bindings:is_action_active('build:rotate:right') then
+            self._rotation = (self._rotation + 3) % 4
+            self:set_requires_recalculation(true)
+            return true
+         end
       end
    end
    self._on_mouse_event_fn = nil
@@ -121,29 +124,62 @@ function PatternXZRegionSelector:__init(reason)
          
          -- get current size; have to consider rotation
          local length = p1 - p0
+         local sign_x = length.x < 0 and -1 or 1
+         local sign_z = length.z < 0 and -1 or 1
          local x = math.abs(length.x) + 1
          local y = math.abs(length.z) + 1
-         if self._rotation == 1 or self._rotation == 3 then
-            x, y = y, x
-         end
 
-         -- check each axis to see if the dimension is valid
-         -- if it's not valid, get the closest valid value
-         if valid_x then
-            x = get_valid_axis_value(valid_x, x)
-         end
-         if valid_y then
-            y = get_valid_axis_value(valid_y, y)
-         end
+         if self._auto_rotate and (valid_x or valid_y) then
+            -- adjust rotation (between 0 and 1) as necessary to best fit the primary length direction
+            -- only matters if at least one length is being limited
+            -- try to minimize the total difference between input points and resolved points
+            -- don't change rotation if they're equal
+            local x1, x2 = valid_x and get_valid_axis_value(valid_x, x) or x, valid_y and get_valid_axis_value(valid_y, x) or x
+            local y1, y2 = valid_x and get_valid_axis_value(valid_x, y) or y, valid_y and get_valid_axis_value(valid_y, y) or y
 
-         -- then we have to switch it back to the rotation/direction
-         if self._rotation == 1 or self._rotation == 3 then
-            x, y = y, x
+            -- if x1/y2 is closest to x/y, use rotation 0 or 2
+            -- if x2/y1 is closest to x/y, use rotation 1 or 3
+            -- otherwise, stick with current rotation
+            local check1 = math.abs(x1 - x) + math.abs(y2 - y)
+            local check2 = math.abs(x2 - x) + math.abs(y1 - y)
+            if check1 > check2 then
+               self._rotation = sign_x > 0 and 1 or 3
+               x, y = x2, y1
+            else
+               if check2 > check1 then
+                  self._rotation = sign_z > 0 and 2 or 0
+               else
+                  -- if the checks were equal, look at the sign of the shortest dimension (pre-adjustment)
+                  -- (we align with dragging back to front, and the long length is either right or left)
+                  if y > x then
+                     self._rotation = sign_x > 0 and 1 or 3
+                  else
+                     self._rotation = sign_z > 0 and 2 or 0
+                  end
+               end
+               x, y = x1, y2
+            end
+         else
+            if self._rotation == 1 or self._rotation == 3 then
+               x, y = y, x
+            end
+   
+            -- check each axis to see if the dimension is valid
+            -- if it's not valid, get the closest valid value
+            if valid_x then
+               x = get_valid_axis_value(valid_x, x)
+            end
+            if valid_y then
+               y = get_valid_axis_value(valid_y, y)
+            end
+   
+            -- then we have to switch it back to the rotation/direction
+            if self._rotation == 1 or self._rotation == 3 then
+               x, y = y, x
+            end
          end
 
          local q0, q1 = Point3(p0), Point3(p1)
-         local sign_x = length.x < 0 and -1 or 1
-         local sign_z = length.z < 0 and -1 or 1
          q1.x = q0.x + sign_x * (x - 1)
          q1.z = q0.z + sign_z * (y - 1)
 
@@ -191,6 +227,8 @@ end
 function PatternXZRegionSelector:set_valid_dims(valid_x, valid_y)
    self._valid_x = valid_x
    self._valid_y = valid_y
+   self._max_x = valid_x and valid_x[#valid_x]
+   self._max_y = valid_y and valid_y[#valid_y]
    return self
 end
 
@@ -207,6 +245,11 @@ end
 function PatternXZRegionSelector:set_pattern(pattern, pattern_entities)
    self._pattern = pattern
    self._pattern_entities = pattern_entities
+   return self
+end
+
+function PatternXZRegionSelector:set_auto_rotate(auto_rotate)
+   self._auto_rotate = auto_rotate
    return self
 end
 

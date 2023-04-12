@@ -660,9 +660,8 @@ var StonehearthClient;
          var self = this;
 
          App.setGameMode('zones');
-         var tip = self.showTipWithKeyBindings('stonehearth_ace:ui.game.menu.zone_menu.items.create_quest_storage.tip_title',
-               'stonehearth_ace:ui.game.menu.zone_menu.items.create_quest_storage.tip_description',
-               {left_binding: 'build:rotate:left', right_binding: 'build:rotate:right'});
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.zone_menu.items.create_quest_storage.tip_title',
+               'stonehearth_ace:ui.game.menu.zone_menu.items.create_quest_storage.tip_description', { i18n: true });
 
          return this._callTool('createQuestStorage', function() {
             return radiant.call('stonehearth_ace:choose_quest_storage_zone_location')

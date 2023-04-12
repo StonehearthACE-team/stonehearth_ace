@@ -6,15 +6,16 @@
       },
       "stonehearth_ace:quest_storage_zone": {
          "pattern": [
-            [0, 0, 0],
-            [1, 0, 0]
+            [0, 0],
+            [1, 0],
+            [0, 0]
          ],
          "border": 1,
          "size": {
             "min": 4,
             "max": 31,
-            "valid_x": [4],
-            "valid_y": [4, 7, 10, 13, 16, 19, 22, 25, 28, 31]
+            "valid_x": [4, 7, 10, 13, 16, 19, 22, 25, 28, 31],
+            "valid_y": [4]
          },
          "zone_color": [102, 51, 255, 76]
       }

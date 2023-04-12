@@ -13,7 +13,7 @@ function QuestStorageZoneRenderer:initialize(render_entity, datastore)
    self._storage_point_nodes = {}
    self._datastore = datastore
 
-   self._zone_renderer = ZoneRenderer(render_entity)
+   self._zone_renderer = ZoneRenderer(render_entity):set_ground_colors(Color4(55, 49, 26, 24), Color4(55, 49, 26, 32))
 
    self._ui_view_mode = stonehearth.renderer:get_ui_mode()
    self._ui_mode_listener = radiant.events.listen(radiant, 'stonehearth:ui_mode_changed', self, self._on_ui_mode_changed)
@@ -80,7 +80,7 @@ function QuestStorageZoneRenderer:_update()
    log:debug('data: %s', radiant.util.table_tostring(data))
    local c = Color4(unpack(data.zone_color or {153, 51, 255, 76}))
    self._zone_renderer:set_designation_colors(c, c)
-   self._zone_renderer:set_ground_colors(Color4(c.r, c.g, c.b, 32), Color4(c.r, c.g, c.b, 40))
+   --self._zone_renderer:set_ground_colors(Color4(c.r, c.g, c.b, 32), Color4(c.r, c.g, c.b, 40))
    self._zone_renderer:set_size(data.size)
    self._zone_renderer:set_current_items(data.quest_storages)
 
@@ -93,8 +93,8 @@ function QuestStorageZoneRenderer:_update()
    if model and self._ui_view_mode == 'hud' then
       local render_info = radiant.entities.get_component_data(data.sample_container, 'render_info')
       local scale = render_info and render_info.scale or 0.1
-      --local mob = radiant.entities.get_component_data(data.sample_container, 'mob')
-      local model_origin = Point3(1.5, 0, 0.5)
+      local mob = radiant.entities.get_component_data(data.sample_container, 'mob')
+      local model_origin = (mob and radiant.util.to_point3(mob.model_origin) or Point3(0.5, 0, 0.5)) + Point3(1, 0, 1)
       local rotation = Point3(0, -data.rotation * 90, 0)
 
       for _, point in ipairs(data.points) do

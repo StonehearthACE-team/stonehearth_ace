@@ -10,7 +10,7 @@ local QUEST_STORAGE_ZONE_URI = constants.game_master.quests.QUEST_STORAGE_ZONE_U
 local QuestCallHandler = class()
 
 -- store this outside the choose_quest_storage_zone_location function so it doesn't reset after each zone placement
-local rotation = 0
+--local rotation = 0
 
 function QuestCallHandler:get_default_quest_storage_uri(session, response)
    local town = stonehearth.town:get_town(session.player_id)
@@ -29,7 +29,7 @@ function QuestCallHandler:choose_quest_storage_zone_location(session, response)
 end
 
 function QuestCallHandler:_choose_quest_storage_zone_location(session, response, uri)
-   local orig_rotation = rotation
+   --local orig_rotation = rotation
    local data = radiant.entities.get_component_data(QUEST_STORAGE_ZONE_URI, 'stonehearth_ace:quest_storage_zone') or {}
    local size = data.size or {min = 2, max = 20}
    local pattern = data.pattern or {{0, 0, 1}, {0, 0, 0}}
@@ -43,7 +43,8 @@ function QuestCallHandler:_choose_quest_storage_zone_location(session, response,
       :set_valid_dims(size.valid_x, size.valid_y)
       :set_border(border)
       :set_color(color)
-      :set_rotation(rotation)
+      --:set_rotation(rotation)
+      :set_auto_rotate(true)
       :set_rotate_entities(true)
       :set_pattern(pattern, {
          [1] = {
@@ -84,7 +85,7 @@ function QuestCallHandler:_choose_quest_storage_zone_location(session, response,
       :fail(function(selector)
             selector:destroy()
             response:reject('no region')
-            rotation = orig_rotation
+            --rotation = orig_rotation
          end)
       :go()
 end
