@@ -17,6 +17,7 @@ function AceTown:_pre_activate()
    self._suspendable_entities = self._suspendable_entities or {}
    self._periodic_interaction_entities = {}
    self._building_material_collection_tasks = {}
+   self._build_placement_tasks = {}
    self._default_storage_listener = {}
    self._quest_storage_zones = {}
 
@@ -56,6 +57,7 @@ function AceTown:destroy()
    self:_destroy_quest_storage_zones()
    self:_destroy_town_bonus_controllers()
    self._placement_tasks = {}
+   self._build_placement_tasks = {}
    self:_ace_old_destroy()
 end
 
@@ -946,36 +948,58 @@ function AceTown:craft_and_place_item_types(entity_uri, placement_infos)
    end
 end
 
+function AceTown:get_requested_build_placement_tasks()
+   return self._build_placement_tasks
+end
+
 function AceTown:request_placement_task(iconic_uri, quality, require_exact)
+   self:_request_placement_task(self._placement_tasks, iconic_uri, quality, require_exact)
+
+   radiant.events.trigger_async(self, 'stonehearth:town:place_item_types_changed')
+end
+
+function AceTown:unrequest_placement_task(iconic_uri, quality, require_exact)
+   self:_unrequest_placement_task(self._placement_tasks, iconic_uri, quality, require_exact)
+end
+
+function AceTown:request_build_placement_task(iconic_uri, quality, require_exact)
+   self:_request_placement_task(self._build_placement_tasks, iconic_uri, quality, require_exact)
+
+   radiant.events.trigger_async(self, 'stonehearth_ace:town:build_item_types_changed')
+end
+
+function AceTown:unrequest_build_placement_task(iconic_uri, quality, require_exact)
+   self:_unrequest_placement_task(self._build_placement_tasks, iconic_uri, quality, require_exact)
+end
+
+function AceTown:_request_placement_task(tasks, iconic_uri, quality, require_exact)
    local quality_str = quality and tostring(quality) or 'any'
    local require_exact_str = require_exact and '_exact' or ''
    local key = iconic_uri .. stonehearth.constants.item_quality.KEY_SEPARATOR .. quality_str .. require_exact_str
-   if not self._placement_tasks[key] then
-      self._placement_tasks[key] = {
+   if not tasks[key] then
+      tasks[key] = {
          count = 1,
          iconic_uri = iconic_uri, 
          quality = quality ~= nil and quality or -1,
          require_exact = require_exact,
       }
    else
-      self._placement_tasks[key].count = self._placement_tasks[key].count + 1
+      tasks[key].count = tasks[key].count + 1
    end
-
-   radiant.events.trigger_async(self, 'stonehearth:town:place_item_types_changed')
 end
 
-function AceTown:unrequest_placement_task(iconic_uri, quality, require_exact)
+function AceTown:_unrequest_placement_task(tasks, iconic_uri, quality, require_exact)
    local quality_str = quality and tostring(quality) or 'any'
    local require_exact_str = require_exact and '_exact' or ''
    local key = iconic_uri .. stonehearth.constants.item_quality.KEY_SEPARATOR .. quality_str .. require_exact_str
-   local task = self._placement_tasks[key]
+   local task = tasks[key]
    if not task then
       return
    end
 
    task.count = task.count - 1
    if task.count <= 0 then
-      self._placement_tasks[key] = nil
+      tasks[key] = nil
    end
 end
 
