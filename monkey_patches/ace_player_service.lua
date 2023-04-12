@@ -8,8 +8,13 @@ AcePlayerService._ace_old_add_kingdom = PlayerService.add_kingdom
 function AcePlayerService:add_kingdom(player_id, kingdom)
    -- removed the assert
    local pop = stonehearth.population:get_population(player_id)
-   if pop:get_kingdom() ~= kingdom then
-      pop:debug_set_kingdom(kingdom)
+   local prev_kingdom = pop:get_kingdom()
+   if prev_kingdom ~= kingdom then
+      if prev_kingdom then
+         pop:debug_set_kingdom(kingdom)
+      else
+         pop:set_kingdom(kingdom)
+      end
       pop:on_citizen_count_changed()
 
       self:_set_amenity(pop, player_id, kingdom)
