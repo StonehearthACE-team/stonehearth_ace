@@ -12,7 +12,7 @@
          "mob_collision_type": "tiny"
       },
       "stonehearth:stacks": {
-         "max_stacks": 9
+         "max_stacks": 16
       }
    },
    "entity_data": {
@@ -28,16 +28,20 @@
          "subject_override": "stonehearth_ace:food:ostrich_feed"
       },
       "stonehearth:animal_feed": {
-         "calorie_gain": 30,
+         "calorie_gain": 80,
          "effect_loops": 4,
          "quality_chances": [
             [
+               4,
+               0.05
+            ],
+            [
                3,
-               0.001
+               0.15
             ],
             [
                2,
-               0.01
+               0.25
             ]
          ]
       }

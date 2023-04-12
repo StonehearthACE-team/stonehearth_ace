@@ -407,6 +407,14 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          if food_json and food_json.entity_data and food_json.entity_data['stonehearth:food'] then
             catalog_data.is_pet_food = true
          end
+      elseif entity_data['stonehearth_ace:animal_feed_container'] then
+         local food_uri = entity_data['stonehearth_ace:animal_feed_container'].ground_form
+         local food_json = food_uri and radiant.resources.load_json(food_uri)
+         local feed_stacks = food_json.components['stonehearth:stacks'] and food_json.components['stonehearth:stacks'].max_stacks or 1
+         if food_json and food_json.entity_data and food_json.entity_data['stonehearth:animal_feed'] then
+            catalog_data.is_animal_feed = true
+            catalog_data.food_servings = feed_stacks
+         end
       end
 		
       if entity_data['stonehearth_ace:drink_container'] then

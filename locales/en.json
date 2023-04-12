@@ -4272,8 +4272,8 @@
                },
                "job_shepherd_harvests": {
                   "display_name": "🐑 Shepherd Mastery",
-                  "description": "Gained by harvesting animal products or having their animals passively produce products.",
-                  "15_display_name": " the Shepherd",
+                  "description": "Gained by manually harvesting animal products.",
+                  "15_display_name": " the Provider",
                   "15_description": "They have produced 15 animal goods.",
                   "60_display_name": ", Coop Raider",
                   "60_description": "They have produced 60 animal goods. Enough to bolster your eggo!",
@@ -4285,7 +4285,7 @@
                "job_shepherd_cares": {
                   "display_name": "💞 Shepherd Caring",
                   "description": "Gained by successfully interacting with animals and also by feeding pastures.",
-                  "20_display_name": " the Provider",
+                  "20_display_name": " the Shepherd",
                   "20_description": "They have cared for their animals 20 times! Aww.",
                   "50_display_name": ", Duckling Steerer",
                   "50_description": "They have cared for their animals 50 times! Sweet!",
@@ -4319,7 +4319,7 @@
                   "500_description": "They have planted, tended or harvested 500 herbalist planters. Petals, petals everywhere!"
                },
                "job_herbalist_treatments": {
-                  "display_name": "🩸 Herbalist Medicine",
+                  "display_name": "💛 Herbalist Medicine",
                   "description": "Gained by treating hearthlings with healing items.",
                   "3_display_name": ", Emergency Responder",
                   "3_description": "They have treated 3 hearthlings.",
@@ -11295,39 +11295,39 @@
             },
             "rabbit_feed_recipe": {
                "recipe_name": "Rabbit Feed (x3)",
-               "description": "Selected foodstuffs for rabbits. Improves the quality of animal produce."
+               "description": "Selected foodstuffs for rabbits. Nicely improves the quality of animal produce."
             },
             "poyo_feed_recipe": {
                "recipe_name": "Poyo Feed (x3)",
-               "description": "Nicely milled food for poyos. Improves the quality of animal produce.",
+               "description": "Nicely milled food for poyos. Nicely improves the quality of animal produce.",
                "flavor": "Cluck cluck!"
             },
             "duck_feed_recipe": {
                "recipe_name": "Duck Feed (x3)",
-               "description": "Favorite ingredients for ducks! Improves the quality of animal produce.",
+               "description": "Favorite ingredients for ducks! Nicely improves the quality of animal produce.",
                "flavor": "Really good quack-lity food"
             },
             "oinker_feed_recipe": {
                "recipe_name": "Oinker Feed (x3)",
-               "description": "A bit of anything, really. Improves the quality of animal produce."
+               "description": "A bit of anything, really. Nicely improves the quality of animal produce."
             },
             "sheep_feed_recipe": {
                "recipe_name": "Sheep Feed (x3)",
-               "description": "Tasty fibers for sheep. Improves the quality of animal produce."
+               "description": "Tasty fibers for sheep. Nicely improves the quality of animal produce."
             },
             "fodder_recipe": {
                "recipe_name": "Animal Fodder (x4)",
                "description": "Cheap and efficient for feeding animals, even if not exactly their favorite food...",
-               "flavor": ""
+               "flavor": "Regular fodder lasts long but won't increase animal quality"
             },
             "ostrich_feed_recipe": {
                "recipe_name": "Ostrich Feed (x3)",
-               "description": "A nutritious supplement for ostriches. Improves the quality of animal produce.",
+               "description": "A nutritious supplement for ostriches. Nicely improves the quality of animal produce.",
                "flavor": ""
             },
             "moomoo_feed_recipe": {
                "recipe_name": "Moo-Moo Feed (x3)",
-               "description": "Tasty and hearty food appreciated by large ruminants. Improves the quality of animal produce.",
+               "description": "Tasty and hearty food appreciated by large ruminants. Nicely improves the quality of animal produce.",
                "flavor": ""
             },
             "wooden_sign_shepherd_recipe": {
@@ -11338,7 +11338,7 @@
             "hearth_fodder_recipe": {
                "recipe_name": "Hearthbud Animal Fodder",
                "description": "Animal fodder imbued with the essence of the Hearth.",
-               "flavor": "Hearthbud Animal Fodder is appreciated by all animals and will greatly increase the quality of their products!"
+               "flavor": "Hearthbud Animal Fodder is appreciated by all animals and slightly increase the quality of their products!"
             },
             "kibble_recipe": {
                "recipe_name": "Kibble (x5)",
@@ -24062,7 +24062,8 @@
                "food": {
                   "high": "This food provides [str(servings)] very filling meals",
                   "average": "This food provides [str(servings)] quite filling meals",
-                  "low": "This food provides [str(servings)] meager meals"
+                  "low": "This food provides [str(servings)] meager meals",
+                  "animal": "This animal feed provides [str(servings)] meals"
                }
             },
             "consumable_buff": "Consuming Applies: ",
