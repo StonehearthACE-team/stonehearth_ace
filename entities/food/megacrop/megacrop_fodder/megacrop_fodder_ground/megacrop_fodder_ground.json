@@ -12,7 +12,7 @@
          "mob_collision_type": "tiny"
       },
       "stonehearth:stacks": {
-         "max_stacks": 16
+         "max_stacks": 48
       },
       "render_info": {
          "scale": 0.11
@@ -44,16 +44,20 @@
          "subject_override": "stonehearth_ace:food:megacrop:fodder"
       },
       "stonehearth:animal_feed": {
-         "calorie_gain": 65,
+         "calorie_gain": 100,
          "effect_loops": 5,
          "quality_chances": [
             [
+               4,
+               0.015
+            ],
+            [
                3,
-               0.01
+               0.06
             ],
             [
                2,
-               0.04
+               0.08
             ]
          ]
       }

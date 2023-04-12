@@ -1,19 +1,24 @@
 {
    "components": {
       "stonehearth:stacks": {
-         "max_stacks": 9
+         "max_stacks": 12
       }
    },
    "entity_data": {
       "stonehearth:animal_feed": {
+         "calorie_gain": 80,
          "quality_chances": [
             [
+               4,
+               0.05
+            ],
+            [
                3,
-               0.001
+               0.15
             ],
             [
                2,
-               0.01
+               0.25
             ]
          ]
       }

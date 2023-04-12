@@ -1749,6 +1749,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
          statHtml += self._formattedRecipeProductProperty(recipe, 'drink_servings', 'satisfaction drink ' + level);
          //statHtml += `<div class="stat satisfaction">${catalogData['drink_servings']} x <img class="drink_${level}"/></div>`;
       }
+      if (catalogData['is_animal_feed']) {
+         statHtml += self._formattedRecipeProductProperty(recipe, 'food_servings', 'satisfaction food animal');
+         //statHtml += `<div class="stat satisfaction">${catalogData['food_servings']} x <img class="food_${level}"/></div>`;
+      }
 
       return statHtml;
    },
@@ -1772,6 +1776,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
                else if (catalogData['drink_satisfaction']) {
                   satisfactionLevel = 'drink.' + stonehearth_ace.getSatisfactionLevel(App.constants.drink_satisfaction_thresholds, catalogData['drink_satisfaction']);
                   servings = catalogData['drink_servings'];
+               }
+               else if (catalogData['is_animal_feed']) {
+                  satisfactionLevel = 'food.animal';
+                  servings = catalogData['food_servings'];
                }
             }
 
