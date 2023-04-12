@@ -1,0 +1,42 @@
+{
+   "type": "entity",
+   "components": {
+      "mob": {
+         "allow_vertical_adjacent": true
+      },
+      "stonehearth_ace:quest_storage_zone": {
+         "pattern": [
+            [0, 0],
+            [1, 0],
+            [0, 0]
+         ],
+         "border": 1,
+         "size": {
+            "min": 4,
+            "max": 31,
+            "valid_x": [4, 7, 10, 13, 16, 19, 22, 25, 28, 31],
+            "valid_y": [4]
+         },
+         "zone_color": [102, 51, 255, 76]
+      }
+   },
+   "entity_data": {
+      "stonehearth:designation": {
+         "allow_placed_items": false
+      },
+      "stonehearth:town_patrol": {
+         "auto_patrol": true,
+         "patrol_pattern": "perimeter"
+      },
+      "stonehearth:territory": {
+         "marks_territory": true
+      },
+      "stonehearth:item": {
+         "clearable": false
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.quest_storage_zone.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.quest_storage_zone.description)"
+      }
+   }
+}

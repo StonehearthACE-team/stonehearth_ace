@@ -70,6 +70,16 @@ function ace_game_master_lib.create_quest_storage(player_id, uri, item_requireme
    radiant.terrain.place_entity_at_exact_location(quest_storage, location, {force_iconic = false})
    radiant.effects.run_effect(quest_storage, 'stonehearth:effects:gib_effect')
 
+   if zone_location then
+      zone_location.zone:add_component('stonehearth_ace:quest_storage_zone'):add_quest_storage(quest_storage, location)
+   else
+      -- if it's not in a zone, allow for it to be teleported
+      local commands = quest_storage:get_component('stonehearth:commands')
+      if commands then
+         commands:add_command('stonehearth_ace:commands:teleport_quest_storage')
+      end
+   end
+
    return quest_storage
 end
 

@@ -656,6 +656,26 @@ var StonehearthClient;
          });
       },
 
+      createQuestStorage: function() {
+         var self = this;
+
+         App.setGameMode('zones');
+         var tip = self.showTip('stonehearth_ace:ui.game.menu.zone_menu.items.create_quest_storage.tip_title',
+               'stonehearth_ace:ui.game.menu.zone_menu.items.create_quest_storage.tip_description', { i18n: true });
+
+         return this._callTool('createQuestStorage', function() {
+            return radiant.call('stonehearth_ace:choose_quest_storage_zone_location')
+               .done(function(response) {
+                  radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
+                  radiant.call('stonehearth:select_entity', response.quest_storage);
+                  self.createQuestStorage();
+               })
+               .fail(function(response) {
+                  self.hideTip(tip);
+               });
+         });
+      },
+
       //TODO: make this available ONLY after a farmer has been created
       // ACE: added fieldType parameter
       createFarm: function(fieldType) {
