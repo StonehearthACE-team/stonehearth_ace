@@ -263,6 +263,7 @@ function AceRenewableResourceNodeComponent:_do_spawn_resource(harvester_entity, 
 
    --start the countdown to respawn.
    self:_deplete()
+   return singular_item
 end
 
 function AceRenewableResourceNodeComponent:_deplete()
