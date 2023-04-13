@@ -363,6 +363,92 @@
          }
       ]
    },
+   "dragon_cult_killer": {
+      "ordinal": 9.15,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer_item.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer_item.description)",
+      "requirement": {
+         "statistics": {
+            "category": "kills",
+            "name": "dragon_cult"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer_item.20_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer_item.20_description)",
+            "required_value": 20
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer_item.40_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer_item.40_description)",
+            "required_value": 40
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer_item.60_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer_item.60_description)",
+            "required_value": 60
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer_item.100_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer_item.100_description)",
+            "required_value": 100
+         }
+      ]
+   },
+   "undergrowth_killer": {
+      "ordinal": 9.16,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.description)",
+      "requirement": {
+         "statistics": {
+            "category": "kills",
+            "name": "undergrowth"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.8_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.8_description)",
+            "required_value": 8
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.16_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.16_description)",
+            "required_value": 16
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.32_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.32_description)",
+            "required_value": 32
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.64_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.64_description)",
+            "required_value": 64
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.90_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.90_description)",
+            "required_value": 90
+         },
+         {
+            "rank": 6,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.120_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer_item.120_description)",
+            "required_value": 120
+         }
+      ]
+   },
    "leader_killer": {
       "ordinal": 9.2,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.leader_killer_item.display_name)",

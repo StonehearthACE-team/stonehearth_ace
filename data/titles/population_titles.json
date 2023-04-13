@@ -105,6 +105,54 @@
          }
       ]
    },
+   "amberstone_visitor": {
+      "ordinal": 0.2,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.amberstone_visitor.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.amberstone_visitor.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "amberstone_visit"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.amberstone_visitor.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.amberstone_visitor.1_description)",
+            "required_value": 1,
+            "renown": 250
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.amberstone_visitor.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.amberstone_visitor.2_description)",
+            "required_value": 2,
+            "renown": 400
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.amberstone_visitor.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.amberstone_visitor.3_description)",
+            "required_value": 3,
+            "renown": 650
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.amberstone_visitor.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.amberstone_visitor.4_description)",
+            "required_value": 4,
+            "renown": 900
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.amberstone_visitor.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.amberstone_visitor.5_description)",
+            "required_value": 5,
+            "renown": 1250
+         }
+      ]
+   },
    "slayer": {
       "ordinal": 0.8,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.slayer.display_name)",
@@ -574,6 +622,102 @@
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.zilla_killer.1_description)",
             "required_value": 1,
             "renown": 1800
+         }
+      ]
+   },
+   "dragon_cult_killer": {
+      "ordinal": 9.15,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "kills",
+            "name": "dragon_cult"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer.5_description)",
+            "required_value": 5,
+            "renown": 280
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer.10_description)",
+            "required_value": 10,
+            "renown": 450
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer.25_description)",
+            "required_value": 25,
+            "renown": 720
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.dragon_cult_killer.50_description)",
+            "required_value": 50,
+            "renown": 1020
+         }
+      ]
+   },
+   "undergrowth_killer": {
+      "ordinal": 9.16,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "kills",
+            "name": "undergrowth"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.5_description)",
+            "required_value": 5,
+            "renown": 30
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.10_description)",
+            "required_value": 10,
+            "renown": 55
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.25_description)",
+            "required_value": 25,
+            "renown": 120
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.50_description)",
+            "required_value": 50,
+            "renown": 210
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.75_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.75_description)",
+            "required_value": 75,
+            "renown": 320
+         },
+         {
+            "rank": 6,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.100_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.undergrowth_killer.100_description)",
+            "required_value": 100,
+            "renown": 450
          }
       ]
    },
@@ -1311,6 +1455,102 @@
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_trees.250_description)",
             "required_value": 250,
             "renown": 1250
+         }
+      ]
+   },
+   "resource_harvest_foraging_spots": {
+      "ordinal": 18.1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_foraging_spots.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_foraging_spots.description)",
+      "requirement": {
+         "statistics": {
+            "category": "resource_harvest",
+            "name": "foraging_spots"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_foraging_spots.6_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_foraging_spots.6_description)",
+            "required_value": 6,
+            "renown": 120
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_foraging_spots.12_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_foraging_spots.12_description)",
+            "required_value": 12,
+            "renown": 240
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_foraging_spots.24_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_foraging_spots.24_description)",
+            "required_value": 24,
+            "renown": 460
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_foraging_spots.48_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_foraging_spots.48_description)",
+            "required_value": 48,
+            "renown": 680
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_foraging_spots.96_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_foraging_spots.96_description)",
+            "required_value": 96,
+            "renown": 900
+         }
+      ]
+   },
+   "resource_harvest_boulders": {
+      "ordinal": 18.2,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.description)",
+      "requirement": {
+         "statistics": {
+            "category": "resource_harvest",
+            "name": "boulders"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.8_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.8_description)",
+            "required_value": 8,
+            "renown": 300
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.16_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.16_description)",
+            "required_value": 16,
+            "renown": 560
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.25_description)",
+            "required_value": 25,
+            "renown": 820
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.40_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.40_description)",
+            "required_value": 40,
+            "renown": 1100
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.60_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.60_description)",
+            "required_value": 60,
+            "renown": 1400
          }
       ]
    },
