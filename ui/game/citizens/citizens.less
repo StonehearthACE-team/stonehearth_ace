@@ -34,6 +34,20 @@
    }
 
    #tasksWorkersList {
+      #buttonsBar {
+         margin-right: 35px;
+
+         .suspendButton {
+            padding: 3px;
+            margin: 0px 0px 0px 2px;
+         }
+
+         .suspendButtonImg {
+            width: 20px;
+            height: 20px;
+         }
+      }
+
       .statTitle {
          &.healthTitle {
             margin-left: 28px;
@@ -42,10 +56,30 @@
          .health.statImg {
             .backgroundContain(url(/stonehearth_ace/ui/game/images/health.png));
          }
-      }
 
-      .moodTitle {
-         margin-left: 0px;
+         &.moodTitle {
+            margin-left: 8px;
+         }
+
+         .happiness.statImg {
+            .backgroundContain(url(/stonehearth_ace/ui/game/images/mood.png));
+         }
+
+         .work_build.statImg {
+            .backgroundContain(url(/stonehearth_ace/ui/game/images/work_build.png));
+         }
+         .work_gather.statImg {
+            .backgroundContain(url(/stonehearth_ace/ui/game/images/work_gather.png));
+         }
+         .work_haul.statImg {
+            .backgroundContain(url(/stonehearth_ace/ui/game/images/work_haul.png));
+         }
+         .work_job.statImg {
+            .backgroundContain(url(/stonehearth_ace/ui/game/images/work_job.png));
+         }
+         .work_mine.statImg {
+            .backgroundContain(url(/stonehearth_ace/ui/game/images/work_mine.png));
+         }
       }
 
       #tasksTitleName.singlePlayer {
@@ -60,8 +94,16 @@
          display: none;
       }
 
+      #activityTitle {
+         margin-left: 28px;
+      }
+
       .workOrderTitle {
-         margin-right: 12px;
+         margin-right: 14px;
+      }
+
+      .firstWorkOrderTitle {
+         margin-left: -2px;
       }
    }
 
@@ -83,7 +125,7 @@
       }
 
       .workOrderColumn {
-         width: 60px;
+         width: 47px;
       }
    }
 }
