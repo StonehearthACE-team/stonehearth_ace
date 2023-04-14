@@ -26,7 +26,7 @@ function AceShepherdCallHandler:_get_pasture_region_selector(session, response)
       :set_min_size(10)
       :set_max_size(50)
       :require_unblocked(false)
-      :use_designation_marquee(Color4(56, 80, 0, 255))
+      :use_designation_marquee(Color4(227, 173, 44, 255))
       :require_supported(false)                    -- ACE: override the default for a designation region selector
       :allow_unselectable_support_entities(false)  -- ACE: override the default for a designation region selector
       :set_create_intersection_node(false)
