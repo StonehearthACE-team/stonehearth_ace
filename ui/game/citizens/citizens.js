@@ -50,6 +50,15 @@ App.StonehearthCitizensView = App.View.extend({
       'body',
       'spirit',
       'health',
+      'happiness'
+   ],
+
+   work_orders: [
+      'haul',
+      'mine',
+      'gather',
+      'build',
+      'job'
    ],
 
    init: function() {
@@ -139,6 +148,14 @@ App.StonehearthCitizensView = App.View.extend({
       radiant.each(self.stats, function (i, stat) {
          App.tooltipHelper.createDynamicTooltip(self.$('.' + stat), function () {
             return $(App.tooltipHelper.getTooltip(stat));
+         });
+      });
+
+      radiant.each(self.work_orders, function (i, work_order) {
+         App.tooltipHelper.createDynamicTooltip(self.$('.work_' + work_order), function () {
+            var title = i18n.t(`stonehearth_ace:ui.game.citizens.work_order_tooltips.${work_order}`);
+            var description = i18n.t(`stonehearth_ace:ui.game.citizens.work_order_tooltips.${work_order}_description`);
+            return $(App.tooltipHelper.createTooltip(title, description));
          });
       });
 
@@ -737,6 +754,10 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
       return this.workOrderChecked('mine');
    }.property('citizenId', 'model.stonehearth:work_order'),
 
+   gatherChecked: function() {
+      return this.workOrderChecked('gather');
+   }.property('citizenId', 'model.stonehearth:work_order'),
+
    jobChecked: function() {
       return this.workOrderChecked('job');
    }.property('citizenId', 'model.stonehearth:work_order'),
@@ -752,6 +773,10 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
 
    mineLocked: function() {
       return this.workOrderLocked('mine');
+   }.property('citizenId', 'model.stonehearth:work_order'),
+
+   gatherLocked: function() {
+      return this.workOrderLocked('gather');
    }.property('citizenId', 'model.stonehearth:work_order'),
 
    jobLocked: function() {
@@ -775,6 +800,10 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
 
    mineId: function() {
       return "mine_" + this.get('citizenId');
+   }.property('citizenId'),
+
+   gatherId: function() {
+      return "gather_" + this.get('citizenId');
    }.property('citizenId'),
 
    jobId: function() {
@@ -911,11 +940,14 @@ App.StonehearthCitizenTasksContainerView = App.StonehearthCitizenRowContainerVie
          'haul-enabled': function(x) {
             return x['stonehearth:work_order'] && (x['stonehearth:work_order'].work_order_refs.haul && x['stonehearth:work_order'].work_order_statuses.haul != 'disabled') ? 1 : 0;
          },
-         'build-enabled': function(x) {
-            return x['stonehearth:work_order'] && (x['stonehearth:work_order'].work_order_refs.build && x['stonehearth:work_order'].work_order_statuses.build != 'disabled') ? 1 : 0;
-         },
          'mine-enabled': function(x) {
             return x['stonehearth:work_order'] && (x['stonehearth:work_order'].work_order_refs.mine && x['stonehearth:work_order'].work_order_statuses.mine != 'disabled') ? 1 : 0;
+         },
+         'gather-enabled': function(x) {
+            return x['stonehearth:work_order'] && (x['stonehearth:work_order'].work_order_refs.mine && x['stonehearth:work_order'].work_order_statuses.gather != 'disabled') ? 1 : 0;
+         },
+         'build-enabled': function(x) {
+            return x['stonehearth:work_order'] && (x['stonehearth:work_order'].work_order_refs.build && x['stonehearth:work_order'].work_order_statuses.build != 'disabled') ? 1 : 0;
          },
          'job-enabled': function(x) {
             return x['stonehearth:work_order'] && (x['stonehearth:work_order'].work_order_refs.job && x['stonehearth:work_order'].work_order_statuses.job != 'disabled') ? 1 : 0;

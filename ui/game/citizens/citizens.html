@@ -87,8 +87,10 @@
                   <div class="health statImg"></div>
                </button>
             </div>
-            <div class="listTitle moodTitle" data-sort-key="happiness">
-               <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.morale}}</h2>
+            <div class="listTitle statTitle moodTitle" data-sort-key="happiness">
+               <button class="brown statButton">
+                  <div class="happiness statImg"></div>
+               </button>
             </div>
             <div class="listTitle" id="activityTitle" data-sort-key="activity" {{bind-attr class="view.isMultiplayer::singlePlayer"}}>
                <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.current_activity}}</h2>
@@ -98,17 +100,30 @@
                <h2 {{bind-attr class="view.isMultiplayer::hidden"}}>{{i18n stonehearth:ui.game.citizens.workers_list_headers.working_for}}</h2>
             </div>
 
-            <div class="listTitle workOrderTitle" data-sort-key="haul-enabled">
-               <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.haul}}</h2>
+            <div class="listTitle statTitle workOrderTitle firstWorkOrderTitle" data-sort-key="haul-enabled">
+               <button class="brown statButton">
+                  <div class="work_haul statImg"></div>
+               </button>
             </div>
-            <div class="listTitle workOrderTitle" data-sort-key="build-enabled">
-               <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.build}}</h2>
+            <div class="listTitle statTitle workOrderTitle" data-sort-key="mine-enabled">
+               <button class="brown statButton">
+                  <div class="work_mine statImg"></div>
+               </button>
             </div>
-            <div class="listTitle workOrderTitle" data-sort-key="mine-enabled">
-               <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.mine}}</h2>
+            <div class="listTitle statTitle workOrderTitle" data-sort-key="gather-enabled">
+               <button class="brown statButton">
+                  <div class="work_gather statImg"></div>
+               </button>
             </div>
-            <div class="listTitle workOrderTitle" data-sort-key="job-enabled">
-               <h2>{{i18n stonehearth:ui.game.citizens.workers_list_headers.job}}</h2>
+            <div class="listTitle statTitle workOrderTitle" data-sort-key="build-enabled">
+               <button class="brown statButton">
+                  <div class="work_build statImg"></div>
+               </button>
+            </div>
+            <div class="listTitle statTitle workOrderTitle" data-sort-key="job-enabled">
+               <button class="brown statButton">
+                  <div class="work_job statImg"></div>
+               </button>
             </div>
          </div>
 
@@ -129,18 +144,23 @@
                   <div {{bind-attr class=":suspendButtonImg view.model.suspended_work_orders.haul:showResumeButton:showSuspendButton"}} />
                </button>
             </a>
-            <a href="#" {{action "suspendToggle" "build" target="view"}} class='uisounds'>
-               <button id="buildSuspendButton" title="{{i18n stonehearth:ui.data.tooltips.suspend_button.description}}" {{bind-attr class=":suspendButton view.model.work_orders.haul.is_suspended:red:"}}>
-                  <div {{bind-attr class=":suspendButtonImg view.model.suspended_work_orders.build:showResumeButton:showSuspendButton"}} />
-               </button>
-            </a>
             <a href="#" {{action "suspendToggle" "mine" target="view"}} class='uisounds'>
-               <button id="mineSuspendButton" title="{{i18n stonehearth:ui.data.tooltips.suspend_button.description}}" {{bind-attr class=":suspendButton view.model.work_orders.haul.is_suspended:red:"}}>
+               <button id="mineSuspendButton" title="{{i18n stonehearth:ui.data.tooltips.suspend_button.description}}" {{bind-attr class=":suspendButton view.model.work_orders.mine.is_suspended:red:"}}>
                   <div {{bind-attr class=":suspendButtonImg view.model.suspended_work_orders.mine:showResumeButton:showSuspendButton"}} />
                </button>
             </a>
+            <a href="#" {{action "suspendToggle" "gather" target="view"}} class='uisounds'>
+               <button id="gatherSuspendButton" title="{{i18n stonehearth:ui.data.tooltips.suspend_button.description}}" {{bind-attr class=":suspendButton view.model.work_orders.gather.is_suspended:red:"}}>
+                  <div {{bind-attr class=":suspendButtonImg view.model.suspended_work_orders.gather:showResumeButton:showSuspendButton"}} />
+               </button>
+            </a>
+            <a href="#" {{action "suspendToggle" "build" target="view"}} class='uisounds'>
+               <button id="buildSuspendButton" title="{{i18n stonehearth:ui.data.tooltips.suspend_button.description}}" {{bind-attr class=":suspendButton view.model.work_orders.build.is_suspended:red:"}}>
+                  <div {{bind-attr class=":suspendButtonImg view.model.suspended_work_orders.build:showResumeButton:showSuspendButton"}} />
+               </button>
+            </a>
             <a href="#" {{action "suspendToggle" "job" target="view"}} class='uisounds'>
-               <button id="jobSuspendButton" title="{{i18n stonehearth:ui.data.tooltips.suspend_button.description}}" {{bind-attr class=":suspendButton view.model.work_orders.haul.is_suspended:red:"}}>
+               <button id="jobSuspendButton" title="{{i18n stonehearth:ui.data.tooltips.suspend_button.description}}" {{bind-attr class=":suspendButton view.model.work_orders.job.is_suspended:red:"}}>
                   <div {{bind-attr class=":suspendButtonImg view.model.suspended_work_orders.job:showResumeButton:showSuspendButton"}} />
                </button>
             </a>
@@ -193,19 +213,26 @@
                                                {{bind-attr id=view.haulId}}>
       <label class="ignoreClick" {{bind-attr for=view.haulId}}></label>
    </td>
-   <td {{bind-attr class=":workOrderColumn view.taskView.model.suspended_work_orders.build:red:"}}>
-      <input type="checkbox" class="ignoreClick" workOrder="build" {{bind-attr citizenId=view.citizenId}}
-                                               {{bind-attr checked=view.buildChecked}}
-                                               {{bind-attr disabled=view.buildLocked}}
-                                               {{bind-attr id=view.buildId}}>
-      <label class="ignoreClick" {{bind-attr for=view.buildId}}></label>
-   </td>
    <td {{bind-attr class=":workOrderColumn view.taskView.model.suspended_work_orders.mine:red:"}}>
       <input type="checkbox" class="ignoreClick" workOrder="mine" {{bind-attr citizenId=view.citizenId}}
                                                {{bind-attr checked=view.mineChecked}}
                                                {{bind-attr disabled=view.mineLocked}}
                                                {{bind-attr id=view.mineId}}>
       <label class="ignoreClick" {{bind-attr for=view.mineId}}></label>
+   </td>
+   <td {{bind-attr class=":workOrderColumn view.taskView.model.suspended_work_orders.gather:red:"}}>
+      <input type="checkbox" class="ignoreClick" workOrder="gather" {{bind-attr citizenId=view.citizenId}}
+                                               {{bind-attr checked=view.gatherChecked}}
+                                               {{bind-attr disabled=view.gatherLocked}}
+                                               {{bind-attr id=view.gatherId}}>
+      <label class="ignoreClick" {{bind-attr for=view.gatherId}}></label>
+   </td>
+   <td {{bind-attr class=":workOrderColumn view.taskView.model.suspended_work_orders.build:red:"}}>
+      <input type="checkbox" class="ignoreClick" workOrder="build" {{bind-attr citizenId=view.citizenId}}
+                                               {{bind-attr checked=view.buildChecked}}
+                                               {{bind-attr disabled=view.buildLocked}}
+                                               {{bind-attr id=view.buildId}}>
+      <label class="ignoreClick" {{bind-attr for=view.buildId}}></label>
    </td>
    <td {{bind-attr class=":workOrderColumn view.taskView.model.suspended_work_orders.job:red:"}}>
       <input type="checkbox" class="ignoreClick" workOrder="job" {{bind-attr citizenId=view.citizenId}}
