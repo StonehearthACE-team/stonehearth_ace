@@ -41,6 +41,7 @@ local monkey_patches = {
    ace_selection_service = 'stonehearth.services.client.selection.selection_service',
    ace_settings_call_handler = 'stonehearth.call_handlers.settings_call_handler',
    ace_shepherd_call_handler = 'stonehearth.call_handlers.shepherd_call_handler',
+   ace_shepherd_pasture_renderer = 'stonehearth.renderers.shepherd_pasture.shepherd_pasture_renderer',
    ace_sound_service = 'stonehearth.services.client.sound.sound_service',
    ace_storage_renderer = 'stonehearth.renderers.storage.storage_renderer',
    ace_subterranean_view_service = 'stonehearth.services.client.subterranean_view.subterranean_view_service',
