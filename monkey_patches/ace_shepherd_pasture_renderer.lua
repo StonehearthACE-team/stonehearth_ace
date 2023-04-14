@@ -8,10 +8,7 @@ local AceShepherdPastureRenderer = class()
 function AceShepherdPastureRenderer:initialize(render_entity, datastore)
    self._datastore = datastore
 
-   self._zone_renderer = ZoneRenderer(render_entity)
-      -- TODO: read these colors from json
-      :set_designation_colors(Color4(227, 173, 44, 255), Color4(227, 173, 44, 255))
-      :set_ground_colors(Color4(77, 62, 38, 10), Color4(77, 62, 38, 30))
+   self._zone_renderer = ZoneRenderer(render_entity):set_ground_colors(Color4(77, 62, 38, 10), Color4(77, 62, 38, 30))
 
    self._datastore_trace = self._datastore:trace_data('rendering shepherd pasture')
       :on_changed(
@@ -20,6 +17,18 @@ function AceShepherdPastureRenderer:initialize(render_entity, datastore)
          end
       )
       :push_object_state()
+end
+
+function AceShepherdPastureRenderer:_update()
+   local data = self._datastore:get_data()
+   local size = data.size
+   local items = {}
+
+   local c = Color4(unpack(data.zone_color or {227, 173, 44, 204}))
+   self._zone_renderer:set_designation_colors(c, c)
+
+   self._zone_renderer:set_size(Point2(data.size.x, data.size.z))
+   self._zone_renderer:set_current_items(items)
 end
 
 return AceShepherdPastureRenderer
