@@ -39,10 +39,11 @@ function AceGhostFormComponent:_remove_from_town()
          town:unregister_limited_placement_item(self._entity, self._sv._limited_registration_tag)
          local is_place_item_type = self:is_place_item_type()
          if is_place_item_type then
+            local placement_tag = self:_get_placement_tag()
             if self:is_building_fixture() then
-               town:unrequest_build_placement_task(self._sv.placement_info.iconic_uri, self._sv.quality)
+               town:unrequest_build_placement_task(self._sv.placement_info.iconic_uri, self._sv.quality, false, placement_tag)
             else
-               town:unrequest_placement_task(self._sv.placement_info.iconic_uri, self._sv.quality)
+               town:unrequest_placement_task(self._sv.placement_info.iconic_uri, self._sv.quality, false, placement_tag)
             end
          end
       end
@@ -79,13 +80,19 @@ function AceGhostFormComponent:_add_to_town(moving_placed_item)
          end
       end
       if is_place_item_type then
+         local placement_tag = self:_get_placement_tag()
          if self:is_building_fixture() then
-            town:request_build_placement_task(self._sv.placement_info.iconic_uri, self._sv.quality)
+            town:request_build_placement_task(self._sv.placement_info.iconic_uri, self._sv.quality, false, placement_tag)
          else
-            town:request_placement_task(self._sv.placement_info.iconic_uri, self._sv.quality)
+            town:request_placement_task(self._sv.placement_info.iconic_uri, self._sv.quality, false, placement_tag)
          end
       end
    end
+end
+
+function AceGhostFormComponent:_get_placement_tag()
+   local placement_data = self._root_entity_uri and radiant.entities.get_entity_data(self._root_entity_uri, 'stonehearth:placement')
+   return placement_data and placement_data.tag
 end
 
 return AceGhostFormComponent

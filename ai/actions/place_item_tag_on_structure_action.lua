@@ -1,11 +1,13 @@
 local PlaceItemOnStructure = radiant.class()
 
-PlaceItemOnStructure.name = 'place an item'
-PlaceItemOnStructure.does = 'stonehearth:place_item_on_structure'
-PlaceItemOnStructure.args = {}
+PlaceItemOnStructure.name = 'place an item with tag'
+PlaceItemOnStructure.does = 'stonehearth_ace:place_item_tag_on_structure'
+PlaceItemOnStructure.args = {
+   placement_tag = 'string',
+}
 PlaceItemOnStructure.priority = 0
 
-local function _make_filter_fn(player_id)
+local function _make_filter_fn(player_id, required_placement_tag)
    return function(item)
       if not item or not item:is_valid() then
          return false
@@ -25,25 +27,24 @@ local function _make_filter_fn(player_id)
          return false
       end
 
+      local placement_tag
       local iconic_component = item:get_component('stonehearth:iconic_form')
       if iconic_component then
          item = iconic_component:get_root_entity()
       end
-
-      -- this action ignores any items with placement tags (a different action in the "job" work order handles those)
       local placement_data = radiant.entities.get_entity_data(item, 'stonehearth:placement')
       if placement_data and placement_data.tag then
-         return false
+         placement_tag = placement_data.tag
       end
 
-      return true
+      return placement_tag == required_placement_tag
    end
 end
 
 function PlaceItemOnStructure:start_thinking(ai, entity, args)
    local work_player_id = radiant.entities.get_work_player_id(entity)
-   local filter_key = work_player_id
-   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:place_item_on_structure', filter_key, _make_filter_fn(work_player_id))
+   local filter_key = work_player_id .. ':' .. args.placement_tag
+   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:place_item_on_structure', filter_key, _make_filter_fn(work_player_id, args.placement_tag))
 
    ai:set_think_output({
       filter_fn = filter_fn,

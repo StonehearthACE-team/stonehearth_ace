@@ -1,16 +1,18 @@
 local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
-local PlaceItemTypeOnStructure = radiant.class()
+local PlaceItemTypeTagOnStructure = radiant.class()
 
-PlaceItemTypeOnStructure.name = 'place an item type 2'
-PlaceItemTypeOnStructure.does = 'stonehearth:place_item_type_on_structure_2'
-PlaceItemTypeOnStructure.args = {}
-PlaceItemTypeOnStructure.priority = {0, 1}
+PlaceItemTypeTagOnStructure.name = 'place an item type with tag'
+PlaceItemTypeTagOnStructure.does = 'stonehearth_ace:place_item_type_tag_on_structure'
+PlaceItemTypeTagOnStructure.args = {
+   placement_tag = 'string',
+}
+PlaceItemTypeTagOnStructure.priority = {0, 1}
 
 local FAILSAFE_TIMEOUT = 5000
 local RESTART_TIMEOUT = 2000
 
-local function _is_placeable_iconic(player_id, iconic_uri, quality, require_exact, item)
+local function _is_placeable_iconic(player_id, iconic_uri, quality, require_exact, item, placement_tag)
    if not item or not item:is_valid() then
       return false
    end
@@ -50,9 +52,9 @@ local function _is_placeable_iconic(player_id, iconic_uri, quality, require_exac
       return false
    end
 
-   -- this should already be getting filtered out by the town:get_requested_placement_tasks([nil]) call
+   -- this should already be getting filtered out by the town:get_requested_placement_tasks(tag) call
    local placement_data = radiant.entities.get_entity_data(root_form, 'stonehearth:placement')
-   if placement_data and placement_data.tag then  -- requires special placement action (e.g. summon_stone)
+   if not placement_data or placement_data.tag ~= placement_tag then
       return false
    end
    
@@ -115,13 +117,17 @@ local function _is_ghost_for_iconic(player_id, iconic_uri, quality, require_exac
    return true
 end
 
-function PlaceItemTypeOnStructure:_try_next_entry(ai, entity)
+function PlaceItemTypeTagOnStructure:_try_next_entry(ai, entity)
    local work_player_id = radiant.entities.get_work_player_id(self._entity)
    local town = stonehearth.town:get_town(work_player_id)
-   local item_types = town:get_requested_placement_tasks()
    local entry
+   local tag = self._required_placement_tag
+
+   -- this placement is "job" work order type; there is also a "build" work order type version of this action
+   local item_types = town:get_requested_placement_tasks(tag)
 
    local prev_key = item_types[self._item_type_cursor] and self._item_type_cursor or nil
+   
    self._item_type_cursor, entry = next(item_types, prev_key)
 
    if not self._item_type_cursor then
@@ -144,7 +150,7 @@ function PlaceItemTypeOnStructure:_try_next_entry(ai, entity)
    local pickup_filter = stonehearth.ai:filter_from_key('stonehearth:place_item_type_on_structure',
          work_player_id .. '+q:' .. quality .. ':' .. iconic_uri .. require_exact_str .. ':p',
          function(item)
-            return _is_placeable_iconic(work_player_id, iconic_uri, quality, require_exact, item)
+            return _is_placeable_iconic(work_player_id, iconic_uri, quality, require_exact, item, self._required_placement_tag)
          end)
    
    local ghost_filter = stonehearth.ai:filter_from_key('stonehearth:place_item_type_on_structure',
@@ -181,7 +187,7 @@ function PlaceItemTypeOnStructure:_try_next_entry(ai, entity)
    })
 end
 
-function PlaceItemTypeOnStructure:_on_items_changed()
+function PlaceItemTypeTagOnStructure:_on_items_changed()
    if self._item_type_cursor then
       -- We aren't nil, and therefore aren't waiting for new stuff.
       return
@@ -190,9 +196,10 @@ function PlaceItemTypeOnStructure:_on_items_changed()
    self:_try_next_entry(self._ai, self._entity)
 end
 
-function PlaceItemTypeOnStructure:start_thinking(ai, entity, args)
+function PlaceItemTypeTagOnStructure:start_thinking(ai, entity, args)
    self._entity = entity
    self._ai = ai
+   self._required_placement_tag = args.placement_tag
 
    local work_player_id = radiant.entities.get_work_player_id(self._entity)
    local town = stonehearth.town:get_town(work_player_id)
@@ -203,7 +210,7 @@ function PlaceItemTypeOnStructure:start_thinking(ai, entity, args)
    self:_try_next_entry(ai, entity)
 end
 
-function PlaceItemTypeOnStructure:stop_thinking(ai, entity, args)
+function PlaceItemTypeTagOnStructure:stop_thinking(ai, entity, args)
    if self._failsafe_timer then
       self._failsafe_timer:destroy()
       self._failsafe_timer = nil
@@ -220,7 +227,7 @@ function PlaceItemTypeOnStructure:stop_thinking(ai, entity, args)
    end
 end
 
-function PlaceItemTypeOnStructure:stop(ai, entity, args)
+function PlaceItemTypeTagOnStructure:stop(ai, entity, args)
    if self._failsafe_timer then
       self._failsafe_timer:destroy()
       self._failsafe_timer = nil
@@ -237,14 +244,14 @@ function PlaceItemTypeOnStructure:stop(ai, entity, args)
    end
 end
 
-function PlaceItemTypeOnStructure:start(ai, entity, args)
+function PlaceItemTypeTagOnStructure:start(ai, entity, args)
    -- Huh?  This is nonsense.
    ai:set_status_text_key('stonehearth:ai.actions.status_text.place_item_on_structure', { target = ai.CURRENT.carrying })
 end
 
 
 local ai = stonehearth.ai
-return ai:create_compound_action(PlaceItemTypeOnStructure)
+return ai:create_compound_action(PlaceItemTypeTagOnStructure)
          :execute('stonehearth:abort_on_event_triggered', {
             source = ai.ENTITY,
             event_name = 'stonehearth:work_order:haul:work_player_id_changed',

@@ -103,7 +103,7 @@ end
 AceEntityFormsComponent._ace_old__start_placement_task = EntityFormsComponent._start_placement_task
 function AceEntityFormsComponent:_start_placement_task()
    local rcs = self._entity:get_component('region_collision_shape')
-   if rcs then
+   if rcs and rcs:get_region() then
       local ghost_destination = self._sv.placement_ghost_entity:add_component('destination')
       if not ghost_destination:get_region() then
          ghost_destination:set_region(_radiant.sim.alloc_region3())
