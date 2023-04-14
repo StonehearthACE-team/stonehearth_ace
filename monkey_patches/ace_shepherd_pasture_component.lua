@@ -48,6 +48,12 @@ end
 AceShepherdPastureComponent._ace_old_activate = ShepherdPastureComponent.activate
 function AceShepherdPastureComponent:activate()
    self:_ace_old_activate()
+
+   if not self._sv.zone_color then
+      local json = radiant.entities.get_json(self)
+      self._sv.zone_color = json.zone_color
+      self.__saved_variables:mark_changed()
+   end
    
    if not self._sv._queued_slaughters then
       self._sv.harvest_animals_renewable = true

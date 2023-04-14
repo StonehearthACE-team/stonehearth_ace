@@ -21,12 +21,14 @@ function AceShepherdCallHandler:_get_pasture_region_selector(session, response)
       --log:debug('return_val = %s', tostring(return_val))
       return return_val
    end
+
+   local zone_data = radiant.entities.get_component_data('stonehearth:shepherd:shepherd_pasture', 'stonehearth:shepherd_pasture') or {}
    
    return stonehearth.selection:select_designation_region(stonehearth.constants.xz_region_reasons.PASTURE)
       :set_min_size(10)
       :set_max_size(50)
       :require_unblocked(false)
-      :use_designation_marquee(Color4(227, 173, 44, 255))
+      :use_designation_marquee(Color4(unpack(zone_data.zone_color or {227, 173, 44, 204})))
       :require_supported(false)                    -- ACE: override the default for a designation region selector
       :allow_unselectable_support_entities(false)  -- ACE: override the default for a designation region selector
       :set_create_intersection_node(false)
