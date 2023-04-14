@@ -960,7 +960,8 @@ end
 function AceTown:request_placement_task(iconic_uri, quality, require_exact, placement_tag)
    self:_request_placement_task(self._placement_tasks, iconic_uri, quality, require_exact, placement_tag)
 
-   radiant.events.trigger_async(self, 'stonehearth:town:place_item_types_changed')
+   local tag_str = placement_tag and (':' .. placement_tag) or ''
+   radiant.events.trigger_async(self, 'stonehearth:town:place_item_types_changed' .. tag_str)
 end
 
 function AceTown:unrequest_placement_task(iconic_uri, quality, require_exact, placement_tag)
@@ -970,7 +971,8 @@ end
 function AceTown:request_build_placement_task(iconic_uri, quality, require_exact, placement_tag)
    self:_request_placement_task(self._build_placement_tasks, iconic_uri, quality, require_exact, placement_tag)
 
-   radiant.events.trigger_async(self, 'stonehearth_ace:town:build_item_types_changed')
+   local tag_str = placement_tag and (':' .. placement_tag) or ''
+   radiant.events.trigger_async(self, 'stonehearth_ace:town:build_item_types_changed' .. tag_str)
 end
 
 function AceTown:unrequest_build_placement_task(iconic_uri, quality, require_exact, placement_tag)

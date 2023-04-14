@@ -2,12 +2,9 @@ local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
 local BuildItemTypeOnStructure = radiant.class()
 
-BuildItemTypeOnStructure.name = 'place an item type 2'
-BuildItemTypeOnStructure.does = 'stonehearth_ace:build_item_type_on_structure_2'
-BuildItemTypeOnStructure.args = {
-   iconic_uri = 'string',
-   quality = 'number'  -- -1 means "any quality"
-}
+BuildItemTypeOnStructure.name = 'build an item type'
+BuildItemTypeOnStructure.does = 'stonehearth_ace:build_item_type_on_structure'
+BuildItemTypeOnStructure.args = {}
 BuildItemTypeOnStructure.priority = {0, 1}
 
 local FAILSAFE_TIMEOUT = 5000
