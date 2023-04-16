@@ -20,6 +20,7 @@ local monkey_patches = {
    ace_attributes_component = 'stonehearth.components.attributes.attributes_component',
    ace_aura_buff = 'stonehearth.data.buffs.scripts.aura_buff',
    ace_bait_trap_component = 'stonehearth.components.trapping.bait_trap_component',
+   ace_basic_inventory_tracker_controller = 'stonehearth.services.server.inventory.basic_inventory_tracker_controller',
    ace_blueprint_job = 'stonehearth.components.building2.plan.jobs.blueprint_job',
    ace_blueprints_to_building_pieces_job = 'stonehearth.components.building2.plan.jobs.blueprints_to_building_pieces_job',
    ace_buff = 'stonehearth.components.buffs.buff',
