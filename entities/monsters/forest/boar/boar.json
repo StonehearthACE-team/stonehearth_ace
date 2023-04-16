@@ -31,6 +31,27 @@
             }
          }
       },
+      "stonehearth:renewable_resource_node": {
+         "category": "herding",
+         "resource": "stonehearth_ace:fungi:boar_hole",
+         "renewal_time": "3d+8d",
+         "renew_effect": "eat",
+         "resource_spawn_effect": "stonehearth:effects:poof_effect",
+         "start_unharvestable": true,
+         "spawn_resource_immediately": true,
+         "check_owner": true,
+         "seasons": {
+            "summer": {
+               "renewal_time_multiplier": 4
+            },
+            "spring": {
+               "renewal_time_multiplier": 2
+            },
+            "winter": {
+               "renewal_time_multiplier": 0.4
+            }
+         }
+      },
 	  "stonehearth:attributes": {
 	     "max_health": {
             "type": "basic",

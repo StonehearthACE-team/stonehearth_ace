@@ -4,7 +4,8 @@
    "components": {
       "stonehearth:renewable_resource_node": {
          "resource": "stonehearth_ace:food:coffee:coffee_basket",
-         "category": "harvest",
+         "category": "plucking",
+         "harvest_statistic_name": "fruits",
          "renewal_time": "2d+24h",
          "unripe_description": "i18n(stonehearth_ace:entities.plants.coffee_bush.unripe_description)",
          "harvest_overlay_effect": "stonehearth_ace:effects:harvest_fruit_overlay_effect",
