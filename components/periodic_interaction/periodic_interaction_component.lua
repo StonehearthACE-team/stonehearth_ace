@@ -177,6 +177,7 @@
 ]]
 
 local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local rng = _radiant.math.get_default_rng()
 
 local PeriodicInteractionComponent = class()
@@ -191,6 +192,7 @@ function PeriodicInteractionComponent:initialize()
    self._sv.current_mode = self._json.default_mode or nil
    self._sv.current_user = nil
    self._sv.current_owner = nil
+   self._sv.ingredient_quality = nil
    self._sv.interaction_stage = 1
    self._sv.num_uses = 0
    self._sv.enabled = self._json.start_enabled ~= false
@@ -405,6 +407,7 @@ function PeriodicInteractionComponent:_reset(completed, skip_mode_reselection)
    end
 
    self._sv.current_user = nil
+   self._sv.ingredient_quality = nil
    self.__saved_variables:mark_changed()
    self:_destroy_current_user_job_listener()
 
@@ -440,6 +443,31 @@ function PeriodicInteractionComponent:_setup_ui_data()
    self._sv.show_mode_selection = self._json.show_mode_selection
 
    self.__saved_variables:mark_changed()
+end
+
+function PeriodicInteractionComponent:_setup_mode_ui_data()
+   local stages
+   if self._current_mode_data.allow_finish_stage_selection then
+      -- prepare some basic data about all the selectable stages to remote to the ui
+      -- stage index, name, description, ...?
+      stages = {}
+      for index, stage in ipairs(self._current_sequence_data) do
+         if stage.allow_finish_selection then
+            table.insert(stages, {
+               index = index,
+               name = stage.display_name,
+               description = stage.description,
+               icon = stage.icon,
+            })
+         end
+      end
+   end
+
+   -- mostly useful as a nil check; we could probably just always set it and call mark_changed
+   if self._sv.stages ~= stages then
+      self._sv.stages = stages
+      self.__saved_variables:mark_changed()
+   end
 end
 
 function PeriodicInteractionComponent:_select_mode_sequences()
@@ -479,8 +507,11 @@ function PeriodicInteractionComponent:select_mode(mode)
 
    if mode ~= self._sv.current_mode then
       self._sv.current_mode = mode
+      self._sv.finish_stage = self._current_mode_data.default_finish_stage or nil
       self:_cancel_usage()
    end
+
+   self:_setup_mode_ui_data()
 
    self:_stop_interaction_cooldown_timer()
    self:_apply_current_stage_settings()
@@ -595,6 +626,16 @@ function PeriodicInteractionComponent:get_interaction_point(point_id)
    return self._json.interaction_points and self._json.interaction_points[point_id]
 end
 
+function PeriodicInteractionComponent:set_finish_stage(index)
+   self._sv.finish_stage = math.max(self._sv.interaction_stage + 1, math.min(index, self._current_sequence_data and #self._current_sequence_data or 2))
+   self.__saved_variables:mark_changed()
+end
+
+function PeriodicInteractionComponent:set_ingredient_quality(quality)
+   self._sv.ingredient_quality = quality
+   self.__saved_variables:mark_changed()
+end
+
 function PeriodicInteractionComponent:set_current_interaction_completed(user)
    self._sv.current_user = user
    self:_create_current_user_job_listener()
@@ -604,8 +645,27 @@ function PeriodicInteractionComponent:set_current_interaction_completed(user)
       return
    end
 
+   -- if the finish stage has been set to this stage, we want to complete now
+   local completed = self._sv.finish_stage == self._sv.interaction_stage
+
    -- apply any rewards
-   local completed = self:_apply_rewards(current_interaction.rewards, false)
+   local item
+   completed, item = self:_apply_rewards(completed and current_interaction.finish_rewards or current_interaction.rewards, completed)
+
+   local user_event = user and current_interaction.user_event
+   if user_event and user_event.event then
+      local args = {
+         user = user,
+         item = item,
+      }
+      if user_event.user_entity then
+         args[user_event.user_entity] = user
+      end
+      if user_event.item_spawned then
+         args[user_event.item_spawned] = item
+      end
+      radiant.events[user_event.sync and 'trigger' or 'trigger_async'](self._entity, user_event.event, args)
+   end
    
    -- if this was the first interaction for this sequence, start the general cooldown
    if self._sv.interaction_stage == 1 and self._current_mode_data.cooldown then
@@ -673,18 +733,22 @@ function PeriodicInteractionComponent:_apply_rewards(rewards, is_completed)
       return
    end
 
-   local completed = false
+   local completed = is_completed
+   local item_spawned
 
    for _, reward in ipairs(rewards) do
-      completed = completed or self:_apply_reward(reward, is_completed)
+      local this_completed, this_item_spawned = self:_apply_reward(reward, is_completed)
+      completed = completed or this_completed
+      item_spawned = item_spawned or this_item_spawned
    end
 
-   return completed
+   return completed, item_spawned
 end
 
 -- different types of rewards: user_buff, self_buff, experience, permanent_attribute, expendable_resource, script
 function PeriodicInteractionComponent:_apply_reward(reward, is_completed)
    local user = self._sv.current_user
+   local spawned_item
    
    if reward.type == 'user_buff' then
       user:add_component('stonehearth:buffs'):add_buff(reward.buff)
@@ -713,6 +777,62 @@ function PeriodicInteractionComponent:_apply_reward(reward, is_completed)
          local cur_value = expendable_resources_component:get_value(reward.resource)
          expendable_resources_component:set_value(reward.resource, cur_value + reward.amount or 0)
       end
+   elseif reward.type == 'craft_items' and user then
+      -- use this item's quality if no ingredient quality was provided
+      -- determine the quality for each item to spawn
+      local ingredient_quality = self._sv.ingredient_quality or radiant.entities.get_item_quality(self._entity)
+      local quality_table = item_quality_lib.get_quality_table(user, reward.category, ingredient_quality)
+      local uris = {}
+      for uri, quantity in pairs(reward.items) do
+         local uri_table = {}
+         for i = 1, quantity do
+            local quality = item_quality_lib.get_quality(quality_table)
+            uri_table[quality] = (uri_table[quality] or 0) + 1
+         end
+         uris[uri] = uri_table
+      end
+
+      local options = {
+         owner = user:get_player_id(),
+         inputs = user,
+         output = self._entity,
+         spill_fail_items = true,
+         --add_spilled_to_inventory = true,
+      }
+
+      local location = radiant.entities.get_world_grid_location(user) or radiant.entities.get_world_grid_location(self._entity)
+      local items = radiant.entities.get_successfully_output_items(radiant.entities.output_items(uris, location, 0, 4, options))
+      local event_args = {recipe_data = reward}
+      if next(items) then
+         spawned_item = items[next(items)]
+         event_args.product = spawned_item
+         event_args.product_uri = spawned_item:get_uri()
+      end
+
+      -- if we're "crafting" something, make sure that gets communicated to the crafter
+      -- reward should specify level_requirement, category, and proficiency_gain fields if relevant
+      radiant.events.trigger_async(user, 'stonehearth:crafter:craft_item', event_args)
+   elseif reward.type == 'spawn_items' then
+      -- use this item's quality (as if it were an rn/rrn)
+      local quality = radiant.entities.get_item_quality(self._entity)
+      local uris = {}
+      for uri, quantity in pairs(reward.items) do
+         uris[uri] = {[quality] = quantity}
+      end
+
+      local options = {
+         owner = user and user:get_player_id() or self._entity:get_player_id(),
+         inputs = user,
+         output = self._entity,
+         spill_fail_items = true,
+         --add_spilled_to_inventory = true,
+      }
+
+      local location = user and radiant.entities.get_world_grid_location(user) or radiant.entities.get_world_grid_location(self._entity)
+      local items = radiant.entities.get_successfully_output_items(radiant.entities.output_items(uris, location, 0, 4, options))
+      if next(items) then
+         spawned_item = items[next(items)]
+      end
    elseif reward.type == 'script' then
       local script = radiant.mods.load_script(reward.script)
       if script and script.process_reward then
@@ -720,7 +840,7 @@ function PeriodicInteractionComponent:_apply_reward(reward, is_completed)
       end
    end
 
-   return false
+   return false, spawned_item
 end
 
 function PeriodicInteractionComponent:_start_general_cooldown_timer(duration)
@@ -776,6 +896,14 @@ function PeriodicInteractionComponent:_consider_usability(force_reconsider)
    -- if it's disabled or still on general/interaction cooldown, it's not usable
    if not self._sv.enabled or self._sv._general_cooldown_timer or self._sv._interaction_cooldown_timer then
       usable = false
+   else
+      -- it's enabled and not on cooldown
+      -- check if the current interaction has num_interactions > 0 (otherwise we automatically proceed to the next stage)
+      local current_interaction = self:get_current_interaction()
+      if current_interaction and current_interaction.num_interactions == 0 then
+         self:set_current_interaction_completed(self:get_current_user())
+         return
+      end
    end
 
    if force_reconsider or usable ~= self._is_usable then
