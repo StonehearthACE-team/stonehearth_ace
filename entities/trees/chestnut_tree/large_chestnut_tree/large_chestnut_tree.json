@@ -1,5 +1,5 @@
 {
-   "mixins": "stonehearth:mixins:tree",
+   "mixins": "stonehearth_ace:mixins:tree:rrn",
    "type": "entity",
    "components": {
       "model_variants": {
@@ -92,7 +92,7 @@
       },
       "stonehearth:renewable_resource_node": {
          "resource": "stonehearth_ace:food:chestnut:chestnut_basket",
-         "category": "harvest",
+         "harvest_statistic_name": "fruits",
          "renewal_time": "2d+12h",
          "harvest_overlay_effect": "stonehearth_ace:effects:harvest_nut_overlay_effect",
          "resource_loot_table": {

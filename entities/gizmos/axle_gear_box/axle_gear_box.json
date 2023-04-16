@@ -65,10 +65,10 @@
          "rotations": [
             {
                "dimension": "y",
-               "direction": {"x": 0, "y": 1, "z": 0},
+               "direction": { "x": 0, "y": 1, "z": 0 },
                "model": "file(axle_vertical.qb)",
-               "offset": {"x": 5, "y": 0, "z": 5},
-               "origin": {"x": 0, "y": 1, "z": 0},
+               "offset": { "x": 5, "y": 0, "z": 5 },
+               "origin": { "x": 0, "y": 1, "z": 0 },
                "connector_id": "yhigh",
                "connector_region": [
                   {
@@ -79,10 +79,10 @@
             },
             {
                "dimension": "z",
-               "direction": {"x": 0, "y": 0, "z": -1},
+               "direction": { "x": 0, "y": 0, "z": -1 },
                "model": "file(axle_horizontal.qb)",
-               "offset": {"x": 5, "y": 0, "z": 5},
-               "origin": {"x": 0, "y": 0, "z": -1},
+               "offset": { "x": 5, "y": 0, "z": 5 },
+               "origin": { "x": 0, "y": 0, "z": -1 },
                "rotation": 0,
                "connector_id": "zlow",
                "connector_region": [
@@ -94,10 +94,10 @@
             },
             {
                "dimension": "x",
-               "direction": {"x": -1, "y": 0, "z": 0},
+               "direction": { "x": -1, "y": 0, "z": 0 },
                "model": "file(axle_horizontal.qb)",
-               "offset": {"x": 5, "y": 0, "z": 5},
-               "origin": {"x": -1, "y": 0, "z": 0},
+               "offset": { "x": 5, "y": 0, "z": 5 },
+               "origin": { "x": -1, "y": 0, "z": 0 },
                "rotation": 90,
                "connector_id": "xlow",
                "connector_region": [
@@ -109,10 +109,10 @@
             },
             {
                "dimension": "z",
-               "direction": {"x": 0, "y": 0, "z": 1},
+               "direction": { "x": 0, "y": 0, "z": 1 },
                "model": "file(axle_horizontal.qb)",
-               "offset": {"x": 5, "y": 0, "z": 5},
-               "origin": {"x": 0, "y": 0, "z": 1},
+               "offset": { "x": 5, "y": 0, "z": 5 },
+               "origin": { "x": 0, "y": 0, "z": 1 },
                "rotation": 180,
                "connector_id": "zhigh",
                "connector_region": [
@@ -124,10 +124,10 @@
             },
             {
                "dimension": "x",
-               "direction": {"x": 1, "y": 0, "z": 0},
+               "direction": { "x": 1, "y": 0, "z": 0 },
                "model": "file(axle_horizontal.qb)",
-               "offset": {"x": 5, "y": 0, "z": 5},
-               "origin": {"x": 1, "y": 0, "z": 0},
+               "offset": { "x": 5, "y": 0, "z": 5 },
+               "origin": { "x": 1, "y": 0, "z": 0 },
                "rotation": 270,
                "connector_id": "xhigh",
                "connector_region": [
@@ -139,10 +139,10 @@
             },
             {
                "dimension": "y",
-               "direction": {"x": 0, "y": -1, "z": 0},
+               "direction": { "x": 0, "y": -1, "z": 0 },
                "model": "file(axle_vertical.qb)",
-               "offset": {"x": 5, "y": 0, "z": 5},
-               "origin": {"x": 0, "y": 0, "z": 0},
+               "offset": { "x": 5, "y": 0, "z": 5 },
+               "origin": { "x": 0, "y": 0, "z": 0 },
                "connector_id": "ylow",
                "connector_region": [
                   {
@@ -168,6 +168,10 @@
       },
       "stonehearth:item_quality": {
          "variable_quality": true
+      },
+      "stonehearth:placement": {
+         "effect": "wrench",
+         "tag": "mechanical"
       }
    }
 }

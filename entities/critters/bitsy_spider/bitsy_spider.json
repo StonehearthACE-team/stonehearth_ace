@@ -39,33 +39,6 @@
             ]
          }
       },
-      "stonehearth:resource_node": {
-         "category": "herding",
-         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
-         "harvester_effect": "fiddle",
-         "description": "harvest_animal",
-         "harvestable_by_harvest_tool": false,
-         "resource_loot_table": {
-            "entries": {
-               "pelt": {
-                  "num_rolls": {
-                     "min": 1,
-                     "max": 1
-                  },
-                  "items": {
-                     "pelt": {
-                        "uri": "stonehearth_ace:resources:bitsy_spider_chitin",
-                        "weight": 1
-                     },
-                     "none": {
-                        "uri": "",
-                        "weight": 3
-                     }
-                  }
-               }
-            }
-         }
-      },
       "stonehearth:attributes": {
          "speed": {
             "type": "basic",
@@ -74,11 +47,23 @@
       },
       "stonehearth:loot_drops": {
          "entries": {
-            "default": {
+            "spider_loot": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
+               },
                "items": {
-                  "skin": {
+                  "chitin": {
+                     "uri": "stonehearth_ace:resources:bitsy_spider_chitin",
+                     "weight": 1
+                  },
+                  "meat": {
                      "uri": "stonehearth_ace:bitsy_spider_bug_meat",
                      "weight": 1
+                  },
+                  "none": {
+                     "uri": "",
+                     "weight": 3
                   }
                }
             }

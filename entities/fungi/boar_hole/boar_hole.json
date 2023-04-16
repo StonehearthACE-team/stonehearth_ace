@@ -1,0 +1,57 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth_ace:fungi:oinker_hole",
+   "components": {
+      "mixintypes": {
+         "model_variants": "override"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(../oinker_hole/oinker_hole.qb)",
+                     "file(../oinker_hole/oinker_hole_2.qb)",
+                     "file(../oinker_hole/oinker_hole_3.qb)",
+                     "file(../oinker_hole/oinker_hole_4.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:resource_node": {
+         "auto_harvest": false,
+         "category": "harvest",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_fungi_overlay_effect"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.fungi.boar_hole.display_name)",
+         "description": "i18n(stonehearth_ace:entities.fungi.oinker_hole.description)",
+         "icon": "file(../oinker_hole/oinker_hole.png)",
+         "category": "fungi",
+         "material_tags": [
+            "fungi"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": -3
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 72,
+            "max": 96
+         }
+      }
+   }
+}
