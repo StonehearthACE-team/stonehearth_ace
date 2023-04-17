@@ -4388,89 +4388,151 @@
                   "50_display_name": " the Life-Saver",
                   "50_description": "They have treated 50 hearthlings. What a blessing to have them!"
                },
-               "proficient_category_tools": {
-                  "display_name": "⚒️ Proficiency: Tools",
-                  "description": "Gained by reaching 100% proficiency in the \"Tools\" category of any crafting job.",
-                  "1_display_name": ", Master Toolmaker",
-                  "1_description": "They have mastered making tools in one job."
+               "proficient_category_workbenches": {
+                  "display_name": "⚙️ Proficiency: Workbenches",
+                  "description": "Gained by reaching 100% proficiency in the \"Workbenches\" category of any crafting job.",
+                  "1_display_name": ", Expert Artisan",
+                  "1_description": "They have mastered creating workbenches for one job.",
+                  "3_display_name": ", Adept Artisan",
+                  "3_description": "They have mastered creating workbenches for three jobs.",
+                  "6_display_name": ", Master Artisan",
+                  "6_description": "They have mastered creating workbenches for six jobs.",
+                  "11_display_name": ", Grandmaster Artisan",
+                  "11_description": "They have mastered creating workbenches for eleven jobs."
                },
                "proficient_category_legendary": {
                   "display_name": "📜 Proficiency: Legendary",
                   "description": "Gained by reaching 100% proficiency in the \"Legendary\" category of any crafting job.",
-                  "1_display_name": ", Master of Tradition",
-                  "1_description": "They have mastered making legendary items in one job."
+                  "1_display_name": ", Expert in Tradition",
+                  "1_description": "They have mastered making legendary items in one job.",
+                  "3_display_name": ", Adept of Tradition",
+                  "3_description": "They have mastered making legendary items in three jobs.",
+                  "5_display_name": ", Master of Tradition",
+                  "5_description": "They have mastered making legendary items in five jobs.",
+                  "9_display_name": ", Grandmaster of Tradition",
+                  "9_description": "They have mastered making legendary items in nine jobs."
+               },
+               "proficient_category_tools": {
+                  "display_name": "⚒️ Proficiency: Tools",
+                  "description": "Gained by reaching 100% proficiency in the \"Tools\" category of any crafting job.",
+                  "1_display_name": ", Expert Toolmaker",
+                  "1_description": "They have mastered making tools of one category.",
+                  "2_display_name": ", Adept Toolmaker",
+                  "2_description": "They have mastered making tools of two categories.",
+                  "4_display_name": ", Master Toolmaker",
+                  "4_description": "They have mastered making tools of four categories.",
+                  "6_display_name": ", Grandmaster Toolmaker",
+                  "6_description": "They have mastered making tools of six categories."
                },
                "proficient_category_foods": {
                   "display_name": "🥐 Proficiency: Foodstuffs",
                   "description": "Gained by reaching 100% proficiency in any food category as a Cook.",
-                  "1_display_name": ", Master Culinarian",
-                  "1_description": "They have mastered making one category of foodstuffs as a Cook."
+                  "1_display_name": ", Expert Culinarian",
+                  "1_description": "They have mastered making one category of foodstuffs as a Cook.",
+                  "2_display_name": ", Adept Culinarian",
+                  "2_description": "They have mastered making two categories of foodstuffs as a Cook.",
+                  "3_display_name": ", Master Culinarian",
+                  "3_description": "They have mastered making three categories of foodstuffs as a Cook.",
+                  "4_display_name": ", Grandmaster Culinarian",
+                  "4_description": "They have mastered making four categories of foodstuffs as a Cook."
                },
                "proficient_category_drinks": {
                   "display_name": "🍹 Proficiency: Beverages",
                   "description": "Gained by reaching 100% proficiency in any drink category as a Brewer.",
-                  "1_display_name": ", Master Brewer",
-                  "1_description": "They have mastered making one category of beverages as a Brewer."
+                  "1_display_name": ", Adept Barkeep",
+                  "1_description": "They have mastered making one category of beverages as a Brewer.",
+                  "2_display_name": ", Master Barkeep",
+                  "2_description": "They have mastered making two categories of beverages as a Brewer.",
+                  "3_display_name": ", Grandmaster Barkeep",
+                  "3_description": "They have mastered making three categories of beverages as a Brewer."
                },
                "proficient_category_weapons": {
                   "display_name": "⚔️ Proficiency: Weapons",
                   "description": "Gained by reaching 100% proficiency in the \"Weapons\" category as a Blacksmith.",
-                  "1_display_name": ", Master Weaponsmith",
+                  "1_display_name": ", Grandmaster Weaponsmith",
                   "1_description": "They have mastered making weapons as a Blacksmith."
                },
                "proficient_category_armor": {
                   "display_name": "🛡️ Proficiency: Armor",
                   "description": "Gained by reaching 100% proficiency in the \"Armor\" category as a Blacksmith.",
-                  "1_display_name": ", Master Armorer",
+                  "1_display_name": ", Grandmaster Armorer",
                   "1_description": "They have mastered making armor as a Blacksmith."
                },
                "proficient_category_building_parts": {
                   "display_name": "🧱 Proficiency: Building Parts",
                   "description": "Gained by reaching 100% proficiency in the \"Building Parts\" category of any basic crafting job.",
-                  "1_display_name": ", Master Constructor",
-                  "1_description": "They have mastered making building parts in one job."
+                  "1_display_name": ", Adept Constructor",
+                  "1_description": "They have mastered making building parts of one category.",
+                  "3_display_name": ", Master Constructor",
+                  "3_description": "They have mastered making building parts of three categories.",
+                  "5_display_name": ", Grandmaster Constructor",
+                  "5_description": "They have mastered making building parts of five categories."
                },
                "proficient_category_fancy_building_parts": {
                   "display_name": "🧱✨ Proficiency: Fancy Building Parts",
                   "description": "Gained by reaching 100% proficiency in a special, fancy \"Building Parts\" category of any basic crafting job.",
-                  "1_display_name": ", Master Architect",
-                  "1_description": "They have mastered making fancy building parts in one job."
+                  "1_display_name": ", Adept Architect",
+                  "1_description": "They have mastered making fancy building parts in one job.",
+                  "2_display_name": ", Master Architect",
+                  "2_description": "They have mastered making fancy building parts in two jobs.",
+                  "3_display_name": ", Grandmaster Architect",
+                  "3_description": "They have mastered making fancy building parts in three jobs."
                },
                "proficient_category_furniture": {
                   "display_name": "🪑 Proficiency: Furniture",
                   "description": "Gained by reaching 100% proficiency in the \"Furniture\" category of any basic crafting job.",
-                  "1_display_name": ", Master Furnisher",
-                  "1_description": "They have mastered making furniture in one job."
+                  "1_display_name": ", Adept Furnisher",
+                  "1_description": "They have mastered making furniture of one category.",
+                  "3_display_name": ", Master Furnisher",
+                  "3_description": "They have mastered making furniture of three categories.",
+                  "5_display_name": ", Grandmaster Furnisher",
+                  "5_description": "They have mastered making furniture of five categories."
                },
                "proficient_category_fancy_furniture": {
                   "display_name": "🪑✨ Proficiency: Fancy Furniture",
                   "description": "Gained by reaching 100% proficiency in a special, fancy \"Furniture\" category of any basic crafting job.",
-                  "1_display_name": ", Master Designer",
-                  "1_description": "They have mastered making fancy furniture in one job."
+                  "1_display_name": ", Adept Designer",
+                  "1_description": "They have mastered making fancy furniture in one job.",
+                  "2_display_name": ", Master Designer",
+                  "2_description": "They have mastered making fancy furniture in two jobs.",
+                  "3_display_name": ", Grandmaster Designer",
+                  "3_description": "They have mastered making fancy furniture in three jobs."
                },
                "proficient_category_decorations": {
                   "display_name": "🪔 Proficiency: Decorations",
                   "description": "Gained by reaching 100% proficiency in the \"Decorations\" category of any crafting job.",
-                  "1_display_name": ", Master Decorator",
-                  "1_description": "They have mastered making decorations in one job."
+                  "1_display_name": ", Expert Decorator",
+                  "1_description": "They have mastered making decorations in one job.",
+                  "3_display_name": ", Adept Decorator",
+                  "3_description": "They have mastered making decorations in three jobs.",
+                  "5_display_name": ", Master Decorator",
+                  "5_description": "They have mastered making decorations in five jobs.",
+                  "9_display_name": ", Grandmaster Decorator",
+                  "9_description": "They have mastered making decorations in nine jobs."
                },
                "proficient_category_refiner": {
                   "display_name": "🧵 Proficiency: Refined Materials",
                   "description": "Gained by reaching 100% proficiency in any material refinement category of any crafting job.",
-                  "1_display_name": ", Master Refiner",
-                  "1_description": "They have mastered creating refined materials in one job."
-               },
-               "proficient_category_refined": {
-                  "display_name": "⚙️ Proficiency: Finished Goods",
-                  "description": "Gained by reaching 100% proficiency in any refined goods category of any crafting job.",
-                  "1_display_name": ", Master Artisan",
-                  "1_description": "They have mastered creating refined goods in one job."
+                  "1_display_name": ", Expert Refiner",
+                  "1_description": "They have mastered creating refined materials of one category.",
+                  "3_display_name": ", Adept Refiner",
+                  "3_description": "They have mastered creating refined materials of three categories.",
+                  "5_display_name": ", Master Refiner",
+                  "5_description": "They have mastered creating refined materials of five categories.",
+                  "9_display_name": ", Grandmaster Refiner",
+                  "9_description": "They have mastered creating refined materials of nine categories."
                },
                "proficient_category_tending_herbs": {
                   "display_name": "🌿 Proficiency: Planter Types",
                   "description": "Gained by reaching 100% proficiency in a specific type of Planter as an Herbalist or Grower.",
-                  "1_display_name": ", Master Cultivator",
-                  "1_description": "They have mastered one type of Planter as an Herbalist or Grower."
+                  "1_display_name": ", Expert Cultivator",
+                  "1_description": "They have mastered one type of Planter as an Herbalist or Grower.",
+                  "2_display_name": ", Adept Cultivator",
+                  "2_description": "They have mastered two types of Planters as an Herbalist or Grower.",
+                  "3_display_name": ", Master Cultivator",
+                  "3_description": "They have mastered three types of Planters as an Herbalist or Grower.",
+                  "4_display_name": ", Grandmaster Cultivator",
+                  "4_description": "They have mastered four types of Planters as an Herbalist or Grower."
                },
                "resource_harvest_cheese_vats": {
                   "display_name": "🧀 Cheesemaking"
