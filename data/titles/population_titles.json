@@ -1335,8 +1335,90 @@
          }
       ]
    },
-   "proficient_category_tools": {
+   "proficient_category_workbenches": {
       "ordinal": 15,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_workbenches.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_workbenches.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_proficiency",
+            "name": "workbenches"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_workbenches.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_workbenches.1_description)",
+            "required_value": 1,
+            "renown": 350
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_workbenches.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_workbenches.3_description)",
+            "required_value": 3,
+            "renown": 1050
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_workbenches.6_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_workbenches.6_description)",
+            "required_value": 6,
+            "renown": 2100
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_workbenches.11_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_workbenches.11_description)",
+            "required_value": 11,
+            "renown": 3850
+         }
+      ]
+   },
+   "proficient_category_legendary": {
+      "ordinal": 15.1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_legendary.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_legendary.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_proficiency",
+            "name": "legendary"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_legendary.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_legendary.1_description)",
+            "required_value": 1,
+            "renown": 350
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_legendary.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_legendary.3_description)",
+            "required_value": 3,
+            "renown": 1050
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_legendary.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_legendary.5_description)",
+            "required_value": 5,
+            "renown": 1750
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_legendary.9_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_legendary.9_description)",
+            "required_value": 9,
+            "renown": 3150
+         }
+      ]
+   },
+   "proficient_category_tools": {
+      "ordinal": 15.2,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.display_name)",
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.description)",
       "requirement": {
@@ -1351,26 +1433,366 @@
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.1_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.1_description)",
             "required_value": 1,
-            "renown": 100
+            "renown": 350
          },
          {
             "rank": 2,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.2_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.2_description)",
             "required_value": 2,
-            "renown": 400
+            "renown": 700
          },
          {
             "rank": 3,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.3_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.3_description)",
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.4_description)",
+            "required_value": 4,
+            "renown": 1400
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.6_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tools.6_description)",
+            "required_value": 6,
+            "renown": 2100
+         }
+      ]
+   },
+   "proficient_category_foods": {
+      "ordinal": 15.3,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_foods.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_foods.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_proficiency",
+            "name": "_foods"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_foods.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_foods.1_description)",
+            "required_value": 1,
+            "renown": 350
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_foods.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_foods.2_description)",
+            "required_value": 2,
+            "renown": 700
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_foods.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_foods.3_description)",
             "required_value": 3,
-            "renown": 1000
+            "renown": 1050
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_foods.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_foods.4_description)",
+            "required_value": 4,
+            "renown": 1400
+         }
+      ]
+   },
+   "proficient_category_drinks": {
+      "ordinal": 15.4,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_drinks.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_drinks.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_proficiency",
+            "name": "_drinks"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_drinks.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_drinks.1_description)",
+            "required_value": 1,
+            "renown": 350
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_drinks.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_drinks.2_description)",
+            "required_value": 2,
+            "renown": 700
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_drinks.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_drinks.3_description)",
+            "required_value": 3,
+            "renown": 1050
+         }
+      ]
+   },
+   "proficient_category_weapons": {
+      "ordinal": 15.5,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_weapons.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_weapons.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_proficiency",
+            "name": "_weapons"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_weapons.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_weapons.1_description)",
+            "required_value": 1,
+            "renown": 600
+         }
+      ]
+   },
+   "proficient_category_armor": {
+      "ordinal": 15.6,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_armor.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_armor.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_proficiency",
+            "name": "_armor"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_armor.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_armor.1_description)",
+            "required_value": 1,
+            "renown": 600
+         }
+      ]
+   },
+   "proficient_category_building_parts": {
+      "ordinal": 15.7,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_building_parts.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_building_parts.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_proficiency",
+            "name": "_building_parts"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_building_parts.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_building_parts.1_description)",
+            "required_value": 1,
+            "renown": 350
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_building_parts.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_building_parts.3_description)",
+            "required_value": 3,
+            "renown": 1050
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_building_parts.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_building_parts.5_description)",
+            "required_value": 5,
+            "renown": 1750
+         }
+      ]
+   },
+   "proficient_category_fancy_building_parts": {
+      "ordinal": 15.8,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_building_parts.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_building_parts.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_proficiency",
+            "name": "fancy_building"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_building_parts.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_building_parts.1_description)",
+            "required_value": 1,
+            "renown": 350
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_building_parts.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_building_parts.2_description)",
+            "required_value": 2,
+            "renown": 700
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_building_parts.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_building_parts.3_description)",
+            "required_value": 3,
+            "renown": 1050
+         }
+      ]
+   },
+   "proficient_category_furniture": {
+      "ordinal": 15.9,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_furniture.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_furniture.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_proficiency",
+            "name": "_furniture"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_furniture.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_furniture.1_description)",
+            "required_value": 1,
+            "renown": 350
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_furniture.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_furniture.3_description)",
+            "required_value": 3,
+            "renown": 1050
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_furniture.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_furniture.5_description)",
+            "required_value": 5,
+            "renown": 1750
+         }
+      ]
+   },
+   "proficient_category_fancy_furniture": {
+      "ordinal": 16,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_furniture.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_furniture.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_proficiency",
+            "name": "fancy_furniture"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_furniture.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_furniture.1_description)",
+            "required_value": 1,
+            "renown": 350
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_furniture.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_furniture.2_description)",
+            "required_value": 2,
+            "renown": 700
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_furniture.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_fancy_furniture.3_description)",
+            "required_value": 3,
+            "renown": 1050
+         }
+      ]
+   },
+   "proficient_category_decorations": {
+      "ordinal": 16.1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_decorations.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_decorations.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_proficiency",
+            "name": "_decorations"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_decorations.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_decorations.1_description)",
+            "required_value": 1,
+            "renown": 350
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_decorations.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_decorations.3_description)",
+            "required_value": 3,
+            "renown": 1050
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_decorations.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_decorations.5_description)",
+            "required_value": 5,
+            "renown": 1750
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_decorations.9_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_decorations.9_description)",
+            "required_value": 9,
+            "renown": 3150
+         }
+      ]
+   },
+   "proficient_category_refiner": {
+      "ordinal": 16.2,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_refiner.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_refiner.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_proficiency",
+            "name": "_refiner"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_refiner.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_refiner.1_description)",
+            "required_value": 1,
+            "renown": 350
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_refiner.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_refiner.3_description)",
+            "required_value": 3,
+            "renown": 1050
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_refiner.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_refiner.5_description)",
+            "required_value": 5,
+            "renown": 1750
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_refiner.9_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_refiner.9_description)",
+            "required_value": 9,
+            "renown": 3150
          }
       ]
    },
    "proficient_category_tending_herbs": {
-      "ordinal": 16,
+      "ordinal": 17.9,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.display_name)",
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.description)",
       "requirement": {
@@ -1385,21 +1807,21 @@
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.1_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.1_description)",
             "required_value": 1,
-            "renown": 100
+            "renown": 200
          },
          {
             "rank": 2,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.2_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.2_description)",
             "required_value": 2,
-            "renown": 200
+            "renown": 400
          },
          {
             "rank": 3,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.3_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.3_description)",
             "required_value": 3,
-            "renown": 400
+            "renown": 600
          },
          {
             "rank": 4,
