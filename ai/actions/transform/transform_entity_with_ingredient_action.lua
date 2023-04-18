@@ -20,7 +20,7 @@ local ai = stonehearth.ai
 return ai:create_compound_action(TransformWithIngredient)
          :execute('stonehearth:abort_on_event_triggered', {
             source = ai.ENTITY,
-            event_name = 'stonehearth:work_order:haul:work_player_id_changed',
+            event_name = 'stonehearth:work_order:job:work_player_id_changed',
          })
          :execute('stonehearth:abort_on_event_triggered', {
             source = ai.ENTITY,

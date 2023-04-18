@@ -1,9 +1,10 @@
 {
    "type" : "ai_pack",
    "actions": [
+      "stonehearth:actions:pickup_ingredient_with_material",
+      "stonehearth:actions:pickup_ingredient_with_uri",
 		"stonehearth_ace:actions:periodic_interaction",
-      "stonehearth_ace:actions:periodic_interaction_current",
-      "stonehearth_ace:actions:periodic_interaction_entity",
+      "stonehearth_ace:actions:periodic_interaction_with_ingredient",
       "stonehearth_ace:actions:periodic_interaction_adjacent"
    ],
    "ai_packs": [

@@ -180,6 +180,10 @@ local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local rng = _radiant.math.get_default_rng()
 
+local PI_TASK_GROUP = 'stonehearth_ace:task_groups:periodic_interaction'
+local PI_ACTION = 'stonehearth_ace:periodic_interaction'
+local PI_WITH_INGREDIENT_ACTION = 'stonehearth_ace:periodic_interaction_with_ingredient'
+
 local PeriodicInteractionComponent = class()
 
 local log = radiant.log.create_logger('periodic_interaction')
@@ -200,6 +204,8 @@ function PeriodicInteractionComponent:initialize()
    self._sv.allow_non_owner_player_interaction = self._json.allow_non_owner_player_interaction
    self._sv._general_cooldown_timer = nil
    self._sv._interaction_cooldown_timer = nil
+
+   self._added_interaction_tasks = {}
 end
 
 function PeriodicInteractionComponent:activate()
@@ -227,6 +233,7 @@ end
 function PeriodicInteractionComponent:destroy()
    self:_destroy_current_user_job_listener()
    self:_destroy_eligibility_listeners()
+   self:_destroy_interaction_tasks()
    self:_stop_interaction_cooldown_timer()
    self:_stop_general_cooldown_timer()
    
@@ -536,14 +543,8 @@ function PeriodicInteractionComponent:get_valid_potential_users()
    return users
 end
 
-function PeriodicInteractionComponent:get_current_mode_job_requirement()
-   local requirements = self._current_mode_data.requirements
-   return requirements and requirements.job
-end
-
-function PeriodicInteractionComponent:get_current_mode_job_level_requirement()
-   local requirements = self._current_mode_data.requirements
-   return requirements and requirements.level
+function PeriodicInteractionComponent:get_current_mode_requirements()
+   return self._current_mode_data.requirements
 end
 
 function PeriodicInteractionComponent:is_valid_potential_user(entity)
@@ -565,17 +566,18 @@ function PeriodicInteractionComponent:is_valid_potential_user(entity)
          end
       end
 
-      -- TODO: figure out how to get this to work with ai filters or just scrap it
-      if requirements.equipped_item then
+      -- technically supported, but it's probably simpler to just use any_active_buff instead
+      -- and have the buff added by the equipment
+      if requirements.any_equipped_item then
          local equipment_component = entity:get_component('stonehearth:equipment')
          if not equipment_component then
             return false
          end
 
-         -- go through all of the items specified in equipped_item
+         -- go through all of the items specified in any_equipped_item
          -- if *any* of them are equipped, the condition is satisfied
          local has_equipped = false
-         local items = requirements.equipped_item
+         local items = requirements.any_equipped_item
          if type(items) == 'string' then
             items = {items}
          end
@@ -588,6 +590,30 @@ function PeriodicInteractionComponent:is_valid_potential_user(entity)
          end
 
          if not has_equipped then
+            return false
+         end
+      end
+
+      if requirements.any_active_buff then
+         local buffs_component = entity:get_component('stonehearth:buffs')
+         if not buffs_component then
+            return false
+         end
+
+         local has_buff = false
+         local buffs = requirements.any_active_buff
+         if type(buffs) == 'string' then
+            buffs = {buffs}
+         end
+
+         for _, buff in ipairs(buffs) do
+            if buffs_component:has_buff(buff) then
+               has_buff = true
+               break
+            end
+         end
+
+         if not has_buff then
             return false
          end
       end
@@ -906,13 +932,78 @@ function PeriodicInteractionComponent:_consider_usability(force_reconsider)
       end
    end
 
+   local task_tracker_component = self._entity:add_component('stonehearth:task_tracker')
+
    if force_reconsider or usable ~= self._is_usable then
       self._is_usable = usable
-      stonehearth.ai:reconsider_entity(self._entity, 'stonehearth_ace:periodic_interaction')
+      --stonehearth.ai:reconsider_entity(self._entity, 'stonehearth_ace:periodic_interaction')
       log:debug('%s _consider_usability (%s) => reconsider_entity', self._entity, usable)
+
+      local data = self:get_current_interaction()
+      task_tracker_component:request_task(self._entity:get_player_id(), 'periodic_interaction', self:_get_interaction_action(), data.overlay_effect)
+      self:_create_interaction_tasks()
    else
       log:debug('%s _consider_usability (%s)', self._entity, usable)
+      self:_destroy_interaction_tasks()
+      local was_requested = task_tracker_component:is_activity_requested(PI_ACTION) or
+            task_tracker_component:is_activity_requested(PI_WITH_INGREDIENT_ACTION)
+      if was_requested then
+         task_tracker_component:cancel_current_task(false)
+      end
    end
+end
+
+function PeriodicInteractionComponent:_get_interaction_action()
+   local data = self:get_current_interaction()
+   if data and (data.ingredient_uri or data.ingredient_material) then
+      return PI_WITH_INGREDIENT_ACTION
+   else
+      return PI_ACTION
+   end
+end
+
+function PeriodicInteractionComponent:_get_interaction_ingredient()
+   local data = self:get_current_interaction()
+   local ingredient
+   if data.ingredient_uri then
+      ingredient = {uri = data.ingredient_uri}
+   elseif data.ingredient_material then
+      ingredient = {material = data.ingredient_material}
+   end
+   return ingredient
+end
+
+function PeriodicInteractionComponent:_create_interaction_tasks()
+   self:_destroy_interaction_tasks()
+
+   local player_id = self._entity:get_player_id()
+   local town = stonehearth.town:get_town(player_id)
+
+   if town and town:get_task_group(PI_TASK_GROUP) then
+      local args = {
+         item = self._entity,
+         ingredient = self:_get_interaction_ingredient()
+      }
+
+      local interaction_task = town:create_task_for_group(
+         PI_TASK_GROUP,
+         self:_get_interaction_action(),
+         args)
+            :set_source(self._entity)
+            :start()
+      table.insert(self._added_interaction_tasks, interaction_task)
+   elseif town then
+      log:debug('cannot create transform task for %s: town "%s" doesn\'t exist or has no transform task group', self._entity, player_id)
+   end
+end
+
+function PeriodicInteractionComponent:_destroy_interaction_tasks()
+   if self._added_interaction_tasks then
+      for _, task in ipairs(self._added_interaction_tasks) do
+         task:destroy()
+      end
+   end
+   self._added_interaction_tasks = {}
 end
 
 return PeriodicInteractionComponent
