@@ -6,6 +6,7 @@
          "iconic_form": "file(daisies_bud_iconic.json)",
          "ghost_form": "file(daisies_bud_ghost.json)",
          "placeable_on_ground": true,
+         "hide_move_ui": true,
          "hide_undeploy_ui": true
       },
       "render_info": {
@@ -26,6 +27,11 @@
       }
    },
    "entity_data": {
+      "stonehearth_ace:advanced_placement": {
+         "required_terrain": {
+            "grass": true
+         }
+      },
       "stonehearth:net_worth": {
          "value_in_gold": 2,
          "rarity": "uncommon",
