@@ -315,8 +315,7 @@ function AceItemPlacer:_location_filter(result, selector)
    --    "dirt": true
    -- }
    if self._required_terrain then
-      local brick = result.brick
-      local tag = radiant.terrain.get_block_tag_at(brick)
+      local tag = radiant.terrain.get_block_tag_at(location - normal)
       local kind = radiant.terrain.get_block_kind_from_tag(tag)
       local name = radiant.terrain.get_block_name_from_tag(tag)
       if not (self._required_terrain[kind] or self._required_terrain[name]) then
