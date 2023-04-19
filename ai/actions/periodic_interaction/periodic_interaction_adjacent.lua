@@ -16,7 +16,7 @@ InteractWithItemAdjacent.priority = 0
 
 function InteractWithItemAdjacent:start(ai, entity, args)
    local pi_comp = args.item:get_component('stonehearth_ace:periodic_interaction')
-   ai:set_status_text_key(pi_comp:get_current_mode_ai_status())
+   ai:set_status_text_key(pi_comp:get_current_mode_ai_status(), {target = args.item})
 
    self._completed_work = false
 
@@ -42,7 +42,7 @@ end
 function InteractWithItemAdjacent:run(ai, entity, args)
    local item = args.item
    local pi_comp = args.item:get_component('stonehearth_ace:periodic_interaction')
-   if not pi_comp or not pi_comp:is_usable() then
+   if not pi_comp or not pi_comp:is_usable() or not pi_comp:is_valid_potential_user(entity) then
       ai:abort('not interactable!')
       return
    end
@@ -50,9 +50,29 @@ function InteractWithItemAdjacent:run(ai, entity, args)
    local data = pi_comp:get_current_interaction()
 
    if data then
+      local ingredient = radiant.entities.get_carrying(entity)
+      local ingredient_quality
+
+      if data.ingredient_uri or data.ingredient_material then
+         if ingredient and ingredient:is_valid() and ((data.ingredient_uri and data.ingredient_uri == ingredient:get_uri()) or
+            (data.ingredient_material and stonehearth.catalog:is_material(ingredient:get_uri(), data.ingredient_material))) then
+            -- carried item is the required ingredient
+            ingredient_quality = radiant.entities.get_item_quality(ingredient)
+         else
+            if ingredient then
+               -- don't be stuck carrying this (though really other actions should handle that?)
+               ai:execute('stonehearth:drop_carrying_now', {})
+            end
+
+            ai:abort('missing ingredient')
+            return
+         end
+      end
+
       local effect = data.interaction_effect
       local times = data.num_interactions
-      local points = data.interaction_points
+      local points = data.interaction_points or {}
+      local destroy_ingredient_after_num = data.destroy_ingredient_after_num or times
       local interaction_points = {}
       
       local interactions = {}
@@ -82,28 +102,50 @@ function InteractWithItemAdjacent:run(ai, entity, args)
 
       local location = radiant.entities.get_world_grid_location(item)
 
-      for _, interaction in ipairs(interactions) do
+      for i, interaction in ipairs(interactions) do
          local interaction_data = interaction_points[interaction]
          if not interaction_data then
             interaction_data = radiant.shallow_copy(pi_comp:get_interaction_point(interaction) or {})
-            radiant.util.merge_into_table(interaction_data, points[interaction])
+            radiant.util.merge_into_table(interaction_data, points[interaction] or {})
             interaction_points[interaction] = interaction_data
          end
-         ai:set_status_text_key(interaction_data.ai_status_key or data.ai_status_key or pi_comp:get_current_mode_ai_status())
-         local pt = interaction_data.point and (radiant.util.to_point3(interaction_data.point) or Point3(unpack(interaction_data.point))) or Point3.zero
+         ai:set_status_text_key(interaction_data.ai_status_key or data.ai_status_key or pi_comp:get_current_mode_ai_status(), {target = args.item})
+         local pt = interaction_data.point and (radiant.util.to_point3(interaction_data.point) or Point3(unpack(interaction_data.point)))
+         if pt then
+            ai:execute('stonehearth:go_toward_location', { destination = location + pt })
+         end
          local face_pt = interaction_data.face_point and (radiant.util.to_point3(interaction_data.face_point) or Point3(unpack(interaction_data.face_point)))
-         ai:execute('stonehearth:go_toward_location', { destination = location + pt })
          if face_pt then
             radiant.entities.turn_to_face(entity, location + face_pt)
          end
+
+         if ingredient and data.drop_ingredient then
+            ai:execute('stonehearth:drop_carrying_now', {})
+            radiant.entities.destroy_entity(ingredient)
+            ingredient = nil
+         end
+
          local worker_effect = interaction_data.worker_effect or data.worker_effect
          if type(worker_effect) == 'table' then
             worker_effect = worker_effect[rng:get_int(1, #worker_effect)]
          end
          ai:execute('stonehearth:run_effect', { effect = worker_effect or 'fiddle' })
+
+         if ingredient and i >= destroy_ingredient_after_num then
+            radiant.entities.destroy_entity(ingredient)
+            ingredient = nil
+         end
       end
-      
+
+      -- if the ingredient still exists, destroy it now
+      if ingredient then
+         radiant.entities.destroy_entity(ingredient)
+      end
+
       self._completed_work = true
+      if ingredient_quality then
+         pi_comp:set_ingredient_quality(ingredient_quality)
+      end
       pi_comp:set_current_interaction_completed(entity)
    end
 end

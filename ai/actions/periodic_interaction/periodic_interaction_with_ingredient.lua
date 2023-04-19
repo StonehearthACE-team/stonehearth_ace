@@ -20,11 +20,9 @@ function InteractWithItemWithIngredient:start_thinking(ai, entity, args)
    self._ready = false
 
    if not self:_rethink() then
-      if periodic_interaction_comp then
-         self._listeners = pi_lib.create_usability_listeners(entity, self._item, function()
-               self:_rethink()
-            end)
-      end
+      self._listeners = pi_lib.create_usability_listeners(entity, self._item, function()
+            self:_rethink()
+         end)
    end
 end
 

@@ -193,7 +193,7 @@ function PeriodicInteractionComponent:initialize()
 
    self._sv._mode_sequences = {}
    self._sv.ui_data = {}
-   self._sv.current_mode = self._json.default_mode or nil
+   self._sv.current_mode = nil
    self._sv.current_user = nil
    self._sv.current_owner = nil
    self._sv.ingredient_quality = nil
@@ -462,7 +462,7 @@ function PeriodicInteractionComponent:_setup_mode_ui_data()
          if stage.allow_finish_selection then
             table.insert(stages, {
                index = index,
-               name = stage.display_name,
+               display_name = stage.display_name,
                description = stage.description,
                icon = stage.icon,
             })
@@ -470,11 +470,9 @@ function PeriodicInteractionComponent:_setup_mode_ui_data()
       end
    end
 
-   -- mostly useful as a nil check; we could probably just always set it and call mark_changed
-   if self._sv.stages ~= stages then
-      self._sv.stages = stages
-      self.__saved_variables:mark_changed()
-   end
+   self._sv.stages = stages
+   self._sv.allow_finish_stage_selection = self._current_mode_data.allow_finish_stage_selection
+   self.__saved_variables:mark_changed()
 end
 
 function PeriodicInteractionComponent:_select_mode_sequences()
@@ -497,6 +495,7 @@ function PeriodicInteractionComponent:_select_mode_sequences()
 end
 
 function PeriodicInteractionComponent:_load_current_mode_data(mode)
+   mode = mode or self._json.default_mode
    if not mode or not self._sv._mode_sequences[mode] then
       mode = next(self._sv._mode_sequences)
    end
@@ -514,7 +513,7 @@ function PeriodicInteractionComponent:select_mode(mode)
 
    if mode ~= self._sv.current_mode then
       self._sv.current_mode = mode
-      self._sv.finish_stage = self._current_mode_data.default_finish_stage or nil
+      self._sv.finish_stage = self._current_mode_data.default_finish_stage or #self._current_sequence_data
       self:_cancel_usage()
    end
 
@@ -652,9 +651,15 @@ function PeriodicInteractionComponent:get_interaction_point(point_id)
    return self._json.interaction_points and self._json.interaction_points[point_id]
 end
 
+function PeriodicInteractionComponent:select_finish_stage_command(session, response, index)
+   self:set_finish_stage(index)
+   return true
+end
+
 function PeriodicInteractionComponent:set_finish_stage(index)
-   self._sv.finish_stage = math.max(self._sv.interaction_stage + 1, math.min(index, self._current_sequence_data and #self._current_sequence_data or 2))
+   self._sv.finish_stage = math.min(index, self._current_sequence_data and #self._current_sequence_data or 1)
    self.__saved_variables:mark_changed()
+   self:_consider_usability(true)
 end
 
 function PeriodicInteractionComponent:set_ingredient_quality(quality)
@@ -672,7 +677,7 @@ function PeriodicInteractionComponent:set_current_interaction_completed(user)
    end
 
    -- if the finish stage has been set to this stage, we want to complete now
-   local completed = self._sv.finish_stage == self._sv.interaction_stage
+   local completed = self._sv.interaction_stage >= self._sv.finish_stage
 
    -- apply any rewards
    local item
@@ -711,7 +716,7 @@ function PeriodicInteractionComponent:set_current_interaction_completed(user)
          self:_reset(true)
       else
          self:_apply_current_stage_settings()
-         self:_start_interaction_cooldown_timer(current_interaction.cooldown)
+         --self:_start_interaction_cooldown_timer(current_interaction.cooldown)
          self:_consider_usability()
       end
    end
@@ -720,6 +725,7 @@ end
 function PeriodicInteractionComponent:_apply_current_stage_settings()
    local current_interaction = self:get_current_interaction()
    if current_interaction then
+      log:debug('%s applying stage settings for %s...', self._entity, self._sv.interaction_stage)
       -- apply model/effect, etc.
       if current_interaction.model then
          self._entity:add_component('render_info'):set_model_variant(current_interaction.model)
@@ -756,7 +762,8 @@ function PeriodicInteractionComponent:_apply_rewards(rewards, is_completed)
    local user = self._sv.current_user
    if not rewards or not user or not user:is_valid() then
       -- can't apply a reward without rewards or a recipient!
-      return
+      log:error('%s cannot apply rewards for user %s', self._entity, tostring(user))
+      return is_completed
    end
 
    local completed = is_completed
@@ -810,12 +817,17 @@ function PeriodicInteractionComponent:_apply_reward(reward, is_completed)
       local quality_table = item_quality_lib.get_quality_table(user, reward.category, ingredient_quality)
       local uris = {}
       for uri, quantity in pairs(reward.items) do
-         local uri_table = {}
-         for i = 1, quantity do
-            local quality = item_quality_lib.get_quality(quality_table)
-            uri_table[quality] = (uri_table[quality] or 0) + 1
+         if type(quantity) == 'table' then
+            quantity = rng:get_int(quantity.min, quantity.max)
          end
-         uris[uri] = uri_table
+         if quantity > 0 then
+            local uri_table = {}
+            for i = 1, quantity do
+               local quality = item_quality_lib.get_quality(quality_table)
+               uri_table[quality] = (uri_table[quality] or 0) + 1
+            end
+            uris[uri] = uri_table
+         end
       end
 
       local options = {
@@ -843,7 +855,12 @@ function PeriodicInteractionComponent:_apply_reward(reward, is_completed)
       local quality = radiant.entities.get_item_quality(self._entity)
       local uris = {}
       for uri, quantity in pairs(reward.items) do
-         uris[uri] = {[quality] = quantity}
+         if type(quantity) == 'table' then
+            quantity = rng:get_int(quantity.min, quantity.max)
+         end
+         if quantity > 0 then
+            uris[uri] = {[quality] = quantity}
+         end
       end
 
       local options = {
@@ -878,6 +895,7 @@ end
 
 function PeriodicInteractionComponent:_start_interaction_cooldown_timer(duration)
    if not self._sv._interaction_cooldown_timer and duration then
+      log:debug('%s setting interaction cooldown for %s of %s...', self._entity, self._sv.interaction_stage, duration)
       self._sv._interaction_cooldown_timer = stonehearth.calendar:set_persistent_timer("PeriodicInteraction interaction",
             duration, radiant.bind(self, '_interaction_cooldown_finished'))
    end
@@ -921,13 +939,18 @@ function PeriodicInteractionComponent:_consider_usability(force_reconsider)
 
    -- if it's disabled or still on general/interaction cooldown, it's not usable
    if not self._sv.enabled or self._sv._general_cooldown_timer or self._sv._interaction_cooldown_timer then
+      log:debug('%s is not usable: enabled = %s, general cd = %s, interaction cd = %s', self._entity,
+            tostring(self._sv.enabled), tostring(self._sv._general_cooldown_timer), tostring(self._sv._interaction_cooldown_timer))
       usable = false
    else
       -- it's enabled and not on cooldown
-      -- check if the current interaction has num_interactions > 0 (otherwise we automatically proceed to the next stage)
+      -- check if the current interaction has num_interactions > 0 or it's pre-finish stage and this stage is set to only interact on finish
+      -- (otherwise we automatically proceed to the next stage)
       local current_interaction = self:get_current_interaction()
-      if current_interaction and current_interaction.num_interactions == 0 then
-         self:set_current_interaction_completed(self:get_current_user())
+      if current_interaction and (current_interaction.num_interactions == 0 or (current_interaction.only_interact_on_finish and
+            self._sv.finish_stage > self._sv.interaction_stage and self._sv.interaction_stage < #self._current_sequence_data)) then
+         log:debug('%s moving from stage %s to next stage without interaction', self._entity, self._sv.interaction_stage)
+         self:set_current_interaction_completed(self._sv.current_user)
          return
       end
    end
@@ -939,17 +962,30 @@ function PeriodicInteractionComponent:_consider_usability(force_reconsider)
       --stonehearth.ai:reconsider_entity(self._entity, 'stonehearth_ace:periodic_interaction')
       log:debug('%s _consider_usability (%s) => reconsider_entity', self._entity, usable)
 
-      local data = self:get_current_interaction()
-      task_tracker_component:request_task(self._entity:get_player_id(), 'periodic_interaction', self:_get_interaction_action(), data.overlay_effect)
-      self:_create_interaction_tasks()
+      if self._is_usable then
+         local data = self:get_current_interaction()
+         -- if the task is already created, no need to cancel and recreate it
+         -- however, we do want to update the overlay effect in case that's different
+         local action = self:_get_interaction_action()
+         local was_requested = task_tracker_component:is_activity_requested(action)
+         if was_requested then
+            task_tracker_component:cancel_current_task(false)
+         end
+         task_tracker_component:request_task(self._entity:get_player_id(), 'periodic_interaction', action, data.overlay_effect)
+
+         if not was_requested then
+            self:_create_interaction_tasks()
+         end
+      else
+         self:_destroy_interaction_tasks()
+         local was_requested = task_tracker_component:is_activity_requested(PI_ACTION) or
+               task_tracker_component:is_activity_requested(PI_WITH_INGREDIENT_ACTION)
+         if was_requested then
+            task_tracker_component:cancel_current_task(false)
+         end
+      end
    else
       log:debug('%s _consider_usability (%s)', self._entity, usable)
-      self:_destroy_interaction_tasks()
-      local was_requested = task_tracker_component:is_activity_requested(PI_ACTION) or
-            task_tracker_component:is_activity_requested(PI_WITH_INGREDIENT_ACTION)
-      if was_requested then
-         task_tracker_component:cancel_current_task(false)
-      end
    end
 end
 

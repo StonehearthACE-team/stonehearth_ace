@@ -3498,6 +3498,7 @@
       "sheep:wild": "file(entities/critters/sheep/wild_sheep.json)",
       "sheep:wild:young": "file(entities/critters/sheep/sheep_wild_young.json)",
       "sheep_jerky_serving": "file(entities/food/sheep_jerky/sheep_jerky_serving.json)",
+      "shepherd:cheese_vat": "file(jobs/shepherd/shepherd_cheese_vat/shepherd_cheese_vat.json)",
       "shepherd:cheese_vat:cheese_aged": "file(jobs/shepherd/shepherd_cheese_vat/shepherd_cheese_vat_cheese_aged/shepherd_cheese_vat_cheese_aged.json)",
       "shepherd:cheese_vat:cheese_fresh": "file(jobs/shepherd/shepherd_cheese_vat/shepherd_cheese_vat_cheese_fresh/shepherd_cheese_vat_cheese_fresh.json)",
       "shepherd:cheese_vat:cheese_mild": "file(jobs/shepherd/shepherd_cheese_vat/shepherd_cheese_vat_cheese_mild/shepherd_cheese_vat_cheese_mild.json)",
@@ -7456,6 +7457,7 @@
       ],
       "periodic_interaction": [
          "get_valid_users_command",
+         "select_finish_stage_command",
          "select_mode_command",
          "set_enabled_command",
          "set_owner_command"

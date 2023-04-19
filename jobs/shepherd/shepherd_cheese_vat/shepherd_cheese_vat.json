@@ -1,0 +1,200 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:shepherd_cheese_vat",
+      "file(shepherd_cheese_vat_empty/shepherd_cheese_vat_empty_ghost.json)"
+   ],
+   "components": {
+      "model_variants": {
+         "filled": {
+            "models": [
+               "file(shepherd_cheese_vat_filled/shepherd_cheese_vat_filled.qb)"
+            ]
+         },
+         "curdled": {
+            "models": [
+               "file(shepherd_cheese_vat_curdled/shepherd_cheese_vat_curdled.qb)"
+            ]
+         },
+         "fresh": {
+            "models": [
+               "file(shepherd_cheese_vat_cheese_fresh/shepherd_cheese_vat_cheese_fresh.qb)"
+            ]
+         },
+         "mild": {
+            "models": [
+               "file(shepherd_cheese_vat_cheese_mild/shepherd_cheese_vat_cheese_mild.qb)"
+            ]
+         },
+         "aged": {
+            "models": [
+               "file(shepherd_cheese_vat_cheese_aged/shepherd_cheese_vat_cheese_aged.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(shepherd_cheese_vat_empty/shepherd_cheese_vat_empty_ghost.json)",
+         "iconic_form": "file(shepherd_cheese_vat_empty/shepherd_cheese_vat_empty_iconic.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:periodic_interaction": {
+         "default_mode": "make_cheese",
+         "modes": {
+            "make_cheese": {
+               "ai_status_key": "stonehearth_ace:ai.actions.status_text.periodic_interaction.cheese",
+               "ui_data": {
+                  "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat.make_cheese.display_name)",
+                  "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat.make_cheese.description)",
+                  "stage_selection": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat.make_cheese.stage_selection)"
+               },
+               "requirements": {
+                  "job": "stonehearth:jobs:shepherd",
+                  "level": 2
+               },
+               "default_finish_stage": 3,
+               "allow_finish_stage_selection": true,
+               "sequences": {
+                  "default": [
+                     {
+                        "cooldown": "10m",
+                        "model": "default",
+                        "num_interactions": 1,
+                        "ai_status_key": "stonehearth_ace:ai.actions.status_text.filling",
+                        "ingredient_uri": "stonehearth_ace:food:dairy:curdling_mixture",
+                        "drop_ingredient": true
+                     },
+                     {
+                        "effect": "stonehearth:effects:item_created",
+                        "model": "filled",
+                        "num_interactions": 0
+                     },
+                     {
+                        "effect": "stonehearth:effects:item_created",
+                        "overlay_effect": "stonehearth_ace:effects:harvest_cheese_overlay_effect",
+                        "cooldown": "10m",
+                        "model": "curdled",
+                        "num_interactions": 1,
+                        "allow_finish_selection": true,
+                        "only_interact_on_finish": true,
+                        "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_curdled.display_name)",
+                        "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_curdled.description)",
+                        "icon": "file(shepherd_cheese_vat_curdled/shepherd_cheese_vat_curdled.png)",
+                        "finish_rewards": [
+                           {
+                              "type": "craft_items",
+                              "category": "cheesemaking",
+                              "proficiency_gain": 1,
+                              "level_requirement": 2,
+                              "items": {
+                                 "stonehearth_ace:food:dairy:cheese_cottage": {
+                                    "min": 2,
+                                    "max": 4
+                                 },
+                                 "stonehearth_ace:food:dairy:whey_butter": {
+                                    "min": 0,
+                                    "max": 2
+                                 }
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "num_interactions": 0
+                     },
+                     {
+                        "effect": "stonehearth:effects:item_created",
+                        "overlay_effect": "stonehearth_ace:effects:harvest_cheese_overlay_effect",
+                        "cooldown": "10m",
+                        "model": "fresh",
+                        "num_interactions": 1,
+                        "allow_finish_selection": true,
+                        "only_interact_on_finish": true,
+                        "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_fresh.display_name)",
+                        "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_fresh.description)",
+                        "icon": "file(shepherd_cheese_vat_cheese_fresh/shepherd_cheese_vat_cheese_fresh.png)",
+                        "finish_rewards": [
+                           {
+                              "type": "craft_items",
+                              "category": "cheesemaking",
+                              "proficiency_gain": 1,
+                              "level_requirement": 2,
+                              "items": {
+                                 "stonehearth_ace:food:dairy:cheese_fresh": 3
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "num_interactions": 0
+                     },
+                     {
+                        "effect": "stonehearth:effects:item_created",
+                        "overlay_effect": "stonehearth_ace:effects:harvest_cheese_overlay_effect",
+                        "cooldown": "10m",
+                        "model": "mild",
+                        "num_interactions": 1,
+                        "allow_finish_selection": true,
+                        "only_interact_on_finish": true,
+                        "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_mild.display_name)",
+                        "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_mild.description)",
+                        "icon": "file(shepherd_cheese_vat_cheese_mild/shepherd_cheese_vat_cheese_mild.png)",
+                        "finish_rewards": [
+                           {
+                              "type": "craft_items",
+                              "category": "cheesemaking",
+                              "proficiency_gain": 1,
+                              "level_requirement": 2,
+                              "items": {
+                                 "stonehearth_ace:food:dairy:cheese_mild": 3
+                              }
+                           }
+                        ]
+                     },
+                     {
+                        "num_interactions": 0
+                     },
+                     {
+                        "effect": "stonehearth:effects:item_created",
+                        "overlay_effect": "stonehearth_ace:effects:harvest_cheese_overlay_effect",
+                        "model": "aged",
+                        "num_interactions": 1,
+                        "allow_finish_selection": true,
+                        "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_aged.display_name)",
+                        "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_aged.description)",
+                        "icon": "file(shepherd_cheese_vat_cheese_aged/shepherd_cheese_vat_cheese_aged.png)",
+                        "finish_rewards": [
+                           {
+                              "type": "craft_items",
+                              "category": "cheesemaking",
+                              "proficiency_gain": 1,
+                              "level_requirement": 2,
+                              "items": {
+                                 "stonehearth_ace:food:dairy:cheese_aged": 3
+                              }
+                           }
+                        ]
+                     }
+                  ]
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 4,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}
