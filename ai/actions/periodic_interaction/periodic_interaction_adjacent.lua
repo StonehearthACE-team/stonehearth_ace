@@ -117,6 +117,9 @@ function InteractWithItemAdjacent:run(ai, entity, args)
          local face_pt = interaction_data.face_point and (radiant.util.to_point3(interaction_data.face_point) or Point3(unpack(interaction_data.face_point)))
          if face_pt then
             radiant.entities.turn_to_face(entity, location + face_pt)
+         else
+            -- otherwise, make sure we're facing the interaction entity
+            radiant.entities.turn_to_face(entity, item)
          end
 
          if ingredient and data.drop_ingredient then

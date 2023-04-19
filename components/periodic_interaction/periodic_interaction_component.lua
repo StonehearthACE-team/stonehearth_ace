@@ -659,7 +659,7 @@ end
 function PeriodicInteractionComponent:set_finish_stage(index)
    self._sv.finish_stage = math.min(index, self._current_sequence_data and #self._current_sequence_data or 1)
    self.__saved_variables:mark_changed()
-   self:_consider_usability(true)
+   self:_consider_usability()
 end
 
 function PeriodicInteractionComponent:set_ingredient_quality(quality)
@@ -964,7 +964,8 @@ function PeriodicInteractionComponent:_consider_usability(force_reconsider)
 
       if self._is_usable then
          local data = self:get_current_interaction()
-         -- if the task is already created, no need to cancel and recreate it
+         -- if the task is already created, no need to cancel and recreate it unless we're doing a force reconsider
+         -- which happens on load and when the mode is changed (which can change the ingredient for an interaction)
          -- however, we do want to update the overlay effect in case that's different
          local action = self:_get_interaction_action()
          local was_requested = task_tracker_component:is_activity_requested(action)
@@ -973,7 +974,8 @@ function PeriodicInteractionComponent:_consider_usability(force_reconsider)
          end
          task_tracker_component:request_task(self._entity:get_player_id(), 'periodic_interaction', action, data.overlay_effect)
 
-         if not was_requested then
+         -- if it hadn't been requested before, or if we're forcing reconsider, destroy/recreate the tasks
+         if force_reconsider or not was_requested then
             self:_create_interaction_tasks()
          end
       else

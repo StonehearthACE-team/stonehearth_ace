@@ -30,6 +30,16 @@
             "models": [
                "file(shepherd_cheese_vat_cheese_aged/shepherd_cheese_vat_cheese_aged.qb)"
             ]
+         },
+         "cream": {
+            "models": [
+               "file(shepherd_cheese_vat_cream/shepherd_cheese_vat_cream.qb)"
+            ]
+         },
+         "sour": {
+            "models": [
+               "file(shepherd_cheese_vat_cream_sour/shepherd_cheese_vat_cream_sour.qb)"
+            ]
          }
       },
       "stonehearth:entity_forms": {
@@ -64,6 +74,7 @@
                         "drop_ingredient": true
                      },
                      {
+                        "__comment": "no cooldown or interaction here, this 'interaction' absorb's the previous stage's cooldown, allowing the next stage to start interaction immediately when progressed to",
                         "effect": "stonehearth:effects:item_created",
                         "model": "filled",
                         "num_interactions": 0
@@ -99,6 +110,7 @@
                         ]
                      },
                      {
+                        "__comment": "no cooldown or interaction here, this 'interaction' absorb's the previous stage's cooldown, allowing the next stage to start interaction immediately when progressed to",
                         "num_interactions": 0
                      },
                      {
@@ -116,7 +128,7 @@
                            {
                               "type": "craft_items",
                               "category": "cheesemaking",
-                              "proficiency_gain": 1,
+                              "proficiency_gain": 1.2,
                               "level_requirement": 2,
                               "items": {
                                  "stonehearth_ace:food:dairy:cheese_fresh": 3
@@ -125,6 +137,7 @@
                         ]
                      },
                      {
+                        "__comment": "no cooldown or interaction here, this 'interaction' absorb's the previous stage's cooldown, allowing the next stage to start interaction immediately when progressed to",
                         "num_interactions": 0
                      },
                      {
@@ -142,7 +155,7 @@
                            {
                               "type": "craft_items",
                               "category": "cheesemaking",
-                              "proficiency_gain": 1,
+                              "proficiency_gain": 1.4,
                               "level_requirement": 2,
                               "items": {
                                  "stonehearth_ace:food:dairy:cheese_mild": 3
@@ -151,6 +164,7 @@
                         ]
                      },
                      {
+                        "__comment": "no cooldown or interaction here, this 'interaction' absorb's the previous stage's cooldown, allowing the next stage to start interaction immediately when progressed to",
                         "num_interactions": 0
                      },
                      {
@@ -166,10 +180,64 @@
                            {
                               "type": "craft_items",
                               "category": "cheesemaking",
-                              "proficiency_gain": 1,
+                              "proficiency_gain": 1.6,
                               "level_requirement": 2,
                               "items": {
                                  "stonehearth_ace:food:dairy:cheese_aged": 3
+                              }
+                           }
+                        ]
+                     }
+                  ]
+               }
+            },
+            "make_cream": {
+               "ui_data": {
+                  "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat.make_cream.display_name)",
+                  "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat.make_cream.description)",
+                  "stage_selection": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat.make_cream.stage_selection)"
+               },
+               "requirements": {
+                  "job": "stonehearth:jobs:shepherd",
+                  "level": 2
+               },
+               "default_finish_stage": 3,
+               "allow_finish_stage_selection": true,
+               "sequences": {
+                  "default": [
+                     {
+                        "cooldown": "10m",
+                        "model": "default",
+                        "num_interactions": 1,
+                        "ai_status_key": "stonehearth_ace:ai.actions.status_text.filling",
+                        "ingredient_uri": "stonehearth_ace:food:dairy:cream",
+                        "drop_ingredient": true
+                     },
+                     {
+                        "__comment": "no cooldown or interaction here, this 'interaction' absorb's the previous stage's cooldown, allowing the next stage to start interaction immediately when progressed to",
+                        "effect": "stonehearth:effects:item_created",
+                        "model": "cream",
+                        "num_interactions": 0
+                     },
+                     {
+                        "effect": "stonehearth:effects:item_created",
+                        "overlay_effect": "stonehearth_ace:effects:harvest_milk_overlay_effect",
+                        "cooldown": "10m",
+                        "model": "sour",
+                        "num_interactions": 1,
+                        "allow_finish_selection": true,
+                        "only_interact_on_finish": true,
+                        "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cream_sour.display_name)",
+                        "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cream_sour.description)",
+                        "icon": "file(shepherd_cheese_vat_cream_sour/shepherd_cheese_vat_cream_sour.png)",
+                        "finish_rewards": [
+                           {
+                              "type": "craft_items",
+                              "category": "cheesemaking",
+                              "proficiency_gain": 1,
+                              "level_requirement": 2,
+                              "items": {
+                                 "stonehearth_ace:food:dairy:cream:sour": 1
                               }
                            }
                         ]
