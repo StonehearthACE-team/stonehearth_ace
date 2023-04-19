@@ -4536,16 +4536,102 @@
                   "4_description": "They have mastered four types of Planters as an Herbalist or Grower."
                },
                "resource_harvest_cheese_vats": {
-                  "display_name": "🧀 Cheesemaking"
+                  "display_name": "🧀 Cheesemaking",
+                  "description": "Gained by harvesting cheese wheels of any stage from cheese vats.",
+                  "1_display_name": " the Curdler",
+                  "1_description": "They have produced 1 wheel of cheese! A hole new career starts!",
+                  "10_display_name": ", Promising Cheesemonger",
+                  "10_description": "They have produced 10 wheels of cheese! Taking it cheesy!",
+                  "50_display_name": " the Curator",
+                  "50_description": "They have produced 50 wheels of cheese! Getting cheddar every day!",
+                  "120_display_name": ", Master Cheesemonger",
+                  "120_description": "They have produced 120 wheels of cheese! That is very gouda!",
+                  "300_display_name": " the Seeker of the Perfect Hole",
+                  "300_description": "They have produced 300 wheels of cheese! Unbrielivable!"
                },
                "resource_harvest_fermenting_vats": {
-                  "display_name": "🍺 Brewing"
+                  "display_name": "🍺 Brewing",
+                  "description": "Gained by harvesting beers and ales of any type from fermentation vats.",
+                  "1_display_name": " the Bitter",
+                  "1_description": "They have produced beer or ale 1 time! Ale in a day's work!",
+                  "10_display_name": ", Promising Brewer",
+                  "10_description": "They have produced beer or ale 10 times! They've barley started!",
+                  "50_display_name": " the Stout",
+                  "50_description": "They have produced beer or ale 50 times! No hopping around!",
+                  "120_display_name": ", Master Brewer",
+                  "120_description": "They have produced beer or ale 120 times! Still raising the bar!",
+                  "300_display_name": " the Golden",
+                  "300_description": "They have produced beer or ale 300 times! A purpose lager than life!"
                },
                "resource_harvest_wine_casks": {
-                  "display_name": "🍇 Winemaking"
+                  "display_name": "🍇 Winemaking",
+                  "description": "Gained by harvesting wines of any type from wine casks.",
+                  "1_display_name": ", Slightly Acidic",
+                  "1_description": "They have produced 1 cask of wine! Still keeping a merlot profile...",
+                  "10_display_name": ", Promising Vitner",
+                  "10_description": "They have produced 10 casks of wine! Fortune definitely flavors the bold!",
+                  "50_display_name": ", Acquired Taste",
+                  "50_description": "They have produced 50 casks of wine! Becoming a muster of their craft.",
+                  "120_display_name": ", Master Vitner",
+                  "120_description": "They have produced 120 casks of wine! A cellar career!",
+                  "300_display_name": " the Sommelier",
+                  "300_description": "They have produced 300 casks of wine! They really were up to the cask!"
                },
                "resource_harvest_fermenting_carboys": {
-                  "display_name": "🍯 Meadmaking"
+                  "display_name": "🍯 Meadmaking",
+                  "description": "Gained by harvesting mead of any type from fermentation carboys.",
+                  "1_display_name": " the Sweetie",
+                  "1_description": "They have produced 1 carboy of mead! It definitely meads improving...",
+                  "10_display_name": ", Promising Meadmaker",
+                  "10_description": "They have produced 10 carboys of mead! They beelieve in themselves!",
+                  "50_display_name": " the Fermenter",
+                  "50_description": "They have produced 50 carboys of mead! Laying down the fruits of their labor.",
+                  "120_display_name": ", Master Meadmaker",
+                  "120_description": "They have produced 120 carboys of mead! Gotta give credit where credit is brew.",
+                  "300_display_name": " the Bringer of Joy",
+                  "300_description": "They have produced 300 carboys of mead! A master of their craft, to say the yeast!"
+               },
+               "performed_actions_build": {
+                  "display_name": "🔨 Building",
+                  "description": "Gained by building blocks on a construction site.",
+                  "60_display_name": ", Apprentice Builder",
+                  "60_description": "They have hammered materials into a construction site 60 times!",
+                  "200_display_name": ", Journeyman Builder",
+                  "200_description": "They have hammered materials into a construction site 200 times!",
+                  "500_display_name": ", Experienced Builder",
+                  "500_description": "They have hammered materials into a construction site 500 times!",
+                  "900_display_name": ", Professional Builder",
+                  "900_description": "They have hammered materials into a construction site 900 times!",
+                  "1600_display_name": " the Foreman",
+                  "1600_description": "They have hammered materials into a construction site 1600 times!"
+               },
+               "performed_actions_mine": {
+                  "display_name": "⛏️ Mining",
+                  "description": "Gained by mining or digging out terrain blocks.",
+                  "1_display_name": ", Apprentice Miner",
+                  "1_description": "They have mined or dug away 576 blocks of terrain!",
+                  "2_display_name": ", Journeyman Miner",
+                  "2_description": "They have mined or dug away 1152 blocks of terrain!",
+                  "3_display_name": ", Experienced Miner",
+                  "3_description": "They have mined or dug away 2304 blocks of terrain!",
+                  "4_display_name": ", Professional Miner",
+                  "4_description": "They have mined or dug away 5760 blocks of terrain!",
+                  "5_display_name": " the Tunneler",
+                  "5_description": "They have mined or dug away 17280 blocks of terrain!"
+               },
+               "performed_actions_restock": {
+                  "display_name": "🎒 Restocking",
+                  "description": "Gained by placing things in storage, supplying priority containers or refueling workbenches.",
+                  "100_display_name": ", Apprentice Restocker",
+                  "100_description": "They have restocked items 100 times!",
+                  "250_display_name": ", Journeyman Restocker",
+                  "250_description": "They have restocked items 250 times!",
+                  "500_display_name": ", Experienced Restocker",
+                  "500_description": "They have restocked items 500 times!",
+                  "1000_display_name": ", Professional Restocker",
+                  "1000_description": "They have restocked items 1000 times!",
+                  "2500_display_name": " the Cleaner",
+                  "2500_description": "They have restocked items 2500 times!"
                },
                "resource_harvest_trees": {
                   "display_name": "🌳 Tree-Cutting",
@@ -4576,7 +4662,7 @@
                   "96_description": "They have foraged 96 times! They can basically live deep in the woods!"
                },
                "resource_harvest_boulders": {
-                  "display_name": "🌑 Boulder Mining",
+                  "display_name": "🌑 Boulder Breaking",
                   "description": "Gained by mining different types of boulders.",
                   "8_display_name": ", Pebble-Pounder",
                   "8_description": "They have mined 8 boulders!",
@@ -4590,16 +4676,52 @@
                   "60_description": "They have mined 8 boulders! They're rocking!"
                },
                "resource_harvest_rare_truffles": {
-                  "display_name": "🐷 Truffle Hunter"
+                  "display_name": "🐷 Truffle Hunter",
+                  "description": "Gained by harvesting rare truffles found by wild boars or domestic oinkers.",
+                  "1_display_name": ", Snouty",
+                  "1_description": "They have harvested a basket of rare truffles!",
+                  "4_display_name": ", Swine-Chaser",
+                  "4_description": "They have harvested 4 baskets of rare truffles! Tasty!",
+                  "12_display_name": " the Truffle Hunter",
+                  "12_description": "They have harvested 12 baskets of rare truffles! Fancy!",
+                  "36_display_name": ", Bistro Supplier",
+                  "36_description": "They have harvested 36 baskets of rare truffles! Exquisite!"
                },
                "resource_harvest_fruits": {
-                  "display_name": "🍎 Fruit Picking"
+                  "display_name": "🍎 Fruit Picking",
+                  "description": "Gained by plucking fruits and berries from trees and bushes.",
+                  "6_display_name": " the Healthy",
+                  "6_description": "They have plucked 6 baskets of fruits!",
+                  "15_display_name": ", Tree-Climber",
+                  "15_description": "They have plucked 15 baskets of fruits! Fruity!",
+                  "30_display_name": " the Bountiful",
+                  "30_description": "They have plucked 30 baskets of fruits! Sweet!",
+                  "75_display_name": ", Fruit Ninja",
+                  "75_description": "They have plucked 75 baskets of fruits! Berry healthy!"
                },
                "resource_harvest_nests": {
-                  "display_name": "🐦 Nest Looting"
+                  "display_name": "🐦 Nest Looting",
+                  "description": "Gained by raiding wild bird nests for their loot.",
+                  "1_display_name": ", Egg-stealer",
+                  "1_description": "They have raided 1 wild bird nest! Meanie...",
+                  "2_display_name": " the Vulture",
+                  "2_description": "They have raided 2 wild bird nests! They did it again!",
+                  "4_display_name": ", Nasty",
+                  "4_description": "They have raided 4 wild bird nests! Horrible!",
+                  "8_display_name": " the Raven",
+                  "8_description": "They have raided 8 wild bird nests! That's fowl play!"
                },
                "resource_harvest_rabbit_statues": {
-                  "display_name": "🗿 Vandalism"
+                  "display_name": "🗿 Vandalism",
+                  "description": "Gained by breaking the ancient and mysterious rabbit statues spread across the landscape.",
+                  "1_display_name": " the Vandal",
+                  "1_description": "They have broken one ancient rabbit statue... Why?!",
+                  "2_display_name": " the Inconvenient",
+                  "2_description": "They have broken two ancient rabbit statues... Stop it!",
+                  "3_display_name": " the Breaker of Things",
+                  "3_description": "They have broken three ancient rabbit statues... Offensive!",
+                  "4_display_name": ", Rabbit-foe",
+                  "4_description": "They have broken four ancient rabbit statues... What have they done to them?!"
                },
                "starving": {
                   "display_name": "🍽️ Starvation",

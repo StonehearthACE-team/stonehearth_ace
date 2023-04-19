@@ -1465,7 +1465,7 @@
       "requirement": {
          "statistics": {
             "category": "category_proficiency",
-            "name": "_foods"
+            "name": "cook_foods"
          }
       },
       "ranks": [
@@ -1506,7 +1506,7 @@
       "requirement": {
          "statistics": {
             "category": "category_proficiency",
-            "name": "_drinks"
+            "name": "brewer_drinks"
          }
       },
       "ranks": [
@@ -1540,7 +1540,7 @@
       "requirement": {
          "statistics": {
             "category": "category_proficiency",
-            "name": "_weapons"
+            "name": "bs_weapons"
          }
       },
       "ranks": [
@@ -1560,7 +1560,7 @@
       "requirement": {
          "statistics": {
             "category": "category_proficiency",
-            "name": "_armor"
+            "name": "bs_armor"
          }
       },
       "ranks": [
@@ -1580,7 +1580,7 @@
       "requirement": {
          "statistics": {
             "category": "category_proficiency",
-            "name": "_building_parts"
+            "name": "basic_building_parts"
          }
       },
       "ranks": [
@@ -1648,7 +1648,7 @@
       "requirement": {
          "statistics": {
             "category": "category_proficiency",
-            "name": "_furniture"
+            "name": "basic_furniture"
          }
       },
       "ranks": [
@@ -1716,7 +1716,7 @@
       "requirement": {
          "statistics": {
             "category": "category_proficiency",
-            "name": "_decorations"
+            "name": "decorations"
          }
       },
       "ranks": [
@@ -1757,7 +1757,7 @@
       "requirement": {
          "statistics": {
             "category": "category_proficiency",
-            "name": "_refiner"
+            "name": "refiner"
          }
       },
       "ranks": [
@@ -1792,7 +1792,7 @@
       ]
    },
    "proficient_category_tending_herbs": {
-      "ordinal": 17.9,
+      "ordinal": 16.5,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.display_name)",
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.description)",
       "requirement": {
@@ -1829,6 +1829,342 @@
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.4_description)",
             "required_value": 4,
             "renown": 800
+         }
+      ]
+   },
+   "resource_harvest_cheese_vats": {
+      "ordinal": 16.6,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_cheese_vats.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_cheese_vats.description)",
+      "requirement": {
+         "statistics": {
+            "category": "resource_harvest",
+            "name": "cheese_vats"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_cheese_vats.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_cheese_vats.1_description)",
+            "required_value": 1,
+            "renown": 20
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_cheese_vats.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_cheese_vats.10_description)",
+            "required_value": 10,
+            "renown": 140
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_cheese_vats.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_cheese_vats.50_description)",
+            "required_value": 50,
+            "renown": 600
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_cheese_vats.120_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_cheese_vats.120_description)",
+            "required_value": 120,
+            "renown": 1440
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_cheese_vats.300_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_cheese_vats.300_description)",
+            "required_value": 300,
+            "renown": 3600
+         }
+      ]
+   },
+   "resource_harvest_fermenting_vats": {
+      "ordinal": 16.7,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_vats.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_vats.description)",
+      "requirement": {
+         "statistics": {
+            "category": "resource_harvest",
+            "name": "fermenting_vats"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_vats.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_vats.1_description)",
+            "required_value": 1,
+            "renown": 20
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_vats.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_vats.10_description)",
+            "required_value": 10,
+            "renown": 140
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_vats.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_vats.50_description)",
+            "required_value": 50,
+            "renown": 600
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_vats.120_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_vats.120_description)",
+            "required_value": 120,
+            "renown": 1440
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_vats.300_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_vats.300_description)",
+            "required_value": 300,
+            "renown": 3600
+         }
+      ]
+   },
+   "resource_harvest_wine_casks": {
+      "ordinal": 16.8,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_wine_casks.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_wine_casks.description)",
+      "requirement": {
+         "statistics": {
+            "category": "resource_harvest",
+            "name": "wine_casks"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_wine_casks.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_wine_casks.1_description)",
+            "required_value": 1,
+            "renown": 20
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_wine_casks.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_wine_casks.10_description)",
+            "required_value": 10,
+            "renown": 140
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_wine_casks.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_wine_casks.50_description)",
+            "required_value": 50,
+            "renown": 600
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_wine_casks.120_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_wine_casks.120_description)",
+            "required_value": 120,
+            "renown": 1440
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_wine_casks.300_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_wine_casks.300_description)",
+            "required_value": 300,
+            "renown": 3600
+         }
+      ]
+   },
+   "resource_harvest_fermenting_carboys": {
+      "ordinal": 16.9,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_carboys.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_carboys.description)",
+      "requirement": {
+         "statistics": {
+            "category": "resource_harvest",
+            "name": "fermenting_carboys"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_carboys.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_carboys.1_description)",
+            "required_value": 1,
+            "renown": 20
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_carboys.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_carboys.10_description)",
+            "required_value": 10,
+            "renown": 140
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_carboys.50_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_carboys.50_description)",
+            "required_value": 50,
+            "renown": 600
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_carboys.120_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_carboys.120_description)",
+            "required_value": 120,
+            "renown": 1440
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_carboys.300_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fermenting_carboys.300_description)",
+            "required_value": 300,
+            "renown": 3600
+         }
+      ]
+   },
+   "performed_actions_build": {
+      "ordinal": 17,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_build.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_build.description)",
+      "requirement": {
+         "statistics": {
+            "category": "performed_actions",
+            "name": "build"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_build.60_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_build.60_description)",
+            "required_value": 60,
+            "renown": 120
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_build.200_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_build.200_description)",
+            "required_value": 200,
+            "renown": 300
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_build.500_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_build.500_description)",
+            "required_value": 500,
+            "renown": 850
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_build.900_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_build.900_description)",
+            "required_value": 900,
+            "renown": 1500
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_build.1600_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_build.1600_description)",
+            "required_value": 1600,
+            "renown": 2200
+         }
+      ]
+   },
+   "performed_actions_mine": {
+      "ordinal": 17.1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_mine.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_mine.description)",
+      "requirement": {
+         "statistics": {
+            "category": "performed_actions",
+            "name": "mine"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_mine.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_mine.1_description)",
+            "required_value": 576,
+            "renown": 90
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_mine.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_mine.2_description)",
+            "required_value": 1152,
+            "renown": 200
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_mine.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_mine.3_description)",
+            "required_value": 2304,
+            "renown": 900
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_mine.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_mine.4_description)",
+            "required_value": 5760,
+            "renown": 1800
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_mine.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_mine.5_description)",
+            "required_value": 17280,
+            "renown": 3600
+         }
+      ]
+   },
+   "performed_actions_restock": {
+      "ordinal": 17.2,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_restock.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_restock.description)",
+      "requirement": {
+         "statistics": {
+            "category": "performed_actions",
+            "name": "restock"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_restock.100_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_restock.100_description)",
+            "required_value": 100,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_restock.250_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_restock.250_description)",
+            "required_value": 250,
+            "renown": 150
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_restock.500_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_restock.500_description)",
+            "required_value": 500,
+            "renown": 320
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_restock.1000_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_restock.1000_description)",
+            "required_value": 1000,
+            "renown": 700
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_restock.2500_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.performed_actions_restock.2500_description)",
+            "required_value": 2500,
+            "renown": 1200
          }
       ]
    },
@@ -1944,34 +2280,198 @@
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.8_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.8_description)",
             "required_value": 8,
-            "renown": 300
+            "renown": 150
          },
          {
             "rank": 2,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.16_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.16_description)",
             "required_value": 16,
-            "renown": 560
+            "renown": 250
          },
          {
             "rank": 3,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.25_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.25_description)",
             "required_value": 25,
-            "renown": 820
+            "renown": 600
          },
          {
             "rank": 4,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.40_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.40_description)",
             "required_value": 40,
-            "renown": 1100
+            "renown": 950
          },
          {
             "rank": 5,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.60_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_boulders.60_description)",
             "required_value": 60,
+            "renown": 1300
+         }
+      ]
+   },
+   "resource_harvest_rare_truffles": {
+      "ordinal": 18.3,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rare_truffles.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rare_truffles.description)",
+      "requirement": {
+         "statistics": {
+            "category": "resource_harvest",
+            "name": "rare_truffles"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rare_truffles.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rare_truffles.1_description)",
+            "required_value": 1,
+            "renown": 80
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rare_truffles.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rare_truffles.4_description)",
+            "required_value": 4,
+            "renown": 300
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rare_truffles.12_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rare_truffles.12_description)",
+            "required_value": 12,
+            "renown": 860
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rare_truffles.36_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rare_truffles.36_description)",
+            "required_value": 36,
+            "renown": 1400
+         }
+      ]
+   },
+   "resource_harvest_fruits": {
+      "ordinal": 18.4,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fruits.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fruits.description)",
+      "requirement": {
+         "statistics": {
+            "category": "resource_harvest",
+            "name": "fruits"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fruits.6_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fruits.6_description)",
+            "required_value": 6,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fruits.15_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fruits.15_description)",
+            "required_value": 15,
+            "renown": 150
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fruits.30_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fruits.30_description)",
+            "required_value": 30,
+            "renown": 300
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fruits.75_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_fruits.75_description)",
+            "required_value": 75,
+            "renown": 750
+         }
+      ]
+   },
+   "resource_harvest_nests": {
+      "ordinal": 18.5,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_nests.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_nests.description)",
+      "requirement": {
+         "statistics": {
+            "category": "resource_harvest",
+            "name": "nests"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_nests.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_nests.1_description)",
+            "required_value": 1,
+            "renown": 25
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_nests.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_nests.2_description)",
+            "required_value": 2,
+            "renown": 55
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_nests.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_nests.4_description)",
+            "required_value": 4,
+            "renown": 120
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_nests.8_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_nests.8_description)",
+            "required_value": 8,
+            "renown": 300
+         }
+      ]
+   },
+   "resource_harvest_rabbit_statues": {
+      "ordinal": 18.6,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rabbit_statues.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rabbit_statues.description)",
+      "requirement": {
+         "statistics": {
+            "category": "resource_harvest",
+            "name": "rabbit_statues"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rabbit_statues.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rabbit_statues.1_description)",
+            "required_value": 1,
+            "renown": 350
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rabbit_statues.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rabbit_statues.2_description)",
+            "required_value": 2,
+            "renown": 700
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rabbit_statues.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rabbit_statues.3_description)",
+            "required_value": 3,
+            "renown": 1050
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rabbit_statues.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.resource_harvest_rabbit_statues.4_description)",
+            "required_value": 4,
             "renown": 1400
          }
       ]
