@@ -90,9 +90,9 @@ function InteractWithItemAdjacent:run(ai, entity, args)
       self._ingredient = ingredient
 
       local effect = data.interaction_effect
-      local times = data.num_interactions
+      local times = data.num_interactions or 1
       local points = data.interaction_points or {}
-      local destroy_ingredient_after_num = data.destroy_ingredient_after_num or times
+      local remove_ingredient_after_num = data.remove_ingredient_after_num or times
       local interaction_points = {}
       
       local interactions = {}
@@ -122,7 +122,16 @@ function InteractWithItemAdjacent:run(ai, entity, args)
 
       local location = radiant.entities.get_world_grid_location(item)
 
+      local script = data.interaction_script and radiant.mods.load_script(data.interaction_script)()
+      if script and script.before_interaction then
+         script:before_interaction(ai, entity, args)
+      end
+
       for i, interaction in ipairs(interactions) do
+         if script and script.before_each_interaction then
+            script:before_each_interaction(ai, entity, args)
+         end
+
          local interaction_data = interaction_points[interaction]
          if not interaction_data then
             interaction_data = radiant.shallow_copy(pi_comp:get_interaction_point(interaction) or {})
@@ -154,10 +163,18 @@ function InteractWithItemAdjacent:run(ai, entity, args)
          end
          ai:execute('stonehearth:run_effect', { effect = worker_effect or 'fiddle' })
 
-         if ingredient and i >= destroy_ingredient_after_num then
+         if ingredient and i >= remove_ingredient_after_num then
             self:_remove_ingredient_from_world()
             ingredient = nil
          end
+
+         if script and script.after_each_interaction then
+            script:after_each_interaction(ai, entity, args)
+         end
+      end
+
+      if script and script.after_interaction then
+         script:after_interaction(ai, entity, args)
       end
 
       -- if the ingredient still exists, destroy it now
