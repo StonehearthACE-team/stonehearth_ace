@@ -33,6 +33,18 @@ function InteractWithItemAdjacent:stop(ai, entity, args)
       pi_comp:set_interaction_effect()
    end
 
+   -- if there was an ingredient that didn't get destroyed (e.g., we aborted), return it to the world
+   if self._ingredient and self._ingredient:is_valid() and entity and entity:is_valid() then
+      if radiant.entities.get_carrying(entity) == self._ingredient then
+         radiant.entities.drop_carrying_nearby(entity)
+      else
+         local location = radiant.entities.get_world_grid_location(entity)
+         if location then
+            radiant.terrain.place_entity(self._ingredient, location)
+         end
+      end
+   end
+
    if self._destroy_listener then
       self._destroy_listener:destroy()
       self._destroy_listener = nil
@@ -40,9 +52,15 @@ function InteractWithItemAdjacent:stop(ai, entity, args)
 end
 
 function InteractWithItemAdjacent:run(ai, entity, args)
+   local ingredient = radiant.entities.get_carrying(entity)
    local item = args.item
    local pi_comp = args.item:get_component('stonehearth_ace:periodic_interaction')
    if not pi_comp or not pi_comp:is_usable() or not pi_comp:is_valid_potential_user(entity) then
+      if ingredient then
+         -- don't be stuck carrying this (though really other actions should handle that?)
+         ai:execute('stonehearth:drop_carrying_now', {})
+      end
+
       ai:abort('not interactable!')
       return
    end
@@ -50,12 +68,12 @@ function InteractWithItemAdjacent:run(ai, entity, args)
    local data = pi_comp:get_current_interaction()
 
    if data then
-      local ingredient = radiant.entities.get_carrying(entity)
       local ingredient_quality
 
       if data.ingredient_uri or data.ingredient_material then
-         if ingredient and ingredient:is_valid() and ((data.ingredient_uri and data.ingredient_uri == ingredient:get_uri()) or
-            (data.ingredient_material and stonehearth.catalog:is_material(ingredient:get_uri(), data.ingredient_material))) then
+         local ingredient_uri = ingredient and ingredient:is_valid() and ingredient:get_uri()
+         if ingredient_uri and ((data.ingredient_uri and data.ingredient_uri == ingredient_uri) or
+            (data.ingredient_material and stonehearth.catalog:is_material(ingredient_uri, data.ingredient_material))) then
             -- carried item is the required ingredient
             ingredient_quality = radiant.entities.get_item_quality(ingredient)
          else
@@ -68,6 +86,8 @@ function InteractWithItemAdjacent:run(ai, entity, args)
             return
          end
       end
+
+      self._ingredient = ingredient
 
       local effect = data.interaction_effect
       local times = data.num_interactions
@@ -124,7 +144,7 @@ function InteractWithItemAdjacent:run(ai, entity, args)
 
          if ingredient and data.drop_ingredient then
             ai:execute('stonehearth:drop_carrying_now', {})
-            radiant.entities.destroy_entity(ingredient)
+            self:_remove_ingredient_from_world()
             ingredient = nil
          end
 
@@ -135,14 +155,14 @@ function InteractWithItemAdjacent:run(ai, entity, args)
          ai:execute('stonehearth:run_effect', { effect = worker_effect or 'fiddle' })
 
          if ingredient and i >= destroy_ingredient_after_num then
-            radiant.entities.destroy_entity(ingredient)
+            self:_remove_ingredient_from_world()
             ingredient = nil
          end
       end
 
       -- if the ingredient still exists, destroy it now
-      if ingredient then
-         radiant.entities.destroy_entity(ingredient)
+      if self._ingredient and self._ingredient:is_valid() then
+         radiant.entities.destroy_entity(self._ingredient)
       end
 
       self._completed_work = true
@@ -150,6 +170,19 @@ function InteractWithItemAdjacent:run(ai, entity, args)
          pi_comp:set_ingredient_quality(ingredient_quality)
       end
       pi_comp:set_current_interaction_completed(entity)
+   end
+end
+
+function InteractWithItemAdjacent:_remove_ingredient_from_world()
+   if self._ingredient and self._ingredient:is_valid() then
+      local parent = radiant.entities.get_parent(self._ingredient)
+      if parent then
+         if radiant.entities.is_carried(self._ingredient) then
+            radiant.entities.remove_carrying(parent)
+         else
+            radiant.entities.remove_child(parent, self._ingredient)
+         end
+      end
    end
 end
 

@@ -67,7 +67,6 @@
                   "default": [
                      {
                         "cooldown": "10m",
-                        "model": "default",
                         "num_interactions": 1,
                         "ai_status_key": "stonehearth_ace:ai.actions.status_text.filling",
                         "ingredient_uri": "stonehearth_ace:food:dairy:curdling_mixture",
@@ -77,7 +76,7 @@
                         "__comment": "no cooldown or interaction here, this 'interaction' absorb's the previous stage's cooldown, allowing the next stage to start interaction immediately when progressed to",
                         "effect": "stonehearth:effects:item_created",
                         "model": "filled",
-                        "num_interactions": 0
+                        "evolve": true
                      },
                      {
                         "effect": "stonehearth:effects:item_created",
@@ -86,7 +85,7 @@
                         "model": "curdled",
                         "num_interactions": 1,
                         "allow_finish_selection": true,
-                        "only_interact_on_finish": true,
+                        "evolve": true,
                         "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_curdled.display_name)",
                         "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_curdled.description)",
                         "icon": "file(shepherd_cheese_vat_curdled/shepherd_cheese_vat_curdled.png)",
@@ -111,7 +110,8 @@
                      },
                      {
                         "__comment": "no cooldown or interaction here, this 'interaction' absorb's the previous stage's cooldown, allowing the next stage to start interaction immediately when progressed to",
-                        "num_interactions": 0
+                        "evolve": true,
+                        "allow_previous_stage_interaction": true
                      },
                      {
                         "effect": "stonehearth:effects:item_created",
@@ -120,7 +120,7 @@
                         "model": "fresh",
                         "num_interactions": 1,
                         "allow_finish_selection": true,
-                        "only_interact_on_finish": true,
+                        "evolve": true,
                         "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_fresh.display_name)",
                         "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_fresh.description)",
                         "icon": "file(shepherd_cheese_vat_cheese_fresh/shepherd_cheese_vat_cheese_fresh.png)",
@@ -138,7 +138,8 @@
                      },
                      {
                         "__comment": "no cooldown or interaction here, this 'interaction' absorb's the previous stage's cooldown, allowing the next stage to start interaction immediately when progressed to",
-                        "num_interactions": 0
+                        "evolve": true,
+                        "allow_previous_stage_interaction": true
                      },
                      {
                         "effect": "stonehearth:effects:item_created",
@@ -147,7 +148,7 @@
                         "model": "mild",
                         "num_interactions": 1,
                         "allow_finish_selection": true,
-                        "only_interact_on_finish": true,
+                        "evolve": true,
                         "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_mild.display_name)",
                         "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_mild.description)",
                         "icon": "file(shepherd_cheese_vat_cheese_mild/shepherd_cheese_vat_cheese_mild.png)",
@@ -165,7 +166,8 @@
                      },
                      {
                         "__comment": "no cooldown or interaction here, this 'interaction' absorb's the previous stage's cooldown, allowing the next stage to start interaction immediately when progressed to",
-                        "num_interactions": 0
+                        "evolve": true,
+                        "allow_previous_stage_interaction": true
                      },
                      {
                         "effect": "stonehearth:effects:item_created",
@@ -176,7 +178,7 @@
                         "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_aged.display_name)",
                         "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cheese_aged.description)",
                         "icon": "file(shepherd_cheese_vat_cheese_aged/shepherd_cheese_vat_cheese_aged.png)",
-                        "finish_rewards": [
+                        "rewards": [
                            {
                               "type": "craft_items",
                               "category": "cheesemaking",
@@ -217,7 +219,7 @@
                         "__comment": "no cooldown or interaction here, this 'interaction' absorb's the previous stage's cooldown, allowing the next stage to start interaction immediately when progressed to",
                         "effect": "stonehearth:effects:item_created",
                         "model": "cream",
-                        "num_interactions": 0
+                        "evolve": true
                      },
                      {
                         "effect": "stonehearth:effects:item_created",
@@ -226,11 +228,10 @@
                         "model": "sour",
                         "num_interactions": 1,
                         "allow_finish_selection": true,
-                        "only_interact_on_finish": true,
                         "display_name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cream_sour.display_name)",
                         "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_cheese_vat_cream_sour.description)",
                         "icon": "file(shepherd_cheese_vat_cream_sour/shepherd_cheese_vat_cream_sour.png)",
-                        "finish_rewards": [
+                        "rewards": [
                            {
                               "type": "craft_items",
                               "category": "cheesemaking",

@@ -348,8 +348,11 @@ function PeriodicInteractionComponent:is_enabled()
 end
 
 function PeriodicInteractionComponent:set_enabled(enabled)
-   self._sv.enabled = enabled
-   self.__saved_variables:mark_changed()
+   if self._sv.enabled ~= enabled then
+      self._sv.enabled = enabled
+      self.__saved_variables:mark_changed()
+      self:_consider_usability()
+   end
 end
 
 function PeriodicInteractionComponent:get_current_mode()
@@ -643,7 +646,22 @@ function PeriodicInteractionComponent:_check_modes_for_valid_job_levels(job_uri,
    end
 end
 
+-- this function gets the stage data for the current interaction stage
+-- this can be different than the raw value for it if the finish stage has been set earlier
 function PeriodicInteractionComponent:get_current_interaction()
+   local data = self:_get_current_stage_data()
+
+   if data and (data.num_interactions or 0) < 1 and data.allow_previous_stage_interaction then
+      local prev_stage = math.max(1, self._sv.interaction_stage - 1)
+      if self._sv.finish_stage == prev_stage then
+         data = self._current_sequence_data[prev_stage]
+      end
+   end
+
+   return data
+end
+
+function PeriodicInteractionComponent:_get_current_stage_data()
    return self._current_sequence_data and self._current_sequence_data[self._sv.interaction_stage]
 end
 
@@ -667,17 +685,17 @@ function PeriodicInteractionComponent:set_ingredient_quality(quality)
    self.__saved_variables:mark_changed()
 end
 
-function PeriodicInteractionComponent:set_current_interaction_completed(user)
+function PeriodicInteractionComponent:set_current_interaction_completed(user, stage_data)
    self._sv.current_user = user
    self:_create_current_user_job_listener()
 
-   local current_interaction = self:get_current_interaction()
+   local current_interaction = stage_data or self:get_current_interaction()
    if not current_interaction then
       return
    end
 
    -- if the finish stage has been set to this stage, we want to complete now
-   local completed = self._sv.interaction_stage >= self._sv.finish_stage
+   local completed = self._sv.enabled and current_interaction == self._current_sequence_data[self._sv.finish_stage]
 
    -- apply any rewards
    local item
@@ -710,7 +728,7 @@ function PeriodicInteractionComponent:set_current_interaction_completed(user)
       self._sv.interaction_stage = self._sv.interaction_stage + 1
       self.__saved_variables:mark_changed()
 
-      current_interaction = self:get_current_interaction()
+      current_interaction = self:_get_current_stage_data()
       if not current_interaction then
          -- if there's no interaction for this stage, we must've completed it
          self:_reset(true)
@@ -723,7 +741,7 @@ function PeriodicInteractionComponent:set_current_interaction_completed(user)
 end
 
 function PeriodicInteractionComponent:_apply_current_stage_settings()
-   local current_interaction = self:get_current_interaction()
+   local current_interaction = self:_get_current_stage_data()
    if current_interaction then
       log:debug('%s applying stage settings for %s...', self._entity, self._sv.interaction_stage)
       -- apply model/effect, etc.
@@ -936,23 +954,30 @@ function PeriodicInteractionComponent:_consider_usability(force_reconsider)
    end
 
    local usable = true
+   local current_interaction = self:get_current_interaction()
 
-   -- if it's disabled or still on general/interaction cooldown, it's not usable
-   if not self._sv.enabled or self._sv._general_cooldown_timer or self._sv._interaction_cooldown_timer then
+   -- it's enabled and not on cooldown (or disabled and an "evolve" stage)
+   -- check if the current interaction has num_interactions > 0 or it's pre-finish stage and this stage is set to only interact on finish
+   -- (otherwise we automatically proceed to the next stage)
+   if current_interaction and not self._sv._general_cooldown_timer and not self._sv._interaction_cooldown_timer and
+         ((current_interaction.evolve and (not self._sv.enabled or self._sv.finish_stage ~= self._sv.interaction_stage)) or
+         (self._sv.enabled and (current_interaction.num_interactions == 0 or (current_interaction.evolve and
+         self._sv.finish_stage > self._sv.interaction_stage and self._sv.interaction_stage < #self._current_sequence_data)))) then
+      log:debug('%s auto-advance from stage %s to next stage while enabled = %s, finish stage = %s',
+            self._entity, self._sv.interaction_stage, self._sv.enabled, self._sv.finish_stage)
+      self:set_current_interaction_completed(self._sv.current_user, self:_get_current_stage_data())
+      return
+   end
+
+   -- if it's on an interaction cooldown that doesn't matter because we're doing a finish stage interaction on the previous stage,
+   -- and it's enabled and not on general cooldown, consider it to actually be usable
+   if self._sv.enabled and not self._sv._general_cooldown_timer and current_interaction and current_interaction ~= self:_get_current_stage_data() then
+      log:debug('%s is usable on the previous interaction stage despite interaction cd of %s', self._entity, self._sv._interaction_cooldown_timer)
+   elseif not self._sv.enabled or self._sv._general_cooldown_timer or self._sv._interaction_cooldown_timer then
+      -- if it's disabled or still on general/interaction cooldown, it's not usable
       log:debug('%s is not usable: enabled = %s, general cd = %s, interaction cd = %s', self._entity,
             tostring(self._sv.enabled), tostring(self._sv._general_cooldown_timer), tostring(self._sv._interaction_cooldown_timer))
       usable = false
-   else
-      -- it's enabled and not on cooldown
-      -- check if the current interaction has num_interactions > 0 or it's pre-finish stage and this stage is set to only interact on finish
-      -- (otherwise we automatically proceed to the next stage)
-      local current_interaction = self:get_current_interaction()
-      if current_interaction and (current_interaction.num_interactions == 0 or (current_interaction.only_interact_on_finish and
-            self._sv.finish_stage > self._sv.interaction_stage and self._sv.interaction_stage < #self._current_sequence_data)) then
-         log:debug('%s moving from stage %s to next stage without interaction', self._entity, self._sv.interaction_stage)
-         self:set_current_interaction_completed(self._sv.current_user)
-         return
-      end
    end
 
    local task_tracker_component = self._entity:add_component('stonehearth:task_tracker')
@@ -963,20 +988,21 @@ function PeriodicInteractionComponent:_consider_usability(force_reconsider)
       log:debug('%s _consider_usability (%s) => reconsider_entity', self._entity, usable)
 
       if self._is_usable then
-         local data = self:get_current_interaction()
          -- if the task is already created, no need to cancel and recreate it unless we're doing a force reconsider
          -- which happens on load and when the mode is changed (which can change the ingredient for an interaction)
          -- however, we do want to update the overlay effect in case that's different
-         local action = self:_get_interaction_action()
-         local was_requested = task_tracker_component:is_activity_requested(action)
+         local was_requested = task_tracker_component:is_activity_requested(PI_ACTION) or
+               task_tracker_component:is_activity_requested(PI_WITH_INGREDIENT_ACTION)
          if was_requested then
             task_tracker_component:cancel_current_task(false)
          end
-         task_tracker_component:request_task(self._entity:get_player_id(), 'periodic_interaction', action, data.overlay_effect)
+
+         local action = self:_get_interaction_action(current_interaction)
+         task_tracker_component:request_task(self._entity:get_player_id(), 'periodic_interaction', action, current_interaction.overlay_effect)
 
          -- if it hadn't been requested before, or if we're forcing reconsider, destroy/recreate the tasks
          if force_reconsider or not was_requested then
-            self:_create_interaction_tasks()
+            self:_create_interaction_tasks(current_interaction)
          end
       else
          self:_destroy_interaction_tasks()
@@ -991,8 +1017,7 @@ function PeriodicInteractionComponent:_consider_usability(force_reconsider)
    end
 end
 
-function PeriodicInteractionComponent:_get_interaction_action()
-   local data = self:get_current_interaction()
+function PeriodicInteractionComponent:_get_interaction_action(data)
    if data and (data.ingredient_uri or data.ingredient_material) then
       return PI_WITH_INGREDIENT_ACTION
    else
@@ -1000,8 +1025,7 @@ function PeriodicInteractionComponent:_get_interaction_action()
    end
 end
 
-function PeriodicInteractionComponent:_get_interaction_ingredient()
-   local data = self:get_current_interaction()
+function PeriodicInteractionComponent:_get_interaction_ingredient(data)
    local ingredient
    if data.ingredient_uri then
       ingredient = {uri = data.ingredient_uri}
@@ -1011,7 +1035,7 @@ function PeriodicInteractionComponent:_get_interaction_ingredient()
    return ingredient
 end
 
-function PeriodicInteractionComponent:_create_interaction_tasks()
+function PeriodicInteractionComponent:_create_interaction_tasks(data)
    self:_destroy_interaction_tasks()
 
    local player_id = self._entity:get_player_id()
@@ -1020,12 +1044,12 @@ function PeriodicInteractionComponent:_create_interaction_tasks()
    if town and town:get_task_group(PI_TASK_GROUP) then
       local args = {
          item = self._entity,
-         ingredient = self:_get_interaction_ingredient()
+         ingredient = self:_get_interaction_ingredient(data)
       }
 
       local interaction_task = town:create_task_for_group(
          PI_TASK_GROUP,
-         self:_get_interaction_action(),
+         self:_get_interaction_action(data),
          args)
             :set_source(self._entity)
             :start()

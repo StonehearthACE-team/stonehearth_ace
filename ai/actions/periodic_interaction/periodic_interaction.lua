@@ -43,16 +43,20 @@ function InteractWithItem:_rethink()
       return
    end
 
+   log:debug('%s rethinking periodic interaction on %s...', self._entity, tostring(self._item))
+
    local periodic_interaction_comp = self._item and self._item:is_valid() and self._item:get_component('stonehearth_ace:periodic_interaction')
    if periodic_interaction_comp and periodic_interaction_comp:is_usable() and periodic_interaction_comp:is_valid_potential_user(self._entity) then
       if not self._ready then
          self._ready = true
          self._ai:set_think_output({})
+         log:debug('%s can use %s!', self._entity, self._item)
          return true
-      else
-         self._ready = false
-         self._ai:clear_think_output()
       end
+   elseif self._ready then
+      self._ready = false
+      self._ai:clear_think_output()
+      log:debug('%s cannot use %s', self._entity, tostring(self._item))
    end
 end
 
