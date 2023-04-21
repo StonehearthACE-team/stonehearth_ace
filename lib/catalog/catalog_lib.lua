@@ -282,6 +282,8 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
                log:error('%s has invalid ghost path specified: %s', full_alias, tostring(iconic_path))
             end
          end
+
+         catalog_data.is_placeable = entity_forms.placeable_on_ground or entity_forms.placeable_on_walls
       end
       
       if json.components['stonehearth:equipment_piece'] then

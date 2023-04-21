@@ -31,6 +31,9 @@ function TownCallHandler:craft_and_place_item_type_in_world(session, response, u
 
    local town = stonehearth.town:get_town(session.player_id)
    if town then
+      location = radiant.util.to_point3(location)
+      normal = radiant.util.to_point3(normal)
+
       local placement_info = {
          location = location,
          normal = normal,
