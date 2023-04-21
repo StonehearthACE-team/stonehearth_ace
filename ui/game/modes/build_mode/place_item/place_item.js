@@ -1,3 +1,5 @@
+var lastPlaceItemTabPage = 'placeItemTab';
+
 $(document).ready(function(){
    $(top).on("radiant_place_item", function (_, e) {
       var item = e.entity;
@@ -38,6 +40,7 @@ $(document).ready(function(){
 
 App.StonehearthPlaceItemView = App.View.extend({
    templateName: 'stonehearthPlaceItem',
+   classNames: ['fullScreen', 'flex', 'gui', 'stonehearth-view'],
    modal: false,
 
    init: function() {
@@ -47,28 +50,7 @@ App.StonehearthPlaceItemView = App.View.extend({
       $(top).on('mode_changed', function(_, mode) {
          self._onStateChanged();
       });
-   },
 
-   didInsertElement: function() {
-      var self = this;
-      self._super();
-      self.hide();
-   },
-
-   _onStateChanged: function() {
-      var self = this;
-      if (App.getGameMode() != 'place') {
-         self.hide();
-      }
-   }
-});
-
-App.StonehearthPlaceItemPaletteView = App.View.extend({
-   templateName: 'stonehearthPlaceItemPalette',
-   classNames: ['fullScreen', 'flex', 'gui', 'stonehearth-view'],
-
-   init: function() {
-      var self = this;
       $(top).on('stonehearth_place_item', function() {
          if (self.$().is(':visible')) {
             self.hide();
@@ -88,8 +70,23 @@ App.StonehearthPlaceItemPaletteView = App.View.extend({
          return;
       }
 
+      this.tabs = this.$('.tab');
+      this.tabs.click(function() {
+         lastPlaceItemTabPage = $(this).attr('tabPage');
+      });
+
+      self._createPlaceItemPalette();
+      self._createCraftAndPlaceItemPalette();
+
+      // Resume on last selected tab
+      self._resumeLastTab();
+   },
+
+   _createPlaceItemPalette: function() {
+      var self = this;
+
       // build the palette
-      this._palette = this.$('#items').stonehearthItemPalette({
+      this._palette = this.$('#placeItems').stonehearthItemPalette({
          click: function(item) {
             var itemType = item.attr('uri');
             var quality = parseInt(item.attr('item_quality'));
@@ -100,7 +97,7 @@ App.StonehearthPlaceItemPaletteView = App.View.extend({
       // ACE: add search filter to this item palette
       this._palette.stonehearthItemPalette('showSearchFilter');
 
-      return radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:placeable_item_inventory_tracker')
+      radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:placeable_item_inventory_tracker')
          .done(function (response) {
             var traceFields = {
                "tracking_data": {
@@ -133,18 +130,111 @@ App.StonehearthPlaceItemPaletteView = App.View.extend({
          })
          .fail(function(response) {
             console.error(response);
-         })
+         });
+   },
+
+   _createCraftAndPlaceItemPalette: function() {
+      var self = this;
+      
+      // build the palette
+      this._craftPalette = this.$('#craftAndPlaceItems').stonehearthItemPalette({
+         hideCount: true,
+         showZeroes: true,
+         click: function(item) {
+            var itemType = item.attr('uri');
+            App.stonehearthClient.craftAndPlaceItemType(itemType);
+         }
+      });
+
+      // ACE: add search filter to this item palette
+      this._craftPalette.stonehearthItemPalette('showSearchFilter');
+
+      //  When someone's job or level changes, let us know.
+      App.jobController.addChangeCallback('craft_and_place_items', function() {
+         self._updateCraftableItems();
+      }, true);
+   },
+
+   _updateCraftableItems: function() {
+      var self = this;
+      var craftableItems = {};
+
+      var jobData = App.jobController.getJobControllerData();
+      if (!jobData || !jobData.jobs) {
+         return;
+      }
+
+      _.forEach(jobData.jobs, function(jobControllerInfo, jobUri) {
+         if (!jobControllerInfo.recipe_list) {
+            return;
+         }
+
+         if (jobControllerInfo.num_members <= 0) {
+            // do not show if nobody has been promoted to this crafter
+            return;
+         }
+
+         var highestLevel = jobControllerInfo.highest_level;
+
+         _.forEach(jobControllerInfo.recipe_list, function(category) {
+            _.forEach(category.recipes, function(recipe_info, recipe_key) {
+               var recipe = recipe_info.recipe;
+               if (recipe.level_requirement > highestLevel) {
+                  // do not show if no one can craft it
+                  return;
+               }
+
+               if (recipe.manual_unlock && !jobControllerInfo.manually_unlocked[recipe.recipe_key]) {
+                  // do not show if no one can craft it
+                  return;
+               }
+
+               var product_uri = recipe.product_uri;
+               var key = product_uri + App.constants.item_quality.KEY_SEPARATOR + '1';
+               if (!craftableItems[key]) {
+                  var catalogData = App.catalog.getCatalogData(product_uri);
+                  if (!catalogData || !catalogData.is_placeable) {
+                     // No data for the product or product is not a placeable item
+                     return;
+                  }
+
+                  // TODO: include crafter info (job name, icon, and level)
+                  // and insert into tooltips somehow? also searching
+                  var entry = {
+                     uri: product_uri,
+                     category: catalogData.category,
+                     description: catalogData.description,
+                     display_name: catalogData.display_name,
+                     appeal: catalogData.appeal,
+                     icon: catalogData.icon,
+                  };
+
+                  craftableItems[key] = entry;
+               }
+            });
+         });
+      });
+
+      self._craftableItems = craftableItems
+
+      if (self.get('isVisible')) {
+         self._craftPalette.stonehearthItemPalette('updateItems', self._craftableItems);
+      }
    },
 
    _reactToVisibilityChanged: function () {
       var self = this;
       if (self.get('isVisible')) {
          self._palette.stonehearthItemPalette('updateItems', self._placeableItems);
+         self._craftPalette.stonehearthItemPalette('updateItems', self._craftableItems);
       }
    }.observes('isVisible'),
 
    willDestroyElement: function() {
+      this.tabs.off('click');
       this._palette.stonehearthItemPalette('destroy');
+      this._craftPalette.stonehearthItemPalette('destroy');
+      this.$().find('.tooltipstered').tooltipster('destroy');
       this._super();
    },
 
@@ -153,6 +243,24 @@ App.StonehearthPlaceItemPaletteView = App.View.extend({
          this._trace.destroy();
          this._trace = null;
       }
+   },
+
+   _onStateChanged: function() {
+      var self = this;
+      if (App.getGameMode() != 'place') {
+         self.hide();
+      }
+   },
+
+   _resumeLastTab: function() {
+      this.$('div[tabPage]').removeClass('active');
+      this.$('.tabPage').hide();
+
+      var tab = this.$('div[tabPage=' + lastPlaceItemTabPage + ']');
+      tab.addClass('active');
+
+      var tabPage = this.$('#' + lastPlaceItemTabPage);
+      tabPage.show();
    },
 
 });
