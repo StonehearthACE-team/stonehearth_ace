@@ -174,12 +174,20 @@ App.StonehearthPlaceItemView = App.View.extend({
             return;
          }
 
+         var jobInfo = App.jobConstants[jobUri];
+         var jobIcon, jobName;
+         if (jobInfo) {
+            jobIcon = jobInfo.description.icon;
+            jobName = jobInfo.description.display_name;
+         }
+
          var highestLevel = jobControllerInfo.highest_level;
 
          _.forEach(jobControllerInfo.recipe_list, function(category) {
             _.forEach(category.recipes, function(recipe_info, recipe_key) {
                var recipe = recipe_info.recipe;
-               if (recipe.level_requirement > highestLevel) {
+               var level = Math.max(1, recipe.level_requirement || 1);
+               if (level > highestLevel) {
                   // do not show if no one can craft it
                   return;
                }
@@ -207,6 +215,12 @@ App.StonehearthPlaceItemView = App.View.extend({
                      display_name: catalogData.display_name,
                      appeal: catalogData.appeal,
                      icon: catalogData.icon,
+                     craftedBy: {
+                        jobUri: jobUri,
+                        jobName: jobName,
+                        jobIcon: jobIcon,
+                        jobLevel: level,
+                     },
                   };
 
                   craftableItems[key] = entry;

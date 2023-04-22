@@ -216,6 +216,8 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       });
       self._itemArr = arr;
 
+      self._searchTags = {};
+
       // Go through each item and update the corresponding DOM element for it.
       radiant.each(self._itemArr, function(i, item) {
          var itemCount = self._getCount(item);
@@ -238,6 +240,9 @@ $.widget( "stonehearth.stonehearthItemPalette", {
             }
 
             if (!itemElement) {
+               // also cache search terms for this uri
+               self._cacheSearchTags(uri, item);
+
                var itemElements = self._itemElements[uri];
                if (!itemElements) {
                   self._itemElements[uri] = {};
@@ -330,28 +335,41 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       return category;
    },
 
+   _cacheSearchTags: function(uri, item) {
+      var self = this;
+      var tags = [];
+      // most important first: name, description, crafter info, then material tags
+      var catalogData = App.catalog.getCatalogData(uri);
+
+      tags.push(i18n.t(catalogData.display_name).toLowerCase());
+      tags.push(i18n.t(catalogData.description).toLowerCase());
+
+      // if the item specified crafted_by, add the job name there
+      if (item.craftedBy && item.craftedBy.jobName) {
+         tags.push(i18n.t(item.craftedBy.jobName).toLowerCase());
+      }
+
+      // need to handle material tags that are a single string instead of an array
+      var mats = catalogData.materials;
+      if (typeof mats === 'string') {
+         mats = mats.split(' ');
+      }
+      tags = tags.concat(mats);
+
+      self._searchTags[uri] = tags;
+   },
+
    // ACE: added functionality for search filter and wanted items
    _updateAllItemsSearchFilter: function() {
       var self = this;
       var search = self.searchInput && self.searchInput.val().toLowerCase();
       if (search) {
          radiant.each(self._itemElements, function(uri, elements) {
-            var catalogData = App.catalog.getCatalogData(uri);
-            // need to handle tags that are a single string instead of an array
-            var tags = catalogData.materials;
-            if (typeof tags === 'string') {
-               tags = tags.split(' ');
-            }
-            else {
-               tags = (tags || []).slice();
-            }
-            tags.push(i18n.t(catalogData.display_name).toLowerCase());
-            tags.push(i18n.t(catalogData.description).toLowerCase());
             radiant.each(elements, function(quality, $el) {
                var parent = $el && $el.parent() && $el.parent().parent();
                if (parent) {
                   var category = parent.find('h2').text().toLowerCase();
-                  self._updateItemSearchFilter(search, $el, category, tags);
+                  self._updateItemSearchFilter(search, $el, category, self._searchTags[uri]);
                }
             });
          });
@@ -377,7 +395,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
 
    _updateItemSearchFilter: function(search, itemEl, category, tags) {
       var matches = category.includes(search);
-      if (!matches) {
+      if (!matches && tags) {
          for (var i = 0; i < tags.length; i++) {
             if (tags[i].includes(search)) {
                matches = true;
@@ -577,6 +595,16 @@ $.widget( "stonehearth.stonehearthItemPalette", {
          }
       }
 
+      var moreDetails;
+      if (item.craftedBy) {
+         moreDetails = `</div><div class="details"><div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_crafted_by')}</span>` +
+         `<img class="jobIcon" src="${item.craftedBy.jobIcon}"/><span class="value">${i18n.t(item.craftedBy.jobName)}</span>`;
+         if (item.craftedBy.jobLevel) {
+            moreDetails += `${i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level')}${item.craftedBy.jobLevel}`;
+         }
+         hasOptions = true;
+      }
+
       if (hasOptions) {
          return {
             self: itemSelf,
@@ -586,6 +614,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
             net_worth: cost,
             invertNetWorthDiffColor: this.options.isBuying,
             useItemQuality: this.options.isBuying || this.options.isSelling,
+            moreDetails: moreDetails,
          };
       }
    },
@@ -652,11 +681,11 @@ $.widget( "stonehearth.stonehearthItemPalette", {
          }
 
          if (item.additionalTip) {
-            description = description + '<div class="itemAdditionalTip">' + item.additionalTip + "</div>";
+            description += '<div class="itemAdditionalTip">' + item.additionalTip + "</div>";
          }
 
          if (item.unlocks_crop && self._isCropUnlocked(item.unlocks_crop)) {
-            description = description + '<div class="itemAdditionalTip">' + i18n.t('stonehearth_ace:ui.game.entities.tooltip_crop_unlocked') + "</div>";
+            description += '<div class="itemAdditionalTip">' + i18n.t('stonehearth_ace:ui.game.entities.tooltip_crop_unlocked') + "</div>";
          }
 
          var wantedItem = self._getBestWantedItem(item.root_uri);
