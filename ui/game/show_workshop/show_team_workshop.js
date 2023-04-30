@@ -1025,8 +1025,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
       App.guiHelper.createDynamicTooltip(self.$('#recipeItems'), '[recipe_key]', function($el) {
          var key = $el.attr('recipe_key');
          var recipe = self._getOrCalculateRecipeData(key);
+         var jobAlias = self.get('model.alias');
          var options = {
-            recipe_key: key,
+            recipe_key: jobAlias + "|" + key,
             display_name: recipe.display_name,
             description: recipe.description,
          };

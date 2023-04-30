@@ -420,6 +420,7 @@ var StonehearthClient;
       // item type is a uri, not an item entity
       craftAndPlaceItemType: function(itemType, gameMode) {
          this._placeItemOrItemType('itemType', 'placeItemType', itemType, null, {
+            repeat_tool: true,
             add_craft_order: true,
             gameMode: gameMode,
             tip_description: 'stonehearth_ace:ui.game.menu.build_menu.items.craft_and_build.tip_description',
@@ -447,7 +448,7 @@ var StonehearthClient;
                      return radiant.call(placementCall, item, quality, null, options)
                         .done(function(response) {
                            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} )
-                           if ((placementType == 'itemType') && response.more_items) {
+                           if ((placementType == 'itemType') && (response.more_items || opts.repeat_tool)) {
                               self._placeItemOrItemType(placementType, toolName, item, quality, options);
                            } else {
                               self.hideTip();
