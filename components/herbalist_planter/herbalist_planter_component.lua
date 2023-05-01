@@ -23,6 +23,8 @@ local allowed_plants_data = radiant.resources.load_json('stonehearth_ace:data:he
 local PLANT_ACTION = 'stonehearth_ace:plant_herbalist_planter'
 --local CLEAR_ACTION = 'stonehearth_ace:clear_herbalist_planter'
 
+local log = radiant.log.create_logger('herbalist_planter_component')
+
 function HerbalistPlanterComponent:initialize()
    self._json = radiant.entities.get_json(self) or {}
    self._sv.harvest_plant = false
@@ -657,7 +659,10 @@ function HerbalistPlanterComponent:_get_quality()
 end
 
 function HerbalistPlanterComponent:_set_quality_table(tender)
-   self._sv._quality_table = item_quality_lib.get_quality_table(tender, '_tending_' .. self._planted_crop_stats.category)
+   if not self._planted_crop_stats.category then
+      log:debug('%s: crop %s has no category', self._entity, self._sv.planted_crop)
+   end
+   self._sv._quality_table = item_quality_lib.get_quality_table(tender, '_tending_' .. (self._planted_crop_stats.category or ''))
    local quality_buff = self._json.quality_buffs and self._json.quality_buffs[math.min(math.floor(self:_get_tend_quality()), #self._json.quality_buffs)]
    if quality_buff then
       radiant.entities.add_buff(self._entity, quality_buff, {

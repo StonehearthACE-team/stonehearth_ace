@@ -61,8 +61,8 @@ function AceHerbalistClass:_on_herbalist_planter_interaction(args)
    end
 
    -- track this like a category craft
-   if args.type == 'tend_planter' and args.category then
-      self:add_category_proficiency('_tending_' .. args.category)
+   if args.type == 'tend_planter' then
+      self:add_category_proficiency('_tending_' .. (args.category or ''))
    end
 
    self._sv._entity:add_component('stonehearth_ace:statistics'):increment_stat('job_activities', 'herbalist_planters')
