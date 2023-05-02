@@ -683,7 +683,7 @@ function PeriodicInteractionComponent:set_current_interaction_completed(user)
    end
 
    -- if the finish stage has been set to this stage, we want to complete now
-   local completed = self._sv.enabled and self._sv.interaction_stage >= self._sv.finish_stage
+   local completed = self._sv.interaction_stage >= self._sv.finish_stage
 
    -- apply any rewards
    local item
@@ -974,9 +974,9 @@ function PeriodicInteractionComponent:_consider_usability(force_reconsider)
    local usable = true
    local current_interaction = self:get_current_interaction()
 
-   -- if it's not enabled, on general cooldown, or on interaction cooldown, we can't use it
+   -- if it's not enabled (and the sequence hasn't started yet), on general cooldown, or on interaction cooldown, we can't use it
    -- "evolve" is handled separately from actual usability
-   if not self._sv.enabled or self._sv._general_cooldown_timer or self._sv._interaction_cooldown_timer then
+   if (not self._sv.enabled and self._sv.interaction_stage == 1) or self._sv._general_cooldown_timer or self._sv._interaction_cooldown_timer then
       usable = false
       log:debug('%s is not usable: enabled = %s, general cd = %s, interaction cd = %s', self._entity,
             tostring(self._sv.enabled), tostring(self._sv._general_cooldown_timer), tostring(self._sv._interaction_cooldown_timer))
