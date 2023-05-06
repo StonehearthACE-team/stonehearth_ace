@@ -601,10 +601,9 @@ end
 
 function AceStorageComponent:_consider_marking_changed()
    self._has_changed = true
-   -- don't check multiplayer; we also want to be able to do this in single-player
    -- if we're rendering the contents or it's a private storage, go ahead and update immediately (it's probably small)
-   if self._always_mark_changed or --not stonehearth.presence:is_multiplayer() or
-         not stonehearth.client_state:get_client_gameplay_setting(self._player_id, 'stonehearth_ace', 'limit_network_data', true) then
+   if self._always_mark_changed or not stonehearth.presence:is_multiplayer() or
+         stonehearth.client_state:get_client_gameplay_setting(self._player_id, 'stonehearth_ace', 'limit_network_data') == 'unlimited' then
       self:mark_changed()
    end
 end
