@@ -195,11 +195,14 @@ function AceFarmerFieldComponent:_get_default_fertilizer_preference()
    
    local player_id = self._entity:get_player_id()
    local default = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'default_fertilizer', '1')
+   return self:_get_fertilizer_preference(default)
+end
 
-   if tonumber(default) then
-      return { quality = tonumber(default) }
+function AceFarmerFieldComponent:_get_fertilizer_preference(preference)
+   if tonumber(preference) then
+      return { quality = tonumber(preference) }
    else
-      return { uri = default }
+      return { uri = preference }
    end
 end
 
@@ -646,8 +649,13 @@ function AceFarmerFieldComponent:set_crop(session, response, new_crop_id)
 
    if self._sv.current_crop_alias ~= new_crop_id then
       self._sv.current_crop_alias = new_crop_id
-      self.__saved_variables:mark_changed()
       self:_update_plantable_layer()
+
+      if self._sv.current_crop_details and self._sv.current_crop_details.force_fertilizer_setting then
+         self._sv.fertilizer_preference = self:_get_fertilizer_preference(self._sv.current_crop_details.force_fertilizer_setting)
+      end
+
+      self.__saved_variables:mark_changed()
    end
 
    self:_cache_best_levels()
