@@ -4,6 +4,6 @@
 return function()
    -- check the gameplay setting for whether to limit network data
    -- this will always be on the host, and there's no player_id on this entity, so just get it straight from the config
-   local limit_data = radiant.util.get_global_config('mods.stonehearth_ace.limit_network_data', true)
+   local limit_data = radiant.util.get_global_config('mods.stonehearth_ace.limit_network_data', 'limited')
    stonehearth.presence:set_limit_network_data(limit_data)
 end
