@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 8,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.grass_transmute_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.grass_transmute_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.grass_transmute_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/terrain/pasture_grass/seed/pasture_grass_seed.png",
+   "workshop": "stonehearth:herbalist:workbench",
+	"ace_smart_crafter_ignore": true,
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:thatch_bale",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:terrain:pasture_grass:seed"
+      }
+   ]
+}

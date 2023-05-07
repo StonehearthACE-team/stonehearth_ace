@@ -4,8 +4,17 @@
       "fallow": {
          "field_types": "all"
       },
-      "heirbloom": {
+      "grass": {
+         "crop_type": "stonehearth_ace:crops:grass_crop",
          "ordinal": 0,
+         "level_requirement": 1,
+         "field_types": {
+            "farm": true,
+            "decorative_flowers": true
+         }
+      },
+      "heirbloom": {
+         "ordinal": 0.1,
          "level_requirement": 1,
          "field_types": {
             "farm": true

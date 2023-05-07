@@ -4712,15 +4712,15 @@
                },
                "resource_harvest_rabbit_statues": {
                   "display_name": "🗿 Vandalism",
-                  "description": "Gained by breaking the ancient and mysterious rabbit statues spread across the landscape.",
+                  "description": "Gained by breaking down the ancient and mysterious rabbit statues sometimes found across the landscape.",
                   "1_display_name": " the Vandal",
-                  "1_description": "They have broken one ancient rabbit statue... Why?!",
+                  "1_description": "They have broken down one ancient rabbit statue... Why?!",
                   "2_display_name": " the Inconvenient",
-                  "2_description": "They have broken two ancient rabbit statues... Stop it!",
+                  "2_description": "They have broken down two ancient rabbit statues... Stop it!",
                   "3_display_name": " the Breaker of Things",
-                  "3_description": "They have broken three ancient rabbit statues... Offensive!",
+                  "3_description": "They have broken down three ancient rabbit statues... Offensive!",
                   "4_display_name": ", Rabbit-foe",
-                  "4_description": "They have broken four ancient rabbit statues... What have they done to them?!"
+                  "4_description": "They have broken down four ancient rabbit statues... What have they done to them?!"
                },
                "starving": {
                   "display_name": "🍽️ Starvation",
@@ -4841,49 +4841,64 @@
                   "25_description": "Their breath can kill! Like a dragon! Or perhaps just figuratively... Either way, they have earned some reputation for having a garlic breath for 25 times!"
                },
                "wounded": {
-                  "display_name": "😵 Wounded"
+                  "display_name": "😵 Wounded",
+                  "description": "Gained by receiving wounds from combat or from the environment."
                },
                "sleep": {
-                  "display_name": "💤 Sleeping"
+                  "display_name": "💤 Sleeping",
+                  "description": "Gained by spending time sleeping!"
                },
                "baked_goodness": {
-                  "display_name": "🍞 Baked Goodness"
+                  "display_name": "🍞 Baked Goodness",
+                  "description": "Gained by eating delicious baked goods and getting buffed!"
                },
                "elevated_character": {
-                  "display_name": "🍷 Elevated Character"
+                  "display_name": "🍷 Elevated Character",
+                  "description": "Gained by achieving the \"Elevated Character\" buff from having cheese and wine together!"
                },
                "divine_flavors": {
-                  "display_name": "🌟 Divine Flavors"
+                  "display_name": "🌟 Divine Flavors",
+                  "description": "Gained by achieving the \"Divine Flavorsr\" buff from having food prepared with hearth magic!"
                },
                "earthy_flavors": {
-                  "display_name": "🍄 Earthy Flavors"
+                  "display_name": "🍄 Earthy Flavors",
+                  "description": "Gained by achieving the \"Earthy Flavors\" buff from having food prepared with rare truffles!"
                },
                "harmony": {
-                  "display_name": "🕊️ Harmonious"
+                  "display_name": "🕊️ Harmonious",
+                  "description": "Gained by drinking tea and getting buffed!"
                },
                "upset_belly": {
-                  "display_name": "🤢 Upset Belly"
+                  "display_name": "🤢 Upset Belly",
+                  "description": "Gained by eating something intolerable and feeling sick!"
                },
                "very_thirsty": {
-                  "display_name": "🌵 Thirst"
+                  "display_name": "🌵 Thirst",
+                  "description": "Gained by spending time while being thirsty!"
                },
                "tended_planter_target": {
-                  "display_name": "🌼 Garden Admirer"
+                  "display_name": "🌼 Garden Admirer",
+                  "description": "Gained by getting the buff from being around and appreciating herbalist planters!"
                },
                "freezing": {
-                  "display_name": "❄️ Freezing"
+                  "display_name": "❄️ Freezing",
+                  "description": "Gained by spending time under extremely cold weather without proper protection!"
                },
                "sunstroke": {
-                  "display_name": "🥵 Sunstruck"
+                  "display_name": "🥵 Sunstruck",
+                  "description": "Gained by being sunstruck under extremely hot weather."
                },
                "whiteout": {
-                  "display_name": "🥶 Caught in a Whiteout"
+                  "display_name": "🥶 Caught in a Whiteout",
+                  "description": "Gained by being outside and without proper protection when a whiteout hits!"
                },
                "teleportation": {
-                  "display_name": "☄️ Teleportation"
+                  "display_name": "☄️ Teleportation",
+                  "description": "Gained by being teleported around by mysterious forces!"
                },
                "lightning_struck": {
-                  "display_name": "⚡ Lightning Struck"
+                  "display_name": "⚡ Lightning Struck",
+                  "description": "Gained by getting hit by lightning... and surviving!"
                }
             }
          }
@@ -7301,6 +7316,11 @@
                "description": "Separate seeds from the flower",
                "flavor": "Only a skilled hand can harvest the weaker seeds, but the lily is lost in the process."
             },
+            "grass_transmute_recipe": {
+               "recipe_name": "Grass Seed",
+               "description": "Separate a seed from some dry grass",
+               "flavor": "Only a skilled hand can harvest the weaker seed, but the thatch is lost in the process."
+            },
             "marblesprout_transmute_recipe": {
                "recipe_name": "Marblesprout Seeds (x2)",
                "description": "Separate seeds from the stone",
@@ -7345,6 +7365,11 @@
                "recipe_name": "Desert Truffle Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi.",
                "flavor": "For creating colonies you need the whole, undeployed fungi - and not just the harvested basket"
+            },
+            "grass_carpet_recipe": {
+               "recipe_name": "Patch of Grass",
+               "description": "Create a carpet of grass that can be placed to transform the terrain into a 3x3 patch of grass terrain.",
+               "flavor": "Placing the patch of grass requires the underlying terrain to be dirt"
             },
             "legendary_parchment_recipe": {
                "recipe_name": "Gilded Paper",
@@ -14627,6 +14652,20 @@
                   "description": "It's dead."
                }
             }
+         },
+         "grass_crop": {
+            "growth_stage": {
+               "000": {
+                  "name": "Grass Seeds",
+                  "description": "Will turn into grass very soon..."
+               },
+               "001": {
+                  "name": "Grass Sproutling",
+                  "description": "Baby grass leaves!"
+               }
+            },
+            "display_name": "Grassland",
+            "description": "Let grass grow for a reliable source of thatching material"
          }
       },
       "decorations": {
@@ -20091,6 +20130,11 @@
          "foraging_spot": {
             "display_name": "forageables",
             "description": "A spot for foraging."
+         },
+         "pasture_grass_seed": {
+            "display_name": "Grass Seed",
+            "description": "Will provide thatching material when it grows into a tall grass shrub.",
+            "iconic_description": "Can be planted to grow into a tall grass shrub that provides thatching material."
          }
       },
       "fungi": {
@@ -23067,6 +23111,10 @@
                "display_name": "Marble Vein Stone",
                "description": "Grows into a vein of marble stone."
             }
+         },
+         "terrain_grass_carpet": {
+            "display_name": "Patch of Grass",
+            "description": "Place it on dirt to transform it into a 3x3 patch of grass."
          }
       },
       "humans": {
@@ -23870,7 +23918,7 @@
                      "tip_description": "If i18n(stonehearth:ui.shell.settings.gameplay_tab.building_auto_queue_crafters) is enabled, your crafters will automatically queue recipes for all craftable foundations"
                   },
                   "craft_and_build": {
-                     "tip_description": "If i18n(stonehearth:ui.shell.settings.gameplay_tab.building_auto_queue_crafters) is enabled, your crafters will automatically queue recipes for all craftable foundations"
+                     "tip_description": "If i18n(stonehearth:ui.shell.settings.gameplay_tab.building_auto_queue_crafters) is enabled, your crafters will automatically queue the recipes for all the objects placed"
                   }
                }
             },

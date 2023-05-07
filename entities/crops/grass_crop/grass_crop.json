@@ -1,0 +1,79 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:crop:base_crop"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": []
+         },
+         "grass_1": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_1.qb",
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_2.qb",
+                     "/stonehearth/entities/plants/dirt_pile/dirt_pile_3.qb"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.11
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -0.1, "z": 0 },
+         "mob_collision_type": "clutter"
+      },
+      "stonehearth:crop": {
+         "resource_pairings": {
+            "default": "stonehearth_ace:crops:grass_crop:sproutling"
+         },
+         "harvest_threshhold": "default",
+         "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
+         "megacrop_chance": 0,
+         "auto_harvest": "place"
+      },
+      "stonehearth:growing": {
+         "growth_period": "18h",
+         "growth_stages": [
+            {
+               "model_name": "grass_1",
+               "name": "i18n(stonehearth_ace:entities.crops.grass_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.grass_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "default",
+               "name": "i18n(stonehearth_ace:entities.crops.grass_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth_ace:entities.crops.grass_crop.growth_stage.001.description)"
+            }
+         ],
+         "force_fertilizer_setting": "0"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.crops.grass_crop.display_name)",
+         "description": "i18n(stonehearth_ace:entities.crops.grass_crop.description)",
+         "icon": "file(icon.png)",
+         "material_tags": [
+            "crop",
+            "grass"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      }
+   }
+}

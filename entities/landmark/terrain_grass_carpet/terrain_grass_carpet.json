@@ -1,0 +1,32 @@
+{
+   "type": "entity",
+   "mixins": "file(terrain_grass_carpet_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(terrain_grass_carpet_iconic.json)",
+         "ghost_form": "file(terrain_grass_carpet_ghost.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 3,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth_ace:advanced_placement": {
+         "required_terrain": {
+            "grass": false,
+            "dirt": true,
+            "rock": false
+         }
+      },
+      "stonehearth:placement": {
+         "effect": "hoe",
+         "tag": "simple_terrain"
+      }
+   }
+}
