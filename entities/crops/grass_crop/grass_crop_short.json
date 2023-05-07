@@ -1,0 +1,27 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:terrain:pasture_grass:short"
+   ],
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0.01, "y": -0.15, "z": 0.01 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:crops:grass_crop:final",
+         "evolve_time": "2d+16h"
+      },
+      "stonehearth:animal_feed": {
+         "calorie_gain": 6,
+         "effect_loops": 1
+      },
+      "mixintypes": {
+         "stonehearth_ace:replant_data": "remove"
+      }
+   }
+}

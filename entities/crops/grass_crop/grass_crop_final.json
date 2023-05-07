@@ -1,0 +1,30 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:terrain:pasture_grass"
+   ],
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "stonehearth:resource_node": {
+         "category": "farming",
+         "mixintypes": {
+            "harvest_overlay_effect": "remove"
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.01, "y": -0.15, "z": 0.01 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:animal_feed": {
+         "calorie_gain": 12,
+         "effect_loops": 2
+      },
+      "mixintypes": {
+         "stonehearth:evolve_data": "remove",
+         "stonehearth_ace:replant_data": "remove"
+      }
+   }
+}
