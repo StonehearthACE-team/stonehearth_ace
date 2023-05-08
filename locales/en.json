@@ -4573,7 +4573,7 @@
                   "50_description": "They have produced 50 casks of wine! Becoming a muster of their craft.",
                   "120_display_name": ", Master Vitner",
                   "120_description": "They have produced 120 casks of wine! A cellar career!",
-                  "300_display_name": " the Sommelier",
+                  "300_display_name": " the Alchemist",
                   "300_description": "They have produced 300 casks of wine! They really were up to the cask!"
                },
                "resource_harvest_fermenting_carboys": {
@@ -4842,63 +4842,165 @@
                },
                "wounded": {
                   "display_name": "😵 Wounded",
-                  "description": "Gained by receiving wounds from combat or from the environment."
+                  "description": "Gained by receiving wounds from combat or from the environment.",
+                  "1_display_name": " the Poked",
+                  "1_description": "They have been wounded 6 times! Ouch!",
+                  "2_display_name": " the Targeted",
+                  "2_description": "They have been wounded 10 times! Should probably be more careful...",
+                  "3_display_name": ", Battle-scarred",
+                  "3_description": "They have been wounded 20 times! Maybe it's the right time to think about health insurance...",
+                  "4_display_name": " the Unkillable",
+                  "4_description": "They have been wounded 50 times! Have they considered maybe not getting hurt?!"
                },
                "sleep": {
                   "display_name": "💤 Sleeping",
-                  "description": "Gained by spending time sleeping!"
+                  "description": "Gained by spending time sleeping!",
+                  "1_display_name": " the Sleepy",
+                  "1_description": "They have slept for 126 hours... That's a 6-hour sleep everyday for three months!",
+                  "2_display_name": ", Pillow-Hugger",
+                  "2_description": "They have slept for 252 hours... That's a 6-hour sleep everyday for half a year!",
+                  "3_display_name": ", Dreamer",
+                  "3_description": "They have slept for 504 hours... That's a 6-hour sleep everyday for a whole year!"
                },
                "baked_goodness": {
                   "display_name": "🍞 Baked Goodness",
-                  "description": "Gained by eating delicious baked goods and getting buffed!"
+                  "description": "Gained by eating delicious baked goods and getting buffed!",
+                  "1_display_name": " the Crunchy",
+                  "1_description": "Mmmmm, that was tasty. They've enjoyed baked goods seven times!",
+                  "2_display_name": ", Pie Stealer",
+                  "2_description": "Delicious! Twenty-one baked goods have been appreciated by them. A quarter of a year of joy!",
+                  "3_display_name": " the Sweetroll",
+                  "3_description": "Eighty-four times they've enjoyed baked goods. Someone took the \"daily bread\" thing very seriously..."
                },
                "elevated_character": {
                   "display_name": "🍷 Elevated Character",
-                  "description": "Gained by achieving the \"Elevated Character\" buff from having cheese and wine together!"
+                  "description": "Gained by achieving the \"Elevated Character\" buff from having cheese and wine together!",
+                  "1_display_name": ", Taste-Explorer",
+                  "1_description": "Ah, yes... The first time you experience wine and cheese is impossible to forget.",
+                  "2_display_name": ", Bon Vivant",
+                  "2_description": "A whole month of wine and cheese has been appreciated by them! Very exquisite!",
+                  "3_display_name": " the Sommelier",
+                  "3_description": "Forty-two days of wine and cheese... That would've been the perfect year if the other half was dessert!"
                },
                "divine_flavors": {
                   "display_name": "🌟 Divine Flavors",
-                  "description": "Gained by achieving the \"Divine Flavorsr\" buff from having food prepared with hearth magic!"
+                  "description": "Gained by achieving the \"Divine Flavorsr\" buff from having food prepared with hearth magic!",
+                  "1_display_name": ", Touched by Magic",
+                  "1_description": "They've tasted magic for the first time... Quite literally!",
+                  "2_display_name": ", Searcher of Succor",
+                  "2_description": "They've appreciated seven meals of Hearth-infused delicacies. Yummy!",
+                  "3_display_name": " the Blessed",
+                  "3_description": "They've enjoyed twenty-one meals of Hearth-infused food. Are they even sharing?!"
                },
                "earthy_flavors": {
                   "display_name": "🍄 Earthy Flavors",
-                  "description": "Gained by achieving the \"Earthy Flavors\" buff from having food prepared with rare truffles!"
+                  "description": "Gained by achieving the \"Earthy Flavors\" buff from having food prepared with rare truffles!",
+                  "1_display_name": " the Dirty",
+                  "1_description": "They've eaten food prepared with delicious rare truffles. An incredible experience!",
+                  "2_display_name": ", Grounded",
+                  "2_description": "They've eaten food prepared with rare truffles seven times now! What a fancy life they must have!",
+                  "3_display_name": " the Gourmand",
+                  "3_description": "They've eaten food prepared with rare truffles forty-two times now! Is this place some kind of fancy hotel?"
                },
                "harmony": {
                   "display_name": "🕊️ Harmonious",
-                  "description": "Gained by drinking tea and getting buffed!"
+                  "description": "Gained by drinking tea and getting buffed!",
+                  "1_display_name": ", Harmonious",
+                  "1_description": "An entire week of tea is bound to leave anyone very introspective and calm. Delicious!",
+                  "2_display_name": " the Focused",
+                  "2_description": "Twenty-one cups of tea have been enjoyed by them. Their harmony is almost palpable!",
+                  "3_display_name": " the Tranquil",
+                  "3_description": "They've had tea forty-two times. Half a year of complete peace and introspection. A life without stress!",
+                  "4_display_name": ", Serene Mind",
+                  "4_description": "They've had tea for an entire year, eighty-four times! They've probably achieved the inner peace of a monk..."
                },
                "upset_belly": {
                   "display_name": "🤢 Upset Belly",
-                  "description": "Gained by eating something intolerable and feeling sick!"
+                  "description": "Gained by eating something intolerable and feeling sick!",
+                  "1_display_name": " the Green",
+                  "1_description": "When they've felt sick for the first time everyone thought it wasn't anything but here they are again! They've eaten intolerable food for 2 times now!",
+                  "2_display_name": " the Indisposed",
+                  "2_description": "They've eaten intolerable food for 4 times... It's a recurring issue! Maybe offer them some different food options?",
+                  "3_display_name": " the Stubborn",
+                  "3_description": "They've eaten intolerable food for 10 times! They seriously need a change of diet... Or better neighbors!"
                },
                "very_thirsty": {
                   "display_name": "🌵 Thirst",
-                  "description": "Gained by spending time while being thirsty!"
+                  "description": "Gained by spending time while being thirsty!",
+                  "1_display_name": ", Winded",
+                  "1_description": "They have been thirsty for at least 5 entire days... Not fun!",
+                  "2_display_name": " the Puffer",
+                  "2_description": "They've been thirsty for 10 entire days! Perhaps it's time to consider digging a well?",
+                  "3_display_name": " the Dry",
+                  "3_description": "They have been thirsty for 50 entire days! Drinking water is important, please don't do that!",
+                  "4_display_name": ", Seeker of Rain",
+                  "4_description": "They have been thirsty for 100 entire days! You are kidney, right?"
                },
                "tended_planter_target": {
                   "display_name": "🌼 Garden Admirer",
-                  "description": "Gained by getting the buff from being around and appreciating herbalist planters!"
+                  "description": "Gained by getting the buff from being around and appreciating herbalist planters!",
+                  "1_display_name": " the Florist",
+                  "1_description": "Awww, they have admired beautiful planters at least 10 times by now. So nice!",
+                  "2_display_name": ", Colorful",
+                  "2_description": "They've been touched and admired beautiful planters 25 times now. They look so good!",
+                  "3_display_name": " the Admired",
+                  "3_description": "Look at these flowers! They have admired beautiful planters 60 times! Ok, that's good... But back to work!"
                },
                "freezing": {
                   "display_name": "❄️ Freezing",
-                  "description": "Gained by spending time under extremely cold weather without proper protection!"
+                  "description": "Gained by spending time under extremely cold weather without proper protection!",
+                  "1_display_name": ", Bad Planner",
+                  "1_description": "They have spent 24 hours outside, without proper clothing and with freezing temperatures. Woah!",
+                  "2_display_name": " the Cold-bitten",
+                  "2_description": "They have spent 2 whole days outside, without proper clothing and with freezing temperatures. That's incredible! Also a bit stupid.",
+                  "3_display_name": ", Snowling",
+                  "3_description": "They have spent 4 whole days outside, without proper clothing and with freezing temperatures. Has anyone checked their pulse?",
+                  "4_display_name": " the Survivor",
+                  "4_description": "They have spent 10 whole days outside, without proper clothing and with freezing temperatures. They're clearly immune to it."
                },
                "sunstroke": {
                   "display_name": "🥵 Sunstruck",
-                  "description": "Gained by being sunstruck under extremely hot weather."
+                  "description": "Gained by being sunstruck under extremely hot weather.",
+                  "1_display_name": " the Hot",
+                  "1_description": "They have been affected by a heatstroke for 8 hours. Maybe stick to the shadows?",
+                  "2_display_name": ", Sunburnt",
+                  "2_description": "They have been affected by a heatstroke for 16 hours. Wear a hat!",
+                  "3_display_name": " the Tanned",
+                  "3_description": "They have been affected by a heatstroke for a whole day. Seriously, wear a hat!",
+                  "4_display_name": ", Child of the Sun",
+                  "4_description": "They have been affected by a heatstroke for two whole days! Do they even know what a hat is?"
                },
                "whiteout": {
                   "display_name": "🥶 Caught in a Whiteout",
-                  "description": "Gained by being outside and without proper protection when a whiteout hits!"
+                  "description": "Gained by being outside and without proper protection when a whiteout hits!",
+                  "1_display_name": " the Trapped",
+                  "1_description": "They have endured a whiteout for 4 hours. Very brave and dangerous!",
+                  "2_display_name": ", Snow-Walker",
+                  "2_description": "They have endured a whiteout for 12 hours. That's incredible!",
+                  "3_display_name": " the Frozen",
+                  "3_description": "They have endured a whiteout for a whole day. Not many can say the same!"
                },
                "teleportation": {
                   "display_name": "☄️ Teleportation",
-                  "description": "Gained by being teleported around by mysterious forces!"
+                  "description": "Gained by being teleported around by mysterious forces!",
+                  "1_display_name": " the Stuck",
+                  "1_description": "They got stuck once and teleported away... But twice? They should be more careful when building or digging!",
+                  "2_display_name": ", Ladderly-Impaired",
+                  "2_description": "They have been teleported 6 times! They could also, you know, build better ladders?!",
+                  "3_display_name": ", Spirited Away",
+                  "3_description": "They have been teleported a whopping 12 times! That's hopefully a safe procedure in the long run..."
                },
                "lightning_struck": {
                   "display_name": "⚡ Lightning Struck",
-                  "description": "Gained by getting hit by lightning... and surviving!"
+                  "description": "Gained by getting hit by lightning... and surviving!",
+                  "1_display_name": " the Charged",
+                  "1_description": "Ouch! They were hit by lightning! Thunderbolt and lightning can be very, very frightening.",
+                  "2_display_name": " the Overloaded",
+                  "2_description": "Owie! They have been hit by lightning again! How is that even possible?",
+                  "3_display_name": " the Unlucky",
+                  "3_description": "Ugh! They have been hit by lightning for a third time! Seriously, just stay inside!",
+                  "4_display_name": ", Lord of Thunder",
+                  "4_description": "Oof! They have been hit by lightning once more. Four times! Someone is definitely mad at them!"
                }
             }
          }

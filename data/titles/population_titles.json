@@ -2879,5 +2879,557 @@
             "renown": 560
          }
       ]
+   },
+   "wounded": {
+      "ordinal": 28,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.wounded.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.wounded.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "wound"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.wounded.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.wounded.1_description)",
+            "required_value": 6,
+            "renown": 120
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.wounded.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.wounded.2_description)",
+            "required_value": 10,
+            "renown": 220
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.wounded.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.wounded.3_description)",
+            "required_value": 20,
+            "renown": 450
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.wounded.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.wounded.4_description)",
+            "required_value": 50,
+            "renown": 1200
+         }
+      ]
+   },
+   "sleep": {
+      "ordinal": 29,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_duration",
+            "name": "sleep"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.1_description)",
+            "required_value": 126,
+            "renown": 20
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.2_description)",
+            "required_value": 252,
+            "renown": 50
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.3_description)",
+            "required_value": 504,
+            "renown": 150
+         }
+      ]
+   },
+   "baked_goodness": {
+      "ordinal": 30,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.baked_goodness.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.baked_goodness.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "baked_goodness"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.baked_goodness.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.baked_goodness.1_description)",
+            "required_value": 7,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.baked_goodness.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.baked_goodness.2_description)",
+            "required_value": 21,
+            "renown": 180
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.baked_goodness.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.baked_goodness.3_description)",
+            "required_value": 84,
+            "renown": 720
+         }
+      ]
+   },
+   "elevated_character": {
+      "ordinal": 31,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.elevated_character.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.elevated_character.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "elevated_character"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.elevated_character.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.elevated_character.1_description)",
+            "required_value": 1,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.elevated_character.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.elevated_character.2_description)",
+            "required_value": 7,
+            "renown": 180
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.elevated_character.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.elevated_character.3_description)",
+            "required_value": 42,
+            "renown": 650
+         }
+      ]
+   },
+   "divine_flavors": {
+      "ordinal": 32,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "divine_flavors"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.1_description)",
+            "required_value": 1,
+            "renown": 80
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.2_description)",
+            "required_value": 7,
+            "renown": 300
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.divine_flavors.3_description)",
+            "required_value": 21,
+            "renown": 900
+         }
+      ]
+   },
+   "earthy_flavors": {
+      "ordinal": 31.5,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.earthy_flavors.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.earthy_flavors.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "earthy_flavors"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.earthy_flavors.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.earthy_flavors.1_description)",
+            "required_value": 1,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.earthy_flavors.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.earthy_flavors.2_description)",
+            "required_value": 7,
+            "renown": 180
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.earthy_flavors.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.earthy_flavors.3_description)",
+            "required_value": 42,
+            "renown": 650
+         }
+      ]
+   },
+   "harmony": {
+      "ordinal": 26.1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.harmony.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.harmony.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "harmony"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.harmony.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.harmony.1_description)",
+            "required_value": 7,
+            "renown": 50
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.harmony.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.harmony.2_description)",
+            "required_value": 21,
+            "renown": 280
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.harmony.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.harmony.3_description)",
+            "required_value": 42,
+            "renown": 800
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.harmony.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.harmony.4_description)",
+            "required_value": 84,
+            "renown": 2750
+         }
+      ]
+   },
+   "upset_belly": {
+      "ordinal": 35,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.upset_belly.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.upset_belly.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "upset_belly"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.upset_belly.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.upset_belly.1_description)",
+            "required_value": 2,
+            "renown": 25
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.upset_belly.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.upset_belly.2_description)",
+            "required_value": 4,
+            "renown": 55
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.upset_belly.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.upset_belly.3_description)",
+            "required_value": 10,
+            "renown": 150
+         }
+      ]
+   },
+   "very_thirsty": {
+      "ordinal": 28.1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_duration",
+            "name": "thirst"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.1_description)",
+            "required_value": 120,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.2_description)",
+            "required_value": 240,
+            "renown": 120
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.3_description)",
+            "required_value": 1200,
+            "renown": 600
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.4_description)",
+            "required_value": 2400,
+            "renown": 1200
+         }
+      ]
+   },
+   "tended_planter_target": {
+      "ordinal": 37,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.tended_planter_target.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.tended_planter_target.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "tended_planter"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.tended_planter_target.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.tended_planter_target.1_description)",
+            "required_value": 10,
+            "renown": 80
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.tended_planter_target.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.tended_planter_target.2_description)",
+            "required_value": 25,
+            "renown": 210
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.tended_planter_target.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.tended_planter_target.3_description)",
+            "required_value": 60,
+            "renown": 620
+         }
+      ]
+   },
+   "freezing": {
+      "ordinal": 38,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_duration",
+            "name": "freezing"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.1_description)",
+            "required_value": 24,
+            "renown": 150
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.2_description)",
+            "required_value": 48,
+            "renown": 320
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.3_description)",
+            "required_value": 96,
+            "renown": 700
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.4_description)",
+            "required_value": 240,
+            "renown": 1800
+         }
+      ]
+   },
+   "sunstroke": {
+      "ordinal": 39,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_duration",
+            "name": "sunstroke"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.1_description)",
+            "required_value": 8,
+            "renown": 120
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.2_description)",
+            "required_value": 16,
+            "renown": 240
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.3_description)",
+            "required_value": 24,
+            "renown": 330
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.4_description)",
+            "required_value": 48,
+            "renown": 800
+         }
+      ]
+   },
+   "whiteout": {
+      "ordinal": 40,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_duration",
+            "name": "whiteout"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.1_description)",
+            "required_value": 4,
+            "renown": 450
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.2_description)",
+            "required_value": 12,
+            "renown": 1100
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.3_description)",
+            "required_value": 24,
+            "renown": 2250
+         }
+      ]
+   },
+   "teleportation": {
+      "ordinal": 99,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.teleportation.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.teleportation.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "teleport"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.teleportation.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.teleportation.1_description)",
+            "required_value": 2,
+            "renown": 50
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.teleportation.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.teleportation.2_description)",
+            "required_value": 6,
+            "renown": 250
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.teleportation.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.teleportation.3_description)",
+            "required_value": 12,
+            "renown": 620
+         }
+      ]
+   },
+   "lightning_struck": {
+      "ordinal": 41,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.lightning_struck.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.lightning_struck.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "lightning"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.lightning_struck.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.lightning_struck.1_description)",
+            "required_value": 1,
+            "renown": 180
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.lightning_struck.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.lightning_struck.2_description)",
+            "required_value": 2,
+            "renown": 400
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.lightning_struck.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.lightning_struck.3_description)",
+            "required_value": 3,
+            "renown": 900
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.lightning_struck.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.lightning_struck.4_description)",
+            "required_value": 4,
+            "renown": 1600
+         }
+      ]
    }
 }
