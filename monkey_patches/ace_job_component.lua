@@ -15,6 +15,7 @@ end
 AceJobComponent._ace_old_post_activate = JobComponent.post_activate
 function AceJobComponent:post_activate()
    self:_update_job_index()
+   self:_create_statistic_listeners()
 
    self:_ace_old_post_activate()
 end
@@ -23,6 +24,7 @@ AceJobComponent._ace_old_destroy = JobComponent.__user_destroy
 function AceJobComponent:destroy()
 	self:_ace_old_destroy()
 
+   self:_destroy_statistic_listeners()
 	if self._training_performed_listener then
 		self._training_performed_listener:destroy()
 		self._training_performed_listener = nil
@@ -680,6 +682,35 @@ function AceJobComponent:set_crafting_category_disabled(category, disabled)
    local job_controller = self:get_curr_job_controller()
    if job_controller then
       job_controller:set_crafting_category_disabled(category, disabled)
+   end
+end
+
+function AceJobComponent:_create_statistic_listeners()
+   self:_destroy_statistic_listeners()
+
+   local statistics_component = self._entity:get_component('stonehearth_ace:statistics')
+   if not statistics_component then
+      return
+   end
+
+   local listeners = {}
+
+   table.insert(listeners, radiant.events.listen(self._entity, 'stonehearth:mined_location', function(args)
+         -- do we care about args.location? maybe mining very low/high elevation could give certain stats?
+         statistics_component:increment_stat('performed_actions', 'mine')
+      end))
+   table.insert(listeners, radiant.events.listen(self._entity, 'stonehearth_ace:restocked_item', function()
+         statistics_component:increment_stat('performed_actions', 'restock')
+      end))
+
+   self._statistic_listeners = listeners
+end
+
+function AceJobComponent:_destroy_statistic_listeners()
+   if self._statistic_listeners then
+      for _, listener in ipairs(self._statistic_listeners) do
+         listener:destroy()
+      end
    end
 end
 

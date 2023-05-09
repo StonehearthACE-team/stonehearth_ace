@@ -37,4 +37,9 @@ return ai:create_compound_action(FillStorageFromBackpack)
             storage = ai.UP.ARGS.storage,
             ignore_missing = ai.UP.ARGS.ignore_missing,
          })
+         :execute('stonehearth:trigger_event', {
+            source = ai.UP.ENTITY,
+            event_name = 'stonehearth_ace:restocked_item',
+            event_args = {},
+         })
       :end_loop()
