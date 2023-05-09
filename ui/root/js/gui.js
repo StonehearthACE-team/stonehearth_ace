@@ -112,6 +112,14 @@ App.guiHelper = {
          .html(value.display_name != null ? i18n.t(value.display_name) : value.key)
          .attr('data-key', value.key);
 
+      if (value.icon) {
+         // if there's an icon, insert it at the beginning of the div
+         var img = $('<img>')
+            .attr('src', value.icon)
+            .addClass('inlineImg');
+         div.prepend(img);
+      }
+
       if (tooltipFn) {
          tooltipFn(div, value);
       }
