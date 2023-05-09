@@ -6,6 +6,6 @@ HarvestTaskGroup.does = 'stonehearth:simple_labor'
 HarvestTaskGroup.priority = {0.7, 0.8}
 
 return stonehearth.ai:create_task_group(HarvestTaskGroup)
-         :work_order_tag("gather")
+         :work_order_tag("mine")
          :declare_permanent_task('stonehearth:harvest_resource', { category = CATEGORY }, {0, 1})
          :declare_permanent_task('stonehearth:harvest_renewable_resource', { category = CATEGORY }, {0, 1})
