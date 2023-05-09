@@ -260,7 +260,7 @@ App.StonehearthShopBulletinDialog = App.StonehearthBaseBulletinDialog.extend({
                if (resource == null) return;
                icon = resource.icon;
                display_name = resource.name;
-               category = 'resources';
+               category = resource.category;
             }
 
             var priceMod = Math.floor((item.price_factor - 1) * 100 + 0.5);
@@ -302,7 +302,7 @@ App.StonehearthShopBulletinDialog = App.StonehearthBaseBulletinDialog.extend({
                if (wantedItem != null) {
                   // add a tooltip
                   App.tooltipHelper.createDynamicTooltip(el, function() {
-                     var description = wantedItem.category && i18n.t('stonehearth:ui.game.entities.item_categories.' + wantedItem.category);
+                     var description = wantedItem.category && i18n.t('stonehearth:ui.game.entities.item_categories.' + wantedItem.category) || '';
                      var quantity = wantedItem.maxQuantity != null ? (wantedItem.maxQuantity - wantedItem.quantity) : null;
                      var hasQuantity = quantity != null;
                      // show the percentage modification to the price
