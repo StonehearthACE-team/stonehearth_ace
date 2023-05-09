@@ -24,7 +24,8 @@
       },
       "prepared_food baked": {
          "name": "i18n(stonehearth_ace:ui.data.constants.prepared_food_baked_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/prepared_food_baked.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/prepared_food_baked.png",
+         "category": "food_prepared"
       },
       "prepared_drink": {
          "name": "i18n(stonehearth_ace:ui.data.constants.prepared_drink_resource_name)",
@@ -36,195 +37,243 @@
       },
       "consumable seeds": {
          "name": "i18n(stonehearth_ace:ui.data.constants.consumable_seeds_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/consumable_seeds.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/consumable_seeds.png",
+         "category": "consumable"
       },
       "pet_bed furniture": {
          "name": "i18n(stonehearth_ace:ui.data.constants.pet_bed_furniture_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/pet_bed_furniture.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/pet_bed_furniture.png",
+         "category": "furniture"
       },
       "pet_food_bowl furniture": {
          "name": "i18n(stonehearth_ace:ui.data.constants.pet_food_bowl_furniture_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/pet_food_bowl_furniture.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/pet_food_bowl_furniture.png",
+         "category": "furniture"
       },
       "summer_hat field_work_outfit civillian_equipment": {
          "name": "i18n(stonehearth_ace:ui.data.constants.summer_hat_field_work_outfit_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/summer_hat_field_work_outfit.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/summer_hat_field_work_outfit.png",
+         "category": "civillian_equipment"
       },
       "summer_hat crafter_outfit civillian_equipment": {
          "name": "i18n(stonehearth_ace:ui.data.constants.summer_hat_crafter_outfit_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/summer_hat_crafter_outfit.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/summer_hat_crafter_outfit.png",
+         "category": "civillian_equipment"
       },
       "chilly_outfit worker_outfit civillian_equipment": {
          "name": "i18n(stonehearth_ace:ui.data.constants.chilly_outfit_worker_outfit_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/chilly_outfit_worker_outfit.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/chilly_outfit_worker_outfit.png",
+         "category": "civillian_equipment"
       },
       "cold_outfit worker_outfit civillian_equipment": {
          "name": "i18n(stonehearth_ace:ui.data.constants.cold_outfit_worker_outfit_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/cold_outfit_worker_outfit.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/cold_outfit_worker_outfit.png",
+         "category": "civillian_equipment"
       },
       "freezing_outfit worker_outfit civillian_equipment": {
          "name": "i18n(stonehearth_ace:ui.data.constants.freezing_outfit_worker_outfit_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/freezing_outfit_worker_outfit.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/freezing_outfit_worker_outfit.png",
+         "category": "civillian_equipment"
       },
       "freezing_outfit crafter_outfit civillian_equipment": {
          "name": "i18n(stonehearth_ace:ui.data.constants.freezing_outfit_crafter_outfit_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/freezing_outfit_crafter_outfit.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/freezing_outfit_crafter_outfit.png",
+         "category": "civillian_equipment"
       },
       "freezing_outfit field_work_outfit civillian_equipment": {
          "name": "i18n(stonehearth_ace:ui.data.constants.freezing_outfit_field_work_outfit_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/freezing_outfit_field_work_outfit.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/freezing_outfit_field_work_outfit.png",
+         "category": "civillian_equipment"
       },
       "freezing_outfit combat_outfit civillian_equipment": {
          "name": "i18n(stonehearth_ace:ui.data.constants.freezing_outfit_combat_outfit_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/freezing_outfit_combat_outfit.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/freezing_outfit_combat_outfit.png",
+         "category": "civillian_equipment"
       },
       "comfy furniture": {
          "name": "i18n(stonehearth_ace:ui.data.constants.comfy_furniture_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/comfy_furniture.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/comfy_furniture.png",
+         "category": "furniture"
       },
       "comfy stockpile_decoration": {
          "name": "i18n(stonehearth_ace:ui.data.constants.comfy_stockpile_decoration_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/comfy_stockpile_decoration.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/comfy_stockpile_decoration.png",
+         "category": "decoration"
       },
       "fancy furniture": {
          "name": "i18n(stonehearth_ace:ui.data.constants.fancy_furniture_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/fancy_furniture.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/fancy_furniture.png",
+         "category": "furniture"
       },
       "fancy stockpile_decoration": {
          "name": "i18n(stonehearth_ace:ui.data.constants.fancy_stockpile_decoration_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/fancy_stockpile_decoration.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/fancy_stockpile_decoration.png",
+         "category": "decoration"
       },
       "fancy portal": {
          "name": "i18n(stonehearth_ace:ui.data.constants.fancy_portal_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/fancy_portal.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/fancy_portal.png",
+         "category": "construction"
       },
       "ascendancy_made armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.ascendancy_made_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_armor.png",
+         "category": "military_equipment"
       },
       "ascendancy_made bronze armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.ascendancy_made_bronze_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_bronze_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_bronze_armor.png",
+         "category": "military_equipment"
       },
       "ascendancy_made iron armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.ascendancy_made_iron_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_iron_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_iron_armor.png",
+         "category": "military_equipment"
       },
       "ascendancy_made steel armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.ascendancy_made_steel_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_steel_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_steel_armor.png",
+         "category": "military_equipment"
       },
       "ascendancy_made silver armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.ascendancy_made_silver_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_silver_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_silver_armor.png",
+         "category": "military_equipment"
       },
       "ascendancy_made stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.ascendancy_made_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "ascendancy_made bronze stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.ascendancy_made_bronze_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_bronze_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_bronze_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "ascendancy_made iron stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.ascendancy_made_iron_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_iron_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_iron_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "ascendancy_made steel stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.ascendancy_made_steel_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_steel_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_steel_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "ascendancy_made silver stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.ascendancy_made_silver_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_silver_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/ascendancy_made_silver_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "rc_made armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.rc_made_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_armor.png",
+         "category": "military_equipment"
       },
       "rc_made bronze armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.rc_made_bronze_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_bronze_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_bronze_armor.png",
+         "category": "military_equipment"
       },
       "rc_made iron armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.rc_made_iron_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_iron_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_iron_armor.png",
+         "category": "military_equipment"
       },
       "rc_made steel armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.rc_made_steel_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_steel_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_steel_armor.png",
+         "category": "military_equipment"
       },
       "rc_made silver armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.rc_made_silver_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_silver_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_silver_armor.png",
+         "category": "military_equipment"
       },
       "rc_made stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.rc_made_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "rc_made bronze stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.rc_made_bronze_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_bronze_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_bronze_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "rc_made iron stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.rc_made_iron_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_iron_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_iron_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "rc_made steel stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.rc_made_steel_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_steel_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_steel_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "rc_made silver stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.rc_made_silver_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_silver_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/rc_made_silver_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "na_made armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.na_made_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_armor.png",
+         "category": "military_equipment"
       },
       "na_made bronze armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.na_made_bronze_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_bronze_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_bronze_armor.png",
+         "category": "military_equipment"
       },
       "na_made iron armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.na_made_iron_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_iron_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_iron_armor.png",
+         "category": "military_equipment"
       },
       "na_made steel armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.na_made_steel_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_steel_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_steel_armor.png",
+         "category": "military_equipment"
       },
       "na_made silver armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.na_made_silver_armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_silver_armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_silver_armor.png",
+         "category": "military_equipment"
       },
       "na_made stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.na_made_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "na_made bronze stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.na_made_bronze_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_bronze_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_bronze_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "na_made iron stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.na_made_iron_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_iron_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_iron_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "na_made steel stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.na_made_steel_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_steel_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_steel_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "na_made silver stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.na_made_silver_stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_silver_stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/na_made_silver_stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "stockpile_weapon": {
          "name": "i18n(stonehearth_ace:ui.data.constants.stockpile_weapon_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/stockpile_weapon.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/stockpile_weapon.png",
+         "category": "military_equipment"
       },
       "armor": {
          "name": "i18n(stonehearth_ace:ui.data.constants.armor_resource_name)",
-         "icon": "/stonehearth_ace/data/mercantile/resource_constants/armor.png"
+         "icon": "/stonehearth_ace/data/mercantile/resource_constants/armor.png",
+         "category": "military_equipment"
       }
    }
 }
