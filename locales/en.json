@@ -3820,7 +3820,7 @@
                   "90_description": "They have ninety-one job levels - this is unbelievable! No hearthling could ever dream of such a feat... Their soul must've been touched by Cid himself!"
                },
                "reembarks": {
-                  "display_name": "🧭 Reembarkations",
+                  "display_name": "🗺️ Reembarkations",
                   "description": "Gained by reembarking into a new adventure.",
                   "1_display_name": " the Wanderer",
                   "1_description": "Not all who wander are lost! They have reembarked once and been a part of two different towns!",
@@ -4460,7 +4460,7 @@
                   "1_description": "They have mastered making armor as a Blacksmith."
                },
                "proficient_category_building_parts": {
-                  "display_name": "🧱 Proficiency: Building Parts",
+                  "display_name": "⛲ Proficiency: Building Parts",
                   "description": "Gained by reaching 100% proficiency in the \"Building Parts\" category of any basic crafting job.",
                   "1_display_name": ", Adept Constructor",
                   "1_description": "They have mastered making building parts of one category.",
@@ -4470,7 +4470,7 @@
                   "5_description": "They have mastered making building parts of five categories."
                },
                "proficient_category_fancy_building_parts": {
-                  "display_name": "🧱✨ Proficiency: Fancy Building Parts",
+                  "display_name": "⛲✨ Proficiency: Fancy Building Parts",
                   "description": "Gained by reaching 100% proficiency in a special, fancy \"Building Parts\" category of any basic crafting job.",
                   "1_display_name": ", Adept Architect",
                   "1_description": "They have mastered making fancy building parts in one job.",
@@ -4480,7 +4480,7 @@
                   "3_description": "They have mastered making fancy building parts in three jobs."
                },
                "proficient_category_furniture": {
-                  "display_name": "🪑 Proficiency: Furniture",
+                  "display_name": "📦 Proficiency: Furniture",
                   "description": "Gained by reaching 100% proficiency in the \"Furniture\" category of any basic crafting job.",
                   "1_display_name": ", Adept Furnisher",
                   "1_description": "They have mastered making furniture of one category.",
@@ -4490,7 +4490,7 @@
                   "5_description": "They have mastered making furniture of five categories."
                },
                "proficient_category_fancy_furniture": {
-                  "display_name": "🪑✨ Proficiency: Fancy Furniture",
+                  "display_name": "📦✨ Proficiency: Fancy Furniture",
                   "description": "Gained by reaching 100% proficiency in a special, fancy \"Furniture\" category of any basic crafting job.",
                   "1_display_name": ", Adept Designer",
                   "1_description": "They have mastered making fancy furniture in one job.",
@@ -4500,7 +4500,7 @@
                   "3_description": "They have mastered making fancy furniture in three jobs."
                },
                "proficient_category_decorations": {
-                  "display_name": "🪔 Proficiency: Decorations",
+                  "display_name": "🎨 Proficiency: Decorations",
                   "description": "Gained by reaching 100% proficiency in the \"Decorations\" category of any crafting job.",
                   "1_display_name": ", Expert Decorator",
                   "1_description": "They have mastered making decorations in one job.",
@@ -4512,7 +4512,7 @@
                   "9_description": "They have mastered making decorations in nine jobs."
                },
                "proficient_category_refiner": {
-                  "display_name": "🧵 Proficiency: Refined Materials",
+                  "display_name": "💎 Proficiency: Refined Materials",
                   "description": "Gained by reaching 100% proficiency in any material refinement category of any crafting job.",
                   "1_display_name": ", Expert Refiner",
                   "1_description": "They have mastered creating refined materials of one category.",
@@ -4960,7 +4960,7 @@
                   "4_description": "They have spent 10 whole days outside, without proper clothing and with freezing temperatures. They're clearly immune to it."
                },
                "sunstroke": {
-                  "display_name": "🥵 Sunstruck",
+                  "display_name": "🔆 Sunstruck",
                   "description": "Gained by being sunstruck under extremely hot weather.",
                   "1_display_name": " the Hot",
                   "1_description": "They have been affected by a heatstroke for 8 hours. Maybe stick to the shadows?",
@@ -4972,7 +4972,7 @@
                   "4_description": "They have been affected by a heatstroke for two whole days! Do they even know what a hat is?"
                },
                "whiteout": {
-                  "display_name": "🥶 Caught in a Whiteout",
+                  "display_name": "☁️ Caught in a Whiteout",
                   "description": "Gained by being outside and without proper protection when a whiteout hits!",
                   "1_display_name": " the Trapped",
                   "1_description": "They have endured a whiteout for 4 hours. Very brave and dangerous!",
@@ -7471,7 +7471,7 @@
             },
             "grass_carpet_recipe": {
                "recipe_name": "Patch of Grass",
-               "description": "Create a carpet of grass that can be placed to transform the terrain into a 3x3 patch of grass terrain.",
+               "description": "Create a carpet of grass that can be placed to transform the terrain into a 4x4 patch of grass terrain.",
                "flavor": "Placing the patch of grass requires the underlying terrain to be dirt"
             },
             "legendary_parchment_recipe": {
@@ -23229,7 +23229,7 @@
          },
          "terrain_grass_carpet": {
             "display_name": "Patch of Grass",
-            "description": "Place it on dirt to transform it into a 3x3 patch of grass."
+            "description": "Place it on dirt to transform it into a 4x4 patch of grass."
          }
       },
       "humans": {
@@ -23966,7 +23966,9 @@
                "creature_egg": "Creature Eggs",
                "trophy": "Trophies (Key Items)",
                "trophy_junk": "Trophies (Loot)",
-               "quest": "Quest Items"
+               "quest": "Quest Items",
+               "fuel": "Fuels",
+               "military_equipment": "Combatant Equipment"
             },
             "tooltip_crafted_by": "Crafted By:",
             "tooltip_crop_unlocked": "You have already unlocked this crop.",

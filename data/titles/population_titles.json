@@ -3,7 +3,7 @@
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.none.description)"
    },
    "levels": {
-      "ordinal": 0,
+      "ordinal": 0.1,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.levels.display_name)",
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.levels.description)",
       "requirement": {
@@ -58,7 +58,7 @@
       ]
    },
    "reembarks": {
-      "ordinal": 0.1,
+      "ordinal": 0.2,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.display_name)",
       "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.reembarks.description)",
       "requirement": {
@@ -1793,8 +1793,8 @@
    },
    "proficient_category_tending_herbs": {
       "ordinal": 16.5,
-      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.display_name)",
-      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.description)",
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending_herbs.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending_herbs.description)",
       "requirement": {
          "statistics": {
             "category": "category_proficiency",
@@ -1804,29 +1804,29 @@
       "ranks": [
          {
             "rank": 1,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.1_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.1_description)",
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending_herbs.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending_herbs.1_description)",
             "required_value": 1,
             "renown": 200
          },
          {
             "rank": 2,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.2_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.2_description)",
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending_herbs.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending_herbs.2_description)",
             "required_value": 2,
             "renown": 400
          },
          {
             "rank": 3,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.3_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.3_description)",
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending_herbs.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending_herbs.3_description)",
             "required_value": 3,
             "renown": 600
          },
          {
             "rank": 4,
-            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.4_display_name)",
-            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending.4_description)",
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending_herbs.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_tending_herbs.4_description)",
             "required_value": 4,
             "renown": 800
          }
@@ -2936,21 +2936,21 @@
             "rank": 1,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.1_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.1_description)",
-            "required_value": 126,
+            "required_value": "126h",
             "renown": 20
          },
          {
             "rank": 2,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.2_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.2_description)",
-            "required_value": 252,
+            "required_value": "252h",
             "renown": 50
          },
          {
             "rank": 3,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.3_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sleep.3_description)",
-            "required_value": 504,
+            "required_value": "21d",
             "renown": 150
          }
       ]
@@ -3181,28 +3181,28 @@
             "rank": 1,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.1_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.1_description)",
-            "required_value": 120,
+            "required_value": "5d",
             "renown": 60
          },
          {
             "rank": 2,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.2_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.2_description)",
-            "required_value": 240,
+            "required_value": "10d",
             "renown": 120
          },
          {
             "rank": 3,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.3_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.3_description)",
-            "required_value": 1200,
+            "required_value": "50d",
             "renown": 600
          },
          {
             "rank": 4,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.4_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.very_thirsty.4_description)",
-            "required_value": 2400,
+            "required_value": "100d",
             "renown": 1200
          }
       ]
@@ -3256,28 +3256,28 @@
             "rank": 1,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.1_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.1_description)",
-            "required_value": 24,
+            "required_value": "1d",
             "renown": 150
          },
          {
             "rank": 2,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.2_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.2_description)",
-            "required_value": 48,
+            "required_value": "2d",
             "renown": 320
          },
          {
             "rank": 3,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.3_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.3_description)",
-            "required_value": 96,
+            "required_value": "4d",
             "renown": 700
          },
          {
             "rank": 4,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.4_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.freezing.4_description)",
-            "required_value": 240,
+            "required_value": "10d",
             "renown": 1800
          }
       ]
@@ -3297,28 +3297,28 @@
             "rank": 1,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.1_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.1_description)",
-            "required_value": 8,
+            "required_value": "8h",
             "renown": 120
          },
          {
             "rank": 2,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.2_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.2_description)",
-            "required_value": 16,
+            "required_value": "16h",
             "renown": 240
          },
          {
             "rank": 3,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.3_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.3_description)",
-            "required_value": 24,
+            "required_value": "1d",
             "renown": 330
          },
          {
             "rank": 4,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.4_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.sunstroke.4_description)",
-            "required_value": 48,
+            "required_value": "2d",
             "renown": 800
          }
       ]
@@ -3338,21 +3338,21 @@
             "rank": 1,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.1_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.1_description)",
-            "required_value": 4,
+            "required_value": "4h",
             "renown": 450
          },
          {
             "rank": 2,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.2_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.2_description)",
-            "required_value": 12,
+            "required_value": "12h",
             "renown": 1100
          },
          {
             "rank": 3,
             "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.3_display_name)",
             "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.whiteout.3_description)",
-            "required_value": 24,
+            "required_value": "1d",
             "renown": 2250
          }
       ]
