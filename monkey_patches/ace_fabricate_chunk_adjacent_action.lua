@@ -24,6 +24,7 @@ function AceFabricateChunkAdjacent:build_adjacent_to_current_block(ai, entity, a
    local standing = radiant.entities.get_world_grid_location(entity)
 
    local job_component = entity:get_component('stonehearth:job')
+   local statistics_component = entity:get_component('stonehearth_ace:statistics')
    local num_times = get_build_rate(entity)
 
    -- these perks only exist in the unused architect job; don't both with them
@@ -51,11 +52,15 @@ function AceFabricateChunkAdjacent:build_adjacent_to_current_block(ai, entity, a
       end
       local num_blocks_added, work_available = self._chunk_c:fabricate_blocks(self._material, self._current_block, num_times)
 
-
       if num_blocks_added <= 0 then
          self._current_block = nil
          break
       end
+
+      if statistics_component then
+         statistics_component:increment_stat('performed_actions', 'build', num_blocks_added)
+      end
+
       if self._has_material then
          building_comp:spend_banked_resource(self._material, num_blocks_added)
          if not building_comp:has_banked_resource(self._material) then
