@@ -11,7 +11,60 @@ local MATERIAL_TAG_NULL = terrain_blocks.block_types.null.tag
 local DEBUG_LANDMARK = radiant.util.get_global_config('mods.stonehearth.landmark.create_debug_mesh', false)
 local DEBUG_LANDMARK_OFFSET = radiant.util.get_global_config('mods.stonehearth.landmark.debug_mesh_offset', 50)
 
+local log = radiant.log.create_logger('landmark_lib')
+
 local AceLandmarkLib = {}
+
+function AceLandmarkLib.get_generated_landmark_region(location, options)
+   local clip_terrain = true
+   if not location then
+      -- Local space region, so no way to intersect it with the terrain.
+      location = Point3(0, 0, 0)
+      clip_terrain = false
+   end
+   
+   local region
+   if options.brush then
+      local brush = _radiant.voxel.create_qubicle_brush(options.brush)
+      region = brush:paint_once():translated(location)
+   else
+      local size = options.size or { x = 10, y = 10, z = 10 }
+      local tag = MATERIAL_TAG_DEFAULT
+      if options.tag then
+         local terrain_block_spec = terrain_blocks.block_types[options.tag]
+         assert(terrain_block_spec, 'Unknown terrain block type: ' .. options.tag)
+         tag = terrain_block_spec.tag
+      end
+      if options.is_mimic then
+         tag = LandmarkLib.find_tag_on_terrain(location)
+      end
+      local cube = Cube3(
+            Point3(location.x - math.floor(size.x / 2),       location.y,          location.z - math.floor(size.z / 2)),
+            Point3(location.x + math.floor(size.x / 2 + 0.5), location.y + size.y, location.z + math.floor(size.z / 2 + 0.5)),
+            tag or MATERIAL_TAG_DEFAULT)
+      region = Region3(cube)
+   end
+
+   -- Transform the initial region.
+   local rotation = options.rotation or 0
+   if rotation == "random" then
+      rotation = rng:get_int(0,3)*90
+   end
+   local translation = options.translation or { x = 0, y = 0, z = 0 }
+   local scale = options.scale or { x = 1, y = 1, z = 1 }
+   if type(scale) == "number" then
+      scale = { x = scale, y = scale, z = scale }
+   end
+   region = LandmarkLib._transform_region(region, location, translation, rotation, scale)
+
+   -- Check if we are going to destroy bedrock (if we are, clip out that section).
+   local clip_if_outside_terrain = options.clip_if_outside_terrain ~= false
+   if clip_terrain and clip_if_outside_terrain then
+      region = LandmarkLib.intersect_with_terrain_bounds_and_remove_bedrock(region)
+   end
+
+   return region
+end
 
 -- ACE: have to copy this whole thing just to have it properly override existing water with air when appropriate
 -- options = {
@@ -232,6 +285,21 @@ function AceLandmarkLib.intersect_with_terrain_bounds_and_remove_bedrock(region)
    for cube in terrain_check_region:each_cube() do
       if cube.tag and cube.tag == terrain_blocks.block_types.bedrock.tag then
          region:subtract_cube(cube)
+      end
+   end
+   return region
+end
+
+-- ACE: remove tag blocks as specified
+function AceLandmarkLib.remove_tagged_blocks(region, landmark_block_types, remove_tags)
+   if landmark_block_types and remove_tags then
+      for cube in region:each_cube() do
+         local tag = cube.tag and LandmarkLib.convert_decimal_to_hexadecimal(cube.tag)
+         local terrain_tag = tag and LandmarkLib.get_tag_from_color(tag, landmark_block_types)
+         --log:debug('checking terrain tag %s against tag list %s', tostring(terrain_tag), radiant.util.table_tostring(remove_tags))
+         if terrain_tag and remove_tags[terrain_tag] then
+            region:subtract_cube(cube)
+         end
       end
    end
    return region
