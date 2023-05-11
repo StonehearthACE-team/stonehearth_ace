@@ -7470,7 +7470,12 @@
             },
             "grass_carpet_recipe": {
                "recipe_name": "Patch of Grass",
-               "description": "Create a carpet of grass that can be placed to transform the terrain into a 4x4 patch of grass terrain.",
+               "description": "Create a carpet of grass that can be placed to transform some blocks into a 4x4 patch of grass terrain.",
+               "flavor": "Placing the patch of grass requires the underlying terrain to be dirt or grass"
+            },
+            "grass_carpet_small_recipe": {
+               "recipe_name": "Tiny Patch of Grass (x4)",
+               "description": "Create four carpets of grass that can be placed to transform a block into grass terrain.",
                "flavor": "Placing the patch of grass requires the underlying terrain to be dirt"
             },
             "legendary_parchment_recipe": {
@@ -11952,7 +11957,9 @@
                "perk_000_description": "The Shepherd is now more adept at getting the flock to walk a tiny bit faster."
             },
             "level_2_data": {
-               "perk_000_description": "The Shepherd finds comfort in long walks and feeding the animals, making them less likely to stop and converse."
+               "perk_000_description": "The Shepherd finds comfort in long walks and feeding the animals, making them less likely to stop and converse.",
+               "farmer_name": "Job Opportunities",
+               "farmer_description": "A nomadic life can only go so far, experience with tending the herd and learning from the land near the pastures have helped the Shepherd understand that it is time to settle down and create roots... quite literally. See the promotion menu for details."
             },
             "level_3_data": {
                "big_animals_name": "Adept Animal Tamer",
@@ -23216,7 +23223,11 @@
          },
          "terrain_grass_carpet": {
             "display_name": "Patch of Grass",
-            "description": "Place it on dirt to transform it into a 4x4 patch of grass."
+            "description": "Place it on dirt or grass to transform it into a 4x4 patch of grass."
+         },
+         "terrain_grass_carpet_small": {
+            "display_name": "Tiny Patch of Grass",
+            "description": "Place it on dirt to transform it into grass."
          }
       },
       "humans": {
