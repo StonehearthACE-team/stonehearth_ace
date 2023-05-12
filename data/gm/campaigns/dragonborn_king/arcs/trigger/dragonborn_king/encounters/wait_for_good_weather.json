@@ -1,0 +1,18 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_requirements_met",
+   "in_edge": "wait_for_good_weather",
+   "out_edge": "spawn_friendly_entities",
+   "wait_for_requirements_met_info": {
+      "recheck_delay": "1d",
+      "requirements": {
+         "dragon_young_check": {
+            "item": "script",
+            "type": "deny_if_not",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:weather_check"
+         }
+      },
+      "not_bad_weather": true
+   }
+}

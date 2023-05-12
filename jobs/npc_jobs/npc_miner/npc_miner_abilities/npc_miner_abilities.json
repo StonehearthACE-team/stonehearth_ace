@@ -1,0 +1,13 @@
+{
+   "components" : {
+      "stonehearth:equipment_piece" : {
+         "injected_ai" : {
+            "actions" : [
+               "stonehearth:actions:harvest_resource_node_action",
+               "stonehearth:actions:harvest_resource_node_adjacent_action",
+               "stonehearth:actions:clear_carrying_drop_now"
+            ]
+         }
+      }
+   }
+}

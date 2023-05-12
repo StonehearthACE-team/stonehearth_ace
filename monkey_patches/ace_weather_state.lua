@@ -311,6 +311,10 @@ function AceWeatherState:is_bad_weather()
    return self._sv.bad_weather
 end
 
+function AceWeatherState:is_dark_during_daytime()
+   return self._sv.is_dark_during_daytime
+end
+
 function AceWeatherState:get_json()
    return self._json
 end

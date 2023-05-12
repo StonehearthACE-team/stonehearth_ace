@@ -1,0 +1,22 @@
+{
+   "generator_info": {
+      "delay": "24h+12h",
+      "spawn_edge": {
+         "mixintypes": {
+            "out_edges": "override"
+         },
+         "out_edges": [
+            {
+               "type": "weighted_edge",
+               "out_edge": "do_nothing",
+               "weight": 49
+            },
+            {
+               "type": "weighted_edge",
+               "out_edge": "wait_for_good_weather",
+               "weight": 1
+            }
+         ]
+      }
+   }
+}
