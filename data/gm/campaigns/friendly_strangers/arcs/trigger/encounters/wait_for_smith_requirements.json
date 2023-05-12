@@ -11,11 +11,6 @@
    },
    "wait_for_requirements_met_info": {
       "requirements": {
-         "not_in_titanstorm": {
-            "type": "deny_if",
-            "item": "weather",
-            "value": "stonehearth:weather:titanstorm"
-         },
          "time_of_day_check": {
             "item": "time_of_day",
             "type": "deny_if_not_between",
@@ -35,6 +30,46 @@
             "item": "counter",
             "key": "visitors",
             "value": 0
+         },         
+         "not_in_titanstorm": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:titanstorm"
+         },
+			"not_in_blizzard": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:blizzard"
+         },
+			"not_in_thunderstorm": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:thunderstorm"
+         },
+			"not_in_sandy": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:sandy"
+         },
+			"not_in_sandstorm": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:sandstorm"
+         },
+			"not_in_snow": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:snow"
+         },
+			"not_in_hailstorm": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:hailstorm"
+         },
+			"not_in_sunny_sweltering": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:sunny:sweltering"
          }
       },
       "jobs": {

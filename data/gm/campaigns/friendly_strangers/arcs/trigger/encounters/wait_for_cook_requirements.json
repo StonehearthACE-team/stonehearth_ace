@@ -17,11 +17,6 @@
             "value": 2,
             "job_alias": "stonehearth:jobs:cook"
          },
-         "not_in_titanstorm": {
-            "type": "deny_if",
-            "item": "weather",
-            "value": "stonehearth:weather:titanstorm"
-         },
          "time_of_day_check": {
             "item": "time_of_day",
             "type": "deny_if_not_between",
@@ -35,7 +30,14 @@
             "item": "counter",
             "key": "visitors",
             "value": 0
+         },
+         "weather_check": {
+            "item": "script",
+            "type": "deny_if_not",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:weather_check"
          }
-      }
+      },
+      "not_bad_weather": true
    }
 }
