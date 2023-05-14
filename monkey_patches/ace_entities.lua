@@ -449,7 +449,7 @@ function ace_entities.output_items(uris, origin, min_radius, max_radius, options
    local output_comp = output and output:is_valid() and output:get_component('stonehearth_ace:output')
    if inputs and type(inputs) ~= 'table' then
       -- if it's not a single entity, it's wrong and should post an error message
-      if radiant.check.is_entity(inputs) then
+      if radiant.entities.is_entity(inputs) and inputs:is_valid() then
          inputs = {[inputs:get_id()] = inputs}
       else
          log:error('trying to output items with invalid input/source: %s', tostring(inputs))
