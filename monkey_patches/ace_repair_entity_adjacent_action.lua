@@ -36,7 +36,7 @@ function AceRepairEntityAdjacent:run(ai, entity, args)
             return
          end
          ai:execute('stonehearth:run_effect', { effect = repair_effect, times = repair_work_units, facing_entity = target })
-         radiant.entities.modify_health(args.entity, repair_amount)
+         radiant.entities.modify_health(args.entity, repair_amount, entity)
          radiant.events.trigger_async(entity, 'stonehearth:repaired_entity', {})
          health_percentage = radiant.entities.get_health_percentage(target)
       end
