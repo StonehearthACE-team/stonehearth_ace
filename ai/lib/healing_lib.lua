@@ -95,7 +95,7 @@ function healing_lib.heal_target(healer, target, health, guts)
       if health and health ~= 0 then
          local healed_amount = health * healing_lib.get_healing_multiplier(healer)
 
-         radiant.entities.modify_health(target, healed_amount)
+         radiant.entities.modify_health(target, healed_amount, healer)
       end
    else
       local guts_healed = guts or 1
