@@ -143,7 +143,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
    queueAnywayStatus: false,
    maxActiveOrders: 30,
    craft_button_text: 'stonehearth:ui.game.show_workshop.craft',
-   SHIFT_KEY_ACTIVE: false,
 
    makeSortable: function(element, args) {
       if (element) {
@@ -319,7 +318,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var orderList = self.getOrderList();
             var item = $(this);
             var orderId = parseInt(item.attr("data-orderid"));
-            var deleteAssociatedOrders = self.SHIFT_KEY_ACTIVE;
+            var deleteAssociatedOrders = stonehearth_ace.isShiftKeyActive();
             radiant.call_obj(orderList, 'delete_order_command', orderId, deleteAssociatedOrders)
                .done(function(return_data){
                   item.remove();
@@ -409,12 +408,13 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
       self.$(".category").off('mouseenter mouseleave', '.item');
       self.$('#orders').off('scroll');
+      $(document).off('keyup.show_team_workshop keydown.show_team_workshop');
       self.$('#searchSettingContainer').off('change.refocusInput', '.searchSettingCheckbox');
       self.$('#searchContainer').off('focusin');
       self.$('#searchContainer').off('focusout');
-      if (self._timeoutID != null) {
-         clearTimeout(self._timeoutID);
-         self._timeoutID = null;
+      if (self._focusCheckIntervalID != null) {
+         clearInterval(self._focusCheckIntervalID);
+         self._focusCheckIntervalID = null;
       }
 
       this._super();
@@ -762,7 +762,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       var self = this;
 
       condition.prefer_high_quality = self.get('prefer_high_quality');
-      if (self.SHIFT_KEY_ACTIVE) {
+      if (stonehearth_ace.isShiftKeyActive()) {
          condition.order_index = 1;
       }
    },
@@ -891,8 +891,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       });
 
       var craftInsertDiv = self.$('#craftInsert');
-      $(document).on('keyup keydown', function(e){
-         self.SHIFT_KEY_ACTIVE = e.shiftKey;
+      $(document).on('keyup.show_team_workshop keydown.show_team_workshop', function(e){
          self._updateCraftInsertShown(craftInsertDiv);
       });
 
@@ -997,23 +996,25 @@ App.StonehearthTeamCrafterView = App.View.extend({
       });
       
       // when it has focus, show the extra settings
-      self._timeoutID = null;
+      self._focusCheckIntervalID = null;
       self.$('#searchContainer').focusin(function (e) {
          self.set('showSearchSettings', true);
-         if (self._timeoutID != null) {
-            clearTimeout(self._timeoutID);
-            self._timeoutID = null;
+         if (self._focusCheckIntervalID != null) {
+            clearInterval(self._focusCheckIntervalID);
+            self._focusCheckIntervalID = null;
          }
       });
       self.$('#searchContainer').focusout(function (e) {
-         if (self._timeoutID != null) {
-            clearTimeout(self._timeoutID);
-            self._timeoutID = null;
+         if (self._focusCheckIntervalID != null) {
+            clearInterval(self._focusCheckIntervalID);
+            self._focusCheckIntervalID = null;
          }
-         self._timeoutID = setTimeout(function() {
-            self.set('showSearchSettings', false);
-            // related target is always null for some reason, so don't bother with this
-            //if (!$.contains(self.$('#searchContainer').get(0), e.relatedTarget)) {}
+         self._focusCheckIntervalID = setInterval(function() {
+            if (!stonehearth_ace.isMouseDown()) {
+               clearInterval(self._focusCheckIntervalID);
+               self._focusCheckIntervalID = null;
+               self.set('showSearchSettings', false);
+            }
          }, 100);
       });
 
@@ -1047,7 +1048,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
    _updateCraftInsertShown: function(div) {
       var self = this;
 
-      if (self.SHIFT_KEY_ACTIVE && (self.HOVERING_CRAFT_BUTTON || self.HOVERING_ITEM)) {
+      if (stonehearth_ace.isShiftKeyActive() && (self.HOVERING_CRAFT_BUTTON || self.HOVERING_ITEM)) {
          div.show();
       }
       else {

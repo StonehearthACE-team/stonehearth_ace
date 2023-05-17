@@ -1,8 +1,19 @@
+var _IS_MOUSE_DOWN = false;
+var _IS_SHIFT_KEY_ACTIVE = false;
+$(document).on('mousedown', function(e) { _IS_MOUSE_DOWN = true; });
+$(document).on('mouseup', function(e) { _IS_MOUSE_DOWN = false; });
+$(document).on('keyup keydown', function(e){
+   _IS_SHIFT_KEY_ACTIVE = e.shiftKey;
+});
+
 // used for functions that get used by multiple views
 var stonehearth_ace = {
    _allTitles: {},
    _fence_mode: {},
    _storageFilterPresets: {},
+
+   isMouseDown: function() { return _IS_MOUSE_DOWN; },
+   isShiftKeyActive: function() { return _IS_SHIFT_KEY_ACTIVE; },
 
    // specifically used for comparing objects/tables
    shallowAreEqual: function(a, b) {
