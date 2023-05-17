@@ -227,11 +227,6 @@ App.StonehearthBuildingStatusView = App.View.extend({
          }
          radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:building_cost_tab'});
       });
-
-      // ACE: track shift key status for craft queuing
-      $(document).on('keyup keydown', function(e){
-         self.SHIFT_KEY_ACTIVE = e.shiftKey;
-      });
    },
 
    _showPlanStatus: function(status_name) {
@@ -255,7 +250,7 @@ App.StonehearthBuildingStatusView = App.View.extend({
          // ACE: pass additional information to the building service about craft queuing
          var isPreBuild = self.$('#buildButton.prebuild') != null;
 
-         radiant.call_obj('stonehearth.building', 'build', isPreBuild && self.SHIFT_KEY_ACTIVE)
+         radiant.call_obj('stonehearth.building', 'build', isPreBuild && stonehearth_ace.isShiftKeyActive())
             .done(function(r) {
                var result = r.result;
 
