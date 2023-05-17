@@ -1,4 +1,5 @@
 local Region3 = _radiant.csg.Region3
+local Cube3 = _radiant.csg.Cube3
 local Point3 = _radiant.csg.Point3
 local rng = _radiant.math.get_default_rng()
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
