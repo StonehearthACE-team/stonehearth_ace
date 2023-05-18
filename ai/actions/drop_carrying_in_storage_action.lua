@@ -1,5 +1,7 @@
 local Entity = _radiant.om.Entity
 
+local log = radiant.log.create_logger('drop_carrying_in_storage_action')
+
 local DropCarryingInStorage = radiant.class()
 DropCarryingInStorage.name = 'drop carrying in storage'
 DropCarryingInStorage.does = 'stonehearth:drop_carrying_in_storage'
@@ -20,6 +22,11 @@ function DropCarryingInStorage:start_thinking(ai, entity, args)
 end
 
 function DropCarryingInStorage:start(ai, entity, args)
+   if not args.storage:is_valid() then
+      log:error('%s is not a valid storage!', args.storage)
+      ai:abort('storage is not valid')
+      return
+   end
 	self._location_trace = radiant.entities.trace_location(args.storage, 'storage location trace')
 		:on_changed(function()
 				ai:abort('drop carrying in storage destination moved.')
