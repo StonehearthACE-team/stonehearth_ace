@@ -6,7 +6,7 @@
    "duration": "30m",
    "repeat_add_action": "stack_and_refresh",
    "thought": "stonehearth:thoughts:weather:whiteout_debuff",
-   "max_stacks": 6,
+   "max_stacks": 5,
    "remove_stacks_on_expire": 1,
    "evolve_chance": 0.33,
    "buff_evolve": "stonehearth_ace:buffs:weather:whiteout:compelled_panic",
@@ -29,6 +29,9 @@
       "additive_weapon_range_modifier": {
          "add": -3,
          "max": 0
+      },
+      "additive_guts_subtraction_modifier": {
+         "add": 0.4
       }
    },
    "script": "stonehearth_ace:buff_scripts:periodic_buff_chance",

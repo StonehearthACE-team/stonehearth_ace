@@ -20,6 +20,9 @@
       },
       "willpower": {
          "multiply": 0.1
+      },
+      "additive_guts_subtraction_modifier": {
+         "add": 12
       }
    },
    "script": "stonehearth:buff_scripts:periodic_health_modification",
@@ -27,6 +30,7 @@
       "health_change": -0.042,
       "pulse": "1h",
       "pulse_immediately": false,
-      "is_percentage": true
+      "is_percentage": true,
+      "max_incapacitations": 3
    }
 }
