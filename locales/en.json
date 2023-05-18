@@ -5785,19 +5785,19 @@
             },
             "cold_debuff": {
                "display_name": "Cold Weather",
-               "description": "It's really cold today! I should get a roof above my head."
+               "description": "It's really cold today! I should get a roof above my head.<ul><li>🖤 This debuff slightly reduces the time a hearthling has to be rescued if knocked unconscious</li></ul>"
             },
             "animal_cold_debuff": {
                "display_name": "Cold Weather",
-               "description": "Baby, it's cold outside.<ul><li>This animal will take damage over time if unsheltered</li><li>This animal will reproduce somewhat slower</li><li>This animal won't produce as much</li></ul>"
+               "description": "Baby, it's cold outside.<ul><li>❄️ This animal will take damage over time if unsheltered</li><li>💢 This animal will reproduce somewhat slower</li><li>❌ This animal won't produce as much</li></ul>"
             },
             "freezing_debuff": {
                "display_name": "Freezing Weather",
-               "description": "I'm freezing out here! I need warmth and I need it fast!<ul><li>This hearthling will take damage over time down to 20% of their health if outside</li><li>This hearthling might be exposed to Frostbites if not wearing clothing that provides cold protection</li><li>Damage taken is both reduced and slowed down by clothing that provides chilly and cold protection</li></ul>"
+               "description": "I'm freezing out here! I need warmth and I need it fast!<ul><li>❄️ This hearthling will take damage over time down to 20% of their health if outside</li><li>💢 This hearthling might be exposed to Frostbites if not wearing clothing that provides cold protection</li><li>🖤 This debuff greatly reduces the time a hearthling has to be rescued if knocked unconscious</li><li>➕ Damage taken is both reduced and slowed down by clothing that provides chilly and cold protection</li></ul>"
             },
             "animal_freezing_debuff": {
                "display_name": "Freezing Weather",
-               "description": "That animal should definitely be sheltered...<ul><li>This animal will take damage over time if unsheltered</li><li>This animal will reproduce a lot slower</li><li>This animal won't produce as much</li></ul>"
+               "description": "That animal should definitely be sheltered...<ul><li>❄️ This animal will take damage over time if unsheltered</li><li>💢 This animal will reproduce a lot slower</li><li>❌ This animal won't produce as much</li></ul>"
             },
             "hot_debuff": {
                "display_name": "Hot Weather",
@@ -5805,15 +5805,15 @@
             },
             "animal_hot_debuff": {
                "display_name": "Hot Weather",
-               "description": "The heat is punishing, even for the animals!<ul><li>This animal will reproduce slower</li><li>This animal won't produce as much</li></ul>"
+               "description": "The heat is punishing, even for the animals!<ul><li>💢 This animal will reproduce slower</li><li>❌ This animal won't produce as much</li></ul>"
             },
             "sweltering_debuff": {
                "display_name": "Extremely Hot Weather",
-               "description": "I'm sweltering... Should stay indoors or have something refreshing to drink...<ul><li>This hearthling has an increasing chance of getting a sunstroke the longer they stay exposed to the heat</li><li>Wearing some sort of head protection like hats, helmets or hoods will prevent heatstrokes</li></ul>"
+               "description": "I'm sweltering... Should stay indoors or have something refreshing to drink...<ul><li>🔥 This hearthling has an increasing chance of getting a sunstroke the longer they stay exposed to the heat</li><li>➕ Wearing some sort of head protection like hats, helmets or hoods will prevent heatstrokes</li></ul>"
             },
             "animal_sweltering_debuff": {
                "display_name": "Extremely Hot Weather",
-               "description": "This heat is unbearable for animals!<ul><li>This animal will reproduce much slower</li><li>This animal won't produce as much</li></ul>"
+               "description": "This heat is unbearable for animals!<ul><li>💢 This animal will reproduce much slower</li><li>❌ This animal won't produce as much</li></ul>"
             },
             "soaked_debuff": {
                "display_name": "Soaked",
@@ -5825,11 +5825,11 @@
             },
             "sunstroke_debuff": {
                "display_name": "Sunstroke",
-               "description": "So warm... Getting dizzy... I Need refreshment... NOW!<ul><li>This hearthling will take damage over time until they are knocked unconscious</li><li>Being sheltered will allow this effect to slowly fade away</li><li>Entering the water or drinking something refreshing will remove this effect</li></ul>"
+               "description": "So warm... Getting dizzy... I Need refreshment... NOW!<ul><li>🔥 This hearthling will take damage over time until they are knocked unconscious</li><li>🖤 This debuff greatly reduces the time a hearthling has to be rescued if knocked unconscious</li><li>➕ Being sheltered will allow this effect to slowly fade away</li><li>➕ Entering the water or drinking something refreshing will remove this effect</li></ul>"
             },
             "freezing_water_debuff": {
                "display_name": "Freezing Water",
-               "description": "Oof! This water is so cold, I shouldn't be here!<ul><li>This hearthling will take damage over time down to 10% of their health while in the water</li></ul>"
+               "description": "Oof! This water is so cold, I shouldn't be here!<ul><li>❄️ This hearthling will take damage over time down to 10% of their health while in the water</li></ul>"
             },
             "refreshing_water_buff": {
                "display_name": "Refreshing Water",
@@ -5837,31 +5837,31 @@
             },
             "chilly_resist_buff": {
                "display_name": "Lightly Bundled",
-               "description": "This hearthling is protected against chilly weather.<ul><li>Damage from Freezing weather is very slightly reduced</li></ul>"
+               "description": "This hearthling is protected against chilly weather.<ul><li>➕ Damage from Freezing weather is very slightly reduced</li></ul>"
             },
             "cold_resist_buff": {
                "display_name": "Bundled",
-               "description": "This hearthling is protected against cold weather.<ul><li>Damage from Freezing weather is reduced, and they're immune to Frostbites</li></ul>"
+               "description": "This hearthling is protected against cold weather.<ul><li>➕ Damage from Freezing weather is reduced, and they're immune to Frostbites</li></ul>"
             },
             "freezing_resist_buff": {
                "display_name": "Very Bundled",
-               "description": "This hearthling is protected against freezing weather.<ul><li>Provides immunity to Frostbites</li></ul>"
+               "description": "This hearthling is protected against freezing weather.<ul><li>➕ Provides immunity to Frostbites</li></ul>"
             },
             "hot_resist_buff": {
                "display_name": "Safe from the Sun",
-               "description": "Light materials, good airflow or just a handy hat... Should be enough. This hearthling is protected from hot weather."
+               "description": "Light materials, good airflow or just a handy hat... Should be enough.<ul><li>➕ This hearthling is protected from hot weather</li></ul>"
             },
             "sweltering_resist_buff": {
                "display_name": "Cool Outfit",
-               "description": "Efficient protection against the sun and blazing winds will keep this hearthling safe from the heat of extremely hot weather."
+               "description": "Efficient protection against the sun and blazing winds!<ul><li>➕ This hearthling is protected from the effects of extrmely hot weather</li></ul>"
             },
             "refreshed_buff": {
                "display_name": "Refreshed",
-               "description": "This was refreshing! Should stay fresh for a while."
+               "description": "This was refreshing! Should stay fresh for a while.<ul><li>➕ This hearthling is temporarily protected from hot weather</li></ul>"
             },
             "warmed_buff": {
                "display_name": "Feeling Warm",
-               "description": "I can feel the warmth and it is so cozy! Should feel good for a while."
+               "description": "I can feel the warmth and it is so cozy!<ul><li>➕ This hearthling is temporarily protected from chilly, cold and freezing weathers</li></ul>"
             },
             "warmth_source_buff": {
                "display_name": "Source of Warmth",
@@ -5885,7 +5885,7 @@
             },
             "whiteout_debuff": {
                "display_name": "Caught in the Whiteout",
-               "description": "I can't see anything! I can't even tell if my eyes are burning from the cold or the brightness!<ul><li>This hearthling is blinded and lost in the middle of the whiteout and will slow down and feel hunger much faster</li><li>When this debuff is stacked enough, panic may take over and they'll just wander around until it's over or something worse happens...</li><li>Seek shelter immediately! Try disabling jobs or calling the alarm to force all hearthlings inside</li></ul>",
+               "description": "I can't see anything! I can't even tell if my eyes are burning from the cold or the brightness!<ul><li>❄️ This hearthling is blinded and lost in the middle of the whiteout and will slow down and feel hunger much faster</li><li>💢 When this debuff is stacked enough, panic may take over and they'll just wander around until it's over or something worse happens...</li><li>🖤 This debuff greatly reduces the time a hearthling has to be rescued if knocked unconscious</li><li>➕ Seek shelter immediately! Try disabling jobs or calling the alarm to force all hearthlings inside</li></ul>",
                "npc_description": "Can't see much, can't do much!"
             }
          },
@@ -5970,15 +5970,15 @@
          "poison": {
             "minor_poison": {
                "display_name": "Weak Poison",
-               "description": "A weak, non-lethal poison. Will last some hours. Muscle and Willpower are fairly reduced.<ul><li>💬 Type & Severity: Poison (Low)</li><li>💊 This poison can be treated with Leeches or Weak Antidote; it is removed if the hearthling is incapacitated</li><li>💢 Losing 5% of their health points every 30 minutes</li><li>❗ This poison will only damage them down to 75% of their total health</li></ul>"
+               "description": "A weak, non-lethal poison. Will last some hours. Muscle and Willpower are fairly reduced.<ul><li>💬 Type & Severity: Poison (Low)</li><li>💊 This poison can be treated with Leeches or Weak Antidote; it is removed if the hearthling is incapacitated</li><li>💢 Losing 5% of their health points every 30 minutes</li><li>❗ This poison will only damage them down to 75% of their total health</li><li>🖤 This poison slightly reduces the time a hearthling has to be rescued if knocked unconscious</li></ul>"
             },
             "poison": {
                "display_name": "Poison",
-               "description": "A non-lethal but dangerous poison. Might last a day or so. Muscle and Willpower are reduced.<ul><li>💬 Type & Severity: Poison (Medium)</li><li>💊 This poison needs to be treated with at least an Antidote to be completely removed with a single treatment; it is removed if the hearthling is incapacitated</li><li>💢 Losing 5% of their health points every 20 minutes</li><li>❗ This poison will damage them down to only 30% of their total health</li></ul>"
+               "description": "A non-lethal but dangerous poison. Might last a day or so. Muscle and Willpower are reduced.<ul><li>💬 Type & Severity: Poison (Medium)</li><li>💊 This poison needs to be treated with at least an Antidote to be completely removed with a single treatment; it is removed if the hearthling is incapacitated</li><li>💢 Losing 5% of their health points every 20 minutes</li><li>❗ This poison will damage them down to only 30% of their total health</li><li>🖤 This poison reduces the time a hearthling has to be rescued if knocked unconscious</li></ul>"
             },
             "major_poison": {
                "display_name": "Strong Poison",
-               "description": "A tough, lethal poison. Can last a couple of days. Muscle and Willpower are greatly reduced.<ul><li>💬 Type & Severity: Poison (High)</li><li>💊 This poison needs to be treated with at least a Strong Antidote to be completely removed with a single treatment; incapacitation will not remove this poison and it can cause the hearthling to be incapacitated over and over again until they're cured</li><li>💢 Losing 5% of their health points every 15 minutes</li><li>❗ This poison can damage them until they are knocked unconscious and require constant assistance or treatment</li></ul>"
+               "description": "A tough, lethal poison. Can last a couple of days. Muscle and Willpower are greatly reduced.<ul><li>💬 Type & Severity: Poison (High)</li><li>💊 This poison needs to be treated with at least a Strong Antidote to be completely removed with a single treatment; incapacitation will not remove this poison and it can cause the hearthling to be incapacitated over and over again until they're cured</li><li>💢 Losing 5% of their health points every 15 minutes</li><li>❗ This poison can damage them until they are knocked unconscious and require quick assistance or treatment</li><li>❌ This poison will not be able to knock them unconscious more than one time</li><li>🖤 This poison greatly reduces the time a hearthling has to be rescued if knocked unconscious</li></ul>"
             }
          },
          "toxin": {
@@ -6014,11 +6014,11 @@
             },
             "infection": {
                "display_name": "Infection",
-               "description": "Eww! Things are looking really bad. I need help or this will get worse! Stamina, Muscle and Willpower are quite lowered.<ul><li>💬 Type & Severity: Infection (High)</li><li>💊 This infection needs to be treated with at least a Fever Cordial to be completely removed with a single treatment</li><li>❗ An infection may pass on its own but can become very dangerous if stacked high enough</li><ul>"
+               "description": "Eww! Things are looking really bad. I need help or this will get worse! Stamina, Muscle and Willpower are quite lowered.<ul><li>💬 Type & Severity: Infection (High)</li><li>💊 This infection needs to be treated with at least a Fever Cordial to be completely removed with a single treatment</li><li>❗ An infection may pass on its own but can become very dangerous if stacked high enough</li><li>🖤 This infection reduces the time a hearthling has to be rescued if knocked unconscious</li><ul>"
             },
             "major_infection": {
                "display_name": "Severe Infection",
-               "description": "The infection is out of control and this hearthling's life is urgently threatened. Body and Willpower are completely lowered.<ul><li>💬 Type & Severity: Infection (Extreme)</li><li>💊 This infection needs to be treated with at least a Fever Cordial to be completely removed with a single treatment</li><li>❗ This hearthling will take a lot of damage over time until the infection is removed</li><ul>"
+               "description": "The infection is out of control and this hearthling's life is urgently threatened. Body and Willpower are completely lowered.<ul><li>💬 Type & Severity: Infection (Extreme)</li><li>💊 This infection needs to be treated with at least a Fever Cordial to be completely removed with a single treatment</li><li>❗ This hearthling will take a lot of damage over time until the infection is removed</li><li>❌ This infection will not be able to knock them unconscious more than three times</li><li>🖤 This infection extremely reduces the time a hearthling has to be rescued if knocked unconscious</li><ul>"
             },
             "undead_infection": {
                "display_name": "Undead Infection",
@@ -6048,7 +6048,7 @@
          "hearth_tonic": {
             "hearth_tonic_buff": {
                "display_name": "Hearthbud Light Tonic",
-               "description": "Courage, Menace and Muscle are increased. A radiant aura of light encompasses the hearthling, slowly healing them over time."
+               "description": "Courage, Menace and Muscle are increased. A radiant aura of light encompasses the hearthling, slowly healing them over time.<ul><li>This buff greatly increases the time a hearthling has to be rescued if knocked unconscious</li></ul>"
             },
             "hearth_tonic_worn_off_buff": {
                "description": "The Hearth magic is a pathway to many abilities some consider to be unnatural... And they are not without a cost.<ul><li>Spirit is reduced</li><li>Healing received is reduced</li></ul>",
@@ -6061,7 +6061,7 @@
          },
          "divine_flavors": {
             "display_name": "Divine Flavors",
-            "description": "Deliciously inspired by the power of the Hearth! Muscle and Stamina are increased.<ul><li>This hearthling will heal 10% of their total health every 30 minutes</li></ul>"
+            "description": "Deliciously inspired by the power of the Hearth! Muscle and Stamina are increased.<ul><li>This hearthling will heal 10% of their total health every 30 minutes</li><li>This buff greatly increases the time a hearthling has to be rescued if knocked unconscious</li></ul>"
          },
          "shepherd_crook_corn": {
             "display_name": "Shepherd's Corn Crook",
@@ -6088,7 +6088,7 @@
             },
             "ugly_rend": {
                "display_name": "Wound: Ugly Rend",
-               "description": "Ouch! Ow! So painful, I can't even look at it!<ul><li>💬 Type & Severity: Cut (Extreme)</li><li>🖤🔻 Effective maximum health is quite lowered</li><li>💊 This wound can be treated with any bandage but requires at least a Heavy Bandage to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause Infection</li><li>💫 Treating this wound has a small chance of permanently adding the condition Scary Scar</li></ul>"
+               "description": "Ouch! Ow! So painful, I can't even look at it!<ul><li>💬 Type & Severity: Cut (Extreme)</li><li>🖤🔻 Effective maximum health is quite lowered</li><li>💊 This wound can be treated with any bandage but requires at least a Heavy Bandage to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🖤 This wound very slightly reduces the time a hearthling has to be rescued if knocked unconscious</li><li>🌡️ If left untreated, this wound may cause Infection</li><li>💫 Treating this wound has a small chance of permanently adding the condition Scary Scar</li></ul>"
             },
             "bruise": {
                "display_name": "Wound: Bruise",
@@ -6104,7 +6104,7 @@
             },
             "broken_bone": {
                "display_name": "Wound: Broken Bone",
-               "description": "Ugh! I think I broke something...<ul><li>💬 Type & Severity: Impact (Extreme)</li><li>🖤🔻 Effective maximum health is quite lowered</li><li>💊 This wound can be treated with any compress but requires at least a Tough Compress to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause High Fever</li></ul>"
+               "description": "Ugh! I think I broke something...<ul><li>💬 Type & Severity: Impact (Extreme)</li><li>🖤🔻 Effective maximum health is quite lowered</li><li>💊 This wound can be treated with any compress but requires at least a Tough Compress to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🖤 This wound very slightly reduces the time a hearthling has to be rescued if knocked unconscious</li><li>🌡️ If left untreated, this wound may cause High Fever</li></ul>"
             },
             "minor_sting": {
                "display_name": "Wound: Minor Sting",
@@ -6120,7 +6120,7 @@
             },
             "nasty_gash": {
                "display_name": "Wound: Nasty Gash",
-               "description": "Ugh... I hope that didn't go through me.<ul><li>💬 Type & Severity: Piercing (Extreme)</li><li>🖤🔻 Effective maximum health is quite lowered</li><li>💊 This wound can be treated with any salve but requires at least a Neat Salve to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause Infection</li><li>💫 Treating this wound has a small chance of permanently adding the condition Scary Scar</li></ul>"
+               "description": "Ugh... I hope that didn't go through me.<ul><li>💬 Type & Severity: Piercing (Extreme)</li><li>🖤🔻 Effective maximum health is quite lowered</li><li>💊 This wound can be treated with any salve but requires at least a Neat Salve to be completely removed with a single treatment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause Infection</li><li>🖤 This wound very slightly reduces the time a hearthling has to be rescued if knocked unconscious</li><li>💫 Treating this wound has a small chance of permanently adding the condition Scary Scar</li></ul>"
             },
             "frostbite": {
                "display_name": "Wound: Frostbite",
@@ -6132,11 +6132,11 @@
             },
             "bad_burn": {
                "display_name": "Wound: Bad Burn",
-               "description": "That was way too hot!<ul><li>💬 Type & Severity: Fire (High)</li><li>💜🔻 Effective maximum health is somewhat lowered</li><li>💊 This wound will be removed by treatment with any ointment or any bandage but might require multiple applications before being removed</li><li>❌ This wound will never heal on its own</li><li>💫 Treating this wound has a small chance of permanently adding the condition Scary Scar</li></ul>"
+               "description": "That was way too hot!<ul><li>💬 Type & Severity: Fire (High)</li><li>💜🔻 Effective maximum health is somewhat lowered</li><li>💊 This wound will be removed by treatment with any ointment or any bandage but might require multiple applications before being removed</li><li>❌ This wound will never heal on its own</li><li>🖤 This wound very slightly reduces the time a hearthling has to be rescued if knocked unconscious</li><li>💫 Treating this wound has a small chance of permanently adding the condition Scary Scar</li></ul>"
             },
             "corrupted_laceration": {
                "display_name": "Wound: Corrupted Laceration",
-               "description": "This wound looks... unnatural. Scary!<ul><li>💬 Type & Severity: Corrupted (Extreme)</li><li>🖤🔻 Effective maximum health is quite lowered</li><li>💊 This wound can only be treated with a Hearthbud Ointment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause Infection</li><li>💫 Treating this wound has a small chance of permanently adding the condition Torn Soul</li></ul>"
+               "description": "This wound looks... unnatural. Scary!<ul><li>💬 Type & Severity: Corrupted (Extreme)</li><li>🖤🔻 Effective maximum health is quite lowered</li><li>💊 This wound can only be treated with a Hearthbud Ointment</li><li>❌ This wound will never heal on its own</li><li>🌡️ If left untreated, this wound may cause Infection</li><li>🖤 This wound very slightly reduces the time a hearthling has to be rescued if knocked unconscious</li><li>💫 Treating this wound has a small chance of permanently adding the condition Torn Soul</li></ul>"
             },
             "scary_scar": {
                "display_name": "Scary Scar",
@@ -6245,7 +6245,7 @@
          },
          "stamina_tonic": {
             "stamina_tonic_buff": {
-               "description": "Stamina is slightly increased for a while, boosting their health."
+               "description": "Stamina is slightly increased for a while, boosting their health.<ul><li>This buff slightly increases the time a hearthling has to be rescued if knocked unconscious</li></ul>"
             },
             "stamina_tonic_worn_off_buff": {
                "display_name": "Stamina Tonic (Expiration Effect)",
@@ -6255,7 +6255,7 @@
          "stamina_tonic_2": {
             "stamina_tonic_2_buff": {
                "display_name": "Enhanced Stamina Tonic",
-               "description": "Stamina is increased for a while, greatly boosting their health. Healing received is also increased."
+               "description": "Stamina is increased for a while, greatly boosting their health. Healing received is also increased.<ul><li>This buff increases the time a hearthling has to be rescued if knocked unconscious</li></ul>"
             },
             "stamina_tonic_2_worn_off_buff": {
                "display_name": "Enhanced Stamina Tonic (Expiration Effect)",
@@ -6460,7 +6460,7 @@
          },
          "cheese_flavors": {
             "display_name": "Cheese Flavors",
-            "description": "Cheese is amazing, cheese is life. Willpower, Stamina and Muscle are increased.<ul><li>Healing received is increased by 50%</li><li>This buff can be enhanced by consuming wine, turning into a new buff, \"Elevated Character\"</li></ul>"
+            "description": "Cheese is amazing, cheese is life. Willpower, Stamina and Muscle are increased.<ul><li>Healing received is increased by 50%</li><li>This buff slightly increases the time a hearthling has to be rescued if knocked unconscious</li><li>This buff can be enhanced by consuming wine, turning into a new buff, \"Elevated Character\"</li></ul>"
          },
          "serenity": {
             "display_name": "Serenity",
@@ -13764,7 +13764,7 @@
       "crops": {
          "moonbell_crop": {
             "display_name": "Moonbell Flower",
-            "description": "Decorative only! Cultivate them on Herbalist Planters for for peculiar herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for peculiar herbs.",
             "growth_stage": {
                "000": {
                   "name": "Moonbell Seedling",
@@ -13786,7 +13786,7 @@
          },
          "marblesprout_crop": {
             "display_name": "Marblesprout Flower",
-            "description": "Decorative only! Cultivate them on Herbalist Planters for for noxious herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for noxious herbs.",
             "growth_stage": {
                "000": {
                   "name": "Marblesprout Seedling",
@@ -13845,7 +13845,7 @@
          },
          "violet_crop": {
             "display_name": "Violet Flower",
-            "description": "Decorative only! Cultivate them on Herbalist Planters for for soothing herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for soothing herbs.",
             "growth_stage": {
                "000": {
                   "name": "Violet Seedlings",
@@ -13867,7 +13867,7 @@
          },
          "snow_poppy_crop": {
             "display_name": "Snow Poppy Flower",
-            "description": "Decorative only! Cultivate them on Herbalist Planters for for noxious herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for noxious herbs.",
             "growth_stage": {
                "000": {
                   "name": "Snow Poppy Seedlings",
@@ -14362,7 +14362,7 @@
          },
          "poppy_crop": {
             "display_name": "Poppy Flower",
-            "description": "Decorative only! Cultivate them on Herbalist Planters for for noxious herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for noxious herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -14384,7 +14384,7 @@
          },
          "rose_crop": {
             "display_name": "Rose Flower",
-            "description": "Decorative only! Cultivate them on Herbalist Planters for for healing herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for healing herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -14406,7 +14406,7 @@
          },
          "oleander_crop": {
             "display_name": "Oleander Flower",
-            "description": "Decorative only! Cultivate them on Herbalist Planters for for noxious herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for noxious herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -14428,7 +14428,7 @@
          },
          "daylily_crop": {
             "display_name": "Daylily Flower",
-            "description": "Decorative only! Cultivate them on Herbalist Planters for for mild herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for mild herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -14450,7 +14450,7 @@
          },
          "nightshade_crop": {
             "display_name": "Nightshade Flower",
-            "description": "Decorative only! Cultivate them on Herbalist Planters for for noxious herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for noxious herbs.",
             "growth_stage": {
                "000": {
                   "description": "Still growing!",
@@ -14471,7 +14471,7 @@
             }
          },
          "brightbell_crop": {
-            "description": "Decorative only! Cultivate them on Herbalist Planters for for healing herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for healing herbs.",
             "growth_stage": {
                "003": {
                   "description": "Decorative, will not be harvested."
@@ -14479,7 +14479,7 @@
             }
          },
          "cactus_flower_crop": {
-            "description": "Decorative only! Cultivate them on Herbalist Planters for for healing herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for healing herbs.",
             "growth_stage": {
                "003": {
                   "description": "Decorative, will not be harvested."
@@ -14487,7 +14487,7 @@
             }
          },
          "frostsnap_crop": {
-            "description": "Decorative only! Cultivate them on Herbalist Planters for for soothing herbs.",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for soothing herbs.",
             "growth_stage": {
                "003": {
                   "description": "Decorative, will not be harvested."

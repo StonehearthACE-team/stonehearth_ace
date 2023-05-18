@@ -1,4 +1,5 @@
 local GUTS_RESOURCE_NAME = 'guts'
+local ADDITIVE_GUTS_SUBTRACTION_MODIFIER_ATTRIBUTE = 'additive_guts_subtraction_modifier'
 local log = radiant.log.create_logger('incapacitation_component')
 
 local IncapacitationComponent = require 'stonehearth.components.incapacitation.incapacitation_component'
@@ -53,14 +54,27 @@ function AceIncapacitationComponent:_declare_state_transitions(sm)
          radiant.entities.add_buff(entity, 'stonehearth:buffs:incapacitated')
 
          -- set guts to 75%
+         -- (ACE) Add some flexbility for some possible "guts" altering modifiers to be supported; subtraction limited to a value between 1 and max_guts-1 (23 with default base human values)
          local expendable_resource_component = entity:get_component('stonehearth:expendable_resources')
+         local attributes_component = entity:get_component('stonehearth:attributes')
          local guts_value = expendable_resource_component:get_value(GUTS_RESOURCE_NAME)
+         local additive_guts_subtraction_modifier = attributes_component:get_attribute(ADDITIVE_GUTS_SUBTRACTION_MODIFIER_ATTRIBUTE) or 0
          local ic_data = radiant.entities.get_entity_data(entity, 'stonehearth:incapacitate_data')
-
-         local initial_subtraction = (ic_data.on_incapacitate_guts_subtraction or 1)
-          if radiant.entities.has_job_perk(self._entity, 'trapper_master_survivalist') then
-            initial_subtraction = 1
+         
+         local initial_subtraction = 1
+         
+         if radiant.entities.has_job_perk(entity, 'trapper_master_survivalist') then
+            -- (ACE) Trapper perk will also half the modifiers, but only if they're positive (negative modifiers are a buff)
+            if additive_guts_subtraction_modifier > 0 then
+               initial_subtraction = math.max(1, math.floor((additive_guts_subtraction_modifier + 0.5) / 2))
+            else
+               initial_subtraction = math.max(1 + additive_guts_subtraction_modifier)
+            end
+         else
+            initial_subtraction = math.max(1, (ic_data.on_incapacitate_guts_subtraction or 1) + additive_guts_subtraction_modifier)
          end
+         
+         initial_subtraction = math.min(initial_subtraction, guts_value - 1)
 
          expendable_resource_component:modify_value(GUTS_RESOURCE_NAME,  -(initial_subtraction))
 
@@ -81,14 +95,27 @@ function AceIncapacitationComponent:_declare_state_transitions(sm)
          radiant.entities.add_buff(entity, 'stonehearth:buffs:incapacitated')
 
          -- set guts to 75%
+         -- (ACE) Add some flexbility for some possible "guts" altering modifiers to be supported; subtraction limited to a value between 1 and max_guts-1 (23 with default base human values)
          local expendable_resource_component = entity:get_component('stonehearth:expendable_resources')
+         local attributes_component = entity:get_component('stonehearth:attributes')
          local guts_value = expendable_resource_component:get_value(GUTS_RESOURCE_NAME)
+         local additive_guts_subtraction_modifier = attributes_component:get_attribute(ADDITIVE_GUTS_SUBTRACTION_MODIFIER_ATTRIBUTE) or 0
          local ic_data = radiant.entities.get_entity_data(entity, 'stonehearth:incapacitate_data')
-
-         local initial_subtraction = (ic_data.on_incapacitate_guts_subtraction or 1)
+         
+         local initial_subtraction = 1
+         
          if radiant.entities.has_job_perk(entity, 'trapper_master_survivalist') then
-            initial_subtraction = 1
+            -- (ACE) Trapper perk will also half the modifiers, but only if they're positive (negative modifiers are a buff)
+            if additive_guts_subtraction_modifier > 0 then
+               initial_subtraction = math.max(1, math.floor((additive_guts_subtraction_modifier + 0.5) / 2))
+            else
+               initial_subtraction = math.max(1 + additive_guts_subtraction_modifier)
+            end
+         else
+            initial_subtraction = math.max(1, (ic_data.on_incapacitate_guts_subtraction or 1) + additive_guts_subtraction_modifier)
          end
+         
+         initial_subtraction = math.min(initial_subtraction, guts_value - 1)
 
          expendable_resource_component:modify_value(GUTS_RESOURCE_NAME,  -(initial_subtraction))
 

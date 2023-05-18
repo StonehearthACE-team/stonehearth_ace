@@ -18,6 +18,9 @@
       },
       "willpower": {
          "multiply": 0.4
+      },
+      "additive_guts_subtraction_modifier": {
+         "add": 10
       }
    },
    "effect": "stonehearth_ace:effects:poison_major",
@@ -28,6 +31,7 @@
       "pulse": "15m",
       "pulse_immediately": false,
       "pulse_on_destroy": false,
-      "is_percentage": true
+      "is_percentage": true,
+      "max_incapacitations": 1
    }
 }

@@ -6,6 +6,7 @@ local AcePeriodicHealthModificationBuff = class()
 AcePeriodicHealthModificationBuff._ace_old_on_buff_added = PeriodicHealthModificationBuff.on_buff_added
 function AcePeriodicHealthModificationBuff:on_buff_added(entity, buff)
    self._buff = buff
+   self._incapacitations = 0
    self:_ace_old_on_buff_added(entity, buff)
 end
 
@@ -59,7 +60,7 @@ function AcePeriodicHealthModificationBuff:_on_pulse()
       return  -- don't beat a dead (or incapacitated) horse
    end
 
-   if self._tuning.cannot_kill then
+   if self._tuning.cannot_kill or self._tuning.max_incapacitations and self._tuning.max_incapacitations <= self._incapacitations then
       --if this would kill, leave them at 1 hp instead. "max" and "-" because health_change is negative
       min_health = math.max(min_health, 1)
    end
@@ -67,6 +68,10 @@ function AcePeriodicHealthModificationBuff:_on_pulse()
    health_change = math.max(health_change, -(current_health - min_health))
 
    radiant.entities.modify_health(self._entity, health_change, self._buff:get_source())
+
+   if self._tuning.max_incapacitations and resources:get_value('health') <= 0 then
+      self._incapacitations = self._incapacitations + 1
+   end
 end
 
 return AcePeriodicHealthModificationBuff
