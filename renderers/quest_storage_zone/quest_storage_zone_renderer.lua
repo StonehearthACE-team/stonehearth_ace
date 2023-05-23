@@ -101,13 +101,17 @@ function QuestStorageZoneRenderer:_update()
          if not point.storage then
             log:debug('updating storage point at %s', point.location)
             local node = _radiant.client.create_qubicle_matrix_node(self._entity_node, model, 'Cuboid_1', model_origin / scale)
-                  :set_casts_shadows(false)
-                  :set_can_query(false)
-            node:set_scale(Point3.one * scale)
-            node:set_rotation(rotation)
-            node:set_position(point.location)
-            node:set_material('materials/ghost_item.json', true)
-            table.insert(self._storage_point_nodes, node)
+            if node then
+               node:set_casts_shadows(false)
+               node:set_can_query(false)
+               node:set_scale(Point3.one * scale)
+               node:set_rotation(rotation)
+               node:set_position(point.location)
+               node:set_material('materials/ghost_item.json', true)
+               table.insert(self._storage_point_nodes, node)
+            else
+               log:error('%s error creating qubicle matrix node for model %s; requires matrix ''Cuboid_1''', self._entity_node, model)
+            end
          end
       end
    end
