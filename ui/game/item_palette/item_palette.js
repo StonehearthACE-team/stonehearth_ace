@@ -239,10 +239,12 @@ $.widget( "stonehearth.stonehearthItemPalette", {
                parent = categoryElement.find('.downSection');
             }
 
-            if (!itemElement) {
+            if (!self._searchTags[uri]) {
                // also cache search terms for this uri
                self._cacheSearchTags(uri, item);
+            }
 
+            if (!itemElement) {
                var itemElements = self._itemElements[uri];
                if (!itemElements) {
                   self._itemElements[uri] = {};
@@ -356,7 +358,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       }
       tags = tags.concat(mats);
 
-      self._searchTags[uri] = tags;
+      self._searchTags[uri] = tags.filter(tag => tag && tag.length > 0 && !tag.includes('stockpile_'));
    },
 
    // ACE: added functionality for search filter and wanted items
@@ -402,6 +404,10 @@ $.widget( "stonehearth.stonehearthItemPalette", {
                break;
             }
          }
+      }
+      else if (!tags) {
+         // there's a problem!
+         console.log('No tags found for item ' + itemEl.attr('uri'));
       }
 
       if (!matches) {
