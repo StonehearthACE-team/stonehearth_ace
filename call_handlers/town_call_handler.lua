@@ -26,8 +26,9 @@ function TownCallHandler:remove_owner_command(session, response, entity)
    end
 end
 
-function TownCallHandler:craft_and_place_item_type_in_world(session, response, uri, location, rotation, normal)
-   validator.expect_argument_types({'string', 'Point3', 'number', 'Point3'}, uri, location, rotation, normal)
+function TownCallHandler:craft_and_place_item_type_in_world(session, response, uri, location, rotation, normal, structure)
+   validator.expect_argument_types({'string', 'Point3', 'number', 'Point3', validator.optional('Entity')},
+      uri, location, rotation, normal, structure)
 
    local town = stonehearth.town:get_town(session.player_id)
    if town then
@@ -38,7 +39,7 @@ function TownCallHandler:craft_and_place_item_type_in_world(session, response, u
          location = location,
          normal = normal,
          rotation = rotation,
-         structure = radiant._root_entity,
+         structure = structure or radiant._root_entity,
          preserve_destination = true,
       }
       town:craft_and_place_item_type(uri, placement_info)
