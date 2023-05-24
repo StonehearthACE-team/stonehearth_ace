@@ -139,6 +139,9 @@ function AceItemPlacer:_done_fn(selector, location, rotation)
          deferred = _radiant.call('stonehearth:place_item_on_structure',
             self.specific_item_to_place, location, rotation, self.placement_structure,
             self.placement_structure_normal, self.transactional)
+      elseif self.options.add_craft_order then
+         deferred = _radiant.call('stonehearth_ace:craft_and_place_item_type_in_world',
+            self.item_uri_to_place, location, rotation, self.placement_structure_normal, self.placement_structure)
       else
          deferred = _radiant.call('stonehearth:place_item_type_on_structure',
             self.item_uri_to_place, self.quality, location, rotation, self.placement_structure,
