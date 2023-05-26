@@ -204,6 +204,7 @@ local monkey_patches = {
    ace_structure = 'stonehearth.components.building2.structure',
    ace_swimming_service = 'stonehearth.services.server.swimming.swimming_service',
    ace_task_tracker_component = 'stonehearth.components.task_tracker.task_tracker_component',
+   ace_teleportation_component = 'stonehearth.components.teleportation.teleportation_component',
    ace_tentacle_snared_debuff = 'stonehearth.data.buffs.tentacle_snared.tentacle_snared_debuff',
    ace_terrain = 'radiant.modules.terrain',
    ace_terrain_patch_component = 'stonehearth.components.terrain_patch.terrain_patch_component',

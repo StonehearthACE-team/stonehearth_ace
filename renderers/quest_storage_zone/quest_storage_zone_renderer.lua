@@ -110,7 +110,7 @@ function QuestStorageZoneRenderer:_update()
                node:set_material('materials/ghost_item.json', true)
                table.insert(self._storage_point_nodes, node)
             else
-               log:error('%s error creating qubicle matrix node for model %s; requires matrix ''Cuboid_1''', self._entity_node, model)
+               log:error('%s error creating qubicle matrix node for model %s; requires matrix Cuboid_1', self._entity_node, model)
             end
          end
       end
