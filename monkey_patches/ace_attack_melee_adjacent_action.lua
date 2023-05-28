@@ -61,6 +61,9 @@ function AceAttackMeleeAdjacent:run(ai, entity, args)
             self._hit_effect:stop()
             self._hit_effect = nil
          else
+            -- ACE: apply self-buffs before damage is calculated
+            stonehearth.combat:apply_buffs(entity, entity, self._attack_info)
+
             -- TODO: Implement system to collect all damage types and all armor types
             -- and then resolve to compute the final damage type.
             -- TODO: figure out HP progression of enemies, so this system will scale well

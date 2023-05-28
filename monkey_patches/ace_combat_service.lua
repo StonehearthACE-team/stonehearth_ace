@@ -377,6 +377,40 @@ function AceCombatService:try_inflict_debuffs(target, debuff_list, attacker)
    end
 end
 
+function AceCombatService:apply_buffs(entity, target, ability_info)
+   local buffs = self:get_appliable_buffs(entity, ability_info, entity == target)
+   -- this function will check debuff_resistance, but that shouldn't be specified for any of these buffs
+   -- so no reason to duplicate the function as an "apply_buffs" function
+   stonehearth.combat:try_inflict_debuffs(target, buffs, entity)
+end
+
+function AceCombatService:get_appliable_buffs(entity, ability_info, is_self_buff)
+   local entity_data = radiant.entities.get_entity_data(entity, 'stonehearth:buffs')
+   local buff_list = {}
+   local buff_type = is_self_buff and 'appliable_self_buffs' or 'appliable_target_buffs'
+   if entity_data and entity_data[buff_type] then
+      table.insert(buff_list, entity_data[buff_type])
+   end
+   if ability_info and ability_info[buff_type] then
+      table.insert(buff_list, ability_info[buff_type])
+   end
+
+   local equipment_component = entity:get_component('stonehearth:equipment')
+   if equipment_component then
+      -- Look through all equipment to see if any equipment can inflict debuffs
+      local items = equipment_component:get_all_items()
+
+      for _, item in pairs(items) do
+         local item_buff_data = radiant.entities.get_entity_data(item, 'stonehearth:buffs')
+         if item_buff_data and item_buff_data[buff_type] then
+            table.insert(buff_list, item_buff_data[buff_type])
+         end
+      end
+   end
+
+   return buff_list
+end
+
 -- allow specifying locations for attack and target
 function AceCombatService:has_potential_line_of_sight(attacker, target, attacker_location, target_location)
    local result = _physics:has_line_of_sight(attacker, target, attacker_location, target_location)

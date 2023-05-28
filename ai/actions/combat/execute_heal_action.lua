@@ -144,16 +144,14 @@ function HealRangedInSight:_heal(healer, target, weapon_data)
    end
 
    local heal_info = self._heal_info
+	-- ACE addition: apply self buffs before healing is calculated, if defined
+   stonehearth.combat:apply_buffs(healer, healer, heal_info)
+
    local total_healing = stonehearth.combat:calculate_healing(healer, target, heal_info)
    local heal_context = HealContext(healer, target, total_healing)
 	
-	-- ACE addition
-	if heal_info.buff then
-		radiant.entities.add_buff(target, heal_info.buff, {
-         source = healer,
-         source_player = radiant.entities.get_player_id(healer),
-      })
-	end
+	-- ACE addition: apply target buffs, if defined
+   stonehearth.combat:apply_buffs(target, healer, heal_info)
 
    if stonehearth.combat:heal(heal_context) then
       radiant.events.trigger_async(healer, 'stonehearth:healer:healed_entity_in_combat', { entity = target })
