@@ -42,7 +42,12 @@
             "shared_cooldown": 8000,
             "bonus_healing_multiplier": 0.2,
             "in_progress_heal_cast_effect": "stonehearth_ace:effects:heal:in_progress_cast:quick",
-            "buff": "stonehearth_ace:buffs:cleric:healing_over_time",
+            "appliable_target_buffs": {
+               "heal_over_time": {
+                  "uri": "stonehearth_ace:buffs:cleric:healing_over_time",
+                  "chance": 1
+               }
+            },
             "priority": 0.6
          },
          {
@@ -54,7 +59,12 @@
             "shared_cooldown": 8000,
             "bonus_healing_multiplier": 4.5,
             "in_progress_heal_cast_effect": "stonehearth_ace:effects:heal:in_progress_cast:long",
-            "target_effect": "stonehearth_ace:effects:combat_heal_strong_effect",
+            "appliable_target_buffs": {
+               "heal_over_time": {
+                  "uri": "stonehearth_ace:buffs:cleric:combat_heal_strong_effect",
+                  "chance": 1
+               }
+            },
             "priority": 0.4
          },
          {
@@ -66,7 +76,12 @@
             "shared_cooldown": 8000,
             "bonus_healing_multiplier": 0.5,
             "in_progress_heal_cast_effect": "stonehearth_ace:effects:heal:in_progress_cast:quick",
-            "buff": "stonehearth_ace:buffs:cleric:divine_intervention",
+            "appliable_target_buffs": {
+               "heal_over_time": {
+                  "uri": "stonehearth_ace:buffs:cleric:divine_intervention",
+                  "chance": 1
+               }
+            },
             "priority": 1
          }
       ],
