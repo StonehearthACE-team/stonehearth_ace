@@ -112,19 +112,15 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
          local needed = condition.amount * ingredient.count
          local in_storage = inv:get_amount_in_storage(ingredient.uri, ingredient.material)
          -- Go through and combine the orders in all the order lists
-         local in_order_list = {}
+         -- we ignore all maintain orders; only consider make orders for reserved/required ingredients
+         local in_order_list = 0
          for _, order_list in ipairs(crafter_info:get_order_lists()) do
             local order_list_amount = order_list:_get_ingredient_amount_in_order_list(crafter_info, ingredient)
-            for k, v in pairs(order_list_amount) do
-               in_order_list[k] = (in_order_list[k] or 0) + v
-            end
+            in_order_list = in_order_list + order_list_amount.make
          end
-         missing = math.max(needed - math.max(in_storage + in_order_list.total - crafter_info:get_reserved_ingredients(ingredient_id), 0), 0)
+         missing = math.max(needed - math.max(in_storage + in_order_list - crafter_info:get_reserved_ingredients(ingredient_id), 0), 0)
 
-         --log:debug('we need %d, have %d in storage, have %d in order list (%d of which are maintained), and %d reserved so we are missing %d (math is hard, right?)',
-         --   needed, in_storage, in_order_list.total, in_order_list.maintain, crafter_info:get_reserved_ingredients(ingredient_id), missing)
-
-         crafter_info:add_to_reserved_ingredients(ingredient_id, math.max(needed - in_order_list.maintain, 0))
+         crafter_info:add_to_reserved_ingredients(ingredient_id, needed)
       else -- condition.type == 'maintain'
          missing = ingredient.count
 
@@ -323,11 +319,8 @@ function AceCraftOrderList:remove_from_reserved_ingredients(ingredients, order_i
    multiple = multiple or 1
    local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
    for _, ingredient in pairs(ingredients) do
-      local in_order_list = self:_get_ingredient_amount_in_order_list(crafter_info, ingredient, order_id)
       local ingredient_id = ingredient.uri or ingredient.material
-      local amount = math.max(ingredient.count * multiple - in_order_list.maintain, 0)
-
-      crafter_info:remove_from_reserved_ingredients(ingredient_id, amount)
+      crafter_info:remove_from_reserved_ingredients(ingredient_id, ingredient.count * multiple)
    end
 end
 

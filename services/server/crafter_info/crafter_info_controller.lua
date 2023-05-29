@@ -7,8 +7,18 @@ function CrafterInfoController:initialize()
    self._formatted_recipes = {}
 
    self._sv.player_id = nil
-   self._sv.order_lists = {}
-   self._sv.reserved_ingredients = {}
+   self._sv._order_lists = {}
+   self._sv._reserved_ingredients = {}
+end
+
+function CrafterInfoController:restore()
+   if self._sv.order_lists then
+      self._sv._order_lists = self._sv.order_lists
+      self._sv.order_lists = nil
+      self._sv._reserved_ingredients = self._sv.reserved_ingredients
+      self._sv.reserved_ingredients = nil
+      self.__saved_variables:mark_changed()
+   end
 end
 
 function CrafterInfoController:create(player_id)
@@ -43,6 +53,7 @@ end
 
 function CrafterInfoController:_create_maps()
    self._recipe_map:clear()
+   self._sv._order_lists = {}
 
    log:debug('creating maps for %s...', self._sv.player_id)
    
@@ -57,7 +68,7 @@ function CrafterInfoController:_create_maps()
       local recipe_list = job_info:is_enabled() and job_info:get_recipe_list()
       if recipe_list then
          local order_list = job_info:get_order_list()
-         table.insert(self._sv.order_lists, order_list)
+         table.insert(self._sv._order_lists, order_list)
 
          for category_name, category_data in pairs(recipe_list) do
             if not category_data.recipes then
@@ -98,7 +109,6 @@ function CrafterInfoController:_create_maps()
          end
       end
    end
-   self.__saved_variables:mark_changed()
 
    log:debug('finished creating maps for %s', self._sv.player_id)
 end
@@ -298,41 +308,38 @@ function CrafterInfoController:get_possible_recipes(tags)
 end
 
 function CrafterInfoController:get_order_lists()
-   return self._sv.order_lists
+   return self._sv._order_lists
 end
 
 function CrafterInfoController:get_reserved_ingredients(ingredient_type)
-   return self._sv.reserved_ingredients[ingredient_type] or 0
+   return self._sv._reserved_ingredients[ingredient_type] or 0
 end
 
 function CrafterInfoController:add_to_reserved_ingredients(ingredient_type, amount)
    -- uncomment logging when we want to see the table's contents
-   --log:debug('current reserved list: %s', radiant.util.table_tostring(self._sv.reserved_ingredients))
+   --log:debug('current reserved list: %s', radiant.util.table_tostring(self._sv._reserved_ingredients))
    log:debug('adding %d of "%s" to the reserved list', amount, ingredient_type)
 
-   if not self._sv.reserved_ingredients[ingredient_type] then
-      self._sv.reserved_ingredients[ingredient_type] = amount
+   if not self._sv._reserved_ingredients[ingredient_type] then
+      self._sv._reserved_ingredients[ingredient_type] = amount
    else
-      self._sv.reserved_ingredients[ingredient_type] = self._sv.reserved_ingredients[ingredient_type] + amount
+      self._sv._reserved_ingredients[ingredient_type] = self._sv._reserved_ingredients[ingredient_type] + amount
    end
-
-   self.__saved_variables:mark_changed()
 end
 
 function CrafterInfoController:remove_from_reserved_ingredients(ingredient_type, amount)
-   if not self._sv.reserved_ingredients[ingredient_type] then
+   if not self._sv._reserved_ingredients[ingredient_type] then
       return
    end
 
    -- uncomment logging when we want to see the table's contents
-   --log:debug('current reserved list: %s', radiant.util.table_tostring(self._sv.reserved_ingredients))
+   --log:debug('current reserved list: %s', radiant.util.table_tostring(self._sv._reserved_ingredients))
    log:debug('removing %d of "%s" from the reserved list', amount, ingredient_type)
 
-   self._sv.reserved_ingredients[ingredient_type] = self._sv.reserved_ingredients[ingredient_type] - amount
-   if self._sv.reserved_ingredients[ingredient_type] == 0 then
-      self._sv.reserved_ingredients[ingredient_type] = nil
+   self._sv._reserved_ingredients[ingredient_type] = self._sv._reserved_ingredients[ingredient_type] - amount
+   if self._sv._reserved_ingredients[ingredient_type] <= 0 then
+      self._sv._reserved_ingredients[ingredient_type] = nil
    end
-   self.__saved_variables:mark_changed()
 end
 
 return CrafterInfoController
