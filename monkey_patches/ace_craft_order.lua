@@ -451,6 +451,7 @@ function AceCraftOrder:conditions_fulfilled(crafter)
          return false
       end
    elseif condition.type == "maintain" then
+      num_being_made = num_being_made * self._num_primary_product_per_craft
       if condition.at_least <= num_being_made then
          return false
       end
