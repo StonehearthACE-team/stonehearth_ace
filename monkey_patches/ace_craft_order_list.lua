@@ -31,6 +31,14 @@ function AceCraftOrderList:_should_update_maintain_orders(player_id)
    return stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'update_maintain_orders', true)
 end
 
+-- returns the number maintained if the recipe is maintained, otherwise nil
+function AceCraftOrderList:is_product_maintained(product_uri)
+   local order = self:_find_product_order(product_uri, 'maintain')
+   if order then
+      return order:get_condition().at_least
+   end
+end
+
 AceCraftOrderList._ace_old_add_order = CraftOrderList.add_order
 -- In addition to the original add_order function (from craft_order_list.lua),
 -- here it's also checking if the order has enough of the required ingredients and,
@@ -410,6 +418,22 @@ function AceCraftOrderList:_find_craft_order(recipe_name, order_type)
 
       if order_recipe_name == recipe_name and (not order_type or order:get_condition().type == order_type) then
          return order
+      end
+   end
+
+   return nil
+end
+
+-- Gets the craft order with a product that matches `product_uri`, if an `order_type`
+-- is defined, then it will also check for a match against it.
+-- Returns nil if no match was found.
+--
+function AceCraftOrderList:_find_product_order(product_uri, order_type)
+   for i, order in ipairs(self._sv.orders) do
+      if not order_type or order:get_condition().type == order_type then
+         if order:produces(product_uri) then
+            return order
+         end
       end
    end
 

@@ -311,6 +311,15 @@ function CrafterInfoController:get_order_lists()
    return self._sv._order_lists
 end
 
+function CrafterInfoController:is_product_maintained(product_uri)
+   for _, order_list in pairs(self._sv._order_lists) do
+      if order_list:is_product_maintained(product_uri) then
+         return true
+      end
+   end
+   return false
+end
+
 function CrafterInfoController:get_reserved_ingredients(ingredient_type)
    return self._sv._reserved_ingredients[ingredient_type] or 0
 end
