@@ -495,6 +495,17 @@ function AceCraftOrder:_get_primary_product_uri(products)
    return uri
 end
 
+function AceCraftOrder:produces(product_uri)
+   if products[1].item == product_uri then
+      return true
+   end
+   if self._recipe.ace_smart_crafter_consider_as and #self._recipe.ace_smart_crafter_consider_as > 0 and
+         self._recipe.ace_smart_crafter_consider_as[1].item == product_uri then
+      return true
+   end
+   return false
+end
+
 function AceCraftOrder:get_auto_crafting()
    return self._sv._auto_crafting
 end

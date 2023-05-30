@@ -47,6 +47,11 @@ function AcePlayerJobsController:_ensure_all_job_indexes()
    end
 end
 
+function AcePlayerJobsController:is_product_maintained(product_uri)
+   local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(self._sv.player_id)
+   return crafter_info:is_product_maintained(product_uri)
+end
+
 function AcePlayerJobsController:request_craft_product(product_uri, amount, building, require_exact, insert_order, condition, associated_orders, current_recipe)
    log:debug('request_craft_product( %s, %s, %s, %s, %s, %s, %s, %s )',
          product_uri, amount, tostring(building), tostring(require_exact), tostring(insert_order), tostring(condition), tostring(associated_orders), tostring(current_recipe))
@@ -63,6 +68,16 @@ function AcePlayerJobsController:request_craft_product(product_uri, amount, buil
    -- and call that job_info controller only
    -- craft_order_list will need to be patched to call this then
    local products = not require_exact and radiant.entities.get_alternate_uris(product_uri) or {[product_uri] = true}
+
+   -- if no condition or associated orders are specified and the product is already being maintained, don't create a new craft order for it
+   if not condition and not associated_orders then
+      for product, consider in pairs(products) do
+         if consider and self:is_product_maintained(product) then
+            return false
+         end
+      end
+   end
+
    local choices = self:_get_recipe_info_from_products(products, amount, associated_orders, current_recipe)
 
    -- prefer craftable recipes (has job and level requirement)
