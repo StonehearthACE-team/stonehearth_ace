@@ -7298,6 +7298,10 @@
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
       },
+      "get_build_grid_offset": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "server"
+      },
       "get_storage_filter_custom_presets_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "client"
@@ -7310,6 +7314,10 @@
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
       },
+      "set_build_grid_offset": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "server"
+      },
       "set_client_gameplay_settings_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
@@ -7317,14 +7325,6 @@
       "set_client_gameplay_setting_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
-      },
-      "title_selection_criteria_changed": {
-         "controller": "file(call_handlers/settings_call_handler.lua)",
-         "endpoint": "server"
-      },
-      "soundtrack_override_setting_changed": {
-         "controller": "file(call_handlers/settings_call_handler.lua)",
-         "endpoint": "client"
       },
       "set_storage_filter_custom_presets_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
@@ -7338,9 +7338,17 @@
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "client"
       },
+      "soundtrack_override_setting_changed": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "client"
+      },
       "terrain_slice_buildings_setting_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "client"
+      },
+      "title_selection_criteria_changed": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "server"
       },
       "water_signal_update_frequency_setting_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",

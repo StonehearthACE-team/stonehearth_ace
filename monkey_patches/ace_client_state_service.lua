@@ -27,4 +27,14 @@ function AceClientStateService:set_client_gameplay_setting(player_id, mod, field
    local setting = state:set_gameplay_setting(mod, field, value)
 end
 
+function AceClientStateService:get_build_grid_offset(player_id)
+   local state = self:get_client_state(player_id)
+   return state and state:get_build_grid_offset()
+end
+
+function AceClientStateService:set_build_grid_offset(player_id, offset)
+   local state = self:get_client_state(player_id)
+   return state and state:set_build_grid_offset(offset)
+end
+
 return AceClientStateService

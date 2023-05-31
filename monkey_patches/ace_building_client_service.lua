@@ -1,6 +1,18 @@
+local Point2 = _radiant.csg.Point2
 local Point3 = _radiant.csg.Point3
 
+local BuildingClientService = require 'stonehearth.services.client.building.building_client_service'
 local AceBuildingClientService = class()
+
+AceBuildingClientService._ace_old_on_server_ready = BuildingClientService.on_server_ready
+function AceBuildingClientService:on_server_ready()
+   self:_ace_old_on_server_ready()
+
+   _radiant.call('stonehearth_ace:get_build_grid_offset')
+      :done(function(r)
+            self._build_grid_offset = radiant.util.to_point2(r.offset)
+         end)
+end
 
 function AceBuildingClientService:_on_ui_mode_changed()
    local mode = stonehearth.renderer:get_ui_mode()
@@ -27,6 +39,15 @@ function AceBuildingClientService:build(session, response, insert_craft_requests
       :done(function(r)
             response:resolve(r.result)
          end)
+end
+
+function AceBuildingClientService:get_build_grid_offset()
+   return self._build_grid_offset or Point2.zero
+end
+
+function AceBuildingClientService:set_build_grid_offset(offset)
+   self._build_grid_offset = offset
+   _radiant.call('stonehearth_ace:set_build_grid_offset', offset)
 end
 
 return AceBuildingClientService
