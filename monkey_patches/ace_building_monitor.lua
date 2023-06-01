@@ -8,11 +8,13 @@ function AceBuildingMonitor:_update_material_status()
    local player_color = stonehearth.presence:get_color_integer(self._player_id)
 
    local missing_resources = false
-   for mat, count in pairs(remaining_costs) do
-      -- we only care about a missing resource if we don't have any of it banked already (this matches vanilla experience)
-      if not building:has_banked_resource(mat) and not basic_inventory_tracker:get_tracking_data():contains(mat) then
-         missing_resources = true
-         break
+   if not building:completed() then
+      for mat, count in pairs(remaining_costs) do
+         -- we only care about a missing resource if we don't have any of it banked already (this matches vanilla experience)
+         if not building:has_banked_resource(mat) and not basic_inventory_tracker:get_tracking_data():contains(mat) then
+            missing_resources = true
+            break
+         end
       end
    end
 

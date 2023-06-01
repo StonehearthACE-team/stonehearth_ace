@@ -350,6 +350,9 @@ function AceBuilding:_on_plan_complete()
    self:_destroy_resource_delivery_entity()
 
    self:_ace_old__on_plan_complete()
+
+   -- required to actually clear out the resource cost so it doesn't show the missing resources alert overlay
+   self:_calculate_remaining_resource_cost()
 end
 
 function AceBuilding:_create_resource_collection_tasks()
