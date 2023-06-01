@@ -34,7 +34,9 @@ end
 
 function AceClientStateService:set_build_grid_offset(player_id, offset)
    local state = self:get_client_state(player_id)
-   return state and state:set_build_grid_offset(offset)
+   if state then
+      state:set_build_grid_offset(offset)
+   end
 end
 
 return AceClientStateService
