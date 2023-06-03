@@ -51,19 +51,18 @@ function AceCraftOrder:activate()
    end
 
    -- track the number of primary products produced by each craft of the recipe
-   if self._sv.condition.requested_amount then
-      local num = 0
-      local product = self._recipe.produces[1]
-      local uri = product and product.item
-      if uri then
-         for _, prod_item in ipairs(self._recipe.produces) do
-            if prod_item.item == uri then
-               num = num + 1
-            end
+   -- always do this, not just if it was a requested amount
+   local num = 0
+   local product = self._recipe.produces[1]
+   local uri = product and product.item
+   if uri then
+      for _, prod_item in ipairs(self._recipe.produces) do
+         if prod_item.item == uri then
+            num = num + 1
          end
-
-         self._num_primary_product_per_craft = num
       end
+
+      self._num_primary_product_per_craft = math.max(1, num)
    end
 
    self.__saved_variables:mark_changed()
