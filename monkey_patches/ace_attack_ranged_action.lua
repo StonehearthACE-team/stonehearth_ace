@@ -1,5 +1,5 @@
-local AssaultContext = require 'services.server.combat.assault_context'
-local BatteryContext = require 'services.server.combat.battery_context'
+local AssaultContext = require 'stonehearth.services.server.combat.assault_context'
+local BatteryContext = require 'stonehearth.services.server.combat.battery_context'
 
 local AceAttackRanged = class()
 
