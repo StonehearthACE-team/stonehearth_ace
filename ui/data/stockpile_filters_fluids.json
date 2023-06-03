@@ -508,9 +508,15 @@
                "icon": "/stonehearth_ace/entities/trees/apple_tree/seed/edible_fruits_icon.png",
                "filter": "seed_fruit cooking_ingredient"
             },
+            "lingonberries": {
+               "ordinal": 10.01,
+               "display_name": "i18n(stonehearth_ace:entities.food.lingonberry_basket.display_name)",
+               "icon": "/stonehearth_ace/entities/food/lingonberry_basket/lingonberry_basket.png",
+               "filter": "raw_food berry lingonberry"
+            },
             "berries": {
                "display_name": "i18n(stonehearth:entities.food.berries.berry_basket.display_name)",
-               "filter": "raw_food berry",
+               "filter": "raw_food berry standard",
                "icon": "/stonehearth_ace/entities/food/berries/berry_basket/berry_basket.png",
                "ordinal": 10.1
             },

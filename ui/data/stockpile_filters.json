@@ -70,32 +70,38 @@
          "filter": "nature_scenery",
          "ordinal": 1.9,
          "categories": {
-            "saplings": {
+            "landscaping": {
                "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_landscaping)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/landscaping.png",
+               "filter": "stockpile_landscaping"
+            },
+            "saplings": {
+               "ordinal": 2,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_saplings)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/saplings.png",
                "filter": "stockpile_plant tree"
             },
             "other_plants": {
-               "ordinal": 2,
+               "ordinal": 3,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_other_plants)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/other_plants.png",
                "filter": "stockpile_plant decoration"
             },
             "seeds": {
-               "ordinal": 3,
+               "ordinal": 4,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_seeds)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/seeds.png",
                "filter": "stockpile_plant seed"
             },
             "seeds_consumable": {
-               "ordinal": 4,
+               "ordinal": 5,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_seeds_consumable)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/consumables_other.png",
                "filter": "stockpile_seeds_consumable"
             },
             "fish": {
-               "ordinal": 5,
+               "ordinal": 6,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fish)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fish.png",
                "filter": "stockpile_fish"
@@ -103,9 +109,17 @@
          }
       },
       "construction": {
-         "categories": {}
+         "categories": {
+            "market_stalls": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_market_stalls)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/market_stalls.png",
+               "filter": "stockpile_market_stalls"
+            }
+         }
       },
       "goods": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.goods)",
          "categories": {
             "refined_goods": {
                "ordinal": 3.1,
@@ -148,6 +162,12 @@
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_gizmos_equipment)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/gizmos.png",
                "filter": "stockpile_gizmos"
+            },
+            "golems": {
+               "ordinal": 10,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_golems)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/golems.png",
+               "filter": "stockpile_golems"
             },
             "mixintypes": {
                "equipment": "remove",
@@ -223,6 +243,12 @@
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_food_fruits)",
                "icon": "/stonehearth/ui/game/modes/zones_mode/stockpile/images/taxonomy/fruit.png",
                "filter": "stockpile_raw_food fruit"
+            },
+            "raw_food_berries": {
+               "ordinal": 1.15,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_food_berries)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/berry.png",
+               "filter": "stockpile_raw_food berry"
             },
             "raw_food_meat": {
                "ordinal": 1.2,
@@ -314,6 +340,12 @@
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_essences)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/essences.png",
                "filter": "stockpile_essence resource"
+            },
+            "quest_items": {
+               "ordinal": 6,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_quest_items)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/quest_items.png",
+               "filter": "stockpile_quest_items"
             }
          }
       }
