@@ -495,7 +495,7 @@ function AceCraftOrder:_get_primary_product_uri(products)
 end
 
 function AceCraftOrder:produces(product_uri)
-   if products[1].item == product_uri then
+   if self._recipe.produces[1].item == product_uri then
       return true
    end
    if self._recipe.ace_smart_crafter_consider_as and #self._recipe.ace_smart_crafter_consider_as > 0 and
