@@ -10,6 +10,7 @@ function AceGrowingComponent:restore()
       self._sv._growth_timer = self._sv.growth_timer
       self._sv.growth_timer = nil
    end
+   self._restore_uri = self._entity:get_uri()
 end
 
 AceGrowingComponent._ace_old_activate = GrowingComponent.activate
@@ -41,7 +42,13 @@ end
 AceGrowingComponent._ace_old_post_activate = GrowingComponent.post_activate
 function AceGrowingComponent:post_activate()
    -- growth stages are expressed with unit_info display_name, but we want to lock custom_names for these entities
-   self._entity:add_component('stonehearth:unit_info'):lock('stonehearth:growing')
+   -- a growing entity could potentially transform on reloading into a different entity, so check for validity
+   if self._entity and self._entity:is_valid() then
+      self._entity:add_component('stonehearth:unit_info'):lock('stonehearth:growing')
+   else
+      log:error('entity with uri %s is invalid on post_activate, cannot lock unit_info component', self._restore_uri)
+   end
+   self._restore_uri = nil
 
    if self._ace_old_post_activate then
       self:_ace_old_post_activate()
