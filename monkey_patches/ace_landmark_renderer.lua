@@ -17,14 +17,20 @@ function AceLandmarkRenderer:_regenerate_visualization()
    end
 
    local landmark_block_types = self._landmark_block_types
-   if not landmark_block_types then
-      landmark_block_types = radiant.resources.load_json(landmark_spec.landmark_block_types, true, false)
+   if landmark_block_types == nil then
+      if landmark_spec.landmark_block_types then
+         landmark_block_types = radiant.resources.load_json(landmark_spec.landmark_block_types, true, false)
+      else
+         landmark_block_types = false
+      end
       self._landmark_block_types = landmark_block_types
    end
 
    -- This doesn't interact correctly with terrain bounds, but that's probably acceptable for a preview.
    local region = landmark_lib.get_generated_landmark_region(nil, landmark_spec)
-   region = landmark_lib.remove_tagged_blocks(region, landmark_block_types, {[0] = true})
+   if landmark_block_types then
+      region = landmark_lib.remove_tagged_blocks(region, landmark_block_types, {[0] = true})
+   end
 
    local color = { x = 32, y = 96, z = 32 }
    if stonehearth.presence_client:is_multiplayer() then
