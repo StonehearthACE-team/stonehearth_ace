@@ -1,8 +1,58 @@
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
+local MOVE_ITEM_COMMAND = 'stonehearth:commands:move_item'
+local UNDEPLOY_COMMAND = 'stonehearth:commands:undeploy_item'
+
 local EntityFormsComponent = require 'stonehearth.components.entity_forms.entity_forms_component'
 local AceEntityFormsComponent = class()
+
+AceEntityFormsComponent._ace_old_activate = EntityFormsComponent.activate
+function AceEntityFormsComponent:activate()
+   self._json = radiant.entities.get_json(self) or {}
+   if not self._is_create then
+      self:_ensure_specified_commands()
+   end
+
+   if self._ace_old_activate then
+      self:_ace_old_activate()
+   end
+end
+
+function AceEntityFormsComponent:_get_move_command()
+   return self._json.move_command or MOVE_ITEM_COMMAND
+end
+
+function AceEntityFormsComponent:_get_undeploy_command()
+   return self._json.undeploy_command or UNDEPLOY_COMMAND
+end
+
+function AceEntityFormsComponent:_post_create()
+   local placeable = self:is_placeable()
+   local show_placement_ui = placeable and not self:should_hide_placement_ui()
+
+   self:_ensure_iconic_form()
+
+   if placeable then
+      local uri = self._entity:get_uri()
+      assert(self._sv.iconic_entity, string.format('placeable entity %s missing an iconic entity form', uri))
+
+      if radiant.is_server and show_placement_ui then
+         local commands_component = self._entity:add_component('stonehearth:commands')
+         if not self._sv.hide_move_ui then
+            commands_component:add_command(self:_get_move_command())
+         end
+         if not self._sv.hide_undeploy_ui then
+            commands_component:add_command(self:_get_undeploy_command())
+         end
+      end
+   end
+
+   if radiant.is_server then
+      self:_install_traces()
+      self._player_id_trace:push_object_state()
+   end
+end
 
 AceEntityFormsComponent._ace_old__ensure_iconic_form = EntityFormsComponent._ensure_iconic_form
 function AceEntityFormsComponent:_ensure_iconic_form(post_load)
@@ -126,6 +176,38 @@ function AceEntityFormsComponent:_reconsider_entity(reason)
       if self._sv._interaction_proxy then
          stonehearth.ai:reconsider_entity(self._sv._interaction_proxy, reason .. ' (proxy)')
       end
+   end
+end
+
+-- ACE: use specified move/undeploy commands if they exist
+function AceEntityFormsComponent:_lock_commands()
+   local commands_component = self._entity:add_component('stonehearth:commands')
+   -- Lock the enabled flags of the commands to false
+   -- Note: these are no-ops if we don't have the commands.
+   commands_component:set_command_enabled_lock(self:_get_move_command(), false)
+   commands_component:set_command_enabled_lock(self:_get_undeploy_command(), false)
+end
+
+function AceEntityFormsComponent:_unlock_commands()
+   local commands_component = self._entity:add_component('stonehearth:commands')
+   -- Remove locked value and set command enabled flag to the value of whichever caller tried to call it last
+   commands_component:unset_command_enabled_lock(self:_get_move_command())
+   commands_component:unset_command_enabled_lock(self:_get_undeploy_command())
+end
+
+-- ACE: if specified, check if the default commands exist and replace them if necessary
+function AceEntityFormsComponent:_ensure_specified_commands()
+   local move_command = self:_get_move_command()
+   local undeploy_command = self:_get_undeploy_command()
+
+   if move_command ~= MOVE_ITEM_COMMAND and commands_component:has_command(MOVE_ITEM_COMMAND) and not commands_component:has_command(move_command) then
+      commands_component:remove_command(MOVE_ITEM_COMMAND)
+      commands_component:add_command(move_command)
+   end
+
+   if undeploy_command ~= UNDEPLOY_COMMAND and commands_component:has_command(UNDEPLOY_COMMAND) and not commands_component:has_command(undeploy_command) then
+      commands_component:remove_command(UNDEPLOY_COMMAND)
+      commands_component:add_command(undeploy_command)
    end
 end
 

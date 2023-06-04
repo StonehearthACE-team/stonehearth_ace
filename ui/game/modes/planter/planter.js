@@ -27,6 +27,10 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
             radiant.each(data.crops, function(crop, cropData) {
                if (cropData.seed_uri) {
                   seed_index[cropData.seed_uri] = crop;
+                  var catalogData = App.catalog.getCatalogData(cropData.seed_uri);
+                  if (catalogData && catalogData.display_name) {
+                     cropData.seed_display_name = i18n.t(catalogData.display_name);
+                  }
                }
                cropData.description = i18n.t(cropData.description);
                cropData.display_name = i18n.t(cropData.display_name);
@@ -121,7 +125,10 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
                   bestQuality = item_quality_key;
                }
             });
-            availableSeeds[crop] = bestQuality;
+            availableSeeds[crop] = {
+               quality: bestQuality,
+               quantity: uri_entry.count,
+            };
          }
       });
 
@@ -219,19 +226,20 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
    }.observes('plantedCropData'),
 
    _showPlanterTypePalette: function() {
-      if (!this.palette) {
-         var planterComponent = this.get('model.stonehearth_ace:herbalist_planter');
+      var self = this;
+      if (!self.palette) {
+         var planterComponent = self.get('model.stonehearth_ace:herbalist_planter');
          // only show the palette if there's actually a selection that can be made
          var numAllowed = 0;
          radiant.each(planterComponent.allowed_crops, (k, v) => numAllowed += (v ? 1 : 0));
          if (numAllowed > 1) {
-            this.palette = App.gameView.addView(App.AcePlanterTypePaletteView, {
+            self.palette = App.gameView.addView(App.AcePlanterTypePaletteView, {
                planter: planterComponent && planterComponent.__self,
-               planter_view: this,
-               planter_data: this.get('allCropData'),
+               planter_view: self,
+               planter_data: self.get('allCropData'),
                allowed_crops: planterComponent.allowed_crops,
-               uri: this.get('farmer_job_info'),
-               available_seeds: this._availableSeeds
+               uri: self.get('farmer_job_info'),
+               available_seeds: self._availableSeeds,
             });
          }
       }
@@ -323,6 +331,26 @@ App.AcePlanterTypePaletteView = App.View.extend({
             self._updateLockedCrops();
             cropDataArray.sort(self._sortWithoutQuality);
          });
+
+      App.guiHelper.createDynamicTooltip(self.$('#cropTypePalette'), '.row', function($el) {
+            var cropType = $el.attr('cropType');
+            if (cropType && cropType != 'no_crop') {
+               var cropData = self.planter_data.crops[cropType];
+               if (cropData && cropData.seed_display_name && self.available_seeds) {
+                  var seedQuantity = self._getAvailableSeedQuantity(self.available_seeds, cropType);
+                  var seedName = i18n.t(cropData.seed_display_name);
+                  var description = i18n.t('stonehearth_ace:ui.game.herbalist_planter.seed_tooltip', {
+                     seed_name: seedName,
+                  });
+                  var quantityText = i18n.t('stonehearth_ace:ui.game.herbalist_planter.seed_quantity_tooltip', {
+                     seed_quantity: seedQuantity,
+                     quantity_class: seedQuantity > 0 ? 'available' : 'unavailable',
+                  });
+                  var tooltip = `<div>${description}</div><div class='verticalSpacer'>${quantityText}</div>`
+                  return $(App.tooltipHelper.createTooltip(null, tooltip));
+               }
+            }
+         }, {delay: 500});
    },
 
    _isCropLocked: function(crop) {
@@ -367,7 +395,11 @@ App.AcePlanterTypePaletteView = App.View.extend({
    },
 
    _getAvailableSeedQuality: function(availableSeeds, cropType) {
-      return cropType == 'no_crop' ? 1 : availableSeeds[cropType] || 0;
+      return cropType == 'no_crop' ? 1 : availableSeeds[cropType] && availableSeeds[cropType].quality || 0;
+   },
+
+   _getAvailableSeedQuantity: function(availableSeeds, cropType) {
+      return cropType == 'no_crop' ? 1 : availableSeeds[cropType] && availableSeeds[cropType].quantity || 0;
    },
 
    _sortWithoutQuality: function(a, b) {
@@ -431,6 +463,7 @@ App.AcePlanterTypePaletteView = App.View.extend({
    },
 
    willDestroyElement: function() {
+      App.guiHelper.removeDynamicTooltip(this.$('#cropTypePalette'), '.row');
       this.$().off('click', '[cropType]');
       this._super();
    },
