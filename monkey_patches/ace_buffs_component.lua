@@ -255,13 +255,6 @@ function AceBuffsComponent:add_buff(uri, options)
       return -- don't add this buff if it's cooldown buff is still active
    end
 
-   if json.gained_statistics_key then
-      local stats_comp = self._entity:get_component('stonehearth_ace:statistics')
-      if stats_comp then
-         stats_comp:increment_stat('buffs_gained', json.gained_statistics_key)
-      end
-   end
-
    options = options or {}
    options.stacks = options.stacks or 1
 
@@ -369,6 +362,13 @@ function AceBuffsComponent:add_buff(uri, options)
       assert(buff)
       if buff:on_repeat_add(options) then
          self.__saved_variables:mark_changed()
+      end
+   end
+
+   if json.gained_statistics_key then
+      local stats_comp = self._entity:get_component('stonehearth_ace:statistics')
+      if stats_comp then
+         stats_comp:increment_stat('buffs_gained', json.gained_statistics_key)
       end
    end
 
