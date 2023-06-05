@@ -181,7 +181,11 @@ App.guiHelper = {
 
          $element.tooltipster(tooltipsterArgs);
          if (tooltipsterArgs.delay && tooltipsterArgs.delay > 0) {
-            var delayTimeout = setTimeout(() => $element.tooltipster('show'), tooltipsterArgs.delay);
+            var delayTimeout = setTimeout(() => {
+               if($element && $element.hasClass('tooltipstered')) {
+                  $element.tooltipster('show');
+               }
+            }, tooltipsterArgs.delay);
             $element.one('mouseout.guiHelper.createDynamicTooltip', function(e) {
                clearTimeout(delayTimeout);
             });
