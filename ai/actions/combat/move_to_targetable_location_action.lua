@@ -25,7 +25,8 @@ function MoveToTargetableLocation:start_thinking(ai, entity, args)
    
    self._delay_start_timer = radiant.on_game_loop_once('GetPrimaryTarget start_thinking', function()
          if not args.target or not args.target:is_valid() then
-            ai:abort('target is no longer valid')
+            -- we're just thinking, we don't need to abort
+            --ai:abort('target is no longer valid')
             return
          end
 
