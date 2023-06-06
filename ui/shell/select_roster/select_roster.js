@@ -339,7 +339,9 @@ App.StonehearthSelectRosterView = App.View.extend({
             self.$('#saveCitizensButton').removeClass('disabled');
             self._citizensArray = radiant.map_to_array(citizenMap);
             self.set('citizensArray', self._citizensArray);
-            self._reembarkOptionSelected = false;
+            if (initialize) {
+               self._reembarkOptionSelected = false;
+            }
 
             self._hideLoading();
          })
