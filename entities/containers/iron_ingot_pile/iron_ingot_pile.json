@@ -1,0 +1,51 @@
+{
+   "type": "entity",
+   "mixins": "file(iron_ingot_pile_ghost.json)",
+   "components": {
+      "render_info": {
+         "material": "materials/shiny.material.json"
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(iron_ingot_pile_iconic.json)",
+         "ghost_form": "file(iron_ingot_pile_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:resource_node": {
+         "resource": "stonehearth:refined:iron_ingot",
+         "harvest_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
+         "harvester_effect": "fiddle",
+         "description": "harvest",
+         "durability": 24
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 288,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      }
+   }
+}

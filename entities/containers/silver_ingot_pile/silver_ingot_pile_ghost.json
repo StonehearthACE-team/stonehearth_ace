@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(silver_ingot_pile.qb)"
+            ]
+         }
+      },
+      "stonehearth_ace:pile": {
+         "harvest_rate": 1
+      },
+      "render_info": {
+         "scale": 0.08
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.46 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:replant_data": {
+         "seed_alias": "stonehearth_ace:containers:silver_ingot_pile"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.silver_ingot_pile.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.silver_ingot_pile.description)",
+         "icon": "file(silver_ingot_pile.png)",
+         "category": "storage",
+         "material_tags": [
+            "stockpile_refined_ore",
+            "crafted",
+            "silver_ingot_pile",
+            "resource_pile"
+         ]
+      }
+   }
+}
