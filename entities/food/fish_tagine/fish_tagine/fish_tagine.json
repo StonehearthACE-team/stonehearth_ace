@@ -1,0 +1,61 @@
+{
+   "mixins": "stonehearth:mixins:prepared_food_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fish_tagine.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.05 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 12
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:fish_tagine:fish_tagine_serving",
+         "stacks_per_serving": 2
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 11,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.fish_tagine.fish_tagine.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.fish_tagine.fish_tagine.description)",
+         "icon": "file(fish_tagine.png)",
+         "is_item": true,
+         "category": "food_prepared",
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "fish_stew",
+            "stew",
+            "meat",
+            "fish",
+            "refined",
+            "stockpile_prepared_food",
+            "warming",
+            "dinner_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

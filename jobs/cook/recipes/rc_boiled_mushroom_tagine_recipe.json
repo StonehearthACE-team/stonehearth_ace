@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.boiled_mushroom_tagine_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.boiled_mushroom_tagine_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.boiled_mushroom_tagine_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/boiled_mushroom_tagine/boiled_mushroom_tagine/boiled_mushroom_tagine.png",
+   "workshop": "stonehearth:cook:workbench",
+   "level_requirement": 0,
+   "ingredients": [
+      {
+         "material": "raw_food fungi",
+         "count": 1
+      },
+		{
+         "material": "food_container raw_food vegetable leafy",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:boiled_mushroom_tagine"
+      }
+   ]
+}

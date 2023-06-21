@@ -140,7 +140,7 @@ function TitlesComponent:add_title(title, rank)
 
       self:_select_new_title(nil, title)
 
-      if stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'show_new_title_notification', true) then
+      if stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'show_new_title_notification', true) and tonumber(stonehearth.client_state:get_client_gameplay_setting(self._entity:get_player_id(), 'stonehearth_ace', 'new_title_notification_threshold')) <= self:_get_title_renown(title, rank) then
          self:_show_bulletin(title, rank)
       end
    end

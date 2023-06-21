@@ -1,0 +1,33 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(hunk_of_hard_coal_pile.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.hunk_of_hard_coal_pile.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.hunk_of_hard_coal_pile.description)",
+         "icon": "file(hunk_of_hard_coal_pile.png)",
+         "category": "storage",
+         "material_tags": [
+            "stockpile_coal",
+            "hunk_of_hard_coal_pile",
+            "crafted",
+            "resource_pile"
+         ]
+      }
+   }
+}
