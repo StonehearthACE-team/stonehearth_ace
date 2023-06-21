@@ -3243,11 +3243,11 @@
             "description": "Today, everything is just a tiny bit better.<ul><li>☀️ Normal sunlight levels</li><li>💦 Greatly increased humidity</li><li>✨ Hearthlings find all their ailments healed, as if by magic</li><li>✨ Hearthlings are slightly luckier in everything they do</li><li>🌈 A mysterious rainbow sometimes appears</li></ul>"
          },
          "foggy": {
-            "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>⚠️ Undead monsters come out of hiding under the cover of the fog</li><li>⛅ Reduced sunlight levels</li><li>💦 Highly increased humidity</li><li>👀 Vision radius is greatly reduced</li></ul>"
+            "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>⚠️ Undead monsters come out of hiding under the cover of the fog</li><li>⛅ Reduced sunlight levels</li><li>💦 Highly increased humidity</li><li>👀 Vision radius is greatly reduced</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
          },
          "foggy_chilly": {
             "display_name": "Foggy & Chilly",
-            "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>⚠️ Undead monsters come out of hiding under the cover of the fog</li><li>⛅ Reduced sunlight levels</li><li>💦 Highly increased humidity</li><li>👀 Vision radius is greatly reduced</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively</li></ul>"
+            "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>⚠️ Undead monsters come out of hiding under the cover of the fog</li><li>⛅ Reduced sunlight levels</li><li>💦 Highly increased humidity</li><li>👀 Vision radius is greatly reduced</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
          },
          "cloudy": {
             "description": "Overcast skies, perfect for lazing around on the porch.<ul><li>⛅ Fairly reduced sunlight levels</li><li>💦 Slightly increased humidity</li></ul>",
@@ -9892,6 +9892,11 @@
                "description": "This incredible anvil can keep the metal hot for the most intricate and powerful crafts. Replaces the regular anvil.",
                "flavor": "Balance between heating and hammering is essential. Or just do both at once. -Lucan Varius, Artifex Ignis"
             },
+            "lump_of_coal_recipe": {
+               "recipe_name": "Lumps o' Coal (x5)",
+               "description": "Carefully break a bunch of Hunks o' Hard Coal down into smaller and more often used Lumps o' Coal.",
+               "flavor": "The total fuel efficiency is preserved although, unlike hard coal, lumps of coal are not a higher grade fuel"
+            },
             "charcoal_recipe": {
                "recipe_name": "Piece o' Charcoal (x4)",
                "description": "Heat wood in the absence of oxygen to acquire charcoal, a good grade fuel.",
@@ -10199,6 +10204,10 @@
                   "flavor": ""
                }
             },
+            "hunk_of_hard_coal_pile_recipe": {
+               "recipe_name": "Hunk o' Hard Coal Pile",
+               "description": "A pile of hunks o' hard coal neatly stored for later use. Also great for selling bulk!"
+            },
             "copper_ingot_pile_recipe": {
                "recipe_name": "Copper Ingot Pile",
                "description": "A pile of copper ingots neatly stored for later use. Also great for selling bulk!"
@@ -10490,6 +10499,11 @@
                "description": "Boiling mushrooms will remove most of their impurities and improve their consistency.",
                "flavor": ""
             },
+            "boiled_mushroom_tagine_recipe": {
+               "recipe_name": "Boiled Mushroom Tagine",
+               "description": "A delicious and warm stew made with some salad greens and boiled mushrooms.",
+               "flavor": ""
+            },
             "shroom_omelette_recipe": {
                "recipe_name": "Mushroom Omelette",
                "description": "A satisfying and tasty dish that is also easy to make.",
@@ -10519,6 +10533,11 @@
                "recipe_name": "Peculiar Fish Stew",
                "description": "Warm and nutritious.",
                "flavor": "Don't smell it, just eat!"
+            },
+            "fish_tagine_recipe": {
+               "recipe_name": "Fish Stew Tagine",
+               "description": "Warm and nutritious.",
+               "flavor": "Has a peculiar smell but the veggies make it better"
             },
             "fish_pot_pie_recipe": {
                "recipe_name": "Fish Pot Pie",
@@ -20225,6 +20244,24 @@
          },
          "lingonberry_serving": {
             "display_name": "Serving of Lingonberries"
+         },
+         "fish_tagine": {
+            "fish_tagine": {
+               "display_name": "Fish Stew Tagine",
+               "description": "Has a particular smell and is very warm!"
+            },
+            "fish_tagine_serving": {
+               "display_name": "Serving of Fish Stew Tagine"
+            }
+         },
+         "boiled_mushroom_tagine": {
+            "boiled_mushroom_tagine": {
+               "display_name": "Boiled Mushroom Tagine",
+               "description": "Tasty boiled mushrooms and greens!"
+            },
+            "boiled_mushroom_tagine_serving": {
+               "display_name": "Serving of Boiled Mushroom Tagine"
+            }
          }
       },
       "terrain": {
@@ -22147,6 +22184,11 @@
             "display_name": "Gold Ingot Reserve",
             "description": "Harvest it to get 12 ingots of precious Gold metal!",
             "iconic_description": "Place it so it can be harvested for 12 ingots of Gold."
+         },
+         "hunk_of_hard_coal_pile": {
+            "iconic_description": "Place it so it can be harvested for 18 Hunks o' Hard Coal.",
+            "display_name": "Hunk o' Hard Coal Pile",
+            "description": "Harvest it to get 18 hunks of higher grade fuel!"
          }
       },
       "tools": {
@@ -24996,6 +25038,18 @@
                "show_connector_regions": "Show Connector Regions",
                "show_connector_regions_description": "In grid view, show where entities implementing the [stonehearth_ace:connection] component can connect to other such entities.",
                "show_new_title_notification": "Show notifications for Newly-Achieved Titles",
+               "new_title_notification_threshold": {
+                  "display_name": "Renown threshold for Title notifications",
+                  "description": "Choose how relevant the Newly-Achieved Title must be for a notifications to be shown.",
+                  "all": "All Titles",
+                  "all_description": "Show notifications for all titles regardless of Renown.",
+                  "uncommon": "Uncommon Titles",
+                  "uncommon_description": "Only show notifications for titles of at least 400 Renown. (Uncommon)",
+                  "rare": "Rare Titles",
+                  "rare_description": "Only show notifications for titles of at least 900 Renown. (Rare)",
+                  "legendary": "Legendary Titles",
+                  "legendary_description": "Only show notifications for titles of at least 1500 Renown. (Legendary)"
+               },
                "merchant_notifications": {
                   "display_name": "Merchant Notifications",
                   "description": "Choose which notifications to show each day when merchants arrive to your town.",

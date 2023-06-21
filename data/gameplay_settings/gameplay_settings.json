@@ -308,6 +308,35 @@
          "default": true,
          "ordinal": 15
       },
+      "new_title_notification_threshold": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.new_title_notification_threshold.display_name)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.new_title_notification_threshold.description)",
+         "values": {
+            "0": {
+               "ordinal": 0,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.new_title_notification_threshold.all)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.new_title_notification_threshold.all_description)"
+            },
+            "400": {
+               "ordinal": 400,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.new_title_notification_threshold.uncommon)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.new_title_notification_threshold.uncommon_description)"
+            },
+            "900": {
+               "ordinal": 900,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.new_title_notification_threshold.rare)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.new_title_notification_threshold.rare_description)"
+            },
+            "1500": {
+               "ordinal": 1500,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.new_title_notification_threshold.legendary)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.new_title_notification_threshold.legendary_description)"
+            }
+         },
+         "default": "0",
+         "ordinal": 15.1
+      },
       "merchant_notifications": {
          "type": "list",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.merchant_notifications.display_name)",

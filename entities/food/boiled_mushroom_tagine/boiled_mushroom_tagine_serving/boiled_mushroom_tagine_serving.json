@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(boiled_mushroom_tagine_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 33,
+            "drink_satisfaction": 4
+         },
+         "default": {
+            "satisfaction": 25,
+            "drink_satisfaction": 2
+         },
+         "quality": 5,
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:warm_belly"
+         ]
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.boiled_mushroom_tagine.boiled_mushroom_tagine_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "food",
+            "fungi",
+            "dinner_time",
+            "warming"
+         ],
+         "subject_override": "stonehearth_ace:food:boiled_mushroom_tagine"
+      }
+   }
+}
