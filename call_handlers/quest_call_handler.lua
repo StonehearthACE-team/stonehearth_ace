@@ -62,7 +62,10 @@ function QuestCallHandler:_choose_quest_storage_zone_location(session, response,
             return stonehearth.selection.FILTER_IGNORE
          end
    
-         if entity:get_id() ~= radiant._root_entity_id then
+         -- allow to be placed on terrain or built structures
+         if entity:get_id() ~= radiant._root_entity_id and
+               not entity:get_component('stonehearth:construction_data') and
+               not entity:get_component('stonehearth:build2:structure') then
             return false
          end
    

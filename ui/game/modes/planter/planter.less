@@ -154,12 +154,19 @@
             display: none;
          }
 
-         &.is-locked {
-            -webkit-filter: grayscale(75%);
-         }
-
          &.disabled {
             .disabled;
+            opacity: inherit;
+         }
+
+         &.is-locked {
+            .icon, .info>div:not(.unlock) {
+               opacity: 0.5;
+            }
+         }
+
+         .unlock {
+            color: @warningFontColor;
          }
       }
 

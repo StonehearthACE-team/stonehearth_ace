@@ -60,7 +60,7 @@
             <table>
                <tbody>
                {{#each view.cropTypes}}
-                  <tr {{bind-attr cropType=this.type locked=is_locked class=":row this.is_locked:disabled this.is_locked:is-locked this.is_hidden:is-hidden this.bestQualityClass"}}>
+                  <tr {{bind-attr cropType=this.type locked=this.is_locked class=":row this.is_locked:disabled this.is_locked:is-locked this.is_hidden:is-hidden this.bestQualityClass"}}>
                      <td>
                         <div class="icon">
                            <img class="image" {{bind-attr src=this.icon}} />
@@ -71,6 +71,9 @@
                            <div class="qualityDiv"></div>
                            <div class="name">{{this.display_name}}</div>
                            <div class="description">{{{this.description}}}</div>
+                           {{#if this.is_locked}}
+                           <div class="unlock">{{{this.unlock_text}}}</div>
+                           {{/if}}
                         </div>
                      </td>
                   </tr>
