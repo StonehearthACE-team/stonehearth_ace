@@ -13,6 +13,15 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       this._super();
       var self = this;
 
+      self._nativeCrops = {};
+      radiant.call('stonehearth_ace:get_biome_data')
+         .done(function (response) {
+            if (self.isDestroying || self.isDestroyed) {
+               return;
+            }
+            self._nativeCrops = response.biome_data.native_crops || {};
+         });
+
       // we do this so that icons can be specified with the "file(...)" syntax in the json instead of needing absolute paths
       // also because we're not saving the data in the component _sv
       radiant.call('stonehearth_ace:get_all_herbalist_planter_data')
@@ -240,6 +249,7 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
                allowed_crops: planterComponent.allowed_crops,
                uri: self.get('farmer_job_info'),
                available_seeds: self._availableSeeds,
+               native_crops: self._nativeCrops,
             });
          }
       }
@@ -346,7 +356,7 @@ App.AcePlanterTypePaletteView = App.View.extend({
                      seed_quantity: seedQuantity,
                      quantity_class: seedQuantity > 0 ? 'available' : 'unavailable',
                   });
-                  var tooltip = `<div>${description}</div><div class='verticalSpacer'>${quantityText}</div>`
+                  var tooltip = `<div>${description}</div><div class='verticalSpacer'>${quantityText}</div>`;
                   return $(App.tooltipHelper.createTooltip(null, tooltip));
                }
             }
@@ -366,15 +376,24 @@ App.AcePlanterTypePaletteView = App.View.extend({
    },
 
    _updateLockedCrops: function() {
-      var crops = this.get('cropTypes');
+      var self = this;
+      var crops = self.get('cropTypes');
       if (crops) {
          //radiant.sortByOrdinal(crops);
          for (var crop_id = 0; crop_id < crops.length; crop_id++) {
             var crop = crops[crop_id];
-            var is_locked = this._isCropLocked(crop);
-            var is_hidden = this._isCropHidden(crop);
+            var is_locked = self._isCropLocked(crop);
+            var is_hidden = self._isCropHidden(crop);
             Ember.set(crop, 'is_locked', is_locked);
-            Ember.set(crop, 'is_hidden', is_hidden)
+            Ember.set(crop, 'is_hidden', is_hidden);
+
+            if (is_locked) {
+               // if it's locked, indicate whether it's a native or exotic crop
+               // with a little info about how to unlock it
+               var isNative = self.native_crops[crop.type];
+               var unlockText = isNative ? 'stonehearth_ace:ui.game.herbalist_planter.unlock_native' : 'stonehearth_ace:ui.game.herbalist_planter.unlock_exotic';
+               Ember.set(crop, 'unlock_text', i18n.t(unlockText));
+            }
          }
       }
    }.observes('model.manually_unlocked'),

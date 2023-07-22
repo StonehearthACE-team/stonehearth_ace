@@ -229,7 +229,9 @@ App.guiHelper = {
 
       var title = options.display_name || catalogData.display_name;
       title = title && i18n.t(title, options);
-      if (itemQuality > 1) {
+      if (catalogData.deprecated) {
+         title = '<span class="item-tooltip-title item-deprecated">' + title + '</span>';
+      } else if (itemQuality > 1) {
          title = '<span class="item-tooltip-title item-quality-' + options.item_quality + '">' + title + '</span>';
       }
 
@@ -346,6 +348,10 @@ App.guiHelper = {
 
       if (netWorthAppeal != '') {
          detail += `<div class="details"><div class="stat">${netWorthAppeal}</div></div>`
+      }
+
+      if (catalogData.deprecated) {
+         detail += '<div class="item-deprecated-tooltip">' + i18n.t('stonehearth:ui.game.entities.tooltip_deprecated') + "</div>";
       }
 
       var tooltip = App.tooltipHelper.createTooltip(title, detail);
