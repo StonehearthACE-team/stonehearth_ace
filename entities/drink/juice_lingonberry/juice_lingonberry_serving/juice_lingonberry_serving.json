@@ -1,0 +1,42 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(juice_lingonberry_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 50
+         },
+         "default": {
+            "satisfaction": 40
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:fruity_flavors"
+         ],
+         "quality": 2
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.juice_lingonberry.juice_lingonberry_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "drink",
+            "juice_lingonberry_serving",
+            "juice",
+            "morning_time"
+         ],
+         "subject_override": "stonehearth_ace:drink:juice_lingonberry"
+      }
+   }
+}

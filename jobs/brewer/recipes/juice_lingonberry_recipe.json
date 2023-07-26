@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 22,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.juice_lingonberry_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.juice_lingonberry_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.juice_lingonberry_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/juice_lingonberry/juice_lingonberry/juice_lingonberry.png",
+   "level_requirement": 1,
+   "workshop": "stonehearth_ace:brewer:workbench",
+   "ingredients": [
+		{
+         "uri": "stonehearth_ace:food:lingonberry_basket",
+         "count": 4
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:juice_lingonberry"
+      }
+   ]
+}

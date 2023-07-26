@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 5,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.lingonberry_basket_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.lingonberry_basket_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.lingonberry_basket_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/lingonberry_basket/lingonberry_basket.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:vines:lingonberry_bush:seed",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:lingonberry_basket"
+      }
+   ]
+}

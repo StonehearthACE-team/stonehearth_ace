@@ -31,12 +31,12 @@
 				"legendary_parchment" : {
 					"recipe": "file(legendary_parchment_recipe.json)"
 				},
-            "legendary_rc_cloth": {
-               "recipe": "/rayyas_children/jobs/herbalist/recipes/legendary_rc_cloth_recipe.json"
-            },
-            "legendary_rc_stave": {
-               "recipe": "/rayyas_children/jobs/herbalist/recipes/legendary_rc_stave_recipe.json"
-            }
+				"legendary_rc_cloth": {
+					"recipe": "/rayyas_children/jobs/herbalist/recipes/legendary_rc_cloth_recipe.json"
+				},
+				"legendary_rc_stave": {
+					"recipe": "/rayyas_children/jobs/herbalist/recipes/legendary_rc_stave_recipe.json"
+				}
 			}
 		},
 		"planters": {
@@ -84,6 +84,9 @@
 				},
 				"gruit" : {
 					"recipe" : "file(gruit_recipe.json)"
+				},
+				"lingonberry_basket": {
+					"recipe": "file(lingonberry_basket_recipe.json)"
 				}
 			}
 		},
@@ -104,7 +107,7 @@
                "recipe": "file(cleric_tome_3_recipe.json)"
             }
          }
-	  },
+	  	},
 		"refinement" : {
 			"name": "i18n(stonehearth_ace:jobs.herbalist.recipes.refinement_name)",
 			"recipes" : {
@@ -121,6 +124,9 @@
 					"foxlily_transmute": "remove",
 					"snow_poppy_transmute": "remove",
 					"violet_transmute": "remove"
+				},
+				"lingonberry_bush_transmute": {
+					"recipe": "file(lingonberry_bush_transmute_recipe.json)"
 				},
 				"cotton_transmute": {
 					"recipe": "file(cotton_transmute_recipe.json)"
