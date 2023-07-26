@@ -1,0 +1,69 @@
+{
+   "mixins": "stonehearth_ace:mixins:drink_decay",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(juice_lingonberry.qb)"
+            ]
+         },
+         "decay_1": {
+            "models": [
+               "file(juice_lingonberry_spoiling.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 5
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_decay": {
+         "initial_decay": {
+            "min": 420,
+            "max": 600
+         }
+      },
+      "stonehearth_ace:drink_container": {
+         "effect": "fiddle",
+         "drink": "stonehearth_ace:drink:juice_lingonberry:juice_lingonberry_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 3,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.juice_lingonberry.juice_lingonberry.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.juice_lingonberry.juice_lingonberry.description)",
+         "icon": "file(juice_lingonberry.png)",
+         "is_item": true,
+         "category": "drink",
+         "material_tags": [
+            "drink_container",
+            "raw_drink",
+            "lingonberry",
+            "becomes_vinegar",
+            "juice",
+            "stockpile_drink",
+            "morning_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

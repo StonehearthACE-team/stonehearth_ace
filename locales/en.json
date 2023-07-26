@@ -7442,6 +7442,11 @@
                "description": "Dry and press thin sheets of algae that can be used as a robust herb.",
                "flavor": "It can also be used in cooking!"
             },
+            "lingonberry_basket_recipe": {
+               "recipe_name": "Basket of Lingonberries",
+               "description": "Get some berries together to form a basket good enough for eating, preserving, brewing or using as a sauce.",
+               "flavor": "Only northerners can make jam and juice out of Lingonberries, but everyone can use it as a condiment base!"
+            },
             "parasol_colony_recipe": {
                "recipe_name": "Parasol Colony (x3)",
                "description": "Use existing fungus to create more colonies to grow into new fungi. Slightly toxic when raw, use for cooking!",
@@ -12443,6 +12448,11 @@
                "recipe_name": "Bucket of Cherry Juice",
                "description": "A sour, flavorful recipe that uses wild cherries.",
                "flavor": ""
+            },
+            "juice_lingonberry_recipe": {
+               "recipe_name": "Bucket of Lingonberry Juice",
+               "description": "A northern recipe that uses wild lingonberries to make a long-lasting and tasty juice.",
+               "flavor": "Preserved in concentrated form and called 'saft' before the addition of water"
             },
             "juice_prickly_pear_recipe": {
                "recipe_name": "Bucket of Prickly Pear Juice",
@@ -20193,7 +20203,7 @@
          },
          "lingonberry_basket": {
             "display_name": "Basket of Lingonberries",
-            "description": "Tasty berries! Too few to be used as 'Any Fruit' but enough for jam or to be eaten!"
+            "description": "Tasty berries! Too few to be used as 'Any Fruit' but enough for jam, condiment base or to be eaten!"
          },
          "corn": {
             "amazing_corn_basket": {
@@ -23093,6 +23103,15 @@
             "serving_keg": {
                "display_name": "Serving Keg of White Beer"
             }
+         },
+         "juice_lingonberry": {
+            "juice_lingonberry": {
+               "display_name": "Lingonberry Juice",
+               "description": "A sweet, slightly sour juice made from wild northern berries. Lasts longer than most juices."
+            },
+            "juice_lingonberry_serving": {
+               "display_name": "Cup of Lingonberry Juice"
+            }
          }
       },
       "npc": {
@@ -23898,7 +23917,7 @@
       },
       "lingonberry_bush": {
          "display_name": "Lingonberry Bush",
-         "description": "A small, pretty bush. Needs several days to be fully grown and will provide <span class='extraHerb'>fruits</span> when harvested.",
+         "description": "A small, pretty bush. Needs several days to be fully grown and will provide useful <span class='extraHerb'>berries</span> when harvested.",
          "harvest_text": "harvesting lingonberries"
       }
    },
