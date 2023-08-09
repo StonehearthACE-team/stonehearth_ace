@@ -64,6 +64,7 @@
 				"stockpile_fuel",
 				"stockpile_raw_food vegetable",
 				"stockpile_raw_food fruit",
+				"stockpile_raw_food berry",
 				"stockpile_cooking_ingredient meat_ingredient",
 				"stockpile_cooking_ingredient animal_ingredient",
 				"stockpile_cooking_ingredient nuts",
@@ -75,14 +76,15 @@
 			"brewer": [
 				"stockpile_fuel",
 				"stockpile_raw_food fruit",
+				"stockpile_raw_food berry",
 				"stockpile_brewing_ingredient",
-				"stockpile_serving_vessel",
 				"herb pungent resource"
          ],
 			"larder": [
 				"stockpile_prepared_food baked",
 				"stockpile_prepared_food",
-				"stockpile_serving_vessel"
+				"stockpile_serving_vessel",
+				"stockpile_prepared_drink"
 			],
 			"shepherd": [
 				"stockpile_plant seed",
@@ -105,6 +107,7 @@
 				"stockpile_trophy"
 			],	
 			"landscaping": [
+				"stockpile_landscaping",
 				"stockpile_plant",
 				"stockpile_fungi",
 				"stockpile_plant tree",
@@ -188,6 +191,7 @@
 			"supply_weaver" : [
 				"yarn resource",
 				"fine_stuffing refined",
+				"resource mega_silkweed_thread",
 				"resource refined_cloth cloth standard",
 				"resource refined_cloth cloth amberstone",
 				"resource refined_cloth cloth silk",
@@ -204,6 +208,8 @@
 				"pelt rabbit"
 			],
 			"supply_metalworker" : [
+				"metal_bits hard",
+				"metal_bits soft",
 				"copper ingot refined",
 				"tin ingot refined",
 				"bronze ingot refined",
@@ -218,7 +224,7 @@
 			],
 			"supply_veggie_fruit" : [
 				"raw_food apple",
-				"raw_food berry",
+				"raw_food berry standard",
 				"raw_food carrot",
 				"raw_food garlic",
 				"raw_food cherry",
@@ -301,6 +307,7 @@
 				"raw_food pumpkin",
 				"raw_food cabbage",
 				"raw_food lettuce",
+				"raw_food cucumber",
 				"raw_food beetroot leafy",
 				"raw_food turnip leafy",
 				"raw_food beetroot hearty",
@@ -311,7 +318,7 @@
 			],
 			"decayables_fruits" : [
 				"raw_food apple",
-				"raw_food berry",
+				"raw_food berry standard",
 				"raw_food cherry",
 				"raw_food date",
 				"raw_food pear",
@@ -341,12 +348,13 @@
 				"cream sour cooking_ingredient",
 				"cream standard cooking_ingredient",
 				"curdling_mixture cooking_ingredient",
-				"drink_container moomoo_milk",
-				"drink_container sheep_milk",
-				"drink_container wild_cattle_milk",
-				"drink_container almond_milk"
+				"drink_container moomoo milk",
+				"drink_container sheep milk",
+				"drink_container wild_cattle milk",
+				"drink_container almond milk"
 			],
 			"decayables_meat" : [
+				"cooking_ingredient bug_meat",
 				"cooking_ingredient jerky",
 				"cooking_ingredient mutton",
 				"cooking_ingredient pork",
