@@ -270,23 +270,7 @@ function AceRestockDirector:_generate_next_errand()
       end
       return
    end
-
-   local best_storage_component = best_storage:get('stonehearth:storage')
-   local best_filter_fn
-   if best_storage_component:get_type() == 'input_crate' then
-      local storage_priority = best_storage_component:get_input_bin_priority()
-      best_filter_fn = function(item)
-         if self:_is_higher_priority_for_item(item, storage_priority) then
-            return filter_fn(item)
-         else
-            return false
-         end
-      end
-   else
-      best_filter_fn = filter_fn
-   end
-
-
+   
    -- Find nearby items that we can opportunistically include.
    local search_src_entity
    if get_world_location(target_item) then
@@ -294,6 +278,17 @@ function AceRestockDirector:_generate_next_errand()
    else
       search_src_entity = self._inventory:container_for(target_item)
    end
+
+   local best_storage_component = best_storage:get('stonehearth:storage')
+   local storage_priority = best_storage_component:get_input_bin_priority()
+   local best_filter_fn = function(item)
+      if self:_is_higher_priority_for_item(item, search_src_entity, storage_priority) then
+         return filter_fn(item)
+      else
+         return false
+      end
+   end
+
    local errand_id = self._current_errand_id
    local target_item_id = target_item:get_id()
    self._covered_items[target_item_id] = errand_id  -- Need to do this before the search so we don't choose this as an extra item.
@@ -365,10 +360,16 @@ function AceRestockDirector:_is_storage_higher_priority_for_item(item, new_stora
    return new_storage_comp:get_input_bin_priority() > current_storage:get_component('stonehearth:storage'):get_input_bin_priority()
 end
 
-function AceRestockDirector:_is_higher_priority_for_item(item, priority)
+function AceRestockDirector:_is_higher_priority_for_item(item, search_storage, priority)
    local current_storage = self._inventory:container_for(item)
-   if not current_storage then
+   -- if the item we're looking at isn't already in storage or is in the same storage as the primary item we're restocking
+   -- then we can go ahead and include it as a possible extra item
+   -- otherwise, we need to check if the storage we're looking at is higher priority than the current storage
+   -- if the current storage has minimum priority, it can't be higher, so we can skip that check
+   if not current_storage or current_storage == search_storage then
       return true
+   elseif priority == stonehearth.constants.inventory.input_bins.MIN_PRIORITY then
+      return false
    end
 
    return priority > current_storage:get_component('stonehearth:storage'):get_input_bin_priority()
