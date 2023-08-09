@@ -1,0 +1,25 @@
+{
+   "type": "entity",
+   "mixins": "file(terrain_water_bucket_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(terrain_water_bucket_iconic.json)",
+         "ghost_form": "file(terrain_water_bucket_ghost.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:placement": {
+         "effect": "carry_putdown",
+         "tag": "simple_terrain"
+      }
+   }
+}

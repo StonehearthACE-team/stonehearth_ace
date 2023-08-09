@@ -1,0 +1,33 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(terrain_water_bucket.qb)"
+            ]
+         }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 3
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "fiddle",
+         "drink": "stonehearth_ace:drink:water_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:catalog": {
+         "is_item": true,
+         "category": "landscaping",
+         "material_tags": [
+            "drink_container"
+         ]
+      }
+   }
+}
