@@ -21,6 +21,7 @@ function WaterSpongeComponent:initialize()
    self._destroy_water = self._json.destroy_water
    -- if the sponge is in absorb mode, disable once it's at full capacity; if in release mode, disable once it's empty
    self._auto_disable_on_full_or_empty = self._json.auto_disable_on_full_or_empty
+   self._destroy_entity_when_empty = self._json.destroy_entity_when_empty
    self._input_fail_ignores = 0
    self._output_fail_ignores = 0
    self._prev_input_water_entity = nil
@@ -322,6 +323,8 @@ function WaterSpongeComponent:on_tick_water_processor()
                   end
                elseif self._auto_disable_on_full_or_empty and not self._sv.input_enabled and self._container and self._container:is_empty() then
                   self:set_enabled(self._sv.input_enabled, false)
+               elseif self._destroy_entity_when_empty and self._container and self._container:is_empty() then
+                  radiant.entities.destroy_entity(self._entity)
                end
             end
          else
