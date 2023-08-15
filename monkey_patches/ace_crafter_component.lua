@@ -19,6 +19,17 @@ function AceCrafterComponent:create()
    end
 end
 
+function AceCrafterComponent:set_json(json)
+   if json then 
+      if json.repair_effect then
+         self._sv.repair_effect = json.repair_effect
+      end
+      if json.work_effect then
+         self._sv.work_effect = json.work_effect
+      end
+   end
+end
+
 AceCrafterComponent._ace_old_activate = CrafterComponent.activate
 function AceCrafterComponent:activate()
    if not self._is_auto_crafter then
@@ -191,6 +202,10 @@ function AceCrafterComponent:unreserve_fuel()
    if consumer_component then
       consumer_component:unreserve_fuel(self._entity:get_id())
    end
+end
+
+function AceCrafterComponent:get_repair_effect()
+   return self._sv.repair_effect or self:get_work_effect()
 end
 
 return AceCrafterComponent

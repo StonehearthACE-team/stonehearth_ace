@@ -24,7 +24,7 @@ function AceRepairEntityAdjacent:run(ai, entity, args)
    local repair_effect = siege_data.repair_effect or repair_data.repair_effect
    if not repair_effect then
       local crafter_comp = entity:get_component('stonehearth:crafter')
-      repair_effect = crafter_comp and crafter_comp:get_work_effect() or 'wrench'
+      repair_effect = crafter_comp and crafter_comp:get_repair_effect() or 'wrench'
    end
 
    if health ~= nil then
