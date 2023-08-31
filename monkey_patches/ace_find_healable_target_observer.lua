@@ -33,6 +33,68 @@ function AceFindHealableTargetObserver:_get_target_score(target)
    return heal_score
 end
 
+-- target allowed to be nil
+-- ACE: added non-combat heal option for when target (and self) aren't in combat
+function AceFindHealableTargetObserver:_heal_target(target)
+   self._log:info('setting target to %s', tostring(target))
+
+   -- in order to not have to override a bunch of other functions that deal with self._task and self._current_target,
+   -- only handle either combat or non-combat at a time; any combat target is prioritized over a non-combat target,
+   -- and if there's an active non-combat task, it will be canceled if a combat target is found
+   local target_in_combat = target and target:is_valid() and stonehearth.combat:is_in_combat(target)
+   local current_target_in_combat = self._current_target and self._current_target:is_valid() and stonehearth.combat:is_in_combat(self._current_target)
+
+   if self._task then
+      if target == self._current_target then
+         -- we're already healing that target, nothing to do
+         assert(target == self._task:get_args().target)
+         return
+      elseif current_target_in_combat and not target_in_combat then
+         -- we're currently healing a combat target, and we found a non-combat target, so ignore the new one
+         return
+      end
+   end
+   local current_target = stonehearth.combat:get_primary_target(self._entity)
+   if current_target and current_target:is_valid() and not target then
+      -- if we are trying to clear the primary target but the primary target is not friendly
+      -- that target is set by the other target observer and we should leave it as is.
+      -- TODO(yshan): consolidate the target observers.
+      if stonehearth.player:are_entities_friendly(current_target, self._entity) then
+         stonehearth.combat:set_primary_target(self._entity, target)
+      end
+   elseif current_target ~= target and (not target or target_in_combat) then
+      stonehearth.combat:set_primary_target(self._entity, target)
+   end
+
+   if target ~= self._current_target then
+      self:_destroy_task()
+      self._current_target = target
+   end
+
+   if target and target:is_valid() then
+      assert(not self._task)
+      if target_in_combat then
+         self._task = self._entity:add_component('stonehearth:ai')
+                           :get_task_group('stonehearth:task_groups:solo:combat_unit_control')
+                           :create_task('stonehearth:combat:heal_after_cooldown', { target = target })
+      else
+         self._task = stonehearth.town:get_town(self._entity)
+                           :create_task_for_group('stonehearth:task_groups:healing',
+                                                  'stonehearth:combat:heal_after_cooldown',
+                                                  { target = target })
+      end
+
+      self._task:once()
+         :notify_completed(
+            function ()
+               self._task = nil
+               self:_check_for_target()
+            end
+         )
+         :start()
+   end
+end
+
 -- just replaced radiant.entities.get_health_percentage with radiant.entities.get_effective_health_percentage (ACE)
 function AceFindHealableTargetObserver:_find_target()
    local stance = stonehearth.combat:get_stance(self._entity)

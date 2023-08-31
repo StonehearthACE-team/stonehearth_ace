@@ -33,6 +33,8 @@ function AceBuff:destroy()
    if self._json.thought and self._json.thought_remove_on_destroy and radiant.entities.has_thought(self._sv._entity, self._json.thought) then
       radiant.entities.remove_thought(self._sv._entity, self._json.thought)
    end
+
+   self:_cancel_craft_order()
    
    self:_ace_old_destroy()
 end
@@ -69,7 +71,7 @@ function AceBuff:_create_buff()
          inventory = stonehearth.inventory:get_inventory(player_id)
          if inventory and not inventory:get_items_of_type(self._json.queue_crafting_order) then
             local player_jobs_controller = stonehearth.job:get_jobs_controller(player_id)
-            player_jobs_controller:request_craft_product(self._json.queue_crafting_order, 1)
+            self:_set_craft_order(player_jobs_controller:request_craft_product(self._json.queue_crafting_order, 1))
          end
       end
    end
@@ -78,6 +80,23 @@ function AceBuff:_create_buff()
       self:_create_duration_timer()
       self:_update_duration_stat()
    end
+end
+
+function AceBuff:_set_craft_order(order)
+   if order then
+      self._sv._craft_order_id = order:get_id()
+      self._sv._craft_order_list = order:get_order_list()
+   end
+end
+
+function AceBuff:_cancel_craft_order()
+   local order_id = self._sv._craft_order_id
+   local order_list = self._sv._craft_order_list
+   if order_id and order_list then
+      order_list:remove_order(order_id, 1)
+   end
+   self._sv._craft_order_id = nil
+   self._sv._craft_order_list = nil
 end
 
 -- base game erroneously references self._sv.stacking_buff_type instead of self._json.repeat_add_action
