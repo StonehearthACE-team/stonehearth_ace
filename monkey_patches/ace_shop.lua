@@ -571,6 +571,11 @@ function AceShop:_add_entity_to_shop_sold_items(shop_sold_items, item)
 end
 
 function AceShop:_add_item_to_inventory(uri, description, cost, quality, quantity)
+   if not description.description or not description.description.materials then
+      -- no materials! bad item!
+      return
+   end
+   
    local key = self:_key_from_uri_and_quality(uri, quality)
    local entry = self._sv.shop_inventory[key]
    if not entry then
