@@ -1,0 +1,56 @@
+{
+   "type": "entity",
+   "mixins": "file(plank_bridge_small_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(plank_bridge_small_iconic.json)",
+         "ghost_form": "file(plank_bridge_small_ghost.json)",
+         "placeable_on_walls": true,
+         "placeable_on_ground": false
+      },
+      "region_collision_shape": {
+         "region_collision_type": "platform",
+         "region": [
+            {
+               "min": { "x": -1, "y": 0.5, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 0 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": -1, "z": -1 },
+               "max": { "x": 1, "y": 2, "z": 0 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_level": 1,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "wood",
+            "crafted",
+            "bridge",
+            "construction",
+            "stockpile_construction"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
