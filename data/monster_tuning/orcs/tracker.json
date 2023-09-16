@@ -1,0 +1,27 @@
+{
+   "type": "monster_tuning",
+   "mixins": "stonehearth:monster_tuning:orcs:default",
+   "estimated_difficulty": 3,
+   "job": "stonehearth:jobs:npc:archer",
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.orcs.tracker.description)"
+   },
+   "attributes": {
+      "max_health": 480,
+      "muscle": 16,
+      "menace": 85,
+      "courage": 180,
+      "speed": 88,
+      "additive_armor_modifier": 1,
+      "exp_reward": 135
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:crossbow"
+      ],
+      "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:easy",
+      "pierce": "stonehearth_ace:weapons:inflicted_wounds:pierce:very_hard",
+      "basic_siege": "stonehearth_ace:abilities:basic_siege_follower_abilities",
+      "outfit": "stonehearth_ace:monsters:orcs:outfits:tracker"
+   }
+}

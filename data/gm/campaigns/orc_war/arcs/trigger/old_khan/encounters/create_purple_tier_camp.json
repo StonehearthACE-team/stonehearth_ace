@@ -1,0 +1,119 @@
+{
+   "create_camp_info": {
+      "mixintypes": {
+         "boss": "override",
+         "citizens": "override"
+      },
+      "boss": {
+         "from_population": {
+            "role": "orc",
+            "location": {
+               "x": -2,
+               "y": 0
+            }
+         },
+         "combat_leash_range": 8,
+         "tuning": "stonehearth_ace:monster_tuning:orcs:champion"
+      },
+      "citizens": {
+         "kobolds": {
+            "from_population": {
+               "role": "kobold",
+               "min": 2,
+               "max": 2,
+               "location": {
+                  "x": 0,
+                  "z": 0
+               },
+               "range": 5
+            },
+            "combat_leash_range": 20,
+            "tuning": "stonehearth:monster_tuning:kobolds:kobold_archer_general"
+         },
+         "ogres": {
+            "from_population": {
+               "role": "ogre",
+               "min": 1,
+               "max": 1,
+               "location": {
+                  "x": 0,
+                  "z": 0
+               },
+               "range": 5
+            },
+            "combat_leash_range": 20,
+            "tuning": "stonehearth:monster_tuning:ogres:tank"
+         },
+         "orcs": {
+            "from_population": {
+               "role": "orc",
+               "min": 4,
+               "max": 4,
+               "location": {
+                  "x": 2,
+                  "z": 2
+               },
+               "range": 10
+            },
+            "combat_leash_range": 20,
+            "tuning": "stonehearth:monster_tuning:orcs:footman"
+         },
+         "orc_trackers": {
+            "from_population": {
+               "role": "orc",
+               "min": 2,
+               "max": 2,
+               "location": {
+                  "x": 0,
+                  "z": 0
+               },
+               "range": 5
+            },
+            "combat_leash_range": 20,
+            "tuning": "stonehearth_ace:monster_tuning:orcs:tracker"
+         },
+         "orc_blackguards": {
+            "from_population": {
+               "role": "orc",
+               "min": 2,
+               "max": 2,
+               "location": {
+                  "x": 0,
+                  "z": 0
+               },
+               "range": 5
+            },
+            "combat_leash_range": 20,
+            "tuning": "stonehearth_ace:monster_tuning:orcs:blackguard"
+         },
+         "orc_knights": {
+            "from_population": {
+               "role": "orc",
+               "min": 2,
+               "max": 2,
+               "location": {
+                  "x": 0,
+                  "z": 0
+               },
+               "range": 5
+            },
+            "combat_leash_range": 20,
+            "tuning": "stonehearth:monster_tuning:orcs:knight"
+         },
+         "orc_clerics": {
+            "from_population": {
+               "role": "orc",
+               "min": 1,
+               "max": 1,
+               "location": {
+                  "x": 0,
+                  "z": 0
+               },
+               "range": 5
+            },
+            "combat_leash_range": 20,
+            "tuning": "stonehearth:monster_tuning:orcs:cleric"
+         }
+      }
+   }
+}

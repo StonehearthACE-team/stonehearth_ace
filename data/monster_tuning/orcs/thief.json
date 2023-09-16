@@ -1,8 +1,20 @@
 {
    "equipment": {
+      "mixintypes": {
+         "weapon": "override"
+      },
+      "weapon": [
+         "stonehearth:weapons:crude_metal_axe",
+         "stonehearth_ace:weapons:iron_axe",
+         "stonehearth_ace:weapons:iron_short_sword"
+      ],
       "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:very_hard",
 		"pierce": "stonehearth_ace:weapons:inflicted_wounds:pierce:medium",
       "impact": "stonehearth_ace:weapons:inflicted_wounds:impact:easy",
-      "basic_siege": "stonehearth_ace:abilities:basic_siege_follower_abilities"
+      "basic_siege": "stonehearth_ace:abilities:basic_siege_follower_abilities",
+      "outfit": "stonehearth_ace:monsters:orcs:outfits:thief"
+   },
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.orcs.thief.description)"
    }
 }

@@ -1,0 +1,34 @@
+{
+   "type": "monster_tuning",
+   "mixins": "stonehearth:monster_tuning:orcs:default",
+   "estimated_difficulty": 5,
+   "job": "stonehearth:jobs:npc:cleric",
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.orcs.blackguard.description)"
+   },
+   "scale": 0.12,
+   "attributes": {
+      "max_health": 1400,
+      "muscle": 20,
+      "menace": 130,
+      "courage": 410,
+      "speed": 75,
+      "additive_armor_modifier": 12,
+      "exp_reward": 180
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:iron_mace",
+         "stonehearth_ace:weapons:na_iron_short_spear"
+      ],
+      "shield": [
+         "stonehearth:armor:iron_shield",
+         "stonehearth_ace:armor:rc_iron_shield"
+      ],
+      "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:medium",
+      "pierce": "stonehearth_ace:weapons:inflicted_wounds:pierce:hard",
+      "impact": "stonehearth_ace:weapons:inflicted_wounds:impact:very_hard",
+      "basic_siege": "stonehearth_ace:abilities:basic_door_breaker_abilities",
+      "outfit": "stonehearth_ace:monsters:orcs:outfits:blackguard"
+   }
+}

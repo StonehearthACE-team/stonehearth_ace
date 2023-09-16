@@ -1,0 +1,33 @@
+{
+   "type": "monster_tuning",
+   "statistics": {
+      "specifier": "miniboss"
+   },
+   "mixins": "stonehearth:monster_tuning:orcs:default",
+   "estimated_difficulty": 6,
+   "scale": 0.135,
+   "job": "stonehearth:jobs:npc:knight",
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.orcs.champion.description)"
+   },
+   "attributes": {
+      "max_health": 2100,
+      "muscle": 45,
+      "menace": 93,
+      "courage": 420,
+      "speed": 78,
+      "additive_armor_modifier": 7,
+      "exp_reward": 180
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:long_sword"
+      ],
+      "shield": "stonehearth_ace:armor:light_steel_shield",
+      "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:very_hard",
+      "pierce": "stonehearth_ace:weapons:inflicted_wounds:pierce:medium",
+      "impact": "stonehearth_ace:weapons:inflicted_wounds:impact:medium",
+      "basic_siege": "stonehearth_ace:abilities:basic_door_breaker_abilities",
+      "outfit": "stonehearth_ace:monsters:orcs:outfits:champion"
+   }
+}

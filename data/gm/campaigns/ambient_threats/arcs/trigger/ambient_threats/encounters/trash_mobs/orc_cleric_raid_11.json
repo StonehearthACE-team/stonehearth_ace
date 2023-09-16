@@ -8,5 +8,34 @@
 				"value": true
 			}
       }
+   },
+	"create_mission_info": {
+      "mission": {
+         "members": {
+            "orc_clerics": {
+               "from_population": {
+                  "min": 1
+               }
+            },
+            "orc_footmen": {
+               "from_population": {
+                  "min": 1,
+                  "max": 3
+               }
+            },
+            "orc_knights": {
+               "from_population": {
+                  "min": 0,
+                  "max": 2
+               }
+            },
+            "orc_trackers": {
+               "from_population": {
+                  "min": 1,
+                  "max": 2
+               }
+            }
+         }
+      }
    }
 }

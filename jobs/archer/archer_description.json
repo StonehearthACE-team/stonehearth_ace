@@ -41,6 +41,12 @@
                "action_type": "stonehearth:combat:ranged_attacks",
                "level": 1,
                "demote_fn": "remove_combat_action"
+            },
+            {
+               "type": "apply_buff",
+               "id": "archer_training_1",
+               "buff_name": "stonehearth_ace:buffs:0_archer:training_1",
+               "demote_fn": "remove_buff"
             }
          ]
       },
@@ -64,6 +70,13 @@
                "buff_name": "stonehearth:buffs:archer:armor_penetration",
                "description": "i18n(stonehearth_ace:jobs.archer.archer_description.level_2_data.perk_000_description)",
                "level": 2,
+               "demote_fn": "remove_buff"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "archer_training_2",
+               "buff_name": "stonehearth_ace:buffs:0_archer:training_2",
+               "last_buff": "stonehearth_ace:buffs:0_archer:training_1",
                "demote_fn": "remove_buff"
             }
          ]
@@ -92,6 +105,13 @@
                   "description": "i18n(stonehearth_ace:jobs.archer.archer_description.level_1_data.perk_001_description)",
                   "level": 3,
                   "demote_fn": "remove_buff"
+               },
+               {
+                  "type": "apply_chained_buff",
+                  "id": "archer_training_3",
+                  "buff_name": "stonehearth_ace:buffs:0_archer:training_3",
+                  "last_buff": "stonehearth_ace:buffs:0_archer:training_2",
+                  "demote_fn": "remove_buff"
                }
          ]
 	   },
@@ -111,6 +131,22 @@
                "description": "i18n(stonehearth_ace:jobs.archer.archer_description.level_4_data.perk_000_description)",
                "level": 4,
                "demote_fn": "remove_combat_action"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "archer_training_4",
+               "buff_name": "stonehearth_ace:buffs:0_archer:training_4",
+               "last_buff": "stonehearth_ace:buffs:0_archer:training_3"
+            }
+         ]
+      },
+      "5": {
+         "perks": [
+            {
+               "type": "apply_chained_buff",
+               "id": "archer_training_5",
+               "buff_name": "stonehearth_ace:buffs:0_archer:training_5",
+               "last_buff": "stonehearth_ace:buffs:0_archer:training_4"
             }
          ]
       },
@@ -129,6 +165,12 @@
                "description": "i18n(stonehearth_ace:jobs.archer.archer_description.level_6_data.perk_000_description)",
                "level": 6,
                "demote_fn": "remove_combat_action"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "archer_training_6",
+               "buff_name": "stonehearth_ace:buffs:0_archer:training_6",
+               "last_buff": "stonehearth_ace:buffs:0_archer:training_5"
             }
          ]
       }

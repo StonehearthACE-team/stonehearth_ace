@@ -1,8 +1,31 @@
 {
+   "unit_info": {
+      "description": "i18n(stonehearth_ace:data.monster_tuning.orcs.knight.description)"
+   },
+   "attributes": {
+      "max_health": 1320,
+      "muscle": 8,
+      "menace": 125,
+      "courage": 320
+   },
    "equipment": {
+      "mixintypes": {
+         "weapon": "override"
+      },
+      "weapon": [
+         "stonehearth_ace:weapons:iron_short_sword",
+         "stonehearth_ace:weapons:rc_iron_short_sword",
+         "stonehearth_ace:weapons:na_iron_sword"
+      ],
+      "shield": [
+         "stonehearth:armor:square_cracked_wooden_buckler",
+         "stonehearth:armor:iron_shield",
+         "stonehearth_ace:armor:light_iron_shield"
+      ],
       "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:medium",
 		"pierce": "stonehearth_ace:weapons:inflicted_wounds:pierce:medium",
       "impact": "stonehearth_ace:weapons:inflicted_wounds:impact:very_hard",
-      "basic_siege": "stonehearth_ace:abilities:basic_door_breaker_abilities"
+      "basic_siege": "stonehearth_ace:abilities:basic_door_breaker_abilities",
+      "outfit": "stonehearth_ace:monsters:orcs:outfits:knight"
    }
 }

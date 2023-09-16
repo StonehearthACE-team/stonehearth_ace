@@ -1,5 +1,50 @@
 {
    "mixintypes": {
       "type": "remove"
+   },
+   "create_mission_info": {
+      "mission": {
+         "members": {
+            "orc_clerics": {
+               "tuning": "stonehearth:monster_tuning:orcs:cleric"
+            },
+            "orc_footmen": {
+               "tuning": "stonehearth:monster_tuning:orcs:footman"
+            },
+            "orc_knights": {
+               "tuning": "stonehearth:monster_tuning:orcs:knight"
+            },
+            "orc_trackers": {
+               "from_population": {
+                  "role": "orc",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               },
+               "tuning": "stonehearth_ace:monster_tuning:orcs:tracker"
+            },
+            "orc_blackguards": {
+               "from_population": {
+                  "role": "orc",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               },
+               "tuning": "stonehearth_ace:monster_tuning:orcs:blackguard"
+            },
+            "orc_champions": {
+               "from_population": {
+                  "role": "orc",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               },
+               "tuning": "stonehearth_ace:monster_tuning:orcs:champion"
+            }
+         }
+      }
    }
 }

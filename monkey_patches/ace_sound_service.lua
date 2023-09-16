@@ -45,14 +45,19 @@ end
 
 function AceSound:_on_threat_changed(data)
    self._log:info('threat level is now %.2f', data.threat_level)
+   local kingdom = self._kingdom
+   if not kingdom then
+      return
+   end
+   local music_data = self._constants.music.combat.kingdoms[kingdom] or self._constants.music.combat.kingdoms['stonehearth:kingdoms:ascendancy'] 
 
    if data.in_combat and data.threat_level > 0 then
       self._combat_started = true
-      self:recommend_game_music('combat', 'music',   self._constants.music.combat.combat_playlist)
+      self:recommend_game_music('combat', 'music',   music_data.combat_playlist)
       self:recommend_game_music('combat', 'ambient', self._constants.music.combat.ambient)
       return
    elseif data.threat_level <= 0.1 then
-      if self._combat_started and self._current_music_info['music'] == self._constants.music.combat.combat_playlist then
+      if self._combat_started then
          self._combat_started = false
 
          -- combat music is going... first fade it out by queueing a track

@@ -5151,6 +5151,26 @@
             "apostle": {
                "description": "Dragon Cult Apostle"
             }
+         },
+         "orcs": {
+            "tracker": {
+               "description": "A tracker of the Red Kiln"
+            },
+            "champion": {
+               "description": "A Red Kiln Champion ready to rally its armies!"
+            },
+            "blackguard": {
+               "description": "An elite warrior of the Red Kiln, member of the Blackguard"
+            },
+            "thief": {
+               "description": "A forward-scout of the Red Kiln"
+            },
+            "cleric": {
+               "description": "A combat healer oathsworn to the Red Kiln"
+            },
+            "knight": {
+               "description": "An orcish knight at service to their Khan"
+            }
          }
       },
       "commands": {
@@ -6877,6 +6897,30 @@
             },
             "shield_hare_buff": {
                "description": "This hearthling is protected with Knut's blessing.<ul><li>Courage is increased by 10%</li><li>Recovers 2% of their health every hour</li></ul>"
+            },
+            "training_1": {
+               "display_name": "Footman Training (Rank 1)",
+               "description": "Increases Stamina, Menace and Courage."
+            },
+            "training_6": {
+               "display_name": "Footman Training (Rank 6)",
+               "description": "i18n(stonehearth_ace:jobs.footman.footman_buffs.training_6.description)"
+            },
+            "training_5": {
+               "display_name": "Footman Training (Rank 5)",
+               "description": "i18n(stonehearth_ace:jobs.footman.footman_buffs.training_5.description)"
+            },
+            "training_4": {
+               "display_name": "Footman Training (Rank 4)",
+               "description": "i18n(stonehearth_ace:jobs.footman.footman_buffs.training_4.description)"
+            },
+            "training_3": {
+               "display_name": "Footman Training (Rank 3)",
+               "description": "i18n(stonehearth_ace:jobs.footman.footman_buffs.training_3.description)"
+            },
+            "training_2": {
+               "display_name": "Footman Training (Rank 2)",
+               "description": "i18n(stonehearth_ace:jobs.footman.footman_buffs.training_2.description)"
             }
          },
          "footman_stone_axe": {
@@ -6922,6 +6966,24 @@
          "archer_buffs": {
             "damage_1_buff": {
                "description": "The Archer's damage is increased."
+            },
+            "training_1": {
+               "display_name": "Archer Training (Rank 1)"
+            },
+            "training_2": {
+               "display_name": "Archer Training (Rank 2)"
+            },
+            "training_3": {
+               "display_name": "Archer Training (Rank 3)"
+            },
+            "training_4": {
+               "display_name": "Archer Training (Rank 4)"
+            },
+            "training_5": {
+               "display_name": "Archer Training (Rank 5)"
+            },
+            "training_6": {
+               "display_name": "Archer Training (Rank 6)"
             }
          }
       },
@@ -7013,6 +7075,24 @@
             "divine_extension_buff": {
                "display_name": "Divine Intervention (Overtime)",
                "description": "A holy protection that prevents this hearthling from panicking and from being knocked out, keeping them with at least 1 HP left.<ul><li>This blessing is an extension of one's due time and if they keep getting attacked they'll be in trouble when the effect ends, so make sure to get them to safety or be ready for a rescue!</li></ul>"
+            },
+            "training_1": {
+               "display_name": "Cleric Training (Rank 1)"
+            },
+            "training_2": {
+               "display_name": "Cleric Training (Rank 2)"
+            },
+            "training_3": {
+               "display_name": "Cleric Training (Rank 3)"
+            },
+            "training_4": {
+               "display_name": "Cleric Training (Rank 4)"
+            },
+            "training_5": {
+               "display_name": "Cleric Training (Rank 5)"
+            },
+            "training_6": {
+               "display_name": "Cleric Training (Rank 6)"
             }
          }
       },
@@ -7050,6 +7130,24 @@
             },
             "courage_aura_effect_buff": {
                "description": "Courage increased from the presence of a Knight."
+            },
+            "training_1": {
+               "display_name": "Knight Training (Rank 1)"
+            },
+            "training_2": {
+               "display_name": "Knight Training (Rank 2)"
+            },
+            "training_3": {
+               "display_name": "Knight Training (Rank 3)"
+            },
+            "training_4": {
+               "display_name": "Knight Training (Rank 4)"
+            },
+            "training_5": {
+               "display_name": "Knight Training (Rank 5)"
+            },
+            "training_6": {
+               "display_name": "Knight Training (Rank 6)"
             }
          },
          "knight_horn": {
@@ -21480,6 +21578,10 @@
          "ea_steel_short_spear": {
             "display_name": "Dynasty Steel Qiang",
             "description": "Careful with the barbed tip! It hurts... A lot!"
+         },
+         "warchiefs_bone_axe": {
+            "display_name": "Norwind's Cleaver",
+            "description": "Carved by the warchief herself, Red Kiln's most prized axe. (Two-handed)"
          }
       },
       "gizmos": {

@@ -50,6 +50,12 @@
                "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_1_data.perk_000_description)",
                "level": 1,
                "demote_fn": "remove_buff"
+            },
+            {
+               "type": "apply_buff",
+               "id": "knight_training_1",
+               "buff_name": "stonehearth_ace:buffs:0_knight:training_1",
+               "demote_fn": "remove_buff"
             }
          ]
       },
@@ -78,6 +84,13 @@
                "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_1_data.perk_001_description)",
                "level": 2,
                "demote_fn": "remove_buff"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "knight_training_2",
+               "buff_name": "stonehearth_ace:buffs:0_knight:training_2",
+               "last_buff": "stonehearth_ace:buffs:0_knight:training_1",
+               "demote_fn": "remove_buff"
             }
          ]
       },
@@ -95,6 +108,13 @@
                "last_buff": "stonehearth:buffs:knight:health_1",
                "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_3_data.perk_000_description)",
                "level": 3,
+               "demote_fn": "remove_buff"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "knight_training_3",
+               "buff_name": "stonehearth_ace:buffs:0_knight:training_3",
+               "last_buff": "stonehearth_ace:buffs:0_knight:training_2",
                "demote_fn": "remove_buff"
             }
          ]
@@ -114,6 +134,12 @@
                "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_4_data.perk_000_description)",
                "level": 4,
                "demote_fn": "remove_buff"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "knight_training_4",
+               "buff_name": "stonehearth_ace:buffs:0_knight:training_4",
+               "last_buff": "stonehearth_ace:buffs:0_knight:training_3"
             }
          ]
       },
@@ -131,6 +157,12 @@
                "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_5_data.perk_000_description)",
                "level": 5,
                "demote_fn": "remove_buff"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "knight_training_5",
+               "buff_name": "stonehearth_ace:buffs:0_knight:training_5",
+               "last_buff": "stonehearth_ace:buffs:0_knight:training_4"
             }
          ]
       },
@@ -150,6 +182,12 @@
                "description": "i18n(stonehearth_ace:jobs.knight.knight_description.level_6_data.perk_000_description)",
                "level": 6,
                "demote_fn": "remove_combat_action"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "knight_training_6",
+               "buff_name": "stonehearth_ace:buffs:0_knight:training_6",
+               "last_buff": "stonehearth_ace:buffs:0_knight:training_5"
             }
          ]
       }
