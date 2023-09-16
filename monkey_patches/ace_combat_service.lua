@@ -7,6 +7,12 @@ local get_player_id = radiant.entities.get_player_id
 
 local EXP_SPLIT_AMOUNT = 0.7  -- each entity involved will get 30% of the raw exp value; 70% will be divided out among them
 local BASIC_SIEGE_DAMAGE = 0.4  -- how much of their total damage (in %) will non siege-specific units perform against siege objects
+-- ACE: EXP_WEIGHT constants are used by the automatic calculation of awarded experience based on the defeated target's stats
+local MUSCLE_EXP_WEIGHT = stonehearth.constants.exp.MUSCLE_EXP_WEIGHT or 4
+local COURAGE_EXP_WEIGHT = stonehearth.constants.exp.COURAGE_EXP_WEIGHT or 1
+local SPEED_EXP_WEIGHT = stonehearth.constants.exp.SPEED_EXP_WEIGHT or 0.5
+local ARMOR_EXP_WEIGHT = stonehearth.constants.exp.ARMOR_EXP_WEIGHT or 8
+local DMG_EXP_WEIGHT = stonehearth.constants.exp.DMG_EXP_WEIGHT or 10
 
 -- Notify target that it has been hit by an attack.
 -- ACE: include damage source when modifying health
@@ -74,6 +80,28 @@ function AceCombatService:calculate_healing(healer, target, heal_info)
    end
 
    return total_healing
+end
+
+function AceCombatService:calculate_exp_reward(target)
+   local exp = 0
+
+   if target and target:is_valid() then
+      local attributes_component = target:get_component('stonehearth:attributes')
+      if attributes_component:has_attribute('exp_reward_override') then 
+         return attributes_component:get_attribute('exp_reward_override')
+      end
+      
+      local max_health = attributes_component:get_attribute('max_health')^2 / 100
+      local muscle = attributes_component:get_attribute('muscle') * MUSCLE_EXP_WEIGHT
+      local courage = attributes_component:get_attribute('courage') * COURAGE_EXP_WEIGHT
+      local speed = attributes_component:get_attribute('speed') * SPEED_EXP_WEIGHT
+      local additive_armor_modifier = attributes_component:get_attribute('additive_armor_modifier') * ARMOR_EXP_WEIGHT
+      local multiplicative_dmg_modifier = attributes_component:get_attribute('multiplicative_dmg_modifier') * DMG_EXP_WEIGHT
+
+      exp = math.floor(math.sqrt(max_health + muscle + courage + speed + additive_armor_modifier + multiplicative_dmg_modifier) + 0.5)
+   end
+
+   return exp
 end
 
 -- ACE: also get allies of the attacker
@@ -218,8 +246,8 @@ function AceCombatService:distribute_exp(attacker, target, units)
    local attacker_player_id = get_player_id(attacker)
    local target_player_id = get_player_id(target)
 
-   local attributes_component = target:get_component('stonehearth:attributes')
-   local exp = attributes_component:get_attribute('exp_reward') or 0 -- exp given from killing target, default is 0
+   -- (ACE) For sanity reasons and to not go over a menagerie of monsters to replace completely arbritary values given over years, we want Exp to be calculated by logic from now on; it can still be manually assigned with 'exp_reward_override' attribute.
+   local exp = self:calculate_exp_reward(target)
    if exp == 0 then -- if target gives no exp, no need to continue
       return
    end

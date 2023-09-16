@@ -8,5 +8,35 @@
 				"value": true
 			}
       }
+   },
+	"create_mission_info": {
+      "mission": {
+         "members": {
+				"orc_footmen": {
+               "from_population": {
+                  "min": 2,
+                  "max": 4
+               }
+            },
+				"orc_blackguards": {
+               "from_population": {
+                  "min": 0,
+                  "max": 2
+               }
+            },
+				"orc_trackers": {
+               "from_population": {
+                  "min": 0,
+                  "max": 2
+               }
+            },
+            "orc_champions": {
+               "from_population": {
+                  "min": 0,
+                  "max": 1
+               }
+            }
+         }
+      }
    }
 }

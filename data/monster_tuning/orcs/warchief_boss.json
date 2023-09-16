@@ -2,8 +2,29 @@
   "statistics": {
       "specifier": "orc_boss"
    },
+   "attributes": {
+      "max_health": 2800,
+      "muscle": 90,
+      "menace": 95,
+      "courage": 450,
+      "speed": 78,
+      "additive_armor_modifier": 5,
+      "exp_reward": 200
+   },
 	"loot_drops": {
       "entries": {
+         "weapon": {
+            "num_rolls": {
+               "min": 1,
+               "max": 1
+            },
+            "items": {
+               "weapon": {
+                  "uri": "stonehearth_ace:weapons:warchiefs_bone_axe",
+                  "weight": 1
+               }
+            }
+         },
          "currency": {
             "num_rolls": {
                "min": 2,
@@ -23,6 +44,10 @@
       }
    },
 	"equipment": {
+      "mixintypes": {
+         "shield": "remove"
+      },
+      "weapon": "stonehearth_ace:weapons:warchiefs_bone_axe",
       "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:insane",
 		"pierce": "stonehearth_ace:weapons:inflicted_wounds:pierce:very_hard",
       "impact": "stonehearth_ace:weapons:inflicted_wounds:impact:medium",

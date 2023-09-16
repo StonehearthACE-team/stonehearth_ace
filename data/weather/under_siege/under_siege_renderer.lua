@@ -31,7 +31,7 @@ function UnderSiegeWeatherRenderer:destroy()
 end
 
 function UnderSiegeWeatherRenderer:activate()
-   stonehearth.sound:recommend_game_music('server', 'music', radiant.resources.load_json('stonehearth:data:sound_constants').music['under_siege'])
+   stonehearth.sound:recommend_game_music('server', 'music', radiant.resources.load_json('stonehearth:data:sound_constants').music.combat.special['under_siege'])
 
    self._gust_anchor = radiant.entities.create_entity('stonehearth:object:transient', { debug_text = 'wind gust effect anchor' })
    radiant.terrain.place_entity_at_exact_location(self._gust_anchor, Point3(0, 0, 0))

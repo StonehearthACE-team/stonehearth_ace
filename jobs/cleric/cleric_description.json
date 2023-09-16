@@ -50,6 +50,12 @@
                "description": "i18n(stonehearth_ace:jobs.cleric.cleric_description.level_1_data.perk_000_description)",
                "level": 1,
                "demote_fn": "remove_buff"
+            },
+            {
+               "type": "apply_buff",
+               "id": "cleric_training_1",
+               "buff_name": "stonehearth_ace:buffs:0_cleric:training_1",
+               "demote_fn": "remove_buff"
             }
          ]
       },
@@ -95,6 +101,24 @@
                   "cooldown": "8h"
                },
                "demote_fn": "remove_medic_capabilities"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "cleric_training_2",
+               "buff_name": "stonehearth_ace:buffs:0_cleric:training_2",
+               "last_buff": "stonehearth_ace:buffs:0_cleric:training_1",
+               "demote_fn": "remove_buff"
+            }
+         ]
+      },
+      "3": {
+         "perks": [            
+            {
+               "type": "apply_chained_buff",
+               "id": "cleric_training_3",
+               "buff_name": "stonehearth_ace:buffs:0_cleric:training_3",
+               "last_buff": "stonehearth_ace:buffs:0_cleric:training_2",
+               "demote_fn": "remove_buff"
             }
          ]
       },
@@ -133,6 +157,12 @@
                   "cooldown": "6h"
                },
                "demote_fn": "remove_medic_capabilities"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "cleric_training_4",
+               "buff_name": "stonehearth_ace:buffs:0_cleric:training_4",
+               "last_buff": "stonehearth_ace:buffs:0_cleric:training_3"
             }
          ]
       },
@@ -157,6 +187,12 @@
                   ]
                },	
                "demote_fn": "remove_equipment_role_buffs"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "cleric_training_5",
+               "buff_name": "stonehearth_ace:buffs:0_cleric:training_5",
+               "last_buff": "stonehearth_ace:buffs:0_cleric:training_4"
             }
          ]
       },
@@ -198,6 +234,12 @@
                   "cooldown": "4h"
                },
                "demote_fn": "remove_medic_capabilities"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "cleric_training_6",
+               "buff_name": "stonehearth_ace:buffs:0_cleric:training_6",
+               "last_buff": "stonehearth_ace:buffs:0_cleric:training_5"
             }
          ]
       }
