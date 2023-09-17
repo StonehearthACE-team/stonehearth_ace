@@ -35,6 +35,11 @@ $(document).ready(function() {
       _currentVisionMode: 'normal',
 
       _trace_components: {
+         "stonehearth:iconic_form": {
+            "root_entity": {
+               "stonehearth:storage": {},
+            }
+         },
          "stonehearth:storage": {},
          "stonehearth_ace:periodic_interaction": {},
       },
@@ -125,7 +130,7 @@ $(document).ready(function() {
          return this.views[mode];
       },
 
-      setGameMode: function (mode) {
+      setGameMode: function (mode, showView = true) {
          if (mode != this._currentMode) {
             App.stonehearthClient.deactivateAllTools();
 
@@ -136,11 +141,11 @@ $(document).ready(function() {
 
             // show the new mode view, if there is one
             var view = this.views[mode]
-            if (view) {
+            if (view && showView) {
                view.show();
+               this._currentView = view;
             }
 
-            this._currentView = view;
             this._currentMode = mode;
 
             // notify the rest of the ui
@@ -263,8 +268,9 @@ $(document).ready(function() {
          }
 
          // if we were already in zones mode and selected a public, non-hidden storage, stay in zones mode
+         var root_entity = entity['stonehearth:iconic_form'] && entity['stonehearth:iconic_form'].root_entity || entity;
          if (this._currentMode == this.modes.ZONES && !entity['stonehearth:ai'] &&
-               ((entity['stonehearth:storage'] && !entity['stonehearth:storage'].is_hidden) || entity['stonehearth_ace:universal_storage'])) {
+               ((root_entity['stonehearth:storage'] && !root_entity['stonehearth:storage'].is_hidden) || root_entity['stonehearth_ace:universal_storage'])) {
             return this.modes.ZONES;
          }
    
