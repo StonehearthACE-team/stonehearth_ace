@@ -20,6 +20,11 @@ App.StonehearthZonesModeView = App.View.extend({
       });
 
       self._components = {
+         "stonehearth:iconic_form": {
+            "root_entity": {
+               "stonehearth:storage": {},
+            }
+         },
          "stonehearth:storage" : {}
       };
       
@@ -74,11 +79,12 @@ App.StonehearthZonesModeView = App.View.extend({
 
       var viewType = null;
       var matchesPlayerId = entity.player_id == App.stonehearthClient.getPlayerId();
+      var root_entity = entity['stonehearth:iconic_form'] && entity['stonehearth:iconic_form'].root_entity || entity;
       if (entity['stonehearth:player_market_stall']) {
          viewType = App.StonehearthPlayerMarketStallView;
-      } else if (entity['stonehearth:storage'] && entity['stonehearth:storage'].is_public && !entity['stonehearth:storage'].is_hidden) {
-         // TODO: sigh, the above is probably wrong, but highly convenient.
-         viewType = App.StonehearthStockpileView;
+      } else if (root_entity['stonehearth:storage'] && root_entity['stonehearth:storage'].is_public && !root_entity['stonehearth:storage'].is_hidden) {
+         viewType = false;
+         self._showZoneUi(root_entity, App.StonehearthStockpileView);
       } else if (entity['stonehearth:farmer_field']) {
          viewType = App.StonehearthFarmView;
       } else if (entity['stonehearth:trapping_grounds']) {

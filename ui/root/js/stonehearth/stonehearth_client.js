@@ -443,7 +443,7 @@ var StonehearthClient;
                   var tip_bindings = opts.tip_bindings || custom_tooltips.tip_bindings || {left_binding: 'build:rotate:left', right_binding: 'build:rotate:right'};
                   self.showTipWithKeyBindings(tip_title, tip_description, tip_bindings);
 
-                  App.setGameMode(opts.gameMode || 'place');
+                  App.setGameMode(opts.gameMode || 'place', toolName == 'placeItemType');
                   return self._callTool(toolName, function() {
                      return radiant.call(placementCall, item, quality, null, options)
                         .done(function(response) {

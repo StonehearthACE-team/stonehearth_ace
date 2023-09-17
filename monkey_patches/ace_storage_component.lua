@@ -20,11 +20,15 @@ function AceStorageComponent:create()
       default_storage_filter_none = radiant.util.get_config('default_storage_filter_none', false)
    end
 
+   -- set the output-crate-specific filter list if it's an output crate and just had the default filter list
+   -- do this separately up here so its starting filter can be set to none if that gameplay setting is set
+   if self._type == 'output_crate' and self._sv.filter_list == 'stonehearth:ui:stockpile:filters' then
+      self._sv.filter_list = 'stonehearth_ace:ui:output_box:filters'
+   end
+
    if stonehearth_ace.universal_storage:is_universal_storage_uri(self._entity:get_uri()) then
       -- make sure the filter can accept everything
       self._sv.filter = nil
-   elseif self._type == 'output_crate' and self._sv.filter_list == 'stonehearth:ui:stockpile:filters' then
-      self._sv.filter_list = 'stonehearth_ace:ui:output_box:filters'
    elseif (self._sv.is_public and default_storage_filter_none) or self._sv.is_single_filter or self._type == 'input_crate' then
       self:_set_filter_to_none()
    end
