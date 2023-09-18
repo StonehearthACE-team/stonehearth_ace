@@ -293,13 +293,13 @@ function AceGameCreationService:generate_citizens_for_reembark_command(session, 
       self._reembark_pets = pets
    end
 
-   pets = pets[session.player_id]
-   if pets then
-      for _, pet in ipairs(pets) do
+   local player_pets = pets[session.player_id]
+   if player_pets then
+      for _, pet in ipairs(player_pets) do
          radiant.entities.destroy_entity(pet)
       end
    end
-   self._reembark_pets[session.player_id] = {}
+   pets[session.player_id] = {}
 
    for index, citizen_spec in ipairs(reembark_spec.citizens) do
       local gender = citizen_spec.model_variant or stonehearth.constants.population.DEFAULT_GENDER
@@ -460,7 +460,9 @@ end
 function AceGameCreationService:_set_customizable_entity_data(entity, data)
    -- Set name.
    if data.name then
-      entity:add_component('stonehearth:unit_info'):set_custom_name(data.name, data.custom_data, true)
+      local unit_info_component = entity:add_component('stonehearth:unit_info')
+      unit_info_component:set_custom_name(data.name, data.custom_data, true)
+      unit_info_component:set_title_locked(data.title_locked)
    end
 
    -- Set Statistics

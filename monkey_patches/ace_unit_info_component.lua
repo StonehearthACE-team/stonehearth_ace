@@ -70,17 +70,26 @@ function AceUnitInfoComponent:set_custom_name(custom_name, custom_data, propogat
       return false
    end
 
-   -- if we aren't currently using a title, clear the display name
-   -- the base function will then assign the default custom name i18n string
-   if not keep_display_name and self._sv.display_name ~= 'i18n(stonehearth_ace:ui.game.entities.custom_name_with_title)' then
-      self._sv.display_name = nil
+   local name = self:_select_custom_name(custom_name)
+   local data = self:_process_custom_data(custom_data, self._sv.custom_data)
+
+   -- if we aren't currently using a title, reset the display name based on whether there's a title
+   if not keep_display_name then
+      if data.current_title then
+         self._sv.display_name = 'i18n(stonehearth_ace:ui.game.entities.custom_name_with_title)'
+      else
+         self._sv.display_name = 'i18n(stonehearth:ui.game.entities.custom_name)'
+      end
    end
 
-   local name = self:_select_custom_name(custom_name)
-   self:_ace_old_set_custom_name(name, self:_process_custom_data(custom_data, self._sv.custom_data))
+   self._sv.custom_name = name
+   self._sv.custom_data = data
+   self:_trigger_on_change()
+
    if propogate_to_forms ~= false then
       self:_propogate_custom_name(name, custom_data, keep_display_name)
    end
+
    return true
 end
 
