@@ -163,6 +163,7 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
    return {
       name = data.name,
       custom_data = data.custom_data,
+      title_locked = data.title_locked,
       uri = data.uri,
       statistics = data.statistics,
       titles = data.titles,
@@ -189,7 +190,7 @@ function AceReembarkationEncounter:_get_customizable_entity_data(entity)
    local statistics
    local statistics_comp = entity:get_component('stonehearth_ace:statistics')
    if statistics_comp then
-      statistics_comp:increment_stat('totals', 'reembarks')
+      statistics_comp:increment_stat('totals', 'reembarks', nil, nil, true)
       statistics = statistics_comp:get_statistics()
    end
 
@@ -204,6 +205,7 @@ function AceReembarkationEncounter:_get_customizable_entity_data(entity)
       model_variant = radiant.entities.get_model_variant(entity),
       name = unit_info_comp and unit_info_comp:get_custom_name(),
       custom_data = unit_info_comp and unit_info_comp:get_custom_data(),
+      title_locked = unit_info_comp and unit_info_comp:get_title_locked(),
       statistics = statistics,
       titles = titles,
       buffs = buffs,
