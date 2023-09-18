@@ -40,16 +40,16 @@ function StatisticsComponent:set_stat(category, name, value)
 end
 
 -- it's up to the caller to make sure that they're adding/incrementing stats of the right types
-function StatisticsComponent:increment_stat(category, name, value, default)
+function StatisticsComponent:increment_stat(category, name, value, default, sync)
    local prev_value = self:_add_stat(category, name) or default or 0
    value = prev_value + (value or 1)
    self._sv._statistics[category][name] = value
    --self.__saved_variables:mark_changed()
 
-   self:_trigger_on_changed(category, name, value)
+   self:_trigger_on_changed(category, name, value, sync)
 end
 
-function StatisticsComponent:add_to_stat_list(category, name, value, default)
+function StatisticsComponent:add_to_stat_list(category, name, value, default, sync)
    local prev_value = self:_add_stat(category, name)
    if not prev_value then
       prev_value = default or {}
@@ -58,7 +58,7 @@ function StatisticsComponent:add_to_stat_list(category, name, value, default)
    table.insert(prev_value, value)
    --self.__saved_variables:mark_changed()
 
-   self:_trigger_on_changed(category, name, value)
+   self:_trigger_on_changed(category, name, value, sync)
 end
 
 function StatisticsComponent:_add_stat(category, name, value)
@@ -76,12 +76,14 @@ function StatisticsComponent:_add_stat(category, name, value)
 end
 
 -- trigger_async because they're not urgent and stats should always be increasing, so it shouldn't matter if you get them out of order
-function StatisticsComponent:_trigger_on_changed(category, name, value)
-   radiant.events.trigger_async(self._entity, 'stonehearth_ace:stat_changed', {
+function StatisticsComponent:_trigger_on_changed(category, name, value, sync)
+   local args = {
       category = category,
       name = name,
       value = value
-   })
+   }
+
+   radiant.events[sync and 'trigger' or 'trigger_async'](self._entity, 'stonehearth_ace:stat_changed', args)
 end
 
 return StatisticsComponent
