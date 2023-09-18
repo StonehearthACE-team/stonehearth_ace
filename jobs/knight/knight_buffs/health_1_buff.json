@@ -1,6 +1,15 @@
 {
 	"description": "i18n(stonehearth_ace:jobs.knight.knight_buffs.health_1_buff.description)",
+   "mixintypes": {
+      "modifiers": "override"
+   },
    "modifiers": {
+      "multiplicative_heal_received_modifier": {
+         "add": 0.24
+      },
+      "debuff_resistance": {
+         "add": 0.07
+      },
       "speed": {
          "add": 5
       }

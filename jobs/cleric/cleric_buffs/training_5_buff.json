@@ -7,5 +7,16 @@
    "display_name": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.training_5.display_name)",
    "description": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.training_5.description)",
    "icon": "file(training_buff.png)",
-   "modifiers": {}
+   "reembarkable": true,
+   "modifiers": {
+      "willpower": {
+         "add": 100
+      },
+      "debuff_resistance": {
+         "add": 0.05
+      },
+      "speed": {
+         "add": 5
+      }
+   }
 }

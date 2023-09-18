@@ -7,5 +7,16 @@
    "display_name": "i18n(stonehearth_ace:jobs.knight.knight_buffs.training_4.display_name)",
    "description": "i18n(stonehearth_ace:jobs.knight.knight_buffs.training_4.description)",
    "icon": "file(training_buff.png)",
-   "modifiers": {}
+   "reembarkable": true,
+   "modifiers": {
+      "stamina": {
+         "add": 170
+      },
+      "willpower": {
+         "add": 60
+      },
+      "courage": {
+         "add": 170
+      }
+   }
 }

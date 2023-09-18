@@ -7,5 +7,15 @@
    "display_name": "i18n(stonehearth_ace:jobs.footman.footman_buffs.training_3.display_name)",
    "description": "i18n(stonehearth_ace:jobs.footman.footman_buffs.training_3.description)",
    "icon": "file(training_buff.png)",
-   "modifiers": {}
+   "modifiers": {
+      "courage": {
+         "add": 60
+      },
+      "stamina": {
+         "add": 40
+      },
+      "muscle": {
+         "add": 10
+      }
+   }
 }

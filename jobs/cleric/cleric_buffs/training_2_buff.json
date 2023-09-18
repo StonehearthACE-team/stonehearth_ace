@@ -7,5 +7,12 @@
    "display_name": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.training_2.display_name)",
    "description": "i18n(stonehearth_ace:jobs.cleric.cleric_buffs.training_2.description)",
    "icon": "file(training_buff.png)",
-   "modifiers": {}
+   "modifiers": {
+      "willpower": {
+         "add": 40
+      },
+      "debuff_resistance": {
+         "add": 0.02
+      }
+   }
 }
