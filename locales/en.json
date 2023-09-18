@@ -320,6 +320,17 @@
                         "encounters": {
                            "unlock_blue_token_recipe": {
                               "bulletin_title": "The Blacksmith has unlocked the Decorative Elite Gong recipe!"
+                           },
+                           "titan_dialog": {
+                              "dialog_tree_info": {
+                                 "dialog_nodes": {
+                                    "farewell": {
+                                       "bulletin_message": {
+                                          "00": "Farewell, brave Humans. May your star shine ever brighter, and be a guide to all through the coming night.<br><br><i><font size=-1>[You can find the Gong lying in your inventory under 'Quest Items']</font></i>"
+                                       }
+                                    }
+                                 }
+                              }
                            }
                         }
                      }
@@ -6900,27 +6911,27 @@
             },
             "training_1": {
                "display_name": "Footman Training (Rank 1)",
-               "description": "Increases Stamina, Menace and Courage."
+               "description": "TBD"
             },
             "training_6": {
                "display_name": "Footman Training (Rank 6)",
-               "description": "i18n(stonehearth_ace:jobs.footman.footman_buffs.training_6.description)"
+               "description": "TBD"
             },
             "training_5": {
                "display_name": "Footman Training (Rank 5)",
-               "description": "i18n(stonehearth_ace:jobs.footman.footman_buffs.training_5.description)"
+               "description": "TBD"
             },
             "training_4": {
                "display_name": "Footman Training (Rank 4)",
-               "description": "i18n(stonehearth_ace:jobs.footman.footman_buffs.training_4.description)"
+               "description": "TBD"
             },
             "training_3": {
                "display_name": "Footman Training (Rank 3)",
-               "description": "i18n(stonehearth_ace:jobs.footman.footman_buffs.training_3.description)"
+               "description": "TBD"
             },
             "training_2": {
                "display_name": "Footman Training (Rank 2)",
-               "description": "i18n(stonehearth_ace:jobs.footman.footman_buffs.training_2.description)"
+               "description": "TBD"
             }
          },
          "footman_stone_axe": {
@@ -6968,22 +6979,28 @@
                "description": "The Archer's damage is increased."
             },
             "training_1": {
-               "display_name": "Archer Training (Rank 1)"
+               "display_name": "Archer Training (Rank 1)",
+               "description": "TBD"
             },
             "training_2": {
-               "display_name": "Archer Training (Rank 2)"
+               "display_name": "Archer Training (Rank 2)",
+               "description": "TBD"
             },
             "training_3": {
-               "display_name": "Archer Training (Rank 3)"
+               "display_name": "Archer Training (Rank 3)",
+               "description": "TBD"
             },
             "training_4": {
-               "display_name": "Archer Training (Rank 4)"
+               "display_name": "Archer Training (Rank 4)",
+               "description": "TBD"
             },
             "training_5": {
-               "display_name": "Archer Training (Rank 5)"
+               "display_name": "Archer Training (Rank 5)",
+               "description": "TBD"
             },
             "training_6": {
-               "display_name": "Archer Training (Rank 6)"
+               "display_name": "Archer Training (Rank 6)",
+               "description": "TBD"
             }
          }
       },
@@ -7077,22 +7094,28 @@
                "description": "A holy protection that prevents this hearthling from panicking and from being knocked out, keeping them with at least 1 HP left.<ul><li>This blessing is an extension of one's due time and if they keep getting attacked they'll be in trouble when the effect ends, so make sure to get them to safety or be ready for a rescue!</li></ul>"
             },
             "training_1": {
-               "display_name": "Cleric Training (Rank 1)"
+               "display_name": "Cleric Training (Rank 1)",
+               "description": "TBD"
             },
             "training_2": {
-               "display_name": "Cleric Training (Rank 2)"
+               "display_name": "Cleric Training (Rank 2)",
+               "description": "TBD"
             },
             "training_3": {
-               "display_name": "Cleric Training (Rank 3)"
+               "display_name": "Cleric Training (Rank 3)",
+               "description": "TBD"
             },
             "training_4": {
-               "display_name": "Cleric Training (Rank 4)"
+               "display_name": "Cleric Training (Rank 4)",
+               "description": "TBD"
             },
             "training_5": {
-               "display_name": "Cleric Training (Rank 5)"
+               "display_name": "Cleric Training (Rank 5)",
+               "description": "TBD"
             },
             "training_6": {
-               "display_name": "Cleric Training (Rank 6)"
+               "display_name": "Cleric Training (Rank 6)",
+               "description": "TBD"
             }
          }
       },
@@ -7102,17 +7125,19 @@
             "level_1_data": {
                "training_perk_name": "Squire Training",
                "training_perk_description": "The Knight can use Training Dummies to train their defensive taunting skills and earn experience up to Job Level 3",
-               "perk_000_description": "Increases Stamina, Courage, and draws attention from monsters. Greater fortitude allows the Knight to feel more comfortable in armor, also slightly increasing their Speed.",
+               "perk_000_description": "Increases the amount of healing received by the Knight and their passive resistance against negative effects & wounds. Greater fortitude allows the Knight to feel more comfortable in armor, also slightly increasing their Speed.",
+               "perk_001_name": "Bulwark",
                "perk_001_description": "The Knight gains an additional 10% defense from equipment"
             },
             "level_2_data": {
                "perk_000_description": "The Knight intimidates the opponent, drawing the attention of nearby enemies."
             },
             "level_3_data": {
-               "perk_000_description": "The Stamina and Courage bonuses are increased greatly. The Speed bonus is doubled."
+               "perk_000_description": "The healing received is greatly increased, the Speed bonus and the additional resistance against negative effects & wounds are doubled."
             },
             "level_4_data": {
-               "perk_000_description": "The Knight gains an additional 20% armor from equipment"
+               "perk_000_description": "The Knight gains an additional 20% armor from equipment",
+               "perk_000_name": "Bulwark (Rank 2)"
             },
             "level_5_data": {
                "perk_000_description": "The Knight boosts courage of everyone around"
@@ -7123,7 +7148,16 @@
          },
          "knight_buffs": {
             "health_1_buff": {
-               "description": "The Knight becomes more menacing to enemies, drawing their attention in combat. They also get a health, speed and stamina bonus to keep up."
+               "description": "Slighly increases the Knight's speed, increases their healing received and resistance to negative effects & wounds."
+            },
+            "health_2_buff": {
+               "description": "Increases the Knight's speed, greatly increases their healing received and resistance to negative effects & wounds."
+            },
+            "defense_1_buff": {
+               "display_name": "Bulwark"
+            },
+            "defense_2_buff": {
+               "display_name": "Bulwark (Rank 2)"
             },
             "courage_aura_buff": {
                "description": "The Knight increases courage of everyone around"
@@ -7132,22 +7166,28 @@
                "description": "Courage increased from the presence of a Knight."
             },
             "training_1": {
-               "display_name": "Knight Training (Rank 1)"
+               "display_name": "Knight Training (Rank 1)",
+               "description": "TBD"
             },
             "training_2": {
-               "display_name": "Knight Training (Rank 2)"
+               "display_name": "Knight Training (Rank 2)",
+               "description": "TBD"
             },
             "training_3": {
-               "display_name": "Knight Training (Rank 3)"
+               "display_name": "Knight Training (Rank 3)",
+               "description": "TBD"
             },
             "training_4": {
-               "display_name": "Knight Training (Rank 4)"
+               "display_name": "Knight Training (Rank 4)",
+               "description": "TBD"
             },
             "training_5": {
-               "display_name": "Knight Training (Rank 5)"
+               "display_name": "Knight Training (Rank 5)",
+               "description": "TBD"
             },
             "training_6": {
-               "display_name": "Knight Training (Rank 6)"
+               "display_name": "Knight Training (Rank 6)",
+               "description": "TBD"
             }
          },
          "knight_horn": {

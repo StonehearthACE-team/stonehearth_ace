@@ -7,5 +7,16 @@
    "display_name": "i18n(stonehearth_ace:jobs.archer.archer_buffs.training_4.display_name)",
    "description": "i18n(stonehearth_ace:jobs.archer.archer_buffs.training_4.description)",
    "icon": "file(training_buff.png)",
-   "modifiers": {}
+   "reembarkable": true,
+   "modifiers": {
+      "menace": {
+         "add": 50
+      },
+      "speed": {
+         "add": 6
+      },
+      "muscle": {
+         "add": 40
+      }
+   }
 }

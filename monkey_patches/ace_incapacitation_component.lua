@@ -68,7 +68,7 @@ function AceIncapacitationComponent:_declare_state_transitions(sm)
             if additive_guts_subtraction_modifier > 0 then
                initial_subtraction = math.max(1, math.floor((additive_guts_subtraction_modifier + 0.5) / 2))
             else
-               initial_subtraction = math.max(1 + additive_guts_subtraction_modifier)
+               initial_subtraction = math.max(1, math.floor((additive_guts_subtraction_modifier + 0.5)))
             end
          else
             initial_subtraction = math.max(1, (ic_data.on_incapacitate_guts_subtraction or 1) + additive_guts_subtraction_modifier)
