@@ -1225,6 +1225,23 @@ var StonehearthClient;
          }
       },
 
+      // ACE: added various functions, mostly triggered through the start menu
+      showPetManager: function(hideOnCreate) {
+         // toggle the pet manager view
+         var self = this;
+         if (!self._petManager || self._petManager.isDestroyed || self._petManager.isDestroying) {
+            self._petManager = App.gameView.addView(App.StonehearthAcePetsView, { hideOnCreate: hideOnCreate });
+         } else if(!hideOnCreate) {
+            if (self._petManager.get('isVisible')) {
+               radiant.call('radiant:play_sound', { 'track': 'stonehearth:sounds:ui:carpenter_menu:menu_closed' });
+               self._petManager.hide();
+            } else {
+               radiant.call('radiant:play_sound', { 'track': 'stonehearth_ace:sounds:ui:mercantile_menu:open' });
+               self._petManager.show();
+            }
+         }
+      },
+
       boxHarvestAndReplant: function() {
          var self = this;
    

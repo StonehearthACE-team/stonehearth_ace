@@ -1,0 +1,77 @@
+<script type="text/x-handlebars" data-template-name="petsView">
+   <div id="citizensManagement" class="gui petsManager">
+      <div class="window">
+         <div class="title">Pet Manager<div class="closeButton"></div></div>
+   
+         <div class="flex-container">
+
+            <div id="petDetails" class="">
+               <h2>Details</h2>
+               <div id="petDetailsInnerPane" class="downSection">
+                  <center>
+                  <div id="selectedPortrait">
+                     <img class="hasPetsIcon"/>
+                  </div>
+                  <div id="selectedName">
+                     {{i18n_key view.display_name self=view.selected}}
+                  </div>
+                  <div id="selectedDescription">
+                     {{i18n_key view.description self=view.selected}}
+                  </div>
+      
+                  <div id="traits">
+                     {{#each view.traits}}
+                        <div class="item" >
+                           {{i18n_key this self=view.selected}}
+                        </div>
+                     {{/each}}
+                  </div>
+
+                  <div class="toolbar">
+                     <a id="release_pet" href="#"  class='uisounds'>
+                        <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
+                           {{i18n_key view.release_pet.display_name}}
+                        </button>
+                     </a>
+                     {{#each view.available_commands}}
+                        <a href="#" class='uisounds'>
+                           <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
+                              {{i18n_key this self=view.selected}}
+                           </button>
+                        </a>
+                     {{/each}}
+                  </div>
+                  </center>
+               </div>
+            </div>
+      
+            <div id="tasksWorkersList" class="petsList">
+               <div id="listTitles" class="flex-container">
+                  <button class="brown statButton">
+                     <div class="pet statImg"></div>
+                  </button>
+                  <div class="listTitle" id="tasksTitleName" data-sort-key="name">
+                     <h2>Name</h2>
+                  </div>
+                  <div class="listTitle statTitle healthTitle" data-sort-key="health">
+                     <button class="brown statButton">
+                        <div class="health statImg"></div>
+                     </button>
+                  </div>
+                  <div class="listTitle statTitle moodTitle" data-sort-key="happiness">
+                     <button class="brown statButton">
+                        <div class="happiness statImg"></div>
+                     </button>
+                  </div>
+               </div>
+               <div id="listContent" class="innerBox">
+                  joão <br> maria <br>
+               </div
+            </div>
+         </div>
+      </div>
+   </div>
+</script>
+   
+   
+   

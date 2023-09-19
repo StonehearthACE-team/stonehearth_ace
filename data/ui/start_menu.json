@@ -39,6 +39,14 @@
             "icon": "/stonehearth_ace/ui/game/start_menu/images/mercantile_view.png",
             "sticky": true,
             "hotkey_action": "mercantile:overview"
+         },
+         "pet_manager": {
+            "ordinal": 4,
+            "name": "i18n(stonehearth_ace:ui.game.menu.pet_manager.display_name)",
+            "description": "i18n(stonehearth_ace:ui.game.menu.pet_manager.description)",
+            "class": "dock",
+            "icon": "/stonehearth_ace/ui/game/start_menu/images/pets.png",
+            "hotkey_action": "pet:overview"
          }
       }
    },
