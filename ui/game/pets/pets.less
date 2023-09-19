@@ -104,32 +104,22 @@
       }
       #buttonsBar {
          margin-right: 35px;
-
-         .suspendButton {
-            padding: 3px;
-            margin: 0px 0px 0px 2px;
-         }
-
-         .suspendButtonImg {
-            width: 20px;
-            height: 20px;
-         }
       }
       
       .statTitle {
          &.healthTitle {
-            margin-left: 28px;
+            margin-left: 42px;
          }
 
          .pet.statImg {
             .backgroundContain(url(/stonehearth_ace/ui/game/images/health.png));
          }
-         .health.statImg {
+         .healthImg {
             .backgroundContain(url(/stonehearth_ace/ui/game/images/health.png));
          }
 
          &.moodTitle {
-            margin-left: 8px;
+            margin-left: 130px;
          }
 
          .happiness.statImg {
@@ -137,23 +127,36 @@
          }
       }
 
-      #tasksTitleName.singlePlayer {
-         width: 322px;
+      #tasksTitleName {
+         width: 220px;
+         margin-left: 8px;
       }
 
-      #activityTitle.singlePlayer {
-         width: 225px;
+      .nameIcon {
+         margin-left: 10px;  
       }
-
       #activityTitle {
+         width: 225px;
          margin-left: 28px;
       }
-
    }
 
    table {
-      .nameColumn.singlePlayer {
-         width: 400px;
+      margin-left: 2px;
+      width: 100%;
+      margin-right: 2px;
+      z-index: 5;
+      .nameColumn {
+         width: 250px;
+         text-align: left;
+         vertical-align: middle;
+         text-shadow: -2px -2px 0px #000000, 0px -2px 0px #000000, 2px -2px 0px #000000, -2px 0px 0px #000000, 2px 0px 0px #000000, -2px 2px 0px #000000, 0px 2px 0px #000000, 2px 2px 0px #000000;
+         color: #ffc000;
+         font-family: 'groboldregular', 'ofelixgro';
+         font-size: 20px;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+         overflow: hidden;
       }
 
       .healthColumn {
@@ -163,7 +166,10 @@
             height: 38px;
          }
       }
-
+      .icon {
+         height: 38px;
+         width: 40px;
+      }
       .activityColumn.singlePlayer {
          padding-left: 33px;
       }
@@ -171,5 +177,18 @@
       .workOrderColumn {
          width: 47px;
       }
+   }
+   tr {
+      cursor: url(http://radiant/stonehearth/ui/root/css/images/cursors/Finalhand.cur), default;
+      z-index: 10;
+   }
+   tr:hover {
+      background-color: rgba(143, 120, 70, 0.3);
+   }
+   .selected {
+      background-color: #8f7846;
+   }
+   .selected:hover {
+      background-color: #8f7846;
    }
 }

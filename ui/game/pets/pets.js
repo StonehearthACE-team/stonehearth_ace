@@ -1,3 +1,36 @@
+var pets = [
+   kitty = {
+      display_name: 'Kitty',
+      description: 'Befriended by Lara',
+      traits: ['Nice', 'Strong', 'Carnivore'],
+      available_commands: ['Pet', 'Feed', 'Play'],
+      release_pet: {display_name: 'Release Pet'},
+      health: '100',
+      maxHealth: '100',
+      moodValue: '5',
+      selected: true
+   },
+   batman = {
+      display_name: 'Batman',
+      description: 'Befriended by Ivens',
+      traits: ['Disguised', 'Strong', 'Powerful'],
+      available_commands: ['Pet', 'Feed', 'Play'],
+      release_pet: {display_name: 'Release Pet'},
+      health: '100',
+      maxHealth: '100',
+      moodValue: '5'
+   },
+   mingau = {
+      display_name: 'Mingau',
+      description: 'Befriended by Lara',
+      traits: ['Fat', 'Talkative', 'Bald'],
+      available_commands: ['Pet', 'Feed', 'Play'],
+      release_pet: {display_name: 'Release Pet'},
+      health: '100',
+      maxHealth: '100',
+      moodValue: '5'
+   }
+]
 App.StonehearthAcePetsView = App.View.extend({
    templateName: 'petsView',
    uriProperty: 'model',
@@ -12,15 +45,11 @@ App.StonehearthAcePetsView = App.View.extend({
       var self = this;
       this._super();
 
-      self.set('display_name', 'Kitty');
-      self.set('description', 'Befriended by Lara');
-      var traits = ['Nice', 'Strong', 'Carnivore'];
-      var available_commands = ['Pet', 'Feed', 'Play'];
-      var release = {display_name: 'Release Pet'};
-      self.set('traits', traits);
-      self.set('available_commands', available_commands);
-      self.set('release_pet', release);
+      //mocking this before actually getting the data from the game
+      self.set('pets', pets);
+      self.set('selected', pets[0]);
    },
+   
    didInsertElement: function() {
       var self = this;
       self._super();
@@ -49,5 +78,11 @@ App.StonehearthAcePetsView = App.View.extend({
       if (self.hideOnCreate) {
          self.hide();
       }
+
+      self.$('#petTable').on('click', 'tr', function () {
+         $('#petTable tr').removeClass('selected');
+          $(this).addClass('selected');
+          self.set('selected', pets[$(this).index()]);
+      });
    },
 });
