@@ -656,6 +656,7 @@ App.StonehearthCitizenCharacterSheetView = App.View.extend({
                   display_name: catalogData.display_name,
                   description: catalogData.description,
                   icon: catalogData.icon,
+                  quality: 'banana',
                   slotId: slot + 'Slot',
                }
                allEquipment.push(equipmentInfo);
