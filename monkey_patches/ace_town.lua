@@ -542,6 +542,27 @@ function AceTown:get_pets()
    return self._town_pets
 end
 
+AceTown._ace_old_add_pet = Town.add_pet
+function AceTown:add_pet(pet)
+   self:_ace_old_add_pet(pet)
+
+   -- also remote for the UI pet manager
+   self:_save_pets_sv()
+end
+
+AceTown._ace_old_remove_pet = Town.remove_pet
+function Town:remove_pet(pet)
+   self:_ace_old_remove_pet(pet)
+
+   -- also remote for the UI pet manager
+   self:_save_pets_sv()
+end
+
+function AceTown:_save_pets_sv()
+   self._sv.town_pets = self._town_pets
+   self.__saved_variables:mark_changed()
+end
+
 function AceTown:get_persistence_data()
    local pop = stonehearth.population:get_population(self._sv.player_id)
    
