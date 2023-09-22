@@ -1,0 +1,199 @@
+.petsManager {
+   margin: 150px auto;
+   position: absolute;
+   left: 600px;
+   z-index: 0;
+   .innerBox {
+      margin-top: 2px;
+      background-position: center;
+      background-size: 1000% 1000%;
+      border-width: 11px 7px 14px 7px;
+      border-image: url(http://radiant/stonehearth/ui/root/css/images/gui/well.png) 11 7 14 7 repeat;
+      border-style: solid;
+      background-image: url(http://radiant/stonehearth/ui/root/css/images/gui/well.png);
+      height: 1185%;
+   }
+   .window {
+      width: 900px;
+      height: 657px;
+   }
+   
+   .flex-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+   }
+
+   #petDetails {
+      margin-top: 3%;
+      height: 70%;
+      width: 30%;
+      display: inline-grid;
+      #petDetailsInnerPane {
+         height: 100%;
+         display: flex;
+         #selectedName {
+            position: relative;
+            top: -10px;
+            text-shadow: -2px -2px 0px #000000, 0px -2px 0px #000000, 2px -2px 0px #000000, -2px 0px 0px #000000, 2px 0px 0px #000000, -2px 2px 0px #000000, 0px 2px 0px #000000, 2px 2px 0px #000000;
+            color: #ffc000;
+            font-size: 20px;
+            font-family: 'groboldregular', 'ofelixgro';
+            font-size: 24px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 240px;
+            overflow: hidden
+         }
+
+         #selectedDescription {
+            top: 10px;
+            text-shadow: -2px -2px 0px #000000, 0px -2px 0px #000000, 2px -2px 0px #000000, -2px 0px 0px #000000, 2px 0px 0px #000000, -2px 2px 0px #000000, 0px 2px 0px #000000, 2px 2px 0px #000000;
+            font-size: 20px;
+            font-family: 'groboldregular', 'ofelixgro';
+            font-size: 16px;
+            color: #cdc1a4;
+         }
+
+         #selectedClassIcon {
+            top: 22px;
+            left: 20px;
+         }
+
+         #expStat {
+            top: 10px;
+         }
+
+         #traits {
+            display: block;
+         }
+         .item {
+            display: inline-block;
+            border:#000000 1px solid;
+         }
+         .toolbar {
+            height: 30%;
+            display: block;
+            top: inherit;
+            bottom: 90px;
+            position: absolute;
+            width: 250px;
+            top: 420px;
+         }
+         .toolbar button {
+            width: 200px;
+         }
+         
+      }
+   }
+
+   .hasPetsIcon {
+      content: url(images/pets.png);
+   }
+   .happinessImg {
+      .backgroundContain(url(/stonehearth_ace/ui/game/images/mood.png));
+   }
+   .petStatImg {
+      .backgroundContain(url(/stonehearth_ace/ui/game/images/health.png));
+   }
+   .healthImg {
+      .backgroundContain(url(/stonehearth_ace/ui/game/images/health.png));
+   }
+
+
+   .petsList {
+      margin-top: 3%;
+      margin-left: 30px;
+      height: 60%;
+      width: 60%;
+      display: inline-grid;
+   }
+
+   #tasksPetsList {
+      height: 6%;
+      .listTitle {
+         display: inline-grid;
+      }
+      #buttonsBar {
+         margin-right: 35px;
+      }
+      
+      .statTitle {
+         &.healthTitle {
+            margin-left: 42px;
+         }
+
+         
+
+         &.moodTitle {
+            margin-left: 130px;
+         }
+
+         
+      }
+
+      #tasksTitleName {
+         width: 220px;
+         margin-left: 8px;
+      }
+
+      .nameIcon {
+         margin-left: 10px;  
+      }
+      #activityTitle {
+         width: 225px;
+         margin-left: 28px;
+      }
+   }
+
+   table {
+      margin-left: 2px;
+      width: 100%;
+      margin-right: 2px;
+      z-index: 5;
+      .nameColumn {
+         width: 250px;
+         text-align: left;
+         vertical-align: middle;
+         text-shadow: -2px -2px 0px #000000, 0px -2px 0px #000000, 2px -2px 0px #000000, -2px 0px 0px #000000, 2px 0px 0px #000000, -2px 2px 0px #000000, 0px 2px 0px #000000, 2px 2px 0px #000000;
+         color: #ffc000;
+         font-family: 'groboldregular', 'ofelixgro';
+         font-size: 20px;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+         overflow: hidden;
+      }
+
+      .healthColumn {
+         width: 40px;
+
+         .healthIcon {
+            height: 38px;
+         }
+      }
+      .icon {
+         height: 38px;
+         width: 40px;
+      }
+      .activityColumn.singlePlayer {
+         padding-left: 33px;
+      }
+
+      .workOrderColumn {
+         width: 47px;
+      }
+   }
+   tr {
+      cursor: url(http://radiant/stonehearth/ui/root/css/images/cursors/Finalhand.cur), default;
+      z-index: 10;
+   }
+   tr:hover {
+      background-color: rgba(143, 120, 70, 0.3);
+   }
+   .selected {
+      background-color: #8f7846;
+   }
+   .selected:hover {
+      background-color: #8f7846;
+   }
+}

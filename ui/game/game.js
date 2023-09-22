@@ -112,6 +112,7 @@ App.StonehearthGameUiView = App.ContainerView.extend({
             App.stonehearthClient.showSaveMenu(true);
             App.stonehearthClient.showCitizenManager(true);
             App.stonehearthClient.showMercantileView(true);
+            App.stonehearthClient.showPetManager(true);
             App.stonehearthClient.showMultiplayerMenu(true);
          }, 500);
       });
