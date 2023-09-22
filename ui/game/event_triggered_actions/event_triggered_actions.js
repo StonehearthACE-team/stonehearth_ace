@@ -25,7 +25,6 @@ $(document).ready(function(){
    }
 
    $(top).on("stonehearth_ace_adjust_extensible_object", function (_, e) {
-      // don't execute if this isn't the player's object
       if (e.player_id && App.stonehearthClient.getPlayerId() != e.player_id) {
          return;
       }
@@ -34,14 +33,14 @@ $(document).ready(function(){
    });
 
    var adjustExtensibleObject = function(fromEntity) {
-      App.stonehearthClient.showTipWithKeyBindings(e.show_tip_title,
-                                                   e.show_tip_description,
+      App.stonehearthClient.showTipWithKeyBindings("",
+                                                   "",
                                                    { left_binding: 'build:rotate:left', right_binding: 'build:rotate:right',
                                                    shorter_binding: 'build:sink_template', longer_binding: 'build:raise_template'});
 
       App.setGameMode('place');
       return App.stonehearthClient._callTool('adjustExtensibleObject', function() {
-         return radiant.call('stonehearth_ace:select_extensible_object_command', fromEntity, e.accept_water)
+         return radiant.call('stonehearth_ace:select_extensible_object_command', fromEntity)
             .done(function(response) {
                radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:place_structure'} );
                App.stonehearthClient.hideTip();
