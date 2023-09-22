@@ -9,7 +9,7 @@ local ExtensibleObjectCallHandler = class()
 
 local log = radiant.log.create_logger('extensible_object_call_handler')
 
-function ExtensibleObjectCallHandler:select_extensible_object_command(session, response, entity)
+function ExtensibleObjectCallHandler:select_extensible_object_command(session, response, entity, accept_water)
    validator.expect_argument_types({'Entity'}, entity)
 
    local component_data = radiant.entities.get_component_data(entity, 'stonehearth_ace:extensible_object')
@@ -19,7 +19,7 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
       return
    end
 
-   if component_data.accept_water then
+   if accept_water then
       local can_contain_uris = {
          ['stonehearth:terrain:water'] = true,
          ['stonehearth:terrain:waterfall'] = true,
