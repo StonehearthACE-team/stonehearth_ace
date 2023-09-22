@@ -13,10 +13,10 @@
                      <img class="hasPetsIcon"/>
                   </div>
                   <div id="selectedName">
-                     {{i18n_key view.selected.display_name self=this}}
+                     {{i18n_key view.selected.stonehearth:unit_info.custom_name self=this}}
                   </div>
                   <div id="selectedDescription">
-                     {{i18n_key view.selected.description self=this}}
+                     {{i18n_key view.selected self=this}}
                      
                   </div>
       
@@ -46,10 +46,10 @@
                </div>
             </div>
       
-            <div id="tasksWorkersList" class="petsList">
+            <div id="tasksPetsList" class="petsList">
                <div id="listTitles" class="flex-container">
                   <button class="brown statButton nameIcon">
-                     <div class="pet statImg"></div>
+                     <div class="petStatImg"></div>
                   </button>
                   <div class="listTitle" id="tasksTitleName" data-sort-key="name">
                      <h2>{{i18n stonehearth_ace:ui.game.pet_manager.name}}</h2>
@@ -61,21 +61,21 @@
                   </div>
                   <div class="listTitle statTitle moodTitle" data-sort-key="happiness">
                      <button class="brown statButton">
-                        <div class="happiness statImg"></div>
+                        <div class="happinessImg"></div>
                      </button>
                   </div>
                </div>
                <div id="listContent" class="innerBox">
                   <table id="petTable">
                      <tbody>
-                        {{#each view.pets}}
+                        {{#each view.pets_list}}
                            {{#if this.selected}}
                               <tr class="selected petrow uisounds">
-                                 <td class="icon">
+                                 <td class="petIcon">
                                     <img class="hasPetsIcon"/>
                                  </td>
                                  <td class="nameColumn">
-                                    {{i18n_key this.display_name self=this}}
+                                    {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
                                  </td>
                                  <td class="petHealth">
                                     {{i18n_key this.health self=this}}/{{i18n_key this.maxHealth self=this}}
@@ -90,7 +90,7 @@
                                     <img class="hasPetsIcon"/>
                                  </td>
                                  <td class="nameColumn">
-                                    {{i18n_key this.display_name self=this}}
+                                    {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
                                  </td>
                                  <td class="petHealth">
                                     {{i18n_key this.health self=this}}/{{i18n_key this.maxHealth self=this}}
