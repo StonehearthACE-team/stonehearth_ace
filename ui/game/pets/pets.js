@@ -1,37 +1,4 @@
-var mocked_pets = [
-   kitty = {
-      display_name: 'Kitty',
-      description: 'Befriended by Lara',
-      traits: ['Nice', 'Strong', 'Carnivore'],
-      available_commands: ['Pet', 'Feed', 'Play'],
-      release_pet: {display_name: 'Release Pet'},
-      health: '100',
-      maxHealth: '100',
-      moodValue: '5',
-      selected: true
-   },
-   batman = {
-      display_name: 'Batman',
-      description: 'Befriended by Ivens',
-      traits: ['Disguised', 'Strong', 'Powerful'],
-      available_commands: ['Pet', 'Hunt', 'Play'],
-      release_pet: {display_name: 'Release Pet'},
-      health: '100',
-      maxHealth: '100',
-      moodValue: '5'
-   },
-   mingau = {
-      display_name: 'Mingau',
-      description: 'Befriended by Lara',
-      traits: ['Fat', 'Talkative', 'Bald'],
-      available_commands: ['Pet', 'Feed'],
-      release_pet: {display_name: 'Release Pet'},
-      health: '100',
-      maxHealth: '100',
-      moodValue: '5'
-   }
-]
-var pets_list = [];
+let pets_list = [];
    
 App.StonehearthAcePetsView = App.View.extend({
    templateName: 'petsView',
@@ -51,11 +18,7 @@ App.StonehearthAcePetsView = App.View.extend({
       var self = this;
       this._super();
       
-
-      
-      //mocking this before actually getting the data from the game
-      self.set('pets', mocked_pets);
-      
+      //Trace town pets on init
       this._traceTownPets();
       
       
@@ -64,7 +27,6 @@ App.StonehearthAcePetsView = App.View.extend({
    _traceTownPets: function() {
       var playerId = App.stonehearthClient.getPlayerId()
       var self = this;
-      //console.log("Player ID: " + playerId);
       radiant.call_obj('stonehearth.town', 'get_town_entity_command', playerId)
          .done(function (response) {
             var components = {
@@ -77,16 +39,13 @@ App.StonehearthAcePetsView = App.View.extend({
                },
             };
             var town = response.town;
-            //console.log("town: " + JSON.stringify(response));
             self._trace_pets = new StonehearthDataTrace(town, components)
                .progress(function (response) {
                   if (self.isDestroying || self.isDestroyed) {
                      return;
                   }
                   var town_pets = response.town_pets || {};
-                  //console.log(town_pets)
                   var list_keys = Object.keys(town_pets);
-                  var pets_list = []
                   var pet_object = {}
                   
                   for (var i = 0; i < list_keys.length; i++){
@@ -100,7 +59,10 @@ App.StonehearthAcePetsView = App.View.extend({
                   
                   self.set('pets_list', pets_list);
                   self.set('selected', pets_list[0]);
-                  return pets_list;
+                  var uri = pets_list[0].__self;
+                  var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
+                  self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');
+                  return;
                   
                })
                .fail(function(e) {
@@ -140,14 +102,15 @@ App.StonehearthAcePetsView = App.View.extend({
          self.hide();
       }
 
-      console.log("antes", pets_list)
-      pets_list = this._traceTownPets();
-      console.log("depois", pets_list)
-      console.log("pets list", pets_list)
+      //console.log("pets_list: ", pets_list);
+
       self.$('#petTable').on('click', 'tr', function () {
          $('#petTable tr').removeClass('selected');
           $(this).addClass('selected');
           self.set('selected', pets_list[$(this).index()]);
+          var uri = pets_list[$(this).index()].__self;
+          var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
+          self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');
       });
 
       self.$('#release_pet').on('click', function (_, e) {
