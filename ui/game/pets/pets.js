@@ -83,7 +83,7 @@ App.StonehearthAcePetsView = App.View.extend({
                   if (self.isDestroying || self.isDestroyed) {
                      return;
                   }
-                  var town_pets = response.town_pets;
+                  var town_pets = response.town_pets || {};
                   //console.log(town_pets)
                   var list_keys = Object.keys(town_pets);
                   var pets_list = []

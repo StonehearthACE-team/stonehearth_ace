@@ -191,16 +191,17 @@
                   <tr>
                      <td></td>
                      <td><h2>{{i18n stonehearth:ui.game.citizen_character_sheet.equipment}}</h2></td>
-                     <td><h2>{{i18n "Quality"}}</h2></td>
                      <td><h2>{{i18n stonehearth:ui.game.citizen_character_sheet.attack_abbreviation}}</h2></td>
                      <td><h2>{{i18n stonehearth:ui.game.citizen_character_sheet.defense_abbreviation}}</h2></td>
                   </tr>
 
                   {{#each equipment_info in view.all_equipment}}
                      <tr class="slotDetail" {{bind-attr id=equipment_info.slotId}}>
-                        <td><div class="slotImg"><img class=".equipmentImg" {{bind-attr src=equipment_info.icon}}/></div></td>
-                        <td class="slotItemName">{{i18n_key equipment_info.display_name}}
-                        <td class="slotItemQuality">{{i18n_key equipment_info.quality}}
+                        <td>
+                           <div class="slotImg"><img class=".equipmentImg" {{bind-attr src=equipment_info.icon}}/></div>
+                           <div {{bind-attr class=":qualityGem equipment_info.qualityClass"}}></div>
+                        </td>
+                        <td class="slotItemName">{{i18n_key equipment_info.display_name}}</td>
                         <td>
                            {{#if equipment_info.equipment.uri.entity_data.stonehearth:combat:weapon_data}}
                               <div class="equipmentDataValue">
