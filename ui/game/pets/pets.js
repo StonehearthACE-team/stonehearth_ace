@@ -61,8 +61,8 @@ App.StonehearthAcePetsView = App.View.extend({
                      //Get pet object and simple attributes
                      pet_object = town_pets[list_keys[i]];
                      pets_list[i] = pet_object;
-                     pets_list[i].health = (pets_list[i]['stonehearth:expendable_resources'].resource_percentages.health)*100;
-                     //console.log("Vida: ", pets_list[i].health);
+                     health_percentage = (pets_list[i]['stonehearth:expendable_resources'].resource_percentages.health)*100;
+                     pets_list[i].health = String(health_percentage)
                     
                      //Get pet Buffs
                      var buff_keys = Object.keys(pets_list[i]['stonehearth:buffs'].buffs);
@@ -75,8 +75,7 @@ App.StonehearthAcePetsView = App.View.extend({
 
                      //Get pet commands
                      pets_list[i].available_commands = Object.entries(pets_list[i]['stonehearth:commands'].commands);
-                     
-                     
+                                          
                   }
                   
                   //Set pet list and selected pet + portrait for the first time
@@ -86,7 +85,7 @@ App.StonehearthAcePetsView = App.View.extend({
                      var uri = pets_list[0].__self;
                      var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
                      self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');  
-                  }
+                  }            
                   return;
                   
                })
