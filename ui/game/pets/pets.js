@@ -32,10 +32,18 @@ App.StonehearthAcePetsView = App.View.extend({
             var components = {
                town_pets: {
                  '*': {
-                   'stonehearth:commands': {},
-                   'stonehearth:pet': {},
-                   'stonehearth:unit_info': {},
-                 },
+                     'stonehearth:commands': {
+                        'commands': {},
+                     },
+                     'stonehearth:pet': {},
+                     'stonehearth:unit_info': {},
+                     'stonehearth:buffs' : {
+                        'buffs' : {
+                           '*' : {}
+                        }
+                     },
+                     'stonehearth:expendable_resources': {},
+                  },
                },
             };
             var town = response.town;
@@ -48,20 +56,37 @@ App.StonehearthAcePetsView = App.View.extend({
                   var list_keys = Object.keys(town_pets);
                   var pet_object = {}
                   
+
                   for (var i = 0; i < list_keys.length; i++){
+                     //Get pet object and simple attributes
                      pet_object = town_pets[list_keys[i]];
                      pets_list[i] = pet_object;
-                     //console.log("DISPLAY name: ", pets_list[i]['stonehearth:unit_info'].custom_name);
-                     //console.log("UI GAME CUSTOM name: ", pets_list[i]['stonehearth:ui.game.entities.custom_name']);
+                     pets_list[i].health = (pets_list[i]['stonehearth:expendable_resources'].resource_percentages.health)*100;
+                     //console.log("Vida: ", pets_list[i].health);
+                    
+                     //Get pet Buffs
+                     var buff_keys = Object.keys(pets_list[i]['stonehearth:buffs'].buffs);
+                     for (var j = 0; j < buff_keys.length; j++){
+                        var buff_list = [];
+                        buff_list[j] = pets_list[i]['stonehearth:buffs'].buffs[buff_keys[j]];
+                        
+                     }
+                     pets_list[i].buffs = buff_list;
+
+                     //Get pet commands
+                     pets_list[i].available_commands = Object.entries(pets_list[i]['stonehearth:commands'].commands);
+                     
                      
                   }
                   
-                  
+                  //Set pet list and selected pet + portrait for the first time
                   self.set('pets_list', pets_list);
-                  self.set('selected', pets_list[0]);
-                  var uri = pets_list[0].__self;
-                  var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
-                  self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');
+                  if (!self.get('selected')) {
+                     self.set('selected', pets_list[0]);
+                     var uri = pets_list[0].__self;
+                     var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
+                     self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');  
+                  }
                   return;
                   
                })

@@ -14,14 +14,14 @@
                      {{i18n_key view.selected.stonehearth:unit_info.custom_name self=this}}
                   </div>
                   <div id="selectedDescription">
-                     {{i18n_key view.selected self=this}}
+                     Current owner: <br> {{i18n_key view.selected.stonehearth:pet.owner_custom_name self=this}}
                      
                   </div>
       
                   <div id="traits">
-                     {{#each view.selected.traits}}
-                        <div class="item" >
-                           {{i18n_key this self=this}}
+                     {{#each view.selected.buffs}}
+                        <div class="item" {{bind-attr uri=this.uri}}>
+                           <img {{bind-attr src=this.icon}} />
                         </div>
                      {{/each}}
                   </div>
@@ -76,7 +76,7 @@
                                     {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
                                  </td>
                                  <td class="petHealth">
-                                    {{i18n_key this.health self=this}}/{{i18n_key this.maxHealth self=this}}
+                                    {{i18n_key this.health self=this}}%
                                  </td>
                                  <td class="petMood">
                                     {{i18n_key this.moodValue self=this}}
@@ -91,7 +91,7 @@
                                     {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
                                  </td>
                                  <td class="petHealth">
-                                    {{i18n_key this.health self=this}}/{{i18n_key this.maxHealth self=this}}
+                                    {{i18n_key this.health self=this}}%
                                  </td>
                                  <td class="petMood">
                                     {{i18n_key this.moodValue self=this}}
