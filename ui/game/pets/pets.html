@@ -29,8 +29,8 @@
                   <div class="toolbar">
                      
                      {{#each view.selected.available_commands}}
-                     <a {{bind-attr id=command.name}} href="#" {{action "doCommand" command view.selected target="view"}} class='uisounds'>
-                           <button class="brown">
+                     <a {{bind-attr id=command.name}} href="#" {{action "doCommand" this view.selected target="view"}} class='uisounds'>
+                           <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
                               {{i18n_key this.display_name self=view.selected}}
                            </button>
                         </a>
