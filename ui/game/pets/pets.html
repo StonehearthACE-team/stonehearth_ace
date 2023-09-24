@@ -27,15 +27,11 @@
                   </div>
 
                   <div class="toolbar">
-                     <a id="release_pet" href="#"  class='uisounds'>
-                        <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
-                           {{i18n_key view.selected.stonehearth:commands.commands.stonehearth:commands:release_pet.display_name}}
-                        </button>
-                     </a>
+                     
                      {{#each view.selected.available_commands}}
                         <a href="#" class='uisounds'>
                            <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
-                              {{i18n_key this self=view.selected}}
+                              {{i18n_key this.display_name self=view.selected}}
                            </button>
                         </a>
                      {{/each}}
@@ -55,7 +51,7 @@
                   <div class="listTitle" data-sort-key="social">
                      <h2>Health</h2>
                   </div>
-                  <div class="listTitle" data-sort-key="social">
+                  <div class="listTitle calories" data-sort-key="social">
                      <h2>Calories</h2>
                   </div>
                   <div class="listTitle" data-sort-key="social">

@@ -55,54 +55,63 @@ App.StonehearthAcePetsView = App.View.extend({
                   var town_pets = response.town_pets || {};
                   //check if pets list has changed
                   if (self.get('pets_list')) {
-                     var townNew = JSON.stringify(Object.keys(town_pets))
-                     var townOld = JSON.stringify(Object.keys(self.get('town_pets')))
+                     var townNew = JSON.stringify(town_pets)
+                     var townOld = JSON.stringify(self.get('town_pets'))
                      if (townOld==townNew) {
                         return
                      }
                   }
+                  else {
+                     var list_keys = Object.keys(town_pets);
+                     var pet_object = {}
+                     for (var i = 0; i < list_keys.length; i++){
+                        //Get pet object and add to list
+                        pet_object = town_pets[list_keys[i]];
+                        pets_list[i] = pet_object;
+                        //Get health, hunger, social and sleepiness percentages
+                        var health_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.health)*100)*10)/10;
+                        var hunger_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.calories)*100)*10)/10;
+                        var social_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.social_satisfaction)*100)*10)/10;
+                        var sleepiness_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.sleepiness)*100)*10)/10;
+                        pets_list[i].health = String(health_percentage)
+                        pets_list[i].hunger = String(hunger_percentage)
+                        pets_list[i].social = String(social_percentage)
+                        pets_list[i].sleepiness = String(sleepiness_percentage)
 
-                  var list_keys = Object.keys(town_pets);
-                  var pet_object = {}
-                  for (var i = 0; i < list_keys.length; i++){
-                     //Get pet object and add to list
-                     pet_object = town_pets[list_keys[i]];
-                     pets_list[i] = pet_object;
-                     //Get health, hunger, social and sleepiness percentages
-                     health_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.health)*100)*10)/10;
-                     hunger_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.calories)*100)*10)/10;
-                     social_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.social_satisfaction)*100)*10)/10;
-                     sleepiness_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.sleepiness)*100)*10)/10;
-                     pets_list[i].health = String(health_percentage)
-                     pets_list[i].hunger = String(hunger_percentage)
-                     pets_list[i].social = String(social_percentage)
-                     pets_list[i].sleepiness = String(sleepiness_percentage)
+                        //Get pet Buffs
+                        var buff_keys = Object.keys(pets_list[i]['stonehearth:buffs'].buffs);
+                        var buff_list = [];
+                        for (var j = 0; j < buff_keys.length; j++){
+                           
+                           buff_list[j] = pets_list[i]['stonehearth:buffs'].buffs[buff_keys[j]];
+                           
+                        }
+                        pets_list[i].buffs = buff_list;
 
-                     //Get pet Buffs
-                     var buff_keys = Object.keys(pets_list[i]['stonehearth:buffs'].buffs);
-                     var buff_list = [];
-                     for (var j = 0; j < buff_keys.length; j++){
-                        
-                        buff_list[j] = pets_list[i]['stonehearth:buffs'].buffs[buff_keys[j]];
-                        
+                        //Get pet commands
+                        var command_keys = Object.keys(pets_list[i]['stonehearth:commands'].commands);
+                        var command_list = [];
+                        for (var j = 0; j < command_keys.length; j++){
+                           
+                           command_list[j] = pets_list[i]['stonehearth:commands'].commands[command_keys[j]];
+                           
+                        }
+                        //console.log(command_list[0].display_name)
+                        pets_list[i].available_commands = command_list;
+                                             
                      }
-                     pets_list[i].buffs = buff_list;
-
-                     //Get pet commands
-                     pets_list[i].available_commands = Object.entries(pets_list[i]['stonehearth:commands'].commands);
-                                          
+                     
+                     //Set pet list and selected pet + portrait for the first time
+                     self.set('pets_list', pets_list);
+                     self.set('town_pets', town_pets)
+                     if (!self.get('selected')) {
+                        self.set('selected', pets_list[0]);
+                        var uri = pets_list[0].__self;
+                        var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
+                        self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');  
+                     }            
+                     return;
                   }
-                  
-                  //Set pet list and selected pet + portrait for the first time
-                  self.set('pets_list', pets_list);
-                  self.set('town_pets', town_pets)
-                  if (!self.get('selected')) {
-                     self.set('selected', pets_list[0]);
-                     var uri = pets_list[0].__self;
-                     var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
-                     self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');  
-                  }            
-                  return;
                   
                })
                .fail(function(e) {
