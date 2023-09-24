@@ -52,15 +52,17 @@
                   <div class="listTitle" id="tasksTitleName" data-sort-key="name">
                      <h2>{{i18n stonehearth_ace:ui.game.pet_manager.name}}</h2>
                   </div>
-                  <div class="listTitle statTitle healthTitle" data-sort-key="health">
-                     <button class="brown statButton">
-                        <div class="healthImg"></div>
-                     </button>
+                  <div class="listTitle" data-sort-key="social">
+                     <h2>Health</h2>
                   </div>
-                  <div class="listTitle statTitle moodTitle" data-sort-key="happiness">
-                     <button class="brown statButton">
-                        <div class="happinessImg"></div>
-                     </button>
+                  <div class="listTitle" data-sort-key="social">
+                     <h2>Calories</h2>
+                  </div>
+                  <div class="listTitle" data-sort-key="social">
+                     <h2>Social</h2>
+                  </div>
+                  <div class="listTitle" data-sort-key="sleepiness">
+                     <h2>Sleepiness</h2>
                   </div>
                </div>
                <div id="listContent" class="innerBox">
@@ -75,11 +77,17 @@
                                  <td class="nameColumn">
                                     {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
                                  </td>
-                                 <td class="petHealth">
+                                 <td class="healthColumn">
                                     {{i18n_key this.health self=this}}%
                                  </td>
-                                 <td class="petMood">
-                                    {{i18n_key this.moodValue self=this}}
+                                 <td class="petHunger">
+                                    {{i18n_key this.hunger self=this}}%
+                                 </td>
+                                 <td class="petSocial">
+                                    {{i18n_key this.social self=this}}%
+                                 </td>
+                                 <td class="petSleepiness">
+                                    {{i18n_key this.sleepiness self=this}}%
                                  </td>
                               </tr>
                            {{else}}
@@ -93,8 +101,14 @@
                                  <td class="petHealth">
                                     {{i18n_key this.health self=this}}%
                                  </td>
-                                 <td class="petMood">
-                                    {{i18n_key this.moodValue self=this}}
+                                 <td class="petHunger">
+                                    {{i18n_key this.hunger self=this}}%
+                                 </td>
+                                 <td class="petSocial">
+                                    {{i18n_key this.social self=this}}%
+                                 </td>
+                                 <td class="petSleepiness">
+                                    {{i18n_key this.sleepiness self=this}}%
                                  </td>
                               </tr>
                            {{/if}}

@@ -22,7 +22,6 @@ App.StonehearthAcePetsView = App.View.extend({
       //Trace town pets on init
       this._traceTownPets();
       
-      
    },
    
    _traceTownPets: function() {
@@ -62,16 +61,23 @@ App.StonehearthAcePetsView = App.View.extend({
                         return
                      }
                   }
-                  
+
                   var list_keys = Object.keys(town_pets);
                   var pet_object = {}
                   for (var i = 0; i < list_keys.length; i++){
-                     //Get pet object and simple attributes
+                     //Get pet object and add to list
                      pet_object = town_pets[list_keys[i]];
                      pets_list[i] = pet_object;
-                     health_percentage = (pets_list[i]['stonehearth:expendable_resources'].resource_percentages.health)*100;
+                     //Get health, hunger, social and sleepiness percentages
+                     health_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.health)*100)*10)/10;
+                     hunger_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.calories)*100)*10)/10;
+                     social_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.social_satisfaction)*100)*10)/10;
+                     sleepiness_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.sleepiness)*100)*10)/10;
                      pets_list[i].health = String(health_percentage)
-                    
+                     pets_list[i].hunger = String(hunger_percentage)
+                     pets_list[i].social = String(social_percentage)
+                     pets_list[i].sleepiness = String(sleepiness_percentage)
+
                      //Get pet Buffs
                      var buff_keys = Object.keys(pets_list[i]['stonehearth:buffs'].buffs);
                      for (var j = 0; j < buff_keys.length; j++){
