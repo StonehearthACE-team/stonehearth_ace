@@ -80,8 +80,9 @@ App.StonehearthAcePetsView = App.View.extend({
 
                      //Get pet Buffs
                      var buff_keys = Object.keys(pets_list[i]['stonehearth:buffs'].buffs);
+                     var buff_list = [];
                      for (var j = 0; j < buff_keys.length; j++){
-                        var buff_list = [];
+                        
                         buff_list[j] = pets_list[i]['stonehearth:buffs'].buffs[buff_keys[j]];
                         
                      }
