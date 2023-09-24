@@ -190,4 +190,14 @@ App.StonehearthAcePetsView = App.View.extend({
          });
       });
    },
+   actions: {
+      doCommand: function(command) {
+         var self = this;
+         var pet_data = self.get('selected');
+         var pet_id = pet_data.__self;
+         var player_id = pet_data.player_id;
+         console.log("debugger: ",player_id, pet_id, command)
+         App.stonehearthClient.doCommand(pet_id, player_id, command);
+      },
+   },
 });
