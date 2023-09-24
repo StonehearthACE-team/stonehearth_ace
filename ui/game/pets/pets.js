@@ -1,5 +1,6 @@
 let pets_list = [];
-   
+let mainView = null;
+
 App.StonehearthAcePetsView = App.View.extend({
    templateName: 'petsView',
    uriProperty: 'model',
@@ -17,7 +18,7 @@ App.StonehearthAcePetsView = App.View.extend({
    init: function() {
       var self = this;
       this._super();
-      
+      mainView = this;
       //Trace town pets on init
       this._traceTownPets();
       
@@ -53,10 +54,17 @@ App.StonehearthAcePetsView = App.View.extend({
                      return;
                   }
                   var town_pets = response.town_pets || {};
+                  //check if pets list has changed
+                  if (self.get('pets_list')) {
+                     var townNew = JSON.stringify(Object.keys(town_pets))
+                     var townOld = JSON.stringify(Object.keys(self.get('town_pets')))
+                     if (townOld==townNew) {
+                        return
+                     }
+                  }
+                  
                   var list_keys = Object.keys(town_pets);
                   var pet_object = {}
-                  
-
                   for (var i = 0; i < list_keys.length; i++){
                      //Get pet object and simple attributes
                      pet_object = town_pets[list_keys[i]];
@@ -80,6 +88,7 @@ App.StonehearthAcePetsView = App.View.extend({
                   
                   //Set pet list and selected pet + portrait for the first time
                   self.set('pets_list', pets_list);
+                  self.set('town_pets', town_pets)
                   if (!self.get('selected')) {
                      self.set('selected', pets_list[0]);
                      var uri = pets_list[0].__self;
@@ -128,13 +137,21 @@ App.StonehearthAcePetsView = App.View.extend({
 
       //console.log("pets_list: ", pets_list);
 
+      //Change pet selection on click
       self.$('#petTable').on('click', 'tr', function () {
          $('#petTable tr').removeClass('selected');
           $(this).addClass('selected');
           self.set('selected', pets_list[$(this).index()]);
+          //Re-select portrait
           var uri = pets_list[$(this).index()].__self;
           var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
           self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');
+          //Focus on entity and open pet sheet
+          radiant.call('stonehearth:camera_look_at_entity', uri);
+          radiant.call('stonehearth:select_entity', uri);
+          radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:focus' });
+          //recheck the pets list
+          mainView._traceTownPets();
       });
 
       self.$('#release_pet').on('click', function (_, e) {
