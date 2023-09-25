@@ -13,10 +13,11 @@
                   <div id="selectedName">
                      {{i18n_key view.selected.stonehearth:unit_info.custom_name self=this}}
                   </div>
+                  {{#if view.pets_list}}
                   <div id="selectedDescription">
                      {{i18n stonehearth_ace:ui.game.pet_manager.current_owner}}<br> {{i18n_key view.selected.stonehearth:pet.owner_custom_name self=this}} 
                   </div>
-                  
+                  {{/if}}
                   <div id="traits">
                      {{#each view.selected.buffs itemView="stonehearthTraitItem"}}
                         <div class="item" {{bind-attr uri=this.uri}}>
@@ -65,31 +66,41 @@
                <div id="listContent" class="innerBox">
                   <table id="petTable">
                      <tbody>
-                        {{#each view.pets_list}}
-                           <tr class="petrow uisounds">
-                              <td class="icon">
-                                 <img class="hasPetsIcon"/>
+                        {{#if view.pets_list}}
+                           {{#each view.pets_list}}
+                              <tr class="petrow uisounds">
+                                 <td class="icon">
+                                    <img class="hasPetsIcon"/>
+                                 </td>
+                                 <td class="nameColumn">
+                                    {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
+                                 </td>
+                                 <td class="petActivity centralized">
+                                    {{i18n_key this.activity self=this}}
+                                 </td>
+                                 <td class="petHealth centralized">
+                                    {{i18n_key this.health self=this}}%
+                                 </td>
+                                 <td class="petHunger centralized">
+                                    {{i18n_key this.hunger self=this}}%
+                                 </td>
+                                 <td class="petSocial centralized">
+                                    {{i18n_key this.social self=this}}%
+                                 </td>
+                                 <td class="petSleepiness centralized">
+                                    {{i18n_key this.sleepiness self=this}}%
+                                 </td>                            
+                              </tr>
+                           {{/each}}
+                        {{else}}
+                           <tr class="petrow">
+                              <td colspan="8">
+                                 <div class="noPets centralized">
+                                    {{i18n stonehearth_ace:ui.game.pet_manager.no_pets}}
+                                 </div>
                               </td>
-                              <td class="nameColumn">
-                                 {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
-                              </td>
-                              <td class="petActivity centralized">
-                                 {{i18n_key this.activity self=this}}
-                              </td>
-                              <td class="petHealth centralized">
-                                 {{i18n_key this.health self=this}}%
-                              </td>
-                              <td class="petHunger centralized">
-                                 {{i18n_key this.hunger self=this}}%
-                              </td>
-                              <td class="petSocial centralized">
-                                 {{i18n_key this.social self=this}}%
-                              </td>
-                              <td class="petSleepiness centralized">
-                                 {{i18n_key this.sleepiness self=this}}%
-                              </td>                            
                            </tr>
-                        {{/each}}
+                        {{/if}}
                      </tbody>
                   </table>
                </div>

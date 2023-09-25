@@ -109,7 +109,7 @@ App.StonehearthAcePetsView = App.View.extend({
                      //Set pet list and selected pet + portrait for the first time
                      self.set('pets_list', pets_list);
                      self.set('town_pets', town_pets)
-                     if (!self.get('selected')) {
+                     if (!self.get('selected') && pets_list[0]) {
                         self.set('selected', pets_list[0]);
                         self.set('selected_index', pets_list[0]);
                         var uri = pets_list[0].__self;
@@ -158,22 +158,25 @@ App.StonehearthAcePetsView = App.View.extend({
       }
       //Change pet selection on click
       self.$('#petTable').on('click', 'tr', function () {
-         if(!$(this).hasClass('selected')) {
-            $('#petTable tr').removeClass('selected');
-            $(this).addClass('selected');
-            self.set('selected', pets_list[$(this).index()]);
-            self.set('selected_index', $(this).index());
+         console.log(pets_list)
+         if(pets_list.length > 0){ //check if any pets are available to select
+            if(!$(this).hasClass('selected')) {
+               $('#petTable tr').removeClass('selected');
+               $(this).addClass('selected');
+               self.set('selected', pets_list[$(this).index()]);
+               self.set('selected_index', $(this).index());
+            }
+            //Re-select portrait
+            var uri = pets_list[$(this).index()].__self;
+            var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
+            self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');
+            //Focus on entity and open pet sheet
+            radiant.call('stonehearth:camera_look_at_entity', uri);
+            radiant.call('stonehearth:select_entity', uri);
+            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:focus' });
+            //recheck the pets list
+            mainView._traceTownPets();
          }
-         //Re-select portrait
-         var uri = pets_list[$(this).index()].__self;
-         var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
-         self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');
-         //Focus on entity and open pet sheet
-         radiant.call('stonehearth:camera_look_at_entity', uri);
-         radiant.call('stonehearth:select_entity', uri);
-         radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:focus' });
-         //recheck the pets list
-         mainView._traceTownPets();
       });
    },
    actions: {
