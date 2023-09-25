@@ -24,6 +24,7 @@
          "stonehearth_ace:traits:braggart": {
             "excludes": {
                "stonehearth:traits:loner": true,
+               "stonehearth:traits:callous": true,
                "stonehearth:traits:empathetic": true,
                "stonehearth_ace:traits:modest": true
             }
@@ -44,6 +45,11 @@
       "talkative": {}
    },
    "traits": {
+      "stonehearth:traits:callous": {
+         "excludes": {
+            "stonehearth_ace:traits:braggart": true
+         }
+      },
       "stonehearth_ace:traits:alcohol_intolerance": {
          "excludes": {
             "stonehearth_ace:traits:passion_brewer": true,

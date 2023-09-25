@@ -5,6 +5,22 @@
    ],
 	"type": "entity",
    "components": {
+      "model_variants": {
+         "orc_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(leather_helmet_orc.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "/stonehearth/entities/armor/leather_helmet/leather_helmet_female.qb"
+            ]
+         }
+      },
       "stonehearth:equipment_piece": {
          "required_job_level": 1
 		}

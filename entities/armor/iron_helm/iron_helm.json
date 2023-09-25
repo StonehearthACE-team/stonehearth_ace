@@ -5,6 +5,22 @@
    ],
 	"type": "entity",
    "components": {
+      "model_variants": {
+         "orc_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(iron_helm_orc.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "/stonehearth/entities/armor/iron_helm/iron_helm_female.qb"
+            ]
+         }
+      },
       "stonehearth:equipment_piece": {
          "required_job_level": 5
       }

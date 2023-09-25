@@ -5,7 +5,9 @@
       "model_variants": {
          "mixintypes": {
             "default": "override",
-            "female": "override"
+            "female": "override",
+            "orc_male": "override",
+            "orc_female": "override"
          },
          "default": {
             "layer": "hat",
@@ -15,6 +17,20 @@
             ]
          },
          "female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_iron_helm_female.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(rc_iron_helm_orc.qb)"
+            ]
+         },
+         "orc_female": {
             "layer": "hat",
             "transparent": "false",
             "models": [

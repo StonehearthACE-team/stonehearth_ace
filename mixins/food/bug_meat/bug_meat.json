@@ -2,10 +2,22 @@
 	"mixintypes": {
       "type": "remove"
    },
+   "components": {     
+      "stonehearth:stacks": {
+         "max_stacks": 1
+      }
+   },
    "entity_data": {
+      "mixintypes": {
+         "stonehearth:food": "remove"
+      },
+      "stonehearth_ace:pet_food_container": {
+         "food": "stonehearth_ace:food:bug_meat_serving",
+         "stacks_per_serving": 1
+      },
       "stonehearth:catalog": {
          "category": "cooking_ingredient",
-         "material_tags": ["meat_ingredient"]
+         "material_tags": ["meat_ingredient", "pet_food_container"]
       }
    }
 }
