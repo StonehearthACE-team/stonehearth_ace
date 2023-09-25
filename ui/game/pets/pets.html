@@ -14,10 +14,9 @@
                      {{i18n_key view.selected.stonehearth:unit_info.custom_name self=this}}
                   </div>
                   <div id="selectedDescription">
-                     Current owner: <br> {{i18n_key view.selected.stonehearth:pet.owner_custom_name self=this}}
-                     
+                     {{i18n stonehearth_ace:ui.game.pet_manager.current_owner}}<br> {{i18n_key view.selected.stonehearth:pet.owner_custom_name self=this}} 
                   </div>
-      
+                  
                   <div id="traits">
                      {{#each view.selected.buffs}}
                         <div class="item" {{bind-attr uri=this.uri}}>
@@ -39,7 +38,6 @@
                   </center>
                </div>
             </div>
-      
             <div id="tasksPetsList" class="petsList">
                <div id="listTitles" class="flex-container">
                   <button class="brown statButton nameIcon">
@@ -48,66 +46,49 @@
                   <div class="listTitle" id="tasksTitleName" data-sort-key="name">
                      <h2>{{i18n stonehearth_ace:ui.game.pet_manager.name}}</h2>
                   </div>
-                  <div class="listTitle" data-sort-key="social">
-                     <h2>Health</h2>
+                  <div class="listTitle" data-sort-key="activity">
+                     <h2>{{i18n stonehearth_ace:ui.game.pet_manager.activity}}</h2>
                   </div>
-                  <div class="listTitle calories" data-sort-key="social">
-                     <h2>Calories</h2>
+                  <div class="listTitle" data-sort-key="health">
+                     <h2>{{i18n stonehearth_ace:ui.game.pet_manager.health}}</h2>
+                  </div>
+                  <div class="listTitle calories" data-sort-key="hunger">
+                     <h2>{{i18n stonehearth_ace:ui.game.pet_manager.hunger}}</h2>
                   </div>
                   <div class="listTitle" data-sort-key="social">
-                     <h2>Social</h2>
+                     <h2>{{i18n stonehearth_ace:ui.game.pet_manager.social}}</h2>
                   </div>
                   <div class="listTitle" data-sort-key="sleepiness">
-                     <h2>Sleepiness</h2>
+                     <h2>{{i18n stonehearth_ace:ui.game.pet_manager.sleepiness}}</h2>
                   </div>
                </div>
                <div id="listContent" class="innerBox">
                   <table id="petTable">
                      <tbody>
                         {{#each view.pets_list}}
-                           {{#if this.selected}}
-                              <tr class="selected petrow uisounds">
-                                 <td class="petIcon">
-                                    <img class="hasPetsIcon"/>
-                                 </td>
-                                 <td class="nameColumn">
-                                    {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
-                                 </td>
-                                 <td class="healthColumn">
-                                    {{i18n_key this.health self=this}}%
-                                 </td>
-                                 <td class="petHunger">
-                                    {{i18n_key this.hunger self=this}}%
-                                 </td>
-                                 <td class="petSocial">
-                                    {{i18n_key this.social self=this}}%
-                                 </td>
-                                 <td class="petSleepiness">
-                                    {{i18n_key this.sleepiness self=this}}%
-                                 </td>
-                              </tr>
-                           {{else}}
-                              <tr class="petrow uisounds">
-                                 <td class="icon">
-                                    <img class="hasPetsIcon"/>
-                                 </td>
-                                 <td class="nameColumn">
-                                    {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
-                                 </td>
-                                 <td class="petHealth">
-                                    {{i18n_key this.health self=this}}%
-                                 </td>
-                                 <td class="petHunger">
-                                    {{i18n_key this.hunger self=this}}%
-                                 </td>
-                                 <td class="petSocial">
-                                    {{i18n_key this.social self=this}}%
-                                 </td>
-                                 <td class="petSleepiness">
-                                    {{i18n_key this.sleepiness self=this}}%
-                                 </td>
-                              </tr>
-                           {{/if}}
+                           <tr class="petrow uisounds">
+                              <td class="icon">
+                                 <img class="hasPetsIcon"/>
+                              </td>
+                              <td class="nameColumn">
+                                 {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
+                              </td>
+                              <td class="petActivity centralized">
+                                 {{i18n_key this.activity self=this}}
+                              </td>
+                              <td class="petHealth centralized">
+                                 {{i18n_key this.health self=this}}%
+                              </td>
+                              <td class="petHunger centralized">
+                                 {{i18n_key this.hunger self=this}}%
+                              </td>
+                              <td class="petSocial centralized">
+                                 {{i18n_key this.social self=this}}%
+                              </td>
+                              <td class="petSleepiness centralized">
+                                 {{i18n_key this.sleepiness self=this}}%
+                              </td>                            
+                           </tr>
                         {{/each}}
                      </tbody>
                   </table>

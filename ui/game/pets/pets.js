@@ -37,6 +37,9 @@ App.StonehearthAcePetsView = App.View.extend({
                      },
                      'stonehearth:pet': {},
                      'stonehearth:unit_info': {},
+                     "stonehearth:ai": {
+                        "status_text_data": {},
+                     },
                      'stonehearth:buffs' : {
                         'buffs' : {
                            '*' : {}
@@ -71,14 +74,15 @@ App.StonehearthAcePetsView = App.View.extend({
                         pets_list[i] = pet_object;
                         //Get health, hunger, social and sleepiness percentages
                         var health_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.health)*100)*10)/10;
-                        var hunger_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.calories)*100)*10)/10;
+                        var hunger_percentage = 100-(Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.calories)*100)*10)/10);
                         var social_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.social_satisfaction)*100)*10)/10;
                         var sleepiness_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.sleepiness)*100)*10)/10;
                         pets_list[i].health = String(health_percentage)
                         pets_list[i].hunger = String(hunger_percentage)
                         pets_list[i].social = String(social_percentage)
                         pets_list[i].sleepiness = String(sleepiness_percentage)
-
+                        //Get pet status
+                        pets_list[i].activity = pets_list[i]['stonehearth:ai'].status_text_key
                         //Get pet Buffs
                         var buff_keys = Object.keys(pets_list[i]['stonehearth:buffs'].buffs);
                         var buff_list = [];
@@ -111,7 +115,10 @@ App.StonehearthAcePetsView = App.View.extend({
                         var uri = pets_list[0].__self;
                         var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
                         self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');  
-                     }            
+                     }       
+                     
+                     
+                     //debugger
                      return;
                   }
                   
