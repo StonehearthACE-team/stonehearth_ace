@@ -1,5 +1,21 @@
 {
    "components": {
+      "model_variants": {
+         "orc_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(bronze_helm_orc.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "/stonehearth/entities/armor/bronze_helm/bronze_helm_female.qb"
+            ]
+         }
+      },
       "stonehearth:equipment_piece": {
          "slot": "helmet",
          "render_type": "merge_with_model",

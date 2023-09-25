@@ -4,6 +4,22 @@
       "stonehearth_ace:mixins:armor:resistance:helmet:high"
    ],
    "components": {
+      "model_variants": {
+         "orc_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(helmet_wolf_orc.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "/northern_alliance/entities/armor/helmet_wolf/helmet_wolf_female.qb"
+            ]
+         }
+      },
       "stonehearth:equipment_piece": {}
    },
    "entity_data": {

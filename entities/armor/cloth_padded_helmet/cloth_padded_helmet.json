@@ -5,6 +5,22 @@
    ],
 	"type": "entity",
    "components": {
+      "model_variants": {
+         "orc_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(cloth_padded_helmet_orc.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "/stonehearth/entities/armor/cloth_padded_helmet/cloth_padded_helmet_female.qb"
+            ]
+         }
+      },
 	  "stonehearth:equipment_piece": {
 		 "required_job_level": 1
 	  }

@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fish_meat_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 50
+         },
+         "default": {
+            "satisfaction": 50
+         },
+         "quality": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.fish_meat_serving.display_name)",
+         "material_tags": [
+            "pet_food",
+            "animal_feed",
+            "meat"
+         ],
+         "subject_override": "stonehearth_ace:food:fish_meat"
+      }
+   }
+}
