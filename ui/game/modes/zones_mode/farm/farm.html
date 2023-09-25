@@ -27,13 +27,13 @@
                      {{#if view.model.stonehearth:farmer_field.saved_crop}}
                         <a class="resumeButton" {{action "resumeCrops" target="view"}}>
                            <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
-                              Resume<br>Plantation
+                              {{i18n stonehearth_ace:ui.game.zones_mode.farm.resume}}<br>{{i18n stonehearth_ace:ui.game.zones_mode.farm.plantation}}
                            </button>
                         </a>
                      {{else}}
                         <a id="pauseButton" {{action "pauseCrops" target="view"}}>
                            <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
-                              Pause<br>Plantation
+                              {{i18n stonehearth_ace:ui.game.zones_mode.farm.pause}}<br>{{i18n stonehearth_ace:ui.game.zones_mode.farm.plantation}}
                            </button>
                         </a>
                      {{/if}}
