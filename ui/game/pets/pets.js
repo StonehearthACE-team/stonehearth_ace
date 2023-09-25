@@ -74,7 +74,7 @@ App.StonehearthAcePetsView = App.View.extend({
                         pets_list[i] = pet_object;
                         //Get health, hunger, social and sleepiness percentages
                         var health_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.health)*100)*10)/10;
-                        var hunger_percentage = 100-(Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.calories)*100)*10)/10);
+                        var hunger_percentage = Math.round(100-(Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.calories)*100)*10)/10)/10);
                         var social_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.social_satisfaction)*100)*10)/10;
                         var sleepiness_percentage = Math.round(((pets_list[i]['stonehearth:expendable_resources'].resource_percentages.sleepiness)*100)*10)/10;
                         pets_list[i].health = String(health_percentage)
