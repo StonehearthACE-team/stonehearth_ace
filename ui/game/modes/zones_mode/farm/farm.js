@@ -158,7 +158,8 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       })
 
       // tooltips
-      App.guiHelper.addTooltip(self.$('#enableHarvest'), 'stonehearth_ace:ui.game.zones_mode.farm.enable_harvest_description');
+      App.guiHelper.addTooltip(self.$('#enableHarvest'), 'stonehearth_ace:ui.game.zones_mode.farm.enable_harvest_description');;
+      App.guiHelper.addTooltip(self.$('#plantationPauserButtons'), 'stonehearth_ace:ui.game.zones_mode.farm.pause_plantation_description');
 
       radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth_ace:fertilizer_tracker')
          .done(function(response) {
