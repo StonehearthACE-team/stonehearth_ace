@@ -20,25 +20,7 @@
                      <div class="name">{{i18n_key view.model.stonehearth:farmer_field.current_crop_details.name}}</div>
                      <p>{{i18n_key view.model.stonehearth:farmer_field.current_crop_details.description}}</p>
                   </div>
-               </td></tr> 
-               <tr><td>
-                  
-                  <div id="plantationPauserButtons" class="uisounds">
-                     {{#if view.model.stonehearth:farmer_field.saved_crop}}
-                        <a class="resumeButton" {{action "resumeCrops" target="view"}}>
-                           <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
-                              {{i18n stonehearth_ace:ui.game.zones_mode.farm.resume}}<br>{{i18n stonehearth_ace:ui.game.zones_mode.farm.plantation}}
-                           </button>
-                        </a>
-                     {{else}}
-                        <a id="pauseButton" {{action "pauseCrops" target="view"}}>
-                           <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
-                              {{i18n stonehearth_ace:ui.game.zones_mode.farm.pause}}<br>{{i18n stonehearth_ace:ui.game.zones_mode.farm.plantation}}
-                           </button>
-                        </a>
-                     {{/if}}
-                  </div>
-               </td></tr>
+               </td></tr>         
             </table>
 
             <div id="cropDetails" {{bind-attr class="view.isFallow:hidden"}}>
@@ -135,8 +117,25 @@
 
          <p></p>
 
-         <button class="warn">{{i18n stonehearth:ui.game.common.remove}}</button>
-         <button class="ok"></button>
+         <div class="optionButtons">
+            <button class="warn">{{i18n stonehearth:ui.game.common.remove}}</button>
+            <div id="plantationPauserButtons" class="uisounds">
+               {{#if view.model.stonehearth:farmer_field.saved_crop}}
+                  <a id="resumeButton" {{action "resumeCrops" target="view"}}>
+                     <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
+                        {{i18n stonehearth_ace:ui.game.zones_mode.farm.resume}}
+                     </button>
+                  </a>
+               {{else}}
+                  <a id="pauseButton" {{action "pauseCrops" target="view"}}>
+                     <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
+                        {{i18n stonehearth_ace:ui.game.zones_mode.farm.pause}}
+                     </button>
+                  </a>
+               {{/if}}
+            </div>
+            <button class="ok okButton"></button>
+         </div>
 
       </div>
    </div>
