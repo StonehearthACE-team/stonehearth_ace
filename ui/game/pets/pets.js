@@ -47,14 +47,14 @@ App.StonehearthAcePetsView = App.View.extend({
                },
             };
             var town = response.town;
-            self._trace_pets = new StonehearthDataTrace(town, components)
+            self._petTraces = new StonehearthDataTrace(town, components)
                .progress(function (response) {
                   if (self.isDestroying || self.isDestroyed) {
                      return;
                   }
                   var town_pets = response.town_pets || {};
-                  //check if pets list has changed
-                  if (self.get('pets_list')) {
+                  if (town_pets == {}) return //if no pets, return
+                  else if (self.get('pets_list')) { //check if pets list has changed
                      var townNew = JSON.stringify(town_pets)
                      var townOld = JSON.stringify(self.get('town_pets'))
                      if (townOld==townNew) {
@@ -62,6 +62,7 @@ App.StonehearthAcePetsView = App.View.extend({
                      }
                   }
                   else {
+                     self.set('pets_list', [])
                      var list_keys = Object.keys(town_pets);
                      var pet_object = {}
                      for (var i = 0; i < list_keys.length; i++){
@@ -106,6 +107,7 @@ App.StonehearthAcePetsView = App.View.extend({
                      self.set('town_pets', town_pets)
                      if (!self.get('selected')) {
                         self.set('selected', pets_list[0]);
+                        self.set('selected_index', pets_list[0]);
                         var uri = pets_list[0].__self;
                         var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
                         self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');  
@@ -128,10 +130,7 @@ App.StonehearthAcePetsView = App.View.extend({
 
       this.$().draggable({ handle: '.title' });
 
-      self.$().on('click', '.moodIcon', function() {
-         self._moodIconClicked = true;
-      });
-
+      //not functional yet
       self.$().on('click', '.listTitle', function() {
          var newSortKey = $(this).attr('data-sort-key');
          if (newSortKey) {
@@ -150,44 +149,24 @@ App.StonehearthAcePetsView = App.View.extend({
       if (self.hideOnCreate) {
          self.hide();
       }
-
-      //console.log("pets_list: ", pets_list);
-
       //Change pet selection on click
       self.$('#petTable').on('click', 'tr', function () {
-         $('#petTable tr').removeClass('selected');
-          $(this).addClass('selected');
-          self.set('selected', pets_list[$(this).index()]);
-          //Re-select portrait
-          var uri = pets_list[$(this).index()].__self;
-          var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
-          self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');
-          //Focus on entity and open pet sheet
-          radiant.call('stonehearth:camera_look_at_entity', uri);
-          radiant.call('stonehearth:select_entity', uri);
-          radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:focus' });
-          //recheck the pets list
-          mainView._traceTownPets();
-      });
-
-      self.$('#release_pet').on('click', function (_, e) {
-         App.gameView.addView(App.StonehearthConfirmView, {
-            title : i18n.t('stonehearth:ui.game.pet_character_sheet.release_pet_confirm_dialog.title'),
-            message : i18n.t('stonehearth:ui.game.pet_character_sheet.release_pet_confirm_dialog.message'),
-            buttons : [
-               {
-                  id: 'accept',
-                  label: i18n.t('stonehearth:ui.game.pet_character_sheet.release_pet_confirm_dialog.accept'),
-                  click: function() {
-                     radiant.call('stonehearth:release_pet', e.entity);
-                  }
-               },
-               {
-                  id: 'cancel',
-                  label: i18n.t('stonehearth:ui.game.pet_character_sheet.release_pet_confirm_dialog.cancel')
-               }
-            ]
-         });
+         if(!$(this).hasClass('selected')) {
+            $('#petTable tr').removeClass('selected');
+            $(this).addClass('selected');
+            self.set('selected', pets_list[$(this).index()]);
+            self.set('selected_index', $(this).index());
+         }
+         //Re-select portrait
+         var uri = pets_list[$(this).index()].__self;
+         var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
+         self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');
+         //Focus on entity and open pet sheet
+         radiant.call('stonehearth:camera_look_at_entity', uri);
+         radiant.call('stonehearth:select_entity', uri);
+         radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:focus' });
+         //recheck the pets list
+         mainView._traceTownPets();
       });
    },
    actions: {
@@ -196,8 +175,21 @@ App.StonehearthAcePetsView = App.View.extend({
          var pet_data = self.get('selected');
          var pet_id = pet_data.__self;
          var player_id = pet_data.player_id;
-         console.log("debugger: ",player_id, pet_id, command)
          App.stonehearthClient.doCommand(pet_id, player_id, command);
+         //Check if pet was removed
+         if (command.name == 'release_pet') {
+            //remove pet from list and recheck the pets list
+            $('#petTable').find('tr').eq(self.get('selected_index')).remove();
+            pets_list.splice(self.get('selected_index'), 1);
+            self.set('pets_list', pets_list);
+            self.set('selected', pets_list[0]);
+            $('#petTable').find('tr').eq(0).addClass('selected');
+            var uri = pets_list[0].__self;
+            var portrait_url = '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + uri + '&cache_buster=' + Math.random();
+            self.$('#selectedPortrait').css('background-image', 'url(' + portrait_url + ')');  
+            mainView._traceTownPets();
+            
+         }
       },
    },
 });
