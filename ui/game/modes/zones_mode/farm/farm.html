@@ -8,7 +8,8 @@
          <h2>{{i18n stonehearth:ui.game.zones_mode.farm.choose_crop}}:</h2>
 
          <div id="cropRotation">
-            <table id="cropPanel"><tr><td>
+            <table id="cropPanel">
+               <tr><td>
                   <a id="addCropLink" {{action "addCropButtonClicked" target="view"}}>
                      <div class="targetCrop downSection">
                         <img class="cropImage tooltip" {{bind-attr src="view.model.stonehearth:farmer_field.current_crop_details.icon" title="view.model.stonehearth:farmer_field.current_crop_details.name"}} />
@@ -19,7 +20,26 @@
                      <div class="name">{{i18n_key view.model.stonehearth:farmer_field.current_crop_details.name}}</div>
                      <p>{{i18n_key view.model.stonehearth:farmer_field.current_crop_details.description}}</p>
                   </div>
-            </td></tr></table>
+               </td></tr> 
+               <tr><td>
+                  
+                  <div id="plantationPauserButtons" class="uisounds">
+                     {{#if view.model.stonehearth:farmer_field.saved_crop}}
+                        <a class="resumeButton" {{action "resumeCrops" target="view"}}>
+                           <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
+                              Resume<br>Plantation
+                           </button>
+                        </a>
+                     {{else}}
+                        <a id="pauseButton" {{action "pauseCrops" target="view"}}>
+                           <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
+                              Pause<br>Plantation
+                           </button>
+                        </a>
+                     {{/if}}
+                  </div>
+               </td></tr>
+            </table>
 
             <div id="cropDetails" {{bind-attr class="view.isFallow:hidden"}}>
                <div id="cropProperties">

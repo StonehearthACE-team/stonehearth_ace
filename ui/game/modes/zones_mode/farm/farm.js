@@ -1051,6 +1051,21 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       addCropButtonClicked: function() {
          this._createPalette();
       },
+      pauseCrops: function() {
+         var self = this;
+         var field = this.get('model.stonehearth:farmer_field');
+         console.log(field)
+         var crop = field.current_crop_details.uri;
+         radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), crop);
+         radiant.call_obj(field, 'set_crop', 'fallow');
+      },
+      resumeCrops: function() {
+         var self = this;
+         var field = this.get('model.stonehearth:farmer_field');
+         var crop = this.get('model.stonehearth:farmer_field.saved_crop'); 
+         radiant.call_obj(field, 'set_crop', crop);
+         radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), null);
+      }
    },
 });
 

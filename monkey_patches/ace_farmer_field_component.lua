@@ -671,6 +671,11 @@ function AceFarmerFieldComponent:get_fertilizer_preference()
    return self._sv.fertilizer_preference
 end
 
+function AceFarmerFieldComponent:set_saved_crop(crop)
+   self._sv.saved_crop = crop
+   self.__saved_variables:mark_changed()
+end
+
 function AceFarmerFieldComponent:set_fertilizer_preference(preference)
    if preference.uri ~= self._sv.fertilizer_preference.uri or preference.quality ~= self._sv.fertilizer_preference.quality then
       -- uri outranks quality
