@@ -18,7 +18,7 @@
                   </div>
                   
                   <div id="traits">
-                     {{#each view.selected.buffs}}
+                     {{#each view.selected.buffs itemView="stonehearthTraitItem"}}
                         <div class="item" {{bind-attr uri=this.uri}}>
                            <img {{bind-attr src=this.icon}} />
                         </div>
