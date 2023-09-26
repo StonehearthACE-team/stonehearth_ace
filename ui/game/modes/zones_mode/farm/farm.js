@@ -1,3 +1,4 @@
+let savedCropDetails = {}
 App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
    templateName: 'stonehearthFarm',
    closeOnEsc: true,
@@ -387,7 +388,19 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       
       // when a crop is selected, update the details info panel
       var field_sv = self.get('model.stonehearth:farmer_field');
-      var details = field_sv.current_crop_details || {};
+      //check if the field is paused
+      var pausing = field_sv.saved_crop
+
+      if (pausing) { 
+         if (field_sv.current_crop_details.name!='i18n(stonehearth:ui.game.zones_mode.farm.fallow_name)') {
+            var details = field_sv.current_crop_details || {};
+         }  else {
+            var details = savedCropDetails;
+         }
+      }
+      else{
+         var details = field_sv.current_crop_details || {};
+      }
 
       if (self._oldURI != details.uri) {
          self._oldURI = details.uri;
@@ -404,6 +417,12 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
             var cropProperties = self._doUpdateProperties(localizations, field_sv);
             self.set('cropProperties', cropProperties);
             self._updateStatuses();
+
+            //set updates for the crop detail table
+            self.set("currentCropName", details.name)
+            self.set("currentCropDescription", details.description)
+            self.set("currentCropIcon", details.icon)
+            
          }
          else {
             self.set('cropProperties', null);
@@ -1055,8 +1074,8 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       pauseCrops: function() {
          var self = this;
          var field = this.get('model.stonehearth:farmer_field');
-         console.log(field)
          var crop = field.current_crop_details.uri;
+         savedCropDetails = field.current_crop_details;
          radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), crop);
          radiant.call_obj(field, 'set_crop', 'fallow');
       },

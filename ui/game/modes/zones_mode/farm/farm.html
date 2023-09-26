@@ -12,13 +12,13 @@
                <tr><td>
                   <a id="addCropLink" {{action "addCropButtonClicked" target="view"}}>
                      <div class="targetCrop downSection">
-                        <img class="cropImage tooltip" {{bind-attr src="view.model.stonehearth:farmer_field.current_crop_details.icon" title="view.model.stonehearth:farmer_field.current_crop_details.name"}} />
+                        <img class="cropImage tooltip" {{bind-attr src="view.currentCropIcon" title="view.currentCropName"}} />
                      </div>
                   </a>
                </td><td>
                   <div id="cropDescription" class="description">
-                     <div class="name">{{i18n_key view.model.stonehearth:farmer_field.current_crop_details.name}}</div>
-                     <p>{{i18n_key view.model.stonehearth:farmer_field.current_crop_details.description}}</p>
+                     <div class="name">{{i18n_key view.currentCropName}}</div>
+                     <p>{{i18n_key view.currentCropDescription}}</p>
                   </div>
                </td></tr>         
             </table>
