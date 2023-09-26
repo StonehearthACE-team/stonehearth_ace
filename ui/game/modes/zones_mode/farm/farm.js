@@ -70,7 +70,6 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       this._super();
 
       var self = this;
-
       radiant.call_obj('stonehearth.job', 'get_job_call', 'stonehearth:jobs:farmer')
                .done(function (response) {
                   if (self.isDestroying || self.isDestroyed) {
@@ -106,7 +105,7 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
    didInsertElement: function() {
       this._super();
       var self = this;
-
+      var mainView = this;
       self.$('button.warn').click(function() {
          radiant.call('stonehearth:destroy_entity', self.uri)
          self.destroy();
@@ -117,6 +116,10 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
          self.destroy();
       });
 
+      // ACE: set the initial value of the Sowing checkbox 
+      var savedCrop = self.get('model.stonehearth:farmer_field.saved_crop');
+      if(savedCrop!=undefined){var checked = true}else{var checked = false}
+      self.$('#enableSowingCheckbox').prop('checked', checked)
       self.hasShownPaletteOnce = false;
 
       // ACE: lots of additional information and ui elements to handle
@@ -157,9 +160,28 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
          radiant.call('stonehearth_ace:set_farm_harvest_enabled', self.get('uri'), this.checked);
       })
 
+      // ACE: Sowing checkbox features
+      self.$('#enableSowingCheckbox').on('click', function () {
+         checked = this.checked;
+         if(checked!=false){
+            var self = mainView;
+            var field = self.get('model.stonehearth:farmer_field');
+            var crop = field.current_crop_details.uri;
+            var cropDetails = field.current_crop_details;
+            radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), crop, cropDetails);
+            radiant.call_obj(field, 'set_crop', 'fallow');
+         }
+         else {
+            var self = mainView;
+            var field = self.get('model.stonehearth:farmer_field');
+            var crop = self.get('model.stonehearth:farmer_field.saved_crop'); 
+            radiant.call_obj(field, 'set_crop', crop);
+            radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), null, null);
+         }
+      });
       // tooltips
       App.guiHelper.addTooltip(self.$('#enableHarvest'), 'stonehearth_ace:ui.game.zones_mode.farm.enable_harvest_description');;
-      App.guiHelper.addTooltip(self.$('#plantationPauserButtons'), 'stonehearth_ace:ui.game.zones_mode.farm.pause_plantation_description');
+      App.guiHelper.addTooltip(self.$('#enableSowing'), 'stonehearth_ace:ui.game.zones_mode.farm.pause_sowing_description');
 
       radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth_ace:fertilizer_tracker')
          .done(function(response) {
@@ -614,6 +636,12 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
 
       var allowFertilizing = this.get('model.stonehearth:farmer_field.allow_fertilizing');
       self.set('allowFertilizing', allowFertilizing);
+
+      // ACE: update the sowing checkbox with time
+      var savedCrop = self.get('model.stonehearth:farmer_field.saved_crop');
+      if(savedCrop!=undefined){var checked = true}else{var checked = false}
+      self.$('#enableSowingCheckbox').prop('checked', checked)
+
    }.observes('model.stonehearth:farmer_field'),
 
    // same as properties, statuses can be added by overriding this function
@@ -1080,21 +1108,6 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       addCropButtonClicked: function() {
          this._createPalette();
       },
-      pauseCrops: function() {
-         var self = this;
-         var field = this.get('model.stonehearth:farmer_field');
-         var crop = field.current_crop_details.uri;
-         var cropDetails = field.current_crop_details;
-         radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), crop, cropDetails);
-         radiant.call_obj(field, 'set_crop', 'fallow');
-      },
-      resumeCrops: function() {
-         var self = this;
-         var field = this.get('model.stonehearth:farmer_field');
-         var crop = this.get('model.stonehearth:farmer_field.saved_crop'); 
-         radiant.call_obj(field, 'set_crop', crop);
-         radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), null, null);
-      }
    },
 });
 
