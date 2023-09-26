@@ -389,8 +389,9 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       var field_sv = self.get('model.stonehearth:farmer_field');
       //check if the field is paused
       var pausing = field_sv.saved_crop
-      if (pausing) { 
+      if (pausing!=undefined) { 
          if (field_sv.current_crop_details.name!='i18n(stonehearth:ui.game.zones_mode.farm.fallow_name)') {
+            radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), null, null);
             var details = field_sv.current_crop_details || {};
          }  else {
             var details = field_sv.saved_crop_details 
@@ -415,16 +416,15 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
             var cropProperties = self._doUpdateProperties(localizations, field_sv);
             self.set('cropProperties', cropProperties);
             self._updateStatuses();
-
-            //set updates for the crop detail table
-            self.set("currentCropName", details.name)
-            self.set("currentCropDescription", details.description)
-            self.set("currentCropIcon", details.icon)
             
          }
          else {
             self.set('cropProperties', null);
          }
+         //set updates for the crop detail table
+         self.set("currentCropName", details.name)
+         self.set("currentCropDescription", details.description)
+         self.set("currentCropIcon", details.icon)
       }
    }.observes('model.stonehearth:farmer_field.current_crop_details'),
 
@@ -437,8 +437,9 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
 
       var cropProperties = {};
       var pausing = field_sv.saved_crop
-      if (pausing) { 
+      if (pausing!=undefined) { 
          if (field_sv.current_crop_details.name!='i18n(stonehearth:ui.game.zones_mode.farm.fallow_name)') {
+            radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), null, null);
             var details = field_sv.current_crop_details || {};
          }  else {
             var details = field_sv.saved_crop_details 
