@@ -118,7 +118,7 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
 
       // ACE: set the initial value of the Sowing checkbox 
       var savedCrop = self.get('model.stonehearth:farmer_field.saved_crop');
-      if(savedCrop!=undefined){var checked = true}else{var checked = false}
+      if(savedCrop!=undefined){var checked = false}else{var checked = true}
       self.$('#enableSowingCheckbox').prop('checked', checked)
       self.hasShownPaletteOnce = false;
 
@@ -163,7 +163,7 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       // ACE: Sowing checkbox features
       self.$('#enableSowingCheckbox').on('click', function () {
          checked = this.checked;
-         if(checked!=false){
+         if(checked==false){
             var self = mainView;
             var field = self.get('model.stonehearth:farmer_field');
             var crop = field.current_crop_details.uri;
@@ -639,7 +639,7 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
 
       // ACE: update the sowing checkbox with time
       var savedCrop = self.get('model.stonehearth:farmer_field.saved_crop');
-      if(savedCrop!=undefined){var checked = true}else{var checked = false}
+      if(savedCrop!=undefined){var checked = false}else{var checked = true}
       self.$('#enableSowingCheckbox').prop('checked', checked)
 
    }.observes('model.stonehearth:farmer_field'),
