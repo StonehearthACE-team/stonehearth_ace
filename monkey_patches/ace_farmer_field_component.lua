@@ -671,8 +671,9 @@ function AceFarmerFieldComponent:get_fertilizer_preference()
    return self._sv.fertilizer_preference
 end
 
-function AceFarmerFieldComponent:set_saved_crop(crop)
+function AceFarmerFieldComponent:set_saved_crop(crop, cropDetails)
    self._sv.saved_crop = crop
+   self._sv.saved_crop_details = cropDetails
    self.__saved_variables:mark_changed()
 end
 

@@ -1,4 +1,3 @@
-let savedCropDetails = {}
 App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
    templateName: 'stonehearthFarm',
    closeOnEsc: true,
@@ -390,12 +389,11 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       var field_sv = self.get('model.stonehearth:farmer_field');
       //check if the field is paused
       var pausing = field_sv.saved_crop
-
       if (pausing) { 
          if (field_sv.current_crop_details.name!='i18n(stonehearth:ui.game.zones_mode.farm.fallow_name)') {
             var details = field_sv.current_crop_details || {};
          }  else {
-            var details = savedCropDetails;
+            var details = field_sv.saved_crop_details 
          }
       }
       else{
@@ -438,7 +436,17 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       }
 
       var cropProperties = {};
-      var details = field_sv.current_crop_details || {};
+      var pausing = field_sv.saved_crop
+      if (pausing) { 
+         if (field_sv.current_crop_details.name!='i18n(stonehearth:ui.game.zones_mode.farm.fallow_name)') {
+            var details = field_sv.current_crop_details || {};
+         }  else {
+            var details = field_sv.saved_crop_details 
+         }
+      }
+      else{
+         var details = field_sv.current_crop_details || {};
+      }
       var size = field_sv.size;
 
       var preferredSeasons = [];
@@ -1075,8 +1083,8 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
          var self = this;
          var field = this.get('model.stonehearth:farmer_field');
          var crop = field.current_crop_details.uri;
-         savedCropDetails = field.current_crop_details;
-         radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), crop);
+         var cropDetails = field.current_crop_details;
+         radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), crop, cropDetails);
          radiant.call_obj(field, 'set_crop', 'fallow');
       },
       resumeCrops: function() {
@@ -1084,7 +1092,7 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
          var field = this.get('model.stonehearth:farmer_field');
          var crop = this.get('model.stonehearth:farmer_field.saved_crop'); 
          radiant.call_obj(field, 'set_crop', crop);
-         radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), null);
+         radiant.call('stonehearth_ace:set_farm_saved_crop', self.get('uri'), null, null);
       }
    },
 });
