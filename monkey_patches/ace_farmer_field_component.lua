@@ -144,6 +144,9 @@ end
 function AceFarmerFieldComponent:is_harvest_enabled()
    return self._sv.harvest_enabled
 end
+function AceFarmerFieldComponent:is_planting_enabled()
+   return self._sv.planting_enabled
+end
 
 function AceFarmerFieldComponent:_ensure_crop_counts()
    -- make sure we're properly tracking fertilized counts and flooded counts
@@ -233,6 +236,7 @@ function AceFarmerFieldComponent:_load_field_type()
 
    self._sv.allow_disable_harvest = self._field_type_data.allow_disable_harvest
    self._sv.allow_fertilizing = self._field_type_data.allow_fertilizing ~= false
+   self._sv.allow_disable_planting = self._field_type_data.allow_disable_planting
 
    self._dirt_models = self._field_type_data.dirt_models and self._json.dirt_models[self._field_type_data.dirt_models] or self._json.dirt_models.default
    
@@ -256,6 +260,9 @@ function AceFarmerFieldComponent:on_field_created(town, size, field_type, rotati
    self:_load_field_type()
    if self._sv.harvest_enabled == nil then
       self._sv.harvest_enabled = not self._field_type_data.default_disable_harvest
+   end
+   if self._sv.planting_enabled == nil then
+      self._sv.planting_enabled = not self._field_type_data.default_disable_planting
    end
 
    local soil_layer = self._sv._soil_layer
@@ -671,10 +678,12 @@ function AceFarmerFieldComponent:get_fertilizer_preference()
    return self._sv.fertilizer_preference
 end
 
-function AceFarmerFieldComponent:set_saved_crop(crop, cropDetails)
-   self._sv.saved_crop = crop
-   self._sv.saved_crop_details = cropDetails
-   self.__saved_variables:mark_changed()
+function AceFarmerFieldComponent:set_planting_enabled(enabled)
+   if enabled ~= self._sv.planting_enabled then
+      self._sv.planting_enabled = enabled
+      self.__saved_variables:mark_changed()
+      stonehearth.ai:reconsider_entity(self._sv._plantable_layer, 'field changed planting enabled state')
+   end
 end
 
 function AceFarmerFieldComponent:set_fertilizer_preference(preference)

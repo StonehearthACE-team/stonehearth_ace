@@ -25,14 +25,14 @@ function FarmingCallHandler:set_farm_harvest_enabled(session, response, field, e
    end
 end
 
-function FarmingCallHandler:set_farm_saved_crop(session, response, field, crop, cropDetails)
+function FarmingCallHandler:set_farm_planting_enabled(session, response, field, enabled)
    validator.expect_argument_types({'Entity'}, field)
    
    if session.player_id ~= field:get_player_id() then
       return false
    else
       local farmer_field = field:get_component('stonehearth:farmer_field')
-      farmer_field:set_saved_crop(crop, cropDetails)
+      farmer_field:set_planting_enabled(enabled and true or false)
       return true
    end
 end

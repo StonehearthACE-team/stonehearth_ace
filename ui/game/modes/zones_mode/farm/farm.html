@@ -12,13 +12,13 @@
                <tr><td>
                   <a id="addCropLink" {{action "addCropButtonClicked" target="view"}}>
                      <div class="targetCrop downSection">
-                        <img class="cropImage tooltip" {{bind-attr src="view.currentCropIcon" title="view.currentCropName"}} />
+                        <img class="cropImage tooltip" {{bind-attr src="view.model.stonehearth:farmer_field.current_crop_details.icon" title="view.model.stonehearth:farmer_field.current_crop_details.name"}} />
                      </div>
                   </a>
                </td><td>
                   <div id="cropDescription" class="description">
-                     <div class="name">{{i18n_key view.currentCropName}}</div>
-                     <p>{{i18n_key view.currentCropDescription}}</p>
+                     <div class="name">{{i18n_key view.model.stonehearth:farmer_field.current_crop_details.name}}</div>
+                     <p>{{i18n_key view.model.stonehearth:farmer_field.current_crop_details.description}}</p>
                   </div>
                </td></tr>         
             </table>
@@ -115,9 +115,9 @@
             <label for="enableHarvestCheckbox">{{i18n stonehearth_ace:ui.game.zones_mode.farm.enable_harvest}}</label>
          </div>
          
-         <div id="enableSowing">
-            <input id="enableSowingCheckbox" type="checkbox">
-            <label for="enableSowingCheckbox">{{i18n stonehearth_ace:ui.game.zones_mode.farm.pause_sowing}}</label>
+         <div id="enablePlanting" {{bind-attr class=view.allowDisablePlanting:setting:hidden}}>
+            <input id="enablePlantingCheckbox" type="checkbox" value="enablePlanting">
+            <label for="enablePlantingCheckbox">{{i18n stonehearth_ace:ui.game.zones_mode.farm.pause_planting}}</label>
          </div>
          <p></p>
 

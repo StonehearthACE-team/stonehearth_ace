@@ -6452,6 +6452,7 @@
       "stonehearth/ai/actions/place_item_on_structure_action.lua": "file(ai/actions/place_item_on_structure_action.lua)",
       "stonehearth/ai/actions/place_item_type_on_structure_2.lua": "file(ai/actions/place_item_type_on_structure_2.lua)",
       "stonehearth/ai/actions/place_summon_stone_type_action.lua": "file(ai/actions/place_summon_stone_type_action.lua)",
+      "stonehearth/ai/actions/plant_crop.lua": "file(ai/actions/plant_crop.lua)",
       "stonehearth/ai/actions/put_restockable_item_into_backpack_action.lua": "file(ai/actions/put_restockable_item_into_backpack_action.lua)",
       "stonehearth/ai/actions/repair_entity_action.lua": "file(ai/actions/repair_entity_action.lua)",
       "stonehearth/ai/actions/rescue/return_carried_citizen_to_owned_bed_action.lua": "stonehearth_ace/ai/actions/rescue/return_carried_citizen_to_owned_bed_action.lua",
@@ -7455,7 +7456,7 @@
          "controller": "file(call_handlers/farming_call_handler.lua)",
          "endpoint": "server"
       },
-      "set_farm_saved_crop": {
+      "set_farm_planting_enabled": {
          "controller": "file(call_handlers/farming_call_handler.lua)",
          "endpoint": "server"
       },
