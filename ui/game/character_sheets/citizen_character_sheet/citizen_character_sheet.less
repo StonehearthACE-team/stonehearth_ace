@@ -26,6 +26,40 @@
             }
          }
       }
+
+      #equipmentTab {
+         td {
+            position: relative;
+         }
+
+         .quality-2-icon,
+         .quality-3-icon,
+         .quality-4-icon {
+            position: absolute;
+            top: 5px;
+            //left: -5px;
+            width: 28px;
+            height: 28px;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+         }
+         
+         .quality-2-icon {
+            background-image: url('/stonehearth/ui/common/images/quality_fine.png');
+         }
+         
+         .quality-3-icon {
+            background-image: url('/stonehearth/ui/common/images/quality_excellent.png');
+         }
+         
+         .quality-4-icon {
+            background-image: url('/stonehearth/ui/common/images/quality_masterwork.png');
+         }
+
+         .qualityGem.hidden {
+            display: none;
+         }
+      }
    }
 
    #lockTitle {

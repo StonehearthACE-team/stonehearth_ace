@@ -27,6 +27,7 @@ App.StonehearthCitizenCharacterSheetView = App.View.extend({
       'stonehearth:equipment' : {
          'equipped_items' : {
             '*' : {
+               'stonehearth:item_quality': {},
                'uri': {}
             }
          }
@@ -651,11 +652,14 @@ App.StonehearthCitizenCharacterSheetView = App.View.extend({
             var alias = equipmentPiece.get('uri').__self;
             var catalogData = App.catalog.getCatalogData(alias);
             if (catalogData && catalogData.display_name) {
+               var quality = Math.max(1, equipmentPiece.get('stonehearth:item_quality.quality') || 1);
                var equipmentInfo = {
                   equipment: equipmentPiece,
                   display_name: catalogData.display_name,
                   description: catalogData.description,
                   icon: catalogData.icon,
+                  quality: quality,
+                  qualityClass: quality > 1 ? `quality-${quality}-icon` : 'hidden',
                   slotId: slot + 'Slot',
                }
                allEquipment.push(equipmentInfo);
