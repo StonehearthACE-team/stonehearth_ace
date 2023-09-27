@@ -5,6 +5,7 @@
 
 local Entity = _radiant.om.Entity
 
+local ReembarkationEncounter = require 'stonehearth.services.server.game_master.controllers.encounters.reembarkation_encounter'
 local AceReembarkationEncounter = class()
 
 -- ACE override to add pets to departees and lock them to their owners
@@ -27,6 +28,20 @@ function AceReembarkationEncounter:_on_confirm(session, request, reembark_choice
    end
    
    return { spec_id = _radiant.sim.generate_uuid(), spec_record = reembark_record }
+end
+
+AceReembarkationEncounter._ace_old__start_farewell_party = ReembarkationEncounter._start_farewell_party
+function AceReembarkationEncounter:_start_farewell_party()
+   radiant.events.trigger(radiant, 'stonehearth:request_music_track', { player_id = self._sv.ctx.player_id, track = 'reembarkation' })
+
+   self:_ace_old__start_farewell_party()
+end
+
+AceReembarkationEncounter._ace_old__end_farewell_party = ReembarkationEncounter._end_farewell_party
+function AceReembarkationEncounter:_end_farewell_party()
+   radiant.events.trigger(radiant, 'stonehearth:request_music_track', { player_id = self._sv.ctx.player_id, track = nil })
+
+   self:_ace_old__end_farewell_party()
 end
 
 function AceReembarkationEncounter:_get_departees(citizens)
