@@ -9,21 +9,22 @@
                {
                   "name": "albedoMap",
                   "map": "/stonehearth_ace/data/horde/materials/thoughts/health/wound_corrupt/wound_corrupt_.png",
-                  "numAnimationFrames": 24,
-                  "frameRate": 18
+                  "numAnimationFrames": 30,
+                  "frameRate": 15
                }
             ]
          },
-         "width": 2,
-         "height": 3.4,
+         "width": 1.5,
+         "height": 2.8,
          "xOffset": 0,
-         "yOffset": 1.8,
-         "duration": 100,
-         "bone": "head"
+         "yOffset": -0.5,
+         "zOffset": 0.1,
+         "duration": 1500,
+         "bone": "ATTOVERCOG"
       },
       "wound_corrupt_poof": {
          "type": "sound_effect",
-         "duration": 2300,
+         "duration": 2000,
          "start_time": 0,
          "min_distance": 45,
          "falloff": 3.15,

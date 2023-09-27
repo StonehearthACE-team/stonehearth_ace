@@ -469,7 +469,8 @@
          "special": {
             "dungeon": {
                "track": [
-                  "stonehearth_ace:music:ace_rajmann_dungeon"
+                  "stonehearth_ace:music:ace_rajmann_dungeon",
+                  "stonehearth_ace:music:ace_rajmann_dungeon_2"
                ],
                "loop": true,
                "priority": 95       
@@ -519,6 +520,13 @@
                }
             }
          }
+      },
+      "reembarkation": {
+         "track": [
+            "stonehearth_ace:music:ace_rajmann_fresh_start"
+         ],
+         "loop": false,
+         "priority": 100
       },
       "festival": {
          "track": [
@@ -573,10 +581,19 @@
                "stonehearth_ace:music:ace_rajmann_rain_1",
                "stonehearth_ace:music:ace_rajmann_rain_1"
             ],
-            "volume": 50
+            "volume": 45
          }
       },      
-      "rain": {},
+      "rain": {
+         "day": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_rain_3",
+               "stonehearth_ace:music:ace_rajmann_rain_3",
+               "stonehearth_ace:music:ace_rajmann_rain_3"
+            ],
+            "volume": 50
+         }
+      },
       "rain_winter": {
          "day": {
             "track": [
@@ -646,7 +663,15 @@
       "sunny_sweltering": {},
       "sunny_stagnant": {},
       "sandstorm": {},            
-      "windy_chilly": {},
+      "windy_chilly": {
+         "day": {
+            "track": [
+               "stonehearth_ace:music:ace_rajmann_autumn_concerto",
+               "stonehearth_ace:music:ace_rajmann_autumn_concerto",
+               "stonehearth_ace:music:ace_rajmann_autumn_concerto"
+            ]
+         }
+      },
       "windy_springtime": {},
       "disabled_frostfeast": {
          "day": {

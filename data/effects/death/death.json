@@ -1,0 +1,28 @@
+{
+   "tracks": {
+      "mixintypes": {
+         "unit_status_effect": "override"
+      },
+      "unit_status_effect": {
+         "type": "unit_status_effect",
+         "material": {
+            "name": "/stonehearth/data/horde/materials/billboard.material.json",
+            "samplers": [
+               {
+                  "name": "albedoMap",
+                  "map": "/stonehearth_ace/data/horde/materials/thoughts/health/dead/dead_.png",
+                  "numAnimationFrames": 35,
+                  "frameRate": 15
+               }
+            ]
+         },
+         "width": 2,
+         "height": 3.4,
+         "xOffset": 0,
+         "yOffset": 1.6,
+         "start_time": 300,
+         "duration": 990,
+         "bone": "head"
+      }
+   }
+}
