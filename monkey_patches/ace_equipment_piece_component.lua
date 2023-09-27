@@ -83,6 +83,11 @@ function AceEquipmentPieceComponent:get_value(job_component)
       end
    end
 
+   local iq_comp = self._entity:get_component('stonehearth:item_quality')
+   if iq_comp and type(iq_comp:get_quality()) == 'number' then
+      value = value + (iq_comp:get_quality() * 0.1)
+   end
+
 	return value
 end
 
