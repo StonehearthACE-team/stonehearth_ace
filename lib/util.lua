@@ -41,6 +41,31 @@ function util.deep_merge(merge_into, merge_from)
    return merge_into
 end
 
+-- expects an ordered list of valid values
+-- returns the lowest closest valid value to the given value
+function util.get_closest_value(valid_vals, val)
+   local lower, higher
+   for _, valid in ipairs(valid_vals) do
+      if val == valid then
+         return val
+      elseif val > valid then
+         lower = valid
+      elseif not lower then
+         return valid
+      else
+         -- find the closer to val between lower and valid
+         if val - lower <= valid - val then
+            return lower
+         else
+            return valid
+         end
+      end
+   end
+
+   -- if they were all lower, cap the value at the highest lower value
+   return lower or val
+end
+
 function util.itable_append(t1, t2)
    for _, v in pairs(t2) do
       t1[#t1+1] = v

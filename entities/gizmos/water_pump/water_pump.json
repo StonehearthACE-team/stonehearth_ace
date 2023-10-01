@@ -34,7 +34,6 @@
          "extend_command": "stonehearth_ace:commands:water_pipe:place",
          "remove_command": "stonehearth_ace:commands:water_pipe:remove",
          "extension_entity": "stonehearth_ace:gizmos:water_pump_pipe",
-         "render_model": "stonehearth_ace:water_pump",
          "max_length": 6,
          "matrix": "pipe",
          "rotations": [
@@ -52,7 +51,7 @@
                "model": "file(pipe_xz.qb)",
                "scale": 0.095,
                "offset": { "x": 5, "y": 0, "z": 5 },
-               "origin": { "x": 0, "y": 0, "z": -1 },
+               "origin": { "x": 0, "y": 0, "z": 0 },
                "rotation": 0
             },
             {
@@ -61,7 +60,7 @@
                "model": "file(pipe_xz.qb)",
                "scale": 0.095,
                "offset": { "x": 5, "y": 0, "z": 5 },
-               "origin": { "x": -1, "y": 0, "z": 0 },
+               "origin": { "x": 0, "y": 0, "z": 0 },
                "rotation": 90
             },
             {

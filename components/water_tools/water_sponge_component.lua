@@ -65,6 +65,11 @@ function WaterSpongeComponent:post_activate()
 
    self._entity:remove_component('stonehearth:wet_stone')
 
+   -- listen to extensible object extension event in case the output point should change
+   self._extensible_object_listener = radiant.events.listen(self._entity, 'stonehearth_ace:extensible_object:extension_changed', function(args)
+         self:set_output_location(args.output_point, args.output_origin)
+      end)
+
    self:_startup()
 end
 

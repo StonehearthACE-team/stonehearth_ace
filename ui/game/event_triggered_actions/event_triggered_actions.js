@@ -11,7 +11,7 @@ $(document).ready(function(){
                                                    'stonehearth_ace:data.commands.place_fish_trap.tip_description',
                                                    { left_binding: 'build:rotate:left', right_binding: 'build:rotate:right'});
 
-      App.setGameMode('place');
+      App.setGameMode('place', false);
       return App.stonehearthClient._callTool('buildFishTrap', function() {
          return radiant.call('stonehearth_ace:place_buildable_entity', 'stonehearth_ace:trapper:fish_trap_anchor_ghost')
             .done(function(response) {
@@ -38,7 +38,7 @@ $(document).ready(function(){
                                                    { left_binding: 'build:rotate:left', right_binding: 'build:rotate:right',
                                                    shorter_binding: 'build:sink_template', longer_binding: 'build:raise_template'});
 
-      App.setGameMode('place');
+      App.setGameMode('place', false);
       return App.stonehearthClient._callTool('adjustExtensibleObject', function() {
          return radiant.call('stonehearth_ace:select_extensible_object_command', fromEntity)
             .done(function(response) {
@@ -66,7 +66,7 @@ $(document).ready(function(){
                                                    { left_binding: 'build:rotate:left', right_binding: 'build:rotate:right',
                                                    shorter_binding: 'build:sink_template', longer_binding: 'build:raise_template'});
 
-      App.setGameMode('place');
+      App.setGameMode('place', false);
       return App.stonehearthClient._callTool('buildWaterPipe', function() {
          return radiant.call('stonehearth_ace:select_water_pump_pipe_command', fromEntity)
             .done(function(response) {
@@ -94,7 +94,7 @@ $(document).ready(function(){
                                                    { left_binding: 'build:rotate:left', right_binding: 'build:rotate:right',
                                                    shorter_binding: 'build:sink_template', longer_binding: 'build:raise_template'});
 
-      App.setGameMode('place');
+      App.setGameMode('place', false);
       return App.stonehearthClient._callTool('adjustGearboxAxles', function() {
          return radiant.call('stonehearth_ace:select_gearbox_axles_command', fromEntity)
             .done(function(response) {

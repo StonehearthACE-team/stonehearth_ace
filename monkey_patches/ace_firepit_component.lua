@@ -14,10 +14,8 @@ function AceFirepitComponent:activate()
    self._ember_uri = self._json.ember_uri or EMBER_URI
    self._ember_charcoal_uri = self._json.ember_charcoal_uri or EMBER_CHARCOAL_URI
    self._charcoal_uri = self._json.charcoal_uri or CHARCOAL_URI
-   self._allow_charcoal = (self._json.allow_charcoal ~= false)
-   if stonehearth.player:is_player_npc(radiant.entities.get_player_id(self._entity)) then
-      self._allow_charcoal = false
-   end
+   self._allow_charcoal = (self._json.allow_charcoal ~= false) and not
+         stonehearth.player:is_player_npc(radiant.entities.get_player_id(self._entity))
    self._transform_residue_time = self._json.transform_residue_time or 'midday'
    self._transform_residue_jitter = '+' .. (self._json.transform_residue_jitter or '2h')
    self._buff_source = self._json.buff_source or false

@@ -26,8 +26,7 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
       }
    end
 
-   stonehearth.selection:select_xyz_range('extensible_object_range_selector')
-      --:set_cursor('stonehearth:cursors:fence')
+   local selector = stonehearth.selection:select_xyz_range('extensible_object_range_selector')
       :set_relative_entity(entity)
       :set_rotations(rotations)
       :set_multi_select_enabled(component_data.multi_select_enabled or false)
@@ -40,9 +39,14 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
       --       return can_contain_uris[entity:get_uri()]
       --    end
       -- )
-      :done(
-         function(selector, rotation_index, length, region, output_point)
-            local output_origin = selector:get_point_in_current_direction(length - 1)
+
+   if component_data.cursor then
+      selector:set_cursor(component_data.cursor)
+   end
+
+   selector:done(
+         function(sel, rotation_index, length, region, output_point)
+            local output_origin = sel:get_point_in_current_direction(length - 1)
             _radiant.call('stonehearth_ace:set_extensible_object_command', entity, rotation_index, length, region, output_point, output_origin)
                :done(
                   function(r)
@@ -51,14 +55,14 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
                )
                :always(
                   function()
-                     selector:destroy()
+                     sel:destroy()
                   end
                )
          end
       )
       :fail(
-         function(selector)
-            selector:destroy()
+         function(sel)
+            sel:destroy()
             response:reject('no region')
          end
       )
@@ -73,15 +77,8 @@ function ExtensibleObjectCallHandler:set_extensible_object_command(session, resp
    region:load(region_table)
 
    local extensible_object_comp = entity:get_component('stonehearth_ace:extensible_object')
-   local sponge_comp = entity:get_component('stonehearth_ace:water_sponge')
-
    if extensible_object_comp then
-      extensible_object_comp:set_extension(rotation_index, length, region)
-   end
-
-   if sponge_comp then
-      -- also apparently a Point3 isn't actually a Point3
-      sponge_comp:set_output_location(radiant.util.to_point3(output_point), radiant.util.to_point3(output_origin))
+      extensible_object_comp:set_extension(rotation_index, length, region, radiant.util.to_point3(output_point), radiant.util.to_point3(output_origin))
    end
 
    response:resolve({})
@@ -91,14 +88,8 @@ function ExtensibleObjectCallHandler:remove_extensible_object_command(session, r
    validator.expect_argument_types({'Entity'}, entity)
 
    local extensible_object_comp = entity:get_component('stonehearth_ace:extensible_object')
-   local sponge_comp = entity:get_component('stonehearth_ace:water_sponge')
-
    if extensible_object_comp then
       extensible_object_comp:set_extension(nil)
-   end
-
-   if sponge_comp then
-      sponge_comp:set_output_location(nil)
    end
 
    response:resolve({})

@@ -20,8 +20,27 @@
       "destination": {
          "region": [
             {
-               "min": { "x": -2, "y": -1, "z": -1 },
+               "min": { "x": -2, "y": 0, "z": -1 },
                "max": { "x": 1, "y": 2, "z": 0 }
+            }
+         ]
+      },
+      "stonehearth_ace:extensible_object": {
+         "extend_command": "stonehearth_ace:commands:water_pipe:place",
+         "remove_command": "stonehearth_ace:commands:water_pipe:remove",
+         "extension_entity": "stonehearth_ace:extensible_object:platform_extension",
+         "max_length": 20,
+         "matrix": "bridge",
+         "rotations": [
+            {
+               "dimension": "z",
+               "direction": { "x": 0, "y": 0, "z": -1 },
+               "model": "file(plank_bridge.qb)",
+               "scale": 0.1,
+               "offset": { "x": -1, "y": -1, "z": 5 },
+               "origin": { "x": -2, "y": 0.5, "z": -1 },
+               "terminus": { "x": 1, "y": 1, "z": -1 },
+               "rotation": 0
             }
          ]
       }

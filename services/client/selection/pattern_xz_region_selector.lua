@@ -3,6 +3,7 @@ local selector_util = require 'stonehearth.services.client.selection.selector_ut
 local RulerWidget = require 'stonehearth.services.client.selection.ruler_widget'
 local pattern_lib = require 'stonehearth_ace.lib.pattern.pattern_lib'
 local PatternCalculator = require 'stonehearth_ace.lib.pattern.pattern_calculator'
+local util = require 'stonehearth_ace.lib.util'
 
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local Color4 = _radiant.csg.Color4
@@ -85,28 +86,7 @@ function PatternXZRegionSelector:__init(reason)
       return Point3(q0), Point3(q1)   -- return a copy to be safe
    end
 
-   local get_valid_axis_value = function(valid_vals, val)
-      local lower, higher
-      for _, valid in ipairs(valid_vals) do
-         if val == valid then
-            return val
-         elseif val > valid then
-            lower = valid
-         elseif not lower then
-            return valid
-         else
-            -- find the closer to val between lower and valid
-            if val - lower <= valid - val then
-               return lower
-            else
-               return valid
-            end
-         end
-      end
-
-      -- if they were all lower, cap the value at the highest lower value
-      return lower or val
-   end
+   local get_valid_axis_value = util.get_closest_value
 
    self._get_proposed_points_fn = identity_end_point_transform
    self._get_resolved_points_fn = function(p0, p1)
