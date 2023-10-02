@@ -13,4 +13,9 @@ function AceTownUpgradeEncounter:stage_4_celebrate()
    end
 end
 
+function AceTownUpgradeEncounter:_start_music()
+   local track = self._sv._info.custom_music or 'celebration'
+   radiant.events.trigger(radiant, 'stonehearth:request_music_track', { player_id = self._sv.ctx.player_id, track = track })
+end
+
 return AceTownUpgradeEncounter

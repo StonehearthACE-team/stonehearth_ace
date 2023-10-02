@@ -107,7 +107,7 @@ function AcePortraitRendererService:_stage_scene(options, scene_root, camera)
          local animation_table_location = render_info:get_animation_table()
          if animation_table_location and animation_table_location:len() > 0 then
             local animation_table = radiant.resources.load_json(animation_table_location)
-            local head_position = animation_table.skeleton.head
+            local head_position = animation_table.skeleton.head or animation_table.skeleton.root
             camera_pos_y = head_position[3] * scale * 1.55
          end
       end
