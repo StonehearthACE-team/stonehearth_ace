@@ -1,0 +1,63 @@
+{
+   "type": "encounter",
+   "encounter_type": "town_upgrade",
+   "in_edge": "elbezar_gnarled_tree_activation",
+   "town_upgrade_info": {
+      "old_facility_uri": "stonehearth_ace:decoration:candledark:gnarled_soulfire_tree:unlit",
+      "new_facility_uri": "stonehearth_ace:decoration:candledark:gnarled_soulfire_tree",
+      "facility_upgrade_effect": "stonehearth:effects:level_up:monument",
+      "custom_music": "candledark_celebration",
+      "conversation_subjects": [
+         "stonehearth:subjects:town_status",
+         "stonehearth:food:cake",
+         "stonehearth:decoration:valor_statue",
+         "stonehearth:portals:valor_statue:portcullis_valor",
+         "stonehearth:decoration:valor_statue:knight_male",
+         "stonehearth:decoration:valor_statue:knight_female",
+         "stonehearth:decoration:valor_statue:torch",
+         "stonehearth:decoration:valor_statue:wall_hanging_plaque",
+         "stonehearth:decoration:valor_statue:war_horn",
+         "stonehearth:portals:valor_statue:window_frame_barred"
+      ],
+      "thought": "stonehearth:thoughts:town:progression:town",
+      "celebration_duration": "2h30m+10m",
+      "has_fireworks": false,
+      "npcs": [
+         {
+            "faction": "human_npcs",
+            "role": "herald_harold",
+            "gender": "male"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "herald_mer",
+            "gender": "male"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "herald_isabelle",
+            "gender": "female"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "herald_anwyn",
+            "gender": "female"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "party_goblin",
+            "gender": "male"
+         },
+         {
+            "faction": "rabbit_biped_npcs",
+            "role": "herald_sasha",
+            "gender": "female"
+         },
+         {
+            "faction": "orc_npcs",
+            "role": "herald_erdene",
+            "gender": "female"
+         }
+      ]
+   }
+}

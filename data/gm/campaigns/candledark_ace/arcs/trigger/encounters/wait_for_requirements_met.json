@@ -1,0 +1,108 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_requirements_met",
+   "in_edge": "start",
+   "out_edge": "delay_before_elbezar_arrival",
+   "wait_for_requirements_met_info": {
+      "requirements": {
+         "recipe_check": {
+            "item": "script",
+            "type": "deny_if",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
+         },
+         "city_tier": {
+            "type": "deny_if_less_than",
+            "item": "city_tier",
+            "value": 2
+         }
+      },
+      "jobs": {
+         "stonehearth:jobs:carpenter": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_candles",
+               "frostfeast:frostfeast_wooden_door_wreath",
+               "frostfeast:frostfeast_dining_table_blue",
+               "frostfeast:frostfeast_dining_table_red",
+               "frostfeast:frostfeast_dining_table_green",
+               "frostfeast:frostfeast_dining_table_white",
+               "frostfeast:frostfeast_end_table_blue",
+               "frostfeast:frostfeast_end_table_red",
+               "frostfeast:frostfeast_end_table_green",
+               "frostfeast:frostfeast_end_table_white"
+            ]
+         },
+         "stonehearth:jobs:potter": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_clay_door_wreath",
+               "frostfeast:frostfeast_snowling_short",
+               "frostfeast:frostfeast_snowling",
+               "frostfeast:frostfeast_light_string_horizontal",
+               "frostfeast:frostfeast_light_string_horizontal_short",
+               "frostfeast:frostfeast_light_string_vertical",
+               "frostfeast:frostfeast_light_string_vertical_short"
+            ]
+         },
+         "stonehearth:jobs:mason": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_stone_door_wreath"
+            ]
+         },
+         "stonehearth:jobs:shepherd": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_goat",
+               "frostfeast:frostfeast_goat_large",
+               "frostfeast:frostfeast_goat_small"
+            ]
+         },
+         "stonehearth:jobs:blacksmith": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_candlestick",
+               "frostfeast:frostfeast_candle_holder",
+               "frostfeast:frostfeast_light_circlet"
+            ]
+         },
+         "stonehearth:jobs:herbalist": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:decorated_frostfeast_tree_gold",
+               "frostfeast:decorated_frostfeast_tree_silver",
+               "frostfeast:decorated_frostfeast_tree_snowy",
+               "frostfeast:frostfeast_wreath",
+               "frostfeast:frostfeast_wreath_large"
+            ]
+         },
+         "stonehearth:jobs:weaver": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_stocking",
+               "frostfeast:frostfeast_stocking_small",
+               "frostfeast:frostfeast_plushie_toy_deer",
+               "frostfeast:frostfeast_worker_holiday_outfit"
+            ]
+         },
+         "stonehearth:jobs:cook": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_seasonal_fruits",
+               "frostfeast:frostfeast_ginger_cookies",
+               "frostfeast:frostfeast_turkey",
+               "frostfeast:frostfeast_ham"
+            ]
+         },
+         "stonehearth_ace:jobs:brewer": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_egg_milk_punch",
+               "frostfeast:frostfeast_mulled_wine",
+               "frostfeast:frostfeast_hot_coco"
+            ]
+         }
+      }
+   }
+}

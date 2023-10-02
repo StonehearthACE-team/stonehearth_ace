@@ -1,0 +1,17 @@
+{
+   "type": "encounter",
+   "encounter_type": "delivery_quest",
+   "in_edge": "elbezar_gnarled_tree_quest",
+   "out_edge": "elbezar_gnarled_tree_activation",
+   "delivery_quest_info": {
+      "title": "i18n(stonehearth:data.gm.campaigns.town_progression.shrine_quest_valor.title)",
+      "dialog_title": "i18n(stonehearth:data.gm.campaigns.town_progression.shrine_quest_valor.dialog_title)",
+      "requirements": [
+         {
+            "type": "placed_item",
+            "uri": "stonehearth_ace:decoration:candledark:gnarled_soulfire_tree:unlit"
+         }
+      ],
+      "abandon_out_edge": "elbezar_arrival"
+   }
+}

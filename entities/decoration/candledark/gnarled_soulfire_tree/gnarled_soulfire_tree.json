@@ -1,0 +1,68 @@
+{
+   "type": "entity",
+   "mixins": "file(gnarled_soulfire_tree_ghost.json)",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:candledark",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "stonehearth:lamp": {
+         "light_policy": "always_on",
+         "restrict_policy_changing": true,
+         "light_effect": "stonehearth_ace:effects:candledark:gnarled_soulfire_tree",
+         "light_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -3, "y": 0, "z": -3 },
+               "max": { "x": 4, "y": 9, "z": 4 }
+            }
+         ],
+         "adjacency_flags": [
+            "front"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -3, "y": 0, "z": -3 },
+               "max": { "x": 4, "y": 9, "z": 4 }
+            }
+         ]
+      },
+      "stonehearth:renewable_resource_node": {
+         "resource": "stonehearth_ace:resources:candledark:soulfire",
+         "renewal_time": "1d",
+         "harvest_status_text": "i18n(stonehearth_ace:entities.decoration.candledark.gnarled_soulfire_tree.renewable_harvest_status_text)",
+         "harvest_overlay_effect": "stonehearth_ace:effects:candledark:harvest_soulfire_overlay_effect",
+         "auto_harvest": true,
+         "half_renewed_model_variant": true
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(gnarled_soulfire_tree_iconic.json)",
+         "ghost_form": "file(gnarled_soulfire_tree_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:traveler_attraction": {}
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "clearable": false
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 90,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 75
+      }
+   }
+}

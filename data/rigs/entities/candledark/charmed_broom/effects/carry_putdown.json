@@ -1,0 +1,41 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "idle.json",
+         "loop": true,
+         "blend_time": 0
+          },
+      "sound_drop": {
+         "type": "sound_effect",
+         "start_time": 900,
+         "min_distance": 20,
+         "falloff" : 3.15,
+         "volume": 60,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:drop_wood_sound_01",
+               "stonehearth:sounds:drop_wood_sound_02",
+               "stonehearth:sounds:drop_wood_sound_03"
+            ]
+         }
+      },
+		"dirt": {
+			"type": "cubemitter",
+			"start_time" : 250,
+			"end_time" : 300,
+			"cubemitter": "particles/dirt_poof/dirt_poof.cubemitter.json",
+			"transforms": {
+				"x":0,
+				"y":0.5,
+				"z":0,
+				"rx":0,
+				"ry":0,
+				"rz":0
+			}
+		} 
+   }      
+}

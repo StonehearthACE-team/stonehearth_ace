@@ -1,0 +1,40 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "sweep.json",
+         "speed": 1.8,
+         "loop": true
+      },
+		"dirt": {
+			"type": "cubemitter",
+         "loop": true,
+			"start_time" : 250,
+			"end_time" : 300,
+			"cubemitter": "particles/dirt_poof/dirt_poof.cubemitter.json",
+			"transforms": {
+				"x":0,
+				"y":0.5,
+				"z":-1,
+				"rx":0,
+				"ry":0,
+				"rz":0
+			}
+		},
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 0,
+         "min_distance": 32,
+         "loop" : true,
+         "volume": 36,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:broom_sweep"
+            ]
+         }
+      }  
+   }
+}
