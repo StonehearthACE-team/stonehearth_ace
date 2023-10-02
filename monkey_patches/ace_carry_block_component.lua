@@ -14,6 +14,8 @@ function AceCarryBlock:set_carrying(new_item, opt_relative_orientation)
    if new_item == self._sv._carried_item then
       return
    end
+
+   local json = radiant.entities.get_json(self)
 	
 	-- ACE: This part fixes the issue of characters with backpacks carrying people in their backpacks (Dani)
 	if new_item:get_component('stonehearth:incapacitation') then 
@@ -22,6 +24,12 @@ function AceCarryBlock:set_carrying(new_item, opt_relative_orientation)
 
    if self._sv._carried_item then
       self:_destroy_carried_item_trace()
+   elseif json.posture_only then
+      radiant.entities.set_posture(self._entity, 'stonehearth:carrying')
+   elseif json.custom_buff then
+      radiant.entities.add_buff(self._entity, json.custom_buff)
+      self._sv.custom_buff = json.custom_buff
+      self.__saved_variables:mark_changed()
    else
       radiant.entities.add_buff(self._entity, 'stonehearth:buffs:carrying')
    end
@@ -58,6 +66,10 @@ AceCarryBlock._ace_old__remove_carrying = CarryBlock._remove_carrying
 function AceCarryBlock:_remove_carrying()
    if self._sv._carried_item and self._sv._carried_item:get_component('stonehearth:incapacitation') then
 		radiant.entities.unset_posture(self._entity, 'stonehearth:carrying')
+   end
+
+   if self._sv.custom_buff then
+      radiant.entities.remove_buff(self._entity, self._sv.custom_buff)
    end
 	
 	self:_ace_old__remove_carrying()
