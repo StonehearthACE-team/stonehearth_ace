@@ -1,0 +1,129 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:mob",
+   "components": {
+      "render_info": {
+         "animation_table": "file(/data/rigs/entities/candledark/charmed_broom)"
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(charmed_broom.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 15
+         },
+         "speed": {
+            "type": "basic",
+            "value": 42
+         }
+      },
+      "stonehearth:job": {
+         "initial_job": "stonehearth:jobs:npc:restocker"
+      },
+      "stonehearth:carry_block": {
+         "custom_buff": "stonehearth_ace:buffs:no_carrying"
+      },
+      "stonehearth:storage": {
+         "type": "backpack",
+         "public": false,
+         "capacity": 4
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 16
+            }
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "roll_type": "each_of",
+               "items": {
+                  "soulfire": {
+                     "uri": "stonehearth:resources:earth_essence"
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.3,
+      "stonehearth:renderer": {
+         "can_visualize_paths": true
+      },
+      "stonehearth:camera": {
+         "is_followable": true
+      },
+      "stonehearth:ai_packs": {
+         "mixintypes": {
+            "packs": "override"
+         },
+         "packs": [
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:wander",
+            "stonehearth:ai_pack:death"
+         ]
+      },
+      "stonehearth:posture": {
+         "priorities": {
+            "stonehearth:climb_ladder_up": 1100,
+            "stonehearth:climb_ladder_down": 1100,
+            "stonehearth:carrying": 800
+         }
+      },
+      "stonehearth:observers:avoid_threatening_entities": {
+         "min_avoidance_distance": 16,
+         "max_avoidance_distance": 16
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.pets.candledark.charmed_broom.display_name)",
+         "description": "i18n(stonehearth_ace:entities.pets.candledark.charmed_broom.description)",
+         "icon": "file(charmed_broom.png)",
+         "category": "pets"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 800,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "pet"
+         }
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     0.8,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     0.6,
+                     0
+                  ],
+                  "fov": 45
+               }
+            }
+         }
+      }
+   }
+}

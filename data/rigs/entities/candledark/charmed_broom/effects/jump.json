@@ -1,0 +1,25 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "jump.json",
+         "speed": 2,
+         "loop": true
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 0,
+         "min_distance": 32,
+         "loop" : true,
+         "volume": 40,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:broom_sweep"
+            ]
+         }
+      } 
+   }
+}

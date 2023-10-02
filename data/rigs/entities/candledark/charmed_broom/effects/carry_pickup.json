@@ -1,0 +1,28 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+        "type": "animation_effect",
+         "start_time": 0,
+         "animation": "sweep_object.json",
+         "loop": false,
+         "blend_time": 0
+      },
+      "sound_pickup": {
+         "type": "sound_effect",
+         "start_time": 950,
+         "min_distance": 20,
+         "falloff" : 3.15,
+         "volume": 40,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:golem_beetle_pickup_01",
+              "stonehearth:sounds:golem_beetle_pickup_02",
+              "stonehearth:sounds:golem_beetle_pickup_03",
+               "stonehearth:sounds:golem_beetle_pickup_04"
+            ]
+         }
+      }
+   }
+}

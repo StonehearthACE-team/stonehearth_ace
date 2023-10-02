@@ -1,0 +1,14 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "delay_before_elbezar_arrival",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "elbezar_arrival"
+      ]
+   },
+   "wait_info": {
+      "duration": "6h+12h"
+   }
+}

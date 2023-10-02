@@ -1,0 +1,18 @@
+{
+   "stonehearth:carrying" : {
+      "idle_breathe" : "carry_idle",
+      "run" : "carry_walk"
+   },
+   "stonehearth:climb_ladder_up" : {
+      "run" : "jump",
+      "idle_breathe" : "jump",
+      "carry_walk": "jump",
+      "carry_idle": "jump"
+   },
+   "stonehearth:climb_ladder_down" : {
+      "run" : "jump",
+      "idle_breathe" : "jump",
+      "carry_walk": "jump",
+      "carry_idle": "jump"
+   }
+}

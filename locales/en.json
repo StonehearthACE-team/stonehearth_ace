@@ -15570,6 +15570,12 @@
             "varanus_skin": {
                "description": "Rough and scaly. Can be used as leather."
             }
+         },
+         "candledark": {
+            "soulfire": {
+               "display_name": "Grasp of Soulfire",
+               "description": "Cool and slightly ticklish to the touch... Brings a feeling of calm and longing."
+            }
          }
       },
       "refined": {
@@ -18673,6 +18679,23 @@
                "display_name": "Painting (Quaint Farm)",
                "description": "Farmers working golden fields of grain in a sunny day. A very bucolic scene."
             }
+         },
+         "candledark": {
+            "gnarled_soulfire_tree": {
+               "display_name": "Candledark Gnarled Soulfire Tree",
+               "description": "A mystical tree able to guide lost spirits. Produces Soulfire over time.",
+               "iconic": {
+                  "description": "Place it down for Candledark-related events to happen!"
+               },
+               "renewable_harvest_status_text": "harvesting soulfire",
+               "monument": {
+                  "display_name": "Candledark Gnarled Tree Monument",
+                  "description": "A spooky monument filled with memories of a successful Candledark!"
+               },
+               "unlit": {
+                  "description": "Must be lit for the Candledark event to begin..."
+               }
+            }
          }
       },
       "pets": {
@@ -18807,6 +18830,12 @@
             "display_name": "Cabbageling",
             "description": "It's a living cabbage! It apparently doesn't need food! (It IS food, kind of...)",
             "iconic_description": "Place it on the ground and... See what happens?!"
+         },
+         "candledark": {
+            "charmed_broom": {
+               "display_name": "Candledark Charmed Broom",
+               "description": "Time to tidy up this town! Flying adapter sold separately."
+            }
          }
       },
       "critters": {
@@ -23450,6 +23479,14 @@
                "kita_the_bonecarver": {
                   "display_name": "Kita the Bonecarver",
                   "description": "A very skilled bonecarver in town to sell her lovely goods."
+               }
+            }
+         },
+         "candledark": {
+            "male": {
+               "elbezar": {
+                  "display_name": "Elbezar Grimrock",
+                  "description": "Holder of a knowledge some would consider to be unnatural..."
                }
             }
          }
