@@ -145,6 +145,9 @@ $(document).ready(function() {
                view.show();
                this._currentView = view;
             }
+            else {
+               this._currentView = null;
+            }
 
             this._currentMode = mode;
 

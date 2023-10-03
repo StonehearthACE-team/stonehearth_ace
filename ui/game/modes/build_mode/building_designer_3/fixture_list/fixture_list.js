@@ -54,10 +54,14 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
          }, true);
       Ember.run.scheduleOnce('afterRender', self, '_updateFixtureTooltips');
 
+      self._searchText = '';
       self.$().on('keyup', '.searchInput', function() {
          var text = $(this).val();
-         self._filterFixtures(text.toLowerCase());
-         self._setSearchbarsText(text);
+         if (text != self._searchText) {
+            self._searchText = text;
+            self._filterFixtures(text.toLowerCase());
+            self._setSearchbarsText(text);
+         }
       });
       self.$('#fixtures').children().hide();
 
@@ -278,6 +282,12 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
             items.push(self._addItem(data));
          });
          self.set(category, items);
+      });
+
+      Ember.run.scheduleOnce('afterRender', this, function() {
+         if (self._searchText != '') {
+            self._filterFixtures(self._searchText);
+         }
       });
    },
 
