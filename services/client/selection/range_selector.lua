@@ -151,6 +151,9 @@ end
 
 function XYZRangeSelector:set_rotation_in_use(index, in_use)
    self._rotations_in_use[index] = in_use
+   if self._rotation == index then
+      self._region_needs_refresh = true
+   end
    return self
 end
 
@@ -402,16 +405,21 @@ function XYZRangeSelector:_get_brick_at(x, y)
          local entity = result.entity
 
          log:debug('getting brick at %s, %s: %s "%s" %s', x, y, tostring(entity), tostring(result.node_name), tostring(result.brick))
-
-         if self._can_contain_entity_filter_fn and self._can_contain_entity_filter_fn(entity, self) then
+         if self._relative_entity then
+            if radiant.entities.is_child_of(entity, self._relative_entity) then
+               log:debug('ignoring child entity %s', entity)
+               return stonehearth.selection.FILTER_IGNORE
+            end
+            log:debug('checking relative entity %s', self._relative_entity)
+         elseif self._can_contain_entity_filter_fn and self._can_contain_entity_filter_fn(entity, self) then
             return stonehearth.selection.FILTER_IGNORE
          end
 
-         for _, node in ipairs(self._intersection_nodes) do
+         for i, node in ipairs(self._intersection_nodes) do
             if result.node_name == node.name then
                -- we hit an intersection node created by the user to catch points floating in air
                -- check to see if it's a valid location otherwise
-               return self:_is_valid_location(result.brick)
+               return self._rotations_in_use[i] or self:_is_valid_location(result.brick)
             end
          end
 
@@ -509,6 +517,7 @@ function XYZRangeSelector:_on_mouse_event(event)
          local rotation_index
          for i, node in ipairs(self._intersection_nodes) do
             if node.cube:contains(local_brick) then
+               log:debug('found brick %s in intersection node %s (%s)', local_brick, node.name, node.cube)
                rotation_index = i
                break
             end

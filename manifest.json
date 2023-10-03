@@ -7074,7 +7074,6 @@
       "extensible_object": "file(components/extensible_object/extensible_object_component.lua)",
       "fence": "file(components/fence/fence_component.lua)",
       "fish_trap": "file(components/fish_trap/fish_trap_component.lua)",
-      "gearbox": "file(components/mechanical/gearbox_component.lua)",
       "herbalist_planter": "file(components/herbalist_planter/herbalist_planter_component.lua)",
       "input": "file(components/input/input_component.lua)",
       "interaction_proxy": "file(components/interaction_proxy/interaction_proxy_component.lua)",
@@ -7531,18 +7530,6 @@
       },
       "cancel_combat_order_on_target": {
          "controller": "file(call_handlers/combat_call_handler.lua)",
-         "endpoint": "server"
-      },
-      "select_gearbox_axles_command": {
-         "controller": "file(call_handlers/mechanical_call_handler.lua)",
-         "endpoint": "client"
-      },
-      "set_gearbox_axle_command": {
-         "controller": "file(call_handlers/mechanical_call_handler.lua)",
-         "endpoint": "server"
-      },
-      "reset_gearbox_axles_command": {
-         "controller": "file(call_handlers/mechanical_call_handler.lua)",
          "endpoint": "server"
       },
       "storage_mark_changed": {

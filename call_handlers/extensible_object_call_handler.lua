@@ -44,10 +44,35 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
       selector:set_cursor(component_data.cursor)
    end
 
-   selector:done(
+   if component_data.multi_select_enabled then
+      local ext_obj_data = entity:get_component('stonehearth_ace:extensible_object'):get_data()
+      for i = 1, #rotations do
+         if ext_obj_data.cur_extensions[rotations[i].connector_id] then
+            selector:set_rotation_in_use(i, true)
+         end
+      end
+
+      selector:progress(
+         function(sel, is_notify_resolve, rotation_index, length, region, output_point)
+            -- we only care about the user clicking, not moving the mouse
+            if is_notify_resolve and rotation_index then
+               local output_origin = sel:get_point_in_current_direction(length - 1)
+               _radiant.call('stonehearth_ace:set_extensible_object_command', entity, rotation_index, length, region, sel:get_current_connector_region(), output_point, output_origin)
+                  :always(
+                     function()
+                        if rotation_index then
+                           sel:set_rotation_in_use(rotation_index, length > 0)
+                        end
+                     end
+                  )
+            end
+         end
+      )
+   else
+      selector:done(
          function(sel, rotation_index, length, region, output_point)
             local output_origin = sel:get_point_in_current_direction(length - 1)
-            _radiant.call('stonehearth_ace:set_extensible_object_command', entity, rotation_index, length, region, output_point, output_origin)
+            _radiant.call('stonehearth_ace:set_extensible_object_command', entity, rotation_index, length, region, sel:get_current_connector_region(), output_point, output_origin)
                :done(
                   function(r)
                      response:resolve({})
@@ -60,7 +85,9 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
                )
          end
       )
-      :fail(
+   end
+
+   selector:fail(
          function(sel)
             sel:destroy()
             response:reject('no region')
@@ -69,16 +96,26 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
       :go()
 end
 
-function ExtensibleObjectCallHandler:set_extensible_object_command(session, response, entity, rotation_index, length, region_table, output_point, output_origin)
+function ExtensibleObjectCallHandler:set_extensible_object_command(session, response, entity, rotation_index, length, region_table, connector_region_table, output_point, output_origin)
    -- apparently Region3 parameters get turned into tables and have to be loaded
-   validator.expect_argument_types({'Entity', 'number', 'number', 'table', 'Point3', 'Point3'}, entity, rotation_index, length, region_table, output_point, output_origin)
+   validator.expect_argument_types({'Entity', 'number', 'number', validator.optional('table'), validator.optional('table'), validator.optional('Point3'), 'Point3'},
+         entity, rotation_index, length, region_table, connector_region_table, output_point, output_origin)
 
-   local region = Region3()
-   region:load(region_table)
+   local region, connector_region
+
+   if region_table then
+      region = Region3()
+      region:load(region_table)
+   end
+
+   if connector_region_table then
+      connector_region = Region3()
+      connector_region:load(connector_region_table)
+   end
 
    local extensible_object_comp = entity:get_component('stonehearth_ace:extensible_object')
    if extensible_object_comp then
-      extensible_object_comp:set_extension(rotation_index, length, region, radiant.util.to_point3(output_point), radiant.util.to_point3(output_origin))
+      extensible_object_comp:set_extension(rotation_index, length, region, connector_region, radiant.util.to_point3(output_point), radiant.util.to_point3(output_origin))
    end
 
    response:resolve({})
