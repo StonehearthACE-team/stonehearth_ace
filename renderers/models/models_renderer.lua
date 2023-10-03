@@ -85,6 +85,11 @@ function ModelsRenderer:_create_node(options)
             node.primary_node = self._node:add_group_node('directional group node')
             node.child_nodes = {}
 
+            -- if the direction is negative, we need to increment it by one (because we're approaching from the other side of the voxel)
+            if options.direction[options.dimension] < 0 then
+               origin = origin + options.direction
+            end
+
             for i = 0, options.length - 1 do
                local child = self:_create_single_node(node.primary_node, origin + options.direction * i, rotation, offset, scale, model, matrix, material)
                if child then

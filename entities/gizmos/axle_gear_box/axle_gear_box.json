@@ -58,9 +58,13 @@
       "stonehearth_ace:mechanical": {
          "resistance": 5
       },
-      "stonehearth_ace:gearbox": {
+      "stonehearth_ace:extensible_object": {
+         "extend_command": "stonehearth_ace:commands:mechanical:adjust_gearbox_axles",
+         "remove_command": "stonehearth_ace:commands:mechanical:reset_gearbox_axles",
+         "extension_entity": "stonehearth_ace:gizmos:axles:gear_box_axle",
          "max_length": 8,
          "connection_type": "mechanical",
+         "multi_select_enabled": true,
          "matrix": "Matrix",
          "rotations": [
             {
@@ -82,7 +86,7 @@
                "direction": { "x": 0, "y": 0, "z": -1 },
                "model": "file(axle_horizontal.qb)",
                "offset": { "x": 5, "y": 0, "z": 5 },
-               "origin": { "x": 0, "y": 0, "z": -1 },
+               "origin": { "x": 0, "y": 0, "z": 0 },
                "rotation": 0,
                "connector_id": "zlow",
                "connector_region": [
@@ -97,7 +101,7 @@
                "direction": { "x": -1, "y": 0, "z": 0 },
                "model": "file(axle_horizontal.qb)",
                "offset": { "x": 5, "y": 0, "z": 5 },
-               "origin": { "x": -1, "y": 0, "z": 0 },
+               "origin": { "x": 0, "y": 0, "z": 0 },
                "rotation": 90,
                "connector_id": "xlow",
                "connector_region": [

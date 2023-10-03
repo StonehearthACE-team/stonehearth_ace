@@ -7,6 +7,7 @@
 local SelectorBase = require 'stonehearth.services.client.selection.selector_base'
 local selector_util = require 'stonehearth.services.client.selection.selector_util'
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
+local util = require 'stonehearth_ace.lib.util'
 local XYZRulerWidget = require 'stonehearth_ace.services.client.selection.xyz_ruler_widget'
 local Color4 = _radiant.csg.Color4
 local Point3 = _radiant.csg.Point3
@@ -56,6 +57,7 @@ function XYZRangeSelector:__init(reason)
    self._can_pass_through_buildings = false
    self._invalid_cursor = INVALID_CURSOR
    self._remove_cursor = REMOVE_CURSOR
+   self._model_offset = MODEL_OFFSET
    self._valid_region_cache = Region3()
    self._on_keyboad_event_fn = nil
    self._on_mouse_event_fn = nil
@@ -93,13 +95,18 @@ end
 function XYZRangeSelector:set_relative_entity(entity, ignore_children)
    self._relative_entity = entity
    self._ignore_children = ignore_children ~= false   -- default to true
+
+   local mob = entity and entity:get_component('mob')
+   self._model_offset = MODEL_OFFSET - (mob and mob:get_region_origin() or Point3.zero)
+
    return self
 end
 
 -- this is a list of the axes (relative to the entity's rotation) along which the range can be specified
 -- it includes their origin point (relative to the entity) and a directional vector point, along with min/max length
+-- can also include a terminus point if a different shape than 1x1xN is desired
 -- which override the base min/max length
--- { origin = Point3, dimension = string, direction = Point3, min_length = number, max_length = number }
+-- { origin = Point3, terminus = Point3, dimension = string, direction = Point3, [min_length = number], [max_length = number], [valid_lengths = {number, ...}] }
 function XYZRangeSelector:set_rotations(rotations)
    self._rotations = rotations
    self._rotations_in_use = {}
@@ -130,11 +137,23 @@ end
 
 function XYZRangeSelector:_get_length()
    local rotation = self:get_rotation()
-   return math.max(rotation.min_length, math.min(rotation.max_length, self._length or rotation.max_length))
+   if rotation.valid_lengths then
+      return util.get_closest_value(rotation.valid_lengths, self._length)
+   else
+      local max_length = self:_get_max_length(rotation)
+      return math.max(rotation.min_length, math.min(max_length, self._length or max_length))
+   end
+end
+
+function XYZRangeSelector:_get_max_length(rotation)
+   return rotation.max_length or (rotation.valid_lengths and rotation.valid_lengths[#rotation.valid_lengths]) or 0
 end
 
 function XYZRangeSelector:set_rotation_in_use(index, in_use)
    self._rotations_in_use[index] = in_use
+   if self._rotation == index then
+      self._region_needs_refresh = true
+   end
    return self
 end
 
@@ -369,6 +388,7 @@ function XYZRangeSelector:_is_valid_location(brick)
       local entities = radiant.terrain.get_entities_at_point(brick)
       for _, entity in pairs(entities) do
          if not self._can_contain_entity_filter_fn(entity, self) then
+            log:debug('location %s is not valid because it contains %s', brick, entity)
             return false
          end
       end
@@ -384,17 +404,22 @@ function XYZRangeSelector:_get_brick_at(x, y)
    local brick, normal = selector_util.get_selected_brick(x, y, function(result)
          local entity = result.entity
 
-         --log:debug('getting brick at %s, %s: %s "%s"', x, y, tostring(entity), tostring(result.node_name))
-
-         if self._can_contain_entity_filter_fn and self._can_contain_entity_filter_fn(entity, self) then
+         log:debug('getting brick at %s, %s: %s "%s" %s', x, y, tostring(entity), tostring(result.node_name), tostring(result.brick))
+         if self._relative_entity then
+            if radiant.entities.is_child_of(entity, self._relative_entity) then
+               log:debug('ignoring child entity %s', entity)
+               return stonehearth.selection.FILTER_IGNORE
+            end
+            log:debug('checking relative entity %s', self._relative_entity)
+         elseif self._can_contain_entity_filter_fn and self._can_contain_entity_filter_fn(entity, self) then
             return stonehearth.selection.FILTER_IGNORE
          end
 
-         for _, node in ipairs(self._intersection_nodes) do
+         for i, node in ipairs(self._intersection_nodes) do
             if result.node_name == node.name then
                -- we hit an intersection node created by the user to catch points floating in air
                -- check to see if it's a valid location otherwise
-               return self:_is_valid_location(result.brick)
+               return self._rotations_in_use[i] or self:_is_valid_location(result.brick)
             end
          end
 
@@ -492,6 +517,7 @@ function XYZRangeSelector:_on_mouse_event(event)
          local rotation_index
          for i, node in ipairs(self._intersection_nodes) do
             if node.cube:contains(local_brick) then
+               log:debug('found brick %s in intersection node %s (%s)', local_brick, node.name, node.cube)
                rotation_index = i
                break
             end
@@ -501,7 +527,7 @@ function XYZRangeSelector:_on_mouse_event(event)
             self:set_rotation(rotation_index)
             local rotation = self:get_rotation()
             --local node = self._intersection_nodes[rotation_index]
-            local cube = csg_lib.create_cube(rotation.origin, local_brick)
+            local cube = csg_lib.create_min_cube(rotation.origin, local_brick + rotation.terminus)
             self:set_length(cube:get_size()[rotation.dimension])
          end
       end
@@ -565,9 +591,15 @@ function XYZRangeSelector:_update_rulers(region, forward)
 
       local rotation = self:get_rotation()
       if rotation then
-         self:_update_ruler(self._x_ruler, q0, q1, 'x', forward)
-         self:_update_ruler(self._y_ruler, q0, q1, 'y', forward)
-         self:_update_ruler(self._z_ruler, q0, q1, 'z', forward)
+         -- we only care about the ruler for the current rotation's dimension
+         for _, d in ipairs({'x', 'y', 'z'}) do
+            local ruler = self['_' .. d .. '_ruler']
+            if d == rotation.dimension then
+               self:_update_ruler(ruler, q0, q1, d, forward)
+            else
+               ruler:hide()
+            end
+         end
 
          return
       end
@@ -652,7 +684,7 @@ function XYZRangeSelector:get_point_in_current_direction(distance)
    return rotation and (rotation.origin + rotation.direction * math.max(0, distance))
 end
 
-function XYZRangeSelector:_recalc_current_region(final_point, is_final)
+function XYZRangeSelector:_recalc_current_region(is_final)
    local rotation = self:get_rotation()
    local length = self:_get_length()
    local node = self._intersection_nodes[self._rotation]
@@ -665,7 +697,8 @@ function XYZRangeSelector:_recalc_current_region(final_point, is_final)
          if self._ignore_middle_collision and is_final then
             origin = origin + rotation.direction * (length - 1)
          end
-         cube = csg_lib.create_cube(origin, rotation.origin + rotation.direction * (length - 1))
+         cube = csg_lib.create_min_cube(origin, rotation.terminus + rotation.direction * length)
+         log:debug('_recalc_current_region cube: %s', cube)
       end
 
       -- make sure there are no entities with collision in this cube (or check custom filter)
@@ -680,15 +713,18 @@ function XYZRangeSelector:_recalc_current_region(final_point, is_final)
                -- ignore
             elseif self._can_pass_through_buildings and entity:get_component('stonehearth:build2:structure') then
                -- ignore
-            elseif self._relative_entity and self._ignore_children and radiant.entities.is_child_of(entity, self._relative_entity) then
+            elseif self._relative_entity and (self._relative_entity == entity or
+               (self._ignore_children and radiant.entities.is_child_of(entity, self._relative_entity))) then
                -- ignore
             elseif self._can_contain_entity_filter_fn and not self._can_contain_entity_filter_fn(entity, self) then
+               log:debug('entity %s failed can_contain_entity_filter', entity)
                cube_is_good = false
                break
             else
                local rcs = entity:get_component('region_collision_shape')
                local rc_type = rcs and rcs:get_region_collision_type()
                if rc_type == RegionCollisionType.SOLID or rc_type == RegionCollisionType.PLATFORM then
+                  log:debug('entity %s failed collision check', entity)
                   cube_is_good = false
                   break
                end
@@ -726,7 +762,7 @@ end
 
 function XYZRangeSelector:get_region_and_point(length)
    local point = self:get_point_in_current_direction(length)
-   return self:_recalc_current_region(point, true), point
+   return self:_recalc_current_region(true), point
 end
 
 function XYZRangeSelector:get_current_connector_region()
@@ -751,7 +787,7 @@ function XYZRangeSelector:_update_render()
    if not self._disable_default_render and self._render_material and self._current_region then
       local color = self:is_current_rotation_in_use() and self._render_cancel_color or self._render_color
       local render_node = self._relative_entity and _radiant.client.get_render_entity(self._relative_entity):get_node() or RenderRootNode
-      self._render_node = _radiant.client.create_region_outline_node(render_node, self._current_region:inflated(RENDER_INFLATION),
+      self._render_node = _radiant.client.create_region_outline_node(render_node, self._current_region:translated(self._model_offset):inflated(RENDER_INFLATION),
                            radiant.util.to_color4(color, 192),   -- edge color
                            radiant.util.to_color4(color, 192),   -- fill color
                            self._render_material, 1)
@@ -792,28 +828,35 @@ function XYZRangeSelector:go()
       -- { origin = Point3, dimension = string, direction = Point3, min_length = number, max_length = number }
       --local direction = direction:rotated(facing)
       local origin = rotation.origin
+      local terminus = rotation.terminus
       local render_node = entity_render_node or RenderRootNode
-      local min_point = origin   -- + rotation.direction * (rotation.min_length - 1)
-      local max_point = origin + rotation.direction * (rotation.max_length - 1)
-      local cube = csg_lib.create_cube(min_point, max_point)
+      local min_point = origin + self._model_offset
+      local max_point = terminus + self._model_offset + rotation.direction * self:_get_max_length(rotation)
+      local cube = csg_lib.create_min_cube(min_point, max_point)
       local name = INTERSECTION_NODE_NAME .. i
-
-      local node = _radiant.client.create_voxel_node(render_node, Region3(cube), '', MODEL_OFFSET)
-                                                   :set_name(name)
-                                                   :set_visible(false)
-                                                   :set_can_query(true)
 
       local vis_node = _radiant.client.create_region_outline_node(render_node, Region3(cube:inflated(RENDER_INFLATION * 2)),
                            radiant.util.to_color4(Point3(255, 255, 255), 64), -- edge color
                            radiant.util.to_color4(Point3(255, 255, 255), 24), -- fill color
                            self._render_material, 1)
-                           :set_name(name)
+                           --:set_name(name)
                            :set_visible(true)
                            :set_can_query(false)
 
+      -- need to adjust cube to a full voxel height in case it is a partial voxel
+      -- need to have this separate voxel node so that the node name can be properly set
+      -- (region outline nodes have random "mesh" names in _radiant.client.query_scene(...) results)
+      local int_min = Point3(math.floor(cube.min.x), math.floor(cube.min.y), math.floor(cube.min.z))
+      local int_max = Point3(math.ceil(cube.max.x), math.ceil(cube.max.y), math.ceil(cube.max.z))
+      local int_cube = Cube3(int_min, int_max)
+      local node = _radiant.client.create_voxel_node(render_node, Region3(int_cube), '', MODEL_OFFSET)
+                           :set_name(name)
+                           :set_visible(false)
+                           :set_can_query(true)
+
       table.insert(nodes, {
          min_point = min_point,
-         cube = cube,
+         cube = int_cube,
          name = name,
          node = node,
          vis_node = vis_node
