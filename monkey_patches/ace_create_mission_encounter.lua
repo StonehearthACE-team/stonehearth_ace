@@ -1,3 +1,5 @@
+local rng = _radiant.math.get_default_rng()
+local Entity = _radiant.om.Entity
 local game_master_lib = require 'stonehearth.lib.game_master.game_master_lib'
 local CreateMission = require 'stonehearth.services.server.game_master.controllers.encounters.create_mission_encounter'
 
@@ -7,6 +9,16 @@ local MISSION_CONTROLLER = 'stonehearth:game_master:missions:'
 
 AceCreateMission._ace_old_start = CreateMission.start
 function AceCreateMission:start(ctx, info)
+   self._sv.ctx = ctx
+   self._sv.info = info
+
+   if info.use_spawners then
+      local location = self:_determine_spawner_location()
+      if location then
+         self:_start_mission('set_location', location)
+      end
+   end
+
    self:_ace_old_start(ctx, info)
    self._sv.alert_bulletin = nil
 end
@@ -19,6 +31,22 @@ function AceCreateMission:stop()
    end
 
    self:_ace_old_stop()
+end
+
+function AceCreateMission:_determine_spawner_location()
+   local spawners = {}
+   for _, entity in ipairs(self._sv.info.use_spawners) do
+      local spawner = self._sv.ctx:get(entity)
+      if not radiant.util.is_a(spawner, Entity) or not spawner:is_valid() then
+         break
+      end
+      table.insert(spawners, spawner)
+   end
+
+   local selected_spawner = spawners[rng:get_int(1, #spawners)]
+
+   local location = radiant.entities.get_world_grid_location(selected_spawner)
+   return radiant.terrain.find_placement_point(location, 2, 5) or location
 end
 
 function AceCreateMission:_start_mission(op, location)
