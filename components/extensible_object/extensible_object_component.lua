@@ -29,6 +29,9 @@ function ExtensibleObjectComponent:activate()
 end
 
 function ExtensibleObjectComponent:post_activate()
+   if self._is_create then
+      self:_ensure_base_connections()
+   end
 	self:_ensure_child_entities()
    self:_update_commands()
 end
@@ -57,11 +60,40 @@ function ExtensibleObjectComponent:_ensure_child_entities()
    end
 end
 
+function ExtensibleObjectComponent:_ensure_base_connections()
+   -- go through the rotations and make sure connections get set to their base untranslated regions
+   -- first check to see if any rotations actually have connections specified
+   local has_connections = false
+   for _, rotation in ipairs(self._rotations) do
+      if rotation.connection_type and rotation.connector_id and rotation.connector_region then
+         has_connections = true
+         break
+      end
+   end
+
+   if not has_connections then
+      return
+   end
+
+   local dc = self._entity:add_component('stonehearth_ace:dynamic_connection')
+   for _, rotation in ipairs(self._rotations) do
+      if rotation.connection_type and rotation.connector_id and rotation.connector_region then
+         dc:update_region(rotation.connection_type, rotation.connector_id, rotation.connector_region)
+      end
+   end
+end
+
 function ExtensibleObjectComponent:get_rotations()
    return self._rotations
 end
 
-function ExtensibleObjectComponent:set_extension(rotation_index, length, collision_region, output_point, output_origin)
+function ExtensibleObjectComponent:set_extension(rotation_index, length, collision_region, connector_region, output_point, output_origin)
+   log:debug('%s extensible_object:set_extension(%s, %s, %s, %s, %s, %s)',
+         self._entity, tostring(rotation_index), tostring(length),
+         collision_region and collision_region:get_bounds() or 'nil',
+         connector_region and connector_region:get_bounds() or 'nil',
+         tostring(output_point), tostring(output_origin))
+
    local data
    local rotation = self._rotations[rotation_index]
    if not rotation then
@@ -102,6 +134,11 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
    self:_update_commands()
    self.__saved_variables:mark_changed()
 
+   local dc = self._entity:get_component('stonehearth_ace:dynamic_connection')
+   if dc and rotation.connection_type then
+      dc:update_region(rotation.connection_type, rotation_id, connector_region)
+   end
+
    radiant.events.trigger(self._entity, 'stonehearth_ace:extensible_object:extension_changed', {
       length = length,
       output_point = output_point,
@@ -119,6 +156,7 @@ end
 
 function ExtensibleObjectComponent:_clear_all_extensions()
    local models_comp = self._entity:add_component('stonehearth_ace:models')
+   local dc = self._entity:get_component('stonehearth_ace:dynamic_connection')
 
    for index, rotation in ipairs(self._rotations) do
       local id = self:_get_rotation_id(rotation)
@@ -137,6 +175,10 @@ function ExtensibleObjectComponent:_clear_all_extensions()
       end
 
       models_comp:remove_model(self:_get_model_name(id))
+
+      if dc and rotation.connection_type then
+         dc:update_region(rotation.connection_type, id, rotation.connector_region)
+      end
    end
 
    self._sv.cur_extensions = {}
