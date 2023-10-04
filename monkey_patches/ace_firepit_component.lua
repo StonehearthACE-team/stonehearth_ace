@@ -108,9 +108,24 @@ function AceFirepitComponent:_add_one_seat(seat_number, location)
    end
 end
 
-AceFirepitComponent._ace_old__startup = FirepitComponent._startup
 function AceFirepitComponent:_startup()
-   self:_ace_old__startup()
+   self._log:debug('creating alarms')
+   local calendar_constants = stonehearth.calendar:get_constants()
+   local event_times = calendar_constants.event_times
+   local jitter = '+5m'
+
+   if not self._sunrise_alarm then
+      local sunrise_alarm_time = stonehearth.calendar:format_time(self._json.custom_times and self._json.custom_times.start or event_times.sunrise) .. jitter
+      self._sunrise_alarm = stonehearth.calendar:set_alarm(sunrise_alarm_time, function()
+            self:_start_or_stop_firepit()
+         end)
+   end
+   if not self._sunset_alarm then
+      local sunset_alarm_time = stonehearth.calendar:format_time(self._json.custom_times and self._json.custom_times.stop or event_times.sunset_end) .. jitter
+      self._sunset_alarm = stonehearth.calendar:set_alarm(sunset_alarm_time, function()
+            self:_start_or_stop_firepit()
+         end)
+   end
 
    if not self._transform_residue_timer then
       local calendar_constants = stonehearth.calendar:get_constants()
@@ -121,6 +136,8 @@ function AceFirepitComponent:_startup()
             self:_transform_residue()
          end)
    end
+
+   self:_start_or_stop_firepit()
 end
 
 AceFirepitComponent._ace_old_shutdown = FirepitComponent._shutdown
@@ -135,9 +152,8 @@ end
 
 function AceFirepitComponent:_start_or_stop_firepit()
    --Only light fires after dark --ACE: Or when its cold!
-   local time_constants = stonehearth.calendar:get_constants()
    local curr_time = stonehearth.calendar:get_time_and_date()
-   local should_light_fire = not stonehearth.calendar:is_daytime() or stonehearth.weather:is_dark_during_daytime() or stonehearth.weather:is_cold_weather()
+   local should_light_fire = self:_should_light_fire(curr_time)
    local is_lit = self:is_lit()
 
    self._log:debug('start or stop? (lit:%s should_light:%s)', tostring(is_lit), tostring(should_light_fire))
@@ -152,6 +168,25 @@ function AceFirepitComponent:_start_or_stop_firepit()
       self._log:detail('decided to put out the fire!')
       self:_extinguish()
    end
+end
+
+function AceFirepitComponent:_should_light_fire(now)
+   local should_light_fire = not stonehearth.calendar:is_daytime()
+
+   if self._json.custom_times then
+      if self._json.custom_times.stop and self._json.custom_times.stop >= now.hour then
+         should_light_fire = true
+      end
+      if self._json.custom_times.start and self._json.custom_times.start <= now.hour then
+         should_light_fire = true
+      end
+   end
+
+   if stonehearth.weather:is_dark_during_daytime() or stonehearth.weather:is_cold_weather() then
+      should_light_fire = true
+   end
+
+   return should_light_fire
 end
 
 function AceFirepitComponent:_transform_residue()
