@@ -42,6 +42,9 @@ function WaterSpongeComponent:create()
    if self._json.output_location then
       self._sv._output_location = radiant.util.to_point3(self._json.output_location)
    end
+   if self._json.output_origin then
+      self._sv._output_origin = radiant.util.to_point3(self._json.output_origin)
+   end
 
    self._sv.input_enabled = self._json.input_enabled ~= false
    self._sv.output_enabled = self._json.output_enabled ~= false
@@ -475,16 +478,19 @@ function WaterSpongeComponent:_get_destination_container(location)
 	local is_solid = false
 
 	for id, entity in pairs(entities) do
-		local container = entity:get_component('stonehearth_ace:container')
-		if container and container:get_type() == 'stonehearth:water' then
-         container_component = container
-         sponge_component = entity:get_component('stonehearth_ace:water_sponge')
-         break
+      -- ignore this entity
+      if entity ~= self._entity then
+         local container = entity:get_component('stonehearth_ace:container')
+         if container and container:get_type() == 'stonehearth:water' then
+            container_component = container
+            sponge_component = entity:get_component('stonehearth_ace:water_sponge')
+            break
+         end
+         local rcs = entity:get_component('region_collision_shape')
+         if rcs and rcs:get_region_collision_type() == _radiant.om.RegionCollisionShape.SOLID then
+            is_solid = true
+         end
       end
-      local rcs = entity:get_component('region_collision_shape')
-		if rcs and rcs:get_region_collision_type() == _radiant.om.RegionCollisionShape.SOLID then
-			is_solid = true
-		end
 	end
 
 	return container_component, sponge_component, is_solid
