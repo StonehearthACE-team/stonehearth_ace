@@ -11,7 +11,9 @@ function Encounter:create(json_path, game_master)
 end
 
 function AceEncounter:destroy()
-   self._sv.game_master:unregister_music(self)
+   if self._sv._info.encounter_music then
+      self._sv.game_master:unregister_music(self)
+   end
    if self._sv.script then
       if self._sv.script.destroy then
          self._sv.script:destroy()

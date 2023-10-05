@@ -8,11 +8,18 @@ function AceGameMaster:activate()
 end
 
 function AceGameMaster:register_music(encounter, music)
-   if music and not self._sv._encounter_music_map[encounter] then
-      self._sv._encounter_music_map[encounter] = {
+   if music then
+      for i, entry in ipairs(self._sv._encounter_music_map) do
+         if entry.encounter == encounter then
+            return
+         end
+      end
+
+      -- TODO: we could maintain this as a sorted list by priority
+      table.insert(self._sv._encounter_music_map, {
          music = music,
          encounter = encounter,
-      }
+      })
       if self:_is_encounter_music_higher_priority(self._sv.encounter_music, music) then
          self._sv.encounter_music = music
          self._sv._cur_music_encounter = encounter
@@ -22,11 +29,14 @@ function AceGameMaster:register_music(encounter, music)
 end
 
 function AceGameMaster:unregister_music(encounter)
-   if self._sv._encounter_music_map[encounter] then
-      self._sv._encounter_music_map[encounter] = nil
-      local cur_music_encounter = self._sv._cur_music_encounter
-      if cur_music_encounter == encounter then
-         self:_update_highest_priority_music()
+   for i, entry in ipairs(self._sv._encounter_music_map) do
+      if entry.encounter == encounter then
+         self._sv._encounter_music_map[i] = nil
+         local cur_music_encounter = self._sv._cur_music_encounter
+         if cur_music_encounter == encounter then
+            self:_update_highest_priority_music()
+         end
+         break
       end
    end
 end
@@ -38,7 +48,7 @@ end
 function AceGameMaster:_update_highest_priority_music()
    -- go through the encounter music map and find the highest priority music
    local best_entry
-   for _, entry in pairs(self._sv._encounter_music_map) do
+   for _, entry in ipairs(self._sv._encounter_music_map) do
       if not best_entry or self:_is_encounter_music_higher_priority(best_entry.music, entry.music) then
          best_entry = entry
       end
