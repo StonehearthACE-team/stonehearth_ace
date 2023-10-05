@@ -103,6 +103,7 @@ local monkey_patches = {
    ace_food_preference_script = 'stonehearth.data.traits.food_preference.food_preference_script',
    ace_free_time_observer = 'stonehearth.ai.observers.free_time_observer',
    ace_game_creation_service = 'stonehearth.services.server.game_creation.game_creation_service',
+   ace_game_master = 'stonehearth.services.server.game_master.controllers.game_master',
    ace_game_master_lib = 'stonehearth.lib.game_master.game_master_lib',
    ace_game_speed_service = 'stonehearth.services.server.game_speed.game_speed_service',
    ace_geomancer = 'stonehearth.jobs.geomancer.geomancer',
