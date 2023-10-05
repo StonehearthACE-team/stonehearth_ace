@@ -89,19 +89,20 @@ function AceSound:on_server_ready()
    _radiant.call_obj('stonehearth.game_master', 'get_root_node_command'):done(function(response)
          self._gm_data_trace = response.__self:trace('sound service trace gm data')
             :on_changed(function(o)
-                  if o.encounter_music then
-                     if o.encounter_music.music then
-                        self:recommend_game_music('encounter', 'music', o.encounter_music.music)
-                     end
-                     if o.encounter_music.ambient then
-                        self:recommend_game_music('encounter', 'ambient', o.encounter_music.ambient)
-                     end
-                  else
-                     self:recommend_game_music('encounter', 'music', nil)
-                     self:recommend_game_music('encounter', 'ambient', nil)
+               local data = response.__self:get_data()
+               if data.encounter_music then
+                  if data.encounter_music.music then
+                     self:recommend_game_music('encounter', 'music', data.encounter_music.music)
                   end
-               end)
-            :push_object_state()
+                  if data.encounter_music.ambient then
+                     self:recommend_game_music('encounter', 'ambient', data.encounter_music.ambient)
+                  end
+               else
+                  self:recommend_game_music('encounter', 'music', nil)
+                  self:recommend_game_music('encounter', 'ambient', nil)
+               end
+            end)
+         :push_object_state()
       end)
 
    self:set_soundtrack_override(stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'soundtrack_override'))
