@@ -388,7 +388,7 @@ function XYZRangeSelector:_is_valid_location(brick)
       local entities = radiant.terrain.get_entities_at_point(brick)
       for _, entity in pairs(entities) do
          if not self._can_contain_entity_filter_fn(entity, self) then
-            log:debug('location %s is not valid because it contains %s', brick, entity)
+            --log:debug('location %s is not valid because it contains %s', brick, entity)
             return false
          end
       end
@@ -404,13 +404,13 @@ function XYZRangeSelector:_get_brick_at(x, y)
    local brick, normal = selector_util.get_selected_brick(x, y, function(result)
          local entity = result.entity
 
-         log:debug('getting brick at %s, %s: %s "%s" %s', x, y, tostring(entity), tostring(result.node_name), tostring(result.brick))
+         --log:debug('getting brick at %s, %s: %s "%s" %s', x, y, tostring(entity), tostring(result.node_name), tostring(result.brick))
          if self._relative_entity then
             if radiant.entities.is_child_of(entity, self._relative_entity) then
-               log:debug('ignoring child entity %s', entity)
+               --log:debug('ignoring child entity %s', entity)
                return stonehearth.selection.FILTER_IGNORE
             end
-            log:debug('checking relative entity %s', self._relative_entity)
+            --log:debug('checking relative entity %s', self._relative_entity)
          elseif self._can_contain_entity_filter_fn and self._can_contain_entity_filter_fn(entity, self) then
             return stonehearth.selection.FILTER_IGNORE
          end
@@ -517,7 +517,7 @@ function XYZRangeSelector:_on_mouse_event(event)
          local rotation_index
          for i, node in ipairs(self._intersection_nodes) do
             if node.cube:contains(local_brick) then
-               log:debug('found brick %s in intersection node %s (%s)', local_brick, node.name, node.cube)
+               --log:debug('found brick %s in intersection node %s (%s)', local_brick, node.name, node.cube)
                rotation_index = i
                break
             end
@@ -698,7 +698,7 @@ function XYZRangeSelector:_recalc_current_region(is_final)
             origin = origin + rotation.direction * (length - 1)
          end
          cube = csg_lib.create_min_cube(origin, rotation.terminus + rotation.direction * length)
-         log:debug('_recalc_current_region cube: %s', cube)
+         --log:debug('_recalc_current_region cube: %s', cube)
       end
 
       -- make sure there are no entities with collision in this cube (or check custom filter)
@@ -717,14 +717,14 @@ function XYZRangeSelector:_recalc_current_region(is_final)
                (self._ignore_children and radiant.entities.is_child_of(entity, self._relative_entity))) then
                -- ignore
             elseif self._can_contain_entity_filter_fn and not self._can_contain_entity_filter_fn(entity, self) then
-               log:debug('entity %s failed can_contain_entity_filter', entity)
+               --log:debug('entity %s failed can_contain_entity_filter', entity)
                cube_is_good = false
                break
             else
                local rcs = entity:get_component('region_collision_shape')
                local rc_type = rcs and rcs:get_region_collision_type()
                if rc_type == RegionCollisionType.SOLID or rc_type == RegionCollisionType.PLATFORM then
-                  log:debug('entity %s failed collision check', entity)
+                  --log:debug('entity %s failed collision check', entity)
                   cube_is_good = false
                   break
                end

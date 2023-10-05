@@ -1,6 +1,15 @@
 local Sound = require 'stonehearth.services.client.sound.sound_service'
 local AceSound = class()
 
+AceSound._ace_old_destroy = Sound.__user_destroy
+function AceSound:destroy()
+   if self._gm_data_trace then
+      self._gm_data_trace:destroy()
+      self._gm_data_trace = nil
+   end
+   self:_ace_old_destroy()
+end
+
 --When the population changes, check the tier
 function AceSound:_listen_on_population_changes(population_service, player_id)
    if not population_service then
@@ -77,6 +86,23 @@ end
 AceSound._ace_old_on_server_ready = Sound.on_server_ready
 function AceSound:on_server_ready()
    self:_ace_old_on_server_ready()
+   _radiant.call_obj('stonehearth.game_master', 'get_root_node_command'):done(function(response)
+         self._gm_data_trace = response.__self:trace('sound service trace gm data')
+            :on_changed(function(o)
+                  if o.encounter_music then
+                     if o.encounter_music.music then
+                        self:recommend_game_music('encounter', 'music', o.encounter_music.music)
+                     end
+                     if o.encounter_music.ambient then
+                        self:recommend_game_music('encounter', 'ambient', o.encounter_music.ambient)
+                     end
+                  else
+                     self:recommend_game_music('encounter', 'music', nil)
+                     self:recommend_game_music('encounter', 'ambient', nil)
+                  end
+               end)
+            :push_object_state()
+      end)
 
    self:set_soundtrack_override(stonehearth_ace.gameplay_settings:get_gameplay_setting('stonehearth_ace', 'soundtrack_override'))
 end

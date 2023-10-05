@@ -85,9 +85,13 @@ function ModelsRenderer:_create_node(options)
             node.primary_node = self._node:add_group_node('directional group node')
             node.child_nodes = {}
 
-            -- if the direction is negative, we need to increment it by one (because we're approaching from the other side of the voxel)
+            -- if the direction is negative and the region offset is positive in that dimension, we need to increment it by one
+            -- (because we're approaching from the other side of the voxel)
             if options.direction[options.dimension] < 0 then
-               origin = origin + options.direction
+               local region_origin = self._entity:get_component('mob'):get_region_origin()
+               --log:debug('shifting model render: %s, %s, %s, %s', origin, options.direction, region_origin, options.dimension)
+               origin = origin + options.direction * math.floor(0.5 + region_origin[options.dimension])
+               --log:debug('new origin: %s', origin)
             end
 
             for i = 0, options.length - 1 do

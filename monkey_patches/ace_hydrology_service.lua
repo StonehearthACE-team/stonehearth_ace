@@ -388,7 +388,12 @@ function AceHydrologyService:auto_fill_water_region(region, prefill_fn)
    local region_max_y = bounds.max.y
    local region_min_y = bounds.min.y
    log:debug('prepping %s (%s) and adding water to world height %s', region, bounds, water_level)
-   if region_max_y > water_max_y then
+
+   if region_min_y > water_max_y then
+      -- the entire region is above the water; just return
+      log:debug('region %s above water %s; canceling fill', bounds, water_region:get_bounds())
+      return nil
+   elseif region_max_y > water_max_y then
       -- first we shift the bounds up by the height of the region, then down by the difference in region and water heights
       new_region = new_region - bounds:translated(Point3(0, water_max_y - region_min_y, 0))
       log:debug('region higher than water; reducing bounds to %s', new_region:get_bounds())
