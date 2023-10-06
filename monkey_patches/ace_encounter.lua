@@ -33,8 +33,8 @@ function AceEncounter:get_encounter_music()
       else
          -- if music/ambient sound keys are present, try to load data from sound constants for them
          self._encounter_music = {
-            music = music.music_sound_key and sound_constants.music[music.music_sound_key] or music.music,
-            ambient = music.ambient_sound_key and sound_constants.ambient[music.ambient_sound_key] or music.ambient,
+            music = music.music_sound_key and radiant.util.get_nested_value(sound_constants.music, music.music_sound_key) or music.music,
+            ambient = music.ambient_sound_key and radiant.util.get_nested_value(sound_constants.ambient, music.ambient_sound_key) or music.ambient,
          }
       end
    end
