@@ -4,10 +4,10 @@ local AceEncounter = class()
 
 local sound_constants = radiant.resources.load_json('stonehearth:data:sound_constants')
 
-AceEncounter._ace_old_create = Encounter.create
-function Encounter:create(json_path, game_master)
-   self:_ace_old_create(json_path, game_master)
+AceEncounter._ace_old_start = Encounter.start
+function AceEncounter:start(ctx)
    self._sv.game_master:register_music(self, self:get_encounter_music())
+   return self:_ace_old_start(ctx)
 end
 
 function AceEncounter:destroy()
