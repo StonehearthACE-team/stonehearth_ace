@@ -1,0 +1,57 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:base_human_npc",
+   "components": {
+      "render_info": {
+         "scale": 0.06,
+         "animation_table": "/stonehearth/data/rigs/entities/humans/skeletons/female.json",
+         "color_map": "stonehearth_ace:color_map:candledark",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -1.2, "z": 0 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ghost.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "speed": {
+            "type": "basic",
+            "value": 30
+         }
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:candledark:ghost"
+         ]
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:candledark:ghost": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.candledark.female.ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.candledark.female.ghost.small_description)",
+         "icon": "file(ghost.png)"
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:human",
+            "stonehearth:ai_pack:sitting",
+            "stonehearth:ai_pack:free_time"
+         ],
+         "actions": [
+            "stonehearth:actions:celebrate:carouse"
+         ]
+      }
+   }
+}

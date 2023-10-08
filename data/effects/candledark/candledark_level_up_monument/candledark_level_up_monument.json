@@ -1,0 +1,106 @@
+{
+   "type": "effect",
+   "tracks": {
+      "gathering": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/candledark_level_up_monument/level_up.gathering.cubemitter.json",
+         "start_time": 0,
+         "end_time": 5200,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "gathering_bloom": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/candledark_level_up_monument/level_up.gathering_bloom.cubemitter.json",
+         "start_time": 0,
+         "end_time": 5200,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "spiral_new": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/candledark_level_up_monument/level_up.spiral_new.cubemitter.json",
+         "start_time": 4500,
+         "end_time": 9000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "spiral_new2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/candledark_level_up_monument/level_up.spiral_new2.cubemitter.json",
+         "start_time": 4500,
+         "end_time": 9000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/candledark_level_up_monument/level_up.base.cubemitter.json",
+         "start_time": 9000,
+         "end_time": 10500,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base_bits": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/candledark_level_up_monument/level_up.base_bits.cubemitter.json",
+         "start_time": 9000,
+         "end_time": 10000,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sparkles_bloom": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/candledark_level_up_monument/level_up.sparkles_bloom.cubemitter.json",
+         "start_time": 10250,
+         "end_time": 11750,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "light": {
+         "type": "light",
+         "light": "/stonehearth/data/horde/animatedlights/level_up/level_up_monument.animatedlight.json",
+         "transforms": { "x": 0, "y": 5, "z": 0 },
+         "shadows": true,
+         "end_time": 13000,
+         "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "loop": false,
+         "min_distance": 60,
+         "falloff": 3.15,
+         "max_instances": 2,
+         "volume": 44,
+         "track": "stonehearth_ace:sounds:candledark:levelup"
+      },
+      "switch_trigger": {
+         "type": "trigger_effect",
+         "start_time": 10250,
+         "info": {
+            "event": "switch"
+         }
+      }
+   }
+}

@@ -42,6 +42,10 @@ function AceGameMaster:unregister_music(encounter)
 end
 
 function AceGameMaster:_is_encounter_music_higher_priority(cur_music, new_music)
+   if new_music.combat then
+      return true
+   end
+   
    return new_music and new_music.music and
       (not cur_music or not cur_music.music or
          (new_music.music.priority or 0) > (cur_music.music.priority or 0))

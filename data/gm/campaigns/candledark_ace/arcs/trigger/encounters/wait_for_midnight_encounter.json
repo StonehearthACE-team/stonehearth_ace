@@ -1,0 +1,16 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_time_of_day",
+   "in_edge": "wait_for_midnight_encounter",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "small_event_generator",
+         "visitor_generator",
+         "invasion_generator"
+      ]
+   },
+   "wait_for_time_of_day_info": {
+      "time": "23:59"
+   }
+}

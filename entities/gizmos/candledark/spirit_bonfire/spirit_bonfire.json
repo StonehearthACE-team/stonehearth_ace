@@ -1,0 +1,72 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "stonehearth:firepit": {
+         "buff_source": true,
+         "allow_charcoal": false,
+         "create_seats": false,
+         "custom_times": {
+            "start": 19
+         }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(spirit_bonfire.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "stonehearth:lamp": {
+         "light_policy": "manual",
+         "light_effect": "stonehearth_ace:effects:candledark:firepit_effect",
+         "light_origin": { "x": 0, "y": 1, "z": 0 }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 3, "z": 2 }
+            }
+         ]
+      },
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 16
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "clearable": false
+      },
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "portrait": "file(spirit_bonfire.png)",
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.candledark.spirit_bonfire.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.candledark.spirit_bonfire.description)",
+         "icon": "file(spirit_bonfire.png)",
+         "category": "quest",
+         "material_tags": [
+            "candledark"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}

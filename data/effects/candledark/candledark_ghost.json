@@ -1,0 +1,29 @@
+{
+   "type": "effect",
+   "tracks": {
+      "ghost_aura_glitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/ghost/aura_glitter.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": -0.5, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "ghost_aura_cloud": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/ghost/cloud.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": -0.2, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      }
+   }
+}
