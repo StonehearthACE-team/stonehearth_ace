@@ -1,0 +1,35 @@
+{
+   "type": "encounter",
+   "encounter_type": "create_camp",
+   "rarity": "common",
+   "in_edge": "create_third_bonfire",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "bonfires_created",
+         "bonfires_created_peaceful"
+      ]
+   },
+   "create_camp_info": {
+      "npc_player_id": "",
+      "belongs_to_player": true,
+      "continue_on_disconnect": true,
+      "ctx_entity_registration_path": "bonfire_3",
+      "keep_grass": true,
+      "searcher_delay": "1h",
+      "on_searcher_failure": {
+         "retry": true
+      },
+      "radius": 4,
+      "spawn_range": {
+         "min": 60,
+         "max": 300
+      },
+      "pieces": {
+         "bonfire": {
+            "info": "file(create_bonfire/bonfire.json)",
+            "position": { "x": 0, "y": 0 }
+         }
+      }
+   }
+}

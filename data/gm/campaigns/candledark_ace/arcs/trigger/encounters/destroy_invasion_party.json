@@ -1,0 +1,19 @@
+{
+   "type": "encounter",
+   "encounter_type": "destroy_entity",
+   "in_edge": "destroy_invasion_party",
+   "out_edge": {
+      "type": "destroy_tree",
+      "root": "invasion_generator",
+      "destroy_root": false
+   },
+   "destroy_entity_info": {
+      "destroy_all_registered_entities": true,
+      "effect": "stonehearth:effects:poof_effect:grey",
+      "random_delay": {
+         "min": 60,
+         "max": 150
+      },
+      "continue_always": true
+   }
+}

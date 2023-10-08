@@ -1,0 +1,23 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.09
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(gnarled_soulfire_tree_iconic.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "description": "i18n(stonehearth_ace:entities.decoration.candledark.gnarled_soulfire_tree.iconic.description)",
+         "is_item": true,
+         "category": "quest"
+      }
+   }
+}

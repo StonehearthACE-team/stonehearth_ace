@@ -1,0 +1,99 @@
+{
+   "name": "fire",
+   "duration": 1000,
+   "material": "materials/cubemitter_bloom.material.json",
+   "loops": true,
+   "mesh": {
+      "file": "",
+      "matrix": "",
+      "offset": {
+         "x": 1,
+         "y": 0,
+         "z": 0
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "CONSTANT",
+         "values": [25]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [90]
+      },
+      "origin": {
+         "surface": "POINT",
+         "values": {
+            "surface": "POINT"
+         }
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [4000]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [15, 20]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 1],
+               [1, -1]
+            ]
+         }
+      },
+      "velocity": {},
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.1, 0.3]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.1, 1],
+               [0.5, 2],
+               [1, 1]
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [1, 1, 1, 1]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0.2, 0.8, 1],
+               [0.5, 0.2, 0.4, 1],
+               [1, 1, 1, 1]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 0],
+                  [0.2, 1],
+                  [0.5, 1],
+                  [1, 0]
+               ],
+               [
+                  [0, 0],
+                  [0.2, 1],
+                  [0.5, 1],
+                  [1, 0]
+               ]
+            ]
+         }
+      }
+   }
+}

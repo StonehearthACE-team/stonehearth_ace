@@ -1,0 +1,77 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:undead",
+      "stonehearth_ace:mixins:inflicted_wounds:cut:very_easy"
+   ],
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/monster/undead/zombie/zombies/female.json",
+         "color_map": "stonehearth_ace:color_map:candledark",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -1, "z": 0 }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 120
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 0
+         },
+         "menace": {
+            "type": "basic",
+            "value": 1
+         },
+         "courage": {
+            "type": "basic",
+            "value": 0
+         },
+         "speed": {
+            "type": "basic",
+            "value": 45
+         },
+         "exp_reward": {
+            "type": "basic",
+            "value": 0
+         }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(ghost.qb)"
+            ]
+         }
+      },
+      "stonehearth:carry_block": {},
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:candledark:ghost"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.75,
+      "stonehearth:entity_reach": 0.5,
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.candledark.ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.candledark.ghost.description)",
+         "icon": "file(ghost.png)",
+         "category": "undead"
+      }
+   }
+}

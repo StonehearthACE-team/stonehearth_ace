@@ -2,11 +2,30 @@
    "type": "arc",
    "rarity": "common",
    "encounters": {
+		"wait_for_end": "file(encounters/wait_for_end.json)",
 		"wait_for_requirements_met": "file(encounters/wait_for_requirements_met.json)",
 		"delay_before_elbezar_arrival": "file(encounters/delay_before_elbezar_arrival.json)",
 		"elbezar_arrival": "file(encounters/elbezar_arrival.json)",
+		"elbezar_giving_up": "file(encounters/elbezar_giving_up.json)",
 		"elbezar_gnarled_tree_gift": "file(encounters/elbezar_gnarled_tree_gift.json)",
 		"elbezar_gnarled_tree_quest": "file(encounters/elbezar_gnarled_tree_quest.json)",
-		"elbezar_gnarled_tree_activation": "file(encounters/elbezar_gnarled_tree_activation.json)"
+		"elbezar_gnarled_tree_activation": "file(encounters/elbezar_gnarled_tree_activation.json)",
+		"elbezar_explaining": "file(encounters/elbezar_explaining.json)",
+		"elbezar_explaining_peaceful": "file(encounters/elbezar_explaining_peaceful.json)",
+		"elbezar_pumpkin_patch_gift": "file(encounters/elbezar_pumpkin_patch_gift.json)",
+		"create_first_bonfire": "file(encounters/create_first_bonfire.json)",
+		"create_second_bonfire": "file(encounters/create_second_bonfire.json)",
+		"create_third_bonfire": "file(encounters/create_third_bonfire.json)",
+		"bonfires_created": "file(encounters/bonfires_created.json)",
+		"bonfires_created_peaceful": "file(encounters/bonfires_created_peaceful.json)",
+		"wait_for_midnight_encounter": "file(encounters/wait_for_midnight_encounter.json)",
+		"wait_for_midnight_encounter_peaceful": "file(encounters/wait_for_midnight_encounter_peaceful.json)",
+		"small_event_generator": "file(encounters/small_event_generator.json)",
+		"visitor_generator": "file(encounters/visitor_generator.json)",
+		"invasion_generator": "file(encounters/invasion_generator.json)",
+		"wait_to_destroy_invasion_party": "file(encounters/wait_to_destroy_invasion_party.json)",
+		"destroy_invasion_party": "file(encounters/destroy_invasion_party.json)",
+
+		"easy_invasion_1": "file(encounters/invasions/easy_invasion_1.json)"
 	}
 }

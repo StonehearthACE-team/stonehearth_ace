@@ -1,0 +1,100 @@
+{
+   "type": "effect",
+   "tracks": {
+      "base_embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/firepit_effect/fire.red.base.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.2, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base_dense": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/firepit_effect/fire.red.base_dense.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.3, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/firepit_effect/fire.red.glow.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.5, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow_extreme": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/firepit_effect/fire.red.glow_extreme.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.5, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "cubemitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/firepit_effect/fire.red.main.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.4, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/firepit_effect/fire.red.embers.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.2, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "pop": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/firepit_effect/fire.red.pop.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.7, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "smoke_column": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/firepit_effect/smoke_column.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 3.5, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "crackle_sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 400,
+         "min_distance": 40,
+         "falloff": 2.5,
+         "volume": 75,
+         "track": "stonehearth:sounds:firepit_loop_sound"
+      },
+      "light": {
+         "type": "light",
+         "light": "/stonehearth/data/horde/animatedlights/fire/fire.animatedlight.json",
+         "transforms": { "x": 0, "y": 3, "z": 0 },
+         "shadows": false
+      }
+   }
+}

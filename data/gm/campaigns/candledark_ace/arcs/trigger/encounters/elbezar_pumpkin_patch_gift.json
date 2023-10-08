@@ -1,0 +1,24 @@
+{
+   "type": "encounter",
+   "encounter_type": "donation",
+   "in_edge": "elbezar_pumpkin_patch_gift",
+   "out_edge": "create_first_bonfire",
+   "donation_info": {
+      "loot_table": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 1
+               },
+               "items": {
+                  "pumpkin_patch_gift": {
+                     "uri": "stonehearth_ace:decoration:candledark:gnarled_soulfire_tree:unlit",
+                     "weight": 1
+                  }
+               }
+            }
+         }
+      }
+   }
+}
