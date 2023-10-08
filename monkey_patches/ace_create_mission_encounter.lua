@@ -7,19 +7,22 @@ local AceCreateMission = class()
 
 local MISSION_CONTROLLER = 'stonehearth:game_master:missions:'
 
-AceCreateMission._ace_old_start = CreateMission.start
+--AceCreateMission._ace_old_start = CreateMission.start
 function AceCreateMission:start(ctx, info)
+   assert(info.spawn_range)
+   assert(info.spawn_range.min)
+   assert(info.spawn_range.max)
+
    self._sv.ctx = ctx
    self._sv.info = info
 
-   if info.use_spawners then
-      local location = self:_determine_spawner_location()
-      if location then
-         self:_start_mission('set_location', location)
-      end
+   local location = (info.use_spawners and self:_determine_spawner_location(info.use_spawners)) or
+                     (info.use_previous_enemy_location and ctx.enemy_location)
+   if location then
+      self:_start_mission('set_location', location)
+   else
+      self:_create_searcher()
    end
-
-   self:_ace_old_start(ctx, info)
    self._sv.alert_bulletin = nil
 end
 
@@ -33,20 +36,21 @@ function AceCreateMission:stop()
    self:_ace_old_stop()
 end
 
-function AceCreateMission:_determine_spawner_location()
-   local spawners = {}
-   for _, entity in ipairs(self._sv.info.use_spawners) do
+function AceCreateMission:_determine_spawner_location(spawners)
+   local results = {}
+   for _, entity in ipairs(spawners) do
       local spawner = self._sv.ctx:get(entity)
-      if not radiant.util.is_a(spawner, Entity) or not spawner:is_valid() then
-         break
+      if radiant.util.is_a(spawner, Entity) and spawner:is_valid() then
+         table.insert(results, spawner)
       end
-      table.insert(spawners, spawner)
    end
 
-   local selected_spawner = spawners[rng:get_int(1, #spawners)]
+   if #results > 0 then
+      local selected_spawner = results[rng:get_int(1, #results)]
 
-   local location = radiant.entities.get_world_grid_location(selected_spawner)
-   return radiant.terrain.find_placement_point(location, 2, 5) or location
+      local location = radiant.entities.get_world_grid_location(selected_spawner)
+      return radiant.terrain.find_placement_point(location, 2, 5) or location
+   end
 end
 
 function AceCreateMission:_start_mission(op, location)
