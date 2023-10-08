@@ -54,36 +54,42 @@ end
 
 function AceSound:_on_threat_changed(data)
    self._log:info('threat level is now %.2f', data.threat_level)
-   local kingdom = self._kingdom
-   if not kingdom then
-      return
+   self._in_combat = data.in_combat
+   self._thread_level = data.threat_level
+   self:recommend_combat_music(self._combat_music_override)
+end
+
+function AceSound:recommend_combat_music(music)
+   self._combat_music_override = music
+   
+   if not music then
+      local kingdom = self._kingdom
+      if not kingdom then
+         return
+      end
+
+      local music_data = self._constants.music.combat.kingdoms[kingdom] or self._constants.music.combat.kingdoms['stonehearth:kingdoms:ascendancy']
+      music = music_data.combat_playlist
    end
-   local music_data = self._constants.music.combat.kingdoms[kingdom] or self._constants.music.combat.kingdoms['stonehearth:kingdoms:ascendancy'] 
 
-   if data.in_combat and data.threat_level > 0 then
+   if self._in_combat and self._threat_level > 0 then
       self._combat_started = true
-      if self._combat_music_override then
-         self:recommend_game_music('combat', 'music',   self._combat_music_override)
-      else
-         self:recommend_game_music('combat', 'music',   music_data.combat_playlist)
-      end
-      self:recommend_game_music('combat', 'ambient',    self._constants.music.combat.ambient)
+      self:recommend_game_music('combat', 'music', music)
+      self:recommend_game_music('combat', 'ambient', self._constants.music.combat.ambient)
       return
-   elseif data.threat_level <= 0.1 then
-      if self._combat_started then
-         self._combat_started = false
+   elseif self._combat_started and self._threat_level <= 0.1 then
+      self._combat_started = false
 
-         -- combat music is going... first fade it out by queueing a track
-         -- with no music file.  when that's done, play the stinger and let
-         -- the next music in the series fade in by recommending on combat
-         -- music at all.
-         self:recommend_game_music('combat', 'music', self._constants.music.combat.kill_combat_music)
-         radiant.set_realtime_timer("Sound _on_threat_changed", self._constants.music.combat.kill_combat_music.fade_in, function()
-               self:recommend_game_music('combat', 'music',   nil)
-               self:recommend_game_music('combat', 'ambient', nil)
-               self:_play_sound(self._constants.sounds.combat_finished_sound)
-            end)
-      end
+      -- combat music is going... first fade it out by queueing a track
+      -- with no music file.  when that's done, play the stinger and let
+      -- the next music in the series fade in by recommending on combat
+      -- music at all.
+      self:recommend_game_music('combat', 'music', self._constants.music.combat.kill_combat_music)
+      radiant.set_realtime_timer("Sound _on_threat_changed", self._constants.music.combat.kill_combat_music.fade_in, function()
+            self:recommend_game_music('combat', 'music',   nil)
+            self:recommend_game_music('combat', 'ambient', nil)
+            self:_play_sound(self._constants.sounds.combat_finished_sound)
+         end)
    end
 end
 
@@ -96,7 +102,7 @@ function AceSound:on_server_ready()
                local data = response.__self:get_data()
                if data.encounter_music then
                   if data.encounter_music.combat then
-                     self._combat_music_override = data.encounter_music.combat
+                     self:recommend_combat_music(data.encounter_music.combat)
                   end
                   if data.encounter_music.music then
                      self:recommend_game_music('encounter', 'music', data.encounter_music.music)
