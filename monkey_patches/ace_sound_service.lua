@@ -54,7 +54,7 @@ end
 
 function AceSound:_on_threat_changed(data)
    self._log:info('threat level is now %.2f', data.threat_level)
-   self._in_combat = data.in_combat
+   self._is_in_combat = data.in_combat
    self._thread_level = data.threat_level
    self:recommend_combat_music(self._combat_music_override)
 end
@@ -72,7 +72,7 @@ function AceSound:recommend_combat_music(music)
       music = music_data.combat_playlist
    end
 
-   if self._in_combat and self._threat_level > 0 then
+   if self._is_in_combat and self._threat_level > 0 then
       self._combat_started = true
       self:recommend_game_music('combat', 'music', music)
       self:recommend_game_music('combat', 'ambient', self._constants.music.combat.ambient)
@@ -111,7 +111,7 @@ function AceSound:on_server_ready()
                      self:recommend_game_music('encounter', 'ambient', data.encounter_music.ambient)
                   end
                else
-                  self._combat_music_override = nil
+                  self:recommend_combat_music()
                   self:recommend_game_music('encounter', 'music', nil)
                   self:recommend_game_music('encounter', 'ambient', nil)
                end
