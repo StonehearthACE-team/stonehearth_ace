@@ -148,6 +148,7 @@ local monkey_patches = {
    ace_periodic_health_modification = 'stonehearth.data.buffs.scripts.periodic_health_modification',
    ace_personality_component = 'stonehearth.components.personality.personality_component',
    ace_pet_component = 'stonehearth.components.pet.pet_component',
+   ace_pet_owner_component = 'stonehearth.components.pet.pet_owner_component',
    ace_pickup_item_type_from_backpack_action = 'stonehearth.ai.actions.pickup_item_type_from_backpack_action',
    ace_pickup_placed_item_adjacent_action = 'stonehearth.ai.actions.pickup_placed_item_adjacent_action',
    ace_pillage_mission = 'stonehearth.services.server.game_master.controllers.missions.pillage_mission',
