@@ -117,6 +117,10 @@ function AcePetComponent:set_owner(owner, lock_to_owner)
          self:_update_commands()
       end
 
+      if owner then
+         radiant.events.trigger_async(self._entity, 'stonehearth:pets:adopted', { owner = owner })
+      end
+
       self._setting_owner = false
    end
 end

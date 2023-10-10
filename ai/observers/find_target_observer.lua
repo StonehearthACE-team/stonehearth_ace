@@ -16,6 +16,7 @@ local MIN_DISTANCE_TO_RECALCULATE = 5
 function FindTargetObserver:initialize()
    self._sv._entity = nil
    self._enable_combat = radiant.util.get_config('enable_combat', true)
+   self._pet_traces = {}
 end
 
 function FindTargetObserver:create(entity)
@@ -92,6 +93,7 @@ function FindTargetObserver:_subscribe_to_events()
    
    -- ACE:
    self._avoid_hunting_listener = radiant.events.listen(self._entity, 'stonehearth_ace:avoid_hunting_changed', self, self._reconsider_all_targets)
+   self:_initialize_pet_traces()
 
    self:_trace_entity_location()
 end
@@ -131,6 +133,7 @@ function FindTargetObserver:_unsubscribe_from_events()
       self._leash_contents_listener = nil
    end
 
+   self:_destroy_pet_traces()
    self:_destroy_entity_location_trace()
    self:_destroy_task()
 
@@ -154,6 +157,159 @@ function FindTargetObserver:_destroy_task()
    if self._task then
       self._task:destroy()
       self._task = nil
+   end
+end
+
+function FindTargetObserver:_initialize_pet_traces()
+   -- listen for changes for both pet and owner, regardless of if we're one or neither
+   self._owner_pet_added_listener = radiant.events.listen(self._entity, 'stonehearth:pets:pet_added', self, self._on_owner_pet_added)
+   self._owner_pet_removed_listener = radiant.events.listen(self._entity, 'stonehearth:pets:pet_removed', self, self._on_owner_pet_removed)
+   self._pet_became_pet_listener = radiant.events.listen(self._entity, 'stonehearth:pets:adopted', self, self._on_pet_adopted)
+   self._pet_released_listener = radiant.events.listen(self._entity, 'stonehearth:pets:released', self, self._on_pet_released)
+   
+   -- also check current pet/owner status and update accordingly
+   if self._entity:get_component('stonehearth:pet') then
+      self:_add_pet_owner_trace()
+   end
+
+   local pet_owner_comp = self._entity:get_component('stonehearth:pet_owner')
+   if pet_owner_comp then
+      for id, pet in pairs(pet_owner_comp:get_pets()) do
+         self:_add_pet_trace(pet)
+      end
+   end
+end
+
+function FindTargetObserver:_destroy_pet_traces()
+   if self._owner_pet_added_listener then
+      self._owner_pet_added_listener:destroy()
+      self._owner_pet_added_listener = nil
+   end
+
+   if self._owner_pet_removed_listener then
+      self._owner_pet_removed_listener:destroy()
+      self._owner_pet_removed_listener = nil
+   end
+
+   if self._pet_became_pet_listener then
+      self._pet_became_pet_listener:destroy()
+      self._pet_became_pet_listener = nil
+   end
+
+   if self._pet_released_listener then
+      self._pet_released_listener:destroy()
+      self._pet_released_listener = nil
+   end
+
+   self:_destroy_pet_owner_traces()
+
+   for _, trace in pairs(self._pet_traces) do
+      trace:destroy()
+   end
+   self._pet_traces = {}
+end
+
+function FindTargetObserver:_destroy_pet_owner_traces()
+   if self._pet_owner_assault_trace then
+      self._pet_owner_assault_trace:destroy()
+      self._pet_owner_assault_trace = nil
+   end
+   if self._pet_owner_target_hit_trace then
+      self._pet_owner_target_hit_trace:destroy()
+      self._pet_owner_target_hit_trace = nil
+   end
+end
+
+function FindTargetObserver:_add_pet_trace(pet)
+   local id = pet:get_id()
+   self._pet_traces[id] = radiant.events.listen(pet, 'stonehearth:combat:assault', self, self._on_pet_assault)
+end
+
+function FindTargetObserver:_remove_pet_trace(id)
+   if self._pet_traces[id] then
+      self._pet_traces[id]:destroy()
+      self._pet_traces[id] = nil
+   end
+end
+
+function FindTargetObserver:_remove_pet_owner_trace(force_remove)
+   -- check if we have an owner
+   -- if we do, don't remove the trace unless this is being called by the add function
+   local pet_comp = self._entity:get_component('stonehearth:pet')
+   local owner = pet_comp and pet_comp:get_owner()
+   if force_remove or not owner or not owner:is_valid() then
+      self:_destroy_pet_owner_traces()
+   end
+end
+
+function FindTargetObserver:_add_pet_owner_trace()
+   self:_remove_pet_owner_trace(true)
+   local pet_comp = self._entity:get_component('stonehearth:pet')
+   local owner = pet_comp and pet_comp:get_owner()
+   if owner and owner:is_valid() then
+      self._pet_owner_assault_trace = radiant.events.listen(owner, 'stonehearth:combat:assault', self, self._on_pet_owner_assault)
+      self._pet_owner_target_hit_trace = radiant.events.listen(owner, 'stonehearth:combat:target_hit', self, self._on_pet_owner_target_hit)
+   end
+end
+
+function FindTargetObserver:_on_owner_pet_added(args)
+   local pet = args.pet
+   if pet and pet:is_valid() then
+      local pet_comp = pet:get_component('stonehearth:pet')
+      if pet_comp and pet_comp:get_owner() == self._entity then
+         self:_add_pet_trace(pet)
+      end
+   end
+end
+
+function FindTargetObserver:_on_owner_pet_removed(args)
+   -- these are async events, so make sure the pet is actually removed and doesn't still exist as their pet
+   -- (e.g., the pet could've been released and then immediately re-added while paused)
+   local id = args.pet_id
+   local pet = radiant.entities.get_entity(id)
+   if pet and pet:is_valid() then
+      local pet_comp = pet:get_component('stonehearth:pet')
+      if pet_comp and pet_comp:get_owner() ~= self._entity then
+         self:_remove_pet_trace(id)
+      end
+   else
+      self:_remove_pet_trace(id)
+   end
+end
+
+function FindTargetObserver:_on_pet_adopted(args)
+   -- we are the pet; listen to our owner's target change event
+   local pet_comp = self._entity:get_component('stonehearth:pet')
+   local owner = pet_comp and pet_comp:get_owner()
+   if owner and owner:is_valid() then
+      self:_add_pet_owner_trace(owner)
+   end
+end
+
+function FindTargetObserver:_on_pet_released(args)
+   self:_remove_pet_owner_trace()
+end
+
+function FindTargetObserver:_on_pet_assault(context)
+   -- if our pet is assaulted and we don't currently have a target, attack the same target
+   if not self._current_target then
+      self:_attack_target(context.attacker)
+   end
+end
+
+function FindTargetObserver:_on_pet_owner_assault(context)
+   -- if our owner is assaulted and we don't currently have a target, attack the same target
+   if not self._current_target then
+      self:_attack_target(context.attacker)
+   end
+end
+
+function FindTargetObserver:_on_pet_owner_target_hit(context)
+   -- if our owner attacks someone, set that target's menace to be the highest so we attack them
+   local target_table = radiant.entities.get_target_table(self._entity, 'aggro')
+   local best_target, best_score = target_table:get_top()
+   if best_target ~= context.target or not best_score or best_score < MIN_MENACE_FOR_COMBAT then
+      target_table:set_value(context.target, math.max(MIN_MENACE_FOR_COMBAT, (best_score or 0) + 1))
    end
 end
 
@@ -409,6 +565,7 @@ function FindTargetObserver:_attack_target(target)
 
    if target and target:is_valid() then
       assert(not self._task)
+      radiant.events.trigger_async(self._entity, 'stonehearth:combat:attacking_new_target', { target = target })
       self._task = self._entity:add_component('stonehearth:ai')
                          :get_task_group('stonehearth:task_groups:solo:combat_unit_control')
                             :create_task('stonehearth:combat:attack_after_cooldown', { target = target })

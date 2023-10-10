@@ -55,7 +55,7 @@ end
 function AceSound:_on_threat_changed(data)
    self._log:info('threat level is now %.2f', data.threat_level)
    self._is_in_combat = data.in_combat
-   self._thread_level = data.threat_level
+   self._threat_level = data.threat_level
    self:recommend_combat_music(self._combat_music_override)
 end
 
