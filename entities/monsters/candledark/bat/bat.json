@@ -1,0 +1,70 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:monster"
+   ],
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth_ace/data/rigs/entities/monster/bat/bat.json",
+         "color_map": "stonehearth_ace:color_map:candledark",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -2.5, "z": 0 }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 40
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 1
+         },
+         "menace": {
+            "type": "basic",
+            "value": 30
+         },
+         "courage": {
+            "type": "basic",
+            "value": 150
+         },
+         "speed": {
+            "type": "basic",
+            "value": 140
+         }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bat.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:weapons:candledark:bat_attacks"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark",
+         "display_name": "i18n(stonehearth_ace:entities.peoples.bat.species)"
+      },
+      "stonehearth:entity_radius": 0.6,
+      "stonehearth:entity_reach": 0.5,
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.candledark.bat.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.candledark.bat.description)"
+      },
+      "stonehearth_ace:create_entity": {
+         "vertical_model_offset_range": {
+            "min": 0,
+            "max": 1
+         }
+      }
+   }
+}

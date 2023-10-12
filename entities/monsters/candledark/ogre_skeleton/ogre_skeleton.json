@@ -1,0 +1,53 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:monsters:undead:ogre_skeleton"
+   ],
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:candledark"
+      },
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(ogre_skeleton.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 280
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 10
+         },
+         "menace": {
+            "type": "basic",
+            "value": 100
+         },
+         "courage": {
+            "type": "basic",
+            "value": 250
+         },
+         "speed": {
+            "type": "basic",
+            "value": 55
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.candledark.ogre_skeleton.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.candledark.ogre_skeleton.description)",
+         "icon": "file(ogre_skeleton.png)"
+      }
+   }
+}

@@ -1,0 +1,124 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(pumpkin_patch_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(pumpkin_patch_iconic.json)",
+         "ghost_form": "file(pumpkin_patch_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": false
+      },
+      "stonehearth:lamp": {
+         "light_policy": "always_on",
+         "restrict_policy_changing": true,
+         "light_effect": "stonehearth_ace:effects:candledark:creepy_fog",
+         "light_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -4, "y": 0, "z": -4 },
+               "max": { "x": -1, "y": 2, "z": -3 }
+            },
+            {
+               "min": { "x": 2, "y": 0, "z": -4 },
+               "max": { "x": 5, "y": 2, "z": -3 }
+            },
+            {
+               "min": { "x": -4, "y": 0, "z": 2 },
+               "max": { "x": -3, "y": 2, "z": 4 }
+            },
+            {
+               "min": { "x": 2, "y": 0, "z": 4 },
+               "max": { "x": 5, "y": 2, "z": 5 }
+            },
+            {
+               "min": { "x": 4, "y": 0, "z": 2 },
+               "max": { "x": 5, "y": 2, "z": 4 }
+            },
+            {
+               "min": { "x": -4, "y": 0, "z": 4 },
+               "max": { "x": -1, "y": 2, "z": 5 }
+            },
+            {
+               "min": { "x": -4, "y": 0, "z": -3 },
+               "max": { "x": -3, "y": 2, "z": -1 }
+            },
+            {
+               "min": { "x": 4, "y": 0, "z": -3 },
+               "max": { "x": 5, "y": 2, "z": -1 }
+            }
+         ]
+      },
+      "stonehearth:renewable_resource_node": {
+         "resource": "stonehearth:food:pumpkin:pumpkin_basket",
+         "renewal_time": "36h",
+         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_veggie_overlay_effect",
+         "unripe_description": "i18n(stonehearth_ace:entities.gizmos.candledark.pumpkin_patch.unripe_description)",
+         "auto_harvest": true,
+         "half_renewed_model_variant": true,
+         "resource_loot_table": {
+            "entries": {
+               "optional": {
+                  "num_rolls": {
+                     "min": 2,
+                     "max": 4
+                  },
+                  "items": {
+                     "extra_baskets": {
+                        "uri": "stonehearth:food:pumpkin:pumpkin_basket",
+                        "weight": 1
+                     }
+                  }
+               },
+               "mega": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 3
+                  },
+                  "items": {
+                     "extra_mega_pumpkins": {
+                        "uri": "stonehearth_ace:decoration:megacrop:mega_pumpkin",
+                        "weight": 1
+                     }
+                  }
+               }
+            }
+         },
+         "seasons": {
+            "summer": {
+               "renewal_time_multiplier": 1.2
+            },
+            "spring": {
+               "renewal_time_multiplier": 1.5
+            },
+            "winter": {
+               "renewal_time_multiplier": 2
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 50,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 10
+      }
+   }
+}

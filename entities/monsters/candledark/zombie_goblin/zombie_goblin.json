@@ -1,0 +1,73 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:monsters:undead:zombie:goblin"
+   ],
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:candledark"
+      },
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(zombie.qb)",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(head_1.qb)",
+                     "file(head_2.qb)",
+                     "file(head_3.qb)",
+                     "file(head_4.qb)",
+                     "file(head_5.qb)",
+                     "file(head_6.qb)",
+                     "file(head_7.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(body_variation_1.qb)",
+                     "file(body_variation_2.qb)",
+                     "file(body_variation_3.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 60
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 2
+         },
+         "menace": {
+            "type": "basic",
+            "value": 45
+         },
+         "courage": {
+            "type": "basic",
+            "value": 120
+         },
+         "speed": {
+            "type": "basic",
+            "value": 70
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.candledark.zombie_goblin.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.candledark.zombie_goblin.description)",
+         "icon": "file(zombie_goblin.png)"
+      }
+   }
+}

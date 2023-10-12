@@ -1,0 +1,53 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:monsters:undead:mummy_female"
+   ],
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:candledark"
+      },
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(mummy_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 120
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 4
+         },
+         "menace": {
+            "type": "basic",
+            "value": 60
+         },
+         "courage": {
+            "type": "basic",
+            "value": 160
+         },
+         "speed": {
+            "type": "basic",
+            "value": 50
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.candledark.mummy_female.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.candledark.mummy_female.description)",
+         "icon": "file(mummy_female.png)"
+      }
+   }
+}

@@ -1,0 +1,54 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:monsters:undead:wolf_skeleton"
+   ],
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:candledark",
+         "scale": 0.18
+      },
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(wolf_skeleton.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 230
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 8
+         },
+         "menace": {
+            "type": "basic",
+            "value": 90
+         },
+         "courage": {
+            "type": "basic",
+            "value": 210
+         },
+         "speed": {
+            "type": "basic",
+            "value": 90
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.candledark.wolf_skeleton.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.candledark.wolf_skeleton.description)",
+         "icon": "file(wolf_skeleton.png)"
+      }
+   }
+}

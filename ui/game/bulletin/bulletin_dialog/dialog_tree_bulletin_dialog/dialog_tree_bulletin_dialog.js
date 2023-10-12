@@ -15,7 +15,7 @@ App.StonehearthDialogTreeBulletinDialog = App.StonehearthBaseBulletinDialog.exte
    }.observes('model.data.message'),
 
    _onZoomToEntityChanged: function() {
-      if (!this._zoomedToInitial) {
+      if (this._zoomedToInitial) {
          App.bulletinBoard.zoomToLocation(this.get('model'));
       }
       this._zoomedToInitial = true;

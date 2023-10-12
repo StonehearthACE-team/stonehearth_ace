@@ -1,0 +1,116 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:candledark",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(pumpkin_ward_purple.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 4, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:lamp": {
+         "light_policy": "always_on",
+         "restrict_policy_changing": true,
+         "light_effect": "stonehearth_ace:effects:candledark:pumpkin_ward_effect:purple",
+         "light_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 2
+               },
+               "items": {
+                  "firewood": {
+                     "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood"
+                  }
+               }
+            },
+            "extra": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 1
+               },
+               "items": {
+                  "soulfire": {
+                     "uri": "stonehearth_ace:resources:candledark:soulfire"
+                  }
+               }
+            },
+            "extra2": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "pumpkin": {
+                     "uri": "stonehearth_ace:decoration:megacrop:mega_pumpkin"
+                  }
+               }
+            }
+         }
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 16
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.candledark.pumpkin_ward.purple.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.candledark.pumpkin_ward.purple.description)",
+         "icon": "file(pumpkin_ward.png)",
+         "category": "quest",
+         "material_tags": [
+            "stockpile_defense",
+            "defense",
+            "candledark",
+            "pumpkin_ward",
+            "stockpile_quest"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 50,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 10
+      }
+   }
+}

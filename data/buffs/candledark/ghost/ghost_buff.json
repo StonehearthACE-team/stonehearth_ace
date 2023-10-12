@@ -2,5 +2,12 @@
    "type": "buff",
    "axis": "buff",
    "invisible_to_player": true,
+   "disallowed_categories": [
+      "weather_cold",
+      "weather_soaked"
+   ],
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:weather:whiteout"
+   ],
    "set_posture": "stonehearth:ghost"
 }

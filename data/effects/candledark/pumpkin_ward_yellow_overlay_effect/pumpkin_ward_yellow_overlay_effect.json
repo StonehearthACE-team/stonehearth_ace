@@ -1,0 +1,22 @@
+{
+   "type": "effect",
+   "tracks": {
+      "activity_overlay_effect": {
+         "type": "activity_overlay_effect",
+         "material": {
+            "name": "/stonehearth/data/horde/materials/overlay.material.json",
+            "samplers": [
+               {
+                  "name": "foregroundMap",
+                  "map": "/stonehearth_ace/data/horde/materials/candledark/pumpkin_ward/yellow.png"
+               },
+               {
+                  "name": "albedoMap",
+                  "map": "/stonehearth/data/horde/materials/thoughts/default_overlay.png"
+               }
+            ]
+         },
+         "y_offset": -10
+      }
+   }
+}

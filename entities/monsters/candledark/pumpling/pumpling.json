@@ -1,0 +1,38 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:monsters:forest:entling"
+   ],
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:candledark"
+      },
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(pumpling.qb)",
+                     "file(pumpling_2.qb)",
+                     "file(pumpling_3.qb)"
+                  ]
+               }
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.candledark.pumpling.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.candledark.pumpling.description)",
+         "icon": "file(pumpling.png)"
+      }
+   }
+}

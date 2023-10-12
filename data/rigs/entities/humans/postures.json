@@ -2,6 +2,18 @@
    "stonehearth:ghost" : {
       "run" : "run_ghost"
    },
+   "stonehearth:vampire" : {
+      "run" : "run_vampire"
+   },
+   "stonehearth:zombie" : {
+      "run" : "run_zombie",
+      "idle_look_around" : "zombie_idle_look_around",
+      "idle_sway" : "zombie_idle_sway",
+      "combat_1h_backhand" : "zombie_combat_1h_backhand",
+      "combat_1h_forehand" : "zombie_combat_1h_forehand",
+      "combat_1h_forehand_spin" : "zombie_combat_1h_forehand_spin",
+      "combat_2h_attack" : "zombie_combat_2h_attack"
+   },
 	"stonehearth:have_shield" : {
       "combat_1h_idle" : "combat_1h_shield_idle"
    },

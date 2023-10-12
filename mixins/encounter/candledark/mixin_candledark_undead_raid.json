@@ -2,6 +2,9 @@
    "encounter_type": "create_mission",
    "rarity": "common",
    "out_edge": "wait_to_destroy_invasion_party",
+   "encounter_music": {
+      "combat_music_sound_key": "candledark_invasion"
+   },
    "can_start": {
       "test_1": {
          "time_of_day_check": {
@@ -33,33 +36,123 @@
             "max": 50
          },
          "sighted_bulletin": {
-            "title": "i18n(stonehearth_ace:data.gm.campaigns.candledark.random_raid.mission.sighted_bulletin.title)"
+            "title": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.random_raid.mission.sighted_bulletin.title)"
          },
          "members": {
             "zombies": {
                "from_population": {
-                  "role": "zombie",
+                  "role": "candledark_zombie",
                   "location": { "x": 0, "z": 0 },
-                  "min": 1,
+                  "min": 2,
                   "max": 2,
                   "range": 10
                }
             },
             "skeletons": {
                "from_population": {
-                  "role": "skeleton",
-                  "location": { "x": 3, "z": 3 },
-                  "min": 1,
-                  "max": 1,
+                  "role": "candledark_skeleton",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 2,
+                  "max": 2,
                   "range": 10
                }
             },
             "ghosts": {
                "from_population": {
                   "role": "candledark_ghost",
-                  "location": { "x": 3, "z": 3 },
+                  "location": { "x": 0, "z": 0 },
+                  "min": 2,
+                  "max": 3,
+                  "range": 10
+               }
+            },
+            "mummies": {
+               "from_population": {
+                  "role": "candledark_mummy",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 2,
+                  "max": 3,
+                  "range": 10
+               }
+            },
+            "vampires": {
+               "from_population": {
+                  "role": "candledark_vampire",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 3,
+                  "max": 5,
+                  "range": 10
+               }
+            },
+            "vampire_thralls": {
+               "from_population": {
+                  "role": "candledark_vampire_thrall",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 3,
+                  "max": 6,
+                  "range": 10
+               }
+            },
+            "necromancers": {
+               "from_population": {
+                  "role": "candledark_necromancer",
+                  "location": { "x": 0, "z": 0 },
                   "min": 1,
-                  "max": 1,
+                  "max": 2,
+                  "range": 10
+               }
+            },
+            "wolf_skeletons": {
+               "from_population": {
+                  "role": "candledark_wolf_skeleton",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 1,
+                  "max": 2,
+                  "range": 10
+               }
+            },
+            "ogre_skeletons": {
+               "from_population": {
+                  "role": "candledark_ogre_skeleton",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 1,
+                  "max": 2,
+                  "range": 10
+               }
+            },
+            "zombie_goblins": {
+               "from_population": {
+                  "role": "candledark_zombie_goblin",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 2,
+                  "max": 3,
+                  "range": 10
+               }
+            },
+            "pumplings": {
+               "from_population": {
+                  "role": "candledark_pumpling",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 4,
+                  "max": 8,
+                  "range": 10
+               }
+            },
+            "bats": {
+               "from_population": {
+                  "role": "candledark_bat",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 6,
+                  "max": 9,
+                  "range": 10
+               }
+            },
+            "spiders": {
+               "from_population": {
+                  "role": "candledark_spider",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 2,
+                  "max": 3,
                   "range": 10
                }
             }

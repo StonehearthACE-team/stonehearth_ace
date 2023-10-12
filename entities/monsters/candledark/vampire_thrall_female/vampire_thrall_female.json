@@ -1,0 +1,62 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:monsters:undead:zombie"
+   ],
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/humans/skeletons/female.json",
+         "color_map": "stonehearth_ace:color_map:candledark",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(vampire_thrall_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:candledark:zombie": true
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 110
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 4
+         },
+         "menace": {
+            "type": "basic",
+            "value": 50
+         },
+         "courage": {
+            "type": "basic",
+            "value": 250
+         },
+         "speed": {
+            "type": "basic",
+            "value": 70
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark",
+         "display_name": "i18n(stonehearth_ace:entities.peoples.vampire_thrall.species)"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.candledark.vampire_thrall_female.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.candledark.vampire_thrall_female.description)"
+      }
+   }
+}

@@ -1,0 +1,116 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(pumpkin_ward_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(pumpkin_ward_iconic.json)",
+         "ghost_form": "file(pumpkin_ward_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": false
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 4, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:lamp": {
+         "light_policy": "always_on",
+         "restrict_policy_changing": true,
+         "light_effect": "stonehearth_ace:effects:candledark:pumpkin_ward_effect",
+         "light_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth_ace:transform": {},
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 16
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "green": {
+               "transform_uri": "stonehearth_ace:gizmos:candledark:pumpkin_ward:green",
+               "command": "stonehearth_ace:commands:candledark:pumpkin_ward:green",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:candledark:pumpkin_ward_green_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:food:garlic:garlic_basket",
+               "transforming_worker_effect": "light_fire",
+               "auto_request": true
+            },
+            "orange": {
+               "transform_uri": "stonehearth_ace:gizmos:candledark:pumpkin_ward:orange",
+               "command": "stonehearth_ace:commands:candledark:pumpkin_ward:orange",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:candledark:pumpkin_ward_orange_overlay_effect",
+               "transform_ingredient_uri": "stonehearth:food:pumpkin:pumpkin_basket",
+               "transforming_worker_effect": "light_fire",
+               "auto_request": true
+            },
+            "purple": {
+               "transform_uri": "stonehearth_ace:gizmos:candledark:pumpkin_ward:purple",
+               "command": "stonehearth_ace:commands:candledark:pumpkin_ward:purple",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:candledark:pumpkin_ward_purple_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:resources:bone:bone_skull",
+               "transforming_worker_effect": "light_fire",
+               "auto_request": true
+            },
+            "red": {
+               "transform_uri": "stonehearth_ace:gizmos:candledark:pumpkin_ward:red",
+               "command": "stonehearth_ace:commands:candledark:pumpkin_ward:red",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:candledark:pumpkin_ward_red_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:consumables:healing_tonic",
+               "transforming_worker_effect": "light_fire",
+               "auto_request": true
+            },
+            "white": {
+               "transform_uri": "stonehearth_ace:gizmos:candledark:pumpkin_ward:white",
+               "command": "stonehearth_ace:commands:candledark:pumpkin_ward:white",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:candledark:pumpkin_ward_white_overlay_effect",
+               "transform_ingredient_uri": "stonehearth:refined:gold_flakes",
+               "transforming_worker_effect": "light_fire",
+               "auto_request": true
+            },
+            "yellow": {
+               "transform_uri": "stonehearth_ace:gizmos:candledark:pumpkin_ward:yellow",
+               "command": "stonehearth_ace:commands:candledark:pumpkin_ward:yellow",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:candledark:pumpkin_ward_yellow_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:resources:bone:bone_big",
+               "transforming_worker_effect": "light_fire",
+               "auto_request": true
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 50,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 10
+      }
+   }
+}
