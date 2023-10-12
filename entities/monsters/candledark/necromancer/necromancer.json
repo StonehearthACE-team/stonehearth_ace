@@ -1,0 +1,58 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:monsters:undead:necromancer"
+   ],
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:candledark"
+      },
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(necromancer.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 150
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 3
+         },
+         "menace": {
+            "type": "basic",
+            "value": 70
+         },
+         "courage": {
+            "type": "basic",
+            "value": 200
+         },
+         "speed": {
+            "type": "basic",
+            "value": 70
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.candledark.necromancer.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.candledark.necromancer.description)",
+         "icon": "file(necromancer.png)"
+      }
+   }
+}

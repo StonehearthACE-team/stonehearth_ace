@@ -1,0 +1,27 @@
+{
+   "type": "effect",
+   "tracks": {
+      "cubemitter_flame": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "_end_time": 100,
+         "loop": true,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/pumpkin_ward/ward_bolt.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 180,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 20,
+         "max_instances": 2,
+         "falloff": 2.5,
+         "volume": 60,
+         "track": "stonehearth:sounds:cleric_heal_swirl"
+      }
+   }
+}

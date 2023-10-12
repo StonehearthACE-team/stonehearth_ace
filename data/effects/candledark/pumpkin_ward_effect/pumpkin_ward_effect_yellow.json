@@ -1,0 +1,81 @@
+{
+   "type": "effect",
+   "tracks": {
+      "base_embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/pumpkin_ward/yellow/ward_base.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "base_dense": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/pumpkin_ward/yellow/ward_base_dense.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.2, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/pumpkin_ward/yellow/ward_glow.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.4, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "cubemitter": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/pumpkin_ward/yellow/ward_main.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "embers": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/pumpkin_ward/yellow/ward_embers.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.1, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "crackle_sound": {
+         "type": "sound_effect",
+         "loop": true,
+         "start_time": 400,
+         "min_distance": 40,
+         "falloff": 2.5,
+         "volume": 50,
+         "track": "stonehearth:sounds:firepit_loop_sound"
+      },
+      "light": {
+         "type": "light",
+         "light": "/stonehearth_ace/data/horde/animatedlights/candledark/ward.animatedlight.json",
+         "transforms": { "x": 0, "y": 2, "z": 0 },
+         "shadows": false
+      },
+      "ward_fog": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/ward_fog.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

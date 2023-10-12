@@ -1,0 +1,29 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 28,
+         "base_ranged_damage": 28,
+         "range": 18,
+         "projectile_speed": 32,
+         "projectile_uri": "stonehearth_ace:weapons:candledark:ward_bolt",
+         "projectile_start_offset": { "x": 0, "y": 2.4, "z": 0 },
+         "projectile_end_offset": { "x": 0, "y": 2, "z": 0 }
+      },
+      "stonehearth:combat:ranged_attacks": [
+         {
+            "name": "fire_pumpkin_ward",
+            "effect": "pumpkin_ward_fire",
+            "active_frame": 31,
+            "cooldown": 16,
+            "priority": 0
+         }
+      ]
+   }
+}

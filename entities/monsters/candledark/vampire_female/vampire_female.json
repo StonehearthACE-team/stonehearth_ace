@@ -1,0 +1,88 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:monster"
+   ],
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/humans/skeletons/female.json",
+         "color_map": "stonehearth_ace:color_map:candledark",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(body.qb)",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(head_1.qb)",
+                     "file(head_2.qb)",
+                     "file(head_3.qb)",
+                     "file(head_4.qb)",
+                     "file(head_5.qb)",
+                     "file(head_6.qb)",
+                     "file(head_7.qb)",
+                     "file(head_8.qb)",
+                     "file(head_9.qb)",
+                     "file(head_10.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 450
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 20
+         },
+         "menace": {
+            "type": "basic",
+            "value": 200
+         },
+         "courage": {
+            "type": "basic",
+            "value": 400
+         },
+         "speed": {
+            "type": "basic",
+            "value": 80
+         }
+      },
+      "stonehearth:carry_block": {},
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:monsters:candledark:outfits:vampire",
+            "stonehearth_ace:weapons:candledark:vampire_rapier"
+         ]
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:candledark:vampire"
+         ]
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:candledark:vampire": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:entity_radius": 0.75,
+      "stonehearth:entity_reach": 1.0,
+      "stonehearth:species": {
+         "id": "candledark",
+         "display_name": "i18n(stonehearth_ace:entities.peoples.vampire.species)"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.candledark.vampire.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.candledark.vampire.description)"
+      }
+   }
+}

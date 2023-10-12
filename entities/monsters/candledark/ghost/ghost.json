@@ -18,27 +18,23 @@
       "stonehearth:attributes": {
          "max_health": {
             "type": "basic",
-            "value": 120
+            "value": 100
          },
          "muscle": {
             "type": "basic",
-            "value": 0
+            "value": 2
          },
          "menace": {
             "type": "basic",
-            "value": 1
+            "value": 40
          },
          "courage": {
             "type": "basic",
-            "value": 0
+            "value": 300
          },
          "speed": {
             "type": "basic",
-            "value": 45
-         },
-         "exp_reward": {
-            "type": "basic",
-            "value": 0
+            "value": 60
          }
       },
       "model_variants": {
@@ -56,6 +52,10 @@
       }
    },
    "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark",
+         "display_name": "i18n(stonehearth_ace:entities.peoples.ghost.species)"
+      },
       "stonehearth:entity_radius": 0.75,
       "stonehearth:entity_reach": 0.5,
       "stonehearth:combat:melee_attacks": [

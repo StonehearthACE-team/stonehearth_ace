@@ -1,0 +1,42 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(vampire_outfit.qb)",
+                     "file(vampire_outfit_2.qb)",
+                     "file(vampire_outfit_3.qb)",
+                     "file(vampire_outfit_4.qb)"
+                  ]
+               }
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(vampire_outfit_female.qb)",
+                     "file(vampire_outfit_female_2.qb)",
+                     "file(vampire_outfit_female_3.qb)",
+                     "file(vampire_outfit_female_4.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model"
+      }
+   },
+   "entity_data": {}
+}

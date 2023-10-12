@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.pumpkin_ward_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.pumpkin_ward_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.pumpkin_ward_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/candledark/pumpkin_ward/pumpkin_ward.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "manual_unlock": true,
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 1
+      },
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:decoration:megacrop:mega_pumpkin",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:resources:candledark:soulfire",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:candledark:pumpkin_ward"
+      }
+   ]
+}

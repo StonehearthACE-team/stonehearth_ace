@@ -1,0 +1,109 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:monster"
+   ],
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/critters/beetle",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ],
+         "scale": 0.24,
+         "color_map": "stonehearth_ace:color_map:candledark"
+      },
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(spider.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 210
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 8
+         },
+         "menace": {
+            "type": "basic",
+            "value": 90
+         },
+         "courage": {
+            "type": "basic",
+            "value": 210
+         },
+         "speed": {
+            "type": "basic",
+            "value": 80
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "spider_loot": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
+               },
+               "items": {
+                  "chitin": {
+                     "uri": "stonehearth_ace:resources:bitsy_spider_chitin",
+                     "weight": 1
+                  },
+                  "meat": {
+                     "uri": "stonehearth_ace:bitsy_spider_bug_meat",
+                     "weight": 1
+                  },
+                  "none": {
+                     "uri": "",
+                     "weight": 3
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark",
+         "display_name": "i18n(stonehearth_ace:entities.critters.bitsy_spider.species)"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.candledark.spider.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.candledark.spider.description)",
+         "icon": "file(spider.png)",
+         "category": "undead"
+      },
+      "stonehearth:entity_radius": 1,
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     0.8,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     0.6,
+                     0
+                  ],
+                  "fov": 45
+               }
+            }
+         }
+      }
+   }
+}

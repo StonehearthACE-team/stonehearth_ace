@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "pumpkin_ward_yellow",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.candledark.pumpkin_ward_yellow.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.candledark.pumpkin_ward_yellow.description)",
+   "default_enabled": true,
+   "ordinal": 95,
+   "icon": "file(pumpkin_ward_yellow.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "yellow"
+   ]
+}

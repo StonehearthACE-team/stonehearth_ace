@@ -1,0 +1,64 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:monsters:undead:skeleton"
+   ],
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:candledark"
+      },
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(skeleton.qb)",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(skeleton_head_1.qb)",
+                     "file(skeleton_head_1.qb)",
+                     "file(skeleton_head_1.qb)",
+                     "file(skeleton_head_2.qb)",
+                     "file(skeleton_head_2.qb)",
+                     "file(skeleton_head_3.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 140
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 6
+         },
+         "menace": {
+            "type": "basic",
+            "value": 60
+         },
+         "courage": {
+            "type": "basic",
+            "value": 160
+         },
+         "speed": {
+            "type": "basic",
+            "value": 65
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "candledark"
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.monsters.candledark.skeleton_male.display_name)",
+         "description": "i18n(stonehearth_ace:entities.monsters.candledark.skeleton_male.description)",
+         "icon": "file(skeleton_male.png)"
+      }
+   }
+}
