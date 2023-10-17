@@ -1,0 +1,28 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "category": "consumption_merry_time",
+   "unique_in_category": true,
+   "rank": 4,
+   "display_name": "Frostfeasting",
+   "description": "Feeling delighted with a really amazing feast! Willpower and Compassion are greatly increased.<ul><li>Experience gain is increased</li><li>This hearthling has a much higher chance of crafting things with increased quality</li></ul>",
+   "icon": "file(merry_time_candledark_buff.png)",
+   "duration": "8h",
+   "repeat_add_action": "renew_duration",
+   "thought": "stonehearth_ace:thoughts:eating:merry_time_candledark",
+   "modifiers": {
+      "xp_multiplier": {
+         "add": 0.1
+      },
+      "muscle": {
+         "add": 18
+      },
+      "courage": {
+         "add": 18
+      },
+      "stamina": {
+         "add": 10
+      }
+   },
+   "disallowed_buffs": []
+}

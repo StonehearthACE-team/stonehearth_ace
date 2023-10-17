@@ -112,16 +112,18 @@ function AceFirepitComponent:_startup()
    self._log:debug('creating alarms')
    local calendar_constants = stonehearth.calendar:get_constants()
    local event_times = calendar_constants.event_times
+   local custom_start_time = self._json.custom_times and self._json.custom_times.start or nil
+   local custom_stop_time = self._json.custom_times and self._json.custom_times.stop or nil
    local jitter = '+5m'
 
    if not self._sunrise_alarm then
-      local sunrise_alarm_time = stonehearth.calendar:format_time(self._json.custom_times and self._json.custom_times.start or event_times.sunrise) .. jitter
+      local sunrise_alarm_time = stonehearth.calendar:format_time(custom_stop_time or event_times.sunrise) .. jitter
       self._sunrise_alarm = stonehearth.calendar:set_alarm(sunrise_alarm_time, function()
             self:_start_or_stop_firepit()
          end)
    end
    if not self._sunset_alarm then
-      local sunset_alarm_time = stonehearth.calendar:format_time(self._json.custom_times and self._json.custom_times.stop or event_times.sunset_end) .. jitter
+      local sunset_alarm_time = stonehearth.calendar:format_time(custom_start_time or event_times.sunset_end) .. jitter
       self._sunset_alarm = stonehearth.calendar:set_alarm(sunset_alarm_time, function()
             self:_start_or_stop_firepit()
          end)
@@ -174,8 +176,8 @@ function AceFirepitComponent:_should_light_fire(now)
    local should_light_fire = not stonehearth.calendar:is_daytime()
 
    if self._json.custom_times then
-      if self._json.custom_times.stop and self._json.custom_times.stop >= now.hour then
-         should_light_fire = true
+      if self._json.custom_times.stop and self._json.custom_times.stop <= now.hour then
+         should_light_fire = false
       end
       if self._json.custom_times.start and self._json.custom_times.start <= now.hour then
          should_light_fire = true

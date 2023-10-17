@@ -1,0 +1,78 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:base_human_npc",
+   "components": {
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth/data/rigs/entities/humans/skeletons/female.json",
+         "color_map": "stonehearth_ace:color_map:candledark",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": -1.8, "z": 0 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(witch.qb)"
+            ]
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "social_satisfaction": {
+               "initial_value": {
+                  "type": "random_between",
+                  "min": 20,
+                  "max": 50
+               }
+            }
+         }
+      },
+      "stonehearth:attributes": {
+         "speed": {
+            "type": "basic",
+            "value": 70
+         },
+         "social_loss_amount": {
+            "type": "derived",
+            "equation": "0.75"
+         }
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:candledark:witch"
+         ]
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:candledark:witch": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.candledark.female.witch.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.candledark.female.witch.description)",
+         "icon": "file(witch.png)"
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:free_time"
+         ],
+         "actions": [
+            "stonehearth:actions:dispatcher:free_time",
+            "stonehearth:actions:dispatcher:human_unit_control",
+            "stonehearth:actions:depart_visible_area",
+            "stonehearth:actions:depart_visible_area_in_place",
+            "stonehearth:actions:find_point_beyond_visible"
+         ],
+         "task_groups": [
+            "stonehearth:task_groups:solo:unit_control",
+            "stonehearth:task_groups:solo:free_time"
+         ]
+      }
+   }
+}

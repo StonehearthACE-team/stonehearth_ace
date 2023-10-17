@@ -1,0 +1,110 @@
+{
+   "name": "fire",
+   "duration": 2000,
+   "material": "materials/cubemitter_add_bloom.material.json",
+   "loops": true,
+   "mesh": {
+      "file": "stonehearth/data/models/vfx/ring/ring.qb",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "CONSTANT",
+         "values": [7]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [0]
+      },
+      "origin": {
+         "surface": "POINT"
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [2000]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0]
+         }
+      },
+      "acceleration": {
+         "over_lifetime_y": {
+            "kind": "CONSTANT",
+            "values": [2.3]
+         }
+      },
+      "velocity": {
+         "over_lifetime_y": {
+            "kind": "CONSTANT",
+            "values": [0.35]
+         }
+      },
+      "rotation": {
+			"over_lifetime_y": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 0],
+                  [1, 90]
+               ],
+               [
+                  [0, 0],
+                  [1, -90]
+               ]
+            ]
+         }
+		},
+      "scale": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0.12]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0.2],
+					[0.3, 1.1],
+               [0.7, 0.8],
+					[1, 0.1]
+            ]
+         },
+         "over_lifetime_y": {
+            "kind": "CURVE",
+            "values": [
+               [0, 2],
+               [1, 0.5]
+            ]
+         }
+      },
+      "color": {
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0.9, 0, 0.926],
+               [0.4, 0.545, 0, 1],
+               [0.7, 0.132, 0.117, 0.829],
+               [1, 0.138, 0.04, 0.39]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0.1],
+               [0.9, 0.18],
+               [1, 0]
+            ]
+         }
+      }
+   }
+}

@@ -7,6 +7,18 @@
    },
    "can_start": {
       "test_1": {
+         "item_placed_requirement": {
+            "item": "exists_in_world",
+            "uri": "stonehearth_ace:decoration:candledark:gnarled_soulfire_tree",
+            "type": "deny_if_not",
+            "value": true
+         },
+         "bonfires_check": {
+            "item": "script",
+            "type": "deny_if",
+            "value": false,
+            "script": "stonehearth_ace:game_master:script:candledark:bonfires_check"
+         },
          "time_of_day_check": {
             "item": "time_of_day",
             "type": "deny_if_between",
@@ -28,6 +40,7 @@
          "bonfire_3.entities.bonfire.bonfire"
       ],
       "mission": {
+         "ctx_entity_registration_path": "candledark_invasion",
          "npc_player_id": "undead",
          "role": "pillage",
          "offset": { "x": 0, "y": 0, "z": 0 },
@@ -43,8 +56,8 @@
                "from_population": {
                   "role": "candledark_zombie",
                   "location": { "x": 0, "z": 0 },
-                  "min": 2,
-                  "max": 2,
+                  "min": 0,
+                  "max": 0,
                   "range": 10
                }
             },
@@ -52,8 +65,8 @@
                "from_population": {
                   "role": "candledark_skeleton",
                   "location": { "x": 0, "z": 0 },
-                  "min": 2,
-                  "max": 2,
+                  "min": 0,
+                  "max": 0,
                   "range": 10
                }
             },
@@ -61,8 +74,8 @@
                "from_population": {
                   "role": "candledark_ghost",
                   "location": { "x": 0, "z": 0 },
-                  "min": 2,
-                  "max": 3,
+                  "min": 0,
+                  "max": 0,
                   "range": 10
                }
             },
@@ -70,8 +83,8 @@
                "from_population": {
                   "role": "candledark_mummy",
                   "location": { "x": 0, "z": 0 },
-                  "min": 2,
-                  "max": 3,
+                  "min": 0,
+                  "max": 0,
                   "range": 10
                }
             },
@@ -79,8 +92,8 @@
                "from_population": {
                   "role": "candledark_vampire",
                   "location": { "x": 0, "z": 0 },
-                  "min": 3,
-                  "max": 5,
+                  "min": 0,
+                  "max": 0,
                   "range": 10
                }
             },
@@ -88,8 +101,8 @@
                "from_population": {
                   "role": "candledark_vampire_thrall",
                   "location": { "x": 0, "z": 0 },
-                  "min": 3,
-                  "max": 6,
+                  "min": 0,
+                  "max": 0,
                   "range": 10
                }
             },
@@ -97,8 +110,8 @@
                "from_population": {
                   "role": "candledark_necromancer",
                   "location": { "x": 0, "z": 0 },
-                  "min": 1,
-                  "max": 2,
+                  "min": 0,
+                  "max": 0,
                   "range": 10
                }
             },
@@ -106,8 +119,8 @@
                "from_population": {
                   "role": "candledark_wolf_skeleton",
                   "location": { "x": 0, "z": 0 },
-                  "min": 1,
-                  "max": 2,
+                  "min": 0,
+                  "max": 0,
                   "range": 10
                }
             },
@@ -115,8 +128,8 @@
                "from_population": {
                   "role": "candledark_ogre_skeleton",
                   "location": { "x": 0, "z": 0 },
-                  "min": 1,
-                  "max": 2,
+                  "min": 0,
+                  "max": 0,
                   "range": 10
                }
             },
@@ -124,8 +137,8 @@
                "from_population": {
                   "role": "candledark_zombie_goblin",
                   "location": { "x": 0, "z": 0 },
-                  "min": 2,
-                  "max": 3,
+                  "min": 0,
+                  "max": 0,
                   "range": 10
                }
             },
@@ -133,8 +146,8 @@
                "from_population": {
                   "role": "candledark_pumpling",
                   "location": { "x": 0, "z": 0 },
-                  "min": 4,
-                  "max": 8,
+                  "min": 0,
+                  "max": 0,
                   "range": 10
                }
             },
@@ -151,8 +164,17 @@
                "from_population": {
                   "role": "candledark_spider",
                   "location": { "x": 0, "z": 0 },
-                  "min": 2,
-                  "max": 3,
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               }
+            },
+            "witches": {
+               "from_population": {
+                  "role": "candledark_witch",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
                   "range": 10
                }
             }

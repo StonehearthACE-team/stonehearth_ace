@@ -1,0 +1,17 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.candledark.pumpkin_ward.white_aura_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.candledark.pumpkin_ward.white_aura_buff.description)",
+   "icon": "file(pumpkin_ward_white_buff.png)",
+   "script": "stonehearth:buff_scripts:aura",
+   "script_info": {
+      "pulse": "5m",
+      "aura_buff": "stonehearth_ace:buffs:candledark:pumpkin_ward:white_effect",
+      "radius": 16,
+      "pulse_immediately": true,
+      "target_self": false,
+      "target_enemies": true,
+      "target_type": "mob"
+   }
+}

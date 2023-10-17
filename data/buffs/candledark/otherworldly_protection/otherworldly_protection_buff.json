@@ -1,0 +1,23 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.candledark.otherworldly_protection_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.candledark.otherworldly_protection_buff.description)",
+   "icon": "file(otherworldly_protection_buff.png)",
+   "effect": "stonehearth_ace:effects:candledark:otherworldly_protection",
+   "restore_effect": true,
+   "duration": "4h",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "additive_armor_modifier": {
+         "add": 18
+      }
+   },
+   "properties": [
+      "cannot_panic"
+   ],
+   "disallowed_categories": [
+      "candledark_ward",
+      "candledark_ward_damage"
+   ]
+}

@@ -1,0 +1,62 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:critter",
+   "components": {
+      "render_info": {
+         "scale": 0.12,
+         "animation_table": "/stonehearth/data/rigs/entities/critters/rabbit/rabbit.json"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(frog_1.qb)",
+                     "file(frog_2.qb)"
+                  ]
+               }
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:species": {
+         "id": "frog",
+         "display_name": "i18n(stonehearth_ace:entities.critters.frog.species)"
+      },
+      "stonehearth:entity_radius": 0.3,
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     0.8,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     0.6,
+                     0
+                  ],
+                  "fov": 45
+               }
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "player_id": "animals",
+         "display_name": "i18n(stonehearth_ace:entities.critters.candledark.frog.display_name)",
+         "description": "i18n(stonehearth_ace:entities.critters.candledark.frog.description)",
+         "icon": "file(frog.png)"
+      }
+   }
+}
