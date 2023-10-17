@@ -6,6 +6,96 @@
             "start_time": 0,
             "animation": "combat_power.json",
             "loop": true
+      },
+      "burst": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/bat_power/power_cast_burst.cubemitter.json",
+         "loop": false,
+         "start_time": 740,
+         "end_time": 1200,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "burst_glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/bat_power/power_burst_glow.cubemitter.json",
+         "loop": false,
+         "start_time": 740,
+         "end_time": 1200,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "waves": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/bat_power/power_waves.cubemitter.json",
+         "loop": false,
+         "start_time": 740,
+         "end_time": 1200,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":2.5,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "waves2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/bat_power/power_waves.cubemitter.json",
+         "loop": false,
+         "start_time": 940,
+         "end_time": 1300,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":1,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "waves3": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/bat_power/power_waves.cubemitter.json",
+         "loop": false,
+         "start_time": 1140,
+         "end_time": 1400,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":-0.5,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
+      },
+      "waves4": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/bat_power/power_waves.cubemitter.json",
+         "loop": false,
+         "start_time": 1340,
+         "end_time": 1500,
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":-2,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         }
       }
    }
 }

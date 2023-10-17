@@ -1,0 +1,25 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.candledark.darkness.darkness_aura_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.candledark.darkness.darkness_aura_buff.description)",
+   "icon": "file(darkness_buff.png)",
+   "effect": "stonehearth_ace:effects:candledark:darkness_aura_effect",
+   "restore_effect": true,
+   "modifiers": {
+      "speed": {
+         "add": 60,
+         "max": 60
+      }
+   },
+   "script": "stonehearth:buff_scripts:aura",
+   "script_info": {
+      "pulse": "8m",
+      "aura_buff": "stonehearth_ace:buffs:candledark:darkness:effect",
+      "radius": 24,
+      "pulse_immediately": true,
+      "target_self": false,
+      "target_enemies": false,
+      "target_type": "mob"
+   }
+}

@@ -32,6 +32,19 @@
             "active_frame": 26,
             "cooldown": 10000,
             "priority": 2
+         },
+         {
+            "name": "com_bat_power",
+            "effect": "combat_power",
+            "active_frame": 40,
+            "cooldown": 50000,
+            "priority": 3,
+            "inflictable_debuffs": {
+               "sonic_boom": {
+                  "uri": "stonehearth_ace:buffs:candledark:bat_power",
+                  "chance": 1.0
+               }
+            }
          }
       ],
       "stonehearth:combat:melee_defenses": [

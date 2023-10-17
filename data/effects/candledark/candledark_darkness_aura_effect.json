@@ -1,0 +1,64 @@
+{
+   "type": "effect",
+   "tracks": {
+      "darkness_fog": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/darkness/darkness_fog.cubemitter.json",
+         "start_time": 0,
+         "loop": true,
+         "transforms": { "x": 0, "y": 0.5, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "upward_particles_little_burst": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/darkness/darkness_burst.cubemitter.json",
+         "start_time": 0,
+         "end_time": 500,
+         "transforms": { "x": 0, "y": 1.9, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "upward_particles_little_burst_hot": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/darkness/darkness_burst_hot.cubemitter.json",
+         "start_time": 0,
+         "end_time": 500,
+         "transforms": { "x": 0, "y": 1.7, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "upward_particles_little_fire": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/darkness/darkness_flame.cubemitter.json",
+         "start_time": 400,
+         "loop": true,
+         "transforms": { "x": 0, "y": 1.8, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "head"
+      },
+      "upward_particles_little_fire_bits_1": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/darkness/darkness_flame_bits.cubemitter.json",
+         "start_time": 400,
+         "loop": true,
+         "transforms": { "x": 0.0, "y": 2, "z": 0,
+            "rx": 90,
+            "ry": 90,
+            "rz": 0
+         },
+         "bone": "head"
+      }
+   }
+}

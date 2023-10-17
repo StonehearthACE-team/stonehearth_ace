@@ -1,0 +1,17 @@
+{
+   "mixins": "stonehearth_ace:mixins:buffs:candledark_only_buff",
+   "type": "buff",
+   "axis": "debuff",
+   "category": "candledark_ward_cleanse",
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.candledark.pumpkin_ward.white_effect_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.candledark.pumpkin_ward.white_effect_buff.description)",
+   "icon": "file(pumpkin_ward_white_debuff.png)",
+   "effect": "stonehearth_ace:effects:candledark:pumpkin_ward_effect:white:inflicted",
+   "restore_effect": true,
+   "duration": "1h",
+   "repeat_add_action": "renew_duration",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:candledark:otherworldly_protection"
+   ]
+}

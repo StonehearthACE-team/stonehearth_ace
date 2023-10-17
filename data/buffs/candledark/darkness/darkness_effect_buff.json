@@ -1,0 +1,25 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.candledark.darkness.darkness_effect_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.candledark.darkness.darkness_effect_buff.description)",
+   "icon": "file(darkness_buff.png)",
+   "effect": "stonehearth_ace:effects:candledark:darkness_effect",
+   "restore_effect": true,
+   "duration": "10m",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "speed": {
+         "add": 60,
+         "max": 60
+      }
+   },
+   "properties": [
+      "invulnerable",
+      "cannot_panic"
+   ],
+   "disallowed_categories": [
+      "candledark_ward",
+      "candledark_ward_damage"
+   ]
+}

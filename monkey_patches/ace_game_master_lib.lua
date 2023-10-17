@@ -96,4 +96,36 @@ function ace_game_master_lib.create_quest_storage(player_id, uri, item_requireme
    return quest_storage
 end
 
+function ace_game_master_lib.get_scaled_attribute(value, ctx, default)
+   assert(type(value) == 'table')
+   --if no base value override specified, use the entity's original attribute value
+   local new_value = value.base or default
+
+   --ACE: increase value based on military_strength
+   if value.military_strength_effect then
+      local increase_by = value.military_strength_effect.increase_by
+      local per = value.military_strength_effect.per
+      assert(increase_by)
+      assert(per)
+      local military_strength = stonehearth.player:get_military_strength(ctx.player_id) or 0
+      new_value = new_value + increase_by * math.floor(military_strength / per)
+   end
+
+   --increase value based on net_worth
+   if value.net_worth_effect then
+      local increase_by = value.net_worth_effect.increase_by
+      local per = value.net_worth_effect.per
+      assert(increase_by)
+      assert(per)
+      local net_worth = stonehearth.player:get_net_worth(ctx.player_id) or 0
+      new_value = new_value + increase_by * math.floor(net_worth / per)
+   end
+
+   if value.max then --if max is specified, cap value at max
+      new_value = math.min(new_value, value.max)
+   end
+
+   return new_value
+end
+
 return ace_game_master_lib

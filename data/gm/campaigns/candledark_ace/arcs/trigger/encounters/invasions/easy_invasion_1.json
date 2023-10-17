@@ -3,30 +3,27 @@
    "mixins": "stonehearth_ace:mixins:encounter:candledark:undead_raid",
    "encounter_type": "create_mission",
    "in_edge": "easy_invasion_1",
+   "out_edge": "wait_to_destroy_invasion_party",
    "create_mission_info": {
       "mission": {
-         "ctx_entity_registration_path": "easy_invasion_1",
          "members": {
             "zombies": {
                "from_population": {
-                  "min": 1,
-                  "max": 2
-               },
-               "tuning": ""
+                  "min": 0,
+                  "max": 0
+               }
             },
             "skeletons": {
                "from_population": {
-                  "min": 1,
-                  "max": 1
-               },
-               "tuning": ""
+                  "min": 0,
+                  "max": 0
+               }
             },
             "ghosts": {
                "from_population": {
-                  "min": 1,
-                  "max": 1
-               },
-               "tuning": ""
+                  "min": 0,
+                  "max": 0
+               }
             }
          }
       }

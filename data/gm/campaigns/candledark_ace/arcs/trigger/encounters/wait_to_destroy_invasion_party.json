@@ -1,9 +1,29 @@
 {
    "type": "encounter",
-   "encounter_type": "wait",
+   "encounter_type": "wait_for_event",
    "in_edge": "wait_to_destroy_invasion_party",
-   "out_edge": "destroy_invasion_party",
-   "wait_info": {
-      "duration": "36h"
+   "out_edge": {
+      "type": "destroy_tree",
+      "root": "invasion_generator",
+      "destroy_root": false
+   },
+   "wait_for_event_info": {
+      "source": [
+         "candledark_invasion.zombies",
+         "candledark_invasion.skeletons",
+         "candledark_invasion.ghosts",
+         "candledark_invasion.mummies",
+         "candledark_invasion.vampires",
+         "candledark_invasion.vampire_thralls",
+         "candledark_invasion.necromancers",
+         "candledark_invasion.wolf_skeletons",
+         "candledark_invasion.ogre_skeletons",
+         "candledark_invasion.zombie_goblins",
+         "candledark_invasion.pumplings",
+         "candledark_invasion.bats",
+         "candledark_invasion.spiders",
+         "candledark_invasion.witches"
+      ],
+      "event": "stonehearth:kill_event"
    }
 }

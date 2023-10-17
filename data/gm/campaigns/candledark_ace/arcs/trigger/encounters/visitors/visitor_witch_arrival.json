@@ -1,0 +1,52 @@
+{
+   "type": "encounter",
+   "encounter_type": "dialog_tree",
+   "rarity": "common",
+   "in_edge": "visitor_witch_arrival",
+   "can_start": {
+      "test_1": {
+         "item_placed_requirement": {
+            "item": "exists_in_world",
+            "uri": "stonehearth_ace:decoration:candledark:gnarled_soulfire_tree",
+            "type": "deny_if_not",
+            "value": true
+         },
+         "bonfires_check": {
+            "item": "script",
+            "type": "deny_if",
+            "value": false,
+            "script": "stonehearth_ace:game_master:script:candledark:bonfires_check"
+         },
+         "time_of_day_check": {
+            "item": "time_of_day",
+            "type": "deny_if_between",
+            "value": {
+               "min": 7,
+               "max": 19
+            }
+         }
+      }
+   },
+   "dialog_tree_info": {
+      "start_node": "msg1",
+      "nodes": {
+         "msg1": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.visitors.visitor_witch_arrival.dialog_tree_info.dialog_nodes.msg1.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.visitors.visitor_witch_arrival.dialog_tree_info.dialog_nodes.msg1.dialog_title)",
+               "portrait": "file(../images/witch.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.visitors.visitor_witch_arrival.dialog_tree_info.dialog_nodes.msg1.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.visitors.treat)": {
+                     "out_edge": "visitor_witch_treat"
+                  },
+                  "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.visitors.trick)": {
+                     "out_edge": "visitor_witch_trick"
+                  }
+               }
+            }
+         }
+      }
+   }
+}

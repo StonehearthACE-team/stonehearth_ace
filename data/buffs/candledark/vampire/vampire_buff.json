@@ -5,7 +5,26 @@
    "set_posture": "stonehearth:vampire",
    "modifiers": {
       "speed": {
-         "add": 20
+         "add": 25
+      },
+      "menace": {
+         "add": 250
+      },
+      "courage": {
+         "add": 150
+      },
+      "muscle": {
+         "add": 15
+      },
+      "multiplicative_dmg_modifier": {
+         "add": 0.2
+      },
+      "multiplicative_armor_modifier": {
+         "add": 0.2
       }
-   }
+   },
+   "disallowed_categories": [
+      "debuff_shaken",
+      "debuff_flanked"
+   ]
 }

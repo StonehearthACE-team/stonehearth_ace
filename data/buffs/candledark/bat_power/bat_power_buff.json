@@ -1,0 +1,14 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.candledark.bat_power.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.candledark.bat_power.description)",
+   "icon": "file(bat_power_buff.png)",
+   "duration": "15m+10m",
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "courage": {
+         "max": 1
+      }
+   }
+}

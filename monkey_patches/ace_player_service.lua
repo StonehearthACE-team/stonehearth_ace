@@ -94,4 +94,18 @@ function AcePlayerService:remove_player(player_id)
    self:_ace_old_remove_player(player_id)
 end
 
+function AcePlayerService:get_military_strength(player_id)
+   local score_data = stonehearth.score:get_scores_for_player(player_id):get_score_data()
+   if not score_data then
+      log:info('score data not found for %s in get_military_strength. returning 0', player_id)
+      return 0
+   end
+   if not score_data.total_scores:contains('military_strength') then
+      log:info('military strength score not found in get_military_strength(%s). returning 0', player_id)
+      return 0
+   end
+
+   return score_data.total_scores:get('military_strength')
+end
+
 return AcePlayerService

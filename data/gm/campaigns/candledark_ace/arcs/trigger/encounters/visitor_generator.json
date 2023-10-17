@@ -6,7 +6,9 @@
       "delay": "3h+2h",
       "spawn_edge": {
          "type": "trigger_one",
-         "out_edges": []
+         "out_edges": [
+            "visitor_witch_arrival"
+         ]
       }
    }
 }
