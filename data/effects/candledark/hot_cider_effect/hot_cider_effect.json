@@ -1,0 +1,45 @@
+{
+   "type": "effect",
+   "tracks": {
+      "smoke1": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/coffee_smoke.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.35, "y": 0.55, "z": -0.25,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "smoke2": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/coffee_smoke.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": -0.25, "y": 0.55, "z": 0.35,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "smoke3": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/coffee_smoke.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.25, "y": 0.55, "z": -0.35,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "smoke4": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/coffee_smoke.cubemitter.json",
+         "loop": true,
+         "transforms": { "x": 0.35, "y": 0.55, "z": 0.25,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

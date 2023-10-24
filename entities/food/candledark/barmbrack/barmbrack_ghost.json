@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(barmbrack.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.candledark.barmbrack.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.candledark.barmbrack.description)",
+         "icon": "file(barmbrack.png)",
+         "category": "food_prepared",
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "baked",
+            "barmbrack",
+            "stockpile_prepared_food",
+            "fruit",
+            "vegetarian",
+            "breakfast_time",
+            "festival",
+            "candledark"
+         ]
+      }
+   }
+}

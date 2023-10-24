@@ -1,0 +1,57 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(apple_salad_serving.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 65
+         },
+         "default": {
+            "satisfaction": 45
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time:candledark",
+            "stonehearth_ace:buffs:consumption:refreshed_belly",
+            "stonehearth_ace:buffs:consumption:fruity_flavors"
+         ],
+         "quality": 5
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.candledark.apple_salad.serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.candledark.apple_salad.serving.description)",
+         "material_tags": [
+            "food",
+            "apple_salad_serving",
+            "nuts",
+            "apple_salad",
+            "prepared_food",
+            "vegetarian",
+            "leafy",
+            "dairy",
+            "fruit",
+            "refreshing",
+            "lunch_time"
+         ],
+         "subject_override": "stonehearth_ace:food:candledark:apple_salad"
+      }
+   }
+}

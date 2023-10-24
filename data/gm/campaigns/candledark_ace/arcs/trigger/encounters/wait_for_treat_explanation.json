@@ -1,0 +1,27 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait",
+   "in_edge": "wait_for_treat_explanation",
+   "out_edge": "treat_explanation",
+   "can_start": {
+      "test_1": {
+         "recipe_check": {
+            "item": "script",
+            "type": "deny_if",
+            "value": true,
+            "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
+         }
+      }
+   },
+   "wait_info": {
+      "duration": "1h+30m",
+      "jobs": {
+         "stonehearth:jobs:cook": {
+            "type": "all",
+            "recipes": [
+               "candledark:candledark_caramel_candy"
+            ]
+         }
+      }
+   }
+}

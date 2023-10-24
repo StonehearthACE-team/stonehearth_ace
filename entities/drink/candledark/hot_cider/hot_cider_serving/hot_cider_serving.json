@@ -1,0 +1,59 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(hot_cider_serving.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:drink:tea:serving"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 85
+         },
+         "default": {
+            "satisfaction": 65
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:serenity",
+            "stonehearth_ace:buffs:consumption:warm_belly",
+            "stonehearth_ace:buffs:consumption:regeneration:minor",
+            "stonehearth_ace:buffs:consumption:mellow"
+         ],
+         "quality": 6,
+         "effect_loops": 4
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.candledark.hot_cider.serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.candledark.hot_cider.serving.description)",
+         "material_tags": [
+            "drink",
+            "alcoholic",
+            "hot_cider_serving",
+            "hot_cider",
+            "night_time",
+            "warming"
+         ],
+         "subject_override": "stonehearth_ace:drink:candledark:hot_cider"
+      }
+   }
+}

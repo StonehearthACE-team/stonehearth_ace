@@ -13,7 +13,7 @@
          "start_time": 0,
          "min_distance": 20,
          "falloff" : 7,
-         "volume": 50,
+         "volume": 40,
          "track" : {
             "type": "one_of",
             "items": [
@@ -22,6 +22,12 @@
                "stonehearth:sounds:zombie_growl_03"
             ]    
          }
-      }
+      },   
+      "hide_carrying" : {
+          "type": "hide_bone",
+          "start_time": 0,
+          "end_time": 0,
+          "bone": "carry"
+       }  
    }
 }

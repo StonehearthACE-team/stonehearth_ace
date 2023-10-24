@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(candy_apple.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.06,
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.candledark.candy_apple.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.candledark.candy_apple.description)",
+         "icon": "file(candy_apple.png)",
+         "category": "food_prepared",
+         "material_tags": [
+            "food_container",
+            "prepared_food",
+            "candy_apple",
+            "stockpile_prepared_food",
+            "prepared_dessert",
+            "fruit",
+            "nuts",
+            "dinner_time",
+            "vegetarian",
+            "festival",
+            "candledark",
+            "candledark_treat"
+         ]
+      }
+   }
+}

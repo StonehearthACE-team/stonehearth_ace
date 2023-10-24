@@ -1,0 +1,36 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.candledark.hot_cider_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.candledark.hot_cider_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.candledark.hot_cider_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/candledark/hot_cider/hot_cider.png",
+   "level_requirement": 4,
+	"manual_unlock": true,
+   "workshop": "stonehearth_ace:brewer:kettle",
+	"work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:wine_apple",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:apples:apple_basket",
+         "count": 1
+      },
+		{
+         "material": "sweetener cooking_ingredient",
+         "count": 1
+      },
+      {
+         "material": "herb peculiar resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:candledark:hot_cider"
+      }
+   ]
+}

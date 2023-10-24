@@ -1,0 +1,11 @@
+{
+   "type": "encounter",
+   "encounter_type": "set_counters",
+   "in_edge": "invasion_fulfill_counter",
+   "out_edge": "wait_for_quest_completion",
+   "set_counters_info": {
+      "counters": {
+         "invasions_defeated": 20
+      }
+   }
+}

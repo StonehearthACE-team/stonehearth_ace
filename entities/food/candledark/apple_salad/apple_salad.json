@@ -1,0 +1,57 @@
+{
+   "type": "entity",
+   "mixins": "file(apple_salad_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(apple_salad_iconic.json)",
+         "ghost_form": "file(apple_salad_ghost.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": -1, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:traveler_attraction": {},
+      "stonehearth_ace:auto_replace": {
+         "on_kill": false,
+         "on_destroy": true
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 10
+      }
+   },
+   "entity_data": {
+      "stonehearth:food_container": {
+         "effect": "fiddle",
+         "food": "stonehearth_ace:food:candledark:apple_salad:apple_salad_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 29,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 21
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

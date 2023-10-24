@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.apple_salad_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.apple_salad_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.apple_salad_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/candledark/apple_salad/apple_salad.png",
+   "workshop": "stonehearth_ace:cook:table",
+	"manual_unlock": true,
+   "level_requirement": 3,
+   "ingredients": [
+	   {
+         "material": "food_container raw_food vegetable leafy",
+         "count": 2
+      },
+	   {
+         "uri": "stonehearth_ace:food:apples:apple_basket",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:food:dairy:cheese_fresh",
+         "count": 1
+      },
+      {
+         "material": "nut_basket cooking_ingredient",
+         "count": 1
+      },
+      {
+         "material": "raw_food berry",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:candledark:apple_salad"
+      }
+   ]
+}

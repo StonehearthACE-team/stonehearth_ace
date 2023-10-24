@@ -1,0 +1,55 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(pumpkin_bread_serving.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 90
+         },
+         "default": {
+            "satisfaction": 75
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time:candledark",
+            "stonehearth_ace:buffs:consumption:warm_belly",
+            "stonehearth_ace:buffs:consumption:baked_goodness"
+         ],
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.candledark.pumpkin_bread.serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.candledark.pumpkin_bread.serving.description)",
+         "material_tags": [
+            "food",
+            "pumpkin_bread_serving",
+            "pumpkin_bread",
+            "prepared_food",
+            "vegetarian",
+            "nuts",
+            "baked",
+            "warming",
+            "breakfast_time"
+         ],
+         "subject_override": "stonehearth_ace:food:candledark:pumpkin_bread"
+      }
+   }
+}

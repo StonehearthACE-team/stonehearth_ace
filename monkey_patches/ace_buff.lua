@@ -34,6 +34,15 @@ function AceBuff:destroy()
       radiant.entities.remove_thought(self._sv._entity, self._json.thought)
    end
 
+   if self._sv.added_bulletin then
+      self._sv.added_bulletin:destroy()
+      self._sv.added_bulletin = nil
+   end
+   if self._sv.removed_bulletin then
+      self._sv.removed_bulletin:destroy()
+      self._sv.removed_bulletin = nil
+   end
+
    self:_cancel_craft_order()
    
    self:_ace_old_destroy()
@@ -76,10 +85,31 @@ function AceBuff:_create_buff()
       end
    end
 
+   if self._json.bulletin then
+      self:_create_bulletin(self._json.bulletin)
+   end
+
    if self._json.duration_statistics_key and self._sv._entity:get_component('stonehearth_ace:statistics') then
       self:_create_duration_timer()
       self:_update_duration_stat()
    end
+end
+
+function AceBuff:_create_bulletin(bulletin_info)
+   local bulletin_data = {
+      title = bulletin_info.title,
+      notification_closed_callback = '_on_closed',
+      zoom_to_entity = self._sv._entity
+   }
+   
+   local player_id = self._sv._entity:get_player_id()
+   self._sv.added_bulletin = stonehearth.bulletin_board:post_bulletin(player_id)
+         :set_callback_instance(self)
+         :set_type(bulletin_info.type or "alert")
+         :set_sticky(true)
+         :set_data(bulletin_data)
+         :add_i18n_data('entity_custom_name', radiant.entities.get_custom_name(self._sv._entity))
+         :add_i18n_data('entity_display_name', radiant.entities.get_display_name(self._sv._entity))
 end
 
 function AceBuff:_set_craft_order(order)

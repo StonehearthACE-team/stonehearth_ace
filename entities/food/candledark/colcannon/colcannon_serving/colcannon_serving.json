@@ -1,0 +1,54 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(colcannon_serving.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 80
+         },
+         "default": {
+            "satisfaction": 65
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time:candledark",
+            "stonehearth_ace:buffs:consumption:regeneration:major",
+            "stonehearth_ace:buffs:consumption:warm_belly"
+         ],
+         "quality": 5
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.candledark.colcannon.serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.candledark.colcannon.serving.description)",
+         "material_tags": [
+            "food",
+            "colcannon_serving",
+            "colcannon",
+            "prepared_food",
+            "dairy",
+            "vegetarian",
+            "warming",
+            "dinner_time"
+         ],
+         "subject_override": "stonehearth_ace:food:candledark:colcannon"
+      }
+   }
+}

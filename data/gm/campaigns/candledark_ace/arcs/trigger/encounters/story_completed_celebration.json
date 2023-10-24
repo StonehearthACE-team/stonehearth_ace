@@ -1,0 +1,76 @@
+{
+   "type": "encounter",
+   "encounter_type": "town_upgrade",
+   "in_edge": "story_completed_celebration",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "epilogue_dialog"
+      ]
+   },
+   "town_upgrade_info": {
+      "old_facility_uri": "stonehearth_ace:decoration:candledark:gnarled_soulfire_tree",
+      "new_facility_uri": "stonehearth_ace:decoration:candledark:gnarled_soulfire_tree:monument",
+      "facility_upgrade_effect": "stonehearth_ace:effects:candledark:level_up:monument",
+      "custom_music": "candledark_celebration",
+      "conversation_subjects": [
+         "stonehearth_ace:subjects:weather:sunny:autumn",
+         "stonehearth_ace:decoration:megacrop:mega_pumpkin"
+      ],
+      "thought": "stonehearth:thoughts:candledark:celebration",
+      "celebration_duration": "3h+30m",
+      "has_fireworks": false,
+      "npcs": [
+         {
+            "faction": "human_npcs",
+            "role": "party_goblin",
+            "gender": "male"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "candledark_elbezar",
+            "gender": "male"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "candledark_ghost",
+            "gender": "female"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "candledark_ghost",
+            "gender": "female"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "candledark_ghost",
+            "gender": "female"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "candledark_ghost_small",
+            "gender": "female"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "candledark_ghost_small",
+            "gender": "female"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "candledark_ghost_small",
+            "gender": "female"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "candledark_witch",
+            "gender": "female"
+         },
+         {
+            "faction": "human_npcs",
+            "role": "candledark_spirit",
+            "gender": "female"
+         }
+      ]
+   }
+}

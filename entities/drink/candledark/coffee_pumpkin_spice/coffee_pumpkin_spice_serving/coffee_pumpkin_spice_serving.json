@@ -1,0 +1,59 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(coffee_pumpkin_spice_serving.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:drink:coffee:serving"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 75
+         },
+         "default": {
+            "satisfaction": 55
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:coffee_energy:major",
+            "stonehearth_ace:buffs:consumption:satisfied_belly",
+            "stonehearth_ace:buffs:consumption:warm_belly"
+         ],
+         "quality": 6,
+         "effect_loops": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.candledark.coffee_pumpkin_spice.serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.candledark.coffee_pumpkin_spice.serving.description)",
+         "material_tags": [
+            "drink",
+            "coffee_pumpkin_spice_serving",
+            "coffee",
+            "pumpkin_spice",
+            "morning_time",
+            "night_time",
+            "warming"
+         ],
+         "subject_override": "stonehearth_ace:drink:candledark:coffee_pumpkin_spice"
+      }
+   }
+}

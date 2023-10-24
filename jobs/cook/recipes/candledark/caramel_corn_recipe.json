@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.caramel_corn_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.caramel_corn_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.caramel_corn_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/candledark/caramel_corn/caramel_corn.png",
+   "workshop": "stonehearth:cook:workbench",
+	"manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:corn:corn_basket",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 2
+      },
+		{
+			"material": "nut_basket cooking_ingredient",
+			"count": 1
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:candledark:caramel_corn"
+      }
+   ]
+}
