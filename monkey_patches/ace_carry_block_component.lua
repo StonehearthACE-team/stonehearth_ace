@@ -24,9 +24,9 @@ function AceCarryBlock:set_carrying(new_item, opt_relative_orientation)
 
    if self._sv._carried_item then
       self:_destroy_carried_item_trace()
-   elseif json.posture_only then
+   elseif json and json.posture_only then
       radiant.entities.set_posture(self._entity, 'stonehearth:carrying')
-   elseif json.custom_buff then
+   elseif json and json.custom_buff then
       radiant.entities.add_buff(self._entity, json.custom_buff)
       self._sv.custom_buff = json.custom_buff
       self.__saved_variables:mark_changed()
