@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.caramel_candy_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.caramel_candy_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.caramel_candy_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/candledark/caramel_candy/caramel_candy.png",
+   "workshop": "stonehearth:cook:workbench",
+	"manual_unlock": true,
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "sweetener cooking_ingredient",
+         "count": 2
+      },
+      {
+         "material": "drink_container milk",
+         "count": 1
+      },
+      {
+         "material": "herb zesty resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:candledark:caramel_candy"
+      }
+   ]
+}

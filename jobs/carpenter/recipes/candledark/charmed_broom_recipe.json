@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.charmed_broom_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.charmed_broom_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.charmed_broom_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/pets/candledark/charmed_broom/charmed_broom.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "material": "thatch resource",
+         "count": 2
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:resources:candledark:soulfire",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:pets:candledark:charmed_broom"
+      }
+   ]
+}

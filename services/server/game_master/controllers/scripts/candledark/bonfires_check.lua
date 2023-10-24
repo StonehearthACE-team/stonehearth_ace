@@ -13,7 +13,7 @@ function BonfiresCheck:start(ctx, info)
    for _, entity in ipairs(bonfire_entities) do
       local bonfire = ctx:get(entity)
       local firepit_component = bonfire:get_component('stonehearth:firepit')
-      if not radiant.util.is_a(bonfire, Entity) and bonfire:is_valid() and firepit_component and firepit_component:is_lit() then
+      if not radiant.util.is_a(bonfire, Entity) or not bonfire:is_valid() or firepit_component and not firepit_component:is_lit() then
          return false
       end
    end

@@ -1,0 +1,16 @@
+{
+   "type": "encounter",
+   "encounter_type": "wait_for_requirements_met",
+   "in_edge": "wait_for_medium_raids_intro",
+   "out_edge": "elbezar_medium_raids_intro",
+   "wait_for_requirements_met_info": {
+      "requirements": {
+         "invasion_total": {
+            "type": "deny_if_less_than",
+            "item": "counter",
+            "key": "invasions_defeated",
+            "value": 6
+         }
+      }
+   }
+}

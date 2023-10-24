@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.autumn_stew_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.autumn_stew_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.autumn_stew_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/candledark/autumn_stew/autumn_stew.png",
+   "workshop": "stonehearth_ace:cook:workbench_advanced",
+	"manual_unlock": true,
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:broth",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:food:pumpkin:pumpkin_basket",
+         "count": 1
+      },
+      {
+         "material": "food_container raw_food vegetable savory",
+         "count": 1
+      }, 
+	   {
+         "material": "raw_food fungi",
+         "count": 2
+      }, 
+	   {
+         "material": "seasoning",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:candledark:autumn_stew"
+      }
+   ]
+}

@@ -1,0 +1,52 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(caramel_corn_serving.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 55
+         },
+         "default": {
+            "satisfaction": 40
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time:candledark",
+            "stonehearth_ace:buffs:consumption:sweet_energy"
+         ],
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.candledark.caramel_corn.serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.candledark.caramel_corn.serving.description)",
+         "material_tags": [
+            "food",
+            "caramel_corn_serving",
+            "caramel_corn",
+            "prepared_dessert",
+            "nuts",
+            "vegetarian",
+            "dinner_time"
+         ],
+         "subject_override": "stonehearth_ace:food:candledark:caramel_corn"
+      }
+   }
+}

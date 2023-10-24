@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.candy_apple_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.candy_apple_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.candledark.candy_apple_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/candledark/candy_apple/candy_apple.png",
+   "workshop": "stonehearth:cook:workbench",
+	"manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+	   {
+         "uri": "stonehearth_ace:food:apples:apple_basket",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+      {
+         "material": "honey cooking_ingredient",
+         "count": 1
+      },
+      {
+         "material": "herb red resource",
+         "count": 1
+      },
+		{
+			"material": "nut_basket cooking_ingredient",
+			"count": 1
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:candledark:candy_apple"
+      }
+   ]
+}

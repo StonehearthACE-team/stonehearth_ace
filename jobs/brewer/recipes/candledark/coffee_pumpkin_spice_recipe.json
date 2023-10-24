@@ -1,0 +1,40 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.candledark.coffee_pumpkin_spice_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.candledark.coffee_pumpkin_spice_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.candledark.coffee_pumpkin_spice_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/candledark/coffee_pumpkin_spice/coffee_pumpkin_spice.png",
+   "level_requirement": 5,
+	"manual_unlock": true,
+   "workshop": "stonehearth_ace:brewer:kettle",
+	"work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:coffee:ground",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:food:pumpkin:pumpkin_basket",
+         "count": 1
+      },
+      {
+			"uri": "stonehearth_ace:food:dairy:cream",
+			"count": 1
+		},
+		{
+			"material": "nut_basket cooking_ingredient",
+			"count": 1
+		},
+	   {
+         "material": "herb pungent resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:candledark:coffee_pumpkin_spice"
+      }
+   ]
+}

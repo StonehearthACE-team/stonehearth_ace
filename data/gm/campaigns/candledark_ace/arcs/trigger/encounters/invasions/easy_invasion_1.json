@@ -4,6 +4,16 @@
    "encounter_type": "create_mission",
    "in_edge": "easy_invasion_1",
    "out_edge": "wait_to_destroy_invasion_party",
+   "can_start": {
+      "test_1": {
+         "invasion_total_2": {
+            "type": "deny_if_greater_than",
+            "item": "counter",
+            "key": "invasions_defeated",
+            "value": 6
+         }
+      }
+   },
    "create_mission_info": {
       "mission": {
          "members": {

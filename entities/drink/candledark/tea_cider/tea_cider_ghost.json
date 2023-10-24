@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tea_cider.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.candledark.tea_cider.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.candledark.tea_cider.description)",
+         "icon": "file(tea_cider.png)",
+         "category": "drink_prepared",
+         "material_tags": [
+            "drink_container",
+            "prepared_drink",
+            "tea",
+            "black",
+            "stockpile_serving_vessel",
+            "afternoon_time",
+            "warming",
+            "serving_vessel",
+            "festival",
+            "candledark"
+         ]
+      }
+   }
+}
