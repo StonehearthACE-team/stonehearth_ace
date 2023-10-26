@@ -10,7 +10,7 @@ local CUSTOMIZATION = {
 }
 
 function AceCustomizationComponent:activate()
-   self._sv.customization_cache = {}
+   self._sv._customization_cache = {}
 end
 
 function AceCustomizationComponent:change_customization(subcategory, style, cache_existing)
@@ -20,12 +20,12 @@ function AceCustomizationComponent:change_customization(subcategory, style, cach
 
    -- remove existing style under this subcategory if one exists and save it for later use if desired (ACE)
    if existing then
-      if cache_existing and not self._sv.customization_cache[existing.subcategory] then
-         self._sv.customization_cache[existing.subcategory] = {}
-         self._sv.customization_cache[existing.subcategory].style = existing.style
-         self._sv.customization_cache[existing.subcategory].file_path = existing.file_path
-         self._sv.customization_cache[existing.subcategory].variant_type = existing.variant_type
-         self.__saved_variables:mark_changed()
+      if cache_existing and not self._sv._customization_cache[existing.subcategory] then
+         self._sv._customization_cache[existing.subcategory] = {
+            style = existing.style,
+            file_path = existing.file_path,
+            variant_type = existing.variant_type
+         }
       end
       self:_remove_style(existing.subcategory, existing.style, existing.file_path, existing.variant_type)
    end
@@ -36,7 +36,7 @@ end
 
 function AceCustomizationComponent:restore_cached_customization(subcategory)
    assert(subcategory)
-   if not self._sv.customization_cache or not self._sv.customization_cache[subcategory] then
+   if not self._sv._customization_cache or not self._sv._customization_cache[subcategory] then
       return
    end
 
@@ -45,9 +45,8 @@ function AceCustomizationComponent:restore_cached_customization(subcategory)
       self:_remove_style(existing.subcategory, existing.style, existing.file_path, existing.variant_type)
    end
 
-   self:_add_style(subcategory, self._sv.customization_cache[subcategory].style)
-   self._sv.customization_cache[subcategory] = nil
-   self.__saved_variables:mark_changed()
+   self:_add_style(subcategory, self._sv._customization_cache[subcategory].style)
+   self._sv._customization_cache[subcategory] = nil
 end
 
 return AceCustomizationComponent
