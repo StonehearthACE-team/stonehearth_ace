@@ -540,6 +540,25 @@
                "duration": "6h",
                "stackable": true,
                "max_stacks": 4
+            },
+            "nibbles": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.candledark.values.nibbles.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.candledark.values.nibbles.tooltip)",
+               "happiness_delta": -4,
+               "duration": "3h",
+               "stackable": false
+            },
+            "bitten": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.candledark.values.bitten.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.candledark.values.bitten.tooltip)",
+               "happiness_delta": -10,
+               "stackable": false
+            },
+            "turned": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.candledark.values.turned.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.candledark.values.turned.tooltip)",
+               "happiness_delta": -50,
+               "stackable": false
             }
          }
       },

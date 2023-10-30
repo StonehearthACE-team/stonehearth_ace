@@ -1,0 +1,137 @@
+{
+   "type": "encounter",
+   "mixins": "stonehearth_ace:mixins:encounter:candledark:undead_raid",
+   "encounter_type": "create_mission",
+   "in_edge": "insane_invasion_4",
+   "out_edge": "wait_to_destroy_invasion_party",
+   "can_start": {
+      "test_1": {
+         "invasion_total": {
+            "type": "deny_if_less_than",
+            "item": "counter",
+            "key": "invasions_defeated",
+            "value": 25
+         }
+      }
+   },
+   "create_mission_info": {
+      "mission": {
+         "members": {
+            "zombies": {
+               "from_population": {
+                  "min": 0,
+                  "max": 8
+               }
+            },
+            "skeletons": {
+               "from_population": {
+                  "min": 0,
+                  "max": 4
+               }
+            },
+            "protected_skeletons": {
+               "from_population": {
+                  "min": 1,
+                  "max": 4
+               }
+            },
+            "ghosts": {
+               "from_population": {
+                  "min": 0,
+                  "max": 2
+               }
+            },
+            "mummies": {
+               "from_population": {
+                  "min": 0,
+                  "max": 2
+               }
+            },
+            "vampires": {
+               "from_population": {
+                  "min": 1,
+                  "max": 2
+               }
+            },
+            "protected_vampires": {
+               "from_population": {
+                  "min": 0,
+                  "max": 2
+               }
+            },
+            "vampire_thralls": {
+               "from_population": {
+                  "min": 0,
+                  "max": 4
+               }
+            },
+            "necromancers": {
+               "from_population": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            "protected_necromancers": {
+               "from_population": {
+                  "min": 0,
+                  "max": 2
+               }
+            },
+            "wolf_skeletons": {
+               "from_population": {
+                  "min": 0,
+                  "max": 2
+               }
+            },
+            "ogre_skeletons": {
+               "from_population": {
+                  "min": 0,
+                  "max": 1
+               }
+            },
+            "protected_ogre_skeletons": {
+               "from_population": {
+                  "min": 1,
+                  "max": 2
+               }
+            },
+            "zombie_goblins": {
+               "from_population": {
+                  "min": 0,
+                  "max": 6
+               }
+            },
+            "pumplings": {
+               "from_population": {
+                  "min": 0,
+                  "max": 6
+               }
+            },
+            "bats": {
+               "from_population": {
+                  "min": 2,
+                  "max": 4
+               }
+            },
+            "spiders": {
+               "from_population": {
+                  "min": 0,
+                  "max": 2
+               }
+            },
+            "protected_spiders": {
+               "from_population": {
+                  "min": 2,
+                  "max": 4
+               }
+            },
+            "witches": {
+               "from_population": {
+                  "min": 1,
+                  "max": 1
+               }
+            }
+         }
+      }
+   }
+}

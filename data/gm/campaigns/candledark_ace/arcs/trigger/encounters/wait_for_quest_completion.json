@@ -2,7 +2,13 @@
    "type": "encounter",
    "encounter_type": "wait_for_requirements_met",
    "in_edge": "wait_for_quest_completion",
-   "out_edge": "elbezar_quest_completion",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "elbezar_quest_completion",
+         "elbezar_herbalist_recipe_unlock_2"
+      ]
+   },
    "wait_for_requirements_met_info": {
       "requirements": {
          "recipe_check": {

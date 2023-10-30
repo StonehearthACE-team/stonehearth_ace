@@ -1,6 +1,7 @@
 {
    "type": "encounter",
    "encounter_type": "donation_dialog",
+   "mixins": "stonehearth_ace:mixins:encounter:candledark:visitor_reward",
    "in_edge": "visitor_witch_reward",
    "out_edge": "clear_visitors",
    "donation_dialog_info": {
@@ -22,46 +23,10 @@
       },
       "loot_table": {
          "entries": {
-            "default": {
-               "num_rolls": {
-                  "min": 1,
-                  "max": 1
-               },
-               "items": {
-                  "recipe": {
-                     "uri": "stonehearth_ace:consumables:candledark:recipe"
-                  }
-               }
-            },
             "extra_reward": {
-               "num_rolls": {
-                  "min": 0,
-                  "max": 2
-               },
                "items": {
-                  "apples": {
-                     "uri": "stonehearth_ace:food:apples:apple_basket"
-                  },
-                  "nuts": {
-                     "uri": "stonehearth_ace:food:nuts_basket"
-                  },
-                  "mushrooms": {
-                     "uri": "stonehearth_ace:food:chanterelle:chanterelle_basket"
-                  },
-                  "corn": {
-                     "uri": "stonehearth:food:corn:corn_basket"
-                  },
-                  "sugar": {
-                     "uri": "stonehearth:food:sugar:sugarbell_basket"
-                  },
-                  "tea": {
-                     "uri": "stonehearth_ace:drink:tea_leaves:fresh"
-                  },
-                  "coffee": {
-                     "uri": "stonehearth_ace:food:coffee:coffee_basket"
-                  },
-                  "apple_seed": {
-                     "uri": "stonehearth_ace:trees:apple:seed"
+                  "unique": {
+                     "uri": "stonehearth_ace:consumables:energy_tonic_2"
                   }
                }
             }

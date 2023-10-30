@@ -1,0 +1,51 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:base_human_npc",
+   "components": {
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth/data/rigs/entities/monster/undead/skeletons/male.json",
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(zombie.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "speed": {
+            "type": "basic",
+            "value": 45
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:candledark:zombie": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.candledark.female.zombie.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.candledark.female.zombie.description)",
+         "icon": "file(zombie.png)"
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:human",
+            "stonehearth:ai_pack:harvesting",
+            "stonehearth:ai_pack:restocking",
+            "stonehearth:ai_pack:sitting",
+            "stonehearth:ai_pack:free_time"
+         ],
+         "actions": [
+            "stonehearth:actions:celebrate:carouse"
+         ]
+      }
+   }
+}

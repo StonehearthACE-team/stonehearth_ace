@@ -1,0 +1,20 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "visitor_skeleton_trick",
+   "out_edge": "clear_visitors",
+   "script_info": {
+      "script": "stonehearth_ace:game_master:script_encounter:candledark:tricked",
+      "data": {
+         "bulletin": {
+            "title": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.visitors.tricked.skeleton)"
+         },
+         "spawn_visitors": {
+            "visitors": {
+               "candledark_skeleton": "female"
+            }
+         },
+         "buff_citizens": "stonehearth_ace:buffs:candledark:visitor:skeleton"
+      }
+   }
+}

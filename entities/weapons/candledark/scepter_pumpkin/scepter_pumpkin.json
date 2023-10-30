@@ -1,0 +1,91 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties",
+      "stonehearth_ace:mixins:inflicted_wounds:impact:hard"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(scepter_pumpkin_equipped.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "mainhand",
+         "render_type": "attach_to_bone",
+         "equipment_types": [
+            "mainhand"
+         ],
+         "postures": [
+            "stonehearth:combat",
+            "stonehearth:patrol"
+         ],
+         "no_drop": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 15,
+         "range": 18,
+         "reach": 1.3
+      },
+      "stonehearth:combat:healing_data": {
+         "base_healing": 16
+      },
+      "stonehearth:combat:healing_spells": [
+         {
+            "name": "combat_heal_hot",
+            "effect": "combat_1h_heal",
+            "active_frame": 21,
+            "cooldown": 21000,
+            "shared_cooldown_name": "combat_heal_shared",
+            "shared_cooldown": 8000,
+            "bonus_healing_multiplier": 0.2,
+            "in_progress_heal_cast_effect": "stonehearth_ace:effects:heal:in_progress_cast:quick",
+            "appliable_target_buffs": {
+               "heal_over_time": {
+                  "uri": "stonehearth_ace:buffs:cleric:healing_over_time",
+                  "chance": 1
+               }
+            },
+            "priority": 0.6
+         },
+         {
+            "name": "combat_heal_strong",
+            "effect": "combat_1h_heal_long",
+            "active_frame": 210,
+            "cooldown": 36000,
+            "shared_cooldown_name": "combat_heal_shared",
+            "shared_cooldown": 8000,
+            "bonus_healing_multiplier": 4.5,
+            "in_progress_heal_cast_effect": "stonehearth_ace:effects:heal:in_progress_cast:long",
+            "target_effect": "stonehearth_ace:effects:combat_heal_strong_effect",
+            "priority": 0.4
+         }
+      ],
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "combat_1h_backhand",
+            "effect": "combat_1h_backhand",
+            "active_frame": 17,
+            "cooldown": 0,
+            "priority": 0
+         },
+         {
+            "name": "combat_1h_forehand",
+            "effect": "combat_1h_forehand",
+            "active_frame": 16,
+            "cooldown": 0,
+            "priority": 0
+         }
+      ],
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.weapons.candledark.scepter_pumpkin.display_name)",
+         "description": "i18n(stonehearth_ace:entities.weapons.candledark.scepter_pumpkin.description)",
+         "icon": "file(scepter_pumpkin.png)",
+         "category": "weapons"
+      }
+   }
+}

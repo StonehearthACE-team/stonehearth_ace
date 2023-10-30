@@ -1,0 +1,69 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s1",
+   "attributes": {
+      "max_health": {
+         "base": 150,
+         "military_strength_effect": {
+            "increase_by": 5,
+            "per": 10
+         },
+         "max": 800
+      },
+      "muscle": {
+         "base": 3,
+         "military_strength_effect": {
+            "increase_by": 1,
+            "per": 60
+         },
+         "max": 14
+      },
+      "menace": {
+         "base": 50,
+         "military_strength_effect": {
+            "increase_by": 7,
+            "per": 12
+         },
+         "max": 280
+      },
+      "courage": {
+         "base": 250,
+         "military_strength_effect": {
+            "increase_by": 5,
+            "per": 10
+         },
+         "max": 550
+      },
+      "additive_armor_modifier": {
+         "base": 0,
+         "military_strength_effect": {
+            "increase_by": 1,
+            "per": 90
+         },
+         "max": 3
+      }
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth:weapons:animals:wolf_undead_teeth"
+      ],
+      "basic_siege": "stonehearth_ace:abilities:basic_door_breaker_abilities"
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": {
+               "min": 1,
+               "max": 1
+            },
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:candledark",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

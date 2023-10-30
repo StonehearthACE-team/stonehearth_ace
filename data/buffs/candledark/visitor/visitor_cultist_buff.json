@@ -1,0 +1,25 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.candledark.visitor.cultist.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.candledark.visitor.cultist.description)",
+   "icon": "file(visitor_buff.png)",
+   "duration": "4h+90m",
+   "repeat_add_action": "renew_duration",
+   "can_only_affect": [
+      "hearthling",
+      "dwarf",
+      "orc",
+      "elf"
+   ],
+   "script": "stonehearth_ace:buff_scripts:change_customizations_while_buffed",
+   "script_info": {
+      "customizations": {
+         "hair_color": [
+            "purple",
+            "orange",
+            "green"
+         ]
+      }
+   }
+}

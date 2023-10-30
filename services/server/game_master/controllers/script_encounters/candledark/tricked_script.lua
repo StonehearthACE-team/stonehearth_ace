@@ -4,7 +4,7 @@ local TrickedScript = class()
 
 function TrickedScript:start(ctx, data)
    self._sv.ctx = ctx
-   self._sv.data = ctx
+   self._sv.data = data
    self._sv.bulletin = nil
 
    if data.bulletin then
@@ -17,6 +17,18 @@ function TrickedScript:start(ctx, data)
 
    if data.frog_rain then
       self:frog_rain()
+   end
+
+   if data.buff_citizens then
+      self:buff_citizens()
+   end
+
+   if data.destroy_crops then
+      self:destroy_crops(data.destroy_crops.chance or 0.5)
+   end
+
+   if data.decay_items then
+      self:decay_items(data.decay_items.material, data.decay_items.chance or 0.5)
    end
 end
 
@@ -82,6 +94,35 @@ function TrickedScript:_spawn_frog()
    location.y = location.y + 50
    local frog = radiant.entities.create_entity('stonehearth_ace:candledark:frog')
    radiant.terrain.place_entity_at_exact_location(frog, location)
+end
+
+function TrickedScript:buff_citizens()
+   local population = stonehearth.population:get_population(self._sv.ctx.player_id)
+   for _, citizen in population:get_citizens():each() do
+      radiant.entities.add_buff(citizen, self._sv.data.buff_citizens)
+   end
+end
+
+function TrickedScript:destroy_crops(chance)
+   for _, entity in pairs(_radiant.sim.get_all_entities()) do
+      if entity:get_component('stonehearth:crop') then
+         if rng:get_real(0, 1) <= chance then
+            radiant.entities.kill_entity(entity)
+         end
+      end
+   end
+end
+
+function TrickedScript:decay_items(material, chance)
+   local inventory = stonehearth.inventory:get_inventory(self._sv.ctx.player_id)
+   local sellable_item_tracker = inventory:get_item_tracker('stonehearth:resource_material_tracker')
+   local tracking_data = sellable_item_tracker:get_tracking_data()
+
+   for data_key, data in tracking_data:each() do
+      if stonehearth.catalog:is_material(data.uri, material) and rng:get_real(0, 1) <= chance then
+         stonehearth.food_decay:debug_decay_to_next_stage(data_key:get_id())
+      end
+   end
 end
 
 function TrickedScript:destroy()

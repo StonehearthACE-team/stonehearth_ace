@@ -1,0 +1,34 @@
+{
+   "components": {
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:orc"
+      },
+      "stonehearth:customization": {}
+   },
+   "entity_data": {
+      "stonehearth:customization_variants": {
+         "customization_options": "stonehearth_ace:orc_pc:female:customizations",
+         "root": {
+            "hair_and_skin_color": {
+               "weights": {
+                  "hair_and_skin_color": 1
+               }
+            }
+         },
+         "packages": {
+            "hair_and_skin_color": {
+               "skin_color": {
+                  "weights": {
+                     "default": 1
+                  }
+               },
+               "hair_color": {
+                  "weights": {
+                     "default": 1
+                  }
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,13 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "duration": "10m",
+   "repeat_add_action": "renew_duration",
+   "invisible_to_player": true,
+   "effect": "stonehearth_ace:effects:heal:in_progress_cast:long",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:candledark:turned",
+      "stonehearth_ace:buffs:candledark:bitten",
+      "stonehearth_ace:buffs:candledark:nibbles"
+   ]
+}

@@ -1,0 +1,16 @@
+{
+   "type": "encounter",
+   "encounter_type": "script",
+   "in_edge": "visitor_skeleton_treat",
+   "script_info": {
+      "script": "stonehearth_ace:game_master:script_encounter:candledark:treat",
+      "data": {
+         "demand": {
+            "material": "candledark_treat",
+            "count": 1
+         },
+         "failure_out_edge": "visitor_skeleton_trick",
+         "success_out_edge": "visitor_skeleton_reward"
+      }
+   }
+}
