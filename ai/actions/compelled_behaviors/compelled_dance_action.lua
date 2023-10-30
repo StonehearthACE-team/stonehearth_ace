@@ -7,12 +7,12 @@ CompelledDance.name = 'compelled_dance'
 CompelledDance.args = {}
 CompelledDance.does = 'stonehearth:compelled_behavior'
 CompelledDance.priority = 1
-CompelledWander.weight = 2
+CompelledDance.weight = 2
 
 local EFFECTS = {
-   'emote_dance_handsup',
-   'emote_dance_shuffle',
-   'emote_dance_themonkey',
+   'emote_dance_handsup_no_effect',
+   'emote_dance_shuffle_no_effect',
+   'emote_dance_themonkey_no_effect',
    'emote_laugh'
 }
 

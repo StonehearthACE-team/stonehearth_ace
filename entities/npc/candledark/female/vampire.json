@@ -16,9 +16,36 @@
                "file(vampire.qb)"
             ]
          }
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth:equipment:collar:loneliness"
+         ]
+      },
+      "stonehearth:social": {},
+      "stonehearth:conversation": {},
+      "stonehearth:subject_matter": {},
+      "stonehearth:interactions": {},
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "social_satisfaction": {
+               "min": {
+                  "value": 0
+               },
+               "max": {
+                  "value": 100
+               },
+               "initial_value": {
+                  "type": "random_between",
+                  "min": 0,
+                  "max": 1
+               }
+            }
+         }
       }
    },
    "entity_data": {
+      "stonehearth:conversation_type": "spooky",
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.npc.candledark.female.vampire.display_name)",
          "description": "i18n(stonehearth_ace:entities.npc.candledark.female.vampire.description)",

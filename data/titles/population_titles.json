@@ -3431,5 +3431,73 @@
             "renown": 1600
          }
       ]
+   },
+   "candledark_bitten": {
+      "ordinal": 501,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.bitten.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.bitten.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "bitten"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.bitten.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.bitten.1_description)",
+            "required_value": 1,
+            "renown": 25
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.bitten.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.bitten.2_description)",
+            "required_value": 5,
+            "renown": 110
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.bitten.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.bitten.3_description)",
+            "required_value": 15,
+            "renown": 300
+         }
+      ]
+   },
+   "candledark_turned": {
+      "ordinal": 502,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.turned.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.turned.description)",
+      "requirement": {
+         "statistics": {
+            "category": "buffs_gained",
+            "name": "turned"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.turned.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.turned.1_description)",
+            "required_value": 1,
+            "renown": 150
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.turned.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.turned.2_description)",
+            "required_value": 2,
+            "renown": 350
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.turned.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.turned.3_description)",
+            "required_value": 3,
+            "renown": 800
+         }
+      ]
    }
 }
