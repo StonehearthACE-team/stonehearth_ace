@@ -117,10 +117,19 @@ function TrickedScript:decay_items(material, chance)
    local inventory = stonehearth.inventory:get_inventory(self._sv.ctx.player_id)
    local sellable_item_tracker = inventory:get_item_tracker('stonehearth:resource_material_tracker')
    local tracking_data = sellable_item_tracker:get_tracking_data()
+   local item_uris = tracking_data:get_keys()
 
-   for data_key, data in tracking_data:each() do
-      if stonehearth.catalog:is_material(data.uri, material) and rng:get_real(0, 1) <= chance then
-         stonehearth.food_decay:debug_decay_to_next_stage(data_key:get_id())
+   for _, uri in pairs(item_uris) do
+      local items = tracking_data:get(uri)
+      if stonehearth.catalog:is_material(uri, material) then
+         for id, entity in pairs(items.items) do
+            if rng:get_real(0, 1) <= chance then
+               stonehearth.food_decay:debug_decay_to_next_stage(entity)
+               if rng:get_real(0, 1) <= (chance * 0.5) then
+                  stonehearth.food_decay:debug_decay_to_next_stage(entity)
+               end
+            end
+         end
       end
    end
 end

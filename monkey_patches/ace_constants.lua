@@ -71,6 +71,13 @@ ace_constants.conversation.SHORT_STAGES = {
    },
 }
 
+ace_constants.conversation.SCRIPTS = {
+   [{
+      constants.conversation.participant_types.HUMANOID,
+      constants.conversation.participant_types.SPOOKY,
+   }] = 'stonehearth_ace:conversation:scripts:spooky_to_humanoid'
+}
+
 -- thresholds are named for the target's renown relative to this participant's renown
 ace_constants.conversation.RENOWN_THRESHOLDS = {
    [constants.conversation.renown_levels.MUCH_LOWER] = 0.25,
