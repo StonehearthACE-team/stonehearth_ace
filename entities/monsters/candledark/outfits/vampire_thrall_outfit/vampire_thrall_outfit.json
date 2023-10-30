@@ -1,0 +1,50 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth_ace/entities/outfits/merchant/special/clergy/clothing_1.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/clergy/clothing_2.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/clergy/clothing_3.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/defense/clothing_1.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/defense/clothing_2.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/defense/clothing_3.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/labor/clothing_1.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/miner/clothing_1.qb"
+                  ]
+               }
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "/stonehearth_ace/entities/outfits/merchant/special/clergy/clothing_1_female.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/clergy/clothing_2_female.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/clergy/clothing_3_female.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/defense/clothing_1_female.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/defense/clothing_2_female.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/defense/clothing_3_female.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/labor/clothing_1_female.qb",
+                     "/stonehearth_ace/entities/outfits/merchant/special/miner/clothing_1_female.qb"
+                  ]
+               }
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "render_type": "merge_with_model"
+      }
+   },
+   "entity_data": {}
+}

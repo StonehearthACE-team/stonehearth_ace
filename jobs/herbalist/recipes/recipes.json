@@ -568,6 +568,18 @@
 					"recipe" : "file(frostfeast/wreath_large_recipe.json)"
 				}
          }
+      },
+		"candledark": {
+         "ordinal": 2,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
+         "recipes": {
+				"blessed_water" : {
+					"recipe" : "file(candledark/blessed_water_recipe.json)"
+				},
+				"vampire_salve" : {
+					"recipe" : "file(candledark/vampire_salve_recipe.json)"
+				}
+         }
       }
 	}
 }

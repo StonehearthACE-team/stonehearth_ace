@@ -6,7 +6,7 @@
       "type": "trigger_many",
       "out_edges": [
          "small_event_generator",
-         "visitor_generator",
+         "wait_for_visitors_to_start",
          "invasion_fulfill_counter"
       ]
    },

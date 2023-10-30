@@ -1,0 +1,34 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:pet",
+   "components": {
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth/data/rigs/entities/critters/rabbit",
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(scarecrow.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "speed": {
+            "type": "basic",
+            "value": 85
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.candledark.male.scarecrow.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.candledark.male.scarecrow.description)",
+         "icon": "file(scarecrow.png)"
+      }
+   }
+}

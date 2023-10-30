@@ -2,37 +2,8 @@
    "type": "encounter",
    "encounter_type": "dialog_tree",
    "rarity": "common",
+   "mixins": "stonehearth_ace:mixins:encounter:candledark:visitor_arrival",
    "in_edge": "visitor_witch_arrival",
-   "can_start": {
-      "test_1": {
-         "story_completed": {
-            "type": "deny_if",
-            "item": "counter",
-            "key": "story_completed",
-            "value": 1
-         },
-         "item_placed_requirement": {
-            "item": "exists_in_world",
-            "uri": "stonehearth_ace:decoration:candledark:gnarled_soulfire_tree",
-            "type": "deny_if_not",
-            "value": true
-         },
-         "bonfires_check": {
-            "item": "script",
-            "type": "deny_if",
-            "value": false,
-            "script": "stonehearth_ace:game_master:script:candledark:bonfires_check"
-         },
-         "time_of_day_check": {
-            "item": "time_of_day",
-            "type": "deny_if_between",
-            "value": {
-               "min": 7,
-               "max": 19
-            }
-         }
-      }
-   },
    "dialog_tree_info": {
       "start_node": "msg1",
       "nodes": {

@@ -1,0 +1,52 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:base_human_npc",
+   "components": {
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth/data/rigs/entities/humans/skeletons/female.json",
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(skeleton.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "speed": {
+            "type": "basic",
+            "value": 50
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:candledark:zombie": true
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.candledark.female.skeleton.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.candledark.female.skeleton.description)",
+         "icon": "file(skeleton.png)"
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:human",
+            "stonehearth:ai_pack:sitting",
+            "stonehearth:ai_pack:free_time"
+         ],
+         "actions": [
+            "stonehearth:actions:celebrate:carouse"
+         ]
+      }
+   }
+}

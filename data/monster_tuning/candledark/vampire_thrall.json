@@ -1,0 +1,71 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s1",
+   "attributes": {
+      "max_health": {
+         "base": 180,
+         "military_strength_effect": {
+            "increase_by": 15,
+            "per": 10
+         },
+         "max": 920
+      },
+      "muscle": {
+         "base": 4,
+         "military_strength_effect": {
+            "increase_by": 1,
+            "per": 40
+         },
+         "max": 12
+      },
+      "menace": {
+         "base": 60,
+         "military_strength_effect": {
+            "increase_by": 3,
+            "per": 10
+         },
+         "max": 300
+      },
+      "courage": {
+         "base": 250,
+         "military_strength_effect": {
+            "increase_by": 10,
+            "per": 10
+         },
+         "max": 500
+      },
+      "additive_armor_modifier": {
+         "base": 0,
+         "military_strength_effect": {
+            "increase_by": 1,
+            "per": 100
+         },
+         "max": 4
+      }
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:goblin_poker",
+         "stonehearth:weapons:jagged_cleaver"
+      ],
+      "shield": "stonehearth_ace:armor:goblin_shield",
+      "basic_siege": "stonehearth_ace:abilities:basic_door_breaker_abilities"
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:candledark",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}

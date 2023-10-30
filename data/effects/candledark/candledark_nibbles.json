@@ -1,0 +1,36 @@
+{
+   "type": "effect",
+   "tracks": {
+      "wound_pierce_poof": {
+         "type": "sound_effect",
+         "duration": 2000,
+         "start_time": 0,
+         "min_distance": 45,
+         "falloff": 3.15,
+         "volume": 65,
+         "track": "stonehearth_ace:sounds:wound:pierce"
+      },
+      "dust": {
+         "type": "cubemitter",
+         "start_time": 0,
+         "end_time": 500,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/nibble_poof.cubemitter.json",
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "fumes": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/nibble_fumes.cubemitter.json",
+         "start_time": 0,
+         "end_time": 400,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

@@ -3,11 +3,26 @@
    "encounter_type": "generator",
    "in_edge": "invasion_generator",
    "generator_info": {
-      "delay": "23h+120m",
+      "delay": "22h+120m",
       "spawn_edge": {
          "type": "trigger_one",
          "out_edges": [
-            "easy_invasion_1"
+            "easy_invasion_1",
+            "easy_invasion_2",
+            "easy_invasion_3",
+            "easy_invasion_4",
+            "medium_invasion_1",
+            "medium_invasion_2",
+            "medium_invasion_3",
+            "medium_invasion_4",
+            "hard_invasion_1",
+            "hard_invasion_2",
+            "hard_invasion_3",
+            "hard_invasion_4",
+            "insane_invasion_1",
+            "insane_invasion_2",
+            "insane_invasion_3",
+            "insane_invasion_4"
          ]
       }
    }

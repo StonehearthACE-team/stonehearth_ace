@@ -5,7 +5,9 @@
    "display_name": "i18n(stonehearth_ace:data.buffs.candledark.turned.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.candledark.turned.description)",
    "icon": "file(turned_buff.png)",
+   "effect": "stonehearth:effects:poof_effect:grey",
    "reembarkable": true,
+   "thought": "stonehearth_ace:thoughts:candledark:turned",
    "bulletin": {
       "title": "i18n(stonehearth_ace:data.buffs.candledark.turned.bulletin)"
    },
@@ -52,10 +54,15 @@
       "cannot_panic"
    ],
    "set_posture": "stonehearth:zombie",
-   "script": "stonehearth_ace:buff_scripts:equip_during_buff",
+   "script": "stonehearth_ace:buff_scripts:change_customizations_while_buffed",
    "script_info": {
-      "add_equipment": [
-         "stonehearth_ace:armor:candledark:vampire_thrall_skin"
-      ]
-   }
+      "customizations": {
+         "skin_color": "turned",
+         "hair_color": "turned",
+         "eye_color": "turned"
+      }
+   },
+   "disallowed_categories": [
+      "vampire_bite"
+   ]
 }

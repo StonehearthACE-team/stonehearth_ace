@@ -52,7 +52,7 @@
          "offset": { "x": 0, "y": 0, "z": 0 },
          "pillage_radius": {
             "min": 0,
-            "max": 50
+            "max": 400
          },
          "sighted_bulletin": {
             "title": "i18n(stonehearth_ace:data.gm.campaigns.candledark_ace.random_raid.mission.sighted_bulletin.title)"
@@ -65,7 +65,8 @@
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:zombie"
             },
             "skeletons": {
                "from_population": {
@@ -74,7 +75,18 @@
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:skeleton"
+            },
+            "protected_skeletons": {
+               "from_population": {
+                  "role": "candledark_skeleton",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:skeleton:protected"
             },
             "ghosts": {
                "from_population": {
@@ -83,7 +95,8 @@
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:ghost"
             },
             "mummies": {
                "from_population": {
@@ -92,7 +105,8 @@
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:mummy"
             },
             "vampires": {
                "from_population": {
@@ -101,7 +115,18 @@
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:vampire"
+            },
+            "protected_vampires": {
+               "from_population": {
+                  "role": "candledark_vampire",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:vampire:protected"
             },
             "vampire_thralls": {
                "from_population": {
@@ -110,7 +135,8 @@
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:vampire_thrall"
             },
             "necromancers": {
                "from_population": {
@@ -119,7 +145,18 @@
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:necromancer"
+            },
+            "protected_necromancers": {
+               "from_population": {
+                  "role": "candledark_necromancer",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:necromancer:protected"
             },
             "wolf_skeletons": {
                "from_population": {
@@ -128,7 +165,8 @@
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:wolf_skeleton"
             },
             "ogre_skeletons": {
                "from_population": {
@@ -137,7 +175,18 @@
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:ogre_skeleton"
+            },
+            "protected_ogre_skeletons": {
+               "from_population": {
+                  "role": "candledark_ogre_skeleton",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:ogre_skeleton:protected"
             },
             "zombie_goblins": {
                "from_population": {
@@ -146,7 +195,8 @@
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:zombie_goblin"
             },
             "pumplings": {
                "from_population": {
@@ -155,16 +205,18 @@
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:pumpling"
             },
             "bats": {
                "from_population": {
                   "role": "candledark_bat",
                   "location": { "x": 0, "z": 0 },
-                  "min": 6,
-                  "max": 9,
+                  "min": 0,
+                  "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:bat"
             },
             "spiders": {
                "from_population": {
@@ -173,16 +225,29 @@
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:spider"
             },
-            "witches": {
+            "protected_spiders": {
                "from_population": {
-                  "role": "candledark_witch",
+                  "role": "candledark_spider",
                   "location": { "x": 0, "z": 0 },
                   "min": 0,
                   "max": 0,
                   "range": 10
-               }
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:spider:protected"
+            },
+            "witches": {
+               "from_population": {
+                  "role": "candledark_witch",
+                  "gender": "female",
+                  "location": { "x": 0, "z": 0 },
+                  "min": 0,
+                  "max": 0,
+                  "range": 10
+               },
+               "tuning": "stonehearth_ace:monster_tuning:candledark:witch"
             }
          }
       }

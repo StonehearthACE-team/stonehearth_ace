@@ -1,0 +1,49 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:pet",
+   "components": {
+      "render_info": {
+         "scale": 0.11,
+         "animation_table": "/stonehearth/data/rigs/entities/pets/kitten"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cat.qb)"
+            ]
+         }
+      },
+      "stonehearth:attributes": {
+         "speed": {
+            "type": "basic",
+            "value": 46
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.candledark.male.cat.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.candledark.male.cat.description)",
+         "icon": "file(cat.png)"
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     17,
+                     0.8,
+                     -27
+                  ],
+                  "look_at": [
+                     0,
+                     0.6,
+                     0
+                  ],
+                  "fov": 45
+               }
+            }
+         }
+      }
+   }
+}

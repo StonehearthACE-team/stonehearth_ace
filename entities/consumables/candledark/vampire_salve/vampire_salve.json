@@ -1,0 +1,72 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(vampire_salve.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.08
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 38,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:consumable": {
+         "script": "stonehearth:consumables:scripts:heal_target",
+         "work_units": 5,
+         "cures_conditions": {
+            "undead_infection": 2,
+            "vampire_bite": 2
+         },
+         "consumable_qualities": [
+            {
+               "health_healed": 250,
+               "guts_healed": 4
+            },
+            {
+               "health_healed": 280,
+               "guts_healed": 5
+            },
+            {
+               "health_healed": 330,
+               "guts_healed": 5
+            },
+            {
+               "health_healed": 400,
+               "guts_healed": 6
+            }
+         ]
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.consumables.candledark.vampire_salve.display_name)",
+         "description": "i18n(stonehearth_ace:entities.consumables.candledark.vampire_salve.description)",
+         "icon": "file(vampire_salve.png)",
+         "is_item": true,
+         "category": "healing_item",
+         "material_tags": [
+            "healing_item",
+            "vampire_salve",
+            "salve",
+            "consumable",
+            "stockpile_healing_item"
+         ]
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

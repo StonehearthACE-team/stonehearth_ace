@@ -236,6 +236,11 @@ function AceBuff:on_repeat_add(options)
       self._sv._source_player = options.source_player
    end
 
+   if self._json.repeat_effect_on_stacking then
+      self:_destroy_effect()
+      self:_create_effect(self._json.effect)
+   end
+
    local repeat_add_action = self._json.repeat_add_action
    if repeat_add_action == 'renew_duration' then
       self:_destroy_timer()

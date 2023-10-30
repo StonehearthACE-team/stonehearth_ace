@@ -1,0 +1,22 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation" : {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "emote_wave.json",
+         "speed": 0.7,
+         "loop": false
+      },
+      "harp_loop": {
+         "type": "sound_effect",
+         "loop" : false,
+         "start_time": 1,
+         "min_distance": 15,
+         "max_instances": 2,
+         "falloff" : 3,
+         "volume" : 50,
+         "track" : "stonehearth:sounds:cleric_heal_aura_charge"     
+      }
+   }
+}

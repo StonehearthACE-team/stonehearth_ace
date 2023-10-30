@@ -7,7 +7,14 @@
       "spawn_edge": {
          "type": "trigger_one",
          "out_edges": [
-            "visitor_witch_arrival"
+            "visitor_witch_arrival",
+            "visitor_cat_arrival",
+            "visitor_skeleton_arrival",
+            "visitor_scarecrow_arrival",
+            "visitor_vampire_arrival",
+            "visitor_zombie_arrival",
+            "visitor_ghost_arrival",
+            "visitor_cultist_arrival"
          ]
       }
    }

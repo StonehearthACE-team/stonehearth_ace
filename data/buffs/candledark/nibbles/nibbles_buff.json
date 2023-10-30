@@ -1,0 +1,21 @@
+{
+   "mixins": "stonehearth_ace:mixins:buffs:pc_only_buff",
+   "type": "buff",
+   "axis": "debuff",
+   "category": "vampire_bite",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.candledark.nibbles.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.candledark.nibbles.description)",
+   "icon": "file(nibbles_buff.png)",
+   "duration": "2h",
+   "repeat_add_action": "stack_and_refresh",
+   "thought": "stonehearth_ace:thoughts:candledark:nibbles",
+   "repeat_effect_on_stacking": true,
+   "effect": "stonehearth_ace:effects:candledark:nibbles",
+   "max_stacks": 5,
+   "remove_stacks_on_expire": 1,
+   "evolve_chance": 0.85,
+   "buff_evolve": "stonehearth_ace:buffs:candledark:bitten",
+   "modifiers": {}
+}

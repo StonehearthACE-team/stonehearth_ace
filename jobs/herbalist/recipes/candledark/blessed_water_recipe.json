@@ -1,0 +1,32 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.blessed_water_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.blessed_water_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.blessed_water_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/candledark/blessed_water/blessed_water.png",
+	"work_effect": "fiddle",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
+	"manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:gold_ingot",
+         "count": 1
+      },
+      {
+         "material": "herb healing resource",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth_ace:resources:candledark:soulfire",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:candledark:blessed_water"
+      }
+   ]
+}

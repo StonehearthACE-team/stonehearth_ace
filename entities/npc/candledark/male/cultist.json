@@ -1,0 +1,28 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:base_goblin_npc",
+   "components": {
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth/data/rigs/entities/monster/goblins/goblin",
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(cultist.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.candledark.male.cultist.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.candledark.male.cultist.description)",
+         "icon": "file(cultist.png)"
+      }
+   }
+}

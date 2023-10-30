@@ -1,0 +1,99 @@
+{
+   "name": "fire",
+   "duration": 1000,
+   "material": "materials/cubemitter_add_bloom.material.json",
+   "loops": true,
+   "mesh": {
+      "file": "stonehearth_ace/data/models/vfx/whirls/whirl.qb",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": -15
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "CONSTANT",
+         "values": [120]
+      },
+      "angle": {
+         "kind": "RANDOM_BETWEEN",
+         "values": [0, 15]
+      },
+      "origin": {
+         "surface": "POINT"
+      },
+      "bursts": [
+         [0, 25]
+      ]
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [100, 200]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0]
+         }
+      },
+      "acceleration": {},
+      "rotation": {
+         "over_lifetime_x": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [-360, 360]
+         },
+         "over_lifetime_y": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [-360, 360]
+         }
+      },
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.02, 0.05]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0.005, 1.0066666666666666],
+               [0.4875, 1.08],
+               [1, 1.0066666666666666]
+            ]
+         },
+         "start_z": {
+            "kind": "CONSTANT",
+            "values": [0.5]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0, 0, 0, 1]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0.5, 0.8, 0.3, 0.6],
+               [1, 0, 0, 0]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.08148247718811036, 0.3547041446982075],
+               [0.19, 0.43607542646976993],
+               [0.30100284576416014, 0.4033115170817864],
+               [0.44813640594482423, 0.2011996385561311],
+               [0.655, 0.07250742791323983],
+               [1, 0]
+            ]
+         }
+      }
+   }
+}

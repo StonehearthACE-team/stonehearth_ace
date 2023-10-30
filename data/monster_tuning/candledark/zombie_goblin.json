@@ -1,0 +1,73 @@
+{
+   "type": "monster_tuning",
+   "estimated_difficulty": "s1",
+   "attributes": {
+      "max_health": {
+         "base": 50,
+         "military_strength_effect": {
+            "increase_by": 10,
+            "per": 15
+         },
+         "max": 500
+      },
+      "muscle": {
+         "base": 2,
+         "military_strength_effect": {
+            "increase_by": 1,
+            "per": 70
+         },
+         "max": 8
+      },
+      "menace": {
+         "base": 54,
+         "military_strength_effect": {
+            "increase_by": 5,
+            "per": 12
+         },
+         "max": 210
+      },
+      "courage": {
+         "base": 150,
+         "military_strength_effect": {
+            "increase_by": 10,
+            "per": 25
+         },
+         "max": 370
+      },
+      "additive_armor_modifier": {
+         "base": 0,
+         "military_strength_effect": {
+            "increase_by": 1,
+            "per": 100
+         },
+         "max": 1
+      }
+   },
+   "equipment": {
+      "weapon": [
+         "stonehearth_ace:weapons:giant_bone_short_spear",
+         "stonehearth_ace:weapons:na_iron_short_spear"
+      ],
+      "shield": [
+         "stonehearth:armor:cracked_wooden_buckler"
+      ],
+      "basic_siege": "stonehearth_ace:abilities:basic_door_breaker_abilities"
+   },
+   "loot_drops": {
+      "entries": {
+         "items": {
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:candledark",
+                  "type": "bag",
+                  "weight": 1
+               }
+            }
+         }
+      }
+   }
+}
