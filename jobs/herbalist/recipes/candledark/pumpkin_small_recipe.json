@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.pumpkin_small_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.pumpkin_small_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.pumpkin_small_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/candledark/pumpkin_small/pumpkin_small_recipe.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 3,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:pumpkin:pumpkin_basket",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:candledark:pumpkin_small"
+      }
+   ]
+}

@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.casket_bed_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.casket_bed_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.casket_bed_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/candledark/casket_bed/casket_bed.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth:refined:cloth_bolt",
+         "count": 1
+      },
+	   {
+         "uri": "stonehearth_ace:refined:fine_stuffing",
+         "count": 1
+      },
+      {
+          "uri": "stonehearth_ace:refined:metal_bits:hard",
+          "count": 1
+       }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:candledark:casket_bed"
+      }
+   ]
+}

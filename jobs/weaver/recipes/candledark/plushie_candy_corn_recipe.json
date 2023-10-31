@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.plushie_candy_corn_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.plushie_candy_corn_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.plushie_candy_corn_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/candledark/plushie_candy_corn/plushie_candy_corn.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 4,
+	"manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:fine_stuffing",
+         "count": 1
+      },  
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+		{
+			"material": "herb white resource",
+			"count": 1
+		},
+		{
+			"material": "herb yellow resource",
+			"count": 1
+		},
+		{
+			"material": "herb red resource",
+			"count": 1
+		}
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:candledark:plushie_candy_corn"
+      }
+   ]
+}

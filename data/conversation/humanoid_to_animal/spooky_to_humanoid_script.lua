@@ -7,9 +7,10 @@ local SpookyToHumanoidScript = radiant.class()
 local WATCH_SPOOKY_EMOTE = 'combat_1h_dodge'
 local SCARE_EMOTE = 'emote_cry'
 local SPOOKY_QUESTION_EMOTE = {}
-SPOOKY_QUESTION_EMOTE = { 'talk_surprise', 'emote_wave', 'emote_watch_pet', 'talk_question' }
+SPOOKY_QUESTION_EMOTE = { 'talk_surprise', 'emote_wave', 'talk_question' }
 local SPOOK_EMOTE = {}
-SPOOK_EMOTE = { 'emote_roar', 'emote_anger', 'zombie_b_combat_1h_forehand_spin', 'talk_exclamation_irritated' }
+SPOOK_EMOTE = { 'emote_roar', 'emote_anger', 'combat_1h_forehand_spin', 'talk_exclamation_irritated' }
+local SPOOKED_SUBJECT = 'stonehearth_ace:icons:thought_bubble:candledark:spooked'
 local SPOOKED_THOUGHT = 'stonehearth_ace:thoughts:candledark:spooked'
 local SPOOKED_DEBUFF = 'stonehearth_ace:buffs:candledark:spooked'
 
@@ -82,14 +83,14 @@ function SpookyToHumanoidScript:get_talk_effects(conversation_manager, entity, s
       }
    elseif stage_name == SCARE_STAGE then
       effects = {
-         animations = SCARE_EMOTE,
-         thought_bubble_image = SPOOKED_THOUGHT,
+         animations = { SCARE_EMOTE },
+         thought_bubble_image = SPOOKED_SUBJECT,
          thought_bubble_effect = constants.conversation.THOUGHT_BUBBLE_EFFECTS[constants.sentiment.NEUTRAL]
       }
    elseif stage_name == SPOOKY_SPOOK_STAGE then
       effects = {
          animations = SPOOK_EMOTE,
-         thought_bubble_image = SPOOKED_THOUGHT,
+         thought_bubble_image = SPOOKED_SUBJECT,
          thought_bubble_effect = constants.conversation.THOUGHT_BUBBLE_EFFECTS[constants.sentiment.NEUTRAL]
       }
    else

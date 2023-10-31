@@ -1,0 +1,69 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(scarecrow.qb)",
+                     "file(scarecrow_2.qb)",
+                     "file(scarecrow_3.qb)",
+                     "file(scarecrow_4.qb)",
+                     "file(scarecrow_5.qb)"
+                  ]
+               }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(scarecrow.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(scarecrow_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(scarecrow_3.qb)"
+            ]
+         },
+         "model4": {
+            "models": [
+               "file(scarecrow_4.qb)"
+            ]
+         },
+         "model5": {
+            "models": [
+               "file(scarecrow_5.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0.0, "z": 0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Decorative Frostfeast Candles",
+         "description": "The fire flickers on a winter's night, hope is renewed under Frostfeast's light.",
+         "icon": "file(scarecrow.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "festival",
+            "candledark",
+            "crafted",
+            "scarecrow",
+            "stockpile_decoration"
+         ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
+      }
+   }
+}

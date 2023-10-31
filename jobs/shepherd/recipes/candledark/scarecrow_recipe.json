@@ -1,0 +1,38 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.candledark.scarecrow_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.candledark.scarecrow_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.shepherd.recipes.candledark.scarecrow_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/candledark/scarecrow/scarecrow.png",
+	"manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:containers:thatch_pile",
+         "count": 1
+      },
+      {
+         "material": "leather resource",
+         "count": 1
+      },
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+      {
+         "material": "coal",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:candledark:scarecrow"
+      }
+   ]
+}
