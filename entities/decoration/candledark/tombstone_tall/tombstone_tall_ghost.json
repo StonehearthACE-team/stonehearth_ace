@@ -1,0 +1,62 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(tombstone_tall.qb)",
+                     "file(tombstone_tall_2.qb)",
+                     "file(tombstone_tall_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(tombstone_tall.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(tombstone_tall_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(tombstone_tall_3.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": -0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.candledark.tombstone_tall.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.candledark.tombstone_tall.description)",
+         "icon": "file(tombstone_tall.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "festival",
+            "candledark",
+            "crafted",
+            "stone",
+            "grave",
+            "stockpile_decoration"
+         ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true,
+         "scale_range": {
+            "min": 0.95,
+            "max": 1.1
+         }
+      }
+   }
+}

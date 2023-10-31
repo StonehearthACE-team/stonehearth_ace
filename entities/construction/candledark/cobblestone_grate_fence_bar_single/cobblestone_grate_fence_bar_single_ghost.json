@@ -1,0 +1,48 @@
+{
+   "mixins": [
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(cobblestone_grate_fence_bar_single.qb)",
+                     "file(cobblestone_grate_fence_bar_single_2.qb)",
+                     "file(cobblestone_grate_fence_bar_single_3.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:fence_data": {
+         "type": "bar",
+         "length": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.candledark.cobblestone_grate_fence_bar_single.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.candledark.cobblestone_grate_fence_bar_single.description)",
+         "icon": "file(cobblestone_grate_fence_bar_single.png)",
+         "category": "construction",
+         "material_tags": [
+            "stone",
+            "iron",
+            "fancy",
+            "defense",
+            "crafted",
+            "fence",
+            "festival",
+            "candledark",
+            "stockpile_defense"
+         ]
+      }
+   }
+}

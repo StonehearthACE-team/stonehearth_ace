@@ -1,0 +1,61 @@
+{
+   "mixins": [
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/construction/double_door/double_door.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/construction/double_door/effects/closed.json",
+         "initial_pose_animation": "closed.json"
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": -2, "y": 0 },
+               "max": { "x": 1, "y": 2 }
+            }
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(stake_fence_gate.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": -0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:fence_data": {
+         "type": "gate",
+         "length": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.candledark.stake_fence_gate.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.candledark.stake_fence_gate.description)",
+         "icon": "file(stake_fence_gate.png)",
+         "category": "construction",
+         "material_tags": [
+            "wood",
+            "defense",
+            "crafted",
+            "portal",
+            "gate",
+            "festival",
+            "candledark",
+            "stake_fence_gate",
+            "stockpile_defense"
+         ]
+      }
+   }
+}

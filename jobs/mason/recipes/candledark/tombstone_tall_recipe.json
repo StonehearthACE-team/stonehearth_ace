@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.candledark.tombstone_tall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.candledark.tombstone_tall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.candledark.tombstone_tall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/candledark/tombstone_tall/tombstone_tall.png",
+   "workshop": "stonehearth:mason:pedestal",
+	"manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 5
+      },
+      {
+         "uri": "stonehearth_ace:resources:fiber:highland_vine_bundle",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:resources:candledark:soulfire",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:candledark:tombstone_tall"
+      }
+   ]
+}

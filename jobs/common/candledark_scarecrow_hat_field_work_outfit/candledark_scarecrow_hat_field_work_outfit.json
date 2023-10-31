@@ -71,15 +71,13 @@
          "value_in_gold": 13,
          "rarity": "common",
          "shop_info": {
-            "buyable": true,
-            "sellable": true,
-            "shopkeeper_level": 2,
-            "shopkeeper_type": "caravan"
+            "buyable": false,
+            "sellable": true
          }
       },
       "stonehearth:catalog": {
-         "display_name": "Summer Work Hat",
-         "description": "A hat for workers and field workers. Protects from hot weather and sunstrokes.",
+         "display_name": "i18n(stonehearth_ace:jobs.field_work.candledark.scarecrow_hat.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.field_work.candledark.scarecrow_hat.description)",
          "icon": "file(candledark_scarecrow_hat_field_work_outfit.png)",
          "category": "civillian_equipment",
          "material_tags": [
@@ -87,7 +85,8 @@
             "field_work_outfit",
             "summer_hat",
             "worker_outfit",
-            "ascendancy_made",
+            "festival",
+            "candledark",
             "civillian_equipment",
             "stockpile_equipment"
          ]
