@@ -4,14 +4,13 @@ local rng = _radiant.math.get_default_rng()
 
 local SpookyToHumanoidScript = radiant.class()
 
-local DEFAULT_SUBJECT = constants.conversation.DEFAULT_SUBJECT
 local WATCH_SPOOKY_EMOTE = 'combat_1h_dodge'
 local SCARE_EMOTE = 'emote_cry'
 local SPOOKY_QUESTION_EMOTE = {}
 SPOOKY_QUESTION_EMOTE = { 'talk_surprise', 'emote_wave', 'emote_watch_pet', 'talk_question' }
 local SPOOK_EMOTE = {}
 SPOOK_EMOTE = { 'emote_roar', 'emote_anger', 'zombie_b_combat_1h_forehand_spin', 'talk_exclamation_irritated' }
-local SPOOKED_THOUGHT = 'stonehearth:thoughts:candledark:spooked'
+local SPOOKED_THOUGHT = 'stonehearth_ace:thoughts:candledark:spooked'
 local SPOOKED_DEBUFF = 'stonehearth_ace:buffs:candledark:spooked'
 
 -- Custom stages for this script
@@ -44,10 +43,7 @@ function SpookyToHumanoidScript:get_stages(conversation_manager)
 end
 
 function SpookyToHumanoidScript:pick_subject(conversation_manager, initiator, participants)
-   local subject_matter_component = initiator:get_component('stonehearth:subject_matter')
-   local active_subject = subject_matter_component:get_random_active()
-   local subject_matter = active_subject and active_subject.subject or DEFAULT_SUBJECT
-   return subject_matter
+   return 'stonehearth_ace:subjects:candledark:spooky'
 end
 
 function SpookyToHumanoidScript:set_speaker_for_stage(conversation_manager, stage_name, participants, step)
@@ -86,14 +82,16 @@ function SpookyToHumanoidScript:get_talk_effects(conversation_manager, entity, s
       }
    elseif stage_name == SCARE_STAGE then
       effects = {
-         animations = { SCARE_EMOTE }
+         animations = SCARE_EMOTE,
+         thought_bubble_image = SPOOKED_THOUGHT,
+         thought_bubble_effect = constants.conversation.THOUGHT_BUBBLE_EFFECTS[constants.sentiment.NEUTRAL]
       }
-      effects.thought_bubble_image = SPOOKED_THOUGHT
    elseif stage_name == SPOOKY_SPOOK_STAGE then
       effects = {
-         animations = SPOOK_EMOTE
+         animations = SPOOK_EMOTE,
+         thought_bubble_image = SPOOKED_THOUGHT,
+         thought_bubble_effect = constants.conversation.THOUGHT_BUBBLE_EFFECTS[constants.sentiment.NEUTRAL]
       }
-      effects.thought_bubble_image = SPOOKED_THOUGHT
    else
       -- Get effects for the standard stages using conversation_lib
       local args = {}
