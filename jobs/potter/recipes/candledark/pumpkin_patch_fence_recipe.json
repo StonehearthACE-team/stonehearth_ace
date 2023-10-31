@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 90,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.candledark.pumpkin_patch_fence_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.candledark.pumpkin_patch_fence_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.candledark.pumpkin_patch_fence_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/candledark/pumpkin_patch_fence/pumpkin_patch_fence.png",
+   "workshop": "stonehearth_ace:potter:mold_bench",
+   "manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 6
+      },
+      {
+         "material": "wood resource",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth:food:pumpkin:pumpkin_basket",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth_ace:resources:candledark:soulfire",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:gizmos:candledark:pumpkin_patch_fence"
+      }
+   ]
+}

@@ -1,0 +1,96 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(candledark_scarecrow_hat_field_work_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(candledark_scarecrow_hat_field_work_outfit_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(candledark_scarecrow_hat_field_work_outfit_rabbit.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(candledark_scarecrow_hat_field_work_outfit_rabbit.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(candledark_scarecrow_hat_field_work_outfit_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "hat",
+            "transparent": "false",
+            "models": [
+               "file(candledark_scarecrow_hat_field_work_outfit_orc_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(candledark_scarecrow_hat_field_work_outfit_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "helmet",
+         "render_type": "merge_with_model",
+         "roles": [
+            "field_work"
+         ],
+         "ilevel": 4,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:hot_resist",
+            "stonehearth_ace:buffs:weather:sunstroke_resist",
+            "stonehearth_ace:buffs:candledark_cheer"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 13,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "Summer Work Hat",
+         "description": "A hat for workers and field workers. Protects from hot weather and sunstrokes.",
+         "icon": "file(candledark_scarecrow_hat_field_work_outfit.png)",
+         "category": "civillian_equipment",
+         "material_tags": [
+            "cloth",
+            "field_work_outfit",
+            "summer_hat",
+            "worker_outfit",
+            "ascendancy_made",
+            "civillian_equipment",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

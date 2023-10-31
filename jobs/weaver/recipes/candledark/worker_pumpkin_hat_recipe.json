@@ -1,0 +1,27 @@
+{
+   "mixins": "stonehearth_ace:mixins:recipes:candledark_recipe",
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.worker_pumpkin_hat_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.worker_pumpkin_hat_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.worker_pumpkin_hat_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/worker/worker_candledark_pumpkin_hat/worker_candledark_pumpkin_hat.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 0,
+   "ingredients": [
+      {
+         "material": "leather resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:decoration:megacrop:mega_pumpkin",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:worker:candledark_pumpkin_hat"
+      }
+   ]
+}

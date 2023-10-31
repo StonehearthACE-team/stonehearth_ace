@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.candledark.casket_bed_porcelain_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.candledark.casket_bed_porcelain_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.candledark.casket_bed_porcelain_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/candledark/casket_bed_porcelain/casket_bed_porcelain.png",
+   "workshop": "stonehearth:potter:kiln",
+   "manual_unlock": true,
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:molded_porcelain",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth:refined:cloth_bolt",
+         "count": 1
+      },
+	   {
+         "uri": "stonehearth_ace:refined:fine_stuffing",
+         "count": 1
+      },
+      {
+          "uri": "stonehearth:refined:gold_ingot",
+          "count": 1
+       }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:candledark:casket_bed_porcelain"
+      }
+   ]
+}

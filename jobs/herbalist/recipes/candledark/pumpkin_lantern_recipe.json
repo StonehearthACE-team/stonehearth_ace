@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.pumpkin_lantern_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.pumpkin_lantern_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.pumpkin_lantern_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/candledark/pumpkin_lantern/pumpkin_lantern.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:decoration:megacrop:mega_pumpkin",
+         "count": 1
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:candledark:pumpkin_lantern"
+      }
+   ]
+}

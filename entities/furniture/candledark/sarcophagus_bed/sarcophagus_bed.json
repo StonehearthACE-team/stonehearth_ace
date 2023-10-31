@@ -1,0 +1,62 @@
+{
+   "type": "entity",
+   "mixins": "file(sarcophagus_bed_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(sarcophagus_bed_iconic.json)",
+         "ghost_form": "file(sarcophagus_bed_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1.5, "y": 0, "z": -2.2 },
+               "max": { "x": 2.5, "y": 2, "z": 3.2 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 3, "y": 1, "z": 2 }
+            }
+         ],
+         "adjacency_flags": [
+            "left"
+         ]
+      },
+      "stonehearth:mount": {
+         "mount_offset": { "x": 0, "y": 0.45, "z": -0.75 },
+         "mounted_model_variant": "sleeping",
+         "applied_buffs": [
+            "stonehearth_ace:buffs:sleeping:cover_none"
+         ]
+      },
+      "stonehearth:ownable_object": {
+         "ownership_type": "bed"
+      }
+   },
+   "entity_data": {
+      "stonehearth:bed": {
+         "shelter": {
+            "contribution_threshold": 35,
+            "score": 2
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 18,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 19
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

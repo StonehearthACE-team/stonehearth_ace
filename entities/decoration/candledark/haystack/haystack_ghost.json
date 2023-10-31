@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(haystack.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Decorative Frostfeast Candles",
+         "description": "The fire flickers on a winter's night, hope is renewed under Frostfeast's light.",
+         "icon": "file(haystack.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "festival",
+            "candledark",
+            "crafted",
+            "thatch",
+            "haystack",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

@@ -28,37 +28,10 @@
          "region": [
             {
                "min": { "x": -4, "y": 0, "z": -4 },
-               "max": { "x": -1, "y": 2, "z": -3 }
-            },
-            {
-               "min": { "x": 2, "y": 0, "z": -4 },
-               "max": { "x": 5, "y": 2, "z": -3 }
-            },
-            {
-               "min": { "x": -4, "y": 0, "z": 2 },
-               "max": { "x": -3, "y": 2, "z": 4 }
-            },
-            {
-               "min": { "x": 2, "y": 0, "z": 4 },
-               "max": { "x": 5, "y": 2, "z": 5 }
-            },
-            {
-               "min": { "x": 4, "y": 0, "z": 2 },
-               "max": { "x": 5, "y": 2, "z": 4 }
-            },
-            {
-               "min": { "x": -4, "y": 0, "z": 4 },
-               "max": { "x": -1, "y": 2, "z": 5 }
-            },
-            {
-               "min": { "x": -4, "y": 0, "z": -3 },
-               "max": { "x": -3, "y": 2, "z": -1 }
-            },
-            {
-               "min": { "x": 4, "y": 0, "z": -3 },
-               "max": { "x": 5, "y": 2, "z": -1 }
+               "max": { "x": 5, "y": 1, "z": 5 }
             }
-         ]
+         ],
+         "region_collision_type": "none"
       },
       "stonehearth:renewable_resource_node": {
          "resource": "stonehearth:food:pumpkin:pumpkin_basket",
@@ -110,7 +83,7 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 50,
+         "value_in_gold": 30,
          "rarity": "rare",
          "shop_info": {
             "buyable": false,

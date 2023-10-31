@@ -1,0 +1,47 @@
+{
+   "type": "entity",
+   "mixins": "file(pumpkin_lantern_ghost.json)",
+   "components": {
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:lamp": {
+         "light_effect": "stonehearth_ace:effects:candledark:pumpkin_lantern",
+         "light_origin": { "x": 0, "y": 0.7, "z": 0 }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(pumpkin_lantern_iconic.json)",
+         "ghost_form": "file(pumpkin_lantern_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:traveler_attraction": {},
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:decoration:candledark:pumpkin_lantern",
+         "command": "stonehearth_ace:commands:transform:frostfeast:swap_model_variant",
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "auto_request": false
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 26,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 32
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

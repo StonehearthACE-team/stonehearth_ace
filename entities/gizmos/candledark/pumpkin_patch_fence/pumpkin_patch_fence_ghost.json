@@ -1,0 +1,41 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(pumpkin_patch_fence.qb)"
+            ]
+         },
+         "half_renewed": {
+            "models": [
+               "file(pumpkin_patch_fence_renewing.qb)"
+            ]
+         },
+         "depleted": {
+            "models": [
+               "file(pumpkin_patch_fence_start.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "Candledark Pumpkin Patch (Fenced)",
+         "description": "Can be harvested for some baskets of pumpkin and perhaps a few mega pumpkins...",
+         "icon": "file(pumpkin_patch_fence.png)",
+         "category": "quest",
+         "material_tags": [
+            "stockpile_plant",
+            "pumpkin_patch_fence",
+            "candledark",
+            "decoration"
+         ]
+      }
+   }
+}

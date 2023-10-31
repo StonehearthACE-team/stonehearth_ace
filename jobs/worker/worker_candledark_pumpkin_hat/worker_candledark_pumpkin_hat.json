@@ -1,0 +1,78 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(worker_candledark_pumpkin_hat.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(worker_candledark_pumpkin_hat_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(worker_candledark_pumpkin_hat_rabbit_male.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(worker_candledark_pumpkin_hat_rabbit_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(worker_candledark_pumpkin_hat_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "helmet",
+         "render_type": "merge_with_model",
+         "roles": [
+            "worker_job"
+         ],
+         "ilevel": 5,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:candledark_cheer",
+            "stonehearth_ace:buffs:weather:chilly_resist",
+            "stonehearth_ace:buffs:weather:sunstroke_resist"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 12,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "Holiday Cheer Cap",
+         "description": "A traditional hat for enjoying the holidays! Will protect from chilly weather.",
+         "icon": "file(worker_candledark_pumpkin_hat.png)",
+         "category": "civillian_equipment",
+         "material_tags": [
+            "hat",
+            "festival",
+            "candledark",
+            "worker_outfit",
+            "worker_candledark_pumpkin_hat",
+            "civillian_equipment",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

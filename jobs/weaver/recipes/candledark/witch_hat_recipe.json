@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.witch_hat_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.witch_hat_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.candledark.witch_hat_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/common/candledark_witch_hat_crafter_outfit/candledark_witch_hat_crafter_outfit.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 5,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "cloth resource",
+         "count": 2
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:refined:metal_bits:soft",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:crafter:outfit:candledark_witch_hat"
+      }
+   ]
+}

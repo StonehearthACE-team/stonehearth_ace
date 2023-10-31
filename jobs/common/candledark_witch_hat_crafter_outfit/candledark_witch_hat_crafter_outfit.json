@@ -1,0 +1,95 @@
+{
+   "mixins": [
+      "stonehearth:mixins:item_properties"
+   ],
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(candledark_witch_hat_crafter_outfit.qb)"
+            ]
+         },
+         "female": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(candledark_witch_hat_crafter_outfit_female.qb)"
+            ]
+         },
+         "rabbit_male": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(candledark_witch_hat_crafter_outfit_rabbit.qb)"
+            ]
+         },
+         "rabbit_female": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(candledark_witch_hat_crafter_outfit_rabbit.qb)"
+            ]
+         },
+         "orc_male": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(candledark_witch_hat_crafter_outfit_orc_male.qb)"
+            ]
+         },
+         "orc_female": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(candledark_witch_hat_crafter_outfit_orc_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(candledark_witch_hat_crafter_outfit_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "helmet",
+         "render_type": "merge_with_model",
+         "roles": [
+            "crafter"
+         ],
+         "ilevel": 4,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:hot_resist",
+            "stonehearth_ace:buffs:weather:sunstroke_resist",
+            "stonehearth_ace:buffs:candledark_cheer"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 17,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "Summer Felt Crafter Hat",
+         "description": "Can only be worn by crafters. Protects from hot weather and sunstrokes.",
+         "icon": "file(candledark_witch_hat_crafter_outfit.png)",
+         "category": "civillian_equipment",
+         "material_tags": [
+            "cloth",
+            "crafter_outfit",
+            "summer_hat",
+            "ascendancy_made",
+            "civillian_equipment",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}
