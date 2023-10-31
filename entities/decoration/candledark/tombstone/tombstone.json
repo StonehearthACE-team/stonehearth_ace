@@ -1,0 +1,42 @@
+{
+   "type": "entity",
+   "mixins": "file(tombstone_ghost.json)",
+   "components": {
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1.5, "y": 0, "z": 0 },
+               "max": { "x": 0.5, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(tombstone_iconic.json)",
+         "ghost_form": "file(tombstone_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:decoration:candledark:tombstone",
+         "command": "stonehearth_ace:commands:transform:frostfeast:swap_model_variant",
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "auto_request": false
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 11,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 9
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

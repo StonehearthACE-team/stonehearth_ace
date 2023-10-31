@@ -1,0 +1,45 @@
+{
+   "mixins": [
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(stake_fence_bar_single.qb)",
+                     "file(stake_fence_bar_single_2.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:fence_data": {
+         "type": "bar",
+         "length": 1
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.candledark.stake_fence_bar_single.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.candledark.stake_fence_bar_single.description)",
+         "icon": "file(stake_fence_bar_single.png)",
+         "category": "construction",
+         "material_tags": [
+            "wood",
+            "defense",
+            "crafted",
+            "fence",
+            "festival",
+            "candledark",
+            "stockpile_defense"
+         ]
+      }
+   }
+}

@@ -3076,6 +3076,495 @@
                "brass_plates_recipe_unlock": {
                   "bulletin_title": "Brass Plates recipe unlocked for the Blacksmith!"
                }
+            },
+            "candledark_ace": {
+               "random_raid": {
+                  "mission": {
+                     "sighted_bulletin": {
+                        "title": "Spooky Invaders Approaching!"
+                     }
+                  }
+               },
+               "elbezar_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "An old and haggard man approaches",
+                           "dialog_title": "He wanders into town, pensive...",
+                           "bulletin_message": {
+                              "00": "\"Ah, what a fair lil' place we have here... But I see preparations have not yet begun!\" The man stares with mysterious eyes, as if they are constantly staring away, beyond you."
+                           },
+                           "choice_000": "Preparations?",
+                           "choice_001": "More work? Ugh! [Skip Quest]"
+                        },
+                        "msg2": {
+                           "bulletin_title": "The old and haggard man",
+                           "dialog_title": "He shrugs, confused",
+                           "bulletin_message": {
+                              "00": "\"Well, of course! Many strange things a-happenin' at this time of the year! Can't you feel it?\" He walks closer, returning the gaze of every curious face looking at him. \"Wolves howling at night, the cold breeze... A chill down the spine. Ah, yes, there's no mistaking it. We're approaching <span class='major'>Candledark</span>.\""
+                           },
+                           "choice_001": "Candledark?",
+                           "choice_000": "Oh!"
+                        },
+                        "msg2b": {
+                           "dialog_title": "He raise his brows",
+                           "bulletin_message": {
+                              "00": "\"Yes, Candledark! You see, our world is not alone, no, no... There's a whole another world, just like ours.\" He gesticulates around with a somber tone. \"The spiritual world... They're here, right now, all around us. Once a year around the same time, the fabric between worlds gets blurred as they approach each other. Eventually, they touch.\" He claps his hands with a quick movement. \"Now both worlds are as one, and strange things might happen... <span class='minor'>This time is known as Candledark</span>.\""
+                           },
+                           "choice_000": "Wow..."
+                        },
+                        "msg3": {
+                           "bulletin_title": "Old Elbezar Grimrock",
+                           "dialog_title": "He smiles for the first time",
+                           "bulletin_message": {
+                              "00": "\"Oh, but where are my manners? I'm <span class='minor'>Elbezar Grimrock!</span>\" He bows as much as his hunched back allows him to, and smiles as charismatically as his crooked teeth allows. \"Candledark is upon us and it is common for many spirits to lose their way... We who herald this time seek to undo this wrong.\""
+                           },
+                           "choice_001": "We'll help!",
+                           "choice_000": "How?"
+                        },
+                        "msg3b": {
+                           "bulletin_title": "Old Elbezar Grimrock",
+                           "dialog_title": "He continues",
+                           "bulletin_message": {
+                              "00": "\"Are you familiar with the fire that doesn't burn, <span class='major'>Soulfire</span>? And no, I haven't been deep in the berry wine barrels. At least not today...\" He chuckles. \"Fear not, Soulfire is unknown to most people. It is fueled by life energy itself and its misuse can lead to the darkest of arts... Such as Necromancy.\" He mumbles and shakes his head sadly. \"To work with Soulfire is to touch what shouldn't be touched, to reach what shouldn't be reached, to... Well, you get the point. It requires respect and benevolence, and can <span class='minor'>guide the lost spirits back to their realm!</span>\""
+                           },
+                           "choice_000": "If you say so..."
+                        },
+                        "msg4": {
+                           "bulletin_title": "Old Elbezar Grimrock",
+                           "dialog_title": "He seems pleased",
+                           "bulletin_message": {
+                              "00": "\"Good, yes!\" His eyes seem to focus for the first time. \"We need the lost spirits to clearly see the way when the time comes. I shall give you something very special for that, an old and gnarled <span class='major'>Soulfire tree</span>. Almost as gnarled as me!\" He laughs roughly, his crooked teeth shining before the hearth. \"Once you place it down I shall light its old Soulfire core again... And then we shall talk about the preparations!\""
+                           },
+                           "choice_000": "Alright! 🦇",
+                           "choice_001": "Actually... [Skip Quest]"
+                        },
+                        "rejection": {
+                           "bulletin_title": "Old Elbezar Grimrock",
+                           "dialog_title": "He's disappointed...",
+                           "bulletin_message": {
+                              "00": "\"Oh, I see. It seems you wouldn't mind making old Elbezar Grimrock sad, then. It is understandable...\" He shrugs. \"Candledark is not for everyone, and definitely not for the weak of heart. If you're not interested in <span class='minor'>lighting the old gnarled tree with Soulfire and helping guide the lost spirits on their safe return to their rightful world</span>, there's not much I can do.\""
+                           },
+                           "choice_000": "Fine, we'll help! 🦇",
+                           "choice_001": "They'll certainly find a way! [Skip Quest]"
+                        }
+                     }
+                  }
+               },
+               "elbezar_gnarled_tree_quest": {
+                  "title": "Place the Soulfire Tree",
+                  "dialog_title": "Place the Gnarled Soulfire Tree",
+                  "text": "Old Elbezar Grimrock will talk to us afterwards! The tree can be moved around, but must be placed at all times during the Candledark storyline!"
+               },
+               "elbezar_giving_up": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "Old Elbezar Grimrock",
+                           "dialog_title": "He seems curious",
+                           "bulletin_message": {
+                              "00": "\"Hm, having second thoughts I take it? It is not surprising...\" He looks around, lost in thought. \"Many towns have had good intentions before - but couldn't see it through. It's not an easy thing to care for those that are already gone... But it is a necessary thing.\""
+                           },
+                           "choice_001": "We're sorry. [End Quest]",
+                           "choice_000": "We'll do it! 🦇"
+                        }
+                     }
+                  }
+               },
+               "bonfires_created": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "The Spirit Bonfires are prepared!",
+                           "dialog_title": "The first bonfire",
+                           "bulletin_message": {
+                              "000": "Make sure that your people can reach these bonfires so they can light it up when night comes. <span class='minor'>All three bonfires must be lit for events to happen</span>."
+                           }
+                        },
+                        "msg2": {
+                           "bulletin_title": "The Spirit Bonfires are prepared!",
+                           "dialog_title": "The second bonfire",
+                           "bulletin_message": {
+                              "000": "Like normal firepits, Spirit Bonfires will burn until the morning and require attention when the next night comes."
+                           }
+                        },
+                        "msg3": {
+                           "bulletin_title": "The Spirit Bonfires are prepared!",
+                           "dialog_title": "The third bonfire",
+                           "bulletin_message": {
+                              "000": "All visitors - especially the unwanted ones - <span class='minor'>shall arrive by these bonfires...</span> Be prepared!"
+                           }
+                        },
+                        "msg4": {
+                           "bulletin_title": "The Spirit Bonfires are prepared!",
+                           "dialog_title": "Playing on Peaceful mode...",
+                           "bulletin_message": {
+                              "000": "Since you are playing the game on Peaceful mode, you may choose to not have enemy invasions during the Candledark storyline. Candledark invasions will provide you with event-related loot, including foodstuffs that can be offered to other visitors. You can still craft these items once you have their recipes. This decision can't be changed later."
+                           },
+                           "choices": {
+                              "000": "No fighting! [Peaceful Mode]",
+                              "001": "We'll fight! [Normal Mode]"
+                           }
+                        }
+                     }
+                  }
+               },
+               "elbezar_explaining": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "Elbezar Grimrock approaches after the celebration",
+                           "dialog_title": "He seems content",
+                           "bulletin_message": {
+                              "00": "\"Ah, what a day. It always fills me with joy to see a town preparing for Candledark. You see, there's a reason traditions exist, more than to just remind us of things that we shouldn't let go. To remind us of why.\" He recomposes himself. \"But we're just getting started. There are still some preparations ahead of us, and I want to tell you how it will work.\""
+                           },
+                           "choice_000": "We're listening!"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Old Elbezar Grimrock",
+                           "dialog_title": "He speaks with a rugged voice",
+                           "bulletin_message": {
+                              "00": "\"<span class='minor'>The Soulfire tree will guide the lost spirits to the spiritual world</span> but something must bring them here. I'll prepare three bonfires on the outskirts of the town, that should be enough to <span class='minor'>attract them during them night when all three are burning</span>...\" He pauses, thinking. \"I can sense the veil between worlds is almost as thin as it can be. Once the bonfires are up they'll already start coming.\""
+                           },
+                           "choice_000": "Understood!"
+                        },
+                        "msg3": {
+                           "bulletin_title": "Old Elbezar Grimrock",
+                           "dialog_title": "He goes on",
+                           "bulletin_message": {
+                              "00": "\"See, the part where most towns give up or are afraid of Candledark is because... Well...\" He shrugs. \"Most spirits want no trouble and will just pass by or ask for offerings like seasonal foods. Some might be inclined to perform a little trick or two, perhaps a small prank, or even scare some people away, all for fun!\" He smiles but his face soon turns to a worried one. \"But...\""
+                           },
+                           "choice_001": "But?"
+                        },
+                        "msg3b": {
+                           "bulletin_title": "Old Elbezar Grimrock",
+                           "dialog_title": "A chilly breeze blows all around...",
+                           "bulletin_message": {
+                              "00": "\"Well, some of them might be... Angry.\" He says with a hushed voice. \"Vengeful, violent spirits and other creatures that thread the line between the worlds will also be attracted. Unfortunately.\" He crosses his arms. \"<span class='minor'>The town will be at risk and your people must be ready to defend it.</span> But they don't have to do it alone.\"",
+                              "00_peaceful": "Well, some of them might be angry.\" He says in a hushed voice. \"Aggressive spirits might make an appearance, but luckily <span class='minor'>we know of a way to prevent them from finding our bonfires</span>, if you want. However, you must know, that by choosing to not fight these spirits they'll be free to roam somewhere else, tormenting others and the less prepared.\" He says sternly. \"And you'll miss their loot as well. Should you instead choose to fight, there's some help I can provide...\""
+                           },
+                           "choice_000": "Oh, there's help?"
+                        },
+                        "msg4": {
+                           "bulletin_title": "Old Elbezar Grimrock",
+                           "dialog_title": "He continues, assertive",
+                           "bulletin_message": {
+                              "00": "\"Indeed, there are <span class='major'>Wards</span> your people can build to help against any potential invaders. These wards will slowly damage all the enemies that step into their mist, but they can also <span class='minor'>provide some other special effects if you add the right ingredients to their fire</span>! I shall share all my knowledge about them with your crafters!\""
+                           },
+                           "choice_000": "Excellent!"
+                        },
+                        "msg5": {
+                           "bulletin_title": "Old Elbezar Grimrock",
+                           "dialog_title": "He has more to say",
+                           "bulletin_message": {
+                              "00": "\"By helping the lost spirits you'll probably be rewarded with <span class='minor'>unique recipe scrolls</span> that will teach your people how to create new and fancy things! Some of which - like the Wards - might require a bit of Soulfire magic... But do not worry! <span class='minor'>The Soulfire tree will produce a grasp of Soulfire every day</span>. Make sure to collect it as much as you can.\""
+                           },
+                           "choice_000": "All good!"
+                        },
+                        "msg6": {
+                           "bulletin_title": "Old Elbezar Grimrock",
+                           "dialog_title": "He prepares to depart",
+                           "bulletin_message": {
+                              "00": "\"Thank you, friends. So remember: light bonfires every night and be ready to be visited by all sorts of beings! Deal with them the best you can by offering what they need and you'll be rewarded... And so we'll do our part in Candledark.\" He lights up for a second. \"Oh, one more thing... There is something you'll need. Pumpkins! Lots of it! So I figured this could help!\""
+                           },
+                           "choice_000": "A pumpkin patch? Thank you! 🎃"
+                        }
+                     }
+                  }
+               },
+               "visitors": {
+                  "treat": "🍬Treat!",
+                  "trick": "👻Trick!",
+                  "accept": "Thanks! 🕯️",
+                  "tricked": {
+                     "witch": "👻 We've been tricked by a Witch! It is raining... Frogs!?",
+                     "ghost": "👻 We've been tricked by a Ghost! It's getting very foggy!",
+                     "cat": "👻 We've been tricked by a Black Cat! Watch your step, everyone!",
+                     "vampire": "👻 We've been tricked by a Vampire! Everyone feels a bit drained...",
+                     "scarecrow": "👻 We've been tricked by a Scarecrow! Some of our crops have died!",
+                     "zombie": "👻 We've been tricked by a Zombie! Some of our meat will rot!",
+                     "skeleton": "👻 We've been tricked by a Skeleton! Everyone, get dancing!",
+                     "cultist": "👻 We've been tricked by a Cultist! They've dyed everyone's hair!"
+                  },
+                  "visitor_witch_arrival": {
+                     "dialog_tree_info": {
+                        "dialog_nodes": {
+                           "msg1": {
+                              "bulletin_title": "🎃 A witch arrives 🎃",
+                              "dialog_title": "The Witch",
+                              "bulletin_message": {
+                                 "00": "\"Hahahahagh!\" She flies past the town and back, landing near the banner. \"What a lovely little place! I appreciate your bonfires, they're very helpful for landing. I must ask, though... Have you got any candies for this old sweet tooth? Will it be a treat... Or a trick?!\""
+                              }
+                           }
+                        }
+                     }
+                  },
+                  "visitor_witch_reward": {
+                     "bulletin_title": "The Witch is pleased",
+                     "dialog_title": "Happy Witch",
+                     "message": "\"Very nice, very nice indeed. This will do, yes, yes. It's time for me to go back home. Thank you and happy Candledark!\" She zooms past everyone with one last laughter, dropping a small bag before heading towards the Soulfire tree and dissipating into light.<p>The bag contains:"
+                  },
+                  "visitor_cat_arrival": {
+                     "dialog_tree_info": {
+                        "dialog_nodes": {
+                           "msg1": {
+                              "bulletin_title": "🎃 A Black Cat arrives 🎃",
+                              "dialog_title": "The Black Cat",
+                              "bulletin_message": {
+                                 "00": "\"Meeeow...\" An adorable black kitty skulks around the townsfolk's legs, purring against some of them between short, whimpered meows. It then stares into the Soulfire tree as you hear a playful voice in your head. \"Meeow, my friends. So, what will it be? Trick or treat?\""
+                              }
+                           }
+                        }
+                     }
+                  },
+                  "visitor_cat_reward": {
+                     "bulletin_title": "The Black Cat is satisfied",
+                     "dialog_title": "Happy Black Cat",
+                     "message": "The cat seems to purr rapidly as it rubs its whiskers against the candy. \"This is adequate, mew. Thank you.\" Their eyes glow with magical energy and it conjures a small bag in front of itself before walking towards the tree and slowly fading away into light.<p>The bag contains:"
+                  },
+                  "visitor_ghost_arrival": {
+                     "dialog_tree_info": {
+                        "dialog_nodes": {
+                           "msg1": {
+                              "bulletin_title": "🎃 A Ghost arrives 🎃",
+                              "dialog_title": "The Ghost",
+                              "bulletin_message": {
+                                 "00": "\"Boo!\" The ghost says as it comes from the ground. It flies around for a moment, admiring the town with a visible grin, eager for pranks. \"Nice place! I like it. But you know what it's even nicer? Candies!\" It moves into a wall and comes up in front of the Soulfire Tree. \"Hah! Trick or treat?\""
+                              }
+                           }
+                        }
+                     }
+                  },
+                  "visitor_ghost_reward": {
+                     "bulletin_title": "The Ghost is satisfied",
+                     "dialog_title": "Happy Ghost",
+                     "message": "\"Hah! That's so kind, no spooky business today, heh! Farewell!\" He laughs and excitedly flies around for a moment before finally flying into the Soulfire Tree, where it disappears. A small pouch seems to be on the ground nearby.<p>The bag contains:"
+                  },
+                  "visitor_zombie_arrival": {
+                     "dialog_tree_info": {
+                        "dialog_nodes": {
+                           "msg1": {
+                              "bulletin_title": "🎃 A Zombie arrives 🎃",
+                              "dialog_title": "The Zombie",
+                              "bulletin_message": {
+                                 "00": "\"Give... Brains...\" It stops for a moment, as if thinking. A whole minute seems to pass before it continues. \"No. I mean... Candies... Yes. Give candies...\" It tries to smile but there isn't many muscles left for that, apparently."
+                              }
+                           }
+                        }
+                     }
+                  },
+                  "visitor_zombie_reward": {
+                     "bulletin_title": "The Zombie is pleased",
+                     "dialog_title": "Happy Zombie",
+                     "message": "\"Not brains... But... Okay.\" He seems happy enough. With a very slow movement he grabs a bag from within their clothes and drop it on the ground before walking towards the Soulfire Tree and disappearing.<p>The bag contains:"
+                  },
+                  "visitor_skeleton_arrival": {
+                     "dialog_tree_info": {
+                        "dialog_nodes": {
+                           "msg1": {
+                              "bulletin_title": "🎃 A Skeleton arrives 🎃",
+                              "dialog_title": "The Skeleton",
+                              "bulletin_message": {
+                                 "00": "\"Ohh yeah! I have arrived!\" The skeleton dances into town excitedly, their old, ragged dress flowing behind them. \"Greetings living people! I come from the other side!\" It then stops dancing in front of the Soulfire Tree. \"It was very kind of you to point the way home for me. But before I go... Trick or treat?!\" It smirks."
+                              }
+                           }
+                        }
+                     }
+                  },
+                  "visitor_skeleton_reward": {
+                     "bulletin_title": "The Skeleton is satisfied",
+                     "dialog_title": "Happy Skeleton",
+                     "message": "The skeleton happily accepts the offering and proceeds to dance around with it. \"Much appreciated! It's time for my final act!\" It says, dropping a bag on the ground before dancing towards the Soulfire Tree and disappearing.<p>The bag contains:"
+                  },
+                  "visitor_vampire_arrival": {
+                     "dialog_tree_info": {
+                        "dialog_nodes": {
+                           "msg1": {
+                              "bulletin_title": "🎃 A Vampire arrives 🎃",
+                              "dialog_title": "The Vampire",
+                              "bulletin_message": {
+                                 "00": "\"Ahh, mortals and their little hovels... Oh, pardon me.\" She approaches with a bow. \"I assure you, I've long distanced myself from the more... Rudimentary drinking habits of my brethren. You are safe... For now.\" She smiles, looking towards the Soulfire Tree. \"Thank you kindly for the passage, but I must ask one last favor... Shall I be treated or should you be tricked?\""
+                              }
+                           }
+                        }
+                     }
+                  },
+                  "visitor_vampire_reward": {
+                     "bulletin_title": "The Vampire is satisfied",
+                     "dialog_title": "Happy Vampire",
+                     "message": "\"I suppose it will do.\" She seems grateful, winking after receiving the offering. She returns a small bag to the people around. \"A little something for your trouble. Farewell and until the next conjunction!\" She slides towards the Soulfire Tree, dissipating into mist.<p>The bag contains:"
+                  },
+                  "visitor_cultist_arrival": {
+                     "dialog_tree_info": {
+                        "dialog_nodes": {
+                           "msg1": {
+                              "bulletin_title": "🎃 A Cultist arrives 🎃",
+                              "dialog_title": "The Cultist",
+                              "bulletin_message": {
+                                 "00": "\"We shall all praise our... Wait, one moment.\" He stops, trying to remember something. \"Oh, nevermind. So, uh... This is the way back, right? I guess I should get going then...\" He moves towards the Soulfire Tree but turns around. \"Oh, that was it! Treat or trick? Or treat? Something.\""
+                              }
+                           }
+                        }
+                     }
+                  },
+                  "visitor_cultist_reward": {
+                     "bulletin_title": "The Cultist is satisfied",
+                     "dialog_title": "Happy Cultist",
+                     "message": "\"Ah, delightful! Thank you very much.\" The Cultist seems pleased, grabs a small satchel from their vests and drops it on the ground. They walk towards the Tree once more, disappearing into mist.<p>The bag contains:"
+                  },
+                  "visitor_scarecrow_arrival": {
+                     "dialog_tree_info": {
+                        "dialog_nodes": {
+                           "msg1": {
+                              "bulletin_title": "🎃 A Scarecrow arrives 🎃",
+                              "dialog_title": "The Scarecrow",
+                              "bulletin_message": {
+                                 "00": "\"Hello, my friends! Yes, you're my friends! Everyone is a friend. Except crows.\" It hops around happily, looking around. \"It was very kind of you to light the way! The Children of Monkey are always kind. Not crows, though.\" Somehow you can tell they're smiling. \"Trick or treat, friend?\""
+                              }
+                           }
+                        }
+                     }
+                  },
+                  "visitor_scarecrow_reward": {
+                     "bulletin_title": "The Scarecrow is satisfied",
+                     "dialog_title": "Happy Scarecrow",
+                     "message": "\"Great, I knew you were not a crow! No crow!\" It hops around excitedly after getting their sweets. Before leaving, it drops a small bag from under their hat. \"Farewell and good luck!\" It finally hops towards the Soulfire Tree, disappearing.<p>The bag contains:"
+                  }
+               },
+               "treat_explanation": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "👻 A friendly ghost approaches 👻",
+                           "dialog_title": "Friendly and spooky!",
+                           "bulletin_message": {
+                              "00": "\"Trick-or-treat!\" It floats around in a funny circle, finishing with a playful wiggle. The ghost then stands there for a moment, confused. \"Oh. I guess your town is new to this, right? It's perfectly understandable! It's just a thing we do to interact with the friendly towns that help during Candledark and also to take some goodies back to the other side!\" It giggles."
+                           },
+                           "choice_000": "Sorry..."
+                        },
+                        "msg2": {
+                           "bulletin_title": "The friendly ghost",
+                           "dialog_title": "It seems happy to help!",
+                           "bulletin_message": {
+                              "00": "\"Nah, don't worry! However, you'll be seeing a lot of us from now on, trick-or-treating... Just make sure to have some seasonal candies ready for whenever others come. Caramel Candies or Caramel Corn, Candy Apples... Any will do! Luckily for you, I was a Cook before I was... Uh... Dead. So here, I'll give you a recipe!\""
+                           },
+                           "choice_000": "Thanks!"
+                        }
+                     }
+                  }
+               },
+               "elbezar_medium_raids_intro": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "🕸️ A worried Elbezar approaches 🕸️",
+                           "dialog_title": "He seems worried...",
+                           "bulletin_message": {
+                              "00": "\"Good work in holding back these creatures...\" He begins with a yellow smile. \"However, I must warn ye... The town is now drawing some attention and...\" He shivers for a moment. \"<span class='minor'>The Lords of the Night</span> love a challenge. I'm sure they'll seek revenge for their lost thralls soon. The <span class='major'>Green Candledark Ward</span> will help you against Vampires, if you can afford one. Otherwise, <span class='minor'>I shall teach your herbalists a salve to treat their bites...</span> But you must be fast! Be prepared, my friends!\""
+                           },
+                           "choice_000": "We will!"
+                        }
+                     }
+                  }
+               },
+               "elbezar_hard_raids_intro": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "🕸️ A scared Elbezar approaches 🕸️",
+                           "dialog_title": "He saw something...",
+                           "bulletin_message": {
+                              "00": "\"My friends, I come with a warning!\" He seems a bit shaken and tired, as if he has been running a long distance to bring this message. \"Witches, evil ones. <span class='minor'>Hags wielding unnatural, dark magic</span>... They too have been attracted by your town's prowess in defense of the weaker and good spirits. <span class='minor'>Their veil of darkness will protect their allies, remember to take them down as fast as possible</span>!\" He nods assertively before preparing to leave."
+                           },
+                           "choice_000": "Thanks for the warning!"
+                        }
+                     }
+                  }
+               },
+               "elbezar_insane_raids_intro": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "🕸️ A terrified Elbezar approaches 🕸️",
+                           "dialog_title": "He has seen it all...",
+                           "bulletin_message": {
+                              "00": "\"I have returned with dire news once more, I'm afraid...\" He pauses before continuing, looking for proper words. \"Greater, otherworldly forces are now set on seeing your town burn! <span class='minor'>They shall provide protection to some of the creatures that are coming to attack, a protection that will make them almost completely invulnerable!</span> Luckily, <span class='major'>White-fire Candledark Wards</span> can break this terrible spell, so...\" He looks around for a moment. \"I guess it's time to invest in some.\""
+                           },
+                           "choice_000": "Will do!"
+                        }
+                     }
+                  }
+               },
+               "elbezar_quest_completion": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "A satisfied Elbezar approaches",
+                           "dialog_title": "He seems genuinely happy!",
+                           "bulletin_message": {
+                              "00": "\"We did it, my friends!\" He smiles, his crooked teeth shinier than ever. \"We've done our part and most of the good and friendly spirits are now on their way home... There's only one thing left now. We will raise our tankards in celebration to honor them as they pass!\"<p><span class='aside'>Starting the celebration will finish the Candledark event and the Soulfire Tree will no longer produce Soulfire. Additionally, the Herbalist can now create a Vial of Blessed Water, which will heal enthralled hearthlings, if any. Should you wish to continue, you can press [Esc] to close this message and delay the celebration for as long as you want!</span>"
+                           },
+                           "choice_000": "Let's party! 🎃"
+                        }
+                     }
+                  }
+               },
+               "epilogue_dialog": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "A spirit seems to approach Elbezar!",
+                           "dialog_title": "They stare each other...",
+                           "bulletin_message": {
+                              "00": "Elbezar's eyes seem fixated on the ghostly form in front of him. \"I was hoping you'd be here... This town has done a wonderful job this year. I've longed for this brief moment for so long...\"<p>A tear seems to roll down his face."
+                           },
+                           "choice_000": "Oh?"
+                        },
+                        "msg2": {
+                           "bulletin_title": "Elbezar and the Spirit",
+                           "dialog_title": "The spirit speaks with a soft voice",
+                           "bulletin_message": {
+                              "00": "\"Yes, my dear. They did a wonderful job indeed...\" It frowns. \"But it worries me so much that while we shall move on... You seem to linger. Every year, Elbezar... You say you worry I wouldn't move on but it is you that must let go, for yourself... What happened, happened. Time can't go back...\""
+                           },
+                           "choice_000": "Oh!",
+                           "choice_001": "Hmm..."
+                        },
+                        "msg3": {
+                           "bulletin_title": "Elbezar and the Spirit",
+                           "dialog_title": "He looks resigned...",
+                           "bulletin_message": {
+                              "00": "\"Yes, every year! I am so sorry, I really am! But I can't let you go... The guilt I carry, the mistakes I've made... I can never erase them. And I need to know you'll find your way back, every Candledark... Or I will never forgive myself!\" He sobs."
+                           },
+                           "choice_000": "Let go, Elbezar...",
+                           "choice_001": "Uh..."
+                        },
+                        "msg3b": {
+                           "bulletin_title": "Elbezar and the Spirit",
+                           "dialog_title": "The spirit now speaks to all around",
+                           "bulletin_message": {
+                              "00": "\"Your friends are right, Elbezar. We will always find our way, sooner or later. It is the natural order of things. We appreciate the warmth and the guiding, but we wouldn't be lost forever without it. So you must ask yourself if you're doing this for us... Or for yourself...\"<p>He nods to the spirit's words, tears rolling down his face. \"Thank you, all of you, for guiding us during the Candledark, and for the friendly interactions.\" The spirit giggles."
+                           },
+                           "choice_000": "You're welcome!"
+                        },
+                        "msg4": {
+                           "bulletin_title": "Elbezar and the Spirit",
+                           "dialog_title": "The spirit speaks",
+                           "bulletin_message": {
+                              "00": "\"Every year you mean to help me move on, my dear Elbezar, but I've already moved on. There's nothing to forgive, there's nothing to regret.\" The spirit seems to smile and radiate warmth and love.<p>\"It's you that must move on now, my love. You've done your part. I'm at peace... You must be as well.\""
+                           },
+                           "choice_000": "Aww..."
+                        },
+                        "msg5": {
+                           "bulletin_title": "Elbezar and the Spirit",
+                           "dialog_title": "The spirit leaves...",
+                           "bulletin_message": {
+                              "00": "\"Yes, my love. You are right...\" Elbezar seems pensive for a moment. \"I can't change the past, but I can move on to a better future. We must live fully and enjoy every moment with those we treasure, for all things are passing.\" He tries to smile, still sobbing. \"Thank you, my friends. I am sorry I've hidden my own selfish reasons for what I do, but I do not regret it.<p>We've done good to many this year, from both worlds, and perhaps this is, after all, a worthy endeavour in itself. Farewell, and may we meet again in the future!\""
+                           },
+                           "choice_000": "Farewell!"
+                        }
+                     }
+                  }
+               }
             }
          }
       },
@@ -3538,6 +4027,10 @@
                "fish_lover_ate_fish": {
                   "display_name": "Fish Lover",
                   "tooltip": "Nom, nom, nom! Had some delicious [str(foodname)]! Gotta love 'em slippery fellows!"
+               },
+               "merry_time_candledark": {
+                  "display_name": "Spooky Feasting",
+                  "tooltip": "Boo! Haha! I love this season so much! Warm and comfy food, scary tales around the hearth... Nothing could be better!"
                }
             },
             "traits": {
@@ -3806,6 +4299,30 @@
                   "talk_with_much_higher_renown": {
                      "display_name": "In famous company",
                      "tooltip": "I feel like I'm on the shoulder of giants when [str(target_name)] gives me some advice! What an accomplished individual!"
+                  }
+               }
+            },
+            "candledark": {
+               "values": {
+                  "celebration": {
+                     "display_name": "Candledark Celebration!",
+                     "tooltip": "There are strange things happenin' this time of the year! It's the spooky season! Time for celebrating our harvests and the good, friendly spirits!"
+                  },
+                  "spooked": {
+                     "display_name": "Spooked!",
+                     "tooltip": "Ahhh! I mean, uh... Oh, I really didn't see that one coming... So scary!"
+                  },
+                  "bitten": {
+                     "display_name": "Bitten by a Vampire",
+                     "tooltip": "Ugh, that ruined my day... I don't want to turn into a thrall!"
+                  },
+                  "turned": {
+                     "display_name": "Enthralled",
+                     "tooltip": "Ugh... I need... A cure..."
+                  },
+                  "nibbles": {
+                     "display_name": "Attacked by a Vampire!",
+                     "tooltip": "Gah! They're so scary!"
                   }
                }
             }
@@ -5016,6 +5533,28 @@
                   "3_description": "Ugh! They have been hit by lightning for a third time! Seriously, just stay inside!",
                   "4_display_name": ", Lord of Thunder",
                   "4_description": "Oof! They have been hit by lightning once more. Four times! Someone is definitely mad at them!"
+               },
+               "candledark": {
+                  "bitten": {
+                     "display_name": "🎃 Candledark - Vampire Bites",
+                     "description": "Gained by being bitten by a Vampire during the Candledark event!",
+                     "1_display_name": " the Bitten",
+                     "1_description": "They have been bitten by a Vampire! Ouch! Careful to not turn into a thrall...",
+                     "2_display_name": " the Chewed",
+                     "2_description": "They have been bitten five times by a Vampire! Hopefully not the same Vampire...",
+                     "3_display_name": ", Endurer of Otherworldly Pain",
+                     "3_description": "They have been bitten fifteen times by Vampires! Maybe it's time to consider bathing in garlic sauce."
+                  },
+                  "turned": {
+                     "display_name": "🎃 Candledark - Enthrallment",
+                     "description": "Gained by being enthralled by a Vampire Bite during the Candledark event!",
+                     "1_display_name": " the Turned",
+                     "1_description": "They've been enthralled by a Vampire! That... That's not good, right?",
+                     "2_display_name": " the Unliving Legend",
+                     "2_description": "They have been enthralled two times now! Maybe stop going out with Vampires?",
+                     "3_display_name": ", One Between Worlds",
+                     "3_description": "They have been enthralled 3 times! The world of undeath is not even scary anymore!"
+                  }
                }
             }
          }
@@ -5686,9 +6225,163 @@
                "display_name": "Using Broad Arrows",
                "description": "Currently using broad arrows, which inflicts \"Major Open Wounds\" upon hitting their target, dealing a lot of additional damage over time. Click to swap between arrow types."
             }
+         },
+         "candledark": {
+            "pumpkin_ward_green": {
+               "display_name": "Light a Green Ward",
+               "description": "Offer the boon of a 🔹Basket of Garlic to the good spirits of Candledark to receive the green Soulfire blessing on this Ward.<br><br>❇️ This Ward will enfeeble Vampires within its range, reducing their attributes and preventing them from being able to infect hearthlings with their bites, negating the risk of being turned into a Thrall.<br><br>⚠️ After transformed, the Candledark Ward can no longer be moved or undeployed and can only be destroyed."
+            },
+            "pumpkin_ward_orange": {
+               "display_name": "Light an Orange Ward",
+               "description": "Offer the boon of a 🔹Basket of Pumpkin to the good spirits of Candledark to receive the orange Soulfire blessing on this Ward.<br><br>❇️ This Ward will be able to shoot enemies, like a turret. The damage is medium and the range is short but the shooting speed is quite high! They regain 5 rounds of ammunition every one hour.<br><br>⚠️ After transformed, the Candledark Ward can no longer be moved or undeployed and can only be destroyed."
+            },
+            "pumpkin_ward_purple": {
+               "display_name": "Light a Purple Ward",
+               "description": "Offer the boon of a 🔹Skull to the good spirits of Candledark to receive the purple Soulfire blessing on this Ward.<br><br>❇️ This Ward will be able to severely slow down every Candledark enemy that walks within its range.<br><br>⚠️ After transformed, the Candledark Ward can no longer be moved or undeployed and can only be destroyed."
+            },
+            "pumpkin_ward_red": {
+               "display_name": "Light a Red Ward",
+               "description": "Offer the boon of a 🔹Healing Tonic to the good spirits of Candledark to receive the red Soulfire blessing on this Ward.<br><br>❇️ This Ward will continue to just hurt Candledark enemies over time, however the frequency of the pulses and the damage inflicted will be much higher.<br><br>⚠️ After transformed, the Candledark Ward can no longer be moved or undeployed and can only be destroyed."
+            },
+            "pumpkin_ward_white": {
+               "display_name": "Light a White Ward",
+               "description": "Offer the boon of 🔹Gold Flakes to the good spirits of Candledark to receive the white Soulfire blessing on this Ward.<br><br>❇️ This Ward will be able to remove the 'Otherwordly Protection' buff from Candledark enemies that have it, leaving them a lot more vulnerable.<br><br>⚠️ After transformed, the Candledark Ward can no longer be moved or undeployed and can only be destroyed."
+            },
+            "pumpkin_ward_yellow": {
+               "display_name": "Light a Yellow Ward",
+               "description": "Offer the boon of a 🔹Big Bone Material to the good spirits of Candledark to receive the yellow Soulfire blessing on this Ward.<br><br>❇️ This Ward shall be able to weaken Candledark enemies that walk within its range, drastically reducing the damage they inflict on your citizens.<br><br>⚠️ After transformed, the Candledark Ward can no longer be moved or undeployed and can only be destroyed."
+            }
+         },
+         "extensible_object": {
+            "extend": {
+               "display_name": "Extend",
+               "description": "Extend this object within its designated and allowed dimensions."
+            },
+            "remove": {
+               "display_name": "Remove Extension",
+               "description": "Reset the extension dimensions on this object back to default. This is needed to define a new extension dimension, move or undeploy the object."
+            }
+         },
+         "extend_extensible_object": {
+            "tip_title": "Extending Object",
+            "tip_description": "Drag the mouse over the highlighted white borders to select this object's new dimensions."
          }
       },
       "buffs": {
+         "candledark": {
+            "pumpkin_ward": {
+               "green_aura_buff": {
+                  "display_name": "Candledark Ward (Green)",
+                  "description": "Will inflict approaching Candledark Vampire enemies with the green Ward effect.<ul><li>The Muscle, Menace, Courage and Speed of Vampires are reduced</li><li>Vampires can't fly anymore and can be affected by the 'Shaken' and 'Flanked' effects</li><li>The damage and the armor of Vampires are reduced</li></ul>"
+               },
+               "green_effect_buff": {
+                  "display_name": "Warded! (Green)",
+                  "description": "This creature is affected by a Candledark Ward!<ul><li>Muscle, Menace, Courage and Speed are reduced</li><li>Can no longer fly and can now be affected by the 'Shaken' and 'Flanked' effects</li><li>Damage and the armor are reduced</li></ul>"
+               },
+               "purple_aura_buff": {
+                  "display_name": "Candledark Ward (Purple)",
+                  "description": "Will inflict approaching Candledark enemies with the purple Ward effect.<ul><li>The Speed of enemies is reduced</li><li>The ward effect becomes stronger as it stacks</li></ul>"
+               },
+               "red_aura_buff": {
+                  "display_name": "Candledark Ward (Red)",
+                  "description": "Will inflict approaching Candledark enemies with the red Ward effect.<ul><li>Enemies take a reasonable amount of damage while inflicted with the ward</li><li>The ward effect becomes stronger as it stacks</li></ul>"
+               },
+               "soulfire_aura_buff": {
+                  "display_name": "Candledark Ward",
+                  "description": "Will inflict approaching Candledark enemies with the Soulfire Ward effect.<ul><li>Enemies take a small amount of damage while inflicted with the ward</li></ul>"
+               },
+               "white_aura_buff": {
+                  "display_name": "Candledark Ward (White)",
+                  "description": "Will inflict approaching Candledark enemies with the white Ward effect.<ul><li>Enemies protected by the 'Otherworldly Protection' effect will lose it</li><li>The protection will not come back to them even after they've left the ward radius</li></ul>"
+               },
+               "yellow_aura_buff": {
+                  "display_name": "Candledark Ward (Yellow)",
+                  "description": "Will inflict approaching Candledark enemies with the yellow Ward effect.<ul><li>The damage of enemies is reduced</li><li>The ward effect becomes stronger as it stacks</li></ul>"
+               },
+               "purple_effect_buff": {
+                  "display_name": "Warded! (Purple)",
+                  "description": "This creature is affected by a Candledark Ward!<ul><li>Speed is reduced</li><li>This effect becomes stronger as it stacks</li></ul>"
+               },
+               "red_effect_buff": {
+                  "display_name": "Warded! (Red)",
+                  "description": "This creature is affected by a Candledark Ward!<ul><li>Taking a reasonable amount of damage over time</li><li>This effect becomes stronger as it stacks</li></ul>"
+               },
+               "soulfire_effect_buff": {
+                  "display_name": "Warded!",
+                  "description": "This creature is affected by a Candledark Ward!<ul><li>Taking a small amount of damage over time</li></ul>"
+               },
+               "white_effect_buff": {
+                  "display_name": "Warded! (White)",
+                  "description": "This creature is affected by a Candledark Ward!<ul><li>Prevents this creature from being protected by 'Otherworldly Protection'</li><li>The protection will not come back even after this effect expires</li></ul>"
+               },
+               "yellow_effect_buff": {
+                  "display_name": "Warded! (Yellow)",
+                  "description": "This creature is affected by a Candledark Ward!<ul><li>Damage is reduced</li><li>This effect becomes stronger as it stacks</li></ul>"
+               }
+            },
+            "darkness": {
+               "darkness_aura_buff": {
+                  "display_name": "Calling upon the Dark Shroud...",
+                  "description": "This creature seems to be reciting some ancient, mystical words!<ul><li>Defeat this creature to stop the Shroud of Darkness from protecting the others around it</li></ul>"
+               },
+               "darkness_effect_buff": {
+                  "display_name": "Shrouded in Darkness",
+                  "description": "It's like they're phasing between worlds!<ul><li>Invulnerable to all sources of damage</li><li>Invulnerable to Candledark Wards' effects except the white Ward</li><li>One of their allies must be calling upon the Dark Shroud to grant this protection. Locate them!</li></ul>"
+               }
+            },
+            "otherworldly_protection_buff": {
+               "display_name": "Otherworldly Protection",
+               "description": "This creature is protected by very strong sorcery! Nothing seems to affect them strongly!<ul><li>Armor is extremely increased</li><li>Invulnerable to Candledark Wards' effects except the white Ward, which removes this protection</li></ul>"
+            },
+            "bat_power": {
+               "display_name": "Sonic Blasted",
+               "description": "Oof! That bat created some really terrible noise towards me!<ul><li>Courage is completely reduced for a few minutes</li></ul>"
+            },
+            "merry_time": {
+               "display_name": "Spooky Feasting",
+               "description": "Feeling all excited and warm with a really spooky feast! Muscle, Courage and Stamina are greatly increased.<ul><li>Experience gain is increased</li></ul>"
+            },
+            "bitten": {
+               "display_name": "Vampire Bite",
+               "description": "Oh no! I will turn into a thrall! I don't want this!<ul><li>Spirit and Mind are limited</li><li>Diligence, Compassion, Willpower, Stamina and Speed are reduced</li><li>This hearthling needs to be treated with Garlic & Nightshade Salve to prevent them from becoming a Vampire Thrall when the timer expires!</li></ul>",
+               "bulletin": "[name(i18n_data.entity)] was bitten by a Vampire!"
+            },
+            "turned": {
+               "display_name": "Enthralled",
+               "description": "This hearthling has been turned into a Vampire Thrall! The Soulfire Tree shall keep them from losing their minds, but...<ul><li>Most attributes are completely reduced</li><li>A cure exists but may only be obtained towards the end of the Candledark event!</li></ul>",
+               "bulletin": "[name(i18n_data.entity)] has turned into a Thrall!"
+            },
+            "nibbles": {
+               "display_name": "Vampire Nibbles",
+               "description": "Ouch! Owie! There's a Vampire trying to bite me!<ul><li>If repeated bites are successful, this Hearthling might be enthralled!</li></ul>"
+            },
+            "visitor": {
+               "ghost": {
+                  "display_name": "Tricked: Ghost",
+                  "description": "So much fog! It seems to go wherever I go!<ul><li>Speed is reduced</li></ul>"
+               },
+               "cat": {
+                  "display_name": "Tricked: Black Cat",
+                  "description": "Cats are so agile, they can be anywhere! Gotta be careful!<ul><li>Courage and Menace are reduced</li></ul>"
+               },
+               "skeleton": {
+                  "display_name": "Tricked: Skeleton",
+                  "description": "I can't control myself, I just want to shake my bones all the time! Let's dance!<ul><li>This hearthling will prioritize dancing above everything else, literally</li></ul>"
+               },
+               "vampire": {
+                  "display_name": "Tricked: Vampire",
+                  "description": "I feel so... Drained. What's going on? <ul><li>Willpower is reduced</li></ul>"
+               },
+               "cultist": {
+                  "display_name": "Tricked: Cultist",
+                  "description": "They've dyed my hair! Ugh! I hope it rains or something..."
+               }
+            }
+         },
+         "chromatic_fire_buff": {
+            "display_name": "On Fire (Chromatic)",
+            "description": "Set aflame! Taking fire damage every 5 minutes for 20 minutes"
+         },
          "hamstrung": {
             "display_name": "Hamstrung",
             "description": "Moving slower because of precisely aimed wounds."
@@ -5778,7 +6471,7 @@
          },
          "holiday_cheer": {
             "display_name": "Frostfeast Cheer",
-            "description": "Woo! This hearthling is enjoying the holidays with slighly increased compassion and speed! "
+            "description": "Woo! This hearthling is enjoying the holidays with slighly increased Compassion and Speed! "
          },
          "thorns": {
             "display_name": "Spiky Protection",
@@ -6606,6 +7299,10 @@
          "starstruck": {
             "display_name": "Starstruck",
             "description": "Being damaged by 1% of their total health every 8 minutes for 32 minutes, plus another 1% damage per pulse for every negative effect they're currently inflicted with.<br><br><i>The crushing power of gravity!</i>"
+         },
+         "candledark_cheer": {
+            "display_name": "Candledark Cheer",
+            "description": "Boo! This hearthling is enjoying the spooky season with slighly increased Willpower and Speed! "
          }
       },
       "loadouts": {
@@ -8334,6 +9031,33 @@
                   "description": "For when you're feeling really festive.",
                   "flavor": ""
                }
+            },
+            "candledark": {
+               "pumpkin_small_recipe": {
+                  "recipe_name": "Small Candledark Pumpkin",
+                  "description": "Look for a decent sized pumpkin to be used as a decoration.",
+                  "flavor": "May come in multiple colors!"
+               },
+               "pumpkin_tiny_recipe": {
+                  "recipe_name": "Tiny Candledark Pumpkins",
+                  "description": "Look for the smallest and cutest pumpkins in a basket to be used as a decoration.",
+                  "flavor": "Baby pumpkins!"
+               },
+               "pumpkin_lantern_recipe": {
+                  "recipe_name": "Candledark Pumpkin Lantern",
+                  "description": "The most classical Candledark decoration and a handy light source for the spooky season!",
+                  "flavor": "Carving them is fun!"
+               },
+               "vampire_salve_recipe": {
+                  "recipe_name": "Candledark Garlic & Nightshade Salve",
+                  "description": "This potent medicine is extremely important for treating the bites of Vampires.",
+                  "flavor": "Failing to treat them will result in the enthrallment of the patient"
+               },
+               "blessed_water_recipe": {
+                  "recipe_name": "Vial of Candledark Blessed Water",
+                  "description": "This very special recipe blesses some water into the only treatment capable of bringing an enthralled hearthling back to the light.",
+                  "flavor": "It affects the entire town when used"
+               }
             }
          },
          "herbalist_hood": {
@@ -9111,6 +9835,33 @@
                   "description": "A short string holding a bunch of tiny glass globes filled with magic light!",
                   "flavor": "Can't be turned off"
                }
+            },
+            "candledark": {
+               "pumpkin_ward_recipe": {
+                  "recipe_name": "Candledark Ward",
+                  "description": "Create a magical bonfire imbued with Soulfire that can damage Candledark enemies that get close.",
+                  "flavor": "After placed, different ingredients can be added to the Ward's fire to provide other interesting effects!"
+               },
+               "pumpkin_patch_recipe": {
+                  "recipe_name": "Candledark Pumpkin Patch",
+                  "description": "Create a fertile patch of dirt that can be used to grow pumpkins.",
+                  "flavor": "Harvests will also yield mega pumpkins!"
+               },
+               "pumpkin_patch_fence_recipe": {
+                  "recipe_name": "Candledark Pumpkin Patch (Fenced)",
+                  "description": "Create a fertile patch of dirt that can be used to grow pumpkins and surround it with a creepy old fence!",
+                  "flavor": "Harvests will also yield mega pumpkins!"
+               },
+               "pumpkin_patch_scarecrow_recipe": {
+                  "recipe_name": "Candledark Pumpkin Patch (Scarecrow)",
+                  "description": "Create a fertile patch of dirt that can be used to grow pumpkins and add a lovely scarecrow to keep it safe!",
+                  "flavor": "Harvests will also yield mega pumpkins!"
+               },
+               "casket_bed_porcelain_recipe": {
+                  "recipe_name": "Candledark Porcelain Casket Bed",
+                  "description": "A very fancy and exquisitely crafted bed that is sure to be very comfortable... For a long, long time.",
+                  "flavor": "Worthy of shiny Vampire celebrities"
+               }
             }
          },
          "potter_description": {
@@ -9830,6 +10581,43 @@
                   "description": "A very warm and fancy way to welcome your neighbors.",
                   "flavor": "Welcome to our feast!"
                }
+            },
+            "candledark": {
+               "pumpkin_ward_recipe": {
+                  "recipe_name": "Candledark Ward",
+                  "description": "Create a magical bonfire imbued with Soulfire that can damage Candledark enemies that get close.",
+                  "flavor": "After placed, different ingredients can be added to the Ward's fire to provide other interesting effects!"
+               },
+               "sarcophagus_bed_recipe": {
+                  "recipe_name": "Candledark Stone Tomb Bed",
+                  "description": "Craft a terrible (but fun!) bed out of stone that looks a lot like... A tomb.",
+                  "flavor": "It is a tomb and it is not comfortable!"
+               },
+               "tombstone_recipe": {
+                  "recipe_name": "Candledark Tombstone",
+                  "description": "Create a decoration that looks like a memorial for a fallen hearthling...",
+                  "flavor": ""
+               },
+               "tombstone_tall_recipe": {
+                  "recipe_name": "Tall Candledark Tombstone",
+                  "description": "Create a magical tombstone that is capable of creating a thick fog around it.",
+                  "flavor": "Special effects!"
+               },
+               "dining_table_black_recipe": {
+                  "recipe_name": "Black Candledark Table",
+                  "description": "Craft a table with an interesting spider web pattern for a spooky feast!",
+                  "flavor": ""
+               },
+               "dining_table_orange_recipe": {
+                  "recipe_name": "Orange Candledark Table",
+                  "description": "Craft an orange tablecloth that looks like a really big pumpkin!",
+                  "flavor": ""
+               },
+               "dining_table_purple_recipe": {
+                  "recipe_name": "Purple Candledark Table",
+                  "description": "Craft a nice purple tablecloth with the picture of a cute ghost for your seasonal party!",
+                  "flavor": "Aww, it looks so sad!"
+               }
             }
          },
          "mason_chisel": {
@@ -10415,6 +11203,28 @@
                   "description": "A strong head protection that emits light and comes with a minor buff for Clerics.",
                   "flavor": "The silver crown that bears the light of Frostfeast, brought upon the darkest night!"
                }
+            },
+            "candledark": {
+               "cobblestone_grate_fence_bar_double_recipe": {
+                  "recipe_name": "Candledark Cobblestone & Grate Fence Long",
+                  "description": "Create a sturdy, scary wall for external use.",
+                  "flavor": "A segment a day keeps the Undead at bay"
+               },
+               "cobblestone_grate_fence_bar_single_recipe": {
+                  "recipe_name": "Candledark Cobblestone & Grate Fence Short (x2)",
+                  "description": "Create a sturdy, scary wall for external use.",
+                  "flavor": ""
+               },
+               "cobblestone_grate_fencepost_recipe": {
+                  "recipe_name": "Candledark Cobblestone & Grate Fencepost",
+                  "description": "Create a sturdy, scary wall for external use. This is a corner post.",
+                  "flavor": ""
+               },
+               "cobblestone_grate_fence_gate_recipe": {
+                  "recipe_name": "Candledark Cobblestone & Grate Fence Gate",
+                  "description": "Create a very strong metal gate for external use.",
+                  "flavor": "Grand entrance!"
+               }
             }
          },
          "blacksmith_fuel_oven": {
@@ -10524,6 +11334,10 @@
          "holiday_worker_outfit": {
             "display_name": "Worker Holiday Cheer Coat",
             "description": "A fuzzy and warm coat, excellent for partaking in seasonal celebrations."
+         },
+         "worker_candledark_pumpkin_hat": {
+            "display_name": "Worker Candledark Pumpkin Head",
+            "description": "Will provide Workers with the encouragement they need to face the spooky season! Also good against warm weather."
          }
       },
       "cook": {
@@ -11045,6 +11859,53 @@
                   "recipe_name": "Roasted Frostfeast Ham",
                   "description": "Very tender and succulent pork meat, seasoned with spices and fruits.",
                   "flavor": "Frostfeast meals must be placed down before consumed"
+               }
+            },
+            "candledark": {
+               "apple_salad_recipe": {
+                  "recipe_name": "Candledark Apple Salad",
+                  "description": "A refreshing and healthier alternative to all the warm and greasy food from the season!",
+                  "flavor": "Candledark meals must be placed down before consumed"
+               },
+               "autumn_stew_recipe": {
+                  "recipe_name": "Candledark Autumn Stew",
+                  "description": "A delicious and invigorating stew with several ingredients from the season. Provides warmth and energy!",
+                  "flavor": "Candledark meals must be placed down before consumed"
+               },
+               "barmbrack_recipe": {
+                  "recipe_name": "Candledark Barmbrack Bun",
+                  "description": "A very traditional spooky season meal from the island kingdom, it is common for people to sometimes hide valuables in the dough!",
+                  "flavor": "Candledark meals must be placed down before consumed"
+               },
+               "candy_apple_recipe": {
+                  "recipe_name": "Candledark Candy Apples",
+                  "description": "A very sweet and beloved seasonal candy! Can be offered as a Candledark Treat to visitors!",
+                  "flavor": "Candledark meals must be placed down before consumed"
+               },
+               "caramel_candy_recipe": {
+                  "recipe_name": "Caramel Candledark Candies",
+                  "description": "The most basic and yet still delightful candies! Can be offered as a Candledark Treat to visitors!",
+                  "flavor": "Candledark meals must be placed down before consumed"
+               },
+               "caramel_corn_recipe": {
+                  "recipe_name": "Caramel Candledark Corn",
+                  "description": "Deliciously crispy, bits of corn with a thick caramel coating. Can be offered as a Candledark Treat to visitors!",
+                  "flavor": "Candledark meals must be placed down before consumed"
+               },
+               "colcannon_recipe": {
+                  "recipe_name": "Candledark Colcannon",
+                  "description": "A favorite on the island kingdom, this is a simple peasant dish that is valued for its history and tradition. Coins are often hidden within the mashed potatoes!",
+                  "flavor": "Candledark meals must be placed down before consumed"
+               },
+               "pumpkin_pie_recipe": {
+                  "recipe_name": "Pumpkin Candledark Pie",
+                  "description": "A very traditional and long time favorite of the spooky season, this pie is fully baked with deliciousness!",
+                  "flavor": "Candledark meals must be placed down before consumed"
+               },
+               "pumpkin_bread_recipe": {
+                  "recipe_name": "Loaf of Candledark Pumpkin Bread",
+                  "description": "A warm, fluffy and hearty loaf of bread with a peculiar pumpkin taste to it.",
+                  "flavor": "Candledark meals must be placed down before consumed"
                }
             },
             "veggie_stew_recipe": {
@@ -11583,6 +12444,43 @@
                   "description": "A nice and cozy small table with a pretty tablecloth!",
                   "flavor": "Really good for putting up the frostfeast tree..."
                }
+            },
+            "candledark": {
+               "pumpkin_ward_recipe": {
+                  "recipe_name": "Candledark Ward",
+                  "description": "Create a magical bonfire imbued with Soulfire that can damage Candledark enemies that get close.",
+                  "flavor": "After placed, different ingredients can be added to the Ward's fire to provide other interesting effects!"
+               },               
+               "charmed_broom_recipe": {
+                  "recipe_name": "Candledark Charmed Broom",
+                  "description": "Create a magical broom that will help your town stay organized by hauling and cleaning!",
+                  "flavor": "Flying adapter sold separately."
+               },               
+               "stake_fence_bar_double_recipe": {
+                  "recipe_name": "Candledark Stake Fence Long (x3)",
+                  "description": "A simple fence made of stakes, good for protecting crops.",
+                  "flavor": ""
+               },               
+               "stake_fence_bar_single_recipe": {
+                  "recipe_name": "Candledark Stake Fence Short (x3)",
+                  "description": "A simple fence made of stakes, good for protecting crops.",
+                  "flavor": ""
+               },               
+               "stake_fencepost_recipe": {
+                  "recipe_name": "Candledark Stake Fencepost (x2)",
+                  "description": "The corner of a simple fence made of stakes, good for protecting crops.",
+                  "flavor": ""
+               },               
+               "stake_fence_gate_recipe": {
+                  "recipe_name": "Candledark Stake Fence Gate",
+                  "description": "A simple and flimsy gate for the stake fence.",
+                  "flavor": ""
+               },               
+               "casket_bed_recipe": {
+                  "recipe_name": "Candledark Wooden Casket Bed",
+                  "description": "Create a casket that can be used as a bed by a hearthling or traveler. The Wooden Casket is a comfortable bed.",
+                  "flavor": "Ideal for very, very long rests..."
+               }
             }
          },
          "carpenter_description": {
@@ -11885,6 +12783,33 @@
                   "flavor": "'Look, the Frostfather has come to visit us!'"
                }
             },
+            "candledark": {
+               "worker_pumpkin_hat_recipe": {
+                  "recipe_name": "Worker Candledark Pumpkin Head",
+                  "description": "A spooky hat to get your citizens into festive mood for Candledark! It will also protect them from warm weather.",
+                  "flavor": "The ACE team wishes you a happy spooky season!"
+               },
+               "plushie_ghost_recipe": {
+                  "recipe_name": "Candledark Ghost Plushie",
+                  "description": "A simple plushie that resembles a ghost.",
+                  "flavor": "Boo!"
+               },
+               "plushie_candy_corn_recipe": {
+                  "recipe_name": "Candledark Candy Corn Plushie",
+                  "description": "A colorful plushie that looks like a funny, weird candy.",
+                  "flavor": ""
+               },
+               "scarecrow_hat_recipe": {
+                  "recipe_name": "Field Worker Candledark Scarecrow Hat",
+                  "description": "Craft a rugged scarecrow hat to be worn by Field Workers. It provides protection from warm weather and the Candledark Cheer effect.",
+                  "flavor": ""
+               },
+               "witch_hat_recipe": {
+                  "recipe_name": "Crafter Candledark Witch Hat",
+                  "description": "Craft a fancy witch hat to be worn by Crafters. It provides protection from warm weather and the Candledark Cheer effect.",
+                  "flavor": "No, it doesn't speak in riddles"
+               }
+            },
             "rug_gilded_blue_recipe": {
                "flavor": "Some used to believe that a blue like this could only be milled from precious blue stone found deep within mountains far, far to the frozen north"
             },
@@ -12125,6 +13050,23 @@
                   "description": "A big and very traditional decoration made with lots of dry straw and clay.",
                   "flavor": "So pretty, so... flammable"
                }
+            },
+            "candledark": {
+               "scarecrow_recipe": {
+                  "recipe_name": "Candledark Scarecrow",
+                  "description": "A traditionally rural decoration, meant to scare birds away from farmlands. Also looks cute.",
+                  "flavor": "And we all know birds don't exist... Right?"
+               },
+               "haystack_recipe": {
+                  "recipe_name": "Candledark Haystack",
+                  "description": "A bunch of hay bales stacked together in a neat way.",
+                  "flavor": ""
+               },
+               "haystack_tall_recipe": {
+                  "recipe_name": "Tall Candledark Haystack",
+                  "description": "A taller haystack, tall enough to be the walls of a labyrinth!",
+                  "flavor": "How many hay bales can we stack?"
+               }
             }
          },
          "shepherd_cheese_vat_empty": {
@@ -12281,6 +13223,12 @@
          },
          "na_sunstroke_crafter_outfit": {
             "description": "Can only be worn by crafters. Protects from sunstrokes."
+         },
+         "candledark": {
+            "witch_hat": {
+               "display_name": "Candledark Witch Hat",
+               "description": "Can be worn by crafters to provide them with some extra benefits and protection from warm weather."
+            }
          }
       },
       "combat": {
@@ -12312,6 +13260,12 @@
          },
          "ea_sunstroke_field_work_outfit": {
             "display_name": "Dynasty Summer Hat"
+         },
+         "candledark": {
+            "scarecrow_hat": {
+               "display_name": "Candledark Scarecrow Hat",
+               "description": "Can be used by field workers for some extra benefits and protection from warm weather."
+            }
          }
       },
       "brewer": {
@@ -12828,6 +13782,23 @@
                   "description": "Warm, sweet and deliciously tasty! A seasonal beverage from exotic lands...",
                   "flavor": "Frostfeast beverages must be placed down before consumed"
                }
+            },
+            "candledark": {
+               "coffee_pumpkin_spice_recipe": {
+                  "recipe_name": "Candledark Pumpkin Spice Coffee",
+                  "description": "A spicy and bold flavor added to an embodied coffee, delicious!",
+                  "flavor": "Candledark beverages must be placed down before consumed"
+               },
+               "hot_cider_recipe": {
+                  "recipe_name": "Hot Candledark Cider",
+                  "description": "Especially prepared cider with seasonal secrets. Must be served hot and in carved apples for the best results!",
+                  "flavor": "Candledark beverages must be placed down before consumed"
+               },
+               "tea_cider_recipe": {
+                  "recipe_name": "Candledark Apple Tea",
+                  "description": "Warm and flavorful tea, perfect for an evening on the porch watching the last autumn rains...",
+                  "flavor": "Candledark beverages must be placed down before consumed"
+               }
             }
          },
          "brewer_outfit": {
@@ -13096,7 +14067,8 @@
       },
       "common": {
          "recipes": {
-            "frostfeast_name": "Frostfeast"
+            "frostfeast_name": "Frostfeast",
+            "candledark_name": "Candledark"
          }
       },
       "rc_footman": {
@@ -13676,6 +14648,20 @@
                "display_name": "Mega Beetroot Tonic",
                "description": "Provides some healing and protection against poisons, toxins and infections."
             }
+         },
+         "candledark": {
+            "candledark_recipe": {
+               "display_name": "Candledark Crafting Recipe",
+               "description": "Read this to learn how to craft special Candledark stuff!"
+            },
+            "blessed_water": {
+               "display_name": "Vial of Candledark Blessed Water",
+               "description": "This magical concoction will not do much for most, but it will cleanse vampiric corruption from Enthralled hearthlings."
+            },
+            "vampire_salve": {
+               "display_name": "Garlic & Nightshade Salve",
+               "description": "This potent paste is able to stop the cursed spread of a Vampire's bite before its victim is enthralled."
+            }
          }
       },
       "construction": {
@@ -13973,11 +14959,45 @@
          },
          "plank_bridge": {
             "display_name": "Plank Bridge",
-            "description": "Very helpful for crossing small gaps!"
+            "description": "Very helpful for crossing gaps!"
          },
          "plank_bridge_small": {
             "display_name": "Small Plank Bridge",
             "description": "Try to not fall!"
+         },
+         "candledark": {
+            "stake_fence_gate": {
+               "display_name": "Candledark Stake Fence Gate",
+               "description": "It will probably fall over if kicked. Handle with care."
+            },
+            "stake_fencepost": {
+               "display_name": "Candledark Stake Fence Post",
+               "description": "A single stake to the heart... I mean, the ground."
+            },
+            "stake_fence_bar_single": {
+               "display_name": "Candledark Stake Fence Short",
+               "description": "Separating things little by little."
+            },
+            "stake_fence_bar_double": {
+               "display_name": "Candledark Stake Fence Long",
+               "description": "That's a lot of stakes! The stakes are high!"
+            },
+            "cobblestone_grate_fence_gate": {
+               "display_name": "Candledark Cobblestone & Grate Fence Gate",
+               "description": "An imposing metal gate that is harder than most fence gates to take down."
+            },
+            "cobblestone_grate_fencepost": {
+               "display_name": "Candledark Cobblestone & Grate Fence Post",
+               "description": "Also known as a big stone pillar."
+            },
+            "cobblestone_grate_fence_bar_single": {
+               "display_name": "Candledark Cobblestone & Grate Fence Short",
+               "description": "It's a really long name for such a short fence segment..."
+            },
+            "cobblestone_grate_fence_bar_double": {
+               "display_name": "Candledark Cobblestone & Grate Fence Long",
+               "description": "Keeping the Undead from escaping graveyards since time immemorial."
+            }
          }
       },
       "crops": {
@@ -17034,6 +18054,20 @@
          "water_pump_steel": {
             "display_name": "Steel Water Pump",
             "description": "It will take fluids from the placement level to be released on its upper shaft. "
+         },
+         "candledark": {
+            "casket_bed": {
+               "display_name": "Candledark Wooden Casket Bed",
+               "description": "Fulfill your lifelong dream of being a Vampire or just go for a really long nap in this comfy bed."
+            },
+            "casket_bed_porcelain": {
+               "display_name": "Candledark Porcelain Casket Bed",
+               "description": "Sometimes it is all about fashion and style. Even in death."
+            },
+            "sarcophagus_bed": {
+               "display_name": "Candledark Stone Tomb Bed",
+               "description": "Not really comfortable... And a bit scary inside. But hey, you can probably sleep in there!"
+            }
          }
       },
       "recipes": {
@@ -18695,6 +19729,58 @@
                "unlit": {
                   "description": "Must be lit for the Candledark event to begin..."
                }
+            },
+            "dining_table_black": {
+               "display_name": "Black Candledark Table",
+               "description": "Prepare to be webbed at all the food!"
+            },
+            "dining_table_orange": {
+               "display_name": "Orange Candledark Table",
+               "description": "Pumpkins, pumpkins everywhere!"
+            },
+            "dining_table_purple": {
+               "display_name": "Purple Candledark Table",
+               "description": "Look at the little sad ghost! Aww."
+            },
+            "haystack": {
+               "display_name": "Candledark Haystack",
+               "description": "It's hay and it's stacked. Makes sense."
+            },
+            "haystack_tall": {
+               "display_name": "Candledark Tall Haystack",
+               "description": "It's hay, it's stacked and it's quite tall. Makes even more sense!"
+            },
+            "plushie_candy_corn": {
+               "display_name": "Candledark Candy Corn Plushie",
+               "description": "Look at him! We'll call him \"Corny\"!"
+            },
+            "plushie_ghost": {
+               "display_name": "Candledark Ghost Plushie",
+               "description": "A very cute representation of not so cute entities..."
+            },
+            "pumpkin_lantern": {
+               "display_name": "Candledark Pumpkin Lantern",
+               "description": "The classic Candledark decoration, carved in many different styles!"
+            },
+            "pumpkin_small": {
+               "display_name": "Small Candledark Pumpkin",
+               "description": "Smaller pumpkins of different colors are great for sprucing up the seasonal decoration!"
+            },
+            "pumpkin_tiny": {
+               "display_name": "Tiny Candledark Pumpkins",
+               "description": "They're like babies! Baby pumpkins!"
+            },
+            "scarecrow": {
+               "display_name": "Candledark Scarecrow",
+               "description": "This fellow will keep your farmlands safe from crows for free! And won't complain... Much."
+            },
+            "tombstone": {
+               "display_name": "Candledark Tombstone",
+               "description": "A memorial for someone that has passed away. Or just decoration."
+            },
+            "tombstone_tall": {
+               "display_name": "Tall Candledark Tombstone",
+               "description": "An enchanted tombstone that creates a weird fog around it. Spooky!"
             }
          }
       },
@@ -19020,6 +20106,15 @@
          "oinker_young": {
             "display_name": "Oinklet",
             "description": "It's a tiny oinker! Oink, oink!"
+         },
+         "frog": {
+            "species": "frog"
+         },
+         "candledark": {
+            "frog": {
+               "display_name": "Magic Frog",
+               "description": "Oh no, it's raining frogs! Witchcraft!"
+            }
          }
       },
       "food": {
@@ -20459,6 +21554,89 @@
          },
          "bug_meat_serving": {
             "display_name": "Serving of Bug Meat"
+         },
+         "candledark": {
+            "pumpkin_bread": {
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "display_name": "Loaf of Candledark Pumpkin Bread",
+               "description": "A classic of Candledark baking, this bread is sure to satiate your hunger!",
+               "serving": {
+                  "display_name": "Slice of Candledark Pumpkin Bread",
+                  "description": "It's still warm!"
+               }
+            },
+            "apple_salad": {
+               "display_name": "Candledark Apple Salad",
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "description": "A flavorful mixture of seasonal ingredients into a refreshing and nourishing salad.",
+               "serving": {
+                  "display_name": "Serving of Candledark Apple Salad",
+                  "description": "At least it's healthy! Probably..."
+               }
+            },
+            "autumn_stew": {
+               "display_name": "Candledark Autumn Stew",
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "description": "A warm and hearty stew with typical autumn goodies like mushrooms and crops.",
+               "serving": {
+                  "display_name": "Bowl of Candledark Autumn Stew",
+                  "description": "Tastes like autumn."
+               }
+            },
+            "barmbrack": {
+               "display_name": "Candledark Barmbrack Bun",
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "description": "A traditional bread during the Candledark time. It is traditional to sometimes hide valuables in it!",
+               "serving": {
+                  "display_name": "Slice of Candledark Barmbrack Bun",
+                  "description": "Do I get something?! No riches inside?!"
+               }
+            },
+            "candy_apple": {
+               "display_name": "Candledark Candy Apples",
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves! Can be offered as a treat!",
+               "description": "Extremely tasty and particularly crunchy! Can be offered as a Candledark treat.",
+               "serving": {
+                  "display_name": "Candledark Candy Apple",
+                  "description": "So sweet!"
+               }
+            },
+            "caramel_candy": {
+               "display_name": "Caramel Candledark Candies",
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves! Can be offered as a treat!",
+               "description": "Candies of all sorts and flavors! Can be offered as a Candledark treat.",
+               "serving": {
+                  "display_name": "Serving of Caramel Candledark Candies",
+                  "description": "A handful of these will do..."
+               }
+            },
+            "caramel_corn": {
+               "display_name": "Caramel Candledark Corn",
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves! Can be offered as a treat!",
+               "description": "Tiny bits of corn caramelized with sweet energy! Can be offered as a Candledark treat.",
+               "serving": {
+                  "display_name": "Serving of Caramel Candledark Corn",
+                  "description": "Yummies!"
+               }
+            },
+            "colcannon": {
+               "display_name": "Candledark Colcannon",
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "description": "A filling and warm meal, vey traditional in simple homesteads. Sometimes coins are hidden inside!",
+               "serving": {
+                  "display_name": "Serving of Candledark Colcannon",
+                  "description": "Careful to not bite into a coin!"
+               }
+            },
+            "pumpkin_pie": {
+               "display_name": "Pumpkin Candledark Pie",
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "description": "Some believe it isn't really Candledark if you haven't eaten a slice of pumpkin pie.",
+               "serving": {
+                  "display_name": "Slice of Pumpkin Candledark Pie",
+                  "description": "Time to go nom nom nom!"
+               }
+            }
          }
       },
       "terrain": {
@@ -20808,6 +21986,82 @@
             "drone": {
                "display_name": "Undergrowth Drone",
                "description": "An aggressive, giant worker insect. Dangerous in numbers!"
+            }
+         },
+         "candledark": {
+            "ghost": {
+               "display_name": "Candledark Aggressive Ghost",
+               "description": "Not so cute anymore...",
+               "small_description": "Still a little cute but also a bit scary!",
+               "small_display_name": "Candledark Aggressive Small Ghost"
+            },
+            "zombie_male": {
+               "display_name": "Candledark Zombie",
+               "description": "Reanimated by lurking, evil spirits..."
+            },
+            "pumpling": {
+               "display_name": "Candledark Pumpling",
+               "description": "Eager to terrorize your harvests!"
+            },
+            "necromancer": {
+               "display_name": "Candledark Spiritsinger",
+               "description": "Ill-intended necromancers taking advantage of the conjunction of the planes."
+            },
+            "zombie_female": {
+               "display_name": "Candledark Zombie",
+               "description": "On a seasonal search for brains..."
+            },
+            "spider": {
+               "display_name": "Candledark Spider",
+               "description": "Stirred to do the bidding of uneasy, vengeful spirits."
+            },
+            "mummy_female": {
+               "display_name": "Candledark Mummy",
+               "description": "Back from the past to haunt the present!"
+            },
+            "mummy_male": {
+               "display_name": "Candledark Mummy",
+               "description": "It yearns for violence..."
+            },
+            "wolf_skeleton": {
+               "display_name": "Candledark Skeleton Wolf",
+               "description": "Who's a good boy? Not this one..."
+            },
+            "ogre_skeleton": {
+               "display_name": "Candledark Skeleton Ogre",
+               "description": "He's back for even more smashing!"
+            },
+            "skeleton_female": {
+               "display_name": "Candledark Skeleton",
+               "description": "Shambling and cackling its way into your town!"
+            },
+            "skeleton_male": {
+               "display_name": "Candledark Skeleton",
+               "description": "Beware of the evil that stirs inside..."
+            },
+            "zombie_goblin": {
+               "display_name": "Candledark Goblin Zombie",
+               "description": "Tiny fellow in service of a bigger evil."
+            },
+            "vampire": {
+               "display_name": "Candledark Vampire",
+               "description": "Beware! A powerful foe eager to terrorize your town!"
+            },
+            "bat": {
+               "display_name": "Candledark Bat",
+               "description": "Shrouded against the night sky!"
+            },
+            "vampire_thrall": {
+               "display_name": "Candledark Thrall",
+               "description": "Oh no! This poor person has been enthralled by a Vampire..."
+            },
+            "vampire_thrall_female": {
+               "display_name": "Candledark Thrall",
+               "description": "They have no more control of their own minds anymore..."
+            },
+            "witch": {
+               "display_name": "Evil Candledark Witch",
+               "description": "Don't be fooled by her granny looks!"
             }
          }
       },
@@ -21654,6 +22908,20 @@
          "warchiefs_bone_axe": {
             "display_name": "Norwind's Cleaver",
             "description": "Carved by the warchief herself, Red Kiln's most prized axe. (Two-handed)"
+         },
+         "candledark": {
+            "vampire_rapier": {
+               "display_name": "Noble Rapier",
+               "description": "A fancy, almost decorative weapon."
+            },
+            "scepter_pumpkin": {
+               "display_name": "Candledark Pumpkin Scepter",
+               "description": "An unholy weapon in service of evil!"
+            }
+         },
+         "scepter_blackguard": {
+            "display_name": "Blackguard's Cane",
+            "description": "A powerful and magical weapon worn by the Blackguard."
          }
       },
       "gizmos": {
@@ -21762,6 +23030,51 @@
          "simple_clamp_trap": {
             "description": "Damages and shortly stuns enemies. Can't be repaired and is broken upon activation.",
             "display_name": "Disposable Simple Trap"
+         },
+         "candledark": {
+            "spirit_bonfire": {
+               "display_name": "Candledark Spirit Bonfire",
+               "description": "Will attract Candledark spirits at night when all three are lit. Hearthlings must be able to reach them!"
+            },
+            "pumpkin_patch": {
+               "display_name": "Candledark Pumpkin Patch",
+               "description": "Can be harvested for some baskets of pumpkin and perhaps a few mega pumpkins...",
+               "unripe_description": "The pumpkins are still growing..."
+            },
+            "pumpkin_ward": {
+               "display_name": "Candledark Ward",
+               "description": "Burns with Soulfire! Candledark enemies within its radius shall be lightly damaged.",
+               "green": {
+                  "display_name": "Candledark Ward (Green)",
+                  "description": "A special Ward capable of weakening vampiric blood, preventing their bites from spawning Thralls."
+               },
+               "orange": {
+                  "display_name": "Candledark Ward (Orange)",
+                  "description": "A powerful Ward that is able to attack enemies and replenish its own charges over time."
+               },
+               "purple": {
+                  "display_name": "Candledark Ward (Purple)",
+                  "description": "This enchanted Ward is capable of slowing down all the Candledark enemies within its influence."
+               },
+               "red": {
+                  "display_name": "Candledark Ward (Red)",
+                  "description": "A blessed Ward that is able to deal a lot of damage to enemies over time."
+               },
+               "white": {
+                  "display_name": "Candledark Ward (White)",
+                  "description": "A sacred Ward that is capable of breaking the strong and evil shield of Otherworldly Protection."
+               },
+               "yellow": {
+                  "display_name": "Candledark Ward (Yellow)",
+                  "description": "An efficient Ward that is able to weaken enemies, reducing the damage they inflict."
+               }
+            },
+            "pumpkin_patch_fence": {
+               "display_name": "Candledark Pumpkin Patch (Fenced)"
+            },
+            "pumpkin_patch_scarecrow": {
+               "display_name": "Candledark Pumpkin Patch (Scarecrow)"
+            }
          }
       },
       "aquatic": {
@@ -23316,6 +24629,35 @@
             "juice_lingonberry_serving": {
                "display_name": "Cup of Lingonberry Juice"
             }
+         },
+         "candledark": {
+            "coffee_pumpkin_spice": {
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "display_name": "Candledark Pumpkin Spice Coffee",
+               "description": "A delicious and seasonal drink made by adding some spices to hot, and strong coffee.",
+               "serving": {
+                  "display_name": "Mug of Candledark Pumpkin Spice Coffee",
+                  "description": "Tasty!"
+               }
+            },
+            "hot_cider": {
+               "display_name": "Hot Candledark Cider",
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "description": "They look lovely when served on carved apples!",
+               "serving": {
+                  "display_name": "Serving of Hot Candledark Cider",
+                  "description": "Perfect drink for the spooky and chilly season!"
+               }
+            },
+            "tea_cider": {
+               "display_name": "Candledark Apple Tea",
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "description": "Tea is great, apples are great... So this must be amazing!",
+               "serving": {
+                  "display_name": "Cup of Candledark Apple Tea",
+                  "description": "Hot and delicious!"
+               }
+            }
          }
       },
       "npc": {
@@ -23487,6 +24829,45 @@
                "elbezar": {
                   "display_name": "Elbezar Grimrock",
                   "description": "Holder of a knowledge some would consider to be unnatural..."
+               },
+               "cat": {
+                  "display_name": "Black Cat",
+                  "description": "It doesn't bring bad luck, it brings cuteness wherever it goes!"
+               },
+               "scarecrow": {
+                  "display_name": "Friendly Scarecrow",
+                  "description": "We're not crows, right? We're good!"
+               },
+               "cultist": {
+                  "display_name": "Friendly Cultist",
+                  "description": "Appreciates lighting candles in inconvenient times and unusual places."
+               }
+            },
+            "female": {
+               "ghost": {
+                  "display_name": "Friendly Ghost",
+                  "description": "Boo!",
+                  "small_description": "Little boo?"
+               },
+               "witch": {
+                  "display_name": "Friendly Witch",
+                  "description": "Curious for our recipes and cauldrons... Eager for a spook!"
+               },
+               "spirit": {
+                  "display_name": "Radiant Spirit",
+                  "description": "Hmm... Who are they? They seem particularly radiant..."
+               },
+               "skeleton": {
+                  "display_name": "Friendly Skeleton",
+                  "description": "It's wearing a dress! Or what's left of it..."
+               },
+               "zombie": {
+                  "display_name": "Friendly Zombie",
+                  "description": "Have higher expectations of their unlife than just brains..."
+               },
+               "vampire": {
+                  "display_name": "Friendly Vampire Lady",
+                  "description": "She promised she only feeds on cherry juice."
                }
             }
          }
@@ -23553,6 +24934,21 @@
          },
          "elves": {
             "species": "elf"
+         },
+         "ghost": {
+            "species": "ghost"
+         },
+         "vampire": {
+            "species": "vampire"
+         },
+         "vampire_thrall": {
+            "species": "vampire thrall"
+         },
+         "bat": {
+            "species": "bat"
+         },
+         "witch": {
+            "species": "witch"
          }
       },
       "rabbit": {
@@ -25133,10 +26529,12 @@
             "presets": {
                "wood1": "Default Preset: Wood",
                "ornate_wood1": "Default Preset: Ornate Wood",
-               "stone1": "Default Preset: Stone",
+               "stone1": "Default Preset: Cobblestone",
                "clay1": "Default Preset: Clay",
                "porcelain1": "Default Preset: Porcelain",
-               "marble1": "Default Preset: Marble"
+               "marble1": "Default Preset: Marble",
+               "cobblestone_grate1": "Default Preset: Candledark Cobblestone & Grate",
+               "stake1": "Default Preset: Candledark Stake"
             },
             "preset_filter": {
                "save_mode": {
@@ -25573,7 +26971,7 @@
             "food_veggie_raw_savory_name": "Any Savory Vegetable",
             "condiment_base_resource_name": "Any Condiment Base",
             "fruits_raw_name": "Any Basket of Fruits",
-            "fruits_berry_name": "Any Berry",
+            "fruits_berry_name": "Any Berries",
             "food_veggie_name": "Any Vegetable or Pickles",
             "fiber_spinnable_resource_name": "Any Spinnable Bundle of Fiber",
             "skin_resource_name": "Any Hard Skin",
@@ -25775,12 +27173,6 @@
       "base_elf_npc": {
          "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
          "description": "A visitor from the deepest woods."
-      }
-   },
-   "buffs": {
-      "chromatic_fire_buff": {
-         "display_name": "On Fire (Chromatic)",
-         "description": "Set aflame! Taking fire damage every 5 minutes for 20 minutes"
       }
    }
 }

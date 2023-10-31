@@ -68,25 +68,24 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 17,
+         "value_in_gold": 29,
          "rarity": "common",
          "shop_info": {
-            "buyable": true,
-            "sellable": true,
-            "shopkeeper_level": 2,
-            "shopkeeper_type": "caravan"
+            "buyable": false,
+            "sellable": true
          }
       },
       "stonehearth:catalog": {
-         "display_name": "Summer Felt Crafter Hat",
-         "description": "Can only be worn by crafters. Protects from hot weather and sunstrokes.",
+         "display_name": "i18n(stonehearth_ace:jobs.crafter.candledark.witch_hat.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.crafter.candledark.witch_hat.description)",
          "icon": "file(candledark_witch_hat_crafter_outfit.png)",
          "category": "civillian_equipment",
          "material_tags": [
             "cloth",
             "crafter_outfit",
             "summer_hat",
-            "ascendancy_made",
+            "festival",
+            "candledark",
             "civillian_equipment",
             "stockpile_equipment"
          ]

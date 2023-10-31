@@ -390,6 +390,24 @@
 					"recipe": "file(frostfeast/light_circlet_recipe.json)"
 				}
          }
+      },
+		"candledark": {
+         "ordinal": 2,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
+         "recipes": {
+				"candledark_cobblestone_grate_fence_bar_double": {
+					"recipe": "file(candledark/cobblestone_grate_fence_bar_double_recipe.json)"
+				},
+				"candledark_cobblestone_grate_fence_bar_single": {
+					"recipe": "file(candledark/cobblestone_grate_fence_bar_single_recipe.json)"
+				},
+				"candledark_cobblestone_grate_fence_end": {
+					"recipe": "file(candledark/cobblestone_grate_fence_end_recipe.json)"
+				},
+				"candledark_cobblestone_grate_fence_gate": {
+					"recipe": "file(candledark/cobblestone_grate_fence_gate_recipe.json)"
+				}
+         }
       }
 	}
 }

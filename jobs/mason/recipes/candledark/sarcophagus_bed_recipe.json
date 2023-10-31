@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 32,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.candledark.sarcophagus_bed_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.candledark.sarcophagus_bed_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.candledark.sarcophagus_bed_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/candledark/sarcophagus_bed/sarcophagus_bed.png",
+   "workshop": "stonehearth:mason:pedestal",
+	"manual_unlock": true,
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 8
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:candledark:sarcophagus_bed"
+      }
+   ]
+}

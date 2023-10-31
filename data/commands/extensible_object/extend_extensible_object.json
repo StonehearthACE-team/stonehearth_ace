@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "extend_extensible_object",
+   "group": "stonehearth_ace:extensible_object",
+   "display_name": "i18n(stonehearth_ace:data.commands.extensible_object.extend.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.extensible_object.extend.description)",
+   "ordinal": 10,
+   "icon": "file(extend_extensible_object.png)",
+   "action": "fire_event",
+   "event_name": "stonehearth_ace_adjust_extensible_object",
+   "event_data": {
+      "show_tip_title": "stonehearth_ace:data.commands.extend_extensible_object.tip_title",
+      "show_tip_description": "stonehearth_ace:data.commands.extend_extensible_object.tip_description"
+   }
+}

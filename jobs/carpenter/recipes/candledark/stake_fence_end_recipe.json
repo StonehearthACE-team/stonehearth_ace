@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 8,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.stake_fencepost_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.stake_fencepost_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.stake_fencepost_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/candledark/stake_fencepost/stake_fencepost.png",
+   "workshop": "stonehearth:carpenter:workbench",
+   "manual_unlock": true,
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:candledark:stake_fence:end"
+      },
+      {
+         "item": "stonehearth_ace:construction:candledark:stake_fence:end"
+      }
+   ]
+}

@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 45,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.candledark.cobblestone_grate_fence_gate_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.candledark.cobblestone_grate_fence_gate_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.candledark.cobblestone_grate_fence_gate_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/candledark/cobblestone_grate_fence_gate/cobblestone_grate_fence_gate.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:candledark:cobblestone_grate_fence_gate"
+      }
+   ]
+}
