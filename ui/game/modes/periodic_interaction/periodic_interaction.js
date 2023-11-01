@@ -65,7 +65,6 @@ App.AcePeriodicInteractionView = App.StonehearthBaseZonesModeView.extend({
          var uiEntry = uiData[currentMode];
          self.set('currentModeName', uiEntry.display_name);
          self.set('currentModeDescription', uiEntry.description);
-         self.set('stageSelectionLabel', uiEntry.stage_selection);
       }
    }.observes('model.stonehearth_ace:periodic_interaction.current_mode'),
 
@@ -80,9 +79,8 @@ App.AcePeriodicInteractionView = App.StonehearthBaseZonesModeView.extend({
          selector.remove();
       }
 
-      var data = self.get('model.stonehearth_ace:periodic_interaction') || {};
-      var allowModeSelection = data.allow_mode_selection;
-      var uiData = data.ui_data;
+      var allowModeSelection = self.get('model.stonehearth_ace:periodic_interaction.allow_mode_selection');
+      var uiData = self.get('model.stonehearth_ace:periodic_interaction.ui_data');
 
       if (uiData) {
          var entries = radiant.map_to_array(uiData, function(k, v) {
@@ -108,48 +106,7 @@ App.AcePeriodicInteractionView = App.StonehearthBaseZonesModeView.extend({
             self.$('#modeSelectionList').append(selector);
          }
       }
-   }.observes('model.stonehearth_ace:periodic_interaction.ui_data', 'model.stonehearth_ace:periodic_interaction.allow_mode_selection',
-      'model.stonehearth_ace:periodic_interaction.current_mode', 'model.stonehearth_ace:periodic_interaction.interaction_stage'),
-
-   _updateStageSelection: function() {
-      var self = this;
-      self._super();
-
-      // add custom list selector
-      var selector = self._stageSelector;
-      if (selector) {
-         selector.find('tooltipster').tooltipster('destroy');
-         selector.remove();
-      }
-
-      var data = self.get('model.stonehearth_ace:periodic_interaction') || {};
-      var allowStageSelection = data.allow_finish_stage_selection;
-
-      var showStageSelection = allowStageSelection && data.stages && data.stages.length > 1;
-      self.set('showStageSelection', showStageSelection);
-
-      if (showStageSelection) {
-         var onChanged = function (key, value) {
-            var component = self.get('model.stonehearth_ace:periodic_interaction');
-            radiant.call_obj(component && component.__self, 'select_finish_stage_command', value.key);
-         };
-
-         var stages = data.stages;
-         var stagesByIndex = {}
-         stages.forEach(stage => {
-            stage.key = stage.index;
-            stagesByIndex[stage.index] = stage;
-         });
-
-         selector = App.guiHelper.createCustomSelector('periodic_interaction_stage', stages, onChanged).container;
-         var finishStage = data.finish_stage;
-         App.guiHelper.setListSelectorValue(selector, stagesByIndex[finishStage]);
-
-         self._stageSelector = selector;
-         self.$('#stageSelectionList').append(selector);
-      }
-   }.observes('model.stonehearth_ace:periodic_interaction.current_mode', 'model.stonehearth_ace:periodic_interaction.interaction_stage',
-      'model.stonehearth_ace:periodic_interaction.finish_stage'),
+   }.observes('model.stonehearth_ace:periodic_interaction.ui_data', 'model.stonehearth_ace:periodic_interaction.allow_mode_selection'),
 
    _updateJobLevelEligibilityForModes: function(uiDataArr) {
       var self = this;

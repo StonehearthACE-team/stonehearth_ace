@@ -113,9 +113,6 @@ App.StonehearthStartMenuView = App.View.extend({
       mercantile_view: function(){
          App.stonehearthClient.showMercantileView();
       },
-      pet_manager: function(){
-         App.stonehearthClient.showPetManager();
-      },
       box_harvest_and_replant: function(){
          App.stonehearthClient.boxHarvestAndReplant();
       },
