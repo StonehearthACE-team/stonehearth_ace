@@ -116,6 +116,7 @@ local monkey_patches = {
    ace_guildmaster_town_bonus = 'stonehearth.data.town_bonuses.guildmaster_town_bonus',
    ace_harvest_crop_adjacent = 'stonehearth.ai.actions.harvest_crop_adjacent',
    ace_harvest_resource_node_adjacent = 'stonehearth.ai.actions.harvest_resource_node_adjacent',
+   ace_harvest_renewable_resource_adjacent = 'stonehearth.ai.actions.harvest_renewable_resource_adjacent',
    ace_heal_target = 'stonehearth.entities.consumables.scripts.heal_target',
    ace_health_observer = 'stonehearth.ai.observers.health_observer',
    ace_herbalist = 'stonehearth.jobs.herbalist.herbalist',

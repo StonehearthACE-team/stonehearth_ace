@@ -3402,7 +3402,7 @@
                               "bulletin_title": "🎃 A Cultist arrives 🎃",
                               "dialog_title": "The Cultist",
                               "bulletin_message": {
-                                 "00": "\"We shall all praise our... Wait, one moment.\" He stops, trying to remember something. \"Oh, nevermind. So, uh... This is the way back, right? I guess I should get going then...\" He moves towards the Soulfire Tree but turns around. \"Oh, that was it! Treat or trick? Or treat? Something.\""
+                                 "00": "\"We shall all praise our Lord of Symmetr-... Wait, one moment.\" He stops, trying to remember something. \"Oh, nevermind. So, uh... This is the way back, right? I guess I should get going then...\" He moves towards the Soulfire Tree but turns around. \"Oh, that was it! Treat or trick? Or treat? Something.\""
                               }
                            }
                         }
@@ -3411,7 +3411,7 @@
                   "visitor_cultist_reward": {
                      "bulletin_title": "The Cultist is satisfied",
                      "dialog_title": "Happy Cultist",
-                     "message": "\"Ah, delightful! Thank you very much.\" The Cultist seems pleased, grabs a small satchel from their vests and drops it on the ground. They walk towards the Tree once more, disappearing into mist.<p>The bag contains:"
+                     "message": "\"Ah, very symmetrical! Thank you very much.\" The Cultist seems pleased, grabs a small satchel from their vests and drops it on the ground. They walk towards the Tree once more, disappearing into mist.<p>The bag contains:"
                   },
                   "visitor_scarecrow_arrival": {
                      "dialog_tree_info": {
@@ -9049,6 +9049,11 @@
                   "description": "The most classical Candledark decoration and a handy light source for the spooky season!",
                   "flavor": "Carving them is fun!"
                },
+               "pumpkin_basket_recipe": {
+                  "recipe_name": "Candledark Pumpkin Candy Basket",
+                  "description": "Create a special basket for people to collect Candledark treats and other goodies!",
+                  "flavor": "They can hold treats, desserts, baked food and festive food"
+               },
                "vampire_salve_recipe": {
                   "recipe_name": "Candledark Garlic & Nightshade Salve",
                   "description": "This potent medicine is extremely important for treating the bites of Vampires.",
@@ -12451,32 +12456,32 @@
                   "recipe_name": "Candledark Ward",
                   "description": "Create a magical bonfire imbued with Soulfire that can damage Candledark enemies that get close.",
                   "flavor": "After placed, different ingredients can be added to the Ward's fire to provide other interesting effects!"
-               },               
+               },
                "charmed_broom_recipe": {
                   "recipe_name": "Candledark Charmed Broom",
                   "description": "Create a magical broom that will help your town stay organized by hauling and cleaning!",
                   "flavor": "Flying adapter sold separately."
-               },               
+               },
                "stake_fence_bar_double_recipe": {
                   "recipe_name": "Candledark Stake Fence Long (x3)",
                   "description": "A simple fence made of stakes, good for protecting crops.",
                   "flavor": ""
-               },               
+               },
                "stake_fence_bar_single_recipe": {
                   "recipe_name": "Candledark Stake Fence Short (x3)",
                   "description": "A simple fence made of stakes, good for protecting crops.",
                   "flavor": ""
-               },               
+               },
                "stake_fencepost_recipe": {
                   "recipe_name": "Candledark Stake Fencepost (x2)",
                   "description": "The corner of a simple fence made of stakes, good for protecting crops.",
                   "flavor": ""
-               },               
+               },
                "stake_fence_gate_recipe": {
                   "recipe_name": "Candledark Stake Fence Gate",
                   "description": "A simple and flimsy gate for the stake fence.",
                   "flavor": ""
-               },               
+               },
                "casket_bed_recipe": {
                   "recipe_name": "Candledark Wooden Casket Bed",
                   "description": "Create a casket that can be used as a bed by a hearthling or traveler. The Wooden Casket is a comfortable bed.",
@@ -19775,6 +19780,10 @@
                "display_name": "Candledark Pumpkin Lantern",
                "description": "The classic Candledark decoration, carved in many different styles!"
             },
+            "pumpkin_basket": {
+               "display_name": "Candledark Pumpkin Candy Basket",
+               "description": "The perfect vessel for holding treats without any trickery!"
+            },
             "pumpkin_small": {
                "display_name": "Small Candledark Pumpkin",
                "description": "Smaller pumpkins of different colors are great for sprucing up the seasonal decoration!"
@@ -27067,7 +27076,8 @@
             "drink_container_tea_name": "Tea",
             "drink_container_coffee_name": "Coffee",
             "drink_container_festival_name": "Festive Drinks",
-            "pet_food_resource_name": "Pet Food"
+            "pet_food_resource_name": "Pet Food",
+            "candledark_treat_resource_name": "Candledark Treats"
          }
       }
    },
@@ -27199,6 +27209,13 @@
       "base_elf_npc": {
          "display_name": "[str(self.stonehearth:unit_info.custom_name)]",
          "description": "A visitor from the deepest woods."
+      }
+   },
+   "ace_mixins": {
+      "construction": {
+         "water_well_mixin": {
+            "renewable_harvest_status_text": "pulling water from a well"
+         }
       }
    }
 }

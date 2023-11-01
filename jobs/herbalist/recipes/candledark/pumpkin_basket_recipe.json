@@ -1,0 +1,31 @@
+{
+   "mixins": "stonehearth_ace:mixins:recipes:candledark_recipe",
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.pumpkin_basket_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.pumpkin_basket_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.pumpkin_basket_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/candledark/pumpkin_basket/pumpkin_basket.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:decoration:megacrop:mega_pumpkin",
+         "count": 1
+      },
+      {
+         "material": "wood resource",
+         "count": 1
+      },
+      {
+         "material": "fiber resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:candledark:pumpkin_basket"
+      }
+   ]
+}
