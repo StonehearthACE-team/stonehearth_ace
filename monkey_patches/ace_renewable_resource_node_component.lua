@@ -163,7 +163,7 @@ function AceRenewableResourceNodeComponent:_apply_modifiers(key, modifiers)
 end
 
 function AceRenewableResourceNodeComponent:auto_request_harvest()
-   if not self:is_harvestable() then
+   if not self:is_harvestable() or self._json.ignore_auto_harvest then
       return
    end
    local player_id = self._entity:get_player_id()
@@ -523,6 +523,10 @@ end
 function AceRenewableResourceNodeComponent:cancel_harvest_request()
    --log:debug('canceling auto harvest for %s', self._entity)
    self:_cancel_harvest_request()
+end
+
+function AceRenewableResourceNodeComponent:get_harvested_effect()
+   return self._json.harvested_effect or nil
 end
 
 return AceRenewableResourceNodeComponent

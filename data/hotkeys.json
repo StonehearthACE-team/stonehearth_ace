@@ -39,14 +39,14 @@
       "harvest:box_forage": {
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.harvest_box_forage)",
          "category": "harvest",
-         "ordinal": 11.5,
+         "ordinal": 12,
          "combo1": "ctrl+keyh",
          "combo2": ""
       },
       "harvest:box_hunt": {
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.harvest_box_hunt)",
          "category": "harvest",
-         "ordinal": 11.8,
+         "ordinal": 13,
          "combo1": "ctrl+shift+keyh",
          "combo2": ""
       },
@@ -101,22 +101,50 @@
       "build:fish_trap": {
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.build_fish_trap)",
          "category": "build",
-         "ordinal": 45,
+         "ordinal": 43,
          "combo1": "",
          "combo2": ""
       },
       "build:box_move_items": {
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.ui_box_move_items.display_name)",
          "category": "build",
-         "ordinal": 47,
+         "ordinal": 31,
          "combo1": "alt+keym",
          "combo2": ""
       },
       "build:box_undeploy_items": {
          "display_name": "i18n(stonehearth_ace:data.hotkeys.keys.ui_box_undeploy_items.display_name)",
          "category": "build",
-         "ordinal": 48,
+         "ordinal": 32,
          "combo1": "alt+keyu",
+         "combo2": ""
+      },
+      "build:grid_offset_minus_x": {
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.build_grid_offset_minus_x)",
+         "category": "build",
+         "ordinal": 46,
+         "combo1": "ctrl+numpad2",
+         "combo2": ""
+      },
+      "build:grid_offset_plus_x": {
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.build_grid_offset_plus_x)",
+         "category": "build",
+         "ordinal": 47,
+         "combo1": "ctrl+numpad8",
+         "combo2": ""
+      },
+      "build:grid_offset_minus_z": {
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.build_grid_offset_minus_z)",
+         "category": "build",
+         "ordinal": 48,
+         "combo1": "ctrl+numpad4",
+         "combo2": ""
+      },
+      "build:grid_offset_plus_z": {
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.controls_tab.key_binding_names.build_grid_offset_plus_z)",
+         "category": "build",
+         "ordinal": 49,
+         "combo1": "ctrl+numpad6",
          "combo2": ""
       },
       "ui:show_promotion_tree": {

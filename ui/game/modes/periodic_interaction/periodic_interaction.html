@@ -13,6 +13,11 @@
                <span id="modeSelectionLabel" class="list-label">{{i18n stonehearth_ace:ui.game.periodic_interaction.select_mode}}</label>
             </div>
          </div>
+         <div {{bind-attr class="view.showStageSelection::hidden"}}>
+            <div id="stageSelectionList" class="setting list-setting">
+               <span id="stageSelectionLabel" class="list-label">{{i18n_key view.stageSelectionLabel}}</label>
+            </div>
+         </div>
          <div id="bottomStrip">
             <div id="enabledDiv" class="setting">
                <input id="enabledCheckbox" type="checkbox" value="enabled">

@@ -20,6 +20,17 @@ function SettingsCallHandler:set_client_gameplay_setting_command(session, respon
    stonehearth.client_state:set_client_gameplay_setting(session.player_id, mod, field, value)
 end
 
+function SettingsCallHandler:get_build_grid_offset(session, response)
+   local offset = stonehearth.client_state:get_build_grid_offset(session.player_id)
+   return {offset = offset}
+end
+
+function SettingsCallHandler:set_build_grid_offset(session, response, offset)
+   validator.expect_argument_types({'table'}, offset)
+   validator.expect.table.fields({'x', 'y'}, offset)
+   stonehearth.client_state:set_build_grid_offset(session.player_id, radiant.util.to_point2(offset))
+end
+
 function SettingsCallHandler:issue_party_commands_when_job_disabled_setting_changed(session, response)
    -- go through all parties for that player and apply/cancel party commands for any members with job disabled
    local pop = stonehearth.population:get_population(session.player_id)

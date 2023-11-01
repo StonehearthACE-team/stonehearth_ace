@@ -5,7 +5,8 @@ local SelectionService = require 'stonehearth.services.client.selection.selectio
 local AceSelectionService = class()
 
 function AceSelectionService:select_xyz_range(reason)
-   return XYZRangeSelector(reason)
+   self._active_selector = XYZRangeSelector(reason)
+   return self._active_selector
 end
 
 function AceSelectionService:select_pattern_region(reason)

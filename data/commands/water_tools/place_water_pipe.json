@@ -7,6 +7,9 @@
    "ordinal": 10,
    "icon": "file(place_water_pipe.png)",
    "action": "fire_event",
-   "event_name": "stonehearth_ace_place_water_pipe",
-   "event_data": {}
+   "event_name": "stonehearth_ace_adjust_extensible_object",
+   "event_data": {
+      "show_tip_title": "stonehearth_ace:data.commands.place_water_pipe.tip_title",
+      "show_tip_description": "stonehearth_ace:data.commands.place_water_pipe.tip_description"
+   }
 }

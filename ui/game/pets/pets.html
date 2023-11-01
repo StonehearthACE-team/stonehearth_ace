@@ -1,0 +1,114 @@
+<script type="text/x-handlebars" data-template-name="petsView">
+   <div id="citizensManagement" class="gui petsManager">
+      <div class="window">
+         <div class="title">{{i18n stonehearth_ace:ui.game.pet_manager.title}}<div class="closeButton"></div></div>
+   
+         <div class="flex-container">
+
+            <div id="petDetails" class="">
+               <h2>{{i18n stonehearth_ace:ui.game.pet_manager.details}}</h2>
+               <div id="petDetailsInnerPane" class="downSection">
+                  <center>
+                  <div id="selectedPortrait">
+                     <img class="hasPetsIcon"/>
+                  </div>
+                  <div id="selectedName">
+                     {{i18n_key view.selected.stonehearth:unit_info.custom_name self=this}}
+                  </div>
+                  <div id="selectedDescription">
+                     {{i18n_key view.selected self=this}}
+                     
+                  </div>
+      
+                  <div id="traits">
+                     {{#each view.selected.traits}}
+                        <div class="item" >
+                           {{i18n_key this self=this}}
+                        </div>
+                     {{/each}}
+                  </div>
+
+                  <div class="toolbar">
+                     <a id="release_pet" href="#"  class='uisounds'>
+                        <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
+                           {{i18n_key view.selected.release_pet.display_name}}
+                        </button>
+                     </a>
+                     {{#each view.selected.available_commands}}
+                        <a href="#" class='uisounds'>
+                           <button class="brown" {{bind-attr class=":commandButton enabled:buttonEnabled:buttonDisabled" }}>
+                              {{i18n_key this self=view.selected}}
+                           </button>
+                        </a>
+                     {{/each}}
+                  </div>
+                  </center>
+               </div>
+            </div>
+      
+            <div id="tasksPetsList" class="petsList">
+               <div id="listTitles" class="flex-container">
+                  <button class="brown statButton nameIcon">
+                     <div class="petStatImg"></div>
+                  </button>
+                  <div class="listTitle" id="tasksTitleName" data-sort-key="name">
+                     <h2>{{i18n stonehearth_ace:ui.game.pet_manager.name}}</h2>
+                  </div>
+                  <div class="listTitle statTitle healthTitle" data-sort-key="health">
+                     <button class="brown statButton">
+                        <div class="healthImg"></div>
+                     </button>
+                  </div>
+                  <div class="listTitle statTitle moodTitle" data-sort-key="happiness">
+                     <button class="brown statButton">
+                        <div class="happinessImg"></div>
+                     </button>
+                  </div>
+               </div>
+               <div id="listContent" class="innerBox">
+                  <table id="petTable">
+                     <tbody>
+                        {{#each view.pets_list}}
+                           {{#if this.selected}}
+                              <tr class="selected petrow uisounds">
+                                 <td class="petIcon">
+                                    <img class="hasPetsIcon"/>
+                                 </td>
+                                 <td class="nameColumn">
+                                    {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
+                                 </td>
+                                 <td class="petHealth">
+                                    {{i18n_key this.health self=this}}/{{i18n_key this.maxHealth self=this}}
+                                 </td>
+                                 <td class="petMood">
+                                    {{i18n_key this.moodValue self=this}}
+                                 </td>
+                              </tr>
+                           {{else}}
+                              <tr class="petrow uisounds">
+                                 <td class="icon">
+                                    <img class="hasPetsIcon"/>
+                                 </td>
+                                 <td class="nameColumn">
+                                    {{i18n_key this.stonehearth:unit_info.custom_name self=this}}
+                                 </td>
+                                 <td class="petHealth">
+                                    {{i18n_key this.health self=this}}/{{i18n_key this.maxHealth self=this}}
+                                 </td>
+                                 <td class="petMood">
+                                    {{i18n_key this.moodValue self=this}}
+                                 </td>
+                              </tr>
+                           {{/if}}
+                        {{/each}}
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</script>
+   
+   
+   

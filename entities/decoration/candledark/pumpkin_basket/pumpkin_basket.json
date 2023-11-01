@@ -1,0 +1,56 @@
+{
+   "type": "entity",
+   "mixins": "file(pumpkin_basket_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(pumpkin_basket_iconic.json)",
+         "ghost_form": "file(pumpkin_basket_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth:traveler_attraction": {},
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 2, "y": 2, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:storage": {
+         "type": "input_crate",
+         "capacity": 12,
+         "render_contents": true,
+         "filter_list": "stonehearth_ace:ui:candledark_treats:filters",
+         "default_filter": [
+            "candledark_treat"
+         ]
+      },
+      "effect_list": {
+         "default": "/stonehearth/data/rigs/entities/containers/input_bin/effects/idle.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 16,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 10
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

@@ -171,7 +171,7 @@ function FindReachableEntityTypeAnywhere:start_thinking(ai, entity, args)
 
       return true
    end
-   self._log:info('creating ground item finder for %s @ %s', self._description, self._location)
+   self._log:detail('creating ground item finder for %s @ %s', self._description, self._location)
    self._ground_if = entity:add_component('stonehearth:item_finder'):find_reachable_entity_type(
          self._location,
          args.filter_fn,
@@ -209,7 +209,7 @@ function FindReachableEntityTypeAnywhere:start_thinking(ai, entity, args)
    end
    local storage_filter_fn = stonehearth.ai:filter_from_key('stonehearth:find_reachable_entity_type_anywhere',
                                                             args.filter_fn, make_storage_filter_fn(args.filter_fn))
-   self._log:info('creating storage item finder for %s @ %s', self._description, self._location)
+   self._log:detail('creating storage item finder for %s @ %s', self._description, self._location)
    self._storage_if = entity:add_component('stonehearth:item_finder'):find_reachable_entity_type(
          self._location,
          storage_filter_fn,

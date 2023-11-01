@@ -902,6 +902,8 @@
       "commands:change_pet_owner": "file(data/commands/change_pet_owner/change_pet_owner.json)",
       "commands:collect_bees": "file(data/commands/collect_bees/collect_bees.json)",
       "commands:dump_quest_storage": "file(data/commands/quest/dump_quest_storage.json)",
+      "commands:extensible_object:extend": "file(data/commands/extensible_object/extend_extensible_object.json)",
+      "commands:extensible_object:remove": "file(data/commands/extensible_object/remove_extensible_object.json)",
       "commands:harvest_highland_vine": "file(data/commands/harvest_vine/harvest_highland_vine.json)",
       "commands:light_policy:always_on": "file(data/commands/light_policy/always_on_light_policy.json)",
       "commands:light_policy:never": "file(data/commands/light_policy/never_light_policy.json)",
@@ -1446,6 +1448,7 @@
       "decoration:candledark:plushie_candy_corn": "file(entities/decoration/candledark/plushie_candy_corn/plushie_candy_corn.json)",
       "decoration:candledark:plushie_ghost": "file(entities/decoration/candledark/plushie_ghost/plushie_ghost.json)",
       "decoration:candledark:pumpkin_lantern": "file(entities/decoration/candledark/pumpkin_lantern/pumpkin_lantern.json)",
+      "decoration:candledark:pumpkin_basket": "file(entities/decoration/candledark/pumpkin_basket/pumpkin_basket.json)",
       "decoration:candledark:pumpkin_small": "file(entities/decoration/candledark/pumpkin_small/pumpkin_small.json)",
       "decoration:candledark:pumpkin_tiny": "file(entities/decoration/candledark/pumpkin_tiny/pumpkin_tiny.json)",
       "decoration:candledark:scarecrow": "file(entities/decoration/candledark/scarecrow/scarecrow.json)",
@@ -1891,6 +1894,7 @@
       "effects:harvest_prepared_drink_overlay_effect": "file(data/effects/harvest_prepared_drink_overlay_effect/harvest_prepared_drink_overlay_effect.json)",
       "effects:harvest_roe_overlay_effect": "file(data/effects/harvest_roe_overlay_effect/harvest_roe_overlay_effect.json)",
       "effects:harvest_veggie_overlay_effect": "file(data/effects/harvest_veggie_overlay_effect/harvest_veggie_overlay_effect.json)",
+      "effects:harvest_water_well_overlay_effect": "file(data/effects/harvest_water_well_overlay_effect/harvest_water_well_overlay_effect.json)",
       "effects:harvest_wool_overlay_effect": "file(data/effects/harvest_wool_overlay_effect/harvest_wool_overlay_effect.json)",
       "effects:heal:divine_extension": "file(data/effects/heal/heal_divine_extension.json)",
       "effects:heal:divine_intervention": "file(data/effects/heal/heal_divine_intervention.json)",
@@ -1987,6 +1991,8 @@
       "effects:wound:fire": "file(data/effects/wounds/wound_fire.json)",
       "effects:wound:impact": "file(data/effects/wounds/wound_impact.json)",
       "effects:wound:pierce": "file(data/effects/wounds/wound_pierce.json)",
+      "extensible_object:platform_extension": "file(entities/gizmos/extensible_object/platform_extension.json)",
+      "extensible_object:solid_extension": "file(entities/gizmos/extensible_object/solid_extension.json)",
       "farmer:all_crops": "file(services/server/farming/data/all_crops.json)",
       "farmer:field_layer:fertilizable": "file(entities/farming/fertilize_field_layer/fertilize_field_layer.json)",
       "farmer:initial_crops": "file(services/server/farming/data/initial_crops.json)",
@@ -4208,6 +4214,7 @@
       "trees:yew:stem": "file(entities/trees/yew_tree/stem/tree_yew_plant_stem.json)",
       "ui:all_input:filters": "file(ui/data/all_input_filters.json)",
       "ui:counter:filters": "file(ui/data/counter_filters.json)",
+      "ui:candledark_treats:filters": "file(ui/data/candledark_treats_filters.json)",
       "ui:decayables:filters": "file(ui/data/decayables_filters.json)",
       "ui:desk:filters": "file(ui/data/desk_filters.json)",
       "ui:dresser:filters": "file(ui/data/dresser_filters.json)",
@@ -7328,6 +7335,7 @@
       "entity_kingdom": "file(components/entity_modification/entity_kingdom_component.lua)",
       "entity_modification": "file(components/entity_modification/entity_modification_component.lua)",
       "entity_mover": "file(components/entity_mover/entity_mover_component.lua)",
+      "extensible_object": "file(components/extensible_object/extensible_object_component.lua)",
       "fence": "file(components/fence/fence_component.lua)",
       "fish_trap": "file(components/fish_trap/fish_trap_component.lua)",
       "herbalist_planter": "file(components/herbalist_planter/herbalist_planter_component.lua)",
@@ -7364,7 +7372,6 @@
       "vertical_pathing_region": "file(components/vertical_pathing_region/vertical_pathing_region_component.lua)",
       "vine": "file(components/vine/vine_component.lua)",
       "water_gate": "file(components/water_tools/water_gate_component.lua)",
-      "water_pump": "file(components/water_tools/water_pump_component.lua)",
       "water_signal": "file(components/signals/water_signal_component.lua)",
       "water_source": "file(components/water_tools/water_source_component.lua)",
       "water_sponge": "file(components/water_tools/water_sponge_component.lua)",
@@ -7675,6 +7682,10 @@
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
       },
+      "get_build_grid_offset": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "server"
+      },
       "get_storage_filter_custom_presets_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "client"
@@ -7687,15 +7698,15 @@
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
       },
+      "set_build_grid_offset": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "server"
+      },
       "set_client_gameplay_settings_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
       },
       "set_client_gameplay_setting_command": {
-         "controller": "file(call_handlers/settings_call_handler.lua)",
-         "endpoint": "server"
-      },
-      "title_selection_criteria_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "server"
       },
@@ -7718,6 +7729,10 @@
       "terrain_slice_buildings_setting_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
          "endpoint": "client"
+      },
+      "title_selection_criteria_changed": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "server"
       },
       "water_signal_update_frequency_setting_changed": {
          "controller": "file(call_handlers/settings_call_handler.lua)",
@@ -7787,16 +7802,16 @@
          "controller": "file(call_handlers/saved_variables_call_handler.lua)",
          "endpoint": "server"
       },
-      "select_water_pump_pipe_command": {
-         "controller": "file(call_handlers/water_tools_call_handler.lua)",
+      "select_extensible_object_command": {
+         "controller": "file(call_handlers/extensible_object_call_handler.lua)",
          "endpoint": "client"
       },
-      "set_water_pump_pipe_command": {
-         "controller": "file(call_handlers/water_tools_call_handler.lua)",
+      "set_extensible_object_command": {
+         "controller": "file(call_handlers/extensible_object_call_handler.lua)",
          "endpoint": "server"
       },
-      "remove_water_pump_pipe_command": {
-         "controller": "file(call_handlers/water_tools_call_handler.lua)",
+      "remove_extensible_object_command": {
+         "controller": "file(call_handlers/extensible_object_call_handler.lua)",
          "endpoint": "server"
       },
       "set_water_sponge_flow_enabled": {

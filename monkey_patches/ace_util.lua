@@ -1,3 +1,4 @@
+local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
 local Color4 = _radiant.csg.Color4
@@ -31,8 +32,12 @@ function ace_util.get_rotations_table(json)
       local origin = radiant.util.to_point3(rotation.origin) or Point3.zero
       local offset = radiant.util.to_point3(rotation.offset) or Point3.zero
       local direction = radiant.util.to_point3(rotation.direction)
+      -- the terminus, if not explicitly specified, needs to increase by 1 the non-direction dimensions of the origin
+      local terminus = radiant.util.to_point3(rotation.terminus) or
+         Point3(origin.x + (direction.x == 0 and 1 or 0), origin.y + (direction.y == 0 and 1 or 0), origin.z + (direction.z == 0 and 1 or 0))
       local min_length = rotation.min_length or json.min_length or 1
       local max_length = rotation.max_length or json.max_length or min_length
+      local valid_lengths = rotation.valid_lengths or json.valid_lengths
       local matrix = rotation.matrix or json.matrix
       local material = rotation.material or json.material
       local scale = rotation.scale or json.scale
@@ -46,9 +51,11 @@ function ace_util.get_rotations_table(json)
       if origin and direction and min_length then
          table.insert(result, {
             origin = origin,
+            terminus = terminus,
             direction = direction,
             min_length = min_length,
             max_length = max_length,
+            valid_lengths = valid_lengths,
             dimension = rotation.dimension,
             rotation = rotation.rotation,
             model = rotation.model,

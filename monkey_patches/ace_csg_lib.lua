@@ -31,6 +31,21 @@ function ace_csg_lib.are_same_shape_regions(region_a, region_b)
    return intersection:get_area() == area_a
 end
 
+-- create a cube that truly spans p0 and p1 inclusive
+function ace_csg_lib.create_min_cube(p0, p1, tag)
+   assert(p0 and p1)
+   local min, max = Point3(p0), Point3(p1)
+   tag = tag or 0
+
+   for _, d in ipairs(DIMENSIONS) do
+      if min[d] > max[d] then
+         min[d], max[d] = max[d], min[d]
+      end
+   end
+
+   return Cube3(min, max, tag)
+end
+
 function ace_csg_lib.create_directional_cube(p0, p1, direction, tag)
    -- if a direction is specified, use its x/y/z signs for adjusting the min/max
    assert(p0 and p1)

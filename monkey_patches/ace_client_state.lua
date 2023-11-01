@@ -2,6 +2,7 @@
    For per-client data that should be saved by the server.
 ]]
 
+local Point2 = _radiant.csg.Point2
 local log = radiant.log.create_logger('client_state')
 
 local AceClientState = class()
@@ -90,6 +91,14 @@ end
 
 function AceClientState:reset_gameplay_setting()
    self._sv._gameplay_settings = {}
+end
+
+function AceClientState:get_build_grid_offset()
+   return self._sv._build_grid_offset or Point2.zero
+end
+
+function AceClientState:set_build_grid_offset(offset)
+   self._sv._build_grid_offset = offset
 end
 
 return AceClientState

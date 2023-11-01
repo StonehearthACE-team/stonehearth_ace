@@ -1,0 +1,57 @@
+{
+   "mixins": [
+      "stonehearth:ui:input_box:filters"
+   ],
+   "stockpile": {
+      "mixintypes": {
+         "resources": "remove",
+         "fuels": "remove",
+         "ore": "remove",
+         "ingots": "remove",
+         "animal_parts": "remove",
+         "plants": "remove",
+         "dyes": "remove",
+         "cloth": "remove",
+         "healing_items": "remove",
+         "fertilizers": "remove",
+         "raw_foods": "remove",
+         "baking": "remove",
+         "cooking_ingredients": "remove",
+         "brewing_ingredients": "remove",
+         "animal_food": "remove",
+         "dry_goods": "remove",
+         "potions": "remove"
+      },
+      "cooked_food": {
+         "mixintypes": {
+            "categories": "override"
+         },
+         "categories": {
+            "candledark_treat": {
+               "ordinal": 1,
+               "name": "i18n(stonehearth_ace:ui.data.constants.candledark_treat_resource_name)",
+               "icon": "/stonehearth_ace/entities/food/candledark/candledark_treat.png",
+               "filter": "candledark_treat"
+            },
+            "baked": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.prepared_food_baked_resource_name)",
+               "icon": "/stonehearth_ace/entities/food/prepared_food_baked.png",
+               "filter": "prepared_food baked"
+            },
+            "desserts": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.prepared_food_desserts_resource_name)",
+               "icon": "/stonehearth_ace/entities/food/prepared_food_desserts.png",
+               "filter": "prepared_food prepared_dessert"
+            },
+            "festival": {
+               "ordinal": 99,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.prepared_food_festival_resource_name)",
+               "icon": "/stonehearth_ace/entities/food/prepared_food_festival.png",
+               "filter": "prepared_food festival"
+            }
+         }
+      }
+   }
+}
