@@ -115,7 +115,7 @@ end
 
 function TrickedScript:decay_items(material, chance)
    local inventory = stonehearth.inventory:get_inventory(self._sv.ctx.player_id)
-   local sellable_item_tracker = inventory:get_item_tracker('stonehearth:resource_material_tracker')
+   local sellable_item_tracker = inventory:get_item_tracker('stonehearth:sellable_item_tracker')
    local tracking_data = sellable_item_tracker:get_tracking_data()
    local item_uris = tracking_data:get_keys()
 

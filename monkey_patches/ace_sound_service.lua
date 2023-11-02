@@ -236,7 +236,7 @@ function AceSound:_get_music_tracklist(is_day)
    if not music_tracklist then
       return weather_music
    elseif weather_music then
-      music_tracklist = radiant.deep_copy(tier_music)
+      music_tracklist = radiant.deep_copy(music_tracklist)
       radiant.array_append(music_tracklist.track, weather_music.track)
    end
 
@@ -248,10 +248,14 @@ function AceSound:_choose_overriden_music_track(is_day, soundtrack_override)
    local music_data = self._constants.music[music_sound_key]
    radiant.assert(music_data, 'soundtrack override can not be found in music data', music_sound_key)
 
-   local time_of_day = is_day and 'day' or 'night'
-   -- Get map of playable songs for this time of day
-   local time_of_day_music = music_data[time_of_day]
-   return time_of_day_music
+   local time_of_day = is_day and 'day' or not is_day and 'night'
+   if time_of_day then 
+      -- Get map of playable songs for this time of day
+      local time_of_day_music = music_data[time_of_day]
+      return time_of_day_music
+   else
+      return
+   end
 end
 
 function AceSound:_choose_weather_music_track(is_day)
