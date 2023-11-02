@@ -265,13 +265,7 @@ function AceSound:_choose_weather_music_track(is_day)
 
    local time_of_day = is_day and 'day' or 'night'
    -- Get map of playable songs for this time of day
-   local time_of_day_music = music_data[time_of_day]
-   if not time_of_day_music then
-      return
-   end
-
-   -- Get track for this time of day
-   return time_of_day_music
+   return music_data[time_of_day]
 end
 
 return AceSound
