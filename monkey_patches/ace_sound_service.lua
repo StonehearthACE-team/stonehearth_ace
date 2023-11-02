@@ -171,7 +171,7 @@ function AceSound:_on_time_changed(date)
    end
 
    -- music
-   local is_day = date.hour >= event_times.sunrise_end and date.hour < event_times.sunset_end
+   local is_day = date.hour >= event_times.sunrise_start and date.hour < event_times.sunset_end
    local music_tracklist
    if not self._initial_music_tracklist then
       music_tracklist = self:_get_music_tracklist(is_day)
