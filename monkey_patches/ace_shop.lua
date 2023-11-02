@@ -571,7 +571,7 @@ function AceShop:_add_entity_to_shop_sold_items(shop_sold_items, item)
 end
 
 function AceShop:_add_item_to_inventory(uri, description, cost, quality, quantity)
-   if not description.materials then
+   if not description.materials and description.category ~= 'pets' then
       -- no materials! bad item!
       return
    end
