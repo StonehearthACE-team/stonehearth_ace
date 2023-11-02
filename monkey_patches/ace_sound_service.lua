@@ -248,14 +248,9 @@ function AceSound:_choose_overriden_music_track(is_day, soundtrack_override)
    local music_data = self._constants.music[music_sound_key]
    radiant.assert(music_data, 'soundtrack override can not be found in music data', music_sound_key)
 
-   local time_of_day = is_day and 'day' or not is_day and 'night'
-   if time_of_day then 
-      -- Get map of playable songs for this time of day
-      local time_of_day_music = music_data[time_of_day]
-      return time_of_day_music
-   else
-      return
-   end
+   local time_of_day = is_day and 'day' or 'night'
+   -- Get map of playable songs for this time of day
+   return music_data[time_of_day]
 end
 
 function AceSound:_choose_weather_music_track(is_day)
