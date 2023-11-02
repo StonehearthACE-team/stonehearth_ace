@@ -59,7 +59,17 @@ function AceSound:_on_threat_changed(data)
    self:recommend_combat_music(self._combat_music_override)
 end
 
+-- overriding for debug messages
+function AceSound:recommend_game_music(requestor, channel, info)
+   if channel ~= 'ambient' then
+      self._log:error('recommend_game_music: %s %s %s', requestor, channel, info and radiant.util.table_tostring(info) or 'nil')
+   end
+   self:recommend_music(requestor, 'game_screen', channel, info)
+end
+
 function AceSound:recommend_combat_music(music)
+   self._log:error('recommend_combat_music: %s; in_combat = %s, threat_level = %s, combat_started = %s',
+         tostring(music), tostring(self._is_in_combat), tostring(self._threat_level), tostring(self._combat_started))
    self._combat_music_override = music
    
    if not music then
@@ -161,26 +171,26 @@ function AceSound:_on_time_changed(date)
    end
 
    -- music
+   local is_day = date.hour >= event_times.sunrise_end and date.hour < event_times.sunset_end
    local music_tracklist
    if not self._initial_music_tracklist then
-      music_tracklist = self:_get_music_tracklist(true)
+      music_tracklist = self:_get_music_tracklist(is_day)
       if music_tracklist then 
-         self:recommend_game_music('clock', 'music',  music_tracklist)
+         --self:recommend_game_music('clock', 'music',  music_tracklist)
          self._initial_music_tracklist = true
       end
    end
 
-   local is_day = date.hour >= event_times.sunrise_end and date.hour < event_times.sunset_end
    if (date.hour == event_times.sunrise_start and not self._day_tracklist_created) or (self._trigger_tracklist_change and is_day) then
       self._day_tracklist_created = true
       self._night_tracklist_created = false
       self._trigger_tracklist_change = false
-      music_tracklist = self:_get_music_tracklist(true)
+      music_tracklist = self:_get_music_tracklist(is_day)
    elseif (date.hour == event_times.sunset_end and not self._night_tracklist_created) or (self._trigger_tracklist_change and not is_day) then
       self._night_tracklist_created = true
       self._day_tracklist_created = false
       self._trigger_tracklist_change = false
-      music_tracklist = self:_get_music_tracklist(false)
+      music_tracklist = self:_get_music_tracklist(is_day)
    end
 
    if music_tracklist then
@@ -217,25 +227,19 @@ function AceSound:_on_time_changed(date)
    end
 end
 
-function AceSound:_get_music_tracklist(is_day)  
-   local tier_music = self:_choose_tier_music_track(is_day)
+function AceSound:_get_music_tracklist(is_day)
    local weather_music = self:_choose_weather_music_track(is_day)
-   local music_tracklist
-   if self._soundtrack_override then
-      if weather_music then
-         music_tracklist  = radiant.deep_copy(self:_choose_overriden_music_track(is_day, self._soundtrack_override))
-         radiant.array_append(music_tracklist.track, weather_music.track)
-      else
-         music_tracklist = self:_choose_overriden_music_track(is_day, self._soundtrack_override)
-      end
-   elseif weather_music and tier_music then
-      music_tracklist  = radiant.deep_copy(tier_music)
-      radiant.array_append(music_tracklist.track, weather_music.track)
+   local music_tracklist = self._soundtrack_override and
+         self:_choose_overriden_music_track(is_day, self._soundtrack_override) or
+         self:_choose_tier_music_track(is_day)
+
+   if not music_tracklist then
+      return weather_music
    elseif weather_music then
-      music_tracklist = weather_music
-   elseif tier_music then
-      music_tracklist = tier_music
+      music_tracklist = radiant.deep_copy(tier_music)
+      radiant.array_append(music_tracklist.track, weather_music.track)
    end
+
    return music_tracklist
 end
 
@@ -247,11 +251,6 @@ function AceSound:_choose_overriden_music_track(is_day, soundtrack_override)
    local time_of_day = is_day and 'day' or 'night'
    -- Get map of playable songs for this time of day
    local time_of_day_music = music_data[time_of_day]
-   if not time_of_day_music then
-      return
-   end
-
-   -- Get track for this time of day
    return time_of_day_music
 end
 
