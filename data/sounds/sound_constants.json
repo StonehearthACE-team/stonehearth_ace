@@ -520,7 +520,7 @@
                         "loop"     : true
                      }
                   ],
-                  "priority": 10
+                  "priority": 40
                }
             }
          }
@@ -713,7 +713,30 @@
          "loop": false,
          "priority": 100
       },
-      "disabled_frostfeast": {
+      "candledark_tricked": {
+         "track": [
+            "stonehearth_ace:music:ace_gwriterstudio_candledark_tricked"
+         ],
+         "loop": false,
+         "priority": 80
+      },
+      "candledark": {
+         "day": {
+            "track": []
+         },
+         "night": {
+            "track": [
+               "stonehearth_ace:music:ace_gwriterstudio_candledark_night_1",
+               "stonehearth_ace:music:ace_gwriterstudio_candledark_night_2",
+               "stonehearth_ace:music:ace_gwriterstudio_candledark_night_3",
+               "stonehearth_ace:music:ace_gwriterstudio_candledark_night_4"
+            ],
+            "volume": 33
+         },
+         "loop": true,
+         "priority": 20
+      },
+      "frostfeast": {
          "day": {
             "track": [
                "stonehearth_ace:music:ace_gwriterstudio_frostfeast_day_1",
