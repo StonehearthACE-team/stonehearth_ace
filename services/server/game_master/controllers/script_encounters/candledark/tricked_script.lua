@@ -12,7 +12,7 @@ function TrickedScript:start(ctx, data)
    end
 
    if data.spawn_visitors then
-      self:spawn_visitors(data.spawn_visitors.visitors, data.spawn_visitors.stay or '2h+50m')
+      self:spawn_visitors(data.spawn_visitors.visitors, data.spawn_visitors.stay or '3h+30m')
    end
 
    if data.frog_rain then
@@ -30,6 +30,8 @@ function TrickedScript:start(ctx, data)
    if data.decay_items then
       self:decay_items(data.decay_items.material, data.decay_items.chance or 0.5)
    end
+
+   self.__saved_variables:mark_changed()
 end
 
 function TrickedScript:create_bulletin(bulletin)
@@ -64,10 +66,15 @@ function TrickedScript:spawn_visitors(visitors, stay)
       end
 
       self._sv.despawn_timer = stonehearth.calendar:set_persistent_timer('despawn visitors', stay, radiant.bind(self, '_despawn_visitors'))
+      self.__saved_variables:mark_changed()
    end
 end
 
 function TrickedScript:_despawn_visitors()
+   if not self._sv.visitors then
+      return
+   end
+
 	for _, visitor in ipairs(self._sv.visitors) do
 		if radiant.entities.exists(visitor) then
 			visitor:get_component('stonehearth:ai')
@@ -144,6 +151,9 @@ function TrickedScript:destroy()
    if self._sv.despawn_timer then
       self._sv.despawn_timer:destroy()
       self._sv.despawn_timer = nil
+   end
+
+   if self._sv.visitors then
       self:_despawn_visitors()
    end
 

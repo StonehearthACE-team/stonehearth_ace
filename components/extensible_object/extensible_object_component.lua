@@ -131,6 +131,11 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
       self._sv.cur_extensions[rotation_id] = nil
    end
 
+   if self._json.extended_model_variant then
+      local render_info = self._entity:add_component('render_info')
+      render_info:set_model_variant('extended')
+   end
+
    self:_update_commands()
    self.__saved_variables:mark_changed()
 
@@ -179,6 +184,11 @@ function ExtensibleObjectComponent:_clear_all_extensions()
       if dc and rotation.connection_type then
          dc:update_region(rotation.connection_type, id, rotation.connector_region)
       end
+   end
+
+   if self._json.extended_model_variant then
+      local render_info = self._entity:add_component('render_info')
+      render_info:set_model_variant('default')
    end
 
    self._sv.cur_extensions = {}
