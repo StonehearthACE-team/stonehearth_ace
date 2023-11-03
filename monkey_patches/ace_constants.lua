@@ -76,6 +76,11 @@ ace_constants.conversation.SCRIPTS[
       constants.conversation.participant_types.HUMANOID,
       constants.conversation.participant_types.SPOOKY,
    }] = 'stonehearth_ace:conversation:scripts:spooky_to_humanoid'
+ace_constants.conversation.SCRIPTS[
+   {
+      constants.conversation.participant_types.SPOOKY,
+      constants.conversation.participant_types.ANIMAL,
+   }] = 'stonehearth_ace:conversation:scripts:spooky_to_animal'
 
 -- thresholds are named for the target's renown relative to this participant's renown
 ace_constants.conversation.RENOWN_THRESHOLDS = {
