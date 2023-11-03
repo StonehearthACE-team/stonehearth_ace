@@ -616,4 +616,23 @@ function AcePopulationFaction:change_work_order_command(session, response, work_
    return true
 end
 
+function AcePopulationFaction:_on_combat_started(evt)
+   local threat_d = self._sv.threat_data:get_data()
+   if threat_d.in_combat or self._sv.is_npc then
+      return
+   end
+   if self._sv.player_id ~= radiant.entities.get_player_id(evt.entity) then
+      local in_combat = threat_d.threat_level > 0.05
+      -- don't need to listen unless we're out of combat
+      if in_combat and self._combat_listener then
+         self._combat_listener:destroy()
+         self._combat_listener = nil
+      end
+      self._sv.threat_data:set_data({
+            threat_level = threat_d.threat_level,
+            in_combat = in_combat
+         })
+   end
+end
+
 return AcePopulationFaction

@@ -20,7 +20,7 @@
       "destination": {
          "region": [
             {
-               "min": { "x": -1, "y": -1, "z": -2 },
+               "min": { "x": -1, "y": 0, "z": -2 },
                "max": { "x": 1, "y": 2, "z": 1 }
             }
          ]
@@ -37,9 +37,9 @@
                "direction": { "x": 0, "y": 0, "z": -1 },
                "model": "file(plank_bridge_small.qb)",
                "scale": 0.1,
-               "offset": { "x": 0, "y": 0, "z": 5 },
-               "origin": { "x": -1.5, "y": 0.5, "z": -1 },
-               "terminus": { "x": 1.5, "y": 1, "z": -1 },
+               "offset": { "x": 0, "y": 1, "z": 5 },
+               "origin": { "x": -1, "y": 0.5, "z": -1 },
+               "terminus": { "x": 1, "y": 1, "z": -1 },
                "rotation": 0
             }
          ]
