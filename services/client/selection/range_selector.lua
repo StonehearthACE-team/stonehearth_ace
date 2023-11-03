@@ -97,7 +97,7 @@ function XYZRangeSelector:set_relative_entity(entity, ignore_children)
    self._ignore_children = ignore_children ~= false   -- default to true
 
    local mob = entity and entity:get_component('mob')
-   self._model_offset = MODEL_OFFSET - (mob and mob:get_region_origin() or Point3.zero)
+   self._model_offset = MODEL_OFFSET - (mob and (mob:get_region_origin() - mob:get_model_origin()) or Point3.zero)
 
    return self
 end

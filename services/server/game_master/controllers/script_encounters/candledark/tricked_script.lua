@@ -125,7 +125,8 @@ function TrickedScript:decay_items(material, chance)
          for id, entity in pairs(items.items) do
             if rng:get_real(0, 1) <= chance then
                stonehearth.food_decay:debug_decay_to_next_stage(entity)
-               if rng:get_real(0, 1) <= (chance * 0.5) then
+               -- make sure the food hasn't already decayed out of existence
+               if entity:is_valid() and rng:get_real(0, 1) <= (chance * 0.5) then
                   stonehearth.food_decay:debug_decay_to_next_stage(entity)
                end
             end
