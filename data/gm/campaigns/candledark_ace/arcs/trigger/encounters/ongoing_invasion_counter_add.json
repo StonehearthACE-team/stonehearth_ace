@@ -1,11 +1,10 @@
 {
    "type": "encounter",
    "encounter_type": "set_counters",
-   "in_edge": "invasion_add_counter",
-   "out_edge": "wait_for_invasion_clearance",
+   "in_edge": "ongoing_invasion_counter_add",
    "set_counters_info": {
       "counters": {
-         "invasions_defeated": "x + 1"
+         "ongoing_invasion": "x + 1"
       }
    }
 }
