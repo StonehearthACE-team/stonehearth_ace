@@ -79,7 +79,7 @@ function TrickedScript:_despawn_visitors()
 		if radiant.entities.exists(visitor) then
 			visitor:get_component('stonehearth:ai')
 					 :get_task_group('stonehearth:task_groups:solo:unit_control')
-					 :create_task('stonehearth:depart_visible_area', { give_up_after = '1h' })
+					 :create_task('stonehearth:depart_visible_area', { give_up_after = '3h' })
                 :start()
 		end
 	end

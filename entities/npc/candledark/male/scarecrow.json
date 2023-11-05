@@ -1,6 +1,7 @@
 {
    "type": "entity",
    "mixins": "stonehearth:mixins:pet",
+   "player_id": "human_npcs",
    "components": {
       "render_info": {
          "scale": 0.1,
@@ -49,11 +50,22 @@
       }
    },
    "entity_data": {
+      "stonehearth:ai_packs": {
+         "actions": [
+            "stonehearth:actions:depart_visible_area",
+            "stonehearth:actions:depart_visible_area_in_place",
+            "stonehearth:actions:find_point_beyond_visible"
+         ],
+         "task_groups": [
+            "stonehearth:task_groups:solo:unit_control"
+         ]
+      },
       "stonehearth:conversation_type": "animal",
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.npc.candledark.male.scarecrow.display_name)",
          "description": "i18n(stonehearth_ace:entities.npc.candledark.male.scarecrow.description)",
-         "icon": "file(scarecrow.png)"
+         "icon": "file(scarecrow.png)",
+         "player_id": "human_npcs"
       }
    }
 }

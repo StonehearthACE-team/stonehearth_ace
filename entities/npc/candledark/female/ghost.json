@@ -64,12 +64,6 @@
       }
    },
    "entity_data": {
-      "stonehearth:conversation_type": "spooky",
-      "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.npc.candledark.female.ghost.display_name)",
-         "description": "i18n(stonehearth_ace:entities.npc.candledark.female.ghost.description)",
-         "icon": "file(ghost.png)"
-      },
       "stonehearth:ai_packs": {
          "packs": [
             "stonehearth:ai_pack:human",
@@ -77,8 +71,20 @@
             "stonehearth:ai_pack:free_time"
          ],
          "actions": [
+            "stonehearth:actions:depart_visible_area",
+            "stonehearth:actions:depart_visible_area_in_place",
+            "stonehearth:actions:find_point_beyond_visible",
             "stonehearth:actions:celebrate:carouse"
+         ],
+         "task_groups": [
+            "stonehearth:task_groups:solo:unit_control"
          ]
+      },
+      "stonehearth:conversation_type": "spooky",
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.candledark.female.ghost.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.candledark.female.ghost.description)",
+         "icon": "file(ghost.png)"
       }
    }
 }

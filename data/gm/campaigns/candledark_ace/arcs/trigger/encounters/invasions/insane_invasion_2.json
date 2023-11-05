@@ -3,7 +3,13 @@
    "mixins": "stonehearth_ace:mixins:encounter:candledark:undead_raid",
    "encounter_type": "create_mission",
    "in_edge": "insane_invasion_2",
-   "out_edge": "wait_to_destroy_invasion_party",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "wait_to_destroy_invasion_party",
+         "ongoing_invasion_counter_add"
+      ]
+   },
    "can_start": {
       "test_1": {
          "invasion_total": {

@@ -66,13 +66,13 @@
          "icon": "file(skeleton.png)"
       },
       "stonehearth:ai_packs": {
-         "packs": [
-            "stonehearth:ai_pack:human",
-            "stonehearth:ai_pack:sitting",
-            "stonehearth:ai_pack:free_time"
-         ],
          "actions": [
-            "stonehearth:actions:celebrate:carouse"
+            "stonehearth:actions:depart_visible_area",
+            "stonehearth:actions:depart_visible_area_in_place",
+            "stonehearth:actions:find_point_beyond_visible"
+         ],
+         "task_groups": [
+            "stonehearth:task_groups:solo:unit_control"
          ]
       }
    }
