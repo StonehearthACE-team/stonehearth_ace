@@ -106,6 +106,7 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
    local model_name = self:_get_model_name(rotation_id)
    local child = self._sv._child_entities[rotation_id]
    local rcs = child:add_component('region_collision_shape')
+   local vpr = child:get_component('stonehearth_ace:vertical_pathing_region')
    local region = rcs:get_region()
    local models_comp = self._entity:add_component('stonehearth_ace:models')
 
@@ -113,6 +114,10 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
       region:modify(function(cursor)
          cursor:copy_region(collision_region)
       end)
+
+      if vpr then
+         vpr:set_region(collision_region)
+      end
 
       local data = radiant.shallow_copy(rotation)
       data.length = length
@@ -126,7 +131,11 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
 
             return true
          end)
-         
+
+      if vpr then
+         vpr:set_region()
+      end
+
       models_comp:remove_model(model_name)
       self._sv.cur_extensions[rotation_id] = nil
    end
