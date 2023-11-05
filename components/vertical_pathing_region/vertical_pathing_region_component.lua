@@ -32,6 +32,8 @@ function VerticalPathingRegionComponent:set_region(region)
          for _, cube in ipairs(region or {}) do
             cursor:add_unique_cube(radiant.util.to_cube3(cube))
          end
+      else
+         cursor:clear()
       end
    end)
 end
