@@ -100,6 +100,7 @@ local monkey_patches = {
    ace_find_healable_target_observer = 'stonehearth.ai.observers.find_healable_target_observer',
    ace_firepit_component = 'stonehearth.components.firepit.firepit_component',
    ace_fixture = 'stonehearth.components.building2.fixture',
+   ace_follow_path_action = 'stonehearth.ai.actions.follow_path_action',
    ace_food_available_observer = 'stonehearth.ai.observers.food_available_observer',
    ace_food_preference_script = 'stonehearth.data.traits.food_preference.food_preference_script',
    ace_free_time_observer = 'stonehearth.ai.observers.free_time_observer',
