@@ -1,0 +1,32 @@
+{
+   "type": "encounter",
+   "encounter_type": "set_counters",
+   "in_edge": "invasion_counter_fix",
+   "out_edge": {
+      "type": "destroy_tree",
+      "root": "invasion_generator",
+      "destroy_root": false
+   },
+   "can_start": {
+      "test_1": {
+         "ongoing_invasion": {
+            "type": "deny_if",
+            "item": "counter",
+            "key": "ongoing_invasion",
+            "value": 0
+         },
+         "invasion_fix": {
+            "type": "deny_if",
+            "item": "counter",
+            "key": "invasion_counter_fix",
+            "value": 1
+         }
+      }
+   },
+   "set_counters_info": {
+      "counters": {
+         "ongoing_invasion": 0,
+         "invasion_counter_fix": 1
+      }
+   }
+}

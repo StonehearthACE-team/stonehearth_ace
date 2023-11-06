@@ -1,13 +1,6 @@
 {
    "encounter_type": "create_mission",
    "rarity": "common",
-   "out_edge": {
-      "type": "trigger_many",
-      "out_edges": [
-         "wait_to_destroy_invasion_party",
-         "ongoing_invasion_counter_add"
-      ]
-   },
    "encounter_music": {
       "combat_music_sound_key": "candledark_invasion"
    },
