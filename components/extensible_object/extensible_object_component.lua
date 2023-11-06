@@ -186,6 +186,11 @@ function ExtensibleObjectComponent:_clear_all_extensions()
 
             return true
          end)
+
+         local vpr = child:get_component('stonehearth_ace:vertical_pathing_region')
+         if vpr then
+            vpr:set_region()
+         end
       end
 
       models_comp:remove_model(self:_get_model_name(id))

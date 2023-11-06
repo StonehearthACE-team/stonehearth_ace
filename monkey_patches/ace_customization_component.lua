@@ -28,7 +28,6 @@ function AceCustomizationComponent:change_customization(subcategory, style, cach
             file_path = existing.file_path,
             variant_type = existing.variant_type
          }
-         self.__saved_variables:mark_changed()
       end
       self:_remove_style(existing.subcategory, existing.style, existing.file_path, existing.variant_type)
    end
@@ -50,7 +49,6 @@ function AceCustomizationComponent:restore_cached_customization(subcategory)
 
    self:_add_style(subcategory, self._sv._customization_cache[subcategory].style)
    self._sv._customization_cache[subcategory] = nil
-   self.__saved_variables:mark_changed()
 end
 
 return AceCustomizationComponent
