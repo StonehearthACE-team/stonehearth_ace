@@ -1,6 +1,7 @@
 {
    "type": "entity",
    "mixins": "stonehearth:mixins:critter",
+   "player_id": "human_npcs",
    "components": {
       "render_info": {
          "scale": 0.12,
@@ -53,10 +54,18 @@
          }
       },
       "stonehearth:catalog": {
-         "player_id": "animals",
+         "player_id": "human_npcs",
          "display_name": "i18n(stonehearth_ace:entities.critters.candledark.frog.display_name)",
          "description": "i18n(stonehearth_ace:entities.critters.candledark.frog.description)",
          "icon": "file(frog.png)"
+      },
+      "stonehearth:ai_packs": {
+         "actions": [
+            "stonehearth:actions:depart_visible_area",
+            "stonehearth:actions:depart_visible_area_in_place",
+            "stonehearth:actions:find_point_beyond_visible",
+            "stonehearth:actions:dispatcher:depart_world"
+         ]
       }
    }
 }
