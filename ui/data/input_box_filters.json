@@ -1702,6 +1702,8 @@
          }
       },
       "cooked_food": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_cooked_food)",
+         "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/food_and_drinks.png",
          "filter": "prepared_food",
          "ordinal": 10,
          "mixintypes": {
@@ -1780,11 +1782,23 @@
                "icon": "/stonehearth_ace/entities/food/prepared_food_dinner.png",
                "filter": "prepared_food dinner_time"
             },
+            "kept_drinks": {
+               "ordinal": 13,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.prepared_drink_kept_resource_name)",
+               "icon": "/stonehearth_ace/entities/drink/prepared_drink_kept.png",
+               "filter": "prepared_drink kept"
+            },
+            "serving_vessel_drinks": {
+               "ordinal": 14,
+               "display_name": "i18n(stonehearth_ace:ui.data.constants.serving_vessel_drinks_resource_name)",
+               "icon": "/stonehearth_ace/entities/drink/serving_vessel_drinks.png",
+               "filter": "prepared_drink stockpile_serving_vessel"
+            },
             "festival": {
                "ordinal": 99,
                "display_name": "i18n(stonehearth_ace:ui.data.constants.prepared_food_festival_resource_name)",
-               "icon": "/stonehearth_ace/entities/food/prepared_food_festival.png",
-               "filter": "prepared_food festival"
+               "icon": "/stonehearth_ace/entities/food/food_and_drinks_festival.png",
+               "filter": "food_and_drinks festival"
             }
          }
       }
