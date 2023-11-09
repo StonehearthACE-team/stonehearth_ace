@@ -1,0 +1,18 @@
+{
+   "type": "encounter",
+   "encounter_type": "destroy_entity",
+   "in_edge": "story_completed_cleanup",
+   "destroy_entity_info": {
+      "target_entities": [
+         "bonfire_1.entities.bonfire.bonfire",
+         "bonfire_2.entities.bonfire.bonfire",
+         "bonfire_3.entities.bonfire.bonfire"
+      ],
+      "effect": "stonehearth:effects:poof_effect:grey",
+      "random_delay": {
+         "min": 30,
+         "max": 60
+      },
+      "continue_always": true
+   }
+}

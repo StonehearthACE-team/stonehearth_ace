@@ -2,6 +2,7 @@
    "type": "encounter",
    "encounter_type": "set_counters",
    "in_edge": "story_completed_counter",
+   "out_edge": "story_completed_cleanup",
    "set_counters_info": {
       "counters": {
          "story_completed": 1
