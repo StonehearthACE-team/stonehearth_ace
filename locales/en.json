@@ -7304,6 +7304,12 @@
          "candledark_cheer": {
             "display_name": "Candledark Cheer",
             "description": "Boo! This hearthling is enjoying the spooky season with slighly increased Willpower and Speed! "
+         },
+         "golem": {
+            "golem_regeneration_buff": {
+               "description": "Regenerating 1% of their health every 45 minutes.<ul><li>Can not be hamstrung or shaken</li><li>Completely resistant to all poisons and toxins</li></ul>",
+               "display_name": "Powered by Hearth Magic"
+            }
          }
       },
       "loadouts": {
@@ -11932,7 +11938,8 @@
                "recipe_unlock_2_description": "The Cook has learned to make slightly fancier recipes and can now build an oven for delicious baked goods and a leavening table to let their doughs rise - a process necessary for baking."
             },
             "level_3_data": {
-               "perk_000_description": "The Cook can now make more big, satisfying meat dishes, along with a crusty, savory pot pie."
+               "perk_000_name": "Exemplary Cuisine",
+               "perk_000_description": "The Cook is now able to try their hands at more sophisticated dishes and to create a campfire pot to guide others into making delicious pottage."
             },
             "level_4_data": {
                "ornate_perk_name": "Healthier Diets",
@@ -13178,7 +13185,7 @@
       "farmer": {
          "farmer_description": {
             "level_2_data": {
-               "perk_000_name": "Bountiful Harvest",
+               "perk_000_name": "Bountiful Harvest (Rank 1)",
                "perk_000_description": "The Farmer coaxes up to 25% greater yield from each plant.",
                "perk_001_name": "Flower Power",
                "perk_001_description": "The Farmer can plant flowers to make a lovely garden! (They can grow decorative flowers.)",
@@ -13191,11 +13198,11 @@
                "perk_000_description": "The Farmer can use fertilizer on crops to potentially increase their quality."
             },
             "level_4_data": {
-               "perk_000_name": "Bountiful Harvest (Upgrade)",
+               "perk_000_name": "Bountiful Harvest (Rank 2)",
                "perk_000_description": "The Farmer coaxes up to 50% greater yield from each plant."
             },
             "level_6_data": {
-               "perk_000_name": "Bountiful Harvest (Max)",
+               "perk_000_name": "Bountiful Harvest (Rank 3)",
                "perk_000_description": "The Farmer coaxes up to 100% more yield from each plant.",
                "perk_001_name": "Mega Crops",
                "perk_001_description": "The Farmer's masterful skills can now occasionally cause a crop to grow much larger and become a mega crop. These rare giant plants will provide extra resources or unique rewards."

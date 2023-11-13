@@ -1,0 +1,19 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.golem.golem_regeneration_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.golem.golem_regeneration_buff.description)",
+   "icon": "file(golem_regeneration_buff.png)",
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": 0.01,
+      "pulse": "45m",
+      "is_percentage": true
+   },
+   "disallowed_categories": [
+      "debuff_hamstrung",
+      "debuff_shaken",
+      "poison",
+      "toxin"
+   ]
+}
