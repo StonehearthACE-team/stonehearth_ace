@@ -8,12 +8,20 @@
    "icon": "file(pumpkin_ward_green_debuff.png)",
    "effect": "stonehearth_ace:effects:candledark:pumpkin_ward_effect:green:inflicted",
    "restore_effect": true,
-   "duration": "1h",
+   "duration": "20m",
    "repeat_add_action": "renew_duration",
+   "buff_added_on_expire": "stonehearth_ace:buffs:candledark:vampire",
    "can_only_affect": [
       "vampire"
    ],
    "disallowed_buffs": [
       "stonehearth_ace:buffs:candledark:vampire"
-   ]
+   ],
+   "script": "stonehearth_ace:buff_scripts:equip_during_buff",
+   "script_info": {
+      "equipment_cache_key": "vampire_bite",
+      "add_equipment": [
+         "stonehearth_ace:weapons:candledark:vampire_bite_placeholder"
+      ]
+   }
 }

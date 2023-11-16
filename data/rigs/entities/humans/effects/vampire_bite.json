@@ -1,0 +1,61 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "speed": 3,
+         "animation": "emote_cry.json",
+         "loop": false,
+         "response_frame": 40
+      },
+      "b_right": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/vampire/blood.cubemitter.json",
+         "start_time" : 0,
+         "end_time" : 3000,
+         "loop": false,
+         "transforms": {
+            "x":0.3,
+            "y":0.5,
+            "z":-0.5,
+            "rx":30,
+            "ry":-100,
+            "rz":0
+         },
+         "bone": "head"
+      },
+      "b_left": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/candledark/vampire/blood.cubemitter.json",
+         "start_time" : 0,
+         "end_time" : 3000,
+         "loop": false,
+         "transforms": {
+            "x":-0.3,
+            "y":0.5,
+            "z":-0.5,
+            "rx":30,
+            "ry":100,
+            "rz":0
+         },
+         "bone": "head"
+      },
+      "voice": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 20,
+         "falloff" : 7,
+         "volume": 100,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:zombie_boss_attack_01",
+               "stonehearth:sounds:zombie_boss_attack_02",
+               "stonehearth:sounds:zombie_boss_attack_03"
+            ]    
+         }
+      }
+   }
+}

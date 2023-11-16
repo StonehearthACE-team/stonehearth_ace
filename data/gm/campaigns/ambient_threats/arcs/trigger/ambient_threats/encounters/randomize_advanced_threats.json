@@ -10,6 +10,16 @@
             "type": "deny_if",
             "item": "weather",
             "value": "stonehearth:weather:lucky:desert"
+         },
+			"not_under_siege": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth_ace:weather:under_siege"
+         },
+			"not_in_titanstorm": {
+            "type": "deny_if",
+            "item": "weather",
+            "value": "stonehearth:weather:titanstorm"
          }
       }
    },

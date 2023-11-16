@@ -1,4 +1,5 @@
 local SiegeWeaponComponent = require 'stonehearth.components.siege_weapon.siege_weapon_component'
+local Point3 = _radiant.csg.Point3
 local AceSiegeWeaponComponent = class()
 
 AceSiegeWeaponComponent._ace_old_activate = SiegeWeaponComponent.activate
@@ -40,6 +41,56 @@ function AceSiegeWeaponComponent:_on_target_hit(context)
       radiant.events.trigger(self._entity, 'stonehearth:siege_weapon:needs_refill')
    end
    self.__saved_variables:mark_changed()
+end
+
+function AceSiegeWeaponComponent:_on_kill_event(args)
+   local kill_data = args.kill_data
+   local player_id = radiant.entities.get_player_id(self._entity)
+   if kill_data and kill_data.source_id == player_id then
+      return -- don't replace with ghost if destroyed/cleared by the user
+   end
+   local town = stonehearth.town:get_town(player_id)
+   local limit_data = radiant.entities.get_entity_data(self._entity:get_uri(), 'stonehearth:item_placement_limit') or nil
+   if town and limit_data then
+      if town:is_placeable(limit_data) then
+         local location = radiant.entities.get_world_grid_location(self._entity)
+         local parent = radiant.entities.get_parent(self._entity)
+         if location and parent and radiant.terrain.is_standable(self._entity, location) then -- make sure location is valid
+            local placement_info = {
+                  location = location,
+                  normal = Point3(0, 1, 0),
+                  rotation = self._sv._original_rotation or 0,
+                  structure = parent,
+               }
+            local ghost_entity = town:place_item_type(self._entity:get_uri(), nil, placement_info)
+         end
+      end
+   elseif town then
+      local location = radiant.entities.get_world_grid_location(self._entity)
+      local parent = radiant.entities.get_parent(self._entity)
+      if location and parent and radiant.terrain.is_standable(self._entity, location) then
+         local placement_info = {
+               location = location,
+               normal = Point3(0, 1, 0),
+               rotation = self._sv._original_rotation or 0,
+               structure = parent,
+            }
+         local ghost_entity = town:place_item_type(self._entity:get_uri(), nil, placement_info)
+      end
+   end
+end
+
+function AceSiegeWeaponComponent:_register_with_town(register)
+   local player_id = radiant.entities.get_player_id(self._entity)
+   local town = stonehearth.town:get_town(player_id)
+   local limit_data = radiant.entities.get_entity_data(self._entity:get_uri(), 'stonehearth:item_placement_limit') or nil
+   if town and limit_data then
+      if register then
+         town:register_limited_placement_item(self._entity, self._siege_type)
+      else
+         town:unregister_limited_placement_item(self._entity, self._siege_type)
+      end
+   end
 end
 
 AceSiegeWeaponComponent._ace_old__destroy_traces = SiegeWeaponComponent._destroy_traces
