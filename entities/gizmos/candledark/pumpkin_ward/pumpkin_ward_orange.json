@@ -2,7 +2,7 @@
    "type": "entity",
    "mixins": [
       "stonehearth:mixins:placed_object",
-      "stonehearth:mixins:siege_turret"
+      "stonehearth:mixins:destructable_siege_object"
    ],
    "components": {
       "render_info": {
@@ -60,6 +60,10 @@
          "max_health": {
             "type": "basic",
             "value": 320
+         },
+         "menace": {
+            "type": "basic",
+            "value": 11
          }
       },
       "stonehearth:equipment": {
@@ -119,6 +123,17 @@
       }
    },
    "entity_data": {
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:siege_turret"
+         ]
+      },
+      "stonehearth:siege_object": {
+         "repair_work_units": 3
+      },
+      "stonehearth:killable": {
+         "killable_by_anyone": true
+      },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.gizmos.candledark.pumpkin_ward.orange.display_name)",
          "description": "i18n(stonehearth_ace:entities.gizmos.candledark.pumpkin_ward.orange.description)",

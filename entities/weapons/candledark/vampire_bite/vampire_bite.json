@@ -1,0 +1,33 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "slot": "bite",
+         "render_type": "none"
+      }
+   },
+   "entity_data": {
+      "stonehearth:combat:weapon_data": {
+         "base_damage": 20,
+         "reach": 1.5
+      },
+      "stonehearth:combat:melee_attacks": [
+         {
+            "name": "vampire_bite",
+            "effect": "vampire_bite",
+            "active_frame": 30,
+            "cooldown": 7000,
+            "priority": 3,
+            "aggro_addition": 50,
+            "damage_multiplier": 0,
+            "minimum_damage": 5,
+            "inflictable_debuffs": {
+               "infection": {
+                  "uri": "stonehearth_ace:buffs:candledark:nibbles",
+                  "chance": 0.9
+               }
+            }
+         }
+      ]
+   }
+}

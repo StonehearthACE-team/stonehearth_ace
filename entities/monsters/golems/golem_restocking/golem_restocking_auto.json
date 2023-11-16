@@ -5,7 +5,8 @@
    "components": {
       "stonehearth:buffs": {
          "buffs": {
-            "stonehearth_ace:buffs:golem:regeneration": true
+            "stonehearth_ace:buffs:golem:regeneration": true,
+            "stonehearth_ace:buffs:golem:undeployment": true
          }
       },
       "stonehearth:entity_forms": {
@@ -13,7 +14,25 @@
       },
 		"mob": {
          "mob_collision_type": "tiny"
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 48
+            }
+         }
       }
    },
-   "entity_data": {}
+   "entity_data": {
+      "stonehearth:observers:avoid_threatening_entities": {
+         "min_avoidance_distance": 48,
+         "max_avoidance_distance": 48
+      },
+      "stonehearth:ai_packs": {
+         "packs": [
+            "stonehearth:ai_pack:wimpy",
+            "stonehearth:ai_pack:panic:flee"
+         ]
+      }
+   }
 }
