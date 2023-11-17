@@ -473,6 +473,10 @@ function PeriodicInteractionComponent:_load_current_mode_data(mode)
    self._current_mode_data = self._json.modes[mode]
    self._current_sequence = self._sv._mode_sequences[mode]
    self._current_sequence_data = self._current_mode_data.sequences[self._current_sequence]
+   if not self._sv.finish_stage then
+      self._sv.finish_stage = self._current_mode_data.default_finish_stage or #self._current_sequence_data
+      self.__saved_variables:mark_changed()
+   end
 
    return mode
 end
