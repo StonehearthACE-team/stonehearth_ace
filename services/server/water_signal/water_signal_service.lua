@@ -325,14 +325,17 @@ function WaterSignalService:_on_tick()
 
          for chunk_id, _ in pairs(chunks) do
             for id, _ in pairs(self._signals_by_chunk[chunk_id] or {}) do
+               -- only need to check each signal once for each water region, even if it's in multiple chunks
                if not checked[id] then
                   checked[id] = true
                   local signal = self._signals[id]
+                  -- we're just checking water right now, not waterfalls, so only care about those that monitor water
                   if signal.region and signal.monitors_water then
-                     local intersects = water_region:intersects_region(signal.region)
+                     local intersects = water._entity:is_valid() and water_region:intersects_region(signal.region)
                      -- if it intersects now, or if it used to intersect and no longer does, signal it
-                     if intersects and not signal.waters[water_id] or signal.waters[water_id] == false then
+                     if intersects or signal.waters[water_id] then
                         signals_to_signal[id] = signal
+                        log:debug('signal %s: water %s intersection from %s => %s', signal.id, water_id, tostring(signal.waters[water_id]), intersects)
                         signal.waters[water_id] = intersects
                      end
                   end
@@ -378,9 +381,9 @@ function WaterSignalService:_on_tick()
                   checked[id] = true
                   local signal = self._signals[id]
                   if signal.region and signal.monitors_waterfall then
-                     local intersects = waterfall_region:intersects_region(signal.region)
+                     local intersects = waterfall._entity:is_valid() and waterfall_region:intersects_region(signal.region)
                      -- if it intersects now, or if it used to intersect and no longer does, signal it
-                     if intersects and not signal.waterfalls[waterfall_id] or signal.waterfalls[waterfall_id] == false then
+                     if intersects or signal.waterfalls[waterfall_id] then
                         signals_to_signal[id] = signal
                         signal.waterfalls[waterfall_id] = intersects
                      end
@@ -414,16 +417,12 @@ function WaterSignalService:_on_tick()
       end
 
       for water_id, intersects in pairs(signal.waters) do
-         if intersects then
-            signal.waters[water_id] = false
-         else
+         if not intersects then
             signal.waters[water_id] = nil
          end
       end
       for waterfall_id, intersects in pairs(signal.waterfalls) do
-         if intersects then
-            signal.waterfalls[waterfall_id] = false
-         else
+         if not intersects then
             signal.waterfalls[waterfall_id] = nil
          end
       end

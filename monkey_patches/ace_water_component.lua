@@ -30,6 +30,7 @@ AceWaterComponent._ace_old_destroy = WaterComponent.__user_destroy
 function AceWaterComponent:destroy()
    self:_destroy_region_trace()
    self:_ace_old_destroy()
+   stonehearth_ace.water_signal:water_component_modified(self._entity)
 end
 
 function AceWaterComponent:_destroy_region_trace()
