@@ -21,6 +21,12 @@ function AceWaterfallComponent:activate()
    self:reset_changed_since_signal()
 end
 
+AceWaterfallComponent._ace_old_destroy = WaterfallComponent.__user_destroy
+function AceWaterfallComponent:destroy()
+   self:_ace_old_destroy()
+   stonehearth_ace.water_signal:waterfall_component_modified(self._entity)
+end
+
 function AceWaterfallComponent:reset_changed_since_signal()
    self._volume_changed_since_signal = 0
 end

@@ -251,6 +251,7 @@ function WaterSignal:set_water_volume(water_components)
 	self._sv._water_volume = volume
 
 	if volume ~= prev_volume then
+      log:debug('total water volume for signal %s: %s => %s', self._sv.entity_id, prev_volume, volume)
       return true
    end
    return false
@@ -264,6 +265,7 @@ function WaterSignal:_get_intersection_volume(water_comp)
    local base_intersection = self._sv._world_signal_region:intersect_region(volume_info.base_region)
    local top_intersection = self._sv._world_signal_region:intersect_region(volume_info.top_region)
    local volume = base_intersection:get_area() + top_intersection:get_area() * volume_info.top_height
+   log:debug('water entity %s volume: %s', water_comp._entity, volume)
    return volume
 end
 
