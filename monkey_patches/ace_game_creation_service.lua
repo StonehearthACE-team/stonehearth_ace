@@ -2,6 +2,7 @@ local Point2 = _radiant.csg.Point2
 local Point3 = _radiant.csg.Point3
 local validator = radiant.validator
 local constants = require 'stonehearth.constants'
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
 local NUM_STARTING_CITIZENS = constants.game_creation.num_starting_citizens
 local MIN_STARTING_ITEM_RADIUS = 0
 local MIN_STARTING_ITEM_CONTAINER_RADIUS = 6
@@ -432,7 +433,7 @@ function AceGameCreationService:_apply_reembark_settings_to_citizen(session, kin
          local equipment_entity = radiant.entities.create_entity(data.uri, { owner = session.player_id, model_variant = data.model_variant })
          self:_set_customizable_entity_data(equipment_entity, data)
          if data.item_quality and data.item_quality > 1 then
-            equipment_entity:add_component('stonehearth:item_quality'):initialize_quality(data.item_quality)
+            item_quality_lib.apply_quality(equipment_entity, data.item_quality, data)
          end
 
          equipment:equip_item(equipment_entity, true)
