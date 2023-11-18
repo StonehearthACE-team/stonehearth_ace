@@ -161,7 +161,10 @@ function AceReembarkationEncounter:_get_citizen_record(citizen)
    local equipment = {}
    for _, obj in pairs(citizen:get('stonehearth:equipment'):get_all_dropable_items()) do
       local item_data = self:_get_customizable_entity_data(obj)
-      item_data.item_quality = radiant.entities.get_item_quality(obj)
+      local item_quality = obj:get_component('stonehearth:item_quality')
+      item_data.item_quality = item_quality and item_quality:get_quality() or 1
+      item_data.author = item_quality and item_quality:get_author_name()
+      item_data.author_type = item_quality and item_quality:get_author_type()
 
       table.insert(equipment, item_data)
    end
