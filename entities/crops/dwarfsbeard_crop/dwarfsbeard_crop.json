@@ -49,6 +49,20 @@
          "resource_pairings": {
             "default": "stonehearth_ace:crops:dwarfsbeard_crop:final"
          },
+         "preferred_seasons": {
+            "stonehearth:biome:temperate": [
+               "autumn"
+            ],
+            "stonehearth:biome:desert": [
+               "winter"
+            ],
+            "stonehearth:biome:arctic": [
+               "autumn"
+            ],
+            "stonehearth_ace:biome:highlands": [
+               "autumn"
+            ]
+         },
          "harvest_threshhold": "default",
          "plant_overlay_effect": "stonehearth:effects:plant_crop_overlay_effect",
          "megacrop_chance": 0,

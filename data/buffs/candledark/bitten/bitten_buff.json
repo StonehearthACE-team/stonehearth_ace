@@ -12,8 +12,9 @@
    "repeat_add_action": "renew_duration",
    "effect": "stonehearth_ace:effects:candledark:bitten",
    "thought": "stonehearth_ace:thoughts:candledark:bitten",
+   "thought_remove_on_destroy": true,
    "restore_effect": true,
-   "queue_crafting_order": "stonehearth_ace:consumables:herbal_compress",
+   "queue_crafting_order": "stonehearth_ace:consumables:candledark:vampire_salve",
    "reembarkable": true,
    "cooldown_buff": "stonehearth_ace:buffs:candledark:turned",
    "bulletin": {
@@ -44,6 +45,9 @@
          "min": 1,
          "add": -1,
          "max": 4
+      },
+      "effective_max_health_percent": {
+         "add": -6
       }
    },
    "gained_statistics_key": "bitten"

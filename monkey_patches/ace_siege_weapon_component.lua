@@ -46,8 +46,8 @@ end
 function AceSiegeWeaponComponent:_on_kill_event(args)
    local kill_data = args.kill_data
    local player_id = radiant.entities.get_player_id(self._entity)
-   if kill_data and kill_data.source_id == player_id then
-      return -- don't replace with ghost if destroyed/cleared by the user
+   if kill_data and kill_data.source_id == player_id or self._json.ignore_replacing then
+      return -- don't replace with ghost if destroyed/cleared by the user or if there should be no replacing
    end
    local town = stonehearth.town:get_town(player_id)
    local limit_data = radiant.entities.get_entity_data(self._entity:get_uri(), 'stonehearth:item_placement_limit') or nil

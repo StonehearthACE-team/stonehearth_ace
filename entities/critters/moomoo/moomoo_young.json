@@ -106,9 +106,21 @@
             }
          }
       },
-      "stonehearth:unit_info": {}
+      "stonehearth:unit_info": {},
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 24
+            }
+         }
+      }
    },
    "entity_data": {
+      "stonehearth:observers:avoid_threatening_entities": {
+         "treat_neutral_as_hostile": false,
+         "min_avoidance_distance": 24,
+         "max_avoidance_distance": 24
+      },
       "stonehearth:entity_radius": 0.5,
       "stonehearth:species": {
          "id": "moomoo",

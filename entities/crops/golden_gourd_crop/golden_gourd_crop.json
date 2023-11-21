@@ -103,7 +103,52 @@
       },
 	  "stonehearth:growing": {
 			"growth_period": "11h+1h",
-			"preferred_climate": "desert_staple"
+			"preferred_climate": "desert_staple",
+         "mixintypes": {
+            "growth_stages": "override"
+         },
+         "growth_stages": [
+            {
+               "model_name": "golden_gourd_1",
+               "name": "i18n(stonehearth_ace:entities.crops.golden_gourd_crop.growth_stage.000.name)",
+               "description": "i18n(stonehearth:entities.crops.golden_gourd_crop.growth_stage.000.description)"
+            },
+            {
+               "model_name": "golden_gourd_2",
+               "name": "i18n(stonehearth_ace:entities.crops.golden_gourd_crop.growth_stage.001.name)",
+               "description": "i18n(stonehearth:entities.crops.golden_gourd_crop.growth_stage.001.description)"
+            },
+            {
+               "model_name": "golden_gourd_3",
+               "name": "i18n(stonehearth:entities.crops.golden_gourd_crop.growth_stage.002.name)",
+               "description": "i18n(stonehearth:entities.crops.golden_gourd_crop.growth_stage.002.description)"
+            },
+            {
+               "model_name": "golden_gourd_4",
+               "name": "i18n(stonehearth:entities.crops.golden_gourd_crop.growth_stage.003.name)",
+               "description": "i18n(stonehearth:entities.crops.golden_gourd_crop.growth_stage.003.description)"
+            },
+            {
+               "model_name": "golden_gourd_5",
+               "name": "i18n(stonehearth_ace:entities.crops.golden_gourd_crop.growth_stage.004.name)",
+               "description": "i18n(stonehearth:entities.crops.golden_gourd_crop.growth_stage.004.description)"
+            },
+            {
+               "model_name": "golden_gourd_6",
+               "name": "i18n(stonehearth:entities.crops.golden_gourd_crop.growth_stage.005.name)",
+               "description": "i18n(stonehearth:entities.crops.golden_gourd_crop.growth_stage.005.description)"
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+               "model_name": "golden_gourd_12",
+               "name": "i18n(stonehearth:entities.crops.golden_gourd_crop.growth_stage.011.name)",
+               "description": "i18n(stonehearth:entities.crops.golden_gourd_crop.growth_stage.011.description)"
+            }
+         ]
       }
    },
    "entity_data": {

@@ -108,8 +108,11 @@ function AceBuff:_create_bulletin(bulletin_info)
          :set_type(bulletin_info.type or "alert")
          :set_sticky(true)
          :set_data(bulletin_data)
-         :add_i18n_data('entity_custom_name', radiant.entities.get_custom_name(self._sv._entity))
-         :add_i18n_data('entity_display_name', radiant.entities.get_display_name(self._sv._entity))
+         :add_i18n_data('citizen_custom_name', radiant.entities.get_custom_name(self._sv._entity))
+         :add_i18n_data('citizen_display_name', radiant.entities.get_display_name(self._sv._entity))
+         :add_i18n_data('citizen_custom_data', radiant.entities.get_custom_data(self._sv._entity))
+
+   self.__saved_variables:mark_changed()
 end
 
 function AceBuff:_set_craft_order(order)

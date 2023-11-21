@@ -6345,12 +6345,12 @@
             "bitten": {
                "display_name": "Vampire Bite",
                "description": "Oh no! I will turn into a thrall! I don't want this!<ul><li>Spirit and Mind are limited</li><li>Diligence, Compassion, Willpower, Stamina and Speed are reduced</li><li>This hearthling needs to be treated with Garlic & Nightshade Salve to prevent them from becoming a Vampire Thrall when the timer expires!</li></ul>",
-               "bulletin": "[name(i18n_data.entity)] was bitten by a Vampire!"
+               "bulletin": "[str(i18n_data.entity.stonehearth:unit_info.custom_name)] was bitten by a Vampire!"
             },
             "turned": {
                "display_name": "Enthralled",
                "description": "This hearthling has been turned into a Vampire Thrall! The Soulfire Tree shall keep them from losing their minds, but...<ul><li>Most attributes are completely reduced</li><li>A cure exists but may only be obtained towards the end of the Candledark event!</li></ul>",
-               "bulletin": "[name(i18n_data.entity)] has turned into a Thrall!"
+               "bulletin": "[str(i18n_data.entity.stonehearth:unit_info.custom_name)] has turned into a Thrall!"
             },
             "nibbles": {
                "display_name": "Vampire Nibbles",
@@ -15942,7 +15942,18 @@
             "description": "Shortest growth time; Provides hearty vegetables"
          },
          "golden_gourd_crop": {
-            "description": "Shortest growth time; Provides hearty vegetables"
+            "description": "Shortest growth time; Provides hearty vegetables",
+            "growth_stage": {
+               "004": {
+                  "name": "Yellowing Gourds"
+               },
+               "000": {
+                  "name": "Gourd Seedling"
+               },
+               "001": {
+                  "name": "Tiny Gourd Vine"
+               }
+            }
          },
          "pumpkin_crop": {
             "description": "Long growth time; Very efficiently provides hearty vegetables"
@@ -25715,6 +25726,8 @@
                "recuperating_description": "I'm slowly recuperating...<br>[str(value)]% of the way to stable",
                "wounded_title": "Wounded",
                "wounded_description": "I need treatment for my wounds!<br>Maximum health is only [str(value)]% of its normal",
+               "poisoned_title": "Poisoned",
+               "poisoned_description": "I'm poisoned! I need an antidote!<br>[str(value)]% health remaining",
                "hurt_title": "Injured",
                "hurt_description": "I may be hurt, but I'm still standing!<br>[str(value)]% health remaining",
                "healthy_title": "Normal",
