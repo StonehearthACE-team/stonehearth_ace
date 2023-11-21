@@ -100,9 +100,21 @@
             }
          }
       },
-      "stonehearth:unit_info": {}
+      "stonehearth:unit_info": {},
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 16
+            }
+         }
+      }
    },
    "entity_data": {
+      "stonehearth:observers:avoid_threatening_entities": {
+         "treat_neutral_as_hostile": true,
+         "min_avoidance_distance": 16,
+         "max_avoidance_distance": 16
+      },
        "stonehearth:pasture_animal": {
          "size": "small"
       },

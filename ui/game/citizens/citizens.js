@@ -604,6 +604,7 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
       var percentHealth = currentHealth / maxHealth;
       var icon;
       var isWounded = effMaxHealthPercent != 100;
+      var isPoisoned = false;
       
       if (currentHealth == 0) {
          // if health is 0, check guts:
@@ -634,6 +635,12 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
          }
          value = percentHealth;
       }
+      else if (incapacitationState == 'normal') {
+         if (isPoisoned) {
+            icon = "poisoned/" + icon;
+         }
+         value = percentHealth;
+      }
       else {
          // dying/dead
          icon = "dying/" + icon;
@@ -646,6 +653,7 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
          value: value,
          incapacitationState: incapacitationState,
          isWounded: isWounded,
+         isPoisoned: isPoisoned,
       };
 
       var curHealthData = self.get('healthData');
@@ -668,6 +676,9 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
                   }
                   else if (incapacitationState == 'normal') {
                      tooltipKey = healthData.isWounded ? 'wounded' : (value == 100 ? 'healthy' : 'hurt');
+                  }
+                  else if (incapacitationState == 'normal') {
+                     tooltipKey = healthData.isPoisoned ? 'poisoned' : 'poisoned';
                   }
                   else {
                      tooltipKey = 'dying';

@@ -27,10 +27,10 @@
       },
       "stonehearth:consumable": {
          "script": "stonehearth:consumables:scripts:heal_target",
-         "work_units": 5,
+         "work_units": 3,
+         "special_priority": 1,
          "cures_conditions": {
-            "undead_infection": 2,
-            "vampire_bite": 2
+            "vampire_bite": 3
          },
          "consumable_qualities": [
             {
