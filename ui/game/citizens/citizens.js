@@ -16,6 +16,7 @@ App.StonehearthCitizensView = App.View.extend({
    components: {
       "citizens" : {
          "*": {
+            "stonehearth:buffs": {},
             "stonehearth:unit_info": {},
             "stonehearth:commands": {},
             "stonehearth:ai": {
@@ -360,6 +361,7 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
    uriProperty: 'model',
 
    components: {
+      "stonehearth:buffs": {},
       "stonehearth:unit_info": {},
       "stonehearth:commands": {},
       "stonehearth:ai": {
@@ -601,10 +603,11 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
       var maxHealth = Math.ceil(self.get('model.stonehearth:attributes.attributes.max_health.effective_value'));
       var effMaxHealthPercent = Math.ceil(self.get('model.stonehearth:attributes.attributes.effective_max_health_percent.effective_value') || 100);
       var incapacitationState = self.get('model.stonehearth:incapacitation.sm.current_state');
+      var poisonBuffs = self.get('model.stonehearth:buffs.buffs_by_category.poison');
       var percentHealth = currentHealth / maxHealth;
       var icon;
       var isWounded = effMaxHealthPercent != 100;
-      var isPoisoned = false;
+      var isPoisoned = poisonBuffs && Object.keys(poisonBuffs).length > 0;
       
       if (currentHealth == 0) {
          // if health is 0, check guts:
@@ -630,16 +633,13 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
          icon = "recuperating/" + icon;
       }
       else if (incapacitationState == 'normal') {
-         if (isWounded) {
-            icon = "wounded/" + icon;
-         }
-         value = percentHealth;
-      }
-      else if (incapacitationState == 'normal') {
+         // if wounded and poisoned, poisoned will take precedence
          if (isPoisoned) {
             icon = "poisoned/" + icon;
          }
-         value = percentHealth;
+         else if (isWounded) {
+            icon = "wounded/" + icon;
+         }
       }
       else {
          // dying/dead
@@ -675,24 +675,33 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
                      tooltipKey = 'recuperating';
                   }
                   else if (incapacitationState == 'normal') {
-                     tooltipKey = healthData.isWounded ? 'wounded' : (value == 100 ? 'healthy' : 'hurt');
-                  }
-                  else if (incapacitationState == 'normal') {
-                     tooltipKey = healthData.isPoisoned ? 'poisoned' : 'poisoned';
+                     if (healthData.isWounded && healthData.isPoisoned) {
+                        tooltipKey = 'wounded_poisoned';
+                     }
+                     else if (healthData.isWounded) {
+                        tooltipKey = 'wounded';
+                     }
+                     else if (healthData.isPoisoned) {
+                        tooltipKey = 'poisoned';
+                     }
+                     else {
+                        tooltipKey = value == 100 ? 'healthy' : 'hurt';
+                     }
                   }
                   else {
                      tooltipKey = 'dying';
                   }
 
+                  var i18nData = {value: value, max_health: effMaxHealthPercent};
                   var healthString = App.tooltipHelper.createTooltip(
-                     i18n.t(`stonehearth_ace:ui.game.citizens.health_tooltips.${tooltipKey}_title`, {value: value}),
-                     i18n.t(`stonehearth_ace:ui.game.citizens.health_tooltips.${tooltipKey}_description`, {value: value}));
+                     i18n.t(`stonehearth_ace:ui.game.citizens.health_tooltips.${tooltipKey}_title`, i18nData),
+                     i18n.t(`stonehearth_ace:ui.game.citizens.health_tooltips.${tooltipKey}_description`, i18nData));
                   return $(healthString);
                });
             }
          });
       }
-   }.observes('model.uri', 'model.stonehearth:expendable_resources', 'model.stonehearth:attributes.attributes'),
+   }.observes('model.uri', 'model.stonehearth:expendable_resources', 'model.stonehearth:attributes.attributes', 'model.stonehearth:buffs.buffs_by_category'),
 
    _updateDescriptionTooltip: function() {
       var self = this;
