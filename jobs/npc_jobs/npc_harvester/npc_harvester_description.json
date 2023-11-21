@@ -1,7 +1,12 @@
 {
+   "mixintypes": {
+      "task_groups": "override"
+   },
    "task_groups": [
+      "stonehearth:task_groups:common_tasks",
       "stonehearth_ace:task_groups:harvest:chopping",
       "stonehearth_ace:task_groups:harvest:plucking",
+      "stonehearth_ace:task_groups:harvest:farming",
       "stonehearth_ace:task_groups:place_simple_terrain"
    ]
 }
