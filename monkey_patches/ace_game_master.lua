@@ -1,42 +1,49 @@
 local GameMaster = require 'stonehearth.services.server.game_master.controllers.game_master'
 local AceGameMaster = class()
 
+AceGameMaster._ace_old_restore = GameMaster.restore
+function AceGameMaster:restore()
+   if self._sv._cur_music_encounter then
+      -- if the encounter music is mapped the old way, unregister all of it
+      -- individual encounters that have their own music will re-register themselves
+      self._sv._encounter_music_map = {}
+      self._sv._cur_music_encounter = nil
+      self._sv.encounter_music = nil
+      self.__saved_variables:mark_changed()
+   end
+end
+
 function AceGameMaster:activate()
    if not self._sv._encounter_music_map then
       self._sv._encounter_music_map = {}
    end
 end
 
-function AceGameMaster:register_music(encounter, music)
+function AceGameMaster:get_unique_encounter_id()
+   self._sv._unique_encounter_id = (self._sv._unique_encounter_id or 0) + 1
+   return self._sv._unique_encounter_id
+end
+
+function AceGameMaster:register_music(encounter_id, music)
    if music then
-      for i, entry in ipairs(self._sv._encounter_music_map) do
-         if entry.encounter == encounter then
-            return
-         end
+      if self._sv._encounter_music_map[encounter_id] then
+         return
       end
 
-      -- TODO: we could maintain this as a sorted list by priority
-      table.insert(self._sv._encounter_music_map, {
-         music = music,
-         encounter = encounter,
-      })
+      self._sv._encounter_music_map[encounter_id] = music
       if self:_is_encounter_music_higher_priority(self._sv.encounter_music, music) then
          self._sv.encounter_music = music
-         self._sv._cur_music_encounter = encounter
+         self._sv._cur_music_encounter_id = encounter_id
          self.__saved_variables:mark_changed()
       end
    end
 end
 
-function AceGameMaster:unregister_music(encounter)
-   for i, entry in ipairs(self._sv._encounter_music_map) do
-      if entry.encounter == encounter then
-         self._sv._encounter_music_map[i] = nil
-         local cur_music_encounter = self._sv._cur_music_encounter
-         if cur_music_encounter == encounter then
-            self:_update_highest_priority_music()
-         end
-         break
+function AceGameMaster:unregister_music(encounter_id)
+   if self._sv._encounter_music_map[encounter_id] then
+      self._sv._encounter_music_map[encounter_id] = nil
+      if self._sv._cur_music_encounter_id == encounter_id then
+         self:_update_highest_priority_music()
       end
    end
 end
@@ -54,15 +61,16 @@ end
 
 function AceGameMaster:_update_highest_priority_music()
    -- go through the encounter music map and find the highest priority music
-   local best_entry
-   for _, entry in ipairs(self._sv._encounter_music_map) do
-      if not best_entry or self:_is_encounter_music_higher_priority(best_entry.music, entry.music) then
-         best_entry = entry
+   local best_music, encounter_id
+   for id, music in pairs(self._sv._encounter_music_map) do
+      if not best_music or self:_is_encounter_music_higher_priority(best_music, music) then
+         best_music = music
+         encounter_id = id
       end
    end
 
-   self._sv.encounter_music = best_entry and best_entry.music
-   self._sv._cur_music_encounter = best_entry and best_entry.encounter
+   self._sv.encounter_music = best_music
+   self._sv._cur_music_encounter_id = encounter_id
 
    self.__saved_variables:mark_changed()
 end

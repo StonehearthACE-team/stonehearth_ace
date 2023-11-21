@@ -634,6 +634,7 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
       }
       else if (incapacitationState == 'normal') {
          // if wounded and poisoned, poisoned will take precedence
+         value = percentHealth;
          if (isPoisoned) {
             icon = "poisoned/" + icon;
          }
@@ -651,6 +652,7 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
       var healthData = {
          icon: icon,
          value: value,
+         max_health: effMaxHealthPercent,
          incapacitationState: incapacitationState,
          isWounded: isWounded,
          isPoisoned: isPoisoned,
@@ -670,6 +672,7 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
                   }
 
                   var value = Math.floor(100 * healthData.value);
+                  var max_health = Math.floor(healthData.max_health);
                   var tooltipKey;
                   if (incapacitationState == 'recuperating') {
                      tooltipKey = 'recuperating';
@@ -692,7 +695,7 @@ App.StonehearthCitizenTasksRowView = App.View.extend({
                      tooltipKey = 'dying';
                   }
 
-                  var i18nData = {value: value, max_health: effMaxHealthPercent};
+                  var i18nData = {value: value, max_health: max_health};
                   var healthString = App.tooltipHelper.createTooltip(
                      i18n.t(`stonehearth_ace:ui.game.citizens.health_tooltips.${tooltipKey}_title`, i18nData),
                      i18n.t(`stonehearth_ace:ui.game.citizens.health_tooltips.${tooltipKey}_description`, i18nData));
