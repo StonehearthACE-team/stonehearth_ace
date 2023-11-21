@@ -4,9 +4,23 @@ local AceEncounter = class()
 
 local sound_constants = radiant.resources.load_json('stonehearth:data:sound_constants')
 
+function AceEncounter:activate()
+   self:load_json()
+
+   -- unique id is assigned once the encounter actually starts
+   if not self._sv.unique_id then
+      -- if it's already been started, we need to register the music
+      local ctx = self:_get_script_ctx()
+      if ctx and ctx.parent_node then
+         self._sv.game_master:register_music(self:get_unique_id(), self:get_encounter_music())
+      end
+   end
+end
+
 AceEncounter._ace_old_start = Encounter.start
 function AceEncounter:start(ctx)
-   self._sv.game_master:register_music(self, self:get_encounter_music())
+   -- this also assigns the unique id
+   self._sv.game_master:register_music(self:get_unique_id(), self:get_encounter_music())
    return self:_ace_old_start(ctx)
 end
 
@@ -22,6 +36,15 @@ function AceEncounter:destroy()
       self.__saved_variables:mark_changed()
    end
    Node.__user_destroy(self)
+end
+
+function AceEncounter:get_unique_id()
+   if not self._sv.unique_id then
+      self._sv.unique_id = self._sv.game_master:get_unique_encounter_id()
+      self.__saved_variables:mark_changed()
+      --self._log:debug('assigning unique id %s to encounter with datastore id %s', self._sv.unique_id, self.__saved_variables:get_id())
+   end
+   return self._sv.unique_id
 end
 
 function AceEncounter:get_encounter_music()
