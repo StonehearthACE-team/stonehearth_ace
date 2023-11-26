@@ -6,8 +6,6 @@ local log = radiant.log.create_logger('item_quality_lib')
 
 local item_quality_lib = {}
 
-local STANDARD_QUALITY_INDEX = 1
-
 function item_quality_lib.get_quality(quality, max_quality)
    if type(quality) == 'table' then
       return item_quality_lib.get_random_quality(quality, max_quality)
@@ -24,6 +22,12 @@ function item_quality_lib.get_random_quality(quality_chances, max_quality)
    end
 
    local cumulative_chance = 0
+   -- sort quality chances table by quality descending
+   -- so if standard quality gets bumped into the negatives and fine+ qualities exceed 100%
+   -- the higher qualities will have their proper chances to be selected
+   table.sort(quality_chances, function(a, b)
+         return a[1] > b[1]
+      end)
    for _, value in ipairs(quality_chances) do
       local quality, chance = value[1], value[2]
       cumulative_chance = cumulative_chance + chance
@@ -119,9 +123,12 @@ function item_quality_lib.add_quality_tables(qt1, qt2)
       qualities[quality_chance[1]] = (qualities[quality_chance[1]] or 0) + quality_chance[2]
    end
 
-   for i = #qualities, 1, -1 do
-      table.insert(new_qt, {i, qualities[i]})
+   for i, value in pairs(qualities) do
+      table.insert(new_qt, {i, value})
    end
+
+   item_quality_lib._clean_quality_table(new_qt)
+   return new_qt
 end
 
 function item_quality_lib.modify_quality_table(qualities, ingredient_quality)
@@ -135,6 +142,7 @@ function item_quality_lib.modify_quality_table(qualities, ingredient_quality)
       modified_chances[i] = { quality, chance }
    end
 
+   item_quality_lib._clean_quality_table(modified_chances)
    return modified_chances
 end
 
@@ -147,6 +155,7 @@ function item_quality_lib.get_quality_table(hearthling, recipe_category, ingredi
       for _, bonus in pairs(town:get_active_town_bonuses()) do
          if bonus.get_adjusted_item_quality_chances then
             quality_distribution = bonus:get_adjusted_item_quality_chances()
+            break
          end
       end
    end
@@ -160,6 +169,7 @@ function item_quality_lib.get_quality_table(hearthling, recipe_category, ingredi
    -- Modify item quality chances based on the level requirement of the recipe
    -- ACE: also consider the ingredient quality, and change level multiplier to consider category proficiency instead
    local calculated_chances = {}
+   local standard_quality_index
    local remaining = 1
    --local lvl_mult = recipe_lvl_req and (1 + (0.4 * (job_level - math.max(1, recipe_lvl_req)))) or 1
    local category_crafts_mult = 1
@@ -171,7 +181,7 @@ function item_quality_lib.get_quality_table(hearthling, recipe_category, ingredi
    for i=#base_chances_table, 1, -1 do
       local value = base_chances_table[i]
       local quality, chance = value[1], value[2]
-      if i > 1 then
+      if quality > 1 and remaining > 0 then
          local ing_mult = ingredient_quality and (1 + 2 ^ (1 + ingredient_quality - quality) - 2 ^ (2 - quality)) or 1
          chance = math.floor(1000 * chance * category_crafts_mult * ing_mult) * 0.001
       else
@@ -179,7 +189,20 @@ function item_quality_lib.get_quality_table(hearthling, recipe_category, ingredi
       end
       remaining = remaining - chance
 
+      if remaining < 0 then
+         chance = chance + remaining
+         remaining = 0
+      end
+
       calculated_chances[i] = { quality, chance }
+      if quality == 1 then
+         standard_quality_index = i
+      end
+   end
+
+   if not standard_quality_index then
+      calculated_chances[#calculated_chances + 1] = { 1, remaining }
+      standard_quality_index = #calculated_chances
    end
 
    -- Check the hearthling's Inspiration stat to see if we need to add a (flat) bonus
@@ -193,18 +216,21 @@ function item_quality_lib.get_quality_table(hearthling, recipe_category, ingredi
          --(as of this writing, this simply converts inspiration to a percentage 2->.02)
          local flat_quality_chance_modifier = inspiration * stonehearth.constants.attribute_effects.INSPIRATION_QUALITY_CHANCE_MODIFIER
 
-         for i=#calculated_chances, (STANDARD_QUALITY_INDEX+1), -1 do --repeat for only qualities > Standard
-            local value = calculated_chances[i]
-            local quality, chance = value[1], value[2]
-            --add our flat chance to this quality tier's chance
-            local modifier = math.max(chance + flat_quality_chance_modifier, 0) - chance
-            calculated_chances[i][2] = chance + modifier
-            -- ...and remove it from Standard Quality
-            calculated_chances[STANDARD_QUALITY_INDEX][2] = math.max(calculated_chances[STANDARD_QUALITY_INDEX][2] - modifier, 0)
+         for i=#calculated_chances, 1, -1 do --repeat for only qualities > Standard
+            if i ~= standard_quality_index then
+               local value = calculated_chances[i]
+               local quality, chance = value[1], value[2]
+               --add our flat chance to this quality tier's chance
+               local modifier = math.max(chance + flat_quality_chance_modifier, 0) - chance
+               calculated_chances[i][2] = chance + modifier
+               -- ...and remove it from Standard Quality
+               calculated_chances[standard_quality_index][2] = math.max(calculated_chances[standard_quality_index][2] - modifier, 0)
+            end
          end
       end
    end
 
+   item_quality_lib._clean_quality_table(calculated_chances)
    return calculated_chances
 end
 
@@ -221,6 +247,26 @@ function item_quality_lib.get_max_crafting_quality(player_id)
    end
    
    return quality
+end
+
+function item_quality_lib._clean_quality_table(quality_table)
+   local total = 0
+   table.sort(quality_table, function(a, b)
+         return a[1] > b[1]
+      end)
+   for _, value in ipairs(quality_table) do
+      local quality, chance = value[1], value[2]
+      if total == 1 then
+         value[2] = 0
+      else
+         total = total + chance
+         if total > 1 then
+            chance = chance - (total - 1)
+            value[2] = chance
+            total = 1
+         end
+      end
+   end
 end
 
 return item_quality_lib
