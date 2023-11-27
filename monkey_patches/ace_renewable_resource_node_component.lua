@@ -280,6 +280,10 @@ function AceRenewableResourceNodeComponent:_deplete()
 end
 
 function AceRenewableResourceNodeComponent:_set_model_depleted()
+   if self._json.ignore_model_changes then
+      return
+   end
+
    if self._json.half_renewed_model then
       self._entity:add_component('stonehearth_ace:models'):remove_model(HALF_RENEWED_MODEL_NAME)
 	end
@@ -292,6 +296,10 @@ function AceRenewableResourceNodeComponent:_set_model_depleted()
 end
 
 function AceRenewableResourceNodeComponent:_set_model_half_renewed()
+   if self._json.ignore_model_changes then
+      return
+   end
+   
    if self._json.half_renewed_model then
       self._entity:add_component('stonehearth_ace:models'):add_model(HALF_RENEWED_MODEL_NAME, self._json.half_renewed_model)
    else
@@ -303,6 +311,10 @@ end
 
 --- Reset the model to the default. Also, stop listening for effects
 function AceRenewableResourceNodeComponent:_reset_model()
+   if self._json.ignore_model_changes then
+      return
+   end
+   
 	if self._json.half_renewed_model then
       self._entity:add_component('stonehearth_ace:models'):remove_model(HALF_RENEWED_MODEL_NAME)
 	end
