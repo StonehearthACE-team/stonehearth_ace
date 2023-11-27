@@ -336,6 +336,10 @@ function PeriodicInteractionComponent:select_mode_command(session, response, mod
 end
 
 function PeriodicInteractionComponent:set_owner_command(session, response, owner)
+   return self:set_owner(owner)
+end
+
+function PeriodicInteractionComponent:set_owner(owner)
    if owner ~= self._sv.current_owner then
       self._sv.current_owner = owner
       self.__saved_variables:mark_changed()
