@@ -163,6 +163,37 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          end
       end
 
+      local periodic_interaction_component = entity:get_component('stonehearth_ace:periodic_interaction')
+      local pic_data = entity:get_component('stonehearth_ace:transform') and entity:get_component('stonehearth_ace:transform'):get_periodic_interaction_component_data()
+      if periodic_interaction_component then
+         local pic_owner = periodic_interaction_component:get_current_owner()
+         local pic_mode = periodic_interaction_component:get_current_mode()
+         if pic_owner or pic_mode then
+            local transformed_periodic_interaction_component = transformed_form:get_component('stonehearth_ace:periodic_interaction')
+            if transformed_periodic_interaction_component then
+               if pic_owner then
+                  transformed_periodic_interaction_component:set_owner(pic_owner)
+               end
+               if pic_mode then
+                  transformed_periodic_interaction_component:select_mode(pic_mode)
+               end
+            else
+               transformed_form:add_component('stonehearth_ace:transform'):store_periodic_interaction_component_data(pic_owner, pic_mode)
+            end
+         end
+      elseif pic_data then
+         local transformed_periodic_interaction_component = transformed_form:add_component('stonehearth_ace:periodic_interaction')
+         if transformed_periodic_interaction_component and pic_data.owner then
+            transformed_periodic_interaction_component:set_owner(pic_data.owner)
+         end
+         if transformed_periodic_interaction_component and pic_data.mode then
+            transformed_periodic_interaction_component:select_mode(pic_data.mode)
+         end
+         if not transformed_periodic_interaction_component then
+            transformed_form:add_component('stonehearth_ace:transform'):store_periodic_interaction_component_data(pic_data.owner or nil, pic_data.mode or nil)
+         end
+      end
+
       local transformed_form_data = radiant.entities.get_entity_data(transformed_form, 'stonehearth:evolve_data')
       if transformed_form_data and transform_source == 'stonehearth:evolve' then
          -- Ensure the transformed form also has the evolve component if it will evolve

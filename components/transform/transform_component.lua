@@ -233,6 +233,15 @@ function TransformComponent:can_transform_with(entity)
    return false
 end
 
+function TransformComponent:store_periodic_interaction_component_data(owner, mode)
+   self._sv.periodic_interaction_component_data = { owner = owner, mode = mode }
+   self.__saved_variables:mark_changed()
+end
+
+function TransformComponent:get_periodic_interaction_component_data()
+   return self._sv.periodic_interaction_component_data
+end
+
 function TransformComponent:set_transform_option(key)
    self._sv.transform_key = key
    self.__saved_variables:mark_changed()
