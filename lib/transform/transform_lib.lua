@@ -163,8 +163,8 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          end
       end
 
+      local pic_key = 'stonehearth_ace:periodic_interaction'
       local periodic_interaction_component = entity:get_component('stonehearth_ace:periodic_interaction')
-      local pic_data = entity:get_component('stonehearth_ace:transform') and entity:get_component('stonehearth_ace:transform'):get_periodic_interaction_component_data()
       if periodic_interaction_component then
          local pic_owner = periodic_interaction_component:get_current_owner()
          local pic_mode = periodic_interaction_component:get_current_mode()
@@ -178,19 +178,30 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
                   transformed_periodic_interaction_component:select_mode(pic_mode)
                end
             else
-               transformed_form:add_component('stonehearth_ace:transform'):store_periodic_interaction_component_data(pic_owner, pic_mode)
+               transformed_form:add_component('stonehearth_ace:transform'):store_component_data(pic_key, {
+                  owner = pic_owner,
+                  mode = pic_mode,
+               })
             end
          end
-      elseif pic_data then
-         local transformed_periodic_interaction_component = transformed_form:add_component('stonehearth_ace:periodic_interaction')
-         if transformed_periodic_interaction_component and pic_data.owner then
-            transformed_periodic_interaction_component:set_owner(pic_data.owner)
-         end
-         if transformed_periodic_interaction_component and pic_data.mode then
-            transformed_periodic_interaction_component:select_mode(pic_data.mode)
-         end
-         if not transformed_periodic_interaction_component then
-            transformed_form:add_component('stonehearth_ace:transform'):store_periodic_interaction_component_data(pic_data.owner or nil, pic_data.mode or nil)
+      else
+         local transform_component = entity:get_component('stonehearth_ace:transform')
+         local pic_data = transform_component and transform_component:get_component_data(pic_key)
+         if pic_data then
+            local transformed_periodic_interaction_component = transformed_form:add_component('stonehearth_ace:periodic_interaction')
+            if transformed_periodic_interaction_component then
+               if pic_data.owner then
+                  transformed_periodic_interaction_component:set_owner(pic_data.owner)
+               end
+               if pic_data.mode then
+                  transformed_periodic_interaction_component:select_mode(pic_data.mode)
+               end
+            else
+               transformed_form:add_component('stonehearth_ace:transform'):store_component_data(pic_key, {
+                  owner = pic_data.owner,
+                  mode = pic_data.mode,
+               })
+            end
          end
       end
 

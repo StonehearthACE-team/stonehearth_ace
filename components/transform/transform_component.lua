@@ -39,6 +39,7 @@ local TransformComponent = class()
 
 function TransformComponent:initialize()
    self._sv.option_overrides = {}
+   self._sv._component_data = {}
 end
 
 function TransformComponent:restore()
@@ -233,13 +234,12 @@ function TransformComponent:can_transform_with(entity)
    return false
 end
 
-function TransformComponent:store_periodic_interaction_component_data(owner, mode)
-   self._sv.periodic_interaction_component_data = { owner = owner, mode = mode }
-   self.__saved_variables:mark_changed()
+function TransformComponent:get_component_data(component)
+   return self._sv._component_data[component]
 end
 
-function TransformComponent:get_periodic_interaction_component_data()
-   return self._sv.periodic_interaction_component_data
+function TransformComponent:store_component_data(component, data)
+   self._sv._component_data[component] = data
 end
 
 function TransformComponent:set_transform_option(key)
@@ -497,9 +497,9 @@ function TransformComponent:_meets_commmand_requirements(requirements)
    end
 
    if requirements.all_of_components then
-      for component, require in pairs(requirements.all_of_components) do
+      for component, requires in pairs(requirements.all_of_components) do
          -- true means it needs the component, false means it needs to not have it!
-         if (self._entity:get_component(component) and true or false) ~= require then
+         if (self._entity:get_component(component) and true or false) ~= requires then
             return false
          end
       end
@@ -507,9 +507,9 @@ function TransformComponent:_meets_commmand_requirements(requirements)
 
    if requirements.any_of_components then
       local meets_requirement = false
-      for component, require in pairs(requirements.any_of_components) do
+      for component, requires in pairs(requirements.any_of_components) do
          -- true means it needs the component, false means it needs to not have it!
-         if (self._entity:get_component(component) and true or false) == require then
+         if (self._entity:get_component(component) and true or false) == requires then
             meets_requirement = true
             break
          end
