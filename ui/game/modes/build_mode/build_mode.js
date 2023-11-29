@@ -73,6 +73,10 @@ App.StonehearthBuildModeView = App.ContainerView.extend({
       this._super();
    },
 
+   getBuildingDesignerView: function() {
+      return this._buildingDesignerView;
+   },
+
    _showBrokenBuildingDesignerView: function() {
       App.setGameMode('build');
       this.hideAllViews();

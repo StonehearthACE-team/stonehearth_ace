@@ -32,7 +32,10 @@ function AceMiningZoneComponent:_destroy_ladders()
             -- hack to turn this into a user-teardown ladder handle
             builder._sv.user_extension_handle = lh
             local player_id = self._entity:get_player_id()
-            if stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_remove_mining_zone_ladders', true) then
+            if self._sv.bid then
+               -- if it's part of a building, we need to automatically instantly destroy the ladders
+               radiant.entities.destroy_entity(builder:get_ladder())
+            elseif stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_remove_mining_zone_ladders', true) then
                stonehearth.build:remove_ladder_command({player_id = player_id}, nil, builder:get_ladder())
             else
                builder:get_ladder():add_component('stonehearth:commands'):add_command('stonehearth:commands:remove_ladder')
@@ -43,6 +46,16 @@ function AceMiningZoneComponent:_destroy_ladders()
       end
       self._sv._ladder_handles = nil
    end
+end
+
+function AceMiningZoneComponent:get_bid()
+   return self._sv.bid
+end
+
+function AceMiningZoneComponent:set_bid(bid)
+   self._sv.bid = bid
+   self.__saved_variables:mark_changed()
+   return self
 end
 
 function AceMiningZoneComponent:_on_region_changed()
@@ -375,6 +388,7 @@ function AceMiningZoneComponent:mine_point(point)
    if self._destination_component:get_region():get():empty() then
       local unmined_region = self:_get_working_region(zone_region, location)
       if unmined_region:empty() then
+         -- radiant.events.trigger_async(self, 'stonehearth:mining_zone:mining_complete')
          radiant.entities.destroy_entity(self._entity)
       end
    end
@@ -470,12 +484,16 @@ function AceMiningZoneComponent:create_ladder_handle(block, normal, force_locati
          local below = point - Point3.unit_y
          if not radiant.terrain.is_blocked(below) then
             point = radiant.terrain.get_standable_point(below)
+            if point.y > below.y then
+               log:debug('trying to create ladder through terrain above')
+               return nil
+            end
          end
 
          -- check if it even makes sense to build a ladder here (i.e., top of the zone here is higher from point than reach)
          if intersection_bounds.max.y - point.y <= self._max_reach_up then
             log:debug('%s point %s is <= %s distance from top in this col %s', self._entity, point, self._max_reach_up, intersection_bounds.max.y)
-            point = nil
+            return nil
          end
       end
    end
@@ -565,6 +583,7 @@ function AceMiningZoneComponent:_update_ladder(handle, mine_location)
             local ladder_component = ladder:get_component('stonehearth:ladder')
 
             if req_point and req_point.y > ladder_component:get_top().y then
+               req_point = req_point - Point3.unit_y
                self:add_ladder_handle(builder:add_point(req_point, {user_removable = false}), true)
                --self._sv._adjacent_needs_ladder_update = true
                local ladder_cube = Cube3(location, req_point + Point3(1, 0, 1))

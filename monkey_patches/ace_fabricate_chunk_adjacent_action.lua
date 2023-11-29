@@ -43,7 +43,8 @@ function AceFabricateChunkAdjacent:build_adjacent_to_current_block(ai, entity, a
 
    local work_available = false
    repeat
-      radiant.entities.turn_to_face(entity, self._current_block + self._origin)
+      --radiant.entities.turn_to_face(entity, self._current_block + self._origin)
+      radiant.entities.turn_to_face(entity, self._chunk)
 
       ai:execute('stonehearth:run_effect', { effect = 'work' })
 

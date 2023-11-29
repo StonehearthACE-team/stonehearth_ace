@@ -1,4 +1,5 @@
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
+local LandmarkLib = require 'stonehearth.lib.landmark.landmark_lib'
 local Point2 = _radiant.csg.Point2
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
@@ -7,6 +8,111 @@ local log = radiant.log.create_logger('mining')
 
 local MiningService = require 'stonehearth.services.server.mining.mining_service'
 local AceMiningService = class()
+
+----------------------------------------------------------------------------
+-- Use the dig_* methods to let the mining service manage the zones for you.
+-- Use the create_mining_zone, add_region_to_zone, and merge_zones methods
+-- to explicitly manage the zones yourself.
+----------------------------------------------------------------------------
+
+-- Dig an arbitary region.
+-- Region is defined in world space.
+-- purpose is optional and defaults to constants.mining.purpose.MINING
+function MiningService:dig_region(player_id, region, purpose, options)
+   local disable_merging = options and options.disable_merging
+   local bid = options and options.bid
+
+   -- using town as a proxy for the eventual player object
+   local town = stonehearth.town:get_town(player_id)
+   local existing_zones = town:get_mining_zones()
+
+   -- remove region outside terrain bounds and remove all bedrock
+   region = LandmarkLib.intersect_with_terrain_bounds_and_remove_bedrock(region)
+
+   -- shrink wrap the region to the bounds of the intersected terrain
+   local terrain_intersection = radiant.terrain.intersect_region(region)
+   local terrain_bounds = terrain_intersection:get_bounds()
+   region = region:intersect_cube(terrain_bounds)
+
+   -- don't overlap any existing zones
+   -- WARNING: this can cause disjoint regions if we choose not to merge with the overlapped zone
+   region = self:_subtract_existing_zones(region, existing_zones)
+
+   if region:empty() then
+      return nil
+   end
+
+   if self._enable_insta_mine then
+      self:insta_mine(region)
+      return nil
+   end
+
+   local mergable_zones = {}
+   if not disable_merging then
+      local adjacent_zones = self:_get_adjacent_zones(region, existing_zones)
+      local ordered_zones = self:_get_zones_by_descending_volume(adjacent_zones)
+
+      -- auto-merge anything within another zone's bounding box
+      -- merged areas will be subtracted from region
+      local largest_merged_zone = self:_bounding_box_merge(region, ordered_zones)
+      if region:empty() then
+         return largest_merged_zone
+      end
+
+      mergable_zones = self:_get_mergable_zones(region, adjacent_zones, purpose, bid)
+   end
+
+   local selected_zone = self:_choose_merge_survivor(mergable_zones)
+   selected_zone = self:_validate_merge_survivor(selected_zone, region)
+
+   if selected_zone then
+      -- remove the surviving zone from the merge list
+      mergable_zones[selected_zone:get_id()] = nil
+   else
+      -- no adjacent or overlapping zone exists, so create a new one
+      selected_zone = self:create_mining_zone(player_id, purpose, options and options.start_suspended)
+      if bid then
+         selected_zone:add_component('stonehearth:mining_zone'):set_bid(bid)
+      end
+      town:add_mining_zone(selected_zone)
+   end
+
+   self:add_region_to_zone(selected_zone, region)
+
+   -- merge the other zones into the surviving zone and destroy them
+   for _, zone in pairs(mergable_zones) do
+      if self:_allow_merge(selected_zone, zone) then
+         self:merge_zones(selected_zone, zone)
+      end
+   end
+
+   selected_zone:add_component('stonehearth:mining_zone'):get_region():modify(function(cursor)
+         cursor:optimize('MiningService:dig_region')
+      end)
+
+   return selected_zone
+end
+
+-- ACE: add building id restriction for merging (if nil, match only nil [i.e., not part of a building]; otherwise match specific building id)
+function AceMiningService:_get_mergable_zones(region, adjacent_zones, purpose, bid)
+   local mergable_zones = {}
+
+   -- find all the existing mining zones that are adjacent or overlap the new region
+   for id, zone in pairs(adjacent_zones) do
+      local location = radiant.entities.get_world_grid_location(zone)
+      local mining_zone_component = zone:add_component('stonehearth:mining_zone')
+      if mining_zone_component:get_purpose() == purpose and mining_zone_component:get_bid() == bid then
+         local existing_region = mining_zone_component:get_region():get()
+         local region_local = region:translated(-location)
+
+         if self:_allow_merge_region(region_local, existing_region) then
+            mergable_zones[id] = zone
+         end
+      end
+   end
+
+   return mergable_zones
+end
 
 -- ACE: vertically optimize mining region
 function AceMiningService:_bounding_box_merge(region, ordered_zones)
@@ -115,7 +221,8 @@ function AceMiningService:get_block_to_mine(from, mining_zone, log_debug)
    -- end
 
    -- get the reachable region in local coordinates to the zone
-   local reachable_region = self:get_reachable_region(from - location)
+   local from_local = from - location
+   local reachable_region = self:get_reachable_region(from_local)
    local eligible_region = reachable_region - reserved_region
    local eligible_destination_region = eligible_region:intersect_region(destination_region)
    local block = nil
@@ -126,8 +233,8 @@ function AceMiningService:get_block_to_mine(from, mining_zone, log_debug)
 
       -- pick any closest point in the region
       for cube in eligible_destination_region:each_cube() do
-         local point = cube:get_closest_point(from)
-         local dist = point:distance_to(from)
+         local point = cube:get_closest_point(from_local)
+         local dist = point:distance_to(from_local)
          if not distance or dist < distance then
             closest = point
             distance = dist

@@ -3,7 +3,7 @@ local Color4 = _radiant.csg.Color4
 
 local AceMiningZoneRenderer = class()
 
-function AceMiningZoneRenderer:_get_color(is_enabled)
+function AceMiningZoneRenderer:_get_color(is_enabled, bid)
    local suspended_mult = is_enabled and 1 or 0.4
    local color
    if stonehearth.presence_client:is_multiplayer() then
@@ -11,13 +11,22 @@ function AceMiningZoneRenderer:_get_color(is_enabled)
    else
       color = Point3(255, 255, 0)
    end
+
+   if bid then
+      -- if it's part of a building id, reduce the green
+      color.y = color.y * 0.8
+   end
    return color * suspended_mult
+end
+
+function AceMiningZoneRenderer:_in_visible_mode()
+   return self._ui_view_mode == 'hud' or self._ui_view_mode == 'build'
 end
 
 function AceMiningZoneRenderer:_update()
    self:_destroy_outline_node()
 
-   if not self:_in_hud_mode() then
+   if not self:_in_visible_mode() then
       self._boxed_region:modify(function(cursor)
             cursor:clear()
          end)
@@ -45,7 +54,7 @@ function AceMiningZoneRenderer:_update()
 
    working_region:translate(-location)
 
-   local color = self:_get_color(data.enabled)
+   local color = self:_get_color(data.enabled, data.bid)
 
    local EDGE_COLOR_ALPHA = 24
    local FACE_COLOR_ALPHA = 8

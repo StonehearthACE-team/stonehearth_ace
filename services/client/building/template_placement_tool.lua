@@ -1,7 +1,16 @@
+-- ACE: have to override to replace the __init function
+
+local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local Point2 = _radiant.csg.Point2
 local Point3 = _radiant.csg.Point3
+local FixtureData = require 'stonehearth.lib.building.fixture_data'
+
 local bindings = _radiant.client.get_binding_system()
 local build_util = require 'stonehearth.lib.build_util'
+local mutation_utils = require 'stonehearth.lib.building.mutation_utils'
+local fixture_utils = require 'stonehearth.lib.building.fixture_utils'
+local region_utils = require 'stonehearth.lib.building.region_utils'
+
 local BlockWidgetUris = {
    ['stonehearth:build2:entities:blocks_widget'] = 'stonehearth:build2:blocks_widget',
    ['stonehearth:build2:entities:perimeter_wall_widget'] = 'stonehearth:build2:perimeter_wall_widget',
@@ -15,8 +24,7 @@ local StructureUri = 'stonehearth:build2:entities:structure'
 
 local log = radiant.log.create_logger('template_placement_tool')
 
-local TemplatePlacementTool = require 'stonehearth.services.client.building.template_placement_tool'
-local AceTemplatePlacementTool = class()
+local TemplatePlacementTool = radiant.class()
 
 local function is_ctrl_held()
    return _radiant.client.is_key_down(_radiant.client.KeyboardInput.KEY_LEFT_CONTROL)
@@ -34,7 +42,32 @@ local function _is_widget_finished(widget_comp)
    return building and _is_owning_building_finished(building)
 end
 
-function AceTemplatePlacementTool:_on_keyboard_event(e)
+function TemplatePlacementTool:__init(response, temp_building, sunk_hint)
+   self._rotation = 0
+   if sunk_hint == true then
+      sunk_hint = 1
+   end
+   self._sink_offset = sunk_hint and Point3(0, -sunk_hint, 0) or Point3(0, 0, 0)
+   log:error('initializing sink %s offset to %s', tostring(sunk_hint), self._sink_offset)
+
+   self._response = response
+   self._temp_building = temp_building
+   self._input_capture = stonehearth.input:capture_input('TemplatePlacementTool')
+      :on_mouse_event(radiant.fix(self._on_mouse_event, self))
+      :on_keyboard_event(radiant.fix(self._on_keyboard_event, self))
+
+   -- Manually take drawing ownership.
+   radiant._authoring_root_entity:add_component('entity_container'):add_child(self._temp_building)
+   self._render_entity = RenderRootNode:add_group_node('building template')
+   _radiant.client.create_render_entity(self._render_entity, self._temp_building)
+
+   self._terrain_cutout_region = self._temp_building:get('stonehearth:build2:temp_building'):get_region()
+   self._building_bounds = self._terrain_cutout_region:get_bounds()
+
+   stonehearth.building:disable_selection()
+end
+
+function TemplatePlacementTool:_on_keyboard_event(e)
    local event_consumed = false
    local deltaRot = 0
    local sink = nil
@@ -68,9 +101,9 @@ function AceTemplatePlacementTool:_on_keyboard_event(e)
 
    if sink ~= nil then
       if sink then
-         self._sink_offset = Point3(0, -1, 0)
+         self._sink_offset.y = self._sink_offset.y - 1
       else
-         self._sink_offset = Point3(0, 0, 0)
+         self._sink_offset.y = math.min(0, self._sink_offset.y + 1)
       end
    end
 
@@ -106,7 +139,35 @@ function AceTemplatePlacementTool:_on_keyboard_event(e)
    return event_consumed
 end
 
-function AceTemplatePlacementTool:_commit()
+function TemplatePlacementTool:_on_mouse_event(e)
+   if e:down(2) then
+      self._right_down_pos = Point2(e.x, e.y)
+   end
+
+   if e:up(2) and self._right_down_pos then
+      local pos = Point2(e.x, e.y)
+      local old_pos = self._right_down_pos
+      self._right_down_pos = nil
+
+      if pos:distance_to(old_pos) < 5 then
+         self:_self_destruct(false)
+         return
+      end
+   end
+
+   if e:up(1) then
+      self:_commit()
+      self:_self_destruct(true)
+      return
+   end
+
+   local brick, entity, normal = self:_calculate_stab_point(e)
+   if brick then
+      self:_place_template(brick)
+   end
+end
+
+function TemplatePlacementTool:_commit()
    if not self._pos then
       return
    end
@@ -124,7 +185,7 @@ end
 -- ACE: add snap-to-grid capability
 -- TODO: also render corresponding grid on terrain? then need to clean up in _self_destruct function
 -- that might be a *lot* of lines, especially if the grid is small
-function AceTemplatePlacementTool:_calculate_stab_point(p)
+function TemplatePlacementTool:_calculate_stab_point(p)
    local results = _radiant.client.query_scene(p.x, p.y)
 
    for r in results:each_result() do
@@ -154,7 +215,7 @@ function AceTemplatePlacementTool:_calculate_stab_point(p)
    return nil, nil, nil
 end
 
-function AceTemplatePlacementTool:_get_snap_grid_position(pos)
+function TemplatePlacementTool:_get_snap_grid_position(pos)
    if not self._grid_offset then
       self._grid_offset = stonehearth.building:get_build_grid_offset()
    end
@@ -234,7 +295,7 @@ local function _test_template_placement(location, bounds, bc, delta_fixup, rotat
    return true
 end
 
-function AceTemplatePlacementTool:_place_template(brick)
+function TemplatePlacementTool:_place_template(brick)
    local bc = self._temp_building:get('stonehearth:build2:temp_building')
 
    local do_fine_check = false
@@ -291,10 +352,65 @@ function AceTemplatePlacementTool:_place_template(brick)
 
    self._render_entity:set_position(self:_get_sunk_position())
    self._render_entity:set_rotation(Point3(0, 360 - self._rotation, 0))
+
+   local region = region_utils.rotate(self._terrain_cutout_region, self._rotation, Point3.zero, self:_get_sunk_position())
+   stonehearth.building_vision:update_template_tool_terrain_cut(region)
 end
 
-function AceTemplatePlacementTool:_get_sunk_position()
+function TemplatePlacementTool:_get_sunk_position()
    return self._pos + (self._ignore_sink_offset and Point3.zero or self._sink_offset)
 end
 
-return AceTemplatePlacementTool
+function TemplatePlacementTool:_self_destruct(again, new_tool)
+   stonehearth.building:enable_selection()
+   radiant.entities.destroy_entity(self._temp_building)
+   stonehearth.building_vision:update_template_tool_terrain_cut()
+
+   if self._render_entity then
+      self._render_entity:destroy()
+      self._render_entity = nil
+   end
+
+   self._input_capture:destroy()
+   self._input_capture = nil
+
+   if self._response and again then
+      self._response:resolve({ success = true })
+   else
+      if new_tool then
+         self._response:reject('new_tool')
+      else
+         self._response:reject('stop')
+      end
+   end
+   self._response = nil
+end
+
+function TemplatePlacementTool:destroy(new_tool)
+   if self._response then
+      self:_self_destruct(false, new_tool)
+   end
+end
+
+-- ACE: this is never called, so commented out so it's not confusing
+-- function TemplatePlacementTool:_update_owner_region(fixture_owner_data)
+--    local new_bid = fixture_owner_data.wall_id or fixture_owner_data:get_bid()
+--    if new_bid == self._owner_region_bid then
+--       return
+--    end
+
+--    if self._temp then
+--       self._temp:destroy()
+--    end
+
+--    local region_w = stonehearth.building:get_blueprint_data(fixture_owner_data:get_bid(), fixture_owner_data.wall_id):get_world_renderable_region()
+
+--    self._temp = _radiant.client.create_voxel_node(RenderRootNode, region_w, 'materials/transparent_with_depth.material.json', Point3(0.5, 0, 0.5))
+--    self._temp:set_visible(false)
+--    self._temp:set_can_query(true)
+--    self._temp_bid = fixture_owner_data:get_bid()
+--    self._owner_region_bid = new_bid
+-- end
+
+
+return TemplatePlacementTool

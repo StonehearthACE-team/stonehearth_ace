@@ -18,11 +18,14 @@ local service_creation_order = {
 }
 
 local monkey_patches = {
+   ace_build_util = 'stonehearth.lib.build_util',
    ace_building_client_service = 'stonehearth.services.client.building.building_client_service',
+   ace_building_vision_service = 'stonehearth.services.client.building_vision.building_vision_service',
    ace_camera_service = 'stonehearth.services.client.camera.camera_service',
    ace_client_entities = 'radiant.modules.client_entities',
    ace_constants = 'stonehearth.constants',
    ace_csg_lib = 'stonehearth.lib.csg.csg_lib',
+   ace_decoration_tool = 'stonehearth.services.client.building.decoration_tool',
    ace_entity_forms_lib = 'stonehearth.lib.entity_forms.entity_forms_lib',
    ace_entity_or_location_selector = 'stonehearth.services.client.selection.entity_or_location_selector',
    ace_expendable_resources_renderer = 'stonehearth.renderers.expendable_resources.expendable_resources_renderer',
@@ -45,12 +48,12 @@ local monkey_patches = {
    ace_shepherd_call_handler = 'stonehearth.call_handlers.shepherd_call_handler',
    ace_shepherd_pasture_renderer = 'stonehearth.renderers.shepherd_pasture.shepherd_pasture_renderer',
    ace_sound_service = 'stonehearth.services.client.sound.sound_service',
+   ace_stairs_tool = 'stonehearth.services.client.building.stairs_tool',
    ace_storage_renderer = 'stonehearth.renderers.storage.storage_renderer',
    ace_subterranean_view_service = 'stonehearth.services.client.subterranean_view.subterranean_view_service',
-   ace_template_placement_tool = 'stonehearth.services.client.building.template_placement_tool',
+   ace_temp_building = 'stonehearth.components.building2.temp_building',
    ace_terrain = 'radiant.modules.terrain',
    ace_util = 'radiant.lib.util',
-   --ace_xz_region_selector = 'stonehearth.services.client.selection.xz_region_selector',
    ace_zone_renderer = 'stonehearth.renderers.zone_renderer',
    ace_weather_render_service = 'stonehearth.services.client.weather_render.weather_render_service',
 }

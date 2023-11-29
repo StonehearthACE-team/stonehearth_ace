@@ -27,7 +27,7 @@ function get_cell_max(value, cell_size)
    return get_cell_min(value, cell_size) + cell_size-1
 end
 
-function AceMiningCallHandler:designate_mining_zone(session, response, tool_mode)
+function AceMiningCallHandler:designate_mining_zone(session, response, tool_mode, bid)
    validator.expect_argument_types({'string'}, tool_mode)
 
    local xz_cell_size = constants.mining.XZ_CELL_SIZE
@@ -211,6 +211,10 @@ function AceMiningCallHandler:designate_mining_zone(session, response, tool_mode
          if stonehearth.presence_client:is_multiplayer() then
             color = stonehearth.presence_client:get_player_color(_radiant.client.get_player_id())
          end
+         if bid then
+            -- if it's part of a building id, reduce the green
+            color.x = color.x * 0.6
+         end
       end
       
       region = region:inflated(Point3(0.001, 0.001, 0.001))  -- Push it out so there's always a floating part.
@@ -298,7 +302,7 @@ function AceMiningCallHandler:designate_mining_zone(session, response, tool_mode
             end
             -- this is the client, so we can just get the gameplay setting directly from the config
             local start_suspended = radiant.util.get_global_config('mods.stonehearth.default_mining_zones_suspended', false)
-            _radiant.call('stonehearth:add_mining_zone', region, mode, { start_suspended = start_suspended })
+            _radiant.call('stonehearth:add_mining_zone', region, mode, { start_suspended = start_suspended, bid = bid })
                :done(function(r)
                      response:resolve({ mining_zone = r.mining_zone })
                      if not stonehearth.subterranean_view:clip_height_initialized() then

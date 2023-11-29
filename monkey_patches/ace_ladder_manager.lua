@@ -23,7 +23,7 @@ function AceLadderManager:request_ladder_to(owner, to, normal, options)
    end
 
    local min_ladder_height = options.min_ladder_height or 0
-   local ladder_height = (to - base).y + 1
+   local ladder_height = to.y - base.y + 1
    if ladder_height < min_ladder_height then
       log:detail('ignoring request: ladder is less than minimum requested height')
       return radiant.create_controller('stonehearth:build:ladder_builder:destructor')

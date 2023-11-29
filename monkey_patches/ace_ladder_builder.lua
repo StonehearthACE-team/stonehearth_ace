@@ -1,4 +1,5 @@
 local Point3 = _radiant.csg.Point3
+local Cube3 = _radiant.csg.Cube3
 
 local AceLadderBuilder = class()
 
@@ -70,6 +71,25 @@ function AceLadderBuilder:_update_build_mode(toggle)
          self:_check_if_valid()
       end
    end
+end
+
+function AceLadderBuilder:_update_ladder_dst_proxy_region(ladder_height, allow_top_destination)
+   self._sv.ladder_dst_proxy_region:modify(function(cursor)
+         cursor:clear()
+         if not self:is_ladder_finished('internal') then
+            if allow_top_destination then
+               if self._sv._build_mode == 'teardown' then
+                  cursor:add_point(Point3(0, ladder_height, 0))
+               else
+                  cursor:add_cube(Cube3(Point3.zero, Point3(1, ladder_height + 1, 1)))
+               end
+            else
+               cursor:add_point(Point3.zero)
+            end
+         end
+      end)
+
+   self:_update_ladder_dst_adj_region()
 end
 
 return AceLadderBuilder

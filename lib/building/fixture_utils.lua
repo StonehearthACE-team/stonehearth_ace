@@ -256,7 +256,13 @@ local function _is_structure(e)
    return ed ~= nil
 end
 
-function fixture_utils.filter_for_fixture_placement(e, normal, ignore_id, allow_ground, allow_wall)
+function fixture_utils.filter_for_fixture_placement(e, normal, ignore_id, allow_ground, allow_wall, inside_valid_terrain_region)
+   -- ACE: if it's actually inside the carved out terrain, ignore the terrain entity at this time
+   if inside_valid_terrain_region and e == radiant._root_entity then
+      log:spam('filter_for_fixture_placement: ignoring terrain entity because it is inside the valid terrain region')
+      return fixture_utils.filter.IGNORE
+   end
+
    if not e or not e:is_valid() then
       -- This covers the case of the ray intersecting a 'temp' object that is a proxy
       -- for other geometry.
@@ -304,7 +310,10 @@ function fixture_utils.filter_for_fixture_placement(e, normal, ignore_id, allow_
 end
 
 -- paulthegreat: this function was actually changed
-function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fixture_bounds, region_origin, allow_ground, rotation, allow_wall)
+function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fixture_bounds, region_origin, allow_ground, rotation, allow_wall, valid_terrain_region)
+   log:spam('find_fixture_placement(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
+         tostring(p), tostring(entity), tostring(is_portal), tostring(is_fence), tostring(fixture_bounds),
+         tostring(region_origin), tostring(allow_ground), tostring(rotation), tostring(allow_wall), tostring(valid_terrain_region))
    entity = entity and entity:is_valid() and entity
    local results = _radiant.client.query_scene(p.x, p.y)
    local widget_id = entity and entity:get_id() or nil
@@ -316,7 +325,11 @@ function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fi
    end
 
    for r in results:each_result() do
-      local res = fixture_utils.filter_for_fixture_placement(r.entity, r.normal, widget_id, allow_ground, allow_wall)
+      local res = fixture_utils.filter_for_fixture_placement(r.entity, r.normal, widget_id, allow_ground, allow_wall,
+            valid_terrain_region and valid_terrain_region:contains(r.brick))
+      log:spam('filter_for_fixture_placement(%s, %s, %s, %s, %s, %s => %s) = %s',
+            tostring(r.entity), tostring(r.normal), tostring(widget_id), tostring(allow_ground), tostring(allow_wall),
+            tostring(r.brick), valid_terrain_region and valid_terrain_region:contains(r.brick), tostring(res))
 
       if res == fixture_utils.filter.STOP then
          return nil, nil, nil
@@ -329,6 +342,16 @@ function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fi
          end
          local bounds_w = fixture_utils.rotate_region(fixture_bounds, rot or 0, region_origin):translated(r.brick)
          local support_bounds = Region3(bounds_w:duplicate():get_bounds())
+         local is_fully_in_valid_terrain = false
+         if valid_terrain_region then
+            local terrain_intersection = radiant.terrain.intersect_region(support_bounds)
+            local valid_terrain_intersection = valid_terrain_region:intersect_region(support_bounds)
+            if not terrain_intersection:empty() then
+               local full_intersection = terrain_intersection:intersect_region(valid_terrain_intersection)
+               is_fully_in_valid_terrain = full_intersection:get_area() == terrain_intersection:get_area()
+            end
+            log:spam('terrain intersection %s ?= %s => %s', terrain_intersection:get_bounds(), valid_terrain_intersection:get_bounds(), is_fully_in_valid_terrain)
+         end
          --log:debug('%s bounds = %s', entity, support_bounds:get_bounds())
 
          if not is_hatch and (not is_portal or (allow_ground and r.normal.y == 1)) then
@@ -341,6 +364,10 @@ function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fi
          local is_solid = entity and _is_solid_thing(entity) or true
 
          local es = radiant.terrain.get_entities_in_region(bounds_w, function(e)
+               if e == radiant._root_entity and is_fully_in_valid_terrain then
+                  log:spam('ignoring terrain entity because the fixture\'s intersection is fully inside the valid terrain region')
+                  return false
+               end
                if fixture_utils.filter._ignored_uris[e:get_uri()] then
                   return false
                end
@@ -387,9 +414,15 @@ function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fi
 
          local accept = radiant.empty(es)
          if accept then
+            local valid_terrain_support_region = valid_terrain_region and support_bounds:intersect_region(valid_terrain_region)
             support_bounds = _physics:clip_region(support_bounds, _radiant.physics.Physics.CLIP_SOLID, 0)
+            -- ACE: add back in the valid terrain region
+            if valid_terrain_support_region then
+               support_bounds:add_region(valid_terrain_support_region)
+            end
+
             local es = radiant.terrain.get_entities_in_region(support_bounds, function(e)
-                  return e:get_id() ~= widget_id
+                  return e:get_id() ~= widget_id and e ~= radiant._root_entity
                end)
             for _, e in pairs(es) do
                local ed = radiant.entities.get_entity_data(e, 'stonehearth:build2:blueprint')
@@ -410,8 +443,8 @@ function fixture_utils.find_fixture_placement(p, entity, is_portal, is_fence, fi
 			   
                return brick, e, r.normal
             end
-         -- else
-         --    log:debug('cannot find placement location for %s because of %s', entity, radiant.util.table_tostring(es))
+         else
+            log:spam('cannot find placement location for %s because of %s', entity, radiant.util.table_tostring(es))
          end
          return nil, nil, nil
       end

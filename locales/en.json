@@ -25599,6 +25599,21 @@
    },
    "ui": {
       "game": {
+         "build2": {
+            "destroy_building_blueprint_confirm": {
+               "title": "Destroy Current Building Blueprint",
+               "message": "Do you really want to destroy this building blueprint? This operation cannot be undone!<br><br>Note: this will not destroy any building templates or already-built buildings.",
+               "no": "No",
+               "yes": "Yes!"
+            },
+            "destroy_building_confirm": {
+               "no_description": "Do not destroy the building.",
+               "very_yes": "Yes! Restore Terrain",
+               "very_yes_description": "Destroy the building and restore the terrain to how it was before construction began.<br><br>Note: ore veins will not be restored and will be replaced with rock.",
+               "yes": "Yes! Building Only",
+               "yes_description": "Destroy the building, but leave any terrain modifications made in the process of construction."
+            }
+         },
          "pet_manager": {
             "title": "Pet Overview",
             "name": "Name",

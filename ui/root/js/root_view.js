@@ -130,6 +130,10 @@ App.RootView = Ember.ContainerView.extend({
          return self._game_mode_manager.getVisionMode();
       };
 
+      App.getCurrentGameModeView = function() {
+         return self._game_mode_manager._currentView;
+      }
+
       App.getCurrentScreenName = function() {
          return self._currentScreenName !== undefined ? self._currentScreenName : 'shell'; // default to shell, undefined should be overridden when trace comes back
       }

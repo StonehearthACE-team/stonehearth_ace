@@ -229,6 +229,10 @@ App.StonehearthBuildingStatusView = App.View.extend({
       });
    },
 
+   isActiveBuildingBlueprint: function() {
+      return this.get('model.stonehearth:build2:building.building_status') == App.constants.building.building_status.NONE;
+   },
+
    _showPlanStatus: function(status_name) {
       if (!status_name) {
          return;

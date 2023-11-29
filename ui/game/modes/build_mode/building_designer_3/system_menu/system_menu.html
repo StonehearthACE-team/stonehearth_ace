@@ -1,0 +1,20 @@
+<script type="text/x-handlebars" data-template-name="buildingSystemMenu">
+   <div id="buildingSystemMenuRoot" class="paper root">
+      <div id="buildingSystemMenuContents" class="paper contents">
+          <div id="buttons" class="paper">
+            <div id="newBuilding" class="button systemTool" tooltip="{{i18n stonehearth:ui.game.build_mode2.tooltips.new_building}}" {{ action "newBuilding" target="view" }}>
+            </div>
+            <div id="saveBuilding" class="button systemTool" tooltip="{{i18n stonehearth:ui.game.build_mode2.tooltips.save_building}}" {{ action "saveBuilding" target="view" }}>
+            </div>
+            <div id="templates" class="button systemTool" tooltip="{{i18n stonehearth:ui.game.build_mode2.tooltips.template_list}}" {{ action "templateList" target="view" }}>
+            </div>
+            <div id="destroy" class="button systemTool" tooltip="{{i18n stonehearth:ui.game.build_mode2.tooltips.destroy}}" {{ action "destroy" target="view" }}>
+            </div>
+         </div>
+
+         <div class="templateList">
+            {{ view "stonehearthBuildingTemplateList" }}
+         </div>
+      </div>
+   </div>
+</script>
