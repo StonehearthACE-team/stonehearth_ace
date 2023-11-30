@@ -545,6 +545,30 @@
 				}					
 			}
 		},
+		"candledark": {
+         "ordinal": 998,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
+         "recipes": {
+				"blessed_water" : {
+					"recipe" : "file(candledark/blessed_water_recipe.json)"
+				},
+				"vampire_salve" : {
+					"recipe" : "file(candledark/vampire_salve_recipe.json)"
+				},
+				"candledark_pumpkin_small" : {
+					"recipe" : "file(candledark/pumpkin_small_recipe.json)"
+				},
+				"candledark_pumpkin_tiny" : {
+					"recipe" : "file(candledark/pumpkin_tiny_recipe.json)"
+				},
+				"candledark_pumpkin_lantern" : {
+					"recipe" : "file(candledark/pumpkin_lantern_recipe.json)"
+				},
+				"candledark_pumpkin_basket" : {
+					"recipe" : "file(candledark/pumpkin_basket_recipe.json)"
+				}
+         }
+      },
 		"frostfeast": {
          "ordinal": 999,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
@@ -566,30 +590,6 @@
 				},
 				"frostfeast_wreath_large" : {
 					"recipe" : "file(frostfeast/wreath_large_recipe.json)"
-				}
-         }
-      },
-		"candledark": {
-         "ordinal": 2,
-         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
-         "recipes": {
-				"blessed_water" : {
-					"recipe" : "file(candledark/blessed_water_recipe.json)"
-				},
-				"vampire_salve" : {
-					"recipe" : "file(candledark/vampire_salve_recipe.json)"
-				},
-				"candledark_pumpkin_small" : {
-					"recipe" : "file(candledark/pumpkin_small_recipe.json)"
-				},
-				"candledark_pumpkin_tiny" : {
-					"recipe" : "file(candledark/pumpkin_tiny_recipe.json)"
-				},
-				"candledark_pumpkin_lantern" : {
-					"recipe" : "file(candledark/pumpkin_lantern_recipe.json)"
-				},
-				"candledark_pumpkin_basket" : {
-					"recipe" : "file(candledark/pumpkin_basket_recipe.json)"
 				}
          }
       }

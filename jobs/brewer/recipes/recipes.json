@@ -338,6 +338,21 @@
             }
          }
       },
+      "candledark": {
+         "ordinal": 998,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
+         "recipes": {
+            "candledark_tea_cider": {
+               "recipe": "file(candledark/tea_cider_recipe.json)"
+            },
+            "candledark_hot_cider": {
+               "recipe": "file(candledark/hot_cider_recipe.json)"
+            },
+            "candledark_coffee_pumpkin_spice": {
+               "recipe": "file(candledark/coffee_pumpkin_spice_recipe.json)"
+            }
+         }
+      },
       "frostfeast": {
          "ordinal": 999,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
@@ -350,21 +365,6 @@
             },
             "frostfeast_hot_coco": {
                "recipe": "file(frostfeast/hot_coco_recipe.json)"
-            }
-         }
-      },
-      "candledark": {
-         "ordinal": 2,
-         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
-         "recipes": {
-            "candledark_tea_cider": {
-               "recipe": "file(candledark/tea_cider_recipe.json)"
-            },
-            "candledark_hot_cider": {
-               "recipe": "file(candledark/hot_cider_recipe.json)"
-            },
-            "candledark_coffee_pumpkin_spice": {
-               "recipe": "file(candledark/coffee_pumpkin_spice_recipe.json)"
             }
          }
       }

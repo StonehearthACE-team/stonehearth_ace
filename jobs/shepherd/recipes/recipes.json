@@ -114,6 +114,21 @@
             }
          }
       },
+		"candledark": {
+         "ordinal": 998,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
+         "recipes": {
+				"candledark_scarecrow": {
+					"recipe": "file(candledark/scarecrow_recipe.json)"
+				},
+				"candledark_haystack": {
+					"recipe": "file(candledark/haystack_recipe.json)"
+				},
+				"candledark_haystack_tall": {
+					"recipe": "file(candledark/haystack_tall_recipe.json)"
+				}
+         }
+      },
 		"frostfeast": {
          "ordinal": 999,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
@@ -126,21 +141,6 @@
 				},
 				"frostfeast_goat_large": {
 					"recipe": "file(frostfeast/goat_large_recipe.json)"
-				}
-         }
-      },
-		"candledark": {
-         "ordinal": 2,
-         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
-         "recipes": {
-				"candledark_scarecrow": {
-					"recipe": "file(candledark/scarecrow_recipe.json)"
-				},
-				"candledark_haystack": {
-					"recipe": "file(candledark/haystack_recipe.json)"
-				},
-				"candledark_haystack_tall": {
-					"recipe": "file(candledark/haystack_tall_recipe.json)"
 				}
          }
       }

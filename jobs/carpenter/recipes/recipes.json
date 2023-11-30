@@ -308,6 +308,33 @@
             }
          }
       },
+		"candledark": {
+         "ordinal": 998,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
+         "recipes": {
+				"candledark_pumpkin_ward": {
+					"recipe": "file(candledark/pumpkin_ward_recipe.json)"
+				},
+				"candledark_charmed_broom": {
+					"recipe": "file(candledark/charmed_broom_recipe.json)"
+				},
+				"candledark_casket_bed": {
+					"recipe": "file(candledark/casket_bed_recipe.json)"
+				},
+				"candledark_stake_fence_bar_double": {
+					"recipe": "file(candledark/stake_fence_bar_double_recipe.json)"
+				},
+				"candledark_stake_fence_bar_single": {
+					"recipe": "file(candledark/stake_fence_bar_single_recipe.json)"
+				},
+				"candledark_stake_fence_end": {
+					"recipe": "file(candledark/stake_fence_end_recipe.json)"
+				},
+				"candledark_stake_fence_gate": {
+					"recipe": "file(candledark/stake_fence_gate_recipe.json)"
+				}
+         }
+      },
 		"frostfeast": {
          "ordinal": 999,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
@@ -350,33 +377,6 @@
 				},
 				"frostfeast_end_table_white": {
 					"recipe": "file(frostfeast/end_table_white_recipe.json)"
-				}
-         }
-      },
-		"candledark": {
-         "ordinal": 2,
-         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
-         "recipes": {
-				"candledark_pumpkin_ward": {
-					"recipe": "file(candledark/pumpkin_ward_recipe.json)"
-				},
-				"candledark_charmed_broom": {
-					"recipe": "file(candledark/charmed_broom_recipe.json)"
-				},
-				"candledark_casket_bed": {
-					"recipe": "file(candledark/casket_bed_recipe.json)"
-				},
-				"candledark_stake_fence_bar_double": {
-					"recipe": "file(candledark/stake_fence_bar_double_recipe.json)"
-				},
-				"candledark_stake_fence_bar_single": {
-					"recipe": "file(candledark/stake_fence_bar_single_recipe.json)"
-				},
-				"candledark_stake_fence_end": {
-					"recipe": "file(candledark/stake_fence_end_recipe.json)"
-				},
-				"candledark_stake_fence_gate": {
-					"recipe": "file(candledark/stake_fence_gate_recipe.json)"
 				}
          }
       }
