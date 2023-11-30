@@ -1,4 +1,6 @@
 local Point3 = _radiant.csg.Point3
+local RoomData = require 'stonehearth.lib.building.room_data'
+local mutation_utils = require 'stonehearth.lib.building.mutation_utils'
 local template_utils = require 'stonehearth.lib.building.template_utils'
 local BuildingDestructionJob = require 'stonehearth.components.building2.building_destruction_job'
 local Building = 'stonehearth:build2:building'
@@ -84,6 +86,26 @@ function AceBuildingService:destroy_building_command(session, response, building
    else
       response:resolve(building_id)
    end
+end
+
+function AceBuildingService:add_room_command(building_id, p1, p2, wall_brush, opt_column_brush, floor_brush, is_fusing, wall_height)
+   p1 = Point3(p1.x, p1.y, p1.z)
+   p2 = Point3(p2.x, p2.y, p2.z)
+
+   local room_bid = self:get_next_bid()
+
+   local room_data = RoomData.Make(building_id, room_bid, p1, p2, wall_brush, opt_column_brush, floor_brush, is_fusing, wall_height)
+
+   mutation_utils.create(room_data)
+
+   -- Add the room to the level _after_ it has been created (otherwise
+   -- mutation utils goes looking for something that isn't there yet.)
+   if not is_fusing then
+      self:_commit_data(building_id)
+      room_bid = room_data:get_bid()
+   end
+
+   return room_bid
 end
 
 return AceBuildingService

@@ -186,6 +186,7 @@ local monkey_patches = {
    ace_rest_in_current_bed_action = 'stonehearth.ai.actions.health.rest_in_current_bed_action',
    ace_restock_director = 'stonehearth.services.server.inventory.restock_director',
    ace_returning_trader_script = 'stonehearth.services.server.game_master.controllers.script_encounters.returning_trader_script',
+   ace_room_data = 'stonehearth.lib.building.room_data',
    ace_run_in_circles_action = 'stonehearth.ai.actions.pet.run_in_circles_action',
    ace_run_rest_effect_action = 'stonehearth.ai.actions.health.run_rest_effect_action',
    ace_safety_observer = 'stonehearth.ai.observers.safety_observer',

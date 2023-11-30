@@ -507,8 +507,7 @@ function AceBuilding:_create_resource_delivery_entity()
    if region:empty() then
       -- try using the top layer of the terrain cutout, inflated by 1
       if self._sv._terrain_cutout and not self._sv._terrain_cutout:empty() then
-         local slice = self._sv._terrain_cutout:get_bounds():get_face(Point3.unit_y)
-         region = self._sv._terrain_cutout:intersect_cube(slice):translated(Point3.unit_y):inflated(Point3(1, 0, 1))
+         region = self._sv._terrain_cutout:inflated(Point3(1, 0, 1)):inflated(Point3.unit_y)
       else
          -- try the building envelope
          local env_region = self._sv._envelope_entity and self._sv._envelope_entity:get_component('destination'):get_region():get()

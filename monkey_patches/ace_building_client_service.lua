@@ -52,6 +52,11 @@ function AceBuildingClientService:build(session, response, insert_craft_requests
          end)
 end
 
+function AceBuildingClientService:add_room(p1, p2, wall_brush, column_brush, floor_brush, is_fusing, wall_height)
+   build_util.play_build_sound_by_brush(wall_brush)
+   self:_issue_command('add_room_command', nil, p1, p2, wall_brush, column_brush, floor_brush, is_fusing, wall_height)
+end
+
 function AceBuildingClientService:get_build_grid_offset()
    return self._build_grid_offset or Point2.zero
 end
@@ -61,9 +66,14 @@ function AceBuildingClientService:set_build_grid_offset(offset)
    _radiant.call('stonehearth_ace:set_build_grid_offset', offset)
 end
 
+function AceBuildingClientService:get_current_building()
+   local id = self:get_current_building_id()
+   return id and radiant.entities.get_entity(id)
+end
+
 function AceBuildingClientService:get_current_building_room_region()
    local region = Region3()
-   local current_building = radiant.entities.get_entity(self:get_current_building_id())
+   local current_building = self:get_current_building()
    local building_comp = current_building and current_building:get_component('stonehearth:build2:building')
    if building_comp then
       -- go through all the blueprints; if they're rooms, add their region bounds to this region
@@ -83,6 +93,27 @@ function AceBuildingClientService:get_current_building_room_region()
 
    log:debug('calculated current building room region: %s (bounds = %s)', region, region:get_bounds())
    return region
+end
+
+function AceBuildingClientService:get_current_building_room_at_point(point)
+   local current_building = self:get_current_building()
+   local building_comp = current_building and current_building:get_component('stonehearth:build2:building')
+   if building_comp then
+      -- go through all the blueprints; if they're rooms, add their region bounds to this region
+      for _, bp in building_comp:get_blueprints():each() do
+         if bp:get_uri() == 'stonehearth:build2:entities:room_blueprint' then
+            local blueprint_comp = bp:get_component('stonehearth:build2:blueprint')
+            local data = blueprint_comp:get_data()
+            if data.origin and data.region then
+               local region = data.region:translated(data.origin)
+               local cutout = build_util.calculate_building_terrain_cutout({region})
+               if cutout:contains(point) then
+                  return cutout
+               end
+            end
+         end
+      end
+   end
 end
 
 return AceBuildingClientService

@@ -106,7 +106,11 @@ $(document).ready(function(){
    radiant.console.register('im', {
       call: function(cmdobj, fn, args) {
          var entity = args._[0] || selected;
-         return radiant.call('stonehearth_ace:instamine_entity_command', entity);
+         if (entity) {
+            return radiant.call('stonehearth_ace:instamine_entity_command', entity);
+         } else {
+            return radiant.call('stonehearth_ace:instamine_current_building_command');
+         }
       },
       description : "Instantly mines the selected mining zone (or building) or arg 0. Usage: im object://game/12345",
       test: function(e) {

@@ -7464,6 +7464,10 @@
          "controller": "file(call_handlers/building_call_handler.lua)",
          "endpoint": "server"
       },
+      "instamine_current_building_command": {
+         "controller": "file(call_handlers/debug_call_handler.lua)",
+         "endpoint": "client"
+      },
       "instamine_entity_command": {
          "controller": "file(call_handlers/debug_call_handler.lua)",
          "endpoint": "server"
