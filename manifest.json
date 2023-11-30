@@ -6027,6 +6027,7 @@
       "stonehearth:data:resource_constants": "file(data/resource_constants.json)",
       "stonehearth:data:sound_constants": "stonehearth_ace:data:sound_constants",
       "stonehearth:data:thoughts": "stonehearth_ace:data:thoughts",
+      "stonehearth:debug_shapes:box": "file(data/debug_shapes/debug_shapes_box.json)",
       "stonehearth:decoration:firepit": "file(entities/decoration/firepit/firepit.json)",
       "stonehearth:decoration:firepit_hearth": "file(entities/decoration/firepit_hearth/firepit_hearth.json)",
       "stonehearth:decoration:firepit_skulls": "file(entities/decoration/firepit_skulls/firepit_skulls_mixin.json)",
@@ -7248,6 +7249,7 @@
       "stonehearth/lib/building/template_utils.lua": "file(lib/building/template_utils.lua)",
       "stonehearth/lib/building/mutation_utils.lua": "file(lib/building/mutation_utils.lua)",
       "stonehearth/lib/catalog/catalog_lib.lua": "file(lib/catalog/catalog_lib.lua)",
+      "stonehearth/renderers/building2/active_building_renderer.lua": "file(renderers/building2/active_building_renderer.lua)",
       "stonehearth/services/client/building/template_placement_tool.lua": "file(services/client/building/template_placement_tool.lua)",
       "stonehearth/services/client/selection/xz_region_selector.lua": "file(services/client/selection/xz_region_selector.lua)",
       "stonehearth/services/server/catalog/catalog_service.lua": "file(services/server/catalog/catalog_service.lua)",
@@ -7715,6 +7717,10 @@
       "set_default_storage": {
          "controller": "file(call_handlers/town_inventory_call_handler.lua)",
          "endpoint": "server"
+      },
+      "always_show_building_blueprint_regions_setting_changed": {
+         "controller": "file(call_handlers/settings_call_handler.lua)",
+         "endpoint": "client"
       },
       "get_all_client_gameplay_settings_command": {
          "controller": "file(call_handlers/settings_call_handler.lua)",

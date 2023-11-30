@@ -415,6 +415,16 @@
          },
          "ordinal": 20
       },
+      "always_show_building_blueprint_regions": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.always_show_building_blueprint_regions)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.always_show_building_blueprint_regions_description)",
+         "default": false,
+         "on_change": {
+            "call": "always_show_building_blueprint_regions_setting_changed"
+         },
+         "ordinal": 21
+      },
       "highlight_entire_vine_on_select": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.highlight_entire_vine_on_select)",
