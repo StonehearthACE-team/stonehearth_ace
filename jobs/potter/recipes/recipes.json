@@ -404,6 +404,27 @@
 				}
          }
       },
+		"candledark": {
+         "ordinal": 998,
+         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
+         "recipes": {
+				"candledark_pumpkin_ward": {
+					"recipe": "file(candledark/pumpkin_ward_recipe.json)"
+				},
+				"candledark_casket_bed_porcelain": {
+					"recipe": "file(candledark/casket_bed_porcelain_recipe.json)"
+				},
+				"candledark_pumpkin_patch": {
+					"recipe": "file(candledark/pumpkin_patch_recipe.json)"
+				},
+				"candledark_pumpkin_patch_fence": {
+					"recipe": "file(candledark/pumpkin_patch_fence_recipe.json)"
+				},
+				"candledark_pumpkin_patch_scarecrow": {
+					"recipe": "file(candledark/pumpkin_patch_scarecrow_recipe.json)"
+				}
+         }
+      },
 		"frostfeast": {
          "ordinal": 999,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
@@ -437,27 +458,6 @@
 				},
 				"frostfeast_light_string_vertical_short": {
 					"recipe": "file(frostfeast/light_string_vertical_short_recipe.json)"
-				}
-         }
-      },
-		"candledark": {
-         "ordinal": 2,
-         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
-         "recipes": {
-				"candledark_pumpkin_ward": {
-					"recipe": "file(candledark/pumpkin_ward_recipe.json)"
-				},
-				"candledark_casket_bed_porcelain": {
-					"recipe": "file(candledark/casket_bed_porcelain_recipe.json)"
-				},
-				"candledark_pumpkin_patch": {
-					"recipe": "file(candledark/pumpkin_patch_recipe.json)"
-				},
-				"candledark_pumpkin_patch_fence": {
-					"recipe": "file(candledark/pumpkin_patch_fence_recipe.json)"
-				},
-				"candledark_pumpkin_patch_scarecrow": {
-					"recipe": "file(candledark/pumpkin_patch_scarecrow_recipe.json)"
 				}
          }
       }
