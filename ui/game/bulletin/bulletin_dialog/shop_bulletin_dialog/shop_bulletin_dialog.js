@@ -212,9 +212,32 @@ App.StonehearthShopBulletinDialog = App.StonehearthBaseBulletinDialog.extend({
       if (!this.$()) {
          return;
       }
+      // also check against wanted items when any entities specify they're only sellable if wanted
+      // we don't need to update when wanted items change, because we don't actually care about the number wanted
+      // just whether this merchant wants the item or not
+      var wantedItems = this.get('model.data.shop.wanted_items') || [];
       var tracking_data = this.get('model.data.shop.sellable_items.tracking_data');
       var sellable_items = {}
       radiant.each(tracking_data, function(uri, uri_entry) {
+         var catalogData = App.catalog.getCatalogData(uri_entry.uri);
+         if (catalogData.sellable_only_if_wanted) {
+            // check against wanted items, both by uri and by material
+            var isWanted = false;
+            for(var i = 0; i < wantedItems.length; i++)
+            {
+               var wantedItem = wantedItems[i];
+               if (wantedItem.uri == uri_entry.uri ||
+                  (wantedItem.material != null && radiant.isMaterial(catalogData.materials, wantedItem.material))) {
+                  isWanted = true;
+                  break;
+               }
+            };
+
+            if (!isWanted) {
+               return;
+            }
+         }
+
          radiant.each(uri_entry.item_qualities, function(item_quality_key, data) {
             data.uri = uri_entry.uri;
             // The key's purpose is just to make sure each entry with a different item quality is unique
