@@ -15,7 +15,7 @@ function AceSellableItemTracker:create_key_for_entity(entity, storage)
 
    -- is it sellable?
    local net_worth = radiant.entities.get_entity_data(entity_uri, 'stonehearth:net_worth')
-   if net_worth and net_worth.shop_info and net_worth.shop_info.sellable then
+   if net_worth and net_worth.shop_info and (net_worth.shop_info.sellable or net_worth.shop_info.sellable_only_if_wanted) then
       sellable = true
    end
 

@@ -113,8 +113,13 @@
             "rarity_weights": {
                "common": 3
             },
-            "max_wanted_items": 5,
+            "max_wanted_items": 6,
             "wanted_items": [
+               {
+                  "uri": "stonehearth:resources:earth_essence",
+                  "price_factor": 1,
+                  "max_quantity": 10
+               },
                {
                   "uri": "stonehearth:resources:fiber:heirbloom_bundle",
                   "price_factor": 2,
