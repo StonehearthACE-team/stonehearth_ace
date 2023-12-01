@@ -59,6 +59,12 @@ AceBuilding._ace_old_destroy = Building.__user_destroy
 function AceBuilding:destroy()
    self:_destroy_resource_delivery_entity()
 
+   -- ACE: destroy structures this way to try to auto-fill water
+   for id, s in pairs(self._sv._structures) do
+      self:destroy_structure(s)
+   end
+   self._sv._structures = {}
+
    self:_ace_old_destroy()
 end
 
@@ -67,6 +73,11 @@ function AceBuilding:_destroy_resource_delivery_entity()
       radiant.entities.destroy_entity(self._sv._resource_delivery_entity)
       self._sv._resource_delivery_entity = nil
    end
+end
+
+function AceBuilding:restore_terrain_region()
+   assert(radiant.is_server)
+   stonehearth.mining:restore_terrain(self._sv._terrain_region_w)
 end
 
 function AceBuilding:build(ignored_entities, insert_craft_requests)
@@ -116,6 +127,22 @@ function AceBuilding:build(ignored_entities, insert_craft_requests)
          :start()
 
    return self._sv.plan_job_status
+end
+
+-- ACE: make sure water gets properly filled in where this structure used to be
+function AceBuilding:destroy_structure(structure)
+   log:debug('destroying structure %s', structure)
+   local structure_comp = structure:get('stonehearth:build2:structure')
+   -- could subtract out the terrain region here:  - self._sv._terrain_region_w
+   stonehearth.hydrology:auto_fill_water_region(structure_comp:get_desired_shape_region():translated(structure_comp:get_origin()), function()
+         local bid = structure_comp:get_bid()
+         assert(self._sv._structures[bid])
+      
+         self._sv._structures[bid] = nil
+         radiant.entities.destroy_entity(structure)
+         self.__saved_variables:mark_changed()
+         return true
+      end)
 end
 
 -- ACE: instead of returning true if it's sunk, return the value of how much it's sunk
