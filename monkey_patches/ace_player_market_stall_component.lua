@@ -19,7 +19,7 @@ function AcePlayerMarketStall:sell_items_to_player(to_player_id, item_uri_to_sel
    local player_id = radiant.entities.get_player_id(self._entity)
    local from_inventory = stonehearth.inventory:get_inventory(player_id)
    local is_boosted = self:_is_value_booster_in_range(from_inventory)
-   local item_cost = self:_calculate_item_cost(item_uri_to_sell, is_boosted)
+   local item_cost = self:_calculate_item_cost(item_uri_to_sell, quality, is_boosted)
 
    local to_inventory = stonehearth.inventory:get_inventory(to_player_id)
    local gold = to_inventory:get_gold_count()
@@ -96,7 +96,8 @@ function AcePlayerMarketStall:sell_next_items(max_quantity)
    local is_boosted = self:_is_value_booster_in_range(from_inventory)
 
    for _, entity in ipairs(item_list) do
-      local item_cost = self:_calculate_item_cost(entity, is_boosted)
+      local quality = radiant.entities.get_item_quality(entity)
+      local item_cost = self:_calculate_item_cost(entity:get_uri(), quality, is_boosted)
 
       from_inventory:remove_item(entity:get_id())
       from_inventory:add_gold(item_cost)
@@ -108,9 +109,8 @@ function AcePlayerMarketStall:sell_next_items(max_quantity)
    return true
 end
 
-function AcePlayerMarketStall:_calculate_item_cost(entity, is_boosted)
-   local item_catalog_data = stonehearth.catalog.get_catalog_data(stonehearth.catalog, entity:get_uri())
-   local quality = radiant.entities.get_item_quality(entity)
+function AcePlayerMarketStall:_calculate_item_cost(item_uri, quality, is_boosted)
+   local item_catalog_data = stonehearth.catalog.get_catalog_data(stonehearth.catalog, item_uri)
    local item_cost = radiant.entities.apply_item_quality_bonus('net_worth', item_catalog_data.net_worth, quality)
 
    if is_boosted then
