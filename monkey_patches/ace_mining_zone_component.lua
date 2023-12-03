@@ -583,8 +583,7 @@ function AceMiningZoneComponent:_update_ladder(handle, mine_location)
             local ladder_component = ladder:get_component('stonehearth:ladder')
 
             if req_point and req_point.y > ladder_component:get_top().y then
-               req_point = req_point - Point3.unit_y
-               self:add_ladder_handle(builder:add_point(req_point, {user_removable = false}), true)
+               self:add_ladder_handle(builder:add_point(req_point - Point3.unit_y, {user_removable = false}), true)
                --self._sv._adjacent_needs_ladder_update = true
                local ladder_cube = Cube3(location, req_point + Point3(1, 0, 1))
                log:debug('%s updating ladder region to %s', ladder, ladder_cube)
@@ -599,7 +598,7 @@ function AceMiningZoneComponent:get_ladder_request_point(location, mine_location
    -- get the top point of the mining zone at this location
    local zone_region = self._sv.region:get():translated(mine_location)
    local bounds = zone_region:get_bounds()
-   local col = Cube3(Point3(location.x, bounds.min.y, location.z), Point3(location.x + 1, bounds.max.y - 1, location.z + 1))
+   local col = Cube3(Point3(location.x, bounds.min.y, location.z), Point3(location.x + 1, bounds.max.y, location.z + 1))
    local intersection = zone_region:intersect_cube(col)
    
    if not intersection:empty() then
@@ -668,19 +667,15 @@ function AceMiningZoneComponent:_get_destination_blocks_for_cube(zone_cube, zone
    local ladders_region = (self:get_ladders_region(cube_region) or Region3()):translated(zone_location)
    --log:debug('%s getting destination blocks for %s with ladders region %s', self._entity, zone_cube, ladders_region:get_bounds())
 
-   local check_region
    if not ladders_region:empty() then
-      -- add only the bottom facing blocks in the ladders region
-      check_region = working_region:intersect_region(ladders_region)
+      -- add all the blocks in the ladders region
+      destination_region:add_region(working_region:intersect_region(ladders_region):translated(-zone_location))
    elseif self:should_build_ladder_at(working_bounds.min) then
       -- should we actually queue up ladder building here?
    else
       -- otherwise, add bottom facing blocks in whole region
-      check_region = working_region
-   end
-   if check_region and not check_region:empty() then
-      local check_bounds = check_region:get_bounds()
-      self:_add_bottom_facing_blocks(destination_region, zone_location, check_region, check_bounds, unsupported_region)
+      local check_bounds = working_region:get_bounds()
+      self:_add_bottom_facing_blocks(destination_region, zone_location, working_region, check_bounds, unsupported_region)
    end
 
    -- for top and side-facing, we do the same restriction, so just do it now

@@ -22,13 +22,9 @@ function DebugCallHandler:instamine_current_building_command(session, response)
 end
 
 function DebugCallHandler:instamine_entity_command(session, response, entity)
-   log:debug('instamine_entity_command: %s', tostring(entity))
-   -- why does this throw an error? it *is* an entity
-   --validator.expect_argument_types({'Entity'}, entity)
-
    local mining_zone = entity:get_component('stonehearth:mining_zone')
    if mining_zone then
-      stonehearth.mining:insta_mine_zone_command(session, response, mining_zone)
+      stonehearth.mining:insta_mine_zone_command(nil, nil, entity)
       response:resolve({})
       return
    end
