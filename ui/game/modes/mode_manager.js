@@ -57,11 +57,11 @@ $(document).ready(function() {
          App.waitForGameLoad().then(() => {
             self.views[self.modes.ZONES] = App.StonehearthZonesModeView.create();
             self.views[self.modes.BUILD] = App.StonehearthBuildModeView.create();
-            self.views[self.modes.PLACEMENT] = App.StonehearthPlaceItemView.create();
+            //self.views[self.modes.PLACEMENT] = App.StonehearthPlaceItemView.create();
 
             App.gameView.addView(self.views[self.modes.ZONES]);
             App.gameView.addView(self.views[self.modes.BUILD]);
-            App.gameView.addView(self.views[self.modes.PLACEMENT]);
+            //App.gameView.addView(self.views[self.modes.PLACEMENT]);
          });
 
          $(top).on("start_menu_activated", function(_, e) {
