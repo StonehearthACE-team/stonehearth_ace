@@ -336,6 +336,7 @@ end
 -- need to override to handle loot quantity/quality properly when doubling loot from strength town bonus
 function AceMiningZoneComponent:mine_point(point)
    local loot = {}
+   log:debug('mining point %s', point)
 
    -- When mining a point, need to inspect the specialized regions to see if the point is a part of them.
    -- Need to pull loot from the specific landmark_blocks table which was specified for this specialized region.
@@ -647,7 +648,7 @@ function AceMiningZoneComponent:_add_destination_blocks(destination_region, zone
 
    -- make sure all reserved blocks are part of the destination region
    local reserved_region = self._destination_component:get_reserved():get()
-   destination_region:add_region(reserved_region)
+   destination_region:add_region(radiant.terrain.clip_region(reserved_region))
 end
 
 -- this algorithm assumes a convex region, so we break the zone into cubes before running it
@@ -666,16 +667,21 @@ function AceMiningZoneComponent:_get_destination_blocks_for_cube(zone_cube, zone
    -- for bottom facing, we do a separate restriction for which blocks are allowed
    local ladders_region = (self:get_ladders_region(cube_region) or Region3()):translated(zone_location)
    --log:debug('%s getting destination blocks for %s with ladders region %s', self._entity, zone_cube, ladders_region:get_bounds())
-
+   local check_region
    if not ladders_region:empty() then
+      -- add only the bottom facing blocks in the ladders region
+      check_region = working_region:intersect_region(ladders_region)
       -- add all the blocks in the ladders region
       destination_region:add_region(working_region:intersect_region(ladders_region):translated(-zone_location))
    elseif self:should_build_ladder_at(working_bounds.min) then
       -- should we actually queue up ladder building here?
    else
       -- otherwise, add bottom facing blocks in whole region
-      local check_bounds = working_region:get_bounds()
-      self:_add_bottom_facing_blocks(destination_region, zone_location, working_region, check_bounds, unsupported_region)
+      check_region = working_region
+   end
+   if check_region and not check_region:empty() then
+      local check_bounds = check_region:get_bounds()
+      self:_add_bottom_facing_blocks(destination_region, zone_location, check_region, check_bounds, unsupported_region)
    end
 
    -- for top and side-facing, we do the same restriction, so just do it now
@@ -761,11 +767,10 @@ end
 
 -- ACE: limit mining side-facing blocks in non-ladder columns below top reachable height
 function AceMiningZoneComponent:_add_side_facing_blocks(destination_region, zone_location, working_region, working_bounds, unsupported_region)
-   local up = Point3.unit_y
-   local down = -up
    local destination_blocks = Region3()
+   --log:debug('adding side-facing blocks to destination from working bounds %s', working_bounds)
 
-   local get_exposed_blocks = function(slice, direction, working_region)
+   local get_exposed_blocks = function(slice, direction)
       local blocks = working_region:intersect_cube(slice)
       local full_slice = blocks:get_area() == slice:get_area()
       blocks:translate(direction)
@@ -778,22 +783,26 @@ function AceMiningZoneComponent:_add_side_facing_blocks(destination_region, zone
       local slice = working_bounds:get_face(direction)
 
       while true do
-         local exposed_blocks, full_slice = get_exposed_blocks(slice, direction, working_region)
+         log:debug('checking slice %s in direction %s', slice, direction)
+         local exposed_blocks, full_slice = get_exposed_blocks(slice, direction)
          if not exposed_blocks:empty() then
+            --log:debug('adding %s side-facing blocks to destination from slice %s', exposed_blocks:get_area(), slice)
             destination_blocks:add_region(exposed_blocks)
-            break
+            --break
          end
 
-         -- If the slice was fully occupied, don't bother to continue searching
-         -- if full_slice then
-         --    break
-         -- end
+         -- If the slice was fully occupied, skip a slice
+         if full_slice then
+            --log:debug('slice %s is full, skipping', slice)
+            slice:translate(-direction)
+         end
 
          -- Look for exposed blocks on the next slice in
          slice:translate(-direction)
 
          -- Stop if the slice is out of bounds
          if not slice:intersects(working_bounds) then
+            --log:debug('slice %s is out of bounds %s', slice, working_bounds)
             break
          end
       end
@@ -1006,6 +1015,12 @@ function MiningZoneComponent:_update_adjacent_full()
          cursor:add_region(adjacent)
          cursor:optimize('mining:_update_adjacent_full()')
       end)
+end
+
+function AceMiningZoneComponent:_calculate_adjacent(world_region)
+   local location = radiant.entities.get_world_grid_location(self._entity)
+   local reserved = self._destination_component:get_reserved():get():translated(location)
+   return stonehearth.mining:get_adjacent_for_destination_region(world_region) - reserved
 end
 
 return AceMiningZoneComponent

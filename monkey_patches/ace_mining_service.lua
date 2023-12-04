@@ -298,6 +298,10 @@ function AceMiningService:get_reserved_region_for_block(block, from, mining_zone
 
    -- by convention, all input and output values in the mining service are in world coordiantes
    reserved_region:translate(location)
+   
+   -- ACE: also add the block that will be mined from, so it gets removed from adjacency
+   -- and other miners don't try to path to the same spot where blocks are already reserved
+   reserved_region:add_point(from)
    return reserved_region
 end
 

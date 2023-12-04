@@ -77,14 +77,13 @@ function AceLadderBuilder:_update_ladder_dst_proxy_region(ladder_height, allow_t
    self._sv.ladder_dst_proxy_region:modify(function(cursor)
          cursor:clear()
          if not self:is_ladder_finished('internal') then
+            cursor:add_point(Point3.zero)
             if allow_top_destination then
                if self._sv._build_mode == 'teardown' then
                   cursor:add_point(Point3(0, ladder_height, 0))
                else
                   cursor:add_cube(Cube3(Point3.zero, Point3(1, ladder_height + 1, 1)))
                end
-            else
-               cursor:add_point(Point3.zero)
             end
          end
       end)
