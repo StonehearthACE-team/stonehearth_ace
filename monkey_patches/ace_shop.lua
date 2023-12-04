@@ -241,16 +241,13 @@ function AceShop:stock_shop()
          local maybe_wanted_items = {}
          for _, item in ipairs(merchant_options.wanted_items) do
             -- copy the entries because we'll want to modify the quantity
-            -- and ignore any items with a price factor of 1
-            if item.price_factor ~= 1 then
-               -- check if this item isn't already in the shop's inventory
-               if (item.uri and all_specific_sellable_items[item.uri] and not self:_is_selling_item(item.uri)) or
-                     (item.material and not self:_is_selling_material(item.material)) then
-                  if not item.chance then
-                     table.insert(wanted_items, item)
-                  elseif rng:get_real(0, 1) < item.chance then
-                     table.insert(maybe_wanted_items, item)
-                  end
+            -- check if this item isn't already in the shop's inventory
+            if (item.uri and all_specific_sellable_items[item.uri] and not self:_is_selling_item(item.uri)) or
+                  (item.material and not self:_is_selling_material(item.material)) then
+               if not item.chance then
+                  table.insert(wanted_items, item)
+               elseif rng:get_real(0, 1) < item.chance then
+                  table.insert(maybe_wanted_items, item)
                end
             end
          end
