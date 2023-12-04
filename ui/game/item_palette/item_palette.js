@@ -695,7 +695,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
          }
 
          var wantedItem = self._getBestWantedItem(item.root_uri);
-         if (wantedItem) {
+         if (wantedItem && wantedItem.price_factor != 1) {
             var quantity = wantedItem.max_quantity != null ? (wantedItem.max_quantity - wantedItem.quantity) : null;
             var hasQuantity = quantity != null;
             // show the percentage modification to the price
