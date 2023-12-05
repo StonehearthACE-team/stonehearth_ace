@@ -38,10 +38,6 @@ function AceComputePlanJob:compute_crafter_jobs()
    self:incstage()
 end
 
-local function _compute_mining_region(piece_entity, piece_origin, nav_grid_id)
-   return radiant.terrain.intersect_region(piece_entity:get('destination'):get_region():get():translated(piece_origin), nav_grid_id)
-end
-
 function AceComputePlanJob:_get_root_points(piece_id, data, region)
    -- if the piece is in terrain, and is a terrain root entity, use the corresponding contiguous terrain root point
    -- if it's in the terrain but isn't a root entity, use the root entity points for that contiguous terrain region

@@ -5,6 +5,8 @@ local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local build_util = require 'stonehearth.lib.build_util'
 local ace_build_util = {}
 
+local log = radiant.log.create_logger('build_util')
+
 function ace_build_util.get_all_material_counts(color_region)
    local all_material_counts = {}
 
@@ -24,7 +26,10 @@ function ace_build_util.calculate_building_terrain_cutout(regions)
    for _, region in ipairs(regions) do
       local bounds = region:get_bounds()
       local r2 = region:project_onto_xz_plane()
-      cutout:add_region(csg_lib.get_convex_filled_region(r2):lift(bounds.min.y, bounds.max.y))
+      local r3 = radiant.terrain.intersect_region(csg_lib.get_convex_filled_region(r2):lift(bounds.min.y, bounds.max.y))
+      if not r3:empty() then
+         cutout:add_region(r3)
+      end
    end
 
    return cutout

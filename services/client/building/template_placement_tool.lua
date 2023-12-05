@@ -18,6 +18,7 @@ local BlockWidgetUris = {
    ['stonehearth:build2:entities:roof_perimeter_wall_widget'] = 'stonehearth:build2:perimeter_wall_widget',
    ['stonehearth:build2:entities:roof_widget'] = 'stonehearth:build2:roof_widget',
    ['stonehearth:build2:entities:room_widget'] = 'stonehearth:build2:room_widget',
+   ['stonehearth:build2:entities:stairs_widget'] = 'stonehearth:build2:stairs_widget',
    ['stonehearth:build2:entities:wall_widget'] = 'stonehearth:build2:wall_widget',
 }
 local StructureUri = 'stonehearth:build2:entities:structure'

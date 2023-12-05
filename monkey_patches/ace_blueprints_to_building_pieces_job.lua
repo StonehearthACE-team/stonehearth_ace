@@ -373,6 +373,14 @@ function AceBlueprintsToBuildingPiecesJob:clone_nav_grid()
    rcs:set_region(_radiant.sim.alloc_region3())
    rcs:get_region():modify(function(cursor)
          cursor:copy_region(terrain_region - self._sv._terrain_cutout)
+
+         -- also copy the finished collision regions of existing buildings
+         for _, b in stonehearth.building:get_buildings():each() do
+            local bc = b:get('stonehearth:build2:building')
+            if bc:completed() then
+               cursor:add_region(bc:get_total_building_region())
+            end
+         end
       end)
    radiant.terrain.place_entity_at_exact_location(proxy, Point3.zero, { root_entity = new_root })
    self._sv._navgrid_proxy = proxy
