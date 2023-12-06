@@ -72,7 +72,8 @@ App.StonehearthBuildingDesignerTools3 = App.View.extend({
          }
       });
 
-      var toolContext = self._getToolContext(uri);
+      // this is a hack, but always update the roof tool widget when deselecting something
+      var toolContext = self._getToolContext(uri) || (uri == null && self._getToolContext('stonehearth:build2:entities:roof_widget'));
       if (toolContext) {
          toolContext.setSelected(selected);
          toolContext.show();

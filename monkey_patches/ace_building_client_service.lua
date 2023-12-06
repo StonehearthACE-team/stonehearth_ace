@@ -57,6 +57,18 @@ function AceBuildingClientService:add_room(p1, p2, wall_brush, column_brush, flo
    self:_issue_command('add_room_command', nil, p1, p2, wall_brush, column_brush, floor_brush, is_fusing, wall_height)
 end
 
+function AceBuildingClientService:get_roof_tool_options()
+   return self._roof_options
+end
+
+function AceBuildingClientService:set_roof_tool_options(options)
+   self._roof_options.drop_walls = options.drop_walls
+   self._roof_options.gradient = options.gradient
+   if self._tool and self._tool.apply_roof_options then
+      self._tool:apply_roof_options(self._roof_options)
+   end
+end
+
 function AceBuildingClientService:get_build_grid_offset()
    return self._build_grid_offset or Point2.zero
 end
