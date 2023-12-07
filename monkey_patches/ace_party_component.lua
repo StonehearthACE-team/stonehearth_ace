@@ -10,7 +10,7 @@ function AcePartyComponent:destroy()
    for _, timer in pairs(self._stop_patrolling_timers) do
       timer:destroy()
    end
-   self._stop_patrolling_timers = nil
+   self._stop_patrolling_timers = {}
 
    self:_ace_old_destroy()
 end

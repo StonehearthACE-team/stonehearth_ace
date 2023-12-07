@@ -79,6 +79,8 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          return false
       end
 
+      radiant.events.trigger(entity, 'stonehearth_ace:transform:pre_transform', {transformed_form = transformed_form, transform_source = transform_source, options = options})
+
       local owner_component = entity:get_component('stonehearth:ownable_object')
       local owner = owner_component and owner_component:get_owner()
       if owner then
@@ -188,7 +190,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          local transform_component = entity:get_component('stonehearth_ace:transform')
          local pic_data = transform_component and transform_component:get_component_data(pic_key)
          if pic_data then
-            local transformed_periodic_interaction_component = transformed_form:add_component('stonehearth_ace:periodic_interaction')
+            local transformed_periodic_interaction_component = transformed_form:get_component('stonehearth_ace:periodic_interaction')
             if transformed_periodic_interaction_component then
                if pic_data.owner then
                   transformed_periodic_interaction_component:set_owner(pic_data.owner)

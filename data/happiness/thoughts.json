@@ -15,6 +15,39 @@
             }
          }
       },
+      "negative_space": {
+         "mutually_exclusive": true,
+         "values": {
+            "underground": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.negative_space.underground.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.negative_space.underground.tooltip)",
+               "stackable": false,
+               "duration": "1h",
+               "happiness_delta": 6
+            },
+            "inside": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.negative_space.inside.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.negative_space.inside.tooltip)",
+               "stackable": false,
+               "duration": "1h",
+               "happiness_delta": 4
+            },
+            "outside": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.negative_space.outside.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.negative_space.outside.tooltip)",
+               "stackable": false,
+               "duration": "1h",
+               "happiness_delta": 0
+            },
+            "agoraphobic": {
+               "display_name": "i18n(stonehearth_ace:data.happiness.thoughts.negative_space.agoraphobic.display_name)",
+               "tooltip": "i18n(stonehearth_ace:data.happiness.thoughts.negative_space.agoraphobic.tooltip)",
+               "stackable": false,
+               "duration": "1h",
+               "happiness_delta": -6
+            }
+         }
+      },
       "darkness": {
          "time_average": true,
          "mutually_exclusive": true,

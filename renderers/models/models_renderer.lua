@@ -7,12 +7,12 @@ local log = radiant.log.create_logger('models.renderer')
 function ModelsRenderer:initialize(render_entity, datastore)
    self._entity = render_entity:get_entity()
    self._entity_node = render_entity:get_node()
+   self._model_nodes = {}
    
    if self._entity_node then
       self._node = self._entity_node:add_group_node('model node')
 
       self._datastore = datastore
-      self._model_nodes = {}
 
       self._datastore_trace = self._datastore:trace('drawing models')
                                              :on_changed(function ()
