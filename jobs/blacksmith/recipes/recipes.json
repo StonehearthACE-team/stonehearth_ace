@@ -124,6 +124,12 @@
 		},
 		"smelt": {
 			"recipes": {
+            "auto_bulk_iron_ingot": {
+               "recipe": "file(auto_bulk_iron_ingot_recipe.json)"
+            },
+            "auto_steel_ingot": {
+               "recipe": "file(auto_steel_ingot_recipe.json)"
+            },
 				"bulk_copper_ingot": {
 					"recipe": "file(bulk_copper_ingot_recipe.json)"
 				},

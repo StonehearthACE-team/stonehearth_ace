@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "is_auto_craft": true,
+   "effort": 50,
+   "work_units": 40,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.auto_steel_ingot_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.auto_steel_ingot_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.auto_steel_ingot_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/steel_ingot/steel_ingot.png",
+   "workshop": "stonehearth_ace:blacksmith:forge_advanced",
+   "work_effect": "work_wait",
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:resources:coal:piece_of_charcoal",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:refined:steel_ingot"
+      }
+   ]
+}

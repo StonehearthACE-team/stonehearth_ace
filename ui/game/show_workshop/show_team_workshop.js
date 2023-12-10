@@ -730,6 +730,14 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
    // ACE: Sort the recipies first by their level requirement, *then by ordinal*, and finally by their user visible name
    _compareByLevelAndAlphabetical: function(a, b) {
+      // put all auto-craft recipes at the end
+      if (a.is_auto_craft && !b.is_auto_craft) {
+         return 1;
+      }
+      else if (!a.is_auto_craft && b.is_auto_craft) {
+         return -1;
+      }
+
       if (a.level_requirement < b.level_requirement) {
          return -1;
       }

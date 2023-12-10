@@ -6,6 +6,10 @@
          <div id="title">{{i18n_key "stonehearth:ui.game.show_workshop.workshop_title" job_name=view.model.class_name}}</div>
       </div>
 
+      {{#if view.showMaintainOrderList}}
+         <div id="maintainOrderListBar"></div>
+      {{/if}}
+
       <div id="craftingWindow">
          {{#if view.model.order_list.orders}}
             <a {{action togglePause target="view"}} >
@@ -17,7 +21,6 @@
             <a {{action toggleMaintainPause target="view"}} >
                <div id="maintainStatusSign" {{bind-attr class=":statusSign view.model.maintainIsPaused:closed:open"}}></div>
             </a>
-            <div id="maintainOrderListBar"></div>
          {{/if}}
 
          <div id="recipeTab" class="tabPage">
