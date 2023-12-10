@@ -7377,6 +7377,7 @@
       "stonehearth/ui/game/save_view/save_view.js": "file(ui/game/save_view/save_view.js)",
       "stonehearth/ui/game/show_workshop/show_team_workshop.html": "file(ui/game/show_workshop/show_team_workshop.html)",
       "stonehearth/ui/game/show_workshop/show_team_workshop.js": "file(ui/game/show_workshop/show_team_workshop.js)",
+      "stonehearth/ui/game/show_workshop/show_team_workshop.less": "file(ui/game/show_workshop/show_team_workshop.less)",
       "stonehearth/ui/game/start_menu/start_menu.js": "file(ui/game/start_menu/start_menu.js)",
       "stonehearth/ui/game/start_menu/stonehearth_menu.js": "file(ui/game/start_menu/stonehearth_menu.js)",
       "stonehearth/ui/game/task_manager/task_manager.js": "file(ui/game/task_manager/task_manager.js)",
@@ -7531,6 +7532,10 @@
       },
       "cycle_model_variant": {
          "controller": "file(call_handlers/entity_modification_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "toggle_maintain_pause": {
+         "controller": "file(call_handlers/crafting_call_handler.lua)",
          "endpoint": "server"
       },
       "set_crafting_category_disabled": {
@@ -8030,7 +8035,6 @@
          "file(ui/game/multiplayer_menu/multiplayer_menu.less)",
          "file(ui/game/people_picker/people_picker.less)",
          "file(ui/game/promotion_tree/promotion_tree.less)",
-         "file(ui/game/show_workshop/show_team_workshop.less)",
          "file(ui/game/start_menu/start_menu.less)",
          "file(ui/game/task_manager/task_manager.less)",
          "file(ui/game/town/town.less)",

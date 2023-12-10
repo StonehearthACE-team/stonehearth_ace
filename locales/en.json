@@ -26380,6 +26380,12 @@
             "search_description_and_ingredients_description": "Include the descriptions of crafted items and the names of ingredients in the search filter.",
             "search_all": "All",
             "search_all_description": "Include the recipe titles, crafted item descriptions, and names of ingredients in the search filter.",
+            "status_sign": {
+               "title": "Toggle Make Crafting",
+               "description": "Click to toggle whether Make crafting orders are enabled for this workshop.<br><br>Note: Make orders are prioritized over Maintain orders.",
+               "maintain_title": "Toggle Maintain Crafting",
+               "maintain_description": "Click to toggle whether Maintain crafting orders are enabled for this workshop.<br><br>Note: Make orders are prioritized over Maintain orders."
+            },
             "category_crafter": {
                "title": "Toggle Category Crafting",
                "enable_description": "Enable crafting of [str(category)] for <span class='bold'>[str(name)]</span> (level <span class='bold'>[str(level)]</span>).",
@@ -27015,11 +27021,11 @@
                },
                "building_grid_size": "Building Template Snap Grid Size",
                "building_grid_size_description": "Hold the Shift key while placing a building template to snap placement to a square horizontal grid of this size.",
-               "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",
-               "auto_craft_recipe_dependencies_description": "When crafting an item, crafters will check the inventory to see if there are sufficient ingredients to use. If not, they will queue up orders for enough ingredients to fulfill the original order.",
-               "auto_craft_killed_items": "Auto Craft Killed Items",
+               "auto_craft_recipe_dependencies": "Auto Queue Craft Recipe Dependencies",
+               "auto_craft_recipe_dependencies_description": "When crafting an item, crafters will check the town inventory to see if there are sufficient ingredients to use. If not, they will queue up orders for enough ingredients to fulfill the original order.",
+               "auto_craft_killed_items": "Auto Queue Killed Item Crafts",
                "auto_craft_killed_items_description": "When an item you own is killed — like a door, a training dummy, or a siege weapon — queue a craft order for a new one.",
-               "auto_queue_medicine": "Auto Craft Required Healing Items",
+               "auto_queue_medicine": "Auto Queue Required Healing Item Crafts",
                "auto_queue_medicine_description": "When a hearthling receives a wound or a negative condition that can be treated with a specific item, queue a craft order for that item unless your town already has it.",
                "update_maintain_orders": "Update Maintain Orders",
                "update_maintain_orders_description": "When queuing a new maintain crafting order, update the existing maintain crafting order for that recipe, if there is one, with the new quantity and quality settings. Automatic queuing of that order (e.g., when it's a prerequisite of a more refined maintain crafting order) will not change the existing order either way, as long as it's sufficient for completing the more refined order.",
