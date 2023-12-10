@@ -118,6 +118,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
       "order_list" : {
          "orders" : {
             "recipe" : {}
+         },
+         "maintain_orders" : {
+            "recipe" : {}
          }
       },
       "recipe_list" : {
@@ -140,8 +143,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
    currentRecipe: null,
    isPaused: false,
+   isMaintainPaused: false,
    queueAnywayStatus: false,
    maxActiveOrders: 30,
+   scrollAmount: 78,
    craft_button_text: 'stonehearth:ui.game.show_workshop.craft',
 
    makeSortable: function(element, args) {
@@ -211,6 +216,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self._super();
       if (self.get('isVisible')) {
          self._onOrdersUpdated();
+         self._onMaintainOrdersUpdated();
          self._onOrderCountUpdated();
       }
    }.observes('isVisible'),
@@ -239,7 +245,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       $(App.workshopManager).on('itemsChanged', function () {
          if (self.isVisible) {
             self._updateUsableResources();
-            self._updateDetailedOrderList();
+            self._updateFullDetailedOrderList();
             self._updateCraftableRecipes();
             self._setPreviewStyling();
          }
@@ -300,6 +306,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
          if (orderArgs) {
             var recipe = self._getOrCalculateRecipeData($(this).attr('recipe_key'));
+            if (recipe.is_auto_craft && orderArgs.type == 'make') {
+               // can't queue auto-craft as make, only as maintain
+               return;
+            }
             radiant.call_obj(self.getOrderList(), 'add_order_command', recipe, orderArgs)
                .done(function(return_data){
                   if (self.isDestroyed || self.isDestroying) {
@@ -312,8 +322,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
       //Cancel order from the order list menu with click of right mouse button.
       // ACE: incorporate the ability to also remove associated orders.
-      self.$('#orders').off('mousedown.existingOrderClick', '.orderListItem');
-      self.$('#orders').on('mousedown.existingOrderClick', '.orderListItem', function (e) {
+      self.$('.orders').off('mousedown.existingOrderClick', '.orderListItem');
+      self.$('.orders').on('mousedown.existingOrderClick', '.orderListItem', function (e) {
          if (e.button == 2) {
             var orderList = self.getOrderList();
             var item = $(this);
@@ -324,7 +334,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   item.remove();
                   if (return_data && return_data.associated_orders) {
                      radiant.each(return_data.associated_orders, function(_, order_id) {
-                        $('#orders').find("[data-orderid='"+order_id+"']").remove();
+                        self.$('.orders').find("[data-orderid='"+order_id+"']").remove();
                      })
                   }
                   radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:trash'} );
@@ -365,7 +375,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var categoryMember = member.categoryMembers[category];
             if (categoryMember) {
                Ember.set(categoryMember, 'disabled', disable);
-               //self._updateDetailedOrderList();
+               //self._updateFullDetailedOrderList();
             }
          }
       });
@@ -394,20 +404,23 @@ App.StonehearthTeamCrafterView = App.View.extend({
       App.tooltipHelper.removeDynamicTooltip(self.$('[title]'));
       self.$('#craftButton').off('mouseenter mouseleave hover');
       self.$('#searchInput').off('keydown keyup');
-      this.makeSortable(self.$('#orders, #garbageList'), 'destroy');
+      this.makeSortable(self.$('.orders, .garbageList'), 'destroy');
       this.makeSortable(self.$('#orderListContainer table'), 'destroy');
-      self.$('#orders, #garbageList').enableSelection();
+      self.$('.orders, .garbageList').enableSelection();
       self.$('#orderListContainer table').enableSelection();
+
+      App.guiHelper.removeDynamicTooltip(self.$('#recipeItems'), '[recipe_key]');
+      App.guiHelper.removeDynamicTooltip(self.$('#craftingWindow'), '.statusSign');
 
       if (self.$('#recipeItems')) {
          self.$('#recipeItems').off('mousedown.craftOrMaintain', '.item');
       }
-      if (self.$('#orders')) {
-         self.$('#orders').off('mousedown.existingOrderClick', '.orderListItem');
+      if (self.$('.orders')) {
+         self.$('.orders').off('mousedown.existingOrderClick', '.orderListItem');
       }
 
       self.$(".category").off('mouseenter mouseleave', '.item');
-      self.$('#orders').off('scroll');
+      self.$('.orders').off('scroll');
       $(document).off('keyup.show_team_workshop keydown.show_team_workshop');
       self.$('#searchSettingContainer').off('change.refocusInput', '.searchSettingCheckbox');
       self.$('#searchContainer').off('focusin');
@@ -631,7 +644,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       // they're both numeric, and 0 equates to false, so we can do it with one expression
       self._memberArray.sort((a, b) => (a.level - b.level) || (a.id - b.id));
       self._buildRecipeArray();
-      self._updateDetailedOrderList();
+      self._updateFullDetailedOrderList();
    },
 
    // Go through recipes displayed and update based on whether recipe is now craftable or not
@@ -799,7 +812,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
          var condition;
          var type = self.$('input[name=' + self.get('orderTypeName') + ']:checked').val();
-         if (type == "maintain") {
+         if (type == "maintain" || recipe.is_auto_craft) {
             condition = {
                type: "maintain",
                at_least: App.stonehearth.validator.enforceNumRange(self.$('#maintainNumSelector')),
@@ -844,13 +857,30 @@ App.StonehearthTeamCrafterView = App.View.extend({
          radiant.call_obj(orderList, 'toggle_pause');
       },
 
+      toggleMaintainPause: function(){
+         if (this.get('model.order_list.is_maintain_paused')) {
+            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:open'} );
+         } else {
+            radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:closed'} );
+         }
+         radiant.call('stonehearth_ace:toggle_maintain_pause', this.get('model.alias'));
+      },
+
       scrollOrderListUp: function() {
-         this._scrollOrderList(-75);
+         this._scrollOrderList(this.$('#orderList'), -this.scrollAmount);
       },
 
       scrollOrderListDown: function() {
-         this._scrollOrderList(75);
-      }
+         this._scrollOrderList(this.$('#orderList'), this.scrollAmount);
+      },
+
+      scrollMaintainOrderListUp: function() {
+         this._scrollOrderList(this.$('#maintainOrderList'), -this.scrollAmount);
+      },
+
+      scrollMaintainOrderListDown: function() {
+         this._scrollOrderList(this.$('#maintainOrderList'), this.scrollAmount);
+      },
    },
 
    // Fires whenever the workshop changes, but the first update is all we really
@@ -858,7 +888,45 @@ App.StonehearthTeamCrafterView = App.View.extend({
    // TODO: can't that fn just call _build_workshop_ui?
    _contentChanged: function() {
       Ember.run.scheduleOnce('afterRender', this, '_build_workshop_ui');
-    }.observes('recipes'),
+   }.observes('recipes'),
+
+   _ordersTableSortable: function(table) {
+      var self = this;
+      var sortableOrders = self.makeSortable(self.$(table), {
+         axis: "y",
+         start: function(event, ui) {
+            // on drag start, creates a temporary attribute on the element with the old index
+            $(this).attr('data-previndex', ui.item.index()+1);
+            self.is_sorting = ui.item[0];
+         },
+         stop: function(event, ui) {
+            //if we're not sorting anymore, don't do anything
+            if (self.is_sorting == null) {
+               return;
+            }
+            //If we're still sorting, then update the order list
+            var newPos = ui.item.index() + 1;
+            //aha, all is explained. Wrong variable name ::sigh::
+            var id =  parseInt(ui.item.attr("data"));
+
+            //Check if we're replacing?
+            if ($(this).attr('data-previndex') == newPos) {
+               return;
+            }
+
+            radiant.call_obj(self.getOrderList(), 'change_order_position_command', newPos, id);
+
+            //Let people know we're no longer sorting
+            self.is_sorting = null;
+         }
+      });
+
+      if (sortableOrders) {
+         sortableOrders.disableSelection();
+      }
+
+      return sortableOrders;
+   },
 
    //Called once when the model is loaded
    // ACE: override to modify search to allow searching ingredients and descriptions
@@ -869,41 +937,26 @@ App.StonehearthTeamCrafterView = App.View.extend({
          return;
       }
 
-      self._buildOrderList();
+      self._buildOrderList(self.$('#orderList'), self.get('model.order_list.orders'));
+      self._buildOrderList(self.$('#maintainOrderList'), self.get('model.order_list.maintain_orders'));
 
-      var orderList = self.$('#orders');
-      orderList.on('scroll', function() {
-         // when the user scrolls with the mouse, make sure the scroll buttons are right
-         var buttons = self.$('#scrollButtons');
-         var scrollTop = orderList.scrollTop();
-         if (scrollTop === 0) {
-            // top of list
-            buttons.find('#orderListUpBtn').hide();
-            buttons.find('#orderListDownBtn').show();
-         } else if (scrollTop + orderList.innerHeight() >= orderList[0].scrollHeight) {
-            // bottom of list
-            buttons.find('#orderListUpBtn').show();
-            buttons.find('#orderListDownBtn').hide();
-         } else {
-            buttons.find('#orderListUpBtn').show();
-            buttons.find('#orderListDownBtn').show();
-         }
-      });
+      //build the order list(s) on the order tab
+      self._ordersTableSortable('#makeOrdersTable');
+      self._ordersTableSortable('#maintainOrdersTable');
 
-      var craftInsertDiv = self.$('#craftInsert');
       $(document).on('keyup.show_team_workshop keydown.show_team_workshop', function(e){
-         self._updateCraftInsertShown(craftInsertDiv);
+         self._updateCraftInsertShown();
       });
 
       self.$("#craftButton").hover(function() {
             $(this).find('#craftButtonLabel').fadeIn();
             self.HOVERING_CRAFT_BUTTON = true;
             self.set('insertRecipePortrait', self.get('currentRecipe.portrait'));
-            self._updateCraftInsertShown(craftInsertDiv);
+            self._updateCraftInsertShown();
          }, function () {
             $(this).find('#craftButtonLabel').fadeOut();
             self.HOVERING_CRAFT_BUTTON = false;
-            self._updateCraftInsertShown(craftInsertDiv);
+            self._updateCraftInsertShown();
          });
 
       self.$(".category").on({
@@ -912,12 +965,12 @@ App.StonehearthTeamCrafterView = App.View.extend({
             if (recipe) {
                self.HOVERING_ITEM = true;
                self.set('insertRecipePortrait', recipe.portrait);
-               self._updateCraftInsertShown(craftInsertDiv);
+               self._updateCraftInsertShown();
             }
          },
          mouseleave: function () {
             self.HOVERING_ITEM = false;
-            self._updateCraftInsertShown(craftInsertDiv);
+            self._updateCraftInsertShown();
          }}, '.item');
 
       var tooltip = App.tooltipHelper.createTooltip(
@@ -1038,6 +1091,20 @@ App.StonehearthTeamCrafterView = App.View.extend({
          return $(App.guiHelper.createUriTooltip(recipe.product_uri, options));
       });
 
+      App.guiHelper.createDynamicTooltip(self.$('#craftingWindow'), '.statusSign', function($el) {
+         var id = $el.attr('id');
+         var title, text;
+         if (id == 'maintainStatusSign') {
+            title = 'stonehearth_ace:ui.game.show_workshop.status_sign.maintain_title';
+            text = 'stonehearth_ace:ui.game.show_workshop.status_sign.maintain_description';
+         }
+         else {
+            title = 'stonehearth_ace:ui.game.show_workshop.status_sign.title';
+            text = 'stonehearth_ace:ui.game.show_workshop.status_sign.description';
+         }
+         return $(App.tooltipHelper.createTooltip(i18n.t(title), i18n.t(text)));
+      });
+
       // Select the first recipe if currentRecipe isn't set.
       // Current recipe can be set by autotest before we reach this point.
       if (!this.currentRecipe) {
@@ -1045,15 +1112,46 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
    },
 
-   _updateCraftInsertShown: function(div) {
-      var self = this;
+   _shouldShowMaintainOrders: function() {
+      var maintainOrders = this.get('model.order_list.maintain_orders') || [];
+      this.set('showMaintainOrderList', maintainOrders.length > 0 || this.get('isShowingMaintainCraftInsert'));
+   }.observes('model.order_list.maintain_orders', 'isShowingMaintainCraftInsert'),
 
-      if (stonehearth_ace.isShiftKeyActive() && (self.HOVERING_CRAFT_BUTTON || self.HOVERING_ITEM)) {
-         div.show();
-      }
-      else {
+   _isCurrentOrderTypeMaintain: function() {
+      var type = this.$('input[name=' + this.get('orderTypeName') + ']:checked').val();
+      return type == "maintain";
+   },
+
+   _updateCraftInsertShown: function() {
+      var self = this;
+      var show = stonehearth_ace.isShiftKeyActive() && (self.HOVERING_CRAFT_BUTTON || self.HOVERING_ITEM);
+
+      var div = self.$('#orderList .craftInsert');
+      var maintainDiv = self.$('#maintainOrderList .craftInsert');
+
+      var isShowingMaintainCraftInsert = false;
+      if ((self.HOVERING_CRAFT_BUTTON && self._isCurrentOrderTypeMaintain()) ||
+            (self.HOVERING_ITEM && stonehearth_ace.isCtrlKeyActive())) {
+         if (show) {
+            maintainDiv.show();
+            isShowingMaintainCraftInsert = true;
+         }
+         else {
+            maintainDiv.hide();
+         }
          div.hide();
       }
+      else {
+         if (show) {
+            div.show();
+         }
+         else {
+            div.hide();
+         }
+         maintainDiv.hide();
+      }
+
+      self.set('isShowingMaintainCraftInsert', isShowingMaintainCraftInsert);
    },
 
    _updateCraftOrderPreference: function() {
@@ -1298,9 +1396,21 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
    //When the order list updates, or when the inventory tracker updates, re-evaluate the requirements
    //on the details page
-   _updateDetailedOrderList: function() {
+   _updateFullDetailedOrderList: function() {
+      this._updateOrdersInDetailedOrderList();
+      this._updateMaintainOrdersInDetailedOrderList();
+   },
+
+   _updateOrdersInDetailedOrderList: function() {
+      this._updateDetailedOrderList(this.$('#orderList'), this.get('model.order_list.orders'));
+   },
+
+   _updateMaintainOrdersInDetailedOrderList: function() {
+      this._updateDetailedOrderList(this.$('#maintainOrderList'), this.get('model.order_list.maintain_orders'));
+   },
+
+   _updateDetailedOrderList: function(orderList, orders) {
       var self = this;
-      var orders = this.get('model.order_list.orders');
       if (!orders || !self.$('.orderListItem') || !self._recipeListInitialized) {
          return;
       }
@@ -1349,7 +1459,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
       }
 
-      self._updateButtonStates();
+      self._updateButtonStates(orderList);
    },
 
    //returns a string of unmet requirements
@@ -1888,24 +1998,34 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
    _workshopPausedChange: function() {
       var isPaused = !!(this.get('model.order_list.is_paused'));
+      var isMaintainPaused = !!(this.get('model.order_list.is_maintain_paused'));
 
       // We need to check this because if/when the root object changes, all children are
       // marked as changed--even if the values don't differ.
-      if (isPaused == this.isPaused) {
+      var isPausedDiff = isPaused != this.isPaused;
+      var isMaintainPausedDiff = isMaintainPaused != this.isMaintainPaused;
+      if (!isPausedDiff && !isMaintainPausedDiff) {
          return;
       }
       this.isPaused = isPaused;
+      this.isMaintainPaused = isMaintainPaused;
 
-      this.set('model.workshopIsPaused', isPaused)
+      this.set('model.workshopIsPaused', isPaused);
+      this.set('model.maintainIsPaused', isMaintainPaused);
 
-      var r = isPaused ? 4 : -4;
+      if (isPausedDiff) {
+         this._animateStatusSign(this.$("#statusSign"), isPaused);
+      }
+      if (isMaintainPausedDiff) {
+         this._animateStatusSign(this.$("#maintainStatusSign"), isMaintainPaused);
+      }
+      
+   }.observes('model.order_list.is_paused', 'model.order_list.is_maintain_paused'),
 
-      // flip the sign
-      var sign = self.$("#statusSign");
-
+   _animateStatusSign: function(sign, isPaused) {
       if (sign) {
          sign.animate({
-               rot: r,
+               rot: isPaused ? 4 : -4,
             },
             {
                duration: 200,
@@ -1925,23 +2045,21 @@ App.StonehearthTeamCrafterView = App.View.extend({
                }
          });
       }
-
-   }.observes('model.order_list.is_paused'),
+   },
 
    //Attach sortable/draggable functionality to the order
    //list. Hook order list onto garbage can. Set up scroll
    //buttons.
-   _buildOrderList: function(){
+   _buildOrderList: function(orderList, orders){
       var self = this;
 
-      var sortableGarbage = self.makeSortable(self.$( "#orders, #garbageList" ), {
+      var sortableGarbage = self.makeSortable(orderList.find(".orders, .garbageList"), {
          axis: "y",
-         connectWith: self.$("#garbageList"),
+         connectWith: orderList.find(".garbageList"),
          beforeStop: function (event, ui) {
             //Called right after an object is dropped
-            if(ui.item[0].parentNode && ui.item[0].parentNode.id == "garbageList") {
+            if(ui.item[0].parentNode && ui.item[0].parentNode.classList.contains("garbageList")) {
                ui.item.addClass("hiddenOrder");
-               var orderList = self.getOrderList();
                var id = parseInt(ui.item.attr("data-orderid"))
                radiant.call_obj(self.getOrderList(), 'delete_order_command', id)
                   .done(function(return_data){
@@ -1961,7 +2079,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          },
          start: function(event, ui) {
             // on drag start, creates a temporary attribute on the element with the old index
-            $(this).attr('data-previndex', self.$(".orderListItem").index(ui.item) + 1);
+            $(this).attr('data-previndex', orderList.find(".orderListItem").index(ui.item) + 1);
             self.is_sorting = ui.item[0];
          },
          stop: function(event, ui) {
@@ -1970,12 +2088,12 @@ App.StonehearthTeamCrafterView = App.View.extend({
                return;
             }
             //Don't update objects inside the garbage list
-            if(ui.item[0].parentNode && ui.item[0].parentNode.id == "garbageList") {
+            if(ui.item[0].parentNode && ui.item[0].parentNode.classList.contains("garbageList")) {
                return;
             }
 
             //If we're still sorting, then update the order list
-            var newPos = self.$(".orderListItem").index(ui.item) + 1;
+            var newPos = orderList.find(".orderListItem").index(ui.item) + 1;
             var id =  parseInt(ui.item.attr("data-orderid"));
 
             //Check if we're replacing?
@@ -1994,97 +2112,79 @@ App.StonehearthTeamCrafterView = App.View.extend({
          sortableGarbage.disableSelection();
       }
 
-      //build the order list on the order tab
-      var sortableOrders = self.makeSortable(self.$('#orderListContainer table'), {
-         axis: "y",
-         start: function(event, ui) {
-            // on drag start, creates a temporary attribute on the element with the old index
-            $(this).attr('data-previndex', ui.item.index()+1);
-            self.is_sorting = ui.item[0];
-         },
-         stop: function(event, ui) {
-             //if we're not sorting anymore, don't do anything
-            if (self.is_sorting == null) {
-               return;
-            }
-            //If we're still sorting, then update the order list
-            var newPos = ui.item.index() + 1;
-            //aha, all is explained. Wrong variable name ::sigh::
-            var id =  parseInt(ui.item.attr("data"));
+      self._updateButtonStates(orderList);
+      self._enableDisableTrash(orderList, orders && orders.length > 0);
 
-            //Check if we're replacing?
-            if ($(this).attr('data-previndex') == newPos) {
-               return;
-            }
-
-            radiant.call_obj(self.getOrderList(), 'change_order_position_command', newPos, id);
-
-            //Let people know we're no longer sorting
-            self.is_sorting = null;
-         }
-
-      })
-
-      if (sortableOrders) {
-         sortableOrders.disableSelection();
-      }
-
-      self._updateButtonStates();
-      var orders = self.get('model.order_list.orders');
-      self._enableDisableTrash(orders && orders.length > 0);
+      orderList.find('.orders').on('scroll', function() {
+         // when the user scrolls with the mouse, make sure the scroll buttons are right
+         self._scrollOrderList(orderList, null);
+      });
    },
 
    // Update button visibility based on order list height
-   _updateButtonStates: function() {
+   _updateButtonStates: function(orderList) {
       var self = this;
-      var currentOrdersList = self.$('#orders');
       //Set the default state of the buttons
-      var buttons = self.$('#scrollButtons');
+      var orders = orderList.find('.orders');
+      var buttons = orderList.find('.scrollButtons');
       if (buttons) {
-         var ordersList = currentOrdersList[0];
-         if (ordersList && ordersList.scrollHeight > currentOrdersList.height()) {
-            self._scrollOrderList(0);
+         var ordersList = orders[0];
+         if (ordersList && ordersList.scrollHeight > orders.height()) {
+            self._scrollOrderList(orderList, 0);
          } else {
-            buttons.find('#orderListUpBtn').hide();
-            buttons.find('#orderListDownBtn').hide();
+            buttons.find('.orderListUpBtn').hide();
+            buttons.find('.orderListDownBtn').hide();
          }
       }
    },
 
-   _scrollOrderList: function(amount) {
-      var self = this;
-      var orderList = self.$('#orders');
-      var buttons = self.$('#scrollButtons');
-      var newScrollTop = Math.max(orderList.scrollTop() + amount, 0);
+   _scrollOrderList: function(orderList, amount) {
+      var orders = orderList.find('.orders');
+      var buttons = orderList.find('.scrollButtons');
+      var newScrollTop = Math.max(orders.scrollTop() + (amount || 0), 0);
       if (newScrollTop === 0) {
          // top of list
-         buttons.find('#orderListUpBtn').hide();
-         buttons.find('#orderListDownBtn').show();
-      } else if (newScrollTop + orderList.innerHeight() >= orderList[0].scrollHeight) {
+         buttons.find('.orderListUpBtn').hide();
+         buttons.find('.orderListDownBtn').show();
+      } else if (newScrollTop + orders.innerHeight() >= orders[0].scrollHeight) {
          // bottom of list
-         buttons.find('#orderListUpBtn').show();
-         buttons.find('#orderListDownBtn').hide();
+         buttons.find('.orderListUpBtn').show();
+         buttons.find('.orderListDownBtn').hide();
       } else {
-         buttons.find('#orderListUpBtn').show();
-         buttons.find('#orderListDownBtn').show();
+         buttons.find('.orderListUpBtn').show();
+         buttons.find('.orderListDownBtn').show();
       }
 
-      orderList.animate({scrollTop: newScrollTop}, 100);
+      if (amount != null) {
+         orders.animate({scrollTop: newScrollTop}, 100);
+      }
    },
 
    _onOrdersUpdated: function () {
       var self = this;
       if (!self.get('isVisible')) return;
+      self._updatedOrders(self.$('#orderList'), self.get('model.order_list.orders'));
+      Ember.run.scheduleOnce('afterRender', self, '_updateOrdersInDetailedOrderList');
+   }.observes('model.order_list.orders'),
+
+   _onMaintainOrdersUpdated: function () {
+      var self = this;
+      if (!self.get('isVisible')) return;
+      self._updatedOrders(self.$('#maintainOrderList'), self.get('model.order_list.maintain_orders'));
+      Ember.run.scheduleOnce('afterRender', self, '_updateMaintainOrdersInDetailedOrderList');
+   }.observes('model.order_list.maintain_orders'),
+
+   _updatedOrders: function (orderList, orders) {
+      var self = this;
 
       //If we're sorting as an order completes, cancel the sorting
       //or when the order list updates, the sortable element complains
-      var orders = self.get('model.order_list.orders');
       if (self.is_sorting != null) {
          var orderID = self.is_sorting.getAttribute("data-orderID");
          var sortedOrder = self.is_sorting;
 
          self.is_sorting = null;
-         self.$( "#orders, #garbageList" ).sortable("cancel");
+         orderList.find(".orders, .garbageList").sortable("cancel");
          self.$('#orderListContainer table').sortable("cancel");
 
          //If we were sorting the very thing that got deleted in this update, we
@@ -2105,17 +2205,16 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
       }
 
-      self._enableDisableTrash(orders && orders.length > 0);
-      Ember.run.scheduleOnce('afterRender', self, '_updateDetailedOrderList');
-   }.observes('model.order_list.orders'),
+      self._enableDisableTrash(orderList, orders && orders.length > 0);
+   },
 
-   _enableDisableTrash: function (enable) {
-      var self = this;
-      if (self.$('#garbageButton')) {
+   _enableDisableTrash: function (orderList, enable) {
+      var garbageButton = orderList.find('.garbageButton');
+      if (garbageButton) {
          if (enable) {
-            self.$('#garbageButton').css('opacity', '1');
+            garbageButton.css('opacity', '1');
          } else {
-            self.$('#garbageButton').css('opacity', '0.3');
+            garbageButton.css('opacity', '0.3');
          }
       }
    },

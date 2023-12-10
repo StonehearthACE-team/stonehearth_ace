@@ -21,6 +21,13 @@ function AceCraftOrder:on_item_created(primary_output)
    self:_ace_old_on_item_created()
 end
 
+function AceCraftOrder:restore()
+   if self._sv._auto_crafting then
+      self._sv._auto_queued = true
+      self._sv._auto_crafting = nil
+   end
+end
+
 -- Paul: a lot of the following overrides and additions are just to support multiple crafters on the same order
 
 AceCraftOrder._ace_old_activate = CraftOrder.activate
@@ -213,6 +220,27 @@ function AceCraftOrder:is_missing_ingredient(ingredients)
       end
    end
    return false
+end
+
+function AceCraftOrder:has_ingredients(auto_crafter)
+   if auto_crafter then
+      -- if an auto-crafter is specified, check its ingredient storage instead of the usable item tracker
+   end
+
+   local tracking_data = self._usable_item_tracking_data
+   -- Process all uri ingredients first since it is less expensive to early exit here
+   for _, ingredient in ipairs(self._recipe.ingredients) do
+      if ingredient.uri then
+         if not self:_has_uri_ingredients_for_item(ingredient, tracking_data) then
+            return false
+         end
+      elseif ingredient.material then
+         if not self:_has_material_ingredients_for_item(ingredient, tracking_data) then
+            return false
+         end
+      end
+   end
+   return true
 end
 
 function AceCraftOrder:ingredient_has_multiple_qualities(ingredient)
@@ -505,13 +533,18 @@ function AceCraftOrder:produces(product_uri)
    return false
 end
 
-function AceCraftOrder:get_auto_crafting()
-   return self._sv._auto_crafting
+function AceCraftOrder:is_auto_craft_recipe()
+   return self._recipe.is_auto_craft
 end
 
-function AceCraftOrder:set_auto_crafting(value)
-   self._sv._auto_crafting = value
-   --self.__saved_variables:mark_changed()
+-- this auto queuing field is for regular automatic *requests* for crafting
+-- not for crafting done by auto-crafters
+function AceCraftOrder:get_auto_queued()
+   return self._sv._auto_queued
+end
+
+function AceCraftOrder:set_auto_queued(value)
+   self._sv._auto_queued = value
 end
 
 function AceCraftOrder:get_associated_orders()
