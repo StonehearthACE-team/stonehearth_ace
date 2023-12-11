@@ -90,6 +90,16 @@ function AceCraftOrderList:_validate_craft_orders()
    end
 end
 
+-- because of the way the creation of job info controllers and crafter order lists works,
+-- we can't actually create the crafter info controller until after it's been fully created
+-- (after post_activate) so just do it the first time it's requested instead
+function AceCraftOrderList:_get_crafter_info()
+   if not self._crafter_info then
+      self._crafter_info = stonehearth_ace.crafter_info:get_crafter_info(self._sv._player_id)
+   end
+   return self._crafter_info
+end
+
 function AceCraftOrderList:_should_auto_craft_recipe_dependencies(player_id)
    return stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_craft_recipe_dependencies', true)
 end
@@ -100,7 +110,7 @@ end
 
 -- returns the number maintained if the recipe is maintained, otherwise nil
 function AceCraftOrderList:is_product_maintained(product_uri)
-   local order = self:_find_product_order(product_uri, 'maintain')
+   local order = self:_find_product_order({uri = product_uri}, 'maintain')
    if order then
       return order:get_condition().at_least
    end
@@ -125,7 +135,7 @@ end
 -- one instance of each recipe that's maintained.
 --
 function AceCraftOrderList:add_order(player_id, recipe, condition, building, associated_orders)
-   log:debug('add_order(%s, %s, %s, %s, %s)', player_id, recipe, condition, tostring(building), tostring(associated_orders))
+   log:debug('add_order(%s, %s, %s, %s, %s)', player_id, recipe, radiant.util.table_tostring(condition), tostring(building), tostring(associated_orders))
 
    if recipe.is_auto_craft and condition.type ~= 'maintain' then
       -- auto-craft recipes can only be maintain orders
@@ -178,13 +188,14 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
    local child_orders = {}
 
    local inv = stonehearth.inventory:get_inventory(player_id)
-   local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
+   local crafter_info = self:_get_crafter_info()
 
    -- Process the recipe's ingredients to see if the crafter has all she needs for it
    for _, ingredient in pairs(recipe.ingredients) do
       local ingredient_id = ingredient.uri or ingredient.material
       
       -- because of the way the UI works with min_stacks, we may need to replace the ingredient count
+      log:debug('checking ingredient "%s" with count %s (%s)', ingredient_id, ingredient.count, tostring(ingredient.original_count))
       ingredient.count = ingredient.original_count or ingredient.count
 
       --log:debug('processing ingredient "%s"', ingredient_id)
@@ -206,7 +217,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
          -- we ignore all maintain orders; only consider make orders for reserved/required ingredients
          local in_order_list = 0
          for _, order_list in ipairs(crafter_info:get_order_lists()) do
-            local order_list_amount = order_list:_get_ingredient_amount_in_order_list(crafter_info, ingredient)
+            local order_list_amount = order_list:_get_ingredient_amount_in_order_list(ingredient)
             in_order_list = in_order_list + order_list_amount.make
          end
          missing = math.max(needed - math.max(in_storage + in_order_list - crafter_info:get_reserved_ingredients(ingredient_id), 0), 0)
@@ -215,6 +226,18 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
       else -- condition.type == 'maintain'
          missing = ingredient.count
 
+         if is_recursive_call or self:_should_update_maintain_orders(player_id) then
+            -- if it's a maintain order, and it's a child order or the player prefers updating maintain orders,
+            -- check if there's an existing maintain order for this product that isn't identical to the recipe,
+            -- and if so, update the amount to match what's required for this order
+            local order, amount = self:_find_product_order(ingredient, 'maintain', true)
+            if order and amount > 0 then
+               if amount < missing and order:change_quantity(missing, condition.prefer_high_quality) then
+                  order:get_order_list():_on_order_list_changed()
+               end
+               missing = 0
+            end
+         end
          --log:debug('maintaining the recipe requires %d of this ingredient, searching if it can be crafted itself', missing)
       end
 
@@ -409,10 +432,9 @@ end
 --
 function AceCraftOrderList:remove_from_reserved_ingredients(ingredients, order_id, player_id, multiple)
    multiple = multiple or 1
-   local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(player_id)
    for _, ingredient in pairs(ingredients) do
       local ingredient_id = ingredient.uri or ingredient.material
-      crafter_info:remove_from_reserved_ingredients(ingredient_id, ingredient.count * multiple)
+      self:_get_crafter_info():remove_from_reserved_ingredients(ingredient_id, ingredient.count * multiple)
    end
 end
 
@@ -448,34 +470,22 @@ end
 -- The optional `to_order_id` says that any orders with their id,
 -- that are at least as great as that number, will be ignored.
 --
-function AceCraftOrderList:_get_ingredient_amount_in_order_list(crafter_info, ingredient, to_order_id)
+function AceCraftOrderList:_get_ingredient_amount_in_order_list(ingredient, to_order_id)
    local ingredient_count = {
       make = 0,
       maintain = 0,
       total = 0,
    }
 
+   local crafter_info = self:_get_crafter_info()
    for _, order_list in ipairs({self._sv.orders, self._sv.maintain_orders}) do
       for i, order in ipairs(order_list) do
          if not to_order_id or order:get_id() < to_order_id then
-            local recipe = crafter_info:get_formatted_recipe(order:get_recipe())
+            local amount = self:_get_order_product_amount(order, ingredient)
 
-            if recipe then
-               local condition = order:get_condition()
-
-               local material_produces = ingredient.material and self:_recipe_produces_materials(recipe, ingredient.material)
-               local uri_produces = ingredient.uri and recipe.products[ingredient.uri]
-               local num_produces = material_produces or uri_produces
-
-               if num_produces then
-                  local amount
-                  if condition.type == 'make' then
-                     amount = condition.remaining * num_produces
-                  else
-                     amount = math.max(num_produces, condition.at_least)
-                  end
-                  ingredient_count[condition.type] = ingredient_count[condition.type] + amount
-               end
+            if amount then
+               local condition_type = order:get_condition().type
+               ingredient_count[condition_type] = ingredient_count[condition_type] + amount
             end
          end
       end
@@ -485,6 +495,28 @@ function AceCraftOrderList:_get_ingredient_amount_in_order_list(crafter_info, in
    return ingredient_count
 end
 
+-- product is formatted as an ingredient, like {uri = uri, material = material}
+function AceCraftOrderList:_get_order_product_amount(order, product)
+   local recipe = self:_get_crafter_info():get_formatted_recipe(order:get_recipe())
+
+   if recipe then
+      local condition = order:get_condition()
+
+      local material_produces = product.material and self:_recipe_produces_materials(recipe, product.material)
+      local uri_produces = product.uri and recipe.products[product.uri]
+      local num_produces = material_produces or uri_produces
+
+      if num_produces and num_produces > 0 then
+         if condition.type == 'make' then
+            return condition.remaining * num_produces
+         else
+            return math.max(num_produces, condition.at_least)
+         end
+      end
+   end
+
+   return 0
+end
 
 function AceCraftOrderList:_recipe_produces_materials(recipe, material)
    return util.sum_where_all_keys_present(recipe.product_materials, recipe.products, material)
@@ -510,19 +542,29 @@ function AceCraftOrderList:_find_craft_order(recipe_name, order_type)
    return nil
 end
 
--- Gets the craft order with a product that matches `product_uri`, if an `order_type`
+-- Gets the craft order with a product that matches `product`, if an `order_type`
 -- is defined, then it will also check for a match against it.
+-- product is formatted as an ingredient, like {uri = uri, material = material}
 -- Returns nil if no match was found.
 --
-function AceCraftOrderList:_find_product_order(product_uri, order_type)
+function AceCraftOrderList:_find_product_order(product, order_type, find_biggest)
    local order_list = self:_get_order_list_by_type(order_type)
+   local biggest_order, biggest_amount
    for i, order in ipairs(order_list) do
-      if order:produces(product_uri) then
+      if find_biggest then
+         local amount = self:_get_order_product_amount(order, product)
+         if not biggest_order or amount > biggest_amount then
+            biggest_order = order
+            biggest_amount = amount
+         end
+      elseif (product.uri and order:produces(product.uri)) or
+            (product.material and
+               self:_recipe_produces_materials(self:_get_crafter_info():get_formatted_recipe(order:get_recipe()), product.material)) then
          return order
       end
    end
 
-   return nil
+   return biggest_order, biggest_amount
 end
 
 function AceCraftOrderList:register_stuck_order(order_id)
