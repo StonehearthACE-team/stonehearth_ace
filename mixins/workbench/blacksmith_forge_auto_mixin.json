@@ -1,0 +1,60 @@
+{
+   "components": {
+      "stonehearth:workshop": {
+         "workshop_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge_advanced/effects/work.json"
+      },
+      "stonehearth_ace:consumer": {
+         "fuel_settings": {
+            "fuel_per_use": 5,
+            "fueled_buff": "stonehearth_ace:buffs:weather:warmth_source",
+            "fuel_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge_advanced/effects/idle.json",
+            "no_fuel_effect": "stonehearth_ace:effects:requires_fuel_overlay_effect",
+            "no_fuel_model_variant": "no_fuel"
+         }
+      },
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 25
+            }
+         }
+      },
+      "stonehearth:expendable_resources": {
+         "resources": {
+            "fuel_level": {
+               "min": {
+                  "value": 0
+               },
+               "max": {
+                  "value": 280
+               },
+               "initial_value": 0
+            },
+            "reserved_fuel_level": {
+               "min": {
+                  "value": 0
+               },
+               "max": {
+                  "value": 280
+               },
+               "initial_value": 0
+            }
+         }
+      },
+      "stonehearth:storage": {
+         "type": "input_crate",
+         "allow_default": false,
+         "drop_all_on_undeploy": true,
+         "priority": 3,
+         "capacity": 12,
+         "filter_list": "stonehearth_ace:ui:workbench_fuel:good_grade:filters",
+         "default_filter": [
+            "lump_of_coal fuel"
+         ]
+      },
+      "mob": {
+         "allow_vertical_adjacent": false
+      }
+   },
+   "entity_data": {}
+}
