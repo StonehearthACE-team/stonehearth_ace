@@ -7453,6 +7453,10 @@
          "controller": "file(call_handlers/building_call_handler.lua)",
          "endpoint": "server"
       },
+      "cycle_model_variant": {
+         "controller": "file(call_handlers/entity_modification_call_handler.lua)",
+         "endpoint": "server"
+      },
       "set_crafting_category_disabled": {
          "controller": "file(call_handlers/job_call_handler.lua)",
          "endpoint": "server"
