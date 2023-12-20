@@ -173,7 +173,7 @@ function AceDigAdjacent:_get_block_to_mine(adjacent_location, ai)
    end
 
    log:spam('%s at %s getting block to mine from %s', self._entity, worker_location, adjacent_location)
-   local block, reserved = stonehearth.mining:get_block_to_mine(adjacent_location, self._mining_zone)
+   local block, reserved = stonehearth.mining:get_block_to_mine(adjacent_location, self._mining_zone, worker_location)
    if self:_is_eligible_block(block, worker_location) then
       log:spam('%s found block to mine: %s', self._entity, block)
       return block, worker_location, reserved
@@ -204,7 +204,7 @@ function AceDigAdjacent:_get_block_to_mine(adjacent_location, ai)
    end
 
    local next_adjacent_location = self._path:get_finish_point()
-   block, reserved = stonehearth.mining:get_block_to_mine(next_adjacent_location, self._mining_zone)
+   block, reserved = stonehearth.mining:get_block_to_mine(next_adjacent_location, self._mining_zone, worker_location)
    log:spam('%s found block to mine from %s: %s', self._entity, next_adjacent_location, tostring(block))
    if not block then
       return nil, nil, nil
