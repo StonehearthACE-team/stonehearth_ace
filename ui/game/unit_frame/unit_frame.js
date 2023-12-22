@@ -760,15 +760,13 @@ App.StonehearthUnitFrameView = App.View.extend({
       if (alias) {
          var catalogData = App.catalog.getCatalogData(alias);
          if (catalogData) {
-            var materials = null;
+            var materials = [];
             if (catalogData.materials){
                if ((typeof catalogData.materials) === 'string') {
                   materials = catalogData.materials.split(' ');
-               } else {
+               } else if (Array.isArray(catalogData.materials)) {
                   materials = catalogData.materials;
                }
-            } else {
-               materials = [];
             }
             if (materials.indexOf('human') >= 0) {
                hasCharacterSheet = true;
