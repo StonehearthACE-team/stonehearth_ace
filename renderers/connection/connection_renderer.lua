@@ -72,7 +72,7 @@ function ConnectionRenderer:destroy()
 end
 
 function ConnectionRenderer:_destroy_outline_nodes()
-   for type, nodes in pairs(self._outline_nodes) do
+   for conn_type, nodes in pairs(self._outline_nodes) do
       for i, node in ipairs(nodes) do
          node:destroy()
          nodes[i] = nil
@@ -173,8 +173,8 @@ function ConnectionRenderer:_update()
    -- go through each connector this entity has and render stuff for it
    for _, connections in ipairs({self._connections, data.dynamic_connections}) do
       if connections then
-         for type, connection in pairs(connections) do
-            local type_data = connected_stats[type]
+         for conn_type, connection in pairs(connections) do
+            local type_data = connected_stats[conn_type]
             local available = true
             local connected = false
             if type_data then
@@ -183,9 +183,9 @@ function ConnectionRenderer:_update()
             end
             
             local nodes = {}
-            self._outline_nodes[type] = nodes
+            self._outline_nodes[conn_type] = nodes
 
-            local colors = stonehearth_ace.connection_client:get_connection_type_colors(type) or
+            local colors = stonehearth_ace.connection_client:get_connection_type_colors(conn_type) or
                stonehearth_ace.connection_client:get_connection_type_colors('default')
             
             if colors then

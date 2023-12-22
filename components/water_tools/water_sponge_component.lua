@@ -69,8 +69,12 @@ function WaterSpongeComponent:post_activate()
    self._entity:remove_component('stonehearth:wet_stone')
 
    -- listen to extensible object extension event in case the output point should change
-   self._extensible_object_listener = radiant.events.listen(self._entity, 'stonehearth_ace:extensible_object:extension_changed', function(args)
+   self._extension_changed_listener = radiant.events.listen(self._entity, 'stonehearth_ace:extensible_object:extension_changed', function(args)
          self:set_output_location(args.output_point, args.output_origin)
+      end)
+
+   self._extensions_cleared_listener = radiant.events.listen(self._entity, 'stonehearth_ace:extensible_object:extension_cleared', function(args)
+         self:set_output_location(nil, nil)
       end)
 
    self:_startup()
@@ -80,6 +84,14 @@ function WaterSpongeComponent:destroy()
    if self._parent_trace then
       self._parent_trace:destroy()
       self._parent_trace = nil
+   end
+   if self._extension_changed_listener then
+      self._extension_changed_listener:destroy()
+      self._extension_changed_listener = nil
+   end
+   if self._extensions_cleared_listener then
+      self._extensions_cleared_listener:destroy()
+      self._extensions_cleared_listener = nil
    end
    self:_stop_effects()
    self:_destroy_output_waterfall_channel()
@@ -190,8 +202,25 @@ function WaterSpongeComponent:get_output_location()
 end
 
 function WaterSpongeComponent:set_output_location(location, origin)
-   self._sv._output_location = location
-   self._sv._output_origin = origin
+   -- if either have changed, destroy the previous waterfall channel
+   if self._sv._output_location ~= location or self._sv._output_origin ~= origin then
+      self:_destroy_output_waterfall_channel()
+      -- if the output location existed and there's now a zero-height water entity there, destroy it
+      local prev_location = self._sv._output_location
+      if prev_location then
+         log:debug('%s output location changed from %s', self._entity, prev_location)
+         prev_location = radiant.entities.local_to_world(Region3(Cube3(prev_location)), self._entity):get_bounds().min
+         local water_entity = stonehearth.hydrology:get_water_body_at(prev_location)
+         if water_entity and water_entity:is_valid() then
+            local water_component = water_entity:get_component('stonehearth:water')
+            if water_component:get_height() == 0 then
+               stonehearth.hydrology:destroy_water_body(water_entity)
+            end
+         end
+      end
+      self._sv._output_location = location
+      self._sv._output_origin = origin
+   end
 end
 
 function WaterSpongeComponent:set_enabled(input, output)

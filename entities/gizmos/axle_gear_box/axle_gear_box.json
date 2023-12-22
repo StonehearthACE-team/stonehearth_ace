@@ -9,6 +9,14 @@
          "placeable_on_ground": true,
          "placeable_on_walls": true
       },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
       "region_collision_shape": {
          "region": [
             {
@@ -62,6 +70,7 @@
          "extend_command": "stonehearth_ace:commands:mechanical:adjust_gearbox_axles",
          "remove_command": "stonehearth_ace:commands:mechanical:reset_gearbox_axles",
          "extension_entity": "stonehearth_ace:gizmos:axles:gear_box_axle",
+         "end_entity": "stonehearth_ace:gizmos:axles:gear_box",
          "max_length": 8,
          "connection_type": "mechanical",
          "multi_select_enabled": true,

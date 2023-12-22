@@ -10,6 +10,7 @@ local DEFAULT_ROTATION = 'DEFAULT'
 function ExtensibleObjectComponent:initialize()
    self._json = radiant.entities.get_json(self)
    self._sv._child_entities = {}
+   self._sv._end_entities = {}
    self._sv.cur_extensions = {}
 end
 
@@ -38,6 +39,7 @@ end
 
 function ExtensibleObjectComponent:destroy()
 	self:_destroy_child_entities()
+   self:_destroy_end_entities()
 end
 
 function ExtensibleObjectComponent:_destroy_child_entities()
@@ -45,6 +47,21 @@ function ExtensibleObjectComponent:_destroy_child_entities()
       radiant.entities.destroy_entity(entity)
    end
    self._sv._child_entities = {}
+end
+
+function ExtensibleObjectComponent:_destroy_end_entities()
+   for _, entity in pairs(self._sv._end_entities) do
+      radiant.entities.destroy_entity(entity)
+   end
+   self._sv._end_entities = {}
+end
+
+function ExtensibleObjectComponent:_destroy_end_entity(rotation_id)
+   local entity = self._sv._end_entities[rotation_id]
+   if entity then
+      radiant.entities.destroy_entity(entity)
+      self._sv._end_entities[rotation_id] = nil
+   end
 end
 
 function ExtensibleObjectComponent:_ensure_child_entities()
@@ -83,6 +100,21 @@ function ExtensibleObjectComponent:_ensure_base_connections()
    end
 end
 
+-- TODO: allow for a rotation to specify which direction the end entity should face
+function ExtensibleObjectComponent:_ensure_end_entity(rotation_id, uri, location)
+   local world_location = radiant.entities.local_to_world(Region3(Cube3(location)), self._entity):get_bounds().min
+   local entity = self._sv._end_entities[rotation_id]
+   if not entity then
+      entity = radiant.entities.create_entity(uri, { owner = self._entity })
+      entity:add_component('mob'):set_ignore_gravity(true)
+      radiant.entities.add_child(radiant.entities.get_parent(self._entity), entity, world_location, true)
+      --radiant.entities.add_child(self._entity, entity, location, true)
+      self._sv._end_entities[rotation_id] = entity
+   else
+      radiant.entities.move_to(entity, world_location)
+   end
+end
+
 function ExtensibleObjectComponent:get_rotations()
    return self._rotations
 end
@@ -97,8 +129,11 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
    local data
    local rotation = self._rotations[rotation_index]
    if not rotation then
+      radiant.events.trigger(self._entity, 'stonehearth_ace:extensible_object:extension_cleared')
       self:_clear_all_extensions()
       self:_update_commands()
+      self:_destroy_end_entities()
+      self._sv._cur_rotation_index = nil
       return
    end
 
@@ -109,11 +144,14 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
    local vpr = child:get_component('stonehearth_ace:vertical_pathing_region')
    local region = rcs:get_region()
    local models_comp = self._entity:add_component('stonehearth_ace:models')
+   local end_entity = self._sv._end_entities[rotation_id]
 
    if length > 0 then
-      region:modify(function(cursor)
-         cursor:copy_region(collision_region)
-      end)
+      if rotation_id == DEFAULT_ROTATION then
+         self._sv._cur_rotation_index = rotation_index
+      end
+
+      self:_modify_collision_region(region, collision_region)
 
       if vpr then
          vpr:set_region(collision_region)
@@ -123,14 +161,13 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
       data.length = length
       models_comp:set_model_options(model_name, data)
       self._sv.cur_extensions[rotation_id] = true
-   else
-      stonehearth.hydrology:auto_fill_water_region(radiant.entities.local_to_world(region:get(), self._entity), function(waters)
-            region:modify(function(cursor)
-               cursor:clear()
-            end)
 
-            return true
-         end)
+      if rotation.end_entity then
+         self:_ensure_end_entity(rotation_id, rotation.end_entity, output_point)
+      end
+   else
+      radiant.events.trigger(self._entity, 'stonehearth_ace:extensible_object:extension_cleared', { rotation_index = rotation_index })
+      self:_modify_collision_region(region, nil)
 
       if vpr then
          vpr:set_region()
@@ -138,6 +175,12 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
 
       models_comp:remove_model(model_name)
       self._sv.cur_extensions[rotation_id] = nil
+
+      self:_destroy_end_entity(rotation_id)
+
+      if rotation_id == DEFAULT_ROTATION then
+         self._sv._cur_rotation_index = nil
+      end
    end
 
    if self._json.extended_model_variant then
@@ -160,6 +203,27 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
    })
 end
 
+function ExtensibleObjectComponent:_modify_collision_region(region, new_region)
+   local diff_region = region:get()
+   if new_region then
+      diff_region = diff_region - new_region
+   end
+
+   log:debug('modifying collision region: %s to %s', diff_region:get_bounds(), tostring(new_region and new_region:get_bounds()))
+   stonehearth.hydrology:auto_fill_water_region(radiant.entities.local_to_world(diff_region, self._entity), function(waters)
+         log:debug('auto-filling water region...')
+         region:modify(function(cursor)
+            if new_region then
+               cursor:copy_region(new_region)
+            else
+               cursor:clear()
+            end
+         end)
+
+         return true
+      end)
+end
+
 function ExtensibleObjectComponent:_get_rotation_id(rotation)
    return rotation and rotation.connector_id or DEFAULT_ROTATION
 end
@@ -174,29 +238,26 @@ function ExtensibleObjectComponent:_clear_all_extensions()
 
    for index, rotation in ipairs(self._rotations) do
       local id = self:_get_rotation_id(rotation)
-      local child = self._sv._child_entities[id]
+      log:debug('clearing extension id %s: %s', index, id)
+      if id ~= DEFAULT_ROTATION or not self._sv._cur_rotation_index or index == self._sv._cur_rotation_index then
+         local child = self._sv._child_entities[id]
 
-      if child then
-         -- add water to the original region if it was displacing any
-         local region = child:add_component('region_collision_shape'):get_region()
-         stonehearth.hydrology:auto_fill_water_region(radiant.entities.local_to_world(region:get(), self._entity), function(waters)
-            region:modify(function(cursor)
-               cursor:clear()
-            end)
+         if child then
+            -- add water to the original region if it was displacing any
+            local region = child:add_component('region_collision_shape'):get_region()
+            self:_modify_collision_region(region, nil)
 
-            return true
-         end)
-
-         local vpr = child:get_component('stonehearth_ace:vertical_pathing_region')
-         if vpr then
-            vpr:set_region()
+            local vpr = child:get_component('stonehearth_ace:vertical_pathing_region')
+            if vpr then
+               vpr:set_region()
+            end
          end
-      end
 
-      models_comp:remove_model(self:_get_model_name(id))
+         models_comp:remove_model(self:_get_model_name(id))
 
-      if dc and rotation.connection_type then
-         dc:update_region(rotation.connection_type, id, rotation.connector_region)
+         if dc and rotation.connection_type then
+            dc:update_region(rotation.connection_type, id, rotation.connector_region)
+         end
       end
    end
 
