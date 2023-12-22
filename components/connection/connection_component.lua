@@ -30,7 +30,7 @@ connectors can be configured to trace component regions (with optional modificat
             "region_component": "region_collision_shape",
             "get_region_fn": "get_region", <-- optional, defaults to this
             "extrusions": {
-               "x": [1, 1]
+               "x": [1, 1] <-- extrude the region in the x dimension by 1 voxel on each side
             }
             "max_connections": 1
          }
@@ -92,6 +92,7 @@ end
 -- this is performed in activate rather than post_activate so that all specific connection services can use it in post_activate
 -- dynamic connection components should therefore create their regions in initialize/create or in their get_region function
 function ConnectionComponent:activate()
+   self._json = radiant.entities.get_json(self) or {}
    local version = self:get_version()
    if self._sv.version ~= version then
       self._sv.version = version
@@ -103,6 +104,9 @@ function ConnectionComponent:activate()
       connected_stats = self._sv.connected_stats
    end
 
+   -- dynamic connections are in _sv only to remote to client
+   -- we want to reset this every time so we can properly trace regions
+   self._sv.dynamic_connections = {}
    self:_format_connections()
    stonehearth_ace.connection:register_entity(self._entity, self._connections, connected_stats)
 end
@@ -117,6 +121,10 @@ function ConnectionComponent:destroy()
    self._region_traces = nil
 
    stonehearth_ace.connection:unregister_entity(self._entity)
+end
+
+function ConnectionComponent:_get_connector_key(conn_type, name)
+   return conn_type .. '|' .. name
 end
 
 -- returns a string key representing the extrusions table
@@ -134,10 +142,10 @@ function ConnectionComponent:_get_extrusions_key(extrusions)
    return key
 end
 
-function ConnectionComponent:_get_region_trace(type, name, connector, get_only)
+function ConnectionComponent:_get_region_trace(conn_type, name, connector, get_only)
    local component = connector.region_component
    local get_region_fn = connector.get_region_fn or 'get_region'
-   local get_region_fn_args = connector.get_region_fn_args or (component == 'stonehearth_ace:dynamic_connection' and {type, name}) or {}
+   local get_region_fn_args = connector.get_region_fn_args or (component == 'stonehearth_ace:dynamic_connection' and {conn_type, name}) or {}
 
    local key = component .. '.' .. get_region_fn
    if next(get_region_fn_args) then
@@ -156,13 +164,7 @@ function ConnectionComponent:_get_region_trace(type, name, connector, get_only)
       self._extrusions_cache[extrusions_key] = extrusions
    end
 
-   if trace then
-      -- if the trace already exists, check to see if the extrusions are also already registered
-      if trace.extrusion_regions[extrusions_key] == nil then
-         trace.extrusion_regions[extrusions_key] = false
-         trace.update_region(extrusions_key)
-      end
-   else
+   if not trace then
       trace = {
          connectors = {},
          extrusion_regions = {
@@ -170,7 +172,15 @@ function ConnectionComponent:_get_region_trace(type, name, connector, get_only)
          },
       }
       self._region_traces[key] = trace
+   end
 
+   if trace.trace then
+      -- if the trace already exists, check to see if the extrusions are also already registered
+      if trace.extrusion_regions[extrusions_key] == nil then
+         trace.extrusion_regions[extrusions_key] = false
+         trace.update_region(extrusions_key)
+      end
+   else
       local comp = self._entity:get_component(component)
       local fn = comp and comp[get_region_fn]
       local region = fn and fn(comp, unpack(get_region_fn_args))
@@ -233,10 +243,9 @@ end
 
 function ConnectionComponent:_format_connections()
    local all_connections = {}
-   local json_connections = radiant.entities.get_json(self) or {}
 
-   for type, connection in pairs(json_connections) do
-      all_connections[type] = {
+   for conn_type, connection in pairs(self._json) do
+      all_connections[conn_type] = {
          max_connections = connection.max_connections,
          connectors = {}
       }
@@ -248,21 +257,22 @@ function ConnectionComponent:_format_connections()
             connector_copy.region = region
             connector_copy.region:optimize('connector region')
 
-            all_connections[type].connectors[name] = connector_copy
+            all_connections[conn_type].connectors[name] = connector_copy
          elseif connector.region_component then
-            self:_setup_dynamic_connector(type, connection.max_connections, name, connector_copy)
+            -- if we already have 
+            self:_setup_dynamic_connector(conn_type, connection.max_connections, name, connector_copy)
          end
       end
    end
 
-   for type, connection in pairs(self._sv.dynamic_connections) do
-      local connection_data = all_connections[type]
+   for conn_type, connection in pairs(self._sv.dynamic_connections) do
+      local connection_data = all_connections[conn_type]
       if not connection_data then
          connection_data = {
             max_connections = connection.max_connections,
             connectors = {}
          }
-         all_connections[type] = connection_data
+         all_connections[conn_type] = connection_data
       end
       for name, connector in pairs(connection.connectors) do
          connection_data.connectors[name] = connector
@@ -272,20 +282,20 @@ function ConnectionComponent:_format_connections()
    self._connections = all_connections
 end
 
-function ConnectionComponent:get_connections(type)
-   if type then
-      return self._connections[type]
+function ConnectionComponent:get_connections(conn_type)
+   if conn_type then
+      return self._connections[conn_type]
    else
       return self._connections
    end
 end
 
-function ConnectionComponent:get_connected_stats(type)
+function ConnectionComponent:get_connected_stats(conn_type)
    local type_data = {}
 
-   for conn_type, data in pairs(self._sv.connected_stats) do
-      if not type or conn_type == type then
-         _update_entity_connection_data(type_data, { [type] = data })
+   for c_type, data in pairs(self._sv.connected_stats) do
+      if not conn_type or c_type == conn_type then
+         _update_entity_connection_data(type_data, { [c_type] = data })
       end
    end
 
@@ -293,54 +303,56 @@ function ConnectionComponent:get_connected_stats(type)
    return next(type_data) and type_data
 end
 
-function ConnectionComponent:_setup_dynamic_connector(type, connection_max_connections, name, connector)
-   local trace = self:_get_region_trace(type, name, connector)
-   trace.connectors[connector] = {
-      type = type,
+function ConnectionComponent:_setup_dynamic_connector(conn_type, connection_max_connections, name, connector)
+   local trace = self:_get_region_trace(conn_type, name, connector)
+   local key = self:_get_connector_key(conn_type, name)
+   trace.connectors[key] = {
+      type = conn_type,
       connection_max_connections = connection_max_connections,
       name = name,
       connector = connector
    }
 
-   local connections = self._sv.dynamic_connections[type]
+   local connections = self._sv.dynamic_connections[conn_type]
    if not connections then
       connections = {
          max_connections = connection_max_connections,
          connectors = {}
       }
-      self._sv.dynamic_connections[type] = connections
+      self._sv.dynamic_connections[conn_type] = connections
    end
-   connections.connectors[name] = radiant.shallow_copy(connector)
+   connections.connectors[name] = connector
 
-   local connections = self._connections[type]
+   local connections = self._connections[conn_type]
    if not connections then
       connections = {
          max_connections = connection_max_connections,
          connectors = {}
       }
-      self._connections[type] = connections
+      self._connections[conn_type] = connections
    end
-   connections.connectors[name] = radiant.shallow_copy(connector)
+   connections.connectors[name] = connector
 
    self.__saved_variables:mark_changed()
 end
 
-function ConnectionComponent:update_dynamic_connector(type, connection_max_connections, name, connector)
-   self:_setup_dynamic_connector(type, connection_max_connections, name, connector)
+function ConnectionComponent:update_dynamic_connector(conn_type, connection_max_connections, name, connector)
+   self:_setup_dynamic_connector(conn_type, connection_max_connections, name, connector)
 
-   stonehearth_ace.connection:update_connector(self._entity, type, connection_max_connections, name, connector)
+   stonehearth_ace.connection:update_connector(self._entity, conn_type, connection_max_connections, name, connector)
 end
 
-function ConnectionComponent:remove_dynamic_connector(type, name)
-   local connections = self._sv.dynamic_connections[type]
+function ConnectionComponent:remove_dynamic_connector(conn_type, name)
+   local connections = self._sv.dynamic_connections[conn_type]
    if connections then
       local connector = connections.connectors[name]
       if connector then
          -- if it had a dynamic region, remove the connector from that trace
          if connector.region_component then
-            local trace = self:_get_region_trace(type, name, connector, true)
+            local trace = self:_get_region_trace(conn_type, name, connector, true)
             if trace then
-               trace.connectors[connector] = nil
+               local key = self:_get_connector_key(conn_type, name)
+               trace.connectors[key] = nil
                if not next(trace.connectors) then
                   trace.destroy()
                end
@@ -348,11 +360,11 @@ function ConnectionComponent:remove_dynamic_connector(type, name)
          end
 
          connections.connectors[name] = nil
-         stonehearth_ace.connection:remove_connector(self._entity, type, name)
-         self._sv.connected_stats[type].connectors[name] = nil
+         stonehearth_ace.connection:remove_connector(self._entity, conn_type, name)
+         self._sv.connected_stats[conn_type].connectors[name] = nil
          self.__saved_variables:mark_changed()
 
-         connections = self._connections[type]
+         connections = self._connections[conn_type]
          if connections then
             connections.connectors[name] = nil
          end
@@ -363,18 +375,18 @@ end
 -- this is called by the connection service when this entity has any of its connectors change status
 -- it may be called with just the type and conn_name to initialize the data structures
 -- it may be called with just the type and the graph_id when it changes graphs and needs all connectors for that type to update graph_id
-function ConnectionComponent:set_connected_stats(type, conn_name, connected_to_id, graph_id, threshold)
-   log:debug('[%s]:set_connected_stats(%s, %s, %s, %s, %s)', self._entity, type, tostring(conn_name), tostring(connected_to_id), tostring(graph_id), tostring(threshold))
-   local type_data = self._sv.connected_stats[type]
+function ConnectionComponent:set_connected_stats(conn_type, conn_name, connected_to_id, graph_id, threshold)
+   log:debug('[%s]:set_connected_stats(%s, %s, %s, %s, %s)', self._entity, conn_type, tostring(conn_name), tostring(connected_to_id), tostring(graph_id), tostring(threshold))
+   local type_data = self._sv.connected_stats[conn_type]
    if not type_data then
-      type_data = {connectors = {}, num_connections = 0, max_connections = self._connections[type].max_connections}
-      self._sv.connected_stats[type] = type_data
+      type_data = {connectors = {}, num_connections = 0, max_connections = self._connections[conn_type].max_connections}
+      self._sv.connected_stats[conn_type] = type_data
    end
 
    if conn_name then
       local conn_data = type_data.connectors[conn_name]
       if not conn_data then
-         conn_data = {connected_to = {}, num_connections = 0, max_connections = self._connections[type].connectors[conn_name].max_connections}
+         conn_data = {connected_to = {}, num_connections = 0, max_connections = self._connections[conn_type].connectors[conn_name].max_connections}
          type_data.connectors[conn_name] = conn_data
       end
 

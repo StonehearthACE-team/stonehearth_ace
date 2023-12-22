@@ -47,6 +47,7 @@ function ace_util.get_rotations_table(json)
          connector_region:load(rotation.connector_region)
       end
       local connection_type = rotation.connection_type or json.connection_type
+      local end_entity = rotation.end_entity or json.end_entity
 
       if origin and direction and min_length then
          table.insert(result, {
@@ -66,6 +67,7 @@ function ace_util.get_rotations_table(json)
             connection_type = connection_type,
             connector_id = rotation.connector_id,
             connector_region = connector_region,
+            end_entity = end_entity,
          })
       end
    end

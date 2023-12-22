@@ -681,7 +681,14 @@ end
 
 function XYZRangeSelector:get_point_in_current_direction(distance)
    local rotation = self:get_rotation()
-   return rotation and (rotation.origin + rotation.direction * math.max(0, distance))
+   if rotation then
+      distance = math.max(0, distance)
+      -- if we're going in a negative direction, we need to shift our point one further in that direction
+      if rotation.direction.x < 0 or rotation.direction.z < 0 then
+         distance = distance + 1
+      end
+      return rotation.origin + rotation.direction * distance
+   end
 end
 
 function XYZRangeSelector:_recalc_current_region(is_final)

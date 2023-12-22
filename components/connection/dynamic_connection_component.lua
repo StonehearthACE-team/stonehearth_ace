@@ -21,18 +21,18 @@ function DynamicConnectionComponent:create()
 end
 
 -- use if you don't want to override an existing connector region
-function DynamicConnectionComponent:add_region(type, id, initial_region)
-   local regions = self:_get_type_regions(type)
+function DynamicConnectionComponent:add_region(conn_type, id, initial_region)
+   local regions = self:_get_type_regions(conn_type)
    if regions[id] then
       return
    end
 
-   self:update_region(type, id, initial_region)
+   self:update_region(conn_type, id, initial_region)
 end
 
 -- updates or adds the connector region
-function DynamicConnectionComponent:update_region(type, id, region)
-   local regions = self:_get_type_regions(type)
+function DynamicConnectionComponent:update_region(conn_type, id, region)
+   local regions = self:_get_type_regions(conn_type)
    local conn_reg = regions[id]
 
    if not conn_reg then
@@ -45,22 +45,22 @@ function DynamicConnectionComponent:update_region(type, id, region)
    end)
 end
 
-function DynamicConnectionComponent:get_region(type, id)
-   local regions = self:_get_type_regions(type)
+function DynamicConnectionComponent:get_region(conn_type, id)
+   local regions = self:_get_type_regions(conn_type)
    local region = regions[id]
    if not region then
-      self:add_region(type, id)
+      self:add_region(conn_type, id)
       region = regions[id]
    end
 
    return region
 end
 
-function DynamicConnectionComponent:_get_type_regions(type)
-   local regions = self._sv._connector_regions[type]
+function DynamicConnectionComponent:_get_type_regions(conn_type)
+   local regions = self._sv._connector_regions[conn_type]
    if not regions then
       regions = {}
-      self._sv._connector_regions[type] = regions
+      self._sv._connector_regions[conn_type] = regions
    end
 
    return regions
