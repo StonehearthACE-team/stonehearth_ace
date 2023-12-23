@@ -12,7 +12,7 @@
       "stonehearth:entity_forms": {
          "ghost_form": "file(golem_restocking_ghost_auto.json)"
       },
-		"mob": {
+      "mob": {
          "mob_collision_type": "tiny"
       },
       "sensor_list": {
@@ -24,6 +24,10 @@
       }
    },
    "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 350,
+         "rarity": "uncommon"
+      },
       "stonehearth:observers:avoid_threatening_entities": {
          "min_avoidance_distance": 48,
          "max_avoidance_distance": 48

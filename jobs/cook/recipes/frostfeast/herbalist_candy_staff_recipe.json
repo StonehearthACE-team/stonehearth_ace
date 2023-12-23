@@ -1,0 +1,40 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.herbalist_candy_staff_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.herbalist_candy_staff_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.herbalist_candy_staff_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/tools/frostfeast/herbalist_candy_staff/herbalist_candy_staff.png",
+   "workshop": "stonehearth:cook:oven",
+   "work_effect": "fiddle",
+   "manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:corn:corn_basket",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:resources:herb:frostsnap",
+         "count": 2
+      },
+      {
+         "material": "herb white resource",
+         "count": 1
+      },
+      {
+         "material": "herb red resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:tools:frostfeast:herbalist_candy_staff"
+      }
+   ]
+}

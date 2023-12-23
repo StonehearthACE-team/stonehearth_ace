@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "exploration_tub_refill",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.exploration_tub_refill.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.exploration_tub_refill.description)",
+   "default_enabled": true,
+   "ordinal": 100,
+   "icon": "file(exploration_tub_refill.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "exploration_tub_refill"
+   ]
+}

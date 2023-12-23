@@ -57,6 +57,8 @@
          "default_model": "default",
          "default_mode": "find_native_seed_water",
          "reset_effect": "stonehearth_ace:effects:item_created_large",
+         "transform_after_using_key": "disable_after_use",
+         "transform_after_num_uses": 4,
          "show_mode_selection": true,
          "modes": {
             "mixintypes": {
@@ -67,6 +69,14 @@
       }
    },
    "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "disable_after_use": {
+               "transform_uri": "stonehearth_ace:herbalist:exploration_garden:water:expired",
+               "transform_effect": "stonehearth:effects:poof_effect"
+            }
+         }
+      },
       "stonehearth:net_worth": {
          "value_in_gold": 19,
          "rarity": "common",

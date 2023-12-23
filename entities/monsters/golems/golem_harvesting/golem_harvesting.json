@@ -1,5 +1,15 @@
 {
    "components": {
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 300
+         },
+         "speed": {
+            "type": "basic",
+            "value": 100
+         }
+      },
       "stonehearth:buffs": {
          "buffs": {
             "stonehearth_ace:buffs:golem:regeneration": true,
@@ -15,6 +25,14 @@
       }
    },
    "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 445,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
       "stonehearth:observers:avoid_threatening_entities": {
          "min_avoidance_distance": 48,
          "max_avoidance_distance": 48

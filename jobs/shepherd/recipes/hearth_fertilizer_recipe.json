@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.hearth_fertilizer_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.hearth_fertilizer_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.shepherd.recipes.hearth_fertilizer_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/fertilizer_hearth/fertilizer_hearth.png",
+   "workshop": "stonehearth_ace:shepherd:composter",
+   "level_requirement": 6,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 1
+      },
+      {
+         "material": "earth_essence resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:refined:hearthbud_flakes",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:fertilizer_hearth"
+      }
+   ]
+}

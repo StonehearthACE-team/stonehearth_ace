@@ -34,8 +34,8 @@
          "ordinal": 10,
          "name": "i18n(stonehearth_ace:jobs.brewer.recipes.ingredients_name)",
          "recipes": {
-            "gruit" : {
-               "recipe" : "file(gruit_recipe.json)"
+            "gruit": {
+               "recipe": "file(gruit_recipe.json)"
             },
             "malted_grains": {
                "recipe": "file(malted_grains_recipe.json)"
@@ -252,8 +252,44 @@
             }
          }
       },
-      "serving_vessels": {
+      "potions": {
+         "name": "i18n(stonehearth_ace:jobs.brewer.recipes.potions_name)",
          "ordinal": 50,
+         "recipes": {
+            "potion_healing_small": {
+               "recipe": "file(potion_healing_small_recipe.json)"
+            },
+            "potion_healing_large": {
+               "recipe": "file(potion_healing_large_recipe.json)"
+            },
+            "potion_healing_hearth": {
+               "recipe": "file(potion_healing_hearth_recipe.json)"
+            },
+            "potion_anti_toxin_small": {
+               "recipe": "file(potion_anti_toxin_small_recipe.json)"
+            },
+            "potion_anti_toxin_large": {
+               "recipe": "file(potion_anti_toxin_large_recipe.json)"
+            },
+            "potion_anti_toxin_strong": {
+               "recipe": "file(potion_anti_toxin_strong_recipe.json)"
+            },
+            "potion_antidote_small": {
+               "recipe": "file(potion_antidote_small_recipe.json)"
+            },
+            "potion_antidote_large": {
+               "recipe": "file(potion_antidote_large_recipe.json)"
+            },
+            "potion_antidote_strong": {
+               "recipe": "file(potion_antidote_strong_recipe.json)"
+            },
+            "potion_last_stand": {
+               "recipe": "file(potion_last_stand_recipe.json)"
+            }
+         }
+      },
+      "serving_vessels": {
+         "ordinal": 60,
          "name": "i18n(stonehearth_ace:jobs.brewer.recipes.serving_vessels_name)",
          "recipes": {
             "beer_serving_keg": {
@@ -324,11 +360,6 @@
             }
          }
       },
-      "enhancements": {
-         "ordinal": 60,
-         "name": "i18n(stonehearth_ace:jobs.brewer.recipes.enhancements_name)",
-         "recipes": {}
-      },
       "decoration": {
          "ordinal": 80,
          "name": "i18n(stonehearth_ace:jobs.brewer.recipes.decoration_name)",
@@ -354,7 +385,7 @@
          }
       },
       "frostfeast": {
-         "ordinal": 999,
+         "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
             "frostfeast_egg_milk_punch": {
@@ -365,6 +396,12 @@
             },
             "frostfeast_hot_coco": {
                "recipe": "file(frostfeast/hot_coco_recipe.json)"
+            },
+            "frostfeast_spirited_coffee": {
+               "recipe": "file(frostfeast/spirited_coffee_recipe.json)"
+            },
+            "frostfeast_must": {
+               "recipe": "file(frostfeast/must_recipe.json)"
             }
          }
       }

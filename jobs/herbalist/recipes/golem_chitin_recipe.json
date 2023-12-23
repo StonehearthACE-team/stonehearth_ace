@@ -1,0 +1,32 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.golem_chitin_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.golem_chitin_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.golem_chitin_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/golem_chitin/golem_chitin.png",
+   "workshop": "stonehearth_ace:herbalist:metal_cauldron",
+   "level_requirement": 4,
+   "work_effect": "fiddle",
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "chitin resource",
+         "count": 2
+      },
+      {
+         "material": "clay resource",
+         "count": 1
+      },
+      {
+         "material": "honey cooking_ingredient",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:golem_chitin"
+      }
+   ]
+}

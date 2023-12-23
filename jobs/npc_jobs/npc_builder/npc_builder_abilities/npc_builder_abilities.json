@@ -1,0 +1,22 @@
+{
+   "type": "entity",
+   "components": {
+      "stonehearth:equipment_piece": {
+         "injected_ai": {
+            "actions": [
+               "stonehearth:actions:dispatcher:human_simple_labor",
+               "stonehearth:actions:dispatcher:human_work"
+            ],
+            "ai_packs": [
+               "stonehearth:ai_pack:mining",
+               "stonehearth:ai_pack:construction",
+               "stonehearth:ai_pack:ladders",
+               "stonehearth:ai_pack:place_item"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:panic_threshold": 0.75
+   }
+}

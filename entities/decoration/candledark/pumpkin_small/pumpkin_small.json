@@ -15,15 +15,13 @@
          "ghost_form": "file(pumpkin_small_ghost.json)",
          "placeable_on_ground": true
       },
-      "stonehearth_ace:transform": {}
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth_ace:commands:transform:frostfeast:swap_model_variant"
+         ]
+      }
    },
    "entity_data": {
-      "stonehearth_ace:transform_data": {
-         "transform_uri": "stonehearth_ace:decoration:candledark:pumpkin_small",
-         "command": "stonehearth_ace:commands:transform:frostfeast:swap_model_variant",
-         "transform_effect": "stonehearth:effects:poof_effect",
-         "auto_request": false
-      },
       "stonehearth:net_worth": {
          "value_in_gold": 3,
          "rarity": "common",

@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 8,
+   "recipe_name": "i18n(stonehearth_ace:jobs.geomancer.recipes.golem_parts_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.geomancer.recipes.golem_parts_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.geomancer.recipes.golem_parts_recipe.flavor)",
+   "portrait": "/stonehearth/entities/refined/golem_parts/golem_parts.png",
+   "workshop": "stonehearth:geomancer:golem_workbench",
+   "level_requirement": 3,
+   "work_effect": "chisel",
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 6
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:refined:golem_parts"
+      }
+   ]
+}

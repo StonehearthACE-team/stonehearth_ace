@@ -1,18 +1,18 @@
 {
    "craftable_recipes": {
-	  "workbenches": {
+      "workbenches": {
          "recipes": {
             "mason_workbench_bone": {
                "recipe": "file(mason_workbench_bone_recipe.json)"
             }
          }
-     },
-	  "legendary": {
+      },
+      "legendary": {
          "recipes": {
             "legendary_headpiece": {
                "recipe": "file(legendary_headpiece_recipe.json)"
             },
-				"rc_giants_shield": {
+            "rc_giants_shield": {
                "recipe": "/rayyas_children/jobs/mason/recipes/rc_legendary_shield_recipe.json"
             },
             "legendary_rc_blade": {
@@ -21,133 +21,139 @@
             "legendary_rc_gem": {
                "recipe": "/rayyas_children/jobs/mason/recipes/legendary_rc_gem_recipe.json"
             }
-	     }
+         }
       },
-		"tools": {
+      "tools": {
          "recipes": {
             "carpenter_saw_bone": {
                "recipe": "file(carpenter_saw_bone_recipe.json)"
+            },
+            "golem_hammer": {
+               "recipe": "file(golem_hammer_recipe.json)"
             }
          }
       },
-		"refined": {
+      "refined": {
          "recipes": {
+            "mixintypes": {
+               "golem_parts": "remove"
+            },
             "bone_material": {
                "recipe": "file(bone_material_recipe.json)"
             }
          }
       },
-	  "storage": {
-		 "recipes": {
-			"mixintypes": {
-			"market_shelf_tall_ground_stone": "remove"
-			},
-			"fuel_holder_large_stone": {
-				"recipe": "file(fuel_holder_large_stone_recipe.json)"
-			},
-			"tank_small": {
-				"recipe": "file(tank_small_recipe.json)"
-			},
-			"input_cask_stone_small": {
-				"recipe": "file(input_cask_stone_small_recipe.json)"
-			},
-			"tank": {
-				"recipe": "file(tank_recipe.json)"
-			},
-         "amberstone_tank": {
-				"recipe": "file(amberstone_tank_recipe.json)"
-			},
-			"input_cask_stone": {
-				"recipe": "file(input_cask_stone_recipe.json)"
-			},			
-			"output_tun_stone": {
-            "recipe": "file(output_tun_stone_recipe.json)"
-         },
-			"small_stone_coffer": {
-				"recipe": "file(small_stone_coffer_recipe.json)"
-			},
-			"large_stone_coffer": {
-				"recipe": "file(large_stone_coffer_recipe.json)"
-			},
-			"cold_storage_cabinet": {
-				"recipe": "file(cold_storage_cabinet_recipe.json)"
-			},
-         "output_box_stone_wolf": {
-            "recipe": "/northern_alliance/jobs/mason/recipes/output_box_stone_wolf_recipe.json"
-         },
-         "input_bin_stone_wolf": {
-            "recipe": "/northern_alliance/jobs/mason/recipes/input_bin_stone_wolf_recipe.json"
-         },
-         "chest_stone_wolf": {
-            "recipe": "/northern_alliance/jobs/mason/recipes/chest_stone_wolf_recipe.json"
-         },
-         "input_table_ground_amberstone": {
-            "recipe": "file(input_table_ground_amberstone_recipe.json)"
+      "storage": {
+         "recipes": {
+            "mixintypes": {
+               "market_shelf_tall_ground_stone": "remove"
+            },
+            "fuel_holder_large_stone": {
+               "recipe": "file(fuel_holder_large_stone_recipe.json)"
+            },
+            "tank_small": {
+               "recipe": "file(tank_small_recipe.json)"
+            },
+            "input_cask_stone_small": {
+               "recipe": "file(input_cask_stone_small_recipe.json)"
+            },
+            "tank": {
+               "recipe": "file(tank_recipe.json)"
+            },
+            "amberstone_tank": {
+               "recipe": "file(amberstone_tank_recipe.json)"
+            },
+            "input_cask_stone": {
+               "recipe": "file(input_cask_stone_recipe.json)"
+            },
+            "output_tun_stone": {
+               "recipe": "file(output_tun_stone_recipe.json)"
+            },
+            "small_stone_coffer": {
+               "recipe": "file(small_stone_coffer_recipe.json)"
+            },
+            "large_stone_coffer": {
+               "recipe": "file(large_stone_coffer_recipe.json)"
+            },
+            "cold_storage_cabinet": {
+               "recipe": "file(cold_storage_cabinet_recipe.json)"
+            },
+            "output_box_stone_wolf": {
+               "recipe": "/northern_alliance/jobs/mason/recipes/output_box_stone_wolf_recipe.json"
+            },
+            "input_bin_stone_wolf": {
+               "recipe": "/northern_alliance/jobs/mason/recipes/input_bin_stone_wolf_recipe.json"
+            },
+            "chest_stone_wolf": {
+               "recipe": "/northern_alliance/jobs/mason/recipes/chest_stone_wolf_recipe.json"
+            },
+            "input_table_ground_amberstone": {
+               "recipe": "file(input_table_ground_amberstone_recipe.json)"
+            }
          }
-		 }
-	  },
-	  "furniture": {
-		 "recipes": {
-			"stone_comfy_bed": {
+      },
+      "furniture": {
+         "recipes": {
+            "stone_comfy_bed": {
                "recipe": "file(stone_comfy_bed_recipe.json)"
             },
-			"stone_bed_crude": {
+            "stone_bed_crude": {
                "recipe": "file(stone_bed_crude_recipe.json)"
             },
-			"stone_comfy_bed_pet": {
-			   "recipe": "file(stone_comfy_bed_pet_recipe.json)"
-			},
-			"pet_food_bowl_stone": {
-				"recipe": "file(pet_food_bowl_stone_recipe.json)"
-			},
-         "pet_food_bowl_amberstone": {
-				"recipe": "file(pet_food_bowl_amberstone_recipe.json)"
-			},
-			"stone_stool": {
-				"recipe": "file(stone_stool_recipe.json)"
-			},
-			"counter_stone_corner_inner": {
-				"recipe": "file(counter_stone_corner_inner_recipe.json)"
-			},
-			"counter_stone_corner_outer": {
-				"recipe": "file(counter_stone_corner_outer_recipe.json)"
-			},
-			"counter_stone_mid": {
-				"recipe": "file(counter_stone_mid_recipe.json)"
-			},
-			"counter_stone_mid_small": {
-				"recipe": "file(counter_stone_mid_small_recipe.json)"
-			},
-			"counter_stone_end_right": {
-				"recipe": "file(counter_stone_end_right_recipe.json)"
-			},
-			"counter_stone_end_left": {
-				"recipe": "file(counter_stone_end_left_recipe.json)"
-			},
-			"counter_stone_door": {
-				"recipe": "file(counter_stone_door_recipe.json)"
-			},
-			"counter_shop_stone_corner_inner": {
-				"recipe": "file(counter_shop_stone_corner_inner_recipe.json)"
-			},
-			"counter_shop_stone_corner_outer": {
-				"recipe": "file(counter_shop_stone_corner_outer_recipe.json)"
-			},
-			"counter_shop_stone_mid": {
-				"recipe": "file(counter_shop_stone_mid_recipe.json)"
-			},
-			"counter_shop_stone_mid_small": {
-				"recipe": "file(counter_shop_stone_mid_small_recipe.json)"
-			},
-			"counter_shop_stone_end_right": {
-				"recipe": "file(counter_shop_stone_end_right_recipe.json)"
-			},
-			"counter_shop_stone_end_left": {
-				"recipe": "file(counter_shop_stone_end_left_recipe.json)"
-			}
-		 }
-	  },
-	  "utility": {
+            "stone_comfy_bed_pet": {
+               "recipe": "file(stone_comfy_bed_pet_recipe.json)"
+            },
+            "pet_food_bowl_stone": {
+               "recipe": "file(pet_food_bowl_stone_recipe.json)"
+            },
+            "pet_food_bowl_amberstone": {
+               "recipe": "file(pet_food_bowl_amberstone_recipe.json)"
+            },
+            "stone_stool": {
+               "recipe": "file(stone_stool_recipe.json)"
+            },
+            "counter_stone_corner_inner": {
+               "recipe": "file(counter_stone_corner_inner_recipe.json)"
+            },
+            "counter_stone_corner_outer": {
+               "recipe": "file(counter_stone_corner_outer_recipe.json)"
+            },
+            "counter_stone_mid": {
+               "recipe": "file(counter_stone_mid_recipe.json)"
+            },
+            "counter_stone_mid_small": {
+               "recipe": "file(counter_stone_mid_small_recipe.json)"
+            },
+            "counter_stone_end_right": {
+               "recipe": "file(counter_stone_end_right_recipe.json)"
+            },
+            "counter_stone_end_left": {
+               "recipe": "file(counter_stone_end_left_recipe.json)"
+            },
+            "counter_stone_door": {
+               "recipe": "file(counter_stone_door_recipe.json)"
+            },
+            "counter_shop_stone_corner_inner": {
+               "recipe": "file(counter_shop_stone_corner_inner_recipe.json)"
+            },
+            "counter_shop_stone_corner_outer": {
+               "recipe": "file(counter_shop_stone_corner_outer_recipe.json)"
+            },
+            "counter_shop_stone_mid": {
+               "recipe": "file(counter_shop_stone_mid_recipe.json)"
+            },
+            "counter_shop_stone_mid_small": {
+               "recipe": "file(counter_shop_stone_mid_small_recipe.json)"
+            },
+            "counter_shop_stone_end_right": {
+               "recipe": "file(counter_shop_stone_end_right_recipe.json)"
+            },
+            "counter_shop_stone_end_left": {
+               "recipe": "file(counter_shop_stone_end_left_recipe.json)"
+            }
+         }
+      },
+      "utility": {
          "ordinal": 60,
          "name": "i18n(stonehearth_ace:jobs.mason.recipes.utility_name)",
          "recipes": {
@@ -166,24 +172,24 @@
             "market_shelf_tall_ground_stone": {
                "recipe": "/stonehearth/jobs/mason/recipes/market_shelf_tall_ground_stone.json"
             },
-				"stone_training_dummy": {
+            "stone_training_dummy": {
                "recipe": "file(stone_training_dummy_recipe.json)"
             },
             "stone_training_target": {
                "recipe": "file(stone_training_target_recipe.json)"
             },
-				"food_trough_stone": {
-					"recipe": "file(food_trough_stone_recipe.json)"
-				},
-				"stone_water_well": {
-					"recipe": "file(stone_water_well_recipe.json)"
-				},
-				"water_well_roof_stone": {
-					"recipe": "file(water_well_roof_stone_recipe.json)"
-				},			
-				"serving_keg_stone": {
-					"recipe": "file(serving_keg_stone_recipe.json)"
-				},
+            "food_trough_stone": {
+               "recipe": "file(food_trough_stone_recipe.json)"
+            },
+            "stone_water_well": {
+               "recipe": "file(stone_water_well_recipe.json)"
+            },
+            "water_well_roof_stone": {
+               "recipe": "file(water_well_roof_stone_recipe.json)"
+            },
+            "serving_keg_stone": {
+               "recipe": "file(serving_keg_stone_recipe.json)"
+            },
             "stone_comfy_bed_herbalist": {
                "recipe": "file(stone_comfy_bed_herbalist_recipe.json)"
             },
@@ -204,14 +210,14 @@
             }
          }
       },
-	  "weapons": {
+      "weapons": {
          "recipes": {
             "stone_hatchet": {
                "recipe": "file(stone_hatchet_recipe.json)"
             }
          }
       },
-	  "bone_weapons_armor": {
+      "bone_weapons_armor": {
          "ordinal": 41,
          "name": "i18n(stonehearth_ace:jobs.mason.recipes.bone_weapons_armor_name)",
          "recipes": {
@@ -224,22 +230,22 @@
             "giant_bone_shield": {
                "recipe": "file(giant_bone_shield_recipe.json)"
             },
-				"light_giant_bone_shield": {
+            "light_giant_bone_shield": {
                "recipe": "file(light_giant_bone_shield_recipe.json)"
             },
             "giant_bone_hatchet": {
                "recipe": "file(giant_bone_hatchet_recipe.json)"
             },
-				"giant_bone_pike": {
+            "giant_bone_pike": {
                "recipe": "file(giant_bone_pike_recipe.json)"
             },
-				"giant_bone_sword": {
+            "giant_bone_sword": {
                "recipe": "file(giant_bone_sword_recipe.json)"
             },
-				"giant_bone_short_sword": {
+            "giant_bone_short_sword": {
                "recipe": "file(giant_bone_short_sword_recipe.json)"
             },
-				"giant_bone_short_spear": {
+            "giant_bone_short_spear": {
                "recipe": "file(giant_bone_short_spear_recipe.json)"
             }
          }
@@ -258,13 +264,13 @@
             "reinforced_stone_door_lockable": {
                "recipe": "file(reinforced_stone_door_lockable_recipe.json)"
             },
-				"stone_animal_door": {
-					"recipe": "file(stone_animal_door_recipe.json)"
-				},
-				"stone_animal_door_small": {
-					"recipe": "file(stone_animal_door_small_recipe.json)"
-				},
-				"window_box_stone_snow_poppy": {
+            "stone_animal_door": {
+               "recipe": "file(stone_animal_door_recipe.json)"
+            },
+            "stone_animal_door_small": {
+               "recipe": "file(stone_animal_door_small_recipe.json)"
+            },
+            "window_box_stone_snow_poppy": {
                "recipe": "/northern_alliance/jobs/mason/recipes/window_box_stone_snow_poppy_recipe.json"
             },
             "window_arrow_short": {
@@ -279,23 +285,23 @@
             "valor_window_frame_xlarge": {
                "recipe": "/stonehearth/jobs/mason/recipes/valor_window_frame_xlarge_recipe.json"
             },
-				"stone_door_frame": {
-					"recipe": "file(stone_door_frame_recipe.json)"
-				},
-				"stone_double_door_frame": {
-					"recipe": "file(stone_double_door_frame_recipe.json)"
-				},
-				"stone_tunnel_door_frame": {
-					"recipe": "file(stone_tunnel_door_frame_recipe.json)"
-				},
-				"amberstone_door_frame": {
-					"recipe": "file(amberstone_door_frame_recipe.json)"
-				}
+            "stone_door_frame": {
+               "recipe": "file(stone_door_frame_recipe.json)"
+            },
+            "stone_double_door_frame": {
+               "recipe": "file(stone_double_door_frame_recipe.json)"
+            },
+            "stone_tunnel_door_frame": {
+               "recipe": "file(stone_tunnel_door_frame_recipe.json)"
+            },
+            "amberstone_door_frame": {
+               "recipe": "file(amberstone_door_frame_recipe.json)"
+            }
          }
       },
-		"signage_decoration": {
+      "signage_decoration": {
          "recipes": {
-				"shrine_hare": {
+            "shrine_hare": {
                "recipe": "/northern_alliance/jobs/mason/recipes/shrine_hare.json"
             },
             "shrine_stag": {
@@ -307,7 +313,7 @@
             "firepit_small": {
                "recipe": "file(firepit_small_recipe.json)"
             },
-				"statue_hare": {
+            "statue_hare": {
                "recipe": "/northern_alliance/jobs/mason/recipes/statue_hare.json"
             },
             "wall_mounted_antlers": {
@@ -331,69 +337,69 @@
             "valor_window_frame_xlarge": {
                "recipe": ""
             }
-	     }
+         }
       },
-	  "bone_building_parts": {
+      "bone_building_parts": {
          "ordinal": 71,
          "name": "i18n(stonehearth_ace:jobs.mason.recipes.bone_building_parts_name)",
          "recipes": {}
       },
-	  "bone_furniture": {
+      "bone_furniture": {
          "ordinal": 86,
          "name": "i18n(stonehearth_ace:jobs.mason.recipes.bone_furniture_name)",
          "recipes": {
-				"firepit_skulls": {
+            "firepit_skulls": {
                "recipe": "file(firepit_skulls_recipe.json)"
             },
-				"bone_chest": {
+            "bone_chest": {
                "recipe": "file(bone_chest_recipe.json)"
             },
-				"input_bin_bone": {
+            "input_bin_bone": {
                "recipe": "file(input_bin_bone_recipe.json)"
             },
-				"input_table_ground_bone": {
+            "input_table_ground_bone": {
                "recipe": "file(input_table_ground_bone_recipe.json)"
             },
-				"output_box_bone": {
+            "output_box_bone": {
                "recipe": "file(output_box_bone_recipe.json)"
             },
-				"bone_candle_holder": {
+            "bone_candle_holder": {
                "recipe": "file(bone_candle_holder_recipe.json)"
             },
-				"bone_floor_candle_holder": {
+            "bone_floor_candle_holder": {
                "recipe": "file(bone_floor_candle_holder_recipe.json)"
             },
-				"bone_bench": {
+            "bone_bench": {
                "recipe": "file(bone_bench_recipe.json)"
             },
-				"bone_comfy_bed": {
+            "bone_comfy_bed": {
                "recipe": "file(bone_comfy_bed_recipe.json)"
             },
-				"bone_comfy_chair": {
+            "bone_comfy_chair": {
                "recipe": "file(bone_comfy_chair_recipe.json)"
             },
-				"bone_dining_table": {
+            "bone_dining_table": {
                "recipe": "file(bone_dining_table_recipe.json)"
             },
-				"bone_dresser": {
+            "bone_dresser": {
                "recipe": "file(bone_dresser_recipe.json)"
             },
-				"bone_stool": {
+            "bone_stool": {
                "recipe": "file(bone_stool_recipe.json)"
             },
-				"bone_table_for_one": {
+            "bone_table_for_one": {
                "recipe": "file(bone_table_for_one_recipe.json)"
             },
-				"bone_writing_desk": {
+            "bone_writing_desk": {
                "recipe": "file(bone_writing_desk_recipe.json)"
             },
-				"bone_comfy_bed_pet": {
+            "bone_comfy_bed_pet": {
                "recipe": "file(bone_comfy_bed_pet_recipe.json)"
             },
-				"pet_food_bowl_bone": {
+            "pet_food_bowl_bone": {
                "recipe": "file(pet_food_bowl_bone_recipe.json)"
             }
-			}
+         }
       },
       "marble_building_parts": {
          "ordinal": 72,
@@ -434,91 +440,91 @@
             }
          }
       },
-	  "marble_furniture": {
+      "marble_furniture": {
          "ordinal": 87,
          "name": "i18n(stonehearth_ace:jobs.mason.recipes.marble_furniture_name)",
          "recipes": {
-				"firepit_marble": {
+            "firepit_marble": {
                "recipe": "file(firepit_marble_recipe.json)"
             },
-				"marble_chest": {
+            "marble_chest": {
                "recipe": "file(marble_chest_recipe.json)"
             },
-				"marble_bird_bath": {
+            "marble_bird_bath": {
                "recipe": "file(marble_bird_bath_recipe.json)"
             },
-				"marble_brazier": {
+            "marble_brazier": {
                "recipe": "file(marble_brazier_recipe.json)"
             },
-				"marble_fountain": {
+            "marble_fountain": {
                "recipe": "file(marble_fountain_recipe.json)"
             },
-				"marble_garden_lantern": {
+            "marble_garden_lantern": {
                "recipe": "file(marble_garden_lantern_recipe.json)"
             },
-				"marble_wall_lantern": {
+            "marble_wall_lantern": {
                "recipe": "file(marble_wall_lantern_recipe.json)"
             },
-				"marble_chair": {
+            "marble_chair": {
                "recipe": "file(marble_chair_recipe.json)"
             },
-				"marble_comfy_bed": {
+            "marble_comfy_bed": {
                "recipe": "file(marble_comfy_bed_recipe.json)"
             },
-				"marble_dining_table": {
+            "marble_dining_table": {
                "recipe": "file(marble_dining_table_recipe.json)"
             },
-				"marble_table_for_one": {
+            "marble_table_for_one": {
                "recipe": "file(marble_table_for_one_recipe.json)"
             },
-				"marble_bed_pet": {
+            "marble_bed_pet": {
                "recipe": "file(marble_bed_pet_recipe.json)"
             }
          }
       },
-		"candledark": {
+      "candledark": {
          "ordinal": 998,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
          "recipes": {
-				"candledark_pumpkin_ward": {
-					"recipe": "file(candledark/pumpkin_ward_recipe.json)"
-				},
+            "candledark_pumpkin_ward": {
+               "recipe": "file(candledark/pumpkin_ward_recipe.json)"
+            },
             "candledark_sarcophagus_bed": {
-					"recipe": "file(candledark/sarcophagus_bed_recipe.json)"
-				},
+               "recipe": "file(candledark/sarcophagus_bed_recipe.json)"
+            },
             "candledark_tombstone": {
-					"recipe": "file(candledark/tombstone_recipe.json)"
-				},
+               "recipe": "file(candledark/tombstone_recipe.json)"
+            },
             "candledark_tombstone_tall": {
-					"recipe": "file(candledark/tombstone_tall_recipe.json)"
-				},
+               "recipe": "file(candledark/tombstone_tall_recipe.json)"
+            },
             "candledark_table_purple": {
-					"recipe": "file(candledark/table_purple_recipe.json)"
-				},
+               "recipe": "file(candledark/table_purple_recipe.json)"
+            },
             "candledark_table_orange": {
-					"recipe": "file(candledark/table_orange_recipe.json)"
-				},
+               "recipe": "file(candledark/table_orange_recipe.json)"
+            },
             "candledark_table_black": {
-					"recipe": "file(candledark/table_black_recipe.json)"
-				}
+               "recipe": "file(candledark/table_black_recipe.json)"
+            }
          }
       },
-		"frostfeast": {
-         "ordinal": 999,
+      "frostfeast": {
+         "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
-				"frostfeast_present_small": {
-					"recipe": "file(frostfeast/present_small_recipe.json)"
-				},
-				"frostfeast_present": {
-					"recipe": "file(frostfeast/present_recipe.json)"
-				},
-				"frostfeast_present_large": {
-					"recipe": "file(frostfeast/present_large_recipe.json)"
-				},
-				"frostfeast_stone_door_wreath": {
-					"recipe": "file(frostfeast/stone_door_wreath_recipe.json)"
-				}
+            "frostfeast_present_small": {
+               "recipe": "file(frostfeast/present_small_recipe.json)"
+            },
+            "frostfeast_present": {
+               "recipe": "file(frostfeast/present_recipe.json)"
+            },
+            "frostfeast_present_large": {
+               "recipe": "file(frostfeast/present_large_recipe.json)"
+            },
+            "frostfeast_stone_door_wreath": {
+               "recipe": "file(frostfeast/stone_door_wreath_recipe.json)"
+            }
          }
       }
    }

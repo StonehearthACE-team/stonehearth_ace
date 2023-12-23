@@ -148,17 +148,17 @@
 					"recipe": "file(market_shelf_ground_clay_recipe.json)"
 				},
 				"clay_market_stall_simple": {
-               "recipe": "file(clay_market_stall_simple_recipe.json)"
-            },
+					"recipe": "file(clay_market_stall_simple_recipe.json)"
+				},
 				"clay_market_stall_fancy": {
-               "recipe": "file(clay_market_stall_fancy_recipe.json)"
-            },
+					"recipe": "file(clay_market_stall_fancy_recipe.json)"
+				},
 				"cunning_market_stall": {
-               "recipe": "file(cunning_market_stall_recipe.json)"
-            },
+					"recipe": "file(cunning_market_stall_recipe.json)"
+				},
 				"silk_road_market_stall": {
-               "recipe": "file(silk_road_market_stall_recipe.json)"
-            }
+					"recipe": "file(silk_road_market_stall_recipe.json)"
+				}
 			}
 		},
 		"furniture": {
@@ -282,6 +282,9 @@
 		"refined": {
 			"ordinal": 15,
 			"recipes": {
+				"mixintypes": {
+					"golem_parts": "remove"
+				},
 				"bone_clay_mound": {
 					"recipe": "file(bone_clay_mound_recipe.json)"
 				},
@@ -309,9 +312,9 @@
 			}
 		},
 		"porcelain_building_parts": {
-         "ordinal": 72,
-         "name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_building_parts_name)",
-         "recipes": {
+			"ordinal": 72,
+			"name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_building_parts_name)",
+			"recipes": {
 				"porcelain_fence_bar_double": {
 					"recipe": "file(porcelain_fence_bar_double_recipe.json)"
 				},
@@ -331,14 +334,14 @@
 					"recipe": "file(porcelain_wall_tile_gold_recipe.json)"
 				},
 				"porcelain_floor_tile": {
-					"recipe": "file(porcelain_floor_tile_recipe.json)"				
-            }
-         }
-      },
-	   "porcelain_furniture": {
-         "ordinal": 87,
-         "name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_furniture_name)",
-         "recipes": {
+					"recipe": "file(porcelain_floor_tile_recipe.json)"
+				}
+			}
+		},
+		"porcelain_furniture": {
+			"ordinal": 87,
+			"name": "i18n(stonehearth_ace:jobs.potter.recipes.porcelain_furniture_name)",
+			"recipes": {
 				"porcelain_wall_lamp": {
 					"recipe": "file(porcelain_wall_lamp_recipe.json)"
 				},
@@ -402,12 +405,12 @@
 				"porcelain_bed_pet": {
 					"recipe": "file(porcelain_bed_pet_recipe.json)"
 				}
-         }
-      },
+			}
+		},
 		"candledark": {
-         "ordinal": 998,
-         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
-         "recipes": {
+			"ordinal": 998,
+			"name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
+			"recipes": {
 				"candledark_pumpkin_ward": {
 					"recipe": "file(candledark/pumpkin_ward_recipe.json)"
 				},
@@ -423,12 +426,12 @@
 				"candledark_pumpkin_patch_scarecrow": {
 					"recipe": "file(candledark/pumpkin_patch_scarecrow_recipe.json)"
 				}
-         }
-      },
+			}
+		},
 		"frostfeast": {
-         "ordinal": 999,
-         "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
-         "recipes": {
+			"ordinal": 2,
+			"name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
+			"recipes": {
 				"frostfeast_present_small": {
 					"recipe": "file(frostfeast/present_small_recipe.json)"
 				},
@@ -459,7 +462,7 @@
 				"frostfeast_light_string_vertical_short": {
 					"recipe": "file(frostfeast/light_string_vertical_short_recipe.json)"
 				}
-         }
-      }
+			}
+		}
 	}
 }

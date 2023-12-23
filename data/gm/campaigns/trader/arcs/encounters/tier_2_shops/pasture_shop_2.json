@@ -8,7 +8,7 @@
       "inventory": {
          "shopkeeper_level": 2,
          "shopkeeper_gold": 490,
-		   "overall_price_multiplier": 1.9,
+         "overall_price_multiplier": 1.9,
          "entries": [
             {
                "items_matching": {
@@ -61,6 +61,25 @@
                   "max": 8
                },
                "fine_item_chance": 0.5
+            },
+            {
+               "items_matching": {
+                  "fertilizer": {
+                     "category": [
+                        "consumable"
+                     ],
+                     "material": [
+                        "fertilizer"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 4,
+                  "max": 6,
+                  "max_unique": 2
+               },
+               "fine_item_chance": 0,
+               "price_multiplier": 2.4
             },
             {
                "items": [

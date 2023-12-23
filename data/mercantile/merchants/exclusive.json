@@ -117,17 +117,27 @@
             "wanted_items": [
                {
                   "uri": "stonehearth:resources:earth_essence",
+                  "price_factor": 0.25
+               },
+               {
+                  "uri": "stonehearth_ace:resources:herb:hearthbud",
+                  "price_factor": 0.8
+               },
+               {
+                  "uri": "stonehearth_ace:refined:hearthbud_flakes",
                   "price_factor": 1
                },
                {
                   "uri": "stonehearth:resources:fiber:heirbloom_bundle",
-                  "price_factor": 2,
-                  "max_quantity": 10
+                  "price_factor": 2.2,
+                  "max_quantity": 12,
+                  "chance": 0.8
                },
                {
                   "material": "raw_food vegetable",
                   "price_factor": 1.8,
-                  "max_quantity": 8
+                  "max_quantity": 8,
+                  "chance": 0.6
                },
                {
                   "uri": "stonehearth:food:sugar:sugarbell_basket",

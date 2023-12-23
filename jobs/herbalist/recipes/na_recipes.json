@@ -1,27 +1,27 @@
 {
-   "mixins": "/stonehearth/jobs/herbalist/recipes/recipes.json",
-   "craftable_recipes": {
-      "workbenches": {
-         "recipes": {
-            "herbalist_workbench": {
-               "recipe": "file(na_herbalist_workbench_recipe.json)"
-            },
+	"mixins": "/stonehearth/jobs/herbalist/recipes/recipes.json",
+	"craftable_recipes": {
+		"workbenches": {
+			"recipes": {
+				"herbalist_workbench": {
+					"recipe": "file(na_herbalist_workbench_recipe.json)"
+				},
 				"herbalist_cauldron": {
 					"recipe": "file(na_herbalist_cauldron_recipe.json)"
 				}
-         }
-	   },  	  
-		"refinement" : {
-			"recipes" : {}
-	   },
+			}
+		},
+		"refinement": {
+			"recipes": {}
+		},
 		"refinement_seeds": {
-         "recipes": {
+			"recipes": {
 				"lingonberry_bush_seeds": {
 					"recipe": "file(lingonberry_bush_seeds_recipe.json)"
 				}
 			}
 		},
-	   "farming_enhancements": {
+		"farming_enhancements": {
 			"recipes": {
 				"mixintypes": {
 					"turnip_seeds_recipe": "remove",
@@ -64,13 +64,6 @@
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/pear_tree_seeds_2_recipe.json"
 				}
 			}
-		},
-		"refinement_ingredients" : {
-			"recipes" : {
-				"gruit" : {
-					"recipe" : "file(na_gruit_recipe.json)"
-				}
-			}
 		}
-   }
+	}
 }

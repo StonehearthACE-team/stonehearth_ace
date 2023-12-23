@@ -1,0 +1,31 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(working_ingredient_shepherd_fertilizer.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.working_ingredient.shepherd_fertilizer.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.working_ingredient.shepherd_fertilizer.description)",
+         "is_item": true
+      }
+   }
+}

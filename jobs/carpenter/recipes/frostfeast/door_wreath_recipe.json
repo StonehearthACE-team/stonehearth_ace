@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.door_wreath_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.door_wreath_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.door_wreath_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/frostfeast/door_wreath/frostfeast_door_wreath.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "manual_unlock": true,
+   "work_effect": "fiddle",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:portals:frostfeast:door",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:decoration:frostfeast:wreath:large",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:frostfeast:door_wreath"
+      }
+   ]
+}

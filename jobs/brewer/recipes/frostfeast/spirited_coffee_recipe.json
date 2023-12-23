@@ -1,0 +1,36 @@
+{
+   "type": "recipe",
+   "effort": 55,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.spirited_coffee_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.spirited_coffee_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.spirited_coffee_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/frostfeast/spirited_coffee/spirited_coffee.png",
+   "level_requirement": 5,
+   "manual_unlock": true,
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:coffee:ground",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:drink:spirit",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:dairy:cream",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:frostfeast:spirited_coffee"
+      }
+   ]
+}

@@ -1,0 +1,32 @@
+{
+   "type": "recipe",
+   "effort": 12,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.potion_anti_toxin_large_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.potion_anti_toxin_large_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.potion_anti_toxin_large_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/potion/potion_anti_toxin_large/potion_anti_toxin_large.png",
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ordinal": 3,
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:consumables:potion:healing:large",
+         "count": 1
+      },
+      {
+         "material": "herb noxious resource",
+         "count": 2
+      },
+      {
+         "material": "herb robust resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:potion:anti_toxin:large"
+      }
+   ]
+}

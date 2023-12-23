@@ -1,0 +1,28 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.potion_antidote_strong_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.potion_antidote_strong_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.potion_antidote_strong_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/potion/potion_antidote_strong/potion_antidote_strong.png",
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "ordinal": 2,
+   "work_effect": "brewer_stirring",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:consumables:strong_antidote",
+         "count": 1
+      },
+      {
+         "material": "drink_container milk",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:potion:antidote:strong"
+      }
+   ]
+}

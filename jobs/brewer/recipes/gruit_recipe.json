@@ -1,5 +1,26 @@
 {
-	"mixins": ["/stonehearth_ace/jobs/herbalist/recipes/gruit_recipe.json"],
+   "type": "recipe",
    "effort": 30,
-   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.gruit_recipe.flavor)"
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.gruit_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.gruit_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.gruit_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/gruit/gruit.png",
+   "workshop": "stonehearth_ace:brewer:workbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "herb pungent resource",
+         "count": 3
+      },
+      {
+         "material": "seed juniper",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:gruit"
+      }
+   ]
 }

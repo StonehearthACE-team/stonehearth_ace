@@ -1,0 +1,40 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.pudding_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.pudding_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.frostfeast.pudding_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/frostfeast/pudding/pudding.png",
+   "workshop": "stonehearth_ace:cook:oven_advanced",
+   "work_effect": "work_wait",
+   "manual_unlock": true,
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:batter_sweet",
+         "count": 2
+      },
+      {
+         "material": "butter cooking_ingredient",
+         "count": 1
+      },
+      {
+         "material": "nut_basket cooking_ingredient",
+         "count": 1
+      },
+      {
+         "material": "food_container raw_food fruit",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:food:sugar",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:frostfeast:pudding"
+      }
+   ]
+}

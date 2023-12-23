@@ -1,0 +1,46 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(must_serving.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 60
+         },
+         "default": {
+            "satisfaction": 45
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:sweet_energy",
+            "stonehearth_ace:buffs:consumption:refreshed_belly"
+         ],
+         "quality": 6,
+         "effect_loops": 2
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.frostfeast.must.must_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.frostfeast.must.must_serving.description)",
+         "material_tags": [
+            "drink",
+            "must_serving",
+            "must",
+            "afternoon_time",
+            "night_time",
+            "refreshing"
+         ],
+         "subject_override": "stonehearth_ace:drink:frostfeast:must"
+      }
+   }
+}

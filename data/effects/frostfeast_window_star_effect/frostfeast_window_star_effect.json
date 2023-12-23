@@ -1,0 +1,27 @@
+{
+   "type": "effect",
+   "tracks": {
+      "glow": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/lamp/lamp_glow.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": { "x": 0, "y": -1, "z": -0.3,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sparkles1": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth/data/horde/particles/lamp/lamp_sparkles.cubemitter.json",
+         "loop": true,
+         "start_time": 0,
+         "transforms": { "x": 0, "y": -1.2, "z": 0.15,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}

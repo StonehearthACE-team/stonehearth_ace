@@ -1,0 +1,37 @@
+{
+   "type": "recipe",
+   "work_units": 80,
+   "recipe_name": "i18n(stonehearth_ace:jobs.geomancer.recipes.golem_building_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.geomancer.recipes.golem_building_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.geomancer.recipes.golem_building_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/monsters/golems/golem_building/golem_building.png",
+   "level_requirement": 6,
+   "workshop": "stonehearth:geomancer:golem_workbench",
+   "ingredients": [
+      {
+         "material": "earth_essence resource",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth:refined:golem_parts",
+         "count": 4
+      },
+      {
+         "uri": "stonehearth_ace:refined:golem_hammer",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:consumables:creativity_tonic_2",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:consumables:stamina_tonic_2",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:monsters:golems:golem_building"
+      }
+   ]
+}

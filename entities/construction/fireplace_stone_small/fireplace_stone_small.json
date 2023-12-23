@@ -1,0 +1,52 @@
+{
+   "type": "entity",
+   "mixins": "file(fireplace_stone_small_ghost.json)",
+   "components": {
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ],
+         "region_collision_type": "none"
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(fireplace_stone_small_iconic.json)",
+         "ghost_form": "file(fireplace_stone_small_ghost.json)",
+         "placeable_on_ground": true,
+         "placeable_on_walls": true,
+         "hide_placement_ui": false
+      },
+      "stonehearth_ace:extensible_object": {
+         "extend_command": "stonehearth_ace:commands:extensible_object:extend",
+         "remove_command": "stonehearth_ace:commands:extensible_object:remove",
+         "extension_entity": "stonehearth_ace:extensible_object:solid_extension",
+         "max_length": 24,
+         "matrix": "chimney",
+         "rotations": [
+            {
+               "dimension": "y",
+               "direction": { "x": 0, "y": 1, "z": 0 },
+               "model": "file(chimney_stone_small.qb)",
+               "scale": 0.1,
+               "offset": { "x": 6, "y": 0, "z": 6 },
+               "origin": { "x": 0, "y": 3, "z": 0.5 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 1,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 1
+      }
+   }
+}
