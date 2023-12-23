@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 10,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.potion_healing_small_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.potion_healing_small_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.potion_healing_small_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/potion/potion_healing_small/potion_healing_small.png",
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "uri": "stonehearth:consumables:healing_tonic:small",
+         "count": 1
+      },
+      {
+         "material": "sweetener cooking_ingredient",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:potion:healing:small"
+      }
+   ]
+}

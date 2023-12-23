@@ -1,21 +1,28 @@
 {
    "components": {},
    "entity_data": {
-		"stonehearth:net_worth": {
+      "stonehearth:net_worth": {
          "shop_info": {
             "sellable_only_if_wanted": true
          }
       },
       "stonehearth:catalog": {
          "icon": "file(earth_essence.png)",
-		 "mixintypes": {
-			"material_tags": "override"
-		 },
-         "material_tags": ["stockpile_essence", "earth_essence", "resource"]
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "stockpile_essence",
+            "earth_essence",
+            "resource"
+         ]
       },
-		"stonehearth:reembarkation": {
+      "stonehearth:reembarkation": {
          "reembark_version": "stonehearth:resources:earth_essence",
          "reembark_max_count": 10
+      },
+      "stonehearth:appeal": {
+         "appeal": 8
       }
    }
 }

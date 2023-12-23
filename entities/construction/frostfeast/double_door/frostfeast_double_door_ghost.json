@@ -1,0 +1,60 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:portals:double_door:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(frostfeast_double_door.qb)",
+                     "file(frostfeast_double_door_2.qb)",
+                     "file(frostfeast_double_door_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(frostfeast_double_door.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(frostfeast_double_door_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(frostfeast_double_door_3.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.frostfeast.double_door.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.frostfeast.double_door.description)",
+         "icon": "file(frostfeast_double_door.png)",
+         "category": "door",
+         "material_tags": [
+            "wood",
+            "frostfeast",
+            "festival",
+            "fancy",
+            "double",
+            "portal",
+            "crafted",
+            "door",
+            "stockpile_portal"
+         ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
+      }
+   }
+}

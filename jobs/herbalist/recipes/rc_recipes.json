@@ -1,18 +1,18 @@
 {
-   "mixins": "/rayyas_children/jobs/herbalist/recipes/recipes.json",
-   "craftable_recipes": {
-      "workbenches": {
-         "recipes": {
-            "herbalist_workbench": {
-               "recipe": "file(rc_herbalist_workbench_recipe.json)"
-            },
+	"mixins": "/rayyas_children/jobs/herbalist/recipes/recipes.json",
+	"craftable_recipes": {
+		"workbenches": {
+			"recipes": {
+				"herbalist_workbench": {
+					"recipe": "file(rc_herbalist_workbench_recipe.json)"
+				},
 				"herbalist_cauldron": {
 					"recipe": "file(rc_herbalist_cauldron_recipe.json)"
 				}
-         }
-	  },  
-	  "farming_enhancements": {
-         "recipes": {
+			}
+		},
+		"farming_enhancements": {
+			"recipes": {
 				"mixintypes": {
 					"turnip_seeds_recipe": "remove",
 					"carrot_seeds_2_recipe": "remove",
@@ -63,13 +63,6 @@
 					"recipe": "/stonehearth_ace/jobs/herbalist/recipes/date_tree_seeds_2_recipe.json"
 				}
 			}
-	   },
-		"refinement_ingredients" : {
-			"recipes" : {
-				"gruit" : {
-					"recipe" : "file(rc_gruit_recipe.json)"
-				}
-			}
 		}
-   }
+	}
 }

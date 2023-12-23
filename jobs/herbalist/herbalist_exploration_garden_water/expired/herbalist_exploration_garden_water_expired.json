@@ -1,0 +1,68 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(herbalist_exploration_garden_water_expired_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(herbalist_exploration_garden_water_expired_ghost.json)",
+         "iconic_form": "file(herbalist_exploration_garden_water_expired_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "progress_text": "stonehearth_ace:ui.game.unit_frame.transform.progress.filling",
+         "status_key": "stonehearth_ace:ai.actions.status_text.filling",
+         "default_key": "exploration_tub_refill",
+         "transform_options": {
+            "exploration_tub_refill": {
+               "transform_uri": "stonehearth_ace:herbalist:exploration_garden:water",
+               "command": "stonehearth_ace:commands:transform:exploration_tub_refill",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_herbalist_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:landmark:terrain:water_bucket",
+               "transforming_worker_effect": "fiddle",
+               "transforming_worker_effect_times": 1,
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth:jobs:herbalist": true
+               },
+               "apply_ingredient_quality": true
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 9,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 2
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

@@ -1,12 +1,15 @@
 {
-   "type" : "effect",
+   "type": "effect",
    "tracks": {
       "cubemitter": {
          "cubemitter": "/stonehearth_ace/data/horde/particles/flies/flies.cubemitter.json",
          "transforms": {
-            "x":0,
-            "y":0.5
+            "x": 0,
+            "y": 0.5
          }
+      },
+      "sound": {
+         "max_instances": 1
       }
    }
-} 
+}

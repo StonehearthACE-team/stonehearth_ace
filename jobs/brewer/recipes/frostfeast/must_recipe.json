@@ -1,0 +1,40 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.must_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.must_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.frostfeast.must_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/frostfeast/must/must.png",
+   "level_requirement": 3,
+   "manual_unlock": true,
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "material": "malt brewing_ingredient",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:drink:gruit",
+         "count": 1
+      },
+      {
+         "material": "sweetener cooking_ingredient",
+         "count": 1
+      },
+      {
+         "material": "seed juniper",
+         "count": 2
+      },
+      {
+         "material": "seasoning",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:frostfeast:must"
+      }
+   ]
+}

@@ -11,16 +11,32 @@
       "destination": {
          "region": [
             {
-               "min": { "x": -3, "y": 0, "z": -3 },
-               "max": { "x": 4, "y": 11, "z": 4 }
+               "min": {
+                  "x": -3,
+                  "y": 0,
+                  "z": -3
+               },
+               "max": {
+                  "x": 4,
+                  "y": 11,
+                  "z": 4
+               }
             }
          ]
       },
       "region_collision_shape": {
          "region": [
             {
-               "min": { "x": -3, "y": 0, "z": -3 },
-               "max": { "x": 4, "y": 11, "z": 4 }
+               "min": {
+                  "x": -3,
+                  "y": 0,
+                  "z": -3
+               },
+               "max": {
+                  "x": 4,
+                  "y": 11,
+                  "z": 4
+               }
             }
          ]
       },
@@ -61,6 +77,9 @@
       },
       "stonehearth:appeal": {
          "appeal": 115
+      },
+      "stonehearth:reembarkation": {
+         "reembark_version": "stonehearth_ace:decoration:dragon_shrine"
       }
    }
 }

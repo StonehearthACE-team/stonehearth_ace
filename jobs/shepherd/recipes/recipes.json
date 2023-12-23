@@ -1,87 +1,111 @@
 {
-   "craftable_recipes": {
-	   "workbenches": {
+	"craftable_recipes": {
+		"workbenches": {
 			"ordinal": 1,
-         "name": "i18n(stonehearth_ace:jobs.shepherd.recipes.workbenches_name)",
-		   "recipes": {
+			"name": "i18n(stonehearth_ace:jobs.shepherd.recipes.workbenches_name)",
+			"recipes": {
 				"shepherd_workbench": {
-			      "recipe": "file(shepherd_workbench_recipe.json)"
-			   },
+					"recipe": "file(shepherd_workbench_recipe.json)"
+				},
 				"shepherd_churn": {
-			      "recipe": "file(shepherd_churn_recipe.json)"
-			   },
-			   "cheese_vat": {
-			      "recipe": "file(cheese_vat_recipe.json)"
-			   }
-		   }
-	   },
+					"recipe": "file(shepherd_churn_recipe.json)"
+				},
+				"shepherd_composter": {
+					"recipe": "file(shepherd_composter_recipe.json)"
+				},
+				"cheese_vat": {
+					"recipe": "file(cheese_vat_recipe.json)"
+				}
+			}
+		},
 		"refining": {
 			"ordinal": 10,
-         "name": "i18n(stonehearth_ace:jobs.shepherd.recipes.refining_name)",
-		   "recipes": {
-			   "curdling_mixture": {
-			      "recipe": "file(curdling_mixture_recipe.json)"
-			   },
+			"name": "i18n(stonehearth_ace:jobs.shepherd.recipes.refining_name)",
+			"recipes": {
+				"curdling_mixture": {
+					"recipe": "file(curdling_mixture_recipe.json)"
+				},
 				"butter": {
-			      "recipe": "file(butter_recipe.json)"
-			   },
+					"recipe": "file(butter_recipe.json)"
+				},
 				"mayonnaise": {
-			      "recipe": "file(mayonnaise_recipe.json)"
-			   },
+					"recipe": "file(mayonnaise_recipe.json)"
+				},
 				"cream": {
-			      "recipe": "file(cream_recipe.json)"
-			   }
-		   }
-	   },
-	   "animal_feed": {
+					"recipe": "file(cream_recipe.json)"
+				}
+			}
+		},
+		"animal_feed": {
 			"ordinal": 20,
-         "name": "i18n(stonehearth_ace:jobs.shepherd.recipes.animal_feed_name)",
-         "recipes": {
-            "fodder": {
-               "recipe": "file(fodder_recipe.json)"
-            },
+			"name": "i18n(stonehearth_ace:jobs.shepherd.recipes.animal_feed_name)",
+			"recipes": {
+				"fodder": {
+					"recipe": "file(fodder_recipe.json)"
+				},
 				"rabbit_feed": {
-               "recipe": "file(rabbit_feed_recipe.json)"
-            },
+					"recipe": "file(rabbit_feed_recipe.json)"
+				},
 				"duck_feed": {
-               "recipe": "file(duck_feed_recipe.json)"
-            },
+					"recipe": "file(duck_feed_recipe.json)"
+				},
 				"poyo_feed": {
-               "recipe": "file(poyo_feed_recipe.json)"
-            },
+					"recipe": "file(poyo_feed_recipe.json)"
+				},
 				"sheep_feed": {
 					"recipe": "file(sheep_feed_recipe.json)"
 				},
 				"oinker_feed": {
-               "recipe": "file(oinker_feed_recipe.json)"
-            },
+					"recipe": "file(oinker_feed_recipe.json)"
+				},
 				"moomoo_feed": {
-               "recipe": "file(moomoo_feed_recipe.json)"
-            },
-            "ostrich_feed": {
-               "recipe": "file(ostrich_feed_recipe.json)"
-            },
+					"recipe": "file(moomoo_feed_recipe.json)"
+				},
+				"ostrich_feed": {
+					"recipe": "file(ostrich_feed_recipe.json)"
+				},
 				"hearth_fodder": {
-               "recipe": "file(hearth_fodder_recipe.json)"
-            }
-         }
-      },
+					"recipe": "file(hearth_fodder_recipe.json)"
+				}
+			}
+		},
 		"animal_furniture": {
 			"ordinal": 30,
-         "name": "i18n(stonehearth_ace:jobs.shepherd.recipes.animal_furniture_name)",
-		   "recipes": {
-			   "pasture_bed_small": {
-			      "recipe": "file(pasture_bed_small_recipe.json)"
-			   },
+			"name": "i18n(stonehearth_ace:jobs.shepherd.recipes.animal_furniture_name)",
+			"recipes": {
+				"pasture_bed_small": {
+					"recipe": "file(pasture_bed_small_recipe.json)"
+				},
 				"pasture_bed": {
-			      "recipe": "file(pasture_bed_recipe.json)"
-			   }
-		   }
-	   },
-		"pets": {
+					"recipe": "file(pasture_bed_recipe.json)"
+				}
+			}
+		},
+		"fertilizer": {
 			"ordinal": 35,
+			"name": "i18n(stonehearth_ace:jobs.shepherd.recipes.fertilizer_name)",
+			"recipes": {
+				"fertilizer": {
+					"recipe": "file(fertilizer_recipe.json)"
+				},
+				"fertilizer_upgrade": {
+					"recipe": "file(fertilizer_upgrade_recipe.json)"
+				},
+				"fertilizer_upgrade_2": {
+					"recipe": "file(fertilizer_upgrade_2_recipe.json)"
+				},
+				"fertilizer_megacrop": {
+					"recipe": "file(fertilizer_megacrop_recipe.json)"
+				},
+				"hearth_fertilizer": {
+					"recipe": "file(hearth_fertilizer_recipe.json)"
+				}
+			}
+		},
+		"pets": {
+			"ordinal": 50,
 			"name": "i18n(stonehearth_ace:jobs.shepherd.recipes.pets_name)",
-         "recipes": {
+			"recipes": {
 				"simple_bed_pet": {
 					"recipe": "file(simple_bed_pet_recipe.json)"
 				},
@@ -89,35 +113,38 @@
 					"recipe": "file(simple_bed_pet_2_recipe.json)"
 				},
 				"kibble": {
-               "recipe": "file(kibble_recipe.json)"
-            },
-            "kibble_fish": {
-               "recipe": "file(kibble_fish_recipe.json)"
-            },
-            "kibble_meat": {
-               "recipe": "file(kibble_meat_recipe.json)"
-            },
+					"recipe": "file(kibble_recipe.json)"
+				},
+				"kibble_fish": {
+					"recipe": "file(kibble_fish_recipe.json)"
+				},
+				"kibble_meat": {
+					"recipe": "file(kibble_meat_recipe.json)"
+				},
 				"kibble_veggie": {
-               "recipe": "file(kibble_veggie_recipe.json)"
-            },
+					"recipe": "file(kibble_veggie_recipe.json)"
+				},
 				"kibble_hearth": {
-               "recipe": "file(kibble_hearth_recipe.json)"
-            }
-         }
-      },
+					"recipe": "file(kibble_hearth_recipe.json)"
+				}
+			}
+		},
 		"decorations": {
-         "ordinal": 85,
-         "name": "i18n(stonehearth_ace:jobs.shepherd.recipes.decorations_name)",
-         "recipes": {
-            "wooden_sign_shepherd": {
-               "recipe": "file(wooden_sign_shepherd_recipe.json)"
-            }
-         }
-      },
+			"ordinal": 85,
+			"name": "i18n(stonehearth_ace:jobs.shepherd.recipes.decorations_name)",
+			"recipes": {
+				"wooden_sign_shepherd": {
+					"recipe": "file(wooden_sign_shepherd_recipe.json)"
+				},
+				"thatch_pile": {
+					"recipe": "file(thatch_pile_recipe.json)"
+				}
+			}
+		},
 		"candledark": {
-         "ordinal": 998,
-         "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
-         "recipes": {
+			"ordinal": 998,
+			"name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
+			"recipes": {
 				"candledark_scarecrow": {
 					"recipe": "file(candledark/scarecrow_recipe.json)"
 				},
@@ -127,12 +154,12 @@
 				"candledark_haystack_tall": {
 					"recipe": "file(candledark/haystack_tall_recipe.json)"
 				}
-         }
-      },
+			}
+		},
 		"frostfeast": {
-         "ordinal": 999,
-         "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
-         "recipes": {
+			"ordinal": 2,
+			"name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
+			"recipes": {
 				"frostfeast_goat": {
 					"recipe": "file(frostfeast/goat_recipe.json)"
 				},
@@ -142,7 +169,7 @@
 				"frostfeast_goat_large": {
 					"recipe": "file(frostfeast/goat_large_recipe.json)"
 				}
-         }
-      }
-   }
+			}
+		}
+	}
 }

@@ -1,7 +1,20 @@
 {
    "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 112,
+         "rarity": "uncommon"
+      },
       "stonehearth:catalog": {
-         "material_tags":["crafted", "golem_pick", "civillian_equipment"]
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "refined",
+            "crafted",
+            "golem_pick",
+            "golem_parts",
+            "stockpile_refined_weaver"
+         ]
       }
    }
 }

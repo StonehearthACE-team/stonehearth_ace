@@ -1,6 +1,6 @@
 {
    "craftable_recipes": {
-	  "legendary": {
+      "legendary": {
          "ordinal": 11,
          "name": "i18n(stonehearth:jobs.common.recipes.legendary_name)",
          "recipes": {
@@ -12,13 +12,15 @@
             }
          }
       },
-		"resources": {
+      "refining": {
+         "ordinal": 12,
+         "name": "i18n(stonehearth_ace:jobs.geomancer.recipes.refining_name)",
          "recipes": {
-            "mixintypes": {
-               "earthbud_seeds": "remove"
-            },
             "hearthbud_flakes": {
                "recipe": "file(hearthbud_flakes_recipe.json)"
+            },
+            "golem_parts": {
+               "recipe": "file(golem_parts_recipe.json)"
             },
             "block_marble_small": {
                "recipe": "file(block_marble_small_recipe.json)"
@@ -28,6 +30,13 @@
             },
             "block_marble_large": {
                "recipe": "file(block_marble_large_recipe.json)"
+            }
+         }
+      },
+      "resources": {
+         "recipes": {
+            "mixintypes": {
+               "earthbud_seeds": "remove"
             },
             "summon_stone_vein_marble": {
                "recipe": "file(summon_stone_vein_marble_recipe.json)"
@@ -37,7 +46,14 @@
             }
          }
       },
-		"decoration": {
+      "golems": {
+         "recipes": {
+            "golem_building": {
+               "recipe": "file(golem_building_recipe.json)"
+            }
+         }
+      },
+      "decoration": {
          "ordinal": 100,
          "name": "i18n(stonehearth_ace:jobs.geomancer.recipes.decoration_name)",
          "recipes": {

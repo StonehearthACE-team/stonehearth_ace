@@ -4,7 +4,10 @@
       "cubemitter": {
          "type": "cubemitter",
          "cubemitter": "/stonehearth_ace/data/horde/particles/bees/bees_swarm.cubemitter.json",
-         "transforms": { "x": 0, "y": 1, "z": 0,
+         "transforms": {
+            "x": 0,
+            "y": 1,
+            "z": 0,
             "rx": 90,
             "ry": 0,
             "rz": 0
@@ -16,6 +19,7 @@
          "loop": true,
          "start_time": 10,
          "min_distance": 28,
+         "max_instances": 2,
          "falloff": 4,
          "volume": 45,
          "track": "stonehearth_ace:sounds:bees:swarm"

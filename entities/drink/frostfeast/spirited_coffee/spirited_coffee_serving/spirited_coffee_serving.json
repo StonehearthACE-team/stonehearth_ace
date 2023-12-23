@@ -1,0 +1,54 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(spirited_coffee_serving.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 90
+         },
+         "default": {
+            "satisfaction": 75
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:coffee_energy",
+            "stonehearth_ace:buffs:consumption:warm_belly",
+            "stonehearth_ace:buffs:consumption:light_headed"
+         ],
+         "quality": 6,
+         "effect_loops": 4
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.frostfeast.spirited_coffee.spirited_coffee_serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.frostfeast.spirited_coffee.spirited_coffee_serving.description)",
+         "material_tags": [
+            "drink",
+            "alcoholic",
+            "coffee",
+            "spirited_coffee_serving",
+            "spirited_coffee",
+            "night_time",
+            "warming"
+         ],
+         "subject_override": "stonehearth_ace:drink:frostfeast:spirited_coffee"
+      }
+   }
+}

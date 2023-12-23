@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 16,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.door_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.door_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.door_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/frostfeast/door/frostfeast_door.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "manual_unlock": true,
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "material": "herb white resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:refined:metal_bits:hard",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:frostfeast:door"
+      }
+   ]
+}

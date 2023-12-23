@@ -1,7 +1,29 @@
 {
+   "components": {
+      "mob": {
+         "model_origin": {
+            "x": -0.05,
+            "y": 0,
+            "z": 0.05
+         },
+         "region_origin": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+         }
+      }
+   },
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags":["crafted", "golem_parts"]
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "refined",
+            "crafted",
+            "golem_parts",
+            "stockpile_refined_weaver"
+         ]
       }
    }
 }

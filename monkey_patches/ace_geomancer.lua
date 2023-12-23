@@ -5,10 +5,14 @@ local log = radiant.log.create_logger('geomancer')
 
 local ACE_HELPER_RECIPES = radiant.resources.load_json('stonehearth_ace:jobs:geomancer:helper_recipes')
 
-AceGeomancerClass._ace_old__register_with_town = GeomancerClass._register_with_town
 function AceGeomancerClass:_register_with_town()
-    self:_ace_old__register_with_town()
     local player_id = radiant.entities.get_player_id(self._sv._entity)
+
+   -- Enforce golem limit.
+   local town = stonehearth.town:get_town(player_id)
+   if town then
+      town:add_placement_slot_entity(self._sv._entity, self._sv.max_num_golems)
+   end
 
    -- Teach the player the knowledge of Hearthbud flowers.
    stonehearth.job:get_job_info(player_id, "stonehearth:jobs:farmer"):manually_unlock_crop("earthbud", true)

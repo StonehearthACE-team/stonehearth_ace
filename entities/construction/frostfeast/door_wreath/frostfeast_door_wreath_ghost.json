@@ -1,0 +1,73 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:portals:single_door:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(frostfeast_door_wreath.qb)",
+                     "file(frostfeast_door_wreath_2.qb)",
+                     "file(frostfeast_door_wreath_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(frostfeast_door_wreath.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(frostfeast_door_wreath_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(frostfeast_door_wreath_3.qb)"
+            ]
+         }
+      },
+      "stonehearth:fixture": {
+         "valign": "bottom",
+         "cursor": "stonehearth:cursors:create_door",
+         "margin": {
+            "left": 1,
+            "right": 1,
+            "top": 1
+         },
+         "bounds": {
+            "min": { "x": -1, "y": 0 },
+            "max": { "x": 2, "y": 5 }
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.frostfeast.door_wreath.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.frostfeast.door_wreath.description)",
+         "icon": "file(frostfeast_door_wreath.png)",
+         "category": "door",
+         "material_tags": [
+            "wood",
+            "frostfeast",
+            "festival",
+            "fancy",
+            "portal",
+            "crafted",
+            "door",
+            "stockpile_portal"
+         ]
+      }
+   }
+}

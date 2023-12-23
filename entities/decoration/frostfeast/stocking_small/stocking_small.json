@@ -17,15 +17,13 @@
          "placeable_on_walls": true
       },
       "stonehearth:traveler_attraction": {},
-      "stonehearth_ace:transform": {}
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth_ace:commands:transform:frostfeast:swap_model_variant"
+         ]
+      }
    },
    "entity_data": {
-      "stonehearth_ace:transform_data": {
-         "transform_uri": "stonehearth_ace:decoration:frostfeast:stocking:small",
-         "command": "stonehearth_ace:commands:transform:frostfeast:swap_model_variant",
-         "transform_effect": "stonehearth:effects:poof_effect",
-         "auto_request": false
-      },
       "stonehearth:net_worth": {
          "value_in_gold": 35,
          "rarity": "uncommon",

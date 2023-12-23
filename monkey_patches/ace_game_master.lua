@@ -2,9 +2,9 @@ local GameMaster = require 'stonehearth.services.server.game_master.controllers.
 local AceGameMaster = class()
 
 AceGameMaster._ace_old_create = GameMaster.create
-function AceGameMaster:create()
+function AceGameMaster:create(player_id)
    self._encounter_music_map = {}
-   self:_ace_old_create()
+   self:_ace_old_create(player_id)
 end
 
 AceGameMaster._ace_old_restore = GameMaster.restore

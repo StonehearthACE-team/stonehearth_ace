@@ -6,16 +6,20 @@
    "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_exploration_garden_water_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_exploration_garden_water_recipe.flavor)",
    "portrait": "/stonehearth_ace/jobs/herbalist/herbalist_exploration_garden_water/herbalist_exploration_garden_water.png",
-	"work_effect": "work",
+   "work_effect": "work",
    "level_requirement": 3,
    "ingredients": [
-		{
+      {
          "material": "wood resource",
          "count": 6
       },
-		{
-         "material": "clay resource",
-         "count": 3
+      {
+         "uri": "stonehearth_ace:landmark:terrain:dirt_patch:small",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:landmark:terrain:water_bucket",
+         "count": 1
       }
    ],
    "produces": [

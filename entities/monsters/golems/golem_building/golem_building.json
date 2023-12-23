@@ -1,0 +1,168 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:monster",
+      "file(golem_building_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(golem_building_iconic.json)",
+         "ghost_form": "file(golem_building_ghost.json)",
+         "placeable_on_ground": true,
+         "must_parent_to_terrain": true,
+         "hide_move_ui": true,
+         "hide_undeploy_ui": true
+      },
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth:commands:undeploy_golem"
+         ]
+      },
+      "stonehearth:siege_weapon": {
+         "max_uses": 0
+      },
+      "stonehearth:ai": {},
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/golems/golem_ogre",
+         "scale": 0.15,
+         "color_map": "stonehearth:color_map:mob",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "stonehearth:job": {
+         "initial_job": "stonehearth_ace:jobs:npc:builder"
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(golem_building.qb)"
+            ]
+         }
+      },
+      "stonehearth:posture": {
+         "priorities": {
+            "stonehearth:climb_ladder_up": 1100,
+            "stonehearth:climb_ladder_down": 1100,
+            "stonehearth:sitting": 900,
+            "stonehearth:panic": 100
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 360
+         },
+         "muscle": {
+            "type": "basic",
+            "value": 0
+         },
+         "menace": {
+            "type": "basic",
+            "value": 1
+         },
+         "courage": {
+            "type": "basic",
+            "value": 0
+         },
+         "speed": {
+            "type": "basic",
+            "value": 92
+         },
+         "exp_reward": {
+            "type": "basic",
+            "value": 0
+         }
+      },
+      "stonehearth:buffs": {
+         "buffs": {
+            "stonehearth_ace:buffs:golem:regeneration": true,
+            "stonehearth_ace:buffs:golem:undeployment": true
+         }
+      },
+      "stonehearth:carry_block": {},
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "radius": 48
+            }
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "roll_type": "each_of",
+               "items": {
+                  "earth_essence": {
+                     "uri": "stonehearth:resources:earth_essence",
+                     "num_rolls": 2
+                  },
+                  "golem_parts": {
+                     "uri": "stonehearth:refined:golem_parts",
+                     "num_rolls": 3
+                  }
+               }
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 410,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:drop_distance": 2,
+      "stonehearth:renderer": {
+         "can_visualize_paths": true
+      },
+      "stonehearth:camera": {
+         "is_followable": true
+      },
+      "stonehearth:entity_radius": 1.25,
+      "stonehearth:entity_reach": 4,
+      "stonehearth:ai_packs": {
+         "mixintypes": {
+            "packs": "override"
+         },
+         "packs": [
+            "stonehearth:ai_pack:wimpy",
+            "stonehearth:ai_pack:panic:flee",
+            "stonehearth:ai_pack:idle",
+            "stonehearth:ai_pack:idle:bored:idle_effects",
+            "stonehearth:ai_pack:idle:bored:wander",
+            "stonehearth:ai_pack:death"
+         ]
+      },
+      "stonehearth:observers:avoid_threatening_entities": {
+         "min_avoidance_distance": 48,
+         "max_avoidance_distance": 48
+      },
+      "stonehearth:portrait": {
+         "portrait_types": {
+            "headshot": {
+               "camera": {
+                  "pos": [
+                     20.4,
+                     2.4,
+                     -32.4
+                  ],
+                  "look_at": [
+                     0,
+                     2.1,
+                     0
+                  ],
+                  "fov": 64
+               }
+            }
+         }
+      },
+      "stonehearth:item_placement_limit": {
+         "tag": "golem",
+         "default": 0
+      }
+   }
+}

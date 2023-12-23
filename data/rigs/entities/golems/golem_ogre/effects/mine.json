@@ -1,0 +1,59 @@
+   {
+      "type": "effect",
+      "tracks": {
+         "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "speed": 2.0,
+            "animation": "work.json",
+            "loop": true
+         },
+         "hide_carrying": {
+            "type": "hide_bone",
+            "start_time": 0,
+            "end_time": 0,
+            "bone": "carry"
+         },
+         "grab_hammer": {
+            "mixintypes": {
+               "item": "remove"
+            },
+            "type": "attach_item_effect",
+            "start_time": 0,
+            "end_time": 0,
+            "item_in_slot": "mainhand",
+            "bone": "mainHand"
+         },
+         "sound": {
+            "type": "sound_effect",
+            "duration": 0,
+            "start_time": 200,
+            "min_distance": 20,
+            "falloff": 5.5,
+            "volume": 70,
+            "track": {
+               "type": "one_of",
+               "items": [
+                  "stonehearth:sounds:golem_mine_01",
+                  "stonehearth:sounds:golem_mine_02",
+                  "stonehearth:sounds:golem_mine_03"
+               ]
+            }
+         },
+         "dust": {
+            "type": "cubemitter",
+            "start_time": 400,
+            "end_time": 420,
+            "cubemitter": "particles/dust_poof/dust_poof.cubemitter.json",
+            "transforms": {
+               "x": 0,
+               "y": -2,
+               "z": -1.5,
+               "rx": 0,
+               "ry": 0,
+               "rz": 0
+            },
+            "bone": "mainHand"
+         }
+      }
+   }

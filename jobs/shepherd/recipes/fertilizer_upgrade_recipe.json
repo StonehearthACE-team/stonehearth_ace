@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.fertilizer_upgrade_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.fertilizer_upgrade_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.shepherd.recipes.fertilizer_upgrade_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/fertilizer_upgrade/fertilizer_upgrade.png",
+   "workshop": "stonehearth_ace:shepherd:composter",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:food:fish_roe:fish_roe_basket",
+         "count": 1
+      },
+      {
+         "material": "bone resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:fertilizer_upgrade"
+      }
+   ]
+}

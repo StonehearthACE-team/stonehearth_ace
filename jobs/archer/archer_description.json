@@ -2,7 +2,8 @@
    "type": "job",
    "description": "i18n(stonehearth_ace:jobs.archer.archer_description.description)",
    "talisman_uris": {
-      "stonehearth:archer:talisman": true
+      "stonehearth:archer:talisman": true,
+      "stonehearth_ace:archer:talisman:bone": true
    },
    "xp_rewards": {
       "training": 3
@@ -13,13 +14,15 @@
          "bow_archer": {
             "command": "stonehearth_ace:commands:toggle_job_role:bow_archer",
             "types": [
-               "bow", "quiver_arrows"
+               "bow",
+               "quiver_arrows"
             ]
          },
          "crossbow_archer": {
             "command": "stonehearth_ace:commands:toggle_job_role:crossbow_archer",
             "types": [
-               "crossbow", "quiver_bolts"
+               "crossbow",
+               "quiver_bolts"
             ]
          }
       },
@@ -32,12 +35,12 @@
          },
          "perks": [
             {
-					"type": "add_combat_action",
+               "type": "add_combat_action",
                "name": "i18n(stonehearth_ace:jobs.archer.archer_description.level_1_data.training_perk_name)",
                "description": "i18n(stonehearth_ace:jobs.archer.archer_description.level_1_data.training_perk_description)",
                "id": "archer_default_shot",
                "icon": "file(images/training.png)",
-					"equipment": "stonehearth:archer:abilities:default_shot",
+               "equipment": "stonehearth:archer:abilities:default_shot",
                "action_type": "stonehearth:combat:ranged_attacks",
                "level": 1,
                "demote_fn": "remove_combat_action"
@@ -50,12 +53,12 @@
             }
          ]
       },
-	  "2": {
+      "2": {
          "mixintypes": {
             "perks": "override"
          },
          "perks": [
-			   {
+            {
                "name": "i18n(stonehearth_ace:jobs.archer.archer_description.level_2_data.xbow_proficiency_name)",
                "id": "xbow_proficiency",
                "icon": "/stonehearth_ace/jobs/archer/images/xbow_proficiency.png",
@@ -81,40 +84,40 @@
             }
          ]
       },
-	  "3": {
+      "3": {
          "mixintypes": {
             "perks": "override"
          },
          "perks": [
             {
-                  "type": "apply_buff",
-                  "name": "i18n(stonehearth:jobs.archer.archer_description.level_3_data.perk_000_name)",
-                  "id": "archer_range_increase_1",
-                  "icon": "/stonehearth/jobs/archer/images/archer_perk_range_up_1.png",
-                  "buff_name": "stonehearth:buffs:archer:range_up_1",
-                  "description": "i18n(stonehearth:jobs.archer.archer_description.level_3_data.perk_000_description)",
-                  "level": 3,
-                  "demote_fn": "remove_buff"
-               },
-               {
-                  "type": "apply_buff",
-                  "name": "i18n(stonehearth:jobs.archer.archer_description.level_1_data.perk_001_name)",
-                  "id": "archer_damage_up",
-                  "icon": "/stonehearth/jobs/archer/images/archer_perk_damage_up.png",
-                  "buff_name": "stonehearth:buffs:archer:damage_up_1",
-                  "description": "i18n(stonehearth_ace:jobs.archer.archer_description.level_1_data.perk_001_description)",
-                  "level": 3,
-                  "demote_fn": "remove_buff"
-               },
-               {
-                  "type": "apply_chained_buff",
-                  "id": "archer_training_3",
-                  "buff_name": "stonehearth_ace:buffs:0_archer:training_3",
-                  "last_buff": "stonehearth_ace:buffs:0_archer:training_2",
-                  "demote_fn": "remove_buff"
-               }
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.archer.archer_description.level_3_data.perk_000_name)",
+               "id": "archer_range_increase_1",
+               "icon": "/stonehearth/jobs/archer/images/archer_perk_range_up_1.png",
+               "buff_name": "stonehearth:buffs:archer:range_up_1",
+               "description": "i18n(stonehearth:jobs.archer.archer_description.level_3_data.perk_000_description)",
+               "level": 3,
+               "demote_fn": "remove_buff"
+            },
+            {
+               "type": "apply_buff",
+               "name": "i18n(stonehearth:jobs.archer.archer_description.level_1_data.perk_001_name)",
+               "id": "archer_damage_up",
+               "icon": "/stonehearth/jobs/archer/images/archer_perk_damage_up.png",
+               "buff_name": "stonehearth:buffs:archer:damage_up_1",
+               "description": "i18n(stonehearth_ace:jobs.archer.archer_description.level_1_data.perk_001_description)",
+               "level": 3,
+               "demote_fn": "remove_buff"
+            },
+            {
+               "type": "apply_chained_buff",
+               "id": "archer_training_3",
+               "buff_name": "stonehearth_ace:buffs:0_archer:training_3",
+               "last_buff": "stonehearth_ace:buffs:0_archer:training_2",
+               "demote_fn": "remove_buff"
+            }
          ]
-	   },
+      },
       "4": {
          "mixintypes": {
             "perks": "override"
@@ -174,5 +177,5 @@
             }
          ]
       }
-	}
+   }
 }

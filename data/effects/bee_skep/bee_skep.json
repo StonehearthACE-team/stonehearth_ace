@@ -4,7 +4,10 @@
       "cubemitter": {
          "type": "cubemitter",
          "cubemitter": "/stonehearth_ace/data/horde/particles/bees/bee_skep.cubemitter.json",
-         "transforms": { "x": 0, "y": 2.2, "z": 0,
+         "transforms": {
+            "x": 0,
+            "y": 2.2,
+            "z": 0,
             "rx": 90,
             "ry": 0,
             "rz": 0
@@ -15,6 +18,7 @@
          "loop": true,
          "start_time": 10,
          "min_distance": 16,
+         "max_instances": 1,
          "falloff": 6,
          "volume": 32,
          "track": "stonehearth_ace:sounds:bees:skep"

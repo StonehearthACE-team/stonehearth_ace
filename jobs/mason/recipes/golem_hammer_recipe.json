@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 30,
+   "work_units": 8,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.golem_hammer_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.golem_hammer_recipe.description)",
+   "flavor": "",
+   "portrait": "/stonehearth_ace/entities/refined/golem_hammer/golem_hammer.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 5,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "material": "leather resource",
+         "count": 1
+      },
+      {
+         "material": "stone resource",
+         "count": 4
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:golem_hammer"
+      }
+   ]
+}

@@ -1,0 +1,78 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "mob": {},
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(frostfeast_window_wide.qb)",
+                     "file(frostfeast_window_wide_2.qb)",
+                     "file(frostfeast_window_wide_3.qb)"
+                  ]
+               }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(frostfeast_window_wide.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(frostfeast_window_wide_2.qb)"
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(frostfeast_window_wide_3.qb)"
+            ]
+         }
+      },
+      "stonehearth:fixture": {
+         "cursor": "stonehearth:cursors:create_window",
+         "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 1,
+            "bottom": 1
+         },
+         "bounds": {
+            "min": { "x": -1, "y": 0 },
+            "max": { "x": 2, "y": 2 }
+         }
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": -1, "y": 0 },
+               "max": { "x": 2, "y": 2 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.frostfeast.window_wide.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.frostfeast.window_wide.description)",
+         "icon": "file(frostfeast_window_wide.png)",
+         "category": "window",
+         "material_tags": [
+            "wood",
+            "frostfeast",
+            "festival",
+            "fancy",
+            "portal",
+            "crafted",
+            "window",
+            "stockpile_portal"
+         ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
+      }
+   }
+}

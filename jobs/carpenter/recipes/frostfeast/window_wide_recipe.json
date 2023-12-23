@@ -1,0 +1,27 @@
+{
+   "type": "recipe",
+   "effort": 13,
+   "work_units": 6,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.window_wide_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.window_wide_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.frostfeast.window_wide_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/frostfeast/window_wide/frostfeast_window_wide.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      },
+      {
+         "material": "herb white resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:frostfeast:window_wide"
+      }
+   ]
+}

@@ -5,10 +5,10 @@
             "legendary_hood": {
                "recipe": "file(legendary_hood_recipe.json)"
             },
-				"legendary_cape": {
+            "legendary_cape": {
                "recipe": "file(legendary_cape_recipe.json)"
             },
-				"rc_legendary_circlet": {
+            "rc_legendary_circlet": {
                "recipe": "/rayyas_children/jobs/weaver/recipes/rc_legendary_circlet_recipe.json"
             },
             "legendary_rc_bowstring": {
@@ -16,19 +16,19 @@
             }
          }
       },
-		"crafting_materials": {
+      "crafting_materials": {
          "ordinal": 20,
          "recipes": {
             "thatch_twine_bundle": {
                "recipe": "file(thatch_twine_bundle_recipe.json)"
             },
-				"yarn": {
+            "yarn": {
                "recipe": "file(yarn_recipe.json)"
             },
-				"fine_stuffing": {
+            "fine_stuffing": {
                "recipe": "file(fine_stuffing_recipe.json)"
             },
-				"bolt_of_cloth_amberstone": {
+            "bolt_of_cloth_amberstone": {
                "recipe": "file(bolt_of_cloth_amberstone_recipe.json)"
             }
          }
@@ -36,11 +36,11 @@
       "storage": {
          "ordinal": 30
       },
-	   "weapons": {
-	      "ordinal": 40,
+      "weapons": {
+         "ordinal": 40,
          "name": "i18n(stonehearth_ace:jobs.weaver.recipes.weapons_name)",
-	      "recipes": {
-			"cloth_padded_vest": {
+         "recipes": {
+            "cloth_padded_vest": {
                "recipe": "/stonehearth/jobs/weaver/recipes/cloth_padded_vest_recipe.json"
             },
             "leather_helmet": {
@@ -49,103 +49,103 @@
             "leather_vest": {
                "recipe": "/stonehearth/jobs/weaver/recipes/leather_vest_recipe.json"
             },
-				"simple_quiver_bolts": {
+            "simple_quiver_bolts": {
                "recipe": "file(simple_quiver_bolts_recipe.json)"
             },
             "cloth_padded_helmet": {
                "recipe": "/stonehearth/jobs/weaver/recipes/cloth_padded_helmet_recipe.json"
             },
-				"chitin_armor": {
+            "chitin_armor": {
                "recipe": "file(chitin_armor_recipe.json)"
             },
-				"chitin_helm": {
+            "chitin_helm": {
                "recipe": "file(chitin_helm_recipe.json)"
             },
-				"chitin_shield": {
+            "chitin_shield": {
                "recipe": "file(chitin_shield_recipe.json)"
             },
-				"freezing_combat_outfit": {
-					"recipe": "file(freezing_combat_outfit_recipe.json)"
-				},
-				"ornate_cleric_armor": {
-					"recipe": "file(ornate_cleric_armor_recipe.json)"
-				}
+            "freezing_combat_outfit": {
+               "recipe": "file(freezing_combat_outfit_recipe.json)"
+            },
+            "ornate_cleric_armor": {
+               "recipe": "file(ornate_cleric_armor_recipe.json)"
+            }
          }
-	  },
-	  "clothing_armor": {
-			"ordinal": 50,
+      },
+      "clothing_armor": {
+         "ordinal": 50,
          "name": "i18n(stonehearth_ace:jobs.weaver.recipes.clothing_armor_name)",
-			"recipes": {
-				"mixintypes": {
-					"cloth_padded_vest": "remove",
-					"cloth_padded_helmet": "remove",
-					"leather_vest": "remove",
-					"leather_helmet": "remove"
-				},
-				"backpack_leather": {
-					"recipe": "file(backpack_leather_recipe.json)"
-				},
-				"backpack_cloth": {
-					"recipe": "file(backpack_cloth_recipe.json)"
-				},
-				"chilly_simple_worker_outfit": {
-					"recipe": "file(chilly_simple_worker_outfit_recipe.json)"
-				},
-				"cold_simple_worker_outfit": {
-					"recipe": "file(cold_simple_worker_outfit_recipe.json)"
-				},
-				"freezing_simple_worker_outfit": {
-					"recipe": "file(freezing_simple_worker_outfit_recipe.json)"
-				},
-				"cold_worker_outfit": {
-					"recipe": "file(cold_worker_outfit_recipe.json)"
-				},
-				"freezing_crafter_outfit": {
-					"recipe": "file(freezing_crafter_outfit_recipe.json)"
-				},
-				"freezing_field_work_outfit": {
-					"recipe": "file(freezing_field_work_outfit_recipe.json)"
-				},
-				"sunstroke_crafter_outfit": {
-					"recipe": "file(sunstroke_crafter_outfit_recipe.json)"
-				},
-				"sunstroke_field_work_outfit": {
-					"recipe": "file(sunstroke_field_work_outfit_recipe.json)"
-				},
+         "recipes": {
+            "mixintypes": {
+               "cloth_padded_vest": "remove",
+               "cloth_padded_helmet": "remove",
+               "leather_vest": "remove",
+               "leather_helmet": "remove"
+            },
+            "backpack_leather": {
+               "recipe": "file(backpack_leather_recipe.json)"
+            },
+            "backpack_cloth": {
+               "recipe": "file(backpack_cloth_recipe.json)"
+            },
+            "chilly_simple_worker_outfit": {
+               "recipe": "file(chilly_simple_worker_outfit_recipe.json)"
+            },
+            "cold_simple_worker_outfit": {
+               "recipe": "file(cold_simple_worker_outfit_recipe.json)"
+            },
+            "freezing_simple_worker_outfit": {
+               "recipe": "file(freezing_simple_worker_outfit_recipe.json)"
+            },
+            "cold_worker_outfit": {
+               "recipe": "file(cold_worker_outfit_recipe.json)"
+            },
+            "freezing_crafter_outfit": {
+               "recipe": "file(freezing_crafter_outfit_recipe.json)"
+            },
+            "freezing_field_work_outfit": {
+               "recipe": "file(freezing_field_work_outfit_recipe.json)"
+            },
+            "sunstroke_crafter_outfit": {
+               "recipe": "file(sunstroke_crafter_outfit_recipe.json)"
+            },
+            "sunstroke_field_work_outfit": {
+               "recipe": "file(sunstroke_field_work_outfit_recipe.json)"
+            },
             "outfit_worker_goldthread": {
                "recipe": "/rayyas_children/jobs/weaver/recipes/outfit_worker_goldthread_recipe.json"
-            }				
+            }
          }
-	  },
-	  "furniture": {
-			"name": "i18n(stonehearth_ace:jobs.weaver.recipes.furniture_name)",
+      },
+      "furniture": {
+         "name": "i18n(stonehearth_ace:jobs.weaver.recipes.furniture_name)",
          "recipes": {
             "sleeping_bag": {
                "recipe": "file(sleeping_bag_recipe.json)"
             },
-				"curtain_door": {
+            "curtain_door": {
                "recipe": "file(curtain_door_recipe.json)"
             },
-				"double_curtain_door": {
+            "double_curtain_door": {
                "recipe": "file(double_curtain_door_recipe.json)"
             },
-				"ornate_curtain_door": {
+            "ornate_curtain_door": {
                "recipe": "file(ornate_curtain_door_recipe.json)"
             },
-				"ornate_double_curtain_door": {
+            "ornate_double_curtain_door": {
                "recipe": "file(ornate_double_curtain_door_recipe.json)"
             },
-				"amberstone_bed_herbalist": {
+            "amberstone_bed_herbalist": {
                "recipe": "file(amberstone_bed_herbalist_recipe.json)"
             },
-				"amberstone_bed_pet": {
+            "amberstone_bed_pet": {
                "recipe": "file(amberstone_bed_pet_recipe.json)"
             }
          }
       },
-	  "decorations": {
+      "decorations": {
          "recipes": {
-				"simple_banner_wall_big": {
+            "simple_banner_wall_big": {
                "recipe": "/stonehearth/jobs/weaver/recipes/banner_wall_big_recipe.json"
             },
             "simple_banner_wall_small": {
@@ -175,13 +175,13 @@
             "ornate_throw_rug": {
                "recipe": "file(ornate_throw_rug_recipe.json)"
             },
-				"porcelain_curtains": {
+            "porcelain_curtains": {
                "recipe": "file(porcelain_curtains_recipe.json)"
             },
             "porcelain_curtains_small": {
                "recipe": "file(porcelain_curtains_small_recipe.json)"
             },
-				"banner_wall_big_stag": {
+            "banner_wall_big_stag": {
                "recipe": "/northern_alliance/jobs/weaver/recipes/banner_wall_big_stag_recipe.json"
             },
             "banner_wall_small_stag": {
@@ -193,7 +193,7 @@
             "rug_pelt_wolf_recipe": {
                "recipe": "/northern_alliance/jobs/weaver/recipes/rug_pelt_wolf_recipe.json"
             },
-				"banner_wall_big": {
+            "banner_wall_big": {
                "recipe": "/rayyas_children/jobs/weaver/recipes/banner_wall_big_recipe.json"
             },
             "banner_wall_small": {
@@ -241,42 +241,48 @@
          "ordinal": 998,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.candledark_name)",
          "recipes": {
-				"candledark_worker_pumpkin_hat": {
-					"recipe": "file(candledark/worker_pumpkin_hat_recipe.json)"
-				},
-				"candledark_scarecrow_hat": {
-					"recipe": "file(candledark/scarecrow_hat_recipe.json)"
-				},
-				"candledark_witch_hat": {
-					"recipe": "file(candledark/witch_hat_recipe.json)"
-				},
-				"candledark_plushie_candy_corn": {
-					"recipe": "file(candledark/plushie_candy_corn_recipe.json)"
-				},
-				"candledark_plushie_ghost": {
-					"recipe": "file(candledark/plushie_ghost_recipe.json)"
-				}
+            "candledark_worker_pumpkin_hat": {
+               "recipe": "file(candledark/worker_pumpkin_hat_recipe.json)"
+            },
+            "candledark_scarecrow_hat": {
+               "recipe": "file(candledark/scarecrow_hat_recipe.json)"
+            },
+            "candledark_witch_hat": {
+               "recipe": "file(candledark/witch_hat_recipe.json)"
+            },
+            "candledark_plushie_candy_corn": {
+               "recipe": "file(candledark/plushie_candy_corn_recipe.json)"
+            },
+            "candledark_plushie_ghost": {
+               "recipe": "file(candledark/plushie_ghost_recipe.json)"
+            }
          }
       },
-		"frostfeast": {
-         "ordinal": 999,
+      "frostfeast": {
+         "ordinal": 2,
          "name": "i18n(stonehearth_ace:jobs.common.recipes.frostfeast_name)",
          "recipes": {
-				"frostfeast_worker_holiday_hat": {
-					"recipe": "file(frostfeast/worker_holiday_hat_recipe.json)"
-				},
-				"frostfeast_stocking_small": {
-					"recipe": "file(frostfeast/stocking_small_recipe.json)"
-				},
-				"frostfeast_stocking": {
-					"recipe": "file(frostfeast/stocking_recipe.json)"
-				},
-				"frostfeast_plushie_toy_deer": {
-					"recipe": "file(frostfeast/plushie_toy_deer_recipe.json)"
-				},
-				"frostfeast_worker_holiday_outfit": {
-					"recipe": "file(frostfeast/worker_holiday_outfit_recipe.json)"
-				}
+            "frostfeast_worker_holiday_hat": {
+               "recipe": "file(frostfeast/worker_holiday_hat_recipe.json)"
+            },
+            "frostfeast_stocking_small": {
+               "recipe": "file(frostfeast/stocking_small_recipe.json)"
+            },
+            "frostfeast_stocking": {
+               "recipe": "file(frostfeast/stocking_recipe.json)"
+            },
+            "frostfeast_plushie_toy_deer": {
+               "recipe": "file(frostfeast/plushie_toy_deer_recipe.json)"
+            },
+            "frostfeast_worker_holiday_outfit": {
+               "recipe": "file(frostfeast/worker_holiday_outfit_recipe.json)"
+            },
+            "frostfeast_crafter_outfit_freezing": {
+               "recipe": "file(frostfeast/crafter_outfit_freezing_recipe.json)"
+            },
+            "frostfeast_window_star": {
+               "recipe": "file(frostfeast/window_star_recipe.json)"
+            }
          }
       }
    }

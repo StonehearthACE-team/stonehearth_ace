@@ -1,0 +1,31 @@
+{
+   "type": "job",
+   "alias": "stonehearth_ace:jobs:npc:builder",
+   "is_npc_job": true,
+   "display_name": "i18n(stonehearth_ace:jobs.npc_jobs.npc_builder.npc_builder_description.display_name)",
+   "controller": "stonehearth:class:worker",
+   "description": "i18n(stonehearth_ace:jobs.npc_jobs.npc_builder.npc_builder_description.description)",
+   "requirements": "i18n(stonehearth_ace:jobs.npc_jobs.npc_builder.npc_builder_description.requirements)",
+   "default_stance": "defensive",
+   "abilities": "file(npc_builder_abilities)",
+   "equipment": {
+      "mainhand": [
+         "stonehearth_ace:building_hammer_golem"
+      ]
+   },
+   "task_groups": [
+      "stonehearth:task_groups:common_tasks",
+      "stonehearth:task_groups:build",
+      "stonehearth_ace:task_groups:build_simple_terrain"
+   ],
+   "roles": [
+      "worker_job",
+      "builder_job"
+   ],
+   "icon": "/stonehearth/jobs/worker/images/icon.png",
+   "level_data": {
+      "1": {
+         "title": "i18n(stonehearth_ace:jobs.npc_jobs.npc_builder.npc_builder_description.level_1_data.title)"
+      }
+   }
+}
