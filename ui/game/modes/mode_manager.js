@@ -194,21 +194,6 @@ $(document).ready(function() {
 
          if (!entity) {
             //this.setGameMode(this.modes.NORMAL);
-            var currentMenu = App.gameMenu && App.gameMenu.getMenu();
-            var prevMode = self._currentMode;
-            if (prevMode != self.modes.NORMAL) {
-               if (currentMenu && currentMenu == self._getMenuForMode(prevMode)) {
-                  // we're in a mode with a menu, so stay there
-               }
-               else {
-                  // reset the mode and also hide any current view
-                  self.setGameMode(self.modes.NORMAL);
-                  if (self._currentView) {
-                     self._currentView.hide();
-                     self._currentView = null;
-                  }
-               }
-            }
 
             return;
          }

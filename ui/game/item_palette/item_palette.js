@@ -342,13 +342,9 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       var tags = [];
       // most important first: name, description, crafter info, then material tags
       var catalogData = App.catalog.getCatalogData(uri);
-      if (catalogData) {
-         tags.push(i18n.t(catalogData.display_name).toLowerCase());
-         tags.push(i18n.t(catalogData.description).toLowerCase());
-      }
-      else {
-         console.log('No catalog data found for item ' + uri);
-      }
+
+      tags.push(i18n.t(catalogData.display_name).toLowerCase());
+      tags.push(i18n.t(catalogData.description).toLowerCase());
 
       // if the item specified crafted_by, add the job name there
       if (item.craftedBy && item.craftedBy.jobName) {
@@ -356,13 +352,11 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       }
 
       // need to handle material tags that are a single string instead of an array
-      if (catalogData && catalogData.materials) {
-         var mats = catalogData.materials;
-         if (typeof mats === 'string') {
-            mats = mats.split(' ');
-         }
-         tags = tags.concat(mats);
+      var mats = catalogData.materials;
+      if (typeof mats === 'string') {
+         mats = mats.split(' ');
       }
+      tags = tags.concat(mats);
 
       self._searchTags[uri] = tags.filter(tag => tag && tag.length > 0 && !tag.includes('stockpile_'));
    },
@@ -469,19 +463,17 @@ $.widget( "stonehearth.stonehearthItemPalette", {
    _getBestWantedItem: function(uri) {
       var wantedItems = this.options.wantedItems;
       var bestWantedItem = null;
-
+      
       if (wantedItems) {
          var catalogData = App.catalog.getCatalogData(uri);
-         if (catalogData) {
-            for (var i = 0; i < wantedItems.length; i++) {
-               var wantedItem = wantedItems[i];
-               if (!wantedItem.max_quantity || wantedItem.max_quantity > wantedItem.quantity) {
-                  if (!bestWantedItem || bestWantedItem.price_factor < wantedItem.price_factor) {
-                     if (uri == wantedItem.uri ||
-                           (wantedItem.material && catalogData.materials && !$.isEmptyObject(catalogData.materials) &&
-                           radiant.isMaterial(catalogData.materials, wantedItem.material))) {
-                        bestWantedItem = wantedItem;
-                     }
+         for (var i = 0; i < wantedItems.length; i++) {
+            var wantedItem = wantedItems[i];
+            if (!wantedItem.max_quantity || wantedItem.max_quantity > wantedItem.quantity) {
+               if (!bestWantedItem || bestWantedItem.price_factor < wantedItem.price_factor) {
+                  if (uri == wantedItem.uri ||
+                        (wantedItem.material && catalogData.materials && !$.isEmptyObject(catalogData.materials) &&
+                        radiant.isMaterial(catalogData.materials, wantedItem.material))) {
+                     bestWantedItem = wantedItem;
                   }
                }
             }

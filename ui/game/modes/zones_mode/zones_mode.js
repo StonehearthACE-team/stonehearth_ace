@@ -55,10 +55,6 @@ App.StonehearthZonesModeView = App.View.extend({
       }
 
       if (!entity) {
-         if (self._propertyView) {
-            self._propertyView.destroyWithoutDeselect();
-            self._propertyView = null;
-         }
          return;
       }
 
