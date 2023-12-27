@@ -36,36 +36,36 @@
       "food": {
          "recipes": {
             "mixintypes": {
-					"faction_bread_dish": "remove"
-				},
+               "faction_bread_dish": "remove"
+            },
             "boiled_shrooms": {
                "recipe": "file(rc_boiled_mushroom_tagine_recipe.json)"
             },
             "fish_stew": {
                "recipe": "file(rc_fish_tagine_recipe.json)"
             },
-				"faction_fish_dish": {
+            "faction_fish_dish": {
                "recipe": "file(rc_catfish_tagine_recipe.json)"
             },
-				"bug_meat_stew": {
+            "bug_meat_stew": {
                "recipe": "file(rc_bug_meat_tagine_recipe.json)"
             }
          }
       },
       "chefs_specials": {
          "recipes": {
-			   "mixintypes": {
-					"faction_fish_dish": "remove"
-				},
-				"lamb_tagine": {
-					"recipe": "file(rc_lamb_tagine_recipe.json)"
-				}
+            "mixintypes": {
+               "faction_fish_dish": "remove"
+            },
+            "lamb_tagine": {
+               "recipe": "file(rc_lamb_tagine_recipe.json)"
+            }
          }
-      },     
+      },
       "animal_feed": {
          "recipes": {
             "sheep_feed": {
-               "recipe": ""
+               "recipe": "/stonehearth_ace/jobs/common/recipes/removed_recipe.json"
             }
          }
       }

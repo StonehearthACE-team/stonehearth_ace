@@ -23,7 +23,7 @@ function AceGeomancerClass:_register_with_town()
       local job_info = stonehearth.job:get_job_info(player_id, job)
       for recipe_key, value in pairs(recipe_keys) do
          if value then
-            job_info:manually_unlock_recipe(recipe_key)
+            job_info:manually_unlock_recipe(recipe_key, true)
          end
       end
    end
