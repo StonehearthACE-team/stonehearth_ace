@@ -46,15 +46,84 @@ function AceCombatService:battery(context)
    radiant.events.trigger_async(target, 'stonehearth:combat:battery', context)
 end
 
-AceCombatService._ace_old__calculate_damage = CombatService._calculate_damage
 function AceCombatService:_calculate_damage(attacker, target, attack_info, base_damage_name)
-   local damage = self:_ace_old__calculate_damage(attacker, target, attack_info, base_damage_name)
+   local weapon = stonehearth.combat:get_main_weapon(attacker)
 
+   if not weapon or not weapon:is_valid() then
+      return 0
+   end
+
+   local weapon_data = radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data')
+   local base_damage = weapon_data[base_damage_name]
+
+   local total_damage = base_damage
+   local attributes_component = attacker:get_component('stonehearth:attributes')
+   if not attributes_component then
+      return total_damage
+   end
+   local additive_dmg_modifier = attributes_component:get_attribute('additive_dmg_modifier')
+   local multiplicative_dmg_modifier = attributes_component:get_attribute('multiplicative_dmg_modifier')
+   local muscle = attributes_component:get_attribute('muscle')
+
+   -- ACE: Ignore this part if the weapon's custom value for muscle influence on damage is 0
+   if muscle and weapon_data.muscle_multiplier != 0 then
+      local muscle_dmg_modifier = muscle * stonehearth.constants.attribute_effects.MUSCLE_MELEE_MULTIPLIER
+      muscle_dmg_modifier = muscle_dmg_modifier + stonehearth.constants.attribute_effects.MUSCLE_MELEE_MULTIPLIER_BASE
+      -- ACE: Allow for weapons to have a custom value for the muscle influence on damage
+      if weapon_data.muscle_multiplier then
+         muscle_dmg_modifier = muscle_dmg_modifier * weapon_data.muscle_multiplier
+      end
+      additive_dmg_modifier = additive_dmg_modifier + muscle_dmg_modifier
+   end
+
+   if multiplicative_dmg_modifier then
+      local dmg_to_add = base_damage * multiplicative_dmg_modifier
+      total_damage = dmg_to_add + total_damage
+   end
+   if additive_dmg_modifier then
+      total_damage = total_damage + additive_dmg_modifier
+   end
+
+   --Get damage from weapons
+   if attack_info.damage_multiplier then
+      total_damage = total_damage * attack_info.damage_multiplier
+   end
+
+   --Get the damage reduction from armor
+   local total_armor = self:calculate_total_armor(target)
+
+   -- Reduce armor if attacker has armor reduction attributes
+   local multiplicative_target_armor_modifier = attributes_component:get_attribute('multiplicative_target_armor_modifier', 1)
+   local additive_target_armor_modifier = attributes_component:get_attribute('additive_target_armor_modifier', 0)
+
+   if attack_info.target_armor_multiplier then
+      multiplicative_target_armor_modifier = multiplicative_target_armor_modifier * attack_info.target_armor_multiplier
+   end
+
+   total_armor = total_armor * multiplicative_target_armor_modifier + additive_target_armor_modifier
+
+   local damage = total_damage - total_armor
+
+   -- ACE: Cover siege damage
    if self:is_killable_target_of_type(target, 'siege') then
       local ec = attacker:get_component('stonehearth:equipment')
       if ec and ec:has_item_type('stonehearth_ace:abilities:basic_door_breaker_abilities') then
          damage = math.max(1, damage * BASIC_SIEGE_DAMAGE)
       end
+   end
+
+   if attack_info.minimum_damage and damage <= attack_info.minimum_damage then
+      damage = attack_info.minimum_damage
+   -- ACE: Make it so instead of randomly dealing 1 or 0, it will instead deal it based on how close to 1 or 0 it is
+   elseif damage < 1 then
+      if rng:get_real(0,1) <= damage then
+         damage = 1
+      else
+         damage = 0
+      end
+   else
+      -- ACE: Leave rounding for last, if no other rules apply, to allow for the real value of damage to be used on the calculation above
+      damage = radiant.math.round(damage)
    end
 
    return damage
