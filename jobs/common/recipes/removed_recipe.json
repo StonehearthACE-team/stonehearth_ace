@@ -1,0 +1,24 @@
+{
+   "type": "recipe",
+   "effort": 1,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.common.recipes.removed_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.common.recipes.removed_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.common.recipes.removed_recipe.flavor)",
+   "portrait": "/stonehearth/data/commands/destroy_item/destroy_item.png",
+   "level_requirement": 99,
+   "proficiency_gain": 0,
+   "ace_smart_crafter_ignore": true,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:resources:wood:oak_log"
+      }
+   ]
+}
