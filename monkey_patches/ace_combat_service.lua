@@ -66,7 +66,7 @@ function AceCombatService:_calculate_damage(attacker, target, attack_info, base_
    local muscle = attributes_component:get_attribute('muscle')
 
    -- ACE: Ignore this part if the weapon's custom value for muscle influence on damage is 0
-   if muscle and weapon_data.muscle_multiplier != 0 then
+   if muscle and weapon_data.muscle_multiplier ~= 0 then
       local muscle_dmg_modifier = muscle * stonehearth.constants.attribute_effects.MUSCLE_MELEE_MULTIPLIER
       muscle_dmg_modifier = muscle_dmg_modifier + stonehearth.constants.attribute_effects.MUSCLE_MELEE_MULTIPLIER_BASE
       -- ACE: Allow for weapons to have a custom value for the muscle influence on damage
