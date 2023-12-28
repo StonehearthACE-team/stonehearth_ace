@@ -13,6 +13,12 @@ function AcePetOwnerComponent:remove_pet(id)
    end
 end
 
+function AcePetOwnerComponent:_listen_for_pet_death(id, pet)
+   if not self._pet_listeners and not self._pet_listeners[id] then
+      self._pet_listeners[id] = radiant.events.listen(pet, 'stonehearth:kill_event', self, self._on_pet_died)
+   end
+end
+
 function AcePetOwnerComponent:_on_pet_died(args)
    local pet = args.entity
    local pet_name = radiant.entities.get_custom_name(pet)
