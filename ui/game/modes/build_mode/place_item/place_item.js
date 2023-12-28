@@ -1,4 +1,5 @@
 var lastPlaceItemTabPage = 'placeItemTab';
+var placeItemTypeGameMode = 'place_item';
 
 $(document).ready(function(){
    $(top).on("radiant_place_item", function (_, e) {
@@ -90,7 +91,7 @@ App.StonehearthPlaceItemView = App.View.extend({
          click: function(item) {
             var itemType = item.attr('uri');
             var quality = parseInt(item.attr('item_quality'));
-            App.stonehearthClient.placeItemType(itemType, quality);
+            App.stonehearthClient.placeItemType(itemType, quality, placeItemTypeGameMode);
          }
       });
 
@@ -142,7 +143,7 @@ App.StonehearthPlaceItemView = App.View.extend({
          showZeroes: true,
          click: function(item) {
             var itemType = item.attr('uri');
-            App.stonehearthClient.craftAndPlaceItemType(itemType);
+            App.stonehearthClient.craftAndPlaceItemType(itemType, placeItemTypeGameMode);
          }
       });
 
