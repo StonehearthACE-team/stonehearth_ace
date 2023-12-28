@@ -413,8 +413,8 @@ var StonehearthClient;
       },
 
       // item type is a uri, not an item entity
-      placeItemType: function(itemType, quality) {
-         this._placeItemOrItemType('itemType', 'placeItemType', itemType, quality);
+      placeItemType: function(itemType, quality, gameMode) {
+         this._placeItemOrItemType('itemType', 'placeItemType', itemType, quality, {gameMode: gameMode});
       },
 
       // item type is a uri, not an item entity
