@@ -35,20 +35,26 @@ function AcePetComponent:activate()
    self:_ace_old_activate()
 
    if self._json.self_tame and not self._sv.owner then
-      if not self:self_tame() then
-         self._player_id_trace = self._entity:trace_player_id('owner observer')
-            :on_changed(function()
-                  if self:self_tame() then
-                     self:_destroy_player_id_trace()
-                  end
-               end)
-      end
+      -- wait one game loop to try to self-tame, in case our owner is getting assigned by another process
+      -- e.g., reembarkation
+      self._self_tame_game_loop_listener = radiant.on_game_loop_once('pet self tame', function()
+            self._self_tame_game_loop_listener = nil
+            if not self._sv.owner and not self:self_tame() then
+               self._player_id_trace = self._entity:trace_player_id('owner observer')
+                  :on_changed(function()
+                        if self:self_tame() then
+                           self:_destroy_player_id_trace()
+                        end
+                     end)
+            end
+         end)
    end
 end
 
 AcePetComponent._ace_old_destroy = PetComponent.__user_destroy
 function AcePetComponent:destroy()
    self:_destroy_player_id_trace()
+   self:_destroy_self_tame_game_loop_listener()
    self:_ace_old_destroy()
 end
 
@@ -56,6 +62,13 @@ function AcePetComponent:_destroy_player_id_trace()
    if self._player_id_trace then
       self._player_id_trace:destroy()
       self._player_id_trace = nil
+   end
+end
+
+function AcePetComponent:_destroy_self_tame_game_loop_listener()
+   if self._self_tame_game_loop_listener then
+      self._self_tame_game_loop_listener:destroy()
+      self._self_tame_game_loop_listener = nil
    end
 end
 
