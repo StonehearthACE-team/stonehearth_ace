@@ -85,13 +85,7 @@ function AceBuffsComponent:_create_immunity_listeners()
    self._immune_to_hostile_debuffs_listener = radiant.events.listen(self._entity, 'stonehearth:property_changed:' .. IMMUNE_TO_HOSTILE_DEBUFFS, function()
       if radiant.entities.has_property(self._entity, IMMUNE_TO_HOSTILE_DEBUFFS) then
          -- if they gained immunity to hostile debuffs, go through and remove all hostile debuffs
-         local debuffs = self:get_buffs_by_axis('debuff')
-         if debuffs then
-            for buff_id, _ in pairs(debuffs) do
-               self:remove_buff(buff_id, true, true)
-            end
-            self:_update_highest_rank_wound()
-         end
+         self:remove_axis_buffs('debuff')
       end
    end)
 end
@@ -174,6 +168,16 @@ end
 
 function AceBuffsComponent:has_axis_buffs(axis)
    return self._sv.buffs_by_axis[axis] ~= nil
+end
+
+function AceBuffsComponent:remove_axis_buffs(axis)
+   local buffs = self:get_buffs_by_axis(axis)
+   if buffs then
+      for buff_id, _ in pairs(buffs) do
+         self:remove_buff(buff_id, true, true)
+      end
+      self:_update_highest_rank_wound()
+   end
 end
 
 function AceBuffsComponent:remove_category_buffs(category, rank, reduce_ranks)
