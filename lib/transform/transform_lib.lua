@@ -36,6 +36,10 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       return false
    end
 
+   local player_id = radiant.entities.get_player_id(entity)
+   local inventory = player_id and stonehearth.inventory:get_inventory(player_id)
+   local is_in_inventory = inventory and inventory:contains_item(entity)
+
    -- if the entity is mounted and/or has something mounted on it, dismount before transforming
    local mount_component = entity:get_component('stonehearth:mount')
    if mount_component then
@@ -77,14 +81,6 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          transform_lib.place_entity_at_location(entity, parent, local_location, facing)
          radiant.entities.destroy_entity(transformed_form)
          return false
-      end
-
-      local player_id = radiant.entities.get_player_id(entity)
-
-      -- if the original entity is part of the player's inventory, add the transformed item to the inventory
-      local inventory = stonehearth.inventory:get_inventory(player_id)
-      if inventory and inventory:contains_item(entity) then
-         inventory:add_item(transformed_form)
       end
 
       radiant.events.trigger(entity, 'stonehearth_ace:transform:pre_transform', {transformed_form = transformed_form, transform_source = transform_source, options = options})
@@ -267,6 +263,11 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          end
       end
 
+      -- if the original entity is part of the player's inventory, add the transformed item to the inventory
+      if inventory and is_in_inventory then
+         inventory:add_item(transformed_form)
+      end
+
       -- check if the current entity is the town's banner or hearth; if so, change it to this one
       local town = stonehearth.town:get_town(entity)
       if town then
@@ -308,7 +309,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
    if options.kill_entity then
       local loot_drops_component = entity:get_component('stonehearth:loot_drops')
       if loot_drops_component and options.transformer_entity then
-         local player_id = radiant.entities.get_player_id(options.transformer_entity)
+         player_id = radiant.entities.get_player_id(options.transformer_entity)
          loot_drops_component:set_auto_loot_player_id(player_id)
       end
       radiant.entities.kill_entity(entity, {location = location})
