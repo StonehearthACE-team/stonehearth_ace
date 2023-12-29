@@ -48,6 +48,20 @@ function ace_entities.consume_stack(item, num_stacks)
    return success
 end
 
+function ace_entities.reset_health(entity, remove_debuffs)
+   if remove_debuffs ~= false then
+      local buffs_comp = entity:get_component('stonehearth:buffs')
+      if buffs_comp then
+         buffs_comp:remove_axis_buffs('debuff')
+      end
+   end
+
+   local expendable_resource_component = entity:get_component('stonehearth:expendable_resources')
+   if expendable_resource_component then
+      expendable_resource_component:set_value('health', expendable_resource_component:get_max_value('health'))
+   end
+end
+
 function ace_entities.get_effective_health_percentage(entity)
    local effective_max_health_percent = healing_lib.get_effective_max_health_percent(entity)
    if effective_max_health_percent < 1 then

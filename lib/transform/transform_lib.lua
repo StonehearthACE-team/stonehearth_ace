@@ -79,6 +79,14 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          return false
       end
 
+      local player_id = radiant.entities.get_player_id(entity)
+
+      -- if the original entity is part of the player's inventory, add the transformed item to the inventory
+      local inventory = stonehearth.inventory:get_inventory(player_id)
+      if inventory and inventory:contains_item(entity) then
+         inventory:add_item(transformed_form)
+      end
+
       radiant.events.trigger(entity, 'stonehearth_ace:transform:pre_transform', {transformed_form = transformed_form, transform_source = transform_source, options = options})
 
       local owner_component = entity:get_component('stonehearth:ownable_object')
@@ -152,7 +160,6 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
 
       local pet_component = entity:get_component('stonehearth:pet')
       if pet_component then
-         local player_id = radiant.entities.get_player_id(entity)
          local pet_owner = pet_component:get_owner()
          local pet_name = radiant.entities.get_custom_name(entity) or radiant.entities.get_display_name(entity)
          if pet_owner and pet_name then
