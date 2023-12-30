@@ -37,7 +37,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
    end
 
    local player_id = radiant.entities.get_player_id(entity)
-   local inventory = player_id and stonehearth.inventory:get_inventory(player_id)
+   local inventory = stonehearth.inventory:get_inventory(player_id)
    local is_in_inventory = inventory and inventory:contains_item(entity)
 
    -- if the entity is mounted and/or has something mounted on it, dismount before transforming
@@ -67,8 +67,6 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       radiant.entities.turn_to(transformed_form, facing)
       
       item_quality_lib.copy_quality(entity, transformed_form)
-
-      radiant.entities.set_player_id(transformed_form, entity)
 
       -- Have to remove entity because it can collide with transformed form
       -- If its parent is a structure, we want to remove it from that structure and place the new one on that structure
@@ -250,6 +248,11 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       if location then
          transform_lib.place_entity_at_location(transformed_form, parent, local_location, facing)
 
+         -- if the original entity is part of the player's inventory, add the transformed item to the inventory
+         if inventory and is_in_inventory then
+            inventory:add_item(transformed_form)
+         end
+
          if options.auto_harvest_key then
             local stage_data = radiant.entities.get_entity_data(transformed_form, 'stonehearth_ace:stage_data')
             local stage = stage_data and stage_data.current_stage
@@ -261,11 +264,6 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
          else
             resources_lib.request_auto_harvest(transformed_form, options.auto_harvest)
          end
-      end
-
-      -- if the original entity is part of the player's inventory, add the transformed item to the inventory
-      if inventory and is_in_inventory then
-         inventory:add_item(transformed_form)
       end
 
       -- check if the current entity is the town's banner or hearth; if so, change it to this one
