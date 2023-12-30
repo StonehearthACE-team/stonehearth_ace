@@ -7,6 +7,8 @@ local UNDEPLOY_COMMAND = 'stonehearth:commands:undeploy_item'
 local EntityFormsComponent = require 'stonehearth.components.entity_forms.entity_forms_component'
 local AceEntityFormsComponent = class()
 
+local log = radiant.log.create_logger('entity_forms_component')
+
 AceEntityFormsComponent._ace_old_activate = EntityFormsComponent.activate
 function AceEntityFormsComponent:activate()
    self._json = radiant.entities.get_json(self) or {}
@@ -142,8 +144,15 @@ function AceEntityFormsComponent:_place_item()
 
    local inventory = stonehearth.inventory:get_inventory(self._entity)
    if inventory then
-      inventory:reevaluate_tracker_item(self._entity)
-      inventory:reevaluate_tracker_item(self._sv.iconic_entity)
+      log:debug('%s considering reevaluating item trackers', self._entity)
+      if inventory:contains_item(self._entity) then
+         log:debug('%s reevaluating tracks for root entity', self._entity)
+         inventory:reevaluate_tracker_item(self._entity)
+      end
+      if inventory:contains_item(self._sv.iconic_entity) then
+         log:debug('%s reevaluating tracks for iconic entity %s', self._entity, self._sv.iconic_entity)
+         inventory:reevaluate_tracker_item(self._sv.iconic_entity)
+      end
    end
 
    self:_start_placement_task()
