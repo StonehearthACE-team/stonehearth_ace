@@ -1,7 +1,9 @@
-local EquipmentComponent = require 'stonehearth.components.equipment.equipment_component'
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+local Entity = _radiant.om.Entity
 local rng = _radiant.math.get_default_rng()
 local log = radiant.log.create_logger('equipment_component')
 
+local EquipmentComponent = require 'stonehearth.components.equipment.equipment_component'
 local AceEquipmentComponent = class()
 
 AceEquipmentComponent._ace_old_activate = EquipmentComponent.activate
@@ -56,16 +58,23 @@ function AceEquipmentComponent:drop_item(item)
    stonehearth.ai:reconsider_entity(placed_item, 'dropping equipment piece')
 end
 
-function AceEquipmentComponent:equip_item(item, destroy_old_item)
+function AceEquipmentComponent:equip_item(item, destroy_old_item, quality_item)
    -- destroy the old item by default, unless explicitly told not to
    destroy_old_item = destroy_old_item ~= false
 
    -- if someone passes the uri, create an entity
-   if type(item) == 'string' then
-      item = radiant.entities.create_entity(item)
-   elseif type(item) == 'table' then
-      -- pick an random item from the array
-      item = radiant.entities.create_entity(item[rng:get_int(1, #item)])
+   if not radiant.util.is_a(item, Entity) then
+      if type(item) == 'string' then
+         item = radiant.entities.create_entity(item)
+      elseif type(item) == 'table' then
+         -- pick an random item from the array
+         item = radiant.entities.create_entity(item[rng:get_int(1, #item)])
+      end
+
+      -- if quality_item was specified, apply that
+      if quality_item then
+         item_quality_lib.copy_quality(quality_item, item)
+      end
    end
 
    --TODO: Because of the current implementation of the shop, it is possible
@@ -118,7 +127,7 @@ function AceEquipmentComponent:equip_item(item, destroy_old_item)
    if additional_equipment then
       for uri, should_equip in pairs(additional_equipment) do
          if should_equip then
-            local old_item = self:equip_item(uri, false)
+            local old_item = self:equip_item(uri, false, item)
             if old_item then
                self:drop_item(old_item)
             end
