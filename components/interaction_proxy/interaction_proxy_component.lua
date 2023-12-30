@@ -1,3 +1,5 @@
+local Region3 = _radiant.csg.Region3
+
 local log = radiant.log.create_logger('interaction_proxy')
 
 local InteractionProxyComponent = class()
@@ -33,6 +35,10 @@ function InteractionProxyComponent:_destroy_traces()
       self._collision_trace:destroy()
       self._collision_trace = nil
    end
+   if self._destination_trace then
+      self._destination_trace:destroy()
+      self._destination_trace = nil
+   end
    self._sv._entity = nil
 end
 
@@ -66,18 +72,43 @@ function InteractionProxyComponent:_setup()
          :push_object_state()
 
       local rcs = entity:get_component('region_collision_shape')
+      local cur_rcs, cur_dest
       if rcs then
          local region = rcs:get_region()
          self._collision_trace = region:trace('interaction proxy')
             :on_changed(function()
-                  self:_update_destination(region:get())
+                  self:_update_destination(region:get(), nil)
                end)
-            :push_object_state()
+         cur_rcs = region:get()
+      end
+
+      local destination = entity:get_component('destination')
+      if destination then
+         local region = destination:get_region()
+         self._destination_trace = region:trace('interaction proxy')
+            :on_changed(function()
+                  self:_update_destination(nil, region:get())
+               end)
+         cur_dest = region:get()
+      end
+
+      if cur_rcs or cur_dest then
+         self:_update_destination(cur_rcs, cur_dest)
       end
    end
 end
 
-function InteractionProxyComponent:_update_destination(region)
+function InteractionProxyComponent:_update_destination(rcs_region, dest_region)
+   self._cur_rcs_region = rcs_region or self._cur_rcs_region
+   self._cur_dest_region = dest_region or self._cur_dest_region
+   local region = Region3()
+   if rcs_region then
+      region:add_region(rcs_region)
+   end
+   if dest_region then
+      region:add_region(dest_region)
+   end
+
    self._destination:get_region():modify(function(cursor)
          cursor:copy_region(region)
       end)

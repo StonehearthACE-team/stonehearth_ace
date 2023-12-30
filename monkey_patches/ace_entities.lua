@@ -405,6 +405,14 @@ function ace_entities.get_renown(entity) --, include_equipment)
    return renown
 end
 
+function ace_entities.apply_quality(entity, quality, options)
+   if not entity or not entity:is_valid() then
+      return
+   end
+
+   item_quality_lib.apply_quality(entity, quality, options)
+end
+
 -- uris are key, value pairs of uri, quantity
 -- quantity can also be a table of quality/quantity pairs
 function ace_entities.spawn_items(uris, origin, min_radius, max_radius, options, place_items)
