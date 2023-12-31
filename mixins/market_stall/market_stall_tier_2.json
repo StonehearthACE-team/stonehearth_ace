@@ -1197,6 +1197,38 @@
                      "bone_name": "goodsMidRow3"
                   }
                ]
+            },
+            "fireworks_shop": {
+               "model_data": {
+                  "model": "file(shop/tier_2/fireworks_shop.qb)",
+                  "matrix": "Shop",
+                  "scale": 0.1,
+                  "offset": { "x": 34, "y": 0, "z": 25 }
+               },
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1"
+                  },
+                  {
+                     "bone_name": "goodsShelf2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3"
+                  }
+               ]
             }
          }
       }

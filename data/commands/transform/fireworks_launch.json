@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "fireworks_launch",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.fireworks_launch.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.fireworks_launch.description)",
+   "default_enabled": true,
+   "ordinal": 99,
+   "icon": "file(fireworks_launch.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "launch"
+   ]
+}
