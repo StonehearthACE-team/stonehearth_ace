@@ -1,0 +1,57 @@
+{
+   "type": "entity",
+   "mixins": "file(fireworks_blue_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(fireworks_blue_iconic.json)",
+         "ghost_form": "file(fireworks_blue_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 1, "y": 3, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "launch": {
+               "transform_uri": "",
+               "command": "stonehearth_ace:commands:transform:fireworks_launch",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_fireworks_overlay_effect",
+               "transforming_worker_effect": "light_fire",
+               "transform_effect": "stonehearth_ace:effects:fireworks:blue",
+               "auto_request": true
+            }
+         }
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 80,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 15
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}

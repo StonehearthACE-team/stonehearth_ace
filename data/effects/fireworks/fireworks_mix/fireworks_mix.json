@@ -1,0 +1,792 @@
+{
+   "type": "effect",
+   "tracks": {
+      "glow": {
+         "type": "cubemitter",
+         "cubemitter": "particles/spawn/spawn_glow.cubemitter.json",
+         "start_time": 0,
+         "end_time": 900,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound_whistle": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 0,
+         "min_distance": 80,
+         "falloff": 2,
+         "max_instances": 3,
+         "volume": 55,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:whistle_01",
+               "stonehearth_ace:sounds:fireworks:whistle_02",
+               "stonehearth_ace:sounds:fireworks:whistle_03"
+            ]
+         }
+      },
+      "base": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.base.cubemitter.json",
+         "start_time": 0,
+         "end_time": 4999,
+         "transforms": { "x": 0, "y": 0, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound_blast_1": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 1150,
+         "min_distance": 120,
+         "falloff": 2,
+         "volume": 72,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:blast_01"
+            ]
+         }
+      },
+      "sound_muffled_1": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 1150,
+         "volume": 95,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:muffled_01",
+               "stonehearth_ace:sounds:fireworks:muffled_02",
+               "stonehearth_ace:sounds:fireworks:muffled_03"
+            ]
+         }
+      },
+      "sound_sparkles_1": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 1250,
+         "min_distance": 75,
+         "falloff": 1.8,
+         "volume": 58,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:sparkles_01",
+               "stonehearth_ace:sounds:fireworks:sparkles_02",
+               "stonehearth_ace:sounds:fireworks:sparkles_03"
+            ]
+         }
+      },
+      "flower_orange": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.orange.cubemitter.json",
+         "start_time": 1150,
+         "end_time": 5000,
+         "transforms": { "x": -10, "y": 60, "z": 10,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_orange_sharp": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.orange.sharp.cubemitter.json",
+         "start_time": 1150,
+         "end_time": 5000,
+         "transforms": { "x": -10, "y": 60, "z": 10,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_orange_smoke": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.smoke.cubemitter.json",
+         "start_time": 1150,
+         "end_time": 5000,
+         "transforms": { "x": -10, "y": 60, "z": 10,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound_blast_2": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 1800,
+         "min_distance": 120,
+         "falloff": 2,
+         "volume": 72,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:blast_01"
+            ]
+         }
+      },
+      "sound_muffled_2": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 1800,
+         "volume": 95,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:muffled_01",
+               "stonehearth_ace:sounds:fireworks:muffled_02",
+               "stonehearth_ace:sounds:fireworks:muffled_03"
+            ]
+         }
+      },
+      "sound_sparkles_2": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 1900,
+         "min_distance": 75,
+         "falloff": 1.8,
+         "volume": 58,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:sparkles_01",
+               "stonehearth_ace:sounds:fireworks:sparkles_02",
+               "stonehearth_ace:sounds:fireworks:sparkles_03"
+            ]
+         }
+      },
+      "flower_white": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.white.cubemitter.json",
+         "start_time": 1800,
+         "end_time": 5000,
+         "transforms": { "x": 0, "y": 80, "z": 20,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_white_sharp": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.white.sharp.cubemitter.json",
+         "start_time": 1800,
+         "end_time": 5000,
+         "transforms": { "x": 0, "y": 80, "z": 20,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_white_smoke": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.smoke.cubemitter.json",
+         "start_time": 1800,
+         "end_time": 5000,
+         "transforms": { "x": 0, "y": 80, "z": 20,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound_blast_3": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 1900,
+         "min_distance": 120,
+         "falloff": 2,
+         "volume": 72,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:blast_01"
+            ]
+         }
+      },
+      "sound_muffled_3": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 1900,
+         "volume": 95,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:muffled_01",
+               "stonehearth_ace:sounds:fireworks:muffled_02",
+               "stonehearth_ace:sounds:fireworks:muffled_03"
+            ]
+         }
+      },
+      "sound_sparkles_3": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 2000,
+         "min_distance": 75,
+         "falloff": 1.8,
+         "volume": 58,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:sparkles_01",
+               "stonehearth_ace:sounds:fireworks:sparkles_02",
+               "stonehearth_ace:sounds:fireworks:sparkles_03"
+            ]
+         }
+      },
+      "flower_red": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.red.cubemitter.json",
+         "start_time": 1900,
+         "end_time": 5000,
+         "transforms": { "x": 20, "y": 75, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_red_sharp": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.red.sharp.cubemitter.json",
+         "start_time": 1900,
+         "end_time": 5000,
+         "transforms": { "x": 20, "y": 75, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_red_smoke": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.smoke.cubemitter.json",
+         "start_time": 1900,
+         "end_time": 5000,
+         "transforms": { "x": 20, "y": 75, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound_blast_4": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 3950,
+         "min_distance": 120,
+         "falloff": 2,
+         "volume": 72,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:blast_01"
+            ]
+         }
+      },
+      "sound_muffled_4": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 3950,
+         "volume": 95,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:muffled_01",
+               "stonehearth_ace:sounds:fireworks:muffled_02",
+               "stonehearth_ace:sounds:fireworks:muffled_03"
+            ]
+         }
+      },
+      "sound_sparkles_4": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 4050,
+         "min_distance": 75,
+         "falloff": 1.8,
+         "volume": 58,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:sparkles_01",
+               "stonehearth_ace:sounds:fireworks:sparkles_02",
+               "stonehearth_ace:sounds:fireworks:sparkles_03"
+            ]
+         }
+      },
+      "flower_blue": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.blue.cubemitter.json",
+         "start_time": 3950,
+         "end_time": 5000,
+         "transforms": { "x": 20, "y": 65, "z": -10,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_blue_smoke": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.smoke.cubemitter.json",
+         "start_time": 3950,
+         "end_time": 5000,
+         "transforms": { "x": 20, "y": 65, "z": -10,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound_blast_5": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 3500,
+         "min_distance": 120,
+         "falloff": 2,
+         "volume": 72,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:blast_01"
+            ]
+         }
+      },
+      "sound_muffled_5": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 3500,
+         "volume": 95,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:muffled_01",
+               "stonehearth_ace:sounds:fireworks:muffled_02",
+               "stonehearth_ace:sounds:fireworks:muffled_03"
+            ]
+         }
+      },
+      "sound_sparkles_5": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 3600,
+         "min_distance": 75,
+         "falloff": 1.8,
+         "volume": 58,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:sparkles_01",
+               "stonehearth_ace:sounds:fireworks:sparkles_02",
+               "stonehearth_ace:sounds:fireworks:sparkles_03"
+            ]
+         }
+      },
+      "flower_green": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.green.cubemitter.json",
+         "start_time": 3500,
+         "end_time": 5000,
+         "transforms": { "x": -10, "y": 55, "z": 5,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_green_sharp": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.green.sharp.cubemitter.json",
+         "start_time": 3500,
+         "end_time": 5000,
+         "transforms": { "x": -10, "y": 55, "z": 5,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_green_smoke": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.smoke.cubemitter.json",
+         "start_time": 3500,
+         "end_time": 5000,
+         "transforms": { "x": -10, "y": 55, "z": 5,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound_blast_6": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 3600,
+         "min_distance": 120,
+         "falloff": 2,
+         "volume": 72,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:blast_01"
+            ]
+         }
+      },
+      "sound_muffled_6": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 3600,
+         "volume": 95,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:muffled_01",
+               "stonehearth_ace:sounds:fireworks:muffled_02",
+               "stonehearth_ace:sounds:fireworks:muffled_03"
+            ]
+         }
+      },
+      "sound_sparkles_6": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 3700,
+         "min_distance": 75,
+         "falloff": 1.8,
+         "volume": 58,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:sparkles_01",
+               "stonehearth_ace:sounds:fireworks:sparkles_02",
+               "stonehearth_ace:sounds:fireworks:sparkles_03"
+            ]
+         }
+      },
+      "flower_purple": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.purple.cubemitter.json",
+         "start_time": 3600,
+         "end_time": 5000,
+         "transforms": { "x": 10, "y": 65, "z": -30,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_purple_sharp": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.purple.sharp.cubemitter.json",
+         "start_time": 3600,
+         "end_time": 5000,
+         "transforms": { "x": 10, "y": 65, "z": -30,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_purple_smoke": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.smoke.cubemitter.json",
+         "start_time": 3600,
+         "end_time": 5000,
+         "transforms": { "x": 10, "y": 65, "z": -30,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound_blast_7": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 4925,
+         "min_distance": 120,
+         "falloff": 2,
+         "volume": 72,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:blast_01"
+            ]
+         }
+      },
+      "sound_muffled_7": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 4925,
+         "volume": 95,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:muffled_01",
+               "stonehearth_ace:sounds:fireworks:muffled_02",
+               "stonehearth_ace:sounds:fireworks:muffled_03"
+            ]
+         }
+      },
+      "sound_sparkles_7": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 5025,
+         "min_distance": 75,
+         "falloff": 1.8,
+         "volume": 58,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:sparkles_01",
+               "stonehearth_ace:sounds:fireworks:sparkles_02",
+               "stonehearth_ace:sounds:fireworks:sparkles_03"
+            ]
+         }
+      },
+      "flower_white2": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.white.cubemitter.json",
+         "start_time": 4925,
+         "end_time": 5000,
+         "transforms": { "x": -10, "y": 80, "z": 10,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_white2_sharp": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.white.sharp.cubemitter.json",
+         "start_time": 4925,
+         "end_time": 5000,
+         "transforms": { "x": -10, "y": 80, "z": 10,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_white2_smoke": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.smoke.cubemitter.json",
+         "start_time": 4925,
+         "end_time": 5000,
+         "transforms": { "x": -10, "y": 80, "z": 10,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound_blast_8": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 4120,
+         "min_distance": 120,
+         "falloff": 2,
+         "volume": 72,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:blast_01"
+            ]
+         }
+      },
+      "sound_muffled_8": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 4120,
+         "volume": 95,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:muffled_01",
+               "stonehearth_ace:sounds:fireworks:muffled_02",
+               "stonehearth_ace:sounds:fireworks:muffled_03"
+            ]
+         }
+      },
+      "sound_sparkles_8": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 4220,
+         "min_distance": 75,
+         "falloff": 1.8,
+         "volume": 58,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:sparkles_01",
+               "stonehearth_ace:sounds:fireworks:sparkles_02",
+               "stonehearth_ace:sounds:fireworks:sparkles_03"
+            ]
+         }
+      },
+      "flower_red2": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.red.cubemitter.json",
+         "start_time": 4120,
+         "end_time": 5000,
+         "transforms": { "x": 0, "y": 55, "z": -20,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_red2_sharp": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.red.sharp.cubemitter.json",
+         "start_time": 4120,
+         "end_time": 5000,
+         "transforms": { "x": 0, "y": 55, "z": -20,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_red2_smoke": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.smoke.cubemitter.json",
+         "start_time": 4120,
+         "end_time": 5000,
+         "transforms": { "x": 0, "y": 55, "z": -20,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound_blast_9": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 4105,
+         "min_distance": 120,
+         "falloff": 2,
+         "volume": 72,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:blast_01"
+            ]
+         }
+      },
+      "sound_muffled_9": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 4105,
+         "volume": 95,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:muffled_01",
+               "stonehearth_ace:sounds:fireworks:muffled_02",
+               "stonehearth_ace:sounds:fireworks:muffled_03"
+            ]
+         }
+      },
+      "sound_sparkles_9": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 4205,
+         "min_distance": 75,
+         "falloff": 1.8,
+         "volume": 58,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:sparkles_01",
+               "stonehearth_ace:sounds:fireworks:sparkles_02",
+               "stonehearth_ace:sounds:fireworks:sparkles_03"
+            ]
+         }
+      },
+      "flower_lime": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.lime.cubemitter.json",
+         "start_time": 4105,
+         "end_time": 5000,
+         "transforms": { "x": 5, "y": 80, "z": -10,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_lime_smoke": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.smoke.cubemitter.json",
+         "start_time": 4105,
+         "end_time": 5000,
+         "transforms": { "x": 5, "y": 80, "z": -10,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound_blast_10": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 4600,
+         "min_distance": 120,
+         "falloff": 2,
+         "volume": 72,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:blast_01"
+            ]
+         }
+      },
+      "sound_muffled_10": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 4600,
+         "volume": 95,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:muffled_01",
+               "stonehearth_ace:sounds:fireworks:muffled_02",
+               "stonehearth_ace:sounds:fireworks:muffled_03"
+            ]
+         }
+      },
+      "sound_sparkles_10": {
+         "type": "sound_effect",
+         "loop": false,
+         "start_time": 4700,
+         "min_distance": 75,
+         "falloff": 1.8,
+         "volume": 58,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:fireworks:sparkles_01",
+               "stonehearth_ace:sounds:fireworks:sparkles_02",
+               "stonehearth_ace:sounds:fireworks:sparkles_03"
+            ]
+         }
+      },
+      "flower_green2": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.green.cubemitter.json",
+         "start_time": 4600,
+         "end_time": 5000,
+         "transforms": { "x": 15, "y": 65, "z": -25,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_green2_sharp": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.green.sharp.cubemitter.json",
+         "start_time": 4600,
+         "end_time": 5000,
+         "transforms": { "x": 15, "y": 65, "z": -25,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "flower_green2_smoke": {
+         "type": "cubemitter",
+         "cubemitter": "particles/fireworks/fireworks.flower.smoke.cubemitter.json",
+         "start_time": 4600,
+         "end_time": 10000,
+         "transforms": { "x": 15, "y": 65, "z": -25,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         }
+      }
+   }
+}
