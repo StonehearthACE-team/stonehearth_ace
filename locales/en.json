@@ -2721,7 +2721,7 @@
                   }
                },
                "quest_timed_items": {
-                  "title": "🎁 Tomtee brings a gift request! 🎁",
+                  "title": "🎁 Tomtee brings a gift request!",
                   "waiting_title": "Tomtee will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)]!",
                   "waiting_text": "Tomtee will be back in [str(i18n_data.hour_counter)] [str(i18n_data.period)] to retrieve <strong>[str(i18n_data.want_number)] [str(i18n_data.want_item)] <span class='numCached'>([str(i18n_data.req_1.quantity)])</span></strong><img class='questItemsCached [str(i18n_data.req_1.items_cached_class)]'/> as stated in the gift list!",
                   "return_greetings_positive": "Tomtee returns and is ready to collect the [str(i18n_data.want_number)] [str(i18n_data.want_item)] as requested. She'll give us [str(i18n_data.reward_number)] [str(i18n_data.reward_item)] for the help, and also some Frostfest Crafting Recipes after delivery!<br><br>You must click the item and use the 'Learn!' command to unlock the recipe. If inside a storage container, use the town inventory screen to interact with it!",
@@ -11861,7 +11861,7 @@
                "pudding_recipe": {
                   "recipe_name": "Frostfeast Pudding",
                   "description": "Delicious and bold dessert made from a very sweet, fruity and nutty batter. A winter classic!",
-                  "flavor": "It's tempting to keep it for yourself but please try to share, yes?"
+                  "flavor": "Frostfeast meals must be placed down before consumed"
                }
             },
             "candledark": {
@@ -13929,13 +13929,13 @@
                },
                "spirited_coffee_recipe": {
                   "recipe_name": "Frostfeast Spirited Coffee",
-                  "description": "It's coffee, it's spirits, it's warm and it's topped with foamy cream. What else do we need?",
-                  "flavor": "All I want for Frostfeast is you"
+                  "description": "It's coffee, it's spirits, it's warm and it's topped with foamy cream. What else do we need? Must be placed down before consumed.",
+                  "flavor": "All I want for Frostfeast is you!"
                },
                "must_recipe": {
                   "recipe_name": "Frostfeast Must",
-                  "description": "An old and traditional apothecary beverage, prepared from malt but soft and refreshing.",
-                  "flavor": "The only drink to outsell Sweet Potato juice in the Northern Alliance during Frostfeast"
+                  "description": "An old and traditional apothecary beverage, prepared from malt but soft and refreshing. Must be placed down before being consumed.",
+                  "flavor": "The only drink to outsell Sweet Potato juice in the Northern Alliance during Frostfeast!"
                }
             },
             "candledark": {
