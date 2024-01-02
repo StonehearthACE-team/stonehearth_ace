@@ -1,10 +1,9 @@
 {
    "type": "encounter",
-   "encounter_type": "dialog_tree",
+   "encounter_type": "donation_dialog",
    "in_edge": "quest_reward_2",
    "out_edge": "quest_cleanup",
-   "dialog_tree_info": {
-      "start_node": "simple_message",
+   "donation_dialog_info": {
       "nodes": {
          "simple_message": {
             "bulletin": {
@@ -14,6 +13,21 @@
                "choices": {
                   "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.quest_reward.choice_000)": {
                      "result": "accept"
+                  }
+               }
+            }
+         }
+      },
+      "loot_table": {
+         "entries": {
+            "default": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 4
+               },
+               "items": {
+                  "recipe": {
+                     "uri": "stonehearth_ace:consumables:frostfeast:recipe"
                   }
                }
             }
