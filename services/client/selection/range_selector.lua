@@ -527,7 +527,12 @@ function XYZRangeSelector:_on_mouse_event(event)
             self:set_rotation(rotation_index)
             local rotation = self:get_rotation()
             --local node = self._intersection_nodes[rotation_index]
-            local cube = csg_lib.create_min_cube(rotation.origin, local_brick + rotation.terminus)
+            local end_point = local_brick - rotation.origin + rotation.terminus
+            if rotation.is_positive_direction then
+               end_point = end_point + rotation.direction
+            end
+            local cube = csg_lib.create_min_cube(rotation.origin, end_point)
+            log:debug('creating selection cube %s; end_point components %s, %s, %s, %s', cube, local_brick, rotation.origin, rotation.terminus, rotation.direction)
             self:set_length(cube:get_size()[rotation.dimension])
          end
       end

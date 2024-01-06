@@ -35,6 +35,7 @@ function ace_util.get_rotations_table(json)
       -- the terminus, if not explicitly specified, needs to increase by 1 the non-direction dimensions of the origin
       local terminus = radiant.util.to_point3(rotation.terminus) or
          Point3(origin.x + (direction.x == 0 and 1 or 0), origin.y + (direction.y == 0 and 1 or 0), origin.z + (direction.z == 0 and 1 or 0))
+      local is_positive_direction = direction.x > 0 or direction.y > 0 or direction.z > 0
       local min_length = rotation.min_length or json.min_length or 1
       local max_length = rotation.max_length or json.max_length or min_length
       local valid_lengths = rotation.valid_lengths or json.valid_lengths
@@ -54,6 +55,7 @@ function ace_util.get_rotations_table(json)
             origin = origin,
             terminus = terminus,
             direction = direction,
+            is_positive_direction = is_positive_direction,
             min_length = min_length,
             max_length = max_length,
             valid_lengths = valid_lengths,
