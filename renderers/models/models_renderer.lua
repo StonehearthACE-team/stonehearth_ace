@@ -67,7 +67,7 @@ end
 
 function ModelsRenderer:_create_node(options)
    if options and options.model and options.visible then
-      local node = {}
+      local node = { child_nodes = {} }
       local origin = options.origin or Point3.zero
       local rotation = options.rotation or (options.direction and fixture_utils.rotation_from_direction(options.direction)) or 0
       local offset = radiant.util.to_point3(options.offset) or Point3.zero
@@ -83,7 +83,6 @@ function ModelsRenderer:_create_node(options)
          if options.length > 0 then
             -- make a group node and add a bunch of child nodes to it
             node.primary_node = self._node:add_group_node('directional group node')
-            node.child_nodes = {}
 
             -- if the direction is negative and the region offset is positive in that dimension, we need to increment it by one
             -- (because we're approaching from the other side of the voxel)
@@ -95,17 +94,27 @@ function ModelsRenderer:_create_node(options)
             end
 
             for i = 0, options.length - 1 do
-               local child = self:_create_single_node(node.primary_node, origin + options.direction * i, rotation, offset, scale, model, matrix, material)
-               if child then
-                  table.insert(node.child_nodes, child)
-               end
+               self:_create_nodes(node, origin + options.direction * i, rotation, offset, scale, model, matrix, material)
             end
          end
       else
-         node.primary_node = self:_create_single_node(self._node, origin, rotation, offset, scale, model, matrix, material)
+         self:_create_nodes(node, origin, rotation, offset, scale, model, matrix, material)
       end
       
       return node
+   end
+end
+
+-- create a node for each matrix specified
+-- if there's no primary_node specified, set the first created node to that
+-- any additional nodes should be added to child_nodes
+function ModelsRenderer:_create_nodes(group, location, rotation, offset, scale, model, matrix, material)
+   local matrices = radiant.util.is_table(matrix) and matrix or {matrix}
+   for _, this_matrix in ipairs(matrices) do
+      local node = self:_create_single_node(group.primary_node or self._node, location, rotation, offset, scale, model, this_matrix, material)
+      if node then
+         table.insert(group.child_nodes, node)
+      end
    end
 end
 
