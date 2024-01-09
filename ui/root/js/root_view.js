@@ -219,15 +219,10 @@ App.RootView = Ember.ContainerView.extend({
       };
 
       // ACE: add custom game modes and entity mode checking
-      $.getJSON('/stonehearth_ace/ui/game/modes/custom_game_modes.json', function(data) {
-         radiant.each(data.modes, function(mode, modeData) {
-            self._game_mode_manager.addCustomMode(mode, modeData.hud_mode, modeData.menu, modeData.view, modeData.send_selection_updates);
-         });
-      });
-      // self._game_mode_manager.addCustomMode("military", "military"); //, null, "AceMilitaryModeView", true);
-      // self._game_mode_manager.addCustomMode("connection", "hud");
-      // self._game_mode_manager.addCustomMode("farm", "hud", "create_farm");
-      // self._game_mode_manager.addCustomMode("fence", "hud", null, "AceBuildFenceModeView");
+      self._game_mode_manager.addCustomMode("military", "military"); //, null, "AceMilitaryModeView", true);
+      self._game_mode_manager.addCustomMode("connection", "hud");
+      self._game_mode_manager.addCustomMode("farm", "hud", "create_farm");
+      self._game_mode_manager.addCustomMode("fence", "hud", null, "AceBuildFenceModeView");
       //self._game_mode_manager.addCustomMode("planter", "normal", null, "AceHerbalistPlanterView");
       self._game_mode_manager.addCustomEntityModeCheck(self._getCustomModeForEntity);
 
