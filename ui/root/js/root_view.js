@@ -130,6 +130,10 @@ App.RootView = Ember.ContainerView.extend({
          return self._game_mode_manager.getVisionMode();
       };
 
+      App.getCurrentGameModeView = function() {
+         return self._game_mode_manager._currentView;
+      }
+
       App.getCurrentScreenName = function() {
          return self._currentScreenName !== undefined ? self._currentScreenName : 'shell'; // default to shell, undefined should be overridden when trace comes back
       }
@@ -228,7 +232,7 @@ App.RootView = Ember.ContainerView.extend({
       // self._game_mode_manager.addCustomMode("connection", "hud");
       // self._game_mode_manager.addCustomMode("farm", "hud", "create_farm");
       // self._game_mode_manager.addCustomMode("fence", "hud", null, "AceBuildFenceModeView");
-      // self._game_mode_manager.addCustomMode("planter", "normal", null, "AceHerbalistPlanterView");
+      //self._game_mode_manager.addCustomMode("planter", "normal", null, "AceHerbalistPlanterView");
       self._game_mode_manager.addCustomEntityModeCheck(self._getCustomModeForEntity);
 
       App.getGameModeManager = function() {
