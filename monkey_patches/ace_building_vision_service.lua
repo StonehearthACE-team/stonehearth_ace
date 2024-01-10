@@ -29,6 +29,9 @@ function AceBuildingVisionService:_update_terrain_cut(bid, widget)
    local shape_w = widget:get('destination'):get_region():get()
    local room_widget = widget:get('stonehearth:build2:room_widget')
    if room_widget then
+      -- TODO: switch to world shape when we implement a mining building tool
+      -- local data = room_widget:get_data()
+      -- shape_w = data.shape - data.hole_region
       shape_w = room_widget:get_data().region
    end
    shape_w = shape_w:translated(origin)

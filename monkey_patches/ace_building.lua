@@ -201,7 +201,9 @@ function AceBuilding:_calculate_terrain_cutout()
 
    for _, bp in self._sv.blueprints:each() do
       local bp_c = bp:get('stonehearth:build2:blueprint')
-      table.insert(regions, bp_c:get_data():get_world_shape())
+      -- TODO: switch back to get_world_shape when we implement a mining building tool
+      -- table.insert(regions, bp_c:get_data():get_world_shape())
+      table.insert(regions, bp_c:get_data():get_world_region())
    end
    
    self._sv._terrain_cutout = build_util.calculate_building_terrain_cutout(regions)

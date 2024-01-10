@@ -26,7 +26,8 @@ function ace_build_util.calculate_building_terrain_cutout(regions)
    for _, region in ipairs(regions) do
       local bounds = region:get_bounds()
       local r2 = region:project_onto_xz_plane()
-      local r3 = radiant.terrain.intersect_region(csg_lib.get_convex_filled_region(r2):lift(bounds.min.y, bounds.max.y))
+      --local r3 = radiant.terrain.intersect_region(csg_lib.get_convex_filled_region(r2):lift(bounds.min.y, bounds.max.y))
+      local r3 = radiant.terrain.intersect_region(r2:lift(bounds.min.y, bounds.max.y))
       if not r3:empty() then
          cutout:add_region(r3)
       end
