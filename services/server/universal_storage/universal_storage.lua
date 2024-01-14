@@ -67,7 +67,11 @@ function UniversalStorage:post_activate()
       end
    end
 
-   self:_update_all_access_node_effects()
+   -- wait a game loop before applying the effects
+   -- in case the entities have their own default effects that need to be applied first
+   radiant.on_game_loop_once('universal storage post activate', function()
+         self:_update_all_access_node_effects()
+      end)
 end
 
 function UniversalStorage:destroy()
@@ -123,6 +127,7 @@ function UniversalStorage:_destroy_all_node_traces_and_effects()
    for _, node in pairs(self._access_nodes) do
       self:_destroy_node_traces_and_effect(node)
    end
+   self._access_nodes = {}
 end
 
 function UniversalStorage:_destroy_node_traces_and_effect(node)
@@ -243,6 +248,7 @@ end
 function UniversalStorage:set_access_node_effect(effect)
    if self._sv.access_node_effect ~= effect then
       self._sv.access_node_effect = effect
+      self.__saved_variables:mark_changed()
       self:_update_all_access_node_effects()
    end
 end
