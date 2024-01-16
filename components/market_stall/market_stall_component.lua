@@ -145,6 +145,12 @@ function MarketStallComponent:_set_stall_model()
 
    local model_data = models and models.model_data
    if model_data then
+      -- model_data could be a table for a single model, or a list of tables for multiple models
+      if #model_data > 0 then
+         model_data = {
+            models = model_data
+         }
+      end
       self._entity:add_component('stonehearth_ace:models'):add_model(STALL_MODEL_NAME, model_data)
    else
       local models_component = self._entity:get_component('stonehearth_ace:models')

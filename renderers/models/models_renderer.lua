@@ -39,12 +39,14 @@ end
 -- which could allow us to include some animations; maybe that's an overextension?
 function ModelsRenderer:_destroy_model_nodes()
    for _, node in pairs(self._model_nodes) do
-      if node.primary_node then
-         node.primary_node:destroy()
-      end
-      if node.child_nodes then
-         for _, child in ipairs(node.child_nodes) do
-            child:destroy()
+      for _, sub_nodes in pairs(node.sub_nodes) do
+         if sub_nodes.primary_node then
+            sub_nodes.primary_node:destroy()
+         end
+         if sub_nodes.child_nodes then
+            for _, child in ipairs(sub_nodes.child_nodes) do
+               child:destroy()
+            end
          end
       end
    end
@@ -58,57 +60,74 @@ function ModelsRenderer:_update()
    local models = data.models
 
    for name, model in pairs(models) do
-      local node = self:_create_node(model)
+      local node = self:_create_named_node(model)
       if node then
          self._model_nodes[name] = node
       end
    end
 end
 
-function ModelsRenderer:_create_node(options)
-   if options and options.model and options.visible then
-      local node = { child_nodes = {} }
-      local origin = options.origin or Point3.zero
-      local rotation = options.rotation or (options.direction and fixture_utils.rotation_from_direction(options.direction)) or 0
-      local offset = radiant.util.to_point3(options.offset) or Point3.zero
-      local scale = options.scale or 0.1
-      if options.scale_with_entity then
-         scale = scale * self._entity:get_component('render_info'):get_scale()
-      end
-      local model = options.model
-      local matrix = options.matrix or 'background'
-      local material = options.material or 'materials/voxel.material.json'
-
-      if options.origin and options.direction and options.length then
-         if options.length > 0 then
-            -- make a group node and add a bunch of child nodes to it
-            node.primary_node = self._node:add_group_node('directional group node')
-
-            -- if the direction is negative and the region offset is positive in that dimension, we need to increment it by one
-            -- (because we're approaching from the other side of the voxel)
-            if options.direction[options.dimension] < 0 then
-               local region_origin = self._entity:get_component('mob'):get_region_origin()
-               --log:debug('shifting model render: %s, %s, %s, %s', origin, options.direction, region_origin, options.dimension)
-               origin = origin + options.direction * math.floor(0.5 + region_origin[options.dimension])
-               --log:debug('new origin: %s', origin)
-            end
-
-            for i = 0, options.length - 1 do
-               self:_create_nodes(node, origin + options.direction * i, rotation, offset, scale, model, matrix, material)
+function ModelsRenderer:_create_named_node(options)
+   if options and options.visible then
+      -- either this is a table with data for a single model,
+      -- or it is a table with a 'models' entry that is a list of multiple model data tables
+      if options.models and #options.models > 0 or options.model then
+         local node = { sub_nodes = {} }
+         for _, model in ipairs(options.models or {options}) do
+            if model.model then
+               table.insert(node.sub_nodes, self:_create_model_nodes(model))
             end
          end
-      else
-         self:_create_nodes(node, origin, rotation, offset, scale, model, matrix, material)
+         
+         if #node.sub_nodes > 0 then
+            return node
+         end
       end
-      
-      return node
    end
+end
+
+function ModelsRenderer:_create_model_nodes(options)
+   local node = { child_nodes = {} }
+   local origin = options.origin or Point3.zero
+   local rotation = options.rotation or (options.direction and fixture_utils.rotation_from_direction(options.direction)) or 0
+   local offset = radiant.util.to_point3(options.offset) or Point3.zero
+   local scale = options.scale or 0.1
+   if options.scale_with_entity then
+      scale = scale * self._entity:get_component('render_info'):get_scale()
+   end
+   local model = options.model
+   local matrix = options.matrix or 'background'
+   local material = options.material or 'materials/voxel.material.json'
+
+   if options.origin and options.direction and options.length then
+      if options.length > 0 then
+         -- make a group node and add a bunch of child nodes to it
+         node.primary_node = self._node:add_group_node('directional group node')
+
+         -- if the direction is negative and the region offset is positive in that dimension, we need to increment it by one
+         -- (because we're approaching from the other side of the voxel)
+         if options.direction[options.dimension] < 0 then
+            local region_origin = self._entity:get_component('mob'):get_region_origin()
+            --log:debug('shifting model render: %s, %s, %s, %s', origin, options.direction, region_origin, options.dimension)
+            origin = origin + options.direction * math.floor(0.5 + region_origin[options.dimension])
+            --log:debug('new origin: %s', origin)
+         end
+
+         for i = 0, options.length - 1 do
+            self:_create_matrix_nodes(node, origin + options.direction * i, rotation, offset, scale, model, matrix, material)
+         end
+      end
+   else
+      self:_create_matrix_nodes(node, origin, rotation, offset, scale, model, matrix, material)
+   end
+
+   return node
 end
 
 -- create a node for each matrix specified
 -- if there's no primary_node specified, set the first created node to that
 -- any additional nodes should be added to child_nodes
-function ModelsRenderer:_create_nodes(group, location, rotation, offset, scale, model, matrix, material)
+function ModelsRenderer:_create_matrix_nodes(group, location, rotation, offset, scale, model, matrix, material)
    local matrices = radiant.util.is_table(matrix) and matrix or {matrix}
    for _, this_matrix in ipairs(matrices) do
       local node = self:_create_single_node(group.primary_node or self._node, location, rotation, offset, scale, model, this_matrix, material)
