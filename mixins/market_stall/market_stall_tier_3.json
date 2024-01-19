@@ -14,13 +14,141 @@
          "teardown_effect": "stonehearth_ace:effects:mercantile:remove",
          "teardown_delay": 1500,
          "stall_models": {
+            "default_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/default.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/default_tier_3.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "default_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/default.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/default_tier_3.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
             "default": {
-               "model_data": {
-                  "model": "file(shop/default_tier_3.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/default.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/default_tier_3.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -66,13 +194,21 @@
                   }
                ]
             },
-            "blacksmith_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/blacksmith_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "blacksmith_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/blacksmith.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/blacksmith_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -118,13 +254,21 @@
                   }
                ]
             },
-            "bonecarver_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/bonecarver_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "blacksmith_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/blacksmith.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/blacksmith_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -170,13 +314,21 @@
                   }
                ]
             },
-            "charcoal_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/charcoal_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "blacksmith_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/blacksmith.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/blacksmith_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -222,13 +374,21 @@
                   }
                ]
             },
-            "clay_pit_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/clay_pit_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "bonecarver_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/bonecarver.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/bonecarver_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -274,13 +434,21 @@
                   }
                ]
             },
-            "container_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/container_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "bonecarver_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/bonecarver.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/bonecarver_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -326,13 +494,21 @@
                   }
                ]
             },
-            "door_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/door_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "bonecarver_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/bonecarver.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/bonecarver_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -378,13 +554,21 @@
                   }
                ]
             },
-            "drink_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/drink_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "charcoal_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/charcoal.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/charcoal_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -430,13 +614,21 @@
                   }
                ]
             },
-            "engineering_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/engineering_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "charcoal_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/charcoal.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/charcoal_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -482,13 +674,21 @@
                   }
                ]
             },
-            "exotic_general_goods_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/exotic_general_goods_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "charcoal_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/charcoal.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/charcoal_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -534,13 +734,21 @@
                   }
                ]
             },
-            "exotic_weapon_armor_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/exotic_weapon_armor_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "clay_pit_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/clay_pit.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/clay_pit_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -586,13 +794,21 @@
                   }
                ]
             },
-            "farming_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/farming_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "clay_pit_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/clay_pit.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/clay_pit_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -638,13 +854,21 @@
                   }
                ]
             },
-            "fishing_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/fishing_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "clay_pit_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/clay_pit.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/clay_pit_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -690,13 +914,21 @@
                   }
                ]
             },
-            "food_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/food_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "container_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/container.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/container_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -742,13 +974,21 @@
                   }
                ]
             },
-            "forager_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/forager_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "container_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/container.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/container_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -794,13 +1034,21 @@
                   }
                ]
             },
-            "gardener_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/gardener_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "container_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/container.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/container_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -846,13 +1094,21 @@
                   }
                ]
             },
-            "healing_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/healing_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "door_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/door.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/door_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -898,13 +1154,21 @@
                   }
                ]
             },
-            "herbalist_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/herbalist_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "door_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/door.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/door_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -950,13 +1214,21 @@
                   }
                ]
             },
-            "hunting_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/hunting_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "door_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/door.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/door_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1002,13 +1274,21 @@
                   }
                ]
             },
-            "iskender_caravan": {
-               "model_data": {
-                  "model": "file(shop/tier_3/iskender_caravan.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "drink_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/drink.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/drink_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1054,13 +1334,21 @@
                   }
                ]
             },
-            "lumberjacking_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/lumberjacking_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "drink_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/drink.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/drink_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1106,13 +1394,21 @@
                   }
                ]
             },
-            "mining_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/mining_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "drink_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/drink.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/drink_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1158,13 +1454,21 @@
                   }
                ]
             },
-            "na_exotic_general_goods_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/na_exotic_general_goods_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "engineering_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/engineering.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/engineering_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1210,13 +1514,21 @@
                   }
                ]
             },
-            "na_exotic_weapon_armor_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/na_exotic_weapon_armor_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "engineering_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/engineering.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/engineering_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1262,13 +1574,21 @@
                   }
                ]
             },
-            "na_weapon_armor_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/na_weapon_armor_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "engineering_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/engineering.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/engineering_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1314,13 +1634,21 @@
                   }
                ]
             },
-            "pasture_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/pasture_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "exotic_general_goods_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/exotic_general_goods.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/exotic_general_goods_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1366,13 +1694,21 @@
                   }
                ]
             },
-            "pets_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/pets_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "exotic_general_goods_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/exotic_general_goods.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/exotic_general_goods_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1418,13 +1754,21 @@
                   }
                ]
             },
-            "potter_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/potter_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "exotic_general_goods_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/exotic_general_goods.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/exotic_general_goods_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1470,13 +1814,21 @@
                   }
                ]
             },
-            "quarry_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/quarry_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "exotic_weapon_armor_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/exotic_weapon_armor.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/exotic_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1522,13 +1874,21 @@
                   }
                ]
             },
-            "rc_exotic_general_goods_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/rc_exotic_general_goods_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "exotic_weapon_armor_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/exotic_weapon_armor.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/exotic_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1574,13 +1934,21 @@
                   }
                ]
             },
-            "rc_exotic_weapon_armor_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/rc_exotic_weapon_armor_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "exotic_weapon_armor_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/exotic_weapon_armor.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/exotic_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1626,13 +1994,21 @@
                   }
                ]
             },
-            "rc_weapon_armor_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/rc_weapon_armor_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "farming_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/farming.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/farming_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1678,13 +2054,21 @@
                   }
                ]
             },
-            "rugs_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/rugs_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "farming_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/farming.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/farming_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1730,13 +2114,21 @@
                   }
                ]
             },
-            "stonecutter_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/stonecutter_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "farming_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/farming.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/farming_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1782,13 +2174,21 @@
                   }
                ]
             },
-            "training_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/training_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "fishing_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/fishing.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/fishing_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1834,13 +2234,21 @@
                   }
                ]
             },
-            "weapon_armor_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/weapon_armor_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "fishing_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/fishing.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/fishing_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1886,13 +2294,21 @@
                   }
                ]
             },
-            "woodcutter_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/woodcutter_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "fishing_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/fishing.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/fishing_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",
@@ -1938,13 +2354,4461 @@
                   }
                ]
             },
-            "fireworks_shop": {
-               "model_data": {
-                  "model": "file(shop/tier_3/fireworks_shop.qb)",
-                  "matrix": "Shop",
-                  "scale": 0.1,
-                  "offset": { "x": 40, "y": 0, "z": 40 }
-               },
+            "food_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/food.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/food_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "food_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/food.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/food_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "food_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/food.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/food_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "forager_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/forager.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/forager_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "forager_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/forager.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/forager_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "forager_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/forager.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/forager_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "gardener_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/gardener.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/gardener_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "gardener_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/gardener.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/gardener_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "gardener_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/gardener.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/gardener_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "healing_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/healing.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/healing_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "healing_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/healing.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/healing_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "healing_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/healing.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/healing_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "herbalist_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/herbalist.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/herbalist_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "herbalist_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/herbalist.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/herbalist_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "herbalist_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/herbalist.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/herbalist_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "hunting_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/hunting.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/hunting_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "hunting_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/hunting.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/hunting_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "hunting_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/hunting.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/hunting_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "iskender_caravan_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/iskender_caravan.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/iskender_caravan.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "iskender_caravan_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/iskender_caravan.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/iskender_caravan.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "iskender_caravan_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/iskender_caravan.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/iskender_caravan.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "lumberjacking_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/lumberjacking.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/lumberjacking_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "lumberjacking_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/lumberjacking.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/lumberjacking_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "lumberjacking_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/lumberjacking.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/lumberjacking_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "mining_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/mining.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/mining_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "mining_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/mining.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/mining_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "mining_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/mining.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/mining_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "na_exotic_general_goods_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/na_exotic_general_goods.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/na_exotic_general_goods_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "na_exotic_general_goods_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/na_exotic_general_goods.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/na_exotic_general_goods_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "na_exotic_general_goods_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/na_exotic_general_goods.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/na_exotic_general_goods_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "na_exotic_weapon_armor_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/na_exotic_weapon_armor.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/na_exotic_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "na_exotic_weapon_armor_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/na_exotic_weapon_armor.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/na_exotic_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "na_exotic_weapon_armor_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/na_exotic_weapon_armor.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/na_exotic_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "na_weapon_armor_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/na_weapon_armor.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/na_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "na_weapon_armor_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/na_weapon_armor.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/na_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "na_weapon_armor_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/na_weapon_armor.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/na_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "pasture_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/pasture.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/pasture_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "pasture_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/pasture.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/pasture_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "pasture_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/pasture.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/pasture_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "pets_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/pets.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/pets_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "pets_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/pets.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/pets_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "pets_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/pets.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/pets_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "potter_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/potter.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/potter_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "potter_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/potter.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/potter_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "potter_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/potter.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/potter_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "quarry_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/quarry.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/quarry_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "quarry_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/quarry.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/quarry_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "quarry_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/quarry.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/quarry_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "rc_exotic_general_goods_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/rc_exotic_general_goods.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/rc_exotic_general_goods_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "rc_exotic_general_goods_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/rc_exotic_general_goods.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/rc_exotic_general_goods_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "rc_exotic_general_goods_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/rc_exotic_general_goods.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/rc_exotic_general_goods_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "rc_exotic_weapon_armor_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/rc_exotic_weapon_armor.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/rc_exotic_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "rc_exotic_weapon_armor_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/rc_exotic_weapon_armor.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/rc_exotic_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "rc_exotic_weapon_armor_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/rc_exotic_weapon_armor.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/rc_exotic_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "rc_weapon_armor_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/rc_weapon_armor.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/rc_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "rc_weapon_armor_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/rc_weapon_armor.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/rc_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "rc_weapon_armor_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/rc_weapon_armor.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/rc_weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "rugs_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/rugs.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/rugs_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "rugs_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/rugs.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/rugs_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "rugs_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/rugs.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/rugs_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "stonecutter_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/stonecutter.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/stonecutter_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "stonecutter_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/stonecutter.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/stonecutter_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "stonecutter_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/stonecutter.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/stonecutter_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "training_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/training.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/training_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "training_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/training.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/training_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "training_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/training.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/training_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "weapon_armor_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/weapon_armor.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "weapon_armor_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/weapon_armor.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "weapon_armor_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/weapon_armor.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/weapon_armor_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "woodcutter_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/woodcutter.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/woodcutter_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "woodcutter_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/woodcutter.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/woodcutter_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "woodcutter_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/woodcutter.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/woodcutter_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "fireworks_shop_3": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/fireworks.qb)",
+                     "matrix": "Tier3",
+                     "scale": 0.1,
+                     "offset": { "x": -9, "y": -14, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/fireworks_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "fireworks_shop_2": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/fireworks.qb)",
+                     "matrix": "Tier2",
+                     "scale": 0.1,
+                     "offset": { "x": -10, "y": -16, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/fireworks_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
+               "entity_points": [
+                  {
+                     "bone_name": "goodsShelf1",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf2",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsShelf3",
+                     "min_quality": 2
+                  },
+                  {
+                     "bone_name": "goodsFrontRow3",
+                     "min_rarity": "rare"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow1"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow2"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow4"
+                  },
+                  {
+                     "bone_name": "goodsFrontRow5"
+                  },
+                  {
+                     "bone_name": "goodsMidRow1"
+                  },
+                  {
+                     "bone_name": "goodsMidRow2"
+                  },
+                  {
+                     "bone_name": "goodsMidRow3",
+                     "min_rarity": "uncommon"
+                  },
+                  {
+                     "bone_name": "goodsMidRow4",
+                     "min_rarity": "uncommon"
+                  }
+               ]
+            },
+            "fireworks_shop_1": {
+               "model_data": [
+                  {
+                     "model": "file(shop/signs/fireworks.qb)",
+                     "matrix": "Tier1",
+                     "scale": 0.1,
+                     "offset": { "x": -11, "y": -18, "z": 30 }
+                  },
+                  {
+                     "model": "file(shop/tier_3/fireworks_shop.qb)",
+                     "matrix": "Shop",
+                     "scale": 0.1,
+                     "offset": { "x": 40, "y": 0, "z": 40 }
+                  }
+               ],
                "entity_points": [
                   {
                      "bone_name": "goodsShelf1",

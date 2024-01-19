@@ -1,0 +1,38 @@
+{
+   "type": "encounter",
+   "encounter_type": "shop",
+   "in_edge": "fireworks_shop",
+   "shop_info": {
+      "name": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.fireworks_shop_1.shop_info.name)",
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_1_shops.fireworks_shop_1.shop_info.title)",
+      "inventory": {
+         "overall_price_multiplier": 1.5,
+         "shopkeeper_level": 1,
+         "shopkeeper_gold": 490,
+         "entries": [
+            {
+               "items": [
+                  "stonehearth_ace:gizmos:fireworks:blue",
+                  "stonehearth_ace:gizmos:fireworks:green",
+                  "stonehearth_ace:gizmos:fireworks:red"
+               ],
+               "quantity": {
+                  "min": 2,
+                  "max": 4
+               },
+               "fine_item_chance": 0
+            },
+            {
+               "items": [
+                  "stonehearth_ace:gizmos:fireworks:lime"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 1
+               },
+               "fine_item_chance": 0
+            }
+         ]
+      }
+   }
+}

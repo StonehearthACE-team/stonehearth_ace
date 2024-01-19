@@ -1,0 +1,98 @@
+{
+   "type": "encounter",
+   "encounter_type": "shop",
+   "in_edge": "orchard_shop_3",
+   "shop_info": {
+      "name": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_3_shops.orchard_shop_3.shop_info.name)",
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.trader.arcs.encounters.tier_3_shops.orchard_shop_3.shop_info.title)",
+      "inventory": {
+         "shopkeeper_level": 3,
+         "shopkeeper_gold": 1050,
+         "overall_price_multiplier": 1.9,
+         "entries": [
+            {
+               "items_matching": {
+                  "fruits": {
+                     "material": [
+                        "food_container raw_food fruit"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 18,
+                  "max": 40,
+                  "max_unique": 6
+               }
+            },
+            {
+               "items_matching": {
+                  "fruits": {
+                     "material": [
+                        "nut_basket cooking_ingredient"
+                     ]
+                  }
+               },
+               "quantity": {
+                  "min": 8,
+                  "max": 24,
+                  "max_unique": 2
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:resources:wood:almond_log",
+                  "stonehearth_ace:resources:wood:chestnut_log",
+                  "stonehearth_ace:resources:wood:hazelnut_log",
+                  "stonehearth_ace:resources:wood:walnut_log",
+                  "stonehearth_ace:resources:wood:apple_log",
+                  "stonehearth_ace:resources:wood:pear_log",
+                  "stonehearth_ace:resources:wood:plum_log",
+                  "stonehearth_ace:resources:wood:date_log"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 12,
+                  "max_unique": 3
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:trees:apple:sapling",
+                  "stonehearth_ace:trees:pear:sapling",
+                  "stonehearth_ace:trees:plum:sapling",
+                  "stonehearth_ace:trees:date:sapling",
+                  "stonehearth_ace:trees:walnut:sapling",
+                  "stonehearth_ace:trees:hazelnut:sapling",
+                  "stonehearth_ace:trees:chestnut:sapling",
+                  "stonehearth_ace:trees:almond:sapling"
+               ],
+               "quantity": {
+                  "min": 0,
+                  "max": 3,
+                  "max_unique": 3
+               }
+            },
+            {
+               "items": [
+                  "stonehearth_ace:trees:apple:seed",
+                  "stonehearth_ace:trees:pear:seed",
+                  "stonehearth_ace:trees:plum:seed",
+                  "stonehearth_ace:trees:date:seed",
+                  "stonehearth_ace:trees:walnut:seed",
+                  "stonehearth_ace:trees:hazelnut:seed",
+                  "stonehearth_ace:trees:chestnut:seed",
+                  "stonehearth_ace:trees:almond:seed",
+                  "stonehearth_ace:plants:cherry_bush:seed",
+                  "stonehearth:plants:berry_bush:seed",
+                  "stonehearth:plants:pear_cactus:seed"
+               ],
+               "quantity": {
+                  "min": 2,
+                  "max": 6,
+                  "max_unique": 6
+               }
+            }
+         ]
+      }
+   }
+}
