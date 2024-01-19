@@ -487,6 +487,12 @@
                               "title": "A merchant with a cart of farm supplies rolls into town"
                            }
                         },
+                        "orchard_shop_1": {
+                           "shop_info": {
+                              "name": "The Groovy Grove Orchards",
+                              "title": "A representative from a simple fruit farm approaches"
+                           }
+                        },
                         "container_shop_1": {
                            "shop_info": {
                               "name": "Crait Chester's Container Shop",
@@ -675,10 +681,10 @@
                               "title": "A northerner merchant has arrived with some unique goods from the Valkyrie woods"
                            }
                         },
-                        "fireworks_shop": {
+                        "fireworks_shop_1": {
                            "shop_info": {
-                              "name": "Dangalf's Secret Fires",
-                              "title": "A famous wandering wizard rides into town ahead of a cart full of fireworks!"
+                              "name": "Dangalf's Conjuring of Cheap Tricks",
+                              "title": "A famous wandering wizard walks into town with some fireworks!"
                            }
                         }
                      },
@@ -687,6 +693,12 @@
                            "shop_info": {
                               "name": "Springshire's Bountiful Farming Supplies",
                               "title": "A group of farmers from a thriving town have come for trading"
+                           }
+                        },
+                        "orchard_shop_2": {
+                           "shop_info": {
+                              "name": "Jamnut Applebark's Orchards",
+                              "title": "A caravan from a nearby fruit farm rolls into town"
                            }
                         },
                         "rugs_shop_2": {
@@ -901,6 +913,12 @@
                               "title": "A northerner trader has arrived with unique goods from the Valkyrie woods"
                            }
                         },
+                        "fireworks_shop_2": {
+                           "shop_info": {
+                              "name": "Dangalf's Flames of U-Boom!",
+                              "title": "A famous wandering wizard arrives precisely when he means to with some fireworks!"
+                           }
+                        },
                         "iskender_caravan_recurring": {
                            "shop_info": {
                               "name": "The Iskender Caravan",
@@ -1035,6 +1053,12 @@
                            "shop_info": {
                               "name": "Farmer Gem's Wondrous Farming Supplies",
                               "title": "Farmer Gem has arrived with some of her best farming supplies"
+                           }
+                        },
+                        "orchard_shop_3": {
+                           "shop_info": {
+                              "name": "The Plum Fun Orchards",
+                              "title": "A merchant from a large fruit & nut farm strolls into town loaded with wares"
                            }
                         },
                         "blacksmith_shop_3": {
@@ -1185,6 +1209,12 @@
                            "shop_info": {
                               "name": "The Boreal Run Trading Co. Exotic Emporium",
                               "title": "A northerner caravan has arrived with lots of unique goods from the Valkyrie woods"
+                           }
+                        },
+                        "fireworks_shop_3": {
+                           "shop_info": {
+                              "name": "Dangalf's Secret Fires",
+                              "title": "A famous wandering wizard rides into town ahead of a cart full of fireworks!"
                            }
                         }
                      },
@@ -6567,7 +6597,8 @@
             },
             "sunstroke_debuff": {
                "display_name": "Sunstroke",
-               "description": "So warm... Getting dizzy... I Need refreshment... NOW!<ul><li>🔥 This hearthling will take damage over time until they are knocked unconscious</li><li>🖤 This debuff greatly reduces the time a hearthling has to be rescued if knocked unconscious</li><li>➕ Being sheltered will allow this effect to slowly fade away</li><li>➕ Entering the water or drinking something refreshing will remove this effect</li></ul>"
+               "description": "So warm... Getting dizzy... I Need refreshment... NOW!<ul><li>🔥 This hearthling will take damage over time until they are knocked unconscious</li><li>🖤 This debuff greatly reduces the time a hearthling has to be rescued if knocked unconscious</li><li>➕ Being sheltered will allow this effect to slowly fade away</li><li>➕ Entering the water or drinking something refreshing will remove this effect</li><li>➕ Wearing any kind of hat - either from their job or crafted by a Weaver - would've prevented this condition!</li></ul>",
+               "bulletin": "[name(i18n_data.entity)] is feeling really ill from heat exposure!"
             },
             "freezing_water_debuff": {
                "display_name": "Freezing Water",
@@ -6870,7 +6901,8 @@
             },
             "frostbite": {
                "display_name": "Wound: Frostbite",
-               "description": "Ew! Doesn't look good, I shouldn't stay out in the cold for too long...<ul><li>💬 Type & Severity: Cold (Medium)</li><li>💛🔻 Effective maximum health is slightly lowered</li><li>💊 This wound will be removed by treatment with any salve, Rough Salve or better</li><li>❌ This wound will never heal on its own</li><li>💫 Treating this wound has a small chance of permanently adding the condition Frostbitten</li></ul>"
+               "description": "Ew! Doesn't look good, I shouldn't stay out in the cold for too long...<ul><li>💬 Type & Severity: Cold (Medium)</li><li>💛🔻 Effective maximum health is slightly lowered</li><li>💊 This wound will be removed by treatment with any salve, Rough Salve or better</li><li>❌ This wound will never heal on its own</li><li>💫 Treating this wound has a small chance of permanently adding the condition Frostbitten</li></ul>",
+               "bulletin": "[name(i18n_data.entity)] has developed a frostbite!"
             },
             "light_burn": {
                "display_name": "Wound: Light Burn",
@@ -7307,6 +7339,10 @@
             "herbalist_bed_buff": {
                "display_name": "Healing Bed",
                "description": "Feels warmer and safer than being out there... A good place to recover! <ul><li>Protected from chilly and cold weather but not from freezing weather</li><li>Recovering 5% of their health every 2 hours</li><li>If incapacitated, this hearthling will recover faster than in any other bed</li></ul>"
+            },
+            "cover_pasture_buff": {
+               "display_name": "Pasture Bedding",
+               "description": "This bedding will do for most animals during chilly and cold weather nights! <ul><li>Protected from chilly and cold weather but not from freezing weather</li><li>For the most efficient pasture animal protection, have this bedding inside a roofed shelter!</li></ul>"
             }
          },
          "megacrop": {
@@ -11508,6 +11544,9 @@
                "recipe_name": "Fruity Mallard",
                "description": "The meat of a whole duck flavored with mushrooms and braised in sweet sauce.",
                "flavor": "Exquisite!"
+            },
+            "bug_meat_kabob_recipe": {
+               "recipe_name": "Bug Meat Skewer"
             },
             "fish_stew_recipe": {
                "recipe_name": "Peculiar Fish Stew",
@@ -21366,6 +21405,14 @@
             "rare_truffle_serving": {
                "display_name": "Serving of Rare Truffles",
                "description": "Exquisite."
+            }
+         },
+         "bug_meat_kabob": {
+            "bug_meat_kabob_serving": {
+               "display_name": "Serving of Bug Meat Skewer"
+            },
+            "bug_meat_kabob": {
+               "display_name": "Bug Meat Skewer"
             }
          },
          "oinker_jerky": {
