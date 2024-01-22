@@ -1,0 +1,34 @@
+{
+   "type": "entity",
+   "components": {
+      "mob": {},
+      "stonehearth:storage": {
+         "type": "input_crate",
+         "allow_default": false,
+         "drop_all_on_undeploy": true,
+         "priority": 2,
+         "capacity": 0
+      },
+      "destination": {
+         "auto_update_adjacent": true
+      },
+      "stonehearth_ace:input": {
+         "require_matching_filter": true
+      },
+      "stonehearth_ace:output": {}
+   },
+   "entity_data": {
+      "navgrid": {
+         "has_physics": true
+      },
+      "stonehearth:target_type": {
+         "target_type": "item"
+      },
+      "stonehearth:catalog": {
+         "category": "storage",
+         "material_tags": [
+            "no_decay"
+         ]
+      }
+   }
+}

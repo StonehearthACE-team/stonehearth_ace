@@ -1,7 +1,35 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:mechanical:auto_crafter"
+   ],
    "components": {
       "stonehearth:workshop": {
          "workshop_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_forge_advanced/effects/work.json"
+      },
+      "stonehearth_ace:auto_craft": {
+         "recipes": {
+            "stonehearth:jobs:blacksmith": {
+               "smelt:auto_bulk_iron_ingot": true,
+               "smelt:auto_steel_ingot": true
+            }
+         }
+      },
+      "stonehearth_ace:connection": {
+         "mechanical": {
+            "connectors": {
+               "input": {
+                  "region": [
+                     {
+                        "min": { "x": 3, "y": 2, "z": 1 },
+                        "max": { "x": 5, "y": 3, "z": 2 }
+                     }
+                  ],
+                  "max_connections": 1,
+                  "region_intersection_threshold": 1
+               }
+            },
+            "max_connections": 1
+         }
       },
       "stonehearth_ace:consumer": {
          "fuel_settings": {

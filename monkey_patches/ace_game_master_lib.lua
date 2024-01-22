@@ -79,6 +79,7 @@ function ace_game_master_lib.create_quest_storage(player_id, uri, item_requireme
    local qs_comp = quest_storage:add_component('stonehearth_ace:quest_storage')
    qs_comp:set_requirements(item_requirements)
    qs_comp:set_bulletin(bulletin)
+   qs_comp:set_enabled(stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_enable_quest_storage', true))
    radiant.terrain.place_entity_at_exact_location(quest_storage, location, {force_iconic = false})
    radiant.entities.turn_to(quest_storage, facing or (rng:get_int(0, 3) * 90))
    radiant.effects.run_effect(quest_storage, 'stonehearth:effects:gib_effect')

@@ -36,24 +36,38 @@ function AceCraftOrder:activate()
 
    self:_ace_old_activate()
 
-   if not self._sv.order_progress_by_crafter then
-      self._sv.order_progress_by_crafter = {}
+   if self._sv.order_progress_by_crafter then
+      self._sv._order_progress_by_crafter = self._sv.order_progress_by_crafter
+      self._sv.order_progress_by_crafter = nil
+   end
+   if not self._sv._order_progress_by_crafter then
+      self._sv._order_progress_by_crafter = {}
    end
 
    if not self._sv.curr_crafters then
-      self._sv.curr_crafters = {}
+      self._sv.curr_crafters = {n = 0}
       self._sv.curr_crafter_count = 0
       
       -- if we're activating from a non-ACE save...
       if self._sv.curr_crafter then
          self:_add_curr_crafter(self._sv.curr_crafter)
-         self._sv.order_progress_by_crafter[self._sv.curr_crafter:get_id()] = self._sv.order_progress
+         self._sv._order_progress_by_crafter[self._sv.curr_crafter:get_id()] = self._sv.order_progress
       end
+   else
+      -- make sure it's an array and not a table
+      local curr_crafters = {}
+      for id, crafter in pairs(self._sv.curr_crafters) do
+         if id ~= 'n' then
+            table.insert(curr_crafters, crafter)
+         end
+      end
+      self._sv.curr_crafters = curr_crafters
    end
 
-   for id, crafter in pairs(self._sv.curr_crafters) do
-      if not self._sv.order_progress_by_crafter[id] then
-         self._sv.order_progress_by_crafter[id] = stonehearth.constants.crafting_status.UNSTARTED
+   for _, crafter in ipairs(self._sv.curr_crafters) do
+      local id = crafter:get_id()
+      if not self._sv._order_progress_by_crafter[id] then
+         self._sv._order_progress_by_crafter[id] = stonehearth.constants.crafting_status.UNSTARTED
       end
    end
 
@@ -77,7 +91,7 @@ end
 
 AceCraftOrder._ace_old_destroy = CraftOrder.__user_destroy
 function AceCraftOrder:destroy()
-   for _, crafter in pairs(self._sv.curr_crafters) do
+   for _, crafter in ipairs(self._sv.curr_crafters) do
       local crafter_comp = crafter:is_valid() and crafter:get_component('stonehearth:crafter')
       if crafter_comp then
          crafter_comp:unreserve_fuel()
@@ -102,32 +116,46 @@ function AceCraftOrder:get_high_quality_preference()
 end
 
 function AceCraftOrder:_add_curr_crafter(crafter)
-   local id = crafter:get_id()
-   if not self._sv.curr_crafters[id] then
-      self._sv.curr_crafters[id] = crafter
+   local already_crafting = false
+   for _, curr_crafter in ipairs(self._sv.curr_crafters) do
+      if curr_crafter == crafter then
+         already_crafting = true
+         break
+      end
+   end
+
+   if not already_crafting then
+      table.insert(self._sv.curr_crafters, crafter)
       self._sv.curr_crafter_count = self._sv.curr_crafter_count + 1
    end
 end
 
 function AceCraftOrder:_remove_curr_crafter(crafter)
-   local id = crafter:get_id()
-   if self._sv.curr_crafters[id] then
-      self._sv.curr_crafters[id] = nil
-      self._sv.curr_crafter_count = self._sv.curr_crafter_count - 1
+   for i, curr_crafter in ipairs(self._sv.curr_crafters) do
+      if curr_crafter == crafter then
+         table.remove(self._sv.curr_crafters, i)
+         self._sv.curr_crafter_count = self._sv.curr_crafter_count - 1
+         break
+      end
    end
-   if self._sv.order_progress_by_crafter[id] then
-      self._sv.order_progress_by_crafter[id] = nil
+   if self._sv._order_progress_by_crafter[id] then
+      self._sv._order_progress_by_crafter[id] = nil
    end
 end
 
 function AceCraftOrder:has_current_crafter(crafter)
-   local id = crafter:get_id()
-   return self._sv.curr_crafters[id] ~= nil
+   for _, curr_crafter in ipairs(self._sv.curr_crafters) do
+      if curr_crafter == crafter then
+         return true
+      end
+   end
+
+   return false
 end
 
 function AceCraftOrder:reset_progress(crafter)
    local id = crafter:get_id()
-   self._sv.order_progress_by_crafter[id] = stonehearth.constants.crafting_status.UNSTARTED
+   self._sv._order_progress_by_crafter[id] = stonehearth.constants.crafting_status.UNSTARTED
    self:_on_changed()
 end
 
@@ -137,10 +165,10 @@ end
 function AceCraftOrder:progress_to_next_stage(crafter)
    local id = crafter:get_id()
    -- how does this happen? if the crafter has been removed, don't try to start/progress them
-   if self._sv.order_progress_by_crafter[id] then
-      self._sv.order_progress_by_crafter[id] = self._sv.order_progress_by_crafter[id] + 1
-      if self._sv.order_progress_by_crafter[id] > stonehearth.constants.crafting_status.CLEANUP then
-         self._sv.order_progress_by_crafter[id] = stonehearth.constants.crafting_status.UNSTARTED
+   if self._sv._order_progress_by_crafter[id] then
+      self._sv._order_progress_by_crafter[id] = self._sv._order_progress_by_crafter[id] + 1
+      if self._sv._order_progress_by_crafter[id] > stonehearth.constants.crafting_status.CLEANUP then
+         self._sv._order_progress_by_crafter[id] = stonehearth.constants.crafting_status.UNSTARTED
       end
       -- notify order_list that something has changed, so anyone listening on order_list can have updated information on the order
       self:_on_changed()
@@ -150,10 +178,10 @@ end
 --Return the progress for the current order
 function AceCraftOrder:get_progress(crafter)
    local id = crafter:get_id()
-   if not self._sv.order_progress_by_crafter[id] then
-      self._sv.order_progress_by_crafter[id] = stonehearth.constants.crafting_status.UNSTARTED
+   if not self._sv._order_progress_by_crafter[id] then
+      self._sv._order_progress_by_crafter[id] = stonehearth.constants.crafting_status.UNSTARTED
    end
-   return self._sv.order_progress_by_crafter[id]
+   return self._sv._order_progress_by_crafter[id]
 end
 
 function AceCraftOrder:set_crafting_status(crafter, is_crafting)
@@ -161,28 +189,28 @@ function AceCraftOrder:set_crafting_status(crafter, is_crafting)
       local id = crafter:get_id()
       if is_crafting ~= false then  -- semi-backwards compatibility in case is_crafting is nil
          -- leaving these in here for now for semi-backwards compatibility
-         self._sv.curr_crafter_id = id
-         self._sv.curr_crafter = crafter
+         -- self._sv.curr_crafter_id = id
+         -- self._sv.curr_crafter = crafter
          
          self:_add_curr_crafter(crafter)
       else
          self:_remove_curr_crafter(crafter)
-         self._sv.order_progress_by_crafter[id] = nil
+         self._sv._order_progress_by_crafter[id] = nil
 
-         local new_crafter_id = next(self._sv.curr_crafters)
-         if new_crafter_id then
-            self._sv.curr_crafter_id = new_crafter_id
-            self._sv.curr_crafter = self._sv.curr_crafters[new_crafter_id]
-         end
+         -- local new_crafter_id = next(self._sv.curr_crafters)
+         -- if new_crafter_id then
+         --    self._sv.curr_crafter_id = new_crafter_id
+         --    self._sv.curr_crafter = self._sv.curr_crafters[new_crafter_id]
+         -- end
       end
    else
       self._sv.curr_crafter_id = nil
       self._sv.curr_crafter = nil
 
-      self._sv.curr_crafters = {}
+      self._sv.curr_crafters = {n = 0}
       self._sv.curr_crafter_count = 0
 
-      self._sv.order_progress_by_crafter = {}
+      self._sv._order_progress_by_crafter = {}
    end
    local status = next(self._sv.curr_crafters) ~= nil
    if status ~= self._sv.is_crafting then
@@ -222,9 +250,55 @@ function AceCraftOrder:is_missing_ingredient(ingredients)
    return false
 end
 
+function AceCraftOrder:has_output_storage_capacity(auto_crafter)
+   -- check to make sure an auto-crafter has enough output storage space for the products of this recipe
+   local auto_craft_comp = auto_crafter:get_component('stonehearth_ace:auto_craft')
+   if auto_craft_comp then
+      local crafter_info = self._sv.order_list:get_crafter_info()
+      local recipe = crafter_info and crafter_info:get_formatted_recipe(self._recipe)
+      return recipe and auto_craft_comp:get_output_capacity() >= recipe.total_products
+   end
+
+   return false
+end
+
 function AceCraftOrder:has_ingredients(auto_crafter)
-   if auto_crafter then
+   if auto_crafter and auto_crafter:get_component('stonehearth_ace:auto_craft') then
       -- if an auto-crafter is specified, check its ingredient storage instead of the usable item tracker
+      local auto_craft_comp = auto_crafter:get_component('stonehearth_ace:auto_craft')
+      local ingredient_storage = auto_craft_comp:get_ingredient_storage()
+      local quest_storage = ingredient_storage and ingredient_storage:get_component('stonehearth_ace:quest_storage')
+      if quest_storage then
+         for _, ingredient in ipairs(self._recipe.ingredients) do
+            local storage = quest_storage:get_storage_by_requirement(ingredient.uri or ingredient.material)
+            if not storage then
+               return false
+            end
+
+            if ingredient.min_stacks then
+               return false
+
+               -- TODO: allow for min_stacks type ingredients
+               -- local count = 0
+               -- for _, item in pairs(storage:get_items()) do
+               --    local stacks_comp = item:get_component('stonehearth:stacks')
+               --    if stacks_comp then
+               --       count = count + stacks_comp:get_stacks()
+               --    end
+               -- end
+               -- if count < ingredient.min_stacks then
+               --    return false
+               -- end
+            else
+               if storage:get_num_items() < ingredient.count then
+                  return false
+               end
+            end
+         end
+
+         return true
+      end
+      return false
    end
 
    local tracking_data = self._usable_item_tracking_data

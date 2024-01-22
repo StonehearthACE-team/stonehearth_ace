@@ -9,6 +9,7 @@ local log = radiant.log.create_logger('craft_order_list')
 function AceCraftOrderList:create(player_id)
    self._sv._player_id = player_id
    self._sv.maintain_orders = {n=0}
+   self._sv.auto_craft_orders = {n=0}
    self._sv.is_maintain_paused = false
 end
 
@@ -28,8 +29,20 @@ function AceCraftOrderList:restore()
       self._sv.is_maintain_paused = false
    end
 
+   if not self._sv.auto_craft_orders then
+      self._sv.auto_craft_orders = {n=0}
+      -- go through all the maintain orders and move any auto-craft orders to the auto_craft_orders list
+      for i = #self._sv.maintain_orders, 1, -1 do
+         local order = self._sv.maintain_orders[i]
+         if order:is_auto_craft_recipe() then
+            table.insert(self._sv.auto_craft_orders, order)
+            table.remove(self._sv.maintain_orders, i)
+         end
+      end
+   end
+
    -- make sure we don't have too many orders
-   for _, orders in ipairs({self._sv.orders, self._sv.maintain_orders}) do
+   for _, orders in ipairs({self._sv.orders, self._sv.maintain_orders, self._sv.auto_craft_orders}) do
       while #orders > MAX_ORDERS do
          table.remove(orders, #orders)
       end
@@ -57,33 +70,36 @@ end
 
 function AceCraftOrderList:_validate_craft_orders()
    -- validate orders list by removing nil indexes
+   -- just always remake lists rather than first trying to process through all possible order ids
    local orders = self._sv.orders
    local maintain_orders = self._sv.maintain_orders
-   for i=1, self._sv.next_order_id do
-      if (not orders[i] and not maintain_orders[i]) and (orders[i+1] or maintain_orders[i+1]) then
-         log:error("Craft order list index %i is missing in an order list. Converting entire list from map to array", i)
-         self._sv.orders = radiant.map_to_array(orders, function(key, value)
-            if type(value) == 'table' then
-               return nil -- Keep this value
-            end
-            return false -- Skip this value
-         end)
-         self._sv.orders.n = 0 -- need to restore this or remoter won't know it's an array
-
-         self._sv.maintain_orders = radiant.map_to_array(maintain_orders, function(key, value)
-            if type(value) == 'table' then
-               return nil -- Keep this value
-            end
-            return false -- Skip this value
-         end)
-         self._sv.maintain_orders.n = 0 -- need to restore this or remoter won't know it's an array
-
-         break
+   local auto_craft_orders = self._sv.auto_craft_orders
+   self._sv.orders = radiant.map_to_array(orders, function(key, value)
+      if type(value) == 'table' then
+         return nil -- Keep this value
       end
-   end
+      return false -- Skip this value
+   end)
+   self._sv.orders.n = 0 -- need to restore this or remoter won't know it's an array
+
+   self._sv.maintain_orders = radiant.map_to_array(maintain_orders, function(key, value)
+      if type(value) == 'table' then
+         return nil -- Keep this value
+      end
+      return false -- Skip this value
+   end)
+   self._sv.maintain_orders.n = 0 -- need to restore this or remoter won't know it's an array
+
+   self._sv.auto_craft_orders = radiant.map_to_array(auto_craft_orders, function(key, value)
+      if type(value) == 'table' then
+         return nil -- Keep this value
+      end
+      return false -- Skip this value
+   end)
+   self._sv.auto_craft_orders.n = 0 -- need to restore this or remoter won't know it's an array
 
    -- Populate orders cache
-   for _, orders in ipairs({self._sv.orders, self._sv.maintain_orders}) do
+   for _, orders in ipairs({self._sv.orders, self._sv.maintain_orders, self._sv.auto_craft_orders}) do
       for _, order in ipairs(orders) do
          self._orders_cache[order:get_id()] = true
       end
@@ -100,7 +116,7 @@ function AceCraftOrderList:_get_crafter_info()
    return self._crafter_info
 end
 
-function AceCraftOrderList:_should_auto_craft_recipe_dependencies(player_id)
+function AceCraftOrderList:_should_auto_queue_recipe_dependencies(player_id)
    return stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_craft_recipe_dependencies', true)
 end
 
@@ -110,7 +126,7 @@ end
 
 -- returns the number maintained if the recipe is maintained, otherwise nil
 function AceCraftOrderList:is_product_maintained(product_uri)
-   local order = self:_find_product_order({uri = product_uri}, 'maintain')
+   local order = self:_find_maintained_product_order({uri = product_uri}, true)
    if order then
       return order:get_condition().at_least
    end
@@ -118,7 +134,7 @@ end
 
 --Add the order to the order list
 function AceCraftOrderList:add_order_command(session, response, recipe, condition)
-   if #self:_get_order_list_by_type(condition.type) >= MAX_ORDERS then
+   if #self:_get_order_list_by_type(condition.type, recipe.is_auto_craft) >= MAX_ORDERS then
       -- do not add orders if we are above the cap
       return false
    end
@@ -150,7 +166,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
       -- See if the order_list already contains a maintain order for the recipe:
       --    if it does, remake the order if its amount is lower than `missing`, otherwise ignore it;
       --    if it doesn't, simply add it as usual
-      local order = self:_find_craft_order(recipe.recipe_name, 'maintain')
+      local order = self:_find_craft_order(recipe, 'maintain')
       if order then
          --log:debug('checking if maintain order "%s" is to be replaced', order:get_recipe().recipe_name)
          --log:detail('this is %sa recursive call, the order\'s value is %d and the new one is %d',
@@ -171,6 +187,9 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
                   self:change_order_position(condition.order_index, order:get_id())
                else
                   self:_on_order_list_changed()
+                  if order:is_auto_craft_recipe() then
+                     self:_on_auto_craft_orders_changed()
+                  end
                end
             end
          else
@@ -180,7 +199,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
       end
    end
    
-   if not self:_should_auto_craft_recipe_dependencies(player_id) then
+   if not self:_should_auto_queue_recipe_dependencies(player_id) then
       return self:insert_order(player_id, recipe, condition, nil, building)
    end
 
@@ -230,10 +249,13 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
             -- if it's a maintain order, and it's a child order or the player prefers updating maintain orders,
             -- check if there's an existing maintain order for this product that isn't identical to the recipe,
             -- and if so, update the amount to match what's required for this order
-            local order, amount = self:_find_product_order(ingredient, 'maintain', true)
+            local order, amount = self:_find_maintained_product_order(ingredient, true, true)
             if order and amount > 0 then
                if amount < missing and order:change_quantity(missing, condition.prefer_high_quality) then
                   order:get_order_list():_on_order_list_changed()
+                  if order:is_auto_craft_recipe() then
+                     order:get_order_list():_on_auto_craft_orders_changed()
+                  end
                end
                missing = 0
             end
@@ -283,12 +305,15 @@ function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_o
       order:set_building_id(building)
    end
 
-   local order_list = self:_get_order_list_by_type(condition.type)
+   local order_list = self:_get_order_list_by_type(condition.type, recipe.is_auto_craft)
    table.insert(order_list, condition.order_index or maintain_order_index or #order_list + 1, order)
    self._orders_cache[self._sv.next_order_id] = true
    self._sv.next_order_id = self._sv.next_order_id + 1
    self:_on_order_list_changed()
 
+   if recipe.is_auto_craft then
+      self:_on_auto_craft_orders_changed()
+   end
    log:debug('inserted order for %d %s', condition.at_least or condition.amount, recipe.recipe_name)
 
    return order
@@ -356,6 +381,12 @@ function AceCraftOrderList:change_order_position(new, id)
       table.insert(order_list, new, order)
       --TODO: comment out when you've fixed the drag/drop problem
       self:_on_order_list_changed()
+      if order:is_auto_craft_recipe() then
+         self:_on_auto_craft_orders_changed()
+      end
+
+      -- TODO: check if this order *and* any that it moved past are auto-craft orders
+      -- if so, trigger the event
       return true
    end
    return false
@@ -373,6 +404,7 @@ function AceCraftOrderList:remove_order(order_id, amount, remove_associated)
          table.remove(order_list, i)
          self._order_indices_dirty = true
          local order_id = order:get_id()
+         local is_auto_craft = order:is_auto_craft_recipe()
 
          self._orders_cache[order_id] = nil
          self._craftable_orders[order_id] = nil
@@ -384,9 +416,14 @@ function AceCraftOrderList:remove_order(order_id, amount, remove_associated)
          order:remove_associated_order(remove_associated ~= false)
 
          order:destroy()
+
+         if is_auto_craft then
+            self:_on_auto_craft_orders_changed()
+         end
+      else
+         self:_on_order_list_changed()
       end
-      
-      self:_on_order_list_changed()
+
       return true
    end
    return false
@@ -526,15 +563,15 @@ end
 -- is defined, then it will also check for a match against it.
 -- Returns nil if no match was found.
 --
-function AceCraftOrderList:_find_craft_order(recipe_name, order_type)
+function AceCraftOrderList:_find_craft_order(recipe, order_type)
    --log:debug('finding a recipe for "%s"', recipe_name)
    --log:debug('There are %d orders', radiant.size(self._sv.orders) - 1)
 
-   local order_list = self:_get_order_list_by_type(order_type)
+   local order_list = self:_get_order_list_by_type(order_type, recipe.is_auto_craft)
    for i, order in ipairs(order_list) do
       local order_recipe_name = order:get_recipe().recipe_name
       --log:debug('evaluating order with recipe "%s"', order_recipe_name)
-      if order_recipe_name == recipe_name then
+      if order_recipe_name == recipe.recipe_name then
          return order
       end
    end
@@ -547,20 +584,26 @@ end
 -- product is formatted as an ingredient, like {uri = uri, material = material}
 -- Returns nil if no match was found.
 --
-function AceCraftOrderList:_find_product_order(product, order_type, find_biggest)
-   local order_list = self:_get_order_list_by_type(order_type)
+function AceCraftOrderList:_find_maintained_product_order(product, check_auto, find_biggest)
+   local list = self:_get_order_list_by_type('maintain')
+   local order_lists = {list}
+   if check_auto then
+      table.insert(order_lists, self:_get_order_list_by_type('maintain', true))
+   end
    local biggest_order, biggest_amount
-   for i, order in ipairs(order_list) do
-      if find_biggest then
-         local amount = self:_get_order_product_amount(order, product)
-         if not biggest_order or amount > biggest_amount then
-            biggest_order = order
-            biggest_amount = amount
+   for _, order_list in ipairs(order_lists) do
+      for i, order in ipairs(order_list) do
+         if find_biggest then
+            local amount = self:_get_order_product_amount(order, product)
+            if not biggest_order or amount > biggest_amount then
+               biggest_order = order
+               biggest_amount = amount
+            end
+         elseif (product.uri and order:produces(product.uri)) or
+               (product.material and
+                  self:_recipe_produces_materials(self:_get_crafter_info():get_formatted_recipe(order:get_recipe()), product.material)) then
+            return order
          end
-      elseif (product.uri and order:produces(product.uri)) or
-            (product.material and
-               self:_recipe_produces_materials(self:_get_crafter_info():get_formatted_recipe(order:get_recipe()), product.material)) then
-         return order
       end
    end
 
@@ -590,6 +633,7 @@ end
 function AceCraftOrderList:toggle_maintain_pause()
    self._sv.is_maintain_paused = not self._sv.is_maintain_paused
    self:_on_order_list_changed()
+   self:_on_auto_craft_orders_changed()
    self.__saved_variables:mark_changed()
 end
 
@@ -606,7 +650,7 @@ function AceCraftOrderList:get_next_order(crafter)
          --log:debug('craft_order_list: evaluating order with recipe %s', order:get_recipe().recipe_name)
          local order_id = order:get_id()
          local craftable = self._craftable_orders[order_id]
-         if craftable ~= false and not order:is_auto_craft_recipe() then
+         if craftable ~= false then
             if (order:has_current_crafter(crafter) or order:conditions_fulfilled()) and 
                   order:should_execute_order(crafter) then
                --log:debug('given order %d back to crafter %s', i, crafter)
@@ -637,32 +681,26 @@ function AceCraftOrderList:get_next_order(crafter)
    end
 end
 
+-- UPDATE: for now, instead of trying to get the next available order, the auto_craft component pulls them all
+-- and evaluates against its enabled recipes to find the best one to start
 function AceCraftOrderList:get_next_auto_craft_order(auto_crafter)
    -- look through the maintain order list (auto craft orders can only be maintain orders)
    -- check each auto-craft recipe order to see if the auto-crafter can craft it
    -- the auto-crafter needs to have that recipe enabled and have the required ingredients
-   for i, order in ipairs(self._sv.maintain_orders) do
-      count = count + 1
+   for i, order in ipairs(self._sv.auto_craft_orders) do
       --log:debug('craft_order_list: evaluating order with recipe %s', order:get_recipe().recipe_name)
       local order_id = order:get_id()
-      if order:is_auto_craft_recipe() then
-         if order:has_current_crafter(auto_crafter) or order:conditions_fulfilled() then
-            --log:debug('given order %d back to crafter %s', i, crafter)
-
-            if craftable == nil then
-               craftable = order:has_ingredients(auto_crafter)
-            end
-            if craftable and not self._stuck_orders[order_id] then
-               return order
-            else
-               local crafter_comp = auto_crafter:get_component('stonehearth:crafter')
-               if crafter_comp then
-                  crafter_comp:unreserve_fuel()
-               end
-            end
-         end
+      if (order:has_current_crafter(auto_crafter) or order:conditions_fulfilled()) and
+            order:has_ingredients(auto_crafter) then
+         return order
       end
    end
+end
+
+-- ACE: auto-crafters need to know what all orders are queued up
+-- so they can request ingredients for those that match up with what they have enabled
+function AceCraftOrderList:get_all_auto_craft_orders()
+   return self._sv.auto_craft_orders
 end
 
 function AceCraftOrderList:_create_stuck_timer()
@@ -754,8 +792,10 @@ function AceCraftOrderList:_matching_tags__strings(tags_string1, tags_string2)
    return true
 end
 
-function AceCraftOrderList:_get_order_list_by_type(order_type)
-   if order_type == 'maintain' then
+function AceCraftOrderList:_get_order_list_by_type(order_type, is_auto_craft)
+   if is_auto_craft then
+      return self._sv.auto_craft_orders
+   elseif order_type == 'maintain' then
       return self._sv.maintain_orders
    else
       return self._sv.orders
@@ -778,6 +818,9 @@ function AceCraftOrderList:find_index_of(order_id)
       for i, order in ipairs(self._sv.maintain_orders) do
          rawset(order_indices, order:get_id(), {i, self._sv.maintain_orders})
       end
+      for i, order in ipairs(self._sv.auto_craft_orders) do
+         rawset(order_indices, order:get_id(), {i, self._sv.auto_craft_orders})
+      end
       self._order_indices_dirty = false
       self._order_indices = order_indices
    end
@@ -787,6 +830,10 @@ function AceCraftOrderList:find_index_of(order_id)
    if result then
       return unpack(result)
    end
+end
+
+function AceCraftOrderList:_on_auto_craft_orders_changed()
+   radiant.events.trigger(self, 'stonehearth_ace:craft_order_list:auto_craft_orders_changed')
 end
 
 return AceCraftOrderList

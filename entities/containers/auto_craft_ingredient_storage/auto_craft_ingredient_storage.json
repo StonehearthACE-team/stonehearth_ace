@@ -1,0 +1,30 @@
+{
+   "type": "entity",
+   "components": {
+      "mob": {},
+      "stonehearth:storage": {
+         "type": "input_crate",
+         "allow_default": false,
+         "allow_item_removal": true,
+         "priority": 2,
+         "capacity": 0
+      },
+      "destination": {
+         "auto_update_adjacent": true
+      }
+   },
+   "entity_data": {
+      "navgrid": {
+         "has_physics": true
+      },
+      "stonehearth:target_type": {
+         "target_type": "item"
+      },
+      "stonehearth:catalog": {
+         "category": "storage",
+         "material_tags": [
+            "no_decay"
+         ]
+      }
+   }
+}
