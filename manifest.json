@@ -1190,6 +1190,9 @@
       "containers:amphora_blue": "file(entities/containers/amphora_blue/amphora_blue.json)",
       "containers:amphora_green": "file(entities/containers/amphora_green/amphora_green.json)",
       "containers:amphora_red": "file(entities/containers/amphora_red/amphora_red.json)",
+      "containers:auto_craft:ingredient_storage": "file(entities/containers/auto_craft/auto_craft_ingredient_storage.json)",
+      "containers:auto_craft:ingredient_storage:child": "file(entities/containers/auto_craft/auto_craft_ingredient_storage_child.json)",
+      "containers:auto_craft:output_storage": "file(entities/containers/auto_craft/auto_craft_output_storage.json)",
       "containers:barley_pile": "file(entities/containers/barley_pile/barley_pile.json)",
       "containers:barley_pile_old": "file(entities/containers/barley_pile_old/barley_pile_old.json)",
       "containers:barrel": "file(entities/containers/barrel/barrel.json)",
@@ -2736,7 +2739,8 @@
       "manipulation:water_bucket_source": "file(entities/manipulation/water_bucket_source/water_bucket_source.json)",
       "mason:workbench_bone": "file(jobs/mason/mason_workbench_bone/mason_workbench_bone.json)",
       "material_map:ace": "file(data/materials/material_maps/stonehearth_ace_material_map.json)",
-      "mechanical:scripts:cook_mill_powered": "file(data/mechanical/cook_mill_powered_script.lua)",
+      "mechanical:scripts:auto_craft_workshop_powered": "file(data/mechanical/auto_craft_workshop_powered_script.lua)",
+      "mechanical:scripts:workshop_powered": "file(data/mechanical/workshop_powered_script.lua)",
       "mf_splitting_block": "file(entities/construction/mf_splitting_block/mf_splitting_block.json)",
       "mining:arctic_loot_table": "file(data/biome/arctic_mining_loot_table.json)",
       "mining:base_loot_table": "file(services/server/mining/mining_loot_tables.json)",
@@ -7454,6 +7458,7 @@
       "quest_storage_zone": "file(components/quest_storage/quest_storage_zone_component.lua)",
       "remove_components": "file(components/remove_components/remove_components_component.lua)",
       "replant": "file(components/replant/replant_component.lua)",
+      "sibling_entities": "file(components/sibling_entities/sibling_entities_component.lua)",
       "static_component_info": "file(components/component_info/static_component_info_component.lua)",
       "statistics": "file(components/statistics/statistics_component.lua)",
       "stump": "file(components/stump/stump_component.lua)",
@@ -7933,15 +7938,19 @@
       }
    },
    "object_commands": {
-      "heatmap": [
-         "show_heatmap_command",
-         "hide_heatmap_command",
-         "is_heatmap_active_command"
+      "auto_craft": [
+         "set_enabled_recipes",
+         "set_ingredient_buffer_multiplier"
       ],
       "connection": [
          "get_connection_types_command",
          "get_connections_data_command",
          "get_entities_in_selected_graphs_command"
+      ],
+      "heatmap": [
+         "show_heatmap_command",
+         "hide_heatmap_command",
+         "is_heatmap_active_command"
       ],
       "herbalist_planter": [
          "set_current_crop_command",

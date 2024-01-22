@@ -8,6 +8,14 @@ $(document).on('keyup keydown', function(e){
    _IS_CTRL_KEY_ACTIVE = e.ctrlKey;
 });
 
+$.each(['show', 'hide'], function(i, ev) {
+   var el = $.fn[ev];
+   $.fn[ev] = function () {
+      this.trigger(ev);
+      return el.apply(this, arguments);
+   };
+});
+
 // used for functions that get used by multiple views
 var stonehearth_ace = {
    _allTitles: {},

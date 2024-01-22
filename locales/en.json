@@ -10870,6 +10870,11 @@
                "description": "Improved and more efficient, this furnace is hot enough to smelt precious metals. Replaces the regular furnace.",
                "flavor": "All that is gold does not glitter; but if it does, a good furnace will smelt it. -Lucan Varius, Artifex Ignis"
             },
+            "blacksmith_forge_auto_recipe": {
+               "recipe_name": "Auto Blacksmith Furnace",
+               "description": "Improved and more efficient, this furnace is hot enough to smelt precious metals. Replaces the regular furnace.",
+               "flavor": "All that is gold does not glitter; but if it does, a good furnace will smelt it. -Lucan Varius, Artifex Ignis"
+            },
             "blacksmith_workbench_advanced_recipe": {
                "recipe_name": "Enhanced Blacksmith Anvil",
                "description": "This incredible anvil can keep the metal hot for the most intricate and powerful crafts. Replaces the regular anvil.",
@@ -11324,7 +11329,7 @@
          "blacksmith_forge_auto": {
             "blacksmith_forge_auto_ghost": {
                "display_name": "Blacksmith Blast Furnace",
-               "description": "This powerful furnace is capable of smelting metals automatically, over time, for as long as it is supplied."
+               "description": "This powerful furnace is capable of smelting metals automatically while supplied and powered."
             }
          }
       },
@@ -26375,6 +26380,7 @@
             "already_no_owner": "Unowned"
          },
          "show_workshop": {
+            "auto_crafter_enabled_needed": "Requires a powered auto-crafting workshop with this recipe enabled.",
             "category_level_requirement_needed": "Requires a level [str(level)] [str(class)] with [str(category)] category enabled",
             "search_title": "Titles",
             "search_title_description": "Include the titles of the crafting recipes (which generally includes the crafted items' names) in the search filter.",
@@ -26496,6 +26502,30 @@
                "help": "Quest Storage containers will be automatically created and placed in this zone."
             },
             "stockpile": {
+               "fuel_contents": "Fuel",
+               "fuel_filter": "Fuel Filter",
+               "auto_craft": {
+                  "tab_name": "Auto-Craft",
+                  "toggle_enabled": "Enable All Recipes",
+                  "enable_description": "Enable or disable all recipes this auto-crafter can produce.",
+                  "ingredient_buffer_mult": "Ingredient Buffer Mult.",
+                  "ingredient_buffer_multiplier": "Ingredient Buffer Multiplier",
+                  "ingredient_buffer_multiplier_description": "This multiplier will be applied to the number of ingredients required for each selected recipe to determine how many ingredients will be requested to be stocked in this auto-crafter.",
+                  "ingredients": "Ingredients:",
+                  "output": "Output:",
+                  "reorder_recipe": "Adjust Recipe Priority",
+                  "reorder_recipe_description": "Drag this recipe to reorder its crafting priority in this auto-crafter. If a disabled recipe is dragged above an enabled recipe, it will automatically be enabled. Only the relative order of enabled recipes will affect crafting priority in this auto-crafter."
+               },
+               "mechanical": {
+                  "tab_name": "Power",
+                  "produced": "Power Produced: [str(produced)] ([str(produced_percent)] %)",
+                  "consumed": "Power Consumed: [str(consumed)] ([str(consumed_percent)] %)",
+                  "resistance": "Resistance: [str(resistance)]",
+                  "network_data": "Connected Network Data:",
+                  "total_produced": "Power Produced: [str(total_produced)]",
+                  "total_consumed": "Power Consumed: [str(total_consumed)]",
+                  "total_resistance": "Resistance: [str(total_resistance)]"
+               },
                "default_storage": {
                   "display_name": "Default Storage",
                   "tooltip": "Quest rewards and traded goods will be directly placed in designated default storage if possible"

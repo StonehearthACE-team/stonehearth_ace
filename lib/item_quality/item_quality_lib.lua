@@ -146,11 +146,26 @@ function item_quality_lib.modify_quality_table(qualities, ingredient_quality)
    return modified_chances
 end
 
--- moved from crafter_component:_calculate_quality to allow for uses outside strictly crafting
 function item_quality_lib.get_quality_table(hearthling, recipe_category, ingredient_quality)
+   local player_id = hearthling:get_player_id()
+   local attributes_component = hearthling:get_component('stonehearth:attributes')
+   local inspiration = attributes_component and attributes_component:get_attribute('inspiration')
+   local job_comp = hearthling:get_component('stonehearth:job')
+   local job_level = job_comp:get_current_job_level()
+   local category_proficiency = recipe_category and job_comp:get_curr_job_controller():get_category_proficiency(recipe_category)
+
+   return item_quality_lib._get_quality_table(player_id, ingredient_quality, job_level, category_proficiency, inspiration)
+end
+
+function item_quality_lib.get_auto_crafter_quality_table(crafter, ingredient_quality, job_level)
+   return item_quality_lib._get_quality_table(crafter:get_player_id(), ingredient_quality, job_level or 6)
+end
+
+-- moved from crafter_component:_calculate_quality to allow for uses outside strictly crafting
+function item_quality_lib._get_quality_table(player_id, ingredient_quality, job_level, category_proficiency, inspiration)
    local quality_distribution = crafting_constants.ITEM_QUALITY_CHANCES
    -- Towns with the Guildmaster bonus can produce masterwork items.
-   local town = stonehearth.town:get_town(hearthling:get_player_id())
+   local town = stonehearth.town:get_town(player_id)
    if town then
       for _, bonus in pairs(town:get_active_town_bonuses()) do
          if bonus.get_adjusted_item_quality_chances then
@@ -160,8 +175,6 @@ function item_quality_lib.get_quality_table(hearthling, recipe_category, ingredi
       end
    end
 
-   local job_comp = hearthling:get_component('stonehearth:job')
-   local job_level = job_comp:get_current_job_level()
    -- Make sure range falls between 1 and max number of levels listed in chances table
    local index = math.min(math.max(1, job_level), #quality_distribution)
    local base_chances_table = quality_distribution[index]
@@ -173,9 +186,9 @@ function item_quality_lib.get_quality_table(hearthling, recipe_category, ingredi
    local remaining = 1
    --local lvl_mult = recipe_lvl_req and (1 + (0.4 * (job_level - math.max(1, recipe_lvl_req)))) or 1
    local category_crafts_mult = 1
-   if recipe_category then
+   if category_proficiency then
       category_crafts_mult = 1 + (crafting_constants.CATEGORY_PROFICIENCY_MAX_HIGHER_QUALITY_MULT - 1) *
-            math.min(1, job_comp:get_curr_job_controller():get_category_proficiency(recipe_category))
+            math.min(1, category_proficiency)
    end
 
    for i=#base_chances_table, 1, -1 do
@@ -208,24 +221,19 @@ function item_quality_lib.get_quality_table(hearthling, recipe_category, ingredi
    -- Check the hearthling's Inspiration stat to see if we need to add a (flat) bonus
    --  These bonuses come after all the multiplication, so they're somewhat more pronounced 
    --  for higher-tier items (going from e.g. 5%->7%) than low-tier (going from e.g. 34%->36%)
+   if inspiration then
+      --(as of this writing, this simply converts inspiration to a percentage 2->.02)
+      local flat_quality_chance_modifier = inspiration * stonehearth.constants.attribute_effects.INSPIRATION_QUALITY_CHANCE_MODIFIER
 
-   local attributes_component = hearthling:get_component('stonehearth:attributes')
-   if attributes_component then
-      local inspiration = attributes_component:get_attribute('inspiration')
-      if inspiration then
-         --(as of this writing, this simply converts inspiration to a percentage 2->.02)
-         local flat_quality_chance_modifier = inspiration * stonehearth.constants.attribute_effects.INSPIRATION_QUALITY_CHANCE_MODIFIER
-
-         for i=#calculated_chances, 1, -1 do --repeat for only qualities > Standard
-            if i ~= standard_quality_index then
-               local value = calculated_chances[i]
-               local quality, chance = value[1], value[2]
-               --add our flat chance to this quality tier's chance
-               local modifier = math.max(chance + flat_quality_chance_modifier, 0) - chance
-               calculated_chances[i][2] = chance + modifier
-               -- ...and remove it from Standard Quality
-               calculated_chances[standard_quality_index][2] = math.max(calculated_chances[standard_quality_index][2] - modifier, 0)
-            end
+      for i=#calculated_chances, 1, -1 do --repeat for only qualities > Standard
+         if i ~= standard_quality_index then
+            local value = calculated_chances[i]
+            local quality, chance = value[1], value[2]
+            --add our flat chance to this quality tier's chance
+            local modifier = math.max(chance + flat_quality_chance_modifier, 0) - chance
+            calculated_chances[i][2] = chance + modifier
+            -- ...and remove it from Standard Quality
+            calculated_chances[standard_quality_index][2] = math.max(calculated_chances[standard_quality_index][2] - modifier, 0)
          end
       end
    end

@@ -21,7 +21,18 @@ App.workshopManager = {
       radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth:workbench_item_tracker')
          .done(function (response) {
             self.workbenchItemTracker = response.tracker;
-            self.workbenchItemTrackerTrace = new StonehearthDataTrace(self.workbenchItemTracker, { 'tracking_data': {} })
+            self.workbenchItemTrackerTrace = new StonehearthDataTrace(self.workbenchItemTracker, {
+                  'tracking_data': {
+                     '*': {
+                        'items': {
+                           '*': {
+                              'stonehearth:workshop': {},
+                              'stonehearth_ace:auto_craft': {}
+                           }
+                        }
+                     }
+                  }
+               })
                .progress(function (response) {
                   self.workbenchItemTrackerData = response.tracking_data;
                   self.notifyItemsChanged();
@@ -64,7 +75,7 @@ App.workshopManager = {
       }
    }),
 
-   createWorkshop: function (jobAlias, show) {
+   createWorkshop: function (jobAlias, show, cb) {
       var self = this;
       if (self.workshops[jobAlias]) return;
 
@@ -74,9 +85,16 @@ App.workshopManager = {
             if (response.job_info_object) {
                self.workshops[jobAlias] = App.stonehearth.showTeamWorkshopView = App.gameView.addView(
                      App.StonehearthTeamCrafterView, { uri: response.job_info_object });
-               if (show) {
-                  Ember.run.scheduleOnce('afterRender', self.workshops[jobAlias], function () {
-                     this.show(true);
+               if (show || cb) {
+                  var workshop = self.workshops[jobAlias];
+                  $(workshop).on('recipesInitialized', function () {
+                     $(workshop).off('recipesInitialized');
+                     if (show) {
+                        workshop.show(true);
+                     }
+                     if (cb) {
+                        cb(workshop);
+                     }
                   });
                }
             }
@@ -107,6 +125,18 @@ App.workshopManager = {
          self.createWorkshop(jobAlias, true);
       }
    },
+
+   // pass in a callback function in case the workshop is not yet loaded
+   getWorkshop: function (jobAlias, cb) {
+      var self = this;
+      if (self.workshops[jobAlias] && cb) {
+         cb(self.workshops[jobAlias]);
+      } else {
+         self.createWorkshop(jobAlias, false, cb);
+      }
+
+      return self.workshops[jobAlias];
+   }
 };
 
 App.StonehearthTeamCrafterView = App.View.extend({
@@ -117,9 +147,15 @@ App.StonehearthTeamCrafterView = App.View.extend({
    components: {
       "order_list" : {
          "orders" : {
+            "curr_crafters" : {},
             "recipe" : {}
          },
          "maintain_orders" : {
+            "curr_crafters" : {},
+            "recipe" : {}
+         },
+         "auto_craft_orders" : {
+            "curr_crafters" : {},
             "recipe" : {}
          }
       },
@@ -308,7 +344,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var recipe = self._getOrCalculateRecipeData($(this).attr('recipe_key'));
             if (recipe.is_auto_craft && orderArgs.type == 'make') {
                // can't queue auto-craft as make, only as maintain
-               return;
+               orderArgs = { type: "maintain", at_least: orderArgs.amount, order_index: orderArgs.order_index };
             }
             radiant.call_obj(self.getOrderList(), 'add_order_command', recipe, orderArgs)
                .done(function(return_data){
@@ -549,6 +585,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       self.set('recipes', recipe_categories);
+
+      if (!self._recipeListInitialized) {
+         $(self).trigger('recipesInitialized');
+      }
       self._recipeListInitialized = true;
    }.observes('model.recipe_list'),
 
@@ -946,10 +986,14 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       self._buildOrderList(self.$('#orderList'), self.get('model.order_list.orders'));
-      self._buildOrderList(self.$('#maintainOrderList'), self.get('model.order_list.maintain_orders'));
+      var maintainOrders = self.get('model.order_list.maintain_orders');
+      var autoCraftOrders = self.get('model.order_list.auto_craft_orders');
+      self._buildOrderList(self.$('#maintainOrderList'),
+            (maintainOrders && maintainOrders.length > 0) || (autoCraftOrders && autoCraftOrders.length > 0));
 
       //build the order list(s) on the order tab
       self._ordersTableSortable('#makeOrdersTable');
+      self._ordersTableSortable('#autoCraftOrdersTable');
       self._ordersTableSortable('#maintainOrdersTable');
 
       $(document).on('keyup.show_team_workshop keydown.show_team_workshop', function(e){
@@ -972,6 +1016,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var recipe = self._getOrCalculateRecipeData($(this).attr('recipe_key'));
             if (recipe) {
                self.HOVERING_ITEM = true;
+               self._hoveredRecipeIsAutoCraft = recipe.is_auto_craft;
                self.set('insertRecipePortrait', recipe.portrait);
                self._updateCraftInsertShown();
             }
@@ -1122,41 +1167,65 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
    _shouldShowMaintainOrders: function() {
       var maintainOrders = this.get('model.order_list.maintain_orders') || [];
-      this.set('showMaintainOrderList', maintainOrders.length > 0 || this.get('isShowingMaintainCraftInsert'));
-   }.observes('model.order_list.maintain_orders', 'isShowingMaintainCraftInsert'),
+      var autoCraftOrders = this.get('model.order_list.auto_craft_orders') || [];
+      this.set('showMaintainOrderList', maintainOrders.length > 0 || autoCraftOrders.length > 0 ||
+            this.get('isShowingMaintainCraftInsert') || this.get('isShowingAutoCraftInsert'));
+   }.observes('model.order_list.maintain_orders', 'model.order_list.auto_craft_orders', 'isShowingMaintainCraftInsert', 'isShowingAutoCraftInsert'),
+
+   _autoCraftOrdersChanged: function() {
+      $(this).trigger('stonehearth_ace:workshop:auto_craft_orders_changed');
+   }.observes('model.order_list.auto_craft_orders'),
+
+   hasAutoCraftOrder: function(recipe_key) {
+      var autoCraftOrders = this.get('model.order_list.auto_craft_orders') || [];
+      for (var i = 0; i < autoCraftOrders.length; i++) {
+         if (autoCraftOrders[i].recipe.recipe_key == recipe_key) {
+            return true;
+         }
+      }
+
+      return false;
+   },
+
+   _isCurrentOrderTypeAutoCraft: function() {
+      return this._getOrCalculateRecipeData(this.currentRecipe.recipe_key).is_auto_craft;
+   },
 
    _isCurrentOrderTypeMaintain: function() {
       var type = this.$('input[name=' + this.get('orderTypeName') + ']:checked').val();
-      return type == "maintain";
+      return type == "maintain" || !this._getOrCalculateRecipeData(this.currentRecipe.recipe_key).is_auto_craft;
    },
 
    _updateCraftInsertShown: function() {
       var self = this;
       var show = stonehearth_ace.isShiftKeyActive() && (self.HOVERING_CRAFT_BUTTON || self.HOVERING_ITEM);
 
-      var div = self.$('#orderList .craftInsert');
-      var maintainDiv = self.$('#maintainOrderList .craftInsert');
+      var makeDiv = self.$('.insertMake');
+      var maintainDiv = self.$('.insertMaintain');
+      var autoCraftDiv = self.$('.insertAutoCraft');
 
+      makeDiv.hide();
+      maintainDiv.hide();
+      autoCraftDiv.hide();
+
+      var isShowingAutoCraftInsert = false;
       var isShowingMaintainCraftInsert = false;
-      if ((self.HOVERING_CRAFT_BUTTON && self._isCurrentOrderTypeMaintain()) ||
+      if ((self.HOVERING_CRAFT_BUTTON && self._isCurrentOrderTypeAutoCraft()) ||
+            (self.HOVERING_ITEM && self._hoveredRecipeIsAutoCraft)) {
+         if (show) {
+            autoCraftDiv.show();
+            isShowingAutoCraftInsert = true;
+         }
+      }
+      else if ((self.HOVERING_CRAFT_BUTTON && self._isCurrentOrderTypeMaintain()) ||
             (self.HOVERING_ITEM && stonehearth_ace.isCtrlKeyActive())) {
          if (show) {
             maintainDiv.show();
             isShowingMaintainCraftInsert = true;
          }
-         else {
-            maintainDiv.hide();
-         }
-         div.hide();
       }
-      else {
-         if (show) {
-            div.show();
-         }
-         else {
-            div.hide();
-         }
-         maintainDiv.hide();
+      else if (show) {
+         makeDiv.show();
       }
 
       self.set('isShowingMaintainCraftInsert', isShowingMaintainCraftInsert);
@@ -1235,10 +1304,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
       if (maintainNumber) {
          self.$("#maintainNumSelector").val(maintainNumber);
-         self.$('#' + self.get('orderTypeNaintainId')).prop("checked", "checked");
+         self.$('#' + self.get('orderTypeMaintainId')).prop("checked", "checked");
       } else {
          self.$("#maintainNumSelector").val("1");
-         self.$('#' + self.get('orderTypeNaintainId')).prop("checked", false);
+         self.$('#' + self.get('orderTypeMaintainId')).prop("checked", false);
       }
       if (!remaining && !maintainNumber) {
          self.$('#' + self.get('orderTypeMakeId')).prop("checked", "checked");
@@ -1414,7 +1483,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
    },
 
    _updateMaintainOrdersInDetailedOrderList: function() {
-      this._updateDetailedOrderList(this.$('#maintainOrderList'), this.get('model.order_list.maintain_orders'));
+      this._updateDetailedOrderList(this.$('#maintainOrderList'),
+            (this.get('model.order_list.maintain_orders') || []).concat(this.get('model.order_list.auto_craft_orders') || []));
    },
 
    _updateDetailedOrderList: function(orderList, orders) {
@@ -1456,14 +1526,21 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
 
          //if we have a curr crafter, show their portrait
-         var $workerPortrait = orderListRow.find('.workerPortrait');
-         if (order.curr_crafter_id) {
-            $workerPortrait.attr('src', '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=object://game/' + order.curr_crafter_id);
-            $workerPortrait.css('visible', true);
-            $workerPortrait.css('opacity', 1);
-         } else {
-            $workerPortrait.css('visible', false);
-            $workerPortrait.css('opacity', 0);
+         var curCrafters = order.curr_crafters;
+         if (curCrafters.length > 0) {
+            // if the recipe for this order indicates it's an auto-craft recipe,
+            // then it can only be performed by an auto-crafter, so just show the entity icon
+            for (i = 0; i < curCrafters.length; i++) {
+               var crafter = curCrafters[i];
+               var crafterDiv = orderListRow.find(`.workerPortrait[crafter_id=${crafter.id}]`);
+               if (recipe.is_auto_craft) {
+                  var catalogData = crafter && App.catalog.getCatalogData(crafter.uri);
+                  crafterDiv.attr('src', catalogData && catalogData.icon);
+               }
+               else {
+                  crafterDiv.attr('src', '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=object://game/' + crafter.id);
+               }
+            }
          }
       }
 
@@ -1478,52 +1555,94 @@ App.StonehearthTeamCrafterView = App.View.extend({
       if (!recipe) {
          recipe = localRecipe;
       }
+      var jobAlias = self.get('model.alias');
 
       //If there is no placed workshop, note this, in red
+      var workshopData = null;
+      var autoCrafters = [];
       if (App.workshopManager.workbenchItemTrackerData && recipe.hasWorkshop) {
-         var workshopData = App.workshopManager.workbenchItemTrackerData[recipe.workshop.uri]
+         workshopData = App.workshopManager.workbenchItemTrackerData[recipe.workshop.uri]
          if (!workshopData && recipe.workshop.equivalents) {
             for (var i = 0; i < recipe.workshop.equivalents.length; ++i) {
                workshopData = App.workshopManager.workbenchItemTrackerData[recipe.workshop.equivalents[i]];
                if (workshopData) {
-                  break;
+                  if (recipe.is_auto_craft) {
+                     // if it's an auto-craft recipe, go through and find if any auto-crafters have it enabled
+                     radiant.each(workshopData.items, function(_, item) {
+                        autoCrafters.push(item);
+                     });
+                  }
+                  else {
+                     break;
+                  }
                }
             }
          }
-         if (!workshopData) {
+
+         if (!workshopData || (recipe.is_auto_craft && autoCrafters.length == 0)) {
             requirementsString = i18n.t('stonehearth:ui.game.show_workshop.workshop_required') + recipe.workshop.name + '<br>'
          }
-
       }
 
       //If there is no crafter of appropriate level, mention it
-      var curr_level = this.get('model.highest_level')
-      if (recipe.level_requirement > curr_level) {
-         requirementsString = requirementsString +
-                              i18n.t('stonehearth:ui.game.show_workshop.level_requirement_needed') +
-                              i18n.t(self.get('model.class_name')) +
-                              i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level') +
-                              recipe.level_requirement + '<br>';
-      }
-      else {
-         // check if the are no crafters of the appropriate level *who have the category enabled*
-         var members = self._memberArray || [];
-         var canCraft = false;
-         for (var i = 0; i < members.length; i++) {
-            if (members[i].level >= recipe.level_requirement && !members[i].disabledCategories[recipe.category]) {
-               canCraft = true;
-               break;
+      // for auto-crafters, make sure the recipe is enabled and they have a non-zero workshop crafting modifier
+      if (recipe.is_auto_craft) {
+         if (autoCrafters.length > 0) {
+            var canCraft = false;
+            for (var i = 0; i < autoCrafters.length; i++) {
+               var workshopComp = autoCrafters[i]['stonehearth:workshop'];
+               if (workshopComp && workshopComp.crafting_time_modifier > 0) {
+                  var autoCraftComp = autoCrafters[i]['stonehearth_ace:crafting_auto_crafter'];
+                  if (autoCraftComp) {
+                     for (var j = 0; j < autoCraftComp.enabled_recipes.length; j++) {
+                        if (autoCraftComp.enabled_recipes[j].recipe_key == recipe.recipe_key &&
+                              autoCraftComp.enabled_recipes[j].job == jobAlias) {
+                           canCraft = true;
+                           break;
+                        }
+                     }
+                  }
+               }
+
+               if (canCraft) {
+                  break;
+               }
+            }
+
+            if (!canCraft) {
+               requirementsString = requirementsString + i18n.t('stonehearth_ace:ui.game.show_workshop.auto_crafter_enabled_needed') + '<br>';
             }
          }
-
-         if (!canCraft) {
-            var category = self.allCategories[recipe.category];
+      }
+      else {
+         var curr_level = this.get('model.highest_level')
+         if (recipe.level_requirement > curr_level) {
             requirementsString = requirementsString +
-                              i18n.t('stonehearth_ace:ui.game.show_workshop.category_level_requirement_needed', {
-                                 category: category.display_name,
-                                 class: self.get('model.class_name'),
-                                 level: recipe.level_requirement || 1,
-                              }) + '<br>';
+                                 i18n.t('stonehearth:ui.game.show_workshop.level_requirement_needed') +
+                                 i18n.t(self.get('model.class_name')) +
+                                 i18n.t('stonehearth:ui.game.show_workshop.level_requirement_level') +
+                                 recipe.level_requirement + '<br>';
+         }
+         else {
+            // check if the are no crafters of the appropriate level *who have the category enabled*
+            var members = self._memberArray || [];
+            var canCraft = false;
+            for (var i = 0; i < members.length; i++) {
+               if (members[i].level >= recipe.level_requirement && !members[i].disabledCategories[recipe.category]) {
+                  canCraft = true;
+                  break;
+               }
+            }
+
+            if (!canCraft) {
+               var category = self.allCategories[recipe.category];
+               requirementsString = requirementsString +
+                                 i18n.t('stonehearth_ace:ui.game.show_workshop.category_level_requirement_needed', {
+                                    category: category.display_name,
+                                    class: self.get('model.class_name'),
+                                    level: recipe.level_requirement || 1,
+                                 }) + '<br>';
+            }
          }
       }
 
@@ -2058,7 +2177,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
    //Attach sortable/draggable functionality to the order
    //list. Hook order list onto garbage can. Set up scroll
    //buttons.
-   _buildOrderList: function(orderList, orders){
+   _buildOrderList: function(orderList, enableTrash){
       var self = this;
 
       var sortableGarbage = self.makeSortable(orderList.find(".orders, .garbageList"), {
@@ -2121,7 +2240,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       self._updateButtonStates(orderList);
-      self._enableDisableTrash(orderList, orders && orders.length > 0);
+      self._enableDisableTrash(orderList, enableTrash);
 
       orderList.find('.orders').on('scroll', function() {
          // when the user scrolls with the mouse, make sure the scroll buttons are right
@@ -2178,9 +2297,10 @@ App.StonehearthTeamCrafterView = App.View.extend({
    _onMaintainOrdersUpdated: function () {
       var self = this;
       if (!self.get('isVisible')) return;
-      self._updatedOrders(self.$('#maintainOrderList'), self.get('model.order_list.maintain_orders'));
+      self._updatedOrders(self.$('#maintainOrderList'),
+            (self.get('model.order_list.maintain_orders') || []).concat(self.get('model.order_list.auto_craft_orders') || []));
       Ember.run.scheduleOnce('afterRender', self, '_updateMaintainOrdersInDetailedOrderList');
-   }.observes('model.order_list.maintain_orders'),
+   }.observes('model.order_list.maintain_orders', 'model.order_list.auto_craft_orders'),
 
    _updatedOrders: function (orderList, orders) {
       var self = this;

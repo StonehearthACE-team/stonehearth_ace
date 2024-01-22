@@ -86,9 +86,10 @@ App.StonehearthZonesModeView = App.View.extend({
       var root_entity = entity['stonehearth:iconic_form'] && entity['stonehearth:iconic_form'].root_entity || entity;
       if (entity['stonehearth:player_market_stall']) {
          viewType = App.StonehearthPlayerMarketStallView;
-      } else if (root_entity['stonehearth:storage'] && root_entity['stonehearth:storage'].is_public && !root_entity['stonehearth:storage'].is_hidden) {
-         viewType = false;
-         self._showZoneUi(root_entity, App.StonehearthStockpileView);
+      } else if ((root_entity['stonehearth:storage'] && root_entity['stonehearth:storage'].is_public && !root_entity['stonehearth:storage'].is_hidden) ||
+            root_entity['stonehearth_ace:auto_craft'] || root_entity['stonehearth_ace:mechanical']) {
+         viewType = App.StonehearthStockpileView;
+         entity = root_entity;
       } else if (entity['stonehearth:farmer_field']) {
          viewType = App.StonehearthFarmView;
       } else if (entity['stonehearth:trapping_grounds']) {
