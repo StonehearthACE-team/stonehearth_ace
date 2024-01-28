@@ -249,7 +249,7 @@ function AceMiningService:get_block_to_mine(from, mining_zone, worker_location, 
 
       -- double check that we're not mining a block directly *below us only*
       -- we actually need to do this check on the actual worker location, not the adjacent location
-      assert(block.x ~= worker_location.x or block.z ~= worker_location.z or block.y > worker_location.y)
+      assert(block.x ~= worker_location.x or block.z ~= worker_location.z or block.y >= worker_location.y)
 
       -- check if our current location is in the adjacent for the block
       local poi_adjacent = self:get_adjacent_for_destination_block(block)

@@ -55,7 +55,7 @@ function AceCraftOrder:activate()
       end
    else
       -- make sure it's an array and not a table
-      local curr_crafters = {}
+      local curr_crafters = {n = 0}
       for id, crafter in pairs(self._sv.curr_crafters) do
          if id ~= 'n' then
             table.insert(curr_crafters, crafter)
@@ -138,6 +138,8 @@ function AceCraftOrder:_remove_curr_crafter(crafter)
          break
       end
    end
+   
+   local id = crafter:get_id()
    if self._sv._order_progress_by_crafter[id] then
       self._sv._order_progress_by_crafter[id] = nil
    end
