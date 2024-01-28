@@ -158,7 +158,11 @@ function ResourceCallHandler:box_get_commandable_entities(session, response, box
       end
    end
 
-   response:resolve({entities = tbl})
+   if #tbl == 0 then
+      response:reject('no entities')
+   else
+      response:resolve({entities = tbl})
+   end
 end
 
 function ResourceCallHandler:move_item(session, response, index)
