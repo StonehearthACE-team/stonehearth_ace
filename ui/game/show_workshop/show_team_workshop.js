@@ -1530,8 +1530,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
          if (curCrafters.length > 0) {
             // if the recipe for this order indicates it's an auto-craft recipe,
             // then it can only be performed by an auto-crafter, so just show the entity icon
-            for (i = 0; i < curCrafters.length; i++) {
-               var crafter = curCrafters[i];
+            for (j = 0; j < curCrafters.length; j++) {
+               var crafter = curCrafters[j];
                var crafterDiv = orderListRow.find(`.workerPortrait[crafter_id=${crafter.id}]`);
                if (recipe.is_auto_craft) {
                   var catalogData = crafter && App.catalog.getCatalogData(crafter.uri);

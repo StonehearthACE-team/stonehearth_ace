@@ -9,7 +9,11 @@ local WHEN_COLD_OR_DARK_COMMAND_URI = 'stonehearth_ace:commands:light_policy:whe
 local WHEN_COLD_COMMAND_URI = 'stonehearth_ace:commands:light_policy:when_cold'
 
 function AceLampComponent:_load_json()
-   local json = radiant.entities.get_json(self)  
+   local json = radiant.entities.get_json(self)
+   if not json then
+      return
+   end
+
 	self._sv.buff_source = json.buff_source or false
 	local appropriate_policy = 'when_dark'
 

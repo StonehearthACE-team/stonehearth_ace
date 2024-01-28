@@ -34,7 +34,8 @@ function AceCraftOrderList:restore()
       -- go through all the maintain orders and move any auto-craft orders to the auto_craft_orders list
       for i = #self._sv.maintain_orders, 1, -1 do
          local order = self._sv.maintain_orders[i]
-         if order:is_auto_craft_recipe() then
+         -- can't check ._recipe directly because the order hasn't been activated yet
+         if order._sv.recipe.is_auto_craft then
             table.insert(self._sv.auto_craft_orders, order)
             table.remove(self._sv.maintain_orders, i)
          end
@@ -82,26 +83,32 @@ function AceCraftOrderList:_validate_craft_orders()
    end)
    self._sv.orders.n = 0 -- need to restore this or remoter won't know it's an array
 
-   self._sv.maintain_orders = radiant.map_to_array(maintain_orders, function(key, value)
-      if type(value) == 'table' then
-         return nil -- Keep this value
-      end
-      return false -- Skip this value
-   end)
-   self._sv.maintain_orders.n = 0 -- need to restore this or remoter won't know it's an array
+   if maintain_orders then
+      self._sv.maintain_orders = radiant.map_to_array(maintain_orders, function(key, value)
+         if type(value) == 'table' then
+            return nil -- Keep this value
+         end
+         return false -- Skip this value
+      end)
+      self._sv.maintain_orders.n = 0 -- need to restore this or remoter won't know it's an array
+   end
 
-   self._sv.auto_craft_orders = radiant.map_to_array(auto_craft_orders, function(key, value)
-      if type(value) == 'table' then
-         return nil -- Keep this value
-      end
-      return false -- Skip this value
-   end)
-   self._sv.auto_craft_orders.n = 0 -- need to restore this or remoter won't know it's an array
+   if auto_craft_orders then
+      self._sv.auto_craft_orders = radiant.map_to_array(auto_craft_orders, function(key, value)
+         if type(value) == 'table' then
+            return nil -- Keep this value
+         end
+         return false -- Skip this value
+      end)
+      self._sv.auto_craft_orders.n = 0 -- need to restore this or remoter won't know it's an array
+   end
 
    -- Populate orders cache
    for _, orders in ipairs({self._sv.orders, self._sv.maintain_orders, self._sv.auto_craft_orders}) do
-      for _, order in ipairs(orders) do
-         self._orders_cache[order:get_id()] = true
+      if orders then
+         for _, order in ipairs(orders) do
+            self._orders_cache[order:get_id()] = true
+         end
       end
    end
 end
