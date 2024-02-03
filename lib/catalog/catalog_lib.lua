@@ -197,7 +197,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          if net_worth.rarity then
             catalog_data.rarity = net_worth.rarity
          end
-         if net_worth and net_worth.shop_info then
+         if net_worth and net_worth.shop_info and net_worth.value_in_gold then
             catalog_data.shopkeeper_level = net_worth.shop_info.shopkeeper_level or -1
             if net_worth.shop_info.buyable then
                result.buyable = true
