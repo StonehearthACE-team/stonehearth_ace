@@ -1,3 +1,4 @@
+local build_util = require 'stonehearth.lib.build_util'
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local ItemPlacer = require 'stonehearth.services.client.build_editor.item_placer'
 local Entity = _radiant.om.Entity
