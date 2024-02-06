@@ -45,7 +45,7 @@ function AceFirepitComponent:_light()
       local buff = self._buff
       radiant.entities.add_buff(self._entity, buff)
    end
-   
+
    local lamp = self._entity:get('stonehearth:lamp')
    if lamp then
       lamp:light_on()
@@ -146,7 +146,7 @@ function AceFirepitComponent:_shutdown()
       self._transform_residue_timer:destroy()
       self._transform_residue_timer = nil
    end
-   
+
    self:_ace_old_shutdown()
 end
 
@@ -194,19 +194,17 @@ function AceFirepitComponent:_transform_residue()
    if is_lit then
       return
    end
-   
+
    local entity_container = self._entity:get_component('entity_container')
-   
+
    if entity_container then
-      local player_id = radiant.entities.get_player_id(self._entity)
-      
       for id, child in entity_container:each_child() do
          if child and child:is_valid() and child:get_uri() == self._charcoal_uri then
             return
          elseif child and child:is_valid() and child:get_uri() == self._ember_charcoal_uri then
             radiant.entities.destroy_entity(child)
             self:_create_residue(self._charcoal_uri, false)
-            self._log:debug('transforming a charcoal ember into charcoal...')            
+            self._log:debug('transforming a charcoal ember into charcoal...')
          elseif child and child:is_valid() and child:get_uri() == self._ember_uri then
             radiant.entities.destroy_entity(child)
          end
@@ -214,31 +212,57 @@ function AceFirepitComponent:_transform_residue()
    end
 end
 
-AceFirepitComponent._ace_old_extinguish = FirepitComponent._extinguish
 function AceFirepitComponent:_extinguish()
+   self._log:debug('extinguishing the fire')
+
    local was_lit = self:is_lit()
    local ec = self._entity:add_component('entity_container')
    local is_wood = false
    local is_fuel = false
-   
+
+   local bad_children = {}
    for id, child in ec:each_child() do
       if radiant.entities.is_material(child, 'wood resource') then
          is_wood = true
-         break
+         bad_children[id] = child
       elseif radiant.entities.is_material(child, self._fuel) then
          is_fuel = true
-         break 
+         bad_children[id] = child
       end
    end
-   
-   self:_ace_old_extinguish()
+
+   local lamp = self._entity:get('stonehearth:lamp')
+   if lamp then
+      lamp:light_off()
+   end
+
+   -- only destroy wood and fuel entities
+   local ec = self._entity:add_component('entity_container')
+   for id, child in pairs(bad_children) do
+      ec:remove_child(id)
+      if child and child:is_valid() then
+         radiant.entities.destroy_entity(child)
+      end
+   end
+
+   if self._light_task then
+      self._light_task:destroy()
+      self._light_task = nil
+   end
+
+   if was_lit then
+      radiant.events.trigger_async(stonehearth, 'stonehearth:fire:lit', { lit = false, player_id = radiant.entities.get_player_id(self._entity), entity = self._entity  })
+   end
+
+   self:_reconsider_firepit_and_seats()
+   self.__saved_variables:mark_changed()
 
    if was_lit and not self.__destroying then
       if self._buff_source then
          local buff = self._buff
          radiant.entities.remove_buff(self._entity, buff)
       end
-      
+
       -- only create residue if the firepit is still in the world
       if radiant.entities.get_world_location(self._entity) then
          if is_wood then
@@ -262,13 +286,12 @@ function AceFirepitComponent:_create_residue(residue_uri, reserve)
    local residue = radiant.entities.create_entity(residue_uri, { owner = player_id })
    local entity_container = self._entity:get_component('entity_container')
    local entity_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:table')
-   local drop_offset = nil
-   
+
    if reserve then
       residue:add_component('stonehearth:lease'):acquire(stonehearth.constants.ai.RESERVATION_LEASE_NAME, self._entity, true)
    end
    entity_container:add_child(residue)
-   
+
    if entity_data then
       local offset = entity_data['drop_offset']
       if offset then
@@ -279,7 +302,7 @@ function AceFirepitComponent:_create_residue(residue_uri, reserve)
          mob:move_to(drop_offset)
       end
    end
-   
+
 end
 
 function AceFirepitComponent:_retrieve_charcoal()
