@@ -18,10 +18,19 @@
          "placeable_on_walls": true,
          "hide_placement_ui": false
       },
+      "stonehearth:firepit": {
+         "buff_source": true
+      },
+      "stonehearth:lamp": {
+         "light_policy": "manual",
+         "light_effect": "stonehearth_ace:effects:firepit_small_effect",
+         "light_origin": { "x": 0, "y": 1, "z": 0 }
+      },
       "stonehearth_ace:extensible_object": {
          "extend_command": "stonehearth_ace:commands:extensible_object:extend",
          "remove_command": "stonehearth_ace:commands:extensible_object:remove",
          "extension_entity": "stonehearth_ace:extensible_object:solid_extension",
+         "end_entity": "stonehearth_ace:construction:fireplace:stone:small:top",
          "max_length": 24,
          "matrix": "chimney",
          "rotations": [
@@ -34,6 +43,13 @@
                "origin": { "x": 0, "y": 3, "z": 0.5 }
             }
          ]
+      },
+      "sensor_list": {
+         "sensors": {
+            "warmth": {
+               "radius": 8
+            }
+         }
       }
    },
    "entity_data": {
