@@ -25,7 +25,7 @@ function AceAIComponent:set_status_text_key(key, data)
    self.__saved_variables:mark_changed()
 end
 
-function AceAIComponent:town_suspended()
+function AceAIComponent:suspend_entity()
    -- check if the entity is currently mounted and save that mount entity, then dismount
    local parent = radiant.entities.get_parent(self._entity)
    local mount_component = parent and parent:get_component('stonehearth:mount')
@@ -38,10 +38,10 @@ function AceAIComponent:town_suspended()
    end
 end
 
-function AceAIComponent:town_continued()
+function AceAIComponent:continue_entity()
    -- try to remount a formerly dismounted entity, if possible
    local mount = self._sv._suspended_mount
-   
+
    if mount then
       local mount_component = mount:get_component('stonehearth:mount')
       if mount_component then

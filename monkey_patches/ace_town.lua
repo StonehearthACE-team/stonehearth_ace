@@ -829,7 +829,7 @@ function AceTown:register_suspendable_entity(entity)
       -- if register is called after suspend applied on load
       if self._sv._is_suspended then
          local suspendable = entity:get_component('stonehearth_ace:suspendable')
-         suspendable:town_suspended()
+         suspendable:suspend_entity()
       end
    end
 end
@@ -842,15 +842,27 @@ end
 
 function AceTown:_suspend_suspendable_entities()
    for _, entity in pairs(self._suspendable_entities) do
-      local suspendable = entity:get_component('stonehearth_ace:suspendable')
-      suspendable:town_suspended()
+      self:_suspend_suspendable_entity(entity)
+   end
+end
+
+function AceTown:_suspend_suspendable_entity(entity)
+   local suspendable = entity:get_component('stonehearth_ace:suspendable')
+   if suspendable then
+      suspendable:suspend_entity()
    end
 end
 
 function AceTown:_continue_suspendable_entities()
    for _, entity in pairs(self._suspendable_entities) do
-      local suspendable = entity:get_component('stonehearth_ace:suspendable')
-      suspendable:town_continued()
+      self:_continue_suspendable_entity(entity)
+   end
+end
+
+function AceTown:_continue_suspendable_entity(entity)
+   local suspendable = entity:get_component('stonehearth_ace:suspendable')
+   if suspendable then
+      suspendable:continue_entity()
    end
 end
 
@@ -925,15 +937,29 @@ end
 
 function AceTown:dispatch_citizen(citizen)
    local citizen_id = citizen:get_id()
-   self:_prepare_citizen_for_dispatch(citizen_id, citizen)
+   local crafter_component = citizen:get_component('stonehearth:crafter')
+   if crafter_component then
+      crafter_component:clean_up_order()
+   end
+   self:_suspend_suspendable_entity(citizen)
+
    self:_suspend_citizen(citizen_id, citizen)
    self._dispatched_citizens[citizen_id] = true
 end
 
-function AceTown:_prepare_citizen_for_dispatch(citizen_id, citizen)
-   local crafter_component = citizen:get_component('stonehearth:crafter')
-   if crafter_component then
-      crafter_component:clean_up_order()
+function AceTown:return_citizen(citizen)
+   self:_place_citizen_at_banner(citizen)
+
+   local citizen_id = citizen:get_id()
+   self._dispatched_citizens[citizen_id] = false
+
+   radiant.entities.remove_buff(citizen, SUSPENDED_BUFF)
+
+   self:_continue_suspendable_entity(citizen)
+
+   if self._injected_ai[citizen_id] then
+      self._injected_ai[citizen_id]:destroy()
+      self._injected_ai[citizen_id] = nil
    end
 end
 
