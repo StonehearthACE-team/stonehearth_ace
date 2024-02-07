@@ -22,7 +22,8 @@
          "buff_source": true
       },
       "stonehearth:lamp": {
-         "light_policy": "manual",
+         "restrict_policy_changing": true,
+         "light_policy": "parent",
          "light_effect": "stonehearth_ace:effects:firepit_small_effect",
          "light_origin": { "x": 0, "y": 1, "z": 0 }
       },
