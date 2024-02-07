@@ -28,7 +28,8 @@ function AceLampComponent:_load_json()
       self._sv.light_policy = json.light_policy or appropriate_policy
    end
 
-   if not self._sv._added_commands and json.force_policy_changing or not self._sv._added_commands and not json.restrict_policy_changing and not self._entity:get_component('stonehearth:firepit') then
+   if not self._sv._added_commands and not self._entity:get_component('stonehearth:firepit') and
+         (json.force_policy_changing or not json.restrict_policy_changing) then
       self:_create_commands()
    end
 
@@ -46,6 +47,51 @@ end
 
 function AceLampComponent:post_activate()
    self:_check_light()
+   self:_create_parent_listener()
+end
+
+AceLampComponent._ace_old_destroy = LampComponent.__user_destroy
+function AceLampComponent:destroy()
+   self:_destroy_parent_listener()
+   self:_destroy_parent_light_listener()
+   self:_ace_old_destroy()
+end
+
+function AceLampComponent:_destroy_parent_listener()
+   if self._parent_listener then
+      self._parent_listener:destroy()
+      self._parent_listener = nil
+   end
+end
+
+function AceLampComponent:_destroy_parent_light_listener()
+   if self._parent_light_listener then
+      self._parent_light_listener:destroy()
+      self._parent_light_listener = nil
+   end
+end
+
+function AceLampComponent:_create_parent_listener()
+   if not self._parent_listener then
+      self._parent_listener = self._entity:get_component('mob'):trace_parent('lamp added or removed')
+         :on_changed(function(parent_entity)
+               if not parent_entity then
+                  self:_destroy_parent_light_listener()
+               else
+                  self:_create_parent_light_listener(parent_entity)
+               end
+            end)
+         :push_object_state()
+   end
+end
+
+function AceLampComponent:_create_parent_light_listener(parent)
+   self:_destroy_parent_light_listener()
+
+   self._parent_light_listener = radiant.events.listen(parent, 'stonehearth_ace:lamp:light_changed', function()
+         self:_on_parent_light_changed(parent)
+      end)
+   self:_on_parent_light_changed(parent)
 end
 
 function AceLampComponent:_create_commands()
@@ -95,7 +141,10 @@ end
 function AceLampComponent:_check_light(is_sunrise)
    local should_light = false
 
-   if self._sv.light_policy == "always_on" then
+   if self._sv.light_policy == "parent" then
+      self:_destroy_nighttime_alarms()
+      return
+   elseif self._sv.light_policy == "always_on" then
       should_light = true
       self:_destroy_nighttime_alarms()
    elseif self._sv.light_policy == "manual" then
@@ -122,6 +171,17 @@ function AceLampComponent:_check_light(is_sunrise)
    end
 end
 
+function AceLampComponent:_on_parent_light_changed(parent)
+   local lamp_component = parent and parent:get_component('stonehearth:lamp')
+   if lamp_component then
+      if lamp_component:is_lit() then
+         self:light_on()
+      else
+         self:light_off()
+      end
+   end
+end
+
 function AceLampComponent:light_on()
    self._sv.is_lit = true
 
@@ -130,10 +190,12 @@ function AceLampComponent:light_on()
    if self._sv.light_effect and not self._running_effect then
       self._running_effect = radiant.effects.run_effect(self._entity, self._sv.light_effect);
    end
-	
+
 	if self._sv.buff_source and not radiant.entities.has_buff(self._entity, self._sv.buff) then
 		radiant.entities.add_buff(self._entity, self._sv.buff)
 	end
+
+   radiant.events.trigger_async(self._entity, 'stonehearth_ace:lamp:light_changed')
 
    self.__saved_variables:mark_changed()
 end
@@ -147,10 +209,12 @@ function AceLampComponent:light_off()
       self._running_effect:stop()
       self._running_effect = nil
    end
-	
+
 	if self._sv.buff_source then
 		radiant.entities.remove_buff(self._entity, self._sv.buff)
 	end
+
+   radiant.events.trigger_async(self._entity, 'stonehearth_ace:lamp:light_changed')
 
    self.__saved_variables:mark_changed()
 end
