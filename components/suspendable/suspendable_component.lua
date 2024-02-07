@@ -57,26 +57,26 @@ function SuspendableComponent:_unregister_with_town()
    end
 end
 
--- called from town controller (ace_town.lua) when the registered town is suspended
-function SuspendableComponent:town_suspended()
+-- called from town controller (ace_town.lua) when the registered town (or just the entity) is suspended
+function SuspendableComponent:suspend_entity()
    --log:debug('%s town_suspended', self._entity)
    -- suspend known timer components; any other components that want to be suspended can be specified by monkey-patch
    for component_name, suspendable in pairs(self._components) do
       if suspendable then
          local component = self._entity:get_component(component_name)
-         if component and component.town_suspended then
-            component:town_suspended()
+         if component and component.suspend_entity then
+            component:suspend_entity()
          end
       end
    end
 end
 
-function SuspendableComponent:town_continued()
+function SuspendableComponent:continue_entity()
    for component_name, suspendable in pairs(self._components) do
       if suspendable then
          local component = self._entity:get_component(component_name)
-         if component and component.town_continued then
-            component:town_continued()
+         if component and component.continue_entity then
+            component:continue_entity()
          end
       end
    end

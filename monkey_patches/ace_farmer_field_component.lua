@@ -131,12 +131,12 @@ function AceFarmerFieldComponent:set_harvest_enabled(enabled)
    end
 end
 
-function AceFarmerFieldComponent:town_suspended()
+function AceFarmerFieldComponent:suspend_entity()
    self._is_suspended = true
    self:_destroy_listeners()
 end
 
-function AceFarmerFieldComponent:town_continued()
+function AceFarmerFieldComponent:continue_entity()
    self._is_suspended = nil
    self:_create_listeners()
 end
