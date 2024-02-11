@@ -126,15 +126,17 @@ function AceShop:stock_shop()
 
       for uri, _ in pairs(all_specific_sellable_items) do
          local entity_description = stonehearth.catalog:get_catalog_data(uri)
-         local quantity = self:_get_item_quantity_to_add(uri, entity_description, inventory_spec, all_sellable_items[uri])
-         if quantity then
-            table.insert(entry_items, {
-               uri = uri,
-               entry = inventory_spec,
-               quantity = quantity,
-               description = entity_description,
-               rarity = entity_description.rarity or 'common'
-            })
+         if entity_description.sell_cost > 0 then
+            local quantity = self:_get_item_quantity_to_add(uri, entity_description, inventory_spec, all_sellable_items[uri])
+            if quantity then
+               table.insert(entry_items, {
+                  uri = uri,
+                  entry = inventory_spec,
+                  quantity = quantity,
+                  description = entity_description,
+                  rarity = entity_description.rarity or 'common'
+               })
+            end
          end
       end
 
@@ -224,13 +226,15 @@ function AceShop:stock_shop()
                -- while trying to make this high quality one; so they're selling the single high quality one
                -- along with all the lower quality ones they made along the way
                local entity_description = stonehearth.catalog:get_catalog_data(craft_entry.uri)
-               local cost = entity_description.sell_cost * mercantile_constants.PERSISTENCE_ITEM_PRICE_FACTOR
-               local quality_counts = mercantile_constants.PERSISTENCE_ITEM_QUALITY_COUNTS
+               if entity_description.sell_cost > 0 then
+                  local cost = entity_description.sell_cost * mercantile_constants.PERSISTENCE_ITEM_PRICE_FACTOR
+                  local quality_counts = mercantile_constants.PERSISTENCE_ITEM_QUALITY_COUNTS
 
-               self:_add_item_to_inventory(craft_entry.uri, entity_description, cost, craft_entry.quality, 1)
+                  self:_add_item_to_inventory(craft_entry.uri, entity_description, cost, craft_entry.quality, 1)
 
-               for quality = 1, math.min(craft_entry.quality - 1, #quality_counts) do
-                  self:_add_item_to_inventory(craft_entry.uri, entity_description, cost, quality, quality_counts[quality])
+                  for quality = 1, math.min(craft_entry.quality - 1, #quality_counts) do
+                     self:_add_item_to_inventory(craft_entry.uri, entity_description, cost, quality, quality_counts[quality])
+                  end
                end
             end
          end
