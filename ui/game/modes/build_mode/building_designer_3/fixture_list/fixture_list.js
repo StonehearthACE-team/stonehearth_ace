@@ -313,7 +313,10 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       if (catalogData) {
          tags.push(i18n.t(catalogData.display_name).toLowerCase());
          tags.push(i18n.t(catalogData.description).toLowerCase());
-         tags.push(catalogData.category.toLowerCase());
+
+         var categoryData = stonehearth_ace.getItemCategory(catalogData.category) || {};
+         var category = i18n.t(categoryData.display_name || 'stonehearth:ui.game.entities.item_categories.' + catalogData.category) || catalogData.category;
+         tags.push(category.toLowerCase());
       }
       else {
          console.log('No catalog data found for item ' + uri);
