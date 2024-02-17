@@ -20,6 +20,7 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
    init: function() {
       var self = this;
       self._inventoryData = {};
+      self._searchTags = {};
       self._super();
    },
 
@@ -304,6 +305,32 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       return item;
    },
 
+   _cacheSearchTags: function(uri) {
+      var self = this;
+      var tags = [];
+      // most important first: name, description, crafter info, then material tags
+      var catalogData = App.catalog.getCatalogData(uri);
+      if (catalogData) {
+         tags.push(i18n.t(catalogData.display_name).toLowerCase());
+         tags.push(i18n.t(catalogData.description).toLowerCase());
+         tags.push(catalogData.category.toLowerCase());
+      }
+      else {
+         console.log('No catalog data found for item ' + uri);
+      }
+
+      // need to handle material tags that are a single string instead of an array
+      if (catalogData && catalogData.materials) {
+         var mats = catalogData.materials;
+         if (typeof mats === 'string') {
+            mats = mats.split(' ');
+         }
+         tags = tags.concat(mats);
+      }
+
+      self._searchTags[uri] = tags.filter(tag => tag && tag.length > 0 && !tag.includes('stockpile_'));
+   },
+
    _filterFixtures: function(text) {
       var self = this;
 
@@ -313,8 +340,28 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       var queryTerms = text.toLowerCase().split(/\s+/g);
       queryTerms.forEach(function(term) {
          fixtures.each(function() {
-            var data = $(this).data('tooltip') + '';
-            if (data.toLowerCase().indexOf(term.toLowerCase()) == -1) {
+            // if it's already hidden, no need to check again
+            if ($(this).is(':hidden')) {
+               return;
+            }
+
+            var uri = $(this).data('fixture_uri');
+            if (!self._searchTags[uri]) {
+               // also cache search terms for this uri
+               self._cacheSearchTags(uri);
+            }
+
+            var tags = self._searchTags[uri];
+            var matches = false;
+            if (tags) {
+               for (var i = 0; i < tags.length; i++) {
+                  if (tags[i].includes(term)) {
+                     matches = true;
+                     break;
+                  }
+               }
+            }
+            if (!matches) {
                $(this).hide();
             }
          });
