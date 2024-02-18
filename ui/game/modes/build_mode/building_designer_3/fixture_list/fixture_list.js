@@ -395,6 +395,12 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
          if (!alreadySelected) {
             self.$('#' + fixtureKind).show();
             self.$('#' + fixtureKind + 'Kind').addClass('selected');
+
+            Ember.run.scheduleOnce('afterRender', this, function() {
+               if (self._searchText != '') {
+                  self._filterFixtures(self._searchText);
+               }
+            });
          }
          radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:building_select_button'});
       },

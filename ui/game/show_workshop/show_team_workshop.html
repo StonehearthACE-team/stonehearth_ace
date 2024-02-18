@@ -143,7 +143,17 @@
          <img id="detailsPortrait" {{bind-attr src="view.currentRecipe.portrait"}}>
       </div>
 
-      <div id="recipeEquipmentPane">
+      <div id="leftStats">
+         <div id="collisionSize">
+            {{#if view.collisionSize}}
+               <div class="stat collisionSize">{{view.collisionSize}}</div>
+            {{/if}}
+         </div>
+         <div id="storageCapacity">
+            {{#if view.storageCapacity}}
+               <div class="stat storageCapacity">{{view.storageCapacity}}</div>
+            {{/if}}
+         </div>
          <div id="equipmentRequirements">
             <div id="acceptableClasses">
                <div>
@@ -160,6 +170,18 @@
                   {{/if}}
                {{/each}}
             </div>
+         </div>
+         <div id="buffs">
+            {{#each view.buffs}}
+               {{#if icon}}
+               <div {{bind-attr data-id="uri"}} {{bind-attr class="axis"}}>
+                  <img class="buffImg" {{bind-attr src="icon"}}>
+                  {{#if this.hasStacks}}
+                  <div class="stacks">{{this.stacks}}</div>
+                  {{/if}} </br>
+               </div>
+               {{/if}}
+            {{/each}}
          </div>
          <div id="consumableBuffs">
             {{#each view.consumableBuffs}}
