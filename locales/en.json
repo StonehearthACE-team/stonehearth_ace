@@ -26161,6 +26161,8 @@
             },
             "tooltip_crafted_by": "Crafted By:",
             "tooltip_crop_unlocked": "You have already unlocked this crop.",
+            "tooltip_size": "<span class='value'>[str(x)]</span> x <span class='value'>[str(z)]</span>; <span class='value'>[str(y)]</span> tall",
+            "tooltip_size_header": "Size:",
             "tooltip_equipment_requirement": "Requires:",
             "tooltip_equipment_type": "Type:",
             "tooltip_inventory": "Inventory:",
@@ -26182,6 +26184,7 @@
                   "low_single": "<span class='value'>[str(servings)] meager</span> meal"
                }
             },
+            "tooltip_storage_capacity": "Storage capacity:",
             "tooltip_value_modified": "<span class='value'>[str(value)]</span> ([str(unmodified)])",
             "tooltip_value_unmodified": "<span class='value'>[str(value)]</span>",
             "tooltip_wanted_item_higher": "Merchant will pay <span class='higherValue'>[str(factor)]% more</span> for these!",
@@ -26817,6 +26820,7 @@
                "title": "Click to Unlock Title",
                "description": "Unlock this entity's title so it can be manually changed and, if specified in ACE gameplay settings, automatically changed."
             },
+            "collision_size": "[str(x)] x [str(z)]",
             "equipment_types_description": "Type: [str(i18n_data.types)]",
             "equipment_types": {
                "bow": "Bow",
@@ -26872,6 +26876,7 @@
                   "animal": "This animal feed provides [str(servings)] meals"
                }
             },
+            "buff": "Passive: ",
             "consumable_buff": "Consuming Applies: ",
             "injected_buff": "Grants Status: ",
             "inflictable_debuff": "Inflicts Status: ",
