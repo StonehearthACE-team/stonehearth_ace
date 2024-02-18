@@ -56,12 +56,12 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
          function(sel, is_notify_resolve, rotation_index, length, region, output_point)
             -- we only care about the user clicking, not moving the mouse
             if is_notify_resolve and rotation_index then
-               local output_origin = sel:get_point_in_current_direction(length - 1)
+               local output_origin = length and sel:get_point_in_current_direction(length - 1)
                _radiant.call('stonehearth_ace:set_extensible_object_command', entity, rotation_index, length, region, sel:get_current_connector_region(), output_point, output_origin)
                   :always(
                      function()
                         if rotation_index then
-                           sel:set_rotation_in_use(rotation_index, length > 0)
+                           sel:set_rotation_in_use(rotation_index, length ~= nil)
                         end
                      end
                   )
@@ -71,7 +71,7 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
    else
       selector:done(
          function(sel, rotation_index, length, region, output_point)
-            local output_origin = sel:get_point_in_current_direction(length - 1)
+            local output_origin = length and sel:get_point_in_current_direction(length - 1)
             _radiant.call('stonehearth_ace:set_extensible_object_command', entity, rotation_index, length, region, sel:get_current_connector_region(), output_point, output_origin)
                :done(
                   function(r)
@@ -98,7 +98,7 @@ end
 
 function ExtensibleObjectCallHandler:set_extensible_object_command(session, response, entity, rotation_index, length, region_table, connector_region_table, output_point, output_origin)
    -- apparently Region3 parameters get turned into tables and have to be loaded
-   validator.expect_argument_types({'Entity', 'number', 'number', validator.optional('table'), validator.optional('table'), validator.optional('Point3'), 'Point3'},
+   validator.expect_argument_types({'Entity', 'number', validator.optional('number'), validator.optional('table'), validator.optional('table'), validator.optional('Point3'), validator.optional('Point3')},
          entity, rotation_index, length, region_table, connector_region_table, output_point, output_origin)
 
    local region, connector_region
