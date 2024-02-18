@@ -1797,11 +1797,25 @@ App.StonehearthTeamCrafterView = App.View.extend({
       var self = this;
       var productCatalogData = App.catalog.getCatalogData(recipe.product_uri);
 
-      if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles || productCatalogData.consumable_buffs || productCatalogData.consumable_effects || productCatalogData.consumable_after_effects)) {
+      if (productCatalogData && (productCatalogData.equipment_required_level || productCatalogData.equipment_roles ||
+            productCatalogData.consumable_buffs || productCatalogData.consumable_effects || productCatalogData.consumable_after_effects ||
+            productCatalogData.buffs || productCatalogData.injected_buffs || productCatalogData.inflictable_debuffs ||
+            productCatalogData.equipment_types || productCatalogData.consumable_buffs || productCatalogData.consumable_effects ||
+            productCatalogData.consumable_after_effects || productCatalogData.collision_size || productCatalogData.storage_capacity)) {
          self.$('.detailsView').find('.tooltipstered').tooltipster('destroy');
+
+         var collisionSize = productCatalogData.collision_size && i18n.t('stonehearth_ace:ui.game.unit_frame.collision_size', productCatalogData.collision_size);
+         self.set('collisionSize', collisionSize);
+
+         var storageCapacity = productCatalogData.storage_capacity;
+         self.set('storageCapacity', storageCapacity);
+
          if (productCatalogData.equipment_roles) {
             var classArray = stonehearth_ace.findRelevantClassesArray(productCatalogData.equipment_roles);
             self.set('allowedClasses', classArray);
+         }
+         else {
+            self.set('allowedClasses', null);
          }
          if (productCatalogData.equipment_required_level) {
             self.$('#levelRequirement').text(i18n.t('stonehearth:ui.game.unit_frame.level') + productCatalogData.equipment_required_level);
@@ -1815,11 +1829,24 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
          self.set('equipmentTypes', equipmentTypes);
 
+         self._setBuffsByType(productCatalogData, 'buffs', 'buffs');
          self._setBuffsByType(productCatalogData, 'consumable_buffs', 'consumableBuffs');
          self._setBuffsByType(productCatalogData, 'injected_buffs', 'injectedBuffs');
          self._setBuffsByType(productCatalogData, 'inflictable_debuffs', 'inflictableDebuffs');
          self._setBuffsByType(productCatalogData, 'consumable_effects', 'consumableEffects');
          self._setBuffsByType(productCatalogData, 'consumable_after_effects', 'consumableAfterEffects');
+
+         if (collisionSize) {
+            var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size_header')}</span>` +
+                  `${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size', productCatalogData.collision_size)}</div>`
+            App.guiHelper.addTooltip(self.$('#collisionSize'), description);
+         }
+
+         if (storageCapacity) {
+            var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_storage_capacity')}</span>` +
+                  `<span class="value">${productCatalogData.storage_capacity}</span></div>`;
+            App.guiHelper.addTooltip(self.$('#storageCapacity'), description);
+         }
 
          App.tooltipHelper.createDynamicTooltip(self.$('#equipmentRequirements'), function () {
             var tooltipString = i18n.t('stonehearth:ui.game.unit_frame.no_requirements');
@@ -1842,9 +1869,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
             self._createBuffTooltips();
          });
 
-         self.$('#recipeEquipmentPane').show();
+         self.$('#leftStats').show();
       } else {
-         self.$('#recipeEquipmentPane').hide();
+         self.$('#leftStats').hide();
       }
    },
 
@@ -1867,6 +1894,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
    _createBuffTooltips: function () {
       var self = this;
 
+      self._createBuffTooltipsByType('buffs', 'buff');
       self._createBuffTooltipsByType('consumableBuffs', 'consumable_buff');
       self._createBuffTooltipsByType('injectedBuffs', 'injected_buff');
       self._createBuffTooltipsByType('inflictableDebuffs', 'inflictable_debuff');

@@ -1,5 +1,6 @@
 local Entity = _radiant.om.Entity
 local Point3 = _radiant.csg.Point3
+local Region3 = _radiant.csg.Region3
 local Material = require 'components.material.material'
 local log = radiant.log.create_logger('catalog')
 local log_mods = radiant.resources.load_json('stonehearth_ace/lib/catalog/catalog_logging.json').mods
@@ -286,18 +287,43 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
 
          catalog_data.is_placeable = entity_forms.placeable_on_ground or entity_forms.placeable_on_walls
       end
-      
+
       if json.components['stonehearth:equipment_piece'] then
          catalog_data.equipment_required_level = json.components['stonehearth:equipment_piece'].required_job_level
          catalog_data.equipment_roles = json.components['stonehearth:equipment_piece'].roles
          catalog_data.equipment_types = catalog_lib.get_equipment_types(json.components['stonehearth:equipment_piece'])
          catalog_data.injected_buffs = catalog_lib.get_buffs(json.components['stonehearth:equipment_piece'].injected_buffs)
       end
-      
+
       catalog_data.max_stacks = json.components['stonehearth:stacks'] and json.components['stonehearth:stacks'].max_stacks
 
       if json.components['stonehearth:storage'] then
          catalog_data.is_storage = true
+         catalog_data.storage_capacity = json.components['stonehearth:storage'].is_public ~= false and json.components['stonehearth:storage'].capacity
+      end
+
+      -- TODO: also check ghost for collision / landmark dimensions
+      if json.components['region_collision_shape'] and json.components['region_collision_shape'].region_collision_type ~= 'none'
+            and json.components['region_collision_shape'].region then
+         local region = Region3()
+         region:load(json.components['region_collision_shape'].region)
+         catalog_data.collision_size = region:get_bounds():get_size()
+      end
+
+      -- buffs this entity has (e.g., aura buffs)
+      if json.components['stonehearth:buffs'] then
+         catalog_data.buffs = catalog_lib.get_buffs(json.components['stonehearth:buffs'].buffs)
+      end
+
+      if json.components['stonehearth:lamp'] and json.components['stonehearth:lamp'].buff_source then
+         local buffs = catalog_lib.get_buffs({json.components['stonehearth:lamp'].buff or 'stonehearth_ace:buffs:weather:warmth_source'})
+         if catalog_data.buffs then
+            for _, buff in ipairs(buffs) do
+               table.insert(catalog_data.buffs, buff)
+            end
+         else
+            catalog_data.buffs = buffs
+         end
       end
    end
 
@@ -325,7 +351,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
       if workshop and workshop.equivalents then
          catalog_data.workshop_equivalents = workshop.equivalents
       end
-      
+
       local weapon_data = entity_data['stonehearth:combat:weapon_data']
       if weapon_data and weapon_data.base_damage then
          catalog_data.combat_damage = weapon_data.base_damage
@@ -363,7 +389,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
                         table.insert(after_effects, buff_data.cooldown_buff)
                      end
                   end
-                  
+
                   if #after_effects > 0 then
                      catalog_data.consumable_after_effects = catalog_lib.get_buffs(after_effects)
                   end
@@ -380,7 +406,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          if food_json and food_json.entity_data and food_json.entity_data['stonehearth:food'] then
             local stacks_per_serving = entity_data['stonehearth:food_container'].stacks_per_serving or 1
             catalog_data.food_servings = math.ceil(stacks / math.max(1, stacks_per_serving))
-            
+
             local food = food_json.entity_data['stonehearth:food']
             if food.applied_buffs then
                catalog_data.consumable_buffs = catalog_lib.get_buffs(food.applied_buffs)
@@ -419,14 +445,14 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
             catalog_data.food_servings = feed_stacks
          end
       end
-		
+
       if entity_data['stonehearth_ace:drink_container'] then
          local drink_uri = entity_data['stonehearth_ace:drink_container'].drink
          local drink_json = drink_uri and radiant.resources.load_json(drink_uri)
          if drink_json and drink_json.entity_data and drink_json.entity_data['stonehearth_ace:drink'] then
             local stacks_per_serving = entity_data['stonehearth_ace:drink_container'].stacks_per_serving or 1
             catalog_data.drink_servings = math.ceil(stacks / math.max(1, stacks_per_serving))
-         
+
             local drink = drink_json.entity_data['stonehearth_ace:drink']
             if drink.applied_buffs then
                catalog_data.consumable_buffs = catalog_lib.get_buffs(drink.applied_buffs)
@@ -560,8 +586,10 @@ function catalog_lib.get_buffs(buff_data)
          if type(data) == 'table' then
             uri = data.uri
             stacks = data.stacks or 1
+         elseif type(data) == 'boolean' then
+            uri = buff
          end
-         
+
          local json = radiant.resources.load_json(uri)
          if json then
             local struct = buff_lookup[uri]
