@@ -13,6 +13,49 @@ local log = radiant.log.create_logger('entities')
 
 local ace_entities = {}
 
+-- ACE: when removing a child with solid collision, coordinate with the hydrology service to backfill that area as necessary
+function ace_entities.remove_child(parent, child)
+   radiant.check.is_entity(parent)
+   radiant.check.is_entity(child)
+
+   local component = parent:get_component('entity_container')
+   if component then
+      local rcs = child:get_component('region_collision_shape')
+      if rcs and rcs:get_region_collision_type() == _radiant.om.RegionCollisionShape.SOLID then
+         stonehearth.hydrology:auto_fill_water_region(radiant.entities.local_to_world(rcs:get_region():get(), child), function(waters, num_waters)
+               if num_waters == 1 then
+                  log:debug('removing entity %s and filling in water', child)
+               end
+               component:remove_child(child:get_id())
+               return true
+            end)
+      else
+         component:remove_child(child:get_id())
+      end
+   end
+end
+
+-- ACE: when destroying an entity with solid collision, coordinate with the hydrology service to backfill that area as necessary
+function ace_entities.destroy_entity(entity)
+   if entity and entity:is_valid() then
+      log:debug('destroying entity %s', entity)
+      radiant.check.is_entity(entity)
+      -- stonehearth_server takes care of destroying the other entity forms and contained entities
+      local rcs = entity:get_component('region_collision_shape')
+      if rcs and rcs:get_region_collision_type() == _radiant.om.RegionCollisionShape.SOLID then
+         stonehearth.hydrology:auto_fill_water_region(radiant.entities.local_to_world(rcs:get_region():get(), entity), function(waters, num_waters)
+               if num_waters == 1 then
+                  log:debug('destroying entity %s and filling in water', entity)
+               end
+               _radiant.sim.destroy_entity(entity)
+               return true
+            end)
+      else
+         _radiant.sim.destroy_entity(entity)
+      end
+   end
+end
+
 -- consume one "stack" of an entity.  if the entity has an item
 -- component and the stacks of that item are > 0, it simply decrements
 -- the stack count.  otherwise, it conumes the whole item (i.e. we

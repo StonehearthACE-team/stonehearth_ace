@@ -18,7 +18,7 @@ local AceMiningService = class()
 -- Dig an arbitary region.
 -- Region is defined in world space.
 -- purpose is optional and defaults to constants.mining.purpose.MINING
-function MiningService:dig_region(player_id, region, purpose, options)
+function AceMiningService:dig_region(player_id, region, purpose, options)
    local disable_merging = options and options.disable_merging
    local bid = options and options.bid
 
@@ -189,7 +189,7 @@ end
 AceMiningService._ace_old_get_reachable_region = MiningService.get_reachable_region
 function AceMiningService:get_reachable_region(location)
    local region = self:_ace_old_get_reachable_region(location)
-   
+
    -- also include reachable blocks directly above; this is important for building a ladder to reach the top of the mining region
    local cube = Cube3(location)
    cube.max.y = region:get_bounds().max.y
@@ -299,7 +299,7 @@ function AceMiningService:get_reserved_region_for_block(block, from, mining_zone
 
    -- by convention, all input and output values in the mining service are in world coordiantes
    reserved_region:translate(location)
-   
+
    -- ACE: also add the block that will be mined from, so it gets removed from adjacency
    -- and other miners don't try to path to the same spot where blocks are already reserved
    reserved_region:add_point(from)
@@ -408,10 +408,10 @@ function AceMiningService:insta_mine(region)
    -- if there are multiple regions, let them handle it themselves, it could be complicated
    stonehearth.hydrology:auto_fill_water_region(terrain_region, function(waters)
          radiant.terrain.subtract_region(terrain_region)
-      
+
          self._mined_region:add_region(terrain_region)
          self._mined_region:optimize_changed_tiles('MiningService:_add_to_mined_region')
-      
+
          -- and then update interior on a point-by-point basis
          for point in terrain_region:each_point() do
             self:_update_interior_region(point)
