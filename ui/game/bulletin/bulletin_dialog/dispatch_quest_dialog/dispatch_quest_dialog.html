@@ -1,0 +1,48 @@
+<script type="text/x-handlebars" data-template-name="dispatchQuestBulletinDialog">
+<div id="dispatchQuestBulletinDialog" class="gui bulletinDialog">
+   <div class="window">
+      <div class="title">{{i18n_key view.model.data.dialog_title}}<div class="closeButton"></div></div>
+      <div class="contentFrame" class="parchment" >
+         <p class='instructionText'>{{i18n_key view.model.data.text}}</p>
+         <div class="list downSection">
+            <table class="peopleList">
+               <tbody>
+               {{#each citizen in view.citizensArray}}
+                  {{ view "stonehearthDispatchQuestBulletinRow" dialogView=view uriBinding="citizen" }}
+               {{/each}}
+               </tbody>
+            </table>
+         </div>
+         <div class="buttonDiv">
+            <div class="counts">{{i18n stonehearth:ui.game.bulletin.dispatch_quest.selected}} {{view.selectedCount}} / {{view.requiredCount}}</div>
+            <button id="dispatchButton" {{bind-attr class="view.readyToDispatch::disabled"}}><span>{{i18n stonehearth:ui.game.bulletin.dispatch_quest.dispatch}}</span></button>
+            <button id="abandonButton"><span>{{i18n stonehearth:ui.game.bulletin.dispatch_quest.abandon}}</span></button>
+         </div>
+      </div>
+   </div>
+</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="stonehearthDispatchQuestBulletinRow">
+   {{#if view.shouldShow}}
+      <td class="selectable_citizen_row">
+         <div class="banner"><img class="jobIcon" {{bind-attr src=view.model.stonehearth:job.class_icon}}/></div>
+      </td>
+      <td class="selectable_citizen_row">
+         <div class="name">
+            {{i18n_key view.model.stonehearth:unit_info.display_name self=view.model}}
+         </div>
+      </td>
+      <td>
+         <a {{bind-attr id=command.name}} href="#" {{action "selectPerson" view.model target="view"}} class='uisounds'>
+            <button class="brown" {{bind-attr class="buttonEnabled" }}>
+               {{#if view.selected}}
+                  {{i18n stonehearth:ui.game.bulletin.dispatch_quest.deselect}}
+               {{else}}
+                  {{i18n stonehearth:ui.game.bulletin.dispatch_quest.select}}
+               {{/if}}
+            </button>
+         </a>
+      </td>
+   {{/if}}
+</script>
