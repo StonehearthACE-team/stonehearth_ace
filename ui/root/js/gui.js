@@ -208,6 +208,29 @@ App.guiHelper = {
       });
    },
 
+   getTooltipOptions: function(entity) {
+      // Only display the stack count for gold in a gold chest.
+      var hasOptions = false;
+      var itemQuality;
+      if (entity['stonehearth:stacks']) {
+         hasOptions = true;
+      }
+
+      if (entity['stonehearth:item_quality'] && entity['stonehearth:item_quality'].quality > 1) {
+         hasOptions = true;
+         itemQuality = entity['stonehearth:item_quality'].quality;
+      }
+
+      if (hasOptions) {
+         return {
+            self: entity,
+            allowUntranslated: false,
+            item_quality: itemQuality,
+            useItemQuality: itemQuality != null,
+         };
+      }
+   },
+
    createUriTooltip: function(uri, options) {
       var cacheTooltip = this._shouldCacheTooltip(options);
       if (cacheTooltip && this._uriTooltips[uri]) {
@@ -220,6 +243,7 @@ App.guiHelper = {
       options = options || { allowUntranslated: false };
       options.show_appeal = options.show_appeal !== false;
       options.show_net_worth = options.show_net_worth !== false;
+      options.show_fuel_amount = options.show_fuel_amount !== false;
 
       if (options.recipe_key && this._recipeKeyTooltips[options.recipe_key]) {
          return this._recipeKeyTooltips[options.recipe_key];
@@ -247,15 +271,25 @@ App.guiHelper = {
 
       // collision size
       if (catalogData.collision_size) {
-         var collisionSize = catalogData.collision_size;
          detail += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size_header')}</span>` +
-                     `${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size', collisionSize)}</div>`;
+                     `${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size', catalogData.collision_size)}</div>`;
       }
 
       // storage capacity
       if (catalogData.storage_capacity) {
          detail += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_storage_capacity')}</span>` +
                      `<span class="value">${catalogData.storage_capacity}</span></div>`;
+      }
+      
+      // if it's a consumer entity, it has fuel capacity instead
+      if (catalogData.fuel_capacity) {
+         detail += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_fuel_capacity')}</span>` +
+                     `<span class="value">${catalogData.fuel_capacity}</span></div>`;
+      }
+
+      if (catalogData.warmth_radius) {
+         detail += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_warmth_radius')}</span>` +
+                  `<span class="value">${catalogData.warmth_radius}</span></div>`;
       }
 
       var equipmentRequirements = '';
@@ -357,6 +391,11 @@ App.guiHelper = {
             appealDiv += ` (<span class="${diff > 0 ? 'higherValue' : 'lowerValue'}">${(diff > 0 ? '+' : '') + diff}</span>)`;
          }
          netWorthAppeal += `<img class="imgHeader appeal"/>${appealDiv}`;
+      }
+
+      if (options.fuel_amount || (catalogData.fuel_amount && options.show_fuel_amount)) {
+         var fuel_amount = options.fuel_amount || catalogData.fuel_amount;
+         netWorthAppeal += `<span class="spacer"/><img class="imgHeader fuelAmount"/><span class="value">${fuel_amount}</span>`;
       }
 
       if (netWorthAppeal != '') {

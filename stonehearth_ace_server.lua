@@ -128,6 +128,7 @@ local monkey_patches = {
    ace_incapacitation_component = 'stonehearth.components.incapacitation.incapacitation_component',
    ace_inventory = 'stonehearth.services.server.inventory.inventory',
    ace_inventory_tracker = 'stonehearth.services.server.inventory.inventory_tracker',
+   ace_item_quality_component = 'stonehearth.components.item_quality.item_quality_component',
    ace_jacko_script = 'stonehearth.data.gm.campaigns.kitties.arcs.trigger.kitties.encounters.jacko_script',
    ace_job_component = 'stonehearth.components.job.job_component',
    ace_job_info_controller = 'stonehearth.services.server.job.job_info_controller',
