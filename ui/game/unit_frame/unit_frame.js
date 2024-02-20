@@ -423,6 +423,12 @@ App.StonehearthUnitFrameView = App.View.extend({
          }
       });
 
+      App.guiHelper.createDynamicTooltip(this.$('#descriptionDiv'), '#workshopIcon,.itemIcon', function($el) {
+         var entity = self.get('model');
+         var options = App.guiHelper.getTooltipOptions(entity);
+         return $(App.guiHelper.createUriTooltip(entity.uri, options));
+      });
+
       _selectionHasComponentInfoChanged();
       _showJobToggleButtonChanged();
 
@@ -430,6 +436,7 @@ App.StonehearthUnitFrameView = App.View.extend({
    },
 
    willDestroyElement: function() {
+      App.guiHelper.removeDynamicTooltip(this.$('#descriptionDiv'), '#workshopIcon,.itemIcon');
       this.$().find('.tooltipstered').tooltipster('destroy');
       this.$('.name').off('click');
       this.$('#portrait').off('click');
