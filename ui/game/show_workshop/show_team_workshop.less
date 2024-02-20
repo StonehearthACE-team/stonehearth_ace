@@ -307,7 +307,7 @@
       #leftStats {
          .controlFont;
          position: absolute;
-         top: 47px;
+         top: 70px;
          color: #fff;
          font-size: 24px;
          line-height: 16px;
@@ -363,6 +363,22 @@
          text-align: center;
          margin-bottom: 2px;
 
+         &.capsule {
+            background: #dad5bb;
+            border: 3px black solid;
+            border-radius: 15px;
+            color: black;
+            text-shadow: none;
+            font-size: 17px;
+            font-family: 'GroboldRegular';
+            width: auto;
+            height: auto;
+            padding: 10px 10px 5px 40px;
+            background-repeat: no-repeat;
+            background-position: 6px 3px;
+            line-height: 22px;
+         }
+
          .name {
             font-size: 12px;
             line-height: 12px;
@@ -377,20 +393,8 @@
          }
 
          &.netWorth {
-            background: #dad5bb;
-            border: 3px black solid;
-            border-radius: 15px;
-            color: black;
-            text-shadow: none;
-            font-size: 17px;
-            font-family: 'GroboldRegular';
-            width: auto;
-            height: auto;
-            padding: 10px 10px 5px 40px;
+            .capsule;
             background-image: url(images/stat_net_worth_icon.png);
-            background-repeat: no-repeat;
-            background-position: 6px 3px;
-            line-height: 22px;
          }
          
          &.netWorth.list {
@@ -405,18 +409,8 @@
          }
          
          &.appeal {
-            background: #dad5bb;
-            border: 3px black solid;
-            border-radius: 15px;
-            color: black;
-            text-shadow: none;
-            font-size: 17px;
-            font-family: 'GroboldRegular';
-            width: auto;
-            height: auto;
-            padding: 10px 10px 5px 40px;
+            .capsule;
             background-image: url(images/stat_appeal_icon.png);
-            background-repeat: no-repeat;
             background-position: 2px 1px;
             line-height: 20px;
          }
@@ -433,20 +427,8 @@
          }
 
          &.effort {
-            background: #dad5bb;
-            border: 3px black solid;
-            border-radius: 15px;
-            color: black;
-            text-shadow: none;
-            font-size: 17px;
-            font-family: 'GroboldRegular';
-            width: auto;
-            height: auto;
-            padding: 10px 10px 5px 40px;
+            .capsule;
             background-image: url(images/stat_effort_icon.png);
-            background-repeat: no-repeat;
-            background-position: 6px 3px;
-            line-height: 22px;
          }
 
          // ACE:
@@ -458,19 +440,7 @@
 
          // ACE:
          &.satisfaction {
-            background: #dad5bb;
-            border: 3px black solid;
-            border-radius: 15px;
-            color: black;
-            text-shadow: none;
-            font-size: 17px;
-            font-family: 'GroboldRegular';
-            width: auto;
-            height: auto;
-            padding: 10px 10px 5px 40px;
-            background-repeat: no-repeat;
-            background-position: 6px 3px;
-            line-height: 22px;
+            .capsule;
          }
 
          // ACE:
@@ -497,37 +467,28 @@
          }
 
          &.collisionSize {
-            background: #dad5bb;
-            border: 3px black solid;
-            border-radius: 15px;
-            color: black;
-            text-shadow: none;
-            font-size: 17px;
-            font-family: 'GroboldRegular';
-            width: auto;
-            height: auto;
-            padding: 10px 10px 5px 40px;
+            .capsule;
             background-image: url(/stonehearth_ace/ui/images/collision_size_icon.png);
-            background-repeat: no-repeat;
-            background-position: 6px 3px;
-            line-height: 22px;
          }
 
          &.storageCapacity {
-            background: #dad5bb;
-            border: 3px black solid;
-            border-radius: 15px;
-            color: black;
-            text-shadow: none;
-            font-size: 17px;
-            font-family: 'GroboldRegular';
-            width: auto;
-            height: auto;
-            padding: 10px 10px 5px 40px;
+            .capsule;
             background-image: url(/stonehearth_ace/ui/images/storage_capacity_icon.png);
-            background-repeat: no-repeat;
-            background-position: 6px 3px;
-            line-height: 22px;
+         }
+
+         &.fuelCapacity {
+            .capsule;
+            background-image: url(/stonehearth_ace/ui/images/fuel_capacity_icon.png);
+         }
+
+         &.fuelAmount {
+            .capsule;
+            background-image: url(/stonehearth_ace/ui/images/stat_fuel_amount_icon.png);
+         }
+
+         &.warmthRadius {
+            .capsule;
+            background-image: url(/stonehearth_ace/ui/images/warmth_radius_icon.png);
          }
       }
 

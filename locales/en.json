@@ -26079,7 +26079,6 @@
          },
          "entities": {
             "custom_name_with_title": "[str(self.stonehearth:unit_info.custom_name)][str(self.stonehearth:unit_info.custom_data.current_title.display_name)]",
-            "missing_catalog_data": "[MISSING CATALOG DATA]",
             "item_categories": {
                "resources": "Resources (Plant)",
                "resources_mineral": "Resources (Mineral)",
@@ -26111,12 +26110,13 @@
                "military_equipment": "Combatant Equipment",
                "landscaping": "Landscaping"
             },
+            "missing_catalog_data": "[MISSING CATALOG DATA]",
+            "pet_death_notification": "[str(i18n_data.entity_custom_name)], the pet of a citizen, has died",
             "tooltip_crafted_by": "Crafted By:",
             "tooltip_crop_unlocked": "You have already unlocked this crop.",
-            "tooltip_size": "<span class='value'>[str(x)]</span> x <span class='value'>[str(z)]</span>; <span class='value'>[str(y)]</span> tall",
-            "tooltip_size_header": "Size:",
             "tooltip_equipment_requirement": "Requires:",
             "tooltip_equipment_type": "Type:",
+            "tooltip_fuel_capacity": "Fuel capacity:",
             "tooltip_inventory": "Inventory:",
             "tooltip_satisfaction": {
                "drink": {
@@ -26136,15 +26136,17 @@
                   "low_single": "<span class='value'>[str(servings)] meager</span> meal"
                }
             },
+            "tooltip_size": "<span class='value'>[str(x)]</span>x<span class='value'>[str(z)]</span>; <span class='value'>[str(y)]</span> tall",
+            "tooltip_size_header": "Size:",
             "tooltip_storage_capacity": "Storage capacity:",
+            "tooltip_unwanted_item": "Merchant already sells these and will pay <span class='lowerValue'>[str(factor)]% less</span> for them!",
             "tooltip_value_modified": "<span class='value'>[str(value)]</span> ([str(unmodified)])",
             "tooltip_value_unmodified": "<span class='value'>[str(value)]</span>",
             "tooltip_wanted_item_higher": "Merchant will pay <span class='higherValue'>[str(factor)]% more</span> for these!",
             "tooltip_wanted_item_higher_quantity": "Merchant will pay <span class='higherValue'>[str(factor)]% more</span> for [str(quantity)] of these!",
             "tooltip_wanted_item_lower": "Merchant will pay <span class='lowerValue'>[str(factor)]% less</span> for these!",
             "tooltip_wanted_item_lower_quantity": "Merchant will pay <span class='lowerValue'>[str(factor)]% less</span> for [str(quantity)] of these!",
-            "tooltip_unwanted_item": "Merchant already sells these and will pay <span class='lowerValue'>[str(factor)]% less</span> for them!",
-            "pet_death_notification": "[str(i18n_data.entity_custom_name)], the pet of a citizen, has died"
+            "tooltip_warmth_radius": "Warmth radius:"
          },
          "custom_tooltips": {
             "mechanical": {
@@ -26383,6 +26385,13 @@
             "search_description_and_ingredients_description": "Include the descriptions of crafted items and the names of ingredients in the search filter.",
             "search_all": "All",
             "search_all_description": "Include the recipe titles, crafted item descriptions, and names of ingredients in the search filter.",
+            "tooltip_fuel_amount": "Fuel Amount",
+            "status_sign": {
+               "title": "Toggle Make Crafting",
+               "description": "Click to toggle whether Make crafting orders are enabled for this workshop.<br><br>Note: Make orders are prioritized over Maintain orders.",
+               "maintain_title": "Toggle Maintain Crafting",
+               "maintain_description": "Click to toggle whether Maintain crafting orders are enabled for this workshop.<br><br>Note: Make orders are prioritized over Maintain orders."
+            },
             "category_crafter": {
                "title": "Toggle Category Crafting",
                "enable_description": "Enable crafting of [str(category)] for <span class='bold'>[str(name)]</span> (level <span class='bold'>[str(level)]</span>).",
@@ -26737,7 +26746,7 @@
                "title": "Click to Unlock Title",
                "description": "Unlock this entity's title so it can be manually changed and, if specified in ACE gameplay settings, automatically changed."
             },
-            "collision_size": "[str(x)] x [str(z)]",
+            "collision_size": "[str(x)]x[str(z)]",
             "equipment_types_description": "Type: [str(i18n_data.types)]",
             "equipment_types": {
                "bow": "Bow",
@@ -26766,6 +26775,7 @@
                "cleric_tome": "Healing Tome",
                "cleric_scepter": "Holy Scepter"
             },
+            "fuel_amount": "Fuel value:",
             "job_roles": {
                "crafter": {
                   "display_name": "Any Crafter",
