@@ -101,7 +101,14 @@ end
 -- this could be extended to allow other conditions for allowing masterwork or higher (4+) random qualities
 function item_quality_lib.get_max_random_quality(player_id)
    local town = stonehearth.town:get_town(player_id)
-   return (town and town:get_town_bonus('stonehearth:town_bonus:guildmaster') ~= nil
+   local masterwork_town_bonus
+   for town_bonus, check in pairs(constants.town_progression.MASTERWORK_QUALITY_UNLOCKING_BONUSES) do
+      if town:get_town_bonus(tostring(town_bonus)) and check then
+         masterwork_town_bonus = true
+         break
+      end
+   end
+   return (town and masterwork_town_bonus ~= nil
             and item_qualities.MASTERWORK)
             or item_qualities.EXCELLENT
 end
