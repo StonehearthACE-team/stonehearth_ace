@@ -211,14 +211,33 @@ App.guiHelper = {
    getTooltipOptions: function(entity) {
       // Only display the stack count for gold in a gold chest.
       var hasOptions = false;
-      var itemQuality;
+      var itemQuality, maxHealth, menace;
       if (entity['stonehearth:stacks']) {
          hasOptions = true;
+      }
+
+      if (entity['stonehearth:attributes']) {
+         if (entity['stonehearth:attributes'].max_health) {
+            hasOptions = true;
+            maxHealth = entity['stonehearth:attributes'].max_health;
+         }
+         if (entity['stonehearth:attributes'].menace) {
+            hasOptions = true;
+            menace = entity['stonehearth:attributes'].menace;
+         }
       }
 
       if (entity['stonehearth:item_quality'] && entity['stonehearth:item_quality'].quality > 1) {
          hasOptions = true;
          itemQuality = entity['stonehearth:item_quality'].quality;
+
+         // if it's an equipment piece, it grants extra menace based on its item quality
+         if (entity['stonehearth:equipment_piece']) {
+            var menaceValues = App.constants.item_quality.bonuses.menace;
+            if (menaceValues[itemQuality]) {
+               menace = (menace || 0) + menaceValues[itemQuality];
+            }
+         }
       }
 
       if (hasOptions) {
@@ -226,6 +245,8 @@ App.guiHelper = {
             self: entity,
             allowUntranslated: false,
             item_quality: itemQuality,
+            max_health: maxHealth,
+            menace: menace,
             useItemQuality: itemQuality != null,
          };
       }
@@ -320,6 +341,32 @@ App.guiHelper = {
       if (catalogData.combat_armor) {
          combat_info += '<div class="stat"><span class="header">' + i18n.t('stonehearth:ui.game.entities.tooltip_combat_base_damage_reduction') + '</span>' +
                      '<span class="combatValue">+' + catalogData.combat_armor + '</span></div>'
+      }
+
+      var max_health = options.max_health || catalogData.max_health;
+      if (max_health) {
+         var maxHealthDiv = `<span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_max_health')}</span>` +
+               `<span class="combatValue">${catalogData.max_health}</span>`;
+         var compare_max_health = catalogData.max_health;
+         if (compare_max_health && max_health != compare_max_health) {
+            var diff = max_health - compare_max_health;
+            var diffType = diff > 0 ? 'higherValue' : 'lowerValue';
+            maxHealthDiv += ` (<span class="${diffType}">${(diff > 0 ? '+' : '') + diff}</span>)`;
+         }
+         combat_info += `<div class="stat">${maxHealthDiv}</div>`;
+      }
+
+      var menace = options.menace || catalogData.menace;
+      if (menace) {
+         var menaceDiv = `<span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_menace')}</span>` +
+               `<span class="combatValue">${menace}</span>`;
+         var compare_menace = catalogData.menace;
+         if (compare_menace && menace != compare_menace) {
+            var diff = menace - compare_menace;
+            var diffType = diff > 0 ? 'higherValue' : 'lowerValue';
+            menaceDiv += ` (<span class="${diffType}">${(diff > 0 ? '+' : '') + diff}</span>)`;
+         }
+         combat_info += `<div class="stat">${menaceDiv}</div>`;
       }
 
       if (combat_info != "") {
