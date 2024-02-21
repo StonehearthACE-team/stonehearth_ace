@@ -344,6 +344,15 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
             catalog_data.buffs = buffs
          end
       end
+
+      if json.components['stonehearth:attributes'] then
+         if json.components['stonehearth:attributes'].max_health then
+            catalog_data.max_health = json.components['stonehearth:attributes'].max_health.value
+         end
+         if json.components['stonehearth:attributes'].menace then
+            catalog_data.menace = json.components['stonehearth:attributes'].menace.value
+         end
+      end
    end
 
    if entity_data ~= nil then

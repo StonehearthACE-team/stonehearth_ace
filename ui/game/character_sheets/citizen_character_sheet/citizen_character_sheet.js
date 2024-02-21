@@ -654,6 +654,7 @@ App.StonehearthCitizenCharacterSheetView = App.View.extend({
             if (catalogData && catalogData.display_name) {
                var quality = Math.max(1, equipmentPiece.get('stonehearth:item_quality.quality') || 1);
                var equipmentInfo = {
+                  uri: alias,
                   equipment: equipmentPiece,
                   display_name: catalogData.display_name,
                   description: catalogData.description,
@@ -684,10 +685,9 @@ App.StonehearthCitizenCharacterSheetView = App.View.extend({
          var equipmentPiece = equipmentInfo.equipment;
          if (equipmentRow && equipmentRow.length != 0) {
             App.tooltipHelper.createDynamicTooltip(equipmentRow, function () {
-               var tooltipString = '';
-               tooltipString = '<div class="detailedTooltip"> <h2>' + i18n.t(equipmentInfo.display_name)
-                                       + '</h2>' + i18n.t(equipmentInfo.description) + '</div>';
-               return $(tooltipString);
+               var options = App.guiHelper.getTooltipOptions(equipmentPiece);
+               var tooltip = App.guiHelper.createUriTooltip(equipmentInfo.uri, options);
+               return $(tooltip);
             });
          }
       });
