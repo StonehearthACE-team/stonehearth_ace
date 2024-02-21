@@ -2056,6 +2056,12 @@ App.StonehearthTeamCrafterView = App.View.extend({
          var warmthRadius = productCatalogData.warmth_radius;
          self.set('warmthRadius', warmthRadius);
 
+         var maxHealth = productCatalogData.max_health;
+         self.set('maxHealth', maxHealth);
+
+         var menace = productCatalogData.menace;
+         self.set('menace', menace);
+
          var showEquipment = false;
          if (productCatalogData.equipment_roles) {
             var classArray = stonehearth_ace.findRelevantClassesArray(productCatalogData.equipment_roles);
@@ -2108,6 +2114,18 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_warmth_radius')}</span>` +
                   `<span class="value">${warmthRadius}</span></div>`;
             App.guiHelper.addTooltip(self.$('#warmthRadius'), description);
+         }
+
+         if (maxHealth) {
+            var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_max_health')}</span>` +
+                  `<span class="value">${maxHealth}</span></div>`;
+            App.guiHelper.addTooltip(self.$('#maxHealth'), description);
+         }
+
+         if (menace) {
+            var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_menace')}</span>` +
+                  `<span class="value">${menace}</span></div>`;
+            App.guiHelper.addTooltip(self.$('#menace'), description);
          }
 
          if (showEquipment) {
