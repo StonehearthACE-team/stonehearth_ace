@@ -86,6 +86,7 @@ end
 function HerbalistPlanterComponent:post_activate()
    if self._is_create then
       self:set_harvest_enabled(self._json.harvest_enabled ~= false)
+      self:set_tend_enabled(self._json.tend_enabled ~= false)
    end
    
    local render_info = self._entity:get_component('render_info')
@@ -261,6 +262,14 @@ function HerbalistPlanterComponent:set_harvest_enabled(enabled)
    end
 end
 
+function HerbalistPlanterComponent:set_tend_enabled(enabled)
+   if enabled ~= self._sv.tend_enabled then
+      self._sv.tend_enabled = enabled
+      self.__saved_variables:mark_changed()
+      self:_reconsider()
+   end
+end
+
 function HerbalistPlanterComponent:set_harvest_plant(harvest_plant)
    if harvest_plant ~= self._sv.harvest_plant then
       self._sv.harvest_plant = harvest_plant
@@ -281,8 +290,12 @@ function HerbalistPlanterComponent:is_plantable()
    return self._sv.planted_crop ~= self._sv.current_crop
 end
 
+function HerbalistPlanterComponent:is_tend_enabled()
+   return self._sv.tend_enabled
+end
+
 function HerbalistPlanterComponent:is_tendable(level)
-   if self._sv.planted_crop and self._planted_crop_stats then
+   if self:is_tend_enabled() and self._sv.planted_crop and self._planted_crop_stats then
       -- if a level is specified and the current crop is a higher level, no luck
       if level and level < self:get_planted_crop_level() then
          return false
@@ -524,6 +537,11 @@ end
 
 function HerbalistPlanterComponent:set_harvest_enabled_command(session, response, enabled)
    self:set_harvest_enabled(enabled)
+   return true
+end
+
+function HerbalistPlanterComponent:set_tend_enabled_command(session, response, enabled)
+   self:set_tend_enabled(enabled)
    return true
 end
 
