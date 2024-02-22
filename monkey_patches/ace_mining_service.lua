@@ -141,7 +141,7 @@ function AceMiningService:get_block_to_mine(from, mining_zone, log_debug)
       end
 
       -- double check that we're not mining a block directly *below us only*
-      assert(block.x ~= from.x or block.z ~= from.z or block.y > from.y)
+      assert(block.x ~= from.x or block.z ~= from.z or block.y >= from.y)
 
       -- check if our current location is in the adjacent for the block
       local poi_adjacent = self:get_adjacent_for_destination_block(block)
