@@ -8,6 +8,7 @@
       "effect_list": {
          "default": "/stonehearth_ace/data/rigs/entities/construction/water_well/effects/idle.json"
       },
+      "stonehearth:posture": {},
       "mob": {
          "model_origin": { "x": 0, "y": 0, "z": 0 },
          "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
@@ -68,7 +69,12 @@
          "container_effect": "work",
          "drink": "stonehearth_ace:drink:water_serving",
          "require_reservation": true,
-         "stacks_per_serving": 0
+         "stacks_per_serving": 0,
+         "additional_container": {
+            "additional_charge_buff": "stonehearth_ace:buffs:pulled_water",
+            "additional_charges": 9,
+            "additional_container_effect": false
+         }
       },
       "stonehearth:catalog": {
          "category": "construction",

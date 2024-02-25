@@ -1,0 +1,12 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.pulled_water.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.pulled_water.description)",
+   "effect": "stonehearth_ace:effects:pulled_water_drips",
+   "restore_effect": true,
+   "repeat_add_action": "stack_and_refresh",
+   "max_stacks": 9,
+   "icon": "file(pulled_water_buff.png)",
+   "set_posture": "stonehearth_ace:pulled_water"
+}
