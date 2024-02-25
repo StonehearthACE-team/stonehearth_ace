@@ -33,46 +33,25 @@ function GetDrinkFromContainerAdjacent:run(ai, entity, args)
    
    local quality_component = container:get_component("stonehearth:item_quality")
    local container_quality = (quality_component and quality_component:get_quality()) or 0
-   local additional_container = container_data.additional_container or nil
 
-   if additional_container and additional_container.additional_charge_buff and radiant.entities.has_buff(container, additional_container.additional_charge_buff) then
-      if additional_container.additional_container_effect then
-         radiant.effects.run_effect(container, additional_container.additional_container_effect)
-      end
+   if container_data.container_effect then
+      radiant.effects.run_effect(container, container_data.container_effect)
+   end
 
-      -- if a storage entity is specified, face that instead
-      local face_entity = args.storage or container
-      radiant.entities.turn_to_face(entity, container)
-      ai:execute('stonehearth:run_effect', { effect = additional_container.additional_consume_effect or 'fiddle' })
+   -- if a storage entity is specified, face that instead
+   local face_entity = args.storage or container
+   radiant.entities.turn_to_face(entity, container)
+   ai:execute('stonehearth:run_effect', { effect = container_data.effect })
 
-      -- go ahead and release it for others while we sit and drink
-      stonehearth.ai:release_ai_lease(container, entity)
-      
-      radiant.entities.remove_buff(container, additional_container.additional_charge_buff, false)
-   else
-      if container_data.container_effect then
-         radiant.effects.run_effect(container, container_data.container_effect)
-      end
-
-      -- if a storage entity is specified, face that instead
-      local face_entity = args.storage or container
-      radiant.entities.turn_to_face(entity, container)
-      ai:execute('stonehearth:run_effect', { effect = container_data.effect })
-
-      -- go ahead and release it for others while we sit and drink
-      stonehearth.ai:release_ai_lease(container, entity)
-      
-      local stacks_per_serving = container_data.stacks_per_serving or 1
-      if stacks_per_serving > 0 then
-         ai:unprotect_argument(container)
-         if not radiant.entities.consume_stack(container, stacks_per_serving) then
-            ai:abort('Cannot drink: Drink container is empty.')
-            return
-         end
-      end
-
-      if additional_container and additional_container.additional_charge_buff then
-         radiant.entities.add_buff(container, additional_container.additional_charge_buff, { stacks = additional_container.additional_charges or 1 })
+   -- go ahead and release it for others while we sit and drink
+   stonehearth.ai:release_ai_lease(container, entity)
+   
+   local stacks_per_serving = container_data.stacks_per_serving or 1
+   if stacks_per_serving > 0 then
+      ai:unprotect_argument(container)
+      if not radiant.entities.consume_stack(container, stacks_per_serving) then
+         ai:abort('Cannot drink: Drink container is empty.')
+         return
       end
    end
 
