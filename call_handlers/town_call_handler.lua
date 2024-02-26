@@ -13,14 +13,7 @@ end
 function TownCallHandler:has_guildmaster_town_bonus(session, response, player_id)
    validator.expect_argument_types({'string'}, player_id)
    local town = stonehearth.town:get_town(player_id)
-   local guildmaster = nil
-   for town_bonus, check in pairs(stonehearth.constants.town_progression.MASTERWORK_QUALITY_UNLOCKING_BONUSES) do
-      if town:get_town_bonus(tostring(town_bonus)) and check then
-         guildmaster = true
-         break
-      end
-   end
-	response:resolve({ has_guildmaster = guildmaster ~= nil })
+	response:resolve({ has_guildmaster = town:get_max_item_quality() == stonehearth.constants.item_quality.MASTERWORK })
 end
 
 function TownCallHandler:remove_owner_command(session, response, entity)
