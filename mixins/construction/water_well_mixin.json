@@ -33,32 +33,18 @@
             }
          ]
       },
-      "stonehearth:renewable_resource_node": {
-         "resource": "stonehearth_ace:landmark:terrain:water_bucket",
-         "renewal_time": "10m",
-         "harvest_status_text": "i18n(stonehearth_ace:ace_mixins.construction.water_well_mixin.renewable_harvest_status_text)",
-         "harvest_overlay_effect": "stonehearth_ace:effects:harvest_water_well_overlay_effect",
-         "ignore_auto_harvest": true,
-         "ignore_model_changes": true,
-         "harvester_effect": "work_water_well",
-         "harvested_effect": "work",
-         "check_owner": true,
-         "resource_loot_table": {
-            "entries": {
-               "optional": {
-                  "num_rolls": {
-                     "min": 0,
-                     "max": 2
-                  },
-                  "items": {
-                     "extra_buckets": {
-                        "uri": "stonehearth_ace:landmark:terrain:water_bucket",
-                        "weight": 1
-                     }
-                  }
-               }
-            }
-         }
+      "stonehearth:storage": {
+         "is_hidden": true,
+         "ignore_restock": true,
+         "drop_all_on_undeploy": false,
+         "allow_default": false,
+         "capacity": 4,
+         "auto_restock_with_item": "stonehearth_ace:landmark:terrain:water_bucket",
+         "auto_restock_quantity": 4,
+         "storage_open_effect": "work",
+         "user_open_effect": "work_water_well",
+         "filter_list": "stonehearth_ace:ui:hidden_storage:filters",
+         "default_filter": []
       },
       "stonehearth_ace:transform": {}
    },
