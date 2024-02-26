@@ -221,10 +221,10 @@ App.guiHelper = {
             hasOptions = true;
             maxHealth = entity['stonehearth:attributes'].max_health;
          }
-         if (entity['stonehearth:attributes'].menace) {
-            hasOptions = true;
-            menace = entity['stonehearth:attributes'].menace;
-         }
+         // if (entity['stonehearth:attributes'].menace && entity['stonehearth:siege_weapon']) {
+         //    hasOptions = true;
+         //    menace = entity['stonehearth:attributes'].menace;
+         // }
       }
 
       if (entity['stonehearth:item_quality'] && entity['stonehearth:item_quality'].quality > 1) {
@@ -232,11 +232,12 @@ App.guiHelper = {
          itemQuality = entity['stonehearth:item_quality'].quality;
 
          // if it's an equipment piece, it grants extra menace based on its item quality
+         // TODO: this will change to adjust the rank of weapon/armor buffs
          if (entity['stonehearth:equipment_piece']) {
-            var menaceValues = App.constants.item_quality.bonuses.menace;
-            if (menaceValues[itemQuality]) {
-               menace = (menace || 0) + menaceValues[itemQuality];
-            }
+            // var menaceValues = App.constants.item_quality.bonuses.menace;
+            // if (menaceValues[itemQuality]) {
+            //    menace = (menace || 0) + menaceValues[itemQuality];
+            // }
          }
       }
 
@@ -328,6 +329,11 @@ App.guiHelper = {
          equipmentRequirements += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_equipment_type')}</span>${equipmentTypes}</div>`;
       }
 
+      if (catalogData.equipment_ilevel) {
+         equipmentRequirements += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_equipment_ilevel')}</span>` +
+                  `<span class="value">${catalogData.equipment_ilevel}</span></div>`;
+      }
+
       if (equipmentRequirements != '') {
          detail += equipmentRequirements;
       }
@@ -336,6 +342,12 @@ App.guiHelper = {
       if (catalogData.combat_damage) {
          combat_info += '<div class="stat"><span class="header">' + i18n.t('stonehearth:ui.game.entities.tooltip_combat_base_damage') + '</span>' +
                      '<span class="combatValue">+' + catalogData.combat_damage + '</span></div>';
+      }
+
+      var combat_info = "";
+      if (catalogData.combat_range) {
+         combat_info += '<div class="stat"><span class="header">' + i18n.t('stonehearth_ace:ui.game.entities.tooltip_combat_range') + '</span>' +
+                     '<span class="combatValue">+' + catalogData.combat_range + '</span></div>';
       }
 
       if (catalogData.combat_armor) {
@@ -360,12 +372,12 @@ App.guiHelper = {
       if (menace) {
          var menaceDiv = `<span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_menace')}</span>` +
                `<span class="combatValue">${menace}</span>`;
-         var compare_menace = catalogData.menace;
-         if (compare_menace && menace != compare_menace) {
-            var diff = menace - compare_menace;
-            var diffType = diff > 0 ? 'higherValue' : 'lowerValue';
-            menaceDiv += ` (<span class="${diffType}">${(diff > 0 ? '+' : '') + diff}</span>)`;
-         }
+         // var compare_menace = catalogData.menace;
+         // if (compare_menace && menace != compare_menace) {
+         //    var diff = menace - compare_menace;
+         //    var diffType = diff > 0 ? 'higherValue' : 'lowerValue';
+         //    menaceDiv += ` (<span class="${diffType}">${(diff > 0 ? '+' : '') + diff}</span>)`;
+         // }
          combat_info += `<div class="stat">${menaceDiv}</div>`;
       }
 

@@ -82,7 +82,7 @@ function catalog_lib.load_catalog(catalog, added_cb)
             -- this does the base-game catalog-building (with ACE additions)
             -- the base game only cares about entities, and the added_cb can't be modified without overriding the catalog service files
             -- so just assume it only applies to base game things
-            result = catalog_lib._update_catalog_data(catalog, full_alias, json, mod)
+            local result = catalog_lib._update_catalog_data(catalog, full_alias, json, mod)
             if entity_scripts then
                for _, script in ipairs(entity_scripts) do
                   script(catalog, full_alias, json, DEFAULT_CATALOG_DATA)
@@ -292,12 +292,14 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          catalog_data.equipment_required_level = json.components['stonehearth:equipment_piece'].required_job_level
          catalog_data.equipment_roles = json.components['stonehearth:equipment_piece'].roles
          catalog_data.equipment_types = catalog_lib.get_equipment_types(json.components['stonehearth:equipment_piece'])
+         catalog_data.equipment_ilevel = json.components['stonehearth:equipment_piece'].ilevel
          catalog_data.injected_buffs = catalog_lib.get_buffs(json.components['stonehearth:equipment_piece'].injected_buffs)
       end
 
       catalog_data.max_stacks = json.components['stonehearth:stacks'] and json.components['stonehearth:stacks'].max_stacks
 
-      if json.components['stonehearth:storage'] and json.components['stonehearth:storage'].is_public ~= false then
+      if json.components['stonehearth:storage'] and json.components['stonehearth:storage'].is_public ~= false and
+            not json.components['stonehearth:storage'].is_hidden then
          catalog_data.is_storage = true
          local capacity = json.components['stonehearth:storage'].capacity
          if json.components['stonehearth_ace:consumer'] then
@@ -349,7 +351,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          if json.components['stonehearth:attributes'].max_health then
             catalog_data.max_health = json.components['stonehearth:attributes'].max_health.value
          end
-         if json.components['stonehearth:attributes'].menace then
+         if json.components['stonehearth:attributes'].menace and json.components['stonehearth:siege_weapon'] then
             catalog_data.menace = json.components['stonehearth:attributes'].menace.value
          end
       end
@@ -381,8 +383,9 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
       end
 
       local weapon_data = entity_data['stonehearth:combat:weapon_data']
-      if weapon_data and weapon_data.base_damage then
-         catalog_data.combat_damage = weapon_data.base_damage
+      if weapon_data then
+         catalog_data.combat_damage = weapon_data.range and weapon_data.base_ranged_damage or weapon_data.base_damage
+         catalog_data.combat_range = weapon_data.range or weapon_data.reach
       end
 
       local armor_data = entity_data['stonehearth:combat:armor_data']

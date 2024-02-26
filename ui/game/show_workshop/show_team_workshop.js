@@ -1792,6 +1792,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
       if (catalogData['combat_damage']) {
          statHtml += '<div class="stat damage">' + catalogData['combat_damage'] + '<br><span class=name>' + i18n.t('stonehearth:ui.game.show_workshop.damage_stat') + '</span></div>';
       }
+      if (catalogData['combat_range']) {
+         statHtml += '<div class="stat range">' + catalogData['combat_range'] + '<br><span class=name>' + i18n.t('stonehearth_ace:ui.game.show_workshop.range_stat') + '</span></div>';
+      }
       if (catalogData['combat_armor']) {
          statHtml += '<div class="stat armor">' + catalogData['combat_armor'] + '<br><span class=name>' + i18n.t('stonehearth:ui.game.show_workshop.armor_stat') + '</span></div>';
       }
