@@ -12,16 +12,16 @@
          "region_collision_type": "platform",
          "region": [
             {
-               "min": { "x": -1, "y": 0.5, "z": -1 },
-               "max": { "x": 1, "y": 1, "z": 0 }
+               "min": { "x": -1, "y": 0.5, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
             }
          ]
       },
       "destination": {
          "region": [
             {
-               "min": { "x": -1, "y": 0.5, "z": -1 },
-               "max": { "x": 1, "y": 2, "z": 1 }
+               "min": { "x": -1, "y": 0.5, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 2 }
             }
          ]
       },
@@ -38,8 +38,8 @@
                "model": "file(plank_bridge_small.qb)",
                "scale": 0.1,
                "offset": { "x": 0, "y": 1, "z": 5 },
-               "origin": { "x": -1, "y": 0.5, "z": -1 },
-               "terminus": { "x": 1, "y": 1, "z": -1 },
+               "origin": { "x": -1, "y": 0.5, "z": 0 },
+               "terminus": { "x": 1, "y": 1, "z": 0 },
                "rotation": 0
             }
          ]

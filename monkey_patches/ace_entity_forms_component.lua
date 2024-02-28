@@ -167,8 +167,12 @@ function AceEntityFormsComponent:_start_placement_task()
       if not ghost_destination:get_region() then
          ghost_destination:set_region(_radiant.sim.alloc_region3())
       end
+      -- instead of overriding the existing region, just add the collision region
+      -- that way if it had a larger destination region to begin with, it keeps that
+      local region = rcs:get_region():get() + ghost_destination:get_region():get()
+      region:optimize('combine collision and destination')
       ghost_destination:get_region():modify(function(cursor)
-            cursor:copy_region(rcs:get_region():get())
+            cursor:copy_region(region)
          end)
       ghost_destination:set_auto_update_adjacent(true)
       ghost_destination:set_adjacency_flags(_radiant.csg.AdjacencyFlags.ALL_EDGES)
@@ -206,6 +210,7 @@ end
 
 -- ACE: if specified, check if the default commands exist and replace them if necessary
 function AceEntityFormsComponent:_ensure_specified_commands()
+   local commands_component = self._entity:add_component('stonehearth:commands')
    local move_command = self:_get_move_command()
    local undeploy_command = self:_get_undeploy_command()
 
