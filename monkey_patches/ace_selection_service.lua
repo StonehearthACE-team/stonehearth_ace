@@ -4,9 +4,16 @@ local PatternXZRegionSelector = require 'stonehearth_ace.services.client.selecti
 local SelectionService = require 'stonehearth.services.client.selection.selection_service'
 local AceSelectionService = class()
 
+function AceSelectionService:get_active_selector()
+   for tool, enabled in pairs(self._all_tools) do
+      if enabled then
+         return tool
+      end
+   end
+end
+
 function AceSelectionService:select_xyz_range(reason)
-   self._active_selector = XYZRangeSelector(reason)
-   return self._active_selector
+   return XYZRangeSelector(reason)
 end
 
 function AceSelectionService:select_pattern_region(reason)

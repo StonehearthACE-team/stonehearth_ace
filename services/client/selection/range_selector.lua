@@ -97,7 +97,7 @@ function XYZRangeSelector:set_relative_entity(entity, ignore_children)
    self._ignore_children = ignore_children ~= false   -- default to true
 
    local mob = entity and entity:get_component('mob')
-   self._model_offset = MODEL_OFFSET - (mob and (mob:get_region_origin() - mob:get_model_origin()) or Point3.zero)
+   self._model_offset = MODEL_OFFSET - (mob and mob:get_model_origin() or Point3.zero)
 
    return self
 end
@@ -489,7 +489,7 @@ function XYZRangeSelector:_local_to_world(pt)
    if not entity then
       return pt
    end
-   
+
    local mob = entity:add_component('mob')
    local new_pt = pt:rotated(-mob:get_facing()) + mob:get_world_grid_location()
 
@@ -606,9 +606,15 @@ function XYZRangeSelector:_update_rulers(region, forward)
       local rotation = self:get_rotation()
       if rotation then
          -- we only care about the ruler for the current rotation's dimension
+         -- but we need to rotate that dimension based on our rotation
+         local dimension = rotation.dimension
+         if self._relative_entity and math.floor(0.5 + radiant.entities.get_facing(self._relative_entity) / 90) % 2 == 1 then
+            local rotated = {x = 'z', y = 'y', z = 'x'}
+            dimension = rotated[dimension]
+         end
          for _, d in ipairs({'x', 'y', 'z'}) do
             local ruler = self['_' .. d .. '_ruler']
-            if d == rotation.dimension then
+            if d == dimension then
                self:_update_ruler(ruler, q0, q1, d, forward)
             else
                ruler:hide()
@@ -634,7 +640,7 @@ function XYZRangeSelector:_update_ruler(ruler, p0, p1, dimension, forward)
    if forward.z >= 0 then
       start.z, finish.z = finish.z, start.z
    end
-   
+
    -- TODO: is forward backward?!
    local normal
    if d == 'y' then
@@ -807,8 +813,13 @@ function XYZRangeSelector:_update_render()
 
    if not self._disable_default_render and self._render_material and self._current_region then
       local color = self:is_current_rotation_in_use() and self._render_cancel_color or self._render_color
-      local render_node = self._relative_entity and _radiant.client.get_render_entity(self._relative_entity):get_node() or RenderRootNode
-      self._render_node = _radiant.client.create_region_outline_node(render_node, self._current_region:translated(self._model_offset):inflated(RENDER_INFLATION),
+      local region = self._current_region
+      local render_node = RenderRootNode
+      if self._relative_entity then
+         render_node = _radiant.client.get_render_entity(self._relative_entity):get_node()
+         region = region:translated(self._relative_entity:get_component('mob'):get_model_origin())
+      end
+      self._render_node = _radiant.client.create_region_outline_node(render_node, region:inflated(RENDER_INFLATION),
                            radiant.util.to_color4(color, 192),   -- edge color
                            radiant.util.to_color4(color, 192),   -- fill color
                            self._render_material, 1)
@@ -851,11 +862,14 @@ function XYZRangeSelector:go()
       local origin = rotation.origin
       local terminus = rotation.terminus
       local render_node = entity_render_node or RenderRootNode
-      local min_point = origin + self._model_offset
-      local max_point = terminus + self._model_offset + rotation.direction * self:_get_max_length(rotation)
+      local min_point = origin
+      local max_point = terminus + rotation.direction * self:_get_max_length(rotation)
       local cube = csg_lib.create_min_cube(min_point, max_point)
       local name = INTERSECTION_NODE_NAME .. i
 
+      if self._relative_entity then
+         cube = cube:translated(self._relative_entity:get_component('mob'):get_model_origin())
+      end
       local vis_node = _radiant.client.create_region_outline_node(render_node, Region3(cube:inflated(RENDER_INFLATION * 2)),
                            radiant.util.to_color4(Point3(255, 255, 255), 64), -- edge color
                            radiant.util.to_color4(Point3(255, 255, 255), 24), -- fill color
