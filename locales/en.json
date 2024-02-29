@@ -3698,118 +3698,124 @@
       "weather": {
          "dynamic": "May change during the day into: ",
          "windy": {
-            "description": "Howling winds and roaring gales sweep the lands.<ul><li>☀️ Normal sunlight levels</li><li>💦 Slightly increased humidity</li></ul>",
+            "description": "Howling winds and roaring gales sweep the lands.<ul><li>☀️ Normal sunlight levels</li><li>💦 Slightly increased humidity</li><li>💨 Wind is strong and high</li></ul>",
             "windy_chilly": {
                "display_name": "Chilly Winds",
-               "description": "The air is dry and cold as the winds howl across the lands.<ul><li>☀️ Normal sunlight levels</li><li>💧 Regular humidity levels</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively</li></ul>"
+               "description": "The air is dry and cold as the winds howl across the lands.<ul><li>☀️ Normal sunlight levels</li><li>💧 Regular humidity levels</li><li>💨 Wind is strong and high</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively</li></ul>"
             },
             "windy_springtime": {
                "display_name": "Springtime Winds",
-               "description": "A soft breeze flows past saying good bye to the winter and carrying new blossoms with it!<ul><li>☀️ Normal sunlight levels</li><li>💦 Slightly increased humidity</li></li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively during the night</li></ul>"
+               "description": "A soft breeze flows past saying good bye to the winter and carrying new blossoms with it!<ul><li>☀️ Normal sunlight levels</li><li>💦 Slightly increased humidity</li><li>💨 Wind is strong and high</li></li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively during the night</li></ul>"
             }
          },
          "thunderstorm": {
-            "description": "Thunder rolled... It rolled a six.<ul><li>⛅ Extremely reduced sunlight levels</li><li>🌊 Disastrously increased humidity</li><li>👀 Vision radius is reduced</li><li>☔ Unsheltered hearthlings and pasture animals get soaked wet</li><li>⚡ Unsheltered hearthlings sometimes get hit by lightning</li><li>⚡ The ground and trees sometimes get hit by lightning</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
+            "description": "Thunder rolled... It rolled a six.<ul><li>⛅ Extremely reduced sunlight levels</li><li>🌊 Disastrously increased humidity</li><li>🌪️ Extremely windy and gusty</li><li>👀 Vision radius is reduced</li><li>☔ Unsheltered hearthlings and pasture animals get soaked wet</li><li>⚡ Unsheltered hearthlings sometimes get hit by lightning</li><li>⚡ The ground and trees sometimes get hit by lightning</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
          },
          "sunny": {
-            "description": "Yet another day of endless sunshine and blue skies.<ul><li>☀️ Normal sunlight levels</li><li>🔹 Barely reduced humidity</li></ul>",
+            "description": "Yet another day of endless sunshine and blue skies.<ul><li>☀️ Normal sunlight levels</li><li>🔹 Barely reduced humidity</li><li>🍃 Wind is a gentle breeze</li></ul>",
             "sunny_desert": {
-               "description": "Yet another day of endless sunshine and blue skies.<ul><li>☀️ Normal sunlight levels</li><li>🥀 Reduced humidity</li></ul>"
+               "description": "Yet another day of endless sunshine and blue skies.<ul><li>☀️ Normal sunlight levels</li><li>🥀 Reduced humidity</li><li>🌬️ Wind is a fair current</li></ul>"
             },
             "sunny_chilly": {
                "display_name": "Chilly & Sunny",
-               "description": "It's a beautiful, sunny day! Even if also somewhat cold...<ul><li>🌤️ Barely reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively</li></ul>"
+               "description": "It's a beautiful, sunny day! Even if also somewhat cold...<ul><li>🌤️ Barely reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>🍃 Wind is a gentle breeze</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively</li></ul>"
             },
             "sunny_hot": {
                "display_name": "Hot & Sunny",
-               "description": "A nice and warm sunny day! Maybe too sunny, the heat is not good...<ul><li>☀️ Normal sunlight levels</li><li>🥀 Fairly reduced humidity</li><li>♨️ Unsheltered hearthlings are too hot to work as effectively during the day</li><li>♨️ Unsheltered pasture animals are affected by the heat during the day</li></ul>"
+               "description": "A nice and warm sunny day! Maybe too sunny, the heat is not good...<ul><li>☀️ Normal sunlight levels</li><li>🥀 Fairly reduced humidity</li><li>🍃 Wind is a gentle breeze</li><li>♨️ Unsheltered hearthlings are too hot to work as effectively during the day</li><li>♨️ Unsheltered pasture animals are affected by the heat during the day</li></ul>"
             },
             "sunny_sweltering": {
                "display_name": "Heat Wave",
-               "description": "An unbearably hot wind blows upon the town this day and even the night will be hot and dry...<ul><li>☀️ Normal sunlight levels</li><li>🥀 Reduced humidity</li><li>💥 Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun during the day and are too hot to work as effectively during the night</li><li>💥 Unsheltered pasture animals are hurt by the heat during the day but just affected by it during the night</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
+               "description": "An unbearably hot wind blows upon the town this day and even the night will be hot and dry...<ul><li>☀️ Normal sunlight levels</li><li>🥀 Reduced humidity</li>♨️ Very calm or no wind at all</li><li>💥 Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun during the day and are too hot to work as effectively during the night</li><li>💥 Unsheltered pasture animals are hurt by the heat during the day but just affected by it during the night</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
             },
             "sunny_autumn": {
                "display_name": "Autumn Breeze",
-               "description": "A typical autumn day with a gentle breeze and a beautiful sky.<ul><li>☀️ Normal sunlight levels</li><li>💧 Regular humidity levels</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively during the night</li></ul>"
+               "description": "A typical autumn day with a gentle breeze and a beautiful sky.<ul><li>☀️ Normal sunlight levels</li><li>💧 Regular humidity levels</li><li>🌬️ Wind is a fair current</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively during the night</li></ul>"
             },
             "sunny_stagnant": {
                "display_name": "Stagnant Air",
-               "description": "Not a single cloud, not a single breeze... Just the stale, sweltering sun above.<ul><li>🔥 Excessive sunlight levels</li><li>🥀 Quite reduced humidity levels</li><li>💥 Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun during the day</li><li>💥 Unsheltered pasture animals are hurt by the heat during the day</li></ul>"
+               "description": "Not a single cloud, not a single breeze... Just the stale, sweltering sun above.<ul><li>🔥 Excessive sunlight levels</li><li>🥀 Quite reduced humidity levels</li><li>♨️ Very calm or no wind at all</li><li>💥 Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun during the day</li><li>💥 Unsheltered pasture animals are hurt by the heat during the day</li></ul>"
             }
          },
          "snow": {
-            "description": "Cold, frost, and the sun decided to hide. Can we just stay inside?<ul><li>⛅ Fairly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>👀 Vision radius is slightly reduced</li><li>❄️ Unsheltered hearthlings are too cold to work as effectively</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⛔ Some merchants might not arrive under this weather</li></ul>",
+            "description": "Cold, frost, and the sun decided to hide. Can we just stay inside?<ul><li>⛅ Fairly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>🌬️ Wind is a fair current</li><li>👀 Vision radius is slightly reduced</li><li>❄️ Unsheltered hearthlings are too cold to work as effectively</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⛔ Some merchants might not arrive under this weather</li></ul>",
             "snow_sunny": {
-               "description": "What a beautiful winter wonderland it is today!<ul><li>🌤️ Slightly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>👀 Vision radius is only slightly reduced</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively during the day and feel cold during the night</li><li>📌 Unsheltered pasture animals get hurt by the cold during the night</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
+               "description": "What a beautiful winter wonderland it is today!<ul><li>🌤️ Slightly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>🍃 Wind is a gentle breeze</li><li>👀 Vision radius is only slightly reduced</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively during the day and feel cold during the night</li><li>📌 Unsheltered pasture animals get hurt by the cold during the night</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
             },
             "snow_early": {
                "display_name": "Early Snow",
-               "description": "Snow has come earlier this year...<ul><li>⛅ Reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively during the day and feel cold during the night</li><li>📌 Unsheltered pasture animals are hurt by the cold during the night</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
+               "description": "Snow has come earlier this year...<ul><li>⛅ Reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>🍃 Wind is a gentle breeze</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively during the day and feel cold during the night</li><li>📌 Unsheltered pasture animals are hurt by the cold during the night</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
             },
             "snow_late": {
                "display_name": "Late Snow",
-               "description": "There's still snow to fall this year...<ul><li>⛅ Fairly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
+               "description": "There's still snow to fall this year...<ul><li>⛅ Fairly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>🌬️ Wind is a fair current</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
             },
             "snow_drifts": {
                "display_name": "Snow Drifts",
-               "description": "The winds are blowing gusts of snow!<ul><li>☀️ Normal sunlight levels</li><li>🥀 Quite reduced humidity levels</li><li>📌 Unsheltered hearthlings are too cold to work as effectively during the day and will be hurt by freezing temperatures at night</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
+               "description": "The winds are blowing gusts of snow!<ul><li>☀️ Normal sunlight levels</li><li>🥀 Quite reduced humidity levels</li><li>💨 Wind is strong and high</li><li>📌 Unsheltered hearthlings are too cold to work as effectively during the day and will be hurt by freezing temperatures at night</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
             }
          },
          "sandstorm": {
-            "description": "Cover your eyes. Cover your ears. In fact, just stay inside.<ul><li>Clouds of sand pass across the landscape, destroying crops and hurting everyone</li><li>⛅ Extremely reduced sunlight levels</li><li>🥀 Extremely reduced humidity</li><li>👀 Vision radius is slightly reduced</li><li>💥 Unsheltered hearthlings are sweltering and might get a heatstroke if exposed to the storm's heat during the day and are too hot to work as effectively during the night</li><li>💥 Unsheltered pasture animals are hurt by the heat during the day but just affected by it during the night</li><li>⛔ Merchants will not arrive under this weather</li></ul>",
+            "description": "Cover your eyes. Cover your ears. In fact, just stay inside.<ul><li>Clouds of sand pass across the landscape, destroying crops and hurting everyone</li><li>⛅ Extremely reduced sunlight levels</li><li>🥀 Extremely reduced humidity</li><li>🌪️ Extremely windy and gusty</li><li>👀 Vision radius is slightly reduced</li><li>💥 Unsheltered hearthlings are sweltering and might get a heatstroke if exposed to the storm's heat during the day and are too hot to work as effectively during the night</li><li>💥 Unsheltered pasture animals are hurt by the heat during the day but just affected by it during the night</li><li>⛔ Merchants will not arrive under this weather</li></ul>",
             "sandy_day": {
-               "description": "There is sand and dust... Everywhere!<ul><li>⛅ Fairly reduced sunlight levels</li><li>🥀 Greatly reduced humidity</li><li>👀 Vision radius is only slightly reduced</li><li>♨️ Unsheltered hearthlings are too hot to work as effectively</li><li>♨️ Unsheltered pasture animals are affected by the heat</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
+               "description": "There is sand and dust... Everywhere!<ul><li>⛅ Fairly reduced sunlight levels</li><li>🥀 Greatly reduced humidity</li><li>💨 Wind is strong and high</li><li>👀 Vision radius is only slightly reduced</li><li>♨️ Unsheltered hearthlings are too hot to work as effectively</li><li>♨️ Unsheltered pasture animals are affected by the heat</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
             },
             "sandy_drifts": {
                "display_name": "Sand Drifts",
-               "description": "The wind is blowing up twirls of sand!<ul><li>☀️ Normal sunlight levels</li><li>🔹 Somewhat reduced humidity</li><li>👀 Vision radius is only slightly reduced</li><li>♨️ Unsheltered hearthlings are too hot to work as effectively</li><li>♨️ Unsheltered pasture animals are affected by the heat</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
+               "description": "The wind is blowing up twirls of sand!<ul><li>☀️ Normal sunlight levels</li><li>🔹 Somewhat reduced humidity</li><li>💨 Wind is strong and high</li><li>👀 Vision radius is only slightly reduced</li><li>♨️ Unsheltered hearthlings are too hot to work as effectively</li><li>♨️ Unsheltered pasture animals are affected by the heat</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
             }
          },
          "rain": {
-            "description": "Water! Water from the skies!<ul><li>⛅ Fairly reduced sunlight levels</li><li>🌊 Excessively increased humidity</li><li>👀 Vision radius is reduced</li><li>☔ Unsheltered hearthlings and pasture animals get soaked wet</li><li>⛔ Some merchants might not arrive under this weather</li></ul>",
+            "description": "Water! Water from the skies!<ul><li>⛅ Fairly reduced sunlight levels</li><li>🌊 Excessively increased humidity</li><li>🌬️ Wind is a fair current</li><li>👀 Vision radius is reduced</li><li>☔ Unsheltered hearthlings and pasture animals get soaked wet</li><li>⛔ Some merchants might not arrive under this weather</li></ul>",
             "rain_sunny": {
-               "description": "It's raining, but the sun is peeking out!<ul><li>🌤️ Barely reduced sunlight levels</li><li>🌊 Extremely increased humidity</li><li>👀 Vision radius is only slightly reduced</li><li>☔ Unsheltered hearthlings and pasture animals get soaked wet</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
+               "description": "It's raining, but the sun is peeking out!<ul><li>🌤️ Barely reduced sunlight levels</li><li>🌊 Extremely increased humidity</li><li>🍃 Wind is a gentle breeze</li><li>👀 Vision radius is only slightly reduced</li><li>☔ Unsheltered hearthlings and pasture animals get soaked wet</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
             },
             "rain_chilly": {
                "display_name": "Freezing Rain",
-               "description": "It's like an endless shower of really thin ice needles!<ul><li>⛅ Fairly reduced sunlight levels</li><li>💦 Severely increased humidity</li><li>👀 Vision radius is reduced</li><li>❄️ ❄️ Unsheltered hearthlings are too chilly to work as effectively during the day and feel cold during the night</li><li>📌 Unsheltered pasture animals get soaked wet and hurt by the cold during the night</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
+               "description": "It's like an endless shower of really thin ice needles!<ul><li>⛅ Fairly reduced sunlight levels</li><li>💦 Severely increased humidity</li><li>🍃 Wind is a gentle breeze</li><li>👀 Vision radius is reduced</li><li>❄️ ❄️ Unsheltered hearthlings are too chilly to work as effectively during the day and feel cold during the night</li><li>📌 Unsheltered pasture animals get soaked wet and hurt by the cold during the night</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
             }
          },
          "lucky": {
-            "description": "Today, everything is just a tiny bit better.<ul><li>☀️ Normal sunlight levels</li><li>💦 Greatly increased humidity</li><li>✨ Hearthlings find all their ailments healed, as if by magic</li><li>✨ Hearthlings are slightly luckier in everything they do</li><li>🌈 A mysterious rainbow sometimes appears</li></ul>"
+            "description": "Today, everything is just a tiny bit better.<ul><li>☀️ Normal sunlight levels</li><li>💦 Greatly increased humidity</li><li>🌬️ Wind is a fair current</li><li>✨ Hearthlings find all their ailments healed, as if by magic</li><li>✨ Hearthlings are slightly luckier in everything they do</li><li>🌈 A mysterious rainbow sometimes appears</li></ul>"
          },
          "foggy": {
-            "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>⚠️ Undead monsters come out of hiding under the cover of the fog</li><li>⛅ Reduced sunlight levels</li><li>💦 Highly increased humidity</li><li>👀 Vision radius is greatly reduced</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
+            "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>⚠️ Undead monsters come out of hiding under the cover of the fog</li><li>⛅ Reduced sunlight levels</li><li>💦 Highly increased humidity</li><li>🍃 Wind is a gentle breeze</li><li>👀 Vision radius is greatly reduced</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
+         },
+         "foggy_highlands": {
+            "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>⚠️ Undead monsters come out of hiding under the cover of the fog</li><li>⛅ Reduced sunlight levels</li><li>💦 Highly increased humidity</li><li>🌬️ Wind is a fair current</li><li>👀 Vision radius is greatly reduced</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
          },
          "foggy_chilly": {
             "display_name": "Foggy & Chilly",
-            "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>⚠️ Undead monsters come out of hiding under the cover of the fog</li><li>⛅ Reduced sunlight levels</li><li>💦 Highly increased humidity</li><li>👀 Vision radius is greatly reduced</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
+            "description": "A cover of fog crawls across the landscape, hiding untold mysteries.<ul><li>⚠️ Undead monsters come out of hiding under the cover of the fog</li><li>⛅ Reduced sunlight levels</li><li>💦 Highly increased humidity</li><li>🍃 Wind is a gentle breeze</li><li>👀 Vision radius is greatly reduced</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
          },
          "cloudy": {
-            "description": "Overcast skies, perfect for lazing around on the porch.<ul><li>⛅ Fairly reduced sunlight levels</li><li>💦 Slightly increased humidity</li></ul>",
+            "description": "Overcast skies, perfect for lazing around on the porch.<ul><li>⛅ Fairly reduced sunlight levels</li><li>💦 Slightly increased humidity</li><li>🌬️ Wind is a fair current</li></ul>",
+            "cloudy_desert": {
+               "description": "Overcast skies, perfect for lazing around on the porch.<ul><li>⛅ Fairly reduced sunlight levels</li><li>💦 Slightly increased humidity</li><li>🍃 Wind is a gentle breeze</li></ul>"
+            },
             "cloudy_chilly": {
                "display_name": "Cloudy & Chilly",
-               "description": "Dark skies and a chilly breeze sweeping over.<ul><li>⛅ Fairly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively</li></ul>"
+               "description": "Dark skies and a chilly breeze sweeping over.<ul><li>⛅ Fairly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>🌬️ Wind is a fair current</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively</li></ul>"
             },
             "cloudy_cold": {
                "display_name": "Cloudy & Cold",
-               "description": "The clouds are heavy and dark, the air is dry and cold.<ul><li>⛅ Fairly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>❄️ Unsheltered hearthlings are too cold to work as effectively</li><li>📌 Unsheltered pasture animals are hurt by the cold</li></ul>"
+               "description": "The clouds are heavy and dark, the air is dry and cold.<ul><li>⛅ Fairly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>🌬️ Wind is a fair current</li><li>❄️ Unsheltered hearthlings are too cold to work as effectively</li><li>📌 Unsheltered pasture animals are hurt by the cold</li></ul>"
             },
             "distant_storm": {
                "display_name": "Distant Storm",
-               "description": "Somewhere out there a storm is raging, luck was on our side... For now.<ul><li>🌤️ Slightly reduced sunlight levels</li><li>💦 Slightly increased humidity</li></ul>"
+               "description": "Somewhere out there a storm is raging, luck was on our side... For now.<ul><li>🌤️ Slightly reduced sunlight levels</li><li>💦 Slightly increased humidity</li><li>🌬️ Wind is a fair current</li></ul>"
             }
          },
          "blizzard": {
-            "description": "Wind and snow! Lots of snow! Oh my!<ul><li>⛅ Extremely reduced sunlight levels</li><li>🥀 Quite reduced humidity</li><li>👀 Vision radius is greatly reduced</li><li>📌 Unsheltered hearthlings are hurt by the cold</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
+            "description": "Wind and snow! Lots of snow! Oh my!<ul><li>⛅ Extremely reduced sunlight levels</li><li>🥀 Quite reduced humidity</li><li>🌪️ Extremely windy and gusty</li><li>👀 Vision radius is greatly reduced</li><li>📌 Unsheltered hearthlings are hurt by the cold</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
          },
          "hailstorm": {
             "display_name": "Hailstorm",
-            "description": "A strong storm and chilly winds! Take shelter!<ul><li>⛅ Extremely reduced sunlight levels</li><li>🌊 Disastrously increased humidity</li><li>👀 Vision radius is reduced</li><li>☔ Unsheltered hearthlings and pasture animals get soaked wet</li><li>💥 Unsheltered hearthlings can get bruised by the hail</li><li>Unsheltered hearthlings are too chilly to work as effectively during the night</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
+            "description": "A strong storm and chilly winds! Take shelter!<ul><li>⛅ Extremely reduced sunlight levels</li><li>🌊 Disastrously increased humidity</li><li>🌪️ Extremely windy and gusty</li><li>👀 Vision radius is reduced</li><li>☔ Unsheltered hearthlings and pasture animals get soaked wet</li><li>💥 Unsheltered hearthlings can get bruised by the hail</li><li>Unsheltered hearthlings are too chilly to work as effectively during the night</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
          },
          "whiteout": {
             "display_name": "Whiteout",
-            "description": "There is a storm coming... And it's unlike anything we've ever seen.<ul><li>🌤️ Slightly reduced sunlight levels</li><li>🥀 Quite reduced humidity</li></li><li>❄️ Unsheltered hearthlings are too cold to work as effectively</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⚠️ During the whiteout, vision radius is greatly reduced and hearthlings caught in it will have severely reduced capabilities like weapon range and speed - and will start to get hurt after a while</li><li>⏰ The whiteout happens near the middle of the day and lasts until the night</li><li>⛔ Merchants will not arrive under this weather</li></ul>",
+            "description": "There is a storm coming... And it's unlike anything we've ever seen.<ul><li>🌤️ Slightly reduced sunlight levels</li><li>🥀 Quite reduced humidity</li><li>🌪️ Extremely windy and gusty</li></li><li>❄️ Unsheltered hearthlings are too cold to work as effectively</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⚠️ During the whiteout, vision radius is greatly reduced and hearthlings caught in it will have severely reduced capabilities like weapon range and speed - and will start to get hurt after a while</li><li>⏰ The whiteout happens near the middle of the day and lasts until the night</li><li>⛔ Merchants will not arrive under this weather</li></ul>",
             "bulletin_name": "The whiteout has started! Everyone should go inside NOW! ❄️"
          },
          "under_siege": {
@@ -20090,6 +20096,10 @@
                "display_name": "Tall Candledark Tombstone",
                "description": "An enchanted tombstone that creates a weird fog around it. Spooky!"
             }
+         },
+         "ember_ashes": {
+            "display_name": "Ashes",
+            "description": "Ashes to ashes... It certainly is a lot of dust. Makes you wonder who will clean this!"
          }
       },
       "pets": {
@@ -26166,10 +26176,10 @@
             "tooltip_equipment_ilevel": "Item level:",
             "tooltip_equipment_requirement": "Requires:",
             "tooltip_equipment_type": "Type:",
-            "tooltip_fuel_capacity": "Fuel capacity:",
-            "tooltip_max_health": "Max health:",
-            "tooltip_inventory": "Inventory:",
-            "tooltip_menace": "Menace:",
+            "tooltip_fuel_capacity": "Fuel Capacity:",
+            "tooltip_max_health": "Max Health:",
+            "tooltip_inventory": "Storage Space:",
+            "tooltip_menace": "Perceived Threat:",
             "tooltip_satisfaction": {
                "drink": {
                   "high": "<span class='value'>[str(servings)] highly satisfying</span> drink servings",
@@ -26188,7 +26198,7 @@
                   "low_single": "<span class='value'>[str(servings)] meager</span> meal"
                }
             },
-            "tooltip_size": "<span class='value'>[str(x)]</span>x<span class='value'>[str(z)]</span>; <span class='value'>[str(y)]</span> tall",
+            "tooltip_size": "<span class='value'>[str(x)]</span>x<span class='value'>[str(z)]</span>; <span class='value'>[str(y)]</span>-tall",
             "tooltip_size_header": "Size:",
             "tooltip_storage_capacity": "Storage capacity:",
             "tooltip_unwanted_item": "Merchant already sells these and will pay <span class='lowerValue'>[str(factor)]% less</span> for them!",
@@ -26443,7 +26453,7 @@
             "search_description_and_ingredients_description": "Include the descriptions of crafted items and the names of ingredients in the search filter.",
             "search_all": "All",
             "search_all_description": "Include the recipe titles, crafted item descriptions, and names of ingredients in the search filter.",
-            "tooltip_fuel_amount": "Fuel Amount",
+            "tooltip_fuel_amount": "Fuel Units",
             "status_sign": {
                "title": "Toggle Make Crafting",
                "description": "Click to toggle whether Make crafting orders are enabled for this workshop.<br><br>Note: Make orders are prioritized over Maintain orders.",
@@ -26731,7 +26741,8 @@
                   "tooltip_market_stalls": "Market Stalls",
                   "tooltip_golems": "Golems & Automatons",
                   "tooltip_quest_items": "Quest Items",
-                  "tooltip_cooked_food": "Food & Drinks"
+                  "tooltip_cooked_food": "Food & Drinks",
+                  "tooltip_resources": "Resources"
                },
                "fuel_level": {
                   "label": "Fuel Level:",
@@ -26859,7 +26870,7 @@
                "cleric_tome": "Healing Tome",
                "cleric_scepter": "Holy Scepter"
             },
-            "fuel_amount": "Fuel value:",
+            "fuel_amount": "Fuel Units:",
             "job_roles": {
                "crafter": {
                   "display_name": "Any Crafter",

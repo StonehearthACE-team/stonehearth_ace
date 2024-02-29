@@ -11,13 +11,16 @@ AceFirepitComponent._ace_old_activate = FirepitComponent.activate
 function AceFirepitComponent:activate()
    self._json = radiant.entities.get_json(self) or {}
    self._fuel = self._json.fuel or DEFAULT_FUEL
-   self._ember_uri = self._json.ember_uri or EMBER_URI
-   self._ember_charcoal_uri = self._json.ember_charcoal_uri or EMBER_CHARCOAL_URI
-   self._charcoal_uri = self._json.charcoal_uri or CHARCOAL_URI
-   self._allow_charcoal = (self._json.allow_charcoal ~= false) and not
-         stonehearth.player:is_player_npc(radiant.entities.get_player_id(self._entity))
-   self._transform_residue_time = self._json.transform_residue_time or 'midday'
-   self._transform_residue_jitter = '+' .. (self._json.transform_residue_jitter or '2h')
+   self._no_residue = self._json.no_residue or nil
+   if not self._no_residue then
+      self._ember_uri = self._json.ember_uri or EMBER_URI
+      self._ember_charcoal_uri = self._json.ember_charcoal_uri or EMBER_CHARCOAL_URI
+      self._charcoal_uri = self._json.charcoal_uri or CHARCOAL_URI
+      self._allow_charcoal = (self._json.allow_charcoal ~= false) and not
+            stonehearth.player:is_player_npc(radiant.entities.get_player_id(self._entity))
+      self._transform_residue_time = self._json.transform_residue_time or 'midday'
+      self._transform_residue_jitter = '+' .. (self._json.transform_residue_jitter or '2h')
+   end
    self._buff_source = self._json.buff_source or false
    self._create_seats = (self._json.create_seats ~= false)
    if self._buff_source then
@@ -112,7 +115,7 @@ function AceFirepitComponent:_startup()
    local event_times = calendar_constants.event_times
    local custom_start_time = self._json.custom_times and self._json.custom_times.start or nil
    local custom_stop_time = self._json.custom_times and self._json.custom_times.stop or nil
-   local jitter = '+5m'
+   local jitter = self._json.custom_jitter or '+5m'
 
    if not self._sunrise_alarm then
       local sunrise_alarm_time = stonehearth.calendar:format_time(custom_stop_time or event_times.sunrise) .. jitter
@@ -127,7 +130,7 @@ function AceFirepitComponent:_startup()
          end)
    end
 
-   if not self._transform_residue_timer then
+   if not self._transform_residue_timer and not self._no_residue then
       local calendar_constants = stonehearth.calendar:get_constants()
       local event_times = calendar_constants.event_times
       local event_time = calendar_constants.event_times[self._transform_residue_time] or self._transform_residue_time
@@ -191,7 +194,7 @@ end
 
 function AceFirepitComponent:_transform_residue()
    local is_lit = self:is_lit()
-   if is_lit then
+   if is_lit or self._no_residue then
       return
    end
 
@@ -264,7 +267,7 @@ function AceFirepitComponent:_extinguish()
       end
 
       -- only create residue if the firepit is still in the world
-      if radiant.entities.get_world_location(self._entity) then
+      if radiant.entities.get_world_location(self._entity) and not self._no_residue then
          if is_wood then
             if self._allow_charcoal then
                self:_create_residue(self._ember_charcoal_uri, true)
@@ -282,6 +285,10 @@ function AceFirepitComponent:_extinguish()
 end
 
 function AceFirepitComponent:_create_residue(residue_uri, reserve)
+   if self._no_residue then
+      return
+   end
+
    local player_id = radiant.entities.get_player_id(self._entity)
    local residue = radiant.entities.create_entity(residue_uri, { owner = player_id })
    local entity_container = self._entity:get_component('entity_container')
@@ -306,6 +313,10 @@ function AceFirepitComponent:_create_residue(residue_uri, reserve)
 end
 
 function AceFirepitComponent:_retrieve_charcoal()
+   if self._no_residue then
+      return
+   end
+   
    local entity_container = self._entity:get_component('entity_container')
    local location = radiant.entities.get_world_grid_location(self._entity)
 
