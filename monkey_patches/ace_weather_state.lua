@@ -84,6 +84,7 @@ function AceWeatherState:_load_ace_values()
    self._sv.cold_weather = json.cold_weather or false
    self._sv.warm_weather = json.warm_weather or false
    self._sv.bad_weather = json.is_bad_weather or false
+   self._sv.wind_level = json.wind_level or 'low'
 	self._sv.unsheltered_npc_debuff = json.unsheltered_npc_debuff or nil
    self._sv.music_sound_key = json.music_sound_key or nil
    self._sv.buff_application_interval = json.buff_application_interval or '20m'
@@ -313,6 +314,10 @@ end
 
 function AceWeatherState:is_dark_during_daytime()
    return self._sv.is_dark_during_daytime
+end
+
+function AceWeatherState:get_wind_level()
+   return self._sv.wind_level
 end
 
 function AceWeatherState:get_json()
