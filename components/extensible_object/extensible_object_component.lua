@@ -1,6 +1,7 @@
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
+local rng = _radiant.math.get_default_rng()
 local log = radiant.log.create_logger('extensible_object')
 
 local ExtensibleObjectComponent = class()
@@ -110,16 +111,16 @@ function ExtensibleObjectComponent:_ensure_end_entity(rotation_id, uri, location
    if not entity then
       entity = radiant.entities.create_entity(uri, { owner = self._entity })
       entity:add_component('mob'):set_ignore_gravity(true)
-      radiant.entities.add_child(parent, entity, rel_location, true)
       radiant.entities.turn_to(entity, facing)
+      radiant.entities.add_child(parent, entity, rel_location)
       --radiant.entities.add_child(self._entity, entity, location, true)
       self._sv._end_entities[rotation_id] = entity
 
       -- inform the entity about its parent to any component that wants to listen
       radiant.events.trigger(entity, 'stonehearth_ace:extensible_object:end_entity_created', { parent = self._entity })
    else
-      radiant.entities.move_to(entity, rel_location)
       radiant.entities.turn_to(entity, facing)
+      radiant.entities.move_to(entity, rel_location)
    end
 end
 
@@ -165,6 +166,11 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
 
       local data = radiant.shallow_copy(rotation)
       data.length = length
+
+      if data.multi_matrix_mode == 'random' and radiant.util.is_table(data.matrix) then
+         data.matrix = {data.matrix[rng:get_int(1, #data.matrix)]}
+      end
+
       models_comp:set_model_options(model_name, data)
       self._sv.cur_extensions[rotation_id] = true
 
