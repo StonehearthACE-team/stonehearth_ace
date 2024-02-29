@@ -63,6 +63,7 @@ function ace_util.get_rotations_table(json)
             rotation = rotation.rotation,
             model = rotation.model,
             matrix = matrix,
+            multi_matrix_mode = rotation.multi_matrix_mode or json.multi_matrix_mode,
             material = material,
             scale = scale,
             offset = offset,
