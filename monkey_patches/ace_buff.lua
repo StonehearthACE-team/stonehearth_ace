@@ -44,7 +44,7 @@ function AceBuff:destroy()
    end
 
    self:_cancel_craft_order()
-   
+
    self:_ace_old_destroy()
 end
 
@@ -63,15 +63,15 @@ function AceBuff:_create_buff()
          self.__saved_variables:mark_changed()
       end
    end
-   
+
    if self._sv.stacks == self._sv.max_stacks and self._json.buff_evolve then
       self:_try_evolve()
    end
-   
+
    if self._json.thought then
       radiant.entities.add_thought(self._sv._entity, self._json.thought)
    end
-   
+
    if self._json.queue_crafting_order and self._sv.stacks == 1 then
       local player_id = radiant.entities.get_player_id(self._sv._entity)
       local should_queue = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth_ace', 'auto_queue_medicine', true)
@@ -101,7 +101,7 @@ function AceBuff:_create_bulletin(bulletin_info)
       notification_closed_callback = '_on_closed',
       zoom_to_entity = self._sv._entity
    }
-   
+
    local player_id = self._sv._entity:get_player_id()
    self._sv.added_bulletin = stonehearth.bulletin_board:post_bulletin(player_id)
          :set_callback_instance(self)
@@ -177,10 +177,6 @@ function AceBuff:remove_stack(allow_complete_removal)
          self:destroy()
       end
    end
-end
-
-function AceBuff:get_stacks()
-   return self._sv.stacks
 end
 
 -- override to allow removing stacks instead of entire buff on expire
