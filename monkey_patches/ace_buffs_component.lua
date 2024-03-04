@@ -2,6 +2,8 @@ local BuffsComponent = radiant.mods.require('stonehearth.components.buffs.buffs_
 local rng = _radiant.math.get_default_rng()
 local AceBuffsComponent = class()
 
+local log = radiant.log.create_logger('buffs_component')
+
 local IMMUNE_TO_HOSTILE_DEBUFFS = 'immune_to_hostile_debuffs'
 
 AceBuffsComponent._ace_old_create = BuffsComponent.create
@@ -43,6 +45,8 @@ function AceBuffsComponent:activate()
       self:_ace_old_activate()
    end
 
+   self:_validate_buffs()
+
    self._json = radiant.entities.get_json(self)
    if self._is_create then
       if self._json and self._json.buffs then
@@ -68,6 +72,26 @@ AceBuffsComponent._ace_old_destroy = BuffsComponent.__user_destroy
 function AceBuffsComponent:destroy()
    self:_destroy_listeners()
    self:_ace_old_destroy()
+end
+
+function AceBuffsComponent:_validate_buffs()
+   -- TODO: make sure any existing buffs are properly indexed by category, etc.
+   -- for now just remove any references to buffs that no longer exist
+   for category, buffs in pairs(self._sv.category_buffs) do
+      for buff_id, _ in pairs(buffs) do
+         if not self._sv.buffs[buff_id] then
+            buffs[buff_id] = nil
+         end
+      end
+   end
+
+   for axis, buffs in pairs(self._sv.buffs_by_axis) do
+      for buff_id, _ in pairs(buffs) do
+         if not self._sv.buffs[buff_id] then
+            buffs[buff_id] = nil
+         end
+      end
+   end
 end
 
 function AceBuffsComponent:_destroy_listeners()
@@ -215,7 +239,7 @@ function AceBuffsComponent:add_buff(uri, options)
          return
       end
    end
-   
+
    if json.cant_affect_siege then
       local siege_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:siege_object')
       if siege_data then
@@ -272,9 +296,17 @@ function AceBuffsComponent:add_buff(uri, options)
          -- if this buff should be unique in this category, check if there are any buffs of a higher or equal rank already in it
          -- if there are, cancel out; otherwise, remove all lower rank buffs and continue
          for buff_id, _ in pairs(buffs_by_category) do
-            local rank = self._sv.buffs[buff_id]:get_rank() or nil
-            if rank and rank >= json.rank then
-               return
+            local buff = self._sv.buffs[buff_id]
+            if not buff then
+               -- this buff is no longer active, so remove it from the list
+               log:error('%s has inactive buff %s in category %s! removing', self._entity, buff_id, json.category)
+               buffs_by_category[buff_id] = nil
+               self.__saved_variables:mark_changed()
+            else
+               local rank = buff:get_rank() or nil
+               if rank and rank >= json.rank then
+                  return
+               end
             end
          end
 
@@ -442,14 +474,14 @@ function AceBuffsComponent:remove_buff(uri, remove_all_stacks, ignore_wound_chec
                   self:_remove_managed_property(name, details)
                end
             end
-				
-				if json.leftover_buffs then
-					for leftover_buff, chance in pairs(json.leftover_buffs) do
-						if rng:get_real(0, 1) < chance then
-							radiant.entities.add_buff(self._entity, leftover_buff)
-						end  
-					end
-				end
+
+            if json.leftover_buffs then
+               for leftover_buff, chance in pairs(json.leftover_buffs) do
+                  if rng:get_real(0, 1) < chance then
+                     radiant.entities.add_buff(self._entity, leftover_buff)
+                  end
+               end
+            end
          end
 
          self._sv.buffs[uri] = nil

@@ -49,7 +49,7 @@ function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intoleran
          return qualities.INTOLERABLE
       end
    end
-	
+
    if drink_preferences ~= '' then
       if not radiant.entities.is_material(drink_stuff, drink_preferences) then
          return qualities.UNPALATABLE
@@ -59,7 +59,7 @@ function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intoleran
    local quality = catalog_data.drink_quality or qualities.RAW_BLAND
    local weather_types = stonehearth.constants.weather.weather_types
    local drink_attributes = catalog_data.drink_attributes
-	
+
 	if weather_type == weather_types.COLD then
 		if drink_attributes.is_warming then
          quality = quality + 3
@@ -75,7 +75,7 @@ function DrinkingLib.get_quality(drink_stuff, drink_preferences, drink_intoleran
 	end
 
    local times = stonehearth.constants.drink_satiety
-	
+
    if hour_type == times.DRINKTIME_NIGHT_START then
       if not drink_attributes.is_night_time then
          quality = quality - 2
