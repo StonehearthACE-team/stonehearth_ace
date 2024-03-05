@@ -7,6 +7,86 @@
             "models": [
                "file(statue_lil_babis_monument.qb)"
             ]
+         },
+         "temperate_spring": {
+            "models": [
+               "file(statue_lil_babis_monument_temperate_spring.qb)"
+            ]
+         },
+         "temperate_summer": {
+            "models": [
+               "file(statue_lil_babis_monument_temperate_summer.qb)"
+            ]
+         },
+         "temperate_autumn": {
+            "models": [
+               "file(statue_lil_babis_monument_temperate_autumn.qb)"
+            ]
+         },
+         "temperate_winter": {
+            "models": [
+               "file(statue_lil_babis_monument_temperate_winter.qb)"
+            ]
+         },
+         "arctic_spring": {
+            "models": [
+               "file(statue_lil_babis_monument_arctic_spring.qb)"
+            ]
+         },
+         "arctic_summer": {
+            "models": [
+               "file(statue_lil_babis_monument_arctic_summer.qb)"
+            ]
+         },
+         "arctic_autumn": {
+            "models": [
+               "file(statue_lil_babis_monument_arctic_autumn.qb)"
+            ]
+         },
+         "arctic_winter": {
+            "models": [
+               "file(statue_lil_babis_monument_arctic_winter.qb)"
+            ]
+         },
+         "highlands_spring": {
+            "models": [
+               "file(statue_lil_babis_monument_highlands_spring.qb)"
+            ]
+         },
+         "highlands_summer": {
+            "models": [
+               "file(statue_lil_babis_monument_highlands_summer.qb)"
+            ]
+         },
+         "highlands_autumn": {
+            "models": [
+               "file(statue_lil_babis_monument_highlands_autumn.qb)"
+            ]
+         },
+         "highlands_winter": {
+            "models": [
+               "file(statue_lil_babis_monument_highlands_winter.qb)"
+            ]
+         }
+      },
+      "stonehearth:seasonal_model_switcher": {
+         "stonehearth:biome:temperate": {
+            "spring": "temperate_spring",
+            "summer": "temperate_summer",
+            "autumn": "temperate_autumn",
+            "winter": "temperate_winter"
+         },
+         "stonehearth:biome:arctic": {
+            "spring": "arctic_spring",
+            "summer": "arctic_summer",
+            "autumn": "arctic_autumn",
+            "winter": "arctic_winter"
+         },
+         "stonehearth_ace:biome:highlands": {
+            "spring": "highlands_spring",
+            "summer": "highlands_summer",
+            "autumn": "highlands_autumn",
+            "winter": "highlands_winter"
          }
       },
       "mob": {
