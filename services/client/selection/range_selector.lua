@@ -525,10 +525,21 @@ function XYZRangeSelector:_on_mouse_event(event)
          -- search intersection nodes for which rotation this could be
          local rotation_index
          for i, node in ipairs(self._intersection_nodes) do
-            if node.cube:contains(local_brick) then
+            -- it's possible that the brick is just outside the intersection node if it's a partial voxel region
+            -- in that case, check +1 in each non-direction dimension
+            if node.cube:contains(local_brick) or
+                  node.cube:contains(local_brick + Point3.one - self._rotations[i].direction) then
                --log:debug('found brick %s in intersection node %s (%s)', local_brick, node.name, node.cube)
                rotation_index = i
                break
+            else
+               -- instead of +1 in both non-direction dimensions, it could be +1 in either of them
+               for _, pt in ipairs({Point3.unit_x, Point3.unit_y, Point3.unit_z}) do
+                  if pt ~= self._rotations[i].direction and node.cube:contains(local_brick + pt) then
+                     rotation_index = i
+                     break
+                  end
+               end
             end
          end
 
