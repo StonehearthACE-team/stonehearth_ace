@@ -1,0 +1,17 @@
+{
+   "mixins": "/stonehearth/scenarios/static/landmarks/qb_to_terrain.json",
+   "biomes": ["stonehearth:biome:temperate","stonehearth:biome:arctic", "stonehearth_ace:biome:highlands"],
+   "name": "32x_thoto_monument",
+   "category": "terrain_feature_rare",
+   "unique" : true,
+   "size": {
+      "width": 32,
+      "length": 32
+   },
+   "habitat_types": ["plains", "forest"],
+   "weight" : 1,
+   "data": {
+      "brush" : "/stonehearth_ace/data/models/landmark/32x_thoto_monument.qb",
+      "landmark_block_types": "stonehearth:landmark_blocks"
+   }
+}

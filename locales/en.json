@@ -4006,6 +4006,10 @@
                   "event_meteor_shower_negative": {
                      "display_name": "Wish for what?",
                      "tooltip": "Everyone loves shooting stars... I don't know why. Make a wish? For what? It never happens!"
+                  },
+                  "everlasting_devotion": {
+                     "display_name": "Inspired by devotion",
+                     "tooltip": "The loyalty, companionship and love of some creatures is so touching! Some bonds are truly special..."
                   }
                }
             },
@@ -6019,7 +6023,7 @@
             },
             "exploration_tub_refill": {
                "display_name": "Add Bucket of Water",
-               "description": "The Herbalist is going to refill this tub with a Bucket of Water so it can be used to find new water crops again! Buckets of Water can be harvested from water wells with the 'Gather' tool. This command is active by default."
+               "description": "The Herbalist is going to refill this tub with a Bucket of Water so it can be used to find new water crops again! Buckets of Water can be obtained from water wells. This command is active by default."
             },
             "goblin_camp": {
                "display_name": "Restore Terrain",
@@ -7369,6 +7373,13 @@
                "description": "Regenerating 1% of their health every 45 minutes.<ul><li>Can not be hamstrung or shaken</li><li>Completely resistant to all poisons and toxins</li></ul>",
                "display_name": "Powered by Hearth Magic"
             }
+         },
+         "everlasting_devotion_buff": {
+            "display_name": "Everlasting Devotion",
+            "description": "This monument emanates an aura of happiness, healing, dedication and compassion."
+         },
+         "everlasting_devotion_touched_buff": {
+            "description": "Being radiated with the feelings of joy brought by having the most loyal and devoted companion... <ul><li>Diligence, Compassion and Curiosity are increased</li><li>This hearthling enjoys higher chances of crafting better quality items</li><li>This hearthling is recovering 4 health points every 15 minutes</li><li>This hearthling received a happy, positive thought</li><li>For some reason this hearthling really feels like playing ball with a puppy!</li></ul>"
          }
       },
       "loadouts": {
@@ -8794,7 +8805,7 @@
             "herbalist_exploration_garden_water_recipe": {
                "recipe_name": "Herbalist Exploration Tub",
                "description": "Used by the Herbalist for discovering new types of water crops to be cultivated in Herbalist water planters.",
-               "flavor": "Buckets of Water can be obtained by using the 'Gather' tool on a water well"
+               "flavor": "Buckets of Water can be obtained from water wells"
             },
             "herbalist_cauldron_recipe": {
                "recipe_name": "Herbalist Stone Cauldron",
@@ -15182,11 +15193,11 @@
          },
          "plank_bridge": {
             "display_name": "Plank Bridge",
-            "description": "Very helpful for crossing gaps!"
+            "description": "Very helpful for crossing gaps! This item can be extended."
          },
          "plank_bridge_small": {
             "display_name": "Small Plank Bridge",
-            "description": "Try to not fall!"
+            "description": "Try to not fall! This item can be extended."
          },
          "candledark": {
             "stake_fence_gate": {
@@ -15224,7 +15235,7 @@
          },
          "ladder_rope": {
             "display_name": "Rope Ladder",
-            "description": "Perfect for customizable and on-demand vertical translation of people!"
+            "description": "Perfect for customizable and on-demand vertical translation of people! This item can be extended."
          },
          "frostfeast": {
             "door": {
@@ -15250,6 +15261,26 @@
             "window_wide": {
                "display_name": "Classic Frostfeast Wide Window",
                "description": "Be ready to wipe the snow away from it!"
+            }
+         },
+         "fireplace": {
+            "chimney_top": {
+               "display_name": "Chimney Top",
+               "description": "The Frostfather's favorite entrance!"
+            },
+            "stone": {
+               "small": {
+                  "display_name": "Stone Small Fireplace",
+                  "description": "Bringing coziness to the humblest abode! This item can be extended."
+               },
+               "medium": {
+                  "display_name": "Stone Fireplace",
+                  "description": "The perfect place for hanging your socks during the winter. This item can be extended."
+               },
+               "large": {
+                  "display_name": "Stone Grand Fireplace",
+                  "description": "A luxurious design for the fanciest halls! This item can be extended."
+               }
             }
          }
       },
@@ -16779,12 +16810,6 @@
          "bone_skull": {
             "display_name": "Skull",
             "description": "Don't... Don't think too much about it. Can be used as bone material."
-         },
-         "fluid": {
-            "water": {
-               "display_name": "Bucket of Water",
-               "description": "A very basic and important resource."
-            }
          },
          "skins": {
             "display_name": "Any Hard Skin"
@@ -19376,6 +19401,10 @@
             "statue_sigrid_asketill": {
                "display_name": "Statue of Sigrid Asketill",
                "description": "A legendary hero of the north, one of the first paladins and shield-wife of Magnus."
+            },
+            "statue_thoto_monument": {
+               "display_name": "Shrine of Thorin the Loyal",
+               "description": "Legend speaks of a companion that was simply perfect, every single day. It radiates a pleasing aura."
             }
          },
          "wall_axe": {
@@ -25042,6 +25071,16 @@
                   "description": "Hot and delicious!"
                }
             }
+         },
+         "water_well": {
+            "water": {
+               "display_name": "Bucket of Drinking Water",
+               "description": "Freshly pulled and ready to be consumed!"
+            },
+            "water_cool": {
+               "display_name": "Bucket of Drinking Cool Water",
+               "description": "Recently pulled and still cold and refreshing!"
+            }
          }
       },
       "npc": {
@@ -25367,7 +25406,7 @@
          },
          "terrain_water_bucket": {
             "display_name": "Bucket of Water",
-            "description": "Can be poured down somewhere for a small amount of water."
+            "description": "Can be used in crafting or poured down somewhere for up to 8 blocks of water."
          },
          "terrain_dirt_patch": {
             "display_name": "Chunk of Dirt",
@@ -25376,6 +25415,14 @@
          "terrain_dirt_patch_small": {
             "display_name": "Tiny Chunk of Dirt",
             "description": "Place it down to add a block of dirt."
+         },
+         "summon_stone_lil_babis_monument": {
+            "display_name": "Shrine of Lilla Babis Stone",
+            "description": "Summons a shrine in memory of a legendary kitty."
+         },
+         "summon_stone_thoto_monument": {
+            "display_name": "Shrine of Thorin Stone",
+            "description": "Summons a shrine in memory of a legendary dog."
          }
       },
       "humans": {

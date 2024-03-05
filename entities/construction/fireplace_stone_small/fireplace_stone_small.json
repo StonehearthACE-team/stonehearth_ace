@@ -54,7 +54,20 @@
          "extension_entity": "stonehearth_ace:extensible_object:solid_extension",
          "end_entity": "stonehearth_ace:construction:fireplace:stone:small:top",
          "max_length": 24,
-         "matrix": "chimney",
+         "multi_matrix_mode": "random",
+         "matrix": [
+            "chimney",
+            "chimneyA",
+            "chimneyB",
+            "chimneyC",
+            "chimneyD",
+            "chimneyE",
+            "chimneyF",
+            "chimneyG",
+            "chimneyH",
+            "chimneyI",
+            "chimneyJ"
+         ],
          "rotations": [
             {
                "dimension": "y",
@@ -88,7 +101,7 @@
          }
       },
       "stonehearth:appeal": {
-         "appeal": 8
+         "appeal": 14
       }
    }
 }
