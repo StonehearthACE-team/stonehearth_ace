@@ -297,6 +297,12 @@ App.guiHelper = {
                      `${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size', catalogData.collision_size)}</div>`;
       }
 
+      // max length
+      if (catalogData.max_length) {
+         detail += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_max_length')}</span>` +
+                     `<span class="value">${catalogData.max_length}</span></div>`;
+      }
+
       // storage capacity
       if (catalogData.storage_capacity) {
          detail += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_storage_capacity')}</span>` +
