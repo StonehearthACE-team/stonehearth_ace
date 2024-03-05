@@ -1,8 +1,20 @@
 {
    "stockpile": {
+      "resources": {
+         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_resources)",
+         "ordinal": 1,
+         "categories": {
+            "water_bucket": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:entities.landmark.terrain_water_bucket.display_name)",
+               "icon": "/stonehearth_ace/entities/landmark/terrain_water_bucket/terrain_water_bucket.png",
+               "filter": "resource water small"
+            }
+         }
+      },
       "raw_drinks": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_drinks)",
-         "ordinal": 1,
+         "ordinal": 2,
          "categories": {
             "milk_wild_cattle": {
                "ordinal": 1,
@@ -122,7 +134,7 @@
       },
       "prepared_drinks": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_drinks)",
-         "ordinal": 2,
+         "ordinal": 3,
          "categories": {
             "smoothie": {
                "ordinal": 1,
@@ -332,7 +344,7 @@
       },
       "dry_goods": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_dry_goods)",
-         "ordinal": 3,
+         "ordinal": 4,
          "categories": {
             "thatch": {
                "ordinal": 0,
@@ -620,7 +632,7 @@
       },
       "animal_food": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_animal_food)",
-         "ordinal": 4,
+         "ordinal": 5,
          "categories": {
             "fodder": {
                "ordinal": 1,
@@ -704,7 +716,7 @@
       },
       "fluids": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fluids)",
-         "ordinal": 5,
+         "ordinal": 6,
          "categories": {
             "cooking_oil": {
                "ordinal": 1,
@@ -890,7 +902,7 @@
       },
       "potions": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_potions)",
-         "ordinal": 6,
+         "ordinal": 7,
          "categories": {
             "healing_tonic_small": {
                "ordinal": 1,
