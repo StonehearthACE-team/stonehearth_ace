@@ -19,11 +19,19 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
       return
    end
 
-   if component_data.accept_water then
-      local can_contain_uris = {
-         ['stonehearth:terrain:water'] = true,
-         ['stonehearth:terrain:waterfall'] = true,
-      }
+   local can_contain_uris = {}
+   local can_contain_entity_filter = nil
+
+   if component_data.accept_water ~= false then
+      can_contain_uris['stonehearth:terrain:water'] = true
+      can_contain_uris['stonehearth:terrain:waterfall'] = true
+   end
+
+   if next(can_contain_uris) then
+      can_contain_entity_filter = function(entity, selector)
+         log:debug('checking contain entity filter on %s (%s)', entity, tostring(can_contain_uris[entity:get_uri()]))
+         return can_contain_uris[entity:get_uri()]
+      end
    end
 
    local selector = stonehearth.selection:select_xyz_range('extensible_object_range_selector')
@@ -34,11 +42,7 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
       :set_can_pass_through_terrain(component_data.can_pass_through_terrain or true)
       :set_can_pass_through_buildings(component_data.can_pass_through_buildings or true)
       :set_ignore_middle_collision(component_data.ignore_middle_collision or false)  -- may need to set this to true if weird behavior colliding with terrain/buildings
-      -- :set_can_contain_entity_filter(
-      --    function(entity, selector)
-      --       return can_contain_uris[entity:get_uri()]
-      --    end
-      -- )
+      :set_can_contain_entity_filter(can_contain_entity_filter)
 
    if component_data.cursor then
       selector:set_cursor(component_data.cursor)
