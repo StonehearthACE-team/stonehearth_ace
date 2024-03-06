@@ -88,7 +88,7 @@ function MapService:_get_block_type(entity, end_point)
    -- check if the entity right above this point is in water
    local entities = radiant.terrain.get_entities_at_point(end_point + Point3.unit_y)
    for id, e in pairs(entities) do
-      if e:get_uri() == 'stonehejson:terrain:water' then
+      if e:get_uri() == 'stonehearth:terrain:water' then
          return 1000
       end
    end
