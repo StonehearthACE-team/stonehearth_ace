@@ -15,6 +15,7 @@ local service_creation_order = {
    'connection_client',
    'heatmap',
    'gameplay_settings',
+   'map',
 }
 
 local monkey_patches = {
