@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 90,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.fireplace_stone_large_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.fireplace_stone_large_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.fireplace_stone_large_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/fireplace_stone_large/fireplace_stone_large.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 8
+      },
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:fireplace:stone:large"
+      }
+   ]
+}

@@ -5,7 +5,7 @@
       "model_variants": {
          "default": {
             "models": [
-               "/stonehearth/entities/weapons/bronze_sword/bronze_sword.qb"
+               "file(bronze_sword.qb)"
             ]
          }
       }
@@ -14,8 +14,7 @@
       "stonehearth:catalog": {
          "icon": "file(bronze_sword.png)",
          "is_item": true,
-         "category": "weapons",
-         "material_tags":["bronze", "melee_weapon", "bronze_sword", "ascendancy_made", "crafted", "stockpile_weapon"]
+         "category": "weapons"
       }
    }
 }

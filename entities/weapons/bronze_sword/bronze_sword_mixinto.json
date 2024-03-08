@@ -1,19 +1,8 @@
 {
-   "mixins": [
-      "stonehearth:mixins:item_properties",
-      "stonehearth_ace:mixins:weapons:mainhand_hamstrung_minor"
-   ],
    "type": "entity",
    "components": {
-      "model_variants": {
-         "default": {
-            "models": [
-               "file(bronze_sword_equipped.qb)"
-            ]
-         }
-      },
-      "stonehearth:entity_forms": {
-         "iconic_form": "file(bronze_sword_iconic.json)"
+      "mixintypes": {
+         "stonehearth:equipment_piece": "override"
       },
       "stonehearth:equipment_piece": {
          "slot": "mainhand",
@@ -31,15 +20,31 @@
             "footman_job"
          ],
          "required_job_level": 2,
+         "no_drop": false,
          "equip_effect": "stonehearth:effects:weapon_level_up"
       },
       "stonehearth_ace:statistics": {},
-      "stonehearth_ace:titles": {}
+      "stonehearth_ace:titles": {},
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(bronze_sword_iconic.json)"
+      }
    },
    "entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "hamstrung": {
+               "uri": "stonehearth_ace:buffs:minor_hamstrung",
+               "chance": 0.33
+            }
+         }
+      },
       "stonehearth:combat:weapon_data": {
          "base_damage": 13,
          "reach": 1.5
+      },
+      "mixintypes": {
+         "stonehearth:combat:melee_attacks": "override",
+         "stonehearth:combat:melee_defenses": "remove"
       },
       "stonehearth:combat:melee_attacks": [
          {
@@ -68,17 +73,15 @@
          "value_in_gold": 25,
          "rarity": "common",
          "shop_info": {
-            "buyable": true,
-            "sellable": true,
-            "shopkeeper_level": 2,
-            "shopkeeper_type": "caravan"
+            "buyable": false,
+            "sellable": false
          }
       },
       "stonehearth:catalog": {
          "display_name": "i18n(stonehearth_ace:entities.weapons.bronze_sword.display_name)",
-         "description": "i18n(stonehearth:entities.weapons.bronze_sword.description)",
-         "icon": "file(bronze_sword.png)",
-         "category": "weapons",
+         "mixintypes": {
+            "material_tags": "override"
+         },
          "material_tags": [
             "melee_weapon",
             "bronze",
