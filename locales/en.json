@@ -10605,6 +10605,21 @@
                "description": "Used by the Geomancer to craft Beaver Golems",
                "flavor": ""
             },
+            "fireplace_stone_small_recipe": {
+               "recipe_name": "Stone Small Fireplace",
+               "description": "A small and cozy fireplace. A chimney can be extended from it and, similarly to a portal, it can be placed on walls.",
+               "flavor": "'The fireplace is the best place for a fire' -Homeowner's Safety Guide, 1st Edition"
+            },
+            "fireplace_stone_medium_recipe": {
+               "recipe_name": "Stone Fireplace",
+               "description": "A good-sized fireplace made of stone, the perfect hearth for warming your living room!",
+               "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+            },
+            "fireplace_stone_large_recipe": {
+               "recipe_name": "Stone Grand Fireplace",
+               "description": "A very fancy and large fireplace with an engraved stone face, cast-iron grating and an elevated holder for the firewood.",
+               "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+            },
             "frostfeast": {
                "present_small_recipe": {
                   "recipe_name": "Small Frostfeast Present",
@@ -12438,6 +12453,16 @@
             "sign_carpenter_recipe": {
                "description": "An expertly carved sign, to be displayed outside a Carpenter's workshop."
             },
+            "plank_bridge_recipe": {
+               "recipe_name": "Plank Bridge",
+               "description": "A sturdy wooden bridge that can be extended over a good distance, ideal for crossing rivers or other sizeable gaps.",
+               "flavor": "Railing not included"
+            },
+            "plank_bridge_small_recipe": {
+               "recipe_name": "Small Plank Bridge",
+               "description": "A small bridge that can be extended over a short distance, very useful for going over gaps or irrigation channels.",
+               "flavor": "Watch your step!"
+            },
             "frostfeast": {
                "present_small_recipe": {
                   "recipe_name": "Small Frostfeast Present",
@@ -12598,6 +12623,9 @@
       },
       "weaver": {
          "recipes": {
+            "clothing_armor_name": "Clothing & Accessories",
+            "weapons_name": "Combat Equipment",
+            "furniture_name": "Building Parts & Furniture",
             "amberstone_painting_branch_recipe": {
                "recipe_name": "Amberstone Painting (Flowering)"
             },
@@ -12843,9 +12871,23 @@
                "description": "Craft a sacred and more protective outfit for the Cleric. It also provides some bonuses.",
                "flavor": "Your faith is your shield... But some leather will probably help"
             },
-            "clothing_armor_name": "Clothing & Accessories",
-            "weapons_name": "Combat Equipment",
-            "furniture_name": "Building Parts & Furniture",
+            "rug_gilded_blue_recipe": {
+               "flavor": "Some used to believe that a blue like this could only be milled from precious blue stone found deep within mountains far, far to the frozen north"
+            },
+            "rug_gilded_coral_recipe": {
+               "flavor": "It was rumored that earth from a long-dried seabed to the south was baked and ground to produce this lively red-orange"
+            },
+            "rug_gilded_red_recipe": {
+               "flavor": "The color is reminiscent of the flesh on the luscious, almost-purple berries grown in the foothills surrounding a faraway kingdom"
+            },
+            "rug_gilded_sage_recipe": {
+               "flavor": "Achieving a delicate green requires skill; this stain made from a pulp of potent herbs will rapidly turn anything sour"
+            },
+            "ladder_rope_recipe": {
+               "recipe_name": "Rope Ladder",
+               "description": "A handy ladder that can be extended or retracted at will, providing controlled access to different terrain or construction levels.",
+               "flavor": "You'll learn its ropes soon enough"
+            },
             "frostfeast": {
                "worker_holiday_hat_recipe": {
                   "recipe_name": "Holiday Cheer Cap",
@@ -12909,18 +12951,6 @@
                   "description": "Craft a fancy witch hat to be worn by Crafters. It provides protection from warm weather and the Candledark Cheer effect.",
                   "flavor": "No, it doesn't speak in riddles"
                }
-            },
-            "rug_gilded_blue_recipe": {
-               "flavor": "Some used to believe that a blue like this could only be milled from precious blue stone found deep within mountains far, far to the frozen north"
-            },
-            "rug_gilded_coral_recipe": {
-               "flavor": "It was rumored that earth from a long-dried seabed to the south was baked and ground to produce this lively red-orange"
-            },
-            "rug_gilded_red_recipe": {
-               "flavor": "The color is reminiscent of the flesh on the luscious, almost-purple berries grown in the foothills surrounding a faraway kingdom"
-            },
-            "rug_gilded_sage_recipe": {
-               "flavor": "Achieving a delicate green requires skill; this stain made from a pulp of potent herbs will rapidly turn anything sour"
             }
          },
          "weaver_description": {
@@ -22746,6 +22776,9 @@
             "description": "Extra large for when you need some extra punch. (Two-handed)",
             "display_name": "Iron Battle Axe"
          },
+         "bronze_sword": {
+            "display_name": "Bronze Sword"
+         },
          "bronze_axe": {
             "display_name": "Bronze Axe",
             "description": "A heavier alternative for a starting metal weapon. (Two-handed)"
@@ -26173,7 +26206,7 @@
             "tooltip_combat_reach": "Reach:",
             "tooltip_crafted_by": "Crafted By:",
             "tooltip_crop_unlocked": "You have already unlocked this crop.",
-            "tooltip_equipment_ilevel": "Item level:",
+            "tooltip_equipment_ilevel": "Gear score:",
             "tooltip_equipment_requirement": "Requires:",
             "tooltip_equipment_type": "Type:",
             "tooltip_fuel_capacity": "Fuel Capacity:",

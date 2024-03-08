@@ -28,9 +28,21 @@
       },
       "stonehearth:mount": {
          "mounted_posture": "stonehearth:sitting_on_chair",
-         "mount_offset": { "x": 0.8, "y": 0, "z": -0.6 }
+         "mount_offset": { "x": 0.8, "y": 0, "z": -0.4 }
       },
-      "stonehearth:traveler_attraction": {}
+      "stonehearth:traveler_attraction": {},
+      "stonehearth_ace:sibling_entities": {
+         "siblings": {
+            "seat_2": {
+               "uri": "stonehearth_ace:furniture:sibling_seat",
+               "offset": { "x": -0.8, "y": 0, "z": 0.6 },
+               "match_component_regions": {
+                  "destination": true
+               },
+               "destroy_on_remove": true
+            }
+         }
+      }
    },
    "entity_data": {
       "stonehearth:chair": {},

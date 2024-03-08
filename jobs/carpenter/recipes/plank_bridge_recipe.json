@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 70,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.plank_bridge_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.plank_bridge_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.plank_bridge_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/plank_bridge/plank_bridge.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 8
+      },
+      {
+         "uri": "stonehearth_ace:refined:metal_bits:hard",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:plank_bridge"
+      }
+   ]
+}
