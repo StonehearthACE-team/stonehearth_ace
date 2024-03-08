@@ -262,6 +262,9 @@ function SiblingEntitiesComponent:_update_sibling(sibling, location, facing, com
             region:modify(function(cursor)
                   cursor:copy_region(component:get_region():get())
                end)
+            if component_name == 'destination' then
+               sibling_component:set_auto_update_adjacent(true)
+            end
          end
       end
    end
@@ -270,7 +273,7 @@ function SiblingEntitiesComponent:_update_sibling(sibling, location, facing, com
 
    if location then
       if sibling.offset then
-         location = location + radiant.entities.local_to_world(sibling.offset, self._entity)
+         location = radiant.entities.local_to_world(sibling.offset, self._entity)
       end
 
       radiant.entities.move_to(entity, location)

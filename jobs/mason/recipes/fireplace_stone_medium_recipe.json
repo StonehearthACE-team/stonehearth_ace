@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.fireplace_stone_medium_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.fireplace_stone_medium_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.fireplace_stone_medium_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/fireplace_stone_medium/fireplace_stone_medium.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 5
+      },
+      {
+         "material": "wood resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:fireplace:stone:medium"
+      }
+   ]
+}
