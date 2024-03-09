@@ -1,8 +1,11 @@
 local TraceCategories = _radiant.dm.TraceCategories
 local Point3 = _radiant.csg.Point3
+local Cube3 = _radiant.csg.Cube3
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
 local SiblingEntitiesComponent = class()
+
+local log = radiant.log.create_logger('sibling_entities')
 
 function SiblingEntitiesComponent:initialize()
    self._sv.siblings = {}
@@ -176,7 +179,7 @@ function SiblingEntitiesComponent:add_sibling(sibling_spec)
       entity = entity,
       key = sibling_spec.key,
       ignore_gravity = sibling_spec.ignore_gravity,
-      match_component_regions = sibling_spec.match_component_regions,
+      match_component_regions = sibling_spec.match_component_regions or {},
       offset = sibling_spec.offset and radiant.util.to_point3(sibling_spec.offset),
       destroy_on_remove = sibling_spec.destroy_on_remove,
       iconify_on_remove = sibling_spec.iconify_on_remove,
@@ -249,8 +252,18 @@ end
 function SiblingEntitiesComponent:_update_sibling(sibling, location, facing, component_name)
    local entity = sibling.entity
 
+   if location then
+      if sibling.offset then
+         location = radiant.entities.local_to_world(Cube3(sibling.offset), self._entity).min
+      end
+
+      radiant.entities.move_to(entity, location)
+   end
+
+   radiant.entities.turn_to(entity, facing)
+
    for component_name, match in pairs(sibling.match_component_regions) do
-      if not component_name or component_name == component_name then
+      if match and (not component_name or component_name == component_name) then
          local component = self._entity:get_component(component_name)
          if component then
             local sibling_component = entity:add_component(component_name)
@@ -259,24 +272,19 @@ function SiblingEntitiesComponent:_update_sibling(sibling, location, facing, com
                region = radiant.alloc_region3()
                sibling_component:set_region(region)
             end
-            region:modify(function(cursor)
-                  cursor:copy_region(component:get_region():get())
-               end)
-            if component_name == 'destination' then
-               sibling_component:set_auto_update_adjacent(true)
+
+            -- since we want the region to mirror the parent's region, we need to adjust it based on location
+            -- the sibling faces the same way, so we don't need to do local_to_world nonsense, just position offset
+            -- **WARNING** destination region (and maybe others) DO NOT RESPECT NON-GRID LOCATIONS/OFFSETS
+            local r = component:get_region():get()
+            if sibling.offset then
+               r = r:translated(-sibling.offset)
             end
+            region:modify(function(cursor)
+                  cursor:copy_region(r)
+               end)
          end
       end
-   end
-
-   radiant.entities.turn_to(entity, facing)
-
-   if location then
-      if sibling.offset then
-         location = radiant.entities.local_to_world(sibling.offset, self._entity)
-      end
-
-      radiant.entities.move_to(entity, location)
    end
 end
 

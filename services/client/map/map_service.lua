@@ -42,8 +42,8 @@ function MapService:render_map(file_name, ray_height)
    for x = bounds.min.x, bounds.max.x - 1, 4 do
       --log:debug('starting scanning x = %s', x)
       local row = {}
-      for j = bounds.min.z, bounds.max.z - 1, 4 do
-         local p = Point3(x, ray_height, j)
+      for z = bounds.min.z, bounds.max.z - 1, 4 do
+         local p = Point3(x, ray_height, z)
          local end_point, entity = self:_get_entity_at_location(p)
          local block_type
          if entity then
