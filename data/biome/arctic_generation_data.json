@@ -1,7 +1,7 @@
 {
-	"palettes" : {
-		"spring" : {
-			"rock_layer_1": "#707883",
+   "palettes": {
+      "spring": {
+         "rock_layer_1": "#707883",
          "rock_layer_2": "#848D9C",
          "rock_layer_3": "#98A3B5",
          "rock_layer_4": "#ADB9CF",
@@ -9,16 +9,16 @@
          "rock_layer_6": "#D4DFF2",
          "rock_layer_7": "#E6ECF8",
          "rock_layer_8": "#F2F5FB",
-			"meteor": "#2C2D40",
-			"marble": "#DBDBDB",
-			"marble_2": "#DDD3C8",
-			"marble_3": "#DDC3AA",
-			"feldspar": "#EAAC86",
-			"feldspar_2": "#E7A075",
-			"feldspar_3": "#E49565"
-		},
-		"summer" : {
-			"rock_layer_1": "#333637",
+         "meteor": "#2C2D40",
+         "marble": "#DBDBDB",
+         "marble_2": "#DDD3C8",
+         "marble_3": "#DDC3AA",
+         "feldspar": "#EAAC86",
+         "feldspar_2": "#E7A075",
+         "feldspar_3": "#E49565"
+      },
+      "summer": {
+         "rock_layer_1": "#333637",
          "rock_layer_2": "#474C50",
          "rock_layer_3": "#5C626A",
          "rock_layer_4": "#707883",
@@ -26,16 +26,16 @@
          "rock_layer_6": "#98A3B5",
          "rock_layer_7": "#ADB9CF",
          "rock_layer_8": "#C1CFE8",
-			"meteor": "#2C2D40",
-			"marble": "#DBDBDB",
-			"marble_2": "#DDD3C8",
-			"marble_3": "#DDC3AA",
-			"feldspar": "#EAAC86",
-			"feldspar_2": "#E7A075",
-			"feldspar_3": "#E49565"
-		},
-		"autumn" : {
-			"rock_layer_1": "#707883",
+         "meteor": "#2C2D40",
+         "marble": "#DBDBDB",
+         "marble_2": "#DDD3C8",
+         "marble_3": "#DDC3AA",
+         "feldspar": "#EAAC86",
+         "feldspar_2": "#E7A075",
+         "feldspar_3": "#E49565"
+      },
+      "autumn": {
+         "rock_layer_1": "#707883",
          "rock_layer_2": "#98A3B5",
          "rock_layer_3": "#C1CFE8",
          "rock_layer_4": "#D4DFF2",
@@ -43,16 +43,16 @@
          "rock_layer_6": "#F2F5FB",
          "rock_layer_7": "#F4FDFF",
          "rock_layer_8": "#F7FEFF",
-			"meteor": "#2C2D40",
-			"marble": "#DBDBDB",
-			"marble_2": "#DDD3C8",
-			"marble_3": "#DDC3AA",
-			"feldspar": "#EAAC86",
-			"feldspar_2": "#E7A075",
-			"feldspar_3": "#E49565"
-		},
-		"winter" : {
-			"rock_layer_1": "#C1CFE8",
+         "meteor": "#2C2D40",
+         "marble": "#DBDBDB",
+         "marble_2": "#DDD3C8",
+         "marble_3": "#DDC3AA",
+         "feldspar": "#EAAC86",
+         "feldspar_2": "#E7A075",
+         "feldspar_3": "#E49565"
+      },
+      "winter": {
+         "rock_layer_1": "#C1CFE8",
          "rock_layer_2": "#D4DFF2",
          "rock_layer_3": "#E6ECF8",
          "rock_layer_4": "#F2F5FB",
@@ -60,30 +60,30 @@
          "rock_layer_6": "#F7FEFF",
          "rock_layer_7": "#FAFAFA",
          "rock_layer_8": "#FCFCFC",
-			"meteor": "#2C2D40",
-			"marble": "#DBDBDB",
-			"marble_2": "#DDD3C8",
-			"marble_3": "#DDC3AA",
-			"feldspar": "#EAAC86",
-			"feldspar_2": "#E7A075",
-			"feldspar_3": "#E49565"
-		}
-	},
+         "meteor": "#2C2D40",
+         "marble": "#DBDBDB",
+         "marble_2": "#DDD3C8",
+         "marble_3": "#DDC3AA",
+         "feldspar": "#EAAC86",
+         "feldspar_2": "#E7A075",
+         "feldspar_3": "#E49565"
+      }
+   },
    "terrain": {
-	  "minimap":{
-		"plains_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.plains)",
-		"plains_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.plains)",
-		"foothills_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.foothills)",
-		"foothills_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.foothills)"
-	  },
-	  "mountains": {
+      "minimap": {
+         "plains_1": "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.plains)",
+         "plains_2": "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.plains)",
+         "foothills_1": "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.foothills)",
+         "foothills_2": "i18n(stonehearth_ace:ui.shell.select_settlement.arctic.terrain_codes.foothills)"
+      },
+      "mountains": {
          "step_size": 10,
          "step_count": 8
       }
    },
    "landscape": {
       "placement_table": {
-			"stonehearth_ace:plants:garlic": {
+         "stonehearth_ace:plants:garlic": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 2.5,
@@ -91,7 +91,7 @@
                "exclusion_radius": 0
             }
          },
-			"stonehearth:trees:snowy:juniper:small": {
+         "stonehearth:trees:snowy:juniper:small": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 2,
@@ -114,23 +114,23 @@
                "exclusion_radius": 0
             }
          },
-			"stonehearth_ace:plants:rose": {
-				"placement_type": "dense",
-				"parameters": {
-					"grid_multiple": 2,
-					"item_density": 0.4,
-					"exclusion_radius": 0
-         }
-      },
-		"stonehearth_ace:plants:chives": {
-				"placement_type": "dense",
-				"parameters": {
-					"grid_multiple": 2,
-					"item_density": 0.4,
-					"exclusion_radius": 0
-         }
-      },
-		"stonehearth_ace:plants:bog_myrtle": {
+         "stonehearth_ace:plants:rose": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 2,
+               "item_density": 0.4,
+               "exclusion_radius": 0
+            }
+         },
+         "stonehearth_ace:plants:chives": {
+            "placement_type": "dense",
+            "parameters": {
+               "grid_multiple": 2,
+               "item_density": 0.4,
+               "exclusion_radius": 0
+            }
+         },
+         "stonehearth_ace:plants:bog_myrtle": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 3,
@@ -138,7 +138,7 @@
                "exclusion_radius": 1
             }
          },
-			"stonehearth:plants:frostsnap": {
+         "stonehearth:plants:frostsnap": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 2,
@@ -146,7 +146,7 @@
                "exclusion_radius": 1
             }
          },
-			"stonehearth_ace:plants:nightshade": {
+         "stonehearth_ace:plants:nightshade": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 2,
@@ -154,7 +154,7 @@
                "exclusion_radius": 1
             }
          },
-			"stonehearth_ace:plants:daylily": {
+         "stonehearth_ace:plants:daylily": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 3,
@@ -162,7 +162,7 @@
                "exclusion_radius": 1
             }
          },
-		 "stonehearth_ace:terrain:pasture_grass": {
+         "stonehearth_ace:terrain:pasture_grass": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 1,
@@ -170,7 +170,7 @@
                "exclusion_radius": 5
             }
          },
-		 "stonehearth_ace:terrain:pasture_grass:short": {
+         "stonehearth_ace:terrain:pasture_grass:short": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 2,
@@ -178,7 +178,7 @@
                "exclusion_radius": 3
             }
          },
-		 "stonehearth_ace:terrain:pasture_grass:overgrown": {
+         "stonehearth_ace:terrain:pasture_grass:overgrown": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 1,
@@ -186,132 +186,132 @@
                "exclusion_radius": 7
             }
          },
-			"stonehearth_ace:trees:walnut:small" : {
-				"placement_type" : "single",
-				"parameters" : {
-					"ground_radius" : 3,
-					"exclusion_radius" : 5
-				}
-			},
-			"stonehearth_ace:trees:walnut:medium" : {
-				"placement_type" : "single",
-				"parameters" : {
-					"ground_radius" : 4,
-					"exclusion_radius" : 6
-				}
-			},
-			"stonehearth_ace:trees:walnut:large" : {
-				"placement_type" : "single",
-				"parameters" : {
-					"ground_radius" : 5,
-					"exclusion_radius" : 7
-				}
-			},
-			"stonehearth_ace:trees:pear:small" : {
-				"placement_type" : "single",
-				"parameters" : {
-					"ground_radius" : 4,
-					"exclusion_radius" : 5
-				}
-			},
-			"stonehearth_ace:trees:pear:medium" : {
-				"placement_type" : "single",
-				"parameters" : {
-					"ground_radius" : 5,
-					"exclusion_radius" : 6
-				}
-			},
-			"stonehearth_ace:trees:pear:large" : {
-				"placement_type" : "single",
-				"parameters" : {
-					"ground_radius" : 5,
-					"exclusion_radius" : 6
-				}
-			}
+         "stonehearth_ace:trees:walnut:small": {
+            "placement_type": "single",
+            "parameters": {
+               "ground_radius": 3,
+               "exclusion_radius": 5
+            }
+         },
+         "stonehearth_ace:trees:walnut:medium": {
+            "placement_type": "single",
+            "parameters": {
+               "ground_radius": 4,
+               "exclusion_radius": 6
+            }
+         },
+         "stonehearth_ace:trees:walnut:large": {
+            "placement_type": "single",
+            "parameters": {
+               "ground_radius": 5,
+               "exclusion_radius": 7
+            }
+         },
+         "stonehearth_ace:trees:pear:small": {
+            "placement_type": "single",
+            "parameters": {
+               "ground_radius": 4,
+               "exclusion_radius": 5
+            }
+         },
+         "stonehearth_ace:trees:pear:medium": {
+            "placement_type": "single",
+            "parameters": {
+               "ground_radius": 5,
+               "exclusion_radius": 6
+            }
+         },
+         "stonehearth_ace:trees:pear:large": {
+            "placement_type": "single",
+            "parameters": {
+               "ground_radius": 5,
+               "exclusion_radius": 6
+            }
+         }
       },
-		"trees": {
-			"sizes": {
-				"stonehearth:trees:gold:juniper": {
+      "trees": {
+         "sizes": {
+            "stonehearth:trees:gold:juniper": {
                "large": 1
             },
-				"stonehearth_ace:trees:walnut" : {
-					"small" : 0,
-					"medium" : 4,
-					"large" : 9
-				},
-				"stonehearth_ace:trees:pear" : {
-					"small" : 0,
-					"medium" : 5,
-					"large" : 4
-				}
-			},
-			"weights": {
-				"plains" : {
-					"1" : {
-						"stonehearth_ace:trees:walnut" : 0.15,
-						"stonehearth_ace:trees:pear" : 0.1
-					}
-				},
-				"foothills" : {
-					"1" : {
-						"stonehearth_ace:trees:pear" : 0.12
-					},
-					"2" : {
-						"stonehearth_ace:trees:pear" : 0.15
-					}
-				}
-			}
-		},
+            "stonehearth_ace:trees:walnut": {
+               "small": 0,
+               "medium": 4,
+               "large": 9
+            },
+            "stonehearth_ace:trees:pear": {
+               "small": 0,
+               "medium": 5,
+               "large": 4
+            }
+         },
+         "weights": {
+            "plains": {
+               "1": {
+                  "stonehearth_ace:trees:walnut": 0.15,
+                  "stonehearth_ace:trees:pear": 0.1
+               }
+            },
+            "foothills": {
+               "1": {
+                  "stonehearth_ace:trees:pear": 0.12
+               },
+               "2": {
+                  "stonehearth_ace:trees:pear": 0.15
+               }
+            }
+         }
+      },
       "scattered": {
          "plants": {
             "weights": {
                "plains": {
                   "1": {
-							"stonehearth_ace:plants:garlic": 0.5,
-							"stonehearth_ace:plants:bog_myrtle" : 1.1,
-							"stonehearth_ace:plants:daylily" : 1.0,
-							"stonehearth:plants:frostsnap" : 0.1,
+                     "stonehearth_ace:plants:garlic": 0.5,
+                     "stonehearth_ace:plants:bog_myrtle": 1.1,
+                     "stonehearth_ace:plants:daylily": 1.0,
+                     "stonehearth:plants:frostsnap": 0.1,
                      "stonehearth_ace:fungi:winter_morel": 0.2,
-							"stonehearth_ace:plants:rose": 1.8,
-							"stonehearth_ace:plants:chives": 1.0,
-							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
-							"stonehearth_ace:terrain:pasture_grass": 0.2,
-							"stonehearth_ace:terrain:pasture_grass:short": 0.1,
-							"stonehearth_ace:trees:walnut:small" : 0.12,
-							"stonehearth_ace:trees:pear:small" : 0.08
+                     "stonehearth_ace:plants:rose": 1.8,
+                     "stonehearth_ace:plants:chives": 1.0,
+                     "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
+                     "stonehearth_ace:terrain:pasture_grass": 0.2,
+                     "stonehearth_ace:terrain:pasture_grass:short": 0.1,
+                     "stonehearth_ace:trees:walnut:small": 0.12,
+                     "stonehearth_ace:trees:pear:small": 0.08
                   }
                },
                "foothills": {
                   "1": {
-							"stonehearth_ace:plants:garlic": 0.2,
+                     "stonehearth_ace:plants:garlic": 0.2,
                      "stonehearth_ace:fungi:winter_morel": 0.3,
-							"stonehearth_ace:plants:rose": 0.4,
-							"stonehearth_ace:plants:chives": 0.5,
-							"stonehearth:plants:frostsnap" : 0.3,
-							"stonehearth_ace:plants:nightshade": 0.7,
-							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
-							"stonehearth_ace:terrain:pasture_grass": 0.2,
-							"stonehearth_ace:terrain:pasture_grass:short": 0.1,
-							"stonehearth_ace:trees:walnut:small" : 0.04,
-							"stonehearth_ace:trees:pear:small" : 0.06
+                     "stonehearth_ace:plants:rose": 0.4,
+                     "stonehearth_ace:plants:chives": 0.5,
+                     "stonehearth:plants:frostsnap": 0.3,
+                     "stonehearth_ace:plants:nightshade": 0.7,
+                     "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
+                     "stonehearth_ace:terrain:pasture_grass": 0.2,
+                     "stonehearth_ace:terrain:pasture_grass:short": 0.1,
+                     "stonehearth_ace:trees:walnut:small": 0.04,
+                     "stonehearth_ace:trees:pear:small": 0.06
                   },
                   "2": {
                      "stonehearth_ace:fungi:winter_morel": 0.2,
-							"stonehearth_ace:plants:nightshade": 0.9,
-							"stonehearth:plants:frostsnap" : 0.6,
-							"stonehearth_ace:plants:rose": 0.1,
-							"stonehearth_ace:plants:chives": 0.1
+                     "stonehearth_ace:plants:nightshade": 0.9,
+                     "stonehearth:plants:frostsnap": 0.6,
+                     "stonehearth_ace:plants:rose": 0.1,
+                     "stonehearth_ace:plants:chives": 0.1
                   }
                },
                "mountains": {
                   "1": {
                      "stonehearth_ace:fungi:winter_morel": 0.1,
-							"stonehearth:plants:frostsnap" : 1,
+                     "stonehearth:plants:frostsnap": 1
                   }
                }
             }
          },
-			"boulders": {
+         "boulders": {
             "namespace": "stonehearth:boulder:arctic",
             "noise_map_parameters": {
                "__comment": "Same as noise map parameters of plants. this is after trees, water, berries and plants are generated",
@@ -340,18 +340,19 @@
                   }
                }
             },
-				"cutoffs" : {
-					"small" : 0.1,
-					"medium" : 0.5
-				}
+            "cutoffs": {
+               "small": 0.1,
+               "medium": 0.5
+            }
          }
-		},
-	  "water": {
+      },
+      "water": {
+         "color": "#1f5781A0",
          "depth": {
             "shallow": 6,
             "deep": 11
          },
-		 "water_height_delta": 2.5
+         "water_height_delta": 2.5
       }
    }
 }

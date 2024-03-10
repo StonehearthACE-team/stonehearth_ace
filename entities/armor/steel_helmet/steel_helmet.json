@@ -3,7 +3,7 @@
       "stonehearth_ace:mixins:armor:heavy_armor_helmet",
       "stonehearth_ace:mixins:armor:resistance:helmet:average"
    ],
-	"type": "entity",
+   "type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
          "ilevel": 6,
@@ -22,10 +22,19 @@
          }
       },
       "stonehearth:catalog": {
-	     "mixintypes": {
-			"material_tags": "override"
-		 },
-         "material_tags":["steel", "armor", "helmet", "heavy_armor", "ascendancy_made", "crafted", "stockpile_equipment"]
+         "display_name": "i18n(stonehearth_ace:entities.armor.steel_helmet.display_name)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "steel",
+            "armor",
+            "helmet",
+            "heavy_armor",
+            "ascendancy_made",
+            "crafted",
+            "stockpile_equipment"
+         ]
       }
    }
 }

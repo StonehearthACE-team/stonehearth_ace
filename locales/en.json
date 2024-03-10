@@ -7753,27 +7753,27 @@
             },
             "training_1": {
                "display_name": "Archer Training (Rank 1)",
-               "description": "Slightly increases Menace, Speed and Muscle."
+               "description": "Slightly increases Courage, Menace, Speed and Muscle."
             },
             "training_2": {
                "display_name": "Archer Training (Rank 2)",
-               "description": "Somewhat increases Menace and Muscle. Slightly increases Speed."
+               "description": "Somewhat increases Menace and Muscle. Slightly increases Courage and Speed."
             },
             "training_3": {
                "display_name": "Archer Training (Rank 3)",
-               "description": "Somewhat increases Menace and Muscle. Slightly increases Speed."
+               "description": "Somewhat increases Menace and Muscle. Slightly increases Courage and Speed."
             },
             "training_4": {
                "display_name": "Archer Training (Rank 4)",
-               "description": "Increases Menace and Muscle. Somewhat increases Speed.<br><br>Their high proficiency as an Archer allows them to retain the skills gained through training even after changing jobs."
+               "description": "Increases Menace and Muscle. Somewhat increases Courage and Speed.<br><br>Their high proficiency as an Archer allows them to retain the skills gained through training even after changing jobs."
             },
             "training_5": {
                "display_name": "Archer Training (Rank 5)",
-               "description": "Increases Menace, Speed and Muscle.<br><br>Their high proficiency as an Archer allows them to retain the skills gained through training even after changing jobs."
+               "description": "Increases Menace, Speed and Muscle. Somewhat increases Courage.<br><br>Their high proficiency as an Archer allows them to retain the skills gained through training even after changing jobs."
             },
             "training_6": {
                "display_name": "Archer Training (Rank 6)",
-               "description": "Greatly increases Menace. Increases Speed and Muscle. Slightly increases the amount of time they will have to be rescued if incapacitated.<br><br>Their high proficiency as an Archer allows them to retain the skills gained through training even after changing jobs."
+               "description": "Greatly increases Menace. Increases Courage, Speed and Muscle. Slightly increases the amount of time they will have to be rescued if incapacitated.<br><br>Their high proficiency as an Archer allows them to retain the skills gained through training even after changing jobs."
             }
          },
          "archer_bow_bone": {
@@ -10738,6 +10738,31 @@
                "description": "Craft a fancy holder that can store up to 4 Bundles O' Firewood.",
                "flavor": ""
             },
+            "gear_rack_shield_hook_recipe": {
+               "recipe_name": "Riveted Wall-Mounted Display (Shields)",
+               "description": "A small and reliable metal hook for hanging a shield on a wall.",
+               "flavor": ""
+            },
+            "gear_rack_armor_stand_recipe": {
+               "recipe_name": "Riveted Armor Stand",
+               "description": "Craft a friendly wooden & metal mannequin for displaying a complete set of armor.",
+               "flavor": "Clicking the head of the stand will allow you to select the helmet!"
+            },
+            "gear_rack_short_hafts_recipe": {
+               "recipe_name": "Riveted Weapon Rack (Short-hafted Arms)",
+               "description": "A sturdy weapon hack for displaying up to three short-hafted weapons like axes, maces, short spears, scepters or hatchets.",
+               "flavor": "Shouldn't a 'short-haft' be called a 'daft'?"
+            },
+            "gear_rack_polearms_recipe": {
+               "recipe_name": "Iron-Banded Weapon Rack (Polearms)",
+               "description": "A neat wooden rack reinforced with iron bands for displaying up to two polearms.",
+               "flavor": ""
+            },
+            "gear_rack_swords_recipe": {
+               "recipe_name": "Iron-Banded Weapon Rack (Swords)",
+               "description": "Create a sophisticated rack for displaying up to four swords in a very neat way!",
+               "flavor": "Can also be used for daggers... But should you?"
+            },
             "copper_coffee_pot_recipe": {
                "recipe_name": "Copper Coffee Pot",
                "description": "Very sleek and lightweight, can keep a beverage hot for a good time!",
@@ -11089,6 +11114,21 @@
                "recipe_name": "Steel Axe",
                "description": "Very good for hacking and slashing.",
                "flavor": "'...and one hearthling after the other they all drew their axes above the shieldwall.' - The Valin Saga"
+            },
+            "steel_mail_recipe": {
+               "recipe_name": "Steel Platemail"
+            },
+            "steel_helmet_recipe": {
+               "recipe_name": "Steel Helmet"
+            },
+            "short_sword_recipe": {
+               "recipe_name": "Steel Short Sword"
+            },
+            "long_sword_recipe": {
+               "recipe_name": "Steel Sword"
+            },
+            "two_handed_sword_recipe": {
+               "recipe_name": "Two-Handed Steel Sword"
             },
             "bronze_hatchet_recipe": {
                "recipe_name": "Off-hand Bronze Hatchet",
@@ -22761,6 +22801,12 @@
          },
          "ea_steel_helm": {
             "display_name": "Dynasty Steel Helmet"
+         },
+         "steel_mail": {
+            "display_name": "Steel Platemail"
+         },
+         "steel_helmet": {
+            "display_name": "Steel Helmet"
          }
       },
       "weapons": {
@@ -22948,7 +22994,7 @@
             "display_name": "Steel Desert Mace"
          },
          "rc_two_handed_sword": {
-            "display_name": "Two Handed Talwar"
+            "display_name": "Two-Handed Steel Talwar"
          },
          "rc_iron_mace": {
             "display_name": "Iron Desert Mace"
@@ -23038,7 +23084,7 @@
             "display_name": "Steel War Hammer"
          },
          "na_two_handed_sword": {
-            "display_name": "Two Handed Claymore"
+            "display_name": "Two-Handed Steel Claymore"
          },
          "stone_hatchet": {
             "display_name": "Stone Hatchet",
@@ -23097,9 +23143,8 @@
             "description": "Excellent for breaking doors!"
          },
          "maul_lantern": {
-            "maul_lantern_iconic": {
-               "description": "Wield the Holy Light of Hestia in defense of your town."
-            }
+            "display_name": "Hestian Lantern Maul",
+            "description": "Wield the Holy Light of Hestia in defense of your town."
          },
          "bronze_short_spear": {
             "description": "A reliable weapon for keeping enemies at bay.",
@@ -23306,6 +23351,9 @@
          "scepter_blackguard": {
             "display_name": "Blackguard's Cane",
             "description": "A powerful and magical weapon worn by the Blackguard."
+         },
+         "two_handed_sword": {
+            "display_name": "Two-Handed Steel Sword"
          }
       },
       "gizmos": {
@@ -24119,6 +24167,31 @@
             "iconic_description": "Place it so it can be harvested for 18 Hunks o' Hard Coal.",
             "display_name": "Hunk o' Hard Coal Pile",
             "description": "Harvest it to get 18 hunks of higher grade fuel!"
+         },
+         "gear_rack": {
+            "gear_rack_polearms": {
+               "display_name": "Iron-Banded Weapon Rack (Polearms)",
+               "description": "Display your prettiest polearms on this handy rack!"
+            },
+            "gear_rack_armor_stand": {
+               "display_name": "Riveted Armor Stand (Body)",
+               "description": "No castle is complete without suits of armor in the corridors!"
+            },
+            "gear_rack_armor_stand_head": {
+               "display_name": "Riveted Armor Stand (Head)"
+            },
+            "gear_rack_shield_hook": {
+               "display_name": "Riveted Wall Display (Shields)",
+               "description": "For when paintings are not imposing enough for your walls."
+            },
+            "gear_rack_short_hafts": {
+               "display_name": "Riveted Weapon Rack (Short-hafted Arms)",
+               "description": "Display a nice collection of maces, axes, short spears and other weapons with a short haft."
+            },
+            "gear_rack_swords": {
+               "display_name": "Iron-Banded Weapon Rack (Swords)",
+               "description": "Swords! The more, the merrier? Or at least the safer, one would think..."
+            }
          }
       },
       "tools": {
@@ -26747,7 +26820,23 @@
                   "tooltip_golems": "Golems & Automatons",
                   "tooltip_quest_items": "Quest Items",
                   "tooltip_cooked_food": "Food & Drinks",
-                  "tooltip_resources": "Resources"
+                  "tooltip_resources": "Resources",
+                  "tooltip_heavy_armor": "Heavy Armor",
+                  "tooltip_medium_armor": "Medium Armor",
+                  "tooltip_light_armor": "Light Armor",
+                  "tooltip_heavy_shield": "Heavy Shields",
+                  "tooltip_medium_shield": "Medium Shields",
+                  "tooltip_light_shield": "Light Shields",
+                  "tooltip_polearm": "Polearms",
+                  "tooltip_short_swords": "Short Swords",
+                  "tooltip_long_swords": "Long Swords",
+                  "tooltip_twohanded_swords": "Two-Handed Swords",
+                  "tooltip_daggers": "Daggers",
+                  "tooltip_short_spears": "Short Spears",
+                  "tooltip_maces": "Maces",
+                  "tooltip_axes": "War Axes",
+                  "tooltip_hatchets": "Hatchets",
+                  "tooltip_scepters": "Cleric Scepters"
                },
                "fuel_level": {
                   "label": "Fuel Level:",
