@@ -37,11 +37,38 @@ function AceDigAdjacent:start_thinking(ai, entity, args)
    self._mining_zone = args.mining_zone
    self._path = nil
 
+   local success = self:_rethink(ai, entity, args)
+   if not success then
+      self._mining_zone_changed_listener = radiant.events.listen(self._mining_zone, 'stonehearth_ace:mining_zone:adjacent_updated', function()
+            -- throttle the reconsidering so we don't immediately search for a block to mine every time the mining zone changes
+            if not self._reconsider_timer then
+               self._reconsider_timer = stonehearth.calendar:set_timer("AceDigAdjacent reconsider mining zone", '5m', function()
+                     self._reconsider_timer = nil
+                     self:_rethink(ai, entity, args)
+                  end)
+            end
+         end)
+   end
+end
+
+function AceDigAdjacent:_rethink(ai, entity, args)
    -- resolve which block we are going to mine first
    self._block, self._adjacent_location, self._reserved_region_for_block = self:_get_block_to_mine(args.adjacent_location)
    log:spam('%s start_thinking block to mine from %s: %s', entity, args.adjacent_location, tostring(self._block))
    if self._block then
       ai:set_think_output()
+      return true
+   end
+end
+
+function AceDigAdjacent:stop_thinking(ai, entity, args)
+   if self._mining_zone_changed_listener then
+      self._mining_zone_changed_listener:destroy()
+      self._mining_zone_changed_listener = nil
+   end
+   if self._reconsider_timer then
+      self._reconsider_timer:destroy()
+      self._reconsider_timer = nil
    end
 end
 
@@ -61,7 +88,7 @@ function AceDigAdjacent:start(ai, entity, args)
 
    -- if the enable bit is toggled while we're running the action, go ahead and abort.
    self._zone_enabled_trace = radiant.events.listen(self._mining_zone, 'stonehearth:mining:enable_changed', function()
-         local enabled = mining_zone:get_component('stonehearth:mining_zone')
+         local enabled = self._mining_zone:get_component('stonehearth:mining_zone')
                                        :get_enabled()
          if not enabled then
             ai:abort('mining zone not enabled')
@@ -91,7 +118,10 @@ function AceDigAdjacent:run(ai, entity, args)
             stop_distance = args.harvest_range,
          })
       end
-      self:_mine_block(ai, entity, mining_zone, block)
+      if not self:_mine_block(ai, entity, mining_zone, block) then
+         log:debug('%s cannot mine block %s, finishing mining action', entity, block)
+         break
+      end
       block, adjacent_location, reserved = self:_get_block_to_mine(adjacent_location, ai)
    until not block
 end
@@ -204,7 +234,7 @@ function AceDigAdjacent:_get_block_to_mine(adjacent_location, ai)
    end
 
    local next_adjacent_location = self._path:get_finish_point()
-   block, reserved = stonehearth.mining:get_block_to_mine(next_adjacent_location, self._mining_zone, worker_location)
+   block, reserved = stonehearth.mining:get_block_to_mine(next_adjacent_location, self._mining_zone, next_adjacent_location)
    log:spam('%s found block to mine from %s: %s', self._entity, next_adjacent_location, tostring(block))
    if not block then
       return nil, nil, nil

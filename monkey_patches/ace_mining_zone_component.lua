@@ -93,7 +93,7 @@ function AceMiningZoneComponent:_update_unsupported()
    if not location then
       return
    end
-   
+
    local terrain = radiant.terrain.intersect_region(self._sv.region:get():translated(location))
    local bottom = Region3()
    for cube in terrain:each_cube() do
@@ -197,7 +197,7 @@ function AceMiningZoneComponent:get_unsupported_buckets(force_recalculate)
                distance = cube_dist
             end
          end
-         
+
          if not min_distance or min_distance > distance then
             min_distance = distance
          end
@@ -212,7 +212,7 @@ function AceMiningZoneComponent:get_unsupported_buckets(force_recalculate)
          end
          bucket:add_point(point)
       end
-      
+
       local buckets = {}
       -- set this up from closest to furthest so it's easy to remove buckets from the end of the table
       for d = min_distance, max_distance do
@@ -226,7 +226,7 @@ function AceMiningZoneComponent:get_unsupported_buckets(force_recalculate)
                })
          end
       end
-      
+
       self._sv._unsupported_buckets = buckets
    end
 
@@ -387,10 +387,12 @@ function AceMiningZoneComponent:mine_point(point)
    self:_update_destination()
 
    if self._destination_component:get_region():get():empty() then
-      local unmined_region = self:_get_working_region(zone_region, location)
+      local unmined_region = self:_get_working_region(zone_region, location, true)
       if unmined_region:empty() then
          -- radiant.events.trigger_async(self, 'stonehearth:mining_zone:mining_complete')
          radiant.entities.destroy_entity(self._entity)
+      else
+         log:error('mining zone %s has no more blocks to mine, but still has unmined blocks!', self._entity)
       end
    end
 
@@ -523,7 +525,7 @@ function AceMiningZoneComponent:add_ladder_handle(handle, updating)
          local location = radiant.entities.get_world_grid_location(ladder)
          if location then
             table.insert(self._sv._ladder_handles, handle)
-            
+
             if not updating then
                local mine_location = radiant.entities.get_world_grid_location(self._entity)
                self:_update_ladder(handle, mine_location)
@@ -601,10 +603,22 @@ function AceMiningZoneComponent:get_ladder_request_point(location, mine_location
    local bounds = zone_region:get_bounds()
    local col = Cube3(Point3(location.x, bounds.min.y, location.z), Point3(location.x + 1, bounds.max.y, location.z + 1))
    local intersection = zone_region:intersect_cube(col)
-   
+
    if not intersection:empty() then
       return Point3(location.x, intersection:get_bounds().max.y, location.z)
    end
+end
+
+-- get the unreserved terrain region that lies inside the zone_region
+function AceMiningZoneComponent:_get_working_region(zone_region, zone_location, include_reserved)
+   local working_region = radiant.terrain.intersect_region(zone_region:translated(zone_location))
+   if not include_reserved then
+      local reserved_region = self._destination_component:get_reserved():get():translated(zone_location)
+      working_region:subtract_region(reserved_region)
+   end
+   working_region:set_tag(0)
+   working_region:optimize('mining:_get_working_region()')
+   return working_region
 end
 
 -- ACE: creating a way to handle/manage mining from underneath by prioritizing mining upwards as far as possible and building a ladder along the way
@@ -618,7 +632,6 @@ end
 -- to do this, manipulate the usage of the _get_working_region function:
 --    while no ladders, allow mining anywhere
 --    once ladder(s) added, only allow mining in top 4 and column(s) of ladder(s)
-
 function AceMiningZoneComponent:_add_destination_blocks(destination_region, zone_region, zone_location)
    -- break the zone into convex regions (cubes) and run the destination block algorithm
    -- assumes the zone_region has been optimized already
@@ -647,8 +660,8 @@ function AceMiningZoneComponent:_add_destination_blocks(destination_region, zone
    end
 
    -- make sure all reserved blocks are part of the destination region
-   local reserved_region = self._destination_component:get_reserved():get()
-   destination_region:add_region(radiant.terrain.clip_region(reserved_region))
+   local reserved_region = self._destination_component:get_reserved():get():translated(zone_location)
+   destination_region:add_region(radiant.terrain.clip_region(reserved_region):translated(-zone_location))
 end
 
 -- this algorithm assumes a convex region, so we break the zone into cubes before running it
@@ -698,7 +711,7 @@ function AceMiningZoneComponent:_get_destination_blocks_for_cube(zone_cube, zone
    end
    self:_add_top_facing_blocks(destination_region, zone_location, working_region, working_bounds, unsupported_region)
    self:_add_side_facing_blocks(destination_region, zone_location, working_region, working_bounds, unsupported_region)
-   
+
    if destination_region:empty() then
       -- fallback condition
       self:_add_all_exposed_blocks(exposed_region, zone_location, working_region)
@@ -783,7 +796,7 @@ function AceMiningZoneComponent:_add_side_facing_blocks(destination_region, zone
       local slice = working_bounds:get_face(direction)
 
       while true do
-         log:debug('checking slice %s in direction %s', slice, direction)
+         --log:debug('checking slice %s in direction %s', slice, direction)
          local exposed_blocks, full_slice = get_exposed_blocks(slice, direction)
          if not exposed_blocks:empty() then
             --log:debug('adding %s side-facing blocks to destination from slice %s', exposed_blocks:get_area(), slice)
@@ -853,7 +866,7 @@ function AceMiningZoneComponent:_add_bottom_facing_blocks(destination_region, zo
          end
       end
    end
-   
+
    local unsupported_blocks = self:_remove_unsupported_blocks(destination_blocks, zone_location)
    --log:debug('...adding %s bottom-facing blocks', destination_blocks:get_area())
    destination_blocks:translate(-zone_location)
@@ -980,6 +993,7 @@ function AceMiningZoneComponent:_update_adjacent()
    else
       self:_update_adjacent_incremental()
    end
+   radiant.events.trigger_async(self._entity, 'stonehearth_ace:mining_zone:adjacent_updated')
 end
 
 -- slow version with an inner loop that is O(#_destination_blocks) / O(surface_area) of the mining region
