@@ -1,20 +1,25 @@
 {
    "mixins": [
-      "stonehearth_ace:mixins:armor:medium_shield"
+      "stonehearth_ace:mixins:armor:light_shield"
    ],
    "components": {
       "stonehearth:equipment_piece": {
          "slot": "leftArm",
-		 "additional_equipment": {
+         "additional_equipment": {
             "stonehearth_ace:armor:offhand_placeholder": true
          },
-			"required_job_level": 1,
-		 "mixintypes": {
-			"roles": "override"
-		 },
-		 "roles": ["footman_job"],
+         "required_job_level": 1,
+         "mixintypes": {
+            "roles": "override"
+         },
+         "roles": [
+            "footman_job"
+         ],
          "render_type": "attach_to_bone",
-         "equipment_types": ["shield", "medium_shield"],
+         "equipment_types": [
+            "shield",
+            "light_shield"
+         ],
          "injected_buffs": [
             "stonehearth_ace:buffs:shield_medium"
          ]
@@ -22,7 +27,14 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-         "material_tags":["wood", "shield", "medium_shield", "medium_armor", "crafted", "stockpile_equipment"]
+         "material_tags": [
+            "wood",
+            "shield",
+            "light_shield",
+            "light_armor",
+            "crafted",
+            "stockpile_equipment"
+         ]
       }
    }
 }

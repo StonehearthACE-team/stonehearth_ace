@@ -908,19 +908,37 @@
                "ordinal": 1,
                "display_name": "i18n(stonehearth:entities.consumables.healing_tonic.small_healing_tonic.display_name)",
                "icon": "/stonehearth_ace/entities/consumables/healing_tonic/small_healing_tonic/small_healing_tonic.png",
-               "filter": "small_healing_tonic"
+               "filter": "healing_tonic small healing_item"
             },
             "healing_tonic": {
                "ordinal": 1.1,
                "display_name": "i18n(stonehearth_ace:entities.consumables.healing_tonic.healing_tonic.display_name)",
                "icon": "/stonehearth_ace/entities/consumables/healing_tonic/healing_tonic/healing_tonic.png",
-               "filter": "healing_tonic"
+               "filter": "healing_tonic standard healing_item"
             },
             "hearth_healing_tonic": {
                "ordinal": 1.5,
                "display_name": "i18n(stonehearth_ace:entities.consumables.healing_tonic.hearth_healing_tonic.display_name)",
                "icon": "/stonehearth_ace/entities/consumables/healing_tonic/hearth_healing_tonic/hearth_healing_tonic.png",
-               "filter": "hearth_healing_tonic"
+               "filter": "healing_tonic hearth healing_item"
+            },
+            "antidote_weak": {
+               "ordinal": 1.6,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.weak_antidote.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/weak_antidote/weak_antidote.png",
+               "filter": "antidote weak healing_item"
+            },
+            "antidote": {
+               "ordinal": 1.7,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.antidote.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/antidote/antidote.png",
+               "filter": "antidote standard healing_item"
+            },
+            "antidote_strong": {
+               "ordinal": 1.8,
+               "display_name": "i18n(stonehearth_ace:entities.consumables.strong_antidote.display_name)",
+               "icon": "/stonehearth_ace/entities/consumables/strong_antidote/strong_antidote.png",
+               "filter": "antidote strong healing_item"
             },
             "creativity_tonic": {
                "ordinal": 2,
