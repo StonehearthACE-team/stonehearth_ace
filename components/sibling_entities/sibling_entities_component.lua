@@ -69,7 +69,7 @@ function SiblingEntitiesComponent:destroy()
    self:_destroy_region_traces()
 
    for id, sibling in pairs(self._sv.siblings) do
-      self:_destroy_sibling(sibling)
+      self:_destroy_sibling(id)
    end
    self._sv.siblings = {}
 end
@@ -80,8 +80,6 @@ function SiblingEntitiesComponent:_destroy_sibling(id)
    local sibling = self._sv.siblings[id]
    if sibling then
       self._sv.siblings[id] = nil
-      self.__saved_variables:mark_changed()
-
       -- if the sibling spec says the entity shouldn't be destroyed, simply enable gravity
       -- if it says it should be iconified, do that
       -- otherwise, destroy it
@@ -121,6 +119,8 @@ function SiblingEntitiesComponent:_create_sibling_predestroy_trace(entity)
    local id = entity:get_id()
    self._sibling_predestroy_traces[id] = radiant.events.listen(entity, 'radiant:entity:pre_destroy', function()
          self:_destroy_predestroy_trace(id)
+         self._sv.siblings[id] = nil
+         self.__saved_variables:mark_changed()
       end)
 end
 
@@ -200,6 +200,7 @@ end
 
 function SiblingEntitiesComponent:remove_sibling(entity)
    self:_destroy_sibling(entity:get_id())
+   self.__saved_variables:mark_changed()
 end
 
 function SiblingEntitiesComponent:_update_player_id()

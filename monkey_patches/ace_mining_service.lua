@@ -70,10 +70,10 @@ function AceMiningService:merge_zones(zone1, zone2)
    local location1 = radiant.entities.get_world_grid_location(zone1)
    local location2 = radiant.entities.get_world_grid_location(zone2)
 
+   -- move region2 into the local space of region1
+   local translation = location2 - location1
+   local region2 = boxed_region2:get():translated(translation)
    boxed_region1:modify(function(region1)
-         -- move region2 into the local space of region1
-         local translation = location2 - location1
-         local region2 = boxed_region2:get():translated(translation)
          region1:copy_region(csg_lib.get_vertically_optimized_region(region1, region2))
       end)
 
@@ -81,13 +81,27 @@ function AceMiningService:merge_zones(zone1, zone2)
 end
 
 AceMiningService._ace_old_get_reachable_region = MiningService.get_reachable_region
-function AceMiningService:get_reachable_region(location)
+function AceMiningService:get_reachable_region(location, worker_location)
    local region = self:_ace_old_get_reachable_region(location)
 
+   local bounds = region:get_bounds()
+   local max_y = bounds.max.y
+   local min_y = bounds.min.y
+
    -- also include reachable blocks directly above; this is important for building a ladder to reach the top of the mining region
-   local cube = Cube3(location)
-   cube.max.y = region:get_bounds().max.y
-   region:add_cube(cube)
+   if max_y > location.y then
+      local cube = Cube3(location)
+      cube.max.y = max_y
+      region:add_cube(cube)
+   end
+
+   -- also remove any blocks that are directly below the worker location
+   if worker_location and worker_location.y > min_y then
+      local cube = Cube3(worker_location)
+      cube.min.y = min_y
+      cube.max.y = worker_location.y
+      region:subtract_cube(cube)
+   end
 
    -- TODO: also include diagonal blocks below (this gets clipped if terrain is on either side)?
    return region
@@ -119,6 +133,10 @@ function AceMiningService:get_block_to_mine(from, mining_zone, log_debug)
    local eligible_region = reachable_region - reserved_region
    local eligible_destination_region = eligible_region:intersect_region(destination_region)
    local block = nil
+   local cubes = {}
+   for cube in eligible_destination_region:each_cube() do
+      table.insert(cubes, cube)
+   end
 
    while not eligible_destination_region:empty() do
       local distance
@@ -162,6 +180,7 @@ function AceMiningService:get_block_to_mine(from, mining_zone, log_debug)
       eligible_destination_region:subtract_point(closest)
    end
 
+   log:debug('no blocks to mine from %s: reachable area = %s, eligible_destination_region = %s', from, reachable_region:get_area(), radiant.util.table_tostring(cubes))
    return nil, nil
 end
 
