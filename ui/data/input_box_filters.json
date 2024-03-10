@@ -199,18 +199,18 @@
             "bronze_gear": {
                "icon": "/stonehearth_ace/entities/refined/bronze_gear/bronze_gear.png",
                "ordinal": 8,
-               "filter": "bronze_gear refined"
+               "filter": "bronze gear refined"
             },
             "iron_gear": {
                "icon": "/stonehearth_ace/entities/refined/iron_gear/iron_gear.png",
                "ordinal": 9,
-               "filter": "iron_gear refined"
+               "filter": "iron gear refined"
             },
-            "lock": {
+            "steel_lock": {
                "ordinal": 10,
                "display_name": "i18n(stonehearth_ace:entities.refined.lock.display_name)",
                "icon": "/stonehearth_ace/entities/refined/lock/lock.png",
-               "filter": "lock refined"
+               "filter": "steel lock refined"
             },
             "starsteel_ingot": {
                "ordinal": 99,
@@ -471,6 +471,12 @@
                "display_name": "i18n(stonehearth_ace:entities.resources.herb.moonbell.display_name)",
                "icon": "/stonehearth_ace/entities/resources/herb/moonbell/moonbell.png",
                "filter": "resource herb moonbell"
+            },
+            "lily_pad": {
+               "ordinal": 2.85,
+               "display_name": "i18n(stonehearth_ace:entities.resources.herb.water_lily_pad.display_name)",
+               "icon": "/stonehearth_ace/entities/resources/herb/water_lily_pad/water_lily_pad.png",
+               "filter": "resource herb lily_pad"
             },
             "water_lily_pink": {
                "ordinal": 2.851,
@@ -783,19 +789,19 @@
                "ordinal": 1,
                "display_name": "i18n(stonehearth:entities.consumables.healing_tonic.small_healing_tonic.display_name)",
                "icon": "/stonehearth_ace/entities/consumables/healing_tonic/small_healing_tonic/small_healing_tonic.png",
-               "filter": "small_healing_tonic healing_item"
+               "filter": "healing_tonic small healing_item"
             },
             "healing_tonic": {
                "ordinal": 2,
                "display_name": "i18n(stonehearth_ace:entities.consumables.healing_tonic.healing_tonic.display_name)",
                "icon": "/stonehearth_ace/entities/consumables/healing_tonic/healing_tonic/healing_tonic.png",
-               "filter": "healing_tonic healing_item"
+               "filter": "healing_tonic standard healing_item"
             },
             "healing_tonic_hearth": {
                "ordinal": 3,
                "display_name": "i18n(stonehearth_ace:entities.consumables.healing_tonic.hearth_healing_tonic.display_name)",
                "icon": "/stonehearth_ace/entities/consumables/healing_tonic/hearth_healing_tonic/hearth_healing_tonic.png",
-               "filter": "hearth_healing_tonic healing_item"
+               "filter": "healing_tonic hearth healing_item"
             },
             "coarse_bandage": {
                "ordinal": 4,
@@ -903,19 +909,19 @@
                "ordinal": 19,
                "display_name": "i18n(stonehearth_ace:entities.consumables.weak_antidote.display_name)",
                "icon": "/stonehearth_ace/entities/consumables/weak_antidote/weak_antidote.png",
-               "filter": "weak_antidote healing_item"
+               "filter": "antidote weak healing_item"
             },
             "antidote": {
                "ordinal": 20,
                "display_name": "i18n(stonehearth_ace:entities.consumables.antidote.display_name)",
                "icon": "/stonehearth_ace/entities/consumables/antidote/antidote.png",
-               "filter": "antidote healing_item"
+               "filter": "antidote standard healing_item"
             },
             "strong_antidote": {
                "ordinal": 21,
                "display_name": "i18n(stonehearth_ace:entities.consumables.strong_antidote.display_name)",
                "icon": "/stonehearth_ace/entities/consumables/strong_antidote/strong_antidote.png",
-               "filter": "strong_antidote healing_item"
+               "filter": "antidote strong healing_item"
             }
          }
       },

@@ -1,0 +1,26 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 0, "y": 1, "z": 0 }
+            }
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "stonehearth:mount": {
+         "mounted_posture": "stonehearth:sitting_on_chair",
+         "mount_offset": { "x": -1.4, "y": 0, "z": 0 }
+      },
+      "stonehearth:traveler_attraction": {}
+   },
+   "entity_data": {
+      "stonehearth:chair": {}
+   }
+}

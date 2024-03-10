@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(gear_rack_short_hafts.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0.2 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "file(/data/rigs/entities/containers/gear_rack/gear_rack_short_hafts/gear_rack_short_hafts.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.gear_rack.gear_rack_short_hafts.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.gear_rack.gear_rack_short_hafts.description)",
+         "icon": "file(gear_rack_short_hafts.png)",
+         "category": "storage",
+         "material_tags": [
+            "iron",
+            "containers",
+            "crafted",
+            "gear_rack",
+            "furniture",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}
