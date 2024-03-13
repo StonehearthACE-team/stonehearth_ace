@@ -6120,8 +6120,8 @@
                "description": "This Footman currently prefers using a mainhand weapon and a medium shield. Click to change!<ul><li>A balanced role ideal for a single soldier or small groups</li><li>Certain mainhand weapons will inflict negative conditions on their enemies, like hamstrung or flanked</li></ul>"
             },
             "two_handed_footman": {
-               "display_name": "Prefer Two-Handed Weapons",
-               "description": "This Footman currently prefers using a two-handed weapon. Click to change!<ul><li>This role is more fragile however has the highest damage output for a Footman</li><li>Two-handed weapons can cause open wounds, damaging foes over time</li></ul>"
+               "display_name": "Prefer Two‑Handed Weapons",
+               "description": "This Footman currently prefers using a two‑handed weapon. Click to change!<ul><li>This role is more fragile however has the highest damage output for a Footman</li><li>Two‑handed weapons can cause open wounds, damaging foes over time</li></ul>"
             },
             "dual_wield_footman": {
                "display_name": "Prefer Dual Wielding",
@@ -6133,7 +6133,7 @@
             },
             "two_handed_knight": {
                "display_name": "Prefer Polearms",
-               "description": "This Knight currently prefers using a two-handed weapon. Click to change!<ul><li>Knight polearms are excellent for crowd control, inflicting fear upon multiple enemies</li><li>They can't use shields when using polearms, greatly reducing their tanking capabilities</li></ul>"
+               "description": "This Knight currently prefers using a two‑handed weapon. Click to change!<ul><li>Knight polearms are excellent for crowd control, inflicting fear upon multiple enemies</li><li>They can't use shields when using polearms, greatly reducing their tanking capabilities</li></ul>"
             },
             "bow_archer": {
                "display_name": "Prefer Bows",
@@ -8029,7 +8029,7 @@
             "herbalist_planter_water_recipe": {
                "recipe_name": "Herbalist Water Planter",
                "description": "The Herbalist can create a special planter to cultivate aquatic resources and get leeches, useful for treating infections.",
-               "flavor": ""
+               "flavor": "Buckets of Water can be obtained from water wells"
             },
             "herbalist_planter_pot_sapling_recipe": {
                "recipe_name": "Herbalist Tree-Planting Pot",
@@ -8810,7 +8810,7 @@
             "herbalist_cauldron_recipe": {
                "recipe_name": "Herbalist Stone Cauldron",
                "description": "Used by the Herbalist for crafting & concocting simple tonics.",
-               "flavor": "Firewood not included"
+               "flavor": "Firewood not included; Buckets of Water can be obtained from water wells"
             },
             "herbalist_metal_cauldron_recipe": {
                "recipe_name": "Herbalist Metal Cauldron",
@@ -9799,6 +9799,31 @@
                "description": "Beautiful clay chest capable of storing 64 items.",
                "flavor": "A place for tributea and offerings to Monkey and Her Mystery"
             },
+            "fireplace_clay_small_recipe": {
+               "recipe_name": "Small Clay Fireplace",
+               "description": "A very simple hearth. A chimney can be extended from it and, similarly to a portal, it can be placed on walls.",
+               "flavor": "It's like a kiln that doesn't work as a kiln!"
+            },
+            "fireplace_clay_medium_recipe": {
+               "recipe_name": "Clay Fireplace",
+               "description": "A larger clay hearth with a nice and decorative frame.",
+               "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+            },
+            "fireplace_brick_small_recipe": {
+               "recipe_name": "Small Brick Fireplace",
+               "description": "A very neat and cozy fireplace made with quality brickwork.",
+               "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+            },
+            "fireplace_brick_medium_recipe": {
+               "recipe_name": "Brick Fireplace",
+               "description": "An elegant decoration on itself, this fireplace is very efficient and can be extended quite high.",
+               "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+            },
+            "fireplace_brick_large_recipe": {
+               "recipe_name": "Grand Brick Fireplace",
+               "description": "Efficient, appealing and large enough to warm an entire home, this fireplace is an example of craftsmanship.",
+               "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+            },
             "frostfeast": {
                "present_small_recipe": {
                   "recipe_name": "Small Frostfeast Present",
@@ -10209,12 +10234,12 @@
             },
             "giant_bone_axe_recipe": {
                "recipe_name": "Giant Bone Axe",
-               "description": "Carve a mighty axe from the clavicle of some great beast. (Two-handed)",
+               "description": "Carve a mighty axe from the clavicle of some great beast. (Two‑handed)",
                "flavor": "Edgy."
             },
             "giant_bone_mace_recipe": {
                "recipe_name": "Giant Bone Mace",
-               "description": "Create a heavy bone weapon that packs a wallop. (Two-handed)",
+               "description": "Create a heavy bone weapon that packs a wallop. (Two‑handed)",
                "flavor": ""
             },
             "giant_bone_shield_recipe": {
@@ -10234,7 +10259,7 @@
             },
             "giant_bone_pike_recipe": {
                "recipe_name": "Giant Bone Spear",
-               "description": "Create a spear with the bones of a mighty beast. (Two-handed)",
+               "description": "Create a spear with the bones of a mighty beast. (Two‑handed)",
                "flavor": "Pierce their hearts!"
             },
             "giant_bone_sword_recipe": {
@@ -10606,7 +10631,7 @@
                "flavor": ""
             },
             "fireplace_stone_small_recipe": {
-               "recipe_name": "Stone Small Fireplace",
+               "recipe_name": "Small Stone Fireplace",
                "description": "A small and cozy fireplace. A chimney can be extended from it and, similarly to a portal, it can be placed on walls.",
                "flavor": "'The fireplace is the best place for a fire' -Homeowner's Safety Guide, 1st Edition"
             },
@@ -10616,9 +10641,17 @@
                "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
             },
             "fireplace_stone_large_recipe": {
-               "recipe_name": "Stone Grand Fireplace",
+               "recipe_name": "Grand Stone Fireplace",
                "description": "A very fancy and large fireplace with an engraved stone face, cast-iron grating and an elevated holder for the firewood.",
                "flavor": "A chimney can be extended from it and, similarly to a portal, it can be placed on walls"
+            },
+            "statue_knight_female_recipe": {
+               "recipe_name": "Knight Statue (Female)",
+               "description": "A noble knight carved in stone."
+            },
+            "statue_knight_male_recipe": {
+               "recipe_name": "Knight Statue (Male)",
+               "description": "A noble knight carved in stone."
             },
             "frostfeast": {
                "present_small_recipe": {
@@ -11128,7 +11161,7 @@
                "recipe_name": "Steel Sword"
             },
             "two_handed_sword_recipe": {
-               "recipe_name": "Two-Handed Steel Sword"
+               "recipe_name": "Two‑Handed Steel Sword"
             },
             "bronze_hatchet_recipe": {
                "recipe_name": "Off-hand Bronze Hatchet",
@@ -11286,6 +11319,11 @@
                "recipe_name": "Gold Ingot Reserve",
                "description": "A pile of gold ingots neatly stored for later use, or protecting your precious wealth!",
                "flavor": "IT'S DRAGON HOARDIN' TIME!"
+            },
+            "fireplace_iron_small_recipe": {
+               "recipe_name": "Small Iron Stove",
+               "description": "A compact but very efficient fireplace. A chimney can be extended from it.",
+               "flavor": "Made in cast iron, you won't even notice the soot!"
             },
             "frostfeast": {
                "candlestick_recipe": {
@@ -11554,7 +11592,7 @@
             "broth_recipe": {
                "recipe_name": "Broth",
                "description": "A very nutritious and filling simmer, broth is either an ingredient or a meal on its own.",
-               "flavor": "Broth is needed to start pottage preparation with a Campfire Pot"
+               "flavor": "Broth is needed to start pottage preparation with a Campfire Pot; Buckets of Water can be obtained from water wells"
             },
             "condiment_recipe": {
                "recipe_name": "Bowl of Condiment (x4)",
@@ -15340,7 +15378,7 @@
             },
             "stone": {
                "small": {
-                  "display_name": "Stone Small Fireplace",
+                  "display_name": "Small Stone Fireplace",
                   "description": "Bringing coziness to the humblest abode! This item can be extended."
                },
                "medium": {
@@ -15348,8 +15386,38 @@
                   "description": "The perfect place for hanging your socks during the winter. This item can be extended."
                },
                "large": {
-                  "display_name": "Stone Grand Fireplace",
+                  "display_name": "Grand Stone Fireplace",
                   "description": "A luxurious design for the fanciest halls! This item can be extended."
+               }
+            },
+            "iron": {
+               "small": {
+                  "display_name": "Small Iron Stove",
+                  "description": "Very efficient in providing warmth for its size! This item can be extended."
+               }
+            },
+            "clay": {
+               "small": {
+                  "display_name": "Small Clay Fireplace",
+                  "description": "Simple yet functional. This item can be extended."
+               },
+               "medium": {
+                  "display_name": "Clay Fireplace",
+                  "description": "Looks good and does alright, more than one could hope for. This item can be extended."
+               }
+            },
+            "brick": {
+               "small": {
+                  "display_name": "Small Brick Fireplace",
+                  "description": "The perfect match between style and efficiency! This item can be extended."
+               },
+               "medium": {
+                  "display_name": "Brick Fireplace",
+                  "description": "A cozy and good-sized fireplace for a fancy home. This item can be extended."
+               },
+               "large": {
+                  "display_name": "Grand Brick Fireplace",
+                  "description": "A work of art ready to warm the largest homes! This item can be extended."
                }
             }
          }
@@ -19651,7 +19719,7 @@
          "valor_statue": {
             "statue_knight": {
                "display_name_male": "Knight Statue (Male)",
-               "description": "An awesome noble knight carved in stone.",
+               "description": "An awesome and noble knight carved in stone. Very imposing!",
                "display_name_female": "Knight Statue (Female)"
             },
             "portcullis_valor_large": {
@@ -22050,6 +22118,11 @@
                   "description": "Time to go nom nom nom!"
                }
             }
+         },
+         "donation_box": {
+            "donation_box": {
+               "description": "A donation to the Church of Plenty, a display of generosity and piety."
+            }
          }
       },
       "terrain": {
@@ -22819,7 +22892,7 @@
             "na_display_name": "Bone Bow"
          },
          "iron_battle_axe": {
-            "description": "Extra large for when you need some extra punch. (Two-handed)",
+            "description": "Extra large for when you need some extra punch. (Two‑handed)",
             "display_name": "Iron Battle Axe"
          },
          "bronze_sword": {
@@ -22827,7 +22900,7 @@
          },
          "bronze_axe": {
             "display_name": "Bronze Axe",
-            "description": "A heavier alternative for a starting metal weapon. (Two-handed)"
+            "description": "A heavier alternative for a starting metal weapon. (Two‑handed)"
          },
          "iron_short_sword": {
             "display_name": "Iron Short Sword",
@@ -22863,11 +22936,11 @@
          },
          "steel_lance": {
             "display_name": "Steel Lance",
-            "description": "A long and strong polearm for harassing multiple enemies. (Two-handed)"
+            "description": "A long and strong polearm for harassing multiple enemies. (Two‑handed)"
          },
          "silver_halberd": {
             "display_name": "Silver Halberd",
-            "description": "An intricate and powerful weapon. (Two-handed)"
+            "description": "An intricate and powerful weapon. (Two‑handed)"
          },
          "silver_mace": {
             "display_name": "Silver Hammer",
@@ -22994,7 +23067,7 @@
             "display_name": "Steel Desert Mace"
          },
          "rc_two_handed_sword": {
-            "display_name": "Two-Handed Steel Talwar"
+            "display_name": "Two‑Handed Steel Talwar"
          },
          "rc_iron_mace": {
             "display_name": "Iron Desert Mace"
@@ -23084,7 +23157,7 @@
             "display_name": "Steel War Hammer"
          },
          "na_two_handed_sword": {
-            "display_name": "Two-Handed Steel Claymore"
+            "display_name": "Two‑Handed Steel Claymore"
          },
          "stone_hatchet": {
             "display_name": "Stone Hatchet",
@@ -23107,7 +23180,7 @@
          },
          "giant_bone_pike": {
             "display_name": "Giant Bone Spear",
-            "description": "Once part of a mighty beast, now to pierce one. (Two-handed)"
+            "description": "Once part of a mighty beast, now to pierce one. (Two‑handed)"
          },
          "wooden_sword": {
             "display_name": "Practice Sword",
@@ -23240,7 +23313,7 @@
          },
          "ea_bronze_cleaver": {
             "display_name": "Dynasty Bronze Zhanmadao",
-            "description": "Also called a cleaver, this is a very big and heavy sword! (Two-handed)"
+            "description": "Also called a cleaver, this is a very big and heavy sword! (Two‑handed)"
          },
          "ea_bronze_offhand": {
             "display_name": "Dynasty Bronze Butterfly Blade",
@@ -23252,7 +23325,7 @@
          },
          "ea_bronze_short_spear_2": {
             "display_name": "Dynasty Bronze Ge",
-            "description": "Known as the dagger-axe, this haft weapon can also be used as a spear. (Two-handed)"
+            "description": "Known as the dagger-axe, this haft weapon can also be used as a spear. (Two‑handed)"
          },
          "ea_bronze_sword": {
             "display_name": "Dynasty Bronze Jian",
@@ -23260,7 +23333,7 @@
          },
          "ea_cleric_rod": {
             "display_name": "Dynasty Zhui Feng Gun",
-            "description": "Called the war-rod, a staff used by Clerics and monks. (Two-handed)"
+            "description": "Called the war-rod, a staff used by Clerics and monks. (Two‑handed)"
          },
          "ea_crossbow": {
             "display_name": "Dynasty Chu-ko-nu",
@@ -23272,11 +23345,11 @@
          },
          "ea_iron_cleaver": {
             "display_name": "Dynasty Iron Zhanmadao",
-            "description": "The iron cleaver, even stronger and sharper than the bronze one! (Two-handed)"
+            "description": "The iron cleaver, even stronger and sharper than the bronze one! (Two‑handed)"
          },
          "ea_iron_lance": {
             "display_name": "Dynasty Iron Ji",
-            "description": "A hardened polearm for Knights to clear their way! (Two-handed)"
+            "description": "A hardened polearm for Knights to clear their way! (Two‑handed)"
          },
          "ea_iron_offhand": {
             "display_name": "Dynasty Iron Butterfly Blade",
@@ -23312,7 +23385,7 @@
          },
          "ea_silver_lance": {
             "display_name": "Dynasty Silver Ji",
-            "description": "The ultimate polearm used by the richest eastern Knights. (Two-handed)"
+            "description": "The ultimate polearm used by the richest eastern Knights. (Two‑handed)"
          },
          "ea_silver_short_sword": {
             "display_name": "Dynasty Silver Dao",
@@ -23320,11 +23393,11 @@
          },
          "ea_steel_cleaver": {
             "display_name": "Dynasty Steel Zhanmadao",
-            "description": "A blade so heavy and sharp that it can cut through a log! (Two-handed)"
+            "description": "A blade so heavy and sharp that it can cut through a log! (Two‑handed)"
          },
          "ea_steel_lance": {
             "display_name": "Dynasty Steel Ji",
-            "description": "A very traditional polearm for eastern Knights to control their zone. (Two-handed)"
+            "description": "A very traditional polearm for eastern Knights to control their zone. (Two‑handed)"
          },
          "ea_steel_offhand": {
             "display_name": "Dynasty Steel Butterfly Blade",
@@ -23336,7 +23409,7 @@
          },
          "warchiefs_bone_axe": {
             "display_name": "Norwind's Cleaver",
-            "description": "Carved by the warchief herself, Red Kiln's most prized axe. (Two-handed)"
+            "description": "Carved by the warchief herself, Red Kiln's most prized axe. (Two‑handed)"
          },
          "candledark": {
             "vampire_rapier": {
@@ -23353,7 +23426,7 @@
             "description": "A powerful and magical weapon worn by the Blackguard."
          },
          "two_handed_sword": {
-            "display_name": "Two-Handed Steel Sword"
+            "display_name": "Two‑Handed Steel Sword"
          }
       },
       "gizmos": {
@@ -26830,7 +26903,7 @@
                   "tooltip_polearm": "Polearms",
                   "tooltip_short_swords": "Short Swords",
                   "tooltip_long_swords": "Long Swords",
-                  "tooltip_twohanded_swords": "Two-Handed Swords",
+                  "tooltip_twohanded_swords": "Two‑Handed Swords",
                   "tooltip_daggers": "Daggers",
                   "tooltip_short_spears": "Short Spears",
                   "tooltip_maces": "Maces",
@@ -26941,7 +27014,7 @@
                "bow": "Bow",
                "crossbow": "Crossbow",
                "mainhand": "Main-hand",
-               "twohanded": "Two-handed",
+               "twohanded": "Two‑handed",
                "offhand": "Off-hand",
                "shield": "Shield",
                "light_shield": "Light Shield",

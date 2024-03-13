@@ -1,4 +1,30 @@
 {
+   "recipe_name": "i18n(stonehearth:entities.food.donation_box.donation_box.display_name)",
    "workshop": "stonehearth_ace:cook:table",
-	"manual_unlock": true
+   "manual_unlock": true,
+   "mixintypes": {
+      "ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "material": "flour hard cooking_ingredient",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:preserves:jam_fruit",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:preserves:pickles",
+         "count": 1
+      },
+      {
+         "material": "egg small cooking_ingredient",
+         "count": 2
+      },
+      {
+         "material": "raw meat piece",
+         "count": 1
+      }
+   ]
 }

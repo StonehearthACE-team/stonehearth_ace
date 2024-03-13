@@ -1,7 +1,7 @@
 {
-	"portrait": "/stonehearth_ace/entities/food/bug_meat_stew/bug_meat_stew/bug_meat_stew.png",
+   "portrait": "/stonehearth_ace/entities/food/bug_meat_stew/bug_meat_stew/bug_meat_stew.png",
    "mixintypes": {
-	  "ingredients": "override"
+      "ingredients": "override"
    },
    "ingredients": [
       {
@@ -10,6 +10,10 @@
       },
       {
          "material": "food bug_meat raw",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:landmark:terrain:water_bucket",
          "count": 1
       }
    ]
