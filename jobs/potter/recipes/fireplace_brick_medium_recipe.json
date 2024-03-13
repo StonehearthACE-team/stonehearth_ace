@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 65,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.fireplace_brick_medium_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.fireplace_brick_medium_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.fireplace_brick_medium_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/fireplace_brick_medium/fireplace_brick_medium.png",
+   "workshop": "stonehearth:potter:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:fire_bricks",
+         "count": 8
+      },
+      {
+         "material": "stone resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:refined:copper_ingot",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:fireplace:brick:medium"
+      }
+   ]
+}

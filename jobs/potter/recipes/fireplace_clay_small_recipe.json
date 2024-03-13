@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 10,
+   "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.fireplace_clay_small_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.potter.recipes.fireplace_clay_small_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.potter.recipes.fireplace_clay_small_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/fireplace_clay_small/fireplace_clay_small.png",
+   "workshop": "stonehearth:potter:kiln",
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "clay resource",
+         "count": 3
+      },
+      {
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:fireplace:clay:small"
+      }
+   ]
+}

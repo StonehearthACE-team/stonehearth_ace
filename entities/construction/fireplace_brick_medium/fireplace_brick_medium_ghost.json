@@ -1,0 +1,57 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fireplace_brick_medium.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "stonehearth:fixture": {
+         "cursor": "stonehearth:cursors:create_window",
+         "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+         },
+         "bounds": {
+            "min": { "x": -1, "y": 0 },
+            "max": { "x": 1, "y": 2 }
+         }
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": -1, "y": 0 },
+               "max": { "x": 1, "y": 2 }
+            }
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.fireplace.brick.medium.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.fireplace.brick.medium.description)",
+         "icon": "file(fireplace_brick_medium.png)",
+         "category": "construction",
+         "material_tags": [
+            "brick",
+            "fireplace",
+            "medium",
+            "crafted",
+            "stockpile_furniture",
+            "stockpile_construction"
+         ]
+      }
+   }
+}
