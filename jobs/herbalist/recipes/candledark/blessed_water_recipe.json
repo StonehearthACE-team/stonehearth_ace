@@ -6,11 +6,15 @@
    "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.blessed_water_recipe.description)",
    "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.blessed_water_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/consumables/candledark/blessed_water/blessed_water.png",
-	"work_effect": "fiddle",
+   "work_effect": "fiddle",
    "workshop": "stonehearth_ace:herbalist:metal_cauldron",
-	"manual_unlock": true,
+   "manual_unlock": true,
    "level_requirement": 6,
    "ingredients": [
+      {
+         "uri": "stonehearth_ace:landmark:terrain:water_bucket",
+         "count": 1
+      },
       {
          "uri": "stonehearth:refined:gold_ingot",
          "count": 1

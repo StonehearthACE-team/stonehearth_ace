@@ -1,0 +1,24 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(fireplace_brick_large_iconic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.095
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "is_item": true,
+         "category": "construction"
+      }
+   }
+}

@@ -1,7 +1,7 @@
 {
-	"portrait": "/stonehearth_ace/entities/food/meat_stew/meat_stew/meat_stew.png",
+   "portrait": "/stonehearth_ace/entities/food/meat_stew/meat_stew/meat_stew.png",
    "mixintypes": {
-	  "ingredients": "override"
+      "ingredients": "override"
    },
    "ingredients": [
       {
@@ -14,6 +14,10 @@
       },
       {
          "material": "food meat raw",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:landmark:terrain:water_bucket",
          "count": 1
       }
    ]
