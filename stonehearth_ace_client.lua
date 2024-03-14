@@ -29,6 +29,7 @@ local monkey_patches = {
    ace_expendable_resources_renderer = 'stonehearth.renderers.expendable_resources.expendable_resources_renderer',
    ace_farmer_field_renderer = 'stonehearth.renderers.farmer_field.farmer_field_renderer',
    ace_farming_call_handler = 'stonehearth.call_handlers.farming_call_handler',
+   ace_fixture_widget = 'stonehearth.services.client.widget.fixture_widget',
    ace_item_placer = 'stonehearth.services.client.build_editor.item_placer',
    ace_landmark_lib = 'stonehearth.lib.landmark.landmark_lib',
    ace_landmark_renderer = 'stonehearth.renderers.landmark.landmark_renderer',
