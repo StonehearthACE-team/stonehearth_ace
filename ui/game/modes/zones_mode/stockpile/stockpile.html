@@ -204,13 +204,18 @@
             {{#each group in view.stockpileFilters}}
                <tr class="row">
                   <td class="categoryLabel">
-                     <span>
-                        {{#if view.isSingleFilter}}
-                        {{else}}
-                           <input type="checkbox" {{bind-attr id="group.filter"}} class="toggleButton group">
-                        {{/if}}
-                        <label {{bind-attr for="group.filter"}}>{{#if group.icon}}<img {{bind-attr src="group.icon"}}>{{/if}}{{i18n_key group.display_name}}</label>
-                     </span>
+                     {{#if view.isSingleFilter}}
+                     {{else}}
+                        <input type="checkbox" {{bind-attr id="group.filter"}} class="toggleButton group">
+                     {{/if}}
+                     <label {{bind-attr for="group.filter"}}>
+                        <div class="labelContainer">
+                           {{#if group.icon}}<img {{bind-attr src="group.icon"}}>{{/if}}
+                           <div class="labelText">
+                              {{i18n_key group.display_name}}
+                           </div>
+                        </div>
+                     </label>
                   </td>
                   <td>
                      {{#each category in group.categories}}

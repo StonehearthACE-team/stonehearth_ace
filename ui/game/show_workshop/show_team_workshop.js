@@ -397,7 +397,32 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
       self._updateCraftSearchChecks(_craftSearchChecks);
 
-      self.$('#craftingWindow').on('click', '.categoryCrafter', function() {
+      self.$('#allCrafters').on('click', '.categoryCrafter', function() {
+         var $elem = $(this);
+         var id = $elem.attr('crafterId');
+
+         var member = self._memberLookup[id];
+         if (member) {
+            var enable = false;
+            var categories = [];
+            radiant.each(member.categoryMembers, function(category, categoryMember) {
+               if (categoryMember.disabled) {
+                  enable = true;
+               }
+               categories.push(category);
+            });
+            radiant.call('stonehearth_ace:set_crafting_categories_disabled', member.objectRef, categories, !enable);
+
+            // also update the status so it toggles the class on the element
+            radiant.each(member.categoryMembers, function(category, categoryMember) {
+               Ember.set(categoryMember, 'disabled', !enable);
+               self._updateAllMembersDisabledForCategory(category);
+            });
+            Ember.set(member, 'categoryCraftingClass', enable ? 'enabledCrafting' : 'allDisabledCrafting');
+         }
+      });
+
+      self.$('#recipeItems').on('click', '.categoryCrafter', function() {
          var $elem = $(this);
          var id = $elem.attr('crafterId');
          var category = $elem.attr('category');
@@ -413,6 +438,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
                Ember.set(categoryMember, 'disabled', disable);
                //self._updateFullDetailedOrderList();
             }
+
+            // also update whether all members for this category are disabled
+            self._updateAllMembersDisabledForCategory(category);
          }
       });
 
@@ -487,6 +515,21 @@ App.StonehearthTeamCrafterView = App.View.extend({
       return tracesRemoved;
    },
 
+   _updateAllMembersDisabledForCategory: function(category) {
+      var self = this;
+      var allDisabled = true;
+      radiant.each(self._memberLookup, function(id, member) {
+         if (member.categoryMembers[category] && !member.categoryMembers[category].disabled) {
+            allDisabled = false;
+            return false;
+         }
+      });
+      var category = self.allCategories[category];
+      if (category) {
+         Ember.set(category, 'allMembersDisabled', allDisabled);
+      }
+   },
+
    getOrderList: function(){
       return this.get('model.order_list').__self;
    },
@@ -501,6 +544,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
       var memberArray = self._memberArray || [];
       var recipes = this.get('model.recipe_list');
       var recipe_categories = [];
+      var memberEnabledCount = {};
+      var totalCategories = 0;
       self.allRecipes = {};
       self.allCategories = {};
 
@@ -520,7 +565,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var is_locked = formatted_recipe.level_requirement > highestLevel;
             var is_hidden = formatted_recipe.manual_unlock && !manuallyUnlockedRecipes[formatted_recipe.recipe_key] ? true : false;
             if(is_hidden == false){
-                  category_has_visible_recipes = true;
+               category_has_visible_recipes = true;
             }
             Ember.set(formatted_recipe, 'is_hidden', is_hidden);
             Ember.set(formatted_recipe, 'is_locked', is_locked || is_hidden);
@@ -544,19 +589,26 @@ App.StonehearthTeamCrafterView = App.View.extend({
          });
 
          if (recipe_array.length > 0 && category_has_visible_recipes) {
+            totalCategories++;
             //For each of the recipes inside each category, sort them by their level_requirement
             recipe_array.sort(self._compareByLevelAndAlphabetical);
 
             var categoryMembers = [];
+            var allDisabled = true;
             memberArray.forEach(function(member) {
+               var disabled = member.disabledCategories[category_id] || false;
+               if (!disabled) {
+                  allDisabled = false;
+               }
                var categoryMember = {
                   id: member.id,
                   name: member.name,
                   level: member.level,
-                  disabled: member.disabledCategories[category_id] || false,
+                  disabled: disabled,
                };
                categoryMembers.push(categoryMember);
                member.categoryMembers[category_id] = categoryMember;
+               memberEnabledCount[member.id] = (memberEnabledCount[member.id] || 0) + (disabled ? 0 : 1);
             });
             
             var ui_category = {
@@ -565,12 +617,17 @@ App.StonehearthTeamCrafterView = App.View.extend({
                ordinal:  category.ordinal,
                recipes:  recipe_array,
                members: categoryMembers,
+               allMembersDisabled: allDisabled,
             };
             recipe_categories.push(ui_category)
-            self.allCategories[category_id] = {
-               display_name: category.name,
-            }
+            self.allCategories[category_id] = ui_category;
          }
+      });
+
+      memberArray.forEach(function(member) {
+         var enabledCount = memberEnabledCount[member.id] || 0;
+         var enabledClass = enabledCount == totalCategories ? 'enabledCrafting' : (enabledCount == 0 ? 'allDisabledCrafting' : 'someEnabledCrafting');
+         Ember.set(member, 'categoryCraftingClass', enabledClass);
       });
 
       //Sort the recipe categories by ordinal
@@ -631,6 +688,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   disabledCategories: {},
                   categoryProficiencies: {},
                   categoryMembers: {},
+                  categoryCraftingClass: 'enabledCrafting',
                };
                memberArray.push(memberStruct);
                memberLookup[id] = memberStruct;
@@ -683,8 +741,69 @@ App.StonehearthTeamCrafterView = App.View.extend({
       // sort first by level, then by entity id
       // they're both numeric, and 0 equates to false, so we can do it with one expression
       self._memberArray.sort((a, b) => (a.level - b.level) || (a.id - b.id));
+      self.set('allMembers', self._memberArray.slice());
       self._buildRecipeArray();
       self._updateFullDetailedOrderList();
+
+      Ember.run.scheduleOnce('afterRender', function() {
+         self.$('#allCrafters .categoryCrafter').each(function() {
+            var $elem = $(this);
+            App.tooltipHelper.createDynamicTooltip($elem, function () {
+               var id = $elem.attr('crafterId');
+
+               var member = self._memberLookup[id];
+               if (member) {
+                  var data = {
+                     name: member.name,
+                     level: member.level,
+                  };
+
+                  var categories = [];
+                  radiant.each(self.allCategories, function(category, data) {
+                     categories.push({
+                        category: data.category,
+                        ordinal: data.ordinal,
+                        proficiency: member.category_profiencies[category] || 0,
+                        enabled: !member.categoryMembers[category].disabled,
+                     });
+                  });
+                  categories.sort(self._compareByOrdinal);
+
+                  // TODO: say current status (no/some/all categories enabled); what clicking will do; list all category proficiencies for this member
+                  // change these tooltips to have the crafter name as the title and then clear/bolded description text about what clicking will do
+
+                  var tooltipString;
+                  switch (member.categoryCraftingClass) {
+                     case 'enabledCrafting':
+                        tooltipString = `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.status_all_enabled')}</div><div class='verticalSpacer'>` +
+                              i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.disable_all_description', data) + '</div>';
+                        break;
+                     case 'allDisabledCrafting':
+                        tooltipString = `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.status_all_disabled')}</div><div class='verticalSpacer'>` +
+                              i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.enable_all_description', data) + '</div>';
+                        break;
+                     case 'someEnabledCrafting':
+                        tooltipString = `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.status_some_enabled')}</div><div class='verticalSpacer'>` +
+                        i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.enable_all_description', data) + '</div>';
+                        break;
+                  }
+
+                  tooltipString += '<div class="details"><div class="stat"><span>' +
+                        i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.proficiencies') + '</span></div>';
+
+                  categories.forEach(function(category) {
+                     var categoryName = i18n.t(category.category);
+                     var proficiency = Math.min(100, Math.floor(category.proficiency * 100));
+                     var headerClass = category.enabled ? 'available' : 'unavailable';
+                     tooltipString += `<div class="stat"><span class="header ${headerClass}">${categoryName}</span><span class="value">${proficiency}</span>%</div>`;
+                  });
+                  tooltipString += '</div>';
+
+                  return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.title', data), tooltipString));
+               }
+            });
+         });
+      });
    },
 
    // Go through recipes displayed and update based on whether recipe is now craftable or not
@@ -936,6 +1055,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
    // TODO: can't that fn just call _build_workshop_ui?
    _contentChanged: function() {
       Ember.run.scheduleOnce('afterRender', this, '_build_workshop_ui');
+      Ember.run.scheduleOnce('afterRender', this, '_applySearchFilter');
    }.observes('recipes'),
 
    _ordersTableSortable: function(table) {
@@ -1051,49 +1171,15 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
       });
       self.searchInput.keyup(function (e) {
-         var searchTitle = self.get('searchTitle');
-         var searchDescription = self.get('searchDescription');
-         var searchIngredients = self.get('searchIngredients');
-         // if not searching for anything, just cancel
-         if (!searchTitle && !searchDescription && !searchIngredients) {
-            return;
-         }
-
          if (e.key == 'Escape') {
             self.searchInput.val('');
             e.stopPropagation();
          }
 
          var search = $(this).val().toLowerCase();
+         self._curSearchTerm = search;
 
-         if (!search || search == '') {
-            self.$('.item:not(.is-hidden)').show();
-            self.$('.category').show();
-         } else {
-            self.$('.category').show();
-
-            // hide items that don't match the search
-            self.$('.item:not(.is-hidden)').each(function (i, item) {
-               var el = $(item);
-               var recipeKey = el.attr('recipe_key');
-
-               if(self._recipeMatchesSearch(recipeKey, search, searchTitle, searchDescription, searchIngredients)) {
-                  el.show();
-               } else {
-                  el.hide();
-               }
-            })
-
-            self.$('.category').each(function(i, category) {
-               var el = $(category)
-
-               if (el.find('.item:visible').length > 0) {
-                  el.show();
-               } else {
-                  el.hide();
-               }
-            })
-         }
+         self._applySearchFilter();
 
          if (e.key == 'Enter' || e.key == 'Escape') {
             self.searchInput.blur();
@@ -1162,6 +1248,48 @@ App.StonehearthTeamCrafterView = App.View.extend({
       // Current recipe can be set by autotest before we reach this point.
       if (!this.currentRecipe) {
          this._selectFirstValidRecipe();
+      }
+   },
+
+   _applySearchFilter: function() {
+      var self = this;
+      var search = self._curSearchTerm;
+
+      var searchTitle = self.get('searchTitle');
+      var searchDescription = self.get('searchDescription');
+      var searchIngredients = self.get('searchIngredients');
+      // if not searching for anything, just cancel
+      if (!searchTitle && !searchDescription && !searchIngredients) {
+         return;
+      }
+
+      if (!search || search == '') {
+         self.$('.item:not(.is-hidden)').show();
+         self.$('.category').show();
+      } else {
+         self.$('.category').show();
+
+         // hide items that don't match the search
+         self.$('.item:not(.is-hidden)').each(function (i, item) {
+            var el = $(item);
+            var recipeKey = el.attr('recipe_key');
+
+            if(self._recipeMatchesSearch(recipeKey, search, searchTitle, searchDescription, searchIngredients)) {
+               el.show();
+            } else {
+               el.hide();
+            }
+         });
+
+         self.$('.category').each(function(i, category) {
+            var el = $(category)
+
+            if (el.find('.item:visible').length > 0) {
+               el.show();
+            } else {
+               el.hide();
+            }
+         });
       }
    },
 
@@ -1333,7 +1461,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       // when the recipes get updated, wait for Ember.run.scheduleOnce('afterRender',) and then do dynamic tooltips
       var self = this;
       Ember.run.scheduleOnce('afterRender', function() {
-         self.$('.categoryCrafter').each(function() {
+         self.$('#recipeItems .categoryCrafter').each(function() {
             var $elem = $(this);
             App.tooltipHelper.createDynamicTooltip($elem, function () {
                var id = $elem.attr('crafterId');
@@ -1345,7 +1473,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   var data = {
                      name: member.name,
                      level: member.level,
-                     category: self.allCategories[category].display_name,
+                     category: self.allCategories[category].category,
                   };
 
                   var tooltipString = disable && i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.disable_description', data) ||
@@ -1355,7 +1483,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                         i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.proficiency') +
                         `</span><span class="value">${Math.min(100, Math.floor((member.category_profiencies[category] || 0) * 100))}</span>%</div></div>`;
 
-                  return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.title'), tooltipString));
+                  return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth_ace:ui.game.show_workshop.category_crafter.title', data), tooltipString));
                }
             });
          });
@@ -1531,13 +1659,15 @@ App.StonehearthTeamCrafterView = App.View.extend({
             // then it can only be performed by an auto-crafter, so just show the entity icon
             for (j = 0; j < curCrafters.length; j++) {
                var crafter = curCrafters[j];
-               var crafterDiv = orderListRow.find(`.workerPortrait[crafter_id=${crafter.id}]`);
-               if (recipe.is_auto_craft) {
-                  var catalogData = crafter && App.catalog.getCatalogData(crafter.uri);
-                  crafterDiv.attr('src', catalogData && catalogData.icon);
-               }
-               else {
-                  crafterDiv.attr('src', '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=object://game/' + crafter.id);
+               var crafterDiv = orderListRow.find(`.workerPortrait[crafter_id='${crafter.__self}']`);
+               if (crafterDiv.length > 0) {
+                  if (recipe.is_auto_craft) {
+                     var catalogData = crafter && App.catalog.getCatalogData(crafter.uri);
+                     crafterDiv.attr('src', catalogData && catalogData.icon);
+                  }
+                  else {
+                     crafterDiv.attr('src', '/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=' + crafter.__self);
+                  }
                }
             }
          }
@@ -1637,7 +1767,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                var category = self.allCategories[recipe.category];
                requirementsString = requirementsString +
                                  i18n.t('stonehearth_ace:ui.game.show_workshop.category_level_requirement_needed', {
-                                    category: category.display_name,
+                                    category: category.category,
                                     class: self.get('model.class_name'),
                                     level: recipe.level_requirement || 1,
                                  }) + '<br>';
