@@ -26636,10 +26636,16 @@
                "maintain_description": "Click to toggle whether Maintain crafting orders are enabled for this workshop.<br><br>Note: Make orders are prioritized over Maintain orders."
             },
             "category_crafter": {
-               "title": "Toggle Category Crafting",
-               "enable_description": "Enable crafting of [str(category)] for <span class='bold'>[str(name)]</span> (level <span class='bold'>[str(level)]</span>).",
-               "disable_description": "Disable crafting of [str(category)] for <span class='bold'>[str(name)]</span> (level <span class='bold'>[str(level)]</span>).",
-               "proficiency": "Crafting Proficiency:"
+               "title": "[str(name)] - Lvl [str(level)]",
+               "enable_description": "Click to <span class='available'>Enable</span> crafting of <span class='value'>[str(category)]</span> for <span class='bold'>[str(name)]</span>.",
+               "disable_description": "Click to <span class='unavailable'>Disable</span> crafting of <span class='value'>[str(category)]</span> for <span class='bold'>[str(name)]</span>.",
+               "enable_all_description": "Click to <span class='available'>Enable</span> crafting of <span class='value'>all categories</span> for <span class='bold'>[str(name)]</span>.",
+               "disable_all_description": "Click to <span class='unavailable'>Disable</span> crafting of <span class='value'>all categories</span> for <span class='bold'>[str(name)]</span>.",
+               "proficiency": "Crafting Proficiency:",
+               "proficiencies": "Crafting Proficiencies:",
+               "status_all_disabled": "All crafting categories are currently <span class='unavailable'>Disabled</span>.",
+               "status_all_enabled": "All crafting categories are currently <span class='available'>Enabled</span>.",
+               "status_some_enabled": "Some crafting categories are currently <span class='available'>Enabled</span> and some are <span class='unavailable'>Disabled</span>."
             },
             "craft_button": {
                "title": "Craft",
