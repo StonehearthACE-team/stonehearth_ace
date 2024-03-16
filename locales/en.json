@@ -12852,6 +12852,16 @@
                "description": "Craft a very useful accessory that will allow Workers to be much more efficient at hauling.",
                "flavor": "Workers with backpacks won't be slowed down by carrying things and will pack/unpack faster"
             },
+            "backpack_crafter_toolbelt_recipe": {
+               "recipe_name": "Crafter's Tool Belt",
+               "description": "Create a handy accessory that will allow any crafter to be a bit more efficient at hauling.",
+               "flavor": "Crafters with tool belts won't be slowed down by carrying things and will pack/unpack faster"
+            },
+            "backpack_farmer_basket_recipe": {
+               "recipe_name": "Farmer's Back Basket",
+               "description": "Weave a neat basket that will allow Farmers to be much more efficient at hauling.",
+               "flavor": "Farmers with back baskets won't be slowed down by carrying things and will pack/unpack faster"
+            },
             "sleeping_bag_recipe": {
                "recipe_name": "Bedroll",
                "description": "Better than the ground but not really a homely bedding. Very portable, though!",
@@ -13564,7 +13574,7 @@
             "wooden_sign_brewer_recipe": {
                "recipe_name": "Brewer's Wall-Mounted Sign",
                "description": "A sign with the mark of the Brewer, to be placed on buildings.",
-               "flavor": "The hexagram is one of the oldest and most traditional brewing symbols"
+               "flavor": ""
             },
             "brewer_workbench_recipe": {
                "recipe_name": "Brewer's Table",
@@ -24391,6 +24401,14 @@
          "building_hammer_golem": {
             "display_name": "Golem Building Hammer",
             "description": "Ready to work!"
+         },
+         "backpack_crafter_toolbelt": {
+            "display_name": "Crafter's Tool Belt",
+            "description": "Allows any crafter to be much faster when picking up, dropping and carrying items."
+         },
+         "backpack_farmer_basket": {
+            "display_name": "Farmer's Back Basket",
+            "description": "Allows a Farmer to be a lot more efficient when picking up, dropping and carrying items."
          }
       },
       "tile": {
@@ -26689,7 +26707,7 @@
                "maintain_description": "Click to toggle whether Maintain crafting orders are enabled for this workshop.<br><br>Note: Make orders are prioritized over Maintain orders."
             },
             "category_crafter": {
-               "title": "[str(name)] - Lvl [str(level)]",
+               "title": "[str(name)] - Level [str(level)]",
                "enable_description": "Click to <span class='available'>Enable</span> crafting of <span class='value'>[str(category)]</span> for <span class='bold'>[str(name)]</span>.",
                "disable_description": "Click to <span class='unavailable'>Disable</span> crafting of <span class='value'>[str(category)]</span> for <span class='bold'>[str(name)]</span>.",
                "enable_all_description": "Click to <span class='available'>Enable</span> crafting of <span class='value'>all categories</span> for <span class='bold'>[str(name)]</span>.",
@@ -26957,7 +26975,7 @@
                   "tooltip_job_tool": "Job Tools",
                   "tooltip_worker_outfit": "Worker Outfits & Hats",
                   "tooltip_worker_tools": "Worker Tools",
-                  "tooltip_backpack": "Worker Backpacks",
+                  "tooltip_backpack": "Backpacks & Tool Belts",
                   "tooltip_magic_weapon": "Magic Artifacts",
                   "tooltip_combat_cape": "Capes & Cloaks",
                   "tooltip_combat_consumable": "Combat Potions",
@@ -27114,7 +27132,7 @@
                "consumable": "Equippable Consumable",
                "accessory": "Accessory",
                "cape": "Cover",
-               "backpack": "Backpack",
+               "backpack": "Hauling Enhancer",
                "quiver_arrows": "Arrow Quiver",
                "quiver_bolts": "Bolt Quiver",
                "cleric_tome": "Healing Tome",
@@ -27269,7 +27287,7 @@
          },
          "fence_mode": {
             "crafter_requirement": "Requires: ",
-            "level_requirement": "Lvl [str(level)]",
+            "level_requirement": "Level [str(level)]",
             "presets": {
                "wood1": "Default Preset: Wood",
                "ornate_wood1": "Default Preset: Ornate Wood",

@@ -1,0 +1,66 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(backpack_farmer_basket_equipped.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "true",
+            "models": [
+               "file(backpack_farmer_basket_equipped_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(backpack_farmer_basket_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "backpack",
+         "render_type": "merge_with_model",
+         "ilevel": 2,
+         "roles": [
+            "farmer_job"
+         ],
+         "equip_effect": "stonehearth:effects:weapon_level_up",
+         "injected_buffs": [
+            "stonehearth_ace:buffs:tools:backpack_leather"
+         ],
+         "equipment_types": [
+            "backpack"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 22,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tools.backpack_farmer_basket.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tools.backpack_farmer_basket.description)",
+         "icon": "file(backpack_farmer_basket.png)",
+         "category": "tools",
+         "material_tags": [
+            "cloth",
+            "crafted",
+            "backpack",
+            "farmer_basket",
+            "stockpile_equipment",
+            "civillian_equipment"
+         ]
+      }
+   }
+}
