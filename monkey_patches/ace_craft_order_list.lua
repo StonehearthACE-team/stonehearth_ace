@@ -158,7 +158,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
       log:error('auto-craft recipes can only be maintain orders')
       return false
    end
-   
+
    local is_recursive_call = associated_orders ~= nil
 
    -- if it's a maintain order, and it's a child order or the player prefers updating maintain orders, try to modify an existing maintain order
@@ -177,6 +177,10 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
          local order_condition = order:get_condition()
          local order_at_least = order_condition.at_least
          local quality_preference_changed = order_condition.prefer_high_quality ~= condition.prefer_high_quality
+         if condition.quick_add then
+            at_least = order_at_least + at_least
+            condition.prefer_high_quality = order_condition.prefer_high_quality
+         end
 
          if at_least >= order_at_least or (not is_recursive_call and at_least <= order_at_least) then
             -- only allow reducing the quantity if this is a direct add_order call
@@ -198,7 +202,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
          return true
       end
    end
-   
+
    if not self:_should_auto_queue_recipe_dependencies(player_id) then
       return self:insert_order(player_id, recipe, condition, nil, building)
    end
@@ -212,7 +216,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
    -- Process the recipe's ingredients to see if the crafter has all she needs for it
    for _, ingredient in pairs(recipe.ingredients) do
       local ingredient_id = ingredient.uri or ingredient.material
-      
+
       -- because of the way the UI works with min_stacks, we may need to replace the ingredient count
       log:debug('checking ingredient "%s" with count %s (%s)', ingredient_id, ingredient.count, tostring(ingredient.original_count))
       ingredient.count = ingredient.original_count or ingredient.count
@@ -651,7 +655,7 @@ function AceCraftOrderList:get_next_order(crafter)
          local order_id = order:get_id()
          local craftable = self._craftable_orders[order_id]
          if craftable ~= false then
-            if (order:has_current_crafter(crafter) or order:conditions_fulfilled()) and 
+            if (order:has_current_crafter(crafter) or order:conditions_fulfilled()) and
                   order:should_execute_order(crafter) then
                --log:debug('given order %d back to crafter %s', i, crafter)
 
@@ -705,7 +709,7 @@ end
 
 function AceCraftOrderList:_create_stuck_timer()
    self:_destroy_periodic_stuck_timer()
-   
+
    -- Note: don't clear the stuck_orders table in _on_inventory_changed, since the inventory changes when the crafter drops the leftovers
    -- so the same order would be picked again and again
    if self:has_stuck_orders() then
