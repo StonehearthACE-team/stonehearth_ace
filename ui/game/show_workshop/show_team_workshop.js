@@ -473,7 +473,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self.$('.orders, .garbageList').enableSelection();
       self.$('#orderListContainer table').enableSelection();
 
-      App.guiHelper.removeDynamicTooltip(self.$('#recipeItems'), '[recipe_key]');
+      App.guiHelper.removeDynamicTooltip(self.$('#recipeItems'), '.productIcon');
       App.guiHelper.removeDynamicTooltip(self.$('#craftingWindow'), '.statusSign');
 
       if (self.$('#recipeItems')) {
@@ -1215,7 +1215,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       App.guiHelper.addTooltip(self.$('#searchIngredientsDiv'), 'stonehearth_ace:ui.game.show_workshop.search_ingredients_description');
 
       //App.tooltipHelper.createDynamicTooltip(self.$('[title]'));
-      App.guiHelper.createDynamicTooltip(self.$('#recipeItems'), '[recipe_key]', function($el) {
+      App.guiHelper.createDynamicTooltip(self.$('#recipeItems'), '.productIcon', function($el) {
          var key = $el.attr('recipe_key');
          var recipe = self._getOrCalculateRecipeData(key);
          var jobAlias = self.get('model.alias');
