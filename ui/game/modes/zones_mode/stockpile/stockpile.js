@@ -424,7 +424,7 @@ App.StonehearthStockpileView = App.StonehearthBaseZonesModeView.extend({
          var jobAlias = recipe.job;
          recipe = recipe.recipe;
          var options = {
-            recipe_key: jobAlias + "|" + key,
+            //recipe_key: jobAlias + "|" + key,
             display_name: recipe.display_name,
             description: recipe.description,
          };
