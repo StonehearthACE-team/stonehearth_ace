@@ -1,8 +1,24 @@
 {
    "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(wooden_sign_weaver.qb)"
+            ]
+         }
+      },
       "mob": {
-         "model_origin": { "x": -0.05 }
+         "model_origin": {
+            "x": -0.05
+         }
       }
    },
-   "entity_data": {}
+   "entity_data": {
+      "stonehearth:catalog": {
+         "icon": "file(wooden_sign_weaver.png)"
+      }
+   }
 }
