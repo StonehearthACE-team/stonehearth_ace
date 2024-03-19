@@ -29,9 +29,9 @@
 
    // ACE:
    z-index: 1;
-   image-rendering: pixelated;
+   //image-rendering: pixelated;
    img {
-      image-rendering: initial;
+      //image-rendering: initial;
    }
 
    #shingle {
@@ -133,7 +133,7 @@
       width: 68px;
       height: 128px;
       color: #fff;
-      image-rendering: initial;
+      //image-rendering: initial;
    }
 
    // ACE:
@@ -143,14 +143,22 @@
 
    // ACE:
    .statusSign.open {
-      background: url(/stonehearth_ace/ui/game/show_workshop/images/sign_green.png);
+      background: url(/stonehearth_ace/ui/game/show_workshop/images/sign_primary.png);
       -webkit-transform: rotate(-4deg);
+
+      &.secondaryList {
+         background: url(/stonehearth_ace/ui/game/show_workshop/images/sign_secondary.png);
+      }
    }
 
    // ACE:
    .statusSign.closed {
-      background: url(/stonehearth_ace/ui/game/show_workshop/images/sign_yellow.png);
+      background: url(/stonehearth_ace/ui/game/show_workshop/images/sign_primary_disabled.png);
       -webkit-transform: rotate(4deg);
+
+      &.secondaryList {
+         background: url(/stonehearth_ace/ui/game/show_workshop/images/sign_secondary_disabled.png);
+      }
    }
 
    // ACE:
@@ -950,7 +958,7 @@
    width: 100px;
    height: 700px;
    position: absolute;
-   top: 0px;
+   top: -4px;
    left: 1132px;
 
    &.shiftedRight {
@@ -991,10 +999,20 @@
       width: 70px;
       height: 74px;
       text-align: center;
-      margin-bottom: 4px;
+      margin-top: 4px;
 
       .invisible {
          visibility: hidden;
+      }
+
+      &.buildingHighlighted {
+         box-shadow: 0px 0px 4px 2px #5286BF;
+         filter: brightness(1.3);
+      }
+
+      &.craftHighlighted {
+         box-shadow: 0px 0px 4px 2px #CEA43B;
+         filter: brightness(1.3);
       }
 
       a {
@@ -1002,7 +1020,7 @@
          display: block;
 
          img {
-            width: 50px;
+            width: 45px;
             height: auto;
             padding-top: 3px;
          }
@@ -1019,15 +1037,37 @@
          display: block;
       }
 
-      .issueIcon {
+      .orderInfoIcon {
          .handCursor;
          position: absolute;
-         display: none;
          width: 17px;
          height: 18px;
+      }
+
+      .issueIcon {
+         display: none;
          right: 5px;
          top: 2px;
          background: url(images/issuesIcon.png);
+      }
+
+      .buildingDependencyIcon {
+         left: 5px;
+         bottom: 6px;
+         background: url(/stonehearth_ace/ui/game/show_workshop/images/dependencyTemplateIcon.png);
+      }
+
+      .craftDependencyIcon {
+         left: 5px;
+         bottom: 6px;
+         background: url(/stonehearth_ace/ui/game/show_workshop/images/dependencyCraftIcon.png);
+      }
+
+      .thresholdReachedIcon {
+         display: none;
+         left: 5px;
+         bottom: 24px;
+         background: url(/stonehearth_ace/ui/game/show_workshop/images/thresholdReachedIcon.png);
       }
 
       .deleteLabel {
