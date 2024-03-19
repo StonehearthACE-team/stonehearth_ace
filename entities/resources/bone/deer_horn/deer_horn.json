@@ -1,11 +1,11 @@
-{	
+{
    "components": {
       "model_variants": {
          "default": {
-		    "mixintypes": {
-			   "models": "override"
-			},
-         "models": [
+            "mixintypes": {
+               "models": "override"
+            },
+            "models": [
                "/stonehearth/entities/resources/pelt/deer_horn/deer_horn.qb"
             ]
          }
@@ -13,14 +13,21 @@
    },
    "entity_data": {
       "stonehearth:catalog": {
-			"display_name": "i18n(stonehearth_ace:entities.resources.pelt.deer_horn.display_name)",
+         "display_name": "i18n(stonehearth_ace:entities.resources.pelt.deer_horn.display_name)",
          "description": "i18n(stonehearth_ace:entities.resources.pelt.deer_horn.description)",
          "is_item": true,
          "category": "resources_animal",
-			"mixintypes": {
-			   "material_tags": "override"
-			},
-         "material_tags":["stockpile_animal_part", "bone", "resource", "horn", "animal_part"]
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "stockpile_bone",
+            "bone",
+            "edible",
+            "resource",
+            "horn",
+            "animal_part"
+         ]
       }
    }
 }

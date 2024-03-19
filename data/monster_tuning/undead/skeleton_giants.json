@@ -1,19 +1,15 @@
 {
    "loot_drops": {
       "entries": {
-			"big_bones": {
+         "bones": {
             "num_rolls": {
-               "min": 0,
-               "max": 2
+               "min": 1,
+               "max": 3
             },
             "items": {
-					"none": {
-                  "uri": "",
-						"weight": 4
-               },
                "bone": {
-                  "uri": "stonehearth_ace:resources:bone:bone_big",
-						"weight": 1
+                  "uri": "stonehearth_ace:resources:bone:bone_skeleton",
+                  "weight": 1
                }
             }
          },
@@ -35,9 +31,9 @@
          }
       }
    },
-	"equipment": {
+   "equipment": {
       "cut": "stonehearth_ace:weapons:inflicted_wounds:cut:hard",
-		"pierce": "stonehearth_ace:weapons:inflicted_wounds:pierce:medium",
+      "pierce": "stonehearth_ace:weapons:inflicted_wounds:pierce:medium",
       "impact": "stonehearth_ace:weapons:inflicted_wounds:impact:very_hard",
       "basic_siege": "stonehearth_ace:abilities:basic_door_breaker_abilities"
    }
