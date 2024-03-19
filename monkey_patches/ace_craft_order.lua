@@ -17,7 +17,7 @@ function AceCraftOrder:on_item_created(primary_output)
          condition.requested_amount = condition.requested_amount - primary_output
       end
    end
-   
+
    self:_ace_old_on_item_created()
 end
 
@@ -25,6 +25,11 @@ function AceCraftOrder:restore()
    if self._sv._auto_crafting then
       self._sv._auto_queued = true
       self._sv._auto_crafting = nil
+   end
+
+   if self._sv._associated_orders then
+      self._sv.associated_orders = self._sv._associated_orders
+      self._sv._associated_orders = nil
    end
 end
 
@@ -47,7 +52,7 @@ function AceCraftOrder:activate()
    if not self._sv.curr_crafters then
       self._sv.curr_crafters = {n = 0}
       self._sv.curr_crafter_count = 0
-      
+
       -- if we're activating from a non-ACE save...
       if self._sv.curr_crafter then
          self:_add_curr_crafter(self._sv.curr_crafter)
@@ -55,7 +60,7 @@ function AceCraftOrder:activate()
       end
    else
       -- make sure it's an array and not a table
-      local curr_crafters = {}
+      local curr_crafters = {n = 0}
       for id, crafter in pairs(self._sv.curr_crafters) do
          if id ~= 'n' then
             table.insert(curr_crafters, crafter)
@@ -138,6 +143,8 @@ function AceCraftOrder:_remove_curr_crafter(crafter)
          break
       end
    end
+
+   local id = crafter:get_id()
    if self._sv._order_progress_by_crafter[id] then
       self._sv._order_progress_by_crafter[id] = nil
    end
@@ -191,7 +198,7 @@ function AceCraftOrder:set_crafting_status(crafter, is_crafting)
          -- leaving these in here for now for semi-backwards compatibility
          -- self._sv.curr_crafter_id = id
          -- self._sv.curr_crafter = crafter
-         
+
          self:_add_curr_crafter(crafter)
       else
          self:_remove_curr_crafter(crafter)
@@ -437,7 +444,7 @@ function AceCraftOrder:_has_material_ingredients_for_item(ingredient, tracking_d
                   else
                      ingredient_count = ingredient_count + 1
                   end
-         
+
                   if ingredient_count >= (ingredient.min_stacks or ingredient.count) then
                      return true
                   end
@@ -538,7 +545,7 @@ end
 function AceCraftOrder:conditions_fulfilled(crafter)
    -- if we don't satisfy the order conditions, return false
    -- we're doing this BEFORE the has_ingredients because it is cheaper to early out
-   
+
    -- we pass in the crafter so we can check if that crafter is already crafting this order
    -- if they are, we can reduce the remaining/at_least check by 1
    local num_being_made = self._sv.curr_crafter_count
@@ -622,16 +629,17 @@ function AceCraftOrder:set_auto_queued(value)
 end
 
 function AceCraftOrder:get_associated_orders()
-   return self._sv._associated_orders
+   return self._sv.associated_orders
 end
 
 -- returns the entry for this order
 function AceCraftOrder:set_associated_orders(associated_orders, ingredient_per_craft)
-   self._sv._associated_orders = associated_orders
+   self._sv.associated_orders = associated_orders
    if not associated_orders then
+      self.__saved_variables:mark_changed()
       return
    end
-   
+
    -- if this order is already in the associated orders, return its entry
    for _, associated_order in ipairs(associated_orders) do
       if associated_order.order == self then
@@ -643,6 +651,7 @@ function AceCraftOrder:set_associated_orders(associated_orders, ingredient_per_c
    table.insert(associated_orders, {
       order = self,
    })
+   self.__saved_variables:mark_changed()
    return associated_orders[#associated_orders]
 end
 
