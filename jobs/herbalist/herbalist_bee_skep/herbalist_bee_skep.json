@@ -85,6 +85,7 @@
          }
       },
       "movement_modifier_shape": {
+         "nav_preference_modifier": -0.1,
          "region": [
             {
                "min": { "x": -6, "y": -1, "z": -6 },
@@ -96,26 +97,22 @@
          "seasonal_buffs": {
             "spring": {
                "add": {
-                  "stonehearth_ace:buffs:bee_skep": true,
-                  "stonehearth_ace:buffs:bee_skep_mms": true
+                  "stonehearth_ace:buffs:bee_skep": true
                }
             },
             "summer": {
                "add": {
-                  "stonehearth_ace:buffs:bee_skep": true,
-                  "stonehearth_ace:buffs:bee_skep_mms": true
+                  "stonehearth_ace:buffs:bee_skep": true
                }
             },
             "autumn": {
                "add": {
-                  "stonehearth_ace:buffs:bee_skep": true,
-                  "stonehearth_ace:buffs:bee_skep_mms": true
+                  "stonehearth_ace:buffs:bee_skep": true
                }
             },
             "winter": {
                "remove": {
-                  "stonehearth_ace:buffs:bee_skep": true,
-                  "stonehearth_ace:buffs:bee_skep_mms": true
+                  "stonehearth_ace:buffs:bee_skep": true
                }
             }
          }
