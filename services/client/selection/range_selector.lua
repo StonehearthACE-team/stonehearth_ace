@@ -769,22 +769,20 @@ function XYZRangeSelector:_recalc_current_region(is_final)
             -- prioritize the simplest checks
             if self._can_pass_through_terrain and entity:get_id() == terrain_entity_id then
                -- ignore
-            elseif self._can_pass_through_buildings and (entity:get_component('stonehearth:build2:structure') or
-               radiant.entities.get_entity_data(entity, 'stonehearth:build2:widget') ~= nil or
-               radiant.entities.get_entity_data(entity, 'stonehearth:build2:blueprint') ~= nil) then
+            elseif self._can_pass_through_buildings and entity:get_component('stonehearth:build2:structure') then
                -- ignore
             elseif self._relative_entity and (self._relative_entity == entity or
                (self._ignore_children and radiant.entities.is_child_of(entity, self._relative_entity))) then
                -- ignore
             elseif self._can_contain_entity_filter_fn and not self._can_contain_entity_filter_fn(entity, self) then
-               log:debug('entity %s failed can_contain_entity_filter', entity)
+               --log:debug('entity %s failed can_contain_entity_filter', entity)
                cube_is_good = false
                break
             else
                local rcs = entity:get_component('region_collision_shape')
                local rc_type = rcs and rcs:get_region_collision_type()
                if rc_type == RegionCollisionType.SOLID or rc_type == RegionCollisionType.PLATFORM then
-                  log:debug('entity %s failed collision check', entity)
+                  --log:debug('entity %s failed collision check', entity)
                   cube_is_good = false
                   break
                end

@@ -258,9 +258,6 @@ function SiblingEntitiesComponent:_update_sibling(sibling, location, facing, com
          location = radiant.entities.local_to_world(Cube3(sibling.offset), self._entity).min
       end
 
-      local parent = radiant.entities.get_parent(self._entity)
-      location = radiant.entities.world_to_local(location, parent)
-
       radiant.entities.move_to(entity, location)
    end
 

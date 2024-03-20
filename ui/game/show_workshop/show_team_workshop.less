@@ -1,158 +1,15 @@
-/*Move to a central file?*/
-.ui-helper-hidden-accessible {
-   display: none;
-}
-
-.ui-autocomplete {
-   .woodthin;
-   padding: 10px;
-   max-height: 600px;
-   width: 300px;
-   /*TODO: handle scrolling*/
-   z-index: 4;
-   list-style-type: none;
-   background: @woodDarkestColor;
-}
-
-/*TODO: make menus more beautiful!*/
-.ui-menu .ui-menu-item a.ui-state-focus,
-.ui-menu .ui-menu-item a.ui-state-active {
-   color:  @goldColor;
-}
-
 #craftWindow {
-   top: -1000px;
-   position: absolute;
-   width: 1200px;
-   height: 900px;
-   background-repeat: no-repeat;
-   // ACE:
    z-index: 1;
-
-   #shingle {
-      .controlFont;
-      position: absolute;
-      top: 28px;
-      left: 42px;
-      width: 970px;
-      height: 130px;
-
-      #title {
-         color: @controlFontColor;
-         font-size: 32px;
-         padding-left: 40px;
-         padding-top: 26px;
-      }
-
-      #subtitle {
-         font-size: 16px;
-         color: @controlLightFontColor;
-         display: block;
-         height: 20px;
-         margin-top: 4px;
-         padding-left: 40px;
-      }
-
-      #closeButton {
-         position: absolute;
-         top: 20px;
-         right: 20px;
-         width: 25px;
-         height: 27px;
-         display: block;
-         background: url(images/close_button.png);
-      }
-   }
-
-   // ACE:
-   #maintainOrderListBar {
-      position: absolute;
-      top: 0px;
-      left: 1138px;
-      height: 900px;
-      width: 200px;
-      background-position: -1201px 0px;
-   }
-
-   // #statusSign {
-   //    position: absolute;
-   //    top: 0px;
-   //    right: 0px;
-   //    width: 175px;
-   //    height: 128px;
-   //    color: #fff;
-
-   //    #message {
-   //       .controlFont;
-   //       position: absolute;
-   //       top: 70px;
-   //       left: 0px;
-   //       right: 0px;
-   //       display: table-cell;
-   //       text-align: center;
-   //       font-size:30px;
-   //    }
-
-   //    &:hover {
-   //       color: #ffc000;
-   //    }
-   // }
-
-   // #statusSign.open {
-   //    background: url('./images/sign_green.png');
-   //    -webkit-transform: rotate(-4deg);
-   // }
-
-   // #statusSign.closed {
-   //    background: url('./images/sign_yellow.png');
-   //    -webkit-transform: rotate(-4deg);
-   // }
 }
 
 #craftingWindow {
-   position: absolute;
-   left: 44px;
-   top: 136px;
-   padding: 0px;
-   margin: 0px;
-   color: #fff;
-
-   //ACE:
-   .statusSign {
-      .button;
-      position: absolute;
-      top: -120px;
-      left: 1140px;
-      width: 68px;
-      height: 82px;
-      color: #fff;
-   }
-
-   // ACE:
-   .statusSign.shiftedRight {
-      left: 1221px;
-   }
-
-   // ACE:
-   .statusSign.open {
-      background: url(/stonehearth_ace/ui/game/show_workshop/images/sign_green.png);
-      -webkit-transform: rotate(-4deg);
-   }
-
-   // ACE:
-   .statusSign.closed {
-      background: url(/stonehearth_ace/ui/game/show_workshop/images/sign_yellow.png);
-      -webkit-transform: rotate(4deg);
-   }
-
-   // ACE:
-   .craftInsert {
+   #craftInsert {
       position: relative;
       width: 70px;
       height: 74px;
       margin-bottom: 4px;
       display: none;
-      background-image: url(/stonehearth_ace/ui/game/show_workshop/images/insert.png);
+      background-image: url("images/insert.png");
 
       img {
          margin: auto;
@@ -163,191 +20,110 @@
       }
    }
 
-   .tabPage {
-      display: none;
-   }
-
-   label {
-      .arrowCursor;
-   }
-
-   #recipeTab {
-      .decor {
-         display: none;
+   #details {
+      #productCount {
          position: absolute;
-         left: 696px;
-         top: -27px;
-         width: 431px;
-         height: 795px;
+         top: 21px;
+         left: 8px;
+         font-size: 12px;
       }
-   }
-   #orderListTab  {
-   }
 
-   #tabContainer {
-      width: 700px;
+      .noProductsInInventory {
+         color: #992222;
+      }
 
-      #tabs {
-         position: absolute;
-         top: 709.2px;
+      #recipeEquipmentPane {
+         #levelRequirement {
+            padding-left: 4px;
+         }
+
+         #equipmentTypes {
+            padding-top: 8px;
+         }
+
+         .buff, .debuff {
+            height: 50px;
+            width: 50px;
+            position: relative;
+         }
+
+         .buff {
+            background: rgb(64, 128, 64)
+         }
+         .debuff {
+            background: rgb(128, 64, 64)
+         }
+
+         .buffImg {
+            padding: 3px 5px;
+            width: 40px;
+         }
+
+         .stacks {
+            position: absolute;
+            left: 1px;
+            bottom: 1px;
+            font-family: "groboldregular";
+            color: #ebebeb;
+            .outlinedThin;
+         }
+      }
+
+      #stats {
+         .stat.damage, .stat.armor {
+            background-repeat: no-repeat;
+            background-position: center;
+            width: auto;
+         }
+
+         .stat.satisfaction {
+            background: #dad5bb;
+            border: 3px black solid;
+            border-radius: 15px;
+            color: black;
+            text-shadow: none;
+            font-size: 17px;
+            font-family: 'GroboldRegular';
+            width: auto;
+            height: auto;
+            padding: 10px 10px 5px 40px;
+            background-repeat: no-repeat;
+            background-position: 6px 3px;
+            line-height: 22px;
+         }
+
+         .stat.satisfaction.food.high {
+            background-image: url(/stonehearth_ace/ui/images/satisfaction/food_satisfaction_high.png);
+         }
+         .stat.satisfaction.food.average {
+            background-image: url(/stonehearth_ace/ui/images/satisfaction/food_satisfaction_average.png);
+         }
+         .stat.satisfaction.food.low {
+            background-image: url(/stonehearth_ace/ui/images/satisfaction/food_satisfaction_low.png);
+         }
+         .stat.satisfaction.drink.high {
+            background-image: url(/stonehearth_ace/ui/images/satisfaction/drink_satisfaction_high.png);
+         }
+         .stat.satisfaction.drink.average {
+            background-image: url(/stonehearth_ace/ui/images/satisfaction/drink_satisfaction_average.png);
+         }
+         .stat.satisfaction.drink.low {
+            background-image: url(/stonehearth_ace/ui/images/satisfaction/drink_satisfaction_low.png);
+         }    
+         .stat.satisfaction.food.animal {
+            background-image: url(/stonehearth_ace/ui/images/satisfaction/food_satisfaction_animal.png);
+         }
       }
    }
 
    #recipeList {
-      position: absolute;
-      top: 4px;
-      left: 3px;
-      width: 685px;
-      height: 515px;
-      padding: 0px;
-      margin: 0px;
-      background: rgba(255, 0, 0, 0.0);
-
-      #topBar {
-         position: absolute;
-         display: flex;
-         width: 690px;
-         z-index: 1;
-
-         // ACE:
-         #searchContainer {
-            flex-grow: 999;
-
-            #searchBox {
-               height: 50px;
-               border-image-source: url(images/craftSearchBar.png);
-               border-image-slice: 5 35 4 3 fill;
-               border-image-repeat: repeat;
-               border-width: 5px 35px 4px 3px;
-               border-style: solid;
-
-               input {
-                  .baseFont;
-                  background: rgba(0,0,0,0.0);
-                  height: 25px;
-                  width: 100%;
-                  border-style: none;
-                  padding: 10px 45px 10px 10px;
-                  color: white;
-               }
-            }
-
-            #searchSettingContainer {
-               margin-top: -4px;
-               display: flex;
-               flex-direction: row;
-               //justify-content: space-between;
-               padding-bottom: 10px;
-               border-image-source: url(/stonehearth_ace/ui/game/show_workshop/images/craftSearchSettingsBar.png);
-               border-image-slice: 0 4 4 3 fill;
-               border-image-repeat: repeat;
-               border-width: 0px 4px 4px 3px;
-               border-style: solid;
-
-               &.hidden {
-                  display: none;
-               }
-            }
-         }
-
-         #allCrafters {
-            padding: 20px 18px 0px 10px;
-         }
-      }
-
-      #recipeItems {
-         //position: relative;
-         margin-top: 62px;
-         background: rgba(0, 0, 0, 0.5);
-         max-height: 500px;
-         overflow-y: auto;
-         border: 2px solid #000;
-         border-top: 5px solid #000;
-         padding: 4px 10px;
-
-         h3 {
-            color: #d2ac5a;
-            font-size: 16px;
-            margin: 10px 0 0 0;
-         }
-
-         .item {
-            float: left;
-            width: 65px;
-            height: 69px;
-            border: 0px;
-            margin-right: 4px;
-            margin-bottom: 4px;
-            background-position: 0px -930px;
-            display: flex;
-
-            &:hover {
-               background-position: -66px -930px;
-
-               &.is-auto-craft {
-                  background-position: -198px -930px;
-               }
-            }
-
-            &[is_craftable="0"] {
-               opacity: 0.5;
-            }
-
-            img {
-               width: 46px;
-               height: auto;
-               margin: auto;
-            }
-         }
-
-         .item.is-locked {
-            -webkit-filter: grayscale(75%);
-         }
-
-         .item.is-hidden {
-            display: none;
-         }
-
-         .item.is-auto-craft {
-            background-position: -132px -930px;
-         }
-      }
-
-      .ui-accordion {
-         .ui-accordion-header {
-            .control;
-            background: url(images/ui_accordion_header_bg.png);
-            border: 0px;
-            //border-width: 9px 12px 9px 12px;
-            //border-image: url(images/wood/accordion/accordion_heading.png) 9 12 9 12 repeat;
-            margin: 0 0 1px 0;
-            line-height: 1.8em;
-            padding-left: 8px;
-
-         }
-
-         h3 {
-               font-weight: normal;
-               letter-spacing: 0px;
-               color: @controlLightFontColor !important;
-         }
-
-         .ui-accordion-content {
-            padding-left: 8px;
-            padding-top: 12px;
-            a {
-               color: #fff;
-            }
-         }
-      }
-
-      // ACE:
       .categoryHeader {
          display: flex;
          flex-direction: row;
          align-items: flex-end;
          justify-content: space-between;
-         height: 24px;
+         width: 100%;
+         height: 20px;
          padding: 4px 0px;
 
          h3 {
@@ -357,16 +133,6 @@
             display: flex;
             flex-direction: row;
 
-            &.allDisabled {
-               .categoryCrafter {
-                  &.disabledCrafting {
-                     .craftingImage {
-                        background-image: url(/stonehearth_ace/ui/images/crafterAllUnselected.png);
-                     }
-                  }
-               }
-            }
-
             .categoryCrafter {
                .button;
                display: flex;
@@ -374,9 +140,9 @@
                //padding-left: 10px;
 
                .craftingImage {
-                  height: 30px;
-                  width: 26px;
-                  //margin: 0px 5px;
+                  height: 26px;
+                  width: 22px;
+                  margin: 0px 5px;
                }
 
                &.disabledCrafting {
@@ -395,22 +161,6 @@
                   }
                }
 
-               &.someEnabledCrafting {
-                  opacity: 0.9;
-
-                  .craftingImage {
-                     background-image: url(/stonehearth_ace/ui/images/crafterSomeSelected.png);
-                  }
-               }
-
-               &.allDisabledCrafting {
-                  opacity: 0.9;
-
-                  .craftingImage {
-                     background-image: url(/stonehearth_ace/ui/images/crafterAllUnselected.png);
-                  }
-               }
-
                &:hover {
                   opacity: 1;
                }
@@ -424,15 +174,29 @@
          }
       }
 
-      // ACE:
       .item.is-workshop-selected {
          box-shadow: 0px 0px 0px 2px rgb(180, 180, 180);
       }
 
-      // ACE:
       .checkboxContainer {
          padding-left: 10px;
          padding-right: 10px;
+      }
+
+      #searchSettingContainer {
+         z-index: 1;
+         position: absolute;
+         top: 45px;
+         display: flex;
+         flex-direction: row;
+         //justify-content: space-between;
+         height: 40px;
+         width: 693px;
+         background: url(images/craftSearchSettingsBar.png);
+
+         &.hidden {
+            display: none;
+         }
       }
    }
 
@@ -921,273 +685,3 @@
       }
    }
 }
-
-// ACE: (mostly changed from id to class for #orderList/#orders to support maintain order list)
-.orderList {
-   padding-left: 12px;
-   width: 100px;
-   height: 700px;
-   position: absolute;
-   top: 0px;
-   left: 1132px;
-
-   &.shiftedRight {
-      left: 1209px;
-   }
-
-   .inProgressOrder {
-      background: url(images/queue_active_bg_70.png);
-   }
-
-   .normalOrder {
-      background: url(images/queue_item_bg_70.png);
-   }
-
-   .maintainOrder {
-      background: url(/stonehearth_ace/ui/game/show_workshop/images/queue_maintain_bg_70.png);
-   }
-
-   .inProgressMaintainOrder {
-      background: url(/stonehearth_ace/ui/game/show_workshop/images/queue_active_maintain_bg_70.png);
-   }
-
-   .autoCraftOrder {
-      background: url(/stonehearth_ace/ui/game/show_workshop/images/queue_autocraft_bg_70.png);
-   }
-
-   .inProgressAutoCraftOrder {
-      background: url(/stonehearth_ace/ui/game/show_workshop/images/queue_active_autocraft_bg_70.png);
-   }
-
-   .hiddenOrder {
-      display: none;
-   }
-
-   .orderListItem {
-      position: relative;
-      .controlFont;
-      width: 70px;
-      height: 74px;
-      text-align: center;
-      margin-bottom: 4px;
-
-      .invisible {
-         visibility: hidden;
-      }
-
-      a {
-         position: relative;
-         display: block;
-
-         img {
-            width: 50px;
-            height: auto;
-            padding-top: 3px;
-         }
-      }
-
-      .amountLabel {
-         .handCursor;
-         font-size: 10px;
-         position: absolute;
-         text-align: right;
-         right: 6px;
-         bottom: 13px;
-         width: 70px;
-         display: block;
-      }
-
-      .issueIcon {
-         .handCursor;
-         position: absolute;
-         display: none;
-         width: 15px;
-         height: 16px;
-         right: 5px;
-         top: 2px;
-         background: url(images/issuesIcon.png);
-      }
-
-      .deleteLabel {
-         position: absolute;
-         top: 60px;
-         left: 10px;
-         display: none;
-         color: @warningFontColor;
-         font-size: 12px;
-      }
-
-      .showDelete {
-         display: block;
-      }
-   }
-
-   .orders {
-      height: 624px;
-      max-height: 624px;
-      overflow-y: scroll;
-   }
-
-   .orders::-webkit-scrollbar { width: 0 }
-
-   .orderListUpBtn {
-      position: absolute;
-      top: -25px;
-      left: 20px;
-
-      img {
-         content: url(images/queue_up_arrow.png);
-      }
-   }
-
-   .orderListDownBtn {
-      position: absolute;
-      top: 624px;
-      left: 20px;
-
-      img {
-         content: url(images/queue_down_arrow.png);
-      }
-   }
-
-   .orderListControls {
-      position: relative;
-      background: url(images/queue_control_bg_70.png);
-      margin-top: 27px;
-      width: 70px;
-      height: 83px;
-      background-repeat: no-repeat;
-      background-position: left top;
-
-      .garbageButton {
-         position: absolute;
-         top: 0px;
-         left: 0px;
-         width: 70px;
-         height: 60px;
-         display: block;
-         background: url(images/trash_button.png);
-         background-repeat:no-repeat;
-         background-position:center center;
-      }
-
-      .garbageList {
-         position: absolute;
-         top: -20px;
-         left: 0px;
-         width: 140px;
-         height: 100px;
-      }
-   }
-}
-
-#orderListContainer {
-   position: relative;
-   top: 0px;
-   left: 5px;
-   width: 1100px;
-   height: 650px;
-   background: rgba(0, 0, 0, 0.5);
-   max-height: 650px;
-   overflow-y: auto;
-   border: 2px solid #000;
-
-   table{
-      width: 100%;
-      overflow-x: none;
-      border: none;
-      border-collapse: collapse;
-   }
-
-   .orderListRow {
-      .controlFont;
-      width: 1100px;
-      height: 78px;
-      text-align: left;
-      vertical-align: middle;
-      margin-top: 5px;
-      margin-bottom: 5px;
-      padding-left: 5px;
-
-      .orderListRowPortrait {
-         width: 75px;
-         height: 78px;
-         background: url(images/queueItemList.png);
-         background-repeat: no-repeat;
-         background-position-y: 10px;
-
-         img {
-            width: 60px;
-            height: auto;
-            padding-left: 5px;
-         }
-      }
-
-      .orderListRowCondition {
-         width: 60px;
-         height: 90px;
-         vertical-align: middle;
-         margin-left: 5px;
-      }
-
-      .orderListRowName {
-         width: 200px;
-         margin-left: 10px;
-      }
-
-      .workerPortraitDiv {
-         width: 10%;
-         height: 69px;
-
-         .workerPortrait {
-            width: 65px;
-            height: 69px;
-         }
-      }
-
-      .orderListRowCraftingStatus {
-         padding-left: 10px;
-         width: 650px;
-         color: @warningFontColor;
-
-         .craftingStatusCurrent {
-            color: #036203;
-         }
-         .craftingStatusQueued {
-            color: #6b5933;
-         }
-
-      }
-
-      .rowDeleteButton {
-         padding-right: 10px;
-         width: 80px;
-         height: 50px;
-
-         a {
-            background: url(images/trash_button.png);
-            height: 41px;
-
-            background-repeat-x: no-repeat;
-            background-position-x: 50%;
-            display: block;
-         }
-         .deleteText {
-            float: left;
-            color: @warningFontColor;
-            font-size: 18px;
-
-            visibility: hidden;
-            opacity:0;
-         }
-
-      }
-
-      .rowDeleteButton:hover .deleteText {
-         visibility: visible;
-         opacity: 1;
-      }
-   }
-}
-
-

@@ -38,9 +38,9 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
       :set_relative_entity(entity)
       :set_rotations(rotations)
       :set_multi_select_enabled(component_data.multi_select_enabled or false)
-      :require_unblocked(component_data.require_unblocked ~= false)
-      :set_can_pass_through_terrain(component_data.can_pass_through_terrain ~= false)
-      :set_can_pass_through_buildings(component_data.can_pass_through_buildings ~= false)
+      :require_unblocked(component_data.require_unblocked or true)
+      :set_can_pass_through_terrain(component_data.can_pass_through_terrain or true)
+      :set_can_pass_through_buildings(component_data.can_pass_through_buildings or true)
       :set_ignore_middle_collision(component_data.ignore_middle_collision or false)  -- may need to set this to true if weird behavior colliding with terrain/buildings
       :set_can_contain_entity_filter(can_contain_entity_filter)
 

@@ -8,14 +8,11 @@
             {{/if}}
             <div class="closeButton"></div>
          </div>
-
+         
          {{partial '_filterTab'}}
          {{partial '_contentsTab'}}
-         {{partial '_autoCraftTab'}}
-         {{partial '_autoCraftContentsTab'}}
-         {{partial '_mechanicalTab'}}
-
-         <div {{bind-attr class=":footer view.currentTabHideFooter:hidden:"}}>
+         
+         <div class="footer">
             <button class="warn">{{i18n stonehearth:ui.game.common.remove}}</button>
          
             {{#if view.isSingleFilter}}
@@ -28,29 +25,17 @@
             {{#if view.capacity}}
                <div class="remainingSpaces">{{i18n stonehearth:ui.game.zones_mode.stockpile.used_space}} {{view.used_spaces}} / {{view.capacity}}</div>
             {{/if}}
+            <button id="stockpileOk" class="ok"></button>
          </div>
       </div>
       <div id="tabs">
-         {{#if view.isAutoCrafter}}
-            <div class="tab" tabPage="autoCraftTab">{{i18n stonehearth_ace:ui.game.zones_mode.stockpile.auto_craft.tab_name}}</div>
-            <div class="tab" tabPage="autoCraftContentsTab">{{i18n stonehearth:ui.game.zones_mode.stockpile.contents}}</div>
-         {{/if}}
-
-         {{#if view.isStorage}}
-            {{#if view.showFilterTab}}
-               <div class="tab" tabPage="filterTab">{{i18n_key view.filterTabName}}</div>
-            {{/if}}
-            <div class="tab" tabPage="contentsTab">{{i18n_key view.contentsTabName}}</div>
-         {{/if}}
-
-         {{#if view.isMechanical}}
-            <div class="tab" tabPage="mechanicalTab">{{i18n stonehearth_ace:ui.game.zones_mode.stockpile.mechanical.tab_name}}</div>
-         {{/if}}
+         <div class="tab" tabPage="filterTab">{{i18n stonehearth:ui.game.zones_mode.stockpile.filter}}</div>
+         <div class="tab" tabPage="contentsTab">{{i18n stonehearth:ui.game.zones_mode.stockpile.contents}}</div>
       </div>
 
       <div id="presetSelection">
          <div id="presetSearchContainer">
-            <input id="presetSearch" type="text" {{bind-attr value="view.presetSearch"}} />
+            <input id="presetSearch" type="text" {{bind-attr value=view.presetSearch}} />
             {{#if view.inSaveMode}}
             <div class="presetButtons">
                <a href="#" {{action "saveCurrentPreset" target="view"}} {{bind-attr class=":savePreset :button view.saveAllowed:enabled:disabled"}}>
@@ -65,7 +50,7 @@
             <div {{bind-attr data-name=preset.name class=":presetRow preset.default:default: preset.available::unavailable preset.has_invalid:hasInvalid:"}}>
                <div class="presetPreview">
                   {{#each material in preset.preview_materials}}
-                  <img {{bind-attr src="material.icon"}} class="presetMaterialImg"/>
+                  <img {{bind-attr src=material.icon}} class="presetMaterialImg"/>
                   {{/each}}
                   {{#if preset.show_ellipsis}}...{{/if}}
                </div>
@@ -93,66 +78,6 @@
             </div>
             {{/if}}
             {{/each}}
-         </div>
-      </div>
-   </div>
-</script>
-
-<script type="text/x-handlebars" data-template-name="_autoCraftTab">
-   <div id="autoCraftTab" class="tabPage extended">
-      <div class="control">
-         <input type="checkbox" id="enableAutoCraft">
-         <label for="enableAutoCraft">{{i18n stonehearth_ace:ui.game.zones_mode.stockpile.auto_craft.toggle_enabled}}</label>
-      </div>
-      <div class="downSection">
-         <table>
-            {{#each view.autoCraftRecipes}}
-            <tr {{bind-attr recipeKey="this.key" class="this.hasOrder:hasOrder:noOrder"}}>
-               <td class="recipeEnabledCheck">
-                  <input class="recipeEnabledCheckbox" type="checkbox" {{bind-attr id="this.key" recipeKey="this.key" checked="this.enabled"}}>
-                  <label {{bind-attr for="this.key"}} class="flexContainer">
-                     <div class="product flexItem">
-                        <img class="productImg" {{bind-attr src="this.recipe.portrait" recipeKey="this.key"}} />
-                     </div>
-                     <div class="recipeName flexItem">{{i18n_key this.recipe.display_name}}</div>
-                  </label>
-               </td>
-               <td class="ingredients flexContainer flexItem">
-                  {{#each ingredient in this.recipe.ingredients}}
-                  <div class="ingredient flexItem" {{bind-attr data-kind="ingredient.kind" data-identifier="ingredient.identifier" title="ingredient.name"}}>
-                     <img {{bind-attr src="ingredient.icon"}} />
-                     <div class="count">{{ingredient.count}}</div>
-                  </div>
-                  {{/each}}
-               </td>
-               <td class="grabbable" {{bind-attr recipeKey="this.key"}}><img class="grabbableImg"></td>
-            </tr>
-            {{/each}}
-         </table>
-      </div>
-   </div>
-</script>
-
-<script type="text/x-handlebars" data-template-name="_autoCraftContentsTab">
-   <div id="autoCraftContentsTab" class="tabPage extended">
-      <div class="flexContainer">
-         <div id="ingredients" class="flexItem">
-            <h2 id="ingredientTitle">{{i18n stonehearth_ace:ui.game.zones_mode.stockpile.auto_craft.ingredients}}</h2>
-            <div id="ingredientPalette" class="downSection"></div>
-
-            <div class="footer">
-               <div id="ingredientBuffer" class="flexContainer flexItem">
-                  <div class="list-label flexItem">{{i18n stonehearth_ace:ui.game.zones_mode.stockpile.auto_craft.ingredient_buffer_mult}}</div>
-               </div>
-            </div>
-         </div>
-
-         <div id="output" class="flexItem">
-            <h2 id="outputTitle">{{i18n stonehearth_ace:ui.game.zones_mode.stockpile.auto_craft.output}}</h2>
-            <div id="outputPalette" class="downSection"></div>
-            <div class="footer">
-               <div class="remainingSpaces">{{i18n stonehearth:ui.game.zones_mode.stockpile.used_space}} {{view.outputUsedSpaces}} / {{view.outputCapacity}}</div>
-            </div>
          </div>
       </div>
    </div>
@@ -204,23 +129,18 @@
             {{#each group in view.stockpileFilters}}
                <tr class="row">
                   <td class="categoryLabel">
-                     {{#if view.isSingleFilter}}
-                     {{else}}
-                        <input type="checkbox" {{bind-attr id="group.filter"}} class="toggleButton group">
-                     {{/if}}
-                     <label {{bind-attr for="group.filter"}}>
-                        <div class="labelContainer">
-                           {{#if group.icon}}<img {{bind-attr src="group.icon"}}>{{/if}}
-                           <div class="labelText">
-                              {{i18n_key group.display_name}}
-                           </div>
-                        </div>
-                     </label>
+                     <span>
+                        {{#if view.isSingleFilter}}
+                        {{else}}
+                           <input type="checkbox" {{bind-attr id=group.filter}} class="toggleButton group">
+                        {{/if}}
+                        <label {{bind-attr for=group.filter}}>{{#if group.icon}}<img {{bind-attr src=group.icon}}>{{/if}}{{i18n_key group.display_name}}</label>
+                     </span>
                   </td>
                   <td>
                      {{#each category in group.categories}}
-                        <span class="toggleButton filterCategory" {{bind-attr id="category.filter" filter="category.filter"}}>
-                           <img class="categoryImage" {{bind-attr display_name="category.display_name" src="category.icon"}}>
+                        <span class="toggleButton filterCategory" {{bind-attr id=category.filter filter=category.filter}}>
+                           <img class="categoryImage" {{bind-attr display_name=category.display_name src=category.icon}}>
                         </span>
                      {{/each}}
                   </td>
@@ -228,11 +148,5 @@
             {{/each}}
          </table>
       </div>
-   </div>
-</script>
-
-<script type="text/x-handlebars" data-template-name="_mechanicalTab">
-   <div id="mechanicalTab" class="tabPage extended">
-      
    </div>
 </script>
