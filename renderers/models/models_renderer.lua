@@ -97,7 +97,6 @@ function ModelsRenderer:_create_model_nodes(options)
    end
    local model = options.model
    local matrix = options.matrix or 'background'
-   local multi_matrix_mode = options.multi_matrix_mode or 'all'
    local material = options.material or 'materials/voxel.material.json'
 
    if options.origin and options.direction and options.length then
@@ -115,11 +114,11 @@ function ModelsRenderer:_create_model_nodes(options)
          end
 
          for i = 0, options.length - 1 do
-            self:_create_matrix_nodes(node, origin + options.direction * i, rotation, offset, scale, model, matrix, multi_matrix_mode, material, i)
+            self:_create_matrix_nodes(node, origin + options.direction * i, rotation, offset, scale, model, matrix, material)
          end
       end
    else
-      self:_create_matrix_nodes(node, origin, rotation, offset, scale, model, matrix, multi_matrix_mode, material)
+      self:_create_matrix_nodes(node, origin, rotation, offset, scale, model, matrix, material)
    end
 
    return node
@@ -128,12 +127,8 @@ end
 -- create a node for each matrix specified
 -- if there's no primary_node specified, set the first created node to that
 -- any additional nodes should be added to child_nodes
-function ModelsRenderer:_create_matrix_nodes(group, location, rotation, offset, scale, model, matrix, multi_matrix_mode, material, index)
+function ModelsRenderer:_create_matrix_nodes(group, location, rotation, offset, scale, model, matrix, material)
    local matrices = radiant.util.is_table(matrix) and matrix or {matrix}
-   if multi_matrix_mode == 'sequential' then
-      matrices = {matrices[index % #matrices + 1]}
-   end
-
    for _, this_matrix in ipairs(matrices) do
       local node = self:_create_single_node(group.primary_node or self._node, location, rotation, offset, scale, model, this_matrix, material)
       if node then
