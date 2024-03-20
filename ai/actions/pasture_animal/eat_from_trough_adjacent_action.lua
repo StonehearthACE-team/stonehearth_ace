@@ -39,7 +39,7 @@ function EatTroughFeedAdjacent:stop(ai, entity, args)
          if self._feed_quality and self._feed_quality > 1 then
             quality_chances = item_quality_lib.modify_quality_table(quality_chances, self._feed_quality)
          end
-         item_quality_lib.apply_quality(entity, quality_chances, {max_quality = item_quality_lib.get_max_random_quality(entity:get_player_id())})
+         item_quality_lib.apply_quality(entity, quality_chances)
       end
 
       log:debug('%s successfully ate, gaining %s calories', entity, self._animal_feed_data.calorie_gain)

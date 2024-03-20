@@ -92,11 +92,6 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
          radiant.call_obj(planter && planter.__self, 'set_harvest_enabled_command', this.checked);
       });
 
-      self.$('#enableTendCheckbox').change(function() {
-         var planter = self.get('model.stonehearth_ace:herbalist_planter');
-         radiant.call_obj(planter && planter.__self, 'set_tend_enabled_command', this.checked);
-      });
-
       self.$('#enablePlantHarvestCheckbox').change(function() {
          var planter = self.get('model.stonehearth_ace:herbalist_planter');
          radiant.call_obj(planter && planter.__self, 'set_harvest_plant_command', this.checked);
@@ -104,7 +99,6 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
 
       // tooltips
       App.guiHelper.addTooltip(self.$('#enableHarvest'), 'stonehearth_ace:ui.game.herbalist_planter.harvest_crop_description');
-      App.guiHelper.addTooltip(self.$('#enableTend'), 'stonehearth_ace:ui.game.herbalist_planter.tend_crop_description');
       App.guiHelper.addTooltip(self.$('#enablePlantHarvest'), 'stonehearth_ace:ui.game.herbalist_planter.harvest_plant_description');
 
       App.tooltipHelper.createDynamicTooltip(self.$('#produces'), function () {
@@ -226,12 +220,6 @@ App.AceHerbalistPlanterView = App.StonehearthBaseZonesModeView.extend({
       var harvestCrop = self.get('model.stonehearth_ace:herbalist_planter.harvest_enabled');
       self.$('#enableHarvestCheckbox').prop('checked', harvestCrop);
    }.observes('model.stonehearth_ace:herbalist_planter.harvest_enabled'),
-
-   _tendEnabledChanged: function() {
-      var self = this;
-      var tendCrop = self.get('model.stonehearth_ace:herbalist_planter.tend_enabled');
-      self.$('#enableTendCheckbox').prop('checked', tendCrop);
-   }.observes('model.stonehearth_ace:herbalist_planter.tend_enabled'),
 
    _harvestPlantChanged: function() {
       var self = this;
