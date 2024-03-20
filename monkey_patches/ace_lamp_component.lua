@@ -45,20 +45,9 @@ function AceLampComponent:_load_json()
    self._sv.light_radius = json.light_radius or stonehearth.constants.darkness.DEFAULT_LIGHT_RADIUS
 end
 
-function AceLampComponent:create()
-   self._is_create = true
-   self._parent_listener = radiant.events.listen(self._entity, 'stonehearth_ace:extensible_object:end_entity_created', function(args)
-         self._sv.parent = args.parent
-         self.__saved_variables:mark_changed()
-         self:_create_parent_light_listener(args.parent)
-      end)
-end
-
 function AceLampComponent:post_activate()
    self:_check_light()
-   if self._sv.parent and not self._is_create then
-      self:_create_parent_light_listener(self._sv.parent)
-   end
+   self:_create_parent_listener()
 end
 
 AceLampComponent._ace_old_destroy = LampComponent.__user_destroy
@@ -79,6 +68,20 @@ function AceLampComponent:_destroy_parent_light_listener()
    if self._parent_light_listener then
       self._parent_light_listener:destroy()
       self._parent_light_listener = nil
+   end
+end
+
+function AceLampComponent:_create_parent_listener()
+   if not self._parent_listener then
+      self._parent_listener = self._entity:get_component('mob'):trace_parent('lamp added or removed')
+         :on_changed(function(parent_entity)
+               if not parent_entity then
+                  self:_destroy_parent_light_listener()
+               else
+                  self:_create_parent_light_listener(parent_entity)
+               end
+            end)
+         :push_object_state()
    end
 end
 

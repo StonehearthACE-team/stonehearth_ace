@@ -67,7 +67,7 @@ end
 function ExtensibleObjectComponent:_ensure_child_entities()
    for _, rotation in ipairs(self._rotations) do
       local id = self:_get_rotation_id(rotation)
-
+      
       if not self._sv._child_entities[id] then
          local entity = radiant.entities.create_entity(self._extension_entity, { owner = self._entity })
          entity:add_component('region_collision_shape'):set_region(_radiant.sim.alloc_region3())
@@ -110,9 +110,6 @@ function ExtensibleObjectComponent:_ensure_end_entity(rotation_id, uri, location
       radiant.entities.add_child(radiant.entities.get_parent(self._entity), entity, world_location, true)
       --radiant.entities.add_child(self._entity, entity, location, true)
       self._sv._end_entities[rotation_id] = entity
-
-      -- inform the entity about its parent to any component that wants to listen
-      radiant.events.trigger(entity, 'stonehearth_ace:extensible_object:end_entity_created', { parent = self._entity })
    else
       radiant.entities.move_to(entity, world_location)
    end
@@ -129,6 +126,7 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
          connector_region and connector_region:get_bounds() or 'nil',
          tostring(output_point), tostring(output_origin))
 
+   local data
    local rotation = self._rotations[rotation_index]
    if not rotation then
       radiant.events.trigger(self._entity, 'stonehearth_ace:extensible_object:extension_cleared')
@@ -146,8 +144,9 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
    local vpr = child:get_component('stonehearth_ace:vertical_pathing_region')
    local region = rcs:get_region()
    local models_comp = self._entity:add_component('stonehearth_ace:models')
+   local end_entity = self._sv._end_entities[rotation_id]
 
-   if length then
+   if length > 0 then
       if rotation_id == DEFAULT_ROTATION then
          self._sv._cur_rotation_index = rotation_index
       end

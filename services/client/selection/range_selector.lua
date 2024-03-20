@@ -135,21 +135,14 @@ function XYZRangeSelector:set_length(length)
    return self
 end
 
-function XYZRangeSelector:_get_length(is_final)
+function XYZRangeSelector:_get_length()
    local rotation = self:get_rotation()
-   local length
    if rotation.valid_lengths then
-      length = util.get_closest_value(rotation.valid_lengths, self._length)
+      return util.get_closest_value(rotation.valid_lengths, self._length)
    else
       local max_length = self:_get_max_length(rotation)
-      length = math.max(rotation.min_length, math.min(max_length, self._length or max_length))
+      return math.max(rotation.min_length, math.min(max_length, self._length or max_length))
    end
-
-   if rotation.end_entity and is_final then
-      length = length - 1
-   end
-
-   return length
 end
 
 function XYZRangeSelector:_get_max_length(rotation)
@@ -452,21 +445,19 @@ function XYZRangeSelector:_update()
    self:_update_cursor(current_region, self._camera_forward)
 
    --local rotation = self:get_rotation()
-   local length = self:_get_length(true)
+   local length = self:_get_length()
 
    if self._action == 'notify' then
       self:notify(false, self._rotation, length, current_region)
    elseif self._action == 'notify_resolve' then
       local region, point, in_use
       in_use = self:is_current_rotation_in_use()
-      if in_use then
-         length = nil
-      else
-         region, point = self:get_final_data(length)
+      if not in_use then
+         region, point = self:get_region_and_point(length)
       end
-      self:notify(true, self._rotation, length, region, point)
+      self:notify(true, self._rotation, in_use and 0 or length, region, point)
    elseif self._action == 'resolve' then
-      local region, point = self:get_final_data(length)
+      local region, point = self:get_region_and_point(length)
       self:resolve(self._rotation, length, region, point)
    else
       log:error('uknown action: %s', self._action)
@@ -476,7 +467,7 @@ end
 
 function XYZRangeSelector:_world_to_local(pt, entity)
    local mob = entity:add_component('mob')
-   --local region_origin = mob:get_region_origin()
+   local region_origin = mob:get_region_origin()
    --local new_pt = (pt - mob:get_world_grid_location() - region_origin):rotated(-mob:get_facing()) + region_origin
    local new_pt = (pt - mob:get_world_grid_location()):rotated(-mob:get_facing())
 
@@ -707,11 +698,11 @@ end
 
 function XYZRangeSelector:_recalc_current_region(is_final)
    local rotation = self:get_rotation()
-   local length = self:_get_length(is_final)
+   local length = self:_get_length()
    local node = self._intersection_nodes[self._rotation]
    local region
 
-   if length and rotation and node then
+   if length and rotation and node and length > 0 then
       local cube
       if length > 0 then
          local origin = rotation.origin
@@ -781,7 +772,7 @@ function XYZRangeSelector:get_current_region()
    return self._current_region
 end
 
-function XYZRangeSelector:get_final_data(length)
+function XYZRangeSelector:get_region_and_point(length)
    local point = self:get_point_in_current_direction(length)
    return self:_recalc_current_region(true), point
 end
@@ -789,7 +780,7 @@ end
 function XYZRangeSelector:get_current_connector_region()
    local rotation = self:get_rotation()
    if rotation.connector_region then
-      local length = self:is_current_rotation_in_use() and 0 or self:_get_length(true)
+      local length = self:is_current_rotation_in_use() and 0 or self:_get_length()
       local offset = rotation.direction * length
       return rotation.connector_region:translated(offset)
    end

@@ -2,17 +2,6 @@
    "type": "entity",
    "mixins": "file(fireplace_stone_small_ghost.json)",
    "components": {
-      "destination": {
-         "region": [
-            {
-               "min": { "x": 0, "y": 0, "z": 0 },
-               "max": { "x": 1, "y": 1, "z": 1 }
-            }
-         ],
-         "adjacency_flags": [
-            "front"
-         ]
-      },
       "region_collision_shape": {
          "region": [
             {
@@ -34,7 +23,7 @@
       },
       "stonehearth:lamp": {
          "restrict_policy_changing": true,
-         "light_policy": "manual",
+         "light_policy": "parent",
          "light_effect": "stonehearth_ace:effects:firepit_small_effect",
          "light_origin": { "x": 0, "y": 1, "z": 0 }
       },
