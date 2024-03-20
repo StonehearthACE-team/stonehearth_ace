@@ -36,24 +36,11 @@ function ExtensibleObjectComponent:post_activate()
    end
 	self:_ensure_child_entities()
    self:_update_commands()
-
-   self._parent_trace = self._entity:add_component('mob')
-      :trace_parent('extensible object parent change', _radiant.dm.TraceCategories.SYNC_TRACE)
-         :on_changed(function(parent)
-               if not parent then
-                  self:set_extension(nil)
-               end
-            end)
 end
 
 function ExtensibleObjectComponent:destroy()
 	self:_destroy_child_entities()
    self:_destroy_end_entities()
-
-   if self._parent_trace then
-      self._parent_trace:destroy()
-      self._parent_trace = nil
-   end
 end
 
 function ExtensibleObjectComponent:_destroy_child_entities()
