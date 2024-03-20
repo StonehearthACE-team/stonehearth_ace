@@ -15,32 +15,22 @@
       "region_collision_shape": {
          "region": [
             {
-               "min": { "x": 0, "y": 0, "z": -0.5 },
-               "max": { "x": 1, "y": 1, "z": 0.5 }
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
             }
          ],
          "region_collision_type": "solid"
       },
       "mob": {
-         "align_to_grid": [
-            "z"
-         ],
-         "model_origin": { "x": 0, "y": 0, "z": 0 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0 },
+         "model_origin": { "x": 0.0, "y": 0, "z": 0.0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
          "allow_vertical_adjacent": true
       },
       "stonehearth:lamp": {
          "restrict_policy_changing": true,
          "light_policy": "parent",
-         "light_effect": "stonehearth_ace:effects:fireplace:small:chimney:no_wind:effect",
-         "light_origin": { "x": 0, "y": 1, "z": 0 },
-         "affected_by_wind": {
-            "none": "stonehearth_ace:effects:fireplace:small:chimney:no_wind:effect",
-            "low": "stonehearth_ace:effects:fireplace:small:chimney:low_wind:effect",
-            "medium": "stonehearth_ace:effects:fireplace:small:chimney:medium_wind:effect",
-            "high": "stonehearth_ace:effects:fireplace:small:chimney:high_wind:effect",
-            "extreme": "stonehearth_ace:effects:fireplace:small:chimney:extreme_wind:effect"
-         }
+         "light_effect": "stonehearth:effects:firepit_effect",
+         "light_origin": { "x": 0, "y": 1, "z": 0 }
       }
    },
    "entity_data": {
@@ -57,7 +47,7 @@
          }
       },
       "stonehearth:appeal": {
-         "appeal": -4
+         "appeal": -3
       }
    }
 }

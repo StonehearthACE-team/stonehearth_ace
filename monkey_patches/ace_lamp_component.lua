@@ -34,9 +34,6 @@ function AceLampComponent:_load_json()
    end
 
    self._sv.light_effect = json.light_effect
-   if json.affected_by_wind then
-      self:_create_weather_listener(json.affected_by_wind)
-   end
 
    local light_origin = json.light_origin
    if light_origin then
@@ -68,7 +65,6 @@ AceLampComponent._ace_old_destroy = LampComponent.__user_destroy
 function AceLampComponent:destroy()
    self:_destroy_parent_listener()
    self:_destroy_parent_light_listener()
-   self:_destroy_weather_listener()
    self:_ace_old_destroy()
 end
 
@@ -86,13 +82,6 @@ function AceLampComponent:_destroy_parent_light_listener()
    end
 end
 
-function AceLampComponent:_destroy_weather_listener()
-   if self._weather_listener then
-      self._weather_listener:destroy()
-      self._weather_listener = nil
-   end
-end
-
 function AceLampComponent:_create_parent_light_listener(parent)
    self:_destroy_parent_light_listener()
 
@@ -100,18 +89,6 @@ function AceLampComponent:_create_parent_light_listener(parent)
          self:_on_parent_light_changed(parent)
       end)
    self:_on_parent_light_changed(parent)
-end
-
-function AceLampComponent:_create_weather_listener(wind_effects)
-   self:_destroy_weather_listener()
-   if not wind_effects then
-      return
-   end
-
-   self._weather_listener = radiant.events.listen(radiant, 'stonehearth_ace:weather_state_started', function()
-      self:set_wind_light_effect(wind_effects)
-   end)
-   self:set_wind_light_effect(wind_effects)
 end
 
 function AceLampComponent:_create_commands()
@@ -134,26 +111,6 @@ end
 
 function AceLampComponent:get_light_policy()
    return self._sv.light_policy
-end
-
-function AceLampComponent:set_wind_light_effect(wind_effects)
-   if not wind_effects then
-      return
-   end
-
-   local weather = stonehearth.weather:get_current_weather()
-   local wind_level = weather:get_wind_level()
-
-   if wind_effects[wind_level] and self._sv.light_effect ~= wind_effects[wind_level] then
-      if self._running_effect then
-         self._running_effect:stop()
-         self._running_effect = nil
-         self._sv.light_effect = wind_effects[wind_level]
-         self._running_effect = radiant.effects.run_effect(self._entity, self._sv.light_effect)
-      else
-         self._sv.light_effect = wind_effects[wind_level]
-      end
-   end
 end
 
 function AceLampComponent:_create_nighttime_alarms()
