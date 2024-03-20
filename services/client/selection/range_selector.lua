@@ -395,7 +395,7 @@ function XYZRangeSelector:_is_valid_location(brick)
       local entities = radiant.terrain.get_entities_at_point(brick)
       for _, entity in pairs(entities) do
          if not self._can_contain_entity_filter_fn(entity, self) then
-            log:debug('location %s is not valid because it contains %s', brick, entity)
+            --log:debug('location %s is not valid because it contains %s', brick, entity)
             return false
          end
       end
@@ -411,29 +411,15 @@ function XYZRangeSelector:_get_brick_at(x, y)
    local brick, normal = selector_util.get_selected_brick(x, y, function(result)
          local entity = result.entity
 
-         log:debug('getting brick at %s, %s: %s "%s" %s', x, y, tostring(entity), tostring(result.node_name), tostring(result.brick))
-         if self._relative_entity and radiant.entities.is_child_of(entity, self._relative_entity) then
-            --log:debug('ignoring child entity %s', entity)
-            return stonehearth.selection.FILTER_IGNORE
-         elseif self._can_contain_entity_filter_fn and self._can_contain_entity_filter_fn(entity, self) then
-            log:debug('ignoring entity %s because it passes the can_contain_entity_filter', entity)
-            return stonehearth.selection.FILTER_IGNORE
-         end
-
-         -- if it's a water entity but the water entity isn't actually at this location (stupid water meshes) we can ignore it
-         if entity:get_uri() == 'stonehearth:terrain:water' then
-            local entities = radiant.terrain.get_entities_at_point(result.brick)
-            local found = false
-            for _, e in pairs(entities) do
-               if e == entity then
-                  found = true
-                  break
-               end
-            end
-            if not found then
-               log:debug('ignoring water entity %s because it is not at the brick location', entity)
+         --log:debug('getting brick at %s, %s: %s "%s" %s', x, y, tostring(entity), tostring(result.node_name), tostring(result.brick))
+         if self._relative_entity then
+            if radiant.entities.is_child_of(entity, self._relative_entity) then
+               --log:debug('ignoring child entity %s', entity)
                return stonehearth.selection.FILTER_IGNORE
             end
+            --log:debug('checking relative entity %s', self._relative_entity)
+         elseif self._can_contain_entity_filter_fn and self._can_contain_entity_filter_fn(entity, self) then
+            return stonehearth.selection.FILTER_IGNORE
          end
 
          for i, node in ipairs(self._intersection_nodes) do
@@ -535,16 +521,10 @@ function XYZRangeSelector:_on_mouse_event(event)
       if brick and brick ~= self._last_brick then
          self._last_brick = brick
          local local_brick = self._relative_entity and self:_world_to_local(brick, self._relative_entity) or brick
-         log:debug('checking for brick %s (local = %s) in intersection nodes', brick, local_brick)
 
          -- search intersection nodes for which rotation this could be
          local rotation_index
          for i, node in ipairs(self._intersection_nodes) do
-            if rotation_index then
-               break
-            end
-
-            log:debug('checking intersection node %s (%s)', node.name, node.cube)
             -- it's possible that the brick is just outside the intersection node if it's a partial voxel region
             -- in that case, check +1 in each non-direction dimension
             if node.cube:contains(local_brick) or
