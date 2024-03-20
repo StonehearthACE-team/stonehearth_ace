@@ -25,10 +25,9 @@ function FindHealingItem:start_thinking(ai, entity, args)
       self._conditions = healing_lib.get_conditions_needing_cure(self._target)
 
       self._tracker = self._inventory:add_item_tracker('stonehearth_ace:healing_item_tracker')
-      if not self:_check_all_tracker_items() then
-         self._added_listener = radiant.events.listen(self._tracker, 'stonehearth:inventory_tracker:item_added', self, self._on_healing_item_added)
-         self._level_changed_listener = radiant.events.listen(self._entity, 'stonehearth:level_up', self, self._on_level_up)
-      end
+      self:_check_all_tracker_items()
+      self._added_listener = radiant.events.listen(self._tracker, 'stonehearth:inventory_tracker:item_added', self, self._on_healing_item_added)
+      self._level_changed_listener = radiant.events.listen(self._entity, 'stonehearth:level_up', self, self._on_level_up)
    end
 end
 
@@ -45,7 +44,7 @@ function FindHealingItem:_check_all_tracker_items()
       end
    end
 
-   return self:_check_ready()
+   self:_check_ready()
 end
 
 function FindHealingItem:_on_healing_item_added(e)
@@ -94,7 +93,6 @@ function FindHealingItem:_check_ready()
       self._ai:set_think_output({
          item = best_item,
       })
-      return true
    end
 end
 

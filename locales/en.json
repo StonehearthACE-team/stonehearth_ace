@@ -26669,7 +26669,6 @@
                "title": "Craft",
                "description": "Add this order to the end of the list. Hold [Shift] to insert at the top of the list.<br><br>Right-click any item in the workshop to queue up making 1 of it (or hold [Ctrl] to queue up maintaining 1 of it)."
             },
-            "maintain_order_quantity": "= [str(condition.at_least)]",
             "recipe_list_queueing": "<span class='value'>Right-click</span> to add a <span class='value'>Make</span> craft order of 1 of this recipe to the end of the list.<div class='details stat'><div class='header'>Hold <span class='value'>[Ctrl]</span> to add a <span class='value'>Maintain</span> order.</div><div class='header'>Hold <span class='value'>[Shift]</span> to insert the order at the top of the list.</div></div>",
             "quality_preference": {
                "title": "Ingredient Quality Preference",
@@ -27325,7 +27324,7 @@
                "auto_queue_medicine": "Auto Craft Required Healing Items",
                "auto_queue_medicine_description": "When a hearthling receives a wound or a negative condition that can be treated with a specific item, queue a craft order for that item unless your town already has it.",
                "update_maintain_orders": "Update Maintain Orders",
-               "update_maintain_orders_description": "When queuing a new Maintain crafting order, update the existing Maintain crafting order for that recipe, if there is one, with the new quantity. Automatic queuing of that order (e.g., when it's a prerequisite of a more refined maintain crafting order) will not change the existing order either way, as long as it's sufficient for completing the more refined order.",
+               "update_maintain_orders_description": "When queuing a new maintain crafting order, update the existing maintain crafting order for that recipe, if there is one, with the new quantity and quality settings. Automatic queuing of that order (e.g., when it's a prerequisite of a more refined maintain crafting order) will not change the existing order either way, as long as it's sufficient for completing the more refined order.",
                "default_craft_order_prefer_high_quality": "Prefer High-Quality Crafting Ingredients",
                "default_craft_order_prefer_high_quality_description": "When crafting an item, crafters who have achieved the Journeyman's Knowledge perk will prefer crafting with high-quality ingredients. Uncheck to always prefer low-quality ingredients.",
                "default_craft_search_checks": "Default Recipe Filtering:",

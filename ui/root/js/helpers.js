@@ -10,14 +10,11 @@ function interpretPropertyString(s, obj) {
 Handlebars.registerHelper('i18n', function(i18n_key, options) {
 
    var view = options.data.view;
-   var attrs = options.contexts[0];
+   var attrs = options.hash;
 
-   if (!attrs) {
-      attrs = options.hash;
-      $.each(Ember.keys(attrs), function (i, key) {
-         attrs[key] = view.get(attrs[key]);
-      });
-   }
+   $.each(Ember.keys(attrs), function (i, key) {
+      attrs[key] = view.get(attrs[key]);
+   });
 
    var result = i18n.t(i18n_key, attrs);
 
