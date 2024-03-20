@@ -1,8 +1,8 @@
 {
-   "portrait": "/stonehearth_ace/entities/food/veggie_stew/veggie_stew/veggie_stew.png",
+	"portrait": "/stonehearth_ace/entities/food/veggie_stew/veggie_stew/veggie_stew.png",
    "description": "i18n(stonehearth_ace:jobs.cook.recipes.veggie_stew_recipe.description)",
    "mixintypes": {
-      "ingredients": "override"
+	  "ingredients": "override"
    },
    "ingredients": [
       {
@@ -11,10 +11,6 @@
       },
       {
          "material": "food_container raw_food vegetable hearty",
-         "count": 1
-      },
-      {
-         "uri": "stonehearth_ace:landmark:terrain:water_bucket",
          "count": 1
       }
    ]
