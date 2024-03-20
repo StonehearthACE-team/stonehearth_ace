@@ -47,17 +47,26 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 15,
+         "value_in_gold": 3,
          "rarity": "uncommon",
          "shop_info": {
-            "buyable": true,
+            "buyable": false,
             "sellable": true,
             "shopkeeper_level": 2,
             "shopkeeper_type": "caravan"
          }
       },
+      "stonehearth:catalog": {
+         "material_tags": [
+            "wood",
+            "crafted",
+            "bridge",
+            "construction",
+            "stockpile_construction"
+         ]
+      },
       "stonehearth:appeal": {
-         "appeal": 9
+         "appeal": 5
       },
       "stonehearth:item_quality": {
          "variable_quality": true

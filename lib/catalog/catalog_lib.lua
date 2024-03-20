@@ -391,7 +391,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
       local weapon_data = entity_data['stonehearth:combat:weapon_data']
       if weapon_data then
          catalog_data.combat_damage = weapon_data.range and weapon_data.base_ranged_damage or weapon_data.base_damage
-         catalog_data.combat_range = weapon_data.base_ranged_damage and weapon_data.range
+         catalog_data.combat_range = weapon_data.range
          catalog_data.combat_reach = weapon_data.reach
       end
 

@@ -2,9 +2,7 @@
    "components": {
       "stonehearth:equipment_piece": {
          "required_job_level": 6,
-         "equipment_types": [
-            "twohanded"
-         ]
+         "equipment_types": ["twohanded"]
       }
    },
    "entity_data": {
@@ -14,22 +12,15 @@
                "uri": "stonehearth_ace:buffs:major_open_wounds",
                "chance": 0.66
             },
-            "hamstrung": {
+			"hamstrung": {
                "uri": "stonehearth_ace:buffs:major_hamstrung",
                "chance": 0.66
             }
          }
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.weapons.rc_legendary_sword.display_name)",
-         "material_tags": [
-            "twohanded",
-            "legendary",
-            "melee_weapon",
-            "crafted",
-            "sword",
-            "stockpile_weapon"
-         ]
+	     "display_name": "i18n(stonehearth_ace:entities.weapons.rc_legendary_sword.display_name)",
+         "material_tags":["twohanded", "legendary", "melee_weapon", "crafted", "legendary_sword", "stockpile_weapon"]
       }
    }
 }

@@ -1,22 +1,11 @@
 {
-   "mixins": [
-      "stonehearth:mixins:item_properties",
-      "stonehearth_ace:mixins:weapons:mainhand_hamstrung_minor"
-   ],
    "type": "entity",
-   "components": {
-      "model_variants": {
-         "default": {
-            "models": [
-               "file(bronze_sword_equipped.qb)"
-            ]
-         }
-      },
-      "stonehearth:entity_forms": {
-         "iconic_form": "file(bronze_sword_iconic.json)"
+	"components": {
+      "mixintypes": {
+         "stonehearth:equipment_piece": "override"
       },
       "stonehearth:equipment_piece": {
-         "slot": "mainhand",
+	      "slot": "mainhand",
          "render_type": "attach_to_bone",
          "equipment_types": [
             "mainhand"
@@ -27,21 +16,35 @@
             "stonehearth:guarding"
          ],
          "ilevel": 14,
-         "roles": [
-            "footman_job"
-         ],
+         "roles": ["footman_job"],
          "required_job_level": 2,
+         "no_drop": false,
          "equip_effect": "stonehearth:effects:weapon_level_up"
       },
       "stonehearth_ace:statistics": {},
-      "stonehearth_ace:titles": {}
+      "stonehearth_ace:titles": {},
+	   "stonehearth:entity_forms": {
+         "iconic_form": "file(bronze_sword_iconic.json)"
+      }
    },
-   "entity_data": {
+	"entity_data": {
+      "stonehearth:buffs": {
+         "inflictable_debuffs": {
+            "hamstrung": {
+               "uri": "stonehearth_ace:buffs:minor_hamstrung",
+               "chance": 0.33
+            }
+         }
+      },
       "stonehearth:combat:weapon_data": {
          "base_damage": 13,
          "reach": 1.5
       },
-      "stonehearth:combat:melee_attacks": [
+      "mixintypes": {
+         "stonehearth:combat:melee_attacks": "override",
+         "stonehearth:combat:melee_defenses": "remove"
+      },
+		"stonehearth:combat:melee_attacks": [
          {
             "name": "combat_1h_backhand",
             "effect": "combat_1h_backhand",
@@ -56,15 +59,15 @@
             "cooldown": 0,
             "priority": 0
          },
-         {
+		   {
             "name": "combat_1h_thrust",
             "effect": "combat_1h_thrust",
             "active_frame": 16,
             "cooldown": 0,
             "priority": 0
          }
-      ],
-      "stonehearth:net_worth": {
+		],
+		"stonehearth:net_worth": {
          "value_in_gold": 25,
          "rarity": "common",
          "shop_info": {
@@ -75,20 +78,10 @@
          }
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.weapons.bronze_sword.display_name)",
-         "description": "i18n(stonehearth:entities.weapons.bronze_sword.description)",
-         "icon": "file(bronze_sword.png)",
-         "category": "weapons",
-         "material_tags": [
-            "melee_weapon",
-            "bronze",
-            "sword",
-            "long",
-            "crafted",
-            "stockpile_weapon",
-            "mainhand",
-            "ascendancy_made"
-         ]
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags":["melee_weapon", "bronze", "sword", "long", "crafted", "stockpile_weapon", "mainhand", "ascendancy_made"]
       }
-   }
+	}
 }
