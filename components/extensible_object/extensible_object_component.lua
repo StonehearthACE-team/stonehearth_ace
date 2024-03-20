@@ -104,14 +104,12 @@ end
 function ExtensibleObjectComponent:_ensure_end_entity(rotation_id, uri, location)
    local world_location = radiant.entities.local_to_world(Region3(Cube3(location)), self._entity):get_bounds().min
    local parent = radiant.entities.get_parent(self._entity)
-   local facing = radiant.entities.get_facing(self._entity)
    local rel_location = radiant.entities.world_to_local(world_location, parent)
    local entity = self._sv._end_entities[rotation_id]
    if not entity then
       entity = radiant.entities.create_entity(uri, { owner = self._entity })
       entity:add_component('mob'):set_ignore_gravity(true)
       radiant.entities.add_child(parent, entity, rel_location, true)
-      radiant.entities.turn_to(entity, facing)
       --radiant.entities.add_child(self._entity, entity, location, true)
       self._sv._end_entities[rotation_id] = entity
 
@@ -119,7 +117,6 @@ function ExtensibleObjectComponent:_ensure_end_entity(rotation_id, uri, location
       radiant.events.trigger(entity, 'stonehearth_ace:extensible_object:end_entity_created', { parent = self._entity })
    else
       radiant.entities.move_to(entity, rel_location)
-      radiant.entities.turn_to(entity, facing)
    end
 end
 
