@@ -181,13 +181,7 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
       data.length = length
 
       if data.multi_matrix_mode == 'random' and radiant.util.is_table(data.matrix) then
-         -- make a list as long as the length, with each entry being a random matrix from the original list
-         local matrix = {}
-         for i = 1, length do
-            matrix[i] = data.matrix[rng:get_int(1, #data.matrix)]
-         end
-         data.matrix = matrix
-         data.multi_matrix_mode = 'sequential'
+         data.matrix = {data.matrix[rng:get_int(1, #data.matrix)]}
       end
 
       models_comp:set_model_options(model_name, data)
