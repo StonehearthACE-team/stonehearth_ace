@@ -1,5 +1,4 @@
 local ConsumptionComponent = require 'stonehearth.components.consumption.consumption_component'
-local log = radiant.log.create_logger('consumption')
 
 local AceConsumptionComponent = class()
 
@@ -12,49 +11,49 @@ AceConsumptionComponent.VERY_THIRSTY = 4
 
 AceConsumptionComponent._ace_old_activate = ConsumptionComponent.activate
 function AceConsumptionComponent:activate()
-   self._sv._consumes_drinks = nil
+	self._sv._consumes_drinks = nil
+  
+   self._sv._food_intolerances = ''		
+	self._sv._drink_preferences = ''
+	self._sv._drink_intolerances = ''
+	self._sv._last_drink_thoughts = {}
+	self._sv._drink_window_expire_time = nil
+	self._sv._last_drinking_time = nil   
 
-   self._sv._food_intolerances = ''
-   self._sv._drink_preferences = ''
-   self._sv._drink_intolerances = ''
-   self._sv._last_drink_thoughts = {}
-   self._sv._drink_window_expire_time = nil
-   self._sv._last_drinking_time = nil
+   self:_ace_old_activate()  
+	
+	local ds = radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:drink_satiety')
+	if ds then
+		self._sv._consumes_drinks = true
+		self._drink_satiety_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:drink_satiety', self, self._on_drink_satiety_changed)
 
-   self:_ace_old_activate()
+		local ds = radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:drink_satiety')
+		self._thirsty_threshold = ds and ds.thirsty_threshold or stonehearth.constants.drink_satiety.THIRSTY
+		self._very_thirsty_threshold = ds and ds.very_thirsty_threshold or stonehearth.constants.drink_satiety.VERY_THIRSTY
+		self._hourly_drink_satiety_loss = ds and ds.hourly_drink_satiety_loss or stonehearth.constants.drink_satiety.HOURLY_DRINK_SATIETY_LOSS
+		self._morning_time = ds and ds.morning_time or -1
+		self._afternoon_time = ds and ds.afternoon_time or -1
+		self._night_time = ds and ds.night_time or -1
+		self._drink_qualities = ds and ds.drink_qualities or {}
 
-   local ds = radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:drink_satiety')
-   if ds then
-      self._sv._consumes_drinks = true
-      self._drink_satiety_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:drink_satiety', self, self._on_drink_satiety_changed)
-
-      local ds = radiant.entities.get_entity_data(self._entity, 'stonehearth_ace:drink_satiety')
-      self._thirsty_threshold = ds and ds.thirsty_threshold or stonehearth.constants.drink_satiety.THIRSTY
-      self._very_thirsty_threshold = ds and ds.very_thirsty_threshold or stonehearth.constants.drink_satiety.VERY_THIRSTY
-      self._hourly_drink_satiety_loss = ds and ds.hourly_drink_satiety_loss or stonehearth.constants.drink_satiety.HOURLY_DRINK_SATIETY_LOSS
-      self._morning_time = ds and ds.morning_time or -1
-      self._afternoon_time = ds and ds.afternoon_time or -1
-      self._night_time = ds and ds.night_time or -1
-      self._drink_qualities = ds and ds.drink_qualities or {}
-
-      self._max_drink_satiety_listener = radiant.events.listen(self._entity, 'stonehearth:attribute_changed:max_drink_satiety', self, self._on_max_drink_satiety_changed)
-      self:_on_max_drink_satiety_changed()
-   end
+		self._max_drink_satiety_listener = radiant.events.listen(self._entity, 'stonehearth:attribute_changed:max_drink_satiety', self, self._on_max_drink_satiety_changed)
+		self:_on_max_drink_satiety_changed()
+	end
 end
 
 AceConsumptionComponent._ace_old_post_activate = ConsumptionComponent.post_activate
 function AceConsumptionComponent:post_activate()
    self:_ace_old_post_activate()
 
-   local inventory = stonehearth.inventory:get_inventory(radiant.entities.get_player_id(self._entity))
-   if inventory and inventory:get_desires() and self._sv._consumes_drinks then
+	local inventory = stonehearth.inventory:get_inventory(radiant.entities.get_player_id(self._entity))
+	if inventory and inventory:get_desires() and self._sv._consumes_drinks then
       self._drink_desire_request = inventory:get_desires():request_material('drink_container', math.floor(DRINK_DESIRE_AMOUNT * self._hourly_drink_satiety_loss))
    end
 end
 
 AceConsumptionComponent._ace_old_destroy = ConsumptionComponent.__user_destroy
 function AceConsumptionComponent:destroy()
-   self:_ace_old_destroy()
+	self:_ace_old_destroy()
 
    if self._drink_satiety_listener then
       self._drink_satiety_listener:destroy()
@@ -69,13 +68,13 @@ function AceConsumptionComponent:destroy()
    if self._drink_desire_request then
       self._drink_desire_request:destroy()
       self._drink_desire_request = nil
-   end
+   end   
 end
 
 AceConsumptionComponent._ace_old_set_food_preferences = ConsumptionComponent.set_food_preferences
 function AceConsumptionComponent:set_food_preferences(preferences, effect)
    self._sv._preference_effect = effect
-   self:_ace_old_set_food_preferences(preferences)
+   self:_ace_old_set_food_preferences(preferences)  
 end
 
 function AceConsumptionComponent:set_food_intolerances(intolerances, effect)
@@ -99,35 +98,35 @@ function AceConsumptionComponent:_get_quality(food)
       radiant.assert(false, 'Trying to eat a piece of food that has no entity data.')
       return -1
    end
-
-   -- first check if intolerable
+	
+	-- first check if intolerable
    if self:_has_food_intolerances() then
       if radiant.entities.is_material(food, self._sv._food_intolerances) then
-         if self._sv._intolerance_effect then
-            radiant.entities.add_buff(self._entity, self._sv._intolerance_effect)
-            return stonehearth.constants.food_qualities.INTOLERABLE
-         else
-            return stonehearth.constants.food_qualities.UNPALATABLE
-         end
+			if self._sv._intolerance_effect then
+				radiant.entities.add_buff(self._entity, self._sv._intolerance_effect)
+				return stonehearth.constants.food_qualities.INTOLERABLE	 
+			else
+				return stonehearth.constants.food_qualities.UNPALATABLE	
+			end
       end
    end
-
-   -- apply buffs if not intolerable; intolerable food will ignore any applied buffs.
-   if food_data.applied_buffs then
-      for _, applied_buff in ipairs(food_data.applied_buffs) do
-         radiant.entities.add_buff(self._entity, applied_buff)
-      end
-   end
-
-   -- then check if lovely
-   if self:_has_food_preferences() and self._sv._preference_effect then
+	
+	-- apply buffs if not intolerable; intolerable food will ignore any applied buffs.
+	if food_data.applied_buffs then
+		for _, applied_buff in ipairs(food_data.applied_buffs) do
+			radiant.entities.add_buff(self._entity, applied_buff)
+		end
+	end
+	
+	-- then check if lovely
+	if self:_has_food_preferences() and self._sv._preference_effect then
       if radiant.entities.is_material(food, self._sv._food_preferences) then
-         radiant.entities.add_buff(self._entity, self._sv._preference_effect)
-         return stonehearth.constants.food_qualities.LOVELY
+			radiant.entities.add_buff(self._entity, self._sv._preference_effect)
+			return stonehearth.constants.food_qualities.LOVELY
       end
    end
-
-
+   
+	
    if not food_data.quality then
       log:error('Food %s has no quality entry, defaulting quality to raw & bland.', food)
    end
@@ -178,13 +177,13 @@ function AceConsumptionComponent:consume_calories(food_entity)
    self._sv._last_eating_time = stonehearth.calendar:get_elapsed_time()
 end
 
-AceConsumptionComponent._ace_old__on_hourly = ConsumptionComponent._on_hourly
+AceConsumptionComponent._ace_old__on_hourly = ConsumptionComponent._on_hourly	
 function AceConsumptionComponent:_on_hourly()
-   if self._sv._consumes_drinks then
-      self:_lose_drink_satiety()
-   end
-
-   self:_ace_old__on_hourly()
+	if self._sv._consumes_drinks then
+		self:_lose_drink_satiety()
+	end
+	
+	self:_ace_old__on_hourly() 
 end
 
 -- Drinking related functions are below
@@ -219,16 +218,16 @@ function AceConsumptionComponent:get_min_thirst_to_drink_now()
       minutes_to_drink_time = now.minute
    elseif now.hour == self._morning_time - 1 or now.hour == self._night_time - 1 then
       minutes_to_drink_time = 60 - now.minute
-   elseif now.hour == self._afternoon_time - 1 then
-      local drink_satiety = self._expendable_resources_component:get_value('drink_satiety')
-      if drink_satiety <= self._thirsty_threshold then
-         minutes_to_drink_time = 60 - now.minute
-      end
+	elseif now.hour == self._afternoon_time - 1 then
+		local drink_satiety = self._expendable_resources_component:get_value('drink_satiety')
+		if drink_satiety <= self._thirsty_threshold then
+			minutes_to_drink_time = 60 - now.minute
+		end
    end
 
    local time_since_last_drink = stonehearth.calendar:get_elapsed_time() - (self._sv._last_drinking_time or 0)
    local had_drink_recently = time_since_last_drink <= stonehearth.constants.drink_satiety.HAD_DRINK_RECENTLY_WINDOW
-
+   
    local threshold = 0.25
    if minutes_to_drink_time ~= nil then
       threshold = threshold * (minutes_to_drink_time / 60)
@@ -240,7 +239,7 @@ function AceConsumptionComponent:get_min_thirst_to_drink_now()
 end
 
 function AceConsumptionComponent:set_drink_preferences(preferences, effect)
-   self._sv._drink_preference_effect = effect
+	self._sv._drink_preference_effect = effect
    self._sv._drink_preferences = preferences
 end
 
@@ -325,27 +324,27 @@ function AceConsumptionComponent:_add_drink_thoughts(e, drink_entity)
          self:_add_drink_thought(thought, e.drink_quality, e.drink_uri, e.drink_name)
       end
    end
-
-   self:_add_drink_item_quality_thought(e, drink_entity)
+	
+	self:_add_drink_item_quality_thought(e, drink_entity)
 end
 
 function AceConsumptionComponent:_should_add_drink_thought(drink_quality, now)
-   if drink_quality <= stonehearth.constants.drink_qualities.UNPALATABLE then
+	if drink_quality <= stonehearth.constants.drink_qualities.UNPALATABLE then
       return true
    else
-      local now = stonehearth.calendar:get_elapsed_time()
+		local now = stonehearth.calendar:get_elapsed_time()
 
-      if drink_quality == stonehearth.constants.drink_qualities.UNPALATABLE then
-         return true
-      elseif not self._sv._drink_window_expire_time or now >= self._sv._drink_window_expire_time then
-         return true
-      elseif now < self._sv._drink_window_expire_time then
-         for uri, data in pairs(self._sv._last_drink_thoughts) do
-            if drink_quality >= data.drink_quality then
-               return true
-            end
-         end
-      end
+		if drink_quality == stonehearth.constants.drink_qualities.UNPALATABLE then
+			return true
+		elseif not self._sv._drink_window_expire_time or now >= self._sv._drink_window_expire_time then
+			return true
+		elseif now < self._sv._drink_window_expire_time then
+			for uri, data in pairs(self._sv._last_drink_thoughts) do
+				if drink_quality >= data.drink_quality then
+					return true 
+				end
+			end
+		end
    end
 
    return false
@@ -357,12 +356,12 @@ function AceConsumptionComponent:_update_last_drink_thoughts(drink_quality)
    if drink_quality == stonehearth.constants.drink_qualities.UNPALATABLE then
       for _, data in pairs(self._sv._last_drink_thoughts) do
          for _, thought in pairs(data.drink_thoughts) do
-            radiant.entities.remove_thought(self._entity, thought)
+            radiant.entities.remove_thought(self._entity, thought) 
          end
-      end
+      end      
       self._sv._last_drink_thoughts = {}
    elseif not self._sv._drink_window_expire_time or now >= self._sv._drink_window_expire_time then
-      self._sv._last_drink_thoughts = {}
+      self._sv._last_drink_thoughts = {} 
    elseif now < self._sv._drink_window_expire_time then
       for uri, data in pairs(self._sv._last_drink_thoughts) do
          if drink_quality >= data.drink_quality then
@@ -411,47 +410,47 @@ function AceConsumptionComponent:_on_max_drink_satiety_changed()
 end
 
 function AceConsumptionComponent:_get_drink_quality(drink)
-   local drink_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink', false)
+	local drink_data = radiant.entities.get_entity_data(drink, 'stonehearth_ace:drink', false)
 
    if not drink_data then
       radiant.assert(false, 'Trying to consume a drink that has no entity data.')
       return -1
    end
 
-   -- first check if intolerable
+	-- first check if intolerable
    if self:_has_drink_intolerances() then
       if radiant.entities.is_material(drink, self._sv._drink_intolerances) then
-         if self._sv._drink_intolerance_effect then
-            radiant.entities.add_buff(self._entity, self._sv._drink_intolerance_effect)
-            return stonehearth.constants.drink_qualities.INTOLERABLE
-         else
-            return stonehearth.constants.drink_qualities.UNPALATABLE
-         end
+			if self._sv._drink_intolerance_effect then
+				radiant.entities.add_buff(self._entity, self._sv._drink_intolerance_effect)
+				return stonehearth.constants.drink_qualities.INTOLERABLE	 
+			else
+				return stonehearth.constants.drink_qualities.UNPALATABLE	
+			end
       end
    end
-
-   -- apply buffs if not intolerable; intolerable drinks will ignore any applied buffs.
-   if drink_data.applied_buffs then
-      for _, applied_buff in ipairs(drink_data.applied_buffs) do
-         radiant.entities.add_buff(self._entity, applied_buff)
-      end
-   end
-
-   -- then check if lovely
+	
+	-- apply buffs if not intolerable; intolerable drinks will ignore any applied buffs.
+	if drink_data.applied_buffs then
+		for _, applied_buff in ipairs(drink_data.applied_buffs) do
+			radiant.entities.add_buff(self._entity, applied_buff)
+		end
+	end
+	
+	-- then check if lovely
    if self:_has_drink_preferences() and self._sv._drink_preference_effect then
       if radiant.entities.is_material(drink, self._sv._drink_preferences) then
-         radiant.entities.add_buff(self._entity, self._sv._drink_preference_effect)
-         return stonehearth.constants.drink_qualities.LOVELY
+			radiant.entities.add_buff(self._entity, self._sv._drink_preference_effect)
+			return stonehearth.constants.drink_qualities.LOVELY
       end
    end
-
-
+   
+	
    if not drink_data.quality then
       log:error('Drink %s has no quality entry, defaulting quality to raw & bland.', drink)
    end
 
    return drink_data.quality or stonehearth.constants.drink_qualities.RAW_BLAND
-
+	
 end
 
 function AceConsumptionComponent:_get_drink_data(drink)

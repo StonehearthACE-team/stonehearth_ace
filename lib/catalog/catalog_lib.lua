@@ -478,7 +478,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
       end
 
       if entity_data['stonehearth_ace:drink_container'] then
-         local drink_uri, sub_levels = catalog_lib._get_drink_uri(entity_data['stonehearth_ace:drink_container'])
+         local drink_uri = entity_data['stonehearth_ace:drink_container'].drink
          local drink_json = drink_uri and radiant.resources.load_json(drink_uri)
          if drink_json and drink_json.entity_data and drink_json.entity_data['stonehearth_ace:drink'] then
             local stacks_per_serving = entity_data['stonehearth_ace:drink_container'].stacks_per_serving or 1
@@ -490,7 +490,7 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
             end
             local satisfaction = drink.default  --drink['stonehearth:sitting_on_chair'] or 
             catalog_data.drink_satisfaction = satisfaction and satisfaction.satisfaction
-            catalog_data.drink_quality = drink.quality - 0.1 * sub_levels
+            catalog_data.drink_quality = drink.quality
 
             -- make sure we're on the server before trying to check catalog materials
             -- this only needs to happen on the server anyway; it's for eating/drinking ai
@@ -660,26 +660,6 @@ function catalog_lib._get_material_table(materials)
       mats[mat] = true
    end
    return mats
-end
-
-function catalog_lib._get_drink_uri(drink_container)
-   local drink_uri
-   local sub_levels = 0
-
-   repeat
-      if drink_container then
-         local subcontainer = drink_container.subcontainer
-         if subcontainer then
-            local json = radiant.resources.load_json(subcontainer)
-            drink_container = json and json.entity_data and json.entity_data['stonehearth_ace:drink_container']
-            sub_levels = sub_levels + 1
-         else
-            drink_uri = drink_container.drink
-         end
-      end
-   until not drink_container or drink_uri
-
-   return drink_uri, sub_levels
 end
 
 return catalog_lib
