@@ -97,13 +97,9 @@
       <div class="banner">
          <img class="jobIcon" {{bind-attr src=view.model.stonehearth:job.class_icon}}/>
       </div>
-   </td>
-   <td {{action "selectPerson" target="view"}} {{bind-attr class=":selectable_citizen_row view.isSelected:selected:"}}>
       <div class="name">
          {{i18n_key view.model.stonehearth:unit_info.display_name self=view.model}}
       </div>
-   </td>
-   <td {{action "selectPerson" target="view"}} {{bind-attr class=":selectable_citizen_row view.isSelected:selected:"}}>
       <div class="stats">
          <span class="mind mindStat">{{view.model.stonehearth:attributes.attributes.mind.effective_value}}</span>   /
          <span class="body bodyStat">{{view.model.stonehearth:attributes.attributes.body.effective_value}}</span>   /   
