@@ -332,9 +332,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
          var orderArgs;
          if (e.button == 2) {
             if (e.ctrlKey) {
-               orderArgs = { type: "maintain", at_least: 1, quick_add: true };
+               orderArgs = { type: "maintain", at_least: 1 };
             } else {
-               orderArgs = { type: "make", amount: 1, quick_add: true};
+               orderArgs = { type: "make", amount: 1 };
             }
             if (e.shiftKey) {
                orderArgs.order_index = 1;
@@ -344,7 +344,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var recipe = self._getOrCalculateRecipeData($(this).attr('recipe_key'));
             if (recipe.is_auto_craft && orderArgs.type == 'make') {
                // can't queue auto-craft as make, only as maintain
-               orderArgs = { type: "maintain", at_least: orderArgs.amount, quick_add: true };
+               orderArgs = { type: "maintain", at_least: orderArgs.amount, order_index: orderArgs.order_index };
             }
             radiant.call_obj(self.getOrderList(), 'add_order_command', recipe, orderArgs)
                .done(function(return_data){
