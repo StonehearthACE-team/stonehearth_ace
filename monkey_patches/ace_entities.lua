@@ -752,7 +752,7 @@ ace_entities.get_appeal_optimized = (function()
 
       if entity then
          local item_quality = entity:get_component('stonehearth:item_quality')
-         if item_quality and item_quality:is_initialized() then
+         if item_quality then
             local quality = item_quality:get_quality()
             local bonus = item_quality_bonuses[quality]
             if bonus ~= nil then

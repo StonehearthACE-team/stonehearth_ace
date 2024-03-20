@@ -1046,38 +1046,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
    },
 
    _updateCraftInsertShown: function(div) {
-   _shouldShowMaintainOrders: function() {
-      var maintainOrders = this.get('model.order_list.maintain_orders') || [];
-      var autoCraftOrders = this.get('model.order_list.auto_craft_orders') || [];
-      this.set('showMaintainOrderList', maintainOrders.length > 0 || autoCraftOrders.length > 0 ||
-            this.get('isShowingMaintainCraftInsert') || this.get('isShowingAutoCraftInsert'));
-   }.observes('model.order_list.maintain_orders', 'model.order_list.auto_craft_orders', 'isShowingMaintainCraftInsert', 'isShowingAutoCraftInsert'),
-
-   _autoCraftOrdersChanged: function() {
-      $(this).trigger('stonehearth_ace:workshop:auto_craft_orders_changed');
-   }.observes('model.order_list.auto_craft_orders'),
-
-   hasAutoCraftOrder: function(recipe_key) {
-      var autoCraftOrders = this.get('model.order_list.auto_craft_orders') || [];
-      for (var i = 0; i < autoCraftOrders.length; i++) {
-         if (autoCraftOrders[i].recipe.recipe_key == recipe_key) {
-            return true;
-         }
-      }
-
-      return false;
-   },
-
-   _isCurrentOrderTypeAutoCraft: function() {
-      return this._getOrCalculateRecipeData(this.currentRecipe.recipe_key).is_auto_craft;
-   },
-
-   _isCurrentOrderTypeMaintain: function() {
-      var type = this.$('input[name=' + this.get('orderTypeName') + ']:checked').val();
-      return type == "maintain" && !this._getOrCalculateRecipeData(this.currentRecipe.recipe_key).is_auto_craft;
-   },
-
-   _updateCraftInsertShown: function() {
       var self = this;
 
       if (stonehearth_ace.isShiftKeyActive() && (self.HOVERING_CRAFT_BUTTON || self.HOVERING_ITEM)) {
@@ -1086,34 +1054,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
       else {
          div.hide();
       }
-      var makeDiv = self.$('.insertMake');
-      var maintainDiv = self.$('.insertMaintain');
-      var autoCraftDiv = self.$('.insertAutoCraft');
-
-      makeDiv.hide();
-      maintainDiv.hide();
-      autoCraftDiv.hide();
-
-      var isShowingAutoCraftInsert = false;
-      var isShowingMaintainCraftInsert = false;
-      if (show) {
-         if ((self.HOVERING_CRAFT_BUTTON && self._isCurrentOrderTypeAutoCraft()) ||
-               (self.HOVERING_ITEM && self._hoveredRecipeIsAutoCraft)) {
-            autoCraftDiv.show();
-            isShowingAutoCraftInsert = true;
-         }
-         else if ((self.HOVERING_CRAFT_BUTTON && self._isCurrentOrderTypeMaintain()) ||
-               (self.HOVERING_ITEM && stonehearth_ace.isCtrlKeyActive())) {
-            maintainDiv.show();
-            isShowingMaintainCraftInsert = true;
-         }
-         else {
-            makeDiv.show();
-         }
-      }
-
-      self.set('isShowingAutoCraftInsert', isShowingAutoCraftInsert);
-      self.set('isShowingMaintainCraftInsert', isShowingMaintainCraftInsert);
    },
 
    _updateCraftOrderPreference: function() {
@@ -1801,9 +1741,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
       if (catalogData['appeal']) {
          statHtml += self._formattedRecipeProductProperty(recipe, 'appeal', 'appeal');
       }
-      if (catalogData['fuel_amount']) {
-         statHtml += self._formattedRecipeProductProperty(recipe, 'fuel_amount', 'fuelAmount');
-      }
       if (catalogData['food_satisfaction']) {
          var level = stonehearth_ace.getSatisfactionLevel(App.constants.food_satisfaction_thresholds, catalogData['food_satisfaction']);
          statHtml += self._formattedRecipeProductProperty(recipe, 'food_servings', 'satisfaction food ' + level);
@@ -1828,7 +1765,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
       App.tooltipHelper.createDynamicTooltip(self.$('.stat.appeal'), function () { return i18n.t('stonehearth:ui.game.show_workshop.tooltip_appeal_stat'); });
       App.tooltipHelper.createDynamicTooltip(self.$('.stat.netWorth'), function () { return i18n.t('stonehearth:ui.game.show_workshop.tooltip_net_worth_stat'); });
       App.tooltipHelper.createDynamicTooltip(self.$('.stat.effort'), function () { return i18n.t('stonehearth:ui.game.show_workshop.tooltip_effort_stat'); });
-      App.tooltipHelper.createDynamicTooltip(self.$('.stat.fuelAmount'), function () { return i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_fuel_amount'); });
       
       var satisfactionLevel;
       var servings;
@@ -1874,24 +1810,15 @@ App.StonehearthTeamCrafterView = App.View.extend({
          var storageCapacity = productCatalogData.storage_capacity;
          self.set('storageCapacity', storageCapacity);
 
-         var fuelCapacity = productCatalogData.fuel_capacity;
-         self.set('fuelCapacity', fuelCapacity);
-
-         var warmthRadius = productCatalogData.warmth_radius;
-         self.set('warmthRadius', warmthRadius);
-
-         var showEquipment = false;
          if (productCatalogData.equipment_roles) {
             var classArray = stonehearth_ace.findRelevantClassesArray(productCatalogData.equipment_roles);
             self.set('allowedClasses', classArray);
-            showEquipment = true;
          }
          else {
             self.set('allowedClasses', null);
          }
          if (productCatalogData.equipment_required_level) {
             self.$('#levelRequirement').text(i18n.t('stonehearth:ui.game.unit_frame.level') + productCatalogData.equipment_required_level);
-            showEquipment = true;
          } else {
             self.$('#levelRequirement').text('');
          }
@@ -1899,7 +1826,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
          var equipmentTypes = [];
          if (productCatalogData.equipment_types) {
             equipmentTypes = stonehearth_ace.getEquipmentTypesArray(productCatalogData.equipment_types);
-            showEquipment = true;
          }
          self.set('equipmentTypes', equipmentTypes);
 
@@ -1918,43 +1844,25 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
          if (storageCapacity) {
             var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_storage_capacity')}</span>` +
-                  `<span class="value">${storageCapacity}</span></div>`;
+                  `<span class="value">${productCatalogData.storage_capacity}</span></div>`;
             App.guiHelper.addTooltip(self.$('#storageCapacity'), description);
          }
 
-         if (fuelCapacity) {
-            var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_fuel_capacity')}</span>` +
-                  `<span class="value">${fuelCapacity}</span></div>`;
-            App.guiHelper.addTooltip(self.$('#fuelCapacity'), description);
-         }
-
-         if (warmthRadius) {
-            var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_warmth_radius')}</span>` +
-                  `<span class="value">${warmthRadius}</span></div>`;
-            App.guiHelper.addTooltip(self.$('#warmthRadius'), description);
-         }
-
-         if (showEquipment) {
-            self.$('#equipmentRequirements').show();
-            App.tooltipHelper.createDynamicTooltip(self.$('#equipmentRequirements'), function () {
-               var tooltipString = i18n.t('stonehearth:ui.game.unit_frame.no_requirements');
-               if (productCatalogData.equipment_roles) {
-                  tooltipString = i18n.t('stonehearth:ui.game.unit_frame.equipment_description',
-                                          { class_list: radiant.getClassString(self.get('allowedClasses')) });
-               }
-               if (productCatalogData.equipment_required_level) {
-                  tooltipString += i18n.t('stonehearth:ui.game.unit_frame.level_description', { level_req: productCatalogData.equipment_required_level });
-               }
-               if (productCatalogData.equipment_types) {
-                  tooltipString += '<br>' + i18n.t('stonehearth_ace:ui.game.unit_frame.equipment_types_description',
-                                                   { i18n_data: { types: stonehearth_ace.getEquipmentTypesString(self.get('equipmentTypes')) } });
-               }
-               return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth:ui.game.unit_frame.class_lv_title'), tooltipString));
-            });
-         }
-         else {
-            self.$('#equipmentRequirements').hide();
-         }
+         App.tooltipHelper.createDynamicTooltip(self.$('#equipmentRequirements'), function () {
+            var tooltipString = i18n.t('stonehearth:ui.game.unit_frame.no_requirements');
+            if (productCatalogData.equipment_roles) {
+               tooltipString = i18n.t('stonehearth:ui.game.unit_frame.equipment_description',
+                                       { class_list: radiant.getClassString(self.get('allowedClasses')) });
+            }
+            if (productCatalogData.equipment_required_level) {
+               tooltipString += i18n.t('stonehearth:ui.game.unit_frame.level_description', { level_req: productCatalogData.equipment_required_level });
+            }
+            if (productCatalogData.equipment_types) {
+               tooltipString += '<br>' + i18n.t('stonehearth_ace:ui.game.unit_frame.equipment_types_description',
+                                                { i18n_data: { types: stonehearth_ace.getEquipmentTypesString(self.get('equipmentTypes')) } });
+            }
+            return $(App.tooltipHelper.createTooltip(i18n.t('stonehearth:ui.game.unit_frame.class_lv_title'), tooltipString));
+         });
 
          // make tooltips for inflictable debuffs
          Ember.run.scheduleOnce('afterRender', this, function() {

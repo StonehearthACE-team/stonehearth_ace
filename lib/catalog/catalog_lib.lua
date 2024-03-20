@@ -297,25 +297,17 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
 
       catalog_data.max_stacks = json.components['stonehearth:stacks'] and json.components['stonehearth:stacks'].max_stacks
 
-      if json.components['stonehearth:storage'] and json.components['stonehearth:storage'].is_public ~= false then
+      if json.components['stonehearth:storage'] then
          catalog_data.is_storage = true
-         local capacity = json.components['stonehearth:storage'].capacity
-         if json.components['stonehearth_ace:consumer'] then
-            catalog_data.fuel_capacity = capacity
-         else
-            catalog_data.storage_capacity = capacity
-         end
+         catalog_data.storage_capacity = json.components['stonehearth:storage'].is_public ~= false and json.components['stonehearth:storage'].capacity
       end
 
       -- TODO: also check ghost for collision / landmark dimensions
-      if json.components['region_collision_shape'] and json.components['region_collision_shape'].region then
+      if json.components['region_collision_shape'] and json.components['region_collision_shape'].region_collision_type ~= 'none'
+            and json.components['region_collision_shape'].region then
          local region = Region3()
          region:load(json.components['region_collision_shape'].region)
          catalog_data.collision_size = region:get_bounds():get_size()
-      end
-
-      if json.components['sensor_list'] and json.components['sensor_list'].sensors and json.components['sensor_list'].sensors.warmth then
-         catalog_data.warmth_radius = json.components['sensor_list'].sensors.warmth.radius
       end
 
       -- buffs this entity has (e.g., aura buffs)
@@ -325,17 +317,6 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
 
       if json.components['stonehearth:lamp'] and json.components['stonehearth:lamp'].buff_source then
          local buffs = catalog_lib.get_buffs({json.components['stonehearth:lamp'].buff or 'stonehearth_ace:buffs:weather:warmth_source'})
-         if catalog_data.buffs then
-            for _, buff in ipairs(buffs) do
-               table.insert(catalog_data.buffs, buff)
-            end
-         else
-            catalog_data.buffs = buffs
-         end
-      end
-
-      if json.components['stonehearth:firepit'] and json.components['stonehearth:firepit'].buff_source then
-         local buffs = catalog_lib.get_buffs({json.components['stonehearth:firepit'].buff or 'stonehearth_ace:buffs:weather:warmth_source'})
          if catalog_data.buffs then
             for _, buff in ipairs(buffs) do
                table.insert(catalog_data.buffs, buff)
@@ -509,10 +490,6 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
 
       if entity_data['stonehearth:species'] then
          catalog_data.species_name = entity_data['stonehearth:species'].display_name
-      end
-
-      if entity_data['stonehearth_ace:fuel'] then
-         catalog_data.fuel_amount = entity_data['stonehearth_ace:fuel'].fuel_amount
       end
    end
 
