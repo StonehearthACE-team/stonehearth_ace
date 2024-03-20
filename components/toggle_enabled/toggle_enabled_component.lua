@@ -3,13 +3,14 @@ local log = radiant.log.create_logger('toggle_enabled')
 local ToggleEnabledComponent = class()
 
 function ToggleEnabledComponent:create()
-	local json = radiant.entities.get_json(self)
+	local json = radiant.entities.get_json(self) or {}
 	self._sv.enabled = json.enabled or false
 	self._sv.enable_command = json.enable_command or 'stonehearth_ace:commands:toggle_enabled_on'
 	self._sv.disable_command = json.disable_command or 'stonehearth_ace:commands:toggle_enabled_off'
 	self._sv.enable_effect_name = json.enable_effect
 	self._sv.disable_effect_name = json.disable_effect
 	self._sv.alert_on_reload = false or json.alert_on_reload
+   self._sv.show_commands = json.show_commands ~= false
 	self.__saved_variables:mark_changed()
 end
 
@@ -39,7 +40,7 @@ end
 function ToggleEnabledComponent:_on_enabled_changed()
 	-- swap commands
 	local commands_component = self._entity:get_component('stonehearth:commands')
-	if commands_component then
+	if commands_component and self._sv.show_commands then
 		if self._sv.enabled then
 			commands_component:remove_command(self._sv.enable_command)
 			if not commands_component:has_command(self._sv.disable_command) then

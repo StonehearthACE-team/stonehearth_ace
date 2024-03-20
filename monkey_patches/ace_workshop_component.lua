@@ -17,7 +17,7 @@ function AceWorkshopComponent:activate()
    
    local json = radiant.entities.get_json(self) or {}
    if not self._sv.crafting_time_modifier then
-      self._sv.crafting_time_modifier = json.crafting_time_modifier
+      self._sv.crafting_time_modifier = json.crafting_time_modifier or 1
       self.__saved_variables:mark_changed()
    end
 
@@ -30,16 +30,23 @@ end
 
 function AceWorkshopComponent:set_crafting_time_modifier(modifier)
    self._sv.crafting_time_modifier = modifier
+
+   if self._sv.crafting_progress then
+      self._sv.crafting_progress:set_workshop_modifier(modifier)
+   end
+   self.__saved_variables:mark_changed()
+
+   radiant.events.trigger(self._entity, 'stonehearth_ace:workshop:crafting_time_modifier_changed')
 end
 
 function AceWorkshopComponent:get_crafting_time_modifier()
-   return self._sv.crafting_time_modifier or 1
+   return self._sv.crafting_time_modifier
 end
 
 -- Create a progress item that tracks the progress of the order item being crafted
 function AceWorkshopComponent:start_crafting_progress(order, crafter)
    if order and not self._sv.crafting_progress then
-      self._sv.crafting_progress = radiant.create_controller('stonehearth:crafting_progress', order, crafter)
+      self._sv.crafting_progress = radiant.create_controller('stonehearth:crafting_progress', order, crafter, self._sv.crafting_time_modifier)
       self._sv.order = order
       self._sv.crafter = crafter
       self.__saved_variables:mark_changed()

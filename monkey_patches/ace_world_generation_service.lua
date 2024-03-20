@@ -1,8 +1,31 @@
+local HeightMapRenderer = require 'stonehearth.services.server.world_generation.height_map_renderer'
 local Timer = require 'stonehearth.services.server.world_generation.timer'
 local Cube3 = _radiant.csg.Cube3
 local log = radiant.log.create_logger('world_generation')
 
+local WorldGenerationService = require 'stonehearth.services.server.world_generation.world_generation_service'
 local AceWorldGenerationService = class()
+
+AceWorldGenerationService._ace_old__setup_biome_data = WorldGenerationService._setup_biome_data
+function AceWorldGenerationService:_setup_biome_data(biome_src)
+   self:_ace_old__setup_biome_data(biome_src)
+
+   self:_create_height_map_renderer()
+end
+
+function AceWorldGenerationService:_create_height_map_renderer()
+   if self._biome_generation_data then
+      self._height_map_renderer = HeightMapRenderer(self._biome_generation_data)
+   end
+end
+
+function AceWorldGenerationService:get_height_map_renderer()
+   return self._height_map_renderer
+end
+
+function AceWorldGenerationService:get_rock_terrain_tag_at_height(height)
+   return self._height_map_renderer and self._height_map_renderer:get_rock_terrain_tag_at_height(height)
+end
 
 function AceWorldGenerationService:_add_water_bodies(regions)
    local biome_landscape_info = self._biome_generation_data:get_landscape_info()

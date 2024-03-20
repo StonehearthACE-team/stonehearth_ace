@@ -85,9 +85,10 @@ function AceStorageComponent:activate()
    self._allow_item_removal = json.allow_item_removal ~= false
 
    self._always_mark_changed = self._sv.is_public or json.render_contents
-   self:mark_changed()
+   --self:mark_changed()
 
    self._sv.is_hidden = json.is_hidden or false -- public inventory that's accessible, but hidden from UI
+   self._sv.show_filter = json.show_filter ~= false -- whether to show the filter UI
    self._sv.allow_default = json.allow_default ~= false  -- can be set to town default storage
    if self._type == 'output_crate' then
       self._sv.allow_default = false
@@ -676,6 +677,10 @@ function AceStorageComponent:mark_changed()
       self.__saved_variables:mark_changed()
       self._sv.item_tracker:mark_changed(true)
    end
+end
+
+function AceStorageComponent:get_item_tracker()
+   return self._sv.item_tracker
 end
 
 function AceStorageComponent:get_items_of_type(uri)

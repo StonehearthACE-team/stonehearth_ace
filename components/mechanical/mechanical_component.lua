@@ -8,12 +8,14 @@ function MechanicalComponent:initialize()
    self._def_produces = self._json.produces or 0
    self._def_consumes = self._json.consumes or 0
    self._def_resistance = self._json.resistance or 0
+   self._min_consumes_percent = self._json.min_consumes_percent or 0
 
+   self._sv.enabled = self._json.start_enabled ~= false
    self._sv.produces = self._def_produces
    self._sv.consumes = self._def_consumes
    self._sv.resistance = self._def_resistance
+   self._sv.min_consumes_percent = self._min_consumes_percent
    self._sv.power_percentage = 0
-   self._set_power_script = self._json.set_power_script
    self._enabled_effect_names = self._json.enabled_effects or {}
    self._disabled_effect_name = self._json.disabled_effect
    self._has_reverse_effects = self._json.has_reverse_effects or false
@@ -21,6 +23,16 @@ end
 
 function MechanicalComponent:restore()
    self._is_restore = true
+end
+
+function MechanicalComponent:activate()
+   if self._json.set_power_script then
+      self._set_power_script = radiant.mods.load_script(self._json.set_power_script)
+      if not self._set_power_script then
+         radiant.verify(false, "Could not find script %s for mechanical entity %s", self._json.set_power_script, self._entity)
+         return false
+      end
+   end
 end
 
 function MechanicalComponent:post_activate()
@@ -49,19 +61,42 @@ function MechanicalComponent:get_power_produced()
 end
 
 function MechanicalComponent:get_power_consumed()
-   return self._sv.consumes
+   return self._sv.enabled and self._sv.consumes or 0
 end
 
 function MechanicalComponent:get_resistance()
    return self._sv.resistance
 end
 
+function MechanicalComponent:get_min_power_consumed_percent()
+   return self._sv.min_consumes_percent
+end
+
+function MechanicalComponent:is_enabled()
+   return self._sv.enabled
+end
+
+function MechanicalComponent:set_enabled(enabled)
+   if self._sv.enabled ~= enabled then
+      self._sv.enabled = enabled
+      self:_updated()
+   end
+end
+
 function MechanicalComponent:set_power_produced(amount, should_reverse)
-   self._sv.produces = amount
+   local changed = false
+   if amount ~= self._sv.produces then
+      self._sv.produces = amount
+      changed = true
+   end
    if should_reverse ~= nil then
       self._sv.should_reverse_override = should_reverse
+      changed = true
    end
-   self:_updated()
+
+   if changed then
+      self:_updated()
+   end
 end
 
 function MechanicalComponent:set_power_produced_percent(percent, should_reverse)
@@ -69,8 +104,10 @@ function MechanicalComponent:set_power_produced_percent(percent, should_reverse)
 end
 
 function MechanicalComponent:set_power_consumed(amount)
-   self._sv.consumes = amount
-   self:_updated()
+   if amount ~= self._sv.consumes then
+      self._sv.consumes = amount
+      self:_updated()
+   end
 end
 
 function MechanicalComponent:set_power_consumed_percent(percent)
@@ -78,8 +115,10 @@ function MechanicalComponent:set_power_consumed_percent(percent)
 end
 
 function MechanicalComponent:set_resistance(amount)
-   self._sv.resistance = amount
-   self:_updated()
+   if amount ~= self._sv.resistance then
+      self._sv.resistance = amount
+      self:_updated()
+   end
 end
 
 function MechanicalComponent:set_resistance_percent(percent)
@@ -92,7 +131,16 @@ function MechanicalComponent:_updated()
 end
 
 -- this is called by the mechanical service on all mechanical entities in a network when that network's power is changed and calculated
-function MechanicalComponent:set_power_percentage(percentage)
+function MechanicalComponent:set_power_percentage(percentage, is_loading)
+   if not self._sv.enabled then
+      percentage = 0
+   end
+
+   -- if we're loading, we still want to run any effects and scripts
+   if percentage == self._sv.power_percentage and not is_loading then
+      return
+   end
+
    if percentage > 0 then
       self:_run_enabled_effect(percentage)
    else
@@ -106,12 +154,6 @@ function MechanicalComponent:set_power_percentage(percentage)
 
    local script = self._set_power_script
    if script then
-      local script = radiant.mods.require(script)
-
-      if not script then
-         radiant.verify(false, "Could not find script %s for mechanical entity %s", self._set_power_script, self._entity)
-         return false
-      end
       if not script.set_power_percentage then
          radiant.verify(false, "Could not find function set_power_percentage in script %s for mechanical entity %s", script, self._entity)
          return false

@@ -446,7 +446,20 @@ function AceHydrologyService:auto_fill_water_region(region, prefill_fn)
 
    -- eventually it would be cool if we could handle more than one water entity intersecting the region at different points
    if num_waters ~= 1 then
+      log:debug('region %s has %s neighboring water regions; cannot auto-fill:', region:get_bounds(), num_waters)
+      for _, water in pairs(waters) do
+         log:debug('   %s %s', water, radiant.entities.local_to_world(water:get_component('stonehearth:water'):get_region():get():get_bounds(), water))
+      end
       return nil
+   end
+
+   -- clip the fillable water region based on terrain/solid entities
+   -- TODO: do this initially to split the region into contiguous regions, which are much more likely to have only one adjacent water entity
+   -- but we need to be able to preview any terrain/solid entity removal in that clipping process
+   local new_region = _physics:clip_region(region, _radiant.physics.Physics.CLIP_SOLID, 0)
+   if new_region:empty() then
+      log:debug('region %s is empty after clipping', region:get_bounds())
+      return true
    end
 
    local water_entity = waters[next(waters)]
@@ -457,7 +470,6 @@ function AceHydrologyService:auto_fill_water_region(region, prefill_fn)
    log:debug('found adjacent water region %s (%s) with water level %s', water_region, water_region:get_bounds(), water_level)
 
    -- use the bounds of the region to clip the top down to the water level
-   local new_region = Region3(region)
    local bounds = new_region:get_bounds()
    local water_max_y = water_region:get_bounds().max.y
    local region_max_y = bounds.max.y

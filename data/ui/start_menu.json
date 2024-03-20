@@ -185,8 +185,8 @@
                   "hotkey_action": "zone:farm",
                   "field_type": "farm",
                   "ordinal": 1
-               },
-               "create_field_bush_farm": {
+               },              
+					"create_field_bush_farm": {
                   "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_bush_farm.display_name)",
                   "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_bush_farm.description)",
                   "required_ability": "field_type_farm",
@@ -199,7 +199,7 @@
                   "field_type": "bush_farm",
                   "ordinal": 2
                },
-               "create_field_decorative_flowers": {
+					"create_field_decorative_flowers": {
                   "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_decorative_flowers.display_name)",
                   "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_decorative_flowers.description)",
                   "required_ability": "field_type_decorative_flowers",
@@ -224,8 +224,8 @@
                   "hotkey_action": "zone:orchard",
                   "field_type": "orchard",
                   "ordinal": 4
-               },
-               "create_field_treefarm": {
+               },					            					
+					"create_field_treefarm": {
                   "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_treefarm.display_name)",
                   "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_treefarm.description)",
                   "required_ability": "field_type_treefarm",
@@ -238,7 +238,7 @@
                   "field_type": "treefarm",
                   "ordinal": 5
                },
-               "create_field_underfarm": {
+					"create_field_underfarm": {
                   "name": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_underfarm.display_name)",
                   "description": "i18n(stonehearth_ace:ui.game.menu.zone_menu.items.create_farm.create_field_underfarm.description)",
                   "required_ability": "field_type_underfarm",
@@ -281,7 +281,7 @@
             "required_job_text": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.mason.required_job_text)",
             "ordinal": 3
          },
-         "weaver": {
+			"weaver": {
             "required_job_text": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.weaver.required_job_text)",
             "ordinal": 4
          },
@@ -290,14 +290,14 @@
             "ordinal": 5
          },
          "engineer": {
-            "description": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.engineer.description)",
+				"description": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.engineer.description)",
             "required_job_text": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.engineer.required_job_text)",
             "ordinal": 6
-         },
+         },        
          "cook": {
             "required_job_text": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.cook.required_job_text)",
             "ordinal": 7
-         },
+         },        
          "shepherd": {
             "name": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.shepherd.display_name)",
             "description": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.shepherd.description)",
@@ -310,7 +310,7 @@
             "hotkey_action": "craft:shepherd",
             "ordinal": 8
          },
-         "herbalist": {
+			"herbalist": {
             "required_job_text": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.herbalist.required_job_text)",
             "ordinal": 9
          },
@@ -327,7 +327,7 @@
             "ordinal": 10
          },
          "geomancer": {
-            "description": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.geomancer.description)",
+				"description": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.geomancer.description)",
             "required_job_text": "i18n(stonehearth_ace:ui.game.menu.crafter_menu.items.geomancer.required_job_text)",
             "ordinal": 99
          }
