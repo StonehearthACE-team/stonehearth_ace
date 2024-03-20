@@ -26,75 +26,7 @@ function AceHydrologyService:_on_terrain_changed(delta_region, now)
 
    if not delta_region:empty() then
       --log:debug('... %s (%s), %s', delta_region, delta_region:get_bounds(), now)
-      --self:_ace_old__on_terrain_changed(delta_region, now)
-      -- ACE: temp include old function code for debug messages
-
-      delta_region = self:_remove_processed_region(delta_region, now)
-
-      if delta_region:empty() then
-         return
-      end
-
-      local changed_blocks = self:_classify_changed_blocks(delta_region)
-      -- log:debug('changed blocks for hydrology terrain changed region %s: %s',
-      --       delta_region:get_bounds(), radiant.util.table_tostring(changed_blocks))
-      -- self:_process_added_interior_blocks(changed_blocks.added_interior_blocks)
-      -- log:debug('processed added interior blocks')
-      log:debug('processing terrain change...')
-      self:_process_added_interior_regions(changed_blocks.added_interior_regions)
-      log:debug('processed %s added interior regions', #changed_blocks.added_interior_regions)
-      self:_process_added_container_blocks(changed_blocks.added_container_blocks)
-      log:debug('processed %s added container blocks', #changed_blocks.added_container_blocks)
-      self:_process_removed_container_blocks(changed_blocks.removed_container_blocks)
-      log:debug('processed %s removed container blocks', #changed_blocks.removed_container_blocks)
-   end
-end
-
-function AceHydrologyService:_classify_changed_blocks(delta_region)
-   local added_interior_blocks = {}
-   local added_container_blocks = {}
-   local removed_container_blocks = {}
-   local added_interior_regions = {}
-
-   local inflated_region = delta_region:inflated(Point3.one)
-   local entities_present = radiant.terrain.get_entities_in_region(inflated_region)
-
-   for _, entity in pairs(entities_present) do
-      local water_component = entity:get_component('stonehearth:water')
-      if water_component then
-         local modified_water_region = self:_get_affected_water_region(delta_region, entity)
-
-         -- ACE: we can remove the whole region from the water entity at once, no need to do it block by block
-         local intersection = self._water_tight_region:intersect_region(modified_water_region)
-         if not intersection:empty() then
-            table.insert(added_interior_regions, {entity = entity, region = intersection})
-         end
-
-         local modified_container_region = self:_get_affected_container_region(delta_region, entity)
-         for block in modified_container_region:each_point() do
-            if self._water_tight_region:contains(block) then
-               table.insert(added_container_blocks, block)
-            else
-               table.insert(removed_container_blocks, block)
-            end
-         end
-      end
-   end
-
-   local changed_blocks = {
-      added_interior_blocks = added_interior_blocks,
-      added_container_blocks = added_container_blocks,
-      removed_container_blocks = removed_container_blocks,
-      added_interior_regions = added_interior_regions,
-   }
-
-   return changed_blocks
-end
-
-function AceHydrologyService:_process_added_interior_regions(added_interior_regions)
-   for _, data in ipairs(added_interior_regions) do
-      local water_component = data.entity:get_component('stonehearth:water')
-      water_component:remove_from_region(data.region)
+      self:_ace_old__on_terrain_changed(delta_region, now)
    end
 end
 
@@ -424,13 +356,6 @@ end
 -- if you remove something from the water and want it to replace water there instead of adjusting/filling
 -- returns true if successful, false if prefill function failed, and nil if not exactly one adjacent water region
 function AceHydrologyService:auto_fill_water_region(region, prefill_fn)
-   if not region or region:empty() then
-      if prefill_fn then
-         prefill_fn({}, 0)
-      end
-      return true
-   end
-
    local inflated_region = csg_lib.get_non_diagonal_xyz_inflated_region(region)
    local waters = radiant.terrain.get_entities_in_region(inflated_region, function(entity) return entity:get_component('stonehearth:water') ~= nil end)
    local num_waters = radiant.size(waters)
@@ -440,7 +365,7 @@ function AceHydrologyService:auto_fill_water_region(region, prefill_fn)
       self:add_ignore_terrain_region_changes(region)
    end
 
-   if prefill_fn and not prefill_fn(waters, num_waters) then
+   if prefill_fn and not prefill_fn(waters) then
       return false
    end
 
