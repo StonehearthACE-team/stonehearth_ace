@@ -115,14 +115,14 @@
                {{#each recipe_category.recipes}}
                   <div
                      {{bind-attr
+                        title=this.display_name
                         class=":item :uisounds this.is_locked:is-locked this.is_hidden:is-hidden this.is_workshop_selected:is-workshop-selected this.is_auto_craft:is-auto-craft"
-                        recipe_key="this.recipe_key"
-                        is_craftable="this.is_craftable"
-                        is_auto_craft="this.is_auto_craft"
+                        recipe_key=this.recipe_key
+                        is_craftable=this.is_craftable
+                        is_auto_craft=this.is_auto_craft
                      }}
                      {{action "select" this target="view"}}>
-                     <img {{bind-attr class=":autoCraftIcon this.is_auto_craft::hidden"}}/>
-                     <img class="productIcon" {{bind-attr src="this.portrait" recipe_key="this.recipe_key"}}/>
+                     <img {{bind-attr src="this.portrait"}}/>
                   </div>
                {{/each}}
             </div>

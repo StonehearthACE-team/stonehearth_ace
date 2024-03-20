@@ -280,7 +280,6 @@
          }
 
          .item {
-            position: relative;
             float: left;
             width: 65px;
             height: 69px;
@@ -302,23 +301,10 @@
                opacity: 0.5;
             }
 
-            .autoCraftIcon {
-               position: absolute;
-               bottom: 0px;
-               right: -3px;
-               width: 19px;
-               height: 19px;
-               content: url(/stonehearth_ace/ui/game/show_workshop/images/autoCraftIcon.png);
-               z-index: 0;
-            }
-
-            .productIcon {
+            img {
                width: 46px;
                height: auto;
-               // use padding instead of margin so mouseover doesn't pass through to element underneath (frame div)
-               //margin: auto;
-               padding: 11.5px 9.5px;
-               z-index: 1;
+               margin: auto;
             }
          }
 

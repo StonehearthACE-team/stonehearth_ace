@@ -471,12 +471,7 @@ App.guiHelper = {
       }
 
       if (catalogData.deprecated) {
-         detail += `<div class="item-deprecated-tooltip">${i18n.t('stonehearth:ui.game.entities.tooltip_deprecated')}</div>`;
-      }
-
-      if (options.recipe_key) {
-         // if it's a recipe, add information for interacting with the crafting ui
-         detail += `<div class="verticalSpacer" style="opacity: 0.75">${i18n.t('stonehearth_ace:ui.game.show_workshop.recipe_list_queueing')}</div>`;
+         detail += '<div class="item-deprecated-tooltip">' + i18n.t('stonehearth:ui.game.entities.tooltip_deprecated') + "</div>";
       }
 
       var tooltip = App.tooltipHelper.createTooltip(title, detail);
