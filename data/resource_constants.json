@@ -69,24 +69,6 @@
          "name": "i18n(stonehearth_ace:ui.data.constants.pelt_resource_name)",
          "category": "resources_animal"
       },
-      "bone resource edible": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.bone_resource_edible_name)",
-         "icon": "/stonehearth_ace/entities/resources/bone/bone_material_edible_resource.png",
-         "default_resource": "stonehearth_ace:resources:bone:bone_material",
-         "category": "resources_animal"
-      },
-      "bone resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.bone_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/bone/bone_material_resource.png",
-         "default_resource": "stonehearth_ace:resources:bone:bone_skeleton",
-         "category": "resources_animal"
-      },
-      "bone resource strong": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.strong_bone_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/bone/strong_bone_resource.png",
-         "default_resource": "stonehearth:resources:ogre_bone",
-         "category": "resources_animal"
-      },
       "cloth resource": {
          "name": "i18n(stonehearth_ace:ui.data.constants.cloth_resource_name)",
          "icon": "/stonehearth_ace/entities/refined/cloth_icon.png",
@@ -304,6 +286,18 @@
          "icon": "/stonehearth_ace/entities/food/condiment_base_icon.png",
          "default_resource": "stonehearth_ace:food:mayonnaise",
          "category": "cooking_ingredient"
+      },
+      "bone resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.bone_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/bone/bone_material/bone_material.png",
+         "default_resource": "stonehearth_ace:resources:bone:bone_material",
+         "category": "resources_animal"
+      },
+      "strong_bone resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.strong_bone_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/bone/strong_bone_resource.png",
+         "default_resource": "stonehearth:resources:ogre_bone",
+         "category": "resources_animal"
       },
       "stockpile_fungi fungi": {
          "name": "i18n(stonehearth_ace:ui.data.constants.fungi_resource_name)",

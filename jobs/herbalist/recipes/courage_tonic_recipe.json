@@ -1,18 +1,18 @@
 {
-   "effort": 22,
+	"effort": 22,
    "workshop": "stonehearth_ace:herbalist:cauldron",
-   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.courage_tonic_recipe.description)",
-   "portrait": "/stonehearth_ace/entities/consumables/courage_tonic/courage_tonic.png",
-   "work_effect": "fiddle",
-   "mixintypes": {
-      "ingredients": "override"
-   },
+	"description": "i18n(stonehearth_ace:jobs.herbalist.recipes.courage_tonic_recipe.description)",
+	"portrait": "/stonehearth_ace/entities/consumables/courage_tonic/courage_tonic.png",
+	"work_effect": "fiddle",
+	"mixintypes": {
+		"ingredients": "override"
+	},
    "ingredients": [
       {
-         "material": "bone resource edible",
+         "material": "bone resource",
          "count": 2
       },
-      {
+		{
          "material": "herb robust resource",
          "count": 2
       }

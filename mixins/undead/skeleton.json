@@ -1,9 +1,9 @@
 {
-   "mixins": [
-      "stonehearth_ace:mixins:inflicted_wounds:cut:very_easy",
-      "stonehearth_ace:mixins:inflicted_wounds:impact:easy"
-   ],
-   "mixintypes": {
+	"mixins": [
+		"stonehearth_ace:mixins:inflicted_wounds:cut:very_easy",
+		"stonehearth_ace:mixins:inflicted_wounds:impact:easy"
+	],
+	"mixintypes": {
       "type": "remove"
    },
    "components": {
@@ -16,11 +16,11 @@
                },
                "items": {
                   "bone": {
-                     "uri": "stonehearth_ace:resources:bone:bone_skeleton"
+                     "uri": "stonehearth_ace:resources:bone:bone_material"
                   }
                }
             },
-            "skull": {
+				"skull": {
                "num_rolls": {
                   "min": 1,
                   "max": 1

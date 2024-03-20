@@ -1,14 +1,30 @@
 {
    "loot_drops": {
       "entries": {
-         "ogre_bone": {
+			"ogre_bone": {
+            "num_rolls": {
+               "min": 1,
+               "max": 1
+            },
+            "items": {
+               "bone": {
+                  "uri": "stonehearth:resources:ogre_bone"
+               }
+            }
+         },
+			"big_bones": {
             "num_rolls": {
                "min": 1,
                "max": 2
             },
             "items": {
+					"none": {
+                  "uri": "",
+						"weight": 3
+               },
                "bone": {
-                  "uri": "stonehearth:resources:ogre_bone"
+                  "uri": "stonehearth_ace:resources:bone:bone_big",
+						"weight": 1
                }
             }
          },

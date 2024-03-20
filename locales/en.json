@@ -10288,14 +10288,9 @@
                "flavor": "Which came first: the bone bow or the prey?"
             },
             "bone_material_recipe": {
-               "recipe_name": "Bone Material (Animal)(x2)",
-               "description": "Split a strong and big bone into two simple pieces of animal bone material.",
+               "recipe_name": "Bone Material (x2)",
+               "description": "Split the strong bone of an ogre into two simple pieces of bone material.",
                "flavor": ""
-            },
-            "bone_skeleton_recipe": {
-               "recipe_name": "Bone Material (Humanoid)(x3)",
-               "description": "Split the strong bone of an Ogre into three simple pieces of humanoid bone material.",
-               "flavor": "Smash!"
             },
             "stone_sword_recipe": {
                "recipe_name": "Stone Practice Axe",
@@ -16849,8 +16844,8 @@
             }
          },
          "bone_material": {
-            "display_name": "Bone Material (Animal)",
-            "description": "Common bones from an animal."
+            "display_name": "Bone Material",
+            "description": "Common bones from an average creature"
          },
          "clay": {
             "bone_clay_mound": {
@@ -16962,7 +16957,7 @@
          },
          "bone_skull": {
             "display_name": "Skull",
-            "description": "Don't... Don't think too much about it. Can be used as any bone material."
+            "description": "Don't... Don't think too much about it. Can be used as bone material."
          },
          "skins": {
             "display_name": "Any Hard Skin"
@@ -16971,8 +16966,8 @@
             "display_name": "Any Chitin"
          },
          "bone_big": {
-            "display_name": "Big Bone Material (Animal)",
-            "description": "A big bone from a large animal, can be used as a strong bone or split into smaller bones."
+            "display_name": "Big Bone Material",
+            "description": "A strong bone from a large creature"
          },
          "bough_bale": {
             "display_name": "Bale of Boughs",
@@ -17038,10 +17033,6 @@
                "display_name": "Grasp of Soulfire",
                "description": "Cool and slightly ticklish to the touch... Brings a feeling of calm and longing."
             }
-         },
-         "bone_skeleton": {
-            "display_name": "Bone Material (Humanoid)",
-            "description": "Common skeletal fragments from a humanoid creature."
          }
       },
       "refined": {
@@ -27576,7 +27567,7 @@
             "edible_nuts_resource_name": "Any Edible Hard Seed",
             "fruits_resource_name": "Any Fruit or Fruit Jam",
             "thatch_resource_name": "Any Thatching Material",
-            "bone_resource_name": "Any Bone",
+            "bone_resource_name": "Bone",
             "fungi_resource_name": "Any Undeployed Fungi",
             "chitin_resource_name": "Any Chitin",
             "coal_resource_name": "Any Coal",
@@ -27597,7 +27588,7 @@
             "any_pet_food_resource_name": "Any Pet Food",
             "milk_resource_name": "Any Milk",
             "butter_resource_name": "Any Butter",
-            "strong_bone_resource_name": "Any Strong Bone",
+            "strong_bone_resource_name": "Strong Bone",
             "grease_resource_name": "Any Cooking Grease",
             "oil_resource_name": "Any Cooking Oil",
             "oil_source_name": "Any Oily Grain or Herbs",
@@ -27746,8 +27737,7 @@
             "pet_food_resource_name": "Pet Food",
             "candledark_treat_resource_name": "Candledark Treats",
             "prepared_drink_kept_resource_name": "Barreled & Bottled Drinks",
-            "serving_vessel_drinks_resource_name": "Serving Vessel Drinks",
-            "bone_resource_edible_name": "Any Animal Bone"
+            "serving_vessel_drinks_resource_name": "Serving Vessel Drinks"
          }
       }
    },

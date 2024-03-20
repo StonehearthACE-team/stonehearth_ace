@@ -51,17 +51,11 @@
    "loot_drops": {
       "entries": {
          "items": {
-            "num_rolls": {
-               "min": 1,
-               "max": 1
-            },
+            "num_rolls": 1,
             "items": {
-               "bone_skeleton": {
-                  "uri": "stonehearth_ace:resources:bone:bone_skeleton",
-                  "weight": 2
-               },
-               "bone_skull": {
-                  "uri": "stonehearth_ace:resources:bone:bone_skull",
+               "stone": {
+                  "uri": "stonehearth_ace:loot_bag:bone_material",
+                  "type": "bag",
                   "weight": 1
                }
             }
