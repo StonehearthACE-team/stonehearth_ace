@@ -245,19 +245,6 @@ App.guiHelper = {
          detail += this._getSatisfactionDiv('drink', App.constants.drink_satisfaction_thresholds, catalogData.drink_satisfaction, catalogData.drink_servings);
       }
 
-      // collision size
-      if (catalogData.collision_size) {
-         var collisionSize = catalogData.collision_size;
-         detail += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size_header')}</span>` +
-                     `${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size', collisionSize)}</div>`;
-      }
-
-      // storage capacity
-      if (catalogData.storage_capacity) {
-         detail += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_storage_capacity')}</span>` +
-                     `<span class="value">${catalogData.storage_capacity}</span></div>`;
-      }
-
       var equipmentRequirements = '';
       if (catalogData.equipment_roles) {
          var equipmentRoles = this._getEquipmentRolesDiv(catalogData.equipment_roles);
