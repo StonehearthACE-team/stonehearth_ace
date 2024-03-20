@@ -113,21 +113,21 @@
          "default": true,
          "ordinal": 2
       },
-		"auto_queue_medicine": {
+      "auto_queue_medicine": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_queue_medicine)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_queue_medicine_description)",
          "default": true,
          "ordinal": 3
       },
-		"use_quest_storage": {
+      "use_quest_storage": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.use_quest_storage)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.use_quest_storage_description)",
          "default": true,
          "ordinal": 3.4
       },
-		"auto_enable_quest_storage": {
+      "auto_enable_quest_storage": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_enable_quest_storage)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_enable_quest_storage_description)",
@@ -306,7 +306,7 @@
          },
          "ordinal": 14
       },
-		"show_new_title_notification": {
+      "show_new_title_notification": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_new_title_notification)",
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.show_new_title_notification_description)",
@@ -414,16 +414,6 @@
             "call": "terrain_slice_buildings_setting_changed"
          },
          "ordinal": 20
-      },
-      "always_show_building_blueprint_regions": {
-         "type": "boolean",
-         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.always_show_building_blueprint_regions)",
-         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.always_show_building_blueprint_regions_description)",
-         "default": false,
-         "on_change": {
-            "call": "always_show_building_blueprint_regions_setting_changed"
-         },
-         "ordinal": 21
       },
       "highlight_entire_vine_on_select": {
          "type": "boolean",
