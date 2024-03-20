@@ -4,7 +4,6 @@ local StorageComponent = require 'stonehearth.components.storage.storage_compone
 AceStorageComponent = class()
 
 local GOLD_URI = 'stonehearth:loot:gold'
-local INFINITE = 1000000
 
 local log = radiant.log.create_logger('storage_component')
 
@@ -121,15 +120,6 @@ function AceStorageComponent:activate()
 
    self._ignore_restock = json.ignore_restock
    self._drop_all_on_undeploy = json.drop_all_on_undeploy
-   self._storage_open_effect = json.storage_open_effect
-   self._user_open_effect = json.user_open_effect
-   self._auto_restock_item = json.auto_restock_with_item
-
-   if self._auto_restock_item then
-      self._auto_restock_delay = json.auto_restock_delay
-      self._auto_restock_quantity = json.auto_restock_quantity or 1
-      self:_auto_restock()
-   end
 
    local bounds = stonehearth.constants.inventory.input_bins
    if self._type == 'input_crate' then
@@ -178,50 +168,7 @@ function AceStorageComponent:destroy()
    self._storage_filter_cache = {}
    self._num_storage_filter_caches = 0
 
-   if self._auto_restock_timer then
-      self._auto_restock_timer:destroy()
-      self._auto_restock_timer = nil
-   end
-   self._auto_restock_item = nil
-
    self:_ace_old_destroy()
-end
-
-function AceStorageComponent:_auto_restock()
-   if self._auto_restock_delay then
-      if not self._auto_restock_timer then
-         self._auto_restock_timer = stonehearth.calendar:set_interval('auto restock', self._auto_restock_delay, function()
-               self:_restock()
-               if self:is_full() then
-                  self._auto_restock_timer:destroy()
-                  self._auto_restock_timer = nil
-               end
-            end)
-      end
-   else
-      self:_restock()
-   end
-end
-
-function AceStorageComponent:_restock()
-   for i = 1, self._auto_restock_quantity do
-      if self:is_full() then
-         return
-      end
-
-      local item = radiant.entities.create_entity(self._auto_restock_item, { owner = self._entity })
-      if not item then
-         return
-      end
-
-      -- make sure we're adding the iconic of the item if it exists
-      local root, iconic = entity_forms_lib.get_forms(item)
-      self:add_item(iconic or item)
-   end
-end
-
-function AceStorageComponent:get_storage_open_effects()
-   return self._storage_open_effect, self._user_open_effect
 end
 
 function AceStorageComponent:is_undeployable()
@@ -486,7 +433,7 @@ function AceStorageComponent:drop_all(fallback_location, priority_location)
 
    local get_player_id = radiant.entities.get_player_id
    for _, item in ipairs(items) do
-      self:remove_item(item:get_id(), nil, get_player_id(item), true)
+      self:remove_item(item:get_id(), nil, get_player_id(item))
    end
 
    local player_id = get_player_id(self._entity)
@@ -603,7 +550,7 @@ function AceStorageComponent:add_item(item, force_add, owner_player_id)
    return true
 end
 
-function AceStorageComponent:remove_item(id, inventory_predestroy, owner_player_id, ignore_auto_restock)
+function AceStorageComponent:remove_item(id, inventory_predestroy, owner_player_id)
    assert(type(id) == 'number', 'expected entity id')
 
    local item = self._sv.items[id]
@@ -653,11 +600,6 @@ function AceStorageComponent:remove_item(id, inventory_predestroy, owner_player_
          item_id = id,
          item = event_item,
       })
-
-   if not ignore_auto_restock and self._auto_restock_item then
-      self:_auto_restock()
-   end
-
    return item
 end
 

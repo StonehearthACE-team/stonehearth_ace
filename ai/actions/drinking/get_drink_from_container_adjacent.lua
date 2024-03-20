@@ -25,12 +25,12 @@ function GetDrinkFromContainerAdjacent:run(ai, entity, args)
       ai:abort(string.format("%s has no stonehearth_ace:drink_container entity data", tostring(container)))
       return
    end
-
+   
    local model_variant
    if container_data.dynamic_serving_model then
       model_variant = container:add_component('render_info'):get_model_variant()
    end
-
+   
    local quality_component = container:get_component("stonehearth:item_quality")
    local container_quality = (quality_component and quality_component:get_quality()) or 0
 
@@ -40,12 +40,12 @@ function GetDrinkFromContainerAdjacent:run(ai, entity, args)
 
    -- if a storage entity is specified, face that instead
    local face_entity = args.storage or container
-   radiant.entities.turn_to_face(entity, face_entity)
+   radiant.entities.turn_to_face(entity, container)
    ai:execute('stonehearth:run_effect', { effect = container_data.effect })
 
    -- go ahead and release it for others while we sit and drink
    stonehearth.ai:release_ai_lease(container, entity)
-
+   
    local stacks_per_serving = container_data.stacks_per_serving or 1
    if stacks_per_serving > 0 then
       ai:unprotect_argument(container)
@@ -64,7 +64,7 @@ function GetDrinkFromContainerAdjacent:run(ai, entity, args)
    if container_data.serving_model then
       drink:add_component('stonehearth_ace:entity_modification'):set_model_variant(container_data.serving_model)
    end
-
+   
    if model_variant then
       drink:add_component('stonehearth_ace:entity_modification'):set_model_variant(model_variant)
    end

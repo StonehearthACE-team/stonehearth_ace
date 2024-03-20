@@ -27,8 +27,6 @@ function AceTown:_pre_activate()
    if not self._sv._total_travelers_visited then
       self._sv._total_travelers_visited = self._sv._num_travelers
    end
-
-   self:_eval_max_item_quality()
 end
 
 AceTown._ace_old_activate = Town.activate
@@ -123,46 +121,6 @@ function AceTown:_create_default_storage_listener(storage)
          -- if it gets destroyed, make it no longer the default storage
          self:remove_default_storage(storage_id)
       end)
-end
-
-function AceTown:_eval_max_item_quality()
-   local max_quality = stonehearth.constants.item_quality.EXCELLENT
-   for uri, town_bonus in pairs(self._sv.town_bonuses) do
-      if town_bonus.get_max_crafting_quality then
-         max_quality = math.max(max_quality, town_bonus:get_max_crafting_quality())
-      end
-   end
-   self._max_item_quality = max_quality
-end
-
-function AceTown:get_max_item_quality()
-   return self._max_item_quality
-end
-
-AceTown._ace_old_add_town_bonus = Town.add_town_bonus
-function AceTown:add_town_bonus(town_bonus_controller_uri)
-   local controller = self:_ace_old_add_town_bonus(town_bonus_controller_uri)
-   if controller.get_max_crafting_quality then
-      self._max_item_quality = math.max(self._max_item_quality, controller:get_max_crafting_quality())
-   end
-   return controller
-end
-
-function AceTown:remove_town_bonus(town_bonus_controller_uri)
-   if self._sv.town_bonuses[town_bonus_controller_uri] then
-      self._sv._town_bonus_refs[town_bonus_controller_uri] = self._sv._town_bonus_refs[town_bonus_controller_uri] - 1
-      if self._sv._town_bonus_refs[town_bonus_controller_uri] == 0 then
-         local affects_max_item_quality = self._sv.town_bonuses[town_bonus_controller_uri].get_max_crafting_quality
-         self._sv.town_bonuses[town_bonus_controller_uri]:destroy()
-         self._sv.town_bonuses[town_bonus_controller_uri] = nil
-         self._sv._town_bonus_refs[town_bonus_controller_uri] = nil
-         self.__saved_variables:mark_changed()
-
-         if affects_max_item_quality then
-            self:_eval_max_item_quality()
-         end
-      end
-   end
 end
 
 AceTown._ace_old_set_town_name = Town.set_town_name
