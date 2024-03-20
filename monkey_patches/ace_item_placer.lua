@@ -1,4 +1,3 @@
-local RegionCollisionType = _radiant.om.RegionCollisionShape
 local build_util = require 'stonehearth.lib.build_util'
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 
@@ -275,7 +274,7 @@ function AceItemPlacer:_location_filter(result, selector)
          return false
       end
    end
-
+   
    if self.region_shape then
       local region_w = radiant.entities.local_to_world(self.region_shape, self.placement_test_entity):translated(location)
       local designations = radiant.terrain.get_entities_in_region(region_w, function(e)
@@ -306,23 +305,6 @@ function AceItemPlacer:_location_filter(result, selector)
    end
 
    -- ACE other conditions
-
-   -- if the entity being placed has the stonehearth:landmark component, or the ghost has solid collision,
-   -- we need to make sure there are no entities with ai in the area
-   if self.region_shape and (self.ghost_entity:get_component('stonehearth:landmark') or
-         (self.ghost_entity:get_component('region_collision_shape') and
-         self.ghost_entity:get_component('region_collision_shape'):get_region_collision_type() == RegionCollisionType.SOLID)) then
-      local region_w = radiant.entities.local_to_world(self.region_shape, self.placement_test_entity):translated(location)
-      local ais = radiant.terrain.get_entities_in_region(region_w, function(e)
-            local ai = e:get_component('stonehearth:ai')
-            return ai ~= nil
-         end)
-      if not radiant.empty(ais) then
-         log:spam('FAIL: solid/landmark region shape contains entities with ai')
-         return false
-      end
-   end
-
    local return_val = self:_compute_additional_required_placement_conditions(result, selector)
    if return_val ~= true then
       log:spam('FAIL: ACE additional required placement conditions')
