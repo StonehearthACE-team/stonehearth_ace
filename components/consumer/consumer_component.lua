@@ -292,20 +292,14 @@ function ConsumerComponent:set_currently_consuming(consuming)
 end
 
 function ConsumerComponent:_update_fueled()
-   local prev_fueled = self._is_fueled
-   self._is_fueled = self:is_fueled()
-   self:_update_fueled_buff(self._is_fueled)
-   self:_update_fuel_effect(self._is_fueled)
-
-   if prev_fueled ~= self._is_fueled then
-      radiant.events.trigger(self._entity, 'stonehearth_ace:consumer:fueled_changed', self._is_fueled)
-   end
+   self:_update_fueled_buff()
+   self:_update_fuel_effect()
 end
 
-function ConsumerComponent:_update_fueled_buff(is_fueled)
+function ConsumerComponent:_update_fueled_buff()
    local buff = self:get_fueled_buff()
    if buff then
-      if self._currently_consuming or is_fueled then
+      if self._currently_consuming or self:is_fueled() then
          if not radiant.entities.has_buff(self._entity, buff) then
             radiant.entities.add_buff(self._entity, buff)
          end
@@ -315,7 +309,9 @@ function ConsumerComponent:_update_fueled_buff(is_fueled)
    end
 end
 
-function ConsumerComponent:_update_fuel_effect(is_fueled)
+function ConsumerComponent:_update_fuel_effect()
+   local is_fueled = self:is_fueled()
+
    if is_fueled then
       self:_destroy_no_fuel_effect()
       self:_reset_fuel_model_variant()
@@ -325,7 +321,7 @@ function ConsumerComponent:_update_fuel_effect(is_fueled)
          self._fuel_effect = radiant.effects.run_effect(self._entity, effect)
          self._fuel_effect:set_finished_cb(function()
                self:_destroy_fuel_effect()
-               self:_update_fuel_effect(self:is_fueled())
+               self:_update_fuel_effect()
             end)
       end
    else
@@ -337,7 +333,7 @@ function ConsumerComponent:_update_fuel_effect(is_fueled)
          self._no_fuel_effect = radiant.effects.run_effect(self._entity, effect)
          self._no_fuel_effect:set_finished_cb(function()
                self:_destroy_no_fuel_effect()
-               self:_update_fuel_effect(self:is_fueled())
+               self:_update_fuel_effect()
             end)
       end
    end

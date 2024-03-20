@@ -268,34 +268,4 @@ function AceSound:_choose_weather_music_track(is_day)
    return music_data[time_of_day]
 end
 
--- ACE: fix to logging errors when log level is set to 7+
-function AceSound:_update_music_channel(channel_name, info)
-   local current_info = self._current_music_info[channel_name]
-
-   if current_info == info then
-      self._log:detail('keeping last music track')
-      return
-   end
-
-   -- TODO(lcai): don't compare tables pointers directly
-   self._current_music_info[channel_name] = info
-
-   if info.playlist then
-      for i, info in ipairs(info.playlist) do
-         local trackinfo = self:_get_trackinfo(info)
-         if i == 1 then
-            self._log:debug('from playlist playing music track %s', tostring(trackinfo.track))
-            _radiant.audio.play_music(channel_name, trackinfo);
-         else
-            self._log:debug('from playlist queueing music track %s', tostring(trackinfo.track))
-            _radiant.audio.queue_music(channel_name, trackinfo);
-         end
-      end
-   else
-      local trackinfo = self:_get_trackinfo(info)
-      self._log:debug('playing music track %s', tostring(trackinfo.track))
-      _radiant.audio.play_music(channel_name, trackinfo);
-   end
-end
-
 return AceSound

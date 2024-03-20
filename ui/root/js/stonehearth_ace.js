@@ -1,19 +1,9 @@
 var _IS_MOUSE_DOWN = false;
 var _IS_SHIFT_KEY_ACTIVE = false;
-var _IS_CTRL_KEY_ACTIVE = false;
 $(document).on('mousedown', function(e) { _IS_MOUSE_DOWN = true; });
 $(document).on('mouseup', function(e) { _IS_MOUSE_DOWN = false; });
 $(document).on('keyup keydown', function(e){
    _IS_SHIFT_KEY_ACTIVE = e.shiftKey;
-   _IS_CTRL_KEY_ACTIVE = e.ctrlKey;
-});
-
-$.each(['show', 'hide'], function(i, ev) {
-   var el = $.fn[ev];
-   $.fn[ev] = function () {
-      this.trigger(ev);
-      return el.apply(this, arguments);
-   };
 });
 
 // used for functions that get used by multiple views
@@ -24,7 +14,6 @@ var stonehearth_ace = {
 
    isMouseDown: function() { return _IS_MOUSE_DOWN; },
    isShiftKeyActive: function() { return _IS_SHIFT_KEY_ACTIVE; },
-   isCtrlKeyActive: function() { return _IS_CTRL_KEY_ACTIVE; },
 
    // specifically used for comparing objects/tables
    shallowAreEqual: function(a, b) {

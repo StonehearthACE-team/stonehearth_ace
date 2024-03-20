@@ -30,7 +30,6 @@
             "pottage_start": "starting the pottage",
             "periodic_interaction": {
                "default": "interacting with [name(data.target)]",
-               "cheese": "cheesin' it",
                "discovery": "making a discovery",
                "find_native_seed": {
                   "preparing": "preparing to explore wild seeds",
@@ -10757,16 +10756,6 @@
             "utility_name": "Utility",
             "civillian_tools_name": "Improved Tools",
             "storage_name": "Storage & Utility",
-            "auto_bulk_iron_ingot_recipe": {
-               "recipe_name": "Iron Ingot (x2)",
-               "description": "Auto-craft iron ingots blah blah blah!",
-               "flavor": "He's more machine than man now."
-            },
-            "auto_steel_ingot_recipe": {
-               "recipe_name": "Steel Ingot",
-               "description": "Auto-craft steel ingots blah blah blah!",
-               "flavor": "He's more machine than man now."
-            },
             "metal_bits_hard_recipe": {
                "recipe_name": "Hard Metal Bits (x3)",
                "description": "Tinker an ingot of hard metal into multiple parts that are useful for other crafters.",
@@ -10963,11 +10952,6 @@
             },
             "blacksmith_forge_advanced_recipe": {
                "recipe_name": "Enhanced Blacksmith Furnace",
-               "description": "Improved and more efficient, this furnace is hot enough to smelt precious metals. Replaces the regular furnace.",
-               "flavor": "All that is gold does not glitter; but if it does, a good furnace will smelt it. -Lucan Varius, Artifex Ignis"
-            },
-            "blacksmith_forge_auto_recipe": {
-               "recipe_name": "Auto Blacksmith Furnace",
                "description": "Improved and more efficient, this furnace is hot enough to smelt precious metals. Replaces the regular furnace.",
                "flavor": "All that is gold does not glitter; but if it does, a good furnace will smelt it. -Lucan Varius, Artifex Ignis"
             },
@@ -11445,7 +11429,7 @@
          "blacksmith_forge_auto": {
             "blacksmith_forge_auto_ghost": {
                "display_name": "Blacksmith Blast Furnace",
-               "description": "This powerful furnace is capable of smelting metals automatically while supplied and powered."
+               "description": "This powerful furnace is capable of smelting metals automatically, over time, for as long as it is supplied."
             }
          }
       },
@@ -13342,18 +13326,6 @@
                   "description": "A taller haystack, tall enough to be the walls of a labyrinth!",
                   "flavor": "How many hay bales can we stack?"
                }
-            }
-         },
-         "shepherd_cheese_vat": {
-            "make_cheese": {
-               "display_name": "Make Cheese",
-               "description": "The longer you let it age before collecting it, the, uh, older it gets!",
-               "stage_selection": "Age"
-            },
-            "make_cream": {
-               "display_name": "Make Cream",
-               "description": "Let it get sour, then harvest it.",
-               "stage_selection": "Age"
             }
          },
          "shepherd_cheese_vat_empty": {
@@ -26224,26 +26196,6 @@
    },
    "ui": {
       "game": {
-         "build2": {
-            "destroy_building_blueprint_confirm": {
-               "title": "Destroy Current Building Blueprint",
-               "message": "Do you really want to destroy this building blueprint? This operation cannot be undone!<br><br>Note: this will not destroy any building templates or already-built buildings.",
-               "no": "No",
-               "yes": "Yes!"
-            },
-            "destroy_building_confirm": {
-               "no_description": "Do not destroy the building.",
-               "very_yes": "Yes! Restore Terrain",
-               "very_yes_description": "Destroy the building and restore the terrain to how it was before construction began.<br><br>Note: ore veins will not be restored and will be replaced with rock.",
-               "yes": "Yes! Building Only",
-               "yes_description": "Destroy the building, but leave any terrain modifications made in the process of construction."
-            }
-         },
-         "pet_manager": {
-            "title": "Pet Overview",
-            "name": "Name",
-            "details": "Pet Details"
-         },
          "mercantile": {
             "active": {
                "title": "Merchants & Stalls",
@@ -26478,10 +26430,6 @@
                "display_name": "Mercantile Overview",
                "description": "View information on your town's commercial attractiveness, visiting merchants and other things important to trading."
             },
-            "pet_manager": {
-               "display_name": "Pet Overview",
-               "description": "View information on your pets."
-            },
             "town_overview": {
                "display_name": "Town Overview"
             },
@@ -26691,7 +26639,6 @@
             "already_no_owner": "Unowned"
          },
          "show_workshop": {
-            "auto_crafter_enabled_needed": "Requires a powered auto-crafting workshop with this recipe enabled.",
             "category_level_requirement_needed": "Requires a level [str(level)] [str(class)] with [str(category)] category enabled",
             "range_stat": "RNG",
             "search_title": "Titles",
@@ -26823,30 +26770,6 @@
                "help": "Quest Storage containers will be automatically created and placed in this zone."
             },
             "stockpile": {
-               "fuel_contents": "Fuel",
-               "fuel_filter": "Fuel Filter",
-               "auto_craft": {
-                  "tab_name": "Auto-Craft",
-                  "toggle_enabled": "Enable All Recipes",
-                  "enable_description": "Enable or disable all recipes this auto-crafter can produce.",
-                  "ingredient_buffer_mult": "Ingredient Buffer Mult.",
-                  "ingredient_buffer_multiplier": "Ingredient Buffer Multiplier",
-                  "ingredient_buffer_multiplier_description": "This multiplier will be applied to the number of ingredients required for each selected recipe to determine how many ingredients will be requested to be stocked in this auto-crafter.",
-                  "ingredients": "Ingredients:",
-                  "output": "Output:",
-                  "reorder_recipe": "Adjust Recipe Priority",
-                  "reorder_recipe_description": "Drag this recipe to reorder its crafting priority in this auto-crafter. If a disabled recipe is dragged above an enabled recipe, it will automatically be enabled. Only the relative order of enabled recipes will affect crafting priority in this auto-crafter."
-               },
-               "mechanical": {
-                  "tab_name": "Power",
-                  "produced": "Power Produced: [str(produced)] ([str(produced_percent)] %)",
-                  "consumed": "Power Consumed: [str(consumed)] ([str(consumed_percent)] %)",
-                  "resistance": "Resistance: [str(resistance)]",
-                  "network_data": "Connected Network Data:",
-                  "total_produced": "Power Produced: [str(total_produced)]",
-                  "total_consumed": "Power Consumed: [str(total_consumed)]",
-                  "total_resistance": "Resistance: [str(total_resistance)]"
-               },
                "default_storage": {
                   "display_name": "Default Storage",
                   "tooltip": "Quest rewards and traded goods will be directly placed in designated default storage if possible"
@@ -27095,7 +27018,7 @@
          },
          "periodic_interaction": {
             "enabled": "Enabled",
-            "enabled_description": "Whether hearthlings should try to interact with this object. If disabled after they've started using it, they will finish using it before stopping.",
+            "enabled_description": "Whether hearthlings should try to interact with this object.",
             "select_mode": "Mode:",
             "select_mode_description": "Choose how hearthlings should try to interact with this object."
          },
@@ -27404,11 +27327,11 @@
                },
                "building_grid_size": "Building Template Snap Grid Size",
                "building_grid_size_description": "Hold the Shift key while placing a building template to snap placement to a square horizontal grid of this size.",
-               "auto_craft_recipe_dependencies": "Auto Queue Craft Recipe Dependencies",
-               "auto_craft_recipe_dependencies_description": "When crafting an item, crafters will check the town inventory to see if there are sufficient ingredients to use. If not, they will queue up orders for enough ingredients to fulfill the original order.",
-               "auto_craft_killed_items": "Auto Queue Killed Item Crafts",
+               "auto_craft_recipe_dependencies": "Auto Craft Recipe Dependencies",
+               "auto_craft_recipe_dependencies_description": "When crafting an item, crafters will check the inventory to see if there are sufficient ingredients to use. If not, they will queue up orders for enough ingredients to fulfill the original order.",
+               "auto_craft_killed_items": "Auto Craft Killed Items",
                "auto_craft_killed_items_description": "When an item you own is killed — like a door, a training dummy, or a siege weapon — queue a craft order for a new one.",
-               "auto_queue_medicine": "Auto Queue Required Healing Item Crafts",
+               "auto_queue_medicine": "Auto Craft Required Healing Items",
                "auto_queue_medicine_description": "When a hearthling receives a wound or a negative condition that can be treated with a specific item, queue a craft order for that item unless your town already has it.",
                "update_maintain_orders": "Update Maintain Orders",
                "update_maintain_orders_description": "When queuing a new Maintain crafting order, update the existing Maintain crafting order for that recipe, if there is one, with the new quantity. Automatic queuing of that order (e.g., when it's a prerequisite of a more refined maintain crafting order) will not change the existing order either way, as long as it's sufficient for completing the more refined order.",
@@ -27478,8 +27401,6 @@
                "issue_party_commands_when_job_disabled_description": "Even if a hearthling with a combat job has their job disabled, issue combat party commands to them.",
                "terrain_slice_buildings": "Terrain Slice Buildings",
                "terrain_slice_buildings_description": "In Terrain Slice mode, don't render entities supported by visible, non-terrain entities.",
-               "always_show_building_blueprint_regions": "Always Show Building Blueprint Regions",
-               "always_show_building_blueprint_regions_description": "Always render the building boundary region for incomplete buildings, not just when selected in Build mode.",
                "highlight_entire_vine_on_select": "Highlight Entire Selected Vines",
                "highlight_entire_vine_on_select_description": "When you select a vine, highlight all vines that are part of the same growth.",
                "disable_weather_effect_rendering": "Disable Weather Camera Effect Rendering",

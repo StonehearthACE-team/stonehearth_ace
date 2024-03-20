@@ -1,38 +1,11 @@
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
-local Region2 = _radiant.csg.Region2
-local Rect2 = _radiant.csg.Rect2
-local Point2 = _radiant.csg.Point2
-local csg_lib = require 'stonehearth.lib.csg.csg_lib'
+--local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 
 local ace_csg_lib = {}
 
 local DIMENSIONS = { 'x', 'y', 'z' }
-
-local log = radiant.log.create_logger('csg_lib')
-
-function ace_csg_lib.get_convex_filled_region(region)
-   if radiant.util.is_a(region, Region3) then
-      log:error('get_convex_filled_region called with a Region3; only Region2 supported')
-      return region
-   end
-
-   local r = Region2()
-   local bounds = region:get_bounds()
-   for x = bounds.min.x, bounds.max.x - 1 do
-      local intersection = region:intersect_cube(Rect2(Point2(x, bounds.min.y), Point2(x + 1, bounds.max.y)))
-      r:add_cube(intersection:get_bounds())
-   end
-
-   for y = bounds.min.y, bounds.max.y - 1 do
-      local intersection = region:intersect_cube(Rect2(Point2(bounds.min.x, y), Point2(bounds.max.x, y + 1)))
-      r:add_cube(intersection:get_bounds())
-   end
-
-   r:optimize('convex filled region')
-   return r
-end
 
 -- same as are_equivalent_regions except ignores tags
 function ace_csg_lib.are_same_shape_regions(region_a, region_b)

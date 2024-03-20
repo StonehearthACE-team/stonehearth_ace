@@ -14,19 +14,8 @@ function AceCrafterComponent:create()
    local json = radiant.entities.get_json(self)
    if json and json.auto_crafter then
       self._is_auto_crafter = true
-      self._sv.crafter_storage_entity = radiant.entities.create_entity('stonehearth:jobs:common:crafter_storage', {owner = self._entity})
    else
       self:_ace_old_create()
-   end
-end
-
-AceCrafterComponent._ace_old_restore = CrafterComponent.restore
-function AceCrafterComponent:restore()
-   local json = radiant.entities.get_json(self)
-   if json and json.auto_crafter then
-      self._is_auto_crafter = true
-   else
-      self:_ace_old_restore()
    end
 end
 
@@ -129,14 +118,7 @@ function AceCrafterComponent:produce_crafted_item(product_uri, recipe, ingredien
    local item_quality_data = radiant.entities.get_entity_data(product_uri, 'stonehearth:item_quality', false)
    if not (item_quality_data and (item_quality_data.variable_quality == false)) then
       local quality = self:_calculate_quality(recipe.category, ingredient_quality or STANDARD_QUALITY_INDEX)
-      local options
-      if self._is_auto_crafter then
-         local town = stonehearth.town:get_town(self._entity:get_player_id())
-         options = {author = town and town:get_town_name(), author_type = 'place'}
-      else
-         options = {author = self._entity, author_type = 'person'}
-      end
-      item_quality_lib.apply_quality(item, quality, options)
+      item_quality_lib.apply_quality(item, quality, {author = self._entity, author_type = 'person'})
       --item:add_component('stonehearth:item_quality'):initialize_quality(quality, self._entity, 'person')
    end
    self:_update_best_crafts(item)
@@ -160,12 +142,7 @@ function AceCrafterComponent:produce_crafted_item(product_uri, recipe, ingredien
 end
 
 function AceCrafterComponent:_calculate_quality(recipe_category, ingredient_quality)
-   local quality_table
-   if self._is_auto_crafter then
-      quality_table = item_quality_lib.get_auto_crafter_quality_table(self._entity, ingredient_quality)
-   else
-      quality_table = item_quality_lib.get_quality_table(self._entity, recipe_category, ingredient_quality)
-   end
+   local quality_table = item_quality_lib.get_quality_table(self._entity, recipe_category, ingredient_quality)
    local output_quality = item_quality_lib.get_quality(quality_table)
    return output_quality
 end

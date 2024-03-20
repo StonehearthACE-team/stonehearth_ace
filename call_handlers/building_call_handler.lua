@@ -60,13 +60,4 @@ function BuildingCallHandler:_dump_building_to_region(building)
    end
 end
 
-function BuildingCallHandler:get_roof_tool_options(session, response)
-   response:resolve(stonehearth.building:get_roof_tool_options())
-end
-
-function BuildingCallHandler:set_roof_tool_options(session, response, options)
-   stonehearth.building:set_roof_tool_options(options)
-   return true
-end
-
 return BuildingCallHandler

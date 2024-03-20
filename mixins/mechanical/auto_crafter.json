@@ -6,35 +6,11 @@
             "value": 1
          }
       },
+      "stonehearth:storage": {},
       "stonehearth:crafter": {
          "auto_crafter": true
       },
-      "stonehearth:workshop": {
-         "crafting_time_modifier": 0
-      },
-      "stonehearth_ace:auto_craft": {},
-      "stonehearth_ace:mechanical": {
-         "consumes": 40,
-         "set_power_script": "stonehearth_ace:mechanical:scripts:auto_craft_workshop_powered"
-      },
-      "stonehearth_ace:sibling_entities": {
-         "siblings": {
-            "ingredient_storage": {
-               "uri": "stonehearth_ace:containers:auto_craft:ingredient_storage",
-               "match_component_regions": {
-                  "destination": true
-               },
-               "destroy_on_remove": true
-            },
-            "output_storage": {
-               "uri": "stonehearth_ace:containers:auto_craft:output_storage",
-               "match_component_regions": {
-                  "destination": true
-               },
-               "destroy_on_remove": true
-            }
-         }
-      },
+      "stonehearth:workshop": {},
       "stonehearth_ace:input": {},
       "stonehearth_ace:output": {}
    }

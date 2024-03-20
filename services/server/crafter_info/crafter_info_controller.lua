@@ -179,7 +179,6 @@ function CrafterInfoController:_format_recipe(name, recipe)
    formatted_recipe.cost = self:_get_recipe_cost(formatted_ingredients)
 
    -- Get the produces uris as well as the material tags of the recipe's products
-   local total_products = 0
    local products = {}
    for _, product in ipairs(recipe.produces) do
       if not products[product.item] then
@@ -187,7 +186,6 @@ function CrafterInfoController:_format_recipe(name, recipe)
       else
          products[product.item] = products[product.item] + 1
       end
-      total_products = total_products + 1
    end
 
    if recipe.ace_smart_crafter_consider_as then
@@ -240,7 +238,6 @@ function CrafterInfoController:_format_recipe(name, recipe)
       end
    end
    formatted_recipe.products = all_products
-   formatted_recipe.total_products = total_products
 
    return formatted_recipe
 end

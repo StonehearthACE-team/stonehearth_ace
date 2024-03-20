@@ -99,7 +99,6 @@ function item_io_lib._output_to_inputs(items, inputs, successes, fails, location
       local catalog_data = stonehearth.catalog:get_catalog_data(item:get_uri())
       if catalog_data and (catalog_data.is_item or catalog_data.iconic_uri) then
          for _, input in ipairs(inputs) do
-            log:debug('trying to output %s to %s (%s, %s)', item, input, tostring(force_add), tostring(require_matching_filter_override))
             if input:try_input(item, location, force_add, require_matching_filter_override) then
                successes[id] = item
                break

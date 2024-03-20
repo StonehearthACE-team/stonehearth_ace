@@ -163,25 +163,6 @@ function AceCraftItemsOrchestrator:run(town, args)
    end
 end
 
--- ACE: moved check for the order list being paused into the order list controller
--- so it can consider both make and maintain order lists
-function AceCraftItemsOrchestrator:_get_next_order()
-   while true do
-      log:detail('_get_next_order: Crafter %s is about to get an order', self._crafter)
-
-      local order = self._craft_order_list:get_next_order(self._crafter)
-      if order ~= nil then
-         return order
-      end
-      log:detail('Crafter %s is now suspended', self._crafter)
-      self._waiting_for_order = true
-      self._thread:suspend()
-      self._waiting_for_order = false
-
-      log:detail('Crafter %s is exiting suspension', self._crafter)
-   end
-end
-
 -- overriding this to add title data to the bulletin (also implemented gameplay setting since it didn't exist)
 function AceCraftItemsOrchestrator:_show_unreachable_ingredients_notification(event_args)
    local player_id = radiant.entities.get_player_id(self._crafter)

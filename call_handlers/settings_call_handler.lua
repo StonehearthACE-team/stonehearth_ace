@@ -56,10 +56,6 @@ function SettingsCallHandler:terrain_slice_buildings_setting_changed(session, re
    stonehearth.subterranean_view:terrain_slice_buildings_setting_changed()
 end
 
-function SettingsCallHandler:always_show_building_blueprint_regions_setting_changed(session, response, show)
-   radiant.events.trigger(radiant, 'always_show_building_blueprint_regions_setting_changed', show)
-end
-
 function SettingsCallHandler:water_signal_update_frequency_setting_changed(session, response, frequency)
    if session.player_id == _radiant.sim.get_host_player_id() then
       stonehearth_ace.water_signal:set_update_frequency(frequency)

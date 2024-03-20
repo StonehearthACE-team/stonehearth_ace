@@ -1,19 +1,5 @@
 #stockpileWindow {
-   .tabPage {
-      height: 383px;
-
-      &.extended {
-         height: 480px;
-      }
-   }
-
    #filterTab {
-      position: relative;
-
-      .downSection {
-         height: 305px;
-      }
-
       #taxonomyGrid {
          .categoryLabel {
             img {
@@ -38,15 +24,6 @@
       padding: 0px 5px;
    }
 
-   .list-label {
-      display: inline-block;
-      padding-right: 10px;
-   }
-
-   .custom-select {
-      display: inline-block;
-   }
-
    .loadPresetImg {
       content: url(images/load_icon.png);
    }
@@ -55,6 +32,10 @@
    }
    .deletePresetImg {
       content: url(images/delete_icon.png);
+   }
+
+   #filterTab {
+      position: relative;
    }
 
    #presetControls {
@@ -208,133 +189,6 @@
                width: 32px;
             }
          }
-      }
-   }
-
-   #autoCraftTab {
-      table {
-         width: 100%;
-         text-align: left;
-
-         .noOrder {
-            opacity: 0.5;
-         }
-
-         .recipeEnabledCheck {
-            width: 100px;
-            white-space: nowrap;
-
-            .recipeName {
-               padding-left: 8px;
-               padding-right: 20px;
-            }
-         }
-
-         .ingredients {
-            width: 99%;
-
-            .ingredient {
-               position: relative;
-               margin-right: 8px;
-
-               .count {
-                  .controlFont;
-                  position: absolute;
-                  bottom: 0px;
-                  right: 4px;
-                  color: #fff;
-                  font-size: 16px;
-               }
-            }
-         }
-      }
-
-      .flexContainer {
-         justify-content: flex-start;
-      }
-
-      img {
-         height: 60px;
-      }
-
-      .grabbable {
-         .handCursor;
-         user-select: none;
-         white-space: nowrap;
-         width: 70px;
-
-         .grabbableImg {
-            content: url(images/grabbable.png);
-         }
-      }
-      tr.grabbed {
-         box-shadow: 0 0 5px 0 rgb(240, 240, 240);
-         background-color: rgba(240, 240, 240, 0.25);
-      }
-      tr.pregrabbed:not(.grabbed) {
-         box-shadow: 0 0 5px 0 rgb(240, 240, 240, 0.5);
-         background-color: rgba(240, 240, 240, 0.2);
-      }
-      tbody > tr.grabbed:active {
-         user-input: none;
-      }
-      tbody > tr.grabbed:active * {
-         user-input: none;
-         .handCursor;
-      }
-
-      .producesImg {
-         content: url(images/produces_arrow.png);
-      }
-   }
-
-   #autoCraftContentsTab {
-      width: 100%;
-
-      #ingredientPalette {
-         width: 280px;
-         height: 308px;
-         overflow-y: auto;
-         overflow-x: auto;
-         margin-bottom: 12px;
-      }
-
-      #ingredientBuffer {
-         width: 100%;
-         text-align: left;
-
-         .list-label {
-         }
-      
-         .custom-select {
-            width: 80px;
-         }
-      }
-
-      #output {
-         #outputPalette {
-            width: 215px;
-            height: 308px;
-            overflow-y: auto;
-            overflow-x: auto;
-            margin-bottom: 12px;
-         }
-
-         .footer {
-            .remainingSpaces {
-               line-height: 57px;
-            }
-         }
-      }
-   }
-
-   .flexContainer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .flexItem {
-         flex: 0 0 auto;
       }
    }
 
