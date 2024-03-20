@@ -1,16 +1,16 @@
 {
-   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.long_sword_recipe.recipe_name)",
+   "recipe_name": "i18n(stonehearth_ace:entities.weapons.long_sword.display_name)",
    "level_requirement": 6,
    "workshop": "stonehearth_ace:blacksmith:workbench_advanced",
    "mixintypes": {
-      "ingredients": "override"
+	  "ingredients": "override"
    },
    "ingredients": [
       {
          "uri": "stonehearth:refined:steel_ingot",
          "count": 2
       },
-      {
+	  {
          "material": "leather resource",
          "count": 1
       }

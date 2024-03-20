@@ -7,14 +7,6 @@
          "ghost_form": "file(bench_log_juniper_ghost.json)",
          "placeable_on_ground": true
       },
-      "destination": {
-         "region": [
-            {
-               "min": { "x": 0, "y": 0, "z": -1 },
-               "max": { "x": 2, "y": 1, "z": 0 }
-            }
-         ]
-      },
       "region_collision_shape": {
          "region": [
             {
@@ -25,17 +17,9 @@
       },
       "stonehearth:mount": {
          "mounted_posture": "stonehearth:sitting_on_chair",
-         "mount_offset": { "x": 0.4, "y": 0, "z": 0 }
+         "mount_offset": { "x": 0, "y": 0, "z": 0 }
       },
-      "stonehearth:traveler_attraction": {},
-      "stonehearth_ace:sibling_entities": {
-         "siblings": {
-            "seat_2": {
-               "uri": "file(sibling_seat.json)",
-               "destroy_on_remove": true
-            }
-         }
-      }
+      "stonehearth:traveler_attraction": {}
    },
    "entity_data": {
       "stonehearth:chair": {},

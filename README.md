@@ -1,7 +1,6 @@
 # Stonehearth ACE
 
 Follow the **A**uthorized **C**ommunity **E**xpansion project on [Discourse](https://discourse.stonehearth.net/t/ace-authorized-community-expansion-project/36671)!
-Or join us on [Discord](https://discord.com/servers/stonehearth-ace-465248153650593794)! 
 
 ## Installation
 

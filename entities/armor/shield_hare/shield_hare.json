@@ -2,26 +2,19 @@
    "mixins": [
       "stonehearth_ace:mixins:armor:heavy_shield"
    ],
-   "type": "entity",
+	"type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
-         "ilevel": 6
+		 "ilevel": 6
       }
    },
    "entity_data": {
-      "stonehearth:combat:armor_data": {
+		"stonehearth:combat:armor_data": {
          "base_damage_reduction": 5
       },
       "stonehearth:catalog": {
-         "description": "i18n(stonehearth_ace:entities.armor.shield_hare.description)",
-         "material_tags": [
-            "pelt",
-            "shield",
-            "heavy_armor",
-            "crafted",
-            "na_made",
-            "stockpile_equipment"
-         ]
+	     "description": "i18n(stonehearth_ace:entities.armor.shield_hare.description)",
+         "material_tags":["pelt", "shield", "crafted", "light_armor", "na_made", "stockpile_equipment"]
       }
    }
 }

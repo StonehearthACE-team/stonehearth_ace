@@ -1,8 +1,8 @@
 {
    "mixins": [
-      "stonehearth_ace:mixins:weapons:twohanded_open_wounds_major"
-   ],
-   "type": "entity",
+		"stonehearth_ace:mixins:weapons:twohanded_open_wounds_major"
+	],
+	"type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
          "required_job_level": 6
@@ -20,19 +20,10 @@
          }
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.weapons.two_handed_sword.display_name)",
-         "mixintypes": {
-            "material_tags": "override"
-         },
-         "material_tags": [
-            "twohanded",
-            "steel",
-            "melee_weapon",
-            "ascendancy_made",
-            "crafted",
-            "sword",
-            "stockpile_weapon"
-         ]
+	     "mixintypes": {
+			"material_tags": "override"
+		 },
+         "material_tags":["twohanded", "steel", "melee_weapon", "ascendancy_made", "crafted", "sword", "stockpile_weapon"]
       }
    }
 }

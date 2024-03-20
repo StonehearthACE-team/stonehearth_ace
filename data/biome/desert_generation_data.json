@@ -1,90 +1,58 @@
 {
-   "palettes": {
-      "spring": {
-         "rock_layer_1": "#a9a598",
-         "rock_layer_2": "#a59a8e",
-         "rock_layer_3": "#a18f83",
-         "rock_layer_4": "#9f8a7e",
-         "rock_layer_5": "#9c8479",
-         "rock_layer_6": "#9a7f74",
-         "rock_layer_7": "#997E73",
-         "rock_layer_8": "#997E73",
-         "meteor": "#2C2D40",
-         "marble": "#DBDBDB",
-         "marble_2": "#DDD3C8",
-         "marble_3": "#DDC3AA",
-         "feldspar": "#EAAC86",
-         "feldspar_2": "#E7A075",
-         "feldspar_3": "#E49565"
-      },
-      "summer": {
-         "rock_layer_1": "#a9a598",
-         "rock_layer_2": "#a59a8e",
-         "rock_layer_3": "#a18f83",
-         "rock_layer_4": "#9f8a7e",
-         "rock_layer_5": "#9c8479",
-         "rock_layer_6": "#9a7f74",
-         "rock_layer_7": "#997E73",
-         "rock_layer_8": "#997E73",
-         "meteor": "#2C2D40",
-         "marble": "#DBDBDB",
-         "marble_2": "#DDD3C8",
-         "marble_3": "#DDC3AA",
-         "feldspar": "#EAAC86",
-         "feldspar_2": "#E7A075",
-         "feldspar_3": "#E49565"
-      },
-      "autumn": {
-         "rock_layer_1": "#a9a598",
-         "rock_layer_2": "#a59a8e",
-         "rock_layer_3": "#a18f83",
-         "rock_layer_4": "#9f8a7e",
-         "rock_layer_5": "#9c8479",
-         "rock_layer_6": "#9a7f74",
-         "rock_layer_7": "#997E73",
-         "rock_layer_8": "#997E73",
-         "meteor": "#2C2D40",
-         "marble": "#DBDBDB",
-         "marble_2": "#DDD3C8",
-         "marble_3": "#DDC3AA",
-         "feldspar": "#EAAC86",
-         "feldspar_2": "#E7A075",
-         "feldspar_3": "#E49565"
-      },
-      "winter": {
-         "rock_layer_1": "#a9a598",
-         "rock_layer_2": "#a59a8e",
-         "rock_layer_3": "#a18f83",
-         "rock_layer_4": "#9f8a7e",
-         "rock_layer_5": "#9c8479",
-         "rock_layer_6": "#9a7f74",
-         "rock_layer_7": "#997E73",
-         "rock_layer_8": "#997E73",
-         "meteor": "#2C2D40",
-         "marble": "#DBDBDB",
-         "marble_2": "#DDD3C8",
-         "marble_3": "#DDC3AA",
-         "feldspar": "#EAAC86",
-         "feldspar_2": "#E7A075",
-         "feldspar_3": "#E49565"
-      }
-   },
+	"palettes" : {
+		"spring" : {
+			"meteor": "#2C2D40",
+			"marble": "#DBDBDB",
+			"marble_2": "#DDD3C8",
+			"marble_3": "#DDC3AA",
+			"feldspar": "#EAAC86",
+			"feldspar_2": "#E7A075",
+			"feldspar_3": "#E49565"
+		},
+		"summer" : {
+			"meteor": "#2C2D40",
+			"marble": "#DBDBDB",
+			"marble_2": "#DDD3C8",
+			"marble_3": "#DDC3AA",
+			"feldspar": "#EAAC86",
+			"feldspar_2": "#E7A075",
+			"feldspar_3": "#E49565"
+		},
+		"autumn" : {
+			"meteor": "#2C2D40",
+			"marble": "#DBDBDB",
+			"marble_2": "#DDD3C8",
+			"marble_3": "#DDC3AA",
+			"feldspar": "#EAAC86",
+			"feldspar_2": "#E7A075",
+			"feldspar_3": "#E49565"
+		},
+		"winter" : {
+			"meteor": "#2C2D40",
+			"marble": "#DBDBDB",
+			"marble_2": "#DDD3C8",
+			"marble_3": "#DDC3AA",
+			"feldspar": "#EAAC86",
+			"feldspar_2": "#E7A075",
+			"feldspar_3": "#E49565"
+		}
+	},
    "terrain": {
-      "minimap": {
-         "water": "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.water)",
-         "plains_1": "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.plains)",
-         "plains_2": "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.plains)",
-         "foothills_1": "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.foothills)",
-         "foothills_2": "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.foothills)",
-         "mountains_1": "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.mountains)",
-         "mountains_2": "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.mountains)",
-         "mountains_3": "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.mountains)",
-         "mountains_4": "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.mountains)"
-      }
+	  "minimap":{
+		"water" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.water)",
+		"plains_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.plains)",
+		"plains_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.plains)",
+		"foothills_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.foothills)",
+		"foothills_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.foothills)",
+		"mountains_1" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.mountains)",
+		"mountains_2" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.mountains)",
+		"mountains_3" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.mountains)",
+		"mountains_4" : "i18n(stonehearth_ace:ui.shell.select_settlement.desert.terrain_codes.mountains)"
+	  }
    },
    "landscape": {
       "placement_table": {
-         "stonehearth_ace:trees:almond:small": {
+			"stonehearth_ace:trees:almond:small": {
             "placement_type": "single",
             "parameters": {
                "ground_radius": 1,
@@ -98,34 +66,34 @@
                "exclusion_radius": 3
             }
          },
-         "stonehearth_ace:trees:almond:large": {
+			 "stonehearth_ace:trees:almond:large": {
             "placement_type": "single",
             "parameters": {
                "ground_radius": 2,
                "exclusion_radius": 3
             }
          },
-         "stonehearth_ace:trees:date:small": {
-            "placement_type": "single",
-            "parameters": {
-               "ground_radius": 3,
-               "exclusion_radius": 4
-            }
-         },
-         "stonehearth_ace:trees:date:medium": {
-            "placement_type": "single",
-            "parameters": {
-               "ground_radius": 3,
-               "exclusion_radius": 4
-            }
-         },
-         "stonehearth_ace:trees:date:large": {
-            "placement_type": "single",
-            "parameters": {
-               "ground_radius": 3,
-               "exclusion_radius": 4
-            }
-         },
+			"stonehearth_ace:trees:date:small" : {
+				"placement_type" : "single",
+				"parameters" : {
+					"ground_radius" : 3,
+					"exclusion_radius" : 4
+				}
+			},
+			"stonehearth_ace:trees:date:medium" : {
+				"placement_type" : "single",
+				"parameters" : {
+					"ground_radius" : 3,
+					"exclusion_radius" : 4
+				}
+			},
+			"stonehearth_ace:trees:date:large" : {
+				"placement_type" : "single",
+				"parameters" : {
+					"ground_radius" : 3,
+					"exclusion_radius" : 4
+				}
+			},
          "stonehearth_ace:fungi:desert_truffle": {
             "placement_type": "dense",
             "parameters": {
@@ -134,7 +102,7 @@
                "exclusion_radius": 0
             }
          },
-         "stonehearth_ace:plants:oleander": {
+			"stonehearth_ace:plants:oleander": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 2,
@@ -142,7 +110,7 @@
                "exclusion_radius": 0
             }
          },
-         "stonehearth_ace:plants:parsley": {
+			"stonehearth_ace:plants:parsley": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 3,
@@ -150,7 +118,7 @@
                "exclusion_radius": 1
             }
          },
-         "stonehearth_ace:terrain:pasture_grass": {
+			"stonehearth_ace:terrain:pasture_grass": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 2,
@@ -158,7 +126,7 @@
                "exclusion_radius": 1
             }
          },
-         "stonehearth_ace:terrain:pasture_grass:short": {
+			"stonehearth_ace:terrain:pasture_grass:short": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 2,
@@ -166,7 +134,7 @@
                "exclusion_radius": 1
             }
          },
-         "stonehearth_ace:terrain:pasture_grass:overgrown": {
+			"stonehearth_ace:terrain:pasture_grass:overgrown": {
             "placement_type": "dense",
             "parameters": {
                "grid_multiple": 1,
@@ -189,26 +157,26 @@
                "item_density": 0.2,
                "exclusion_radius": 2
             }
-         }
+         } 
       },
-      "trees": {
+		"trees": {
          "sizes": {
             "stonehearth_ace:trees:almond": {
                "small": 0,
                "medium": 6,
-               "large": 10
+					"large": 10
             },
-            "stonehearth_ace:trees:date": {
-               "small": 0,
-               "medium": 2,
-               "large": 4
-            }
+				"stonehearth_ace:trees:date" : {
+					"small" : 0,
+					"medium" : 2,
+					"large" : 4
+				}
          },
          "weights": {
             "plains": {
                "1": {
                   "stonehearth_ace:trees:almond": 0.16,
-                  "stonehearth_ace:trees:date": 0.2
+						"stonehearth_ace:trees:date": 0.2
                }
             },
             "foothills": {
@@ -231,40 +199,40 @@
                "plains": {
                   "1": {
                      "stonehearth_ace:fungi:desert_truffle": 0.6,
-                     "stonehearth_ace:plants:oleander": 0.4,
-                     "stonehearth_ace:plants:parsley": 0.8,
-                     "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
-                     "stonehearth_ace:terrain:pasture_grass": 0.3,
-                     "stonehearth_ace:terrain:pasture_grass:short": 0.1,
-                     "stonehearth_ace:trees:almond:small": 0.3,
-                     "stonehearth_ace:trees:almond:medium": 0.15,
-                     "stonehearth_ace:trees:date:medium": 0.2,
-                     "stonehearth_ace:trees:date:small": 0.12
+							"stonehearth_ace:plants:oleander": 0.4,
+							"stonehearth_ace:plants:parsley": 0.8,
+							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
+							"stonehearth_ace:terrain:pasture_grass": 0.3,
+							"stonehearth_ace:terrain:pasture_grass:short": 0.1,
+							"stonehearth_ace:trees:almond:small": 0.3,
+							"stonehearth_ace:trees:almond:medium": 0.15,
+							"stonehearth_ace:trees:date:medium": 0.2,
+							"stonehearth_ace:trees:date:small": 0.12
                   }
                },
                "foothills": {
                   "1": {
                      "stonehearth_ace:fungi:desert_truffle": 0.8,
-                     "stonehearth_ace:plants:oleander": 1.3,
-                     "stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
-                     "stonehearth_ace:terrain:pasture_grass": 0.4,
-                     "stonehearth_ace:terrain:pasture_grass:short": 0.2,
-                     "stonehearth_ace:trees:almond:small": 0.5,
-                     "stonehearth_ace:plants:golden_gourd": 0.4,
+							"stonehearth_ace:plants:oleander": 1.3,
+							"stonehearth_ace:terrain:pasture_grass:overgrown": 0.1,
+							"stonehearth_ace:terrain:pasture_grass": 0.4,
+							"stonehearth_ace:terrain:pasture_grass:short": 0.2,
+							"stonehearth_ace:trees:almond:small": 0.5,
+							"stonehearth_ace:plants:golden_gourd": 0.4,
                      "stonehearth_ace:plants:coffee_bush": 0.4
                   },
                   "2": {
                      "stonehearth_ace:fungi:desert_truffle": 1,
-                     "stonehearth_ace:plants:oleander": 0.3,
-                     "stonehearth_ace:terrain:pasture_grass:short": 0.3,
-                     "stonehearth_ace:trees:almond:small": 0.4,
-                     "stonehearth_ace:plants:golden_gourd": 0.2,
+							"stonehearth_ace:plants:oleander": 0.3,
+							"stonehearth_ace:terrain:pasture_grass:short": 0.3,
+							"stonehearth_ace:trees:almond:small": 0.4,
+							"stonehearth_ace:plants:golden_gourd": 0.2,
                      "stonehearth_ace:plants:coffee_bush": 0.6
                   }
                },
                "mountains": {
                   "1": {
-                     "stonehearth_ace:plants:coffee_bush": 0.8
+				         "stonehearth_ace:plants:coffee_bush": 0.8
                   },
                   "2": {
                      "stonehearth_ace:plants:coffee_bush": 0.9
@@ -273,13 +241,12 @@
             }
          }
       },
-      "water": {
-         "color": "#80adb0C0",
+	  "water": {
          "depth": {
             "shallow": 2,
             "deep": 5
          },
-         "water_height_delta": 0.5
+		 "water_height_delta": 0.5
       }
    }
 }
