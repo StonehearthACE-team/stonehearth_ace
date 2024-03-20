@@ -39,7 +39,6 @@ local monkey_patches = {
    ace_channel_manager = 'stonehearth.services.server.hydrology.channel_manager',
    ace_charging_pedestal_component = 'stonehearth.entities.gizmos.charging_pedestal.charging_pedestal_component',
    ace_check_bait_trap_adjacent_action = 'stonehearth.ai.actions.trapping.check_bait_trap_adjacent_action',
-   ace_check_stuck_when_idle_action = 'stonehearth.ai.actions.check_stuck_when_idle_action',
    ace_chunk = 'stonehearth.components.building2.plan.chunk',
    ace_cleric = 'stonehearth.jobs.cleric.cleric',
    ace_client_state = 'stonehearth.services.server.client_state.client_state',
