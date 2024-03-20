@@ -34,14 +34,13 @@
          ]
       },
       "stonehearth:storage": {
-         "type": "output_crate",
          "is_hidden": true,
+         "ignore_restock": true,
          "drop_all_on_undeploy": false,
          "allow_default": false,
-         "capacity": 1,
+         "capacity": 4,
          "auto_restock_with_item": "stonehearth_ace:landmark:terrain:water_bucket",
-         "auto_restock_quantity": 1,
-         "auto_restock_delay": "15m",
+         "auto_restock_quantity": 4,
          "storage_open_effect": "work",
          "user_open_effect": "work_water_well",
          "filter_list": "stonehearth_ace:ui:hidden_storage:filters",
@@ -53,7 +52,7 @@
       "stonehearth_ace:drink_container": {
          "effect": "work_water_well",
          "container_effect": "work",
-         "subcontainer": "stonehearth_ace:drink:water_well:water",
+         "drink": "stonehearth_ace:drink:water_serving",
          "require_reservation": true,
          "stacks_per_serving": 0
       },

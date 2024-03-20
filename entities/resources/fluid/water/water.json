@@ -5,17 +5,20 @@
       "model_variants": {
          "default": {
             "models": [
-               "file(ember_ashes.qb)"
+               "file(water.qb)"
             ]
          }
       },
       "mob": {
          "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 4
       }
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 0,
+         "value_in_gold": 1,
          "rarity": "common",
          "shop_info": {
             "buyable": false,
@@ -23,9 +26,16 @@
          }
       },
       "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.decoration.ember_ashes.display_name)",
-         "description": "i18n(stonehearth_ace:entities.decoration.ember_ashes.description)",
-         "is_item": true
+         "display_name": "i18n(stonehearth_ace:entities.resources.fluid.water.display_name)",
+         "description": "i18n(stonehearth_ace:entities.resources.fluid.water.description)",
+         "icon": "file(water.png)",
+         "is_item": true,
+         "category": "resources_mineral",
+         "material_tags": [
+            "resource",
+            "water",
+            "stockpile_water"
+         ]
       },
       "stonehearth:appeal": {
          "appeal": 0

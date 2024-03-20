@@ -1,6 +1,6 @@
 {
-	"default_preset_list": "stonehearth:ui:stockpile:filters",
-	"presets": {
+   "default_preset_list": "stonehearth:ui:stockpile:filters",
+   "presets": {
 		"stonehearth_ace:ui:desk:filters": {
 			"workshop": [
 				"stockpile_tool",
@@ -26,11 +26,11 @@
 				"civillian_equipment worker_outfit"
 			]
 		},
-		"stonehearth:ui:stockpile:filters": {
+      "stonehearth:ui:stockpile:filters": {
 			"crafting": [
 				"stockpile_wood",
 				"stockpile_stone",
-				"stockpile_clay",
+				"stockpile_clay",		
 				"stockpile_bone",
 				"stockpile_fuel",
 				"stockpile_tool"
@@ -41,7 +41,7 @@
 				"stockpile_refined_goods",
 				"stockpile_refined_weaver",
 				"civillian_equipment"
-			],
+         ],
 			"blacksmith": [
 				"stockpile_fuel",
 				"stockpile_coal",
@@ -50,7 +50,7 @@
 				"stockpile_refined_ore",
 				"stockpile_precious_metal",
 				"stockpile_gizmos"
-			],
+         ],			
 			"herbalist": [
 				"stockpile_fuel",
 				"stockpile_fungi",
@@ -59,7 +59,7 @@
 				"stockpile_healing_item",
 				"stockpile_fertilizer",
 				"stockpile_consumable"
-			],
+         ],
 			"cook": [
 				"stockpile_fuel",
 				"stockpile_raw_food vegetable",
@@ -72,39 +72,40 @@
 				"stockpile_cooking_ingredient other_ingredient",
 				"stockpile_cooking_ingredient preserve_ingredient",
 				"herb zesty resource"
-			],
+         ],
 			"brewer": [
 				"stockpile_fuel",
 				"stockpile_raw_food fruit",
 				"stockpile_raw_food berry",
 				"stockpile_brewing_ingredient",
 				"herb pungent resource"
-			],
+         ],
 			"larder": [
 				"stockpile_prepared_food baked",
 				"stockpile_prepared_food",
-				"stockpile_serving_vessel"
+				"stockpile_serving_vessel",
+				"stockpile_prepared_drink"
 			],
 			"shepherd": [
 				"stockpile_plant seed",
 				"stockpile_plant",
 				"stockpile_fodder"
-			],
-			"construction": [
+         ],         
+			"construction": [   			
 				"stockpile_wood",
 				"stockpile_stone",
-				"stockpile_clay",
-				"stockpile_portal",
+				"stockpile_clay",				
+				"stockpile_portal",				
 				"stockpile_defense",
 				"stockpile_geomancer",
 				"resource_pile"
-			],
-			"furniture": [
+         ],
+			"furniture": [				
 				"stockpile_plant decoration",
 				"stockpile_furniture",
 				"stockpile_decoration",
 				"stockpile_trophy"
-			],
+			],	
 			"landscaping": [
 				"stockpile_landscaping",
 				"stockpile_plant",
@@ -115,14 +116,14 @@
 				"stockpile_seeds_consumable",
 				"stockpile_fish"
 			]
-		},
+      },
 		"stonehearth:ui:input_box:filters": {
-			"supply_low_fuel": [
+			"supply_low_fuel" : [
 				"brown_coal",
 				"firewood refined",
 				"peat resource"
 			],
-			"supply_common_fuel": [
+			"supply_common_fuel" : [
 				"brown_coal",
 				"charcoal refined",
 				"firewood refined",
@@ -130,21 +131,21 @@
 				"peat resource",
 				"slab_of_coke refined"
 			],
-			"supply_good_fuel": [
+			"supply_good_fuel" : [
 				"charcoal refined",
 				"hard_coal",
 				"lump_of_coal",
 				"slab_of_coke refined"
 			],
-			"supply_carpenter": [
+			"supply_carpenter" : [
 				"wood resource",
 				"thatch_bale resource",
 				"fine_stuffing refined",
-				"gold_flakes refined",
+				"gold_flakes resource",
 				"resource refined_cloth cloth standard",
 				"resource refined_leather leather standard"
 			],
-			"supply_potter": [
+			"supply_potter" : [
 				"standard clay resource",
 				"unfired_clay refined",
 				"molded_clay refined",
@@ -159,8 +160,8 @@
 				"yarn resource",
 				"unfired_porcelain refined",
 				"molded_porcelain refined"
-			],
-			"supply_mason": [
+			],			
+			"supply_mason" : [
 				"common stone resource",
 				"bone resource standard",
 				"resource animal_part pelt",
@@ -173,7 +174,7 @@
 				"fine_stuffing refined",
 				"marble stone resource"
 			],
-			"supply_fiber_thatch": [
+			"supply_fiber_thatch" : [
 				"thatch_bale resource",
 				"fiber resource plant silkweed",
 				"bough_bale evergreen resource",
@@ -186,8 +187,8 @@
 				"fiber resource plant thatch_twine",
 				"resource fiber millet",
 				"resource fiber highland_vine"
-			],
-			"supply_weaver": [
+			],			
+			"supply_weaver" : [
 				"yarn resource",
 				"fine_stuffing refined",
 				"resource mega_silkweed_thread",
@@ -206,7 +207,7 @@
 				"pelt wolf",
 				"pelt rabbit"
 			],
-			"supply_metalworker": [
+			"supply_metalworker" : [
 				"metal_bits hard",
 				"metal_bits soft",
 				"copper ingot refined",
@@ -214,14 +215,14 @@
 				"bronze ingot refined",
 				"iron ingot refined",
 				"steel ingot refined",
-				"bronze gear refined",
-				"iron gear refined",
-				"steel lock refined",
+				"bronze gear resource",
+				"iron gear resource",
+				"lock resource",
 				"resource refined_leather leather standard",
-				"brass plate refined",
-				"steel plate refined"
+				"brass plate resource",
+				"steel plate resource"
 			],
-			"supply_veggie_fruit": [
+			"supply_veggie_fruit" : [
 				"raw_food apple",
 				"raw_food berry standard",
 				"raw_food carrot",
@@ -248,7 +249,7 @@
 				"raw_food watermelon",
 				"raw_food coffee"
 			],
-			"supply_meat": [
+			"supply_meat" : [
 				"cooking_ingredient bug_meat",
 				"cooking_ingredient duck_meat",
 				"cooking_ingredient jerky",
@@ -266,7 +267,7 @@
 				"raw fish_meat trout",
 				"sausage cooking_ingredient"
 			],
-			"special_ingredients": [
+			"special_ingredients" : [
 				"cooking_ingredient wheat flour",
 				"cooking_ingredient barley flour",
 				"cooking_ingredient millet flour",
@@ -296,8 +297,8 @@
 				"paddy_basket"
 			]
 		},
-		"stonehearth_ace:ui:decayables:filters": {
-			"decayables_vegetables": [
+      "stonehearth_ace:ui:decayables:filters": {
+			"decayables_vegetables" : [
 				"cooking_ingredient sugarbell",
 				"paddy_basket",
 				"raw_food carrot",
@@ -315,7 +316,7 @@
 				"raw_food heirbloom savory",
 				"raw_food garlic"
 			],
-			"decayables_fruits": [
+			"decayables_fruits" : [
 				"raw_food apple",
 				"raw_food berry standard",
 				"raw_food cherry",
@@ -327,14 +328,14 @@
 				"raw_food watermelon",
 				"raw_food coffee"
 			],
-			"decayables_nuts": [
+			"decayables_nuts" : [
 				"cooking_ingredient nut_basket",
 				"food_container almond",
 				"food_container chestnut",
 				"food_container hazelnut",
 				"food_container walnut"
 			],
-			"decayables_fungi": [
+			"decayables_fungi" : [
 				"food_container bolete",
 				"food_container chanterelle",
 				"food_container desert_truffle",
@@ -343,7 +344,7 @@
 				"food_container sweet_tooth",
 				"food_container winter_morel"
 			],
-			"decayables_dairy": [
+			"decayables_dairy" : [
 				"cream sour cooking_ingredient",
 				"cream standard cooking_ingredient",
 				"curdling_mixture cooking_ingredient",
@@ -352,7 +353,7 @@
 				"drink_container wild_cattle milk",
 				"drink_container almond milk"
 			],
-			"decayables_meat": [
+			"decayables_meat" : [
 				"cooking_ingredient bug_meat",
 				"cooking_ingredient jerky",
 				"cooking_ingredient mutton",
@@ -362,7 +363,7 @@
 				"cooking_ingredient venison",
 				"sausage cooking_ingredient"
 			],
-			"decayables_poultry": [
+			"decayables_poultry" : [
 				"cooking_ingredient duck_meat",
 				"cooking_ingredient egg duck",
 				"cooking_ingredient egg poyo",
@@ -380,6 +381,6 @@
 				"food_container fish_roe big",
 				"food_container fish_roe standard"
 			]
-		}
-	}
+      }
+   }
 }

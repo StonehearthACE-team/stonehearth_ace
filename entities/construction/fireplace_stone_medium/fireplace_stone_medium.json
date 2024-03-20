@@ -54,19 +54,7 @@
          "extension_entity": "stonehearth_ace:extensible_object:solid_extension",
          "end_entity": "stonehearth_ace:construction:fireplace:stone:medium:top",
          "max_length": 30,
-         "multi_matrix_mode": "random",
-         "matrix": [
-            "chimney",
-            "chimneyA",
-            "chimneyB",
-            "chimneyC",
-            "chimneyD",
-            "chimneyE",
-            "chimneyF",
-            "chimneyG",
-            "chimneyH",
-            "chimneyI"
-         ],
+         "matrix": "chimney",
          "rotations": [
             {
                "dimension": "y",
@@ -90,7 +78,7 @@
    "entity_data": {
       "stonehearth:table": {
          "drop_effect": "carry_putdown",
-         "drop_offset": { "x": -0.5, "y": 0.1, "z": 0.15 }
+         "drop_offset": { "x": -0.5, "y": 0.1, "z": 0 }
       },
       "stonehearth:net_worth": {
          "value_in_gold": 1,
@@ -101,7 +89,7 @@
          }
       },
       "stonehearth:appeal": {
-         "appeal": 26
+         "appeal": 8
       }
    }
 }

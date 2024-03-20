@@ -77,7 +77,7 @@ end
 function AceBuffsComponent:_validate_buffs()
    -- TODO: make sure any existing buffs are properly indexed by category, etc.
    -- for now just remove any references to buffs that no longer exist
-   for category, buffs in pairs(self._sv.buffs_by_category) do
+   for category, buffs in pairs(self._sv.category_buffs) do
       for buff_id, _ in pairs(buffs) do
          if not self._sv.buffs[buff_id] then
             buffs[buff_id] = nil
