@@ -350,13 +350,10 @@ App.guiHelper = {
                      '<span class="combatValue">+' + catalogData.combat_damage + '</span></div>';
       }
 
+      var combat_info = "";
       if (catalogData.combat_range) {
          combat_info += '<div class="stat"><span class="header">' + i18n.t('stonehearth_ace:ui.game.entities.tooltip_combat_range') + '</span>' +
                      '<span class="combatValue">+' + catalogData.combat_range + '</span></div>';
-      }
-      if (catalogData.combat_reach) {
-         combat_info += '<div class="stat"><span class="header">' + i18n.t('stonehearth_ace:ui.game.entities.tooltip_combat_reach') + '</span>' +
-                     '<span class="combatValue">+' + catalogData.combat_reach + '</span></div>';
       }
 
       if (catalogData.combat_armor) {

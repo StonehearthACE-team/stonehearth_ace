@@ -116,29 +116,25 @@ end
 
 -- TODO: allow for a rotation to specify which direction the end entity should face
 function ExtensibleObjectComponent:_ensure_end_entity(rotation_id, uri, location)
+   local world_location = radiant.entities.local_to_world(Region3(Cube3(location)), self._entity):get_bounds().min
    local parent = radiant.entities.get_parent(self._entity)
    local facing = radiant.entities.get_facing(self._entity)
+   local rel_location = radiant.entities.world_to_local(world_location, parent)
    local entity = self._sv._end_entities[rotation_id]
    if not entity then
       entity = radiant.entities.create_entity(uri, { owner = self._entity })
       entity:add_component('mob'):set_ignore_gravity(true)
-      radiant.entities.add_child(parent, entity)
+      radiant.entities.turn_to(entity, facing)
+      radiant.entities.add_child(parent, entity, rel_location)
       --radiant.entities.add_child(self._entity, entity, location, true)
       self._sv._end_entities[rotation_id] = entity
 
       -- inform the entity about its parent to any component that wants to listen
       radiant.events.trigger(entity, 'stonehearth_ace:extensible_object:end_entity_created', { parent = self._entity })
+   else
+      radiant.entities.turn_to(entity, facing)
+      radiant.entities.move_to(entity, rel_location)
    end
-
-   -- then position relative to the actual parent, in case the parent is not the world
-   --local origin_diff = self._entity:add_component('mob'):get_region_origin() - entity:add_component('mob'):get_region_origin()
-   local world_location = radiant.entities.local_to_world(location, self._entity)
-   local world_region = radiant.entities.local_to_world(Region3(Cube3(location)), self._entity)
-   local rel_location = radiant.entities.world_to_local(world_region:get_bounds().min, parent)
-
-   log:debug('%s setting end entity %s location to %s (%s)', self._entity, entity, rel_location, world_location)
-   radiant.entities.move_to(entity, rel_location)
-   radiant.entities.turn_to(entity, facing)
 end
 
 function ExtensibleObjectComponent:get_rotations()
@@ -197,7 +193,7 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
       models_comp:set_model_options(model_name, data)
       self._sv.cur_extensions[rotation_id] = true
 
-      if rotation.end_entity and output_point then
+      if rotation.end_entity then
          self:_ensure_end_entity(rotation_id, rotation.end_entity, output_point)
       end
    else
