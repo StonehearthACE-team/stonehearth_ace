@@ -355,12 +355,6 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
             catalog_data.menace = json.components['stonehearth:attributes'].menace.value
          end
       end
-
-      if json.components['stonehearth_ace:extensible_object'] then
-         if json.components['stonehearth_ace:extensible_object'].max_length then
-            catalog_data.max_length = json.components['stonehearth_ace:extensible_object'].max_length
-         end
-      end
    end
 
    if entity_data ~= nil then

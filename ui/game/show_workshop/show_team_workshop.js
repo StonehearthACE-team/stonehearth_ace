@@ -1874,9 +1874,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
          var collisionSize = productCatalogData.collision_size && i18n.t('stonehearth_ace:ui.game.unit_frame.collision_size', productCatalogData.collision_size);
          self.set('collisionSize', collisionSize);
 
-         var maxLength = productCatalogData.max_length;
-         self.set('maxLength', maxLength);
-
          var storageCapacity = productCatalogData.storage_capacity;
          self.set('storageCapacity', storageCapacity);
 
@@ -1926,12 +1923,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size_header')}</span>` +
                   `${i18n.t('stonehearth_ace:ui.game.entities.tooltip_size', productCatalogData.collision_size)}</div>`
             App.guiHelper.addTooltip(self.$('#collisionSize'), description);
-         }
-
-         if (maxLength) {
-            var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_max_length')}</span>` +
-                  `<span class="value">${maxLength}</span></div>`;
-            App.guiHelper.addTooltip(self.$('#maxLength'), description);
          }
 
          if (storageCapacity) {
