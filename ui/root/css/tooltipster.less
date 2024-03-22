@@ -50,13 +50,46 @@
             color: #02ff39;
          }
 
-         .description.faded {
+         .craftOrderAuto {
+            .bold;
+            color: #FFA632;
+         }
+
+         .craftOrderMaintain {
+            .bold;
+            color: #ECD469;
+         }
+
+         .craftOrderMake {
+            .bold;
+            color: #B2A695;
+         }
+
+         .craftOrderPaused {
+            .bold;
+            color: #CCA34B;
+         }
+
+         .faded {
             color: rgba(255, 255, 255, 0.6);
          }
 
          .details {
             padding: 6px 0px 0px 6px;
             color:rgba(255, 255, 255, 0.85);
+         }
+
+         .flexContainer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            // flexbox gap property isn't supported in this version of chrome
+            //gap: 12px;
+
+            div {
+               margin-left: 12px;
+               white-space: nowrap;
+            }
          }
          
          .verticalSpacer {
@@ -70,6 +103,10 @@
             .header {
                margin-left: 5px;
 		         margin-right: 6px;
+            }
+
+            .indented {
+               margin-left: 20px;
             }
 
             .spacer {

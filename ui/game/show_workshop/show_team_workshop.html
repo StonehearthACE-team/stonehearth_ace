@@ -6,20 +6,20 @@
          <div id="title">{{i18n_key "stonehearth:ui.game.show_workshop.workshop_title" job_name=view.model.class_name}}</div>
       </div>
 
-      {{#if view.showMaintainOrderList}}
-         <div id="maintainOrderListBar"></div>
+      {{#if view.showSecondaryOrderList}}
+         <div id="secondaryOrderListBar"></div>
       {{/if}}
 
       <div id="craftingWindow">
          {{#if view.model.order_list.orders}}
             <a {{action togglePause target="view"}} >
-               <div id="statusSign" {{bind-attr class=":statusSign view.model.workshopIsPaused:closed:open view.showMaintainOrderList:shiftedRight:"}}></div>
+               <div id="statusSign" {{bind-attr class=":statusSign view.model.workshopIsPaused:closed:open view.showSecondaryOrderList:shiftedRight:"}}></div>
             </a>
          {{/if}}
 
-         {{#if view.showMaintainOrderList}}
-            <a {{action toggleMaintainPause target="view"}} >
-               <div id="maintainStatusSign" {{bind-attr class=":statusSign :secondaryList view.model.maintainIsPaused:closed:open"}}></div>
+         {{#if view.showSecondaryOrderList}}
+            <a {{action toggleSecondaryListPause target="view"}} >
+               <div id="secondaryListStatusSign" {{bind-attr class=":statusSign :secondaryList view.model.secondaryListIsPaused:closed:open"}}></div>
             </a>
          {{/if}}
 
@@ -49,7 +49,7 @@
          <div id="tabs">
             <div class="tab active" tabPage="recipeTab">{{i18n stonehearth:ui.game.show_workshop.recipe_tab}}</div>
             <div class="tab" tabPage="orderListTab">
-               {{i18n stonehearth:ui.game.show_workshop.orders_tab}} ({{view.model.order_list.auto_craft_orders.length}}, {{view.model.order_list.maintain_orders.length}}, {{view.model.order_list.orders.length}})
+               {{i18n stonehearth:ui.game.show_workshop.orders_tab}} ({{view.model.order_list.auto_craft_orders.length}}, {{view.model.order_list.secondary_orders.length}}, {{view.model.order_list.orders.length}})
             </div>
          </div>
          </div>
@@ -339,11 +339,6 @@
       <label class="rightText" for="maintain" style='width:auto'>{{i18n stonehearth:ui.game.show_workshop.craft_up_to_right}}</label>
       </div>
 
-      <div id="qualityPreference" {{bind-attr class="view.currentRecipe.is_auto_craft:hidden:"}}>
-         {{input type="checkbox" id=view.preferHighQualityId checked=view.prefer_high_quality}}
-         <label {{bind-attr for="view.preferHighQualityId"}}>{{i18n stonehearth_ace:ui.game.show_workshop.prefer_high_quality}}</label>
-      </div>
-
       <a id="craftButton" href='#' {{action "craft" target=view allowedKeys="shift"}}>
          <div id="craftButtonImage"></div>
          <div id="craftButtonLabel">{{i18n_key view.craft_button_text}}</div>
@@ -359,14 +354,14 @@
 
 <!--Template for everything regarding the order list-->
 <script type="text/x-handlebars" data-template-name="_orderList">
-   <div id="maintainOrderList" {{bind-attr class=":orderList view.showMaintainOrderList::hidden"}}>
-      <div id="maintainOrders" class="orders">
-         <div class="craftInsert insertMaintain">
+   <div id="secondaryOrderList" {{bind-attr class=":orderList view.showSecondaryOrderList::hidden"}}>
+      <div id="secondaryOrders" class="orders">
+         <div class="craftInsert insertSecondary">
             <img class="craftInsertPortrait" {{bind-attr src="view.insertRecipePortrait"}}>
          </div>
 
-         {{#each view.model.order_list.maintain_orders}}
-         <div {{bind-attr class=":orderListItem is_crafting:inProgressMaintainOrder:maintainOrder" data-orderId="this.id"}}
+         {{#each view.model.order_list.secondary_orders}}
+         <div {{bind-attr class=":orderListItem :secondaryList is_crafting:inProgress: condition.at_least:maintainOrder:normalOrder" data-orderId="this.id"}}
          {{action "select" recipe 0 condition.at_least target="view"}}>
             <a href="#">
                <img {{bind-attr src = "this.portrait"}}>
@@ -375,7 +370,7 @@
                <label class="amountLabel">{{this.condition.remaining}}</label>
             {{/if}}
             {{#if condition.at_least }}
-               <label class="amountLabel">{{i18n stonehearth_ace:ui.game.show_workshop.maintain_order_quantity}}</label>
+               <label class="amountLabel">{{i18n_ctx stonehearth_ace:ui.game.show_workshop.maintain_order_quantity}}</label>
             {{/if}}
 
             {{#if building_id}}
@@ -401,11 +396,8 @@
             <a href="#">
                <img {{bind-attr src = "this.portrait"}}>
             </a>
-            {{#if condition.amount }}
-               <label class="amountLabel">{{this.condition.remaining}}</label>
-            {{/if}}
             {{#if condition.at_least }}
-               <label class="amountLabel">{{i18n stonehearth_ace:ui.game.show_workshop.maintain_order_quantity}}</label>
+               <label class="amountLabel">{{i18n_ctx stonehearth_ace:ui.game.show_workshop.maintain_order_quantity}}</label>
             {{/if}}
             <div class="orderInfoIcon thresholdReachedIcon"></div>
             <div class="orderInfoIcon issueIcon"></div>
@@ -415,8 +407,8 @@
       </div>
 
       <div class="scrollButtons">
-         <a class="orderListUpBtn" {{action "scrollMaintainOrderListUp" target=view }} class='uisounds'><img /></a>
-         <a class="orderListDownBtn" {{action "scrollMaintainOrderListDown" target=view }} class='uisounds'><img /></a>
+         <a class="orderListUpBtn" {{action "scrollsecondaryOrderListUp" target=view }} class='uisounds'><img /></a>
+         <a class="orderListDownBtn" {{action "scrollsecondaryOrderListDown" target=view }} class='uisounds'><img /></a>
       </div>
 
       <div class="orderListControls maintainList">
@@ -425,20 +417,23 @@
       </div>
    </div>
 
-   <div id="orderList" {{bind-attr class=":orderList view.showMaintainOrderList:shiftedRight:"}}>
+   <div id="orderList" {{bind-attr class=":orderList view.showSecondaryOrderList:shiftedRight:"}}>
       <div id="orders" class="orders">
-         <div class="craftInsert insertMake">
+         <div class="craftInsert insertPrimary">
             <img class="craftInsertPortrait" {{bind-attr src="view.insertRecipePortrait"}}>
          </div>
 
          {{#each view.model.order_list.orders}}
-            <div {{bind-attr class=":orderListItem is_crafting:inProgressOrder:normalOrder" data-orderId="this.id"}}
+            <div {{bind-attr class=":orderListItem :secondaryList is_crafting:inProgress condition.at_least:maintainOrder:normalOrder" data-orderId="this.id"}}
             {{action "select" recipe condition.remaining 0 target="view"}}>
                <a href="#">
                   <img {{bind-attr src = "this.portrait"}}>
                </a>
                {{#if condition.amount }}
                   <label class="amountLabel">{{this.condition.remaining}}</label>
+               {{/if}}
+               {{#if condition.at_least }}
+                  <label class="amountLabel">{{i18n_ctx stonehearth_ace:ui.game.show_workshop.maintain_order_quantity}}</label>
                {{/if}}
 
                {{#if building_id}}
@@ -472,15 +467,15 @@
       <table id="makeOrdersTable">
          {{#each view.model.order_list.orders}}
             <tr class="orderListRow" {{bind-attr data="this.id"}}>
-               <td class="orderListRowPortrait">
-                  <img class="orderListRowImage" {{bind-attr src="this.portrait" title="this.recipe.display_name"}}>
+               <td {{bind-attr class=":orderListRowPortrait condition.at_least:maintainOrder:"}}>
+                  <img class="orderListRowImage" {{bind-attr src="this.portrait" title="this.recipe.recipe_name"}}>
                </td>
                <td class="orderListRowCondition">
                   {{#if this.condition.amount }}
-                     <span class="amountLabel"> x {{this.condition.remaining}}</span>
+                     <span class="amountLabel">{{i18n_ctx stonehearth_ace:ui.game.show_workshop.make_order_quantity}}</span>
                   {{/if}}
                   {{#if this.condition.at_least }}
-                     <span class="amountLabel"> = {{this.condition.at_least}}</span>
+                     <span class="amountLabel">{{i18n_ctx stonehearth_ace:ui.game.show_workshop.maintain_order_quantity}}</span>
                   {{/if}}
                </td>
                <td class="orderListRowName">
@@ -507,18 +502,18 @@
             </tr>
          {{/each}}
       </table>
-      <table id="maintainOrdersTable">
-         {{#each view.model.order_list.maintain_orders}}
+      <table id="secondaryOrdersTable">
+         {{#each view.model.order_list.secondary_orders}}
             <tr class="orderListRow" {{bind-attr data="this.id"}}>
-               <td class="orderListRowPortrait">
-                  <img class="orderListRowImage" {{bind-attr src="this.portrait" title="this.recipe.display_name"}}>
+               <td {{bind-attr class=":orderListRowPortrait condition.at_least:maintainOrder:"}}>
+                  <img class="orderListRowImage" {{bind-attr src="this.portrait" title="this.recipe.recipe_name"}}>
                </td>
                <td class="orderListRowCondition">
                   {{#if this.condition.amount }}
-                     <span class="amountLabel"> x {{this.condition.remaining}}</span>
+                     <span class="amountLabel">{{i18n_ctx stonehearth_ace:ui.game.show_workshop.make_order_quantity}}</span>
                   {{/if}}
                   {{#if this.condition.at_least }}
-                     <span class="amountLabel"> = {{this.condition.at_least}}</span>
+                     <span class="amountLabel">{{i18n_ctx stonehearth_ace:ui.game.show_workshop.maintain_order_quantity}}</span>
                   {{/if}}
                </td>
                <td class="orderListRowName">
@@ -548,15 +543,12 @@
       <table id="autoCraftOrdersTable">
          {{#each view.model.order_list.auto_craft_orders}}
             <tr class="orderListRow" {{bind-attr data="this.id"}}>
-               <td class="orderListRowPortrait">
-                  <img class="orderListRowImage" {{bind-attr src="this.portrait" title="this.recipe.display_name"}}>
+               <td class="orderListRowPortrait autoCraftOrder">
+                  <img class="orderListRowImage" {{bind-attr src="this.portrait" title="this.recipe.recipe_name"}}>
                </td>
                <td class="orderListRowCondition">
-                  {{#if this.condition.amount }}
-                     <span class="amountLabel"> x {{this.condition.remaining}}</span>
-                  {{/if}}
                   {{#if this.condition.at_least }}
-                     <span class="amountLabel"> = {{this.condition.at_least}}</span>
+                     <span class="amountLabel">{{i18n_ctx stonehearth_ace:ui.game.show_workshop.maintain_order_quantity}}</span>
                   {{/if}}
                </td>
                <td class="orderListRowName">

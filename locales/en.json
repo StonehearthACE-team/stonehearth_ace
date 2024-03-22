@@ -26463,7 +26463,7 @@
             "tooltip_wanted_item_higher_quantity": "Merchant will pay <span class='higherValue'>[str(factor)]% more</span> for [str(quantity)] of these!",
             "tooltip_wanted_item_lower": "Merchant will pay <span class='lowerValue'>[str(factor)]% less</span> for these!",
             "tooltip_wanted_item_lower_quantity": "Merchant will pay <span class='lowerValue'>[str(factor)]% less</span> for [str(quantity)] of these!",
-            "tooltip_warmth_radius": "Warmth radius:"
+            "tooltip_warmth_radius": "Warmth Radius:"
          },
          "custom_tooltips": {
             "mechanical": {
@@ -26709,11 +26709,26 @@
             "search_all": "All",
             "search_all_description": "Include the recipe titles, crafted item descriptions, and names of ingredients in the search filter.",
             "tooltip_fuel_amount": "Fuel Units",
+            "tooltip_associated_order_count": "(<span class='[str(valueClass)]'>[str(count)]</span>)",
+            "tooltip_associated_orders": "Child orders:",
+            "tooltip_building": "Queued for building:",
+            "tooltip_crafting": "Crafting:",
+            "tooltip_current_crafter": "[str(name)] (Lvl <span class='value'>[str(level)]</span>)",
+            "tooltip_auto_craft_order": "Auto Maintain craft order",
+            "tooltip_manual_maintain_order": "Manual Maintain craft order",
+            "tooltip_manual_make_order": "Manual Make craft order",
+            "tooltip_maintain": "Maintain:",
+            "tooltip_make": "Make:",
+            "tooltip_make_quantity": "<span class='value'>[str(remaining)]</span> remaining (of <span class='value'>[str(amount)]</span> total)",
+            "tooltip_modify_order": "<span class='value'>Double-click</span> to <span class='value'>modify</span> this craft order",
+            "tooltip_move_order": "<span class='value'>Drag</span> this craft order to <span class='value'>change its priority</span>",
+            "tooltip_remove_order": "<span class='value'>Right-click</span> to <span class='value'>remove</span> this craft order",
+            "tooltip_recipe_list_queueing": "<div class='stat'><span class='value'>Right-click</span> to add a <span class='value'>Make</span> craft order of 1 of this recipe to the end of the list.</div><div class='stat'><div class='header'>Hold <span class='value'>[Ctrl]</span> to add a <span class='value'>Maintain</span> order.</div><div class='header'>Hold <span class='value'>[Shift]</span> to insert the order at the top of the list.</div></div>",
             "status_sign": {
-               "title": "Toggle Make Crafting",
-               "description": "Click to toggle whether Make crafting orders are enabled for this workshop.<br><br>Note: Make orders are prioritized over Maintain orders.",
-               "maintain_title": "Toggle Maintain Crafting",
-               "maintain_description": "Click to toggle whether Maintain crafting orders are enabled for this workshop.<br><br>Note: Make orders are prioritized over Maintain orders."
+               "title": "Toggle Primary Crafting",
+               "description": "Click to toggle whether Primary crafting orders are enabled for this workshop.<br><br>Note: Primary orders are prioritized over Secondary orders.",
+               "secondary_list_title": "Toggle Secondary Crafting",
+               "secondary_list_description": "Click to toggle whether Secondary crafting orders are enabled for this workshop.<br><br>Note: Primary orders are prioritized over Secondary orders."
             },
             "category_crafter": {
                "title": "[str(name)] - Level [str(level)]",
@@ -26732,12 +26747,7 @@
                "description": "Add this order to the end of the list. Hold [Shift] to insert at the top of the list.<br><br>Right-click any item in the workshop to queue up making 1 of it (or hold [Ctrl] to queue up maintaining 1 of it)."
             },
             "maintain_order_quantity": "= [str(condition.at_least)]",
-            "recipe_list_queueing": "<span class='value'>Right-click</span> to add a <span class='value'>Make</span> craft order of 1 of this recipe to the end of the list.<div class='details stat'><div class='header'>Hold <span class='value'>[Ctrl]</span> to add a <span class='value'>Maintain</span> order.</div><div class='header'>Hold <span class='value'>[Shift]</span> to insert the order at the top of the list.</div></div>",
-            "quality_preference": {
-               "title": "Ingredient Quality Preference",
-               "description": "Choose whether crafters should prefer high or low quality ingredients for this order. The default can be changed in Gameplay Settings."
-            },
-            "prefer_high_quality": "Use higher quality ingredients"
+            "make_order_quantity": "x [str(condition.remaining)]"
          },
          "zones_mode": {
             "farm": {
@@ -27412,8 +27422,6 @@
                "auto_queue_medicine_description": "When a hearthling receives a wound or a negative condition that can be treated with a specific item, queue a craft order for that item unless your town already has it.",
                "update_maintain_orders": "Update Maintain Orders",
                "update_maintain_orders_description": "When queuing a new Maintain crafting order, update the existing Maintain crafting order for that recipe, if there is one, with the new quantity. Automatic queuing of that order (e.g., when it's a prerequisite of a more refined maintain crafting order) will not change the existing order either way, as long as it's sufficient for completing the more refined order.",
-               "default_craft_order_prefer_high_quality": "Prefer High-Quality Crafting Ingredients",
-               "default_craft_order_prefer_high_quality_description": "When crafting an item, crafters who have achieved the Journeyman's Knowledge perk will prefer crafting with high-quality ingredients. Uncheck to always prefer low-quality ingredients.",
                "default_craft_search_checks": "Default Recipe Filtering:",
                "default_craft_search_checks_description": "When looking at the workshop view, default to filtering recipes by text in these properties.",
                "show_unreachable_ingredients_notification": "Unreachable Crafting Ingredients Alert",

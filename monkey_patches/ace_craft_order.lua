@@ -27,8 +27,15 @@ function AceCraftOrder:restore()
       self._sv._auto_crafting = nil
    end
 
-   if self._sv._associated_orders then
-      self._sv.associated_orders = self._sv._associated_orders
+   local associated_orders = self._sv._associated_orders
+   if associated_orders then
+      for i = #associated_orders, 1, -1 do
+         local order = associated_orders[i]
+         if not order.order then
+            table.remove(associated_orders, i)
+         end
+      end
+      self._sv.associated_orders = associated_orders
       self._sv._associated_orders = nil
    end
 end
@@ -113,11 +120,6 @@ function AceCraftOrder:destroy()
    end
 
    self:_ace_old_destroy()
-end
-
--- false for lower quality, true for higher quality
-function AceCraftOrder:get_high_quality_preference()
-   return self._sv.condition.prefer_high_quality
 end
 
 function AceCraftOrder:_add_curr_crafter(crafter)
@@ -676,9 +678,24 @@ function AceCraftOrder:remove_associated_order(remove_children)
       for i, order in ipairs(associated_orders) do
          if order.order == self then
             table.remove(associated_orders, i)
+            self.__saved_variables:mark_changed()
+         else
+            order.order:remove_associated_order_reference(self)
+         end
+      end
+   end
+end
+
+function AceCraftOrder:remove_associated_order_reference(order)
+   local associated_orders = self:get_associated_orders()
+   if associated_orders and #associated_orders > 0 then
+      for i, associated_order in ipairs(associated_orders) do
+         if associated_order.order == order then
+            table.remove(associated_orders, i)
             break
          end
       end
+      self.__saved_variables:mark_changed()
    end
 end
 
@@ -734,7 +751,7 @@ function AceCraftOrder:reduce_quantity(amount)
 end
 
 -- returns true if the order changed and the order list should be updated
-function AceCraftOrder:change_quantity(quantity, prefer_high_quality)
+function AceCraftOrder:change_quantity(quantity)
    log:debug('[%s] change_quantity(%s)', self:get_id(), quantity)
    -- if trying to change quantity to less than 1, simply remove the order
    if quantity < 1 then
@@ -744,9 +761,8 @@ function AceCraftOrder:change_quantity(quantity, prefer_high_quality)
 
    local condition = self._sv.condition
    if condition.type == 'maintain' then
-      if condition.at_least ~= quantity or (prefer_high_quality ~= nil and prefer_high_quality ~= self:get_high_quality_preference()) then
+      if condition.at_least ~= quantity then
          condition.at_least = quantity
-         condition.prefer_high_quality = prefer_high_quality
          self:_remove_desires()
          self:_add_desires()
          self.__saved_variables:mark_changed()

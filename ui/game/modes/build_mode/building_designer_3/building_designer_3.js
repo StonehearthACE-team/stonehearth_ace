@@ -2,6 +2,15 @@ App.StonehearthBuildingDesignerTools3 = App.View.extend({
    templateName: 'buildingDesigner3',
    uriProperty: 'model',
 
+   buildingComponents: {
+      "buildings": {
+         "*": {
+            "stonehearth:build2:building": {},
+            "stonehearth:unit_info": {},
+         },
+      },
+   },
+
    buildBrushes: null,
 
    init: function() {
@@ -9,11 +18,24 @@ App.StonehearthBuildingDesignerTools3 = App.View.extend({
       self._building_service = null;
       self._old_selected = {};
       self._old_selected_uris = {};
+      self._building_lookup = {};
       self._super();
 
       radiant.call('stonehearth:get_client_service', 'building')
          .done(function(e) {
             self._onServiceReady(e.result);
+         })
+         .fail(function(e) {
+            console.log('error getting building service');
+            console.dir(e);
+         });
+
+      // ACE: also track all buildings so we can look up their names (any other info?)
+      radiant.call('stonehearth:get_service', 'building')
+         .done(function(e) {
+            self._server_building_trace = new StonehearthDataTrace(e.result, self.buildingComponents).progress(function(data) {
+               self._building_lookup = data.buildings;
+            });
          })
          .fail(function(e) {
             console.log('error getting building service');
@@ -96,6 +118,10 @@ App.StonehearthBuildingDesignerTools3 = App.View.extend({
          }
       });
       return result;
+   },
+
+   getBuildingById: function(bid) {
+      return this._building_lookup[bid];
    },
 
    getBuildingStatusView: function() {

@@ -136,7 +136,14 @@ App.workshopManager = {
       }
 
       return self.workshops[jobAlias];
-   }
+   },
+
+   getWorkshopByOrderList: function (orderList) {
+      var self = this;
+      return _.find(self.workshops, function (w) {
+         return w.getOrderList() == orderList;
+      });
+   },
 };
 
 App.StonehearthTeamCrafterView = App.View.extend({
@@ -153,7 +160,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
             "curr_crafters" : {},
             "recipe" : {},
          },
-         "maintain_orders" : {
+         "secondary_orders" : {
             "associated_orders" : {
                "*": {},
             },
@@ -161,6 +168,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
             "recipe" : {},
          },
          "auto_craft_orders" : {
+            "associated_orders" : {
+               "*": {},
+            },
             "curr_crafters" : {},
             "recipe" : {},
          },
@@ -185,7 +195,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
    currentRecipe: null,
    isPaused: false,
-   isMaintainPaused: false,
+   isSecondaryListPaused: false,
    queueAnywayStatus: false,
    maxActiveOrders: 30,
    scrollAmount: 78,
@@ -233,7 +243,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
       var doHide = function () {
          var index = App.stonehearth.modalStack.indexOf(self)
-         if (index > -1) {
+         if (index != -1) {
             App.stonehearth.modalStack.splice(index, 1);
          }
          App.View.prototype.hide.call(self);
@@ -259,7 +269,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self._super();
       if (self.get('isVisible')) {
          self._onOrdersUpdated();
-         self._onMaintainOrdersUpdated();
+         self._onSecondaryOrdersUpdated();
          self._onOrderCountUpdated();
       }
    }.observes('isVisible'),
@@ -387,10 +397,13 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
       self.$('.orders').off('mouseenter.existingOrderEnter', '.orderListItem');
       self.$('.orders').on('mouseenter.existingOrderEnter', '.orderListItem', function (e) {
-         var orderId = parseInt($(this).attr("data-orderid"));
+         var $el = $(this);
+         var orderId = parseInt($el.attr("data-orderid"));
          var order;
 
-         var orderList = $(this).closest('.orders').attr('id') == 'orders' ? self.get('model.order_list.orders') : self.get('model.order_list.maintain_orders');
+         var isPrimaryOrderList = $el.closest('.orders').attr('id') == 'orders';
+         var primaryOrders = self.get('model.order_list.orders') || [];
+         var orderList = (primaryOrders).concat(self.get('model.order_list.secondary_orders') || []).concat(self.get('model.order_list.auto_craft_orders') || []);
          radiant.each(orderList, function(_, o) {
             if (o.id == orderId) {
                order = o;
@@ -400,42 +413,68 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
          self.highlightType = null;
          if (order) {
+            var olRef = self.getOrderList();
             // if it has a building id, highlight all orders for that building (locked to primary order list)
-            // if this order has associated orders, highlight all of them (can be in primary or secondary/maintain order list; not in auto-craft order list)
+            // if this order has associated orders, highlight only the direct children (the orders that will be removed if this one is removed)
             if (order.building_id) {
                self.highlightedOrders = [];
                radiant.each(orderList, function(_, o) {
-                  if (o.building_id == order.building_id) {
-                     self.highlightedOrders.push(o);
+                  if (o.building_id == order.building_id && o.order_list == olRef) {
+                     self.highlightedOrders.push({order: o, isLocal: true});
                   }
                });
                self.highlightType = 'buildingHighlighted';
             }
             else if (order.associated_orders && order.associated_orders.length > 0) {
-               var orders = [];
+               // consider all the associated orders with parents (and thus could be descendents of this order)
+               // orders can be part of other jobs' order lists, so their id on its own is not unique!
+               var allParentOrders = [];
                radiant.each(order.associated_orders, function(_, o) {
-                  orders.push(o.order.id);
-               });
-               self.highlightedOrders = [];
-               radiant.each((self.get('model.order_list.orders') || []).concat(self.get('model.order_list.maintain_orders') || []), function(_, o) {
-                  if (orders.indexOf(o.id) != -1) {
-                     self.highlightedOrders.push(o);
+                  if (o.parent_order) {
+                     allParentOrders.push(o);
                   }
                });
+
+               // keep going through all the possible descendents, including any with a valid parent and marking those for the next iteration
+               var orders = [];
+               var parents = [];
+               var newParents = [{id: order.id, order_list: olRef}];
+               while (newParents.length > 0) {
+                  var newNewParents = [];
+                  for (var i = 0; i < allParentOrders.length; i++) {
+                     var o = allParentOrders[i];
+                     for (var j = 0; j < newParents.length; j++) {
+                        if (newParents[j].id == o.parent_order.id && newParents[j].order_list == o.parent_order.order_list) {
+                           orders.push({order: o.order, isLocal: o.order.order_list == olRef});
+                           newNewParents.push({id: o.order.id, order_list: o.order.order_list});
+                           break;
+                        }
+                     }
+                  }
+
+                  parents.push(...newParents);
+                  newParents = newNewParents;
+               }
+
+               orders.sort((a, b) => b.isLocal - a.isLocal);
+               self.highlightedOrders = orders;
                self.highlightType = 'craftHighlighted';
             }
          }
 
          self._updateFullDetailedOrderList();
+
+         // show the tooltip for the order
+         if (order) {
+            self._showCraftOrderTooltip($el, order, isPrimaryOrderList || primaryOrders.length == 0);
+         }
       });
 
       self.$('.orders').off('mouseleave.existingOrderLeave', '.orderListItem');
       self.$('.orders').on('mouseleave.existingOrderLeave', '.orderListItem', function (e) {
-         self.highlightedOrders = [];
+         self.highlightedOrders = {};
          self._updateFullDetailedOrderList();
       });
-
-      self._updateCraftOrderPreference();
 
       $(top).on("selected_workshop_entity_changed", function (_, e) {
          if (_showSelectedWorkshopCrafting) {
@@ -522,7 +561,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
    willDestroyElement: function () {
       var self = this;
       self.$().find('.tooltipstered').tooltipster('destroy');
-      App.tooltipHelper.removeDynamicTooltip(self.$('[title]'));
+      App.guiHelper.removeDynamicTooltip(self.$('[title]'));
       self.$('#craftButton').off('mouseenter mouseleave hover');
       self.$('#searchInput').off('keydown keyup');
       this.makeSortable(self.$('.orders, .garbageList'), 'destroy');
@@ -732,7 +771,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
             // the individual members need to be traced to track their disabled categories
             if (self._crafterTraces[id] != null) {
-               
+               var name = member['stonehearth:unit_info'].custom_name;
+               memberLookup[id].name = name;
             }
             else {
                var name = member['stonehearth:unit_info'].custom_name;
@@ -997,8 +1037,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
    _addExtraCraftOrderConditions: function(recipe, condition) {
       var self = this;
-
-      condition.prefer_high_quality = self.get('prefer_high_quality');
       if (stonehearth_ace.isShiftKeyActive()) {
          condition.order_index = 1;
       }
@@ -1081,13 +1119,13 @@ App.StonehearthTeamCrafterView = App.View.extend({
          radiant.call_obj(orderList, 'toggle_pause');
       },
 
-      toggleMaintainPause: function(){
-         if (this.get('model.order_list.is_maintain_paused')) {
+      toggleSecondaryListPause: function(){
+         if (this.get('model.order_list.is_secondary_list_paused')) {
             radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:open'} );
          } else {
             radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:closed'} );
          }
-         radiant.call('stonehearth_ace:toggle_maintain_pause', this.get('model.alias'));
+         radiant.call('stonehearth_ace:toggle_secondary_order_list_pause', this.get('model.alias'));
       },
 
       scrollOrderListUp: function() {
@@ -1098,13 +1136,27 @@ App.StonehearthTeamCrafterView = App.View.extend({
          this._scrollOrderList(this.$('#orderList'), this.scrollAmount);
       },
 
-      scrollMaintainOrderListUp: function() {
-         this._scrollOrderList(this.$('#maintainOrderList'), -this.scrollAmount);
+      scrollsecondaryOrderListUp: function() {
+         this._scrollOrderList(this.$('#secondaryOrderList'), -this.scrollAmount);
       },
 
-      scrollMaintainOrderListDown: function() {
-         this._scrollOrderList(this.$('#maintainOrderList'), this.scrollAmount);
+      scrollsecondaryOrderListDown: function() {
+         this._scrollOrderList(this.$('#secondaryOrderList'), this.scrollAmount);
       },
+   },
+
+   isListForOrderPaused: function(order) {
+      // if the order is in the primary list, return whether that list is enabled
+      // otherwise return whether the secondary list is enabled
+      var self = this;
+      var orders = self.get('model.order_list.orders') || [];
+      for (var i = 0; i < orders.length; i++) {
+         if (orders[i].id == order.id) {
+            return self.get('model.workshopIsPaused');
+         }
+      }
+
+      return self.get('model.secondaryListIsPaused');
    },
 
    // Fires whenever the workshop changes, but the first update is all we really
@@ -1163,14 +1215,14 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       self._buildOrderList(self.$('#orderList'), self.get('model.order_list.orders'));
-      var maintainOrders = self.get('model.order_list.maintain_orders');
+      var secondaryOrders = self.get('model.order_list.secondary_orders');
       var autoCraftOrders = self.get('model.order_list.auto_craft_orders');
-      self._buildOrderList(self.$('#maintainOrderList'),
-            (maintainOrders && maintainOrders.length > 0) || (autoCraftOrders && autoCraftOrders.length > 0));
+      self._buildOrderList(self.$('#secondaryOrderList'),
+            (secondaryOrders && secondaryOrders.length > 0) || (autoCraftOrders && autoCraftOrders.length > 0));
 
       //build the order list(s) on the order tab
       self._ordersTableSortable('#makeOrdersTable');
-      self._ordersTableSortable('#maintainOrdersTable');
+      self._ordersTableSortable('#secondaryOrdersTable');
       self._ordersTableSortable('#autoCraftOrdersTable');
 
       $(document).on('keyup.show_team_workshop keydown.show_team_workshop', function(e){
@@ -1209,16 +1261,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self.$('#craftButton').tooltipster({
          delay: 1000,
          content: $(tooltip)
-      });
-
-      tooltip = App.tooltipHelper.createTooltip(
-         i18n.t('stonehearth_ace:ui.game.show_workshop.quality_preference.title'),
-         i18n.t('stonehearth_ace:ui.game.show_workshop.quality_preference.description'));
-      self.$('#qualityPreference label').tooltipster({
-         delay: 1000,
-         position: 'bottom',
-         content: $(tooltip)
-      });   
+      }); 
 
       // Perform filter after keyup to ensure that key has already been applied
       self.searchInput = self.$('#searchInput');
@@ -1290,9 +1333,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
       App.guiHelper.createDynamicTooltip(self.$('#craftingWindow'), '.statusSign', function($el) {
          var id = $el.attr('id');
          var title, text;
-         if (id == 'maintainStatusSign') {
-            title = 'stonehearth_ace:ui.game.show_workshop.status_sign.maintain_title';
-            text = 'stonehearth_ace:ui.game.show_workshop.status_sign.maintain_description';
+         if (id == 'secondaryListStatusSign') {
+            title = 'stonehearth_ace:ui.game.show_workshop.status_sign.secondary_list_title';
+            text = 'stonehearth_ace:ui.game.show_workshop.status_sign.secondary_list_description';
          }
          else {
             title = 'stonehearth_ace:ui.game.show_workshop.status_sign.title';
@@ -1306,6 +1349,146 @@ App.StonehearthTeamCrafterView = App.View.extend({
       if (!this.currentRecipe) {
          this._selectFirstValidRecipe();
       }
+   },
+
+   _showCraftOrderTooltip: function($el, order, showToRight) {
+      var self = this;
+
+      // if it's not a building order, offer the ability to modify the quantity
+      // if it's a maintain/auto-craft order, show tooltip on the left side; otherwise, show it on the right side
+      var recipe = order.recipe;
+      var title = i18n.t(recipe.recipe_name);
+      var description;
+
+      if (recipe.is_auto_craft) {
+         description = `<div class='stat craftOrderAuto'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_auto_craft_order')}</div>`;
+      }
+      else if (order.condition.type == 'maintain') {
+         description = `<div class='stat craftOrderMaintain'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_manual_maintain_order')}</div>`;
+      }
+      else {
+         description = `<div class='stat craftOrderMake'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_manual_make_order')}</div>`;
+      }
+
+      if (order.condition.type == 'maintain') {
+         description +=
+            `<div class='verticalSpacer stat'><span class='header'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_maintain')}</span><span class='value'>${order.condition.at_least}</span></div>`;
+      }
+      else {
+         var quantity = i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_make_quantity', order.condition);
+         description +=
+            `<div class='verticalSpacer stat'><span class='header'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_make')}</span>${quantity}</div>`;
+      }
+
+      // for a building order or an order with associated orders, list those appropriately
+      var sOrders = '';
+      var totalCount = 0;
+      for (var i = 0; i < self.highlightedOrders.length; i++) {
+         var o = self.highlightedOrders[i].order;
+         var count = o.condition.at_least || o.condition.remaining;
+         var isActive = o.curr_crafters.length > 0;
+         var valueClass = 'value';
+
+         var workshop = App.workshopManager.getWorkshopByOrderList(o.order_list);
+         if (workshop && workshop.isListForOrderPaused(o)) {
+            valueClass = 'craftOrderPaused';
+         }
+         else if (isActive) {
+            valueClass = 'available';
+         }
+         else if (workshop) {
+            var recipe = workshop._getOrCalculateRecipeData(o.recipe.recipe_key);
+            var failedRequirements = recipe && workshop._calculate_failed_requirements(recipe);
+            if (failedRequirements && failedRequirements != '') {
+               valueClass = 'unavailable';
+            }
+         }
+
+         var sCount = i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_associated_order_count', {count: count, valueClass: valueClass});
+         sOrders += `<div class='stat'><img class='imgHeader' src='${o.recipe.portrait}'/>${sCount}</div>`;
+         totalCount += 1;
+      }
+
+      if (order.building_id) {
+         var gmm = App.getGameModeManager();
+         var buildView = gmm.getView(gmm.modes.BUILD)._buildingDesignerView;
+         if (buildView) {
+            var building = buildView.getBuildingById(order.building_id);
+            var name = building && building['stonehearth:unit_info'] && (building['stonehearth:unit_info'].custom_name || building['stonehearth:unit_info'].custom_name);
+            if (name) {
+               name = i18n.t(name);
+               description += `<div class='verticalSpacer stat'><span class='header'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_building')}</span>"<span class='value'>${name}</span>"</div>`;
+               if (totalCount > 0) {
+                  description += `<div class='flexContainer faded'>${sOrders}</div>`;
+               }
+            }
+         }
+      }
+
+      // if the order has associated orders, list direct children, direct parent, and all other associated orders
+      if (order.associated_orders && order.associated_orders.length > 0) {
+         // for now just list the direct children that will be removed if this order is removed
+         if (totalCount > 0) {
+            description += `<div class='verticalSpacer stat'><span class='header'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_associated_orders')}</span></div>`;
+                  //+ `${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_associated_order_count', {count: totalCount})}</div>`;
+            description += `<div class='flexContainer faded'>${sOrders}</div>`;
+         }
+      }
+
+      // add currently crafting crafter(s)
+      var crafters = [];
+      if (order.curr_crafters.length > 0) {
+         for (i = 0; i < order.curr_crafters.length; i++) {
+            var crafter = order.curr_crafters[i];
+            var member = self._memberLookup[radiant.getEntityId(crafter)];
+            if (member) {
+               var id = crafter.__self;
+
+               var crafterName = i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_current_crafter', member);
+               var sCrafter = `<img class='imgHeader' src='/r/get_portrait/?type=headshot&animation=idle_breathe.json&entity=${id}'/>${crafterName}`;
+               crafters.push(sCrafter);
+            }
+         }
+
+         if (crafters.length == 1) {
+            // if there's just one crafter, put it on the same line as the header
+            description += `<div class='verticalSpacer stat'><span class='header available'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_crafting')}</span>${crafters[0]}</div>`;
+         }
+         else if (crafters.length > 1) {
+            var sCrafters = crafters.join('</div><div class="stat indented">');
+            description += `<div class='verticalSpacer stat'><span class='header available'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_crafting')}</span></div><div class="stat indented">${sCrafters}</div>`;
+         }
+      }
+
+      // add issues / failed requirements
+      if (crafters.length == 0 && order.order_progress != 3) {
+         var recipe = self._getOrCalculateRecipeData(order.recipe.recipe_key);
+         failedRequirements = recipe && self._calculate_failed_requirements(recipe);
+         if (failedRequirements) {
+            description += `<div class='verticalSpacer stat unavailable'>${failedRequirements}</div>`;
+         }
+      }
+
+      // show interaction tips
+      var tips = '';
+      if (!order.building_id) {
+         tips += `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_modify_order')}</div>`;
+      }
+
+      tips += `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_move_order')}</div>`;
+      tips += `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_remove_order')}</div>`;
+
+      description += `<div class="verticalSpacer stat faded">${tips}</div>`
+
+      var tooltip = $(App.tooltipHelper.createTooltip(title, description));
+      if ($el.data('tooltipster')) {
+         $el.tooltipster('destroy');
+      }
+      $el.tooltipster({
+         content: tooltip,
+         position: showToRight ? 'right' : 'left',
+      });
+      $el.tooltipster('show');
    },
 
    _applySearchFilter: function() {
@@ -1350,12 +1533,12 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
    },
 
-   _shouldShowMaintainOrders: function() {
-      var maintainOrders = this.get('model.order_list.maintain_orders') || [];
+   _shouldShowSecondaryOrders: function() {
+      var secondaryOrders = this.get('model.order_list.secondary_orders') || [];
       var autoCraftOrders = this.get('model.order_list.auto_craft_orders') || [];
-      this.set('showMaintainOrderList', maintainOrders.length > 0 || autoCraftOrders.length > 0 ||
-            this.get('isShowingMaintainCraftInsert') || this.get('isShowingAutoCraftInsert'));
-   }.observes('model.order_list.maintain_orders', 'model.order_list.auto_craft_orders', 'isShowingMaintainCraftInsert', 'isShowingAutoCraftInsert'),
+      this.set('showSecondaryOrderList', secondaryOrders.length > 0 || autoCraftOrders.length > 0 ||
+            this.get('isShowingSecondaryCraftInsert') || this.get('isShowingAutoCraftInsert'));
+   }.observes('model.order_list.secondary_orders', 'model.order_list.auto_craft_orders', 'isShowingSecondaryCraftInsert', 'isShowingAutoCraftInsert'),
 
    _autoCraftOrdersChanged: function() {
       $(this).trigger('stonehearth_ace:workshop:auto_craft_orders_changed');
@@ -1385,8 +1568,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
       var self = this;
       var show = stonehearth_ace.isShiftKeyActive() && (self.HOVERING_CRAFT_BUTTON || self.HOVERING_ITEM);
 
-      var makeDiv = self.$('.insertMake');
-      var maintainDiv = self.$('.insertMaintain');
+      var makeDiv = self.$('.insertPrimary');
+      var maintainDiv = self.$('.insertSecondary');
       var autoCraftDiv = self.$('.insertAutoCraft');
 
       makeDiv.hide();
@@ -1394,7 +1577,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       autoCraftDiv.hide();
 
       var isShowingAutoCraftInsert = false;
-      var isShowingMaintainCraftInsert = false;
+      var isShowingSecondaryCraftInsert = false;
       if (show) {
          if ((self.HOVERING_CRAFT_BUTTON && self._isCurrentOrderTypeAutoCraft()) ||
                (self.HOVERING_ITEM && self._hoveredRecipeIsAutoCraft)) {
@@ -1404,7 +1587,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          else if ((self.HOVERING_CRAFT_BUTTON && self._isCurrentOrderTypeMaintain()) ||
                (self.HOVERING_ITEM && stonehearth_ace.isCtrlKeyActive())) {
             maintainDiv.show();
-            isShowingMaintainCraftInsert = true;
+            isShowingSecondaryCraftInsert = true;
          }
          else {
             makeDiv.show();
@@ -1412,18 +1595,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       self.set('isShowingAutoCraftInsert', isShowingAutoCraftInsert);
-      self.set('isShowingMaintainCraftInsert', isShowingMaintainCraftInsert);
-   },
-
-   _updateCraftOrderPreference: function() {
-      var self = this;
-      
-      stonehearth_ace.getModConfigSetting('stonehearth_ace', 'default_craft_order_prefer_high_quality', function(value) {
-         if (self.isDestroyed || self.isDestroying) {
-            return;
-         }
-         self.set('prefer_high_quality', value);
-      });
+      self.set('isShowingSecondaryCraftInsert', isShowingSecondaryCraftInsert);
    },
 
    _focusAndKeyUpSearchInput: function() {
@@ -1460,7 +1632,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
    },
 
    _stringContains: function(str, search) {
-      return str && str.toLowerCase().indexOf(search) > -1;
+      return str && str.toLowerCase().indexOf(search) != -1;
    },
 
    _selectFirstValidRecipe: function() {
@@ -1496,8 +1668,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
       if (!remaining && !maintainNumber) {
          self.$('#' + self.get('orderTypeMakeId')).prop("checked", "checked");
       }
-
-      self._updateCraftOrderPreference();
    },
 
    _constructMaterialsToQuery: function () {
@@ -1659,16 +1829,16 @@ App.StonehearthTeamCrafterView = App.View.extend({
    //on the details page
    _updateFullDetailedOrderList: function() {
       this._updateOrdersInDetailedOrderList();
-      this._updateMaintainOrdersInDetailedOrderList();
+      this._updateSecondaryOrdersInDetailedOrderList();
    },
 
    _updateOrdersInDetailedOrderList: function() {
       this._updateDetailedOrderList(this.$('#orderList'), this.get('model.order_list.orders'));
    },
 
-   _updateMaintainOrdersInDetailedOrderList: function() {
-      this._updateDetailedOrderList(this.$('#maintainOrderList'),
-            (this.get('model.order_list.maintain_orders') || []).concat(this.get('model.order_list.auto_craft_orders') || []));
+   _updateSecondaryOrdersInDetailedOrderList: function() {
+      this._updateDetailedOrderList(this.$('#secondaryOrderList'),
+            (this.get('model.order_list.secondary_orders') || []).concat(this.get('model.order_list.auto_craft_orders') || []));
    },
 
    _updateDetailedOrderList: function(orderList, orders) {
@@ -1676,7 +1846,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       if (!orders || !self.$('.orderListItem') || !self._recipeListInitialized) {
          return;
       }
-      for (var i=0; i<orders.length; i++) {
+      for (var i = 0; i < orders.length; i++) {
          var order = orders[i];
          if (!order || !order.recipe || !order.recipe.recipe_key) {
             //can happen if the recipe is being destroyed as the update happens
@@ -1695,7 +1865,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
          var failedRequirements = "";
          // Only calculate failed requirements if this recipe isn't currently being processed (stonehearth.constants.crafting_status.CRAFTING = 3)
-         if (order.order_progress != 3) {
+         if (order.order_progress != 3 && order.curr_crafters.length == 0) {
             failedRequirements = self._calculate_failed_requirements(recipe);
          }
          var currentText = orderListRow.find('.orderListRowCraftingStatus').text();
@@ -1731,10 +1901,22 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
 
          // if this order should be highlighted, highlight it
-         if (self.highlightType && self.highlightedOrders.indexOf(order) != -1) {
-            orderListItem.addClass(self.highlightType);
+         var highlighted = false;
+         if (self.highlightType) {
+            for (var j = 0; j < self.highlightedOrders.length; j++) {
+               var o = self.highlightedOrders[j];
+               if (!o.isLocal) {
+                  break;
+               }
+               if (o.order.id == order.id) {
+                  orderListItem.addClass(self.highlightType);
+                  highlighted = true;
+                  break;
+               }
+            }
          }
-         else {
+
+         if (!highlighted) {
             orderListItem.removeClass('buildingHighlighted craftHighlighted');
          }
       }
@@ -1842,19 +2024,19 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       //if they have missing ingredients, list those here
-      var ingredientString = "";
+      var missingIngredients = [];
       if (App.workshopManager.usableItemTrackerData) {
-         for (i=0; i<recipe.ingredients.length; i++) {
+         for (i = 0; i < recipe.ingredients.length; i++) {
             var ingredientData = recipe.ingredients[i];
             var numNeeded = ingredientData.count;
             var numHave = self._findUsableCount(ingredientData);
             if (numHave < numNeeded) {
-               ingredientString = ingredientString + numHave + '/' + numNeeded + " " + i18n.t(ingredientData.name) + " ";
+               missingIngredients.push(numHave + '/' + numNeeded + " " + i18n.t(ingredientData.name));
             }
          }
       }
-      if (ingredientString != "") {
-         ingredientString = i18n.t('stonehearth:ui.game.show_workshop.missing_ingredients') + ingredientString;
+      if (missingIngredients.length > 0) {
+         var ingredientString = i18n.t('stonehearth:ui.game.show_workshop.missing_ingredients') + missingIngredients.join(', ');
          requirementsString = requirementsString + ingredientString;
       }
 
@@ -1867,7 +2049,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       if (!self.$()) {
          return;  // Menu already closed.
       }
-      App.tooltipHelper.createDynamicTooltip(self.$('[title]'));
+      App.guiHelper.createDynamicTooltip(self.$(), '[title]', ($el) => i18n.t($el.attr('title')));
 
       var recipe = this.currentRecipe ? this._getOrCalculateRecipeData(this.currentRecipe.recipe_key) : null;
       if (recipe) {
@@ -2410,29 +2592,29 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
    _workshopPausedChange: function() {
       var isPaused = !!(this.get('model.order_list.is_paused'));
-      var isMaintainPaused = !!(this.get('model.order_list.is_maintain_paused'));
+      var isSecondaryListPaused = !!(this.get('model.order_list.is_secondary_list_paused'));
 
       // We need to check this because if/when the root object changes, all children are
       // marked as changed--even if the values don't differ.
       var isPausedDiff = isPaused != this.isPaused;
-      var isMaintainPausedDiff = isMaintainPaused != this.isMaintainPaused;
-      if (!isPausedDiff && !isMaintainPausedDiff) {
+      var isSecondaryListPausedDiff = isSecondaryListPaused != this.isSecondaryListPaused;
+      if (!isPausedDiff && !isSecondaryListPausedDiff) {
          return;
       }
       this.isPaused = isPaused;
-      this.isMaintainPaused = isMaintainPaused;
+      this.isSecondaryListPaused = isSecondaryListPaused;
 
       this.set('model.workshopIsPaused', isPaused);
-      this.set('model.maintainIsPaused', isMaintainPaused);
+      this.set('model.secondaryListIsPaused', isSecondaryListPaused);
 
       if (isPausedDiff) {
          this._animateStatusSign(this.$("#statusSign"), isPaused);
       }
-      if (isMaintainPausedDiff) {
-         this._animateStatusSign(this.$("#maintainStatusSign"), isMaintainPaused);
+      if (isSecondaryListPausedDiff) {
+         this._animateStatusSign(this.$("#secondaryListStatusSign"), isSecondaryListPaused);
       }
       
-   }.observes('model.order_list.is_paused', 'model.order_list.is_maintain_paused'),
+   }.observes('model.order_list.is_paused', 'model.order_list.is_secondary_list_paused'),
 
    _animateStatusSign: function(sign, isPaused) {
       if (sign) {
@@ -2579,13 +2761,13 @@ App.StonehearthTeamCrafterView = App.View.extend({
       Ember.run.scheduleOnce('afterRender', self, '_updateOrdersInDetailedOrderList');
    }.observes('model.order_list.orders'),
 
-   _onMaintainOrdersUpdated: function () {
+   _onSecondaryOrdersUpdated: function () {
       var self = this;
       if (!self.get('isVisible')) return;
-      self._updatedOrders(self.$('#maintainOrderList'),
-            (self.get('model.order_list.maintain_orders') || []).concat(self.get('model.order_list.auto_craft_orders') || []));
-      Ember.run.scheduleOnce('afterRender', self, '_updateMaintainOrdersInDetailedOrderList');
-   }.observes('model.order_list.maintain_orders', 'model.order_list.auto_craft_orders'),
+      self._updatedOrders(self.$('#secondaryOrderList'),
+            (self.get('model.order_list.secondary_orders') || []).concat(self.get('model.order_list.auto_craft_orders') || []));
+      Ember.run.scheduleOnce('afterRender', self, '_updateSecondaryOrdersInDetailedOrderList');
+   }.observes('model.order_list.secondary_orders', 'model.order_list.auto_craft_orders'),
 
    _updatedOrders: function (orderList, orders) {
       var self = this;
@@ -2655,7 +2837,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
    orderTypeName: function () { return this.get('uri').replace(/\W/g, '') + '-orderType'; }.property('uri'),
    orderTypeMakeId: function () { return this.get('uri').replace(/\W/g, '') + '-make'; }.property('uri'),
    orderTypeMaintainId: function () { return this.get('uri').replace(/\W/g, '') + '-maintain'; }.property('uri'),
-   preferHighQualityId: function () { return this.get('uri').replace(/\W/g, '') + '-quality'; }.property('uri'),
    searchTitleCheckboxId: function () { return this.get('uri').replace(/\W/g, '') + '-search-title'; }.property('uri'),
    searchDescriptionCheckboxId: function () { return this.get('uri').replace(/\W/g, '') + '-search-description'; }.property('uri'),
    searchIngredientsCheckboxId: function () { return this.get('uri').replace(/\W/g, '') + '-search-ingredients'; }.property('uri')

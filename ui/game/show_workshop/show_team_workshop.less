@@ -70,14 +70,14 @@
    }
 
    // ACE:
-   #maintainOrderListBar {
+   #secondaryOrderListBar {
       position: absolute;
       z-index: -1;
       top: 0px;
       left: 1088px;
       height: 900px;
       width: 277px;
-      background-image: url('/stonehearth_ace/ui/game/show_workshop/images/maintain_orders_bar.png');
+      background-image: url('/stonehearth_ace/ui/game/show_workshop/images/secondary_orders_bar.png');
       //background-position: -1201px 0px;
    }
 
@@ -965,20 +965,36 @@
       left: 1209px;
    }
 
-   .inProgressOrder {
-      background: url(images/queue_active_bg_70.png);
-   }
-
    .normalOrder {
       background: url(images/queue_item_bg_70.png);
+
+      &.secondaryList {
+         background: url(/stonehearth_ace/ui/game/show_workshop/images/secondary_queue_item_bg_70.png);
+      }
+
+      &.inProgressOrder {
+         background: url(images/queue_active_bg_70.png);
+
+         &.secondaryList {
+            background: url(/stonehearth_ace/ui/game/show_workshop/images/secondary_queue_active_bg_70.png);
+         }
+      }
    }
 
    .maintainOrder {
       background: url(/stonehearth_ace/ui/game/show_workshop/images/queue_maintain_bg_70.png);
-   }
 
-   .inProgressMaintainOrder {
-      background: url(/stonehearth_ace/ui/game/show_workshop/images/queue_active_maintain_bg_70.png);
+      &.secondaryList {
+         background: url(/stonehearth_ace/ui/game/show_workshop/images/secondary_queue_maintain_bg_70.png);
+      }
+
+      &.inProgress {
+         background: url(/stonehearth_ace/ui/game/show_workshop/images/queue_active_maintain_bg_70.png);
+
+         &.secondaryList {
+            background: url(/stonehearth_ace/ui/game/show_workshop/images/secondary_queue_active_maintain_bg_70.png);
+         }
+      }
    }
 
    .autoCraftOrder {
@@ -1182,6 +1198,14 @@
          background-repeat: no-repeat;
          background-position-y: 10px;
 
+         &.maintainOrder {
+            background-image: url(/stonehearth_ace/ui/game/show_workshop/images/queueMaintainList.png);
+         }
+
+         &.autoCraftOrder {
+            background-image: url(/stonehearth_ace/ui/game/show_workshop/images/queueAutocraftList.png);
+         }
+
          img {
             width: 60px;
             height: auto;
@@ -1194,6 +1218,10 @@
          height: 90px;
          vertical-align: middle;
          margin-left: 5px;
+
+         .amountLabel {
+            margin-left: 5px;
+         }
       }
 
       .orderListRowName {
