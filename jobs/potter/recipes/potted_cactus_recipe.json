@@ -1,22 +1,22 @@
 {
-   "effort": 16,
+   "effort": 20,
    "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.potted_cactus_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.potter.recipes.potted_cactus_recipe.description)",
    "portrait": "/stonehearth_ace/entities/decoration/potted_cactus/potted_cactus.png",
    "workshop": "stonehearth:potter:kiln",
    "work_effect": "work_wait",
-   "level_requirement": 3,
-	"mixintypes": {
-		"ingredients": "override"
-	},
+   "level_requirement": 5,
+   "mixintypes": {
+      "ingredients": "override"
+   },
    "ingredients": [
       {
-         "uri": "stonehearth_ace:refined:unfired_clay",
+         "uri": "stonehearth_ace:refined:unfired_porcelain",
          "count": 1
       },
       {
-         "uri": "stonehearth:resources:herb:cactus_flower",
-         "count": 2
+         "uri": "stonehearth_ace:landmark:terrain:dirt_patch:small",
+         "count": 1
       }
    ]
 }

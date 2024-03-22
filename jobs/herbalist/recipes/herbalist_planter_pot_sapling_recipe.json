@@ -7,12 +7,16 @@
    "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_planter_pot_sapling_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/planters/planter_pot_sapling/planter_pot_sapling.png",
    "workshop": "stonehearth:herbalist:workbench",
-	"work_effect": "fiddle",
+   "work_effect": "fiddle",
    "level_requirement": 4,
    "ingredients": [
-		{
+      {
          "material": "clay resource",
-         "count": 5
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:landmark:terrain:dirt_patch:small",
+         "count": 2
       }
    ],
    "produces": [

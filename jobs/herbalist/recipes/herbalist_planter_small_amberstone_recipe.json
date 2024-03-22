@@ -7,11 +7,11 @@
    "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_planter_small_amberstone_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/planters/planter_small_amberstone/planter_small_amberstone.png",
    "workshop": "stonehearth:herbalist:workbench",
-	"work_effect": "fiddle",
+   "work_effect": "fiddle",
    "level_requirement": 5,
-	"manual_unlock": true,
+   "manual_unlock": true,
    "ingredients": [
-		{
+      {
          "material": "stone resource",
          "count": 2
       },
@@ -19,8 +19,8 @@
          "uri": "stonehearth:refined:gold_flakes",
          "count": 1
       },
-		{
-         "material": "clay resource",
+      {
+         "uri": "stonehearth_ace:landmark:terrain:dirt_patch:small",
          "count": 1
       }
    ],

@@ -1,14 +1,10 @@
 {
    "type": "entity",
    "mixins": [
-		"stonehearth_ace:mixins:herbalist_planter:window_box",
-		"/stonehearth/entities/decoration/window_box_brightbell/window_box_brightbell_ghost.json"
-	],
-	"components": {
-		"stonehearth_ace:herbalist_planter": {
-         "default_crop": "brightbell"
-      }
-	},
+      "stonehearth_ace:mixins:herbalist_planter:window_box",
+      "/stonehearth/entities/decoration/window_box_brightbell/window_box_brightbell_ghost.json"
+   ],
+   "components": {},
    "entity_data": {
       "stonehearth:net_worth": {
          "value_in_gold": 6

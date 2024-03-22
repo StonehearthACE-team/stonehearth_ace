@@ -1,23 +1,43 @@
-{  
-	"mixins": [
-		"stonehearth_ace:mixins:tree:sapling"
-	],
+{
+   "mixins": [
+      "stonehearth_ace:mixins:tree:sapling"
+   ],
    "components": {
       "destination": {
-         "mixintypes": {"region": "override"},
+         "mixintypes": {
+            "region": "override"
+         },
          "region": [
             {
-               "min": { "x": -0.5, "y": 0, "z": -0.5 },
-               "max": { "x": 1.5, "y": 1, "z": 1.5 }
+               "min": {
+                  "x": -0.5,
+                  "y": 0,
+                  "z": -0.5
+               },
+               "max": {
+                  "x": 1.5,
+                  "y": 1,
+                  "z": 1.5
+               }
             }
          ]
       },
       "region_collision_shape": {
-         "mixintypes": {"region": "override"},
+         "mixintypes": {
+            "region": "override"
+         },
          "region": [
             {
-               "min": { "x": -0.5, "y": 0, "z": -0.5 },
-               "max": { "x": 1.5, "y": 2.2, "z": 1.5 }
+               "min": {
+                  "x": -0.5,
+                  "y": 0,
+                  "z": -0.5
+               },
+               "max": {
+                  "x": 1.5,
+                  "y": 2.2,
+                  "z": 1.5
+               }
             }
          ]
       }
@@ -25,6 +45,12 @@
    "entity_data": {
       "mixintypes": {
          "stonehearth:stump_data": "remove"
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 8,
+         "shop_info": {
+            "buyable": false
+         }
       },
       "stonehearth:evolve_data": {
          "biomes": {

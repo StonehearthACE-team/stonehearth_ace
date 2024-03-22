@@ -4,14 +4,13 @@
    "icon": "file(sunny_sweltering.png)",
    "sky_settings": "stonehearth_ace:sky_settings:sunny:sweltering",
    "buff_application_interval": "25m",
+   "town_debuff": [
+      "stonehearth_ace:buffs:weather:hot"
+   ],
    "unsheltered_debuff": [
       {
          "debuff": "stonehearth_ace:buffs:weather:sweltering",
          "time": "day"
-      },
-      {
-         "debuff": "stonehearth_ace:buffs:weather:hot",
-         "time": "night"
       }
    ],
    "unsheltered_animal_debuff": [

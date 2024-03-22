@@ -3726,7 +3726,7 @@
             },
             "sunny_sweltering": {
                "display_name": "Heat Wave",
-               "description": "An unbearably hot wind blows upon the town this day and even the night will be hot and dry...<ul><li>☀️ Normal sunlight levels</li><li>🥀 Reduced humidity</li>♨️ Very calm or no wind at all</li><li>💥 Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun during the day and are too hot to work as effectively during the night</li><li>💥 Unsheltered pasture animals are hurt by the heat during the day but just affected by it during the night</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
+               "description": "An unbearably hot wind blows upon the town this day and even the night will be hot and dry...<ul><li>☀️ Normal sunlight levels</li><li>🥀 Reduced humidity</li>♨️ Very calm or no wind at all</li><li>💥 Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun during the day and are too hot to work as effectively during the night</li><li>🏠 Sheltered hearthlings can still feel too hot to work effectively</li><li>💥 Unsheltered pasture animals are hurt by the heat during the day but just affected by it during the night</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
             },
             "sunny_autumn": {
                "display_name": "Autumn Breeze",
@@ -3734,11 +3734,11 @@
             },
             "sunny_stagnant": {
                "display_name": "Stagnant Air",
-               "description": "Not a single cloud, not a single breeze... Just the stale, sweltering sun above.<ul><li>🔥 Excessive sunlight levels</li><li>🥀 Quite reduced humidity levels</li><li>♨️ Very calm or no wind at all</li><li>💥 Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun during the day</li><li>💥 Unsheltered pasture animals are hurt by the heat during the day</li></ul>"
+               "description": "Not a single cloud, not a single breeze... Just the stale, sweltering sun above.<ul><li>🔥 Excessive sunlight levels</li><li>🥀 Quite reduced humidity levels</li><li>♨️ Very calm or no wind at all</li><li>💥 Unsheltered hearthlings are sweltering and might get a heatstroke if too exposed to the sun during the day</li><li>🏠 Sheltered hearthlings can still feel too hot to work effectively during the day</li><li>💥 Unsheltered pasture animals are hurt by the heat during the day</li></ul>"
             }
          },
          "snow": {
-            "description": "Cold, frost, and the sun decided to hide. Can we just stay inside?<ul><li>⛅ Fairly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>🌬️ Wind is a fair current</li><li>👀 Vision radius is slightly reduced</li><li>❄️ Unsheltered hearthlings are too cold to work as effectively</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⛔ Some merchants might not arrive under this weather</li></ul>",
+            "description": "Cold, frost, and the sun decided to hide. Can we just stay inside?<ul><li>⛅ Fairly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>🌬️ Wind is a fair current</li><li>👀 Vision radius is slightly reduced</li><li>❄️ Unsheltered hearthlings are too cold to work as effectively</li><li>🏠 Sheltered hearthlings can still feel too chilly to work as effectively</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⛔ Some merchants might not arrive under this weather</li></ul>",
             "snow_sunny": {
                "description": "What a beautiful winter wonderland it is today!<ul><li>🌤️ Slightly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>🍃 Wind is a gentle breeze</li><li>👀 Vision radius is only slightly reduced</li><li>❄️ Unsheltered hearthlings are too chilly to work as effectively during the day and feel cold during the night</li><li>📌 Unsheltered pasture animals get hurt by the cold during the night</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
             },
@@ -3752,7 +3752,7 @@
             },
             "snow_drifts": {
                "display_name": "Snow Drifts",
-               "description": "The winds are blowing gusts of snow!<ul><li>☀️ Normal sunlight levels</li><li>🥀 Quite reduced humidity levels</li><li>💨 Wind is strong and high</li><li>📌 Unsheltered hearthlings are too cold to work as effectively during the day and will be hurt by freezing temperatures at night</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
+               "description": "The winds are blowing gusts of snow!<ul><li>☀️ Normal sunlight levels</li><li>🥀 Quite reduced humidity levels</li><li>💨 Wind is strong and high</li><li>📌 Unsheltered hearthlings are too cold to work as effectively during the day and will be hurt by freezing temperatures at night</li><li>🏠 Sheltered hearthlings can still feel too chilly to work as effectively druing the day and too cold during the night</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⛔ Some merchants might not arrive under this weather</li></ul>"
             }
          },
          "sandstorm": {
@@ -3799,7 +3799,7 @@
             },
             "cloudy_cold": {
                "display_name": "Cloudy & Cold",
-               "description": "The clouds are heavy and dark, the air is dry and cold.<ul><li>⛅ Fairly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>🌬️ Wind is a fair current</li><li>❄️ Unsheltered hearthlings are too cold to work as effectively</li><li>📌 Unsheltered pasture animals are hurt by the cold</li></ul>"
+               "description": "The clouds are heavy and dark, the air is dry and cold.<ul><li>⛅ Fairly reduced sunlight levels</li><li>💧 Regular humidity levels</li><li>🌬️ Wind is a fair current</li><li>❄️ Unsheltered hearthlings are too cold to work as effectively</li><li>🏠 Sheltered hearthlings can still feel too chilly to work as effectively</li><li>📌 Unsheltered pasture animals are hurt by the cold</li></ul>"
             },
             "distant_storm": {
                "display_name": "Distant Storm",
@@ -3807,7 +3807,7 @@
             }
          },
          "blizzard": {
-            "description": "Wind and snow! Lots of snow! Oh my!<ul><li>⛅ Extremely reduced sunlight levels</li><li>🥀 Quite reduced humidity</li><li>🌪️ Extremely windy and gusty</li><li>👀 Vision radius is greatly reduced</li><li>📌 Unsheltered hearthlings are hurt by the cold</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
+            "description": "Wind and snow! Lots of snow! Oh my!<ul><li>⛅ Extremely reduced sunlight levels</li><li>🥀 Quite reduced humidity</li><li>🌪️ Extremely windy and gusty</li><li>👀 Vision radius is greatly reduced</li><li>📌 Unsheltered hearthlings are hurt by the cold</li><li>🏠 Sheltered hearthlings can still feel too cold to work as effectively</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⛔ Merchants will not arrive under this weather</li></ul>"
          },
          "hailstorm": {
             "display_name": "Hailstorm",
@@ -3815,7 +3815,7 @@
          },
          "whiteout": {
             "display_name": "Whiteout",
-            "description": "There is a storm coming... And it's unlike anything we've ever seen.<ul><li>🌤️ Slightly reduced sunlight levels</li><li>🥀 Quite reduced humidity</li><li>🌪️ Extremely windy and gusty</li></li><li>❄️ Unsheltered hearthlings are too cold to work as effectively</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⚠️ During the whiteout, vision radius is greatly reduced and hearthlings caught in it will have severely reduced capabilities like weapon range and speed - and will start to get hurt after a while</li><li>⏰ The whiteout happens near the middle of the day and lasts until the night</li><li>⛔ Merchants will not arrive under this weather</li></ul>",
+            "description": "There is a storm coming... And it's unlike anything we've ever seen.<ul><li>🌤️ Slightly reduced sunlight levels</li><li>🥀 Quite reduced humidity</li><li>🌪️ Extremely windy and gusty</li></li><li>❄️ Unsheltered hearthlings are too cold to work as effectively</li><li>🏠 Sheltered hearthlings can still feel too chilly to work as effectively and too cold during the whiteout</li><li>📌 Unsheltered pasture animals are hurt by the cold</li><li>⚠️ During the whiteout, vision radius is greatly reduced and hearthlings caught in it will have severely reduced capabilities like weapon range and speed - and will start to get hurt after a while</li><li>⏰ The whiteout happens near the middle of the day and lasts until the night</li><li>⛔ Merchants will not arrive under this weather</li></ul>",
             "bulletin_name": "The whiteout has started! Everyone should go inside NOW! ❄️"
          },
          "under_siege": {
@@ -9227,12 +9227,12 @@
             },
             "refrigerator_small_recipe": {
                "recipe_name": "Small Refrigerator",
-               "description": "Preserves up to 16 items for a very long time, preventing them from spoiling.",
+               "description": "Preserves some items for a very long time, preventing them from spoiling.",
                "flavor": "Fancy!"
             },
             "refrigerator_recipe": {
                "recipe_name": "Refrigerator",
-               "description": "Preserves up to 48 items for a very long time, preventing them from spoiling.",
+               "description": "Preserves a lot of items for a very long time, preventing them from spoiling.",
                "flavor": "Nothing beats the taste of year-old bread"
             },
             "bronze_crossbow_recipe": {
@@ -9599,7 +9599,7 @@
             },
             "food_trough_clay_recipe": {
                "recipe_name": "Clay Manger",
-               "description": "A trough for a Shepherd to serve food for animals in a pasture.",
+               "description": "A trough for a Shepherd to place and serve food for animals in a pasture.",
                "flavor": "Shepherds will always try to keep troughs full"
             },
             "pet_food_bowl_clay_red_recipe": {
@@ -9619,17 +9619,17 @@
             },
             "tall_urn_recipe": {
                "recipe_name": "Tall Urn",
-               "description": "For compactly storing up to 64 items.",
+               "description": "For very compactly storing a lot of items.",
                "flavor": "It's not easy to make all the urns the exact same size... So we came up with this idea!"
             },
             "input_cask_clay_small_recipe": {
                "recipe_name": "Clay Small Supply Cask",
-               "description": "Priority storage for 32 items.",
+               "description": "Priority storage for a reasonable amount of stuff.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "input_cask_clay_recipe": {
                "recipe_name": "Clay Supply Cask",
-               "description": "Priority storage for 64 items.",
+               "description": "Priority storage for a lot of stuff.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "serving_keg_clay_recipe": {
@@ -9639,32 +9639,32 @@
             },
             "output_tun_clay_recipe": {
                "recipe_name": "Clay Production Tun",
-               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",
+               "description": "Temporary storage for stuff, tuns are able to hold different items as long as they're in the same category.",
                "flavor": "Used by crafters to store recently finished products"
             },
             "amphora_recipe": {
                "recipe_name": "Ceramic Amphora",
-               "description": "Stores up to 24 items of a certain kind.",
+               "description": "Stores a bunch of items of a certain kind.",
                "flavor": "Can hold a diverse range of fluids and dry goods"
             },
             "amphora_red_recipe": {
                "recipe_name": "Red Ceramic Amphora",
-               "description": "Stores up to 24 items of a certain kind.",
+               "description": "Stores a bunch of items of a certain kind.",
                "flavor": "Can hold a diverse range of fluids and dry goods"
             },
             "amphora_blue_recipe": {
                "recipe_name": "Blue Ceramic Amphora",
-               "description": "Stores up to 24 items of a certain kind.",
+               "description": "Stores a bunch of items of a certain kind.",
                "flavor": "Can hold a diverse range of fluids and dry goods"
             },
             "amphora_green_recipe": {
                "recipe_name": "Green Ceramic Amphora",
-               "description": "Stores up to 24 items of a certain kind.",
+               "description": "Stores a bunch of items of a certain kind.",
                "flavor": "Can hold a diverse range of fluids and dry goods"
             },
             "cold_storage_box_recipe": {
                "recipe_name": "Cold Storage Box",
-               "description": "Preserves up to 20 items from spoiling as fast as they do when left outside.",
+               "description": "Preserves some items from spoiling as fast as they do when left outside.",
                "flavor": "The chilly touch of Frostsnaps can keep things fresh for longer!"
             },
             "clay_water_well_recipe": {
@@ -9782,12 +9782,12 @@
                "flavor": "Unlocked by the 'Dom Vandon' questline"
             },
             "golden_clay_wall_planter_recipe": {
-               "recipe_name": "Window Planter with Oleanders",
-               "description": "A decorative planter to be placed under window frames. Comes with Oleanders but a different herb can be chosen and planted by the Herbalist."
+               "recipe_name": "Clay Window Planter",
+               "description": "A decorative clay planter to be placed under window frames. The herb is planted and tended by an Herbalist."
             },
             "potted_cactus_recipe": {
-               "recipe_name": "Window Planter with Cacti",
-               "description": "A decorative planter to be placed under window frames. Comes with Cacti but a different herb can be chosen and planted by the Herbalist."
+               "recipe_name": "Porcelain Window Planter",
+               "description": "A beautiful and decorative porcelain planter to be placed under window frames. The herb is planted and tended by an Herbalist."
             },
             "clay_bricks_recipe": {
                "flavor": "Mud bricks will dry and harden into reliable abodes"
@@ -9797,7 +9797,7 @@
             },
             "chest_recipe": {
                "recipe_name": "Clay Chest of Monkey",
-               "description": "Beautiful clay chest capable of storing 64 items.",
+               "description": "Beautiful clay chest capable of storing lots of items.",
                "flavor": "A place for tributea and offerings to Monkey and Her Mystery"
             },
             "fireplace_clay_small_recipe": {
@@ -10117,7 +10117,7 @@
             },
             "amberstone_tank_recipe": {
                "recipe_name": "Amberstone Large Jar",
-               "description": "Stores up to 24 items of a certain kind.",
+               "description": "Holds some items of a certain kind.",
                "flavor": "Can hold a diverse range of fluids and dry goods"
             },
             "stone_safety_standard_recipe": {
@@ -10170,7 +10170,7 @@
             },
             "bone_chest_recipe": {
                "recipe_name": "Bone Chest",
-               "description": "Creepily holds up to 64 items.",
+               "description": "Creepily holds items for your town... Very creepily.",
                "flavor": "Not a mimic. Promise."
             },
             "bone_bench_recipe": {
@@ -10314,7 +10314,7 @@
             },
             "food_trough_stone_recipe": {
                "recipe_name": "Stone Manger",
-               "description": "A trough for a Shepherd to serve food for animals in a pasture.",
+               "description": "A trough for a Shepherd to place and serve food for animals in a pasture.",
                "flavor": "Shepherds will always try to keep troughs full"
             },
             "pet_food_bowl_stone_recipe": {
@@ -10329,22 +10329,22 @@
             },
             "small_stone_coffer_recipe": {
                "recipe_name": "Small Stone Coffer",
-               "description": "For neatly storing up to 8 items.",
+               "description": "For neatly storing a little amount of things.",
                "flavor": ""
             },
             "large_stone_coffer_recipe": {
                "recipe_name": "Stone Coffer",
-               "description": "For neatly storing up to 32 items.",
+               "description": "For neatly storing some belongings.",
                "flavor": "Could be called a casket but that would certainly cause some confusion..."
             },
             "input_cask_stone_small_recipe": {
                "recipe_name": "Stone Small Supply Cask",
-               "description": "Priority storage for 32 items.",
+               "description": "Priority storage for a small amount of things.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "input_cask_stone_recipe": {
                "recipe_name": "Stone Supply Cask",
-               "description": "Priority storage for 64 items.",
+               "description": "Priority storage for a good amount of stuff.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "serving_keg_stone_recipe": {
@@ -10354,22 +10354,22 @@
             },
             "output_tun_stone_recipe": {
                "recipe_name": "Stone Production Tun",
-               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",
+               "description": "Temporary storage for some stuff, tuns are able to hold different items as long as they're in the same category.",
                "flavor": "Used by crafters to store recently finished products"
             },
             "tank_recipe": {
                "recipe_name": "Stone Tank",
-               "description": "Stores up to 24 items of a certain kind.",
+               "description": "Holds some items of a certain kind.",
                "flavor": "Can hold a diverse range of fluids and dry goods"
             },
             "tank_small_recipe": {
                "recipe_name": "Small Stone Tank",
-               "description": "Stores up to 6 items of a certain kind.",
+               "description": "Stores a small amount of items of a certain kind.",
                "flavor": "Can hold a diverse range of fluids and dry goods"
             },
             "cold_storage_cabinet_recipe": {
                "recipe_name": "Cold Storage Cabinet",
-               "description": "Preserves up to 32 items from spoiling as fast as they do when left outside.",
+               "description": "Preserves some items from spoiling as fast as they do when left outside.",
                "flavor": "The chilly touch of Frostsnaps can keep things fresh for longer!"
             },
             "stone_water_well_recipe": {
@@ -10466,13 +10466,13 @@
                "description": "Mark of the hunter, never seen or heard... Until it is too late."
             },
             "window_box_violet_recipe": {
-               "recipe_name": "Window Planter with Violets",
-               "description": "A decorative planter to be placed under window frames. Comes with Violets but a different herb can be chosen and planted by the Herbalist.",
+               "recipe_name": "Stone Window Planter",
+               "description": "A decorative stone planter to be placed under window frames. The herb is planted and tended by an Herbalist.",
                "flavor": "For when your window view is boring enough"
             },
             "window_box_snow_poppy_recipe": {
-               "recipe_name": "Window Planter with Snow Poppies",
-               "description": "A decorative planter to be placed under window frames. Comes with Snow Poppies but a different herb can be chosen and planted by the Herbalist.",
+               "recipe_name": "Siv's Carved Window Planter",
+               "description": "A finely made stone planter to be placed under window frames. The herb is planted and tended by an Herbalist.",
                "flavor": "A dark arctic morning is always made brighter with a poppy."
             },
             "stone_bench_recipe": {
@@ -10658,6 +10658,16 @@
             "statue_knight_male_recipe": {
                "recipe_name": "Knight Statue (Male)",
                "description": "A noble knight carved in stone."
+            },
+            "rock_patch_recipe": {
+               "recipe_name": "Chunk of Rock",
+               "description": "Create a 2x2x2 block of rock that can be placed down like terrain.",
+               "flavor": "For those about to rock, we salute you!"
+            },
+            "rock_patch_small_recipe": {
+               "recipe_name": "Tiny Chunk of Rock",
+               "description": "Create a small block of rock that can be placed down like terrain.",
+               "flavor": ""
             },
             "frostfeast": {
                "present_small_recipe": {
@@ -12336,7 +12346,7 @@
             },
             "food_trough_wood_recipe": {
                "recipe_name": "Wooden Manger",
-               "description": "A trough for a Shepherd to serve food for animals in a pasture.",
+               "description": "A trough for a Shepherd to place and serve food for animals in a pasture.",
                "flavor": "Shepherds will always try to keep troughs full"
             },
             "pet_food_bowl_wood_recipe": {
@@ -12346,12 +12356,12 @@
             },
             "input_cask_wood_recipe": {
                "recipe_name": "Wooden Supply Cask",
-               "description": "Priority storage for 64 items.",
+               "description": "Priority storage for a lot of things.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "input_cask_wood_small_recipe": {
                "recipe_name": "Wooden Small Supply Cask",
-               "description": "Priority storage for 32 items.",
+               "description": "Priority storage for some items.",
                "flavor": "Can only hold certain fluids and dry goods"
             },
             "serving_keg_wood_recipe": {
@@ -12361,17 +12371,17 @@
             },
             "output_tun_wood_recipe": {
                "recipe_name": "Wooden Production Tun",
-               "description": "Temporary storage for 32 items, tuns are able to hold different items as long as they're in the same category.",
+               "description": "Temporary storage for some items, tuns are able to hold different items as long as they're in the same category.",
                "flavor": "Used by crafters to store recently finished products"
             },
             "barrel_recipe": {
                "recipe_name": "Wooden Barrel",
-               "description": "Stores up to 24 items of a certain kind.",
+               "description": "Stores some stuff of a certain kind.",
                "flavor": "Can hold a diverse range of fluids and dry goods"
             },
             "barrel_small_recipe": {
                "recipe_name": "Small Wooden Barrel",
-               "description": "Stores up to 6 items of a certain kind.",
+               "description": "Stores a small amount of items of a certain kind.",
                "flavor": "Can hold a diverse range of fluids and dry goods"
             },
             "wooden_water_well_recipe": {
@@ -12491,12 +12501,12 @@
                "flavor": "A bow that demands skill of its wielder, but returns it in gales of arrows over their foes"
             },
             "window_box_brightbell_recipe": {
-               "recipe_name": "Window Planter with Brightbells",
-               "description": "A decorative planter to be placed under window frames. Comes with Brightbells but a different herb can be chosen and planted by the Herbalist."
+               "recipe_name": "Wooden Window Planter",
+               "description": "A simple decorative planter to be placed under window frames. The herb is planted and tended by an Herbalist or Grower."
             },
             "window_box_frostsnap_recipe": {
-               "recipe_name": "Window Planter with Frostsnaps",
-               "description": "A decorative planter to be placed under window frames. Comes with Frostsnaps but a different herb can be chosen and planted by the Herbalist."
+               "recipe_name": "Ornate Wooden Window Planter",
+               "description": "A beautiful and gilded decorative planter to be placed under window frames. The herb is planted and tended by an Herbalist or Grower."
             },
             "shepherds_crook_recipe": {
                "flavor": "Can you tell me another story about The Shepherd?"
@@ -12725,6 +12735,9 @@
             "clothing_armor_name": "Clothing & Accessories",
             "weapons_name": "Combat Equipment",
             "furniture_name": "Building Parts & Furniture",
+            "ornate_set_name": "Furniture & Decorations, Ornate Set",
+            "porcelain_set_name": "Furniture & Decorations, Porcelain Set",
+            "marble_set_name": "Furniture & Decorations, Marble Set",
             "amberstone_painting_branch_recipe": {
                "recipe_name": "Amberstone Painting (Flowering)"
             },
@@ -13215,12 +13228,12 @@
             "pasture_bed_small_recipe": {
                "recipe_name": "Small Pasture Bedding",
                "description": "Small pasture animals will go to these during the night or bad weather, place them under shelter.",
-               "flavor": "Must be placed inside a pasture, can be placed on walls. Small animals include ducks, poyos and rabbits"
+               "flavor": "Must be placed by a Shepherd and inside a pasture, can be placed on walls. Small animals include ducks, poyos and rabbits"
             },
             "pasture_bed_recipe": {
                "recipe_name": "Pasture Bedding",
                "description": "Large pasture animals will go to these during the night or bad weather, place them under shelter.",
-               "flavor": "Must be placed inside a pasture. Large animals include oinkers, sheep, ostriches and moo-moos"
+               "flavor": "Must be placed by a Shepherd and inside a pasture. Large animals include oinkers, sheep, ostriches and moo-moos"
             },
             "rabbit_feed_recipe": {
                "recipe_name": "Rabbit Feed (x3)",
@@ -16522,27 +16535,27 @@
       "herbalist_planters": {
          "window_box_brightbell": {
             "display_name": "Wooden Window Planter",
-            "description": "A decorative planter. Includes Brightbells but another herb can be chosen."
+            "description": "A decorative window planter."
          },
          "window_box_frostsnap": {
-            "display_name": "Wooden Window Planter",
-            "description": "A decorative planter. Includes Frostsnaps but another herb can be chosen."
+            "display_name": "Ornate Wooden Window Planter",
+            "description": "A very beautiful and gilded decorative window planter."
          },
          "window_box_stone_violet": {
             "display_name": "Stone Window Planter",
-            "description": "A decorative planter. Comes with Violets but another herb can be chosen."
+            "description": "A decorative window planter carved in stone."
          },
          "window_box_stone_snow_poppy": {
-            "display_name": "Carved Window Planter",
-            "description": "A decorative planter. Includes Snow Poppies but another herb can be chosen."
+            "display_name": "Siv's Carved Window Planter",
+            "description": "A very finely carved stone window planter."
          },
          "golden_clay_wall_planter": {
             "display_name": "Clay Window Planter",
-            "description": "A decorative planter. Includes Oleanders but another herb can be chosen."
+            "description": "A decorative window planter."
          },
          "potted_cactus": {
-            "display_name": "Clay Window Planter",
-            "description": "A decorative planter. Comes with Cacti but another herb can be chosen."
+            "display_name": "Porcelain Window Planter",
+            "description": "A delicate porcelain window planter."
          },
          "planter_large": {
             "display_name": "Large Herbalist Planter",
@@ -18225,11 +18238,11 @@
          },
          "pasture_bed_small": {
             "display_name": "Small Pasture Bedding",
-            "description": "Pasture animals will rest during the night or bad weather. Must be in a pasture."
+            "description": "Pasture animals will rest during the night or bad weather. Must be placed by a Shepherd."
          },
          "pasture_bed": {
             "display_name": "Pasture Bedding",
-            "description": "Pasture animals will rest during the night or bad weather. Must be in a pasture."
+            "description": "Pasture animals will rest during the night or bad weather. Must be placed by a Shepherd."
          },
          "banquet_table_highland_pine": {
             "display_name": "Highland Pine Banquet Table",
@@ -23971,6 +23984,46 @@
          }
       },
       "containers": {
+         "large_crate": {
+            "large_crate_ghost": {
+               "description": "It's a crate. That's pretty much it. Stores some items."
+            }
+         },
+         "large_urn": {
+            "large_urn_ghost": {
+               "description": "Safely stores some items, until someone barges in and breaks it..."
+            }
+         },
+         "leather_bound_chest": {
+            "leather_bound_chest_ghost": {
+               "description": "Neatly stores a lot of items. Extra reinforced hinges!"
+            }
+         },
+         "small_crate": {
+            "small_crate_ghost": {
+               "description": "It's a baby crate! It stores a little amount of items."
+            }
+         },
+         "stone_chest": {
+            "stone_chest_ghost": {
+               "description": "Safely stores a lot of items. A bit too heavy."
+            }
+         },
+         "small_urn": {
+            "small_urn_ghost": {
+               "description": "Stores a tiny amount of stuff. Occupies a tiny amount of space."
+            }
+         },
+         "ornate_leather_bound_chest": {
+            "ornate_leather_bound_chest_ghost": {
+               "description": "Stores a lot of items with a lot of style."
+            }
+         },
+         "chest_stone_wolf": {
+            "chest_stone_wolf_ghost": {
+               "description": "Stores a huge amount of items, as Siv gathers resources for the long winter."
+            }
+         },
          "input_bin_amberstone": {
             "display_name": "Amberstone Supply Basket"
          },
@@ -23986,7 +24039,8 @@
             "description": "Quest Storage containers will be automatically created and placed in this zone."
          },
          "vault": {
-            "display_name": "Vault"
+            "display_name": "Vault",
+            "description": "A massive amount of storage, be careful to not fall inside!"
          },
          "thatch_pile": {
             "display_name": "Large Dry Grass Bundle",
@@ -23999,19 +24053,19 @@
          },
          "mega_golden_gourd_pot": {
             "display_name": "Mega Golden Gourd Pot",
-            "description": "Made with the husk of a mighty fruit, stores up to 16 items."
+            "description": "Made with the husk of a mighty fruit, stores a small amount of items."
          },
          "food_trough_wood": {
             "display_name": "Wooden Manger",
-            "description": "Used by Shepherds to serve food for the animals in a pasture."
+            "description": "Placed and used by Shepherds to serve food for the animals in a pasture."
          },
          "food_trough_stone": {
             "display_name": "Stone Manger",
-            "description": "Used by Shepherds to serve food for the animals in a pasture."
+            "description": "Placed and used by Shepherds to serve food for the animals in a pasture."
          },
          "food_trough_clay": {
             "display_name": "Clay Manger",
-            "description": "Used by Shepherds to serve food for the animals in a pasture."
+            "description": "Placed and used by Shepherds to serve food for the animals in a pasture."
          },
          "pet_food_bowl_wood": {
             "display_name": "Wooden Kibble Bowl",
@@ -24051,7 +24105,7 @@
          },
          "bone_chest": {
             "display_name": "Bone Chest",
-            "description": "Creepily holds up to 64 items."
+            "description": "Creepily holds a bunch of items. Very creepily..."
          },
          "input_bin_bone": {
             "display_name": "Bone Supply Bin",
@@ -24071,103 +24125,103 @@
          },
          "input_cask_wood": {
             "display_name": "Wooden Supply Cask",
-            "description": "Priority storage for 64 items."
+            "description": "Priority storage for lots of itmes."
          },
          "input_cask_clay": {
             "display_name": "Clay Supply Cask",
-            "description": "Priority storage for 64 items."
+            "description": "Priority storage for lots of items."
          },
          "input_cask_stone": {
             "display_name": "Stone Supply Cask",
-            "description": "Priority storage for 64 items."
+            "description": "Priority storage for lots of items."
          },
          "input_cask_wood_small": {
             "display_name": "Wooden Small Supply Cask",
-            "description": "Priority storage for 32 items."
+            "description": "Priority storage for some items."
          },
          "input_cask_clay_small": {
             "display_name": "Clay Small Supply Cask",
-            "description": "Priority storage for 32 items."
+            "description": "Priority storage for some items."
          },
          "input_cask_stone_small": {
             "display_name": "Stone Small Supply Cask",
-            "description": "Priority storage for 32 items."
+            "description": "Priority storage for some items."
          },
          "barrel": {
             "display_name": "Wooden Barrel",
-            "description": "Stores up to 24 items of a certain kind."
+            "description": "Stores a good amount of items of a certain kind."
          },
          "barrel_small": {
             "display_name": "Small Wooden Barrel",
-            "description": "Stores up to 6 items of a certain kind."
+            "description": "Stores a small amount of items of a certain kind."
          },
          "amphora": {
             "display_name": "Ceramic Amphora",
-            "description": "Stores up to 24 items of a certain kind."
+            "description": "Stores a good amount of items of a certain kind."
          },
          "amphora_red": {
             "display_name": "Red Ceramic Amphora",
-            "description": "Stores up to 24 items of a certain kind."
+            "description": "Stores a good amount of items of a certain kind."
          },
          "amphora_blue": {
             "display_name": "Blue Ceramic Amphora",
-            "description": "Stores up to 24 items of a certain kind."
+            "description": "Stores a good amount of items of a certain kind."
          },
          "amphora_green": {
             "display_name": "Green Ceramic Amphora",
-            "description": "Stores up to 24 items of a certain kind."
+            "description": "Stores a good amount of items of a certain kind."
          },
          "tank": {
             "display_name": "Stone Tank",
-            "description": "Stores up to 24 items of a certain kind."
+            "description": "Stores a good amount of items of a certain kind."
          },
          "tank_small": {
             "display_name": "Small Stone Tank",
-            "description": "Stores up to 6 items of a certain kind."
+            "description": "Stores a small amount of items a certain kind."
          },
          "small_stone_coffer": {
-            "description": "Stores up to 8 items",
+            "description": "Storage for a small amount of items.",
             "display_name": "Small Stone Coffer"
          },
          "large_stone_coffer": {
-            "description": "Stores up to 32 items",
+            "description": "Storage for a bunch of items.",
             "display_name": "Stone Coffer"
          },
          "tall_urn": {
             "display_name": "Tall Urn",
-            "description": "Stores up to 64 items"
+            "description": "Safely stores a bunch of stuff!"
          },
          "output_tun_wood": {
             "display_name": "Wooden Production Tun",
-            "description": "Temporary storage for 32 items. Can hold different items from the same category."
+            "description": "Temporary storage for some stuff. Can hold different items from the same category."
          },
          "output_tun_stone": {
-            "description": "Temporary storage for 32 items. Can hold different items from the same category.",
+            "description": "Temporary storage for some stuff. Can hold different items from the same category.",
             "display_name": "Stone Production Tun"
          },
          "output_tun_clay": {
-            "description": "Temporary storage for 32 items. Can hold different items from the same category.",
+            "description": "Temporary storage for some stuff. Can hold different items from the same category.",
             "display_name": "Clay Production Tun"
          },
          "cold_storage_cabinet": {
             "display_name": "Cold Storage Cabinet",
-            "description": "Keeps up to 32 items from spoiling for a little longer than usual."
+            "description": "Keeps some items from spoiling for a little longer than usual."
          },
          "cold_storage_box": {
             "display_name": "Cold Storage Box",
-            "description": "Keeps up to 20 items from spoiling for a little longer than usual."
+            "description": "Keeps a good amount of items from spoiling for a little longer than usual."
          },
          "refrigerator": {
             "display_name": "Refrigerator",
-            "description": "Keeps up to 48 items fresh for a really long time."
+            "description": "Keeps a lot of decayable items fresh for a really long time."
          },
          "refrigerator_small": {
             "display_name": "Small Refrigerator",
-            "description": "Keeps up to 16 items fresh for a really long time."
+            "description": "Keeps some decayable items fresh for a really long time."
          },
          "mining_chest": {
             "display_name": "Mining Chest",
-            "description": "Automatically gathers up to 128 items mined nearby in an adjacent mining zone."
+            "description": "Automatically gathers up a lot of items mined nearby in an adjacent mining zone."
          },
          "embark_wagon": {
             "display_name": "Wooden Wagon",
@@ -24232,7 +24286,7 @@
             "display_name": "Far Eastern Caravan Quest Storage"
          },
          "amberstone_tank": {
-            "description": "Stores up to 24 items of a certain kind.",
+            "description": "Holds some items of a certain kind.",
             "display_name": "Amberstone Large Jar"
          },
          "input_table_ground_amberstone": {
@@ -25657,6 +25711,14 @@
          "summon_stone_thoto_monument": {
             "display_name": "Shrine of Thorin Stone",
             "description": "Summons a shrine in memory of a legendary dog."
+         },
+         "terrain_rock_patch": {
+            "description": "Place it down to add a 2x2x2 chunk of rock.",
+            "display_name": "Chunk of Rock"
+         },
+         "terrain_rock_patch_small": {
+            "display_name": "Tiny Chunk of Rock",
+            "description": "Place it down to add a block of rock."
          }
       },
       "humans": {
