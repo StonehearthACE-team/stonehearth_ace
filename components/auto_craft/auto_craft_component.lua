@@ -72,10 +72,10 @@ function AutoCraftComponent:post_activate()
          local leases = self:_lease_all_ingredients()
          progress:add_ingredient_leases(leases)
 
-         -- don't actually start crafting unless the maintain order list is active
+         -- don't actually start crafting unless the secondary order list is active
          local crafter_component = self._entity:get_component('stonehearth:crafter')
          local curr_order = crafter_component and crafter_component:get_current_order()
-         if curr_order and not curr_order:get_order_list():is_maintain_paused() then
+         if curr_order and not curr_order:get_order_list():is_secondary_list_paused() then
             progress:crafting_started()
             self:_create_crafting_finish_time_changed_listener(progress)
          end
@@ -268,14 +268,14 @@ function AutoCraftComponent:_on_auto_craft_orders_changed(order_list)
       -- we were crafting a recipe that was destroyed, cancel crafting
       self:_cancel_crafting()
    elseif progress then
-      -- we're currently crafting, but maybe the order list has had its maintain orders paused
+      -- we're currently crafting, but maybe the order list has had its secondary orders paused
       -- if so, we need to pause crafting by disabling progress and destroying the timer
       -- otherwise, if it was paused and now it's not, we need to resume crafting
-      if progress:is_active() and order_list:is_maintain_paused() then
+      if progress:is_active() and order_list:is_secondary_list_paused() then
          self:_destroy_crafting_finished_timer()
          self:_destroy_crafting_finish_time_changed_listener()
          progress:crafting_stopped()
-      elseif not progress:is_active() and not order_list:is_maintain_paused() then
+      elseif not progress:is_active() and not order_list:is_secondary_list_paused() then
          progress:crafting_started()
          self:_create_crafting_finish_time_changed_listener(progress)
       end
@@ -430,8 +430,8 @@ function AutoCraftComponent:_try_crafting()
       -- check each enabled recipe in order to see if one is available
       local possible_orders = {}
       for job, entry in pairs(self._craft_order_listeners) do
-         -- make sure this order list doesn't have maintain orders paused
-         if self._enabled_orders[job] and not entry.order_list:is_maintain_paused() then
+         -- make sure this order list doesn't have secondary orders paused
+         if self._enabled_orders[job] and not entry.order_list:is_secondary_list_paused() then
             for _, order in ipairs(order_list:get_all_auto_craft_orders()) do
                local recipe = order:get_recipe()
                if self._enabled_orders[job][recipe.recipe_key] then

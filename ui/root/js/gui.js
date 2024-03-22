@@ -476,7 +476,7 @@ App.guiHelper = {
 
       if (options.recipe_key) {
          // if it's a recipe, add information for interacting with the crafting ui
-         detail += `<div class="verticalSpacer" style="opacity: 0.75">${i18n.t('stonehearth_ace:ui.game.show_workshop.recipe_list_queueing')}</div>`;
+         detail += `<div class="verticalSpacer faded">${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_recipe_list_queueing')}</div>`;
       }
 
       var tooltip = App.tooltipHelper.createTooltip(title, detail);

@@ -12,7 +12,7 @@ end
 
 function AceCrafterJobsNode:start()
    radiant.events.trigger_async(self, 'stonehearth:build2:plan:node_complete')
-   
+
    local player_id = radiant.entities.get_player_id(self._building)
    local should_queue = stonehearth.client_state:get_client_gameplay_setting(player_id, 'stonehearth', 'building_auto_queue_crafters', true)
    if not should_queue then

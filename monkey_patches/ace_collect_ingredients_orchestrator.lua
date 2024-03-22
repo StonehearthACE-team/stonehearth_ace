@@ -1,3 +1,5 @@
+local item_quality_lib = require 'stonehearth_ace.lib.item_quality.item_quality_lib'
+
 local AceCollectIngredients = class()
 local IngredientList = require 'stonehearth.components.workshop.ingredient_list'
 
@@ -10,18 +12,9 @@ function AceCollectIngredients:run(town, args)
    self._crafter = args.crafter
    self._craft_order_list = args.order_list
    self._order = args.order
-   self._prefer_high_quality = self._order:get_high_quality_preference()
-   if self._prefer_high_quality == nil then
-      -- if an explicit quality preference wasn't set, use the default gameplay setting for it
-      -- but only if the crafter has the quality crafting perk; otherwise prefer lower quality
-      local job = self._crafter:get_component('stonehearth:job')
-      if town and job and job:curr_job_has_perk('crafter_recipe_unlock_3') then
-         self._prefer_high_quality = stonehearth.client_state
-            :get_client_gameplay_setting(town:get_player_id(), 'stonehearth_ace', 'default_craft_order_prefer_high_quality', true)
-      else
-         self._prefer_high_quality = false
-      end
-   end
+   local job_comp = self._crafter:get_component('stonehearth:job')
+   local job_level = job_comp:get_current_job_level()
+   self._max_quality = item_quality_lib.get_max_crafting_quality(self._crafter:get_player_id(), job_level)
 
    if self._craft_order_list and self._order then
       self._order_list_listener = radiant.events.listen(self._craft_order_list, 'stonehearth:order_list_changed', self, self._on_order_list_changed)
@@ -44,75 +37,59 @@ function AceCollectIngredients:run(town, args)
 
       -- local max_distance_for_rating_sq = stonehearth.constants.inventory.MAX_SIGNIFICANT_PATH_LENGTH * stonehearth.constants.inventory.MAX_SIGNIFICANT_PATH_LENGTH
       -- local close_distance_for_rating_sq = stonehearth.constants.inventory.MAX_INSIGNIFICANT_PATH_LENGTH * stonehearth.constants.inventory.MAX_INSIGNIFICANT_PATH_LENGTH
-      local rating_fn
-      if self._prefer_high_quality then
-         rating_fn = function(item, entity, entity_location, storage_location)
-            local rating = radiant.entities.get_item_quality(item) / 3
-            --return rating
+      local max_distance = stonehearth.constants.inventory.MAX_INSIGNIFICANT_PATH_LENGTH * 5
+      local max_distance_sq = max_distance * max_distance
+      local rating_fn = function(item, entity, entity_location, storage_location)
+         local quality = radiant.entities.get_item_quality(item)
 
-				if radiant.entities.is_material(item, 'preferred_ingredient') then
-               return rating
-            end
-				
-				if radiant.entities.is_material(item, 'undesirable_ingredient') then
-               return rating * 0.1
-            end
-
-            return rating * 0.5
-				
-            -- local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
-            -- local p2 = storage_location or radiant.entities.get_world_grid_location(item)
-
-            -- if not p1 or not p2 then
-            --    log:debug('HQ distance sq no location! %s (%s) -> %s (%s)', entity, p1 or 'NIL', item, p2 or 'NIL')
-            --    return rating
-            -- else
-            --    local distance_sq = p1:distance_to_squared(p2) - close_distance_for_rating_sq
-            --    local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
-
-            --    --log:debug('HQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
-
-            --    return rating * 0.8 + distance_score * 0.2
-            -- end
+         -- if the quality is greater than we can effectively use, rate that item lower so we don't waste it
+         if quality > self._max_quality then
+            return 0
          end
-      else
-         rating_fn = function(item, entity, entity_location, storage_location)
-            local rating = 1 / radiant.entities.get_item_quality(item)
-            --return rating
 
-				if radiant.entities.is_material(item, 'preferred_ingredient') then
-               return rating
+         -- if it's higher quality but further than some arbitrary distance, rate it lower so we don't waste time
+         -- storage location might not be representative if it's a universal storage entity
+         if quality > 1 then
+            local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
+            local p2 = storage_location or radiant.entities.get_world_grid_location(item)
+            if p1 and p2 and p1:distance_to_squared(p2) > max_distance_sq then
+               return 0
             end
-				
-				if radiant.entities.is_material(item, 'undesirable_ingredient') then
-               return rating * 0.1
-            end
-
-            return rating * 0.5
-
-            -- local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
-            -- local p2 = storage_location or radiant.entities.get_world_grid_location(item)
-
-            -- if not p1 or not p2 then
-            --    log:debug('LQ distance sq no location! %s (%s) -> %s (%s)', entity, p1 or 'NIL', item, p2 or 'NIL')
-            --    return rating
-            -- else
-            --    local distance_sq = p1:distance_to_squared(p2) - close_distance_for_rating_sq
-            --    local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
-
-            --    --log:debug('LQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
-               
-            --    return rating * 0.8 + distance_score * 0.2
-            -- end
          end
+
+         local rating = quality / self._max_quality
+
+         if radiant.entities.is_material(item, 'preferred_ingredient') then
+            return rating
+         end
+
+         if radiant.entities.is_material(item, 'undesirable_ingredient') then
+            return rating * 0.1
+         end
+
+         return rating * 0.5
+
+         -- local p1 = entity_location or radiant.entities.get_world_grid_location(entity)
+         -- local p2 = storage_location or radiant.entities.get_world_grid_location(item)
+
+         -- if not p1 or not p2 then
+         --    log:debug('HQ distance sq no location! %s (%s) -> %s (%s)', entity, p1 or 'NIL', item, p2 or 'NIL')
+         --    return rating
+         -- else
+         --    local distance_sq = p1:distance_to_squared(p2) - close_distance_for_rating_sq
+         --    local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
+
+         --    --log:debug('HQ distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
+
+         --    return rating * 0.8 + distance_score * 0.2
+         -- end
       end
 
       local distance_rating_fn = function(item, entity, entity_location, storage_location)
-
 			if radiant.entities.is_material(item, 'preferred_ingredient') then
             return 1
          end
-			
+
 			if radiant.entities.is_material(item, 'undesirable_ingredient') then
             return 0
          end
@@ -130,7 +107,7 @@ function AceCollectIngredients:run(town, args)
          --    local distance_score = (1 - math.min(1, distance_sq / max_distance_for_rating_sq))
 
          --    --log:debug('distance sq %s and score %s for %s to %s', distance_sq, distance_score, entity, item)
-            
+
          --    return distance_score
          -- end
       end

@@ -145,6 +145,7 @@ function AcePlayerJobsController:_get_recipe_info_from_products(products, amount
    local choices = {}
    local crafter_info = stonehearth_ace.crafter_info:get_crafter_info(self._sv.player_id)
    local inventory = stonehearth.inventory:get_inventory(self._sv.player_id)
+   local invalid_choices = 0
 
    for product, consider in pairs(products) do
       if consider then
@@ -157,17 +158,23 @@ function AcePlayerJobsController:_get_recipe_info_from_products(products, amount
                allowed = false
             end
             if allowed and associated_orders then
+               local num_duplicates = 0
                for _, associated_order in ipairs(associated_orders) do
                   local recipe = associated_order.order:get_recipe()
                   if recipe_info.recipe.job_alias == recipe.job_alias and recipe_info.recipe.recipe_key == recipe.recipe_key then
-                     allowed = false
-                     break
+                     num_duplicates = num_duplicates + 1
                   end
+               end
+               if num_duplicates >= stonehearth.constants.crafting.MAX_DUPLICATE_ASSOCIATED_RECIPES then
+                  allowed = false
+                  log:error('cannot queue recipe %s (%s) because it has already been queued %s times in this order',
+                        recipe_info.recipe.recipe_key, recipe_info.recipe.job_alias, num_duplicates)
                end
             end
 
             -- verify that the recipe is accessible (if it requires unlocking, it is unlocked)
             if not allowed then
+               invalid_choices = invalid_choices + 1
                log:debug('queuing %s recipe %s would create a loop!', recipe_info.recipe.job_alias, recipe_info.recipe.recipe_key)
             elseif recipe_info.job_info:is_recipe_unlocked(recipe_info.recipe.recipe_key) then
                -- if we only want to craft one, we don't want to divide the cost by the number produced
@@ -183,7 +190,11 @@ function AcePlayerJobsController:_get_recipe_info_from_products(products, amount
       end
    end
 
-   return choices
+   if #choices == 0 and invalid_choices > 0 then
+      log:error('skipped %s invalid choices and failed to queue a recipe to produce %s', invalid_choices, radiant.util.table_tostring(products))
+   end
+
+   return choices, invalid_choices
 end
 
 function AcePlayerJobsController:_can_craft_recipe(inventory, recipe_info)
