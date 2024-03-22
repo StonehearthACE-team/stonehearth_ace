@@ -13,9 +13,17 @@
       "stonehearth:thoughts:weather:whiteout_negative",
       "stonehearth:thoughts:weather:whiteout_positive"
    ],
+   "town_debuff": [
+      "stonehearth_ace:buffs:weather:cold_breath",
+      "stonehearth_ace:buffs:weather:chilly",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold",
+         "time": 10,
+         "end_time": 20
+      }
+   ],
    "unsheltered_debuff": [
       "stonehearth_ace:buffs:weather:cold",
-      "stonehearth_ace:buffs:weather:cold_breath",
       {
          "debuff": "stonehearth_ace:buffs:weather:whiteout",
          "time": 10,

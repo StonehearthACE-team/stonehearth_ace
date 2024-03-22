@@ -1,14 +1,16 @@
 {
    "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_description.description)",
-	"roles": ["field_work"],
+   "roles": [
+      "field_work"
+   ],
    "equipment": {
       "mask": [
-			"stonehearth_ace:armor:mask_placeholder"
-		]
+         "stonehearth_ace:armor:mask_placeholder"
+      ]
    },
    "mixintypes": {
       "parent_job": "remove",
-	   "parent_level_requirement": "remove"
+      "parent_level_requirement": "remove"
    },
    "parent_jobs": [
       {
@@ -22,11 +24,11 @@
          "one_of": true
       }
    ],
-	"talisman_uris": {
+   "talisman_uris": {
       "stonehearth:shepherd:talisman": true,
       "stonehearth_ace:shepherd:talisman:clay": true
    },
-	"crafter": {
+   "crafter": {
       "work_effect": "fiddle",
       "recipe_list": "/stonehearth_ace/jobs/shepherd/recipes/recipes.json"
    },
@@ -34,7 +36,7 @@
       "portrait": "file(/jobs/shepherd/shepherd_workbench/shepherd_workbench.png)",
       "workbench_type": "stonehearth_ace:shepherd:workbench",
       "skin_class": "shepherd",
-		"job_name": "shepherd",
+      "job_name": "shepherd",
       "open_sound": "stonehearth:sounds:ui:weaver_menu:menu_open",
       "close_sound": "stonehearth:sounds:ui:carpenter_menu:menu_closed"
    },
@@ -43,7 +45,7 @@
       "harvest_animal_resources": 25,
       "harvest_animal": 50,
       "feed_pasture": 18,
-		"craft_level_0": 4,
+      "craft_level_0": 4,
       "craft_level_1": 6,
       "craft_level_2": 8,
       "craft_level_3": 10,
@@ -51,8 +53,10 @@
       "craft_level_5": 14,
       "craft_level_6": 16
    },
-	"task_groups": [
-		"stonehearth:task_groups:crafting",
+   "task_groups": [
+      "stonehearth_ace:task_groups:build_herding",
+      "stonehearth_ace:task_groups:place_herding",
+      "stonehearth:task_groups:crafting",
       "stonehearth_ace:task_groups:cheesemaking",
       "stonehearth_ace:task_groups:transform",
       "stonehearth:task_groups:harvest"
@@ -62,9 +66,9 @@
    },
    "level_data": {
       "1": {
-	     "mixintypes": {
-			"perks": "override"
-		 },	
+         "mixintypes": {
+            "perks": "override"
+         },
          "perks": [
             {
                "type": "apply_buff",
@@ -76,7 +80,7 @@
                "level": 1,
                "demote_fn": "remove_buff"
             },
-			{
+            {
                "name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_description.level_1_data.small_animals_name)",
                "id": "small_animals_unlock",
                "icon": "file(images/small_animals.png)",
@@ -86,11 +90,11 @@
          ]
       },
       "2": {
-	     "mixintypes": {
-			"perks": "override"
-		 },	
-         "perks": [           
-			{
+         "mixintypes": {
+            "perks": "override"
+         },
+         "perks": [
+            {
                "type": "apply_buff",
                "name": "i18n(stonehearth:jobs.shepherd.shepherd_description.level_1_data.perk_000_name)",
                "id": "shepherd_speed_up_1",
@@ -103,9 +107,9 @@
          ]
       },
       "3": {
-	     "mixintypes": {
-			"perks": "override"
-		 },	
+         "mixintypes": {
+            "perks": "override"
+         },
          "perks": [
             {
                "name": "i18n(stonehearth:jobs.shepherd.shepherd_description.level_4_data.perk_000_name)",
@@ -114,7 +118,7 @@
                "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_description.level_4_data.perk_000_description)",
                "level": 3
             },
-			{
+            {
                "name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_description.level_3_data.big_animals_name)",
                "id": "big_animals_unlock",
                "icon": "file(images/big_animals.png)",
@@ -124,11 +128,11 @@
          ]
       },
       "4": {
-	     "mixintypes": {
-			"perks": "override"
-		 },	
+         "mixintypes": {
+            "perks": "override"
+         },
          "perks": [
-			{
+            {
                "name": "i18n(stonehearth:jobs.shepherd.shepherd_description.level_3_data.perk_000_name)",
                "id": "shepherd_extra_bonuses",
                "icon": "/stonehearth/jobs/shepherd/images/level_3.png",
@@ -137,27 +141,27 @@
             }
          ]
       },
-	  "5": {
-	     "perks": [
-		    {
+      "5": {
+         "perks": [
+            {
                "name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_description.level_5_data.exotic_animals_name)",
                "id": "exotic_animals_unlock",
                "icon": "file(images/exotic_animals.png)",
                "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_description.level_5_data.exotic_animals_description)",
                "level": 5
             }
-		 ]
-	  },
+         ]
+      },
       "6": {
-	     "perks": [
-		    {
+         "perks": [
+            {
                "name": "i18n(stonehearth_ace:jobs.shepherd.shepherd_description.level_6_data.level_6_name)",
                "id": "improved_buffs",
                "icon": "file(images/level_6.png)",
                "description": "i18n(stonehearth_ace:jobs.shepherd.shepherd_description.level_6_data.level_6_description)",
                "level": 6
             }
-		 ]
+         ]
       }
    }
 }

@@ -11,7 +11,9 @@ function BuffTown.use(consumable, consumable_data, player_id, target_entity)
    local population = stonehearth.population:get_population(player_id)
    for _, buff in ipairs(consumable_data.buff) do
       for _, citizen in population:get_citizens():each() do
-         radiant.entities.add_buff(citizen, buff)
+         if not radiant.entities.has_buff(citizen, 'stonehearth:buffs:hidden:suspended') then
+            radiant.entities.add_buff(citizen, buff)
+         end
       end
    end
    return true      

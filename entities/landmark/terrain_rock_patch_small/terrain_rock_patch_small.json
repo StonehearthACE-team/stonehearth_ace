@@ -1,0 +1,25 @@
+{
+   "type": "entity",
+   "mixins": "file(terrain_rock_patch_small_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(terrain_rock_patch_small_iconic.json)",
+         "ghost_form": "file(terrain_rock_patch_small_ghost.json)",
+         "placeable_on_ground": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 2,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:placement": {
+         "effect": "work",
+         "tag": "simple_terrain"
+      }
+   }
+}

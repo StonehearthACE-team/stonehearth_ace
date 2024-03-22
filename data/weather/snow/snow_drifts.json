@@ -4,8 +4,18 @@
    "icon": "file(snow_drifts.png)",
    "sky_settings": "stonehearth_ace:sky_settings:snow:drifts",
    "buff_application_interval": "30m",
-   "unsheltered_debuff": [
+   "town_debuff": [
       "stonehearth_ace:buffs:weather:cold_breath",
+      {
+         "debuff": "stonehearth_ace:buffs:weather:chilly",
+         "time": "day"
+      },
+      {
+         "debuff": "stonehearth_ace:buffs:weather:cold",
+         "time": "night"
+      }
+   ],
+   "unsheltered_debuff": [
       {
          "debuff": "stonehearth_ace:buffs:weather:cold",
          "time": "day"

@@ -1,0 +1,22 @@
+{
+   "type": "recipe",
+   "effort": 15,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.rock_patch_small_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.rock_patch_small_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.rock_patch_small_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/landmark/terrain_rock_patch_small/terrain_rock_patch_small.png",
+   "workshop": "stonehearth:mason:workbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:landmark:terrain:rock_patch:small"
+      }
+   ]
+}

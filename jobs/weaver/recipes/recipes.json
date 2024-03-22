@@ -135,12 +135,6 @@
             "double_curtain_door": {
                "recipe": "file(double_curtain_door_recipe.json)"
             },
-            "ornate_curtain_door": {
-               "recipe": "file(ornate_curtain_door_recipe.json)"
-            },
-            "ornate_double_curtain_door": {
-               "recipe": "file(ornate_double_curtain_door_recipe.json)"
-            },
             "amberstone_bed_herbalist": {
                "recipe": "file(amberstone_bed_herbalist_recipe.json)"
             },
@@ -165,30 +159,6 @@
             },
             "curtains_wide": {
                "recipe": "file(curtains_wide_recipe.json)"
-            },
-            "ornate_curtains": {
-               "recipe": "file(ornate_curtains_recipe.json)"
-            },
-            "ornate_curtains_wide": {
-               "recipe": "file(ornate_curtains_wide_recipe.json)"
-            },
-            "marble_curtains": {
-               "recipe": "file(marble_curtains_recipe.json)"
-            },
-            "marble_curtains_wide": {
-               "recipe": "file(marble_curtains_wide_recipe.json)"
-            },
-            "ornate_banner_wall": {
-               "recipe": "file(ornate_banner_wall_recipe.json)"
-            },
-            "ornate_throw_rug": {
-               "recipe": "file(ornate_throw_rug_recipe.json)"
-            },
-            "porcelain_curtains": {
-               "recipe": "file(porcelain_curtains_recipe.json)"
-            },
-            "porcelain_curtains_small": {
-               "recipe": "file(porcelain_curtains_small_recipe.json)"
             },
             "banner_wall_big_stag": {
                "recipe": "/northern_alliance/jobs/weaver/recipes/banner_wall_big_stag_recipe.json"
@@ -243,6 +213,54 @@
             },
             "rug_gilded_sage": {
                "recipe": "/rayyas_children/jobs/weaver/recipes/rug_gilded_sage_recipe.json"
+            }
+         }
+      },
+      "ornate_set": {
+         "ordinal": 86,
+         "name": "i18n(stonehearth_ace:jobs.weaver.recipes.ornate_set_name)",
+         "recipes": {
+            "ornate_banner_wall": {
+               "recipe": "file(ornate_banner_wall_recipe.json)"
+            },
+            "ornate_throw_rug": {
+               "recipe": "file(ornate_throw_rug_recipe.json)"
+            },
+            "ornate_curtains": {
+               "recipe": "file(ornate_curtains_recipe.json)"
+            },
+            "ornate_curtains_wide": {
+               "recipe": "file(ornate_curtains_wide_recipe.json)"
+            },
+            "ornate_curtain_door": {
+               "recipe": "file(ornate_curtain_door_recipe.json)"
+            },
+            "ornate_double_curtain_door": {
+               "recipe": "file(ornate_double_curtain_door_recipe.json)"
+            }
+         }
+      },
+      "porcelain_set": {
+         "ordinal": 87,
+         "name": "i18n(stonehearth_ace:jobs.weaver.recipes.porcelain_set_name)",
+         "recipes": {
+            "porcelain_curtains": {
+               "recipe": "file(porcelain_curtains_recipe.json)"
+            },
+            "porcelain_curtains_small": {
+               "recipe": "file(porcelain_curtains_small_recipe.json)"
+            }
+         }
+      },
+      "marble_set": {
+         "ordinal": 88,
+         "name": "i18n(stonehearth_ace:jobs.weaver.recipes.marble_set_name)",
+         "recipes": {
+            "marble_curtains": {
+               "recipe": "file(marble_curtains_recipe.json)"
+            },
+            "marble_curtains_wide": {
+               "recipe": "file(marble_curtains_wide_recipe.json)"
             }
          }
       },

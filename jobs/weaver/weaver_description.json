@@ -6,13 +6,13 @@
    "talisman_uris": {
       "stonehearth:weaver:talisman": true
    },
-	"equipment": {
+   "equipment": {
       "helmet": "file(weaver_outfit/weaver_outfit_hat)",
       "mask": [
-			"stonehearth_ace:armor:mask_placeholder"
-		]
+         "stonehearth_ace:armor:mask_placeholder"
+      ]
    },
-	"task_groups": [
+   "task_groups": [
       "stonehearth:task_groups:common_tasks",
       "stonehearth:task_groups:restock",
       "stonehearth:task_groups:placement",
@@ -24,7 +24,7 @@
    ],
    "crafter": {
       "repair_effect": "work"
-    },
+   },
    "xp_rewards": {
       "craft_level_0": 12,
       "craft_level_1": 13,
@@ -35,10 +35,15 @@
       "craft_level_6": 24
    },
    "proficiency_category_stats": {
-      "crafting_materials": "refiner"
+      "crafting_materials": "refiner",
+      "furniture": "basic_building_parts",
+      "decorations": "basic_furniture",
+      "ornate_set": "fancy_furniture",
+      "porcelain_set": "fancy_furniture",
+      "marble_set": "fancy_furniture"
    },
    "level_data": {
-	  "2": {
+      "2": {
          "perks": [
             {
                "name": "i18n(stonehearth_ace:jobs.weaver.weaver_description.level_2_data.gear_crafting_name)",
@@ -49,7 +54,7 @@
             }
          ]
       },
-	  "3": {
+      "3": {
          "perks": [
             {
                "name": "i18n(stonehearth_ace:jobs.weaver.weaver_description.level_3_data.extended_catalog_name)",
@@ -71,7 +76,7 @@
             }
          ]
       },
-	  "6": {
+      "6": {
          "perks": [
             {
                "name": "i18n(stonehearth_ace:jobs.weaver.weaver_description.level_6_data.mastery_name)",
@@ -81,6 +86,6 @@
                "level": 6
             }
          ]
-      }	  
+      }
    }
 }

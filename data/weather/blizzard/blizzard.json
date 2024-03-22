@@ -1,26 +1,29 @@
 {
    "description": "i18n(stonehearth_ace:data.weather.blizzard.description)",
-	"mixintypes": {
-		"unsheltered_resistance_buff": "remove",
-		"unsheltered_debuff": "override",
-		"unsheltered_animal_debuff": "override",
-		"plant_growth_time_multiplier": "remove"
-	},
+   "mixintypes": {
+      "unsheltered_resistance_buff": "remove",
+      "unsheltered_debuff": "override",
+      "unsheltered_animal_debuff": "override",
+      "plant_growth_time_multiplier": "remove"
+   },
+   "town_debuff": [
+      "stonehearth_ace:buffs:weather:cold",
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
    "unsheltered_debuff": [
-		"stonehearth_ace:buffs:weather:freezing",
-		"stonehearth_ace:buffs:weather:cold_breath",
+      "stonehearth_ace:buffs:weather:freezing",
       "stonehearth_ace:buffs:weather:cover_face"
-	],
+   ],
    "unsheltered_animal_debuff": [
-		"stonehearth_ace:buffs:weather:freezing",
-		"stonehearth_ace:buffs:weather:cold_breath"
-	],
+      "stonehearth_ace:buffs:weather:freezing",
+      "stonehearth_ace:buffs:weather:cold_breath"
+   ],
    "unsheltered_npc_debuff": [
       "stonehearth_ace:buffs:weather:freezing:npc",
       "stonehearth_ace:buffs:weather:cold_breath"
    ],
    "sunlight": 0.4,
-	"humidity": -0.5,
+   "humidity": -0.5,
    "frozen": true,
    "is_bad_weather": true,
    "cold_weather": true,

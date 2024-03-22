@@ -1,9 +1,9 @@
 {
-   "components": {
-	   "mixintypes": {
+	"components": {
+		"mixintypes": {
 			"mob": "override"
 		},
-      "mob": {
+		"mob": {
 			"model_origin": {
 				"x": 0.5,
 				"y": 0,
@@ -16,10 +16,11 @@
 			},
 			"allow_vertical_adjacent": true
 		}
-   },
-   "entity_data": {
-      "stonehearth:catalog": {
-         "display_name": "i18n(stonehearth_ace:entities.containers.vault.display_name)"
-      }
-   }
+	},
+	"entity_data": {
+		"stonehearth:catalog": {
+			"display_name": "i18n(stonehearth_ace:entities.containers.vault.display_name)",
+			"description": "i18n(stonehearth_ace:entities.containers.vault.description)"
+		}
+	}
 }

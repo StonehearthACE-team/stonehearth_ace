@@ -86,6 +86,7 @@ function AceWeatherState:_load_ace_values()
    self._sv.bad_weather = json.is_bad_weather or false
    self._sv.wind_level = json.wind_level or 'low'
 	self._sv.unsheltered_npc_debuff = json.unsheltered_npc_debuff or nil
+   self._sv.town_debuff = json.town_debuff or nil
    self._sv.music_sound_key = json.music_sound_key or nil
    self._sv.buff_application_interval = json.buff_application_interval or '20m'
 
@@ -168,6 +169,14 @@ function AceWeatherState:_apply_buffs()
          end
       end
    end
+
+   -- Town debuff (always gets added to Citizens regardless of shelter status)
+   try_apply_buffs(self._sv.town_debuff,
+      function(debuff)
+         self:_for_each_player_character(function(citizen)
+            radiant.entities.add_buff(citizen, debuff)
+         end)
+      end)
 
    -- Citizen debuff
    try_apply_buffs(self._sv.unsheltered_debuff,

@@ -2,22 +2,22 @@
    "effort": 12,
    "recipe_name": "i18n(stonehearth_ace:jobs.potter.recipes.golden_clay_wall_planter_recipe.recipe_name)",
    "description": "i18n(stonehearth_ace:jobs.potter.recipes.golden_clay_wall_planter_recipe.description)",
-	"flavor": "",
+   "flavor": "",
    "portrait": "/stonehearth_ace/entities/decoration/golden_clay_wall_planter/golden_clay_wall_planter.png",
    "workshop": "stonehearth:potter:kiln",
    "work_effect": "work_wait",
    "level_requirement": 2,
-	"mixintypes": {
-		"ingredients": "override"
-	},
+   "mixintypes": {
+      "ingredients": "override"
+   },
    "ingredients": [
       {
          "uri": "stonehearth_ace:refined:unfired_clay",
          "count": 1
       },
       {
-         "uri": "stonehearth_ace:resources:herb:oleander",
-         "count": 2
+         "uri": "stonehearth_ace:landmark:terrain:dirt_patch:small",
+         "count": 1
       }
    ]
 }

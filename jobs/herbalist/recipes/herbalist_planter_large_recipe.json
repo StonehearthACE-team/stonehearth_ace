@@ -7,15 +7,15 @@
    "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.herbalist_planter_large_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/planters/planter_large/planter_large.png",
    "workshop": "stonehearth:herbalist:workbench",
-	"work_effect": "fiddle",
+   "work_effect": "fiddle",
    "level_requirement": 2,
    "ingredients": [
-		{
+      {
          "material": "wood resource",
          "count": 2
       },
-		{
-         "material": "clay resource",
+      {
+         "uri": "stonehearth_ace:landmark:terrain:dirt_patch:small",
          "count": 1
       }
    ],
