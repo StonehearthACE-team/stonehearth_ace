@@ -1,0 +1,72 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:brewer_wine_cask",
+      "file(brewer_wine_cask_must_lingonberry_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "ghost_form": "file(brewer_wine_cask_must_lingonberry_ghost.json)",
+         "iconic_form": "file(brewer_wine_cask_must_lingonberry_iconic.json)",
+         "placeable_on_ground": true,
+         "hide_undeploy_ui": true
+      },
+      "stonehearth:evolve": {},
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:wine_cask_bubbles"
+         ]
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "status_key": "stonehearth_ace:ai.actions.status_text.emptying",
+         "transform_uri": "stonehearth_ace:brewer:wine_cask:empty",
+         "command": "stonehearth_ace:commands:transform:empty_container",
+         "request_action": "stonehearth_ace:transform",
+         "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+         "transforming_worker_effect": "fiddle",
+         "worker_required_job": {
+            "stonehearth_ace:jobs:brewer": true,
+            "stonehearth:jobs:worker": true
+         },
+         "kill_entity": true,
+         "additional_items": {
+            "entries": {
+               "recovered": {
+                  "num_rolls": {
+                     "min": 1,
+                     "max": 1
+                  },
+                  "items": {
+                     "recovered": {
+                        "uri": "stonehearth_ace:drink:must_lingonberry"
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth:evolve_data": {
+         "next_stage": "stonehearth_ace:brewer:wine_cask:wine_lingonberry",
+         "evolve_effect": "stonehearth:effects:item_created",
+         "evolve_time": "3d+21h",
+         "auto_harvest": true
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 23,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
+      }
+   }
+}

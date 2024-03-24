@@ -1,0 +1,65 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(wine_lingonberry_serving.qb)"
+                  ]
+               }
+            ]
+         },
+         "pewter": {
+            "models": [
+               "file(wine_lingonberry_serving_2.qb)"
+            ]
+         },
+         "bronze": {
+            "models": [
+               "file(wine_lingonberry_serving_3.qb)"
+            ]
+         },
+         "silver": {
+            "models": [
+               "file(wine_lingonberry_serving_4.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 75
+         },
+         "default": {
+            "satisfaction": 62
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time",
+            "stonehearth_ace:buffs:consumption:serenity_minor",
+            "stonehearth_ace:buffs:consumption:mellow"
+         ],
+         "quality": 4,
+         "effect_loops": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.wine_lingonberry.wine_lingonberry_serving.display_name)",
+         "description": "",
+         "material_tags": [
+            "drink",
+            "wine_lingonberry_serving",
+            "alcoholic",
+            "night_time"
+         ],
+         "subject_override": "stonehearth_ace:drink:wine_lingonberry"
+      }
+   }
+}
