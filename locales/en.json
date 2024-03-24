@@ -5925,6 +5925,10 @@
                "display_name": "Produce Berry Wine",
                "description": "Order the Brewer to fill this fermenting vessel with berry must! This Wine Cask will continue producing Berry Wine unless a new command is given."
             },
+            "wine_cask_fill_must_lingonberry": {
+               "display_name": "Produce Lingonberry Wine",
+               "description": "Order the Brewer to fill this fermenting vessel with lingonberry must! This Wine Cask will continue producing Lingonberry Wine unless a new command is given."
+            },
             "wine_cask_fill_must_apple": {
                "display_name": "Produce Cider",
                "description": "Order the Brewer to fill this fermenting vessel with apple must! This Wine Cask will continue producing Cider unless a new command is given."
@@ -13783,6 +13787,11 @@
                "description": "Crushed berries with skins and juice. Within a Wine Cask it can be turned into berry wine!",
                "flavor": ""
             },
+            "na_must_lingonberry_recipe": {
+               "recipe_name": "Bucket of Lingonberry Must",
+               "description": "Crushed lingonberries with skins and juice. Within a Wine Cask it can be turned into a northern specialty, lingonberry wine!",
+               "flavor": "A winter favorite within the halls of The Library"
+            },
             "must_cherry_recipe": {
                "recipe_name": "Bucket of Cherry Must",
                "description": "A fragrant mash of cherry juice and skins. Within a Wine Cask it can be turned into cherry wine!",
@@ -14021,6 +14030,11 @@
             "wine_berry_serving_pitcher_recipe": {
                "recipe_name": "Serving Pitcher of Berry Wine",
                "description": "Provides 14 goblets of berry wine. It needs to be placed down before being used.",
+               "flavor": "Pitchers prevent waste, thus dispensing more servings"
+            },
+            "na_wine_lingonberry_serving_pitcher_recipe": {
+               "recipe_name": "Serving Pitcher of Lingonberry Wine",
+               "description": "Provides 14 goblets of lingonberry wine. It needs to be placed down before being used.",
                "flavor": "Pitchers prevent waste, thus dispensing more servings"
             },
             "wine_cherry_serving_pitcher_recipe": {
@@ -14303,6 +14317,10 @@
             "display_name": "Berry Must Cask",
             "description": "The must is fermenting and the berry wine should be ready in a few days..."
          },
+         "brewer_wine_cask_must_lingonberry": {
+            "display_name": "Lingonberry Must Cask",
+            "description": "The must is fermenting and the lingonberry wine should be ready in a few days..."
+         },
          "brewer_wine_cask_must_apple": {
             "display_name": "Apple Must Cask",
             "description": "The must is fermenting and the cider should be ready in some days..."
@@ -14333,6 +14351,10 @@
          },
          "brewer_wine_cask_wine_berry": {
             "display_name": "Berry Wine Cask",
+            "description": "The wine is finally ready! It can now be racked into jugs!"
+         },
+         "brewer_wine_cask_wine_lingonberry": {
+            "display_name": "Lingonberry Wine Cask",
             "description": "The wine is finally ready! It can now be racked into jugs!"
          },
          "brewer_wine_cask_wine_cherry": {
@@ -24843,6 +24865,10 @@
             "display_name": "Bucket of Berry Must",
             "description": "Crushed berries, juice and solids. A Brewer needs it to fill a wine cask!"
          },
+         "must_lingonberry": {
+            "display_name": "Bucket of Lingonberry Must",
+            "description": "A mush of lingonberries, juice and husk. A Brewer needs it to fill a wine cask!"
+         },
          "wort_beer": {
             "display_name": "Bucket of Beer Wort",
             "description": "A mash of malted barley and spices. The Brewer needs it to make beer."
@@ -25017,6 +25043,21 @@
             },
             "wine_berry_serving": {
                "display_name": "Goblet of Berry Wine"
+            },
+            "serving_pitcher_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "serving_pitcher": {
+               "display_name": "Serving Pitcher of Berry Wine"
+            }
+         },
+         "wine_lingonberry": {
+            "wine_lingonberry": {
+               "display_name": "Lingonberry Wine",
+               "description": "A northern favorite, sweet and sour. Makes hearthlings happy but also tipsy!"
+            },
+            "wine_lingonberry_serving": {
+               "display_name": "Goblet of Lingonberry Wine"
             },
             "serving_pitcher_iconic": {
                "description": "Place it somewhere so hearthlings can serve themselves!"

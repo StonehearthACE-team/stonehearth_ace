@@ -56,6 +56,19 @@
                },
                "apply_ingredient_quality": true
             },
+            "wine_lingonberry": {
+               "transform_uri": "stonehearth_ace:brewer:wine_cask:must_lingonberry",
+               "command": "stonehearth_ace:commands:transform:wine_cask_fill:must_lingonberry",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth_ace:effects:transform_brewer_overlay_effect",
+               "transform_ingredient_uri": "stonehearth_ace:drink:must_lingonberry",
+               "transform_ingredient_auto_craft": true,
+               "auto_request": true,
+               "worker_required_job": {
+                  "stonehearth_ace:jobs:brewer": true
+               },
+               "apply_ingredient_quality": true
+            },
             "wine_apple": {
                "transform_uri": "stonehearth_ace:brewer:wine_cask:must_apple",
                "command": "stonehearth_ace:commands:transform:wine_cask_fill:must_apple",

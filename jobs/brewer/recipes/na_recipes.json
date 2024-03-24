@@ -16,8 +16,15 @@
       },
       "ingredients": {
          "recipes": {
-            "gruit" : {
-               "recipe" : "file(na_gruit_recipe.json)"
+            "gruit": {
+               "recipe": "file(na_gruit_recipe.json)"
+            }
+         }
+      },
+      "brewing": {
+         "recipes": {
+            "must_lingonberry": {
+               "recipe": "file(na_must_lingonberry_recipe.json)"
             }
          }
       },
@@ -48,6 +55,9 @@
          "recipes": {
             "spirit_northern_serving_keg": {
                "recipe": "file(spirit_northern_serving_keg_recipe_2.json)"
+            },
+            "wine_lingonberry_serving_pitcher": {
+               "recipe": "file(na_wine_lingonberry_serving_pitcher_recipe.json)"
             }
          }
       }

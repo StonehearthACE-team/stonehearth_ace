@@ -1,0 +1,15 @@
+{
+   "type": "command",
+   "name": "wine_cask_fill_must_lingonberry",
+   "group": "stonehearth_ace:transform",
+   "display_name": "i18n(stonehearth_ace:data.commands.transform.wine_cask_fill_must_lingonberry.display_name)",
+   "description": "i18n(stonehearth_ace:data.commands.transform.wine_cask_fill_must_lingonberry.description)",
+   "default_enabled": true,
+   "ordinal": 80,
+   "icon": "file(wine_cask_fill_must_lingonberry.png)",
+   "action": "call",
+   "function": "stonehearth_ace:transform_command",
+   "args": [
+      "wine_lingonberry"
+   ]
+}
