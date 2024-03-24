@@ -378,6 +378,8 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       self.$('#windowSearch .searchInput').val(text);
       self.$('#decorationSearch .searchInput').val(text);
       self.$('#furnitureSearch .searchInput').val(text);
+      self.$('#utilityeSearch .searchInput').val(text);
+      self.$('#storageSearch .searchInput').val(text);
    },
 
    willDestroyElement: function() {
