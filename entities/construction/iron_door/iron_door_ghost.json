@@ -1,15 +1,15 @@
 {
-  "components": {
+	"components": {
 		"mixintypes": {
 			"model_variants": "override"
 		},
 		"model_variants": {
-         "default": {
-            "models": [
-               "file(iron_door.qb)"
-            ]
-         }
-      },
+			"default": {
+				"models": [
+					"file(iron_door.qb)"
+				]
+			}
+		},
 		"mob": {
 			"model_origin": {
 				"x": 0,
@@ -23,9 +23,10 @@
 			}
 		}
 	},
-   "entity_data": {
-      "stonehearth:catalog": {
-         "icon": "file(iron_door.png)"
-      }
-   }
+	"entity_data": {
+		"stonehearth:catalog": {
+			"description": "i18n(stonehearth_ace:entities.construction.iron_door.iron_door_ghost.description)",
+			"icon": "file(iron_door.png)"
+		}
+	}
 }

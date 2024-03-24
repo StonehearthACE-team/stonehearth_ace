@@ -3,7 +3,17 @@
       "stonehearth:catalog": {
          "category": "mercantile",
          "display_name": "i18n(stonehearth_ace:entities.containers.market_shelf_tall_ground.display_name)",
-         "description": "i18n(stonehearth_ace:entities.containers.market_shelf_tall_ground.description)"
+         "description": "i18n(stonehearth_ace:entities.containers.market_shelf_tall_ground.description)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "clay",
+            "containers",
+            "crafted",
+            "furniture",
+            "stockpile_furniture"
+         ]
       }
    }
 }

@@ -110,11 +110,32 @@
       },
       "construction": {
          "categories": {
+            "portal": {
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/portal.png"
+            },
+            "furniture": {
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/furniture.png"
+            },
             "market_stalls": {
                "ordinal": 6,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_market_stalls)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/market_stalls.png",
                "filter": "stockpile_market_stalls"
+            },
+            "construction_fireplaces": {
+               "ordinal": 7,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fireplaces)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/fireplaces.png",
+               "filter": "stockpile_construction fireplace"
+            },
+            "construction_mobility": {
+               "ordinal": 8,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_mobility)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/mobility.png",
+               "filter": "stockpile_construction mobility"
+            },
+            "geomancer": {
+               "ordinal": 10
             }
          }
       },
