@@ -2755,7 +2755,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       var buttons = orderList.find('.scrollButtons');
       if (buttons) {
          var ordersList = orders[0];
-         if (ordersList && ordersList.scrollHeight > orders.height()) {
+         if (ordersList && ordersList.scrollHeight > orders.innerHeight()) {
             self._scrollOrderList(orderList, 0);
          } else {
             buttons.find('.orderListUpBtn').hide();
