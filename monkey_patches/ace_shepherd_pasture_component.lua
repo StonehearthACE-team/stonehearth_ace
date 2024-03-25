@@ -54,7 +54,7 @@ function AceShepherdPastureComponent:activate()
       self._sv.zone_color = json.zone_color
       self.__saved_variables:mark_changed()
    end
-   
+
    if not self._sv._queued_slaughters then
       self._sv.harvest_animals_renewable = true
       self._sv.harvest_grass = false
@@ -66,7 +66,7 @@ function AceShepherdPastureComponent:activate()
 
    self._pasture_items = {}
    self._troughs = {}
-   
+
    self._weather_check_alarm = stonehearth.calendar:set_alarm(WEATHER_CHECK_TIME, function()
       self:_recalculate_duration()
    end)
@@ -74,7 +74,7 @@ function AceShepherdPastureComponent:activate()
    self._animal_sleep_alarm = stonehearth.calendar:set_alarm(stonehearth.constants.sleep.BEDTIME_START_HOUR, function()
       self:_make_animals_sleepy()
    end)
-   
+
    self._grass_harvest_timer = stonehearth.calendar:set_interval('pasture grass harvest', GRASS_HARVEST_TIME, function()
       if self._sv.harvest_grass then
          self:_try_harvesting_grass()
@@ -152,7 +152,7 @@ function AceShepherdPastureComponent:post_creation_setup()
 	--local grass = self:_find_grass_spawn_points()
 	--local num_to_spawn = #grass / 200
    --self:_spawn_grass(num_to_spawn, grass)
-   
+
    self._sv.harvest_animals_renewable = true
    self._sv.harvest_grass = false
    self._sv.maintain_animals = self:get_max_animals()
@@ -213,7 +213,7 @@ function AceShepherdPastureComponent:_claim_animals_in_pasture()
 	local cube = Cube3(world_loc, world_loc + Point3(size.x, 1, size.z))
 	local region = Region3(cube)
    local animals = radiant.terrain.get_entities_in_region(region, filter_fn)
-   
+
    self:convert_and_add_animals(animals)
 end
 
@@ -262,7 +262,7 @@ function AceShepherdPastureComponent:convert_and_add_animals(animals)
       self._sv.num_critters = self._sv.num_critters + 1
       self:_listen_for_renewables(animal)
       self:_listen_for_hungry_critter(animal)
-      
+
       --self:_create_harvest_task(animal)
    end
 
@@ -314,17 +314,15 @@ end
 
 function AceShepherdPastureComponent:_consider_maintain_animals()
    local num_queued = radiant.size(self._sv._queued_slaughters)
-   local num_adults = self:_get_adult_count()
-   local num_to_slaughter = num_adults - (self._sv.maintain_animals + num_queued)
-   
+   local num_animals = self:get_num_animals()
+   local num_to_slaughter = num_animals - (self._sv.maintain_animals + num_queued)
+
    log:debug('_consider_maintain_animals: %s queued, %s to slaughter', num_queued, num_to_slaughter)
    if num_to_slaughter > 0 then
       -- just process through the animals with the normal iterator and try to harvest them
-      -- first skip over named animals and renewably-harvestable animals
+      -- first skip over renewably-harvestable animals; NEVER auto-slaughter named animals
       num_to_slaughter = self:_try_slaughter(num_to_slaughter, true, true)
       num_to_slaughter = self:_try_slaughter(num_to_slaughter, true, false)
-      num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, true)
-      num_to_slaughter = self:_try_slaughter(num_to_slaughter, false, false)
    elseif num_to_slaughter < 0 then
       -- we've queued up too many! probably user increased the maintain level after slaughter requests went out
       for id, _ in pairs(self._sv._queued_slaughters) do
@@ -367,7 +365,7 @@ function AceShepherdPastureComponent:_request_slaughter_animal(animal, not_if_na
    if not animal:is_valid() then
       return false
    end
-   
+
    if not_if_named then
       if radiant.entities.get_custom_name(animal) ~= '' then
          return false
@@ -380,7 +378,7 @@ function AceShepherdPastureComponent:_request_slaughter_animal(animal, not_if_na
          return false
       end
    end
-	
+
    local resource_component = animal:get_component('stonehearth:resource_node')
    if resource_component and resource_component:is_harvestable() then
       -- but don't request it on animals that are currently following a shepherd
@@ -513,7 +511,7 @@ end
 -- AceShepherdPastureComponent._ace_old__create_pasture_tasks = ShepherdPastureComponent._create_pasture_tasks
 -- function AceShepherdPastureComponent:_create_pasture_tasks()
 --    self:_ace_old__create_pasture_tasks()
-   
+
 --    local town = stonehearth.town:get_town(self._entity)
 
 --    local feed_trough_task = town:create_task_for_group(
@@ -605,7 +603,7 @@ function AceShepherdPastureComponent:_spawn_grass(count, spawn_locations)
 	if #spawn_locations < 1 then
 		return
    end
-   
+
    local existing_grass = self:_find_all_grass()
    local grass_count = radiant.size(existing_grass)
    local max_grass = 0.25 * math.sqrt(#spawn_locations)
@@ -613,7 +611,7 @@ function AceShepherdPastureComponent:_spawn_grass(count, spawn_locations)
    if count < 1 then
       return
    end
-	
+
 	local grass_uri = self:_get_spawn_grass_uri()
 
 	local rng = _radiant.math.get_default_rng()
@@ -630,12 +628,12 @@ function AceShepherdPastureComponent:_spawn_grass(count, spawn_locations)
 				radiant.terrain.place_entity(grass_entity, location, { force_iconic = false, facing = random_facing })
             break
          end
-         
+
          if #spawn_locations < 1 then
             break
          end
       end
-      
+
       if #spawn_locations < 1 then
          break
       end
@@ -706,7 +704,7 @@ end
 
 function AceShepherdPastureComponent:get_fed_troughs()
    local troughs = {}
-   
+
    for _, trough in pairs(self._troughs) do
       local trough_comp = trough and trough:is_valid() and trough:get_component('stonehearth_ace:pasture_item')
       if trough_comp and not trough_comp:is_empty() then
