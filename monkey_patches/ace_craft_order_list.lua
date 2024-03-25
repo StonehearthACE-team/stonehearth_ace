@@ -657,42 +657,60 @@ function AceCraftOrderList:get_next_order(crafter)
    --log:debug('craft_order_list: There are %s orders', #self._sv.orders)
    local count = 0
    --log:debug('trying to feed order to %s', crafter)
-   local order_lists = {not self:is_paused() and self._sv.orders or nil, not self:is_secondary_list_paused() and self._sv.secondary_orders or nil}
-   for _, order_list in ipairs(order_lists) do
-      for i, order in ipairs(order_list) do
-         count = count + 1
-         --log:debug('craft_order_list: evaluating order with recipe %s', order:get_recipe().recipe_name)
-         local order_id = order:get_id()
-         local craftable = self._craftable_orders[order_id]
-         if craftable ~= false then
-            if (order:has_current_crafter(crafter) or order:conditions_fulfilled()) and
-                  order:should_execute_order(crafter) then
-               --log:debug('given order %d back to crafter %s', i, crafter)
-
-               if craftable == nil then
-                  craftable = order:has_ingredients()
-                  self._craftable_orders[order_id] = craftable
-               end
-               if craftable and not self._stuck_orders[order_id] then
-                  return order
-               else
-                  local crafter_comp = crafter:get_component('stonehearth:crafter')
-                  if crafter_comp then
-                     crafter_comp:unreserve_fuel()
-                  end
-               end
-            end
-         end
-         -- This is a hot path. Commenting out the debug logs for now. -yshan
-         --log:debug('craft_order_list: We are not going to continue this order of recipe %s', order:get_recipe().recipe_name)
-         --log:debug('craft_order_list: Current crafter should be %s and crafter id is %s', order:get_current_crafter_id(), crafter:get_id())
-         --log:debug('craft_order_list: Crafting status is %s', order:get_crafting_status())
+   if not self:is_paused() then
+      local order, num = self:_get_next_order(crafter, self._sv.orders)
+      if order then
+         return order
+      else
+         count = count + num
+      end
+   end
+   if not self:is_secondary_list_paused() then
+      local order, num = self:_get_next_order(crafter, self._sv.secondary_orders)
+      if order then
+         return order
+      else
+         count = count + num
       end
    end
 
    if count > 0 then
       self:_create_stuck_timer()
    end
+end
+
+function AceCraftOrderList:_get_next_order(crafter, order_list)
+   local count = 0
+   for i, order in ipairs(order_list) do
+      count = count + 1
+      --log:debug('craft_order_list: evaluating order with recipe %s', order:get_recipe().recipe_name)
+      local order_id = order:get_id()
+      local craftable = self._craftable_orders[order_id]
+      if craftable ~= false then
+         if (order:has_current_crafter(crafter) or order:conditions_fulfilled()) and
+               order:should_execute_order(crafter) then
+            --log:debug('given order %d back to crafter %s', i, crafter)
+
+            if craftable == nil then
+               craftable = order:has_ingredients()
+               self._craftable_orders[order_id] = craftable
+            end
+            if craftable and not self._stuck_orders[order_id] then
+               return order
+            else
+               local crafter_comp = crafter:get_component('stonehearth:crafter')
+               if crafter_comp then
+                  crafter_comp:unreserve_fuel()
+               end
+            end
+         end
+      end
+      -- This is a hot path. Commenting out the debug logs for now. -yshan
+      --log:debug('craft_order_list: We are not going to continue this order of recipe %s', order:get_recipe().recipe_name)
+      --log:debug('craft_order_list: Current crafter should be %s and crafter id is %s', order:get_current_crafter_id(), crafter:get_id())
+      --log:debug('craft_order_list: Crafting status is %s', order:get_crafting_status())
+   end
+   return nil, count
 end
 
 -- UPDATE: for now, instead of trying to get the next available order, the auto_craft component pulls them all
