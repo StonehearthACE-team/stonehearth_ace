@@ -1,676 +1,14 @@
 {
    "type": "index",
+   "mixins": "stonehearth_ace:data:constants:farming",
    "constants": {
-      "climates": {
-         "temperate_staple": {
-            "plant_water_affinity": "IRRELEVANT",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "temperate_easy": {
-            "plant_water_affinity": "SIMPLE",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "temperate_medium": {
-            "plant_water_affinity": "MEDIUM",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "temperate_complex": {
-            "plant_water_affinity": "HIGH",
-            "plant_light_affinity": "HIGH"
-         },
-         "temperate_tree_easy": {
-            "plant_water_affinity": "IRRELEVANT",
-            "plant_light_affinity": "HIGH"
-         },
-         "temperate_tree_complex": {
-            "plant_water_affinity": "BASIC",
-            "plant_light_affinity": "HIGH"
-         },
-         "desert_staple": {
-            "plant_water_affinity": "IRRELEVANT",
-            "plant_light_affinity": "HIGH"
-         },
-         "desert_easy": {
-            "plant_water_affinity": "VERY_LOW",
-            "plant_light_affinity": "VERY_HIGH"
-         },
-         "desert_medium": {
-            "plant_water_affinity": "LOW",
-            "plant_light_affinity": "VERY_HIGH"
-         },
-         "desert_complex": {
-            "plant_water_affinity": "MEDIUM",
-            "plant_light_affinity": "EXTREME"
-         },
-			"desert_tree_easy": {
-            "plant_water_affinity": "IRRELEVANT",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "desert_tree_complex": {
-            "plant_water_affinity": "IRRELEVANT",
-            "plant_light_affinity": "VERY_HIGH"
-         },
-         "arctic_staple": {
-            "plant_water_affinity": "IRRELEVANT",
-            "plant_light_affinity": "VERY_LOW"
-         },
-         "arctic_easy": {
-            "plant_water_affinity": "LOW",
-            "plant_light_affinity": "LOW"
-         },
-         "arctic_medium": {
-            "plant_water_affinity": "MEDIUM",
-            "plant_light_affinity": "LOW"
-         },
-         "arctic_complex": {
-            "plant_water_affinity": "HIGH",
-            "plant_light_affinity": "MEDIUM"
-         },
-			"arctic_tree_easy": {
-            "plant_water_affinity": "IRRELEVANT",
-            "plant_light_affinity": "LOW"
-         },
-         "arctic_tree_complex": {
-            "plant_water_affinity": "BASIC",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "highlands_staple": {
-            "plant_water_affinity": "IRRELEVANT",
-            "plant_light_affinity": "LOW"
-         },
-         "highlands_easy": {
-            "plant_water_affinity": "SIMPLE",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "highlands_medium": {
-            "plant_water_affinity": "HIGH",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "highlands_complex": {
-            "plant_water_affinity": "VERY_HIGH",
-            "plant_light_affinity": "HIGH"
-         },
-			"highlands_tree_easy": {
-            "plant_water_affinity": "IRRELEVANT",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "highlands_tree_complex": {
-            "plant_water_affinity": "BASIC",
-            "plant_light_affinity": "MEDIUM"
-         },
-         "tropical_staple": {
-            "plant_water_affinity": "IRRELEVANT",
-            "plant_light_affinity": "HIGH"
-         },
-         "tropical_easy": {
-            "plant_water_affinity": "HIGH",
-            "plant_light_affinity": "HIGH"
-         },
-         "tropical_medium": {
-            "plant_water_affinity": "VERY_HIGH",
-            "plant_light_affinity": "VERY_HIGH"
-         },
-         "tropical_complex": {
-            "plant_water_affinity": "EXTREME",
-            "plant_light_affinity": "VERY_HIGH"
-         },
-			"tropical_tree_easy": {
-            "plant_water_affinity": "IRRELEVANT",
-            "plant_light_affinity": "VERY_HIGH"
-         },
-         "tropical_tree_complex": {
-            "plant_water_affinity": "BASIC",
-            "plant_light_affinity": "VERY_HIGH"
-         },
-         "underground_dry": {
-            "plant_water_affinity": "UNDESIRABLE",
-            "plant_light_affinity": "UNDESIRABLE"
-         },
-         "underground": {
-            "plant_water_affinity": "IRRELEVANT",
-            "plant_light_affinity": "UNDESIRABLE"
-         },
-         "underground_low_water": {
-            "plant_water_affinity": "LOW",
-            "plant_light_affinity": "UNDESIRABLE"
-         },
-         "underground_medium_water": {
-            "plant_water_affinity": "MEDIUM",
-            "plant_light_affinity": "UNDESIRABLE"
-         },
-         "underground_high_water": {
-            "plant_water_affinity": "HIGH",
-            "plant_light_affinity": "UNDESIRABLE"
-         }
-      },
-      "plant_water_affinity": {
-         "IRRELEVANT": [
-            {
-               "min_level": 0,
-               "period_multiplier": 1
-            }
-         ],
-         "BASIC": [
-            {
-               "min_level": 0,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 0.8,
-               "period_multiplier": 0.9
-            }
-         ],
-         "UNDESIRABLE": [
-            {
-               "min_level": -10,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 0.1,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 0.4,
-               "period_multiplier": 1.1
-            },
-            {
-               "min_level": 0.8,
-               "period_multiplier": 1.5
-            },
-            {
-               "min_level": 1.2,
-               "period_multiplier": 3
-            },
-            {
-               "min_level": 1.6,
-               "period_multiplier": 6
-            },
-            {
-               "min_level": 2.5,
-               "period_multiplier": 10
-            }
-         ],
-         "VERY_LOW": [
-            {
-               "min_level": -10,
-               "period_multiplier": 1.5
-            },
-            {
-               "min_level": -3,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 0.01,
-               "period_multiplier": 0.9
-            },
-            {
-               "min_level": 0.2,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 0.8,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 2.8,
-               "period_multiplier": 1.2
-            },
-            {
-               "min_level": 3.6,
-               "period_multiplier": 1.5
-            },
-            {
-               "min_level": 5,
-               "period_multiplier": 10
-            }
-         ],
-         "LOW": [
-            {
-               "min_level": -10,
-               "period_multiplier": 2
-            },
-            {
-               "min_level": -2.5,
-               "period_multiplier": 1.2
-            },
-            {
-               "min_level": 0.01,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 0.5,
-               "period_multiplier": 0.9
-            },
-            {
-               "min_level": 1,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 2.4,
-               "period_multiplier": 1.1
-            },
-            {
-               "min_level": 5,
-               "period_multiplier": 10
-            }
-         ],
-         "SIMPLE": [
-            {
-               "min_level": -10,
-               "period_multiplier": 2
-            },
-            {
-               "min_level": -5,
-               "period_multiplier": 1.5
-            },
-            {
-               "min_level": 0.01,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 0.5,
-               "period_multiplier": 0.9
-            },
-            {
-               "min_level": 2.8,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 6,
-               "period_multiplier": 6
-            }
-         ],
-         "MEDIUM": [
-            {
-               "min_level": -10,
-               "period_multiplier": 2
-            },
-            {
-               "min_level": -2,
-               "period_multiplier": 1.5
-            },
-            {
-               "min_level": 0.01,
-               "period_multiplier": 1.2
-            },
-            {
-               "min_level": 0.8,
-               "period_multiplier": 0.9
-            },
-            {
-               "min_level": 3,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 3.8,
-               "period_multiplier": 1.1
-            },
-            {
-               "min_level": 6,
-               "period_multiplier": 10
-            }
-         ],
-         "HIGH": [
-            {
-               "min_level": -10,
-               "period_multiplier": 3
-            },
-            {
-               "min_level": -1.5,
-               "period_multiplier": 1.6
-            },
-            {
-               "min_level": 0.1,
-               "period_multiplier": 1.3
-            },
-            {
-               "min_level": 0.5,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 1,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 1.2,
-               "period_multiplier": 0.9
-            },
-            {
-               "min_level": 4.5,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 6,
-               "period_multiplier": 10
-            }
-         ],
-         "VERY_HIGH": [
-            {
-               "min_level": -10,
-               "period_multiplier": 3
-            },
-            {
-               "min_level": -1,
-               "period_multiplier": 1.8
-            },
-            {
-               "min_level": 0.4,
-               "period_multiplier": 1.5
-            },
-            {
-               "min_level": 0.8,
-               "period_multiplier": 1.1
-            },
-            {
-               "min_level": 1.2,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 1.8,
-               "period_multiplier": 0.9
-            },
-            {
-               "min_level": 4.8,
-               "period_multiplier": 1.1
-            },
-            {
-               "min_level": 6,
-               "period_multiplier": 10
-            }
-         ],
-         "EXTREME": [
-            {
-               "min_level": -10,
-               "period_multiplier": 5
-            },
-            {
-               "min_level": -1,
-               "period_multiplier": 2.2
-            },
-            {
-               "min_level": 0.2,
-               "period_multiplier": 1.8
-            },
-            {
-               "min_level": 0.4,
-               "period_multiplier": 1.4
-            },
-            {
-               "min_level": 0.8,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 1,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 1.4,
-               "period_multiplier": 0.9
-            },
-            {
-               "min_level": 2.2,
-               "period_multiplier": 0.85
-            },
-            {
-               "min_level": 6,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 8,
-               "period_multiplier": 10
-            }
-         ]
-      },
-      "plant_light_affinity": {
-         "IRRELEVANT": [
-            {
-               "min_level": 0,
-               "period_multiplier": 1
-            }
-         ],
-         "UNDESIRABLE": [
-            {
-               "min_level": 0,
-               "period_multiplier": 0.9
-            },
-            {
-               "min_level": 0.1,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 0.3,
-               "period_multiplier": 3
-            },
-            {
-               "min_level": 0.5,
-               "period_multiplier": 5
-            },
-            {
-               "min_level": 0.7,
-               "period_multiplier": 10
-            },
-            {
-               "min_level": 0.9,
-               "period_multiplier": 25
-            },
-            {
-               "min_level": 0.95,
-               "period_multiplier": 50
-            }
-         ],
-         "VERY_LOW": [
-            {
-               "min_level": 0,
-               "period_multiplier": 10
-            },
-            {
-               "min_level": 0.1,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 0.3,
-               "period_multiplier": 0.9
-            },
-            {
-               "min_level": 0.6,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 0.8,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 0.9,
-               "period_multiplier": 1.5
-            }
-         ],
-         "LOW": [
-            {
-               "min_level": 0,
-               "period_multiplier": 20
-            },
-            {
-               "min_level": 0.1,
-               "period_multiplier": 2
-            },
-            {
-               "min_level": 0.3,
-               "period_multiplier": 1.5
-            },
-            {
-               "min_level": 0.4,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 0.5,
-               "period_multiplier": 0.9
-            },
-            {
-               "min_level": 0.9,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 0.96,
-               "period_multiplier": 1.2
-            }
-         ],
-         "MEDIUM": [
-            {
-               "min_level": 0,
-               "period_multiplier": 30
-            },
-            {
-               "min_level": 0.1,
-               "period_multiplier": 3
-            },
-            {
-               "min_level": 0.3,
-               "period_multiplier": 2.4
-            },
-            {
-               "min_level": 0.5,
-               "period_multiplier": 1.6
-            },
-            {
-               "min_level": 0.6,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 0.65,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 0.7,
-               "period_multiplier": 0.9
-            },
-            {
-               "min_level": 0.96,
-               "period_multiplier": 1
-            }
-         ],
-         "HIGH": [
-             {
-               "min_level": 0,
-               "period_multiplier": 40
-            },
-            {
-               "min_level": 0.1,
-               "period_multiplier": 5
-            },
-            {
-               "min_level": 0.3,
-               "period_multiplier": 3
-            },
-            {
-               "min_level": 0.4,
-               "period_multiplier": 2.6
-            },
-            {
-               "min_level": 0.5,
-               "period_multiplier": 1.8
-            },
-            {
-               "min_level": 0.6,
-               "period_multiplier": 1.1
-            },
-            {
-               "min_level": 0.65,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 0.7,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 0.8,
-               "period_multiplier": 0.9
-            }
-         ],
-         "VERY_HIGH": [
-            {
-               "min_level": 0,
-               "period_multiplier": 50
-            },
-            {
-               "min_level": 0.1,
-               "period_multiplier": 8
-            },
-            {
-               "min_level": 0.3,
-               "period_multiplier": 4
-            },
-            {
-               "min_level": 0.5,
-               "period_multiplier": 2.8
-            },
-            {
-               "min_level": 0.6,
-               "period_multiplier": 2
-            },
-            {
-               "min_level": 0.7,
-               "period_multiplier": 1.2
-            },
-            {
-               "min_level": 0.75,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 0.8,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 0.9,
-               "period_multiplier": 0.9
-            }
-         ],
-         "EXTREME": [
-            {
-               "min_level": 0,
-               "period_multiplier": 60
-            },
-            {
-               "min_level": 0.1,
-               "period_multiplier": 10
-            },
-            {
-               "min_level": 0.5,
-               "period_multiplier": 4
-            },
-            {
-               "min_level": 0.6,
-               "period_multiplier": 3
-            },
-            {
-               "min_level": 0.7,
-               "period_multiplier": 2
-            },
-            {
-               "min_level": 0.8,
-               "period_multiplier": 1.2
-            },
-            {
-               "min_level": 0.85,
-               "period_multiplier": 1
-            },
-            {
-               "min_level": 0.9,
-               "period_multiplier": 0.95
-            },
-            {
-               "min_level": 0.95,
-               "period_multiplier": 0.9
-            },
-            {
-               "min_level": 0.98,
-               "period_multiplier": 0.85
-            }
-         ]
-      },
       "attributes": {
          "defaults": {
             "drink_satiety_loss_multiplier": 1.0
          }
+      },
+      "attribute_effects": {
+         "COMPASSION_HEAL_MULTIPLIER": 0.15
       },
       "thoughts": {
          "food_quality": {
@@ -721,7 +59,7 @@
          "AVERAGE": 55,
          "HIGH": 80
       },
-      "drink_qualities" : {
+      "drink_qualities": {
          "INTOLERABLE": -1,
          "UNPALATABLE": 0,
          "MINIMUM_VIABLE": 0,
@@ -734,16 +72,16 @@
          "LOVELY": 7,
          "MAXIMUM": 7
       },
-      "drink_satiety" : {
-         "MAX_DRINK_SATIETY" : 100,
+      "drink_satiety": {
+         "MAX_DRINK_SATIETY": 100,
          "SATED": 70,
          "VERY_THIRSTY": 10,
          "THIRSTY": 40,
-         "MIN_DRINK_SATIETY" : 1, 
-         "HOURLY_DRINK_SATIETY_LOSS" : 1.2,
+         "MIN_DRINK_SATIETY": 1,
+         "HOURLY_DRINK_SATIETY_LOSS": 1.2,
          "DRINKTIME_MORNING_START": 3,
-         "DRINKTIME_AFTERNOON_START" : 15,
-         "DRINKTIME_NIGHT_START" : 20,
+         "DRINKTIME_AFTERNOON_START": 15,
+         "DRINKTIME_NIGHT_START": 20,
          "DRINK_TIME_WINDOW": "2h",
          "PREFERRED_DRINK_BONUS": 1.5,
          "HAD_DRINK_RECENTLY_WINDOW": 2200
@@ -810,7 +148,7 @@
          "FILTER_HEALTH_MAX_DIFF": 80
       },
       "health": {
-         "SCRATCHED_PERCENTAGE" : 0.999,
+         "SCRATCHED_PERCENTAGE": 0.999,
          "COMBAT_REST_WHEN_INJURED_PERCENTAGE": 0.9,
          "SEVERELY_INJURED_PERCENTAGE": 0.25,
          "STOP_RESTING_STATUS_UNCHANGED_DURATION": "4h",
@@ -863,12 +201,66 @@
          "CATEGORY_PROFICIENCY_MAX_HIGHER_QUALITY_MULT": 2,
          "GAME_TIME_PER_EFFORT": "1m",
          "ITEM_QUALITY_CHANCES": [
-            [[1, 1]],
-            [[1, 1]],
-            [[1, 0.98], [2, 0.02]],
-            [[1, 0.96], [2, 0.04]],
-            [[1, 0.90], [2, 0.06], [3, 0.04]],
-            [[1, 0.86], [2, 0.08], [3, 0.06]]
+            [
+               [
+                  1,
+                  1
+               ]
+            ],
+            [
+               [
+                  1,
+                  1
+               ]
+            ],
+            [
+               [
+                  1,
+                  0.98
+               ],
+               [
+                  2,
+                  0.02
+               ]
+            ],
+            [
+               [
+                  1,
+                  0.96
+               ],
+               [
+                  2,
+                  0.04
+               ]
+            ],
+            [
+               [
+                  1,
+                  0.90
+               ],
+               [
+                  2,
+                  0.06
+               ],
+               [
+                  3,
+                  0.04
+               ]
+            ],
+            [
+               [
+                  1,
+                  0.86
+               ],
+               [
+                  2,
+                  0.08
+               ],
+               [
+                  3,
+                  0.06
+               ]
+            ]
          ],
          "MAX_DUPLICATE_ASSOCIATED_RECIPES": 5,
          "PERIODIC_RECONSIDER_ORDERS_COOLDOWN": "2h+10m"
@@ -972,12 +364,24 @@
             "ENCOURAGED": 2
          },
          "ENCOURAGED_MULTIPLIER": 3,
-         "MAX_DISABLES_PER_TIER": [2, 3, 4],
-         "MAX_ENCOURAGES_PER_TIER": [2, 3, 4],
+         "MAX_DISABLES_PER_TIER": [
+            2,
+            3,
+            4
+         ],
+         "MAX_ENCOURAGES_PER_TIER": [
+            2,
+            3,
+            4
+         ],
          "DEFAULT_WANTED_ITEM_PRICE_FACTOR": 1.5,
          "DEFAULT_UNWANTED_ITEM_PRICE_FACTOR": 0.5,
          "PERSISTENCE_ITEM_PRICE_FACTOR": 0.5,
-         "PERSISTENCE_ITEM_QUALITY_COUNTS": [7, 3, 1],
+         "PERSISTENCE_ITEM_QUALITY_COUNTS": [
+            7,
+            3,
+            1
+         ],
          "PERSISTENCE_TOWN_NAME_CHANCE": 0.5,
          "rarities": {
             "JUNK": "junk",
@@ -1182,8 +586,8 @@
          }
       },
       "weather": {
-         "kingdoms_affected_by_weather": { 
-            "goblins": true, 
+         "kingdoms_affected_by_weather": {
+            "goblins": true,
             "human_npcs": true,
             "rabbit_biped_npcs": true,
             "orc_npcs": true,
@@ -1206,7 +610,14 @@
          "WATER_RECALCULATE_THRESHOLD": 0.04,
          "DEFAULT_MEGACROP_DESCRIPTION": "i18n(stonehearth_ace:entities.crops.megacrops.default_description)",
          "DEFAULT_MEGACROP_SCALE": 2,
-         "DEFAULT_PATTERN": [[2], [1]],
+         "DEFAULT_PATTERN": [
+            [
+               2
+            ],
+            [
+               1
+            ]
+         ],
          "location_types": {
             "EMPTY": 0,
             "FURROW": 1,
