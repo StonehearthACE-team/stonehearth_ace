@@ -221,7 +221,7 @@ function AceCraftOrder:set_crafting_status(crafter, is_crafting)
 
       self._sv._order_progress_by_crafter = {}
    end
-   local status = next(self._sv.curr_crafters) ~= nil
+   local status = #self._sv.curr_crafters > 0
    if status ~= self._sv.is_crafting then
       self._sv.is_crafting = status
    end
