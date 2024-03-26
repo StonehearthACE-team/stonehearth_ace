@@ -1,4 +1,5 @@
 local TownService = require 'stonehearth.services.server.town.town_service'
+local constants = require 'stonehearth.constants'
 local AceTownService = class()
 
 local _water_affinities = {}
@@ -38,7 +39,7 @@ function AceTownService:calculate_town_bonuses_growth_period(player_id, original
             growth_period = town_bonus:apply_growth_period_bonus(growth_period)
          end
       end
-      
+
       if growth_period <= 0 then
          growth_period = original_growth_period
       end
@@ -51,14 +52,14 @@ function AceTownService:get_water_affinity_table(climate)
 	if not climate then
 		climate = self:_get_default_climate()
    end
-   
+
    local affinity_table = _water_affinities[climate]
    if not affinity_table then
       affinity_table = {}
-      local climate_data = stonehearth.constants.climates[climate]
+      local climate_data = constants.climates[climate]
       if climate_data then
          local affinity = climate_data.plant_water_affinity or 'MEDIUM'
-         affinity_table = stonehearth.constants.plant_water_affinity[affinity] or {}
+         affinity_table = constants.plant_water_affinity[affinity] or {}
       end
       _water_affinities[climate] = affinity_table
    end
@@ -74,10 +75,10 @@ function AceTownService:get_light_affinity_table(climate)
    local affinity_table = _light_affinities[climate]
    if not affinity_table then
       affinity_table = {}
-      local climate_data = stonehearth.constants.climates[climate]
+      local climate_data = constants.climates[climate]
       if climate_data then
          local affinity = climate_data.plant_light_affinity or 'MEDIUM'
-         affinity_table = stonehearth.constants.plant_light_affinity[affinity] or {}
+         affinity_table = constants.plant_light_affinity[affinity] or {}
       end
       _light_affinities[climate] = affinity_table
    end

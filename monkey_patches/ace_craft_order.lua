@@ -222,6 +222,7 @@ function AceCraftOrder:set_crafting_status(crafter, is_crafting)
       self._sv._order_progress_by_crafter = {}
    end
    local status = #self._sv.curr_crafters > 0
+   log:debug('set_crafting_status %s %s => %s: %s', tostring(crafter), tostring(self._sv.is_crafting), status, radiant.util.table_tostring(self._sv.curr_crafters))
    if status ~= self._sv.is_crafting then
       self._sv.is_crafting = status
    end
