@@ -22,7 +22,7 @@ function AceFarmerFieldRenderer:initialize(render_entity, datastore)
 
    self._fertilized_nodes = {}
    self._fertilized_zone_renderer = ZoneRenderer(render_entity)
-   
+
    self:_ace_old_initialize(render_entity, datastore)
 
    self._ui_view_mode = stonehearth.renderer:get_ui_mode()
@@ -97,15 +97,15 @@ end
 
 function AceFarmerFieldRenderer:_update_dirt_models(effective_humidity_level)
    if not self._dirt_models then
-      self._dirt_models = self._field_type_data.dirt_models and self._farmer_field_data.dirt_models[self._field_type_data.dirt_models] or 
+      self._dirt_models = self._field_type_data.dirt_models and self._farmer_field_data.dirt_models[self._field_type_data.dirt_models] or
             self._farmer_field_data.dirt_models.default
    end
 
    -- check the effective water level and set the appropriate dirt models
-   local levels = stonehearth.constants.farming.water_levels
+   local levels = constants.farming.water_levels
    local tilled_dirt_model = 'tilled_dirt'
    local furrow_dirt_model = 'furrow_dirt'
-   
+
    if effective_humidity_level == levels.SOME then
       if self._dirt_models.tilled_dirt_water_partial then
          tilled_dirt_model = 'tilled_dirt_water_partial'
@@ -149,7 +149,7 @@ function AceFarmerFieldRenderer:_render_water_signal_region(data)
    local region = data.water_signal_region
    local climate = data.current_crop_details and data.current_crop_details.preferred_climate
    -- TODO: get default climate information for the biome for if the crop doesn't supply a preferred climate
-   local climate_data = climate and stonehearth.constants.climates[climate]
+   local climate_data = climate and constants.climates[climate]
    local water_affinity = climate_data and climate_data.plant_water_affinity
 
    if region and water_affinity ~= 'IRRELEVANT' then
