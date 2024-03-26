@@ -201,66 +201,12 @@
          "CATEGORY_PROFICIENCY_MAX_HIGHER_QUALITY_MULT": 2,
          "GAME_TIME_PER_EFFORT": "1m",
          "ITEM_QUALITY_CHANCES": [
-            [
-               [
-                  1,
-                  1
-               ]
-            ],
-            [
-               [
-                  1,
-                  1
-               ]
-            ],
-            [
-               [
-                  1,
-                  0.98
-               ],
-               [
-                  2,
-                  0.02
-               ]
-            ],
-            [
-               [
-                  1,
-                  0.96
-               ],
-               [
-                  2,
-                  0.04
-               ]
-            ],
-            [
-               [
-                  1,
-                  0.90
-               ],
-               [
-                  2,
-                  0.06
-               ],
-               [
-                  3,
-                  0.04
-               ]
-            ],
-            [
-               [
-                  1,
-                  0.86
-               ],
-               [
-                  2,
-                  0.08
-               ],
-               [
-                  3,
-                  0.06
-               ]
-            ]
+            [[1, 1]],
+            [[1, 1]],
+            [[1, 0.98], [2, 0.02]],
+            [[1, 0.96], [2, 0.04]],
+            [[1, 0.90], [2, 0.06], [3, 0.04]],
+            [[1, 0.86], [2, 0.08], [3, 0.06]]
          ],
          "MAX_DUPLICATE_ASSOCIATED_RECIPES": 5,
          "PERIODIC_RECONSIDER_ORDERS_COOLDOWN": "2h+10m"
@@ -283,45 +229,25 @@
                   "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.none.display_name)",
                   "icon": "/stonehearth_ace/ui/images/heatmaps/ore_none.png",
                   "max": 0.01,
-                  "heatmap_color": [
-                     128,
-                     128,
-                     128,
-                     200
-                  ]
+                  "heatmap_color": [ 128, 128, 128, 200 ]
                },
                {
                   "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.some.display_name)",
                   "icon": "/stonehearth_ace/ui/images/heatmaps/ore_some.png",
                   "max": 0.6,
-                  "heatmap_color": [
-                     183,
-                     128,
-                     71,
-                     200
-                  ]
+                  "heatmap_color": [ 183, 128, 71, 200 ]
                },
                {
                   "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.lots.display_name)",
                   "icon": "/stonehearth_ace/ui/images/heatmaps/ore_lots.png",
                   "max": 2,
-                  "heatmap_color": [
-                     227,
-                     128,
-                     27,
-                     200
-                  ]
+                  "heatmap_color": [ 227, 128, 27, 200 ]
                },
                {
                   "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.tons.display_name)",
                   "icon": "/stonehearth_ace/ui/images/heatmaps/ore_tons.png",
                   "max": 999999,
-                  "heatmap_color": [
-                     255,
-                     128,
-                     0,
-                     200
-                  ]
+                  "heatmap_color": [ 255, 128, 0, 200 ]
                }
             ]
          }
@@ -364,24 +290,12 @@
             "ENCOURAGED": 2
          },
          "ENCOURAGED_MULTIPLIER": 3,
-         "MAX_DISABLES_PER_TIER": [
-            2,
-            3,
-            4
-         ],
-         "MAX_ENCOURAGES_PER_TIER": [
-            2,
-            3,
-            4
-         ],
+         "MAX_DISABLES_PER_TIER": [ 2, 3, 4 ],
+         "MAX_ENCOURAGES_PER_TIER": [ 2, 3, 4 ],
          "DEFAULT_WANTED_ITEM_PRICE_FACTOR": 1.5,
          "DEFAULT_UNWANTED_ITEM_PRICE_FACTOR": 0.5,
          "PERSISTENCE_ITEM_PRICE_FACTOR": 0.5,
-         "PERSISTENCE_ITEM_QUALITY_COUNTS": [
-            7,
-            3,
-            1
-         ],
+         "PERSISTENCE_ITEM_QUALITY_COUNTS": [ 7, 3, 1 ],
          "PERSISTENCE_TOWN_NAME_CHANCE": 0.5,
          "rarities": {
             "JUNK": "junk",
@@ -440,17 +354,8 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.none.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_none.png",
                "max": 0.001,
-               "heatmap_color": [
-                  128,
-                  128,
-                  128,
-                  128
-               ],
-               "heatmap_hilight": [
-                  0.4,
-                  0.4,
-                  0.4
-               ],
+               "heatmap_color": [ 128, 128, 128, 128 ],
+               "heatmap_hilight": [ 0.4, 0.4, 0.4 ],
                "spawn_duration_multiplier": 5
             },
             {
@@ -458,17 +363,8 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.little.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_little.png",
                "max": 0.021,
-               "heatmap_color": [
-                  180,
-                  224,
-                  64,
-                  200
-               ],
-               "heatmap_hilight": [
-                  0.5,
-                  0.6,
-                  0
-               ],
+               "heatmap_color": [ 180, 224, 64, 200 ],
+               "heatmap_hilight": [ 0.5, 0.6, 0 ],
                "spawn_duration_multiplier": 3
             },
             {
@@ -476,17 +372,8 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.some.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_some.png",
                "max": 0.05,
-               "heatmap_color": [
-                  40,
-                  224,
-                  40,
-                  200
-               ],
-               "heatmap_hilight": [
-                  0,
-                  0.8,
-                  0
-               ],
+               "heatmap_color": [ 40, 224, 40, 200 ],
+               "heatmap_hilight": [ 0, 0.8, 0 ],
                "spawn_duration_multiplier": 2
             },
             {
@@ -494,17 +381,8 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.lots.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_lots.png",
                "max": 0.1,
-               "heatmap_color": [
-                  40,
-                  180,
-                  40,
-                  200
-               ],
-               "heatmap_hilight": [
-                  0,
-                  0.6,
-                  0
-               ],
+               "heatmap_color": [ 40, 180, 40, 200 ],
+               "heatmap_hilight": [ 0, 0.6, 0 ],
                "spawn_duration_multiplier": 1
             },
             {
@@ -512,17 +390,8 @@
                "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.tons.description)",
                "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_tons.png",
                "max": 999999,
-               "heatmap_color": [
-                  0,
-                  128,
-                  32,
-                  200
-               ],
-               "heatmap_hilight": [
-                  0,
-                  0.5,
-                  0.1
-               ],
+               "heatmap_color": [ 0, 128, 32, 200 ],
+               "heatmap_hilight": [ 0, 0.5, 0.1 ],
                "spawn_duration_multiplier": 0.75
             }
          ]
@@ -610,14 +479,7 @@
          "WATER_RECALCULATE_THRESHOLD": 0.04,
          "DEFAULT_MEGACROP_DESCRIPTION": "i18n(stonehearth_ace:entities.crops.megacrops.default_description)",
          "DEFAULT_MEGACROP_SCALE": 2,
-         "DEFAULT_PATTERN": [
-            [
-               2
-            ],
-            [
-               1
-            ]
-         ],
+         "DEFAULT_PATTERN": [[2], [1]],
          "location_types": {
             "EMPTY": 0,
             "FURROW": 1,
