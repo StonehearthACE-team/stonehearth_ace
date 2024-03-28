@@ -118,9 +118,9 @@ function AceFarmingService:get_crop_details(crop_type)
       local catalog_data = stonehearth.catalog:get_catalog_data(crop_type)
       details = {}
       details.uri = crop_type
-      details.name = catalog_data.display_name
-      details.description = catalog_data.description
-      details.icon = catalog_data.icon
+      details.name = catalog_data.display_name or nil
+      details.description = catalog_data.description or nil
+      details.icon = catalog_data.icon or nil
       local json = radiant.resources.load_json(crop_type)
       if json and json.components then
          local growing_data = json.components['stonehearth:growing']

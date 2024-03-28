@@ -70,7 +70,6 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       this._super();
 
       var self = this;
-
       radiant.call_obj('stonehearth.job', 'get_job_call', 'stonehearth:jobs:farmer')
                .done(function (response) {
                   if (self.isDestroying || self.isDestroyed) {
@@ -106,7 +105,6 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
    didInsertElement: function() {
       this._super();
       var self = this;
-
       self.$('button.warn').click(function() {
          radiant.call('stonehearth:destroy_entity', self.uri)
          self.destroy();
@@ -116,8 +114,6 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
          radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:start_menu:submenu_select'} );
          self.destroy();
       });
-
-      self.hasShownPaletteOnce = false;
 
       // ACE: lots of additional information and ui elements to handle
       var filterFn = function(k, v) {
@@ -157,8 +153,13 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
          radiant.call('stonehearth_ace:set_farm_harvest_enabled', self.get('uri'), this.checked);
       })
 
+      self.$('#enablePlantingCheckbox').change(function() {
+         radiant.call('stonehearth_ace:set_farm_planting_enabled', self.get('uri'), this.checked);
+      })
+
       // tooltips
-      App.guiHelper.addTooltip(self.$('#enableHarvest'), 'stonehearth_ace:ui.game.zones_mode.farm.enable_harvest_description');
+      App.guiHelper.addTooltip(self.$('#enableHarvest'), 'stonehearth_ace:ui.game.zones_mode.farm.enable_harvest_description');;
+      App.guiHelper.addTooltip(self.$('#enablePlanting'), 'stonehearth_ace:ui.game.zones_mode.farm.pause_planting_description');
 
       radiant.call_obj('stonehearth.inventory', 'get_item_tracker_command', 'stonehearth_ace:fertilizer_tracker')
          .done(function(response) {
@@ -257,6 +258,12 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       var harvestCrop = self.get('model.stonehearth:farmer_field.harvest_enabled');
       self.$('#enableHarvestCheckbox').prop('checked', harvestCrop);
    }.observes('model.stonehearth:farmer_field.harvest_enabled'),
+
+   _plantingEnabledChanged: function() {
+      var self = this;
+      var plantCrop = self.get('model.stonehearth:farmer_field.planting_enabled');
+      self.$('#enablePlantingCheckbox').prop('checked', plantCrop);
+   }.observes('model.stonehearth:farmer_field.planting_enabled'),
 
    _updateFertilizers: $.throttle(250, function (self) {
       self = self || this;
@@ -387,6 +394,7 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       // when a crop is selected, update the details info panel
       var field_sv = self.get('model.stonehearth:farmer_field');
       var details = field_sv.current_crop_details || {};
+      
 
       if (self._oldURI != details.uri) {
          self._oldURI = details.uri;
@@ -403,6 +411,7 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
             var cropProperties = self._doUpdateProperties(localizations, field_sv);
             self.set('cropProperties', cropProperties);
             self._updateStatuses();
+            
          }
          else {
             self.set('cropProperties', null);
@@ -583,8 +592,12 @@ App.StonehearthFarmView = App.StonehearthBaseZonesModeView.extend({
       var allowDisableHarvest = this.get('model.stonehearth:farmer_field.allow_disable_harvest');
       self.set('allowDisableHarvest', allowDisableHarvest);
 
+      var allowDisablePlanting = this.get('model.stonehearth:farmer_field.allow_disable_planting');
+      self.set('allowDisablePlanting', allowDisablePlanting);
+
       var allowFertilizing = this.get('model.stonehearth:farmer_field.allow_fertilizing');
       self.set('allowFertilizing', allowFertilizing);
+
    }.observes('model.stonehearth:farmer_field'),
 
    // same as properties, statuses can be added by overriding this function

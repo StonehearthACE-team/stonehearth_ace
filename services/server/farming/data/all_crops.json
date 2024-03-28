@@ -463,6 +463,7 @@
    "field_types": {
       "farm": {
          "allow_disable_harvest": true,
+         "allow_disable_planting": true,
          "sample_crop": "stonehearth:crops:turnip_crop",
          "terrain": {
             "grass": true,
@@ -480,6 +481,7 @@
       },
       "underfarm": {
          "allow_disable_harvest": true,
+         "allow_disable_planting": true,
          "color": [
             92,
             108,
@@ -500,6 +502,7 @@
       },
       "treefarm": {
          "allow_disable_harvest": true,
+         "allow_disable_planting": true,
          "sample_crop": "stonehearth:trees:oak:bud",
          "color": [
             56,
@@ -536,6 +539,7 @@
       },
       "orchard": {
          "allow_disable_harvest": true,
+         "allow_disable_planting": true,
          "sample_crop": "stonehearth_ace:trees:chestnut:bud",
          "color": [
             81,
@@ -570,6 +574,7 @@
       },
       "bush_farm": {
          "allow_disable_harvest": true,
+         "allow_disable_planting": true,
          "sample_crop": "stonehearth:plants:berry_bush",
          "color": [
             27,
@@ -605,6 +610,7 @@
       "decorative_flowers": {
          "allow_fertilizing": false,
          "default_disable_harvest": true,
+         "default_disable_planting": false,
          "sample_crop": "stonehearth:plants:frostsnap",
          "color": [
             53,
