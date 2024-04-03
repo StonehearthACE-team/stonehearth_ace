@@ -19,6 +19,10 @@ FillBackpackFromItems.args = {
       type = 'boolean',
       default = true,
    },
+   max_items = {
+      type = 'number',
+      default = stonehearth.ai.NIL,
+   },
    filter_fn = {            -- an optional filter function to limit what gets picked up
       type = 'function',
       default = stonehearth.ai.NIL,
@@ -37,6 +41,7 @@ for i = 1, stonehearth.constants.backpack.MAX_CAPACITY - 1 do
          storage = ai.ARGS.storage,
          owner_player_id = ai.ARGS.owner_player_id,
          reserve_space = ai.ARGS.reserve_space,
+         max_items = ai.ARGS.max_items,
          filter_fn = ai.ARGS.filter_fn
       })
 end
