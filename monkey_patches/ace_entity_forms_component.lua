@@ -86,6 +86,13 @@ function AceEntityFormsComponent:set_should_restock(restock)
    self:_ace_old_set_should_restock(restock)
 
    radiant.events.trigger_async(self._entity, 'stonehearth_ace:reconsider_restock')
+
+   -- set sync because this could be toggled multiple times while paused
+   radiant.events.trigger(stonehearth, 'stonehearth_ace:reconsider_restock', {
+      entity_id = self._entity:get_id(),
+      player_id = self._entity:get_player_id(),
+      should_restock = restock,
+   })
 end
 
 function AceEntityFormsComponent:_ensure_interaction_proxy()

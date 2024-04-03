@@ -48,7 +48,7 @@ function ExecuteRestockErrand:start_thinking(ai, entity, args)
    if not radiant.entities.exists_in_world(entity) then
       return  -- Entity not in world (e.g. suspended).
    end
-   
+
    local work_player_id = radiant.entities.get_work_player_id(entity)
    local inventory = stonehearth.inventory:get_inventory(work_player_id)
    if not inventory then
@@ -60,7 +60,7 @@ function ExecuteRestockErrand:start_thinking(ai, entity, args)
       ai:set_debug_progress('dead; no restock director')
       return
    end
-   
+
    if not self:_try_take_errand(ai, entity, restock_director, work_player_id) then
       ai:set_debug_progress('waiting for an errand')
       self._errand_created_listener = radiant.events.listen(restock_director, 'stonehearth:restock:errand_available', function(errand_id)
@@ -81,16 +81,16 @@ function ExecuteRestockErrand:_try_take_errand(ai, entity, restock_director, wor
    if not errand_id then
       return false
    end
-   
+
    self._started = false
    self._restock_director = restock_director
    self._errand_id = errand_id
-   
+
    if self._errand_created_listener then
       self._errand_created_listener:destroy()
       self._errand_created_listener = nil
    end
-   
+
    self._errand_canceled_reject_listener = radiant.events.listen(restock_director, 'stonehearth:restock:errand_canceled', function(errand_id)
          if self._errand_id == errand_id then
             ai:reject()
@@ -102,12 +102,25 @@ function ExecuteRestockErrand:_try_take_errand(ai, entity, restock_director, wor
             ai:reject()
          end
       end)
-   
+
    -- Errands fail if they are valid but thinking doesn't finish in some time.
    -- Ideally, this would never happen, but this should catch unexpected issues with reachability or races.
    self._errand_timeout_timer = stonehearth.calendar:set_timer('errand consider timeout', stonehearth.constants.inventory.restock_director.MAX_CONSIDER_DURATION_MS, function()
          restock_director:mark_errand_failed(errand_id)  -- The ensuing cancel event will cause a reject().
       end)
+
+   -- if the main item is pretty far away from the storage, don't cap the max items
+   -- they may be getting brought from far out of town, and it's better they drop them in town to get restocked further
+   -- also, by the time they bring them into town, there might be extra space in the destination storage
+   -- nearby items (e.g., fuel or input bins getting stocked from containers) will still be capped to avoid excessive hauling
+   local max_items = errand.storage_space_lease.quantity
+   local container = stonehearth.inventory:get_inventory(errand.main_item):container_for(errand.main_item)
+   local main_item_location = container and radiant.entities.get_world_grid_location(container) or radiant.entities.get_world_grid_location(errand.main_item)
+   local storage_location = radiant.entities.get_world_grid_location(errand.storage)
+   local min_distance_sq = stonehearth.constants.inventory.MAX_IGNORE_MAX_ITEMS_DISTANCE * stonehearth.constants.inventory.MAX_IGNORE_MAX_ITEMS_DISTANCE
+   if main_item_location and storage_location and main_item_location:distance_to_squared(storage_location) >= min_distance_sq then
+      max_items = nil
+   end
 
    ai:set_utility(score)
    ai:set_think_output({
@@ -117,10 +130,11 @@ function ExecuteRestockErrand:_try_take_errand(ai, entity, restock_director, wor
       storage = errand.storage,
       main_item = errand.main_item,
       extra_items = errand.extra_items,
+      max_items = max_items,
       owner_player_id = work_player_id,
       fill_backpack_filter_fn = make_fill_backpack_predicate(work_player_id, errand.storage),
    })
-   
+
    ai:set_debug_progress('executing errand ' .. errand_id)
 
    return true
@@ -191,7 +205,8 @@ return ai:create_compound_action(ExecuteRestockErrand)
             range = 32,
             storage = ai.BACK(5).storage,
             owner_player_id = ai.BACK(5).owner_player_id,
-            reserve_space = false,
+            reserve_space = false,  -- this is already taken care of by the restock director
+            max_items = ai.BACK(5).max_items,
             filter_fn = ai.BACK(5).fill_backpack_filter_fn,
             is_restocking = true,
          })

@@ -3035,6 +3035,7 @@
       "mixins:workbench:cook_pottage": "file(mixins/workbench/cook_pottage_mixin.json)",
       "mixins:workbench:cook_workbench": "file(mixins/workbench/cook_workbench_mixin.json)",
       "mixins:workbench:cook_workbench_advanced": "file(mixins/workbench/cook_workbench_advanced_mixin.json)",
+      "mixins:workbench:fuel_consumer": "file(mixins/workbench/fuel_consumer_mixin.json)",
       "mixins:workbench:herbalist_cauldron": "file(mixins/workbench/herbalist_cauldron_mixin.json)",
       "mixins:workbench:herbalist_metal_cauldron": "file(mixins/workbench/herbalist_metal_cauldron_mixin.json)",
       "mixins:workbench:potter_kiln": "file(mixins/workbench/potter_kiln_mixin.json)",
@@ -6851,6 +6852,8 @@
    "overrides": {
       "debugtools/ui/console/debug_console_commands.js": "file(debugtools/ui/console/debug_console_commands.js)",
       "debugtools/ui/debug_dock/debug_dock.js": "file(debugtools/ui/debug_dock/debug_dock.js)",
+      "debugtools/ui/item_dropper/item_dropper.html": "file(debugtools/ui/item_dropper/item_dropper.html)",
+      "debugtools/ui/item_dropper/item_dropper.js": "file(debugtools/ui/item_dropper/item_dropper.js)",
       "microworld/micro_world_server.lua": "file(microworld/micro_world_server.lua)",
       "northern_alliance/data/town_bonuses/na_valor_town_bonus.lua": "file(data/town_bonuses/na_valor_town_bonus.lua)",
       "northern_alliance/entities/armor/shield_hare/shield_hare.qb": "file(entities/armor/shield_hare/shield_hare.qb)",
@@ -7415,6 +7418,10 @@
       "stonehearth/services/server/combat/battery_context.lua": "file(services/server/combat/battery_context.lua)",
       "stonehearth/services/server/food_decay/food_decay_service.lua": "file(services/server/food_decay/food_decay_service.lua)",
       "stonehearth/services/server/game_master/controllers/node.lua": "file(services/server/game_master/controllers/node.lua)",
+      "stonehearth/services/server/inventory/nearby_item_search.lua": "file(services/server/inventory/nearby_item_search.lua)",
+      "stonehearth/services/server/inventory/restock_director.lua": "file(services/server/inventory/restock_director.lua)",
+      "stonehearth/ui/common/confirm/confirm.js": "file(ui/common/confirm/confirm.js)",
+      "stonehearth/ui/common/images/quality_fine.png": "file(ui/common/images/quality_fine.png)",
       "stonehearth/ui/debug/console/console_commands.js": "file(ui/debug/console/console_commands.js)",
       "stonehearth/ui/game/bulletin/bulletin_board.js": "file(ui/game/bulletin/bulletin_board.js)",
       "stonehearth/ui/game/bulletin/bulletin_dialog/base_bulletin_dialog.js": "file(ui/game/bulletin/bulletin_dialog/base_bulletin_dialog.js)",
@@ -8114,6 +8121,7 @@
          "file(ui/shell/select_settlement/select_settlement.js)"
       ],
       "less": [
+         "file(debugtools/ui/item_dropper/item_dropper.less)",
          "file(jobs/blacksmith/skin/workshop.less)",
          "file(jobs/brewer/skin/workshop.less)",
          "file(jobs/carpenter/skin/workshop.less)",
