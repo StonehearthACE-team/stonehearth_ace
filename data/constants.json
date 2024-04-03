@@ -511,15 +511,16 @@
       "inventory": {
          "CRAFTER_PRIORITY_STORAGE_RADIUS": 12,
          "MAX_INSIGNIFICANT_PATH_LENGTH": 12,
+         "MAX_IGNORE_MAX_ITEMS_DISTANCE": 100,
          "MIN_COUNT_FOR_PLENTIFUL_ITEMS": 20,
          "restock_director": {
-            "FAILED_ITEM_REQUEUE_DELAY": "30m",
+            "FAILED_ITEM_REQUEUE_DELAY": "10m",
             "FAILED_ITEM_REQUEUE_SHORT_DELAY": "5m",
-            "FAILED_ITEM_REQUEUE_BATCH_SIZE": 100
+            "FAILED_ITEM_REQUEUE_BATCH_SIZE": 30
          },
          "input_bins": {
             "MIN_PRIORITY": 0,
-            "MAX_PRIORITY": 3
+            "MAX_PRIORITY": 4
          }
       },
       "patrolling": {

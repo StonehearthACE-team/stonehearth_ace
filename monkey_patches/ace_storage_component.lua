@@ -4,6 +4,7 @@ local StorageComponent = require 'stonehearth.components.storage.storage_compone
 AceStorageComponent = class()
 
 local GOLD_URI = 'stonehearth:loot:gold'
+local STORAGE_LEASE_EXPIRY = '3h'
 local INFINITE = 1000000
 
 local log = radiant.log.create_logger('storage_component')
@@ -125,6 +126,8 @@ function AceStorageComponent:activate()
    self._storage_open_effect = json.storage_open_effect
    self._user_open_effect = json.user_open_effect
    self._auto_restock_item = json.auto_restock_with_item
+   self._prioritize_restocking_high_quality = json.prioritize_restocking_high_quality or
+         (json.prioritize_restocking_high_quality ~= false and self._type == 'input_crate')
 
    if self._auto_restock_item then
       self._auto_restock_delay = json.auto_restock_delay
@@ -221,12 +224,46 @@ function AceStorageComponent:_restock()
    end
 end
 
+function AceStorageComponent:get_prioritize_restocking_high_quality()
+   return self._prioritize_restocking_high_quality
+end
+
 function AceStorageComponent:get_storage_open_effects()
    return self._storage_open_effect, self._user_open_effect
 end
 
 function AceStorageComponent:is_undeployable()
    return self._drop_all_on_undeploy or self:is_empty()
+end
+
+-- ACE: we want to return n in case it was capped
+function AceStorageComponent:reserve_space(unused_asker, reason, n)
+   if self:can_reserve_space() then
+      if not n then
+         n = 1
+      else
+         local max = self:get_capacity() - self._sv.num_items - self._reserved_count
+         if n > max then
+            n = max
+         end
+      end
+      self._reserved_count = self._reserved_count + n
+      
+      local destroyed = false
+      local expiry_timer
+      local clear_reservation = function()
+            if not destroyed then
+               self._reserved_count = self._reserved_count - n
+               expiry_timer:destroy()
+               expiry_timer = nil
+               destroyed = true
+            end
+         end
+      expiry_timer = stonehearth.calendar:set_timer('storage lease expiry', STORAGE_LEASE_EXPIRY, clear_reservation)
+      return { destroy = clear_reservation, quantity = n }
+   else
+      return nil
+   end
 end
 
 --AceStorageComponent._ace_old__on_contents_changed = StorageComponent._on_contents_changed
@@ -436,6 +473,14 @@ end
 
 function AceStorageComponent:is_single_filter()
    return self._sv.is_single_filter
+end
+
+function AceStorageComponent:get_unreserved_space()
+   return self:get_available_space() - self._reserved_count
+end
+
+function AceStorageComponent:get_available_space()
+   return self:get_capacity() - self._sv.num_items
 end
 
 function AceStorageComponent:allow_default()

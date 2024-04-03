@@ -1,11 +1,12 @@
 {
+   "mixins": [
+      "stonehearth_ace:mixins:workbench:fuel_consumer"
+   ],
    "components": {
       "stonehearth_ace:consumer": {
          "fuel_settings": {
             "fuel_per_use": 4,
-            "fueled_buff": "stonehearth_ace:buffs:weather:warmth_source",
             "fuel_effect": "/stonehearth_ace/data/rigs/jobs/blacksmith/blacksmith_workbench_advanced/effects/idle.json",
-            "no_fuel_effect": "stonehearth_ace:effects:requires_fuel_overlay_effect",
             "no_fuel_model_variant": "no_fuel"
          }
       },
@@ -16,32 +17,7 @@
             }
          }
       },
-      "stonehearth:expendable_resources": {
-         "resources": {
-            "fuel_level": {
-               "min": {
-                  "value": 0
-               },
-               "max": {
-                  "value": 100
-               },
-               "initial_value": 0
-            },
-            "reserved_fuel_level": {
-               "min": {
-                  "value": 0
-               },
-               "max": {
-                  "value": 100
-               },
-               "initial_value": 0
-            }
-         }
-      },
       "stonehearth:storage": {
-         "type": "input_crate",
-         "allow_default": false,
-         "drop_all_on_undeploy": true,
          "priority": 3,
          "capacity": 5,
          "filter_list": "stonehearth_ace:ui:workbench_fuel:good_grade:filters",

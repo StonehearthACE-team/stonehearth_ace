@@ -24,6 +24,7 @@ local monkey_patches = {
    ace_client_entities = 'radiant.modules.client_entities',
    ace_constants = 'stonehearth.constants',
    ace_csg_lib = 'stonehearth.lib.csg.csg_lib',
+   ace_debugtools_commands = 'debugtools.call_handlers.debugtools_commands',
    ace_entity_forms_lib = 'stonehearth.lib.entity_forms.entity_forms_lib',
    ace_entity_or_location_selector = 'stonehearth.services.client.selection.entity_or_location_selector',
    ace_expendable_resources_renderer = 'stonehearth.renderers.expendable_resources.expendable_resources_renderer',
