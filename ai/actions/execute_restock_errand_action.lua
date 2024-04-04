@@ -114,12 +114,13 @@ function ExecuteRestockErrand:_try_take_errand(ai, entity, restock_director, wor
    -- also, by the time they bring them into town, there might be extra space in the destination storage
    -- nearby items (e.g., fuel or input bins getting stocked from containers) will still be capped to avoid excessive hauling
    local max_items = errand.storage_space_lease.quantity
-   local container = stonehearth.inventory:get_inventory(errand.main_item):container_for(errand.main_item)
+   local inventory = stonehearth.inventory:get_inventory(errand.main_item)
+   local container = inventory and inventory:container_for(errand.main_item)
    local main_item_location = container and radiant.entities.get_world_grid_location(container) or radiant.entities.get_world_grid_location(errand.main_item)
    local storage_location = radiant.entities.get_world_grid_location(errand.storage)
    local min_distance_sq = stonehearth.constants.inventory.MAX_IGNORE_MAX_ITEMS_DISTANCE * stonehearth.constants.inventory.MAX_IGNORE_MAX_ITEMS_DISTANCE
    if main_item_location and storage_location and main_item_location:distance_to_squared(storage_location) >= min_distance_sq then
-      max_items = nil
+      max_items = stonehearth.constants.inventory.restock_director.MAX_EXTRA_ITEMS
    end
 
    ai:set_utility(score)
