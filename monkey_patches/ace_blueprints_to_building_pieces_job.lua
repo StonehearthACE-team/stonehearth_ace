@@ -378,6 +378,12 @@ function AceBlueprintsToBuildingPiecesJob:clone_nav_grid()
          for _, b in stonehearth.building:get_buildings():each() do
             local bc = b:get('stonehearth:build2:building')
             if bc:completed() then
+               local r = bc:get_total_building_region()
+               if r then
+                  cursor:add_region(r)
+               else
+                  log:error('building %s has no total building region!', radiant.entities.get_custom_name(b))
+               end
                cursor:add_region(bc:get_total_building_region())
             end
          end
