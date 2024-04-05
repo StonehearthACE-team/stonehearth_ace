@@ -81,7 +81,8 @@ function AcePutAnotherRestockableItemIntoBackpack:_find_path_to_item(ai, entity,
    end
 
    -- ACE: also check if we're carrying more than we're allowed to for this errand
-   if args.max_items and radiant.size(ai.CURRENT.storage.items) >= args.max_items then
+   -- > check instead of >= because max_items is just max additional items beyond the primary item
+   if args.max_items and radiant.size(ai.CURRENT.storage.items) > args.max_items then
       self._log:debug('already carrying max items')
       ai:set_debug_progress('already carrying max items')
       return

@@ -118,6 +118,40 @@ function AceCraftOrderList:_validate_craft_orders()
    end
 end
 
+-- after loading all the recipes for this job, verify existing orders in the order list:
+--    if the order is for a recipe that no longer exists, remove it
+--    if the order is for a recipe that still exists, update the order's recipe
+--    if the order has associated orders that may no longer be necessary, or doesn't include some that now should, ignore those changes
+function AceCraftOrderList:verify_order_recipes(recipes)
+   local orders = self._sv.orders
+   local secondary_orders = self._sv.secondary_orders
+   local auto_craft_orders = self._sv.auto_craft_orders
+
+   for _, order_list in ipairs({orders, secondary_orders, auto_craft_orders}) do
+      if order_list then
+         for i = #order_list, 1, -1 do
+            local order = order_list[i]
+            if order then
+               -- the recipe hasn't been loaded yet, so access it through saved variables
+               local recipe = order._sv.recipe
+               local recipe_key = recipe.recipe_key
+               local recipe_data = recipes[recipe_key]
+               if not recipe_data then
+                  -- recipe no longer exists, remove the order
+                  -- also make sure the recipe is loaded in the order if it needs to be removed
+                  log:debug('removing invalid order %s', recipe_key)
+                  self:remove_order(order:get_id())
+               elseif recipe_data ~= recipe then
+                  -- recipe still exists, update the order's recipe
+                  log:debug('updating recipe data for order %s', recipe_key)
+                  order:set_recipe(recipe_data)
+               end
+            end
+         end
+      end
+   end
+end
+
 -- because of the way the creation of job info controllers and crafter order lists works,
 -- we can't actually create the crafter info controller until after it's been fully created
 -- (after post_activate) so just do it the first time it's requested instead

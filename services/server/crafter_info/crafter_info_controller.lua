@@ -28,7 +28,7 @@ end
 function CrafterInfoController:post_activate()
    self._kingdom_changed_listener = radiant.events.listen(_radiant, 'radiant:player_kingdom_changed',
                                                           self, self._on_player_kingdom_changed)
-   
+
    self:_create_maps()
 end
 
@@ -56,7 +56,7 @@ function CrafterInfoController:_create_maps()
    self._sv._order_lists = {}
 
    log:debug('creating maps for %s...', self._sv.player_id)
-   
+
    local player_id = self._sv.player_id
    local pop = stonehearth.population:get_population(player_id)
    local job_index = radiant.resources.load_json( pop:get_job_index() )
@@ -154,16 +154,16 @@ function CrafterInfoController:_format_recipe(name, recipe)
          end
 
          formatted_ingredient.kind       = 'uri'
+         formatted_ingredient.uri  = ingredient.uri
          formatted_ingredient.identifier = ingredient.uri
 
-         if ingredient_data.components then
+         if ingredient_data.entity_data and ingredient_data.entity_data["stonehearth:catalog"] then
             formatted_ingredient.name = ingredient_data.entity_data["stonehearth:catalog"].display_name
             formatted_ingredient.icon = ingredient_data.entity_data["stonehearth:catalog"].icon
-            formatted_ingredient.uri  = ingredient.uri
+         end
 
-            if ingredient_data.components['stonehearth:entity_forms'] and ingredient_data.components['stonehearth:entity_forms'].iconic_form then
-               formatted_ingredient.identifier = ingredient_data.components['stonehearth:entity_forms'].iconic_form
-            end
+         if ingredient_data.components and ingredient_data.components['stonehearth:entity_forms'] and ingredient_data.components['stonehearth:entity_forms'].iconic_form then
+            formatted_ingredient.identifier = ingredient_data.components['stonehearth:entity_forms'].iconic_form
          end
       else
          -- this ingredient has neither a material nor a uri
@@ -217,7 +217,7 @@ function CrafterInfoController:_format_recipe(name, recipe)
             (product_catalog.category ~= 'resources' and product_catalog.category ~= 'wealth' or recipe.ace_smart_crafter_skip_category_filter) then
 
          all_products[product] = count
-         
+
          if product_catalog.material_tags then
             local mat_tags = product_catalog.material_tags
             if type(mat_tags) == 'string' then

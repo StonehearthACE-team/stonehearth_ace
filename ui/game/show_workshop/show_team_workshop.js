@@ -702,15 +702,15 @@ App.StonehearthTeamCrafterView = App.View.extend({
             Ember.set(formatted_recipe, 'is_locked', is_locked || is_hidden);
 
             formatted_recipe.hasWorkshop = formatted_recipe.workshop != null;
-            var formatted_workshop = {};
-            if (formatted_recipe.hasWorkshop) {
-               formatted_workshop.uri = formatted_recipe.workshop;
-               var catalogData = App.catalog.getCatalogData(formatted_workshop.uri);
-               if (catalogData) {
-                  formatted_workshop.equivalents = catalogData.workshop_equivalents;
-               }
-               formatted_recipe.workshop = formatted_workshop;
-            }
+            // var formatted_workshop = {};
+            // if (formatted_recipe.hasWorkshop) {
+            //    formatted_workshop.uri = formatted_recipe.workshop;
+            //    var catalogData = App.catalog.getCatalogData(formatted_workshop.uri);
+            //    if (catalogData) {
+            //       formatted_workshop.equivalents = catalogData.workshop_equivalents;
+            //    }
+            //    formatted_recipe.workshop = formatted_workshop;
+            // }
 
             formatted_recipe.is_craftable = self._areRequirementsMet(formatted_recipe, highestLevel) ? 1 : 0;
             //formatted_recipe.category = category_id;
