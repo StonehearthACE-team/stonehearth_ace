@@ -162,6 +162,7 @@ local monkey_patches = {
    ace_pillage_mission = 'stonehearth.services.server.game_master.controllers.missions.pillage_mission',
    ace_place_carrying_on_structure_adjacent_action = 'stonehearth.ai.actions.place_carrying_on_structure_adjacent_action',
    ace_place_item_call_handler = 'stonehearth.call_handlers.place_item_call_handler',
+   ace_plan = 'stonehearth.components.building2.plan.plan',
    ace_plan_job = 'stonehearth.components.building2.plan.jobs.plan_job',
    ace_plant_field_adjacent_action = 'stonehearth.ai.actions.plant_field_adjacent_action',
    ace_player_jobs_controller = 'stonehearth.services.server.job.player_jobs_controller',
