@@ -76,10 +76,9 @@ function CrafterInfoController:_create_maps()
             else
                for recipe_name, recipe_data in pairs(category_data.recipes) do
                   -- Check if the recipe's workshop has a valid uri first
-                  local workshop_uri = recipe_data.recipe.workshop
-                  if workshop_uri and not stonehearth.catalog:get_catalog_data(workshop_uri) then
+                  if recipe_data.recipe.workshop and not recipe_data.recipe.hasWorkshop then
                      log:error('For recipe "%s": the workshop uri "%s" does not exist as an alias in its manifest',
-                        recipe_name, workshop_uri)
+                        recipe_name, recipe_data.recipe.workshop)
                   else
                      if not recipe_data.recipe.ace_smart_crafter_ignore then  -- ignore recipes that are explicitly marked to be ignored by smart crafter
                         local formatted_recipe = self:_format_recipe(recipe_name, recipe_data.recipe)
@@ -117,17 +116,19 @@ function CrafterInfoController:_format_recipe(name, recipe)
    -- Format recipe to match show_team_workshop.js:_buildRecipeArray()
    local formatted_recipe = radiant.shallow_copy(recipe)
 
+   -- This is getting added already in the job info controller now:
    -- Add information pertaining the workshop
-   local workshop_uri = recipe.workshop
-   formatted_recipe.hasWorkshop = workshop_uri ~= nil
-   if formatted_recipe.hasWorkshop then
-      local workshop_data = radiant.resources.load_json(workshop_uri)
-      formatted_recipe.workshop = {
-         name = workshop_data.entity_data["stonehearth:catalog"].display_name,
-         icon = workshop_data.entity_data["stonehearth:catalog"].icon,
-         uri  = workshop_uri,
-      }
-   end
+   -- local workshop_uri = recipe.workshop
+   -- formatted_recipe.hasWorkshop = workshop_uri ~= nil
+   -- if formatted_recipe.hasWorkshop then
+   --    workshop_uri = workshop_uri.uri or workshop_uri
+   --    local workshop_data = radiant.resources.load_json(workshop_uri)
+   --    formatted_recipe.workshop = {
+   --       name = workshop_data.entity_data["stonehearth:catalog"].display_name,
+   --       icon = workshop_data.entity_data["stonehearth:catalog"].icon,
+   --       uri  = workshop_uri,
+   --    }
+   -- end
 
    -- Add extra information to each ingredient in the recipe
    local formatted_ingredients = {}
