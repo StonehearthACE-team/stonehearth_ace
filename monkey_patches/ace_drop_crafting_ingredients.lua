@@ -47,6 +47,19 @@ function AceDropCraftingIngredients:run(ai, entity, args)
 
       crafter_component:set_current_workshop(args.target)
 
+      local drop_offset
+      local container_entity_data = radiant.entities.get_entity_data(args.target, 'stonehearth:table')
+      if container_entity_data then
+         local offset = container_entity_data['drop_offset']
+         if offset then
+            local facing = radiant.entities.get_facing(args.entity)
+            local offset = Point3(offset.x, offset.y, offset.z)
+            drop_offset = offset:rotated(facing)
+         end
+      end
+
+      local max_to_drop = order:get_max_ingredients_to_animate_dropping()
+      local num_dropped = 0
       while true do
          local item = crafter_component:remove_first_item()
          if not item then
@@ -56,9 +69,19 @@ function AceDropCraftingIngredients:run(ai, entity, args)
          if item:is_valid() then
             --Should be OK because this action starts with drop carrying now, but just in case!
             assert(not radiant.entities.is_carrying(entity))
-            radiant.entities.pickup_item(entity, item)
-            --Feeling kind of bad about this; this doesn't block now but what if it does later?
-            ai:execute('stonehearth:drop_carrying_into_entity_adjacent', { entity = args.target })
+
+            -- if we've already dropped a lot of items, just instantly dump the rest so we're not here all day
+            if num_dropped > max_to_drop then
+               radiant.entities.put_carrying_into_entity(entity, args.target)
+               if drop_offset then
+                  item:add_component('mob'):move_to(drop_offset)
+               end
+            else
+               radiant.entities.pickup_item(entity, item)
+               --Feeling kind of bad about this; this doesn't block now but what if it does later?
+               ai:execute('stonehearth:drop_carrying_into_entity_adjacent', { entity = args.target })
+               num_dropped = num_dropped + 1
+            end
          else
             log:warning('Crafting ingredient destroyed before dropping onto workshop. Allowing craft to continue.')
          end
