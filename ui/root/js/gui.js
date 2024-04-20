@@ -352,7 +352,7 @@ App.guiHelper = {
 
       if (catalogData.equipment_ilevel) {
          equipmentRequirements += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_equipment_ilevel')}</span>` +
-                  `<span class="value">${catalogData.equipment_ilevel}</span></div>`;
+                  `<span class="value">${catalogData.equipment_ilevel * 10}</span></div>`;
       }
 
       if (equipmentRequirements != '') {
