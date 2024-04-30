@@ -362,7 +362,7 @@
 
          {{#each view.model.order_list.secondary_orders}}
          <div {{bind-attr class=":orderListItem :secondaryList is_crafting:inProgress: condition.at_least:maintainOrder:normalOrder" data-orderId="this.id"}}
-         {{action "select" recipe 0 condition.at_least target="view"}}>
+         {{action "select" recipe condition.remaining condition.at_least target="view"}}>
             <a href="#">
                <img {{bind-attr src = "this.portrait"}}>
             </a>
@@ -383,7 +383,7 @@
             <div class="orderInfoIcon thresholdReachedIcon"></div>
             <div class="orderInfoIcon issueIcon"></div>
             <label class="deleteLabel">{{i18n stonehearth:ui.game.show_workshop.workshop_remove_confirm}}</label>
-            <div class="modifyOrder"></div>
+            <div class="interactionOverlay"></div>
          </div>
          {{/each}}
 
@@ -393,7 +393,7 @@
 
          {{#each view.model.order_list.auto_craft_orders}}
          <div {{bind-attr class=":orderListItem is_crafting:inProgressAutoCraftOrder:autoCraftOrder" data-orderId="this.id"}}
-         {{action "select" recipe 0 condition.at_least target="view"}}>
+         {{action "select" recipe condition.remaining condition.at_least target="view"}}>
             <a href="#">
                <img {{bind-attr src = "this.portrait"}}>
             </a>
@@ -403,7 +403,7 @@
             <div class="orderInfoIcon thresholdReachedIcon"></div>
             <div class="orderInfoIcon issueIcon"></div>
             <label class="deleteLabel">{{i18n stonehearth:ui.game.show_workshop.workshop_remove_confirm}}</label>
-            <div class="modifyOrder"></div>
+            <div class="interactionOverlay"></div>
          </div>
          {{/each}}
       </div>
@@ -427,7 +427,7 @@
 
          {{#each view.model.order_list.orders}}
             <div {{bind-attr class=":orderListItem is_crafting:inProgress condition.at_least:maintainOrder:normalOrder" data-orderId="this.id"}}
-            {{action "select" recipe condition.remaining 0 target="view"}}>
+            {{action "select" recipe condition.remaining condition.at_least target="view"}}>
                <a href="#">
                   <img {{bind-attr src = "this.portrait"}}>
                </a>
@@ -447,7 +447,7 @@
                {{/if}}
                <div class="orderInfoIcon issueIcon"></div>
                <label class="deleteLabel">{{i18n stonehearth:ui.game.show_workshop.workshop_remove_confirm}}</label>
-               <div class="modifyOrder"></div>
+               <div class="interactionOverlay"></div>
             </div>
          {{/each}}
       </div>
@@ -470,7 +470,7 @@
       <table id="makeOrdersTable">
          {{#each view.model.order_list.orders}}
             <tr class="orderListRow" {{bind-attr data="this.id"}}>
-               <td {{bind-attr class=":orderListRowPortrait condition.at_least:maintainOrder:"}}>
+               <td {{bind-attr class=":orderListRowPortrait condition.at_least:maintainOrder:normalOrder"}}>
                   <img class="orderListRowImage" {{bind-attr src="this.portrait" title="this.recipe.recipe_name"}}>
                </td>
                <td class="orderListRowCondition">

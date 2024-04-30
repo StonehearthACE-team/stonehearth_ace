@@ -744,21 +744,66 @@ function AceCraftOrder:reduce_quantity(amount)
             self:_remove_desires(reduction)
             self.__saved_variables:mark_changed()
 
-            self:_reduce_associated_orders_quantity(reduction)
+            self:_change_associated_orders_quantity(-reduction)
          end
 
          return true
-      -- elseif condition.remaining > amount then
-      --    self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, amount)
-      --    condition.remaining = condition.remaining - amount
-      --    self.__saved_variables:mark_changed()
+      elseif not condition.requested_amount then
+         self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, amount)
+         condition.remaining = condition.remaining - amount
+         self.__saved_variables:mark_changed()
 
-      --    self:_reduce_associated_orders_quantity(amount)
+         self:_change_associated_orders_quantity(-amount)
 
-      --    return true
+         return true
       else
          return false
       end
+   elseif condition.at_least then
+      condition.at_least = condition.at_least - amount
+      self:_remove_desires(amount)
+      self.__saved_variables:mark_changed()
+      return true
+   end
+end
+
+function AceCraftOrder:increase_quantity(amount)
+   log:debug('[%s] increase_quantity(%s)', self:get_id(), amount)
+   local condition = self._sv.condition
+   if condition.type == 'make' then
+      if condition.requested_amount and condition.requested_amount < amount and self._num_primary_product_per_craft then
+         log:debug('increasing quantity requested by [%s] from %s to %s', self:get_id(), condition.requested_amount, condition.requested_amount + amount)
+         condition.requested_amount = condition.requested_amount + amount
+         local new_remaining = math.ceil(condition.requested_amount / self._num_primary_product_per_craft)
+
+         if new_remaining > condition.remaining then
+            log:debug('increasing recipe quantity by [%s] from %s to %s', self:get_id(), condition.remaining, new_remaining)
+            local increase = new_remaining - condition.remaining
+            self._sv.order_list:add_to_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, increase)
+            condition.remaining = new_remaining
+            self:_add_desires(increase)
+            self.__saved_variables:mark_changed()
+
+            self:_change_associated_orders_quantity(increase)
+         end
+
+         return true
+      elseif not condition.requested_amount then
+         self._sv.order_list:add_to_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, amount)
+         condition.remaining = condition.remaining + amount
+         self.__saved_variables:mark_changed()
+
+         self:_change_associated_orders_quantity(amount)
+
+         return true
+      else
+         return false
+      end
+   elseif condition.at_least then
+      condition.at_least = condition.at_least + amount
+      self:_add_desires(amount)
+      self.__saved_variables:mark_changed()
+      return true
    end
 end
 
@@ -772,33 +817,52 @@ function AceCraftOrder:change_quantity(quantity)
    end
 
    local condition = self._sv.condition
-   if condition.type == 'maintain' then
-      if condition.at_least ~= quantity then
-         condition.at_least = quantity
-         self:_remove_desires()
-         self:_add_desires()
-         self.__saved_variables:mark_changed()
-         return true
-      end
-   else
-      if quantity < condition.requested_amount then
-         return self:reduce_quantity(condition.requested_amount - quantity)
-      elseif quantity > condition.requested_amount then
-         -- unsupported
-      end
+   local amount = condition.requested_amount or condition.remaining or condition.at_least
+   if quantity < amount then
+      return self:reduce_quantity(amount - quantity)
+   elseif quantity > amount then
+      return self:increase_quantity(quantity - amount)
    end
 end
 
-function AceCraftOrder:_reduce_associated_orders_quantity(amount)
-   log:debug('[%s] _reduce_associated_orders_quantity(%s)', self:get_id(), amount)
+function AceCraftOrder:_change_associated_orders_quantity(amount)
+   log:debug('[%s] _change_associated_orders_quantity(%s)', self:get_id(), amount)
    local associated_orders = self:get_associated_orders()
    if associated_orders and #associated_orders > 0 then
       for _, associated_order in ipairs(associated_orders) do
          -- if the associated order is an ingredient for this recipe, reduce it by the amount that this recipe requires
          if associated_order.parent_order == self then
-            associated_order.order:get_order_list():remove_order(associated_order.order:get_id(), amount * associated_order.ingredient_per_craft)
+            local ing_amount = amount * associated_order.ingredient_per_craft
+            local order_list = associated_order.order:get_order_list()
+            if associated_order.order:change_quantity(ing_amount) then
+               order_list:_on_order_list_changed()
+               if associated_order.order:is_auto_craft_recipe() then
+                  order_list:_on_auto_craft_orders_changed()
+               end
+            elseif amount < 0 then
+               order_list:remove_order(associated_order.order:get_id())
+            end
          end
       end
+   end
+end
+
+function AceCraftOrder:_add_desires(num)
+   assert(num or not next(self._desires))
+   -- TODO: For maintain orders, we could batch all the counts together.
+   local count = num or self._sv.condition.amount or self._sv.condition.at_least
+
+   local desires_tracker = stonehearth.inventory:get_inventory(self._sv.player_id):get_desires()
+   for _ = 1, count do
+      local desire = {}
+      for _, ingredient in ipairs(self._recipe.ingredients) do
+         if ingredient.uri then
+            table.insert(desire, desires_tracker:request_item(ingredient.uri, ingredient.count))
+         elseif ingredient.material then
+            table.insert(desire, desires_tracker:request_material(ingredient.material, ingredient.count))
+         end
+      end
+      table.insert(self._desires, desire)
    end
 end
 
