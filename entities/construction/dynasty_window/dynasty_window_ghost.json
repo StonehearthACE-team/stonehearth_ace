@@ -1,0 +1,55 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "mob": {
+         "align_to_grid": [
+            "x"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dynasty_window.qb)"
+            ]
+         }
+      },
+      "stonehearth:fixture": {
+         "cursor": "stonehearth:cursors:create_window",
+         "margin": {
+            "left": 0,
+            "right": 0,
+            "top": 1,
+            "bottom": 1
+         },
+         "bounds": {
+            "min": { "x": -1, "y": 0 },
+            "max": { "x": 1, "y": 2 }
+         }
+      },
+      "stonehearth:portal": {
+         "cutter": [
+            {
+               "min": { "x": -1, "y": 0 },
+               "max": { "x": 1, "y": 2 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.dynasty_window.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.dynasty_window.description)",
+         "icon": "file(dynasty_window.png)",
+         "category": "window",
+         "material_tags": [
+            "wood",
+            "dynasty",
+            "fancy",
+            "portal",
+            "window",
+            "stockpile_portal"
+         ]
+      }
+   }
+}

@@ -1,0 +1,68 @@
+{
+   "mixins": "stonehearth_ace:armor:iron_archer_mail",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(dy_iron_archer_mail.qb)"
+            ]
+         },
+         "female": {
+            "layer": "clothing",
+            "transparent": "false",
+            "models": [
+               "file(dy_iron_archer_mail_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(dy_iron_archer_mail_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "ilevel": 5.5,
+         "mixintypes": {
+            "additional_equipment": "override"
+         },
+         "additional_equipment": {
+            "stonehearth_ace:armor:dy_iron_archer_mail:hat": true
+         },
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:chilly_resist"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 64,
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.dy_iron_archer_mail.display_name)",
+         "description": "i18n(stonehearth_ace:entities.armor.dy_iron_archer_mail.description)",
+         "icon": "file(dy_iron_archer_mail.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "iron",
+            "armor",
+            "torso",
+            "light_armor",
+            "eastern",
+            "dynasty",
+            "dy_made",
+            "archer_mail",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

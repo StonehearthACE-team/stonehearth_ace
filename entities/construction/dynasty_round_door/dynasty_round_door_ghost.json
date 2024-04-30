@@ -1,0 +1,33 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:portals:double_door:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dynasty_round_door.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.dynasty_round_door.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.dynasty_round_door.description)",
+         "icon": "file(dynasty_round_door.png)",
+         "category": "door",
+         "material_tags": [
+            "stone",
+            "dynasty",
+            "fancy",
+            "double",
+            "portal",
+            "door",
+            "stockpile_portal"
+         ]
+      }
+   }
+}

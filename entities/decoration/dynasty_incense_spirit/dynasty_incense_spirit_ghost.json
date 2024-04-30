@@ -1,0 +1,45 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dynasty_incense_spirit.qb)"
+            ]
+         },
+         "lamp_on": {
+            "models": [
+               "file(dynasty_incense_spirit_lamp_on.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.04, "y": 0, "z": -0.04 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:dynasty",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ],
+         "scale": 0.08
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.dynasty_incense_spirit.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.dynasty_incense_spirit.description)",
+         "icon": "file(dynasty_incense_spirit.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "comfy",
+            "stockpile_decoration",
+            "incense",
+            "spirit",
+            "dynasty"
+         ]
+      }
+   }
+}

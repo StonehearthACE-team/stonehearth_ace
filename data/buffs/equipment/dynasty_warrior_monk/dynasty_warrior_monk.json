@@ -1,0 +1,32 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.dynasty_warrior_monk.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.dynasty_warrior_monk.description)",
+   "icon": "file(dynasty_warrior_monk.png)",
+   "modifiers": {
+      "courage": {
+         "add": 200
+      },
+      "speed": {
+         "add": 15
+      },
+      "menace": {
+         "add": 30
+      },
+      "multiplicative_dmg_modifier": {
+         "add": 0.2
+      },
+      "multiplicative_heal_received_modifier": {
+         "add": 1
+      }
+   },
+   "script": "stonehearth_ace:buff_scripts:thorns",
+   "script_info": {
+      "damage_percent": 0.5
+   },
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:dynasty_using_rod",
+      "stonehearth_ace:buffs:dynasty_monk_garments"
+   ]
+}

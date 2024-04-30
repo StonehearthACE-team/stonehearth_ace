@@ -25,9 +25,9 @@
       },
       "stonehearth:resource_node": {
          "resource": "stonehearth_ace:resources:thatch_bale",
-         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
-         "harvester_effect": "mine",
-         "description": "mine",
+         "harvest_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
+         "harvester_effect": "fiddle",
+         "description": "collect_pile",
          "durability": 15
       },
       "stonehearth_ace:pile": {
@@ -49,6 +49,9 @@
       },
       "stonehearth_ace:replant_data": {
          "seed_alias": "stonehearth_ace:containers:thatch_pile"
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
       }
    }
 }

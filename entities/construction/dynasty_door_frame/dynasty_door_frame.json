@@ -1,0 +1,30 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(dynasty_door_frame_ghost.json)",
+      "stonehearth_ace:mixins:portals:single_door_frame"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(dynasty_door_frame_iconic.json)",
+         "ghost_form": "file(dynasty_door_frame_ghost.json)",
+         "hide_placement_ui": false
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 20,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 12
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}
