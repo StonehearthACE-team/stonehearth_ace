@@ -1,0 +1,19 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.dynasty_incense_buff.body.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.dynasty_incense_buff.description)",
+   "icon": "file(dynasty_incense_body_buff.png)",
+   "destroy_entity_on_expiration": true,
+   "duration": "7d+24h",
+   "repeat_add_action": "renew_duration",
+   "script": "stonehearth:buff_scripts:aura",
+   "script_info": {
+      "pulse": "15m",
+      "aura_buff": "stonehearth_ace:buffs:dynasty_incense_body:effect",
+      "radius": 8,
+      "affect_self": false,
+      "target_type": "mob",
+      "sensor_name": "dynasty_incense"
+   }
+}

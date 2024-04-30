@@ -1,0 +1,19 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.dynasty_incense_buff.body.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.dynasty_incense_buff.body.description)",
+   "icon": "file(dynasty_incense_body_buff.png)",
+   "thought": "stonehearth_ace:thoughts:special:dynasty_incense",
+   "duration": "1h",
+   "repeat_add_action": "renew_duration",
+   "disallowed_buffs": [
+      "stonehearth_ace:buffs:dynasty_incense_mind:effect",
+      "stonehearth_ace:buffs:dynasty_incense_spirit:effect"
+   ],
+   "modifiers": {
+      "body": {
+         "add": 1
+      }
+   }
+}

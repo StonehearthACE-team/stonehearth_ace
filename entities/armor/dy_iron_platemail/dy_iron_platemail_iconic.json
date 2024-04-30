@@ -1,0 +1,25 @@
+{
+   "mixins": "/stonehearth_ace/entities/armor/iron_platemail/iron_platemail_iconic.json",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(dy_iron_platemail_iconic.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.dy_iron_platemail.display_name)",
+         "icon": "file(dy_iron_platemail.png)"
+      }
+   }
+}

@@ -1,0 +1,44 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(dynasty_lantern_long_wall.qb)"
+            ]
+         },
+         "lamp_on": {
+            "models": [
+               "file(dynasty_lantern_long_wall_lamp_on.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.1 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:dynasty",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ],
+         "scale": 0.1
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.dynasty_lantern_long_wall.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.dynasty_lantern_long_wall.description)",
+         "icon": "file(dynasty_lantern_long_wall.png)",
+         "category": "decoration",
+         "material_tags": [
+            "light_source",
+            "dynasty",
+            "paper",
+            "lantern",
+            "fancy",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}
