@@ -211,7 +211,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
    },
 
-   dismiss: function () {
+   dismiss: function (pressedEsc) {
+      // if the player pressed escape to close the window, check if we should instead close interaction divs
+      if (pressedEsc && this._destroyModifyOrderDiv()) {
+         return true;
+      }
       this.hide(true);
    },
 
@@ -671,10 +675,13 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
    _destroyModifyOrderDiv: function() {
       var self = this;
-      var modifyDif = self.$().find('.modifyOrder');
-      modifyDif.find('.tooltipstered').tooltipster('destroy')
-      modifyDif.remove();
       self._isModifyingOrder = false;
+      var modifyDif = self.$().find('.modifyOrder');
+      if (modifyDif.length > 0) {
+         modifyDif.find('.tooltipstered').tooltipster('destroy')
+         modifyDif.remove();
+         return true;
+      }
    },
 
    _setupModifyOrder: function ($el) {
@@ -695,7 +702,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       // check if we're already modifying this order
-      // if so, just camcel it and return
+      // if so, just cancel it and return
       var hasExistingModifyOrder = $el.find('.modifyOrder').length > 0;
       self._destroyModifyOrderDiv();
 
