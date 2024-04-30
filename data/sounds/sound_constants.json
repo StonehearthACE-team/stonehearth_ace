@@ -209,20 +209,20 @@
       },
       "rain_sunny": {
          "day": {
-            "track"    :  [
-                        "stonehearth:ambient:rain"
-                           ],
-            "loop"     : true,
-            "fade_in"  : 2000,
-            "volume"   : 32
+            "track": [
+               "stonehearth:ambient:rain"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 32
          },
          "night": {
-            "track"    :  [
-                        "stonehearth:ambient:rain"
-                           ],
-            "loop"     : true,
-            "fade_in"  : 2000,
-            "volume"   : 38
+            "track": [
+               "stonehearth:ambient:rain"
+            ],
+            "loop": true,
+            "fade_in": 2000,
+            "volume": 38
          }
       },
       "rain_winter": {
@@ -472,15 +472,15 @@
                   "stonehearth_ace:music:ace_rajmann_dungeon",
                   "stonehearth_ace:music:ace_rajmann_dungeon_2"
                ],
-               "volume"   : 45,
+               "volume": 45,
                "loop": true,
-               "priority": 95       
+               "priority": 95
             },
             "under_siege": {
                "track": [
                   "stonehearth_ace:music:ace_rajmann_under_siege"
                ],
-               "volume"   : 50,
+               "volume": 50,
                "loop": true,
                "priority": 100
             },
@@ -488,7 +488,7 @@
                "track": [
                   "stonehearth_ace:music:ace_rajmann_something_banging_at_the_gates"
                ],
-               "volume"   : 50,
+               "volume": 50,
                "loop": true,
                "priority": 98
             },
@@ -496,7 +496,7 @@
                "track": [
                   "stonehearth_ace:music:ace_rajmann_something_clanging_in_the_dark"
                ],
-               "volume"   : 55,
+               "volume": 55,
                "loop": true,
                "priority": 99
             }
@@ -510,14 +510,14 @@
                         "track": "stonehearth:music:combat_start"
                      },
                      {
-                        "track" : [
+                        "track": [
                            "stonehearth:music:combat_theme_a",
                            "stonehearth:music:combat_theme_b",
                            "stonehearth:music:combat_theme_c"
                         ],
-                        "volume"   : 45,
-                        "fade_in"  : 100,
-                        "loop"     : true
+                        "volume": 45,
+                        "fade_in": 100,
+                        "loop": true
                      }
                   ],
                   "priority": 90
@@ -569,15 +569,15 @@
                "stonehearth_ace:music:ace_rajmann_lucky_night",
                "stonehearth_ace:music:ace_rajmann_lucky_night",
                "stonehearth_ace:music:ace_rajmann_lucky_night"
-            ]  
+            ]
          }
-      },      
+      },
       "cloudy": {},
       "cloudy_desert": {},
-      "cloudy_winter": {},      
+      "cloudy_winter": {},
       "foggy": {},
-      "foggy_winter": {},      
-      "distant_storm": {},      
+      "foggy_winter": {},
+      "distant_storm": {},
       "rain_sunny": {
          "day": {
             "track": [
@@ -587,7 +587,7 @@
             ],
             "volume": 45
          }
-      },      
+      },
       "rain": {
          "day": {
             "track": [
@@ -607,9 +607,9 @@
             ],
             "volume": 45
          }
-      },      
-      "thunderstorm": {},  
-      "hailstorm": {},    
+      },
+      "thunderstorm": {},
+      "hailstorm": {},
       "snow_early": {
          "day": {
             "track": [
@@ -627,7 +627,7 @@
             ],
             "volume": 48
          }
-      },               
+      },
       "snow": {
          "day": {
             "track": [
@@ -646,16 +646,16 @@
             "volume": 48
          }
       },
-      "snow_drifts": {},   
-      "blizzard": {},      
-      "whiteout": {},      
+      "snow_drifts": {},
+      "blizzard": {},
+      "whiteout": {},
       "titanstorm": {},
       "under_siege": {
          "day": {
             "track": [
                "stonehearth_ace:music:ace_rajmann_under_siege"
             ],
-            "volume"   : 50,
+            "volume": 50,
             "loop": true,
             "priority": 100
          },
@@ -663,13 +663,13 @@
             "track": [
                "stonehearth_ace:music:ace_rajmann_under_siege"
             ],
-            "volume"   : 50,
+            "volume": 50,
             "loop": true,
             "priority": 100
          }
       },
       "windy": {},
-      "sunny_chilly": {},      
+      "sunny_chilly": {},
       "sunny_autumn": {
          "day": {
             "track": [
@@ -680,11 +680,11 @@
          }
       },
       "sunny": {},
-      "sunny_desert": {},      
+      "sunny_desert": {},
       "sunny_hot": {},
       "sunny_sweltering": {},
       "sunny_stagnant": {},
-      "sandstorm": {},            
+      "sandstorm": {},
       "windy_chilly": {
          "day": {
             "track": [
@@ -695,6 +695,19 @@
          }
       },
       "windy_springtime": {},
+      "dynasty": {
+         "track": [
+            "stonehearth_ace:music:ace_gwriterstudio_dynasty_1",
+            "stonehearth_ace:music:ace_gwriterstudio_dynasty_2",
+            "stonehearth_ace:music:ace_gwriterstudio_dynasty_3",
+            "stonehearth_ace:music:ace_gwriterstudio_dynasty_4",
+            "stonehearth_ace:music:ace_gwriterstudio_dynasty_5",
+            "stonehearth_ace:music:ace_gwriterstudio_dynasty_6"
+         ],
+         "volume": 51,
+         "loop": false,
+         "priority": 80
+      },
       "candledark_celebration": {
          "track": [
             "stonehearth_ace:music:ace_gwriterstudio_candledark_celebration_1"

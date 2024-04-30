@@ -1,0 +1,60 @@
+{
+   "mixins": "stonehearth_ace:armor:iron_platemail",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override",
+            "female": "override"
+         },
+         "default": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(dy_iron_platemail.qb)"
+            ]
+         },
+         "female": {
+            "layer": "armor",
+            "transparent": "false",
+            "models": [
+               "file(dy_iron_platemail_female.qb)"
+            ]
+         }
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(dy_iron_platemail_iconic.json)"
+      },
+      "stonehearth:equipment_piece": {
+         "injected_buffs": [
+            "stonehearth_ace:buffs:weather:chilly_resist"
+         ],
+         "ilevel": 7.5
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 85,
+         "shop_info": {
+            "buyable": false
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.armor.dy_iron_platemail.display_name)",
+         "icon": "file(dy_iron_platemail.png)",
+         "mixintypes": {
+            "material_tags": "override"
+         },
+         "material_tags": [
+            "iron",
+            "armor",
+            "heavy_armor",
+            "eastern",
+            "dynasty",
+            "dy_made",
+            "torso",
+            "stockpile_equipment"
+         ]
+      }
+   }
+}

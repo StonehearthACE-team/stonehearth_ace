@@ -30,11 +30,14 @@
          "resource": "stonehearth:refined:gold_ingot",
          "harvest_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
          "harvester_effect": "fiddle",
-         "description": "harvest",
+         "description": "collect_pile",
          "durability": 12
       },
       "effect_list": {
          "default": "stonehearth_ace:effects:treasure_glow_large"
+      },
+      "stonehearth_ace:pile": {
+         "harvest_rate": 1
       }
    },
    "entity_data": {
@@ -49,6 +52,12 @@
       },
       "stonehearth:appeal": {
          "appeal": 25
+      },
+      "stonehearth_ace:replant_data": {
+         "seed_alias": "stonehearth_ace:containers:gold_ingot_pile"
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": false
       }
    }
 }

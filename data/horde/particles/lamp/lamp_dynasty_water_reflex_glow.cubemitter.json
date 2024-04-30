@@ -1,0 +1,134 @@
+{
+   "name": "fire",
+   "duration": 10000,
+   "material": "materials/cubemitter_bloom.material.json",
+   "loops": true,
+   "emission": {
+      "rate": {
+         "kind": "CONSTANT",
+         "values": [2.5]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [180]
+      },
+      "origin": {
+         "surface": "POINT",
+         "values": {
+            "surface": "POINT"
+         }
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [1000, 6000]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0.7]
+         }
+      },
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [1.45, 1.6]
+         },
+         "over_lifetime": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0.95],
+               [0.4, 1.15],
+               [0.8, 0.5],
+               [1, 0.2]
+            ]
+         },
+         "over_lifetime_y": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0.95],
+               [1, 1.8]
+            ]
+         }
+      },
+      "color": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [1, 0.77, 0.48, 0.1]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.1, 0.03],
+               [0.8, 0.05],
+               [0.9, 0.01],
+               [1, 0]
+            ]
+         },
+         "over_lifetime_g__": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0.7],
+               [0.4, 0.7],
+               [0.7, 0.1],
+               [1, 0]
+            ]
+         }
+      },
+      "rotation__": {
+         "over_lifetime_x": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, -360],
+                  [1, 360]
+               ],
+               [
+                  [0, 360],
+                  [1, 360]
+               ]
+            ]
+         }
+      },
+      "velocity_": {
+         "over_lifetime_z": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 0],
+                  [0.4, 0],
+                  [0.6, 2],
+                  [1, -2]
+               ],
+               [
+                  [0, 0],
+                  [0.4, 0],
+                  [0.6, 7],
+                  [1, -7]
+               ]
+            ]
+         },
+         "over_lifetime_x": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 0],
+                  [0.4, 0],
+                  [0.6, 2],
+                  [1, -2]
+               ],
+               [
+                  [0, 0],
+                  [0.4, 0],
+                  [0.6, 7],
+                  [1, -7]
+               ]
+            ]
+         }
+      }
+   }
+}

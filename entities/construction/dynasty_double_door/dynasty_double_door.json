@@ -1,0 +1,31 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(dynasty_double_door_ghost.json)",
+      "stonehearth:mixins:portals:double_door",
+      "stonehearth_ace:mixins:double_destructable_door"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(dynasty_double_door_iconic.json)",
+         "ghost_form": "file(dynasty_double_door_ghost.json)",
+         "hide_placement_ui": false
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 48,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 24
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

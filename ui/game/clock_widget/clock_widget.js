@@ -324,7 +324,7 @@ App.StonehearthCalendarView = App.View.extend({
                if (remainingDays < 0) {   // ACE: just changed this from <= to < so it doesn't say 84 days to next season on the morning of a season change
                   remainingDays += self._constants.days_per_month * self._constants.months_per_year;
                }
-               var remainingPart = remainingDays == 1 ? i18n.t('stonehearth:ui.game.calendar.season_reamining_day') : i18n.t('stonehearth:ui.game.calendar.season_reamining_days', { num: remainingDays });
+               var remainingPart = remainingDays == 1 ? i18n.t('stonehearth:ui.game.calendar.season_reamining_day') : remainingDays == 0 ? i18n.t('stonehearth_ace:ui.game.calendar.season_no_reamining_days') : i18n.t('stonehearth:ui.game.calendar.season_reamining_days', { num: remainingDays });
                var description = i18n.t(season.description) + '<br /><br />' + remainingPart;
                var content = $(App.tooltipHelper.createTooltip(i18n.t(season.display_name), description));
                
