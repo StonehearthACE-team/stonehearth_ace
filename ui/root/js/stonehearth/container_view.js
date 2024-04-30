@@ -28,7 +28,9 @@ var closeAllModalsRecursively = function() {
          }
       } else if (modal.dismiss) {
          // Some modals want to just be hidden.
-         modal.dismiss();
+         if (modal.dismiss(true)) {
+            App.stonehearth.modalStack.push(modal);  // Put it back!
+         }
       } else {
          modal.destroy();
       }

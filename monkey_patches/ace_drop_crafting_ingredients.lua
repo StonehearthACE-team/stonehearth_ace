@@ -52,7 +52,7 @@ function AceDropCraftingIngredients:run(ai, entity, args)
       if container_entity_data then
          local offset = container_entity_data['drop_offset']
          if offset then
-            local facing = radiant.entities.get_facing(args.entity)
+            local facing = math.floor(radiant.entities.get_facing(args.target) + 0.5)
             local offset = Point3(offset.x, offset.y, offset.z)
             drop_offset = offset:rotated(facing)
          end
