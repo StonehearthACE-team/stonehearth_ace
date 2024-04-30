@@ -393,6 +393,29 @@ function AceCraftOrderList:request_order_of(player_id, recipe_info, produces, am
    return recipe_info.order_list:add_order(player_id, recipe_info.recipe, condition, building, associated_orders)
 end
 
+function AceCraftOrderList:get_order(order_id)
+   local i, order_list = self:find_index_of(order_id)
+   if i then
+      return order_list[i]
+   end
+end
+
+-- ACE: swap an order between the primary and secondary order lists
+-- ignore if it's an auto-craft order
+function AceCraftOrderList:toggle_order_priority(order_id)
+   local i, order_list = self:find_index_of(order_id)
+   if i then
+      local order = order_list[i]
+      if order and not order:is_auto_craft_recipe() then
+         -- either way, we want to move it to the top of the new list
+         -- TODO: clear out some stuck orders based on this movement?
+         table.remove(order_list, i)
+         table.insert(order_list == self._sv.orders and self._sv.secondary_orders or self._sv.orders, 1, order)
+         self:_on_order_list_changed()
+      end
+   end
+end
+
 -- ACE: when changing order, consider clearing stuck order status of affected orders
 function AceCraftOrderList:change_order_position_command(session, response, new, id)
    return self:change_order_position(new, id)
@@ -404,8 +427,8 @@ function AceCraftOrderList:change_order_position(new, id)
       local order = order_list[i]
       table.remove(order_list, i)
       local next_index = #order_list + 1
-      if new > next_index then
-         -- If new index is more than number of orders put it at the end of the list.
+      if new < 0 or new > next_index then
+         -- If new index is more than number of orders (or negative) put it at the end of the list.
          new = next_index
       end
 
@@ -522,6 +545,14 @@ function AceCraftOrderList:remove_from_reserved_ingredients(ingredients, order_i
    for _, ingredient in pairs(ingredients) do
       local ingredient_id = ingredient.uri or ingredient.material
       self:_get_crafter_info():remove_from_reserved_ingredients(ingredient_id, ingredient.count * multiple)
+   end
+end
+
+function AceCraftOrderList:add_to_reserved_ingredients(ingredients, order_id, player_id, multiple)
+   multiple = multiple or 1
+   for _, ingredient in pairs(ingredients) do
+      local ingredient_id = ingredient.uri or ingredient.material
+      self:_get_crafter_info():add_to_reserved_ingredients(ingredient_id, ingredient.count * multiple)
    end
 end
 
