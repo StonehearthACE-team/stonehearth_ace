@@ -323,6 +323,16 @@
                z-index: 0;
             }
 
+            .alreadyQueuedIcon {
+               position: absolute;
+               top: 0px;
+               left: 3px;
+               width: 14px;
+               height: 26px;
+               content: url(/stonehearth_ace/ui/game/show_workshop/images/alreadyQueuedIcon.png);
+               z-index: 2;
+            }
+
             .productIcon {
                width: 46px;
                height: auto;
@@ -330,6 +340,15 @@
                //margin: auto;
                padding: 11.5px 9.5px;
                z-index: 1;
+            }
+
+            .interactionOverlay {
+               position: absolute;
+               top: 0px;
+               left: 0px;
+               width: 65px;
+               height: 69px;
+               z-index: 3;
             }
          }
 
@@ -1004,10 +1023,12 @@
 
    .autoCraftOrder {
       background: url(/stonehearth_ace/ui/game/show_workshop/images/queue_autocraft_bg_70.png);
+      background-repeat: no-repeat;
    }
 
    .inProgressAutoCraftOrder {
       background: url(/stonehearth_ace/ui/game/show_workshop/images/queue_active_autocraft_bg_70.png);
+      background-repeat: no-repeat;
    }
 
    .hiddenOrder {
