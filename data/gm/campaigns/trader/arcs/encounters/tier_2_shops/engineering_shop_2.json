@@ -25,11 +25,13 @@
             },
 			   {
                "items": [
-                  "stonehearth_ace:refined:lock"
+                  "stonehearth_ace:refined:lock",
+                  "stonehearth_ace:refined:component:simple"
                ],
                "quantity": {
-                  "min": 4,
-                  "max": 10
+                  "min": 3,
+                  "max": 8,
+                  "max_unique": 1
                },
                "fine_item_chance": 0.2,
                "price_multiplier": 1.7

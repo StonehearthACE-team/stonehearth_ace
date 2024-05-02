@@ -335,6 +335,11 @@ App.guiHelper = {
                   `<span class="value">${catalogData.warmth_radius}</span></div>`;
       }
 
+      if (catalogData.sight_range) {
+         detail += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_sight_range')}</span>` +
+                  `<span class="value">${catalogData.sight_range}</span></div>`;
+      }
+
       var equipmentRequirements = '';
       if (catalogData.equipment_roles) {
          var equipmentRoles = this._getEquipmentRolesDiv(catalogData.equipment_roles);
