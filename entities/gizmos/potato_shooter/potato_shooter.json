@@ -1,0 +1,137 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(potato_shooter_ghost.json)",
+      "stonehearth:mixins:siege_turret"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(potato_shooter_iconic.json)",
+         "ghost_form": "file(potato_shooter_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 2 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 3, "z": 2 }
+            }
+         ]
+      },
+      "stonehearth:siege_weapon": {
+         "max_uses": 16,
+         "reloadable": true
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 140
+         },
+         "menace": {
+            "type": "basic",
+            "value": 18
+         }
+      },
+      "stonehearth:bone_transform": {
+         "bones": [
+            "body",
+            "leftwingSplitFront",
+            "leftwingSplitBack",
+            "rightwingSplitFront",
+            "rightwingSplitBack",
+            "block",
+            "turnip"
+         ]
+      },
+      "stonehearth:equipment": {
+         "items": [
+            "stonehearth_ace:gizmos:potato_shooter:weapon"
+         ]
+      },
+      "sensor_list": {
+         "sensors": {
+            "sight": {
+               "type": "sensor",
+               "radius": 32
+            }
+         }
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/gizmos/potato_shooter/effects/idle.json",
+         "initial_pose_animation": "idle.json"
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "gears": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
+               },
+               "items": {
+                  "bronze_gear": {
+                     "uri": "stonehearth:refined:bronze_gear"
+                  }
+               }
+            },
+            "ingots": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "iron_ingot": {
+                     "uri": "stonehearth:refined:iron_ingot"
+                  }
+               }
+            },
+            "soft_metal": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 2
+               },
+               "items": {
+                  "soft_metal": {
+                     "uri": "stonehearth_ace:refined:metal_bits:soft"
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth_ace:stump": {}
+   },
+   "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:gizmos:turnip_shooter:empty",
+         "transform_option_key": "potato_shooter",
+         "ignore_listener": true
+      },
+      "stonehearth:placement": {
+         "effect": "wrench",
+         "tag": "mechanical"
+      },
+      "stonehearth:item_placement_limit": {
+         "tag": "turret",
+         "default": 0
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 41,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": -10
+      }
+   }
+}

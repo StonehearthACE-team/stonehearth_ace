@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.1,
+         "color_map": "stonehearth:color_map:engineer",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/engineer_material_map.json"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(small_turret_empty.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.small_turret.empty.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.small_turret.empty.description)",
+         "icon": "file(../small_turret.png)",
+         "category": "defense",
+         "material_tags": [
+            "steel",
+            "defense",
+            "stockpile_defense"
+         ]
+      }
+   }
+}

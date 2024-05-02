@@ -65,7 +65,7 @@
                   "items": {
                      "none": {
                         "uri": "",
-                        "weight": 1
+                        "weight": 3
                      },
                      "feathers": {
                         "uri": "stonehearth_ace:resources:feathers:duck_feathers",
@@ -94,6 +94,18 @@
          "check_owner": true,
          "resource_loot_table": {
             "entries": {
+               "feathers": {
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 2
+                     },
+                     "feathers": {
+                        "uri": "stonehearth_ace:resources:feathers:duck_feathers",
+                        "weight": 1
+                     }
+                  }
+               },
                "golden_egg": {
                   "roll_type": "some_of",
                   "num_rolls": {

@@ -353,6 +353,9 @@ function catalog_lib._add_catalog_description(catalog, full_alias, json, base_da
          end
          if json.components['stonehearth:attributes'].menace and json.components['stonehearth:siege_weapon'] then
             catalog_data.menace = json.components['stonehearth:attributes'].menace.value
+            if json.components['sensor_list'] and json.components['sensor_list'].sensors and json.components['sensor_list'].sensors.sight then
+               catalog_data.sight_range = json.components['sensor_list'].sensors.sight.radius
+            end
          end
       end
 
