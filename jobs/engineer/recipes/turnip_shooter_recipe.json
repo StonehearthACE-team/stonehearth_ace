@@ -1,3 +1,32 @@
 {
-   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.turnip_shooter_recipe.flavor)"
+   "effort": 60,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.turnip_shooter_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.engineer.recipes.turnip_shooter_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.turnip_shooter_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/gizmos/turnip_shooter/turnip_shooter.png",
+   "mixintypes": {
+      "ingredients": "override"
+   },
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 1
+      },
+      {
+         "material": "ingot soft_metal",
+         "count": 1
+      },    
+      {
+         "uri": "stonehearth:refined:bronze_gear",
+         "count": 2
+      },    
+      {
+         "uri": "stonehearth:food:turnip:turnip_basket",
+         "count": 1
+      }
+   ]
 }

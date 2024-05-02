@@ -1,6 +1,75 @@
 {
-   "components": {},
+   "components": {
+      "stonehearth:siege_weapon": {
+         "max_uses": 24,
+         "reloadable": true
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 320
+         },
+         "menace": {
+            "type": "basic",
+            "value": 45
+         }
+      },
+      "stonehearth:loot_drops": {
+         "mixintypes": {
+            "entries": "override"
+         },
+         "entries": {
+            "gears": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
+               },
+               "items": {
+                  "iron_gear": {
+                     "uri": "stonehearth:refined:iron_gear"
+                  }
+               }
+            },
+            "ingots": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 2
+               },
+               "items": {
+                  "steel_ingot": {
+                     "uri": "stonehearth:refined:steel_ingot"
+                  }
+               }
+            },
+            "component": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "metal_bits_soft": {
+                     "uri": "stonehearth_ace:refined:metal_bits:soft"
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth_ace:stump": {}
+   },
    "entity_data": {
+      "stonehearth:stump_data": {
+         "stump_alias": "stonehearth_ace:gizmos:small_turret:empty",
+         "ignore_listener": true
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 72,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true,
+            "shopkeeper_type": "caravan"
+         }
+      },
       "stonehearth:placement": {
          "effect": "wrench",
          "tag": "mechanical"

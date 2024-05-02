@@ -1,5 +1,20 @@
 {
+   "components": {
+      "model_variants": {
+         "mixintypes": {
+            "default": "override"
+         },
+         "default": {
+            "models": [
+               "file(iron_gear.qb)"
+            ]
+         }
+      }
+   },
    "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 7
+      },
       "stonehearth:catalog": {
          "icon": "/stonehearth_ace/entities/refined/iron_gear/iron_gear.png",
          "material_tags": [

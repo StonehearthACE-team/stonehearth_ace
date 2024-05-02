@@ -14,7 +14,8 @@
             {
                "items": [
                   "stonehearth:refined:bronze_gear",
-				      "stonehearth:refined:iron_gear"
+				      "stonehearth:refined:iron_gear",
+                  "stonehearth_ace:refined:component:simple"
                ],
                "quantity": {
                   "min": 12,
@@ -25,11 +26,12 @@
             },
 			   {
                "items": [
-                  "stonehearth_ace:refined:lock"
+                  "stonehearth_ace:refined:lock",
+                  "stonehearth_ace:refined:component:complex"
                ],
                "quantity": {
-                  "min": 6,
-                  "max": 14
+                  "min": 4,
+                  "max": 12
                },
                "fine_item_chance": 0.5,
                "price_multiplier": 1.9
@@ -74,7 +76,8 @@
             },
 			   {
                "items": [
-                  "stonehearth_ace:refined:steel_plate"
+                  "stonehearth_ace:refined:steel_plate",
+                  "stonehearth_ace:refined:ammunition:common"
                ],
                "quantity": {
                   "min": 0,
