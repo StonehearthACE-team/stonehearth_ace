@@ -4,6 +4,48 @@
    "styles": {
       "hair_color": {
          "values": {
+            "dark": {
+               "file": "/stonehearth_ace/data/materials/material_maps/hair_dark_material_map.json",
+               "ordinal": 0
+            },
+            "black": {
+               "ordinal": 1
+            },
+            "brown": {
+               "ordinal": 2
+            },
+            "walnut": {
+               "file": "/stonehearth_ace/data/materials/material_maps/hair_walnut_material_map.json",
+               "ordinal": 3
+            },
+            "ochre": {
+               "file": "/stonehearth_ace/data/materials/material_maps/hair_ochre_material_map.json",
+               "ordinal": 4
+            },
+            "bronze": {
+               "file": "/stonehearth_ace/data/materials/material_maps/hair_bronze_material_map.json",
+               "ordinal": 5
+            },
+            "red": {
+               "ordinal": 6
+            },
+            "sandy": {
+               "ordinal": 7
+            },
+            "straw": {
+               "file": "/stonehearth_ace/data/materials/material_maps/hair_straw_material_map.json",
+               "ordinal": 8
+            },
+            "blonde": {
+               "ordinal": 9
+            },
+            "platinum": {
+               "ordinal": 10
+            },
+            "silver": {
+               "file": "/stonehearth_ace/data/materials/material_maps/hair_silver_material_map.json",
+               "ordinal": 11
+            },
             "turned": {
                "hidden": true,
                "file": "/stonehearth_ace/data/materials/material_maps/hair_turned_material_map.json"
@@ -24,6 +66,39 @@
       },
       "skin_color": {
          "values": {
+            "brown_3": {
+               "file": "/stonehearth_ace/data/materials/material_maps/skin_brown3_material_map.json",
+               "ordinal": 0
+            },
+            "brown_2": {
+               "ordinal": 1
+            },
+            "brown_light": {
+               "file": "/stonehearth_ace/data/materials/material_maps/skin_brown_light_material_map.json",
+               "ordinal": 2
+            },
+            "brown_1": {
+               "ordinal": 3
+            },
+            "olive": {
+               "file": "/stonehearth_ace/data/materials/material_maps/skin_olive_material_map.json",
+               "ordinal": 4
+            },
+            "white": {
+               "ordinal": 5
+            },
+            "white_2": {
+               "file": "/stonehearth_ace/data/materials/material_maps/skin_white2_material_map.json",
+               "ordinal": 6
+            },
+            "golden": {
+               "file": "/stonehearth_ace/data/materials/material_maps/skin_golden_material_map.json",
+               "ordinal": 7
+            },
+            "russet": {
+               "file": "/stonehearth_ace/data/materials/material_maps/skin_russet_material_map.json",
+               "ordinal": 8
+            },
             "turned": {
                "hidden": true,
                "file": "/stonehearth_ace/data/materials/material_maps/skin_turned_material_map.json"
@@ -40,18 +115,72 @@
       },
       "facial_hair": {
          "values": {
+            "[none]": {
+               "ordinal": 0
+            },
+            "beard_chin": {
+               "ordinal": 1
+            },
+            "chops": {
+               "ordinal": 2
+            },
             "na_moustache_1": {
-               "file": "file(na_moustache_1.qb)"
+               "file": "file(na_moustache_1.qb)",
+               "ordinal": 3
             },
             "na_moustache_2": {
-               "file": "file(na_moustache_2.qb)"
+               "file": "file(na_moustache_2.qb)",
+               "ordinal": 4
+            },
+            "beard": {
+               "ordinal": 5
             },
             "na_beard": {
-               "file": "file(na_beard_1.qb)"
+               "file": "file(na_beard_1.qb)",
+               "ordinal": 6
             }
          }
       },
-      "eyebrows": {},
-      "head_hair": {}
+      "eyebrows": {
+         "values": {
+            "[none]": {
+               "ordinal": 0
+            },
+            "straight_eyebrows": {
+               "ordinal": 1
+            }
+         }
+      },
+      "head_hair": {
+         "values": {
+            "[none]": {
+               "ordinal": 0
+            },
+            "male_hair_1": {
+               "ordinal": 1
+            },
+            "male_hair_2": {
+               "ordinal": 2
+            },
+            "male_hair_3": {
+               "ordinal": 3
+            },
+            "male_hair_4": {
+               "ordinal": 4
+            },
+            "male_hair_old_1": {
+               "ordinal": 10
+            },
+            "male_hair_old_2": {
+               "ordinal": 11
+            },
+            "male_head_bald_1": {
+               "ordinal": 20
+            },
+            "male_head_bald_2": {
+               "ordinal": 21
+            }
+         }
+      }
    }
 }

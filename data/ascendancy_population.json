@@ -1,10 +1,39 @@
 {
-   "mixins": [
-      "stonehearth_ace:data:namelists:ascendancy"
-   ],
    "population_titles": "/stonehearth_ace/data/titles/population_titles.json",
    "item_titles": "/stonehearth_ace/data/titles/item_titles.json",
 	"starting_items_container": "stonehearth_ace:containers:embark_wagon",
+   "roles": {
+      "default": {
+         "male": {
+            "mixintypes": {
+               "uri": "override"
+            },
+            "uri": [
+               "stonehearth:male_2",
+               "stonehearth:male_2",
+               "stonehearth:male_3",
+               "stonehearth:male_3",
+               "stonehearth_ace:male_4",
+               "stonehearth_ace:male_5",
+               "stonehearth_ace:male_6"
+            ]
+         },
+         "female": {
+            "mixintypes": {
+               "uri": "override"
+            },
+            "uri": [
+               "stonehearth:female_2",
+               "stonehearth:female_2",
+               "stonehearth:female_3",
+               "stonehearth:female_3",
+               "stonehearth_ace:female_4",
+               "stonehearth_ace:female_5",
+               "stonehearth_ace:female_6"
+            ]
+         }
+      }     
+   },
    "pet_names": {
       "default": [
          "Cinnabar",
