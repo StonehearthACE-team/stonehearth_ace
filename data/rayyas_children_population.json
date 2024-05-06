@@ -1,12 +1,41 @@
 {
-   "mixins": [
-      "stonehearth_ace:data:namelists:rayyas_children"
-   ],
    "job_index": "stonehearth_ace:rayyas_children:jobs:index",
    "loadouts": "/stonehearth_ace/data/loadouts/rc_loadouts.json",
    "default_quest_storage_uri": "stonehearth_ace:containers:quest:rc",
    "population_titles": "/stonehearth_ace/data/titles/population_titles.json",
    "item_titles": "/stonehearth_ace/data/titles/item_titles.json",
+   "roles": {
+      "default": {
+         "male": {
+            "mixintypes": {
+               "uri": "override"
+            },
+            "uri": [
+               "stonehearth_ace:male_4",
+               "stonehearth_ace:rc_male_4_additions",
+               "stonehearth_ace:rc_male_4_additions",
+               "stonehearth_ace:male_5",
+               "stonehearth_ace:rc_male_5_additions",
+               "stonehearth_ace:male_6",
+               "stonehearth_ace:rc_male_6_additions",
+               "stonehearth_ace:male_7",
+               "stonehearth_ace:rc_male_7_additions"
+            ]
+         },
+         "female": {
+            "mixintypes": {
+               "uri": "override"
+            },
+            "uri": [
+               "stonehearth_ace:female_4",
+               "stonehearth_ace:female_4",
+               "stonehearth_ace:female_5",
+               "stonehearth_ace:female_6",
+               "stonehearth_ace:female_7"
+            ]
+         }
+      }     
+   },
    "pet_names" : {
       "default" : [
          "Sandspur",

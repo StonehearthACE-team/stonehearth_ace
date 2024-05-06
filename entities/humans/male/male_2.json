@@ -1,0 +1,67 @@
+{
+   "components": {},
+   "entity_data": {
+      "stonehearth:customization_variants": {
+         "packages": {
+            "hair_and_skin_color": {
+               "hair_color": {
+                  "weights": {
+                     "black": 3,
+                     "walnut": 2,
+                     "ochre": 1,
+                     "bronze": 2,
+                     "straw": 1,
+                     "brown": 3,
+                     "red": 1,
+                     "sandy": 1,
+                     "blonde": 1,
+                     "platinum": 1
+                  }
+               },
+               "mixintypes": {
+                  "skin_color": "override"
+               },
+               "skin_color": {
+                  "weights": {
+                     "white": 1
+                  }
+               },
+               "eye_color": {
+                  "weights": {
+                     "blue": 1,
+                     "brown": 2,
+                     "green": 1,
+                     "hazel": 2,
+                     "aqua": 1,
+                     "black": 0,
+                     "red": 0,
+                     "yellow": 0
+                  }
+               }
+            },
+            "young": {
+               "facial_hair": {
+                  "weights": {
+                     "[none]": 3,
+                     "chops": 2,
+                     "chin_beard": 1,
+                     "beard": 1
+                  }
+               }
+            },
+            "old": {
+               "head_hair": {
+                  "[none]": 1
+               },
+               "facial_hair": {
+                  "weights": {
+                     "chops": 2,
+                     "chin_beard": 1,
+                     "beard": 1
+                  }
+               }
+            }
+         }
+      }
+   }
+}
