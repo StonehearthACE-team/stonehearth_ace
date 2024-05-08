@@ -7,11 +7,9 @@
 
    format recipe list data file like this:
    {
-      "jobs": {
-         "stonehearth:jobs:carpenter": [
-            "wooden_chair_recipe"   (or whatever the recipes may be)
-         ]
-      }
+      "stonehearth:jobs:carpenter": [
+         "wooden_chair_recipe"   (or whatever the recipes may be)
+      ]
    }
 ]]
 
@@ -30,7 +28,7 @@ function UnlockRandomRecipes.use(consumable, consumable_data, player_id, target_
    end
 
    local recipe_list = radiant.resources.load_json(consumable_data.recipe_list, true, false)
-   if not recipe_list or not recipe_list.jobs then
+   if not recipe_list then
       log:debug('no recipe list defined')
       return false
    end
@@ -38,7 +36,7 @@ function UnlockRandomRecipes.use(consumable, consumable_data, player_id, target_
    local num_to_unlock = consumable_data.num_to_unlock or 1
    local possible_recipes = {}
 
-   for job, recipes in pairs(recipe_list.jobs) do
+   for job, recipes in pairs(recipe_list) do
       local job_info = player_job_controller:get_job(job)
 
       if job_info then
