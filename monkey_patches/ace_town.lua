@@ -2,6 +2,7 @@ local Entity = _radiant.om.Entity
 local csg_lib = require 'stonehearth.lib.csg.csg_lib'
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local healing_lib = require 'stonehearth_ace.ai.lib.healing_lib'
+local job_lib = require 'stonehearth_ace.lib.job.job_lib'
 local build_util = require 'stonehearth.lib.build_util'
 local rng = _radiant.math.get_default_rng()
 
@@ -139,12 +140,30 @@ function AceTown:get_max_item_quality()
    return self._max_item_quality
 end
 
-AceTown._ace_old_add_town_bonus = Town.add_town_bonus
 function AceTown:add_town_bonus(town_bonus_controller_uri)
-   local controller = self:_ace_old_add_town_bonus(town_bonus_controller_uri)
+   local controller = self._sv.town_bonuses[town_bonus_controller_uri]
+   if controller then
+      self._sv._town_bonus_refs[town_bonus_controller_uri] = self._sv._town_bonus_refs[town_bonus_controller_uri] + 1
+   else
+      controller = radiant.create_controller(town_bonus_controller_uri, self._sv.player_id)
+      assert(controller)
+      self._sv.town_bonuses[town_bonus_controller_uri] = controller
+      self._sv._town_bonus_refs[town_bonus_controller_uri] = 1
+      self.__saved_variables:mark_changed()
+      if controller.initialize_bonus then
+         controller:initialize_bonus()
+      end
+
+      if controller.get_recipe_unlocks then
+         local decoration_recipes, bulletin_titles = controller.get_recipe_unlocks()
+         job_lib.unlock_recipes(self._sv.player_id, decoration_recipes, bulletin_titles, true)
+      end
+   end
+
    if controller.get_max_crafting_quality then
       self._max_item_quality = math.max(self._max_item_quality, controller:get_max_crafting_quality())
    end
+
    return controller
 end
 

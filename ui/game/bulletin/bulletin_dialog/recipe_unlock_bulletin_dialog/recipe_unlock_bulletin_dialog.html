@@ -1,0 +1,29 @@
+<script type="text/x-handlebars" data-template-name="recipeUnlockBulletinDialog">
+<div id="recipeUnlockBulletinDialog" class="gui bulletinDialog">
+   <div class="window">
+      <div class="title">{{i18n_key view.model.data.title i18n_data=view.model.i18n_data}}<div class="closeButton"></div></div>
+      <div id="scroll" class="parchment">
+         <div id="content">
+            <div id="title">{{i18n_key view.model.data.title i18n_data=view.model.i18n_data}}</div>
+
+            {{#if view.model.data.unlocked_recipes}}
+               {{#each view.model.data.unlocked_recipes}}
+                  <div class="recipe">
+                     <div class="icon">
+                        <img class="uriEntry button" {{bind-attr src="this.portrait" data-uri="this.product_uri"}}  {{action "select" this target="view"}}/>
+                     </div>
+                     <div class="text">
+                        <h2>{{i18n_key this.recipe_name}}</h2>
+                        {{{formatted_i18n_key this.description}}}
+                     </div>
+                  </div>
+               {{/each}}
+            {{/if}}
+
+         </div>
+      </div>
+
+      <button id="okButton" class="">{{i18n stonehearth:ui.game.common.ok}}</button>
+   </div>
+</div>
+</script>

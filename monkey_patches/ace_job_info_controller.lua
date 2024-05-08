@@ -96,6 +96,10 @@ function AceJobInfoController:_job_can_craft_exact(product_uri, require_unlocked
    return true
 end
 
+function AceJobInfoController:get_recipe(recipe_key)
+   return self._all_recipes[recipe_key]
+end
+
 function AceJobInfoController:is_recipe_unlocked(recipe_key)
    local recipe = self._all_recipes[recipe_key]
    return recipe and (not recipe.manual_unlock or self._sv.manually_unlocked[recipe_key])
