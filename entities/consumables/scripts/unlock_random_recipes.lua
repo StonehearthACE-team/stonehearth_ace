@@ -72,7 +72,7 @@ function UnlockRandomRecipes.use(consumable, consumable_data, player_id, target_
       log:debug('selected recipe "%s" for job "%s" to unlock', selection.recipe, job)
    end
 
-   local bulletin_titles = consumable_data.bulletin_title and {consumable_data.bulletin_title}
+   local bulletin_titles = consumable_data.bulletin_title
    job_lib.unlock_recipes(player_id, recipes_by_job, bulletin_titles, consumable_data.show_bulletin ~= false)
 
    return true
