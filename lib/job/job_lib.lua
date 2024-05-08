@@ -4,6 +4,9 @@ local log = radiant.log.create_logger('job_lib')
 function job_lib.unlock_recipes(player_id, recipes_by_job_alias, bulletin_titles, show_recipe_unlock_bulletins, cb_instance)
    local bulletins = {}
    if bulletin_titles then
+      if type(bulletin_titles) == 'string' then
+         bulletin_titles = {bulletin_titles}
+      end
       for _, bulletin_title in ipairs(bulletin_titles) do
          --create a bulletin announcing the new recipes
          local bulletin = stonehearth.bulletin_board:post_bulletin(player_id)
