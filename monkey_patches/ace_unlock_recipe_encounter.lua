@@ -23,7 +23,7 @@ function AceUnlockRecipeEncounter:start(ctx, info)
 
    local job_info = stonehearth.job:get_job_info(ctx.player_id, info.job)
    -- unlock the recipe(s)
-   self._sv._recipe_bulletins = job_lib.unlock_recipes(ctx.player_id, {[info.job] = {info.recipe_key}}, info.bulletin_title, not info.bulletin_title, self)
+   self._sv._recipe_bulletins = job_lib.unlock_recipes(ctx.player_id, {[info.job] = info.recipe_key}, info.bulletin_title, not info.bulletin_title, self)
    --self:_unlock_recipes(job_info, info.recipe_key)
 
    ctx.arc:trigger_next_encounter(ctx)
