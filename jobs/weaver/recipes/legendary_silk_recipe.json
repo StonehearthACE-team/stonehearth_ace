@@ -2,12 +2,12 @@
    "type": "recipe",
    "effort": 40,
    "work_units": 5,
-   "recipe_name": "i18n(stonehearth_ace:jobs.geomancer.recipes.legendary_silk_recipe.recipe_name)",
-   "description": "i18n(stonehearth_ace:jobs.geomancer.recipes.legendary_silk_recipe.description)",
-   "flavor": "i18n(stonehearth_ace:jobs.geomancer.recipes.legendary_silk_recipe.flavor)",
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.legendary_silk_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.legendary_silk_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.legendary_silk_recipe.flavor)",
    "portrait": "/stonehearth_ace/entities/refined/legendary_silk/legendary_silk.png",
-   "workshop": "stonehearth:geomancer:workbench",
-   "level_requirement": 4,
+   "workshop": "stonehearth:weaver:loom",
+   "level_requirement": 5,
    "proficiency_gain": 5,
    "manual_unlock": true,
    "ingredients": [
@@ -24,8 +24,8 @@
          "count": 9
       },
 	  {
-         "material": "earth_essence resource",
-         "count": 1
+         "uri": "stonehearth_ace:loot:currency:forest",
+         "count": 3
       }
    ],
    "produces": [
