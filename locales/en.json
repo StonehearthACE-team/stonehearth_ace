@@ -1590,9 +1590,9 @@
                },
                "ace_valor_reached": {
                   "recipe_unlock_blacksmith": "New Legendary Mail recipe - Weaver, Engineer, and Blacksmith collaboration!",
-                  "recipe_unlock_geomancer": "New Legendary Tome recipe - Cook, Herbalist, and Geomancer collaboration!",
+                  "recipe_unlock_geomancer": "New Legendary Tome recipe - Cook and Herbalist collaboration!",
                   "recipe_unlock_engineer": "New Legendary Mace recipe - Mason, Carpenter, and Engineer collaboration!",
-                  "recipe_unlock_weaver": "New Legendary Hood recipe - Blacksmith, Geomancer, and Weaver collaboration!"
+                  "recipe_unlock_weaver": "New Legendary Hood recipe - Blacksmith and Weaver collaboration!"
                },
                "hearth_foreshadow_dialog": {
                   "dialog_tree_info": {
@@ -8072,6 +8072,11 @@
                "description": "Greatly improves the healing done by a Cleric.",
                "flavor": "This tome unlocks the same powers as the 'Fine Tome of Healing' but also a slow-to-cast, very intense healing spell"
             },
+            "legendary_tome_recipe": {
+               "recipe_name": "Cleric Tome, 'The Walk of Cid'",
+               "description": "A legendary tome for the followers of the Church of Plenty.",
+               "flavor": "Through the ways of Cid, healing shall be done. This tome unlocks an invulnerability shield spell."
+            },
             "herbalist_bee_skep_recipe": {
                "recipe_name": "Empty Bee Skep",
                "description": "Supplies your town with beekeeping products but won't produce during the winter.",
@@ -10050,16 +10055,6 @@
                "description": "Dry and grind the very special blossom of a hearthbud flower into an edible powder with interesting properties.",
                "flavor": "Sometimes you just need a pinch of magic!"
             },
-            "legendary_silk_recipe": {
-               "recipe_name": "Woodland Silk",
-               "description": "Gold and silk woven as one for the Elven King Hood.",
-               "flavor": "No regular Weaver can weave with natural magic like elves do"
-            },
-            "legendary_tome_recipe": {
-               "recipe_name": "Cleric Tome, 'The Walk of Cid'",
-               "description": "A legendary tome for the followers of the Church of Plenty.",
-               "flavor": "Through the ways of Cid, healing shall be done. This tome unlocks an invulnerability shield spell."
-            },
             "wooden_sign_geomancer_recipe": {
                "recipe_name": "Geomancer's Wall-Mounted Sign",
                "description": "A sign with the mark of the Geomancer, to be placed on buildings.",
@@ -11475,22 +11470,22 @@
             },
             "candledark": {
                "cobblestone_grate_fence_bar_double_recipe": {
-                  "recipe_name": "Candledark Cobblestone & Grate Fence Long",
+                  "recipe_name": "Candledark Graveyard Fence Long",
                   "description": "Create a sturdy, scary wall for external use.",
                   "flavor": "A segment a day keeps the Undead at bay"
                },
                "cobblestone_grate_fence_bar_single_recipe": {
-                  "recipe_name": "Candledark Cobblestone & Grate Fence Short (x2)",
+                  "recipe_name": "Candledark Graveyard Fence Short (x2)",
                   "description": "Create a sturdy, scary wall for external use.",
                   "flavor": ""
                },
                "cobblestone_grate_fencepost_recipe": {
-                  "recipe_name": "Candledark Cobblestone & Grate Fencepost",
+                  "recipe_name": "Candledark Graveyard Fencepost",
                   "description": "Create a sturdy, scary wall for external use. This is a corner post.",
                   "flavor": ""
                },
                "cobblestone_grate_fence_gate_recipe": {
-                  "recipe_name": "Candledark Cobblestone & Grate Fence Gate",
+                  "recipe_name": "Candledark Graveyard Fence Gate",
                   "description": "Create a very strong metal gate for external use.",
                   "flavor": "Grand entrance!"
                }
@@ -12794,12 +12789,12 @@
                   "flavor": ""
                },
                "stake_fence_bar_single_recipe": {
-                  "recipe_name": "Candledark Stake Fence Short (x3)",
+                  "recipe_name": "Candledark Stake Fence Short (x6)",
                   "description": "A simple fence made of stakes, good for protecting crops.",
                   "flavor": ""
                },
                "stake_fencepost_recipe": {
-                  "recipe_name": "Candledark Stake Fencepost (x2)",
+                  "recipe_name": "Candledark Stake Fencepost (x4)",
                   "description": "The corner of a simple fence made of stakes, good for protecting crops.",
                   "flavor": ""
                },
@@ -13065,6 +13060,11 @@
                "recipe_name": "Elven King Hood",
                "description": "A beautiful hood worthy of the finest Archer.",
                "flavor": "No one can really read what is written on it. Looks cool, though."
+            },
+            "legendary_silk_recipe": {
+               "recipe_name": "Woodland Silk",
+               "description": "Gold and silk woven as one for the Elven King Hood.",
+               "flavor": "It takes a lot of skill to weave the fabric of natural magic like elves do"
             },
             "legendary_cape_recipe": {
                "recipe_name": "Imperial Cape",
@@ -15495,19 +15495,19 @@
                "description": "That's a lot of stakes! The stakes are high!"
             },
             "cobblestone_grate_fence_gate": {
-               "display_name": "Candledark Cobblestone & Grate Fence Gate",
+               "display_name": "Candledark Graveyard Fence Gate",
                "description": "An imposing metal gate that is harder than most fence gates to take down."
             },
             "cobblestone_grate_fencepost": {
-               "display_name": "Candledark Cobblestone & Grate Fence Post",
+               "display_name": "Candledark Graveyard Fence Post",
                "description": "Also known as a big stone pillar."
             },
             "cobblestone_grate_fence_bar_single": {
-               "display_name": "Candledark Cobblestone & Grate Fence Short",
+               "display_name": "Candledark Graveyard Fence Short",
                "description": "It's a really long name for such a short fence segment..."
             },
             "cobblestone_grate_fence_bar_double": {
-               "display_name": "Candledark Cobblestone & Grate Fence Long",
+               "display_name": "Candledark Graveyard Fence Long",
                "description": "Keeping the Undead from escaping graveyards since time immemorial."
             }
          },
@@ -27755,7 +27755,7 @@
                "clay1": "Default Preset: Clay",
                "porcelain1": "Default Preset: Porcelain",
                "marble1": "Default Preset: Marble",
-               "cobblestone_grate1": "Default Preset: Candledark Cobblestone & Grate",
+               "cobblestone_grate1": "Default Preset: Candledark Graveyard",
                "stake1": "Default Preset: Candledark Stake",
                "dynasty1": "Default Preset: Dynasty Stone"
             },
@@ -27957,6 +27957,9 @@
                "auto_save_max_files": "Maximum Auto Save Files",
                "auto_save_max_files_description": "When Auto Save and Auto Save Unique Files are enabled, start overwriting older auto-saves after this limit is reached.<span class='warn'>WARNING:</span>The next time you save after setting this to a lower number, many older auto-saves may be deleted.",
                "max_files": {
+                  "2_files": "2 auto-saves",
+                  "3_files": "3 auto-saves",
+                  "4_files": "4 auto-saves",
                   "5_files": "5 auto-saves",
                   "10_files": "10 auto-saves",
                   "20_files": "20 auto-saves",

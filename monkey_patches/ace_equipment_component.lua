@@ -135,6 +135,18 @@ function AceEquipmentComponent:equip_item(item, destroy_old_item, quality_item)
       end
    end
 
+   local customization_changes = ep:get_customization_changes()
+   if customization_changes then
+      for subcategory, style in pairs(customization_changes) do
+         if type(style) == 'table' then
+            local pick = style[rng:get_int(1, #style)]
+            self._entity:add_component('stonehearth:customization'):change_customization(subcategory, pick, true)
+         else
+            self._entity:add_component('stonehearth:customization'):change_customization(subcategory, style, true)
+         end
+      end
+   end
+
    self._sv.equipped_items[slot] = item
 
    ep:equip(self._entity)
@@ -168,6 +180,13 @@ function AceEquipmentComponent:unequip_item(equipped_item, replace_with_default,
          self._sv.equipped_items[key] = nil
 
          item:get_component('stonehearth:equipment_piece'):unequip()
+
+         local customization_changes = item:get_component('stonehearth:equipment_piece'):get_customization_changes()
+         if customization_changes then
+            for subcategory, style in pairs(customization_changes) do
+               self._entity:get_component('stonehearth:customization'):restore_cached_customization(subcategory)
+            end
+         end
 
          self.__saved_variables:mark_changed()
          self:_trigger_equipment_changed()

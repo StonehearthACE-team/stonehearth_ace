@@ -143,6 +143,10 @@ function AceEquipmentPieceComponent:get_can_unequip()
    return self:get_ilevel() >= 0 or self._json.can_unequip == true
 end
 
+function AceEquipmentPieceComponent:get_customization_changes()
+   return self._json.customization_changes
+end
+
 function AceEquipmentPieceComponent:_remove_buffs()
    if self._json.injected_buffs then
       for _, buff in ipairs(self._json.injected_buffs) do
