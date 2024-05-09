@@ -20,9 +20,6 @@ end
 -- changed the "auto_loot = " line, also changed to use output system instead of just raw spawning items
 function AceLootDropsComponent:_on_kill_event(e)
    log:debug('_on_kill_event: %s', e and radiant.util.table_tostring(e) or 'nil')
-   if self._entity:get_component('stonehearth:pet') then
-      return
-   end
    local loot_table, filter_script, filter_args = self._sv.loot_table, self._sv._filter_script, self._sv._filter_args
    if not loot_table then
       loot_table = radiant.entities.get_json(self)
