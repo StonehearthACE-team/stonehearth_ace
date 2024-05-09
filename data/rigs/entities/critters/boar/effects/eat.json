@@ -1,0 +1,23 @@
+{
+   "tracks": {
+      "mixintypes": {
+         "attack_trigger": "remove",
+         "sound": "override"
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 2000,
+         "start_time": 200,
+         "min_distance": 20,
+         "falloff" : 7,
+         "volume": 45,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:oinker:eat_01",
+               "stonehearth_ace:sounds:oinker:eat_02"
+            ]    
+         }
+      }       
+   }
+}      
