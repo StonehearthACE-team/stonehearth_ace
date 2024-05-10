@@ -3,8 +3,13 @@
    "mixins": "stonehearth_ace:armor:iron_archer_mail:hat",
    "components": {
       "render_info": {},
+      "stonehearth:equipment_piece": {
+         "customization_changes": {
+            "facial_hair": "[none]"
+         }
+      },
       "model_variants": {
-			"mixintypes": {
+         "mixintypes": {
             "default": "override",
             "female": "override"
          },
