@@ -69,12 +69,16 @@ local function monkey_patching()
    for from, into in pairs(monkey_patches) do
       local monkey_see = require('monkey_patches.' .. from)
       local monkey_do = radiant.mods.require(into)
-      radiant.log.write_('stonehearth_ace', 0, 'ACE client monkey-patching \'' .. from .. '\' => \'' .. into .. '\'')
-      if monkey_see.ACE_USE_MERGE_INTO_TABLE then
-         -- use merge_into_table to also mixin other values, not just functions
-         radiant.util.merge_into_table(monkey_do, monkey_see)
+      if monkey_see and monkey_do then
+         radiant.log.write_('stonehearth_ace', 0, 'ACE client monkey-patching \'' .. from .. '\' => \'' .. into .. '\'')
+         if monkey_see.ACE_USE_MERGE_INTO_TABLE then
+            -- use merge_into_table to also mixin other values, not just functions
+            radiant.util.merge_into_table(monkey_do, monkey_see)
+         else
+            radiant.mixin(monkey_do, monkey_see)
+         end
       else
-         radiant.mixin(monkey_do, monkey_see)
+         radiant.log.write_('stonehearth_ace', 0, 'ACE client ***INVALID*** monkey-patching \'' .. from .. '\' => \'' .. into .. '\'')
       end
    end
 end
