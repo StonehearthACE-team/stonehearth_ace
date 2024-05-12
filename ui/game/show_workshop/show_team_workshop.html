@@ -49,10 +49,7 @@
          <div id="tabs">
             <div class="tab active" tabPage="recipeTab">{{i18n stonehearth:ui.game.show_workshop.recipe_tab}}</div>
             <div class="tab" tabPage="orderListTab">
-               {{i18n stonehearth:ui.game.show_workshop.orders_tab}}
-               ({{view.model.order_list.orders.length}},
-               {{view.model.order_list.secondary_orders.length}},
-               {{view.model.order_list.auto_craft_orders.length}})
+               {{i18n stonehearth:ui.game.show_workshop.orders_tab}} ({{view.model.order_list.auto_craft_orders.length}}, {{view.model.order_list.secondary_orders.length}}, {{view.model.order_list.orders.length}})
             </div>
          </div>
          </div>
@@ -125,9 +122,7 @@
                      }}
                      {{action "select" this target="view"}}>
                      <img {{bind-attr class=":autoCraftIcon this.is_auto_craft::hidden"}}/>
-                     <img class="productIcon" {{bind-attr src="this.portrait"}}/>
-                     <img {{bind-attr class=":alreadyQueuedIcon this.is_already_queued::hidden"}}/>
-                     <div class="interactionOverlay"></div>
+                     <img class="productIcon" {{bind-attr src="this.portrait" recipe_key="this.recipe_key"}}/>
                   </div>
                {{/each}}
             </div>

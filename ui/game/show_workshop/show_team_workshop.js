@@ -289,7 +289,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
       self._usableUris = {};
       self._usableMaterials = {};
-      self._orderRecipeMap = {};
 
       self.$('#searchInput').attr('placeholder', i18n.t('stonehearth:ui.game.show_workshop.placeholder'));
       self.$('#recipeTab').show();
@@ -587,7 +586,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self.$('.orders, .garbageList').enableSelection();
       self.$('#orderListContainer table').enableSelection();
 
-      App.guiHelper.removeDynamicTooltip(self.$('#recipeItems'), '.interactionOverlay');
+      App.guiHelper.removeDynamicTooltip(self.$('#recipeItems'), '.productIcon');
       App.guiHelper.removeDynamicTooltip(self.$('#craftingWindow'), '.statusSign');
 
       if (self.$('#recipeItems')) {
@@ -1501,8 +1500,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
       App.guiHelper.addTooltip(self.$('#searchIngredientsDiv'), 'stonehearth_ace:ui.game.show_workshop.search_ingredients_description');
 
       //App.tooltipHelper.createDynamicTooltip(self.$('[title]'));
-      App.guiHelper.createDynamicTooltip(self.$('#recipeItems'), '.interactionOverlay', function($el) {
-         var key = $el.parent().attr('recipe_key');
+      App.guiHelper.createDynamicTooltip(self.$('#recipeItems'), '.productIcon', function($el) {
+         var key = $el.attr('recipe_key');
          var recipe = self._getOrCalculateRecipeData(key);
          var jobAlias = self.get('model.alias');
          var options = {
@@ -1513,38 +1512,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          if (recipe.product_stacks) {
             options.self = {'stonehearth:stacks': {stacks: recipe.product_stacks}};
          }
-         var tooltip = $(App.guiHelper.createUriTooltip(recipe.product_uri, options));
-
-         // if the recipe has already-queued orders, show them in the tooltip
-         var queuedOrders = self._orderRecipeMap[key];
-         if (queuedOrders) {
-            // show the total number of orders; also show the total make amount and the max maintain amount
-            var totalOrders = queuedOrders.length;
-            var totalMakeAmount = 0;
-            var maxMaintainAmount = 0;
-            for (var i = 0; i < totalOrders; i++) {
-               var order = queuedOrders[i];
-               if (order.condition.type == 'maintain') {
-                  maxMaintainAmount = Math.max(maxMaintainAmount, order.condition.at_least);
-               }
-               else {
-                  totalMakeAmount += order.condition.remaining;
-               }
-            }
-
-            var queuedOrdersString = i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_queued_orders', {count: totalOrders});
-            var div = `<div class='stat verticalSpacer'>${queuedOrdersString}`;
-            if (totalMakeAmount > 0) {
-               div += `<div class='indented'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_total_make_amount', {amount: totalMakeAmount})}</div>`;
-            }
-            if (maxMaintainAmount > 0) {
-               div += `<div class='indented'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_max_maintain_amount', {amount: maxMaintainAmount})}</div>`;
-            }
-
-            tooltip.append($(div + '</div>'));
-         }
-
-         return tooltip;
+         return $(App.guiHelper.createUriTooltip(recipe.product_uri, options));
       });
 
       App.guiHelper.createDynamicTooltip(self.$('#craftingWindow'), '.statusSign', function($el) {
@@ -1962,34 +1930,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
          });
       });
    }.observes('recipes'),
-
-   _updateAlreadyQueuedRecipes: function() {
-      var self = this;
-
-      var orders = (self.get('model.order_list.orders') || []).concat(
-         (self.get('model.order_list.secondary_orders') || []).concat(self.get('model.order_list.auto_craft_orders') || []));
-      var orderRecipeMap = {};
-      for (var i = 0; i < orders.length; i++) {
-         var recipeKey = orders[i].recipe.recipe_key;
-         var recipeOrders = orderRecipeMap[recipeKey];
-         if (!recipeOrders) {
-            recipeOrders = [];
-            orderRecipeMap[recipeKey] = recipeOrders;
-         }
-         recipeOrders.push(orders[i]);
-      }
-      self._orderRecipeMap = orderRecipeMap;
-
-      var recipes = self.get('recipes');
-      radiant.each(recipes, function(_, recipeCategory) {
-         radiant.each(recipeCategory.recipes, function(_, recipe) {
-            var isAlreadyQueued = orderRecipeMap[recipe.recipe_key] != null;
-            if (recipe.is_already_queued != isAlreadyQueued) {
-               Ember.set(recipe, 'is_already_queued', isAlreadyQueued);
-            }
-         });
-      });
-   }.observes('recipes', 'model.order_list.orders', 'model.order_list.secondary_orders', 'model.order_list.auto_craft_orders'),
 
    _updateCraftSearchChecks: function(checks) {
       var self = this;
