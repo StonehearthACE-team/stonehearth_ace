@@ -8,10 +8,6 @@ PutAnotherRestockableItemIntoBackpack.args.filter_fn = {            -- an option
       type = 'function',
       default = stonehearth.ai.NIL,
    }
-PutAnotherRestockableItemIntoBackpack.args.max_items = {            -- an optional cap on the number of items to pick up
-      type = 'number',
-      default = stonehearth.ai.NIL,
-   }
 
 local function _should_restock(item)
    local entity_forms_component = item:get_component('stonehearth:entity_forms')
@@ -79,14 +75,7 @@ function AcePutAnotherRestockableItemIntoBackpack:_find_path_to_item(ai, entity,
       ai:set_debug_progress('backpack full')
       return
    end
-
-   -- ACE: also check if we're carrying more than we're allowed to for this errand
-   if args.max_items and radiant.size(ai.CURRENT.storage.items) >= args.max_items then
-      self._log:debug('already carrying max items')
-      ai:set_debug_progress('already carrying max items')
-      return
-   end
-
+   
    local storage = args.storage:get_component('stonehearth:storage')
    if args.reserve_space and not storage:can_reserve_space() then  -- we'll reserve properly later, but if we know it won't work, don't waste time pathing
       ai:set_debug_progress('target storage full')
@@ -120,7 +109,7 @@ function AcePutAnotherRestockableItemIntoBackpack:_find_path_to_item(ai, entity,
 
       return true
    end
-
+   
    local count = 0
    local candidate_scores = {}
    local container_to_item = {}
@@ -173,7 +162,7 @@ function AcePutAnotherRestockableItemIntoBackpack:_find_path_to_item(ai, entity,
       ai:set_debug_progress('no path')
       return
    end
-
+   
    if args.reserve_space then
       self._space_lease = args.storage:get_component('stonehearth:storage'):reserve_space(entity, 'another item think')
       if not self._space_lease then
@@ -200,7 +189,7 @@ function AcePutAnotherRestockableItemIntoBackpack:_find_path_to_item(ai, entity,
       self._item = interaction_proxy_to_item[self._item:get_id()]
    end
    ai.CURRENT.location = path:get_finish_point()
-
+   
    -- if we want to be able to remove the item from our backpack later, it needs to be the actual item
    -- i.e., if it has entity forms, then it will put the iconic into the backpack, not the root
    local backpack_item = self._item

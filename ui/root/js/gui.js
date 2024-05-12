@@ -13,15 +13,9 @@ App.guiHelper = {
 
       var selector;
       if (!options.listOnly) {
-         var img = $('<img>')
-            .addClass('inlineImg hidden');
-         var span = $('<span>')
-            .addClass('select-selected-label');
          selector = $('<div>')
             .attr('id', settingId)
             .addClass('select-selected');
-         selector.append(img);
-         selector.append(span);
       }
 
       var list = $('<div>')
@@ -92,16 +86,7 @@ App.guiHelper = {
 
       if (selector) {
          selector.attr('data-key', value.key);
-         var label = selector.find('.select-selected-label');
-         label.html(value.display_name != null ? i18n.t(value.display_name) : value.key);
-         if (value.icon) {
-            var img = selector.find('img');
-            img.attr('src', value.icon);
-            img.removeClass('hidden');
-         }
-         else {
-            selector.find('img').addClass('hidden');
-         }
+         selector.html(value.display_name != null ? i18n.t(value.display_name) : value.key);
          App.guiHelper.addTooltip(selector, value.description);
       }
 
