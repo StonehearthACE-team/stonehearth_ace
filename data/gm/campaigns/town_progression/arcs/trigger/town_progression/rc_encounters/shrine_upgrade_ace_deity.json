@@ -4,7 +4,9 @@
 	"in_edge"  : "shrine_upgrade_ace_deity",
 	"out_edge" : {
 		"type": "trigger_many",
-		"out_edges": []
+		"out_edges": [
+			"ace_deity_brewer"
+		]
 	},
 	"wait_info" :  {
 		"duration" : "1m"
