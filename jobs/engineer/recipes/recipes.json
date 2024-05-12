@@ -1,57 +1,16 @@
 {
    "craftable_recipes": {
       "legendary": {
-         "recipes": {
-            "legendary_chainmail": {
-               "recipe": "file(legendary_chainmail_recipe.json)"
-            },
-            "legendary_mace": {
-               "recipe": "file(legendary_mace_recipe.json)"
-            }
-         }
-      },
-      "gadget_parts": {
-         "ordinal": 10,
-         "recipes": {
-            "simple_component": {
-               "recipe": "file(component_simple_recipe.json)"
-            },
-            "complex_component": {
-               "recipe": "file(component_complex_recipe.json)"
-            },
-            "lock": {
-               "recipe": "file(lock_recipe.json)"
-            },
-            "ammunition_common": {
-               "recipe": "file(ammunition_common_recipe.json)"
-            }
-         }
-      },
-      "equipment": {
-         "ordinal": 15,
-         "name": "i18n(stonehearth_ace:jobs.engineer.recipes.equipment_name)",
-         "recipes": {
-            "bronze_crossbow": {
-               "recipe": "file(bronze_crossbow_recipe.json)"
-            },
-            "steel_crossbow": {
-               "recipe": "file(steel_crossbow_recipe.json)"
-            }
-         }
-      },
-      "traps": {
-         "name": "i18n(stonehearth_ace:jobs.engineer.recipes.traps_name)",
-         "recipes": {
-            "decoy_trap": {
-               "recipe": "file(decoy_trap_recipe.json)"
-            }
-         }
-      },
-      "ranged_weapons": {
-         "name": "i18n(stonehearth_ace:jobs.engineer.recipes.ranged_weapons_name)",
-         "recipes": {}
-      },
-      "storage": {
+		 "recipes": {
+			"legendary_chainmail": {
+				"recipe": "file(legendary_chainmail_recipe.json)"
+			},
+			"legendary_mace": {
+				"recipe": "file(legendary_mace_recipe.json)"
+			}
+		 }
+	  },
+	  "storage": {
          "ordinal": 20,
          "name": "i18n(stonehearth_ace:jobs.engineer.recipes.storage_name)",
          "recipes": {
@@ -63,6 +22,54 @@
             },
             "refrigerator": {
                "recipe": "file(refrigerator_recipe.json)"
+            }
+         }
+      },
+      "gadget_parts": {
+         "recipes": {
+            "metal_bits_hard": {
+					"recipe": "file(metal_bits_hard_recipe.json)"
+				},
+				"metal_bits_soft": {
+					"recipe": "file(metal_bits_soft_recipe.json)"
+				},
+            "lock": {
+               "recipe": "file(lock_recipe.json)"
+            }
+         }
+      },
+      "traps": {
+         "recipes": {
+            "decoy_trap": {
+               "recipe": "file(decoy_trap_recipe.json)"
+            }
+         }
+      },
+	  "ranged_weapons": {
+		 "recipes": {
+			"bronze_crossbow": {
+				"recipe": "file(bronze_crossbow_recipe.json)"
+			},
+			"steel_crossbow": {
+				"recipe": "file(steel_crossbow_recipe.json)"
+			}
+		 }
+	  },
+	  "mechanisms": {
+         "ordinal": 65,
+         "name": "i18n(stonehearth_ace:jobs.engineer.recipes.mechanisms_name)",
+         "recipes": {
+            "water_gate": {
+               "recipe": "file(water_gate_recipe.json)"
+            },
+				"water_pump": {
+               "recipe": "file(water_pump_recipe.json)"
+            },
+            "water_pump_steel": {
+               "recipe": "file(water_pump_steel_recipe.json)"
+            },
+            "water_gate_greater": {
+               "recipe": "file(water_gate_greater_recipe.json)"
             }
          }
       },
@@ -80,7 +87,7 @@
             "diagonal_hatch_iron": {
                "recipe": "file(diagonal_hatch_iron_recipe.json)"
             },
-            "portcullis_valor_large": {
+				"portcullis_valor_large": {
                "recipe": "file(valor_portcullis_large_recipe.json)"
             },
             "bronze_portcullis_large": {
@@ -88,30 +95,12 @@
             }
          }
       },
-      "fluid_control": {
-         "ordinal": 75,
-         "name": "i18n(stonehearth_ace:jobs.engineer.recipes.fluid_control_name)",
-         "recipes": {
-            "water_gate": {
-               "recipe": "file(water_gate_recipe.json)"
-            },
-            "water_pump": {
-               "recipe": "file(water_pump_recipe.json)"
-            },
-            "water_pump_steel": {
-               "recipe": "file(water_pump_steel_recipe.json)"
-            },
-            "water_gate_greater": {
-               "recipe": "file(water_gate_greater_recipe.json)"
-            }
-         }
-      },
-      "decorations": {
-         "recipes": {
-            "mixintypes": {
-               "iron_door": "remove"
-            }
-         }
-      }
+	  "decorations": {
+		 "recipes": {
+			"mixintypes": {
+				"iron_door": "remove"
+			}
+		 }
+	  }
    }
 }

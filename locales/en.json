@@ -21,7 +21,6 @@
             "upgrading": "upgrading [name(data.target)]",
             "opening": "opening [name(data.target)]",
             "filling": "filling [name(data.target)]",
-            "reloading": "reloading [name(data.target)]",
             "fueling": "fueling [name(data.target)]",
             "draining": "draining [name(data.target)]",
             "capturing_bees": "capturing bees",
@@ -6074,22 +6073,6 @@
             "dynasty_gong": {
                "display_name": "Strike the Gong!",
                "description": "Striking the gong will temporarily change the town's soundtrack for half a day!"
-            },
-            "reload_ammunition_common": {
-               "display_name": "Reload Turret",
-               "description": "Order the Engineer to reload this turret with Common Turret Ammunition.<br><br>This command is enabled by default as soon as the turret runs out of ammunition."
-            },
-            "reload_gourd_shooter": {
-               "display_name": "Reload Turret (Golden Gourds)",
-               "description": "Order the Engineer to reload this turret with a Basket of Golden Gourds.<br><br>Golden Gourds are heavier and chonkier, packing a stronger punch but having slightly lower range and projectile speed.<br><br>The turret will continue to use Golden Gourds as ammunition whenever it runs out as long as no new command is given."
-            },
-            "reload_potato_shooter": {
-               "display_name": "Reload Turret (Sweet Potatoes)",
-               "description": "Order the Engineer to reload this turret with a Basket of Sweet Potatoes.<br><br>Sweet Potatoes are lighter and have an optimal shape, resulting on a higher range and speed but slightly lower damage.<br><br>The turret will continue to use Sweet Potatoes as ammunition whenever it runs out as long as no new command is given."
-            },
-            "reload_turnip_shooter": {
-               "display_name": "Reload Turret (Turnips)",
-               "description": "Order the Engineer to reload this turret with a Basket of Turnips.<br><br>Turnips are a well rounded projectile, providing an average range, speed and damage.<br><br>The turret will continue to use Turnips as ammunition whenever it runs out as long as no new command is given."
             }
          },
          "slaughter_shepherd": {
@@ -9286,10 +9269,7 @@
             }
          },
          "recipes": {
-            "fluid_control_name": "Building Parts, Fluid Control",
-            "equipment_name": "Combat Equipment",
-            "ranged_weapons_name": "Defense: Turrets",
-            "traps_name": "Defense: Traps",
+            "mechanisms_name": "Machines & Mechanisms",
             "engineer_workbench_recipe": {
                "description": "Used by the Engineer to craft their various gadgets and contraptions."
             },
@@ -9324,37 +9304,37 @@
             "water_gate_recipe": {
                "recipe_name": "Copper Water Gate",
                "description": "Create a small six-way gate that can be toggled open or closed for controlled fluid flow.",
-               "flavor": "Must be placed by an Engineer"
+               "flavor": "Requires an Engineer to be placed"
             },
             "water_pump_recipe": {
                "recipe_name": "Copper Water Pump",
                "description": "Make a pump that will take fluids from the placement level to be released on its upper shaft.",
-               "flavor": "You can stack up pumps to get water higher and higher! Must be placed by an Engineer"
+               "flavor": "You can stack up pumps to get water higher and higher! Requires an Engineer to be placed"
             },
             "water_pump_steel_recipe": {
                "recipe_name": "Steel Water Pump",
                "description": "Make a pump for transferring fluids. Steel Water Pumps can extend much longer pipes than a Copper Water Pump!",
-               "flavor": "You can stack up pumps to get water higher and higher! Must be placed by an Engineer"
+               "flavor": "You can stack up pumps to get water higher and higher! Requires an Engineer to be placed"
             },
             "water_gate_greater_recipe": {
                "recipe_name": "Greater Water Gate",
                "description": "Build a larger and more resistant gate for controlling the flow of fluids.",
-               "flavor": "Must be placed by an Engineer"
+               "flavor": "Requires an Engineer to be placed"
             },
             "axle_horizontal_recipe": {
                "recipe_name": "Horizontal Axle (x3)",
                "description": "Create a rotating shaft that can take mechanical power forward.",
-               "flavor": "Must be placed by an Engineer"
+               "flavor": "Requires an Engineer to be placed"
             },
             "axle_vertical_recipe": {
                "recipe_name": "Vertical Axle (x3)",
                "description": "Create a rotating shaft that can take mechanical power vertically.",
-               "flavor": "Must be placed by an Engineer"
+               "flavor": "Requires an Engineer to be placed"
             },
             "axle_gear_box_recipe": {
                "recipe_name": "Gear Box",
                "description": "Build a device that allows you to redirect mechanical power to any direction.",
-               "flavor": "It can be placed in walls during building - like windows or doors. Must be placed by an Engineer"
+               "flavor": "It can be placed in walls during building - like windows or doors. Requires an Engineer to be placed"
             },
             "bronze_portcullis_large_recipe": {
                "recipe_name": "Large Bronze Portcullis",
@@ -9366,53 +9346,21 @@
                "flavor": "Definitely needs more iron"
             },
             "bronze_gear_recipe": {
-               "recipe_name": "Bronze Gear (x3)",
-               "description": "Used to craft some basic gadgets and mechanisms. A single bar will yield three gears.",
                "flavor": "Luckily it has teeth that do not require brushing"
             },
-            "iron_gear_recipe": {
-               "recipe_name": "Iron Gear (x2)",
-               "description": "Used to craft intermediate gadgets and mechanisms. A single bar will yield two gears."
+            "metal_bits_hard_recipe": {
+               "recipe_name": "Hard Metal Bits (x4)",
+               "flavor": "The Engineer is able to more efficiently tinker with metal parts"
             },
-            "lock_recipe": {
-               "recipe_name": "Steel Lock",
-               "description": "Used to craft objects that can be locked or require some sort of locking, like doors, hatches and gates.",
-               "flavor": "Be careful to not lock someone out!"
-            },
-            "component_simple_recipe": {
-               "recipe_name": "Simple Mechanical Component",
-               "description": "A simple piece of machinery required by less advanced contraptions.",
-               "flavor": ""
-            },
-            "component_complex_recipe": {
-               "recipe_name": "Complex Mechanical Component",
-               "description": "A more elegant and refined machine, required by the most advanced contraptions that one can make.",
-               "flavor": "By gear and component, metal shall come alive! -Ava Ferreavia, Ingeniator Magna"
-            },
-            "ammunition_common_recipe": {
-               "recipe_name": "Common Turret Ammunition",
-               "description": "Craft a bunch of bolts and get them ready for action in a special box that can be loaded into bolt turrets.",
-               "flavor": "Lock and load"
+            "metal_bits_soft_recipe": {
+               "recipe_name": "Soft Metal Bits (x4)",
+               "flavor": "The Engineer is able to more efficiently tinker with metal parts"
             },
             "small_turret_recipe": {
-               "recipe_name": "Bolt Turret",
-               "description": "Shoots metal bolts at enemies from a distance. Requires reloading after 24 shots.",
-               "flavor": "Must be placed by an Engineer"
+               "flavor": "Requires an Engineer to be placed"
             },
             "turnip_shooter_recipe": {
-               "recipe_name": "Turnip Thrower",
-               "description": "Shoots turnips at enemies from a distance. Requires reloading after 16 shots.",
-               "flavor": "Turns out turnips turned up to be good projectiles! Must be placed by an Engineer"
-            },
-            "gourd_shooter_recipe": {
-               "recipe_name": "Golden Gourd Gun",
-               "description": "Shoots golden gourds at enemies from a distance. Requires reloading after 16 shots.",
-               "flavor": "Don't like the taste of gourds? Don't worry, they're multi-functional! Must be placed by an Engineer"
-            },
-            "potato_shooter_recipe": {
-               "recipe_name": "Potato Pounder",
-               "description": "Shoots sweet potatoes at enemies from a distance. Requires reloading after 16 shots.",
-               "flavor": "Po-ta-toes! Boil 'em, mash 'em, shoot 'em at your enemies! Must be placed by an Engineer"
+               "flavor": "Don't like the taste of turnips? Don't worry, they're multi-functional! Requires an Engineer to be placed"
             },
             "storage_name": "Storage"
          },
@@ -17263,7 +17211,8 @@
       "refined": {
          "lock": {
             "display_name": "Steel Lock",
-            "description": "A refined good used for crafting locked things like doors or gates."
+            "description": "Used to craft locked doors and mechanisms.",
+            "flavor": "Look out to not lock someone out"
          },
          "legendary_silk": {
             "display_name": "Woodland Silk",
@@ -17419,7 +17368,7 @@
          },
          "silk_bundle": {
             "display_name": "Silk Filament Bundle",
-            "description": "Unbelievably thin and shiny fibers boiled from the coccoons of silkmoths."
+            "description": "Unbelievably thin and shiny fibers boiled from silkmoth's coccoons."
          },
          "golem_chitin": {
             "display_name": "Hardened Golem Chitin",
@@ -17428,18 +17377,6 @@
          "golem_hammer": {
             "display_name": "Golem Hammer",
             "description": "Used by the Geomancer to craft Beaver Golems"
-         },
-         "component_simple": {
-            "display_name": "Simple Mechanical Component",
-            "description": "A basic system of parts, like triggers and small moving bobs, to be used in engineering."
-         },
-         "component_complex": {
-            "display_name": "Complex Mechanical Component",
-            "description": "An elaborate small bit of machinery, ready to be used in advanced engineering."
-         },
-         "ammunition_common": {
-            "display_name": "Common Turret Ammunition",
-            "description": "Simple bolts with hard metal tips used to build or reload combat turrets."
          }
       },
       "trees": {
@@ -23776,43 +23713,9 @@
          },
          "two_handed_sword": {
             "display_name": "Two‑Handed Steel Sword"
-         },
-         "gourd_bullet": {
-            "display_name": "Golden Gourd",
-            "description": "Hard and merciless."
-         },
-         "potato_bullet": {
-            "display_name": "Sweet Potato",
-            "description": "Sweet revenge."
          }
       },
       "gizmos": {
-         "small_turret": {
-            "display_name": "Bolt Turret",
-            "description": "Shoots bolts at enemies from a distance. Must be reloaded when the number of uses get to zero!",
-            "empty": {
-               "display_name": "Empty Bolt Turret",
-               "description": "This turret has gone dry! Requires reloading with Common Turret Ammunition."
-            }
-         },
-         "turnip_shooter": {
-            "turnip_shooter": {
-               "display_name": "Turnip Thrower",
-               "description": "Shoots balanced turnips at enemies. Must be reloaded when the number of uses get to zero!"
-            },
-            "gourd_shooter": {
-               "display_name": "Golden Gourd Gun",
-               "description": "Shoots strong golden gourds at enemies. Must be reloaded when the number of uses get to zero!"
-            },
-            "potato_shooter": {
-               "display_name": "Potato Pounder",
-               "description": "Shoots quick sweet potatoes at enemies. Must be reloaded when the number of uses get to zero!"
-            },
-            "empty": {
-               "display_name": "Empty Vegetable Turret",
-               "description": "This turret has gone dry! Requires reloading with Turnips, Golden Gourds or Sweet Potatoes!"
-            }
-         },
          "dummy_training": {
             "dummy_training_ghost": {
                "description": "It's best to practice with this friendly guy. Can be repaired before it breaks.",
@@ -26883,8 +26786,7 @@
             "tooltip_wanted_item_higher_quantity": "Merchant will pay <span class='higherValue'>[str(factor)]% more</span> for [str(quantity)] of these!",
             "tooltip_wanted_item_lower": "Merchant will pay <span class='lowerValue'>[str(factor)]% less</span> for these!",
             "tooltip_wanted_item_lower_quantity": "Merchant will pay <span class='lowerValue'>[str(factor)]% less</span> for [str(quantity)] of these!",
-            "tooltip_warmth_radius": "Warmth Radius:",
-            "tooltip_sight_range": "Effective Range:"
+            "tooltip_warmth_radius": "Warmth Radius:"
          },
          "custom_tooltips": {
             "mechanical": {
@@ -27315,7 +27217,6 @@
                      "supply_fiber_thatch": "Fiber & Thatching Supply (Default)",
                      "supply_weaver": "Weaving Supplies (Default)",
                      "supply_metalworker": "Metalworking Supplies (Default)",
-                     "supply_engineering": "Engineering Supplies (Default)",
                      "supply_veggie_fruit": "Veggie & Fruit Supply (Default)",
                      "supply_meat": "Meat Supply (Default)",
                      "special_ingredients": "Ingredients & Preserves (Default)",
@@ -27429,7 +27330,7 @@
                   "healing_items": "Healing Items",
                   "tooltip_crafter": "Crafter",
                   "tooltip_edible_fruit": "Edible Fruit Seeds",
-                  "tooltip_refined_weaver": "Refined Goods",
+                  "tooltip_refined_weaver": "Refined Stuff",
                   "tooltip_dyes": "Dyes",
                   "tooltip_baking": "Baking",
                   "tooltip_preserves": "Preserves",
@@ -27477,12 +27378,12 @@
                "collect_strays_description": "Periodically collect any stray animals that wander out of this pasture and return them to it.",
                "ostrich_pasture_name": "Ostrich Enclosure",
                "moomoo_pasture_name": "Moo-Moo Herd",
-               "ostrich_pasture_description": "These exotic birds produce delicious large eggs, often some feathers and can be slaughtered for large poultry, jerky, feathers and bone",
+               "ostrich_pasture_description": "These exotic birds produce delicious large eggs and can be slaughtered for large poultry, jerky, feathers and bone",
                "sheep_pasture_description": "Sheep produce wool and, seldom, some milk. Slaughtering sheep will produce raw mutton, jerky, and bone",
                "moomoo_pasture_description": "Moo-moos eat a lot but will produce nice amounts of milk. Slaughtering them yields pelts, steak, jerky and bone",
                "rabbit_pasture_description": "Rabbits reproduce quickly and can be slaughtered for jerky, pelts and sometimes bone",
-               "poyo_pasture_description": "Poyos lay eggs, a fine cooking ingredient. Rarely drop some feathers. Slaughtering poyo will yield meat and, often, feathers and bone",
-               "duck_pasture_description": "Ducks lay eggs and sometimes lose feathers, but require more space than poyos. Slaughtering duck will yield meat and, often, feathers and bone",
+               "poyo_pasture_description": "Poyos lay eggs, a fine cooking ingredient. Slaughtering poyo will yield meat and, often, feathers and bone",
+               "duck_pasture_description": "Ducks lay eggs, but require more space and time than poyos. Slaughtering duck will yield meat and, often, feathers and bone",
                "duck_pasture_name": "Duck Badling",
                "oinker_pasture_name": "Oinker Drove",
                "oinker_pasture_description": "Oinkers eat well and occasionally dig up truffles, a valuable cooking ingredient. They yield pelts, bone, and good amounts of pork and jerky"
@@ -27631,7 +27532,6 @@
                   "opening": "Opening...",
                   "transforming": "Transforming...",
                   "filling": "Being Filled...",
-                  "reloading": "Being Reloaded...",
                   "draining": "Being Drained...",
                   "fueling": "Being Fueled...",
                   "pottage": "Stirring..."

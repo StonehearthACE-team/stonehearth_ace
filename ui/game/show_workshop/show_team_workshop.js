@@ -2686,9 +2686,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
          var menace = productCatalogData.menace;
          self.set('menace', menace);
 
-         var sightRange = productCatalogData.sight_range;
-         self.set('sightRange', sightRange);
-
          var showEquipment = false;
          if (productCatalogData.equipment_roles) {
             var classArray = stonehearth_ace.findRelevantClassesArray(productCatalogData.equipment_roles);
@@ -2759,12 +2756,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_menace')}</span>` +
                   `<span class="value">${menace}</span></div>`;
             App.guiHelper.addTooltip(self.$('#menace'), description);
-         }
-
-         if (sightRange) {
-            var description = `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_sight_range')}</span>` +
-                  `<span class="value">${sightRange}</span></div>`;
-            App.guiHelper.addTooltip(self.$('#sightRange'), description);
          }
 
          if (showEquipment) {

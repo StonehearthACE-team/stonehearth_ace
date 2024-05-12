@@ -1,67 +1,6 @@
 {
-   "components": {
-      "stonehearth:siege_weapon": {
-         "max_uses": 16,
-         "reloadable": true
-      },
-      "stonehearth:attributes": {
-         "max_health": {
-            "type": "basic",
-            "value": 140
-         },
-         "menace": {
-            "type": "basic",
-            "value": 18
-         }
-      },
-      "stonehearth:loot_drops": {
-         "mixintypes": {
-            "entries": "override"
-         },
-         "entries": {
-            "gears": {
-               "num_rolls": {
-                  "min": 1,
-                  "max": 2
-               },
-               "items": {
-                  "bronze_gear": {
-                     "uri": "stonehearth:refined:bronze_gear"
-                  }
-               }
-            },
-            "ingots": {
-               "num_rolls": {
-                  "min": 0,
-                  "max": 1
-               },
-               "items": {
-                  "iron_ingot": {
-                     "uri": "stonehearth:refined:iron_ingot"
-                  }
-               }
-            },
-            "soft_metal": {
-               "num_rolls": {
-                  "min": 0,
-                  "max": 2
-               },
-               "items": {
-                  "soft_metal": {
-                     "uri": "stonehearth_ace:refined:metal_bits:soft"
-                  }
-               }
-            }
-         }
-      },
-      "stonehearth_ace:stump": {}
-   },
+   "components": {},
    "entity_data": {
-      "stonehearth:stump_data": {
-         "stump_alias": "stonehearth_ace:gizmos:turnip_shooter:empty",
-         "transform_option_key": "turnip_shooter",
-         "ignore_listener": true
-      },
       "stonehearth:placement": {
          "effect": "wrench",
          "tag": "mechanical"

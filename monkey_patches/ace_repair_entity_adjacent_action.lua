@@ -43,7 +43,7 @@ function AceRepairEntityAdjacent:run(ai, entity, args)
    end
 
    local siege_weapon_component = target:get_component('stonehearth:siege_weapon')
-   if siege_weapon_component and not siege_weapon_component:is_reloadable() then
+   if siege_weapon_component then
       local repair_amount = repair_data and repair_data.siege_weapon_repair_amount or 1
       local usage_percentage = siege_weapon_component:get_usage_percentage()
       while usage_percentage < 1 do

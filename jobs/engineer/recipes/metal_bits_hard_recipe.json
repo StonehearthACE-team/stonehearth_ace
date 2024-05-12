@@ -1,0 +1,18 @@
+{
+   "mixins": [
+      "/stonehearth_ace/jobs/blacksmith/recipes/metal_bits_hard_recipe.json"
+   ],
+   "effort": 15,
+   "recipe_name": "i18n(stonehearth_ace:jobs.engineer.recipes.metal_bits_hard_recipe.recipe_name)",
+   "flavor": "i18n(stonehearth_ace:jobs.engineer.recipes.metal_bits_hard_recipe.flavor)",
+   "workshop": "stonehearth:engineer:workbench",
+   "level_requirement": 0,
+   "proficiency_gain": 1,
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:metal_bits:hard",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "ingot hard_metal"
+      }
+   ]
+}

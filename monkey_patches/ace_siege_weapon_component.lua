@@ -29,16 +29,10 @@ end
 function AceSiegeWeaponComponent:_on_target_hit(context)
    local json = self._json or radiant.entities.get_json(self)
    local disposable = json and json.disposable or false
-   local reloadable = json and json.reloadable or false
    local num_uses = self._sv.num_uses - 1
    if num_uses <= 0 then
       if disposable then
          radiant.entities.kill_entity(self._entity)
-      end
-      if reloadable then
-         local stump_component = self._entity:get_component('stonehearth_ace:stump')
-         stump_component:add_stump()
-         radiant.entities.destroy_entity(self._entity)
       end
       self._out_of_ammo = true
    end
@@ -84,10 +78,6 @@ function AceSiegeWeaponComponent:_on_kill_event(args)
          local ghost_entity = town:place_item_type(self._entity:get_uri(), nil, placement_info)
       end
    end
-end
-
-function AceSiegeWeaponComponent:is_reloadable()
-   return self._json and self._json.reloadable
 end
 
 function AceSiegeWeaponComponent:_register_with_town(register)

@@ -19,23 +19,7 @@
          "resource_spawn_effect": "stonehearth:effects:fursplosion_effect",
          "start_unharvestable": true,
          "spawn_resource_immediately": true,
-         "check_owner": true,
-         "resource_loot_table": {
-            "entries": {
-               "feathers": {
-                  "items": {
-                     "none": {
-                        "uri": "",
-                        "weight": 2
-                     },
-                     "feathers": {
-                        "uri": "stonehearth:resources:feathers:ostrich_feathers",
-                        "weight": 1
-                     }
-                  }
-               }
-            }
-         }
+         "check_owner": true
       },
       "stonehearth:resource_node": {
          "category": "herding",

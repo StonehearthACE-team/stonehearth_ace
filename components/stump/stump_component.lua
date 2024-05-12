@@ -4,7 +4,7 @@ local StumpComponent = class()
 
 function StumpComponent:activate()
    self._stump_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:stump_data')
-   if self._stump_data and not self._stump_data.ignore_listener then
+   if self._stump_data then
       self._on_harvest_listener = radiant.events.listen(self._entity, 'stonehearth:kill_event', function(args)
             self:add_stump(args.kill_data and args.kill_data.source_id)
             self._on_harvest_listener = nil
