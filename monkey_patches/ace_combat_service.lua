@@ -114,18 +114,15 @@ function AceCombatService:_calculate_damage(attacker, target, attack_info, base_
 
    if attack_info.minimum_damage and damage <= attack_info.minimum_damage then
       damage = attack_info.minimum_damage
+   -- ACE: Make it so instead of randomly dealing 1 or 0, it will instead deal it based on how close to 1 or 0 it is
    elseif damage < 1 then
-      --[[ ACE: Let's not do this for now until we go over all enemy stats
-      -- ACE: Make it so instead of randomly dealing 1 or 0, it will instead deal it based on how close to 1 or 0 it is
       if rng:get_real(0,1) <= damage then
          damage = 1
       else
          damage = 0
       end
-      ]]
-      damage = rng:get_int(0, 1)
    else
-      -- ACE: Leave rounding for last, if no other rules apply, for when we go back to the other method
+      -- ACE: Leave rounding for last, if no other rules apply, to allow for the real value of damage to be used on the calculation above
       damage = radiant.math.round(damage)
    end
 

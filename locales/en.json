@@ -2,7 +2,6 @@
    "ai": {
       "actions": {
          "status_text": {
-            "collect_pile": "collecting from [name(data.target)]",
             "departing": "departing",
             "eat_from": "eating from [name(data.target)]",
             "fertilize_field": "applying fertilizer",
@@ -29,7 +28,6 @@
             "emptying": "emptying [name(data.target)]",
             "pottage": "contributing to the pottage",
             "pottage_start": "starting the pottage",
-            "striking_gong": "striking the gong",
             "periodic_interaction": {
                "default": "interacting with [name(data.target)]",
                "discovery": "making a discovery",
@@ -4012,10 +4010,6 @@
                   "everlasting_devotion": {
                      "display_name": "Inspired by devotion",
                      "tooltip": "The loyalty, companionship and love of some creatures is so touching! Some bonds are truly special..."
-                  },
-                  "dynasty_incense": {
-                     "display_name": "Peculiar fragrance",
-                     "tooltip": "Hmmm, was that some incense? So exotic! Makes the environment much better..."
                   }
                }
             },
@@ -6069,10 +6063,6 @@
             "fireworks_launch": {
                "display_name": "Light!",
                "description": "Order these fireworks to be launched into the skies for a spectacular display of colorful chemistry!"
-            },
-            "dynasty_gong": {
-               "display_name": "Strike the Gong!",
-               "description": "Striking the gong will temporarily change the town's soundtrack for half a day!"
             }
          },
          "slaughter_shepherd": {
@@ -7394,41 +7384,6 @@
          },
          "everlasting_devotion_touched_buff": {
             "description": "Being radiated with the feelings of joy brought by having the most loyal and devoted companion... <ul><li>Diligence, Compassion and Curiosity are increased</li><li>This hearthling enjoys higher chances of crafting better quality items</li><li>This hearthling is recovering 4 health points every 15 minutes</li><li>This hearthling received a happy, positive thought</li><li>For some reason this hearthling really feels like playing ball with a puppy!</li></ul>"
-         },
-         "dynasty_incense_buff": {
-            "body": {
-               "display_name": "Dynasty Incense (Vigorous)",
-               "description": "This hearthling's body is in perfect balance, as all things should be!<ul><li>Body is increased by 1</li><li>Only one incense effect can be active at the same time</li></ul>"
-            },
-            "description": "Providing its effects to anyone within eight blocks of distance. The incense will be gone once this timer expires!",
-            "spirit": {
-               "display_name": "Dynasty Incense (Serene)",
-               "description": "This hearthling's spirit is shining stronger than ever!<ul><li>Spirit is increased by 1</li><li>Only one incense effect can be active at the same time</li></ul>"
-            },
-            "mind": {
-               "display_name": "Dynasty Incense (Guileful)",
-               "description": "This hearthling's mind is racing!<ul><li>Mind is increased by 1</li><li>Only one incense effect can be active at the same time</li></ul>"
-            }
-         },
-         "dynasty_warrior_monk": {
-            "display_name": "Warrior Monk",
-            "description": "This hearthling has completely embraced the ways and the discipline of a Dynasty Warrior Monk.<ul><li>Courage is greatly increased, Speed and Menace are increased.</li><li>Damage dealt is increased by 20%</li><li>Healing received is doubled</li><li>Lightning-fast reflexes allow this hearthling to counter-attack any melee damage received, returning 50% of it back!</li></ul>"
-         },
-         "dynasty_using_rod": {
-            "display_name": "Using Dynasty Zhui Feng Gun",
-            "description": "This hearthling is mastering the art of the war-rod.<ul><li>Courage is increased, Speed is slightly increased</li><li>Will evolve into the \"Warrior Monk\" buff if combined with the \"Dynasty Monk Garments\" buff!</li></ul>"
-         },
-         "dynasty_monk_garments": {
-            "display_name": "Dynasty Monk Garments",
-            "description": "This hearthling is mastering the arts of offense and defense.<ul><li>Courage is increased</li><li>Damage dealt is increased by 10%</li><li>Healing received is increased by 50%</li><li>Will evolve into the \"Warrior Monk\" buff if combined with the \"Using Dynasty Zhui Feng Gun\" buff!</li></ul>"
-         },
-         "dynasty_outmastered": {
-            "description": "Courage is somewhat reduced, damage dealt and healing received are lowered.",
-            "display_name": "Outmastered!"
-         },
-         "dynasty_broad_arrow": {
-            "display_name": "Pierced by Broad Arrows",
-            "description": "Bleeding 5% of their total health every 12 minutes."
          }
       },
       "loadouts": {
@@ -10846,7 +10801,7 @@
                "flavor": ""
             },
             "gear_rack_shield_hook_recipe": {
-               "recipe_name": "Wall-Mounted Shield Display",
+               "recipe_name": "Riveted Wall-Mounted Display (Shields)",
                "description": "A small and reliable metal hook for hanging a shield on a wall.",
                "flavor": ""
             },
@@ -10856,17 +10811,17 @@
                "flavor": "Clicking the head of the stand will allow you to select the helmet!"
             },
             "gear_rack_short_hafts_recipe": {
-               "recipe_name": "Short-hafted Weapons Rack",
+               "recipe_name": "Riveted Weapon Rack (Short-hafted Arms)",
                "description": "A sturdy weapon hack for displaying up to three short-hafted weapons like axes, maces, short spears, scepters or hatchets.",
                "flavor": "Shouldn't a 'short-haft' be called a 'daft'?"
             },
             "gear_rack_polearms_recipe": {
-               "recipe_name": "Polearm Weapons Rack",
+               "recipe_name": "Iron-Banded Weapon Rack (Polearms)",
                "description": "A neat wooden rack reinforced with iron bands for displaying up to two polearms.",
                "flavor": ""
             },
             "gear_rack_swords_recipe": {
-               "recipe_name": "Bladed Weapons Rack",
+               "recipe_name": "Iron-Banded Weapon Rack (Swords)",
                "description": "Create a sophisticated rack for displaying up to four swords in a very neat way!",
                "flavor": "Can also be used for daggers... But should you?"
             },
@@ -11561,14 +11516,6 @@
          "worker_candledark_pumpkin_hat": {
             "display_name": "Worker Candledark Pumpkin Head",
             "description": "Will provide Workers with the encouragement they need to face the spooky season! Also good against warm weather."
-         },
-         "dy_freezing_worker_outfit": {
-            "display_name": "Dynasty Worker Steppe Outfit",
-            "description": "A beautiful outfit made of fur and wool. Protects from freezing weather and improves speed!"
-         },
-         "dy_worker_outfit_2": {
-            "display_name": "Dynasty Upgraded Worker Outfit",
-            "description": "Extremely lightweight due to the high quality silk! Improves speed."
          }
       },
       "cook": {
@@ -15543,62 +15490,6 @@
             "iron_door_ghost": {
                "description": "A very resistant door, perfect for keeping something outside. Or inside..."
             }
-         },
-         "dynasty_door": {
-            "display_name": "Dynasty Door",
-            "description": "The latest fashion in crossing through walls in the far east."
-         },
-         "dynasty_door_frame": {
-            "display_name": "Dynasty Door Frame",
-            "description": "Elegant passage."
-         },
-         "dynasty_double_door": {
-            "display_name": "Dynasty Double Door",
-            "description": "Very ornamental design."
-         },
-         "dynasty_double_door_frame": {
-            "display_name": "Dynasty Double Door Frame",
-            "description": "A wide and elegant passage."
-         },
-         "dynasty_gate": {
-            "display_name": "Dynasty Fortified Gate",
-            "description": "For a grand entrance in eastern style."
-         },
-         "dynasty_round_door": {
-            "display_name": "Dynasty Moon Gate",
-            "description": "Allowing people to circulate."
-         },
-         "dynasty_round_door_frame": {
-            "display_name": "Dynasty Moon Gate Frame",
-            "description": "Easier to carry things through!"
-         },
-         "dynasty_window": {
-            "display_name": "Dynasty Window",
-            "description": "Spy on your lands from within your palace."
-         },
-         "dynasty_window_large": {
-            "display_name": "Large Dynasty Window",
-            "description": "Looks great with other pieces of the set!"
-         },
-         "dynasty_window_tall": {
-            "display_name": "Tall Dynasty Window",
-            "description": "Not any dynasty, a tall dynasty."
-         },
-         "dynasty_window_wide": {
-            "display_name": "Wide Dynasty Window",
-            "description": "Also known as the \"big family window\"."
-         },
-         "dynasty_fencepost": {
-            "display_name": "Dynasty Stone Fence Post",
-            "description": "For all your cornering needs."
-         },
-         "dynasty_fence_single": {
-            "display_name": "Dynasty Stone Fence Short",
-            "description": "Beautifully carved in stone."
-         },
-         "dynasty_fence_double": {
-            "display_name": "Dynasty Stone Fence Long",
-            "description": "Intricately carved by eastern artisans."
          }
       },
       "crops": {
@@ -19726,18 +19617,6 @@
             "statue_thoto_monument": {
                "display_name": "Shrine of Thorin the Loyal",
                "description": "Legend speaks of a companion that was simply perfect, every single day. It radiates a pleasing aura."
-            },
-            "statue_dynasty_guardian_dragon": {
-               "display_name": "Dynasty Stone Guardian (Dragon)",
-               "description": "One would argue it lacks wings, to which the answer is: magic."
-            },
-            "statue_dynasty_guardian_lion": {
-               "display_name": "Dynasty Stone Guardian (Shishi)",
-               "description": "Is it a dog? Is it a lion? It's definitely imposing..."
-            },
-            "statue_dynasty_guardian_poyo": {
-               "display_name": "Dynasty Stone Guardian (Poyo)",
-               "description": "The determined look of a poyo hen protecting their chick!"
             }
          },
          "wall_axe": {
@@ -20434,62 +20313,6 @@
          "ember_ashes": {
             "display_name": "Ashes",
             "description": "Ashes to ashes... It certainly is a lot of dust. Makes you wonder who will clean this!"
-         },
-         "dynasty_lantern_wall": {
-            "display_name": "Dynasty Paper Lantern",
-            "description": "Very fancy wall decoration from the far east."
-         },
-         "dynasty_lantern_triple_wall": {
-            "display_name": "Dynasty Triple Paper Lantern",
-            "description": "A beautiful set of lanterns made with crumpled paper."
-         },
-         "dynasty_lantern_long_wall": {
-            "display_name": "Dynasty Long Paper Lantern",
-            "description": "Provides a very distinct look, great for facades!"
-         },
-         "dynasty_lantern_large_wall": {
-            "display_name": "Dynasty Large Paper Lantern",
-            "description": "For when a small lantern isn't enough..."
-         },
-         "dynasty_water_lantern": {
-            "display_name": "Dynasty Floating Lantern",
-            "description": "This beautiful paper lantern will float to the surface if placed in the water!"
-         },
-         "dynasty_water_lantern_small": {
-            "display_name": "Dynasty Small Floating Lantern",
-            "description": "Place it in water and watch as it floats to the surface!"
-         },
-         "dynasty_incense_body": {
-            "display_name": "Dynasty Incense (Vigorous)",
-            "description": "Fills the air around it with a peculiar fragrance, granting +1 Body to hearthlings. Lasts a week or so."
-         },
-         "dynasty_incense_mind": {
-            "display_name": "Dynasty Incense (Guileful)",
-            "description": "Fills the air around it with a peculiar fragrance, granting +1 Mind to hearthlings. Lasts a week or so."
-         },
-         "dynasty_incense_spirit": {
-            "display_name": "Dynasty Incense (Serene)",
-            "description": "Fills the air around it with a peculiar fragrance, granting +1 Spirit to hearthlings. Lasts a week or so."
-         },
-         "dynasty_jade_figurine_monkey": {
-            "display_name": "Dynasty Jade Figurine (Monkey)",
-            "description": "But from afar Monkey conceived. Smartly, the others it deceived... "
-         },
-         "dynasty_jade_figurine_rabbit": {
-            "display_name": "Dynasty Jade Figurine (Rabbit)",
-            "description": "First it was the Rabbit, making of innovation its habit..."
-         },
-         "dynasty_jade_figurine_snake": {
-            "display_name": "Dynasty Jade Figurine (Snake)",
-            "description": "Afterwards came the Snake, crafty and cunning, straight for the take..."
-         },
-         "dynasty_jade_figurine_tiger": {
-            "display_name": "Dynasty Jade Figurine (Tiger)",
-            "description": "So for now the Tiger retreats. But soon it shall come, the cycle repeats."
-         },
-         "dynasty_gong": {
-            "display_name": "Dynasty Gong",
-            "description": "A beautiful and ornate gong from the far east capable of bringing the tunes from its land..."
          }
       },
       "pets": {
@@ -23131,41 +22954,6 @@
          },
          "steel_helmet": {
             "display_name": "Steel Helmet"
-         },
-         "dy_iron_archer_mail": {
-            "display_name": "Dynasty Padded Archer Outfit",
-            "description": "An eastern armor set with padded boiled leather plates to protect Archers."
-         },
-         "dy_ornate_cleric_armor": {
-            "display_name": "Dynasty Monk Garments",
-            "description": "Slightly weaker than Ornate Cleric Armor but much lighter, allowing fo additional combat prowess."
-         },
-         "dy_iron_helmet": {
-            "display_name": "Dynasty Iron Dragon Helm"
-         },
-         "dy_iron_platemail": {
-            "display_name": "Dynasty Iron Dragon Armor"
-         },
-         "dy_iron_shield": {
-            "display_name": "Dynasty Iron Arc Shield"
-         },
-         "dy_silver_helmet": {
-            "display_name": "Dynasty Silver Dragon Helm"
-         },
-         "dy_silver_mail": {
-            "display_name": "Dynasty Silver Dragon Armor"
-         },
-         "dy_silver_shield": {
-            "display_name": "Dynasty Silver Arc Shield"
-         },
-         "dy_steel_helmet": {
-            "display_name": "Dynasty Steel Dragon Helm"
-         },
-         "dy_steel_mail": {
-            "display_name": "Dynasty Steel Dragon Armor"
-         },
-         "dy_steel_shield": {
-            "display_name": "Dynasty Steel Arc Shield"
          }
       },
       "weapons": {
@@ -23619,7 +23407,7 @@
          },
          "ea_cleric_rod": {
             "display_name": "Dynasty Zhui Feng Gun",
-            "description": "Called the war-rod, a staff used by Clerics and Warrior-Monks. (Two‑handed)"
+            "description": "Called the war-rod, a staff used by Clerics and monks. (Two‑handed)"
          },
          "ea_crossbow": {
             "display_name": "Dynasty Chu-ko-nu",
@@ -24570,7 +24358,7 @@
          },
          "gear_rack": {
             "gear_rack_polearms": {
-               "display_name": "Polearm Weapons Rack",
+               "display_name": "Iron-Banded Weapon Rack (Polearms)",
                "description": "Display your prettiest polearms on this handy rack!"
             },
             "gear_rack_armor_stand": {
@@ -24581,21 +24369,17 @@
                "display_name": "Riveted Armor Stand (Head)"
             },
             "gear_rack_shield_hook": {
-               "display_name": "Wall-Mounted Shield Display",
+               "display_name": "Riveted Wall Display (Shields)",
                "description": "For when paintings are not imposing enough for your walls."
             },
             "gear_rack_short_hafts": {
-               "display_name": "Short-hafted Weapons Rack",
+               "display_name": "Riveted Weapon Rack (Short-hafted Arms)",
                "description": "Display a nice collection of maces, axes, short spears and other weapons with a short haft."
             },
             "gear_rack_swords": {
-               "display_name": "Bladed Weapons Rack",
+               "display_name": "Iron-Banded Weapon Rack (Swords)",
                "description": "Swords! The more, the merrier? Or at least the safer, one would think..."
             }
-         },
-         "dynasty_chest": {
-            "display_name": "Dynasty Decorated Chest",
-            "description": "An exotic place for safekeeping all your exotic goods!"
          }
       },
       "tools": {
@@ -26544,29 +26328,6 @@
          }
       },
       "game": {
-         "build2": {
-            "destroy_building_blueprint_confirm": {
-               "title": "Destroy Current Building Blueprint",
-               "message": "Do you really want to destroy this building blueprint? This operation cannot be undone!<br><br>Note: this will not destroy any building templates or already-built buildings.",
-               "no": "No",
-               "yes": "Yes!"
-            },
-            "destroy_building_confirm": {
-               "no_description": "Do not destroy the building.",
-               "very_yes": "Yes! Restore Terrain",
-               "very_yes_description": "Destroy the building and restore the terrain to how it was before construction began.<br><br>Note: ore veins will not be restored and will be replaced with rock.",
-               "yes": "Yes! Building Only",
-               "yes_description": "Destroy the building, but leave any terrain modifications made in the process of construction."
-            }
-         },
-         "calendar": {
-            "season_no_reamining_days": "Ends today."
-         },
-         "pet_manager": {
-            "title": "Pet Overview",
-            "name": "Name",
-            "details": "Pet Details"
-         },
          "mercantile": {
             "active": {
                "title": "Merchants & Stalls",
@@ -26716,7 +26477,7 @@
             "item_categories": {
                "resources": "Resources (Plant)",
                "resources_mineral": "Resources (Mineral)",
-               "resources_animal": "Resources (Creature)",
+               "resources_animal": "Resources (Animal)",
                "resources_fiber": "Resources (Fiber)",
                "food_animal": "Food (Animal)",
                "food_prepared": "Food (Prepared)",
@@ -26755,7 +26516,7 @@
             "tooltip_equipment_type": "Type:",
             "tooltip_fuel_capacity": "Fuel Capacity:",
             "tooltip_max_health": "Max Health:",
-            "tooltip_inventory": "Amount in Inventory:",
+            "tooltip_inventory": "Storage Space:",
             "tooltip_menace": "Perceived Threat:",
             "tooltip_satisfaction": {
                "drink": {
@@ -27644,8 +27405,7 @@
                "porcelain1": "Default Preset: Porcelain",
                "marble1": "Default Preset: Marble",
                "cobblestone_grate1": "Default Preset: Candledark Cobblestone & Grate",
-               "stake1": "Default Preset: Candledark Stake",
-               "dynasty1": "Default Preset: Dynasty Stone"
+               "stake1": "Default Preset: Candledark Stake"
             },
             "preset_filter": {
                "save_mode": {

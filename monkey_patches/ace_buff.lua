@@ -45,10 +45,6 @@ function AceBuff:destroy()
 
    self:_cancel_craft_order()
 
-   if self._json.destroy_entity_on_expiration and self._removed_due_to_expiration then
-      radiant.entities.kill_entity(self._sv._entity)
-   end
-
    self:_ace_old_destroy()
 end
 

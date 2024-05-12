@@ -25,15 +25,12 @@
       },
       "stonehearth:resource_node": {
          "resource": "stonehearth_ace:food:rye:rye_bale",
-         "harvest_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
-         "harvester_effect": "fiddle",
-         "description": "collect_pile",
+         "harvest_overlay_effect": "stonehearth:effects:chop_overlay_effect",
+         "harvester_effect": "mine",
+         "description": "mine",
          "durability": 20
       },
-      "stonehearth:evolve": {},
-      "stonehearth_ace:pile": {
-         "harvest_rate": 3
-      }
+      "stonehearth:evolve": {}
    },
    "entity_data": {
       "stonehearth:evolve_data": {
@@ -51,9 +48,6 @@
       },
       "stonehearth:appeal": {
          "appeal": 2
-      },
-      "stonehearth:item_quality": {
-         "variable_quality": false
       }
    }
 }

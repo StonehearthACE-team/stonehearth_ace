@@ -25,13 +25,10 @@
       },
       "stonehearth:resource_node": {
          "resource": "stonehearth_ace:resources:coal:hunk_of_hard_coal",
-         "harvest_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
-         "harvester_effect": "fiddle",
-         "description": "collect_pile",
+         "harvest_overlay_effect": "stonehearth:effects:mine_overlay_effect",
+         "harvester_effect": "mine",
+         "description": "mine",
          "durability": 18
-      },
-      "stonehearth_ace:pile": {
-         "harvest_rate": 2
       }
    },
    "entity_data": {
@@ -46,9 +43,6 @@
       },
       "stonehearth:appeal": {
          "appeal": 0
-      },
-      "stonehearth_ace:replant_data": {
-         "seed_alias": "stonehearth_ace:containers:hunk_of_hard_coal_pile"
       },
       "stonehearth:item_quality": {
          "variable_quality": false

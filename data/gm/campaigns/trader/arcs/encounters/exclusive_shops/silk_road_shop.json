@@ -12,6 +12,7 @@
             {
                "items": [
                   "stonehearth_ace:refined:cloth_bolt:silk"
+
                ],
                "quantity": {
                   "min": 4,
@@ -25,6 +26,7 @@
                   "stonehearth_ace:refined:fiber:silk_bundle",
                   "stonehearth_ace:refined:thread:silk",
                   "stonehearth_ace:resources:wood:bamboo_log"
+
                ],
                "quantity": {
                   "min": 6,
@@ -42,6 +44,7 @@
                   "stonehearth_ace:drink:coffee:roasted",
                   "stonehearth_ace:food:rice:raw_rice",
                   "stonehearth_ace:food:rice:rice_flour"
+
                ],
                "quantity": {
                   "min": 4,
@@ -59,6 +62,7 @@
                   "stonehearth_ace:drink:coffee_bold",
                   "stonehearth_ace:drink:coffee_lavish",
                   "stonehearth_ace:drink:coffee_milk"
+
                ],
                "quantity": {
                   "min": 2,
@@ -76,6 +80,7 @@
                   "stonehearth_ace:food:dumpling_salmon",
                   "stonehearth:food:dumpling_meat",
                   "stonehearth:food:dumpling_vegetarian"
+
                ],
                "quantity": {
                   "min": 1,
@@ -87,14 +92,13 @@
             },
             {
                "items": [
-                  "stonehearth_ace:eastern:field_work:outfit:sunstroke",
-                  "stonehearth_ace:dynasty:worker:outfit:freezing",
-                  "stonehearth_ace:dynasty:worker:outfit:2"
+                  "stonehearth_ace:eastern:field_work:outfit:sunstroke"
+
                ],
                "quantity": {
                   "min": 0,
                   "max": 1,
-                  "max_unique": 2
+                  "max_unique": 1
                },
                "price_multiplier": 1.1
             },
@@ -109,23 +113,13 @@
                   "stonehearth_ace:armor:ea_light_steel_shield",
                   "stonehearth_ace:armor:ea_simple_quiver",
                   "stonehearth_ace:armor:ea_steel_chainmail",
-                  "stonehearth_ace:armor:ea_steel_helm",
-                  "stonehearth_ace:armor:dy_iron_helmet",
-                  "stonehearth_ace:armor:dy_iron_platemail",
-                  "stonehearth_ace:armor:dy_iron_shield",
-                  "stonehearth_ace:armor:dy_steel_helmet",
-                  "stonehearth_ace:armor:dy_steel_mail",
-                  "stonehearth_ace:armor:dy_steel_shield",
-                  "stonehearth_ace:armor:dy_silver_helmet",
-                  "stonehearth_ace:armor:dy_silver_mail",
-                  "stonehearth_ace:armor:dy_silver_shield",
-                  "stonehearth_ace:armor:dy_ornate_cleric_armor",
-                  "stonehearth_ace:armor:dy_iron_archer_mail"
+                  "stonehearth_ace:armor:ea_steel_helm"
+
                ],
                "quantity": {
                   "min": 1,
-                  "max": 2,
-                  "max_unique": 8
+                  "max": 1,
+                  "max_unique": 5
                },
                "fine_item_chance": 0.1,
                "price_multiplier": 2
@@ -156,6 +150,7 @@
                   "stonehearth_ace:weapons:ea_steel_lance",
                   "stonehearth_ace:weapons:ea_steel_offhand",
                   "stonehearth_ace:weapons:ea_steel_short_spear"
+
                ],
                "quantity": {
                   "min": 1,
@@ -164,103 +159,6 @@
                },
                "fine_item_chance": 0.2,
                "price_multiplier": 2.2
-            },
-            {
-               "items": [
-                  "stonehearth_ace:portals:dynasty_door",
-                  "stonehearth_ace:portals:dynasty_double_door",
-                  "stonehearth_ace:portals:dynasty_door_frame",
-                  "stonehearth_ace:portals:dynasty_double_door_frame",
-                  "stonehearth_ace:portals:dynasty_gate",
-                  "stonehearth_ace:portals:dynasty_round_door",
-                  "stonehearth_ace:portals:dynasty_round_door_frame"
-               ],
-               "quantity": {
-                  "min": 1,
-                  "max": 4,
-                  "max_unique": 4
-               },
-               "fine_item_chance": 0.2,
-               "price_multiplier": 2.5
-            },
-            {
-               "items": [
-                  "stonehearth_ace:portals:dynasty_window",
-                  "stonehearth_ace:portals:dynasty_window_large",
-                  "stonehearth_ace:portals:dynasty_window_tall",
-                  "stonehearth_ace:portals:dynasty_window_wide",
-                  "stonehearth_ace:construction:dynasty_fence:end",
-                  "stonehearth_ace:construction:dynasty_fence:bar:single",
-                  "stonehearth_ace:construction:dynasty_fence:bar:double"
-               ],
-               "quantity": {
-                  "min": 2,
-                  "max": 8,
-                  "max_unique": 4
-               },
-               "fine_item_chance": 0.2,
-               "price_multiplier": 2
-            },
-            {
-               "items": [
-                  "stonehearth_ace:decoration:dynasty_lantern_large_wall",
-                  "stonehearth_ace:decoration:dynasty_lantern_long_wall",
-                  "stonehearth_ace:decoration:dynasty_lantern_triple_wall",
-                  "stonehearth_ace:decoration:dynasty_lantern_wall",
-                  "stonehearth_ace:decoration:dynasty_water_lantern",
-                  "stonehearth_ace:decoration:dynasty_water_lantern_small"
-               ],
-               "quantity": {
-                  "min": 4,
-                  "max": 12,
-                  "max_unique": 3
-               },
-               "fine_item_chance": 0.4,
-               "price_multiplier": 3
-            },
-            {
-               "items": [
-                  "stonehearth_ace:containers:dynasty_chest",
-                  "stonehearth_ace:decoration:dynasty_jade_figurine_monkey",
-                  "stonehearth_ace:decoration:dynasty_jade_figurine_tiger",
-                  "stonehearth_ace:decoration:dynasty_jade_figurine_snake",
-                  "stonehearth_ace:decoration:dynasty_jade_figurine_rabbit",
-                  "stonehearth_ace:decoration:statue:dynasty_guardian_lion",
-                  "stonehearth_ace:decoration:statue:dynasty_guardian_poyo",
-                  "stonehearth_ace:decoration:statue:dynasty_guardian_dragon"
-               ],
-               "quantity": {
-                  "min": 3,
-                  "max": 6,
-                  "max_unique": 4
-               },
-               "fine_item_chance": 0.3,
-               "price_multiplier": 2.5
-            },
-            {
-               "items": [
-                  "stonehearth_ace:decoration:dynasty_incense_mind",
-                  "stonehearth_ace:decoration:dynasty_incense_body",
-                  "stonehearth_ace:decoration:dynasty_incense_spirit"
-               ],
-               "quantity": {
-                  "min": 0,
-                  "max": 5,
-                  "max_unique": 2
-               },
-               "fine_item_chance": 0.5,
-               "price_multiplier": 5
-            },
-            {
-               "items": [
-                  "stonehearth_ace:decoration:dynasty_gong"
-               ],
-               "quantity": {
-                  "min": 0,
-                  "max":1
-               },
-               "fine_item_chance": 0.6,
-               "price_multiplier": 3
             }
          ]
       }

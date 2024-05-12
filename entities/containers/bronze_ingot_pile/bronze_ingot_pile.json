@@ -30,11 +30,8 @@
          "resource": "stonehearth:refined:bronze_ingot",
          "harvest_overlay_effect": "stonehearth_ace:effects:transform_worker_upgrade_overlay_effect",
          "harvester_effect": "fiddle",
-         "description": "collect_pile",
+         "description": "harvest",
          "durability": 24
-      },
-      "stonehearth_ace:pile": {
-         "harvest_rate": 1
       }
    },
    "entity_data": {
@@ -49,12 +46,6 @@
       },
       "stonehearth:appeal": {
          "appeal": 4
-      },
-      "stonehearth_ace:replant_data": {
-         "seed_alias": "stonehearth_ace:containers:bronze_ingot_pile"
-      },
-      "stonehearth:item_quality": {
-         "variable_quality": false
       }
    }
 }
