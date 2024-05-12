@@ -101,7 +101,7 @@ App.workshopManager = {
          });
    },
 
-   toggleWorkshop: function (jobAlias, forceShow) {
+   toggleWorkshop: function (jobAlias) {
       var self = this;
 
       // Hide all other workshops.
@@ -115,7 +115,7 @@ App.workshopManager = {
 
       if (self.workshops[jobAlias]) {
          // This workshop exists, just toggle it.
-         if (!forceShow && self.workshops[jobAlias].isVisible) {
+         if (self.workshops[jobAlias].isVisible) {
             self.workshops[jobAlias].hide(true);
          } else {
             self.workshops[jobAlias].show(!hidOther);

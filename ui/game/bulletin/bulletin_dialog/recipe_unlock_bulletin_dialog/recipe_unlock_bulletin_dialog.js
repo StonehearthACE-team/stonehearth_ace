@@ -12,7 +12,7 @@ App.StonehearthRecipeUnlockBulletinDialog = App.StonehearthBaseBulletinDialog.ex
       select: function(recipe) {
          App.workshopManager.getWorkshop(recipe.job_alias, function(workshop) {
             if (workshop) {
-               App.workshopManager.toggleWorkshop(recipe.job_alias, true);
+               workshop.show();
                workshop.selectRecipe(recipe.recipe_key);
             }
          });
