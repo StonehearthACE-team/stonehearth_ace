@@ -1228,19 +1228,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
    },
 
-   selectRecipe: function(recipe_key, remaining, maintainNumber) {
-      var self = this;
-      self.set('currentRecipe', self._getOrCalculateRecipeData(recipe_key));
-      self.queueAnywayStatus = false;
-      if (self.currentRecipe) {
-         //You'd think that when the object updated, the variable would update, but noooooo
-         self.set('model.current', self.currentRecipe);
-         self._setRadioButtons(remaining, maintainNumber);
-         //TODO: make the selected item visually distinct
-         self.preview();
-      }
-   },
-
    actions: {
       hide: function () {
          this.hide(true);
@@ -1248,7 +1235,15 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
       select: function(object, remaining, maintainNumber) {
          if (object) {
-            self.selectRecipe(object.recipe_key, remaining, maintainNumber);
+            this.set('currentRecipe', this._getOrCalculateRecipeData(object.recipe_key));
+            this.queueAnywayStatus = false;
+            if (this.currentRecipe) {
+               //You'd think that when the object updated, the variable would update, but noooooo
+               this.set('model.current', this.currentRecipe);
+               this._setRadioButtons(remaining, maintainNumber);
+               //TODO: make the selected item visually distinct
+               this.preview();
+            }
          }
       },
 

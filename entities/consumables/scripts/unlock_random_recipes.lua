@@ -16,8 +16,6 @@
 ]]
 
 local rng = _radiant.math.get_default_rng()
-local job_lib = require 'stonehearth_ace.lib.job.job_lib'
-
 local UnlockRandomRecipes = class()
 
 local log = radiant.log.create_logger('unlock_random_recipes_consumable_script')
@@ -45,7 +43,7 @@ function UnlockRandomRecipes.use(consumable, consumable_data, player_id, target_
          local unlocked = job_info:get_manually_unlocked()
          for _, recipe in ipairs(recipes) do
             if not unlocked[recipe] then
-               table.insert(possible_recipes, {job = job, recipe = recipe})
+               table.insert(possible_recipes, {job_info = job_info, recipe = recipe})
             end
          end
       end
@@ -56,24 +54,29 @@ function UnlockRandomRecipes.use(consumable, consumable_data, player_id, target_
       return false
    end
 
-   local recipes_by_job = {}
+   local jobs = {}
 
    while next(possible_recipes) and num_to_unlock > 0 do
       num_to_unlock = num_to_unlock - 1
       local index = rng:get_int(1, #possible_recipes)
       local selection = table.remove(possible_recipes, index)
-      local job = selection.job
-      local recipes = recipes_by_job[job]
-      if not recipes then
-         recipes = {}
-         recipes_by_job[job] = recipes
-      end
-      table.insert(recipes, selection.recipe)
-      log:debug('selected recipe "%s" for job "%s" to unlock', selection.recipe, job)
+      local job_info = selection.job_info
+      jobs[job_info] = (jobs[job_info] or 0) + 1
+
+      job_info:manually_unlock_recipe(selection.recipe)
+      log:debug('unlocking %s recipe "%s"', job_info:get_alias(), selection.recipe)
    end
 
-   local bulletin_titles = consumable_data.bulletin_title and {consumable_data.bulletin_title}
-   job_lib.unlock_recipes(player_id, recipes_by_job, bulletin_titles, consumable_data.show_bulletin ~= false)
+   if consumable_data.show_bulletin ~= false then
+      local bulletin_title = consumable_data.bulletin_title or 'stonehearth_ace:data.commands.use_recipe.bulletin_title'
+      for job_info, count in pairs(jobs) do
+         stonehearth.bulletin_board:post_bulletin(player_id)
+               :set_sticky(true)
+               :set_data({title = consumable_data.bulletin_title})
+               :add_i18n_data('job_name', job_info:get_class_name())
+               :add_i18n_data('recipe_count', count)
+      end
+   end
 
    return true
 end
