@@ -122,12 +122,6 @@ function AceCraftOrder:destroy()
    self:_ace_old_destroy()
 end
 
-function AceCraftOrder:set_recipe(recipe)
-   self._sv.recipe = recipe
-   self._recipe = recipe
-   self:_on_changed()
-end
-
 function AceCraftOrder:_add_curr_crafter(crafter)
    local already_crafting = false
    for _, curr_crafter in ipairs(self._sv.curr_crafters) do
@@ -624,8 +618,7 @@ function AceCraftOrder:produces(product_uri)
 end
 
 function AceCraftOrder:is_auto_craft_recipe()
-   -- reference the saved variables recipe because this might be pre-activate
-   return self._sv.recipe.is_auto_craft
+   return self._recipe.is_auto_craft
 end
 
 -- this auto queuing field is for regular automatic *requests* for crafting
@@ -796,15 +789,6 @@ function AceCraftOrder:_reduce_associated_orders_quantity(amount)
          end
       end
    end
-end
-
-AceCraftOrder._ace_old__remove_desires = CraftOrder._remove_desires
-function AceCraftOrder:_remove_desires(num)
-   if not self._desires then
-      return
-   end
-
-   self:_ace_old__remove_desires(num)
 end
 
 return AceCraftOrder

@@ -48,10 +48,6 @@ function AceBuilding:activate(loading)
    if self._sv.plan_job_status == stonehearth.constants.building.plan_job_status.COMPLETE then
       self:_create_resource_collection_tasks()
    end
-
-   if self._sv.building_status ~= stonehearth.constants.building.building_status.NONE and not self._sv._total_building_region then
-      self:_set_terrain_region_w(self._sv._terrain_region_w)
-   end
 end
 
 AceBuilding._ace_old_destroy = Building.__user_destroy
@@ -126,7 +122,7 @@ function AceBuilding:get_remaining_resource_cost(entity)
    if not next(remaining) then
       return remaining
    end
-
+   
    -- if an entity is specified, ignore any materials registered to be banked by them
    local entity_id = entity and entity:get_id()
    local resources = {}
@@ -162,7 +158,7 @@ function AceBuilding:register_material_to_be_banked(entity, material, item)
       local stacks = stacks_comp and stacks_comp:get_stacks() or 1
       registered_material[entity_id] = stacks
       self._registered_materials_by_entity[entity_id] = material
-
+      
       radiant.events.trigger_async(self._entity, 'stonehearth:build2:costs_changed')
 
       return true
@@ -183,7 +179,7 @@ function AceBuilding:try_bank_resource(item, material)
    if radiant.util.is_number(material) then
       material = self._registered_materials_by_entity[material]
    end
-
+   
    -- only bank it if this resource is still required
    local remaining = self._sv.resource_cost[material]
    if remaining then

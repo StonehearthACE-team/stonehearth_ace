@@ -11,10 +11,6 @@ function AceJobInfoController:activate()
    self._proficiency_category_stats = {}
    self:_ace_old_activate()
 
-   if self._sv.order_list then
-      self._sv.order_list:verify_order_recipes(self._all_recipes)
-   end
-
    self:_initialize_proficiency_category_stats()
 end
 
@@ -143,7 +139,7 @@ function AceJobInfoController:manually_lock_recipe(recipe_key, ignore_missing)
 
    self._sv.manually_unlocked[recipe_key] = nil
    self.__saved_variables:mark_changed()
-
+   
    radiant.events.trigger(radiant, 'stonehearth_ace:crafting:recipe_hidden', {recipe_data = found_recipe})
 
    return true
@@ -214,7 +210,7 @@ function AceJobInfoController:manually_unlock_crop(crop_key, ignore_missing)
       radiant.verify(false, "Attempting to manually unlock crop %s when job %s does not have crops!", crop_key, self._sv.alias)
       return false
    end
-
+   
    local found_crop = false
    local farmer_crop_list = self:get_all_farmer_crops()
    local herbalist_crop_list = self:get_all_herbalist_crops()
@@ -242,14 +238,14 @@ function AceJobInfoController:manually_unlock_all_crops()
       radiant.verify(false, "Attempting to manually unlock crops when job %s does not have crops!", self._sv.alias)
       return false
    end
-
+   
    local farmer_crop_list = self:get_all_farmer_crops()
    local herbalist_crop_list = self:get_all_herbalist_crops()
 
    for crop_key, crop_data in pairs(farmer_crop_list) do
       self._sv.manually_unlocked[crop_key] = true
    end
-
+   
    for crop_key, crop_data in pairs(herbalist_crop_list) do
       self._sv.manually_unlocked[crop_key] = true
    end
@@ -295,7 +291,6 @@ function AceJobInfoController:_build_craftable_recipe_list(recipe_index_url)
 end
 
 -- Prep the recipe data with any default values
--- ACE: also set up workshop data here so we don't rely on the ui
 function AceJobInfoController:_initialize_recipe_data(recipe_key, recipe_data)
    self._all_recipes[recipe_key] = recipe_data
    if not recipe_data.level_requirement then
@@ -325,15 +320,6 @@ function AceJobInfoController:_initialize_recipe_data(recipe_key, recipe_data)
             table.insert(recipes, recipe_data)
          end
       end
-   end
-
-   if recipe_data.workshop then
-      local workshop = {uri = recipe_data.workshop}
-      local catalog_data = stonehearth.catalog:get_catalog_data(workshop.uri)
-      if catalog_data then
-         workshop.equivalents = catalog_data.workshop_equivalents
-      end
-      recipe_data.workshop = workshop
    end
 end
 
