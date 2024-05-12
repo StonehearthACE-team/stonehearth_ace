@@ -1248,7 +1248,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
       select: function(object, remaining, maintainNumber) {
          if (object) {
-            this.selectRecipe(object.recipe_key, remaining, maintainNumber);
+            self.selectRecipe(object.recipe_key, remaining, maintainNumber);
          }
       },
 
