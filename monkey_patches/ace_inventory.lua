@@ -555,16 +555,4 @@ function AceInventory:_subtract_gold_from(stacks_to_remove, items)
    return stacks_to_remove, only_stacks_dirty
 end
 
-function AceInventory:set_restock_item_quality(item_id, item_quality)
-   for _, director in pairs(self._restock_directors) do
-      director:set_item_quality(item_id, item_quality)
-   end
-end
-
-function AceInventory:set_restock_should_restock(item_id, should_restock)
-   for _, director in pairs(self._restock_directors) do
-      director:set_should_restock(item_id, should_restock)
-   end
-end
-
 return AceInventory
