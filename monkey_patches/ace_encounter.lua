@@ -30,7 +30,7 @@ function AceEncounter:start(ctx)
 end
 
 function AceEncounter:destroy()
-   if self._sv._info.encounter_music then
+   if self._sv._info and self._sv._info.encounter_music then
       self._sv.game_master:unregister_music(self:get_unique_id())
    end
    if self._sv.script then
