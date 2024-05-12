@@ -28,29 +28,6 @@
       }
    },
    "dialog_tree_info": {
-      "start_node": "msg1",
-      "nodes": {
-         "msg1": {
-            "bulletin": {
-               "title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.last_delivery_dialogue.dialog_tree_info.dialog_nodes.msg1.bulletin_title)",
-               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.last_delivery_dialogue.dialog_tree_info.dialog_nodes.msg1.dialog_title)",
-               "portrait": "file(images/tomtee.png)",
-               "portrait_offset": 0,
-               "message": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.last_delivery_dialogue.dialog_tree_info.dialog_nodes.msg1.bulletin_message.00)",
-               "choices": {
-                  "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.last_delivery_dialogue.dialog_tree_info.dialog_nodes.msg1.choice_000)": {
-                     "out_edge": {
-                        "type": "trigger_many",
-                        "out_edges": [
-                           "remove_tomtee_camp",
-                           "delay_before_frostfather_arrival"
-                        ]
-                     }
-                  }
-               }
-            }
-         }
-      },
       "type": "all",
       "recipe_list": "stonehearth_ace:data:recipe_list:frostfeast"
    }
