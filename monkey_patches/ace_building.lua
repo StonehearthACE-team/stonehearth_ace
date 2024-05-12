@@ -36,22 +36,21 @@ function AceBuilding:activate(loading)
       self._sv._banked_resources = {}
    end
 
+   if not self._sv._resource_delivery_entity then
+      self:_create_resource_delivery_entity()
+   end
+
    self._registered_materials_to_be_banked = {}
    self._registered_materials_by_entity = {}
 
    self:_ace_old_activate(loading)
 
-   if self._sv._plan and self._sv.plan_job_status == stonehearth.constants.building.plan_job_status.COMPLETE then
-      if not self._sv._resource_delivery_entity then
-         self:_create_resource_delivery_entity()
-      end
+   if self._sv.plan_job_status == stonehearth.constants.building.plan_job_status.COMPLETE then
       self:_create_resource_collection_tasks()
    end
 
    if self._sv.building_status ~= stonehearth.constants.building.building_status.NONE and not self._sv._total_building_region then
       self:_set_terrain_region_w(self._sv._terrain_region_w)
-   elseif self._sv._sunk == true then
-      self._sv._sunk = 1
    end
 end
 
