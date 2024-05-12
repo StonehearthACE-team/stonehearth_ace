@@ -1,17 +1,55 @@
 {	
-   "components": {},
+	"_comment": "Not being used for now - ACE",
+   "components": {
+		"stonehearth:attributes": {
+         "max_calories": {
+            "type": "basic",
+            "value": 88
+         },
+         "min_calories": {
+            "type": "basic",
+            "value": 20
+         },
+         "min_drink_satiety": {
+            "type": "basic",
+            "value": 30
+         },
+         "max_drink_satiety": {
+            "type": "basic",
+            "value": 100
+         }
+      },
+		"stonehearth:expendable_resources": {
+         "resources": {
+				"calories": {
+               "min": {
+                  "linked_attribute": "min_calories"
+               },
+               "max": {
+                  "linked_attribute": "max_calories"
+               },
+               "initial_value": 50
+            },
+            "drink_satiety": {
+               "min": {
+                  "linked_attribute": "min_drink_satiety"
+               },
+               "max": {
+                  "linked_attribute": "max_drink_satiety"
+               },
+               "initial_value": 50
+            }
+         }
+      }
+   },
    "entity_data": {
       "stonehearth:customization_variants": {
          "root": {
             "hair_and_skin_color": {
                "weights": {
                   "white_color": 1,
-                  "white_2_color": 1,
-                  "olive_color": 1,
                   "brown_1_color": 1,
-                  "brown_light_color": 1,
-                  "brown_2_color": 1,
-                  "brown_3_color": 1
+                  "brown_2_color": 1
                }
             },
             "age": {
@@ -22,200 +60,50 @@
             }
          },
          "packages": {
-            "mixintypes": {
-               "white_color": "override",
-               "brown_1_color": "override",
-               "brown_2_color": "override"
-            },
-            "white_2_color": {
-               "hair_color": {
-                  "weights": {
-                     "black": 1,
-                     "walnut": 1,
-                     "ochre": 1,
-                     "brown": 1,
-                     "bronze": 2,
-                     "red": 2,
-                     "sandy": 2,
-                     "straw": 4,
-                     "blonde": 3,
-                     "platinum": 1,
-                     "silver": 2
-                  }
-               },
-               "skin_color": {
-                  "weights": {
-                     "white2": 1
-                  }
-               },
+            "white_color": {
                "eye_color": {
                   "weights": {
                      "aqua": 2,
-                     "blue": 3,
-                     "brown": 1,
-                     "green": 3,
-                     "hazel": 2
-                  }
-               }
-            },
-            "white_color": {
-               "hair_color": {
-                  "weights": {
-                     "black": 3,
-                     "walnut": 2,
-                     "ochre": 1,
-                     "bronze": 2,
-                     "straw": 1,
-                     "brown": 3,
-                     "red": 1,
-                     "sandy": 1,
-                     "blonde": 1,
-                     "platinum": 1
-                  }
-               },
-               "skin_color": {
-                  "weights": {
-                     "white": 1
-                  }
-               },
-               "eye_color": {
-                  "weights": {
-                     "blue": 1,
+                     "black": 2,
+                     "blue": 2,
+                     "blurple": 1,
                      "brown": 2,
-                     "green": 1,
+                     "green": 2,
                      "hazel": 2,
-                     "aqua": 1,
-                     "black": 0,
-                     "red": 0,
-                     "yellow": 0
-                  }
-               }
-            },
-            "olive_color": {
-               "hair_color": {
-                  "weights": {
-                     "black": 3,
-                     "walnut": 1,
-                     "ochre": 1,
-                     "brown": 2,
-                     "red": 0,
-                     "sandy": 1,
-                     "blonde": 0,
-                     "platinum": 1
-                  }
-               },
-               "skin_color": {
-                  "weights": {
-                     "olive": 1
-                  }
-               },
-               "eye_color": {
-                  "weights": {
-                     "blue": 0,
-                     "brown": 3,
-                     "green": 1,
-                     "hazel": 3,
-                     "black": 1,
-                     "red": 0,
-                     "yellow": 0
-                  }
-               }
-            },
-            "brown_1_color": {
-               "hair_color": {
-                  "weights": {
-                     "dark": 1,
-                     "black": 3,
-                     "walnut": 2,
-                     "bronze": 1,
-                     "brown": 3,
-                     "sandy": 1
-                  }
-               },
-               "skin_color": {
-                  "weights": {
-                     "brown_1": 1
-                  }
-               },
-               "eye_color": {
-                  "weights": {
-                     "black": 1,
-                     "brown": 1,
-                     "green": 1,
-                     "hazel": 1,
-                     "red": 1,
+                     "magenta": 0.5,
+                     "red": 0.5,
                      "yellow": 1
                   }
                }
             },
-            "brown_light_color": {
-               "hair_color": {
-                  "weights": {
-                     "dark": 1,
-                     "black": 3,
-                     "walnut": 1,
-                     "brown": 1
-                  }
-               },
-               "skin_color": {
-                  "weights": {
-                     "brown_light": 1
-                  }
-               },
+            "brown_1_color": {
                "eye_color": {
                   "weights": {
-                     "black": 1,
+                     "aqua": 1,
+                     "black": 2,
+                     "blue": 1,
+                     "blurple": 1,
                      "brown": 2,
-                     "green": 1,
+                     "green": 2,
                      "hazel": 2,
-                     "red": 1,
+                     "magenta": 0.5,
+                     "red": 0.5,
                      "yellow": 1
                   }
                }
             },
             "brown_2_color": {
-               "hair_color": {
-                  "weights": {
-                     "black": 5,
-                     "brown": 2,
-                     "dark": 3,
-                     "silver": 1
-                  }
-               },
-               "skin_color": {
-                  "weights": {
-                     "brown_2": 1
-                  }
-               },
                "eye_color": {
                   "weights": {
+                     "aqua": 0.5,
                      "black": 2,
-                     "brown": 3,
+                     "blue": 0.5,
+                     "blurple": 1,
+                     "brown": 2,
                      "green": 1,
-                     "hazel": 1,
-                     "yellow": 1
-                  }
-               }
-            },
-            "brown_3_color": {
-               "hair_color": {
-                  "weights": {
-                     "black": 5,
-                     "dark": 4,
-                     "platinum": 1,
-                     "silver": 1
-                  }
-               },
-               "skin_color": {
-                  "weights": {
-                     "brown_3": 1
-                  }
-               },
-               "eye_color": {
-                  "weights": {
-                     "black": 2,
-                     "brown": 2,
                      "hazel": 2,
+                     "magenta": 0.5,
+                     "red": 0.5,
                      "yellow": 1
                   }
                }

@@ -36,55 +36,6 @@ function AceCustomizationComponent:change_customization(subcategory, style, cach
    self:_add_style(subcategory, style)
 end
 
--- Build a map from category to array of style options/ ACE: added ordinal sorting
-function AceCustomizationComponent:_build_customization_indices(options)
-   local indices = {}
-   for category, subcategories in pairs(options.categories) do
-      local styles_for_category = {}
-      for _, subcategory in ipairs(subcategories) do
-         -- get style values for this subcategory
-         local values = options.styles[subcategory] and options.styles[subcategory].values or {}
-
-         -- convert style values map to an array
-         local temp = radiant.keys(values)
-
-         -- ACE: sort by ordinal
-         table.sort(temp, function(a, b)
-            -- Check if 'ordinal' exists in both tables
-            if values[a].ordinal and values[b].ordinal then
-               return values[a].ordinal < values[b].ordinal
-            elseif values[a].ordinal then
-               return true
-            elseif values[b].ordinal then
-               return false
-            else
-               return a > b
-            end
-         end)
-
-         -- sort alphabetically
-         -- table.sort(temp)
-
-         local styles_array = {}
-         for _, style in ipairs(temp) do
-            -- insert a kv-pair which maps from subcategory to style name
-            if not values[style].hidden then
-               table.insert(styles_array, { [subcategory] = style })
-            end
-         end
-
-         -- put the subcategory style arrays into a category array
-         table.insert(styles_for_category, styles_array)
-      end
-
-      -- compute the cartesian product using each subcategory to get every combination of the subcategory styles
-      -- we need to do this to compress multiple subcategories into indices
-      indices[category] = radiant.util.cartesian_product(styles_for_category)
-   end
-
-   return indices
-end
-
 function AceCustomizationComponent:restore_cached_customization(subcategory)
    assert(subcategory)
    if not self._sv._customization_cache or not self._sv._customization_cache[subcategory] then

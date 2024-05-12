@@ -1,4 +1,7 @@
 {
+   "mixins": [
+      "stonehearth_ace:data:namelists:northern_alliance"
+   ],
    "job_index": "stonehearth_ace:northern_alliance:jobs:index",
    "default_quest_storage_uri": "stonehearth_ace:containers:quest:na",
    "population_titles": "/stonehearth_ace/data/titles/population_titles.json",
@@ -8,23 +11,7 @@
          "male": {
             "uri": [
                "stonehearth_ace:na_male_additions",
-               "stonehearth_ace:na_male_additions",
-               "stonehearth_ace:na_male_additions",
-               "stonehearth_ace:na_male_additions_2",
-               "stonehearth_ace:na_male_additions_2",
-               "stonehearth:male_3",
-               "stonehearth_ace:male_4"
-            ]
-         },
-         "female": {
-            "uri": [
-               "stonehearth:female_1",
-               "stonehearth:female_1",
-               "stonehearth:female_1",
-               "stonehearth:female_2",
-               "stonehearth:female_2",
-               "stonehearth:female_3",
-               "stonehearth_ace:female_4"
+               "stonehearth_ace:na_male_additions_2"
             ]
          }
       }     
