@@ -612,10 +612,6 @@ function AceCraftOrder:_get_primary_product_uri(products)
    return uri
 end
 
-function AceCraftOrder:get_max_ingredients_to_animate_dropping()
-   return self._recipe.max_ingredients_to_animate_dropping or stonehearth.constants.crafting.MAX_INGREDIENTS_TO_ANIMATE_DROPPING
-end
-
 function AceCraftOrder:produces(product_uri)
    if self._recipe.produces[1].item == product_uri then
       return true
