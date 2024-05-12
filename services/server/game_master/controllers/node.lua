@@ -373,7 +373,8 @@ function Node:load_json()
    if self._sv.json_path then
       -- true for cache, false for don't report error if json doesn't exist.
       -- If the json file doesn't exist, the NodeList's post activate will reap us
-      self._sv._info = radiant.deep_copy(radiant.resources.load_json(self._sv.json_path, true, false))
+      local info = radiant.resources.load_json(self._sv.json_path, true, false)
+      self._sv._info = info and radiant.deep_copy(info)
    end
 end
 

@@ -11,11 +11,16 @@ function AceJobInfoController:activate()
    self._proficiency_category_stats = {}
    self:_ace_old_activate()
 
+   self:_initialize_proficiency_category_stats()
+end
+
+AceJobInfoController._ace_old_post_activate = JobInfoController.post_activate
+function AceJobInfoController:post_activate()
    if self._sv.order_list then
       self._sv.order_list:verify_order_recipes(self._all_recipes)
    end
 
-   self:_initialize_proficiency_category_stats()
+   self:_ace_old_post_activate()
 end
 
 function AceJobInfoController:_initialize_proficiency_category_stats()
