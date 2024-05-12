@@ -100,12 +100,13 @@ function AceCraftOrderList:_validate_craft_orders()
       self._sv.secondary_orders.n = 0 -- need to restore this or remoter won't know it's an array
    end
 
-   self._sv.auto_craft_orders = radiant.map_to_array(auto_craft_orders, function(key, value)
-      if type(value) == 'table' then
-         return nil -- Keep this value
-      end
-      return false -- Skip this value
-   end)
+   self._sv.auto_craft_orders = {}
+   --self._sv.auto_craft_orders = radiant.map_to_array(auto_craft_orders, function(key, value)
+   --   if type(value) == 'table' then
+   --      return nil -- Keep this value
+   --   end
+   --   return false -- Skip this value
+   --end)
    self._sv.auto_craft_orders.n = 0 -- need to restore this or remoter won't know it's an array
 
    -- Populate orders cache
