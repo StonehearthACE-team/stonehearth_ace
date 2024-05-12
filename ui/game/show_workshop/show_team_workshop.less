@@ -1054,6 +1054,7 @@
       }
 
       .amountLabel {
+         .handCursor;
          font-size: 10px;
          position: absolute;
          text-align: right;
@@ -1064,6 +1065,7 @@
       }
 
       .orderInfoIcon {
+         .handCursor;
          position: absolute;
          width: 17px;
          height: 18px;
@@ -1108,74 +1110,64 @@
          display: block;
       }
 
-      .interactionOverlay {
-         .handCursor;
-         position: absolute;
-         top: -4px;
-         left: 0px;
-         width: 70px;
-         height: 78px;
-         z-index: 2;
-      }
-
       .modifyOrder {
+         display: none;
          position: absolute;
          top: 0px;
          left: 0px;
          width: 70px;
          height: 74px;
-         z-index: 3;
+         z-index: 2;
 
-         .modifyOrderAmountImg {
+         .modifyOrderAmount {
             position: absolute;
             top: 0px;
             left: 0px;
             width: 70px;
             height: 74px;
-            background: url(/stonehearth_ace/ui/game/show_workshop/images/modifyCraftAmount.png);
-            z-index: -1;
-         }
-
-         .modifyOrderAmount {
-            position: absolute;
-            top: 7px;
-            left: 15px;
-            width: 40px;
-            height: 42px;
-            color: #ffe156;
-            font-size: 24px;
+            content: url(/stonehearth_ace/ui/game/show_workshop/images/modifyCraftAmount.png);
          }
 
          .moveOrderToTopBtn {
             position: absolute;
-            top: -14px;
+            top: -25px;
             left: 0px;
             object-fit: none;
 
-            content: url(/stonehearth_ace/ui/game/show_workshop/images/move_order_to_top.png);
+            img {
+               content: url(/stonehearth_ace/ui/game/show_workshop/images/move_order_to_top.png);
+            }
          }
 
          .moveOrderToBottomBtn {
             position: absolute;
-            top: 53px;
+            top: 74px;
             left: 0px;
             object-fit: none;
 
-            content: url(/stonehearth_ace/ui/game/show_workshop/images/move_order_to_bottom.png);
+            img {
+               content: url(/stonehearth_ace/ui/game/show_workshop/images/move_order_to_bottom.png);
+            }
          }
 
-         .swapOrderListPriority {
+         .moveOrderToPrimaryList {
             position: absolute;
             top: 0px;
+            left: 70px;
             object-fit: none;
 
-            &.moveOrderToPrimaryList {
-               left: 52px;
+            img {
                content: url(/stonehearth_ace/ui/game/show_workshop/images/move_to_primary_list.png);
             }
+         }
 
-            &.moveOrderToSecondaryList {
-               left: 0px;
+         .moveOrderToSecondaryList {
+            position: absolute;
+            top: 0px;
+            left: -25px;
+            object-fit: none;
+
+            img {
                content: url(/stonehearth_ace/ui/game/show_workshop/images/move_to_secondary_list.png);
             }
          }

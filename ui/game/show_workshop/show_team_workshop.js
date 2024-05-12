@@ -272,10 +272,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
          self._onSecondaryOrdersUpdated();
          self._onOrderCountUpdated();
       }
-      else {
-         self._destroyModifyOrderDiv();
-         self.$('.tooltipstered').tooltipster('hide');
-      }
    }.observes('isVisible'),
 
    // ACE: added lots of features
@@ -399,9 +395,9 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
       });
 
-      self.$('.orders').off('mouseenter.existingOrderEnter', '.interactionOverlay');
-      self.$('.orders').on('mouseenter.existingOrderEnter', '.interactionOverlay', function (e) {
-         var $el = $(this).closest('.orderListItem');
+      self.$('.orders').off('mouseenter.existingOrderEnter', '.orderListItem');
+      self.$('.orders').on('mouseenter.existingOrderEnter', '.orderListItem', function (e) {
+         var $el = $(this);
          var orderId = parseInt($el.attr("data-orderid"));
          var order;
 
@@ -478,15 +474,15 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
       });
 
-      self.$('.orders').off('mouseleave.existingOrderLeave', '.interactionOverlay');
-      self.$('.orders').on('mouseleave.existingOrderLeave', '.interactionOverlay', function (e) {
+      self.$('.orders').off('mouseleave.existingOrderLeave', '.orderListItem');
+      self.$('.orders').on('mouseleave.existingOrderLeave', '.orderListItem', function (e) {
          self.highlightedOrders = {};
          self._updateFullDetailedOrderList();
       });
 
       self.$('.orders').off('dblclick.existingOrderDblClick', '.orderListItem');
       self.$('.orders').on('dblclick.existingOrderDblClick', '.orderListItem', function (e) {
-         self._setupModifyOrder($(this));
+         //self._setupModifyOrder($(this));
       });
 
       $(top).on("selected_workshop_entity_changed", function (_, e) {
@@ -639,44 +635,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
    },
 
-   _getOrderById: function(orderId) {
-      var self = this;
-      var [order, index, count] = self._getOrderFromOrderList(orderId, self.get('model.order_list.orders'));
-
-      if (!order) {
-         [order, index, count] = self._getOrderFromOrderList(orderId, self.get('model.order_list.secondary_orders'));
-      }
-
-      if (!order) {
-         [order, index, count] = self._getOrderFromOrderList(orderId, self.get('model.order_list.auto_craft_orders'));
-      }
-
-      return [order, index, count];
-   },
-
-   _getOrderFromOrderList: function(orderId, orderList) {
-      var order;
-      var index = 1;
-      radiant.each(orderList, function(_, o) {
-         if (o.id == orderId) {
-            order = o;
-            return false;
-         }
-         else if (!order) {
-            index++;
-         }
-      });
-      return [order, index, orderList.length];
-   },
-
-   _destroyModifyOrderDiv: function() {
-      var self = this;
-      var modifyDif = self.$().find('.modifyOrder');
-      modifyDif.find('.tooltipstered').tooltipster('destroy')
-      modifyDif.remove();
-      self._isModifyingOrder = false;
-   },
-
    _setupModifyOrder: function ($el) {
       // <input class="modifyOrderAmount" type="number" value="1" min="1" max="99">
       // <img class="moveOrderToTopBtn"/>
@@ -688,120 +646,19 @@ App.StonehearthTeamCrafterView = App.View.extend({
       // allow moving to primary/secondary list for non-building secondary/primary orders (not auto-craft)
       // allow modifying quantity for all except those with building ids
       var self = this;
-      var orderId = $el.data('orderid');
-      var [order, index, count] = self._getOrderById(orderId);
-      if (!order) {
-         return;
-      }
 
-      // check if we're already modifying this order
-      // if so, just camcel it and return
-      var hasExistingModifyOrder = $el.find('.modifyOrder').length > 0;
-      self._destroyModifyOrderDiv();
+      // if the divs already exist, update values/visibility
 
-      if (hasExistingModifyOrder) {
-         return;
-      }
-
+      var orderId = order.id;
       var orderList = self.getOrderList();
-      var isBuildingOrder = order.building_id != null;
-      var isAutoCraftOrder = order.recipe.is_auto_craft;
-      var isPrimaryOrderList = $el.closest('.orders').attr('id') == 'orders';
-      var orderAmount = order.condition.remaining || order.condition.at_least || 1;
 
-      var $moveToTop, $moveToBottom, $swapPriority, $modifyAmountImg, $modifyAmount;
-      var $modifyDiv = $modifyDiv = $('<div class="modifyOrder">');
-      var tooltipString;
-      $el.append($modifyDiv);
+      var $input = $el.find('.modifyOrderAmount');
+      $input.val(orderAmount);
 
-      if (index > 1) {
-         $moveToTop = $('<img class="moveOrderToTopBtn button">');
-         $modifyDiv.append($moveToTop);
-         $moveToTop.click(function() {
-            radiant.call_obj(orderList, 'change_order_position_command', 1, orderId);
-            self._destroyModifyOrderDiv();
-         });
-
-         tooltipString = App.tooltipHelper.createTooltip(null, i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_move_order_to_top'));
-         $moveToTop.tooltipster({
-            content: $(tooltipString)
-         });
-      }
-
-      if (index < count) {
-         $moveToBottom = $('<img class="moveOrderToBottomBtn button">');
-         $modifyDiv.append($moveToBottom);
-         $moveToBottom.click(function() {
-            radiant.call_obj(orderList, 'change_order_position_command', -1, orderId);
-            self._destroyModifyOrderDiv();
-         });
-
-         tooltipString = App.tooltipHelper.createTooltip(null, i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_move_order_to_bottom'));
-         $moveToBottom.tooltipster({
-            content: $(tooltipString)
-         });
-      }
-
-      if (!isBuildingOrder) {
-         if (!isAutoCraftOrder) {
-            $swapPriority = $('<img class="swapOrderListPriority button">');
-            if (isPrimaryOrderList) {
-               $swapPriority.addClass('moveOrderToSecondaryList');
-            }
-            else {
-               $swapPriority.addClass('moveOrderToPrimaryList');
-            }
-            $modifyDiv.append($swapPriority);
-            $swapPriority.click(function() {
-               radiant.call('stonehearth_ace:toggle_order_list_priority', self.get('model.alias'), orderId);
-               self._destroyModifyOrderDiv();
-            });
-
-            tooltipString = App.tooltipHelper.createTooltip(null, i18n.t('stonehearth_ace:ui.game.show_workshop.' +
-               (isPrimaryOrderList ? 'tooltip_swap_order_priority_secondary' : 'tooltip_swap_order_priority_primary')));
-            $swapPriority.tooltipster({
-               content: $(tooltipString)
-            });
-         }
-
-         $modifyAmountImg = $('<img class="modifyOrderAmountImg">');
-         $modifyDiv.append($modifyAmountImg);
-
-         $modifyAmount = $('<input class="modifyOrderAmount" type="number" value="' + orderAmount + '" min="1" max="99">');
-         $modifyDiv.append($modifyAmount);
-         $modifyAmount.keydown(function (e) {
-            if (e.key == 'Escape') {
-               e.stopPropagation();
-            }
-         });
-         $modifyAmount.keyup(function (e) {
-            if (e.key == 'Escape') {
-               e.stopPropagation();
-               self._destroyModifyOrderDiv();
-            }
-            else if (e.key == 'Enter') {
-               var val = Math.min(99, Math.max(1, parseInt($modifyAmount.val())));
-               if (val != orderAmount) {
-                  radiant.call('stonehearth_ace:modify_order_amount', self.get('model.alias'), orderId, val);
-               }
-               self._destroyModifyOrderDiv();
-            }
-         });
-
-         tooltipString = App.tooltipHelper.createTooltip(null, i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_modify_amount'));
-         $modifyAmount.tooltipster({
-            content: $(tooltipString)
-         });
-
-         // focus and select the amount
-         $modifyAmount.focus();
-         $modifyAmount.select();
-      }
-
-      self._isModifyingOrder = true;
-
-      // clear out highlighted orders because the css filters mess up z-ordering
-      self.$('.orderListItem').removeClass('buildingHighlighted craftHighlighted');
+      var $moveToTop = $el.find('.moveOrderToTopBtn');
+      var $moveToBottom = $el.find('.moveOrderToBottomBtn');
+      var $moveToPrimary = $el.find('.moveOrderToPrimaryList');
+      var $moveToSecondary = $el.find('.moveOrderToSecondaryList');
    },
 
    getOrderList: function(){
@@ -1645,22 +1502,25 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       // show interaction tips
-      var tips = `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_modify_order')}</div>`;
+      var tips = '';
+      if (!order.building_id) {
+         tips += `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_modify_order')}</div>`;
+      }
+
       tips += `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_move_order')}</div>`;
       tips += `<div>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_remove_order')}</div>`;
 
       description += `<div class="verticalSpacer stat faded">${tips}</div>`
 
       var tooltip = $(App.tooltipHelper.createTooltip(title, description));
-      var $iEl = $el.find('.interactionOverlay');
-      if ($iEl.data('tooltipster')) {
-         $iEl.tooltipster('destroy');
+      if ($el.data('tooltipster')) {
+         $el.tooltipster('destroy');
       }
-      $iEl.tooltipster({
+      $el.tooltipster({
          content: tooltip,
          position: showToRight ? 'right' : 'left',
       });
-      $iEl.tooltipster('show');
+      $el.tooltipster('show');
    },
 
    _applySearchFilter: function() {
@@ -2034,7 +1894,6 @@ App.StonehearthTeamCrafterView = App.View.extend({
          var orderListRow = self.$('.orderListRow[data ="' + orders[i].id + '"]');
          var orderListItem = self.$('.orderListItem[data-orderid = "' + order.id + '"]');
          var $issueIcon = orderListItem.find('.issueIcon');
-         //var $interactionOverlay = orderListItem.find('.interactionOverlay');
 
          var failedRequirements = "";
          // Only calculate failed requirements if this recipe isn't currently being processed (stonehearth.constants.crafting_status.CRAFTING = 3)
@@ -2075,7 +1934,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
          // if this order should be highlighted, highlight it
          var highlighted = false;
-         if (self.highlightType && !self._isModifyingOrder) {
+         if (self.highlightType) {
             for (var j = 0; j < self.highlightedOrders.length; j++) {
                var o = self.highlightedOrders[j];
                if (!o.isLocal) {
