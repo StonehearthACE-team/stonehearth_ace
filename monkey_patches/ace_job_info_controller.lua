@@ -332,13 +332,8 @@ function AceJobInfoController:_initialize_recipe_data(recipe_key, recipe_data)
       local catalog_data = stonehearth.catalog:get_catalog_data(workshop.uri)
       if catalog_data then
          workshop.equivalents = catalog_data.workshop_equivalents
-         workshop.display_name = catalog_data.display_name
-         workshop.icon = catalog_data.icon
-         recipe_data.workshop = workshop
-         recipe_data.hasWorkshop = true
-      else
-         log:error('Recipe %s for job %s has a workshop %s that is not in the manifest!', recipe_key, self._sv.alias, recipe_data.workshop)
       end
+      recipe_data.workshop = workshop
    end
 end
 
