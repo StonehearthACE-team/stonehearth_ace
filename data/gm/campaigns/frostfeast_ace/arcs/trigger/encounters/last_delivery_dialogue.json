@@ -28,7 +28,127 @@
       }
    },
    "dialog_tree_info": {
-      "type": "all",
-      "recipe_list": "stonehearth_ace:data:recipe_list:frostfeast"
+      "jobs": {
+         "stonehearth:jobs:carpenter": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_candles",
+               "frostfeast:frostfeast_wooden_door_wreath",
+               "frostfeast:frostfeast_dining_table_blue",
+               "frostfeast:frostfeast_dining_table_red",
+               "frostfeast:frostfeast_dining_table_green",
+               "frostfeast:frostfeast_dining_table_white",
+               "frostfeast:frostfeast_end_table_blue",
+               "frostfeast:frostfeast_end_table_red",
+               "frostfeast:frostfeast_end_table_green",
+               "frostfeast:frostfeast_end_table_white",
+               "frostfeast:frostfeast_door",
+               "frostfeast:frostfeast_double_door",
+               "frostfeast:frostfeast_window",
+               "frostfeast:frostfeast_window_tall",
+               "frostfeast:frostfeast_window_wide",
+               "frostfeast:frostfeast_door_wreath"
+            ]
+         },
+         "stonehearth:jobs:potter": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_clay_door_wreath",
+               "frostfeast:frostfeast_snowling_short",
+               "frostfeast:frostfeast_snowling",
+               "frostfeast:frostfeast_light_string_horizontal",
+               "frostfeast:frostfeast_light_string_horizontal_short",
+               "frostfeast:frostfeast_light_string_vertical",
+               "frostfeast:frostfeast_light_string_vertical_short"
+            ]
+         },
+         "stonehearth:jobs:mason": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_stone_door_wreath"
+            ]
+         },
+         "stonehearth:jobs:shepherd": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_goat",
+               "frostfeast:frostfeast_goat_large",
+               "frostfeast:frostfeast_goat_small"
+            ]
+         },
+         "stonehearth:jobs:blacksmith": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_candlestick",
+               "frostfeast:frostfeast_candle_holder",
+               "frostfeast:frostfeast_light_circlet"
+            ]
+         },
+         "stonehearth:jobs:herbalist": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:decorated_frostfeast_tree_gold",
+               "frostfeast:decorated_frostfeast_tree_silver",
+               "frostfeast:decorated_frostfeast_tree_snowy",
+               "frostfeast:frostfeast_wreath",
+               "frostfeast:frostfeast_wreath_large"
+            ]
+         },
+         "stonehearth:jobs:weaver": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_stocking",
+               "frostfeast:frostfeast_stocking_small",
+               "frostfeast:frostfeast_plushie_toy_deer",
+               "frostfeast:frostfeast_worker_holiday_outfit",
+               "frostfeast:frostfeast_window_star",
+               "frostfeast:frostfeast_crafter_outfit_freezing"
+            ]
+         },
+         "stonehearth:jobs:cook": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_seasonal_fruits",
+               "frostfeast:frostfeast_ginger_cookies",
+               "frostfeast:frostfeast_turkey",
+               "frostfeast:frostfeast_ham",
+               "frostfeast:frostfeast_pudding",
+               "frostfeast:frostfeast_herbalist_candy_staff"
+            ]
+         },
+         "stonehearth_ace:jobs:brewer": {
+            "type": "all",
+            "recipes": [
+               "frostfeast:frostfeast_egg_milk_punch",
+               "frostfeast:frostfeast_mulled_wine",
+               "frostfeast:frostfeast_hot_coco",
+               "frostfeast:frostfeast_spirited_coffee",
+               "frostfeast:frostfeast_must"
+            ]
+         }
+      },
+      "start_node": "msg1",
+      "nodes": {
+         "msg1": {
+            "bulletin": {
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.last_delivery_dialogue.dialog_tree_info.dialog_nodes.msg1.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.last_delivery_dialogue.dialog_tree_info.dialog_nodes.msg1.dialog_title)",
+               "portrait": "file(images/tomtee.png)",
+               "portrait_offset": 0,
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.last_delivery_dialogue.dialog_tree_info.dialog_nodes.msg1.bulletin_message.00)",
+               "choices": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.last_delivery_dialogue.dialog_tree_info.dialog_nodes.msg1.choice_000)": {
+                     "out_edge": {
+                        "type": "trigger_many",
+                        "out_edges": [
+                           "remove_tomtee_camp",
+                           "delay_before_frostfather_arrival"
+                        ]
+                     }
+                  }
+               }
+            }
+         }
+      }
    }
 }

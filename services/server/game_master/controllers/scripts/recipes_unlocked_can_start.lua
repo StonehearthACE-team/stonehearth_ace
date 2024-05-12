@@ -8,29 +8,22 @@ function RecipesUnlockedCanStart:start(ctx, info)
       log:debug('no player job controller for player id "%s"', ctx.player_id)
       return false
    end
-   
-   local recipe_list = {}
-   if info.recipe_list then
-      recipe_list = radiant.resources.load_json(info.recipe_list, true, false)
-   else
-      recipe_list = info.jobs
-   end
-   
-   for job, recipes in pairs(recipe_list) do
+
+   for job, data in pairs(info.jobs) do
       --log:debug('checking job %s for player %s', job, ctx.player_id)
       local job_info = player_job_controller:get_job(job)
       if job_info then
          local has_any_recipe = false
          local unlocked = job_info:get_manually_unlocked()
          --log:debug('has the following %s recipes unlocked: %s', radiant.size(unlocked), radiant.util.table_tostring(unlocked))
-         for _, recipe in ipairs(recipes) do
+         for _, recipe in ipairs(data.recipes) do
             local has_recipe = unlocked[recipe]
             if has_recipe then
                has_any_recipe = true
-               if info.type == 'any' then
+               if data.type == 'any' then
                   break
                end
-            elseif info.type == 'all' then
+            elseif data.type == 'all' then
                log:debug('"%s" %s doesn\'t have recipe %s', ctx.player_id, job, recipe)
                return false
             end
