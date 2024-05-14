@@ -3,7 +3,7 @@ local entity_forms = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local BuildItemTypeOnStructure = radiant.class()
 
 BuildItemTypeOnStructure.name = 'place an item type 2'
-BuildItemTypeOnStructure.does = 'stonehearth_ace:build_item_type_on_structure_2'
+BuildItemTypeOnStructure.does = 'stonehearth_ace:build_item_type_tag_on_structure'
 BuildItemTypeOnStructure.args = {
    placement_tag = 'string',
 }
@@ -57,7 +57,7 @@ local function _is_placeable_iconic(player_id, iconic_uri, quality, require_exac
    if not placement_data or placement_data.tag ~= placement_tag then
       return false
    end
-   
+
    return true
 end
 
@@ -96,7 +96,7 @@ local function _is_ghost_for_iconic(player_id, iconic_uri, quality, require_exac
          return false
       end
    end
-   
+
    local requested_quality = ghost_form_component:get_requested_quality()
    if quality == -1 then
       -- We picked a random object...
@@ -113,7 +113,7 @@ local function _is_ghost_for_iconic(player_id, iconic_uri, quality, require_exac
    if not ghost_form_component:is_place_item_type() then
       return false
    end
-   
+
    return true
 end
 
@@ -148,9 +148,9 @@ function BuildItemTypeOnStructure:_try_next_entry(ai, entity)
    local pickup_filter = stonehearth.ai:filter_from_key('stonehearth:place_item_type_on_structure',
          work_player_id .. '+q:' .. quality .. ':' .. iconic_uri .. require_exact_str .. ':p',
          function(item)
-            return _is_placeable_iconic(work_player_id, iconic_uri, quality, require_exact, item)
+            return _is_placeable_iconic(work_player_id, iconic_uri, quality, require_exact, item, tag)
          end)
-   
+
    local ghost_filter = stonehearth.ai:filter_from_key('stonehearth_ace:build_item_type_on_structure',
          work_player_id .. '+q:' .. quality .. ':' .. iconic_uri .. require_exact_str .. ':g',
          function(ghost)
@@ -176,7 +176,7 @@ function BuildItemTypeOnStructure:_try_next_entry(ai, entity)
    if self._items_changed_listener then
       self._items_changed_listener:destroy()
       self._items_changed_listener = nil
-   end   
+   end
 
    ai:set_think_output({
       iconic_filter = pickup_filter,
@@ -263,7 +263,7 @@ return ai:create_compound_action(BuildItemTypeOnStructure)
                filter_fn = ai.BACK(3).iconic_filter,
                description = 'pickup placeable iconic for ghost',
                owner_player_id = ai.BACK(3).owner_player_id,
-            })         
+            })
          :execute('stonehearth:goto_entity_type', {
                filter_fn = ai.BACK(4).ghost_filter,
                description = 'find ghost for iconic',
