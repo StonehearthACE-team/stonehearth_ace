@@ -3,7 +3,7 @@ local PLACEMENT_TAG = 'herding'
 local BuildTaskGroup = class()
 BuildTaskGroup.name = PLACEMENT_TAG .. ' build'
 BuildTaskGroup.does = 'stonehearth:work'
-BuildTaskGroup.priority = 0.35
+BuildTaskGroup.priority = 0.4
 
 return stonehearth.ai:create_task_group(BuildTaskGroup)
          :work_order_tag("build")
