@@ -10,7 +10,8 @@
    },
    "mixintypes": {
       "parent_job": "remove",
-      "parent_level_requirement": "remove"
+      "parent_level_requirement": "remove",
+      "task_groups": "override"
    },
    "parent_jobs": [
       {
@@ -54,6 +55,11 @@
       "craft_level_6": 16
    },
    "task_groups": [
+      "stonehearth:task_groups:common_tasks",
+      "stonehearth:task_groups:restock",
+      "stonehearth:task_groups:herding",
+      "stonehearth:task_groups:rescue",
+      "stonehearth:task_groups:town_alert",
       "stonehearth_ace:task_groups:build_herding",
       "stonehearth_ace:task_groups:place_herding",
       "stonehearth:task_groups:crafting",

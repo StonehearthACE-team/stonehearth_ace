@@ -19,6 +19,12 @@ end
 
 AceRenewableResourceNodeComponent._ace_old_activate = RenewableResourceNodeComponent.activate
 function AceRenewableResourceNodeComponent:activate()
+   -- Temporary fix for objects that have had the RRN component removed mid-update cycle
+   if self._json.remove_self then
+      self._entity:remove_component('stonehearth:renewable_resource_node')
+      return
+   end
+
    self._renewal_time_multipliers = {}
    --log:debug('%s RRN:activate() current model: %s', self._entity, self._entity:get_component('render_info'):get_model_variant())
    self:_ace_old_activate()

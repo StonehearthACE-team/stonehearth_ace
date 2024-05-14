@@ -3,7 +3,7 @@ local PLACEMENT_TAG = 'herding'
 local PlacementTaskGroup = class()
 PlacementTaskGroup.name = PLACEMENT_TAG .. ' placement'
 PlacementTaskGroup.does = 'stonehearth:work'
-PlacementTaskGroup.priority = 0.35
+PlacementTaskGroup.priority = 0.4
 
 return stonehearth.ai:create_task_group(PlacementTaskGroup)
          :work_order_tag("job")
