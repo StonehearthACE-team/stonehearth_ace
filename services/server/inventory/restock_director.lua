@@ -406,6 +406,14 @@ function RestockDirector:_on_item_added(item, is_first_time)
       return
    end
 
+   if is_first_time then
+      local iconic_form_comp = item:get_component('stonehearth:iconic_form')
+      local root_form = iconic_form_comp and iconic_form_comp:get_root_entity() or item
+      if radiant.entities.is_material(root_form, 'no_restock') then
+         return
+      end
+   end
+
    local current_storage = self._inventory:container_for(item)
    local current_storage_comp = current_storage and current_storage:get_component('stonehearth:storage')
    if current_storage_comp and current_storage_comp:get_ignore_restock() then
@@ -858,14 +866,20 @@ function RestockDirector:_is_storage_higher_priority_for_item(item, new_storage_
       return true
    end
 
-   -- in an input crate, and destination isn't an input crate
-   if current_storage_comp:get_type() == 'input_crate' and new_storage_comp:get_type() ~= 'input_crate' then
-      return false
-   end
-
-   -- not in an input crate, and destination is an input crate
-   if current_storage_comp:get_type() ~= 'input_crate' and new_storage_comp:get_type() == 'input_crate' then
-      return true
+   if current_storage_comp:get_type() == 'input_crate' then
+      if new_storage_comp:get_type() ~= 'input_crate' then
+         -- in an input crate, and destination isn't an input crate
+         return false
+      end
+   else
+      if new_storage_comp:get_type() == 'input_crate' then
+         -- not in an input crate, and destination is an input crate
+         return true
+      elseif new_storage_comp:get_type() == 'crate' and
+            (current_storage_comp:get_type() == 'output_crate' or current_storage_comp:get_type() == 'stockpile') then
+         -- in an output crate or stockpile, and destination is a crate
+         return true
+      end
    end
 
    return new_storage_comp:get_input_bin_priority() > current_storage:get_component('stonehearth:storage'):get_input_bin_priority()
