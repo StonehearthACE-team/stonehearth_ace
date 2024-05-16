@@ -39,7 +39,7 @@
          ]
       },
       "stonehearth_ace:fish_trap": {
-         "trap_timer": "8h+12h",
+         "trap_timer": "12h+18h",
          "square_radius": 9,
          "min_effective_water_volume": 280,
          "low_water_volume": 580,
@@ -76,6 +76,7 @@
          "appeal": -2
       },
       "stonehearth_ace:transform_data": {
+         "status_key": "stonehearth_ace:ai.actions.status_text.fish_trap_anchor",
          "request_action": "stonehearth_ace:transform",
          "request_action_overlay_effect": "stonehearth_ace:effects:harvest_fish_overlay_effect",
          "transforming_worker_effect": "fiddle",

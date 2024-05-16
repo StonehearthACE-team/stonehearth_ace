@@ -13,6 +13,7 @@ local COURAGE_EXP_WEIGHT = stonehearth.constants.exp.COURAGE_EXP_WEIGHT or 1
 local SPEED_EXP_WEIGHT = stonehearth.constants.exp.SPEED_EXP_WEIGHT or 0.5
 local ARMOR_EXP_WEIGHT = stonehearth.constants.exp.ARMOR_EXP_WEIGHT or 8
 local DMG_EXP_WEIGHT = stonehearth.constants.exp.DMG_EXP_WEIGHT or 10
+local RETREATING_BUFF = 'stonehearth_ace:buffs:retreating'
 
 -- Notify target that it has been hit by an attack.
 -- ACE: include damage source when modifying health
@@ -22,6 +23,11 @@ function AceCombatService:battery(context)
 
    if not target or not target:is_valid() then
       return nil
+   end
+
+   if stonehearth.player:is_npc(target) and self:has_leash(target) and self:is_point_outside_leash(target, radiant.entities.get_world_grid_location(attacker)) then
+      --self:clear_leash(target) -- We should do this and not have patch notes about it! >:D
+      radiant.entities.add_buff(target, RETREATING_BUFF) -- Okaaay, fine, let's do this instead...
    end
 
    local health = radiant.entities.get_health(target)

@@ -28,6 +28,8 @@
             "sculpting": "sculpting [name(data.target)]",
             "carving": "carving [name(data.target)]",
             "emptying": "emptying [name(data.target)]",
+            "fish_trap_anchor": "checking fish trap",
+            "fish_trap_anchor_ghost": "setting up a fish trap",
             "pottage": "contributing to the pottage",
             "pottage_start": "starting the pottage",
             "striking_gong": "striking the gong",
@@ -7447,6 +7449,10 @@
          "dynasty_broad_arrow": {
             "display_name": "Pierced by Broad Arrows",
             "description": "Bleeding 5% of their total health every 12 minutes."
+         },
+         "retreating": {
+            "display_name": "Retreating!",
+            "description": "This creature was being harmed by someone outside of their zone of action and will retreat to a safer spot. Their health shall be regenerated once they're safe."
          }
       },
       "loadouts": {
