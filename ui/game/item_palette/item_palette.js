@@ -135,15 +135,18 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       });
    },
 
+   setSkipCategories: function(skipCategories) {
+      var self = this;
+      self.options.skipCategories = skipCategories;
+      if (self._itemArr) {
+         self._updateItems();
+      }
+   },
+
    // ACE: handle extra information about equipment and whether an item unlocks a crop
+   // ACE: split main logic into _updateItems to allow for an internal call to update items without re-fetching
    updateItems: function(itemMap) {
       var self = this;
-
-      // Start off with all items marked as not updated.
-      var updated = {
-         items: {},
-         categories: {},
-      };
 
       // Convert item entries for display.
       var hasCropUnlocks = false;
@@ -217,6 +220,18 @@ $.widget( "stonehearth.stonehearthItemPalette", {
       self._itemArr = arr;
 
       self._searchTags = {};
+
+      self._updateItems(arr);
+   },
+
+   _updateItems: function() {
+      var self = this;
+
+      // Start off with all items marked as not updated.
+      var updated = {
+         items: {},
+         categories: {},
+      };
 
       // Go through each item and update the corresponding DOM element for it.
       radiant.each(self._itemArr, function(i, item) {

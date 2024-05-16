@@ -12,7 +12,7 @@ CompelledMoveToLeashCenter.priority = 1
 function CompelledMoveToLeashCenter:start_thinking(ai, entity, args)
    self._ready = false
    self._is_thinking = true
-   
+
    self._delay_start_timer = radiant.on_game_loop_once('CompelledMoveToLeashCenter start_thinking', function()
          self:_update_think_output(ai, entity, args)
 
