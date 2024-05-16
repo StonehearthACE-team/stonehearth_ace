@@ -585,6 +585,18 @@ App.StonehearthStockpileView = App.StonehearthBaseZonesModeView.extend({
       self._refreshGrids();
    },
 
+   _updateShowCategories: function() {
+      var self = this;
+      Ember.run.scheduleOnce('afterRender', this, function() {
+         if (!self._inventoryPalette) {
+            // When moving a crate, this function will fire, but no UI will be present.  For now, be lazy
+            // and just ignore this case.
+            return;
+         }
+         self._inventoryPalette.stonehearthItemPalette('setSkipCategories', self.get('model.stonehearth_ace:consumer') != null);
+      });
+   }.observes('model.uri', 'model.stonehearth_ace:consumer'),
+
    _updateStockedItems : function() {
       var self = this;
       Ember.run.scheduleOnce('afterRender', this, function() {
@@ -1181,7 +1193,7 @@ App.StonehearthStockpileView = App.StonehearthBaseZonesModeView.extend({
    _updateItemsFuel : function() {
       var self = this;
       var tracker = self.get('model.stonehearth:storage.item_tracker');
-      if (tracker == null) {
+      if (tracker == null || !self.get('model.stonehearth_ace:consumer')) {
          return;
       }
 
@@ -1199,7 +1211,7 @@ App.StonehearthStockpileView = App.StonehearthBaseZonesModeView.extend({
       });
 
       self.set('potentialFuel', fuelLevel);
-   }.observes('model.uri', 'model.stonehearth:storage.item_tracker'),
+   }.observes('model.uri', 'model.stonehearth:storage.item_tracker', 'model.stonehearth_ace:consumer'),
 
    _getEntityData: function(item) {
       if (item.canonical_uri && item.canonical_uri.entity_data) {
