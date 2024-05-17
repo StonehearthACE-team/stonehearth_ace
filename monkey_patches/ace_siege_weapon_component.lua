@@ -43,8 +43,10 @@ function AceSiegeWeaponComponent:_on_target_hit(context)
       self._out_of_ammo = true
    end
    self._sv.num_uses = num_uses
-   if self:needs_refill() and not self._json.passive_refill then
-      radiant.events.trigger(self._entity, 'stonehearth:siege_weapon:needs_refill')
+   if self:needs_refill() then
+      if not self._json.passive_refill or not reloadable then
+         radiant.events.trigger(self._entity, 'stonehearth:siege_weapon:needs_refill')
+      end
    end
    self.__saved_variables:mark_changed()
 end
