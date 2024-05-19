@@ -353,8 +353,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
       //Craft or maintain on click/ctrl+click of right mouse button.
       // ACE: incorporate the ability to specify the position of the order.
-      self.$('#recipeItems').off('mousedown.craftOrMaintain', '.item');
-      self.$('#recipeItems').on('mousedown.craftOrMaintain', '.item', function (e) {
+      self.$('#recipeItems').off('mousedown.craftOrMaintain', '.itemContainer');
+      self.$('#recipeItems').on('mousedown.craftOrMaintain', '.itemContainer', function (e) {
          var orderArgs;
          if (e.button == 2) {
             if (e.ctrlKey) {
@@ -591,13 +591,13 @@ App.StonehearthTeamCrafterView = App.View.extend({
       App.guiHelper.removeDynamicTooltip(self.$('#craftingWindow'), '.statusSign');
 
       if (self.$('#recipeItems')) {
-         self.$('#recipeItems').off('mousedown.craftOrMaintain', '.item');
+         self.$('#recipeItems').off('mousedown.craftOrMaintain', '.itemContainer');
       }
       if (self.$('.orders')) {
          self.$('.orders').off('mousedown.existingOrderClick', '.orderListItem');
       }
 
-      self.$(".category").off('mouseenter mouseleave', '.item');
+      self.$(".category").off('mouseenter mouseleave', '.itemContainer');
       self.$('.orders').off('scroll');
       $(document).off('keyup.show_team_workshop keydown.show_team_workshop');
       self.$('#searchSettingContainer').off('change.refocusInput', '.searchSettingCheckbox');
@@ -712,7 +712,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       var orderList = self.getOrderList();
-      var isBuildingOrder = order.building_id != null;
+      var isAutoQueuedOrder = order.condition.auto_queued;
       var isAutoCraftOrder = order.recipe.is_auto_craft;
       var isPrimaryOrderList = $el.closest('.orders').attr('id') == 'orders';
       var orderAmount = order.condition.remaining || order.condition.at_least || 1;
@@ -750,28 +750,28 @@ App.StonehearthTeamCrafterView = App.View.extend({
          });
       }
 
-      if (!isBuildingOrder) {
-         if (!isAutoCraftOrder) {
-            $swapPriority = $('<img class="swapOrderListPriority button">');
-            if (isPrimaryOrderList) {
-               $swapPriority.addClass('moveOrderToSecondaryList');
-            }
-            else {
-               $swapPriority.addClass('moveOrderToPrimaryList');
-            }
-            $modifyDiv.append($swapPriority);
-            $swapPriority.click(function() {
-               radiant.call('stonehearth_ace:toggle_order_list_priority', self.get('model.alias'), orderId);
-               self._destroyModifyOrderDiv();
-            });
-
-            tooltipString = App.tooltipHelper.createTooltip(null, i18n.t('stonehearth_ace:ui.game.show_workshop.' +
-               (isPrimaryOrderList ? 'tooltip_swap_order_priority_secondary' : 'tooltip_swap_order_priority_primary')));
-            $swapPriority.tooltipster({
-               content: $(tooltipString)
-            });
+      if (!isAutoCraftOrder) {
+         $swapPriority = $('<img class="swapOrderListPriority button">');
+         if (isPrimaryOrderList) {
+            $swapPriority.addClass('moveOrderToSecondaryList');
          }
+         else {
+            $swapPriority.addClass('moveOrderToPrimaryList');
+         }
+         $modifyDiv.append($swapPriority);
+         $swapPriority.click(function() {
+            radiant.call('stonehearth_ace:toggle_order_list_priority', self.get('model.alias'), orderId);
+            self._destroyModifyOrderDiv();
+         });
 
+         tooltipString = App.tooltipHelper.createTooltip(null, i18n.t('stonehearth_ace:ui.game.show_workshop.' +
+            (isPrimaryOrderList ? 'tooltip_swap_order_priority_secondary' : 'tooltip_swap_order_priority_primary')));
+         $swapPriority.tooltipster({
+            content: $(tooltipString)
+         });
+      }
+
+      if (!isAutoQueuedOrder) {
          $modifyAmountImg = $('<img class="modifyOrderAmountImg">');
          $modifyDiv.append($modifyAmountImg);
 
@@ -853,15 +853,12 @@ App.StonehearthTeamCrafterView = App.View.extend({
             Ember.set(formatted_recipe, 'is_locked', is_locked || is_hidden);
 
             formatted_recipe.hasWorkshop = formatted_recipe.workshop != null;
-            // var formatted_workshop = {};
-            // if (formatted_recipe.hasWorkshop) {
-            //    formatted_workshop.uri = formatted_recipe.workshop;
-            //    var catalogData = App.catalog.getCatalogData(formatted_workshop.uri);
-            //    if (catalogData) {
-            //       formatted_workshop.equivalents = catalogData.workshop_equivalents;
-            //    }
-            //    formatted_recipe.workshop = formatted_workshop;
-            // }
+            if (formatted_recipe.hasWorkshop) {
+               var catalogData = App.catalog.getCatalogData(formatted_recipe.workshop.uri);
+               if (catalogData) {
+                  formatted_recipe.workshop.equivalents = catalogData.workshop_equivalents;
+               }
+            }
 
             formatted_recipe.is_craftable = self._areRequirementsMet(formatted_recipe, highestLevel) ? 1 : 0;
             //formatted_recipe.category = category_id;
@@ -1092,7 +1089,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
    // Go through recipes displayed and update based on whether recipe is now craftable or not
    _updateCraftableRecipes: function() {
       var self = this;
-      var recipeItems = self.$('.item');
+      var recipeItems = self.$('.itemContainer');
       if (recipeItems) {
          var highestLevel = self.get('model.highest_level');
          $.each(recipeItems, function(_, el) {
@@ -1444,7 +1441,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          mouseleave: function () {
             self.HOVERING_ITEM = false;
             self._updateCraftInsertShown();
-         }}, '.item');
+         }}, '.itemContainer');
 
       var tooltip = App.tooltipHelper.createTooltip(
          i18n.t('stonehearth_ace:ui.game.show_workshop.craft_button.title'),
@@ -1581,15 +1578,17 @@ App.StonehearthTeamCrafterView = App.View.extend({
       var recipe = order.recipe;
       var title = i18n.t(recipe.recipe_name);
       var description;
+      var isAutoQueued = order.condition.auto_queued;
+      var titleEnd = isAutoQueued ? '_auto_queued' : '';
 
       if (recipe.is_auto_craft) {
-         description = `<div class='stat craftOrderAuto'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_auto_craft_order')}</div>`;
+         description = `<div class='stat craftOrderAuto'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_auto_craft_order' + titleEnd)}</div>`;
       }
       else if (order.condition.type == 'maintain') {
-         description = `<div class='stat craftOrderMaintain'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_manual_maintain_order')}</div>`;
+         description = `<div class='stat craftOrderMaintain'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_manual_maintain_order' + titleEnd)}</div>`;
       }
       else {
-         description = `<div class='stat craftOrderMake'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_manual_make_order')}</div>`;
+         description = `<div class='stat craftOrderMake'>${i18n.t('stonehearth_ace:ui.game.show_workshop.tooltip_manual_make_order' + titleEnd)}</div>`;
       }
 
       if (order.condition.type == 'maintain') {
@@ -1720,13 +1719,13 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       if (!search || search == '') {
-         self.$('.item:not(.is-hidden)').show();
+         self.$('.itemContainer:not(.is-hidden)').show();
          self.$('.category').show();
       } else {
          self.$('.category').show();
 
          // hide items that don't match the search
-         self.$('.item:not(.is-hidden)').each(function (i, item) {
+         self.$('.itemContainer:not(.is-hidden)').each(function (i, item) {
             var el = $(item);
             var recipeKey = el.attr('recipe_key');
 
@@ -1740,7 +1739,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          self.$('.category').each(function(i, category) {
             var el = $(category)
 
-            if (el.find('.item:visible').length > 0) {
+            if (el.find('.itemContainer:visible').length > 0) {
                el.show();
             } else {
                el.hide();

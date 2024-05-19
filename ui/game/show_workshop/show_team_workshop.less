@@ -290,27 +290,50 @@
             margin: 10px 0 0 0;
          }
 
-         .item {
+         .itemContainer {
             position: relative;
             float: left;
             width: 65px;
             height: 69px;
-            border: 0px;
             margin-right: 4px;
             margin-bottom: 4px;
-            background-position: 0px -930px;
             display: flex;
 
-            &:hover {
-               background-position: -66px -930px;
+            .item {
+               width: 65px;
+               height: 69px;
+               border: 0px;
+               background-position: 0px -930px;
 
-               &.is-auto-craft {
-                  background-position: -198px -930px;
+               &[is_craftable="0"] {
+                  opacity: 0.5;
                }
             }
 
-            &[is_craftable="0"] {
-               opacity: 0.5;
+            &:hover {
+               .item {
+                  background-position: -66px -930px;
+               }
+
+               &.is-auto-craft {
+                  .item {
+                     background-position: -198px -930px;
+                  }
+               }
+            }
+
+            &.is-locked {
+               -webkit-filter: grayscale(75%);
+            }
+   
+            &.is-hidden {
+               display: none;
+            }
+   
+            &.is-auto-craft {
+               .item {
+                  background-position: -132px -930px;
+               }
             }
 
             .autoCraftIcon {
@@ -350,18 +373,6 @@
                height: 69px;
                z-index: 3;
             }
-         }
-
-         .item.is-locked {
-            -webkit-filter: grayscale(75%);
-         }
-
-         .item.is-hidden {
-            display: none;
-         }
-
-         .item.is-auto-craft {
-            background-position: -132px -930px;
          }
       }
 

@@ -220,24 +220,31 @@ i18n.addPostProcessor("localizeEntityName", function(value, key, isFound, opts) 
             customName = i18n.applyReplacement(customNameKey, opts);
          }
 
-         var newToken = i18n.options.interpolationPrefix + tokenWithoutSymbols + (isFullEntity ? "." + ui_property + ".display_name" : "_display_name") + i18n.options.interpolationSuffix;
-         var replacedToken = i18n.applyReplacement(newToken, opts);
+         // if we actually have a custom name, just skip the display name part for this purpose
+         // we want to keep it short and not include titles and such when using the [name()] helper
+         if (customName != customNameKey) {
+            translated = translated.replace(token, customName);
+         }
+         else {
+            var newToken = i18n.options.interpolationPrefix + tokenWithoutSymbols + (isFullEntity ? "." + ui_property + ".display_name" : "_display_name") + i18n.options.interpolationSuffix;
+            var replacedToken = i18n.applyReplacement(newToken, opts);
 
-         var customData = interpretPropertyString(tokenWithoutSymbols + '_custom_data', opts) || {};
-         opts['self'] = {};
-         opts.self['stonehearth:unit_info'] = unit_info;
-         if (!opts.self['stonehearth:unit_info'] || !isFullEntity) {
-            opts.self['stonehearth:unit_info'] = {
-               'custom_name': customName,
-               'custom_data': customData
-            };
+            var customData = interpretPropertyString(tokenWithoutSymbols + '_custom_data', opts) || {};
+            opts['self'] = {};
+            opts.self['stonehearth:unit_info'] = unit_info;
+            if (!opts.self['stonehearth:unit_info'] || !isFullEntity) {
+               opts.self['stonehearth:unit_info'] = {
+                  'custom_name': customName,
+                  'custom_data': customData
+               };
+            }
+            opts.defaultValue = i18n.t("stonehearth:ui.game.entities.unknown_name");
+            var translatedToken = i18n.t(replacedToken, opts);
+            if (options.escapeHTML) {
+               translatedToken = Ember.Handlebars.Utils.escapeExpression(translatedToken);
+            }
+            translated = translated.replace(token, translatedToken);
          }
-         opts.defaultValue = i18n.t("stonehearth:ui.game.entities.unknown_name");
-         var translatedToken = i18n.t(replacedToken, opts);
-         if (options.escapeHTML) {
-            translatedToken = Ember.Handlebars.Utils.escapeExpression(translatedToken);
-         }
-         translated = translated.replace(token, translatedToken);
      }
      return translated;
    }

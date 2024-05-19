@@ -132,8 +132,24 @@ end
 
 -- ACE: make sure water gets properly filled in where this structure used to be
 function AceBuilding:destroy_structure(structure)
+   if not structure:is_valid() then
+      return
+   end
+
    log:debug('destroying structure %s', structure)
    local structure_comp = structure:get('stonehearth:build2:structure')
+   if not structure_comp then
+      for id, s in pairs(self._sv._structures) do
+         if s == structure then
+            self._sv._structures[id] = nil
+            break
+         end
+      end
+      radiant.entities.destroy_entity(structure)
+      self.__saved_variables:mark_changed()
+      return
+   end
+
    -- could subtract out the terrain region here:  - self._sv._terrain_region_w
    stonehearth.hydrology:auto_fill_water_region(structure_comp:get_desired_shape_region():translated(structure_comp:get_origin()), function()
          local bid = structure_comp:get_bid()

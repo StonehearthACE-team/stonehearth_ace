@@ -34,6 +34,17 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
       end
    end
 
+   local extension_entity = component_data.extension_entity
+   local rcs_type
+   if extension_entity then
+      local rcs_data = radiant.entities.get_component_data(extension_entity, 'region_collision_shape')
+      if rcs_data then
+         rcs_type = (rcs_data.region_collision_type == 'none' and RegionCollisionType.NONE) or
+               (rcs_data.region_collision_type == 'platform' and RegionCollisionType.PLATFORM) or
+               RegionCollisionType.SOLID
+      end
+   end
+
    local selector = stonehearth.selection:select_xyz_range('extensible_object_range_selector')
       :set_relative_entity(entity)
       :set_rotations(rotations)
@@ -42,6 +53,7 @@ function ExtensibleObjectCallHandler:select_extensible_object_command(session, r
       :set_can_pass_through_terrain(component_data.can_pass_through_terrain ~= false)
       :set_can_pass_through_buildings(component_data.can_pass_through_buildings ~= false)
       :set_ignore_middle_collision(component_data.ignore_middle_collision or false)  -- may need to set this to true if weird behavior colliding with terrain/buildings
+      :set_region_collision_type(rcs_type or RegionCollisionType.SOLID)
       :set_can_contain_entity_filter(can_contain_entity_filter)
 
    if component_data.cursor then

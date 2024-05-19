@@ -340,7 +340,7 @@ function AceJobInfoController:_initialize_recipe_data(recipe_key, recipe_data)
       local workshop = {uri = recipe_data.workshop}
       local catalog_data = stonehearth.catalog:get_catalog_data(workshop.uri)
       if catalog_data then
-         workshop.equivalents = catalog_data.workshop_equivalents
+         --workshop.equivalents = catalog_data.workshop_equivalents and radiant.shallow_copy(catalog_data.workshop_equivalents)
          workshop.display_name = catalog_data.display_name
          workshop.icon = catalog_data.icon
          recipe_data.workshop = workshop

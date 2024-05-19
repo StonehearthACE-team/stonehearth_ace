@@ -182,7 +182,7 @@ end
 
 --Add the order to the order list
 function AceCraftOrderList:add_order_command(session, response, recipe, condition)
-   if #self:_get_order_list_by_type(condition.type, recipe.is_auto_craft) >= MAX_ORDERS then
+   if #self:_get_default_order_list_by_type(condition.type, recipe.is_auto_craft) >= MAX_ORDERS then
       -- do not add orders if we are above the cap
       return false
    end
@@ -324,7 +324,7 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
                ingredient_id, missing, building, false, condition.order_index ~= nil, condition, associated_orders, recipe)
          if child_order and child_order ~= true then
             local associated_order = child_order:set_associated_orders(associated_orders)
-            associated_order.ingredient_per_craft = missing
+            associated_order.ingredient_per_craft = ingredient.count
             table.insert(child_orders, associated_order)
          end
       end
@@ -355,7 +355,7 @@ function AceCraftOrderList:insert_order(player_id, recipe, condition, maintain_o
       order:set_building_id(building)
    end
 
-   local order_list = self:_get_order_list_by_type(condition.type, recipe.is_auto_craft)
+   local order_list = self:_get_default_order_list_by_type(condition.type, recipe.is_auto_craft)
    table.insert(order_list, condition.order_index or maintain_order_index or #order_list + 1, order)
    self._orders_cache[self._sv.next_order_id] = true
    self._sv.next_order_id = self._sv.next_order_id + 1
@@ -381,6 +381,7 @@ function AceCraftOrderList:request_order_of(player_id, recipe_info, produces, am
       condition = {
          type = 'make',
          order_index = insert_order and 1 or nil,
+         auto_queued = true,
       }
    end
    if condition.type == 'make' then
@@ -473,7 +474,7 @@ function AceCraftOrderList:remove_order(order_id, amount, remove_associated)
    if i then
       --log:debug('removing order id %s (index %s)', order_id, i)
       local order = order_list[i]
-      if order and (not amount or not order:reduce_quantity(amount)) then
+      if order and (not amount or not order:reduce_product_quantity(amount)) then
          table.remove(order_list, i)
          self._order_indices_dirty = true
          local order_id = order:get_id()
@@ -640,20 +641,21 @@ function AceCraftOrderList:_recipe_produces_materials(recipe, material)
    return util.sum_where_all_keys_present(recipe.product_materials, recipe.products, material)
 end
 
--- Gets the craft order which matches `recipe_name`, if an `order_type`
--- is defined, then it will also check for a match against it.
+-- Gets the highest priority craft order which matches `recipe_name` of the given order type
 -- Returns nil if no match was found.
 --
 function AceCraftOrderList:_find_craft_order(recipe, order_type)
    --log:debug('finding a recipe for "%s"', recipe_name)
    --log:debug('There are %d orders', radiant.size(self._sv.orders) - 1)
 
-   local order_list = self:_get_order_list_by_type(order_type, recipe.is_auto_craft)
-   for i, order in ipairs(order_list) do
-      local order_recipe_name = order:get_recipe().recipe_name
-      --log:debug('evaluating order with recipe "%s"', order_recipe_name)
-      if order_recipe_name == recipe.recipe_name then
-         return order
+   local order_lists = {self._sv.orders, self._sv.secondary_orders, self._sv.auto_craft_orders}
+   for _, order_list in ipairs(order_lists) do
+      for i, order in ipairs(order_list) do
+         local order_recipe_name = order:get_recipe().recipe_name
+         --log:debug('evaluating order with recipe "%s"', order_recipe_name)
+         if order_recipe_name == recipe.recipe_name and order:get_condition().type == order_type then
+            return order
+         end
       end
    end
 
@@ -666,24 +668,25 @@ end
 -- Returns nil if no match was found.
 --
 function AceCraftOrderList:_find_maintained_product_order(product, check_auto, find_biggest)
-   local list = self:_get_order_list_by_type('maintain')
-   local order_lists = {list}
+   local order_lists = {self._sv.secondary_orders, self._sv.orders}
    if check_auto then
-      table.insert(order_lists, self:_get_order_list_by_type('maintain', true))
+      table.insert(order_lists, self._sv.auto_craft_orders)
    end
    local biggest_order, biggest_amount
    for _, order_list in ipairs(order_lists) do
       for i, order in ipairs(order_list) do
-         if find_biggest then
-            local amount = self:_get_order_product_amount(order, product)
-            if not biggest_order or amount > biggest_amount then
-               biggest_order = order
-               biggest_amount = amount
+         if order:get_condition().type == 'maintain' then
+            if find_biggest then
+               local amount = self:_get_order_product_amount(order, product)
+               if not biggest_order or amount > biggest_amount then
+                  biggest_order = order
+                  biggest_amount = amount
+               end
+            elseif (product.uri and order:produces(product.uri)) or
+                  (product.material and
+                     self:_recipe_produces_materials(self:_get_crafter_info():get_formatted_recipe(order:get_recipe()), product.material)) then
+               return order
             end
-         elseif (product.uri and order:produces(product.uri)) or
-               (product.material and
-                  self:_recipe_produces_materials(self:_get_crafter_info():get_formatted_recipe(order:get_recipe()), product.material)) then
-            return order
          end
       end
    end
@@ -891,7 +894,7 @@ function AceCraftOrderList:_matching_tags__strings(tags_string1, tags_string2)
    return true
 end
 
-function AceCraftOrderList:_get_order_list_by_type(order_type, is_auto_craft)
+function AceCraftOrderList:_get_default_order_list_by_type(order_type, is_auto_craft)
    if is_auto_craft then
       return self._sv.auto_craft_orders
    elseif order_type == 'maintain' then

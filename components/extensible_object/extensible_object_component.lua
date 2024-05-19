@@ -20,6 +20,12 @@ function ExtensibleObjectComponent:create()
 end
 
 function ExtensibleObjectComponent:restore()
+   for id, entity in pairs(self._sv._child_entities) do
+      local mms = entity:get_component('movement_modifier_shape')
+      if mms and not mms:get_region() then
+         mms:set_region(_radiant.sim.alloc_region3())
+      end
+   end
 end
 
 function ExtensibleObjectComponent:activate()
@@ -85,6 +91,10 @@ function ExtensibleObjectComponent:_ensure_child_entities()
       if not self._sv._child_entities[id] then
          local entity = radiant.entities.create_entity(self._extension_entity, { owner = self._entity })
          entity:add_component('region_collision_shape'):set_region(_radiant.sim.alloc_region3())
+         local mms = entity:get_component('movement_modifier_shape')
+         if mms then
+            mms:set_region(_radiant.sim.alloc_region3())
+         end
          radiant.entities.add_child(self._entity, entity, Point3.zero, true)
          self._sv._child_entities[id] = entity
       end
@@ -167,6 +177,7 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
    local child = self._sv._child_entities[rotation_id]
    local rcs = child:add_component('region_collision_shape')
    local vpr = child:get_component('stonehearth_ace:vertical_pathing_region')
+   local mms = child:get_component('movement_modifier_shape')
    local region = rcs:get_region()
    local models_comp = self._entity:add_component('stonehearth_ace:models')
 
@@ -179,6 +190,13 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
 
       if vpr then
          vpr:set_region(collision_region)
+      end
+
+      if mms then
+         mms:get_region():modify(function(cursor)
+               cursor:copy_region(region)
+               cursor:optimize_by_defragmentation('extensible_object modifier shape')
+            end)
       end
 
       local data = radiant.shallow_copy(rotation)
@@ -206,6 +224,10 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
 
       if vpr then
          vpr:set_region()
+      end
+
+      if mms then
+         mms:get_region():modify(function(cursor) cursor:clear() end)
       end
 
       models_comp:remove_model(model_name)
