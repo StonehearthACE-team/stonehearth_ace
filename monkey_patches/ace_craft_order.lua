@@ -506,9 +506,9 @@ function AceCraftOrder:should_execute_order(crafter)
          found_valid_workshop = true
       else
          -- Not an exact match. Maybe a valid equivalent?
-         local workshop_entity_data = radiant.entities.get_entity_data(workshop_uri, 'stonehearth:workshop')
-         if workshop_entity_data then
-            local equivalents = workshop_entity_data.equivalents
+         local workshop_catalog_data = stonehearth.catalog:get_catalog_data(workshop_uri)
+         if workshop_catalog_data then
+            local equivalents = workshop_catalog_data.workshop_equivalents
             if equivalents then
                for _, equivalent in ipairs(equivalents) do
                   if self:_has_valid_workshop(crafter, equivalent) then
@@ -632,6 +632,14 @@ function AceCraftOrder:is_auto_craft_recipe()
    return self._sv.recipe.is_auto_craft
 end
 
+function AceCraftOrder:is_auto_queued()
+   return self._sv.condition.auto_queued
+end
+
+function AceCraftOrder:get_num_primary_product_per_craft()
+   return self._num_primary_product_per_craft
+end
+
 -- this auto queuing field is for regular automatic *requests* for crafting
 -- not for crafting done by auto-crafters
 function AceCraftOrder:get_auto_queued()
@@ -647,7 +655,7 @@ function AceCraftOrder:get_associated_orders()
 end
 
 -- returns the entry for this order
-function AceCraftOrder:set_associated_orders(associated_orders, ingredient_per_craft)
+function AceCraftOrder:set_associated_orders(associated_orders)
    self._sv.associated_orders = associated_orders
    if not associated_orders then
       self.__saved_variables:mark_changed()
@@ -672,6 +680,7 @@ end
 function AceCraftOrder:remove_associated_order(remove_children)
    local associated_orders = self:get_associated_orders()
    if associated_orders and #associated_orders > 0 then
+      log:debug('order %s removing from %s associated orders', self:get_id(), #associated_orders)
       -- first remove any child orders; this will recursively remove any orders necessary
       if remove_children then
          local child_orders = {}
@@ -688,24 +697,32 @@ function AceCraftOrder:remove_associated_order(remove_children)
 
       -- finally search associated orders for this order and remove it
       for i, order in ipairs(associated_orders) do
-         if order.order == self then
-            table.remove(associated_orders, i)
-            self.__saved_variables:mark_changed()
-         else
+         if order.order ~= self then
             order.order:remove_associated_order_reference(self)
          end
       end
+
+      self._sv.associated_orders = nil
+      self.__saved_variables:mark_changed()
    end
 end
 
 function AceCraftOrder:remove_associated_order_reference(order)
+   log:debug('order %s (%s) removing associated order reference %s (%s)',
+         self:get_id(), self._sv.recipe.recipe_name, order:get_id(), order:get_recipe().recipe_name)
    local associated_orders = self:get_associated_orders()
-   if associated_orders and #associated_orders > 0 then
+   if associated_orders then
       for i, associated_order in ipairs(associated_orders) do
          if associated_order.order == order then
+            log:debug('found order %s in associated orders, removing', order:get_id())
             table.remove(associated_orders, i)
             break
          end
+      end
+      -- if it's down to only this order or no orders, remove the associated_orders table
+      log:debug('associated_orders now has %s orders', #associated_orders)
+      if #associated_orders < 2 then
+         self._sv.associated_orders = nil
       end
       self.__saved_variables:mark_changed()
    end
@@ -724,86 +741,100 @@ function AceCraftOrder:get_order_list()
    return self._sv.order_list
 end
 
--- returns true if it successfully reduced the quantity to craft from a 'make' order
+-- reduce the quantity of the primary product to craft with this order, as necessary
+-- only affects make orders
+-- returns true if the order changed and the order list should be updated
 -- returns false if the number remaining to make was less than or equal to the amount to reduce
--- returns nil otherwise, e.g., if it's a 'maintain' order
-function AceCraftOrder:reduce_quantity(amount)
-   log:debug('[%s] reduce_quantity(%s)', self:get_id(), amount)
+-- returns nil otherwise
+function AceCraftOrder:reduce_product_quantity(reduction)
+   log:debug('[%s] reduce_product_quantity(%s)', self:get_id(), reduction)
    local condition = self._sv.condition
-   if condition.type == 'make' then
-      if condition.requested_amount and condition.requested_amount > amount and self._num_primary_product_per_craft then
-         log:debug('reducing quantity requested by [%s] from %s to %s', self:get_id(), condition.requested_amount, condition.requested_amount - amount)
-         condition.requested_amount = condition.requested_amount - amount
-         local new_remaining = math.ceil(condition.requested_amount / self._num_primary_product_per_craft)
+   if condition.type == 'make' and condition.requested_amount and self._num_primary_product_per_craft then
+      log:debug('reducing quantity requested by [%s] from %s to %s', self:get_id(), condition.requested_amount, condition.requested_amount - reduction)
+      condition.requested_amount = condition.requested_amount - reduction
+      local new_remaining = math.ceil(condition.requested_amount / self._num_primary_product_per_craft)
 
-         if new_remaining < condition.remaining then
-            log:debug('reducing recipe quantity by [%s] from %s to %s', self:get_id(), condition.remaining, new_remaining)
-            local reduction = condition.remaining - new_remaining
-            self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, reduction)
-            condition.remaining = new_remaining
-            self:_remove_desires(reduction)
-            self.__saved_variables:mark_changed()
-
-            self:_change_associated_orders_quantity(-reduction)
-         end
-
-         return true
-      elseif not condition.requested_amount then
-         self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, amount)
-         condition.remaining = condition.remaining - amount
-         self.__saved_variables:mark_changed()
-
-         self:_change_associated_orders_quantity(-amount)
-
-         return true
+      if new_remaining < condition.remaining then
+         return self:reduce_quantity(condition.remaining - new_remaining)
       else
+         self.__saved_variables:mark_changed()
          return false
       end
+   end
+end
+
+-- reduce_quantity and increase_quantity accept a delta amount, not a new total amount
+-- returns true if it successfully reduced the quantity to craft from an order
+-- returns false if the number remaining to make was less than or equal to the amount to reduce
+-- returns nil otherwise
+function AceCraftOrder:reduce_quantity(reduction)
+   log:debug('[%s] reduce_quantity(%s)', self:get_id(), reduction)
+   local condition = self._sv.condition
+   if condition.type == 'make' then
+      local reduced = condition.remaining - reduction
+      log:debug('reducing recipe quantity by [%s] from %s to %s', self:get_id(), condition.remaining, reduced)
+
+      if reduced == 0 then
+         self._sv.order_list:remove_order(self:get_id())
+         return false
+      end
+
+      self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, reduction)
+      condition.remaining = reduced
+      self:_remove_desires(reduction)
+      self.__saved_variables:mark_changed()
+
+      self:_update_associated_orders_quantity()
+      return true
    elseif condition.at_least then
-      condition.at_least = condition.at_least - amount
-      self:_remove_desires(amount)
+      -- maintain orders can be reduced, they just won't change any associated orders
+      condition.at_least = condition.at_least - reduction
+      self:_remove_desires(reduction)
       self.__saved_variables:mark_changed()
       return true
    end
 end
 
-function AceCraftOrder:increase_quantity(amount)
-   log:debug('[%s] increase_quantity(%s)', self:get_id(), amount)
+function AceCraftOrder:increase_quantity(increase)
+   log:debug('[%s] increase_quantity(%s)', self:get_id(), increase)
    local condition = self._sv.condition
    if condition.type == 'make' then
-      if condition.requested_amount and condition.requested_amount < amount and self._num_primary_product_per_craft then
-         log:debug('increasing quantity requested by [%s] from %s to %s', self:get_id(), condition.requested_amount, condition.requested_amount + amount)
-         condition.requested_amount = condition.requested_amount + amount
-         local new_remaining = math.ceil(condition.requested_amount / self._num_primary_product_per_craft)
+      local increased = condition.remaining + increase
+      log:debug('increasing recipe quantity by [%s] from %s to %s', self:get_id(), condition.remaining, increased)
+      self._sv.order_list:add_to_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, increase)
+      condition.remaining = increased
+      self:_add_desires(increase)
+      self.__saved_variables:mark_changed()
 
-         if new_remaining > condition.remaining then
-            log:debug('increasing recipe quantity by [%s] from %s to %s', self:get_id(), condition.remaining, new_remaining)
-            local increase = new_remaining - condition.remaining
-            self._sv.order_list:add_to_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, increase)
-            condition.remaining = new_remaining
-            self:_add_desires(increase)
-            self.__saved_variables:mark_changed()
-
-            self:_change_associated_orders_quantity(increase)
-         end
-
-         return true
-      elseif not condition.requested_amount then
-         self._sv.order_list:add_to_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, amount)
-         condition.remaining = condition.remaining + amount
-         self.__saved_variables:mark_changed()
-
-         self:_change_associated_orders_quantity(amount)
-
-         return true
-      else
-         return false
-      end
+      self:_update_associated_orders_quantity()
+      return true
    elseif condition.at_least then
-      condition.at_least = condition.at_least + amount
-      self:_add_desires(amount)
+      -- maintain orders can be increased, they just won't change any associated orders
+      condition.at_least = condition.at_least + increase
+      self:_add_desires(increase)
       self.__saved_variables:mark_changed()
       return true
+   end
+end
+
+-- change_quantity functions accept a new total amount, not a delta amount
+function AceCraftOrder:change_product_quantity(amount)
+   log:debug('[%s] change_product_quantity(%s)', self:get_id(), amount)
+   local condition = self._sv.condition
+   if self._num_primary_product_per_craft then
+      if condition.type == 'make' then
+         condition.requested_amount = amount
+      end
+      local new_remaining = math.ceil(amount / self._num_primary_product_per_craft)
+      local prev_remaining = condition.remaining or condition.at_least
+      if new_remaining < prev_remaining then
+         return self:reduce_quantity(prev_remaining - new_remaining)
+      elseif new_remaining > prev_remaining then
+         return self:increase_quantity(new_remaining - prev_remaining)
+      else
+         self.__saved_variables:mark_changed()
+         return false
+      end
    end
 end
 
@@ -816,31 +847,27 @@ function AceCraftOrder:change_quantity(quantity)
       return false   -- order list will already be updated by removing the order
    end
 
-   local condition = self._sv.condition
-   local amount = condition.requested_amount or condition.remaining or condition.at_least
-   if quantity < amount then
-      return self:reduce_quantity(amount - quantity)
-   elseif quantity > amount then
-      return self:increase_quantity(quantity - amount)
+   if self._num_primary_product_per_craft then
+      return self:change_product_quantity(quantity * self._num_primary_product_per_craft)
    end
 end
 
-function AceCraftOrder:_change_associated_orders_quantity(amount)
-   log:debug('[%s] _change_associated_orders_quantity(%s)', self:get_id(), amount)
+-- only called internally for make orders
+function AceCraftOrder:_update_associated_orders_quantity()
+   log:debug('[%s] _update_associated_orders_quantity()', self:get_id())
    local associated_orders = self:get_associated_orders()
-   if associated_orders and #associated_orders > 0 then
+   if associated_orders and #associated_orders > 1 then
+      local condition = self._sv.condition
       for _, associated_order in ipairs(associated_orders) do
          -- if the associated order is an ingredient for this recipe, reduce it by the amount that this recipe requires
          if associated_order.parent_order == self then
-            local ing_amount = amount * associated_order.ingredient_per_craft
+            local ing_amount = condition.remaining * associated_order.ingredient_per_craft
             local order_list = associated_order.order:get_order_list()
-            if associated_order.order:change_quantity(ing_amount) then
+            if associated_order.order:change_product_quantity(ing_amount) then
                order_list:_on_order_list_changed()
                if associated_order.order:is_auto_craft_recipe() then
                   order_list:_on_auto_craft_orders_changed()
                end
-            elseif amount < 0 then
-               order_list:remove_order(associated_order.order:get_id())
             end
          end
       end

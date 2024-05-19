@@ -209,9 +209,9 @@ function AcePlayerJobsController:_can_craft_recipe(inventory, recipe_info)
             return true
          else
             -- Not an exact match. Maybe a valid equivalent?
-            local workshop_entity_data = radiant.entities.get_entity_data(workshop_uri, 'stonehearth:workshop')
-            if workshop_entity_data then
-               local equivalents = workshop_entity_data.equivalents
+            local workshop_catalog_data = stonehearth.catalog:get_catalog_data(workshop_uri)
+            if workshop_catalog_data then
+               local equivalents = workshop_catalog_data.workshop_equivalents
                if equivalents then
                   for _, equivalent in ipairs(equivalents) do
                      if self:_has_valid_workshop(inventory, equivalent) then

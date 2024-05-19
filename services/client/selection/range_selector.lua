@@ -53,6 +53,7 @@ function XYZRangeSelector:__init(reason)
    self._allow_select_cursor = false
    self._allow_unselectable_support_entities = false
    self._ignore_middle_collision = false
+   self._region_collision_type = RegionCollisionType.SOLID
    self._can_pass_through_terrain = false
    self._can_pass_through_buildings = false
    self._invalid_cursor = INVALID_CURSOR
@@ -236,6 +237,11 @@ function XYZRangeSelector:set_ignore_middle_collision(value)
    return self
 end
 
+function XYZRangeSelector:set_region_collision_type(rcs_type)
+   self._region_collision_type = rcs_type
+   return self
+end
+
 -- "pass_through" refers to the middle section
 function XYZRangeSelector:set_can_pass_through_terrain(value)
    self._can_pass_through_terrain = value
@@ -391,15 +397,15 @@ function XYZRangeSelector:_is_valid_location(brick)
    if self._require_supported and not radiant.terrain.is_supported(brick) then
       return false
    end
-   if self._can_contain_entity_filter_fn then
-      local entities = radiant.terrain.get_entities_at_point(brick)
-      for _, entity in pairs(entities) do
-         if not self._can_contain_entity_filter_fn(entity, self) then
-            log:debug('location %s is not valid because it contains %s', brick, entity)
-            return false
-         end
-      end
-   end
+   -- if self._can_contain_entity_filter_fn then
+   --    local entities = radiant.terrain.get_entities_at_point(brick)
+   --    for _, entity in pairs(entities) do
+   --       if not self._can_contain_entity_filter_fn(entity, self) then
+   --          log:debug('location %s is not valid because it contains %s', brick, entity)
+   --          return false
+   --       end
+   --    end
+   -- end
    return true
 end
 
@@ -477,10 +483,16 @@ function XYZRangeSelector:_update()
          length = nil
       else
          region, point = self:get_final_data(length)
+         if not region then
+            return
+         end
       end
       self:notify(true, self._rotation, length, region, point)
    elseif self._action == 'resolve' then
       local region, point = self:get_final_data(length)
+      if not region then
+         return
+      end
       self:resolve(self._rotation, length, region, point)
    else
       log:error('uknown action: %s', self._action)
@@ -749,20 +761,21 @@ function XYZRangeSelector:_recalc_current_region(is_final)
    local region
 
    if length and rotation and node then
-      local cube
+      local cube, col_check_cube
       if length > 0 then
          local origin = rotation.origin
-         if self._ignore_middle_collision and is_final then
+         if self._ignore_middle_collision then
             origin = origin + rotation.direction * (length - 1)
          end
-         cube = csg_lib.create_min_cube(origin, rotation.terminus + rotation.direction * length)
+         cube = csg_lib.create_min_cube(rotation.origin, rotation.terminus + rotation.direction * length)
+         col_check_cube = csg_lib.create_min_cube(origin, rotation.terminus + rotation.direction * length)
          --log:debug('_recalc_current_region cube: %s', cube)
       end
 
       -- make sure there are no entities with collision in this cube (or check custom filter)
       local cube_is_good = true
-      if cube then
-         local world_cube = self._relative_entity and radiant.entities.local_to_world(cube, self._relative_entity) or cube
+      if col_check_cube then
+         local world_cube = self._relative_entity and radiant.entities.local_to_world(col_check_cube, self._relative_entity) or col_check_cube
          local entities = radiant.terrain.get_entities_in_cube(world_cube)
          local terrain_entity_id = radiant._root_entity_id
          for _, entity in pairs(entities) do
@@ -775,6 +788,8 @@ function XYZRangeSelector:_recalc_current_region(is_final)
                -- ignore
             elseif self._relative_entity and (self._relative_entity == entity or
                (self._ignore_children and radiant.entities.is_child_of(entity, self._relative_entity))) then
+               -- ignore
+            elseif self._region_collision_type == RegionCollisionType.NONE then
                -- ignore
             elseif self._can_contain_entity_filter_fn and not self._can_contain_entity_filter_fn(entity, self) then
                log:debug('entity %s failed can_contain_entity_filter', entity)
@@ -795,7 +810,7 @@ function XYZRangeSelector:_recalc_current_region(is_final)
       if cube_is_good then
          region = Region3()
          if cube then
-            region:add_cube(cube)
+            region:add_cube(is_final and col_check_cube or cube)
          end
       end
    end

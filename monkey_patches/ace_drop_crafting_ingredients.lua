@@ -72,7 +72,7 @@ function AceDropCraftingIngredients:run(ai, entity, args)
 
             -- if we've already dropped a lot of items, just instantly dump the rest so we're not here all day
             if num_dropped > max_to_drop then
-               radiant.entities.put_carrying_into_entity(entity, args.target)
+               radiant.entities.add_child(args.target, item)
                if drop_offset then
                   item:add_component('mob'):move_to(drop_offset)
                end

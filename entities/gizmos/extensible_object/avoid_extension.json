@@ -1,0 +1,21 @@
+{
+   "type": "entity",
+   "components": {
+      "mob": {
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "region_collision_shape": {
+         "region_collision_type": "none"
+      },
+      "movement_modifier_shape": {
+         "modifier": 0,
+         "nav_preference_modifier": -1.0
+      }
+   },
+   "entity_data": {
+      "navgrid": {
+         "ignore_gravity": true,
+         "has_physics": false
+      }
+   }
+}
