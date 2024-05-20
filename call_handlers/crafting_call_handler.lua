@@ -1,6 +1,18 @@
 local validator = radiant.validator
 local CraftingCallHandler = class()
 
+function CraftingCallHandler:force_order_list_update(session, response, job_alias)
+   validator.expect_argument_types({'string'}, job_alias)
+
+   local job_info = stonehearth.job:get_job_info(session.player_id, job_alias)
+   local order_list = job_info and job_info:get_order_list()
+
+   if order_list then
+      order_list:_on_order_list_changed()
+      return true
+   end
+end
+
 function CraftingCallHandler:modify_order_amount(session, response, job_alias, order_id, amount)
    validator.expect_argument_types({'string', 'number', 'number'}, job_alias, order_id, amount)
 
@@ -10,9 +22,9 @@ function CraftingCallHandler:modify_order_amount(session, response, job_alias, o
    if order_list then
       local order = order_list:get_order(order_id)
       if order and order:change_quantity(amount) then
-         order:get_order_list():_on_order_list_changed()
+         order_list:_on_order_list_changed()
          if order:is_auto_craft_recipe() then
-            order:get_order_list():_on_auto_craft_orders_changed()
+            order_list:_on_auto_craft_orders_changed()
          end
          return true
       end

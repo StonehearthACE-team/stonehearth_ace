@@ -393,12 +393,13 @@ App.StonehearthTeamCrafterView = App.View.extend({
             var deleteAssociatedOrders = stonehearth_ace.isShiftKeyActive();
             radiant.call_obj(orderList, 'delete_order_command', orderId, deleteAssociatedOrders)
                .done(function(return_data){
-                  item.remove();
-                  if (return_data && return_data.associated_orders) {
-                     radiant.each(return_data.associated_orders, function(_, order_id) {
-                        self.$('.orders').find("[data-orderid='"+order_id+"']").remove();
-                     })
-                  }
+                  radiant.call('stonehearth_ace:force_order_list_update', self.get('model.alias'));
+                  // item.remove();
+                  // if (return_data && return_data.associated_orders) {
+                  //    radiant.each(return_data.associated_orders, function(_, order_id) {
+                  //       self.$('.orders').find("[data-orderid='"+order_id+"']").remove();
+                  //    })
+                  // }
                   radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:ui:carpenter_menu:trash'} );
                });
          }

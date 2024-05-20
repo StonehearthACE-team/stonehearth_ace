@@ -119,7 +119,9 @@ function AceCraftOrder:destroy()
       self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, self._sv.condition.remaining)
    end
 
-   self:_ace_old_destroy()
+   --self:_ace_old_destroy()
+   self:_remove_desires()
+   self._sv.order_list:_on_order_list_changed()
 end
 
 function AceCraftOrder:set_recipe(recipe)
@@ -702,8 +704,9 @@ function AceCraftOrder:remove_associated_order(remove_children)
          end
       end
 
-      self._sv.associated_orders = nil
-      self.__saved_variables:mark_changed()
+      -- this is only getting called when we're destryoing the order, so don't bother with this
+      -- self._sv.associated_orders = nil
+      --self.__saved_variables:mark_changed()
    end
 end
 
