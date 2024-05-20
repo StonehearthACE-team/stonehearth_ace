@@ -1,0 +1,110 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+            "type": "animation_effect",
+            "start_time": 0,
+            "speed" : 1,
+            "animation": "shovel.json",
+            "loop": true
+      },
+      "hide_carrying" : {
+         "type": "hide_bone",
+         "start_time": 0,
+         "end_time": 0,
+         "bone": "carry"
+      },
+      "grab_shovel" : {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item": "stonehearth_ace:tools:worker_shovel_golem",
+         "bone": "mainHand"
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 40,
+         "min_distance": 28,
+         "falloff" : 7,
+         "volume": 80,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:shovel_01",
+               "stonehearth:sounds:shovel_02",
+               "stonehearth:sounds:shovel_03"
+            ]
+         }
+      },
+      "sound2": {
+         "type": "sound_effect",
+         "start_time": 420,
+         "min_distance": 24,
+         "falloff" : 7,
+         "volume": 70,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:shovel_dirt"
+            ]
+         }
+      },
+      "dirt": {
+         "type": "cubemitter",
+         "start_time" : 300,
+         "end_time" : 900,
+         "cubemitter": "particles/dirt_poof/dirt_poof.cubemitter.json",
+         "transforms": {
+            "x":0.1,
+            "y":-0.5,
+            "z":-3,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      },
+      "dirt2": {
+         "type": "cubemitter",
+         "start_time" : 600,
+         "end_time" : 680,
+         "cubemitter": "particles/dirt_poof/dirt_poof.cubemitter.json",
+         "transforms": {
+            "x":0.6,
+            "y":0,
+            "z":-2.65,
+            "rx":100,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      }  ,
+      "dirt3": {
+         "type": "cubemitter",
+         "start_time" : 700,
+         "end_time" : 900,
+         "cubemitter": "particles/dirt_poof/dirt_poof.cubemitter.json",
+         "transforms": {
+            "x":1.2,
+            "y":0,
+            "z":-2.55,
+            "rx":110,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "mainHand"
+      },
+      "dirt_ground": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/work/dirt_ground.cubemitter.json",
+         "start_time": 160,
+         "end_time": 1500,
+         "transforms": { "x": 0, "y": 0.15, "z": -3,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      }              
+   }
+}
+

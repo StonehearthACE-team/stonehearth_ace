@@ -1,0 +1,95 @@
+{
+   "name": "fire",
+   "duration": 3500,
+   "material": "materials/cubemitter.material.json",
+   "loops": false,
+   "mesh": {
+      "file": "",
+      "matrix": "",
+      "offset": {
+         "x": 0,
+         "y": 0,
+         "z": 0
+      }
+   },
+   "emission": {
+      "rate": {
+         "kind": "BURST",
+         "values": [
+            [0, 10, 15],
+            [100, 5, 10],
+            [200, 0, 5]
+         ]
+      },
+      "angle": {
+         "kind": "CONSTANT",
+         "values": [90]
+      },
+      "origin": {
+         "surface": "RECTANGLE",
+         "values": [1, 1, 0, 0]
+      }
+   },
+   "particle": {
+      "lifetime": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [10000]
+         }
+      },
+      "speed": {
+         "start": {
+            "kind": "CONSTANT",
+            "values": [0]
+         }
+      },
+      "acceleration": {},
+      "velocity": {},
+      "rotation": {},
+      "scale": {
+         "start": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.9, 1.6]
+         },
+         "start_x": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.1, 0.5]
+         },
+         "start_y": {
+            "kind": "CONSTANT",
+            "values": [0.4]
+         },
+         "start_z": {
+            "kind": "RANDOM_BETWEEN",
+            "values": [0.1, 0.5]
+         }
+      },
+      "color": {
+         "over_lifetime": {
+            "kind": "RANDOM_BETWEEN_CURVES",
+            "values": [
+               [
+                  [0, 0.243, 0.193, 0.088],
+                  [1, 0.176, 0.154, 0.114]
+               ],
+               [
+                  [0, 0.194, 0.167, 0.11],
+                  [1, 0.235, 0.214, 0.18]
+               ]
+            ]
+         },
+         "over_lifetime_a": {
+            "kind": "CURVE",
+            "values": [
+               [0, 0],
+               [0.05, 1],
+               [0.8, 1],
+               [0.9319257354736328, 0.87880921681722],
+               [0.959117660522461, 0.702745107014974],
+               [0.9926262664794921, 0.4496414184570312],
+               [1, 0]
+            ]
+         }
+      }
+   }
+}
