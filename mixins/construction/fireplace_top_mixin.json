@@ -1,0 +1,33 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "region_collision_shape": {
+         "region_collision_type": "solid"
+      },
+      "mob": {
+         "allow_vertical_adjacent": true
+      },
+      "stonehearth:lamp": {
+         "restrict_policy_changing": true,
+         "light_policy": "parent"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.fireplace.chimney_top.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.fireplace.chimney_top.description)"
+      },
+      "navgrid": {
+         "ignore_gravity": true,
+         "has_physics": false
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      }
+   }
+}

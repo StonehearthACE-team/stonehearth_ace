@@ -1,0 +1,37 @@
+{
+   "components": {
+      "destination": {
+         "adjacency_flags": [
+            "front"
+         ]
+      },
+      "stonehearth:entity_forms": {
+         "placeable_on_ground": true,
+         "placeable_on_walls": true,
+         "hide_placement_ui": false
+      },
+      "stonehearth:firepit": {
+         "buff_source": true,
+         "create_seats": false,
+         "custom_jitter": "+25m",
+         "custom_times": {
+            "start": 18
+         }
+      },
+      "stonehearth:lamp": {
+         "restrict_policy_changing": true,
+         "light_policy": "manual"
+      },
+      "stonehearth_ace:extensible_object": {
+         "extend_command": "stonehearth_ace:commands:extensible_object:extend",
+         "remove_command": "stonehearth_ace:commands:extensible_object:remove",
+         "extension_entity": "stonehearth_ace:extensible_object:avoid_extension",
+         "multi_matrix_mode": "random"
+      }
+   },
+   "entity_data": {
+      "stonehearth:table": {
+         "drop_effect": "carry_putdown"
+      }
+   }
+}
