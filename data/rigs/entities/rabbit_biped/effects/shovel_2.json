@@ -1,0 +1,31 @@
+{
+   "type" : "effect",
+   "mixins": "/stonehearth/data/rigs/entities/rabbit_biped/effects/shovel.json",
+   "tracks": {
+      "animation": {
+         "speed": 0.9
+      },
+      "grab_shovel" : {
+         "item": "stonehearth_ace:tools:worker_shovel_iron"
+      },
+      "sound": {
+         "start_time": 30
+      },
+      "sound2": {
+         "start_time": 310
+      },
+      "dirt": {
+         "start_time" : 190
+      },
+      "dirt2": {
+         "start_time" : 360
+      }  ,
+      "dirt3": {
+         "start_time" : 500
+      },
+      "dirt_ground": {
+         "start_time": 130,
+         "end_time": 1100
+      }  
+   }
+}

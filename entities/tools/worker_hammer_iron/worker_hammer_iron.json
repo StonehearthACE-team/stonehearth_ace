@@ -9,9 +9,6 @@
             ]
          }
       },
-      "stonehearth:entity_forms": {
-         "iconic_form": "file(worker_hammer_iron_iconic.json)"
-      },
       "stonehearth:equipment_piece": {
          "slot": "mainhand",
          "render_type": "attach_to_bone",
@@ -34,13 +31,11 @@
    },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 16,
+         "value_in_gold": 0,
          "rarity": "uncommon",
          "shop_info": {
             "buyable": false,
-            "sellable": true,
-            "shopkeeper_level": 2,
-            "shopkeeper_type": "caravan"
+            "sellable": false
          }
       },
       "stonehearth:combat:weapon_data": {

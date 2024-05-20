@@ -1,0 +1,29 @@
+{
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(worker_shovel.qb)"
+            ]
+         }
+      },
+      "stonehearth:equipment_piece": {
+         "slot": "worker_shovel",
+         "ilevel": 0,
+         "injected_buffs": [
+            "stonehearth_ace:buffs:tools:worker_shovel"
+         ],
+         "equipment_types": [
+            "tool"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.tools.worker_shovel.display_name)",
+         "description": "i18n(stonehearth_ace:entities.tools.worker_shovel.description)",
+         "icon": "file(worker_shovel.png)"
+      }
+   }
+}

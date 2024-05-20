@@ -1,0 +1,31 @@
+{
+   "type" : "effect",
+   "mixins": "/stonehearth/data/rigs/entities/humans/effects/shovel.json",
+   "tracks": {
+      "animation": {
+         "speed": 1.2
+      },
+      "grab_shovel" : {
+         "item": "stonehearth_ace:tools:worker_shovel_steel"
+      },
+      "sound": {
+         "start_time": 30
+      },
+      "sound2": {
+         "start_time": 250
+      },
+      "dirt": {
+         "start_time" : 140
+      },
+      "dirt2": {
+         "start_time" : 210
+      }  ,
+      "dirt3": {
+         "start_time" : 320
+      },
+      "dirt_ground": {
+         "start_time": 120,
+         "end_time": 800
+      }  
+   }
+}
