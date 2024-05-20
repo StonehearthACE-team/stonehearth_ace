@@ -1,6 +1,9 @@
 {
    "type": "entity",
-   "mixins": "file(fireplace_iron_small_ghost.json)",
+   "mixins": [
+      "stonehearth_ace:mixins:construction:fireplace",
+      "file(fireplace_iron_small_ghost.json)"
+   ],
    "components": {
       "destination": {
          "region": [
@@ -8,9 +11,6 @@
                "min": { "x": 0, "y": 0, "z": 0 },
                "max": { "x": 1, "y": 1, "z": 1 }
             }
-         ],
-         "adjacency_flags": [
-            "front"
          ]
       },
       "region_collision_shape": {
@@ -24,31 +24,22 @@
       "stonehearth:entity_forms": {
          "iconic_form": "file(fireplace_iron_small_iconic.json)",
          "ghost_form": "file(fireplace_iron_small_ghost.json)",
-         "placeable_on_ground": true,
-         "hide_placement_ui": false
+         "placeable_on_walls": false
       },
       "stonehearth:firepit": {
-         "buff_source": true,
          "allow_charcoal": false,
-         "no_residue": true,
-         "create_seats": false,
-         "custom_jitter": "+25m",
-         "custom_times": {
-            "start": 18
-         }
+         "no_residue": true
       },
       "stonehearth:lamp": {
-         "restrict_policy_changing": true,
-         "light_policy": "manual",
          "light_effect": "stonehearth_ace:effects:fireplace:small:effect_2",
          "light_origin": { "x": 0, "y": 1, "z": 0 }
       },
       "stonehearth_ace:extensible_object": {
-         "extend_command": "stonehearth_ace:commands:extensible_object:extend",
-         "remove_command": "stonehearth_ace:commands:extensible_object:remove",
-         "extension_entity": "stonehearth_ace:extensible_object:solid_extension",
          "end_entity": "stonehearth_ace:construction:fireplace:iron:small:top",
          "max_length": 32,
+         "mixintypes": {
+            "multi_matrix_mode": "remove"
+         },
          "matrix": "chimney",
          "rotations": [
             {
@@ -71,7 +62,6 @@
    },
    "entity_data": {
       "stonehearth:table": {
-         "drop_effect": "carry_putdown",
          "drop_offset": { "x": 0, "y": 0.55, "z": 0.6 }
       },
       "stonehearth:net_worth": {

@@ -1,5 +1,8 @@
 {
-   "mixins": "stonehearth:mixins:placed_object",
+   "mixins": [
+      "stonehearth_ace:mixins:construction:fireplace_ghost",
+      "stonehearth:mixins:placed_object"
+   ],
    "components": {
       "model_variants": {
          "default": {
@@ -12,7 +15,6 @@
          "scale": 0.1
       },
       "stonehearth:fixture": {
-         "cursor": "stonehearth:cursors:create_window",
          "margin": {
             "left": 0,
             "right": 0,
@@ -34,8 +36,7 @@
       },
       "mob": {
          "model_origin": { "x": 0.5, "y": 0, "z": 0.0 },
-         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
-         "allow_vertical_adjacent": true
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
       }
    },
    "entity_data": {
@@ -43,10 +44,8 @@
          "display_name": "i18n(stonehearth_ace:entities.construction.fireplace.clay.medium.display_name)",
          "description": "i18n(stonehearth_ace:entities.construction.fireplace.clay.medium.description)",
          "icon": "file(fireplace_clay_medium.png)",
-         "category": "construction",
          "material_tags": [
             "clay",
-            "fireplace",
             "medium",
             "crafted",
             "stockpile_construction"
