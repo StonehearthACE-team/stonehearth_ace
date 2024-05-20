@@ -509,14 +509,12 @@ AceCraftOrderList._ace_old_delete_order_command = CraftOrderList.delete_order_co
 -- from the reserved ingredients table.
 --
 function AceCraftOrderList:delete_order_command(session, response, order_id, delete_associated_orders)
-   local order_index, order_list = self:find_index_of(order_id)
-   if order_index then
-      local order = order_list[order_index]
-      if order then
-         if order:get_auto_queued() then
-            local condition = order:get_condition()
-
-            local associated_orders = delete_associated_orders and order:get_associated_orders()
+   if delete_associated_orders then
+      local order_index, order_list = self:find_index_of(order_id)
+      if order_index then
+         local order = order_list[order_index]
+         if order and order:get_auto_queued() then
+            local associated_orders = order:get_associated_orders()
             if associated_orders then
                -- also remove any associated orders
                local other_orders = util.filter_list(associated_orders, function(_, associated_order)
