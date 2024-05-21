@@ -238,7 +238,7 @@ AceShepherdPastureComponent._ace_old_add_animal = ShepherdPastureComponent.add_a
 function AceShepherdPastureComponent:add_animal(animal)
    self:_ace_old_add_animal(animal)
    animal:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
-   animal:add_component('stonehearth:unit_info'):ensure_custom_name()
+   animal:add_component('stonehearth:unit_info'):set_allow_customization(true)
    local rrn = animal:get_component('stonehearth:renewable_resource_node')
    if rrn then
       rrn:auto_request_harvest()
@@ -255,7 +255,7 @@ function AceShepherdPastureComponent:convert_and_add_animals(animals)
       shepherded_animal_component:set_animal(animal)
       shepherded_animal_component:set_pasture(self._entity)
       animal:add_component('stonehearth_ace:output'):set_parent_output(self._entity)
-      animal:add_component('stonehearth:unit_info'):ensure_custom_name()
+      animal:add_component('stonehearth:unit_info'):set_allow_customization(true)
 
       self._sv.tracked_critters[animal:get_id()] = {entity = animal}
       radiant.entities.set_player_id(animal, self._entity)
@@ -282,6 +282,10 @@ function AceShepherdPastureComponent:remove_animal(animal_id)
       local output_comp = animal and animal:get_component('stonehearth_ace:output')
       if output_comp then
          output_comp:set_parent_output(nil)
+      end
+      local unit_info_comp = animal and animal:get_component('stonehearth:unit_info')
+      if unit_info_comp then
+         unit_info_comp:set_allow_customization(false)
       end
    end
 

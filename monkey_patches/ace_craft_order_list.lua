@@ -323,17 +323,17 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
          local child_order = player_jobs_controller:request_craft_product(
                ingredient_id, missing, building, false, condition.order_index ~= nil, condition, associated_orders, recipe)
          if child_order and child_order ~= true then
-            local associated_order = child_order:set_associated_orders(associated_orders)
-            associated_order.ingredient_per_craft = ingredient.count
+            local associated_order = {
+               order = child_order,
+               ingredient_per_craft = ingredient.count,
+            }
+            table.insert(associated_orders, associated_order)
             table.insert(child_orders, associated_order)
          end
       end
    end
 
    local result = self:insert_order(player_id, recipe, condition, nil, building)
-
-   -- if we got to this point, it's because we're auto-crafting dependencies
-   result:set_auto_queued(true)
 
    if #associated_orders > 0 then
       if #child_orders > 0 then
@@ -343,7 +343,16 @@ function AceCraftOrderList:add_order(player_id, recipe, condition, building, ass
          end
       end
 
-      result:set_associated_orders(associated_orders)
+      -- if this is the original parent call, go through all child orders and set their associated orders table to a copy of the original
+      if not is_recursive_call then
+         table.insert(associated_orders, {
+            order = result,
+         })
+
+         for _, associated_order in ipairs(associated_orders) do
+            associated_order.order:set_associated_orders(radiant.shallow_copy(associated_orders))
+         end
+      end
    end
 
    return result
@@ -513,7 +522,7 @@ function AceCraftOrderList:delete_order_command(session, response, order_id, del
       local order_index, order_list = self:find_index_of(order_id)
       if order_index then
          local order = order_list[order_index]
-         if order and order:get_auto_queued() then
+         if order then
             local associated_orders = order:get_associated_orders()
             if associated_orders then
                -- also remove any associated orders
@@ -934,6 +943,13 @@ end
 
 function AceCraftOrderList:_on_auto_craft_orders_changed()
    radiant.events.trigger(self, 'stonehearth_ace:craft_order_list:auto_craft_orders_changed')
+end
+
+function AceCraftOrderList:_on_order_list_changed()
+   self._order_indices_dirty = true
+   radiant.events.trigger(self, 'stonehearth:order_list_changed')
+   self.__saved_variables:mark_changed()
+   log:debug('order list changed, marking as changed')
 end
 
 return AceCraftOrderList

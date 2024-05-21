@@ -39,7 +39,9 @@ function AceUnitInfoComponent:create()
    if json.locked then
       self:lock(self.get_locked_key(json))
    end
-   
+
+   self._sv.allow_customization = json.allow_customization or false
+
    if self._ace_old_create then
       self:_ace_old_create()
    end
@@ -53,6 +55,11 @@ function AceUnitInfoComponent:restore()
 
    if self._sv.title_locked == nil then
       self._sv.title_locked = true
+   end
+
+   local json = radiant.entities.get_json(self) or {}
+   if self._sv.allow_customization == nil then
+      self._sv.allow_customization = json.allow_customization or false
    end
 
    -- make sure if we have titles that we have a custom name
@@ -107,7 +114,7 @@ function AceUnitInfoComponent:_select_custom_name(custom_name)
          for name, weight in pairs(custom_name) do
             weighted_set:add(name, weight)
          end
-      
+
          return weighted_set:choose_random()
       end
    end
@@ -145,6 +152,11 @@ end
 
 function AceUnitInfoComponent:get_description_data()
    return self._sv.description_data
+end
+
+function AceUnitInfoComponent:set_allow_customization(allow)
+   self._sv.allow_customization = allow
+   self.__saved_variables:mark_changed()
 end
 
 function AceUnitInfoComponent:get_title_locked()
@@ -186,7 +198,7 @@ function AceUnitInfoComponent:select_title(title, rank)
    else
       self._sv.display_name = 'i18n(stonehearth:ui.game.entities.custom_name)'
    end
-   
+
    self.__saved_variables:mark_changed()
 
    self:_trigger_on_change()
