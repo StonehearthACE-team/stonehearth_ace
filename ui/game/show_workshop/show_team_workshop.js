@@ -154,23 +154,23 @@ App.StonehearthTeamCrafterView = App.View.extend({
    components: {
       "order_list" : {
          "orders" : {
-            "associated_orders" : {
-               "*": {},
-            },
+            // "associated_orders" : {
+            //    "*": {},
+            // },
             "curr_crafters" : {},
             "recipe" : {},
          },
          "secondary_orders" : {
-            "associated_orders" : {
-               "*": {},
-            },
+            // "associated_orders" : {
+            //    "*": {},
+            // },
             "curr_crafters" : {},
             "recipe" : {},
          },
          "auto_craft_orders" : {
-            "associated_orders" : {
-               "*": {},
-            },
+            // "associated_orders" : {
+            //    "*": {},
+            // },
             "curr_crafters" : {},
             "recipe" : {},
          },
@@ -405,6 +405,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          }
       });
 
+      self._associatedOrdersTrace = null;
       self.$('.orders').off('mouseenter.existingOrderEnter', '.interactionOverlay');
       self.$('.orders').on('mouseenter.existingOrderEnter', '.interactionOverlay', function (e) {
          var $el = $(this).closest('.orderListItem');
@@ -424,29 +425,23 @@ App.StonehearthTeamCrafterView = App.View.extend({
          self.highlightType = null;
          self.childOrders = null;
          if (order) {
-            var olRef = self.getOrderList();
             if (order.associated_orders && order.associated_orders.length > 0) {
                // consider all the associated orders with parents (and thus could be descendents of this order)
                // orders can be part of other jobs' order lists, so their id on its own is not unique!
-               var allParentOrders = [];
-               radiant.each(order.associated_orders, function(_, o) {
-                  if (o.parent_order) {
-                     allParentOrders.push(o);
-                  }
-               });
+               var allParentOrders = order.associated_orders.slice(0);
 
                // keep going through all the possible descendents, including any with a valid parent and marking those for the next iteration
                var orders = [];
                var parents = [];
-               var newParents = [{id: order.id, order_list: olRef}];
+               var newParents = [order.__self];
                while (newParents.length > 0) {
                   var newNewParents = [];
                   for (var i = 0; i < allParentOrders.length; i++) {
                      var o = allParentOrders[i];
                      for (var j = 0; j < newParents.length; j++) {
-                        if (newParents[j].id == o.parent_order.id && newParents[j].order_list == o.parent_order.order_list) {
-                           orders.push({order: o.order, isLocal: o.order.order_list == olRef});
-                           newNewParents.push({id: o.order.id, order_list: o.order.order_list});
+                        if (o.parent_order && newParents[j] == o.parent_order) {
+                           orders.push(o.order);
+                           newNewParents.push(o.order);
                            break;
                         }
                      }
@@ -456,20 +451,21 @@ App.StonehearthTeamCrafterView = App.View.extend({
                   newParents = newNewParents;
                }
 
-               orders.sort((a, b) => b.isLocal - a.isLocal);
-               self.childOrders = orders;
+               if (orders.length > 0) {
+                  self.childOrders = orders;
+               }
                self.highlightedOrders = orders;
 
                self.highlightType = 'craftHighlighted';
             }
 
-            // if it has a building id, highlight all orders for that building (locked to primary order list)
+            // if it has a building id, highlight all orders for that building
             // if this order has associated orders, highlight only the direct children (the orders that will be removed if this one is removed)
             if (order.building_id) {
                self.highlightedOrders = [];
                radiant.each(orderList, function(_, o) {
-                  if (o.building_id == order.building_id && o.order_list == olRef) {
-                     self.highlightedOrders.push({order: o, isLocal: true});
+                  if (o.building_id == order.building_id) {
+                     self.highlightedOrders.push(o);
                   }
                });
                self.highlightType = 'buildingHighlighted';
@@ -480,13 +476,47 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
          // show the tooltip for the order
          if (order) {
-            self._showCraftOrderTooltip($el, order, isPrimaryOrderList || primaryOrders.length == 0);
+            if (self.childOrders != null) {
+               // if there are child orders, we need to request their data for the tooltip
+               if (self._associatedOrdersTrace) {
+                  self._associatedOrdersTrace.destroy();
+                  self._associatedOrdersTrace = null;
+               }
+               self._associatedOrdersTrace = new StonehearthDataTrace(order.__self, {'associated_orders': { '*': { 'order': {} } }})
+                  .progress(function (response) {
+                     if (self._associatedOrdersTrace) {
+                        self._associatedOrdersTrace.destroy();
+                        self._associatedOrdersTrace = null;
+                     }
+                     if (self.isDestroyed || self.isDestroying) {
+                        return;
+                     }
+
+                     if (response && response.associated_orders) {
+                        var childOrders = [];
+                        for (var i = 0; i < response.associated_orders.length; i++) {
+                           var o = response.associated_orders[i].order;
+                           if (self.childOrders.indexOf(o.__self) != -1) {
+                              childOrders.push(o);
+                           }
+                        }
+                        self.childOrders = childOrders;
+                     }
+                     else {
+                        self.childOrders = null;
+                     }
+                     self._showCraftOrderTooltip($el, order, isPrimaryOrderList || primaryOrders.length == 0);
+                  });
+            }
+            else {
+               self._showCraftOrderTooltip($el, order, isPrimaryOrderList || primaryOrders.length == 0);
+            }
          }
       });
 
       self.$('.orders').off('mouseleave.existingOrderLeave', '.interactionOverlay');
       self.$('.orders').on('mouseleave.existingOrderLeave', '.interactionOverlay', function (e) {
-         self.highlightedOrders = {};
+         self.highlightedOrders = [];
          self._updateFullDetailedOrderList();
       });
 
@@ -607,6 +637,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
       if (self._focusCheckIntervalID != null) {
          clearInterval(self._focusCheckIntervalID);
          self._focusCheckIntervalID = null;
+      }
+
+      if (self._associatedOrdersTrace) {
+         self._associatedOrdersTrace.destroy();
+         self._associatedOrdersTrace = null;
       }
 
       this._super();
@@ -1616,11 +1651,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
       }
 
       // for a building order or an order with associated orders, list those appropriately
-      if (self.childOrders != null && self.childOrders.length > 0) {
+      if (self.childOrders != null) {
          var sOrders = '';
          var totalCount = 0;
          for (var i = 0; i < self.childOrders.length; i++) {
-            var o = self.childOrders[i].order;
+            var o = self.childOrders[i];
             var count = o.condition.at_least || o.condition.remaining;
             var isActive = o.curr_crafters.length > 0;
             var valueClass = 'value';
@@ -2150,10 +2185,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
          if (self.highlightType && !self._isModifyingOrder) {
             for (var j = 0; j < self.highlightedOrders.length; j++) {
                var o = self.highlightedOrders[j];
-               if (!o.isLocal) {
-                  break;
-               }
-               if (o.order.id == order.id) {
+               if (o == order.__self) {
                   orderListItem.addClass(self.highlightType);
                   highlighted = true;
                   break;
