@@ -22,11 +22,6 @@ function AceCraftOrder:on_item_created(primary_output)
 end
 
 function AceCraftOrder:restore()
-   if self._sv._auto_crafting then
-      self._sv._auto_queued = true
-      self._sv._auto_crafting = nil
-   end
-
    local associated_orders = self._sv._associated_orders
    if associated_orders then
       for i = #associated_orders, 1, -1 do
@@ -119,15 +114,14 @@ function AceCraftOrder:destroy()
       self._sv.order_list:remove_from_reserved_ingredients(self._recipe.ingredients, self._sv.id, self._sv.player_id, self._sv.condition.remaining)
    end
 
-   --self:_ace_old_destroy()
-   self:_remove_desires()
-   self._sv.order_list:_on_order_list_changed()
+   self:_ace_old_destroy()
 end
 
 function AceCraftOrder:set_recipe(recipe)
    self._sv.recipe = recipe
    self._recipe = recipe
-   self:_on_changed()
+   -- this is only used when verifying recipes on load, so it's not necessary to inform about changes
+   --self:_on_changed()
 end
 
 function AceCraftOrder:_add_curr_crafter(crafter)
@@ -642,16 +636,6 @@ function AceCraftOrder:get_num_primary_product_per_craft()
    return self._num_primary_product_per_craft
 end
 
--- this auto queuing field is for regular automatic *requests* for crafting
--- not for crafting done by auto-crafters
-function AceCraftOrder:get_auto_queued()
-   return self._sv._auto_queued
-end
-
-function AceCraftOrder:set_auto_queued(value)
-   self._sv._auto_queued = value
-end
-
 function AceCraftOrder:get_associated_orders()
    return self._sv.associated_orders
 end
@@ -659,24 +643,7 @@ end
 -- returns the entry for this order
 function AceCraftOrder:set_associated_orders(associated_orders)
    self._sv.associated_orders = associated_orders
-   if not associated_orders then
-      self.__saved_variables:mark_changed()
-      return
-   end
-
-   -- if this order is already in the associated orders, return its entry
-   for _, associated_order in ipairs(associated_orders) do
-      if associated_order.order == self then
-         return associated_order
-      end
-   end
-
-   -- otherwise we need to add it
-   table.insert(associated_orders, {
-      order = self,
-   })
    self.__saved_variables:mark_changed()
-   return associated_orders[#associated_orders]
 end
 
 function AceCraftOrder:remove_associated_order(remove_children)
