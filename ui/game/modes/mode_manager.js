@@ -142,6 +142,8 @@ $(document).ready(function() {
             // show the new mode view, if there is one
             var view = this.views[mode]
             if (view && showView) {
+               // first hide any workshop views
+               App.workshopManager.hideAllWorkshops(true);
                view.show();
                this._currentView = view;
             }

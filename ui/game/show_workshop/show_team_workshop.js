@@ -105,13 +105,7 @@ App.workshopManager = {
       var self = this;
 
       // Hide all other workshops.
-      var hidOther = false;
-      radiant.each(self.workshops, function (alias, view) {
-         if (alias != jobAlias && view.isVisible) {
-            view.hide(false);
-            hidOther = true;
-         }
-      });
+      var hidOther = self.hideAllWorkshops(false, jobAlias);
 
       if (self.workshops[jobAlias]) {
          // This workshop exists, just toggle it.
@@ -124,6 +118,18 @@ App.workshopManager = {
          // First time opening the workshop. Instantiate it. Should generally never happen, but there in case of mod-induced races.
          self.createWorkshop(jobAlias, true);
       }
+   },
+
+   hideAllWorkshops: function (animate, ignoreAlias) {
+      var self = this;
+      var hidOther = false;
+      radiant.each(self.workshops, function (alias, view) {
+         if (alias != ignoreAlias && view.isVisible) {
+            view.hide(animate);
+            hidOther = true;
+         }
+      });
+      return hidOther;
    },
 
    // pass in a callback function in case the workshop is not yet loaded
