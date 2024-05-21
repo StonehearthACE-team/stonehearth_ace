@@ -398,6 +398,11 @@
          ]
       },
       "game_master": {
+         "location_searcher": {
+            "MAX_POINTS_TO_CHECK": 700,
+            "MAX_POINTS_TO_TRY_REACHABLE": 300,
+            "MAX_POINTS_TO_CHECK_PER_LOOP": 3
+         },
          "quests": {
             "filler_materials": {
                "stonehearth:biome:temperate": {
