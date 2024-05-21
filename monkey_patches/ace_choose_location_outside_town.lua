@@ -58,16 +58,21 @@ function AceChooseLocationOutsideTown:_try_location(location, camp_region)
 
    -- ACE: Check if underwater and if allowed
    local entities = radiant.terrain.get_entities_in_region(test_region)
+   local found_water = false
    for _, entity in pairs(entities) do
       local water_component = entity:get_component('stonehearth:water')
       if water_component then
-         if not self._sv.underwater then
-            return false
-         end
-      else
-         if self._sv.underwater and self._sv.underwater == 'required' then
-            return false
-         end
+         found_water = true
+         break
+      end
+   end
+   if found_water then
+      if not self._sv.underwater then
+         return false
+      end
+   else
+      if self._sv.underwater == 'required' then
+         return false
       end
    end
 
@@ -80,7 +85,7 @@ function AceChooseLocationOutsideTown:_try_location(location, camp_region)
          return false
       end
    else
-      if self._sv.underground and self._sv.underground == 'required' then
+      if self._sv.underground == 'required' then
          return false
       end
    end
@@ -113,6 +118,7 @@ function AceChooseLocationOutsideTown:_try_location(location, camp_region)
    return true
 end
 
+-- ACE: added ensure_reachable check
 function AceChooseLocationOutsideTown:_try_finding_location()
    -- Calculate the region covering the area we want to generate in.
    local territory = self._sv.player_id and stonehearth.terrain:get_territory(self._sv.player_id) or stonehearth.terrain:get_total_territory()
@@ -156,7 +162,7 @@ function AceChooseLocationOutsideTown:_try_finding_location()
       -- with 10k+ available points, it's quite robust. We could guarantee a full random
       -- iteration by using an LCG, but that's likely overkill in practice.
       local max_points = math.min(valid_points_region:get_area(), MAX_POINTS_TO_CHECK)
-      local point_with_reachable_check_remaining = reachability_check_location and self._sv.ensure_reachable and MAX_POINTS_TO_CHECK or reachability_check_location and MAX_POINTS_TO_TRY_REACHABLE or 0
+      local point_with_reachable_check_remaining = reachability_check_location and (self._sv.ensure_reachable and max_points or MAX_POINTS_TO_TRY_REACHABLE) or 0
       while self._points_checked < max_points do
          self._points_checked = self._points_checked + 1
 
