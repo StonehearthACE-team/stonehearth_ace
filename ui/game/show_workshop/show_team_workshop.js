@@ -494,7 +494,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
                         self._associatedOrdersTrace.destroy();
                         self._associatedOrdersTrace = null;
                      }
-                     if (self.isDestroyed || self.isDestroying) {
+                     if (self.isDestroyed || self.isDestroying || !self.childOrders) {
                         return;
                      }
 
