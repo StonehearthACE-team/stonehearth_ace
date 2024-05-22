@@ -28,16 +28,27 @@ function AceCombatService:battery(context)
    local health = radiant.entities.get_health(target)
    local max_health = radiant.entities.get_max_health(target)
    local damage = context.damage
+   -- for leash purposes, we care more about the primary target than the attacker of this specific battery
+   local enemy = self:get_primary_target(target) or attacker
 
-   if stonehearth.player:is_npc(target) and self:has_leash(target) and not stonehearth.player:is_npc(attacker) then
-      if not is_entity_outside_leash(target) then
-         if self:is_point_outside_leash(target, radiant.entities.get_world_grid_location(attacker)) then           
-            radiant.entities.add_buff(target, RETREATING_BUFF) -- Stop exploiting!
-         end
-      elseif health < (max_health * 0.6) then
+   if stonehearth.player:is_npc(target) and self:has_leash(target) and not stonehearth.player:is_npc(enemy) then
+      if health < (max_health * 0.5) then
          self:clear_leash(target) -- This is probably a legit fight, let it roll...
       else
-         radiant.entities.add_buff(target, RETREATING_BUFF) -- Suspicious, run away!
+         -- if we're outside our leash, we should retreat
+         -- if we're inside our leash and our primary target is outside the leash and isn't in range, we should retreat
+         -- this is a bit of a cheap hack because we're not bothering to find if there is a location within the leash where we could attack
+         -- only if we're already in range; but with a reasonably large leash, this should be good enough, and is a lot faster
+         -- don't need to worry about line of sight since they're not going to get attacked by a target that doesn't have line of sight on them
+         if self:is_entity_outside_leash(target) then
+            radiant.entities.add_buff(target, RETREATING_BUFF) -- Suspicious, run away!
+         else
+            local weapon = self:get_main_weapon(target)
+            if self:is_point_outside_leash(target, radiant.entities.get_world_grid_location(enemy)) and
+                  not self:in_range(target, enemy, weapon) then
+               radiant.entities.add_buff(target, RETREATING_BUFF) -- Stop exploiting!
+            end
+         end
       end
    end
 
