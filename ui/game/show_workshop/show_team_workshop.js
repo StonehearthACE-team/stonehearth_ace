@@ -430,6 +430,8 @@ App.StonehearthTeamCrafterView = App.View.extend({
 
          self.highlightType = null;
          self.childOrders = null;
+         self._currentTooltipOrder = order;
+
          if (order) {
             if (order.associated_orders && order.associated_orders.length > 0) {
                // consider all the associated orders with parents (and thus could be descendents of this order)
@@ -494,11 +496,11 @@ App.StonehearthTeamCrafterView = App.View.extend({
                         self._associatedOrdersTrace.destroy();
                         self._associatedOrdersTrace = null;
                      }
-                     if (self.isDestroyed || self.isDestroying || !self.childOrders) {
+                     if (self.isDestroyed || self.isDestroying || self._currentTooltipOrder != order) {
                         return;
                      }
 
-                     if (response && response.associated_orders) {
+                     if (response && response.associated_orders && self.childOrders) {
                         var childOrders = [];
                         for (var i = 0; i < response.associated_orders.length; i++) {
                            var o = response.associated_orders[i].order;
@@ -523,6 +525,7 @@ App.StonehearthTeamCrafterView = App.View.extend({
       self.$('.orders').off('mouseleave.existingOrderLeave', '.interactionOverlay');
       self.$('.orders').on('mouseleave.existingOrderLeave', '.interactionOverlay', function (e) {
          self.highlightedOrders = [];
+         self._currentTooltipOrder = null;
          self._updateFullDetailedOrderList();
       });
 
