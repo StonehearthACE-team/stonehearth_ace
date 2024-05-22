@@ -25,13 +25,21 @@ function AceCombatService:battery(context)
       return nil
    end
 
-   if stonehearth.player:is_npc(target) and self:has_leash(target) and self:is_point_outside_leash(target, radiant.entities.get_world_grid_location(attacker)) then
-      --self:clear_leash(target) -- We should do this and not have patch notes about it! >:D
-      radiant.entities.add_buff(target, RETREATING_BUFF) -- Okaaay, fine, let's do this instead...
-   end
-
    local health = radiant.entities.get_health(target)
+   local max_health = radiant.entities.get_max_health(target)
    local damage = context.damage
+
+   if stonehearth.player:is_npc(target) and self:has_leash(target) and not stonehearth.player:is_npc(attacker) then
+      if not is_entity_outside_leash(target) then
+         if self:is_point_outside_leash(target, radiant.entities.get_world_grid_location(attacker)) then           
+            radiant.entities.add_buff(target, RETREATING_BUFF) -- Stop exploiting!
+         end
+      elseif health < (max_health * 0.6) then
+         self:clear_leash(target) -- This is probably a legit fight, let it roll...
+      else
+         radiant.entities.add_buff(target, RETREATING_BUFF) -- Suspicious, run away!
+      end
+   end
 
    if health ~= nil then
       if health <= 0 then
