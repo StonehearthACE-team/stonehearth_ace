@@ -222,7 +222,7 @@ i18n.addPostProcessor("localizeEntityName", function(value, key, isFound, opts) 
 
          // if we actually have a custom name, just skip the display name part for this purpose
          // we want to keep it short and not include titles and such when using the [name()] helper
-         if (customName != customNameKey) {
+         if (customName != '' && customName != customNameKey) {
             translated = translated.replace(token, customName);
          }
          else {
