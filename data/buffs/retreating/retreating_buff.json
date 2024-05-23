@@ -5,7 +5,7 @@
    "display_name": "i18n(stonehearth_ace:data.buffs.retreating.display_name)",
    "description": "i18n(stonehearth_ace:data.buffs.retreating.description)",
    "icon": "file(retreating_buff.png)",
-   "duration": "25m",
+   "duration": "15m",
    "cant_affect_siege": true,
    "repeat_add_action": "renew_duration",
    "effect": "stonehearth:effects:thoughts:alert",
@@ -25,7 +25,7 @@
    "script": "stonehearth:buff_scripts:periodic_health_modification",
    "script_info": {
       "health_change": 1,
-      "pulse": "25m",
+      "pulse": "15m",
       "pulse_immediately": false,
       "pulse_on_destroy": true,
       "is_percentage": true
