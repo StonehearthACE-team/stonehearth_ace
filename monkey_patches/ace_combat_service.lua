@@ -600,7 +600,7 @@ end
 
 function AceCombatService:is_leash_unbreakable(entity)
    local leash_data = self:get_leash_data(entity)
-   return leash_data.unbreakable
+   return leash_data and leash_data.unbreakable
 end
 
 return AceCombatService
