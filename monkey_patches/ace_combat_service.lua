@@ -14,6 +14,7 @@ local SPEED_EXP_WEIGHT = stonehearth.constants.exp.SPEED_EXP_WEIGHT or 0.5
 local ARMOR_EXP_WEIGHT = stonehearth.constants.exp.ARMOR_EXP_WEIGHT or 8
 local DMG_EXP_WEIGHT = stonehearth.constants.exp.DMG_EXP_WEIGHT or 10
 local RETREATING_BUFF = 'stonehearth_ace:buffs:retreating'
+local SOFT_RETREATING_BUFF = 'stonehearth_ace:buffs:retreating:soft'
 
 -- Notify target that it has been hit by an attack.
 -- ACE: include damage source when modifying health
@@ -33,7 +34,11 @@ function AceCombatService:battery(context)
 
    if stonehearth.player:is_npc(target) and self:has_leash(target) and not stonehearth.player:is_npc(enemy) then
       if health_percent < 0.5 then
-         self:clear_leash(target) -- This is probably a legit fight, let it roll...
+         if self:is_leash_unbreakable(target) then
+            radiant.entities.add_buff(target, SOFT_RETREATING_BUFF) -- Don't just stand there! Go back to your place!
+         else
+            self:clear_leash(target) -- This is probably a legit fight, let it roll...
+         end
       else
          -- if we're outside our leash, we should retreat, unless we're panicking, in which case it's pointless to have a leash anymore
          -- if we're inside our leash and our primary target is outside the leash and isn't in range, we should retreat
@@ -44,7 +49,7 @@ function AceCombatService:battery(context)
             if self:panicking(target) then
                self:clear_leash(target) -- Run to the hills! Run for your lives!
             else
-               radiant.entities.add_buff(target, RETREATING_BUFF) -- Suspicious, retreat!
+               radiant.entities.add_buff(target, SOFT_RETREATING_BUFF) -- Suspicious, retreat!
             end
          else
             local weapon = self:get_main_weapon(target)
@@ -583,6 +588,19 @@ function AceCombatService:location_in_range(attacker_location, target_location, 
    local distance = Point3(attacker_location.x, 0, attacker_location.z):distance_to(Point3(target_location.x, 0, target_location.z))
    local result = distance <= adjusted_range
    return result
+end
+
+function AceCombatService:set_leash(entity, center, range, unbreakable)
+   local combat_state = self:get_combat_state(entity)
+   if not combat_state then
+      return
+   end
+   combat_state:_set_leash(center, range, unbreakable)
+end
+
+function AceCombatService:is_leash_unbreakable(entity)
+   local leash_data = self:get_leash_data(entity)
+   return leash_data.unbreakable
 end
 
 return AceCombatService
