@@ -45,7 +45,8 @@ function AceCombatStateComponent:_set_leash(center, range, unbreakable)
 end
 
 function AceCombatStateComponent:get_leash_unbreakable()
-   return self._sv.leash.unbreakable
+   local leash = self._sv.leash
+   return leash and leash.unbreakable
 end
 
 return AceCombatStateComponent
