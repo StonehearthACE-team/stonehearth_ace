@@ -1,3 +1,5 @@
+local Point3 = _radiant.csg.Point3
+local Cube3 = _radiant.csg.Cube3
 -- ACE: added support for shared cooldowns
 
 local CombatStateComponent = require 'stonehearth.components.combat_state.combat_state_component'
@@ -22,6 +24,28 @@ function AceCombatStateComponent:get_cooldown_end_time(name, shared_cooldown_nam
    end
 
    return end_time
+end
+
+function AceCombatStateComponent:_set_leash(center, range, unbreakable)
+   local leash = self._sv.leash
+   if leash and leash.center == center and leash.range == range then
+      return
+   end
+
+   local cube = Cube3(center):inflated(Point3(range, 0, range))
+
+   self._sv.leash = {
+      center = center,
+      range = range,
+      cube = cube,
+      unbreakable = unbreakable
+   }
+   self.__saved_variables:mark_changed()
+   radiant.events.trigger_async(self._entity, 'stonehearth:combat_state:leash_changed')
+end
+
+function AceCombatStateComponent:get_leash_unbreakable()
+   return self._sv.leash.unbreakable
 end
 
 return AceCombatStateComponent

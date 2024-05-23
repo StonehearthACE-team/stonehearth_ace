@@ -11,7 +11,7 @@ function ace_game_master_lib.create_citizens(population, info, origin, ctx)
 
    for i, citizen in ipairs(citizens) do
       if info.combat_leash_range then
-         stonehearth.combat:set_leash(citizen, origin, (info.combat_leash_range + stonehearth.constants.combat.ADDITIVE_COMBAT_LEASH_BONUS))
+         stonehearth.combat:set_leash(citizen, origin, (info.combat_leash_range + stonehearth.constants.combat.ADDITIVE_COMBAT_LEASH_BONUS), info.combat_leash_unbreakable or nil)
       end
    end
 
