@@ -1,9 +1,12 @@
 {
    "create_camp_info": {
       "boss": {
-         "combat_leash_range": 12
+         "combat_leash_range": 50
       },
       "citizens": {
+         "workers": {
+            "combat_leash_range": 50
+         },
          "sheep": {
             "attributes": {
                "max_health": 150
@@ -19,7 +22,7 @@
                },
                "range": 3
             },
-            "combat_leash_range": 50,
+            "combat_leash_range": 70,
             "tuning": "stonehearth_ace:monster_tuning:goblins:piper"
          }
       },

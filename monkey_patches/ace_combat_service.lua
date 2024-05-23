@@ -26,13 +26,13 @@ function AceCombatService:battery(context)
    end
 
    local health = radiant.entities.get_health(target)
-   local max_health = radiant.entities.get_max_health(target)
+   local health_percent = radiant.entities.get_health_percentage(target)
    local damage = context.damage
    -- for leash purposes, we care more about the primary target than the attacker of this specific battery
    local enemy = self:get_primary_target(target) or attacker
 
    if stonehearth.player:is_npc(target) and self:has_leash(target) and not stonehearth.player:is_npc(enemy) then
-      if health < (max_health * 0.5) then
+      if health_percent < 0.5 then
          self:clear_leash(target) -- This is probably a legit fight, let it roll...
       else
          -- if we're outside our leash, we should retreat
@@ -553,8 +553,13 @@ function AceCombatService:in_range(attacker, target, weapon, attacker_location, 
    if not (attacker_location and target_location) then
       return false
    end
+   local range = radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data').range
 
-   local range = self:get_weapon_range(attacker, weapon)
+   if range then
+      range = self:get_weapon_range(attacker, weapon)
+   else
+      range = radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data').reach
+   end
    return self:location_in_range(attacker_location, target_location, range)
 end
 

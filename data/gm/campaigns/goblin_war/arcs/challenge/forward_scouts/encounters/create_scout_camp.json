@@ -1,6 +1,9 @@
 {
    "create_camp_info" : {
       "citizens": {
+         "workers": {
+            "combat_leash_range": 50
+         },
 			"guards": {
             "from_population": {
                "min": 0,
@@ -11,7 +14,7 @@
                },
                "range": 3
             },
-            "combat_leash_range": 30,
+            "combat_leash_range": 50,
             "tuning": "stonehearth:monster_tuning:goblins:guard"
          },
          "pipers": {
@@ -24,7 +27,7 @@
                },
                "range": 3
             },
-            "combat_leash_range": 50,
+            "combat_leash_range": 60,
             "tuning": "stonehearth_ace:monster_tuning:goblins:piper"
          }
       }
