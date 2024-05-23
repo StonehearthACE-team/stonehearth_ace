@@ -35,13 +35,17 @@ function AceCombatService:battery(context)
       if health_percent < 0.5 then
          self:clear_leash(target) -- This is probably a legit fight, let it roll...
       else
-         -- if we're outside our leash, we should retreat
+         -- if we're outside our leash, we should retreat, unless we're panicking, in which case it's pointless to have a leash anymore
          -- if we're inside our leash and our primary target is outside the leash and isn't in range, we should retreat
          -- this is a bit of a cheap hack because we're not bothering to find if there is a location within the leash where we could attack
          -- only if we're already in range; but with a reasonably large leash, this should be good enough, and is a lot faster
          -- don't need to worry about line of sight since they're not going to get attacked by a target that doesn't have line of sight on them
          if self:is_entity_outside_leash(target) then
-            radiant.entities.add_buff(target, RETREATING_BUFF) -- Suspicious, run away!
+            if self:panicking(target) then
+               self:clear_leash(target) -- Run to the hills! Run for your lives!
+            else
+               radiant.entities.add_buff(target, RETREATING_BUFF) -- Suspicious, retreat!
+            end
          else
             local weapon = self:get_main_weapon(target)
             if self:is_point_outside_leash(target, radiant.entities.get_world_grid_location(enemy)) and
