@@ -557,13 +557,16 @@ function AceCombatService:in_range(attacker, target, weapon, attacker_location, 
    if not (attacker_location and target_location) then
       return false
    end
-   local range = radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data').range
+
+   local weapon_data = weapon and radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data') or {}
+   local range = weapon_data.range
 
    if range then
       range = self:get_weapon_range(attacker, weapon)
    else
-      range = radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data').reach
+      range = weapon_data.reach or 1
    end
+
    return self:location_in_range(attacker_location, target_location, range)
 end
 
