@@ -12208,12 +12208,6 @@
                "description": "Warm and savory stock fortified with hearty veggies!"
             }
          },
-         "cook_mill_powered": {
-            "cook_mill_powered_ghost": {
-               "display_name": "Powered Mill Grinder",
-               "description": "Can be used by a Cook for milling. Requires mechanical power to work."
-            }
-         },
          "cook_bowl_animation": {
             "display_name": "Cook's Bowl"
          },
@@ -12325,6 +12319,14 @@
             "cook_ladle_talisman": {
                "display_name": "Cook's Ladle",
                "description": "Required to promote a hearthling into a Cook."
+            }
+         },
+         "powered": {
+            "mechanical": {
+               "mechanical_cook_mill": {
+                  "display_name": "Powered Mill Grinder",
+                  "description": "Can be used by a Cook for milling. Requires mechanical power to work."
+               }
             }
          }
       },
@@ -15673,6 +15675,14 @@
          "dynasty_fence_double": {
             "display_name": "Dynasty Stone Fence Long",
             "description": "Intricately carved by eastern artisans."
+         },
+         "powered": {
+            "mechanical": {
+               "mechanical_water_pump_well": {
+                  "display_name": "TBD",
+                  "description": "TBD"
+               }
+            }
          }
       },
       "crops": {
@@ -23809,6 +23819,42 @@
          }
       },
       "gizmos": {
+         "power": {
+            "mechanical": {
+               "sources": {
+                  "water_wheel_wood": {
+                     "display_name": "Wooden Water Wheel",
+                     "description": "This device can generate mechanical power if placed in water or a waterfall."
+                  },
+                  "windmill_simple": {
+                     "display_name": "TBD",
+                     "description": "TBD"
+                  },
+                  "burner_generator": {
+                     "display_name": "TBD",
+                     "description": "TBD"
+                  }
+               },
+               "storage": {
+                  "gravity_battery": {
+                     "display_name": "TBD",
+                     "description": "TBD"
+                  }
+               },
+               "gear_box": {
+                  "display_name": "Gear Box",
+                  "description": "This device allows you to redirect mechanical power to any direction."
+               },
+               "horizontal_switch": {
+                  "display_name": "Horizontal Switch",
+                  "description": "Allows you to toggle the flow of mechanical power on a horizontal axle."
+               },
+               "vertical_switch": {
+                  "display_name": "Vertical Switch",
+                  "description": "Allows you to toggle the flow of mechanical power on a vertical axle."
+               }
+            }
+         },
          "small_turret": {
             "display_name": "Bolt Turret",
             "description": "Shoots bolts at enemies from a distance. Must be reloaded when the number of uses get to zero!",
@@ -23850,30 +23896,6 @@
          "target_training": {
             "display_name": "Archery Target",
             "description": "Less dangerous than apples on heads. Can be repaired before it breaks."
-         },
-         "axle_vertical": {
-            "description": "A rotating shaft that can take mechanical power vertically.",
-            "display_name": "Vertical Axle"
-         },
-         "axle_horizontal": {
-            "display_name": "Horizontal Axle",
-            "description": "A rotating shaft that can take mechanical power forward."
-         },
-         "axle_gear_box": {
-            "display_name": "Gear Box",
-            "description": "This device allows you to redirect mechanical power to any direction."
-         },
-         "axle_horizontal_switch": {
-            "display_name": "Horizontal Switch",
-            "description": "Allows you to toggle the flow of mechanical power on a horizontal axle."
-         },
-         "axle_vertical_switch": {
-            "display_name": "Vertical Switch",
-            "description": "Allows you to toggle the flow of mechanical power on a vertical axle."
-         },
-         "source_water_wheel_wooden": {
-            "display_name": "Wooden Water Wheel",
-            "description": "This device can generate mechanical power if placed in water or a waterfall."
          },
          "safety_standard": {
             "stone_safety_standard": {

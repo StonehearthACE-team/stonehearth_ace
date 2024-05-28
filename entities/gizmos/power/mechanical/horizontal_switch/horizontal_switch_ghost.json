@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(horizontal_switch.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.power.mechanical.horizontal_switch.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.power.mechanical.horizontal_switch.description)",
+         "icon": "file(horizontal_switch.png)",
+         "category": "mechanism",
+         "material_tags": [
+            "switch",
+            "connector",
+            "mechanical_power",
+            "gizmos",
+            "crafted",
+            "stockpile_gizmos"
+         ]
+      }
+   }
+}

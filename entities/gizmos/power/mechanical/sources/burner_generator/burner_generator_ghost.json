@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(burner_generator.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": false
+      },
+      "render_info": {
+         "scale": 0.13
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.power.mechanical.sources.burner_generator.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.power.mechanical.sources.burner_generator.description)",
+         "icon": "file(burner_generator.png)",
+         "category": "mechanism",
+         "material_tags": [
+            "source",
+            "mechanical_power",
+            "burner_generator",
+            "gizmos",
+            "crafted",
+            "stockpile_gizmos"
+         ]
+      }
+   }
+}

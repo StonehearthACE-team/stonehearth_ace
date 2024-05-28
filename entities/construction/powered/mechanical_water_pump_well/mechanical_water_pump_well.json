@@ -1,0 +1,120 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": 0 },
+               "max": { "x": 0, "y": 1, "z": 1 }
+            }
+         ],
+         "adjacency_flags": [
+            "front"
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -2 },
+               "max": { "x": 3, "y": 2, "z": 3 }
+            },
+            {
+               "min": { "x": 0, "y": 2, "z": 0 },
+               "max": { "x": 1, "y": 4, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:storage": {
+         "type": "output_crate",
+         "is_hidden": true,
+         "drop_all_on_undeploy": false,
+         "allow_default": false,
+         "capacity": 1,
+         "auto_restock_with_item": "stonehearth_ace:landmark:terrain:water_bucket",
+         "auto_restock_quantity": 1,
+         "auto_restock_delay": "15m",
+         "user_open_effect": "fiddle",
+         "filter_list": "stonehearth_ace:ui:hidden_storage:filters",
+         "default_filter": [
+            "resource water small"
+         ]
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mechanical_water_pump_well.qb)"
+            ]
+         }
+      },
+      "stonehearth:loot_drops": {
+         "entries": {
+            "default": {
+               "items": {
+                  "well_kit": {
+                     "uri": "stonehearth_ace:refined:water_well_kit:stone"
+                  }
+               }
+            }
+         }
+      },
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "fiddle",
+         "drink": "stonehearth_ace:drink:water_serving:cool",
+         "require_reservation": true,
+         "stacks_per_serving": 0
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "destroy": {
+               "transform_uri": "",
+               "command": "stonehearth_ace:commands:transform:build_well_destroy",
+               "request_action": "stonehearth_ace:transform",
+               "request_action_overlay_effect": "stonehearth:effects:clear_effect",
+               "transforming_worker_effect": "work",
+               "transforming_worker_effect_times": 3,
+               "transform_effect": "stonehearth:effects:object_destroyed",
+               "auto_request": true,
+               "kill_entity": true
+            }
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.powered.mechanical.mechanical_water_pump_well.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.powered.mechanical.mechanical_water_pump_well.description)",
+         "icon": "file(mechanical_water_pump_well.png)",
+         "category": "construction",
+         "material_tags": [
+            "drink_container",
+            "water_well",
+            "construction",
+            "stockpile_construction",
+            "stone",
+            "crafted"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 26,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 8
+      }
+   }
+}

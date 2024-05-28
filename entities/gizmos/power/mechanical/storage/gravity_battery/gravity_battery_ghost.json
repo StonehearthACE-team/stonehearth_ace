@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(gravity_battery.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.2
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.power.mechanical.storage.gravity_battery.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.power.mechanical.storage.gravity_battery.description)",
+         "icon": "file(gravity_battery.png)",
+         "category": "mechanism",
+         "material_tags": [
+            "storage",
+            "mechanical_power",
+            "gravity_battery",
+            "gizmos",
+            "crafted",
+            "stockpile_gizmos"
+         ]
+      }
+   }
+}

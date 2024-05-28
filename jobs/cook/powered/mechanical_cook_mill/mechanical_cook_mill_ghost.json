@@ -1,0 +1,32 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(mechanical_cook_mill.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:hide_child_entities_from_pathfinder": true,
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:jobs.cook.powered.mechanical.mechanical_cook_mill.display_name)",
+         "description": "i18n(stonehearth_ace:jobs.cook.powered.mechanical.mechanical_cook_mill.description)",
+         "icon": "file(mechanical_cook_mill.png)",
+         "category": "workshops",
+         "material_tags": [
+            "stockpile_tool",
+            "mechanical_power"
+         ]
+      }
+   }
+}
