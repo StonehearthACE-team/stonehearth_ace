@@ -22,6 +22,7 @@ function WaterSpongeComponent:initialize()
    -- if the sponge is in absorb mode, disable once it's at full capacity; if in release mode, disable once it's empty
    self._auto_disable_on_full_or_empty = self._json.auto_disable_on_full_or_empty
    self._destroy_entity_when_empty = self._json.destroy_entity_when_empty
+   self._only_output_to_container = self._json.only_output_to_container
    self._input_fail_ignores = 0
    self._output_fail_ignores = 0
    self._prev_input_water_entity = nil
@@ -283,7 +284,7 @@ function WaterSpongeComponent:on_tick_water_processor()
                   destination_sponge:on_tick_water_processor()
                end
                output_rate = math.min(output_rate, destination_container:get_available_capacity('stonehearth:water'))
-            elseif is_solid then
+            elseif is_solid or self._only_output_to_container then
                output_rate = 0
             end
 

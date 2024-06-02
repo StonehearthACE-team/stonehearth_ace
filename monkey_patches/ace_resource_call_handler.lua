@@ -3,6 +3,8 @@
    we also have our own resource_call_handler.lua file that must be separate in order to be in the stonehearth_ace namespace for our own functions
 ]]
 
+local Point3 = _radiant.csg.Point3
+local Cube3 = _radiant.csg.Cube3
 local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local validator = radiant.validator
 
@@ -46,6 +48,30 @@ function AceResourceCallHandler:_is_clearable(entity, player_id)
    end
 
    return true
+end
+
+function AceResourceCallHandler:server_box_cancel_task(session, response, box)
+   validator.expect_argument_types({'Cube3'}, box)
+
+   local cube = Cube3(Point3(box.min.x, box.min.y, box.min.z),
+                      Point3(box.max.x, box.max.y, box.max.z))
+
+   local entities = radiant.terrain.get_entities_in_cube(cube)
+   local town = stonehearth.town:get_town(session.player_id)
+
+   for _, entity in pairs(entities) do
+      --remove the tasks the town knows about
+      town:remove_previous_task_on_item(entity)
+
+      -- ACE: also check to see if there's an entity mounted on this entity whose tasks should be canceled
+      local mount_component = entity:get_component('stonehearth:mount')
+      if mount_component then
+         local user = mount_component:get_user()
+         if user then
+            town:remove_previous_task_on_item(user)
+         end
+      end
+   end
 end
 
 -- added setting auto-loot player id
