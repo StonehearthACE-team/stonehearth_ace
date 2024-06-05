@@ -50,6 +50,16 @@ function AcePlaceItemCallHandler:undeploy_golem(session, response, item)
    
    local location = radiant.entities.get_world_grid_location(item)
    local root_form, iconic_form = entity_forms_lib.get_forms(item)
+
+   local carrying = radiant.entities.get_carrying(item)
+   local items = item:get_component('stonehearth:storage')
+   if carrying then
+      radiant.entities.drop_carrying_on_ground(item, location)
+   end
+   if items then
+      items:drop_all()
+   end
+
    if location and iconic_form then
       radiant.terrain.remove_entity(item)
       radiant.terrain.place_entity_at_exact_location(iconic_form, location)

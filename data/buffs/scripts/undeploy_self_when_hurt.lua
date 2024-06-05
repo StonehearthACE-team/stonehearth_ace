@@ -1,3 +1,4 @@
+local entity_forms_lib = require 'stonehearth.lib.entity_forms.entity_forms_lib'
 local UndeploySelfWhenHurt = class()
 
 function UndeploySelfWhenHurt:on_buff_added(entity, buff)
@@ -11,18 +12,25 @@ function UndeploySelfWhenHurt:_on_health_changed()
    local player_id = radiant.entities.get_player_id(self._entity)
    local health = radiant.entities.get_health_percentage(self._entity)
    if health <= 0.2 then
-      local entity_forms_json = radiant.entities.get_json(self._entity:get('stonehearth:entity_forms'))
-      if entity_forms_json then
-         local new_entity = radiant.entities.create_entity(self._entity:get_uri(), { owner = player_id, force_iconic = true })
-         local iconic_entity = new_entity:get('stonehearth:entity_forms'):get_iconic_entity()
-         if iconic_entity then
-            local location = radiant.entities.get_world_grid_location(self._entity)
-            if location then
-               radiant.entities.destroy_entity(self._entity)
-               radiant.terrain.place_entity_at_exact_location(iconic_entity, location)
-               radiant.effects.run_exact_effect(iconic_entity, 'stonehearth:effects:fursplosion_effect')
-            end
-         end
+      local location = radiant.entities.get_world_grid_location(self._entity)
+      local root_form, iconic_form = entity_forms_lib.get_forms(self._entity)
+   
+      local carrying = radiant.entities.get_carrying(self._entity)
+      local items = self._entity:get_component('stonehearth:storage')
+      if carrying then
+         radiant.entities.drop_carrying_on_ground(self._entity, location)
+      end
+      if items then
+         items:drop_all()
+      end
+   
+      if location and iconic_form then
+         radiant.terrain.remove_entity(self._entity)
+         radiant.terrain.place_entity_at_exact_location(iconic_form, location)
+         radiant.effects.run_exact_effect(iconic_form, 'stonehearth:effects:fursplosion_effect')
+   
+         -- reset health and debuffs
+         -- radiant.entities.reset_health(item, true)
       end
    end
 end
