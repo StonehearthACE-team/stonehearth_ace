@@ -8,7 +8,14 @@ function AceAttackRanged:_shoot(attacker, target, weapon_data)
       return
    end
 
-   local projectile_speed = weapon_data.projectile_speed
+   -- save this because it will live on in the closure after the shot action has completed
+   local attack_info = self._attack_info
+
+   if attack_info.projectile_uri then
+      self._projectile_uri = attack_info.projectile_uri
+   end
+
+   local projectile_speed = attack_info.projectile_speed or weapon_data.projectile_speed
    assert(projectile_speed)
    local projectile = self:_create_projectile(attacker, target, projectile_speed, self._projectile_uri)
    local projectile_component = projectile:add_component('stonehearth:projectile')
@@ -17,9 +24,6 @@ function AceAttackRanged:_shoot(attacker, target, weapon_data)
 
    local assault_context = AssaultContext('melee', attacker, target, impact_time)
    stonehearth.combat:begin_assault(assault_context)
-
-   -- save this because it will live on in the closure after the shot action has completed
-   local attack_info = self._attack_info
 
    local impact_trace
    impact_trace = radiant.events.listen(projectile, 'stonehearth:combat:projectile_impact', function()
