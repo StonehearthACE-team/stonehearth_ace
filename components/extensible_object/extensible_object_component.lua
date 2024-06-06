@@ -194,7 +194,7 @@ function ExtensibleObjectComponent:set_extension(rotation_index, length, collisi
 
       if mms then
          mms:get_region():modify(function(cursor)
-               cursor:copy_region(region)
+               cursor:copy_region(collision_region)
                cursor:optimize_by_defragmentation('extensible_object modifier shape')
             end)
       end
