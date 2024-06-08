@@ -55,6 +55,7 @@ local monkey_patches = {
    ace_sound_service = 'stonehearth.services.client.sound.sound_service',
    ace_stairs_tool = 'stonehearth.services.client.building.stairs_tool',
    ace_storage_renderer = 'stonehearth.renderers.storage.storage_renderer',
+   ace_structure_renderer = 'stonehearth.renderers.structure.structure_renderer',
    ace_structure_tool = 'stonehearth.services.client.building.structure_tool',
    ace_subterranean_view_service = 'stonehearth.services.client.subterranean_view.subterranean_view_service',
    ace_temp_building = 'stonehearth.components.building2.temp_building',
