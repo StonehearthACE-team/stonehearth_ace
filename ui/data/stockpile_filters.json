@@ -21,7 +21,13 @@
                "ordinal": 5.1,
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_bones)",
                "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/bones.png",
-               "filter": "stockpile_bone"
+               "filter": "stockpile_bone edible"
+            },
+            "bones_humanoid": {
+               "ordinal": 5.2,
+               "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_bones_humanoid)",
+               "icon": "/stonehearth_ace/ui/game/modes/zones_mode/stockpile/images/taxonomy/bones_humanoid.png",
+               "filter": "stockpile_bone inedible"
             },
             "plant": {
                "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_plant)",
