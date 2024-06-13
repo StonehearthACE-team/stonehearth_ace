@@ -31,7 +31,7 @@ function AceCrafterComponent:restore()
 end
 
 function AceCrafterComponent:set_json(json)
-   if json then 
+   if json then
       if json.repair_effect then
          self._sv.repair_effect = json.repair_effect
       end
@@ -47,8 +47,25 @@ function AceCrafterComponent:activate()
       self:_ace_old_activate()
    end
 
-   if not self._sv._best_crafts then
+   local best_crafts = self._sv._best_crafts
+   if not best_crafts then
       self._sv._best_crafts = {}
+   else
+      -- clear out any duplicate best crafts, just saving the best quality for each uri
+      local best_quality = {}
+      for _, craft in ipairs(best_crafts) do
+         local uri = craft.uri
+         local quality = craft.quality
+         if not best_quality[uri] or best_quality[uri] < quality then
+            best_quality[uri] = quality
+         end
+      end
+
+      local new_best_crafts = {}
+      for uri, quality in pairs(best_quality) do
+         table.insert(new_best_crafts, {uri = uri, quality = quality})
+      end
+      self._sv._best_crafts = new_best_crafts
    end
 end
 
@@ -91,7 +108,7 @@ function AceCrafterComponent:_distribute_all_crafting_ingredients()
                location = town:get_landing_location()
             end
          end
-         
+
          local options = {
             inputs = default_storage,
             spill_fail_items = true,
@@ -176,10 +193,19 @@ end
 
 function AceCrafterComponent:_update_best_crafts(item)
    local quality = radiant.entities.get_item_quality(item)
-   
+
    if quality >= stonehearth.constants.persistence.crafters.MIN_QUALITY_BEST_CRAFTS then
       local best_crafts = self._sv._best_crafts
-      table.insert(best_crafts, {uri = item:get_uri(), quality = quality})
+      local uri = item:get_uri()
+      -- check to see if this uri already exists; if so, just make sure the quality is the max of the two
+      for i = 1, #best_crafts do
+         if best_crafts[i].uri == uri then
+            best_crafts[i].quality = math.max(best_crafts[i].quality, quality)
+            return
+         end
+      end
+
+      table.insert(best_crafts, {uri = uri, quality = quality})
 
       -- if there are more than the directed number of best crafts, remove the oldest lowest quality ones
       local num_stored = stonehearth.constants.persistence.crafters.NUM_BEST_CRAFTS_STORED
