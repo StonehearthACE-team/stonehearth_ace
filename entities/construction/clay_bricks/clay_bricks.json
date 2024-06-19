@@ -8,6 +8,23 @@
             "models": [
                "file(clay_bricks.qb)"
             ]
+         },
+         "standard_clay": {
+            "models": [
+               "file(clay_bricks_standard.qb)"
+            ]
+         },
+         "shale_clay": {
+            "models": [
+               "file(clay_bricks_shale.qb)"
+            ]
+         }
+      },
+      "stonehearth_ace:entity_modification": {
+         "model_variants": {
+            "stonehearth_ace:resources:clay:ball_clay_mound": "default",
+            "stonehearth:resources:clay:clay_mound": "standard_clay",
+            "stonehearth_ace:resources:clay:shale_clay_mound": "shale_clay"
          }
       },
       "mob": {

@@ -308,7 +308,20 @@ App.StonehearthBuildingMaterialListView = App.View.extend({
             material : key,
             style: 'background-image: url(' + materialImage + ')' + '; &:hover { background-image: url(' + hoverImage + ');}',
             title: data ? i18n.t(data.name) : "",
-            tooltip: tooltipKey !== null ? i18n.t(tooltipKey) : ""
+            tooltip: tooltipKey !== null ? i18n.t(tooltipKey) : "",
+            ordinal: data ? data.ordinal : 99
+         });
+
+         resources.sort((a, b) => {
+            if (a.ordinal != null && b.ordinal != null) {
+               return a.ordinal - b.ordinal;
+            }
+            else if (a.ordinal != null) {
+               return -1;
+            }
+            else if (b.ordinal != null) {
+               return 1;
+            }
          });
       });
 

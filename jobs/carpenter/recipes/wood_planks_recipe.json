@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "effort": 18,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.wood_planks_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.wood_planks_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.wood_planks_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/wood_planks/wood_planks.png",
+   "workshop": "stonehearth:carpenter:workbench",
+   "level_requirement": 2,
+   "proficiency_gain": 0.5,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:wood_planks",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "wood resource"
+      }
+   ]
+}

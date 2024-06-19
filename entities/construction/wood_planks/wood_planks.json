@@ -1,0 +1,182 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.091
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(wood_planks.qb)"
+            ]
+         },
+         "acacia_log": {
+            "models": [
+               "file(wood_planks_acacia.qb)"
+            ]
+         },
+         "cactus_log": {
+            "models": [
+               "file(wood_planks_cactus.qb)"
+            ]
+         },
+         "juniper_log": {
+            "models": [
+               "file(wood_planks_juniper.qb)"
+            ]
+         },
+         "palm_log": {
+            "models": [
+               "file(wood_planks_palm.qb)"
+            ]
+         },
+         "pine_log": {
+            "models": [
+               "file(wood_planks_pine.qb)"
+            ]
+         },
+         "almond_log": {
+            "models": [
+               "file(wood_planks_almond.qb)"
+            ]
+         },
+         "apple_log": {
+            "models": [
+               "file(wood_planks_apple.qb)"
+            ]
+         },
+         "bamboo_log": {
+            "models": [
+               "file(wood_planks_bamboo.qb)"
+            ]
+         },
+         "birch_log": {
+            "models": [
+               "file(wood_planks_birch.qb)"
+            ]
+         },
+         "chestnut_log": {
+            "models": [
+               "file(wood_planks_chestnut.qb)"
+            ]
+         },
+         "date_log": {
+            "models": [
+               "file(wood_planks_date.qb)"
+            ]
+         },
+         "hazelnut_log": {
+            "models": [
+               "file(wood_planks_hazel.qb)"
+            ]
+         },
+         "highland_pine_log": {
+            "models": [
+               "file(wood_planks_highland_pine.qb)"
+            ]
+         },
+         "old_wood_log": {
+            "models": [
+               "file(wood_planks_old_wood.qb)"
+            ]
+         },
+         "parana_pine_log": {
+            "models": [
+               "file(wood_planks_parana_pine.qb)"
+            ]
+         },
+         "pear_log": {
+            "models": [
+               "file(wood_planks_pear.qb)"
+            ]
+         },
+         "plum_log": {
+            "models": [
+               "file(wood_planks_plum.qb)"
+            ]
+         },
+         "spruce_log": {
+            "models": [
+               "file(wood_planks_spruce.qb)"
+            ]
+         },
+         "walnut_log": {
+            "models": [
+               "file(wood_planks_walnut.qb)"
+            ]
+         },
+         "willow_log": {
+            "models": [
+               "file(wood_planks_willow.qb)"
+            ]
+         },
+         "yew_log": {
+            "models": [
+               "file(wood_planks_yew.qb)"
+            ]
+         }
+      },
+      "stonehearth_ace:entity_modification": {
+         "model_variants": {
+            "stonehearth:resources:wood:oak_log": "default",
+            "stonehearth:resources:wood:acacia_log": "acacia_log",
+            "stonehearth:resources:wood:cactus_log": "cactus_log",
+            "stonehearth:resources:wood:juniper_log": "juniper_log",
+            "stonehearth:resources:wood:palm_log": "palm_log",
+            "stonehearth:resources:wood:pine_log": "pine_log",
+            "stonehearth_ace:resources:wood:almond_log": "almond_log",
+            "stonehearth_ace:resources:wood:apple_log": "apple_log",
+            "stonehearth_ace:resources:wood:bamboo_log": "bamboo_log",
+            "stonehearth_ace:resources:wood:birch_log": "birch_log",
+            "stonehearth_ace:resources:wood:chestnut_log": "chestnut_log",
+            "stonehearth_ace:resources:wood:date_log": "date_log",
+            "stonehearth_ace:resources:wood:hazelnut_log": "hazelnut_log",
+            "stonehearth_ace:resources:wood:highland_pine_log": "highland_pine_log",
+            "stonehearth_ace:resources:wood:old_wood_log": "old_wood_log",
+            "stonehearth_ace:resources:wood:parana_pine_log": "parana_pine_log",
+            "stonehearth_ace:resources:wood:pear_log": "pear_log",
+            "stonehearth_ace:resources:wood:plum_log": "plum_log",
+            "stonehearth_ace:resources:wood:spruce_log": "spruce_log",
+            "stonehearth_ace:resources:wood:walnut_log": "walnut_log",
+            "stonehearth_ace:resources:wood:willow_log": "willow_log",
+            "stonehearth_ace:resources:wood:yew_log": "yew_log"
+         }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 100
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0.05, "z": 0 },
+         "region_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 3,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.wood_planks.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.wood_planks.description)",
+         "icon": "file(wood_planks.png)",
+         "is_item": true,
+         "category": "refined",
+         "material_tags": [
+            "stockpile_wood",
+            "wood_planks",
+            "resource",
+            "building_material"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 3
+      }
+   }
+}

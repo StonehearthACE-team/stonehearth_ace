@@ -17,6 +17,18 @@
 				}
 			}
 		},
+		"refined": {
+			"ordinal": 15,
+         "name": "i18n(stonehearth_ace:jobs.carpenter.recipes.refined_name)",
+         "recipes": {
+				"bundle_of_firewood": {
+					"recipe": "file(bundle_of_firewood_recipe.json)"
+				},
+            "wood_planks": {
+               "recipe": "file(wood_planks_recipe.json)"
+            }
+         }
+      },
 		"storage": {
 			"recipes": {
 				"mixintypes": {
@@ -179,9 +191,6 @@
 				},
 				"training_target": {
 					"recipe": "file(training_target_recipe.json)"
-				},
-				"bundle_of_firewood": {
-					"recipe": "file(bundle_of_firewood_recipe.json)"
 				},
 				"food_trough_wood": {
 					"recipe": "file(food_trough_wood_recipe.json)"

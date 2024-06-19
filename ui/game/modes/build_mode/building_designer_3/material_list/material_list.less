@@ -1,8 +1,24 @@
 #materialRoot {
+
+   #brushes {
+      margin-left: 1px;
+      width: 330px;
+
+      .brushPalette {
+         max-height: 250px;
+      }
+   }
+
    #brushRoot {
       #brushContents {
          #buildingResources {
+            overflow-y: auto;
             vertical-align: bottom;
+            width: 98px;
+
+            .resource {
+               display: inline-block;
+            }
          }
       }
    }

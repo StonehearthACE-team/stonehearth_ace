@@ -1,0 +1,25 @@
+{
+   "type": "recipe",
+   "effort": 25,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.stone_blocks_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.stone_blocks_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.stone_blocks_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/stone_blocks/stone_blocks.png",
+   "workshop": "stonehearth:mason:workbench",
+   "level_requirement": 2,
+   "proficiency_gain": 0.5,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:construction:stone_blocks",
+         "produce_scripts": ["stonehearth_ace:craft_script:material_model_variant"],
+         "model_variant_material": "stone resource"
+      }
+   ]
+}

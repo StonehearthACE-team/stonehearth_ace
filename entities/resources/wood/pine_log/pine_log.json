@@ -1,9 +1,21 @@
 {
    "type": "entity",
+   "components": {
+		"mixintypes": {
+			"model_variants": "override"
+		},
+		"model_variants": {
+			"default": {
+				"models": [
+					"file(pine_log.qb)"
+				]
+			}
+		}
+	},
    "entity_data": {
       "stonehearth:catalog": {
          "icon": "file(pine_log.png)",
-		 "material_tags":["stockpile_wood", "wood", "low_fuel", "any_fuel", "common_fuel", "building_material", "resource"]
+         "material_tags":["stockpile_wood", "wood", "low_fuel", "any_fuel", "common_fuel", "building_material", "resource"]
       },
       "stonehearth_ace:fuel": {
          "fuel_amount": 3

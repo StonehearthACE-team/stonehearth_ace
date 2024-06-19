@@ -4,6 +4,54 @@
       "stonehearth_ace:data:resource_constants:item_types"
    ],
    "resources": {
+      "wood_planks resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.wood_planks_resource_name)",
+         "icon": "/stonehearth_ace/entities/construction/wood_planks/wood_planks.png",
+         "stacks": 100,
+         "default_resource": "stonehearth_ace:construction:wood_planks",
+         "builder_icon": "/stonehearth_ace/entities/construction/wood_planks/builder_wood_planks.png",
+         "builder_icon_hover": "/stonehearth_ace/entities/construction/wood_planks/builder_wood_planks_hover.png",
+         "builder_sound_uri": "stonehearth_ace:sounds:building_wall_wood_planks",
+         "tooltip": "i18n(stonehearth_ace:ui.game.build_mode2.tooltips.wood_planks_resource)",
+         "category": "resources",
+         "ordinal": 2
+      },
+      "stone_blocks resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.stone_blocks_resource_name)",
+         "icon": "/stonehearth_ace/entities/construction/stone_blocks/stone_blocks.png",
+         "stacks": 80,
+         "default_resource": "stonehearth_ace:construction:stone_blocks",
+         "builder_icon": "/stonehearth_ace/entities/construction/stone_blocks/builder_stone_blocks.png",
+         "builder_icon_hover": "/stonehearth_ace/entities/construction/stone_blocks/builder_stone_blocks_hover.png",
+         "builder_sound_uri": "stonehearth_ace:sounds:building_wall_stone_blocks",
+         "tooltip": "i18n(stonehearth_ace:ui.game.build_mode2.tooltips.stone_blocks_resource)",
+         "category": "resources_mineral",
+         "ordinal": 4
+      },
+      "stone marble resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.stone_marble_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/stone/marble_stone/marble_stone.png",
+         "stacks": 60,
+         "default_resource": "stonehearth_ace:resources:stone:marble_stone",
+         "builder_icon": "/stonehearth_ace/entities/resources/stone/marble_stone/builder_marble_stone.png",
+         "builder_icon_hover": "/stonehearth_ace/entities/resources/stone/marble_stone/builder_marble_stone_hover.png",
+         "builder_sound_uri": "stonehearth_ace:sounds:building_wall_stone_bedrock",
+         "tooltip": "i18n(stonehearth_ace:ui.game.build_mode2.tooltips.stone_marble_resource)",
+         "category": "resources_mineral",
+         "ordinal": 7
+      },
+      "stone bedrock resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.stone_bedrock_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/stone/bedrock_stone/bedrock_stone.png",
+         "stacks": 60,
+         "default_resource": "stonehearth_ace:resources:stone:bedrock_stone",
+         "builder_icon": "/stonehearth_ace/entities/resources/stone/bedrock_stone/builder_bedrock_stone.png",
+         "builder_icon_hover": "/stonehearth_ace/entities/resources/stone/bedrock_stone/builder_bedrock_stone_hover.png",
+         "builder_sound_uri": "stonehearth_ace:sounds:building_wall_stone_marble",
+         "tooltip": "i18n(stonehearth_ace:ui.game.build_mode2.tooltips.stone_bedrock_resource)",
+         "category": "resources_mineral",
+         "ordinal": 8
+      },
       "thatch resource": {
          "name": "i18n(stonehearth_ace:ui.data.constants.thatch_resource_name)",
          "icon": "/stonehearth_ace/entities/resources/thatch_bale/thatch_resource.png",
@@ -13,15 +61,18 @@
          "builder_icon_hover": "/stonehearth_ace/entities/resources/thatch_bale/builder_thatch_hover.png",
          "builder_sound_uri": "stonehearth_ace:sounds:building_wall_thatch",
          "tooltip": "i18n(stonehearth_ace:ui.game.build_mode2.tooltips.thatch_resource)",
-         "category": "resources"
+         "category": "resources",
+         "ordinal": 6
       },
       "wood resource": {
          "icon": "/stonehearth_ace/entities/resources/wood/wood_icon.png",
-         "category": "resources"
+         "category": "resources",
+         "ordinal": 1
       },
       "stone resource": {
          "icon": "/stonehearth_ace/entities/resources/stone/stone_icon.png",
-         "category": "resources_mineral"
+         "category": "resources_mineral",
+         "ordinal": 3
       },
       "clay resource": {
          "icon": "/stonehearth_ace/entities/resources/clay/clay_icon.png",
@@ -32,7 +83,8 @@
          "builder_icon": "/stonehearth_ace/entities/resources/clay/builder_clay_bricks.png",
          "builder_icon_hover": "/stonehearth_ace/entities/resources/clay/builder_clay_bricks_hover.png",
          "tooltip": "i18n(stonehearth_ace:ui.game.build_mode2.tooltips.clay_bricks_resource)",
-         "category": "resources_mineral"
+         "category": "resources_mineral",
+         "ordinal": 5
       },
       "thread resource": {
          "name": "i18n(stonehearth_ace:ui.data.constants.thread_resource_name)",

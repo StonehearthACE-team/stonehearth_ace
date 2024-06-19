@@ -1,0 +1,81 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "render_info": {
+         "scale": 0.095
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(stone_blocks.qb)"
+            ]
+         },
+         "sandstone_stone": {
+            "models": [
+               "file(stone_blocks_sandstone.qb)"
+            ]
+         },
+         "slate_stone": {
+            "models": [
+               "file(stone_blocks_slate.qb)"
+            ]
+         },
+         "limestone_stone": {
+            "models": [
+               "file(stone_blocks_limestone.qb)"
+            ]
+         },
+         "feldspar_stone": {
+            "models": [
+               "file(stone_blocks_feldspar.qb)"
+            ]
+         },
+         "shale_clay": {
+            "models": [
+               "file(stone_blocks_shale.qb)"
+            ]
+         }
+      },
+      "stonehearth_ace:entity_modification": {
+         "model_variants": {
+            "stonehearth:resources:stone:hunk_of_stone": "default",
+            "stonehearth_ace:resources:stone:sandstone_stone": "sandstone_stone",
+            "stonehearth_ace:resources:stone:slate_stone": "slate_stone",
+            "stonehearth_ace:resources:stone:limestone_stone": "limestone_stone",
+            "stonehearth_ace:resources:clay:shale_clay_mound": "shale_clay"
+         }
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 80
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 6,
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.construction.stone_blocks.display_name)",
+         "description": "i18n(stonehearth_ace:entities.construction.stone_blocks.description)",
+         "icon": "file(stone_blocks.png)",
+         "is_item": true,
+         "category": "resources",
+         "material_tags": [
+            "stockpile_stone",
+            "stone_blocks",
+            "resource",
+            "building_material"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      }
+   }
+}
