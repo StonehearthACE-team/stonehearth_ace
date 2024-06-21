@@ -107,8 +107,12 @@ App.StonehearthBuildingMaterialListView = App.View.extend({
       var self = this;
 
       self.$('.brush').each(function() {
-         var tooltipString = $(this).attr('tooltip');
-         $(this).tooltipster({content: tooltipString});
+          var tooltipString = $(this).attr('tooltip');
+          var tooltipContent = $('<div></div>').html(tooltipString);  // Create a div and set its content to the tooltip string
+          $(this).tooltipster({
+              content: tooltipContent,
+              contentAsHTML: true
+          });
       });
    },
 
@@ -135,11 +139,15 @@ App.StonehearthBuildingMaterialListView = App.View.extend({
    _updateMaterialListTooltips: function() {
       var self = this;
 
-      self.$('.resource').each(function() {
-         var tooltipString = $(this).attr('tooltip');
-         $(this).tooltipster({content: tooltipString});
+      self.$('.brush').each(function() {
+          var tooltipString = $(this).attr('tooltip');
+          var tooltipContent = $('<div></div>').html(tooltipString);  // Create a div and set its content to the tooltip string
+          $(this).tooltipster({
+              content: tooltipContent,
+              contentAsHTML: true
+          });
       });
-   },
+  },
 
    _onSelectionChange: function() {
       var self = this;
