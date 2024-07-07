@@ -39,6 +39,7 @@ function VineRenderer:initialize(render_entity, datastore)
 end
 
 function VineRenderer:destroy()
+   self:_destroy_vine_nodes()
    if self._node then
       self._node:destroy()
       self._node = nil
