@@ -39,7 +39,8 @@ function VineRenderer:initialize(render_entity, datastore)
 end
 
 function VineRenderer:destroy()
-   self:_destroy_vine_nodes()
+   self._selected = nil
+   self:_update_group_highlights()
    if self._node then
       self._node:destroy()
       self._node = nil
@@ -99,25 +100,21 @@ end
 
 function VineRenderer:_update_group_highlights()
    local vines = self._vine_group_data and self._vine_group_data.vines
-   if not vines then
-      return
-   end
-
    local should_highlight = self._selected and self._highlight_vine_group
-
-   -- go through all the vines and hilight them if they
-   -- are not already hilighted.
-   for id, vine in pairs(vines) do
-      local needs_hilight = should_highlight and not self._highlighted_vines[id]
-      if needs_hilight then
-         local hilight_request = stonehearth.hilight:hilight_entity(vine)
-         self._highlighted_vines[id] = hilight_request
+   if vines and should_highlight then
+      -- go through all the vines and hilight them if they
+      -- are not already hilighted.
+      for id, vine in pairs(vines) do
+         if not self._highlighted_vines[id] then
+            local hilight_request = stonehearth.hilight:hilight_entity(vine)
+            self._highlighted_vines[id] = hilight_request
+         end
       end
    end
 
    -- unhilight any vines that are no longer there
    for id, member in pairs(self._highlighted_vines) do
-      local needs_unhilight = not should_highlight or not vines[id]
+      local needs_unhilight = not should_highlight or not vines or not vines[id]
       if needs_unhilight then
          local hilight_request = self._highlighted_vines[id]
          self._highlighted_vines[id] = nil
