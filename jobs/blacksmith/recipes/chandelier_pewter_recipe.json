@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 32,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.chandelier_pewter_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.chandelier_pewter_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.chandelier_pewter_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/chandelier_pewter/chandelier_pewter.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:tin_ingot",
+         "count": 3
+      },
+		{
+         "uri": "stonehearth:refined:copper_ingot",
+         "count": 2
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:chandelier_pewter"
+      }
+   ]
+}

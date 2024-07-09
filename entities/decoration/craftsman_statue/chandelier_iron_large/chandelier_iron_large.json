@@ -1,0 +1,73 @@
+{
+   "type": "entity",
+   "mixins": "file(chandelier_iron_large_ghost.json)",
+   "components": {
+      "model_variants": {
+         "extended": {
+            "models": [
+               "file(chandelier_iron_large_extended.qb)"
+            ]
+         }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "region_collision_type": "none"
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": -4, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(chandelier_iron_large_iconic.json)",
+         "ghost_form": "file(chandelier_iron_large_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:extensible_object": {
+         "extend_command": "stonehearth_ace:commands:extensible_object:extend",
+         "remove_command": "stonehearth_ace:commands:extensible_object:remove",
+         "extension_entity": "stonehearth_ace:extensible_object:avoid_extension",
+         "end_entity": "stonehearth_ace:decoration:craftsman_statue:chandelier_iron_large:end",
+         "max_length": 12,
+         "matrix": [
+            "chainA",
+            "chainB",
+            "chainC"
+         ],
+         "multi_matrix_mode": "sequential",
+         "extended_model_variant": true,
+         "rotations": [
+            {
+               "dimension": "y",
+               "direction": { "x": 0, "y": -1, "z": 0 },
+               "model": "file(chandelier_iron_large_extension.qb)",
+               "offset": { "x": 2, "y": 10, "z": 2 },
+               "origin": { "x": 0, "y": -2, "z": 0 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 110,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 85
+      }
+   }
+}
