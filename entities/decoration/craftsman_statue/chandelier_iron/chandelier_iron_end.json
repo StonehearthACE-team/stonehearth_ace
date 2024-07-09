@@ -1,0 +1,55 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(chandelier_iron.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -1, "y": -2, "z": -1 },
+               "max": { "x": 2, "y": 0, "z": 2 }
+            }
+         ],
+         "region_collision_type": "solid"
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "stonehearth:lamp": {
+         "light_effect": "stonehearth_ace:effects:chandelier_iron",
+         "light_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.chandelier_iron.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.chandelier_iron.end_description)"
+      },
+      "navgrid": {
+         "ignore_gravity": true,
+         "has_physics": false
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 12
+      }
+   }
+}

@@ -11625,6 +11625,11 @@
                "description": "A decorated five-point pewter candle holder.",
                "flavor": "Butler Belltower, in the library, with the candelabra!"
             },
+            "chandelier_pewter_recipe": {
+               "recipe_name": "Pewter Chandelier",
+               "description": "A beautiful, eight-point ceiling piece to lighten your halls.",
+               "flavor": "Chandeliers must be placed from above. Once placed, click it to extend it downwards!"
+            },
             "sign_blacksmith_recipe": {
                "description": "An iron-forged sign, to be displayed outside a Blacksmith's workshop."
             },
@@ -11636,6 +11641,16 @@
                   "recipe_name": "Iron Table Candelabra",
                   "description": "A very beautiful five-point iron candle holder.",
                   "flavor": ""
+               },
+               "chandelier_iron_recipe": {
+                  "recipe_name": "Iron Chandelier",
+                  "description": "A fancy and valuable eight-point iron candle holder held from the ceiling.",
+                  "flavor": "Chandeliers must be placed from above. Once placed, click it to extend it downwards!"
+               },
+               "chandelier_iron_large_recipe": {
+                  "recipe_name": "Iron Grand Chandelier",
+                  "description": "An incredibly exquisite piece of decoration with twenty candles on two levels.",
+                  "flavor": "Chandeliers must be placed from above. Once placed, click it to extend it downwards!"
                }
             },
             "hunk_of_hard_coal_pile_recipe": {
@@ -12854,6 +12869,11 @@
             },
             "shepherds_crook_recipe": {
                "flavor": "Can you tell me another story about The Shepherd?"
+            },
+            "chandelier_wood_recipe": {
+               "recipe_name": "Wooden Simple Chandelier",
+               "description": "A simple yet pretty wooden candle holder held from the ceiling.",
+               "flavor": "Chandeliers must be placed from above. Once placed, click it to extend it downwards!"
             },
             "wood_candle_holder_recipe": {
                "recipe_name": "Wooden Table Candle Holder",
@@ -20826,6 +20846,26 @@
          "dynasty_gong": {
             "display_name": "Dynasty Gong",
             "description": "A beautiful and ornate gong from the far east capable of bringing the tunes from its land..."
+         },
+         "chandelier_wood": {
+            "display_name": "Wooden Simple Chandelier",
+            "description": "Pretty sure that rope is a fire hazard... Oh, well.",
+            "end_description": "Simple and elegant at the same time! Click on the rope to retract it."
+         },
+         "chandelier_iron": {
+            "display_name": "Iron Chandelier",
+            "description": "A beautiful light source for any fashionable hallway.",
+            "end_description": "A bit scary to be underneath it... Click on the chain to retract it."
+         },
+         "chandelier_iron_large": {
+            "display_name": "Iron Grand Chandelier",
+            "description": "No grand feast is complete without a grander chandelier!",
+            "end_description": "I wonder who climbs there to light all these... Click on the chain to retract it."
+         },
+         "chandelier_pewter": {
+            "display_name": "Pewter Chandelier",
+            "description": "An exquisite piece to complete an exquisite room.",
+            "end_description": "A fine ornament to behold. Click on the chain to retract it."
          }
       },
       "pets": {

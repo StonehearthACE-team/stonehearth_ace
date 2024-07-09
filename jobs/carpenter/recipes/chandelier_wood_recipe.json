@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 24,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.chandelier_wood_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.chandelier_wood_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.chandelier_wood_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/chandelier_wood/chandelier_wood.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 3
+      },
+      {
+         "material": "thread resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:chandelier_wood"
+      }
+   ]
+}

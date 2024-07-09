@@ -1,0 +1,55 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(chandelier_wood.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -0.3, "y": -1, "z": -0.3 },
+               "max": { "x": 1.3, "y": 0, "z": 1.3 }
+            }
+         ],
+         "region_collision_type": "solid"
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "stonehearth:lamp": {
+         "light_effect": "stonehearth_ace:effects:chandelier_wood",
+         "light_origin": { "x": 0, "y": 0, "z": 0 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.chandelier_wood.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.chandelier_wood.end_description)"
+      },
+      "navgrid": {
+         "ignore_gravity": true,
+         "has_physics": false
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 12
+      }
+   }
+}

@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(chandelier_iron_large_retracted.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.1
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": -0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.chandelier_iron_large.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.chandelier_iron_large.description)",
+         "icon": "file(chandelier_iron_large.png)",
+         "category": "decoration",
+         "material_tags": [
+            "light_source",
+            "crafted",
+            "iron",
+            "fancy",
+            "chandelier",
+            "candle",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

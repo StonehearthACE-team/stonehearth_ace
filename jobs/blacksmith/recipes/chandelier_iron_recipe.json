@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.blacksmith.recipes.craftsman_statue.chandelier_iron_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.blacksmith.recipes.craftsman_statue.chandelier_iron_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.blacksmith.recipes.craftsman_statue.chandelier_iron_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/craftsman_statue/chandelier_iron/chandelier_iron.png",
+   "workshop": "stonehearth:blacksmith:workbench",
+   "level_requirement": 6,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth:refined:iron_ingot",
+         "count": 5
+      },
+		{
+         "uri": "stonehearth_ace:refined:metal_bits:hard",
+         "count": 1
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:craftsman_statue:chandelier_iron"
+      }
+   ]
+}

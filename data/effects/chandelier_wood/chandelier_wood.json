@@ -1,21 +1,21 @@
 {
    "type": "effect",
    "tracks": {
-      "center tiny_fire": {
+      "center cubemitter_glow": {
          "type": "cubemitter",
-         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/ace_tiny_candle.cubemitter.json",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/lamp/chandelier_small.cubemitter.json",
          "loop": true,
-         "transforms": { "x": 0, "y": 2, "z": 0,
+         "transforms": { "x": 0, "y": -0.1, "z": 0,
             "rx": 90,
             "ry": 0,
             "rz": 0
          }
       },
-      "center cubemitter_glow": {
+      "1 tiny_fire": {
          "type": "cubemitter",
-         "cubemitter": "/stonehearth_ace/data/horde/particles/lamp/candelabra_glow.cubemitter.json",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/ace_tiny_candle.cubemitter.json",
          "loop": true,
-         "transforms": { "x": 0, "y": 1.75, "z": 0,
+         "transforms": { "x": 0.6, "y": -0.1, "z": 0,
             "rx": 90,
             "ry": 0,
             "rz": 0
@@ -25,7 +25,7 @@
          "type": "cubemitter",
          "cubemitter": "/stonehearth_ace/data/horde/particles/fire/ace_tiny_candle.cubemitter.json",
          "loop": true,
-         "transforms": { "x": 0.53, "y": 1.75, "z": 0,
+         "transforms": { "x": -0.6, "y": -0.1, "z": 0,
             "rx": 90,
             "ry": 0,
             "rz": 0
@@ -35,7 +35,7 @@
          "type": "cubemitter",
          "cubemitter": "/stonehearth_ace/data/horde/particles/fire/ace_tiny_candle.cubemitter.json",
          "loop": true,
-         "transforms": { "x": -0.53, "y": 1.75, "z": 0,
+         "transforms": { "x": 0, "y": -0.1, "z": 0.6,
             "rx": 90,
             "ry": 0,
             "rz": 0
@@ -45,17 +45,7 @@
          "type": "cubemitter",
          "cubemitter": "/stonehearth_ace/data/horde/particles/fire/ace_tiny_candle.cubemitter.json",
          "loop": true,
-         "transforms": { "x": 0, "y": 1.75, "z": 0.53,
-            "rx": 90,
-            "ry": 0,
-            "rz": 0
-         }
-      },
-      "5 tiny_fire": {
-         "type": "cubemitter",
-         "cubemitter": "/stonehearth_ace/data/horde/particles/fire/ace_tiny_candle.cubemitter.json",
-         "loop": true,
-         "transforms": { "x": 0, "y": 1.75, "z": -0.53,
+         "transforms": { "x": 0, "y": -0.1, "z": -0.6,
             "rx": 90,
             "ry": 0,
             "rz": 0
@@ -63,8 +53,8 @@
       },
       "light": {
          "type": "light",
-         "light": "/stonehearth_ace/data/horde/animatedlights/lamp/candelabra.animatedlight.json",
-         "transforms": { "x": 0, "y": 2.5, "z": 0 }
+         "light": "/stonehearth_ace/data/horde/animatedlights/lamp/chandelier_small.animatedlight.json",
+         "transforms": { "x": 0, "y": -1, "z": 0 }
       }
    }
 }

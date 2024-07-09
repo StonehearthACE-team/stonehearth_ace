@@ -1,0 +1,72 @@
+{
+   "type": "entity",
+   "mixins": "file(chandelier_pewter_ghost.json)",
+   "components": {
+      "model_variants": {
+         "extended": {
+            "models": [
+               "file(chandelier_pewter_extended.qb)"
+            ]
+         }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "region_collision_type": "none"
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": -4, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(chandelier_pewter_iconic.json)",
+         "ghost_form": "file(chandelier_pewter_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "stonehearth_ace:extensible_object": {
+         "extend_command": "stonehearth_ace:commands:extensible_object:extend",
+         "remove_command": "stonehearth_ace:commands:extensible_object:remove",
+         "extension_entity": "stonehearth_ace:extensible_object:avoid_extension",
+         "end_entity": "stonehearth_ace:decoration:chandelier_pewter:end",
+         "max_length": 6,
+         "matrix": [
+            "chainA",
+            "chainB"
+         ],
+         "multi_matrix_mode": "sequential",
+         "extended_model_variant": true,
+         "rotations": [
+            {
+               "dimension": "y",
+               "direction": { "x": 0, "y": -1, "z": 0 },
+               "model": "file(chandelier_pewter_extension.qb)",
+               "offset": { "x": 2, "y": 10, "z": 2 },
+               "origin": { "x": 0, "y": -2, "z": 0 }
+            }
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 51,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 2,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 30
+      }
+   }
+}

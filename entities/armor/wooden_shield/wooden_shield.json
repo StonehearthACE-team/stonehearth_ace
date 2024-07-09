@@ -1,6 +1,6 @@
 {
    "mixins": [
-      "stonehearth_ace:mixins:armor:light_shield"
+      "stonehearth_ace:mixins:armor:medium_shield"
    ],
    "components": {
       "stonehearth:equipment_piece": {
@@ -18,7 +18,7 @@
          "render_type": "attach_to_bone",
          "equipment_types": [
             "shield",
-            "light_shield"
+            "medium_shield"
          ],
          "injected_buffs": [
             "stonehearth_ace:buffs:shield_medium"
@@ -30,8 +30,8 @@
          "material_tags": [
             "wood",
             "shield",
-            "light_shield",
-            "light_armor",
+            "medium_shield",
+            "medium_armor",
             "crafted",
             "stockpile_equipment"
          ]
