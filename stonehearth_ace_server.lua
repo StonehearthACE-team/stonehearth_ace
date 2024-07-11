@@ -355,7 +355,25 @@ stonehearth_ace:load_version_info()
 radiant.events.listen(stonehearth_ace, 'radiant:init', stonehearth_ace, stonehearth_ace._on_init)
 radiant.events.listen(radiant, 'radiant:required_loaded', stonehearth_ace, stonehearth_ace._on_required_loaded)
 
+local fancy_mod_list = {}
+local fancy_mod_list_clients = {}
+for i, mod in ipairs(radiant.resources.get_mod_list()) do
+   local info = radiant.resources.load_manifest(mod).info
+   if info.client_only then
+      table.insert(fancy_mod_list_clients, {
+         namespace = info.namespace,
+         name = info.name
+      })
+   else
+      table.insert(fancy_mod_list, {
+         namespace = info.namespace,
+         name = info.name
+      })
+   end
+end
 print("Mod List:")
-print(radiant.resources.get_mod_list())
+print(fancy_mod_list)
+print("Client Mod List:")
+print(fancy_mod_list_clients)
 
 return stonehearth_ace
