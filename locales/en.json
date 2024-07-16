@@ -12838,6 +12838,9 @@
                   "description": "Create a casket that can be used as a bed by a hearthling or traveler. The Wooden Casket is a comfortable bed.",
                   "flavor": "Ideal for very, very long rests..."
                }
+            },
+            "wooden_shield_recipe": {
+               "flavor": "Better than an improvised wooden branch!"
             }
          },
          "carpenter_description": {
@@ -22801,6 +22804,11 @@
             "goblin_barricade": {
                "display_name": "Primitive Barricade",
                "description": "Very rustic... And pointy!"
+            },
+            "skull_trophy": {
+               "skull_trophy_ghost": {
+                  "description": "Goblins will likely want this back... And it might have some future use!"
+               }
             }
          },
          "undead": {
@@ -26041,6 +26049,9 @@
          "ancient_armor_fragment": {
             "display_name": "Ancient Armor Fragment",
             "description": "Some would call this junk... But it's clearly a treasure!"
+         },
+         "dusty_tome": {
+            "description": "An ancient text preserving knowledge of the past... Might have some future use!"
          }
       },
       "peoples": {
@@ -28161,6 +28172,39 @@
       },
       "data": {
          "tooltips": {
+            "stamina": {
+               "bullet_points": {
+                  "000": "Each point increases their maximum health by one"
+               }
+            },
+            "inspiration": {
+               "description": "How ingenious and inventive this hearthling is when creating things.",
+               "bullet_points": {
+                  "000": "Alongside the quality of the materials used, Inspiration increases the odds of creating higher quality items",
+                  "001": "A hearthling must be at least a Journeyman to create Fine quality items, and a Master to create Excellent items",
+                  "002": "Creating a Masterwork quality item requires a special town progression unlock"
+               }
+            },
+            "willpower": {
+               "description": "Defines how good this hearthling is at resisting enemy charms, and their will to go on even when under great duress.",
+               "bullet_points": {
+                  "000": "Increases health regeneration",
+                  "001": "Makes them more confident in their recovery when under severe effects or illnesses"
+               }
+            },
+            "courage": {
+               "description": "How brave this hearthling is in the face of danger.",
+               "bullet_points": {
+                  "000": "Determines chance to flee in combat",
+                  "001": "Makes them less likely to panic under very severe weather"
+               }
+            },
+            "muscle": {
+               "bullet_points": {
+                  "000": "Muscle increases attack damage based on the weapon used",
+                  "001": "Some weapons might benefit more from it, like two-handed weapons, while others won't benefit at all, like crossbows"
+               }
+            },
             "compassion": {
                "bullet_points": {
                   "000": "Determines maximum Trapper pet count",
