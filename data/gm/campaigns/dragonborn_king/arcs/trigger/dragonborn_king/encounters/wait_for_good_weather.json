@@ -3,6 +3,17 @@
    "encounter_type": "wait_for_requirements_met",
    "in_edge": "wait_for_good_weather",
    "out_edge": "spawn_friendly_entities",
+   "can_start": {
+      "all_tests": {
+         "no_quests_active": {
+            "type": "deny_if_greater_than",
+            "item": "number_active",
+            "start_node": "spawn_friendly_entities",
+            "end_node": "destroy_tree",
+            "value": 0
+         }
+      }
+   },
    "wait_for_requirements_met_info": {
       "recheck_delay": "1d",
       "requirements": {
