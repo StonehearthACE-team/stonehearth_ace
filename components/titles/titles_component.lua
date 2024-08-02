@@ -282,7 +282,7 @@ function TitlesComponent:_show_bulletin(title, rank)
          zoom_to_entity = self._entity,
          has_character_sheet = is_citizen
       })
-      :set_active_duration('1h')
+      :set_active_duration('4h')
       :add_i18n_data('entity', self._entity)
       --:add_i18n_data('old_name', old_name)
       :add_i18n_data('new_title', title_rank_data)

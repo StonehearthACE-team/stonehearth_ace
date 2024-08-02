@@ -1,0 +1,18 @@
+{
+   "type": "entity",
+   "mixins": [
+      "stonehearth_ace:mixins:decoration:painting:small_portrait",
+      "file(rayyas_mazar_ghost.json)"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(rayyas_mazar_iconic.json)",
+         "ghost_form": "file(rayyas_mazar_ghost.json)"
+      }
+   },
+   "entity_data": {
+      "stonehearth:item_quality": {
+         "author": "Doris2021"
+      }
+   }
+}

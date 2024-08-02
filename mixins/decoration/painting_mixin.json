@@ -1,0 +1,25 @@
+{
+   "components": {
+      "stonehearth:entity_forms": {
+         "placeable_on_walls": true
+      },
+      "region_collision_shape": {
+         "region_collision_type": "none"
+      },
+      "stonehearth:traveler_attraction": {}
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "rarity": "uncommon",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true,
+         "minimum_quality": 2,
+         "author_type": "patron"
+      }
+   }
+}

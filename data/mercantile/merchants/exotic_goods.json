@@ -2423,8 +2423,12 @@
       },
       "fireworks_shop_1": {
          "category": "exotic_goods",
-         "population_role": "merchant_dangalf",
-         "population_gender": "male",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_1_outfit",
+            "stonehearth_ace:outfits:merchant:engineer_outfit:hat"
+         ],
          "min_city_tier": 1,
          "weight": 2,
          "cooldown": 6,
@@ -2480,8 +2484,12 @@
       },
       "fireworks_shop_2": {
          "category": "exotic_goods",
-         "population_role": "merchant_dangalf",
-         "population_gender": "male",
+         "population_role": "merchant",
+         "use_shop_description": true,
+         "equipment": [
+            "stonehearth_ace:outfits:merchant:tier_2_outfit",
+            "stonehearth_ace:outfits:merchant:engineer_outfit:hat"
+         ],
          "min_city_tier": 2,
          "weight": 3,
          "cooldown": 6,

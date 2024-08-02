@@ -689,7 +689,13 @@
                         "fireworks_shop_1": {
                            "shop_info": {
                               "name": "Dangalf's Conjuring of Cheap Tricks",
-                              "title": "A famous wandering wizard walks into town with some fireworks!"
+                              "title": "A merchant on behalf of a famous wizard walks into town with some fireworks!"
+                           }
+                        },
+                        "furnishing_shop_1": {
+                           "shop_info": {
+                              "name": "Creaky & Cranky Repurposed Furnishing Shop",
+                              "title": "A seller of cheap and renovated furnishings has arrived with their wares"
                            }
                         }
                      },
@@ -921,7 +927,7 @@
                         "fireworks_shop_2": {
                            "shop_info": {
                               "name": "Dangalf's Flames of U-Boom!",
-                              "title": "A famous wandering wizard arrives precisely when he means to with some fireworks!"
+                              "title": "A merchant representing a famous wizard rides into town with a cart full of fireworks!"
                            }
                         },
                         "iskender_caravan_recurring": {
@@ -988,6 +994,12 @@
                            "shop_info": {
                               "name": "Goods from a Renowned Shepherd",
                               "title": "A merchant brings animal goods from a thriving town"
+                           }
+                        },
+                        "furnishing_shop_2": {
+                           "shop_info": {
+                              "name": "Bedder Living Furnishing Shop",
+                              "title": "A merchant strides into town with a cart full of comfy furnishings"
                            }
                         }
                      },
@@ -1219,7 +1231,13 @@
                         "fireworks_shop_3": {
                            "shop_info": {
                               "name": "Dangalf's Secret Fires",
-                              "title": "A famous wandering wizard rides into town ahead of a cart full of fireworks!"
+                              "title": "A famous wandering wizard arrives precisely when he means to... With fireworks!"
+                           }
+                        },
+                        "furnishing_shop_3": {
+                           "shop_info": {
+                              "name": "Sofa So Good Furnishing Shop",
+                              "title": "The famous furniture designer Ike Anderson waltz into town with Sofa So Good's latest collections"
                            }
                         }
                      },
@@ -20715,6 +20733,22 @@
             "quaint_farm": {
                "display_name": "Painting (Quaint Farm)",
                "description": "Farmers working golden fields of grain in a sunny day. A very bucolic scene."
+            },
+            "rayyas_mazar": {
+               "display_name": "Painting (Rayya's Mazar)",
+               "description": "A beautiful desert tomb for the Guildmother, carved on the sandstone itself."
+            },
+            "ther_malmass": {
+               "display_name": "Painting (Ther Malmass)",
+               "description": "A lovely and small northern village depicted on a sunny autumn day as it prepares for the winter."
+            },
+            "tomb_king_ember": {
+               "display_name": "Painting (Tomb of King Ember)",
+               "description": "An imposing and admirable structure dug into the rock for the late King Ember."
+            },
+            "cozy_inn": {
+               "display_name": "Painting (The Cozy Inn)",
+               "description": "A very nice and comfortable establishment at the edge of the Royal Road."
             }
          },
          "candledark": {
@@ -26201,6 +26235,10 @@
                "dangalf": {
                   "display_name": "Dangalf",
                   "description": "Fireworks, Dangalf! Fireworks!"
+               },
+               "ike_anderson": {
+                  "display_name": "Ike Anderson",
+                  "description": "Renowed designer and inventor of the instruction manual, here on behalf of Sofa So Good."
                }
             },
             "female": {
@@ -27898,6 +27936,11 @@
             "select_mode_description": "Choose how hearthlings should try to interact with this object."
          },
          "unit_frame": {
+            "created_in": "Created in [str(author_name)]",
+            "painted_by": "Painted by [str(author_name)]",
+            "sculpted_by": "Sculpted by [str(author_name)]",
+            "prepared_by": "Prepared by [str(author_name)]",
+            "patronized_by": "Art patronized by [str(author_name)]",
             "max_healable_health": {
                "tooltip_title": "Wounded!",
                "tooltip_description": "If their health drops below <span class='maxHealableHealth'>[str(max_health)]</span>, it can't be healed above it until they receive medical treatment."

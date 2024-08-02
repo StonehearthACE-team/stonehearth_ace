@@ -62,6 +62,13 @@ end
 -- such items should be filtered out before calling this function
 -- quality parameter can be a number or a table of random quality chances
 function item_quality_lib.apply_quality(item, quality, options)
+   local data = radiant.entities.get_entity_data(item, 'stonehearth:item_quality')
+   options = options or {}
+   
+   if data and data.minimum_quality then
+      options.min_quality = data.minimum_quality
+   end
+
    if type(quality) == 'table' then
       item_quality_lib.apply_random_quality(item, quality, options)
    else

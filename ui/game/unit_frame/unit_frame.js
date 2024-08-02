@@ -1155,7 +1155,15 @@ App.StonehearthUnitFrameView = App.View.extend({
 
          var craftedKey = 'stonehearth:ui.game.unit_frame.crafted_by';
          if (self.get('model.stonehearth:item_quality.author_type') == 'place') {
-            craftedKey = 'stonehearth:ui.game.unit_frame.crafted_in';
+            craftedKey = 'stonehearth_ace:ui.game.unit_frame.created_in';
+         } else if (self.get('model.stonehearth:item_quality.author_type') == 'painter') {
+            craftedKey = 'stonehearth_ace:ui.game.unit_frame.painted_by';
+         } else if (self.get('model.stonehearth:item_quality.author_type') == 'sculptor') {
+            craftedKey = 'stonehearth_ace:ui.game.unit_frame.sculpted_by';
+         } else if (self.get('model.stonehearth:item_quality.author_type') == 'preparer') {
+            craftedKey = 'stonehearth_ace:ui.game.unit_frame.prepared_by';
+         } else if (self.get('model.stonehearth:item_quality.author_type') == 'patron') {
+            craftedKey = 'stonehearth_ace:ui.game.unit_frame.patronized_by';
          }
 
          var authorName = self._getItemAuthor();
