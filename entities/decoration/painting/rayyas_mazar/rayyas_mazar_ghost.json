@@ -1,0 +1,22 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:decoration:painting:small_portrait:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(rayyas_mazar.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.painting.rayyas_mazar.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.painting.rayyas_mazar.description)",
+         "icon": "file(rayyas_mazar.png)"
+      }
+   }
+}

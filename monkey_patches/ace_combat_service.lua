@@ -32,7 +32,7 @@ function AceCombatService:battery(context)
    -- for leash purposes, we care more about the primary target than the attacker of this specific battery
    local enemy = self:get_primary_target(target) or attacker
 
-   if stonehearth.player:is_npc(target) and self:has_leash(target) and not stonehearth.player:is_npc(enemy) then
+   if stonehearth.player:is_npc(target) and self:has_leash(target) and not stonehearth.player:is_npc(enemy) and self:get_main_weapon(target) then
       if health_percent < 0.5 then
          if self:is_leash_unbreakable(target) then
             radiant.entities.add_buff(target, SOFT_RETREATING_BUFF) -- Don't just stand there! Go back to your place!
@@ -41,6 +41,7 @@ function AceCombatService:battery(context)
          end
       else
          -- if we're outside our leash, we should retreat, unless we're panicking, in which case it's pointless to have a leash anymore
+         -- if we don't have a main weapon we're not a fighter and we shouldn't bother about being exploited (i.e.: huntable animals)
          -- if we're inside our leash and our primary target is outside the leash and isn't in range, we should retreat
          -- this is a bit of a cheap hack because we're not bothering to find if there is a location within the leash where we could attack
          -- only if we're already in range; but with a reasonably large leash, this should be good enough, and is a lot faster

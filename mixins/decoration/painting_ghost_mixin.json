@@ -1,0 +1,27 @@
+{
+   "components": {
+      "mob": {
+         "model_origin": { "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      },
+      "render_info": {
+         "scale": 0.05,
+         "color_map": "stonehearth:color_map:gold",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/gold_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "painting",
+            "collectible",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}

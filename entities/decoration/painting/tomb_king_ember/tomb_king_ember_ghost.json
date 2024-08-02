@@ -1,0 +1,22 @@
+{
+   "mixins": [
+      "stonehearth_ace:mixins:decoration:painting:small:ghost",
+      "stonehearth:mixins:placed_object"
+   ],
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(tomb_king_ember.qb)"
+            ]
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.painting.tomb_king_ember.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.painting.tomb_king_ember.description)",
+         "icon": "file(tomb_king_ember.png)"
+      }
+   }
+}

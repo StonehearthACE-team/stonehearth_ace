@@ -151,7 +151,7 @@ function AceCrafterComponent:produce_crafted_item(product_uri, recipe, ingredien
          local town = stonehearth.town:get_town(self._entity:get_player_id())
          options = {author = town and town:get_town_name(), author_type = 'place'}
       else
-         options = {author = self._entity, author_type = 'person'}
+         options = {author = self._entity, author_type = self:_determine_author_type(product_uri)}
       end
       item_quality_lib.apply_quality(item, quality, options)
       --item:add_component('stonehearth:item_quality'):initialize_quality(quality, self._entity, 'person')
@@ -185,6 +185,20 @@ function AceCrafterComponent:_calculate_quality(recipe_category, ingredient_qual
    end
    local output_quality = item_quality_lib.get_quality(quality_table)
    return output_quality
+end
+
+function AceCrafterComponent:_determine_author_type(product_uri)
+   local author_type = nil
+
+   if radiant.entities.get_entity_data(product_uri, 'stonehearth:food_container', false) or radiant.entities.get_entity_data(product_uri, 'stonehearth_ace:drink_container', false) then
+      author_type = 'preparer'
+   elseif stonehearth.catalog:is_material(product_uri, 'statue') then
+      author_type = 'sculptor'
+   elseif stonehearth.catalog:is_material(product_uri, 'painting') then
+      author_type = 'painter'
+   end
+
+   return author_type
 end
 
 function AceCrafterComponent:get_best_crafts()
