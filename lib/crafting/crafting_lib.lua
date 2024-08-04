@@ -66,11 +66,15 @@ function crafting_lib.craft_items(ai, crafter, workshop, recipe, ingredients, in
          -- if the item has any extra scripts to run, do those now
          local all_products = {}
          local extra_products = {}
+         local scripts = {}
          if product.produce_scripts then
             for _, produce_script in ipairs(product.produce_scripts) do
                local script = radiant.mods.load_script(produce_script)
-               if script and script.on_craft then
-                  script.on_craft(ai, crafter, workshop, recipe, ingredients, product, item, extra_products)
+               if script then
+                  table.insert(scripts, script)
+                  if script.on_craft then
+                     script.on_craft(ai, crafter, workshop, recipe, ingredients, product, item, extra_products)
+                  end
                end
             end
          end
@@ -120,6 +124,12 @@ function crafting_lib.craft_items(ai, crafter, workshop, recipe, ingredients, in
             radiant.log.write('crafter', 5, 'Making item %s with id %s', item, item:get_id())
          else
             radiant.log.write('crafter', 5, 'Making item %s failed', product_uri)
+         end
+
+         for _, script in ipairs(scripts) do
+            if script.post_craft then
+               script.post_craft(ai, crafter, workshop, recipe, all_products)
+            end
          end
 
          --send event that the crafter has finished an item
