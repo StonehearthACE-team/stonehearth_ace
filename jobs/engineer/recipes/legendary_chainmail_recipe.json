@@ -26,7 +26,10 @@
    ],
    "produces": [
       {
-         "item": "stonehearth_ace:refined:legendary:chainmail"
+         "item": "stonehearth_ace:refined:legendary:chainmail",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:celebrate_effect"
+         ]
       }
    ]
 }

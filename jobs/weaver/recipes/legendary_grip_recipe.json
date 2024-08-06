@@ -1,3 +1,14 @@
 {
-   "proficiency_gain": 5
+   "proficiency_gain": 5,
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth:refined:legendary:grip",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:celebrate_effect"
+         ]
+      }
+   ]
 }

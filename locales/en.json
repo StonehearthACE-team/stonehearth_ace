@@ -28083,6 +28083,9 @@
             "title": "Entity Info"
          },
          "bulletin": {
+            "legendary_craft_bulletin": {
+               "title": "Legendary! [str(i18n_data.crafter.stonehearth:unit_info.custom_name)] just finished crafting [str(i18n_data.recipe)]!"
+            },
             "achievement_acquired_bulletin": {
                "new_title": {
                   "title": "[str(i18n_data.entity.stonehearth:unit_info.custom_name)] has achieved a new Title!",
@@ -28261,6 +28264,8 @@
                "auto_craft_recipe_dependencies_description": "When crafting an item, crafters will check the town inventory to see if there are sufficient ingredients to use. If not, they will queue up orders for enough ingredients to fulfill the original order.",
                "auto_craft_killed_items": "Auto Queue Killed Item Crafts",
                "auto_craft_killed_items_description": "When an item you own is killed — like a door, a training dummy, or a siege weapon — queue a craft order for a new one.",
+               "show_legendary_craft_notification": "Show notifications for Crafted Legendary Items",
+               "show_legendary_craft_notification_description": "When a crafter finishes crafting a Legendary recipe that is not an ingredient or component - like a weapon or armor - display a notification highlighting the author and what was crafted.",
                "auto_queue_medicine": "Auto Queue Required Healing Item Crafts",
                "auto_queue_medicine_description": "When a hearthling receives a wound or a negative condition that can be treated with a specific item, queue a craft order for that item unless your town already has it.",
                "update_maintain_orders": "Update Maintain Orders",

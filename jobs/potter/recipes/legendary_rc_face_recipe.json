@@ -2,7 +2,8 @@
    "work_effect": "work_wait",
    "proficiency_gain": 5,
    "mixintypes": {
-	  "ingredients": "override"
+	  "ingredients": "override",
+     "produces": "override"
    },
    "ingredients": [
       {
@@ -24,6 +25,14 @@
       {
          "uri": "stonehearth:refined:iron_ingot",
          "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "rayyas_children:refined:legendary:rc_face",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:celebrate_effect"
+         ]
       }
    ]
 }

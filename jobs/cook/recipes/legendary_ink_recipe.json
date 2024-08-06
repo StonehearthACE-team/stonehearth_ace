@@ -34,7 +34,10 @@
    ],
    "produces": [
       {
-         "item": "stonehearth_ace:refined:legendary:ink"
+         "item": "stonehearth_ace:refined:legendary:ink",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:celebrate_effect"
+         ]
       }
    ]
 }

@@ -30,7 +30,10 @@
    ],
    "produces": [
       {
-         "item": "stonehearth_ace:refined:legendary:parchment"
+         "item": "stonehearth_ace:refined:legendary:parchment",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:celebrate_effect"
+         ]
       }
    ]
 }

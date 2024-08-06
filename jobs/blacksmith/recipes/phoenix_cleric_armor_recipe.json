@@ -34,7 +34,11 @@
    ],
    "produces": [
       {
-         "item": "stonehearth_ace:armor:phoenix_cleric_armor"
+         "item": "stonehearth_ace:armor:phoenix_cleric_armor",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:fancy_effect",
+            "stonehearth_ace:craft_script:legendary_effect"
+         ]
       }
    ]
 }

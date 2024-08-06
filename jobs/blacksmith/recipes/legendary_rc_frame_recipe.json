@@ -1,4 +1,15 @@
 {
    "workshop": "stonehearth_ace:blacksmith:forge_advanced",
-   "proficiency_gain": 5
+   "proficiency_gain": 5,
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "rayyas_children:refined:legendary:rc_frame",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:celebrate_effect"
+         ]
+      }
+   ]
 }
