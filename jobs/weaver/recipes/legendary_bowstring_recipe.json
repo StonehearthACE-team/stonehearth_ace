@@ -1,4 +1,15 @@
 {   
    "proficiency_gain": 5,
-   "portrait": "/stonehearth_ace/entities/refined/legendary_bowstring/legendary_bowstring.png"
+   "portrait": "/stonehearth_ace/entities/refined/legendary_bowstring/legendary_bowstring.png",
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth:refined:legendary:bowstring",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:celebrate_effect"
+         ]
+      }
+   ]
 }

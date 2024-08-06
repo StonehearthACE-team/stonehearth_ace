@@ -30,7 +30,11 @@
    ],
    "produces": [
       {
-         "item": "stonehearth_ace:armor:legendary:hood"
+         "item": "stonehearth_ace:armor:legendary:hood",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:fancy_effect",
+            "stonehearth_ace:craft_script:legendary_effect"
+         ]
       }
    ]
 }

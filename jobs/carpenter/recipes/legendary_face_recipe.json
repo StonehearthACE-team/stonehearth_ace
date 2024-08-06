@@ -1,4 +1,15 @@
 {
    "portrait": "/stonehearth_ace/entities/refined/legendary_face/legendary_face.png",
-   "proficiency_gain": 5
+   "proficiency_gain": 5,
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "stonehearth:refined:legendary:face",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:celebrate_effect"
+         ]
+      }
+   ]
 }

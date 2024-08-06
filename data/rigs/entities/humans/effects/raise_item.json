@@ -1,0 +1,64 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "grab_item": {
+         "type": "attach_item_effect",
+         "start_time": 0,
+         "end_time": 0,
+         "item_in_slot": "carry",
+         "bone": "carry"
+      },
+      "animation" : {
+         "type": "animation_effect",
+         "start_time": 0,
+         "speed": 0.75,
+         "animation": "raise_item.json",
+         "loop": false
+      },
+      "music": {
+         "type": "sound_effect",
+         "loop" : false,
+         "start_time": 0,
+         "min_distance": 30,
+         "falloff" : 3.15,
+         "volume" : 75,
+         "track" : "stonehearth_ace:sounds:legacy_kingdom:legendary"
+      },
+      "radiating": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/legendary/legendary_radiating.cubemitter.json",
+         "start_time": 0,
+         "end_time": 6050,
+         "transforms": { "x": 0, "y": 1.5, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "carry"
+      },
+      "glint": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/legendary/legendary_glint.cubemitter.json",
+         "start_time": 0,
+         "end_time": 6050,
+         "transforms": { "x": 0, "y": 1.5, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "carry"
+      },
+      "ray": {
+         "type": "cubemitter",
+         "cubemitter": "/stonehearth_ace/data/horde/particles/legendary/legendary_rays.cubemitter.json",
+         "start_time": 0,
+         "end_time": 6050,
+         "transforms": { "x": 0, "y": 1.5, "z": 0,
+            "rx": 0,
+            "ry": 0,
+            "rz": 0
+         },
+         "bone": "carry"
+      }
+   }
+}

@@ -26,7 +26,10 @@
    ],
    "produces": [
       {
-         "item": "stonehearth_ace:refined:legendary:buckle"
+         "item": "stonehearth_ace:refined:legendary:buckle",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:celebrate_effect"
+         ]
       }
    ]
 }

@@ -34,7 +34,11 @@
    ],
    "produces": [
       {
-         "item": "stonehearth_ace:weapons:legendary:mace"
+         "item": "stonehearth_ace:weapons:legendary:mace",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:fancy_effect",
+            "stonehearth_ace:craft_script:legendary_effect"
+         ]
       }
    ]
 }

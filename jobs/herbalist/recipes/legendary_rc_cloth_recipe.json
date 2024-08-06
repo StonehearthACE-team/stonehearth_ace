@@ -1,7 +1,8 @@
 {
    "proficiency_gain": 5,
    "mixintypes": {
-      "ingredients": "override"
+      "ingredients": "override",
+      "produces": "override"
    },
    "ingredients": [
       {
@@ -19,6 +20,14 @@
       {
          "uri": "stonehearth:refined:gold_flakes",
          "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "rayyas_children:refined:legendary:rc_cloth",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:celebrate_effect"
+         ]
       }
    ]
 }

@@ -1,4 +1,16 @@
 {
    "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.rc_bow_valor_recipe.flavor)",
-   "proficiency_gain": 5
+   "proficiency_gain": 5,
+   "mixintypes": {
+      "produces": "override"
+   },
+   "produces": [
+      {
+         "item": "rayyas_children:weapons:legendary:rc_bow",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:fancy_effect",
+            "stonehearth_ace:craft_script:legendary_effect"
+         ]
+      }
+   ]
 }

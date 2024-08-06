@@ -30,7 +30,10 @@
    ],
    "produces": [
       {
-         "item": "stonehearth_ace:refined:legendary:headpiece"
+         "item": "stonehearth_ace:refined:legendary:headpiece",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:celebrate_effect"
+         ]
       }
    ]
 }

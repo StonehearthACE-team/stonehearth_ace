@@ -2,7 +2,8 @@
    "portrait": "/stonehearth_ace/entities/weapons/legendary_bow/legendary_bow.png",
    "proficiency_gain": 5,
    "mixintypes": {
-      "ingredients": "override"
+      "ingredients": "override",
+      "produces": "override"
    },
    "ingredients": [
       {
@@ -24,6 +25,15 @@
       {
          "material": "wood resource",
          "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:weapons:legendary:bow",
+         "produce_scripts": [
+            "stonehearth_ace:craft_script:fancy_effect",
+            "stonehearth_ace:craft_script:legendary_effect"
+         ]
       }
    ]
 }
