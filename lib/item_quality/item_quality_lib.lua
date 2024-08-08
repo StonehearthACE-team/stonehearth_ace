@@ -64,7 +64,7 @@ end
 function item_quality_lib.apply_quality(item, quality, options)
    local data = radiant.entities.get_entity_data(item, 'stonehearth:item_quality')
    options = options or {}
-   
+
    if data and data.minimum_quality then
       options.min_quality = data.minimum_quality
    end

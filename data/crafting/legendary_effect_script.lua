@@ -23,7 +23,9 @@ function legendary_effect._show_bulletin(crafter, recipe)
          zoom_to_entity = crafter
       })
       :set_active_duration('3h')
-      :add_i18n_data('crafter', crafter)
+      :add_i18n_data('crafter_custom_name', radiant.entities.get_custom_name(crafter))
+      :add_i18n_data('crafter_display_name', radiant.entities.get_display_name(crafter))
+      :add_i18n_data('crafter_custom_data', radiant.entities.get_custom_data(crafter))
       :add_i18n_data('recipe', recipe.recipe_name)
 
    return bulletin
