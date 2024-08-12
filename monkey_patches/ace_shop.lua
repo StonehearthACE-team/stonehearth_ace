@@ -436,9 +436,10 @@ end
       local item = radiant.entities.create_entity(uri, { owner = self._sv.player_id })
       if quality > 1 then
          local author = self:_get_quality_item_author()
+         local author_type = radiant.entities.get_entity_data(item, 'stonehearth:item_quality', false) and radiant.entities.get_entity_data(item, 'stonehearth:item_quality', false).author_type or 'place'
          item_quality_lib.apply_quality(item, quality, {
             author = author,
-            author_type = 'place',
+            author_type = author_type,
          })
       end
       local root, iconic = entity_forms.get_forms(item)
