@@ -144,6 +144,10 @@ function AcePetComponent:_set_custom_pet_name(player_id)
       return
    end
 
+   if self._entity:get_component('stonehearth:unit_info') and self._entity:get_component('stonehearth:unit_info'):get_custom_name() then
+      return
+   end
+
    self._sv._initialized_name = true
    self:_ace_old__set_custom_pet_name(player_id)
 end

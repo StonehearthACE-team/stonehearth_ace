@@ -1,0 +1,11 @@
+{
+	"type" : "encounter", 
+	"encounter_type": "script",
+	"in_edge" : "bluebell_adopt", 
+	"script_info" : {
+		"script" : "file(bluebell_outcomes.lua)", 
+		"data" : {
+			"outcome": "adopt"
+		}
+	}
+}
