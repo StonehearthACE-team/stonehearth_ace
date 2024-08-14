@@ -1,0 +1,49 @@
+{
+   "dialog_tree_info": {
+      "mixintypes": {
+         "script": "remove"
+      },
+      "nodes": {
+         "msg1": {
+            "bulletin": {
+               "choices": {
+                  "stonehearth:ui.game.common.next": {
+                     "next_node": "msg3"
+                  }
+               }
+            }
+         },
+         "msg2": {
+            "bulletin": {
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.goblin_war.boss_death_dialog.dialog_tree_info.dialog_nodes.msg2.bulletin_message.00)",
+               "choices": {
+                  "mixintypes": {
+                     "stonehearth:ui.game.common.next": "remove"
+                  },
+                  "stonehearth_ace:data.gm.campaigns.goblin_war.boss_death_dialog.dialog_tree_info.dialog_nodes.msg2.choice_000": {
+                     "out_edge": "bluebell_adopt"
+                  },
+                  "stonehearth_ace:data.gm.campaigns.goblin_war.boss_death_dialog.dialog_tree_info.dialog_nodes.msg2.choice_001": {
+                     "out_edge": "bluebell_leave_be"
+                  },
+                  "stonehearth_ace:data.gm.campaigns.goblin_war.boss_death_dialog.dialog_tree_info.dialog_nodes.msg2.choice_002": {
+                     "out_edge": "bluebell_let_go"
+                  }
+               }
+            }
+         },
+         "msg3": {
+            "bulletin": {
+               "choices": {
+                  "mixintypes": {
+                     "stonehearth:ui.game.common.ok": "remove"
+                  },
+                  "stonehearth:ui.game.common.next": {
+                     "next_node": "msg2"
+                  }
+               }
+            }
+         }
+      }
+   }
+}

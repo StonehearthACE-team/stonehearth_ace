@@ -20,6 +20,13 @@ function ace_game_master_lib.create_citizens(population, info, origin, ctx)
       tuning = radiant.resources.load_json(info.tuning)
    end
 
+   if info.model_variant then
+      for i, citizen in ipairs(citizens) do
+         local render_info = citizen:add_component('render_info')
+         render_info:set_model_variant(info.model_variant)
+      end
+   end
+
    local info_statistics = info and info.statistics
    local tuning_statistics = tuning and tuning.statistics
 

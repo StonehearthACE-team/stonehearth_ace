@@ -12,7 +12,7 @@ local function _hunt_filter_fn(player_id, category, entity)
       return false
    end
 
-   if radiant.entities.get_player_id(entity) ~= 'animals' then
+   if radiant.entities.get_player_id(entity) ~= 'animals' or radiant.entities.get_entity_data(entity, 'stonehearth:pasture_animal') then
       return false
    end
 
