@@ -1,3 +1,4 @@
+local DonationDialogEncounter = require 'stonehearth.services.server.game_master.controllers.encounters.donation_dialog_encounter'
 local AceDonationDialogEncounter = class()
 local rng = _radiant.math.get_default_rng()
 local LootTable = require 'stonehearth.lib.loot_table.loot_table'
@@ -70,9 +71,9 @@ function AceDonationDialogEncounter:start(ctx, info)
                                        :set_keep_open(false)
                                        :set_close_on_handle(true)
 
-   --TODO: on Tuesday, test this!
    if(info.expiration_timeout) then
       self._sv.bulletin:set_active_duration(info.expiration_timeout)
+      self._active_duration_listener = radiant.events.listen_once(self._sv.bulletin, 'stonehearth:bulletin:on_remove_bulletin_timer', self, self._destroy_bulletin)
    end
 
    if self._sv._i18n_data then
@@ -110,6 +111,16 @@ function AceDonationDialogEncounter:_acknowledge()
    if self._sv.gold then
       inventory:add_gold(self._sv.gold)
    end
+end
+
+AceDonationDialogEncounter._ace_old_destroy = DonationDialogEncounter.destroy
+function AceDonationDialogEncounter:destroy()
+   if self._active_duration_listener then
+      self._active_duration_listener:destroy()
+      self._active_duration_listener = nil
+   end
+
+   self:_ace_old_destroy()
 end
 
 return AceDonationDialogEncounter
