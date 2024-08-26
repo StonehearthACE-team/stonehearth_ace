@@ -44,8 +44,14 @@ function WildernessComponent:get_wilderness_value()
    return self._sv.wilderness_value
 end
 
+function WildernessComponent:reset_wilderness_value()
+   local json = radiant.entities.get_json(self)
+   local value = (json and json.wilderness_value) or 0
+   self:set_wilderness_value(value)
+end
+
 function WildernessComponent:set_wilderness_value(value)
-   if value ~= self.sv.wilderness_value then
+   if value ~= self._sv.wilderness_value then
       self._sv.wilderness_value = value
       self.__saved_variables:mark_changed()
       radiant.events.trigger(self._entity, 'stonehearth_ace:wilderness:wilderness_value_changed', value)

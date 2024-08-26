@@ -23,6 +23,7 @@ local monkey_patches = {
    ace_building_client_service = 'stonehearth.services.client.building.building_client_service',
    ace_building_vision_service = 'stonehearth.services.client.building_vision.building_vision_service',
    ace_camera_service = 'stonehearth.services.client.camera.camera_service',
+   ace_catalog_client_service = 'stonehearth.services.client.catalog_client.catalog_client_service',
    ace_client_entities = 'radiant.modules.client_entities',
    ace_constants = 'stonehearth.constants',
    ace_csg_lib = 'stonehearth.lib.csg.csg_lib',

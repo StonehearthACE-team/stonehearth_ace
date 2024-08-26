@@ -17,13 +17,13 @@ function WildernessSignalComponent:initialize()
    self._wild_listeners = {}
    self._sv._wilderness_values = {}
    self._sv.wilderness_value = 0
-   
+
    local json = radiant.entities.get_json(self)
    local region = json and json.signal_region and Region3(json.signal_region)
    if region then
       self:set_region(region)
    end
-   
+
 	self.__saved_variables:mark_changed()
 end
 
@@ -119,7 +119,7 @@ end
 function WildernessSignalComponent:_reset()
    self._sv._wilderness_values = {}
    self._sv.wilderness_value = 0
-   
+
    if self._sv.signal_region then
       self._sv.wild_entities = radiant.terrain.get_entities_in_region(self._sv.signal_region, self._wild_filter_fn)
       for entity_id, entity in pairs(self._sv.wild_entities) do
@@ -135,7 +135,7 @@ function WildernessSignalComponent:_reset()
 end
 
 function WildernessSignalComponent:_set_entity_value(entity, value)
-   value = value or wilderness_util.get_value_from_entity(entity, nil, self._sv.signal_region)
+   value = value or wilderness_util.get_value_from_entity(entity, self._sv.signal_region)
    local entity_id = entity:get_id()
    self._sv._wilderness_values[entity_id] = value
    self._sv.wilderness_value = self._sv.wilderness_value + value

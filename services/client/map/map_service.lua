@@ -13,11 +13,6 @@ local MapService = class()
 local log = radiant.log.create_logger('map_service')
 
 function MapService:initialize()
-   self._catalog_data = {}
-   _radiant.call('stonehearth:get_all_catalog_data')
-      :done(function(response)
-         self._catalog_data = response
-      end)
 end
 
 function MapService:render_map_command(session, response)
@@ -104,7 +99,7 @@ function MapService:_get_block_type(entity, end_point)
    end
 
    -- check if this entity is a tree
-   local catalog_data = self._catalog_data[entity:get_uri()]
+   local catalog_data = stonehearth.catalog_client:get_catalog_data(entity:get_uri())
    if catalog_data and catalog_data.category == 'plants' then
       return 1002
    end

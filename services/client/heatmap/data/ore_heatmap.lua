@@ -42,7 +42,7 @@ function OreHeatmap:initialize(fn_callback)
    elseif self._initializing then
       return
    end
-   
+
    self._initializing = true
 
    -- stolen from stonehearth.services.client.terrain_highlight_service
@@ -71,24 +71,18 @@ function OreHeatmap:_do_initialization(player_id, fn_callback)
          self._town = response.town
          self:_check_initialized_done(fn_callback)
       end)
-   -- Fetch the catalog so we can check whether something is a plant to apply town bonuses.
-   _radiant.call('stonehearth:get_all_catalog_data')
-      :done(function(response)
-         self._catalog_data = response
-         self:_check_initialized_done(fn_callback)
-      end)
 end
 
 function OreHeatmap:_check_initialized_done(fn_callback)
-   if self._town and self._catalog_data then
+   if self._town then
       self._initializing = nil
       if fn_callback then
          fn_callback()
       end
-      
+
       return true
    end
-   
+
    return false
 end
 

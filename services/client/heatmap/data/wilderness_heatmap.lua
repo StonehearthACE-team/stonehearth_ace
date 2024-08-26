@@ -35,39 +35,26 @@ function WildernessHeatmap:initialize(fn_callback)
    elseif self._initializing then
       return
    end
-   
+
    self._initializing = true
-   self._catalog_data = nil
-   self._catalog_fn = function(uri)
-      return self._catalog_data[uri]
-   end
    self:_do_initialization(fn_callback)
 end
 
 function WildernessHeatmap:_do_initialization(fn_callback)
-   -- Fetch the catalog so we can properly use the wilderness_util from the client
-   _radiant.call('stonehearth:get_all_catalog_data')
-      :done(function(response)
-         self._catalog_data = response
-         self:_check_initialized_done(fn_callback)
-      end)
+   self:_check_initialized_done(fn_callback)
 end
 
 function WildernessHeatmap:_check_initialized_done(fn_callback)
-   if self._catalog_data then
-      self._initializing = nil
-      if fn_callback then
-         fn_callback()
-      end
-      
-      return true
+   self._initializing = nil
+   if fn_callback then
+      fn_callback()
    end
-   
-   return false
+
+   return true
 end
 
 function WildernessHeatmap:fn_get_entity_heat_value(entity, sampling_region)
-   return 0.01 * radiant.math.round(100 * wilderness_util.get_value_from_entity(entity, self._catalog_fn, sampling_region))
+   return 0.01 * radiant.math.round(100 * wilderness_util.get_value_from_entity(entity, sampling_region))
 end
 
 function WildernessHeatmap:fn_get_location_heat_value(location)
@@ -93,7 +80,7 @@ function WildernessHeatmap:fn_heat_value_to_hilight(value)
 end
 
 function WildernessHeatmap:fn_is_entity_relevant(entity)
-   return wilderness_util.has_wilderness_value(entity, self._catalog_fn)
+   return wilderness_util.has_wilderness_value(entity)
 end
 
 return WildernessHeatmap
