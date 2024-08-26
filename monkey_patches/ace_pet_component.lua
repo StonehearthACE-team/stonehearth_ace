@@ -30,7 +30,7 @@ function AcePetComponent:activate()
             end
          end
       end
-   end  
+   end
 
    self:_ace_old_activate()
 
@@ -83,6 +83,24 @@ function AcePetComponent:lock_to_owner()
    end
 end
 
+AcePetComponent._ace_old_convert_to_pet = PetComponent.convert_to_pet
+function AcePetComponent:convert_to_pet(player_id)
+   self:_ace_old_convert_to_pet(player_id)
+   local wilderness_comp = self._entity:get_component('stonehearth_ace:wilderness')
+   if wilderness_comp then
+      wilderness_comp:set_wilderness_value(0)
+   end
+end
+
+AcePetComponent._ace_old_release_pet = PetComponent.release_pet
+function AcePetComponent:release_pet()
+   self:_ace_old_release_pet()
+   local wilderness_comp = self._entity:get_component('stonehearth_ace:wilderness')
+   if wilderness_comp then
+      wilderness_comp:reset_wilderness_value()
+   end
+end
+
 function AcePetComponent:self_tame()
    if not radiant.entities.is_owned_by_non_npc(self._entity) then
       return false
@@ -122,7 +140,7 @@ function AcePetComponent:set_owner(owner, lock_to_owner)
       if old_owner and old_owner:is_valid() then
          old_owner:add_component('stonehearth:pet_owner'):remove_pet(self._entity:get_id())
       end
-      
+
       if lock_to_owner then
          self:lock_to_owner()
       else
@@ -173,10 +191,10 @@ end
 function AcePetComponent:_update_commands()
    -- if the pet isn't locked to its owner, show the change owner command
    local commands_component = self._entity:add_component('stonehearth:commands')
-   if self._sv._locked then
-      commands_component:remove_command('stonehearth_ace:commands:change_pet_owner')
-   else
+   if self._sv.owner and not self._sv._locked then
       commands_component:add_command('stonehearth_ace:commands:change_pet_owner')
+   else
+      commands_component:remove_command('stonehearth_ace:commands:change_pet_owner')
    end
 end
 

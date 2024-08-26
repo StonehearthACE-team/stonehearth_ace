@@ -562,7 +562,7 @@ function ResourceCallHandler:server_box_forage(session, response, box)
          return
       end
 
-      wilderness_score = wilderness_score + wilderness_util.get_value_from_entity(entity, nil, orig_region)
+      wilderness_score = wilderness_score + wilderness_util.get_value_from_entity(entity, orig_region)
    end
 
    local area = orig_cube:get_area()

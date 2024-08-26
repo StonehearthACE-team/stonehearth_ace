@@ -38,12 +38,11 @@ function AppealHeatmap:initialize(fn_callback)
    elseif self._initializing then
       return
    end
-   
+
    -- Get the town entity so we can see whether we have the "vitality" town bonus which affects the appeal of plants.
    -- If we ever have more town bonuses that affect appeal, we'll need a generic hook, but for now, let's keep it light.
    self._initializing = true
    self._town = nil
-   self._catalog_data = nil
    local player_id = _radiant.client.get_player_id()
    if not player_id then
       radiant.events.listen(radiant, 'radiant:client:server_ready', function()  -- Client doesn't know its player ID before then
@@ -60,24 +59,18 @@ function AppealHeatmap:_do_initialization(player_id, fn_callback)
          self._town = response.town
          self:_check_initialized_done(fn_callback)
       end)
-   -- Fetch the catalog so we can check whether something is a plant to apply town bonuses.
-   _radiant.call('stonehearth:get_all_catalog_data')
-      :done(function(response)
-         self._catalog_data = response
-         self:_check_initialized_done(fn_callback)
-      end)
 end
 
 function AppealHeatmap:_check_initialized_done(fn_callback)
-   if self._town and self._catalog_data then
+   if self._town then
       self._initializing = nil
       if fn_callback then
          fn_callback()
       end
-      
+
       return true
    end
-   
+
    return false
 end
 
@@ -96,7 +89,7 @@ function AppealHeatmap:fn_get_entity_heat_value(entity)
    -- we'll need a generic hook, but for now, let's keep it light.
    if self._town and self._town:get_data().town_bonuses['stonehearth:town_bonus:vitality'] then
       local uri = type(entity) == 'string' and entity or entity:get_uri()
-      local catalog_data = self._catalog_data[uri]
+      local catalog_data = stonehearth.catalog_client:get_catalog_data(uri)
       if catalog_data then
          if catalog_data.category == 'plants' then
             appeal = radiant.math.round(appeal * VITALITY_PLANT_APPEAL_MULTIPLIER)

@@ -5,17 +5,16 @@ local log = radiant.log.create_logger('wilderness_heatmap')
 local get_block_kind_at = radiant.terrain.get_block_kind_at
 
 function wilderness.default_catalog_fn(uri)
-   return stonehearth.catalog:get_catalog_data(uri)
+   return stonehearth.catalog and stonehearth.catalog:get_catalog_data(uri) or stonehearth.catalog_client:get_catalog_data(uri)
 end
 
-function wilderness.get_value_from_entity(entity, catalog_fn, sampling_region)
+function wilderness.get_value_from_entity(entity, sampling_region)
    local value = 0
    local region = nil
    local component = entity:get_component('stonehearth_ace:wilderness')
-   
-   -- if the component exists, why doesn't the function sometimes?
-   if component and component.get_wilderness_value then
-      value = component:get_wilderness_value()
+
+   if component then
+      value = component.get_wilderness_value and component:get_wilderness_value() or component:get_data().wilderness_value
    else
       component = entity:get_component('stonehearth:build2:structure')
       if component then
@@ -29,7 +28,7 @@ function wilderness.get_value_from_entity(entity, catalog_fn, sampling_region)
       else
          -- if it's a 'plant', use its collision region area as its value
          -- if it's an animal... uh... say 5?
-         catalog_fn = catalog_fn or wilderness.default_catalog_fn
+         local catalog_fn = wilderness.default_catalog_fn
          local catalog_data = catalog_fn(entity:get_uri())
          if catalog_data then
             if catalog_data.player_id == 'animals' then
@@ -73,14 +72,19 @@ function wilderness._get_region(entity)
    return nil
 end
 
-function wilderness.has_wilderness_value(entity, catalog_fn)
-   local component = entity:get_component('stonehearth_ace:wilderness') or entity:get_component('stonehearth:build2:structure')
-   if component then
+function wilderness.has_wilderness_value(entity)
+   if entity:get_component('stonehearth:build2:structure') then
       return true
+   end
+
+   local component = entity:get_component('stonehearth_ace:wilderness')
+   if component then
+      local wilderness_value = component.get_wilderness_value and component:get_wilderness_value() or component:get_data().wilderness_value
+      return wilderness_value ~= 0
    else
       -- we don't care about ghost or iconic entities: only regular entities can contribute to wilderness value
       -- so we don't need to involve entity_forms
-      catalog_fn = catalog_fn or wilderness.default_catalog_fn
+      local catalog_fn = wilderness.default_catalog_fn
       local catalog_data = catalog_fn(entity:get_uri())
       return catalog_data and (catalog_data.player_id == 'animals' or catalog_data.category == 'plants')
    end
