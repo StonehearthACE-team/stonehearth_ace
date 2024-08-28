@@ -1,0 +1,33 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(statue_first_muramasa.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.135
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.statue.statue_first_muramasa.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.statue.statue_first_muramasa.description)",
+         "icon": "file(statue_first_muramasa.png)",
+         "category": "decoration",
+         "material_tags": [
+            "stone",
+            "collectible",
+            "statue",
+            "stockpile_decoration"
+         ]
+      }
+   }
+}
