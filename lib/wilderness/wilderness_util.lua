@@ -5,7 +5,7 @@ local log = radiant.log.create_logger('wilderness_heatmap')
 local get_block_kind_at = radiant.terrain.get_block_kind_at
 
 function wilderness.default_catalog_fn(uri)
-   return stonehearth.catalog and stonehearth.catalog:get_catalog_data(uri) or stonehearth.catalog_client:get_catalog_data(uri)
+   return stonehearth.catalog and stonehearth.catalog:get_catalog_data(uri) or stonehearth.catalog_client and stonehearth.catalog_client:get_catalog_data(uri)
 end
 
 function wilderness.get_value_from_entity(entity, sampling_region)
