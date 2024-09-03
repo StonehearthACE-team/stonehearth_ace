@@ -3,6 +3,8 @@ local rng = _radiant.math.get_default_rng()
 local CombatService = require 'stonehearth.services.server.combat.combat_service'
 local AceCombatService = class()
 
+local log = radiant.log.create_logger('combat_service')
+
 local get_player_id = radiant.entities.get_player_id
 
 local EXP_SPLIT_AMOUNT = 0.7  -- each entity involved will get 30% of the raw exp value; 70% will be divided out among them
@@ -90,6 +92,10 @@ function AceCombatService:_calculate_damage(attacker, target, attack_info, base_
 
    local weapon_data = radiant.entities.get_entity_data(weapon, 'stonehearth:combat:weapon_data')
    local base_damage = weapon_data[base_damage_name]
+
+   if not base_damage then
+      return 0
+   end
 
    local total_damage = base_damage
    local attributes_component = attacker:get_component('stonehearth:attributes')
@@ -194,10 +200,10 @@ function AceCombatService:calculate_exp_reward(target)
 
    if target and target:is_valid() then
       local attributes_component = target:get_component('stonehearth:attributes')
-      if attributes_component:has_attribute('exp_reward_override') then 
+      if attributes_component:has_attribute('exp_reward_override') then
          return attributes_component:get_attribute('exp_reward_override')
       end
-      
+
       local max_health = attributes_component:get_attribute('max_health')^2 / 100
       local muscle = attributes_component:get_attribute('muscle') * MUSCLE_EXP_WEIGHT
       local courage = attributes_component:get_attribute('courage') * COURAGE_EXP_WEIGHT
@@ -286,7 +292,7 @@ end
 function AceCombatService:_record_kill_stats(attacker, target, units)
    local enemy_player = get_player_id(target)
 
-   if enemy_player and enemy_player ~= '' then   
+   if enemy_player and enemy_player ~= '' then
       local catalog_data = stonehearth.catalog:get_catalog_data(target:get_uri())
       local enemy_category = catalog_data and catalog_data.category
       local enemy_specifier = radiant.entities.get_property_value(target, 'stats_specifier')
@@ -399,7 +405,7 @@ function AceCombatService:_get_nearby_non_max_level_combat_units(target, attacke
 end
 
 -- ACE: also include support for shared cooldowns
-function CombatService:start_cooldown(entity, action_info)
+function AceCombatService:start_cooldown(entity, action_info)
    local combat_state = self:get_combat_state(entity)
    if not combat_state then
       return
@@ -411,7 +417,7 @@ function CombatService:start_cooldown(entity, action_info)
    end
 end
 
-function CombatService:in_cooldown(entity, action_name, shared_cooldown_name)
+function AceCombatService:in_cooldown(entity, action_name, shared_cooldown_name)
    local combat_state = self:get_combat_state(entity)
    if not combat_state then
       return false
@@ -420,7 +426,7 @@ function CombatService:in_cooldown(entity, action_name, shared_cooldown_name)
    return combat_state:in_cooldown(action_name, shared_cooldown_name)
 end
 
-function CombatService:get_cooldown_end_time(entity, action_name, shared_cooldown_name)
+function AceCombatService:get_cooldown_end_time(entity, action_name, shared_cooldown_name)
    local combat_state = self:get_combat_state(entity)
    if not combat_state then
       return nil
@@ -434,6 +440,7 @@ end
 -- ACE: modifies filter_fn to consider any required equipment types
 function AceCombatService:choose_attack_action(entity, actions)
    local filter_fn = function(combat_state, action_info)
+      log:debug('considering choosing attack action %s...', action_info.name)
       if not combat_state:in_cooldown(action_info.name, action_info.shared_cooldown_name) then
          -- check any equipment requirements
          if action_info.required_equipment then
@@ -442,7 +449,7 @@ function AceCombatService:choose_attack_action(entity, actions)
                local ep = item and item:add_component('stonehearth:equipment_piece')
                -- types is specified as an array of types, any one of which is acceptable
                local wants_no_item = not next(types) or (#types == 1 and types[1] == '')
-               
+
                -- if there is an item equipped there, but there shouldn't be, or vice-versa
                if (ep and wants_no_item) or (not ep and not wants_no_item) then
                   return false
@@ -475,7 +482,7 @@ end
 -- get the highest priority action that can take effect before the impact_time
 -- assumes actions are sorted by descending priority
 -- ACE: add support for shared cooldowns
-function CombatService:choose_defense_action(entity, actions, attack_impact_time)
+function AceCombatService:choose_defense_action(entity, actions, attack_impact_time)
    local filter_fn = function(combat_state, action_info)
       local ready_time = combat_state:get_cooldown_end_time(action_info.name, action_info.shared_cooldown_name) or radiant.gamestate.now()
       local defense_impact_time = ready_time + action_info.time_to_impact
@@ -494,7 +501,7 @@ end
 function AceCombatService:try_inflict_debuffs(target, debuff_list, attacker)
    local attributes = target:get_component('stonehearth:attributes')
 	local debuff_resistance = attributes and attributes:get_attribute('debuff_resistance') or 0
-   for i, debuff_data in ipairs(debuff_list) do
+   for _, debuff_data in ipairs(debuff_list) do
       for name, debuff in pairs(debuff_data) do
          local infliction_chance = debuff.chance or 1
          local n = 100 * infliction_chance

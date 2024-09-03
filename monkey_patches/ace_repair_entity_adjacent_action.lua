@@ -1,4 +1,9 @@
 local AceRepairEntityAdjacent = radiant.class()
+local log = radiant.log.create_logger('repair_entity_adjacent')
+
+function AceRepairEntityAdjacent:start_thinking(ai, entity, args)
+   log:debug('%s start_thinking about %s', entity, args.entity)
+end
 
 -- ACE: override this function to use the craft effect if available instead of only the 'wrench' effect
 -- if the target's siege_data contains a repair_effect, that is prioritized; second is the tool's repair_data.repair_effect
