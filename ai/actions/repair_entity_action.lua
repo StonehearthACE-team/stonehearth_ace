@@ -21,13 +21,20 @@ function RepairEntity:start_thinking(ai, entity, args)
    local job_controller = job:get_curr_job_controller()
    local can_repair_as_any_job = job_controller:can_repair_as_any_job()
    local can_repair_as_job = radiant.util.merge_into_table({ [job_uri] = true }, job_controller:get_can_repair_as_jobs())
+   local can_repair_array = {}
 
-   local key = player_id .. '|' .. tostring(can_repair_as_any_job)
+   -- we want to always report the job uris in the same order for caching purposes, so add to an array and sort
    for uri, can_repair in pairs(can_repair_as_job) do
       if can_repair then
-         key = key .. '|' .. uri
-         job_infos[uri] = stonehearth.job:get_job_info(player_id, uri)
+         table.insert(can_repair_array, uri)
       end
+   end
+   table.sort(can_repair_array)
+
+   local key = player_id .. '|' .. tostring(can_repair_as_any_job)
+   for _, uri in ipairs(can_repair_array) do
+      key = key .. '|' .. uri
+      job_infos[uri] = stonehearth.job:get_job_info(player_id, uri)
    end
 
    -- if the item specifies a repairable_by_job table, compare that to this entity's can_repair_as_job table
@@ -40,11 +47,9 @@ function RepairEntity:start_thinking(ai, entity, args)
          end
       end
 
-      for uri, can_repair in pairs(can_repair_as_job) do
-         if can_repair and repairable_by_job[uri] ~= false then
-            if job_infos[uri]:job_can_craft(get_root_entity(item):get_uri()) then
-               return true
-            end
+      for _, uri in ipairs(can_repair_array) do
+         if job_infos[uri]:job_can_craft(get_root_entity(item):get_uri()) then
+            return true
          end
       end
 

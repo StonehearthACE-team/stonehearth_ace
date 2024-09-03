@@ -14,7 +14,7 @@ function TrainAttackAdjacent:start_thinking(ai, entity, args)
       ai:reject(check_conditions)
       return
    end
-   
+
    ai:set_think_output()
 end
 
@@ -26,9 +26,16 @@ function TrainAttackAdjacent:start(ai, entity, args)
    end
 end
 
+function TrainAttackAdjacent:stop(ai, entity, args)
+   if self._target_destroyed_listener then
+      self._target_destroyed_listener:destroy()
+      self._target_destroyed_listener = nil
+   end
+end
+
 function TrainAttackAdjacent:_check_conditions(ai, entity, args)
    -- make sure the target is a training dummy
-   local dummy = args.target and args.target:get_component('stonehearth_ace:training_dummy')
+   local dummy = args.target and args.target:is_valid() and args.target:get_component('stonehearth_ace:training_dummy')
    if not dummy or not dummy:get_enabled() then
       return 'target is not a valid/enabled training dummy'
    end
@@ -42,7 +49,7 @@ function TrainAttackAdjacent:_check_conditions(ai, entity, args)
    if not job:is_trainable() then
       return 'entity cannot train'
    end
-   
+
    if not job:get_training_enabled() then
       return 'training is disabled or unavailable for this entity'
    end
@@ -56,24 +63,29 @@ function TrainAttackAdjacent:_check_conditions(ai, entity, args)
    if not weapon_data then
       return 'entity has no weapon equipped'
    end
-   
+
    return nil
 end
 
 function TrainAttackAdjacent:run(ai, entity, args)
+   ai:unprotect_argument(args.target)
+
+   self._target_destroyed_listener = radiant.events.listen(args.target, 'radiant:entity:pre_destroy', function()
+         ai:abort('target destroyed')
+      end)
+
    while self:_attack_once(ai, entity, args) do
    end
-
-   ai:unprotect_argument(args.target)
 end
 
 function TrainAttackAdjacent:_attack_once(ai, entity, args)
    local check_conditions = self:_check_conditions(ai, entity, args)
    if check_conditions then
+      log:debug('%s failed _check_conditions: %s', entity, check_conditions)
       return false
    end
 
-   local dummy = args.target and args.target:get_component('stonehearth_ace:training_dummy')
+   local dummy = args.target:get_component('stonehearth_ace:training_dummy')
 
    -- first tell the training dummy that it's "in combat"
    dummy:set_in_combat()
@@ -88,7 +100,7 @@ function TrainAttackAdjacent:_attack_once(ai, entity, args)
    if next(heal_types) then
       --ai:execute('stonehearth:combat:execute_heal', { target = args.target })
       radiant.entities.turn_to_face(entity, args.target)
-      
+
       local heal_info = stonehearth.combat:choose_attack_action(entity, heal_types)
       if heal_info and heal_info.effect then
          ai:execute('stonehearth:run_effect', { effect = heal_info.effect })
