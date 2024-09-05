@@ -210,10 +210,11 @@ var StonehearthClient;
 
       deactivateAllTools: function() {
          var self = this;
+         self._activeTool = null;
          return radiant.call('stonehearth:deactivate_all_tools')
-            .always(function() {
-               self._activeTool = null;
-            });
+            // .always(function() {
+            //    self._activeTool = null;
+            // });
       },
 
       // Wrapper to call all tools, handling the boilerplate tool management.

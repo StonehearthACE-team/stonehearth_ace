@@ -1,3 +1,5 @@
+local Point3 = _radiant.csg.Point3
+local UNSELECTABLE_FLAG = _radiant.renderer.QueryFlags.UNSELECTABLE
 local XYZRangeSelector = require 'stonehearth_ace.services.client.selection.range_selector'
 local PatternXZRegionSelector = require 'stonehearth_ace.services.client.selection.pattern_xz_region_selector'
 
@@ -45,6 +47,25 @@ function AceSelectionService:select_pattern_designation_region(reason)
                :set_can_contain_entity_filter(function (entity)
                      return SelectionService.designation_can_contain(entity)
                   end)
+end
+
+function AceSelectionService:set_selectable(entity, selectable, deselect_if_selected)
+   if not entity or not entity:is_valid() then
+      return
+   end
+
+   local render_entity = _radiant.client.get_render_entity(entity)
+
+   if render_entity then
+      if selectable then
+         render_entity:remove_query_flag(UNSELECTABLE_FLAG)
+      else
+         render_entity:add_query_flag(UNSELECTABLE_FLAG)
+         if entity == self._selected and deselect_if_selected ~= false then
+            self:select_entity(nil, Point3(0, 0, 0))
+         end
+      end
+   end
 end
 
 return AceSelectionService

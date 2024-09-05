@@ -11,7 +11,7 @@ function AceZoneRenderer:_set_ghost_mode(render_entity, ghost_mode)
    end
 
    local selectable = not ghost_mode
-   stonehearth.selection:set_selectable(render_entity:get_entity(), selectable)
+   stonehearth.selection:set_selectable(render_entity:get_entity(), selectable, false)
 end
 
 return AceZoneRenderer
