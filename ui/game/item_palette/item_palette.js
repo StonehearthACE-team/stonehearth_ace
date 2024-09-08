@@ -383,10 +383,10 @@ $.widget( "stonehearth.stonehearthItemPalette", {
    },
 
    // ACE: added functionality for search filter and wanted items
-   _updateAllItemsSearchFilter: function() {
+   _updateAllItemsSearchFilter: $.throttle(500, function() {
       var self = this;
       var search = self.searchInput && self.searchInput.val().toLowerCase();
-      if (search) {
+      if (search && search.length > 1) {
          radiant.each(self._itemElements, function(uri, elements) {
             radiant.each(elements, function(quality, $el) {
                var parent = $el && $el.parent() && $el.parent().parent();
@@ -414,7 +414,7 @@ $.widget( "stonehearth.stonehearthItemPalette", {
             self.searchBox.removeClass('noUnhiddenCategories');
          }
       }
-   },
+   }),
 
    _updateItemSearchFilter: function(search, itemEl, category, tags) {
       var matches = category.includes(search);

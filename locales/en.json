@@ -28234,6 +28234,12 @@
             }
          },
          "build_mode": {
+            "fixtures": {
+               "include_craftable": "Craftable",
+               "include_craftable_description": "Include craftable fixtures in the list.",
+               "include_inventory": "Inventory",
+               "include_inventory_description": "Include fixtures from inventory in the list."
+            },
             "place_item": {
                "place_item": "Place from Inventory",
                "craft_and_place_item": "Craft and Place"
