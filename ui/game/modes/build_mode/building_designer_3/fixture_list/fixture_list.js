@@ -5,10 +5,10 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
    categories: {
       mercantile: true,
       training_equipment: true,
-		mechanism: true,
-		herbalist_planter: true,
-		fluid_control: true,
-		decoration: true,
+      mechanism: true,
+      herbalist_planter: true,
+      fluid_control: true,
+      decoration: true,
       construction: true,
       door: true,
       furniture: true,
@@ -21,6 +21,8 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       var self = this;
       self._inventoryData = {};
       self._searchTags = {};
+      self._showCraftableFixtures = true;
+      self._showInventoryFixtures = true;
       self._super();
    },
 
@@ -58,13 +60,34 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       self._searchText = '';
       self.$().on('keyup', '.searchInput', function() {
          var text = $(this).val();
-         if (text != self._searchText) {
-            self._searchText = text;
-            self._filterFixtures(text.toLowerCase());
+         if (text.trim().toLowerCase() != self._searchText.trim().toLowerCase()) {
+            self._filterFixtures(text);
             self._setSearchbarsText(text);
          }
+         self._searchText = text;
       });
-      self.$('#fixtures').children().hide();
+      self.$().on('click', '.includeCraftable', function() {
+         self._showCraftableFixtures = $(this).is(':checked');
+         if (!self._showCraftableFixtures && !self._showInventoryFixtures) {
+            self._showCraftableFixtures = true;
+            self._showInventoryFixtures = true;
+            self.$('.includeInventory').prop('checked', true);
+         }
+         self.$('.includeCraftable').prop('checked', self._showCraftableFixtures);
+         self._filterFixtureTypes();
+      });
+      self.$().on('click', '.includeInventory', function() {
+         self._showInventoryFixtures = $(this).is(':checked');
+         if (!self._showCraftableFixtures && !self._showInventoryFixtures) {
+            self._showCraftableFixtures = true;
+            self._showInventoryFixtures = true;
+            self.$('.includeCraftable').prop('checked', true);
+         }
+         self.$('.includeInventory').prop('checked', self._showInventoryFixtures);
+         self._filterFixtureTypes();
+      });
+      self.$('.includeCraftable').prop('checked', true);
+      self.$('.includeInventory').prop('checked', true);
 
       App.guiHelper.createDynamicTooltip(self.$('#fixtures'), '.fixture', function($el) {
          var uri = $el.data('fixture_uri');
@@ -74,7 +97,7 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
 
          if (data.count) {
             // if there's a number of them in inventory, show that
-            extra += `<div class="stat"><span class="header">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_inventory')}</span><span class="value">${data.count}</span></div>`;
+            extra += `<div class="stat"><span class="header inventory">${i18n.t('stonehearth_ace:ui.game.entities.tooltip_inventory')}</span><span class="value">${data.count}</span></div>`;
          }
    
          if (data.jobName && data.jobIcon) {
@@ -136,7 +159,7 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       }
    }.observes('isVisible', 'parentView.isVisible'),
 
-   _updateInventoryData: function () {
+   _updateInventoryData: $.throttle(500, function () {
       var self = this;
       self._inventoryData = {};
 
@@ -156,7 +179,7 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       });
       self._updateItems();
       //Ember.run.scheduleOnce('afterRender', self, '_updateFixtureItemTooltips');
-   },
+   }),
 
    _updateItems: function() {
       var self = this;
@@ -286,9 +309,8 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       });
 
       Ember.run.scheduleOnce('afterRender', this, function() {
-         if (self._searchText != '') {
-            self._filterFixtures(self._searchText);
-         }
+         self._filterFixtures(self._searchText);
+         self._filterFixtureTypes();
       });
    },
 
@@ -300,7 +322,8 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
          item_quality: data.item_quality || 1,
          item_quality_class: "quality-" + (data.item_quality || 1) + "-icon",
          tooltip: tooltip,
-         data: data.uri
+         data: data.uri,
+         count: data.count,
       };
       return item;
    },
@@ -334,17 +357,27 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       self._searchTags[uri] = tags.filter(tag => tag && tag.length > 0 && !tag.includes('stockpile_'));
    },
 
+   // filter fixtures by search text
    _filterFixtures: function(text) {
       var self = this;
 
-      var fixtures = self.$('#fixtures').find('.fixture');
-      fixtures.show();
+      if (!self._fixtureKind) {
+         return;
+      }
+
+      var fixtures = self.$('#' + self._fixtureKind).find('.fixture');
+      fixtures.removeClass('notInSearchFilter');
+
+      text = text.trim();
+      if (!text || text.length < 2) {
+         return;
+      }
 
       var queryTerms = text.toLowerCase().split(/\s+/g);
       queryTerms.forEach(function(term) {
          fixtures.each(function() {
             // if it's already hidden, no need to check again
-            if ($(this).is(':hidden')) {
+            if ($(this).hasClass('notInSearchFilter')) {
                return;
             }
 
@@ -365,9 +398,43 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
                }
             }
             if (!matches) {
-               $(this).hide();
+               $(this).addClass('notInSearchFilter');
             }
          });
+      });
+   },
+
+   // filter fixtures that are in inventory vs craftable
+   _filterFixtureTypes: function() {
+      var self = this;
+
+      if (!self._fixtureKind) {
+         return;
+      }
+
+      var fixtures = self.$('#' + self._fixtureKind).find('.fixture');
+      fixtures.removeClass('typeNotInSearchFilter');
+
+      // if both are shown, no need to filter
+      // (if neither are shown, they should be getting instantly both shown)
+      if (self._showCraftableFixtures && self._showInventoryFixtures) {
+         return;
+      }
+
+      fixtures.each(function() {
+         // if it's already hidden, no need to check again
+         if ($(this).hasClass('typeNotInSearchFilter')) {
+            return;
+         }
+
+         var uri = $(this).data('fixture_uri');
+         var item_quality = Math.abs($(this).data('item_quality'));
+         var data = self._allFixtures[uri + '+' + item_quality];
+         var matches = (self._showCraftableFixtures && data.jobName) || (self._showInventoryFixtures && data.count);
+
+         if (!matches) {
+            $(this).addClass('typeNotInSearchFilter');
+         }
       });
    },
 
@@ -378,7 +445,7 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       self.$('#windowSearch .searchInput').val(text);
       self.$('#decorationSearch .searchInput').val(text);
       self.$('#furnitureSearch .searchInput').val(text);
-      self.$('#utilityeSearch .searchInput').val(text);
+      self.$('#utilitySearch .searchInput').val(text);
       self.$('#storageSearch .searchInput').val(text);
    },
 
@@ -391,19 +458,27 @@ App.StonehearthBuildingFixtureListView = App.View.extend({
       changeFixture: function(fixtureKind) {
          var self = this;
 
+         var prevKind = self._fixtureKind;
+         if (prevKind) {
+            self.$('#' + prevKind).removeClass('categoryVisible');
+         }
+
          var alreadySelected = self.$('#' + fixtureKind + 'Kind').hasClass('selected');
-         self.$('#fixtures').children().hide();
          self.$('#fixtureKinds').children().removeClass('selected');
          if (!alreadySelected) {
-            self.$('#' + fixtureKind).show();
+            self._fixtureKind = fixtureKind;
+            self.$('#' + fixtureKind).addClass('categoryVisible');
             self.$('#' + fixtureKind + 'Kind').addClass('selected');
 
             Ember.run.scheduleOnce('afterRender', this, function() {
-               if (self._searchText != '') {
-                  self._filterFixtures(self._searchText);
-               }
+               self._filterFixtures(self._searchText);
+               self._filterFixtureTypes();
             });
          }
+         else {
+            self._fixtureKind = null;
+         }
+
          radiant.call('radiant:play_sound', {'track' : 'stonehearth:sounds:building_select_button'});
       },
 

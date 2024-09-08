@@ -10,6 +10,37 @@
             .fixtureContainer {
                height: 312px;
             }
+
+            display: none;
+
+            &.categoryVisible {
+               display: block;
+
+               .notInSearchFilter, .typeNotInSearchFilter {
+                  display: none;
+               }
+            }
+
+            .fixture {
+               .amount {
+                  .controlFont;
+                  position: absolute;
+                  bottom: 0px;
+                  right: 4px;
+                  color: #fff;
+                  font-size: 16px;
+               }
+            }
+         }
+
+         .filters {
+            display: flex;
+            align-items: center;
+
+            label {
+               flex-grow: 1;
+               background-position: 4px 4px;
+            }
          }
       }
 
