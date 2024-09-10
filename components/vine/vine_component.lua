@@ -255,7 +255,7 @@ end
 
 function VineComponent:_update_models(season)
    for position, seasons in pairs(self._sv._render_models) do
-      self._sv.render_options.faces[position].model = seasons[season]
+      self._sv.render_options.faces[position].model = seasons[season or 'default']
    end
 
    self.__saved_variables:mark_changed()
