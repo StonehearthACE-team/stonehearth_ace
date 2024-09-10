@@ -9,8 +9,10 @@ TrainAttackAdjacent.priority = 0
 local log = radiant.log.create_logger('training_action')
 
 function TrainAttackAdjacent:start_thinking(ai, entity, args)
+   log:debug('%s start_thinking about %s', entity, args.target)
    local check_conditions = self:_check_conditions(ai, entity, args)
    if check_conditions then
+      log:debug('%s rejecting due to check_conditions: %s', entity, check_conditions)
       ai:reject(check_conditions)
       return
    end
@@ -19,8 +21,10 @@ function TrainAttackAdjacent:start_thinking(ai, entity, args)
 end
 
 function TrainAttackAdjacent:start(ai, entity, args)
+   log:debug('%s starting with %s', entity, args.target)
    local check_conditions = self:_check_conditions(ai, entity, args)
    if check_conditions then
+      log:aborting('%s rejecting due to check_conditions: %s', entity, check_conditions)
       ai:abort(check_conditions)
       return
    end
@@ -34,6 +38,8 @@ function TrainAttackAdjacent:stop(ai, entity, args)
 end
 
 function TrainAttackAdjacent:_check_conditions(ai, entity, args)
+   log:debug('%s checking conditions for %s', entity, args.target)
+
    -- make sure the target is a training dummy
    local dummy = args.target and args.target:is_valid() and args.target:get_component('stonehearth_ace:training_dummy')
    if not dummy or not dummy:get_enabled() then
@@ -71,6 +77,7 @@ function TrainAttackAdjacent:run(ai, entity, args)
    ai:unprotect_argument(args.target)
 
    self._target_destroyed_listener = radiant.events.listen(args.target, 'radiant:entity:pre_destroy', function()
+         log:debug('aborting training because target was destroyed')
          ai:abort('target destroyed')
       end)
 
@@ -98,6 +105,7 @@ function TrainAttackAdjacent:_attack_once(ai, entity, args)
    --if entity:get_component('stonehearth:job'):has_ai_pack('stonehearth:ai_pack:healing_combat') then
    local heal_types = stonehearth.combat:get_combat_actions(entity, 'stonehearth:combat:healing_spells')
    if next(heal_types) then
+      log:debug('%s heal %s', entity, args.target)
       --ai:execute('stonehearth:combat:execute_heal', { target = args.target })
       radiant.entities.turn_to_face(entity, args.target)
 
@@ -108,8 +116,10 @@ function TrainAttackAdjacent:_attack_once(ai, entity, args)
 
    elseif radiant.entities.get_entity_data(stonehearth.combat:get_main_weapon(entity), 'stonehearth:combat:weapon_data').range and
          next(stonehearth.combat:get_combat_actions(entity, 'stonehearth:combat:ranged_attacks')) then
+      log:debug('%s attack_ranged %s', entity, args.target)
       ai:execute('stonehearth:combat:attack_ranged', { target = args.target })
    else
+      log:debug('%s attack_melee %s', entity, args.target)
       ai:execute('stonehearth:combat:attack_melee_adjacent', { target = args.target })
    end
 

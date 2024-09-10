@@ -3,6 +3,7 @@ local log = radiant.log.create_logger('repair_entity_adjacent')
 
 function AceRepairEntityAdjacent:start_thinking(ai, entity, args)
    log:debug('%s start_thinking about %s', entity, args.entity)
+   ai:set_think_output()
 end
 
 -- ACE: override this function to use the craft effect if available instead of only the 'wrench' effect

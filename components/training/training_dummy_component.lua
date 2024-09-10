@@ -1,6 +1,8 @@
 local Point3 = _radiant.csg.Point3
 local TrainingDummyComponent = class()
 
+local log = radiant.log.create_logger('training_dummy')
+
 function TrainingDummyComponent:initialize()
    self._json = radiant.entities.get_json(self) or {}
    self._allowed_jobs = self._json.allowed_jobs or {}
@@ -8,7 +10,7 @@ function TrainingDummyComponent:initialize()
 
    self._sv.enabled = true
    self._sv.disable_health_percentage = self._json.disable_health_percentage or 0.3
-   
+
    local limit_data = radiant.entities.get_entity_data(self._entity, 'stonehearth:item_placement_limit')
    self._dummy_type = limit_data and limit_data.tag
    self.__saved_variables:mark_changed()
@@ -21,7 +23,7 @@ end
 function TrainingDummyComponent:activate()
    self._sv.combat_time = stonehearth.calendar:realtime_to_game_seconds(self._json.combat_time or 5)
    self._health_listener = radiant.events.listen(self._entity, 'stonehearth:expendable_resource_changed:health', self, self._on_health_changed)
-   
+
    if self._dummy_type then
       self._parent_trace = self._entity:get_component('mob'):trace_parent('siege weapon added or removed')
          :on_changed(function(parent_entity)
@@ -141,6 +143,7 @@ function TrainingDummyComponent:_disable()
 end
 
 function TrainingDummyComponent:_enable()
+   log:debug('%s enabling training dummy', self._entity)
    self._sv.enabled = true
    self.__saved_variables:mark_changed()
 end
