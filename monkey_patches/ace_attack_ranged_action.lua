@@ -3,6 +3,95 @@ local BatteryContext = require 'stonehearth.services.server.combat.battery_conte
 
 local AceAttackRanged = class()
 
+local log = radiant.log.create_logger('attack_ranged_action')
+
+-- function AceAttackRanged:stop_thinking(ai, entity, args)
+--    log:debug('%s attack_ranged %s, stopping thinking', entity, args.target)
+--    if self._think_timer then
+--       log:debug('destroying think timer', entity, args.target)
+--       self._think_timer:destroy()
+--       self._think_timer = nil
+--    end
+
+--    self._attack_types = nil
+-- end
+
+-- function AceAttackRanged:start(ai, entity, args)
+--    log:debug('%s attack_ranged %s, starting', entity, args.target)
+-- end
+
+-- function AceAttackRanged:_choose_attack_action(ai, entity, args)
+--    -- probably should pass target in as well
+--    self._attack_info = stonehearth.combat:choose_attack_action(entity, self._attack_types)
+
+--    if self._attack_info then
+--       log:debug('%s attack_ranged %s, selected attack action %s, setting think output', entity, args.target, self._attack_info.name)
+--       ai:set_think_output()
+--       log:debug('set think output')
+--       return
+--    end
+
+--    -- choose_attack_action might have complex logic, so just wait 1 second and try again
+--    -- instead of trying to guess which coolodowns to track
+--    log:debug('%s attack_ranged %s, setting up timer to wait for cooldown', entity, args.target)
+--    self._think_timer = stonehearth.combat:set_timer("AttackRanged waiting for cooldown", 1000, function()
+--          log:debug('%s attack_ranged %s _choose_attack_action from timer', entity, args.target)
+--          self._think_timer = nil
+--          self:_choose_attack_action(ai, entity, args)
+--       end)
+-- end
+
+-- function AceAttackRanged:run(ai, entity, args)
+--    log:debug('%s attack_ranged %s, running', entity, args.target)
+--    local target = args.target
+--    ai:set_status_text_key('stonehearth:ai.actions.status_text.attack_melee_adjacent', { target = target })
+
+--    if radiant.entities.is_standing_on_ladder(entity) then
+--       -- We generally want to prohibit combat on ladders. This case is particularly unfair,
+--       -- because the ranged unit can attack, but melee units can't find an adjacent to retaliate.
+--       ai:abort('Cannot attack attack while standing on ladder')
+--    end
+
+--    -- should be get_ranged_weapon
+--    local weapon = stonehearth.combat:get_main_weapon(entity)
+--    if not weapon or not weapon:is_valid() then
+--       log:warning('%s no longer has a valid weapon', entity)
+--       ai:abort('Attacker no longer has a valid weapon')
+--    end
+
+--    if not stonehearth.combat:in_range_and_has_line_of_sight(entity, args.target, weapon) then
+--       ai:abort('Target out of ranged weapon range or not in sight')
+--       return
+--    end
+
+--    log:debug('not aborting, turning to face target', entity, args.target)
+--    radiant.entities.turn_to_face(entity, target)
+
+--    log:debug('starting cooldown')
+--    stonehearth.combat:start_cooldown(entity, self._attack_info)
+
+--    log:debug('unprotecting target')
+--    -- the target might die when we attack them, so unprotect now!
+--    ai:unprotect_argument(target)
+
+--    log:debug('setting up shoot timers')
+--    -- time_to_impact on the attack action is a misnomer for ranged attacks
+--    -- it's really the time the projectile is launched
+--    self._shoot_timers = {}
+--    if self._attack_info.impact_times then
+--       for _, time in ipairs(self._attack_info.impact_times) do
+--          log:debug('adding multi shoot timer at %s', time)
+--          self:_add_shoot_timer(entity, target, time)
+--       end
+--    else
+--       log:debug('adding single shoot timer at %s', self._attack_info.time_to_impact)
+--       self:_add_shoot_timer(entity, target, self._attack_info.time_to_impact)
+--    end
+
+--    log:debug('running attack effect')
+--    ai:execute('stonehearth:run_effect', { effect = self._attack_info.effect })
+-- end
+
 function AceAttackRanged:_shoot(attacker, target, weapon_data)
    if not target:is_valid() then
       return

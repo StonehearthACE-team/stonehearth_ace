@@ -5,6 +5,8 @@ local get_root_entity = function(item)
    return entity_forms.get_root_entity(item) or item
 end
 
+local log = radiant.log.create_logger('repair_entity_action')
+
 local RepairEntity = radiant.class()
 
 RepairEntity.name = 'repair entity'
@@ -13,14 +15,8 @@ RepairEntity.status_text_key = 'stonehearth_ace:ai.actions.status_text.repair'
 RepairEntity.args = {}
 RepairEntity.priority = {0, 1}
 
-function RepairEntity:start_thinking(ai, entity, args)
-   local player_id = radiant.entities.get_player_id(entity)
-   local job = entity:add_component('stonehearth:job')
-   local job_uri = job:get_job_uri()
+local function make_is_repairable_filter(player_id, can_repair_as_any_job, can_repair_as_job)
    local job_infos = {}
-   local job_controller = job:get_curr_job_controller()
-   local can_repair_as_any_job = job_controller:can_repair_as_any_job()
-   local can_repair_as_job = radiant.util.merge_into_table({ [job_uri] = true }, job_controller:get_can_repair_as_jobs())
    local can_repair_array = {}
 
    -- we want to always report the job uris in the same order for caching purposes, so add to an array and sort
@@ -48,7 +44,7 @@ function RepairEntity:start_thinking(ai, entity, args)
       end
 
       for _, uri in ipairs(can_repair_array) do
-         if job_infos[uri]:job_can_craft(get_root_entity(item):get_uri()) then
+         if repairable_by_job[uri] ~= false and job_infos[uri]:job_can_craft(get_root_entity(item):get_uri()) then
             return true
          end
       end
@@ -56,7 +52,7 @@ function RepairEntity:start_thinking(ai, entity, args)
       return false
    end
 
-   local filter_fn = stonehearth.ai:filter_from_key('stonehearth:repair', key, function(item)
+   return stonehearth.ai:filter_from_key('stonehearth:repair', key, function(item)
          if not item or not item:is_valid() then
             return false
          end
@@ -71,6 +67,7 @@ function RepairEntity:start_thinking(ai, entity, args)
 
          -- make sure entity is craftable by this job (or specifies that it's repairable by it)
          -- setting fields to false specifically makes them not repairable even if they otherwise could be crafted by that/any job
+         log:debug('%s about to check if %s is repairable by job', player_id, item)
          if entity_data.repairable_by_any_job == false then
             return false
          elseif not can_repair_as_any_job and not is_repairable(item, entity_data.repairable_by_job or {}) then
@@ -89,6 +86,17 @@ function RepairEntity:start_thinking(ai, entity, args)
          end
          return false
       end)
+end
+
+function RepairEntity:start_thinking(ai, entity, args)
+   local player_id = radiant.entities.get_player_id(entity)
+   local job = entity:add_component('stonehearth:job')
+   local job_uri = job:get_job_uri()
+   local job_controller = job:get_curr_job_controller()
+   local can_repair_as_any_job = job_controller:can_repair_as_any_job()
+   local can_repair_as_job = radiant.util.merge_into_table({ [job_uri] = true }, job_controller:get_can_repair_as_jobs())
+
+   local filter_fn = make_is_repairable_filter(player_id, can_repair_as_any_job, can_repair_as_job)
 
    -- prioritize repairing structural entities, deprioritize training dummies
    local rating_fn = function(item)

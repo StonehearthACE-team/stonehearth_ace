@@ -39,7 +39,7 @@ function Train:start_thinking(ai, entity, args)
    ai:set_think_output({entity = entity})
 end
 
-function _should_abort(source, training_enabled)
+local function _should_abort(source, training_enabled)
    return not training_enabled
 end
 
