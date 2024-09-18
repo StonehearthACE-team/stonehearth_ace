@@ -44,11 +44,18 @@ function AceSiegeWeaponComponent:_on_target_hit(context)
    end
    self._sv.num_uses = num_uses
    if self:needs_refill() then
-      if not self._json.passive_refill or not reloadable then
-         radiant.events.trigger(self._entity, 'stonehearth:siege_weapon:needs_refill')
-      end
+      radiant.events.trigger(self._entity, 'stonehearth:siege_weapon:needs_refill')
    end
    self.__saved_variables:mark_changed()
+end
+
+AceSiegeWeaponComponent._ace_old_needs_refill = SiegeWeaponComponent.needs_refill
+function AceSiegeWeaponComponent:needs_refill()
+   if self._json.passive_refill or self._json.reloadable then
+      return false
+   end
+
+   self:_ace_old_needs_refill()
 end
 
 function AceSiegeWeaponComponent:_on_kill_event(args)
