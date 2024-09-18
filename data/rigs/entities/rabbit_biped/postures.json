@@ -1,123 +1,139 @@
 {
-   "stonehearth:ghost" : {
-      "run" : "run_ghost"
+   "stonehearth:climb_ladder_up": {
+      "run" : "run_climb_ladder_up",
+      "run_no_carry": "run_climb_ladder_up_no_carry",
+      "happy_run_no_carry": "run_climb_ladder_up_no_carry",
+      "sad_run_no_carry": "run_climb_ladder_up_no_carry"
    },
-   "stonehearth:witch" : {
-      "run" : "run_witch"
+   "stonehearth:climb_ladder_down": {
+      "run" : "run_climb_ladder_down",
+      "run_no_carry": "run_climb_ladder_down_no_carry",
+      "happy_run_no_carry": "run_climb_ladder_down_no_carry",
+      "sad_run_no_carry": "run_climb_ladder_down_no_carry"
    },
-   "stonehearth:vampire" : {
-      "run" : "run_vampire"
+   "stonehearth:ghost": {
+      "run": "run_ghost"
    },
-   "stonehearth:zombie" : {
-      "run" : "run_zombie",
-      "idle_breathe" : "zombie_idle_look_around",
-      "idle_count" : "zombie_idle_sway",
-      "idle_look_around" : "zombie_idle_look_around",
-      "idle_sway" : "zombie_idle_sway",
-      "combat_1h_backhand" : "zombie_combat_1h_backhand",
-      "combat_1h_forehand" : "zombie_combat_1h_forehand",
-      "combat_1h_forehand_spin" : "zombie_combat_1h_forehand_spin",
-      "combat_2h_attack" : "zombie_combat_2h_attack"
+   "stonehearth:witch": {
+      "run": "run_witch"
    },
-   "stonehearth:sitting_on_chair" : {
-	  "sitting_drink" : "sitting_on_chair_drink"
+   "stonehearth:vampire": {
+      "run": "run_vampire"
    },
-   "stonehearth:mining_pick_posture" : {
-      "mine" : "mine_1"
+   "stonehearth:zombie": {
+      "run": "run_zombie",
+      "idle_breathe": "zombie_idle_look_around",
+      "idle_count": "zombie_idle_sway",
+      "idle_look_around": "zombie_idle_look_around",
+      "idle_sway": "zombie_idle_sway",
+      "combat_1h_backhand": "zombie_combat_1h_backhand",
+      "combat_1h_forehand": "zombie_combat_1h_forehand",
+      "combat_1h_forehand_spin": "zombie_combat_1h_forehand_spin",
+      "combat_2h_attack": "zombie_combat_2h_attack"
    },
-   "stonehearth:mining_pick_iron_posture" : {
-      "mine" : "mine_2"
+   "stonehearth:sitting_on_chair": {
+      "sitting_drink": "sitting_on_chair_drink"
    },
-   "stonehearth:mining_pick_steel_posture" : {
-      "mine" : "mine_3"
+   "stonehearth:mining_pick_posture": {
+      "mine": "mine_1"
    },
-   "stonehearth:worker_axe_posture" : {
-      "chop" : "chop_1"
+   "stonehearth:mining_pick_iron_posture": {
+      "mine": "mine_2"
    },
-   "stonehearth:worker_axe_iron_posture" : {
-      "chop" : "chop_2"
+   "stonehearth:mining_pick_steel_posture": {
+      "mine": "mine_3"
    },
-   "stonehearth:worker_axe_steel_posture" : {
-      "chop" : "chop_3"
+   "stonehearth:worker_axe_posture": {
+      "chop": "chop_1"
    },
-   "stonehearth:worker_hammer_posture" : {
-      "work" : "work_1",
-	  "work_high" : "work_high_1"
+   "stonehearth:worker_axe_iron_posture": {
+      "chop": "chop_2"
    },
-   "stonehearth:worker_hammer_iron_posture" : {
-      "work" : "work_2",
-	  "work_high" : "work_high_2"
+   "stonehearth:worker_axe_steel_posture": {
+      "chop": "chop_3"
    },
-   "stonehearth:worker_hammer_steel_posture" : {
-      "work" : "work_3",
-	  "work_high" : "work_high_3"
+   "stonehearth:worker_hammer_posture": {
+      "work": "work_1",
+      "work_high": "work_high_1"
    },
-   "stonehearth:worker_shovel_posture" : {
-      "shovel" : "shovel_1"
+   "stonehearth:worker_hammer_iron_posture": {
+      "work": "work_2",
+      "work_high": "work_high_2"
    },
-   "stonehearth:worker_shovel_iron_posture" : {
-      "shovel" : "shovel_2"
+   "stonehearth:worker_hammer_steel_posture": {
+      "work": "work_3",
+      "work_high": "work_high_3"
    },
-   "stonehearth:worker_shovel_steel_posture" : {
-      "shovel" : "shovel_3"
+   "stonehearth:worker_shovel_posture": {
+      "shovel": "shovel_1"
    },
-   "stonehearth:farmer_hoe_iron_posture" : {
-      "hoe" : "hoe_2"
+   "stonehearth:worker_shovel_iron_posture": {
+      "shovel": "shovel_2"
    },
-	"stonehearth:cook_spoon_copper_posture" : {
-      "work_cook_dough" : "work_cook_dough_2"
+   "stonehearth:worker_shovel_steel_posture": {
+      "shovel": "shovel_3"
    },
-	"stonehearth:herbalist_mortar_pewter_posture" : {
-      "herbalist_grind" : "herbalist_grind_2"
+   "stonehearth:farmer_hoe_iron_posture": {
+      "hoe": "hoe_2"
    },
-	"stonehearth:carpenter_saw_steel_posture" : {
-      "saw" : "saw_2"
+   "stonehearth:cook_spoon_copper_posture": {
+      "work_cook_dough": "work_cook_dough_2"
    },
-	"stonehearth:engineer_wrench_steel_posture" : {
-      "wrench" : "wrench_2"
+   "stonehearth:herbalist_mortar_pewter_posture": {
+      "herbalist_grind": "herbalist_grind_2"
    },
-	"stonehearth:mason_chisel_iron_posture" : {
-      "chisel" : "chisel_2"
+   "stonehearth:carpenter_saw_steel_posture": {
+      "saw": "saw_2"
    },
-	"stonehearth:trapper_knife_steel_posture" : {
-      "fiddle" : "fiddle_2",
-		"work_trapper_set": "work_trapper_set_2"
+   "stonehearth:engineer_wrench_steel_posture": {
+      "wrench": "wrench_2"
    },
-	"stonehearth:passed_out" : {
-      "sleep" : "passed_out"
+   "stonehearth:mason_chisel_iron_posture": {
+      "chisel": "chisel_2"
    },
-   "stonehearth:cover_face" : {
-		"run": "run_cover_face"
-	},
-   "stonehearth:guarding" : {
-		"idle_breathe": "combat_1h_idle"
-	},
-   "stonehearth:backpack_leather_posture" : {
-	  "carry_pickup": "carry_pickup_2",
-	  "carry_pickup_from_table": "carry_pickup_from_table_2",
-	  "carry_pickup_high": "carry_pickup_high_2",
-	  "carry_pickup_mid": "carry_pickup_mid_2",
-	  "carry_putdown": "carry_putdown_2",
-	  "carry_putdown_on_table": "carry_putdown_on_table_2",
-	  "carry_putdown_high": "carry_putdown_high_2",
-	  "carry_putdown_mid": "carry_putdown_mid_2",
-      "idle_breathe" : "idle_breathe_no_carry",
-      "run" : "run_no_carry",
-		"run_climb_ladder_up": "run_climb_ladder_up_no_carry",
-		"run_climb_ladder_down": "run_climb_ladder_down_no_carry"
+   "stonehearth:trapper_knife_steel_posture": {
+      "fiddle": "fiddle_2",
+      "work_trapper_set": "work_trapper_set_2"
    },
-   "stonehearth:backpack_cloth_posture" : {
-	  "carry_pickup": "carry_pickup_1",
-	  "carry_pickup_from_table": "carry_pickup_from_table_1",
-	  "carry_pickup_high": "carry_pickup_high_1",
-	  "carry_pickup_mid": "carry_pickup_mid_1",
-	  "carry_putdown": "carry_putdown_1",
-	  "carry_putdown_on_table": "carry_putdown_on_table_1",
-	  "carry_putdown_high": "carry_putdown_high_1",
-	  "carry_putdown_mid": "carry_putdown_mid_1",
-      "idle_breathe" : "idle_breathe_no_carry",
-      "run" : "run_no_carry",
-		"run_climb_ladder_up": "run_climb_ladder_up_no_carry",
-		"run_climb_ladder_down": "run_climb_ladder_down_no_carry"
+   "stonehearth:passed_out": {
+      "sleep": "passed_out"
+   },
+   "stonehearth:cover_face": {
+      "run": "run_cover_face"
+   },
+   "stonehearth:guarding": {
+      "idle_breathe": "combat_1h_idle"
+   },
+   "stonehearth:backpack_leather_posture": {
+      "carry_pickup": "carry_pickup_2",
+      "carry_pickup_from_table": "carry_pickup_from_table_2",
+      "carry_pickup_high": "carry_pickup_high_2",
+      "carry_pickup_mid": "carry_pickup_mid_2",
+      "carry_putdown": "carry_putdown_2",
+      "carry_putdown_on_table": "carry_putdown_on_table_2",
+      "carry_putdown_high": "carry_putdown_high_2",
+      "carry_putdown_mid": "carry_putdown_mid_2",
+      "idle_breathe": "idle_breathe_no_carry",
+      "run": "run_no_carry",
+      "happy_run": "happy_run_no_carry",
+      "sad_run": "sad_run_no_carry",
+      "run_climb_ladder_up": "run_climb_ladder_up_no_carry",
+      "run_climb_ladder_down": "run_climb_ladder_down_no_carry"
+   },
+   "stonehearth:backpack_cloth_posture": {
+      "carry_pickup": "carry_pickup_1",
+      "carry_pickup_from_table": "carry_pickup_from_table_1",
+      "carry_pickup_high": "carry_pickup_high_1",
+      "carry_pickup_mid": "carry_pickup_mid_1",
+      "carry_putdown": "carry_putdown_1",
+      "carry_putdown_on_table": "carry_putdown_on_table_1",
+      "carry_putdown_high": "carry_putdown_high_1",
+      "carry_putdown_mid": "carry_putdown_mid_1",
+      "idle_breathe": "idle_breathe_no_carry",
+      "run": "run_no_carry",
+      "happy_run": "happy_run_no_carry",
+      "sad_run": "sad_run_no_carry",
+      "run_climb_ladder_up": "run_climb_ladder_up_no_carry",
+      "run_climb_ladder_down": "run_climb_ladder_down_no_carry"
    }
 }

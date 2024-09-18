@@ -1,20 +1,12 @@
 {
    "type": "effect",
-   "tracks": {
-      "animation": {
-         "type": "animation_effect",
+   "mixins": "/stonehearth/data/rigs/entities/humans/effects/run.json",
+   "tracks": {  
+      "hide_carrying" : {
+         "type": "hide_bone",
          "start_time": 0,
-         "animation": "run_no_carry.json",
-         "loop": true
-      },
-      "sound": {
-         "type": "sound_effect",
-         "loop": true,
-         "start_time": 0,
-         "min_distance": 20,
-         "falloff": 5,
-         "volume": 40,
-         "track": "stonehearth:sounds:footsteps_run_sound"
-      }
+         "end_time": 0,
+         "bone": "carry"
+      }  
    }
 }
