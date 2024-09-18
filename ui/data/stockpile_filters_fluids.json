@@ -1,17 +1,5 @@
 {
    "stockpile": {
-      "resources": {
-         "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_resources)",
-         "ordinal": 1,
-         "categories": {
-            "water_bucket": {
-               "ordinal": 1,
-               "display_name": "i18n(stonehearth_ace:entities.landmark.terrain_water_bucket.display_name)",
-               "icon": "/stonehearth_ace/entities/landmark/terrain_water_bucket/terrain_water_bucket.png",
-               "filter": "resource water small"
-            }
-         }
-      },
       "raw_drinks": {
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_raw_drinks)",
          "ordinal": 2,
@@ -730,50 +718,56 @@
          "display_name": "i18n(stonehearth_ace:ui.game.zones_mode.stockpile.filters.tooltip_fluids)",
          "ordinal": 6,
          "categories": {
-            "cooking_oil": {
+            "water_bucket": {
                "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:entities.landmark.terrain_water_bucket.display_name)",
+               "icon": "/stonehearth_ace/entities/landmark/terrain_water_bucket/terrain_water_bucket.png",
+               "filter": "resource water small"
+            },
+            "cooking_oil": {
+               "ordinal": 2,
                "display_name": "i18n(stonehearth_ace:entities.food.cooking_oil.display_name)",
                "icon": "/stonehearth_ace/entities/food/cooking_oil/cooking_oil.png",
                "filter": "oil cooking_ingredient"
             },
             "vinegar": {
-               "ordinal": 1.1,
+               "ordinal": 2.1,
                "display_name": "i18n(stonehearth_ace:entities.food.vinegar.vinegar.display_name)",
                "icon": "/stonehearth_ace/entities/food/vinegar/vinegar/vinegar.png",
                "filter": "vinegar cooking_ingredient"
             },
             "condiment": {
-               "ordinal": 1.5,
+               "ordinal": 2.5,
                "display_name": "i18n(stonehearth_ace:entities.food.condiment.display_name)",
                "icon": "/stonehearth_ace/entities/food/condiment/condiment.png",
                "filter": "condiment standard cooking_ingredient"
             },
             "butter": {
-               "ordinal": 2,
+               "ordinal": 3,
                "display_name": "i18n(stonehearth_ace:entities.food.dairy.butter.display_name)",
                "icon": "/stonehearth_ace/entities/food/dairy/butter/butter.png",
                "filter": "butter standard cooking_ingredient"
             },
             "whey_butter": {
-               "ordinal": 2.1,
+               "ordinal": 3.1,
                "display_name": "i18n(stonehearth_ace:entities.food.dairy.whey_butter.display_name)",
                "icon": "/stonehearth_ace/entities/food/dairy/whey_butter/whey_butter.png",
                "filter": "butter whey cooking_ingredient"
             },
             "bog_butter": {
-               "ordinal": 2.2,
+               "ordinal": 3.2,
                "display_name": "i18n(stonehearth_ace:entities.food.dairy.bog_butter.display_name)",
                "icon": "/stonehearth_ace/entities/food/dairy/bog_butter/bog_butter.png",
                "filter": "butter bog cooking_ingredient"
             },
             "cream": {
-               "ordinal": 3,
+               "ordinal": 3.5,
                "display_name": "i18n(stonehearth_ace:entities.food.dairy.cream.display_name)",
                "icon": "/stonehearth_ace/entities/food/dairy/cream/cream.png",
                "filter": "cream standard cooking_ingredient"
             },
             "cream_sour": {
-               "ordinal": 3.1,
+               "ordinal": 3.6,
                "display_name": "i18n(stonehearth_ace:entities.food.dairy.cream_sour.display_name)",
                "icon": "/stonehearth_ace/entities/food/dairy/cream_sour/cream_sour.png",
                "filter": "cream sour cooking_ingredient"
