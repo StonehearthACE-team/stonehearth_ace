@@ -55,7 +55,7 @@ function AceSiegeWeaponComponent:needs_refill()
       return false
    end
 
-   self:_ace_old_needs_refill()
+   return self:_ace_old_needs_refill()
 end
 
 function AceSiegeWeaponComponent:_on_kill_event(args)
