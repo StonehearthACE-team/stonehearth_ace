@@ -1,0 +1,37 @@
+{
+   "type": "recipe",
+   "effort": 60,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.bookcase_door_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.bookcase_door_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.bookcase_door_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/construction/candledark/bookcase_door/bookcase_door.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "manual_unlock": true,
+   "level_requirement": 6,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 6
+      },
+      {
+         "uri": "stonehearth_ace:refined:metal_bits:hard",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:loot:gold",
+         "count": 1,
+         "min_stacks": 240
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:portals:candledark:bookcase_door",
+         "produce_scripts": ["stonehearth_ace:craft_script:stacks_per_product"],
+         "max_crafts": 1,
+         "stacks_per_product": {
+            "stonehearth:loot:gold": 240
+         }
+      }
+   ]
+}

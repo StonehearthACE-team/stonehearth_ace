@@ -1,0 +1,42 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(old_chair.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.045, "y": 0, "z": 0.045 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:marble",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ],
+         "scale": 0.09
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.candledark.old_chair.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.candledark.old_chair.description)",
+         "icon": "file(old_chair.png)",
+         "category": "furniture",
+         "material_tags": [
+            "wood",
+            "olden",
+            "fancy",
+            "furniture",
+            "crafted",
+            "chair",
+            "festival",
+            "candledark",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

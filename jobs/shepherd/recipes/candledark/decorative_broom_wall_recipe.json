@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 20,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.shepherd.recipes.candledark.decorative_broom_wall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.shepherd.recipes.candledark.decorative_broom_wall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.shepherd.recipes.candledark.decorative_broom_wall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/candledark/decorative_broom_wall/decorative_broom_wall.png",
+	"manual_unlock": true,
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "material": "thatch resource",
+         "count": 2
+      },
+      {
+         "material": "thread resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:candledark:decorative_broom_wall"
+      }
+   ]
+}

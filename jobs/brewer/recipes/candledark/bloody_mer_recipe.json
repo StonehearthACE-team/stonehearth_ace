@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.candledark.bloody_mer_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.candledark.bloody_mer_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.candledark.bloody_mer_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/drink/candledark/bloody_mer/bloody_mer.png",
+   "level_requirement": 4,
+	"manual_unlock": true,
+   "workshop": "stonehearth_ace:brewer:workbench",
+   "ingredients": [
+      {
+         "uri": "stonehearth:amberstone:heirbloom_basket",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth_ace:drink:spirit",
+         "count": 1
+      },
+      {
+         "material": "herb zesty resource",
+         "count": 1
+      },
+      {
+         "material": "herb soothing resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:drink:candledark:bloody_mer"
+      }
+   ]
+}

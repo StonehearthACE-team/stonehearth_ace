@@ -1,0 +1,54 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(bloody_mer_serving.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:candledark",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json",
+            "/stonehearth/data/materials/material_maps/glass_material_map.json"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "drink",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth_ace:drink": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 78
+         },
+         "default": {
+            "satisfaction": 55
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:fruity_flavors",
+            "stonehearth_ace:buffs:consumption:refreshed_belly",
+            "stonehearth_ace:buffs:consumption:light_headed"
+         ],
+         "quality": 6,
+         "effect_loops": 3
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.candledark.bloody_mer.serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.candledark.bloody_mer.serving.description)",
+         "material_tags": [
+            "drink",
+            "alcoholic",
+            "bloody_mer_serving",
+            "bloody_mer",
+            "night_time",
+            "refreshing"
+         ],
+         "subject_override": "stonehearth_ace:drink:candledark:bloody_mer"
+      }
+   }
+}
