@@ -1,0 +1,33 @@
+{
+   "type": "recipe",
+   "effort": 12,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.literary_skull_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.literary_skull_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.candledark.literary_skull_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/candledark/literary_skull/literary_skull.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 3,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:resources:bone:bone_skull",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:loot:gold",
+         "count": 1,
+         "min_stacks": 12
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:candledark:literary_skull",
+         "produce_scripts": ["stonehearth_ace:craft_script:stacks_per_product"],
+         "max_crafts": 1,
+         "stacks_per_product": {
+            "stonehearth:loot:gold": 12
+         }
+      }
+   ]
+}

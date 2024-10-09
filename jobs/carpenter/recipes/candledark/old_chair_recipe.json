@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 27,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.old_chair_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.old_chair_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.old_chair_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/candledark/old_chair/old_chair.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "manual_unlock": true,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth:refined:cloth_bolt",
+         "count": 1
+      },
+	   {
+         "uri": "stonehearth_ace:refined:fine_stuffing",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:candledark:old_chair"
+      }
+   ]
+}

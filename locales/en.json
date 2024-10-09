@@ -4411,6 +4411,10 @@
                   "nibbles": {
                      "display_name": "Attacked by a Vampire!",
                      "tooltip": "Gah! They're so scary!"
+                  },
+                  "turned_cured": {
+                     "display_name": "I AM CURED!",
+                     "tooltip": "I can't believe it! I've seen life leave me with my own eyes, but... It's back! I have been cured!"
                   }
                }
             }
@@ -5642,6 +5646,30 @@
                      "2_description": "They have been enthralled two times now! Maybe stop going out with Vampires?",
                      "3_display_name": ", One Between Worlds",
                      "3_description": "They have been enthralled 3 times! The world of undeath is not even scary anymore!"
+                  },
+                  "vampire_killer": {
+                     "display_name": "🎃 Candledark - Vampire Killer",
+                     "description": "Gained by killing vampires during the Candledark event!",
+                     "1_display_name": " the Silver-Touched",
+                     "1_description": "They have killed a Vampire!",
+                     "6_display_name": ", Heartstaker",
+                     "6_description": "They have killed 6 Vampires! Maybe they should head back home after dark?",
+                     "15_display_name": " the Unafraid",
+                     "15_description": "They have killed 15 Vampires! That's a lot of people to send back to the abyss...",
+                     "40_display_name": " the Vampire Slayer",
+                     "40_description": "They have killed 40 Vampires! We might as well start calling them Buffy!"
+                  },
+                  "witch_killer": {
+                     "display_name": "🎃 Candledark - Witch Killer",
+                     "description": "Gained by killing Witches during the Candledark event!",
+                     "1_display_name": ", Apprentice Witcher",
+                     "1_description": "They have killed a Witch!",
+                     "4_display_name": ", Hag's Bane",
+                     "4_description": "They have killed 4 Witches! Who's afraid of bedtime stories now?",
+                     "10_display_name": " the Broom-breaker",
+                     "10_description": "They have killed 10 Witches! The terror of the swamp!",
+                     "25_display_name": ", Witch Hunter",
+                     "25_description": "They have killed 25 Witches! So many pointy hats to collect!"
                   }
                }
             }
@@ -9162,6 +9190,11 @@
                   "recipe_name": "Candledark Pumpkin Candy Basket",
                   "description": "Create a special basket for people to collect Candledark treats and other goodies!",
                   "flavor": "They can hold treats, desserts, baked food and festive food"
+               },
+               "literary_skull_recipe": {
+                  "recipe_name": "Candledark Literary Skull",
+                  "description": "Buy a couple of books and put a skull on top of them, for some reason...",
+                  "flavor": "Why do we need an Herbalist to create this?! Well, someone has to run off and buy the books..."
                },
                "vampire_salve_recipe": {
                   "recipe_name": "Candledark Garlic & Nightshade Salve",
@@ -12866,9 +12899,39 @@
                   "flavor": ""
                },
                "casket_bed_recipe": {
-                  "recipe_name": "Candledark Wooden Casket Bed",
-                  "description": "Create a casket that can be used as a bed by a hearthling or traveler. The Wooden Casket is a comfortable bed.",
+                  "recipe_name": "Candledark Olden Casket Bed",
+                  "description": "Create a casket that can be used as a bed by a hearthling or traveler. This wooden casket is a comfortable bed.",
                   "flavor": "Ideal for very, very long rests..."
+               },
+               "banquet_table_old_recipe": {
+                  "recipe_name": "Candledark Olden Banquet Table",
+                  "description": "Craft a fancy and quite long table to furnish the most exquisite feasting halls or dining rooms.",
+                  "flavor": "Or maybe for some sort of secret meeting"
+               },
+               "old_chair_recipe": {
+                  "recipe_name": "Candledark Olden Chair",
+                  "description": "Create a comfortable, fancy chair that looks like it belong to a very old and spooky manor.",
+                  "flavor": "Also useful for sitting down"
+               },
+               "old_bench_recipe": {
+                  "recipe_name": "Candledark Olden Bench",
+                  "description": "A very comfortable and fancy seating, ideal for sprucing up your common room.",
+                  "flavor": ""
+               },
+               "bookcase_short_recipe": {
+                  "recipe_name": "Candledark Olden Bookcase (Short)",
+                  "description": "Buy some books and build a pair of fancy shelves for them. Short Bookcases can be placed on walls as well.",
+                  "flavor": "Experiment various ways of placing them for the ultimate library!"
+               },
+               "bookcase_tall_recipe": {
+                  "recipe_name": "Candledark Olden Bookcase (Tall)",
+                  "description": "Buy a lot of books and craft a very fancy and exquisite bookcase for them.",
+                  "flavor": "What? You expect me to actually write all that? -the Carpenter"
+               },
+               "bookcase_door_recipe": {
+                  "recipe_name": "Candledark Hidden Bookcase Door",
+                  "description": "Create a bookcase with some cool mechanism to be able to open it like a door! Your very own secret passage...",
+                  "flavor": "It can be locked or unlocked, and enemies can't see it!"
                }
             },
             "wooden_shield_recipe": {
@@ -13527,6 +13590,16 @@
                   "recipe_name": "Tall Candledark Haystack",
                   "description": "A taller haystack, tall enough to be the walls of a labyrinth!",
                   "flavor": "How many hay bales can we stack?"
+               },
+               "decorative_broom_recipe": {
+                  "recipe_name": "Candledark Decorative Broom",
+                  "description": "Put down a broom leaning against a wall to show everyone that you do sweep the floor!",
+                  "flavor": "Sometimes..."
+               },
+               "decorative_broom_wall_recipe": {
+                  "recipe_name": "Candledark Decorative Broom (Wall)",
+                  "description": "A simple, wicked broom to be hanged on a wall!",
+                  "flavor": "The latest solution on parking for witches!"
                }
             }
          },
@@ -14355,6 +14428,11 @@
                "tea_cider_recipe": {
                   "recipe_name": "Candledark Apple Tea",
                   "description": "Warm and flavorful tea, perfect for an evening on the porch watching the last autumn rains...",
+                  "flavor": "Candledark beverages must be placed down before consumed"
+               },
+               "bloody_mer_recipe": {
+                  "recipe_name": "Candledark Bloody Mer",
+                  "description": "A delicious and refreshing alcoholic drink. Legend has it was created by the liaison of the underworld, Mer Bloodyhands...",
                   "flavor": "Candledark beverages must be placed down before consumed"
                }
             }
@@ -15586,6 +15664,13 @@
             "cobblestone_grate_fence_bar_double": {
                "display_name": "Candledark Graveyard Fence Long",
                "description": "Keeping the Undead from escaping graveyards since time immemorial."
+            },
+            "bookcase_door": {
+               "description": "Wait a second! This bookcase looks rather suspicious...",
+               "iconic": {
+                  "display_name": "Candledark Hidden Bookcase Door",
+                  "description": "Very sneaky! Very mysterious! Your own secret passage. Enemies will not be able to see it."
+               }
             }
          },
          "ladder_rope": {
@@ -18815,7 +18900,7 @@
          },
          "candledark": {
             "casket_bed": {
-               "display_name": "Candledark Wooden Casket Bed",
+               "display_name": "Candledark Olden Casket Bed",
                "description": "Fulfill your lifelong dream of being a Vampire or just go for a really long nap in this comfy bed."
             },
             "casket_bed_porcelain": {
@@ -18825,6 +18910,26 @@
             "sarcophagus_bed": {
                "display_name": "Candledark Stone Tomb Bed",
                "description": "Not really comfortable... And a bit scary inside. But hey, you can probably sleep in there!"
+            },
+            "banquet_table_old": {
+               "display_name": "Candledark Olden Banquet Table",
+               "description": "Perfect for a cozy feast hall or a dark meeting room of otherworldly creatures."
+            },
+            "bookcase_short": {
+               "display_name": "Candledark Olden Bookcase (Short)",
+               "description": "Can also be stacked or placed on walls for creating great libraries!"
+            },
+            "bookcase_tall": {
+               "display_name": "Candledark Olden Bookcase (Tall)",
+               "description": "Contains a lot of knowledge. Librarian not included."
+            },
+            "old_bench": {
+               "display_name": "Candledark Olden Couch",
+               "description": "Excellent for sharing spooky stories by the fireplace..."
+            },
+            "old_chair": {
+               "display_name": "Candledark Olden Chair",
+               "description": "It's a complete set with stuffed pillows, back support and a creaking leg."
             }
          },
          "pet_urn": {
@@ -20589,6 +20694,18 @@
             "tombstone_tall": {
                "display_name": "Tall Candledark Tombstone",
                "description": "An enchanted tombstone that creates a weird fog around it. Spooky!"
+            },
+            "decorative_broom": {
+               "display_name": "Candledark Decorative Broom",
+               "description": "Don't place it near the door or your guests might find it upsetting!"
+            },
+            "decorative_broom_wall": {
+               "display_name": "Candledark Wall-hanging Decorative Broom",
+               "description": "The latest solution in parking for witches!"
+            },
+            "literary_skull": {
+               "display_name": "Candledark Literary Skull",
+               "description": "To be, or not to be: that is the question. Or is it?"
             }
          },
          "ember_ashes": {
@@ -25847,6 +25964,15 @@
                "serving": {
                   "display_name": "Cup of Candledark Apple Tea",
                   "description": "Hot and delicious!"
+               }
+            },
+            "bloody_mer": {
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "display_name": "Candledark Bloody Mer",
+               "description": "A very refreshing and flavorful alcoholic drink, a favorite among night owls!",
+               "serving": {
+                  "display_name": "Glass of Bloody Mer",
+                  "description": "As colds as the hands of Mer Bloodyhands!"
                }
             }
          },

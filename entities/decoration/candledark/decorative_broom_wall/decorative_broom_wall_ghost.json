@@ -1,0 +1,56 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(decorative_broom_wall.qb)",
+                     "file(decorative_broom_wall_2.qb)"
+                  ]
+               }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(decorative_broom_wall.qb)"
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(decorative_broom_wall_2.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.6, "y": -0.1, "z": -0.4 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth_ace/data/rigs/entities/decoration/frostfeast/stocking/stocking.json"
+      },
+      "effect_list": {
+         "default": "/stonehearth_ace/data/rigs/entities/decoration/frostfeast/stocking/effects/idle.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.candledark.decorative_broom_wall.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.candledark.decorative_broom_wall.description)",
+         "icon": "file(decorative_broom_wall.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "festival",
+            "candledark",
+            "stockpile_decoration"
+         ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
+      }
+   }
+}

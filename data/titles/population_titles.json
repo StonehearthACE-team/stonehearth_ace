@@ -3499,5 +3499,87 @@
             "renown": 800
          }
       ]
+   },
+   "candledark_witch_killer": {
+      "ordinal": 503,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.witch_killer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.witch_killer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_kills",
+            "name": "candledark_witch"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.witch_killer.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.witch_killer.1_description)",
+            "required_value": 1,
+            "renown": 45
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.witch_killer.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.witch_killer.4_description)",
+            "required_value": 4,
+            "renown": 210
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.witch_killer.10_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.witch_killer.10_description)",
+            "required_value": 10,
+            "renown": 450
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.witch_killer.25_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.witch_killer.25_description)",
+            "required_value": 25,
+            "renown": 920
+         }
+      ]
+   },
+   "candledark_vampire_killer": {
+      "ordinal": 504,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.vampire_killer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.vampire_killer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "category_kills",
+            "name": "candledark_vampire"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.vampire_killer.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.vampire_killer.1_description)",
+            "required_value": 1,
+            "renown": 50
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.vampire_killer.6_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.vampire_killer.6_description)",
+            "required_value": 6,
+            "renown": 320
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.vampire_killer.15_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.vampire_killer.15_description)",
+            "required_value": 15,
+            "renown": 666
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.vampire_killer.40_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.candledark.vampire_killer.40_description)",
+            "required_value": 40,
+            "renown": 1100
+         }
+      ]
    }
 }
