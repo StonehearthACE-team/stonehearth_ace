@@ -1,0 +1,22 @@
+<script type="text/x-handlebars" data-template-name="stonehearthTaskManager">
+
+   <div id="taskManager">
+      <div id="meter"></div>
+      <div id="details" class="hidden">
+         <div id="categories">
+            {{#each c in view.categories}}
+               <div {{bind-attr class=":category :button c.usage" category="c.name"}} {{action "selectCategory" c.name target="view"}}>
+                  <div {{bind-attr class=":bar c.name"}}></div>
+                  <div class="name">{{c.name}}</div>
+                  <div class="value">{{c.value}}</div>
+               </div>
+            {{/each}}
+         </div>
+         <div id="charts">
+            <div id="selectedCategoryChart" class="chart idle"></div>
+            <div id="overallChart" class="chart"></div>
+         </div>
+      </div>
+   </div>
+
+</script>
