@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>Stonehearth UI</title>
+   <link rel="stylesheet" type="text/css" href="/stonehearth/ui/root/css/jqueryui.css" />
+   <link rel="stylesheet" type="text/css" href="/stonehearth/ui/root/css/animate.css" />
+   <link type="text/css" rel="stylesheet" href="/stonehearth/ui/root/css/rickshaw.min.css">
+   <link type="text/css" rel="stylesheet" href="/stonehearth/ui/root/css/jqtransform.css">
+
+   <!-- core radiant libraries -->
+   <script src="/radiant/js/external/underscore-1.5.2.min.js"></script>
+   <script src="/radiant/js/external/jquery-2.1.4.min.js"></script>
+   <script src="/radiant/js/external/simple_class.js"></script>
+   <script src="/radiant/js/radiant/core.js"></script>
+   <!-- <script src="/radiant/js/radiant/events.js"></script>-->
+   <script src="/radiant/js/radiant/object.js"></script>
+   <script src="/radiant/js/radiant/trace.js"></script>
+   <script src="/radiant/js/radiant/radiant_console.js"></script>
+
+   <!-- ui libraries -->
+   <script src="/stonehearth/ui/root/js/libs/less-1.3.3.min.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/jquery.stonehearth.effects.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/jquery-ui-1.10.3.min.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/i18next-1.10.1.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/modernizr.custom.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/jquery.dlmenu.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/jquery.togglegrid.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/jquery.tooltipster.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/jquery.lettering.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/jquery.fittext.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/jquery.textillate.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/jquery.jqtransform.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/turn.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/json_stable_stringify.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/minimist.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/jquery.ba-throttle-debounce.min.js"></script>
+
+   <script src="/stonehearth/ui/root/js/libs/handlebars-v1.3.0.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/ember-1.8.1.min.js"></script>
+   <script src="/stonehearth/ui/root/js/sound.js"></script>
+   <script src="/stonehearth/ui/root/js/input.js"></script>
+
+   <script src="/stonehearth/ui/root/js/libs/d3.min.js"></script>
+   <script src="/stonehearth/ui/root/js/libs/rickshaw.min.js"></script>
+
+   <script src="/stonehearth_ace/ui/root/js/libs/simple_queue.js"></script>
+
+   <script>
+      var _debug_show_untranslated = false;
+
+      var init_i18n = function(language, resourceStore) {
+         i18n.init({
+            lng: language,
+            fallbackLng: false,
+            ns: "stonehearth",
+            resStore: resourceStore,
+            resGetPath: '../../../[str(ns)]/locales/[str(lng)].json',
+            reusePrefix: 'i18n(',
+            parseMissingKey: function(missingKey) {
+               if (_debug_show_untranslated) {
+                  return "***"+missingKey+"***";
+               }
+               return missingKey;
+            },
+            maxRecursion: 8,
+         },
+         function() {
+            if (App) {
+               // Tell the app to load locales if the app has loaded modules.
+               // Unfortunately this has to be done because sometimes the app's
+               // modules loads before i18n, and sometimes i18n loads before app
+               // modules. :(
+               App.tryLoadLocales();
+            }
+         });
+
+      }
+
+      $.getJSON('/stonehearth/locales/supported_languages.json', function(data) {
+
+         var supportedLanguages = data.languages;
+         radiant.call('radiant:get_config', 'language')
+            .done(function(o) {
+               // Grab the default language from our configuration settings.
+               var language = o.language;
+               if (!language || !(language in supportedLanguages)) {
+                  language = 'en'
+               }
+
+               var languageData = supportedLanguages[language];
+               if (languageData.path) {
+                  $.getJSON(languageData.path, function(data) {
+                     var tmpResStore = {};
+                     tmpResStore[language] = {'stonehearth': data};
+                     init_i18n(language, tmpResStore);
+                  })
+               } else {
+                  init_i18n(language);
+               }
+
+            });
+         });
+
+   </script>
+   <!-- the app -->
+   <script src="/stonehearth/ui/root/js/app.js"></script>
+   <script src="/stonehearth/ui/root/js/helpers.js"></script>
+   <script src="/stonehearth/ui/root/js/stonehearth/stonehearth_client.js"></script>
+   <script src="/stonehearth/ui/root/js/stonehearth/view.js"></script>
+   <script src="/stonehearth/ui/root/js/stonehearth/container_view.js"></script>
+
+   <!-- the root view -->
+   <script src="/stonehearth/ui/root/js/root_view.js"></script>
+
+   <!-- start the app -->
+   <script>
+      window.onerror = function (message, file, line, column, error) {
+         //console.log('Error: ' + errorObj.stack);
+         var model = {
+            message: message,
+            file: file,
+            line: line,
+            error: error,
+         }
+         if (App.gameView) {
+            App.gameView.addView(App.StonehearthJsErrorDialogView, { model : model });
+         }
+         console.error(message);
+         console.error("File:" + file + " Line:" + line);
+         console.error(error.stack);
+
+         // the chromum console log is stifled under log level 3.  make sure it
+         // makes it into log level by sending the error directly to the client
+         radiant.call('radiant:browser_log', error.stack);
+         radiant.call('radiant:report_ui_error', message, file, error.stack, [{
+               "value": message,
+               "stacktrace": {
+                  "frames": [{
+                     "filename": file,
+                     "lineno": line,
+                     "colno": column
+                  }]
+               }
+            }
+         ]);
+         return true;
+      }
+
+      window.addEventListener("error", function (e) {
+         //console.log(e.error.message, "from", e.error.stack);
+      });
+
+      radiant.call('radiant:get_config', 'enable_ember_debugging')
+         .done(function(o) {
+            if (o.enable_ember_debugging) {
+               console.log('"enable_ember_debugging" is true.  Enabling ember debugging support.');
+
+               // Lets you find the stack when something blows up on the backburner.  To
+               // print it, navigate up the stack to the backburner flush() method from
+               // inside the exception handler and inspect the value of
+               // errorRecordedForStack.stack.
+               Ember.run.backburner.DEBUG = true;
+
+               // Straight from emberjs.com...
+               // There are times when dealing with promises that it seems like any errors
+               // are being 'swallowed', and not properly raised. This makes it extremely
+               // difficult to track down where a given issue is coming from. Thankfully,
+               // RSVP has a solution for this problem built in.
+               // You can provide an onerror function that will be called with the error
+               // details if any errors occur within your promise.
+               Ember.RSVP.on('error', function(e) {
+                  console.error(e.message);
+                  console.error(e.stack);
+               });
+            }
+         });
+   </script>
+
+</head>
+
+<body>
+
+   <script type="text/x-handlebars">
+      {{render "Root"}}
+      {{outlet 'modal'}}
+      {{outlet 'modalmodal'}} <!-- for modals on top of modals....yeah -->
+   </script>
+
+</body>
+</html>
