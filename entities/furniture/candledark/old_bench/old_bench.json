@@ -1,0 +1,57 @@
+{
+   "type": "entity",
+   "mixins": "file(old_bench_ghost.json)",
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(old_bench_iconic.json)",
+         "ghost_form": "file(old_bench_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 1, "z": 1 }
+            }
+         ]
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": -2, "y": 0, "z": -1 },
+               "max": { "x": 2, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth:mount": {
+         "mounted_posture": "stonehearth:sitting_on_chair",
+         "mount_offset": { "x": 0.35, "y": 0, "z": -0.5 }
+      },
+      "stonehearth:traveler_attraction": {},
+      "stonehearth_ace:sibling_entities": {
+         "siblings": {
+            "seat_2": {
+               "uri": "file(sibling_seat.json)",
+               "destroy_on_remove": true
+            }
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:chair": {},
+      "stonehearth:net_worth": {
+         "value_in_gold": 31,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 22
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

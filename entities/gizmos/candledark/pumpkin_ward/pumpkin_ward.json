@@ -1,6 +1,7 @@
 {
    "type": "entity",
    "mixins": [
+      "stonehearth_ace:mixins:destructable_siege_object:candledark_ward",
       "file(pumpkin_ward_ghost.json)"
    ],
    "components": {
@@ -10,40 +11,23 @@
          "placeable_on_ground": true,
          "hide_undeploy_ui": false
       },
-      "destination": {
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 2, "y": 1, "z": 2 }
-            }
-         ]
-      },
-      "region_collision_shape": {
-         "region": [
-            {
-               "min": { "x": -1, "y": 0, "z": -1 },
-               "max": { "x": 2, "y": 4, "z": 2 }
-            }
-         ]
-      },
       "stonehearth:lamp": {
-         "light_policy": "always_on",
-         "restrict_policy_changing": true,
-         "light_effect": "stonehearth_ace:effects:candledark:pumpkin_ward_effect",
-         "light_origin": { "x": 0, "y": 0, "z": 0 }
+         "light_effect": "stonehearth_ace:effects:candledark:pumpkin_ward_effect"
       },
       "stonehearth_ace:transform": {},
-      "sensor_list": {
-         "sensors": {
-            "sight": {
-               "type": "sensor",
-               "radius": 16
-            }
-         }
-      },
       "stonehearth:buffs": {
          "buffs": {
             "stonehearth_ace:buffs:candledark:pumpkin_ward:soulfire_aura": true
+         }
+      },
+      "stonehearth:attributes": {
+         "max_health": {
+            "type": "basic",
+            "value": 450
+         },
+         "menace": {
+            "type": "basic",
+            "value": 10
          }
       }
    },

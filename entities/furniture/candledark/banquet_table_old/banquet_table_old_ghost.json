@@ -1,0 +1,35 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(banquet_table_old.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.5, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.candledark.banquet_table_old.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.candledark.banquet_table_old.description)",
+         "icon": "file(banquet_table_old.png)",
+         "category": "furniture",
+         "material_tags": [
+            "wood",
+            "olden",
+            "fancy",
+            "furniture",
+            "crafted",
+            "festival",
+            "candledark",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

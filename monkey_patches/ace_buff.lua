@@ -34,6 +34,10 @@ function AceBuff:destroy()
       radiant.entities.remove_thought(self._sv._entity, self._json.thought)
    end
 
+   if self._json.thought_added_on_destroy then
+      radiant.entities.add_thought(self._sv._entity, self._json.thought_added_on_destroy)
+   end
+
    if self._sv.added_bulletin then
       self._sv.added_bulletin:destroy()
       self._sv.added_bulletin = nil

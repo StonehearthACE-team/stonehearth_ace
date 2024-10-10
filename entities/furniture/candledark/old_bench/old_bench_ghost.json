@@ -1,0 +1,35 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(old_bench.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0.55, "y": 0, "z": 0.4 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.furniture.candledark.old_bench.display_name)",
+         "description": "i18n(stonehearth_ace:entities.furniture.candledark.old_bench.description)",
+         "icon": "file(old_bench.png)",
+         "category": "furniture",
+         "material_tags": [
+            "wood",
+            "olden",
+            "fancy",
+            "furniture",
+            "crafted",
+            "chair",
+            "festival",
+            "candledark",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}

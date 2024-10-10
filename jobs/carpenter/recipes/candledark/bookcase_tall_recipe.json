@@ -1,0 +1,37 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.bookcase_tall_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.bookcase_tall_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.carpenter.recipes.candledark.bookcase_tall_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/furniture/candledark/bookcase_tall/bookcase_tall.png",
+   "workshop": "stonehearth:carpenter:toolbench",
+   "manual_unlock": true,
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "wood resource",
+         "count": 6
+      },
+      {
+         "uri": "stonehearth_ace:refined:metal_bits:hard",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:loot:gold",
+         "count": 1,
+         "min_stacks": 240
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:furniture:candledark:bookcase_tall",
+         "produce_scripts": ["stonehearth_ace:craft_script:stacks_per_product"],
+         "max_crafts": 1,
+         "stacks_per_product": {
+            "stonehearth:loot:gold": 240
+         }
+      }
+   ]
+}
