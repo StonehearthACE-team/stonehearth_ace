@@ -27296,7 +27296,14 @@
          "pet_manager": {
             "title": "Pet Overview",
             "name": "Name",
-            "details": "Pet Details"
+            "details": "Pet Details",
+            "current_owner": "Current owner: ",
+            "activity": "Activity",
+            "health": "Health",
+            "hunger": "Hunger",
+            "social": "Social",
+            "no_pets": "You have no pets available",
+            "sleepiness": "Sleepiness"
          },
          "mercantile": {
             "active": {
@@ -27838,6 +27845,9 @@
          "zones_mode": {
             "farm": {
                "properties": "Crop Properties",
+               "pause_planting": "Enable Planting",
+               "pause_planting_description": "If enabled, Farmers will plant this farm with crops when possible.",
+               "resume": "Resume",
                "statuses": "Current Statuses",
                "fertilizer_settings": {
                   "title": "Fertilizer",
