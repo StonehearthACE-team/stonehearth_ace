@@ -147,7 +147,8 @@ function CrafterInfoController:_format_recipe(name, recipe)
             formatted_ingredient.icon = resource.icon
          end
       elseif ingredient.uri then
-         local ingredient_data = radiant.resources.load_json(ingredient.uri, true, false)
+         -- radiant.resources.load_json(ingredient.uri, true, false)
+         local ingredient_data = stonehearth.catalog:get_catalog_data(ingredient.uri)
 
          if not ingredient_data then
             log:error('recipe "%s" has invalid ingredient "%s"', name, ingredient.uri)
@@ -158,14 +159,9 @@ function CrafterInfoController:_format_recipe(name, recipe)
          formatted_ingredient.uri  = ingredient.uri
          formatted_ingredient.identifier = ingredient.uri
 
-         if ingredient_data.entity_data and ingredient_data.entity_data["stonehearth:catalog"] then
-            formatted_ingredient.name = ingredient_data.entity_data["stonehearth:catalog"].display_name
-            formatted_ingredient.icon = ingredient_data.entity_data["stonehearth:catalog"].icon
-         end
-
-         if ingredient_data.components and ingredient_data.components['stonehearth:entity_forms'] and ingredient_data.components['stonehearth:entity_forms'].iconic_form then
-            formatted_ingredient.identifier = ingredient_data.components['stonehearth:entity_forms'].iconic_form
-         end
+         formatted_ingredient.name = ingredient_data.display_name
+         formatted_ingredient.icon = ingredient_data.icon
+         formatted_ingredient.identifier = ingredient_data.iconic_uri
       else
          -- this ingredient has neither a material nor a uri
          log:error('recipe "%s" has invalid ingredient: %s', name, radiant.util.table_tostring(ingredient))
@@ -277,7 +273,7 @@ function CrafterInfoController:_get_least_valued_entity(uris)
       -- if it doesn't have a sell_cost specified, assume a very high value
       local catalog_data = stonehearth.catalog:get_catalog_data(uri)
       if not catalog_data then
-         log:error('no catalog data for "%s"')
+         log:error('no catalog data for "%s"', uri)
       end
       local value = catalog_data and catalog_data.sell_cost or 999
       if value < lowest_value or not least_valued_uri then
