@@ -6192,6 +6192,14 @@
             "display_name": "Allow Training",
             "description": "This hearthling is currently not allowed to train. Click to allow it!"
          },
+         "toggle_firepit_off": {
+            "display_name": "Disallow Lighting it Up",
+            "description": "This object is currently set to be lit automatically. Click to disallow it!"
+         },
+         "toggle_firepit_on": {
+            "display_name": "Allow Lighting it Up",
+            "description": "This object is currently set to not be lit automatically. Click to allow it!"
+         },
          "toggle_planter_harvest_on": {
             "display_name": "Allow Harvesting",
             "description": "This planter will currently not be harvested when possible. Click to enable harvesting!"
@@ -9199,7 +9207,7 @@
                "vampire_salve_recipe": {
                   "recipe_name": "Candledark Garlic & Nightshade Salve",
                   "description": "This potent medicine is extremely important for treating the bites of Vampires.",
-                  "flavor": "Failing to treat them will result in the enthrallment of the patient"
+                  "flavor": "Candledark enemies will sometimes drop some of these ingredients upon defeat! Failing to treat them will result in the enthrallment of the patient!"
                },
                "blessed_water_recipe": {
                   "recipe_name": "Vial of Candledark Blessed Water",

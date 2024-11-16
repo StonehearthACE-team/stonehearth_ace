@@ -50,6 +50,11 @@ function ServiceCallHandler:get_all_weathers(session, response)
             end
          end
 
+         for _, weather_uri in ipairs(stonehearth.constants.weather.EVENT_WEATHERS) do
+            local weather = radiant.resources.load_json(weather_uri, true, false)
+            weathers[weather_uri] = weather
+         end
+
          self._all_weathers = weathers
          response:resolve({weathers = weathers})
       end)

@@ -42,14 +42,6 @@
                "uri": "stonehearth:food:corn:corn_basket",
                "weight": 0.5
             },
-            "nightshade": {
-               "uri": "stonehearth_ace:resources:herb:nightshade",
-               "weight": 1
-            },
-            "garlic": {
-               "uri": "stonehearth_ace:food:garlic:garlic_basket",
-               "weight": 0.5
-            },
             "sugar": {
                "uri": "stonehearth:food:sugar:sugarbell_basket",
                "weight": 0.5
@@ -89,6 +81,30 @@
             "tin_ingot": {
                "uri": "stonehearth:refined:tin_ingot",
                "weight": 1
+            }
+         },
+         "medicine": {
+            "roll_type": "some_of",
+            "num_rolls": {
+               "min": 0,
+               "max": 1
+            },
+            "items": {
+               "none": {
+                  "weight": 2
+               },
+               "bog_butter": {
+                  "uri": "stonehearth_ace:food:dairy:bog_butter",
+                  "weight": 1
+               },
+               "nightshade": {
+                  "uri": "stonehearth_ace:resources:herb:nightshade",
+                  "weight": 1
+               },
+               "garlic": {
+                  "uri": "stonehearth_ace:food:garlic:garlic_basket",
+                  "weight": 1
+               }
             }
          }
       }

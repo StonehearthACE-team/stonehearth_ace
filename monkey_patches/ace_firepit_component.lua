@@ -176,6 +176,13 @@ end
 function AceFirepitComponent:_should_light_fire(now)
    local should_light_fire = not stonehearth.calendar:is_daytime()
 
+   local lamp = self._entity:get('stonehearth:lamp')
+   if lamp then
+      if lamp:get_light_policy() == 'never' then
+         return false
+      end
+   end
+
    if self._json.custom_times then
       if self._json.custom_times.stop and self._json.custom_times.stop <= now.hour then
          should_light_fire = false
@@ -234,6 +241,11 @@ function AceFirepitComponent:_extinguish()
       end
    end
 
+   if self._buff_source then
+      local buff = self._buff
+      radiant.entities.remove_buff(self._entity, buff)
+   end
+
    local lamp = self._entity:get('stonehearth:lamp')
    if lamp then
       lamp:light_off()
@@ -261,11 +273,6 @@ function AceFirepitComponent:_extinguish()
    self.__saved_variables:mark_changed()
 
    if was_lit and not self.__destroying then
-      if self._buff_source then
-         local buff = self._buff
-         radiant.entities.remove_buff(self._entity, buff)
-      end
-
       -- only create residue if the firepit is still in the world
       if radiant.entities.get_world_location(self._entity) and not self._no_residue then
          if is_wood then
