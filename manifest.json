@@ -990,6 +990,8 @@
       "commands:teleport_quest_storage": "file(data/commands/quest/teleport_quest_storage.json)",
       "commands:toggle_enabled_off": "file(data/commands/toggle_enabled/toggle_off.json)",
       "commands:toggle_enabled_on": "file(data/commands/toggle_enabled/toggle_on.json)",
+      "commands:toggle_firepit_off": "file(data/commands/toggle_firepit/toggle_off.json)",
+      "commands:toggle_firepit_on": "file(data/commands/toggle_firepit/toggle_on.json)",
       "commands:toggle_job_role:bow_archer": "file(data/commands/job_equipment_roles/bow_archer.json)",
       "commands:toggle_job_role:crossbow_archer": "file(data/commands/job_equipment_roles/crossbow_archer.json)",
       "commands:toggle_job_role:dual_wield_footman": "file(data/commands/job_equipment_roles/dual_wield_footman.json)",
@@ -7958,6 +7960,10 @@
       },
       "toggle_enabled_command": {
          "controller": "file(call_handlers/toggle_enabled_call_handler.lua)",
+         "endpoint": "server"
+      },
+      "toggle_firepit_command": {
+         "controller": "file(call_handlers/toggle_firepit_call_handler.lua)",
          "endpoint": "server"
       },
       "toggle_training_command": {

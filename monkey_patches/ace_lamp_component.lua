@@ -2,6 +2,7 @@ local LampComponent = require 'stonehearth.components.lamp.lamp_component'
 local AceLampComponent = class()
 local Point3 = _radiant.csg.Point3
 
+local FIREPIT_TOGGLE_COMMAND_URI = 'stonehearth_ace:commands:toggle_firepit_off'
 local ALWAYS_ON_COMMAND_URI = 'stonehearth_ace:commands:light_policy:always_on'
 local WHEN_DARK_COMMAND_URI = 'stonehearth_ace:commands:light_policy:when_dark'
 local NEVER_COMMAND_URI = 'stonehearth_ace:commands:light_policy:never'
@@ -28,9 +29,9 @@ function AceLampComponent:_load_json()
       self._sv.light_policy = json.light_policy or appropriate_policy
    end
 
-   if not self._sv._added_commands and not self._entity:get_component('stonehearth:firepit') and
-         (json.force_policy_changing or not json.restrict_policy_changing) then
-      self:_create_commands()
+   local firepit = self._entity:get_component('stonehearth:firepit')
+   if not self._sv._added_commands and (json.force_policy_changing or not json.restrict_policy_changing) then
+      self:_create_commands(firepit)
    end
 
    self._sv.light_effect = json.light_effect
@@ -114,9 +115,15 @@ function AceLampComponent:_create_weather_listener(wind_effects)
    self:set_wind_light_effect(wind_effects)
 end
 
-function AceLampComponent:_create_commands()
+function AceLampComponent:_create_commands(firepit)
    self._sv._added_commands = true
    local commands_component = self._entity:add_component('stonehearth:commands')
+
+   if firepit then
+      commands_component:add_command(FIREPIT_TOGGLE_COMMAND_URI)
+      return
+   end
+
    commands_component:add_command(ALWAYS_ON_COMMAND_URI)
    commands_component:add_command(WHEN_DARK_COMMAND_URI)
    commands_component:add_command(NEVER_COMMAND_URI)
