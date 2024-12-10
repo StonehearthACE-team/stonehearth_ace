@@ -1,3 +1,4 @@
+local SeasonsService = require 'stonehearth.services.server.seasons.seasons_service'
 local AceSeasonsService = class()
 
 local DEFAULT_WEATHER = 'stonehearth:weather:sunny'
@@ -120,6 +121,17 @@ function AceSeasonsService:_get_season_data(biome_uri, palette, config, id)
       terrain_palette = palette,
       foraging_spot_uri = config.foraging_spot_uri,
    }
+end
+
+AceSeasonsService._ace_old__update_transition = SeasonsService._update_transition
+function AceSeasonsService:_update_transition()
+   if self._seasons and not self._sv.current_season and #self._seasons == 1 then
+      -- Added for supporting single season biomes that still want to benefit from seasonal features (name/description/stats)
+      self._sv.current_season = self._seasons[1]
+      return
+   end
+
+   self:_ace_old__update_transition()
 end
 
 return AceSeasonsService
