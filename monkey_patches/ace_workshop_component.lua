@@ -87,7 +87,12 @@ function AceWorkshopComponent:_redistribute_ingredients()
          if child and child:is_valid() then
             ec_children[id] = child
             -- make sure it's visible, in case crafting hid it
-            child:add_component('render_info'):set_visible(true)
+            local render_info = child:get_component('render_info')
+            if render_info then
+               render_info:set_visible(true)
+            else
+               log:warning('child %s in entity container %s has no render_info component', child, entity_container)
+            end
          end
       end
 

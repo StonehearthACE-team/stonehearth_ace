@@ -49,10 +49,11 @@ end
 
 AceTaskTrackerComponent._ace_old_cancel_current_task = TaskTrackerComponent.cancel_current_task
 function AceTaskTrackerComponent:cancel_current_task(should_reconsider_ai)
-   local should_destroy = self._destroy_if_task_canceled and self._destroy_if_task_canceled[self._sv.task_activity_name]
+   local current_task = self._sv.task_activity_name
+   local should_destroy = self._destroy_if_task_canceled and self._destroy_if_task_canceled[current_task]
    local result = self:_ace_old_cancel_current_task(should_reconsider_ai)
 
-   radiant.events.trigger(self._entity, 'stonehearth_ace:task_tracker:task_canceled', result)
+   radiant.events.trigger(self._entity, 'stonehearth_ace:task_tracker:task_canceled', current_task)
 
    if should_destroy and self._entity:is_valid() then
       radiant.entities.destroy_entity(self._entity)
