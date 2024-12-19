@@ -31,6 +31,7 @@ function AceShepherdPastureComponent:restore()
          local animal = critter.entity
          if not animal or not animal:is_valid() then
             self._sv.tracked_critters[id] = nil
+            self._sv.num_critters = self._sv.num_critters - 1
             had_invalid = true
          elseif inventory then
             -- make sure this animal isn't part of the player's inventory, thus bugging out town suspension
@@ -295,6 +296,19 @@ function AceShepherdPastureComponent:remove_animal(animal_id)
    --self.__saved_variables:mark_changed()
 end
 
+AceShepherdPastureComponent._ace_old__create_animal_listeners = ShepherdPastureComponent._create_animal_listeners
+function AceShepherdPastureComponent:_create_animal_listeners()
+   self:_ace_old__create_animal_listeners()
+
+   for id, data in pairs(self._sv.tracked_critters) do
+      if data and data.entity then
+         data.canceled_slaughter_listener = radiant.events.listen(data.entity, 'stonehearth:resource_node:canceled_harvest', function()
+            self._sv._queued_slaughters[id] = nil
+         end)
+      end
+   end
+end
+
 function AceShepherdPastureComponent:_set_has_renewable()
    if self._sv.pasture_type and radiant.entities.get_component_data(self._sv.pasture_type, 'stonehearth:renewable_resource_node') then
       self._sv.critter_type_has_renewable = true
@@ -317,6 +331,13 @@ function AceShepherdPastureComponent:_get_adult_count()
 end
 
 function AceShepherdPastureComponent:_consider_maintain_animals()
+   -- make sure our queued slaughters are still valid
+   for id, _ in pairs(self._sv._queued_slaughters) do
+      if not self._sv.tracked_critters[id] then
+         self._sv._queued_slaughters[id] = nil
+      end
+   end
+
    local num_queued = radiant.size(self._sv._queued_slaughters)
    local num_animals = self:get_num_animals()
    local num_to_slaughter = num_animals - (self._sv.maintain_animals + num_queued)

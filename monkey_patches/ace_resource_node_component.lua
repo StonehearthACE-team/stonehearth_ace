@@ -28,6 +28,12 @@ function AceResourceNodeComponent:activate()
       self._loot_table_filter_script = loot_table_filter_script
       self._loot_table_filter_args = self._json.loot_table_filter_args
    end
+
+   self._canceled_harvest_listener = radiant.events.listen(self._entity, 'stonehearth:task_tracker:canceled', function(task_name)
+         if task_name == HARVEST_ACTION then   
+            radiant.events.trigger(self._entity, 'stonehearth:resource_node:canceled_harvest')
+         end
+      end)
 end
 
 AceResourceNodeComponent._ace_old_post_activate = ResourceNodeComponent.post_activate
@@ -50,6 +56,7 @@ end
 AceResourceNodeComponent._ace_old_destroy = ResourceNodeComponent.__user_destroy
 function AceResourceNodeComponent:destroy()
    self:_destroy_added_to_world_listener()
+   self:_destroy_canceled_harvest_listener()
 
    if self._ace_old_destroy then
       self:_ace_old_destroy()
@@ -60,6 +67,13 @@ function AceResourceNodeComponent:_destroy_added_to_world_listener()
    if self._added_to_world_listener then
       self._added_to_world_listener:destroy()
       self._added_to_world_listener = nil
+   end
+end
+
+function AceResourceNodeComponent:_destroy_canceled_harvest_listener()
+   if self._canceled_harvest_listener then
+      self._canceled_harvest_listener:destroy()
+      self._canceled_harvest_listener = nil
    end
 end
 

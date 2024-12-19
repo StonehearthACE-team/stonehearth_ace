@@ -21,7 +21,7 @@ function ace_entities.remove_child(parent, child)
    local component = parent:get_component('entity_container')
    if component then
       local rcs = child:get_component('region_collision_shape')
-      if rcs and rcs:get_region_collision_type() == _radiant.om.RegionCollisionShape.SOLID then
+      if rcs and rcs:get_region_collision_type() == _radiant.om.RegionCollisionShape.SOLID and rcs:get_region() then
          stonehearth.hydrology:auto_fill_water_region(radiant.entities.local_to_world(rcs:get_region():get(), child), function(waters, num_waters)
                if num_waters == 1 then
                   log:debug('removing entity %s and filling in water', child)
@@ -42,7 +42,7 @@ function ace_entities.destroy_entity(entity)
       radiant.check.is_entity(entity)
       -- stonehearth_server takes care of destroying the other entity forms and contained entities
       local rcs = entity:get_component('region_collision_shape')
-      if rcs and rcs:get_region_collision_type() == _radiant.om.RegionCollisionShape.SOLID then
+      if rcs and rcs:get_region_collision_type() == _radiant.om.RegionCollisionShape.SOLID and rcs:get_region() then
          stonehearth.hydrology:auto_fill_water_region(radiant.entities.local_to_world(rcs:get_region():get(), entity), function(waters, num_waters)
                if num_waters == 1 then
                   log:debug('destroying entity %s and filling in water', entity)
