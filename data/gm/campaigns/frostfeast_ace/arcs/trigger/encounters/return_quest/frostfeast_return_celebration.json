@@ -1,8 +1,8 @@
 {
    "type": "encounter",
    "encounter_type": "town_upgrade",
-   "in_edge": "frostfeast_celebration",
-   "out_edge": "delay_before_campaign_end",
+   "in_edge": "frostfeast_return_celebration",
+   "out_edge": "return_campaign_end_dialogue",
    "town_upgrade_info": {
       "custom_music": "frostfeast_celebration",
       "conversation_subjects": [
@@ -15,7 +15,7 @@
          "stonehearth_ace:decoration:frostfeast:wreath"
       ],
       "thought": "stonehearth:thoughts:frostfeast:celebration",
-      "celebration_duration": "3h",
+      "celebration_duration": "4h",
       "has_fireworks": true,
       "npcs": [
          {
