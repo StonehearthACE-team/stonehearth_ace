@@ -2,7 +2,13 @@
    "type": "encounter",
    "encounter_type": "wait_for_requirements_met",
    "in_edge": "start",
-   "out_edge": "delay_before_tomtee_arrival",
+   "out_edge": {
+      "type": "trigger_many",
+      "out_edges": [
+         "delay_before_tomtee_arrival",
+         "delay_before_tomtee_return"
+      ]
+   },
    "wait_for_requirements_met_info": {
       "requirements": {
          "recipe_check": {

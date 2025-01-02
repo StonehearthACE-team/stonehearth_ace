@@ -87,7 +87,7 @@ function AceWorkshopComponent:_redistribute_ingredients()
          if child and child:is_valid() then
             ec_children[id] = child
             -- make sure it's visible, in case crafting hid it
-            child:get_component('render_info'):set_visible(true)
+            child:add_component('render_info'):set_visible(true)
          end
       end
 

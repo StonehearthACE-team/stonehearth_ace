@@ -1,12 +1,12 @@
 {
    "type": "encounter",
    "encounter_type": "wait",
-   "in_edge": "delay_before_tomtee_arrival",
+   "in_edge": "delay_before_tomtee_return",
    "out_edge": {
       "type": "trigger_many",
       "out_edges": [
-         "tomtee_arrival",
-         "tomtee_arrival_geomancer"
+         "tomtee_return",
+         "return_quest_toggle"
       ]
    },
    "can_start": {
@@ -14,7 +14,7 @@
          "recipe_check": {
             "item": "script",
             "type": "deny_if",
-            "value": true,
+            "value": false,
             "script": "stonehearth_ace:game_master:script:recipes_unlocked_can_start"
          }
       }

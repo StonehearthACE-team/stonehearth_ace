@@ -2,7 +2,7 @@
    "type": "encounter",
    "encounter_type": "dialog_tree",
    "rarity": "common",
-   "in_edge": "last_delivery_dialogue",
+   "in_edge": "return_completion_dialogue",
    "can_start": {
       "all_tests": {
          "no_quests_active": {
@@ -16,14 +16,14 @@
             "item": "number_active",
             "type": "deny_if_greater_than",
             "value": 0,
-            "start_node": "last_delivery_dialogue",
-            "end_node": "campaign_end_dialogue"
+            "start_node": "return_completion_dialogue",
+            "end_node": "return_end_dialogue"
          },
          "is_return_test": {
-            "type": "deny_if_greater_than",
+            "type": "deny_if_less_than",
             "item": "counter",
             "key": "is_return",
-            "value": 0
+            "value": 1
          },
          "recipe_check": {
             "item": "script",
@@ -38,18 +38,18 @@
       "nodes": {
          "msg1": {
             "bulletin": {
-               "title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.last_delivery_dialogue.dialog_tree_info.dialog_nodes.msg1.bulletin_title)",
-               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.last_delivery_dialogue.dialog_tree_info.dialog_nodes.msg1.dialog_title)",
-               "portrait": "file(images/tomtee.png)",
+               "title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.return_quest.return_completion_dialogue.dialog_tree_info.dialog_nodes.msg1.bulletin_title)",
+               "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.return_quest.return_completion_dialogue.dialog_tree_info.dialog_nodes.msg1.dialog_title)",
+               "portrait": "file(../images/tomtee.png)",
                "portrait_offset": 0,
-               "message": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.last_delivery_dialogue.dialog_tree_info.dialog_nodes.msg1.bulletin_message.00)",
+               "message": "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.return_quest.return_completion_dialogue.dialog_tree_info.dialog_nodes.msg1.bulletin_message.00)",
                "choices": {
-                  "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.last_delivery_dialogue.dialog_tree_info.dialog_nodes.msg1.choice_000)": {
+                  "i18n(stonehearth_ace:data.gm.campaigns.frostfeast_ace.return_quest.return_completion_dialogue.dialog_tree_info.dialog_nodes.msg1.choice_000)": {
                      "out_edge": {
                         "type": "trigger_many",
                         "out_edges": [
-                           "remove_tomtee_camp",
-                           "delay_before_frostfather_arrival"
+                           "delay_before_frostfather_return",
+                           "remove_tomtee_camp"
                         ]
                      }
                   }
