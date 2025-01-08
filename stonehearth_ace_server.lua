@@ -356,23 +356,33 @@ radiant.events.listen(radiant, 'radiant:required_loaded', stonehearth_ace, stone
 
 local fancy_mod_list = {}
 local fancy_mod_list_clients = {}
+local fancy_mod_list_templates = {}
 for i, mod in ipairs(radiant.resources.get_mod_list()) do
    local info = radiant.resources.load_manifest(mod).info
-   if info.client_only then
-      table.insert(fancy_mod_list_clients, {
+   if info.is_building_template_mod then
+      table.insert(fancy_mod_list_templates, {
          namespace = info.namespace,
          name = info.name
       })
    else
-      table.insert(fancy_mod_list, {
-         namespace = info.namespace,
-         name = info.name
-      })
+      if info.client_only then
+         table.insert(fancy_mod_list_clients, {
+            namespace = info.namespace,
+            name = info.name
+         })
+      else
+         table.insert(fancy_mod_list, {
+            namespace = info.namespace,
+            name = info.name
+         })
+      end
    end
 end
 print("Mod List:")
 print(fancy_mod_list)
 print("Client Mod List:")
 print(fancy_mod_list_clients)
+print("Template List:")
+print(fancy_mod_list_templates)
 
 return stonehearth_ace
