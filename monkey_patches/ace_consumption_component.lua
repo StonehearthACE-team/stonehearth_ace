@@ -40,6 +40,23 @@ function AceConsumptionComponent:activate()
       self._max_drink_satiety_listener = radiant.events.listen(self._entity, 'stonehearth:attribute_changed:max_drink_satiety', self, self._on_max_drink_satiety_changed)
       self:_on_max_drink_satiety_changed()
    end
+
+   -- restrict the hourly listener to towns with a placed camp (to avoid issues with multiplayer clients joining unpaused games)
+   -- a "proper" implementation of this would simply "suspend" all citizens until the camp is placed,
+   -- but that also needs to include pets generated from traits, and then that's a lot of files getting modified and a lot of checks being made
+   local pop = stonehearth.population:get_population(self._entity:get_player_id())
+   if pop and not pop:is_camp_placed() then
+      -- if the camp hasn't been placed yet, disable hourly updates until it has
+      self._hour_listener:destroy()
+      self._hour_listener = nil
+      self._camp_placed_listener = radiant.events.listen(stonehearth.population, 'stonehearth:population:camp_placed', function(args)
+            if args.player_id == self._entity:get_player_id() then
+               self._hour_listener = self._hour_listener or stonehearth.calendar:set_interval("CalorieObserver on_hourly", '30m+30m', function() self:_on_hourly() end)
+               self._camp_placed_listener:destroy()
+               self._camp_placed_listener = nil
+            end
+         end)
+   end
 end
 
 AceConsumptionComponent._ace_old_post_activate = ConsumptionComponent.post_activate
@@ -69,6 +86,11 @@ function AceConsumptionComponent:destroy()
    if self._drink_desire_request then
       self._drink_desire_request:destroy()
       self._drink_desire_request = nil
+   end
+
+   if self._camp_placed_listener then
+      self._camp_placed_listener:destroy()
+      self._camp_placed_listener = nil
    end
 end
 
