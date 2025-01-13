@@ -34,6 +34,11 @@ function AceFixture:remove_placed_entity()
       if radiant.entities.get_parent(fixture) == radiant.entities.get_root_entity() then
          local location = radiant.entities.get_world_grid_location(fixture)
          if location then
+            local extensible_object_comp = fixture:get_component('stonehearth_ace:extensible_object')
+            if extensible_object_comp then
+               extensible_object_comp:set_extension()
+            end
+
             radiant.terrain.remove_entity(fixture)
             radiant.entities.turn_to(fixture, 0)
             fixture:get('mob'):set_ignore_gravity(false)

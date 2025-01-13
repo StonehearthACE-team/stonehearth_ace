@@ -47,9 +47,12 @@ function AcePlaceItemCallHandler:undeploy_golem(session, response, item)
    if not radiant.entities.get_player_id(item) or radiant.entities.get_player_id(item) == '' then
       radiant.entities.set_player_id(item, session.player_id)
    end
-   
+
    local location = radiant.entities.get_world_grid_location(item)
    local root_form, iconic_form = entity_forms_lib.get_forms(item)
+
+   -- first kill its current ai action by making it be "away from town", suspending its ai
+   local injected = stonehearth.ai:inject_ai(item, { actions = { 'stonehearth:actions:be_away_from_town' } })
 
    local carrying = radiant.entities.get_carrying(item)
    local items = item:get_component('stonehearth:storage')
@@ -68,8 +71,15 @@ function AcePlaceItemCallHandler:undeploy_golem(session, response, item)
       -- reset health and debuffs
       radiant.entities.reset_health(item, true)
 
+      -- destroy the injected ai so it will return to normal function when placed again
+      injected:destroy()
+
       return true
    end
+
+   -- destroy the injected ai so it will return to normal function when placed again
+   injected:destroy()
+
    return false
 end
 
