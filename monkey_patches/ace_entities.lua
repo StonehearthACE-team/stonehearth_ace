@@ -79,6 +79,9 @@ function ace_entities.consume_stack(item, num_stacks)
          stacks_component:set_stacks(stacks)
          success = true
       end
+   else
+      -- if no stacks component is present at all on an antity that had the "consume_stack" function called on, assume this was an oversight, let the item be consumed but cosider it a success;
+      success = true
    end
 
    if stacks == 0 then

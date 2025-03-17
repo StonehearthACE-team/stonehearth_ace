@@ -778,6 +778,14 @@ function AceTown:task_group_has_active_tasks(task_group)
    return false
 end
 
+function AceTown:leave_task_group(entity, task_group_uri)
+   self._log:info('removing %s from task group "%s"', entity, task_group_uri)
+
+   local task_group = self._task_groups[task_group_uri]
+   assert(task_group, string.format('unknown task group "%s"', task_group_uri))
+   task_group:remove_worker(entity)
+end
+
 function AceTown:is_player_town()
    local pop = stonehearth.population:get_population(self._sv.player_id)
    return pop and not pop:is_npc()

@@ -52,6 +52,34 @@
          "stacks": 1,
          "category": "resources_fiber"
       },
+      "cloth resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.cloth_resource_name)",
+         "icon": "/stonehearth_ace/entities/refined/cloth_icon.png",
+         "category": "refined"
+      },
+      "cloth common resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.cloth_common_resource_name)",
+         "icon": "/stonehearth_ace/entities/refined/cloth_common_icon.png",
+         "default_resource": "stonehearth:refined:cloth_bolt",
+         "category": "refined"
+      },
+      "cloth fine resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.cloth_fine_resource_name)",
+         "icon": "/stonehearth_ace/entities/refined/cloth_fine_icon.png",
+         "default_resource": "stonehearth_ace:refined:cloth_bolt:wool",
+         "category": "refined"
+      },
+      "stuffing resource": {
+         "name": "i18n(stonehearth_ace:ui.data.constants.stuffing_resource_name)",
+         "icon": "/stonehearth_ace/entities/resources/fiber/stuffing_resource_icon.png",
+         "default_resource": "stonehearth:resources:fiber:wool_bundle",
+         "category": "refined"
+      },
+      "leather resource": {
+         "icon": "/stonehearth_ace/entities/refined/leather_icon.png",
+         "name": "i18n(stonehearth_ace:ui.data.constants.leather_resource_name)",
+         "category": "refined"
+      },
       "ore resource": {
          "name": "i18n(stonehearth_ace:ui.data.constants.ore_resource_name)",
          "icon": "/stonehearth_ace/entities/resources/ore_icon.png",
@@ -86,22 +114,6 @@
          "icon": "/stonehearth_ace/entities/resources/bone/strong_bone_resource.png",
          "default_resource": "stonehearth:resources:ogre_bone",
          "category": "resources_animal"
-      },
-      "cloth resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.cloth_resource_name)",
-         "icon": "/stonehearth_ace/entities/refined/cloth_icon.png",
-         "category": "refined"
-      },
-      "stuffing resource": {
-         "name": "i18n(stonehearth_ace:ui.data.constants.stuffing_resource_name)",
-         "icon": "/stonehearth_ace/entities/resources/fiber/stuffing_resource_icon.png",
-         "default_resource": "stonehearth:resources:fiber:wool_bundle",
-         "category": "refined"
-      },
-      "leather resource": {
-         "icon": "/stonehearth_ace/entities/refined/leather_icon.png",
-         "name": "i18n(stonehearth_ace:ui.data.constants.leather_resource_name)",
-         "category": "refined"
       },
       "seasoning": {
          "name": "i18n(stonehearth_ace:ui.data.constants.seasoning_resource_name)",
