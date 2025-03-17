@@ -234,6 +234,7 @@ local monkey_patches = {
    ace_task_tracker_component = 'stonehearth.components.task_tracker.task_tracker_component',
    ace_teleportation_component = 'stonehearth.components.teleportation.teleportation_component',
    ace_tentacle_snared_debuff = 'stonehearth.data.buffs.tentacle_snared.tentacle_snared_debuff',
+   ace_tentacle_trap_spawn_script = 'stonehearth.data.gm.campaigns.titan_gary.arcs.trigger.titan_gary.encounters.tentacle_trap_spawn_script',
    ace_terrain = 'radiant.modules.terrain',
    ace_terrain_patch_component = 'stonehearth.components.terrain_patch.terrain_patch_component',
    ace_terrain_service = 'stonehearth.services.server.terrain.terrain_service',

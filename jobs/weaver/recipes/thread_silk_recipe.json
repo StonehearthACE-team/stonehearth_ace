@@ -1,0 +1,23 @@
+{
+   "type": "recipe",
+   "effort": 15,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.thread_silk_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.thread_silk_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.thread_silk_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/thread_silk/thread_silk.png",
+   "workshop": "stonehearth:weaver:spinning_wheel",
+   "level_requirement": 5,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:refined:fiber:silk_bundle",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:thread:silk"
+      }
+   ]
+}
