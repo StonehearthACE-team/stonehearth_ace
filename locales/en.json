@@ -11146,6 +11146,16 @@
                "description": "A small and reliable metal hook for hanging a shield on a wall.",
                "flavor": ""
             },
+            "gear_rack_bow_hook_recipe": {
+               "recipe_name": "Wall-Mounted Bow Display",
+               "description": "A simple wooden support for holding a bow to be displayed.",
+               "flavor": ""
+            },
+            "gear_rack_xbow_hook_recipe": {
+               "recipe_name": "Wall-Mounted Crossbow Display",
+               "description": "A nice wall-plate for holding a weapon like a crossbow in display.",
+               "flavor": ""
+            },
             "gear_rack_armor_stand_recipe": {
                "recipe_name": "Riveted Armor Stand",
                "description": "Craft a friendly wooden & metal mannequin for displaying a complete set of armor.",
@@ -11164,7 +11174,12 @@
             "gear_rack_swords_recipe": {
                "recipe_name": "Bladed Weapons Rack",
                "description": "Create a sophisticated rack for displaying up to four swords in a very neat way!",
-               "flavor": "Can also be used for daggers... But should you?"
+               "flavor": ""
+            },
+            "gear_rack_offhand_recipe": {
+               "recipe_name": "Off-hand Weapons Rack",
+               "description": "Assemble a useful rack for storing up to three off-hand weapons like hatchets, short blades and daggers.",
+               "flavor": "Also known as the 'back-stabbing rack'"
             },
             "copper_coffee_pot_recipe": {
                "recipe_name": "Copper Coffee Pot",
@@ -25137,6 +25152,18 @@
             "gear_rack_swords": {
                "display_name": "Bladed Weapons Rack",
                "description": "Swords! The more, the merrier? Or at least the safer, one would think..."
+            },
+            "gear_rack_xbow_hook": {
+               "display_name": "Wall-Mounted Crossbow Display",
+               "description": "It's time to retire that old favorite weapon of yours..."
+            },
+            "gear_rack_bow_hook": {
+               "display_name": "Wall-Mounted Bow Display",
+               "description": "For displaying beautiful hunting or war bows."
+            },
+            "gear_rack_offhand": {
+               "display_name": "Off-hand Weapons Rack",
+               "description": "A handy rack for storing your smaller blades, hatchets and daggers."
             }
          },
          "dynasty_chest": {
@@ -27991,7 +28018,9 @@
                   "tooltip_hatchets": "Hatchets",
                   "tooltip_scepters": "Cleric Scepters",
                   "tooltip_mobility": "Mobility",
-                  "tooltip_fireplaces": "Fireplaces"
+                  "tooltip_fireplaces": "Fireplaces",
+                  "tooltip_bows": "Bows",
+                  "tooltip_xbows": "Crossbows"
                },
                "fuel_level": {
                   "label": "Fuel Level:",
