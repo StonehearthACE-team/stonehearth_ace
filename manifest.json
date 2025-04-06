@@ -1303,10 +1303,13 @@
       "containers:fuel_holder:small": "file(entities/containers/fuel_holder_small/fuel_holder_small.json)",
       "containers:gear_rack:armor_stand": "file(entities/containers/gear_rack/gear_rack_armor_stand/gear_rack_armor_stand.json)",
       "containers:gear_rack:armor_stand:head": "file(entities/containers/gear_rack/gear_rack_armor_stand/gear_rack_armor_stand_head.json)",
+      "containers:gear_rack:bow_hook": "file(entities/containers/gear_rack/gear_rack_bow_hook/gear_rack_bow_hook.json)",
+      "containers:gear_rack:offhand": "file(entities/containers/gear_rack/gear_rack_offhand/gear_rack_offhand.json)",
       "containers:gear_rack:polearms": "file(entities/containers/gear_rack/gear_rack_polearms/gear_rack_polearms.json)",
       "containers:gear_rack:shield_hook": "file(entities/containers/gear_rack/gear_rack_shield_hook/gear_rack_shield_hook.json)",
       "containers:gear_rack:short_hafts": "file(entities/containers/gear_rack/gear_rack_short_hafts/gear_rack_short_hafts.json)",
       "containers:gear_rack:swords": "file(entities/containers/gear_rack/gear_rack_swords/gear_rack_swords.json)",
+      "containers:gear_rack:xbow_hook": "file(entities/containers/gear_rack/gear_rack_xbow_hook/gear_rack_xbow_hook.json)",
       "containers:gold_ingot_pile": "file(entities/containers/gold_ingot_pile/gold_ingot_pile.json)",
       "containers:hunk_of_hard_coal_pile": "file(entities/containers/hunk_of_hard_coal_pile/hunk_of_hard_coal_pile.json)",
       "containers:input_bin:bone": "file(entities/containers/input_bin_bone/input_bin_bone.json)",
@@ -4581,10 +4584,13 @@
       "ui:firewood_holder:filters": "file(ui/data/firewood_holder_filters.json)",
       "ui:gear_rack:armor_stand:filters": "file(ui/data/gear_rack_armor_stand_filters.json)",
       "ui:gear_rack:armor_stand:head:filters": "file(ui/data/gear_rack_armor_stand_head_filters.json)",
+      "ui:gear_rack:bow_hook:filters": "file(ui/data/gear_rack_bow_hook_filters.json)",
+      "ui:gear_rack:offhand:filters": "file(ui/data/gear_rack_offhand_filters.json)",
       "ui:gear_rack:polearms:filters": "file(ui/data/gear_rack_polearms_filters.json)",
       "ui:gear_rack:shield_hook:filters": "file(ui/data/gear_rack_shield_hook_filters.json)",
       "ui:gear_rack:short_hafts:filters": "file(ui/data/gear_rack_short_hafts_filters.json)",
       "ui:gear_rack:swords:filters": "file(ui/data/gear_rack_swords_filters.json)",
+      "ui:gear_rack:xbow_hook:filters": "file(ui/data/gear_rack_xbow_hook_filters.json)",
       "ui:hidden_storage:filters": "file(ui/data/hidden_storage_filters.json)",
       "ui:input_box:filters": "file(ui/data/input_box_filters.json)",
       "ui:input_cask:filters": "file(ui/data/input_cask_filters.json)",
@@ -4882,7 +4888,11 @@
       "northern_alliance/data/gm/campaigns/town_progression/arcs/trigger/town_progression/town_progression_arc.json": "file(data/gm/campaigns/town_progression/arcs/trigger/town_progression/na_town_progression_arc.json)",
       "northern_alliance/data/loadouts/loadouts.json": "stonehearth_ace:loadouts:northern_alliance",
       "northern_alliance/data/saved_objects/building_templates_index.json": "file(data/saved_objects/na_building_templates_index.json)",
-      "northern_alliance/entities/armor/helmet_wolf/helmet_wolf.json": "file(entities/armor/helmet_wolf/helmet_wolf.json)",
+      "northern_alliance/entities/armor/helmet_wolf/helmet_wolf.json": [
+         "file(entities/armor/helmet_wolf/helmet_wolf.json)",
+         "stonehearth_ace:mixins:armor:medium_armor_helmet",
+         "stonehearth_ace:mixins:armor:resistance:helmet:high"
+      ],
       "northern_alliance/entities/armor/helmet_wolf/helmet_wolf_iconic.json": "file(entities/armor/helmet_wolf/helmet_wolf_iconic.json)",
       "northern_alliance/entities/armor/shield_hare/shield_hare.json": "file(entities/armor/shield_hare/shield_hare.json)",
       "northern_alliance/entities/armor/shield_hare/shield_hare_iconic.json": "file(entities/armor/shield_hare/shield_hare_iconic.json)",
@@ -5337,34 +5347,105 @@
       "stonehearth/data/traits/carnivore/carnivore_trait.json": "file(data/traits/carnivore/carnivore_trait.json)",
       "stonehearth/data/traits/herbivore/herbivore_trait.json": "file(data/traits/herbivore/herbivore_trait.json)",
       "stonehearth/data/ui/start_menu.json": "stonehearth_ace:data:start_menu",
-      "stonehearth/entities/armor/bronze_breastplate/bronze_breastplate.json": "file(entities/armor/bronze_breastplate/bronze_breastplate.json)",
-      "stonehearth/entities/armor/bronze_circlet/bronze_circlet.json": "file(entities/armor/bronze_circlet/bronze_circlet.json)",
+      "stonehearth/entities/armor/bronze_breastplate/bronze_breastplate.json": [
+         "file(entities/armor/bronze_breastplate/bronze_breastplate.json)",
+         "stonehearth_ace:mixins:armor:medium_armor_torso",
+         "stonehearth_ace:mixins:armor:resistance:torso:low"
+      ],
+      "stonehearth/entities/armor/bronze_circlet/bronze_circlet.json": [
+         "file(entities/armor/bronze_circlet/bronze_circlet.json)",
+         "stonehearth_ace:mixins:armor:light_armor_circlet",
+         "stonehearth_ace:mixins:armor:resistance:helmet:low"
+      ],
       "stonehearth/entities/armor/bronze_helm/bronze_helm.json": "file(entities/armor/bronze_helm/bronze_helm.json)",
-      "stonehearth/entities/armor/bronze_shield/bronze_shield.json": "file(entities/armor/bronze_shield/bronze_shield.json)",
-      "stonehearth/entities/armor/cloth_padded_helmet/cloth_padded_helmet.json": "file(entities/armor/cloth_padded_helmet/cloth_padded_helmet.json)",
-      "stonehearth/entities/armor/cloth_padded_vest/cloth_padded_vest.json": "file(entities/armor/cloth_padded_vest/cloth_padded_vest.json)",
-      "stonehearth/entities/armor/fire_quiver/fire_quiver.json": "file(entities/armor/fire_quiver/fire_quiver.json)",
-      "stonehearth/entities/armor/iron_circlet/iron_circlet.json": "file(entities/armor/iron_circlet/iron_circlet.json)",
-      "stonehearth/entities/armor/iron_helm/iron_helm.json": "file(entities/armor/iron_helm/iron_helm.json)",
-      "stonehearth/entities/armor/iron_mail/iron_mail.json": "file(entities/armor/iron_mail/iron_mail.json)",
-      "stonehearth/entities/armor/iron_shield/iron_shield.json": "file(entities/armor/iron_shield/iron_shield.json)",
+      "stonehearth/entities/armor/bronze_shield/bronze_shield.json": [
+         "file(entities/armor/bronze_shield/bronze_shield.json)",
+         "stonehearth_ace:mixins:armor:medium_shield"
+      ],
+      "stonehearth/entities/armor/cloth_padded_helmet/cloth_padded_helmet.json": [
+         "file(entities/armor/cloth_padded_helmet/cloth_padded_helmet.json)",
+         "stonehearth_ace:mixins:armor:light_armor_helmet",
+         "stonehearth_ace:mixins:armor:resistance:helmet:low"
+      ],
+      "stonehearth/entities/armor/cloth_padded_vest/cloth_padded_vest.json": [
+         "file(entities/armor/cloth_padded_vest/cloth_padded_vest.json)",
+         "stonehearth_ace:mixins:armor:light_armor_torso",
+         "stonehearth_ace:mixins:armor:resistance:torso:low"
+      ],
+      "stonehearth/entities/armor/fire_quiver/fire_quiver.json": [
+         "file(entities/armor/fire_quiver/fire_quiver.json)",
+         "stonehearth_ace:mixins:armor:quiver_arrows"
+      ],
+      "stonehearth/entities/armor/iron_circlet/iron_circlet.json": [
+         "file(entities/armor/iron_circlet/iron_circlet.json)",
+         "stonehearth_ace:mixins:armor:light_armor_circlet",
+         "stonehearth_ace:mixins:armor:resistance:helmet:average"
+      ],
+      "stonehearth/entities/armor/iron_helm/iron_helm.json": [
+         "file(entities/armor/iron_helm/iron_helm.json)",
+         "stonehearth_ace:mixins:armor:medium_armor_helmet",
+         "stonehearth_ace:mixins:armor:resistance:helmet:average"
+      ],
+      "stonehearth/entities/armor/iron_mail/iron_mail.json": [
+         "file(entities/armor/iron_mail/iron_mail.json)",
+         "stonehearth_ace:mixins:armor:medium_armor_torso",
+         "stonehearth_ace:mixins:armor:resistance:torso:average"
+      ],
+      "stonehearth/entities/armor/iron_shield/iron_shield.json": [
+         "file(entities/armor/iron_shield/iron_shield.json)",
+         "stonehearth_ace:mixins:armor:heavy_shield"
+      ],
       "stonehearth/entities/armor/iron_shield/iron_shield_iconic.json": "file(entities/armor/iron_shield/iron_shield_iconic.json)",
       "stonehearth/entities/armor/knights_shield/knights_shield.json": "file(entities/armor/knights_shield/knights_shield.json)",
       "stonehearth/entities/armor/knights_shield/shield_talisman.json": "file(entities/armor/knights_shield/shield_talisman.json)",
-      "stonehearth/entities/armor/leather_helmet/leather_helmet.json": "file(entities/armor/leather_helmet/leather_helmet.json)",
-      "stonehearth/entities/armor/leather_vest/leather_vest.json": "file(entities/armor/leather_vest/leather_vest.json)",
+      "stonehearth/entities/armor/leather_helmet/leather_helmet.json": [
+         "file(entities/armor/leather_helmet/leather_helmet.json)",
+         "stonehearth_ace:mixins:armor:light_armor_helmet",
+         "stonehearth_ace:mixins:armor:resistance:helmet:average"
+      ],
+      "stonehearth/entities/armor/leather_vest/leather_vest.json": [
+         "file(entities/armor/leather_vest/leather_vest.json)",
+         "stonehearth_ace:mixins:armor:light_armor_torso",
+         "stonehearth_ace:mixins:armor:resistance:torso:average"
+      ],
       "stonehearth/entities/armor/legendary_circlet/legendary_circlet.json": "file(entities/armor/legendary_circlet/legendary_circlet.json)",
       "stonehearth/entities/armor/legendary_shield/legendary_shield.json": "file(entities/armor/legendary_shield/legendary_shield.json)",
       "stonehearth/entities/armor/legendary_shield/legendary_shield_iconic.json": "file(entities/armor/legendary_shield/legendary_shield_iconic.json)",
       "stonehearth/entities/armor/offhand_placeholder/offhand_placeholder.json": "file(entities/armor/offhand_placeholder/vanilla_offhand_placeholder_mixin.json)",
-      "stonehearth/entities/armor/silver_helmet/silver_helmet.json": "file(entities/armor/silver_helmet/silver_helmet.json)",
-      "stonehearth/entities/armor/silver_mail/silver_mail.json": "file(entities/armor/silver_mail/silver_mail.json)",
+      "stonehearth/entities/armor/silver_helmet/silver_helmet.json": [
+         "file(entities/armor/silver_helmet/silver_helmet.json)",
+         "stonehearth_ace:mixins:armor:heavy_armor_helmet",
+         "stonehearth_ace:mixins:armor:resistance:helmet:high"
+      ],
+      "stonehearth/entities/armor/silver_mail/silver_mail.json": [
+         "file(entities/armor/silver_mail/silver_mail.json)",
+         "stonehearth_ace:mixins:armor:heavy_armor_torso",
+         "stonehearth_ace:mixins:armor:resistance:torso:high"
+      ],
       "stonehearth/entities/armor/silver_mail/silver_mail_iconic.json": "file(entities/armor/silver_mail/silver_mail_iconic.json)",
-      "stonehearth/entities/armor/simple_quiver/simple_quiver.json": "file(entities/armor/simple_quiver/simple_quiver.json)",
-      "stonehearth/entities/armor/steel_circlet/steel_circlet.json": "file(entities/armor/steel_circlet/steel_circlet.json)",
-      "stonehearth/entities/armor/steel_helmet/steel_helmet.json": "file(entities/armor/steel_helmet/steel_helmet.json)",
-      "stonehearth/entities/armor/steel_mail/steel_mail.json": "file(entities/armor/steel_mail/steel_mail.json)",
-      "stonehearth/entities/armor/steel_shield/steel_shield.json": "file(entities/armor/steel_shield/steel_shield.json)",
+      "stonehearth/entities/armor/simple_quiver/simple_quiver.json": [
+         "file(entities/armor/simple_quiver/simple_quiver.json)",
+         "stonehearth_ace:mixins:armor:quiver_arrows"
+      ],
+      "stonehearth/entities/armor/steel_circlet/steel_circlet.json": [
+         "file(entities/armor/steel_circlet/steel_circlet.json)",
+         "stonehearth_ace:mixins:armor:light_armor_circlet",
+         "stonehearth_ace:mixins:armor:resistance:helmet:high"
+      ],
+      "stonehearth/entities/armor/steel_helmet/steel_helmet.json": [
+         "file(entities/armor/steel_helmet/steel_helmet.json)",
+         "stonehearth_ace:mixins:armor:heavy_armor_helmet",
+         "stonehearth_ace:mixins:armor:resistance:helmet:average"
+      ],
+      "stonehearth/entities/armor/steel_mail/steel_mail.json": [
+         "file(entities/armor/steel_mail/steel_mail.json)",
+         "stonehearth_ace:mixins:armor:heavy_armor_torso",
+         "stonehearth_ace:mixins:armor:resistance:torso:average"
+      ],
+      "stonehearth/entities/armor/steel_shield/steel_shield.json": [
+         "file(entities/armor/steel_shield/steel_shield.json)",
+         "stonehearth_ace:mixins:armor:heavy_shield"
+      ],
       "stonehearth/entities/armor/steel_shield/steel_shield_iconic.json": "file(entities/armor/steel_shield/steel_shield_iconic.json)",
       "stonehearth/entities/armor/wooden_shield/wooden_shield.json": "file(entities/armor/wooden_shield/wooden_shield.json)",
       "stonehearth/entities/construction/amberstone_tunnel_door/amberstone_tunnel_door_ghost.json": "file(entities/construction/amberstone_tunnel_door/amberstone_tunnel_door_ghost.json)",

@@ -48,6 +48,11 @@ function StumpComponent:add_stump(killer_player_id)
          the_stump:add_component('stonehearth_ace:transform'):set_transform_option(self._stump_data.transform_option_key)
       end
 
+      if radiant.entities.get_entity_data(the_stump, 'stonehearth:item_placement_limit') then
+         local town = stonehearth.town:get_town(owner)
+         town:register_limited_placement_item(the_stump, radiant.entities.get_entity_data(the_stump, 'stonehearth:item_placement_limit').tag)
+      end
+
       radiant.terrain.place_entity_at_exact_location(the_stump, location, {force_iconic = false})
 
       --turn it to correct rotation
