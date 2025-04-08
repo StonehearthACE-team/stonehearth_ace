@@ -1335,6 +1335,438 @@
          }
       ]
    },
+   "job_crafts_carpenter": {
+      "ordinal": 14,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_carpenter.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_carpenter.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_crafts",
+            "name": "stonehearth:jobs:carpenter"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_carpenter.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_carpenter.1_description)",
+            "required_value": 5,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_carpenter.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_carpenter.2_description)",
+            "required_value": 25,
+            "renown": 150
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_carpenter.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_carpenter.3_description)",
+            "required_value": 80,
+            "renown": 400
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_carpenter.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_carpenter.4_description)",
+            "required_value": 150,
+            "renown": 850
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_carpenter.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_carpenter.5_description)",
+            "required_value": 320,
+            "renown": 1200
+         }
+      ]
+   },
+   "job_crafts_potter": {
+      "ordinal": 14.1,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_potter.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_potter.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_crafts",
+            "name": "stonehearth:jobs:potter"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_potter.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_potter.1_description)",
+            "required_value": 5,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_potter.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_potter.2_description)",
+            "required_value": 25,
+            "renown": 150
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_potter.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_potter.3_description)",
+            "required_value": 80,
+            "renown": 400
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_potter.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_potter.4_description)",
+            "required_value": 150,
+            "renown": 850
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_potter.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_potter.5_description)",
+            "required_value": 320,
+            "renown": 1200
+         }
+      ]
+   },
+   "job_crafts_mason": {
+      "ordinal": 14.2,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_mason.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_mason.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_crafts",
+            "name": "stonehearth:jobs:mason"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_mason.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_mason.1_description)",
+            "required_value": 5,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_mason.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_mason.2_description)",
+            "required_value": 25,
+            "renown": 150
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_mason.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_mason.3_description)",
+            "required_value": 80,
+            "renown": 400
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_mason.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_mason.4_description)",
+            "required_value": 150,
+            "renown": 850
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_mason.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_mason.5_description)",
+            "required_value": 320,
+            "renown": 1200
+         }
+      ]
+   },
+   "job_crafts_weaver": {
+      "ordinal": 14.3,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_weaver.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_weaver.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_crafts",
+            "name": "stonehearth:jobs:weaver"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_weaver.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_weaver.1_description)",
+            "required_value": 5,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_weaver.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_weaver.2_description)",
+            "required_value": 25,
+            "renown": 150
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_weaver.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_weaver.3_description)",
+            "required_value": 80,
+            "renown": 400
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_weaver.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_weaver.4_description)",
+            "required_value": 150,
+            "renown": 850
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_weaver.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_weaver.5_description)",
+            "required_value": 320,
+            "renown": 1200
+         }
+      ]
+   },
+   "job_crafts_blacksmith": {
+      "ordinal": 14.4,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_blacksmith.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_blacksmith.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_crafts",
+            "name": "stonehearth:jobs:blacksmith"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_blacksmith.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_blacksmith.1_description)",
+            "required_value": 5,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_blacksmith.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_blacksmith.2_description)",
+            "required_value": 25,
+            "renown": 150
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_blacksmith.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_blacksmith.3_description)",
+            "required_value": 80,
+            "renown": 400
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_blacksmith.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_blacksmith.4_description)",
+            "required_value": 150,
+            "renown": 850
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_blacksmith.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_blacksmith.5_description)",
+            "required_value": 320,
+            "renown": 1200
+         }
+      ]
+   },
+   "job_crafts_engineer": {
+      "ordinal": 14.5,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_engineer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_engineer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_crafts",
+            "name": "stonehearth:jobs:engineer"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_engineer.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_engineer.1_description)",
+            "required_value": 4,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_engineer.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_engineer.2_description)",
+            "required_value": 20,
+            "renown": 150
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_engineer.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_engineer.3_description)",
+            "required_value": 60,
+            "renown": 400
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_engineer.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_engineer.4_description)",
+            "required_value": 120,
+            "renown": 850
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_engineer.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_engineer.5_description)",
+            "required_value": 200,
+            "renown": 1200
+         }
+      ]
+   },
+   "job_crafts_cook": {
+      "ordinal": 14.6,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_cook.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_cook.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_crafts",
+            "name": "stonehearth:jobs:cook"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_cook.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_cook.1_description)",
+            "required_value": 5,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_cook.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_cook.2_description)",
+            "required_value": 25,
+            "renown": 150
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_cook.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_cook.3_description)",
+            "required_value": 80,
+            "renown": 400
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_cook.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_cook.4_description)",
+            "required_value": 150,
+            "renown": 850
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_cook.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_cook.5_description)",
+            "required_value": 320,
+            "renown": 1200
+         }
+      ]
+   },
+   "job_crafts_brewer": {
+      "ordinal": 14.7,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_brewer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_brewer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_crafts",
+            "name": "stonehearth_ace:jobs:brewer"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_brewer.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_brewer.1_description)",
+            "required_value": 5,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_brewer.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_brewer.2_description)",
+            "required_value": 25,
+            "renown": 150
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_brewer.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_brewer.3_description)",
+            "required_value": 80,
+            "renown": 400
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_brewer.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_brewer.4_description)",
+            "required_value": 150,
+            "renown": 850
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_brewer.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_brewer.5_description)",
+            "required_value": 320,
+            "renown": 1200
+         }
+      ]
+   },
+   "job_crafts_geomancer": {
+      "ordinal": 14.8,
+      "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_geomancer.display_name)",
+      "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_geomancer.description)",
+      "requirement": {
+         "statistics": {
+            "category": "job_crafts",
+            "name": "stonehearth:jobs:geomancer"
+         }
+      },
+      "ranks": [
+         {
+            "rank": 1,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_geomancer.1_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_geomancer.1_description)",
+            "required_value": 4,
+            "renown": 60
+         },
+         {
+            "rank": 2,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_geomancer.2_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_geomancer.2_description)",
+            "required_value": 20,
+            "renown": 150
+         },
+         {
+            "rank": 3,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_geomancer.3_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_geomancer.3_description)",
+            "required_value": 60,
+            "renown": 400
+         },
+         {
+            "rank": 4,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_geomancer.4_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_geomancer.4_description)",
+            "required_value": 120,
+            "renown": 850
+         },
+         {
+            "rank": 5,
+            "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_geomancer.5_display_name)",
+            "description": "i18n(stonehearth_ace:data.population.ascendancy.titles.job_crafts_geomancer.5_description)",
+            "required_value": 200,
+            "renown": 1200
+         }
+      ]
+   },
    "proficient_category_workbenches": {
       "ordinal": 15,
       "display_name": "i18n(stonehearth_ace:data.population.ascendancy.titles.proficient_category_workbenches.display_name)",
