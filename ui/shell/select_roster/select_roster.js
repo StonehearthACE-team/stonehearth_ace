@@ -564,6 +564,7 @@ App.StonehearthCitizenRosterEntryView = App.View.extend({
          self.setCustomizationLocked('face_hair', true);
          self.setCustomizationLocked('hair_color', true);
          self.setCustomizationLocked('skin_color', true);
+         self.setCustomizationLocked('eye_color', true);
       }
     },
 
@@ -579,6 +580,7 @@ App.StonehearthCitizenRosterEntryView = App.View.extend({
           self.setCustomizationLocked('face_hair', true);
           self.setCustomizationLocked('hair_color', true);
           self.setCustomizationLocked('skin_color', true);
+          self.setCustomizationLocked('eye_color', true);
           var lockedOptions = self.get('lockedOptions');
           lockedOptions.frozen = true;
           self.set('lockedOptions', lockedOptions);
@@ -884,6 +886,17 @@ App.StonehearthCitizenRosterEntryView = App.View.extend({
       }
    }.property('hiddenCustomizations', 'lockedOptions'),
 
+   eyeColorLocked: function() {
+      var self = this;
+      if (self._isCustomizationHidden('eye_color')) {
+         return 'hidden';
+      }
+
+      if (self._isCustomizationLocked('eye_color')) {
+         return 'locked';
+      }
+   }.property('hiddenCustomizations', 'lockedOptions'),
+
    hairColorLocked: function() {
       var self = this;
       if (self._isCustomizationHidden('hair_color')) {
@@ -921,6 +934,7 @@ App.StonehearthCitizenRosterEntryView = App.View.extend({
              this.get('hairStyleLocked') &&
              this.get('faceHairLocked') &&
              this.get('skinColorLocked') &&
+             this.get('eyeColorLocked') &&
              this.get('hairColorLocked');
    }.property('hiddenCustomizations', 'lockedOptions')
 
