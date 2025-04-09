@@ -1,0 +1,19 @@
+{
+   "type": "buff",
+   "axis": "buff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.bluebell_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.bluebell_buff.description)",
+   "icon": "file(bluebell_buff.png)",
+   "reembarkable": true,
+   "modifiers": {
+      "max_health": {
+         "add": 160
+      },
+      "speed": {
+         "add": 8
+      },
+      "calorie_burn_multiplier": {
+         "multiply": 0.75
+      }
+   }
+}
