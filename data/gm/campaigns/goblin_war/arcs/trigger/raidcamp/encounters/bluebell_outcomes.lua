@@ -26,6 +26,7 @@ function BluebellOutcomesScript:start(ctx, data)
             end
 
             pet_component:set_owner(min_citizen)
+            radiant.entities.add_buff(boss_sheep, 'stonehearth_ace:buffs:bluebell')
          elseif data.outcome == 'leave_be' then
             radiant.entities.set_player_id(boss_sheep, 'animals')
          elseif data.outcome == 'let_go' then
