@@ -154,6 +154,10 @@ function AceUnitInfoComponent:get_description_data()
    return self._sv.description_data
 end
 
+function AceUnitInfoComponent:get_icon()
+   return self._sv.icon
+end
+
 function AceUnitInfoComponent:set_allow_customization(allow)
    self._sv.allow_customization = allow
    self.__saved_variables:mark_changed()

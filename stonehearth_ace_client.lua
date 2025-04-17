@@ -16,6 +16,7 @@ local service_creation_order = {
    'heatmap',
    'gameplay_settings',
    'map',
+   'name_overlay',
 }
 
 local monkey_patches = {

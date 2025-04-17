@@ -62,7 +62,17 @@ App.StonehearthGameUiView = App.ContainerView.extend({
          self.$().append(btn);
          btn.click(function(e) {
             if (keyData.event) {
-               $(top).trigger(keyData.event, keyData.eventArgs)
+               $(top).trigger(keyData.event, keyData.args)
+            }
+
+            if (keyData.call) {
+               if (keyData.object) {
+                  radiant.call_obj(keyData.object, keyData.call, keyData.args);
+               }
+               else
+               {
+                  radiant.call(keyData.call, keyData.args);
+               }
             }
          });
       });

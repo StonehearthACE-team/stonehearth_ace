@@ -28,12 +28,19 @@ function NewGameCallHandler:get_starting_rosters_command(session, response)
                -- TODO: check traits against selected kingdom's traits; if any aren't valid, the roster isn't valid
                local traits_valid = true
                for _, citizen in ipairs(roster.citizens) do
+                  if citizen.trait_icons and #citizen.trait_icons == 0 then
+                     citizen.trait_icons = nil
+                  end
                   if citizen.traits then
-                     for _, trait in ipairs(citizen.traits) do
-                        if not result.traits[trait] then
-                           citizen.invalid_traits = true
-                           traits_valid = false
-                           break
+                     if #citizen.traits == 0 then
+                        citizen.traits = nil
+                     else
+                        for _, trait in ipairs(citizen.traits) do
+                           if not result.traits[trait] then
+                              citizen.invalid_traits = true
+                              traits_valid = false
+                              break
+                           end
                         end
                      end
                   end

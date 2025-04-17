@@ -70,7 +70,22 @@ void main() {
    vec4 albedoSample = texture(albedo, texCoords);
 
    // Mix in uniform alpha (for animation) and lit vertex color.
-   fragColor = vec4(albedoSample.rgb, albedoSample.a * alpha) * oColor;
+   vec4 tColor = vec4(albedoSample.rgb, albedoSample.a * alpha) * oColor;
+
+   // *** doesn't actually work! whatever renderer is behind this flickers black when alpha is 0.0
+   // this is super crude, but assume pure magenta is transparency
+   // anti-aliased with black, all equal red and blue with 0 green should be treated as transparency-blended
+   // if (tColor.r > 0.0 && tColor.b > 0.0 && tColor.r == tColor.b && tColor.g == 0.0) {
+   //    if (tColor.r == 1.0 && tColor.b == 1.0) {
+   //       //tColor.a = 0.0;
+   //       discard;
+   //    } else {
+   //       tColor.a = tColor.r;
+   //       tColor.r = tColor.b = 0.0;
+   //    }
+   // }
+
+   fragColor = tColor;
 
    // For now, draw on top of everything.
    gl_FragDepth = fragColor.a > 0.0 ? 0.0 : 1.0;

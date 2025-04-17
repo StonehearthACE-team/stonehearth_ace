@@ -1,202 +1,47 @@
 {
-   "type": "index",
    "mixins": "stonehearth_ace:data:constants:farming",
+   "type": "index",
    "constants": {
+      "ai": {
+         "STUCK_CHECK_RESET_PERIOD": "2m"
+      },
+      "attribute_effects": {
+         "COMPASSION_HEAL_MULTIPLIER": 0.15
+      },
       "attributes": {
          "defaults": {
             "drink_satiety_loss_multiplier": 1.0
          }
       },
-      "attribute_effects": {
-         "COMPASSION_HEAL_MULTIPLIER": 0.15
+      "auto_crafting": {
+         "MAX_INGREDIENT_BUFFER_MULTIPLIER": 5,
+         "MIN_INGREDIENT_BUFFER_MULTIPLIER": 1
       },
-      "thoughts": {
-         "food_quality": {
-            "INTOLERABLE": "stonehearth:thoughts:eating:ate_intolerable",
-            "LOVELY": "stonehearth:thoughts:eating:ate_lovely"
+      "combat": {
+         "ADDITIVE_COMBAT_LEASH_BONUS": 10
+      },
+      "construction": {
+         "building_materials": {
+            "stone marble resource": "/stonehearth_ace/data/horde/materials/structure_shiny.material.json"
          },
-         "drink_quality": {
-            "INTOLERABLE": "stonehearth:thoughts:drinking:intolerable",
-            "UNPALATABLE": "stonehearth:thoughts:drinking:unpalatable",
-            "RAW": "stonehearth:thoughts:drinking:raw",
-            "BLAND": "stonehearth:thoughts:drinking:bland",
-            "PREPARED": "stonehearth:thoughts:drinking:prepared",
-            "AVERAGE": "stonehearth:thoughts:drinking:average",
-            "TASTY": "stonehearth:thoughts:drinking:tasty",
-            "LOVELY": "stonehearth:thoughts:drinking:lovely"
-         },
-         "drink_item_quality": {
-            "FINE": "stonehearth:thoughts:drinking:had_item_quality_fine",
-            "EXCELLENT": "stonehearth:thoughts:drinking:had_item_quality_excellent",
-            "MASTERWORK": "stonehearth:thoughts:drinking:had_item_quality_masterwork"
-         }
+         "DEFAULT_BUILDING_MATERIAL": "/stonehearth/data/horde/materials/structure.material.json"
       },
       "conversation": {
          "MIN_TARGET_RENOWN": 25,
-         "renown_levels": {
-            "MUCH_LOWER": -3,
-            "LOWER": -2,
-            "SOME_LOWER": -1,
-            "EQUAL": 0,
-            "SOME_HIGHER": 1,
-            "HIGHER": 2,
-            "MUCH_HIGHER": 3
-         },
          "participant_types": {
             "SPOOKY": "spooky"
-         }
-      },
-      "food_satisfaction_thresholds": {
-         "AVERAGE": 45,
-         "HIGH": 80
-      },
-      "food_qualities": {
-         "INTOLERABLE": -1,
-         "LOVELY": 7,
-         "MAXIMUM": 7
-      },
-      "drink_satisfaction_thresholds": {
-         "AVERAGE": 55,
-         "HIGH": 80
-      },
-      "drink_qualities": {
-         "INTOLERABLE": -1,
-         "UNPALATABLE": 0,
-         "MINIMUM_VIABLE": 0,
-         "RAW_BLAND": 1,
-         "RAW_AVERAGE": 2,
-         "RAW_TASTY": 3,
-         "PREPARED_BLAND": 4,
-         "PREPARED_AVERAGE": 5,
-         "PREPARED_TASTY": 6,
-         "LOVELY": 7,
-         "MAXIMUM": 7
-      },
-      "drink_satiety": {
-         "MAX_DRINK_SATIETY": 100,
-         "SATED": 70,
-         "VERY_THIRSTY": 10,
-         "THIRSTY": 40,
-         "MIN_DRINK_SATIETY": 1,
-         "HOURLY_DRINK_SATIETY_LOSS": 1.2,
-         "DRINKTIME_MORNING_START": 3,
-         "DRINKTIME_AFTERNOON_START": 15,
-         "DRINKTIME_NIGHT_START": 20,
-         "DRINK_TIME_WINDOW": "2h",
-         "PREFERRED_DRINK_BONUS": 1.5,
-         "HAD_DRINK_RECENTLY_WINDOW": 2200
-      },
-      "drink_satiety_levels": {
-         "SATED": 1,
-         "NEUTRAL": 2,
-         "THIRSTY": 3,
-         "VERY_THIRSTY": 4
-      },
-      "drink_max_distance": {
-         "DEFAULT": 80,
-         "THIRSTY": 160,
-         "VERY_THIRSTY": 240
-      },
-      "score": {
-         "drink": {
-            "RAW_DRINK_COUNT_MULTIPLIER": 1,
-            "PREPARED_DRINK_COUNT_MULTIPLIER": 1,
-            "LUXURY_DRINK_COUNT_MULTIPLIER": 1,
-            "NO_PREPARED_DRINK_PENALTY": -8,
-            "NO_LUXURY_DRINK_PENALTY": -15
-         }
-      },
-      "sleep": {
-         "HOURLY_SLEEPINESS": 1,
-         "SLEEP_ON_GROUND_DURATION_MULTIPLIER": 1.05,
-         "TIRED_THOUGHT_THRESHOLD": 14,
-         "FATIGUED_THOUGHT_THRESHOLD": 20,
-         "EXHAUSTED_THOUGHT_THRESHOLD": 26,
-         "PET_SLEEP_DURATION": 4800,
-         "BEDTIME_START_HOUR": 1,
-         "BEDTIME_END_HOUR": 6,
-         "BEDTIME_SLEEPINESS_BOOST": 8,
-         "MIN_SLEEPINESS_TO_SLEEP": 22,
-         "MIN_SLEEPINESS_TO_SLEEP_ON_GROUND": 25,
-         "MAX_SLEEPINESS": 32
-      },
-      "healing": {
-         "SPECIAL_ATTENTION_CONDITIONS": {
-            "wound_corrupt": 1,
-            "vampire_bite": 1,
-            "poison": 0.9,
-            "infection": 0.8,
-            "undead_infection": 0.75,
-            "wound_fire": 0.7,
-            "wound_pierce": 0.6,
-            "wound_impact": 0.6,
-            "wound_cut": 0.6,
-            "wound_cold": 0.5,
-            "toxin": 0.4
          },
-         "healing_item_factors": {
-            "CONDITION": 0.4,
-            "AVOIDS_RECENTLY_TREATED": 0.3,
-            "SPECIAL_PRIORITY": 0.15,
-            "FULL_HEAL": 0.05,
-            "PERCENT_HEAL": 0.1
-         },
-         "PRIORITY_CARE_OWNERSHIP_TYPE": "medic_patient",
-         "FILTER_GUTS_DIVISOR": 3,
-         "FILTER_GUTS_MAX_DIFF": 10,
-         "FILTER_HEALTH_DIVISOR": 20,
-         "FILTER_HEALTH_MAX_DIFF": 80
-      },
-      "health": {
-         "SCRATCHED_PERCENTAGE": 0.999,
-         "COMBAT_REST_WHEN_INJURED_PERCENTAGE": 0.9,
-         "SEVERELY_INJURED_PERCENTAGE": 0.25,
-         "STOP_RESTING_STATUS_UNCHANGED_DURATION": "4h",
-         "WOUND_TYPES": {
-            "wound_corrupt": true,
-            "wound_fire": true,
-            "wound_pierce": true,
-            "wound_impact": true,
-            "wound_cut": true,
-            "wound_cold": true
+         "renown_levels": {
+            "EQUAL": 0,
+            "HIGHER": 2,
+            "LOWER": -2,
+            "MUCH_HIGHER": 3,
+            "MUCH_LOWER": -3,
+            "SOME_HIGHER": 1,
+            "SOME_LOWER": -1
          }
-      },
-      "hydrology": {
-         "MIN_INFINITE_WATER_HEIGHT": 0.6
-      },
-      "item_quality": {
-         "mixintypes": {
-            "bonuses": "override"
-         },
-         "bonuses": {
-            "net_worth": [
-               0,
-               0.6,
-               1.5,
-               4
-            ],
-            "appeal": [
-               0,
-               0.5,
-               1.2,
-               3
-            ],
-            "menace": [
-               0,
-               2,
-               5,
-               10
-            ]
-         }
-      },
-      "auto_crafting": {
-         "MIN_INGREDIENT_BUFFER_MULTIPLIER": 1,
-         "MAX_INGREDIENT_BUFFER_MULTIPLIER": 5
       },
       "crafting": {
-         "mixintypes": {
-            "ITEM_QUALITY_CHANCES": "override"
-         },
          "CATEGORY_PROFICIENCY_GAIN_FACTOR": 0.01,
          "CATEGORY_PROFICIENCY_MAX_HIGHER_QUALITY_MULT": 2,
          "GAME_TIME_PER_EFFORT": "1m",
@@ -210,45 +55,58 @@
          ],
          "MAX_DUPLICATE_ASSOCIATED_RECIPES": 5,
          "MAX_INGREDIENTS_TO_ANIMATE_DROPPING": 5,
+         "mixintypes": {
+            "ITEM_QUALITY_CHANCES": "override"
+         },
          "PERIODIC_RECONSIDER_ORDERS_COOLDOWN": "2h+10m"
       },
       "darkness": {
          "DEFAULT_LIGHT_RADIUS": 16,
-         "SEARCH_RADIUS": 16,
+         "MIN_SLEEPINESS_TO_PREFER_DARKNESS": 20,
          "SAMPLING_PERIOD": "10m+10m",
-         "MIN_SLEEPINESS_TO_PREFER_DARKNESS": 20
+         "SEARCH_RADIUS": 16
       },
-      "heatmaps": {
-         "ore": {
-            "SAMPLE_RADIUS": 7,
-            "BASE_DEPTH": 10,
-            "LEVELS": [
-               {
-                  "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.none.display_name)",
-                  "icon": "/stonehearth_ace/ui/images/heatmaps/ore_none.png",
-                  "max": 0.01,
-                  "heatmap_color": [ 128, 128, 128, 200 ]
-               },
-               {
-                  "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.some.display_name)",
-                  "icon": "/stonehearth_ace/ui/images/heatmaps/ore_some.png",
-                  "max": 0.6,
-                  "heatmap_color": [ 183, 128, 71, 200 ]
-               },
-               {
-                  "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.lots.display_name)",
-                  "icon": "/stonehearth_ace/ui/images/heatmaps/ore_lots.png",
-                  "max": 2,
-                  "heatmap_color": [ 227, 128, 27, 200 ]
-               },
-               {
-                  "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.tons.display_name)",
-                  "icon": "/stonehearth_ace/ui/images/heatmaps/ore_tons.png",
-                  "max": 999999,
-                  "heatmap_color": [ 255, 128, 0, 200 ]
-               }
-            ]
-         }
+      "drink_max_distance": {
+         "DEFAULT": 80,
+         "THIRSTY": 160,
+         "VERY_THIRSTY": 240
+      },
+      "drink_qualities": {
+         "INTOLERABLE": -1,
+         "LOVELY": 7,
+         "MAXIMUM": 7,
+         "MINIMUM_VIABLE": 0,
+         "PREPARED_AVERAGE": 5,
+         "PREPARED_BLAND": 4,
+         "PREPARED_TASTY": 6,
+         "RAW_AVERAGE": 2,
+         "RAW_BLAND": 1,
+         "RAW_TASTY": 3,
+         "UNPALATABLE": 0
+      },
+      "drink_satiety": {
+         "DRINK_TIME_WINDOW": "2h",
+         "DRINKTIME_AFTERNOON_START": 15,
+         "DRINKTIME_MORNING_START": 3,
+         "DRINKTIME_NIGHT_START": 20,
+         "HAD_DRINK_RECENTLY_WINDOW": 2200,
+         "HOURLY_DRINK_SATIETY_LOSS": 1.2,
+         "MAX_DRINK_SATIETY": 100,
+         "MIN_DRINK_SATIETY": 1,
+         "PREFERRED_DRINK_BONUS": 1.5,
+         "SATED": 70,
+         "THIRSTY": 40,
+         "VERY_THIRSTY": 10
+      },
+      "drink_satiety_levels": {
+         "NEUTRAL": 2,
+         "SATED": 1,
+         "THIRSTY": 3,
+         "VERY_THIRSTY": 4
+      },
+      "drink_satisfaction_thresholds": {
+         "AVERAGE": 55,
+         "HIGH": 80
       },
       "effect_times": {
          "SINGLE_TARGET_HEAL_CAST_TIME": 2200
@@ -257,169 +115,94 @@
          "CAST_HEAL": "combat_1h_heal"
       },
       "entity_mover": {
+         "facing_types": {
+            "FULL": "full",
+            "NONE": "none",
+            "Y_ONLY": "y_only"
+         },
          "movement_types": {
             "CUSTOM": "custom",
             "DIRECT": "direct"
+         }
+      },
+      "equipment": {
+         "SLOT_TO_BONE_MAP": {
+            "accessory": "pelvis",
+            "backpack": "torso",
+            "beekeeping_hat": "head",
+            "cape": "back",
+            "combat_default_skill": "root",
+            "combat_skill_1": "root",
+            "combat_skill_2": "root",
+            "combat_skill_3": "root",
+            "consumable": "root",
+            "mask": "head",
+            "rightArm": "rightArm",
+            "worker_axe": "mainhand",
+            "worker_mining_pick": "mainhand"
+         }
+      },
+      "exp": {
+         "ARMOR_EXP_WEIGHT": 8,
+         "COURAGE_EXP_WEIGHT": 1,
+         "DMG_EXP_WEIGHT": 10,
+         "MUSCLE_EXP_WEIGHT": 4,
+         "SPEED_EXP_WEIGHT": 0.5
+      },
+      "farming": {
+         "BASE_MEGACROP_CHANCE": 0.001,
+         "crop_growth_times": {
+            "FAIR": "7d",
+            "LONG": "9d",
+            "LONGEST": "14d",
+            "SHORT": "5d",
+            "SHORTEST": "2d",
+            "VERY_LONG": "11d",
+            "VERY_SHORT": "3d"
          },
-         "facing_types": {
+         "DEFAULT_FLOODED_GROWTH_TIME_MULTIPLIER": 3,
+         "DEFAULT_FROZEN_GROWTH_TIME_MULTIPLIER": 2,
+         "DEFAULT_MEGACROP_DESCRIPTION": "i18n(stonehearth_ace:entities.crops.megacrops.default_description)",
+         "DEFAULT_MEGACROP_SCALE": 2,
+         "DEFAULT_PATTERN": [[2], [1]],
+         "location_types": {
+            "CROP": 2,
+            "EMPTY": 0,
+            "FURROW": 1
+         },
+         "NONPREFERRED_SEASON_GROWTH_TIME_MULTIPLIER": 1.5,
+         "SUNLIGHT_CHECK_FREQUENCY": "3h",
+         "water_levels": {
+            "EXTRA": "extra",
             "NONE": "none",
-            "FULL": "full",
-            "Y_ONLY": "y_only"
-         }
-      },
-      "shop": {
-         "SALE_MULTIPLIER": 1.25,
-         "SHOP_VALUE_ROUNDING_MIN_THRESHOLD": 50,
-         "DEFAULT_FINE_ITEM_CHANCE": 0.05
-      },
-      "mercantile": {
-         "MERCHANT_CITIZEN_FOCUS": 0.8,
-         "MIN_CITY_TIER": 1,
-         "MAX_STALL_TIER": 3,
-         "MAX_DAILY_MERCHANTS": 12,
-         "NET_WORTH_MULTIPLIER": 0.004,
-         "TOTAL_TRADE_MULTIPLIER": 0.012,
-         "ADDITIVE_MODIFIER": -0.75,
-         "SPAWN_TIME": "8:00",
-         "DEPART_TIME": "20:00",
-         "category_preferences": {
-            "DISABLED": 0,
-            "ENABLED": 1,
-            "ENCOURAGED": 2
+            "PLENTY": "plenty",
+            "SOME": "some"
          },
-         "ENCOURAGED_MULTIPLIER": 3,
-         "MAX_DISABLES_PER_TIER": [ 2, 3, 4 ],
-         "MAX_ENCOURAGES_PER_TIER": [ 2, 3, 4 ],
-         "DEFAULT_WANTED_ITEM_PRICE_FACTOR": 1.5,
-         "DEFAULT_UNWANTED_ITEM_PRICE_FACTOR": 0.5,
-         "PERSISTENCE_ITEM_PRICE_FACTOR": 0.5,
-         "PERSISTENCE_ITEM_QUALITY_COUNTS": [ 7, 3, 1 ],
-         "PERSISTENCE_TOWN_NAME_CHANCE": 0.5,
-         "rarities": {
-            "JUNK": "junk",
-            "COMMON": "common",
-            "UNCOMMON": "uncommon",
-            "RARE": "rare"
-         },
-         "DEFAULT_BAD_WEATHER": {
-            "stonehearth_ace:weather:hailstorm": true,
-            "stonehearth_ace:weather:sunny:sweltering": true,
-            "stonehearth_ace:weather:under_siege": true,
-            "stonehearth_ace:weather:whiteout": true,
-            "stonehearth_ace:weather:foggy:chilly": true,
-            "stonehearth_ace:weather:foggy:highlands": true,
-            "stonehearth:weather:blizzard": true,
-            "stonehearth:weather:sandstorm": true,
-            "stonehearth:weather:sandy": true,
-            "stonehearth:weather:thunderstorm": true,
-            "stonehearth:weather:titanstorm": true,
-            "stonehearth:weather:foggy": true
-         }
+         "WATER_RECALCULATE_THRESHOLD": 0.04
       },
-      "immigration_requirements": {
-         "__comment": "Net_worth is default value (here just for reference; food has only the * 1.5 added by ACE as a 'general multiplier' of difficulty",
-         "food": "math.floor((50 + math.max((num_citizens-7)/math.max((51 - num_citizens)/10, 1), 0) * 150) * 1.5)",
-         "net_worth": "math.max(math.max(num_citizens-6, 0.5)*550 + math.max(num_citizens-9,0)*100, (num_citizens^1.94 - 18*num_citizens) * 100 + math.min(9300, 1000*num_citizens))"
+      "food_qualities": {
+         "INTOLERABLE": -1,
+         "LOVELY": 7,
+         "MAXIMUM": 7
       },
-      "town_progression": {
-         "MAX_CITY_TIER": 3,
-         "bonuses": {
-            "VITALITY_PLANTER_APPEAL_ADDITION": 4
-         }
+      "food_satisfaction_thresholds": {
+         "AVERAGE": 45,
+         "HIGH": 80
       },
-      "trapping": {
-         "UNSUCCESSFUL_SPAWN_RETRY_TIME": "15m",
-         "fish_traps": {
-            "MIN_EFFECTIVE_WATER_VOLUME": 100
-         }
-      },
-      "water_signal": {
-         "MONITOR_TYPES": [
-            "water_exists",
-            "water_volume",
-            "water_surface_level",
-            "waterfall_exists",
-            "waterfall_volume"
-         ]
-      },
-      "wilderness": {
-         "__comment": "This is how many voxels are in a square of that 'radius'.",
-         "SAMPLE_RADIUS": 7,
-         "SAMPLE_DENOMINATOR": 225,
-         "LEVELS": [
-            {
-               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.none.display_name)",
-               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.none.description)",
-               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_none.png",
-               "max": 0.001,
-               "heatmap_color": [ 128, 128, 128, 128 ],
-               "heatmap_hilight": [ 0.4, 0.4, 0.4 ],
-               "spawn_duration_multiplier": 5
-            },
-            {
-               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.little.display_name)",
-               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.little.description)",
-               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_little.png",
-               "max": 0.021,
-               "heatmap_color": [ 180, 224, 64, 200 ],
-               "heatmap_hilight": [ 0.5, 0.6, 0 ],
-               "spawn_duration_multiplier": 3
-            },
-            {
-               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.some.display_name)",
-               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.some.description)",
-               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_some.png",
-               "max": 0.05,
-               "heatmap_color": [ 40, 224, 40, 200 ],
-               "heatmap_hilight": [ 0, 0.8, 0 ],
-               "spawn_duration_multiplier": 2
-            },
-            {
-               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.lots.display_name)",
-               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.lots.description)",
-               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_lots.png",
-               "max": 0.1,
-               "heatmap_color": [ 40, 180, 40, 200 ],
-               "heatmap_hilight": [ 0, 0.6, 0 ],
-               "spawn_duration_multiplier": 1
-            },
-            {
-               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.tons.display_name)",
-               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.tons.description)",
-               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_tons.png",
-               "max": 999999,
-               "heatmap_color": [ 0, 128, 32, 200 ],
-               "heatmap_hilight": [ 0, 0.5, 0.1 ],
-               "spawn_duration_multiplier": 0.75
-            }
-         ]
+      "foraging": {
+         "FORAGING_SPOT_FREQUENCY": 0.005,
+         "MIN_AVG_WILDERNESS_SCORE": 0.004,
+         "WILDERNESS_SCORE_MULTIPLIER": 0.02
       },
       "game_master": {
          "location_searcher": {
             "MAX_POINTS_TO_CHECK": 700,
-            "MAX_POINTS_TO_TRY_REACHABLE": 300,
-            "MAX_POINTS_TO_CHECK_PER_LOOP": 3
+            "MAX_POINTS_TO_CHECK_PER_LOOP": 3,
+            "MAX_POINTS_TO_TRY_REACHABLE": 300
          },
          "quests": {
+            "DEFAULT_QUEST_STORAGE_CONTAINER_URI": "stonehearth_ace:containers:quest",
             "filler_materials": {
-               "stonehearth:biome:temperate": {
-                  "default": [
-                     "stonehearth:resources:wood:oak_log",
-                     "stonehearth:resources:wood:juniper_log"
-                  ]
-               },
-               "stonehearth:biome:desert": {
-                  "default": [
-                     "stonehearth:resources:wood:acacia_log",
-                     "stonehearth:resources:clay:clay_mound"
-                  ]
-               },
-               "stonehearth:biome:arctic": {
-                  "default": [
-                     "stonehearth:resources:wood:pine_log",
-                     "stonehearth_ace:resources:stone:slate_stone"
-                  ]
-               },
                "stonehearth_ace:biome:highlands": {
                   "default": [
                      "stonehearth_ace:resources:stone:limestone_stone",
@@ -431,106 +214,200 @@
                      "stonehearth:resources:copper:ore",
                      "stonehearth:resources:tin:ore"
                   ]
+               },
+               "stonehearth:biome:arctic": {
+                  "default": [
+                     "stonehearth:resources:wood:pine_log",
+                     "stonehearth_ace:resources:stone:slate_stone"
+                  ]
+               },
+               "stonehearth:biome:desert": {
+                  "default": [
+                     "stonehearth:resources:wood:acacia_log",
+                     "stonehearth:resources:clay:clay_mound"
+                  ]
+               },
+               "stonehearth:biome:temperate": {
+                  "default": [
+                     "stonehearth:resources:wood:oak_log",
+                     "stonehearth:resources:wood:juniper_log"
+                  ]
                }
             },
-            "DEFAULT_QUEST_STORAGE_CONTAINER_URI": "stonehearth_ace:containers:quest",
             "QUEST_STORAGE_ZONE_URI": "stonehearth_ace:containers:quest_zone"
          }
       },
-      "combat": {
-         "ADDITIVE_COMBAT_LEASH_BONUS": 10
-      },
-      "equipment": {
-         "SLOT_TO_BONE_MAP": {
-            "beekeeping_hat": "head",
-            "mask": "head",
-            "accessory": "pelvis",
-            "cape": "back",
-            "backpack": "torso",
-            "worker_mining_pick": "mainhand",
-            "worker_axe": "mainhand",
-            "rightArm": "rightArm",
-            "consumable": "root",
-            "combat_default_skill": "root",
-            "combat_skill_1": "root",
-            "combat_skill_2": "root",
-            "combat_skill_3": "root"
+      "healing": {
+         "FILTER_GUTS_DIVISOR": 3,
+         "FILTER_GUTS_MAX_DIFF": 10,
+         "FILTER_HEALTH_DIVISOR": 20,
+         "FILTER_HEALTH_MAX_DIFF": 80,
+         "healing_item_factors": {
+            "AVOIDS_RECENTLY_TREATED": 0.3,
+            "CONDITION": 0.4,
+            "FULL_HEAL": 0.05,
+            "PERCENT_HEAL": 0.1,
+            "SPECIAL_PRIORITY": 0.15
+         },
+         "PRIORITY_CARE_OWNERSHIP_TYPE": "medic_patient",
+         "SPECIAL_ATTENTION_CONDITIONS": {
+            "infection": 0.8,
+            "poison": 0.9,
+            "toxin": 0.4,
+            "undead_infection": 0.75,
+            "vampire_bite": 1,
+            "wound_cold": 0.5,
+            "wound_corrupt": 1,
+            "wound_cut": 0.6,
+            "wound_fire": 0.7,
+            "wound_impact": 0.6,
+            "wound_pierce": 0.6
          }
       },
-      "weather": {
-         "kingdoms_affected_by_weather": {
-            "goblins": true,
-            "human_npcs": true,
-            "rabbit_biped_npcs": true,
-            "orc_npcs": true,
-            "orcs": true,
-            "mountain_folk_npcs": true
-         },
-         "weather_types": {
-            "COLD": "cold_weather",
-            "HOT": "hot_weather"
-         },
-         "EVENT_WEATHERS": [
-            "stonehearth_ace:weather:under_siege",
-            "stonehearth:weather:titanstorm"
-         ],
-         "DYNAMIC_WEATHER_WINDOW_START": 10,
-         "DYNAMIC_WEATHER_WINDOW_END": 22
+      "health": {
+         "COMBAT_REST_WHEN_INJURED_PERCENTAGE": 0.9,
+         "SCRATCHED_PERCENTAGE": 0.999,
+         "SEVERELY_INJURED_PERCENTAGE": 0.25,
+         "STOP_RESTING_STATUS_UNCHANGED_DURATION": "4h",
+         "WOUND_TYPES": {
+            "wound_cold": true,
+            "wound_corrupt": true,
+            "wound_cut": true,
+            "wound_fire": true,
+            "wound_impact": true,
+            "wound_pierce": true
+         }
       },
-      "farming": {
-         "NONPREFERRED_SEASON_GROWTH_TIME_MULTIPLIER": 1.5,
-         "DEFAULT_FLOODED_GROWTH_TIME_MULTIPLIER": 3,
-         "DEFAULT_FROZEN_GROWTH_TIME_MULTIPLIER": 2,
-         "BASE_MEGACROP_CHANCE": 0.001,
-         "SUNLIGHT_CHECK_FREQUENCY": "3h",
-         "WATER_RECALCULATE_THRESHOLD": 0.04,
-         "DEFAULT_MEGACROP_DESCRIPTION": "i18n(stonehearth_ace:entities.crops.megacrops.default_description)",
-         "DEFAULT_MEGACROP_SCALE": 2,
-         "DEFAULT_PATTERN": [[2], [1]],
-         "location_types": {
-            "EMPTY": 0,
-            "FURROW": 1,
-            "CROP": 2
-         },
-         "crop_growth_times": {
-            "SHORTEST": "2d",
-            "VERY_SHORT": "3d",
-            "SHORT": "5d",
-            "FAIR": "7d",
-            "LONG": "9d",
-            "VERY_LONG": "11d",
-            "LONGEST": "14d"
-         },
-         "water_levels": {
-            "NONE": "none",
-            "SOME": "some",
-            "PLENTY": "plenty",
-            "EXTRA": "extra"
+      "heatmaps": {
+         "ore": {
+            "BASE_DEPTH": 10,
+            "LEVELS": [
+               {
+                  "heatmap_color": [128, 128, 128, 200],
+                  "icon": "/stonehearth_ace/ui/images/heatmaps/ore_none.png",
+                  "max": 0.01,
+                  "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.none.display_name)"
+               },
+               {
+                  "heatmap_color": [183, 128, 71, 200],
+                  "icon": "/stonehearth_ace/ui/images/heatmaps/ore_some.png",
+                  "max": 0.6,
+                  "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.some.display_name)"
+               },
+               {
+                  "heatmap_color": [227, 128, 27, 200],
+                  "icon": "/stonehearth_ace/ui/images/heatmaps/ore_lots.png",
+                  "max": 2,
+                  "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.lots.display_name)"
+               },
+               {
+                  "heatmap_color": [255, 128, 0, 200],
+                  "icon": "/stonehearth_ace/ui/images/heatmaps/ore_tons.png",
+                  "max": 999999,
+                  "ui_label": "i18n(stonehearth_ace:data.heatmaps.ore.thresholds.tons.display_name)"
+               }
+            ],
+            "SAMPLE_RADIUS": 7
          }
       },
       "herbalist_planters": {
-         "DEFAULT_QUALITY_MODIFICATION_RATE": -0.1,
          "DEFAULT_QUALITY_MODIFICATION_INTERVAL": "16h+30m",
+         "DEFAULT_QUALITY_MODIFICATION_RATE": -0.1,
          "tend_effects": [
             "fiddle"
          ],
-         "TEND_SOFT_COOLDOWN": "24h",
-         "TEND_HARD_COOLDOWN": "12h"
+         "TEND_HARD_COOLDOWN": "12h",
+         "TEND_SOFT_COOLDOWN": "24h"
+      },
+      "hydrology": {
+         "MIN_INFINITE_WATER_HEIGHT": 0.6
+      },
+      "immigration_requirements": {
+         "__comment": "Net_worth is default value (here just for reference; food has only the * 1.5 added by ACE as a 'general multiplier' of difficulty",
+         "food": "math.floor((50 + math.max((num_citizens-7)/math.max((51 - num_citizens)/10, 1), 0) * 150) * 1.5)",
+         "net_worth": "math.max(math.max(num_citizens-6, 0.5)*550 + math.max(num_citizens-9,0)*100, (num_citizens^1.94 - 18*num_citizens) * 100 + math.min(9300, 1000*num_citizens))"
       },
       "inventory": {
          "CRAFTER_PRIORITY_STORAGE_RADIUS": 12,
-         "MAX_INSIGNIFICANT_PATH_LENGTH": 12,
+         "input_bins": {
+            "MAX_PRIORITY": 4,
+            "MIN_PRIORITY": 0
+         },
          "MAX_IGNORE_MAX_ITEMS_DISTANCE": 100,
+         "MAX_INSIGNIFICANT_PATH_LENGTH": 12,
          "MIN_COUNT_FOR_PLENTIFUL_ITEMS": 20,
          "restock_director": {
+            "FAILED_ITEM_REQUEUE_BATCH_SIZE": 30,
             "FAILED_ITEM_REQUEUE_DELAY": "10m",
-            "FAILED_ITEM_REQUEUE_SHORT_DELAY": "5m",
-            "FAILED_ITEM_REQUEUE_BATCH_SIZE": 30
-         },
-         "input_bins": {
-            "MIN_PRIORITY": 0,
-            "MAX_PRIORITY": 4
+            "FAILED_ITEM_REQUEUE_SHORT_DELAY": "5m"
          }
+      },
+      "item_quality": {
+         "bonuses": {
+            "appeal": [0, 0.5, 1.2, 3],
+            "menace": [0, 2, 5, 10],
+            "net_worth": [0, 0.6, 1.5, 4]
+         },
+         "mixintypes": {
+            "bonuses": "override"
+         }
+      },
+      "mercantile": {
+         "ADDITIVE_MODIFIER": -0.75,
+         "category_preferences": {
+            "DISABLED": 0,
+            "ENABLED": 1,
+            "ENCOURAGED": 2
+         },
+         "DEFAULT_BAD_WEATHER": {
+            "stonehearth_ace:weather:foggy:chilly": true,
+            "stonehearth_ace:weather:foggy:highlands": true,
+            "stonehearth_ace:weather:hailstorm": true,
+            "stonehearth_ace:weather:sunny:sweltering": true,
+            "stonehearth_ace:weather:under_siege": true,
+            "stonehearth_ace:weather:whiteout": true,
+            "stonehearth:weather:blizzard": true,
+            "stonehearth:weather:foggy": true,
+            "stonehearth:weather:sandstorm": true,
+            "stonehearth:weather:sandy": true,
+            "stonehearth:weather:thunderstorm": true,
+            "stonehearth:weather:titanstorm": true
+         },
+         "DEFAULT_UNWANTED_ITEM_PRICE_FACTOR": 0.5,
+         "DEFAULT_WANTED_ITEM_PRICE_FACTOR": 1.5,
+         "DEPART_TIME": "20:00",
+         "ENCOURAGED_MULTIPLIER": 3,
+         "MAX_DAILY_MERCHANTS": 12,
+         "MAX_DISABLES_PER_TIER": [2, 3, 4],
+         "MAX_ENCOURAGES_PER_TIER": [2, 3, 4],
+         "MAX_STALL_TIER": 3,
+         "MERCHANT_CITIZEN_FOCUS": 0.8,
+         "MIN_CITY_TIER": 1,
+         "NET_WORTH_MULTIPLIER": 0.004,
+         "PERSISTENCE_ITEM_PRICE_FACTOR": 0.5,
+         "PERSISTENCE_ITEM_QUALITY_COUNTS": [7, 3, 1],
+         "PERSISTENCE_TOWN_NAME_CHANCE": 0.5,
+         "rarities": {
+            "COMMON": "common",
+            "JUNK": "junk",
+            "RARE": "rare",
+            "UNCOMMON": "uncommon"
+         },
+         "SPAWN_TIME": "8:00",
+         "TOTAL_TRADE_MULTIPLIER": 0.012
+      },
+      "name_overlay": {
+         "NAME_TYPES": [
+            {
+               "human": true
+            },
+            {
+               "critter": true
+            }
+         ]
+      },
+      "negative_space": {
+         "SAMPLING_PERIOD": "20m+20m"
       },
       "patrolling": {
          "MAX_PATROLLERS_PER_PARTY": 6
@@ -538,26 +415,186 @@
       "persistence": {
          "crafters": {
             "MIN_LEVEL": 6,
-            "NUM_BEST_CRAFTS_STORED": 3,
-            "MIN_QUALITY_BEST_CRAFTS": 2
+            "MIN_QUALITY_BEST_CRAFTS": 2,
+            "NUM_BEST_CRAFTS_STORED": 3
          }
-      },
-      "exp": {
-         "MUSCLE_EXP_WEIGHT": 4,
-         "COURAGE_EXP_WEIGHT": 1,
-         "SPEED_EXP_WEIGHT": 0.5,
-         "ARMOR_EXP_WEIGHT": 8,
-         "DMG_EXP_WEIGHT": 10
       },
       "population": {
          "default_unlocked_abilities": {
             "field_type_farm": true
          }
       },
-      "foraging": {
-         "FORAGING_SPOT_FREQUENCY": 0.005,
-         "MIN_AVG_WILDERNESS_SCORE": 0.004,
-         "WILDERNESS_SCORE_MULTIPLIER": 0.02
+      "score": {
+         "drink": {
+            "LUXURY_DRINK_COUNT_MULTIPLIER": 1,
+            "NO_LUXURY_DRINK_PENALTY": -15,
+            "NO_PREPARED_DRINK_PENALTY": -8,
+            "PREPARED_DRINK_COUNT_MULTIPLIER": 1,
+            "RAW_DRINK_COUNT_MULTIPLIER": 1
+         }
+      },
+      "shop": {
+         "DEFAULT_FINE_ITEM_CHANCE": 0.05,
+         "SALE_MULTIPLIER": 1.25,
+         "SHOP_VALUE_ROUNDING_MIN_THRESHOLD": 50
+      },
+      "sleep": {
+         "BEDTIME_END_HOUR": 6,
+         "BEDTIME_SLEEPINESS_BOOST": 8,
+         "BEDTIME_START_HOUR": 1,
+         "EXHAUSTED_THOUGHT_THRESHOLD": 26,
+         "FATIGUED_THOUGHT_THRESHOLD": 20,
+         "HOURLY_SLEEPINESS": 1,
+         "MAX_SLEEPINESS": 32,
+         "MIN_SLEEPINESS_TO_SLEEP": 22,
+         "MIN_SLEEPINESS_TO_SLEEP_ON_GROUND": 25,
+         "PET_SLEEP_DURATION": 4800,
+         "SLEEP_ON_GROUND_DURATION_MULTIPLIER": 1.05,
+         "TIRED_THOUGHT_THRESHOLD": 14
+      },
+      "terrain": {
+         "MAX_Y_OVERRIDE": 100000,
+         "NUM_SUNLIGHT_CHECK_ANGLES": 6
+      },
+      "thoughts": {
+         "drink_item_quality": {
+            "EXCELLENT": "stonehearth:thoughts:drinking:had_item_quality_excellent",
+            "FINE": "stonehearth:thoughts:drinking:had_item_quality_fine",
+            "MASTERWORK": "stonehearth:thoughts:drinking:had_item_quality_masterwork"
+         },
+         "drink_quality": {
+            "AVERAGE": "stonehearth:thoughts:drinking:average",
+            "BLAND": "stonehearth:thoughts:drinking:bland",
+            "INTOLERABLE": "stonehearth:thoughts:drinking:intolerable",
+            "LOVELY": "stonehearth:thoughts:drinking:lovely",
+            "PREPARED": "stonehearth:thoughts:drinking:prepared",
+            "RAW": "stonehearth:thoughts:drinking:raw",
+            "TASTY": "stonehearth:thoughts:drinking:tasty",
+            "UNPALATABLE": "stonehearth:thoughts:drinking:unpalatable"
+         },
+         "food_quality": {
+            "INTOLERABLE": "stonehearth:thoughts:eating:ate_intolerable",
+            "LOVELY": "stonehearth:thoughts:eating:ate_lovely"
+         }
+      },
+      "town_progression": {
+         "bonuses": {
+            "VITALITY_PLANTER_APPEAL_ADDITION": 4
+         },
+         "MAX_CITY_TIER": 3
+      },
+      "trapping": {
+         "fish_traps": {
+            "MIN_EFFECTIVE_WATER_VOLUME": 100
+         },
+         "UNSUCCESSFUL_SPAWN_RETRY_TIME": "15m"
+      },
+      "traveler": {
+         "LEAVE_GIFT_CHANCE": 0.2,
+         "VALUE_BOOSTER_BOOST": 0.12,
+         "VALUE_BOOSTER_RANGE": 12,
+         "VALUE_BOOSTER_URIS": {
+            "stonehearth_ace:furniture:counter:shop:clay:desk": true,
+            "stonehearth_ace:furniture:counter:shop:stone:desk": true,
+            "stonehearth_ace:furniture:counter:shop:wood:desk": true
+         },
+         "VISIT_NEXT_ATTRACTION_INTERVAL": "40m+40m"
+      },
+      "universal_storage": {
+         "effect_sizes": {
+            "1": {
+               "effect_suffix": ":small",
+               "max_collision_size": 4
+            },
+            "2": {
+               "effect_suffix": ":medium",
+               "max_collision_size": 15
+            },
+            "3": {
+               "effect_suffix": ":large"
+            }
+         }
+      },
+      "water_signal": {
+         "MONITOR_TYPES": [
+            "water_exists",
+            "water_volume",
+            "water_surface_level",
+            "waterfall_exists",
+            "waterfall_volume"
+         ]
+      },
+      "weather": {
+         "DYNAMIC_WEATHER_WINDOW_END": 22,
+         "DYNAMIC_WEATHER_WINDOW_START": 10,
+         "EVENT_WEATHERS": [
+            "stonehearth_ace:weather:under_siege",
+            "stonehearth:weather:titanstorm"
+         ],
+         "kingdoms_affected_by_weather": {
+            "goblins": true,
+            "human_npcs": true,
+            "mountain_folk_npcs": true,
+            "orc_npcs": true,
+            "orcs": true,
+            "rabbit_biped_npcs": true
+         },
+         "weather_types": {
+            "COLD": "cold_weather",
+            "HOT": "hot_weather"
+         }
+      },
+      "wilderness": {
+         "__comment": "This is how many voxels are in a square of that 'radius'.",
+         "LEVELS": [
+            {
+               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.none.description)",
+               "heatmap_color": [128, 128, 128, 128],
+               "heatmap_hilight": [0.4, 0.4, 0.4],
+               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_none.png",
+               "max": 0.001,
+               "spawn_duration_multiplier": 5,
+               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.none.display_name)"
+            },
+            {
+               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.little.description)",
+               "heatmap_color": [180, 224, 64, 200],
+               "heatmap_hilight": [0.5, 0.6, 0],
+               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_little.png",
+               "max": 0.021,
+               "spawn_duration_multiplier": 3,
+               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.little.display_name)"
+            },
+            {
+               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.some.description)",
+               "heatmap_color": [40, 224, 40, 200],
+               "heatmap_hilight": [0, 0.8, 0],
+               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_some.png",
+               "max": 0.05,
+               "spawn_duration_multiplier": 2,
+               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.some.display_name)"
+            },
+            {
+               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.lots.description)",
+               "heatmap_color": [40, 180, 40, 200],
+               "heatmap_hilight": [0, 0.6, 0],
+               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_lots.png",
+               "max": 0.1,
+               "spawn_duration_multiplier": 1,
+               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.lots.display_name)"
+            },
+            {
+               "description": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.tons.description)",
+               "heatmap_color": [0, 128, 32, 200],
+               "heatmap_hilight": [0, 0.5, 0.1],
+               "icon": "/stonehearth_ace/ui/images/heatmaps/wilderness_tons.png",
+               "max": 999999,
+               "spawn_duration_multiplier": 0.75,
+               "ui_label": "i18n(stonehearth_ace:data.heatmaps.wilderness.thresholds.tons.display_name)"
+            }
+         ],
+         "SAMPLE_DENOMINATOR": 225,
+         "SAMPLE_RADIUS": 7
       },
       "xz_region_reasons": {
          "BOX_CANCEL_PLACEMENT": "box_cancel_placement",
@@ -565,39 +602,6 @@
          "BOX_MOVE": "box_move",
          "BOX_UNDEPLOY": "box_undeploy",
          "QUEST_STORAGE": "quest_storage"
-      },
-      "universal_storage": {
-         "effect_sizes": {
-            "1": {
-               "max_collision_size": 4,
-               "effect_suffix": ":small"
-            },
-            "2": {
-               "max_collision_size": 15,
-               "effect_suffix": ":medium"
-            },
-            "3": {
-               "effect_suffix": ":large"
-            }
-         }
-      },
-      "terrain": {
-         "MAX_Y_OVERRIDE": 100000,
-         "NUM_SUNLIGHT_CHECK_ANGLES": 6
-      },
-      "traveler": {
-         "LEAVE_GIFT_CHANCE": 0.2,
-         "VISIT_NEXT_ATTRACTION_INTERVAL": "40m+40m",
-         "VALUE_BOOSTER_RANGE": 12,
-         "VALUE_BOOSTER_BOOST": 0.12,
-         "VALUE_BOOSTER_URIS": {
-            "stonehearth_ace:furniture:counter:shop:wood:desk": true,
-            "stonehearth_ace:furniture:counter:shop:stone:desk": true,
-            "stonehearth_ace:furniture:counter:shop:clay:desk": true
-         }
-      },
-      "ai": {
-         "STUCK_CHECK_RESET_PERIOD": "2m"
       }
    }
 }
