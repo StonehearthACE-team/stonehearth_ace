@@ -1,8 +1,4 @@
 {
-   "mixins": [
-      "stonehearth_ace:mixins:armor:heavy_armor_torso",
-      "stonehearth_ace:mixins:armor:resistance:torso:high"
-   ],
 	"type": "entity",
    "components": {
       "stonehearth:equipment_piece": {
@@ -19,12 +15,12 @@
          "value_in_gold": 175
       },
       "stonehearth:catalog": {
-		 "display_name": "i18n(stonehearth_ace:entities.armor.silver_mail.display_name)",
+		   "display_name": "i18n(stonehearth_ace:entities.armor.silver_mail.display_name)",
          "description": "i18n(stonehearth_ace:entities.armor.silver_mail.description)",
-		 "mixintypes": {
-			"material_tags": "override"
-		 },
-         "material_tags":["silver", "armor", "torso", "heavy_armor", "ascendancy_made", "crafted", "stockpile_equipment"]
+		   "mixintypes": {
+			   "material_tags": "override"
+		   },
+         "material_tags":[ "silver", "armor", "torso", "heavy_armor", "ascendancy_made", "crafted", "stockpile_equipment" ]
       }
    }
 }

@@ -93,6 +93,15 @@
                   <div class="increment arrowButton" {{action "changeIndex" "increment" "skin_color" target=view.selectedView}}></div><div class="customizeLabel">{{i18n stonehearth:ui.shell.select_roster.skin_color}}</div>
                </div>
 
+               <div id="eyeColor" class="indexButton" {{bind-attr locked=view.selectedView.eyeColorLocked}}>
+                  <a href="#" {{action "toggleLock" "customization" "eye_color" target="view.selectedView"}}>
+                     <div {{bind-attr class=":customizationLock :lockImg view.selectedView.eyeColorLocked"}} />
+                  </a>
+                  {{view.selectedView.eye_color_index}}
+                  <div class="decrement arrowButton" {{action "changeIndex" "decrement" "eye_color" target=view.selectedView}}></div>
+                  <div class="increment arrowButton" {{action "changeIndex" "increment" "eye_color" target=view.selectedView}}></div><div class="customizeLabel">{{i18n stonehearth:ui.shell.select_roster.eye_color}}</div>
+               </div>
+
                <div id="hairColor" class="indexButton" {{bind-attr locked=view.selectedView.hairColorLocked}}>
                   <a href="#" {{action "toggleLock" "customization" "hair_color" target="view.selectedView"}}>
                      <div {{bind-attr class=":customizationLock :lockImg view.selectedView.hairColorLocked"}} />

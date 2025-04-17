@@ -1,5 +1,45 @@
 {
    "components": {
+      "stonehearth:loot_drops": {
+         "mixintypes": {
+            "entries": "override"
+         },
+         "entries": {
+            "gears": {
+               "num_rolls": {
+                  "min": 1,
+                  "max": 2
+               },
+               "items": {
+                  "iron_gear": {
+                     "uri": "stonehearth:refined:bronze_gear"
+                  }
+               }
+            },
+            "ingots": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "steel_ingot": {
+                     "uri": "stonehearth:refined:steel_ingot"
+                  }
+               }
+            },
+            "component": {
+               "num_rolls": {
+                  "min": 0,
+                  "max": 1
+               },
+               "items": {
+                  "metal_bits_soft": {
+                     "uri": "stonehearth_ace:refined:metal_bits:soft"
+                  }
+               }
+            }
+         }
+      },
       "sensor_list": {
          "sensors": {
             "sight": {

@@ -1,7 +1,19 @@
 {
+   "components": {
+      "mixintypes": {
+         "model_variants": "override"
+       },
+       "model_variants": {
+         "default": {
+            "models": [
+               "file(wool_bundle.qb)"
+            ]
+         }
+      }
+   },
    "entity_data": {
       "stonehearth:net_worth": {
-         "value_in_gold": 3
+         "value_in_gold": 5
       },
       "stonehearth:catalog": {
          "category": "resources_fiber",

@@ -109,6 +109,7 @@ function crafting_lib.craft_items(ai, crafter, workshop, recipe, ingredients, in
                radiant.entities.increment_stat(crafter, 'quality_crafts', radiant.entities.get_item_quality(each_product))
                radiant.entities.increment_stat(crafter, 'required_level_crafts', recipe.level_requirement or 0)
                radiant.entities.increment_stat(crafter, 'totals', 'crafts')
+               radiant.entities.increment_stat(crafter, 'job_crafts', crafter:get_component('stonehearth:job'):get_job_uri())
             end
 
             stonehearth.inventory:get_inventory(player_id):add_item(each_product)

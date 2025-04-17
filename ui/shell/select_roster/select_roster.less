@@ -1,4 +1,10 @@
 #selectRoster {
+   .lightBlueButton {
+   }
+
+   .lockImg {
+   }
+
    #citizens {
       .roster {
          .rosterEntry {
@@ -85,6 +91,62 @@
          position: absolute;
          left: 0px;
          top: 10px;
+      }
+   }
+
+   #customizePanel {
+      #customizeButtons {
+         .indexButton {
+            .lightBlueButton;
+            width: 86px;
+            height: 38px;
+            position: absolute;
+
+            &[locked="hidden"] {
+               display: none;
+            }
+         }
+
+         .lockImg {
+            left: 102px;
+         }
+
+         #hairColor {
+         }
+
+         #hairStyle {
+            top: 0px;
+            left: 152px;
+         }
+
+         #eyeColor {
+            left: 304px;
+         }
+
+         #skinColor {
+            top: 108px;
+         }
+
+         #faceHair {
+            top: 108px;
+            left: 152px;
+         }
+
+         .arrowButton {
+            .handCursor;
+            .control;
+         }
+
+         .increment {
+            left: 70px;
+         }
+
+         .decrement {
+         }
+
+         .customizeLabel {
+            left: -28px;
+         }
       }
    }
 }
