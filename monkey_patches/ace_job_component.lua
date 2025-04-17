@@ -128,6 +128,10 @@ function AceJobComponent:get_curr_job_name()
    return self._sv.curr_job_name
 end
 
+function AceJobComponent:get_curr_job_icon()
+   return self._sv.class_icon
+end
+
 -- this is just for the sake of the UI, so that opening the promotion tree doesn't require requesting the job index
 -- as such, we need to store it in _sv
 function AceJobComponent:_update_job_index()

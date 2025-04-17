@@ -7831,6 +7831,7 @@
       "mechanical": "file(components/mechanical/mechanical_component.lua)",
       "merchant": "file(components/merchant/merchant_component.lua)",
       "models": "file(components/models/models_component.lua)",
+      "name_overlay": "file(components/name_overlay/name_overlay_component.lua)",
       "output": "file(components/output/output_component.lua)",
       "owner_proxy": "file(components/owner_proxy/owner_proxy_component.lua)",
       "pasture_item": "file(components/pasture_item/pasture_item_component.lua)",
@@ -7875,6 +7876,7 @@
       "fence": "file(renderers/fence/fence_renderer.lua)",
       "herbalist_planter": "file(renderers/herbalist_planter/herbalist_planter_renderer.lua)",
       "models": "file(renderers/models/models_renderer.lua)",
+      "name_overlay": "file(renderers/name_overlay/name_overlay_renderer.lua)",
       "patrol_banner": "file(renderers/patrol_banner/patrol_banner_renderer.lua)",
       "pasture_item": "file(renderers/pasture_item/pasture_item_renderer.lua)",
       "place_terrain": "file(renderers/place_terrain/place_terrain_renderer.lua)",
@@ -8391,6 +8393,9 @@
       ],
       "merchant": [
          "_on_shop_closed"
+      ],
+      "name_overlay": [
+         "toggle_names"
       ],
       "periodic_interaction": [
          "get_valid_users_command",

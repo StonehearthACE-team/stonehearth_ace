@@ -1,0 +1,38 @@
+<html>
+   <head>
+      <link rel="stylesheet" href="name_overlay.css">
+   </head>
+   <body>
+      <!--bb = _radiant.client.get_render_entity(e):get_node():add_ui_billboard_node('bb','stonehearth/stonehearth_ace/ui/game/name_overlay/name_overlay.html?text=Hearth+Ling&textColor=255,255,255&icon=/stonehearth/jobs/weaver/images/icon.png',1,1,40,40,-0.9,-0.5)-->
+      <!--div id="container">
+         
+      </div-->
+      <div id="text"></div>
+      <img id="icon" width="40px" height="40px"/>
+      <script>
+         var params = new URLSearchParams(window.location.search);
+         var playerId = params.get('playerId');
+         var textColor = params.get('textColor');
+         var text = params.get('text');
+         var icon = params.get('icon');
+
+         var html = '';
+
+         if (text) {
+            // get color by first checking amenity of the playerId
+            // if it's friendly, use the player color; otherwise, use the amenity color
+            var textDiv = document.getElementById('text');
+            textDiv.innerHTML = text;
+            textDiv.style.color = 'rgb(' + textColor + ')';
+         }
+         if (icon) {
+            var iconImg = document.getElementById('icon');
+            iconImg.src = icon;
+         }
+
+         // var container = document.getElementById('container');
+         // container.style.borderColor = bgColor;
+         // container.innerHTML = html;
+      </script>
+   </body>
+</html>

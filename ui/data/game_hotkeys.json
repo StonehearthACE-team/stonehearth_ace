@@ -1,5 +1,13 @@
 {
    "build:fish_trap": {
       "event": "stonehearth_ace_place_fish_trap"
+   },
+   "ui:toggle_names": {
+      "call": "toggle_names",
+      "object": "stonehearth_ace.name_overlay"
+   },
+   "ui:cycle_names": {
+      "call": "cycle_names",
+      "object": "stonehearth_ace.name_overlay"
    }
 }
