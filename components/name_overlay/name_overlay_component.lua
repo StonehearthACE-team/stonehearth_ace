@@ -18,8 +18,12 @@ function NameOverlayComponent:activate()
    self._unit_info_changed_listener = radiant.events.listen(self._entity, 'stonehearth:unit_info:changed', self, self._on_unit_info_changed)
    self._job_changed_listener = radiant.events.listen(self._entity, 'stonehearth:job_changed', self, self._on_job_changed)
 
-   self:_on_unit_info_changed()
-   self:_on_job_changed()
+   if self._entity:get_component('stonehearth:unit_info') then
+      self:_on_unit_info_changed()
+   end
+   if self._entity:get_component('stonehearth:job') then
+      self:_on_job_changed()
+   end
 
    -- listen for player amenities changes to trigger a change?
 end
@@ -38,7 +42,7 @@ function NameOverlayComponent:_on_unit_info_changed()
    end
 
    -- only do the icon if it's an entity with no job
-   if not self._entity:get_component('stonehearth:unit_info') then
+   if not self._entity:get_component('stonehearth:job') then
       -- if it's a workshop, use the corresponding job icon
       if self._entity:get_component('stonehearth:workshop') then
          self:set_icon(self._entity:get_component('stonehearth:workshop'):get_job_icon())
