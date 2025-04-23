@@ -392,7 +392,11 @@ function AcePopulationFaction:_assign_citizen_traits(citizen, options)
       return
    end
 
-   local num_traits = gaussian_rng:get_int(1, 3, 0.6)
+   -- ACE: Apply base traits if the particular species has any (defined in their json) and get the max_traits/gaussian_rate for that particular species
+   tc:apply_base_traits()
+   local max_traits, gaussian_rate = tc:get_trait_stats()
+
+   local num_traits = gaussian_rng:get_int(1, max_traits, gaussian_rate)
    self._log:info('assigning %d traits', num_traits)
 
    local all_traits = radiant.deep_copy(self:_get_flat_traits(options.foreign_population_uri))
