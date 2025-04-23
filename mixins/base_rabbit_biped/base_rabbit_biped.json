@@ -2,7 +2,15 @@
    "mixintypes": {
       "type": "remove"
    },
-   "components": {},
+   "components": {
+      "stonehearth:traits": {
+         "max_traits": 2,
+         "gaussian_rate": 0.5,
+         "base_traits": {
+            "stonehearth:traits:herbivore": true
+         }
+      }
+   },
    "entity_data": {
       "stonehearth:species": {
          "id": "rabbit_biped",
