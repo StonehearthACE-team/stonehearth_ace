@@ -1,6 +1,7 @@
 local Point3 = _radiant.csg.Point3
 local Cube3 = _radiant.csg.Cube3
 local Region3 = _radiant.csg.Region3
+local rng = _radiant.math.get_default_rng()
 
 local HerbalistPlanterRenderer = class()
 local log = radiant.log.create_logger('herbalist_planter.renderer')
@@ -78,6 +79,9 @@ function HerbalistPlanterRenderer:_create_nodes(location, scale, growth_level_da
    -- if this node data is an array, process through and create each node
    if growth_level_data.model then
       self:_create_node(location, scale, growth_level_data)
+   elseif growth_level_data.random_model then
+      local selected_model = rng:get_int(1, #growth_level_data.random_model)
+      self:_create_nodes(location, scale, growth_level_data.random_model[selected_model])
    elseif #growth_level_data > 0 then
       for _, data in ipairs(growth_level_data) do
          self:_create_node(location, scale, data)

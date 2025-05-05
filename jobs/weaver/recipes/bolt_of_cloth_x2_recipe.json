@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 14,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.bolt_of_cloth_x2_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.bolt_of_cloth_x2_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.bolt_of_cloth_x2_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/cloth_bolt/cloth_bolt_x2.png",
+   "workshop": "stonehearth:weaver:loom",
+   "proficiency_gain": 1.5,
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "thread resource",
+         "count": 5
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:refined:cloth_bolt"
+      },
+      {
+         "item": "stonehearth:refined:cloth_bolt"
+      }
+   ]
+}

@@ -1,0 +1,31 @@
+{
+   "type": "recipe",
+   "effort": 15,
+   "work_units": 2,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.input_bin_woven_orange_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.input_bin_woven_orange_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.input_bin_woven_orange_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/containers/input_bin_woven_orange/input_bin_woven_orange.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "ordinal": 4,
+   "level_requirement": 3,
+   "ingredients": [
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+      {
+         "material": "thatch resource",
+         "count": 2
+      },
+      {
+         "material": "herb orange resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:containers:input_bin:woven_orange"
+      }
+   ]
+}

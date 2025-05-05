@@ -11,6 +11,12 @@ function EntityModificationComponent:initialize()
    self._json = radiant.entities.get_json(self) or {}
 end
 
+function EntityModificationComponent:post_activate()
+   if self._json.game_speed_model_variants then
+      self._game_speed_listener = radiant.events.listen(stonehearth, 'stonehearth:game_speed:changed', self, self._on_game_speed_change)
+   end
+end
+
 function EntityModificationComponent:set_region3(component_name, region, add)
    -- if we weren't passed a key to our own values, assume we were passed a Region3 object or something that can be converted into one
    region = self._json.regions and self._json.regions[region] or region
@@ -118,6 +124,24 @@ function EntityModificationComponent:reset_movement_modifier_shape_modifier(move
    end
 end
 
+function EntityModificationComponent:_on_game_speed_change(args)
+   local speed = tostring(args and args.speed or 'nil')
+   local variants = self._json and self._json.game_speed_model_variants or {}
+
+   -- Lots of logging were needed to test this, it's working now so they're all disabled
+   --log:debug('Received speed: %s', speed)
+   --log:debug('Variants: %s', radiant.util.table_tostring(variants))
+
+   local variant = variants[speed]
+   if variant then
+      --log:debug('Setting variant: %s', variant)
+      self:set_model_variant(variant, true)
+   else
+      --log:debug('Resetting model variant.')
+      self:reset_model_variant()
+   end
+end
+
 function EntityModificationComponent:set_model_variant(model_variant, override_original)
    local component = self._entity:add_component('render_info')
    if component then
@@ -201,6 +225,13 @@ function EntityModificationComponent:reset_model_variant()
          self._sv.original_model_variant = nil
          self.__saved_variables:mark_changed()
       end
+   end
+end
+
+function EntityModificationComponent:destroy()
+   if self._game_speed_listener then
+      self._game_speed_listener:destroy()
+      self._game_speed_listener = nil
    end
 end
 

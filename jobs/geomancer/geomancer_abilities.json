@@ -4,8 +4,11 @@
       "stonehearth:equipment_piece" : {
          "injected_ai" : {
             "mixintypes": {
-               "actions": "remove"
+               "actions": "override"
             },
+            "actions" : [
+               "stonehearth:actions:light_firepit"
+            ],
             "ai_packs" : [
                "stonehearth_ace:ai_pack:periodic_interaction",
                "stonehearth_ace:ai_pack:transform"

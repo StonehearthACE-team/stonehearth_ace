@@ -5449,11 +5449,11 @@
                   "16_display_name": " the Stonecutter",
                   "16_description": "They have mined 16 boulders! Neat!",
                   "25_display_name": " the Chiseled",
-                  "25_description": "They have mined 8 boulders! How strong!",
+                  "25_description": "They have mined 25 boulders! How strong!",
                   "40_display_name": " the Stonebreaker",
-                  "40_description": "They have mined 8 boulders! That's marbelous!",
+                  "40_description": "They have mined 40 boulders! That's marbelous!",
                   "60_display_name": ", Rockstar",
-                  "60_description": "They have mined 8 boulders! They're rocking!"
+                  "60_description": "They have mined 60 boulders! They're rocking!"
                },
                "resource_harvest_rare_truffles": {
                   "display_name": "🐷 Truffle Hunter",
@@ -13652,10 +13652,23 @@
             "thread_recipe": {
                "description": "A refined product required for cloth and many other crafts. Must use fiber that can be spun into thread."
             },
+            "bolt_of_cloth_recipe": {
+               "description": "A refined crafting material that is used across several jobs for creating furniture, clothes, decorations and more. It is considered common cloth."
+            },
             "yarn_recipe": {
                "recipe_name": "Ball of Yarn (x2)",
                "description": "Spin animal wool into a versatile resource that can be used as both fiber or thread.",
                "flavor": "You might want to store these far away from kittens..."
+            },
+            "bolt_of_cloth_x2_recipe": {
+               "recipe_name": "Bolt of Cloth (x2)",
+               "description": "With patience and precision, the Weaver can craft two bolts of common cloth at once with slightly fewer materials.",
+               "flavor": "Wow, such efficiency!"
+            },
+            "thread_x3_recipe": {
+               "recipe_name": "Spool of Thread (x3)",
+               "description": "Skillfully spool multiple threads at once while using slightly less fibers.",
+               "flavor": "No time to waste, this recipe is very efficient for producing bulk amounts of thread"
             },
             "thread_silk_recipe": {
                "recipe_name": "Spool of Silk Thread",
@@ -13681,6 +13694,40 @@
                "recipe_name": "Fine Stuffing (x2)",
                "description": "Craft a couple of neat and useful wadding that can be used as a filling in several objects or pieces of clothing.",
                "flavor": "Warm and comfy!"
+            },
+            "input_bin_woven_blue_recipe": {
+               "flavor": "An excellent choice for storing blue or soothing herbs!"
+            },
+            "input_bin_woven_green_recipe": {
+               "flavor": "An excellent choice for storing green or noxious herbs!"
+            },
+            "input_bin_woven_red_recipe": {
+               "flavor": "An excellent choice for storing red or healing herbs!"
+            },
+            "input_bin_woven_white_recipe": {
+               "recipe_name": "White Woven Supply Basket",
+               "description": "A versatile container that Hearthlings will try to keep full, so your crafters can keep on working!",
+               "flavor": "An excellent choice for storing white or mild herbs!"
+            },
+            "input_bin_woven_pink_recipe": {
+               "recipe_name": "Pink Woven Supply Basket",
+               "description": "A versatile container that Hearthlings will try to keep full, so your crafters can keep on working!",
+               "flavor": "An excellent choice for storing pink or robust herbs!"
+            },
+            "input_bin_woven_yellow_recipe": {
+               "recipe_name": "Yellow Woven Supply Basket",
+               "description": "A versatile container that Hearthlings will try to keep full, so your crafters can keep on working!",
+               "flavor": "An excellent choice for storing yellow or zesty herbs!"
+            },
+            "input_bin_woven_orange_recipe": {
+               "recipe_name": "Orange Woven Supply Basket",
+               "description": "A versatile container that Hearthlings will try to keep full, so your crafters can keep on working!",
+               "flavor": "An excellent choice for storing orange or pungent herbs!"
+            },
+            "input_bin_woven_purple_recipe": {
+               "recipe_name": "Purple Woven Supply Basket",
+               "description": "A versatile container that Hearthlings will try to keep full, so your crafters can keep on working!",
+               "flavor": "An excellent choice for storing purple or peculiar herbs!"
             },
             "sunstroke_field_work_outfit_recipe": {
                "recipe_name": "Summer Work Hat",
@@ -25656,6 +25703,26 @@
          "dynasty_chest": {
             "display_name": "Dynasty Decorated Chest",
             "description": "An exotic place for safekeeping all your exotic goods!"
+         },
+         "input_bin_woven_yellow": {
+            "description": "A supply container, for quicker crafting.",
+            "display_name": "Yellow Woven Supply Basket"
+         },
+         "input_bin_woven_white": {
+            "description": "A supply container, for quicker crafting.",
+            "display_name": "White Woven Supply Basket"
+         },
+         "input_bin_woven_purple": {
+            "description": "A supply container, for quicker crafting.",
+            "display_name": "Purple Woven Supply Basket"
+         },
+         "input_bin_woven_pink": {
+            "description": "A supply container, for quicker crafting.",
+            "display_name": "Pink Woven Supply Basket"
+         },
+         "input_bin_woven_orange": {
+            "description": "A supply container, for quicker crafting.",
+            "display_name": "Orange Woven Supply Basket"
          }
       },
       "tools": {

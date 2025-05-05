@@ -1,0 +1,36 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(input_bin_woven_orange.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": -0.5, "y": 0, "z": -0.5 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "render_info": {
+         "scale": 0.1,
+         "animation_table": "/stonehearth/data/rigs/entities/containers/input_bin/input_bin.json"
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.containers.input_bin_woven_orange.display_name)",
+         "description": "i18n(stonehearth_ace:entities.containers.input_bin_woven_orange.description)",
+         "icon": "file(input_bin_woven_orange.png)",
+         "category": "storage",
+         "material_tags": [
+            "fiber",
+            "cloth",
+            "containers",
+            "crafted",
+            "furniture",
+            "stockpile_furniture"
+         ]
+      }
+   }
+}
