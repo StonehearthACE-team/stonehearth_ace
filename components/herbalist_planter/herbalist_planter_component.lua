@@ -89,8 +89,8 @@ function HerbalistPlanterComponent:post_activate()
       self:set_tend_enabled(self._json.tend_enabled ~= false)
    end
    
-   local render_info = self._entity:get_component('render_info')
-   render_info:set_model_variant("ace_planter")
+   --local render_info = self._entity:get_component('render_info')
+   --render_info:set_model_variant("ace_planter")
 end
 
 function HerbalistPlanterComponent:destroy()

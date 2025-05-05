@@ -21,4 +21,17 @@ function AceGameSpeedService:on_game_load_complete_command(session, response)
    end
 end
 
+AceGameSpeedService._ace_old_set_game_speed = GameSpeedService.set_game_speed
+function AceGameSpeedService:set_game_speed(speed, user_set)
+   local success = self:_ace_old_set_game_speed(speed, user_set)
+
+   if success then
+      radiant.events.trigger(stonehearth, 'stonehearth:game_speed:changed', {
+         speed = self._sv.curr_speed
+      })
+   end
+
+   return success
+end
+
 return AceGameSpeedService

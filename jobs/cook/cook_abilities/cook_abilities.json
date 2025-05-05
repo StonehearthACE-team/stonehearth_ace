@@ -3,6 +3,9 @@
    "components" : {
       "stonehearth:equipment_piece" : {
          "injected_ai" : {
+            "actions" : [
+               "stonehearth:actions:light_firepit"
+            ],
             "mixintypes": {
                "ai_packs": "override"
             },

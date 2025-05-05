@@ -11,6 +11,12 @@
    },
    "can_start": {
       "all_tests": {
+         "is_return_test": {
+            "type": "deny_if_less_than",
+            "item": "counter",
+            "key": "TBD",
+            "value": 10
+         },
          "recipe_check": {
             "item": "script",
             "type": "deny_if",

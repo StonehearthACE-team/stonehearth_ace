@@ -1,0 +1,29 @@
+{
+   "type": "recipe",
+   "effort": 12,
+   "work_units": 1,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.thread_x3_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.thread_x3_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.thread_x3_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/thread/thread_x3.png",
+   "workshop": "stonehearth:weaver:spinning_wheel",
+   "proficiency_gain": 0.8,
+   "level_requirement": 4,
+   "ingredients": [
+      {
+         "material": "fiber spinnable resource",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth:refined:thread"
+      },
+      {
+         "item": "stonehearth:refined:thread"
+      },
+      {
+         "item": "stonehearth:refined:thread"
+      }
+   ]
+}
