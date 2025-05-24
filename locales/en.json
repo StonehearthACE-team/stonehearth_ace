@@ -21767,14 +21767,30 @@
             "sheep_young": {
                "display_name": "Lamb"
             },
-            "renewable_harvest_status_text": "shearing wild sheep"
+            "renewable_harvest_status_text": "shearing wild sheep",
+            "wild": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.sheep.display_name)",
+               "description": "i18n(stonehearth:entities.critters.sheep.description)"
+            },
+            "wild_young": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.sheep.sheep_young.display_name)",
+               "description": "i18n(stonehearth:entities.critters.sheep.sheep_young.description)"
+            }
          },
          "poyo": {
             "nest": {
                "display_name": "Poyo Nest",
                "description": "I'm sure they wouldn't mind if an egg or two are missing... Right?"
             },
-            "display_name": "Poyo"
+            "display_name": "Poyo",
+            "wild": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.poyo.display_name)",
+               "description": "i18n(stonehearth:entities.critters.poyo.description)"
+            },
+            "wild_young": {
+               "display_name": "i18n(stonehearth:entities.critters.poyo.young.display_name)",
+               "description": "i18n(stonehearth:entities.critters.poyo.young.description)"
+            }
          },
          "big_bird": {
             "nest": {
@@ -21845,7 +21861,15 @@
                "display_name": "Duck Nest",
                "description": "Duck eggs are very nutritious. Just saying."
             },
-            "species": "duck"
+            "species": "duck",
+            "wild": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.duck.display_name)",
+               "description": "i18n(stonehearth_ace:entities.critters.duck.display_name)"
+            },
+            "wild_young": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.duck.young.display_name)",
+               "description": "i18n(stonehearth_ace:entities.critters.duck.young.description)"
+            }
          },
          "oinker": {
             "species": "oinker",
