@@ -191,7 +191,7 @@ function ace_entities.create_entity(ref, options)
             local variants = WeightedSet(rng)
             for id, variant in pairs(model_variants) do
                if id ~= 'default' then
-                  variants:add(id, 1)
+                  variants:add(id, (variant.weight ~= nil) and variant.weight or 1)
                end
             end
             variant_to_set = variants:choose_random()
