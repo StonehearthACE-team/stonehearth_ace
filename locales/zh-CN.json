@@ -20909,14 +20909,30 @@
 				"sheep_young": {
 					"display_name": "羔羊"
 				},
-				"renewable_harvest_status_text": "剪野羊"
+				"renewable_harvest_status_text": "剪野羊",
+				"wild": {
+					"display_name": "i18n(stonehearth_ace:entities.critters.sheep.display_name)",
+					"description": "i18n(stonehearth:entities.critters.sheep.description)"
+				},
+				"wild_young": {
+					"display_name": "i18n(stonehearth_ace:entities.critters.sheep.sheep_young.display_name)",
+					"description": "i18n(stonehearth:entities.critters.sheep.sheep_young.description)"
+				}
 			},
 			"poyo": {
 				"nest": {
 					"display_name": "波波巢",
 					"description": "我相信它们不会介意一两个鸡蛋不见的...对吗?"
 				},
-				"display_name": "波波鸡"
+				"display_name": "波波鸡",
+				"wild": {
+				   "display_name": "i18n(stonehearth_ace:entities.critters.poyo.display_name)",
+				   "description": "i18n(stonehearth:entities.critters.poyo.description)"
+				},
+				"wild_young": {
+				   "display_name": "i18n(stonehearth:entities.critters.poyo.young.display_name)",
+				   "description": "i18n(stonehearth:entities.critters.poyo.young.description)"
+				}
 			},
 			"big_bird": {
 				"nest": {
@@ -20987,7 +21003,15 @@
 					"display_name": "鸭窝",
 					"description": "鸭蛋非常有营养,只是说说."
 				},
-				"species": "鸭鸭"
+				"species": "鸭鸭",
+				"wild": {
+					"display_name": "i18n(stonehearth_ace:entities.critters.duck.display_name)",
+					"description": "i18n(stonehearth_ace:entities.critters.duck.display_name)"
+				},
+				"wild_young": {
+					"display_name": "i18n(stonehearth_ace:entities.critters.duck.young.display_name)",
+					"description": "i18n(stonehearth_ace:entities.critters.duck.young.description)"
+				}
 			},
 			"oinker": {
 				"species": "哼唧猪",

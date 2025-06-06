@@ -2,6 +2,7 @@ local rng = _radiant.math.get_default_rng()
 local WeatherState = require 'stonehearth.services.server.weather.weather_state'
 local constants = require 'stonehearth.constants'
 local weather_constants = constants.weather
+local WeightedSet = require 'stonehearth.lib.algorithms.weighted_set'
 
 local DYNAMIC_WEATHER_WINDOW_START = weather_constants.DYNAMIC_WEATHER_WINDOW_START or 10
 local DYNAMIC_WEATHER_WINDOW_END = weather_constants.DYNAMIC_WEATHER_WINDOW_END or 22
@@ -98,7 +99,7 @@ function AceWeatherState:_load_ace_values()
       for uri, data in pairs(json.dynamic_weather) do
          -- make sure it's a valid weather uri
          local weather = radiant.resources.load_json(uri, true, false)
-         if weather then
+         if weather or uri == "none" then
             data.uri = uri
             table.insert(dynamic_weather, data)
          else
@@ -235,10 +236,15 @@ function AceWeatherState:_destroy_dynamic_weather_timer()
 end
 
 function AceWeatherState:_get_dynamic_weather()
+   local weather_set = WeightedSet(rng)
    for _, weather in ipairs(self._dynamic_weather) do
-      if rng:get_real(0, 1) <= (weather.chance or 0.5) then
-         return weather
-      end
+      weather_set:add(weather, (weather.chance ~= nil) and weather.chance or 0.5)
+   end
+   local weather_roll = weather_set:choose_random()
+   if weather_roll.uri == "none" then
+      return false
+   else
+      return weather_roll
    end
 end
 

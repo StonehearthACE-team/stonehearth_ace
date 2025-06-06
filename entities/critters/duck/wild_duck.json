@@ -24,27 +24,14 @@
          "model1": {
             "models": [
                "file(duck_wild.qb)"
-            ]
+            ],
+            "weight": 3
          },
          "model2": {
             "models": [
-               "file(duck_wild.qb)"
-            ]
-         },
-         "model3": {
-            "models": [
-               "file(duck_wild.qb)"
-            ]
-         },
-         "model4": {
-            "models": [
                "file(duck_wild_drake.qb)"
-            ]
-         },
-         "model5": {
-            "models": [
-               "file(duck_wild_drake.qb)"
-            ]
+            ],
+            "weight": 2
          }
       },
       "stonehearth:attributes": {
@@ -132,6 +119,8 @@
          "value_in_gold": 0
       },
       "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.critters.duck.wild.display_name)",
+         "description": "i18n(stonehearth_ace:entities.critters.duck.wild.description)",
          "icon": "file(duck_wild.png)"
       },
       "stonehearth_ace:create_entity": {
