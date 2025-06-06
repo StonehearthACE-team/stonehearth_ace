@@ -21212,6 +21212,30 @@
             "display_name": "Mallard",
             "description": "It will honk everywhere, your new best friend. It eats a little bit of everything."
          },
+         "poyo": {
+            "display_name": "i18n(stonehearth_ace:entities.critters.poyo.display_name)",
+            "description": "i18n(stonehearth:entities.critters.poyo.description)"
+         },
+         "rabbit": {
+            "display_name": "i18n(stonehearth_ace:entities.critters.rabbit.display_name)",
+            "description": "i18n(stonehearth:entities.critters.rabbit.description)"
+         },
+         "sheep": {
+            "display_name": "i18n(stonehearth_ace:entities.critters.sheep.display_name)",
+            "description": "i18n(stonehearth:entities.critters.sheep.description)"
+         },
+         "duckduck": {
+            "display_name": "i18n(stonehearth_ace:entities.monsters.avian.duckduck.display_name)",
+            "description": "i18n(stonehearth:entities.monsters.avian.duckduck.description)"
+         },
+         "ostrich": {
+            "display_name": "i18n(stonehearth_ace:entities.monsters.avian.ostrich.display_name)",
+            "description": "i18n(stonehearth:entities.monsters.avian.ostrich.description)"
+         },
+         "cougar": {
+            "display_name": "i18n(stonehearth_ace:entities.monsters.forest.cougar.display_name)",
+            "description": "i18n(stonehearth_ace:entities.monsters.forest.cougar.description)"
+         },
          "oinker_mini": {
             "display_name": "Mini Oinker",
             "description": "Oink! It eats a little bit of everything."
@@ -21402,7 +21426,11 @@
             "display_name": "Rabbit",
             "display_name_arctic": "Snow Hare",
             "display_name_desert": "Brown Hare",
-            "display_name_highlands": "Gray Rabbit"
+            "display_name_highlands": "Gray Rabbit",
+            "wild": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.rabbit.display_name)",
+               "description": "i18n(stonehearth:entities.critters.rabbit.description)"
+            }
          },
          "racoon": {
             "display_name": "Raccoon",
@@ -21422,14 +21450,30 @@
             "sheep_young": {
                "display_name": "Lamb"
             },
-            "renewable_harvest_status_text": "shearing wild sheep"
+            "renewable_harvest_status_text": "shearing wild sheep",
+            "wild": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.sheep.display_name)",
+               "description": "i18n(stonehearth:entities.critters.sheep.description)"
+            },
+            "wild_young": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.sheep.sheep_young.display_name)",
+               "description": "i18n(stonehearth:entities.critters.sheep.sheep_young.description)"
+            }
          },
          "poyo": {
             "nest": {
                "display_name": "Poyo Nest",
                "description": "I'm sure they wouldn't mind if an egg or two are missing... Right?"
             },
-            "display_name": "Poyo"
+            "display_name": "Poyo",
+            "wild": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.poyo.display_name)",
+               "description": "i18n(stonehearth:entities.critters.poyo.description)"
+            },
+            "wild_young": {
+               "display_name": "i18n(stonehearth:entities.critters.poyo.young.display_name)",
+               "description": "i18n(stonehearth:entities.critters.poyo.young.description)"
+            }
          },
          "big_bird": {
             "nest": {
@@ -21475,7 +21519,8 @@
             "display_name": "Wild Boar"
          },
          "boar_pet": {
-            "display_name": "Boar"
+            "display_name": "Boar",
+            "description": "i18n(stonehearth:entities.critters.boar.description)"
          },
          "beehive": {
             "display_name": "Bee Nest",
@@ -21500,7 +21545,15 @@
                "display_name": "Duck Nest",
                "description": "Duck eggs are very nutritious. Just saying."
             },
-            "species": "duck"
+            "species": "duck",
+            "wild": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.duck.display_name)",
+               "description": "i18n(stonehearth_ace:entities.critters.duck.display_name)"
+            },
+            "wild_young": {
+               "display_name": "i18n(stonehearth_ace:entities.critters.duck.young.display_name)",
+               "description": "i18n(stonehearth_ace:entities.critters.duck.young.description)"
+            }
          },
          "oinker": {
             "species": "oinker",
