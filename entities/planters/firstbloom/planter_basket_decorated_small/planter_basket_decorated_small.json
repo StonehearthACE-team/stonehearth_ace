@@ -1,0 +1,65 @@
+{
+   "type": "entity",
+   "mixins": [
+      "file(planter_basket_decorated_small_ghost.json)",
+      "stonehearth_ace:mixins:herbalist_planter"
+   ],
+   "components": {
+      "stonehearth:entity_forms": {
+         "iconic_form": "file(planter_basket_decorated_small_iconic.json)",
+         "ghost_form": "file(planter_basket_decorated_small_ghost.json)",
+         "placeable_on_ground": true
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "destination": {
+         "region": [
+            {
+               "min": { "x": 0, "y": -1, "z": 0 },
+               "max": { "x": 1, "y": 2, "z": 1 }
+            }
+         ]
+      },
+      "stonehearth_ace:herbalist_planter": {
+         "type": "decorative_planter",
+         "scale_multiplier": 1.15,
+         "num_products": 1,
+         "plant_locations": [
+            {
+               "offset": { "x": 0, "y": 0.5, "z": 0 }
+            }
+         ]
+      },
+      "stonehearth:storage": {
+         "capacity": 2
+      },
+      "stonehearth:traveler_attraction": {},
+      "stonehearth:commands": {
+         "commands": [
+            "stonehearth_ace:commands:transform:frostfeast:swap_model_variant"
+         ]
+      }
+   },
+   "entity_data": {
+      "stonehearth:net_worth": {
+         "value_in_gold": 25,
+         "rarity": "common",
+         "shop_info": {
+            "buyable": false,
+            "sellable": true
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 18
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

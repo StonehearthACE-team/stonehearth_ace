@@ -9,6 +9,12 @@ end
 
 AceTrapperClass._ace_old_should_tame = TrapperClass.should_tame
 function AceTrapperClass:should_tame(target)
+   local avoid_pet_charming = self._sv._entity:add_component('stonehearth:properties'):has_property('avoid_pet_charming')
+   if avoid_pet_charming then
+      -- If charming disabled, return false
+      return false
+   end
+
    local allowed_pets = radiant.entities.get_component_data('stonehearth:trapper:trapping_grounds', 'stonehearth:trapping_grounds').allowed_pets
 
    if allowed_pets[target:get_uri()] then
@@ -17,6 +23,18 @@ function AceTrapperClass:should_tame(target)
    else
       --log:debug('%s IS big game, DON\'T consider taming it', target)
       return false
+   end
+end
+
+function AceTrapperClass:set_tame_beast_percentage(args)
+   self._sv._tame_beast_percent_chance = args.tame_beast_percentage
+
+   local command_comp = self._sv._entity:add_component('stonehearth:commands')
+   local avoid_pet_charming = self._sv._entity:add_component('stonehearth:properties'):has_property('avoid_pet_charming')
+   if avoid_pet_charming then
+      command_comp:add_command('stonehearth_ace:commands:allow_pet_charming')
+   else
+      command_comp:add_command('stonehearth_ace:commands:avoid_pet_charming')
    end
 end
 

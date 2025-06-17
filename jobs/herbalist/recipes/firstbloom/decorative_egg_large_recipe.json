@@ -1,0 +1,30 @@
+{
+   "type": "recipe",
+   "effort": 22,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.firstbloom.decorative_egg_large_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.firstbloom.decorative_egg_large_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.firstbloom.decorative_egg_large_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/firstbloom/decorative_egg_large/decorative_egg_large.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 6,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth:food:egg_large",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth:consumables:stamina_tonic",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:refined:dyes:firstbloom:spring_colors",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:firstbloom:decorative_egg:large"
+      }
+   ]
+}

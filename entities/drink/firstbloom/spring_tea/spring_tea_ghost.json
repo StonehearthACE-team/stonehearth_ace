@@ -1,0 +1,43 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(spring_tea.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "color_map": "stonehearth_ace:color_map:ace",
+         "material_maps": [
+            "/stonehearth/data/materials/material_maps/mob_material_map.json"
+         ]
+      },
+      "mob": {
+         "model_origin": { "x": -0.05, "y": 0, "z": 0.05 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.firstbloom.spring_tea.spring_tea.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.firstbloom.spring_tea.spring_tea.description)",
+         "icon": "file(spring_tea.png)",
+         "category": "drink_prepared",
+         "material_tags": [
+            "drink_container",
+            "prepared_drink",
+            "food_and_drinks",
+            "tea",
+            "spring_tea",
+            "stockpile_serving_vessel",
+            "morning_time",
+            "night_time",
+            "warming",
+            "firstbloom",
+            "festival"
+         ]
+      }
+   }
+}

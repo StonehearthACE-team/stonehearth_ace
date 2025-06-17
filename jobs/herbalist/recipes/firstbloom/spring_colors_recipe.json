@@ -1,0 +1,41 @@
+{
+   "type": "recipe",
+   "effort": 8,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.firstbloom.spring_colors_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.firstbloom.spring_colors_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.firstbloom.spring_colors_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/refined/dyes/firstbloom/spring_colors.png",
+   "work_effect": "fiddle",
+   "workshop": "stonehearth_ace:herbalist:cauldron",
+   "manual_unlock": true,
+   "level_requirement": 1,
+   "ingredients": [
+      {
+         "material": "herb pink resource",
+         "count": 1
+      },
+      {
+         "material": "herb blue resource",
+         "count": 1
+      },
+      {
+         "material": "herb yellow resource",
+         "count": 1
+      },
+      {
+         "material": "herb white resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:refined:dyes:firstbloom:spring_colors"
+      },
+      {
+         "item": "stonehearth_ace:refined:dyes:firstbloom:spring_colors"
+      },
+      {
+         "item": "stonehearth_ace:refined:dyes:firstbloom:spring_colors"
+      }
+   ]
+}

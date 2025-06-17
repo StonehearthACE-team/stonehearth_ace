@@ -1,0 +1,44 @@
+{
+   "type": "entity",
+   "mixins": "stonehearth:mixins:critter",
+   "components": {
+      "render_info": {
+         "animation_table": "/stonehearth/data/rigs/entities/critters/poyo",
+         "scale": 0.165
+      },
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(determined_poyo.qb)"
+            ]
+         }
+      },
+      "effect_list": {
+         "effects": [
+            "stonehearth_ace:effects:treasure_glow_large"
+         ]
+      },
+      "stonehearth:attributes": {
+         "speed": {
+            "value": 80
+         }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.npc.firstbloom.female.determined_poyo.display_name)",
+         "description": "i18n(stonehearth_ace:entities.npc.firstbloom.female.determined_poyo.description)",
+         "icon": "file(determined_poyo.png)"
+      },
+      "stonehearth:ai_packs": {
+         "actions": [
+            "stonehearth:actions:celebrate:carouse_animal",
+            "stonehearth:actions:dispatcher:compelled_behavior",
+            "stonehearth:actions:dispatcher:human_unit_control"
+         ],
+         "task_groups": [
+            "stonehearth:task_groups:solo:unit_control"
+         ]
+      }
+   }
+}

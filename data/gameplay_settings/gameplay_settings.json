@@ -209,6 +209,151 @@
          "default": false,
          "ordinal": 7
       },
+      "default_behavior_decorative_planter": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.decorative_planter.title)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.decorative_planter.description)",
+         "values": {
+            "no_harvest|no_tending": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|no_tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|no_tending_description)"
+            },
+            "no_harvest|tending": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|tending_description)"
+            },
+            "harvest|no_tending": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|no_tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|no_tending_description)"
+            },
+            "harvest|tending": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|tending_description)"
+            }
+         },
+         "default": "no_harvest|no_tending",
+         "ordinal": 9
+      },
+      "default_behavior_herb_pot": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.herb_pot.title)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.herb_pot.description)",
+         "values": {
+            "no_harvest|no_tending": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|no_tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|no_tending_description)"
+            },
+            "no_harvest|tending": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|tending_description)"
+            },
+            "harvest|no_tending": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|no_tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|no_tending_description)"
+            },
+            "harvest|tending": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|tending_description)"
+            }
+         },
+         "default": "no_harvest|tending",
+         "ordinal": 9.1
+      },
+      "default_behavior_tree_pot": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.tree_pot.title)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.tree_pot.description)",
+         "values": {
+            "no_harvest|no_tending": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|no_tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|no_tending_description)"
+            },
+            "no_harvest|tending": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|tending_description)"
+            },
+            "harvest|no_tending": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|no_tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|no_tending_description)"
+            },
+            "harvest|tending": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|tending_description)"
+            }
+         },
+         "default": "harvest|no_tending",
+         "ordinal": 9.2
+      },
+      "default_behavior_herb_planter": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.herb_planter.title)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.herb_planter.description)",
+         "values": {
+            "no_harvest|no_tending": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|no_tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|no_tending_description)"
+            },
+            "no_harvest|tending": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|tending_description)"
+            },
+            "harvest|no_tending": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|no_tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|no_tending_description)"
+            },
+            "harvest|tending": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|tending_description)"
+            }
+         },
+         "default": "harvest|tending",
+         "ordinal": 9.3
+      },
+      "default_behavior_fungi_planter": {
+         "type": "list",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.fungi_planter.title)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.fungi_planter.description)",
+         "values": {
+            "no_harvest|no_tending": {
+               "ordinal": 1,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|no_tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|no_tending_description)"
+            },
+            "no_harvest|tending": {
+               "ordinal": 2,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.no_harvest|tending_description)"
+            },
+            "harvest|no_tending": {
+               "ordinal": 3,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|no_tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|no_tending_description)"
+            },
+            "harvest|tending": {
+               "ordinal": 4,
+               "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|tending)",
+               "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_planter_behavior.harvest|tending_description)"
+            }
+         },
+         "default": "harvest|tending",
+         "ordinal": 9.4
+      },
       "enable_auto_harvest": {
          "type": "boolean",
          "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_harvest_enabled)",
@@ -229,6 +374,13 @@
          "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.auto_remove_mining_zone_ladders_description)",
          "default": true,
          "ordinal": 11.5
+      },
+      "default_pasture_collect_strays": {
+         "type": "boolean",
+         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_pasture_collect_strays)",
+         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_pasture_collect_strays_description)",
+         "default": true,
+         "ordinal": 12
       },
       "default_fertilizer": {
          "type": "list",
@@ -277,13 +429,6 @@
             }
          },
          "default": "1",
-         "ordinal": 12
-      },
-      "default_pasture_collect_strays": {
-         "type": "boolean",
-         "display_name": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_pasture_collect_strays)",
-         "description": "i18n(stonehearth_ace:ui.shell.settings.gameplayTab.default_pasture_collect_strays_description)",
-         "default": true,
          "ordinal": 12.5
       },
       "show_farm_water_regions": {

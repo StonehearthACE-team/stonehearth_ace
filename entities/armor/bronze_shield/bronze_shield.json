@@ -3,13 +3,27 @@
    "components": {
       "stonehearth:equipment_piece": {
 			"mixintypes": {
-			"roles": "override"
-		 },
-		 "roles": ["footman_job"],
-		 "required_job_level": 1
+			   "roles": "override"
+		   },
+		   "roles": ["footman_job"],
+		   "required_job_level": 2,
+         "ilevel": 2.4
       }
    },
    "entity_data": {
+      "mixintypes": {
+         "stonehearth:combat:melee_defenses": "override"
+      },
+      "stonehearth:combat:melee_defenses": [
+         {
+            "name": "ace_simple_shield_block",
+            "effect": "combat_1h_shield_medium_block",
+            "active_frame": 4,
+            "cooldown": 4000,
+            "priority": 0,
+            "chance_of_success": 0.45
+         }
+      ],
       "stonehearth:net_worth": {
          "rarity": "uncommon",
          "shop_info": {
@@ -17,9 +31,9 @@
          }
       },
       "stonehearth:catalog": {
-	     "mixintypes": {
-			"material_tags": "override"
-		 },
+	      "mixintypes": {
+			   "material_tags": "override"
+		   },
          "material_tags":["bronze", "shield", "crafted", "medium_armor", "ascendancy_made", "stockpile_equipment"]
       }
    }

@@ -1,0 +1,37 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(sweet_loaf.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": true
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.firstbloom.sweet_loaf.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.firstbloom.sweet_loaf.description)",
+         "icon": "file(sweet_loaf.png)",
+         "category": "food_prepared",
+         "material_tags": [
+            "prepared_food",
+            "prepared_dessert",
+            "sweet_loaf",
+            "baked",
+            "food_and_drinks",
+            "stockpile_prepared_food",
+            "vegetarian",
+            "breakfast_time",
+            "festival",
+            "firstbloom"
+         ]
+      }
+   }
+}

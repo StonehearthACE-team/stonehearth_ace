@@ -1,0 +1,271 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(planter_basket_decorated_small.qb)",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(handle_none.qb)",
+                     "file(handle_1.qb)",
+                     "file(handle_2.qb)",
+                     "file(handle_3.qb)",
+                     "file(handle_4.qb)",
+                     "file(handle_5.qb)",
+                     "file(handle_6.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_a_1.qb)",
+                     "file(ribbon_a_2.qb)",
+                     "file(ribbon_a_3.qb)",
+                     "file(ribbon_a_4.qb)",
+                     "file(ribbon_a_5.qb)",
+                     "file(ribbon_a_6.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_b_1.qb)",
+                     "file(ribbon_b_2.qb)",
+                     "file(ribbon_b_3.qb)",
+                     "file(ribbon_b_4.qb)",
+                     "file(ribbon_b_5.qb)",
+                     "file(ribbon_b_6.qb)"
+                  ]
+               }
+            ]
+         },
+         "model1": {
+            "models": [
+               "file(planter_basket_decorated_small.qb)",
+               "file(handle_none.qb)",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_a_1.qb)",
+                     "file(ribbon_a_2.qb)",
+                     "file(ribbon_a_3.qb)",
+                     "file(ribbon_a_4.qb)",
+                     "file(ribbon_a_5.qb)",
+                     "file(ribbon_a_6.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_b_1.qb)",
+                     "file(ribbon_b_2.qb)",
+                     "file(ribbon_b_3.qb)",
+                     "file(ribbon_b_4.qb)",
+                     "file(ribbon_b_5.qb)",
+                     "file(ribbon_b_6.qb)"
+                  ]
+               }
+            ]
+         },
+         "model2": {
+            "models": [
+               "file(planter_basket_decorated_small.qb)",
+               "file(handle_1.qb)",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_a_1.qb)",
+                     "file(ribbon_a_2.qb)",
+                     "file(ribbon_a_3.qb)",
+                     "file(ribbon_a_4.qb)",
+                     "file(ribbon_a_5.qb)",
+                     "file(ribbon_a_6.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_b_1.qb)",
+                     "file(ribbon_b_2.qb)",
+                     "file(ribbon_b_3.qb)",
+                     "file(ribbon_b_4.qb)",
+                     "file(ribbon_b_5.qb)",
+                     "file(ribbon_b_6.qb)"
+                  ]
+               }
+            ]
+         },
+         "model3": {
+            "models": [
+               "file(planter_basket_decorated_small.qb)",
+               "file(handle_2.qb)",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_a_1.qb)",
+                     "file(ribbon_a_2.qb)",
+                     "file(ribbon_a_3.qb)",
+                     "file(ribbon_a_4.qb)",
+                     "file(ribbon_a_5.qb)",
+                     "file(ribbon_a_6.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_b_1.qb)",
+                     "file(ribbon_b_2.qb)",
+                     "file(ribbon_b_3.qb)",
+                     "file(ribbon_b_4.qb)",
+                     "file(ribbon_b_5.qb)",
+                     "file(ribbon_b_6.qb)"
+                  ]
+               }
+            ]
+         },
+         "model4": {
+            "models": [
+               "file(planter_basket_decorated_small.qb)",
+               "file(handle_3.qb)",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_a_1.qb)",
+                     "file(ribbon_a_2.qb)",
+                     "file(ribbon_a_3.qb)",
+                     "file(ribbon_a_4.qb)",
+                     "file(ribbon_a_5.qb)",
+                     "file(ribbon_a_6.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_b_1.qb)",
+                     "file(ribbon_b_2.qb)",
+                     "file(ribbon_b_3.qb)",
+                     "file(ribbon_b_4.qb)",
+                     "file(ribbon_b_5.qb)",
+                     "file(ribbon_b_6.qb)"
+                  ]
+               }
+            ]
+         },
+         "model5": {
+            "models": [
+               "file(planter_basket_decorated_small.qb)",
+               "file(handle_4.qb)",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_a_1.qb)",
+                     "file(ribbon_a_2.qb)",
+                     "file(ribbon_a_3.qb)",
+                     "file(ribbon_a_4.qb)",
+                     "file(ribbon_a_5.qb)",
+                     "file(ribbon_a_6.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_b_1.qb)",
+                     "file(ribbon_b_2.qb)",
+                     "file(ribbon_b_3.qb)",
+                     "file(ribbon_b_4.qb)",
+                     "file(ribbon_b_5.qb)",
+                     "file(ribbon_b_6.qb)"
+                  ]
+               }
+            ]
+         },
+         "model6": {
+            "models": [
+               "file(planter_basket_decorated_small.qb)",
+               "file(handle_5.qb)",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_a_1.qb)",
+                     "file(ribbon_a_2.qb)",
+                     "file(ribbon_a_3.qb)",
+                     "file(ribbon_a_4.qb)",
+                     "file(ribbon_a_5.qb)",
+                     "file(ribbon_a_6.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_b_1.qb)",
+                     "file(ribbon_b_2.qb)",
+                     "file(ribbon_b_3.qb)",
+                     "file(ribbon_b_4.qb)",
+                     "file(ribbon_b_5.qb)",
+                     "file(ribbon_b_6.qb)"
+                  ]
+               }
+            ]
+         },
+         "model7": {
+            "models": [
+               "file(planter_basket_decorated_small.qb)",
+               "file(handle_6.qb)",
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_a_1.qb)",
+                     "file(ribbon_a_2.qb)",
+                     "file(ribbon_a_3.qb)",
+                     "file(ribbon_a_4.qb)",
+                     "file(ribbon_a_5.qb)",
+                     "file(ribbon_a_6.qb)"
+                  ]
+               },
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(ribbon_b_1.qb)",
+                     "file(ribbon_b_2.qb)",
+                     "file(ribbon_b_3.qb)",
+                     "file(ribbon_b_4.qb)",
+                     "file(ribbon_b_5.qb)",
+                     "file(ribbon_b_6.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 },
+         "allow_vertical_adjacent": false
+      },
+      "render_info": {
+         "scale": 0.1
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.herbalist_planters.firstbloom.planter_basket_decorated_small.display_name)",
+         "description": "i18n(stonehearth_ace:entities.herbalist_planters.firstbloom.planter_basket_decorated_small.description)",
+         "icon": "file(planter_basket_decorated_small.png)",
+         "category": "herbalist_planter",
+         "material_tags": [
+            "crafted",
+            "herbalist_planter",
+            "firstbloom",
+            "festival",
+            "woven",
+            "fancy",
+            "tool",
+            "stockpile_tool"
+         ]
+      },
+      "stonehearth_ace:create_entity": {
+         "assign_random_model_variant": true
+      }
+   }
+}

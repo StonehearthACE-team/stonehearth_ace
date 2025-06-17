@@ -1,0 +1,38 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.deviled_eggs_whipped_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.deviled_eggs_whipped_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.deviled_eggs_whipped_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/firstbloom/deviled_eggs_whipped/deviled_eggs_whipped.png",
+   "workshop": "stonehearth_ace:cook:table",
+   "manual_unlock": true,
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "egg small cooking_ingredient",
+         "count": 6
+      },
+      {
+         "material": "raw_food fruit",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:food:dairy:cream",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:food:vinegar",
+         "count": 1
+      },
+      {
+         "uri": "stonehearth_ace:resources:herb:dill",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:firstbloom:deviled_eggs:whipped"
+      }
+   ]
+}

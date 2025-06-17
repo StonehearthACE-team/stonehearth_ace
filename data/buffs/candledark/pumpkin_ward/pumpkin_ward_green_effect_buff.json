@@ -10,7 +10,9 @@
    "restore_effect": true,
    "duration": "20m",
    "repeat_add_action": "renew_duration",
-   "buff_added_on_expire": "stonehearth_ace:buffs:candledark:vampire",
+   "leftover_buffs": {
+      "stonehearth_ace:buffs:candledark:vampire": 1
+   },
    "can_only_affect": [
       "vampire"
    ],

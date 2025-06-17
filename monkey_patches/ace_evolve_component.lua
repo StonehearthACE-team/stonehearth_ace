@@ -151,6 +151,7 @@ function AceEvolveComponent:evolve()
       transform_effect = self._evolve_data.evolve_effect,
       auto_harvest = self._evolve_data.auto_harvest,
       transform_script = self._evolve_data.evolve_script,
+      script_options = self._evolve_data.script_options,
       kill_entity = self._evolve_data.kill_entity,
       destroy_entity = self._evolve_data.destroy_entity,
       transform_event = function(evolved_form)

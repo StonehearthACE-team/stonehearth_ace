@@ -1,0 +1,32 @@
+{
+   "type": "encounter",
+   "encounter_type": "delivery_quest",
+   "in_edge": "preparation_quest_6",
+   "out_edge": {
+      "type": "trigger_one",
+      "out_edges": [
+         "egg_hunt_pre_dialogue",
+         "egg_hunt_pre_dialogue_easy",
+         "egg_hunt_pre_dialogue_hard"
+      ]
+   },
+   "delivery_quest_info": {
+      "quest_storage_uri": "stonehearth_ace:containers:quest:firstbloom",
+      "title": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.preparation_quest_6.title)",
+      "dialog_title": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.preparation_quest_6.dialog_title)",
+      "text": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.preparation_quest_6.text)",
+      "requirements": [
+         {
+            "type": "give_material",
+            "material": "thatch resource",
+            "count": 4
+         },
+         {
+            "type": "give_item",
+            "uri": "stonehearth_ace:refined:fine_stuffing",
+            "count": 1
+         }
+      ],
+      "abandon_out_edge": "quest_cleanup"
+   }
+}

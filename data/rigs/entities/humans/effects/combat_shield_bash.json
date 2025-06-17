@@ -1,0 +1,40 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "speed": 0.9,
+         "animation": "combat_shield_bash.json",
+         "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "start_time": 550,
+         "min_distance": 30,
+         "falloff" : 4,
+         "volume": 42,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:shield:bash"
+            ]
+         }
+      },
+      "hit_spark": {
+         "type": "cubemitter",
+         "start_time" : 540,
+         "end_time" : 620,
+         "cubemitter": "particles/combat/slam.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "leftArm"
+      }      
+   }
+}

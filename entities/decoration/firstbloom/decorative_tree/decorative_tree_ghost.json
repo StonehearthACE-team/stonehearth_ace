@@ -1,0 +1,39 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               {
+                  "type": "one_of",
+                  "items": [
+                     "file(decorative_tree.qb)"
+                  ]
+               }
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.106
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      }
+   },
+   "entity_data": {
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.decoration.firstbloom.decorative_tree.display_name)",
+         "description": "i18n(stonehearth_ace:entities.decoration.firstbloom.decorative_tree.description)",
+         "icon": "file(decorative_tree.png)",
+         "category": "decoration",
+         "material_tags": [
+            "decoration",
+            "fancy",
+            "stockpile_decoration",
+            "festival",
+            "firstbloom"
+         ]
+      }
+   }
+}

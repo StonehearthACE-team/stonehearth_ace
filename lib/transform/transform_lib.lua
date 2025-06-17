@@ -27,7 +27,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
    options = options or {}
    if options.check_script then
       local script = radiant.mods.load_script(options.check_script)
-      if script and not script.should_transform(entity, transform_source, into_uri, options) then
+      if script and not script.should_transform(entity, transform_source, into_uri, options.script_options) then
          return false
       end
    end
@@ -209,7 +209,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
       end
 
       local transformed_form_data = radiant.entities.get_entity_data(transformed_form, 'stonehearth:evolve_data')
-      if transformed_form_data and transform_source == 'stonehearth:evolve' then
+      if transformed_form_data and transformed_form_data.next_stage and transform_source == 'stonehearth:evolve' then
          -- Ensure the transformed form also has the evolve component if it will evolve
          -- but first check if it should get "stunted"
          if not transformed_form_data.stunted_chance or rng:get_real(0, 1) > transformed_form_data.stunted_chance then
@@ -217,7 +217,19 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
             -- if it allows for manually stunting growth, make sure the transform option is set up
             local modifiers = radiant.entities.get_entity_data(transformed_form, 'stonehearth_ace:evolve_modifiers')
             if modifiers and modifiers.allow_manual_stunting then
-               transformed_form:add_component('stonehearth_ace:transform'):reconsider_commands()
+               local transform_component = entity:get_component('stonehearth_ace:transform')
+               local transformed_form_transform_comp = transformed_form:add_component('stonehearth_ace:transform')
+               if transformed_form_transform_comp then
+                  if transform_component and transform_component:get_component_data('stonehearth:evolve') then
+                     if transform_component:get_component_data('stonehearth:evolve').stunt_stage == transformed_form_data.current_stage then
+                        transformed_form_transform_comp:set_transform_option('stunt_now')
+                        transformed_form_transform_comp:request_transform(player_id, true)
+                     else
+                        transformed_form_transform_comp:store_component_data('stonehearth:evolve', transform_component:get_component_data('stonehearth:evolve'))
+                     end
+                  end
+                  transformed_form_transform_comp:reconsider_commands()
+               end
             end
          end
       end
@@ -296,7 +308,7 @@ function transform_lib.transform(entity, transform_source, into_uri, options)
 
    if options.transform_script then
       local script = radiant.mods.load_script(options.transform_script)
-      script.transform(entity, transformed_form, transform_source, options)
+      script.transform(entity, transformed_form, transform_source, options.script_options, options.transformer_entity)
    end
 
    if options.transform_event then

@@ -1,0 +1,62 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(brandy_fruit.qb)"
+            ]
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 }
+      },
+      "render_info": {
+         "scale": 0.09
+      },
+      "stonehearth:stacks": {
+         "max_stacks": 10
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:drink_container": {
+         "effect": "fiddle",
+         "drink": "stonehearth_ace:drink:brandy_fruit:brandy_fruit_serving",
+         "stacks_per_serving": 1
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 25,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": true,
+            "sellable": true,
+            "shopkeeper_level": 3,
+            "shopkeeper_type": "caravan"
+         }
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.drink.brandy_fruit.brandy_fruit.display_name)",
+         "description": "i18n(stonehearth_ace:entities.drink.brandy_fruit.brandy_fruit.description)",
+         "icon": "file(brandy_fruit.png)",
+         "is_item": true,
+         "category": "drink_prepared",
+         "material_tags": [
+            "drink_container",
+            "prepared_drink",
+            "kept",
+            "spirit",
+            "brandy_fruit",
+            "alcoholic",
+            "stockpile_prepared_drink",
+            "night_time"
+         ]
+      },
+      "stonehearth:appeal": {
+         "appeal": 4
+      },
+      "stonehearth:item_quality": {
+         "variable_quality": true
+      }
+   }
+}

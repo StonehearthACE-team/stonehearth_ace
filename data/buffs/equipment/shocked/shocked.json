@@ -1,0 +1,18 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "display_name": "i18n(stonehearth_ace:data.buffs.shocked.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.shocked.description)",
+   "icon": "file(shocked.png)",
+   "duration": "8m+8m",
+   "cant_affect_siege": true,
+   "repeat_add_action": "renew_duration",
+   "modifiers": {
+      "courage": {
+         "max": 0
+      },
+      "multiplicative_heal_received_modifier": {
+         "multiply": 0.5
+      }
+   }
+}

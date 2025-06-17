@@ -1,0 +1,26 @@
+{
+   "type": "recipe",
+   "effort": 42,
+   "work_units": 3,
+   "recipe_name": "i18n(stonehearth_ace:jobs.brewer.recipes.syrup_date_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.brewer.recipes.syrup_date_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.brewer.recipes.syrup_date_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/syrup_date/syrup_date/syrup_date.png",
+   "level_requirement": 4,
+   "workshop": "stonehearth_ace:brewer:kettle",
+   "work_effect": "brewer_stirring",
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:drink:must_date",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:syrup_date"
+      },
+      {
+         "item": "stonehearth_ace:food:syrup_date"
+      }
+   ]
+}

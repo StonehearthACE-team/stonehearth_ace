@@ -1,0 +1,35 @@
+{
+   "type": "recipe",
+   "effort": 120,
+   "work_units": 5,
+   "recipe_name": "i18n(stonehearth_ace:jobs.herbalist.recipes.firstbloom.daffodil_seeds_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.herbalist.recipes.firstbloom.daffodil_seeds_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.herbalist.recipes.firstbloom.daffodil_seeds_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/consumables/seeds/daffodil_seeds/daffodil_seeds.png",
+   "workshop": "stonehearth:herbalist:workbench",
+   "level_requirement": 4,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "uri": "stonehearth_ace:terrain:pasture_grass:seed",
+         "count": 2
+      },
+      {
+         "material": "herb yellow resource",
+         "count": 1
+      },
+      {
+         "material": "herb orange resource",
+         "count": 1
+      },
+      {
+         "material": "herb white resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:consumables:seeds:daffodil_seeds"
+      }
+   ]
+}

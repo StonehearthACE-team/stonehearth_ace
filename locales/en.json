@@ -20,6 +20,7 @@
             "collect_building_material": "collecting building materials",
             "upgrading": "upgrading [name(data.target)]",
             "opening": "opening [name(data.target)]",
+            "collecting": "collecting [name(data.target)]",
             "filling": "filling [name(data.target)]",
             "reloading": "reloading [name(data.target)]",
             "fueling": "fueling [name(data.target)]",
@@ -3796,6 +3797,436 @@
                      }
                   }
                }
+            },
+            "firstbloom": {
+               "haru_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "🐰 A member of Clan Amberstone approaches! 🐰",
+                           "dialog_title": "A peculiar rabbit-person...",
+                           "bulletin_message": {
+                              "00": "\"Greetings, progenitors of Monkey! I extend the paw of friendship to you and yours!\" He seems unusually enthusiastic, his clothing quite unlike that of other rabbit-folk you've met. \"You may call me <span class='minor'>Haru</span> - or Mr. Sprouts, as the kits say in class!\"<br>He chuckles, stepping aside to reveal a chonky poyo with fierce determination in her eyes. \"This is my travel companion, the <span class='minor'>Determined Poyo</span>!\"<br><br>The poyo seems to... <i>nod?</i><br><br>\"Good word of you reached the warren, and I come with a proposal!\""
+                           },
+                           "choice_000": "Welcome! Tell us!",
+                           "choice_001": "Sorry, not interested! [Skip Quest]"
+                        },
+                        "msg2": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "His ears twitch a bit!",
+                           "bulletin_message": {
+                              "00": "\"Hippity-hop, that's splendid! See, I'm a teacher back home — an honored role in our clan, tasked with preserving and forwarding the knowledge passed down since Rabbit's ascendance.\" He smiles warmly.<br><br>\"As such, I'm also a great admirer of Lapine culture and thrilled by the bond our clans are building. We're slowly returning aboveground — a <i>renaissance</i>, if you will — and I believe it's time we also reclaim our ancient traditions! Tell me... Ever heard of <span class='major'>Firstbloom</span>?\"<br><br>He looks eager to share."
+                           },
+                           "choice_000": "Of course!",
+                           "choice_001": "Firstbloom?"
+                        },
+                        "msg2b": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "He nods repeatedly",
+                           "bulletin_message": {
+                              "00": "\"I've guessed as much! Firstbloom was an old Lapine tradition — though others adopted it too.\" He gestures broadly, as if to include the whole world. \"It's a celebration of spring, renewal, rebirth, life returning after winter... The first hearth flower to bloom: the <span class='major'>Firstbloom</span>.\" He gazes toward the horizon. \"We once held grand parades as petals blanketed the cobbled streets of our great cities... Now, not so much.\"<br><br>A hint of sadness crosses his face.<br>\"Life underground made us forget spring's beauty. I say it's time we change that, yes?\""
+                           },
+                           "choice_000": "Yes! 🌻"
+                        },
+                        "msg3": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "He claps excitedly!",
+                           "bulletin_message": {
+                              "00": "\"That's the spirit! Now, the reason I'm here is because not many of my kin seem particularly interested in bringing back this tradition... It likely feels distant and unnecessary to them after so long without experiencing the seasonal cycles. But I believe we can change that!\" The Determined Poyo nods once more.<br><br>\"Together, we can host a grand <span class='minor'>Firstbloom festival</span> and capture my kin's attention!\" He pouts playfully. \"Would you like to hear more about it, or should we just get started?\""
+                           },
+                           "choice_000": "Tell us more!",
+                           "choice_001": "Let's go on!"
+                        },
+                        "msg3b": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "He smiles and continues",
+                           "bulletin_message": {
+                              "00": "\"You see, as you may have heard, we have a proud tradition with the bow and arrow. But Lapine rangers were known for far more than their marksmanship! They were also skilled falconers, forming deep bonds with cunning beasts of the skies — trained to scout, protect, and fight alongside them. Our cities once housed great hatcheries where these loyal creatures were raised with care. It was tradition for young kits to paint their feathers and decorate their eggs, marking the lineage of companion families passed down through generations.\""
+                           },
+                           "choice_000": "Interesting!"
+                        },
+                        "msg4": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "Haru seems very nostalgic",
+                           "bulletin_message": {
+                              "00": "\"As many eggs would hatch with the coming of spring, the birth and care of these creatures became a central part of Firstbloom culture. Parents would send their kits on hunts to find the eggs of their future companions, seasoned rangers were honored with painted feathers from prized birds...\" He pauses, eyes misty.<br>\"We might not have much now and, well... a Poyo isn't exactly a hawk...\"<br><br>The Determined Poyo pecks his paw.<br><br>\"Ouch! — She clearly makes up for it, though! We make a good team and have what we need. And that's where your clan can help us!\""
+                           },
+                           "choice_000": "Huh! How can we help?"
+                        },
+                        "msg5": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "He seems very confident now",
+                           "bulletin_message": {
+                              "00": "\"I believe we could set up the festivities and enjoy a few egg hunts! We'll provide the eggs, of course...\"<br><br>The Determined Poyo nods once more, her will unshaken.<br><br>\"But we might need a few other things. In the meantime, I'll do my best to recover and write down <span class='minor'>recipes and instructions for some of our traditional Firstbloom decorations, foods, and drinks</span> — so your clan can... Spruce things up a little, yes?\""
+                           },
+                           "choice_000": "Sounds good!"
+                        },
+                        "msg6": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "Haru hops excitedly!",
+                           "bulletin_message": {
+                              "00": "\"Great, splendid! Oh yes, it's happening!\" He can hardly contain his excitement now. \"I knew I could count on you, children of Monkey! I've heard nothing but amazing accounts since our clans began this friendship, and I'm thrilled to see it grow even stronger!\"<br><br> He finally calms down a bit.<br>\"Now... I've also heard you've managed to cultivate <span class='minor'>Heirbloom</span>, yes? No, we don't need it for Firstbloom — but I'd greatly appreciate a few stalks for me and Poyo to snack on while we prepare!\""
+                           },
+                           "choice_000": "Will do! 🌸",
+                           "choice_001": "Actually... [Skip Quest]"
+                        },
+                        "rejection": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "Haru is a little disappointed",
+                           "bulletin_message": {
+                              "00": "\"Well, I understand that rekindling an old Lapine tradition may not be of interest or concern to your people. That's perfectly fine—and it won't affect the friendship between our clans, I assure you. Rabbit matters remain with rabbitkin, I suppose. But if anyone does feel like joining in for some <span class='minor'>fun egg hunts</span> or trying out our <span class='minor'>traditional recipes</span>, just let me know!\"<br><br>The Determined Poyo seems to be wearing a deeply disappointed frown in the direction of your town..."
+                           },
+                           "choice_000": "Alright, we'll do it!",
+                           "choice_001": "Sorry! [Skip Quest]"
+                        }
+                     }
+                  }
+               },
+               "stalk_quest": {
+                  "title": "🐰 Heirbloom Stalks for Haru & Determined Poyo 🐰",
+                  "dialog_title": "Heirbloom Stalk Delivery",
+                  "text": "It's always hard to rekindle a cultural tradition after hundreds of years in obscurity while also having an empty stomach... So let's provide them with a small snack!"
+               },
+               "abandon_confirmation_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "rejection": {
+                           "bulletin_title": "🐰 Haru and the Determined Poyo seem sad... 🐰",
+                           "dialog_title": "They slowly approach...",
+                           "bulletin_message": {
+                              "00": "\"We haven't heard from you in a while. Is our plan still ongoing?\" The Determined Poyo pouts behind him. Her gaze pierces through each one of the townsfolk. She waits for an honorable answer..."
+                           },
+                           "choice_000": "We'll continue!",
+                           "choice_001": "Sorry... [Skip Quest]"
+                        }
+                     }
+                  }
+               },
+               "stalk_quest_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "🐰 Haru and the Determined Poyo return! 🐰",
+                           "dialog_title": "They seem very satisfied!",
+                           "bulletin_message": {
+                              "00": "\"Hmm, yes. That's a splendid meal, I extend you the paw of gratitude!\" The Poyo thankfully flaps her wings. \"Now let's talk about the egg hunts!\""
+                           },
+                           "choice_000": "You're welcome!"
+                        },
+                        "msg2": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "He continues his speech",
+                           "bulletin_message": {
+                              "00": "\"Each hunt requires a bit of preparation! We'll let you know what is needed beforepaw, and as soon as you deliver us these things we may begin!\" He smiles with excitement.<br><br>\"We've had this idea of shaking it up a little, just for fun! I'll continue searching and transcribing the recipes - as promised - but we want to <span class='minor'>reward you with a different amount of recipes based on how well your people do during the egg hunts</span>! Fun, yes?\" The Determined Poyo nods excitedly as well."
+                           },
+                           "choice_001": "Huh? [Egg Hunt Explanation]",
+                           "choice_000": "That's fun! 🌻"
+                        },
+                        "msg2b": {
+                           "bulletin_title": "🐰 The Determined Poyo 🐰",
+                           "dialog_title": "The Determined poyo stares...",
+                           "bulletin_message": {
+                              "00": "<span class='smaller'>Egg hunts have a fixed duration measured in game hours. During this time, you'll need to explore your town and its surroundings to find Firstbloom Eggs or suspicious objects that seem out of place: eggs might be hidden under upturned pots or beneath broken pieces of bark, for example. Interacting with these suspicious items reveals the egg, which can then be ordered to be picked up by a hearthling.<br><br>Eggs only count toward your final score once a hearthling has collected them. And have no worries: collecting eggs is a very high-priority task!<br><br>Finally, pausing the game during the hunt won't help much — eggs and suspicious objects will disappear while the game is paused!</span>"
+                           },
+                           "choice_000": "We understand now!"
+                        },
+                        "msg3": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "He continues speaking",
+                           "bulletin_message": {
+                              "00": "\"Don't worry, we'll give you <span class='minor'>one recipe for every hunt</span>, even if you don't find any eggs! But make sure to find as many as you can for <i>more</i> recipes!\" He nods. \"We will do a practice egg hunt before we start with the real ones! This will be shorter and less rewarding but will allow your clan to... Grasp the activity a bit better!\"<br><br><span class='smaller'>When a recipe is received, you must click it and use the 'Learn!' command to unlock the recipe. If inside a container, use the town inventory screen to interact with it!</span>"
+                           },
+                           "choice_000": "We're ready!"
+                        },
+                        "msg4": {
+                           "bulletin_title": "🐰 The Determined Poyo 🐰",
+                           "dialog_title": "The Determined Poyo stares!",
+                           "bulletin_message": {
+                              "00": "She moves forward, staring deeply into the eyes of all the citizens.<br><br>Everyone feels a bit of pressure..."
+                           },
+                           "choice_000": "..."
+                        },
+                        "msg5": {
+                           "bulletin_title": "🐰 The Determined Poyo 🐰",
+                           "dialog_title": "She continues staring!",
+                           "bulletin_message": {
+                              "00": "She just continues staring. Judging, probably?<br><br>Are we paying enough attention? Is something wrong?<br><br>After a long silence full of tension, she coos gently and moves back.<br>The entire town sighs in relief."
+                           },
+                           "choice_000": "Huh!"
+                        },
+                        "msg6": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "Haru comes forward again",
+                           "bulletin_message": {
+                              "00": "\"I'm sorry, she does that sometimes!\" He grimaces nervously. \"She means well, though! I promise!\" The Determined Poyo nods. Deep inside everyone knows that she just wants to be proud of our town. \"Let's get started then, yes?\""
+                           },
+                           "choice_000": "Yes! 🌸"
+                        }
+                     }
+                  }
+               },
+               "initial_preparation_quest": {
+                  "title": "🐰 Preparations for Practice Egg Hunt 🐰",
+                  "dialog_title": "Practice Egg Hunt",
+                  "text": "Haru and the Determined Poyo require some things to prepare a practice run for our town! And some extra snacks, probably..."
+               },
+               "initial_preparation_quest_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "🐰 Haru and the Determined Poyo return! 🐰",
+                           "dialog_title": "They seem ready to start",
+                           "bulletin_message": {
+                              "00": "\"Thank you very much for these resources, Monkey friends! Oh, and here's something to get you started: <span class='minor'>your first Firstbloom recipe</span>!\" He joins his paws together in excitement. \"We have finished the preparations for a practice egg hunt! For this run we'll have it going for <span class='major'>eight sun-hours</span> and we'll hide <span class='minor'>eight eggs</span>! If everything is in order, just let me know and we'll begin!\"<br><br>You receive:"
+                           },
+                           "choice_000": "Let's go! [Start Egg Hunt]"
+                        }
+                     }
+                  }
+               },
+               "practice_egg_hunt": {
+                  "bulletins": {
+                     "start": "🐰 The Practice Egg Hunt begins! 🐰",
+                     "finish": "🐰 The Practice Egg Hunt is now over... 🐰"
+                  }
+               },
+               "practice_egg_hunt_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "🐰 Haru and the Determined Poyo return! 🐰",
+                           "dialog_title": "Haru seems content",
+                           "bulletin_message": {
+                              "00": "\"That was fun, right? Don't worry, it's perfectly understandable to not find all eggs on your first egg hunt, or so I've heard. Some texts mention eggs that were lost for days, can you imagine?\" He chuckles. \"But you all did well, of course!\""
+                           },
+                           "choice_000": "Okay"
+                        },
+                        "msg2": {
+                           "bulletin_title": "🐰 The Determined Poyo 🐰",
+                           "dialog_title": "The Determined Poyo approaches...",
+                           "bulletin_message": {
+                              "00": "She looks at the townsfolk, expecting. Perhaps she's offering us another chance to find her eggs?<br><br><span class='smaller'>You may retry the practice egg hunt as many times as you want until you're comfortable with continuing the story.</span>"
+                           },
+                           "choice_000": "...",
+                           "choice_001": "Ok! [Retry Practice Egg Hunt]"
+                        },
+                        "msg3": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "He comes forward",
+                           "bulletin_message": {
+                              "00": "\"It seems we are ready for the real thing! Splendid!\" He smiles, clapping with excitement. \"We'll let you know when we are ready to prepare the next event! We'll make this a great Firstbloom and soon everybun shall be hearing about it!\""
+                           },
+                           "choice_000": "Yay! 🌻"
+                        }
+                     }
+                  }
+               },
+               "preparation_quest": {
+                  "title": "🐰 Preparations for Egg Hunt 🐰",
+                  "dialog_title": "Missing some Dyes",
+                  "text": "Haru and the Determined Poyo are out of paint for the eggs! Let's help them!"
+               },
+               "preparation_quest_2": {
+                  "title": "🐰 Preparations for Egg Hunt 🐰",
+                  "dialog_title": "Extra Eggs",
+                  "text": "While she's slightly ashamed to admit, the Determined Poyo could use some help providing the eggs for the next hunt!"
+               },
+               "preparation_quest_3": {
+                  "title": "🐰 Preparations for Egg Hunt 🐰",
+                  "dialog_title": "Cloth & Thread",
+                  "text": "Haru is in dire need for some textiles for decorating his Classroom back in the Warren!"
+               },
+               "preparation_quest_4": {
+                  "title": "🐰 Preparations for Egg Hunt 🐰",
+                  "dialog_title": "Oh, Feathers!",
+                  "text": "Haru needs more feathers and colors for some decorations and feels really bad about asking his companion... Let's help him!"
+               },
+               "preparation_quest_5": {
+                  "title": "🐰 Preparations for Egg Hunt 🐰",
+                  "dialog_title": "Tea & Snacks for Researching",
+                  "text": "Haru has been spending a lot of time researching the old traditions and would appreciate some tea and snacks!"
+               },
+               "preparation_quest_6": {
+                  "title": "🐰 Preparations for Egg Hunt 🐰",
+                  "dialog_title": "Straw & Stuffing",
+                  "text": "The Determined Poyo needs a comfortable space to perform her 'work', Haru says..."
+               },
+               "egg_hunt_quest": {
+                  "bulletins": {
+                     "start": "🐰 The Egg Hunt begins! 🐰",
+                     "finish": "🐰 The Egg Hunt is now over... 🐰"
+                  }
+               },
+               "quest_reward_tier_1": {
+                  "title": "🐰 Haru returns alone... 🐰",
+                  "dialog_title": "He seems alright",
+                  "message": "\"That wasn't so bad! But perhaps next time it can be a bit better, yes? Don't give up!\" He smiles gently.<br><br><span class = 'smaller'>Make sure to search for anything out of ordinary within the town bounds or anywhere hearthlings come and go often. If you see some colorful sparkles in the air, that might be a sign of an egg nearby!</span><br><br>You receive:",
+                  "choice_000": "Will try! 🍃"
+               },
+               "quest_reward_tier_2": {
+                  "title": "🐰 Haru and the Determined Poyo approach! 🐰",
+                  "dialog_title": "They look satisfied!",
+                  "message": "\"Good work on this hunt! Try looking a little harder next time and I'm sure you'll do even better!\" His ears twitch excitedly as the Poyo moves forward and flaps her wings a little. Maybe she's not so convinced as he is...<br><br>You receive:",
+                  "choice_000": "Thanks! 🌼"
+               },
+               "quest_reward_tier_3": {
+                  "title": "🐰 Haru seems super excited! 🐰",
+                  "dialog_title": "He's clapping with joy!",
+                  "message": "\"Hippity-hop! That was amazing! <i>Almost</i> a perfect hunt! Take these, you all deserve it! I guess I'll have to find better hiding spots next time...\" He hands over the recipes with a big smile.<br><br>You receive:",
+                  "choice_000": "Awesome! 🌻"
+               },
+               "quest_reward_tier_4": {
+                  "title": "🐰 The Determined Poyo approaches! 🐰",
+                  "dialog_title": "She stares at us!",
+                  "message": "There seems to be some sort of glow in her eyes.<br><br>Her stare is deep but also kind. She's... proud? Yes. She knows we did good. There is definitely pride in there.<br><br>The Determined Poyo is really proud of us.<br>You receive:",
+                  "choice_000": "Perfect! 🌸"
+               },
+               "final_egg_hunt_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "🐰 Haru and the Poyo seem satisfied! 🐰",
+                           "dialog_title": "Haru happily speaks",
+                           "bulletin_message": {
+                              "00": "\"Greetings again, friends! It warms my heart to let you all know that a lot of my kin are talking about <span class='major'>Firstbloom</span>! I think the plan is working!\" He claps excitedly as the Determined Poyo lets out a long, relieved coo. <br><br>\"So it should only be a matter of time now. No more hunts, for now I'll focus on reading the few pages left on a very interesting - and old - <span class='minor'>botanical document</span> I've found... I feel it might interest you!\" He winks and smiles, preparing to head off. \"See you soon, my friends!\""
+                           },
+                           "choice_000": "Hopefully it worked! 🌸"
+                        }
+                     }
+                  }
+               },
+               "sasha_arrival": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "🐰 Someone approaches! 🐰",
+                           "dialog_title": "Look, it's Sasha!",
+                           "bulletin_message": {
+                              "00": "\"So it is true!\"<br><br>Sasha Lightfoot enters the town while observing those around him. \"I knew something was off when everybun stopped talking about how hearty your veggies are, but only because they're now talking about...<span class='minor'>Firstbloom</span>.\" He smiles. \"I haven't heard that name in ages, and I couldn't be more surprised! Children of Monkey being aware - and honoring - our traditions of old? It's a good mystery if I've ever seen one, although I suspect there's <i>paw and fur down this rabbit hole</i>...\"<br><br>Haru Sprouts and the Determined Poyo approach as well."
+                           },
+                           "choice_001": "Actually..."
+                        },
+                        "msg2": {
+                           "bulletin_title": "🐰 Haru Sprouts 🐰",
+                           "dialog_title": "Haru smiles and blushes",
+                           "bulletin_message": {
+                              "00": "\"And correct you are, as usual, honorable Herald!\" He gently nods towards his kin. \"One could say this is my doing but I've merely watered the seeds. The blossoms are definitely and mostly from our aboveground friends.\" He turns to the townsfolk with a big smile. \"And I couldn't be more grateful. <span class='minor'>Firstbloom brightens this world once more</span>, thanks to all of you!\"<br><br>Haru then leans over his faithful companion, petting her feathers. \"And thanks to this great bird worthy of song!\""
+                           },
+                           "choice_000": "Aww!"
+                        },
+                        "msg3": {
+                           "bulletin_title": "🐰 The Determined Poyo 🐰",
+                           "dialog_title": "The Determined Poyo",
+                           "bulletin_message": {
+                              "00": "She coos and chirps gently as Haru pets her head. Her eyes are closed for a brief moment, proudly enjoying the well-deserved recognition."
+                           },
+                           "choice_000": "We did this! 🌻"
+                        },
+                        "msg4": {
+                           "bulletin_title": "🐰 Sasha of Clan Amberstone 🐰",
+                           "dialog_title": "Sasha speaks to all",
+                           "bulletin_message": {
+                              "00": "\"Well, you've definitely succeeded!\" Sasha smiles warmly and then turns towards Haru.<br><br>\"I should've seen that coming, no one else but you would've been this loyal to our history, the one who taught this once young and naive kit all he proudly carries with him!\" He seems to think for a moment before continuing. \"It is decided then, <span class='minor'>we'll arrange our own Firstbloom festivities back in the warren!</span> It's time to forget the <i>trepidation</i> and believe in this new world, just like we're believing in our good friends of Monkey kin!\""
+                           },
+                           "choice_000": "We are honored!"
+                        },
+                        "msg5": {
+                           "bulletin_title": "🐰 Haru and the Determined Poyo 🐰",
+                           "dialog_title": "Everyone is excited!",
+                           "bulletin_message": {
+                              "00": "\"Wise words from my finest former student!\" Haru returns the smile. \"May this be only the beginning of something more! Perhaps next year we can reach even further? Contact the other warrens? Bring the whole Clan together for-- Oh, we'll need so many eggs!\"<br><br>Everyone notices as the Determined Poyo stares at Haru, brows furled into pure <i>fowl judgement</i>.<br><br>\"Or m-maybe not, of course! There's a long way to go until then! We'll see!\" He chuckles, embarrassed."
+                           },
+                           "choice_000": "Heh"
+                        },
+                        "msg6": {
+                           "bulletin_title": "🐰 Sasha of Clan Amberstone 🐰",
+                           "dialog_title": "Sasha concludes it",
+                           "bulletin_message": {
+                              "00": "\"So!\" He gestures around, pointing out the townsfolk now gathered. \"We'll get started as soon as we're back, but since we are here... We should do a proper demonstration of a <span class='major'>Firstbloom ceremony</span> to our kind hosts and their clan!\" He smiles, calling everyone over with his paws. \"Besides, I'm aware of how talented the progeny of Monkey is when it comes to cultivating Heirbloom! Therefore... Let's party!\""
+                           },
+                           "choice_000": "Party! 🌸"
+                        }
+                     }
+                  }
+               },
+               "campaign_end_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "🐰 Haru and Sasha celebrate! 🐰",
+                           "dialog_title": "Haru approaches alone",
+                           "bulletin_message": {
+                              "00": "\"My dear friends, there is one last thing I wanted to give! Remember the <span class='minor'>botanical document</span> I found?\" He smirks, slightly proud of himself. \"Turns out it was about one of our favorite springtime flowers. And I know where you may find some seeds!\"<br><br>\"So consider this a parting gift, at least until our next meeting! Thank you all, so very much, for everything. And happy <span class='major'>Firstbloom!</span>\""
+                           },
+                           "choice_001": "Take care, Haru! 🐰"
+                        },
+                        "msg2": {
+                           "bulletin_title": "🐰 The Determined Poyo is proud! 🐰",
+                           "dialog_title": "The Determined Poyo is proud!",
+                           "bulletin_message": {
+                              "00": "The Determined Poyo approaches one last time. There's no intimidating stare anymore; instead she comes with bright eyes full of joy. She's happy for all of us.<br><br>On her beak, a scribbled note contains the details on how to procure <span class='minor'>Daffodil seeds</span>.<br><br>She drops the notes on the ground and nods to everyone around, flapping her wings gently before moving away."
+                           },
+                           "choice_000": "Goodbye, girl! 🐔"
+                        }
+                     }
+                  }
+               },
+               "practice_egg_hunt_dialogue_success": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "bulletin_title": "🐰 Haru and the Determined Poyo return! 🐰",
+                           "dialog_title": "They seem very proud",
+                           "bulletin_message": {
+                              "00": "\"Hey, that was impressive! You found all the eggs!\" Haru seems genuinely happy. There's some motherly pride on the Determined Poyo's eyes as well. \"That's definitely promising, soon all of rabbitkin will be hearing about the <i>ressurgence</i> of Firstbloom! Here, you should have these as a reward, even if this wasn't the real thing yet!\"<br><br>You receive:"
+                           },
+                           "choice_000": "Thanks!"
+                        }
+                     }
+                  }
+               },
+               "egg_hunt_pre_dialogue": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "choice_000": "Let's go! [Start Egg Hunt]",
+                           "bulletin_title": "🐰 Haru and the Determined Poyo are prepared! 🐰",
+                           "dialog_title": "They seem quite ready!",
+                           "bulletin_message": {
+                              "00": "\"Good work, we really appreciate the help!\" Both of them nod. \"Everything is set up! This will be a good hunt, there are <span class='minor'>fourteen eggs</span> and we'll give you <span class='major'>twelve sun-hours</span> - or half a day - to look for them! Exciting!\""
+                           }
+                        }
+                     }
+                  }
+               },
+               "egg_hunt_pre_dialogue_hard": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "choice_000": "We can do this! [Start Egg Hunt]",
+                           "bulletin_title": "🐰 Haru and the Determined Poyo are prepared! 🐰",
+                           "dialog_title": "They look very eager...",
+                           "bulletin_message": {
+                              "00": "\"Oh, this one is going to be good! Thank you for all the support, by the way. The children of Monkey do not cease to amaze me!\" They can't contain their excitement. \"This will be a hard, there are <span class='minor'>sixteen eggs</span> and only <span class='major'>ten sun-hours</span>! Think you can do it?\""
+                           }
+                        }
+                     }
+                  }
+               },
+               "egg_hunt_pre_dialogue_easy": {
+                  "dialog_tree_info": {
+                     "dialog_nodes": {
+                        "msg1": {
+                           "choice_000": "Alright! [Start Egg Hunt]",
+                           "bulletin_title": "🐰 Haru and the Determined Poyo are prepared! 🐰",
+                           "dialog_title": "They seem relaxed!",
+                           "bulletin_message": {
+                              "00": "\"Very nice, we appreciate it! This will be a rather simple one, there are only <span class='minor'>twelve eggs</span> and <span class='major'>sixteen sun-hours</span> to find them. Should be as simple as pulling a carrot from the ground, yes?\"<span class='aside'>Not that I have any experience with that...</span>"
+                           }
+                        }
+                     }
+                  }
+               }
             }
          }
       },
@@ -4276,6 +4707,10 @@
                "merry_time_candledark": {
                   "display_name": "Spooky Feasting",
                   "tooltip": "Boo! Haha! I love this season so much! Warm and comfy food, scary tales around the hearth... Nothing could be better!"
+               },
+               "merry_time_firstbloom": {
+                  "display_name": "Firstblooming",
+                  "tooltip": "Woo! Springtime is here! Nothing like enjoying some delicious seasonal food and drinks while in the company of my esteemed neighbors!"
                }
             },
             "traits": {
@@ -4572,6 +5007,14 @@
                   "turned_cured": {
                      "display_name": "I AM CURED!",
                      "tooltip": "I can't believe it! I've seen life leave me with my own eyes, but... It's back! I have been cured!"
+                  }
+               }
+            },
+            "firstbloom": {
+               "values": {
+                  "celebration": {
+                     "display_name": "Firstbloom Celebration!",
+                     "tooltip": "We did it! We've helped Clan Amberstone rekindle their traditions and learned a lot of new ways to appreciate springtime!"
                   }
                }
             }
@@ -5954,6 +6397,30 @@
                   "4_description": "They have crafted 120 items as a Geomancer!",
                   "5_display_name": ", Earth's Magician",
                   "5_description": "They have crafted 200 items as a Geomancer!"
+               },
+               "magical_flavors": {
+                  "display_name": "🌟 Magical Flavors",
+                  "description": "Gained by achieving the \"Magical Flavors\" buff from having drinks prepared with hearth magic!",
+                  "1_display_name": " the Charged",
+                  "1_description": "They've appreciated the magical charge of a drink infused by hearth magic once!",
+                  "2_display_name": ", Overcharged",
+                  "2_description": "They've been charged by a magical pulse of energy from hearth-infused drinks seven times!",
+                  "3_display_name": " the Powerful",
+                  "3_description": "How can they contain such power?! They've had a magical drink twenty-one times!"
+               },
+               "firstbloom_eggs_collected": {
+                  "display_name": "🌸 Firstbloom - Eggs Collected",
+                  "description": "Gained by collecting Firstbloom Eggs during Firstbloom Egg Hunts!",
+                  "1_display_name": ", Egg Finder",
+                  "2_display_name": ", Determined Searcher",
+                  "3_display_name": " the Detegg-tive",
+                  "4_display_name": " the Egg Hunter",
+                  "5_display_name": ", Firstbloom Ambassador",
+                  "5_description": "They've found twenty-five Firstbloom Eggs all by themselves! Are they even letting others compete?",
+                  "4_description": "They've found twelve Firstbloom Eggs! That's amazing!",
+                  "3_description": "They've found six Firstbloom Eggs! We might call them Sher-yolk Holmes!",
+                  "2_description": "They've found three Firstbloom Eggs! Keep going!",
+                  "1_description": "They've found a Firstbloom Egg! Happy springtime!"
                }
             }
          }
@@ -6189,7 +6656,7 @@
                "description": "Order the Mason to put their best skills to use and create something beautiful out of this block of stone!"
             },
             "stunt_growth": {
-               "display_name": "Stunt Growth",
+               "display_name": "Stunt Growth (Now!)",
                "description": "Order a Worker, Farmer, or Herbalist to stunt this tree.<br>A stunted tree will never grow past its current size.<br><br>Very useful for gardening and landscaping!"
             },
             "release_fish": {
@@ -6436,6 +6903,36 @@
             "reload_turnip_shooter": {
                "display_name": "Reload Turret (Turnips)",
                "description": "Order the Engineer to reload this turret with a Basket of Turnips.<br><br>Turnips are a well rounded projectile, providing an average range, speed and damage.<br><br>The turret will continue to use Turnips as ammunition whenever it runs out as long as no new command is given."
+            },
+            "firstbloom": {
+               "reveal": {
+                  "display_name": "Take a Closer Look",
+                  "description": "This looks weirdly out of place... Give it a poke!"
+               },
+               "collect_egg": {
+                  "display_name": "Collect Firstbloom Egg!",
+                  "description": "Order a citizen to come and collect this egg to score a point on the ongoing egg hunt!"
+               }
+            },
+            "stunt_growth_1": {
+               "display_name": "Stunt Growth (Bud)",
+               "description": "Prepare a future order for a Worker, Farmer, or Herbalist to stunt this tree as soon as it reaches the budding stage of growth.<br>A stunted tree will never grow past the chosen size.<br><br>Very useful for gardening and landscaping!"
+            },
+            "stunt_growth_2": {
+               "display_name": "Stunt Growth (Small)",
+               "description": "Prepare a future order for a Worker, Farmer, or Herbalist to stunt this tree as soon as it reaches the small stage of growth.<br>A stunted tree will never grow past the chosen size.<br><br>Very useful for gardening and landscaping!"
+            },
+            "stunt_growth_3": {
+               "display_name": "Stunt Growth (Medium)",
+               "description": "Prepare a future order for a Worker, Farmer, or Herbalist to stunt this tree as soon as it reaches the medium stage of growth.<br>A stunted tree will never grow past the chosen size.<br><br>Very useful for gardening and landscaping!"
+            },
+            "stunt_growth_4": {
+               "display_name": "Stunt Growth (Large)",
+               "description": "Prepare a future order for a Worker, Farmer, or Herbalist to stunt this tree as soon as it reaches the large stage of growth.<br>A stunted tree will never grow past the chosen size.<br><br>Very useful for gardening and landscaping!"
+            },
+            "stunt_growth_cancel": {
+               "display_name": "Cancel Queued Stunting",
+               "description": "This tree has a queued order to be stunted in a future stage. Use this command to cancel that order!"
             }
          },
          "slaughter_shepherd": {
@@ -6704,6 +7201,14 @@
          "extend_extensible_object": {
             "tip_title": "Extending Object",
             "tip_description": "Drag the mouse over the highlighted white borders to select this object's new dimensions."
+         },
+         "allow_pet_charming": {
+            "display_name": "Allow Charming Pets",
+            "description": "This Trapper is currently set to never tame new pets when checking traps. Click to allow them!"
+         },
+         "avoid_pet_charming": {
+            "display_name": "Disallow Charming Pets",
+            "description": "This Trapper is currently set to sometimes tame new pets when checking traps. Click to forbid them!"
          }
       },
       "buffs": {
@@ -6817,10 +7322,6 @@
                }
             }
          },
-         "chromatic_fire_buff": {
-            "display_name": "On Fire (Chromatic)",
-            "description": "Set aflame! Taking fire damage every 5 minutes for 20 minutes"
-         },
          "hamstrung": {
             "display_name": "Hamstrung",
             "description": "Moving slower because of precisely aimed wounds."
@@ -6910,7 +7411,7 @@
          },
          "holiday_cheer": {
             "display_name": "Frostfeast Cheer",
-            "description": "Woo! This hearthling is enjoying the holidays with slighly increased Compassion and Speed! "
+            "description": "Woo! This hearthling is enjoying the holidays with slightly increased Compassion and Speed! "
          },
          "thorns": {
             "display_name": "Spiky Protection",
@@ -6938,11 +7439,15 @@
          },
          "shield_heavy": {
             "display_name": "Heavy Shield",
-            "description": "Defense and courage are increased but speed is slightly reduced."
+            "description": "Defense and courage are increased but speed is slightly reduced.<ul><li>🔄 Harder to handle, blocking attacks can be attempted every 6 seconds</li><li>🛡️ Successful block chances are high (80% - 100%), based on the level of the shield</li></ul>"
+         },
+         "shield_medium": {
+            "display_name": "Medium Shield",
+            "description": "Courage is slightly increased but speed is slightly reduced.<ul><li>🔄 Not so hard to handle, blocking attacks can be attempted every 4 seconds</li><li>🛡️ Successful block chances are average (30% - 60%), based on the level of the shield</li></ul>"
          },
          "shield_light": {
             "display_name": "Light Shield",
-            "description": "Courage is slightly increased."
+            "description": "Courage is slightly increased.<ul><li>🔄 Easy to handle, blocking attacks can be attempted every 2 seconds</li><li>🛡️ Successful block chances are low (15% - 25%), based on the level of the shield</li></ul>"
          },
          "weather": {
             "chilly_debuff": {
@@ -7228,7 +7733,7 @@
          },
          "divine_flavors": {
             "display_name": "Divine Flavors",
-            "description": "Deliciously inspired by the power of the Hearth! Muscle and Stamina are increased.<ul><li>This hearthling will heal 10% of their total health every 30 minutes</li><li>This buff greatly increases the time a hearthling has to be rescued if knocked unconscious</li></ul>"
+            "description": "The ambrosia provides perfect balance! Mind and Body are both increased.<ul><li>Crafting is twice as fast!</li></ul>"
          },
          "shepherd_crook_corn": {
             "display_name": "Shepherd's Corn Crook",
@@ -7713,10 +8218,6 @@
             "display_name": "Corrosive Acid",
             "description": "Their armor is being destroyed by highly corrosive acid! <ul><il>Reduces armor by 60%</li></ul>"
          },
-         "shield_medium": {
-            "display_name": "Medium Shield",
-            "description": "Courage is slightly increased but speed is slightly reduced."
-         },
          "sleeping": {
             "cover_none_buff": {
                "display_name": "No Covers",
@@ -7751,7 +8252,7 @@
          },
          "candledark_cheer": {
             "display_name": "Candledark Cheer",
-            "description": "Boo! This hearthling is enjoying the spooky season with slighly increased Willpower and Speed! "
+            "description": "Boo! This hearthling is enjoying the spooky season with slightly increased Willpower and Speed! "
          },
          "golem": {
             "golem_regeneration_buff": {
@@ -7808,6 +8309,48 @@
          "bluebell_buff": {
             "display_name": "Bluebell the Sheep",
             "description": "Once a pet for a goblin warchief, Bluebell boasts a higher constitution, speed and metabolism than the rest of the ovine-kin. "
+         },
+         "magical_flavors": {
+            "display_name": "Magical Flavors",
+            "description": "Deliciously inspired by the power of the Hearth! Spirit, Muscle and Courage are increased.<ul><li>This hearthling will heal 10% of their total health every 30 minutes</li><li>This buff greatly increases the time a hearthling has to be rescued if knocked unconscious</li></ul>"
+         },
+         "chromatic_fire_buff": {
+            "display_name": "Burning (Chromatic)",
+            "description": "Lit with chromatic fire! Taking damage every 6 minutes for up to 2 hours! Courage and Willpower are greatly reduced, Menace is slightly increased.<ul><li>🔥 This effect can stack up to 3 times, increasing its damage!</li><li>🌡️ Leaves a Bad Burn (Wound) after it expires</li></ul>"
+         },
+         "minor_on_fire_buff": {
+            "display_name": "Burning (Minor)",
+            "description": "Starting to burn! Taking a little damage every 5 minutes! Willpower and Courage are reduced, Menace is slightly increased.<ul><li>🔥 This effect can stack up to 3 times, and may grow into a worse effect!</li><li>🌡️ Will probably leave a Light Burn (Wound) after it expires</li><li>➕ Being Soaked Wet greatly reduces the damage received</li></ul>"
+         },
+         "on_fire_buff": {
+            "display_name": "Burning",
+            "description": "Set aflame! Taking some damage every 5 minutes! Willpower is nullified and Courage is quite reduced, Menace is somewhat increased.<ul><li>🔥 This effect can stack up to 3 times, and may grow into a much worse effect!</li><li>🌡️ Leaves a Light Burn (Wound) and might leave a Bad Burn (Wound) after it expires</li><li>➕ Being Soaked Wet somewhat reduces the damage received</li></ul>"
+         },
+         "major_on_fire_buff": {
+            "display_name": "Burning (Major)",
+            "description": "Completely engulfed in flames! Taking a lot of damage every 5 minutes! Willpower is nullified, Courage is greatly reduced, Menace is increased.<ul><li>🔥 This effect can stack up to 3 times, increasing its damage!</li><li>🌡️ Leaves a Bad Burn (Wound) after it expires</li><li>➕ Being Soaked Wet slightly reduces the damage received</li></ul>"
+         },
+         "offhand_buff": {
+            "display_name": "Using Off-hand Weapon",
+            "description": "Using a weapon on each hand!<ul><li>🔄 Very quick to handle, parrying attacks can be attempted every second</li><li>⚔️ Successful parry chances are low (5% - 30%), based on the level of the off-hand weapon</li></ul>"
+         },
+         "swept_off": {
+            "display_name": "Swept Off",
+            "description": "Knocked down on the spot!<ul><li>Armor is completely ignored</li><li>Can't move or act until they have recovered</li><li>Can only affect humanoid creatures</li><li>A creature can only be swept off once every 25 minutes</li></ul>"
+         },
+         "shocked": {
+            "display_name": "Shocked",
+            "description": "Absolutely stunned by a legendary shield bash! Courage and Healing Received are completely reduced."
+         },
+         "firstbloom": {
+            "merry_time": {
+               "display_name": "Spring Feasting",
+               "description": "A time of renew, of nurturing... And feasting! Diligence is greatly increased. Speed is increased.<ul><li>Experience gain is increased</li><li>Healing performed on this hearthling will be 50% more effective.</li></ul>"
+            }
+         },
+         "firstbloom_cheer": {
+            "description": "Yay! This hearthling is enjoying the springtime with slightly increased Curiosity and Speed! ",
+            "display_name": "Firstbloom Cheer"
          }
       },
       "loadouts": {
@@ -9433,36 +9976,46 @@
                "description": "Used by the Geomancer to craft Cricket Golems",
                "flavor": ""
             },
-            "frostfeast": {
-               "decorated_frostfeast_tree_recipe": {
-                  "recipe_name": "Decorated Frostfeast Pine",
-                  "description": "Get your town ready for the holidays with this traditional and beautiful decorated tree.",
-                  "flavor": "A symbol of hope, gratitude and warmth!"
+            "firstbloom": {
+               "daffodil_seeds_recipe": {
+                  "recipe_name": "Daffodil Seeds",
+                  "description": "Domesticate Daffodils and learn to grow them like the Rabbitkin of old.",
+                  "flavor": "Daffodils are very special and provide Mild, Robust and Peculiar herbs!"
                },
-               "decorated_frostfeast_tree_gold_recipe": {
-                  "recipe_name": "Frostfeast Golden Pine",
-                  "description": "Prepare a special decorated Frostfeast tree with golden themes.",
-                  "flavor": "Perfect for snuggling presents underneath."
+               "spring_colors_recipe": {
+                  "recipe_name": "Dyes (Firstbloom Spring Colors)",
+                  "description": "Mix up some herbs to create a collection of soft and sweet spring colors.",
+                  "flavor": "Used in many different Firstbloom recipes"
                },
-               "decorated_frostfeast_tree_silver_recipe": {
-                  "recipe_name": "Frostfeast Silver Pine",
-                  "description": "Prepare a special decorated Frostfeast tree with silver themes.",
-                  "flavor": "A symbol of hope, gratitude and warmth!"
-               },
-               "decorated_frostfeast_tree_snowy_recipe": {
-                  "recipe_name": "Frostfeast Snowy Pine",
-                  "description": "Prepare a special decorated Frostfeast tree with snowy themes.",
-                  "flavor": "A symbol of hope, gratitude and warmth!"
-               },
-               "wreath_recipe": {
-                  "recipe_name": "Frostfeast Pine Wreath",
-                  "description": "A very appreciated decoration for the holidays.",
+               "topiary_poyo_small_recipe": {
+                  "recipe_name": "Firstbloom Berry Poyo",
+                  "description": "A cute topiary of a small poyo.",
                   "flavor": ""
                },
-               "wreath_large_recipe": {
-                  "recipe_name": "Big Frostfeast Pine Wreath",
-                  "description": "For when you're feeling really festive.",
-                  "flavor": ""
+               "topiary_poyo_recipe": {
+                  "recipe_name": "Firstbloom Berry Poyo (Large)",
+                  "description": "An imposing topiary of a bigger, determined poyo!",
+                  "flavor": "Don't stare too long!"
+               },
+               "topiary_rabbit_folk_recipe": {
+                  "recipe_name": "Firstbloom Berry Rabbit-person",
+                  "description": "An intricate topiary depicting a member of the friendly Clan Amberstone.",
+                  "flavor": "They never looked so big!"
+               },
+               "decorative_egg_small_recipe": {
+                  "recipe_name": "Firstbloom Decorative Eggs (Small)",
+                  "description": "Paint a bunch of eggs with beautiful springy colors.",
+                  "flavor": "Painting eggs is a very traditional Firstbloom activity"
+               },
+               "decorative_egg_recipe": {
+                  "recipe_name": "Firstbloom Decorative Egg",
+                  "description": "Paint a large egg into a very neat decorative piece!",
+                  "flavor": "Painting eggs is a very traditional Firstbloom activity"
+               },
+               "decorative_egg_large_recipe": {
+                  "recipe_name": "Firstbloom Decorative Egg (Large)",
+                  "description": "Use a tonic to buff a large egg into an even bigger one and then paint it with soft springy colors!",
+                  "flavor": "Painting eggs is a very traditional Firstbloom activity"
                }
             },
             "candledark": {
@@ -9500,6 +10053,38 @@
                   "recipe_name": "Vial of Candledark Blessed Water",
                   "description": "This very special recipe blesses some water into the only treatment capable of bringing an enthralled hearthling back to the light.",
                   "flavor": "It affects the entire town when used"
+               }
+            },
+            "frostfeast": {
+               "decorated_frostfeast_tree_recipe": {
+                  "recipe_name": "Decorated Frostfeast Pine",
+                  "description": "Get your town ready for the holidays with this traditional and beautiful decorated tree.",
+                  "flavor": "A symbol of hope, gratitude and warmth!"
+               },
+               "decorated_frostfeast_tree_gold_recipe": {
+                  "recipe_name": "Frostfeast Golden Pine",
+                  "description": "Prepare a special decorated Frostfeast tree with golden themes.",
+                  "flavor": "Perfect for snuggling presents underneath."
+               },
+               "decorated_frostfeast_tree_silver_recipe": {
+                  "recipe_name": "Frostfeast Silver Pine",
+                  "description": "Prepare a special decorated Frostfeast tree with silver themes.",
+                  "flavor": "A symbol of hope, gratitude and warmth!"
+               },
+               "decorated_frostfeast_tree_snowy_recipe": {
+                  "recipe_name": "Frostfeast Snowy Pine",
+                  "description": "Prepare a special decorated Frostfeast tree with snowy themes.",
+                  "flavor": "A symbol of hope, gratitude and warmth!"
+               },
+               "wreath_recipe": {
+                  "recipe_name": "Frostfeast Pine Wreath",
+                  "description": "A very appreciated decoration for the holidays.",
+                  "flavor": ""
+               },
+               "wreath_large_recipe": {
+                  "recipe_name": "Big Frostfeast Pine Wreath",
+                  "description": "For when you're feeling really festive.",
+                  "flavor": ""
                }
             }
          },
@@ -10095,14 +10680,14 @@
                "flavor": "It's not easy to make all the urns the exact same size... So we came up with this idea!"
             },
             "input_cask_clay_small_recipe": {
-               "recipe_name": "Clay Small Supply Cask",
-               "description": "Priority storage for a reasonable amount of stuff.",
-               "flavor": "Can only hold certain fluids and dry goods"
+               "recipe_name": "Clay Small Cask",
+               "description": "Useful as a long-term, large storage solution.",
+               "flavor": "Can only hold certain drinks, fluids and dry goods"
             },
             "input_cask_clay_recipe": {
-               "recipe_name": "Clay Supply Cask",
-               "description": "Priority storage for a lot of stuff.",
-               "flavor": "Can only hold certain fluids and dry goods"
+               "recipe_name": "Clay Cask",
+               "description": "Useful as a long-term, bulk storage solution.",
+               "flavor": "Can only hold certain drinks, fluids and dry goods"
             },
             "serving_keg_clay_recipe": {
                "description": "A small serving container that the Brewer can fill with a drink.",
@@ -10115,24 +10700,24 @@
                "flavor": "Used by crafters to store recently finished products"
             },
             "amphora_recipe": {
-               "recipe_name": "Ceramic Amphora",
-               "description": "Stores a bunch of items of a certain kind.",
-               "flavor": "Can hold a diverse range of fluids and dry goods"
+               "recipe_name": "Ceramic Supply Amphora",
+               "description": "Priority storage for a decent amount of items, useful for supplying workshops.",
+               "flavor": "Can hold a diverse range of drinks, fluids and dry goods"
             },
             "amphora_red_recipe": {
-               "recipe_name": "Red Ceramic Amphora",
-               "description": "Stores a bunch of items of a certain kind.",
-               "flavor": "Can hold a diverse range of fluids and dry goods"
+               "recipe_name": "Red Ceramic Supply Amphora",
+               "description": "Priority storage for a decent amount of items, useful for supplying workshops.",
+               "flavor": "Can hold a diverse range of drinks, fluids and dry goods"
             },
             "amphora_blue_recipe": {
-               "recipe_name": "Blue Ceramic Amphora",
-               "description": "Stores a bunch of items of a certain kind.",
-               "flavor": "Can hold a diverse range of fluids and dry goods"
+               "recipe_name": "Blue Ceramic Supply Amphora",
+               "description": "Priority storage for a decent amount of items, useful for supplying workshops.",
+               "flavor": "Can hold a diverse range of drinks, fluids and dry goods"
             },
             "amphora_green_recipe": {
-               "recipe_name": "Green Ceramic Amphora",
-               "description": "Stores a bunch of items of a certain kind.",
-               "flavor": "Can hold a diverse range of fluids and dry goods"
+               "recipe_name": "Green Ceramic Supply Amphora",
+               "description": "Priority storage for a decent amount of items, useful for supplying workshops.",
+               "flavor": "Can hold a diverse range of drinks, fluids and dry goods"
             },
             "cold_storage_box_recipe": {
                "recipe_name": "Cold Storage Box",
@@ -10530,6 +11115,12 @@
                "description": "A strong and deadly headpiece for the Ascendant Star.",
                "flavor": "Made out of rock extracted straight from a meteorite... Or not"
             },
+            "giants_shield_recipe": {
+               "description": "Proudest shield in the Ascendancy. More than a solid defense, it can also be used to perform a shocking bashing attack!"
+            },
+            "rc_giants_shield_recipe": {
+               "description": "The desert's proudest shield. More than a solid defense, it can also be used to perform a bashing attack which might set enemies on fire!"
+            },
             "stone_market_stall_simple_recipe": {
                "recipe_name": "Stone Market Stand",
                "description": "This market stall can only be used by merchants of the first town level.",
@@ -10590,9 +11181,9 @@
                "flavor": "Bunnies love eating from those! Probably..."
             },
             "amberstone_tank_recipe": {
-               "recipe_name": "Amberstone Large Jar",
-               "description": "Holds some items of a certain kind.",
-               "flavor": "Can hold a diverse range of fluids and dry goods"
+               "recipe_name": "Amberstone Large Supply Jar",
+               "description": "Priority storage for a good amount of items, very useful for supplying workshops.",
+               "flavor": "Can hold a diverse range of drinks, fluids and dry goods"
             },
             "stone_safety_standard_recipe": {
                "recipe_name": "Stone Safety Standard",
@@ -10812,14 +11403,14 @@
                "flavor": "Could be called a casket but that would certainly cause some confusion..."
             },
             "input_cask_stone_small_recipe": {
-               "recipe_name": "Stone Small Supply Cask",
-               "description": "Priority storage for a small amount of things.",
-               "flavor": "Can only hold certain fluids and dry goods"
+               "recipe_name": "Stone Small Cask",
+               "description": "Useful as a long-term, large storage solution.",
+               "flavor": "Can only hold certain drinks, fluids and dry goods"
             },
             "input_cask_stone_recipe": {
-               "recipe_name": "Stone Supply Cask",
-               "description": "Priority storage for a good amount of stuff.",
-               "flavor": "Can only hold certain fluids and dry goods"
+               "recipe_name": "Stone Cask",
+               "description": "Useful as a long-term, bulk storage solution.",
+               "flavor": "Can only hold certain drinks, fluids and dry goods"
             },
             "serving_keg_stone_recipe": {
                "description": "A small serving container that the Brewer can fill with a drink.",
@@ -10832,14 +11423,14 @@
                "flavor": "Used by crafters to store recently finished products"
             },
             "tank_recipe": {
-               "recipe_name": "Stone Tank",
-               "description": "Holds some items of a certain kind.",
-               "flavor": "Can hold a diverse range of fluids and dry goods"
+               "recipe_name": "Stone Supply Tank",
+               "description": "Priority storage for a good amount of items, very useful for supplying workshops.",
+               "flavor": "Can hold a diverse range of drinks, fluids and dry goods"
             },
             "tank_small_recipe": {
-               "recipe_name": "Small Stone Tank",
-               "description": "Stores a small amount of items of a certain kind.",
-               "flavor": "Can hold a diverse range of fluids and dry goods"
+               "recipe_name": "Small Stone Supply Tank",
+               "description": "Priority storage for a small amount of items.",
+               "flavor": "Can hold a diverse range of drinks, fluids and dry goods"
             },
             "cold_storage_cabinet_recipe": {
                "recipe_name": "Cold Storage Cabinet",
@@ -11142,6 +11733,23 @@
                "recipe_name": "Tiny Chunk of Rock",
                "description": "Create a small block of rock that can be placed down like terrain.",
                "flavor": ""
+            },
+            "firstbloom": {
+               "decorative_tree_recipe": {
+                  "recipe_name": "Firstbloom Decorative Tree",
+                  "description": "The centerpiece of every Firstbloom party, a decorative tree made of sprouting twigs!",
+                  "flavor": "By the end of the season they should be green and beautiful!"
+               },
+               "feather_pot_short_recipe": {
+                  "recipe_name": "Firstbloom Feather Pot (Short)",
+                  "description": "A traditional and exquisite decoration composed of dyed feathers on a short pole.",
+                  "flavor": ""
+               },
+               "feather_pot_tall_recipe": {
+                  "recipe_name": "Firstbloom Feather Pot (Tall)",
+                  "description": "A traditional and exquisite decoration composed of dyed feathers on a long pole.",
+                  "flavor": ""
+               }
             },
             "frostfeast": {
                "present_small_recipe": {
@@ -11698,13 +12306,16 @@
                "description": "A small and sharp weapon for both offense and defense. Puts enemies out of balance.",
                "flavor": "'There are few things as useful that you can conceal as easily' -O.A.E Guidelines"
             },
+            "iron_pike_recipe": {
+               "description": "Sharp. Long. Pointy. Scary. Has a spinning attack that sometimes sweep targets off their feet."
+            },
             "steel_lance_recipe": {
                "recipe_name": "Steel Lance",
-               "description": "A long and strong Knight's polearm for harassing multiple enemies. Shakes their hearts!"
+               "description": "A long and strong Knight's polearm for harassing multiple enemies, has a spinning attack that might sweep them off their feet. Shakes their hearts!"
             },
             "silver_halberd_recipe": {
                "recipe_name": "Silver Halberd",
-               "description": "An intricate and powerful Knight's weapon. Shakes their hearts!",
+               "description": "An intricate and powerful Knight's weapon, has a spinning attack that sweeps targets off their feet. Promotes fear and desperation!",
                "flavor": ""
             },
             "silver_short_sword_recipe": {
@@ -12527,36 +13138,31 @@
                "description": "A divine dessert, deeply satisfying and fortifying at the same time.",
                "flavor": "The flavors are magical. Literally"
             },
-            "frostfeast": {
-               "seasonal_fruits_recipe": {
-                  "recipe_name": "Seasonal Frostfeast Fruits",
-                  "description": "What a juicy and refreshing platter of fruits!",
-                  "flavor": "Frostfeast meals must be placed down before consumed"
+            "firstbloom": {
+               "baklava_recipe": {
+                  "recipe_name": "Firstbloom Baklava",
+                  "description": "Bake a tray full of delicious, bite-sized pastries filled with nuts and coated in sweetness.",
+                  "flavor": "Firstbloom meals must be placed down before consumed"
                },
-               "ginger_cookies_recipe": {
-                  "recipe_name": "Frostfeast Cookies",
-                  "description": "Cute and tasty little gingerbread treats.",
-                  "flavor": "Frostfeast meals must be placed down before consumed"
+               "deviled_eggs_recipe": {
+                  "recipe_name": "Firstbloom Deviled Eggs",
+                  "description": "Prepare an appetizing portion of boiled egg halves covered with tasty mayo, roe and spices!",
+                  "flavor": "Firstbloom meals must be placed down before consumed"
                },
-               "turkey_recipe": {
-                  "recipe_name": "Roasted Froastfeast Turkey",
-                  "description": "Hearty and flavorful! A very traditional meal for large groups.",
-                  "flavor": "Frostfeast meals must be placed down before consumed"
+               "deviled_eggs_whipped_recipe": {
+                  "recipe_name": "Firstbloom Deviled Eggs (Whipped)",
+                  "description": "Prepare an appetizing portion of boiled egg halves covered with delicious whipped cream, jam and spices! This is a vegetarian meal.",
+                  "flavor": "Firstbloom meals must be placed down before consumed"
                },
-               "ham_recipe": {
-                  "recipe_name": "Roasted Frostfeast Ham",
-                  "description": "Very tender and succulent pork meat, seasoned with spices and fruits.",
-                  "flavor": "Frostfeast meals must be placed down before consumed"
+               "lamb_stew_recipe": {
+                  "recipe_name": "Firstbloom Lamb Stew",
+                  "description": "A warm and invigorating meal for a whole community, very traditional on early spring.",
+                  "flavor": "Firstbloom meals must be placed down before consumed"
                },
-               "herbalist_candy_staff_recipe": {
-                  "recipe_name": "Frostfeast Herbalist Candy Cane",
-                  "description": "Provides Diligence, Speed and crafting speed to Herbalists. Not to mention a bit of sweetness...",
-                  "flavor": "What it doesn't provide is elemintal damage, though"
-               },
-               "pudding_recipe": {
-                  "recipe_name": "Frostfeast Pudding",
-                  "description": "Delicious and bold dessert made from a very sweet, fruity and nutty batter. A winter classic!",
-                  "flavor": "Frostfeast meals must be placed down before consumed"
+               "sweet_loaf_recipe": {
+                  "recipe_name": "Firstbloom Sweet Loaf",
+                  "description": "A colorful and sweet bread baked with dried fruits, coated with sugar and decorated with painted Firstbloom eggs!",
+                  "flavor": "Firstbloom meals must be placed down before consumed"
                }
             },
             "candledark": {
@@ -12606,6 +13212,38 @@
                   "flavor": "Candledark meals must be placed down before consumed"
                }
             },
+            "frostfeast": {
+               "seasonal_fruits_recipe": {
+                  "recipe_name": "Seasonal Frostfeast Fruits",
+                  "description": "What a juicy and refreshing platter of fruits!",
+                  "flavor": "Frostfeast meals must be placed down before consumed"
+               },
+               "ginger_cookies_recipe": {
+                  "recipe_name": "Frostfeast Cookies",
+                  "description": "Cute and tasty little gingerbread treats.",
+                  "flavor": "Frostfeast meals must be placed down before consumed"
+               },
+               "turkey_recipe": {
+                  "recipe_name": "Roasted Froastfeast Turkey",
+                  "description": "Hearty and flavorful! A very traditional meal for large groups.",
+                  "flavor": "Frostfeast meals must be placed down before consumed"
+               },
+               "ham_recipe": {
+                  "recipe_name": "Roasted Frostfeast Ham",
+                  "description": "Very tender and succulent pork meat, seasoned with spices and fruits.",
+                  "flavor": "Frostfeast meals must be placed down before consumed"
+               },
+               "herbalist_candy_staff_recipe": {
+                  "recipe_name": "Frostfeast Herbalist Candy Cane",
+                  "description": "Provides Diligence, Speed and crafting speed to Herbalists. Not to mention a bit of sweetness...",
+                  "flavor": "What it doesn't provide is elemintal damage, though"
+               },
+               "pudding_recipe": {
+                  "recipe_name": "Frostfeast Pudding",
+                  "description": "Delicious and bold dessert made from a very sweet, fruity and nutty batter. A winter classic!",
+                  "flavor": "Frostfeast meals must be placed down before consumed"
+               }
+            },
             "veggie_stew_recipe": {
                "description": "Warm and savory stock fortified with hearty veggies!"
             }
@@ -12628,8 +13266,8 @@
                "perk_000_description": "The Cook is now able to try their hands at more sophisticated dishes and to create a campfire pot to guide others into making delicious pottage."
             },
             "level_4_data": {
-               "ornate_perk_name": "Healthier Diets",
-               "ornate_perk_description": "The Cook has mastered the abilities necessary to create more diverse and specific foods, particularly specific rations for different animals."
+               "ornate_perk_name": "Refined Palate",
+               "ornate_perk_description": "The Cook has mastered the abilities necessary to create more diverse and specific foods utilizing new and better kitchen appliances they can now craft with firebricks."
             },
             "level_6_data": {
                "mastery_name": "Master Chef",
@@ -12870,14 +13508,14 @@
                "flavor": "Hopefully they won't make much of a mess..."
             },
             "input_cask_wood_recipe": {
-               "recipe_name": "Wooden Supply Cask",
-               "description": "Priority storage for a lot of things.",
-               "flavor": "Can only hold certain fluids and dry goods"
+               "recipe_name": "Wooden Cask",
+               "description": "Useful as a long-term, bulk storage solution.",
+               "flavor": "Can only hold certain drinks, fluids and dry goods"
             },
             "input_cask_wood_small_recipe": {
-               "recipe_name": "Wooden Small Supply Cask",
-               "description": "Priority storage for some items.",
-               "flavor": "Can only hold certain fluids and dry goods"
+               "recipe_name": "Wooden Small Cask",
+               "description": "Useful as a long-term, large storage solution.",
+               "flavor": "Can only hold certain drinks, fluids and dry goods"
             },
             "serving_keg_wood_recipe": {
                "description": "A small serving container that the Brewer can fill with a drink.",
@@ -12890,14 +13528,14 @@
                "flavor": "Used by crafters to store recently finished products"
             },
             "barrel_recipe": {
-               "recipe_name": "Wooden Barrel",
-               "description": "Stores some stuff of a certain kind.",
-               "flavor": "Can hold a diverse range of fluids and dry goods"
+               "recipe_name": "Wooden Supply Barrel",
+               "description": "Priority storage for a good amount of items, very useful for supplying workshops.",
+               "flavor": "Can hold a diverse range of drinks, fluids and dry goods"
             },
             "barrel_small_recipe": {
-               "recipe_name": "Small Wooden Barrel",
-               "description": "Stores a small amount of items of a certain kind.",
-               "flavor": "Can hold a diverse range of fluids and dry goods"
+               "recipe_name": "Small Wooden Supply Barrel",
+               "description": "Priority storage for a small amount of items.",
+               "flavor": "Can hold a diverse range of drinks, fluids and dry goods"
             },
             "wooden_water_well_recipe": {
                "recipe_name": "Wooden Water Well Parts",
@@ -13635,6 +14273,63 @@
                "description": "A handy ladder that can be extended or retracted at will, providing controlled access to different terrain or construction levels.",
                "flavor": "You'll learn its ropes soon enough"
             },
+            "firstbloom": {
+               "crafter_holiday_hat_recipe": {
+                  "recipe_name": "Crafter Spring Hat",
+                  "description": "A nice and flowery hat for enjoying the spring festivities!",
+                  "flavor": "The ACE team wishes you a happy springtime!"
+               },
+               "planter_basket_small_recipe": {
+                  "recipe_name": "Firstbloom Small Planter",
+                  "description": "A nice little basket, woven in lapine style, to be used as a planter.",
+                  "flavor": "Comes in two variants: with or without handle!"
+               },
+               "planter_basket_decorated_small_recipe": {
+                  "recipe_name": "Firstbloom Small Planter (Decorated)",
+                  "description": "A small basket planter decorated with colorful ribbons and a neat bow.",
+                  "flavor": "Includes a lot of random springy color variations!"
+               },
+               "planter_basket_wall_recipe": {
+                  "recipe_name": "Firstbloom Wall Planter",
+                  "description": "A little basket hanging from a shaft, woven in lapine style, to be used as a planter.",
+                  "flavor": ""
+               },
+               "planter_basket_decorated_wall_recipe": {
+                  "recipe_name": "Firstbloom Wall Planter (Decorated)",
+                  "description": "A wall-hanging basket planter decorated with colorful ribbons and a small bow.",
+                  "flavor": "Includes a lot of random springy color variations!"
+               },
+               "planter_basket_window_recipe": {
+                  "recipe_name": "Firstbloom Window Planter",
+                  "description": "A nice, long basket, woven in lapine style, to be used as a window planter.",
+                  "flavor": ""
+               },
+               "planter_basket_decorated_window_recipe": {
+                  "recipe_name": "Firstbloom Window Planter (Decorated)",
+                  "description": "A long basket window planter decorated with colorful ribbons and a pretty bow.",
+                  "flavor": "Includes a lot of random springy color variations!"
+               },
+               "planter_basket_large_recipe": {
+                  "recipe_name": "Firstbloom Large Planter",
+                  "description": "A sizeable basket, woven in lapine style, to be used as a planter.",
+                  "flavor": "Comes in two variants: with or without handle!"
+               },
+               "planter_basket_decorated_large_recipe": {
+                  "recipe_name": "Firstbloom Large Planter (Decorated)",
+                  "description": "A large basket planter decorated with colorful ribbons and a great bow.",
+                  "flavor": "Includes a lot of random springy color variations!"
+               },
+               "rabbit_hat_field_work_outfit_recipe": {
+                  "recipe_name": "Firstbloom Rabbit-folk Costume Hat",
+                  "description": "A very large and comfortable costume piece imitating a rabbit. Comes in springy colors!",
+                  "flavor": "Now you can finally have an entire town of Clan Amberstone citizens! Sort of..."
+               },
+               "rabbit_costume_field_work_outfit_recipe": {
+                  "recipe_name": "Firstbloom Rabbit-folk Costume",
+                  "description": "A chonky and fluffy rabbit costume. Comes in springy colors!",
+                  "flavor": "Includes extremely cute mitts and paw beans under the feet"
+               }
+            },
             "frostfeast": {
                "worker_holiday_hat_recipe": {
                   "recipe_name": "Holiday Cheer Cap",
@@ -13947,21 +14642,21 @@
                "description": "Store a large amount of thatching material for later use.",
                "flavor": ""
             },
-            "frostfeast": {
-               "goat_recipe": {
-                  "recipe_name": "Frostfeast Goat",
-                  "description": "A traditional Frostfeast decoration for humble abodes and peasant houses.",
+            "firstbloom": {
+               "nest_bed_pet_recipe": {
+                  "recipe_name": "Firstbloom Pet Nest Bed",
+                  "description": "Looks the part, but it is actually a very nice and comfortable bed for your pets!",
+                  "flavor": "Make it homely"
+               },
+               "basket_decorative_eggs_recipe": {
+                  "recipe_name": "Firstbloom Egg Basket (Large)",
+                  "description": "A collection of beautifully hand-painted eggs on a neatly woven basket.",
                   "flavor": ""
                },
-               "goat_small_recipe": {
-                  "recipe_name": "Small Frostfeast Goat",
-                  "description": "A tiny version of the traditional Frostfeast Goat, made with a bit of thatching and string.",
-                  "flavor": "Loved as a toy or as a decoration"
-               },
-               "goat_large_recipe": {
-                  "recipe_name": "Large Frostfeast Goat",
-                  "description": "A big and very traditional decoration made with lots of dry straw and clay.",
-                  "flavor": "So pretty, so... Flammable"
+               "basket_decorative_eggs_small_recipe": {
+                  "recipe_name": "Firstbloom Egg Basket (Small)",
+                  "description": "An assortment of well painted small eggs on a cute, tiny basket.",
+                  "flavor": ""
                }
             },
             "candledark": {
@@ -13989,6 +14684,23 @@
                   "recipe_name": "Candledark Decorative Broom (Wall)",
                   "description": "A simple, wicked broom to be hanged on a wall!",
                   "flavor": "The latest solution on parking for witches!"
+               }
+            },
+            "frostfeast": {
+               "goat_recipe": {
+                  "recipe_name": "Frostfeast Goat",
+                  "description": "A traditional Frostfeast decoration for humble abodes and peasant houses.",
+                  "flavor": ""
+               },
+               "goat_small_recipe": {
+                  "recipe_name": "Small Frostfeast Goat",
+                  "description": "A tiny version of the traditional Frostfeast Goat, made with a bit of thatching and string.",
+                  "flavor": "Loved as a toy or as a decoration"
+               },
+               "goat_large_recipe": {
+                  "recipe_name": "Large Frostfeast Goat",
+                  "description": "A big and very traditional decoration made with lots of dry straw and clay.",
+                  "flavor": "So pretty, so... Flammable"
                }
             }
          },
@@ -14174,6 +14886,12 @@
                "display_name": "Frostfeast Crafter Wooly Scarf",
                "description": "Classic. Can only be worn by crafters. Protects from freezing weather and grants a festive boon."
             }
+         },
+         "firstbloom": {
+            "spring_hat": {
+               "display_name": "Crafter Spring Hat",
+               "description": "Bringing some flowery fragrance into your workshop!"
+            }
          }
       },
       "combat": {
@@ -14210,6 +14928,16 @@
             "scarecrow_hat": {
                "display_name": "Candledark Scarecrow Hat",
                "description": "Can be used by field workers for some extra benefits and protection from warm weather."
+            }
+         },
+         "firstbloom": {
+            "rabbit_costume": {
+               "display_name": "Firstbloom Rabbit-folk Costume",
+               "description": "Awww, look at the little paw beans under the feet!"
+            },
+            "rabbit_hat": {
+               "display_name": "Firstbloom Rabbit-folk Costume Hat",
+               "description": "Only actual rabbit-folk might be able to move the ears, though..."
             }
          }
       },
@@ -14456,6 +15184,11 @@
                "description": "Sweet and sticky mash of crushed date fruits. Within a Wine Cask it can be turned into date wine!",
                "flavor": ""
             },
+            "syrup_date_recipe": {
+               "recipe_name": "Date Syrup (x2)",
+               "description": "Also known as Date Honey, it is a sweet and fruity syrup that can be used as a sweetener in cooking or brewing recipes.",
+               "flavor": "'Desert Dessert!' -Grandma Chenba, the Itinerant Cooking Matriarch of the Desert"
+            },
             "must_pear_recipe": {
                "recipe_name": "Bucket of Pear Must",
                "description": "A juicy and sweet puree of pears. Within a Wine Cask it can be turned into perry!",
@@ -14624,7 +15357,7 @@
             "almond_milk_recipe": {
                "recipe_name": "Bucket of Almond Milk",
                "description": "Almond Milk is a flavorful yet thinner alternative for dairy milk. Can be drank raw or used as 'Any Milk' in recipes!",
-               "flavor": "Dates are a great sweetener for almond milk"
+               "flavor": "You shouldn't be able to make cheese with it... But here you can!"
             },
             "clarea_water_recipe": {
                "recipe_name": "Bucket of Clarea of Water",
@@ -14776,6 +15509,50 @@
                "description": "Provides 28 cups of the special Northern Alliance's brew. It needs to be placed down before being used.",
                "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
             },
+            "brandy_fruit_recipe": {
+               "recipe_name": "Keg of Fruit Brandy",
+               "description": "A flavorful drink made by distilling fruit wine. Packs the punch of spirits but with the serenity of wines.",
+               "flavor": "A favorite among the aristocracy and those dressed their best, prepared to go down as gentlemen"
+            },
+            "brandy_fruit_serving_keg_recipe": {
+               "recipe_name": "Serving Keg of Fruit Brandy",
+               "description": "Provides 24 cups of brandy made from fruit wine. It needs to be placed down before being used.",
+               "flavor": "Tapped drinks prevent waste, thus dispensing more servings"
+            },
+            "firstbloom": {
+               "fruit_punch_recipe": {
+                  "recipe_name": "Firstbloom Fruit Punch",
+                  "description": "An exciting and delicious mixture of fruits, juice, spices and strong liquor!",
+                  "flavor": "Firstbloom beverages must be placed down before consumed"
+               },
+               "spring_tea_recipe": {
+                  "recipe_name": "Firstbloom Spring Tea",
+                  "description": "Another specialty recipe from Clan Amberstone, a refreshing tea traditionally made from the first harvest of tea leaves.",
+                  "flavor": "Firstbloom beverages must be placed down before consumed"
+               }
+            },
+            "candledark": {
+               "coffee_pumpkin_spice_recipe": {
+                  "recipe_name": "Candledark Pumpkin Spice Coffee",
+                  "description": "A spicy and bold flavor added to an embodied coffee, delicious!",
+                  "flavor": "Candledark beverages must be placed down before consumed"
+               },
+               "hot_cider_recipe": {
+                  "recipe_name": "Hot Candledark Cider",
+                  "description": "Especially prepared cider with seasonal secrets. Must be served hot and in carved apples for the best results!",
+                  "flavor": "Candledark beverages must be placed down before consumed"
+               },
+               "tea_cider_recipe": {
+                  "recipe_name": "Candledark Apple Tea",
+                  "description": "Warm and flavorful tea, perfect for an evening on the porch watching the last autumn rains...",
+                  "flavor": "Candledark beverages must be placed down before consumed"
+               },
+               "bloody_mer_recipe": {
+                  "recipe_name": "Candledark Bloody Mer",
+                  "description": "A delicious and refreshing alcoholic drink. Legend has it was created by the liaison of the underworld, Mer Bloodyhands...",
+                  "flavor": "Candledark beverages must be placed down before consumed"
+               }
+            },
             "frostfeast": {
                "egg_milk_punch_recipe": {
                   "recipe_name": "Frostfeast Egg Milk Punch",
@@ -14801,28 +15578,6 @@
                   "recipe_name": "Frostfeast Must",
                   "description": "An old and traditional apothecary beverage, prepared from malt but soft and refreshing. Must be placed down before being consumed.",
                   "flavor": "The only drink to outsell Sweet Potato juice in the Northern Alliance during Frostfeast!"
-               }
-            },
-            "candledark": {
-               "coffee_pumpkin_spice_recipe": {
-                  "recipe_name": "Candledark Pumpkin Spice Coffee",
-                  "description": "A spicy and bold flavor added to an embodied coffee, delicious!",
-                  "flavor": "Candledark beverages must be placed down before consumed"
-               },
-               "hot_cider_recipe": {
-                  "recipe_name": "Hot Candledark Cider",
-                  "description": "Especially prepared cider with seasonal secrets. Must be served hot and in carved apples for the best results!",
-                  "flavor": "Candledark beverages must be placed down before consumed"
-               },
-               "tea_cider_recipe": {
-                  "recipe_name": "Candledark Apple Tea",
-                  "description": "Warm and flavorful tea, perfect for an evening on the porch watching the last autumn rains...",
-                  "flavor": "Candledark beverages must be placed down before consumed"
-               },
-               "bloody_mer_recipe": {
-                  "recipe_name": "Candledark Bloody Mer",
-                  "description": "A delicious and refreshing alcoholic drink. Legend has it was created by the liaison of the underworld, Mer Bloodyhands...",
-                  "flavor": "Candledark beverages must be placed down before consumed"
                }
             }
          },
@@ -15102,8 +15857,9 @@
       },
       "common": {
          "recipes": {
-            "frostfeast_name": "Frostfeast",
+            "firstbloom_name": "Firstbloom",
             "candledark_name": "Candledark",
+            "frostfeast_name": "Frostfeast",
             "removed_recipe": {
                "recipe_name": "Removed Recipe",
                "description": "This recipe has been removed or altered by ACE; Please cancel it",
@@ -15453,6 +16209,10 @@
             "wax_plant_purple_seeds": {
                "display_name": "Purple Wax Plant Seeds",
                "description": "Learn to cultivate purple wax plants in Herbalist planters."
+            },
+            "daffodil_seeds": {
+               "display_name": "Daffodil Seeds",
+               "description": "Learn to grow decorative fields or cultivate daffodils in Herbalist planters."
             }
          },
          "fertilizer": {
@@ -15717,6 +16477,12 @@
             "vampire_salve": {
                "display_name": "Garlic & Nightshade Salve",
                "description": "This potent paste is able to stop the cursed spread of a Vampire's bite before its victim is enthralled."
+            }
+         },
+         "firstbloom": {
+            "firstbloom_recipe": {
+               "display_name": "Firstbloom Crafting Recipe",
+               "description": "Read this to learn how to craft special Firstbloom stuff!"
             }
          }
       },
@@ -17242,6 +18008,28 @@
             },
             "display_name": "Grassland",
             "description": "Let grass grow for a reliable source of thatching material"
+         },
+         "daffodil_crop": {
+            "display_name": "Daffodil Flower",
+            "description": "Decorative only! Cultivate them on Herbalist Planters for mild, robust and peculiar herbs.",
+            "growth_stage": {
+               "000": {
+                  "name": "Daffodil Seedlings",
+                  "description": "Up it goes!"
+               },
+               "001": {
+                  "name": "Daffodil Sprouts",
+                  "description": "Yearns to be pretty."
+               },
+               "002": {
+                  "name": "Daffodil Buds",
+                  "description": "It's starting to bud! Almost there!"
+               },
+               "003": {
+                  "name": "Daffodils",
+                  "description": "Decorative, will not be harvested."
+               }
+            }
          }
       },
       "decorations": {
@@ -17330,6 +18118,40 @@
          "planter_marble_wall": {
             "display_name": "Wall-Mounted Marble Planter",
             "description": "The Herbalist can cultivate renewable herbs in it."
+         },
+         "firstbloom": {
+            "planter_basket_window": {
+               "display_name": "Firstbloom Window Planter",
+               "description": "This basket can be used to cultivate two lovely window herbs."
+            },
+            "planter_basket_wall": {
+               "display_name": "Firstbloom Wall Planter",
+               "description": "A nice wall-hanging basket used to cultivate a single herb."
+            },
+            "planter_basket_small": {
+               "display_name": "Firstbloom Small Planter",
+               "description": "A cute-looking basket that can be used to cultivate a single herb."
+            },
+            "planter_basket_large": {
+               "display_name": "Firstbloom Large Planter",
+               "description": "This large basket has room for four herbs to be cultivated."
+            },
+            "planter_basket_decorated_window": {
+               "display_name": "Firstbloom Window Planter (Decorated)",
+               "description": "A much nicer window decoration and planter for cultivating herbs."
+            },
+            "planter_basket_decorated_wall": {
+               "display_name": "Firstbloom Wall Planter (Decorated)",
+               "description": "Cultivate a single herb... In style!"
+            },
+            "planter_basket_decorated_small": {
+               "display_name": "Firstbloom Small Planter (Decorated)",
+               "description": "This neat and fancy basket can be used to cultivate a single herb."
+            },
+            "planter_basket_decorated_large": {
+               "display_name": "Firstbloom Large Planter (Decorated)",
+               "description": "This very decorated basket is great for cultivating herbs... And looking good!"
+            }
          }
       },
       "resources": {
@@ -17531,6 +18353,21 @@
             "hearthbud": {
                "display_name": "Hearthbud Blossom",
                "description": "The bulby petals of a Hearthbud flower. Useful as a peculiar or zesty herb."
+            },
+            "daffodil": {
+               "display_name": "Daffodil Flowers",
+               "yellow": {
+                  "display_name": "Daffodil Flower (Yellow)",
+                  "description": "Gentle and springy. Can be used as a mild herb."
+               },
+               "white": {
+                  "display_name": "Daffodil Flower (White)",
+                  "description": "Delicate and sweet. Can be used as a peculiar herb."
+               },
+               "orange": {
+                  "display_name": "Daffodil Flower (Orange)",
+                  "description": "Bright and warm. Can be used as a robust herb."
+               }
             }
          },
          "stone": {
@@ -17998,6 +18835,12 @@
          "ammunition_common": {
             "display_name": "Common Turret Ammunition",
             "description": "Simple bolts with hard metal tips used to build or reload combat turrets."
+         },
+         "dyes": {
+            "firstbloom_spring_colors": {
+               "display_name": "Dyes (Firstbloom Spring Colors)",
+               "description": "A collection of soft and sweet springy tones to be used in crafting Firstbloom items!"
+            }
          }
       },
       "trees": {
@@ -19333,6 +20176,12 @@
             "description": "A memorial for a fallen companion",
             "custom_name": "Ashes of [str(self.stonehearth:unit_info.custom_data.pet_name)]",
             "custom_description": "[str(self.stonehearth:unit_info.custom_data.owner_name)] shall always remember their beloved [str(self.stonehearth:unit_info.custom_data.species_name)]"
+         },
+         "firstbloom": {
+            "nest_bed_pet": {
+               "display_name": "Firstbloom Pet Nest Bed",
+               "description": "Pets can also appreciate a more rustic style!"
+            }
          }
       },
       "recipes": {
@@ -20257,6 +21106,10 @@
             "turnip_basket": {
                "description": "Juicy and exciting! Useful as a hearty vegetable."
             }
+         },
+         "daffodil_plant": {
+            "display_name": "Daffodil",
+            "description": "Can be harvested for mild and sometimes robust or peculiar herbs."
          }
       },
       "decoration": {
@@ -21096,7 +21949,7 @@
                "description": "Don't place it near the door or your guests might find it upsetting!"
             },
             "decorative_broom_wall": {
-               "display_name": "Candledark Wall-hanging Decorative Broom",
+               "display_name": "Candledark Wall-Hanging Decorative Broom",
                "description": "The latest solution in parking for witches!"
             },
             "literary_skull": {
@@ -21183,6 +22036,52 @@
             "display_name": "Pewter Chandelier",
             "description": "An exquisite piece to complete an exquisite room.",
             "end_description": "A fine ornament to behold. Click on the chain to retract it."
+         },
+         "firstbloom": {
+            "basket_decorative_eggs": {
+               "display_name": "Firstbloom Egg Basket (Large)",
+               "description": "Time to spread the Firstbloom cheer!"
+            },
+            "basket_decorative_eggs_small": {
+               "display_name": "Firstbloom Egg Basket (Small)",
+               "description": "It's nice to have a place to put all these painted eggs."
+            },
+            "decorative_tree": {
+               "display_name": "Firstbloom Decorative Tree",
+               "description": "Beautiful centerpiece of any proper Firstbloom celebration."
+            },
+            "feather_pot_short": {
+               "display_name": "Firstbloom Feather Pot (Short)",
+               "description": "It's like having colorful flowers that do not need watering!"
+            },
+            "feather_pot_tall": {
+               "display_name": "Firstbloom Feather Pot (Tall)",
+               "description": "Very nice decoration for busy streets or near entrances!"
+            },
+            "decorative_egg": {
+               "display_name": "Firstbloom Decorative Egg",
+               "description": "Oh! You found it! Well, you actually placed it."
+            },
+            "decorative_egg_large": {
+               "display_name": "Firstbloom Decorative Egg (Large)",
+               "description": "It's so big and so beautiful!"
+            },
+            "decorative_egg_small": {
+               "display_name": "Firstbloom Decorative Eggs (Small)",
+               "description": "Look at all these colors!"
+            },
+            "topiary_poyo": {
+               "display_name": "Firstbloom Berry Poyo (Large)",
+               "description": "The intimidation lies on the brows."
+            },
+            "topiary_poyo_small": {
+               "display_name": "Firstbloom Berry Poyo",
+               "description": "Still can't fly but is now very sweet."
+            },
+            "topiary_rabbit_folk": {
+               "display_name": "Firstbloom Berry Rabbit-person",
+               "description": "A proud member of Clan Amberrystone!"
+            }
          }
       },
       "pets": {
@@ -21548,7 +22447,7 @@
             "species": "duck",
             "wild": {
                "display_name": "i18n(stonehearth_ace:entities.critters.duck.display_name)",
-               "description": "i18n(stonehearth_ace:entities.critters.duck.display_name)"
+               "description": "i18n(stonehearth_ace:entities.critters.duck.description)"
             },
             "wild_young": {
                "display_name": "i18n(stonehearth_ace:entities.critters.duck.young.display_name)",
@@ -22361,7 +23260,7 @@
             },
             "hearth_ambrosia_serving": {
                "display_name": "Serving of Hearthbud Ambrosia",
-               "description": "Full of magical flavors!"
+               "description": "Full of energy!"
             }
          },
          "frostfeast": {
@@ -23125,6 +24024,62 @@
             "rotten": {
                "display_name": "Rotten Mutton",
                "description": "Probably unsafe for consumption..."
+            }
+         },
+         "syrup_date": {
+            "syrup_date": {
+               "display_name": "Date Syrup",
+               "description": "Yummy and fruity! Can be eaten or used in cooking as a sweetener."
+            },
+            "syrup_date_serving": {
+               "display_name": "Serving of Date Syrup"
+            }
+         },
+         "firstbloom": {
+            "baklava": {
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "display_name": "Firstbloom Baklava",
+               "description": "Try to not eat them all at once!",
+               "serving": {
+                  "display_name": "Serving of Firstbloom Baklava",
+                  "description": "They're so tasty!"
+               }
+            },
+            "deviled_eggs": {
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "display_name": "Firstbloom Deviled Eggs",
+               "description": "Better served fresh.",
+               "serving": {
+                  "display_name": "Serving of Firstbloom Deviled Eggs",
+                  "description": "Don't let it fall apart!"
+               }
+            },
+            "deviled_eggs_whipped": {
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "display_name": "Firstbloom Deviled Eggs (Whipped)",
+               "description": "A nice, vegetarian alternative to the original recipe!",
+               "serving": {
+                  "display_name": "Serving of Firstbloom Deviled Eggs (Whipped)",
+                  "description": "Hold the cream!"
+               }
+            },
+            "lamb_stew": {
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "display_name": "Firstbloom Lamb Stew",
+               "description": "Very warm, filling and especially delicious!",
+               "serving": {
+                  "display_name": "Bowl of Firstbloom Lamb Stew",
+                  "description": "Warm and filling, perfect for a late snow day!"
+               }
+            },
+            "sweet_loaf": {
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "display_name": "Firstbloom Sweet Loaf",
+               "description": "The perfect dessert for those that love painting eggs and eating tasty things!",
+               "serving": {
+                  "display_name": "Slice of Firstbloom Sweet Loaf",
+                  "description": "Fluffy and sweet!"
+               }
             }
          }
       },
@@ -24689,6 +25644,48 @@
          "fireworks_white": {
             "display_name": "Fireworks (White Wonder)",
             "description": "Contains ten white fireworks. Set them off to let everyone know how happy you are!"
+         },
+         "firstbloom": {
+            "hunt_egg": {
+               "display_name": "Firstbloom Egg",
+               "description": "Gotta catch 'em all! Collect Firstbloom Eggs to score points on the ongoing egg hunt!",
+               "basket": {
+                  "display_name": "Suspicious Overturned Basket",
+                  "description": "Hmmm... Who would leave a basket like that?"
+               },
+               "bark": {
+                  "display_name": "Suspicious Broken Bark",
+                  "description": "Hm? This bark looks like it was placed here... On top of something?"
+               },
+               "buried": {
+                  "display_name": "Suspicious Dirt Spot",
+                  "description": "Someone has moved the dirt on this spot, and recently..."
+               },
+               "planter_pot": {
+                  "display_name": "Suspicious Flipped Planter Pot",
+                  "description": "Huh! Who would drop a planter pot like this? Is there something inside?"
+               },
+               "sack": {
+                  "display_name": "Suspicious Ingredient Sack",
+                  "description": "Did it just fall over or did someone tip it? Looks half-empty..."
+               },
+               "stone": {
+                  "display_name": "Suspicious Boulder",
+                  "description": "Hey! This seems to have been recently dragged..."
+               },
+               "urn": {
+                  "display_name": "Suspicious Flipped Urn",
+                  "description": "Looks like it could easily flip over because it's empty... Or is it?"
+               },
+               "leaves": {
+                  "display_name": "Suspicious Pile of Leaves",
+                  "description": "Something is off, why would anyone pile these leaves so neatly?"
+               },
+               "mug": {
+                  "display_name": "Suspicious Upturned Mug",
+                  "description": "Huh? Did someone leave their mug like that?"
+               }
+            }
          }
       },
       "aquatic": {
@@ -25141,60 +26138,60 @@
             "description": "Hearthlings can put kibble in this creepy bowl for their pets to eat."
          },
          "input_cask_wood": {
-            "display_name": "Wooden Supply Cask",
-            "description": "Priority storage for lots of itmes."
+            "display_name": "Wooden Cask",
+            "description": "Long-term bulk storage for drinks, fluids or certain dry goods."
          },
          "input_cask_clay": {
-            "display_name": "Clay Supply Cask",
-            "description": "Priority storage for lots of items."
+            "display_name": "Clay Cask",
+            "description": "Long-term bulk storage for drinks, fluids or certain dry goods."
          },
          "input_cask_stone": {
-            "display_name": "Stone Supply Cask",
-            "description": "Priority storage for lots of items."
+            "display_name": "Stone Cask",
+            "description": "Long-term bulk storage for drinks, fluids or certain dry goods."
          },
          "input_cask_wood_small": {
-            "display_name": "Wooden Small Supply Cask",
-            "description": "Priority storage for some items."
+            "display_name": "Wooden Small Cask",
+            "description": "Long-term storage for lots of drinks, fluids or certain dry goods."
          },
          "input_cask_clay_small": {
-            "display_name": "Clay Small Supply Cask",
-            "description": "Priority storage for some items."
+            "display_name": "Clay Small Cask",
+            "description": "Long-term storage for lots of drinks, fluids or certain dry goods."
          },
          "input_cask_stone_small": {
-            "display_name": "Stone Small Supply Cask",
-            "description": "Priority storage for some items."
+            "display_name": "Stone Small Cask",
+            "description": "Long-term storage for lots of drinks, fluids or certain dry goods."
          },
          "barrel": {
-            "display_name": "Wooden Barrel",
-            "description": "Stores a good amount of items of a certain kind."
+            "display_name": "Wooden Supply Barrel",
+            "description": "Priority storage for a lot of drinks, other fluids or certain dry goods."
          },
          "barrel_small": {
-            "display_name": "Small Wooden Barrel",
-            "description": "Stores a small amount of items of a certain kind."
+            "display_name": "Small Wooden Supply Barrel",
+            "description": "Priority storage for a few drinks, other fluids or certain dry goods."
          },
          "amphora": {
-            "display_name": "Ceramic Amphora",
-            "description": "Stores a good amount of items of a certain kind."
+            "display_name": "Ceramic Supply Amphora",
+            "description": "Priority storage for some drinks, other fluids or certain dry goods."
          },
          "amphora_red": {
-            "display_name": "Red Ceramic Amphora",
-            "description": "Stores a good amount of items of a certain kind."
+            "display_name": "Red Ceramic Supply Amphora",
+            "description": "Priority storage for some drinks, other fluids or certain dry goods."
          },
          "amphora_blue": {
-            "display_name": "Blue Ceramic Amphora",
-            "description": "Stores a good amount of items of a certain kind."
+            "display_name": "Blue Ceramic Supply Amphora",
+            "description": "Priority storage for some drinks, other fluids or certain dry goods."
          },
          "amphora_green": {
-            "display_name": "Green Ceramic Amphora",
-            "description": "Stores a good amount of items of a certain kind."
+            "display_name": "Green Ceramic Supply Amphora",
+            "description": "Priority storage for some drinks, other fluids or certain dry goods."
          },
          "tank": {
-            "display_name": "Stone Tank",
-            "description": "Stores a good amount of items of a certain kind."
+            "display_name": "Stone Supply Tank",
+            "description": "Priority storage for a lot of drinks, other fluids or certain dry goods."
          },
          "tank_small": {
-            "display_name": "Small Stone Tank",
-            "description": "Stores a small amount of items a certain kind."
+            "display_name": "Small Stone Supply Tank",
+            "description": "Priority storage for a few drinks, other fluids or certain dry goods."
          },
          "small_stone_coffer": {
             "description": "Storage for a small amount of items.",
@@ -25303,8 +26300,8 @@
             "display_name": "Far Eastern Caravan Quest Storage"
          },
          "amberstone_tank": {
-            "description": "Holds some items of a certain kind.",
-            "display_name": "Amberstone Large Jar"
+            "description": "Priority storage for a lot of drinks, other fluids or certain dry goods.",
+            "display_name": "Amberstone Large Supply Jar"
          },
          "input_table_ground_amberstone": {
             "display_name": "Amberstone Supply Table",
@@ -25419,6 +26416,9 @@
          "input_bin_woven_orange": {
             "description": "A supply container, for quicker crafting.",
             "display_name": "Orange Woven Supply Basket"
+         },
+         "firstbloom_quest_storage": {
+            "display_name": "Firstbloom Quest Basket"
          }
       },
       "tools": {
@@ -25683,6 +26683,22 @@
             },
             "serving_keg": {
                "display_name": "Serving Keg of Liquor"
+            }
+         },
+         "brandy_fruit": {
+            "brandy_fruit": {
+               "display_name": "Fruit Brandy",
+               "description": "Strong like spirits but with the balance of a fine wine, a very refined drink!"
+            },
+            "brandy_fruit_serving": {
+               "display_name": "Snifter of Fruit Brandy",
+               "description": "Just missing some cigars..."
+            },
+            "serving_keg_iconic": {
+               "description": "Place it somewhere so hearthlings can serve themselves!"
+            },
+            "serving_keg": {
+               "display_name": "Serving Keg of Fruit Brandy"
             }
          },
          "juice_berry": {
@@ -26466,6 +27482,30 @@
                "display_name": "Bucket of Drinking Cool Water",
                "description": "Recently pulled and still cold and refreshing!"
             }
+         },
+         "firstbloom": {
+            "spring_tea": {
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "spring_tea": {
+                  "display_name": "Firstbloom Spring Tea",
+                  "description": "A very tasty and harmonious tea made from freshly harvested tea leaves."
+               },
+               "spring_tea_serving": {
+                  "display_name": "Mug of Firstbloom Spring Tea",
+                  "description": "Clan Amberstone really knows what they're doing when it comes to tea!"
+               }
+            },
+            "fruit_punch": {
+               "iconic_description": "Place it somewhere so hearthlings can serve themselves!",
+               "fruit_punch": {
+                  "display_name": "Firstbloom Fruit Punch",
+                  "description": "A delicious bowl of juice, fruits and some strong spirits!"
+               },
+               "fruit_punch_serving": {
+                  "display_name": "Noggin of Firstbloom Fruit Punch",
+                  "description": "Refreshing and tasty!"
+               }
+            }
          }
       },
       "npc": {
@@ -26687,6 +27727,20 @@
                "vampire": {
                   "display_name": "Friendly Vampire Lady",
                   "description": "She promised she only feeds on cherry juice."
+               }
+            }
+         },
+         "firstbloom": {
+            "male": {
+               "haru_sprouts": {
+                  "display_name": "Haru Sprouts",
+                  "description": "Rabbit-folk enthusiast of the Amberstone Firstbloom festival"
+               }
+            },
+            "female": {
+               "determined_poyo": {
+                  "display_name": "Determined Poyo",
+                  "description": "No perch is too high for this little girl!"
                }
             }
          }
@@ -27397,6 +28451,11 @@
          "display_name": "Lingonberry Bush",
          "description": "A small, pretty bush. Needs several days to be fully grown and will provide useful <span class='extraHerb'>berries</span> when harvested.",
          "harvest_text": "harvesting lingonberries"
+      },
+      "daffodil": {
+         "harvest_text": "harvesting daffodil",
+         "display_name": "Daffodil",
+         "description": "A versatile, lovely spring flower. Needs a long time to be fully grown and will provide <span class='mildHerb'>mild</span> herbs and sometimes <span class='robustHerb'>robust</span> or <span class='peculiarHerb'>peculiar</span> herbs when harvested."
       }
    },
    "plants": {
@@ -28445,6 +29504,7 @@
                   "building": "Building... ",
                   "upgrading": "Upgrading... ",
                   "opening": "Opening...",
+                  "collecting": "Being collected...",
                   "transforming": "Transforming...",
                   "filling": "Being Filled...",
                   "reloading": "Being Reloaded...",
@@ -28691,6 +29751,36 @@
                "show_unreachable_ingredients_notification_description": "Show an alert when a crafter cannot reach ingredients for their recipe.<span class='warn'>WARNING:</span>This may cause a lot of alerts!",
                "show_food_unfindable_notification": "Food Can't be Found Alert",
                "show_food_unfindable_notification_description": "Get an alert whenever a hearthling times out when trying to find food. Regardless of this setting, you'll still get notifications when people are starving.<span class='warn'>WARNING:</span>Since this alert is based on a timeout, the search might still succeed shortly after triggering and then send an alert anyway, especially if performance is already compromised. For this reason, you might want to keep it disabled.",
+               "default_planter_behavior": {
+                  "decorative_planter": {
+                     "title": "Default behavior for Decorative Planters",
+                     "description": "Choose how should newly-placed decorative planters be handled. Examples of decorative planters include all window boxes, some wall-hanging planters and also special event planters.<span class='warn'>Note:</span>This setting won't affect existing planters, and each planter can still be customized individually."
+                  },
+                  "herb_pot": {
+                     "title": "Default behavior for Herbalist Pots",
+                     "description": "Choose how should newly-placed Herbalist pots be handled. Examples of Herbalist pots include small planters like the Simple Herbalist Pot or the Amberstone Herbalist Pot.<span class='warn'>Note:</span>This setting won't affect existing planters, and each planter can still be customized individually."
+                  },
+                  "herb_planter": {
+                     "title": "Default behavior for Herbalist Planters",
+                     "description": "Choose how should newly-placed Herbalist planters be handled. Examples of Herbalist planters include the Herbalist Planter, Large Herbalist Planter and Herbalist Water Planter.<span class='warn'>Note:</span>This setting won't affect existing planters, and each planter can still be customized individually."
+                  },
+                  "tree_pot": {
+                     "title": "Default behavior for Tree-planting Pots",
+                     "description": "Choose how should newly-placed tree-planting pots be handled. Examples of tree-planting pots include the Herbalist Tree-planting Pot.<span class='warn'>Note:</span>This setting won't affect existing planters, and each planter can still be customized individually."
+                  },
+                  "fungi_planter": {
+                     "title": "Default behavior for Mushroom Planters",
+                     "description": "Choose how should newly-placed mushroom planters be handled. Examples of mushroom planters include the Large Mushroom Planter and the Wall-Mounted Mushroom Planter.<span class='warn'>Note:</span>This setting won't affect existing planters, and each planter can still be customized individually."
+                  },
+                  "no_harvest|no_tending": "❌Harvest | ❌Tending",
+                  "no_harvest|no_tending_description": "Planters of this type won't be harvested nor tended to by default. However, if the current crop allows it, they will still produce bonus products after fully-grown, which can be accessed by hearthlings when needed.<span class='warn'>Recommended for:</span>Decorative or purely cosmetic planters that should be as lightweight as possible for your hearthlings' workload and the game's performance.",
+                  "harvest|no_tending": "✔️Harvest | ❌Tending",
+                  "harvest|no_tending_description": "Planters of this type will be harvested but not tended to by default. Harvesting will yield their normal products but their quality won't ever be increased.<span class='warn'>Recommended for:</span>Producing bulk amounts of goods without demanding too much attention.",
+                  "no_harvest|tending": "❌Harvest | ✔️Tending",
+                  "no_harvest|tending_description": "Planters of this type won't be harvested but will be tended to by default. If the current crop allows it, they will still produce bonus products after fully-grown, which might be of greater quality because of tending and can be accessed by hearthlings when needed.<span class='warn'>Recommended for:</span>Keeping a steady supply of good quality herbs while keeping the inventory tidy!",
+                  "harvest|tending": "✔️Harvest | ✔️Tending",
+                  "harvest|tending_description": "Planters of this type will be harvested and tended to by default. Harvesting will yield their normal products with some increased quality, but each harvest will reset their quality back to normal.<span class='warn'>Recommended for:</span>Producing a good amount of goods that can be sold for even better prices or at the cost of some attention and care."
+               },
                "use_quest_storage": "Use Quest Storage",
                "use_quest_storage_description": "When a returning trader or other quest requires giving items or materials, create a dedicated storage for those items near your town banner so they don't get used elsewhere.<span class='warn'>Note:</span>You will need plenty of space around your town banner.",
                "auto_enable_quest_storage": "Auto Enable Quest Storage",
@@ -29140,7 +30230,8 @@
             "candledark_treat_resource_name": "Candledark Treats",
             "prepared_drink_kept_resource_name": "Barreled & Bottled Drinks",
             "serving_vessel_drinks_resource_name": "Serving Vessel Drinks",
-            "bone_resource_edible_name": "Any Animal Bone"
+            "bone_resource_edible_name": "Any Animal Bone",
+            "sweetener_other_fluid_resource_name": "Any Honey or Syrup"
          }
       }
    },
@@ -29249,6 +30340,10 @@
       "shipwreck_chest": {
          "display_name": "Mossy Old Chest",
          "description": "Harvest it for loot, whoever lost it won't mind... Right?"
+      },
+      "ruined_cask": {
+         "display_name": "Ruined Old Cask",
+         "description": "Whatever was in it probably won't be tasty anymore... But maybe useful?"
       }
    },
    "drink": {

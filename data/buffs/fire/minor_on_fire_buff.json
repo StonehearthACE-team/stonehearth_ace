@@ -1,0 +1,53 @@
+{
+   "type": "buff",
+   "axis": "debuff",
+   "category": "on_fire",
+   "unique_in_category": true,
+   "rank": 1,
+   "display_name": "i18n(stonehearth_ace:data.buffs.minor_on_fire_buff.display_name)",
+   "description": "i18n(stonehearth_ace:data.buffs.minor_on_fire_buff.description)",
+   "icon": "file(minor_on_fire_buff.png)",
+   "duration": "15m",
+   "effect": "stonehearth_ace:effects:debuff_added:fire_minor_debuff",
+   "repeat_add_action": "stack_and_refresh",
+   "evolve_chance": 0.6,
+   "buff_evolve": "stonehearth_ace:buffs:fire:on_fire",
+   "max_stacks": 3,
+   "remove_stacks_on_expire": 1,
+   "leftover_buffs": {
+      "stonehearth_ace:buffs:wounds:light_burn": 0.8
+   },
+   "script": "stonehearth:buff_scripts:periodic_health_modification",
+   "script_info": {
+      "health_change": -5,
+      "pulse": "5m",
+      "pulse_immediately": false,
+      "pulse_on_destroy": true,
+      "buff_modifiers": {
+         "stonehearth_ace:buffs:weather:soaked": {
+            "health_change": {
+               "multiply": 0.25
+            }
+         },
+         "stonehearth_ace:buffs:weather:soaked:animal": {
+            "health_change": {
+               "multiply": 0.25
+            }
+         }
+      }
+   },
+   "modifiers": {
+      "courage": {
+         "multiply": 0.9
+      },
+      "menace": {
+         "multiply": 1.05
+      },
+      "willpower": {
+         "multiply": 0.5
+      }
+   },
+   "disallowed_categories": [
+      "weather_cold"
+   ]
+}

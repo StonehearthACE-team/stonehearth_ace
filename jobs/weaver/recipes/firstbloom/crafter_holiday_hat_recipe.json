@@ -1,0 +1,38 @@
+{
+   "mixins": "stonehearth_ace:mixins:recipes:firstbloom_recipe",
+   "type": "recipe",
+   "effort": 31,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.firstbloom.crafter_holiday_hat_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.firstbloom.crafter_holiday_hat_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.firstbloom.crafter_holiday_hat_recipe.flavor)",
+   "portrait": "/stonehearth_ace/jobs/common/firstbloom/firstbloom_sunstroke_crafter_outfit/firstbloom_sunstroke_crafter_outfit.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 2,
+   "ingredients": [
+      {
+         "material": "cloth resource",
+         "count": 1
+      },
+      {
+         "material": "thread resource",
+         "count": 2
+      },
+      {
+         "material": "herb yellow resource",
+         "count": 1
+      },
+      {
+         "material": "herb pink resource",
+         "count": 1
+      },
+      {
+         "material": "herb red resource",
+         "count": 1
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:firstbloom:crafter:outfit:sunstroke"
+      }
+   ]
+}

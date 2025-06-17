@@ -1,0 +1,51 @@
+{
+   "type": "encounter",
+   "mod_root": "stonehearth_ace",
+   "encounter_type": "firstbloom:egg_hunt",
+   "encounter_music": {
+      "music_sound_key": "firstbloom_egg_hunt"
+   },
+   "in_edge": "practice_egg_hunt",
+   "out_edge": {
+      "type": "trigger_one",
+      "out_edges": [
+         "practice_egg_hunt_dialogue",
+         "practice_egg_hunt_dialogue_success"
+      ]
+   },
+   "firstbloom:egg_hunt_info": {
+      "duration": "8h",
+      "eggs": {
+         "amount": 8,
+         "uri": "stonehearth_ace:gizmos:firstbloom:hunt_egg",
+         "hidden_uris": {
+            "town": [
+               "stonehearth_ace:gizmos:firstbloom:hunt_egg:basket",
+               "stonehearth_ace:gizmos:firstbloom:hunt_egg:planter_pot",
+               "stonehearth_ace:gizmos:firstbloom:hunt_egg:urn",
+               "stonehearth_ace:gizmos:firstbloom:hunt_egg:sack",
+               "stonehearth_ace:gizmos:firstbloom:hunt_egg:mug"
+            ],
+            "wild": [
+               "stonehearth_ace:gizmos:firstbloom:hunt_egg:basket",
+               "stonehearth_ace:gizmos:firstbloom:hunt_egg:buried",
+               "stonehearth_ace:gizmos:firstbloom:hunt_egg:stone",
+               "stonehearth_ace:gizmos:firstbloom:hunt_egg:bark",
+               "stonehearth_ace:gizmos:firstbloom:hunt_egg:leaves"
+            ]
+         }
+      },
+      "tiers": [
+         "practice_egg_hunt_dialogue",
+         "practice_egg_hunt_dialogue_success"
+      ],
+      "bulletins": {
+         "start": {
+            "title": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.practice_egg_hunt.bulletins.start)"
+         },
+         "finish": {
+            "title": "i18n(stonehearth_ace:data.gm.campaigns.firstbloom.practice_egg_hunt.bulletins.finish)"
+         }
+      }
+   }
+}

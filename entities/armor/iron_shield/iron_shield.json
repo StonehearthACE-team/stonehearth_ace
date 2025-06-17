@@ -20,7 +20,7 @@
             "stonehearth:have_shield"
          ],
          "required_job_level": 2,
-         "ilevel": 5,
+         "ilevel": 6.8,
          "roles":["knight_job"],
          "equip_effect": "stonehearth:effects:weapon_level_up",
 		   "equipment_types": ["shield", "heavy_shield"],
@@ -37,16 +37,19 @@
          }
       },
       "stonehearth:combat:armor_data": {
-         "base_damage_reduction": 5
+         "base_damage_reduction": 6
+      },
+      "mixintypes": {
+         "stonehearth:combat:melee_defenses": "override"
       },
       "stonehearth:combat:melee_defenses": [
          {
             "name": "knight_shield_block",
-            "effect": "combat_1h_shield_block",
+            "effect": "combat_1h_shield_heavy_block",
             "active_frame": 4,
-            "cooldown": 1000,
-            "priority": 0,
-            "chance_of_success": 0.6
+            "cooldown": 6000,
+            "priority": 2,
+            "chance_of_success": 0.85
          }
       ],
       "stonehearth:catalog": {

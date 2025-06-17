@@ -1034,6 +1034,98 @@
          "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.sugarbell.harvest_text)",
          "icon": "file(crops/planter/sugarbell/sugarbell.png)"
       },
+      "daffodil": {
+         "hidden": true,
+         "plant_uri": "stonehearth_ace:plants:daffodil",
+         "product_uri": "stonehearth_ace:resources:herb:daffodil:yellow",
+         "additional_products": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "none": {
+                        "uri": "",
+                        "weight": 1
+                     },
+                     "white_herb": {
+                        "uri": "stonehearth_ace:resources:herb:daffodil:white",
+                        "weight": 1
+                     },
+                     "orange_herb": {
+                        "uri": "stonehearth_ace:resources:herb:daffodil:orange",
+                        "weight": 3
+                     }
+                  }
+               }
+            }
+         },
+         "bonus_product_loot_table": {
+            "entries": {
+               "optional": {
+                  "items": {
+                     "white_herb": {
+                        "uri": "stonehearth_ace:resources:herb:daffodil:white",
+                        "weight": 1
+                     },
+                     "orange_herb": {
+                        "uri": "stonehearth_ace:resources:herb:daffodil:orange",
+                        "weight": 3
+                     }
+                  }
+               }
+            }
+         },
+         "num_bonus_products": 2,
+         "harvester_effect": "fiddle",
+         "render_scale": 0.1,
+         "tending_multiplier": 0.4,
+         "category": "herb",
+         "level": 4,
+         "growth_time": "18h+6h",
+         "bonus_product_growth_time": "35h",
+         "post_harvest_growth_level": 2,
+         "growth_levels": [
+            {
+               "model": "file(crops/planter/daffodil/daffodil_1.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+            },
+            {
+               "model": "file(crops/planter/daffodil/daffodil_2.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+            },
+            {
+               "model": "file(crops/planter/daffodil/daffodil_3.qb)",
+               "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+            },
+            {
+               "random_model": [
+                  {
+                     "model": "file(crops/planter/daffodil/daffodil_4.qb)",
+                     "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+                  },
+                  {
+                     "model": "file(crops/planter/daffodil/daffodil_4_2.qb)",
+                     "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+                  },
+                  {
+                     "model": "file(crops/planter/daffodil/daffodil_4_3.qb)",
+                     "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+                  },
+                  {
+                     "model": "file(crops/planter/daffodil/daffodil_4_4.qb)",
+                     "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+                  },
+                  {
+                     "model": "file(crops/planter/daffodil/daffodil_4_5.qb)",
+                     "offset": { "x": 4.5, "y": 0, "z": 4.5 }
+                  }
+               ]
+            }
+         ],
+         "display_name": "i18n(stonehearth_ace:herbalist_crops.daffodil.display_name)",
+         "description": "i18n(stonehearth_ace:herbalist_crops.daffodil.description)",
+         "harvest_status_text": "i18n(stonehearth_ace:herbalist_crops.daffodil.harvest_text)",
+         "icon": "file(crops/planter/daffodil/daffodil.png)"
+      },
       "earthbud": {
          "hidden": true,
          "plant_uri": "stonehearth:plants:earthbud",
@@ -1049,6 +1141,18 @@
                }
             }
          },
+         "bonus_product_loot_table": {
+            "entries": {
+               "extra": {
+                  "items": {
+                     "herb": {
+                        "uri": "stonehearth:resources:earth_essence"
+                     }
+                  }
+               }
+            }
+         },
+         "num_bonus_products": 2,
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.1,
@@ -1114,6 +1218,22 @@
                }
             }
          },
+         "bonus_product_loot_table": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches"
+                     }
+                  }
+               }
+            }
+         },
+         "num_bonus_products": 2,
          "harvester_effect": "fiddle",
          "render_scale": 0.13,
          "tending_multiplier": 0.3,
@@ -1167,6 +1287,25 @@
                }
             }
          },
+         "bonus_product_loot_table": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "lily_pad": {
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches"
+                     }
+                  }
+               }
+            }
+         },
+         "num_bonus_products": 2,
          "harvester_effect": "fiddle",
          "render_scale": 0.13,
          "tending_multiplier": 0.3,
@@ -1221,6 +1360,25 @@
                }
             }
          },
+         "bonus_product_loot_table": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "lily_pad": {
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches"
+                     }
+                  }
+               }
+            }
+         },
+         "num_bonus_products": 2,
          "harvester_effect": "fiddle",
          "render_scale": 0.13,
          "tending_multiplier": 0.3,
@@ -1275,6 +1433,25 @@
                }
             }
          },
+         "bonus_product_loot_table": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "lily_pad": {
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches"
+                     }
+                  }
+               }
+            }
+         },
+         "num_bonus_products": 2,
          "harvester_effect": "fiddle",
          "render_scale": 0.13,
          "tending_multiplier": 0.3,
@@ -1329,6 +1506,25 @@
                }
             }
          },
+         "bonus_product_loot_table": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "lily_pad": {
+                        "uri": "stonehearth_ace:resources:herb:water_lily:lily_pad"
+                     },
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches"
+                     }
+                  }
+               }
+            }
+         },
+         "num_bonus_products": 2,
          "harvester_effect": "fiddle",
          "render_scale": 0.13,
          "tending_multiplier": 0.3,
@@ -1382,6 +1578,22 @@
                }
             }
          },
+         "bonus_product_loot_table": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches"
+                     }
+                  }
+               }
+            }
+         },
+         "num_bonus_products": 2,
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.1,
@@ -1434,6 +1646,22 @@
                }
             }
          },
+         "bonus_product_loot_table": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches"
+                     }
+                  }
+               }
+            }
+         },
+         "num_bonus_products": 2,
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.1,
@@ -1486,6 +1714,22 @@
                }
             }
          },
+         "bonus_product_loot_table": {
+            "entries": {
+               "extra": {
+                  "num_rolls": {
+                     "min": 0,
+                     "max": 1
+                  },
+                  "items": {
+                     "leeches": {
+                        "uri": "stonehearth_ace:consumables:leeches"
+                     }
+                  }
+               }
+            }
+         },
+         "num_bonus_products": 2,
          "harvester_effect": "fiddle",
          "render_scale": 0.1,
          "tending_multiplier": 0.1,

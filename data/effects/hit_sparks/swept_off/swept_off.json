@@ -1,0 +1,53 @@
+{
+   "type": "effect",
+   "tracks": {
+      "unit_status_effect": {
+         "type": "unit_status_effect",
+         "material": {
+            "name": "materials/billboard.material.json",
+            "samplers": [
+               {
+                  "name": "albedoMap",
+                  "map": "/stonehearth/data/horde/materials/thoughts/alert/alert_.png",
+                  "numAnimationFrames": 8,
+                  "frameRate": 24
+               }
+            ]
+         },
+         "duration": 1000,
+         "width": 1,
+         "height": 1.7,
+         "xOffset": 0,
+         "yOffset": 0,
+         "bone": "ATTOVERCOG"
+      },
+      "dust": {
+         "type": "cubemitter",
+         "start_time": 120,
+         "end_time": 600,
+         "cubemitter": "/stonehearth/data/horde/particles/dust_poof/jump.cubemitter.json",
+         "transforms": { "x": 0, "y": 0.2, "z": 0,
+            "rx": 90,
+            "ry": 0,
+            "rz": 0
+         }
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 0,
+         "min_distance": 30,
+         "falloff": 3.6,
+         "volume": 36,
+         "track": {
+            "type": "one_of",
+            "items": [
+               "stonehearth:sounds:dodge_01",
+               "stonehearth:sounds:dodge_02",
+               "stonehearth:sounds:dodge_03"
+            ]
+         }
+      }
+   },
+   "end_time": 1000
+}

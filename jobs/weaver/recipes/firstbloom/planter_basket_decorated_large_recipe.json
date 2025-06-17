@@ -1,0 +1,34 @@
+{
+   "type": "recipe",
+   "effort": 35,
+   "recipe_name": "i18n(stonehearth_ace:jobs.weaver.recipes.firstbloom.planter_basket_decorated_large_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.weaver.recipes.firstbloom.planter_basket_decorated_large_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.weaver.recipes.firstbloom.planter_basket_decorated_large_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/planters/firstbloom/planter_basket_decorated_large/planter_basket_decorated_large.png",
+   "workshop": "stonehearth:weaver:workbench",
+   "level_requirement": 6,
+   "manual_unlock": true,
+   "ingredients": [
+	   {
+         "uri": "stonehearth_ace:refined:cloth_bolt:amberstone",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:landmark:terrain:dirt_patch:small",
+         "count": 1
+      },
+      {
+         "material": "cloth common resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:refined:dyes:firstbloom:spring_colors",
+         "count": 4
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:planters:firstbloom:basket:decorated:large"
+      }
+   ]
+}

@@ -1,0 +1,98 @@
+{
+   "components": {
+      "stonehearth_ace:transform": {}
+   },
+   "entity_data": {
+      "stonehearth_ace:evolve_modifiers": {
+         "allow_manual_stunting": true
+      },
+      "stonehearth_ace:transform_data": {
+         "transform_options": {
+            "stunt_1": {
+               "command": "stonehearth_ace:commands:transform:stunt_growth_1",
+               "transform_script": "stonehearth_ace:scripts:transform:stunted",
+               "script_options": {
+                  "script_stunt_stage": "bud"
+               },
+               "command_requirements": {
+                  "all_of_components": {
+                     "stonehearth:evolve": true
+                  },
+                  "transform_component_data": {
+                     "stonehearth:evolve": false
+                  },
+                  "upcoming_evolve_stage": "bud"
+               },
+               "destroy_entity": false
+            },
+            "stunt_2": {
+               "command": "stonehearth_ace:commands:transform:stunt_growth_2",
+               "transform_script": "stonehearth_ace:scripts:transform:stunted",
+               "script_options": {
+                  "script_stunt_stage": "small"
+               },
+               "command_requirements": {
+                  "all_of_components": {
+                     "stonehearth:evolve": true
+                  },
+                  "transform_component_data": {
+                     "stonehearth:evolve": false
+                  },
+                  "upcoming_evolve_stage": "small"
+               },
+               "destroy_entity": false
+            },
+            "stunt_3": {
+               "command": "stonehearth_ace:commands:transform:stunt_growth_3",
+               "transform_script": "stonehearth_ace:scripts:transform:stunted",
+               "script_options": {
+                  "script_stunt_stage": "medium"
+               },
+               "command_requirements": {
+                  "all_of_components": {
+                     "stonehearth:evolve": true
+                  },
+                  "transform_component_data": {
+                     "stonehearth:evolve": false
+                  },
+                  "upcoming_evolve_stage": "medium"
+               },
+               "destroy_entity": false
+            },
+            "stunt_4": {
+               "command": "stonehearth_ace:commands:transform:stunt_growth_4",
+               "transform_script": "stonehearth_ace:scripts:transform:stunted",
+               "script_options": {
+                  "script_stunt_stage": "large"
+               },
+               "command_requirements": {
+                  "all_of_components": {
+                     "stonehearth:evolve": true
+                  },
+                  "transform_component_data": {
+                     "stonehearth:evolve": false
+                  },
+                  "upcoming_evolve_stage": "large"
+               },
+               "destroy_entity": false
+            },
+            "stunt_growth_cancel": {
+               "command": "stonehearth_ace:commands:transform:stunt_growth_cancel",
+               "transform_script": "stonehearth_ace:scripts:transform:stunted",
+               "script_options": {
+                  "script_stunt_stage": "cancel"
+               },
+               "command_requirements": {
+                  "all_of_components": {
+                     "stonehearth:evolve": true
+                  },
+                  "transform_component_data": {
+                     "stonehearth:evolve": true
+                  }
+               },
+               "destroy_entity": false
+            }
+         }
+      }
+   }
+}

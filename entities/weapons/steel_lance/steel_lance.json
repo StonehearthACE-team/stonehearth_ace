@@ -63,6 +63,29 @@
                "aggro_addition": 100,
                "aoe_target_limit": 14
             }
+         },
+         {
+            "name": "sweep_off_2",
+            "effect": "combat_1h_forehand_spin",
+            "active_frame": 21,
+            "cooldown": 16000,
+            "priority": 2,
+            "inflictable_debuffs": {
+               "swept_off": {
+                  "uri": "stonehearth_ace:buffs:swept_off",
+                  "chance": 1
+               }
+            },
+            "aoe_effect": {
+               "aoe_range": 5,
+               "damage_multiplier": 0.5,
+               "inflictable_debuffs": {
+                  "swept_off": {
+                     "uri": "stonehearth_ace:buffs:swept_off",
+                     "chance": 0.6
+                  }
+               }
+            }
          }
       ],
       "stonehearth:net_worth": {

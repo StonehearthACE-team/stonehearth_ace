@@ -1,0 +1,75 @@
+{
+   "mixins": "stonehearth:mixins:placed_object",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(hunt_egg_mug.qb)"
+            ]
+         },
+         "hidden": {
+            "models": []
+         }
+      },
+      "mob": {
+         "model_origin": { "x": 0, "y": 0, "z": 0 },
+         "region_origin": { "x": 0.5, "y": 0, "z": 0.5 }
+      },
+      "region_collision_shape": {
+         "region": [
+            {
+               "min": { "x": 0, "y": 0, "z": 0 },
+               "max": { "x": 1, "y": 1, "z": 1 }
+            }
+         ],
+         "region_collision_type": "none"
+      },
+      "stonehearth_ace:entity_modification": {
+         "model_variants": {
+            "default": "default",
+            "hidden": "hidden"
+         },
+         "game_speed_model_variants": {
+            "0": "hidden"
+         }
+      },
+      "stonehearth_ace:transform": {},
+      "effect_list": {
+         "default": "stonehearth_ace:effects:treasure_glow:firstbloom"
+      }
+   },
+   "entity_data": {
+      "stonehearth_ace:transform_data": {
+         "transform_uri": "stonehearth_ace:gizmos:firstbloom:hunt_egg",
+         "command": "stonehearth_ace:commands:transform:firstbloom:reveal",
+         "transform_effect": "stonehearth:effects:poof_effect",
+         "transform_script": "stonehearth_ace:scripts:transform:firstbloom:egg_hunt",
+         "auto_request": false
+      },
+      "stonehearth:item": {
+         "clearable": false
+      },
+      "stonehearth:catalog": {
+         "portrait": "file(hunt_egg_mug.png)",
+         "display_name": "i18n(stonehearth_ace:entities.gizmos.firstbloom.hunt_egg.mug.display_name)",
+         "description": "i18n(stonehearth_ace:entities.gizmos.firstbloom.hunt_egg.mug.description)",
+         "icon": "file(hunt_egg_mug.png)",
+         "category": "quest",
+         "material_tags": [
+            "firstbloom"
+         ]
+      },
+      "stonehearth:net_worth": {
+         "value_in_gold": 0,
+         "rarity": "rare",
+         "shop_info": {
+            "buyable": false,
+            "sellable": false
+         }
+      },
+      "stonehearth:appeal": {
+         "appeal": 0
+      }
+   }
+}

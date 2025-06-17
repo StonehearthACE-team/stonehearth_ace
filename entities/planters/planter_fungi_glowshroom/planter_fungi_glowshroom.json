@@ -40,8 +40,11 @@
          ]
       },
       "stonehearth_ace:herbalist_planter": {
+         "type": "fungi_planter",
          "scale_multiplier": 1,
          "num_products": 2,
+         "harvest_enabled": true,
+         "tend_enabled": false,
          "allowed_crops": {
             "glowshroom": true,
             "no_crop": false

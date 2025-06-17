@@ -1,0 +1,39 @@
+{
+   "type": "recipe",
+   "effort": 50,
+   "work_units": 20,
+   "recipe_name": "i18n(stonehearth_ace:jobs.mason.recipes.firstbloom.decorative_tree_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.mason.recipes.firstbloom.decorative_tree_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.mason.recipes.firstbloom.decorative_tree_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/decoration/firstbloom/decorative_tree/decorative_tree.png",
+   "workshop": "stonehearth:mason:pedestal",
+   "level_requirement": 5,
+   "manual_unlock": true,
+   "ingredients": [
+      {
+         "material": "stone resource",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:resources:fuel:bundle_of_firewood",
+         "count": 2
+      },
+      {
+         "uri": "stonehearth_ace:decoration:firstbloom:decorative_egg:small",
+         "count": 3
+      },
+      {
+         "material": "feather resource",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth_ace:refined:dyes:firstbloom:spring_colors",
+         "count": 3
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:decoration:firstbloom:decorative_tree"
+      }
+   ]
+}

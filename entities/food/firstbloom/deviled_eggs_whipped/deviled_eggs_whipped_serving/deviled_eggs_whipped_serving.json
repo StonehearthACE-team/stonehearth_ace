@@ -1,0 +1,49 @@
+{
+   "mixins": "stonehearth:mixins:item_properties",
+   "type": "entity",
+   "components": {
+      "model_variants": {
+         "default": {
+            "models": [
+               "file(deviled_eggs_whipped_serving.qb)"
+            ]
+         }
+      },
+      "render_info": {
+         "scale": 0.05
+      }
+   },
+   "entity_data": {
+      "stonehearth:item": {
+         "category": "food",
+         "destroy_on_uncarry": true
+      },
+      "stonehearth:food": {
+         "stonehearth:sitting_on_chair": {
+            "satisfaction": 65
+         },
+         "default": {
+            "satisfaction": 55
+         },
+         "applied_buffs": [
+            "stonehearth_ace:buffs:consumption:merry_time:firstbloom",
+            "stonehearth_ace:buffs:consumption:refreshed_belly",
+            "stonehearth_ace:buffs:consumption:regeneration:minor"
+         ],
+         "quality": 6
+      },
+      "stonehearth:catalog": {
+         "display_name": "i18n(stonehearth_ace:entities.food.firstbloom.deviled_eggs_whipped.serving.display_name)",
+         "description": "i18n(stonehearth_ace:entities.food.firstbloom.deviled_eggs_whipped.serving.description)",
+         "material_tags": [
+            "food",
+            "deviled_eggs_whipped_serving",
+            "deviled_eggs_whipped",
+            "vegetarian",
+            "dairy",
+            "dinner_time"
+         ],
+         "subject_override": "stonehearth_ace:food:firstbloom:deviled_eggs:whipped"
+      }
+   }
+}

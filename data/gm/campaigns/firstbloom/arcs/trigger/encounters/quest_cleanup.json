@@ -1,0 +1,15 @@
+{
+   "type": "encounter",
+   "encounter_type": "set_counters",
+   "in_edge": "quest_cleanup",
+   "out_edge": {
+      "type": "destroy_tree",
+      "root": "firstbloom_event_generator",
+      "destroy_root": false
+   },
+   "set_counters_info": {
+      "counters": {
+         "ongoing_quest": 0
+      }
+   }
+}

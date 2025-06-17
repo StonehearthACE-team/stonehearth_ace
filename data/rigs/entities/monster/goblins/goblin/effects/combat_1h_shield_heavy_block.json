@@ -1,0 +1,85 @@
+{
+   "type" : "effect",
+   "tracks": {
+      "animation": {
+         "type": "animation_effect",
+         "start_time": 0,
+         "animation": "combat_1h_shield_block.json",
+			"speed": 0.9,
+         "loop": false
+      },
+      "sound": {
+         "type": "sound_effect",
+         "duration": 1000,
+         "start_time": 220,
+         "min_distance": 30,
+         "falloff" : 5,
+         "volume": 40,
+         "track" : {
+            "type": "one_of",
+            "items": [
+               "stonehearth_ace:sounds:shield:heavy:block_01",
+               "stonehearth_ace:sounds:shield:heavy:block_02",
+               "stonehearth_ace:sounds:shield:heavy:block_03"
+            ]
+         }
+      },
+      "hit_spark": {
+         "type": "cubemitter",
+         "start_time" : 350,
+         "end_time" : 550,
+         "cubemitter": "/stonehearth_ace/data/horde/particles/combat/block_heavy.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":0,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "leftArm"
+      },
+      "sparks": {
+         "type": "cubemitter",
+         "start_time" : 350,
+         "cubemitter": "/stonehearth/data/horde/particles/work/blacksmith/sparks.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "leftArm"
+      },
+      "sparks_2": {
+         "type": "cubemitter",
+         "start_time" : 350,
+         "cubemitter": "/stonehearth/data/horde/particles/work/blacksmith/sparks.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "leftArm"
+      },
+      "sparks_3": {
+         "type": "cubemitter",
+         "start_time" : 350,
+         "cubemitter": "/stonehearth/data/horde/particles/work/blacksmith/sparks.cubemitter.json",
+         "transforms": {
+            "x":0,
+            "y":0,
+            "z":0,
+            "rx":90,
+            "ry":0,
+            "rz":0
+         },
+         "bone": "leftArm"
+      }         
+   }
+}

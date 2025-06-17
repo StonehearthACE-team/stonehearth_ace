@@ -1,0 +1,38 @@
+{
+   "type": "recipe",
+   "effort": 40,
+   "recipe_name": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.deviled_eggs_recipe.recipe_name)",
+   "description": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.deviled_eggs_recipe.description)",
+   "flavor": "i18n(stonehearth_ace:jobs.cook.recipes.firstbloom.deviled_eggs_recipe.flavor)",
+   "portrait": "/stonehearth_ace/entities/food/firstbloom/deviled_eggs/deviled_eggs.png",
+   "workshop": "stonehearth_ace:cook:table",
+   "manual_unlock": true,
+   "level_requirement": 5,
+   "ingredients": [
+      {
+         "material": "egg small cooking_ingredient",
+         "count": 6
+      },
+      {
+         "material": "raw fish_meat",
+         "count": 1
+      },
+      {
+         "material": "raw fish_roe",
+         "count": 3
+      },
+      {
+         "uri": "stonehearth_ace:food:mayonnaise",
+         "count": 2
+      },
+      {
+         "material": "seasoning",
+         "count": 2
+      }
+   ],
+   "produces": [
+      {
+         "item": "stonehearth_ace:food:firstbloom:deviled_eggs"
+      }
+   ]
+}

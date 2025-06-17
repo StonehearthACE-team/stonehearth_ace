@@ -16,6 +16,7 @@ function EggHunt:initialize()
    self._sv.bulletin = nil
    self._sv.eggs = {}
    self._sv.score = nil
+   self._sv.already_finished = nil
    self._sv.resolved_out_edge = nil
 end
 
@@ -25,7 +26,7 @@ function EggHunt:start(ctx, info)
    self._sv.score = 0
 
    if info.eggs then
-      self:start_hunt(info.eggs, info.duration or '12h')
+      self:start_hunt(info.eggs, info.duration or '16h')
    end
 
    self.__saved_variables:mark_changed()
@@ -82,7 +83,10 @@ function EggHunt:_resolve_interaction(options)
             self.__saved_variables:mark_changed()
          else
             table.remove(self._sv.eggs, pos)
-            self._sv.score = self._sv.score + 1  
+            self._sv.score = self._sv.score + 1
+            if options.citizen then  
+               options.citizen:add_component('stonehearth_ace:statistics'):increment_stat('totals', 'firstbloom_eggs_collected')
+            end
             self.__saved_variables:mark_changed()  
             if self._sv.score == self._sv._info.eggs.amount then
                self:_destroy_duration()
@@ -156,6 +160,11 @@ function EggHunt:_create_egg(uri, hidden_uris)
 end
 
 function EggHunt:_end_hunt()
+   if self._sv.already_finished then
+      return
+   end
+
+   self._sv.already_finished = true
    self._sv.resolved_out_edge = self:_resolve_out_edge()
 
    self._sv.ctx.encounter:stop_encounter_music()
@@ -231,7 +240,12 @@ function EggHunt:destroy()
    end
 
    if self._sv.eggs then
-      self:_end_hunt()
+      self._sv.eggs = {}
+      self._sv.eggs = nil
+   end
+
+   if self._sv.already_finished then
+      self._sv.already_finished = nil
    end
 end
 
